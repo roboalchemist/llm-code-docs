@@ -1,0 +1,366 @@
+# Source: https://www.speakeasy.com/md/docs/sdks/customize/responses/errors.md
+
+# Customize Error Handling
+
+Below is a structured guide on how to configure and customize error handling in Speakeasy-generated SDKs.
+
+## Default Error Handling (no configuration)
+
+By default, Speakeasy SDKs handle errors as follows:
+
+1. **Non-2xx Status Codes**: When receiving an HTTP error response, the SDK throws either:
+   - A **custom SDK error** with typed error schemas (hoisted properties for convenient access)
+   - A **default SDK error** that encapsulates the raw response when no custom error schema is defined
+2. **Validation Errors**: If error response parsing fails or doesn't match the expected schema, validation errors are thrown.
+3. **Network/IO Errors**: Connection failures, timeouts, DNS errors, and TLS errors are escalated verbatim.
+
+  Example OpenAPI file
+```yaml
+openapi: 3.1.0
+info:
+  title: The Speakeasy Bar
+  version: 1.0.0
+servers:
+  - url: https://speakeasy.bar
+paths:
+  /drinks:
+    get:
+      operationId: listDrinks
+      summary: Get a list of drinks
+      responses:
+        "200":
+          description: A list of drinks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Drink"
+components:
+  schemas:
+    Drink:
+      type: object
+      title: Drink
+      properties:
+        name:
+          type: string
+```
+
+TypeScript SDK Default Error Handling
+
+```typescript
+import { Drinks } from "drinks";
+import {
+  SDKValidationError,
+  SDKError,
+  HTTPClientError,
+} from "drinks/models/errors/index.js";
+
+const drinks = new Drinks();
+
+async function run() {
+  let result;
+  try {
+    result = await drinks.listDrinks();
+    console.log(result);
+  } catch (err) {
+    // 1. Default SDK Errors: Non-2xx responses without custom error schemas
+    // Use `typescript.defaultErrorName` to change the name of `SDKError` in `gen.yaml`
+    if (err instanceof SDKError) {
+      console.error(err.statusCode);
+      console.error(err.message);
+      console.error(err.body); // Raw response body as string
+      return;
+    }
+
+    // 2. Validation Errors: Error response parsing failed
+    if (err instanceof SDKValidationError) {
+      // Raw value will be type `unknown`
+      console.error(err.rawValue);
+      // Validation errors can be pretty-printed
+      console.error(err.pretty());
+      return;
+    }
+
+    // 3. Network/IO Errors: Connection failures, timeouts, DNS errors (escalated verbatim)
+    if (err instanceof HTTPClientError) {
+      console.error(err.name);
+      console.error(err.message);
+      return;
+    }
+
+    throw err;
+  }
+}
+```
+
+## Recommended Configuration
+
+To improve the DX for the end user of the SDK, it is recommended to have named error classes with structured schemas for specific error types (e.g., `BadRequestError`, `UnauthorizedError`, `NotFoundError`). APIs commonly return structured JSON errors for 4XX responses. Here is an example of how to configure this in an OpenAPI document:
+
+```yaml
+openapi: 3.1.0
+info:
+  title: The Speakeasy Bar
+  version: 1.0.0
+servers:
+  - url: https://speakeasy.bar
+paths:
+  /drinks:
+    get:
+      operationId: listDrinks
+      summary: Get a list of drinks
+      responses:
+        "200":
+          description: A list of drinks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Drink"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BadRequestError"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnauthorizedError"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NotFoundError"
+components:
+  schemas:
+    Drink:
+      type: object
+      title: Drink
+      properties:
+        name:
+          type: string
+    BadRequestError:
+      type: object
+      title: BadRequestError
+      properties:
+        statusCode:
+          type: integer
+        error:
+          type: string
+        typeName:
+          type: string
+        message:
+          type: string
+          x-speakeasy-error-message: true
+        detail:
+          oneOf:
+            - type: string
+            - type: object
+        ref:
+          type: string
+    UnauthorizedError:
+      type: object
+      title: UnauthorizedError
+      properties:
+        message:
+          type: string
+          x-speakeasy-error-message: true
+        code:
+          type: string
+    NotFoundError:
+      type: object
+      title: NotFoundError
+      properties:
+        message:
+          type: string
+          x-speakeasy-error-message: true
+        resource:
+          type: string
+        resourceId:
+          type: string
+```
+
+Note, defining 5XX responses is generally not recommended as the server is not always in control of the response. If a JSON schema is specified for a 5XX response and the response doesn't match the schema, the SDK will raise a `SDKValidationError`.
+
+Note the use of `x-speakeasy-error-message: true` to configure the error message to be used by the SDK, which will be propagated to `err.message` in the SDK.
+
+TypeScript SDK Custom Error Handling
+
+```typescript
+import { Drinks } from "drinks";
+import {
+  SDKValidationError,
+  SDKError,
+  HTTPClientError,
+  BadRequestError,
+  UnauthorizedError,
+  NotFoundError,
+} from "drinks/models/errors/index.js";
+
+const drinks = new Drinks();
+
+async function run() {
+  let result;
+  try {
+    result = await drinks.listDrinks();
+    console.log(result);
+  } catch (err) {
+    // Custom typed errors with structured schemas and hoisted properties
+    if (err instanceof BadRequestError) {
+      // Access hoisted properties directly
+      console.error(err.message);
+      console.error(err.typeName);
+      console.error(err.detail);
+      console.error(err.ref);
+
+      // Or access the full error data object
+      console.error(err.data$);
+      return;
+    }
+
+    if (err instanceof UnauthorizedError) {
+      // Access structured error fields
+      console.error(err.message);
+      console.error(err.code);
+      return;
+    }
+
+    if (err instanceof NotFoundError) {
+      // Access resource-specific error details
+      console.error(err.message);
+      console.error(err.resource);
+      console.error(err.resourceId);
+      return;
+    }
+
+    // Default SDK Errors: Non-2xx responses without custom error schemas
+    if (err instanceof SDKError) {
+      console.error(err.statusCode);
+      console.error(err.message);
+      console.error(err.body);
+      return;
+    }
+
+    // Validation Errors: Error response parsing failed
+    if (err instanceof SDKValidationError) {
+      console.error(err.rawValue);
+      console.error(err.pretty());
+      return;
+    }
+
+    // Network/IO Errors: Connection failures (escalated verbatim)
+    if (err instanceof HTTPClientError) {
+      console.error(err.name);
+      console.error(err.message);
+      return;
+    }
+
+    throw err;
+  }
+}
+```
+
+## Advanced Configuration
+
+### Renaming Generated Error Classes
+
+Any unhandled API Error will raise a exception of the default `SDKError`/`APIError`/`APIException` class depending on the SDK language. To change the name of the default error class, edit the `defaultErrorName` parameter in the `gen.yaml` file for the corresponding SDK language:
+
+```yaml
+python:
+  defaultErrorName: MyError
+```
+
+To rename other generated error classes, please refer to the [Customizing Types](/docs/customize-sdks/types) documentation to rename generated error classes.
+
+### Handling the Default Error Response
+
+The `default` response code is a catch-all for any status code not explicitly defined. By default, Speakeasy SDKs treat default responses as non-error responses. To treat it as a specific error type, define the default response in the `x-speakeasy-errors` extension on any operation:
+
+```yaml
+x-speakeasy-errors:
+  statusCodes:
+    - "default"
+```
+
+### Disabling Default Error Handling
+
+In certain cases, you may want to disable the default error handling behavior of SDKs. For example, you may not want to throw an error for a 404 status code.
+
+The `x-speakeasy-errors` extension can be used to override the default error-handling behavior of SDKs.
+
+Apply the `x-speakeasy-errors` extension at the `paths`, `path item`, or `operation` level. Deeper levels merge or override parent behavior.
+
+The `x-speakeasy-errors` extension is an object with the following properties:
+
+import { Table } from "@/mdx/components";
+
+| Property | Type | Description |
+| --- | --- | --- |
+| override | boolean | If `true`, the statusCodes list overrides any parent `x-speakeasy-errors` extension for this object and its children. Defaults to `false`. |
+| statusCodes | [string] | An array of status codes to handle as errors. Merges with any parent `x-speakeasy-errors` extension unless override is `true`. Each status code must be in quotation marks (e.g., `"503"`) for JSON and YAML compatibility. Wildcards (e.g., `5XX`) are supported. |
+
+If the `statusCodes` array contains undocumented status codes, the SDK returns an SDK error object with the status code, response body as a string, and the raw response object. Otherwise, if `content-type` is `application/json`, it returns an error object from the response object in the OpenAPI document.
+
+Example:
+
+```yaml
+paths:
+  x-speakeasy-errors:
+    statusCodes: # Defines status codes to handle as errors for all operations
+      - 4XX # Wildcard to handle all status codes in the 400-499 range
+      - 5XX
+  /drinks:
+    x-speakeasy-errors:
+      override: true # Forces this path and its operations to only handle 404 and 500 as errors, overriding the parent x-speakeasy-errors extension at the paths level
+      statusCodes:
+        - 404
+        - 500
+    get:
+      x-speakeasy-errors:
+        statusCodes: # As override is not set to true, this operation will handle 404, 401, 500, and 503 as errors, merging with the parent x-speakeasy-errors extension at the path item level
+          - 401
+          - 503
+      operationId: getDrinks
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Drink"
+        401:
+          description: Unauthorized
+          content:
+            application/json: # As an application/json response is defined, the schema will generate a custom error object (for example `AuthError`) that will be returned and can be tested for
+              schema:
+                $ref: "#/components/schemas/AuthError"
+        404:
+          description: Not Found # As no application/json response is defined, the SDK will return a standard SDK error object.
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        503:
+          description: Service Unavailable
+```
+
+Another way to disable default error handling is to set the `clientServerStatusCodesAsErrors` option to `false` in the `gen.yaml` file for the SDK language:
+
+```yaml
+go:
+  clientServerStatusCodesAsErrors: false
+```
+---
+
+Are you an AI agent evaluating Speakeasy? We put together a helpful guide: https://www.speakeasy.com/eval.md

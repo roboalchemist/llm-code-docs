@@ -1,0 +1,36 @@
+# Source: https://firebase.google.com/docs/reference/appcheck/rest/v1/projects.apps.deviceCheckConfig/get.md.txt
+
+# Method: projects.apps.deviceCheckConfig.get
+
+Gets the `https://firebase.google.com/docs/reference/appcheck/rest/v1/projects.apps.deviceCheckConfig#DeviceCheckConfig` for the specified app.
+
+For security reasons, the `https://firebase.google.com/docs/reference/appcheck/rest/v1/projects.apps.deviceCheckConfig#DeviceCheckConfig.FIELDS.private_key` field is never populated in the response.
+
+### HTTP request
+
+`GET https://firebaseappcheck.googleapis.com/v1/{name=projects/*/apps/*/deviceCheckConfig}`
+
+The URL uses [gRPC Transcoding](https://google.aip.dev/127) syntax.
+
+### Path parameters
+
+| Parameters ||
+|---|---|
+| `name` | `string` Required. The relative resource name of the `https://firebase.google.com/docs/reference/appcheck/rest/v1/projects.apps.deviceCheckConfig#DeviceCheckConfig`, in the format: projects/{project_number}/apps/{app_id}/deviceCheckConfig |
+
+### Request body
+
+The request body must be empty.
+
+### Response body
+
+If successful, the response body contains an instance of `https://firebase.google.com/docs/reference/appcheck/rest/v1/projects.apps.deviceCheckConfig#DeviceCheckConfig`.
+
+### Authorization scopes
+
+Requires one of the following OAuth scopes:
+
+- `https://www.googleapis.com/auth/cloud-platform`
+- `https://www.googleapis.com/auth/firebase`
+
+For more information, see the [OAuth 2.0 Overview](https://developers.google.com/identity/protocols/OAuth2).

@@ -1,0 +1,209 @@
+# 🧲 Smart Content Curator with OpenAI Agents + Real-Time AI Recommendations via Dappier MCP
+Source: https://docs.dappier.com/cookbook/recipes/open-ai-agent-mcp-news-letter
+
+
+
+This cookbook demonstrates how to build a real-time **LLM-powered newsletter assistant** using **OpenAI Agents** and the **Dappier MCP**. You’ll walk through building a **“Smart Content Curator”** agent that pulls **AI-powered content recommendations** across domains like **sports**, **lifestyle**, and **pet care**, and formats them into a clean, structured newsletter-ready summary.
+
+In this cookbook, you'll explore:
+
+* **OpenAI Agents SDK**: A powerful toolkit that enables large language models to operate as autonomous agents, use tools, and execute multi-step workflows with memory and structured decision-making.
+* **Dappier MCP**: A Model Context Protocol server that connects your agents to real-time, rights-cleared tools — including live content recommendations, AI-generated summaries, trending topics, and more. In this example, we’ll use **Dappier’s AI-powered recommendation tools** (not live search) to generate high-quality, structured content.
+* **Newsletter Assistant Use Case**: A practical implementation of an agent that gathers relevant, curated content across multiple lifestyle domains and organizes it into a format suitable for email delivery or blog publication.
+
+This cookbook sets the foundation for building dynamic editorial assistants, daily briefings, and content engines that respond to real-world trends — powered by live AI-generated context.
+
+## 📦 Installation
+
+To get started, install the required tools and dependencies:
+
+**Step 1: Install `uv` (required to run the Dappier MCP server)**
+
+**macOS / Linux**:
+
+```bash  theme={null}
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+**Windows**:
+
+```bash  theme={null}
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
+
+***
+
+**Step 2: Install Python Packages**
+
+Install the OpenAI Agents SDK.
+
+```bash  theme={null}
+pip install openai-agents
+```
+
+## 🔑 Setting Up API Keys
+
+You’ll need API keys for both **Dappier** and **OpenAI** to authenticate your requests and access real-time tools.
+
+**Dappier API Key**
+
+Head to [Dappier](https://platform.dappier.com/profile/api-keys) to sign up and generate your API key. Dappier offers free credits to get started.
+
+You can set your API key as an environment variable in your terminal:
+
+```bash  theme={null}
+export DAPPIER_API_KEY=your-dappier-api-key
+```
+
+Or programmatically in your Python script:
+
+```python Python theme={null}
+import os
+
+os.environ["DAPPIER_API_KEY"] = "your-dappier-api-key"
+```
+
+***
+
+**OpenAI API Key**
+
+Visit [OpenAI](https://platform.openai.com/account/api-keys) to retrieve your API key.
+
+Set it in your terminal:
+
+```bash  theme={null}
+export OPENAI_API_KEY=your-openai-api-key
+```
+
+Or in your Python script:
+
+```python Python theme={null}
+os.environ["OPENAI_API_KEY"] = "your-openai-api-key"
+```
+
+## ⚙️ Import Dependencies
+
+Start by importing all required modules to build the stock analyst agent. This includes components from the OpenAI Agents SDK and the Dappier MCP server.
+
+```python Python theme={null}
+import asyncio
+import shutil
+import os
+from datetime import datetime
+
+from agents import Agent, Runner, trace
+from agents.mcp import MCPServer, MCPServerStdio
+from openai.types.responses import ResponseTextDeltaEvent
+```
+
+These imports enable:
+
+* Running the MCP server locally via `MCPServerStdio`
+* Tracing and managing the agent's execution with `Runner` and `trace`
+* Streaming the assistant's output using `ResponseTextDeltaEvent`
+
+## 🛰️ Run the Agent with Dappier MCP
+
+This function sets up the agent, sends a predefined query, and streams the assistant’s output using AI-powered content recommendations from Dappier MCP.
+
+```python Python theme={null}
+async def run(mcp_server: MCPServer):
+    agent = Agent(
+        name="SmartContentCurator",
+        instructions="""
+        You are a newsletter assistant that curates engaging and diverse content across multiple lifestyle topics.
+        Use Dappier's AI-powered recommendation tools to fetch high-quality, trending content.
+        Do NOT use real-time search tools.
+        
+        Your goal is to build a structured newsletter with sections for:
+        - Sports
+        - Lifestyle
+        - Pet Care
+
+        For each section:
+        - Recommend 5 trending articles or topics using AI-powered tools
+        - Include a 1-2 sentence summary for each recommendation
+        - Maintain a friendly and professional editorial tone
+        - Ensure content diversity and audience relevance
+        - Organize the output with proper headings and bullet points
+
+        Output a final newsletter draft that’s ready to be reviewed or published.
+        """,
+        mcp_servers=[mcp_server],
+        model="gpt-4o-mini"
+    )
+
+    query = """
+        Build today's newsletter by curating top content from the following three categories:
+
+        1. **Sports** – Find trending or interesting stories from major sports events, athletes, or leagues.
+        2. **Lifestyle** – Highlight tips, habits, or topics around wellness, productivity, fashion, or culture.
+        3. **Pet Care** – Include pet care advice, heartwarming stories, or emerging pet trends.
+
+        Use Dappier’s AI-powered recommendation tools (not real-time search) to fetch each category’s content.
+        For each article, include:
+        - A short title or headline
+        - A 1-2 sentence description
+        - Optional: a link or source name, if provided
+
+        Format the newsletter in markdown, with clear section headings and bullet-pointed content.
+        Make the newsletter engaging, clear, and concise — suitable for an email digest or blog post.
+    """
+
+    print("\n" + "-" * 40)
+    print("Generating Smart Newsletter with AI-powered content recommendations")
+    print("\n=== Streaming Start ===\n")
+
+    result = Runner.run_streamed(agent, query)
+
+    async for event in result.stream_events():
+        if event.type == "raw_response_event" and isinstance(event.data, ResponseTextDeltaEvent):
+            print(event.data.delta, end="", flush=True)
+
+    print("\n\n=== Streaming Complete ===\n")
+```
+
+## 🚦 Initialize and Launch the Workflow
+
+The `main()` function sets up the Dappier MCP server, enables tracing for observability, and runs the Smart Content Curator agent.
+
+```python Python theme={null}
+async def main():
+    async with MCPServerStdio(
+        cache_tools_list=True,
+        params={
+            "command": "uvx",
+            "args": ["dappier-mcp"],
+            "env": {"DAPPIER_API_KEY": os.environ["DAPPIER_API_KEY"]},
+        },
+    ) as server:
+        with trace(workflow_name="Smart Content Curator with Dappier MCP"):
+            await run(server)
+```
+
+## 🧪 Run the Stock Analyst Agent
+
+This block checks for the required `uvx` binary and launches the full async workflow. Make sure `uvx` is installed and available in your system path.
+
+```python Python theme={null}
+if __name__ == "__main__":
+    if not shutil.which("uvx"):
+        raise RuntimeError(
+            "uvx is not installed. Please install it with `pip install uvx` or "
+            "`curl -LsSf https://astral.sh/uv/install.sh | sh`."
+        )
+
+    asyncio.run(main())
+```
+
+## 🌟 Highlights
+
+This cookbook has guided you through setting up and running a real-time newsletter assistant using **OpenAI Agents** and the **Dappier MCP Server**. By connecting your agent to AI-powered content recommendations via MCP, you’ve created an assistant capable of curating engaging, diverse content across lifestyle domains — without relying on real-time search.
+
+Key components of this workflow include:
+
+* **OpenAI Agents SDK**: A powerful toolkit that enables large language models to operate as autonomous agents, use tools, and execute multi-step workflows with memory and structured decision-making.
+* **Dappier MCP**: A Model Context Protocol server that connects your agents to real-time, rights-cleared, AI-powered tools such as content recommendations, live search, stock data, and more. In this example, the agent uses **AI recommendations only**, not search.
+* **Smart Content Curation**: A real-world use case where the assistant generates a newsletter-ready digest by pulling trending topics in sports, lifestyle, and pet care using Dappier’s AI recommendation engine.
+
+This architecture can be adapted to other use cases requiring live content suggestions, editorial planning, and dynamic information synthesis using the Agents SDK and MCP ecosystem.

@@ -1,0 +1,154 @@
+# Source: https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/llms.txt
+
+# Amazon SES Mail Manager API Amazon SES Mail Manager API Reference
+
+> Welcome to the Amazon SES Mail Manager API Reference. This guide provides information about the Amazon SES Mail Manager API, including supported operations, data types, parameters, and schemas.
+
+- [Welcome](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_Operations.html)
+
+- [CreateAddonInstance](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_CreateAddonInstance.html): Creates an Add On instance for the subscription indicated in the request.
+- [CreateAddonSubscription](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_CreateAddonSubscription.html): Creates a subscription for an Add On representing the acceptance of its terms of use and additional pricing.
+- [CreateAddressList](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_CreateAddressList.html): Creates a new address list.
+- [CreateAddressListImportJob](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_CreateAddressListImportJob.html): Creates an import job for an address list.
+- [CreateArchive](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_CreateArchive.html): Creates a new email archive resource for storing and retaining emails.
+- [CreateIngressPoint](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_CreateIngressPoint.html): Provision a new ingress endpoint resource.
+- [CreateRelay](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_CreateRelay.html): Creates a relay resource which can be used in rules to relay incoming emails to defined relay destinations.
+- [CreateRuleSet](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_CreateRuleSet.html): Provision a new rule set.
+- [CreateTrafficPolicy](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_CreateTrafficPolicy.html): Provision a new traffic policy resource.
+- [DeleteAddonInstance](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_DeleteAddonInstance.html): Deletes an Add On instance.
+- [DeleteAddonSubscription](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_DeleteAddonSubscription.html): Deletes an Add On subscription.
+- [DeleteAddressList](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_DeleteAddressList.html): Deletes an address list.
+- [DeleteArchive](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_DeleteArchive.html): Initiates deletion of an email archive.
+- [DeleteIngressPoint](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_DeleteIngressPoint.html): Delete an ingress endpoint resource.
+- [DeleteRelay](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_DeleteRelay.html): Deletes an existing relay resource.
+- [DeleteRuleSet](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_DeleteRuleSet.html): Delete a rule set.
+- [DeleteTrafficPolicy](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_DeleteTrafficPolicy.html): Delete a traffic policy resource.
+- [DeregisterMemberFromAddressList](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_DeregisterMemberFromAddressList.html): Removes a member from an address list.
+- [GetAddonInstance](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_GetAddonInstance.html): Gets detailed information about an Add On instance.
+- [GetAddonSubscription](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_GetAddonSubscription.html): Gets detailed information about an Add On subscription.
+- [GetAddressList](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_GetAddressList.html): Fetch attributes of an address list.
+- [GetAddressListImportJob](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_GetAddressListImportJob.html): Fetch attributes of an import job.
+- [GetArchive](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_GetArchive.html): Retrieves the full details and current state of a specified email archive.
+- [GetArchiveExport](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_GetArchiveExport.html): Retrieves the details and current status of a specific email archive export job.
+- [GetArchiveMessage](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_GetArchiveMessage.html): Returns a pre-signed URL that provides temporary download access to the specific email message stored in the archive.
+- [GetArchiveMessageContent](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_GetArchiveMessageContent.html): Returns the textual content of a specific email message stored in the archive.
+- [GetArchiveSearch](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_GetArchiveSearch.html): Retrieves the details and current status of a specific email archive search job.
+- [GetArchiveSearchResults](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_GetArchiveSearchResults.html): Returns the results of a completed email archive search job.
+- [GetIngressPoint](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_GetIngressPoint.html): Fetch ingress endpoint resource attributes.
+- [GetMemberOfAddressList](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_GetMemberOfAddressList.html): Fetch attributes of a member in an address list.
+- [GetRelay](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_GetRelay.html): Fetch the relay resource and it's attributes.
+- [GetRuleSet](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_GetRuleSet.html): Fetch attributes of a rule set.
+- [GetTrafficPolicy](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_GetTrafficPolicy.html): Fetch attributes of a traffic policy resource.
+- [ListAddonInstances](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ListAddonInstances.html): Lists all Add On instances in your account.
+- [ListAddonSubscriptions](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ListAddonSubscriptions.html): Lists all Add On subscriptions in your account.
+- [ListAddressListImportJobs](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ListAddressListImportJobs.html): Lists jobs for an address list.
+- [ListAddressLists](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ListAddressLists.html): Lists address lists for this account.
+- [ListArchiveExports](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ListArchiveExports.html): Returns a list of email archive export jobs.
+- [ListArchives](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ListArchives.html): Returns a list of all email archives in your account.
+- [ListArchiveSearches](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ListArchiveSearches.html): Returns a list of email archive search jobs.
+- [ListIngressPoints](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ListIngressPoints.html): List all ingress endpoint resources.
+- [ListMembersOfAddressList](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ListMembersOfAddressList.html): Lists members of an address list.
+- [ListRelays](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ListRelays.html): Lists all the existing relay resources.
+- [ListRuleSets](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ListRuleSets.html): List rule sets for this account.
+- [ListTagsForResource](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ListTagsForResource.html): Retrieves the list of tags (keys and values) assigned to the resource.
+- [ListTrafficPolicies](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ListTrafficPolicies.html): List traffic policy resources.
+- [RegisterMemberToAddressList](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_RegisterMemberToAddressList.html): Adds a member to an address list.
+- [StartAddressListImportJob](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_StartAddressListImportJob.html): Starts an import job for an address list.
+- [StartArchiveExport](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_StartArchiveExport.html): Initiates an export of emails from the specified archive.
+- [StartArchiveSearch](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_StartArchiveSearch.html): Initiates a search across emails in the specified archive.
+- [StopAddressListImportJob](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_StopAddressListImportJob.html): Stops an ongoing import job for an address list.
+- [StopArchiveExport](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_StopArchiveExport.html): Stops an in-progress export of emails from an archive.
+- [StopArchiveSearch](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_StopArchiveSearch.html): Stops an in-progress archive search job.
+- [TagResource](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_TagResource.html): Adds one or more tags (keys and values) to a specified resource.
+- [UntagResource](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_UntagResource.html): Remove one or more tags (keys and values) from a specified resource.
+- [UpdateArchive](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_UpdateArchive.html): Updates the attributes of an existing email archive.
+- [UpdateIngressPoint](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_UpdateIngressPoint.html): Update attributes of a provisioned ingress endpoint resource.
+- [UpdateRelay](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_UpdateRelay.html): Updates the attributes of an existing relay resource.
+- [UpdateRuleSet](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_UpdateRuleSet.html): Update attributes of an already provisioned rule set.
+- [UpdateTrafficPolicy](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_UpdateTrafficPolicy.html): Update attributes of an already provisioned traffic policy resource.
+
+
+## [Data Types](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_Types.html)
+
+- [AddHeaderAction](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_AddHeaderAction.html): The action to add a header to a message.
+- [AddonInstance](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_AddonInstance.html): An Add On instance represents a specific configuration of an Add On.
+- [AddonSubscription](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_AddonSubscription.html): A subscription for an Add On representing the acceptance of its terms of use and additional pricing.
+- [AddressFilter](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_AddressFilter.html): Filtering options for ListMembersOfAddressList operation.
+- [AddressList](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_AddressList.html): An address list contains a list of emails and domains that are used in MailManager Ingress endpoints and Rules for email management.
+- [Analysis](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_Analysis.html): The result of an analysis can be used in conditions to trigger actions.
+- [Archive](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_Archive.html): An archive resource for storing and retaining emails.
+- [ArchiveAction](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ArchiveAction.html): The action to archive the email by delivering the email to an Amazon SES archive.
+- [ArchiveBooleanExpression](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ArchiveBooleanExpression.html): A boolean expression to evaluate email attribute values.
+- [ArchiveBooleanToEvaluate](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ArchiveBooleanToEvaluate.html): The attribute to evaluate in a boolean expression.
+- [ArchiveFilterCondition](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ArchiveFilterCondition.html): A filter condition used to include or exclude emails when exporting from or searching an archive.
+- [ArchiveFilters](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ArchiveFilters.html): A set of filter conditions to include and/or exclude emails.
+- [ArchiveRetention](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ArchiveRetention.html): The retention policy for an email archive that specifies how long emails are kept before being automatically deleted.
+- [ArchiveStringExpression](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ArchiveStringExpression.html): A string expression to evaluate an email attribute value against one or more string values.
+- [ArchiveStringToEvaluate](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ArchiveStringToEvaluate.html): Specifies the email attribute to evaluate in a string expression.
+- [DeliverToMailboxAction](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_DeliverToMailboxAction.html): This action to delivers an email to a mailbox.
+- [DeliverToQBusinessAction](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_DeliverToQBusinessAction.html): The action to deliver incoming emails to an Amazon Q Business application for indexing.
+- [DropAction](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_DropAction.html): This action causes processing to stop and the email to be dropped.
+- [Envelope](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_Envelope.html): The SMTP envelope information of the email.
+- [ExportDestinationConfiguration](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ExportDestinationConfiguration.html): The destination configuration for delivering exported email data.
+- [ExportStatus](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ExportStatus.html): The current status of an archive export job.
+- [ExportSummary](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ExportSummary.html): Summary statuses of an archive export job.
+- [ImportDataFormat](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ImportDataFormat.html): The import data format contains the specifications of the input file that would be passed to the address list import job.
+- [ImportJob](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ImportJob.html): Details about an import job.
+- [IngressAnalysis](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_IngressAnalysis.html): The Add On ARN and its returned value that is evaluated in a policy statement's conditional expression to either deny or block the incoming email.
+- [IngressBooleanExpression](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_IngressBooleanExpression.html): The structure for a boolean condition matching on the incoming mail.
+- [IngressBooleanToEvaluate](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_IngressBooleanToEvaluate.html): The union type representing the allowed types of operands for a boolean condition.
+- [IngressIpToEvaluate](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_IngressIpToEvaluate.html): The structure for an IP based condition matching on the incoming mail.
+- [IngressIpv4Expression](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_IngressIpv4Expression.html): The union type representing the allowed types for the left hand side of an IP condition.
+- [IngressIpv6Expression](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_IngressIpv6Expression.html): The union type representing the allowed types for the left hand side of an IPv6 condition.
+- [IngressIpv6ToEvaluate](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_IngressIpv6ToEvaluate.html): The structure for an IPv6 based condition matching on the incoming mail.
+- [IngressIsInAddressList](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_IngressIsInAddressList.html): The address lists and the address list attribute value that is evaluated in a policy statement's conditional expression to either deny or block the incoming email.
+- [IngressPoint](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_IngressPoint.html): The structure of an ingress endpoint resource.
+- [IngressPointAuthConfiguration](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_IngressPointAuthConfiguration.html): The authentication configuration for the ingress endpoint resource.
+- [IngressPointConfiguration](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_IngressPointConfiguration.html): The configuration of the ingress endpoint resource.
+- [IngressPointPasswordConfiguration](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_IngressPointPasswordConfiguration.html): The password configuration of the ingress endpoint resource.
+- [IngressStringExpression](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_IngressStringExpression.html): The structure for a string based condition matching on the incoming mail.
+- [IngressStringToEvaluate](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_IngressStringToEvaluate.html): The union type representing the allowed types for the left hand side of a string condition.
+- [IngressTlsProtocolExpression](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_IngressTlsProtocolExpression.html): The structure for a TLS related condition matching on the incoming mail.
+- [IngressTlsProtocolToEvaluate](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_IngressTlsProtocolToEvaluate.html): The union type representing the allowed types for the left hand side of a TLS condition.
+- [MessageBody](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_MessageBody.html): The textual body content of an email message.
+- [Metadata](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_Metadata.html): The metadata about the email.
+- [NetworkConfiguration](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_NetworkConfiguration.html): The network type (IPv4-only, Dual-Stack, PrivateLink) of the ingress endpoint resource.
+- [NoAuthentication](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_NoAuthentication.html): Explicitly indicate that the relay destination server does not require SMTP credential authentication.
+- [PolicyCondition](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_PolicyCondition.html): The email traffic filtering conditions which are contained in a traffic policy resource.
+- [PolicyStatement](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_PolicyStatement.html): The structure containing traffic policy conditions and actions.
+- [PrivateNetworkConfiguration](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_PrivateNetworkConfiguration.html): Specifies the network configuration for the private ingress point.
+- [PublicNetworkConfiguration](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_PublicNetworkConfiguration.html): Specifies the network configuration for the public ingress point.
+- [Relay](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_Relay.html): The relay resource that can be used as a rule to relay receiving emails to the destination relay server.
+- [RelayAction](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_RelayAction.html): The action relays the email via SMTP to another specific SMTP server.
+- [RelayAuthentication](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_RelayAuthentication.html): Authentication for the relay destination serverâspecify the secretARN where the SMTP credentials are stored, or specify an empty NoAuthentication structure if the relay destination server does not require SMTP credential authentication.
+- [ReplaceRecipientAction](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_ReplaceRecipientAction.html): This action replaces the email envelope recipients with the given list of recipients.
+- [Row](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_Row.html): A result row containing metadata for an archived email message.
+- [Rule](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_Rule.html): A rule contains conditions, "unless conditions" and actions.
+- [RuleAction](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_RuleAction.html): The action for a rule to take.
+- [RuleBooleanExpression](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_RuleBooleanExpression.html): A boolean expression to be used in a rule condition.
+- [RuleBooleanToEvaluate](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_RuleBooleanToEvaluate.html): The union type representing the allowed types of operands for a boolean condition.
+- [RuleCondition](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_RuleCondition.html): The conditional expression used to evaluate an email for determining if a rule action should be taken.
+- [RuleDmarcExpression](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_RuleDmarcExpression.html): A DMARC policy expression.
+- [RuleIpExpression](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_RuleIpExpression.html): An IP address expression matching certain IP addresses within a given range of IP addresses.
+- [RuleIpToEvaluate](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_RuleIpToEvaluate.html): The IP address to evaluate for this condition.
+- [RuleIsInAddressList](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_RuleIsInAddressList.html): The structure type for a boolean condition that provides the address lists and address list attribute to evaluate.
+- [RuleNumberExpression](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_RuleNumberExpression.html): A number expression to match numeric conditions with integers from the incoming email.
+- [RuleNumberToEvaluate](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_RuleNumberToEvaluate.html): The number to evaluate in a numeric condition expression.
+- [RuleSet](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_RuleSet.html): A rule set contains a list of rules that are evaluated in order.
+- [RuleStringExpression](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_RuleStringExpression.html): A string expression is evaluated against strings or substrings of the email.
+- [RuleStringToEvaluate](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_RuleStringToEvaluate.html): The string to evaluate in a string condition expression.
+- [RuleVerdictExpression](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_RuleVerdictExpression.html): A verdict expression is evaluated against verdicts of the email.
+- [RuleVerdictToEvaluate](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_RuleVerdictToEvaluate.html): The verdict to evaluate in a verdict condition expression.
+- [S3Action](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_S3Action.html): Writes the MIME content of the email to an S3 bucket.
+- [S3ExportDestinationConfiguration](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_S3ExportDestinationConfiguration.html): The configuration for exporting email data to an Amazon S3 bucket.
+- [SavedAddress](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_SavedAddress.html): An address that is a member of an address list.
+- [SearchStatus](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_SearchStatus.html): The current status of an archive search job.
+- [SearchSummary](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_SearchSummary.html): Summary details of an archive search job.
+- [SendAction](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_SendAction.html): Sends the email to the internet using the ses:SendRawEmail API.
+- [SnsAction](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_SnsAction.html): The action to publish the email content to an Amazon SNS topic.
+- [Tag](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_Tag.html): A key-value pair (the value is optional), that you can define and assign to AWS resources.
+- [TrafficPolicy](https://docs.aws.amazon.com/sesmailmanager/latest/APIReference/API_TrafficPolicy.html): The structure of a traffic policy resource which is a container for policy statements.

@@ -1,0 +1,171 @@
+# Source: https://docs.aws.amazon.com/batch/latest/APIReference/llms.txt
+
+# AWS Batch API Reference
+
+> Using AWS Batch, you can run batch computing workloads on the AWS Cloud. Batch computing is a common means for developers, scientists, and engineers to access large amounts of compute resources. AWS Batch uses the advantages of the batch computing to remove the undifferentiated heavy lifting of configuring and managing required infrastructure. At the same time, it also adopts a familiar batch computing software approach. You can use AWS Batch to efficiently provision resources, and work toward eliminating capacity constraints, reducing your overall compute costs, and delivering results more quickly.
+
+- [Welcome](https://docs.aws.amazon.com/batch/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/batch/latest/APIReference/CommonParameters.html)
+
+## [Actions](https://docs.aws.amazon.com/batch/latest/APIReference/API_Operations.html)
+
+- [CancelJob](https://docs.aws.amazon.com/batch/latest/APIReference/API_CancelJob.html): Cancels a job in an AWS Batch job queue.
+- [CreateComputeEnvironment](https://docs.aws.amazon.com/batch/latest/APIReference/API_CreateComputeEnvironment.html): Creates an AWS Batch compute environment.
+- [CreateConsumableResource](https://docs.aws.amazon.com/batch/latest/APIReference/API_CreateConsumableResource.html): Creates an AWS Batch consumable resource.
+- [CreateJobQueue](https://docs.aws.amazon.com/batch/latest/APIReference/API_CreateJobQueue.html): Creates an AWS Batch job queue.
+- [CreateSchedulingPolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_CreateSchedulingPolicy.html): Creates an AWS Batch scheduling policy.
+- [CreateServiceEnvironment](https://docs.aws.amazon.com/batch/latest/APIReference/API_CreateServiceEnvironment.html): Creates a service environment for running service jobs.
+- [DeleteComputeEnvironment](https://docs.aws.amazon.com/batch/latest/APIReference/API_DeleteComputeEnvironment.html): Deletes an AWS Batch compute environment.
+- [DeleteConsumableResource](https://docs.aws.amazon.com/batch/latest/APIReference/API_DeleteConsumableResource.html): Deletes the specified consumable resource.
+- [DeleteJobQueue](https://docs.aws.amazon.com/batch/latest/APIReference/API_DeleteJobQueue.html): Deletes the specified job queue.
+- [DeleteSchedulingPolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_DeleteSchedulingPolicy.html): Deletes the specified scheduling policy.
+- [DeleteServiceEnvironment](https://docs.aws.amazon.com/batch/latest/APIReference/API_DeleteServiceEnvironment.html): Deletes a Service environment.
+- [DeregisterJobDefinition](https://docs.aws.amazon.com/batch/latest/APIReference/API_DeregisterJobDefinition.html): Deregisters an AWS Batch job definition.
+- [DescribeComputeEnvironments](https://docs.aws.amazon.com/batch/latest/APIReference/API_DescribeComputeEnvironments.html): Describes one or more of your compute environments.
+- [DescribeConsumableResource](https://docs.aws.amazon.com/batch/latest/APIReference/API_DescribeConsumableResource.html): Returns a description of the specified consumable resource.
+- [DescribeJobDefinitions](https://docs.aws.amazon.com/batch/latest/APIReference/API_DescribeJobDefinitions.html): Describes a list of job definitions.
+- [DescribeJobQueues](https://docs.aws.amazon.com/batch/latest/APIReference/API_DescribeJobQueues.html): Describes one or more of your job queues.
+- [DescribeJobs](https://docs.aws.amazon.com/batch/latest/APIReference/API_DescribeJobs.html): Describes a list of AWS Batch jobs.
+- [DescribeSchedulingPolicies](https://docs.aws.amazon.com/batch/latest/APIReference/API_DescribeSchedulingPolicies.html): Describes one or more of your scheduling policies.
+- [DescribeServiceEnvironments](https://docs.aws.amazon.com/batch/latest/APIReference/API_DescribeServiceEnvironments.html): Describes one or more of your service environments.
+- [DescribeServiceJob](https://docs.aws.amazon.com/batch/latest/APIReference/API_DescribeServiceJob.html): The details of a service job.
+- [GetJobQueueSnapshot](https://docs.aws.amazon.com/batch/latest/APIReference/API_GetJobQueueSnapshot.html): Provides a list of the first 100 RUNNABLE jobs associated to a single job queue and includes capacity utilization, including total usage and breakdown by share for fairshare scheduling job queues.
+- [ListConsumableResources](https://docs.aws.amazon.com/batch/latest/APIReference/API_ListConsumableResources.html): Returns a list of AWS Batch consumable resources.
+- [ListJobs](https://docs.aws.amazon.com/batch/latest/APIReference/API_ListJobs.html): Returns a list of AWS Batch jobs.
+- [ListJobsByConsumableResource](https://docs.aws.amazon.com/batch/latest/APIReference/API_ListJobsByConsumableResource.html): Returns a list of AWS Batch jobs that require a specific consumable resource.
+- [ListSchedulingPolicies](https://docs.aws.amazon.com/batch/latest/APIReference/API_ListSchedulingPolicies.html): Returns a list of AWS Batch scheduling policies.
+- [ListServiceJobs](https://docs.aws.amazon.com/batch/latest/APIReference/API_ListServiceJobs.html): Returns a list of service jobs for a specified job queue.
+- [ListTagsForResource](https://docs.aws.amazon.com/batch/latest/APIReference/API_ListTagsForResource.html): Lists the tags for an AWS Batch resource.
+- [RegisterJobDefinition](https://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html): Registers an AWS Batch job definition.
+- [SubmitJob](https://docs.aws.amazon.com/batch/latest/APIReference/API_SubmitJob.html): Submits an AWS Batch job from a job definition.
+- [SubmitServiceJob](https://docs.aws.amazon.com/batch/latest/APIReference/API_SubmitServiceJob.html): Submits a service job to a specified job queue to run on SageMaker AI.
+- [TagResource](https://docs.aws.amazon.com/batch/latest/APIReference/API_TagResource.html): Associates the specified tags to a resource with the specified resourceArn.
+- [TerminateJob](https://docs.aws.amazon.com/batch/latest/APIReference/API_TerminateJob.html): Terminates a job in a job queue.
+- [TerminateServiceJob](https://docs.aws.amazon.com/batch/latest/APIReference/API_TerminateServiceJob.html): Terminates a service job in a job queue.
+- [UntagResource](https://docs.aws.amazon.com/batch/latest/APIReference/API_UntagResource.html): Deletes specified tags from an AWS Batch resource.
+- [UpdateComputeEnvironment](https://docs.aws.amazon.com/batch/latest/APIReference/API_UpdateComputeEnvironment.html): Updates an AWS Batch compute environment.
+- [UpdateConsumableResource](https://docs.aws.amazon.com/batch/latest/APIReference/API_UpdateConsumableResource.html): Updates a consumable resource.
+- [UpdateJobQueue](https://docs.aws.amazon.com/batch/latest/APIReference/API_UpdateJobQueue.html): Updates a job queue.
+- [UpdateSchedulingPolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_UpdateSchedulingPolicy.html): Updates a scheduling policy.
+- [UpdateServiceEnvironment](https://docs.aws.amazon.com/batch/latest/APIReference/API_UpdateServiceEnvironment.html): Updates a service environment.
+
+
+## [Data Types](https://docs.aws.amazon.com/batch/latest/APIReference/API_Types.html)
+
+- [ArrayProperties](https://docs.aws.amazon.com/batch/latest/APIReference/API_ArrayProperties.html): An object that represents an AWS Batch array job.
+- [ArrayPropertiesDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_ArrayPropertiesDetail.html): An object that represents the array properties of a job.
+- [ArrayPropertiesSummary](https://docs.aws.amazon.com/batch/latest/APIReference/API_ArrayPropertiesSummary.html): An object that represents the array properties of a job.
+- [AttemptContainerDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_AttemptContainerDetail.html): An object that represents the details of a container that's part of a job attempt.
+- [AttemptDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_AttemptDetail.html): An object that represents a job attempt.
+- [AttemptEcsTaskDetails](https://docs.aws.amazon.com/batch/latest/APIReference/API_AttemptEcsTaskDetails.html): An object that represents the details of a task.
+- [AttemptTaskContainerDetails](https://docs.aws.amazon.com/batch/latest/APIReference/API_AttemptTaskContainerDetails.html): An object that represents the details of a container that's part of a job attempt.
+- [CapacityLimit](https://docs.aws.amazon.com/batch/latest/APIReference/API_CapacityLimit.html): Defines the capacity limit for a service environment.
+- [ComputeEnvironmentDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_ComputeEnvironmentDetail.html): An object that represents an AWS Batch compute environment.
+- [ComputeEnvironmentOrder](https://docs.aws.amazon.com/batch/latest/APIReference/API_ComputeEnvironmentOrder.html): The order that compute environments are tried in for job placement within a queue.
+- [ComputeResource](https://docs.aws.amazon.com/batch/latest/APIReference/API_ComputeResource.html): An object that represents an AWS Batch compute resource.
+- [ComputeResourceUpdate](https://docs.aws.amazon.com/batch/latest/APIReference/API_ComputeResourceUpdate.html): An object that represents the attributes of a compute environment that can be updated.
+- [ComputeScalingPolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_ComputeScalingPolicy.html): An object that represents a scaling policy for a compute environment.
+- [ConsumableResourceProperties](https://docs.aws.amazon.com/batch/latest/APIReference/API_ConsumableResourceProperties.html): Contains a list of consumable resources required by a job.
+- [ConsumableResourceRequirement](https://docs.aws.amazon.com/batch/latest/APIReference/API_ConsumableResourceRequirement.html): Information about a consumable resource required to run a job.
+- [ConsumableResourceSummary](https://docs.aws.amazon.com/batch/latest/APIReference/API_ConsumableResourceSummary.html): Current information about a consumable resource.
+- [ContainerDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_ContainerDetail.html): An object that represents the details of a container that's part of a job.
+- [ContainerOverrides](https://docs.aws.amazon.com/batch/latest/APIReference/API_ContainerOverrides.html): The overrides that should be sent to a container.
+- [ContainerProperties](https://docs.aws.amazon.com/batch/latest/APIReference/API_ContainerProperties.html): Container properties are used for Amazon ECS based job definitions.
+- [ContainerSummary](https://docs.aws.amazon.com/batch/latest/APIReference/API_ContainerSummary.html): An object that represents summary details of a container within a job.
+- [Device](https://docs.aws.amazon.com/batch/latest/APIReference/API_Device.html): An object that represents a container instance host device.
+- [Ec2Configuration](https://docs.aws.amazon.com/batch/latest/APIReference/API_Ec2Configuration.html): Provides information used to select Amazon Machine Images (AMIs) for instances in the compute environment.
+- [EcsProperties](https://docs.aws.amazon.com/batch/latest/APIReference/API_EcsProperties.html): An object that contains the properties for the Amazon ECS resources of a job.
+- [EcsPropertiesDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_EcsPropertiesDetail.html): An object that contains the details for the Amazon ECS resources of a job.
+- [EcsPropertiesOverride](https://docs.aws.amazon.com/batch/latest/APIReference/API_EcsPropertiesOverride.html): An object that contains overrides for the Amazon ECS task definition of a job.
+- [EcsTaskDetails](https://docs.aws.amazon.com/batch/latest/APIReference/API_EcsTaskDetails.html): The details of a task definition that describes the container and volume definitions of an Amazon ECS task.
+- [EcsTaskProperties](https://docs.aws.amazon.com/batch/latest/APIReference/API_EcsTaskProperties.html): The properties for a task definition that describes the container and volume definitions of an Amazon ECS task.
+- [EFSAuthorizationConfig](https://docs.aws.amazon.com/batch/latest/APIReference/API_EFSAuthorizationConfig.html): The authorization configuration details for the Amazon EFS file system.
+- [EFSVolumeConfiguration](https://docs.aws.amazon.com/batch/latest/APIReference/API_EFSVolumeConfiguration.html): This is used when you're using an Amazon Elastic File System file system for job storage.
+- [EksAttemptContainerDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksAttemptContainerDetail.html): An object that represents the details for an attempt for a job attempt that an Amazon EKS container runs.
+- [EksAttemptDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksAttemptDetail.html): An object that represents the details of a job attempt for a job attempt by an Amazon EKS container.
+- [EksConfiguration](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksConfiguration.html): Configuration for the Amazon EKS cluster that supports the AWS Batch compute environment.
+- [EksContainer](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksContainer.html): EKS container properties are used in job definitions for Amazon EKS based job definitions to describe the properties for a container node in the pod that's launched as part of a job.
+- [EksContainerDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksContainerDetail.html): The details for container properties that are returned by DescribeJobs for jobs that use Amazon EKS.
+- [EksContainerEnvironmentVariable](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksContainerEnvironmentVariable.html): An environment variable.
+- [EksContainerOverride](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksContainerOverride.html): Object representing any Kubernetes overrides to a job definition that's used in a SubmitJob API operation.
+- [EksContainerResourceRequirements](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksContainerResourceRequirements.html): The type and amount of resources to assign to a container.
+- [EksContainerSecurityContext](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksContainerSecurityContext.html): The security context for a job.
+- [EksContainerVolumeMount](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksContainerVolumeMount.html): The volume mounts for a container for an Amazon EKS job.
+- [EksEmptyDir](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksEmptyDir.html): Specifies the configuration of a Kubernetes emptyDir volume.
+- [EksHostPath](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksHostPath.html): Specifies the configuration of a Kubernetes hostPath volume.
+- [EksMetadata](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksMetadata.html): Describes and uniquely identifies Kubernetes resources.
+- [EksPersistentVolumeClaim](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksPersistentVolumeClaim.html): A persistentVolumeClaim volume is used to mount a PersistentVolume into a Pod.
+- [EksPodProperties](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksPodProperties.html): The properties for the pod.
+- [EksPodPropertiesDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksPodPropertiesDetail.html): The details for the pod.
+- [EksPodPropertiesOverride](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksPodPropertiesOverride.html): An object that contains overrides for the Kubernetes pod properties of a job.
+- [EksProperties](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksProperties.html): An object that contains the properties for the Kubernetes resources of a job.
+- [EksPropertiesDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksPropertiesDetail.html): An object that contains the details for the Kubernetes resources of a job.
+- [EksPropertiesOverride](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksPropertiesOverride.html): An object that contains overrides for the Kubernetes resources of a job.
+- [EksSecret](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksSecret.html): Specifies the configuration of a Kubernetes secret volume.
+- [EksVolume](https://docs.aws.amazon.com/batch/latest/APIReference/API_EksVolume.html): Specifies an Amazon EKS volume for a job definition.
+- [EphemeralStorage](https://docs.aws.amazon.com/batch/latest/APIReference/API_EphemeralStorage.html): The amount of ephemeral storage to allocate for the task.
+- [EvaluateOnExit](https://docs.aws.amazon.com/batch/latest/APIReference/API_EvaluateOnExit.html): Specifies an array of up to 5 conditions to be met, and an action to take (RETRY or EXIT) if all conditions are met.
+- [FairshareCapacityUsage](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairshareCapacityUsage.html): The capacity usage for a fairshare scheduling job queue.
+- [FairshareCapacityUtilization](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairshareCapacityUtilization.html): The capacity utilization for a specific share in a fairshare scheduling job queue, including the share identifier and its current usage.
+- [FairsharePolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairsharePolicy.html): The fair-share scheduling policy details.
+- [FairshareUtilizationDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_FairshareUtilizationDetail.html): The fairshare utilization for a job queue, including the number of active shares and top capacity utilization.
+- [FargatePlatformConfiguration](https://docs.aws.amazon.com/batch/latest/APIReference/API_FargatePlatformConfiguration.html): The platform configuration for jobs that are running on Fargate resources.
+- [FirelensConfiguration](https://docs.aws.amazon.com/batch/latest/APIReference/API_FirelensConfiguration.html): The FireLens configuration for the container.
+- [FrontOfQueueDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_FrontOfQueueDetail.html): Contains a list of the first 100 RUNNABLE jobs associated to a single job queue.
+- [FrontOfQueueJobSummary](https://docs.aws.amazon.com/batch/latest/APIReference/API_FrontOfQueueJobSummary.html): An object that represents summary details for the first 100 RUNNABLE jobs in a job queue.
+- [Host](https://docs.aws.amazon.com/batch/latest/APIReference/API_Host.html): Determine whether your data volume persists on the host container instance and where it's stored.
+- [ImagePullSecret](https://docs.aws.amazon.com/batch/latest/APIReference/API_ImagePullSecret.html): References a Kubernetes secret resource.
+- [JobCapacityUsageSummary](https://docs.aws.amazon.com/batch/latest/APIReference/API_JobCapacityUsageSummary.html): The capacity usage for a job, including the unit of measure and quantity of resources being used.
+- [JobDefinition](https://docs.aws.amazon.com/batch/latest/APIReference/API_JobDefinition.html): An object that represents an AWS Batch job definition.
+- [JobDependency](https://docs.aws.amazon.com/batch/latest/APIReference/API_JobDependency.html): An object that represents an AWS Batch job dependency.
+- [JobDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_JobDetail.html): An object that represents an AWS Batch job.
+- [JobQueueDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_JobQueueDetail.html): An object that represents the details for an AWS Batch job queue.
+- [JobStateTimeLimitAction](https://docs.aws.amazon.com/batch/latest/APIReference/API_JobStateTimeLimitAction.html): Specifies an action that AWS Batch will take after the job has remained at the head of the queue in the specified state for longer than the specified time.
+- [JobSummary](https://docs.aws.amazon.com/batch/latest/APIReference/API_JobSummary.html): An object that represents summary details of a job.
+- [JobTimeout](https://docs.aws.amazon.com/batch/latest/APIReference/API_JobTimeout.html): An object that represents a job timeout configuration.
+- [KeyValuePair](https://docs.aws.amazon.com/batch/latest/APIReference/API_KeyValuePair.html): A key-value pair object.
+- [KeyValuesPair](https://docs.aws.amazon.com/batch/latest/APIReference/API_KeyValuesPair.html): A filter name and value pair that's used to return a more specific list of results from a ListJobs or ListJobsByConsumableResource API operation.
+- [LatestServiceJobAttempt](https://docs.aws.amazon.com/batch/latest/APIReference/API_LatestServiceJobAttempt.html): Information about the latest attempt of a service job.
+- [LaunchTemplateSpecification](https://docs.aws.amazon.com/batch/latest/APIReference/API_LaunchTemplateSpecification.html): An object that represents a launch template that's associated with a compute resource.
+- [LaunchTemplateSpecificationOverride](https://docs.aws.amazon.com/batch/latest/APIReference/API_LaunchTemplateSpecificationOverride.html): An object that represents a launch template to use in place of the default launch template.
+- [LinuxParameters](https://docs.aws.amazon.com/batch/latest/APIReference/API_LinuxParameters.html): Linux-specific modifications that are applied to the container, such as details for device mappings.
+- [ListJobsByConsumableResourceSummary](https://docs.aws.amazon.com/batch/latest/APIReference/API_ListJobsByConsumableResourceSummary.html): Current information about a consumable resource required by a job.
+- [LogConfiguration](https://docs.aws.amazon.com/batch/latest/APIReference/API_LogConfiguration.html): Log configuration options to send to a custom log driver for the container.
+- [MountPoint](https://docs.aws.amazon.com/batch/latest/APIReference/API_MountPoint.html): Details for a Docker volume mount point that's used in a job's container properties.
+- [NetworkConfiguration](https://docs.aws.amazon.com/batch/latest/APIReference/API_NetworkConfiguration.html): The network configuration for jobs that are running on Fargate resources.
+- [NetworkInterface](https://docs.aws.amazon.com/batch/latest/APIReference/API_NetworkInterface.html): An object that represents the elastic network interface for a multi-node parallel job node.
+- [NodeDetails](https://docs.aws.amazon.com/batch/latest/APIReference/API_NodeDetails.html): An object that represents the details of a multi-node parallel job node.
+- [NodeOverrides](https://docs.aws.amazon.com/batch/latest/APIReference/API_NodeOverrides.html): An object that represents any node overrides to a job definition that's used in a SubmitJob API operation.
+- [NodeProperties](https://docs.aws.amazon.com/batch/latest/APIReference/API_NodeProperties.html): An object that represents the node properties of a multi-node parallel job.
+- [NodePropertiesSummary](https://docs.aws.amazon.com/batch/latest/APIReference/API_NodePropertiesSummary.html): An object that represents the properties of a node that's associated with a multi-node parallel job.
+- [NodePropertyOverride](https://docs.aws.amazon.com/batch/latest/APIReference/API_NodePropertyOverride.html): The object that represents any node overrides to a job definition that's used in a SubmitJob API operation.
+- [NodeRangeProperty](https://docs.aws.amazon.com/batch/latest/APIReference/API_NodeRangeProperty.html): This is an object that represents the properties of the node range for a multi-node parallel job.
+- [QueueSnapshotCapacityUsage](https://docs.aws.amazon.com/batch/latest/APIReference/API_QueueSnapshotCapacityUsage.html): The configured capacity usage for a job queue snapshot, including the unit of measure and quantity of resources being used.
+- [QueueSnapshotUtilizationDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_QueueSnapshotUtilizationDetail.html): The job queue utilization at a specific point in time, including total capacity usage and fairshare utilization breakdown.
+- [RepositoryCredentials](https://docs.aws.amazon.com/batch/latest/APIReference/API_RepositoryCredentials.html): The repository credentials for private registry authentication.
+- [ResourceRequirement](https://docs.aws.amazon.com/batch/latest/APIReference/API_ResourceRequirement.html): The type and amount of a resource to assign to a container.
+- [RetryStrategy](https://docs.aws.amazon.com/batch/latest/APIReference/API_RetryStrategy.html): The retry strategy that's associated with a job.
+- [RuntimePlatform](https://docs.aws.amazon.com/batch/latest/APIReference/API_RuntimePlatform.html): An object that represents the compute environment architecture for AWS Batch jobs on Fargate.
+- [SchedulingPolicyDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_SchedulingPolicyDetail.html): An object that represents a scheduling policy.
+- [SchedulingPolicyListingDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_SchedulingPolicyListingDetail.html): An object that contains the details of a scheduling policy that's returned in a ListSchedulingPolicy action.
+- [Secret](https://docs.aws.amazon.com/batch/latest/APIReference/API_Secret.html): An object that represents the secret to expose to your container.
+- [ServiceEnvironmentDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_ServiceEnvironmentDetail.html): Detailed information about a service environment, including its configuration, state, and capacity limits.
+- [ServiceEnvironmentOrder](https://docs.aws.amazon.com/batch/latest/APIReference/API_ServiceEnvironmentOrder.html): Specifies the order of a service environment for a job queue.
+- [ServiceJobAttemptDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_ServiceJobAttemptDetail.html): Detailed information about an attempt to run a service job.
+- [ServiceJobCapacityUsageDetail](https://docs.aws.amazon.com/batch/latest/APIReference/API_ServiceJobCapacityUsageDetail.html): The capacity usage for a service job, including the unit of measure and quantity of resources being consumed.
+- [ServiceJobCapacityUsageSummary](https://docs.aws.amazon.com/batch/latest/APIReference/API_ServiceJobCapacityUsageSummary.html): The capacity usage for a service job, including the unit of measure and quantity of resources being used.
+- [ServiceJobEvaluateOnExit](https://docs.aws.amazon.com/batch/latest/APIReference/API_ServiceJobEvaluateOnExit.html): Specifies conditions for when to exit or retry a service job based on the exit status or status reason.
+- [ServiceJobRetryStrategy](https://docs.aws.amazon.com/batch/latest/APIReference/API_ServiceJobRetryStrategy.html): The retry strategy for service jobs.
+- [ServiceJobSummary](https://docs.aws.amazon.com/batch/latest/APIReference/API_ServiceJobSummary.html): Summary information about a service job.
+- [ServiceJobTimeout](https://docs.aws.amazon.com/batch/latest/APIReference/API_ServiceJobTimeout.html): The timeout configuration for service jobs.
+- [ServiceResourceId](https://docs.aws.amazon.com/batch/latest/APIReference/API_ServiceResourceId.html): The AWS Batch unique identifier.
+- [ShareAttributes](https://docs.aws.amazon.com/batch/latest/APIReference/API_ShareAttributes.html): Specifies the weights for the share identifiers for the fair-share policy.
+- [TaskContainerDependency](https://docs.aws.amazon.com/batch/latest/APIReference/API_TaskContainerDependency.html): A list of containers that this task depends on.
+- [TaskContainerDetails](https://docs.aws.amazon.com/batch/latest/APIReference/API_TaskContainerDetails.html): The details for the container in this task attempt.
+- [TaskContainerOverrides](https://docs.aws.amazon.com/batch/latest/APIReference/API_TaskContainerOverrides.html): The overrides that should be sent to a container.
+- [TaskContainerProperties](https://docs.aws.amazon.com/batch/latest/APIReference/API_TaskContainerProperties.html): Container properties are used for Amazon ECS-based job definitions.
+- [TaskPropertiesOverride](https://docs.aws.amazon.com/batch/latest/APIReference/API_TaskPropertiesOverride.html): An object that contains overrides for the task definition of a job.
+- [Tmpfs](https://docs.aws.amazon.com/batch/latest/APIReference/API_Tmpfs.html): The container path, mount options, and size of the tmpfs mount.
+- [Ulimit](https://docs.aws.amazon.com/batch/latest/APIReference/API_Ulimit.html): The ulimit settings to pass to the container.
+- [UpdatePolicy](https://docs.aws.amazon.com/batch/latest/APIReference/API_UpdatePolicy.html): Specifies the infrastructure update policy for the Amazon EC2 compute environment.
+- [Volume](https://docs.aws.amazon.com/batch/latest/APIReference/API_Volume.html): A data volume that's used in a job's container properties.

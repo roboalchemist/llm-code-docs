@@ -1,0 +1,21 @@
+# Source: https://docs.cohere.com/docs/zilliz-and-cohere.mdx
+
+***
+
+title: Zilliz and Cohere (Integration Guide)
+slug: docs/zilliz-and-cohere
+hidden: false
+description: This page describes how to integrate Cohere with the Zilliz database.
+image:
+type: fileId
+value: 'https://files.buildwithfern.com/cohere.docs.buildwithfern.com/8ba30b46486ea7bfab24f3e8856d7411d1b745b26e9026abff3ee62af52ce268/assets/images/f1cc130-cohere_meta_image.jpg'
+keywords: 'Cohere, vector database, Zilliz'
+createdAt: 'Thu May 23 2024 17:00:11 GMT+0000 (Coordinated Universal Time)'
+updatedAt: 'Thu May 23 2024 20:28:12 GMT+0000 (Coordinated Universal Time)'
+---------------------------------------------------------------------------
+
+<img src="https://files.buildwithfern.com/cohere.docs.buildwithfern.com/9abbbdc195970652dfed49656a6dab642f4ae1057e1c7cd1ee1c8eccff315b04/assets/images/3cb9160-zilliz-logo.png" width="200px" height="auto" class="light-bg" />
+
+[Zilliz Cloud](https://zilliz.com/cloud) is a cloud-native vector database that stores, indexes, and searches for billions of embedding vectors to power enterprise-grade similarity search, recommender systems, anomaly detection, and more. Zilliz Cloud provides a fully-managed Milvus service, made by the creators of Milvus that allows for easy integration with vectorizers from Cohere and other popular models. Purpose-built to solve the challenge of managing billions of embeddings, Zilliz Cloud makes it easy to build applications for scale.
+
+The following [guide](https://docs.zilliz.com/docs/question-answering-using-zilliz-cloud-and-cohere) walks through how to integrate [Cohere embeddings](/docs/embeddings) with Zilliz. You might also find this [quickstart guide](https://docs.zilliz.com/docs/quick-start) helpful.

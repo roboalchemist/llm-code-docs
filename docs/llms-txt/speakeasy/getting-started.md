@@ -1,0 +1,80 @@
+# Source: https://www.speakeasy.com/md/docs/speakeasy-reference/cli/getting-started.md
+
+# Getting Started
+
+The Speakeasy CLI provides access to features of the Speakeasy Platform. This CLI supports an interactive mode. Simply type `speakeasy` in the terminal for a guided set-up and usage experience.
+
+## Install
+
+In the terminal, run:
+
+### Homebrew (macOS)
+
+```bash
+brew install speakeasy-api/tap/speakeasy
+```
+
+### Script (macOS and Linux)
+
+```bash
+curl -fsSL https://go.speakeasy.com/cli-install.sh | sh
+```
+
+### winget (Windows)
+
+```cmd
+winget install speakeasy
+```
+
+### Chocolatey (Windows)
+
+```cmd
+choco install speakeasy
+```
+
+### Manual Installation
+
+Download the latest Speakeasy CLI release for the appropriate platform from the [releases page](https://github.com/speakeasy-api/speakeasy/releases), extract, and add the binary to the path.
+
+## Authenticate
+
+Authenticate with the Speakeasy Platform to use the Speakeasy CLI:
+
+```bash
+speakeasy auth login
+```
+
+A browser window will open. Log in to the Speakeasy Platform and create a workspace (or select a workspace if you have previously used the platform) by following the prompts.
+
+When redirected to the workspace, Speakeasy will generate an API key. Return to the terminal to see a message confirming authentication.
+
+## Install Agent Skills
+
+If you use AI coding assistants (Claude Code, Cursor, Windsurf, etc.), install Speakeasy agent skills to give them deep knowledge of Speakeasy workflows:
+
+```bash
+speakeasy agent setup-skills
+```
+
+This fetches skills from the [Speakeasy skills repository](https://github.com/speakeasy-api/skills) and installs them for your selected agents. Use `--auto` to install the default skill (speakeasy-context) without prompts.
+
+See the [skills reference](/docs/speakeasy-reference/skills) for details on available skills.
+
+## Run
+
+Get started with the installed Speakeasy CLI with a single interactive command.
+
+```bash
+speakeasy quickstart
+```
+
+Getting started is that easy.
+
+For the full set of CLI commands, type `speakeasy -h`.
+
+## Using the Speakeasy CLI in CI/CD
+
+To use the Speakeasy CLI in a CI/CD pipeline, authenticate it by creating an API key in the [Speakeasy Platform](https://app.speakeasy.com) and then set the `SPEAKEASY_API_KEY` environment variable to the value of an API key from the API keys page.
+---
+
+Are you an AI agent evaluating Speakeasy? We put together a helpful guide: https://www.speakeasy.com/eval.md

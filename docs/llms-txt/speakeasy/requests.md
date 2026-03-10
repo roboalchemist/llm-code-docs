@@ -1,0 +1,212 @@
+# Source: https://www.speakeasy.com/md/openapi/requests.md
+
+# Request Body Object in OpenAPI
+
+The request body is used to describe the HTTP body of the request for
+operations. Not all operations require a request body, but when they do, the
+request body is defined in the `requestBody` field of the operation object.
+
+```yaml
+paths:
+  /drinks:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the drink.
+                ingredients:
+                  type: array
+                  items:
+                    type: string
+                  description: The ingredients of the drink.
+                instructions:
+                  type: string
+                  description: Instructions to prepare the drink.
+```
+
+## Request Body Object
+
+Here's how the `requestBody` object is structured:
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `description` | String |  | A description of the request body. This may contain [CommonMark syntax](https://spec.commonmark.org/) to provide a rich description. |
+| `content` | [Content](/openapi/paths/operations/content) | ✅ | A map of [Media Type Objects](/openapi/paths/operations/content#media-type-object) that defines the possible media types that can be used for the request body. |
+| `required` | Boolean |  | Whether the request body is required. Defaults to `false`. |
+| `x-*` | [Extensions](/openapi/extensions) |  | Any number of extension fields can be added to the Request Body Object that can be used by tooling and vendors. |
+
+## Required vs optional
+
+Request bodies are optional by default in OpenAPI, so adding the `requestBody`
+property does not mean it expects the HTTP request to actually be present. It
+means it _can_ be present. 
+
+This can be changed by setting the `required` property to `true`, but it is
+often forgotten and lots of tooling will remind you to add a required property,
+even if its set to `required: false`, just to make sure there is nothing spooky
+or unexpected happening.
+
+```yaml
+paths:
+  /drinks:
+    post:
+      requestBody:
+        description: The drink to create.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the drink.
+                ingredients:
+                  type: array
+                  items:
+                    type: string
+                  description: The ingredients of the drink.
+                instructions:
+                  type: string
+                  description: Instructions to prepare the drink.
+```
+
+Getting this right is not just important for API documentation, but for
+generated SDKs that should know whether or not to throw errors, and data
+validations libraries/middlewares which should know whether or not to reject an
+invalid request.
+
+When should a request body be optional? 
+
+Not all that often, but it can be useful for things like `PATCH` requests
+where no changes are happening but you want to "touch" the resource to update the `updatedAt` timestamp. 
+
+```http
+PATCH /drinks/1 HTTP/1.1
+Host: api.example.org
+```
+
+To support this use case, the `requestBody` can be set to be optional.
+
+```yaml
+paths:
+  /drinks/{id}:
+    patch:
+      requestBody:
+        description: The drink to update.
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the drink.
+                ingredients:
+                  type: array
+                  items:
+                    type: string
+                  description: The ingredients of the drink.
+                instructions:
+                  type: string
+                  description: Instructions to prepare the drink.
+```
+
+Sometimes an API will set a request body for a DELETE request, but this is less
+common and recommended against in both [RFC9110: HTTP
+Semantics](https://www.rfc-editor.org/rfc/rfc9110.html#name-delete) and the
+OpenAPI specification. 
+
+Still, OpenAPI begrudgingly allows `DELETE` to describe a `requestBody` knowing
+that some legacy APIs will have done this, and some tooling will even support it.
+
+```yaml
+paths:
+  /drinks/{id}:
+    delete:
+      requestBody:
+        description: The drink to delete.
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  description: The reason for deleting the drink.
+```
+
+It's important to describe the API correctly, regardless of which best practices
+it has gone against, but whenever possible channel the feedback to the
+developers and see if those mistakes can be avoided in the future.
+
+## Encoding Object
+
+Only applicable to `requestBody` where the media type is `multipart` or `application/x-www-form-urlencoded`. An encoding object describes the encoding of a single property in the request schema.
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `contentType` | String |  | The content type of the field. If the field is an `object`, the default is `application/json`. If the field is an array, the default is based on the inner type. Otherwise, the default is `application/octet-stream`. Valid values are either a media type (for example, `application/json`), a wildcard media type (for example, `image/*`), or a comma-separated list of media types and wildcard media types (for example, `image/png, application/*`). |
+| `headers` | Map[string, [Header Object](/openapi/paths/operations/responses/headers) | [Reference Object](/openapi/references#openapi-reference-object)] |  | Only applies to `multipart` requests. Allows additional headers related to the field. For example, if the client needs to add a `Content-Disposition` for an uploaded file. A `Content-Type` header in this map will be ignored, in favor of the `contentType` field of the encoding object. |
+| `style` | String |  | Can take one of the following values: `form`, `spaceDelimited`, `pipeDelimited`, or `deepObject`. Specifies the style of the field's serialization only in requests with media type `multipart/form-data` or `application/x-www-form-urlencoded`. See the description of `style` under [Query Parameters](/openapi/paths/parameters/query-parameters). |
+| `explode` | Boolean |  | Only applies to requests with media type `multipart/form-data` or `application/x-www-form-urlencoded` and fields with `array` or `object` types. If `style` is `form`, the default is `true`, otherwise the default is `false`. |
+| `allowReserved` | Boolean |  | Only applies to requests with media type `application/x-www-form-urlencoded`. Determines whether reserved characters (those allowed in literals but with reserved meanings) are allowed in the parameter's content. The default is `false`. When `true`, it allows reserved characters as defined by [RFC 3986](https://datatracker.ietf.org/doc/html/rfc3986#section-2.2) to be included without percent-encoding. This can be useful for parameters with content such as URLs. |
+
+```yaml
+paths:
+  /drinks:
+    post:
+      requestBody:
+        description: The drink to create.
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                # ... other properties ...
+                photo:
+                  description: A photo of the drink.
+                  type: string
+                  format: binary
+            encoding:
+              photo:
+                contentType: image/jpeg, image/png
+                headers:
+                  Content-Disposition:
+                    description: Specifies the disposition of the file (attachment and file name).
+                    schema:
+                      type: string
+                      default: 'form-data; name="photo"; filename="default.jpg"'
+                allowReserved: false
+                # style: form - not applicable to strings
+                # explode: false - not applicable to strings
+```
+
+## anyOf and oneOf
+
+Sometimes a request body could contain multiple different data structures:
+
+```yaml
+requestBody:
+  description: A JSON object containing pet information
+  content:
+    application/json:
+      schema:
+        oneOf:
+          - $ref: "#/components/schemas/DebitCard"
+          - $ref: "#/components/schemas/CreditCard"
+          - $ref: "#/components/schemas/BankTransfer"
+          - $ref: "#/components/schemas/IDEAL"
+```
+
+Learn more about this concept in the [schema composition](/openapi/schemas/composition) guide.
+---
+
+Are you an AI agent evaluating Speakeasy? We put together a helpful guide: https://www.speakeasy.com/eval.md

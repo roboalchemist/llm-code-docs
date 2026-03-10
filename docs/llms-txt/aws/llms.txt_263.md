@@ -1,0 +1,239 @@
+# Source: https://docs.aws.amazon.com/customerprofiles/latest/APIReference/llms.txt
+
+# Amazon Connect Customer Profiles Welcome
+
+> Amazon Connect Customer Profiles is a unified customer profile for your contact center that has pre-built connectors powered by AppFlow that make it easy to combine customer information from third party applications, such as Salesforce (CRM), ServiceNow (ITSM), and your enterprise resource planning (ERP), with contact history from your Amazon Connect contact center.
+
+- [Welcome](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/CommonErrors.html)
+- [VPC endpoints (AWS PrivateLink)](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/vpc-interface-endpoints.html)
+
+## [Actions](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_Operations.html)
+
+- [AddProfileKey](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_AddProfileKey.html): Associates a new key value with a specific profile, such as a Contact Record ContactId.
+- [BatchGetCalculatedAttributeForProfile](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_BatchGetCalculatedAttributeForProfile.html): Fetch the possible attribute values given the attribute name.
+- [BatchGetProfile](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_BatchGetProfile.html): Get a batch of profiles.
+- [CreateCalculatedAttributeDefinition](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_CreateCalculatedAttributeDefinition.html): Creates a new calculated attribute definition.
+- [CreateDomain](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_CreateDomain.html): Creates a domain, which is a container for all customer data, such as customer profile attributes, object types, profile keys, and encryption keys.
+- [CreateDomainLayout](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_CreateDomainLayout.html): Creates the layout to view data for a specific domain.
+- [CreateEventStream](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_CreateEventStream.html): Creates an event stream, which is a subscription to real-time events, such as when profiles are created and updated through Amazon Connect Customer Profiles.
+- [CreateEventTrigger](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_CreateEventTrigger.html): Creates an event trigger, which specifies the rules when to perform action based on customer's ingested data.
+- [CreateIntegrationWorkflow](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_CreateIntegrationWorkflow.html): Creates an integration workflow.
+- [CreateProfile](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_CreateProfile.html): Creates a standard profile.
+- [CreateRecommender](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_CreateRecommender.html): Creates a recommender
+- [CreateSegmentDefinition](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_CreateSegmentDefinition.html): Creates a segment definition associated to the given domain.
+- [CreateSegmentEstimate](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_CreateSegmentEstimate.html): Creates a segment estimate query.
+- [CreateSegmentSnapshot](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_CreateSegmentSnapshot.html): Triggers a job to export a segment to a specified destination.
+- [CreateUploadJob](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_CreateUploadJob.html): Creates an Upload job to ingest data for segment imports.
+- [DeleteCalculatedAttributeDefinition](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DeleteCalculatedAttributeDefinition.html): Deletes an existing calculated attribute definition.
+- [DeleteDomain](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DeleteDomain.html): Deletes a specific domain and all of its customer data, such as customer profile attributes and their related objects.
+- [DeleteDomainLayout](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DeleteDomainLayout.html): Deletes the layout used to view data for a specific domain.
+- [DeleteDomainObjectType](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DeleteDomainObjectType.html): Delete a DomainObjectType for the given Domain and ObjectType name.
+- [DeleteEventStream](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DeleteEventStream.html): Disables and deletes the specified event stream.
+- [DeleteEventTrigger](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DeleteEventTrigger.html): Disable and deletes the Event Trigger.
+- [DeleteIntegration](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DeleteIntegration.html): Removes an integration from a specific domain.
+- [DeleteProfile](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DeleteProfile.html): Deletes the standard customer profile and all data pertaining to the profile.
+- [DeleteProfileKey](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DeleteProfileKey.html): Removes a searchable key from a customer profile.
+- [DeleteProfileObject](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DeleteProfileObject.html): Removes an object associated with a profile of a given ProfileObjectType.
+- [DeleteProfileObjectType](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DeleteProfileObjectType.html): Removes a ProfileObjectType from a specific domain as well as removes all the ProfileObjects of that type.
+- [DeleteRecommender](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DeleteRecommender.html): Deletes a recommender.
+- [DeleteSegmentDefinition](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DeleteSegmentDefinition.html): Deletes a segment definition from the domain.
+- [DeleteWorkflow](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DeleteWorkflow.html): Deletes the specified workflow and all its corresponding resources.
+- [DetectProfileObjectType](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DetectProfileObjectType.html): The process of detecting profile object type mapping by using given objects.
+- [GetAutoMergingPreview](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetAutoMergingPreview.html): Tests the auto-merging settings of your Identity Resolution Job without merging your data.
+- [GetCalculatedAttributeDefinition](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetCalculatedAttributeDefinition.html): Provides more information on a calculated attribute definition for Customer Profiles.
+- [GetCalculatedAttributeForProfile](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetCalculatedAttributeForProfile.html): Retrieve a calculated attribute for a customer profile.
+- [GetDomain](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetDomain.html): Returns information about a specific domain.
+- [GetDomainLayout](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetDomainLayout.html): Gets the layout to view data for a specific domain.
+- [GetDomainObjectType](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetDomainObjectType.html): Return a DomainObjectType for the input Domain and ObjectType names.
+- [GetEventStream](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetEventStream.html): Returns information about the specified event stream in a specific domain.
+- [GetEventTrigger](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetEventTrigger.html): Get a specific Event Trigger from the domain.
+- [GetIdentityResolutionJob](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetIdentityResolutionJob.html): Returns information about an Identity Resolution Job in a specific domain.
+- [GetIntegration](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetIntegration.html): Returns an integration for a domain.
+- [GetMatches](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetMatches.html): Before calling this API, use CreateDomain or UpdateDomain to enable identity resolution: set Matching to true.
+- [GetObjectTypeAttributeStatistics](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetObjectTypeAttributeStatistics.html): The GetObjectTypeAttributeValues API delivers statistical insights about attributes within a specific object type, but is exclusively available for domains with data store enabled.
+- [GetProfileHistoryRecord](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetProfileHistoryRecord.html): Returns a history record for a specific profile, for a specific domain.
+- [GetProfileObjectType](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetProfileObjectType.html): Returns the object types for a specific domain.
+- [GetProfileObjectTypeTemplate](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetProfileObjectTypeTemplate.html): Returns the template information for a specific object type.
+- [GetProfileRecommendations](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetProfileRecommendations.html): Fetches the recommendations for a profile in the input Customer Profiles domain.
+- [GetRecommender](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetRecommender.html): Retrieves a recommender.
+- [GetSegmentDefinition](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetSegmentDefinition.html): Gets a segment definition from the domain.
+- [GetSegmentEstimate](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetSegmentEstimate.html): Gets the result of a segment estimate query.
+- [GetSegmentMembership](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetSegmentMembership.html): Determines if the given profiles are within a segment.
+- [GetSegmentSnapshot](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetSegmentSnapshot.html): Retrieve the latest status of a segment snapshot.
+- [GetSimilarProfiles](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetSimilarProfiles.html): Returns a set of profiles that belong to the same matching group using the matchId or profileId.
+- [GetUploadJob](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetUploadJob.html): This API retrieves the details of a specific upload job.
+- [GetUploadJobPath](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetUploadJobPath.html): This API retrieves the pre-signed URL and client token for uploading the file associated with the upload job.
+- [GetWorkflow](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetWorkflow.html): Get details of specified workflow.
+- [GetWorkflowSteps](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetWorkflowSteps.html): Get granular list of steps in workflow.
+- [ListAccountIntegrations](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListAccountIntegrations.html): Lists all of the integrations associated to a specific URI in the AWS account.
+- [ListCalculatedAttributeDefinitions](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListCalculatedAttributeDefinitions.html): Lists calculated attribute definitions for Customer Profiles
+- [ListCalculatedAttributesForProfile](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListCalculatedAttributesForProfile.html): Retrieve a list of calculated attributes for a customer profile.
+- [ListDomainLayouts](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListDomainLayouts.html): Lists the existing layouts that can be used to view data for a specific domain.
+- [ListDomainObjectTypes](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListDomainObjectTypes.html): List all DomainObjectType(s) in a Customer Profiles domain.
+- [ListDomains](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListDomains.html): Returns a list of all the domains for an AWS account that have been created.
+- [ListEventStreams](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListEventStreams.html): Returns a list of all the event streams in a specific domain.
+- [ListEventTriggers](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListEventTriggers.html): List all Event Triggers under a domain.
+- [ListIdentityResolutionJobs](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListIdentityResolutionJobs.html): Lists all of the Identity Resolution Jobs in your domain.
+- [ListIntegrations](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListIntegrations.html): Lists all of the integrations in your domain.
+- [ListObjectTypeAttributes](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListObjectTypeAttributes.html): Fetch the possible attribute values given the attribute name.
+- [ListObjectTypeAttributeValues](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListObjectTypeAttributeValues.html): The ListObjectTypeAttributeValues API provides access to the most recent distinct values for any specified attribute, making it valuable for real-time data validation and consistency checks within your object types.
+- [ListProfileAttributeValues](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListProfileAttributeValues.html): Fetch the possible attribute values given the attribute name.
+- [ListProfileHistoryRecords](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListProfileHistoryRecords.html): Returns a list of history records for a specific profile, for a specific domain.
+- [ListProfileObjects](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListProfileObjects.html): Returns a list of objects associated with a profile of a given ProfileObjectType.
+- [ListProfileObjectTypes](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListProfileObjectTypes.html): Lists all of the templates available within the service.
+- [ListProfileObjectTypeTemplates](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListProfileObjectTypeTemplates.html): Lists all of the template information for object types.
+- [ListRecommenderRecipes](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListRecommenderRecipes.html): Returns a list of available recommender recipes that can be used to create recommenders.
+- [ListRecommenders](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListRecommenders.html): Returns a list of recommenders in the specified domain.
+- [ListRuleBasedMatches](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListRuleBasedMatches.html): Returns a set of MatchIds that belong to the given domain.
+- [ListSegmentDefinitions](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListSegmentDefinitions.html): Lists all segment definitions under a domain.
+- [ListTagsForResource](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListTagsForResource.html): Displays the tags associated with an Amazon Connect Customer Profiles resource.
+- [ListUploadJobs](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListUploadJobs.html): This API retrieves a list of upload jobs for the specified domain.
+- [ListWorkflows](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListWorkflows.html): Query to list all workflows.
+- [MergeProfiles](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_MergeProfiles.html): Runs an AWS Lambda job that does the following:
+- [PutDomainObjectType](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_PutDomainObjectType.html): Create/Update a DomainObjectType in a Customer Profiles domain.
+- [PutIntegration](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_PutIntegration.html): Adds an integration between the service and a third-party service, which includes Amazon AppFlow and Amazon Connect.
+- [PutProfileObject](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_PutProfileObject.html): Adds additional objects to customer profiles of a given ObjectType.
+- [PutProfileObjectType](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_PutProfileObjectType.html): Defines a ProfileObjectType.
+- [SearchProfiles](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_SearchProfiles.html): Searches for profiles within a specific domain using one or more predefined search keys (e.g., _fullName, _phone, _email, _account, etc.) and/or custom-defined search keys.
+- [StartRecommender](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_StartRecommender.html): Starts a recommender that was previously stopped.
+- [StartUploadJob](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_StartUploadJob.html): This API starts the processing of an upload job to ingest profile data.
+- [StopRecommender](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_StopRecommender.html): Stops a recommender, suspending its ability to generate recommendations.
+- [StopUploadJob](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_StopUploadJob.html): This API stops the processing of an upload job.
+- [TagResource](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_TagResource.html): Assigns one or more tags (key-value pairs) to the specified Amazon Connect Customer Profiles resource.
+- [UntagResource](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UntagResource.html): Removes one or more tags from the specified Amazon Connect Customer Profiles resource.
+- [UpdateCalculatedAttributeDefinition](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UpdateCalculatedAttributeDefinition.html): Updates an existing calculated attribute definition.
+- [UpdateDomain](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UpdateDomain.html): Updates the properties of a domain, including creating or selecting a dead letter queue or an encryption key.
+- [UpdateDomainLayout](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UpdateDomainLayout.html): Updates the layout used to view data for a specific domain.
+- [UpdateEventTrigger](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UpdateEventTrigger.html): Update the properties of an Event Trigger.
+- [UpdateProfile](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UpdateProfile.html): Updates the properties of a profile.
+- [UpdateRecommender](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UpdateRecommender.html): Updates the properties of an existing recommender, allowing you to modify its configuration and description.
+
+
+## [Data Types](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_Types.html)
+
+- [AdditionalSearchKey](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_AdditionalSearchKey.html): A data type pair that consists of a KeyName and Values list that is used in conjunction with the KeyName and Values parameters to search for profiles using the SearchProfiles API.
+- [Address](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_Address.html): A generic address associated with the customer that is not mailing, shipping, or billing.
+- [AddressDimension](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_AddressDimension.html): Object that segments on Customer Profile's address object.
+- [AppflowIntegration](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_AppflowIntegration.html): Details for workflow of type APPFLOW_INTEGRATION.
+- [AppflowIntegrationWorkflowAttributes](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_AppflowIntegrationWorkflowAttributes.html): Structure holding all APPFLOW_INTEGRATION specific workflow attributes.
+- [AppflowIntegrationWorkflowMetrics](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_AppflowIntegrationWorkflowMetrics.html): Workflow specific execution metrics for APPFLOW_INTEGRATION workflow.
+- [AppflowIntegrationWorkflowStep](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_AppflowIntegrationWorkflowStep.html): Workflow step details for APPFLOW_INTEGRATION workflow.
+- [AttributeDetails](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_AttributeDetails.html): Mathematical expression and a list of attribute items specified in that expression.
+- [AttributeDimension](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_AttributeDimension.html): Object that segments on various Customer Profile's fields.
+- [AttributeItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_AttributeItem.html): The details of a single attribute item specified in the mathematical expression.
+- [AttributeTypesSelector](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_AttributeTypesSelector.html): Configuration information about the AttributeTypesSelector where the rule-based identity resolution uses to match profiles.
+- [AttributeValueItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_AttributeValueItem.html): List containing the values for the given attribute.
+- [AutoMerging](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_AutoMerging.html): Configuration settings for how to perform the auto-merging of profiles.
+- [Batch](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_Batch.html): Batch defines the boundaries for ingestion for each step in APPFLOW_INTEGRATION workflow.
+- [BatchGetCalculatedAttributeForProfileError](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_BatchGetCalculatedAttributeForProfileError.html): Error object describing why a specific profile and calculated attribute failed.
+- [BatchGetProfileError](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_BatchGetProfileError.html): Error object describing why a specific profile failed.
+- [CalculatedAttributeDimension](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_CalculatedAttributeDimension.html): Object that segments on Customer Profile's Calculated Attributes.
+- [CalculatedAttributeValue](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_CalculatedAttributeValue.html): The object containing the values of a single calculated attribute value.
+- [CatalogItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_CatalogItem.html): Represents an item in the catalog with its complete set of attributes and metadata.
+- [ConditionOverrides](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ConditionOverrides.html): An object to override the original condition block of a calculated attribute.
+- [Conditions](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_Conditions.html): The conditions including range, object count, and threshold for the calculated attribute.
+- [ConflictResolution](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ConflictResolution.html): How the auto-merging process should resolve conflicts between different profiles.
+- [ConnectorOperator](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ConnectorOperator.html): The operation to be performed on the provided source fields.
+- [Consolidation](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_Consolidation.html): The matching criteria to be used during the auto-merging process.
+- [ContactPreference](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ContactPreference.html): Object that defines users contact preference.
+- [DataStoreRequest](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DataStoreRequest.html): The data store request.
+- [DataStoreResponse](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DataStoreResponse.html): The data store response.
+- [DateDimension](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DateDimension.html): Object that segments on various Customer Profile's date fields.
+- [DestinationSummary](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DestinationSummary.html): Summary information about the Kinesis data stream
+- [DetectedProfileObjectType](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DetectedProfileObjectType.html): Contains ProfileObjectType mapping information from the model.
+- [Dimension](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_Dimension.html): Object that holds what profile and calculated attributes to segment on.
+- [DomainObjectTypeField](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DomainObjectTypeField.html): The standard domain object type.
+- [DomainObjectTypesListItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DomainObjectTypesListItem.html): Represents an item in the list of domain object types, containing basic information about a specific object type within a domain.
+- [DomainStats](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_DomainStats.html): Usage-specific statistics about the domain.
+- [EngagementPreferences](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_EngagementPreferences.html): Object that defines users preferred methods of engagement.
+- [EventParameters](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_EventParameters.html): Configuration parameters for events in the personalization system.
+- [EventsConfig](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_EventsConfig.html): Configuration settings that define how events are processed and tracked.
+- [EventStreamDestinationDetails](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_EventStreamDestinationDetails.html): Details of the destination being used for the EventStream.
+- [EventStreamSummary](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_EventStreamSummary.html): An instance of EventStream in a list of EventStreams.
+- [EventTriggerCondition](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_EventTriggerCondition.html): Specifies the circumstances under which the event should trigger the destination.
+- [EventTriggerDimension](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_EventTriggerDimension.html): A specific event dimension to be assessed.
+- [EventTriggerLimits](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_EventTriggerLimits.html): Defines limits controlling whether an event triggers the destination, based on ingestion latency and the number of invocations per profile over specific time periods.
+- [EventTriggerSummaryItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_EventTriggerSummaryItem.html): The summary of the event trigger.
+- [ExportingConfig](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ExportingConfig.html): Configuration information about the S3 bucket where Identity Resolution Jobs writes result files.
+- [ExportingLocation](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ExportingLocation.html): The S3 location where Identity Resolution Jobs write result files.
+- [ExtraLengthValueProfileDimension](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ExtraLengthValueProfileDimension.html): Object that segments on various Customer profile's fields that are larger than normal.
+- [FieldSourceProfileIds](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_FieldSourceProfileIds.html): A duplicate customer profile that is to be merged into a main profile.
+- [Filter](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_Filter.html): Defines how to filter the objects coming in for calculated attributes.
+- [FilterAttributeDimension](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_FilterAttributeDimension.html): Object that defines how to filter the incoming objects for the calculated attribute.
+- [FilterDimension](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_FilterDimension.html): Contains the map of attribute names to attribute dimensions.
+- [FilterGroup](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_FilterGroup.html): Object that holds the dimensions to filter on.
+- [FlowDefinition](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_FlowDefinition.html): The configurations that control how Customer Profiles retrieves data from the source, Amazon AppFlow.
+- [FoundByKeyValue](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_FoundByKeyValue.html): A data type pair that consists of a KeyName and Values list that were used to find a profile returned in response to a SearchProfiles request.
+- [GetObjectTypeAttributeStatisticsPercentiles](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetObjectTypeAttributeStatisticsPercentiles.html): Contains percentile statistics for object type attributes.
+- [GetObjectTypeAttributeStatisticsStats](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_GetObjectTypeAttributeStatisticsStats.html): Statistical measurements for object type attributes including basic statistics and percentiles.
+- [Group](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_Group.html): Contains dimensions that determine what to segment on.
+- [IdentityResolutionJob](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_IdentityResolutionJob.html): Information about the Identity Resolution Job.
+- [IncrementalPullConfig](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_IncrementalPullConfig.html): Specifies the configuration used when importing incremental records from the source.
+- [IntegrationConfig](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_IntegrationConfig.html): Configuration data for integration workflow.
+- [JobSchedule](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_JobSchedule.html): The day and time when do you want to start the Identity Resolution Job every week.
+- [JobStats](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_JobStats.html): Statistics about the Identity Resolution Job.
+- [LayoutItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_LayoutItem.html): The layout object that contains LayoutDefinitionName, Description, DisplayName, IsDefault, LayoutType, Tags, CreatedAt, LastUpdatedAt
+- [ListCalculatedAttributeDefinitionItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListCalculatedAttributeDefinitionItem.html): The details of a single calculated attribute definition.
+- [ListCalculatedAttributeForProfileItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListCalculatedAttributeForProfileItem.html): The details of a single calculated attribute for a profile.
+- [ListDomainItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListDomainItem.html): An object in a list that represents a domain.
+- [ListIntegrationItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListIntegrationItem.html): An integration in list of integrations.
+- [ListObjectTypeAttributeItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListObjectTypeAttributeItem.html): Item that contains the attribute and when it was last updated.
+- [ListObjectTypeAttributeValuesItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListObjectTypeAttributeValuesItem.html): Represents an item in the list of object type attribute values with its associated metadata.
+- [ListProfileObjectsItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListProfileObjectsItem.html): A ProfileObject in a list of ProfileObjects.
+- [ListProfileObjectTypeItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListProfileObjectTypeItem.html): A ProfileObjectType instance.
+- [ListProfileObjectTypeTemplateItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListProfileObjectTypeTemplateItem.html): A ProfileObjectTypeTemplate in a list of ProfileObjectTypeTemplates.
+- [ListWorkflowsItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ListWorkflowsItem.html): A workflow in list of workflows.
+- [MarketoSourceProperties](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_MarketoSourceProperties.html): The properties that are applied when Marketo is being used as a source.
+- [MatchingRequest](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_MatchingRequest.html): The flag that enables the matching process of duplicate profiles.
+- [MatchingResponse](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_MatchingResponse.html): The flag that enables the matching process of duplicate profiles.
+- [MatchingRule](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_MatchingRule.html): Specifies how does the rule-based matching process should match profiles.
+- [MatchItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_MatchItem.html): The Match group object.
+- [ObjectAttribute](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ObjectAttribute.html): The criteria that a specific object attribute must meet to trigger the destination.
+- [ObjectFilter](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ObjectFilter.html): The filter applied to ListProfileObjects response to include profile objects with the specified index values.
+- [ObjectTypeField](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ObjectTypeField.html): Represents a field in a ProfileObjectType.
+- [ObjectTypeKey](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ObjectTypeKey.html): An object that defines the Key element of a ProfileObject.
+- [Period](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_Period.html): Defines a limit and the time period during which it is enforced.
+- [Profile](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_Profile.html): The standard profile of a customer.
+- [ProfileAttributes](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ProfileAttributes.html): The object used to segment on attributes within the customer profile.
+- [ProfileDimension](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ProfileDimension.html): Object to hold the dimensions of a profile's fields to segment on.
+- [ProfileHistoryRecord](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ProfileHistoryRecord.html): Contains profile history record metadata.
+- [ProfileQueryFailures](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ProfileQueryFailures.html): Object that holds failures for membership.
+- [ProfileQueryResult](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ProfileQueryResult.html): Object that holds the results for membership.
+- [ProfileTypeDimension](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ProfileTypeDimension.html): Object to hold the dimension of a profile type field to segment on.
+- [Range](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_Range.html): The relative time period over which data is included in the aggregation.
+- [RangeOverride](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_RangeOverride.html): Overrides the original range on a calculated attribute definition.
+- [Readiness](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_Readiness.html): Information indicating if the Calculated Attribute is ready for use by confirming all historical data has been processed and reflected.
+- [Recommendation](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_Recommendation.html): Represents a single recommendation generated by the recommender system.
+- [RecommenderConfig](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_RecommenderConfig.html): Configuration settings that define the behavior and parameters of a recommender.
+- [RecommenderRecipe](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_RecommenderRecipe.html): Defines the algorithm and approach used to generate recommendations.
+- [RecommenderSummary](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_RecommenderSummary.html): Provides a summary of a recommender's configuration and current state.
+- [RecommenderUpdate](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_RecommenderUpdate.html): Contains information about an update operation performed on a recommender.
+- [ResultsSummary](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ResultsSummary.html): The summary of results for an upload job, including the number of updated, created, and failed records.
+- [RuleBasedMatchingRequest](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_RuleBasedMatchingRequest.html): The request to enable the rule-based matching.
+- [RuleBasedMatchingResponse](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_RuleBasedMatchingResponse.html): The response of the Rule-based matching request.
+- [S3ExportingConfig](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_S3ExportingConfig.html): Configuration information about the S3 bucket where Identity Resolution Jobs write result files.
+- [S3ExportingLocation](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_S3ExportingLocation.html): The S3 location where Identity Resolution Jobs write result files.
+- [S3SourceProperties](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_S3SourceProperties.html): The properties that are applied when Amazon S3 is being used as the flow source.
+- [SalesforceSourceProperties](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_SalesforceSourceProperties.html): The properties that are applied when Salesforce is being used as a source.
+- [ScheduledTriggerProperties](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ScheduledTriggerProperties.html): Specifies the configuration details of a scheduled-trigger flow that you define.
+- [SegmentDefinitionItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_SegmentDefinitionItem.html): Object holding the segment definition fields.
+- [SegmentGroup](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_SegmentGroup.html): Contains all groups of the segment definition.
+- [SegmentGroupStructure](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_SegmentGroupStructure.html): Contains all groups of the segment definition.
+- [ServiceNowSourceProperties](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ServiceNowSourceProperties.html): The properties that are applied when ServiceNow is being used as a source.
+- [SourceConnectorProperties](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_SourceConnectorProperties.html): Specifies the information that is required to query a particular Amazon AppFlow connector.
+- [SourceFlowConfig](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_SourceFlowConfig.html): Contains information about the configuration of the source connector used in the flow.
+- [SourceSegment](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_SourceSegment.html): The source segments to build off of.
+- [Task](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_Task.html): A class for modeling different type of tasks.
+- [Threshold](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_Threshold.html): The threshold for the calculated attribute.
+- [TrainingMetrics](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_TrainingMetrics.html): Contains metrics and performance indicators from the training of a recommender model.
+- [TriggerConfig](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_TriggerConfig.html): The trigger settings that determine how and when Amazon AppFlow runs the specified flow.
+- [TriggerProperties](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_TriggerProperties.html): Specifies the configuration details that control the trigger for a flow.
+- [UpdateAddress](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UpdateAddress.html): Updates associated with the address properties of a customer profile.
+- [UploadJobItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_UploadJobItem.html): The summary information for an individual upload job.
+- [ValueRange](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ValueRange.html): A structure letting customers specify a relative time window over which over which data is included in the Calculated Attribute.
+- [WorkflowAttributes](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_WorkflowAttributes.html): Structure to hold workflow attributes.
+- [WorkflowMetrics](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_WorkflowMetrics.html): Generic object containing workflow execution metrics.
+- [WorkflowStepItem](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_WorkflowStepItem.html): List containing steps in workflow.
+- [ZendeskSourceProperties](https://docs.aws.amazon.com/customerprofiles/latest/APIReference/API_ZendeskSourceProperties.html): The properties that are applied when using Zendesk as a flow source.

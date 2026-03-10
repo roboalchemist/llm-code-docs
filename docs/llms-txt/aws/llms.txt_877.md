@@ -1,0 +1,188 @@
+# Source: https://docs.aws.amazon.com/workspaces/latest/api/llms.txt
+
+# Amazon WorkSpaces Service API Reference
+
+> Amazon WorkSpaces enables you to provision virtual, cloud-based Microsoft Windows or Amazon Linux desktops for your users, known as WorkSpaces. WorkSpaces eliminates the need to procure and deploy hardware or install complex software. You can quickly add or remove users as your needs change. Users can access their virtual desktops from multiple devices or web browsers.
+
+- [Welcome](https://docs.aws.amazon.com/workspaces/latest/api/welcome.html)
+- [Common Errors](https://docs.aws.amazon.com/workspaces/latest/api/CommonErrors.html)
+- [WorkSpaces Core API actions](https://docs.aws.amazon.com/workspaces/latest/api/workspaces_core.html)
+- [CloudTrail Logging](https://docs.aws.amazon.com/workspaces/latest/api/cloudtrail_logging.html)
+
+## [Actions](https://docs.aws.amazon.com/workspaces/latest/api/API_Operations.html)
+
+- [AcceptAccountLinkInvitation](https://docs.aws.amazon.com/workspaces/latest/api/API_AcceptAccountLinkInvitation.html): Accepts the account link invitation.
+- [AssociateConnectionAlias](https://docs.aws.amazon.com/workspaces/latest/api/API_AssociateConnectionAlias.html): Associates the specified connection alias with the specified directory to enable cross-Region redirection.
+- [AssociateIpGroups](https://docs.aws.amazon.com/workspaces/latest/api/API_AssociateIpGroups.html): Associates the specified IP access control group with the specified directory.
+- [AssociateWorkspaceApplication](https://docs.aws.amazon.com/workspaces/latest/api/API_AssociateWorkspaceApplication.html): Associates the specified application to the specified WorkSpace.
+- [AuthorizeIpRules](https://docs.aws.amazon.com/workspaces/latest/api/API_AuthorizeIpRules.html): Adds one or more rules to the specified IP access control group.
+- [CopyWorkspaceImage](https://docs.aws.amazon.com/workspaces/latest/api/API_CopyWorkspaceImage.html): Copies the specified image from the specified Region to the current Region.
+- [CreateAccountLinkInvitation](https://docs.aws.amazon.com/workspaces/latest/api/API_CreateAccountLinkInvitation.html): Creates the account link invitation.
+- [CreateConnectClientAddIn](https://docs.aws.amazon.com/workspaces/latest/api/API_CreateConnectClientAddIn.html): Creates a client-add-in for Amazon Connect within a directory.
+- [CreateConnectionAlias](https://docs.aws.amazon.com/workspaces/latest/api/API_CreateConnectionAlias.html): Creates the specified connection alias for use with cross-Region redirection.
+- [CreateIpGroup](https://docs.aws.amazon.com/workspaces/latest/api/API_CreateIpGroup.html): Creates an IP access control group.
+- [CreateStandbyWorkspaces](https://docs.aws.amazon.com/workspaces/latest/api/API_CreateStandbyWorkspaces.html): Creates a standby WorkSpace in a secondary Region.
+- [CreateTags](https://docs.aws.amazon.com/workspaces/latest/api/API_CreateTags.html): Creates the specified tags for the specified WorkSpaces resource.
+- [CreateUpdatedWorkspaceImage](https://docs.aws.amazon.com/workspaces/latest/api/API_CreateUpdatedWorkspaceImage.html): Creates a new updated WorkSpace image based on the specified source image.
+- [CreateWorkspaceBundle](https://docs.aws.amazon.com/workspaces/latest/api/API_CreateWorkspaceBundle.html): Creates the specified WorkSpace bundle.
+- [CreateWorkspaceImage](https://docs.aws.amazon.com/workspaces/latest/api/API_CreateWorkspaceImage.html): Creates a new WorkSpace image from an existing WorkSpace.
+- [CreateWorkspaces](https://docs.aws.amazon.com/workspaces/latest/api/API_CreateWorkspaces.html): Creates one or more WorkSpaces.
+- [CreateWorkspacesPool](https://docs.aws.amazon.com/workspaces/latest/api/API_CreateWorkspacesPool.html): Creates a pool of WorkSpaces.
+- [DeleteAccountLinkInvitation](https://docs.aws.amazon.com/workspaces/latest/api/API_DeleteAccountLinkInvitation.html): Deletes the account link invitation.
+- [DeleteClientBranding](https://docs.aws.amazon.com/workspaces/latest/api/API_DeleteClientBranding.html): Deletes customized client branding.
+- [DeleteConnectClientAddIn](https://docs.aws.amazon.com/workspaces/latest/api/API_DeleteConnectClientAddIn.html): Deletes a client-add-in for Amazon Connect that is configured within a directory.
+- [DeleteConnectionAlias](https://docs.aws.amazon.com/workspaces/latest/api/API_DeleteConnectionAlias.html): Deletes the specified connection alias.
+- [DeleteIpGroup](https://docs.aws.amazon.com/workspaces/latest/api/API_DeleteIpGroup.html): Deletes the specified IP access control group.
+- [DeleteTags](https://docs.aws.amazon.com/workspaces/latest/api/API_DeleteTags.html): Deletes the specified tags from the specified WorkSpaces resource.
+- [DeleteWorkspaceBundle](https://docs.aws.amazon.com/workspaces/latest/api/API_DeleteWorkspaceBundle.html): Deletes the specified WorkSpace bundle.
+- [DeleteWorkspaceImage](https://docs.aws.amazon.com/workspaces/latest/api/API_DeleteWorkspaceImage.html): Deletes the specified image from your account.
+- [DeployWorkspaceApplications](https://docs.aws.amazon.com/workspaces/latest/api/API_DeployWorkspaceApplications.html): Deploys associated applications to the specified WorkSpace
+- [DeregisterWorkspaceDirectory](https://docs.aws.amazon.com/workspaces/latest/api/API_DeregisterWorkspaceDirectory.html): Deregisters the specified directory.
+- [DescribeAccount](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeAccount.html): Retrieves a list that describes the configuration of Bring Your Own License (BYOL) for the specified account.
+- [DescribeAccountModifications](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeAccountModifications.html): Retrieves a list that describes modifications to the configuration of Bring Your Own License (BYOL) for the specified account.
+- [DescribeApplicationAssociations](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeApplicationAssociations.html): Describes the associations between the application and the specified associated resources.
+- [DescribeApplications](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeApplications.html): Describes the specified applications by filtering based on their compute types, license availability, operating systems, and owners.
+- [DescribeBundleAssociations](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeBundleAssociations.html): Describes the associations between the applications and the specified bundle.
+- [DescribeClientBranding](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeClientBranding.html): Describes the specified client branding.
+- [DescribeClientProperties](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeClientProperties.html): Retrieves a list that describes one or more specified Amazon WorkSpaces clients.
+- [DescribeConnectClientAddIns](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeConnectClientAddIns.html): Retrieves a list of Amazon Connect client add-ins that have been created.
+- [DescribeConnectionAliases](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeConnectionAliases.html): Retrieves a list that describes the connection aliases used for cross-Region redirection.
+- [DescribeConnectionAliasPermissions](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeConnectionAliasPermissions.html): Describes the permissions that the owner of a connection alias has granted to another AWS account for the specified connection alias.
+- [DescribeCustomWorkspaceImageImport](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeCustomWorkspaceImageImport.html): Retrieves information about a WorkSpace BYOL image being imported via ImportCustomWorkspaceImage.
+- [DescribeImageAssociations](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeImageAssociations.html): Describes the associations between the applications and the specified image.
+- [DescribeIpGroups](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeIpGroups.html): Describes one or more of your IP access control groups.
+- [DescribeTags](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeTags.html): Describes the specified tags for the specified WorkSpaces resource.
+- [DescribeWorkspaceAssociations](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceAssociations.html): Describes the associations betweens applications and the specified WorkSpace.
+- [DescribeWorkspaceBundles](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceBundles.html): Retrieves a list that describes the available WorkSpace bundles.
+- [DescribeWorkspaceDirectories](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceDirectories.html): Describes the available directories that are registered with Amazon WorkSpaces.
+- [DescribeWorkspaceImagePermissions](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceImagePermissions.html): Describes the permissions that the owner of an image has granted to other AWS accounts for an image.
+- [DescribeWorkspaceImages](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceImages.html): Retrieves a list that describes one or more specified images, if the image identifiers are provided.
+- [DescribeWorkspaces](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaces.html): Describes the specified WorkSpaces.
+- [DescribeWorkspacesConnectionStatus](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspacesConnectionStatus.html): Describes the connection status of the specified WorkSpaces.
+- [DescribeWorkspaceSnapshots](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceSnapshots.html): Describes the snapshots for the specified WorkSpace.
+- [DescribeWorkspacesPools](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspacesPools.html): Describes the specified WorkSpaces Pools.
+- [DescribeWorkspacesPoolSessions](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspacesPoolSessions.html): Retrieves a list that describes the streaming sessions for a specified pool.
+- [DisassociateConnectionAlias](https://docs.aws.amazon.com/workspaces/latest/api/API_DisassociateConnectionAlias.html): Disassociates a connection alias from a directory.
+- [DisassociateIpGroups](https://docs.aws.amazon.com/workspaces/latest/api/API_DisassociateIpGroups.html): Disassociates the specified IP access control group from the specified directory.
+- [DisassociateWorkspaceApplication](https://docs.aws.amazon.com/workspaces/latest/api/API_DisassociateWorkspaceApplication.html): Disassociates the specified application from a WorkSpace.
+- [GetAccountLink](https://docs.aws.amazon.com/workspaces/latest/api/API_GetAccountLink.html): Retrieves account link information.
+- [ImportClientBranding](https://docs.aws.amazon.com/workspaces/latest/api/API_ImportClientBranding.html): Imports client branding.
+- [ImportCustomWorkspaceImage](https://docs.aws.amazon.com/workspaces/latest/api/API_ImportCustomWorkspaceImage.html): Imports the specified Windows 10 or 11 Bring Your Own License (BYOL) image into Amazon WorkSpaces using EC2 Image Builder.
+- [ImportWorkspaceImage](https://docs.aws.amazon.com/workspaces/latest/api/API_ImportWorkspaceImage.html): Imports the specified Windows 10 or 11 Bring Your Own License (BYOL) image into Amazon WorkSpaces.
+- [ListAccountLinks](https://docs.aws.amazon.com/workspaces/latest/api/API_ListAccountLinks.html): Lists all account links.
+- [ListAvailableManagementCidrRanges](https://docs.aws.amazon.com/workspaces/latest/api/API_ListAvailableManagementCidrRanges.html): Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management interface when you enable Bring Your Own License (BYOL).
+- [MigrateWorkspace](https://docs.aws.amazon.com/workspaces/latest/api/API_MigrateWorkspace.html): Migrates a WorkSpace from one operating system or bundle type to another, while retaining the data on the user volume.
+- [ModifyAccount](https://docs.aws.amazon.com/workspaces/latest/api/API_ModifyAccount.html): Modifies the configuration of Bring Your Own License (BYOL) for the specified account.
+- [ModifyCertificateBasedAuthProperties](https://docs.aws.amazon.com/workspaces/latest/api/API_ModifyCertificateBasedAuthProperties.html): Modifies the properties of the certificate-based authentication you want to use with your WorkSpaces.
+- [ModifyClientProperties](https://docs.aws.amazon.com/workspaces/latest/api/API_ModifyClientProperties.html): Modifies the properties of the specified Amazon WorkSpaces clients.
+- [ModifyEndpointEncryptionMode](https://docs.aws.amazon.com/workspaces/latest/api/API_ModifyEndpointEncryptionMode.html): Modifies the endpoint encryption mode that allows you to configure the specified directory between Standard TLS and FIPS 140-2 validated mode.
+- [ModifySamlProperties](https://docs.aws.amazon.com/workspaces/latest/api/API_ModifySamlProperties.html): Modifies multiple properties related to SAML 2.0 authentication, including the enablement status, user access URL, and relay state parameter name that are used for configuring federation with an SAML 2.0 identity provider.
+- [ModifySelfservicePermissions](https://docs.aws.amazon.com/workspaces/latest/api/API_ModifySelfservicePermissions.html): Modifies the self-service WorkSpace management capabilities for your users.
+- [ModifyStreamingProperties](https://docs.aws.amazon.com/workspaces/latest/api/API_ModifyStreamingProperties.html): Modifies the specified streaming properties.
+- [ModifyWorkspaceAccessProperties](https://docs.aws.amazon.com/workspaces/latest/api/API_ModifyWorkspaceAccessProperties.html): Specifies which devices and operating systems users can use to access their WorkSpaces.
+- [ModifyWorkspaceCreationProperties](https://docs.aws.amazon.com/workspaces/latest/api/API_ModifyWorkspaceCreationProperties.html): Modify the default properties used to create WorkSpaces.
+- [ModifyWorkspaceProperties](https://docs.aws.amazon.com/workspaces/latest/api/API_ModifyWorkspaceProperties.html): Modifies the specified WorkSpace properties.
+- [ModifyWorkspaceState](https://docs.aws.amazon.com/workspaces/latest/api/API_ModifyWorkspaceState.html): Sets the state of the specified WorkSpace.
+- [RebootWorkspaces](https://docs.aws.amazon.com/workspaces/latest/api/API_RebootWorkspaces.html): Reboots the specified WorkSpaces.
+- [RebuildWorkspaces](https://docs.aws.amazon.com/workspaces/latest/api/API_RebuildWorkspaces.html): Rebuilds the specified WorkSpace.
+- [RegisterWorkspaceDirectory](https://docs.aws.amazon.com/workspaces/latest/api/API_RegisterWorkspaceDirectory.html): Registers the specified directory.
+- [RejectAccountLinkInvitation](https://docs.aws.amazon.com/workspaces/latest/api/API_RejectAccountLinkInvitation.html): Rejects the account link invitation.
+- [RestoreWorkspace](https://docs.aws.amazon.com/workspaces/latest/api/API_RestoreWorkspace.html): Restores the specified WorkSpace to its last known healthy state.
+- [RevokeIpRules](https://docs.aws.amazon.com/workspaces/latest/api/API_RevokeIpRules.html): Removes one or more rules from the specified IP access control group.
+- [StartWorkspaces](https://docs.aws.amazon.com/workspaces/latest/api/API_StartWorkspaces.html): Starts the specified WorkSpaces.
+- [StartWorkspacesPool](https://docs.aws.amazon.com/workspaces/latest/api/API_StartWorkspacesPool.html): Starts the specified pool.
+- [StopWorkspaces](https://docs.aws.amazon.com/workspaces/latest/api/API_StopWorkspaces.html): Stops the specified WorkSpaces.
+- [StopWorkspacesPool](https://docs.aws.amazon.com/workspaces/latest/api/API_StopWorkspacesPool.html): Stops the specified pool.
+- [TerminateWorkspaces](https://docs.aws.amazon.com/workspaces/latest/api/API_TerminateWorkspaces.html): Terminates the specified WorkSpaces.
+- [TerminateWorkspacesPool](https://docs.aws.amazon.com/workspaces/latest/api/API_TerminateWorkspacesPool.html): Terminates the specified pool.
+- [TerminateWorkspacesPoolSession](https://docs.aws.amazon.com/workspaces/latest/api/API_TerminateWorkspacesPoolSession.html): Terminates the pool session.
+- [UpdateConnectClientAddIn](https://docs.aws.amazon.com/workspaces/latest/api/API_UpdateConnectClientAddIn.html): Updates a Amazon Connect client add-in.
+- [UpdateConnectionAliasPermission](https://docs.aws.amazon.com/workspaces/latest/api/API_UpdateConnectionAliasPermission.html): Shares or unshares a connection alias with one account by specifying whether that account has permission to associate the connection alias with a directory.
+- [UpdateRulesOfIpGroup](https://docs.aws.amazon.com/workspaces/latest/api/API_UpdateRulesOfIpGroup.html): Replaces the current rules of the specified IP access control group with the specified rules.
+- [UpdateWorkspaceBundle](https://docs.aws.amazon.com/workspaces/latest/api/API_UpdateWorkspaceBundle.html): Updates a WorkSpace bundle with a new image.
+- [UpdateWorkspaceImagePermission](https://docs.aws.amazon.com/workspaces/latest/api/API_UpdateWorkspaceImagePermission.html): Shares or unshares an image with one account in the same AWS Region by specifying whether that account has permission to copy the image.
+- [UpdateWorkspacesPool](https://docs.aws.amazon.com/workspaces/latest/api/API_UpdateWorkspacesPool.html): Updates the specified pool.
+
+
+## [Data Types](https://docs.aws.amazon.com/workspaces/latest/api/API_Types.html)
+
+- [AccessEndpoint](https://docs.aws.amazon.com/workspaces/latest/api/API_AccessEndpoint.html): Describes the access type and endpoint for a WorkSpace.
+- [AccessEndpointConfig](https://docs.aws.amazon.com/workspaces/latest/api/API_AccessEndpointConfig.html): Describes the access endpoint configuration for a WorkSpace.
+- [AccountLink](https://docs.aws.amazon.com/workspaces/latest/api/API_AccountLink.html): Information about about the account link.
+- [AccountModification](https://docs.aws.amazon.com/workspaces/latest/api/API_AccountModification.html): Describes a modification to the configuration of Bring Your Own License (BYOL) for the specified account.
+- [ActiveDirectoryConfig](https://docs.aws.amazon.com/workspaces/latest/api/API_ActiveDirectoryConfig.html): Information about the Active Directory config.
+- [ApplicationResourceAssociation](https://docs.aws.amazon.com/workspaces/latest/api/API_ApplicationResourceAssociation.html): Describes the association between an application and an application resource.
+- [ApplicationSettingsRequest](https://docs.aws.amazon.com/workspaces/latest/api/API_ApplicationSettingsRequest.html): The persistent application settings for WorkSpaces Pools users.
+- [ApplicationSettingsResponse](https://docs.aws.amazon.com/workspaces/latest/api/API_ApplicationSettingsResponse.html): Describes the persistent application settings for WorkSpaces Pools users.
+- [AssociationStateReason](https://docs.aws.amazon.com/workspaces/latest/api/API_AssociationStateReason.html): Indicates the reason that the association deployment failed, including the error code and error message.
+- [BundleResourceAssociation](https://docs.aws.amazon.com/workspaces/latest/api/API_BundleResourceAssociation.html): Describes the association between an application and a bundle resource.
+- [Capacity](https://docs.aws.amazon.com/workspaces/latest/api/API_Capacity.html): Describes the user capacity for a pool of WorkSpaces.
+- [CapacityStatus](https://docs.aws.amazon.com/workspaces/latest/api/API_CapacityStatus.html): Describes the capacity status for a pool of WorkSpaces.
+- [CertificateBasedAuthProperties](https://docs.aws.amazon.com/workspaces/latest/api/API_CertificateBasedAuthProperties.html): Describes the properties of the certificate-based authentication you want to use with your WorkSpaces.
+- [ClientProperties](https://docs.aws.amazon.com/workspaces/latest/api/API_ClientProperties.html): Describes an Amazon WorkSpaces client.
+- [ClientPropertiesResult](https://docs.aws.amazon.com/workspaces/latest/api/API_ClientPropertiesResult.html): Information about the Amazon WorkSpaces client.
+- [ComputeType](https://docs.aws.amazon.com/workspaces/latest/api/API_ComputeType.html): Describes the compute type of the bundle.
+- [ConnectClientAddIn](https://docs.aws.amazon.com/workspaces/latest/api/API_ConnectClientAddIn.html): Describes an Amazon Connect client add-in.
+- [ConnectionAlias](https://docs.aws.amazon.com/workspaces/latest/api/API_ConnectionAlias.html): Describes a connection alias.
+- [ConnectionAliasAssociation](https://docs.aws.amazon.com/workspaces/latest/api/API_ConnectionAliasAssociation.html): Describes a connection alias association that is used for cross-Region redirection.
+- [ConnectionAliasPermission](https://docs.aws.amazon.com/workspaces/latest/api/API_ConnectionAliasPermission.html): Describes the permissions for a connection alias.
+- [CustomWorkspaceImageImportErrorDetails](https://docs.aws.amazon.com/workspaces/latest/api/API_CustomWorkspaceImageImportErrorDetails.html): Describes in-depth details about the error.
+- [DataReplicationSettings](https://docs.aws.amazon.com/workspaces/latest/api/API_DataReplicationSettings.html): Describes the data replication settings.
+- [DefaultClientBrandingAttributes](https://docs.aws.amazon.com/workspaces/latest/api/API_DefaultClientBrandingAttributes.html): Returns default client branding attributes that were imported.
+- [DefaultImportClientBrandingAttributes](https://docs.aws.amazon.com/workspaces/latest/api/API_DefaultImportClientBrandingAttributes.html): The default client branding attributes to be imported.
+- [DefaultWorkspaceCreationProperties](https://docs.aws.amazon.com/workspaces/latest/api/API_DefaultWorkspaceCreationProperties.html): Describes the default values that are used to create WorkSpaces.
+- [DescribeWorkspaceDirectoriesFilter](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceDirectoriesFilter.html): Describes the filter conditions for the WorkSpaces to return.
+- [DescribeWorkspacesPoolsFilter](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspacesPoolsFilter.html): Describes the filter conditions for WorkSpaces Pools to return.
+- [ErrorDetails](https://docs.aws.amazon.com/workspaces/latest/api/API_ErrorDetails.html): Describes in-depth details about the error.
+- [FailedCreateStandbyWorkspacesRequest](https://docs.aws.amazon.com/workspaces/latest/api/API_FailedCreateStandbyWorkspacesRequest.html): Describes the standby WorkSpace that could not be created.
+- [FailedCreateWorkspaceRequest](https://docs.aws.amazon.com/workspaces/latest/api/API_FailedCreateWorkspaceRequest.html): Describes a WorkSpace that cannot be created.
+- [FailedWorkspaceChangeRequest](https://docs.aws.amazon.com/workspaces/latest/api/API_FailedWorkspaceChangeRequest.html): Describes a WorkSpace that could not be rebooted. (), rebuilt (), restored (), terminated (), started (), or stopped ().
+- [GlobalAcceleratorForDirectory](https://docs.aws.amazon.com/workspaces/latest/api/API_GlobalAcceleratorForDirectory.html): Describes the Global Accelerator for directory
+- [GlobalAcceleratorForWorkSpace](https://docs.aws.amazon.com/workspaces/latest/api/API_GlobalAcceleratorForWorkSpace.html): Describes the Global Accelerator for WorkSpaces.
+- [IDCConfig](https://docs.aws.amazon.com/workspaces/latest/api/API_IDCConfig.html): Specifies the configurations of the identity center.
+- [ImagePermission](https://docs.aws.amazon.com/workspaces/latest/api/API_ImagePermission.html): Describes the AWS accounts that have been granted permission to use a shared image.
+- [ImageResourceAssociation](https://docs.aws.amazon.com/workspaces/latest/api/API_ImageResourceAssociation.html): Describes the association between an application and an image resource.
+- [ImageSourceIdentifier](https://docs.aws.amazon.com/workspaces/latest/api/API_ImageSourceIdentifier.html): Describes the image import source.
+- [IosClientBrandingAttributes](https://docs.aws.amazon.com/workspaces/latest/api/API_IosClientBrandingAttributes.html): The client branding attributes for iOS device types.
+- [IosImportClientBrandingAttributes](https://docs.aws.amazon.com/workspaces/latest/api/API_IosImportClientBrandingAttributes.html): The client branding attributes to import for iOS device types.
+- [IpRuleItem](https://docs.aws.amazon.com/workspaces/latest/api/API_IpRuleItem.html): Describes a rule for an IP access control group.
+- [MicrosoftEntraConfig](https://docs.aws.amazon.com/workspaces/latest/api/API_MicrosoftEntraConfig.html): Specifies the configurations of the Microsoft Entra.
+- [ModificationState](https://docs.aws.amazon.com/workspaces/latest/api/API_ModificationState.html): Describes a WorkSpace modification.
+- [NetworkAccessConfiguration](https://docs.aws.amazon.com/workspaces/latest/api/API_NetworkAccessConfiguration.html): Describes the network details of a WorkSpaces Pool.
+- [OperatingSystem](https://docs.aws.amazon.com/workspaces/latest/api/API_OperatingSystem.html): The operating system that the image is running.
+- [PendingCreateStandbyWorkspacesRequest](https://docs.aws.amazon.com/workspaces/latest/api/API_PendingCreateStandbyWorkspacesRequest.html): Information about the standby WorkSpace.
+- [RebootRequest](https://docs.aws.amazon.com/workspaces/latest/api/API_RebootRequest.html): Describes the information used to reboot a WorkSpace.
+- [RebuildRequest](https://docs.aws.amazon.com/workspaces/latest/api/API_RebuildRequest.html): Describes the information used to rebuild a WorkSpace.
+- [RelatedWorkspaceProperties](https://docs.aws.amazon.com/workspaces/latest/api/API_RelatedWorkspaceProperties.html): Describes the related WorkSpace.
+- [RootStorage](https://docs.aws.amazon.com/workspaces/latest/api/API_RootStorage.html): Describes the root volume for a WorkSpace bundle.
+- [SamlProperties](https://docs.aws.amazon.com/workspaces/latest/api/API_SamlProperties.html): Describes the enablement status, user access URL, and relay state parameter name that are used for configuring federation with an SAML 2.0 identity provider.
+- [SelfservicePermissions](https://docs.aws.amazon.com/workspaces/latest/api/API_SelfservicePermissions.html): Describes the self-service permissions for a directory.
+- [Snapshot](https://docs.aws.amazon.com/workspaces/latest/api/API_Snapshot.html): Describes a snapshot.
+- [StandbyWorkspace](https://docs.aws.amazon.com/workspaces/latest/api/API_StandbyWorkspace.html): Describes a standby WorkSpace.
+- [StandbyWorkspacesProperties](https://docs.aws.amazon.com/workspaces/latest/api/API_StandbyWorkspacesProperties.html): Describes the properties of the related standby WorkSpaces.
+- [StartRequest](https://docs.aws.amazon.com/workspaces/latest/api/API_StartRequest.html): Information used to start a WorkSpace.
+- [StopRequest](https://docs.aws.amazon.com/workspaces/latest/api/API_StopRequest.html): Describes the information used to stop a WorkSpace.
+- [StorageConnector](https://docs.aws.amazon.com/workspaces/latest/api/API_StorageConnector.html): Describes the storage connector.
+- [StreamingProperties](https://docs.aws.amazon.com/workspaces/latest/api/API_StreamingProperties.html): Describes the streaming properties.
+- [Tag](https://docs.aws.amazon.com/workspaces/latest/api/API_Tag.html): Describes a tag.
+- [TerminateRequest](https://docs.aws.amazon.com/workspaces/latest/api/API_TerminateRequest.html): Describes the information used to terminate a WorkSpace.
+- [TimeoutSettings](https://docs.aws.amazon.com/workspaces/latest/api/API_TimeoutSettings.html): Describes the timeout settings for a pool of WorkSpaces.
+- [UpdateResult](https://docs.aws.amazon.com/workspaces/latest/api/API_UpdateResult.html): Describes whether a WorkSpace image needs to be updated with the latest drivers and other components required by Amazon WorkSpaces.
+- [UserSetting](https://docs.aws.amazon.com/workspaces/latest/api/API_UserSetting.html): Information about the user's permission settings.
+- [UserStorage](https://docs.aws.amazon.com/workspaces/latest/api/API_UserStorage.html): Describes the user volume for a WorkSpace bundle.
+- [Workspace](https://docs.aws.amazon.com/workspaces/latest/api/API_Workspace.html): Describes a WorkSpace.
+- [WorkspaceAccessProperties](https://docs.aws.amazon.com/workspaces/latest/api/API_WorkspaceAccessProperties.html): The device types and operating systems that can be used to access a WorkSpace.
+- [WorkSpaceApplication](https://docs.aws.amazon.com/workspaces/latest/api/API_WorkSpaceApplication.html): Describes the WorkSpace application.
+- [WorkSpaceApplicationDeployment](https://docs.aws.amazon.com/workspaces/latest/api/API_WorkSpaceApplicationDeployment.html): Describes the WorkSpace application deployment.
+- [WorkspaceBundle](https://docs.aws.amazon.com/workspaces/latest/api/API_WorkspaceBundle.html): Describes a WorkSpace bundle.
+- [WorkspaceConnectionStatus](https://docs.aws.amazon.com/workspaces/latest/api/API_WorkspaceConnectionStatus.html): Describes the connection status of a WorkSpace.
+- [WorkspaceCreationProperties](https://docs.aws.amazon.com/workspaces/latest/api/API_WorkspaceCreationProperties.html): Describes the default properties that are used for creating WorkSpaces.
+- [WorkspaceDirectory](https://docs.aws.amazon.com/workspaces/latest/api/API_WorkspaceDirectory.html): Describes a directory that is used with Amazon WorkSpaces.
+- [WorkspaceImage](https://docs.aws.amazon.com/workspaces/latest/api/API_WorkspaceImage.html): Describes a WorkSpace image.
+- [WorkspaceProperties](https://docs.aws.amazon.com/workspaces/latest/api/API_WorkspaceProperties.html): Describes a WorkSpace.
+- [WorkspaceRequest](https://docs.aws.amazon.com/workspaces/latest/api/API_WorkspaceRequest.html): Describes the information used to create a WorkSpace.
+- [WorkspaceResourceAssociation](https://docs.aws.amazon.com/workspaces/latest/api/API_WorkspaceResourceAssociation.html): Describes the association between an application and a WorkSpace resource.
+- [WorkspacesIpGroup](https://docs.aws.amazon.com/workspaces/latest/api/API_WorkspacesIpGroup.html): Describes an IP access control group.
+- [WorkspacesPool](https://docs.aws.amazon.com/workspaces/latest/api/API_WorkspacesPool.html): Describes a pool of WorkSpaces.
+- [WorkspacesPoolError](https://docs.aws.amazon.com/workspaces/latest/api/API_WorkspacesPoolError.html): Describes a pool error.
+- [WorkspacesPoolSession](https://docs.aws.amazon.com/workspaces/latest/api/API_WorkspacesPoolSession.html): Describes a pool session.

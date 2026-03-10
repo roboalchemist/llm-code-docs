@@ -1,0 +1,1972 @@
+# Source: https://docs.aws.amazon.com/connect/latest/APIReference/llms.txt
+
+# Amazon Connect API Reference
+
+## [Amazon Connect Service](https://docs.aws.amazon.com/connect/latest/APIReference/Welcome_Amazon_Connect_Service.html)
+
+- [Amazon Connect actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Service.html)
+- [Amazon Connect data types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Service.html)
+
+Amazon Connect is a cloud-based contact center solution that you use to set up and manage a customer contact center and provide reliable customer engagement at any scale.
+
+Amazon Connect provides metrics and real-time reporting that enable you to optimize contact routing. You can also resolve customer issues more efficiently by getting customers in touch with the appropriate agents.
+
+There are limits to the number of Amazon Connect resources that you can create. There are also limits to the number of requests that you can make per second. For more information, see [Amazon Connect Service Quotas](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html)in the Amazon Connect Administrator Guide.
+
+You can use an endpoint to connect programmatically to an AWS service. For a list of Amazon Connect endpoints, see [Amazon Connect Endpoints](https://docs.aws.amazon.com/general/latest/gr/connect_region.html).
+
+### Actions
+
+- [ActivateEvaluationForm](https://docs.aws.amazon.com/connect/latest/APIReference/API_ActivateEvaluationForm.html): Activates an evaluation form in the specified Amazon Connect instance.
+- [AssociateAnalyticsDataSet](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateAnalyticsDataSet.html): Associates the specified dataset for a Amazon Connect instance with the target account.
+- [AssociateApprovedOrigin](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateApprovedOrigin.html): This API is in preview release for Amazon Connect and is subject to change.
+- [AssociateBot](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateBot.html): This API is in preview release for Amazon Connect and is subject to change.
+- [AssociateContactWithUser](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateContactWithUser.html): Associates a queued contact with an agent.
+- [AssociateDefaultVocabulary](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateDefaultVocabulary.html): Associates an existing vocabulary as the default.
+- [AssociateEmailAddressAlias](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateEmailAddressAlias.html): Associates an email address alias with an existing email address in an Amazon Connect instance.
+- [AssociateFlow](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateFlow.html): Associates a connect resource to a flow.
+- [AssociateHoursOfOperations](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateHoursOfOperations.html): Associates a set of hours of operations with another hours of operation.
+- [AssociateInstanceStorageConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateInstanceStorageConfig.html): This API is in preview release for Amazon Connect and is subject to change.
+- [AssociateLambdaFunction](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateLambdaFunction.html): This API is in preview release for Amazon Connect and is subject to change.
+- [AssociateLexBot](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateLexBot.html): This API is in preview release for Amazon Connect and is subject to change.
+- [AssociatePhoneNumberContactFlow](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociatePhoneNumberContactFlow.html): Associates a flow with a phone number claimed to your Amazon Connect instance.
+- [AssociateQueueEmailAddresses](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateQueueEmailAddresses.html): Associates a set of email addresses with a queue to enable agents to select different "From" (system) email addresses when replying to inbound email contacts or initiating outbound email contacts.
+- [AssociateQueueQuickConnects](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateQueueQuickConnects.html): Associates a set of quick connects with a queue.
+- [AssociateRoutingProfileQueues](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateRoutingProfileQueues.html): Associates a set of queues with a routing profile.
+- [AssociateSecurityKey](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateSecurityKey.html): This API is in preview release for Amazon Connect and is subject to change.
+- [AssociateSecurityProfiles](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateSecurityProfiles.html): Associate security profiles with an Entity in an Amazon Connect instance.
+- [AssociateTrafficDistributionGroupUser](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateTrafficDistributionGroupUser.html): Associates an agent with a traffic distribution group.
+- [AssociateUserProficiencies](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateUserProficiencies.html): Associates a set of proficiencies with a user.
+- [AssociateWorkspace](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociateWorkspace.html): Associates a workspace with one or more users or routing profiles, allowing them to access the workspace's configured views and pages.
+- [BatchAssociateAnalyticsDataSet](https://docs.aws.amazon.com/connect/latest/APIReference/API_BatchAssociateAnalyticsDataSet.html): Associates a list of analytics datasets for a given Amazon Connect instance to a target account.
+- [BatchCreateDataTableValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_BatchCreateDataTableValue.html): Creates values for attributes in a data table.
+- [BatchDeleteDataTableValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_BatchDeleteDataTableValue.html): Deletes multiple values from a data table.
+- [BatchDescribeDataTableValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_BatchDescribeDataTableValue.html): Retrieves multiple values from a data table without evaluating expressions.
+- [BatchDisassociateAnalyticsDataSet](https://docs.aws.amazon.com/connect/latest/APIReference/API_BatchDisassociateAnalyticsDataSet.html): Removes a list of analytics datasets associated with a given Amazon Connect instance.
+- [BatchGetAttachedFileMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_BatchGetAttachedFileMetadata.html): Allows you to retrieve metadata about multiple attached files on an associated resource.
+- [BatchGetFlowAssociation](https://docs.aws.amazon.com/connect/latest/APIReference/API_BatchGetFlowAssociation.html): Retrieve the flow associations for the given resources.
+- [BatchPutContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_BatchPutContact.html)
+- [BatchUpdateDataTableValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_BatchUpdateDataTableValue.html): Updates multiple data table values using all properties from BatchCreateDataTableValue.
+- [ClaimPhoneNumber](https://docs.aws.amazon.com/connect/latest/APIReference/API_ClaimPhoneNumber.html): Claims an available phone number to your Amazon Connect instance or traffic distribution group.
+- [CompleteAttachedFileUpload](https://docs.aws.amazon.com/connect/latest/APIReference/API_CompleteAttachedFileUpload.html): Allows you to confirm that the attached file has been uploaded using the pre-signed URL provided in the StartAttachedFileUpload API.
+- [CreateAgentStatus](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateAgentStatus.html): Creates an agent status for the specified Amazon Connect instance.
+- [CreateContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateContact.html)
+- [CreateContactFlow](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateContactFlow.html): Creates a flow for the specified Amazon Connect instance.
+- [CreateContactFlowModule](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateContactFlowModule.html): Creates a flow module for the specified Amazon Connect instance.
+- [CreateContactFlowModuleAlias](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateContactFlowModuleAlias.html): Creates a named alias that points to a specific version of a contact flow module.
+- [CreateContactFlowModuleVersion](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateContactFlowModuleVersion.html): Creates an immutable snapshot of a contact flow module, preserving its content and settings at a specific point in time for version control and rollback capabilities.
+- [CreateContactFlowVersion](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateContactFlowVersion.html): Publishes a new version of the flow provided.
+- [CreateDataTable](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateDataTable.html): Creates a new data table with the specified properties.
+- [CreateDataTableAttribute](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateDataTableAttribute.html): Adds an attribute to an existing data table.
+- [CreateEmailAddress](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateEmailAddress.html): Create new email address in the specified Amazon Connect instance.
+- [CreateEvaluationForm](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateEvaluationForm.html): Creates an evaluation form in the specified Amazon Connect instance.
+- [CreateHoursOfOperation](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateHoursOfOperation.html): Creates hours of operation.
+- [CreateHoursOfOperationOverride](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateHoursOfOperationOverride.html): Creates an hours of operation override in an Amazon Connect hours of operation resource.
+- [CreateInstance](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateInstance.html): This API is in preview release for Amazon Connect and is subject to change.
+- [CreateIntegrationAssociation](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateIntegrationAssociation.html): Creates an AWS resource association with an Amazon Connect instance.
+- [CreateNotification](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateNotification.html): Creates a new notification to be delivered to specified recipients.
+- [CreateParticipant](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateParticipant.html): Adds a new participant into an on-going chat contact or webRTC call.
+- [CreatePersistentContactAssociation](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreatePersistentContactAssociation.html): Enables rehydration of chats for the lifespan of a contact.
+- [CreatePredefinedAttribute](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreatePredefinedAttribute.html): Creates a new predefined attribute for the specified Amazon Connect instance.
+- [CreatePrompt](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreatePrompt.html): Creates a prompt.
+- [CreatePushNotificationRegistration](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreatePushNotificationRegistration.html): Creates registration for a device token and a chat contact to receive real-time push notifications.
+- [CreateQueue](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateQueue.html): Creates a new queue for the specified Amazon Connect instance.
+- [CreateQuickConnect](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateQuickConnect.html): Creates a quick connect for the specified Amazon Connect instance.
+- [CreateRoutingProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateRoutingProfile.html): Creates a new routing profile.
+- [CreateRule](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateRule.html): Creates a rule for the specified Amazon Connect instance.
+- [CreateSecurityProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateSecurityProfile.html): Creates a security profile.
+- [CreateTaskTemplate](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateTaskTemplate.html): Creates a new task template in the specified Amazon Connect instance.
+- [CreateTestCase](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateTestCase.html): Creates a test case with its content and metadata for the specified Amazon Connect instance.
+- [CreateTrafficDistributionGroup](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateTrafficDistributionGroup.html): Creates a traffic distribution group given an Amazon Connect instance that has been replicated.
+- [CreateUseCase](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateUseCase.html): Creates a use case for an integration association.
+- [CreateUser](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateUser.html): Creates a user account for the specified Amazon Connect instance.
+- [CreateUserHierarchyGroup](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateUserHierarchyGroup.html): Creates a new user hierarchy group.
+- [CreateView](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateView.html): Creates a new view with the possible status of SAVED or PUBLISHED.
+- [CreateViewVersion](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateViewVersion.html): Publishes a new version of the view identifier.
+- [CreateVocabulary](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateVocabulary.html): Creates a custom vocabulary associated with your Amazon Connect instance.
+- [CreateWorkspace](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateWorkspace.html): Creates a workspace that defines the user experience by mapping views to pages.
+- [CreateWorkspacePage](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateWorkspacePage.html): Associates a view with a page in a workspace, defining what users see when they navigate to that page.
+- [DeactivateEvaluationForm](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeactivateEvaluationForm.html): Deactivates an evaluation form in the specified Amazon Connect instance.
+- [DeleteAttachedFile](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteAttachedFile.html): Deletes an attached file along with the underlying S3 Object.
+- [DeleteContactEvaluation](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteContactEvaluation.html): Deletes a contact evaluation in the specified Amazon Connect instance.
+- [DeleteContactFlow](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteContactFlow.html): Deletes a flow for the specified Amazon Connect instance.
+- [DeleteContactFlowModule](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteContactFlowModule.html): Deletes the specified flow module.
+- [DeleteContactFlowModuleAlias](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteContactFlowModuleAlias.html): Removes an alias reference, breaking the named connection to the underlying module version without affecting the version itself.
+- [DeleteContactFlowModuleVersion](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteContactFlowModuleVersion.html): Removes a specific version of a contact flow module.
+- [DeleteContactFlowVersion](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteContactFlowVersion.html): Deletes the particular version specified in flow version identifier.
+- [DeleteDataTable](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteDataTable.html): Deletes a data table and all associated attributes, versions, audits, and values.
+- [DeleteDataTableAttribute](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteDataTableAttribute.html): Deletes an attribute and all its values from a data table.
+- [DeleteEmailAddress](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteEmailAddress.html): Deletes email address from the specified Amazon Connect instance.
+- [DeleteEvaluationForm](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteEvaluationForm.html): Deletes an evaluation form in the specified Amazon Connect instance.
+- [DeleteHoursOfOperation](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteHoursOfOperation.html): Deletes an hours of operation.
+- [DeleteHoursOfOperationOverride](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteHoursOfOperationOverride.html): Deletes an hours of operation override in an Amazon Connect hours of operation resource.
+- [DeleteInstance](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteInstance.html): This API is in preview release for Amazon Connect and is subject to change.
+- [DeleteIntegrationAssociation](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteIntegrationAssociation.html): Deletes an AWS resource association from an Amazon Connect instance.
+- [DeleteNotification](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteNotification.html): Deletes a notification.
+- [DeletePredefinedAttribute](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeletePredefinedAttribute.html): Deletes a predefined attribute from the specified Amazon Connect instance.
+- [DeletePrompt](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeletePrompt.html): Deletes a prompt.
+- [DeletePushNotificationRegistration](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeletePushNotificationRegistration.html): Deletes registration for a device token and a chat contact.
+- [DeleteQueue](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteQueue.html): Deletes a queue.
+- [DeleteQuickConnect](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteQuickConnect.html): Deletes a quick connect.
+- [DeleteRoutingProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteRoutingProfile.html): Deletes a routing profile.
+- [DeleteRule](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteRule.html): Deletes a rule for the specified Amazon Connect instance.
+- [DeleteSecurityProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteSecurityProfile.html): Deletes a security profile.
+- [DeleteTaskTemplate](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteTaskTemplate.html): Deletes the task template.
+- [DeleteTestCase](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteTestCase.html): Deletes the test case that has already been created for the specified Amazon Connect instance.
+- [DeleteTrafficDistributionGroup](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteTrafficDistributionGroup.html): Deletes a traffic distribution group.
+- [DeleteUseCase](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteUseCase.html): Deletes a use case from an integration association.
+- [DeleteUser](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteUser.html): Deletes a user account from the specified Amazon Connect instance.
+- [DeleteUserHierarchyGroup](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteUserHierarchyGroup.html): Deletes an existing user hierarchy group.
+- [DeleteView](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteView.html): Deletes the view entirely.
+- [DeleteViewVersion](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteViewVersion.html): Deletes the particular version specified in ViewVersion identifier.
+- [DeleteVocabulary](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteVocabulary.html): Deletes the vocabulary that has the given identifier.
+- [DeleteWorkspace](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteWorkspace.html): Deletes a workspace and removes all associated view and resource assignments.
+- [DeleteWorkspaceMedia](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteWorkspaceMedia.html): Deletes a media asset (such as a logo) from a workspace.
+- [DeleteWorkspacePage](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteWorkspacePage.html): Removes the association between a view and a page in a workspace.
+- [DescribeAgentStatus](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeAgentStatus.html): Describes an agent status.
+- [DescribeAuthenticationProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeAuthenticationProfile.html): This API is in preview release for Amazon Connect and is subject to change.
+- [DescribeContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeContact.html): This API is in preview release for Amazon Connect and is subject to change.
+- [DescribeContactEvaluation](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeContactEvaluation.html): Describes a contact evaluation in the specified Amazon Connect instance.
+- [DescribeContactFlow](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeContactFlow.html): Describes the specified flow.
+- [DescribeContactFlowModule](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeContactFlowModule.html): Describes the specified flow module.
+- [DescribeContactFlowModuleAlias](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeContactFlowModuleAlias.html): Retrieves detailed information about a specific alias, including which version it currently points to and its metadata.
+- [DescribeDataTable](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeDataTable.html): Returns all properties for a data table except for attributes and values.
+- [DescribeDataTableAttribute](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeDataTableAttribute.html): Returns detailed information for a specific data table attribute including its configuration, validation rules, and metadata. "Describe" is a deprecated term but is allowed to maintain consistency with existing operations.
+- [DescribeEmailAddress](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeEmailAddress.html): Describe email address form the specified Amazon Connect instance.
+- [DescribeEvaluationForm](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeEvaluationForm.html): Describes an evaluation form in the specified Amazon Connect instance.
+- [DescribeHoursOfOperation](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeHoursOfOperation.html): Describes the hours of operation.
+- [DescribeHoursOfOperationOverride](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeHoursOfOperationOverride.html): Describes the hours of operation override.
+- [DescribeInstance](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeInstance.html): This API is in preview release for Amazon Connect and is subject to change.
+- [DescribeInstanceAttribute](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeInstanceAttribute.html): This API is in preview release for Amazon Connect and is subject to change.
+- [DescribeInstanceStorageConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeInstanceStorageConfig.html): This API is in preview release for Amazon Connect and is subject to change.
+- [DescribeNotification](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeNotification.html): Retrieves detailed information about a specific notification, including its content, priority, recipients, and metadata.
+- [DescribePhoneNumber](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribePhoneNumber.html): Gets details and status of a phone number thatâs claimed to your Amazon Connect instance or traffic distribution group.
+- [DescribePredefinedAttribute](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribePredefinedAttribute.html): Describes a predefined attribute for the specified Amazon Connect instance.
+- [DescribePrompt](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribePrompt.html): Describes the prompt.
+- [DescribeQueue](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeQueue.html): Describes the specified queue.
+- [DescribeQuickConnect](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeQuickConnect.html): Describes the quick connect.
+- [DescribeRoutingProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeRoutingProfile.html): Describes the specified routing profile.
+- [DescribeRule](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeRule.html): Describes a rule for the specified Amazon Connect instance.
+- [DescribeSecurityProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeSecurityProfile.html): Gets basic information about the security profile.
+- [DescribeTestCase](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeTestCase.html): Describes the specified test case and allows you to get the content and metadata of the test case for the specified Amazon Connect instance.
+- [DescribeTrafficDistributionGroup](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeTrafficDistributionGroup.html): Gets details and status of a traffic distribution group.
+- [DescribeUser](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html): Describes the specified user.
+- [DescribeUserHierarchyGroup](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUserHierarchyGroup.html): Describes the specified hierarchy group.
+- [DescribeUserHierarchyStructure](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUserHierarchyStructure.html): Describes the hierarchy structure of the specified Amazon Connect instance.
+- [DescribeView](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeView.html): Retrieves the view for the specified Amazon Connect instance and view identifier.
+- [DescribeVocabulary](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeVocabulary.html): Describes the specified vocabulary.
+- [DescribeWorkspace](https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeWorkspace.html): Retrieves details about a workspace, including its configuration and metadata.
+- [DisassociateAnalyticsDataSet](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateAnalyticsDataSet.html): Removes the dataset ID associated with a given Amazon Connect instance.
+- [DisassociateApprovedOrigin](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateApprovedOrigin.html): This API is in preview release for Amazon Connect and is subject to change.
+- [DisassociateBot](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateBot.html): This API is in preview release for Amazon Connect and is subject to change.
+- [DisassociateEmailAddressAlias](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateEmailAddressAlias.html): Removes the alias association between two email addresses in an Amazon Connect instance.
+- [DisassociateFlow](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateFlow.html): Disassociates a connect resource from a flow.
+- [DisassociateHoursOfOperations](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateHoursOfOperations.html): Disassociates a set of hours of operations with another hours of operation.
+- [DisassociateInstanceStorageConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateInstanceStorageConfig.html): This API is in preview release for Amazon Connect and is subject to change.
+- [DisassociateLambdaFunction](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateLambdaFunction.html): This API is in preview release for Amazon Connect and is subject to change.
+- [DisassociateLexBot](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateLexBot.html): This API is in preview release for Amazon Connect and is subject to change.
+- [DisassociatePhoneNumberContactFlow](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociatePhoneNumberContactFlow.html): Removes the flow association from a phone number claimed to your Amazon Connect instance.
+- [DisassociateQueueEmailAddresses](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateQueueEmailAddresses.html): Removes the association between a set of email addresses and a queue.
+- [DisassociateQueueQuickConnects](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateQueueQuickConnects.html): Disassociates a set of quick connects from a queue.
+- [DisassociateRoutingProfileQueues](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateRoutingProfileQueues.html): Disassociates a set of queues from a routing profile.
+- [DisassociateSecurityKey](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateSecurityKey.html): This API is in preview release for Amazon Connect and is subject to change.
+- [DisassociateSecurityProfiles](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateSecurityProfiles.html): Disassociates a security profile attached to a Q in Connect AI Agent Entity in an Amazon Connect instance.
+- [DisassociateTrafficDistributionGroupUser](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateTrafficDistributionGroupUser.html): Disassociates an agent from a traffic distribution group.
+- [DisassociateUserProficiencies](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateUserProficiencies.html): Disassociates a set of proficiencies from a user.
+- [DisassociateWorkspace](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisassociateWorkspace.html): Removes the association between a workspace and one or more users or routing profiles.
+- [DismissUserContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_DismissUserContact.html): Dismisses contacts from an agentâs CCP and returns the agent to an available state, which allows the agent to receive a new routed contact.
+- [EvaluateDataTableValues](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluateDataTableValues.html): Evaluates values at the time of the request and returns them.
+- [GetAttachedFile](https://docs.aws.amazon.com/connect/latest/APIReference/API_GetAttachedFile.html): Provides a pre-signed URL for download of an approved attached file.
+- [GetContactAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_GetContactAttributes.html): Retrieves the contact attributes for the specified contact.
+- [GetContactMetrics](https://docs.aws.amazon.com/connect/latest/APIReference/API_GetContactMetrics.html): Retrieves contact metric data for a specified contact.
+- [GetCurrentMetricData](https://docs.aws.amazon.com/connect/latest/APIReference/API_GetCurrentMetricData.html): Gets the real-time metric data from the specified Amazon Connect instance.
+- [GetCurrentUserData](https://docs.aws.amazon.com/connect/latest/APIReference/API_GetCurrentUserData.html): Gets the real-time active user data from the specified Amazon Connect instance.
+- [GetEffectiveHoursOfOperations](https://docs.aws.amazon.com/connect/latest/APIReference/API_GetEffectiveHoursOfOperations.html): Get the hours of operations with the effective override applied.
+- [GetFederationToken](https://docs.aws.amazon.com/connect/latest/APIReference/API_GetFederationToken.html): Supports SAML sign-in for Amazon Connect.
+- [GetFlowAssociation](https://docs.aws.amazon.com/connect/latest/APIReference/API_GetFlowAssociation.html): Retrieves the flow associated for a given resource.
+- [GetMetricData](https://docs.aws.amazon.com/connect/latest/APIReference/API_GetMetricData.html): Gets historical metric data from the specified Amazon Connect instance.
+- [GetMetricDataV2](https://docs.aws.amazon.com/connect/latest/APIReference/API_GetMetricDataV2.html): Gets metric data from the specified Amazon Connect instance.
+- [GetPromptFile](https://docs.aws.amazon.com/connect/latest/APIReference/API_GetPromptFile.html): Gets the prompt file.
+- [GetTaskTemplate](https://docs.aws.amazon.com/connect/latest/APIReference/API_GetTaskTemplate.html): Gets details about a specific task template in the specified Amazon Connect instance.
+- [GetTestCaseExecutionSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_GetTestCaseExecutionSummary.html): Retrieves an overview of a test execution that includes the status of the execution, start and end time, and observation summary.
+- [GetTrafficDistribution](https://docs.aws.amazon.com/connect/latest/APIReference/API_GetTrafficDistribution.html): Retrieves the current traffic distribution for a given traffic distribution group.
+- [ImportPhoneNumber](https://docs.aws.amazon.com/connect/latest/APIReference/API_ImportPhoneNumber.html): Imports a claimed phone number from an external service, such as AWS End User Messaging, into an Amazon Connect instance.
+- [ImportWorkspaceMedia](https://docs.aws.amazon.com/connect/latest/APIReference/API_ImportWorkspaceMedia.html): Imports a media asset (such as a logo) for use in a workspace.
+- [ListAgentStatuses](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListAgentStatuses.html): Lists agent statuses.
+- [ListAnalyticsDataAssociations](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListAnalyticsDataAssociations.html): Lists the association status of requested dataset ID for a given Amazon Connect instance.
+- [ListAnalyticsDataLakeDataSets](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListAnalyticsDataLakeDataSets.html): Lists the data lake datasets available to associate with for a given Amazon Connect instance.
+- [ListApprovedOrigins](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListApprovedOrigins.html): This API is in preview release for Amazon Connect and is subject to change.
+- [ListAssociatedContacts](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListAssociatedContacts.html): Provides information about contact tree, a list of associated contacts with a unique identifier.
+- [ListAuthenticationProfiles](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListAuthenticationProfiles.html): This API is in preview release for Amazon Connect and is subject to change.
+- [ListBots](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListBots.html): This API is in preview release for Amazon Connect and is subject to change.
+- [ListChildHoursOfOperations](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListChildHoursOfOperations.html): Provides information about the child hours of operations for the specified parent hours of operation.
+- [ListContactEvaluations](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListContactEvaluations.html): Lists contact evaluations in the specified Amazon Connect instance.
+- [ListContactFlowModuleAliases](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListContactFlowModuleAliases.html): Lists all aliases associated with a contact flow module, showing their current version mappings and metadata.
+- [ListContactFlowModules](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListContactFlowModules.html): Provides information about the flow modules for the specified Amazon Connect instance.
+- [ListContactFlowModuleVersions](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListContactFlowModuleVersions.html): Retrieves a paginated list of all versions for a specific contact flow module.
+- [ListContactFlows](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListContactFlows.html): Provides information about the flows for the specified Amazon Connect instance.
+- [ListContactFlowVersions](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListContactFlowVersions.html): Returns all the available versions for the specified Amazon Connect instance and flow identifier.
+- [ListContactReferences](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListContactReferences.html): This API is in preview release for Amazon Connect and is subject to change.
+- [ListDataTableAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListDataTableAttributes.html): Returns all attributes for a specified data table.
+- [ListDataTablePrimaryValues](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListDataTablePrimaryValues.html): Lists all primary value combinations for a given data table.
+- [ListDataTables](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListDataTables.html): Lists all data tables for the specified Amazon Connect instance.
+- [ListDataTableValues](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListDataTableValues.html): Lists values stored in a data table with optional filtering by record IDs or primary attribute values.
+- [ListDefaultVocabularies](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListDefaultVocabularies.html): Lists the default vocabularies for the specified Amazon Connect instance.
+- [ListEntitySecurityProfiles](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListEntitySecurityProfiles.html): Lists all security profiles attached to a Q in Connect AIAgent Entity in an Amazon Connect instance.
+- [ListEvaluationForms](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListEvaluationForms.html): Lists evaluation forms in the specified Amazon Connect instance.
+- [ListEvaluationFormVersions](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListEvaluationFormVersions.html): Lists versions of an evaluation form in the specified Amazon Connect instance.
+- [ListFlowAssociations](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListFlowAssociations.html): List the flow association based on the filters.
+- [ListHoursOfOperationOverrides](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListHoursOfOperationOverrides.html): List the hours of operation overrides.
+- [ListHoursOfOperations](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListHoursOfOperations.html): Provides information about the hours of operation for the specified Amazon Connect instance.
+- [ListInstanceAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListInstanceAttributes.html): This API is in preview release for Amazon Connect and is subject to change.
+- [ListInstances](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListInstances.html): This API is in preview release for Amazon Connect and is subject to change.
+- [ListInstanceStorageConfigs](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListInstanceStorageConfigs.html): This API is in preview release for Amazon Connect and is subject to change.
+- [ListIntegrationAssociations](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListIntegrationAssociations.html): Provides summary information about the AWS resource associations for the specified Amazon Connect instance.
+- [ListLambdaFunctions](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListLambdaFunctions.html): This API is in preview release for Amazon Connect and is subject to change.
+- [ListLexBots](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListLexBots.html): This API is in preview release for Amazon Connect and is subject to change.
+- [ListNotifications](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListNotifications.html): Retrieves a paginated list of all notifications in the Amazon Connect instance.
+- [ListPhoneNumbers](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbers.html): Provides information about the phone numbers for the specified Amazon Connect instance.
+- [ListPhoneNumbersV2](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbersV2.html): Lists phone numbers claimed to your Amazon Connect instance or traffic distribution group.
+- [ListPredefinedAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPredefinedAttributes.html): Lists predefined attributes for the specified Amazon Connect instance.
+- [ListPrompts](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPrompts.html): Provides information about the prompts for the specified Amazon Connect instance.
+- [ListQueueEmailAddresses](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListQueueEmailAddresses.html): Lists all email addresses that are currently associated with a specific queue, providing details about which "From" email addresses agents can select when handling email contacts.
+- [ListQueueQuickConnects](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListQueueQuickConnects.html): Lists the quick connects associated with a queue.
+- [ListQueues](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListQueues.html): Provides information about the queues for the specified Amazon Connect instance.
+- [ListQuickConnects](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListQuickConnects.html): Provides information about the quick connects for the specified Amazon Connect instance.
+- [ListRealtimeContactAnalysisSegmentsV2](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListRealtimeContactAnalysisSegmentsV2.html): Provides a list of analysis segments for a real-time chat analysis session.
+- [ListRoutingProfileManualAssignmentQueues](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListRoutingProfileManualAssignmentQueues.html): Lists the manual assignment queues associated with a routing profile.
+- [ListRoutingProfileQueues](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListRoutingProfileQueues.html): Lists the queues associated with a routing profile.
+- [ListRoutingProfiles](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListRoutingProfiles.html): Provides summary information about the routing profiles for the specified Amazon Connect instance.
+- [ListRules](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListRules.html): List all rules for the specified Amazon Connect instance.
+- [ListSecurityKeys](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListSecurityKeys.html): This API is in preview release for Amazon Connect and is subject to change.
+- [ListSecurityProfileApplications](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListSecurityProfileApplications.html): Returns a list of third-party applications or MCP Servers in a specific security profile.
+- [ListSecurityProfileFlowModules](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListSecurityProfileFlowModules.html): A list of Flow Modules an AI Agent can invoke as a tool
+- [ListSecurityProfilePermissions](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListSecurityProfilePermissions.html): Lists the permissions granted to a security profile.
+- [ListSecurityProfiles](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListSecurityProfiles.html): Provides summary information about the security profiles for the specified Amazon Connect instance.
+- [ListTagsForResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListTagsForResource.html): Lists the tags for the specified resource.
+- [ListTaskTemplates](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListTaskTemplates.html): Lists task templates for the specified Amazon Connect instance.
+- [ListTestCaseExecutionRecords](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListTestCaseExecutionRecords.html): Lists detailed steps of test case execution that includes all observations along with actions taken and data associated in the specified Amazon Connect instance.
+- [ListTestCaseExecutions](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListTestCaseExecutions.html): Lists all test case executions and allows filtering by test case id, test case name, start time, end time or status of the execution for the specified Amazon Connect instance.
+- [ListTestCases](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListTestCases.html): Lists the test cases present in the specific Amazon Connect instance.
+- [ListTrafficDistributionGroups](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListTrafficDistributionGroups.html): Lists traffic distribution groups.
+- [ListTrafficDistributionGroupUsers](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListTrafficDistributionGroupUsers.html): Lists traffic distribution group users.
+- [ListUseCases](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListUseCases.html): Lists the use cases for the integration association.
+- [ListUserHierarchyGroups](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListUserHierarchyGroups.html): Provides summary information about the hierarchy groups for the specified Amazon Connect instance.
+- [ListUserNotifications](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListUserNotifications.html): Retrieves a paginated list of notifications for a specific user, including the notification status for that user.
+- [ListUserProficiencies](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListUserProficiencies.html): Lists proficiencies associated with a user.
+- [ListUsers](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListUsers.html): Provides summary information about the users for the specified Amazon Connect instance.
+- [ListViews](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListViews.html): Returns views in the given instance.
+- [ListViewVersions](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListViewVersions.html): Returns all the available versions for the specified Amazon Connect instance and view identifier.
+- [ListWorkspaceMedia](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListWorkspaceMedia.html): Lists media assets (such as logos) associated with a workspace.
+- [ListWorkspacePages](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListWorkspacePages.html): Lists the page configurations in a workspace, including the views assigned to each page.
+- [ListWorkspaces](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListWorkspaces.html): Lists the workspaces in an Amazon Connect instance.
+- [MonitorContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_MonitorContact.html): Initiates silent monitoring of a contact.
+- [PauseContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_PauseContact.html): Allows pausing an ongoing task contact.
+- [PutUserStatus](https://docs.aws.amazon.com/connect/latest/APIReference/API_PutUserStatus.html): Changes the current status of a user or agent in Amazon Connect.
+- [ReleasePhoneNumber](https://docs.aws.amazon.com/connect/latest/APIReference/API_ReleasePhoneNumber.html): Releases a phone number previously claimed to an Amazon Connect instance or traffic distribution group.
+- [ReplicateInstance](https://docs.aws.amazon.com/connect/latest/APIReference/API_ReplicateInstance.html): Replicates an Amazon Connect instance in the specified AWS Region and copies configuration information for Amazon Connect resources across AWS Regions.
+- [ResumeContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_ResumeContact.html): Allows resuming a task contact in a paused state.
+- [ResumeContactRecording](https://docs.aws.amazon.com/connect/latest/APIReference/API_ResumeContactRecording.html): When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording whatever recording is selected in the flow configuration: call, screen, or both.
+- [SearchAgentStatuses](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchAgentStatuses.html): Searches AgentStatuses in an Amazon Connect instance, with optional filtering.
+- [SearchAvailablePhoneNumbers](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchAvailablePhoneNumbers.html): Searches for available phone numbers that you can claim to your Amazon Connect instance or traffic distribution group.
+- [SearchContactEvaluations](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchContactEvaluations.html): Searches contact evaluations in an Amazon Connect instance, with optional filtering.
+- [SearchContactFlowModules](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchContactFlowModules.html): Searches the flow modules in an Amazon Connect instance, with optional filtering.
+- [SearchContactFlows](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchContactFlows.html): Searches the flows in an Amazon Connect instance, with optional filtering.
+- [SearchContacts](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchContacts.html): Searches contacts in an Amazon Connect instance.
+- [SearchDataTables](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchDataTables.html): Searches for data tables based on the table's ID, name, and description.
+- [SearchEmailAddresses](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchEmailAddresses.html): Searches email address in an instance, with optional filtering.
+- [SearchEvaluationForms](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchEvaluationForms.html): Searches evaluation forms in an Amazon Connect instance, with optional filtering.
+- [SearchHoursOfOperationOverrides](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchHoursOfOperationOverrides.html): Searches the hours of operation overrides.
+- [SearchHoursOfOperations](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchHoursOfOperations.html): Searches the hours of operation in an Amazon Connect instance, with optional filtering.
+- [SearchNotifications](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchNotifications.html): Searches for notifications based on specified criteria and filters.
+- [SearchPredefinedAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchPredefinedAttributes.html): Searches predefined attributes that meet certain criteria.
+- [SearchPrompts](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchPrompts.html): Searches prompts in an Amazon Connect instance, with optional filtering.
+- [SearchQueues](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchQueues.html): Searches queues in an Amazon Connect instance, with optional filtering.
+- [SearchQuickConnects](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchQuickConnects.html): Searches quick connects in an Amazon Connect instance, with optional filtering.
+- [SearchResourceTags](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchResourceTags.html): Searches tags used in an Amazon Connect instance using optional search criteria.
+- [SearchRoutingProfiles](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchRoutingProfiles.html): Searches routing profiles in an Amazon Connect instance, with optional filtering.
+- [SearchSecurityProfiles](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchSecurityProfiles.html): Searches security profiles in an Amazon Connect instance, with optional filtering.
+- [SearchTestCases](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchTestCases.html): Searches for test cases in the specified Amazon Connect instance, with optional filtering.
+- [SearchUserHierarchyGroups](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchUserHierarchyGroups.html): Searches UserHierarchyGroups in an Amazon Connect instance, with optional filtering.
+- [SearchUsers](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchUsers.html): Searches users in an Amazon Connect instance, with optional filtering.
+- [SearchViews](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchViews.html): Searches views based on name, description, or tags.
+- [SearchVocabularies](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchVocabularies.html): Searches for vocabularies within a specific Amazon Connect instance using State, NameStartsWith, and LanguageCode.
+- [SearchWorkspaceAssociations](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchWorkspaceAssociations.html): Searches for workspace associations with users or routing profiles based on various criteria.
+- [SearchWorkspaces](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchWorkspaces.html): Searches workspaces based on name, description, visibility, or tags.
+- [SendChatIntegrationEvent](https://docs.aws.amazon.com/connect/latest/APIReference/API_SendChatIntegrationEvent.html): Processes chat integration events from AWS or external integrations to Amazon Connect.
+- [SendOutboundEmail](https://docs.aws.amazon.com/connect/latest/APIReference/API_SendOutboundEmail.html): Send outbound email for outbound campaigns.
+- [StartAttachedFileUpload](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartAttachedFileUpload.html): Provides a pre-signed Amazon S3 URL in response for uploading your content.
+- [StartChatContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartChatContact.html): Initiates a flow to start a new chat for the customer.
+- [StartContactEvaluation](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartContactEvaluation.html): Starts an empty evaluation in the specified Amazon Connect instance, using the given evaluation form for the particular contact.
+- [StartContactMediaProcessing](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartContactMediaProcessing.html): Enables in-flight message processing for an ongoing chat session.
+- [StartContactRecording](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartContactRecording.html): Starts recording the contact:
+- [StartContactStreaming](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartContactStreaming.html): Initiates real-time message streaming for a new chat contact.
+- [StartEmailContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartEmailContact.html): Creates an inbound email contact and initiates a flow to start the email contact for the customer.
+- [StartOutboundChatContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartOutboundChatContact.html): Initiates a new outbound SMS or WhatsApp contact to a customer.
+- [StartOutboundEmailContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartOutboundEmailContact.html): Initiates a flow to send an agent reply or outbound email contact (created from the CreateContact API) to a customer.
+- [StartOutboundVoiceContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartOutboundVoiceContact.html): Places an outbound call to a contact, and then initiates the flow.
+- [StartScreenSharing](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartScreenSharing.html): Starts screen sharing for a contact.
+- [StartTaskContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartTaskContact.html): Initiates a flow to start a new task contact.
+- [StartTestCaseExecution](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartTestCaseExecution.html): Starts executing a published test case.
+- [StartWebRTCContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_StartWebRTCContact.html): Places an inbound in-app, web, or video call to a contact, and then initiates the flow.
+- [StopContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_StopContact.html): Ends the specified contact.
+- [StopContactMediaProcessing](https://docs.aws.amazon.com/connect/latest/APIReference/API_StopContactMediaProcessing.html): Stops in-flight message processing for an ongoing chat session.
+- [StopContactRecording](https://docs.aws.amazon.com/connect/latest/APIReference/API_StopContactRecording.html): Stops recording a call when a contact is being recorded.
+- [StopContactStreaming](https://docs.aws.amazon.com/connect/latest/APIReference/API_StopContactStreaming.html): Ends message streaming on a specified contact.
+- [StopTestCaseExecution](https://docs.aws.amazon.com/connect/latest/APIReference/API_StopTestCaseExecution.html): Stops a running test execution.
+- [SubmitContactEvaluation](https://docs.aws.amazon.com/connect/latest/APIReference/API_SubmitContactEvaluation.html): Submits a contact evaluation in the specified Amazon Connect instance.
+- [SuspendContactRecording](https://docs.aws.amazon.com/connect/latest/APIReference/API_SuspendContactRecording.html): When a contact is being recorded, this API suspends recording whatever is selected in the flow configuration: call (IVR or agent), screen, or both.
+- [TagContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_TagContact.html): Adds the specified tags to the contact resource.
+- [TagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_TagResource.html): Adds the specified tags to the specified resource.
+- [TransferContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_TransferContact.html): Transfers TASK or EMAIL contacts from one agent or queue to another agent or queue at any point after a contact is created.
+- [UntagContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_UntagContact.html): Removes the specified tags from the contact resource.
+- [UntagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_UntagResource.html): Removes the specified tags from the specified resource.
+- [UpdateAgentStatus](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateAgentStatus.html): Updates agent status.
+- [UpdateAuthenticationProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateAuthenticationProfile.html): This API is in preview release for Amazon Connect and is subject to change.
+- [UpdateContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateContact.html): This API is in preview release for Amazon Connect and is subject to change.
+- [UpdateContactAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateContactAttributes.html): Creates or updates user-defined contact attributes associated with the specified contact.
+- [UpdateContactEvaluation](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateContactEvaluation.html): Updates details about a contact evaluation in the specified Amazon Connect instance.
+- [UpdateContactFlowContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateContactFlowContent.html): Updates the specified flow.
+- [UpdateContactFlowMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateContactFlowMetadata.html): Updates metadata about specified flow.
+- [UpdateContactFlowModuleAlias](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateContactFlowModuleAlias.html): Updates a specific Aliases metadata, including the version itâs tied to, itâs name, and description.
+- [UpdateContactFlowModuleContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateContactFlowModuleContent.html): Updates specified flow module for the specified Amazon Connect instance.
+- [UpdateContactFlowModuleMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateContactFlowModuleMetadata.html): Updates metadata about specified flow module.
+- [UpdateContactFlowName](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateContactFlowName.html): The name of the flow.
+- [UpdateContactRoutingData](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateContactRoutingData.html): Updates routing priority and age on the contact (QueuePriority and QueueTimeAdjustmentInSeconds).
+- [UpdateContactSchedule](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateContactSchedule.html): Updates the scheduled time of a task contact that is already scheduled.
+- [UpdateDataTableAttribute](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateDataTableAttribute.html): Updates all properties for an attribute using all properties from CreateDataTableAttribute.
+- [UpdateDataTableMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateDataTableMetadata.html): Updates the metadata properties of a data table.
+- [UpdateDataTablePrimaryValues](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateDataTablePrimaryValues.html): Updates the primary values for a record.
+- [UpdateEmailAddressMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateEmailAddressMetadata.html): Updates an email address metadata.
+- [UpdateEvaluationForm](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateEvaluationForm.html): Updates details about a specific evaluation form version in the specified Amazon Connect instance.
+- [UpdateHoursOfOperation](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateHoursOfOperation.html): Updates the hours of operation.
+- [UpdateHoursOfOperationOverride](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateHoursOfOperationOverride.html): Update the hours of operation override.
+- [UpdateInstanceAttribute](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateInstanceAttribute.html): This API is in preview release for Amazon Connect and is subject to change.
+- [UpdateInstanceStorageConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateInstanceStorageConfig.html): This API is in preview release for Amazon Connect and is subject to change.
+- [UpdateNotificationContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateNotificationContent.html): Updates the localized content of an existing notification.
+- [UpdateParticipantAuthentication](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateParticipantAuthentication.html): Instructs Amazon Connect to resume the authentication process.
+- [UpdateParticipantRoleConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateParticipantRoleConfig.html): Updates timeouts for when human chat participants are to be considered idle, and when agents are automatically disconnected from a chat due to idleness.
+- [UpdatePhoneNumber](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdatePhoneNumber.html): Updates your claimed phone number from its current Amazon Connect instance or traffic distribution group to another Amazon Connect instance or traffic distribution group in the same AWS Region.
+- [UpdatePhoneNumberMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdatePhoneNumberMetadata.html): Updates a phone numberâs metadata.
+- [UpdatePredefinedAttribute](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdatePredefinedAttribute.html): Updates a predefined attribute for the specified Amazon Connect instance.
+- [UpdatePrompt](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdatePrompt.html): Updates a prompt.
+- [UpdateQueueHoursOfOperation](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateQueueHoursOfOperation.html): Updates the hours of operation for the specified queue.
+- [UpdateQueueMaxContacts](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateQueueMaxContacts.html): Updates the maximum number of contacts allowed in a queue before it is considered full.
+- [UpdateQueueName](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateQueueName.html): Updates the name and description of a queue.
+- [UpdateQueueOutboundCallerConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateQueueOutboundCallerConfig.html): Updates the outbound caller ID name, number, and outbound whisper flow for a specified queue.
+- [UpdateQueueOutboundEmailConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateQueueOutboundEmailConfig.html): Updates the outbound email address Id for a specified queue.
+- [UpdateQueueStatus](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateQueueStatus.html): Updates the status of the queue.
+- [UpdateQuickConnectConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateQuickConnectConfig.html): Updates the configuration settings for the specified quick connect.
+- [UpdateQuickConnectName](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateQuickConnectName.html): Updates the name and description of a quick connect.
+- [UpdateRoutingProfileAgentAvailabilityTimer](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateRoutingProfileAgentAvailabilityTimer.html): Whether agents with this routing profile will have their routing order calculated based on time since their last inbound contact or longest idle time.
+- [UpdateRoutingProfileConcurrency](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateRoutingProfileConcurrency.html): Updates the channels that agents can handle in the Contact Control Panel (CCP) for a routing profile.
+- [UpdateRoutingProfileDefaultOutboundQueue](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateRoutingProfileDefaultOutboundQueue.html): Updates the default outbound queue of a routing profile.
+- [UpdateRoutingProfileName](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateRoutingProfileName.html): Updates the name and description of a routing profile.
+- [UpdateRoutingProfileQueues](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateRoutingProfileQueues.html): Updates the properties associated with a set of queues for a routing profile.
+- [UpdateRule](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateRule.html): Updates a rule for the specified Amazon Connect instance.
+- [UpdateSecurityProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateSecurityProfile.html): Updates a security profile.
+- [UpdateTaskTemplate](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateTaskTemplate.html): Updates details about a specific task template in the specified Amazon Connect instance.
+- [UpdateTestCase](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateTestCase.html): Updates any of the metadata for a test case, such as the name, description, and status or content of an existing test case.
+- [UpdateTrafficDistribution](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateTrafficDistribution.html): Updates the traffic distribution for a given traffic distribution group.
+- [UpdateUserConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateUserConfig.html): Updates the configuration settings for the specified user, including per-channel auto-accept and after contact work (ACW) timeout settings.
+- [UpdateUserHierarchy](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateUserHierarchy.html): Assigns the specified hierarchy group to the specified user.
+- [UpdateUserHierarchyGroupName](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateUserHierarchyGroupName.html): Updates the name of the user hierarchy group.
+- [UpdateUserHierarchyStructure](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateUserHierarchyStructure.html): Updates the user hierarchy structure: add, remove, and rename user hierarchy levels.
+- [UpdateUserIdentityInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateUserIdentityInfo.html): Updates the identity information for the specified user.
+- [UpdateUserNotificationStatus](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateUserNotificationStatus.html): Updates the status of a notification for a specific user, such as marking it as read or hidden.
+- [UpdateUserPhoneConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateUserPhoneConfig.html): Updates the phone configuration settings for the specified user.
+- [UpdateUserProficiencies](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateUserProficiencies.html): Updates the properties associated with the proficiencies of a user.
+- [UpdateUserRoutingProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateUserRoutingProfile.html): Assigns the specified routing profile to the specified user.
+- [UpdateUserSecurityProfiles](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateUserSecurityProfiles.html): Assigns the specified security profiles to the specified user.
+- [UpdateViewContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateViewContent.html): Updates the view content of the given view identifier in the specified Amazon Connect instance.
+- [UpdateViewMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateViewMetadata.html): Updates the view metadata.
+- [UpdateWorkspaceMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateWorkspaceMetadata.html): Updates the metadata of a workspace, such as its name and description.
+- [UpdateWorkspacePage](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateWorkspacePage.html): Updates the configuration of a page in a workspace, including the associated view and input data.
+- [UpdateWorkspaceTheme](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateWorkspaceTheme.html): Updates the theme configuration for a workspace, including colors and styling.
+- [UpdateWorkspaceVisibility](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateWorkspaceVisibility.html): Updates the visibility setting of a workspace, controlling whether it is available to all users, assigned users only, or none.
+
+### Data Types
+
+- [ActionSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_ActionSummary.html): Information about an action.
+- [AdditionalEmailRecipients](https://docs.aws.amazon.com/connect/latest/APIReference/API_AdditionalEmailRecipients.html): List of additional email addresses for an email contact.
+- [AfterContactWorkConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_AfterContactWorkConfig.html): Configuration settings for after contact work (ACW) timeout.
+- [AfterContactWorkConfigPerChannel](https://docs.aws.amazon.com/connect/latest/APIReference/API_AfterContactWorkConfigPerChannel.html): Configuration settings for after contact work (ACW) timeout for a specific channel.
+- [AgentConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_AgentConfig.html): The distribution of agents between the instance and its replica(s).
+- [AgentContactReference](https://docs.aws.amazon.com/connect/latest/APIReference/API_AgentContactReference.html): Information about the contact associated to the user.
+- [AgentFirst](https://docs.aws.amazon.com/connect/latest/APIReference/API_AgentFirst.html): Information about agent-first outbound strategy configuration.
+- [AgentHierarchyGroup](https://docs.aws.amazon.com/connect/latest/APIReference/API_AgentHierarchyGroup.html): Information about an agent hierarchy group.
+- [AgentHierarchyGroups](https://docs.aws.amazon.com/connect/latest/APIReference/API_AgentHierarchyGroups.html): A structure that defines search criteria for contacts using agent hierarchy group levels.
+- [AgentInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_AgentInfo.html): Information about the agent who accepted the contact.
+- [AgentQualityMetrics](https://docs.aws.amazon.com/connect/latest/APIReference/API_AgentQualityMetrics.html): Information about the quality of the Agent's media connection
+- [AgentsCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_AgentsCriteria.html): Can be used to define a list of preferred agents to target the contact to within the queue.
+- [AgentStatus](https://docs.aws.amazon.com/connect/latest/APIReference/API_AgentStatus.html): Contains information about an agent status.
+- [AgentStatusIdentifier](https://docs.aws.amazon.com/connect/latest/APIReference/API_AgentStatusIdentifier.html): Information about the agent status assigned to the user.
+- [AgentStatusReference](https://docs.aws.amazon.com/connect/latest/APIReference/API_AgentStatusReference.html): Information about the agent's status.
+- [AgentStatusSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_AgentStatusSearchCriteria.html): The search criteria to be used to return agent statuses.
+- [AgentStatusSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_AgentStatusSearchFilter.html): Filters to be applied to search results.
+- [AgentStatusSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_AgentStatusSummary.html): Summary information for an agent status.
+- [AiAgentInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_AiAgentInfo.html): Information of the AI agent involved in the contact.
+- [AliasConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_AliasConfiguration.html): Configuration information of an email alias.
+- [AllowedCapabilities](https://docs.aws.amazon.com/connect/latest/APIReference/API_AllowedCapabilities.html): Information about the capabilities enabled for participants of the contact.
+- [AnalyticsDataAssociationResult](https://docs.aws.amazon.com/connect/latest/APIReference/API_AnalyticsDataAssociationResult.html): This API is in preview release for Amazon Connect and is subject to change.
+- [AnalyticsDataSetsResult](https://docs.aws.amazon.com/connect/latest/APIReference/API_AnalyticsDataSetsResult.html): Information about datasets that are available to associate with: DataSetId, DataSetName.
+- [AnswerMachineDetectionConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_AnswerMachineDetectionConfig.html): Configuration of the answering machine detection.
+- [Application](https://docs.aws.amazon.com/connect/latest/APIReference/API_Application.html): This API is in preview release for Amazon Connect and is subject to change.
+- [AssignContactCategoryActionDefinition](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssignContactCategoryActionDefinition.html): This action must be set if TriggerEventSource is one of the following values: OnPostCallAnalysisAvailable | OnRealTimeCallAnalysisAvailable | OnRealTimeChatAnalysisAvailable | OnPostChatAnalysisAvailable.
+- [AssignSlaActionDefinition](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssignSlaActionDefinition.html): The AssignSla action definition.
+- [AssociatedContactSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_AssociatedContactSummary.html): Contact summary of a contact in contact tree associated with unique identifier.
+- [AttachedFile](https://docs.aws.amazon.com/connect/latest/APIReference/API_AttachedFile.html): Information about the attached file.
+- [AttachedFileError](https://docs.aws.amazon.com/connect/latest/APIReference/API_AttachedFileError.html): Error describing a failure to retrieve attached file metadata through BatchGetAttachedFileMetadata action.
+- [AttachmentReference](https://docs.aws.amazon.com/connect/latest/APIReference/API_AttachmentReference.html): Information about a reference when the referenceType is ATTACHMENT.
+- [Attendee](https://docs.aws.amazon.com/connect/latest/APIReference/API_Attendee.html): The attendee information, including attendee ID and join token.
+- [Attribute](https://docs.aws.amazon.com/connect/latest/APIReference/API_Attribute.html): A toggle for an individual feature at the instance level.
+- [AttributeAndCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_AttributeAndCondition.html): A list of conditions which would be applied together with an AND condition.
+- [AttributeCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_AttributeCondition.html): An object to specify the predefined attribute condition.
+- [AudioFeatures](https://docs.aws.amazon.com/connect/latest/APIReference/API_AudioFeatures.html): Has audio-specific configurations as the operating parameter for Echo Reduction.
+- [AudioQualityMetricsInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_AudioQualityMetricsInfo.html): Contains information for score and potential quality issues for Audio
+- [AuthenticationProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_AuthenticationProfile.html): This API is in preview release for Amazon Connect and is subject to change.
+- [AuthenticationProfileSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_AuthenticationProfileSummary.html): This API is in preview release for Amazon Connect and is subject to change.
+- [AutoAcceptConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_AutoAcceptConfig.html): Configuration settings for auto-accept for a specific channel.
+- [AutoEvaluationConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_AutoEvaluationConfiguration.html): Configuration information about automated evaluations.
+- [AutoEvaluationDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_AutoEvaluationDetails.html): Details about automated evaluations.
+- [AutomaticFailConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_AutomaticFailConfiguration.html): Information about automatic fail configuration for an evaluation form.
+- [AvailableNumberSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_AvailableNumberSummary.html): Information about available phone numbers.
+- [BatchCreateDataTableValueFailureResult](https://docs.aws.amazon.com/connect/latest/APIReference/API_BatchCreateDataTableValueFailureResult.html): A batch create data table value failure result.
+- [BatchCreateDataTableValueSuccessResult](https://docs.aws.amazon.com/connect/latest/APIReference/API_BatchCreateDataTableValueSuccessResult.html): A batch create data table value success result.
+- [BatchDeleteDataTableValueFailureResult](https://docs.aws.amazon.com/connect/latest/APIReference/API_BatchDeleteDataTableValueFailureResult.html): A batch delete data table value failure result.
+- [BatchDeleteDataTableValueSuccessResult](https://docs.aws.amazon.com/connect/latest/APIReference/API_BatchDeleteDataTableValueSuccessResult.html): A batch delete data table value success result.
+- [BatchDescribeDataTableValueFailureResult](https://docs.aws.amazon.com/connect/latest/APIReference/API_BatchDescribeDataTableValueFailureResult.html): A batch describe data table value failure result.
+- [BatchDescribeDataTableValueSuccessResult](https://docs.aws.amazon.com/connect/latest/APIReference/API_BatchDescribeDataTableValueSuccessResult.html): A batch describe data table value success result.
+- [BatchUpdateDataTableValueFailureResult](https://docs.aws.amazon.com/connect/latest/APIReference/API_BatchUpdateDataTableValueFailureResult.html): A batch update data table value failure result.
+- [BatchUpdateDataTableValueSuccessResult](https://docs.aws.amazon.com/connect/latest/APIReference/API_BatchUpdateDataTableValueSuccessResult.html): A batch update data table value success result.
+- [BooleanCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_BooleanCondition.html): A boolean search condition for Search APIs.
+- [Campaign](https://docs.aws.amazon.com/connect/latest/APIReference/API_Campaign.html): Information associated with a campaign.
+- [CaseSlaConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_CaseSlaConfiguration.html): The SLA configuration for Case SlaAssignmentType.
+- [ChatContactMetrics](https://docs.aws.amazon.com/connect/latest/APIReference/API_ChatContactMetrics.html): Information about the overall participant interactions at the contact level.
+- [ChatEntryPointParameters](https://docs.aws.amazon.com/connect/latest/APIReference/API_ChatEntryPointParameters.html): Parameters for initiating a chat test.
+- [ChatEvent](https://docs.aws.amazon.com/connect/latest/APIReference/API_ChatEvent.html): Chat integration event containing payload to perform different chat actions such as:
+- [ChatMessage](https://docs.aws.amazon.com/connect/latest/APIReference/API_ChatMessage.html): A chat message.
+- [ChatMetrics](https://docs.aws.amazon.com/connect/latest/APIReference/API_ChatMetrics.html): Information about how agent, bot, and customer interact in a chat contact.
+- [ChatParticipantRoleConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_ChatParticipantRoleConfig.html): Configuration information for the chat participant role.
+- [ChatStreamingConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_ChatStreamingConfiguration.html): The streaming configuration, such as the Amazon SNS streaming endpoint.
+- [ClaimedPhoneNumberSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_ClaimedPhoneNumberSummary.html): Information about a phone number that has been claimed to your Amazon Connect instance or traffic distribution group.
+- [CommonAttributeAndCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_CommonAttributeAndCondition.html): A list of conditions which would be applied together with an AND condition.
+- [Condition](https://docs.aws.amazon.com/connect/latest/APIReference/API_Condition.html): A leaf node condition which can be used to specify a ProficiencyName, ProficiencyValue and ProficiencyLimit.
+- [ConnectionData](https://docs.aws.amazon.com/connect/latest/APIReference/API_ConnectionData.html): Information required to join the call.
+- [Contact](https://docs.aws.amazon.com/connect/latest/APIReference/API_Contact.html): Contains information about a contact.
+- [ContactAnalysis](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactAnalysis.html): A structure that defines search criteria for contacts using analysis outputs from Amazon Connect Contact Lens.
+- [ContactConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactConfiguration.html): The contact configuration for push notification registration.
+- [ContactDataRequest](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactDataRequest.html): Request object with information to create a contact.
+- [ContactDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactDetails.html): A map of string key/value pairs that contain user-defined attributes which are lightly typed within the contact.
+- [ContactEvaluation](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactEvaluation.html): Information about the contact evaluations where the key is the FormId, which is a unique identifier for the form.
+- [ContactFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactFilter.html): Filters user data based on the contact information that is associated to the users.
+- [ContactFlow](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactFlow.html): Contains information about a flow.
+- [ContactFlowAttributeAndCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactFlowAttributeAndCondition.html): A list of conditions which would be applied together with an AND condition.
+- [ContactFlowAttributeFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactFlowAttributeFilter.html): Filter for contact flow attributes with multiple condition types.
+- [ContactFlowModule](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactFlowModule.html): Contains information about a flow module.
+- [ContactFlowModuleAliasInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactFlowModuleAliasInfo.html): Contains information about an alias.
+- [ContactFlowModuleAliasSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactFlowModuleAliasSummary.html): Contains information about an alias.
+- [ContactFlowModuleSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactFlowModuleSearchCriteria.html): The search criteria to be used to return flow modules.
+- [ContactFlowModuleSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactFlowModuleSearchFilter.html): The search criteria to be used to return flow modules.
+- [ContactFlowModuleSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactFlowModuleSummary.html): Contains summary information about a flow.
+- [ContactFlowModuleVersionSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactFlowModuleVersionSummary.html): Contains information about a version.
+- [ContactFlowSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactFlowSearchCriteria.html): The search criteria to be used to return flows.
+- [ContactFlowSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactFlowSearchFilter.html): Filters to be applied to search results.
+- [ContactFlowSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactFlowSummary.html): Contains summary information about a flow.
+- [ContactFlowTypeCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactFlowTypeCondition.html): The contact flow type condition.
+- [ContactFlowVersionSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactFlowVersionSummary.html): A summary of a flow version's metadata.
+- [ContactMetricInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactMetricInfo.html): Contains the details of a metric to be retrieved for a contact.
+- [ContactMetricResult](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactMetricResult.html): Contains the result of a requested metric for the contact.
+- [ContactMetricValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactMetricValue.html): Contains the numeric value of a contact metric result.
+- [ContactSearchSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactSearchSummary.html): Information of returned contact.
+- [ContactSearchSummaryAgentInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactSearchSummaryAgentInfo.html): Information about the agent who accepted the contact.
+- [ContactSearchSummaryQueueInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactSearchSummaryQueueInfo.html): If this contact was queued, this contains information about the queue.
+- [ContactSearchSummarySegmentAttributeValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_ContactSearchSummarySegmentAttributeValue.html): The value of a segment attribute.
+- [ControlPlaneAttributeFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_ControlPlaneAttributeFilter.html): An object that can be used to specify Tag conditions inside the SearchFilter.
+- [ControlPlaneTagFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_ControlPlaneTagFilter.html): An object that can be used to specify Tag conditions inside the SearchFilter.
+- [ControlPlaneUserAttributeFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_ControlPlaneUserAttributeFilter.html): An object that can be used to specify Tag conditions or Hierarchy Group conditions inside the SearchFilter.
+- [CreateCaseActionDefinition](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateCaseActionDefinition.html): The CreateCase action definition.
+- [CreatedByInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_CreatedByInfo.html): Information on the identity that created the file.
+- [Credentials](https://docs.aws.amazon.com/connect/latest/APIReference/API_Credentials.html): Contains credentials to use for federation.
+- [CrossChannelBehavior](https://docs.aws.amazon.com/connect/latest/APIReference/API_CrossChannelBehavior.html): Defines the cross-channel routing behavior that allows an agent working on a contact in one channel to be offered a contact from a different channel.
+- [CurrentMetric](https://docs.aws.amazon.com/connect/latest/APIReference/API_CurrentMetric.html): Contains information about a real-time metric.
+- [CurrentMetricData](https://docs.aws.amazon.com/connect/latest/APIReference/API_CurrentMetricData.html): Contains the data for a real-time metric.
+- [CurrentMetricResult](https://docs.aws.amazon.com/connect/latest/APIReference/API_CurrentMetricResult.html): Contains information about a set of real-time metrics.
+- [CurrentMetricSortCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_CurrentMetricSortCriteria.html): The way to sort the resulting response based on metrics.
+- [Customer](https://docs.aws.amazon.com/connect/latest/APIReference/API_Customer.html): Information about the Customer on the contact.
+- [CustomerQualityMetrics](https://docs.aws.amazon.com/connect/latest/APIReference/API_CustomerQualityMetrics.html): Information about the quality of the Customer's media connection
+- [CustomerVoiceActivity](https://docs.aws.amazon.com/connect/latest/APIReference/API_CustomerVoiceActivity.html): Information about customerâs voice activity.
+- [DataTable](https://docs.aws.amazon.com/connect/latest/APIReference/API_DataTable.html): Represents a data table in Amazon Connect.
+- [DataTableAccessControlConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_DataTableAccessControlConfiguration.html): A data table access control configuration.
+- [DataTableAttribute](https://docs.aws.amazon.com/connect/latest/APIReference/API_DataTableAttribute.html): Represents an attribute (column) in a data table.
+- [DataTableDeleteValueIdentifier](https://docs.aws.amazon.com/connect/latest/APIReference/API_DataTableDeleteValueIdentifier.html): A data table delete value identifier.
+- [DataTableEvaluatedValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_DataTableEvaluatedValue.html): A data table evaluated value.
+- [DataTableLockVersion](https://docs.aws.amazon.com/connect/latest/APIReference/API_DataTableLockVersion.html): Contains lock version information for different levels of a data table hierarchy.
+- [DataTableSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_DataTableSearchCriteria.html): A data table search criteria.
+- [DataTableSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_DataTableSearchFilter.html): A data table search filter.
+- [DataTableSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_DataTableSummary.html): A data table summary.
+- [DataTableValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_DataTableValue.html): A data table value.
+- [DataTableValueEvaluationSet](https://docs.aws.amazon.com/connect/latest/APIReference/API_DataTableValueEvaluationSet.html): A data table value evaluation set.
+- [DataTableValueIdentifier](https://docs.aws.amazon.com/connect/latest/APIReference/API_DataTableValueIdentifier.html): A data table value identifier.
+- [DataTableValueSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_DataTableValueSummary.html): A data table value summary.
+- [DateCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_DateCondition.html): An object to specify the hours of operation override date condition.
+- [DateReference](https://docs.aws.amazon.com/connect/latest/APIReference/API_DateReference.html): Information about a reference when the referenceType is DATE.
+- [DateTimeCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_DateTimeCondition.html): A datetime search condition for Search APIs.
+- [DecimalCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_DecimalCondition.html): A decimal search condition for Search APIs.
+- [DefaultVocabulary](https://docs.aws.amazon.com/connect/latest/APIReference/API_DefaultVocabulary.html): Contains information about a default vocabulary.
+- [DeviceInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_DeviceInfo.html): Information regarding the device.
+- [Dimensions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Dimensions.html): Contains information about the dimensions for a set of metrics.
+- [DisconnectDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisconnectDetails.html): Information about the call disconnect experience.
+- [DisconnectReason](https://docs.aws.amazon.com/connect/latest/APIReference/API_DisconnectReason.html): Contains details about why a contact was disconnected.
+- [Distribution](https://docs.aws.amazon.com/connect/latest/APIReference/API_Distribution.html): Information about a traffic distribution.
+- [DownloadUrlMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_DownloadUrlMetadata.html): Metadata used to download the attached file.
+- [EffectiveHoursOfOperations](https://docs.aws.amazon.com/connect/latest/APIReference/API_EffectiveHoursOfOperations.html): Information about the hours of operations with the effective override applied.
+- [EffectiveOverrideHours](https://docs.aws.amazon.com/connect/latest/APIReference/API_EffectiveOverrideHours.html): Information about the hours of operation overrides which contribute to effective hours of operations.
+- [EmailAddressConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_EmailAddressConfig.html): Configuration object that specifies an email address to be associated with a queue.
+- [EmailAddressInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_EmailAddressInfo.html): Contains information about a source or destination email address.
+- [EmailAddressMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_EmailAddressMetadata.html): Contains information about an email address for a contact center.
+- [EmailAddressSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_EmailAddressSearchCriteria.html): The search criteria to be used to return email addresses.
+- [EmailAddressSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_EmailAddressSearchFilter.html): Filters to be applied to search results.
+- [EmailAddressSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_EmailAddressSummary.html): Summary information about an email address associated with a queue.
+- [EmailAttachment](https://docs.aws.amazon.com/connect/latest/APIReference/API_EmailAttachment.html): Information about the email attachment files.
+- [EmailMessageReference](https://docs.aws.amazon.com/connect/latest/APIReference/API_EmailMessageReference.html): Information about the reference when the referenceType is EMAIL_MESSAGE.
+- [EmailRecipient](https://docs.aws.amazon.com/connect/latest/APIReference/API_EmailRecipient.html): Information about the email recipient
+- [EmailReference](https://docs.aws.amazon.com/connect/latest/APIReference/API_EmailReference.html): Information about a reference when the referenceType is EMAIL.
+- [EmptyFieldValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_EmptyFieldValue.html): An empty value.
+- [EncryptionConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_EncryptionConfig.html): The encryption configuration.
+- [EndAssociatedTasksActionDefinition](https://docs.aws.amazon.com/connect/latest/APIReference/API_EndAssociatedTasksActionDefinition.html): End associated tasks related to a case.
+- [Endpoint](https://docs.aws.amazon.com/connect/latest/APIReference/API_Endpoint.html): Information about the endpoint.
+- [EndpointInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_EndpointInfo.html): Information about the endpoint.
+- [ErrorResult](https://docs.aws.amazon.com/connect/latest/APIReference/API_ErrorResult.html): This API is in preview release for Amazon Connect and is subject to change.
+- [Evaluation](https://docs.aws.amazon.com/connect/latest/APIReference/API_Evaluation.html): Information about a contact evaluation.
+- [EvaluationAcknowledgement](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationAcknowledgement.html): Information about the evaluation acknowledgement.
+- [EvaluationAcknowledgementSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationAcknowledgementSummary.html): Summary information about an evaluation acknowledgement.
+- [EvaluationAnswerData](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationAnswerData.html): Information about answer data for a contact evaluation.
+- [EvaluationAnswerInput](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationAnswerInput.html): Information about input answers for a contact evaluation.
+- [EvaluationAnswerOutput](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationAnswerOutput.html): Information about output answers for a contact evaluation.
+- [EvaluationAutomationRuleCategory](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationAutomationRuleCategory.html): The Contact Lens category used by evaluation automation.
+- [EvaluationContactLensAnswerAnalysisDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationContactLensAnswerAnalysisDetails.html): Analysis details providing explanation for Contact Lens automation decision.
+- [EvaluationContactParticipant](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationContactParticipant.html): Information about a contact participant in the evaluation.
+- [EvaluationForm](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationForm.html): Information about the evaluation form.
+- [EvaluationFormAutoEvaluationConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormAutoEvaluationConfiguration.html): The automatic evaluation configuration of an evaluation form.
+- [EvaluationFormContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormContent.html): Information about an evaluation form used in a contact evaluation.
+- [EvaluationFormItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormItem.html): Information about an item from an evaluation form.
+- [EvaluationFormItemEnablementCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormItemEnablementCondition.html): A condition for item enablement.
+- [EvaluationFormItemEnablementConditionOperand](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormItemEnablementConditionOperand.html): An operand of the enablement condition.
+- [EvaluationFormItemEnablementConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormItemEnablementConfiguration.html): An item enablement configuration.
+- [EvaluationFormItemEnablementExpression](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormItemEnablementExpression.html): An expression that defines a basic building block of conditional enablement.
+- [EvaluationFormItemEnablementSource](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormItemEnablementSource.html): An enablement expression source item.
+- [EvaluationFormItemEnablementSourceValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormItemEnablementSourceValue.html): An enablement expression source value.
+- [EvaluationFormLanguageConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormLanguageConfiguration.html): Language configuration for an evaluation form.
+- [EvaluationFormMultiSelectQuestionAutomation](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormMultiSelectQuestionAutomation.html): Automation configuration for multi-select questions.
+- [EvaluationFormMultiSelectQuestionAutomationOption](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormMultiSelectQuestionAutomationOption.html): An automation option for a multi-select question.
+- [EvaluationFormMultiSelectQuestionOption](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormMultiSelectQuestionOption.html): An option for a multi-select question in an evaluation form.
+- [EvaluationFormMultiSelectQuestionProperties](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormMultiSelectQuestionProperties.html): Properties for a multi-select question in an evaluation form.
+- [EvaluationFormNumericQuestionAutomation](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormNumericQuestionAutomation.html): Information about the automation configuration in numeric questions.
+- [EvaluationFormNumericQuestionOption](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormNumericQuestionOption.html): Information about the option range used for scoring in numeric questions.
+- [EvaluationFormNumericQuestionProperties](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormNumericQuestionProperties.html): Information about properties for a numeric question in an evaluation form.
+- [EvaluationFormQuestion](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormQuestion.html): Information about a question from an evaluation form.
+- [EvaluationFormQuestionAutomationAnswerSource](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormQuestionAutomationAnswerSource.html): A question automation answer.
+- [EvaluationFormQuestionTypeProperties](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormQuestionTypeProperties.html): Information about properties for a question in an evaluation form.
+- [EvaluationFormScoringStrategy](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormScoringStrategy.html): Information about scoring strategy for an evaluation form.
+- [EvaluationFormSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormSearchCriteria.html): The search criteria to be used to return evaluation forms.
+- [EvaluationFormSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormSearchFilter.html): Filters to be applied to search results.
+- [EvaluationFormSearchSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormSearchSummary.html): Information about the returned evaluation forms.
+- [EvaluationFormSection](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormSection.html): Information about a section from an evaluation form.
+- [EvaluationFormSingleSelectQuestionAutomation](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormSingleSelectQuestionAutomation.html): Information about the automation configuration in single select questions.
+- [EvaluationFormSingleSelectQuestionAutomationOption](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormSingleSelectQuestionAutomationOption.html): Information about the automation option of a single select question.
+- [EvaluationFormSingleSelectQuestionOption](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormSingleSelectQuestionOption.html): Information about the automation configuration in single select questions.
+- [EvaluationFormSingleSelectQuestionProperties](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormSingleSelectQuestionProperties.html): Information about the options in single select questions.
+- [EvaluationFormSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormSummary.html): Summary information about an evaluation form.
+- [EvaluationFormTargetConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormTargetConfiguration.html): Configuration that specifies the target for an evaluation form.
+- [EvaluationFormTextQuestionAutomation](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormTextQuestionAutomation.html): Information about the automation configuration in text questions.
+- [EvaluationFormTextQuestionProperties](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormTextQuestionProperties.html): Information about properties for a text question in an evaluation form.
+- [EvaluationFormVersionSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationFormVersionSummary.html): Summary information about an evaluation form.
+- [EvaluationGenAIAnswerAnalysisDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationGenAIAnswerAnalysisDetails.html): An analysis for a generative AI answer to the question.
+- [EvaluationMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationMetadata.html): Metadata information about a contact evaluation.
+- [EvaluationNote](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationNote.html): Information about notes for a contact evaluation.
+- [EvaluationQuestionAnswerAnalysisDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationQuestionAnswerAnalysisDetails.html): Detailed analysis results of the automated answer to the evaluation question.
+- [EvaluationQuestionInputDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationQuestionInputDetails.html): Details of the input data used for automated question processing.
+- [EvaluationReviewConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationReviewConfiguration.html): Configuration settings for evaluation reviews.
+- [EvaluationReviewMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationReviewMetadata.html): Metadata information about an evaluation review.
+- [EvaluationReviewNotificationRecipient](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationReviewNotificationRecipient.html): Information about a recipient who should be notified when an evaluation review is requested.
+- [EvaluationReviewNotificationRecipientValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationReviewNotificationRecipientValue.html): The value information for an evaluation review notification recipient.
+- [EvaluationReviewRequestComment](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationReviewRequestComment.html): A comment provided when requesting an evaluation review.
+- [EvaluationScore](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationScore.html): Information about scores of a contact evaluation item (section or question).
+- [EvaluationSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationSearchCriteria.html): The search criteria to be used to return evaluations.
+- [EvaluationSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationSearchFilter.html): Filters to be applied to search results.
+- [EvaluationSearchMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationSearchMetadata.html): Metadata information about an evaluation search.
+- [EvaluationSearchSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationSearchSummary.html): Summary of evaluation obtained from the search operation.
+- [EvaluationSuggestedAnswer](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationSuggestedAnswer.html): The information about the suggested answer for the question.
+- [EvaluationSuggestedAnswerTranscriptMillisecondOffsets](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationSuggestedAnswerTranscriptMillisecondOffsets.html): The milliseconds offset for transcript reference in suggested answer.
+- [EvaluationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationSummary.html): Summary information about a contact evaluation.
+- [EvaluationTranscriptPointOfInterest](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluationTranscriptPointOfInterest.html): Information about the point of interest in transcript provided to evaluation.
+- [EvaluatorUserUnion](https://docs.aws.amazon.com/connect/latest/APIReference/API_EvaluatorUserUnion.html): Represents the entity that performed the action on the evaluation.
+- [EventBridgeActionDefinition](https://docs.aws.amazon.com/connect/latest/APIReference/API_EventBridgeActionDefinition.html): The EventBridge action definition.
+- [ExecutionRecord](https://docs.aws.amazon.com/connect/latest/APIReference/API_ExecutionRecord.html): Contains information about a test case execution record.
+- [Expiry](https://docs.aws.amazon.com/connect/latest/APIReference/API_Expiry.html): An object to specify the expiration of a routing step.
+- [Expression](https://docs.aws.amazon.com/connect/latest/APIReference/API_Expression.html): A tagged union to specify expression for a routing step.
+- [ExternalInvocationConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_ExternalInvocationConfiguration.html): The external invocation configuration for the flow module
+- [FailedBatchAssociationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_FailedBatchAssociationSummary.html): Contains information about a resource that failed to be associated with a workspace in a batch operation.
+- [FailedRequest](https://docs.aws.amazon.com/connect/latest/APIReference/API_FailedRequest.html): Request for which contact failed to be generated.
+- [FieldValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_FieldValue.html): Object for case field values.
+- [FieldValueUnion](https://docs.aws.amazon.com/connect/latest/APIReference/API_FieldValueUnion.html): Object to store union of Field values.
+- [Filters](https://docs.aws.amazon.com/connect/latest/APIReference/API_Filters.html): Contains the filter to apply when retrieving metrics.
+- [FilterV2](https://docs.aws.amazon.com/connect/latest/APIReference/API_FilterV2.html): Contains the filter to apply when retrieving metrics with the GetMetricDataV2 API.
+- [FilterV2StringCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_FilterV2StringCondition.html): System defined filtering condition.
+- [FlowAssociationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_FlowAssociationSummary.html): Information about flow associations.
+- [FlowModule](https://docs.aws.amazon.com/connect/latest/APIReference/API_FlowModule.html): A list of Flow Modules an AI Agent can invoke as a tool
+- [FlowQuickConnectConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_FlowQuickConnectConfig.html): Configuration for quick connect.
+- [FontFamily](https://docs.aws.amazon.com/connect/latest/APIReference/API_FontFamily.html): Contains font family configuration for workspace themes.
+- [GlobalResiliencyMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_GlobalResiliencyMetadata.html): Information about the global resiliency configuration for the contact, including traffic distribution details.
+- [GranularAccessControlConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_GranularAccessControlConfiguration.html): Contains granular access control configuration for security profiles, including data table access permissions.
+- [HierarchyGroup](https://docs.aws.amazon.com/connect/latest/APIReference/API_HierarchyGroup.html): Contains information about a hierarchy group.
+- [HierarchyGroupCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_HierarchyGroupCondition.html): A leaf node condition which can be used to specify a hierarchy group condition.
+- [HierarchyGroups](https://docs.aws.amazon.com/connect/latest/APIReference/API_HierarchyGroups.html): Information about the agent hierarchy.
+- [HierarchyGroupSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_HierarchyGroupSummary.html): Contains summary information about a hierarchy group.
+- [HierarchyGroupSummaryReference](https://docs.aws.amazon.com/connect/latest/APIReference/API_HierarchyGroupSummaryReference.html): Information about the hierarchy group.
+- [HierarchyLevel](https://docs.aws.amazon.com/connect/latest/APIReference/API_HierarchyLevel.html): Contains information about a hierarchy level.
+- [HierarchyLevelUpdate](https://docs.aws.amazon.com/connect/latest/APIReference/API_HierarchyLevelUpdate.html): Contains information about the hierarchy level to update.
+- [HierarchyPath](https://docs.aws.amazon.com/connect/latest/APIReference/API_HierarchyPath.html): Contains information about the levels of a hierarchy group.
+- [HierarchyPathReference](https://docs.aws.amazon.com/connect/latest/APIReference/API_HierarchyPathReference.html): Information about the levels in the hierarchy group.
+- [HierarchyStructure](https://docs.aws.amazon.com/connect/latest/APIReference/API_HierarchyStructure.html): Contains information about a hierarchy structure.
+- [HierarchyStructureUpdate](https://docs.aws.amazon.com/connect/latest/APIReference/API_HierarchyStructureUpdate.html): Contains information about the level hierarchy to update.
+- [HistoricalMetric](https://docs.aws.amazon.com/connect/latest/APIReference/API_HistoricalMetric.html): Contains information about a historical metric.
+- [HistoricalMetricData](https://docs.aws.amazon.com/connect/latest/APIReference/API_HistoricalMetricData.html): Contains the data for a historical metric.
+- [HistoricalMetricResult](https://docs.aws.amazon.com/connect/latest/APIReference/API_HistoricalMetricResult.html): Contains information about the historical metrics retrieved.
+- [HoursOfOperation](https://docs.aws.amazon.com/connect/latest/APIReference/API_HoursOfOperation.html): Information about of the hours of operation.
+- [HoursOfOperationConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_HoursOfOperationConfig.html): Contains information about the hours of operation.
+- [HoursOfOperationOverride](https://docs.aws.amazon.com/connect/latest/APIReference/API_HoursOfOperationOverride.html): Information about the hours of operations override.
+- [HoursOfOperationOverrideConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_HoursOfOperationOverrideConfig.html): Information about the hours of operation override config: day, start time, and end time.
+- [HoursOfOperationOverrideSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_HoursOfOperationOverrideSearchCriteria.html): The search criteria to be used to return hours of operations overrides.
+- [HoursOfOperationSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_HoursOfOperationSearchCriteria.html): The search criteria to be used to return hours of operations.
+- [HoursOfOperationSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_HoursOfOperationSearchFilter.html): Filters to be applied to search results.
+- [HoursOfOperationsIdentifier](https://docs.aws.amazon.com/connect/latest/APIReference/API_HoursOfOperationsIdentifier.html): Identifier for a hours of operations resource: ARN, ID, Name
+- [HoursOfOperationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_HoursOfOperationSummary.html): Contains summary information about hours of operation for a contact center.
+- [HoursOfOperationTimeSlice](https://docs.aws.amazon.com/connect/latest/APIReference/API_HoursOfOperationTimeSlice.html): The start time or end time for an hours of operation.
+- [ImagesLogo](https://docs.aws.amazon.com/connect/latest/APIReference/API_ImagesLogo.html): Contains logo image configuration for workspace themes.
+- [InboundAdditionalRecipients](https://docs.aws.amazon.com/connect/latest/APIReference/API_InboundAdditionalRecipients.html): Information about the additional TO and CC recipients of an inbound email contact.
+- [InboundEmailContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_InboundEmailContent.html): Information about email body content.
+- [InboundRawMessage](https://docs.aws.amazon.com/connect/latest/APIReference/API_InboundRawMessage.html): Information about the raw email body content.
+- [InputPredefinedAttributeConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_InputPredefinedAttributeConfiguration.html): Custom metadata that is associated to predefined attributes to control behavior in upstream services, such as controlling how a predefined attribute should be displayed in the Amazon Connect admin website.
+- [Instance](https://docs.aws.amazon.com/connect/latest/APIReference/API_Instance.html): The Amazon Connect instance.
+- [InstanceStatusReason](https://docs.aws.amazon.com/connect/latest/APIReference/API_InstanceStatusReason.html): Relevant details why the instance was not successfully created.
+- [InstanceStorageConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_InstanceStorageConfig.html): The storage configuration for the instance.
+- [InstanceSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_InstanceSummary.html): Information about the instance.
+- [IntegrationAssociationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_IntegrationAssociationSummary.html): Contains summary information about the associated AppIntegrations.
+- [IntervalDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_IntervalDetails.html): Information about the interval period to use for returning results.
+- [InvalidRequestExceptionReason](https://docs.aws.amazon.com/connect/latest/APIReference/API_InvalidRequestExceptionReason.html): Reason why the request was invalid.
+- [InvisibleFieldInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_InvisibleFieldInfo.html): A field that is invisible to an agent.
+- [KinesisFirehoseConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_KinesisFirehoseConfig.html): Configuration information of a Kinesis Data Firehose delivery stream.
+- [KinesisStreamConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_KinesisStreamConfig.html): Configuration information of a Kinesis data stream.
+- [KinesisVideoStreamConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_KinesisVideoStreamConfig.html): Configuration information of a Kinesis video stream.
+- [LexBot](https://docs.aws.amazon.com/connect/latest/APIReference/API_LexBot.html): Configuration information of an Amazon Lex bot.
+- [LexBotConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_LexBotConfig.html): Configuration information of an Amazon Lex or Amazon Lex V2 bot.
+- [LexV2Bot](https://docs.aws.amazon.com/connect/latest/APIReference/API_LexV2Bot.html): Configuration information of an Amazon Lex V2 bot.
+- [ListCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListCondition.html): A leaf node condition which can be used to specify a List condition to search users with attributes included in Lists like Proficiencies.
+- [ListPhoneNumbersSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_ListPhoneNumbersSummary.html): Information about phone numbers that have been claimed to your Amazon Connect instance or traffic distribution group.
+- [MatchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_MatchCriteria.html): An object to define AgentsCriteria.
+- [MediaConcurrency](https://docs.aws.amazon.com/connect/latest/APIReference/API_MediaConcurrency.html): Contains information about which channels are supported, and how many contacts an agent can have on a channel simultaneously.
+- [MediaItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_MediaItem.html): Contains information about a media asset used in a workspace.
+- [MediaPlacement](https://docs.aws.amazon.com/connect/latest/APIReference/API_MediaPlacement.html): A set of endpoints used by clients to connect to the media service group for an Amazon Chime SDK meeting.
+- [Meeting](https://docs.aws.amazon.com/connect/latest/APIReference/API_Meeting.html): A meeting created using the Amazon Chime SDK.
+- [MeetingFeaturesConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_MeetingFeaturesConfiguration.html): The configuration settings of the features available to a meeting.
+- [MetricDataV2](https://docs.aws.amazon.com/connect/latest/APIReference/API_MetricDataV2.html): Contains the name, thresholds, and metric filters.
+- [MetricFilterV2](https://docs.aws.amazon.com/connect/latest/APIReference/API_MetricFilterV2.html): Contains information about the filter used when retrieving metrics.
+- [MetricInterval](https://docs.aws.amazon.com/connect/latest/APIReference/API_MetricInterval.html): The interval period with the start and end time for the metrics.
+- [MetricResultV2](https://docs.aws.amazon.com/connect/latest/APIReference/API_MetricResultV2.html): Contains information about the metric results.
+- [MetricV2](https://docs.aws.amazon.com/connect/latest/APIReference/API_MetricV2.html): Contains information about the metric.
+- [MultiSelectQuestionRuleCategoryAutomation](https://docs.aws.amazon.com/connect/latest/APIReference/API_MultiSelectQuestionRuleCategoryAutomation.html): Automation rule for multi-select questions based on rule categories.
+- [NameCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_NameCriteria.html): The search criteria based on the contact name
+- [NewSessionDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_NewSessionDetails.html): Payload of chat properties to apply when starting a new contact.
+- [NextContactEntry](https://docs.aws.amazon.com/connect/latest/APIReference/API_NextContactEntry.html): Entry representing the next contact in a sequence.
+- [NextContactMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_NextContactMetadata.html): Metadata information for next contact.
+- [Notification](https://docs.aws.amazon.com/connect/latest/APIReference/API_Notification.html): Contains information about a notification, including its content, priority, recipients, and metadata.
+- [NotificationRecipientType](https://docs.aws.amazon.com/connect/latest/APIReference/API_NotificationRecipientType.html): The type of notification recipient.
+- [NotificationSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_NotificationSearchCriteria.html): The search criteria to be used to return notifications.
+- [NotificationSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_NotificationSearchFilter.html): Filters to apply when searching for notifications.
+- [NotificationSearchSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_NotificationSearchSummary.html): Summary information about a notification returned from a search operation.
+- [NumberCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_NumberCondition.html): A leaf node condition which can be used to specify a numeric condition.
+- [NumberReference](https://docs.aws.amazon.com/connect/latest/APIReference/API_NumberReference.html): Information about a reference when the referenceType is NUMBER.
+- [NumericQuestionPropertyValueAutomation](https://docs.aws.amazon.com/connect/latest/APIReference/API_NumericQuestionPropertyValueAutomation.html): Information about the property value used in automation of a numeric questions.
+- [ObservationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_ObservationSummary.html): Contains summary statistics about a test case execution.
+- [OperationalHour](https://docs.aws.amazon.com/connect/latest/APIReference/API_OperationalHour.html): Information about the hours of operations with the effective override applied.
+- [OutboundAdditionalRecipients](https://docs.aws.amazon.com/connect/latest/APIReference/API_OutboundAdditionalRecipients.html): Information about the additional recipients of outbound email.
+- [OutboundCallerConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_OutboundCallerConfig.html): The outbound caller ID name, number, and outbound whisper flow.
+- [OutboundEmailConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_OutboundEmailConfig.html): The outbound email address ID.
+- [OutboundEmailContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_OutboundEmailContent.html): Information about email body content.
+- [OutboundRawMessage](https://docs.aws.amazon.com/connect/latest/APIReference/API_OutboundRawMessage.html): Information about the raw email body content.
+- [OutboundStrategy](https://docs.aws.amazon.com/connect/latest/APIReference/API_OutboundStrategy.html): Information about the outbound strategy.
+- [OutboundStrategyConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_OutboundStrategyConfig.html): The config of the outbound strategy.
+- [OverrideHour](https://docs.aws.amazon.com/connect/latest/APIReference/API_OverrideHour.html): Information about hours of operation override
+- [OverrideTimeSlice](https://docs.aws.amazon.com/connect/latest/APIReference/API_OverrideTimeSlice.html): The start time or end time for an hours of operation override.
+- [PaletteCanvas](https://docs.aws.amazon.com/connect/latest/APIReference/API_PaletteCanvas.html): Contains color configuration for canvas elements in a workspace theme.
+- [PaletteHeader](https://docs.aws.amazon.com/connect/latest/APIReference/API_PaletteHeader.html): Contains color configuration for header elements in a workspace theme.
+- [PaletteNavigation](https://docs.aws.amazon.com/connect/latest/APIReference/API_PaletteNavigation.html): Contains color configuration for navigation elements in a workspace theme.
+- [PalettePrimary](https://docs.aws.amazon.com/connect/latest/APIReference/API_PalettePrimary.html): Contains primary color configuration for a workspace theme.
+- [ParentHoursOfOperationConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_ParentHoursOfOperationConfig.html): Contains configuration for the parent hours of operation.
+- [ParticipantCapabilities](https://docs.aws.amazon.com/connect/latest/APIReference/API_ParticipantCapabilities.html): The configuration for the allowed video and screen sharing capabilities for participants present over the call.
+- [ParticipantConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_ParticipantConfiguration.html): The configuration of the participant.
+- [ParticipantDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_ParticipantDetails.html): The customer's details.
+- [ParticipantDetailsToAdd](https://docs.aws.amazon.com/connect/latest/APIReference/API_ParticipantDetailsToAdd.html): The details to add for the participant.
+- [ParticipantMetrics](https://docs.aws.amazon.com/connect/latest/APIReference/API_ParticipantMetrics.html): Information about a participant's interactions in a contact.
+- [ParticipantTimerConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_ParticipantTimerConfiguration.html): Configuration information for the timer.
+- [ParticipantTimerValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_ParticipantTimerValue.html): The value of the timer.
+- [ParticipantTokenCredentials](https://docs.aws.amazon.com/connect/latest/APIReference/API_ParticipantTokenCredentials.html): The credentials used by the participant.
+- [PersistentChat](https://docs.aws.amazon.com/connect/latest/APIReference/API_PersistentChat.html): Enable persistent chats.
+- [PersistentConnectionConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_PersistentConnectionConfig.html): Configuration settings for persistent connection for a specific channel.
+- [PhoneNumberConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_PhoneNumberConfig.html): Configuration settings for phone type and phone number.
+- [PhoneNumberQuickConnectConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_PhoneNumberQuickConnectConfig.html): Contains information about a phone number for a quick connect.
+- [PhoneNumberStatus](https://docs.aws.amazon.com/connect/latest/APIReference/API_PhoneNumberStatus.html): The status of the phone number.
+- [PhoneNumberSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_PhoneNumberSummary.html): Contains summary information about a phone number for a contact center.
+- [PostAcceptTimeoutConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_PostAcceptTimeoutConfig.html): Countdown timer configuration after the agent accepted the contact.
+- [PredefinedAttribute](https://docs.aws.amazon.com/connect/latest/APIReference/API_PredefinedAttribute.html): Information about a predefined attribute.
+- [PredefinedAttributeConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_PredefinedAttributeConfiguration.html): Custom metadata that is associated to predefined attributes to control behavior in upstream services, such as controlling how a predefined attribute should be displayed in the Amazon Connect admin website.
+- [PredefinedAttributeSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_PredefinedAttributeSearchCriteria.html): The search criteria to be used to return predefined attributes.
+- [PredefinedAttributeSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_PredefinedAttributeSummary.html): Summary of a predefined attribute.
+- [PredefinedAttributeValues](https://docs.aws.amazon.com/connect/latest/APIReference/API_PredefinedAttributeValues.html): Information about values of a predefined attribute.
+- [Preview](https://docs.aws.amazon.com/connect/latest/APIReference/API_Preview.html): Information about agent-first preview mode outbound strategy configuration.
+- [PrimaryAttributeAccessControlConfigurationItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_PrimaryAttributeAccessControlConfigurationItem.html): A primary attribute access control configuration item.
+- [PrimaryAttributeValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_PrimaryAttributeValue.html): A primary attribute value.
+- [PrimaryAttributeValueFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_PrimaryAttributeValueFilter.html): A primary attribute value filter.
+- [PrimaryValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_PrimaryValue.html): Represents a primary key value used to identify a specific record in a data table.
+- [PrimaryValueResponse](https://docs.aws.amazon.com/connect/latest/APIReference/API_PrimaryValueResponse.html): A primary value response.
+- [ProblemDetail](https://docs.aws.amazon.com/connect/latest/APIReference/API_ProblemDetail.html): Information about a problem detail.
+- [Prompt](https://docs.aws.amazon.com/connect/latest/APIReference/API_Prompt.html): Information about a prompt.
+- [PromptSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_PromptSearchCriteria.html): The search criteria to be used to return prompts.
+- [PromptSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_PromptSearchFilter.html): Filters to be applied to search results.
+- [PromptSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_PromptSummary.html): Contains information about the prompt.
+- [PropertyValidationExceptionProperty](https://docs.aws.amazon.com/connect/latest/APIReference/API_PropertyValidationExceptionProperty.html): Contains information about why a property is not valid.
+- [QualityMetrics](https://docs.aws.amazon.com/connect/latest/APIReference/API_QualityMetrics.html): Information about the quality of the participant's media connection.
+- [Queue](https://docs.aws.amazon.com/connect/latest/APIReference/API_Queue.html): Contains information about a queue.
+- [QueueInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_QueueInfo.html): If this contact was queued, this contains information about the queue.
+- [QueueInfoInput](https://docs.aws.amazon.com/connect/latest/APIReference/API_QueueInfoInput.html): Information about a queue.
+- [QueueQuickConnectConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_QueueQuickConnectConfig.html): Contains information about a queue for a quick connect.
+- [QueueReference](https://docs.aws.amazon.com/connect/latest/APIReference/API_QueueReference.html): Contains information about a queue resource for which metrics are returned.
+- [QueueSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_QueueSearchCriteria.html): The search criteria to be used to return queues.
+- [QueueSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_QueueSearchFilter.html): Filters to be applied to search results.
+- [QueueSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_QueueSummary.html): Contains summary information about a queue.
+- [QuickConnect](https://docs.aws.amazon.com/connect/latest/APIReference/API_QuickConnect.html): Contains information about a quick connect.
+- [QuickConnectConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_QuickConnectConfig.html): Contains configuration settings for a quick connect.
+- [QuickConnectContactData](https://docs.aws.amazon.com/connect/latest/APIReference/API_QuickConnectContactData.html): Contact data associated with quick connect operations.
+- [QuickConnectSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_QuickConnectSearchCriteria.html): The search criteria to be used to return quick connects.
+- [QuickConnectSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_QuickConnectSearchFilter.html): Filters to be applied to search results.
+- [QuickConnectSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_QuickConnectSummary.html): Contains summary information about a quick connect.
+- [Range](https://docs.aws.amazon.com/connect/latest/APIReference/API_Range.html): An Object to define the minimum and maximum proficiency levels.
+- [ReadOnlyFieldInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_ReadOnlyFieldInfo.html): Indicates a field that is read-only to an agent.
+- [RealTimeContactAnalysisAttachment](https://docs.aws.amazon.com/connect/latest/APIReference/API_RealTimeContactAnalysisAttachment.html): Object that describes attached file.
+- [RealTimeContactAnalysisCategoryDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_RealTimeContactAnalysisCategoryDetails.html): Provides information about the category rule that was matched.
+- [RealTimeContactAnalysisCharacterInterval](https://docs.aws.amazon.com/connect/latest/APIReference/API_RealTimeContactAnalysisCharacterInterval.html): Begin and end offsets for a part of text.
+- [RealTimeContactAnalysisIssueDetected](https://docs.aws.amazon.com/connect/latest/APIReference/API_RealTimeContactAnalysisIssueDetected.html): Potential issues that are detected based on an artificial intelligence analysis of each turn in the conversation.
+- [RealTimeContactAnalysisPointOfInterest](https://docs.aws.amazon.com/connect/latest/APIReference/API_RealTimeContactAnalysisPointOfInterest.html): The section of the contact transcript segment that category rule was detected.
+- [RealtimeContactAnalysisSegment](https://docs.aws.amazon.com/connect/latest/APIReference/API_RealtimeContactAnalysisSegment.html): An analyzed segment for a real-time analysis session.
+- [RealTimeContactAnalysisSegmentAttachments](https://docs.aws.amazon.com/connect/latest/APIReference/API_RealTimeContactAnalysisSegmentAttachments.html): Segment containing list of attachments.
+- [RealTimeContactAnalysisSegmentCategories](https://docs.aws.amazon.com/connect/latest/APIReference/API_RealTimeContactAnalysisSegmentCategories.html): The matched category rules.
+- [RealTimeContactAnalysisSegmentEvent](https://docs.aws.amazon.com/connect/latest/APIReference/API_RealTimeContactAnalysisSegmentEvent.html): Segment type describing a contact event.
+- [RealTimeContactAnalysisSegmentIssues](https://docs.aws.amazon.com/connect/latest/APIReference/API_RealTimeContactAnalysisSegmentIssues.html): Segment type containing a list of detected issues.
+- [RealTimeContactAnalysisSegmentPostContactSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_RealTimeContactAnalysisSegmentPostContactSummary.html): Information about the post-contact summary for a real-time contact segment.
+- [RealTimeContactAnalysisSegmentTranscript](https://docs.aws.amazon.com/connect/latest/APIReference/API_RealTimeContactAnalysisSegmentTranscript.html): The analyzed transcript segment.
+- [RealTimeContactAnalysisTimeData](https://docs.aws.amazon.com/connect/latest/APIReference/API_RealTimeContactAnalysisTimeData.html): Object describing time with which the segment is associated.
+- [RealTimeContactAnalysisTranscriptItemRedaction](https://docs.aws.amazon.com/connect/latest/APIReference/API_RealTimeContactAnalysisTranscriptItemRedaction.html): Object describing redaction applied to the segment.
+- [RealTimeContactAnalysisTranscriptItemWithCharacterOffsets](https://docs.aws.amazon.com/connect/latest/APIReference/API_RealTimeContactAnalysisTranscriptItemWithCharacterOffsets.html): Transcript representation containing Id and list of character intervals that are associated with analysis data.
+- [RealTimeContactAnalysisTranscriptItemWithContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_RealTimeContactAnalysisTranscriptItemWithContent.html): Transcript representation containing Id, Content and list of character intervals that are associated with analysis data.
+- [RecordingInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_RecordingInfo.html): Information about a voice recording, chat transcript, or screen recording.
+- [RecordPrimaryValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_RecordPrimaryValue.html): A record primary value.
+- [RecurrenceConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_RecurrenceConfig.html): Defines the recurrence configuration for overrides.
+- [RecurrencePattern](https://docs.aws.amazon.com/connect/latest/APIReference/API_RecurrencePattern.html): Specifies the detailed pattern for event recurrence.
+- [Reference](https://docs.aws.amazon.com/connect/latest/APIReference/API_Reference.html): Well-formed data on a contact, used by agents to complete a contact request.
+- [ReferenceSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_ReferenceSummary.html): Contains summary information about a reference.
+- [ReplicationConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_ReplicationConfiguration.html): Details about the status of the replication of a source Amazon Connect instance across AWS Regions.
+- [ReplicationStatusSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_ReplicationStatusSummary.html): Status information about the replication process, where you use the ReplicateInstance API to create a replica of your Amazon Connect instance in another AWS Region.
+- [RequiredFieldInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_RequiredFieldInfo.html): Information about a required field.
+- [ResourceTagsSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_ResourceTagsSearchCriteria.html): The search criteria to be used to search tags.
+- [RoutingCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_RoutingCriteria.html): Latest routing criteria on the contact.
+- [RoutingCriteriaInput](https://docs.aws.amazon.com/connect/latest/APIReference/API_RoutingCriteriaInput.html): An object to define the RoutingCriteria.
+- [RoutingCriteriaInputStep](https://docs.aws.amazon.com/connect/latest/APIReference/API_RoutingCriteriaInputStep.html): Step defines the list of agents to be routed or route based on the agent requirements such as ProficiencyLevel, Name, or Value.
+- [RoutingCriteriaInputStepExpiry](https://docs.aws.amazon.com/connect/latest/APIReference/API_RoutingCriteriaInputStepExpiry.html): Specify whether this routing criteria step should apply for only a limited amount of time, or if it should never expire.
+- [RoutingProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_RoutingProfile.html): Contains information about a routing profile.
+- [RoutingProfileManualAssignmentQueueConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_RoutingProfileManualAssignmentQueueConfig.html): Contains information about the queue and channel for manual assignment behaviour can be enabled.
+- [RoutingProfileManualAssignmentQueueConfigSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_RoutingProfileManualAssignmentQueueConfigSummary.html): Contains summary information about a routing profile manual assignment queue.
+- [RoutingProfileQueueConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_RoutingProfileQueueConfig.html): Contains information about the queue and channel for which priority and delay can be set.
+- [RoutingProfileQueueConfigSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_RoutingProfileQueueConfigSummary.html): Contains summary information about a routing profile queue.
+- [RoutingProfileQueueReference](https://docs.aws.amazon.com/connect/latest/APIReference/API_RoutingProfileQueueReference.html): Contains the channel and queue identifier for a routing profile.
+- [RoutingProfileReference](https://docs.aws.amazon.com/connect/latest/APIReference/API_RoutingProfileReference.html): Information about the routing profile assigned to the user.
+- [RoutingProfileSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_RoutingProfileSearchCriteria.html): The search criteria to be used to return routing profiles.
+- [RoutingProfileSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_RoutingProfileSearchFilter.html): Filters to be applied to search results.
+- [RoutingProfileSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_RoutingProfileSummary.html): Contains summary information about a routing profile.
+- [Rule](https://docs.aws.amazon.com/connect/latest/APIReference/API_Rule.html): Information about a rule.
+- [RuleAction](https://docs.aws.amazon.com/connect/latest/APIReference/API_RuleAction.html): Information about the action to be performed when a rule is triggered.
+- [RuleSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_RuleSummary.html): A list of ActionTypes associated with a rule.
+- [RuleTriggerEventSource](https://docs.aws.amazon.com/connect/latest/APIReference/API_RuleTriggerEventSource.html): The name of the event source.
+- [S3Config](https://docs.aws.amazon.com/connect/latest/APIReference/API_S3Config.html): Information about the Amazon Simple Storage Service (Amazon S3) storage type.
+- [SearchableAgentCriteriaStep](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchableAgentCriteriaStep.html): The agent criteria to search for preferred agents on the routing criteria.
+- [SearchableContactAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchableContactAttributes.html): A structure that defines search criteria based on user-defined contact attributes that are configured for contact search.
+- [SearchableContactAttributesCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchableContactAttributesCriteria.html): The search criteria based on user-defined contact attribute key and values to search on.
+- [SearchableRoutingCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchableRoutingCriteria.html): Routing criteria of the contact to match on.
+- [SearchableRoutingCriteriaStep](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchableRoutingCriteriaStep.html): Routing criteria of the contact to match on.
+- [SearchableSegmentAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchableSegmentAttributes.html): The search criteria based on searchable segment attributes of a contact
+- [SearchableSegmentAttributesCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchableSegmentAttributesCriteria.html): The search criteria based on searchable segment attribute key and values to search on.
+- [SearchContactsAdditionalTimeRange](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchContactsAdditionalTimeRange.html): Time range that you additionally want to filter on.
+- [SearchContactsAdditionalTimeRangeCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchContactsAdditionalTimeRangeCriteria.html): The criteria of the time range to additionally filter on.
+- [SearchContactsTimeRange](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchContactsTimeRange.html): A structure of time range that you want to search results.
+- [SearchContactsTimestampCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchContactsTimestampCondition.html): The timestamp condition indicating which contact timestamp should be used and how it should be filtered.
+- [SearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_SearchCriteria.html): A structure of search criteria to be used to return contacts.
+- [SecurityKey](https://docs.aws.amazon.com/connect/latest/APIReference/API_SecurityKey.html): Configuration information of the security key.
+- [SecurityProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_SecurityProfile.html): Contains information about a security profile.
+- [SecurityProfileItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_SecurityProfileItem.html): Security profile items.
+- [SecurityProfileSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_SecurityProfileSearchCriteria.html): The search criteria to be used to return security profiles.
+- [SecurityProfileSearchSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_SecurityProfileSearchSummary.html): Information about the returned security profiles.
+- [SecurityProfilesSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_SecurityProfilesSearchFilter.html): Filters to be applied to search results.
+- [SecurityProfileSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_SecurityProfileSummary.html): Contains information about a security profile.
+- [SegmentAttributeValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_SegmentAttributeValue.html): A value for a segment attribute.
+- [SendNotificationActionDefinition](https://docs.aws.amazon.com/connect/latest/APIReference/API_SendNotificationActionDefinition.html): Information about the send notification action.
+- [ServiceQuotaExceededExceptionReason](https://docs.aws.amazon.com/connect/latest/APIReference/API_ServiceQuotaExceededExceptionReason.html): The reason for the exception.
+- [SignInConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_SignInConfig.html): The distribution that determines which AWS Regions should be used to sign in agents in to both the instance and its replica(s).
+- [SignInDistribution](https://docs.aws.amazon.com/connect/latest/APIReference/API_SignInDistribution.html): The distribution of sign in traffic between the instance and its replica(s).
+- [SingleSelectQuestionRuleCategoryAutomation](https://docs.aws.amazon.com/connect/latest/APIReference/API_SingleSelectQuestionRuleCategoryAutomation.html): Information about the automation option based on a rule category for a single select question.
+- [Sort](https://docs.aws.amazon.com/connect/latest/APIReference/API_Sort.html): A structure that defines the field name to sort by and a sort order.
+- [SourceCampaign](https://docs.aws.amazon.com/connect/latest/APIReference/API_SourceCampaign.html): Information about the campaign.
+- [StateTransition](https://docs.aws.amazon.com/connect/latest/APIReference/API_StateTransition.html): Information about the state transition of a supervisor.
+- [Step](https://docs.aws.amazon.com/connect/latest/APIReference/API_Step.html): Step signifies the criteria to be used for routing to an agent
+- [StringCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_StringCondition.html): A leaf node condition which can be used to specify a string condition.
+- [StringReference](https://docs.aws.amazon.com/connect/latest/APIReference/API_StringReference.html): Information about a reference when the referenceType is STRING.
+- [SubmitAutoEvaluationActionDefinition](https://docs.aws.amazon.com/connect/latest/APIReference/API_SubmitAutoEvaluationActionDefinition.html): Information about the submit automated evaluation action.
+- [SuccessfulBatchAssociationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_SuccessfulBatchAssociationSummary.html): Contains information about a resource that was successfully associated with a workspace in a batch operation.
+- [SuccessfulRequest](https://docs.aws.amazon.com/connect/latest/APIReference/API_SuccessfulRequest.html): Request for which contact was successfully created.
+- [TagCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_TagCondition.html): A leaf node condition which can be used to specify a tag condition, for example, HAVE BPO = 123.
+- [TagSearchCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_TagSearchCondition.html): The search criteria to be used to return tags.
+- [TagSet](https://docs.aws.amazon.com/connect/latest/APIReference/API_TagSet.html): A tag set contains tag key and tag value.
+- [TaskActionDefinition](https://docs.aws.amazon.com/connect/latest/APIReference/API_TaskActionDefinition.html): Information about the task action.
+- [TaskAttachment](https://docs.aws.amazon.com/connect/latest/APIReference/API_TaskAttachment.html): Information about the task attachment files.
+- [TaskTemplateConstraints](https://docs.aws.amazon.com/connect/latest/APIReference/API_TaskTemplateConstraints.html): Describes constraints that apply to the template fields.
+- [TaskTemplateDefaultFieldValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_TaskTemplateDefaultFieldValue.html): Describes a default field and its corresponding value.
+- [TaskTemplateDefaults](https://docs.aws.amazon.com/connect/latest/APIReference/API_TaskTemplateDefaults.html): Describes default values for fields on a template.
+- [TaskTemplateField](https://docs.aws.amazon.com/connect/latest/APIReference/API_TaskTemplateField.html): Describes a single task template field.
+- [TaskTemplateFieldIdentifier](https://docs.aws.amazon.com/connect/latest/APIReference/API_TaskTemplateFieldIdentifier.html): The identifier of the task template field.
+- [TaskTemplateInfoV2](https://docs.aws.amazon.com/connect/latest/APIReference/API_TaskTemplateInfoV2.html): Information about the task template used to create this contact.
+- [TaskTemplateMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_TaskTemplateMetadata.html): Contains summary information about the task template.
+- [TelephonyConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_TelephonyConfig.html): The distribution of traffic between the instance and its replicas.
+- [TemplateAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_TemplateAttributes.html): Information about the template attributes.
+- [TemplatedMessageConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_TemplatedMessageConfig.html): Information about template message configuration.
+- [TestCase](https://docs.aws.amazon.com/connect/latest/APIReference/API_TestCase.html): Contains information about a test case.
+- [TestCaseEntryPoint](https://docs.aws.amazon.com/connect/latest/APIReference/API_TestCaseEntryPoint.html): Defines the starting point for a test case.
+- [TestCaseExecution](https://docs.aws.amazon.com/connect/latest/APIReference/API_TestCaseExecution.html): Contains information about a test case execution.
+- [TestCaseSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_TestCaseSearchCriteria.html): The search criteria to be used to return test cases.
+- [TestCaseSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_TestCaseSearchFilter.html): Filters to be applied to search results.
+- [TestCaseSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_TestCaseSummary.html): Contains summary information about a test case.
+- [Threshold](https://docs.aws.amazon.com/connect/latest/APIReference/API_Threshold.html): Contains information about the threshold for service level metrics.
+- [ThresholdV2](https://docs.aws.amazon.com/connect/latest/APIReference/API_ThresholdV2.html): Contains information about the threshold for service level metrics.
+- [TrafficDistributionGroup](https://docs.aws.amazon.com/connect/latest/APIReference/API_TrafficDistributionGroup.html): Information about a traffic distribution group.
+- [TrafficDistributionGroupSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_TrafficDistributionGroupSummary.html): Information about traffic distribution groups.
+- [TrafficDistributionGroupUserSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_TrafficDistributionGroupUserSummary.html): Summary information about a traffic distribution group user.
+- [Transcript](https://docs.aws.amazon.com/connect/latest/APIReference/API_Transcript.html): A structure that defines search criteria and matching logic to search for contacts by matching text with transcripts analyzed by Amazon Connect Contact Lens.
+- [TranscriptCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_TranscriptCriteria.html): A structure that defines search criteria base on words or phrases, participants in the Contact Lens conversational analytics transcript.
+- [UpdateCaseActionDefinition](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateCaseActionDefinition.html): The UpdateCase action definition.
+- [UpdateParticipantRoleConfigChannelInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_UpdateParticipantRoleConfigChannelInfo.html): Configuration information for the chat participant role.
+- [UploadUrlMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_UploadUrlMetadata.html): Fields required when uploading an attached file.
+- [UrlReference](https://docs.aws.amazon.com/connect/latest/APIReference/API_UrlReference.html): The URL reference.
+- [UseCase](https://docs.aws.amazon.com/connect/latest/APIReference/API_UseCase.html): Contains the use case.
+- [User](https://docs.aws.amazon.com/connect/latest/APIReference/API_User.html): Contains information about a user account for an Amazon Connect instance.
+- [UserData](https://docs.aws.amazon.com/connect/latest/APIReference/API_UserData.html): Data for a user.
+- [UserDataFilters](https://docs.aws.amazon.com/connect/latest/APIReference/API_UserDataFilters.html): A filter for the user data.
+- [UserHierarchyGroupSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_UserHierarchyGroupSearchCriteria.html): The search criteria to be used to return userHierarchyGroup.
+- [UserHierarchyGroupSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_UserHierarchyGroupSearchFilter.html): Filters to be applied to search results.
+- [UserIdentityInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_UserIdentityInfo.html): Contains information about the identity of a user.
+- [UserIdentityInfoLite](https://docs.aws.amazon.com/connect/latest/APIReference/API_UserIdentityInfoLite.html): The user's first name and last name.
+- [UserInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_UserInfo.html): The user details for the contact.
+- [UserNotificationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_UserNotificationSummary.html): Summary information about a notification for a specific user, including the user's read status.
+- [UserPhoneConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_UserPhoneConfig.html): Contains information about the phone configuration settings for a user.
+- [UserProficiency](https://docs.aws.amazon.com/connect/latest/APIReference/API_UserProficiency.html): Information about proficiency of a user.
+- [UserProficiencyDisassociate](https://docs.aws.amazon.com/connect/latest/APIReference/API_UserProficiencyDisassociate.html): Information about proficiency to be disassociated from the user.
+- [UserQuickConnectConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_UserQuickConnectConfig.html): Contains information about the quick connect configuration settings for a user.
+- [UserReference](https://docs.aws.amazon.com/connect/latest/APIReference/API_UserReference.html): Information about the user.
+- [UserSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_UserSearchCriteria.html): The search criteria to be used to return users.
+- [UserSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_UserSearchFilter.html): Filters to be applied to search results.
+- [UserSearchSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_UserSearchSummary.html): Information about the returned users.
+- [UserSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_UserSummary.html): Contains summary information about a user.
+- [Validation](https://docs.aws.amazon.com/connect/latest/APIReference/API_Validation.html): Defines validation rules for data table attribute values.
+- [ValidationEnum](https://docs.aws.amazon.com/connect/latest/APIReference/API_ValidationEnum.html): Defines enumeration validation for attribute values.
+- [View](https://docs.aws.amazon.com/connect/latest/APIReference/API_View.html): A view resource object.
+- [ViewContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_ViewContent.html): View content containing all content necessary to render a view except for runtime input data.
+- [ViewInputContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_ViewInputContent.html): View content containing all content necessary to render a view except for runtime input data and the runtime input schema, which is auto-generated by this operation.
+- [ViewSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_ViewSearchCriteria.html): Defines the search criteria for filtering views.
+- [ViewSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_ViewSearchFilter.html): Defines filters to apply when searching for views, such as tag-based filters.
+- [ViewSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_ViewSummary.html): A summary of a view's metadata.
+- [ViewVersionSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_ViewVersionSummary.html): A summary of a view version's metadata.
+- [Vocabulary](https://docs.aws.amazon.com/connect/latest/APIReference/API_Vocabulary.html): Contains information about a custom vocabulary.
+- [VocabularySummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_VocabularySummary.html): Contains summary information about the custom vocabulary.
+- [VoiceCallEntryPointParameters](https://docs.aws.amazon.com/connect/latest/APIReference/API_VoiceCallEntryPointParameters.html): Parameters for initiating a voice call test.
+- [VoiceEnhancementConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_VoiceEnhancementConfig.html): Configuration settings for voice enhancement.
+- [VoiceRecordingConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_VoiceRecordingConfiguration.html): Contains information about the recording configuration settings.
+- [WisdomInfo](https://docs.aws.amazon.com/connect/latest/APIReference/API_WisdomInfo.html): Information about Amazon Connect Wisdom.
+- [Workspace](https://docs.aws.amazon.com/connect/latest/APIReference/API_Workspace.html): Contains information about a workspace, which defines the user experience by mapping views to pages.
+- [WorkspaceAssociationSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_WorkspaceAssociationSearchCriteria.html): Defines the search criteria for filtering workspace associations.
+- [WorkspaceAssociationSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_WorkspaceAssociationSearchFilter.html): Defines filters to apply when searching for workspace associations, such as tag-based filters.
+- [WorkspaceAssociationSearchSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_WorkspaceAssociationSearchSummary.html): Contains summary information about a workspace association with a user or routing profile.
+- [WorkspacePage](https://docs.aws.amazon.com/connect/latest/APIReference/API_WorkspacePage.html): Contains information about a page configuration in a workspace, including the view assigned to the page.
+- [WorkspaceSearchCriteria](https://docs.aws.amazon.com/connect/latest/APIReference/API_WorkspaceSearchCriteria.html): Defines the search criteria for filtering workspaces.
+- [WorkspaceSearchFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_WorkspaceSearchFilter.html): Defines filters to apply when searching for workspaces, such as tag-based filters.
+- [WorkspaceSearchSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_WorkspaceSearchSummary.html): Contains summary information about a workspace returned from a search operation.
+- [WorkspaceSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_WorkspaceSummary.html): Contains summary information about a workspace.
+- [WorkspaceTheme](https://docs.aws.amazon.com/connect/latest/APIReference/API_WorkspaceTheme.html): Contains theme configuration for a workspace, supporting both light and dark modes.
+- [WorkspaceThemeConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_WorkspaceThemeConfig.html): Contains detailed theme configuration for a workspace, including colors, images, and typography.
+- [WorkspaceThemeImages](https://docs.aws.amazon.com/connect/latest/APIReference/API_WorkspaceThemeImages.html): Contains image configuration for a workspace theme.
+- [WorkspaceThemePalette](https://docs.aws.amazon.com/connect/latest/APIReference/API_WorkspaceThemePalette.html): Contains color palette configuration for different areas of a workspace.
+- [WorkspaceThemeTypography](https://docs.aws.amazon.com/connect/latest/APIReference/API_WorkspaceThemeTypography.html): Contains typography configuration for a workspace theme.
+
+## [Amazon AppIntegrations Service](https://docs.aws.amazon.com/connect/latest/APIReference/Welcome_Amazon_AppIntegrations_Service.html)
+
+- [Amazon AppIntegrations actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_AppIntegrations_Service.html)
+- [Amazon AppIntegrations data types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_AppIntegrations_Service.html)
+
+The Amazon AppIntegrations service enables you to configure and reuse connections to external applications.
+
+For information about how you can use external applications with Amazon Connect, see the following topics in the Amazon Connect Administrator Guide:
+
+- [Third-party applications (3p apps) in the agent workspace](https://docs.aws.amazon.com/connect/latest/adminguide/3p-apps.html)
+- [Use Amazon Q in Connect for generative AIâpowered agent assistance in real-time](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-q-connect.html)
+
+### Actions
+
+- [CreateApplication](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_CreateApplication.html): Creates and persists an Application resource.
+- [CreateDataIntegration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_CreateDataIntegration.html): Creates and persists a DataIntegration resource.
+- [CreateDataIntegrationAssociation](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_CreateDataIntegrationAssociation.html): Creates and persists a DataIntegrationAssociation resource.
+- [CreateEventIntegration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_CreateEventIntegration.html): Creates an EventIntegration, given a specified name, description, and a reference to an Amazon EventBridge bus in your account and a partner event source that pushes events to that bus.
+- [DeleteApplication](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_DeleteApplication.html): Deletes the Application.
+- [DeleteDataIntegration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_DeleteDataIntegration.html): Deletes the DataIntegration.
+- [DeleteEventIntegration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_DeleteEventIntegration.html): Deletes the specified existing event integration.
+- [GetApplication](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_GetApplication.html): Get an Application resource.
+- [GetDataIntegration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_GetDataIntegration.html): Returns information about the DataIntegration.
+- [GetEventIntegration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_GetEventIntegration.html): Returns information about the event integration.
+- [ListApplicationAssociations](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_ListApplicationAssociations.html): Returns a paginated list of application associations for an application.
+- [ListApplications](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_ListApplications.html): Lists applications in the account.
+- [ListDataIntegrationAssociations](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_ListDataIntegrationAssociations.html): Returns a paginated list of DataIntegration associations in the account.
+- [ListDataIntegrations](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_ListDataIntegrations.html): Returns a paginated list of DataIntegrations in the account.
+- [ListEventIntegrationAssociations](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_ListEventIntegrationAssociations.html): Returns a paginated list of event integration associations in the account.
+- [ListEventIntegrations](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_ListEventIntegrations.html): Returns a paginated list of event integrations in the account.
+- [ListTagsForResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_ListTagsForResource.html): Lists the tags for the specified resource.
+- [TagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_TagResource.html): Adds the specified tags to the specified resource.
+- [UntagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_UntagResource.html): Removes the specified tags from the specified resource.
+- [UpdateApplication](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_UpdateApplication.html): Updates and persists an Application resource.
+- [UpdateDataIntegration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_UpdateDataIntegration.html): Updates the description of a DataIntegration.
+- [UpdateDataIntegrationAssociation](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_UpdateDataIntegrationAssociation.html): Updates and persists a DataIntegrationAssociation resource.
+- [UpdateEventIntegration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_UpdateEventIntegration.html): Updates the description of an event integration.
+
+### Data Types
+
+- [ApplicationAssociationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_ApplicationAssociationSummary.html): Summary information about the Application Association.
+- [ApplicationConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_ApplicationConfig.html): The configuration settings for the application.
+- [ApplicationSourceConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_ApplicationSourceConfig.html): The configuration for where the application should be loaded from.
+- [ApplicationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_ApplicationSummary.html): Summary information about the Application.
+- [ContactHandling](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_ContactHandling.html): The contact handling configuration for the application.
+- [DataIntegrationAssociationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_DataIntegrationAssociationSummary.html): Summary information about the DataIntegration association.
+- [DataIntegrationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_DataIntegrationSummary.html): Summary information about the DataIntegration.
+- [EventFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_EventFilter.html): The event filter.
+- [EventIntegration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_EventIntegration.html): The event integration.
+- [EventIntegrationAssociation](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_EventIntegrationAssociation.html): The event integration association.
+- [ExecutionConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_ExecutionConfiguration.html): The configuration for how the files should be pulled from the source.
+- [ExternalUrlConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_ExternalUrlConfig.html): The external URL source for the application.
+- [FileConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_FileConfiguration.html): The configuration for what files should be pulled from the source.
+- [IframeConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_IframeConfig.html): The iframe configuration for the application.
+- [LastExecutionStatus](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_LastExecutionStatus.html): The execution status of the last job.
+- [OnDemandConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_OnDemandConfiguration.html): The start and end time for data pull from the source.
+- [Publication](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_Publication.html): The configuration of an event that the application publishes.
+- [ScheduleConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_ScheduleConfiguration.html): The name of the data and how often it should be pulled from the source.
+- [Subscription](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-app-integrations_Subscription.html): The configuration of an event that the application subscribes.
+
+## [Amazon Connect Contact Lens](https://docs.aws.amazon.com/connect/latest/APIReference/Welcome_Amazon_Connect_Contact_Lens.html)
+
+- [Contact Lens actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Contact_Lens.html)
+- [Contact Lens data types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Contact_Lens.html)
+
+Amazon Connect Contact Lens enables you to analyze conversations between customer and agents, by using speech transcription, natural language processing, and intelligent search capabilities. It performs sentiment analysis, detects issues, and enables you to automatically categorize contacts.
+
+Amazon Connect Contact Lens provides both real-time and post-call analytics of customer-agent conversations. For more information, see [Analyze conversations using speech analytics](https://docs.aws.amazon.com/connect/latest/adminguide/analyze-conversations.html)in the Amazon Connect Administrator Guide.
+
+### Actions
+
+- [ListRealtimeContactAnalysisSegments](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-contact-lens_ListRealtimeContactAnalysisSegments.html): Provides a list of analysis segments for a real-time analysis session for voice.
+
+### Data Types
+
+- [Categories](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-contact-lens_Categories.html): Provides the category rules that are used to automatically categorize contacts based on uttered keywords and phrases.
+- [CategoryDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-contact-lens_CategoryDetails.html): Provides information about the category rule that was matched.
+- [CharacterOffsets](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-contact-lens_CharacterOffsets.html): For characters that were detected as issues, where they occur in the transcript.
+- [IssueDetected](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-contact-lens_IssueDetected.html): Potential issues that are detected based on an artificial intelligence analysis of each turn in the conversation.
+- [PointOfInterest](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-contact-lens_PointOfInterest.html): The section of the contact audio where that category rule was detected.
+- [PostContactSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-contact-lens_PostContactSummary.html): Information about the post-contact summary.
+- [RealtimeContactAnalysisSegment](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-contact-lens_RealtimeContactAnalysisSegment.html): An analyzed segment for a real-time analysis session.
+- [Transcript](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-contact-lens_Transcript.html): A list of messages in the session.
+
+## [Amazon Connect Outbound Campaigns](https://docs.aws.amazon.com/connect/latest/APIReference/Welcome_Amazon_Connect_Outbound_Campaigns.html)
+
+- [Outbound campaigns actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Outbound_Campaigns.html)
+- [Outbound campaigns data types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Outbound_Campaigns.html)
+
+With the outbound campaigns feature of Amazon Connect, you can create high-volume outbound campaigns. For example, you can use this feature for appointment reminders, telemarketing, subscription renewals, or debt collection. For more information, see [Set up outbound communications](https://docs.aws.amazon.com/connect/latest/adminguide/outbound-communications.html)in the Amazon Connect Administrator Guide.
+
+### Actions
+
+- [CreateCampaign](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_CreateCampaign.html): Creates an outbound campaign.
+- [DeleteCampaign](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_DeleteCampaign.html): Deletes an outbound campaign.
+- [DeleteConnectInstanceConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_DeleteConnectInstanceConfig.html): Deletes configuration information for an Amazon Connect instance.
+- [DeleteInstanceOnboardingJob](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_DeleteInstanceOnboardingJob.html): Deletes the workflow to onboard to outbound campaigns.
+- [DescribeCampaign](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_DescribeCampaign.html): Describes an outbound campaign.
+- [GetCampaignState](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_GetCampaignState.html): Returns the state of an outbound campaign.
+- [GetCampaignStateBatch](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_GetCampaignStateBatch.html): Returns the state of listed of outbound campaigns.
+- [GetConnectInstanceConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_GetConnectInstanceConfig.html): Get configuration information about an Amazon Connect instance.
+- [GetInstanceOnboardingJobStatus](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_GetInstanceOnboardingJobStatus.html): Gets the status of the workflow to onboard to outbound campaigns.
+- [ListCampaigns](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_ListCampaigns.html): Lists outbound campaigns.
+- [ListTagsForResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_ListTagsForResource.html): Lists tags for a resource.
+- [PauseCampaign](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_PauseCampaign.html): Pauses an outbound campaign.
+- [PutDialRequestBatch](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_PutDialRequestBatch.html): Takes in a list of DialRequests to be dialed as part of an outbound campaign.
+- [ResumeCampaign](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_ResumeCampaign.html): Resumes an outbound campaign.
+- [StartCampaign](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_StartCampaign.html): Starts an outbound campaign.
+- [StartInstanceOnboardingJob](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_StartInstanceOnboardingJob.html): Starts the workflow to onboard an Amazon Connect instance to outbound campaigns.
+- [StopCampaign](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_StopCampaign.html): Stops an Amazon Connect campaign.
+- [TagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_TagResource.html): Adds the specified tags to a resource.
+- [UntagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_UntagResource.html): Removes the specified tags from the specified resource.
+- [UpdateCampaignDialerConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_UpdateCampaignDialerConfig.html): Updates DialerConfig for an outbound campaign.
+- [UpdateCampaignName](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_UpdateCampaignName.html): Updates the name of an outbound campaign.
+- [UpdateCampaignOutboundCallConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_UpdateCampaignOutboundCallConfig.html): Updates OutboundCallConfig for an outbound campaign.
+
+### Data Types
+
+- [AgentlessDialerConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_AgentlessDialerConfig.html): Contains agentless dialer configuration for an outbound campaign.
+- [AnswerMachineDetectionConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_AnswerMachineDetectionConfig.html): Contains information about answering machine detection.
+- [Campaign](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_Campaign.html): Contains information about an outbound campaign.
+- [CampaignFilters](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_CampaignFilters.html): Contains the filters to apply when retrieving campaigns.
+- [CampaignSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_CampaignSummary.html): Contains summary information about an outbound campaign.
+- [DialerConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_DialerConfig.html): Contains dialer configuration for an outbound campaign.
+- [DialRequest](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_DialRequest.html): Contains information about a dial request.
+- [EncryptionConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_EncryptionConfig.html): Contains encryption configuration for an Amazon Connect instance.
+- [FailedCampaignStateResponse](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_FailedCampaignStateResponse.html): Contains information about a failed campaign.
+- [FailedRequest](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_FailedRequest.html): Failure details for a DialRequest.
+- [InstanceConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_InstanceConfig.html): Contains configuration information about the Amazon Connect instance.
+- [InstanceIdFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_InstanceIdFilter.html): Contains the filter to apply when retrieving outbound campaigns.
+- [InstanceOnboardingJobStatus](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_InstanceOnboardingJobStatus.html): Contains information about the status of the workflow to onboard to outbound campaigns.
+- [OutboundCallConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_OutboundCallConfig.html): Contains outbound call configuration for an outbound campaign.
+- [PredictiveDialerConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_PredictiveDialerConfig.html): Contains predictive dialer configuration for an outbound campaign.
+- [ProgressiveDialerConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_ProgressiveDialerConfig.html): Contains progressive dialer configuration for an outbound campaign.
+- [SuccessfulCampaignStateResponse](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_SuccessfulCampaignStateResponse.html): The state response when the campaign is successful.
+- [SuccessfulRequest](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns_SuccessfulRequest.html): Success details for a DialRequest.
+
+## [Amazon Connect Outbound Campaigns V2](https://docs.aws.amazon.com/connect/latest/APIReference/Welcome_Amazon_Connect_Outbound_Campaigns_V2.html)
+
+- [Outbound campaignsV2 actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Outbound_Campaigns_V2.html)
+- [Outbound campaignsV2 data types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Outbound_Campaigns_V2.html)
+
+With the outbound campaignsV2 feature of Amazon Connect, you can create high-volume outbound campaigns. For example, you can use this feature for appointment reminders, telemarketing, subscription renewals, or debt collection. For more information, see [Set up outbound communications](https://docs.aws.amazon.com/connect/latest/adminguide/outbound-communications.html)in the Amazon Connect Administrator Guide.
+
+### Actions
+
+- [CreateCampaign](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_CreateCampaign.html): Creates an outbound campaign.
+- [DeleteCampaign](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_DeleteCampaign.html): Deletes an outbound campaign.
+- [DeleteCampaignChannelSubtypeConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_DeleteCampaignChannelSubtypeConfig.html): Deletes the channel subtype configuration of an outbound campaign.
+- [DeleteCampaignCommunicationLimits](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_DeleteCampaignCommunicationLimits.html): Deletes the communication limits configuration of an outbound campaign.
+- [DeleteCampaignCommunicationTime](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_DeleteCampaignCommunicationTime.html): Deletes the communication time configuration of an outbound campaign.
+- [DeleteConnectInstanceConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_DeleteConnectInstanceConfig.html): Deletes configuration information for an Amazon Connect instance.
+- [DeleteConnectInstanceIntegration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_DeleteConnectInstanceIntegration.html): Deletes integration for an Amazon Connect instance.
+- [DeleteInstanceOnboardingJob](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_DeleteInstanceOnboardingJob.html): Deletes the workflow to onboard to outbound campaigns.
+- [DescribeCampaign](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_DescribeCampaign.html): Describes an outbound campaign.
+- [GetCampaignState](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_GetCampaignState.html): Returns the state of an outbound campaign.
+- [GetCampaignStateBatch](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_GetCampaignStateBatch.html): Returns the state of listed of outbound campaigns.
+- [GetConnectInstanceConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_GetConnectInstanceConfig.html): Get configuration information about an Amazon Connect instance.
+- [GetInstanceOnboardingJobStatus](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_GetInstanceOnboardingJobStatus.html): Gets the status of the workflow to onboard to outbound campaigns.
+- [ListCampaigns](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_ListCampaigns.html): Lists outbound campaigns.
+- [ListConnectInstanceIntegrations](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_ListConnectInstanceIntegrations.html): Lists integrations with the Amazon Connect instance.
+- [ListTagsForResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_ListTagsForResource.html): Lists tags for a resource.
+- [PauseCampaign](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_PauseCampaign.html): Pauses an outbound campaign.
+- [PutConnectInstanceIntegration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_PutConnectInstanceIntegration.html): Puts an integration for the Amazon Connect instance.
+- [PutOutboundRequestBatch](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_PutOutboundRequestBatch.html): Takes in a list of outbound requests to be placed as part of an outbound campaign.
+- [PutProfileOutboundRequestBatch](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_PutProfileOutboundRequestBatch.html): Takes in a list of profile outbound requests to be placed as part of an outbound campaign.
+- [ResumeCampaign](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_ResumeCampaign.html): Resumes an outbound campaign.
+- [StartCampaign](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_StartCampaign.html): Starts an outbound campaign.
+- [StartInstanceOnboardingJob](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_StartInstanceOnboardingJob.html): Starts the workflow to onboard an Amazon Connect instance to Outbound Campaigns.
+- [StopCampaign](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_StopCampaign.html): Stops an Amazon Connect campaign.
+- [TagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_TagResource.html): Adds the specified tags to a resource.
+- [UntagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_UntagResource.html): Removes the specified tags from the specified resource.
+- [UpdateCampaignChannelSubtypeConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_UpdateCampaignChannelSubtypeConfig.html): Updates ChannelSubtypeConfig for an outbound campaign.
+- [UpdateCampaignCommunicationLimits](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_UpdateCampaignCommunicationLimits.html): Updates CommunicationLimitsOverride for an outbound campaign.
+- [UpdateCampaignCommunicationTime](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_UpdateCampaignCommunicationTime.html): Updates CommunicationTimeConfig for an outbound campaign.
+- [UpdateCampaignFlowAssociation](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_UpdateCampaignFlowAssociation.html): Updates associated Amazon Connect campaign flow for an outbound campaign.
+- [UpdateCampaignName](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_UpdateCampaignName.html): Updates the name of an outbound campaign.
+- [UpdateCampaignSchedule](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_UpdateCampaignSchedule.html): Updates schedule of an outbound campaign.
+- [UpdateCampaignSource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_UpdateCampaignSource.html): Updates source of an outbound campaign.
+
+### Data Types
+
+- [AgentlessConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_AgentlessConfig.html): Contains agentless outbound mode configuration.
+- [AnswerMachineDetectionConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_AnswerMachineDetectionConfig.html): Contains answering machine detection configuration.
+- [Campaign](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_Campaign.html): Contains information about an outbound campaign.
+- [CampaignFilters](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_CampaignFilters.html): Contains the filters to apply when retrieving campaigns.
+- [CampaignSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_CampaignSummary.html): Contains summary information about an outbound campaign.
+- [ChannelSubtypeConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_ChannelSubtypeConfig.html): Contains channel subtype configuration for an outbound campaign.
+- [ChannelSubtypeParameters](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_ChannelSubtypeParameters.html): Contains channel subtype parameters for an outbound request of a campaign.
+- [CommunicationLimit](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_CommunicationLimit.html): Contains information about a communication limit.
+- [CommunicationLimits](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_CommunicationLimits.html): Contains information about communication limits.
+- [CommunicationLimitsConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_CommunicationLimitsConfig.html): Contains communication limits configuration for an outbound campaign.
+- [CommunicationTimeConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_CommunicationTimeConfig.html): Contains communication time configuration for an outbound campaign.
+- [CustomerProfilesIntegrationConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_CustomerProfilesIntegrationConfig.html): The integration configuration to integrate Customer Profiles with an Amazon Connect instance.
+- [CustomerProfilesIntegrationIdentifier](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_CustomerProfilesIntegrationIdentifier.html): The identifier for the integration with Customer Profiles.
+- [CustomerProfilesIntegrationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_CustomerProfilesIntegrationSummary.html): The summary of the integration with Customer Profiles.
+- [EmailChannelSubtypeConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_EmailChannelSubtypeConfig.html): The configuration for email channel subtype.
+- [EmailChannelSubtypeParameters](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_EmailChannelSubtypeParameters.html): The overridden email parameters for an outbound request of a campaign.
+- [EmailOutboundConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_EmailOutboundConfig.html): The outbound configuration for email.
+- [EmailOutboundMode](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_EmailOutboundMode.html): Contains information about email outbound mode.
+- [EncryptionConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_EncryptionConfig.html): Contains the encryption configuration for an Amazon Connect instance.
+- [EventTrigger](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_EventTrigger.html): The event trigger of the campaign.
+- [FailedCampaignStateResponse](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_FailedCampaignStateResponse.html): Contains information about a failed campaign.
+- [FailedProfileOutboundRequest](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_FailedProfileOutboundRequest.html): Failure details for a profile outbound request.
+- [FailedRequest](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_FailedRequest.html): Failure details for a outbound request.
+- [InstanceConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_InstanceConfig.html): Contains configuration information about the Amazon Connect instance.
+- [InstanceIdFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_InstanceIdFilter.html): Contains the filter to apply when retrieving outbound campaigns.
+- [InstanceOnboardingJobStatus](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_InstanceOnboardingJobStatus.html): Contains information about the status of the workflow to onboard to outbound campaigns.
+- [IntegrationConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_IntegrationConfig.html): Contains the integration configuration with an Amazon Connect instance.
+- [IntegrationIdentifier](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_IntegrationIdentifier.html): The identifier for the integration.
+- [IntegrationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_IntegrationSummary.html): The summary of integration.
+- [LambdaIntegrationConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_LambdaIntegrationConfig.html): The integration configuration to integrate Lambda with an Amazon Connect instance.
+- [LambdaIntegrationIdentifier](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_LambdaIntegrationIdentifier.html): The identifier for the integration with Lambda.
+- [LambdaIntegrationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_LambdaIntegrationSummary.html): The summary of the integration with Lambda.
+- [LocalTimeZoneConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_LocalTimeZoneConfig.html): The configuration of timezone of the recipient.
+- [OpenHours](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_OpenHours.html): Contains information about open hours.
+- [OutboundRequest](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_OutboundRequest.html): Contains information about a outbound request.
+- [PredictiveConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_PredictiveConfig.html): Contains predictive outbound mode configuration.
+- [PreviewConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_PreviewConfig.html): Contains preview outbound mode configuration.
+- [ProfileOutboundRequest](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_ProfileOutboundRequest.html): Contains information about a profile outbound request.
+- [ProgressiveConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_ProgressiveConfig.html): Contains progressive outbound mode configuration.
+- [QConnectIntegrationConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_QConnectIntegrationConfig.html): The integration configuration to integrate Amazon Q in Connect with an Amazon Connect instance.
+- [QConnectIntegrationIdentifier](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_QConnectIntegrationIdentifier.html): The identifier for the integration with Amazon Q in Connect.
+- [QConnectIntegrationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_QConnectIntegrationSummary.html): The summary of the integration with Amazon Q in Connect.
+- [RestrictedPeriod](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_RestrictedPeriod.html): Contains information about a restricted period.
+- [RestrictedPeriods](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_RestrictedPeriods.html): Contains information about restricted periods.
+- [Schedule](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_Schedule.html): Contains the schedule configuration.
+- [SmsChannelSubtypeConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_SmsChannelSubtypeConfig.html): The configuration for the SMS channel subtype.
+- [SmsChannelSubtypeParameters](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_SmsChannelSubtypeParameters.html): The overridden SMS parameters for an outbound request of a campaign.
+- [SmsOutboundConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_SmsOutboundConfig.html): The outbound configuration for SMS.
+- [SmsOutboundMode](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_SmsOutboundMode.html): Contains information about the SMS outbound mode.
+- [Source](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_Source.html): Contains information about the source of a campaign.
+- [SuccessfulCampaignStateResponse](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_SuccessfulCampaignStateResponse.html): The state response when the campaign is successful.
+- [SuccessfulProfileOutboundRequest](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_SuccessfulProfileOutboundRequest.html): Success details for a profile outbound request.
+- [SuccessfulRequest](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_SuccessfulRequest.html): Success details for a outbound request.
+- [TelephonyChannelSubtypeConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_TelephonyChannelSubtypeConfig.html): The configuration for the telephony channel subtype.
+- [TelephonyChannelSubtypeParameters](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_TelephonyChannelSubtypeParameters.html): The overridden telephony parameters for an outbound request of a campaign.
+- [TelephonyOutboundConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_TelephonyOutboundConfig.html): The outbound configuration for telephony.
+- [TelephonyOutboundMode](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_TelephonyOutboundMode.html): Contains information about telephony outbound mode.
+- [TimeoutConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_TimeoutConfig.html): Contains preview outbound mode timeout configuration.
+- [TimeRange](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_TimeRange.html): Contains information about a time range.
+- [TimeWindow](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_TimeWindow.html): Contains information about a time window.
+- [WhatsAppChannelSubtypeConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_WhatsAppChannelSubtypeConfig.html): The configuration for the WhatsApp channel subtype.
+- [WhatsAppChannelSubtypeParameters](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_WhatsAppChannelSubtypeParameters.html): The overridden WhatsApp parameters for an outbound request of a campaign.
+- [WhatsAppOutboundConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_WhatsAppOutboundConfig.html): The outbound configuration for WhatsApp.
+- [WhatsAppOutboundMode](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-outbound-campaigns-v2_WhatsAppOutboundMode.html): Contains information about the WhatsApp outbound mode.
+
+## [Amazon Connect Cases](https://docs.aws.amazon.com/connect/latest/APIReference/Welcome_Amazon_Connect_Cases.html)
+
+- [Cases actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Cases.html)
+- [Cases data types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Cases.html)
+
+With Amazon Connect Cases, your agents can track and manage customer issues that require multiple interactions, follow-up tasks, and teams in your contact center. A case represents a customer issue. It records the issue, the steps and interactions taken to resolve the issue, and the outcome. For more information, see [Amazon Connect Cases](https://docs.aws.amazon.com/connect/latest/adminguide/cases.html)in the Amazon Connect Administrator Guide.
+
+### Actions
+
+- [BatchGetCaseRule](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_BatchGetCaseRule.html): Gets a batch of case rules.
+- [BatchGetField](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_BatchGetField.html): Returns the description for the list of fields in the request parameters.
+- [BatchPutFieldOptions](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_BatchPutFieldOptions.html): Creates and updates a set of field options for a single select field in a Cases domain.
+- [CreateCase](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateCase.html)
+- [CreateCaseRule](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateCaseRule.html): Creates a new case rule.
+- [CreateDomain](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateDomain.html): Creates a domain, which is a container for all case data, such as cases, fields, templates and layouts.
+- [CreateField](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateField.html): Creates a field in the Cases domain.
+- [CreateLayout](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateLayout.html): Creates a layout in the Cases domain.
+- [CreateRelatedItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateRelatedItem.html): Creates a related item (comments, tasks, and contacts) and associates it with a case.
+- [CreateTemplate](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CreateTemplate.html): Creates a template in the Cases domain.
+- [DeleteCase](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_DeleteCase.html): The DeleteCase API permanently deletes a case and all its associated resources from the cases data store.
+- [DeleteCaseRule](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_DeleteCaseRule.html): Deletes a case rule.
+- [DeleteDomain](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_DeleteDomain.html): Deletes a Cases domain.
+- [DeleteField](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_DeleteField.html): Deletes a field from a cases template.
+- [DeleteLayout](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_DeleteLayout.html): Deletes a layout from a cases template.
+- [DeleteRelatedItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_DeleteRelatedItem.html): Deletes the related item resource under a case.
+- [DeleteTemplate](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_DeleteTemplate.html): Deletes a cases template.
+- [GetCase](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_GetCase.html): Returns information about a specific case if it exists.
+- [GetCaseAuditEvents](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_GetCaseAuditEvents.html): Returns the audit history about a specific case if it exists.
+- [GetCaseEventConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_GetCaseEventConfiguration.html): Returns the case event publishing configuration.
+- [GetDomain](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_GetDomain.html): Returns information about a specific domain if it exists.
+- [GetLayout](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_GetLayout.html): Returns the details for the requested layout.
+- [GetTemplate](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_GetTemplate.html): Returns the details for the requested template.
+- [ListCaseRules](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_ListCaseRules.html): Lists all case rules in a Cases domain.
+- [ListCasesForContact](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_ListCasesForContact.html): Lists cases for a given contact.
+- [ListDomains](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_ListDomains.html): Lists all cases domains in the AWS account.
+- [ListFieldOptions](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_ListFieldOptions.html): Lists all of the field options for a field identifier in the domain.
+- [ListFields](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_ListFields.html): Lists all fields in a Cases domain.
+- [ListLayouts](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_ListLayouts.html): Lists all layouts in the given cases domain.
+- [ListTagsForResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_ListTagsForResource.html): Lists tags for a resource.
+- [ListTemplates](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_ListTemplates.html): Lists all of the templates in a Cases domain.
+- [PutCaseEventConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_PutCaseEventConfiguration.html): Adds case event publishing configuration.
+- [SearchAllRelatedItems](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_SearchAllRelatedItems.html): Searches for related items across all cases within a domain.
+- [SearchCases](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_SearchCases.html): Searches for cases within their associated Cases domain.
+- [SearchRelatedItems](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_SearchRelatedItems.html): Searches for related items that are associated with a case.
+- [TagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_TagResource.html): Adds tags to a resource.
+- [UntagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_UntagResource.html): Untags a resource.
+- [UpdateCase](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_UpdateCase.html)
+- [UpdateCaseRule](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_UpdateCaseRule.html): Updates a case rule.
+- [UpdateField](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_UpdateField.html): Updates the properties of an existing field.
+- [UpdateLayout](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_UpdateLayout.html): Updates the attributes of an existing layout.
+- [UpdateTemplate](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_UpdateTemplate.html): Updates the attributes of an existing template.
+
+### Data Types
+
+- [AuditEvent](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_AuditEvent.html): Represents the content of a particular audit event.
+- [AuditEventField](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_AuditEventField.html): Fields for audit event.
+- [AuditEventFieldValueUnion](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_AuditEventFieldValueUnion.html): Object to store union of Field values.
+- [AuditEventPerformedBy](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_AuditEventPerformedBy.html): Information of the user which performed the audit.
+- [BasicLayout](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_BasicLayout.html): Content specific to BasicLayout type.
+- [BooleanCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_BooleanCondition.html): Boolean condition for a rule.
+- [BooleanOperands](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_BooleanOperands.html): Boolean operands for a condition.
+- [CaseEventIncludedData](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CaseEventIncludedData.html): Details of what case data is published through the case event stream.
+- [CaseFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CaseFilter.html): A filter for cases.
+- [CaseRuleDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CaseRuleDetails.html): Represents what rule type should take place, under what conditions.
+- [CaseRuleError](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CaseRuleError.html): Error for batch describe case rules API failure.
+- [CaseRuleIdentifier](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CaseRuleIdentifier.html): Object containing case rule identifier information.
+- [CaseRuleSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CaseRuleSummary.html): Summary information of this case rule.
+- [CaseSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CaseSummary.html): Case summary information.
+- [CommentContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CommentContent.html): Represents the content of a Comment to be returned to agents.
+- [CommentFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CommentFilter.html): A filter for related items of type Comment.
+- [ConnectCaseContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_ConnectCaseContent.html): Represents the content of a ConnectCase type related item.
+- [ConnectCaseFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_ConnectCaseFilter.html): A filter for related items of type ConnectCase.
+- [ConnectCaseInputContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_ConnectCaseInputContent.html): Represents the content of a ConnectCase related item.
+- [Contact](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_Contact.html): An object that represents an Amazon Connect contact object.
+- [ContactContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_ContactContent.html): An object that represents a content of an Amazon Connect contact object.
+- [ContactFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_ContactFilter.html): A filter for related items of type Contact.
+- [CustomContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CustomContent.html): Represents the content of a Custom type related item.
+- [CustomFieldsFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CustomFieldsFilter.html): A filter for fields in Custom type related items.
+- [CustomFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CustomFilter.html): A filter for related items of type Custom.
+- [CustomInputContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_CustomInputContent.html): Represents the content of a Custom related item.
+- [DomainSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_DomainSummary.html): Object for the summarized details of the domain.
+- [EmptyFieldValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_EmptyFieldValue.html): An empty value.
+- [EmptyOperandValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_EmptyOperandValue.html): Represents an empty operand value.
+- [EventBridgeConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_EventBridgeConfiguration.html): Configuration to enable EventBridge case event delivery and determine what data is delivered.
+- [EventIncludedData](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_EventIncludedData.html): Details of what case and related item data is published through the case event stream.
+- [FieldAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_FieldAttributes.html): Union of field attributes.
+- [FieldError](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_FieldError.html): Object for errors on fields.
+- [FieldFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_FieldFilter.html): A filter for fields.
+- [FieldGroup](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_FieldGroup.html): Object for a group of fields and associated properties.
+- [FieldIdentifier](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_FieldIdentifier.html): Object for unique identifier of a field.
+- [FieldItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_FieldItem.html): Object for field related information.
+- [FieldOption](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_FieldOption.html): Object for field Options information.
+- [FieldOptionError](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_FieldOptionError.html): Object for field Options errors.
+- [FieldOptionsCaseRule](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_FieldOptionsCaseRule.html): Rules that control which options are available in a child field based on the selected value in a parent field.
+- [FieldSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_FieldSummary.html): Object for the summarized details of the field.
+- [FieldValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_FieldValue.html): Object for case field values.
+- [FieldValueUnion](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_FieldValueUnion.html): Object to store union of Field values.
+- [FileContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_FileContent.html): An object that represents a content of an Amazon Connect file object.
+- [FileFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_FileFilter.html): A filter for related items of type File.
+- [GetCaseRuleResponse](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_GetCaseRuleResponse.html): Detailed case rule information.
+- [GetFieldResponse](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_GetFieldResponse.html): Object to store detailed field information.
+- [HiddenCaseRule](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_HiddenCaseRule.html): A rule that controls field visibility based on conditions.
+- [LayoutConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_LayoutConfiguration.html): Object to store configuration of layouts associated to the template.
+- [LayoutContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_LayoutContent.html): Object to store union of different versions of layout content.
+- [LayoutSections](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_LayoutSections.html): Ordered list containing different kinds of sections that can be added.
+- [LayoutSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_LayoutSummary.html): Object for the summarized details of the layout.
+- [OperandOne](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_OperandOne.html): Represents the left hand operand in the condition.
+- [OperandTwo](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_OperandTwo.html): Represents the right hand operand in the condition.
+- [ParentChildFieldOptionsMapping](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_ParentChildFieldOptionsMapping.html): A mapping between a parent field option value and child field option values.
+- [RelatedItemContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_RelatedItemContent.html): Represents the content of a particular type of related item.
+- [RelatedItemEventIncludedData](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_RelatedItemEventIncludedData.html): Details of what related item data is published through the case event stream.
+- [RelatedItemInputContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_RelatedItemInputContent.html): Represents the content of a related item to be created.
+- [RelatedItemTypeFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_RelatedItemTypeFilter.html): The list of types of related items and their parameters to use for filtering.
+- [RequiredCaseRule](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_RequiredCaseRule.html): Required rule type, used to indicate whether a field is required.
+- [RequiredField](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_RequiredField.html): List of fields that must have a value provided to create a case.
+- [SearchAllRelatedItemsResponseItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_SearchAllRelatedItemsResponseItem.html): A list of items that represent RelatedItems.
+- [SearchAllRelatedItemsSort](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_SearchAllRelatedItemsSort.html): The order in which all returned related items should be sorted.
+- [SearchCasesResponseItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_SearchCasesResponseItem.html): A list of items that represent cases.
+- [SearchRelatedItemsResponseItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_SearchRelatedItemsResponseItem.html): A list of items that represent RelatedItems.
+- [Section](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_Section.html): This represents a sections within a panel or tab of the page layout.
+- [SlaConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_SlaConfiguration.html): Represents an SLA configuration.
+- [SlaContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_SlaContent.html): Represents the content of an SLA to be returned to agents.
+- [SlaFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_SlaFilter.html): A filter for related items of type SLA.
+- [SlaInputConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_SlaInputConfiguration.html): Represents the input configuration of an SLA being created.
+- [SlaInputContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_SlaInputContent.html): Represents the content of an SLA.
+- [Sort](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_Sort.html): A structured set of sort terms.
+- [TagFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_TagFilter.html): A filter for tags.
+- [TagPropagationConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_TagPropagationConfiguration.html): Defines tag propagation configuration for resources created within a domain.
+- [TagValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_TagValue.html): Object for case tag filter values.
+- [TemplateRule](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_TemplateRule.html): An association representing a case rule acting upon a field.
+- [TemplateSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_TemplateSummary.html): Template summary information.
+- [TextAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_TextAttributes.html): Field attributes for Text field type.
+- [UserUnion](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_UserUnion.html): Represents the entity that performed the action.
+
+## [Amazon Connect Participant Service](https://docs.aws.amazon.com/connect/latest/APIReference/Welcome_Amazon_Connect_Participant_Service.html)
+
+- [Participant Service actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Participant_Service.html)
+- [Participant Service data types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Participant_Service.html)
+
+Amazon Connect is an easy-to-use omnichannel cloud contact center service that enables companies of any size to deliver superior customer service at a lower cost. Amazon Connect communications capabilities make it easy for companies to deliver personalized interactions across communication channels, including chat.
+
+Use the Amazon Connect Participant Service to manage participants (for example, agents, customers, and managers listening in), and to send messages and events within a chat contact. The APIs in the service enable the following: sending chat messages, attachment sharing, managing a participant's connection state and message events, and retrieving chat transcripts.
+
+### Actions
+
+- [CancelParticipantAuthentication](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_CancelParticipantAuthentication.html): Cancels the authentication session.
+- [CompleteAttachmentUpload](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_CompleteAttachmentUpload.html): Allows you to confirm that the attachment has been uploaded using the pre-signed URL provided in StartAttachmentUpload API.
+- [CreateParticipantConnection](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_CreateParticipantConnection.html): Creates the participant's connection.
+- [DescribeView](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_DescribeView.html): Retrieves the view for the specified view token.
+- [DisconnectParticipant](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_DisconnectParticipant.html): Disconnects a participant.
+- [GetAttachment](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_GetAttachment.html): Provides a pre-signed URL for download of a completed attachment.
+- [GetAuthenticationUrl](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_GetAuthenticationUrl.html): Retrieves the AuthenticationUrl for the current authentication session for the AuthenticateCustomer flow block.
+- [GetTranscript](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_GetTranscript.html): Retrieves a transcript of the session, including details about any attachments.
+- [SendEvent](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_SendEvent.html)
+- [SendMessage](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_SendMessage.html): Sends a message.
+- [StartAttachmentUpload](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_StartAttachmentUpload.html): Provides a pre-signed Amazon S3 URL in response for uploading the file directly to S3.
+
+### Data Types
+
+- [AttachmentItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_AttachmentItem.html): The case-insensitive input to indicate standard MIME type that describes the format of the file that will be uploaded.
+- [Attendee](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_Attendee.html): The attendee information, including attendee ID and join token.
+- [AudioFeatures](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_AudioFeatures.html): Has audio-specific configurations as the operating parameter for Echo Reduction.
+- [ConnectionCredentials](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_ConnectionCredentials.html): Connection credentials.
+- [Item](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_Item.html): An item - message or event - that has been sent.
+- [MeetingFeaturesConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_MeetingFeaturesConfiguration.html): The configuration settings of the features available to a meeting.
+- [MessageMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_MessageMetadata.html): Contains metadata related to a message.
+- [MessageProcessingMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_MessageProcessingMetadata.html): Contains metadata for chat messages.
+- [Receipt](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_Receipt.html): The receipt for the message delivered to the recipient.
+- [StartPosition](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_StartPosition.html): A filtering option for where to start.
+- [UploadMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_UploadMetadata.html): Fields to be used while uploading the attachment.
+- [View](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_View.html): A view resource object.
+- [ViewContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_ViewContent.html): View content containing all content necessary to render a view except for runtime input data.
+- [WebRTCConnection](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_WebRTCConnection.html): Creates the participantâs WebRTC connection data required for the client application (mobile or web) to connect to the call.
+- [WebRTCMediaPlacement](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_WebRTCMediaPlacement.html): A set of endpoints used by clients to connect to the media service group for an Amazon Chime SDK meeting.
+- [WebRTCMeeting](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_WebRTCMeeting.html): A meeting created using the Amazon Chime SDK.
+- [Websocket](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_Websocket.html): The websocket for the participant's connection.
+
+## [Amazon Connect Customer Profiles](https://docs.aws.amazon.com/connect/latest/APIReference/Welcome_Amazon_Connect_Customer_Profiles.html)
+
+- [Customer Profiles actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Customer_Profiles.html)
+- [Customer Profiles data types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Customer_Profiles.html)
+
+Amazon Connect Customer Profiles is a unified customer profile for your contact center that has pre-built connectors powered by AppFlow that make it easy to combine customer information from third party applications, such as Salesforce (CRM), ServiceNow (ITSM), and your enterprise resource planning (ERP), with contact history from your Amazon Connect contact center.
+
+For more information about the Amazon Connect Customer Profiles feature, see [Use Customer Profiles](https://docs.aws.amazon.com/connect/latest/adminguide/customer-profiles.html)in the Amazon Connect Administrator's Guide.
+
+### Actions
+
+- [AddProfileKey](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_AddProfileKey.html): Associates a new key value with a specific profile, such as a Contact Record ContactId.
+- [BatchGetCalculatedAttributeForProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_BatchGetCalculatedAttributeForProfile.html): Fetch the possible attribute values given the attribute name.
+- [BatchGetProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_BatchGetProfile.html): Get a batch of profiles.
+- [CreateCalculatedAttributeDefinition](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_CreateCalculatedAttributeDefinition.html): Creates a new calculated attribute definition.
+- [CreateDomain](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_CreateDomain.html): Creates a domain, which is a container for all customer data, such as customer profile attributes, object types, profile keys, and encryption keys.
+- [CreateDomainLayout](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_CreateDomainLayout.html): Creates the layout to view data for a specific domain.
+- [CreateEventStream](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_CreateEventStream.html): Creates an event stream, which is a subscription to real-time events, such as when profiles are created and updated through Amazon Connect Customer Profiles.
+- [CreateEventTrigger](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_CreateEventTrigger.html): Creates an event trigger, which specifies the rules when to perform action based on customer's ingested data.
+- [CreateIntegrationWorkflow](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_CreateIntegrationWorkflow.html): Creates an integration workflow.
+- [CreateProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_CreateProfile.html): Creates a standard profile.
+- [CreateRecommender](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_CreateRecommender.html): Creates a recommender
+- [CreateSegmentDefinition](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_CreateSegmentDefinition.html): Creates a segment definition associated to the given domain.
+- [CreateSegmentEstimate](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_CreateSegmentEstimate.html): Creates a segment estimate query.
+- [CreateSegmentSnapshot](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_CreateSegmentSnapshot.html): Triggers a job to export a segment to a specified destination.
+- [CreateUploadJob](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_CreateUploadJob.html): Creates an Upload job to ingest data for segment imports.
+- [DeleteCalculatedAttributeDefinition](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DeleteCalculatedAttributeDefinition.html): Deletes an existing calculated attribute definition.
+- [DeleteDomain](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DeleteDomain.html): Deletes a specific domain and all of its customer data, such as customer profile attributes and their related objects.
+- [DeleteDomainLayout](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DeleteDomainLayout.html): Deletes the layout used to view data for a specific domain.
+- [DeleteDomainObjectType](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DeleteDomainObjectType.html): Delete a DomainObjectType for the given Domain and ObjectType name.
+- [DeleteEventStream](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DeleteEventStream.html): Disables and deletes the specified event stream.
+- [DeleteEventTrigger](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DeleteEventTrigger.html): Disable and deletes the Event Trigger.
+- [DeleteIntegration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DeleteIntegration.html): Removes an integration from a specific domain.
+- [DeleteProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DeleteProfile.html): Deletes the standard customer profile and all data pertaining to the profile.
+- [DeleteProfileKey](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DeleteProfileKey.html): Removes a searchable key from a customer profile.
+- [DeleteProfileObject](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DeleteProfileObject.html): Removes an object associated with a profile of a given ProfileObjectType.
+- [DeleteProfileObjectType](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DeleteProfileObjectType.html): Removes a ProfileObjectType from a specific domain as well as removes all the ProfileObjects of that type.
+- [DeleteRecommender](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DeleteRecommender.html): Deletes a recommender.
+- [DeleteSegmentDefinition](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DeleteSegmentDefinition.html): Deletes a segment definition from the domain.
+- [DeleteWorkflow](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DeleteWorkflow.html): Deletes the specified workflow and all its corresponding resources.
+- [DetectProfileObjectType](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DetectProfileObjectType.html): The process of detecting profile object type mapping by using given objects.
+- [GetAutoMergingPreview](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetAutoMergingPreview.html): Tests the auto-merging settings of your Identity Resolution Job without merging your data.
+- [GetCalculatedAttributeDefinition](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetCalculatedAttributeDefinition.html): Provides more information on a calculated attribute definition for Customer Profiles.
+- [GetCalculatedAttributeForProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetCalculatedAttributeForProfile.html): Retrieve a calculated attribute for a customer profile.
+- [GetDomain](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetDomain.html): Returns information about a specific domain.
+- [GetDomainLayout](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetDomainLayout.html): Gets the layout to view data for a specific domain.
+- [GetDomainObjectType](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetDomainObjectType.html): Return a DomainObjectType for the input Domain and ObjectType names.
+- [GetEventStream](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetEventStream.html): Returns information about the specified event stream in a specific domain.
+- [GetEventTrigger](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetEventTrigger.html): Get a specific Event Trigger from the domain.
+- [GetIdentityResolutionJob](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetIdentityResolutionJob.html): Returns information about an Identity Resolution Job in a specific domain.
+- [GetIntegration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetIntegration.html): Returns an integration for a domain.
+- [GetMatches](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetMatches.html): Before calling this API, use CreateDomain or UpdateDomain to enable identity resolution: set Matching to true.
+- [GetObjectTypeAttributeStatistics](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetObjectTypeAttributeStatistics.html): The GetObjectTypeAttributeValues API delivers statistical insights about attributes within a specific object type, but is exclusively available for domains with data store enabled.
+- [GetProfileHistoryRecord](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetProfileHistoryRecord.html): Returns a history record for a specific profile, for a specific domain.
+- [GetProfileObjectType](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetProfileObjectType.html): Returns the object types for a specific domain.
+- [GetProfileObjectTypeTemplate](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetProfileObjectTypeTemplate.html): Returns the template information for a specific object type.
+- [GetProfileRecommendations](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetProfileRecommendations.html): Fetches the recommendations for a profile in the input Customer Profiles domain.
+- [GetRecommender](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetRecommender.html): Retrieves a recommender.
+- [GetSegmentDefinition](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetSegmentDefinition.html): Gets a segment definition from the domain.
+- [GetSegmentEstimate](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetSegmentEstimate.html): Gets the result of a segment estimate query.
+- [GetSegmentMembership](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetSegmentMembership.html): Determines if the given profiles are within a segment.
+- [GetSegmentSnapshot](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetSegmentSnapshot.html): Retrieve the latest status of a segment snapshot.
+- [GetSimilarProfiles](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetSimilarProfiles.html): Returns a set of profiles that belong to the same matching group using the matchId or profileId.
+- [GetUploadJob](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetUploadJob.html): This API retrieves the details of a specific upload job.
+- [GetUploadJobPath](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetUploadJobPath.html): This API retrieves the pre-signed URL and client token for uploading the file associated with the upload job.
+- [GetWorkflow](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetWorkflow.html): Get details of specified workflow.
+- [GetWorkflowSteps](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetWorkflowSteps.html): Get granular list of steps in workflow.
+- [ListAccountIntegrations](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListAccountIntegrations.html): Lists all of the integrations associated to a specific URI in the AWS account.
+- [ListCalculatedAttributeDefinitions](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListCalculatedAttributeDefinitions.html): Lists calculated attribute definitions for Customer Profiles
+- [ListCalculatedAttributesForProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListCalculatedAttributesForProfile.html): Retrieve a list of calculated attributes for a customer profile.
+- [ListDomainLayouts](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListDomainLayouts.html): Lists the existing layouts that can be used to view data for a specific domain.
+- [ListDomainObjectTypes](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListDomainObjectTypes.html): List all DomainObjectType(s) in a Customer Profiles domain.
+- [ListDomains](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListDomains.html): Returns a list of all the domains for an AWS account that have been created.
+- [ListEventStreams](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListEventStreams.html): Returns a list of all the event streams in a specific domain.
+- [ListEventTriggers](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListEventTriggers.html): List all Event Triggers under a domain.
+- [ListIdentityResolutionJobs](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListIdentityResolutionJobs.html): Lists all of the Identity Resolution Jobs in your domain.
+- [ListIntegrations](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListIntegrations.html): Lists all of the integrations in your domain.
+- [ListObjectTypeAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListObjectTypeAttributes.html): Fetch the possible attribute values given the attribute name.
+- [ListObjectTypeAttributeValues](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListObjectTypeAttributeValues.html): The ListObjectTypeAttributeValues API provides access to the most recent distinct values for any specified attribute, making it valuable for real-time data validation and consistency checks within your object types.
+- [ListProfileAttributeValues](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListProfileAttributeValues.html): Fetch the possible attribute values given the attribute name.
+- [ListProfileHistoryRecords](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListProfileHistoryRecords.html): Returns a list of history records for a specific profile, for a specific domain.
+- [ListProfileObjects](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListProfileObjects.html): Returns a list of objects associated with a profile of a given ProfileObjectType.
+- [ListProfileObjectTypes](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListProfileObjectTypes.html): Lists all of the templates available within the service.
+- [ListProfileObjectTypeTemplates](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListProfileObjectTypeTemplates.html): Lists all of the template information for object types.
+- [ListRecommenderRecipes](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListRecommenderRecipes.html): Returns a list of available recommender recipes that can be used to create recommenders.
+- [ListRecommenders](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListRecommenders.html): Returns a list of recommenders in the specified domain.
+- [ListRuleBasedMatches](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListRuleBasedMatches.html): Returns a set of MatchIds that belong to the given domain.
+- [ListSegmentDefinitions](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListSegmentDefinitions.html): Lists all segment definitions under a domain.
+- [ListTagsForResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListTagsForResource.html): Displays the tags associated with an Amazon Connect Customer Profiles resource.
+- [ListUploadJobs](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListUploadJobs.html): This API retrieves a list of upload jobs for the specified domain.
+- [ListWorkflows](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListWorkflows.html): Query to list all workflows.
+- [MergeProfiles](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_MergeProfiles.html): Runs an AWS Lambda job that does the following:
+- [PutDomainObjectType](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_PutDomainObjectType.html): Create/Update a DomainObjectType in a Customer Profiles domain.
+- [PutIntegration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_PutIntegration.html): Adds an integration between the service and a third-party service, which includes Amazon AppFlow and Amazon Connect.
+- [PutProfileObject](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_PutProfileObject.html): Adds additional objects to customer profiles of a given ObjectType.
+- [PutProfileObjectType](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_PutProfileObjectType.html): Defines a ProfileObjectType.
+- [SearchProfiles](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_SearchProfiles.html): Searches for profiles within a specific domain using one or more predefined search keys (e.g., _fullName, _phone, _email, _account, etc.) and/or custom-defined search keys.
+- [StartRecommender](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_StartRecommender.html): Starts a recommender that was previously stopped.
+- [StartUploadJob](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_StartUploadJob.html): This API starts the processing of an upload job to ingest profile data.
+- [StopRecommender](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_StopRecommender.html): Stops a recommender, suspending its ability to generate recommendations.
+- [StopUploadJob](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_StopUploadJob.html): This API stops the processing of an upload job.
+- [TagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_TagResource.html): Assigns one or more tags (key-value pairs) to the specified Amazon Connect Customer Profiles resource.
+- [UntagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_UntagResource.html): Removes one or more tags from the specified Amazon Connect Customer Profiles resource.
+- [UpdateCalculatedAttributeDefinition](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_UpdateCalculatedAttributeDefinition.html): Updates an existing calculated attribute definition.
+- [UpdateDomain](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_UpdateDomain.html): Updates the properties of a domain, including creating or selecting a dead letter queue or an encryption key.
+- [UpdateDomainLayout](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_UpdateDomainLayout.html): Updates the layout used to view data for a specific domain.
+- [UpdateEventTrigger](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_UpdateEventTrigger.html): Update the properties of an Event Trigger.
+- [UpdateProfile](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_UpdateProfile.html): Updates the properties of a profile.
+- [UpdateRecommender](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_UpdateRecommender.html): Updates the properties of an existing recommender, allowing you to modify its configuration and description.
+
+### Data Types
+
+- [AdditionalSearchKey](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_AdditionalSearchKey.html): A data type pair that consists of a KeyName and Values list that is used in conjunction with the KeyName and Values parameters to search for profiles using the SearchProfiles API.
+- [Address](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_Address.html): A generic address associated with the customer that is not mailing, shipping, or billing.
+- [AddressDimension](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_AddressDimension.html): Object that segments on Customer Profile's address object.
+- [AppflowIntegration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_AppflowIntegration.html): Details for workflow of type APPFLOW_INTEGRATION.
+- [AppflowIntegrationWorkflowAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_AppflowIntegrationWorkflowAttributes.html): Structure holding all APPFLOW_INTEGRATION specific workflow attributes.
+- [AppflowIntegrationWorkflowMetrics](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_AppflowIntegrationWorkflowMetrics.html): Workflow specific execution metrics for APPFLOW_INTEGRATION workflow.
+- [AppflowIntegrationWorkflowStep](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_AppflowIntegrationWorkflowStep.html): Workflow step details for APPFLOW_INTEGRATION workflow.
+- [AttributeDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_AttributeDetails.html): Mathematical expression and a list of attribute items specified in that expression.
+- [AttributeDimension](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_AttributeDimension.html): Object that segments on various Customer Profile's fields.
+- [AttributeItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_AttributeItem.html): The details of a single attribute item specified in the mathematical expression.
+- [AttributeTypesSelector](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_AttributeTypesSelector.html): Configuration information about the AttributeTypesSelector where the rule-based identity resolution uses to match profiles.
+- [AttributeValueItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_AttributeValueItem.html): List containing the values for the given attribute.
+- [AutoMerging](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_AutoMerging.html): Configuration settings for how to perform the auto-merging of profiles.
+- [Batch](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_Batch.html): Batch defines the boundaries for ingestion for each step in APPFLOW_INTEGRATION workflow.
+- [BatchGetCalculatedAttributeForProfileError](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_BatchGetCalculatedAttributeForProfileError.html): Error object describing why a specific profile and calculated attribute failed.
+- [BatchGetProfileError](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_BatchGetProfileError.html): Error object describing why a specific profile failed.
+- [CalculatedAttributeDimension](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_CalculatedAttributeDimension.html): Object that segments on Customer Profile's Calculated Attributes.
+- [CalculatedAttributeValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_CalculatedAttributeValue.html): The object containing the values of a single calculated attribute value.
+- [CatalogItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_CatalogItem.html): Represents an item in the catalog with its complete set of attributes and metadata.
+- [ConditionOverrides](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ConditionOverrides.html): An object to override the original condition block of a calculated attribute.
+- [Conditions](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_Conditions.html): The conditions including range, object count, and threshold for the calculated attribute.
+- [ConflictResolution](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ConflictResolution.html): How the auto-merging process should resolve conflicts between different profiles.
+- [ConnectorOperator](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ConnectorOperator.html): The operation to be performed on the provided source fields.
+- [Consolidation](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_Consolidation.html): The matching criteria to be used during the auto-merging process.
+- [ContactPreference](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ContactPreference.html): Object that defines users contact preference.
+- [DataStoreRequest](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DataStoreRequest.html): The data store request.
+- [DataStoreResponse](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DataStoreResponse.html): The data store response.
+- [DateDimension](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DateDimension.html): Object that segments on various Customer Profile's date fields.
+- [DestinationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DestinationSummary.html): Summary information about the Kinesis data stream
+- [DetectedProfileObjectType](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DetectedProfileObjectType.html): Contains ProfileObjectType mapping information from the model.
+- [Dimension](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_Dimension.html): Object that holds what profile and calculated attributes to segment on.
+- [DomainObjectTypeField](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DomainObjectTypeField.html): The standard domain object type.
+- [DomainObjectTypesListItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DomainObjectTypesListItem.html): Represents an item in the list of domain object types, containing basic information about a specific object type within a domain.
+- [DomainStats](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_DomainStats.html): Usage-specific statistics about the domain.
+- [EngagementPreferences](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_EngagementPreferences.html): Object that defines users preferred methods of engagement.
+- [EventParameters](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_EventParameters.html): Configuration parameters for events in the personalization system.
+- [EventsConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_EventsConfig.html): Configuration settings that define how events are processed and tracked.
+- [EventStreamDestinationDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_EventStreamDestinationDetails.html): Details of the destination being used for the EventStream.
+- [EventStreamSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_EventStreamSummary.html): An instance of EventStream in a list of EventStreams.
+- [EventTriggerCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_EventTriggerCondition.html): Specifies the circumstances under which the event should trigger the destination.
+- [EventTriggerDimension](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_EventTriggerDimension.html): A specific event dimension to be assessed.
+- [EventTriggerLimits](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_EventTriggerLimits.html): Defines limits controlling whether an event triggers the destination, based on ingestion latency and the number of invocations per profile over specific time periods.
+- [EventTriggerSummaryItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_EventTriggerSummaryItem.html): The summary of the event trigger.
+- [ExportingConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ExportingConfig.html): Configuration information about the S3 bucket where Identity Resolution Jobs writes result files.
+- [ExportingLocation](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ExportingLocation.html): The S3 location where Identity Resolution Jobs write result files.
+- [ExtraLengthValueProfileDimension](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ExtraLengthValueProfileDimension.html): Object that segments on various Customer profile's fields that are larger than normal.
+- [FieldSourceProfileIds](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_FieldSourceProfileIds.html): A duplicate customer profile that is to be merged into a main profile.
+- [Filter](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_Filter.html): Defines how to filter the objects coming in for calculated attributes.
+- [FilterAttributeDimension](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_FilterAttributeDimension.html): Object that defines how to filter the incoming objects for the calculated attribute.
+- [FilterDimension](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_FilterDimension.html): Contains the map of attribute names to attribute dimensions.
+- [FilterGroup](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_FilterGroup.html): Object that holds the dimensions to filter on.
+- [FlowDefinition](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_FlowDefinition.html): The configurations that control how Customer Profiles retrieves data from the source, Amazon AppFlow.
+- [FoundByKeyValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_FoundByKeyValue.html): A data type pair that consists of a KeyName and Values list that were used to find a profile returned in response to a SearchProfiles request.
+- [GetObjectTypeAttributeStatisticsPercentiles](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetObjectTypeAttributeStatisticsPercentiles.html): Contains percentile statistics for object type attributes.
+- [GetObjectTypeAttributeStatisticsStats](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_GetObjectTypeAttributeStatisticsStats.html): Statistical measurements for object type attributes including basic statistics and percentiles.
+- [Group](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_Group.html): Contains dimensions that determine what to segment on.
+- [IdentityResolutionJob](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_IdentityResolutionJob.html): Information about the Identity Resolution Job.
+- [IncrementalPullConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_IncrementalPullConfig.html): Specifies the configuration used when importing incremental records from the source.
+- [IntegrationConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_IntegrationConfig.html): Configuration data for integration workflow.
+- [JobSchedule](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_JobSchedule.html): The day and time when do you want to start the Identity Resolution Job every week.
+- [JobStats](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_JobStats.html): Statistics about the Identity Resolution Job.
+- [LayoutItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_LayoutItem.html): The layout object that contains LayoutDefinitionName, Description, DisplayName, IsDefault, LayoutType, Tags, CreatedAt, LastUpdatedAt
+- [ListCalculatedAttributeDefinitionItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListCalculatedAttributeDefinitionItem.html): The details of a single calculated attribute definition.
+- [ListCalculatedAttributeForProfileItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListCalculatedAttributeForProfileItem.html): The details of a single calculated attribute for a profile.
+- [ListDomainItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListDomainItem.html): An object in a list that represents a domain.
+- [ListIntegrationItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListIntegrationItem.html): An integration in list of integrations.
+- [ListObjectTypeAttributeItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListObjectTypeAttributeItem.html): Item that contains the attribute and when it was last updated.
+- [ListObjectTypeAttributeValuesItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListObjectTypeAttributeValuesItem.html): Represents an item in the list of object type attribute values with its associated metadata.
+- [ListProfileObjectsItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListProfileObjectsItem.html): A ProfileObject in a list of ProfileObjects.
+- [ListProfileObjectTypeItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListProfileObjectTypeItem.html): A ProfileObjectType instance.
+- [ListProfileObjectTypeTemplateItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListProfileObjectTypeTemplateItem.html): A ProfileObjectTypeTemplate in a list of ProfileObjectTypeTemplates.
+- [ListWorkflowsItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ListWorkflowsItem.html): A workflow in list of workflows.
+- [MarketoSourceProperties](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_MarketoSourceProperties.html): The properties that are applied when Marketo is being used as a source.
+- [MatchingRequest](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_MatchingRequest.html): The flag that enables the matching process of duplicate profiles.
+- [MatchingResponse](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_MatchingResponse.html): The flag that enables the matching process of duplicate profiles.
+- [MatchingRule](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_MatchingRule.html): Specifies how does the rule-based matching process should match profiles.
+- [MatchItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_MatchItem.html): The Match group object.
+- [ObjectAttribute](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ObjectAttribute.html): The criteria that a specific object attribute must meet to trigger the destination.
+- [ObjectFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ObjectFilter.html): The filter applied to ListProfileObjects response to include profile objects with the specified index values.
+- [ObjectTypeField](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ObjectTypeField.html): Represents a field in a ProfileObjectType.
+- [ObjectTypeKey](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ObjectTypeKey.html): An object that defines the Key element of a ProfileObject.
+- [Period](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_Period.html): Defines a limit and the time period during which it is enforced.
+- [Profile](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_Profile.html): The standard profile of a customer.
+- [ProfileAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ProfileAttributes.html): The object used to segment on attributes within the customer profile.
+- [ProfileDimension](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ProfileDimension.html): Object to hold the dimensions of a profile's fields to segment on.
+- [ProfileHistoryRecord](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ProfileHistoryRecord.html): Contains profile history record metadata.
+- [ProfileQueryFailures](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ProfileQueryFailures.html): Object that holds failures for membership.
+- [ProfileQueryResult](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ProfileQueryResult.html): Object that holds the results for membership.
+- [ProfileTypeDimension](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ProfileTypeDimension.html): Object to hold the dimension of a profile type field to segment on.
+- [Range](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_Range.html): The relative time period over which data is included in the aggregation.
+- [RangeOverride](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_RangeOverride.html): Overrides the original range on a calculated attribute definition.
+- [Readiness](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_Readiness.html): Information indicating if the Calculated Attribute is ready for use by confirming all historical data has been processed and reflected.
+- [Recommendation](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_Recommendation.html): Represents a single recommendation generated by the recommender system.
+- [RecommenderConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_RecommenderConfig.html): Configuration settings that define the behavior and parameters of a recommender.
+- [RecommenderRecipe](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_RecommenderRecipe.html): Defines the algorithm and approach used to generate recommendations.
+- [RecommenderSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_RecommenderSummary.html): Provides a summary of a recommender's configuration and current state.
+- [RecommenderUpdate](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_RecommenderUpdate.html): Contains information about an update operation performed on a recommender.
+- [ResultsSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ResultsSummary.html): The summary of results for an upload job, including the number of updated, created, and failed records.
+- [RuleBasedMatchingRequest](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_RuleBasedMatchingRequest.html): The request to enable the rule-based matching.
+- [RuleBasedMatchingResponse](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_RuleBasedMatchingResponse.html): The response of the Rule-based matching request.
+- [S3ExportingConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_S3ExportingConfig.html): Configuration information about the S3 bucket where Identity Resolution Jobs write result files.
+- [S3ExportingLocation](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_S3ExportingLocation.html): The S3 location where Identity Resolution Jobs write result files.
+- [S3SourceProperties](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_S3SourceProperties.html): The properties that are applied when Amazon S3 is being used as the flow source.
+- [SalesforceSourceProperties](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_SalesforceSourceProperties.html): The properties that are applied when Salesforce is being used as a source.
+- [ScheduledTriggerProperties](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ScheduledTriggerProperties.html): Specifies the configuration details of a scheduled-trigger flow that you define.
+- [SegmentDefinitionItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_SegmentDefinitionItem.html): Object holding the segment definition fields.
+- [SegmentGroup](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_SegmentGroup.html): Contains all groups of the segment definition.
+- [SegmentGroupStructure](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_SegmentGroupStructure.html): Contains all groups of the segment definition.
+- [ServiceNowSourceProperties](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ServiceNowSourceProperties.html): The properties that are applied when ServiceNow is being used as a source.
+- [SourceConnectorProperties](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_SourceConnectorProperties.html): Specifies the information that is required to query a particular Amazon AppFlow connector.
+- [SourceFlowConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_SourceFlowConfig.html): Contains information about the configuration of the source connector used in the flow.
+- [SourceSegment](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_SourceSegment.html): The source segments to build off of.
+- [Task](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_Task.html): A class for modeling different type of tasks.
+- [Threshold](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_Threshold.html): The threshold for the calculated attribute.
+- [TrainingMetrics](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_TrainingMetrics.html): Contains metrics and performance indicators from the training of a recommender model.
+- [TriggerConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_TriggerConfig.html): The trigger settings that determine how and when Amazon AppFlow runs the specified flow.
+- [TriggerProperties](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_TriggerProperties.html): Specifies the configuration details that control the trigger for a flow.
+- [UpdateAddress](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_UpdateAddress.html): Updates associated with the address properties of a customer profile.
+- [UploadJobItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_UploadJobItem.html): The summary information for an individual upload job.
+- [ValueRange](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ValueRange.html): A structure letting customers specify a relative time window over which over which data is included in the Calculated Attribute.
+- [WorkflowAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_WorkflowAttributes.html): Structure to hold workflow attributes.
+- [WorkflowMetrics](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_WorkflowMetrics.html): Generic object containing workflow execution metrics.
+- [WorkflowStepItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_WorkflowStepItem.html): List containing steps in workflow.
+- [ZendeskSourceProperties](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-customer-profiles_ZendeskSourceProperties.html): The properties that are applied when using Zendesk as a flow source.
+
+## [Amazon Q Connect](https://docs.aws.amazon.com/connect/latest/APIReference/Welcome_Amazon_Q_Connect.html)
+
+- [Amazon Q actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Q_Connect.html)
+- [Amazon Q data types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Q_Connect.html)
+
+Amazon Q in Connect is a generative AI customer service assistant. It is an LLM-enhanced evolution of Amazon Connect Wisdom that delivers real-time recommendations to help contact center agents resolve customer issues quickly and accurately.
+
+Amazon Q in Connect automatically detects customer intent during calls and chats using conversational analytics and natural language understanding (NLU). It then provides agents with immediate, real-time generative responses and suggested actions, and links to relevant documents and articles. Agents can also query Amazon Q in Connect directly using natural language or keywords to answer customer requests.
+
+Use the Amazon Q in Connect APIs to create an assistant and a knowledge base, for example, or manage content by uploading custom files.
+
+For more information, see [Use Amazon Q in Connect for generative AI powered agent assistance in real-time](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-q-connect.html)in the Amazon Connect Administrator Guide.
+
+### Actions
+
+- [ActivateMessageTemplate](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ActivateMessageTemplate.html): Activates a specific version of the Amazon Q in Connect message template.
+- [CreateAIAgent](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CreateAIAgent.html): Creates an Amazon Q in Connect AI Agent.
+- [CreateAIAgentVersion](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CreateAIAgentVersion.html): Creates and Amazon Q in Connect AI Agent version.
+- [CreateAIGuardrail](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CreateAIGuardrail.html): Creates an Amazon Q in Connect AI Guardrail.
+- [CreateAIGuardrailVersion](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CreateAIGuardrailVersion.html): Creates an Amazon Q in Connect AI Guardrail version.
+- [CreateAIPrompt](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CreateAIPrompt.html): Creates an Amazon Q in Connect AI Prompt.
+- [CreateAIPromptVersion](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CreateAIPromptVersion.html): Creates an Amazon Q in Connect AI Prompt version.
+- [CreateAssistant](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CreateAssistant.html): Creates an Amazon Q in Connect assistant.
+- [CreateAssistantAssociation](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CreateAssistantAssociation.html): Creates an association between an Amazon Q in Connect assistant and another resource.
+- [CreateContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CreateContent.html): Creates Amazon Q in Connect content.
+- [CreateContentAssociation](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CreateContentAssociation.html): Creates an association between a content resource in a knowledge base and step-by-step guides.
+- [CreateKnowledgeBase](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CreateKnowledgeBase.html): Creates a knowledge base.
+- [CreateMessageTemplate](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CreateMessageTemplate.html): Creates an Amazon Q in Connect message template.
+- [CreateMessageTemplateAttachment](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CreateMessageTemplateAttachment.html): Uploads an attachment file to the specified Amazon Q in Connect message template.
+- [CreateMessageTemplateVersion](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CreateMessageTemplateVersion.html): Creates a new Amazon Q in Connect message template version from the current content and configuration of a message template.
+- [CreateQuickResponse](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CreateQuickResponse.html): Creates an Amazon Q in Connect quick response.
+- [CreateSession](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CreateSession.html): Creates a session.
+- [DeactivateMessageTemplate](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DeactivateMessageTemplate.html): Deactivates a specific version of the Amazon Q in Connect message template .
+- [DeleteAIAgent](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DeleteAIAgent.html): Deletes an Amazon Q in Connect AI Agent.
+- [DeleteAIAgentVersion](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DeleteAIAgentVersion.html): Deletes an Amazon Q in Connect AI Agent Version.
+- [DeleteAIGuardrail](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DeleteAIGuardrail.html): Deletes an Amazon Q in Connect AI Guardrail.
+- [DeleteAIGuardrailVersion](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DeleteAIGuardrailVersion.html): Delete and Amazon Q in Connect AI Guardrail version.
+- [DeleteAIPrompt](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DeleteAIPrompt.html): Deletes an Amazon Q in Connect AI Prompt.
+- [DeleteAIPromptVersion](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DeleteAIPromptVersion.html): Delete and Amazon Q in Connect AI Prompt version.
+- [DeleteAssistant](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DeleteAssistant.html): Deletes an assistant.
+- [DeleteAssistantAssociation](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DeleteAssistantAssociation.html): Deletes an assistant association.
+- [DeleteContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DeleteContent.html): Deletes the content.
+- [DeleteContentAssociation](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DeleteContentAssociation.html): Deletes the content association.
+- [DeleteImportJob](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DeleteImportJob.html): Deletes the quick response import job.
+- [DeleteKnowledgeBase](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DeleteKnowledgeBase.html): Deletes the knowledge base.
+- [DeleteMessageTemplate](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DeleteMessageTemplate.html): Deletes an Amazon Q in Connect message template entirely or a specific version of the message template if version is supplied in the request.
+- [DeleteMessageTemplateAttachment](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DeleteMessageTemplateAttachment.html): Deletes the attachment file from the Amazon Q in Connect message template that is referenced by $LATEST qualifier.
+- [DeleteQuickResponse](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DeleteQuickResponse.html): Deletes a quick response.
+- [GetAIAgent](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GetAIAgent.html): Gets an Amazon Q in Connect AI Agent.
+- [GetAIGuardrail](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GetAIGuardrail.html): Gets the Amazon Q in Connect AI Guardrail.
+- [GetAIPrompt](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GetAIPrompt.html): Gets and Amazon Q in Connect AI Prompt.
+- [GetAssistant](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GetAssistant.html): Retrieves information about an assistant.
+- [GetAssistantAssociation](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GetAssistantAssociation.html): Retrieves information about an assistant association.
+- [GetContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GetContent.html): Retrieves content, including a pre-signed URL to download the content.
+- [GetContentAssociation](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GetContentAssociation.html): Returns the content association.
+- [GetContentSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GetContentSummary.html): Retrieves summary information about the content.
+- [GetImportJob](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GetImportJob.html): Retrieves the started import job.
+- [GetKnowledgeBase](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GetKnowledgeBase.html): Retrieves information about the knowledge base.
+- [GetMessageTemplate](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GetMessageTemplate.html): Retrieves the Amazon Q in Connect message template.
+- [GetNextMessage](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GetNextMessage.html): Retrieves next message on an Amazon Q in Connect session.
+- [GetQuickResponse](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GetQuickResponse.html): Retrieves the quick response.
+- [GetRecommendations](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GetRecommendations.html)
+- [GetSession](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GetSession.html): Retrieves information for a specified session.
+- [ListAIAgents](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ListAIAgents.html): Lists AI Agents.
+- [ListAIAgentVersions](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ListAIAgentVersions.html): List AI Agent versions.
+- [ListAIGuardrails](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ListAIGuardrails.html): Lists the AI Guardrails available on the Amazon Q in Connect assistant.
+- [ListAIGuardrailVersions](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ListAIGuardrailVersions.html): Lists AI Guardrail versions.
+- [ListAIPrompts](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ListAIPrompts.html): Lists the AI Prompts available on the Amazon Q in Connect assistant.
+- [ListAIPromptVersions](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ListAIPromptVersions.html): Lists AI Prompt versions.
+- [ListAssistantAssociations](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ListAssistantAssociations.html): Lists information about assistant associations.
+- [ListAssistants](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ListAssistants.html): Lists information about assistants.
+- [ListContentAssociations](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ListContentAssociations.html): Lists the content associations.
+- [ListContents](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ListContents.html): Lists the content.
+- [ListImportJobs](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ListImportJobs.html): Lists information about import jobs.
+- [ListKnowledgeBases](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ListKnowledgeBases.html): Lists the knowledge bases.
+- [ListMessages](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ListMessages.html): Lists messages on an Amazon Q in Connect session.
+- [ListMessageTemplates](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ListMessageTemplates.html): Lists all the available Amazon Q in Connect message templates for the specified knowledge base.
+- [ListMessageTemplateVersions](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ListMessageTemplateVersions.html): Lists all the available versions for the specified Amazon Q in Connect message template.
+- [ListQuickResponses](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ListQuickResponses.html): Lists information about quick response.
+- [ListSpans](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ListSpans.html): Retrieves AI agent execution traces for a session, providing granular visibility into agent orchestration flows, LLM interactions, and tool invocations.
+- [ListTagsForResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ListTagsForResource.html): Lists the tags for the specified resource.
+- [NotifyRecommendationsReceived](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_NotifyRecommendationsReceived.html): Removes the specified recommendations from the specified assistant's queue of newly available recommendations.
+- [PutFeedback](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_PutFeedback.html): Provides feedback against the specified assistant for the specified target.
+- [QueryAssistant](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_QueryAssistant.html)
+- [RemoveAssistantAIAgent](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_RemoveAssistantAIAgent.html): Removes the AI Agent that is set for use by default on an Amazon Q in Connect Assistant.
+- [RemoveKnowledgeBaseTemplateUri](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_RemoveKnowledgeBaseTemplateUri.html): Removes a URI template from a knowledge base.
+- [RenderMessageTemplate](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_RenderMessageTemplate.html): Renders the Amazon Q in Connect message template based on the attribute values provided and generates the message content.
+- [Retrieve](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_Retrieve.html): Retrieves content from knowledge sources based on a query.
+- [SearchContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SearchContent.html): Searches for content in a specified knowledge base.
+- [SearchMessageTemplates](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SearchMessageTemplates.html): Searches for Amazon Q in Connect message templates in the specified knowledge base.
+- [SearchQuickResponses](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SearchQuickResponses.html): Searches existing Amazon Q in Connect quick responses in an Amazon Q in Connect knowledge base.
+- [SearchSessions](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SearchSessions.html): Searches for sessions.
+- [SendMessage](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SendMessage.html): Submits a message to the Amazon Q in Connect session.
+- [StartContentUpload](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_StartContentUpload.html): Get a URL to upload content to a knowledge base.
+- [StartImportJob](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_StartImportJob.html): Start an asynchronous job to import Amazon Q in Connect resources from an uploaded source file.
+- [TagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_TagResource.html): Adds the specified tags to the specified resource.
+- [UntagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_UntagResource.html): Removes the specified tags from the specified resource.
+- [UpdateAIAgent](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_UpdateAIAgent.html): Updates an AI Agent.
+- [UpdateAIGuardrail](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_UpdateAIGuardrail.html): Updates an AI Guardrail.
+- [UpdateAIPrompt](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_UpdateAIPrompt.html): Updates an AI Prompt.
+- [UpdateAssistantAIAgent](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_UpdateAssistantAIAgent.html): Updates the AI Agent that is set for use by default on an Amazon Q in Connect Assistant.
+- [UpdateContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_UpdateContent.html): Updates information about the content.
+- [UpdateKnowledgeBaseTemplateUri](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_UpdateKnowledgeBaseTemplateUri.html): Updates the template URI of a knowledge base.
+- [UpdateMessageTemplate](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_UpdateMessageTemplate.html): Updates the Amazon Q in Connect message template.
+- [UpdateMessageTemplateMetadata](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_UpdateMessageTemplateMetadata.html): Updates the Amazon Q in Connect message template metadata.
+- [UpdateQuickResponse](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_UpdateQuickResponse.html): Updates an existing Amazon Q in Connect quick response.
+- [UpdateSession](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_UpdateSession.html): Updates a session.
+- [UpdateSessionData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_UpdateSessionData.html): Updates the data stored on an Amazon Q in Connect Session.
+
+### Data Types
+
+- [AgentAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AgentAttributes.html): Information about an agent.
+- [AIAgentConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AIAgentConfiguration.html): A typed union that specifies the configuration based on the type of AI Agent.
+- [AIAgentConfigurationData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AIAgentConfigurationData.html): A type that specifies the AI Agent ID configuration data when mapping an AI Agents to be used for an AI Agent type on a session or assistant.
+- [AIAgentData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AIAgentData.html): The data for the AI Agent.
+- [AIAgentSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AIAgentSummary.html): The summary of the AI Agent.
+- [AIAgentVersionSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AIAgentVersionSummary.html): The summary of the AI Agent version.
+- [AIGuardrailAssessment](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AIGuardrailAssessment.html): The assessment information from the AI Guardrail.
+- [AIGuardrailContentPolicyConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AIGuardrailContentPolicyConfig.html): Contains details about how to handle harmful content.
+- [AIGuardrailContextualGroundingPolicyConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AIGuardrailContextualGroundingPolicyConfig.html): The policy configuration details for the AI Guardrail's contextual grounding policy.
+- [AIGuardrailData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AIGuardrailData.html): The data for the AI Guardrail
+- [AIGuardrailSensitiveInformationPolicyConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AIGuardrailSensitiveInformationPolicyConfig.html): Contains details about PII entities and regular expressions to configure for the AI Guardrail.
+- [AIGuardrailSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AIGuardrailSummary.html): The summary of the AI Guardrail.
+- [AIGuardrailTopicPolicyConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AIGuardrailTopicPolicyConfig.html): Contains details about topics that the AI Guardrail should identify and deny.
+- [AIGuardrailVersionSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AIGuardrailVersionSummary.html): The summary of the AI Guardrail version.
+- [AIGuardrailWordPolicyConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AIGuardrailWordPolicyConfig.html): Contains details about the word policy to configured for the AI Guardrail.
+- [AIPromptData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AIPromptData.html): The data for the AI Prompt
+- [AIPromptInferenceConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AIPromptInferenceConfiguration.html): The configuration for inference parameters when using AI Prompts.
+- [AIPromptSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AIPromptSummary.html): The summary of the AI Prompt.
+- [AIPromptTemplateConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AIPromptTemplateConfiguration.html): A typed union that specifies the configuration for a prompt template based on its type.
+- [AIPromptVersionSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AIPromptVersionSummary.html): The summary of the AI Prompt version.
+- [AmazonConnectGuideAssociationData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AmazonConnectGuideAssociationData.html): Content association data for a step-by-step guide.
+- [Annotation](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_Annotation.html): An annotation that provides additional context or metadata.
+- [AnswerRecommendationAIAgentConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AnswerRecommendationAIAgentConfiguration.html): The configuration for the ANSWER_RECOMMENDATION AI Agent type.
+- [AppIntegrationsConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AppIntegrationsConfiguration.html): Configuration information for Amazon AppIntegrations to automatically ingest content.
+- [AssistantAssociationData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AssistantAssociationData.html): Information about the assistant association.
+- [AssistantAssociationInputData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AssistantAssociationInputData.html): The data that is input into Amazon Q in Connect as a result of the assistant association.
+- [AssistantAssociationOutputData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AssistantAssociationOutputData.html): The data that is output as a result of the assistant association.
+- [AssistantAssociationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AssistantAssociationSummary.html): Summary information about the assistant association.
+- [AssistantCapabilityConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AssistantCapabilityConfiguration.html): The capability configuration for an Amazon Q in Connect assistant.
+- [AssistantData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AssistantData.html): The assistant data.
+- [AssistantIntegrationConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AssistantIntegrationConfiguration.html): The configuration information for the Amazon Q in Connect assistant integration.
+- [AssistantSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AssistantSummary.html): Summary information about the assistant.
+- [AssociationConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AssociationConfiguration.html): The configuration for an Amazon Q in Connect Assistant Association.
+- [AssociationConfigurationData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_AssociationConfigurationData.html): A typed union of the data of the configuration for an Amazon Q in Connect Assistant Association.
+- [BedrockFoundationModelConfigurationForParsing](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_BedrockFoundationModelConfigurationForParsing.html): Settings for a foundation model used to parse documents for a data source.
+- [CaseSummarizationAIAgentConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CaseSummarizationAIAgentConfiguration.html): The configuration for AI Agents of type CASE_SUMMARIZATION.
+- [CaseSummarizationChunkDataDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CaseSummarizationChunkDataDetails.html): Details about case summarization chunk data.
+- [CaseSummarizationInputData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CaseSummarizationInputData.html): Input data for case summarization.
+- [ChunkingConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ChunkingConfiguration.html): Details about how to chunk the documents in the data source.
+- [Citation](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_Citation.html): A citation that references source content.
+- [CitationSpan](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CitationSpan.html): Contains information about where the text with a citation begins and ends in the generated output.
+- [Configuration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_Configuration.html): The configuration information of the external data source.
+- [ConnectConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ConnectConfiguration.html): The configuration information of the Amazon Connect data source.
+- [ContentAssociationContents](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ContentAssociationContents.html): The contents of a content association.
+- [ContentAssociationData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ContentAssociationData.html): Information about the content association.
+- [ContentAssociationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ContentAssociationSummary.html): Summary information about a content association.
+- [ContentData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ContentData.html): Information about the content.
+- [ContentDataDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ContentDataDetails.html): Details about the content data.
+- [ContentFeedbackData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ContentFeedbackData.html): Information about the feedback.
+- [ContentReference](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ContentReference.html): Reference information about the content.
+- [ContentSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ContentSummary.html): Summary information about the content.
+- [ConversationContext](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ConversationContext.html): The conversation context to include in SendMessage.
+- [ConversationState](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ConversationState.html): The conversation state associated to a message.
+- [CustomerProfileAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_CustomerProfileAttributes.html): The customer profile attributes that are used with the message template.
+- [DataDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DataDetails.html): Details about the data.
+- [DataReference](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DataReference.html): Reference data.
+- [DataSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DataSummary.html): Summary of the data.
+- [Document](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_Document.html): The document.
+- [DocumentText](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_DocumentText.html): The text of the document.
+- [EmailGenerativeAnswerAIAgentConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_EmailGenerativeAnswerAIAgentConfiguration.html): Configuration settings for the EMAIL_GENERATIVE_ANSWER AI agent including prompts, locale, and knowledge base associations.
+- [EmailGenerativeAnswerChunkDataDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_EmailGenerativeAnswerChunkDataDetails.html): Details of streaming chunk data for email generative answers including completion text and references.
+- [EmailHeader](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_EmailHeader.html): The email header to include in email messages.
+- [EmailMessageTemplateContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_EmailMessageTemplateContent.html): The content of the message template that applies to the email channel subtype.
+- [EmailMessageTemplateContentBody](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_EmailMessageTemplateContentBody.html): The body to use in email messages.
+- [EmailOverviewAIAgentConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_EmailOverviewAIAgentConfiguration.html): Configuration settings for the EMAIL_OVERVIEW AI agent including prompt ID and locale settings.
+- [EmailOverviewChunkDataDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_EmailOverviewChunkDataDetails.html): Details of streaming chunk data for email overview including completion text and pagination tokens.
+- [EmailResponseAIAgentConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_EmailResponseAIAgentConfiguration.html): Configuration settings for the EMAIL_RESPONSE AI agent including prompts, locale, and knowledge base associations.
+- [EmailResponseChunkDataDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_EmailResponseChunkDataDetails.html): Details of streaming chunk data for email responses including completion text and pagination tokens.
+- [ExtendedMessageTemplateData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ExtendedMessageTemplateData.html): The extended data of a message template.
+- [ExternalBedrockKnowledgeBaseConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ExternalBedrockKnowledgeBaseConfig.html): Configuration for an external Bedrock knowledge base.
+- [ExternalSourceConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ExternalSourceConfiguration.html): The configuration information of the external data source.
+- [Filter](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_Filter.html): A search filter.
+- [FilterAttribute](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_FilterAttribute.html): An attribute used for filtering.
+- [FixedSizeChunkingConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_FixedSizeChunkingConfiguration.html): Configurations for when you choose fixed-size chunking.
+- [GenerativeChunkDataDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GenerativeChunkDataDetails.html): Details about the generative chunk data.
+- [GenerativeContentFeedbackData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GenerativeContentFeedbackData.html): The feedback information for a generative target type.
+- [GenerativeDataDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GenerativeDataDetails.html): Details about generative data.
+- [GenerativeReference](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GenerativeReference.html): Reference information about generative content.
+- [GroupingConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GroupingConfiguration.html): The configuration information of the grouping of Amazon Q in Connect users.
+- [GuardrailContentFilterConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GuardrailContentFilterConfig.html): Contains filter strengths for harmful content.
+- [GuardrailContextualGroundingFilterConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GuardrailContextualGroundingFilterConfig.html): The filter configuration details for the AI Guardrail's contextual grounding filter.
+- [GuardrailManagedWordsConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GuardrailManagedWordsConfig.html): The managed word list to configure for the AI Guardrail.
+- [GuardrailPiiEntityConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GuardrailPiiEntityConfig.html): The PII entity to configure for the AI Guardrail.
+- [GuardrailRegexConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GuardrailRegexConfig.html): The regular expression to configure for the AI Guardrail.
+- [GuardrailTopicConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GuardrailTopicConfig.html): Details about topics for the AI Guardrail to identify and deny.
+- [GuardrailWordConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_GuardrailWordConfig.html): A word to configure for the AI Guardrail.
+- [HierarchicalChunkingConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_HierarchicalChunkingConfiguration.html): Settings for hierarchical document chunking for a data source.
+- [HierarchicalChunkingLevelConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_HierarchicalChunkingLevelConfiguration.html): Token settings for each layer.
+- [Highlight](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_Highlight.html): Offset specification to describe highlighting of document excerpts for rendering search results and recommendations.
+- [ImportJobData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ImportJobData.html): Summary information about the import job.
+- [ImportJobSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ImportJobSummary.html): Summary information about the import job.
+- [IntentDetectedDataDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_IntentDetectedDataDetails.html): Details about the detected intent.
+- [IntentInputData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_IntentInputData.html): Information about the Amazon Q intent.
+- [KnowledgeBaseAssociationConfigurationData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_KnowledgeBaseAssociationConfigurationData.html): The data of the configuration for a KNOWLEDGE_BASE type Amazon Q in Connect Assistant Association.
+- [KnowledgeBaseAssociationData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_KnowledgeBaseAssociationData.html): Association information about the knowledge base.
+- [KnowledgeBaseData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_KnowledgeBaseData.html): Information about the knowledge base.
+- [KnowledgeBaseSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_KnowledgeBaseSummary.html): Summary information about the knowledge base.
+- [KnowledgeSource](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_KnowledgeSource.html): A knowledge source that provides content for recommendations.
+- [ManagedSourceConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ManagedSourceConfiguration.html): Source configuration for managed resources.
+- [ManualSearchAIAgentConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ManualSearchAIAgentConfiguration.html): The configuration for the MANUAL_SEARCH AI Agent type.
+- [MessageConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_MessageConfiguration.html): The configuration for a SendMessage request.
+- [MessageData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_MessageData.html): The message data.
+- [MessageInput](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_MessageInput.html): The message input.
+- [MessageOutput](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_MessageOutput.html): The message output.
+- [MessageTemplateAttachment](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_MessageTemplateAttachment.html): Information about the message template attachment.
+- [MessageTemplateAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_MessageTemplateAttributes.html): The attributes that are used with the message template.
+- [MessageTemplateBodyContentProvider](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_MessageTemplateBodyContentProvider.html): The container of the message template body.
+- [MessageTemplateContentProvider](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_MessageTemplateContentProvider.html): The container of message template content.
+- [MessageTemplateData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_MessageTemplateData.html): The data of a message template.
+- [MessageTemplateFilterField](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_MessageTemplateFilterField.html): The message template fields to filter the message template query results by.
+- [MessageTemplateOrderField](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_MessageTemplateOrderField.html): The message template fields to order the message template query results by.
+- [MessageTemplateQueryField](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_MessageTemplateQueryField.html): The message template fields to query message templates by.
+- [MessageTemplateSearchExpression](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_MessageTemplateSearchExpression.html): The search expression of the message template.
+- [MessageTemplateSearchResultData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_MessageTemplateSearchResultData.html): The result of message template search.
+- [MessageTemplateSourceConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_MessageTemplateSourceConfiguration.html): The container of message template source configuration.
+- [MessageTemplateSourceConfigurationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_MessageTemplateSourceConfigurationSummary.html): The container of message template source configuration summary.
+- [MessageTemplateSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_MessageTemplateSummary.html): The summary of the message template.
+- [MessageTemplateVersionSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_MessageTemplateVersionSummary.html): The summary of the message template version.
+- [NotesChunkDataDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_NotesChunkDataDetails.html): Details about notes chunk data.
+- [NotesDataDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_NotesDataDetails.html): Details about notes data.
+- [NoteTakingAIAgentConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_NoteTakingAIAgentConfiguration.html): The configuration for AI Agents of type NOTE_TAKING.
+- [NotifyRecommendationsReceivedError](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_NotifyRecommendationsReceivedError.html): An error occurred when creating a recommendation.
+- [OrchestrationAIAgentConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_OrchestrationAIAgentConfiguration.html): The configuration for AI Agents of type ORCHESTRATION.
+- [OrchestratorConfigurationEntry](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_OrchestratorConfigurationEntry.html): An entry in the orchestrator configuration list.
+- [OrCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_OrCondition.html): A list of conditions which would be applied together with an OR condition.
+- [ParsingConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ParsingConfiguration.html): Settings for parsing document contents.
+- [ParsingPrompt](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ParsingPrompt.html): Instructions for interpreting the contents of a document.
+- [PushADMMessageTemplateContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_PushADMMessageTemplateContent.html): The content of the push message template that applies to ADM (Amazon Device Messaging) notification service.
+- [PushAPNSMessageTemplateContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_PushAPNSMessageTemplateContent.html): The content of the push message template that applies to APNS (Apple Push Notification service) notification service.
+- [PushBaiduMessageTemplateContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_PushBaiduMessageTemplateContent.html): The content of the push message template that applies to Baidu notification service.
+- [PushFCMMessageTemplateContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_PushFCMMessageTemplateContent.html): The content of the push message template that applies to FCM (Firebase Cloud Messaging) notification service.
+- [PushMessageTemplateContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_PushMessageTemplateContent.html): The content of the message template that applies to the push channel subtype.
+- [QueryCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_QueryCondition.html): Information about how to query content.
+- [QueryConditionItem](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_QueryConditionItem.html): The condition for the query.
+- [QueryInputData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_QueryInputData.html): Input information for the query.
+- [QueryRecommendationTriggerData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_QueryRecommendationTriggerData.html): Data associated with the QUERY RecommendationTriggerType.
+- [QueryTextInputData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_QueryTextInputData.html): Information about the text to search for.
+- [QuickResponseContentProvider](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_QuickResponseContentProvider.html): The container quick response content.
+- [QuickResponseContents](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_QuickResponseContents.html): The content of the quick response stored in different media types.
+- [QuickResponseData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_QuickResponseData.html): Information about the quick response.
+- [QuickResponseDataProvider](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_QuickResponseDataProvider.html): The container of quick response data.
+- [QuickResponseFilterField](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_QuickResponseFilterField.html): The quick response fields to filter the quick response query results by.
+- [QuickResponseOrderField](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_QuickResponseOrderField.html): The quick response fields to order the quick response query results by.
+- [QuickResponseQueryField](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_QuickResponseQueryField.html): The quick response fields to query quick responses by.
+- [QuickResponseSearchExpression](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_QuickResponseSearchExpression.html): Information about the import job.
+- [QuickResponseSearchResultData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_QuickResponseSearchResultData.html): The result of quick response search.
+- [QuickResponseSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_QuickResponseSummary.html): The summary information about the quick response.
+- [RankingData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_RankingData.html): Details about the source content ranking data.
+- [RecommendationData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_RecommendationData.html): Information about the recommendation.
+- [RecommendationTrigger](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_RecommendationTrigger.html): A recommendation trigger provides context on the event that produced the referenced recommendations.
+- [RecommendationTriggerData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_RecommendationTriggerData.html): A union type containing information related to the trigger.
+- [RenderingConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_RenderingConfiguration.html): Information about how to render the content.
+- [ResultData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ResultData.html): Information about the result.
+- [RetrievalConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_RetrievalConfiguration.html): Configuration for content retrieval operations.
+- [RetrievalFilterConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_RetrievalFilterConfiguration.html): Configuration for filtering content during retrieval operations.
+- [RetrieveResult](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_RetrieveResult.html): A single result from a content retrieval operation.
+- [RuntimeSessionData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_RuntimeSessionData.html): The list of key-value pairs that are stored on the session.
+- [RuntimeSessionDataValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_RuntimeSessionDataValue.html): A union type that specifies the data stored on the session.
+- [SearchExpression](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SearchExpression.html): The search expression.
+- [SeedUrl](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SeedUrl.html): A URL for crawling.
+- [SelfServiceAIAgentConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SelfServiceAIAgentConfiguration.html): The configuration for AI Agents of type SELF_SERVICE.
+- [SelfServiceConversationHistory](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SelfServiceConversationHistory.html): The conversation history data to included in conversation context data before the Amazon Q in Connect session.
+- [SemanticChunkingConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SemanticChunkingConfiguration.html): Settings for semantic document chunking for a data source.
+- [ServerSideEncryptionConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ServerSideEncryptionConfiguration.html): The configuration information for the customer managed key used for encryption.
+- [SessionData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SessionData.html): Information about the session.
+- [SessionIntegrationConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SessionIntegrationConfiguration.html): The configuration information for the session integration.
+- [SessionSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SessionSummary.html): Summary information about the session.
+- [SMSMessageTemplateContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SMSMessageTemplateContent.html): The content of the message template that applies to the SMS channel subtype.
+- [SMSMessageTemplateContentBody](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SMSMessageTemplateContentBody.html): The body to use in SMS messages.
+- [SourceConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SourceConfiguration.html): Configuration information about the external data source.
+- [SourceContentDataDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SourceContentDataDetails.html): Details about the source content data.
+- [Span](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_Span.html): A span represents a unit of work during AI agent execution, capturing timing, status, and contextual attributes.
+- [SpanAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SpanAttributes.html): Contextual attributes capturing operation details, LLM configuration, usage metrics, and conversation data
+- [SpanCitation](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SpanCitation.html): A citation that spans a specific range of text.
+- [SpanMessage](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SpanMessage.html): A message in the conversation history with participant role and content values
+- [SpanMessageValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SpanMessageValue.html): Message content value - can be text, tool invocation, or tool result
+- [SpanTextValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SpanTextValue.html): Text message content
+- [SpanToolResultValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SpanToolResultValue.html): Tool result message content
+- [SpanToolUseValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SpanToolUseValue.html): Tool invocation message content
+- [SuggestedMessageDataDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SuggestedMessageDataDetails.html): Details about suggested message data.
+- [SuggestedMessageReference](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SuggestedMessageReference.html): Reference information for a suggested message.
+- [SystemAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SystemAttributes.html): The system attributes that are used with the message template.
+- [SystemEndpointAttributes](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_SystemEndpointAttributes.html): The system endpoint attributes that are used with the message template.
+- [TagCondition](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_TagCondition.html): A leaf node condition which can be used to specify a tag condition.
+- [TagFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_TagFilter.html): An object that can be used to specify Tag conditions.
+- [TextAIPromptInferenceConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_TextAIPromptInferenceConfiguration.html): Inference configuration for text-based AI Prompts.
+- [TextData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_TextData.html): Details about the source content text data.
+- [TextFullAIPromptEditTemplateConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_TextFullAIPromptEditTemplateConfiguration.html): The configuration for a prompt template that supports full textual prompt configuration using a YAML prompt.
+- [TextMessage](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_TextMessage.html): The message data in text type.
+- [ToolConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ToolConfiguration.html): Configuration settings for a tool used by AI Agents.
+- [ToolInstruction](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ToolInstruction.html): Instructions for using a tool.
+- [ToolOutputConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ToolOutputConfiguration.html): Configuration for tool output handling.
+- [ToolOutputFilter](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ToolOutputFilter.html): Filter configuration for tool output.
+- [ToolOverrideConstantInputValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ToolOverrideConstantInputValue.html): A constant input value for tool override.
+- [ToolOverrideInputValue](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ToolOverrideInputValue.html): An input value override for tools.
+- [ToolOverrideInputValueConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ToolOverrideInputValueConfiguration.html): Configuration for overriding tool input values.
+- [ToolUseResultData](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_ToolUseResultData.html): Data about the result of tool usage.
+- [UrlConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_UrlConfiguration.html): The configuration of the URL/URLs for the web content that you want to crawl.
+- [UserInteractionConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_UserInteractionConfiguration.html): Configuration for user interaction settings.
+- [VectorIngestionConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_VectorIngestionConfiguration.html): Contains details about how to ingest the documents in a data source.
+- [WebCrawlerConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_WebCrawlerConfiguration.html): The configuration details for the web data source.
+- [WebCrawlerLimits](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_WebCrawlerLimits.html): The configuration of crawl limits for the web URLs.
+- [WhatsAppMessageTemplateContent](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_WhatsAppMessageTemplateContent.html): The content of the message template that applies to the WHATSAPP channel subtype.
+- [WhatsAppMessageTemplateSourceConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_WhatsAppMessageTemplateSourceConfiguration.html): Configuration information about the external data source.
+- [WhatsAppMessageTemplateSourceConfigurationSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_amazon-q-connect_WhatsAppMessageTemplateSourceConfigurationSummary.html): Configuration information about the external data source.
+
+## [Amazon Voice ID](https://docs.aws.amazon.com/connect/latest/APIReference/Welcome_Amazon_Voice_ID.html)
+
+- [Voice ID actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Voice_ID.html)
+- [Voice ID data types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Voice_ID.html)
+
+Amazon Connect Voice ID provides real-time caller authentication and fraud risk detection, which make voice interactions in contact centers more secure and efficient.
+
+For more information about the Voice ID feature, see [Use real-time caller authentication with Voice ID](https://docs.aws.amazon.com/connect/latest/adminguide/voice-id.html)in the Amazon Connect Administrator Guide.
+
+### Actions
+
+- [AssociateFraudster](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_AssociateFraudster.html)
+- [CreateDomain](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_CreateDomain.html)
+- [CreateWatchlist](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_CreateWatchlist.html)
+- [DeleteDomain](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_DeleteDomain.html)
+- [DeleteFraudster](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_DeleteFraudster.html)
+- [DeleteSpeaker](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_DeleteSpeaker.html)
+- [DeleteWatchlist](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_DeleteWatchlist.html)
+- [DescribeDomain](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_DescribeDomain.html)
+- [DescribeFraudster](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_DescribeFraudster.html)
+- [DescribeFraudsterRegistrationJob](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_DescribeFraudsterRegistrationJob.html)
+- [DescribeSpeaker](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_DescribeSpeaker.html)
+- [DescribeSpeakerEnrollmentJob](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_DescribeSpeakerEnrollmentJob.html)
+- [DescribeWatchlist](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_DescribeWatchlist.html)
+- [DisassociateFraudster](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_DisassociateFraudster.html)
+- [EvaluateSession](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_EvaluateSession.html)
+- [ListDomains](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_ListDomains.html)
+- [ListFraudsterRegistrationJobs](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_ListFraudsterRegistrationJobs.html)
+- [ListFraudsters](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_ListFraudsters.html)
+- [ListSpeakerEnrollmentJobs](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_ListSpeakerEnrollmentJobs.html)
+- [ListSpeakers](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_ListSpeakers.html)
+- [ListTagsForResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_ListTagsForResource.html)
+- [ListWatchlists](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_ListWatchlists.html)
+- [OptOutSpeaker](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_OptOutSpeaker.html)
+- [StartFraudsterRegistrationJob](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_StartFraudsterRegistrationJob.html)
+- [StartSpeakerEnrollmentJob](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_StartSpeakerEnrollmentJob.html)
+- [TagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_TagResource.html)
+- [UntagResource](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_UntagResource.html)
+- [UpdateDomain](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_UpdateDomain.html)
+- [UpdateWatchlist](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_UpdateWatchlist.html)
+
+### Data Types
+
+- [AuthenticationConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_AuthenticationConfiguration.html)
+- [AuthenticationResult](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_AuthenticationResult.html)
+- [Domain](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_Domain.html)
+- [DomainSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_DomainSummary.html)
+- [EnrollmentConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_EnrollmentConfig.html)
+- [EnrollmentJobFraudDetectionConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_EnrollmentJobFraudDetectionConfig.html)
+- [FailureDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_FailureDetails.html)
+- [FraudDetectionConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_FraudDetectionConfiguration.html)
+- [FraudDetectionResult](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_FraudDetectionResult.html)
+- [FraudRiskDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_FraudRiskDetails.html)
+- [Fraudster](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_Fraudster.html)
+- [FraudsterRegistrationJob](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_FraudsterRegistrationJob.html)
+- [FraudsterRegistrationJobSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_FraudsterRegistrationJobSummary.html)
+- [FraudsterSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_FraudsterSummary.html)
+- [InputDataConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_InputDataConfig.html)
+- [JobProgress](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_JobProgress.html)
+- [KnownFraudsterRisk](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_KnownFraudsterRisk.html)
+- [OutputDataConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_OutputDataConfig.html)
+- [RegistrationConfig](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_RegistrationConfig.html)
+- [ServerSideEncryptionConfiguration](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_ServerSideEncryptionConfiguration.html)
+- [ServerSideEncryptionUpdateDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_ServerSideEncryptionUpdateDetails.html)
+- [Speaker](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_Speaker.html)
+- [SpeakerEnrollmentJob](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_SpeakerEnrollmentJob.html)
+- [SpeakerEnrollmentJobSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_SpeakerEnrollmentJobSummary.html)
+- [SpeakerSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_SpeakerSummary.html)
+- [Tag](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_Tag.html)
+- [VoiceSpoofingRisk](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_VoiceSpoofingRisk.html)
+- [Watchlist](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_Watchlist.html)
+- [WatchlistDetails](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_WatchlistDetails.html)
+- [WatchlistSummary](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-voice-id_WatchlistSummary.html)
+
+## Common
+
+- [Common Parameters](https://docs.aws.amazon.com/connect/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/connect/latest/APIReference/CommonErrors.html)

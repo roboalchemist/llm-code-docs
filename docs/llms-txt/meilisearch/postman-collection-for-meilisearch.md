@@ -1,0 +1,50 @@
+# Postman collection for Meilisearch
+Source: https://www.meilisearch.com/docs/guides/postman_collection
+
+This how-to guide explains how to use Postman when testing and debugging Meilisearch's API.
+
+Are you tired of using the `curl` command in your terminal to test Meilisearch? It can be tedious to re-write every route when wanting to try out an API.
+
+Postman is a platform that lets you create HTTP requests you can easily reuse and share with everyone. We provide a <a href="/assets/misc/meilisearch-collection-postman.json">Postman collection</a> containing all the routes of the Meilisearch API! 🚀
+
+If you don't have Postman already, you can [download it here](https://www.postman.com/downloads/). It's free and available on many OS distributions.
+
+## Import the collection
+
+Once you have downloaded the <a href="/assets/misc/meilisearch-collection-postman.json">Postman collection</a>, you need to import it into Postman.
+
+<Frame>
+  <img alt="The 'Import' button" />
+</Frame>
+
+## Edit the configuration
+
+<Frame>
+  <img alt="Selecting 'Edit' from the overflow menu" />
+</Frame>
+
+Set the "Token" if needed (set to `masterKey` by default):
+
+<Frame>
+  <img alt="The 'Token' field set to masterKey and 'Type' to Bearer Token in the 'Authorization' tab." />
+</Frame>
+
+Set `url` (set to Meilisearch's local port by default) and `indexUID` (set to `indexUID` by default):
+
+<Frame>
+  <img alt="Setting the 'URL' to http://localhost:7700/ and 'indexUID' to indexUId in the Variables tab." />
+</Frame>
+
+The `url` and `indexUID` variables are used in all the collection routes, like in this one:
+
+<Frame>
+  <img alt="Highlighting {{url}} and {{indexUID}}" />
+</Frame>
+
+## Start to use it
+
+You can now [run your Meilisearch instance](/learn/self_hosted/getting_started_with_self_hosted_meilisearch#setup-and-installation) and create your first index:
+
+<Frame>
+  <img alt="The 'Send' button" />
+</Frame>

@@ -1,0 +1,92 @@
+# Source: https://mastra.ai/reference/server/fastify-adapter
+
+# Fastify Adapter
+
+The `@mastra/fastify` package provides a server adapter for running Mastra with [Fastify](https://fastify.dev).
+
+> **Info:** For general adapter concepts (constructor options, initialization flow, etc.), see [Server Adapters](https://mastra.ai/docs/server/server-adapters).
+
+## Installation
+
+Install the Fastify adapter and Fastify framework:
+
+**npm**:
+
+```bash
+npm install @mastra/fastify@latest fastify
+```
+
+**pnpm**:
+
+```bash
+pnpm add @mastra/fastify@latest fastify
+```
+
+**Yarn**:
+
+```bash
+yarn add @mastra/fastify@latest fastify
+```
+
+**Bun**:
+
+```bash
+bun add @mastra/fastify@latest fastify
+```
+
+## Usage example
+
+```typescript
+import Fastify from 'fastify'
+import { MastraServer } from '@mastra/fastify'
+import { mastra } from './mastra'
+
+const app = Fastify({ logger: true })
+const server = new MastraServer({ app, mastra })
+
+await server.init()
+
+app.listen({ port: 3000 }, (err, address) => {
+  if (err) {
+    console.error(err)
+    process.exit(1)
+  }
+  console.log(`Server running on ${address}`)
+})
+```
+
+## Constructor parameters
+
+**app** (`FastifyInstance`): Fastify app instance
+
+**mastra** (`Mastra`): Mastra instance
+
+**prefix** (`string`): Route path prefix (e.g., \`/api/v2\`) (Default: `''`)
+
+**openapiPath** (`string`): Path to serve OpenAPI spec (e.g., \`/openapi.json\`) (Default: `''`)
+
+**bodyLimitOptions** (`BodyLimitOptions`): Request body size limits
+
+**streamOptions** (`StreamOptions`): Stream redaction config. When true (default), redacts sensitive data (system prompts, tool definitions, API keys) from stream chunks before sending to clients. (Default: `{ redact: true }`)
+
+**customRouteAuthConfig** (`Map<string, boolean>`): Per-route auth overrides. Keys are \`METHOD:PATH\` (e.g., \`GET:/api/health\`). Value \`false\` makes route public, \`true\` requires auth.
+
+**tools** (`ToolsInput`): Available tools for the server
+
+**taskStore** (`InMemoryTaskStore`): Task store for A2A (Agent-to-Agent) operations
+
+**mcpOptions** (`MCPOptions`): MCP transport options. Set \`serverless: true\` for stateless environments like Cloudflare Workers or Vercel Edge.
+
+## Manual initialization
+
+For custom middleware ordering, call each method separately instead of `init()`. See [manual initialization](https://mastra.ai/docs/server/server-adapters) for details.
+
+## Examples
+
+- [Fastify Adapter](https://github.com/mastra-ai/mastra/tree/main/examples/server-fastify-adapter) - Basic Fastify server setup
+
+## Related
+
+- [Server Adapters](https://mastra.ai/docs/server/server-adapters) - Shared adapter concepts
+- [MastraServer Reference](https://mastra.ai/reference/server/mastra-server) - Full API reference
+- [createRoute() Reference](https://mastra.ai/reference/server/create-route) - Creating type-safe custom routes

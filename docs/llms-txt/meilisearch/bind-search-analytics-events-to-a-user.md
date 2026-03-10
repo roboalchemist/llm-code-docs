@@ -1,0 +1,72 @@
+# Bind search analytics events to a user
+Source: https://www.meilisearch.com/docs/learn/analytics/bind_events_user
+
+This guide shows you how to manually differentiate users across search analytics using the X-MS-USER-ID HTTP header.
+
+<Note>
+  This article refers to a new version of the Meilisearch Cloud analytics that is being rolled out in November 2025. Some features described here may not yet be available to your account. Contact support for more information.
+</Note>
+
+## Requirements
+
+* A Meilisearch Cloud project
+* A method for identifying users
+* A pipeline for submitting analytics events
+
+## Assign user IDs to search requests
+
+You can assign user IDs to search requests by including an `X-MS-USER-ID` header with your query:
+
+<CodeGroup>
+  ```bash cURL theme={null}
+  curl \
+    -X POST 'MEILISEARCH_URL/indexes/INDEX_NAME/search' \
+    -H 'Content-Type: application/json' \
+    -H 'Authorization: Bearer DEFAULT_SEARCH_API_KEY' \
+    -H 'X-MS-USER-ID: MEILISEARCH_USER_ID' \
+    --data-binary '{}'
+  ```
+</CodeGroup>
+
+Replace `SEARCH_USER_ID` with any value that uniquely identifies that user. This may be an authenticated user's ID when running searches from your own back end, or a hash of the user's IP address.
+
+<Note>
+  Assigning user IDs to search requests is optional. If a Meilisearch Cloud search request does not have an ID, Meilisearch will automatically generate one.
+</Note>
+
+## Assign user IDs to analytics events
+
+You can assign a user ID to analytics `/events` in two ways: HTTP headers or including it in the event payload.
+
+If using HTTP headers, include an `X-MS-USER-ID` header with your query:
+
+<CodeGroup>
+  ```bash cURL theme={null}
+  curl \
+    -X POST 'https://PROJECT_URL/events' \
+    -H 'Content-Type: application/json' \
+    -H 'Authorization: Bearer DEFAULT_SEARCH_API_KEY' \
+    -H 'X-MS-USER-ID: SEARCH_USER_ID' \
+    --data-binary '{
+      "eventType": "click",
+      "eventName": "Search Result Clicked",
+      "indexUid": "products",
+      "objectId": "0",
+      "position": 0
+    }'
+  ```
+</CodeGroup>
+
+If you prefer to the event in your payload, include a `userId` field with your request:
+
+<CodeSamplesAnalyticsEventBindEvent2 />
+
+Replace `SEARCH_USER_ID` with any value that uniquely identifies that user. This may be an authenticated user's ID when running searches from your own back end, or a hash of the user's IP address.
+
+<Warning>
+  It is mandatory to specify a user ID when sending analytics events.
+</Warning>
+
+## Conclusion
+
+In this guide you have seen how to bind analytics events to specific users by specifying an HTTP header for the search request, and either an HTTP header or a `userId` field for the analytics event.

@@ -1,0 +1,35 @@
+# Source: https://img.ly/docs/cesdk/react/stickers-3d4e5f/
+
+---
+title: "Create and Edit Stickers"
+description: "Create and customize stickers using image fills for icons, logos, emoji, and multi-color graphics."
+platform: react
+url: "https://img.ly/docs/cesdk/react/stickers-3d4e5f/"
+---
+
+> This is one page of the CE.SDK React documentation. For a complete overview, see the [React Documentation Index](https://img.ly/docs/cesdk/react.md). For all docs in one file, see [llms-full.txt](https://img.ly/docs/cesdk/react/llms-full.txt).
+
+**Navigation:** [Guides](https://img.ly/docs/cesdk/react/guides-8d8b00/) > [Create and Edit Stickers](https://img.ly/docs/cesdk/react/stickers-3d4e5f/)
+
+---
+
+
+
+
+
+---
+
+## Related Pages
+
+- [Create Stickers](https://img.ly/docs/cesdk/react/stickers-and-shapes/create-edit/create-stickers-cc46e5/) - Create stickers in CE.SDK using image fills for icons, logos, emoji, and multi-color graphics
+- [Create Cutout](https://img.ly/docs/cesdk/react/stickers-and-shapes/create-cutout-384be3/) - Create cutout paths for cutting printers to produce die-cut stickers, iron-on decals, and custom-shaped prints.
+
+
+---
+
+## More Resources
+
+- **[React Documentation Index](https://img.ly/docs/cesdk/react.md)** - Browse all React documentation
+- **[Complete Documentation](https://img.ly/docs/cesdk/react/llms-full.txt)** - Full documentation in one file (for LLMs)
+- **[Web Documentation](https://img.ly/docs/cesdk/react/)** - Interactive documentation with examples
+- **[Support](mailto:support@img.ly)** - Contact IMG.LY support

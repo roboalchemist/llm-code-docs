@@ -1,0 +1,193 @@
+# Source: https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/llms.txt
+
+# AWS CloudFormation API Reference
+
+> AWS CloudFormation allows you to create and manage AWS infrastructure deployments predictably and repeatedly. You can use CloudFormation to leverage AWS products, such as Amazon Elastic Compute Cloud, Amazon Elastic Block Store, Amazon Simple Notification Service, Elastic Load Balancing, and Amazon EC2 Auto Scaling to build highly reliable, highly scalable, cost-effective applications without creating or configuring the underlying AWS infrastructure.
+
+- [Welcome](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Operations.html)
+
+- [ActivateOrganizationsAccess](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ActivateOrganizationsAccess.html): Activate trusted access with AWS Organizations.
+- [ActivateType](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ActivateType.html): Activates a public third-party extension, such as a resource or module, to make it available for use in stack templates in your current account and Region.
+- [BatchDescribeTypeConfigurations](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_BatchDescribeTypeConfigurations.html): Returns configuration data for the specified CloudFormation extensions, from the CloudFormation registry in your current account and Region.
+- [CancelUpdateStack](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CancelUpdateStack.html): Cancels an update on the specified stack.
+- [ContinueUpdateRollback](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ContinueUpdateRollback.html): Continues rolling back a stack from UPDATE_ROLLBACK_FAILED to UPDATE_ROLLBACK_COMPLETE state.
+- [CreateChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html): Creates a list of changes that will be applied to a stack so that you can review the changes before executing them.
+- [CreateGeneratedTemplate](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateGeneratedTemplate.html): Creates a template from existing resources that are not already managed with CloudFormation.
+- [CreateStack](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStack.html): Creates a stack as specified in the template.
+- [CreateStackInstances](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html): Creates stack instances for the specified accounts, within the specified AWS Regions.
+- [CreateStackRefactor](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackRefactor.html): Creates a refactor across multiple stacks, with the list of stacks and resources that are affected.
+- [CreateStackSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackSet.html): Creates a StackSet.
+- [DeactivateOrganizationsAccess](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeactivateOrganizationsAccess.html): Deactivates trusted access with AWS Organizations.
+- [DeactivateType](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeactivateType.html): Deactivates a public third-party extension, such as a resource or module, or a CloudFormation Hook when you no longer use it.
+- [DeleteChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeleteChangeSet.html): Deletes the specified change set.
+- [DeleteGeneratedTemplate](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeleteGeneratedTemplate.html): Deleted a generated template.
+- [DeleteStack](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeleteStack.html): Deletes a specified stack.
+- [DeleteStackInstances](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeleteStackInstances.html): Deletes stack instances for the specified accounts, in the specified AWS Regions.
+- [DeleteStackSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeleteStackSet.html): Deletes a StackSet.
+- [DeregisterType](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeregisterType.html): Marks an extension or extension version as DEPRECATED in the CloudFormation registry, removing it from active use.
+- [DescribeAccountLimits](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeAccountLimits.html): Retrieves your account's CloudFormation limits, such as the maximum number of stacks that you can create in your account.
+- [DescribeChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeChangeSet.html): Returns the inputs for the change set and a list of changes that CloudFormation will make if you execute the change set.
+- [DescribeChangeSetHooks](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeChangeSetHooks.html): Returns Hook-related information for the change set and a list of changes that CloudFormation makes when you run the change set.
+- [DescribeEvents](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeEvents.html): Returns CloudFormation events based on flexible query criteria.
+- [DescribeGeneratedTemplate](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeGeneratedTemplate.html): Describes a generated template.
+- [DescribeOrganizationsAccess](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeOrganizationsAccess.html): Retrieves information about the account's OrganizationAccess status.
+- [DescribePublisher](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribePublisher.html): Returns information about a CloudFormation extension publisher.
+- [DescribeResourceScan](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeResourceScan.html): Describes details of a resource scan.
+- [DescribeStackDriftDetectionStatus](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeStackDriftDetectionStatus.html): Returns information about a stack drift detection operation.
+- [DescribeStackEvents](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeStackEvents.html): Returns all stack related events for a specified stack in reverse chronological order.
+- [DescribeStackInstance](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeStackInstance.html): Returns the stack instance that's associated with the specified StackSet, AWS account, and AWS Region.
+- [DescribeStackRefactor](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeStackRefactor.html): Describes the stack refactor status.
+- [DescribeStackResource](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeStackResource.html): Returns a description of the specified resource in the specified stack.
+- [DescribeStackResourceDrifts](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeStackResourceDrifts.html): Returns drift information for the resources that have been checked for drift in the specified stack.
+- [DescribeStackResources](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeStackResources.html): Returns AWS resource descriptions for running and deleted stacks.
+- [DescribeStacks](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeStacks.html): Returns the description for the specified stack; if no stack name was specified, then it returns the description for all the stacks created.
+- [DescribeStackSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeStackSet.html): Returns the description of the specified StackSet.
+- [DescribeStackSetOperation](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeStackSetOperation.html): Returns the description of the specified StackSet operation.
+- [DescribeType](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html): Returns detailed information about an extension from the CloudFormation registry in your current account and Region.
+- [DescribeTypeRegistration](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeTypeRegistration.html): Returns information about an extension's registration, including its current status and type and version identifiers.
+- [DetectStackDrift](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DetectStackDrift.html): Detects whether a stack's actual configuration differs, or has drifted, from its expected configuration, as defined in the stack template and any values specified as template parameters.
+- [DetectStackResourceDrift](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DetectStackResourceDrift.html): Returns information about whether a resource's actual configuration differs, or has drifted, from its expected configuration, as defined in the stack template and any values specified as template parameters.
+- [DetectStackSetDrift](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DetectStackSetDrift.html): Detect drift on a StackSet.
+- [EstimateTemplateCost](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_EstimateTemplateCost.html): Returns the estimated monthly cost of a template.
+- [ExecuteChangeSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ExecuteChangeSet.html): Updates a stack using the input information that was provided when the specified change set was created.
+- [ExecuteStackRefactor](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ExecuteStackRefactor.html): Executes the stack refactor operation.
+- [GetGeneratedTemplate](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_GetGeneratedTemplate.html): Retrieves a generated template.
+- [GetHookResult](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_GetHookResult.html): Retrieves detailed information and remediation guidance for a Hook invocation result.
+- [GetStackPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_GetStackPolicy.html): Returns the stack policy for a specified stack.
+- [GetTemplate](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_GetTemplate.html): Returns the template body for a specified stack.
+- [GetTemplateSummary](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_GetTemplateSummary.html): Returns information about a new or existing template.
+- [ImportStacksToStackSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ImportStacksToStackSet.html): Import existing stacks into a new StackSets.
+- [ListChangeSets](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListChangeSets.html): Returns the ID and status of each active change set for a stack.
+- [ListExports](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListExports.html): Lists all exported output values in the account and Region in which you call this action.
+- [ListGeneratedTemplates](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListGeneratedTemplates.html): Lists your generated templates in this Region.
+- [ListHookResults](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListHookResults.html): Returns summaries of invoked Hooks.
+- [ListImports](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListImports.html): Lists all stacks that are importing an exported output value.
+- [ListResourceScanRelatedResources](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListResourceScanRelatedResources.html): Lists the related resources for a list of resources from a resource scan.
+- [ListResourceScanResources](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListResourceScanResources.html): Lists the resources from a resource scan.
+- [ListResourceScans](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListResourceScans.html): List the resource scans from newest to oldest.
+- [ListStackInstanceResourceDrifts](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListStackInstanceResourceDrifts.html): Returns drift information for resources in a stack instance.
+- [ListStackInstances](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListStackInstances.html): Returns summary information about stack instances that are associated with the specified StackSet.
+- [ListStackRefactorActions](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListStackRefactorActions.html): Lists the stack refactor actions that will be taken after calling the action.
+- [ListStackRefactors](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListStackRefactors.html): Lists all account stack refactor operations and their statuses.
+- [ListStackResources](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListStackResources.html): Returns descriptions of all resources of the specified stack.
+- [ListStacks](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListStacks.html): Returns the summary information for stacks whose status matches the specified StackStatusFilter.
+- [ListStackSetAutoDeploymentTargets](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListStackSetAutoDeploymentTargets.html): Returns summary information about deployment targets for a StackSet.
+- [ListStackSetOperationResults](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListStackSetOperationResults.html): Returns summary information about the results of a StackSet operation.
+- [ListStackSetOperations](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListStackSetOperations.html): Returns summary information about operations performed on a StackSet.
+- [ListStackSets](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListStackSets.html): Returns summary information about StackSets that are associated with the user.
+- [ListTypeRegistrations](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListTypeRegistrations.html): Returns a list of registration tokens for the specified extension(s).
+- [ListTypes](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListTypes.html): Returns summary information about all extensions, including your private resource types, modules, and Hooks as well as all public extensions from AWS and third-party publishers.
+- [ListTypeVersions](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ListTypeVersions.html): Returns summary information about the versions of an extension.
+- [PublishType](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_PublishType.html): Publishes the specified extension to the CloudFormation registry as a public extension in this Region.
+- [RecordHandlerProgress](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RecordHandlerProgress.html): Reports progress of a resource handler to CloudFormation.
+- [RegisterPublisher](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterPublisher.html): Registers your account as a publisher of public extensions in the CloudFormation registry.
+- [RegisterType](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterType.html): Registers an extension with the CloudFormation service.
+- [RollbackStack](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RollbackStack.html): When specifying RollbackStack, you preserve the state of previously provisioned resources when an operation fails.
+- [SetStackPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_SetStackPolicy.html): Sets a stack policy for a specified stack.
+- [SetTypeConfiguration](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_SetTypeConfiguration.html): Specifies the configuration data for a CloudFormation extension, such as a resource or Hook, in the given account and Region.
+- [SetTypeDefaultVersion](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_SetTypeDefaultVersion.html): Specify the default version of an extension.
+- [SignalResource](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_SignalResource.html): Sends a signal to the specified resource with a success or failure status.
+- [StartResourceScan](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StartResourceScan.html): Starts a scan of the resources in this account in this Region.
+- [StopStackSetOperation](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StopStackSetOperation.html): Stops an in-progress operation on a StackSet and its associated stack instances.
+- [TestType](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_TestType.html): Tests a registered extension to make sure it meets all necessary requirements for being published in the CloudFormation registry.
+- [UpdateGeneratedTemplate](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateGeneratedTemplate.html): Updates a generated template.
+- [UpdateStack](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStack.html): Updates a stack as specified in the template.
+- [UpdateStackInstances](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackInstances.html): Updates the parameter values for stack instances for the specified accounts, within the specified AWS Regions.
+- [UpdateStackSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateStackSet.html): Updates the StackSet and associated stack instances in the specified accounts and AWS Regions.
+- [UpdateTerminationProtection](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_UpdateTerminationProtection.html): Updates termination protection for the specified stack.
+- [ValidateTemplate](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ValidateTemplate.html): Validates a specified template.
+
+
+## [Data Types](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Types.html)
+
+- [AccountGateResult](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_AccountGateResult.html): Structure that contains the results of the account gate function which CloudFormation invokes, if present, before proceeding with a StackSet operation in an account and Region.
+- [AccountLimit](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_AccountLimit.html): Describes the current CloudFormation limits for your account.
+- [Annotation](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Annotation.html): The Annotation data type.
+- [AutoDeployment](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_AutoDeployment.html): Describes whether StackSets automatically deploys to AWS Organizations accounts that are added to a target organization or organizational unit (OU).
+- [BatchDescribeTypeConfigurationsError](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_BatchDescribeTypeConfigurationsError.html): Detailed information concerning an error generated during the setting of configuration data for a CloudFormation extension.
+- [Change](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Change.html): The Change structure describes the changes CloudFormation will perform if you execute the change set.
+- [ChangeSetHook](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ChangeSetHook.html): Specifies the resource, the Hook, and the Hook version to be invoked.
+- [ChangeSetHookResourceTargetDetails](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ChangeSetHookResourceTargetDetails.html): Specifies RESOURCE type target details for activated Hooks.
+- [ChangeSetHookTargetDetails](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ChangeSetHookTargetDetails.html): Specifies target details for an activated Hook.
+- [ChangeSetSummary](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ChangeSetSummary.html): The ChangeSetSummary structure describes a change set, its status, and the stack with which it's associated.
+- [DeploymentTargets](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeploymentTargets.html): Specifies the AWS Organizations accounts where you want to create, update, or delete stack instances.
+- [EventFilter](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_EventFilter.html): Event filter allows you to focus on specific events in an operation.
+- [Export](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Export.html): The Export structure describes the exported output values for a stack.
+- [HookResultSummary](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_HookResultSummary.html): A ListHookResults call returns a summary of a Hook invocation.
+- [HookTarget](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_HookTarget.html): The HookTarget data type.
+- [LiveResourceDrift](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_LiveResourceDrift.html): Contains drift information for a resource property, including actual value, previous deployment value, and drift detection timestamp.
+- [LoggingConfig](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_LoggingConfig.html): Contains logging configuration information for an extension.
+- [ManagedExecution](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ManagedExecution.html): Describes whether StackSets performs non-conflicting operations concurrently and queues conflicting operations.
+- [ModuleInfo](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ModuleInfo.html): Contains information about the module from which the resource was created, if the resource was created from a module included in the stack template.
+- [OperationEntry](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_OperationEntry.html): Contains information about a CloudFormation operation.
+- [OperationEvent](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_OperationEvent.html): Contains detailed information about an event that occurred during a CloudFormation operation.
+- [OperationResultFilter](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_OperationResultFilter.html): The status that operation results are filtered by.
+- [Output](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Output.html): The Output data type.
+- [Parameter](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Parameter.html): The Parameter data type.
+- [ParameterConstraints](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ParameterConstraints.html): A set of criteria that CloudFormation uses to validate parameter values.
+- [ParameterDeclaration](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ParameterDeclaration.html): The ParameterDeclaration data type.
+- [PhysicalResourceIdContextKeyValuePair](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_PhysicalResourceIdContextKeyValuePair.html): Context information that enables CloudFormation to uniquely identify a resource.
+- [PropertyDifference](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_PropertyDifference.html): Information about a resource property whose actual value differs from its expected value, as defined in the stack template and any values specified as template parameters.
+- [RequiredActivatedType](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RequiredActivatedType.html): For extensions that are modules, a public third-party extension that must be activated in your account in order for the module itself to be activated.
+- [ResourceChange](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ResourceChange.html): The ResourceChange structure describes the resource and the action that CloudFormation will perform on it if you execute this change set.
+- [ResourceChangeDetail](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ResourceChangeDetail.html): For a resource with Modify as the action, the ResourceChange structure describes the changes CloudFormation will make to that resource.
+- [ResourceDefinition](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ResourceDefinition.html): A resource included in a generated template.
+- [ResourceDetail](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ResourceDetail.html): Details about a resource in a generated template
+- [ResourceDriftIgnoredAttribute](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ResourceDriftIgnoredAttribute.html): The ResourceDriftIgnoredAttribute data type.
+- [ResourceIdentifierSummary](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ResourceIdentifierSummary.html): Describes the target resources of a specific type in your import template (for example, all AWS::S3::Bucket resources) and the properties you can provide during the import to identify resources of that type.
+- [ResourceLocation](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ResourceLocation.html): The location of the resource in a stack template.
+- [ResourceMapping](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ResourceMapping.html): Specifies the current source of the resource and the destination of where it will be moved to.
+- [ResourceScanSummary](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ResourceScanSummary.html): A summary of the resource scan.
+- [ResourceTargetDefinition](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ResourceTargetDefinition.html): The field that CloudFormation will change, such as the name of a resource's property, and whether the resource will be recreated.
+- [ResourceToImport](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ResourceToImport.html): Describes the target resource of an import operation.
+- [RollbackConfiguration](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RollbackConfiguration.html): Structure that contains the rollback triggers for CloudFormation to monitor during stack creation and updating operations, and for the specified monitoring period afterwards.
+- [RollbackTrigger](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RollbackTrigger.html): A rollback trigger CloudFormation monitors during creation and updating of stacks.
+- [ScanFilter](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ScanFilter.html): A filter that is used to specify which resource types to scan.
+- [ScannedResource](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ScannedResource.html): A scanned resource returned by ListResourceScanResources or ListResourceScanRelatedResources.
+- [ScannedResourceIdentifier](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ScannedResourceIdentifier.html): Identifies a scanned resource.
+- [Stack](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Stack.html): The Stack data type.
+- [StackDefinition](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackDefinition.html): Describes the stack and the template used by the stack.
+- [StackDriftInformation](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackDriftInformation.html): Contains information about whether the stack's actual configuration differs, or has drifted, from its expected configuration, as defined in the stack template and any values specified as template parameters.
+- [StackDriftInformationSummary](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackDriftInformationSummary.html): Contains information about whether the stack's actual configuration differs, or has drifted, from its expected configuration, as defined in the stack template and any values specified as template parameters.
+- [StackEvent](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackEvent.html): The StackEvent data type.
+- [StackInstance](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackInstance.html): A CloudFormation stack, in a specific account and Region, that's part of a StackSet operation.
+- [StackInstanceComprehensiveStatus](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackInstanceComprehensiveStatus.html): The detailed status of the stack instance.
+- [StackInstanceFilter](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackInstanceFilter.html): The filter to apply to stack instances
+- [StackInstanceResourceDriftsSummary](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackInstanceResourceDriftsSummary.html): The structure containing summary information about resource drifts for a stack instance.
+- [StackInstanceSummary](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackInstanceSummary.html): The structure that contains summary information about a stack instance.
+- [StackRefactorAction](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackRefactorAction.html): Describes the stack and the action that CloudFormation will perform on it if you execute the stack refactor.
+- [StackRefactorSummary](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackRefactorSummary.html): The summary of a stack refactor operation.
+- [StackResource](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackResource.html): The StackResource data type.
+- [StackResourceDetail](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackResourceDetail.html): Contains detailed information about the specified stack resource.
+- [StackResourceDrift](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackResourceDrift.html): Contains the drift information for a resource that has been checked for drift.
+- [StackResourceDriftInformation](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackResourceDriftInformation.html): Contains information about whether the resource's actual configuration differs, or has drifted, from its expected configuration.
+- [StackResourceDriftInformationSummary](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackResourceDriftInformationSummary.html): Summarizes information about whether the resource's actual configuration differs, or has drifted, from its expected configuration.
+- [StackResourceSummary](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackResourceSummary.html): Contains high-level information about the specified stack resource.
+- [StackSet](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackSet.html): A structure that contains information about a StackSet.
+- [StackSetAutoDeploymentTargetSummary](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackSetAutoDeploymentTargetSummary.html): One of the targets for the StackSet.
+- [StackSetDriftDetectionDetails](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackSetDriftDetectionDetails.html): Detailed information about the drift status of the StackSet.
+- [StackSetOperation](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackSetOperation.html): The structure that contains information about a StackSet operation.
+- [StackSetOperationPreferences](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackSetOperationPreferences.html): The user-specified preferences for how CloudFormation performs a StackSet operation.
+- [StackSetOperationResultSummary](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackSetOperationResultSummary.html): The structure that contains information about a specified operation's results for a given account in a given Region.
+- [StackSetOperationStatusDetails](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackSetOperationStatusDetails.html): Detailed information about the StackSet operation.
+- [StackSetOperationSummary](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackSetOperationSummary.html): The structures that contain summary information about the specified operation.
+- [StackSetSummary](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackSetSummary.html): The structures that contain summary information about the specified StackSet.
+- [StackSummary](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_StackSummary.html): The StackSummary Data Type
+- [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Tag.html): The Tag type enables you to specify a key-value pair that can be used to store information about an CloudFormation stack.
+- [TemplateConfiguration](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_TemplateConfiguration.html): The configuration details of a generated template.
+- [TemplateParameter](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_TemplateParameter.html): The TemplateParameter data type.
+- [TemplateProgress](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_TemplateProgress.html): A summary of the progress of the template generation.
+- [TemplateSummary](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_TemplateSummary.html): The summary of a generated template.
+- [TemplateSummaryConfig](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_TemplateSummaryConfig.html): Options for the GetTemplateSummary API action.
+- [TypeConfigurationDetails](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_TypeConfigurationDetails.html): Detailed information concerning the specification of a CloudFormation extension in a given account and Region.
+- [TypeConfigurationIdentifier](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_TypeConfigurationIdentifier.html): Identifying information for the configuration of a CloudFormation extension.
+- [TypeFilters](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_TypeFilters.html): Filter criteria to use in determining which extensions to return.
+- [TypeSummary](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_TypeSummary.html): Contains summary information about the specified CloudFormation extension.
+- [TypeVersionSummary](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_TypeVersionSummary.html): Contains summary information about a specific version of a CloudFormation extension.
+- [WarningDetail](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_WarningDetail.html): The warnings generated for a specific resource for this generated template.
+- [WarningProperty](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_WarningProperty.html): A specific property that is impacted by a warning.
+- [Warnings](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_Warnings.html): Contains any warnings returned by the GetTemplateSummary API action.

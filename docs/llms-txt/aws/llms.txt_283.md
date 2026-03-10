@@ -1,0 +1,260 @@
+# Source: https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/llms.txt
+
+# AWS Deadline Cloud API Reference
+
+> The AWS Deadline Cloud API provides infrastructure and centralized management for your projects. Use the Deadline Cloud API to onboard users, assign projects, and attach permissions specific to their job function.
+
+- [Welcome](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_Operations.html)
+
+- [AssociateMemberToFarm](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AssociateMemberToFarm.html): Assigns a farm membership level to a member.
+- [AssociateMemberToFleet](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AssociateMemberToFleet.html): Assigns a fleet membership level to a member.
+- [AssociateMemberToJob](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AssociateMemberToJob.html): Assigns a job membership level to a member
+- [AssociateMemberToQueue](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AssociateMemberToQueue.html): Assigns a queue membership level to a member
+- [AssumeFleetRoleForRead](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AssumeFleetRoleForRead.html): Get AWS credentials from the fleet role.
+- [AssumeFleetRoleForWorker](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AssumeFleetRoleForWorker.html): Get credentials from the fleet role for a worker.
+- [AssumeQueueRoleForRead](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AssumeQueueRoleForRead.html): Gets AWS credentials from the queue role.
+- [AssumeQueueRoleForUser](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AssumeQueueRoleForUser.html): Allows a user to assume a role for a queue.
+- [AssumeQueueRoleForWorker](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AssumeQueueRoleForWorker.html): Allows a worker to assume a queue role.
+- [BatchGetJobEntity](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_BatchGetJobEntity.html): Get batched job details for a worker.
+- [CopyJobTemplate](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_CopyJobTemplate.html): Copies a job template to an Amazon S3 bucket.
+- [CreateBudget](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_CreateBudget.html): Creates a budget to set spending thresholds for your rendering activity.
+- [CreateFarm](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_CreateFarm.html): Creates a farm to allow space for queues and fleets.
+- [CreateFleet](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_CreateFleet.html): Creates a fleet.
+- [CreateJob](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_CreateJob.html): Creates a job.
+- [CreateLicenseEndpoint](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_CreateLicenseEndpoint.html): Creates a license endpoint to integrate your various licensed software used for rendering on Deadline Cloud.
+- [CreateLimit](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_CreateLimit.html): Creates a limit that manages the distribution of shared resources, such as floating licenses.
+- [CreateMonitor](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_CreateMonitor.html): Creates an AWS Deadline Cloud monitor that you can use to view your farms, queues, and fleets.
+- [CreateQueue](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_CreateQueue.html): Creates a queue to coordinate the order in which jobs run on a farm.
+- [CreateQueueEnvironment](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_CreateQueueEnvironment.html): Creates an environment for a queue that defines how jobs in the queue run.
+- [CreateQueueFleetAssociation](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_CreateQueueFleetAssociation.html): Creates an association between a queue and a fleet.
+- [CreateQueueLimitAssociation](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_CreateQueueLimitAssociation.html): Associates a limit with a particular queue.
+- [CreateStorageProfile](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_CreateStorageProfile.html): Creates a storage profile that specifies the operating system, file type, and file location of resources used on a farm.
+- [CreateWorker](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_CreateWorker.html): Creates a worker.
+- [DeleteBudget](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_DeleteBudget.html): Deletes a budget.
+- [DeleteFarm](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_DeleteFarm.html): Deletes a farm.
+- [DeleteFleet](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_DeleteFleet.html): Deletes a fleet.
+- [DeleteLicenseEndpoint](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_DeleteLicenseEndpoint.html): Deletes a license endpoint.
+- [DeleteLimit](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_DeleteLimit.html): Removes a limit from the specified farm.
+- [DeleteMeteredProduct](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_DeleteMeteredProduct.html): Deletes a metered product.
+- [DeleteMonitor](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_DeleteMonitor.html): Removes a Deadline Cloud monitor.
+- [DeleteQueue](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_DeleteQueue.html): Deletes a queue.
+- [DeleteQueueEnvironment](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_DeleteQueueEnvironment.html): Deletes a queue environment.
+- [DeleteQueueFleetAssociation](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_DeleteQueueFleetAssociation.html): Deletes a queue-fleet association.
+- [DeleteQueueLimitAssociation](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_DeleteQueueLimitAssociation.html): Removes the association between a queue and a limit.
+- [DeleteStorageProfile](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_DeleteStorageProfile.html): Deletes a storage profile.
+- [DeleteWorker](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_DeleteWorker.html): Deletes a worker.
+- [DisassociateMemberFromFarm](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_DisassociateMemberFromFarm.html): Disassociates a member from a farm.
+- [DisassociateMemberFromFleet](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_DisassociateMemberFromFleet.html): Disassociates a member from a fleet.
+- [DisassociateMemberFromJob](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_DisassociateMemberFromJob.html): Disassociates a member from a job.
+- [DisassociateMemberFromQueue](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_DisassociateMemberFromQueue.html): Disassociates a member from a queue.
+- [GetBudget](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetBudget.html): Get a budget.
+- [GetFarm](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetFarm.html): Get a farm.
+- [GetFleet](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetFleet.html): Get a fleet.
+- [GetJob](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetJob.html): Gets a Deadline Cloud job.
+- [GetLicenseEndpoint](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetLicenseEndpoint.html): Gets a licence endpoint.
+- [GetLimit](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetLimit.html): Gets information about a specific limit.
+- [GetMonitor](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetMonitor.html): Gets information about the specified monitor.
+- [GetQueue](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetQueue.html): Gets a queue.
+- [GetQueueEnvironment](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetQueueEnvironment.html): Gets a queue environment.
+- [GetQueueFleetAssociation](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetQueueFleetAssociation.html): Gets a queue-fleet association.
+- [GetQueueLimitAssociation](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetQueueLimitAssociation.html): Gets information about a specific association between a queue and a limit.
+- [GetSession](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetSession.html): Gets a session.
+- [GetSessionAction](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetSessionAction.html): Gets a session action for the job.
+- [GetSessionsStatisticsAggregation](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetSessionsStatisticsAggregation.html): Gets a set of statistics for queues or farms.
+- [GetStep](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetStep.html): Gets a step.
+- [GetStorageProfile](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetStorageProfile.html): Gets a storage profile.
+- [GetStorageProfileForQueue](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetStorageProfileForQueue.html): Gets a storage profile for a queue.
+- [GetTask](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetTask.html): Gets a task.
+- [GetWorker](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetWorker.html): Gets a worker.
+- [ListAvailableMeteredProducts](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListAvailableMeteredProducts.html): A list of the available metered products.
+- [ListBudgets](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListBudgets.html): A list of budgets in a farm.
+- [ListFarmMembers](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListFarmMembers.html): Lists the members of a farm.
+- [ListFarms](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListFarms.html): Lists farms.
+- [ListFleetMembers](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListFleetMembers.html): Lists fleet members.
+- [ListFleets](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListFleets.html): Lists fleets.
+- [ListJobMembers](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListJobMembers.html): Lists members on a job.
+- [ListJobParameterDefinitions](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListJobParameterDefinitions.html): Lists parameter definitions of a job.
+- [ListJobs](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListJobs.html): Lists jobs.
+- [ListLicenseEndpoints](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListLicenseEndpoints.html): Lists license endpoints.
+- [ListLimits](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListLimits.html): Gets a list of limits defined in the specified farm.
+- [ListMeteredProducts](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListMeteredProducts.html): Lists metered products.
+- [ListMonitors](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListMonitors.html): Gets a list of your monitors in Deadline Cloud.
+- [ListQueueEnvironments](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListQueueEnvironments.html): Lists queue environments.
+- [ListQueueFleetAssociations](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListQueueFleetAssociations.html): Lists queue-fleet associations.
+- [ListQueueLimitAssociations](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListQueueLimitAssociations.html): Gets a list of the associations between queues and limits defined in a farm.
+- [ListQueueMembers](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListQueueMembers.html): Lists the members in a queue.
+- [ListQueues](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListQueues.html): Lists queues.
+- [ListSessionActions](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListSessionActions.html): Lists session actions.
+- [ListSessions](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListSessions.html): Lists sessions.
+- [ListSessionsForWorker](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListSessionsForWorker.html): Lists sessions for a worker.
+- [ListStepConsumers](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListStepConsumers.html): Lists step consumers.
+- [ListStepDependencies](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListStepDependencies.html): Lists the dependencies for a step.
+- [ListSteps](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListSteps.html): Lists steps for a job.
+- [ListStorageProfiles](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListStorageProfiles.html): Lists storage profiles.
+- [ListStorageProfilesForQueue](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListStorageProfilesForQueue.html): Lists storage profiles for a queue.
+- [ListTagsForResource](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListTagsForResource.html): Lists tags for a resource.
+- [ListTasks](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListTasks.html): Lists tasks for a job.
+- [ListWorkers](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ListWorkers.html): Lists workers.
+- [PutMeteredProduct](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_PutMeteredProduct.html): Adds a metered product.
+- [SearchJobs](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_SearchJobs.html): Searches for jobs.
+- [SearchSteps](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_SearchSteps.html): Searches for steps.
+- [SearchTasks](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_SearchTasks.html): Searches for tasks.
+- [SearchWorkers](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_SearchWorkers.html): Searches for workers.
+- [StartSessionsStatisticsAggregation](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_StartSessionsStatisticsAggregation.html): Starts an asynchronous request for getting aggregated statistics about queues and farms.
+- [TagResource](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_TagResource.html): Tags a resource using the resource's ARN and desired tags.
+- [UntagResource](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UntagResource.html): Removes a tag from a resource using the resource's ARN and tag to remove.
+- [UpdateBudget](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UpdateBudget.html): Updates a budget that sets spending thresholds for rendering activity.
+- [UpdateFarm](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UpdateFarm.html): Updates a farm.
+- [UpdateFleet](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UpdateFleet.html): Updates a fleet.
+- [UpdateJob](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UpdateJob.html): Updates a job.
+- [UpdateLimit](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UpdateLimit.html): Updates the properties of the specified limit.
+- [UpdateMonitor](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UpdateMonitor.html): Modifies the settings for a Deadline Cloud monitor.
+- [UpdateQueue](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UpdateQueue.html): Updates a queue.
+- [UpdateQueueEnvironment](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UpdateQueueEnvironment.html): Updates the queue environment.
+- [UpdateQueueFleetAssociation](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UpdateQueueFleetAssociation.html): Updates a queue-fleet association.
+- [UpdateQueueLimitAssociation](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UpdateQueueLimitAssociation.html): Updates the status of the queue.
+- [UpdateSession](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UpdateSession.html): Updates a session.
+- [UpdateStep](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UpdateStep.html): Updates a step.
+- [UpdateStorageProfile](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UpdateStorageProfile.html): Updates a storage profile.
+- [UpdateTask](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UpdateTask.html): Updates a task.
+- [UpdateWorker](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UpdateWorker.html): Updates a worker.
+- [UpdateWorkerSchedule](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UpdateWorkerSchedule.html): Updates the schedule for a worker.
+
+
+## [Data Types](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_Types.html)
+
+- [AcceleratorCapabilities](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AcceleratorCapabilities.html): Provides information about the GPU accelerators used for jobs processed by a fleet.
+- [AcceleratorCountRange](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AcceleratorCountRange.html): Defines the maximum and minimum number of GPU accelerators required for a worker instance..
+- [AcceleratorSelection](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AcceleratorSelection.html): Describes a specific GPU accelerator required for an Amazon Elastic Compute Cloud worker host.
+- [AcceleratorTotalMemoryMiBRange](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AcceleratorTotalMemoryMiBRange.html): Defines the maximum and minimum amount of memory, in MiB, to use for the accelerator.
+- [AcquiredLimit](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AcquiredLimit.html): Provides information about the number of resources used.
+- [AssignedEnvironmentEnterSessionActionDefinition](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AssignedEnvironmentEnterSessionActionDefinition.html): The assigned starting environment for a worker during session.
+- [AssignedEnvironmentExitSessionActionDefinition](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AssignedEnvironmentExitSessionActionDefinition.html): The assigned environment when a worker exits a session.
+- [AssignedSession](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AssignedSession.html): The assigned session for the worker.
+- [AssignedSessionAction](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AssignedSessionAction.html): The action for a session defined by the session action ID.
+- [AssignedSessionActionDefinition](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AssignedSessionActionDefinition.html): The definition of the assigned session action.
+- [AssignedSyncInputJobAttachmentsSessionActionDefinition](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AssignedSyncInputJobAttachmentsSessionActionDefinition.html): The assigned session action definition for syncing input job attachments.
+- [AssignedTaskRunSessionActionDefinition](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AssignedTaskRunSessionActionDefinition.html): The specific task, step, and parameters to include.
+- [Attachments](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_Attachments.html): The job attachments.
+- [AwsCredentials](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_AwsCredentials.html): The AWS Identity and Access Management credentials.
+- [BudgetActionToAdd](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_BudgetActionToAdd.html): The budget action to add.
+- [BudgetActionToRemove](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_BudgetActionToRemove.html): The budget action to remove.
+- [BudgetSchedule](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_BudgetSchedule.html): The start and end time of the budget.
+- [BudgetSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_BudgetSummary.html): The budget summary.
+- [ConsumedUsages](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ConsumedUsages.html): The consumed usage for the resource.
+- [CustomerManagedFleetConfiguration](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_CustomerManagedFleetConfiguration.html): The configuration details for a customer managed fleet.
+- [CustomerManagedWorkerCapabilities](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_CustomerManagedWorkerCapabilities.html): The worker capabilities for a customer managed workflow.
+- [DateTimeFilterExpression](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_DateTimeFilterExpression.html): The time stamp in date-time format.
+- [DependencyCounts](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_DependencyCounts.html): The number of dependencies for the consumer.
+- [Ec2EbsVolume](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_Ec2EbsVolume.html): Specifies the EBS volume.
+- [EnvironmentDetailsEntity](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_EnvironmentDetailsEntity.html): The details of a specified environment.
+- [EnvironmentDetailsError](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_EnvironmentDetailsError.html): The error details for the environment.
+- [EnvironmentDetailsIdentifiers](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_EnvironmentDetailsIdentifiers.html): The IDs of the job and environment.
+- [EnvironmentEnterSessionActionDefinition](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_EnvironmentEnterSessionActionDefinition.html): The environment ID to use to enter a session action.
+- [EnvironmentEnterSessionActionDefinitionSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_EnvironmentEnterSessionActionDefinitionSummary.html): Defines the environment a session action enters in.
+- [EnvironmentExitSessionActionDefinition](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_EnvironmentExitSessionActionDefinition.html): Defines the environment a session action exits from.
+- [EnvironmentExitSessionActionDefinitionSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_EnvironmentExitSessionActionDefinitionSummary.html): A summary of the environment details for which a session action to exits.
+- [FarmMember](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_FarmMember.html): The member of a farm.
+- [FarmSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_FarmSummary.html): The summary of details for a farm.
+- [FieldSortExpression](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_FieldSortExpression.html): The field sorting order and name of the field.
+- [FileSystemLocation](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_FileSystemLocation.html): The details of the file system location for the resource.
+- [FixedBudgetSchedule](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_FixedBudgetSchedule.html): The details of a fixed budget schedule.
+- [FleetAmountCapability](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_FleetAmountCapability.html): The fleet amount and attribute capabilities.
+- [FleetAttributeCapability](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_FleetAttributeCapability.html): Defines the fleet's capability name, minimum, and maximum.
+- [FleetCapabilities](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_FleetCapabilities.html): The amounts and attributes of fleets.
+- [FleetConfiguration](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_FleetConfiguration.html): Fleet configuration details.
+- [FleetMember](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_FleetMember.html): The fleet member.
+- [FleetSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_FleetSummary.html): The details of a fleet.
+- [GetJobEntityError](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_GetJobEntityError.html): The error for the job entity.
+- [HostConfiguration](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_HostConfiguration.html): Provides a script that runs as a worker is starting up that you can use to provide additional configuration for workers in your fleet.
+- [HostPropertiesRequest](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_HostPropertiesRequest.html): The host property details.
+- [HostPropertiesResponse](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_HostPropertiesResponse.html): The host property details.
+- [IpAddresses](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_IpAddresses.html): The IP addresses for a host.
+- [JobAttachmentDetailsEntity](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_JobAttachmentDetailsEntity.html): The job attachments.
+- [JobAttachmentDetailsError](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_JobAttachmentDetailsError.html): The error details for job attachments.
+- [JobAttachmentDetailsIdentifiers](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_JobAttachmentDetailsIdentifiers.html): Identifier details for job attachments.
+- [JobAttachmentSettings](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_JobAttachmentSettings.html): The job attachment settings.
+- [JobDetailsEntity](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_JobDetailsEntity.html): The job details for a specific job.
+- [JobDetailsError](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_JobDetailsError.html): The details of a job error.
+- [JobDetailsIdentifiers](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_JobDetailsIdentifiers.html): The identifiers for a job.
+- [JobEntity](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_JobEntity.html): The details of a job entity.
+- [JobEntityIdentifiersUnion](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_JobEntityIdentifiersUnion.html): The details of a job entity identifier.
+- [JobMember](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_JobMember.html): The details for a job member.
+- [JobParameter](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_JobParameter.html): The details of job parameters.
+- [JobRunAsUser](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_JobRunAsUser.html): Identifies the user for a job.
+- [JobSearchSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_JobSearchSummary.html): The details of a job search.
+- [JobSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_JobSummary.html): A summary of job details.
+- [LicenseEndpointSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_LicenseEndpointSummary.html): The details for a license endpoint.
+- [LimitSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_LimitSummary.html): Provides information about a specific limit.
+- [LogConfiguration](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_LogConfiguration.html): Log configuration details.
+- [ManifestProperties](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ManifestProperties.html): The details of the manifest that links a job's source information.
+- [MemoryMiBRange](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_MemoryMiBRange.html): The range of memory in MiB.
+- [MeteredProductSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_MeteredProductSummary.html): The details of a metered product.
+- [MonitorSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_MonitorSummary.html): Provides information about a monitor in Deadline Cloud.
+- [ParameterFilterExpression](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ParameterFilterExpression.html): The details of a filtered search for parameters.
+- [ParameterSortExpression](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ParameterSortExpression.html): Organizes parameters according to your specifications.
+- [ParameterSpace](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ParameterSpace.html): The details of a search for two or more step parameters.
+- [PathMappingRule](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_PathMappingRule.html): The details of a source and destination path.
+- [PosixUser](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_PosixUser.html): The POSIX user.
+- [QueueEnvironmentSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_QueueEnvironmentSummary.html): The summary of a queue environment.
+- [QueueFleetAssociationSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_QueueFleetAssociationSummary.html): The details of a queue-fleet association.
+- [QueueLimitAssociationSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_QueueLimitAssociationSummary.html): Provides information about the association between a queue and a limit.
+- [QueueMember](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_QueueMember.html): The details of a queue member.
+- [QueueSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_QueueSummary.html): The details of a queue summary.
+- [ResponseBudgetAction](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ResponseBudgetAction.html): The details of a budget action.
+- [S3Location](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_S3Location.html): The Amazon S3 location information.
+- [SearchFilterExpression](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_SearchFilterExpression.html): The type of search filter to apply.
+- [SearchGroupedFilterExpressions](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_SearchGroupedFilterExpressions.html): The search terms for a resource.
+- [SearchSortExpression](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_SearchSortExpression.html): The resources to search.
+- [SearchTermFilterExpression](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_SearchTermFilterExpression.html): Searches for a particular search term.
+- [ServiceManagedEc2FleetConfiguration](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ServiceManagedEc2FleetConfiguration.html): The configuration details for a service managed EC2 fleet.
+- [ServiceManagedEc2InstanceCapabilities](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ServiceManagedEc2InstanceCapabilities.html): The Amazon EC2 instance capabilities.
+- [ServiceManagedEc2InstanceMarketOptions](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ServiceManagedEc2InstanceMarketOptions.html): The details of the Amazon EC2 instance market options for a service managed fleet.
+- [SessionActionDefinition](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_SessionActionDefinition.html): The definition of the session action.
+- [SessionActionDefinitionSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_SessionActionDefinitionSummary.html): The details of a session action definition.
+- [SessionActionSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_SessionActionSummary.html): The details of a session action.
+- [SessionsStatisticsResources](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_SessionsStatisticsResources.html): Specifies the fleet IDs or queue IDs to return statistics.
+- [SessionSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_SessionSummary.html): The summary of a session.
+- [Statistics](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_Statistics.html): A list of statistics for a session.
+- [Stats](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_Stats.html): The minimum, maximum, average, and sum.
+- [StepAmountCapability](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_StepAmountCapability.html): The details outlining the minimum and maximum capability of a step.
+- [StepAttributeCapability](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_StepAttributeCapability.html): The list of step attributes.
+- [StepConsumer](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_StepConsumer.html): The details of a step consumer.
+- [StepDependency](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_StepDependency.html): The details of step dependency.
+- [StepDetailsEntity](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_StepDetailsEntity.html): The details of a step entity.
+- [StepDetailsError](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_StepDetailsError.html): The details of the step error.
+- [StepDetailsIdentifiers](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_StepDetailsIdentifiers.html): The details of identifiers for a step.
+- [StepParameter](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_StepParameter.html): The details of a step parameter.
+- [StepParameterChunks](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_StepParameterChunks.html): Defines how a step parameter range should be divided into chunks.
+- [StepRequiredCapabilities](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_StepRequiredCapabilities.html): The details of required step capabilities.
+- [StepSearchSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_StepSearchSummary.html): The details of a step search.
+- [StepSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_StepSummary.html): The details for a step.
+- [StorageProfileSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_StorageProfileSummary.html): The details of a storage profile.
+- [StringFilterExpression](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_StringFilterExpression.html): Searches for a particular string.
+- [StringListFilterExpression](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_StringListFilterExpression.html): Searches for a particular list of strings.
+- [SyncInputJobAttachmentsSessionActionDefinition](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_SyncInputJobAttachmentsSessionActionDefinition.html): The session action definition for syncing input job attachments.
+- [SyncInputJobAttachmentsSessionActionDefinitionSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_SyncInputJobAttachmentsSessionActionDefinitionSummary.html): The summary of the session action definition for syncing input job attachments.
+- [TaskParameterValue](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_TaskParameterValue.html): The data types for the task parameters.
+- [TaskRunManifestPropertiesRequest](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_TaskRunManifestPropertiesRequest.html): The output manifest properties reported by the worker agent for a completed task run.
+- [TaskRunManifestPropertiesResponse](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_TaskRunManifestPropertiesResponse.html): The manifest properties for a task run, corresponding to the manifest properties in the job.
+- [TaskRunSessionActionDefinition](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_TaskRunSessionActionDefinition.html): The task, step, and parameters for the task run in the session action.
+- [TaskRunSessionActionDefinitionSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_TaskRunSessionActionDefinitionSummary.html): The details of a task run in a session action.
+- [TaskSearchSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_TaskSearchSummary.html): The details of a task search.
+- [TaskSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_TaskSummary.html): The details of a task.
+- [UpdatedSessionActionInfo](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UpdatedSessionActionInfo.html): The updated session action information as it relates to completion and progress of the session.
+- [UsageTrackingResource](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UsageTrackingResource.html): The usage details of the allotted budget.
+- [UserJobsFirst](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_UserJobsFirst.html): Allows setting a specific user's job to run first.
+- [ValidationExceptionField](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_ValidationExceptionField.html): The details of a validation exception.
+- [VCpuCountRange](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_VCpuCountRange.html): The allowable range of vCPU processing power for the fleet.
+- [VpcConfiguration](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_VpcConfiguration.html): The configuration options for a service managed fleet's VPC.
+- [WindowsUser](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_WindowsUser.html): The Windows user details.
+- [WorkerAmountCapability](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_WorkerAmountCapability.html): The details of the worker amount capability.
+- [WorkerAttributeCapability](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_WorkerAttributeCapability.html): The details of the worker attribute capability.
+- [WorkerCapabilities](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_WorkerCapabilities.html): The details for worker capabilities.
+- [WorkerSearchSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_WorkerSearchSummary.html): The details of a worker search.
+- [WorkerSessionSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_WorkerSessionSummary.html): Summarizes the session for a particular worker.
+- [WorkerSummary](https://docs.aws.amazon.com/deadline-cloud/latest/APIReference/API_WorkerSummary.html): The summary of details for a worker.

@@ -1,0 +1,80 @@
+# Source: https://docs.aws.amazon.com/ARG/latest/userguide/llms.txt
+
+# AWS Resource Groups User Guide
+
+> AWS Resource Groupslet you organize your AWS resources into groups, based on their attached tags, or their CloudFormation stack membership.
+
+- [Deleting groups](https://docs.aws.amazon.com/ARG/latest/userguide/deleting-resource-groups.html)
+- [Supported resource types](https://docs.aws.amazon.com/ARG/latest/userguide/supported-resources.html)
+- [Creating groups with AWS CloudFormation resources](https://docs.aws.amazon.com/ARG/latest/userguide/creating-resources-with-cloudformation.html)
+- [Service quotas](https://docs.aws.amazon.com/ARG/latest/userguide/service-quotas.html)
+- [Document history](https://docs.aws.amazon.com/ARG/latest/userguide/doc-history.html)
+
+## [What are resource groups?](https://docs.aws.amazon.com/ARG/latest/userguide/resource-groups.html)
+
+### [Getting started](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted.html)
+
+Get started using Resource Groups by using a walkthrough.
+
+### [Prerequisites](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-prereqs.html)
+
+Prepare your account to create resource groups.
+
+### [Set up permissions](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-prereqs-permissions.html)
+
+Set up permissions and review authorization and access control that you'll need to tag resources and create resource groups.
+
+- [Granting permissions for using AWS Resource Groups and Tag Editor](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-prereqs-permissions-howto.html): To add a policy for using AWS Resource Groups and Tag Editor to a user, do the following.
+- [Resource Groups authorization and access control](https://docs.aws.amazon.com/ARG/latest/userguide/rg-auth-access.html): Resource Groups supports the following.
+- [AWS services that work with AWS Resource Groups](https://docs.aws.amazon.com/ARG/latest/userguide/integrated-services-list.html): Learn about which services integrate with AWS Resource Groups.
+
+### [Service configurations](https://docs.aws.amazon.com/ARG/latest/userguide/about-slg.html)
+
+Learn how to add a service configuration to a resource group that enables an AWS service to treat resources in the group according to the settings in the configuration.
+
+- [Configuration types and parameters](https://docs.aws.amazon.com/ARG/latest/userguide/about-slg-types.html): Resource Groups supports using the following configuration types.
+
+
+## [Creating groups](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html)
+
+- [Build a tag-based query and create a group](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query-tag-based.html): The following procedures show you how to build a tag-based query and use it to create a resource group.
+- [Create an CloudFormation stack-based group](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query-stack-based.html): The following procedures show you how to build a stack-based query and use it to create a resource group.
+
+
+## [Updating groups](https://docs.aws.amazon.com/ARG/latest/userguide/updating-resource-groups.html)
+
+- [Update tag-based query groups](https://docs.aws.amazon.com/ARG/latest/userguide/updating-tag-based-resource-groups.html): The following procedures show you how to update a tag-based query group.
+- [Update an CloudFormation stack-based group](https://docs.aws.amazon.com/ARG/latest/userguide/updating-stack-based-resource-groups.html): The following procedures show you how to update a CloudFormation stack-based group.
+
+
+## [Monitoring resource groups for changes](https://docs.aws.amazon.com/ARG/latest/userguide/monitor-groups.html)
+
+- [Turning on group lifecycle events](https://docs.aws.amazon.com/ARG/latest/userguide/monitor-groups-turn-on.html): To receive notifications about lifecycle changes to your resource groups, you can turn on group lifecycle events.
+- [Creating a group lifecycle events rule](https://docs.aws.amazon.com/ARG/latest/userguide/monitor-groups-create-rule.html): You can turn on group lifecycle events for your resource groups in AWS Resource Groups to publish events to Amazon EventBridge.
+- [Turning off group lifecycle events](https://docs.aws.amazon.com/ARG/latest/userguide/monitor-groups-turn-off.html): You can turn off group lifecycle events to stop AWS Resource Groups from emitting events to Amazon EventBridge.
+
+### [Structure and syntax of events](https://docs.aws.amazon.com/ARG/latest/userguide/monitor-groups-syntax.html)
+
+- [Structure of the detail field](https://docs.aws.amazon.com/ARG/latest/userguide/monitor-groups-syntax-detail.html): The detail field includes all of the Resource Groups service-specific details about a specific change.
+- [Example custom event patterns](https://docs.aws.amazon.com/ARG/latest/userguide/monitor-groups-example-eventbridge-filters.html): The following example EventBridge custom event patterns filter the events generated by Resource Groups to only those that you are interested in for a specific event rule and target.
+
+
+## [Security](https://docs.aws.amazon.com/ARG/latest/userguide/security.html)
+
+- [Data protection](https://docs.aws.amazon.com/ARG/latest/userguide/security_data-protection.html): Learn how the AWS shared responsibility model applies to data protection in AWS Resource Groups.
+
+### [Identity and access management](https://docs.aws.amazon.com/ARG/latest/userguide/security-iam.html)
+
+How to authenticate requests and manage access your AWS Resource Groups resources.
+
+- [How Resource Groups works with IAM](https://docs.aws.amazon.com/ARG/latest/userguide/security_iam_service-with-iam.html): Before you use IAM to manage access to Resource Groups, you should understand what IAM features are available to use with Resource Groups.
+- [AWS managed policies](https://docs.aws.amazon.com/ARG/latest/userguide/security_iam_awsmanpol.html): Learn about AWS managed policies for AWS Resource Groups and recent changes to those policies.
+- [Using service-linked roles](https://docs.aws.amazon.com/ARG/latest/userguide/security_iam_service-linked-roles.html): How to use service-linked roles to give Resource Groups access to resources in your AWS account.
+- [Identity-based policy examples](https://docs.aws.amazon.com/ARG/latest/userguide/security_iam_id-based-policy-examples.html): By default, IAM principals, such as roles and users, don't have permission to create or modify Resource Groups resources.
+- [Troubleshooting](https://docs.aws.amazon.com/ARG/latest/userguide/security_iam_troubleshoot.html): Use the following information to help you diagnose and fix common issues that you might encounter when working with Resource Groups and IAM.
+- [Logging and monitoring](https://docs.aws.amazon.com/ARG/latest/userguide/security_logging-monitoring.html): All AWS Resource Groups actions are logged in AWS CloudTrail.
+- [Compliance validation](https://docs.aws.amazon.com/ARG/latest/userguide/security_compliance.html): Learn what AWS services are in scope of a specific compliance program.
+- [Resilience](https://docs.aws.amazon.com/ARG/latest/userguide/security_resilience.html): Learn how AWS architecture supports data redundancy, and learn about specific Resource Groups features for data resiliency.
+- [Infrastructure security](https://docs.aws.amazon.com/ARG/latest/userguide/security_infrastructure.html): Learn how AWS Resource Groups isolates service traffic.
+- [AWS PrivateLink](https://docs.aws.amazon.com/ARG/latest/userguide/vpc-interface-endpoints.html): You can use an AWS PrivateLink to create a private connection between your VPC and AWS Resource Groups.
+- [Security best practices](https://docs.aws.amazon.com/ARG/latest/userguide/security_best-practices.html): The following best practices are general guidelines and donât represent a complete security solution.

@@ -1,0 +1,1701 @@
+# Source: https://docs.aws.amazon.com/AWSEC2/latest/APIReference/llms.txt
+
+# Amazon Elastic Compute Cloud API Reference
+
+> You can access the features of Amazon Elastic Compute Cloud (Amazon EC2) programmatically. For more information, see the Amazon EC2 Developer Guide.
+
+- [Welcome](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Welcome.html)
+- [Common query parameters](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/CommonParameters.html)
+- [Permissions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ec2-api-permissions.html)
+- [Error codes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/errors-overview.html)
+
+## [Actions by service](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/OperationList-query.html)
+
+- [AWS Client VPN actions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/OperationList-query-cvpn.html): The following API actions are available for AWS Client VPN.
+- [Amazon EBS actions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/OperationList-query-ebs.html): The following API actions are available for Amazon EBS.
+- [Amazon EC2 actions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/OperationList-query-ec2.html): The following API actions are available for Amazon EC2.
+- [AWS Network Manager actions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/OperationList-query-networkmanager.html): The following API actions are available for AWS Network Manager.
+- [AWS Nitro Enclaves](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/operation-list-enclave.html): The following API actions are available for AWS Certificate Manager (ACM) for Nitro Enclaves.
+- [AWS Outposts actions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/operation-list-outposts.html): The following Amazon EC2 API actions are available for AWS Outposts.
+- [AWS PrivateLink actions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/operation-list-privatelink.html): The following API actions are available for AWS PrivateLink.
+- [Recycle Bin](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/operation-list-rbin.html): The following API actions are available for Recycle Bin.
+- [AWS Site-to-Site VPN actions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/OperationList-query-s2s.html): The following API actions are available for AWS Site-to-Site VPN.
+- [AWS Transit Gateway actions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/operation-list-tgw.html): The following API actions are available for AWS Transit Gateway.
+- [AWS Verified Access actions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/operation-list-verified-access.html): The following API actions are available for AWS Verified Access.
+- [VM Import/Export actions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/OperationList-query-vmie.html): The following API actions are available for VM Import/Export.
+- [Amazon VPC actions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/OperationList-query-vpc.html): The following API actions are available for Amazon VPC.
+- [Secondary Networks actions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/operation-list-secondary-network.html): The following API actions are available for Secondary Networks.
+- [Amazon VPC IPAM actions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/operation-list-ipam.html): The following API actions are available for Amazon VPC IP Address Manager (IPAM).
+- [AWS Wavelength actions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/operation-list-wavelength.html): The following API actions are available for AWS Wavelength.
+
+
+## [Actions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Operations.html)
+
+- [AcceptAddressTransfer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AcceptAddressTransfer.html): Accepts an Elastic IP address transfer.
+- [AcceptCapacityReservationBillingOwnership](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AcceptCapacityReservationBillingOwnership.html): Accepts a request to assign billing of the available capacity of a shared Capacity Reservation to your account.
+- [AcceptReservedInstancesExchangeQuote](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AcceptReservedInstancesExchangeQuote.html): Accepts the Convertible Reserved Instance exchange quote described in the call.
+- [AcceptTransitGatewayMulticastDomainAssociations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AcceptTransitGatewayMulticastDomainAssociations.html): Accepts a request to associate subnets with a transit gateway multicast domain.
+- [AcceptTransitGatewayPeeringAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AcceptTransitGatewayPeeringAttachment.html): Accepts a transit gateway peering attachment request.
+- [AcceptTransitGatewayVpcAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AcceptTransitGatewayVpcAttachment.html): Accepts a request to attach a VPC to a transit gateway.
+- [AcceptVpcEndpointConnections](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AcceptVpcEndpointConnections.html): Accepts connection requests to your VPC endpoint service.
+- [AcceptVpcPeeringConnection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AcceptVpcPeeringConnection.html): Accept a VPC peering connection request.
+- [AdvertiseByoipCidr](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AdvertiseByoipCidr.html): Advertises an IPv4 or IPv6 address range that is provisioned for use with your AWS resources through bring your own IP addresses (BYOIP).
+- [AllocateAddress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AllocateAddress.html): Allocates an Elastic IP address to your AWS account.
+- [AllocateHosts](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AllocateHosts.html): Allocates a Dedicated Host to your account.
+- [AllocateIpamPoolCidr](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AllocateIpamPoolCidr.html): Allocate a CIDR from an IPAM pool.
+- [ApplySecurityGroupsToClientVpnTargetNetwork](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ApplySecurityGroupsToClientVpnTargetNetwork.html): Applies a security group to the association between the target network and the Client VPN endpoint.
+- [AssignIpv6Addresses](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssignIpv6Addresses.html): Assigns the specified IPv6 addresses to the specified network interface.
+- [AssignPrivateIpAddresses](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssignPrivateIpAddresses.html): Assigns the specified secondary private IP addresses to the specified network interface.
+- [AssignPrivateNatGatewayAddress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssignPrivateNatGatewayAddress.html): Assigns private IPv4 addresses to a private NAT gateway.
+- [AssociateAddress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateAddress.html): Associates an Elastic IP address, or carrier IP address (for instances that are in subnets in Wavelength Zones) with an instance or a network interface.
+- [AssociateCapacityReservationBillingOwner](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateCapacityReservationBillingOwner.html): Initiates a request to assign billing of the unused capacity of a shared Capacity Reservation to a consumer account that is consolidated under the same AWS organizations payer account.
+- [AssociateClientVpnTargetNetwork](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateClientVpnTargetNetwork.html): Associates a target network with a Client VPN endpoint.
+- [AssociateDhcpOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateDhcpOptions.html): Associates a set of DHCP options (that you've previously created) with the specified VPC, or associates no DHCP options with the VPC.
+- [AssociateEnclaveCertificateIamRole](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateEnclaveCertificateIamRole.html): Associates an AWS Identity and Access Management (IAM) role with an AWS Certificate Manager (ACM) certificate.
+- [AssociateIamInstanceProfile](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateIamInstanceProfile.html): Associates an IAM instance profile with a running or stopped instance.
+- [AssociateInstanceEventWindow](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateInstanceEventWindow.html): Associates one or more targets with an event window.
+- [AssociateIpamByoasn](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateIpamByoasn.html): Associates your Autonomous System Number (ASN) with a BYOIP CIDR that you own in the same AWS Region.
+- [AssociateIpamResourceDiscovery](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateIpamResourceDiscovery.html): Associates an IPAM resource discovery with an Amazon VPC IPAM.
+- [AssociateNatGatewayAddress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateNatGatewayAddress.html): Associates Elastic IP addresses (EIPs) and private IPv4 addresses with a public NAT gateway.
+- [AssociateRouteServer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateRouteServer.html): Associates a route server with a VPC to enable dynamic route updates.
+- [AssociateRouteTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateRouteTable.html): Associates a subnet in your VPC or an internet gateway or virtual private gateway attached to your VPC with a route table in your VPC.
+- [AssociateSecurityGroupVpc](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateSecurityGroupVpc.html): Associates a security group with another VPC in the same Region.
+- [AssociateSubnetCidrBlock](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateSubnetCidrBlock.html): Associates a CIDR block with your subnet.
+- [AssociateTransitGatewayMulticastDomain](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateTransitGatewayMulticastDomain.html): Associates the specified subnets and transit gateway attachments with the specified transit gateway multicast domain.
+- [AssociateTransitGatewayPolicyTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateTransitGatewayPolicyTable.html): Associates the specified transit gateway attachment with a transit gateway policy table.
+- [AssociateTransitGatewayRouteTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateTransitGatewayRouteTable.html): Associates the specified attachment with the specified transit gateway route table.
+- [AssociateTrunkInterface](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateTrunkInterface.html): Associates a branch network interface with a trunk network interface.
+- [AssociateVpcCidrBlock](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateVpcCidrBlock.html): Associates a CIDR block with your VPC.
+- [AttachClassicLinkVpc](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AttachClassicLinkVpc.html)
+- [AttachInternetGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AttachInternetGateway.html): Attaches an internet gateway or a virtual private gateway to a VPC, enabling connectivity between the internet and the VPC.
+- [AttachNetworkInterface](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AttachNetworkInterface.html): Attaches a network interface to an instance.
+- [AttachVerifiedAccessTrustProvider](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AttachVerifiedAccessTrustProvider.html): Attaches the specified AWS Verified Access trust provider to the specified AWS Verified Access instance.
+- [AttachVolume](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AttachVolume.html): Attaches an Amazon EBS volume to a running or stopped instance, and exposes it to the instance with the specified device name.
+- [AttachVpnGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AttachVpnGateway.html): Attaches an available virtual private gateway to a VPC.
+- [AuthorizeClientVpnIngress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AuthorizeClientVpnIngress.html): Adds an ingress authorization rule to a Client VPN endpoint.
+- [AuthorizeSecurityGroupEgress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AuthorizeSecurityGroupEgress.html): Adds the specified outbound (egress) rules to a security group.
+- [AuthorizeSecurityGroupIngress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AuthorizeSecurityGroupIngress.html): Adds the specified inbound (ingress) rules to a security group.
+- [BundleInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BundleInstance.html): Bundles an Amazon instance store-backed Windows instance.
+- [CancelBundleTask](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelBundleTask.html): Cancels a bundling operation for an instance store-backed Windows instance.
+- [CancelCapacityReservation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelCapacityReservation.html): Cancels the specified Capacity Reservation, releases the reserved capacity, and changes the Capacity Reservation's state to cancelled.
+- [CancelCapacityReservationFleets](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelCapacityReservationFleets.html): Cancels one or more Capacity Reservation Fleets.
+- [CancelConversionTask](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelConversionTask.html): Cancels an active conversion task.
+- [CancelDeclarativePoliciesReport](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelDeclarativePoliciesReport.html): Cancels the generation of an account status report.
+- [CancelExportTask](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelExportTask.html): Cancels an active export task.
+- [CancelImageLaunchPermission](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelImageLaunchPermission.html): Removes your AWS account from the launch permissions for the specified AMI.
+- [CancelImportTask](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelImportTask.html): Cancels an in-process import virtual machine or import snapshot task.
+- [CancelReservedInstancesListing](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelReservedInstancesListing.html): Cancels the specified Reserved Instance listing in the Reserved Instance Marketplace.
+- [CancelSpotFleetRequests](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequests.html): Cancels the specified Spot Fleet requests.
+- [CancelSpotInstanceRequests](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotInstanceRequests.html): Cancels one or more Spot Instance requests.
+- [ConfirmProductInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ConfirmProductInstance.html): Determines whether a product code is associated with an instance.
+- [CopyFpgaImage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CopyFpgaImage.html): Copies the specified Amazon FPGA Image (AFI) to the current Region.
+- [CopyImage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CopyImage.html): Initiates an AMI copy operation.
+- [CopySnapshot](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CopySnapshot.html): Creates an exact copy of an Amazon EBS snapshot.
+- [CopyVolumes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CopyVolumes.html): Creates a crash-consistent, point-in-time copy of an existing Amazon EBS volume within the same Availability Zone.
+- [CreateCapacityManagerDataExport](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateCapacityManagerDataExport.html): Creates a new data export configuration for EC2 Capacity Manager.
+- [CreateCapacityReservation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateCapacityReservation.html): Creates a new Capacity Reservation with the specified attributes.
+- [CreateCapacityReservationBySplitting](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateCapacityReservationBySplitting.html): Create a new Capacity Reservation by splitting the capacity of the source Capacity Reservation.
+- [CreateCapacityReservationFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateCapacityReservationFleet.html): Creates a Capacity Reservation Fleet.
+- [CreateCarrierGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateCarrierGateway.html): Creates a carrier gateway.
+- [CreateClientVpnEndpoint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateClientVpnEndpoint.html): Creates a Client VPN endpoint.
+- [CreateClientVpnRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateClientVpnRoute.html): Adds a route to a network to a Client VPN endpoint.
+- [CreateCoipCidr](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateCoipCidr.html): Creates a range of customer-owned IP addresses.
+- [CreateCoipPool](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateCoipPool.html): Creates a pool of customer-owned IP (CoIP) addresses.
+- [CreateCustomerGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateCustomerGateway.html): Provides information to AWS about your customer gateway device.
+- [CreateDefaultSubnet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateDefaultSubnet.html): Creates a default subnet with a size /20 IPv4 CIDR block in the specified Availability Zone in your default VPC.
+- [CreateDefaultVpc](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateDefaultVpc.html): Creates a default VPC with a size /16 IPv4 CIDR block and a default subnet in each Availability Zone.
+- [CreateDelegateMacVolumeOwnershipTask](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateDelegateMacVolumeOwnershipTask.html): Delegates ownership of the Amazon EBS root volume for an Apple silicon Mac instance to an administrative user.
+- [CreateDhcpOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateDhcpOptions.html): Creates a custom set of DHCP options.
+- [CreateEgressOnlyInternetGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateEgressOnlyInternetGateway.html): [IPv6 only] Creates an egress-only internet gateway for your VPC.
+- [CreateFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet.html): Creates an EC2 Fleet that contains the configuration information for On-Demand Instances and Spot Instances.
+- [CreateFlowLogs](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFlowLogs.html): Creates one or more flow logs to capture information about IP traffic for a specific network interface, subnet, or VPC.
+- [CreateFpgaImage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFpgaImage.html): Creates an Amazon FPGA Image (AFI) from the specified design checkpoint (DCP).
+- [CreateImage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateImage.html): Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped.
+- [CreateImageUsageReport](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateImageUsageReport.html): Creates a report that shows how your image is used across other AWS accounts.
+- [CreateInstanceConnectEndpoint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateInstanceConnectEndpoint.html): Creates an EC2 Instance Connect Endpoint.
+- [CreateInstanceEventWindow](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateInstanceEventWindow.html): Creates an event window in which scheduled events for the associated Amazon EC2 instances can run.
+- [CreateInstanceExportTask](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateInstanceExportTask.html): Exports a running or stopped instance to an Amazon S3 bucket.
+- [CreateInternetGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateInternetGateway.html): Creates an internet gateway for use with a VPC.
+- [CreateInterruptibleCapacityReservationAllocation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateInterruptibleCapacityReservationAllocation.html): Creates an interruptible Capacity Reservation by specifying the number of unused instances you want to allocate from your source reservation.
+- [CreateIpam](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateIpam.html): Create an IPAM.
+- [CreateIpamExternalResourceVerificationToken](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateIpamExternalResourceVerificationToken.html): Create a verification token.
+- [CreateIpamPolicy](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateIpamPolicy.html): Creates an IPAM policy.
+- [CreateIpamPool](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateIpamPool.html): Create an IP address pool for Amazon VPC IP Address Manager (IPAM).
+- [CreateIpamPrefixListResolver](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateIpamPrefixListResolver.html): Creates an IPAM prefix list resolver.
+- [CreateIpamPrefixListResolverTarget](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateIpamPrefixListResolverTarget.html): Creates an IPAM prefix list resolver target.
+- [CreateIpamResourceDiscovery](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateIpamResourceDiscovery.html): Creates an IPAM resource discovery.
+- [CreateIpamScope](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateIpamScope.html): Create an IPAM scope.
+- [CreateKeyPair](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateKeyPair.html): Creates an ED25519 or 2048-bit RSA key pair with the specified name and in the specified format.
+- [CreateLaunchTemplate](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateLaunchTemplate.html): Creates a launch template.
+- [CreateLaunchTemplateVersion](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateLaunchTemplateVersion.html): Creates a new version of a launch template.
+- [CreateLocalGatewayRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateLocalGatewayRoute.html): Creates a static route for the specified local gateway route table.
+- [CreateLocalGatewayRouteTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateLocalGatewayRouteTable.html): Creates a local gateway route table.
+- [CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociation.html): Creates a local gateway route table virtual interface group association.
+- [CreateLocalGatewayRouteTableVpcAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateLocalGatewayRouteTableVpcAssociation.html): Associates the specified VPC with the specified local gateway route table.
+- [CreateLocalGatewayVirtualInterface](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateLocalGatewayVirtualInterface.html): Create a virtual interface for a local gateway.
+- [CreateLocalGatewayVirtualInterfaceGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateLocalGatewayVirtualInterfaceGroup.html): Create a local gateway virtual interface group.
+- [CreateMacSystemIntegrityProtectionModificationTask](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateMacSystemIntegrityProtectionModificationTask.html): Creates a System Integrity Protection (SIP) modification task to configure the SIP settings for an x86 Mac instance or Apple silicon Mac instance.
+- [CreateManagedPrefixList](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateManagedPrefixList.html): Creates a managed prefix list.
+- [CreateNatGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNatGateway.html): Creates a NAT gateway in the specified subnet.
+- [CreateNetworkAcl](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkAcl.html): Creates a network ACL in a VPC.
+- [CreateNetworkAclEntry](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkAclEntry.html): Creates an entry (a rule) in a network ACL with the specified rule number.
+- [CreateNetworkInsightsAccessScope](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkInsightsAccessScope.html): Creates a Network Access Scope.
+- [CreateNetworkInsightsPath](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkInsightsPath.html): Creates a path to analyze for reachability.
+- [CreateNetworkInterface](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkInterface.html): Creates a network interface in the specified subnet.
+- [CreateNetworkInterfacePermission](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkInterfacePermission.html): Grants an AWS-authorized account permission to attach the specified network interface to an instance in their account.
+- [CreatePlacementGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreatePlacementGroup.html): Creates a placement group in which to launch instances.
+- [CreatePublicIpv4Pool](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreatePublicIpv4Pool.html): Creates a public IPv4 address pool.
+- [CreateReplaceRootVolumeTask](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateReplaceRootVolumeTask.html): Replaces the EBS-backed root volume for a running instance with a new volume that is restored to the original root volume's launch state, that is restored to a specific snapshot taken from the original root volume, or that is restored from an AMI that has the same key characteristics as that of the instance.
+- [CreateReservedInstancesListing](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateReservedInstancesListing.html): Creates a listing for Amazon EC2 Standard Reserved Instances to be sold in the Reserved Instance Marketplace.
+- [CreateRestoreImageTask](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateRestoreImageTask.html): Starts a task that restores an AMI from an Amazon S3 object that was previously created by using CreateStoreImageTask.
+- [CreateRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateRoute.html): Creates a route in a route table within a VPC.
+- [CreateRouteServer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateRouteServer.html): Creates a new route server to manage dynamic routing in a VPC.
+- [CreateRouteServerEndpoint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateRouteServerEndpoint.html): Creates a new endpoint for a route server in a specified subnet.
+- [CreateRouteServerPeer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateRouteServerPeer.html): Creates a new BGP peer for a specified route server endpoint.
+- [CreateRouteTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateRouteTable.html): Creates a route table for the specified VPC.
+- [CreateSecondaryNetwork](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecondaryNetwork.html): Creates a secondary network.
+- [CreateSecondarySubnet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecondarySubnet.html): Creates a secondary subnet in a secondary network.
+- [CreateSecurityGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSecurityGroup.html): Creates a security group.
+- [CreateSnapshot](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSnapshot.html): Creates a snapshot of an EBS volume and stores it in Amazon S3.
+- [CreateSnapshots](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSnapshots.html): Creates crash-consistent snapshots of multiple EBS volumes attached to an Amazon EC2 instance.
+- [CreateSpotDatafeedSubscription](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSpotDatafeedSubscription.html): Creates a data feed for Spot Instances, enabling you to view Spot Instance usage logs.
+- [CreateStoreImageTask](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateStoreImageTask.html): Stores an AMI as a single object in an Amazon S3 bucket.
+- [CreateSubnet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSubnet.html): Creates a subnet in the specified VPC.
+- [CreateSubnetCidrReservation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSubnetCidrReservation.html): Creates a subnet CIDR reservation.
+- [CreateTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html): Adds or overwrites only the specified tags for the specified Amazon EC2 resource or resources.
+- [CreateTrafficMirrorFilter](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorFilter.html): Creates a Traffic Mirror filter.
+- [CreateTrafficMirrorFilterRule](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorFilterRule.html): Creates a Traffic Mirror filter rule.
+- [CreateTrafficMirrorSession](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorSession.html): Creates a Traffic Mirror session.
+- [CreateTrafficMirrorTarget](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorTarget.html): Creates a target for your Traffic Mirror session.
+- [CreateTransitGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTransitGateway.html): Creates a transit gateway.
+- [CreateTransitGatewayConnect](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTransitGatewayConnect.html): Creates a Connect attachment from a specified transit gateway attachment.
+- [CreateTransitGatewayConnectPeer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTransitGatewayConnectPeer.html): Creates a Connect peer for a specified transit gateway Connect attachment between a transit gateway and an appliance.
+- [CreateTransitGatewayMeteringPolicy](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTransitGatewayMeteringPolicy.html): Creates a metering policy for a transit gateway to track and measure network traffic.
+- [CreateTransitGatewayMeteringPolicyEntry](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTransitGatewayMeteringPolicyEntry.html): Creates an entry in a transit gateway metering policy to define traffic measurement rules.
+- [CreateTransitGatewayMulticastDomain](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTransitGatewayMulticastDomain.html): Creates a multicast domain using the specified transit gateway.
+- [CreateTransitGatewayPeeringAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTransitGatewayPeeringAttachment.html): Requests a transit gateway peering attachment between the specified transit gateway (requester) and a peer transit gateway (accepter).
+- [CreateTransitGatewayPolicyTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTransitGatewayPolicyTable.html): Creates a transit gateway policy table.
+- [CreateTransitGatewayPrefixListReference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTransitGatewayPrefixListReference.html): Creates a reference (route) to a prefix list in a specified transit gateway route table.
+- [CreateTransitGatewayRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTransitGatewayRoute.html): Creates a static route for the specified transit gateway route table.
+- [CreateTransitGatewayRouteTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTransitGatewayRouteTable.html): Creates a route table for the specified transit gateway.
+- [CreateTransitGatewayRouteTableAnnouncement](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTransitGatewayRouteTableAnnouncement.html): Advertises a new transit gateway route table.
+- [CreateTransitGatewayVpcAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTransitGatewayVpcAttachment.html): Attaches the specified VPC to the specified transit gateway.
+- [CreateVerifiedAccessEndpoint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVerifiedAccessEndpoint.html): An AWS Verified Access endpoint is where you define your application along with an optional endpoint-level access policy.
+- [CreateVerifiedAccessGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVerifiedAccessGroup.html): An AWS Verified Access group is a collection of AWS Verified Access endpoints who's associated applications have similar security requirements.
+- [CreateVerifiedAccessInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVerifiedAccessInstance.html): An AWS Verified Access instance is a regional entity that evaluates application requests and grants access only when your security requirements are met.
+- [CreateVerifiedAccessTrustProvider](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVerifiedAccessTrustProvider.html): A trust provider is a third-party entity that creates, maintains, and manages identity information for users and devices.
+- [CreateVolume](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVolume.html): Creates an EBS volume that can be attached to an instance in the same Availability Zone.
+- [CreateVpc](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpc.html): Creates a VPC with the specified CIDR blocks.
+- [CreateVpcBlockPublicAccessExclusion](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpcBlockPublicAccessExclusion.html): Create a VPC Block Public Access (BPA) exclusion.
+- [CreateVpcEncryptionControl](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpcEncryptionControl.html): Creates a VPC Encryption Control configuration for a specified VPC.
+- [CreateVpcEndpoint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpcEndpoint.html): Creates a VPC endpoint.
+- [CreateVpcEndpointConnectionNotification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpcEndpointConnectionNotification.html): Creates a connection notification for a specified VPC endpoint or VPC endpoint service.
+- [CreateVpcEndpointServiceConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpcEndpointServiceConfiguration.html): Creates a VPC endpoint service to which service consumers (AWS accounts, users, and IAM roles) can connect.
+- [CreateVpcPeeringConnection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpcPeeringConnection.html): Requests a VPC peering connection between two VPCs: a requester VPC that you own and an accepter VPC with which to create the connection.
+- [CreateVpnConcentrator](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpnConcentrator.html): Creates a VPN concentrator that aggregates multiple VPN connections to a transit gateway.
+- [CreateVpnConnection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpnConnection.html): Creates a VPN connection between an existing virtual private gateway or transit gateway and a customer gateway.
+- [CreateVpnConnectionRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpnConnectionRoute.html): Creates a static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway.
+- [CreateVpnGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVpnGateway.html): Creates a virtual private gateway.
+- [DeleteCapacityManagerDataExport](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteCapacityManagerDataExport.html): Deletes an existing Capacity Manager data export configuration.
+- [DeleteCarrierGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteCarrierGateway.html): Deletes a carrier gateway.
+- [DeleteClientVpnEndpoint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteClientVpnEndpoint.html): Deletes the specified Client VPN endpoint.
+- [DeleteClientVpnRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteClientVpnRoute.html): Deletes a route from a Client VPN endpoint.
+- [DeleteCoipCidr](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteCoipCidr.html): Deletes a range of customer-owned IP addresses.
+- [DeleteCoipPool](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteCoipPool.html): Deletes a pool of customer-owned IP (CoIP) addresses.
+- [DeleteCustomerGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteCustomerGateway.html): Deletes the specified customer gateway.
+- [DeleteDhcpOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteDhcpOptions.html): Deletes the specified set of DHCP options.
+- [DeleteEgressOnlyInternetGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteEgressOnlyInternetGateway.html): Deletes an egress-only internet gateway.
+- [DeleteFleets](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteFleets.html): Deletes the specified EC2 Fleet request.
+- [DeleteFlowLogs](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteFlowLogs.html): Deletes one or more flow logs.
+- [DeleteFpgaImage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteFpgaImage.html): Deletes the specified Amazon FPGA Image (AFI).
+- [DeleteImageUsageReport](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteImageUsageReport.html): Deletes the specified image usage report.
+- [DeleteInstanceConnectEndpoint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteInstanceConnectEndpoint.html): Deletes the specified EC2 Instance Connect Endpoint.
+- [DeleteInstanceEventWindow](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteInstanceEventWindow.html): Deletes the specified event window.
+- [DeleteInternetGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteInternetGateway.html): Deletes the specified internet gateway.
+- [DeleteIpam](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteIpam.html): Delete an IPAM.
+- [DeleteIpamExternalResourceVerificationToken](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteIpamExternalResourceVerificationToken.html): Delete a verification token.
+- [DeleteIpamPolicy](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteIpamPolicy.html): Deletes an IPAM policy.
+- [DeleteIpamPool](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteIpamPool.html): Delete an IPAM pool.
+- [DeleteIpamPrefixListResolver](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteIpamPrefixListResolver.html): Deletes an IPAM prefix list resolver.
+- [DeleteIpamPrefixListResolverTarget](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteIpamPrefixListResolverTarget.html): Deletes an IPAM prefix list resolver target.
+- [DeleteIpamResourceDiscovery](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteIpamResourceDiscovery.html): Deletes an IPAM resource discovery.
+- [DeleteIpamScope](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteIpamScope.html): Delete the scope for an IPAM.
+- [DeleteKeyPair](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteKeyPair.html): Deletes the specified key pair, by removing the public key from Amazon EC2.
+- [DeleteLaunchTemplate](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteLaunchTemplate.html): Deletes a launch template.
+- [DeleteLaunchTemplateVersions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteLaunchTemplateVersions.html): Deletes one or more versions of a launch template.
+- [DeleteLocalGatewayRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteLocalGatewayRoute.html): Deletes the specified route from the specified local gateway route table.
+- [DeleteLocalGatewayRouteTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteLocalGatewayRouteTable.html): Deletes a local gateway route table.
+- [DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociation.html): Deletes a local gateway route table virtual interface group association.
+- [DeleteLocalGatewayRouteTableVpcAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteLocalGatewayRouteTableVpcAssociation.html): Deletes the specified association between a VPC and local gateway route table.
+- [DeleteLocalGatewayVirtualInterface](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteLocalGatewayVirtualInterface.html): Deletes the specified local gateway virtual interface.
+- [DeleteLocalGatewayVirtualInterfaceGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteLocalGatewayVirtualInterfaceGroup.html): Delete the specified local gateway interface group.
+- [DeleteManagedPrefixList](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteManagedPrefixList.html): Deletes the specified managed prefix list.
+- [DeleteNatGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteNatGateway.html): Deletes the specified NAT gateway.
+- [DeleteNetworkAcl](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteNetworkAcl.html): Deletes the specified network ACL.
+- [DeleteNetworkAclEntry](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteNetworkAclEntry.html): Deletes the specified ingress or egress entry (rule) from the specified network ACL.
+- [DeleteNetworkInsightsAccessScope](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteNetworkInsightsAccessScope.html): Deletes the specified Network Access Scope.
+- [DeleteNetworkInsightsAccessScopeAnalysis](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteNetworkInsightsAccessScopeAnalysis.html): Deletes the specified Network Access Scope analysis.
+- [DeleteNetworkInsightsAnalysis](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteNetworkInsightsAnalysis.html): Deletes the specified network insights analysis.
+- [DeleteNetworkInsightsPath](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteNetworkInsightsPath.html): Deletes the specified path.
+- [DeleteNetworkInterface](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteNetworkInterface.html): Deletes the specified network interface.
+- [DeleteNetworkInterfacePermission](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteNetworkInterfacePermission.html): Deletes a permission for a network interface.
+- [DeletePlacementGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeletePlacementGroup.html): Deletes the specified placement group.
+- [DeletePublicIpv4Pool](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeletePublicIpv4Pool.html): Delete a public IPv4 pool.
+- [DeleteQueuedReservedInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteQueuedReservedInstances.html): Deletes the queued purchases for the specified Reserved Instances.
+- [DeleteRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteRoute.html): Deletes the specified route from the specified route table.
+- [DeleteRouteServer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteRouteServer.html): Deletes the specified route server.
+- [DeleteRouteServerEndpoint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteRouteServerEndpoint.html): Deletes the specified route server endpoint.
+- [DeleteRouteServerPeer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteRouteServerPeer.html): Deletes the specified BGP peer from a route server.
+- [DeleteRouteTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteRouteTable.html): Deletes the specified route table.
+- [DeleteSecondaryNetwork](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteSecondaryNetwork.html): Deletes a secondary network.
+- [DeleteSecondarySubnet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteSecondarySubnet.html): Deletes a secondary subnet.
+- [DeleteSecurityGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteSecurityGroup.html): Deletes a security group.
+- [DeleteSnapshot](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteSnapshot.html): Deletes the specified snapshot.
+- [DeleteSpotDatafeedSubscription](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteSpotDatafeedSubscription.html): Deletes the data feed for Spot Instances.
+- [DeleteSubnet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteSubnet.html): Deletes the specified subnet.
+- [DeleteSubnetCidrReservation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteSubnetCidrReservation.html): Deletes a subnet CIDR reservation.
+- [DeleteTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTags.html): Deletes the specified set of tags from the specified set of resources.
+- [DeleteTrafficMirrorFilter](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTrafficMirrorFilter.html): Deletes the specified Traffic Mirror filter.
+- [DeleteTrafficMirrorFilterRule](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTrafficMirrorFilterRule.html): Deletes the specified Traffic Mirror rule.
+- [DeleteTrafficMirrorSession](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTrafficMirrorSession.html): Deletes the specified Traffic Mirror session.
+- [DeleteTrafficMirrorTarget](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTrafficMirrorTarget.html): Deletes the specified Traffic Mirror target.
+- [DeleteTransitGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTransitGateway.html): Deletes the specified transit gateway.
+- [DeleteTransitGatewayConnect](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTransitGatewayConnect.html): Deletes the specified Connect attachment.
+- [DeleteTransitGatewayConnectPeer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTransitGatewayConnectPeer.html): Deletes the specified Connect peer.
+- [DeleteTransitGatewayMeteringPolicy](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTransitGatewayMeteringPolicy.html): Deletes a transit gateway metering policy.
+- [DeleteTransitGatewayMeteringPolicyEntry](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTransitGatewayMeteringPolicyEntry.html): Deletes an entry from a transit gateway metering policy.
+- [DeleteTransitGatewayMulticastDomain](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTransitGatewayMulticastDomain.html): Deletes the specified transit gateway multicast domain.
+- [DeleteTransitGatewayPeeringAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTransitGatewayPeeringAttachment.html): Deletes a transit gateway peering attachment.
+- [DeleteTransitGatewayPolicyTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTransitGatewayPolicyTable.html): Deletes the specified transit gateway policy table.
+- [DeleteTransitGatewayPrefixListReference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTransitGatewayPrefixListReference.html): Deletes a reference (route) to a prefix list in a specified transit gateway route table.
+- [DeleteTransitGatewayRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTransitGatewayRoute.html): Deletes the specified route from the specified transit gateway route table.
+- [DeleteTransitGatewayRouteTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTransitGatewayRouteTable.html): Deletes the specified transit gateway route table.
+- [DeleteTransitGatewayRouteTableAnnouncement](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTransitGatewayRouteTableAnnouncement.html): Advertises to the transit gateway that a transit gateway route table is deleted.
+- [DeleteTransitGatewayVpcAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteTransitGatewayVpcAttachment.html): Deletes the specified VPC attachment.
+- [DeleteVerifiedAccessEndpoint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteVerifiedAccessEndpoint.html): Delete an AWS Verified Access endpoint.
+- [DeleteVerifiedAccessGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteVerifiedAccessGroup.html): Delete an AWS Verified Access group.
+- [DeleteVerifiedAccessInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteVerifiedAccessInstance.html): Delete an AWS Verified Access instance.
+- [DeleteVerifiedAccessTrustProvider](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteVerifiedAccessTrustProvider.html): Delete an AWS Verified Access trust provider.
+- [DeleteVolume](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteVolume.html): Deletes the specified EBS volume.
+- [DeleteVpc](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteVpc.html): Deletes the specified VPC.
+- [DeleteVpcBlockPublicAccessExclusion](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteVpcBlockPublicAccessExclusion.html): Delete a VPC Block Public Access (BPA) exclusion.
+- [DeleteVpcEncryptionControl](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteVpcEncryptionControl.html): Deletes a VPC Encryption Control configuration.
+- [DeleteVpcEndpointConnectionNotifications](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteVpcEndpointConnectionNotifications.html): Deletes the specified VPC endpoint connection notifications.
+- [DeleteVpcEndpoints](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteVpcEndpoints.html): Deletes the specified VPC endpoints.
+- [DeleteVpcEndpointServiceConfigurations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteVpcEndpointServiceConfigurations.html): Deletes the specified VPC endpoint service configurations.
+- [DeleteVpcPeeringConnection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteVpcPeeringConnection.html): Deletes a VPC peering connection.
+- [DeleteVpnConcentrator](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteVpnConcentrator.html): Deletes the specified VPN concentrator.
+- [DeleteVpnConnection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteVpnConnection.html): Deletes the specified VPN connection.
+- [DeleteVpnConnectionRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteVpnConnectionRoute.html): Deletes the specified static route associated with a VPN connection between an existing virtual private gateway and a VPN customer gateway.
+- [DeleteVpnGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteVpnGateway.html): Deletes the specified virtual private gateway.
+- [DeprovisionByoipCidr](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeprovisionByoipCidr.html): Releases the specified address range that you provisioned for use with your AWS resources through bring your own IP addresses (BYOIP) and deletes the corresponding address pool.
+- [DeprovisionIpamByoasn](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeprovisionIpamByoasn.html): Deprovisions your Autonomous System Number (ASN) from your AWS account.
+- [DeprovisionIpamPoolCidr](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeprovisionIpamPoolCidr.html): Deprovision a CIDR provisioned from an IPAM pool.
+- [DeprovisionPublicIpv4PoolCidr](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeprovisionPublicIpv4PoolCidr.html): Deprovision a CIDR from a public IPv4 pool.
+- [DeregisterImage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeregisterImage.html): Deregisters the specified AMI.
+- [DeregisterInstanceEventNotificationAttributes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeregisterInstanceEventNotificationAttributes.html): Deregisters tag keys to prevent tags that have the specified tag keys from being included in scheduled event notifications for resources in the Region.
+- [DeregisterTransitGatewayMulticastGroupMembers](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeregisterTransitGatewayMulticastGroupMembers.html): Deregisters the specified members (network interfaces) from the transit gateway multicast group.
+- [DeregisterTransitGatewayMulticastGroupSources](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeregisterTransitGatewayMulticastGroupSources.html): Deregisters the specified sources (network interfaces) from the transit gateway multicast group.
+- [DescribeAccountAttributes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAccountAttributes.html): Describes attributes of your AWS account.
+- [DescribeAddresses](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAddresses.html): Describes the specified Elastic IP addresses or all of your Elastic IP addresses.
+- [DescribeAddressesAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAddressesAttribute.html): Describes the attributes of the specified Elastic IP addresses.
+- [DescribeAddressTransfers](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAddressTransfers.html): Describes an Elastic IP address transfer.
+- [DescribeAggregateIdFormat](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAggregateIdFormat.html): Describes the longer ID format settings for all resource types in a specific Region.
+- [DescribeAvailabilityZones](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html): Describes the Availability Zones, Local Zones, and Wavelength Zones that are available to you.
+- [DescribeAwsNetworkPerformanceMetricSubscriptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAwsNetworkPerformanceMetricSubscriptions.html): Describes the current Infrastructure Performance metric subscriptions.
+- [DescribeBundleTasks](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeBundleTasks.html): Describes the specified bundle tasks or all of your bundle tasks.
+- [DescribeByoipCidrs](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeByoipCidrs.html): Describes the IP address ranges that were provisioned for use with AWS resources through through bring your own IP addresses (BYOIP).
+- [DescribeCapacityBlockExtensionHistory](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCapacityBlockExtensionHistory.html): Describes the events for the specified Capacity Block extension during the specified time.
+- [DescribeCapacityBlockExtensionOfferings](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCapacityBlockExtensionOfferings.html): Describes Capacity Block extension offerings available for purchase in the AWS Region that you're currently using.
+- [DescribeCapacityBlockOfferings](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCapacityBlockOfferings.html): Describes Capacity Block offerings available for purchase in the AWS Region that you're currently using.
+- [DescribeCapacityBlocks](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCapacityBlocks.html): Describes details about Capacity Blocks in the AWS Region that you're currently using.
+- [DescribeCapacityBlockStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCapacityBlockStatus.html): Describes the availability of capacity for the specified Capacity blocks, or all of your Capacity Blocks.
+- [DescribeCapacityManagerDataExports](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCapacityManagerDataExports.html): Describes one or more Capacity Manager data export configurations.
+- [DescribeCapacityReservationBillingRequests](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCapacityReservationBillingRequests.html): Describes a request to assign the billing of the unused capacity of a Capacity Reservation.
+- [DescribeCapacityReservationFleets](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCapacityReservationFleets.html): Describes one or more Capacity Reservation Fleets.
+- [DescribeCapacityReservations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCapacityReservations.html): Describes one or more of your Capacity Reservations.
+- [DescribeCapacityReservationTopology](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCapacityReservationTopology.html): Describes a tree-based hierarchy that represents the physical host placement of your pending or active Capacity Reservations within an Availability Zone or Local Zone.
+- [DescribeCarrierGateways](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCarrierGateways.html): Describes one or more of your carrier gateways.
+- [DescribeClassicLinkInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeClassicLinkInstances.html)
+- [DescribeClientVpnAuthorizationRules](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeClientVpnAuthorizationRules.html): Describes the authorization rules for a specified Client VPN endpoint.
+- [DescribeClientVpnConnections](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeClientVpnConnections.html): Describes active client connections and connections that have been terminated within the last 60 minutes for the specified Client VPN endpoint.
+- [DescribeClientVpnEndpoints](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeClientVpnEndpoints.html): Describes one or more Client VPN endpoints in the account.
+- [DescribeClientVpnRoutes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeClientVpnRoutes.html): Describes the routes for the specified Client VPN endpoint.
+- [DescribeClientVpnTargetNetworks](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeClientVpnTargetNetworks.html): Describes the target networks associated with the specified Client VPN endpoint.
+- [DescribeCoipPools](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCoipPools.html): Describes the specified customer-owned address pools or all of your customer-owned address pools.
+- [DescribeConversionTasks](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeConversionTasks.html): Describes the specified conversion tasks or all your conversion tasks.
+- [DescribeCustomerGateways](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeCustomerGateways.html): Describes one or more of your VPN customer gateways.
+- [DescribeDeclarativePoliciesReports](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeDeclarativePoliciesReports.html): Describes the metadata of an account status report, including the status of the report.
+- [DescribeDhcpOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeDhcpOptions.html): Describes your DHCP option sets.
+- [DescribeEgressOnlyInternetGateways](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeEgressOnlyInternetGateways.html): Describes your egress-only internet gateways.
+- [DescribeElasticGpus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeElasticGpus.html)
+- [DescribeExportImageTasks](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeExportImageTasks.html): Describes the specified export image tasks or all of your export image tasks.
+- [DescribeExportTasks](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeExportTasks.html): Describes the specified export instance tasks or all of your export instance tasks.
+- [DescribeFastLaunchImages](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeFastLaunchImages.html): Describe details for Windows AMIs that are configured for Windows fast launch.
+- [DescribeFastSnapshotRestores](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeFastSnapshotRestores.html): Describes the state of fast snapshot restores for your snapshots.
+- [DescribeFleetHistory](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeFleetHistory.html): Describes the events for the specified EC2 Fleet during the specified time.
+- [DescribeFleetInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeFleetInstances.html): Describes the running instances for the specified EC2 Fleet.
+- [DescribeFleets](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeFleets.html): Describes the specified EC2 Fleet or all of your EC2 Fleets.
+- [DescribeFlowLogs](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeFlowLogs.html): Describes one or more flow logs.
+- [DescribeFpgaImageAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeFpgaImageAttribute.html): Describes the specified attribute of the specified Amazon FPGA Image (AFI).
+- [DescribeFpgaImages](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeFpgaImages.html): Describes the Amazon FPGA Images (AFIs) available to you.
+- [DescribeHostReservationOfferings](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeHostReservationOfferings.html): Describes the Dedicated Host reservations that are available to purchase.
+- [DescribeHostReservations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeHostReservations.html): Describes reservations that are associated with Dedicated Hosts in your account.
+- [DescribeHosts](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeHosts.html): Describes the specified Dedicated Hosts or all your Dedicated Hosts.
+- [DescribeIamInstanceProfileAssociations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeIamInstanceProfileAssociations.html): Describes your IAM instance profile associations.
+- [DescribeIdentityIdFormat](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeIdentityIdFormat.html): Describes the ID format settings for resources for the specified IAM user, IAM role, or root user.
+- [DescribeIdFormat](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeIdFormat.html): Describes the ID format settings for your resources on a per-Region basis, for example, to view which resource types are enabled for longer IDs.
+- [DescribeImageAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImageAttribute.html): Describes the specified attribute of the specified AMI.
+- [DescribeImageReferences](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImageReferences.html): Describes your AWS resources that are referencing the specified images.
+- [DescribeImages](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImages.html): Describes the specified images (AMIs, AKIs, and ARIs) available to you or all of the images available to you.
+- [DescribeImageUsageReportEntries](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImageUsageReportEntries.html): Describes the entries in image usage reports, showing how your images are used across other AWS accounts.
+- [DescribeImageUsageReports](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImageUsageReports.html): Describes the configuration and status of image usage reports, filtered by report IDs or image IDs.
+- [DescribeImportImageTasks](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImportImageTasks.html): Displays details about an import virtual machine or import snapshot tasks that are already created.
+- [DescribeImportSnapshotTasks](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeImportSnapshotTasks.html): Describes your import snapshot tasks.
+- [DescribeInstanceAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceAttribute.html): Describes the specified attribute of the specified instance.
+- [DescribeInstanceConnectEndpoints](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceConnectEndpoints.html): Describes the specified EC2 Instance Connect Endpoints or all EC2 Instance Connect Endpoints.
+- [DescribeInstanceCreditSpecifications](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceCreditSpecifications.html): Describes the credit option for CPU usage of the specified burstable performance instances.
+- [DescribeInstanceEventNotificationAttributes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceEventNotificationAttributes.html): Describes the tag keys that are registered to appear in scheduled event notifications for resources in the current Region.
+- [DescribeInstanceEventWindows](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceEventWindows.html): Describes the specified event windows or all event windows.
+- [DescribeInstanceImageMetadata](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceImageMetadata.html): Describes the AMI that was used to launch an instance, even if the AMI is deprecated, deregistered, made private (no longer public or shared with your account), or not allowed.
+- [DescribeInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html): Describes the specified instances or all instances.
+- [DescribeInstanceSqlHaHistoryStates](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceSqlHaHistoryStates.html): Describes the historical SQL Server High Availability states for Amazon EC2 instances that are enabled for Amazon EC2 High Availability for SQL Server monitoring.
+- [DescribeInstanceSqlHaStates](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceSqlHaStates.html): Describes the SQL Server High Availability states for Amazon EC2 instances that are enabled for Amazon EC2 High Availability for SQL Server monitoring.
+- [DescribeInstanceStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceStatus.html): Describes the status of the specified instances or all of your instances.
+- [DescribeInstanceTopology](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceTopology.html): Describes a tree-based hierarchy that represents the physical host placement of your EC2 instances within an Availability Zone or Local Zone.
+- [DescribeInstanceTypeOfferings](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceTypeOfferings.html): Lists the instance types that are offered for the specified location.
+- [DescribeInstanceTypes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceTypes.html): Describes the specified instance types.
+- [DescribeInternetGateways](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInternetGateways.html): Describes your internet gateways.
+- [DescribeIpamByoasn](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeIpamByoasn.html): Describes your Autonomous System Numbers (ASNs), their provisioning statuses, and the BYOIP CIDRs with which they are associated.
+- [DescribeIpamExternalResourceVerificationTokens](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeIpamExternalResourceVerificationTokens.html): Describe verification tokens.
+- [DescribeIpamPolicies](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeIpamPolicies.html): Describes one or more IPAM policies.
+- [DescribeIpamPools](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeIpamPools.html): Get information about your IPAM pools.
+- [DescribeIpamPrefixListResolvers](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeIpamPrefixListResolvers.html): Describes one or more IPAM prefix list resolvers.
+- [DescribeIpamPrefixListResolverTargets](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeIpamPrefixListResolverTargets.html): Describes one or more IPAM prefix list resolver Targets.
+- [DescribeIpamResourceDiscoveries](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeIpamResourceDiscoveries.html): Describes IPAM resource discoveries.
+- [DescribeIpamResourceDiscoveryAssociations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeIpamResourceDiscoveryAssociations.html): Describes resource discovery association with an Amazon VPC IPAM.
+- [DescribeIpams](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeIpams.html): Get information about your IPAM pools.
+- [DescribeIpamScopes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeIpamScopes.html): Get information about your IPAM scopes.
+- [DescribeIpv6Pools](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeIpv6Pools.html): Describes your IPv6 address pools.
+- [DescribeKeyPairs](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeKeyPairs.html): Describes the specified key pairs or all of your key pairs.
+- [DescribeLaunchTemplates](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplates.html): Describes one or more launch templates.
+- [DescribeLaunchTemplateVersions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLaunchTemplateVersions.html): Describes one or more versions of a specified launch template.
+- [DescribeLocalGatewayRouteTables](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayRouteTables.html): Describes one or more local gateway route tables.
+- [DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations.html): Describes the associations between virtual interface groups and local gateway route tables.
+- [DescribeLocalGatewayRouteTableVpcAssociations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayRouteTableVpcAssociations.html): Describes the specified associations between VPCs and local gateway route tables.
+- [DescribeLocalGateways](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGateways.html): Describes one or more local gateways.
+- [DescribeLocalGatewayVirtualInterfaceGroups](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayVirtualInterfaceGroups.html): Describes the specified local gateway virtual interface groups.
+- [DescribeLocalGatewayVirtualInterfaces](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLocalGatewayVirtualInterfaces.html): Describes the specified local gateway virtual interfaces.
+- [DescribeLockedSnapshots](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeLockedSnapshots.html): Describes the lock status for a snapshot.
+- [DescribeMacHosts](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeMacHosts.html): Describes the specified EC2 Mac Dedicated Host or all of your EC2 Mac Dedicated Hosts.
+- [DescribeMacModificationTasks](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeMacModificationTasks.html): Describes a System Integrity Protection (SIP) modification task or volume ownership delegation task for an Amazon EC2 Mac instance.
+- [DescribeManagedPrefixLists](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeManagedPrefixLists.html): Describes your managed prefix lists and any AWS-managed prefix lists.
+- [DescribeMovingAddresses](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeMovingAddresses.html)
+- [DescribeNatGateways](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNatGateways.html): Describes your NAT gateways.
+- [DescribeNetworkAcls](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkAcls.html): Describes your network ACLs.
+- [DescribeNetworkInsightsAccessScopeAnalyses](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkInsightsAccessScopeAnalyses.html): Describes the specified Network Access Scope analyses.
+- [DescribeNetworkInsightsAccessScopes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkInsightsAccessScopes.html): Describes the specified Network Access Scopes.
+- [DescribeNetworkInsightsAnalyses](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkInsightsAnalyses.html): Describes one or more of your network insights analyses.
+- [DescribeNetworkInsightsPaths](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkInsightsPaths.html): Describes one or more of your paths.
+- [DescribeNetworkInterfaceAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkInterfaceAttribute.html): Describes a network interface attribute.
+- [DescribeNetworkInterfacePermissions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkInterfacePermissions.html): Describes the permissions for your network interfaces.
+- [DescribeNetworkInterfaces](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkInterfaces.html): Describes the specified network interfaces or all your network interfaces.
+- [DescribeOutpostLags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeOutpostLags.html): Describes the Outposts link aggregation groups (LAGs).
+- [DescribePlacementGroups](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribePlacementGroups.html): Describes the specified placement groups or all of your placement groups.
+- [DescribePrefixLists](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribePrefixLists.html): Describes available AWS services in a prefix list format, which includes the prefix list name and prefix list ID of the service and the IP address range for the service.
+- [DescribePrincipalIdFormat](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribePrincipalIdFormat.html): Describes the ID format settings for the root user and all IAM roles and IAM users that have explicitly specified a longer ID (17-character ID) preference.
+- [DescribePublicIpv4Pools](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribePublicIpv4Pools.html): Describes the specified IPv4 address pools.
+- [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html): Describes the Regions that are enabled for your account, or all Regions.
+- [DescribeReplaceRootVolumeTasks](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeReplaceRootVolumeTasks.html): Describes a root volume replacement task.
+- [DescribeReservedInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeReservedInstances.html): Describes one or more of the Reserved Instances that you purchased.
+- [DescribeReservedInstancesListings](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeReservedInstancesListings.html): Describes your account's Reserved Instance listings in the Reserved Instance Marketplace.
+- [DescribeReservedInstancesModifications](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeReservedInstancesModifications.html): Describes the modifications made to your Reserved Instances.
+- [DescribeReservedInstancesOfferings](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeReservedInstancesOfferings.html): Describes Reserved Instance offerings that are available for purchase.
+- [DescribeRouteServerEndpoints](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRouteServerEndpoints.html): Describes one or more route server endpoints.
+- [DescribeRouteServerPeers](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRouteServerPeers.html): Describes one or more route server peers.
+- [DescribeRouteServers](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRouteServers.html): Describes one or more route servers.
+- [DescribeRouteTables](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRouteTables.html): Describes your route tables.
+- [DescribeScheduledInstanceAvailability](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeScheduledInstanceAvailability.html): Finds available schedules that meet the specified criteria.
+- [DescribeScheduledInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeScheduledInstances.html): Describes the specified Scheduled Instances or all your Scheduled Instances.
+- [DescribeSecondaryInterfaces](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecondaryInterfaces.html): Describes one or more of your secondary interfaces.
+- [DescribeSecondaryNetworks](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecondaryNetworks.html): Describes one or more secondary networks.
+- [DescribeSecondarySubnets](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecondarySubnets.html): Describes one or more of your secondary subnets.
+- [DescribeSecurityGroupReferences](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroupReferences.html): Describes the VPCs on the other side of a VPC peering or Transit Gateway connection that are referencing the security groups you've specified in this request.
+- [DescribeSecurityGroupRules](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroupRules.html): Describes one or more of your security group rules.
+- [DescribeSecurityGroups](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroups.html): Describes the specified security groups or all of your security groups.
+- [DescribeSecurityGroupVpcAssociations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroupVpcAssociations.html): Describes security group VPC associations made with AssociateSecurityGroupVpc.
+- [DescribeServiceLinkVirtualInterfaces](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeServiceLinkVirtualInterfaces.html): Describes the Outpost service link virtual interfaces.
+- [DescribeSnapshotAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSnapshotAttribute.html): Describes the specified attribute of the specified snapshot.
+- [DescribeSnapshots](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSnapshots.html): Describes the specified EBS snapshots available to you or all of the EBS snapshots available to you.
+- [DescribeSnapshotTierStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSnapshotTierStatus.html): Describes the storage tier status of one or more Amazon EBS snapshots.
+- [DescribeSpotDatafeedSubscription](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSpotDatafeedSubscription.html): Describes the data feed for Spot Instances.
+- [DescribeSpotFleetInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSpotFleetInstances.html): Describes the running instances for the specified Spot Fleet.
+- [DescribeSpotFleetRequestHistory](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSpotFleetRequestHistory.html): Describes the events for the specified Spot Fleet request during the specified time.
+- [DescribeSpotFleetRequests](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSpotFleetRequests.html): Describes your Spot Fleet requests.
+- [DescribeSpotInstanceRequests](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSpotInstanceRequests.html): Describes the specified Spot Instance requests.
+- [DescribeSpotPriceHistory](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSpotPriceHistory.html): Describes the Spot price history.
+- [DescribeStaleSecurityGroups](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeStaleSecurityGroups.html): Describes the stale security group rules for security groups referenced across a VPC peering connection, transit gateway connection, or with a security group VPC association.
+- [DescribeStoreImageTasks](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeStoreImageTasks.html): Describes the progress of the AMI store tasks.
+- [DescribeSubnets](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSubnets.html): Describes your subnets.
+- [DescribeTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTags.html): Describes the specified tags for your EC2 resources.
+- [DescribeTrafficMirrorFilterRules](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTrafficMirrorFilterRules.html): Describe traffic mirror filters that determine the traffic that is mirrored.
+- [DescribeTrafficMirrorFilters](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTrafficMirrorFilters.html): Describes one or more Traffic Mirror filters.
+- [DescribeTrafficMirrorSessions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTrafficMirrorSessions.html): Describes one or more Traffic Mirror sessions.
+- [DescribeTrafficMirrorTargets](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTrafficMirrorTargets.html): Information about one or more Traffic Mirror targets.
+- [DescribeTransitGatewayAttachments](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayAttachments.html): Describes one or more attachments between resources and transit gateways.
+- [DescribeTransitGatewayConnectPeers](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayConnectPeers.html): Describes one or more Connect peers.
+- [DescribeTransitGatewayConnects](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayConnects.html): Describes one or more Connect attachments.
+- [DescribeTransitGatewayMeteringPolicies](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayMeteringPolicies.html): Describes one or more transit gateway metering policies.
+- [DescribeTransitGatewayMulticastDomains](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayMulticastDomains.html): Describes one or more transit gateway multicast domains.
+- [DescribeTransitGatewayPeeringAttachments](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayPeeringAttachments.html): Describes your transit gateway peering attachments.
+- [DescribeTransitGatewayPolicyTables](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayPolicyTables.html): Describes one or more transit gateway route policy tables.
+- [DescribeTransitGatewayRouteTableAnnouncements](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayRouteTableAnnouncements.html): Describes one or more transit gateway route table advertisements.
+- [DescribeTransitGatewayRouteTables](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayRouteTables.html): Describes one or more transit gateway route tables.
+- [DescribeTransitGateways](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGateways.html): Describes one or more transit gateways.
+- [DescribeTransitGatewayVpcAttachments](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayVpcAttachments.html): Describes one or more VPC attachments.
+- [DescribeTrunkInterfaceAssociations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTrunkInterfaceAssociations.html): Describes one or more network interface trunk associations.
+- [DescribeVerifiedAccessEndpoints](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVerifiedAccessEndpoints.html): Describes the specified AWS Verified Access endpoints.
+- [DescribeVerifiedAccessGroups](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVerifiedAccessGroups.html): Describes the specified Verified Access groups.
+- [DescribeVerifiedAccessInstanceLoggingConfigurations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVerifiedAccessInstanceLoggingConfigurations.html): Describes the specified AWS Verified Access instances.
+- [DescribeVerifiedAccessInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVerifiedAccessInstances.html): Describes the specified AWS Verified Access instances.
+- [DescribeVerifiedAccessTrustProviders](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVerifiedAccessTrustProviders.html): Describes the specified AWS Verified Access trust providers.
+- [DescribeVolumeAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVolumeAttribute.html): Describes the specified attribute of the specified volume.
+- [DescribeVolumes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVolumes.html): Describes the specified EBS volumes or all of your EBS volumes.
+- [DescribeVolumesModifications](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVolumesModifications.html): Describes the most recent volume modification request for the specified EBS volumes.
+- [DescribeVolumeStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVolumeStatus.html): Describes the status of the specified volumes.
+- [DescribeVpcAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcAttribute.html): Describes the specified attribute of the specified VPC.
+- [DescribeVpcBlockPublicAccessExclusions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcBlockPublicAccessExclusions.html): Describe VPC Block Public Access (BPA) exclusions.
+- [DescribeVpcBlockPublicAccessOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcBlockPublicAccessOptions.html): Describe VPC Block Public Access (BPA) options.
+- [DescribeVpcClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcClassicLink.html)
+- [DescribeVpcClassicLinkDnsSupport](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcClassicLinkDnsSupport.html)
+- [DescribeVpcEncryptionControls](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEncryptionControls.html): Describes one or more VPC Encryption Control configurations.
+- [DescribeVpcEndpointAssociations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointAssociations.html): Describes the VPC resources, VPC endpoint services, Amazon Lattice services, or service networks associated with the VPC endpoint.
+- [DescribeVpcEndpointConnectionNotifications](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointConnectionNotifications.html): Describes the connection notifications for VPC endpoints and VPC endpoint services.
+- [DescribeVpcEndpointConnections](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointConnections.html): Describes the VPC endpoint connections to your VPC endpoint services, including any endpoints that are pending your acceptance.
+- [DescribeVpcEndpoints](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpoints.html): Describes your VPC endpoints.
+- [DescribeVpcEndpointServiceConfigurations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointServiceConfigurations.html): Describes the VPC endpoint service configurations in your account (your services).
+- [DescribeVpcEndpointServicePermissions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointServicePermissions.html): Describes the principals (service consumers) that are permitted to discover your VPC endpoint service.
+- [DescribeVpcEndpointServices](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointServices.html): Describes available services to which you can create a VPC endpoint.
+- [DescribeVpcPeeringConnections](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcPeeringConnections.html): Describes your VPC peering connections.
+- [DescribeVpcs](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcs.html): Describes your VPCs.
+- [DescribeVpnConcentrators](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnConcentrators.html): Describes one or more of your VPN concentrators.
+- [DescribeVpnConnections](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnConnections.html): Describes one or more of your VPN connections.
+- [DescribeVpnGateways](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpnGateways.html): Describes one or more of your virtual private gateways.
+- [DetachClassicLinkVpc](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DetachClassicLinkVpc.html)
+- [DetachInternetGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DetachInternetGateway.html): Detaches an internet gateway from a VPC, disabling connectivity between the internet and the VPC.
+- [DetachNetworkInterface](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DetachNetworkInterface.html): Detaches a network interface from an instance.
+- [DetachVerifiedAccessTrustProvider](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DetachVerifiedAccessTrustProvider.html): Detaches the specified AWS Verified Access trust provider from the specified AWS Verified Access instance.
+- [DetachVolume](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DetachVolume.html): Detaches an EBS volume from an instance.
+- [DetachVpnGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DetachVpnGateway.html): Detaches a virtual private gateway from a VPC.
+- [DisableAddressTransfer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableAddressTransfer.html): Disables Elastic IP address transfer.
+- [DisableAllowedImagesSettings](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableAllowedImagesSettings.html): Disables Allowed AMIs for your account in the specified AWS Region.
+- [DisableAwsNetworkPerformanceMetricSubscription](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableAwsNetworkPerformanceMetricSubscription.html): Disables Infrastructure Performance metric subscriptions.
+- [DisableCapacityManager](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableCapacityManager.html): Disables EC2 Capacity Manager for your account.
+- [DisableEbsEncryptionByDefault](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableEbsEncryptionByDefault.html): Disables EBS encryption by default for your account in the current Region.
+- [DisableFastLaunch](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableFastLaunch.html): Discontinue Windows fast launch for a Windows AMI, and clean up existing pre-provisioned snapshots.
+- [DisableFastSnapshotRestores](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableFastSnapshotRestores.html): Disables fast snapshot restores for the specified snapshots in the specified Availability Zones.
+- [DisableImage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableImage.html): Sets the AMI state to disabled and removes all launch permissions from the AMI.
+- [DisableImageBlockPublicAccess](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableImageBlockPublicAccess.html): Disables block public access for AMIs at the account level in the specified AWS Region.
+- [DisableImageDeprecation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableImageDeprecation.html): Cancels the deprecation of the specified AMI.
+- [DisableImageDeregistrationProtection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableImageDeregistrationProtection.html): Disables deregistration protection for an AMI.
+- [DisableInstanceSqlHaStandbyDetections](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableInstanceSqlHaStandbyDetections.html): Disable Amazon EC2 instances running in an SQL Server High Availability cluster from SQL Server High Availability instance standby detection monitoring.
+- [DisableIpamOrganizationAdminAccount](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableIpamOrganizationAdminAccount.html): Disable the IPAM account.
+- [DisableIpamPolicy](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableIpamPolicy.html): Disables an IPAM policy.
+- [DisableRouteServerPropagation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableRouteServerPropagation.html): Disables route propagation from a route server to a specified route table.
+- [DisableSerialConsoleAccess](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableSerialConsoleAccess.html): Disables access to the EC2 serial console of all instances for your account.
+- [DisableSnapshotBlockPublicAccess](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableSnapshotBlockPublicAccess.html): Disables the block public access for snapshots setting at the account level for the specified AWS Region.
+- [DisableTransitGatewayRouteTablePropagation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableTransitGatewayRouteTablePropagation.html): Disables the specified resource attachment from propagating routes to the specified propagation route table.
+- [DisableVgwRoutePropagation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableVgwRoutePropagation.html): Disables a virtual private gateway (VGW) from propagating routes to a specified route table of a VPC.
+- [DisableVpcClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableVpcClassicLink.html)
+- [DisableVpcClassicLinkDnsSupport](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableVpcClassicLinkDnsSupport.html)
+- [DisassociateAddress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateAddress.html): Disassociates an Elastic IP address from the instance or network interface it's associated with.
+- [DisassociateCapacityReservationBillingOwner](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateCapacityReservationBillingOwner.html): Cancels a pending request to assign billing of the unused capacity of a Capacity Reservation to a consumer account, or revokes a request that has already been accepted.
+- [DisassociateClientVpnTargetNetwork](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateClientVpnTargetNetwork.html): Disassociates a target network from the specified Client VPN endpoint.
+- [DisassociateEnclaveCertificateIamRole](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateEnclaveCertificateIamRole.html): Disassociates an IAM role from an AWS Certificate Manager (ACM) certificate.
+- [DisassociateIamInstanceProfile](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateIamInstanceProfile.html): Disassociates an IAM instance profile from a running or stopped instance.
+- [DisassociateInstanceEventWindow](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateInstanceEventWindow.html): Disassociates one or more targets from an event window.
+- [DisassociateIpamByoasn](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateIpamByoasn.html): Remove the association between your Autonomous System Number (ASN) and your BYOIP CIDR.
+- [DisassociateIpamResourceDiscovery](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateIpamResourceDiscovery.html): Disassociates a resource discovery from an Amazon VPC IPAM.
+- [DisassociateNatGatewayAddress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateNatGatewayAddress.html): Disassociates secondary Elastic IP addresses (EIPs) from a public NAT gateway.
+- [DisassociateRouteServer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateRouteServer.html): Disassociates a route server from a VPC.
+- [DisassociateRouteTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateRouteTable.html): Disassociates a subnet or gateway from a route table.
+- [DisassociateSecurityGroupVpc](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateSecurityGroupVpc.html): Disassociates a security group from a VPC.
+- [DisassociateSubnetCidrBlock](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateSubnetCidrBlock.html): Disassociates a CIDR block from a subnet.
+- [DisassociateTransitGatewayMulticastDomain](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateTransitGatewayMulticastDomain.html): Disassociates the specified subnets from the transit gateway multicast domain.
+- [DisassociateTransitGatewayPolicyTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateTransitGatewayPolicyTable.html): Removes the association between an an attachment and a policy table.
+- [DisassociateTransitGatewayRouteTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateTransitGatewayRouteTable.html): Disassociates a resource attachment from a transit gateway route table.
+- [DisassociateTrunkInterface](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateTrunkInterface.html): Removes an association between a branch network interface with a trunk network interface.
+- [DisassociateVpcCidrBlock](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateVpcCidrBlock.html): Disassociates a CIDR block from a VPC.
+- [EnableAddressTransfer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableAddressTransfer.html): Enables Elastic IP address transfer.
+- [EnableAllowedImagesSettings](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableAllowedImagesSettings.html): Enables Allowed AMIs for your account in the specified AWS Region.
+- [EnableAwsNetworkPerformanceMetricSubscription](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableAwsNetworkPerformanceMetricSubscription.html): Enables Infrastructure Performance subscriptions.
+- [EnableCapacityManager](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableCapacityManager.html): Enables EC2 Capacity Manager for your account.
+- [EnableEbsEncryptionByDefault](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableEbsEncryptionByDefault.html): Enables EBS encryption by default for your account in the current Region.
+- [EnableFastLaunch](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableFastLaunch.html): When you enable Windows fast launch for a Windows AMI, images are pre-provisioned, using snapshots to launch instances up to 65% faster.
+- [EnableFastSnapshotRestores](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableFastSnapshotRestores.html): Enables fast snapshot restores for the specified snapshots in the specified Availability Zones.
+- [EnableImage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableImage.html): Re-enables a disabled AMI.
+- [EnableImageBlockPublicAccess](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableImageBlockPublicAccess.html): Enables block public access for AMIs at the account level in the specified AWS Region.
+- [EnableImageDeprecation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableImageDeprecation.html): Enables deprecation of the specified AMI at the specified date and time.
+- [EnableImageDeregistrationProtection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableImageDeregistrationProtection.html): Enables deregistration protection for an AMI.
+- [EnableInstanceSqlHaStandbyDetections](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableInstanceSqlHaStandbyDetections.html): Enable Amazon EC2 instances running in an SQL Server High Availability cluster for SQL Server High Availability instance standby detection monitoring.
+- [EnableIpamOrganizationAdminAccount](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableIpamOrganizationAdminAccount.html): Enable an AWS Organizations member account as the IPAM admin account.
+- [EnableIpamPolicy](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableIpamPolicy.html): Enables an IPAM policy.
+- [EnableReachabilityAnalyzerOrganizationSharing](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableReachabilityAnalyzerOrganizationSharing.html): Establishes a trust relationship between Reachability Analyzer and AWS Organizations.
+- [EnableRouteServerPropagation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableRouteServerPropagation.html): Defines which route tables the route server can update with routes.
+- [EnableSerialConsoleAccess](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableSerialConsoleAccess.html): Enables access to the EC2 serial console of all instances for your account.
+- [EnableSnapshotBlockPublicAccess](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableSnapshotBlockPublicAccess.html): Enables or modifies the block public access for snapshots setting at the account level for the specified AWS Region.
+- [EnableTransitGatewayRouteTablePropagation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableTransitGatewayRouteTablePropagation.html): Enables the specified attachment to propagate routes to the specified propagation route table.
+- [EnableVgwRoutePropagation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableVgwRoutePropagation.html): Enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC.
+- [EnableVolumeIO](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableVolumeIO.html): Enables I/O operations for a volume that had I/O operations disabled because the data on the volume was potentially inconsistent.
+- [EnableVpcClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableVpcClassicLink.html)
+- [EnableVpcClassicLinkDnsSupport](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableVpcClassicLinkDnsSupport.html)
+- [ExportClientVpnClientCertificateRevocationList](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ExportClientVpnClientCertificateRevocationList.html): Downloads the client certificate revocation list for the specified Client VPN endpoint.
+- [ExportClientVpnClientConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ExportClientVpnClientConfiguration.html): Downloads the contents of the Client VPN endpoint configuration file for the specified Client VPN endpoint.
+- [ExportImage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ExportImage.html): Exports an Amazon Machine Image (AMI) to a VM file.
+- [ExportTransitGatewayRoutes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ExportTransitGatewayRoutes.html): Exports routes from the specified transit gateway route table to the specified S3 bucket.
+- [ExportVerifiedAccessInstanceClientConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ExportVerifiedAccessInstanceClientConfiguration.html): Exports the client configuration for a Verified Access instance.
+- [GetActiveVpnTunnelStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetActiveVpnTunnelStatus.html): Returns the currently negotiated security parameters for an active VPN tunnel, including IKE version, DH groups, encryption algorithms, and integrity algorithms.
+- [GetAllowedImagesSettings](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetAllowedImagesSettings.html): Gets the current state of the Allowed AMIs setting and the list of Allowed AMIs criteria at the account level in the specified Region.
+- [GetAssociatedEnclaveCertificateIamRoles](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetAssociatedEnclaveCertificateIamRoles.html): Returns the IAM roles that are associated with the specified ACM (ACM) certificate.
+- [GetAssociatedIpv6PoolCidrs](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetAssociatedIpv6PoolCidrs.html): Gets information about the IPv6 CIDR block associations for a specified IPv6 address pool.
+- [GetAwsNetworkPerformanceData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetAwsNetworkPerformanceData.html): Gets network performance data.
+- [GetCapacityManagerAttributes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetCapacityManagerAttributes.html): Retrieves the current configuration and status of EC2 Capacity Manager for your account, including enablement status, Organizations access settings, and data ingestion status.
+- [GetCapacityManagerMetricData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetCapacityManagerMetricData.html): Retrieves capacity usage metrics for your EC2 resources.
+- [GetCapacityManagerMetricDimensions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetCapacityManagerMetricDimensions.html): Retrieves the available dimension values for capacity metrics within a specified time range.
+- [GetCapacityReservationUsage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetCapacityReservationUsage.html): Gets usage information about a Capacity Reservation.
+- [GetCoipPoolUsage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetCoipPoolUsage.html): Describes the allocations from the specified customer-owned address pool.
+- [GetConsoleOutput](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetConsoleOutput.html): Gets the console output for the specified instance.
+- [GetConsoleScreenshot](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetConsoleScreenshot.html): Retrieve a JPG-format screenshot of a running instance to help with troubleshooting.
+- [GetDeclarativePoliciesReportSummary](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetDeclarativePoliciesReportSummary.html): Retrieves a summary of the account status report.
+- [GetDefaultCreditSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetDefaultCreditSpecification.html): Describes the default credit option for CPU usage of a burstable performance instance family.
+- [GetEbsDefaultKmsKeyId](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetEbsDefaultKmsKeyId.html): Describes the default AWS KMS key for EBS encryption by default for your account in this Region.
+- [GetEbsEncryptionByDefault](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetEbsEncryptionByDefault.html): Describes whether EBS encryption by default is enabled for your account in the current Region.
+- [GetEnabledIpamPolicy](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetEnabledIpamPolicy.html): Gets the enabled IPAM policy.
+- [GetFlowLogsIntegrationTemplate](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetFlowLogsIntegrationTemplate.html): Generates a CloudFormation template that streamlines and automates the integration of VPC flow logs with Amazon Athena.
+- [GetGroupsForCapacityReservation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetGroupsForCapacityReservation.html): Lists the resource groups to which a Capacity Reservation has been added.
+- [GetHostReservationPurchasePreview](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetHostReservationPurchasePreview.html): Preview a reservation purchase with configurations that match those of your Dedicated Host.
+- [GetImageAncestry](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetImageAncestry.html): Retrieves the ancestry chain of the specified AMI, tracing its lineage back to the root AMI.
+- [GetImageBlockPublicAccessState](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetImageBlockPublicAccessState.html): Gets the current state of block public access for AMIs at the account level in the specified AWS Region.
+- [GetInstanceMetadataDefaults](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetInstanceMetadataDefaults.html): Gets the default instance metadata service (IMDS) settings that are set at the account level in the specified AWSâ¨ Region.
+- [GetInstanceTpmEkPub](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetInstanceTpmEkPub.html): Gets the public endorsement key associated with the Nitro Trusted Platform Module (NitroTPM) for the specified instance.
+- [GetInstanceTypesFromInstanceRequirements](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetInstanceTypesFromInstanceRequirements.html): Returns a list of instance types with the specified instance attributes.
+- [GetInstanceUefiData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetInstanceUefiData.html): A binary representation of the UEFI variable store.
+- [GetIpamAddressHistory](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetIpamAddressHistory.html): Retrieve historical information about a CIDR within an IPAM scope.
+- [GetIpamDiscoveredAccounts](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetIpamDiscoveredAccounts.html): Gets IPAM discovered accounts.
+- [GetIpamDiscoveredPublicAddresses](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetIpamDiscoveredPublicAddresses.html): Gets the public IP addresses that have been discovered by IPAM.
+- [GetIpamDiscoveredResourceCidrs](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetIpamDiscoveredResourceCidrs.html): Returns the resource CIDRs that are monitored as part of a resource discovery.
+- [GetIpamPolicyAllocationRules](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetIpamPolicyAllocationRules.html): Gets the allocation rules for an IPAM policy.
+- [GetIpamPolicyOrganizationTargets](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetIpamPolicyOrganizationTargets.html): Gets the AWS Organizations targets for an IPAM policy.
+- [GetIpamPoolAllocations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetIpamPoolAllocations.html): Get a list of all the CIDR allocations in an IPAM pool.
+- [GetIpamPoolCidrs](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetIpamPoolCidrs.html): Get the CIDRs provisioned to an IPAM pool.
+- [GetIpamPrefixListResolverRules](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetIpamPrefixListResolverRules.html): Retrieves the CIDR selection rules for an IPAM prefix list resolver.
+- [GetIpamPrefixListResolverVersionEntries](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetIpamPrefixListResolverVersionEntries.html): Retrieves the CIDR entries for a specific version of an IPAM prefix list resolver.
+- [GetIpamPrefixListResolverVersions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetIpamPrefixListResolverVersions.html): Retrieves version information for an IPAM prefix list resolver.
+- [GetIpamResourceCidrs](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetIpamResourceCidrs.html): Returns resource CIDRs managed by IPAM in a given scope.
+- [GetLaunchTemplateData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetLaunchTemplateData.html): Retrieves the configuration data of the specified instance.
+- [GetManagedPrefixListAssociations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetManagedPrefixListAssociations.html): Gets information about the resources that are associated with the specified managed prefix list.
+- [GetManagedPrefixListEntries](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetManagedPrefixListEntries.html): Gets information about the entries for a specified managed prefix list.
+- [GetNetworkInsightsAccessScopeAnalysisFindings](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetNetworkInsightsAccessScopeAnalysisFindings.html): Gets the findings for the specified Network Access Scope analysis.
+- [GetNetworkInsightsAccessScopeContent](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetNetworkInsightsAccessScopeContent.html): Gets the content for the specified Network Access Scope.
+- [GetPasswordData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetPasswordData.html): Retrieves the encrypted administrator password for a running Windows instance.
+- [GetReservedInstancesExchangeQuote](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetReservedInstancesExchangeQuote.html): Returns a quote and exchange information for exchanging one or more specified Convertible Reserved Instances for a new Convertible Reserved Instance.
+- [GetRouteServerAssociations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetRouteServerAssociations.html): Gets information about the associations for the specified route server.
+- [GetRouteServerPropagations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetRouteServerPropagations.html): Gets information about the route propagations for the specified route server.
+- [GetRouteServerRoutingDatabase](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetRouteServerRoutingDatabase.html): Gets the routing database for the specified route server.
+- [GetSecurityGroupsForVpc](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetSecurityGroupsForVpc.html): Gets security groups that can be associated by the AWS account making the request with network interfaces in the specified VPC.
+- [GetSerialConsoleAccessStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetSerialConsoleAccessStatus.html): Retrieves the access status of your account to the EC2 serial console of all instances.
+- [GetSnapshotBlockPublicAccessState](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetSnapshotBlockPublicAccessState.html): Gets the current state of block public access for snapshots setting for the account and Region.
+- [GetSpotPlacementScores](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetSpotPlacementScores.html): Calculates the Spot placement score for a Region or Availability Zone based on the specified target capacity and compute requirements.
+- [GetSubnetCidrReservations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetSubnetCidrReservations.html): Gets information about the subnet CIDR reservations.
+- [GetTransitGatewayAttachmentPropagations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetTransitGatewayAttachmentPropagations.html): Lists the route tables to which the specified resource attachment propagates routes.
+- [GetTransitGatewayMeteringPolicyEntries](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetTransitGatewayMeteringPolicyEntries.html): Retrieves the entries for a transit gateway metering policy.
+- [GetTransitGatewayMulticastDomainAssociations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetTransitGatewayMulticastDomainAssociations.html): Gets information about the associations for the transit gateway multicast domain.
+- [GetTransitGatewayPolicyTableAssociations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetTransitGatewayPolicyTableAssociations.html): Gets a list of the transit gateway policy table associations.
+- [GetTransitGatewayPolicyTableEntries](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetTransitGatewayPolicyTableEntries.html): Returns a list of transit gateway policy table entries.
+- [GetTransitGatewayPrefixListReferences](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetTransitGatewayPrefixListReferences.html): Gets information about the prefix list references in a specified transit gateway route table.
+- [GetTransitGatewayRouteTableAssociations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetTransitGatewayRouteTableAssociations.html): Gets information about the associations for the specified transit gateway route table.
+- [GetTransitGatewayRouteTablePropagations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetTransitGatewayRouteTablePropagations.html): Gets information about the route table propagations for the specified transit gateway route table.
+- [GetVerifiedAccessEndpointPolicy](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetVerifiedAccessEndpointPolicy.html): Get the Verified Access policy associated with the endpoint.
+- [GetVerifiedAccessEndpointTargets](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetVerifiedAccessEndpointTargets.html): Gets the targets for the specified network CIDR endpoint for Verified Access.
+- [GetVerifiedAccessGroupPolicy](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetVerifiedAccessGroupPolicy.html): Shows the contents of the Verified Access policy associated with the group.
+- [GetVpcResourcesBlockingEncryptionEnforcement](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetVpcResourcesBlockingEncryptionEnforcement.html): Gets information about resources in a VPC that are blocking encryption enforcement.
+- [GetVpnConnectionDeviceSampleConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetVpnConnectionDeviceSampleConfiguration.html): Download an AWS-provided sample configuration file to be used with the customer gateway device specified for your Site-to-Site VPN connection.
+- [GetVpnConnectionDeviceTypes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetVpnConnectionDeviceTypes.html): Obtain a list of customer gateway devices for which sample configuration files can be provided.
+- [GetVpnTunnelReplacementStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GetVpnTunnelReplacementStatus.html): Get details of available tunnel endpoint maintenance.
+- [ImportClientVpnClientCertificateRevocationList](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportClientVpnClientCertificateRevocationList.html): Uploads a client certificate revocation list to the specified Client VPN endpoint.
+- [ImportImage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImage.html)
+- [ImportInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstance.html)
+- [ImportKeyPair](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportKeyPair.html): Imports the public key from an RSA or ED25519 key pair that you created using a third-party tool.
+- [ImportSnapshot](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportSnapshot.html): Imports a disk into an EBS snapshot.
+- [ImportVolume](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportVolume.html)
+- [ListImagesInRecycleBin](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ListImagesInRecycleBin.html): Lists one or more AMIs that are currently in the Recycle Bin.
+- [ListSnapshotsInRecycleBin](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ListSnapshotsInRecycleBin.html): Lists one or more snapshots that are currently in the Recycle Bin.
+- [ListVolumesInRecycleBin](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ListVolumesInRecycleBin.html): Lists one or more volumes that are currently in the Recycle Bin.
+- [LockSnapshot](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LockSnapshot.html): Locks an Amazon EBS snapshot in either governance or compliance mode to protect it against accidental or malicious deletions for a specific duration.
+- [ModifyAddressAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyAddressAttribute.html): Modifies an attribute of the specified Elastic IP address.
+- [ModifyAvailabilityZoneGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyAvailabilityZoneGroup.html): Changes the opt-in status of the specified zone group for your account.
+- [ModifyCapacityReservation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyCapacityReservation.html): Modifies a Capacity Reservation's capacity, instance eligibility, and the conditions under which it is to be released.
+- [ModifyCapacityReservationFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyCapacityReservationFleet.html): Modifies a Capacity Reservation Fleet.
+- [ModifyClientVpnEndpoint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyClientVpnEndpoint.html): Modifies the specified Client VPN endpoint.
+- [ModifyDefaultCreditSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyDefaultCreditSpecification.html): Modifies the default credit option for CPU usage of burstable performance instances.
+- [ModifyEbsDefaultKmsKeyId](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyEbsDefaultKmsKeyId.html): Changes the default AWS KMS key for EBS encryption by default for your account in this Region.
+- [ModifyFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyFleet.html): Modifies the specified EC2 Fleet.
+- [ModifyFpgaImageAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyFpgaImageAttribute.html): Modifies the specified attribute of the specified Amazon FPGA Image (AFI).
+- [ModifyHosts](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyHosts.html): Modify the auto-placement setting of a Dedicated Host.
+- [ModifyIdentityIdFormat](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyIdentityIdFormat.html): Modifies the ID format of a resource for a specified IAM user, IAM role, or the root user for an account; or all IAM users, IAM roles, and the root user for an account.
+- [ModifyIdFormat](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyIdFormat.html): Modifies the ID format for the specified resource on a per-Region basis.
+- [ModifyImageAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyImageAttribute.html): Modifies the specified attribute of the specified AMI.
+- [ModifyInstanceAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html): Modifies the specified attribute of the specified instance.
+- [ModifyInstanceCapacityReservationAttributes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceCapacityReservationAttributes.html): Modifies the Capacity Reservation settings for a stopped instance.
+- [ModifyInstanceConnectEndpoint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceConnectEndpoint.html): Modifies the specified EC2 Instance Connect Endpoint.
+- [ModifyInstanceCpuOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceCpuOptions.html): By default, all vCPUs for the instance type are active when you launch an instance.
+- [ModifyInstanceCreditSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceCreditSpecification.html): Modifies the credit option for CPU usage on a running or stopped burstable performance instance.
+- [ModifyInstanceEventStartTime](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceEventStartTime.html): Modifies the start time for a scheduled Amazon EC2 instance event.
+- [ModifyInstanceEventWindow](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceEventWindow.html): Modifies the specified event window.
+- [ModifyInstanceMaintenanceOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceMaintenanceOptions.html): Modifies the recovery behavior of your instance to disable simplified automatic recovery or set the recovery behavior to default.
+- [ModifyInstanceMetadataDefaults](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceMetadataDefaults.html): Modifies the default instance metadata service (IMDS) settings at the account level in the specified AWSâ¨ Region.
+- [ModifyInstanceMetadataOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceMetadataOptions.html): Modify the instance metadata parameters on a running or stopped instance.
+- [ModifyInstanceNetworkPerformanceOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceNetworkPerformanceOptions.html): Change the configuration of the network performance options for an existing instance.
+- [ModifyInstancePlacement](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstancePlacement.html): Modifies the placement attributes for a specified instance.
+- [ModifyIpam](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyIpam.html): Modify the configurations of an IPAM.
+- [ModifyIpamPolicyAllocationRules](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyIpamPolicyAllocationRules.html): Modifies the allocation rules in an IPAM policy.
+- [ModifyIpamPool](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyIpamPool.html): Modify the configurations of an IPAM pool.
+- [ModifyIpamPrefixListResolver](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyIpamPrefixListResolver.html): Modifies an IPAM prefix list resolver.
+- [ModifyIpamPrefixListResolverTarget](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyIpamPrefixListResolverTarget.html): Modifies an IPAM prefix list resolver target.
+- [ModifyIpamResourceCidr](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyIpamResourceCidr.html): Modify a resource CIDR.
+- [ModifyIpamResourceDiscovery](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyIpamResourceDiscovery.html): Modifies a resource discovery.
+- [ModifyIpamScope](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyIpamScope.html): Modify an IPAM scope.
+- [ModifyLaunchTemplate](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyLaunchTemplate.html): Modifies a launch template.
+- [ModifyLocalGatewayRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyLocalGatewayRoute.html): Modifies the specified local gateway route.
+- [ModifyManagedPrefixList](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyManagedPrefixList.html): Modifies the specified managed prefix list.
+- [ModifyNetworkInterfaceAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyNetworkInterfaceAttribute.html): Modifies the specified network interface attribute.
+- [ModifyPrivateDnsNameOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyPrivateDnsNameOptions.html): Modifies the options for instance hostnames for the specified instance.
+- [ModifyPublicIpDnsNameOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyPublicIpDnsNameOptions.html): Modify public hostname options for a network interface.
+- [ModifyReservedInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyReservedInstances.html): Modifies the configuration of your Reserved Instances, such as the Availability Zone, instance count, or instance type.
+- [ModifyRouteServer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyRouteServer.html): Modifies the configuration of an existing route server.
+- [ModifySecurityGroupRules](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifySecurityGroupRules.html): Modifies the rules of a security group.
+- [ModifySnapshotAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifySnapshotAttribute.html): Adds or removes permission settings for the specified snapshot.
+- [ModifySnapshotTier](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifySnapshotTier.html): Archives an Amazon EBS snapshot.
+- [ModifySpotFleetRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifySpotFleetRequest.html): Modifies the specified Spot Fleet request.
+- [ModifySubnetAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifySubnetAttribute.html): Modifies a subnet attribute.
+- [ModifyTrafficMirrorFilterNetworkServices](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTrafficMirrorFilterNetworkServices.html): Allows or restricts mirroring network services.
+- [ModifyTrafficMirrorFilterRule](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTrafficMirrorFilterRule.html): Modifies the specified Traffic Mirror rule.
+- [ModifyTrafficMirrorSession](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTrafficMirrorSession.html): Modifies a Traffic Mirror session.
+- [ModifyTransitGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTransitGateway.html): Modifies the specified transit gateway.
+- [ModifyTransitGatewayMeteringPolicy](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTransitGatewayMeteringPolicy.html): Modifies a transit gateway metering policy.
+- [ModifyTransitGatewayPrefixListReference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTransitGatewayPrefixListReference.html): Modifies a reference (route) to a prefix list in a specified transit gateway route table.
+- [ModifyTransitGatewayVpcAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTransitGatewayVpcAttachment.html): Modifies the specified VPC attachment.
+- [ModifyVerifiedAccessEndpoint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVerifiedAccessEndpoint.html): Modifies the configuration of the specified AWS Verified Access endpoint.
+- [ModifyVerifiedAccessEndpointPolicy](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVerifiedAccessEndpointPolicy.html): Modifies the specified AWS Verified Access endpoint policy.
+- [ModifyVerifiedAccessGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVerifiedAccessGroup.html): Modifies the specified AWS Verified Access group configuration.
+- [ModifyVerifiedAccessGroupPolicy](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVerifiedAccessGroupPolicy.html): Modifies the specified AWS Verified Access group policy.
+- [ModifyVerifiedAccessInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVerifiedAccessInstance.html): Modifies the configuration of the specified AWS Verified Access instance.
+- [ModifyVerifiedAccessInstanceLoggingConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVerifiedAccessInstanceLoggingConfiguration.html): Modifies the logging configuration for the specified AWS Verified Access instance.
+- [ModifyVerifiedAccessTrustProvider](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVerifiedAccessTrustProvider.html): Modifies the configuration of the specified AWS Verified Access trust provider.
+- [ModifyVolume](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVolume.html): You can modify several parameters of an existing EBS volume, including volume size, volume type, and IOPS capacity.
+- [ModifyVolumeAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVolumeAttribute.html): Modifies a volume attribute.
+- [ModifyVpcAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpcAttribute.html): Modifies the specified attribute of the specified VPC.
+- [ModifyVpcBlockPublicAccessExclusion](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpcBlockPublicAccessExclusion.html): Modify VPC Block Public Access (BPA) exclusions.
+- [ModifyVpcBlockPublicAccessOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpcBlockPublicAccessOptions.html): Modify VPC Block Public Access (BPA) options.
+- [ModifyVpcEncryptionControl](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpcEncryptionControl.html): Modifies the encryption control configuration for a VPC.
+- [ModifyVpcEndpoint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpcEndpoint.html): Modifies attributes of a specified VPC endpoint.
+- [ModifyVpcEndpointConnectionNotification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpcEndpointConnectionNotification.html): Modifies a connection notification for VPC endpoint or VPC endpoint service.
+- [ModifyVpcEndpointServiceConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpcEndpointServiceConfiguration.html): Modifies the attributes of the specified VPC endpoint service configuration.
+- [ModifyVpcEndpointServicePayerResponsibility](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpcEndpointServicePayerResponsibility.html): Modifies the payer responsibility for your VPC endpoint service.
+- [ModifyVpcEndpointServicePermissions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpcEndpointServicePermissions.html): Modifies the permissions for your VPC endpoint service.
+- [ModifyVpcPeeringConnectionOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpcPeeringConnectionOptions.html): Modifies the VPC peering connection options on one side of a VPC peering connection.
+- [ModifyVpcTenancy](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpcTenancy.html): Modifies the instance tenancy attribute of the specified VPC.
+- [ModifyVpnConnection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpnConnection.html): Modifies the customer gateway or the target gateway of an AWS Site-to-Site VPN connection.
+- [ModifyVpnConnectionOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpnConnectionOptions.html): Modifies the connection options for your Site-to-Site VPN connection.
+- [ModifyVpnTunnelCertificate](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpnTunnelCertificate.html): Modifies the VPN tunnel endpoint certificate.
+- [ModifyVpnTunnelOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpnTunnelOptions.html): Modifies the options for a VPN tunnel in an AWS Site-to-Site VPN connection.
+- [MonitorInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MonitorInstances.html): Enables detailed monitoring for a running instance.
+- [MoveAddressToVpc](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MoveAddressToVpc.html)
+- [MoveByoipCidrToIpam](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MoveByoipCidrToIpam.html): Move a BYOIPv4 CIDR to IPAM from a public IPv4 pool.
+- [MoveCapacityReservationInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MoveCapacityReservationInstances.html): Move available capacity from a source Capacity Reservation to a destination Capacity Reservation.
+- [ProvisionByoipCidr](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ProvisionByoipCidr.html): Provisions an IPv4 or IPv6 address range for use with your AWS resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool.
+- [ProvisionIpamByoasn](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ProvisionIpamByoasn.html): Provisions your Autonomous System Number (ASN) for use in your AWS account.
+- [ProvisionIpamPoolCidr](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ProvisionIpamPoolCidr.html): Provision a CIDR to an IPAM pool.
+- [ProvisionPublicIpv4PoolCidr](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ProvisionPublicIpv4PoolCidr.html): Provision a CIDR to a public IPv4 pool.
+- [PurchaseCapacityBlock](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PurchaseCapacityBlock.html): Purchase the Capacity Block for use with your account.
+- [PurchaseCapacityBlockExtension](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PurchaseCapacityBlockExtension.html): Purchase the Capacity Block extension for use with your account.
+- [PurchaseHostReservation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PurchaseHostReservation.html): Purchase a reservation with configurations that match those of your Dedicated Host.
+- [PurchaseReservedInstancesOffering](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PurchaseReservedInstancesOffering.html): Purchases a Reserved Instance for use with your account.
+- [PurchaseScheduledInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PurchaseScheduledInstances.html)
+- [RebootInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RebootInstances.html): Requests a reboot of the specified instances.
+- [RegisterImage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RegisterImage.html): Registers an AMI.
+- [RegisterInstanceEventNotificationAttributes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RegisterInstanceEventNotificationAttributes.html): Registers a set of tag keys to include in scheduled event notifications for your resources.
+- [RegisterTransitGatewayMulticastGroupMembers](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RegisterTransitGatewayMulticastGroupMembers.html): Registers members (network interfaces) with the transit gateway multicast group.
+- [RegisterTransitGatewayMulticastGroupSources](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RegisterTransitGatewayMulticastGroupSources.html): Registers sources (network interfaces) with the specified transit gateway multicast group.
+- [RejectCapacityReservationBillingOwnership](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RejectCapacityReservationBillingOwnership.html): Rejects a request to assign billing of the available capacity of a shared Capacity Reservation to your account.
+- [RejectTransitGatewayMulticastDomainAssociations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RejectTransitGatewayMulticastDomainAssociations.html): Rejects a request to associate cross-account subnets with a transit gateway multicast domain.
+- [RejectTransitGatewayPeeringAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RejectTransitGatewayPeeringAttachment.html): Rejects a transit gateway peering attachment request.
+- [RejectTransitGatewayVpcAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RejectTransitGatewayVpcAttachment.html): Rejects a request to attach a VPC to a transit gateway.
+- [RejectVpcEndpointConnections](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RejectVpcEndpointConnections.html): Rejects VPC endpoint connection requests to your VPC endpoint service.
+- [RejectVpcPeeringConnection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RejectVpcPeeringConnection.html): Rejects a VPC peering connection request.
+- [ReleaseAddress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReleaseAddress.html): Releases the specified Elastic IP address.
+- [ReleaseHosts](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReleaseHosts.html): When you no longer want to use an On-Demand Dedicated Host it can be released.
+- [ReleaseIpamPoolAllocation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReleaseIpamPoolAllocation.html): Release an allocation within an IPAM pool.
+- [ReplaceIamInstanceProfileAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReplaceIamInstanceProfileAssociation.html): Replaces an IAM instance profile for the specified running instance.
+- [ReplaceImageCriteriaInAllowedImagesSettings](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReplaceImageCriteriaInAllowedImagesSettings.html): Sets or replaces the criteria for Allowed AMIs.
+- [ReplaceNetworkAclAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReplaceNetworkAclAssociation.html): Changes which network ACL a subnet is associated with.
+- [ReplaceNetworkAclEntry](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReplaceNetworkAclEntry.html): Replaces an entry (rule) in a network ACL.
+- [ReplaceRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReplaceRoute.html): Replaces an existing route within a route table in a VPC.
+- [ReplaceRouteTableAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReplaceRouteTableAssociation.html): Changes the route table associated with a given subnet, internet gateway, or virtual private gateway in a VPC.
+- [ReplaceTransitGatewayRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReplaceTransitGatewayRoute.html): Replaces the specified route in the specified transit gateway route table.
+- [ReplaceVpnTunnel](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReplaceVpnTunnel.html): Trigger replacement of specified VPN tunnel.
+- [ReportInstanceStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReportInstanceStatus.html): Submits feedback about the status of an instance.
+- [RequestSpotFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotFleet.html): Creates a Spot Fleet request.
+- [RequestSpotInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotInstances.html): Creates a Spot Instance request.
+- [ResetAddressAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ResetAddressAttribute.html): Resets the attribute of the specified IP address.
+- [ResetEbsDefaultKmsKeyId](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ResetEbsDefaultKmsKeyId.html): Resets the default AWS KMS key for EBS encryption for your account in this Region to the AWS managed KMS key for EBS.
+- [ResetFpgaImageAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ResetFpgaImageAttribute.html): Resets the specified attribute of the specified Amazon FPGA Image (AFI) to its default value.
+- [ResetImageAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ResetImageAttribute.html): Resets an attribute of an AMI to its default value.
+- [ResetInstanceAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ResetInstanceAttribute.html): Resets an attribute of an instance to its default value.
+- [ResetNetworkInterfaceAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ResetNetworkInterfaceAttribute.html): Resets a network interface attribute.
+- [ResetSnapshotAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ResetSnapshotAttribute.html): Resets permission settings for the specified snapshot.
+- [RestoreAddressToClassic](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RestoreAddressToClassic.html)
+- [RestoreImageFromRecycleBin](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RestoreImageFromRecycleBin.html): Restores an AMI from the Recycle Bin.
+- [RestoreManagedPrefixListVersion](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RestoreManagedPrefixListVersion.html): Restores the entries from a previous version of a managed prefix list to a new version of the prefix list.
+- [RestoreSnapshotFromRecycleBin](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RestoreSnapshotFromRecycleBin.html): Restores a snapshot from the Recycle Bin.
+- [RestoreSnapshotTier](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RestoreSnapshotTier.html): Restores an archived Amazon EBS snapshot for use temporarily or permanently, or modifies the restore period or restore type for a snapshot that was previously temporarily restored.
+- [RestoreVolumeFromRecycleBin](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RestoreVolumeFromRecycleBin.html): Restores a volume from the Recycle Bin.
+- [RevokeClientVpnIngress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RevokeClientVpnIngress.html): Removes an ingress authorization rule from a Client VPN endpoint.
+- [RevokeSecurityGroupEgress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RevokeSecurityGroupEgress.html): Removes the specified outbound (egress) rules from the specified security group.
+- [RevokeSecurityGroupIngress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RevokeSecurityGroupIngress.html): Removes the specified inbound (ingress) rules from a security group.
+- [RunInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html): Launches the specified number of instances using an AMI for which you have permissions.
+- [RunScheduledInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunScheduledInstances.html): Launches the specified Scheduled Instances.
+- [SearchLocalGatewayRoutes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchLocalGatewayRoutes.html): Searches for routes in the specified local gateway route table.
+- [SearchTransitGatewayMulticastGroups](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayMulticastGroups.html): Searches one or more transit gateway multicast groups and returns the group membership information.
+- [SearchTransitGatewayRoutes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayRoutes.html): Searches for routes in the specified transit gateway route table.
+- [SendDiagnosticInterrupt](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SendDiagnosticInterrupt.html): Sends a diagnostic interrupt to the specified Amazon EC2 instance to trigger a kernel panic (on Linux instances), or a blue screen/stop error (on Windows instances).
+- [StartDeclarativePoliciesReport](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StartDeclarativePoliciesReport.html): Generates an account status report.
+- [StartInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StartInstances.html): Starts an Amazon EBS-backed instance that you've previously stopped.
+- [StartNetworkInsightsAccessScopeAnalysis](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StartNetworkInsightsAccessScopeAnalysis.html): Starts analyzing the specified Network Access Scope.
+- [StartNetworkInsightsAnalysis](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StartNetworkInsightsAnalysis.html): Starts analyzing the specified path.
+- [StartVpcEndpointServicePrivateDnsVerification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StartVpcEndpointServicePrivateDnsVerification.html): Initiates the verification process to prove that the service provider owns the private DNS name domain for the endpoint service.
+- [StopInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StopInstances.html): Stops an Amazon EBS-backed instance.
+- [TerminateClientVpnConnections](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TerminateClientVpnConnections.html): Terminates active Client VPN endpoint connections.
+- [TerminateInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TerminateInstances.html): Terminates (deletes) the specified instances.
+- [UnassignIpv6Addresses](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_UnassignIpv6Addresses.html): Unassigns the specified IPv6 addresses or Prefix Delegation prefixes from a network interface.
+- [UnassignPrivateIpAddresses](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_UnassignPrivateIpAddresses.html): Unassigns the specified secondary private IP addresses or IPv4 Prefix Delegation prefixes from a network interface.
+- [UnassignPrivateNatGatewayAddress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_UnassignPrivateNatGatewayAddress.html): Unassigns secondary private IPv4 addresses from a private NAT gateway.
+- [UnlockSnapshot](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_UnlockSnapshot.html): Unlocks a snapshot that is locked in governance mode or that is locked in compliance mode but still in the cooling-off period.
+- [UnmonitorInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_UnmonitorInstances.html): Disables detailed monitoring for a running instance.
+- [UpdateCapacityManagerOrganizationsAccess](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_UpdateCapacityManagerOrganizationsAccess.html): Updates the Organizations access setting for EC2 Capacity Manager.
+- [UpdateInterruptibleCapacityReservationAllocation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_UpdateInterruptibleCapacityReservationAllocation.html): Modifies the number of instances allocated to an interruptible reservation, allowing you to add more capacity or reclaim capacity to your source Capacity Reservation.
+- [UpdateSecurityGroupRuleDescriptionsEgress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_UpdateSecurityGroupRuleDescriptionsEgress.html): Updates the description of an egress (outbound) security group rule.
+- [UpdateSecurityGroupRuleDescriptionsIngress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_UpdateSecurityGroupRuleDescriptionsIngress.html): Updates the description of an ingress (inbound) security group rule.
+- [WithdrawByoipCidr](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_WithdrawByoipCidr.html): Stops advertising an address range that is provisioned as an address pool.
+
+
+## [Data Types](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Types.html)
+
+- [AcceleratorCount](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AcceleratorCount.html): The minimum and maximum number of accelerators (GPUs, FPGAs, or AWS Inferentia chips) on an instance.
+- [AcceleratorCountRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AcceleratorCountRequest.html): The minimum and maximum number of accelerators (GPUs, FPGAs, or AWS Inferentia chips) on an instance.
+- [AcceleratorTotalMemoryMiB](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AcceleratorTotalMemoryMiB.html): The minimum and maximum amount of total accelerator memory, in MiB.
+- [AcceleratorTotalMemoryMiBRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AcceleratorTotalMemoryMiBRequest.html): The minimum and maximum amount of total accelerator memory, in MiB.
+- [AccessScopeAnalysisFinding](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AccessScopeAnalysisFinding.html): Describes a finding for a Network Access Scope.
+- [AccessScopePath](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AccessScopePath.html): Describes a path.
+- [AccessScopePathRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AccessScopePathRequest.html): Describes a path.
+- [AccountAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AccountAttribute.html): Describes an account attribute.
+- [AccountAttributeValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AccountAttributeValue.html): Describes a value of an account attribute.
+- [ActiveInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ActiveInstance.html): Describes a running instance in a Spot Fleet.
+- [ActiveVpnTunnelStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ActiveVpnTunnelStatus.html): Contains information about the current security configuration of an active VPN tunnel.
+- [AddedPrincipal](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AddedPrincipal.html): Describes a principal.
+- [AddIpamOperatingRegion](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AddIpamOperatingRegion.html): Add an operating Region to an IPAM.
+- [AddIpamOrganizationalUnitExclusion](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AddIpamOrganizationalUnitExclusion.html): Add an Organizational Unit (OU) exclusion to your IPAM.
+- [AdditionalDetail](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AdditionalDetail.html): Describes an additional detail for a path analysis.
+- [AddPrefixListEntry](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AddPrefixListEntry.html): An entry for a prefix list.
+- [Address](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Address.html): Describes an Elastic IP address, or a carrier IP address.
+- [AddressAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AddressAttribute.html): The attributes associated with an Elastic IP address.
+- [AddressTransfer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AddressTransfer.html): Details on the Elastic IP address transfer.
+- [AllowedPrincipal](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AllowedPrincipal.html): Describes a principal.
+- [AlternatePathHint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AlternatePathHint.html): Describes an potential intermediate component of a feasible path.
+- [AnalysisAclRule](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AnalysisAclRule.html): Describes a network access control (ACL) rule.
+- [AnalysisComponent](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AnalysisComponent.html): Describes a path component.
+- [AnalysisLoadBalancerListener](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AnalysisLoadBalancerListener.html): Describes a load balancer listener.
+- [AnalysisLoadBalancerTarget](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AnalysisLoadBalancerTarget.html): Describes a load balancer target.
+- [AnalysisPacketHeader](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AnalysisPacketHeader.html): Describes a header.
+- [AnalysisRouteTableRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AnalysisRouteTableRoute.html): Describes a route table route.
+- [AnalysisSecurityGroupRule](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AnalysisSecurityGroupRule.html): Describes a security group rule.
+- [AsnAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AsnAssociation.html): An Autonomous System Number (ASN) and BYOIP CIDR association.
+- [AsnAuthorizationContext](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AsnAuthorizationContext.html): Provides authorization for Amazon to bring an Autonomous System Number (ASN) to a specific AWS account using bring your own ASN (BYOASN).
+- [AssignedPrivateIpAddress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssignedPrivateIpAddress.html): Describes the private IP addresses assigned to a network interface.
+- [AssociatedRole](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociatedRole.html): Information about the associated IAM roles.
+- [AssociatedTargetNetwork](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociatedTargetNetwork.html): Describes a target network that is associated with a Client VPN endpoint.
+- [AssociationStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociationStatus.html): Describes the state of a target network association.
+- [AthenaIntegration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AthenaIntegration.html): Describes integration options for Amazon Athena.
+- [AttachmentEnaSrdSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AttachmentEnaSrdSpecification.html): ENA Express uses AWS Scalable Reliable Datagram (SRD) technology to increase the maximum bandwidth used per stream and minimize tail latency of network traffic between EC2 instances.
+- [AttachmentEnaSrdUdpSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AttachmentEnaSrdUdpSpecification.html): ENA Express is compatible with both TCP and UDP transport protocols.
+- [AttributeBooleanValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AttributeBooleanValue.html): Describes a value for a resource attribute that is a Boolean value.
+- [AttributeSummary](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AttributeSummary.html): A summary report for the attribute across all Regions.
+- [AttributeValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AttributeValue.html): Describes a value for a resource attribute that is a String.
+- [AuthorizationRule](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AuthorizationRule.html): Information about an authorization rule.
+- [AvailabilityZone](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AvailabilityZone.html): Describes Availability Zones, Local Zones, and Wavelength Zones.
+- [AvailabilityZoneAddress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AvailabilityZoneAddress.html): For regional NAT gateways only: The configuration specifying which Elastic IP address (EIP) to use for handling outbound NAT traffic from a specific Availability Zone.
+- [AvailabilityZoneGeography](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AvailabilityZoneGeography.html): Describes the geography information for an Availability Zone or Local Zone.
+- [AvailabilityZoneMessage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AvailabilityZoneMessage.html): Describes a message about an Availability Zone, Local Zone, or Wavelength Zone.
+- [AvailabilityZoneSubGeography](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AvailabilityZoneSubGeography.html): Describes the sub-geography information for an Availability Zone or Local Zone.
+- [AvailableCapacity](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AvailableCapacity.html): The capacity information for instances that can be launched onto the Dedicated Host.
+- [BaselineEbsBandwidthMbps](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BaselineEbsBandwidthMbps.html): The minimum and maximum baseline bandwidth to Amazon EBS, in Mbps.
+- [BaselineEbsBandwidthMbpsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BaselineEbsBandwidthMbpsRequest.html): The minimum and maximum baseline bandwidth to Amazon EBS, in Mbps.
+- [BaselinePerformanceFactors](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BaselinePerformanceFactors.html): The baseline performance to consider, using an instance family as a baseline reference.
+- [BaselinePerformanceFactorsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BaselinePerformanceFactorsRequest.html): The baseline performance to consider, using an instance family as a baseline reference.
+- [BlobAttributeValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlobAttributeValue.html): Describes Base64-encoded binary data.
+- [BlockDeviceMapping](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html): Describes a block device mapping, which defines the EBS volumes and instance store volumes to attach to an instance at launch.
+- [BlockDeviceMappingResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMappingResponse.html): Describes a block device mapping, which defines the EBS volumes and instance store volumes to attach to an instance at launch.
+- [BlockPublicAccessStates](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockPublicAccessStates.html): The state of VPC Block Public Access (BPA).
+- [BundleTask](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BundleTask.html): Describes a bundle task.
+- [BundleTaskError](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BundleTaskError.html): Describes an error for .
+- [Byoasn](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Byoasn.html): The Autonomous System Number (ASN) and BYOIP CIDR association.
+- [ByoipCidr](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ByoipCidr.html): Information about an address range that is provisioned for use with your AWS resources through bring your own IP addresses (BYOIP).
+- [CancelCapacityReservationFleetError](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelCapacityReservationFleetError.html): Describes a Capacity Reservation Fleet cancellation error.
+- [CancelledSpotInstanceRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelledSpotInstanceRequest.html): Describes a request to cancel a Spot Instance.
+- [CancelSpotFleetRequestsError](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequestsError.html): Describes a Spot Fleet error.
+- [CancelSpotFleetRequestsErrorItem](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequestsErrorItem.html): Describes a Spot Fleet request that was not successfully canceled.
+- [CancelSpotFleetRequestsSuccessItem](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CancelSpotFleetRequestsSuccessItem.html): Describes a Spot Fleet request that was successfully canceled.
+- [CapacityAllocation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityAllocation.html): Information about instance capacity usage for a Capacity Reservation.
+- [CapacityBlock](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityBlock.html): Reserve powerful GPU instances on a future date to support your short duration machine learning (ML) workloads.
+- [CapacityBlockExtension](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityBlockExtension.html): Describes a Capacity Block extension.
+- [CapacityBlockExtensionOffering](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityBlockExtensionOffering.html): The recommended Capacity Block extension that fits your search requirements.
+- [CapacityBlockOffering](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityBlockOffering.html): The recommended Capacity Block that fits your search requirements.
+- [CapacityBlockStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityBlockStatus.html): Describes the availability of capacity for a Capacity Block.
+- [CapacityManagerCondition](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityManagerCondition.html): Represents a filter condition for Capacity Manager queries.
+- [CapacityManagerDataExportResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityManagerDataExportResponse.html): Contains information about a Capacity Manager data export configuration, including export settings, delivery status, and recent export activity.
+- [CapacityManagerDimension](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityManagerDimension.html): Represents dimension values for capacity metrics, including resource identifiers, geographic information, and reservation details used for grouping and filtering capacity data.
+- [CapacityReservation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityReservation.html): Describes a Capacity Reservation.
+- [CapacityReservationBillingRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityReservationBillingRequest.html): Information about a request to assign billing of the unused capacity of a Capacity Reservation.
+- [CapacityReservationCommitmentInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityReservationCommitmentInfo.html): Information about your commitment for a future-dated Capacity Reservation.
+- [CapacityReservationFleet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityReservationFleet.html): Information about a Capacity Reservation Fleet.
+- [CapacityReservationFleetCancellationState](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityReservationFleetCancellationState.html): Describes a Capacity Reservation Fleet that was successfully cancelled.
+- [CapacityReservationGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityReservationGroup.html): Describes a resource group to which a Capacity Reservation has been added.
+- [CapacityReservationInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityReservationInfo.html): Information about a Capacity Reservation.
+- [CapacityReservationOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityReservationOptions.html): Describes the strategy for using unused Capacity Reservations for fulfilling On-Demand capacity.
+- [CapacityReservationOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityReservationOptionsRequest.html): Describes the strategy for using unused Capacity Reservations for fulfilling On-Demand capacity.
+- [CapacityReservationSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityReservationSpecification.html): Describes an instance's Capacity Reservation targeting option.
+- [CapacityReservationSpecificationResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityReservationSpecificationResponse.html): Describes the instance's Capacity Reservation targeting preferences.
+- [CapacityReservationStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityReservationStatus.html): Describes the availability of capacity for a Capacity Reservation.
+- [CapacityReservationTarget](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityReservationTarget.html): Describes a target Capacity Reservation or Capacity Reservation group.
+- [CapacityReservationTargetResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityReservationTargetResponse.html): Describes a target Capacity Reservation or Capacity Reservation group.
+- [CapacityReservationTopology](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CapacityReservationTopology.html): Information about the Capacity Reservation topology.
+- [CarrierGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CarrierGateway.html): Describes a carrier gateway.
+- [CertificateAuthentication](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CertificateAuthentication.html): Information about the client certificate used for authentication.
+- [CertificateAuthenticationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CertificateAuthenticationRequest.html): Information about the client certificate to be used for authentication.
+- [CidrAuthorizationContext](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CidrAuthorizationContext.html): Provides authorization for Amazon to bring a specific IP address range to a specific AWS account using bring your own IP addresses (BYOIP).
+- [CidrBlock](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CidrBlock.html): Describes an IPv4 CIDR block.
+- [ClassicLinkDnsSupport](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClassicLinkDnsSupport.html)
+- [ClassicLinkInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClassicLinkInstance.html)
+- [ClassicLoadBalancer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClassicLoadBalancer.html): Describes a Classic Load Balancer.
+- [ClassicLoadBalancersConfig](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClassicLoadBalancersConfig.html): Describes the Classic Load Balancers to attach to a Spot Fleet.
+- [ClientCertificateRevocationListStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClientCertificateRevocationListStatus.html): Describes the state of a client certificate revocation list.
+- [ClientConnectOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClientConnectOptions.html): The options for managing connection authorization for new client connections.
+- [ClientConnectResponseOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClientConnectResponseOptions.html): The options for managing connection authorization for new client connections.
+- [ClientData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClientData.html): Describes the client-specific data.
+- [ClientLoginBannerOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClientLoginBannerOptions.html): Options for enabling a customizable text banner that will be displayed on AWS provided clients when a VPN session is established.
+- [ClientLoginBannerResponseOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClientLoginBannerResponseOptions.html): Current state of options for customizable text banner that will be displayed on AWS provided clients when a VPN session is established.
+- [ClientRouteEnforcementOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClientRouteEnforcementOptions.html): Client Route Enforcement is a feature of Client VPN that helps enforce administrator defined routes on devices connected through the VPN.
+- [ClientRouteEnforcementResponseOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClientRouteEnforcementResponseOptions.html): The current status of Client Route Enforcement.
+- [ClientVpnAuthentication](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClientVpnAuthentication.html): Describes the authentication methods used by a Client VPN endpoint.
+- [ClientVpnAuthenticationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClientVpnAuthenticationRequest.html): Describes the authentication method to be used by a Client VPN endpoint.
+- [ClientVpnAuthorizationRuleStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClientVpnAuthorizationRuleStatus.html): Describes the state of an authorization rule.
+- [ClientVpnConnection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClientVpnConnection.html): Describes a client connection.
+- [ClientVpnConnectionStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClientVpnConnectionStatus.html): Describes the status of a client connection.
+- [ClientVpnEndpoint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClientVpnEndpoint.html): Describes a Client VPN endpoint.
+- [ClientVpnEndpointAttributeStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClientVpnEndpointAttributeStatus.html): Describes the status of the Client VPN endpoint attribute.
+- [ClientVpnEndpointStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClientVpnEndpointStatus.html): Describes the state of a Client VPN endpoint.
+- [ClientVpnRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClientVpnRoute.html): Information about a Client VPN endpoint route.
+- [ClientVpnRouteStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ClientVpnRouteStatus.html): Describes the state of a Client VPN endpoint route.
+- [CloudWatchLogOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CloudWatchLogOptions.html): Options for sending VPN tunnel logs to CloudWatch.
+- [CloudWatchLogOptionsSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CloudWatchLogOptionsSpecification.html): Options for sending VPN tunnel logs to CloudWatch.
+- [CoipAddressUsage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CoipAddressUsage.html): Describes address usage for a customer-owned address pool.
+- [CoipCidr](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CoipCidr.html): Information about a customer-owned IP address range.
+- [CoipPool](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CoipPool.html): Describes a customer-owned address pool.
+- [ConnectionLogOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ConnectionLogOptions.html): Describes the client connection logging options for the Client VPN endpoint.
+- [ConnectionLogResponseOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ConnectionLogResponseOptions.html): Information about the client connection logging options for a Client VPN endpoint.
+- [ConnectionNotification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ConnectionNotification.html): Describes a connection notification for a VPC endpoint or VPC endpoint service.
+- [ConnectionTrackingConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ConnectionTrackingConfiguration.html): A security group connection tracking configuration that enables you to set the idle timeout for connection tracking on an Elastic network interface.
+- [ConnectionTrackingSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ConnectionTrackingSpecification.html): A security group connection tracking specification that enables you to set the idle timeout for connection tracking on an Elastic network interface.
+- [ConnectionTrackingSpecificationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ConnectionTrackingSpecificationRequest.html): A security group connection tracking specification request that enables you to set the idle timeout for connection tracking on an Elastic network interface.
+- [ConnectionTrackingSpecificationResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ConnectionTrackingSpecificationResponse.html): A security group connection tracking specification response that enables you to set the idle timeout for connection tracking on an Elastic network interface.
+- [ConversionTask](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ConversionTask.html): Describes a conversion task.
+- [CpuOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CpuOptions.html): The CPU options for the instance.
+- [CpuOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CpuOptionsRequest.html): The CPU options for the instance.
+- [CpuPerformanceFactor](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CpuPerformanceFactor.html): The CPU performance to consider, using an instance family as the baseline reference.
+- [CpuPerformanceFactorRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CpuPerformanceFactorRequest.html): The CPU performance to consider, using an instance family as the baseline reference.
+- [CreateFleetError](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleetError.html): Describes the instances that could not be launched by the fleet.
+- [CreateFleetInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleetInstance.html): Describes the instances that were launched by the fleet.
+- [CreateTransitGatewayConnectRequestOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTransitGatewayConnectRequestOptions.html): The options for a Connect attachment.
+- [CreateTransitGatewayMulticastDomainRequestOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTransitGatewayMulticastDomainRequestOptions.html): The options for the transit gateway multicast domain.
+- [CreateTransitGatewayPeeringAttachmentRequestOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTransitGatewayPeeringAttachmentRequestOptions.html): Describes whether dynamic routing is enabled or disabled for the transit gateway peering request.
+- [CreateTransitGatewayVpcAttachmentRequestOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTransitGatewayVpcAttachmentRequestOptions.html): Describes the options for a VPC attachment.
+- [CreateVerifiedAccessEndpointCidrOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVerifiedAccessEndpointCidrOptions.html): Describes the CIDR options for a Verified Access endpoint.
+- [CreateVerifiedAccessEndpointEniOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVerifiedAccessEndpointEniOptions.html): Describes the network interface options when creating an AWS Verified Access endpoint using the network-interface type.
+- [CreateVerifiedAccessEndpointLoadBalancerOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVerifiedAccessEndpointLoadBalancerOptions.html): Describes the load balancer options when creating an AWS Verified Access endpoint using the load-balancer type.
+- [CreateVerifiedAccessEndpointPortRange](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVerifiedAccessEndpointPortRange.html): Describes the port range for a Verified Access endpoint.
+- [CreateVerifiedAccessEndpointRdsOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVerifiedAccessEndpointRdsOptions.html): Describes the RDS options for a Verified Access endpoint.
+- [CreateVerifiedAccessNativeApplicationOidcOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVerifiedAccessNativeApplicationOidcOptions.html): Describes the OpenID Connect (OIDC) options.
+- [CreateVerifiedAccessTrustProviderDeviceOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVerifiedAccessTrustProviderDeviceOptions.html): Describes the options when creating an AWS Verified Access trust provider using the device type.
+- [CreateVerifiedAccessTrustProviderOidcOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVerifiedAccessTrustProviderOidcOptions.html): Describes the options when creating an AWS Verified Access trust provider using the user type.
+- [CreateVolumePermission](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVolumePermission.html): Describes the user or group to be added or removed from the list of create volume permissions for a volume.
+- [CreateVolumePermissionModifications](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVolumePermissionModifications.html): Describes modifications to the list of create volume permissions for a volume.
+- [CreationDateCondition](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreationDateCondition.html): The maximum age for allowed images.
+- [CreationDateConditionRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreationDateConditionRequest.html): The maximum age for allowed images.
+- [CreditSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreditSpecification.html): Describes the credit option for CPU usage of a T instance.
+- [CreditSpecificationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreditSpecificationRequest.html): The credit option for CPU usage of a T instance.
+- [CustomerGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CustomerGateway.html): Describes a customer gateway.
+- [DataQuery](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DataQuery.html): A query used for retrieving network health data.
+- [DataResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DataResponse.html): The response to a DataQuery.
+- [DeclarativePoliciesReport](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeclarativePoliciesReport.html): Describes the metadata of the account status report.
+- [DeleteFleetError](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteFleetError.html): Describes an EC2 Fleet error.
+- [DeleteFleetErrorItem](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteFleetErrorItem.html): Describes an EC2 Fleet that was not successfully deleted.
+- [DeleteFleetSuccessItem](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteFleetSuccessItem.html): Describes an EC2 Fleet that was successfully deleted.
+- [DeleteLaunchTemplateVersionsResponseErrorItem](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteLaunchTemplateVersionsResponseErrorItem.html): Describes a launch template version that could not be deleted.
+- [DeleteLaunchTemplateVersionsResponseSuccessItem](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteLaunchTemplateVersionsResponseSuccessItem.html): Describes a launch template version that was successfully deleted.
+- [DeleteQueuedReservedInstancesError](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteQueuedReservedInstancesError.html): Describes the error for a Reserved Instance whose queued purchase could not be deleted.
+- [DeleteSnapshotReturnCode](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteSnapshotReturnCode.html): The snapshot ID and its deletion result code.
+- [DeprecationTimeCondition](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeprecationTimeCondition.html): The maximum period since deprecation for allowed images.
+- [DeprecationTimeConditionRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeprecationTimeConditionRequest.html): The maximum period since deprecation for allowed images.
+- [DeregisterInstanceTagAttributeRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeregisterInstanceTagAttributeRequest.html): Information about the tag keys to deregister for the current Region.
+- [DescribeFastLaunchImagesSuccessItem](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeFastLaunchImagesSuccessItem.html): Describe details about a Windows image with Windows fast launch enabled that meets the requested criteria.
+- [DescribeFastSnapshotRestoreSuccessItem](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeFastSnapshotRestoreSuccessItem.html): Describes fast snapshot restores for a snapshot.
+- [DescribeFleetError](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeFleetError.html): Describes the instances that could not be launched by the fleet.
+- [DescribeFleetsInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeFleetsInstances.html): Describes the instances that were launched by the fleet.
+- [DestinationOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DestinationOptionsRequest.html): Describes the destination options for a flow log.
+- [DestinationOptionsResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DestinationOptionsResponse.html): Describes the destination options for a flow log.
+- [DeviceOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeviceOptions.html): Describes the options for an AWS Verified Access device-identity based trust provider.
+- [DhcpConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DhcpConfiguration.html): Describes a DHCP configuration option.
+- [DhcpOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DhcpOptions.html): The set of DHCP options.
+- [DimensionCondition](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DimensionCondition.html): Specifies a condition for filtering capacity data based on dimension values.
+- [DirectoryServiceAuthentication](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DirectoryServiceAuthentication.html): Describes an Active Directory.
+- [DirectoryServiceAuthenticationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DirectoryServiceAuthenticationRequest.html): Describes the Active Directory to be used for client authentication.
+- [DisableFastSnapshotRestoreErrorItem](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableFastSnapshotRestoreErrorItem.html): Contains information about the errors that occurred when disabling fast snapshot restores.
+- [DisableFastSnapshotRestoreStateError](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableFastSnapshotRestoreStateError.html): Describes an error that occurred when disabling fast snapshot restores.
+- [DisableFastSnapshotRestoreStateErrorItem](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableFastSnapshotRestoreStateErrorItem.html): Contains information about an error that occurred when disabling fast snapshot restores.
+- [DisableFastSnapshotRestoreSuccessItem](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisableFastSnapshotRestoreSuccessItem.html): Describes fast snapshot restores that were successfully disabled.
+- [DiskImage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DiskImage.html): Describes a disk image.
+- [DiskImageDescription](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DiskImageDescription.html): Describes a disk image.
+- [DiskImageDetail](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DiskImageDetail.html): Describes a disk image.
+- [DiskImageVolumeDescription](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DiskImageVolumeDescription.html): Describes a disk image volume.
+- [DiskInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DiskInfo.html): Describes a disk.
+- [DnsEntry](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DnsEntry.html): Describes a DNS entry.
+- [DnsOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DnsOptions.html): Describes the DNS options for an endpoint.
+- [DnsOptionsSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DnsOptionsSpecification.html): Describes the DNS options for an endpoint.
+- [DnsServersOptionsModifyStructure](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DnsServersOptionsModifyStructure.html): Information about the DNS server to be used.
+- [EbsBlockDevice](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html): Describes a block device for an EBS volume.
+- [EbsBlockDeviceResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDeviceResponse.html): Describes a block device for an EBS volume.
+- [EbsCardInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsCardInfo.html): Describes the performance characteristics of an EBS card on the instance type.
+- [EbsInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsInfo.html): Describes the Amazon EBS features supported by the instance type.
+- [EbsInstanceBlockDevice](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsInstanceBlockDevice.html): Describes a parameter used to set up an EBS volume in a block device mapping.
+- [EbsInstanceBlockDeviceSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsInstanceBlockDeviceSpecification.html): Describes information used to set up an EBS volume specified in a block device mapping.
+- [EbsOptimizedInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsOptimizedInfo.html): Describes the optimized EBS performance for supported instance types.
+- [EbsStatusDetails](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsStatusDetails.html): Describes the attached EBS status check for an instance.
+- [EbsStatusSummary](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsStatusSummary.html): Provides a summary of the attached EBS volume status for an instance.
+- [Ec2InstanceConnectEndpoint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Ec2InstanceConnectEndpoint.html): Describes an EC2 Instance Connect Endpoint.
+- [EfaInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EfaInfo.html): Describes the Elastic Fabric Adapters for the instance type.
+- [EgressOnlyInternetGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EgressOnlyInternetGateway.html): Describes an egress-only internet gateway.
+- [ElasticGpuAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ElasticGpuAssociation.html)
+- [ElasticGpuHealth](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ElasticGpuHealth.html)
+- [ElasticGpus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ElasticGpus.html)
+- [ElasticGpuSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ElasticGpuSpecification.html)
+- [ElasticGpuSpecificationResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ElasticGpuSpecificationResponse.html): Deprecated.
+- [ElasticInferenceAccelerator](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ElasticInferenceAccelerator.html)
+- [ElasticInferenceAcceleratorAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ElasticInferenceAcceleratorAssociation.html)
+- [EnableFastSnapshotRestoreErrorItem](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableFastSnapshotRestoreErrorItem.html): Contains information about the errors that occurred when enabling fast snapshot restores.
+- [EnableFastSnapshotRestoreStateError](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableFastSnapshotRestoreStateError.html): Describes an error that occurred when enabling fast snapshot restores.
+- [EnableFastSnapshotRestoreStateErrorItem](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableFastSnapshotRestoreStateErrorItem.html): Contains information about an error that occurred when enabling fast snapshot restores.
+- [EnableFastSnapshotRestoreSuccessItem](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnableFastSnapshotRestoreSuccessItem.html): Describes fast snapshot restores that were successfully enabled.
+- [EnaSrdSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnaSrdSpecification.html): ENA Express uses AWS Scalable Reliable Datagram (SRD) technology to increase the maximum bandwidth used per stream and minimize tail latency of network traffic between EC2 instances.
+- [EnaSrdSpecificationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnaSrdSpecificationRequest.html): Launch instances with ENA Express settings configured from your launch template.
+- [EnaSrdUdpSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnaSrdUdpSpecification.html): ENA Express is compatible with both TCP and UDP transport protocols.
+- [EnaSrdUdpSpecificationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnaSrdUdpSpecificationRequest.html): Configures ENA Express for UDP network traffic from your launch template.
+- [EnclaveOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnclaveOptions.html): Indicates whether the instance is enabled for AWS Nitro Enclaves.
+- [EnclaveOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EnclaveOptionsRequest.html): Indicates whether the instance is enabled for AWS Nitro Enclaves.
+- [EncryptionSupport](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EncryptionSupport.html): Describes the encryption support status for a transit gateway.
+- [EventInformation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EventInformation.html): Describes an EC2 Fleet or Spot Fleet event.
+- [Explanation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Explanation.html): Describes an explanation code for an unreachable path.
+- [ExportImageTask](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ExportImageTask.html): Describes an export image task.
+- [ExportTask](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ExportTask.html): Describes an export instance task.
+- [ExportTaskS3Location](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ExportTaskS3Location.html): Describes the destination for an export image task.
+- [ExportTaskS3LocationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ExportTaskS3LocationRequest.html): Describes the destination for an export image task.
+- [ExportToS3Task](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ExportToS3Task.html): Describes the format and location for the export task.
+- [ExportToS3TaskSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ExportToS3TaskSpecification.html): Describes an export instance task.
+- [ExternalAuthorityConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ExternalAuthorityConfiguration.html): The configuration that links an Amazon VPC IPAM scope to an external authority system.
+- [FailedCapacityReservationFleetCancellationResult](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FailedCapacityReservationFleetCancellationResult.html): Describes a Capacity Reservation Fleet that could not be cancelled.
+- [FailedQueuedPurchaseDeletion](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FailedQueuedPurchaseDeletion.html): Describes a Reserved Instance whose queued purchase was not deleted.
+- [FastLaunchLaunchTemplateSpecificationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FastLaunchLaunchTemplateSpecificationRequest.html): Request to create a launch template for a Windows fast launch enabled AMI.
+- [FastLaunchLaunchTemplateSpecificationResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FastLaunchLaunchTemplateSpecificationResponse.html): Identifies the launch template that the AMI uses for Windows fast launch.
+- [FastLaunchSnapshotConfigurationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FastLaunchSnapshotConfigurationRequest.html): Configuration settings for creating and managing pre-provisioned snapshots for a Windows fast launch enabled AMI.
+- [FastLaunchSnapshotConfigurationResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FastLaunchSnapshotConfigurationResponse.html): Configuration settings for creating and managing pre-provisioned snapshots for a Windows fast launch enabled Windows AMI.
+- [FederatedAuthentication](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FederatedAuthentication.html): Describes the IAM SAML identity providers used for federated authentication.
+- [FederatedAuthenticationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FederatedAuthenticationRequest.html): The IAM SAML identity provider used for federated authentication.
+- [Filter](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Filter.html): A filter name and value pair that is used to return a more specific list of results from a describe operation.
+- [FilterPortRange](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FilterPortRange.html): Describes a port range.
+- [FirewallStatefulRule](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FirewallStatefulRule.html): Describes a stateful rule.
+- [FirewallStatelessRule](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FirewallStatelessRule.html): Describes a stateless rule.
+- [FleetBlockDeviceMappingRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FleetBlockDeviceMappingRequest.html): Describes a block device mapping, which defines the EBS volumes and instance store volumes to attach to an instance at launch.
+- [FleetCapacityReservation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FleetCapacityReservation.html): Information about a Capacity Reservation in a Capacity Reservation Fleet.
+- [FleetData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FleetData.html): Describes an EC2 Fleet.
+- [FleetEbsBlockDeviceRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FleetEbsBlockDeviceRequest.html): Describes a block device for an EBS volume.
+- [FleetLaunchTemplateConfig](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FleetLaunchTemplateConfig.html): Describes a launch template and overrides.
+- [FleetLaunchTemplateConfigRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FleetLaunchTemplateConfigRequest.html): Describes a launch template and overrides.
+- [FleetLaunchTemplateOverrides](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FleetLaunchTemplateOverrides.html): Describes overrides for a launch template.
+- [FleetLaunchTemplateOverridesRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FleetLaunchTemplateOverridesRequest.html): Describes overrides for a launch template.
+- [FleetLaunchTemplateSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FleetLaunchTemplateSpecification.html): The Amazon EC2 launch template that can be used by a Spot Fleet to configure Amazon EC2 instances.
+- [FleetLaunchTemplateSpecificationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FleetLaunchTemplateSpecificationRequest.html): The Amazon EC2 launch template that can be used by an EC2 Fleet to configure Amazon EC2 instances.
+- [FleetSpotCapacityRebalance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FleetSpotCapacityRebalance.html): The strategy to use when Amazon EC2 emits a signal that your Spot Instance is at an elevated risk of being interrupted.
+- [FleetSpotCapacityRebalanceRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FleetSpotCapacityRebalanceRequest.html): The Spot Instance replacement strategy to use when Amazon EC2 emits a rebalance notification signal that your Spot Instance is at an elevated risk of being interrupted.
+- [FleetSpotMaintenanceStrategies](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FleetSpotMaintenanceStrategies.html): The strategies for managing your Spot Instances that are at an elevated risk of being interrupted.
+- [FleetSpotMaintenanceStrategiesRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FleetSpotMaintenanceStrategiesRequest.html): The strategies for managing your Spot Instances that are at an elevated risk of being interrupted.
+- [FlowLog](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FlowLog.html): Describes a flow log.
+- [FpgaDeviceInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FpgaDeviceInfo.html): Describes the FPGA accelerator for the instance type.
+- [FpgaDeviceMemoryInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FpgaDeviceMemoryInfo.html): Describes the memory for the FPGA accelerator for the instance type.
+- [FpgaImage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FpgaImage.html): Describes an Amazon FPGA image (AFI).
+- [FpgaImageAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FpgaImageAttribute.html): Describes an Amazon FPGA image (AFI) attribute.
+- [FpgaImageState](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FpgaImageState.html): Describes the state of the bitstream generation process for an Amazon FPGA image (AFI).
+- [FpgaInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_FpgaInfo.html): Describes the FPGAs for the instance type.
+- [GpuDeviceInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GpuDeviceInfo.html): Describes the GPU accelerators for the instance type.
+- [GpuDeviceMemoryInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GpuDeviceMemoryInfo.html): Describes the memory available to the GPU accelerator.
+- [GpuInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GpuInfo.html): Describes the GPU accelerators for the instance type.
+- [GroupIdentifier](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_GroupIdentifier.html): Describes a security group.
+- [HibernationOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_HibernationOptions.html): Indicates whether your instance is configured for hibernation.
+- [HibernationOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_HibernationOptionsRequest.html): Indicates whether your instance is configured for hibernation.
+- [HistoryRecord](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_HistoryRecord.html): Describes an event in the history of the Spot Fleet request.
+- [HistoryRecordEntry](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_HistoryRecordEntry.html): Describes an event in the history of an EC2 Fleet.
+- [Host](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Host.html): Describes the properties of the Dedicated Host.
+- [HostInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_HostInstance.html): Describes an instance running on a Dedicated Host.
+- [HostOffering](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_HostOffering.html): Details about the Dedicated Host Reservation offering.
+- [HostProperties](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_HostProperties.html): Describes the properties of a Dedicated Host.
+- [HostReservation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_HostReservation.html): Details about the Dedicated Host Reservation and associated Dedicated Hosts.
+- [IamInstanceProfile](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IamInstanceProfile.html): Describes an IAM instance profile.
+- [IamInstanceProfileAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IamInstanceProfileAssociation.html): Describes an association between an IAM instance profile and an instance.
+- [IamInstanceProfileSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IamInstanceProfileSpecification.html): Describes an IAM instance profile.
+- [IcmpTypeCode](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IcmpTypeCode.html): Describes the ICMP type and code.
+- [IdFormat](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IdFormat.html): Describes the ID format for a resource.
+- [IKEVersionsListValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IKEVersionsListValue.html): The internet key exchange (IKE) version permitted for the VPN tunnel.
+- [IKEVersionsRequestListValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IKEVersionsRequestListValue.html): The IKE version that is permitted for the VPN tunnel.
+- [Image](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Image.html): Describes an image.
+- [ImageAncestryEntry](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImageAncestryEntry.html): Information about a single AMI in the ancestry chain and its source (parent) AMI.
+- [ImageCriterion](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImageCriterion.html): The criteria that are evaluated to determine which AMIs are discoverable and usable in your account for the specified AWS Region.
+- [ImageCriterionRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImageCriterionRequest.html): The criteria that are evaluated to determine which AMIs are discoverable and usable in your account for the specified AWS Region.
+- [ImageDiskContainer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImageDiskContainer.html): Describes the disk container object for an import image task.
+- [ImageMetadata](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImageMetadata.html): Information about the AMI.
+- [ImageRecycleBinInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImageRecycleBinInfo.html): Information about an AMI that is currently in the Recycle Bin.
+- [ImageReference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImageReference.html): A resource that is referencing an image.
+- [ImageUsageReport](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImageUsageReport.html): The configuration and status of an image usage report.
+- [ImageUsageReportEntry](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImageUsageReportEntry.html): A single entry in an image usage report, detailing how an image is being used by a specific AWS account and resource type.
+- [ImageUsageResourceType](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImageUsageResourceType.html): A resource type to include in the report.
+- [ImageUsageResourceTypeOption](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImageUsageResourceTypeOption.html): The options that affect the scope of the report.
+- [ImageUsageResourceTypeOptionRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImageUsageResourceTypeOptionRequest.html): The options that affect the scope of the report.
+- [ImageUsageResourceTypeRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImageUsageResourceTypeRequest.html): A resource type to include in the report.
+- [ImportImageLicenseConfigurationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImageLicenseConfigurationRequest.html): The request information of license configurations.
+- [ImportImageLicenseConfigurationResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImageLicenseConfigurationResponse.html): The response information for license configurations.
+- [ImportImageTask](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportImageTask.html): Describes an import image task.
+- [ImportInstanceLaunchSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstanceLaunchSpecification.html): Describes the launch specification for VM import.
+- [ImportInstanceTaskDetails](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstanceTaskDetails.html): Describes an import instance task.
+- [ImportInstanceVolumeDetailItem](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportInstanceVolumeDetailItem.html): Describes an import volume task.
+- [ImportSnapshotTask](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportSnapshotTask.html): Describes an import snapshot task.
+- [ImportVolumeTaskDetails](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportVolumeTaskDetails.html): Describes an import volume task.
+- [InferenceAcceleratorInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InferenceAcceleratorInfo.html)
+- [InferenceDeviceInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InferenceDeviceInfo.html)
+- [InferenceDeviceMemoryInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InferenceDeviceMemoryInfo.html)
+- [InitializationStatusDetails](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InitializationStatusDetails.html): Information about the volume initialization.
+- [Instance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Instance.html): Describes an instance.
+- [InstanceAttachmentEnaSrdSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceAttachmentEnaSrdSpecification.html): ENA Express uses AWS Scalable Reliable Datagram (SRD) technology to increase the maximum bandwidth used per stream and minimize tail latency of network traffic between EC2 instances.
+- [InstanceAttachmentEnaSrdUdpSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceAttachmentEnaSrdUdpSpecification.html): ENA Express is compatible with both TCP and UDP transport protocols.
+- [InstanceBlockDeviceMapping](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceBlockDeviceMapping.html): Describes a block device mapping.
+- [InstanceBlockDeviceMappingSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceBlockDeviceMappingSpecification.html): Describes a block device mapping entry.
+- [InstanceCapacity](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceCapacity.html): Information about the number of instances that can be launched onto the Dedicated Host.
+- [InstanceConnectEndpointDnsNames](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceConnectEndpointDnsNames.html): The DNS names of the endpoint.
+- [InstanceConnectEndpointPublicDnsNames](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceConnectEndpointPublicDnsNames.html): The public DNS names of the endpoint, including IPv4-only and dualstack DNS names.
+- [InstanceCount](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceCount.html): Describes a Reserved Instance listing state.
+- [InstanceCreditSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceCreditSpecification.html): Describes the credit option for CPU usage of a burstable performance instance.
+- [InstanceCreditSpecificationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceCreditSpecificationRequest.html): Describes the credit option for CPU usage of a burstable performance instance.
+- [InstanceEventWindow](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceEventWindow.html): The event window.
+- [InstanceEventWindowAssociationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceEventWindowAssociationRequest.html): One or more targets associated with the specified event window.
+- [InstanceEventWindowAssociationTarget](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceEventWindowAssociationTarget.html): One or more targets associated with the event window.
+- [InstanceEventWindowDisassociationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceEventWindowDisassociationRequest.html): The targets to disassociate from the specified event window.
+- [InstanceEventWindowStateChange](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceEventWindowStateChange.html): The state of the event window.
+- [InstanceEventWindowTimeRange](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceEventWindowTimeRange.html): The start day and time and the end day and time of the time range, in UTC.
+- [InstanceEventWindowTimeRangeRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceEventWindowTimeRangeRequest.html): The start day and time and the end day and time of the time range, in UTC.
+- [InstanceExportDetails](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceExportDetails.html): Describes an instance to export.
+- [InstanceFamilyCreditSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceFamilyCreditSpecification.html): Describes the default credit option for CPU usage of a burstable performance instance family.
+- [InstanceImageMetadata](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceImageMetadata.html): Information about the instance and the AMI used to launch the instance.
+- [InstanceIpv4Prefix](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceIpv4Prefix.html): Information about an IPv4 prefix.
+- [InstanceIpv6Address](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceIpv6Address.html): Describes an IPv6 address.
+- [InstanceIpv6AddressRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceIpv6AddressRequest.html): Describes an IPv6 address.
+- [InstanceIpv6Prefix](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceIpv6Prefix.html): Information about an IPv6 prefix.
+- [InstanceMaintenanceOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceMaintenanceOptions.html): The maintenance options for the instance.
+- [InstanceMaintenanceOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceMaintenanceOptionsRequest.html): The maintenance options for the instance.
+- [InstanceMarketOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceMarketOptionsRequest.html): Describes the market (purchasing) option for the instances.
+- [InstanceMetadataDefaultsResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceMetadataDefaultsResponse.html): The default instance metadata service (IMDS) settings that were set at the account level in the specified AWSâ¨ Region.
+- [InstanceMetadataOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceMetadataOptionsRequest.html): The metadata options for the instance.
+- [InstanceMetadataOptionsResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceMetadataOptionsResponse.html): The metadata options for the instance.
+- [InstanceMonitoring](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceMonitoring.html): Describes the monitoring of an instance.
+- [InstanceNetworkInterface](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceNetworkInterface.html): Describes a network interface.
+- [InstanceNetworkInterfaceAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceNetworkInterfaceAssociation.html): Describes association information for an Elastic IP address (IPv4).
+- [InstanceNetworkInterfaceAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceNetworkInterfaceAttachment.html): Describes a network interface attachment.
+- [InstanceNetworkInterfaceSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceNetworkInterfaceSpecification.html): Describes a network interface.
+- [InstanceNetworkPerformanceOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceNetworkPerformanceOptions.html): With network performance options, you can adjust your bandwidth preferences to meet the needs of the workload that runs on your instance.
+- [InstanceNetworkPerformanceOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceNetworkPerformanceOptionsRequest.html): Configure network performance options for your instance that are geared towards performance improvements based on the workload that it runs.
+- [InstancePrivateIpAddress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstancePrivateIpAddress.html): Describes a private IPv4 address.
+- [InstanceRequirements](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceRequirements.html): The attributes for the instance types.
+- [InstanceRequirementsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceRequirementsRequest.html): The attributes for the instance types.
+- [InstanceRequirementsWithMetadataRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceRequirementsWithMetadataRequest.html): The architecture type, virtualization type, and other attributes for the instance types.
+- [InstanceSecondaryInterface](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceSecondaryInterface.html): Describes a secondary interface attached to an instance.
+- [InstanceSecondaryInterfaceAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceSecondaryInterfaceAttachment.html): Describes the attachment of a secondary interface to an instance.
+- [InstanceSecondaryInterfacePrivateIpAddress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceSecondaryInterfacePrivateIpAddress.html): Describes a private IPv4 address for a secondary interface.
+- [InstanceSecondaryInterfacePrivateIpAddressRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceSecondaryInterfacePrivateIpAddressRequest.html): Describes a private IPv4 address for a secondary interface request.
+- [InstanceSecondaryInterfaceSpecificationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceSecondaryInterfaceSpecificationRequest.html): Describes a secondary interface specification for launching an instance.
+- [InstanceSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceSpecification.html): The instance details to specify which volumes should be snapshotted.
+- [InstanceState](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceState.html): Describes the current state of an instance.
+- [InstanceStateChange](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceStateChange.html): Describes an instance state change.
+- [InstanceStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceStatus.html): Describes the status of an instance.
+- [InstanceStatusDetails](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceStatusDetails.html): Describes the instance status.
+- [InstanceStatusEvent](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceStatusEvent.html): Describes a scheduled event for an instance.
+- [InstanceStatusSummary](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceStatusSummary.html): Describes the status of an instance.
+- [InstanceStorageInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceStorageInfo.html): Describes the instance store features that are supported by the instance type.
+- [InstanceTagNotificationAttribute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceTagNotificationAttribute.html): Describes the registered tag keys for the current Region.
+- [InstanceTopology](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceTopology.html): Information about the instance topology.
+- [InstanceTypeInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceTypeInfo.html): Describes the instance type.
+- [InstanceTypeInfoFromInstanceRequirements](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceTypeInfoFromInstanceRequirements.html): The list of instance types with the specified instance attributes.
+- [InstanceTypeOffering](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceTypeOffering.html): The instance types offered.
+- [InstanceUsage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InstanceUsage.html): Information about the Capacity Reservation usage.
+- [IntegrateServices](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IntegrateServices.html): Describes service integrations with VPC Flow logs.
+- [InternetGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InternetGateway.html): Describes an internet gateway.
+- [InternetGatewayAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InternetGatewayAttachment.html): Describes the attachment of a VPC to an internet gateway or an egress-only internet gateway.
+- [InterruptibleCapacityAllocation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InterruptibleCapacityAllocation.html): Represents the allocation of capacity from a source reservation to an interruptible reservation, tracking current and target instance counts for allocation management.
+- [InterruptionInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_InterruptionInfo.html): Contains information about how and when instances in an interruptible reservation can be terminated when capacity is reclaimed.
+- [Ipam](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Ipam.html): IPAM is a VPC feature that you can use to automate your IP address management workflows including assigning, tracking, troubleshooting, and auditing IP addresses across AWS Regions and accounts throughout your AWS Organization.
+- [IpamAddressHistoryRecord](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamAddressHistoryRecord.html): The historical record of a CIDR within an IPAM scope.
+- [IpamCidrAuthorizationContext](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamCidrAuthorizationContext.html): A signed document that proves that you are authorized to bring the specified IP address range to Amazon using BYOIP.
+- [IpamDiscoveredAccount](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamDiscoveredAccount.html): An IPAM discovered account.
+- [IpamDiscoveredPublicAddress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamDiscoveredPublicAddress.html): A public IP Address discovered by IPAM.
+- [IpamDiscoveredResourceCidr](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamDiscoveredResourceCidr.html): An IPAM discovered resource CIDR.
+- [IpamDiscoveryFailureReason](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamDiscoveryFailureReason.html): The discovery failure reason.
+- [IpamExternalResourceVerificationToken](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamExternalResourceVerificationToken.html): A verification token is an AWS-generated random value that you can use to prove ownership of an external resource.
+- [IpamOperatingRegion](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamOperatingRegion.html): The operating Regions for an IPAM.
+- [IpamOrganizationalUnitExclusion](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamOrganizationalUnitExclusion.html): If your IPAM is integrated with AWS Organizations and you add an organizational unit (OU) exclusion, IPAM will not manage the IP addresses in accounts in that OU exclusion.
+- [IpamPolicy](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPolicy.html): Information about an IPAM policy.
+- [IpamPolicyAllocationRule](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPolicyAllocationRule.html): Information about an IPAM policy allocation rule.
+- [IpamPolicyAllocationRuleRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPolicyAllocationRuleRequest.html): Information about a requested IPAM policy allocation rule.
+- [IpamPolicyDocument](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPolicyDocument.html): Information about an IPAM policy.
+- [IpamPolicyOrganizationTarget](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPolicyOrganizationTarget.html): The AWS Organizations target for an IPAM policy.
+- [IpamPool](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPool.html): In IPAM, a pool is a collection of contiguous IP addresses CIDRs.
+- [IpamPoolAllocation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPoolAllocation.html): In IPAM, an allocation is a CIDR assignment from an IPAM pool to another IPAM pool or to a resource.
+- [IpamPoolCidr](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPoolCidr.html): A CIDR provisioned to an IPAM pool.
+- [IpamPoolCidrFailureReason](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPoolCidrFailureReason.html): Details related to why an IPAM pool CIDR failed to be provisioned.
+- [IpamPoolSourceResource](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPoolSourceResource.html): The resource used to provision CIDRs to a resource planning pool.
+- [IpamPoolSourceResourceRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPoolSourceResourceRequest.html): The resource used to provision CIDRs to a resource planning pool.
+- [IpamPrefixListResolver](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPrefixListResolver.html): Describes an IPAM prefix list resolver.
+- [IpamPrefixListResolverRule](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPrefixListResolverRule.html): Describes a CIDR selection rule.
+- [IpamPrefixListResolverRuleCondition](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPrefixListResolverRuleCondition.html): Describes a condition within a CIDR selection rule.
+- [IpamPrefixListResolverRuleConditionRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPrefixListResolverRuleConditionRequest.html): Describes a condition used when creating or modifying resolver rules.
+- [IpamPrefixListResolverRuleRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPrefixListResolverRuleRequest.html): Describes a CIDR selection rule to include in a request.
+- [IpamPrefixListResolverTarget](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPrefixListResolverTarget.html): Describes an IPAM prefix list resolver target.
+- [IpamPrefixListResolverVersion](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPrefixListResolverVersion.html): Describes a version of an IPAM prefix list resolver.
+- [IpamPrefixListResolverVersionEntry](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPrefixListResolverVersionEntry.html): Describes a CIDR entry in a specific version of an IPAM prefix list resolver.
+- [IpamPublicAddressSecurityGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPublicAddressSecurityGroup.html): The security group that the resource with the public IP address is in.
+- [IpamPublicAddressTag](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPublicAddressTag.html): A tag for a public IP address discovered by IPAM.
+- [IpamPublicAddressTags](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamPublicAddressTags.html): Tags for a public IP address discovered by IPAM.
+- [IpamResourceCidr](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamResourceCidr.html): The CIDR for an IPAM resource.
+- [IpamResourceDiscovery](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamResourceDiscovery.html): A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.
+- [IpamResourceDiscoveryAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamResourceDiscoveryAssociation.html): An IPAM resource discovery association.
+- [IpamResourceTag](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamResourceTag.html): The key/value combination of a tag assigned to the resource.
+- [IpamScope](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamScope.html): In IPAM, a scope is the highest-level container within IPAM.
+- [IpamScopeExternalAuthorityConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpamScopeExternalAuthorityConfiguration.html): The configuration that links an Amazon VPC IPAM scope to an external authority system.
+- [IpPermission](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpPermission.html): Describes the permissions for a security group rule.
+- [IpRange](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_IpRange.html): Describes an IPv4 address range.
+- [Ipv4PrefixSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Ipv4PrefixSpecification.html): Describes an IPv4 prefix.
+- [Ipv4PrefixSpecificationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Ipv4PrefixSpecificationRequest.html): Describes the IPv4 prefix option for a network interface.
+- [Ipv4PrefixSpecificationResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Ipv4PrefixSpecificationResponse.html): Information about the IPv4 delegated prefixes assigned to a network interface.
+- [Ipv6CidrAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Ipv6CidrAssociation.html): Describes an IPv6 CIDR block association.
+- [Ipv6CidrBlock](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Ipv6CidrBlock.html): Describes an IPv6 CIDR block.
+- [Ipv6Pool](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Ipv6Pool.html): Describes an IPv6 address pool.
+- [Ipv6PrefixSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Ipv6PrefixSpecification.html): Describes the IPv6 prefix.
+- [Ipv6PrefixSpecificationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Ipv6PrefixSpecificationRequest.html): Describes the IPv6 prefix option for a network interface.
+- [Ipv6PrefixSpecificationResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Ipv6PrefixSpecificationResponse.html): Information about the IPv6 delegated prefixes assigned to a network interface.
+- [Ipv6Range](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Ipv6Range.html): Describes an IPv6 address range.
+- [KeyPairInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_KeyPairInfo.html): Describes a key pair.
+- [LastError](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LastError.html): The last error that occurred for a VPC endpoint.
+- [LaunchPermission](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchPermission.html): Describes a launch permission.
+- [LaunchPermissionModifications](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchPermissionModifications.html): Describes a launch permission modification.
+- [LaunchSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchSpecification.html): Describes the launch specification for an instance.
+- [LaunchTemplate](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplate.html): Describes a launch template.
+- [LaunchTemplateAndOverridesResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateAndOverridesResponse.html): Describes a launch template and overrides.
+- [LaunchTemplateBlockDeviceMapping](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateBlockDeviceMapping.html): Describes a block device mapping.
+- [LaunchTemplateBlockDeviceMappingRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateBlockDeviceMappingRequest.html): Describes a block device mapping.
+- [LaunchTemplateCapacityReservationSpecificationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateCapacityReservationSpecificationRequest.html): Describes an instance's Capacity Reservation targeting option.
+- [LaunchTemplateCapacityReservationSpecificationResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateCapacityReservationSpecificationResponse.html): Information about the Capacity Reservation targeting option.
+- [LaunchTemplateConfig](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateConfig.html): Describes a launch template and overrides.
+- [LaunchTemplateCpuOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateCpuOptions.html): The CPU options for the instance.
+- [LaunchTemplateCpuOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateCpuOptionsRequest.html): The CPU options for the instance.
+- [LaunchTemplateEbsBlockDevice](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateEbsBlockDevice.html): Describes a block device for an EBS volume.
+- [LaunchTemplateEbsBlockDeviceRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateEbsBlockDeviceRequest.html): The parameters for a block device for an EBS volume.
+- [LaunchTemplateElasticInferenceAccelerator](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateElasticInferenceAccelerator.html)
+- [LaunchTemplateElasticInferenceAcceleratorResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateElasticInferenceAcceleratorResponse.html)
+- [LaunchTemplateEnaSrdSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateEnaSrdSpecification.html): ENA Express uses AWS Scalable Reliable Datagram (SRD) technology to increase the maximum bandwidth used per stream and minimize tail latency of network traffic between EC2 instances.
+- [LaunchTemplateEnaSrdUdpSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateEnaSrdUdpSpecification.html): ENA Express is compatible with both TCP and UDP transport protocols.
+- [LaunchTemplateEnclaveOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateEnclaveOptions.html): Indicates whether the instance is enabled for AWS Nitro Enclaves.
+- [LaunchTemplateEnclaveOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateEnclaveOptionsRequest.html): Indicates whether the instance is enabled for AWS Nitro Enclaves.
+- [LaunchTemplateHibernationOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateHibernationOptions.html): Indicates whether an instance is configured for hibernation.
+- [LaunchTemplateHibernationOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateHibernationOptionsRequest.html): Indicates whether the instance is configured for hibernation.
+- [LaunchTemplateIamInstanceProfileSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateIamInstanceProfileSpecification.html): Describes an IAM instance profile.
+- [LaunchTemplateIamInstanceProfileSpecificationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateIamInstanceProfileSpecificationRequest.html): An IAM instance profile.
+- [LaunchTemplateInstanceMaintenanceOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateInstanceMaintenanceOptions.html): The maintenance options of your instance.
+- [LaunchTemplateInstanceMaintenanceOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateInstanceMaintenanceOptionsRequest.html): The maintenance options of your instance.
+- [LaunchTemplateInstanceMarketOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateInstanceMarketOptions.html): The market (purchasing) option for the instances.
+- [LaunchTemplateInstanceMarketOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateInstanceMarketOptionsRequest.html): The market (purchasing) option for the instances.
+- [LaunchTemplateInstanceMetadataOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateInstanceMetadataOptions.html): The metadata options for the instance.
+- [LaunchTemplateInstanceMetadataOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateInstanceMetadataOptionsRequest.html): The metadata options for the instance.
+- [LaunchTemplateInstanceNetworkInterfaceSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateInstanceNetworkInterfaceSpecification.html): Describes a network interface.
+- [LaunchTemplateInstanceNetworkInterfaceSpecificationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateInstanceNetworkInterfaceSpecificationRequest.html): The parameters for a network interface.
+- [LaunchTemplateInstanceSecondaryInterfaceSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateInstanceSecondaryInterfaceSpecification.html): Describes a secondary interface specification in a launch template.
+- [LaunchTemplateInstanceSecondaryInterfaceSpecificationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateInstanceSecondaryInterfaceSpecificationRequest.html): Describes a secondary interface specification for a launch template request.
+- [LaunchTemplateLicenseConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateLicenseConfiguration.html): Describes a license configuration.
+- [LaunchTemplateLicenseConfigurationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateLicenseConfigurationRequest.html): Describes a license configuration.
+- [LaunchTemplateNetworkPerformanceOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateNetworkPerformanceOptions.html): With network performance options, you can adjust your bandwidth preferences to meet the needs of the workload that runs on your instance at launch.
+- [LaunchTemplateNetworkPerformanceOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateNetworkPerformanceOptionsRequest.html): When you configure network performance options in your launch template, your instance is geared for performance improvements based on the workload that it runs as soon as it's available.
+- [LaunchTemplateOverrides](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateOverrides.html): Describes overrides for a launch template.
+- [LaunchTemplatePlacement](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplatePlacement.html): Describes the placement of an instance.
+- [LaunchTemplatePlacementRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplatePlacementRequest.html): Describes the placement of an instance.
+- [LaunchTemplatePrivateDnsNameOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplatePrivateDnsNameOptions.html): Describes the options for instance hostnames.
+- [LaunchTemplatePrivateDnsNameOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplatePrivateDnsNameOptionsRequest.html): Describes the options for instance hostnames.
+- [LaunchTemplatesMonitoring](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplatesMonitoring.html): Describes the monitoring for the instance.
+- [LaunchTemplatesMonitoringRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplatesMonitoringRequest.html): Describes the monitoring for the instance.
+- [LaunchTemplateSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateSpecification.html): Describes the launch template to use.
+- [LaunchTemplateSpotMarketOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateSpotMarketOptions.html): The options for Spot Instances.
+- [LaunchTemplateSpotMarketOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateSpotMarketOptionsRequest.html): The options for Spot Instances.
+- [LaunchTemplateTagSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateTagSpecification.html): The tags specification for the launch template.
+- [LaunchTemplateTagSpecificationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateTagSpecificationRequest.html): The tags specification for the resources that are created during instance launch.
+- [LaunchTemplateVersion](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateVersion.html): Describes a launch template version.
+- [LicenseConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LicenseConfiguration.html): Describes a license configuration.
+- [LicenseConfigurationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LicenseConfigurationRequest.html): Describes a license configuration.
+- [LoadBalancersConfig](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LoadBalancersConfig.html): Describes the Classic Load Balancers and target groups to attach to a Spot Fleet request.
+- [LoadPermission](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LoadPermission.html): Describes a load permission.
+- [LoadPermissionModifications](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LoadPermissionModifications.html): Describes modifications to the load permissions of an Amazon FPGA image (AFI).
+- [LoadPermissionRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LoadPermissionRequest.html): Describes a load permission.
+- [LocalGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LocalGateway.html): Describes a local gateway.
+- [LocalGatewayRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LocalGatewayRoute.html): Describes a route for a local gateway route table.
+- [LocalGatewayRouteTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LocalGatewayRouteTable.html): Describes a local gateway route table.
+- [LocalGatewayRouteTableVirtualInterfaceGroupAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LocalGatewayRouteTableVirtualInterfaceGroupAssociation.html): Describes an association between a local gateway route table and a virtual interface group.
+- [LocalGatewayRouteTableVpcAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LocalGatewayRouteTableVpcAssociation.html): Describes an association between a local gateway route table and a VPC.
+- [LocalGatewayVirtualInterface](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LocalGatewayVirtualInterface.html): Describes a local gateway virtual interface.
+- [LocalGatewayVirtualInterfaceGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LocalGatewayVirtualInterfaceGroup.html): Describes a local gateway virtual interface group.
+- [LockedSnapshotsInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LockedSnapshotsInfo.html): Information about a locked snapshot.
+- [MacHost](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MacHost.html): Information about the EC2 Mac Dedicated Host.
+- [MacModificationTask](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MacModificationTask.html): Information about a System Integrity Protection (SIP) modification task or volume ownership delegation task for an Amazon EC2 Mac instance.
+- [MacSystemIntegrityProtectionConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MacSystemIntegrityProtectionConfiguration.html): Describes the configuration for a System Integrity Protection (SIP) modification task.
+- [MacSystemIntegrityProtectionConfigurationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MacSystemIntegrityProtectionConfigurationRequest.html): Describes a custom configuration for a System Integrity Protection (SIP) modification task.
+- [MaintenanceDetails](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MaintenanceDetails.html): Details for Site-to-Site VPN tunnel endpoint maintenance events.
+- [ManagedPrefixList](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ManagedPrefixList.html): Describes a managed prefix list.
+- [MediaAcceleratorInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MediaAcceleratorInfo.html): Describes the media accelerators for the instance type.
+- [MediaDeviceInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MediaDeviceInfo.html): Describes the media accelerators for the instance type.
+- [MediaDeviceMemoryInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MediaDeviceMemoryInfo.html): Describes the memory available to the media accelerator.
+- [MemoryGiBPerVCpu](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MemoryGiBPerVCpu.html): The minimum and maximum amount of memory per vCPU, in GiB.
+- [MemoryGiBPerVCpuRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MemoryGiBPerVCpuRequest.html): The minimum and maximum amount of memory per vCPU, in GiB.
+- [MemoryInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MemoryInfo.html): Describes the memory for the instance type.
+- [MemoryMiB](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MemoryMiB.html): The minimum and maximum amount of memory, in MiB.
+- [MemoryMiBRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MemoryMiBRequest.html): The minimum and maximum amount of memory, in MiB.
+- [MetricDataResult](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MetricDataResult.html): Contains a single data point from a capacity metrics query, including the dimension values, timestamp, and metric values for that specific combination.
+- [MetricPoint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MetricPoint.html): Indicates whether the network was healthy or degraded at a particular point.
+- [MetricValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MetricValue.html): Represents a single metric value with its associated statistic, such as the sum or average of unused capacity hours.
+- [ModifyTransitGatewayOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTransitGatewayOptions.html): The transit gateway options.
+- [ModifyTransitGatewayVpcAttachmentRequestOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyTransitGatewayVpcAttachmentRequestOptions.html): Describes the options for a VPC attachment.
+- [ModifyVerifiedAccessEndpointCidrOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVerifiedAccessEndpointCidrOptions.html): The CIDR options for a Verified Access endpoint.
+- [ModifyVerifiedAccessEndpointEniOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVerifiedAccessEndpointEniOptions.html): Describes the options when modifying a Verified Access endpoint with the network-interface type.
+- [ModifyVerifiedAccessEndpointLoadBalancerOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVerifiedAccessEndpointLoadBalancerOptions.html): Describes a load balancer when creating an AWS Verified Access endpoint using the load-balancer type.
+- [ModifyVerifiedAccessEndpointPortRange](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVerifiedAccessEndpointPortRange.html): Describes the port range for a Verified Access endpoint.
+- [ModifyVerifiedAccessEndpointRdsOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVerifiedAccessEndpointRdsOptions.html): The RDS options for a Verified Access endpoint.
+- [ModifyVerifiedAccessNativeApplicationOidcOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVerifiedAccessNativeApplicationOidcOptions.html): Describes the OpenID Connect (OIDC) options.
+- [ModifyVerifiedAccessTrustProviderDeviceOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVerifiedAccessTrustProviderDeviceOptions.html): Modifies the configuration of the specified device-based AWS Verified Access trust provider.
+- [ModifyVerifiedAccessTrustProviderOidcOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVerifiedAccessTrustProviderOidcOptions.html): Options for an OpenID Connect-compatible user-identity trust provider.
+- [ModifyVpnTunnelOptionsSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpnTunnelOptionsSpecification.html): The AWS Site-to-Site VPN tunnel options to modify.
+- [Monitoring](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Monitoring.html): Describes the monitoring of an instance.
+- [MovingAddressStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_MovingAddressStatus.html)
+- [NatGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NatGateway.html): Describes a NAT gateway.
+- [NatGatewayAddress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NatGatewayAddress.html): Describes the IP addresses and network interface associated with a NAT gateway.
+- [NatGatewayAttachedAppliance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NatGatewayAttachedAppliance.html): Information about an appliance attached to a NAT Gateway, providing managed security solutions for traffic filtering and inspection.
+- [NativeApplicationOidcOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NativeApplicationOidcOptions.html): Describes the OpenID Connect (OIDC) options.
+- [NetworkAcl](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkAcl.html): Describes a network ACL.
+- [NetworkAclAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkAclAssociation.html): Describes an association between a network ACL and a subnet.
+- [NetworkAclEntry](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkAclEntry.html): Describes an entry in a network ACL.
+- [NetworkBandwidthGbps](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkBandwidthGbps.html): The minimum and maximum amount of network bandwidth, in gigabits per second (Gbps).
+- [NetworkBandwidthGbpsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkBandwidthGbpsRequest.html): The minimum and maximum amount of network bandwidth, in gigabits per second (Gbps).
+- [NetworkCardInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkCardInfo.html): Describes the network card support of the instance type.
+- [NetworkInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkInfo.html): Describes the networking features of the instance type.
+- [NetworkInsightsAccessScope](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkInsightsAccessScope.html): Describes a Network Access Scope.
+- [NetworkInsightsAccessScopeAnalysis](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkInsightsAccessScopeAnalysis.html): Describes a Network Access Scope analysis.
+- [NetworkInsightsAccessScopeContent](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkInsightsAccessScopeContent.html): Describes the Network Access Scope content.
+- [NetworkInsightsAnalysis](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkInsightsAnalysis.html): Describes a network insights analysis.
+- [NetworkInsightsPath](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkInsightsPath.html): Describes a path.
+- [NetworkInterface](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkInterface.html): Describes a network interface.
+- [NetworkInterfaceAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkInterfaceAssociation.html): Describes association information for an Elastic IP address (IPv4 only), or a Carrier IP address (for a network interface which resides in a subnet in a Wavelength Zone).
+- [NetworkInterfaceAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkInterfaceAttachment.html): Describes a network interface attachment.
+- [NetworkInterfaceAttachmentChanges](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkInterfaceAttachmentChanges.html): Describes an attachment change.
+- [NetworkInterfaceCount](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkInterfaceCount.html): The minimum and maximum number of network interfaces.
+- [NetworkInterfaceCountRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkInterfaceCountRequest.html): The minimum and maximum number of network interfaces.
+- [NetworkInterfaceIpv6Address](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkInterfaceIpv6Address.html): Describes an IPv6 address associated with a network interface.
+- [NetworkInterfacePermission](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkInterfacePermission.html): Describes a permission for a network interface.
+- [NetworkInterfacePermissionState](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkInterfacePermissionState.html): Describes the state of a network interface permission.
+- [NetworkInterfacePrivateIpAddress](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NetworkInterfacePrivateIpAddress.html): Describes the private IPv4 address of a network interface.
+- [NeuronDeviceCoreInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NeuronDeviceCoreInfo.html): Describes the cores available to the neuron accelerator.
+- [NeuronDeviceInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NeuronDeviceInfo.html): Describes the neuron accelerators for the instance type.
+- [NeuronDeviceMemoryInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NeuronDeviceMemoryInfo.html): Describes the memory available to the neuron accelerator.
+- [NeuronInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NeuronInfo.html): Describes the neuron accelerators for the instance type.
+- [NewDhcpConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NewDhcpConfiguration.html): Describes a DHCP configuration option.
+- [NitroTpmInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_NitroTpmInfo.html): Describes the supported NitroTPM versions for the instance type.
+- [OidcOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_OidcOptions.html): Describes the options for an OpenID Connect-compatible user-identity trust provider.
+- [OnDemandOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_OnDemandOptions.html): Describes the configuration of On-Demand Instances in an EC2 Fleet.
+- [OnDemandOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_OnDemandOptionsRequest.html): Describes the configuration of On-Demand Instances in an EC2 Fleet.
+- [OperatorRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_OperatorRequest.html): The service provider that manages the resource.
+- [OperatorResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_OperatorResponse.html): Describes whether the resource is managed by a service provider and, if so, describes the service provider that manages it.
+- [OutpostLag](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_OutpostLag.html): Describes an Outpost link aggregation group (LAG).
+- [PacketHeaderStatement](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PacketHeaderStatement.html): Describes a packet header statement.
+- [PacketHeaderStatementRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PacketHeaderStatementRequest.html): Describes a packet header statement.
+- [PathComponent](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PathComponent.html): Describes a path component.
+- [PathFilter](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PathFilter.html): Describes a set of filters for a path analysis.
+- [PathRequestFilter](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PathRequestFilter.html): Describes a set of filters for a path analysis.
+- [PathStatement](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PathStatement.html): Describes a path statement.
+- [PathStatementRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PathStatementRequest.html): Describes a path statement.
+- [PciId](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PciId.html): Describes the data that identifies an Amazon FPGA image (AFI) on the PCI bus.
+- [PeeringAttachmentStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PeeringAttachmentStatus.html): The status of the transit gateway peering attachment.
+- [PeeringConnectionOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PeeringConnectionOptions.html): Describes the VPC peering connection options.
+- [PeeringConnectionOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PeeringConnectionOptionsRequest.html): The VPC peering connection options.
+- [PeeringTgwInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PeeringTgwInfo.html): Information about the transit gateway in the peering attachment.
+- [PerformanceFactorReference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PerformanceFactorReference.html): Specify an instance family to use as the baseline reference for CPU performance.
+- [PerformanceFactorReferenceRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PerformanceFactorReferenceRequest.html): Specify an instance family to use as the baseline reference for CPU performance.
+- [Phase1DHGroupNumbersListValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Phase1DHGroupNumbersListValue.html): The Diffie-Hellmann group number for phase 1 IKE negotiations.
+- [Phase1DHGroupNumbersRequestListValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Phase1DHGroupNumbersRequestListValue.html): Specifies a Diffie-Hellman group number for the VPN tunnel for phase 1 IKE negotiations.
+- [Phase1EncryptionAlgorithmsListValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Phase1EncryptionAlgorithmsListValue.html): The encryption algorithm for phase 1 IKE negotiations.
+- [Phase1EncryptionAlgorithmsRequestListValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Phase1EncryptionAlgorithmsRequestListValue.html): Specifies the encryption algorithm for the VPN tunnel for phase 1 IKE negotiations.
+- [Phase1IntegrityAlgorithmsListValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Phase1IntegrityAlgorithmsListValue.html): The integrity algorithm for phase 1 IKE negotiations.
+- [Phase1IntegrityAlgorithmsRequestListValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Phase1IntegrityAlgorithmsRequestListValue.html): Specifies the integrity algorithm for the VPN tunnel for phase 1 IKE negotiations.
+- [Phase2DHGroupNumbersListValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Phase2DHGroupNumbersListValue.html): The Diffie-Hellmann group number for phase 2 IKE negotiations.
+- [Phase2DHGroupNumbersRequestListValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Phase2DHGroupNumbersRequestListValue.html): Specifies a Diffie-Hellman group number for the VPN tunnel for phase 2 IKE negotiations.
+- [Phase2EncryptionAlgorithmsListValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Phase2EncryptionAlgorithmsListValue.html): The encryption algorithm for phase 2 IKE negotiations.
+- [Phase2EncryptionAlgorithmsRequestListValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Phase2EncryptionAlgorithmsRequestListValue.html): Specifies the encryption algorithm for the VPN tunnel for phase 2 IKE negotiations.
+- [Phase2IntegrityAlgorithmsListValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Phase2IntegrityAlgorithmsListValue.html): The integrity algorithm for phase 2 IKE negotiations.
+- [Phase2IntegrityAlgorithmsRequestListValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Phase2IntegrityAlgorithmsRequestListValue.html): Specifies the integrity algorithm for the VPN tunnel for phase 2 IKE negotiations.
+- [Placement](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Placement.html): Describes the placement of an instance.
+- [PlacementGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PlacementGroup.html): Describes a placement group.
+- [PlacementGroupInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PlacementGroupInfo.html): Describes the placement group support of the instance type.
+- [PlacementResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PlacementResponse.html): Describes the placement of an instance.
+- [PoolCidrBlock](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PoolCidrBlock.html): Describes a CIDR block for an address pool.
+- [PortRange](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PortRange.html): Describes a range of ports.
+- [PrefixList](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PrefixList.html): Describes prefixes for AWS services.
+- [PrefixListAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PrefixListAssociation.html): Describes the resource with which a prefix list is associated.
+- [PrefixListEntry](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PrefixListEntry.html): Describes a prefix list entry.
+- [PrefixListId](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PrefixListId.html): Describes a prefix list ID.
+- [PriceSchedule](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PriceSchedule.html): Describes the price for a Reserved Instance.
+- [PriceScheduleSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PriceScheduleSpecification.html): Describes the price for a Reserved Instance.
+- [PricingDetail](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PricingDetail.html): Describes a Reserved Instance offering.
+- [PrincipalIdFormat](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PrincipalIdFormat.html): PrincipalIdFormat description
+- [PrivateDnsDetails](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PrivateDnsDetails.html): Information about the Private DNS name for interface endpoints.
+- [PrivateDnsNameConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PrivateDnsNameConfiguration.html): Information about the private DNS name for the service endpoint.
+- [PrivateDnsNameOptionsOnLaunch](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PrivateDnsNameOptionsOnLaunch.html): Describes the options for instance hostnames.
+- [PrivateDnsNameOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PrivateDnsNameOptionsRequest.html): Describes the options for instance hostnames.
+- [PrivateDnsNameOptionsResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PrivateDnsNameOptionsResponse.html): Describes the options for instance hostnames.
+- [PrivateIpAddressSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PrivateIpAddressSpecification.html): Describes a secondary private IPv4 address for a network interface.
+- [ProcessorInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ProcessorInfo.html): Describes the processor used by the instance type.
+- [ProductCode](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ProductCode.html): Describes a product code.
+- [PropagatingVgw](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PropagatingVgw.html): Describes a virtual private gateway propagating route.
+- [ProvisionedBandwidth](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ProvisionedBandwidth.html): Reserved.
+- [PtrUpdateStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PtrUpdateStatus.html): The status of an updated pointer (PTR) record for an Elastic IP address.
+- [PublicIpDnsNameOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PublicIpDnsNameOptions.html): Public hostname type options.
+- [PublicIpv4Pool](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PublicIpv4Pool.html): Describes an IPv4 address pool.
+- [PublicIpv4PoolRange](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PublicIpv4PoolRange.html): Describes an address range of an IPv4 address pool.
+- [Purchase](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Purchase.html): Describes the result of the purchase.
+- [PurchaseRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_PurchaseRequest.html): Describes a request to purchase Scheduled Instances.
+- [RecurringCharge](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RecurringCharge.html): Describes a recurring charge.
+- [ReferencedSecurityGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReferencedSecurityGroup.html): Describes the security group that is referenced in the security group rule.
+- [Region](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Region.html): Describes a Region.
+- [RegionalSummary](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RegionalSummary.html): A summary report for the attribute for a Region.
+- [RegionGeography](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RegionGeography.html): Describes the geography information for a Region.
+- [RegisteredInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RegisteredInstance.html): Describes an Amazon EC2 instance that is enabled for SQL Server High Availability standby detection monitoring.
+- [RegisterInstanceTagAttributeRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RegisterInstanceTagAttributeRequest.html): Information about the tag keys to register for the current Region.
+- [RemoveIpamOperatingRegion](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RemoveIpamOperatingRegion.html): Remove an operating Region from an IPAM.
+- [RemoveIpamOrganizationalUnitExclusion](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RemoveIpamOrganizationalUnitExclusion.html): Remove an Organizational Unit (OU) exclusion to your IPAM.
+- [RemovePrefixListEntry](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RemovePrefixListEntry.html): An entry for a prefix list.
+- [ReplaceRootVolumeTask](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReplaceRootVolumeTask.html): Information about a root volume replacement task.
+- [RequestFilterPortRange](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestFilterPortRange.html): Describes a port range.
+- [RequestIpamResourceTag](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestIpamResourceTag.html): A tag on an IPAM resource.
+- [RequestLaunchTemplateData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestLaunchTemplateData.html): The information to include in the launch template.
+- [RequestSpotLaunchSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RequestSpotLaunchSpecification.html): Describes the launch specification for an instance.
+- [Reservation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Reservation.html): Describes a launch request for one or more instances, and includes owner, requester, and security group information that applies to all instances in the launch request.
+- [ReservationFleetInstanceSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReservationFleetInstanceSpecification.html): Information about an instance type to use in a Capacity Reservation Fleet.
+- [ReservationValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReservationValue.html): The cost associated with the Reserved Instance.
+- [ReservedInstanceLimitPrice](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReservedInstanceLimitPrice.html): Describes the limit price of a Reserved Instance offering.
+- [ReservedInstanceReservationValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReservedInstanceReservationValue.html): The total value of the Convertible Reserved Instance.
+- [ReservedInstances](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReservedInstances.html): Describes a Reserved Instance.
+- [ReservedInstancesConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReservedInstancesConfiguration.html): Describes the configuration settings for the modified Reserved Instances.
+- [ReservedInstancesId](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReservedInstancesId.html): Describes the ID of a Reserved Instance.
+- [ReservedInstancesListing](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReservedInstancesListing.html): Describes a Reserved Instance listing.
+- [ReservedInstancesModification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReservedInstancesModification.html): Describes a Reserved Instance modification.
+- [ReservedInstancesModificationResult](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReservedInstancesModificationResult.html): Describes the modification request/s.
+- [ReservedInstancesOffering](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ReservedInstancesOffering.html): Describes a Reserved Instance offering.
+- [ResourceStatement](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ResourceStatement.html): Describes a resource statement.
+- [ResourceStatementRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ResourceStatementRequest.html): Describes a resource statement.
+- [ResourceTypeOption](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ResourceTypeOption.html): The options that affect the scope of the response.
+- [ResourceTypeRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ResourceTypeRequest.html): A resource type to check for image references.
+- [ResponseError](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ResponseError.html): Describes the error that's returned when you cannot delete a launch template version.
+- [ResponseLaunchTemplateData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ResponseLaunchTemplateData.html): The information for a launch template.
+- [RevokedSecurityGroupRule](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RevokedSecurityGroupRule.html): A security group rule removed with RevokeSecurityGroupEgress or RevokeSecurityGroupIngress.
+- [Route](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Route.html): Describes a route in a route table.
+- [RouteServer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RouteServer.html): Describes a route server and its configuration.
+- [RouteServerAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RouteServerAssociation.html): Describes the association between a route server and a VPC.
+- [RouteServerBfdStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RouteServerBfdStatus.html): The current status of Bidirectional Forwarding Detection (BFD) for a BGP session.
+- [RouteServerBgpOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RouteServerBgpOptions.html): The BGP configuration options for a route server peer.
+- [RouteServerBgpOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RouteServerBgpOptionsRequest.html): The BGP configuration options requested for a route server peer.
+- [RouteServerBgpStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RouteServerBgpStatus.html): The current status of a BGP session.
+- [RouteServerEndpoint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RouteServerEndpoint.html): Describes a route server endpoint and its properties.
+- [RouteServerPeer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RouteServerPeer.html): Describes a BGP peer configuration for a route server endpoint.
+- [RouteServerPropagation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RouteServerPropagation.html): Describes the route propagation configuration between a route server and a route table.
+- [RouteServerRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RouteServerRoute.html): Describes a route in the route server's routing database.
+- [RouteServerRouteInstallationDetail](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RouteServerRouteInstallationDetail.html): Describes the installation status of a route in a route table.
+- [RouteTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RouteTable.html): Describes a route table.
+- [RouteTableAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RouteTableAssociation.html): Describes an association between a route table and a subnet or gateway.
+- [RouteTableAssociationState](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RouteTableAssociationState.html): Describes the state of an association between a route table and a subnet or gateway.
+- [RuleGroupRuleOptionsPair](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RuleGroupRuleOptionsPair.html): Describes the rule options for a stateful rule group.
+- [RuleGroupTypePair](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RuleGroupTypePair.html): Describes the type of a stateful rule group.
+- [RuleOption](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RuleOption.html): Describes additional settings for a stateful rule.
+- [RunInstancesMonitoringEnabled](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstancesMonitoringEnabled.html): Describes the monitoring of an instance.
+- [S3ObjectTag](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_S3ObjectTag.html): The tags to apply to the AMI object that will be stored in the Amazon S3 bucket.
+- [S3Storage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_S3Storage.html): Describes the storage parameters for Amazon S3 and Amazon S3 buckets for an instance store-backed AMI.
+- [ScheduledInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ScheduledInstance.html): Describes a Scheduled Instance.
+- [ScheduledInstanceAvailability](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ScheduledInstanceAvailability.html): Describes a schedule that is available for your Scheduled Instances.
+- [ScheduledInstanceRecurrence](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ScheduledInstanceRecurrence.html): Describes the recurring schedule for a Scheduled Instance.
+- [ScheduledInstanceRecurrenceRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ScheduledInstanceRecurrenceRequest.html): Describes the recurring schedule for a Scheduled Instance.
+- [ScheduledInstancesBlockDeviceMapping](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ScheduledInstancesBlockDeviceMapping.html): Describes a block device mapping for a Scheduled Instance.
+- [ScheduledInstancesEbs](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ScheduledInstancesEbs.html): Describes an EBS volume for a Scheduled Instance.
+- [ScheduledInstancesIamInstanceProfile](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ScheduledInstancesIamInstanceProfile.html): Describes an IAM instance profile for a Scheduled Instance.
+- [ScheduledInstancesIpv6Address](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ScheduledInstancesIpv6Address.html): Describes an IPv6 address.
+- [ScheduledInstancesLaunchSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ScheduledInstancesLaunchSpecification.html): Describes the launch specification for a Scheduled Instance.
+- [ScheduledInstancesMonitoring](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ScheduledInstancesMonitoring.html): Describes whether monitoring is enabled for a Scheduled Instance.
+- [ScheduledInstancesNetworkInterface](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ScheduledInstancesNetworkInterface.html): Describes a network interface for a Scheduled Instance.
+- [ScheduledInstancesPlacement](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ScheduledInstancesPlacement.html): Describes the placement for a Scheduled Instance.
+- [ScheduledInstancesPrivateIpAddressConfig](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ScheduledInstancesPrivateIpAddressConfig.html): Describes a private IPv4 address for a Scheduled Instance.
+- [SecondaryInterface](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecondaryInterface.html): Describes a secondary interface.
+- [SecondaryInterfaceAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecondaryInterfaceAttachment.html): Describes the attachment of a secondary interface to an instance.
+- [SecondaryInterfaceIpv4Address](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecondaryInterfaceIpv4Address.html): Describes a private IPv4 address for a secondary interface.
+- [SecondaryInterfacePrivateIpAddressSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecondaryInterfacePrivateIpAddressSpecification.html): Describes a private IPv4 address specification for a secondary interface.
+- [SecondaryInterfacePrivateIpAddressSpecificationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecondaryInterfacePrivateIpAddressSpecificationRequest.html): Describes a private IPv4 address specification for a secondary interface request.
+- [SecondaryNetwork](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecondaryNetwork.html): Describes a secondary network.
+- [SecondaryNetworkIpv4CidrBlockAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecondaryNetworkIpv4CidrBlockAssociation.html): Describes an IPv4 CIDR block associated with a secondary network.
+- [SecondarySubnet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecondarySubnet.html): Describes a secondary subnet.
+- [SecondarySubnetIpv4CidrBlockAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecondarySubnetIpv4CidrBlockAssociation.html): Describes an IPv4 CIDR block associated with a secondary subnet.
+- [SecurityGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecurityGroup.html): Describes a security group.
+- [SecurityGroupForVpc](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecurityGroupForVpc.html): A security group that can be used by interfaces in the VPC.
+- [SecurityGroupIdentifier](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecurityGroupIdentifier.html): Describes a security group.
+- [SecurityGroupReference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecurityGroupReference.html): Describes a VPC with a security group that references your security group.
+- [SecurityGroupRule](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecurityGroupRule.html): Describes a security group rule.
+- [SecurityGroupRuleDescription](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecurityGroupRuleDescription.html): Describes the description of a security group rule.
+- [SecurityGroupRuleRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecurityGroupRuleRequest.html): Describes a security group rule.
+- [SecurityGroupRuleUpdate](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecurityGroupRuleUpdate.html): Describes an update to a security group rule.
+- [SecurityGroupVpcAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SecurityGroupVpcAssociation.html): A security group association with a VPC that you made with AssociateSecurityGroupVpc.
+- [ServiceConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ServiceConfiguration.html): Describes a service configuration for a VPC endpoint service.
+- [ServiceDetail](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ServiceDetail.html): Describes a VPC endpoint service.
+- [ServiceLinkVirtualInterface](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ServiceLinkVirtualInterface.html): Describes the service link virtual interfaces that establish connectivity between AWS Outpost and on-premises networks.
+- [ServiceTypeDetail](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ServiceTypeDetail.html): Describes the type of service for a VPC endpoint.
+- [SlotDateTimeRangeRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SlotDateTimeRangeRequest.html): Describes the time period for a Scheduled Instance to start its first schedule.
+- [SlotStartTimeRangeRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SlotStartTimeRangeRequest.html): Describes the time period for a Scheduled Instance to start its first schedule.
+- [Snapshot](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Snapshot.html): Describes a snapshot.
+- [SnapshotDetail](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SnapshotDetail.html): Describes the snapshot created from the imported disk.
+- [SnapshotDiskContainer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SnapshotDiskContainer.html): The disk container object for the import snapshot request.
+- [SnapshotInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SnapshotInfo.html): Information about a snapshot.
+- [SnapshotRecycleBinInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SnapshotRecycleBinInfo.html): Information about a snapshot that is currently in the Recycle Bin.
+- [SnapshotTaskDetail](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SnapshotTaskDetail.html): Details about the import snapshot task.
+- [SnapshotTierStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SnapshotTierStatus.html): Provides information about a snapshot's storage tier.
+- [SpotCapacityRebalance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotCapacityRebalance.html): The Spot Instance replacement strategy to use when Amazon EC2 emits a signal that your Spot Instance is at an elevated risk of being interrupted.
+- [SpotDatafeedSubscription](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotDatafeedSubscription.html): Describes the data feed for a Spot Instance.
+- [SpotFleetLaunchSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetLaunchSpecification.html): Describes the launch specification for one or more Spot Instances.
+- [SpotFleetMonitoring](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetMonitoring.html): Describes whether monitoring is enabled.
+- [SpotFleetRequestConfig](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetRequestConfig.html): Describes a Spot Fleet request.
+- [SpotFleetRequestConfigData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetRequestConfigData.html): Describes the configuration of a Spot Fleet request.
+- [SpotFleetTagSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotFleetTagSpecification.html): The tags for a Spot Fleet resource.
+- [SpotInstanceRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotInstanceRequest.html): Describes a Spot Instance request.
+- [SpotInstanceStateFault](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotInstanceStateFault.html): Describes a Spot Instance state change.
+- [SpotInstanceStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotInstanceStatus.html): Describes the status of a Spot Instance request.
+- [SpotMaintenanceStrategies](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotMaintenanceStrategies.html): The strategies for managing your Spot Instances that are at an elevated risk of being interrupted.
+- [SpotMarketOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotMarketOptions.html): The options for Spot Instances.
+- [SpotOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotOptions.html): Describes the configuration of Spot Instances in an EC2 Fleet.
+- [SpotOptionsRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotOptionsRequest.html): Describes the configuration of Spot Instances in an EC2 Fleet request.
+- [SpotPlacement](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotPlacement.html): Describes Spot Instance placement.
+- [SpotPlacementScore](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotPlacementScore.html): The Spot placement score for this Region or Availability Zone.
+- [SpotPrice](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SpotPrice.html): The maximum price per unit hour that you are willing to pay for a Spot Instance.
+- [StaleIpPermission](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StaleIpPermission.html): Describes a stale rule in a security group.
+- [StaleSecurityGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StaleSecurityGroup.html): Describes a stale security group (a security group that contains stale rules).
+- [StateReason](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StateReason.html): Describes a state change.
+- [Storage](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Storage.html): Describes the storage location for an instance store-backed AMI.
+- [StorageLocation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StorageLocation.html): Describes a storage location in Amazon S3.
+- [StoreImageTaskResult](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_StoreImageTaskResult.html): The information about the AMI store task, including the progress of the task.
+- [Subnet](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Subnet.html): Describes a subnet.
+- [SubnetAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SubnetAssociation.html): Describes the subnet association with the transit gateway multicast domain.
+- [SubnetCidrBlockState](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SubnetCidrBlockState.html): Describes the state of a CIDR block.
+- [SubnetCidrReservation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SubnetCidrReservation.html): Describes a subnet CIDR reservation.
+- [SubnetConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SubnetConfiguration.html): Describes the configuration of a subnet for a VPC endpoint.
+- [SubnetIpPrefixes](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SubnetIpPrefixes.html): Prefixes of the subnet IP.
+- [SubnetIpv6CidrBlockAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SubnetIpv6CidrBlockAssociation.html): Describes an association between a subnet and an IPv6 CIDR block.
+- [Subscription](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Subscription.html): Describes an Infrastructure Performance subscription.
+- [SuccessfulInstanceCreditSpecificationItem](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SuccessfulInstanceCreditSpecificationItem.html): Describes the burstable performance instance whose credit option for CPU usage was successfully modified.
+- [SuccessfulQueuedPurchaseDeletion](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SuccessfulQueuedPurchaseDeletion.html): Describes a Reserved Instance whose queued purchase was successfully deleted.
+- [SupportedRegionDetail](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SupportedRegionDetail.html): Describes a supported Region.
+- [Tag](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Tag.html): Describes a tag.
+- [TagDescription](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TagDescription.html): Describes a tag.
+- [TagSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TagSpecification.html): The tags to apply to a resource when the resource is being created.
+- [TargetCapacitySpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TargetCapacitySpecification.html): The number of units to request.
+- [TargetCapacitySpecificationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TargetCapacitySpecificationRequest.html): The number of units to request.
+- [TargetConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TargetConfiguration.html): Information about the Convertible Reserved Instance offering.
+- [TargetConfigurationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TargetConfigurationRequest.html): Details about the target configuration.
+- [TargetGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TargetGroup.html): Describes a load balancer target group.
+- [TargetGroupsConfig](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TargetGroupsConfig.html): Describes the target groups to attach to a Spot Fleet.
+- [TargetNetwork](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TargetNetwork.html): Describes a target network associated with a Client VPN endpoint.
+- [TargetReservationValue](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TargetReservationValue.html): The total value of the new Convertible Reserved Instances.
+- [TerminateConnectionStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TerminateConnectionStatus.html): Information about a terminated Client VPN endpoint client connection.
+- [ThroughResourcesStatement](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ThroughResourcesStatement.html): Describes a through resource statement.
+- [ThroughResourcesStatementRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ThroughResourcesStatementRequest.html): Describes a through resource statement.
+- [TotalLocalStorageGB](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TotalLocalStorageGB.html): The minimum and maximum amount of total local storage, in GB.
+- [TotalLocalStorageGBRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TotalLocalStorageGBRequest.html): The minimum and maximum amount of total local storage, in GB.
+- [TrafficMirrorFilter](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TrafficMirrorFilter.html): Describes the Traffic Mirror filter.
+- [TrafficMirrorFilterRule](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TrafficMirrorFilterRule.html): Describes the Traffic Mirror rule.
+- [TrafficMirrorPortRange](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TrafficMirrorPortRange.html): Describes the Traffic Mirror port range.
+- [TrafficMirrorPortRangeRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TrafficMirrorPortRangeRequest.html): Information about the Traffic Mirror filter rule port range.
+- [TrafficMirrorSession](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TrafficMirrorSession.html): Describes a Traffic Mirror session.
+- [TrafficMirrorTarget](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TrafficMirrorTarget.html): Describes a Traffic Mirror target.
+- [TransitGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGateway.html): Describes a transit gateway.
+- [TransitGatewayAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayAssociation.html): Describes an association between a resource attachment and a transit gateway route table.
+- [TransitGatewayAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayAttachment.html): Describes an attachment between a resource and a transit gateway.
+- [TransitGatewayAttachmentAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayAttachmentAssociation.html): Describes an association.
+- [TransitGatewayAttachmentBgpConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayAttachmentBgpConfiguration.html): The BGP configuration information.
+- [TransitGatewayAttachmentPropagation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayAttachmentPropagation.html): Describes a propagation route table.
+- [TransitGatewayConnect](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayConnect.html): Describes a transit gateway Connect attachment.
+- [TransitGatewayConnectOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayConnectOptions.html): Describes the Connect attachment options.
+- [TransitGatewayConnectPeer](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayConnectPeer.html): Describes a transit gateway Connect peer.
+- [TransitGatewayConnectPeerConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayConnectPeerConfiguration.html): Describes the Connect peer details.
+- [TransitGatewayConnectRequestBgpOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayConnectRequestBgpOptions.html): The BGP options for the Connect attachment.
+- [TransitGatewayMeteringPolicy](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayMeteringPolicy.html): Describes a transit gateway metering policy.
+- [TransitGatewayMeteringPolicyEntry](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayMeteringPolicyEntry.html): Describes an entry in a transit gateway metering policy.
+- [TransitGatewayMeteringPolicyRule](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayMeteringPolicyRule.html): Describes the traffic matching criteria for a transit gateway metering policy rule.
+- [TransitGatewayMulticastDeregisteredGroupMembers](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayMulticastDeregisteredGroupMembers.html): Describes the deregistered transit gateway multicast group members.
+- [TransitGatewayMulticastDeregisteredGroupSources](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayMulticastDeregisteredGroupSources.html): Describes the deregistered transit gateway multicast group sources.
+- [TransitGatewayMulticastDomain](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayMulticastDomain.html): Describes the transit gateway multicast domain.
+- [TransitGatewayMulticastDomainAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayMulticastDomainAssociation.html): Describes the resources associated with the transit gateway multicast domain.
+- [TransitGatewayMulticastDomainAssociations](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayMulticastDomainAssociations.html): Describes the multicast domain associations.
+- [TransitGatewayMulticastDomainOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayMulticastDomainOptions.html): Describes the options for a transit gateway multicast domain.
+- [TransitGatewayMulticastGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayMulticastGroup.html): Describes the transit gateway multicast group resources.
+- [TransitGatewayMulticastRegisteredGroupMembers](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayMulticastRegisteredGroupMembers.html): Describes the registered transit gateway multicast group members.
+- [TransitGatewayMulticastRegisteredGroupSources](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayMulticastRegisteredGroupSources.html): Describes the members registered with the transit gateway multicast group.
+- [TransitGatewayOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayOptions.html): Describes the options for a transit gateway.
+- [TransitGatewayPeeringAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayPeeringAttachment.html): Describes the transit gateway peering attachment.
+- [TransitGatewayPeeringAttachmentOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayPeeringAttachmentOptions.html): Describes dynamic routing for the transit gateway peering attachment.
+- [TransitGatewayPolicyRule](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayPolicyRule.html): Describes a rule associated with a transit gateway policy.
+- [TransitGatewayPolicyRuleMetaData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayPolicyRuleMetaData.html): Describes the meta data tags associated with a transit gateway policy rule.
+- [TransitGatewayPolicyTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayPolicyTable.html): Describes a transit gateway policy table.
+- [TransitGatewayPolicyTableAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayPolicyTableAssociation.html): Describes a transit gateway policy table association.
+- [TransitGatewayPolicyTableEntry](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayPolicyTableEntry.html): Describes a transit gateway policy table entry
+- [TransitGatewayPrefixListAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayPrefixListAttachment.html): Describes a transit gateway prefix list attachment.
+- [TransitGatewayPrefixListReference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayPrefixListReference.html): Describes a prefix list reference.
+- [TransitGatewayPropagation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayPropagation.html): Describes route propagation.
+- [TransitGatewayRequestOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayRequestOptions.html): Describes the options for a transit gateway.
+- [TransitGatewayRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayRoute.html): Describes a route for a transit gateway route table.
+- [TransitGatewayRouteAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayRouteAttachment.html): Describes a route attachment.
+- [TransitGatewayRouteTable](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayRouteTable.html): Describes a transit gateway route table.
+- [TransitGatewayRouteTableAnnouncement](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayRouteTableAnnouncement.html): Describes a transit gateway route table announcement.
+- [TransitGatewayRouteTableAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayRouteTableAssociation.html): Describes an association between a route table and a resource attachment.
+- [TransitGatewayRouteTablePropagation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayRouteTablePropagation.html): Describes a route table propagation.
+- [TransitGatewayRouteTableRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayRouteTableRoute.html): Describes a route in a transit gateway route table.
+- [TransitGatewayVpcAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayVpcAttachment.html): Describes a VPC attachment.
+- [TransitGatewayVpcAttachmentOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TransitGatewayVpcAttachmentOptions.html): Describes the VPC attachment options.
+- [TrunkInterfaceAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TrunkInterfaceAssociation.html): Information about an association between a branch network interface with a trunk network interface.
+- [TunnelOption](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TunnelOption.html): The VPN tunnel options.
+- [UnsuccessfulInstanceCreditSpecificationItem](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_UnsuccessfulInstanceCreditSpecificationItem.html): Describes the burstable performance instance whose credit option for CPU usage was not modified.
+- [UnsuccessfulInstanceCreditSpecificationItemError](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_UnsuccessfulInstanceCreditSpecificationItemError.html): Information about the error for the burstable performance instance whose credit option for CPU usage was not modified.
+- [UnsuccessfulItem](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_UnsuccessfulItem.html): Information about items that were not successfully processed in a batch call.
+- [UnsuccessfulItemError](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_UnsuccessfulItemError.html): Information about the error that occurred.
+- [UserBucket](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_UserBucket.html): Describes the Amazon S3 bucket for the disk image.
+- [UserBucketDetails](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_UserBucketDetails.html): Describes the Amazon S3 bucket for the disk image.
+- [UserData](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_UserData.html): Describes the user data for an instance.
+- [UserIdGroupPair](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_UserIdGroupPair.html): Describes a security group and AWS account ID pair.
+- [ValidationError](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ValidationError.html): The error code and error message that is returned for a parameter or parameter combination that is not valid when a new launch template or new version of a launch template is created.
+- [ValidationWarning](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ValidationWarning.html): The error codes and error messages that are returned for the parameters or parameter combinations that are not valid when a new launch template or new version of a launch template is created.
+- [VCpuCountRange](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VCpuCountRange.html): The minimum and maximum number of vCPUs.
+- [VCpuCountRangeRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VCpuCountRangeRequest.html): The minimum and maximum number of vCPUs.
+- [VCpuInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VCpuInfo.html): Describes the vCPU configurations for the instance type.
+- [VerifiedAccessEndpoint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessEndpoint.html): An AWS Verified Access endpoint specifies the application that AWS Verified Access provides access to.
+- [VerifiedAccessEndpointCidrOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessEndpointCidrOptions.html): Describes the CIDR options for a Verified Access endpoint.
+- [VerifiedAccessEndpointEniOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessEndpointEniOptions.html): Options for a network-interface type endpoint.
+- [VerifiedAccessEndpointLoadBalancerOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessEndpointLoadBalancerOptions.html): Describes a load balancer when creating an AWS Verified Access endpoint using the load-balancer type.
+- [VerifiedAccessEndpointPortRange](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessEndpointPortRange.html): Describes a port range.
+- [VerifiedAccessEndpointRdsOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessEndpointRdsOptions.html): Describes the RDS options for a Verified Access endpoint.
+- [VerifiedAccessEndpointStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessEndpointStatus.html): Describes the status of a Verified Access endpoint.
+- [VerifiedAccessEndpointTarget](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessEndpointTarget.html): Describes the targets for the specified Verified Access endpoint.
+- [VerifiedAccessGroup](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessGroup.html): Describes a Verified Access group.
+- [VerifiedAccessInstance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessInstance.html): Describes a Verified Access instance.
+- [VerifiedAccessInstanceCustomSubDomain](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessInstanceCustomSubDomain.html): Describes a custom subdomain for a network CIDR endpoint for Verified Access.
+- [VerifiedAccessInstanceLoggingConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessInstanceLoggingConfiguration.html): Describes logging options for an AWS Verified Access instance.
+- [VerifiedAccessInstanceOpenVpnClientConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessInstanceOpenVpnClientConfiguration.html): Describes a set of routes.
+- [VerifiedAccessInstanceOpenVpnClientConfigurationRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessInstanceOpenVpnClientConfigurationRoute.html): Describes a route.
+- [VerifiedAccessInstanceUserTrustProviderClientConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessInstanceUserTrustProviderClientConfiguration.html): Describes the trust provider.
+- [VerifiedAccessLogCloudWatchLogsDestination](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessLogCloudWatchLogsDestination.html): Options for CloudWatch Logs as a logging destination.
+- [VerifiedAccessLogCloudWatchLogsDestinationOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessLogCloudWatchLogsDestinationOptions.html): Options for CloudWatch Logs as a logging destination.
+- [VerifiedAccessLogDeliveryStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessLogDeliveryStatus.html): Describes a log delivery status.
+- [VerifiedAccessLogKinesisDataFirehoseDestination](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessLogKinesisDataFirehoseDestination.html): Options for Kinesis as a logging destination.
+- [VerifiedAccessLogKinesisDataFirehoseDestinationOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessLogKinesisDataFirehoseDestinationOptions.html): Describes Amazon Kinesis Data Firehose logging options.
+- [VerifiedAccessLogOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessLogOptions.html): Options for Verified Access logs.
+- [VerifiedAccessLogs](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessLogs.html): Describes the options for Verified Access logs.
+- [VerifiedAccessLogS3Destination](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessLogS3Destination.html): Options for Amazon S3 as a logging destination.
+- [VerifiedAccessLogS3DestinationOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessLogS3DestinationOptions.html): Options for Amazon S3 as a logging destination.
+- [VerifiedAccessSseSpecificationRequest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessSseSpecificationRequest.html): AWS Verified Access provides server side encryption by default to data at rest using AWS-owned KMS keys.
+- [VerifiedAccessSseSpecificationResponse](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessSseSpecificationResponse.html): The options in use for server side encryption.
+- [VerifiedAccessTrustProvider](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessTrustProvider.html): Describes a Verified Access trust provider.
+- [VerifiedAccessTrustProviderCondensed](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VerifiedAccessTrustProviderCondensed.html): Condensed information about a trust provider.
+- [VgwTelemetry](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VgwTelemetry.html): Describes telemetry for a VPN tunnel.
+- [Volume](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Volume.html): Describes a volume.
+- [VolumeAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VolumeAttachment.html): Describes volume attachment details.
+- [VolumeDetail](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VolumeDetail.html): Describes an EBS volume.
+- [VolumeModification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VolumeModification.html): Describes the modification status of an EBS volume.
+- [VolumeRecycleBinInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VolumeRecycleBinInfo.html): Information about a volume that is currently in the Recycle Bin.
+- [VolumeStatusAction](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VolumeStatusAction.html): Describes a volume status operation code.
+- [VolumeStatusAttachmentStatus](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VolumeStatusAttachmentStatus.html): Information about the instances to which the volume is attached.
+- [VolumeStatusDetails](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VolumeStatusDetails.html): Describes a volume status.
+- [VolumeStatusEvent](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VolumeStatusEvent.html): Describes a volume status event.
+- [VolumeStatusInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VolumeStatusInfo.html): Describes the status of a volume.
+- [VolumeStatusItem](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VolumeStatusItem.html): Describes the volume status.
+- [Vpc](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Vpc.html): Describes a VPC.
+- [VpcAttachment](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcAttachment.html): Describes an attachment between a virtual private gateway and a VPC.
+- [VpcBlockPublicAccessExclusion](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcBlockPublicAccessExclusion.html): A VPC BPA exclusion is a mode that can be applied to a single VPC or subnet that exempts it from the accountâs BPA mode and will allow bidirectional or egress-only access.
+- [VpcBlockPublicAccessOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcBlockPublicAccessOptions.html): VPC Block Public Access (BPA) enables you to block resources in VPCs and subnets that you own in a Region from reaching or being reached from the internet through internet gateways and egress-only internet gateways.
+- [VpcCidrBlockAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcCidrBlockAssociation.html): Describes an IPv4 CIDR block associated with a VPC.
+- [VpcCidrBlockState](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcCidrBlockState.html): Describes the state of a CIDR block.
+- [VpcClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcClassicLink.html)
+- [VpcEncryptionControl](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcEncryptionControl.html): Describes the configuration and state of VPC encryption controls.
+- [VpcEncryptionControlConfiguration](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcEncryptionControlConfiguration.html): Describes the configuration settings for VPC Encryption Control.
+- [VpcEncryptionControlExclusion](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcEncryptionControlExclusion.html): Describes an exclusion configuration for VPC Encryption Control.
+- [VpcEncryptionControlExclusions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcEncryptionControlExclusions.html): Describes the exclusion configurations for various resource types in VPC Encryption Control.
+- [VpcEncryptionNonCompliantResource](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcEncryptionNonCompliantResource.html): Describes a resource that is not compliant with VPC encryption requirements.
+- [VpcEndpoint](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcEndpoint.html): Describes a VPC endpoint.
+- [VpcEndpointAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcEndpointAssociation.html): Describes the VPC resources, VPC endpoint services, Lattice services, or service networks associated with the VPC endpoint.
+- [VpcEndpointConnection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcEndpointConnection.html): Describes a VPC endpoint connection to a service.
+- [VpcIpv6CidrBlockAssociation](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcIpv6CidrBlockAssociation.html): Describes an IPv6 CIDR block associated with a VPC.
+- [VpcPeeringConnection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcPeeringConnection.html): Describes a VPC peering connection.
+- [VpcPeeringConnectionOptionsDescription](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcPeeringConnectionOptionsDescription.html): Describes the VPC peering connection options.
+- [VpcPeeringConnectionStateReason](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcPeeringConnectionStateReason.html): Describes the status of a VPC peering connection.
+- [VpcPeeringConnectionVpcInfo](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpcPeeringConnectionVpcInfo.html): Describes a VPC in a VPC peering connection.
+- [VpnConcentrator](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnConcentrator.html): Describes a VPN concentrator.
+- [VpnConnection](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnConnection.html): Describes a VPN connection.
+- [VpnConnectionDeviceType](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnConnectionDeviceType.html): List of customer gateway devices that have a sample configuration file available for use.
+- [VpnConnectionOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnConnectionOptions.html): Describes VPN connection options.
+- [VpnConnectionOptionsSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnConnectionOptionsSpecification.html): Describes VPN connection options.
+- [VpnGateway](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnGateway.html): Describes a virtual private gateway.
+- [VpnStaticRoute](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnStaticRoute.html): Describes a static route for a VPN connection.
+- [VpnTunnelLogOptions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnTunnelLogOptions.html): Options for logging VPN tunnel activity.
+- [VpnTunnelLogOptionsSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnTunnelLogOptionsSpecification.html): Options for logging VPN tunnel activity.
+- [VpnTunnelOptionsSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_VpnTunnelOptionsSpecification.html): The tunnel options for a single VPN tunnel.
+
+
+## [Making API requests](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html)
+
+- [Query requests](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html): Build applications using language-specific API libraries, sample code, and tutorials provided by AWS.
+- [Troubleshooting API request errors](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/query-api-troubleshooting.html): Troubleshoot errors using the error codes you receive from Amazon EC2.
+- [CORS support](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/cors-support.html): Use the Amazon EC2 API CORS support to build client-side web applications that can interact with the EC2 API.
+- [VM Import Manifest](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html): The import manifest is an XML file created and consumed by the Amazon EC2 API operations ImportInstance and ImportVolume.

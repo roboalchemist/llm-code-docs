@@ -1,0 +1,411 @@
+# Source: https://docs.inkeep.com/typescript-sdk/models
+
+# Model Configuration (/typescript-sdk/models)
+
+Configure AI models for your Agents and Sub Agents
+
+
+
+Configure models at **Project** (required), **Agent**, or **Sub Agent** levels. Settings inherit down the hierarchy.
+
+## Configuration Hierarchy
+
+You **must configure at least the base model** at the project level:
+
+```typescript
+// inkeep.config.ts
+export default defineConfig({
+  models: {
+    base: {
+      model: "anthropic/claude-sonnet-4-5",
+      providerOptions: { temperature: 0.7, maxOutputTokens: 2048 }
+    }
+  }
+});
+```
+
+Override at agent or sub agent level:
+
+```typescript
+const myAgent = agent({
+  models: {
+    base: { model: "openai/gpt-5.2" }  // Override project default
+  }
+});
+
+const mySubAgent = subAgent({
+  models: {
+    structuredOutput: { model: "openai/gpt-4.1-mini" }  // Override for JSON output
+  }
+});
+```
+
+<SkillRule id="model-types" skills="typescript-sdk" title="Model Types Reference" description="When to use each model type in the configuration hierarchy">
+  ## Model Types
+
+  | Type               | Purpose                       | Fallback                      |
+  | ------------------ | ----------------------------- | ----------------------------- |
+  | `base`             | Text generation and reasoning | **Required at project level** |
+  | `structuredOutput` | JSON/structured output only   | Falls back to `base`          |
+  | `summarizer`       | Summaries and status updates  | Falls back to `base`          |
+</SkillRule>
+
+<SkillRule id="supported-models" skills="typescript-sdk" title="Supported Models Reference" description="List of supported model providers and their API keys">
+  ## Supported Models
+
+  | Provider                     | Example Models                                                                                                                                                                           | API Key                        |
+  | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+  | **Anthropic**                | `anthropic/claude-sonnet-4-6`<br />`anthropic/claude-sonnet-4-5`<br />`anthropic/claude-haiku-4-5`<br />`anthropic/claude-opus-4-6`                                                      | `ANTHROPIC_API_KEY`            |
+  | **OpenAI**                   | `openai/gpt-5.4-pro`<br />`openai/gpt-5.4`<br />`openai/gpt-5.2`<br />`openai/gpt-5.1`<br />`openai/gpt-4.1`<br />`openai/gpt-4.1-mini`<br />`openai/gpt-4.1-nano`<br />`openai/gpt-5`\* | `OPENAI_API_KEY`               |
+  | **Azure OpenAI**             | `azure/my-gpt4-deployment`<br />`azure/my-gpt35-deployment`                                                                                                                              | `AZURE_API_KEY`                |
+  | **Google**                   | `google/gemini-3.1-pro-preview`<br />`google/gemini-2.5-flash`<br />`google/gemini-2.5-flash-lite`                                                                                       | `GOOGLE_GENERATIVE_AI_API_KEY` |
+  | **OpenRouter**               | `openrouter/anthropic/claude-sonnet-4-0`<br />`openrouter/meta-llama/llama-3.1-405b`                                                                                                     | `OPENROUTER_API_KEY`           |
+  | **Gateway**                  | `gateway/openai/gpt-4.1-mini`                                                                                                                                                            | `AI_GATEWAY_API_KEY`           |
+  | **NVIDIA NIM**               | `nim/nvidia/llama-3.3-nemotron-super-49b-v1.5`<br />`nim/nvidia/nemotron-4-340b-instruct`                                                                                                | `NIM_API_KEY`                  |
+  | **Custom OpenAI-compatible** | `custom/my-custom-model`<br />`custom/llama-3-custom`                                                                                                                                    | `CUSTOM_LLM_API_KEY`           |
+  | **Mock**                     | `mock/default`                                                                                                                                                                           | None required                  |
+
+  <Note>
+    \*
+
+    `openai/gpt-5`
+
+    , 
+
+    `openai/gpt-5-mini`
+
+    , and 
+
+    `openai/gpt-5-nano`
+
+     require a verified OpenAI organization. If your organization is not yet verified, these models will not be available.
+  </Note>
+
+  ### Pinned vs Unpinned Models
+
+  **Pinned models** include a specific date or version (e.g., `anthropic/claude-sonnet-4-20250514`) and always use that exact version.
+
+  **Unpinned models** use generic identifiers (e.g., `anthropic/claude-sonnet-4-5`) and let the provider choose the latest version, which may change over time as providers update their models.
+
+  ```typescript
+  models: {
+    base: {
+      model: "anthropic/claude-sonnet-4-5",  // Unpinned - provider chooses version
+      // vs
+      model: "anthropic/claude-sonnet-4-20250514"  // Pinned - exact version
+    }
+  }
+  ```
+
+  The TypeScript SDK also provides constants for common models:
+
+  ```typescript
+  import { Models } from "@inkeep/agents-sdk";
+
+  models: {
+    base: {
+      model: Models.ANTHROPIC_CLAUDE_SONNET_4_5,  // Type-safe constants
+    }
+  }
+  ```
+</SkillRule>
+
+<SkillRule id="provider-options" skills="typescript-sdk" title="Model Provider Options" description="Configuration options for different model providers">
+  ## Provider Options
+
+  Inkeep Agents supports all [Vercel AI SDK provider options](https://ai-sdk.dev/providers/ai-sdk-providers/).
+
+  ### How providerOptions works
+
+  `providerOptions` accepts two types of values:
+
+  * **Scalars** (`temperature`, `topP`, `maxOutputTokens`, `seed`, `maxDuration`) — standard generation parameters applied to every call
+  * **Objects** (`anthropic: {}`, `openai: {}`, `gateway: {}`, etc.) — provider-specific options for that provider
+
+  This means you can mix them freely:
+
+  ```typescript
+  providerOptions: {
+    temperature: 0.7,            // generation param
+    anthropic: {                 // Anthropic-specific options
+      thinking: { type: 'enabled', budgetTokens: 8000 }
+    }
+  }
+  ```
+
+  <Note>
+    Constructor-level config (`baseURL`, `headers`, `resourceName`, `apiVersion`) is always specified at the top level of `providerOptions`, not nested under a provider key.
+  </Note>
+
+  ### Complete Examples
+
+  **Basic configuration:**
+
+  <Tabs>
+    <Tab title="TypeScript">
+      ```typescript
+      models: {
+        base: {
+          model: "anthropic/claude-sonnet-4-5",
+          providerOptions: {
+            maxOutputTokens: 4096,
+            temperature: 0.7,
+            topP: 0.95,
+            seed: 12345,
+            maxDuration: 30,
+          }
+        }
+      }
+      ```
+    </Tab>
+
+    <Tab title="JSON">
+      ```json
+      {
+        "maxOutputTokens": 4096,
+        "temperature": 0.7,
+        "topP": 0.95,
+        "seed": 12345,
+        "maxDuration": 30
+      }
+      ```
+    </Tab>
+  </Tabs>
+
+  **OpenAI with reasoning:**
+
+  <Tabs>
+    <Tab title="TypeScript">
+      ```typescript
+      models: {
+        base: {
+          model: "openai/o1-preview",
+          providerOptions: {
+            openai: { reasoningEffort: 'medium' }, // 'low' | 'medium' | 'high'
+            maxOutputTokens: 4096
+          }
+        }
+      }
+      ```
+    </Tab>
+
+    <Tab title="JSON">
+      ```json
+      {
+        "openai": { "reasoningEffort": "medium" },
+        "maxOutputTokens": 4096
+      }
+      ```
+    </Tab>
+  </Tabs>
+
+  **Anthropic with thinking:**
+
+  <Tabs>
+    <Tab title="TypeScript">
+      ```typescript
+      models: {
+        base: {
+          model: "anthropic/claude-sonnet-4-5",
+          providerOptions: {
+            anthropic: {
+              thinking: { type: 'enabled', budgetTokens: 8000 }
+            },
+            temperature: 0.5
+          }
+        }
+      }
+      ```
+    </Tab>
+
+    <Tab title="JSON">
+      ```json
+      {
+        "anthropic": {
+          "thinking": { "type": "enabled", "budgetTokens": 8000 }
+        },
+        "temperature": 0.5
+      }
+      ```
+    </Tab>
+  </Tabs>
+
+  **Google with thinking:**
+
+  <Tabs>
+    <Tab title="TypeScript">
+      ```typescript
+      models: {
+        base: {
+          model: "google/gemini-2.5-flash",
+          providerOptions: {
+            google: {
+              thinkingConfig: { thinkingBudget: 8192, includeThoughts: true }
+            },
+            temperature: 0.7
+          }
+        }
+      }
+      ```
+    </Tab>
+
+    <Tab title="JSON">
+      ```json
+      {
+        "google": {
+          "thinkingConfig": { "thinkingBudget": 8192, "includeThoughts": true }
+        },
+        "temperature": 0.7
+      }
+      ```
+    </Tab>
+  </Tabs>
+
+  **Vercel AI Gateway with model routing:**
+
+  The Gateway provider supports routing requests across multiple models with automatic fallback. If the primary model fails or is unavailable, the gateway tries the next model in the list.
+
+  <Tabs>
+    <Tab title="TypeScript">
+      ```typescript
+      models: {
+        base: {
+          model: "gateway/openai/gpt-4.1",
+          providerOptions: {
+            gateway: {
+              models: ["openai/gpt-4.1", "anthropic/claude-sonnet-4-5", "google/gemini-3.1-flash-lite-preview"],  // Try in order
+            }
+          }
+        }
+      }
+      ```
+    </Tab>
+
+    <Tab title="JSON">
+      ```json
+      {
+        "gateway": {
+          "models": ["openai/gpt-4.1", "anthropic/claude-sonnet-4-5", "google/gemini-3.1-flash-lite-preview"]
+        }
+      }
+      ```
+    </Tab>
+  </Tabs>
+
+  <Note>
+    All models in the `models` array must be valid [Vercel AI Gateway model IDs](https://ai-sdk.dev/providers/ai-sdk-providers/ai-gateway). The gateway falls through to the next model on failure — if all models fail, the request errors. Set `AI_GATEWAY_API_KEY` in your environment for authentication.
+  </Note>
+
+  **Azure OpenAI:**
+
+  <Tabs>
+    <Tab title="TypeScript">
+      ```typescript
+      models: {
+        base: {
+          model: "azure/my-gpt4-deployment",
+          providerOptions: {
+            resourceName: "my-azure-openai-resource",  // Required
+            apiVersion: "2024-10-21",  // Optional
+            temperature: 0.7
+          }
+        }
+      }
+      ```
+    </Tab>
+
+    <Tab title="JSON">
+      ```json
+      {
+        "resourceName": "my-azure-openai-resource",
+        "apiVersion": "2024-10-21",
+        "temperature": 0.7
+      }
+      ```
+    </Tab>
+  </Tabs>
+
+  <Note>
+    Azure OpenAI **requires** either `resourceName` (for standard Azure OpenAI deployments) or `baseURL` (for custom endpoints) in `providerOptions`. The `AZURE_API_KEY` environment variable must be set for authentication. Note that only one Azure OpenAI resource can be used at a time since authentication is handled via a single environment variable.
+  </Note>
+
+  **Custom OpenAI-compatible provider:**
+
+  <Tabs>
+    <Tab title="TypeScript">
+      ```typescript
+      models: {
+        base: {
+          model: "custom/my-custom-model",
+          providerOptions: {
+            baseURL: "https://api.example.com/v1",  // Required
+            temperature: 0.7
+          }
+        }
+      }
+      ```
+    </Tab>
+
+    <Tab title="JSON">
+      ```json
+      {
+        "baseUrl": "http://127.0.0.1:8090/v1",
+        "temperature": 0.7
+      }
+      ```
+    </Tab>
+  </Tabs>
+
+  <Note>
+    Custom OpenAI-compatible providers **require** a base URL to be specified in `providerOptions.baseURL` or `providerOptions.baseUrl`. The `CUSTOM_LLM_API_KEY` environment variable will be automatically used for authentication if present.
+  </Note>
+
+  ### Context Window Override
+
+  For custom or unlisted models, you can explicitly specify the context window size:
+
+  <Tabs>
+    <Tab title="TypeScript">
+      ```typescript
+      models: {
+        base: {
+          model: "custom/my-model",
+          providerOptions: {
+            contextWindowSize: 100000,  // Context window in tokens
+            baseURL: "https://api.example.com/v1"
+          }
+        }
+      }
+      ```
+    </Tab>
+
+    <Tab title="JSON">
+      ```json
+      {
+        "contextWindowSize": 100000,
+        "baseUrl": "https://api.example.com/v1"
+      }
+      ```
+    </Tab>
+  </Tabs>
+
+  <Note>
+    The `contextWindowSize` option is useful when:
+
+    * Using a custom model not in the built-in registry
+    * The framework incorrectly detects the context window size
+    * You want to artificially limit the context window for testing
+
+    This affects compression triggers and oversized artifact detection (artifacts exceeding 30% of the context window).
+  </Note>
+</SkillRule>
+
+## CLI Defaults
+
+When using `inkeep init`, defaults are set based on your chosen provider:
+
+| Provider      | Base                | Structured Output       | Summarizer              |
+| ------------- | ------------------- | ----------------------- | ----------------------- |
+| **Anthropic** | `claude-sonnet-4-5` | `claude-sonnet-4-5`     | `claude-sonnet-4-5`     |
+| **OpenAI**    | `gpt-4.1`           | `gpt-4.1-mini`          | `gpt-4.1-nano`          |
+| **Google**    | `gemini-2.5-flash`  | `gemini-2.5-flash-lite` | `gemini-2.5-flash-lite` |

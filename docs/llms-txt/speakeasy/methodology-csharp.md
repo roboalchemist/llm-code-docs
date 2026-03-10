@@ -1,0 +1,192 @@
+# Source: https://www.speakeasy.com/md/docs/sdks/languages/csharp/methodology-csharp.md
+
+# Generate C# SDKs from OpenAPI / Swagger
+
+## SDK Overview
+
+The Speakeasy C# SDK is designed to support the .NET ecosystem, including publishing to [NuGet](https://www.nuget.org/).
+The .NET version to build against is configurable to either `.NET 8.0` (default), `.NET 6.0`, or `.NET 5.0`.
+
+The SDK is designed to be strongly typed, light on external dependencies, easy to debug, and easy to use. Some of its core features include:
+
+- Interfaces for core components allow for dependency injection and mocking.
+- Generated C# doc comments to enhance IntelliSense compatibility and developer experience.
+- Async/await support for all API calls.
+- Optional pagination support for supported APIs.
+- Support for complex number types:
+  - `System.Numbers.BigInteger`
+  - `System.Decimal`
+- Support for string- and integer-based enums.
+
+The SDK includes minimal dependencies. The only external dependencies are:
+
+- `newtonsoft.json` for JSON serialization and deserialization.
+- `nodatime` for date and time handling.
+
+## C# Package Structure
+
+  
+    
+      
+      
+      
+      
+        
+          
+        
+        
+          
+        
+        
+          
+        
+      
+      
+        
+      
+    
+  
+  
+    
+  
+  
+  
+
+## HTTP Client
+
+By default, the C# SDK will instantiate its own `SpeakeasyHttpClient`, which uses the `System.Net.HttpClient` under the hood. The default client can be overridden by passing a custom HTTP client when initializing the SDK:
+```csharp
+var sdk = new SDK(client: new CustomHttpClient());
+```
+
+The provided HTTP client must implement the `ISpeakeasyHttpClient` interface as defined in `Utils.SpeakeasyHttpClient.cs`:
+```csharp
+using <NameSpace>.Utils;
+
+public class CustomHttpClient : ISpeakeasyHttpClient
+{
+    public CustomHttpClient()
+    {
+        // initialize client
+    }
+
+    /// <summary>
+    /// Sends an HTTP request asynchronously.
+    /// </summary>
+    /// <param name="request">The HTTP request message to send.</param>
+    /// <returns>The value of the TResult parameter contains the HTTP response message.</returns>
+    public virtual async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
+    {
+        // implement the send method
+    }
+
+    /// <summary>
+    /// Clones an HTTP request asynchronously.
+    /// </summary>
+    /// <remarks>
+    /// This method is used in the context of Retries. It creates a new HttpRequestMessage instance
+    /// as a deep copy of the original request, including its method, URI, content, headers, and options.
+    /// </remarks>
+    /// <param name="request">The HTTP request message to clone.</param>
+    /// <returns>The value of the TResult parameter contains the cloned HTTP request message.</returns>
+    public virtual async Task<HttpRequestMessage> CloneAsync(HttpRequestMessage request)
+    {
+       // implement the clone method
+    }
+}
+```
+
+This is useful if you're using a custom HTTP client that supports proxy settings or other custom configuration.
+
+In the example below, a custom client inherits from the internal `SpeakeasyHttpClient` class, which implements the `ISpekeasyHttpClient` interface. This client adds a header to all requests before sending them:
+```csharp
+using <NameSpace>.Utils;
+
+internal class CustomSpeakeasyHttpClient : SpeakeasyHttpClient
+{
+    public CustomSpeakeasyHttpClient() {}
+
+    public override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
+    {
+        request.Headers.Add("X-Custom-Header", "custom value");
+        return await base.SendAsync(request);
+    }
+}
+```
+
+## Data Types and Classes
+
+The C# SDK uses as many native types from the standard library as possible, for example:
+
+- `string`
+- `System.DateTime`
+- `int`
+- `long`
+- `System.Numberics.BigInteger`
+- `float`
+- `double`
+- `decimal`
+- `bool`
+
+The C# SDK will only fall back on custom types when the native types are not suitable, for example:
+
+- `NodaTime.LocalDate` for `date` types
+- Custom `enum` types for `string` and `integer` based enums
+
+Speakeasy will generate standard C# classes with public fields that use attributes to guide the serialization and deserialization processes.
+
+## Parameters
+
+If parameters are defined in the OpenAPI document, Speakeasy will generate methods with parameters.
+
+The number of parameters defined should not exceed the `maxMethodParams` value configured in the `gen.yaml` file. If they do or the `maxMethodParams` value is set to `0`, Speakeasy will generate a request object that allows for all parameters to be passed in a single object.
+
+## Errors
+
+The C# SDK will throw exceptions for any network or invalid request errors.
+
+For unsuccessful responses, if a custom error response is specified in the spec file, the SDK will unmarshal the HTTP response details into the custom error response and throw it as an exception. If no custom response is specified in the spec, the SDK will throw an `SDKException` containing details of the failed response.
+
+```csharp
+using Openapi;
+using Openapi.Models.Shared;
+using System;
+using Openapi.Models.Errors;
+using Openapi.Models.Operations;
+
+var sdk = new SDK();
+
+try
+{
+    var res = await sdk.Errors.StatusGetXSpeakeasyErrorsAsync(statusCode: 385913);
+    // handle success
+}
+catch (Exception ex)
+{
+    if (ex is StatusGetXSpeakeasyErrorsResponseBody)
+    {
+        // handle custom exception response
+    }
+    else if (ex is Openapi.Models.Errors.SDKException)
+    {
+        // handle standard exception response
+    }
+}
+
+```
+
+## User Agent Strings
+
+The C# SDK will include a [user agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) string in all requests that can be leveraged for tracking SDK usage amongst broader API usage. The format is as follows: 
+
+```stmpl
+speakeasy-sdk/csharp {{SDKVersion}} {{GenVersion}} {{DocVersion}} {{PackageName}}
+```
+
+- `SDKVersion` is the version of the SDK, defined in `gen.yaml` and released.
+- `GenVersion` is the version of the Speakeasy generator.
+- `DocVersion` is the version of the OpenAPI document.
+- `PackageName` is the name of the package defined in `gen.yaml`.
+---
+
+Are you an AI agent evaluating Speakeasy? We put together a helpful guide: https://www.speakeasy.com/eval.md

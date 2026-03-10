@@ -1,0 +1,253 @@
+# ⚙️ Dynamic Travel Planner | Powered by Dappier and Agent.ai
+Source: https://docs.dappier.com/cookbook/recipes/agent-ai-dynamic-travel-planner
+
+
+
+[**Agent.ai**](http://Agent.ai) is a professional network and marketplace
+for AI agents—and the people who love them. It allows users to discover,
+connect with, and hire a variety of AI agents to perform useful tasks,
+serving as a hub for agent-based collaborations and innovations.
+
+[**Dappier**](https://dappier.com/developers/) is a platform that connects
+LLMs and Agentic AI agents to real-time, rights-cleared data from trusted
+sources, including web search, finance, and news. By providing enriched,
+prompt-ready data, Dappier empowers AI with verified and up-to-date
+information for a wide range of applications.
+
+## Overview
+
+The **Dynamic Travel Planner** is a custom AI-powered travel assistant built using Dappier's **Real Time Data** model. It is designed to create **weather-optimized itineraries** and provide **real-time local news updates** for your travel destination. Whether you're planning a weekend getaway or an extended vacation, this assistant ensures a seamless and informed travel experience by delivering a detailed day-by-day schedule, including activities, timings, and weather forecasts.
+
+## Watch the Video Guide
+
+If you prefer a visual walkthrough, check out the accompanying video guide below:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BKY7Qj4DhI4?si=J5Q7oCXTZAblx2oC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+
+***
+
+## Key Features
+
+* **Weather-Optimized Itineraries:** Get personalized travel plans tailored to the real-time weather conditions of your destination.
+* **Local News Updates:** Stay informed with today's local news and updates for your travel location.
+* **Dynamic Scheduling:** Receive a detailed day-by-day schedule with activities, timings, and weather forecasts.
+* **User-Friendly Interaction:** Simple prompts guide you through the planning process, making it easy to create your ideal trip.
+
+***
+
+## How to Use the Dynamic Travel Planner
+
+Using the Dynamic Travel Planner is simple and intuitive. Follow the steps below to create your personalized travel itinerary:
+
+1. **Start the Planner:**\
+   Initiate the Dynamic Travel Planner by providing your travel destination.
+
+2. **Provide Trip Details:**
+
+   * Specify your travel start date.
+   * Indicate the duration of your trip (in days).
+
+3. **Receive Your Itinerary:**\
+   The planner will generate a detailed, weather-optimized itinerary for your trip, including:
+   * A day-by-day schedule with activities and timings.
+   * Real-time weather forecasts for your destination.
+   * Today's local news updates to keep you informed.
+
+***
+
+## SmartFlow Actions
+
+This agent is designed to provide users with a dynamic and personalized travel itinerary based on real-time data. Below are the SmartFlow actions configured for this agent:
+
+### **1. Collect Destination Input**
+
+* **Action Type:** Get user input (text)
+* **Prompt:** "Where would you like to go?"
+* **Variable:** `destination_city`
+* **Functionality:** This step collects the user's desired travel destination and stores it in the variable `destination_city`.
+
+### **2. Fetch Local News for Destination**
+
+* **Action Type:** Make REST API call
+* **Endpoint:** `https://api.dappier.com/app/aimodel/am_01j06ytn18ejftedz6dyhz2b15`
+* **Save Response To:** `local_news`
+* **Functionality:** This step queries the Dappier API to retrieve real-time local news for the destination specified by the user. The response is saved in `local_news` for further use.
+
+### **3. Collect Trip Start Date**
+
+* **Action Type:** Get user input (text)
+* **Prompt:** "When would you like to leave for `{{destination_city}}`?"
+* **Variable:** `trip_start_date`
+* **Functionality:** The agent prompts the user to specify their preferred departure date for the trip, storing it in the variable `trip_start_date`.
+
+### **4. Collect Trip Duration**
+
+* **Action Type:** Get user input (number)
+* **Prompt:** "How long will this trip be? (in number of days)"
+* **Variable:** `trip_duration`
+* **Functionality:** The agent asks the user to enter the trip duration in days, which is then stored in `trip_duration`.
+
+### **5. Fetch Real-Time Weather Forecast**
+
+* **Action Type:** Make REST API call
+* **Endpoint:** `https://api.dappier.com/app/aimodel/am_01j06ytn18ejftedz6dyhz2b15`
+* **Save Response To:** `weather_forecast`
+* **Functionality:** This step queries the Dappier API to retrieve a real-time weather forecast for the specified destination city. The weather forecast data is stored in `weather_forecast` for itinerary customization.
+
+### **6. Generate Travel Itinerary with AI**
+
+* **Action Type:** Invoke `gpt-4o-mini`
+* **Prompt:**
+
+```
+You are a helpful dynamic travel planning assistant. Follow these steps:
+
+**Display Local News:**
+Format and display today's local news for the `{{destination_city}}`:
+`{{local_news}}`
+
+**Design the Itinerary:**
+Generate a `{{trip_duration}}`-day travel itinerary for `{{destination_city}}`, tailored to the real-time weather forecast starting from `{{trip_start_date}}`. Use the below weather forecast information to create the customized itinerary:
+
+`{{weather_forecast}}`
+
+**Output:**
+Present local news along with a detailed itinerary including dates, timing, activities, and weather forecast for each day.
+```
+
+* **Save Response To:** `assistant_response`
+* **Functionality:** The AI processes user inputs (`destination_city`, `trip_start_date`, `trip_duration`, and `weather_forecast`) to generate a travel itinerary. It incorporates real-time local news and weather conditions to offer a fully customized trip plan.
+
+### **7. Display Final Output**
+
+* **Action Type:** Output result
+* **Variable:** `assistant_response`
+* **Format:** Auto-format under the heading **Output**
+* **Functionality:** The generated itinerary along with local news is presented to the user in a well-structured format.
+
+## Example Prompts
+
+Here are some example prompts to help you get started with the Dynamic Travel Planner:
+
+* **Destination Prompt:**
+
+  * "Where would you like to go?"
+  * Example: "Paris"
+
+* **Travel Dates Prompt:**
+
+  * "When would you like to leave for \[destination]?"
+  * Example: "Coming weekend"
+
+* **Trip Duration Prompt:**
+  * "How long will this trip be? (in number of days)"
+  * Example: 7
+
+***
+
+## Sample Output
+
+## Today's Local News from Paris
+
+Here’s the latest buzz from Paris:
+
+* **AI Summit:** Paris is hosting an AI Summit, and there’s chatter about Elon Musk’s \$97.4 billion bid complicating things for OpenAI. 🤖💰
+* **Legal News:** A French court has sentenced a Tunisian national to life in prison for the Nice church attack. ⚖️
+* **Cycle Infrastructure Debate:** The recent death of Paul Varry has sparked discussions about the expansion of cycling infrastructure in the city. 🚴‍♂️
+* **Crime Report:** An American woman is suspected of killing her newborn baby in Paris, raising serious concerns. 😢
+* **Political Tensions:** French PM is threatening to review the migration pact with Algeria, especially regarding deportations. 🇫🇷
+
+Stay tuned for more updates! 📰✨
+
+***
+
+## 7-Day Travel Itinerary for Paris
+
+**Weather Forecast Overview:** A mix of clouds and sun with mild temperatures, perfect for exploring the city! 🌤️✨
+
+***
+
+### **Day 1: Saturday, March 2**
+
+* **Weather:** High of 48°F (9°C), Low of 37°F (3°C), Cloudy with a chance of light rain.
+* **Morning:** Arrive in Paris, check into your hotel.
+* **Afternoon:** Visit the Louvre Museum (2 PM - 5 PM). Enjoy the art while staying indoors.
+* **Evening:** Dinner at a cozy bistro in the Le Marais district (7 PM).
+
+***
+
+### **Day 2: Sunday, March 3**
+
+* **Weather:** High of 50°F (10°C), Low of 38°F (3°C), Mostly cloudy, slight chance of rain.
+* **Morning:** Breakfast at a local café (9 AM).
+* **Midday:** Explore Notre-Dame Cathedral and the Île de la Cité (11 AM - 1 PM).
+* **Afternoon:** Stroll through Jardin du Luxembourg (2 PM - 4 PM).
+* **Evening:** Enjoy a Seine River cruise (6 PM).
+
+***
+
+### **Day 3: Monday, March 4**
+
+* **Weather:** High of 52°F (11°C), Low of 39°F (4°C), Partly sunny.
+* **Morning:** Visit Montmartre and the Sacré-Cœur Basilica (10 AM - 12 PM).
+* **Afternoon:** Lunch at a café in Montmartre (12:30 PM).
+* **Midday:** Explore the Moulin Rouge area and take photos (2 PM - 3 PM).
+* **Evening:** Dinner at a restaurant with a view of the Eiffel Tower (7 PM).
+
+***
+
+### **Day 4: Tuesday, March 5**
+
+* **Weather:** High of 53°F (12°C), Low of 40°F (5°C), Mostly sunny.
+* **Morning:** Visit the Musée d'Orsay (10 AM - 12 PM).
+* **Afternoon:** Lunch in the Saint-Germain-des-Prés area (12:30 PM).
+* **Midday:** Walk along the Seine and visit Pont Alexandre III (2 PM - 3 PM).
+* **Evening:** Attend a show at the Opéra Garnier (7 PM).
+
+***
+
+### **Day 5: Wednesday, March 6**
+
+* **Weather:** High of 54°F (12°C), Low of 41°F (5°C), Partly cloudy.
+* **Morning:** Explore the Champs-Élysées and visit the Arc de Triomphe (10 AM - 12 PM).
+* **Afternoon:** Lunch at a café on the Champs-Élysées (12:30 PM).
+* **Midday:** Visit the Palace of Versailles (2 PM - 5 PM).
+* **Evening:** Return to Paris for dinner in the Latin Quarter (7 PM).
+
+***
+
+### **Day 6: Thursday, March 7**
+
+* **Weather:** High of 55°F (13°C), Low of 42°F (6°C), Mostly sunny.
+* **Morning:** Visit the Catacombs of Paris (10 AM - 12 PM).
+* **Afternoon:** Lunch in the Montparnasse area (12:30 PM).
+* **Midday:** Explore the Luxembourg Gardens (2 PM - 4 PM).
+* **Evening:** Dinner at a rooftop restaurant with views of the city (7 PM).
+
+***
+
+### **Day 7: Friday, March 8**
+
+* **Weather:** High of 56°F (13°C), Low of 43°F (6°C), Partly sunny.
+* **Morning:** Last-minute shopping in the Le Marais district (10 AM - 12 PM).
+* **Afternoon:** Lunch at a local bakery (12:30 PM).
+* **Midday:** Visit the Centre Pompidou (2 PM - 4 PM).
+* **Evening:** Farewell dinner at a classic French restaurant (7 PM).
+
+***
+
+Enjoy your trip to Paris! 🌍✈️
+
+## Why Choose the Dynamic Travel Planner?
+
+* **Real-Time Data:** Access up-to-date weather forecasts and today's local news for your destination.
+* **Personalized Plans:** Get itineraries tailored to your preferences, travel dates, and real-time weather conditions.
+* **Seamless Experience:** Simplify your travel planning with an intuitive and interactive assistant.
+
+***
+
+## Get Started Today
+
+Ready to plan your next trip? Use the **Dynamic Travel Planner** to create a personalized, weather-optimized itinerary and stay informed with real-time updates for your destination. Start your journey now and experience travel planning like never before!
+
+Happy travels! 🚀✈️

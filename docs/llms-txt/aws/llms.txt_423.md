@@ -1,0 +1,325 @@
+# Source: https://docs.aws.amazon.com/greengrass/v1/apireference/llms.txt
+
+# AWS IoT Greengrass API Reference, Version 1
+
+## [Greengrass V1 API](https://docs.aws.amazon.com/greengrass/v1/apireference/api-doc.html)
+
+### [Actions](https://docs.aws.amazon.com/greengrass/v1/apireference/api-actions.html)
+
+The following actions are supported:
+
+- [AssociateRoleToGroup](https://docs.aws.amazon.com/greengrass/v1/apireference/associateroletogroup-put.html): Associates a role with a group.
+- [AssociateServiceRoleToAccount](https://docs.aws.amazon.com/greengrass/v1/apireference/associateserviceroletoaccount-put.html): Associates a role with your account.
+- [CreateConnectorDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/createconnectordefinition-post.html): Creates a connector definition.
+- [CreateConnectorDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/createconnectordefinitionversion-post.html): Creates a version of a connector definition that has already been defined.
+- [CreateCoreDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/createcoredefinition-post.html): Creates a core definition.
+- [CreateCoreDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/createcoredefinitionversion-post.html): Creates a version of a core definition that has already been defined.
+- [CreateDeployment](https://docs.aws.amazon.com/greengrass/v1/apireference/createdeployment-post.html): Creates a deployment.
+- [CreateDeviceDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/createdevicedefinition-post.html): Creates a client device definition.
+- [CreateDeviceDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/createdevicedefinitionversion-post.html): Creates a version of a client device definition that has already been defined.
+- [CreateFunctionDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/createfunctiondefinition-post.html): Creates a function definition that contains a list of Lambda functions and their configurations to use in a group.
+- [CreateFunctionDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/createfunctiondefinitionversion-post.html): Creates a version of a Lambda function definition that has already been defined.
+- [CreateGroup](https://docs.aws.amazon.com/greengrass/v1/apireference/creategroup-post.html): Creates a group.
+- [CreateGroupCertificateAuthority](https://docs.aws.amazon.com/greengrass/v1/apireference/creategroupcertificateauthority-post.html): Creates a CA for the group.
+- [CreateGroupVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/creategroupversion-post.html): Creates a version of a group that has already been defined.
+- [CreateLoggerDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/createloggerdefinition-post.html): Creates a logger definition.
+- [CreateLoggerDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/createloggerdefinitionversion-post.html): Creates a version of a logger definition that has already been defined.
+- [CreateResourceDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/createresourcedefinition-post.html): Creates a resource definition that contains a list of resources to be used in a group.
+- [CreateResourceDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/createresourcedefinitionversion-post.html): Creates a version of a resource definition that has already been defined.
+- [CreateSoftwareUpdateJob](https://docs.aws.amazon.com/greengrass/v1/apireference/createsoftwareupdatejob-post.html): Creates a software update for a core or group of cores (specified as an IoT thing group.) Use this to update the OTA agent and the Greengrass core software.
+- [CreateSubscriptionDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/createsubscriptiondefinition-post.html): Creates a subscription definition.
+- [CreateSubscriptionDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/createsubscriptiondefinitionversion-post.html): Creates a version of a subscription definition that has already been defined.
+- [DeleteConnectorDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/deleteconnectordefinition-delete.html): Deletes a connector definition.
+- [DeleteCoreDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/deletecoredefinition-delete.html): Deletes a core definition.
+- [DeleteDeviceDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/deletedevicedefinition-delete.html): Deletes a device definition.
+- [DeleteFunctionDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/deletefunctiondefinition-delete.html): Deletes a Lambda function definition.
+- [DeleteGroup](https://docs.aws.amazon.com/greengrass/v1/apireference/deletegroup-delete.html): Deletes a group.
+- [DeleteLoggerDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/deleteloggerdefinition-delete.html): Deletes a logger definition.
+- [DeleteResourceDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/deleteresourcedefinition-delete.html): Deletes a resource definition.
+- [DeleteSubscriptionDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/deletesubscriptiondefinition-delete.html): Deletes a subscription definition.
+- [DisassociateRoleFromGroup](https://docs.aws.amazon.com/greengrass/v1/apireference/disassociaterolefromgroup-delete.html): Disassociates the role from a group.
+- [DisassociateServiceRoleFromAccount](https://docs.aws.amazon.com/greengrass/v1/apireference/disassociateservicerolefromaccount-delete.html): Disassociates the service role from your account.
+- [GetAssociatedRole](https://docs.aws.amazon.com/greengrass/v1/apireference/getassociatedrole-get.html): Retrieves the role associated with a group.
+- [GetBulkDeploymentStatus](https://docs.aws.amazon.com/greengrass/v1/apireference/getbulkdeploymentstatus-get.html): Returns the status of a bulk deployment.
+- [GetConnectivityInfo](https://docs.aws.amazon.com/greengrass/v1/apireference/getconnectivityinfo-get.html): Retrieves the connectivity information for a core.
+- [GetConnectorDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/getconnectordefinition-get.html): Retrieves information about a connector definition.
+- [GetConnectorDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/getconnectordefinitionversion-get.html): Retrieves information about a connector definition version, including the connectors that the version contains.
+- [GetCoreDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/getcoredefinition-get.html): Retrieves information about a core definition version.
+- [GetCoreDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/getcoredefinitionversion-get.html): Retrieves information about a core definition version.
+- [GetDeploymentStatus](https://docs.aws.amazon.com/greengrass/v1/apireference/getdeploymentstatus-get.html): Returns the status of a deployment.
+- [GetDeviceDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/getdevicedefinition-get.html): Retrieves information about a device definition.
+- [GetDeviceDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/getdevicedefinitionversion-get.html): Retrieves information about a device definition version.
+- [GetFunctionDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/getfunctiondefinition-get.html): Retrieves information about a Lambda function definition, including its creation time and latest version.
+- [GetFunctionDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/getfunctiondefinitionversion-get.html): Retrieves information about a Lambda function definition version, including which Lambda functions are included in the version and their configurations.
+- [GetGroup](https://docs.aws.amazon.com/greengrass/v1/apireference/getgroup-get.html): Retrieves information about a group.
+- [GetGroupCertificateAuthority](https://docs.aws.amazon.com/greengrass/v1/apireference/getgroupcertificateauthority-get.html): Retreives the CA associated with a group.
+- [GetGroupCertificateConfiguration](https://docs.aws.amazon.com/greengrass/v1/apireference/getgroupcertificateconfiguration-get.html): Retrieves the current configuration for the CA used by the group.
+- [GetGroupVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/getgroupversion-get.html): Retrieves information about a group version.
+- [GetLoggerDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/getloggerdefinition-get.html): Retrieves information about a logger definition.
+- [GetLoggerDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/getloggerdefinitionversion-get.html): Retrieves information about a logger definition version.
+- [GetResourceDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/getresourcedefinition-get.html): Retrieves information about a resource definition, including its creation time and latest version.
+- [GetResourceDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/getresourcedefinitionversion-get.html): Retrieves information about a resource definition version, including which resources are included in the version.
+- [GetServiceRoleForAccount](https://docs.aws.amazon.com/greengrass/v1/apireference/getserviceroleforaccount-get.html): Retrieves the service role that is attached to your account.
+- [GetSubscriptionDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/getsubscriptiondefinition-get.html): Retrieves information about a subscription definition.
+- [GetSubscriptionDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/getsubscriptiondefinitionversion-get.html): Retrieves information about a subscription definition version.
+- [GetThingRuntimeConfiguration](https://docs.aws.amazon.com/greengrass/v1/apireference/getthingruntimeconfiguration-get.html): Retrieves the runtime configuration of a Greengrass core.
+- [ListBulkDeploymentDetailedReports](https://docs.aws.amazon.com/greengrass/v1/apireference/listbulkdeploymentdetailedreports-get.html): Gets a paginated list of the deployments that have been started in a bulk deployment operation, and their current deployment status.
+- [ListBulkDeployments](https://docs.aws.amazon.com/greengrass/v1/apireference/listbulkdeployments-get.html): Returns a list of bulk deployments.
+- [ListConnectorDefinitionVersions](https://docs.aws.amazon.com/greengrass/v1/apireference/listconnectordefinitionversions-get.html): Lists the versions of a connector definition, which are containers for connectors.
+- [ListConnectorDefinitions](https://docs.aws.amazon.com/greengrass/v1/apireference/listconnectordefinitions-get.html): Retrieves a list of connector definitions.
+- [ListCoreDefinitionVersions](https://docs.aws.amazon.com/greengrass/v1/apireference/listcoredefinitionversions-get.html): Lists the versions of a core definition.
+- [ListCoreDefinitions](https://docs.aws.amazon.com/greengrass/v1/apireference/listcoredefinitions-get.html): Retrieves a list of core definitions.
+- [ListDeployments](https://docs.aws.amazon.com/greengrass/v1/apireference/listdeployments-get.html): Returns a history of deployments for the group.
+- [ListDeviceDefinitionVersions](https://docs.aws.amazon.com/greengrass/v1/apireference/listdevicedefinitionversions-get.html): Lists the versions of a device definition.
+- [ListDeviceDefinitions](https://docs.aws.amazon.com/greengrass/v1/apireference/listdevicedefinitions-get.html): Retrieves a list of device definitions.
+- [ListFunctionDefinitionVersions](https://docs.aws.amazon.com/greengrass/v1/apireference/listfunctiondefinitionversions-get.html): Lists the versions of a Lambda function definition.
+- [ListFunctionDefinitions](https://docs.aws.amazon.com/greengrass/v1/apireference/listfunctiondefinitions-get.html): Retrieves a list of Lambda function definitions.
+- [ListGroupCertificateAuthorities](https://docs.aws.amazon.com/greengrass/v1/apireference/listgroupcertificateauthorities-get.html): Retrieves the current CAs for a group.
+- [ListGroupVersions](https://docs.aws.amazon.com/greengrass/v1/apireference/listgroupversions-get.html): Lists the versions of a group.
+- [ListGroups](https://docs.aws.amazon.com/greengrass/v1/apireference/listgroups-get.html): Retrieves a list of groups.
+- [ListLoggerDefinitionVersions](https://docs.aws.amazon.com/greengrass/v1/apireference/listloggerdefinitionversions-get.html): Lists the versions of a logger definition.
+- [ListLoggerDefinitions](https://docs.aws.amazon.com/greengrass/v1/apireference/listloggerdefinitions-get.html): Retrieves a list of logger definitions.
+- [ListResourceDefinitionVersions](https://docs.aws.amazon.com/greengrass/v1/apireference/listresourcedefinitionversions-get.html): Lists the versions of a resource definition.
+- [ListResourceDefinitions](https://docs.aws.amazon.com/greengrass/v1/apireference/listresourcedefinitions-get.html): Retrieves a list of resource definitions.
+- [ListSubscriptionDefinitionVersions](https://docs.aws.amazon.com/greengrass/v1/apireference/listsubscriptiondefinitionversions-get.html): Lists the versions of a subscription definition.
+- [ListSubscriptionDefinitions](https://docs.aws.amazon.com/greengrass/v1/apireference/listsubscriptiondefinitions-get.html): Retrieves a list of subscription definitions.
+- [ListTagsForResource](https://docs.aws.amazon.com/greengrass/v1/apireference/listtagsforresource-get.html): Lists tags for a Greengrass resource.
+- [ResetDeployments](https://docs.aws.amazon.com/greengrass/v1/apireference/resetdeployments-post.html): Resets a group's deployments.
+- [StartBulkDeployment](https://docs.aws.amazon.com/greengrass/v1/apireference/startbulkdeployment-post.html): Deploys multiple groups in one operation.
+- [StopBulkDeployment](https://docs.aws.amazon.com/greengrass/v1/apireference/stopbulkdeployment-put.html): Stops the execution of a bulk deployment.
+- [TagResource](https://docs.aws.amazon.com/greengrass/v1/apireference/tagresource-post.html): Adds tags to a Greengrass resource.
+- [UntagResource](https://docs.aws.amazon.com/greengrass/v1/apireference/untagresource-delete.html): Removes tags from a Greengrass resource.
+- [UpdateConnectivityInfo](https://docs.aws.amazon.com/greengrass/v1/apireference/updateconnectivityinfo-put.html): Updates the connectivity information for the core.
+- [UpdateConnectorDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/updateconnectordefinition-put.html): Updates the name of a connector definition.
+- [UpdateCoreDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/updatecoredefinition-put.html): Updates the name of a core definition.
+- [UpdateDeviceDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/updatedevicedefinition-put.html): Updates the name of a device definition.
+- [UpdateFunctionDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/updatefunctiondefinition-put.html): Updates the name of a function definition.
+- [UpdateGroup](https://docs.aws.amazon.com/greengrass/v1/apireference/updategroup-put.html): Updates the name of a group.
+- [UpdateGroupCertificateConfiguration](https://docs.aws.amazon.com/greengrass/v1/apireference/updategroupcertificateconfiguration-put.html): Updates the certificate expiry time for a group.
+- [UpdateLoggerDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/updateloggerdefinition-put.html): Updates the name of a logger definition.
+- [UpdateResourceDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/updateresourcedefinition-put.html): Updates the name of a resource definition.
+- [UpdateSubscriptionDefinition](https://docs.aws.amazon.com/greengrass/v1/apireference/updatesubscriptiondefinition-put.html): Updates the name of a subscription definition.
+- [UpdateThingRuntimeConfiguration](https://docs.aws.amazon.com/greengrass/v1/apireference/updatethingruntimeconfiguration-put.html): Updates the runtime configuration of a Greengrass core to turn on or turn off telemetry.
+
+### [Endpoints](https://docs.aws.amazon.com/greengrass/v1/apireference/api-endpoints.html)
+
+The following endpoints are supported:
+
+- [/greengrass/bulk/deployments](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-bulk-deployments.html)
+- [/greengrass/bulk/deployments/BulkDeploymentId/$stop](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-bulk-deployments-bulkdeploymentid-stop.html)
+- [/greengrass/bulk/deployments/BulkDeploymentId/detailed-reports](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-bulk-deployments-bulkdeploymentid-detailed-reports.html)
+- [/greengrass/bulk/deployments/BulkDeploymentId/status](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-bulk-deployments-bulkdeploymentid-status.html)
+- [/greengrass/definition/connectors](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-connectors.html)
+- [/greengrass/definition/connectors/ConnectorDefinitionId](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-connectors-connectordefinitionid.html)
+- [/greengrass/definition/connectors/ConnectorDefinitionId/versions](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-connectors-connectordefinitionid-versions.html)
+- [/greengrass/definition/connectors/ConnectorDefinitionId/versions/ConnectorDefinitionVersionId](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-connectors-connectordefinitionid-versions-connectordefinitionversionid.html)
+- [/greengrass/definition/cores](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-cores.html)
+- [/greengrass/definition/cores/CoreDefinitionId](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-cores-coredefinitionid.html)
+- [/greengrass/definition/cores/CoreDefinitionId/versions](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-cores-coredefinitionid-versions.html)
+- [/greengrass/definition/cores/CoreDefinitionId/versions/CoreDefinitionVersionId](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-cores-coredefinitionid-versions-coredefinitionversionid.html)
+- [/greengrass/definition/devices](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-devices.html)
+- [/greengrass/definition/devices/DeviceDefinitionId](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-devices-devicedefinitionid.html)
+- [/greengrass/definition/devices/DeviceDefinitionId/versions](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-devices-devicedefinitionid-versions.html)
+- [/greengrass/definition/devices/DeviceDefinitionId/versions/DeviceDefinitionVersionId](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-devices-devicedefinitionid-versions-devicedefinitionversionid.html)
+- [/greengrass/definition/functions](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-functions.html)
+- [/greengrass/definition/functions/FunctionDefinitionId](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-functions-functiondefinitionid.html)
+- [/greengrass/definition/functions/FunctionDefinitionId/versions](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-functions-functiondefinitionid-versions.html)
+- [/greengrass/definition/functions/FunctionDefinitionId/versions/FunctionDefinitionVersionId](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-functions-functiondefinitionid-versions-functiondefinitionversionid.html)
+- [/greengrass/definition/loggers](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-loggers.html)
+- [/greengrass/definition/loggers/LoggerDefinitionId](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-loggers-loggerdefinitionid.html)
+- [/greengrass/definition/loggers/LoggerDefinitionId/versions](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-loggers-loggerdefinitionid-versions.html)
+- [/greengrass/definition/loggers/LoggerDefinitionId/versions/LoggerDefinitionVersionId](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-loggers-loggerdefinitionid-versions-loggerdefinitionversionid.html)
+- [/greengrass/definition/resources](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-resources.html)
+- [/greengrass/definition/resources/ResourceDefinitionId](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-resources-resourcedefinitionid.html)
+- [/greengrass/definition/resources/ResourceDefinitionId/versions](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-resources-resourcedefinitionid-versions.html)
+- [/greengrass/definition/resources/ResourceDefinitionId/versions/ResourceDefinitionVersionId](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-resources-resourcedefinitionid-versions-resourcedefinitionversionid.html)
+- [/greengrass/definition/subscriptions](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-subscriptions.html)
+- [/greengrass/definition/subscriptions/SubscriptionDefinitionId](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-subscriptions-subscriptiondefinitionid.html)
+- [/greengrass/definition/subscriptions/SubscriptionDefinitionId/versions](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-subscriptions-subscriptiondefinitionid-versions.html)
+- [/greengrass/definition/subscriptions/SubscriptionDefinitionId/versions/SubscriptionDefinitionVersionId](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-definition-subscriptions-subscriptiondefinitionid-versions-subscriptiondefinitionversionid.html)
+- [/greengrass/groups](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-groups.html)
+- [/greengrass/groups/GroupId](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-groups-groupid.html)
+- [/greengrass/groups/GroupId/certificateauthorities](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-groups-groupid-certificateauthorities.html)
+- [/greengrass/groups/GroupId/certificateauthorities/configuration/expiry](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-groups-groupid-certificateauthorities-configuration-expiry.html)
+- [/greengrass/groups/GroupId/certificateauthorities/CertificateAuthorityId](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-groups-groupid-certificateauthorities-certificateauthorityid.html)
+- [/greengrass/groups/GroupId/deployments](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-groups-groupid-deployments.html)
+- [/greengrass/groups/GroupId/deployments/$reset](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-groups-groupid-deployments-reset.html)
+- [/greengrass/groups/GroupId/deployments/DeploymentId/status](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-groups-groupid-deployments-deploymentid-status.html)
+- [/greengrass/groups/GroupId/role](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-groups-groupid-role.html)
+- [/greengrass/groups/GroupId/versions](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-groups-groupid-versions.html)
+- [/greengrass/groups/GroupId/versions/GroupVersionId](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-groups-groupid-versions-groupversionid.html)
+- [/greengrass/servicerole](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-servicerole.html)
+- [/greengrass/things/ThingName/connectivityInfo](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-things-thingname-connectivityinfo.html)
+- [/greengrass/things/ThingName/runtimeconfig](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-things-thingname-runtimeconfig.html)
+- [/greengrass/updates](https://docs.aws.amazon.com/greengrass/v1/apireference/-greengrass-updates.html)
+- [/tags/resource-arn](https://docs.aws.amazon.com/greengrass/v1/apireference/-tags-resource-arn.html)
+
+### [Parameters](https://docs.aws.amazon.com/greengrass/v1/apireference/api-parameters.html)
+
+The following parameters are used:
+
+- [AssociateRoleToGroupRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-associateroletogrouprequestbody.html)
+- [AssociateServiceRoleToAccountRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-associateserviceroletoaccountrequestbody.html)
+- [BulkDeploymentId](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-bulkdeploymentidparam.html)
+- [CertificateAuthorityId](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-certificateauthorityidparam.html)
+- [ConnectorDefinitionId](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-connectordefinitionidparam.html)
+- [ConnectorDefinitionVersionId](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-connectordefinitionversionidparam.html)
+- [CoreDefinitionId](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-coredefinitionidparam.html)
+- [CoreDefinitionVersionId](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-coredefinitionversionidparam.html)
+- [CreateConnectorDefinitionRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-createconnectordefinitionrequestbody.html)
+- [CreateConnectorDefinitionVersionRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-createconnectordefinitionversionrequestbody.html)
+- [CreateCoreDefinitionRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-createcoredefinitionrequestbody.html)
+- [CreateCoreDefinitionVersionRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-createcoredefinitionversionrequestbody.html)
+- [CreateDeploymentRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-createdeploymentrequestbody.html)
+- [CreateDeviceDefinitionRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-createdevicedefinitionrequestbody.html)
+- [CreateDeviceDefinitionVersionRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-createdevicedefinitionversionrequestbody.html)
+- [CreateFunctionDefinitionRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-createfunctiondefinitionrequestbody.html)
+- [CreateFunctionDefinitionVersionRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-createfunctiondefinitionversionrequestbody.html)
+- [CreateGroupRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-creategrouprequestbody.html)
+- [CreateGroupVersionRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-creategroupversionrequestbody.html)
+- [CreateLoggerDefinitionRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-createloggerdefinitionrequestbody.html)
+- [CreateLoggerDefinitionVersionRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-createloggerdefinitionversionrequestbody.html)
+- [CreateResourceDefinitionRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-createresourcedefinitionrequestbody.html)
+- [CreateResourceDefinitionVersionRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-createresourcedefinitionversionrequestbody.html)
+- [CreateSoftwareUpdateJobRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-createsoftwareupdatejobrequestbody.html)
+- [CreateSubscriptionDefinitionRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-createsubscriptiondefinitionrequestbody.html)
+- [CreateSubscriptionDefinitionVersionRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-createsubscriptiondefinitionversionrequestbody.html)
+- [DeploymentId](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-deploymentidparam.html)
+- [DeviceDefinitionId](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-devicedefinitionidparam.html)
+- [DeviceDefinitionVersionId](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-devicedefinitionversionidparam.html)
+- [FunctionDefinitionId](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-functiondefinitionidparam.html)
+- [FunctionDefinitionVersionId](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-functiondefinitionversionidparam.html)
+- [GroupId](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-groupidparam.html)
+- [GroupVersionId](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-groupversionidparam.html)
+- [LoggerDefinitionId](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-loggerdefinitionidparam.html)
+- [LoggerDefinitionVersionId](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-loggerdefinitionversionidparam.html)
+- [MaxResults](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-maxresultsparam.html)
+- [NextToken](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-nexttokenparam.html)
+- [ResetDeploymentsRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-resetdeploymentsrequestbody.html)
+- [ResourceArn](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-resourcearnparam.html)
+- [ResourceDefinitionId](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-resourcedefinitionidparam.html)
+- [ResourceDefinitionVersionId](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-resourcedefinitionversionidparam.html)
+- [RuntimeConfigurationUpdateRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-runtimeconfigurationupdaterequestbody.html)
+- [StartBulkDeploymentRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-startbulkdeploymentrequestbody.html)
+- [SubscriptionDefinitionId](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-subscriptiondefinitionidparam.html)
+- [SubscriptionDefinitionVersionId](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-subscriptiondefinitionversionidparam.html)
+- [tags](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-tagsparam.html)
+- [ThingName](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-thingnameparam.html)
+- [TagKeys](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-tagkeysparam.html)
+- [UpdateConnectivityInfoRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-updateconnectivityinforequestbody.html)
+- [UpdateDefinitionRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-updatedefinitionrequestbody.html)
+- [UpdateGroupCertificateConfigurationRequestBody](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-updategroupcertificateconfigurationrequestbody.html)
+- [X-Amzn-Client-Token](https://docs.aws.amazon.com/greengrass/v1/apireference/parameters-clienttoken.html)
+
+### [Definitions](https://docs.aws.amazon.com/greengrass/v1/apireference/api-definitions.html)
+
+The following definitions are used:
+
+- [AssociateRoleToGroupRequest](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-associateroletogrouprequest.html)
+- [AssociateServiceRoleToAccountRequest](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-associateserviceroletoaccountrequest.html)
+- [AssociateServiceRoleToAccountResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-associateserviceroletoaccountresponse.html)
+- [BulkDeployment](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-bulkdeployment.html)
+- [BulkDeploymentMetrics](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-bulkdeploymentmetrics.html)
+- [BulkDeploymentResult](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-bulkdeploymentresult.html)
+- [BulkDeploymentResults](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-bulkdeploymentresults.html)
+- [BulkDeploymentStatus](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-bulkdeploymentstatus.html)
+- [BulkDeployments](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-bulkdeployments.html)
+- [ConnectivityInfo](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-connectivityinfo.html)
+- [Connector](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-connector.html)
+- [ConnectorDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-connectordefinitionversion.html)
+- [Core](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-core.html)
+- [CoreDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-coredefinitionversion.html)
+- [CreateDeploymentRequest](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-createdeploymentrequest.html)
+- [CreateDeploymentResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-createdeploymentresponse.html)
+- [CreateGroupCertificateAuthorityResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-creategroupcertificateauthorityresponse.html)
+- [CreateSoftwareUpdateJobRequest](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-createsoftwareupdatejobrequest.html)
+- [CreateSoftwareUpdateJobResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-createsoftwareupdatejobresponse.html)
+- [DefinitionInformation](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-definitioninformation.html)
+- [Deployment](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-deployment.html)
+- [DeploymentType](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-deploymenttype.html)
+- [Deployments](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-deployments.html)
+- [Device](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-device.html)
+- [DeviceDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-devicedefinitionversion.html)
+- [DisassociateRoleFromGroupResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-disassociaterolefromgroupresponse.html)
+- [DisassociateServiceRoleFromAccountResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-disassociateservicerolefromaccountresponse.html)
+- [Empty Schema](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-empty.html)
+- [ErrorDetail](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-errordetail.html)
+- [ErrorDetails](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-errordetails.html)
+- [Function](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-function.html)
+- [FunctionConfiguration](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-functionconfiguration.html)
+- [FunctionConfigurationEnvironment](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-functionconfigurationenvironment.html)
+- [FunctionDefaultConfig](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-functiondefaultconfig.html)
+- [FunctionDefaultExecutionConfig](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-functiondefaultexecutionconfig.html)
+- [FunctionDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-functiondefinitionversion.html)
+- [FunctionExecutionConfig](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-functionexecutionconfig.html)
+- [FunctionIsolationMode](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-functionisolationmode.html)
+- [FunctionRunAsConfig](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-functionrunasconfig.html)
+- [GeneralError](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-generalerror.html)
+- [GetAssociatedRoleResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-getassociatedroleresponse.html)
+- [GetBulkDeploymentStatusResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-getbulkdeploymentstatusresponse.html)
+- [GetConnectivityInfoResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-getconnectivityinforesponse.html)
+- [GetConnectorDefinitionVersionResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-getconnectordefinitionversionresponse.html)
+- [GetCoreDefinitionVersionResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-getcoredefinitionversionresponse.html)
+- [GetDeploymentStatusResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-getdeploymentstatusresponse.html)
+- [GetDeviceDefinitionVersionResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-getdevicedefinitionversionresponse.html)
+- [GetFunctionDefinitionVersionResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-getfunctiondefinitionversionresponse.html)
+- [GetGroupCertificateAuthorityResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-getgroupcertificateauthorityresponse.html)
+- [GetGroupVersionResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-getgroupversionresponse.html)
+- [GetLoggerDefinitionVersionResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-getloggerdefinitionversionresponse.html)
+- [GetResourceDefinitionVersionResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-getresourcedefinitionversionresponse.html)
+- [GetServiceRoleForAccountResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-getserviceroleforaccountresponse.html)
+- [GetSubscriptionDefinitionVersionResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-getsubscriptiondefinitionversionresponse.html)
+- [GetThingRuntimeConfigurationResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-getthingruntimeconfigurationresponse.html)
+- [Group](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-associateroletogroupresponse.html)
+- [Group Certificate Authority Properties](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-groupcertificateauthorityproperties.html)
+- [GroupCertificateConfiguration](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-groupcertificateconfiguration.html)
+- [GroupInformation](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-groupinformation.html)
+- [GroupOwnerSetting](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-groupownersetting.html)
+- [GroupVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-groupversion.html)
+- [IDList](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-idlist.html)
+- [ListBulkDeploymentDetailedReportsResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-listbulkdeploymentdetailedreportsresponse.html)
+- [ListBulkDeploymentsResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-listbulkdeploymentsresponse.html)
+- [ListDefinitionsResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-listdefinitionsresponse.html)
+- [ListDeploymentsRequest](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-listdeploymentsrequest.html)
+- [ListDeploymentsResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-listdeploymentsresponse.html)
+- [ListGroupCertificateAuthoritiesResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-listgroupcertificateauthoritiesresponse.html)
+- [ListGroupsResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-listgroupsresponse.html)
+- [ListVersionsResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-listversionsresponse.html)
+- [LocalDeviceResourceData](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-localdeviceresourcedata.html)
+- [LocalVolumeResourceData](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-localvolumeresourcedata.html)
+- [Logger](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-logger.html)
+- [LoggerComponent](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-loggercomponent.html)
+- [LoggerDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-loggerdefinitionversion.html)
+- [LoggerLevel](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-loggerlevel.html)
+- [LoggerType](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-loggertype.html)
+- [Permission](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-permission.html)
+- [ResetDeploymentsRequest](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-resetdeploymentsrequest.html)
+- [ResetDeploymentsResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-resetdeploymentsresponse.html)
+- [Resource](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-resource.html)
+- [ResourceAccessPolicy](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-resourceaccesspolicy.html)
+- [ResourceDataContainer](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-resourcedatacontainer.html)
+- [ResourceDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-resourcedefinitionversion.html)
+- [ResourceDownloadOwnerSetting](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-resourcedownloadownersetting.html)
+- [RuntimeConfiguration](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-runtimeconfiguration.html)
+- [RuntimeConfigurationUpdate](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-runtimeconfigurationupdate.html)
+- [S3MachineLearningModelResourceData](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-s3machinelearningmodelresourcedata.html)
+- [S3UrlSignerRole](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-s3urlsignerrole.html)
+- [SageMakerMachineLearningModelResourceData](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-sagemakermachinelearningmodelresourcedata.html)
+- [SecretsManagerSecretResourceData](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-secretsmanagersecretresourcedata.html)
+- [SoftwareToUpdate](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-softwaretoupdate.html)
+- [StartBulkDeploymentRequest](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-startbulkdeploymentrequest.html)
+- [StartBulkDeploymentResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-startbulkdeploymentresponse.html)
+- [Subscription](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-subscription.html)
+- [SubscriptionDefinitionVersion](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-subscriptiondefinitionversion.html)
+- [TelemetryConfiguration](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-telemetryconfiguration.html)
+- [TelemetryConfigurationUpdate](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-telemetryconfigurationupdate.html)
+- [UpdateAgentLogLevel](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-updateagentloglevel.html)
+- [UpdateConnectivityInfoRequest](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-updateconnectivityinforequest.html)
+- [UpdateConnectivityInfoResponse](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-updateconnectivityinforesponse.html)
+- [UpdateTargets](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-updatetargets.html)
+- [UpdateTargetsArchitecture](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-updatetargetsarchitecture.html)
+- [UpdateTargetsOperatingSystem](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-updatetargetsoperatingsystem.html)
+- [VersionInformation](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-versioninformation.html)
+- [Versions](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-versions.html)
+- [tags](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-tags.html)
+- [updateGroupCertificateConfigurationRequest](https://docs.aws.amazon.com/greengrass/v1/apireference/definitions-updategroupcertificateconfigurationrequest.html)

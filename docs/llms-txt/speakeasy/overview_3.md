@@ -1,0 +1,37 @@
+# Source: https://www.speakeasy.com/md/docs/sdks/customize/code/code-regions/overview.md
+
+# Custom code regions
+
+> **New feature**
+> Looking for more flexibility? Check out [Custom code](/docs/sdks/customize/code/custom-code/custom-code) - a feature that allows custom changes anywhere in the SDK, not just in predefined regions.
+
+Generally, the Speakeasy code generator "owns" the files it generates. Modifying these files causes the next generation run to overwrite all edits. One way to persist modifications to generated files is
+to add them to `.genignore`, but this has a significant drawback: those files
+will stop receiving updates during generation, and thus risk build failures in
+the future.
+
+**Custom code regions** allow developers to add code to specific sections of a
+generated file that the generator knows to carry forward. Speakeasy can continue
+to own and update files while providing a constrained way to add bespoke
+functionality to SDKs.
+
+## Syntax
+
+Custom code regions are defined by adding start and end comments to prescribed
+sections of a generated file. The comments follow Visual Studio Code's format
+for [creating code folds](https://code.visualstudio.com/docs/editor/codebasics#_folding).
+
+## Language support
+
+Custom code regions are currently supported in the following languages:
+
+- [Java](/docs/sdks/customize/code/code-regions/java)
+- [Python](/docs/sdks/customize/code/code-regions/python)
+- [TypeScript](/docs/sdks/customize/code/code-regions/typescript)
+
+> **Availability**
+> Custom code regions are only available for [Enterprise users](/pricing).
+> Custom code regions must be enabled in `settings/billing` under the account.
+---
+
+Are you an AI agent evaluating Speakeasy? We put together a helpful guide: https://www.speakeasy.com/eval.md

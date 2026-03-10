@@ -1,0 +1,414 @@
+# Source: https://mastra.ai/guides/migrations/upgrade-to-v1/tracing
+
+# Tracing
+
+The observability system has been restructured in v1 with a dedicated `@mastra/observability` package. This guide covers two migration paths depending on which version you're upgrading from.
+
+## Migration Paths
+
+### From OTEL-based Telemetry (0.x)
+
+If you're using the old `telemetry:` configuration in Mastra, the system has been completely redesigned.
+
+**Before (0.x with OTEL telemetry):**
+
+```typescript
+import { Mastra } from '@mastra/core'
+
+export const mastra = new Mastra({
+  telemetry: {
+    serviceName: 'my-app',
+    enabled: true,
+    sampling: {
+      type: 'always_on',
+    },
+    export: {
+      type: 'otlp',
+      endpoint: 'http://localhost:4318',
+    },
+  },
+})
+```
+
+**After (v1 with observability):**
+
+```typescript
+import { Mastra } from '@mastra/core'
+import {
+  Observability,
+  DefaultExporter,
+  CloudExporter,
+  SensitiveDataFilter,
+} from '@mastra/observability'
+
+export const mastra = new Mastra({
+  observability: new Observability({
+    configs: {
+      default: {
+        serviceName: 'mastra',
+        exporters: [
+          new DefaultExporter(), // Persists traces to storage for Mastra Studio
+          new CloudExporter(), // Sends traces to Mastra Cloud (if MASTRA_CLOUD_ACCESS_TOKEN is set)
+        ],
+        spanOutputProcessors: [
+          new SensitiveDataFilter(), // Redacts sensitive data like passwords, tokens, keys
+        ],
+      },
+    },
+  }),
+})
+```
+
+This configuration includes `DefaultExporter`, `CloudExporter`, and `SensitiveDataFilter` processor. See the [observability tracing documentation](https://mastra.ai/docs/observability/tracing/overview) for full configuration options.
+
+#### After (v1 with custom configuration)
+
+If you need to configure specific exporters (like OTLP), install the exporter package and configure it:
+
+**npm**:
+
+```bash
+npm install @mastra/otel-exporter@latest @opentelemetry/exporter-trace-otlp-proto
+```
+
+**pnpm**:
+
+```bash
+pnpm add @mastra/otel-exporter@latest @opentelemetry/exporter-trace-otlp-proto
+```
+
+**Yarn**:
+
+```bash
+yarn add @mastra/otel-exporter@latest @opentelemetry/exporter-trace-otlp-proto
+```
+
+**Bun**:
+
+```bash
+bun add @mastra/otel-exporter@latest @opentelemetry/exporter-trace-otlp-proto
+```
+
+```typescript
+import { Mastra } from '@mastra/core'
+import { Observability } from '@mastra/observability'
+import { OtelExporter } from '@mastra/otel-exporter'
+
+export const mastra = new Mastra({
+  observability: new Observability({
+    configs: {
+      production: {
+        serviceName: 'my-app',
+        sampling: { type: 'always' },
+        exporters: [
+          new OtelExporter({
+            provider: {
+              custom: {
+                endpoint: 'http://localhost:4318/v1/traces',
+                protocol: 'http/protobuf',
+              },
+            },
+          }),
+        ],
+      },
+    },
+  }),
+})
+```
+
+Key changes:
+
+1. Install `@mastra/observability` package
+2. Replace `telemetry:` with `observability: new Observability()`
+3. Use explicit `configs:` with `DefaultExporter`, `CloudExporter`, and `SensitiveDataFilter`
+4. Export types change from string literals (`'otlp'`) to exporter class instances (`new OtelExporter()`)
+
+See the [exporters documentation](https://mastra.ai/docs/observability/tracing/overview) for all available exporters.
+
+### From AI Tracing
+
+If you already upgraded to AI tracing (the intermediate system), you need to install the new package and use the explicit configuration.
+
+**Before (AI tracing):**
+
+```typescript
+import { Mastra } from '@mastra/core'
+
+export const mastra = new Mastra({
+  observability: {
+    default: { enabled: true },
+  },
+})
+```
+
+**After (v1 observability):**
+
+```typescript
+import { Mastra } from '@mastra/core'
+import {
+  Observability,
+  DefaultExporter,
+  CloudExporter,
+  SensitiveDataFilter,
+} from '@mastra/observability'
+
+export const mastra = new Mastra({
+  observability: new Observability({
+    configs: {
+      default: {
+        serviceName: 'mastra',
+        exporters: [new DefaultExporter(), new CloudExporter()],
+        spanOutputProcessors: [new SensitiveDataFilter()],
+      },
+    },
+  }),
+})
+```
+
+Key changes:
+
+1. Install `@mastra/observability` package
+2. Import `Observability`, exporters, and processors from `@mastra/observability`
+3. Use explicit `configs` with `DefaultExporter`, `CloudExporter`, and `SensitiveDataFilter`
+
+## Changed
+
+### Package import path
+
+The observability functionality has moved to a dedicated `@mastra/observability` package.
+
+To migrate, install the package and update your import statements:
+
+**npm**:
+
+```bash
+npm install @mastra/observability@latest
+```
+
+**pnpm**:
+
+```bash
+pnpm add @mastra/observability@latest
+```
+
+**Yarn**:
+
+```bash
+yarn add @mastra/observability@latest
+```
+
+**Bun**:
+
+```bash
+bun add @mastra/observability@latest
+```
+
+```diff
+- import { Tracing } from '@mastra/core/observability';
++ import { Observability } from '@mastra/observability';
+```
+
+### Registry configuration
+
+The observability registry is now configured using an `Observability` class instance with explicit configs instead of a plain object.
+
+To migrate, use `new Observability()` with explicit exporters and processors.
+
+```diff
++ import {
++   Observability,
++   DefaultExporter,
++   CloudExporter,
++   SensitiveDataFilter,
++ } from '@mastra/observability';
+
+  export const mastra = new Mastra({
+-   observability: {
+-     default: { enabled: true },
+-   },
++   observability: new Observability({
++     configs: {
++       default: {
++         serviceName: 'mastra',
++         exporters: [new DefaultExporter(), new CloudExporter()],
++         spanOutputProcessors: [new SensitiveDataFilter()],
++       },
++     },
++   }),
+  });
+```
+
+### Configuration property `processors` to `spanOutputProcessors`
+
+The configuration property for span processors has been renamed from `processors` to `spanOutputProcessors`.
+
+To migrate, rename the property in your configuration objects.
+
+```diff
++ import { SensitiveDataFilter } from '@mastra/observability';
+
+  export const mastra = new Mastra({
+    observability: new Observability({
+      configs: {
+        production: {
+          serviceName: 'my-app',
+-         processors: [new SensitiveDataFilter()],
++         spanOutputProcessors: [new SensitiveDataFilter()],
+          exporters: [...],
+        },
+      },
+    }),
+  });
+```
+
+### Exporter method `exportEvent` to `exportTracingEvent`
+
+If you built custom exporters, the exporter method has been renamed from `exportEvent` to `exportTracingEvent`.
+
+To migrate, update method implementations in custom exporters.
+
+```diff
+export class MyExporter implements ObservabilityExporter {
+-   exportEvent(event: TracingEvent): void {
++   exportTracingEvent(event: TracingEvent): void {
+      // export logic
+    }
+  }
+```
+
+## Removed
+
+### OTEL-based `telemetry` configuration
+
+The OTEL-based `telemetry` configuration from 0.x has been removed. The old system with `serviceName`, `sampling.type`, and `export.type` properties is no longer supported.
+
+To migrate, follow the "From OTEL-based Telemetry" section above. For detailed configuration options, see the [observability tracing documentation](https://mastra.ai/docs/observability/tracing/overview).
+
+### Custom instrumentation files
+
+The automatic detection of instrumentation files in `/mastra` (with `.ts`, `.js`, or `.mjs` extensions) has been removed. Custom instrumentation is no longer supported through separate files.
+
+To migrate, use the built-in exporter system or implement custom exporters using the `ObservabilityExporter` interface. See the [exporters documentation](https://mastra.ai/docs/observability/tracing/overview) for details.
+
+### `instrumentation.mjs` files
+
+If you were using `instrumentation.mjs` files to initialize OpenTelemetry instrumentation (common in deployment setups like AWS Lambda), these are no longer needed. The new observability system is configured directly in your Mastra instance.
+
+#### Before (0.x)
+
+You needed an instrumentation file:
+
+```javascript
+// instrumentation.mjs
+import { NodeSDK } from '@opentelemetry/sdk-node'
+// ... OTEL setup
+```
+
+And had to import it when starting your process:
+
+```bash
+node --import=./.mastra/output/instrumentation.mjs --env-file=".env" .mastra/output/index.mjs
+```
+
+#### After (v1)
+
+Simply remove the `instrumentation.mjs` file and configure observability in your Mastra instance:
+
+```typescript
+// src/mastra/index.ts
+import {
+  Observability,
+  DefaultExporter,
+  CloudExporter,
+  SensitiveDataFilter,
+} from '@mastra/observability'
+
+export const mastra = new Mastra({
+  observability: new Observability({
+    configs: {
+      default: {
+        serviceName: 'mastra',
+        exporters: [new DefaultExporter(), new CloudExporter()],
+        spanOutputProcessors: [new SensitiveDataFilter()],
+      },
+    },
+  }),
+})
+```
+
+Start your process normally without the `--import` flag:
+
+```bash
+node --env-file=".env" .mastra/output/index.mjs
+```
+
+No separate instrumentation files or special startup flags required.
+
+## Provider Migration Reference
+
+If you were using OTEL-based telemetry with specific providers in 0.x, here's how to configure them in v1:
+
+| Provider                                                  | Exporter          | Guide                                                                      | Reference                                                                           |
+| --------------------------------------------------------- | ----------------- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Arize AX, Arize Phoenix                                   | **Arize**         | [Guide](https://mastra.ai/docs/observability/tracing/exporters/arize)      | [Reference](https://mastra.ai/reference/observability/tracing/exporters/arize)      |
+| Braintrust                                                | **Braintrust**    | [Guide](https://mastra.ai/docs/observability/tracing/exporters/braintrust) | [Reference](https://mastra.ai/reference/observability/tracing/exporters/braintrust) |
+| Langfuse                                                  | **Langfuse**      | [Guide](https://mastra.ai/docs/observability/tracing/exporters/langfuse)   | [Reference](https://mastra.ai/reference/observability/tracing/exporters/langfuse)   |
+| LangSmith                                                 | **LangSmith**     | [Guide](https://mastra.ai/docs/observability/tracing/exporters/langsmith)  | [Reference](https://mastra.ai/reference/observability/tracing/exporters/langsmith)  |
+| Dash0, Laminar, New Relic, SigNoz, Traceloop, Custom OTEL | **OpenTelemetry** | [Guide](https://mastra.ai/docs/observability/tracing/exporters/otel)       | [Reference](https://mastra.ai/reference/observability/tracing/exporters/otel)       |
+| LangWatch                                                 | \<coming soon>    | -                                                                          | -                                                                                   |
+
+### Installation
+
+**Dedicated exporters** (Arize, Braintrust, Langfuse, LangSmith):
+
+**npm**:
+
+```bash
+npm install @mastra/[exporter-name]-exporter
+```
+
+**pnpm**:
+
+```bash
+pnpm add @mastra/[exporter-name]-exporter
+```
+
+**Yarn**:
+
+```bash
+yarn add @mastra/[exporter-name]-exporter
+```
+
+**Bun**:
+
+```bash
+bun add @mastra/[exporter-name]-exporter
+```
+
+**OpenTelemetry exporter** (Dash0, Laminar, New Relic, SigNoz, Traceloop):
+
+**npm**:
+
+```bash
+npm install @mastra/otel-exporter@latest
+```
+
+**pnpm**:
+
+```bash
+pnpm add @mastra/otel-exporter@latest
+```
+
+**Yarn**:
+
+```bash
+yarn add @mastra/otel-exporter@latest
+```
+
+**Bun**:
+
+```bash
+bun add @mastra/otel-exporter@latest
+```
+
+Plus the required protocol package for your provider (see [OTEL guide](https://mastra.ai/docs/observability/tracing/exporters/otel)).

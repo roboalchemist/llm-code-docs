@@ -1,0 +1,75 @@
+# [Anchor](https://qdrant.tech/documentation/cloud-api/\#qdrant-cloud-api-powerful-grpc-and-flexible-restjson-interfaces) Qdrant Cloud API: Powerful gRPC and Flexible REST/JSON Interfaces
+
+**Note:** This is not the Qdrant REST or gPRC API of the database itself. For database APIs & SDKs, see our list of [interfaces](https://qdrant.tech/documentation/interfaces/)
+
+## [Anchor](https://qdrant.tech/documentation/cloud-api/\#introduction) Introduction
+
+The Qdrant Cloud API lets you automate the Qdrant Cloud platform. You can use this API to manage your accounts, clusters, backup schedules, authentication methods, hybrid cloud environments, and more.
+
+To cater to diverse integration needs, the Qdrant Cloud API offers two primary interaction models:
+
+- **gRPC API**: For high-performance, low-latency, and type-safe communication. This is the recommended way for backend services and applications requiring maximum efficiency. The API is defined using Protocol Buffers.
+- **REST/JSON API**: A conventional HTTP/1.1 (and HTTP/2) interface with JSON payloads. This API is provided via a gRPC Gateway, translating RESTful calls into gRPC messages, offering ease of use for web clients, scripts, and broader tool compatibility.
+
+You can find the API definitions and generated client libraries in our Qdrant Cloud Public API [GitHub repository](https://github.com/qdrant/qdrant-cloud-public-api).
+**Note:** The API is splitted into multiple services to make it easier to use.
+
+### [Anchor](https://qdrant.tech/documentation/cloud-api/\#qdrant-cloud-api-endpoints) Qdrant Cloud API Endpoints
+
+- **gRPC Endpoint**: grpc.cloud.qdrant.io:443
+- **REST/JSON Endpoint**: [https://api.cloud.qdrant.io](https://api.cloud.qdrant.io/)
+
+### [Anchor](https://qdrant.tech/documentation/cloud-api/\#authentication) Authentication
+
+Most of the Qdrant Cloud API requests must be authenticated. Authentication is handled via API keys (so called management keys), which should be passed in the Authorization header.
+**Management Keys**: `Authorization: apikey <YOUR_MANAGEMENT_KEY>`
+
+Replace <YOUR\_MANAGEMENT\_KEY> with the actual API key obtained from your Qdrant Cloud dashboard or generated programmatically.
+
+You can create a management key in the Cloud Console UI. Go to **Access Management** \> **Cloud Management Keys**.
+![Authentication](https://qdrant.tech/documentation/cloud/authentication.png)
+
+**Note:** Ensure that the API key is kept secure and not exposed in public repositories or logs. Once authenticated, the API allows you to manage clusters, backup schedules, and perform other operations available to your account.
+
+### [Anchor](https://qdrant.tech/documentation/cloud-api/\#samples) Samples
+
+For samples on how to use the API, with a tool like grpcurl, curl or any of the provided SDKs, please see the [Qdrant Cloud Public API](https://github.com/qdrant/qdrant-cloud-public-api) repository.
+
+## [Anchor](https://qdrant.tech/documentation/cloud-api/\#terraform-provider) Terraform Provider
+
+Qdrant Cloud also provides a Terraform provider to manage your Qdrant Cloud resources. [Learn more](https://qdrant.tech/documentation/infrastructure/terraform/).
+
+## [Anchor](https://qdrant.tech/documentation/cloud-api/\#deprecated-openapi-specification) Deprecated OpenAPI specification
+
+We still support our deprecated OpenAPI endpoint, but this is scheduled to be removed later this year (November 1st, 2025).
+We do _NOT_ recommend to use this endpoint anymore and use the replacement as described above.
+
+| REST API | Documentation |
+| --- | --- |
+| v.0.1.0 | [OpenAPI Specification](https://cloud.qdrant.io/pa/v1/docs) |
+
+##### Was this page useful?
+
+![Thumb up icon](https://qdrant.tech/icons/outline/thumb-up.svg)
+Yes
+![Thumb down icon](https://qdrant.tech/icons/outline/thumb-down.svg)
+No
+
+Thank you for your feedback! 🙏
+
+We are sorry to hear that. 😔 You can [edit](https://qdrant.tech/github.com/qdrant/landing_page/tree/master/qdrant-landing/content/documentation/cloud-api.md) this page on GitHub, or [create](https://github.com/qdrant/landing_page/issues/new/choose) a GitHub issue.
+
+On this page:
+
+- [Edit on Github](https://github.com/qdrant/landing_page/tree/master/qdrant-landing/content/documentation/cloud-api.md)
+- [Create an issue](https://github.com/qdrant/landing_page/issues/new/choose)
+
+×
+
+[Powered by](https://qdrant.tech/)
+
+<|page-12-lllmstxt|>
+## configuration
+- [Documentation](https://qdrant.tech/documentation/)
+- [Private cloud](https://qdrant.tech/documentation/private-cloud/)
+- Configuration

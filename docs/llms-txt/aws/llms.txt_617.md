@@ -1,0 +1,190 @@
+# Source: https://docs.aws.amazon.com/networkmanager/latest/APIReference/llms.txt
+
+# AWS Global Networks for Transit Gateways API Reference
+
+> Amazon Web Services enables you to centrally manage your AWS Cloud WAN core network and your Transit Gateway network across AWS accounts, Regions, and on-premises locations.
+
+- [Welcome](https://docs.aws.amazon.com/networkmanager/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/networkmanager/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/networkmanager/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Operations.html)
+
+- [AcceptAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_AcceptAttachment.html): Accepts a core network attachment request.
+- [AssociateConnectPeer](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_AssociateConnectPeer.html): Associates a core network Connect peer with a device and optionally, with a link.
+- [AssociateCustomerGateway](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_AssociateCustomerGateway.html): Associates a customer gateway with a device and optionally, with a link.
+- [AssociateLink](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_AssociateLink.html): Associates a link to a device.
+- [AssociateTransitGatewayConnectPeer](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_AssociateTransitGatewayConnectPeer.html): Associates a transit gateway Connect peer with a device, and optionally, with a link.
+- [CreateConnectAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CreateConnectAttachment.html): Creates a core network Connect attachment from a specified core network attachment.
+- [CreateConnection](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CreateConnection.html): Creates a connection between two devices.
+- [CreateConnectPeer](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CreateConnectPeer.html): Creates a core network Connect peer for a specified core network connect attachment between a core network and an appliance.
+- [CreateCoreNetwork](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CreateCoreNetwork.html): Creates a core network as part of your global network, and optionally, with a core network policy.
+- [CreateCoreNetworkPrefixListAssociation](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CreateCoreNetworkPrefixListAssociation.html): Creates an association between a core network and a prefix list for routing control.
+- [CreateDevice](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CreateDevice.html): Creates a new device in a global network.
+- [CreateDirectConnectGatewayAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CreateDirectConnectGatewayAttachment.html): Creates an AWS Direct Connect gateway attachment
+- [CreateGlobalNetwork](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CreateGlobalNetwork.html): Creates a new, empty global network.
+- [CreateLink](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CreateLink.html): Creates a new link for a specified site.
+- [CreateSite](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CreateSite.html): Creates a new site in a global network.
+- [CreateSiteToSiteVpnAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CreateSiteToSiteVpnAttachment.html): Creates an Amazon Web Services site-to-site VPN attachment on an edge location of a core network.
+- [CreateTransitGatewayPeering](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CreateTransitGatewayPeering.html): Creates a transit gateway peering connection.
+- [CreateTransitGatewayRouteTableAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CreateTransitGatewayRouteTableAttachment.html): Creates a transit gateway route table attachment.
+- [CreateVpcAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CreateVpcAttachment.html): Creates a VPC attachment on an edge location of a core network.
+- [DeleteAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_DeleteAttachment.html): Deletes an attachment.
+- [DeleteConnection](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_DeleteConnection.html): Deletes the specified connection in your global network.
+- [DeleteConnectPeer](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_DeleteConnectPeer.html): Deletes a Connect peer.
+- [DeleteCoreNetwork](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_DeleteCoreNetwork.html): Deletes a core network along with all core network policies.
+- [DeleteCoreNetworkPolicyVersion](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_DeleteCoreNetworkPolicyVersion.html): Deletes a policy version from a core network.
+- [DeleteCoreNetworkPrefixListAssociation](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_DeleteCoreNetworkPrefixListAssociation.html): Deletes an association between a core network and a prefix list.
+- [DeleteDevice](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_DeleteDevice.html): Deletes an existing device.
+- [DeleteGlobalNetwork](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_DeleteGlobalNetwork.html): Deletes an existing global network.
+- [DeleteLink](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_DeleteLink.html): Deletes an existing link.
+- [DeletePeering](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_DeletePeering.html): Deletes an existing peering connection.
+- [DeleteResourcePolicy](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_DeleteResourcePolicy.html): Deletes a resource policy for the specified resource.
+- [DeleteSite](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_DeleteSite.html): Deletes an existing site.
+- [DeregisterTransitGateway](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_DeregisterTransitGateway.html): Deregisters a transit gateway from your global network.
+- [DescribeGlobalNetworks](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_DescribeGlobalNetworks.html): Describes one or more global networks.
+- [DisassociateConnectPeer](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_DisassociateConnectPeer.html): Disassociates a core network Connect peer from a device and a link.
+- [DisassociateCustomerGateway](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_DisassociateCustomerGateway.html): Disassociates a customer gateway from a device and a link.
+- [DisassociateLink](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_DisassociateLink.html): Disassociates an existing device from a link.
+- [DisassociateTransitGatewayConnectPeer](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_DisassociateTransitGatewayConnectPeer.html): Disassociates a transit gateway Connect peer from a device and link.
+- [ExecuteCoreNetworkChangeSet](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ExecuteCoreNetworkChangeSet.html): Executes a change set on your core network.
+- [GetConnectAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetConnectAttachment.html): Returns information about a core network Connect attachment.
+- [GetConnections](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetConnections.html): Gets information about one or more of your connections in a global network.
+- [GetConnectPeer](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetConnectPeer.html): Returns information about a core network Connect peer.
+- [GetConnectPeerAssociations](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetConnectPeerAssociations.html): Returns information about a core network Connect peer associations.
+- [GetCoreNetwork](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetCoreNetwork.html): Returns information about the LIVE policy for a core network.
+- [GetCoreNetworkChangeEvents](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetCoreNetworkChangeEvents.html): Returns information about a core network change event.
+- [GetCoreNetworkChangeSet](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetCoreNetworkChangeSet.html): Returns a change set between the LIVE core network policy and a submitted policy.
+- [GetCoreNetworkPolicy](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetCoreNetworkPolicy.html): Returns details about a core network policy.
+- [GetCustomerGatewayAssociations](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetCustomerGatewayAssociations.html): Gets the association information for customer gateways that are associated with devices and links in your global network.
+- [GetDevices](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetDevices.html): Gets information about one or more of your devices in a global network.
+- [GetDirectConnectGatewayAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetDirectConnectGatewayAttachment.html): Returns information about a specific AWS Direct Connect gateway attachment.
+- [GetLinkAssociations](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetLinkAssociations.html): Gets the link associations for a device or a link.
+- [GetLinks](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetLinks.html): Gets information about one or more links in a specified global network.
+- [GetNetworkResourceCounts](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetNetworkResourceCounts.html): Gets the count of network resources, by resource type, for the specified global network.
+- [GetNetworkResourceRelationships](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetNetworkResourceRelationships.html): Gets the network resource relationships for the specified global network.
+- [GetNetworkResources](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetNetworkResources.html): Describes the network resources for the specified global network.
+- [GetNetworkRoutes](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetNetworkRoutes.html): Gets the network routes of the specified global network.
+- [GetNetworkTelemetry](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetNetworkTelemetry.html): Gets the network telemetry of the specified global network.
+- [GetResourcePolicy](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetResourcePolicy.html): Returns information about a resource policy.
+- [GetRouteAnalysis](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetRouteAnalysis.html): Gets information about the specified route analysis.
+- [GetSites](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetSites.html): Gets information about one or more of your sites in a global network.
+- [GetSiteToSiteVpnAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetSiteToSiteVpnAttachment.html): Returns information about a site-to-site VPN attachment.
+- [GetTransitGatewayConnectPeerAssociations](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetTransitGatewayConnectPeerAssociations.html): Gets information about one or more of your transit gateway Connect peer associations in a global network.
+- [GetTransitGatewayPeering](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetTransitGatewayPeering.html): Returns information about a transit gateway peer.
+- [GetTransitGatewayRegistrations](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetTransitGatewayRegistrations.html): Gets information about the transit gateway registrations in a specified global network.
+- [GetTransitGatewayRouteTableAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetTransitGatewayRouteTableAttachment.html): Returns information about a transit gateway route table attachment.
+- [GetVpcAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GetVpcAttachment.html): Returns information about a VPC attachment.
+- [ListAttachmentRoutingPolicyAssociations](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ListAttachmentRoutingPolicyAssociations.html): Lists the routing policy associations for attachments in a core network.
+- [ListAttachments](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ListAttachments.html): Returns a list of core network attachments.
+- [ListConnectPeers](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ListConnectPeers.html): Returns a list of core network Connect peers.
+- [ListCoreNetworkPolicyVersions](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ListCoreNetworkPolicyVersions.html): Returns a list of core network policy versions.
+- [ListCoreNetworkPrefixListAssociations](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ListCoreNetworkPrefixListAssociations.html): Lists the prefix list associations for a core network.
+- [ListCoreNetworkRoutingInformation](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ListCoreNetworkRoutingInformation.html): Lists routing information for a core network, including routes and their attributes.
+- [ListCoreNetworks](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ListCoreNetworks.html): Returns a list of owned and shared core networks.
+- [ListOrganizationServiceAccessStatus](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ListOrganizationServiceAccessStatus.html): Gets the status of the Service Linked Role (SLR) deployment for the accounts in a given Amazon Web Services Organization.
+- [ListPeerings](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ListPeerings.html): Lists the peerings for a core network.
+- [ListTagsForResource](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ListTagsForResource.html): Lists the tags for a specified resource.
+- [PutAttachmentRoutingPolicyLabel](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_PutAttachmentRoutingPolicyLabel.html): Applies a routing policy label to an attachment for traffic routing decisions.
+- [PutCoreNetworkPolicy](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_PutCoreNetworkPolicy.html): Creates a new, immutable version of a core network policy.
+- [PutResourcePolicy](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_PutResourcePolicy.html): Creates or updates a resource policy.
+- [RegisterTransitGateway](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_RegisterTransitGateway.html): Registers a transit gateway in your global network.
+- [RejectAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_RejectAttachment.html): Rejects a core network attachment request.
+- [RemoveAttachmentRoutingPolicyLabel](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_RemoveAttachmentRoutingPolicyLabel.html): Removes a routing policy label from an attachment.
+- [RestoreCoreNetworkPolicyVersion](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_RestoreCoreNetworkPolicyVersion.html): Restores a previous policy version as a new, immutable version of a core network policy.
+- [StartOrganizationServiceAccessUpdate](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_StartOrganizationServiceAccessUpdate.html): Enables the Network Manager service for an Amazon Web Services Organization.
+- [StartRouteAnalysis](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_StartRouteAnalysis.html): Starts analyzing the routing path between the specified source and destination.
+- [TagResource](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_TagResource.html): Tags a specified resource.
+- [UntagResource](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_UntagResource.html): Removes tags from a specified resource.
+- [UpdateConnection](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_UpdateConnection.html): Updates the information for an existing connection.
+- [UpdateCoreNetwork](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_UpdateCoreNetwork.html): Updates the description of a core network.
+- [UpdateDevice](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_UpdateDevice.html): Updates the details for an existing device.
+- [UpdateDirectConnectGatewayAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_UpdateDirectConnectGatewayAttachment.html): Updates the edge locations associated with an AWS Direct Connect gateway attachment.
+- [UpdateGlobalNetwork](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_UpdateGlobalNetwork.html): Updates an existing global network.
+- [UpdateLink](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_UpdateLink.html): Updates the details for an existing link.
+- [UpdateNetworkResourceMetadata](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_UpdateNetworkResourceMetadata.html): Updates the resource metadata for the specified global network.
+- [UpdateSite](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_UpdateSite.html): Updates the information for an existing site.
+- [UpdateVpcAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_UpdateVpcAttachment.html): Updates a VPC attachment.
+
+
+## [Data Types](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Types.html)
+
+- [AccountStatus](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_AccountStatus.html): Describes the current status of an account within an Amazon Web Services Organization, including service-linked roles (SLRs).
+- [Attachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Attachment.html): Describes a core network attachment.
+- [AttachmentError](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_AttachmentError.html): Describes the error associated with an attachment request.
+- [AttachmentRoutingPolicyAssociationSummary](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_AttachmentRoutingPolicyAssociationSummary.html): Summary information about routing policy associations for an attachment.
+- [AWSLocation](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_AWSLocation.html): Specifies a location in AWS.
+- [Bandwidth](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Bandwidth.html): Describes bandwidth information.
+- [BgpOptions](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_BgpOptions.html): Describes the BGP options.
+- [ConnectAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ConnectAttachment.html): Describes a core network Connect attachment.
+- [ConnectAttachmentOptions](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ConnectAttachmentOptions.html): Describes a core network Connect attachment options.
+- [Connection](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Connection.html): Describes a connection.
+- [ConnectionHealth](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ConnectionHealth.html): Describes connection health.
+- [ConnectPeer](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ConnectPeer.html): Describes a core network Connect peer.
+- [ConnectPeerAssociation](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ConnectPeerAssociation.html): Describes a core network Connect peer association.
+- [ConnectPeerBgpConfiguration](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ConnectPeerBgpConfiguration.html): Describes a core network BGP configuration.
+- [ConnectPeerConfiguration](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ConnectPeerConfiguration.html): Describes a core network Connect peer configuration.
+- [ConnectPeerError](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ConnectPeerError.html): Describes an error associated with a Connect peer request
+- [ConnectPeerSummary](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ConnectPeerSummary.html): Summary description of a Connect peer.
+- [CoreNetwork](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CoreNetwork.html): Describes a core network.
+- [CoreNetworkChange](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CoreNetworkChange.html): Details describing a core network change.
+- [CoreNetworkChangeEvent](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CoreNetworkChangeEvent.html): Describes a core network change event.
+- [CoreNetworkChangeEventValues](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CoreNetworkChangeEventValues.html): Describes a core network change event.
+- [CoreNetworkChangeValues](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CoreNetworkChangeValues.html): Describes a core network change.
+- [CoreNetworkEdge](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CoreNetworkEdge.html): Describes a core network edge.
+- [CoreNetworkNetworkFunctionGroup](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CoreNetworkNetworkFunctionGroup.html): Describes a network function group.
+- [CoreNetworkNetworkFunctionGroupIdentifier](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CoreNetworkNetworkFunctionGroupIdentifier.html): Describes a core network
+- [CoreNetworkPolicy](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CoreNetworkPolicy.html): Describes a core network policy.
+- [CoreNetworkPolicyError](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CoreNetworkPolicyError.html): Provides details about an error in a core network policy.
+- [CoreNetworkPolicyVersion](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CoreNetworkPolicyVersion.html): Describes a core network policy version.
+- [CoreNetworkRoutingInformation](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CoreNetworkRoutingInformation.html): Routing information for a core network, including route details and BGP attributes.
+- [CoreNetworkSegment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CoreNetworkSegment.html): Describes a core network segment, which are dedicated routes.
+- [CoreNetworkSegmentEdgeIdentifier](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CoreNetworkSegmentEdgeIdentifier.html): Returns details about a core network edge.
+- [CoreNetworkSummary](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CoreNetworkSummary.html): Returns summary information about a core network.
+- [CustomerGatewayAssociation](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_CustomerGatewayAssociation.html): Describes the association between a customer gateway, a device, and a link.
+- [Device](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Device.html): Describes a device.
+- [DirectConnectGatewayAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_DirectConnectGatewayAttachment.html): Describes a Direct Connect gateway attachment.
+- [EdgeOverride](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_EdgeOverride.html): Describes the edge that's used for the override.
+- [GlobalNetwork](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_GlobalNetwork.html): Describes a global network.
+- [Link](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Link.html): Describes a link.
+- [LinkAssociation](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_LinkAssociation.html): Describes the association between a device and a link.
+- [Location](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Location.html): Describes a location.
+- [NetworkFunctionGroup](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_NetworkFunctionGroup.html): Describes a network function group for service insertion.
+- [NetworkResource](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_NetworkResource.html): Describes a network resource.
+- [NetworkResourceCount](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_NetworkResourceCount.html): Describes a resource count.
+- [NetworkResourceSummary](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_NetworkResourceSummary.html): Describes a network resource.
+- [NetworkRoute](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_NetworkRoute.html): Describes a network route.
+- [NetworkRouteDestination](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_NetworkRouteDestination.html): Describes the destination of a network route.
+- [NetworkTelemetry](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_NetworkTelemetry.html): Describes the telemetry information for a resource.
+- [OrganizationStatus](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_OrganizationStatus.html): The status of an Amazon Web Services Organization and the accounts within that organization.
+- [PathComponent](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_PathComponent.html): Describes a path component.
+- [Peering](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Peering.html): Describes a peering connection.
+- [PeeringError](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_PeeringError.html): Describes an error associated with a peering request.
+- [PermissionsErrorContext](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_PermissionsErrorContext.html): Describes additional information about missing permissions.
+- [PrefixListAssociation](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_PrefixListAssociation.html): Information about a prefix list association with a core network.
+- [ProposedNetworkFunctionGroupChange](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ProposedNetworkFunctionGroupChange.html): Describes proposed changes to a network function group.
+- [ProposedSegmentChange](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ProposedSegmentChange.html): Describes a proposed segment change.
+- [Relationship](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Relationship.html): Describes a resource relationship.
+- [RouteAnalysis](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_RouteAnalysis.html): Describes a route analysis.
+- [RouteAnalysisCompletion](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_RouteAnalysisCompletion.html): Describes the status of an analysis at completion.
+- [RouteAnalysisEndpointOptions](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_RouteAnalysisEndpointOptions.html): Describes a source or a destination.
+- [RouteAnalysisEndpointOptionsSpecification](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_RouteAnalysisEndpointOptionsSpecification.html): Describes a source or a destination.
+- [RouteAnalysisPath](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_RouteAnalysisPath.html): Describes a route analysis path.
+- [RouteTableIdentifier](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_RouteTableIdentifier.html): Describes a route table.
+- [RoutingInformationNextHop](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_RoutingInformationNextHop.html): Information about the next hop for a route in the core network.
+- [RoutingPolicyAssociationDetail](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_RoutingPolicyAssociationDetail.html): Information about a routing policy association.
+- [ServiceInsertionAction](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ServiceInsertionAction.html): Describes the action that the service insertion will take for any segments associated with it.
+- [ServiceInsertionSegments](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ServiceInsertionSegments.html): Describes the segments associated with the service insertion action.
+- [Site](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Site.html): Describes a site.
+- [SiteToSiteVpnAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_SiteToSiteVpnAttachment.html): Creates a site-to-site VPN attachment.
+- [Tag](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Tag.html): Describes a tag.
+- [TransitGatewayConnectPeerAssociation](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_TransitGatewayConnectPeerAssociation.html): Describes a transit gateway Connect peer association.
+- [TransitGatewayPeering](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_TransitGatewayPeering.html): Describes a transit gateway peering attachment.
+- [TransitGatewayRegistration](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_TransitGatewayRegistration.html): Describes the registration of a transit gateway to a global network.
+- [TransitGatewayRegistrationStateReason](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_TransitGatewayRegistrationStateReason.html): Describes the status of a transit gateway registration.
+- [TransitGatewayRouteTableAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_TransitGatewayRouteTableAttachment.html): Describes a transit gateway route table attachment.
+- [ValidationExceptionField](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_ValidationExceptionField.html): Describes a validation exception for a field.
+- [Via](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_Via.html): The list of network function groups and edge overrides for the service insertion action.
+- [VpcAttachment](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_VpcAttachment.html): Describes a VPC attachment.
+- [VpcOptions](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_VpcOptions.html): Describes the VPC options.
+- [WhenSentTo](https://docs.aws.amazon.com/networkmanager/latest/APIReference/API_WhenSentTo.html): Displays a list of the destination segments.

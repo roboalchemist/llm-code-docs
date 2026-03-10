@@ -1,0 +1,156 @@
+# Source: https://docs.aws.amazon.com/proton/latest/APIReference/llms.txt
+
+# AWS Proton API Reference
+
+> This is the AWS Proton Service API Reference. It provides descriptions, syntax and usage examples for each of the actions and data types for the AWS Proton service.
+
+- [Welcome](https://docs.aws.amazon.com/proton/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/proton/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/proton/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/proton/latest/APIReference/API_Operations.html)
+
+- [AcceptEnvironmentAccountConnection](https://docs.aws.amazon.com/proton/latest/APIReference/API_AcceptEnvironmentAccountConnection.html): In a management account, an environment account connection request is accepted.
+- [CancelComponentDeployment](https://docs.aws.amazon.com/proton/latest/APIReference/API_CancelComponentDeployment.html): Attempts to cancel a component deployment (for a component that is in the IN_PROGRESS deployment status).
+- [CancelEnvironmentDeployment](https://docs.aws.amazon.com/proton/latest/APIReference/API_CancelEnvironmentDeployment.html): Attempts to cancel an environment deployment on an action, if the deployment is IN_PROGRESS.
+- [CancelServiceInstanceDeployment](https://docs.aws.amazon.com/proton/latest/APIReference/API_CancelServiceInstanceDeployment.html): Attempts to cancel a service instance deployment on an action, if the deployment is IN_PROGRESS.
+- [CancelServicePipelineDeployment](https://docs.aws.amazon.com/proton/latest/APIReference/API_CancelServicePipelineDeployment.html): Attempts to cancel a service pipeline deployment on an action, if the deployment is IN_PROGRESS.
+- [CreateComponent](https://docs.aws.amazon.com/proton/latest/APIReference/API_CreateComponent.html): Create an AWS Proton component.
+- [CreateEnvironment](https://docs.aws.amazon.com/proton/latest/APIReference/API_CreateEnvironment.html): Deploy a new environment.
+- [CreateEnvironmentAccountConnection](https://docs.aws.amazon.com/proton/latest/APIReference/API_CreateEnvironmentAccountConnection.html): Create an environment account connection in an environment account so that environment infrastructure resources can be provisioned in the environment account from a management account.
+- [CreateEnvironmentTemplate](https://docs.aws.amazon.com/proton/latest/APIReference/API_CreateEnvironmentTemplate.html): Create an environment template for AWS Proton.
+- [CreateEnvironmentTemplateVersion](https://docs.aws.amazon.com/proton/latest/APIReference/API_CreateEnvironmentTemplateVersion.html): Create a new major or minor version of an environment template.
+- [CreateRepository](https://docs.aws.amazon.com/proton/latest/APIReference/API_CreateRepository.html): Create and register a link to a repository.
+- [CreateService](https://docs.aws.amazon.com/proton/latest/APIReference/API_CreateService.html): Create an AWS Proton service.
+- [CreateServiceInstance](https://docs.aws.amazon.com/proton/latest/APIReference/API_CreateServiceInstance.html): Create a service instance.
+- [CreateServiceSyncConfig](https://docs.aws.amazon.com/proton/latest/APIReference/API_CreateServiceSyncConfig.html): Create the AWS Proton Ops configuration file.
+- [CreateServiceTemplate](https://docs.aws.amazon.com/proton/latest/APIReference/API_CreateServiceTemplate.html): Create a service template.
+- [CreateServiceTemplateVersion](https://docs.aws.amazon.com/proton/latest/APIReference/API_CreateServiceTemplateVersion.html): Create a new major or minor version of a service template.
+- [CreateTemplateSyncConfig](https://docs.aws.amazon.com/proton/latest/APIReference/API_CreateTemplateSyncConfig.html): Set up a template to create new template versions automatically by tracking a linked repository.
+- [DeleteComponent](https://docs.aws.amazon.com/proton/latest/APIReference/API_DeleteComponent.html): Delete an AWS Proton component resource.
+- [DeleteDeployment](https://docs.aws.amazon.com/proton/latest/APIReference/API_DeleteDeployment.html): Delete the deployment.
+- [DeleteEnvironment](https://docs.aws.amazon.com/proton/latest/APIReference/API_DeleteEnvironment.html): Delete an environment.
+- [DeleteEnvironmentAccountConnection](https://docs.aws.amazon.com/proton/latest/APIReference/API_DeleteEnvironmentAccountConnection.html): In an environment account, delete an environment account connection.
+- [DeleteEnvironmentTemplate](https://docs.aws.amazon.com/proton/latest/APIReference/API_DeleteEnvironmentTemplate.html): If no other major or minor versions of an environment template exist, delete the environment template.
+- [DeleteEnvironmentTemplateVersion](https://docs.aws.amazon.com/proton/latest/APIReference/API_DeleteEnvironmentTemplateVersion.html): If no other minor versions of an environment template exist, delete a major version of the environment template if it's not the Recommended version.
+- [DeleteRepository](https://docs.aws.amazon.com/proton/latest/APIReference/API_DeleteRepository.html): De-register and unlink your repository.
+- [DeleteService](https://docs.aws.amazon.com/proton/latest/APIReference/API_DeleteService.html): Delete a service, with its instances and pipeline.
+- [DeleteServiceSyncConfig](https://docs.aws.amazon.com/proton/latest/APIReference/API_DeleteServiceSyncConfig.html): Delete the AWS Proton Ops file.
+- [DeleteServiceTemplate](https://docs.aws.amazon.com/proton/latest/APIReference/API_DeleteServiceTemplate.html): If no other major or minor versions of the service template exist, delete the service template.
+- [DeleteServiceTemplateVersion](https://docs.aws.amazon.com/proton/latest/APIReference/API_DeleteServiceTemplateVersion.html): If no other minor versions of a service template exist, delete a major version of the service template if it's not the Recommended version.
+- [DeleteTemplateSyncConfig](https://docs.aws.amazon.com/proton/latest/APIReference/API_DeleteTemplateSyncConfig.html): Delete a template sync configuration.
+- [GetAccountSettings](https://docs.aws.amazon.com/proton/latest/APIReference/API_GetAccountSettings.html): Get detail data for AWS Proton account-wide settings.
+- [GetComponent](https://docs.aws.amazon.com/proton/latest/APIReference/API_GetComponent.html): Get detailed data for a component.
+- [GetDeployment](https://docs.aws.amazon.com/proton/latest/APIReference/API_GetDeployment.html): Get detailed data for a deployment.
+- [GetEnvironment](https://docs.aws.amazon.com/proton/latest/APIReference/API_GetEnvironment.html): Get detailed data for an environment.
+- [GetEnvironmentAccountConnection](https://docs.aws.amazon.com/proton/latest/APIReference/API_GetEnvironmentAccountConnection.html): In an environment account, get the detailed data for an environment account connection.
+- [GetEnvironmentTemplate](https://docs.aws.amazon.com/proton/latest/APIReference/API_GetEnvironmentTemplate.html): Get detailed data for an environment template.
+- [GetEnvironmentTemplateVersion](https://docs.aws.amazon.com/proton/latest/APIReference/API_GetEnvironmentTemplateVersion.html): Get detailed data for a major or minor version of an environment template.
+- [GetRepository](https://docs.aws.amazon.com/proton/latest/APIReference/API_GetRepository.html): Get detail data for a linked repository.
+- [GetRepositorySyncStatus](https://docs.aws.amazon.com/proton/latest/APIReference/API_GetRepositorySyncStatus.html): Get the sync status of a repository used for AWS Proton template sync.
+- [GetResourcesSummary](https://docs.aws.amazon.com/proton/latest/APIReference/API_GetResourcesSummary.html): Get counts of AWS Proton resources.
+- [GetService](https://docs.aws.amazon.com/proton/latest/APIReference/API_GetService.html): Get detailed data for a service.
+- [GetServiceInstance](https://docs.aws.amazon.com/proton/latest/APIReference/API_GetServiceInstance.html): Get detailed data for a service instance.
+- [GetServiceInstanceSyncStatus](https://docs.aws.amazon.com/proton/latest/APIReference/API_GetServiceInstanceSyncStatus.html): Get the status of the synced service instance.
+- [GetServiceSyncBlockerSummary](https://docs.aws.amazon.com/proton/latest/APIReference/API_GetServiceSyncBlockerSummary.html): Get detailed data for the service sync blocker summary.
+- [GetServiceSyncConfig](https://docs.aws.amazon.com/proton/latest/APIReference/API_GetServiceSyncConfig.html): Get detailed information for the service sync configuration.
+- [GetServiceTemplate](https://docs.aws.amazon.com/proton/latest/APIReference/API_GetServiceTemplate.html): Get detailed data for a service template.
+- [GetServiceTemplateVersion](https://docs.aws.amazon.com/proton/latest/APIReference/API_GetServiceTemplateVersion.html): Get detailed data for a major or minor version of a service template.
+- [GetTemplateSyncConfig](https://docs.aws.amazon.com/proton/latest/APIReference/API_GetTemplateSyncConfig.html): Get detail data for a template sync configuration.
+- [GetTemplateSyncStatus](https://docs.aws.amazon.com/proton/latest/APIReference/API_GetTemplateSyncStatus.html): Get the status of a template sync.
+- [ListComponentOutputs](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListComponentOutputs.html): Get a list of component Infrastructure as Code (IaC) outputs.
+- [ListComponentProvisionedResources](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListComponentProvisionedResources.html): List provisioned resources for a component with details.
+- [ListComponents](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListComponents.html): List components with summary data.
+- [ListDeployments](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListDeployments.html): List deployments.
+- [ListEnvironmentAccountConnections](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListEnvironmentAccountConnections.html): View a list of environment account connections.
+- [ListEnvironmentOutputs](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListEnvironmentOutputs.html): List the infrastructure as code outputs for your environment.
+- [ListEnvironmentProvisionedResources](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListEnvironmentProvisionedResources.html): List the provisioned resources for your environment.
+- [ListEnvironments](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListEnvironments.html): List environments with detail data summaries.
+- [ListEnvironmentTemplates](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListEnvironmentTemplates.html): List environment templates.
+- [ListEnvironmentTemplateVersions](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListEnvironmentTemplateVersions.html): List major or minor versions of an environment template with detail data.
+- [ListRepositories](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListRepositories.html): List linked repositories with detail data.
+- [ListRepositorySyncDefinitions](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListRepositorySyncDefinitions.html): List repository sync definitions with detail data.
+- [ListServiceInstanceOutputs](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListServiceInstanceOutputs.html): Get a list service of instance Infrastructure as Code (IaC) outputs.
+- [ListServiceInstanceProvisionedResources](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListServiceInstanceProvisionedResources.html): List provisioned resources for a service instance with details.
+- [ListServiceInstances](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListServiceInstances.html): List service instances with summary data.
+- [ListServicePipelineOutputs](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListServicePipelineOutputs.html): Get a list of service pipeline Infrastructure as Code (IaC) outputs.
+- [ListServicePipelineProvisionedResources](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListServicePipelineProvisionedResources.html): List provisioned resources for a service and pipeline with details.
+- [ListServices](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListServices.html): List services with summaries of detail data.
+- [ListServiceTemplates](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListServiceTemplates.html): List service templates with detail data.
+- [ListServiceTemplateVersions](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListServiceTemplateVersions.html): List major or minor versions of a service template with detail data.
+- [ListTagsForResource](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListTagsForResource.html): List tags for a resource.
+- [NotifyResourceDeploymentStatusChange](https://docs.aws.amazon.com/proton/latest/APIReference/API_NotifyResourceDeploymentStatusChange.html): Notify AWS Proton of status changes to a provisioned resource when you use self-managed provisioning.
+- [RejectEnvironmentAccountConnection](https://docs.aws.amazon.com/proton/latest/APIReference/API_RejectEnvironmentAccountConnection.html): In a management account, reject an environment account connection from another environment account.
+- [TagResource](https://docs.aws.amazon.com/proton/latest/APIReference/API_TagResource.html): Tag a resource.
+- [UntagResource](https://docs.aws.amazon.com/proton/latest/APIReference/API_UntagResource.html): Remove a customer tag from a resource.
+- [UpdateAccountSettings](https://docs.aws.amazon.com/proton/latest/APIReference/API_UpdateAccountSettings.html): Update AWS Proton settings that are used for multiple services in the AWS account.
+- [UpdateComponent](https://docs.aws.amazon.com/proton/latest/APIReference/API_UpdateComponent.html): Update a component.
+- [UpdateEnvironment](https://docs.aws.amazon.com/proton/latest/APIReference/API_UpdateEnvironment.html): Update an environment.
+- [UpdateEnvironmentAccountConnection](https://docs.aws.amazon.com/proton/latest/APIReference/API_UpdateEnvironmentAccountConnection.html): In an environment account, update an environment account connection to use a new IAM role.
+- [UpdateEnvironmentTemplate](https://docs.aws.amazon.com/proton/latest/APIReference/API_UpdateEnvironmentTemplate.html): Update an environment template.
+- [UpdateEnvironmentTemplateVersion](https://docs.aws.amazon.com/proton/latest/APIReference/API_UpdateEnvironmentTemplateVersion.html): Update a major or minor version of an environment template.
+- [UpdateService](https://docs.aws.amazon.com/proton/latest/APIReference/API_UpdateService.html): Edit a service description or use a spec to add and delete service instances.
+- [UpdateServiceInstance](https://docs.aws.amazon.com/proton/latest/APIReference/API_UpdateServiceInstance.html): Update a service instance.
+- [UpdateServicePipeline](https://docs.aws.amazon.com/proton/latest/APIReference/API_UpdateServicePipeline.html): Update the service pipeline.
+- [UpdateServiceSyncBlocker](https://docs.aws.amazon.com/proton/latest/APIReference/API_UpdateServiceSyncBlocker.html): Update the service sync blocker by resolving it.
+- [UpdateServiceSyncConfig](https://docs.aws.amazon.com/proton/latest/APIReference/API_UpdateServiceSyncConfig.html): Update the AWS Proton Ops config file.
+- [UpdateServiceTemplate](https://docs.aws.amazon.com/proton/latest/APIReference/API_UpdateServiceTemplate.html): Update a service template.
+- [UpdateServiceTemplateVersion](https://docs.aws.amazon.com/proton/latest/APIReference/API_UpdateServiceTemplateVersion.html): Update a major or minor version of a service template.
+- [UpdateTemplateSyncConfig](https://docs.aws.amazon.com/proton/latest/APIReference/API_UpdateTemplateSyncConfig.html): Update template sync configuration parameters, except for the templateName and templateType.
+
+
+## [Data Types](https://docs.aws.amazon.com/proton/latest/APIReference/API_Types.html)
+
+- [AccountSettings](https://docs.aws.amazon.com/proton/latest/APIReference/API_AccountSettings.html): AWS Proton settings that are used for multiple services in the AWS account.
+- [CompatibleEnvironmentTemplate](https://docs.aws.amazon.com/proton/latest/APIReference/API_CompatibleEnvironmentTemplate.html): Compatible environment template data.
+- [CompatibleEnvironmentTemplateInput](https://docs.aws.amazon.com/proton/latest/APIReference/API_CompatibleEnvironmentTemplateInput.html): Compatible environment template data.
+- [Component](https://docs.aws.amazon.com/proton/latest/APIReference/API_Component.html): Detailed data of an AWS Proton component resource.
+- [ComponentState](https://docs.aws.amazon.com/proton/latest/APIReference/API_ComponentState.html): The detailed data about the current state of the component.
+- [ComponentSummary](https://docs.aws.amazon.com/proton/latest/APIReference/API_ComponentSummary.html): Summary data of an AWS Proton component resource.
+- [CountsSummary](https://docs.aws.amazon.com/proton/latest/APIReference/API_CountsSummary.html): Summary counts of each AWS Proton resource type.
+- [Deployment](https://docs.aws.amazon.com/proton/latest/APIReference/API_Deployment.html): The detailed information about a deployment.
+- [DeploymentState](https://docs.aws.amazon.com/proton/latest/APIReference/API_DeploymentState.html): The detailed data about the current state of the deployment.
+- [DeploymentSummary](https://docs.aws.amazon.com/proton/latest/APIReference/API_DeploymentSummary.html): Summary data of the deployment.
+- [Environment](https://docs.aws.amazon.com/proton/latest/APIReference/API_Environment.html): Detailed data of an AWS Proton environment resource.
+- [EnvironmentAccountConnection](https://docs.aws.amazon.com/proton/latest/APIReference/API_EnvironmentAccountConnection.html): Detailed data of an AWS Proton environment account connection resource.
+- [EnvironmentAccountConnectionSummary](https://docs.aws.amazon.com/proton/latest/APIReference/API_EnvironmentAccountConnectionSummary.html): Summary data of an AWS Proton environment account connection resource.
+- [EnvironmentState](https://docs.aws.amazon.com/proton/latest/APIReference/API_EnvironmentState.html): The detailed data about the current state of the environment.
+- [EnvironmentSummary](https://docs.aws.amazon.com/proton/latest/APIReference/API_EnvironmentSummary.html): Summary data of an AWS Proton environment resource.
+- [EnvironmentTemplate](https://docs.aws.amazon.com/proton/latest/APIReference/API_EnvironmentTemplate.html): The environment template data.
+- [EnvironmentTemplateFilter](https://docs.aws.amazon.com/proton/latest/APIReference/API_EnvironmentTemplateFilter.html): A search filter for environment templates.
+- [EnvironmentTemplateSummary](https://docs.aws.amazon.com/proton/latest/APIReference/API_EnvironmentTemplateSummary.html): The environment template data.
+- [EnvironmentTemplateVersion](https://docs.aws.amazon.com/proton/latest/APIReference/API_EnvironmentTemplateVersion.html): The environment template version data.
+- [EnvironmentTemplateVersionSummary](https://docs.aws.amazon.com/proton/latest/APIReference/API_EnvironmentTemplateVersionSummary.html): A summary of the version of an environment template detail data.
+- [ListServiceInstancesFilter](https://docs.aws.amazon.com/proton/latest/APIReference/API_ListServiceInstancesFilter.html): A filtering criterion to scope down the result list of the action.
+- [Output](https://docs.aws.amazon.com/proton/latest/APIReference/API_Output.html): An infrastructure as code defined resource output.
+- [ProvisionedResource](https://docs.aws.amazon.com/proton/latest/APIReference/API_ProvisionedResource.html): Detail data for a provisioned resource.
+- [Repository](https://docs.aws.amazon.com/proton/latest/APIReference/API_Repository.html): Detailed data of a linked repositoryâa repository that has been registered with AWS Proton.
+- [RepositoryBranch](https://docs.aws.amazon.com/proton/latest/APIReference/API_RepositoryBranch.html): Detail data for a linked repository branch.
+- [RepositoryBranchInput](https://docs.aws.amazon.com/proton/latest/APIReference/API_RepositoryBranchInput.html): Detail input data for a linked repository branch.
+- [RepositorySummary](https://docs.aws.amazon.com/proton/latest/APIReference/API_RepositorySummary.html): Summary data of a linked repositoryâa repository that has been registered with AWS Proton.
+- [RepositorySyncAttempt](https://docs.aws.amazon.com/proton/latest/APIReference/API_RepositorySyncAttempt.html): Detail data for a repository sync attempt activated by a push to a repository.
+- [RepositorySyncDefinition](https://docs.aws.amazon.com/proton/latest/APIReference/API_RepositorySyncDefinition.html): A repository sync definition.
+- [RepositorySyncEvent](https://docs.aws.amazon.com/proton/latest/APIReference/API_RepositorySyncEvent.html): Repository sync event detail data for a sync attempt.
+- [ResourceCountsSummary](https://docs.aws.amazon.com/proton/latest/APIReference/API_ResourceCountsSummary.html): Summary counts of each AWS Proton resource types.
+- [ResourceSyncAttempt](https://docs.aws.amazon.com/proton/latest/APIReference/API_ResourceSyncAttempt.html): Detail data for a resource sync attempt activated by a push to a repository.
+- [ResourceSyncEvent](https://docs.aws.amazon.com/proton/latest/APIReference/API_ResourceSyncEvent.html): Detail data for a resource sync event.
+- [Revision](https://docs.aws.amazon.com/proton/latest/APIReference/API_Revision.html): Revision detail data for a commit and push that activates a sync attempt
+- [S3ObjectSource](https://docs.aws.amazon.com/proton/latest/APIReference/API_S3ObjectSource.html): Template bundle S3 bucket data.
+- [Service](https://docs.aws.amazon.com/proton/latest/APIReference/API_Service.html): Detailed data of an AWS Proton service resource.
+- [ServiceInstance](https://docs.aws.amazon.com/proton/latest/APIReference/API_ServiceInstance.html): Detailed data of an AWS Proton service instance resource.
+- [ServiceInstanceState](https://docs.aws.amazon.com/proton/latest/APIReference/API_ServiceInstanceState.html): The detailed data about the current state of this service instance.
+- [ServiceInstanceSummary](https://docs.aws.amazon.com/proton/latest/APIReference/API_ServiceInstanceSummary.html): Summary data of an AWS Proton service instance resource.
+- [ServicePipeline](https://docs.aws.amazon.com/proton/latest/APIReference/API_ServicePipeline.html): Detailed data of an AWS Proton service instance pipeline resource.
+- [ServicePipelineState](https://docs.aws.amazon.com/proton/latest/APIReference/API_ServicePipelineState.html): The detailed data about the current state of the service pipeline.
+- [ServiceSummary](https://docs.aws.amazon.com/proton/latest/APIReference/API_ServiceSummary.html): Summary data of an AWS Proton service resource.
+- [ServiceSyncBlockerSummary](https://docs.aws.amazon.com/proton/latest/APIReference/API_ServiceSyncBlockerSummary.html): If a service instance is manually updated, Proton wants to prevent accidentally overriding a manual change.
+- [ServiceSyncConfig](https://docs.aws.amazon.com/proton/latest/APIReference/API_ServiceSyncConfig.html): Detailed data of the service sync configuration.
+- [ServiceTemplate](https://docs.aws.amazon.com/proton/latest/APIReference/API_ServiceTemplate.html): Detailed data of an AWS Proton service template resource.
+- [ServiceTemplateSummary](https://docs.aws.amazon.com/proton/latest/APIReference/API_ServiceTemplateSummary.html): Summary data of an AWS Proton service template resource.
+- [ServiceTemplateVersion](https://docs.aws.amazon.com/proton/latest/APIReference/API_ServiceTemplateVersion.html): Detailed data of an AWS Proton service template version resource.
+- [ServiceTemplateVersionSummary](https://docs.aws.amazon.com/proton/latest/APIReference/API_ServiceTemplateVersionSummary.html): Summary data of an AWS Proton service template version resource.
+- [SyncBlocker](https://docs.aws.amazon.com/proton/latest/APIReference/API_SyncBlocker.html): Detailed data of the sync blocker.
+- [SyncBlockerContext](https://docs.aws.amazon.com/proton/latest/APIReference/API_SyncBlockerContext.html): Detailed data of the context of the sync blocker.
+- [Tag](https://docs.aws.amazon.com/proton/latest/APIReference/API_Tag.html): A description of a resource tag.
+- [TemplateSyncConfig](https://docs.aws.amazon.com/proton/latest/APIReference/API_TemplateSyncConfig.html): The detail data for a template sync configuration.
+- [TemplateVersionSourceInput](https://docs.aws.amazon.com/proton/latest/APIReference/API_TemplateVersionSourceInput.html): Template version source data.

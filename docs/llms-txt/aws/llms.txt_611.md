@@ -1,0 +1,193 @@
+# Source: https://docs.aws.amazon.com/network-firewall/latest/APIReference/llms.txt
+
+# AWS Network Firewall API Reference
+
+> This is the API Reference for AWS Network Firewall. This guide is for developers who need detailed information about the Network Firewall API actions, data types, and errors.
+
+- [Welcome](https://docs.aws.amazon.com/network-firewall/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/network-firewall/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/network-firewall/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_Operations.html)
+
+- [AcceptNetworkFirewallTransitGatewayAttachment](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_AcceptNetworkFirewallTransitGatewayAttachment.html): Accepts a transit gateway attachment request for Network Firewall.
+- [AssociateAvailabilityZones](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_AssociateAvailabilityZones.html): Associates the specified Availability Zones with a transit gateway-attached firewall.
+- [AssociateFirewallPolicy](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_AssociateFirewallPolicy.html): Associates a to a .
+- [AssociateSubnets](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_AssociateSubnets.html): Associates the specified subnets in the Amazon VPC to the firewall.
+- [AttachRuleGroupsToProxyConfiguration](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_AttachRuleGroupsToProxyConfiguration.html): Attaches resources to a
+- [CreateFirewall](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_CreateFirewall.html): Creates an AWS Network Firewall and accompanying for a VPC.
+- [CreateFirewallPolicy](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_CreateFirewallPolicy.html): Creates the firewall policy for the firewall according to the specifications.
+- [CreateProxy](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_CreateProxy.html): Creates an AWS Network Firewall
+- [CreateProxyConfiguration](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_CreateProxyConfiguration.html): Creates an AWS Network Firewall
+- [CreateProxyRuleGroup](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_CreateProxyRuleGroup.html): Creates an AWS Network Firewall
+- [CreateProxyRules](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_CreateProxyRules.html): Creates AWS Network Firewall resources.
+- [CreateRuleGroup](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_CreateRuleGroup.html): Creates the specified stateless or stateful rule group, which includes the rules for network traffic inspection, a capacity setting, and tags.
+- [CreateTLSInspectionConfiguration](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_CreateTLSInspectionConfiguration.html): Creates an AWS Network Firewall TLS inspection configuration.
+- [CreateVpcEndpointAssociation](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_CreateVpcEndpointAssociation.html): Creates a firewall endpoint for an AWS Network Firewall firewall.
+- [DeleteFirewall](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DeleteFirewall.html): Deletes the specified and its .
+- [DeleteFirewallPolicy](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DeleteFirewallPolicy.html): Deletes the specified .
+- [DeleteNetworkFirewallTransitGatewayAttachment](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DeleteNetworkFirewallTransitGatewayAttachment.html): Deletes a transit gateway attachment from a Network Firewall.
+- [DeleteProxy](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DeleteProxy.html): Deletes the specified .
+- [DeleteProxyConfiguration](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DeleteProxyConfiguration.html): Deletes the specified .
+- [DeleteProxyRuleGroup](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DeleteProxyRuleGroup.html): Deletes the specified .
+- [DeleteProxyRules](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DeleteProxyRules.html): Deletes the specified (s). currently attached to a
+- [DeleteResourcePolicy](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DeleteResourcePolicy.html): Deletes a resource policy that you created in a request.
+- [DeleteRuleGroup](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DeleteRuleGroup.html): Deletes the specified .
+- [DeleteTLSInspectionConfiguration](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DeleteTLSInspectionConfiguration.html): Deletes the specified .
+- [DeleteVpcEndpointAssociation](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DeleteVpcEndpointAssociation.html): Deletes the specified .
+- [DescribeFirewall](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DescribeFirewall.html): Returns the data objects for the specified firewall.
+- [DescribeFirewallMetadata](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DescribeFirewallMetadata.html): Returns the high-level information about a firewall, including the Availability Zones where the Firewall is currently in use.
+- [DescribeFirewallPolicy](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DescribeFirewallPolicy.html): Returns the data objects for the specified firewall policy.
+- [DescribeFlowOperation](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DescribeFlowOperation.html): Returns key information about a specific flow operation.
+- [DescribeLoggingConfiguration](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DescribeLoggingConfiguration.html): Returns the logging configuration for the specified firewall.
+- [DescribeProxy](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DescribeProxy.html): Returns the data objects for the specified proxy.
+- [DescribeProxyConfiguration](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DescribeProxyConfiguration.html): Returns the data objects for the specified proxy configuration.
+- [DescribeProxyRule](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DescribeProxyRule.html): Returns the data objects for the specified proxy configuration for the specified proxy rule group.
+- [DescribeProxyRuleGroup](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DescribeProxyRuleGroup.html): Returns the data objects for the specified proxy rule group.
+- [DescribeResourcePolicy](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DescribeResourcePolicy.html): Retrieves a resource policy that you created in a request.
+- [DescribeRuleGroup](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DescribeRuleGroup.html): Returns the data objects for the specified rule group.
+- [DescribeRuleGroupMetadata](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DescribeRuleGroupMetadata.html): High-level information about a rule group, returned by operations like create and describe.
+- [DescribeRuleGroupSummary](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DescribeRuleGroupSummary.html): Returns detailed information for a stateful rule group.
+- [DescribeTLSInspectionConfiguration](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DescribeTLSInspectionConfiguration.html): Returns the data objects for the specified TLS inspection configuration.
+- [DescribeVpcEndpointAssociation](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DescribeVpcEndpointAssociation.html): Returns the data object for the specified VPC endpoint association.
+- [DetachRuleGroupsFromProxyConfiguration](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DetachRuleGroupsFromProxyConfiguration.html): Detaches resources from a
+- [DisassociateAvailabilityZones](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DisassociateAvailabilityZones.html): Removes the specified Availability Zone associations from a transit gateway-attached firewall.
+- [DisassociateSubnets](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DisassociateSubnets.html): Removes the specified subnet associations from the firewall.
+- [GetAnalysisReportResults](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_GetAnalysisReportResults.html): The results of a COMPLETED analysis report generated with .
+- [ListAnalysisReports](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ListAnalysisReports.html): Returns a list of all traffic analysis reports generated within the last 30 days.
+- [ListFirewallPolicies](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ListFirewallPolicies.html): Retrieves the metadata for the firewall policies that you have defined.
+- [ListFirewalls](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ListFirewalls.html): Retrieves the metadata for the firewalls that you have defined.
+- [ListFlowOperationResults](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ListFlowOperationResults.html): Returns the results of a specific flow operation.
+- [ListFlowOperations](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ListFlowOperations.html): Returns a list of all flow operations ran in a specific firewall.
+- [ListProxies](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ListProxies.html): Retrieves the metadata for the proxies that you have defined.
+- [ListProxyConfigurations](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ListProxyConfigurations.html): Retrieves the metadata for the proxy configuration that you have defined.
+- [ListProxyRuleGroups](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ListProxyRuleGroups.html): Retrieves the metadata for the proxy rule groups that you have defined.
+- [ListRuleGroups](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ListRuleGroups.html): Retrieves the metadata for the rule groups that you have defined.
+- [ListTagsForResource](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ListTagsForResource.html): Retrieves the tags associated with the specified resource.
+- [ListTLSInspectionConfigurations](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ListTLSInspectionConfigurations.html): Retrieves the metadata for the TLS inspection configurations that you have defined.
+- [ListVpcEndpointAssociations](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ListVpcEndpointAssociations.html): Retrieves the metadata for the VPC endpoint associations that you have defined.
+- [PutResourcePolicy](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_PutResourcePolicy.html): Creates or updates an IAM policy for your rule group, firewall policy, or firewall.
+- [RejectNetworkFirewallTransitGatewayAttachment](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_RejectNetworkFirewallTransitGatewayAttachment.html): Rejects a transit gateway attachment request for Network Firewall.
+- [StartAnalysisReport](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_StartAnalysisReport.html): Generates a traffic analysis report for the timeframe and traffic type you specify.
+- [StartFlowCapture](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_StartFlowCapture.html): Begins capturing the flows in a firewall, according to the filters you define.
+- [StartFlowFlush](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_StartFlowFlush.html): Begins the flushing of traffic from the firewall, according to the filters you define.
+- [TagResource](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_TagResource.html): Adds the specified tags to the specified resource.
+- [UntagResource](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_UntagResource.html): Removes the tags with the specified keys from the specified resource.
+- [UpdateAvailabilityZoneChangeProtection](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_UpdateAvailabilityZoneChangeProtection.html): Modifies the AvailabilityZoneChangeProtection setting for a transit gateway-attached firewall.
+- [UpdateFirewallAnalysisSettings](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_UpdateFirewallAnalysisSettings.html): Enables specific types of firewall analysis on a specific firewall you define.
+- [UpdateFirewallDeleteProtection](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_UpdateFirewallDeleteProtection.html): Modifies the flag, DeleteProtection, which indicates whether it is possible to delete the firewall.
+- [UpdateFirewallDescription](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_UpdateFirewallDescription.html): Modifies the description for the specified firewall.
+- [UpdateFirewallEncryptionConfiguration](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_UpdateFirewallEncryptionConfiguration.html): A complex type that contains settings for encryption of your firewall resources.
+- [UpdateFirewallPolicy](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_UpdateFirewallPolicy.html): Updates the properties of the specified firewall policy.
+- [UpdateFirewallPolicyChangeProtection](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_UpdateFirewallPolicyChangeProtection.html): Modifies the flag, ChangeProtection, which indicates whether it is possible to change the firewall.
+- [UpdateLoggingConfiguration](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_UpdateLoggingConfiguration.html): Sets the logging configuration for the specified firewall.
+- [UpdateProxy](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_UpdateProxy.html): Updates the properties of the specified proxy.
+- [UpdateProxyConfiguration](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_UpdateProxyConfiguration.html): Updates the properties of the specified proxy configuration.
+- [UpdateProxyRule](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_UpdateProxyRule.html): Updates the properties of the specified proxy rule.
+- [UpdateProxyRuleGroupPriorities](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_UpdateProxyRuleGroupPriorities.html): Updates proxy rule group priorities within a proxy configuration.
+- [UpdateProxyRulePriorities](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_UpdateProxyRulePriorities.html): Updates proxy rule priorities within a proxy rule group.
+- [UpdateRuleGroup](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_UpdateRuleGroup.html): Updates the rule settings for the specified rule group.
+- [UpdateSubnetChangeProtection](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_UpdateSubnetChangeProtection.html)
+- [UpdateTLSInspectionConfiguration](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_UpdateTLSInspectionConfiguration.html): Updates the TLS inspection configuration settings for the specified TLS inspection configuration.
+
+
+## [Data Types](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_Types.html)
+
+- [ActionDefinition](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ActionDefinition.html): A custom action to use in stateless rule actions settings.
+- [Address](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_Address.html): A single IP address specification.
+- [AnalysisReport](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_AnalysisReport.html): A report that captures key activity from the last 30 days of network traffic monitored by your firewall.
+- [AnalysisResult](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_AnalysisResult.html): The analysis result for Network Firewall's stateless rule group analyzer.
+- [AnalysisTypeReportResult](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_AnalysisTypeReportResult.html): The results of a COMPLETED analysis report generated with .
+- [Attachment](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_Attachment.html): The definition and status of the firewall endpoint for a single subnet.
+- [AvailabilityZoneMapping](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_AvailabilityZoneMapping.html): Defines the mapping between an Availability Zone and a firewall endpoint for a transit gateway-attached firewall.
+- [AvailabilityZoneMetadata](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_AvailabilityZoneMetadata.html): High-level information about an Availability Zone where the firewall has an endpoint defined.
+- [AZSyncState](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_AZSyncState.html): The status of the firewall endpoint defined by a VpcEndpointAssociation.
+- [CapacityUsageSummary](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_CapacityUsageSummary.html): The capacity usage summary of the resources used by the in a firewall.
+- [CheckCertificateRevocationStatusActions](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_CheckCertificateRevocationStatusActions.html): Defines the actions to take on the SSL/TLS connection if the certificate presented by the server in the connection has a revoked or unknown status.
+- [CIDRSummary](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_CIDRSummary.html): Summarizes the CIDR blocks used by the IP set references in a firewall.
+- [CreateProxyRule](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_CreateProxyRule.html): Individual rules that define match conditions and actions for application-layer traffic.
+- [CreateProxyRulesByRequestPhase](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_CreateProxyRulesByRequestPhase.html): Evaluation points in the traffic flow where rules are applied.
+- [CustomAction](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_CustomAction.html): An optional, non-standard action to use for stateless packet handling.
+- [DescribeProxyResource](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_DescribeProxyResource.html): Proxy attached to a NAT gateway.
+- [Dimension](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_Dimension.html): The value to use in an Amazon CloudWatch custom metric dimension.
+- [EncryptionConfiguration](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_EncryptionConfiguration.html): A complex type that contains optional AWS Key Management Service (KMS) encryption settings for your Network Firewall resources.
+- [Firewall](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_Firewall.html): A firewall defines the behavior of a firewall, the main VPC where the firewall is used, the Availability Zones where the firewall can be used, and one subnet to use for a firewall endpoint within each of the Availability Zones.
+- [FirewallMetadata](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_FirewallMetadata.html): High-level information about a firewall, returned by operations like create and describe.
+- [FirewallPolicy](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_FirewallPolicy.html): The firewall policy defines the behavior of a firewall using a collection of stateless and stateful rule groups and other settings.
+- [FirewallPolicyMetadata](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_FirewallPolicyMetadata.html): High-level information about a firewall policy, returned by operations like create and describe.
+- [FirewallPolicyResponse](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_FirewallPolicyResponse.html): The high-level properties of a firewall policy.
+- [FirewallStatus](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_FirewallStatus.html): Detailed information about the current status of a .
+- [Flow](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_Flow.html): Any number of arrays, where each array is a single flow identified in the scope of the operation.
+- [FlowFilter](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_FlowFilter.html): Defines the scope a flow operation.
+- [FlowOperation](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_FlowOperation.html): Contains information about a flow operation, such as related statuses, unique identifiers, and all filters defined in the operation.
+- [FlowOperationMetadata](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_FlowOperationMetadata.html): An array of objects with metadata about the requested FlowOperation.
+- [FlowTimeouts](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_FlowTimeouts.html): Describes the amount of time that can pass without any traffic sent through the firewall before the firewall determines that the connection is idle and Network Firewall removes the flow entry from its flow table.
+- [Header](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_Header.html): The basic rule criteria for AWS Network Firewall to use to inspect packet headers in stateful traffic flow inspection.
+- [Hits](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_Hits.html): Attempts made to a access domain.
+- [IPSet](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_IPSet.html): A list of IP addresses and address ranges, in CIDR notation.
+- [IPSetMetadata](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_IPSetMetadata.html): General information about the IP set.
+- [IPSetReference](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_IPSetReference.html): Configures one or more IP set references for a Suricata-compatible rule group.
+- [ListenerProperty](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ListenerProperty.html): Open port for taking HTTP or HTTPS traffic.
+- [ListenerPropertyRequest](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ListenerPropertyRequest.html): This data type is used specifically for the and APIs.
+- [LogDestinationConfig](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_LogDestinationConfig.html): Defines where AWS Network Firewall sends logs for the firewall for one log type.
+- [LoggingConfiguration](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_LoggingConfiguration.html): Defines how AWS Network Firewall performs logging for a .
+- [MatchAttributes](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_MatchAttributes.html): Criteria for Network Firewall to use to inspect an individual packet in stateless rule inspection.
+- [PerObjectStatus](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_PerObjectStatus.html): Provides configuration status for a single policy or rule group that is used for a firewall endpoint.
+- [PolicyVariables](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_PolicyVariables.html): Contains variables that you can use to override default Suricata settings in your firewall policy.
+- [PortRange](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_PortRange.html): A single port range specification.
+- [PortSet](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_PortSet.html): A set of port ranges for use in the rules in a rule group.
+- [Proxy](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_Proxy.html): Proxy attached to a NAT gateway.
+- [ProxyConfigDefaultRulePhaseActionsRequest](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ProxyConfigDefaultRulePhaseActionsRequest.html): Evaluation points in the traffic flow where rules are applied.
+- [ProxyConfigRuleGroup](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ProxyConfigRuleGroup.html): Proxy rule group contained within a proxy configuration.
+- [ProxyConfiguration](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ProxyConfiguration.html): A Proxy Configuration defines the monitoring and protection behavior for a Proxy.
+- [ProxyConfigurationMetadata](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ProxyConfigurationMetadata.html): High-level information about a proxy configuration, returned by operations like create and describe.
+- [ProxyMetadata](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ProxyMetadata.html): High-level information about a proxy, returned by operations like create and describe.
+- [ProxyRule](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ProxyRule.html): Individual rules that define match conditions and actions for application-layer traffic.
+- [ProxyRuleCondition](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ProxyRuleCondition.html): Match criteria that specify what traffic attributes to examine.
+- [ProxyRuleGroup](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ProxyRuleGroup.html): Collections of related proxy filtering rules.
+- [ProxyRuleGroupAttachment](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ProxyRuleGroupAttachment.html): The proxy rule group(s) to attach to the proxy configuration
+- [ProxyRuleGroupMetadata](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ProxyRuleGroupMetadata.html): High-level information about a proxy rule group, returned by operations like create and describe.
+- [ProxyRuleGroupPriority](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ProxyRuleGroupPriority.html): Proxy rule group name and new desired position.
+- [ProxyRuleGroupPriorityResult](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ProxyRuleGroupPriorityResult.html): Proxy rule group along with its priority.
+- [ProxyRulePriority](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ProxyRulePriority.html): Proxy rule name and new desired position.
+- [ProxyRulesByRequestPhase](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ProxyRulesByRequestPhase.html): Evaluation points in the traffic flow where rules are applied.
+- [PublishMetricAction](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_PublishMetricAction.html): Stateless inspection criteria that publishes the specified metrics to Amazon CloudWatch for the matching packet.
+- [ReferenceSets](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ReferenceSets.html): Contains a set of IP set references.
+- [RuleDefinition](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_RuleDefinition.html): The inspection criteria and action for a single stateless rule.
+- [RuleGroup](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_RuleGroup.html): The object that defines the rules in a rule group.
+- [RuleGroupMetadata](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_RuleGroupMetadata.html): High-level information about a rule group, returned by .
+- [RuleGroupResponse](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_RuleGroupResponse.html): The high-level properties of a rule group.
+- [RuleOption](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_RuleOption.html): Additional settings for a stateful rule.
+- [RulesSource](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_RulesSource.html): The stateless or stateful rules definitions for use in a single rule group.
+- [RulesSourceList](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_RulesSourceList.html): Stateful inspection criteria for a domain list rule group.
+- [RuleSummary](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_RuleSummary.html): A complex type containing details about a Suricata rule.
+- [RuleVariables](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_RuleVariables.html): Settings that are available for use in the rules in the where this is defined.
+- [ServerCertificate](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ServerCertificate.html): Any AWS Certificate Manager (ACM) Secure Sockets Layer/Transport Layer Security (SSL/TLS) server certificate that's associated with a .
+- [ServerCertificateConfiguration](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ServerCertificateConfiguration.html): Configures the AWS Certificate Manager certificates and scope that Network Firewall uses to decrypt and re-encrypt traffic using a .
+- [ServerCertificateScope](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_ServerCertificateScope.html): Settings that define the Secure Sockets Layer/Transport Layer Security (SSL/TLS) traffic that Network Firewall should decrypt for inspection by the stateful rule engine.
+- [SourceMetadata](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_SourceMetadata.html): High-level information about the managed rule group that your own rule group is copied from.
+- [StatefulEngineOptions](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_StatefulEngineOptions.html): Configuration settings for the handling of the stateful rule groups in a firewall policy.
+- [StatefulRule](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_StatefulRule.html): A single Suricata rules specification, for use in a stateful rule group.
+- [StatefulRuleGroupOverride](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_StatefulRuleGroupOverride.html): The setting that allows the policy owner to change the behavior of the rule group within a policy.
+- [StatefulRuleGroupReference](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_StatefulRuleGroupReference.html): Identifier for a single stateful rule group, used in a firewall policy to refer to a rule group.
+- [StatefulRuleOptions](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_StatefulRuleOptions.html): Additional options governing how Network Firewall handles the rule group.
+- [StatelessRule](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_StatelessRule.html): A single stateless rule.
+- [StatelessRuleGroupReference](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_StatelessRuleGroupReference.html): Identifier for a single stateless rule group, used in a firewall policy to refer to the rule group.
+- [StatelessRulesAndCustomActions](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_StatelessRulesAndCustomActions.html): Stateless inspection criteria.
+- [SubnetMapping](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_SubnetMapping.html): The ID for a subnet that's used in an association with a firewall.
+- [Summary](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_Summary.html): A complex type containing summaries of security protections provided by a rule group.
+- [SummaryConfiguration](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_SummaryConfiguration.html): A complex type that specifies which Suricata rule metadata fields to use when displaying threat information.
+- [SyncState](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_SyncState.html): The status of the firewall endpoint and firewall policy configuration for a single VPC subnet.
+- [Tag](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_Tag.html): A key:value pair associated with an AWS resource.
+- [TCPFlagField](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_TCPFlagField.html): TCP flags and masks to inspect packets for, used in stateless rules settings.
+- [TlsCertificateData](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_TlsCertificateData.html): Contains metadata about an AWS Certificate Manager certificate.
+- [TLSInspectionConfiguration](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_TLSInspectionConfiguration.html): The object that defines a TLS inspection configuration.
+- [TLSInspectionConfigurationMetadata](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_TLSInspectionConfigurationMetadata.html): High-level information about a TLS inspection configuration, returned by ListTLSInspectionConfigurations.
+- [TLSInspectionConfigurationResponse](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_TLSInspectionConfigurationResponse.html): The high-level properties of a TLS inspection configuration.
+- [TlsInterceptProperties](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_TlsInterceptProperties.html): TLS decryption on traffic to filter on attributes in the HTTP header.
+- [TlsInterceptPropertiesRequest](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_TlsInterceptPropertiesRequest.html): This data type is used specifically for the and APIs.
+- [TransitGatewayAttachmentSyncState](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_TransitGatewayAttachmentSyncState.html): Contains information about the synchronization state of a transit gateway attachment, including its current status and any error messages.
+- [UniqueSources](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_UniqueSources.html): A unique source IP address that connected to a domain.
+- [VpcEndpointAssociation](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_VpcEndpointAssociation.html): A VPC endpoint association defines a single subnet to use for a firewall endpoint for a Firewall.
+- [VpcEndpointAssociationMetadata](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_VpcEndpointAssociationMetadata.html): High-level information about a VPC endpoint association, returned by ListVpcEndpointAssociations.
+- [VpcEndpointAssociationStatus](https://docs.aws.amazon.com/network-firewall/latest/APIReference/API_VpcEndpointAssociationStatus.html): Detailed information about the current status of a .

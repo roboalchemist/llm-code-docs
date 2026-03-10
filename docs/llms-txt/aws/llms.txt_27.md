@@ -1,0 +1,264 @@
+# Source: https://docs.aws.amazon.com/AmazonECS/latest/APIReference/llms.txt
+
+# Amazon Elastic Container Service API Reference
+
+> Amazon Elastic Container Service (Amazon ECS) is a highly scalable, fast, container management service. It makes it easy to run, stop, and manage Docker containers. You can host your cluster on a serverless infrastructure that's managed by Amazon ECS by launching your services or tasks on AWS Fargate. For more control, you can host your tasks on a cluster of Amazon Elastic Compute Cloud (Amazon EC2) or External (on-premises) instances that you manage.
+
+- [Welcome](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/Welcome.html)
+- [API request throttling](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/request-throttling.html)
+- [Ensuring idempotency](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/ECS_Idempotency.html)
+- [Common Parameters](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/CommonErrors.html)
+
+## [Actions by Amazon ECS resource](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/OperationList-query.html)
+
+- [Account setting actions](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/OperationList-query-account.html): The following API actions are available for account settings:
+- [Cluster actions](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/OperationList-query-cluster.html): The following API actions are available for clusters:
+- [Cluster capacity provider actions](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/OperationList-query-cluster-capacity-provider.html): The following APIs are available for cluster capacity providers:
+- [Container actions](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/OperationList-query-containers.html): The following APIs are available for containers:
+- [Container agent actions](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/OperationList-query-container-agent.html): The following APIs are available for container agents:
+- [Container instance actions](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/OperationList-query-container-instance.html): The following APIs are available for container instances:
+- [Namespace actions](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/OperationList-query-namespace.html)
+- [Service actions](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/OperationList-query-services.html): The following APIs are available for services:
+- [Service deployment actions](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/OperationList-query-service-deployments.html): The following APIs are available for service deployments:
+- [Service revision actions](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/OperationList-query-service-revisions.html): The following APIs are available for service revisions:
+- [Task definition actions](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/OperationList-query-task-definitions.html): The following APIs are available for task-definitions:
+- [Task actions](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/OperationList-query-tasks.html): The following APIs are available for tasks:
+- [Task set actions](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/OperationList-query-task-sets.html): The following APIs are available for task sets:
+- [Tag actions](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/OperationList-query-tags.html): The following APIs are available for tags:
+
+
+## [Actions](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Operations.html)
+
+- [CreateCapacityProvider](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateCapacityProvider.html): Creates a capacity provider.
+- [CreateCluster](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateCluster.html): Creates a new Amazon ECS cluster.
+- [CreateExpressGatewayService](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateExpressGatewayService.html): Creates an Express service that simplifies deploying containerized web applications on Amazon ECS with managed AWS infrastructure.
+- [CreateService](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateService.html): Runs and maintains your desired number of tasks from a specified task definition.
+- [CreateTaskSet](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateTaskSet.html): Create a task set in the specified cluster and service.
+- [DeleteAccountSetting](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeleteAccountSetting.html): Disables an account setting for a specified user, role, or the root user for an account.
+- [DeleteAttributes](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeleteAttributes.html): Deletes one or more custom attributes from an Amazon ECS resource.
+- [DeleteCapacityProvider](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeleteCapacityProvider.html): Deletes the specified capacity provider.
+- [DeleteCluster](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeleteCluster.html): Deletes the specified cluster.
+- [DeleteExpressGatewayService](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeleteExpressGatewayService.html): Deletes an Express service and removes all associated AWS resources.
+- [DeleteService](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeleteService.html): Deletes a specified service within a cluster.
+- [DeleteTaskDefinitions](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeleteTaskDefinitions.html): Deletes one or more task definitions.
+- [DeleteTaskSet](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeleteTaskSet.html): Deletes a specified task set within a service.
+- [DeregisterContainerInstance](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeregisterContainerInstance.html): Deregisters an Amazon ECS container instance from the specified cluster.
+- [DeregisterTaskDefinition](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeregisterTaskDefinition.html): Deregisters the specified task definition by family and revision.
+- [DescribeCapacityProviders](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeCapacityProviders.html): Describes one or more of your capacity providers.
+- [DescribeClusters](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeClusters.html): Describes one or more of your clusters.
+- [DescribeContainerInstances](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeContainerInstances.html): Describes one or more container instances.
+- [DescribeExpressGatewayService](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeExpressGatewayService.html): Retrieves detailed information about an Express service, including current status, configuration, managed infrastructure, and service revisions.
+- [DescribeServiceDeployments](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeServiceDeployments.html): Describes one or more of your service deployments.
+- [DescribeServiceRevisions](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeServiceRevisions.html): Describes one or more service revisions.
+- [DescribeServices](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeServices.html): Describes the specified services running in your cluster.
+- [DescribeTaskDefinition](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeTaskDefinition.html): Describes a task definition.
+- [DescribeTasks](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeTasks.html): Describes a specified task or tasks.
+- [DescribeTaskSets](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DescribeTaskSets.html): Describes the task sets in the specified cluster and service.
+- [DiscoverPollEndpoint](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DiscoverPollEndpoint.html)
+- [ExecuteCommand](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ExecuteCommand.html): Runs a command remotely on a container within a task.
+- [GetTaskProtection](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_GetTaskProtection.html): Retrieves the protection status of tasks in an Amazon ECS service.
+- [ListAccountSettings](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListAccountSettings.html): Lists the account settings for a specified principal.
+- [ListAttributes](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListAttributes.html): Lists the attributes for Amazon ECS resources within a specified target type and cluster.
+- [ListClusters](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListClusters.html): Returns a list of existing clusters.
+- [ListContainerInstances](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListContainerInstances.html): Returns a list of container instances in a specified cluster.
+- [ListServiceDeployments](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListServiceDeployments.html): This operation lists all the service deployments that meet the specified filter criteria.
+- [ListServices](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListServices.html): Returns a list of services.
+- [ListServicesByNamespace](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListServicesByNamespace.html): This operation lists all of the services that are associated with a AWS Cloud Map namespace.
+- [ListTagsForResource](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListTagsForResource.html): List the tags for an Amazon ECS resource.
+- [ListTaskDefinitionFamilies](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListTaskDefinitionFamilies.html): Returns a list of task definition families that are registered to your account.
+- [ListTaskDefinitions](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListTaskDefinitions.html): Returns a list of task definitions that are registered to your account.
+- [ListTasks](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ListTasks.html): Returns a list of tasks.
+- [PutAccountSetting](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PutAccountSetting.html): Modifies an account setting.
+- [PutAccountSettingDefault](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PutAccountSettingDefault.html): Modifies an account setting for all users on an account for whom no individual account setting has been specified.
+- [PutAttributes](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PutAttributes.html): Create or update an attribute on an Amazon ECS resource.
+- [PutClusterCapacityProviders](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PutClusterCapacityProviders.html): Modifies the available capacity providers and the default capacity provider strategy for a cluster.
+- [RegisterContainerInstance](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RegisterContainerInstance.html)
+- [RegisterTaskDefinition](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RegisterTaskDefinition.html): Registers a new task definition from the supplied family and containerDefinitions.
+- [RunTask](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html): Starts a new task using the specified task definition.
+- [StartTask](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_StartTask.html): Starts a new task from the specified task definition on the specified container instance or instances.
+- [StopServiceDeployment](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_StopServiceDeployment.html): Stops an ongoing service deployment.
+- [StopTask](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_StopTask.html): Stops a running task.
+- [SubmitAttachmentStateChanges](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_SubmitAttachmentStateChanges.html)
+- [SubmitContainerStateChange](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_SubmitContainerStateChange.html)
+- [SubmitTaskStateChange](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_SubmitTaskStateChange.html)
+- [TagResource](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TagResource.html): Associates the specified tags to a resource with the specified resourceArn.
+- [UntagResource](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UntagResource.html): Deletes specified tags from a resource.
+- [UpdateCapacityProvider](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UpdateCapacityProvider.html): Modifies the parameters for a capacity provider.
+- [UpdateCluster](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UpdateCluster.html): Updates the cluster.
+- [UpdateClusterSettings](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UpdateClusterSettings.html): Modifies the settings to use for a cluster.
+- [UpdateContainerAgent](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UpdateContainerAgent.html): Updates the Amazon ECS container agent on a specified container instance.
+- [UpdateContainerInstancesState](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UpdateContainerInstancesState.html): Modifies the status of an Amazon ECS container instance.
+- [UpdateExpressGatewayService](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UpdateExpressGatewayService.html): Updates an existing Express service configuration.
+- [UpdateService](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UpdateService.html): Modifies the parameters of a service.
+- [UpdateServicePrimaryTaskSet](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UpdateServicePrimaryTaskSet.html): Modifies which task set in a service is the primary task set.
+- [UpdateTaskProtection](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UpdateTaskProtection.html): Updates the protection status of a task.
+- [UpdateTaskSet](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UpdateTaskSet.html): Modifies a task set.
+
+
+## [Data Types](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Types.html)
+
+- [AcceleratorCountRequest](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_AcceleratorCountRequest.html): The minimum and maximum number of accelerators (such as GPUs) for instance type selection.
+- [AcceleratorTotalMemoryMiBRequest](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_AcceleratorTotalMemoryMiBRequest.html): The minimum and maximum total accelerator memory in mebibytes (MiB) for instance type selection.
+- [AdvancedConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_AdvancedConfiguration.html): The advanced settings for a load balancer used in blue/green deployments.
+- [Attachment](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Attachment.html): An object representing a container instance or task attachment.
+- [AttachmentStateChange](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_AttachmentStateChange.html): An object representing a change in state for a task attachment.
+- [Attribute](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Attribute.html): An attribute is a name-value pair that's associated with an Amazon ECS object.
+- [AutoScalingGroupProvider](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_AutoScalingGroupProvider.html): The details of the Auto Scaling group for the capacity provider.
+- [AutoScalingGroupProviderUpdate](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_AutoScalingGroupProviderUpdate.html): The details of the Auto Scaling group capacity provider to update.
+- [AwsVpcConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_AwsVpcConfiguration.html): An object representing the networking details for a task or service.
+- [BaselineEbsBandwidthMbpsRequest](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_BaselineEbsBandwidthMbpsRequest.html): The minimum and maximum baseline Amazon EBS bandwidth in megabits per second (Mbps) for instance type selection.
+- [CanaryConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CanaryConfiguration.html): Configuration for a canary deployment strategy that shifts a fixed percentage of traffic to the new service revision, waits for a specified bake time, then shifts the remaining traffic.
+- [CapacityProvider](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CapacityProvider.html): The details for a capacity provider.
+- [CapacityProviderStrategyItem](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CapacityProviderStrategyItem.html): The details of a capacity provider strategy.
+- [CapacityReservationRequest](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CapacityReservationRequest.html): The Capacity Reservation configurations to be used when using the RESERVED capacity option type.
+- [Cluster](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Cluster.html): A regional grouping of one or more container instances where you can run task requests.
+- [ClusterConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ClusterConfiguration.html): The execute command and managed storage configuration for the cluster.
+- [ClusterServiceConnectDefaults](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ClusterServiceConnectDefaults.html): Use this parameter to set a default Service Connect namespace.
+- [ClusterServiceConnectDefaultsRequest](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ClusterServiceConnectDefaultsRequest.html): Use this parameter to set a default Service Connect namespace.
+- [ClusterSetting](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ClusterSetting.html): The settings to use when creating a cluster.
+- [Container](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Container.html): A Docker container that's part of a task.
+- [ContainerDefinition](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html): Container definitions are used in task definitions to describe the different containers that are launched as part of a task.
+- [ContainerDependency](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDependency.html): The dependencies defined for container startup and shutdown.
+- [ContainerImage](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerImage.html): The details about the container image a service revision uses.
+- [ContainerInstance](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerInstance.html): An Amazon EC2 or External instance that's running the Amazon ECS agent and has been registered with a cluster.
+- [ContainerInstanceHealthStatus](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerInstanceHealthStatus.html): An object representing the health status of the container instance.
+- [ContainerOverride](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerOverride.html): The overrides that are sent to a container.
+- [ContainerRestartPolicy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerRestartPolicy.html): You can enable a restart policy for each container defined in your task definition, to overcome transient failures faster and maintain task availability.
+- [ContainerStateChange](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerStateChange.html): An object that represents a change in state for a container.
+- [CreatedAt](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreatedAt.html): The optional filter to narrow the ListServiceDeployment results.
+- [CreateManagedInstancesProviderConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateManagedInstancesProviderConfiguration.html): The configuration for creating a Amazon ECS Managed Instances provider.
+- [Deployment](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Deployment.html): The details of an Amazon ECS service deployment.
+- [DeploymentAlarms](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeploymentAlarms.html): One of the methods which provide a way for you to quickly identify when a deployment has failed, and then to optionally roll back the failure to the last working deployment.
+- [DeploymentCircuitBreaker](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeploymentCircuitBreaker.html)
+- [DeploymentConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeploymentConfiguration.html): Optional deployment parameters that control how many tasks run during a deployment and the ordering of stopping and starting tasks.
+- [DeploymentController](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeploymentController.html): The deployment controller to use for the service.
+- [DeploymentEphemeralStorage](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeploymentEphemeralStorage.html): The amount of ephemeral storage to allocate for the deployment.
+- [DeploymentLifecycleHook](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeploymentLifecycleHook.html): A deployment lifecycle hook runs custom logic at specific stages of the deployment process.
+- [Device](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Device.html): An object representing a container instance host device.
+- [DockerVolumeConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DockerVolumeConfiguration.html): This parameter is specified when you're using Docker volumes.
+- [EBSTagSpecification](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_EBSTagSpecification.html): The tag specifications of an Amazon EBS volume.
+- [ECSExpressGatewayService](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ECSExpressGatewayService.html): Represents an Express service, which provides a simplified way to deploy containerized web applications on Amazon ECS with managed AWS infrastructure.
+- [ECSManagedResources](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ECSManagedResources.html): Represents the AWS resources managed by Amazon ECS for an Express service, including ingress paths, auto-scaling policies, metric alarms, and security groups.
+- [EFSAuthorizationConfig](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_EFSAuthorizationConfig.html): The authorization configuration details for the Amazon EFS file system.
+- [EFSVolumeConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_EFSVolumeConfiguration.html): This parameter is specified when you're using an Amazon Elastic File System file system for task storage.
+- [EnvironmentFile](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_EnvironmentFile.html): A list of files containing the environment variables to pass to a container.
+- [EphemeralStorage](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_EphemeralStorage.html): The amount of ephemeral storage to allocate for the task.
+- [ExecuteCommandConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ExecuteCommandConfiguration.html): The details of the execute command configuration.
+- [ExecuteCommandLogConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ExecuteCommandLogConfiguration.html): The log configuration for the results of the execute command actions.
+- [ExpressGatewayContainer](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ExpressGatewayContainer.html): Defines the configuration for the primary container in an Express service.
+- [ExpressGatewayRepositoryCredentials](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ExpressGatewayRepositoryCredentials.html): The repository credentials for private registry authentication to pass to the container.
+- [ExpressGatewayScalingTarget](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ExpressGatewayScalingTarget.html): Defines the auto-scaling configuration for an Express service.
+- [ExpressGatewayServiceAwsLogsConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ExpressGatewayServiceAwsLogsConfiguration.html): Specifies the Amazon CloudWatch Logs configuration for the Express service container.
+- [ExpressGatewayServiceConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ExpressGatewayServiceConfiguration.html): Represents a specific configuration revision of an Express service, containing all the settings and parameters for that revision.
+- [ExpressGatewayServiceNetworkConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ExpressGatewayServiceNetworkConfiguration.html): The network configuration for an Express service.
+- [ExpressGatewayServiceStatus](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ExpressGatewayServiceStatus.html): An object that defines the status of Express service creation and information about the status of the service.
+- [Failure](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Failure.html): A failed resource.
+- [FirelensConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_FirelensConfiguration.html): The FireLens configuration for the container.
+- [FSxWindowsFileServerAuthorizationConfig](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_FSxWindowsFileServerAuthorizationConfig.html): The authorization configuration details for Amazon FSx for Windows File Server file system.
+- [FSxWindowsFileServerVolumeConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_FSxWindowsFileServerVolumeConfiguration.html): This parameter is specified when you're using Amazon FSx for Windows File Server file system for task storage.
+- [HealthCheck](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_HealthCheck.html): An object representing a container health check.
+- [HostEntry](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_HostEntry.html): Hostnames and IP address entries that are added to the /etc/hosts file of a container via the extraHosts parameter of its ContainerDefinition.
+- [HostVolumeProperties](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_HostVolumeProperties.html): Details on a container instance bind mount host volume.
+- [InferenceAccelerator](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_InferenceAccelerator.html): Details on an Elastic Inference accelerator.
+- [InferenceAcceleratorOverride](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_InferenceAcceleratorOverride.html): Details on an Elastic Inference accelerator task override.
+- [InfrastructureOptimization](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_InfrastructureOptimization.html): The configuration that controls how Amazon ECS optimizes your infrastructure.
+- [IngressPathSummary](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_IngressPathSummary.html): The entry point into an Express service.
+- [InstanceHealthCheckResult](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_InstanceHealthCheckResult.html): An object representing the result of a container instance health status check.
+- [InstanceLaunchTemplate](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_InstanceLaunchTemplate.html): The launch template configuration for Amazon ECS Managed Instances.
+- [InstanceLaunchTemplateUpdate](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_InstanceLaunchTemplateUpdate.html): The updated launch template configuration for Amazon ECS Managed Instances.
+- [InstanceRequirementsRequest](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_InstanceRequirementsRequest.html): The instance requirements for attribute-based instance type selection.
+- [KernelCapabilities](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_KernelCapabilities.html): The Linux capabilities to add or remove from the default Docker configuration for a container defined in the task definition.
+- [KeyValuePair](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_KeyValuePair.html): A key-value pair object.
+- [LinearConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LinearConfiguration.html): Configuration for linear deployment strategy that shifts production traffic in equal percentage increments with configurable wait times between each step until 100% of traffic is shifted to the new service revision.
+- [LinuxParameters](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LinuxParameters.html): The Linux-specific options that are applied to the container, such as Linux KernelCapabilities.
+- [LoadBalancer](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LoadBalancer.html): The load balancer configuration to use with a service or task set.
+- [LogConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_LogConfiguration.html): The log configuration for the container.
+- [ManagedAgent](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ManagedAgent.html): Details about the managed agent status for the container.
+- [ManagedAgentStateChange](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ManagedAgentStateChange.html): An object representing a change in state for a managed agent.
+- [ManagedApplicationAutoScalingPolicy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ManagedApplicationAutoScalingPolicy.html): The Application Auto Scaling policy created by Amazon ECS when you create an Express service.
+- [ManagedAutoScaling](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ManagedAutoScaling.html): The auto scaling configuration created by Amazon ECS for an Express service.
+- [ManagedCertificate](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ManagedCertificate.html): The ACM certificate associated with the HTTPS domain created for the Express service.
+- [ManagedIngressPath](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ManagedIngressPath.html): The entry point into the Express service.
+- [ManagedInstancesNetworkConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ManagedInstancesNetworkConfiguration.html): The network configuration for Amazon ECS Managed Instances.
+- [ManagedInstancesProvider](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ManagedInstancesProvider.html): The configuration for a Amazon ECS Managed Instances provider.
+- [ManagedInstancesStorageConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ManagedInstancesStorageConfiguration.html): The storage configuration for Amazon ECS Managed Instances.
+- [ManagedListener](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ManagedListener.html): The listeners associated with the Express service's Application Load Balancer.
+- [ManagedListenerRule](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ManagedListenerRule.html): The listener rule associated with the Express service's Application Load Balancer.
+- [ManagedLoadBalancer](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ManagedLoadBalancer.html): The Application Load Balancer associated with the Express service.
+- [ManagedLogGroup](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ManagedLogGroup.html): The Cloudwatch Log Group created by Amazon ECS for an Express service.
+- [ManagedMetricAlarm](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ManagedMetricAlarm.html): The CloudWatch metric alarm associated with the Express service's scaling policy.
+- [ManagedScalableTarget](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ManagedScalableTarget.html): Represents a scalable target.
+- [ManagedScaling](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ManagedScaling.html): The managed scaling settings for the Auto Scaling group capacity provider.
+- [ManagedSecurityGroup](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ManagedSecurityGroup.html): A security group associated with the Express service.
+- [ManagedStorageConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ManagedStorageConfiguration.html): The managed storage configuration for the cluster.
+- [ManagedTargetGroup](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ManagedTargetGroup.html): The target group associated with the Express service's Application Load Balancer.
+- [MemoryGiBPerVCpuRequest](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_MemoryGiBPerVCpuRequest.html): The minimum and maximum amount of memory per vCPU in gibibytes (GiB).
+- [MemoryMiBRequest](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_MemoryMiBRequest.html): The minimum and maximum amount of memory in mebibytes (MiB) for instance type selection.
+- [MountPoint](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_MountPoint.html): The details for a volume mount point that's used in a container definition.
+- [NetworkBandwidthGbpsRequest](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_NetworkBandwidthGbpsRequest.html): The minimum and maximum network bandwidth in gigabits per second (Gbps) for instance type selection.
+- [NetworkBinding](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_NetworkBinding.html): Details on the network bindings between a container and its host container instance.
+- [NetworkConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_NetworkConfiguration.html): The network configuration for a task or service.
+- [NetworkInterface](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_NetworkInterface.html): An object representing the elastic network interface for tasks that use the awsvpc network mode.
+- [NetworkInterfaceCountRequest](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_NetworkInterfaceCountRequest.html): The minimum and maximum number of network interfaces for instance type selection.
+- [PlacementConstraint](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PlacementConstraint.html): An object representing a constraint on task placement.
+- [PlacementStrategy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PlacementStrategy.html): The task placement strategy for a task or service.
+- [PlatformDevice](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PlatformDevice.html): The devices that are available on the container instance.
+- [PortMapping](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_PortMapping.html): Port mappings allow containers to access ports on the host container instance to send or receive traffic.
+- [ProtectedTask](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ProtectedTask.html): An object representing the protection status details for a task.
+- [ProxyConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ProxyConfiguration.html): The configuration details for the App Mesh proxy.
+- [RepositoryCredentials](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RepositoryCredentials.html): The repository credentials for private registry authentication.
+- [ResolvedConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ResolvedConfiguration.html): The resolved configuration for a service revision, which contains the actual resources your service revision uses, such as which target groups serve traffic.
+- [Resource](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Resource.html): Describes the resources available for a container instance.
+- [ResourceRequirement](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ResourceRequirement.html): The type and amount of a resource to assign to a container.
+- [Rollback](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Rollback.html): Information about the service deployment rollback.
+- [RuntimePlatform](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RuntimePlatform.html): Information about the platform for the Amazon ECS service or task.
+- [Scale](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Scale.html): A floating-point percentage of the desired number of tasks to place and keep running in the task set.
+- [Secret](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Secret.html): An object representing the secret to expose to your container.
+- [Service](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Service.html): Details on a service within a cluster.
+- [ServiceConnectAccessLogConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceConnectAccessLogConfiguration.html): Configuration for Service Connect access logging.
+- [ServiceConnectClientAlias](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceConnectClientAlias.html): Each alias ("endpoint") is a fully-qualified name and port number that other tasks ("clients") can use to connect to this service.
+- [ServiceConnectConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceConnectConfiguration.html): The Service Connect configuration of your Amazon ECS service.
+- [ServiceConnectService](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceConnectService.html): The Service Connect service object configuration.
+- [ServiceConnectServiceResource](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceConnectServiceResource.html): The Service Connect resource.
+- [ServiceConnectTestTrafficHeaderMatchRules](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceConnectTestTrafficHeaderMatchRules.html): The header matching rules for test traffic routing in Amazon ECS blue/green deployments.
+- [ServiceConnectTestTrafficHeaderRules](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceConnectTestTrafficHeaderRules.html): The HTTP header rules used to identify and route test traffic during Amazon ECS blue/green deployments.
+- [ServiceConnectTestTrafficRules](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceConnectTestTrafficRules.html): The test traffic routing configuration for Amazon ECS blue/green deployments.
+- [ServiceConnectTlsCertificateAuthority](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceConnectTlsCertificateAuthority.html): The certificate root authority that secures your service.
+- [ServiceConnectTlsConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceConnectTlsConfiguration.html): The key that encrypts and decrypts your resources for Service Connect TLS.
+- [ServiceCurrentRevisionSummary](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceCurrentRevisionSummary.html): The summary of the current service revision configuration
+- [ServiceDeployment](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceDeployment.html): Information about the service deployment.
+- [ServiceDeploymentAlarms](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceDeploymentAlarms.html): The CloudWatch alarms used to determine a service deployment failed.
+- [ServiceDeploymentBrief](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceDeploymentBrief.html): The service deployment properties that are retured when you call ListServiceDeployments.
+- [ServiceDeploymentCircuitBreaker](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceDeploymentCircuitBreaker.html): Information about the circuit breaker used to determine when a service deployment has failed.
+- [ServiceEvent](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceEvent.html): The details for an event that's associated with a service.
+- [ServiceManagedEBSVolumeConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceManagedEBSVolumeConfiguration.html): The configuration for the Amazon EBS volume that Amazon ECS creates and manages on your behalf.
+- [ServiceRegistry](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceRegistry.html): The details for the service registry.
+- [ServiceRevision](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceRevision.html): Information about the service revision.
+- [ServiceRevisionLoadBalancer](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceRevisionLoadBalancer.html): The resolved load balancer configuration for a service revision.
+- [ServiceRevisionSummary](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceRevisionSummary.html): The information about the number of requested, pending, and running tasks for a service revision.
+- [ServiceVolumeConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ServiceVolumeConfiguration.html): The configuration for a volume specified in the task definition as a volume that is configured at launch time.
+- [Session](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Session.html): The details for the execute command session.
+- [Setting](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Setting.html): The current account setting for a resource.
+- [SystemControl](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_SystemControl.html): A list of namespaced kernel parameters to set in the container.
+- [Tag](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Tag.html): The metadata that you apply to a resource to help you categorize and organize them.
+- [Task](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Task.html): Details on a task in a cluster.
+- [TaskDefinition](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TaskDefinition.html): The details of a task definition which describes the container and volume definitions of an Amazon Elastic Container Service task.
+- [TaskDefinitionPlacementConstraint](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TaskDefinitionPlacementConstraint.html): The constraint on task placement in the task definition.
+- [TaskEphemeralStorage](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TaskEphemeralStorage.html): The amount of ephemeral storage to allocate for the task.
+- [TaskManagedEBSVolumeConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TaskManagedEBSVolumeConfiguration.html): The configuration for the Amazon EBS volume that Amazon ECS creates and manages on your behalf.
+- [TaskManagedEBSVolumeTerminationPolicy](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TaskManagedEBSVolumeTerminationPolicy.html): The termination policy for the Amazon EBS volume when the task exits.
+- [TaskOverride](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TaskOverride.html): The overrides that are associated with a task.
+- [TaskSet](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TaskSet.html): Information about a set of Amazon ECS tasks in either an AWS CodeDeploy or an EXTERNAL deployment.
+- [TaskVolumeConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TaskVolumeConfiguration.html): Configuration settings for the task volume that was configuredAtLaunch that weren't set during RegisterTaskDef.
+- [TimeoutConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TimeoutConfiguration.html): An object that represents the timeout configurations for Service Connect.
+- [Tmpfs](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Tmpfs.html): The container path, mount options, and size of the tmpfs mount.
+- [TotalLocalStorageGBRequest](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_TotalLocalStorageGBRequest.html): The minimum and maximum total local storage in gigabytes (GB) for instance types with local storage.
+- [Ulimit](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Ulimit.html): The ulimit settings to pass to the container.
+- [UpdatedExpressGatewayService](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UpdatedExpressGatewayService.html): An object that describes an Express service to be updated.
+- [UpdateManagedInstancesProviderConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_UpdateManagedInstancesProviderConfiguration.html): The updated configuration for a Amazon ECS Managed Instances provider.
+- [VCpuCountRangeRequest](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_VCpuCountRangeRequest.html): The minimum and maximum number of vCPUs for instance type selection.
+- [VersionInfo](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_VersionInfo.html): The Docker and Amazon ECS container agent version information about a container instance.
+- [Volume](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Volume.html): The data volume configuration for tasks launched using this task definition.
+- [VolumeFrom](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_VolumeFrom.html): Details on a data volume from another container in the same task definition.
+- [VpcLatticeConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_VpcLatticeConfiguration.html): The VPC Lattice configuration for your service that holds the information for the target group(s) Amazon ECS tasks will be registered to.

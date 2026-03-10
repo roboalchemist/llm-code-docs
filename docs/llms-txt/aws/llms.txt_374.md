@@ -1,0 +1,145 @@
+# Source: https://docs.aws.amazon.com/eventbridge/latest/APIReference/llms.txt
+
+# Amazon EventBridge API Reference
+
+> Amazon EventBridge helps you to respond to state changes in your AWS resources. When your resources change state, they automatically send events to an event stream. You can create rules that match selected events in the stream and route them to targets to take action. You can also use rules to take action on a predetermined schedule. For example, you can configure rules to:
+
+- [Amazon EventBridge API Reference](https://docs.aws.amazon.com/eventbridge/latest/APIReference/Welcome.html)
+- [Making API Requests](https://docs.aws.amazon.com/eventbridge/latest/APIReference/making-api-requests.html)
+- [Common Parameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/eventbridge/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Operations.html)
+
+- [ActivateEventSource](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ActivateEventSource.html): Activates a partner event source that has been deactivated.
+- [CancelReplay](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CancelReplay.html): Cancels the specified replay.
+- [CreateApiDestination](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateApiDestination.html): Creates an API destination, which is an HTTP invocation endpoint configured as a target for events.
+- [CreateArchive](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateArchive.html): Creates an archive of events with the specified settings.
+- [CreateConnection](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateConnection.html): Creates a connection.
+- [CreateEndpoint](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateEndpoint.html): Creates a global endpoint.
+- [CreateEventBus](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateEventBus.html): Creates a new event bus within your account.
+- [CreatePartnerEventSource](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreatePartnerEventSource.html): Called by an SaaS partner to create a partner event source.
+- [DeactivateEventSource](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DeactivateEventSource.html): You can use this operation to temporarily stop receiving events from the specified partner event source.
+- [DeauthorizeConnection](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DeauthorizeConnection.html): Removes all authorization parameters from the connection.
+- [DeleteApiDestination](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DeleteApiDestination.html): Deletes the specified API destination.
+- [DeleteArchive](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DeleteArchive.html): Deletes the specified archive.
+- [DeleteConnection](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DeleteConnection.html): Deletes a connection.
+- [DeleteEndpoint](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DeleteEndpoint.html): Delete an existing global endpoint.
+- [DeleteEventBus](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DeleteEventBus.html): Deletes the specified custom event bus or partner event bus.
+- [DeletePartnerEventSource](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DeletePartnerEventSource.html): This operation is used by SaaS partners to delete a partner event source.
+- [DeleteRule](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DeleteRule.html): Deletes the specified rule.
+- [DescribeApiDestination](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeApiDestination.html): Retrieves details about an API destination.
+- [DescribeArchive](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeArchive.html): Retrieves details about an archive.
+- [DescribeConnection](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeConnection.html): Retrieves details about a connection.
+- [DescribeEndpoint](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeEndpoint.html): Get the information about an existing global endpoint.
+- [DescribeEventBus](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeEventBus.html): Displays details about an event bus in your account.
+- [DescribeEventSource](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeEventSource.html): This operation lists details about a partner event source that is shared with your account.
+- [DescribePartnerEventSource](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribePartnerEventSource.html): An SaaS partner can use this operation to list details about a partner event source that they have created.
+- [DescribeReplay](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeReplay.html): Retrieves details about a replay.
+- [DescribeRule](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeRule.html): Describes the specified rule.
+- [DisableRule](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DisableRule.html): Disables the specified rule.
+- [EnableRule](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_EnableRule.html): Enables the specified rule.
+- [ListApiDestinations](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListApiDestinations.html): Retrieves a list of API destination in the account in the current Region.
+- [ListArchives](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListArchives.html): Lists your archives.
+- [ListConnections](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListConnections.html): Retrieves a list of connections from the account.
+- [ListEndpoints](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListEndpoints.html): List the global endpoints associated with this account.
+- [ListEventBuses](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListEventBuses.html): Lists all the event buses in your account, including the default event bus, custom event buses, and partner event buses.
+- [ListEventSources](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListEventSources.html): You can use this to see all the partner event sources that have been shared with your AWS account.
+- [ListPartnerEventSourceAccounts](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListPartnerEventSourceAccounts.html): An SaaS partner can use this operation to display the AWS account ID that a particular partner event source name is associated with.
+- [ListPartnerEventSources](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListPartnerEventSources.html): An SaaS partner can use this operation to list all the partner event source names that they have created.
+- [ListReplays](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListReplays.html): Lists your replays.
+- [ListRuleNamesByTarget](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListRuleNamesByTarget.html): Lists the rules for the specified target.
+- [ListRules](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListRules.html): Lists your Amazon EventBridge rules.
+- [ListTagsForResource](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListTagsForResource.html): Displays the tags associated with an EventBridge resource.
+- [ListTargetsByRule](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ListTargetsByRule.html): Lists the targets assigned to the specified rule.
+- [PutEvents](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutEvents.html): Sends custom events to Amazon EventBridge so that they can be matched to rules.
+- [PutPartnerEvents](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutPartnerEvents.html): This is used by SaaS partners to write events to a customer's partner event bus.
+- [PutPermission](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutPermission.html): Running PutPermission permits the specified AWS account or AWS organization to put events to the specified event bus.
+- [PutRule](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutRule.html): Creates or updates the specified rule.
+- [PutTargets](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutTargets.html): Adds the specified targets to the specified rule, or updates the targets if they are already associated with the rule.
+- [RemovePermission](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_RemovePermission.html): Revokes the permission of another AWS account to be able to put events to the specified event bus.
+- [RemoveTargets](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_RemoveTargets.html): Removes the specified targets from the specified rule.
+- [StartReplay](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_StartReplay.html): Starts the specified replay.
+- [TagResource](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_TagResource.html): Assigns one or more tags (key-value pairs) to the specified EventBridge resource.
+- [TestEventPattern](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_TestEventPattern.html): Tests whether the specified event pattern matches the provided event.
+- [UntagResource](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_UntagResource.html): Removes one or more tags from the specified EventBridge resource.
+- [UpdateApiDestination](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_UpdateApiDestination.html): Updates an API destination.
+- [UpdateArchive](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_UpdateArchive.html): Updates the specified archive.
+- [UpdateConnection](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_UpdateConnection.html): Updates settings for a connection.
+- [UpdateEndpoint](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_UpdateEndpoint.html): Update an existing endpoint.
+- [UpdateEventBus](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_UpdateEventBus.html): Updates the specified event bus.
+
+
+## [Data Types](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Types.html)
+
+- [ApiDestination](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ApiDestination.html): Contains details about an API destination.
+- [AppSyncParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_AppSyncParameters.html): Contains the GraphQL operation to be parsed and executed, if the event target is an AWS AppSync API.
+- [Archive](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Archive.html): An Archive object that contains details about an archive.
+- [AwsVpcConfiguration](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_AwsVpcConfiguration.html): This structure specifies the VPC subnets and security groups for the task, and whether a public IP address is to be used.
+- [BatchArrayProperties](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_BatchArrayProperties.html): The array properties for the submitted job, such as the size of the array.
+- [BatchParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_BatchParameters.html): The custom parameters to be used when the target is an AWS Batch job.
+- [BatchRetryStrategy](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_BatchRetryStrategy.html): The retry strategy to use for failed jobs, if the target is an AWS Batch job.
+- [CapacityProviderStrategyItem](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CapacityProviderStrategyItem.html): The details of a capacity provider strategy.
+- [Condition](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Condition.html): A JSON string which you can use to limit the event bus permissions you are granting to only accounts that fulfill the condition.
+- [Connection](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Connection.html): Contains information about a connection.
+- [ConnectionApiKeyAuthResponseParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ConnectionApiKeyAuthResponseParameters.html): Contains the authorization parameters for the connection if API Key is specified as the authorization type.
+- [ConnectionAuthResponseParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ConnectionAuthResponseParameters.html): Tthe authorization parameters to use for the connection.
+- [ConnectionBasicAuthResponseParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ConnectionBasicAuthResponseParameters.html): The authorization parameters for the connection if Basic is specified as the authorization type.
+- [ConnectionBodyParameter](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ConnectionBodyParameter.html): Additional parameter included in the body.
+- [ConnectionHeaderParameter](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ConnectionHeaderParameter.html): Additional parameter included in the header.
+- [ConnectionHttpParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ConnectionHttpParameters.html): Any additional parameters for the connection.
+- [ConnectionOAuthClientResponseParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ConnectionOAuthClientResponseParameters.html): The client response parameters for the connection when OAuth is specified as the authorization type.
+- [ConnectionOAuthResponseParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ConnectionOAuthResponseParameters.html): The response parameters when OAuth is specified as the authorization type.
+- [ConnectionQueryStringParameter](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ConnectionQueryStringParameter.html): Any additional query string parameter for the connection.
+- [ConnectivityResourceConfigurationArn](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ConnectivityResourceConfigurationArn.html): The Amazon Resource Name (ARN) of the Amazon VPC Lattice resource configuration for the resource endpoint.
+- [ConnectivityResourceParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ConnectivityResourceParameters.html): The parameters for EventBridge to use when invoking the resource endpoint.
+- [CreateConnectionApiKeyAuthRequestParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateConnectionApiKeyAuthRequestParameters.html): The API key authorization parameters for the connection.
+- [CreateConnectionAuthRequestParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateConnectionAuthRequestParameters.html): The authorization parameters for the connection.
+- [CreateConnectionBasicAuthRequestParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateConnectionBasicAuthRequestParameters.html): Contains the Basic authorization parameters to use for the connection.
+- [CreateConnectionOAuthClientRequestParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateConnectionOAuthClientRequestParameters.html): The Basic authorization parameters to use for the connection.
+- [CreateConnectionOAuthRequestParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_CreateConnectionOAuthRequestParameters.html): Contains the OAuth authorization parameters to use for the connection.
+- [DeadLetterConfig](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DeadLetterConfig.html): Configuration details of the Amazon SQS queue for EventBridge to use as a dead-letter queue (DLQ).
+- [DescribeConnectionConnectivityParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeConnectionConnectivityParameters.html): If the connection uses a private OAuth endpoint, the parameters for EventBridge to use when authenticating against the endpoint.
+- [DescribeConnectionResourceParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_DescribeConnectionResourceParameters.html): The parameters for EventBridge to use when invoking the resource endpoint.
+- [EcsParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_EcsParameters.html): The custom parameters to be used when the target is an Amazon ECS task.
+- [Endpoint](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Endpoint.html): A global endpoint used to improve your application's availability by making it regional-fault tolerant.
+- [EndpointEventBus](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_EndpointEventBus.html): The event buses the endpoint is associated with.
+- [EventBus](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_EventBus.html): An event bus receives events from a source, uses rules to evaluate them, applies any configured input transformation, and routes them to the appropriate target(s).
+- [EventSource](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_EventSource.html): A partner event source is created by an SaaS partner.
+- [FailoverConfig](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_FailoverConfig.html): The failover configuration for an endpoint.
+- [HttpParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_HttpParameters.html): These are custom parameter to be used when the target is an API Gateway APIs or EventBridge ApiDestinations.
+- [InputTransformer](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_InputTransformer.html): Contains the parameters needed for you to provide custom input to a target based on one or more pieces of data extracted from the event.
+- [KinesisParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_KinesisParameters.html): This object enables you to specify a JSON path to extract from the event and use as the partition key for the Amazon Kinesis data stream, so that you can control the shard to which the event goes.
+- [LogConfig](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_LogConfig.html): The logging configuration settings for the event bus.
+- [NetworkConfiguration](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_NetworkConfiguration.html): This structure specifies the network configuration for an ECS task.
+- [PartnerEventSource](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PartnerEventSource.html): A partner event source is created by an SaaS partner.
+- [PartnerEventSourceAccount](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PartnerEventSourceAccount.html): The AWS account that a partner event source has been offered to.
+- [PlacementConstraint](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PlacementConstraint.html): An object representing a constraint on task placement.
+- [PlacementStrategy](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PlacementStrategy.html): The task placement strategy for a task or service.
+- [Primary](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Primary.html): The primary Region of the endpoint.
+- [PutEventsRequestEntry](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutEventsRequestEntry.html): Represents an event to be submitted.
+- [PutEventsResultEntry](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutEventsResultEntry.html): Represents the results of an event submitted to an event bus.
+- [PutPartnerEventsRequestEntry](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutPartnerEventsRequestEntry.html): The details about an event generated by an SaaS partner.
+- [PutPartnerEventsResultEntry](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutPartnerEventsResultEntry.html): The result of an event entry the partner submitted in this request.
+- [PutTargetsResultEntry](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_PutTargetsResultEntry.html): Represents a target that failed to be added to a rule.
+- [RedshiftDataParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_RedshiftDataParameters.html): These are custom parameters to be used when the target is a Amazon Redshift cluster to invoke the Amazon Redshift Data API ExecuteStatement based on EventBridge events.
+- [RemoveTargetsResultEntry](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_RemoveTargetsResultEntry.html): Represents a target that failed to be removed from a rule.
+- [Replay](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Replay.html): A Replay object that contains details about a replay.
+- [ReplayDestination](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ReplayDestination.html): A ReplayDestination object that contains details about a replay.
+- [ReplicationConfig](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_ReplicationConfig.html): Endpoints can replicate all events to the secondary Region.
+- [RetryPolicy](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_RetryPolicy.html): A RetryPolicy object that includes information about the retry policy settings.
+- [RoutingConfig](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_RoutingConfig.html): The routing configuration of the endpoint.
+- [Rule](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Rule.html): Contains information about a rule in Amazon EventBridge.
+- [RunCommandParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_RunCommandParameters.html): This parameter contains the criteria (either InstanceIds or a tag) used to specify which EC2 instances are to be sent the command.
+- [RunCommandTarget](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_RunCommandTarget.html): Information about the EC2 instances that are to be sent the command, specified as key-value pairs.
+- [SageMakerPipelineParameter](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_SageMakerPipelineParameter.html): Name/Value pair of a parameter to start execution of a SageMaker AI Model Building Pipeline.
+- [SageMakerPipelineParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_SageMakerPipelineParameters.html): These are custom parameters to use when the target is a SageMaker AI Model Building Pipeline that starts based on EventBridge events.
+- [Secondary](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Secondary.html): The secondary Region that processes events when failover is triggered or replication is enabled.
+- [SqsParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_SqsParameters.html): The custom parameters for EventBridge to use for a target that is an Amazon SQS fair or FIFO queue.
+- [Tag](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Tag.html): A key-value pair associated with an AWS resource.
+- [Target](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_Target.html): Targets are the resources to be invoked when a rule is triggered.
+- [UpdateConnectionApiKeyAuthRequestParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_UpdateConnectionApiKeyAuthRequestParameters.html): Contains the API key authorization parameters to use to update the connection.
+- [UpdateConnectionAuthRequestParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_UpdateConnectionAuthRequestParameters.html): Contains the additional parameters to use for the connection.
+- [UpdateConnectionBasicAuthRequestParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_UpdateConnectionBasicAuthRequestParameters.html): The Basic authorization parameters for the connection.
+- [UpdateConnectionOAuthClientRequestParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_UpdateConnectionOAuthClientRequestParameters.html): The OAuth authorization parameters to use for the connection.
+- [UpdateConnectionOAuthRequestParameters](https://docs.aws.amazon.com/eventbridge/latest/APIReference/API_UpdateConnectionOAuthRequestParameters.html): The OAuth request parameters to use for the connection.

@@ -1,0 +1,230 @@
+# Source: https://docs.inkeep.com/talk-to-your-agents/a2a
+
+# Talk to your agent via A2A (JSON-RPC) (/talk-to-your-agents/a2a)
+
+Use the Agent2Agent JSON-RPC protocol to send messages to your agent and receive results, with optional streaming.
+
+
+
+The A2A (Agent-to-Agent) endpoint lets third-party agents, agent platforms, or agent workspaces interact with your Inkeep Agent using a standard agent protocol.
+
+Here are some example platforms that you can add Inkeep Agents to:
+
+| Platform                                                                                                                                                                                                       | Description                                                                                             |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| **[Google Gemini Enterprise](https://cloud.google.com/gemini-enterprise/faq)**                                                                                                                                 | Bring‑your‑own A2A agents into an enterprise agentspace and orchestrate alongside Google/vendor agents. |
+| **[Microsoft Copilot Studio / Azure AI Foundry](https://microsoftlearning.github.io/mslearn-ai-agents/Instructions/06-multi-remote-agents-with-a2a.html)**                                                     | Copilots can invoke external A2A agents as peer services in multi‑agent flows.                          |
+| **[Salesforce Agentforce](https://architect.salesforce.com/fundamentals/agentic-patterns)**                                                                                                                    | Add third‑party A2A agents (e.g., via AgentExchange) and compose them in CRM workflows.                 |
+| **[SAP Joule](https://learning.sap.com/courses/boosting-ai-driven-business-transformation-with-joule-agents/enabling-interoperability-for-ai-agents)**                                                         | Federate non‑SAP A2A agents into SAP’s business agent fabric.                                           |
+| **[ServiceNow AI Agent Fabric](https://www.servicenow.com/community/now-assist-articles/introducing-ai-agent-fabric-enable-mcp-and-a2a-for-your-agentic/ta-p/3373907)**                                        | Discover and call external A2A agents within IT/business automations.                                   |
+| **[Atlassian Rovo](https://support.atlassian.com/atlassian-rovo-mcp-server/docs/getting-started-with-the-atlassian-remote-mcp-server/)**                                                                       | Configure Rovo to call external A2A agents for cross‑tool tasks.                                        |
+| **[Workday AI (Agent Gateway / ASOR)](https://investor.workday.com/2025-06-03-Workday-Announces-New-AI-Agent-Partner-Network-and-Agent-Gateway-to-Power-the-Next-Generation-of-Human-and-Digital-Workforces)** | Register external customer/partner A2A agents alongside Workday agents.                                 |
+
+<>
+  ## Authentication
+
+  Choose the authentication method:
+
+  <Tabs>
+    <Tab title="Using an API Key">
+      **Create an API Key:**
+
+      1. Open the Visual Builder Dashboard
+      2. Go to your Project → **API Keys**
+      3. Click **Create**, select the target agent
+      4. Copy the API key (it will be shown once) and store it securely
+
+      **Request Header:**
+
+      ```http
+      Authorization: Bearer <api_key>
+      ```
+    </Tab>
+
+    <Tab title="Without API key">
+      When running the API server locally with `pnpm dev`, authentication is automatically bypassed. You can use headers in the request instead:
+
+      **Request Headers:**
+
+      ```http
+      x-inkeep-tenant-id: <tenant-id>
+      x-inkeep-project-id: <project-id>
+      x-inkeep-agent-id: <agent-id>
+      ```
+
+      <Warning>
+        This mode is for development only. Never use in production as it bypasses all security checks.
+      </Warning>
+    </Tab>
+  </Tabs>
+
+  See [Authentication → Run API](/api-reference/authentication/run-api) for more details.
+</>
+
+## Endpoints
+
+* **Agent card discovery (agent or sub-agent-level):** `GET <INKEEP_AGENTS_API_URL>/run/agents/.well-known/agent.json`
+* **A2A protocol (agent or sub-agent-level):** `POST <INKEEP_AGENTS_API_URL>/run/agents/.well-known/agent.json`
+
+Notes:
+
+* If you supply `x-inkeep-sub-agent-id` in headers, requests target that specific Sub Agent. This is supported in development (or when using the bypass secret). With production API keys, requests always use the Agent's default Sub Agent.
+
+## Message Send (Blocking)
+
+* **Path:** `POST  <INKEEP_AGENTS_API_URL>/run/agents/a2a`
+* **Headers:** Per Authentication section (Standard API Key recommended)
+* **Body (JSON-RPC 2.0):**
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "message/send",
+  "id": 1,
+  "params": {
+    "message": {
+      "messageId": "msg-123",
+      "role": "user",
+      "parts": [
+        { "kind": "text", "text": "Hello!" }
+      ],
+      "contextId": "conv-123",
+      "kind": "message"
+    },
+    "configuration": {
+      "acceptedOutputModes": ["text", "text/plain"],
+      "blocking": true
+    }
+  }
+}
+```
+
+* **Success Response (Message):**
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "kind": "message",
+    "messageId": "auto-generated",
+    "role": "agent",
+    "parts": [ { "kind": "text", "text": "..." } ],
+    "taskId": "task-...",
+    "contextId": "conv-123"
+  },
+  "id": 1
+}
+```
+
+* **Transfer Case:** if the agent decides to transfer, the response contains a `task` with a transfer artifact:
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "kind": "task",
+    "id": "task-...",
+    "contextId": "conv-123",
+    "status": { "state": "completed", "timestamp": "..." },
+    "artifacts": [
+      {
+        "artifactId": "...",
+        "parts": [
+          { "kind": "data", "data": { "type": "transfer", "targetSubAgentId": "other-agent-id" } },
+          { "kind": "text", "text": "Transfer reason text" }
+        ]
+      }
+    ]
+  },
+  "id": 1
+}
+```
+
+## Message Send (Non-blocking)
+
+Set `configuration.blocking` to `false`. The server immediately returns a `task`, and you can poll or stream updates.
+
+* **Request:** same as above, with `"blocking": false`
+* **Response (Task):**
+
+```json
+{
+  "jsonrpc": "2.0",
+  "result": {
+    "kind": "task",
+    "id": "task-...",
+    "contextId": "conv-123",
+    "status": { "state": "completed", "timestamp": "..." },
+    "artifacts": [ { "artifactId": "...", "parts": [ { "kind": "text", "text": "..." } ] } ]
+  },
+  "id": 1
+}
+```
+
+## Streaming Messages (SSE)
+
+* **Path:** `POST /run/agents/a2a`
+* **Headers:** include `Accept: text/event-stream` plus Authentication headers
+* **Body (JSON-RPC 2.0):** same as blocking, but method `"message/stream"`
+
+```json
+{
+  "jsonrpc": "2.0",
+  "method": "message/stream",
+  "id": 2,
+  "params": {
+    "message": {
+      "messageId": "msg-456",
+      "role": "user",
+      "parts": [ { "kind": "text", "text": "Stream please" } ],
+      "contextId": "conv-123",
+      "kind": "message"
+    },
+    "configuration": {
+      "acceptedOutputModes": ["text", "text/plain"],
+      "blocking": false
+    }
+  }
+}
+```
+
+* **SSE Events (each line is an SSE `data:` payload containing JSON-RPC):**
+
+```text
+: keep-alive
+
+data: {"jsonrpc":"2.0","result":{"kind":"task","id":"task-...","contextId":"conv-123","status":{"state":"working","timestamp":"..."},"artifacts":[]},"id":2}
+
+data: {"jsonrpc":"2.0","result":{"kind":"message","messageId":"...","role":"agent","parts":[{"kind":"text","text":"..."}],"taskId":"task-...","contextId":"conv-123"},"id":2}
+
+data: {"jsonrpc":"2.0","result":{"kind":"task","id":"task-...","contextId":"conv-123","status":{"state":"completed","timestamp":"..."},"artifacts":[{"artifactId":"...","parts":[{"kind":"text","text":"..."}]}]},"id":2}
+```
+
+* **Transfer (streaming):** if a transfer is triggered, an SSE event with a JSON-RPC `result` of transfer details is sent, then the stream ends.
+
+## Task APIs
+
+* **Get task:** `POST /run/agents/a2a` with method `"tasks/get"` and params `{ "id": "task-..." }` → returns the `task`
+* **Cancel task:** `POST /run/agents/a2a` with method `"tasks/cancel"` and params `{ "id": "task-..." }` → returns `{ "success": true }`
+* **Resubscribe (SSE, mock):** `POST /run/agents/a2a` with method `"tasks/resubscribe"` and params `{ "taskId": "task-..." }` → SSE with a task event
+
+<Note>
+  Currently, `tasks/get` and `tasks/cancel` return stubbed responses, and `tasks/resubscribe` returns a mock SSE event. For live progress updates, use `message/stream`.
+</Note>
+
+## Agent Card Discovery
+
+* **Agent-level:** `GET /run/agents/.well-known/agent.json` (uses Agent's default Sub Agent)
+* **Agent-level (dev/bypass only):** Provide `x-inkeep-sub-agent-id` in headers to target a specific agent for discovery
+
+## Notes & Behavior
+
+* **contextId resolution:** The server first tries `task.context.conversationId` (derived from the request), then `params.message.metadata.conversationId`. Final fallback is `'default'`.
+* **Artifacts in responses:** Message/Task responses may include `artifacts[0].parts` as the agent's output parts.
+* **Errors (JSON-RPC):** Standard JSON-RPC error codes: `-32600`, `-32601`, `-32602`, `-32603`, `-32700`, plus A2A-specific `-3200x` codes.
+
+## Development Notes
+
+* **Base URL (local):** `http://localhost:3002`
+* **Route Mounting:** A2A routes are mounted under `/run/agents`; use `/run/agents/a2a` for RPC and `/run/agents/.well-known/agent.json` for discovery
+* **Streaming support:** Requires agent capabilities `streaming: true` in the agent card
