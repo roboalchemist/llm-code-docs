@@ -1159,3 +1159,6 @@ sites:
 - name: mlflow
   base_url: https://www.mlflow.org/
   description: mlflow documentation
+- name: modal
+  base_url: https://modal.com/
+  description: modal documentation
