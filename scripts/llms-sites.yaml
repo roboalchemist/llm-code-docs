@@ -1156,3 +1156,6 @@ sites:
 - name: weaviate
   base_url: https://docs.weaviate.io/
   description: weaviate documentation
+- name: mlflow
+  base_url: https://www.mlflow.org/
+  description: mlflow documentation
