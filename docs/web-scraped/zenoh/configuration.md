@@ -1,1151 +1,773 @@
-# Zenoh Configuration Reference
+# Zenoh Configuration Reference Guide
 
-# DEFAULT_CONFIG.json5
+## Table of Contents
 
+1. [Overview & File Format](#overview)
+2. [Node Identity & Metadata](#identity)
+3. [Mode](#mode)
+4. [Connect](#connect)
+5. [Listen](#listen)
+6. [Open (Session Open Behavior)](#open)
+7. [Scouting](#scouting)
+   - [Multicast Scouting](#multicast-scouting)
+   - [Gossip Scouting](#gossip-scouting)
+8. [Timestamping](#timestamping)
+9. [Queries](#queries)
+10. [Routing](#routing)
+11. [QoS Overwrite](#qos-overwrite)
+12. [Aggregation](#aggregation)
+13. [Namespace](#namespace)
+14. [Transport](#transport)
+    - [Unicast Transport](#unicast-transport)
+    - [Multicast Transport](#multicast-transport)
+    - [Link Layer](#link-layer)
+    - [Shared Memory](#shared-memory)
+    - [Authentication](#authentication)
+15. [Access Control (ACL)](#access-control)
+16. [Downsampling](#downsampling)
+17. [Low Pass Filter](#low-pass-filter)
+18. [Admin Space](#admin-space)
+19. [Plugins](#plugins)
+20. [Configuration Decision Guide](#decision-guide)
+
+---
+
+## Overview & File Format {#overview}
+
+Zenoh configuration files use JSON5 format (`.json5`), which supports comments (`//`), trailing commas, and unquoted keys. YAML (`.yaml`/`.yml`) is also supported. TOML is supported as an unstable feature.
+
+Pass the config file to `zenohd` with `-c my_config.json5`, or load programmatically via `Config::from_file()`.
+
+**Key concepts:**
+- Many options accept a **mode-dependent value**: either a single value applying to all modes, or an object with `router`, `peer`, and `client` keys supplying per-mode values.
+- Options commented out with `//` show valid structure but are disabled by default.
+- `null` means "not set / use default."
+
+---
+
+## Node Identity & Metadata {#identity}
+
+### `id`
+
+| Property | Value |
+|---|---|
+| **Path** | `id` |
+| **Type** | String (hex unsigned 128-bit integer, no leading zeros) |
+| **Default** | Random u128 generated at startup |
+| **Example** | `"1234567890abcdef"` |
+
+**What it controls:** The unique identifier of this zenoh node across the entire zenoh network. Used for routing decisions and visible in the admin space at `@/<zid>/router` (or `peer`/`client`).
+
+**When to change:** Set explicitly when you need deterministic node identity—for example, when another node's ACL or routing policy references this node by ZID, or when you need reproducible testing environments.
+
+**Tradeoffs:**
+- ✅ Deterministic identity, useful for ACL rules referencing `zids`
+- ✅ Consistent admin space paths across restarts
+- ⚠️ **ZIDs must be globally unique.** Duplicate ZIDs in a network cause undefined routing behavior and may silently corrupt message delivery. Never copy a config file with a fixed `id` to multiple nodes without changing it.
+
+---
+
+### `metadata`
+
+| Property | Value |
+|---|---|
+| **Path** | `metadata` |
+| **Type** | Arbitrary JSON object |
+| **Default** | `{}` (empty) |
+| **Example** | `{ name: "edge-sensor-01", location: "building-A", role: "publisher" }` |
+
+**What it controls:** Human-readable metadata attached to this node. Not interpreted by zenoh itself. Exposed in the admin space at `@/<zid>/router` (or `peer`/`client`). Useful for fleet management, diagnostics, and monitoring tools.
+
+**When to change:** Always populate in production deployments for observability. Add any fields relevant to your operational context.
+
+**Tradeoffs:**
+- ✅ Visible in admin space for diagnostics with no runtime cost
+- ✅ Completely free-form; any JSON is valid
+- ℹ️ Not transmitted on the data plane; only in admin/scouting info
+
+---
+
+## Mode {#mode}
+
+### `mode`
+
+| Property | Value |
+|---|---|
+| **Path** | `mode` |
+| **Type** | String enum |
+| **Valid Values** | `"router"`, `"peer"`, `"client"` |
+| **Default** | `"peer"` |
+
+**What it controls:** The fundamental operational role of this zenoh node.
+
+| Mode | Description |
+|---|---|
+| `"router"` | Forwards data between peers and clients. Listens on well-known ports. Acts as a broker/relay. Participates in all routing protocols. |
+| `"peer"` | Full participant: publishes, subscribes, and can relay data to other directly-connected peers. Participates in gossip. Does not run linkstate by default. |
+| `"client"` | Lightweight consumer/producer. Connects to routers only. Does not relay data. Does not participate in gossip or multicast scouting (only initiates scout). |
+
+**When to change:**
+- Use `"router"` for infrastructure nodes (cloud VMs, gateways, brokers).
+- Use `"peer"` for devices that need direct P2P communication or can assist in local relay.
+- Use `"client"` for resource-constrained devices or applications that only need to talk to a router.
+
+**Tradeoffs:**
+
+| Mode | CPU/Memory | Connectivity | Routing participation |
+|---|---|---|---|
+| `router` | High | Listens + connects | Full (linkstate, gossip) |
+| `peer` | Medium | Listens (ephemeral port) + connects | Gossip, P2P |
+| `client` | Low | Connects only | None |
+
+---
+
+## Connect {#connect}
+
+Controls outbound connections to other zenoh nodes.
+
+### `connect.endpoints`
+
+| Property | Value |
+|---|---|
+| **Path** | `connect.endpoints` |
+| **Type** | Array of endpoint strings, or mode-dependent object |
+| **Default** | `[]` (empty) |
+| **Examples** | `["tcp/10.0.0.1:7447"]`, `{ router: ["tcp/router:7447"], peer: [] }` |
+
+**What it controls:** The list of remote endpoints this node attempts to connect to at startup. Supports TCP, UDP, TLS, QUIC, WebSocket, Unix sockets, and vSock. Endpoint URIs follow the pattern `<protocol>/<address>:<port>`.
+
+**Endpoint modifiers** (appended with `#`):
+- `iface=eth0` — bind outgoing connection to a specific interface (Linux only)
+- `so_sndbuf=65000;so_rcvbuf=65000` — TCP socket buffer sizes
+- `bind=192.168.0.1:0` — local bind address (incompatible with `iface`)
+- `dscp=0x08` — IP DSCP field for QoS marking
+- `retry_period_init_ms=5000;retry_period_max_ms=30000` — per-endpoint retry override
+
+**Link-level QoS modifiers** (appended with `?`):
+- `prio=6-7` — restrict this link to carrying only priority levels 6–7 (data_low, background)
+- `rel=0` — mark link as best-effort
+
+**When to change:** Set explicit endpoints when:
+- Multicast scouting is not available (e.g., cross-subnet, cloud)
+- You want to connect to a known router/peer deterministically
+- You need to disable discovery entirely and use static topology
+
+**Tradeoffs:**
+- ✅ Deterministic, works across subnets and firewalls
+- ✅ Can partition traffic across links by priority
+- ⚠️ Static topology—doesn't adapt to network changes without config update
+- ⚠️ Must be kept in sync with the remote's `listen.endpoints`
+
+---
+
+### `connect.timeout_ms`
+
+| Property | Value |
+|---|---|
+| **Path** | `connect.timeout_ms` |
+| **Type** | Integer (ms) or mode-dependent object |
+| **Default** | `{ router: -1, peer: -1, client: 0 }` |
+
+**What it controls:** How long the node waits for **all** configured `connect.endpoints` to be successfully connected before proceeding.
+
+| Value | Behavior |
+|---|---|
+| `0` | No retry; proceed immediately even if connections failed |
+| `-1` | Wait indefinitely until all connections are established |
+| `N > 0` | Wait up to N milliseconds |
+
+**When to change:**
+- Set to `-1` for routers and critical peers that must not start without their upstream connections.
+- Set to `0` for clients that should start immediately and reconnect in the background.
+- Set to a positive value (e.g., `30000`) for startup orchestration with a timeout.
+
+**Tradeoffs:**
+- `-1` guarantees connectivity before proceeding but can block startup indefinitely if peers are unavailable
+- `0` allows fast startup but may lose early publications/queries
+- Positive value provides a bounded startup delay
+
+---
+
+### `connect.exit_on_failure`
+
+| Property | Value |
+|---|---|
+| **Path** | `connect.exit_on_failure` |
+| **Type** | Boolean or mode-dependent object |
+| **Default** | `{ router: false, peer: false, client: true }` |
+
+**What it controls:** Whether the process exits if the `connect.timeout_ms` deadline is exceeded without all connections being established.
+
+**When to change:**
+- Set to `true` for clients in managed environments where a failed connection should trigger a restart (e.g., via systemd or Kubernetes).
+- Set to `false` for peers/routers that should continue operating in degraded mode.
+
+---
+
+### `connect.retry`
+
+Controls the exponential backoff behavior for reconnection attempts.
+
+#### `connect.retry.period_init_ms`
+
+| Property | Value |
+|---|---|
+| **Path** | `connect.retry.period_init_ms` |
+| **Type** | Integer (ms) or mode-dependent |
+| **Default** | `1000` |
+
+Initial wait before the first retry attempt.
+
+#### `connect.retry.period_max_ms`
+
+| Property | Value |
+|---|---|
+| **Path** | `connect.retry.period_max_ms` |
+| **Type** | Integer (ms) or mode-dependent |
+| **Default** | `4000` |
+
+Maximum interval between retries (cap for exponential backoff).
+
+#### `connect.retry.period_increase_factor`
+
+| Property | Value |
+|---|---|
+| **Path** | `connect.retry.period_increase_factor` |
+| **Type** | Float |
+| **Default** | `2.0` |
+
+Multiplier applied to the retry interval after each failed attempt. With defaults: 1s → 2s → 4s (capped).
+
+**When to change retry parameters:**
+- Reduce `period_max_ms` (e.g., `2000`) for fast-reconnecting sensors.
+- Increase `period_max_ms` (e.g., `60000`) for cloud/WAN connections to reduce connection storm during outages.
+- Set `period_increase_factor: 1.0` for a fixed-interval retry (no backoff).
+
+---
+
+## Listen {#listen}
+
+Controls which local endpoints this node binds and accepts connections on.
+
+### `listen.endpoints`
+
+| Property | Value |
+|---|---|
+| **Path** | `listen.endpoints` |
+| **Type** | Array of endpoint strings, or mode-dependent object |
+| **Default** | `{ router: ["tcp/[::]:7447"], peer: ["tcp/[::]:0"] }` |
+
+**What it controls:** The local addresses this node listens on for incoming connections.
+
+- `[::]:7447` — all interfaces, IPv4+IPv6, port 7447 (router well-known port)
+- `[::]:0` — all interfaces, OS-assigned ephemeral port (peer default)
+- `0.0.0.0:7447` — IPv4 only
+- `tcp/0.0.0.0:7447#iface=eth0` — bind only to eth0
+
+Same modifier syntax as `connect.endpoints` applies (`#iface`, `#so_sndbuf`, `?prio`, etc.).
+
+**When to change:**
+- Clients typically do not listen; set `endpoints: []` for pure clients.
+- Bind to a specific interface/IP for security (avoid listening on untrusted interfaces).
+- Use a fixed port for firewall rules.
+- Use Unix sockets (`unixsock-stream`) for local IPC.
+
+**Tradeoffs:**
+- Listening on `[::]:0` (peer default) makes peer discoverable but uses an unpredictable port
+- Listening on a fixed port is firewall-friendly but requires port uniqueness per host
+- Not listening at all (client mode) reduces attack surface but requires a router
+
+---
+
+### `listen.timeout_ms`
+
+| Property | Value |
+|---|---|
+| **Path** | `listen.timeout_ms` |
+| **Type** | Integer (ms) or mode-dependent |
+| **Default** | `0` |
+
+**What it controls:** How long to wait for all listen endpoints to be successfully bound. `0` means try once with no retry. `-1` means wait indefinitely.
+
+**When to change:** Set to `-1` for routers that must bind before accepting connections, or when the desired port may be temporarily unavailable (e.g., TIME_WAIT state).
+
+---
+
+### `listen.exit_on_failure`
+
+| Property | Value |
+|---|---|
+| **Path** | `listen.exit_on_failure` |
+| **Type** | Boolean or mode-dependent |
+| **Default** | `true` |
+
+**What it controls:** Whether the process exits if any listen endpoint fails to bind within `listen.timeout_ms`.
+
+**When to change:** Set to `false` for resilient deployments where partial listen failure is acceptable.
+
+---
+
+### `listen.retry`
+
+Same structure and semantics as `connect.retry`. Controls backoff when retrying a failed listen bind.
+
+| Sub-option | Default |
+|---|---|
+| `period_init_ms` | `1000` |
+| `period_max_ms` | `4000` |
+| `period_increase_factor` | `2.0` |
+
+---
+
+## Open (Session Open Behavior) {#open}
+
+### `open.return_conditions.connect_scouted`
+
+| Property | Value |
+|---|---|
+| **Path** | `open.return_conditions.connect_scouted` |
+| **Type** | Boolean |
+| **Default** | `true` |
+
+**What it controls:** When `true`, `zenoh::open()` blocks until the session has connected to all scouted peers and routers before returning to the application.
+
+**When to change:** Set to `false` for applications that must start immediately (e.g., embedded systems with tight boot deadlines) and can tolerate losing early messages.
+
+**Tradeoffs:**
+- `true`: Safer startup, first publications are more likely delivered; slight startup delay
+- `false`: Faster startup; early publications/queries to scouted nodes may be lost
+
+---
+
+### `open.return_conditions.declares`
+
+| Property | Value |
+|---|---|
+| **Path** | `open.return_conditions.declares` |
+| **Type** | Boolean |
+| **Default** | `true` |
+
+**What it controls:** When `true`, `zenoh::open()` waits to receive initial declarations (subscriber/publisher/queryable info) from connected peers before returning.
+
+**When to change:** Set to `false` if startup time is critical; but note this may cause extra redundant traffic as peers re-declare interests.
+
+---
+
+## Scouting {#scouting}
+
+Scouting is zenoh's peer discovery mechanism. Two mechanisms exist: UDP multicast and gossip (over established sessions).
+
+### `scouting.timeout`
+
+| Property | Value |
+|---|---|
+| **Path** | `scouting.timeout` |
+| **Type** | Integer (ms) |
+| **Default** | `3000` |
+| **Applies to** | Client mode |
+
+**What it controls:** How long a **client** waits for a router to be found via scouting before failing. If no router is found within this window, the client connect attempt fails (subject to `connect.exit_on_failure`).
+
+**When to change:**
+- Increase (e.g., `10000`) in environments where router startup is slow or unreliable
+- Decrease (e.g., `1000`) for fast-fail applications that have a fallback
+
+---
+
+### `scouting.delay`
+
+| Property | Value |
+|---|---|
+| **Path** | `scouting.delay` |
+| **Type** | Integer (ms) |
+| **Default** | `500` |
+| **Applies to** | Peer mode |
+
+**What it controls:** How long a **peer** dedicates to scouting for other remote peers before proceeding with other operations.
+
+**When to change:**
+- Increase for larger or slower networks where peer discovery takes longer
+- Decrease for fast-startup peers in a known topology
+
+---
+
+## Multicast Scouting {#multicast-scouting}
+
+### `scouting.multicast.enabled`
+
+| Property | Value |
+|---|---|
+| **Path** | `scouting.multicast.enabled` |
+| **Type** | Boolean |
+| **Default** | `true` |
+
+**What it controls:** Enables UDP multicast-based peer discovery. When enabled, this node sends and receives multicast scout packets to automatically discover other zenoh nodes on the local network segment.
+
+**When to change:** Disable when:
+- Operating in a multicast-hostile environment (many cloud VMs, some VLANs, VPNs)
+- All endpoints are statically configured and discovery is unnecessary
+- You want to prevent unintended peer discovery
+
+**Tradeoffs:**
+- `true`: Zero-configuration local discovery; may cause unwanted connections in shared networks
+- `false`: No automatic discovery; all peers must be explicitly configured in `connect.endpoints`
+
+---
+
+### `scouting.multicast.address`
+
+| Property | Value |
+|---|---|
+| **Path** | `scouting.multicast.address` |
+| **Type** | String (`IP:port`) |
+| **Default** | `"224.0.0.224:7446"` |
+
+**What it controls:** The UDP multicast group address and port used for scouting traffic.
+
+**When to change:** Change when:
+- `224.0.0.224` conflicts with another application on the network
+- Your network policy restricts which multicast groups are allowed
+- You want to isolate separate zenoh networks on the same L2 segment (use different addresses per network)
+
+---
+
+### `scouting.multicast.interface`
+
+| Property | Value |
+|---|---|
+| **Path** | `scouting.multicast.interface` |
+| **Type** | String |
+| **Default** | `"auto"` |
+
+**What it controls:** The network interface to use for multicast scouting. `"auto"` lets zenoh select the best available interface automatically.
+
+**When to change:** Specify explicitly (e.g., `"eth0"`, `"wlan0"`) when:
+- The host has multiple interfaces and you want scouting on a specific one
+- `auto` selects the wrong interface (e.g., selects loopback or VPN adapter)
+
+---
+
+### `scouting.multicast.ttl`
+
+| Property | Value |
+|---|---|
+| **Path** | `scouting.multicast.ttl` |
+| **Type** | Integer (1–255) |
+| **Default** | `1` |
+
+**What it controls:** IP Time-to-Live on multicast scout packets. TTL 1 limits packets to the local subnet only (packets don't cross routers).
+
+**When to change:**
+- Increase (e.g., `4`) only if you want multicast scouting to span multiple hops (requires network infrastructure support for multicast routing, which is rare)
+- Keep at `1` for security (prevents scouting traffic from leaking beyond the local segment)
+
+**Tradeoffs:**
+- `1`: Secure, local-only scouting
+- `>1`: Cross-subnet scouting (complex, rarely needed; use gossip instead for multi-hop)
+
+---
+
+### `scouting.multicast.autoconnect`
+
+| Property | Value |
+|---|---|
+| **Path** | `scouting.multicast.autoconnect` |
+| **Type** | Array of strings, or mode-dependent object |
+| **Default** | `{ router: [], peer: ["router", "peer"], client: ["router"] }` |
+| **Valid values** | Subset of `["router", "peer", "client"]` |
+
+**What it controls:** Which types of discovered zenoh nodes this node automatically establishes a session with upon multicast discovery.
+
+| Default behavior | |
+|---|---|
+| Router | Does not autoconnect to anything via multicast (routers are usually explicitly connected) |
+| Peer | Autoconnects to discovered routers and peers |
+| Client | Autoconnects only to discovered routers |
+
+**When to change:**
+- Set `peer: []` to disable automatic peer-to-peer connections and force all traffic through routers
+- Set `router: ["router"]` to allow router-to-router connections via multicast (unusual)
+- Add `"client"` to allow connections to discovered clients (generally not recommended)
+
+---
+
+### `scouting.multicast.autoconnect_strategy`
+
+| Property | Value |
+|---|---|
+| **Path** | `scouting.multicast.autoconnect_strategy` |
+| **Type** | String enum or mode/target-dependent object |
+| **Default** | `{ peer: { to_router: "always", to_peer: "always" } }` |
+| **Valid values** | `"always"`, `"greater-zid"` |
+
+**What it controls:** Strategy to avoid redundant bidirectional connections when two nodes discover each other simultaneously.
+
+| Strategy | Behavior |
+|---|---|
+| `"always"` | Both nodes attempt to connect; zenoh deduplicates the resulting sessions |
+| `"greater-zid"` | Only the node with the numerically greater ZID initiates; prevents redundant connections |
+
+**When to change:** Use `"greater-zid"` in dense peer networks to halve the number of simultaneous connection attempts. Do **not** use `"greater-zid"` if one side is behind NAT (it may not be reachable).
+
+---
+
+### `scouting.multicast.listen`
+
+| Property | Value |
+|---|---|
+| **Path** | `scouting.multicast.listen` |
+| **Type** | Boolean or mode-dependent |
+| **Default** | `true` for router and peer; `false` for client |
+
+**What it controls:** Whether this node listens for incoming scout messages on the multicast group and replies with its own locator information.
+
+**When to change:** Set to `false` to make a node "invisible" to multicast scouting while still being able to initiate scouting itself.
+
+---
+
+## Gossip Scouting {#gossip-scouting}
+
+Gossip propagates discovery information over already-established sessions. Clients do not participate in gossip.
+
+### `scouting.gossip.enabled`
+
+| Property | Value |
+|---|---|
+| **Path** | `scouting.gossip.enabled` |
+| **Type** | Boolean |
+| **Default** | `true` |
+
+**What it controls:** Enables gossip-based discovery. When enabled, nodes share topology information (who else they know about) with their direct connections, propagating discovery beyond the local L2 segment.
+
+**When to change:** Disable when:
+- All topology is statically configured
+- You want to minimize control-plane overhead in very constrained environments
+
+---
+
+### `scouting.gossip.multihop`
+
+| Property | Value |
+|---|---|
+| **Path** | `scouting.gossip.multihop` |
+| **Type** | Boolean |
+| **Default** | `false` |
+
+**What it controls:** When `true`, gossip information is propagated through multiple hops, eventually reaching all nodes in the subsystem even without direct connectivity between all pairs. When `false`, gossip only goes one hop (direct neighbors).
+
+**When to change:** Enable when using `linkstate` routing mode, where not all nodes have direct connections. Required for full topology discovery in a multi-hop linkstate network.
+
+**Tradeoffs:**
+- `false`: Lower gossip traffic, scales better; but discovery limited to direct neighbors
+- `true`: Complete topology discovery; more traffic; lower scalability in large networks
+
+---
+
+### `scouting.gossip.target`
+
+| Property | Value |
+|---|---|
+| **Path** | `scouting.gossip.target` |
+| **Type** | Array or mode-dependent object |
+| **Default** | `{ router: ["router", "peer"], peer: ["router", "peer"] }` |
+
+**What it controls:** Which types of nodes this node sends gossip messages to. Controls the direction of gossip propagation.
+
+**When to change:** Restrict to reduce gossip traffic in large deployments. For example, peers in a client-only leaf network could target only `["router"]`.
+
+---
+
+### `scouting.gossip.autoconnect`
+
+| Property | Value |
+|---|---|
+| **Path** | `scouting.gossip.autoconnect` |
+| **Type** | Array or mode-dependent object |
+| **Default** | `{ router: [], peer: ["router", "peer"] }` |
+
+**What it controls:** Which discovered node types to automatically connect to based on gossip information (nodes learned about indirectly, not seen directly via multicast).
+
+**When to change:** Same considerations as `scouting.multicast.autoconnect`. Note that clients are not included because clients don't participate in gossip.
+
+---
+
+### `scouting.gossip.autoconnect_strategy`
+
+| Property | Value |
+|---|---|
+| **Path** | `scouting.gossip.autoconnect_strategy` |
+| **Type** | String enum or mode/target-dependent object |
+| **Default** | `{ peer: { to_router: "always", to_peer: "always" } }` |
+| **Valid values** | `"always"`, `"greater-zid"` |
+
+Same semantics as `scouting.multicast.autoconnect_strategy` but applied to gossip-discovered nodes.
+
+---
+
+## Timestamping {#timestamping}
+
+### `timestamping.enabled`
+
+| Property | Value |
+|---|---|
+| **Path** | `timestamping.enabled` |
+| **Type** | Boolean or mode-dependent object |
+| **Default** | `{ router: true, peer: false, client: false }` |
+
+**What it controls:** When enabled, zenoh automatically attaches a HLC (Hybrid Logical Clock) timestamp to any data message that doesn't already have one before forwarding it.
+
+**When to change:** Enable on peers and clients when:
+- Using the storage manager plugin with replication (timestamps are required for conflict resolution)
+- Your application logic needs timestamps on all messages
+- You need consistent causal ordering across distributed publishers
+
+**Tradeoffs:**
+- `true`: All messages have timestamps; small overhead (timestamp attachment + HLC maintenance); required for distributed storage replication
+- `false`: No overhead; messages without timestamps pass through unchanged
+
+---
+
+### `timestamping.drop_future_timestamp`
+
+| Property | Value |
+|---|---|
+| **Path** | `timestamping.drop_future_timestamp` |
+| **Type** | Boolean |
+| **Default** | `false` |
+
+**What it controls:** What happens when a message arrives with a timestamp in the future (indicates clock skew between nodes). When `false`, the timestamp is replaced with the current time (retimestamped). When `true`, the message is dropped entirely.
+
+**When to change:** Set to `true` in security-sensitive environments where future timestamps could indicate message replay attacks or clock manipulation.
+
+**Tradeoffs:**
+- `false`: Tolerant of clock skew; all messages delivered
+- `true`: Strict; messages with future timestamps lost; requires accurate NTP across all nodes
+
+---
+
+## Queries {#queries}
+
+### `queries_default_timeout`
+
+| Property | Value |
+|---|---|
+| **Path** | `queries_default_timeout` |
+| **Type** | Integer (ms) |
+| **Default** | `10000` (10 seconds) |
+
+**What it controls:** The default timeout applied to `session.get()` queries if the application does not specify one explicitly. After this timeout, no more replies are accepted for the query.
+
+**When to change:**
+- Reduce (e.g., `2000`) for latency-sensitive query/reply applications
+- Increase for queries that may trigger slow storage lookups
+- Applications should generally set per-query timeouts explicitly rather than relying on this default
+
+---
+
+## Routing {#routing}
+
+### `routing.router.peers_failover_brokering`
+
+| Property | Value |
+|---|---|
+| **Path** | `routing.router.peers_failover_brokering` |
+| **Type** | Boolean |
+| **Default** | `true` |
+| **Applies to** | Router mode |
+
+**What it controls:** When `true`, a router detects if two peers connected to it are not directly connected to each other, and if so, the router will forward data between them (acting as a broker/proxy for that peer-to-peer traffic). Requires gossip discovery to be enabled with peers configured to gossip to routers.
+
+**When to change:** Set to `false` when:
+- You explicitly want to prevent the router from brokering peer-to-peer traffic
+- All peers are directly connected to each other and brokering adds unnecessary overhead
+
+**Tradeoffs:**
+- `true`: Resilience—peers can communicate through the router even without direct connectivity; adds latency through the router hop
+- `false`: Peers must be directly reachable; potentially lower latency for direct connections
+
+---
+
+### `routing.peer.mode`
+
+| Property | Value |
+|---|---|
+| **Path** | `routing.peer.mode` |
+| **Type** | String enum |
+| **Valid Values** | `"peer_to_peer"`, `"linkstate"` |
+| **Default** | `"peer_to_peer"` |
+| **Applies to** | Peer mode |
+
+**What it controls:** The routing algorithm used by peers.
+
+| Mode | Description |
+|---|---|
+| `"peer_to_peer"` | Each peer only routes to nodes it is directly connected to. Simple, low overhead. |
+| `"linkstate"` | Peers exchange full topology information (link-state advertisements). Enables multi-hop routing through peers without a central router. Requires gossip multihop enabled. |
+
+**⚠️ Important:** All peers and routers in a subsystem must use the same routing mode.
+
+**When to change:** Use `"linkstate"` when:
+- You want a fully decentralized network with no routers
+- Peers are not all directly connected but need to route through each other
+- You require dynamic path selection based on link weights
+
+**Tradeoffs:**
+- `peer_to_peer`: Simple, scalable, low overhead; but requires direct connectivity or a router for relay
+- `linkstate`: Full mesh routing without routers; more control-plane overhead; requires consistent configuration; more complex
+
+---
+
+### `routing.router.linkstate.transport_weights`
+
+| Property | Value |
+|---|---|
+| **Path** | `routing.router.linkstate.transport_weights` |
+| **Type** | Array of `{ dst_zid: string, weight: integer }` |
+| **Default** | `[]` (empty; all links default to weight 100) |
+
+**What it controls:** Assigns routing weights to outgoing links in linkstate mode. Lower weight = preferred path. If both endpoints specify weights, the greater value is used. If neither specifies, weight 100 is used.
+
+**When to change:** Use to prefer high-bandwidth or low-latency links over expensive WAN links in linkstate topology.
+
+**Example:**
 ```json5
-/// This file attempts to list and document available configuration elements.
-/// For a more complete view of the configuration's structure, check out `zenoh/src/config.rs`'s `Config` structure.
-/// Note that the values here are correctly typed, but may not be sensible, so copying this file to change only the parts that matter to you is not good practice.
-{
-  /// The identifier (as unsigned 128bit integer in hexadecimal lowercase - leading zeros are not accepted)
-  /// that zenoh runtime will use.
-  /// If not set, a random unsigned 128bit integer will be used.
-  /// WARNING: this id must be unique in your zenoh network.
-  // id: "1234567890abcdef",
-
-  /// The node's mode (router, peer or client)
-  mode: "peer",
-
-  /// The node's metadata (name, location, DNS name, etc.) Arbitrary JSON data not interpreted by zenoh and available in admin space @/<zid>/router, @/<zid>/peer or @/<zid>/client
-  metadata: {
-    name: "strawberry",
-    location: "Penny Lane",
-  },
-
-  /// Which endpoints to connect to. E.g. tcp/localhost:7447.
-  /// By configuring the endpoints, it is possible to tell zenoh which router/peer to connect to at startup.
-  ///
-  /// For TCP/UDP on Linux, it is possible additionally specify the interface to be connected to:
-  /// E.g. tcp/192.168.0.1:7447#iface=eth0, for connect only if the IP address is reachable via the interface eth0
-  ///
-  /// It is also possible to specify a priority range and/or a reliability setting to be used on the link.
-  /// For example `tcp/localhost?prio=6-7;rel=0` assigns priorities "data_low" and "background" to the established link.
-  ///
-  /// For TCP and TLS links, it is possible to specify the TCP buffer sizes:
-  /// E.g. tcp/192.168.0.1:7447#so_sndbuf=65000;so_rcvbuf=65000
-  /// For TCP, UDP, Quic and TLS links, it is possible to specify a `bind` address for the local socket:
-  /// E.g. tcp/192.168.0.1:7447#bind=192.168.0.1:0
-  ///  Note!: Currently it is unsupported to specify both `bind` and `iface`.
-  ///
-  /// For TCP/UDP links, it's possible to specify the DSCP field of the IP header:
-  /// E.g. tcp/192.168.0.1:7447#dscp=0x08
-  connect: {
-    /// timeout waiting for all endpoints connected (0: no retry, -1: infinite timeout)
-    /// Accepts a single value (e.g. timeout_ms: 0)
-    /// or different values for router, peer and client (e.g. timeout_ms: { router: -1, peer: -1, client: 0 }).
-    timeout_ms: { router: -1, peer: -1, client: 0 },
-
-    /// The list of endpoints to connect to.
-    /// Accepts a single list (e.g. endpoints: ["tcp/10.10.10.10:7447", "tcp/11.11.11.11:7447"])
-    /// or different lists for router, peer and client (e.g. endpoints: { router: ["tcp/10.10.10.10:7447"], peer: ["tcp/11.11.11.11:7447"] }).
-    ///
-    /// See https://docs.rs/zenoh/latest/zenoh/config/struct.EndPoint.html
-    endpoints: [
-      // "<proto>/<address>"
-    ],
-
-    /// Global connect configuration,
-    /// Accepts a single value or different values for router, peer and client.
-    /// The configuration can also be specified for the separate endpoint
-    /// it will override the global one
-    /// E.g. tcp/192.168.0.1:7447#retry_period_init_ms=20000;retry_period_max_ms=10000"
-
-    /// exit from application, if timeout exceed
-    exit_on_failure: { router: false, peer: false, client: true },
-    /// connect establishing retry configuration
-    retry: {
-      /// initial wait timeout until next connect try
-      period_init_ms: 1000,
-      /// maximum wait timeout until next connect try
-      period_max_ms: 4000,
-      /// increase factor for the next timeout until nexti connect try
-      period_increase_factor: 2,
-    },
-  },
-
-  /// Which endpoints to listen on. E.g. tcp/0.0.0.0:7447.
-  /// By configuring the endpoints, it is possible to tell zenoh which are the endpoints that other routers,
-  /// peers, or client can use to establish a zenoh session.
-  ///
-  /// For TCP/UDP on Linux, it is possible additionally specify the interface to be listened to:
-  /// E.g. tcp/0.0.0.0:7447#iface=eth0, for listen connection only on eth0
-  ///
-  /// It is also possible to specify a priority range and/or a reliability setting to be used on the link.
-  /// For example `tcp/localhost?prio=6-7;rel=0` assigns priorities "data_low" and "background" to the established link.
-  ///
-  /// For TCP and TLS links, it is possible to specify the TCP buffer sizes:
-  /// E.g. tcp/192.168.0.1:7447#so_sndbuf=65000;so_rcvbuf=65000
-  ///
-  /// For TCP/UDP links, it's possible to specify the DSCP field of the IP header:
-  /// E.g. tcp/192.168.0.1:7447#dscp=0x08
-  listen: {
-    /// timeout waiting for all listen endpoints (0: no retry, -1: infinite timeout)
-    /// Accepts a single value (e.g. timeout_ms: 0)
-    /// or different values for router, peer and client (e.g. timeout_ms: { router: -1, peer: -1, client: 0 }).
-    timeout_ms: 0,
-
-    /// The list of endpoints to listen on.
-    /// Accepts a single list (e.g. endpoints: ["tcp/[::]:7447", "udp/[::]:7447"])
-    /// or different lists for router, peer and client (e.g. endpoints: { router: ["tcp/[::]:7447"], peer: ["tcp/[::]:0"] }).
-    ///
-    /// See https://docs.rs/zenoh/latest/zenoh/config/struct.EndPoint.html
-    endpoints: { router: ["tcp/[::]:7447"], peer: ["tcp/[::]:0"] },
-
-    /// Global listen configuration,
-    /// Accepts a single value or different values for router, peer and client.
-    /// The configuration can also be specified for the separate endpoint
-    /// it will override the global one
-    /// E.g. tcp/192.168.0.1:7447#exit_on_failure=false;retry_period_max_ms=1000"
-
-    /// exit from application, if timeout exceed
-    exit_on_failure: true,
-    /// listen retry configuration
-    retry: {
-      /// initial wait timeout until next try
-      period_init_ms: 1000,
-      /// maximum wait timeout until next try
-      period_max_ms: 4000,
-      /// increase factor for the next timeout until next try
-      period_increase_factor: 2,
-    },
-  },
-
-  /// Configure the session open behavior.
-  open: {
-    /// Configure the conditions to be met before session open returns.
-    return_conditions: {
-      /// Session open waits to connect to scouted peers and routers before returning.
-      /// When set to false, first publications and queries after session open from peers may be lost.
-      connect_scouted: true,
-      /// Session open waits to receive initial declares from connected peers before returning.
-      /// Setting to false may cause extra traffic at startup from peers.
-      declares: true,
-    },
-  },
-
-  /// Configure the scouting mechanisms and their behaviours
-  scouting: {
-    /// In client mode, the period in milliseconds dedicated to scouting for a router before failing.
-    timeout: 3000,
-    /// In peer mode, the maximum period in milliseconds dedicated to scouting remote peers before attempting other operations.
-    delay: 500,
-    /// The multicast scouting configuration.
-    multicast: {
-      /// Whether multicast scouting is enabled or not
-      enabled: true,
-      /// The socket which should be used for multicast scouting
-      address: "224.0.0.224:7446",
-      /// The network interface which should be used for multicast scouting
-      interface: "auto", // If not set or set to "auto" the interface if picked automatically
-      /// The time-to-live on multicast scouting packets
-      ttl: 1,
-      /// Which type of Zenoh instances to automatically establish sessions with upon discovery on UDP multicast.
-      /// Accepts a single value (e.g. autoconnect: ["router", "peer"]) which applies whatever the configured "mode" is,
-      /// or different values for router, peer or client mode (e.g. autoconnect: { router: [], peer: ["router", "peer"] }).
-      /// Each value is a list of: "peer", "router" and/or "client".
-      autoconnect: { router: [], peer: ["router", "peer"], client: ["router"] },
-      /// Strategy for autoconnection, mainly to avoid nodes connecting to each other redundantly.
-      /// Possible options are:
-      /// - "always": always attempt to autoconnect, may result in redundant connections.
-      /// - "greater-zid": attempt to connect to another node only if its own zid is greater than the other's.
-      ///   If both nodes use this strategy, only one will attempt the connection.
-      ///   This strategy may not be suited if one of the nodes is not reachable by the other one, for example
-      ///   because of a private IP.
-      /// Accepts a single value (e.g. autoconnect: "always") which applies whatever node would be auto-connected to,
-      /// or different values for router and/or peer depending on the type of node detected
-      /// (e.g. autoconnect_strategy : { to_router:  "always", to_peer: "greater-zid" }),
-      /// or different values for router or peer mode
-      /// (e.g. autoconnect_strategy : { peer: { to_router:  "always", to_peer: "greater-zid" } }).
-      autoconnect_strategy: { peer: { to_router: "always", to_peer: "always" } },
-      /// Whether or not to listen for scout messages on UDP multicast and reply to them.
-      listen: true,
-    },
-    /// The gossip scouting configuration. Note that instances in "client" mode do not participate in gossip.
-    gossip: {
-      /// Whether gossip scouting is enabled or not
-      enabled: true,
-      /// When true, gossip scouting information are propagated multiple hops to all nodes in the local network.
-      /// When false, gossip scouting information are only propagated to the next hop.
-      /// Activating multihop gossip implies more scouting traffic and a lower scalability.
-      /// It mostly makes sense when using "linkstate" routing mode where all nodes in the subsystem don't have
-      /// direct connectivity with each other.
-      multihop: false,
-      /// Which type of Zenoh instances to send gossip messages to.
-      /// Accepts a single value (e.g. target: ["router", "peer"]) which applies whatever the configured "mode" is,
-      /// or different values for router or peer mode (e.g. target: { router: ["router", "peer"], peer: ["router"] }).
-      /// Each value is a list of "peer" and/or "router".
-      target: { router: ["router", "peer"], peer: ["router", "peer"]},
-      /// Which type of Zenoh instances to automatically establish sessions with upon discovery on gossip.
-      /// Accepts a single value (e.g. autoconnect: ["router", "peer"]) which applies whatever the configured "mode" is,
-      /// or different values for router or peer mode (e.g. autoconnect: { router: [], peer: ["router", "peer"] }).
-      /// Each value is a list of: "peer" and/or "router".
-      autoconnect: { router: [], peer: ["router", "peer"] },
-      /// Strategy for autoconnection, mainly to avoid nodes connecting to each other redundantly.
-      /// Possible options are:
-      /// - "always": always attempt to autoconnect, may result in redundant connections.
-      /// - "greater-zid": attempt to connect to another node only if its own zid is greater than the other's.
-      ///   If both nodes use this strategy, only one will attempt the connection.
-      ///   This strategy may not be suited if one of the nodes is not reachable by the other one, for example
-      ///   because of a private IP.
-      /// Accepts a single value (e.g. autoconnect: "always") which applies whatever node would be auto-connected to,
-      /// or different values for router and/or peer depending on the type of node detected
-      /// (e.g. autoconnect_strategy : { to_router:  "always", to_peer: "greater-zid" }),
-      /// or different values for router or peer mode
-      /// (e.g. autoconnect_strategy : { peer: { to_router:  "always", to_peer: "greater-zid" } }).
-      autoconnect_strategy: { peer: { to_router: "always", to_peer: "always" } },
-    },
-  },
-
-  /// Configuration of data messages timestamps management.
-  timestamping: {
-    /// Whether data messages should be timestamped if not already.
-    /// Accepts a single boolean value or different values for router, peer and client.
-    enabled: { router: true, peer: false, client: false },
-    /// Whether data messages with timestamps in the future should be dropped or not.
-    /// If set to false (default), messages with timestamps in the future are retimestamped.
-    /// Timestamps are ignored if timestamping is disabled.
-    drop_future_timestamp: false,
-  },
-
-  /// The default timeout to apply to queries in milliseconds.
-  queries_default_timeout: 10000,
-
-  /// The routing strategy to use and it's configuration.
-  routing: {
-    /// The routing strategy to use in routers and it's configuration.
-    router: {
-      /// When set to true a router will forward data between two peers
-      /// directly connected to it if it detects that those peers are not
-      /// connected to each other.
-      /// The failover brokering only works if gossip discovery is enabled
-      /// and peers are configured with gossip target "router".
-      peers_failover_brokering: true,
-      /// Linkstate mode configuration.
-      linkstate: {
-        /// Weights of the outgoing transports in linkstate mode.
-        /// If none of the two endpoint nodes of a transport specifies its weight, a weight of 100 is applied.
-        /// If only one of the two endpoint nodes of a transport specifies its weight, the specified weight is applied.
-        /// If both endpoint nodes of a transport specify its weight, the greater weight is applied.
-        // transport_weights: [
-        //   { dst_zid: "1", weight: "10" },
-        //   { dst_zid: "2", weight: "200" },
-        // ]
-      },
-    },
-    /// The routing strategy to use in peers and it's configuration.
-    peer: {
-      /// The routing strategy to use in peers. ("peer_to_peer" or "linkstate").
-      /// This option needs to be set to the same value in all peers and routers of the subsystem.
-      mode: "peer_to_peer",
-      /// Linkstate mode configuration (only taken into account if mode == "linkstate").
-      linkstate: {
-        /// Weights of the outgoing transports in linkstate mode.
-        /// If none of the two endpoint nodes of a transport specifies its weight, a weight of 100 is applied.
-        /// If only one of the two endpoint nodes of a transport specifies its weight, the specified weight is applied.
-        /// If both endpoint nodes of a transport specify its weight, the greater weight is applied.
-        // transport_weights: [
-        //   { dst_zid: "1", weight: "10" },
-        //   { dst_zid: "2", weight: "200" },
-        // ]
-      },
-    },
-    /// The interests-based routing configuration.
-    /// This configuration applies regardless of the mode (router, peer or client).
-    interests: {
-      /// The timeout to wait for incoming interests declarations in milliseconds.
-      /// The expiration of this timeout implies that the discovery protocol might be incomplete,
-      /// leading to potential loss of messages, queries or liveliness tokens.
-      timeout: 10000,
-    },
-  },
-
-  // /// Overwrite QoS options for Zenoh messages by key expression (ignores Zenoh API QoS config for overwritten values)
-  // qos: {
-  //   /// Overwrite QoS options for PUT and DELETE messages
-  //   publication: [
-  //     {
-  //       /// PUT and DELETE messages on key expressions that are included by these key expressions
-  //       /// will have their QoS options overwritten by the given config.
-  //       key_exprs: ["demo/**", "example/key"],
-  //       /// Configurations that will be applied on the publisher.
-  //       /// Options that are supplied here will overwrite the configuration given in Zenoh API
-  //       config: {
-  //         congestion_control: "block",
-  //         priority: "data_high",
-  //         express: true,
-  //         reliability: "best_effort",
-  //         allowed_destination: "remote",
-  //       },
-  //     },
-  //   ],
-  //   /// Overwrite QoS options for messages sent and received from/to the network
-  //   /// This allows more fine grained rules (per network card, etc...) but is
-  //   /// less performant than the publication option above.
-  //   network: [
-  //     {
-  //       /// Optional Id, has to be unique.
-  //       id: "lo0_en0_qos_overwrite",
-  //       /// Optional list of ZIDs on which qos will be overwritten when communicating with.
-  //       // zids: ["38a4829bce9166ee"],
-  //       /// Optional list of interfaces, if not specified, will be applied to all interfaces.
-  //       interfaces: [
-  //         "lo0",
-  //         "en0",
-  //       ],
-  //       /// Optional list of link protocols. Transports with at least one of these links will have their qos overwritten.
-  //       /// If absent, the overwrite will be applied to all transports. An empty list is invalid.
-  //       link_protocols: [ "tcp", "udp", "tls", "quic", "ws", "serial", "unixsock-stream", "unixpipe", "vsock"],
-  //       /// List of message types to apply to (replies qos cannot be overwritten).
-  //       messages: [
-  //         "put", // put publications
-  //         "delete", // delete publications
-  //         "query", // get queries
-  //       ],
-  //       /// Optional list of data flows messages will be processed on ("egress" and/or "ingress").
-  //       /// If absent, the rules will be applied to both flows.
-  //       flows: ["egress", "ingress"],
-  //       /// QoS filter to apply to the messages matching this item.
-  //       qos: {
-  //         congestion_control: "drop",
-  //         priority: "data",
-  //         express: true,
-  //         reliability: "reliable",
-  //       },
-  //       /// payload_size range for the messages matching this item.
-  //       payload_size: "1000000..",
-  //       key_exprs: ["test/demo"],
-  //       overwrite: {
-  //         /// Optional new priority value, if not specified priority of the messages will stay unchanged.
-  //         priority: "real_time",
-  //         /// Optional new congestion control value, if not specified congestion control of the messages will stay unchanged.
-  //         congestion_control: "block",
-  //         /// Optional new express value, if not specified express flag of the messages will stay unchanged.
-  //         express: true,
-  //       },
-  //     },
-  //   ],
-  // },
-
-  // /// The declarations aggregation strategy.
-  // aggregation: {
-  //   /// A list of key-expressions for which all included subscribers will be aggregated into.
-  //   subscribers: [
-  //     // key_expression
-  //   ],
-  //   /// A list of key-expressions for which all included publishers will be aggregated into.
-  //   publishers: [
-  //     // key_expression
-  //   ],
-  // },
-
-  // /// Namespace prefix.
-  // /// If specified, all outgoing key expressions will be automatically prefixed with specified string,
-  // /// and all incoming key expressions will be stripped of specified prefix.
-  // /// The namespace prefix should satisfy all key expression constraints
-  // /// and additionally it can not contain wild characters ('*').
-  // /// Namespace is applied to the session.
-  // /// E. g. if session has a namespace of "1" then session.put("my/keyexpr", my_message),
-  // /// will put a message into 1/my/keyexpr. Same applies to all other operations within this session.
-  // namespace: "my/namespace",
-
-  // /// The downsampling declaration.
-  // downsampling: [
-  //   {
-  //     /// Optional Id, has to be unique
-  //     id: "wlan0egress",
-  //     /// Optional list of network interfaces messages will be processed on, the rest will be passed as is.
-  //     /// If absent, the rules will be applied to all interfaces. An empty list is invalid.
-  //     interfaces: [ "wlan0" ],
-  //     /// Optional list of link protocols. Transports with at least one of these links will have their messages filtered.
-  //     /// If absent, the rules will be applied to all transports. An empty list is invalid.
-  //     link_protocols: [ "tcp", "udp", "tls", "quic", "ws", "serial", "unixsock-stream", "unixpipe", "vsock"],
-  //     /// Optional list of data flows messages will be processed on ("egress" and/or "ingress").
-  //     /// If absent, the rules will be applied to both flows.
-  //     flows: ["ingress", "egress"],
-  //     /// List of message type on which downsampling will be applied. Must not be empty.
-  //     messages: [
-  //       /// Delete
-  //       "delete",
-  //       /// Put
-  //       "put",
-  //       /// Get
-  //       "query",
-  //       /// Queryable Reply to a Query
-  //       "reply",
-  //     ],
-  //     /// A list of downsampling rules: key_expression and the maximum frequency in Hertz
-  //     rules: [
-  //       { key_expr: "demo/example/zenoh-rs-pub", freq: 0.1 },
-  //     ],
-  //   },
-  // ],
-
-  // /// Configure access control (ACL) rules
-  // access_control: {
-  //   /// [true/false] acl will be activated only if this is set to true
-  //   "enabled": false,
-  //   /// [deny/allow] default permission is deny (even if this is left empty or not specified)
-  //   "default_permission": "deny",
-  //   /// Rule set for permissions allowing or denying access to key-expressions
-  //   "rules":
-  //   [
-  //     {
-  //       /// Id has to be unique within the rule set
-  //       "id": "rule1",
-  //       "messages": [
-  //         "put", "delete", "declare_subscriber",
-  //         "query", "reply", "declare_queryable",
-  //         "liveliness_token", "liveliness_query", "declare_liveliness_subscriber",
-  //       ],
-  //       "flows":["egress","ingress"],
-  //       "permission": "allow",
-  //       "key_exprs": [
-  //         "test/demo"
-  //       ],
-  //     },
-  //     {
-  //       "id": "rule2",
-  //       "messages": [
-  //         "put", "delete", "declare_subscriber",
-  //         "query", "reply", "declare_queryable",
-  //       ],
-  //       "flows":["ingress"],
-  //       "permission": "allow",
-  //       "key_exprs": [
-  //         "**"
-  //       ],
-  //     },
-  //   ],
-  //   /// List of combinations of subjects.
-  //   ///
-  //   /// If a subject property (i.e. username, certificate common name or interface) is empty
-  //   /// it is interpreted as a wildcard. Moreover, a subject property cannot be an empty list.
-  //   "subjects":
-  //   [
-  //     {
-  //       /// Id has to be unique within the subjects list
-  //       "id": "subject1",
-  //       /// Subjects can be interfaces
-  //       "interfaces": [
-  //         "lo0",
-  //         "en0",
-  //       ],
-  //       /// Subjects can be cert_common_names when using TLS or Quic
-  //       "cert_common_names": [
-  //         "example.zenoh.io"
-  //       ],
-  //       /// Subjects can be usernames when using user/password authentication
-  //       "usernames": [
-  //         "zenoh-example"
-  //       ],
-  //       /// This instance translates internally to this filter:
-  //       /// (interface="lo0" && cert_common_name="example.zenoh.io" && username="zenoh-example") ||
-  //       /// (interface="en0" && cert_common_name="example.zenoh.io" && username="zenoh-example")
-  //     },
-  //     {
-  //       "id": "subject2",
-  //       "interfaces": [
-  //         "lo0",
-  //         "en0",
-  //       ],
-  //       "cert_common_names": [
-  //         "example2.zenoh.io"
-  //       ],
-  //       /// This instance translates internally to this filter:
-  //       /// (interface="lo0" && cert_common_name="example2.zenoh.io") ||
-  //       /// (interface="en0" && cert_common_name="example2.zenoh.io")
-  //     },
-  //     {
-  //       "id": "subject3",
-  //       /// An empty subject combination is a wildcard
-  //     },
-  //     {
-  //       "id": "subject4",
-  //       /// link protocols can also be used to identify transports to filter messages on.
-  //       /// If absent, the rules will be applied to all transports. An empty list is invalid.
-  //       link_protocols: [ "tcp", "udp", "tls", "quic", "ws", "serial", "unixsock-stream", "unixpipe", "vsock"],
-  //       /// ZIDs can also be used to identify transports to filter messages on.
-  //       /// NOTE: ZID is not backed by an authentication mechanism, it can only be trusted for ACL if it is
-  //       ///       dynamically added/removed by eventual dedicated Zenoh mechanisms when transports are opened/closed.
-  //       ///       If managed manually in ACL config, can be useful for prototyping but should not be used in production!
-  //       zids: ["38a4829bce9166ee"],
-  //     },
-  //   ],
-  //   /// The policies list associates rules to subjects
-  //   "policies":
-  //   [
-  //     /// Each policy associates one or multiple rules to one or multiple subject combinations
-  //     {
-  //       /// Id is optional. If provided, it has to be unique within the policies list
-  //       "id": "policy1",
-  //       /// Rules and Subjects are identified with their unique IDs declared above
-  //       "rules": ["rule1"],
-  //       "subjects": ["subject1", "subject2"],
-  //     },
-  //     {
-  //       "rules": ["rule2"],
-  //       "subjects": ["subject3", "subject4"],
-  //     },
-  //   ]
-  // },
-
-  // low_pass_filter: [
-  //   {
-  //     /// Optional Id, has to be unique
-  //     "id": "filter1",
-  //     /// Optional list of network interfaces messages will be processed on, the rest will not be filtered.
-  //     /// If absent, the filter will be applied to all interfaces.
-  //     interfaces: [ "wlan0" ],
-  //     /// Optional list of link protocols. Transports with at least one of these links will have their messages filtered.
-  //     /// If absent, the rule will be applied to all transports. An empty list is invalid.
-  //     link_protocols: [ "tcp", "udp", "tls", "quic", "ws", "serial", "unixsock-stream", "unixpipe", "vsock"],
-  //     /// Optional list of data flows messages will be processed on ("egress" and/or "ingress").
-  //     /// If absent, the filter will be applied to both flows.
-  //     flows: ["ingress", "egress"],
-  //     /// List of message type on which the filter will be applied. Must not be empty.
-  //     messages: [
-  //       "put",
-  //       "delete",
-  //       "query",
-  //       "reply"
-  //     ],
-  //     /// List of key_expressions which matching messages will be filtered
-  //     key_exprs: [
-  //       "demo/**",
-  //     ],
-  //     /// Inclusive max size of serialized payload + serialized attachment
-  //     size_limit: 8192,
-  //   },
-  // ],
-
-  /// Enable stats per key expression.
-  // stats: {
-  //   filters: [
-  //     {
-  //       key: "some/key/expression/**",
-  //     }
-  //   ],
-  // },
-
-  /// Configure internal transport parameters
-  transport: {
-    unicast: {
-      /// Timeout in milliseconds when opening a link
-      open_timeout: 10000,
-      /// Timeout in milliseconds when accepting a link
-      accept_timeout: 10000,
-      /// Maximum number of links in pending state while performing the handshake for accepting it
-      accept_pending: 100,
-      /// Maximum number of transports that can be simultaneously alive for a single zenoh sessions
-      max_sessions: 1000,
-      /// Maximum number of incoming links that are admitted per transport
-      max_links: 1,
-      /// Enables the LowLatency transport
-      /// This option does not make LowLatency transport mandatory, the actual implementation of transport
-      /// used will depend on Establish procedure and other party's settings
-      ///
-      /// NOTE: Currently, the LowLatency transport doesn't preserve QoS prioritization.
-      /// NOTE: Due to the note above, 'lowlatency' is incompatible with 'qos' option, so in order to
-      ///       enable 'lowlatency' you need to explicitly disable 'qos'.
-      /// NOTE: LowLatency transport does not support the fragmentation, so the message size should be
-      ///       smaller than the tx batch_size.
-      lowlatency: false,
-      /// Enables QoS on unicast communications.
-      qos: {
-        enabled: true,
-      },
-      /// Enables compression on unicast communications.
-      /// Compression capabilities are negotiated during session establishment.
-      /// If both Zenoh nodes support compression, then compression is activated.
-      compression: {
-        enabled: false,
-      },
-    },
-    /// WARNING: multicast communication does not perform any negotiation upon group joining.
-    ///   Because of that, it is important that all transport parameters are the same to make
-    ///   sure all your nodes in the system can communicate. One common parameter to configure
-    ///   is "transport/link/tx/batch_size" since its default value depends on the actual platform
-    ///   when operating on multicast.
-    ///   E.g., the batch size on Linux and Windows is 65535 bytes, on Mac OS X is 9216, and anything else is 8192.
-    multicast: {
-      /// JOIN message transmission interval in milliseconds.
-      join_interval: 2500,
-      /// Maximum number of multicast sessions.
-      max_sessions: 1000,
-      /// Enables QoS on multicast communication.
-      /// Default to false for Zenoh-to-Zenoh-Pico out-of-the-box compatibility.
-      qos: {
-        enabled: false,
-      },
-      /// Enables compression on multicast communication.
-      /// Default to false for Zenoh-to-Zenoh-Pico out-of-the-box compatibility.
-      compression: {
-        enabled: false,
-      },
-    },
-    link: {
-      /// An optional whitelist of protocols to be used for accepting and opening sessions. If not
-      /// configured, all the supported protocols are automatically whitelisted. The supported
-      /// protocols are: ["tcp" , "udp", "tls", "quic", "ws", "unixsock-stream", "vsock"] For
-      /// example, to only enable "tls" and "quic": protocols: ["tls", "quic"],
-      ///
-      /// Configure the zenoh TX parameters of a link
-      tx: {
-        /// The resolution in bits to be used for the message sequence numbers.
-        /// When establishing a session with another Zenoh instance, the lowest value of the two instances will be used.
-        /// Accepted values: 8bit, 16bit, 32bit, 64bit.
-        sequence_number_resolution: "32bit",
-        /// Link lease duration in milliseconds to announce to other zenoh nodes
-        lease: 10000,
-        /// Number of keep-alive messages in a link lease duration. If no data is sent, keep alive
-        /// messages will be sent at the configured time interval.
-        /// NOTE: In order to consider eventual packet loss and transmission latency and jitter,
-        ///       set the actual keep_alive interval to one fourth of the lease time: i.e. send
-        ///       4 keep_alive messages in a lease period. Changing the lease time will have the
-        ///       keep_alive messages sent more or less often.
-        ///       This is in-line with the ITU-T G.8013/Y.1731 specification on continuous connectivity
-        ///       check which considers a link as failed when no messages are received in 3.5 times the
-        ///       target interval.
-        keep_alive: 4,
-        /// Batch size in bytes is expressed as a 16bit unsigned integer.
-        /// Therefore, the maximum batch size is 2^16-1 (i.e. 65535).
-        /// The default batch size value is the maximum batch size: 65535.
-        batch_size: 65535,
-        /// Each zenoh link has a transmission queue that can be configured
-        queue: {
-          /// The size of each priority queue indicates the number of batches a given queue can contain.
-          /// NOTE: the number of batches in each priority must be included between 1 and 16. Different values will result in an error.
-          /// The amount of memory being allocated for each queue is then SIZE_XXX * BATCH_SIZE.
-          /// In the case of the transport link MTU being smaller than the ZN_BATCH_SIZE,
-          /// then amount of memory being allocated for each queue is SIZE_XXX * LINK_MTU.
-          /// If qos is false, then only the DATA priority will be allocated.
-          size: {
-            control: 2,
-            real_time: 2,
-            interactive_high: 2,
-            interactive_low: 2,
-            data_high: 2,
-            data: 2,
-            data_low: 2,
-            background: 2,
-          },
-          /// Congestion occurs when the queue is empty (no available batch).
-          congestion_control: {
-            /// Behavior pushing CongestionControl::Drop messages to the queue.
-            drop: {
-              /// The maximum time in microseconds to wait for an available batch before dropping a droppable message if still no batch is available.
-              wait_before_drop: 1000,
-              /// The maximum deadline limit for multi-fragment messages.
-              max_wait_before_drop_fragments: 50000,
-            },
-            /// Behavior pushing CongestionControl::Block messages to the queue.
-            block: {
-              /// The maximum time in microseconds to wait for an available batch before closing the transport session when sending a blocking message
-              /// if still no batch is available.
-              wait_before_close: 5000000,
-            },
-          },
-          /// Perform batching of messages if they are smaller of the batch_size
-          batching: {
-            /// Perform adaptive batching of messages if they are smaller of the batch_size.
-            /// When the network is detected to not be fast enough to transmit every message individually, many small messages may be
-            /// batched together and sent all at once on the wire reducing the overall network overhead. This is typically of a high-throughput
-            /// scenario mainly composed of small messages. In other words, batching is activated by the network back-pressure.
-            enabled: true,
-            /// The maximum time limit (in ms) a message should be retained for batching when back-pressure happens.
-            time_limit: 1,
-          },
-          allocation: {
-            /// Mode for memory allocation of batches in the priority queues.
-            /// - "init": batches are allocated at queue initialization time.
-            /// - "lazy": batches are allocated when needed up to the maximum number of batches configured in the size configuration parameter.
-            mode: "lazy",
-          },
-        },
-      },
-      /// Configure the zenoh RX parameters of a link
-      rx: {
-        /// Receiving buffer size in bytes for each link
-        /// The default the rx_buffer_size value is the same as the default batch size: 65535.
-        /// For very high throughput scenarios, the rx_buffer_size can be increased to accommodate
-        /// more in-flight data. This is particularly relevant when dealing with large messages.
-        /// E.g. for 16MiB rx_buffer_size set the value to: 16777216.
-        buffer_size: 65535,
-        /// Maximum size of the defragmentation buffer at receiver end.
-        /// Fragmented messages that are larger than the configured size will be dropped.
-        /// The default value is 1GiB. This would work in most scenarios.
-        /// NOTE: reduce the value if you are operating on a memory constrained device.
-        max_message_size: 1073741824,
-      },
-      /// Configure TLS specific parameters
-      tls: {
-        /// Path to the certificate of the certificate authority used to validate either the server
-        /// or the client's keys and certificates, depending on the node's mode. If not specified
-        /// on router mode then the default WebPKI certificates are used instead.
-        root_ca_certificate: null,
-        /// Path to the TLS listening side private key
-        listen_private_key: null,
-        /// Path to the TLS listening side public certificate
-        listen_certificate: null,
-        ///  Enables mTLS (mutual authentication), client authentication
-        enable_mtls: false,
-        /// Path to the TLS connecting side private key
-        connect_private_key: null,
-        /// Path to the TLS connecting side certificate
-        connect_certificate: null,
-        /// Whether or not to verify the matching between hostname/dns and certificate when connecting,
-        /// if set to false zenoh will disregard the common names of the certificates when verifying servers.
-        /// This could be dangerous because your CA can have signed a server cert for foo.com, that's later being used to host a server at baz.com. If you wan't your
-        /// ca to verify that the server at baz.com is actually baz.com, let this be true (default).
-        verify_name_on_connect: true,
-        /// Whether or not to close links when remote certificates expires.
-        /// If set to true, links that require certificates (tls/quic) will automatically disconnect when the time of expiration of the remote certificate chain is reached
-        /// note that mTLS (client authentication) is required for a listener to disconnect a client on expiration
-        close_link_on_expiration: false,
-        /// Optional configuration for TCP system buffers sizes for TLS links
-        ///
-        /// Configure TCP read buffer size (bytes)
-        // so_rcvbuf: 123456,
-        /// Configure TCP write buffer size (bytes)
-        // so_sndbuf: 123456,
-      },
-      // // Configure optional TCP link specific parameters
-      // tcp: {
-      //   /// Optional configuration for TCP system buffers sizes for TCP links
-      //   ///
-      //   /// Configure TCP read buffer size (bytes)
-      //   // so_rcvbuf: 123456,
-      //   /// Configure TCP write buffer size (bytes)
-      //   // so_sndbuf: 123456,
-      // },
-    },
-    /// Shared memory configuration.
-    /// NOTE: shared memory can be used only if zenoh is compiled with "shared-memory" feature, otherwise
-    /// settings in this section have no effect.
-    shared_memory: {
-      /// Whether shared memory is enabled or not.
-      /// If set to `true`, the SHM buffer optimization support will be announced to other parties. (default `true`).
-      /// This option doesn't make SHM buffer optimization mandatory, the real support depends on other party setting.
-      /// A probing procedure for shared memory is performed upon session opening. To enable zenoh to operate
-      /// over shared memory (and to not fallback on network mode), shared memory needs to be enabled also on the
-      /// subscriber side. By doing so, the probing procedure will succeed and shared memory will operate as expected.
-      enabled: true,
-      /// SHM resources initialization mode (default "lazy").
-      /// - "lazy": SHM subsystem internals will be initialized lazily upon the first SHM buffer
-      /// allocation or reception. This setting provides better startup time and optimizes resource usage,
-      /// but produces extra latency at the first SHM buffer interaction.
-      /// - "init": SHM subsystem internals will be initialized upon Session opening. This setting sacrifices
-      /// startup time, but guarantees no latency impact when first SHM buffer is processed.
-      mode: "lazy",
-      transport_optimization: {
-          /// Enables transport optimization for large messages (default `true`).
-          /// Implicitly puts large messages into shared memory for transports with SHM-compatible connection.
-          enabled: true,
-          /// SHM memory size in bytes used for transport optimization (default `16 * 1024 * 1024`).
-          pool_size: 16777216,
-          /// Allow optimization for messages equal or larger than this threshold in bytes (default `3072`).
-          message_size_threshold: 3072,
-      },
-    },
-    auth: {
-      /// The configuration of authentication.
-      /// A password implies a username is required.
-      usrpwd: {
-        user: null,
-        password: null,
-        /// The path to a file containing the user password dictionary
-        dictionary_file: null,
-      },
-      pubkey: {
-        public_key_pem: null,
-        private_key_pem: null,
-        public_key_file: null,
-        private_key_file: null,
-        key_size: null,
-        known_keys_file: null,
-      },
-    },
-  },
-
-  /// Configure the Admin Space
-  /// Unstable: this configuration part works as advertised, but may change in a future release
-  adminspace: {
-    /// Enables the admin space
-    enabled: false,
-    /// read and/or write permissions on the admin space
-    permissions: {
-      read: true,
-      write: false,
-    },
-  },
-
-  //  ///
-  //  /// Plugins configurations
-  //  ///
-  //  plugins_loading: {
-  //    /// Enable plugins loading.
-  //    enabled: false,
-  //    /// Directories where plugins configured by name should be looked for. Plugins configured by __path__ are not subject to lookup.
-  //    /// Directories are specified as object with fields `kind` and `value` is accepted.
-  //    ///   1. If `kind` is `current_exe_parent`, then the parent of the current executable's directory is searched and `value` should be `null`.
-  //    ///      In Bash notation, `{ "kind": "current_exe_parent" }` equals `$(dirname $(which zenohd))` while `"."` equals `$PWD`.
-  //    ///   2. If `kind` is `path`, then `value` is interpreted as a filesystem path. Simply supplying a string instead of a object is equivalent to this.
-  //    /// If `enabled: true` and `search_dirs` is not specified then `search_dirs` falls back to the default value:
-  //    search_dirs: [{ "kind": "current_exe_parent" }, ".", "~/.zenoh/lib", "/opt/homebrew/lib", "/usr/local/lib", "/usr/lib"],
-  //  },
-  //  /// Plugins are only loaded if `plugins_loading: { enabled: true }` and present in the configuration when starting.
-  //  /// Once loaded, they may react to changes in the configuration made through the zenoh instance's adminspace.
-  //  plugins: {
-  //    /// If no `__path__` is given to a plugin, zenohd will automatically search for a shared library matching the plugin's name (here, `libzenoh_plugin_rest.so` would be searched for on linux)
-  //
-  //    /// Plugin settings may contain field `__config__`
-  //    /// - If `__config__` is specified, it's content is merged into plugin configuration
-  //    /// - Properties loaded from `__config__` file overrides existing properties
-  //    /// - If json objects in loaded file contains `__config__` properties, they are processed recursively
-  //    ///   This is used in the 'storage_manager' which supports subplugins, each with it's own config
-  //    ///
-  //    /// See below example of plugin configuration using `__config__` property
-  //
-  //    /// Configure the REST API plugin
-  //    rest: {
-  //      /// Setting this option to true allows zenohd to panic should it detect issues with this plugin. Setting it to false politely asks the plugin not to panic.
-  //      __required__: true, // defaults to false
-  //      /// load configuration from the file
-  //      __config__: "./plugins/zenoh-plugin-rest/config.json5",
-  //      /// http port to answer to rest requests
-  //      http_port: 8000,
-  //      /// The number of worker thread in TOKIO runtime (default: 2)
-  //      /// The configuration only takes effect if running as a dynamic plugin, which can not reuse the current runtime.
-  //      work_thread_num: 2,
-  //      /// The number of blocking thread in TOKIO runtime (default: 50)
-  //      /// The configuration only takes effect if running as a dynamic plugin, which can not reuse the current runtime.
-  //      max_block_thread_num: 50,
-  //    },
-  //
-  //    /// Configure the storage manager plugin
-  //    storage_manager: {
-  //      /// When a path is present, automatic search is disabled, and zenohd will instead select the first path which manages to load.
-  //      __path__: [
-  //        "./target/release/libzenoh_plugin_storage_manager.so",
-  //        "./target/release/libzenoh_plugin_storage_manager.dylib",
-  //      ],
-  //      /// Directories where plugins configured by name should be looked for. Plugins configured by __path__ are not subject to lookup
-  //      backend_search_dirs: [],
-  //      /// The "memory" volume is always available, but you may create other volumes here, with various backends to support the actual storing.
-  //      volumes: {
-  //        /// An influxdb backend is also available at https://github.com/eclipse-zenoh/zenoh-backend-influxdb
-  //        influxdb: {
-  //          url: "https://myinfluxdb.example",
-  //          /// Some plugins may need passwords in their configuration.
-  //          /// To avoid leaking them through the adminspace, they may be masked behind a privacy barrier.
-  //          /// any value held at the key "private" will not be shown in the adminspace.
-  //          private: {
-  //            username: "user1",
-  //            password: "pw1",
-  //          },
-  //        },
-  //        influxdb2: {
-  //          /// A second backend of the same type can be spawned using `__path__`, for examples when different DBs are needed.
-  //          backend: "influxdb",
-  //          private: {
-  //            username: "user2",
-  //            password: "pw2",
-  //          },
-  //          url: "https://localhost:8086",
-  //        },
-  //      },
-  //
-  //      /// Configure the storages supported by the volumes
-  //      storages: {
-  //        demo: {
-  //          /// Storages always need to know what set of keys they must work with. These sets are defined by a key expression.
-  //          key_expr: "demo/memory/**",
-  //          /// Storages also need to know which volume will be used to actually store their key-value pairs.
-  //          /// The "memory" volume is always available, and doesn't require any per-storage options, so requesting "memory" by string is always sufficient.
-  //          volume: "memory",
-  //        },
-  //        demo2: {
-  //          key_expr: "demo/memory2/**",
-  //          /// This prefix will be stripped of the received keys when storing.
-  //          /// ⚠️ If you replicate this Storage then THIS VALUE SHOULD BE THE SAME FOR ALL THE REPLICAS YOU WANT TO
-  //          ///    KEEP ALIGNED.
-  //          strip_prefix: "demo/memory2",
-  //          volume: "memory",
-  //          /// Storage manager plugin handles metadata in order to ensure convergence of distributed storages configured in Zenoh.
-  //          /// Metadata includes the set of wild card updates and deletions (tombstones).
-  //          /// Once the samples are guaranteed to be delivered, the metadata can be garbage collected.
-  //          garbage_collection: {
-  //            /// The garbage collection event will be periodic with this duration.
-  //            /// The duration is specified in seconds.
-  //            period: 30,
-  //            /// Metadata older than this parameter will be garbage collected.
-  //            /// The duration is specified in seconds.
-  //            lifespan: 86400,
-  //          },
-  //          /// If multiple storages subscribing to the same key_expr should be synchronized, declare them as replicas.
-  //          /// In the absence of this configuration, a normal storage is initialized
-  //          /// Note: all the samples to be stored in replicas should be timestamped
-  //          ///
-  //          /// ⚠️ THESE VALUE SHOULD BE THE SAME FOR ALL THE REPLICAS YOU WANT TO KEEP ALIGNED.
-  //          replication: {
-  //            /// Specifying the parameters is optional, by default the values provided will be used.
-  //            /// Time interval between different synchronization attempts in SECONDS.
-  //            interval: 10.0,
-  //            /// Number of sub-intervals, of equal duration, within an interval.
-  //            sub_intervals: 5,
-  //            /// Number of intervals that compose the "hot" era.
-  //            hot: 6,
-  //            /// Number of intervals that compose the "warm" era.
-  //            warm: 30,
-  //            /// The average time, expressed in MILLISECONDS, it takes a publication to reach the Storage.
-  //            propagation_delay: 250,
-  //          }
-  //        },
-  //        demo3: {
-  //          key_expr: "demo/memory3/**",
-  //          volume: "memory",
-  //          /// A complete storage advertises itself as containing all the known keys matching the configured key expression.
-  //          /// If not configured, complete defaults to false.
-  //          complete: true,
-  //        },
-  //        influx_demo: {
-  //          key_expr: "demo/influxdb/**",
-  //          /// This prefix will be stripped of the received keys when storing.
-  //          strip_prefix: "demo/influxdb",
-  //          /// influxdb-backed volumes need a bit more configuration, which is passed like-so:
-  //          volume: {
-  //            id: "influxdb",
-  //            db: "example",
-  //          },
-  //        },
-  //        influx_demo2: {
-  //          key_expr: "demo/influxdb2/**",
-  //          strip_prefix: "demo/influxdb2",
-  //          volume: {
-  //            id: "influxdb2",
-  //            db: "example",
-  //          },
-  //        },
-  //      },
-  //    },
-  //  },
-
-  // /// Plugin configuration example using `__config__` property
-  // plugins: {
-  //   rest: {
-  //     __config__: "./plugins/zenoh-plugin-rest/config.json5",
-  //   },
-  //   storage_manager: {
-  //     __config__: "./plugins/zenoh-plugin-storage-manager/config.json5",
-  //   }
-  // },
-}
+transport_weights: [
+  { dst_zid: "abcdef1234567890", weight: 10 },  // prefer this fast link
+  { dst_zid: "fedcba0987654321", weight: 200 }, // avoid this expensive WAN link
+]
 ```
 
----
-
-# https://zenoh.io/docs/manual/configuration/
-
-Source: https://zenoh.io/docs/manual/configuration/
-
-![](../../../img/zenoh-dragon-bg-150x163.png)
-
-# Configuration
-
-From version 0.6 of Zenoh, configuration has changed in major ways. This page will take you through the new behaviour of configuration, whether you’re using Zenoh as a library, or as an executable through `zenohd`.
-
-`zenohd`
-
-# Configuring `zenohd`
-
-`zenohd`
-
-There are 3 ways to configure `zenohd`, which may be used in any combination:
-
-`zenohd`
-
-## Configuration files
-
-`zenohd` has supported configuration files for a long time now, but with version 0.6, we hope to make this the primary interface for configuring your Zenoh infrastructure.
-
-`zenohd`
-
-As was the case before, you can specify which configuration file to load with the `--config=/path/to/config/file` CLI argument.
-If no path is specified, `zenohd` will use a default configuration instead.
-
-`--config=/path/to/config/file`
-`zenohd`
-
-Currently, [JSON5](https://json5.org) and YAML are the primary configuration format (as opposed to v0.5’s flat key-value files), but we may add support for other serialization formats in the future.
-
-An example configuration can be read [here](https://github.com/eclipse-zenoh/zenoh/blob/main/DEFAULT_CONFIG.json5), apart from the `plugins` section, we make an effort to keep the values aligned with the defaults.
-The exact schema for the configuration is the `Config` structure, which can be found in [this file](https://github.com/eclipse-zenoh/zenoh/blob/main/commons/zenoh-config/src/lib.rs).
-
-`plugins`
-`Config`
-
-Don’t be alarmed, all of these fields are optional. Only configure the parts that are of interest to you.
-
-We’d like to bring your attention to the `plugins` part of the configuration, as plugin management has also changed a lot with version 0.6.
-More on this in the page on [plugins](../plugins).
-
-`plugins`
-
-## Command line arguments
-
-If you want to run `zenohd` with small changes in its configuration, without going through the hassle of writing a new configuration file for it, you may use the `--cfg` CLI argument to edit the configuration.
-
-`zenohd`
-`--cfg`
-
-Specifically, you may use any amount of `--cfg='PATH:VALUE'` arguments to specify the VALUEs you’d like to insert at specific PATHs in the configuration.
-
-`--cfg='PATH:VALUE'`
-
-PATHs are `/`-separated paths to the part of the configuration you wish to change.
-Note for plugins that setting a value in a plugin-less configuration for `plugins/example-plugin/example/path` will result in the recursive creation of the intermediate objects if necessary.
-
-`/`
-`plugins/example-plugin/example/path`
-
-VALUEs must be JSON5-deserializable values: don’t forget to surround strings with quotes. Due to this, surrounding the whole `PATH:VALUE` pair with single-quotes is a good practice to avoid parsing errors.
-
-`PATH:VALUE`
-
-If a value was already present for the specified PATH, it will be replaced with VALUE.
-
-For convenience, some arguments of `zenohd` are provided as shorthands for particularly useful `--cfg` patterns, such as `-P <plugin_name>` which desugars to `--cfg='plugins/<plugin_name>/__required__:true'`.
-
-`zenohd`
-`--cfg`
-`-P <plugin_name>`
-`--cfg='plugins/<plugin_name>/__required__:true'`
-
-In case of conflicts, `--cfg` options will override any other sources of configuration for their PATH.
-
-`--cfg`
-
-You can use `--rest-http-port=8000` to enable the REST plugin in `zenohd`.
-
-`--rest-http-port=8000`
-`zenohd`
-
-## Reactive configuration
-
-It is possible to register callbacks that will be called when the configuration structure is modified. This lets `zenohd` (or your own application) react to changes in the configuration during runtime.
-
-`zenohd`
-
-In the case of `zenohd`, the only user-accessible way of editing the configuration during runtime is through the admin space, as explained a bit [further](#adminspace-configuration) in this page. Whether and how to react to modifications to the configuration file when it exists is still under debate by the core team.
-
-`zenohd`
-
-## Adminspace configuration
-
-The configuration of a Zenoh router can be changed at runtime via its admin space, if it’s configured to be writeable:
-
-`adminspace.permissions`
-`{
- adminspace: {
- permissions: {
- read: true,
- write: true
- }
- }
-}`
-`zenohd`
-`--adminspace-permissions <[r|w|rw|none]>`
-
-Then you can change elements of it’s configuration once it’s started, by sending PUT messages to its [admin space](../abstractions#admin-space).
-
-If one of the `zenohd` instances uses the REST plugin to expose Zenoh to HTTP requests, this can be done simply by sending such requests with tools such as `curl`.
-
-`zenohd`
-`curl`
-
-Remember to enable the REST plugin in `zenohd` with the command line option `--rest-http-port=8000`.
-
-`zenohd`
-`--rest-http-port=8000`
-
-To do this, use commands such as
-
-`curl -X PUT http://localhost:8000/@/local/router/config/plugins/storage_manager/storages/my-storage -d '{key_expr:"demo/mystore/**", volume:{id:"memory"}}'
-# ^- REST plugin addr ^ ^--- config space --^ ^---- the path to the configured value ---^ ^-------------- the value to insert ----------------^`
-
-Path-value pairs work much like they do when using [CLI arguments](#command-line-arguments).
-
-Note that while you may attempt to change any part of the configuration through this mean, not all of its properties are actually watched.  
-For example, while the storage plugin watches for any change in its configuration and will attempt to act on it, the REST plugin will only log a warning that it observed a change, but won’t apply it.  
-Changes to non-plugin parts of the configuration may be registered by the configuration, but not acted upon, such as the `mode` field of the configuration which is only ever read at startup.
-
-`mode`
-
-##### Eclipse Incubation
-
-![](../../../img/eclipse-incubation.png)
-
-![](../../../img/eclipse-incubation.png)
-
-Eclipse zenoh ™ is an incubating project under the Eclipse Foundation.
-
-##### More Information
-
-[Legal](https://www.eclipse.org/legal)
-
-[Privacy policy](https://www.eclipse.org/legal/privacy.php)
-
-[Terms of use](https://www.eclipse.org/legal/termsofuse.php)
-
-[Copyright](https://www.eclipse.org/legal/copyright.php)
-
-[Report a security issue](https://www.eclipse.org/security/)
-
-[Eclipse Public License 2.0](https://www.eclipse.org/legal/epl-2.0/)
-
-[Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0)
-
-[Eclipse Foundation](https://www.eclipse.org/)
-
-##### Sponsored by:
-
-[![](../../../img/eclipse-foundation.svg)](https://www.eclipse.org)
-
-![](../../../img/eclipse-foundation.svg)
-
-[![](../../../img/zettascale-dark.svg)](https://zettascale.tech)
-
-![](../../../img/zettascale-dark.svg)
-
-##### Follow us
-
-[GitHub](https://github.com/eclipse-zenoh/zenoh)
-
-[Discord](https://discord.gg/vSDSpqnbkm)
-
-[Youtube](https://www.youtube.com/channel/UCslbiyiqgOAPMjCrPWIfQ5Q)
-
-[About](../../../docs/overview/what-is-zenoh)
-
-![](../../../img/zenoh-dragon-150x163.png)
-
-![](../../../img/zenoh-dragon-150x163.png)
-
-Eclipse zenoh ™ is free, open source and always will be.
-
-Copyright © 2022 Eclipse Foundation
-
-Built with [HUGO](https://gohugo.io/)
+The same configuration exists under `routing.peer.linkstate.transport_weights`.
 
 ---
 
+### `routing.interests.timeout`
+
+| Property | Value |
+|---|---|
+| **Path** | `routing.interests.timeout` |
+| **Type** | Integer (ms) |
+| **Default** | `10000` |
+
+**What it controls:** How long a node waits for incoming interest declarations (subscriber/publisher/queryable declarations from peers) when a new session is established. Expiration before all interests are received may cause incomplete routing tables and lost messages at startup.
+
+**When to change:**
+- Increase in slow networks where session establishment takes longer
+- Decrease in fast local networks where 10 seconds is excessive
+- Usually does not need adjustment
+
+---
+
+## QoS Overwrite {#qos-overwrite}
+
+The `qos` section provides two mechanisms to override message QoS attributes independent of what the application API sets.
+
+### `qos.publication` — Publisher QoS Override
+
+| Property | Value |
+|---|---|
+| **Path** | `qos.publication` |
+| **Type** | Array of `{ key_exprs, config }` objects |
+| **Default** | `[]` (disabled) |
+
+**What it controls:** Overrides QoS for PUT and DELETE messages matching specified key expressions, applied **before** the message enters the network. This is the highest-performance override path.
