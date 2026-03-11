@@ -1313,3 +1313,6 @@ sites:
 - name: agora
   base_url: https://docs.agora.io/
   description: agora documentation
+- name: mux
+  base_url: https://www.mux.com/
+  description: mux documentation
