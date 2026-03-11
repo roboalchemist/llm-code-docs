@@ -1307,3 +1307,6 @@ sites:
 - name: together-ai
   base_url: https://docs.together.ai/
   description: together-ai documentation
+- name: voyage-ai
+  base_url: https://docs.voyageai.com/
+  description: voyage-ai documentation
