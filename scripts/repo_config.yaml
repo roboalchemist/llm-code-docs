@@ -1687,3 +1687,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/in-toto
   branch: main
+- name: invicti
+  description: invicti from GitHub
+  repo_url: https://github.com/Invicti-Security/netsparker-custom-security-checks.git
+  source_folder: docs
+  target_folder: docs/github-scraped/invicti
+  branch: main
