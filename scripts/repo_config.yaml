@@ -1799,3 +1799,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/azure-cosmos-db
   branch: main
+- name: pdfplumber
+  description: pdfplumber from GitHub
+  repo_url: https://github.com/jsvine/pdfplumber.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pdfplumber
+  branch: main
