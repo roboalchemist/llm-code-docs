@@ -1692,3 +1692,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/kafka-connect
   branch: main
+- name: webdriverio
+  description: webdriverio from GitHub
+  repo_url: https://github.com/webdriverio/webdriverio.git
+  source_folder: website/docs
+  target_folder: docs/github-scraped/webdriverio
+  branch: main
