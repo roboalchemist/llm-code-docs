@@ -1301,3 +1301,6 @@ sites:
 - name: novita-ai
   base_url: https://novita.ai/docs/
   description: novita-ai documentation
+- name: semantic-router
+  base_url: https://docs.aurelio.ai/
+  description: semantic-router documentation
