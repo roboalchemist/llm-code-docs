@@ -1217,3 +1217,6 @@ sites:
 - name: adempiere
   base_url: https://adempiere.gitbook.io/docs/
   description: adempiere documentation
+- name: pulumi
+  base_url: https://www.pulumi.com/
+  description: pulumi documentation
