@@ -1162,3 +1162,6 @@ sites:
 - name: modal
   base_url: https://modal.com/
   description: modal documentation
+- name: jina-ai
+  base_url: https://docs.jina.ai/docs/
+  description: jina-ai documentation
