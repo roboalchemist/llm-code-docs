@@ -1829,3 +1829,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/python-fire
   branch: main
+- name: zerolog
+  description: zerolog from GitHub
+  repo_url: https://github.com/TheGhouls/zerolog.git
+  source_folder: docs
+  target_folder: docs/github-scraped/zerolog
+  branch: main
