@@ -1745,3 +1745,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/kube-batch
   branch: main
+- name: nextflow
+  description: nextflow from GitHub
+  repo_url: https://github.com/nextflow-io/nextflow.git
+  source_folder: docs
+  target_folder: docs/github-scraped/nextflow
+  branch: main
