@@ -1715,3 +1715,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/oozie
   branch: main
+- name: embeddedmongo
+  description: embeddedmongo from GitHub
+  repo_url: https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo.git
+  source_folder: docs
+  target_folder: docs/github-scraped/embeddedmongo
+  branch: main
