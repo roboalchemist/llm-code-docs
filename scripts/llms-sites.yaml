@@ -1298,3 +1298,6 @@ sites:
 - name: mage
   base_url: https://docs.mage.ai/
   description: mage documentation
+- name: novita-ai
+  base_url: https://novita.ai/docs/
+  description: novita-ai documentation
