@@ -1259,3 +1259,6 @@ sites:
 - name: kubearmor
   base_url: https://docs.kubearmor.io/
   description: kubearmor documentation
+- name: ox-security
+  base_url: https://docs.ox.security/
+  description: ox-security documentation
