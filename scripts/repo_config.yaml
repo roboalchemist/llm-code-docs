@@ -1838,3 +1838,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/grpc-web
   branch: main
+- name: stimulus
+  description: stimulus from GitHub
+  repo_url: https://github.com/hotwired/stimulus.git
+  source_folder: docs
+  target_folder: docs/github-scraped/stimulus
+  branch: main
