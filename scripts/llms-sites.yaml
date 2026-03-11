@@ -1211,3 +1211,6 @@ sites:
 - name: knock
   base_url: https://docs.knock.app/
   description: knock documentation
+- name: mixpanel
+  base_url: https://developer.mixpanel.com/
+  description: mixpanel documentation
