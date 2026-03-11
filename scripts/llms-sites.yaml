@@ -1298,3 +1298,6 @@ sites:
 - name: tyk
   base_url: https://www.tyk.io/docs/
   description: tyk documentation
+- name: nginx
+  base_url: https://docs.nginx.com/
+  description: nginx documentation
