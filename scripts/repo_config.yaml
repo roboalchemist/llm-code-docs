@@ -1618,3 +1618,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/river
   branch: main
+- name: valkey
+  description: valkey from GitHub
+  repo_url: https://github.com/valkey-io/valkey-py.git
+  source_folder: docs
+  target_folder: docs/github-scraped/valkey
+  branch: main
