@@ -1226,3 +1226,6 @@ sites:
 - name: axonius
   base_url: https://docs.axonius.com/
   description: axonius documentation
+- name: plex-manufacturing-cloud
+  base_url: https://plex.rockwellautomation.com/
+  description: plex-manufacturing-cloud documentation
