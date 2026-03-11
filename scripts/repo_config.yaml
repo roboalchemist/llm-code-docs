@@ -158,7 +158,9 @@ repositories:
   target_folder: docs/github-scraped/matter.js
   branch: main
 - name: KuzuDB
-  description: KuzuDB - Embedded property graph database with vector search, full-text search, Cypher query language, and multi-language bindings (Python, Node.js, Java, Rust, Go, C++)
+  description: KuzuDB - Embedded property graph database with vector search, full-text
+    search, Cypher query language, and multi-language bindings (Python, Node.js, Java,
+    Rust, Go, C++)
   repo_url: https://github.com/kuzudb/docs.git
   source_folder: src/content/docs
   target_folder: docs/github-scraped/kuzudb
@@ -1369,7 +1371,8 @@ repositories:
   target_folder: docs/github-scraped/rich
   branch: main
 - name: RDFLib
-  description: RDFLib - Python library for working with RDF, SPARQL queries, and semantic web technologies
+  description: RDFLib - Python library for working with RDF, SPARQL queries, and semantic
+    web technologies
   repo_url: https://github.com/RDFLib/rdflib.git
   source_folder: docs
   target_folder: docs/github-scraped/rdflib
@@ -1435,17 +1438,24 @@ repositories:
   target_folder: docs/github-scraped/ray-serve
   branch: main
 - name: Metabase
-  description: Metabase - Open-source business intelligence and analytics platform with
-    comprehensive documentation for installation, administration, querying, and embedding
+  description: Metabase - Open-source business intelligence and analytics platform
+    with comprehensive documentation for installation, administration, querying, and
+    embedding
   repo_url: https://github.com/metabase/metabase.git
   source_folder: docs
   target_folder: docs/github-scraped/metabase
   branch: master
 - name: GraphRAG
-  description: Microsoft's graph-based retrieval augmented generation framework that builds
-    knowledge graphs from documents and enables graph-based querying with comprehensive
+  description: Microsoft's graph-based retrieval augmented generation framework that
+    builds knowledge graphs from documents and enables graph-based querying with comprehensive
     indexing, query, and configuration documentation
   repo_url: https://github.com/microsoft/graphrag.git
   source_folder: docs
   target_folder: docs/github-scraped/graphrag
+  branch: main
+- name: juce
+  description: juce from GitHub
+  repo_url: https://github.com/juce-framework/JUCE.git
+  source_folder: docs
+  target_folder: docs/github-scraped/juce
   branch: main
