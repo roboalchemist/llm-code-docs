@@ -1244,3 +1244,6 @@ sites:
 - name: nomad
   base_url: https://docs.nomad.xyz/
   description: nomad documentation
+- name: portainer
+  base_url: https://docs.portainer.io/
+  description: portainer documentation
