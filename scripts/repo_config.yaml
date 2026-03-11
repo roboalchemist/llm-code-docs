@@ -1002,6 +1002,13 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/vllm
   branch: main
+- name: Apache Airflow
+  description: Apache Airflow - open-source workflow orchestration platform for authoring,
+    scheduling, and monitoring data pipelines and ETL workflows at scale
+  repo_url: https://github.com/apache/airflow.git
+  source_folder: airflow-core/docs
+  target_folder: docs/github-scraped/apache-airflow
+  branch: main
 - name: Apache APISIX
   description: Apache APISIX - Cloud-native API gateway with intelligent routing,
     traffic management, and LLM traffic handling
