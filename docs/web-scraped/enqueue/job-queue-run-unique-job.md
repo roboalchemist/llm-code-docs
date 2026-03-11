@@ -1,0 +1,140 @@
+# Source: https://php-enqueue.github.io/job_queue/run_unique_job/
+
+Title: Run unique job
+
+URL Source: https://php-enqueue.github.io/job_queue/run_unique_job/
+
+Markdown Content:
+Run unique job | enqueue-dev
+===============
+[Skip to main content](https://php-enqueue.github.io/job_queue/run_unique_job/#main-content)
+
+[enqueue-dev](https://php-enqueue.github.io/)
+
+*   [Index](https://php-enqueue.github.io/)
+*   [Key concepts](https://php-enqueue.github.io/concepts/)
+*   [Quick tour](https://php-enqueue.github.io/quick_tour/)
+*   [Transports](https://php-enqueue.github.io/transport)
+    *   [AMQP](https://php-enqueue.github.io/transport/amqp/)
+    *   [AMQP Bunny](https://php-enqueue.github.io/transport/amqp_bunny/)
+    *   [AMQP Lib](https://php-enqueue.github.io/transport/amqp_lib/)
+    *   [DBAL](https://php-enqueue.github.io/transport/dbal/)
+    *   [Filesystem](https://php-enqueue.github.io/transport/filesystem/)
+    *   [Gearman](https://php-enqueue.github.io/transport/gearman/)
+    *   [GPS](https://php-enqueue.github.io/transport/gps/)
+    *   [Kafka](https://php-enqueue.github.io/transport/kafka/)
+    *   [MongoDB](https://php-enqueue.github.io/transport/mongodb/)
+    *   [Null](https://php-enqueue.github.io/transport/null/)
+    *   [Pheanstalk](https://php-enqueue.github.io/transport/pheanstalk/)
+    *   [Redis](https://php-enqueue.github.io/transport/redis/)
+    *   [Amazon SNS](https://php-enqueue.github.io/transport/sns/)
+    *   [Amazon SNS-SQS](https://php-enqueue.github.io/transport/snsqs/)
+    *   [Amazon SQS](https://php-enqueue.github.io/transport/sqs/)
+    *   [STOMP](https://php-enqueue.github.io/transport/stomp/)
+    *   [WAMP](https://php-enqueue.github.io/transport/wamp/)
+
+*   [Consumption](https://php-enqueue.github.io/consumption)
+    *   [Extensions](https://php-enqueue.github.io/consumption/extensions/)
+    *   [Message processors](https://php-enqueue.github.io/consumption/message_processor/)
+
+*   [Client](https://php-enqueue.github.io/client)
+    *   [Quick tour](https://php-enqueue.github.io/client/quick_tour/)
+    *   [Message examples](https://php-enqueue.github.io/client/message_examples/)
+    *   [Supported brokers](https://php-enqueue.github.io/client/supported_brokers/)
+    *   [Message bus](https://php-enqueue.github.io/client/message_bus/)
+    *   [RPC call](https://php-enqueue.github.io/client/rpc_call/)
+    *   [Extensions](https://php-enqueue.github.io/client/extensions/)
+
+*   [Elastica bundle](https://php-enqueue.github.io/elastica-bundle/overview/)
+*   [Job Queue](https://php-enqueue.github.io/job-queue)
+    *   [Run unique job](https://php-enqueue.github.io/job_queue/run_unique_job/)
+    *   [Run sub job](https://php-enqueue.github.io/job_queue/run_sub_job/)
+
+*   [Symfony bundle](https://php-enqueue.github.io/symfony)
+    *   [Quick tour](https://php-enqueue.github.io/bundle/quick_tour/)
+    *   [Config reference](https://php-enqueue.github.io/bundle/config_reference/)
+    *   [CLI commands](https://php-enqueue.github.io/bundle/cli_commands/)
+    *   [Message producer](https://php-enqueue.github.io/bundle/message_producer/)
+    *   [Message processor](https://php-enqueue.github.io/bundle/message_processor/)
+    *   [Async events](https://php-enqueue.github.io/bundle/async_events/)
+    *   [Async commands](https://php-enqueue.github.io/bundle/async_commands/)
+    *   [Job queue](https://php-enqueue.github.io/bundle/job_queue/)
+    *   [Consumption extension](https://php-enqueue.github.io/bundle/consumption_extension/)
+    *   [Production settings](https://php-enqueue.github.io/bundle/production_settings/)
+    *   [Debugging](https://php-enqueue.github.io/bundle/debugging/)
+    *   [Functional testing](https://php-enqueue.github.io/bundle/functional_testing/)
+
+*   [Laravel](https://php-enqueue.github.io/laravel)
+    *   [Quick tour](https://php-enqueue.github.io/laravel/quick_tour/)
+    *   [Queues](https://php-enqueue.github.io/laravel/queues/)
+
+*   [Magento](https://php-enqueue.github.io/magento)
+    *   [Quick tour](https://php-enqueue.github.io/magento/quick_tour/)
+    *   [CLI commands](https://php-enqueue.github.io/magento/cli_commands/)
+
+*   [Magento 2](https://php-enqueue.github.io/magento2)
+    *   [Quick tour](https://php-enqueue.github.io/magento2/quick_tour/)
+    *   [CLI commands](https://php-enqueue.github.io/magento2/cli_commands/)
+
+*   [Yii](https://php-enqueue.github.io/yii)
+    *   [AMQP Interop driver](https://php-enqueue.github.io/yii/amqp_driver/)
+
+*   [Messages](https://php-enqueue.github.io/messages/)
+*   [DSN Parser](https://php-enqueue.github.io/dsn/)
+*   [Monitoring](https://php-enqueue.github.io/monitoring/)
+*   [Contribution](https://php-enqueue.github.io/contribution/)
+
+ This site uses [Just the Docs](https://github.com/just-the-docs/just-the-docs), a documentation theme for Jekyll. 
+
+*   [enqueue-dev on GitHub](https://github.com/php-enqueue/enqueue-dev)
+
+1.   [Job Queue](https://php-enqueue.github.io/job-queue)
+2.   Run unique job
+
+Supporting Enqueue
+------------------
+
+Enqueue is an MIT-licensed open source project with its ongoing development made possible entirely by the support of community and our customers. If you’d like to join them, please consider:
+
+*   [Become our client](http://forma-pro.com/)
+
+* * *
+
+[](https://php-enqueue.github.io/job_queue/run_unique_job/#job-queue-run-unique-job) Job queue. Run unique job
+--------------------------------------------------------------------------------------------------------------
+
+There is job queue component build on top of a transport. It provides some additional features:
+
+*   Stores jobs to a database. So you can query that information and build a UI for it.
+*   Run unique job feature. If used guarantee that there is not any job with the same name running same time.
+*   Sub jobs. If used allow split a big job into smaller pieces and process them asynchronously and in parallel.
+*   Depended job. If used allow send a message when the whole job is finished (including sub jobs).
+
+Here’s some examples. It shows how you can run unique job using job queue (The configuration is described in a dedicated chapter).
+
+```
+<?php
+use Interop\Queue\Message;
+use Interop\Queue\Context;
+use Interop\Queue\Processor;
+use Enqueue\JobQueue\JobRunner;
+
+class UniqueJobProcessor implements Processor
+{
+    /** @var JobRunner */
+    private $jobRunner;
+
+    public function process(Message $message, Context $context)
+    {
+        $result = $this->jobRunner->runUnique($message->getMessageId(), 'aJobName', function () {
+            // do your job, there is no any other processes executing same job,
+
+            return true; // if you want to ACK message or false to REJECT
+        });
+
+        return $result ? self::ACK : self::REJECT;
+    }
+}
+```
+
+[back to index](https://php-enqueue.github.io/)
