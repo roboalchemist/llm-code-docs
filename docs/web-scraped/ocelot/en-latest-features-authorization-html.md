@@ -1,0 +1,60 @@
+# Source: https://ocelot.readthedocs.io/en/latest/features/authorization.html
+
+Title: Authorization — Ocelot Gateway 24.1 "Globality" documentation
+
+URL Source: https://ocelot.readthedocs.io/en/latest/features/authorization.html
+
+Markdown Content:
+Ocelot supports claims based authorization which is run post authentication. This means if you have a route you want to authorize, you can add the following to your route configuration:
+
+"RouteClaimsRequirement": {
+ "UserType": "registered"
+}
+
+In this example, when the [Authorization Middleware](https://ocelot.readthedocs.io/en/latest/features/authorization.html#authorization-middleware) is called, Ocelot will check to see if the user has the claim type `UserType` and if the value of that claim is `"registered"`. If it isn’t then the user will not be authorized and the response will be [403 Forbidden](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403).
+
+Authorization Middleware[¶](https://ocelot.readthedocs.io/en/latest/features/authorization.html#authorization-middleware "Link to this heading")
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+The [AuthorizationMiddleware](https://github.com/search?q=repo%3AThreeMammals%2FOcelot+AuthorizationMiddleware+language%3AC%23&type=code&l=C%23) is built-in into Ocelot pipeline.
+
+> Previous private: `ClaimsToClaimsMiddleware`
+> 
+> 
+> Previous public: `PreAuthorizationMiddleware`
+> 
+> 
+> **This**: `AuthorizationMiddleware`
+> 
+> 
+> Next private: `ClaimsToHeadersMiddleware`
+> 
+> 
+> Next public: `PreQueryStringBuilderMiddleware`
+
+So, the closest middlewares are in order of calling:
+
+`ClaimsToClaimsMiddleware`→`PreAuthorizationMiddleware`→**AuthorizationMiddleware**→`ClaimsToHeadersMiddleware`→`PreQueryStringBuilderMiddleware`
+
+As you may know from the [Middleware Injection](https://ocelot.readthedocs.io/en/latest/features/middlewareinjection.html) chapter, the Authorization middleware can be overridden like this:
+
+var app = builder.Build();
+await app.UseOcelot(new OcelotPipelineConfiguration
+{
+ AuthorizationMiddleware = async (context, next) =>
+ {
+ await next.Invoke();
+ }
+});
+await app.RunAsync();
+
+**Note!** Do this in very rare cases, because overriding the Authorization middleware means you will lose claims and scopes authorizer through the `RouteClaimsRequirement` property of the route. Another option is preparing before the actual authorization in `PreAuthorizationMiddleware`, which is public and open to overriding.
+
+await app.UseOcelot(new OcelotPipelineConfiguration
+{
+ PreAuthorizationMiddleware = async (context, next) =>
+ {
+ // Do whatever you want here
+ await next.Invoke(); // next is AuthorizationMiddleware
+ }
+});
