@@ -1165,3 +1165,6 @@ sites:
 - name: jina-ai
   base_url: https://docs.jina.ai/docs/
   description: jina-ai documentation
+- name: apache-kafka
+  base_url: https://docs.confluent.io/
+  description: apache-kafka documentation
