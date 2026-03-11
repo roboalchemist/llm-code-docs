@@ -1313,3 +1313,6 @@ sites:
 - name: chromadb
   base_url: https://cookbook.chromadb.dev/
   description: chromadb documentation
+- name: huggingface
+  base_url: https://huggingface.co/docs/transformers/
+  description: huggingface documentation
