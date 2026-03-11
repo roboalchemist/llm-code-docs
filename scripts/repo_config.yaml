@@ -1698,3 +1698,9 @@ repositories:
   source_folder: website/docs
   target_folder: docs/github-scraped/webdriverio
   branch: main
+- name: sinon
+  description: sinon from GitHub
+  repo_url: https://github.com/sinonjs/sinon.git
+  source_folder: docs
+  target_folder: docs/github-scraped/sinon
+  branch: main
