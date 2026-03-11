@@ -1537,4 +1537,9 @@ repositories:
   repo_url: https://github.com/decalage2/olefile.git
   source_folder: doc
   target_folder: docs/github-scraped/ole
+- name: wf
+  description: wf from GitHub
+  repo_url: https://github.com/joyent/node-workflow.git
+  source_folder: docs
+  target_folder: docs/github-scraped/wf
   branch: main
