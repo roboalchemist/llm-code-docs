@@ -1555,3 +1555,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/quasar
   branch: main
+- name: sails.js
+  description: sails.js from GitHub
+  repo_url: https://github.com/balderdashy/sails.git
+  source_folder: docs
+  target_folder: docs/github-scraped/sails.js
+  branch: main
