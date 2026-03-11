@@ -1577,3 +1577,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/altair
   branch: main
+- name: mongoengine
+  description: mongoengine from GitHub
+  repo_url: https://github.com/MongoEngine/mongoengine.git
+  source_folder: docs
+  target_folder: docs/github-scraped/mongoengine
+  branch: main
