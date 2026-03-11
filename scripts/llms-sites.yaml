@@ -1214,3 +1214,6 @@ sites:
 - name: mixpanel
   base_url: https://developer.mixpanel.com/
   description: mixpanel documentation
+- name: next.js
+  base_url: https://nextjs.org/docs/
+  description: next.js documentation
