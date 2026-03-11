@@ -1504,3 +1504,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/homekit
   branch: main
+- name: contacts
+  description: contacts from GitHub
+  repo_url: https://github.com/vestrel00/contacts-android.git
+  source_folder: docs
+  target_folder: docs/github-scraped/contacts
+  branch: main
