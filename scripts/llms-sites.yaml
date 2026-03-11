@@ -1247,3 +1247,6 @@ sites:
 - name: pega
   base_url: https://pega.org/docs/
   description: pega documentation
+- name: fast-check
+  base_url: https://fast-check.dev/
+  description: fast-check documentation
