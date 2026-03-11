@@ -1753,3 +1753,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/neomodel
   branch: main
+- name: dapper
+  description: dapper from GitHub
+  repo_url: https://github.com/DapperLib/DapperAOT.git
+  source_folder: docs
+  target_folder: docs/github-scraped/dapper
+  branch: main
