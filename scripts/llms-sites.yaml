@@ -1229,3 +1229,6 @@ sites:
 - name: vueuse
   base_url: https://vueuse.org/
   description: vueuse documentation
+- name: threejs
+  base_url: https://threejs.org/docs/
+  description: threejs documentation
