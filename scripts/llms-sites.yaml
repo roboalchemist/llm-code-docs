@@ -1220,3 +1220,6 @@ sites:
 - name: stytch
   base_url: https://stytch.com/
   description: stytch documentation
+- name: unleash
+  base_url: https://docs.getunleash.io/
+  description: unleash documentation
