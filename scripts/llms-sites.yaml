@@ -1238,3 +1238,6 @@ sites:
 - name: supabase-auth
   base_url: https://docs.supabase.com/
   description: supabase-auth documentation
+- name: aws-cognito
+  base_url: https://docs.aws.amazon.com/
+  description: aws-cognito documentation
