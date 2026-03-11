@@ -1663,3 +1663,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/argocd
   branch: main
+- name: externaldns
+  description: externaldns from GitHub
+  repo_url: https://github.com/kubernetes-sigs/external-dns.git
+  source_folder: docs
+  target_folder: docs/github-scraped/externaldns
+  branch: main
