@@ -1232,3 +1232,6 @@ sites:
 - name: threejs
   base_url: https://threejs.org/docs/
   description: threejs documentation
+- name: anchore-enterprise
+  base_url: https://docs.anchore.com/
+  description: anchore-enterprise documentation
