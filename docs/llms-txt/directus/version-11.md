@@ -1,0 +1,359 @@
+# Source: https://directus.io/docs/raw/releases/breaking-changes/version-11.md
+
+# Version 11
+
+> Breaking changes may require action on your part before upgrading.
+
+## Version 11.14.1
+
+#### Asset Permissions
+
+`AssetsService.getAsset` and `GET /assets/:id` now respect the users `directus_files` permissions when returning file based fields.
+
+#### OAuth, OpenID, and SAML redirects
+
+The SSO callback URL generation and redirect validation now includes port matching to ensure redirects target the correct server.
+
+## Version 11.14.0
+
+#### Sidebar states removed from appStore
+
+The `navbarOpen`, `sidebarOpen`, and `fullScreen` states have been removed from the `appStore` store.
+
+## Version 11.13.0
+
+#### Non-relation types remove from RELATIONAL_TYPES
+
+`presentation` and `group` are have been removed from `RELATIONAL_TYPES`.
+
+#### `<scope>.delete` hook
+
+The `<scope>.delete` hook was moved before permissions checks, and as such will now trigger regardless of the user permissions. Ensure any necessary permission checks are performed prior to any data processing.
+
+The hook will also use any keys returned in place of the original keys for any subsequent processing.
+
+## Version 11.12.0
+
+#### Content Versioning
+
+Content Versioning has been further enhanced to ensure `USER_CREATED`, `USER_UPDATED`, `DATE_CREATED`, and `DATE_UPDATED` fields now represent the last actual changes, not the promotion metadata.
+
+Additionally, if a non-existent version is requested, the API will now return a Forbidden error instead of defaulting to the main version.
+
+## Version 11.11.0
+
+#### Content Versioning
+
+Content Versioning has been updated to correctly return deeply nested relational data and support all query parameters when requesting a version of an item.
+
+Due to these changes the following breaking changes and caveats should be noted:
+
+**Breaking Changes**
+
+1. Relational versioned data now requires explicit field expansion to be included in the response.
+2. Invalid data (e.g. Fails validation rules) will now error on query.
+3. Query parameters now apply to the versioned data instead of the main record, this applies to relational data as well.
+
+**Caveat**
+
+1. A merged relational object combining the main and current version is now returned. Permissions and validations are accounted for during the merge process.
+2. New relational records will return with an `id` of null until promoted to main.
+3. Due to the use of database transactions under the hood, deadlocking may occur when querying a version of an item.
+4. When using SQLite, the above mentioned database transactions will temporarily block all other requests when querying a version of an item.
+
+## Version 11.10.1
+
+#### Typed services for API extensions using TypeScript
+
+The services exposed to API extensions using TypeScript are now fully typed instead of `any`, which may cause new type errors when building extensions.
+
+Arguments of service methods are now strictly typed, which can result in type errors for broader types that would not error before:
+
+- The ItemsService constructor now expects the collection name to be a `string` and will error on `string | undefined` (or other unions).
+- Similarly, functions like `service.readOne()`/`service.readMany()` now expect `string | number` for their primary keys and will error for nullable types
+
+<callout icon="material-symbols:info-outline">
+
+**Workaround**
+
+<collapsible name="type workarounds">
+
+If you encounter type errors, you can cast the services to `any` to restore the previous behavior:
+
+```ts
+export default defineHook(({ filter, action }, context) => {
+  const { services, database: knex, getSchema, logger } = context;
+  const { ItemsService, FieldsService } = services as any;
+
+  ...
+});
+```
+
+</collapsible>
+</callout>
+
+## Version 11.10.0
+
+#### Database-only tables are now excluded from snapshots
+
+Snapshots now exclude tables not tracked in `directus_collections` (database-only tables).
+
+<table>
+<thead>
+  <tr>
+    <th>
+      Source Version
+    </th>
+    
+    <th>
+      Target Version
+    </th>
+    
+    <th>
+      Behavior
+    </th>
+    
+    <th>
+      Impact
+    </th>
+  </tr>
+</thead>
+
+<tbody>
+  <tr>
+    <td>
+      < 11.10.0
+    </td>
+    
+    <td>
+      ≥ 11.10.0
+    </td>
+    
+    <td>
+      Database-only tables from source will be created on target
+    </td>
+    
+    <td>
+      ⚠️ Tables added
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      ≥ 11.10.0
+    </td>
+    
+    <td>
+      < 11.10.0
+    </td>
+    
+    <td>
+      Database-only tables will be dropped from target
+    </td>
+    
+    <td>
+      🚨 Data loss risk
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      ≥ 11.10.0
+    </td>
+    
+    <td>
+      ≥ 11.10.0
+    </td>
+    
+    <td>
+      Database-only tables are ignored in snapshots
+    </td>
+    
+    <td>
+      ✅ No changes
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      < 11.10.0
+    </td>
+    
+    <td>
+      < 11.10.0
+    </td>
+    
+    <td>
+      Database-only tables may be created or dropped
+    </td>
+    
+    <td>
+      ⚠️ Depends on the diff between source/target
+    </td>
+  </tr>
+</tbody>
+</table>
+
+Please review your snapshot workflows to ensure these changes will not result in unexpected behaviour.
+
+#### `NODE_ENV` is no longer replaced for API extensions
+
+The `NODE_ENV` value for API extensions now respects its defined value, rather than being hardcoded to `production`.
+
+## Version 11.9.0
+
+#### SDK login function now uses a payload parameter for email and password
+
+The SDK's `login` functions now takes a `payload` object that accepts `email`/`password` or `identifier`/`password`
+property combos to support both `local` and `LDAP` provider login.
+
+The new usage is `sdk.login({ email, password })` or `sdk.login({ identifier, password })` for LDAP instead of `sdk.login(email, password)`.
+
+#### SDK refresh and logout functions now use an options parameter for mode and refresh_token values
+
+The SDK's `refresh` and `logout` functions now take an `options` object that accepts the optional `mode` and
+`refresh_token` values
+
+The new usage for `refresh` is `sdk.request(refresh({ mode: "json", refresh_token }))` instead of `sdk.request(refresh('json', refresh_token))`.
+
+### Flows with a manual trigger require authentication
+
+User authentication is required to trigger flows with a manual trigger.
+For publicly accessible flows, please use a webhook trigger instead.
+
+## Version 11.7.0
+
+### Officially dropped support for MySQL 5.7
+
+[MySQL 5.7 reached end of life](https://endoflife.date/mysql) on 31 October 2023, and is no longer supported.
+
+## Version 11.6.0
+
+### GraphQL primary key field type changed from `String` to `ID`
+
+GraphQL primary key field types have changed from `String` to `ID`. If you're using GraphQL queries or mutations that pass primary keys as variables, you’ll need to update those variable types from `String` to `ID` to maintain compatibility.
+
+### `items.create` action hook receives final payload
+
+We now pass the final payload to the `items.create` action hook, after the filter hooks and preset changes have been applied, instead of the original payload.
+
+## Version 11.5.0
+
+### Changed error message when a Flow condition operation fails
+
+The error thrown when a Flow condition operation fails has been changed to `FailedValidationError`.
+
+Flows that check errors from Flow condition operation failures will need to be updated accordingly.
+
+## Version 11.1.2
+
+### New Comment Endpoints
+
+We've introduced a dedicated `directus_comments` collection, replacing the previous system that used `directus_activity`
+for comments. While new comment endpoints have been added, existing endpoints remain functional.
+
+Comment primary keys are now UUIDs instead of numeric values, which may impact custom type checking implementations.
+
+### SDK Comment Function Uses New Endpoints
+
+The internal comment endpoints in the Directus SDK have been updated to reflect this change. To avoid errors, ensure
+your Directus version is compatible with the latest SDK when using comment functions.
+
+### Migrate to `CommentsService` in Extensions
+
+Extensions using the `ActivityService` to manage comments should migrate to the new `CommentsService`.
+
+## Version 11.1.1
+
+### Dropped support for the SendGrid email transport option
+
+The SendGrid abstraction for `nodemailer` is no longer supported, so we have dropped it's usage from Directus. Users of
+SendGrid should update their configuration to use their SendGrid account's SMTP Relay configuration instead.
+
+## Version 11.0.0
+
+Directus 11 introduces policies, a new concept within access control configuration. Permissions are no longer held in
+roles, but instead in policies. Policies can be attached to roles and also directly to users.
+
+While users can still only have one direct role, roles can now also be nested within roles. A user's permissions are now
+an aggregate of all policies attached directly to them, to their role, and any nested roles.
+
+### Changes to Object Properties
+
+Object properties have changed and moved. This should only impact users who use and rely on the users, roles, and
+permissions endpoints.
+
+#### Users
+
+Users now have one additional property - `policies`, which is a many-to-many relationship to `policies`.
+
+#### Roles
+
+Roles no longer hold `admin_access`, `app_access`, `enforce_tfa`, or `ip_access`. These have been moved to `policies`.
+
+Roles now have one additional property - `children`, which is a one-to-many relationship to `roles`.
+
+#### Permissions
+
+Permissions are no longer attached to a `role`. This has been changed to a `policy`.
+
+### Requests for Missing Fields Now Fail
+
+If you are requesting fields that do not exist anymore, your requests will throw an error. To fix this, either put
+fields back into your data model or remove them from the request.
+
+### M2A Fields Now Require Collection Name
+
+If you are requesting Many-to-Any (M2A) fields without collection name, they will throw an error. To fix this, you need
+to put the collection name you are targeting. This is true regardless of level or if using REST/GraphQL.
+
+<callout icon="material-symbols:info-outline">
+
+**Migration/Mitigation**
+
+<collapsible name="migration steps">
+
+You could previously request fields in a M2A builder without specifying the collection they came from, for example:
+
+```text
+GET https://example.directus.app/items/example?fields=items.item.m2a_field
+```
+
+This no longer works and you must specify which collection the field is located in:
+
+```text
+GET https://example.directus.app/items/example?fields=items.item:m2a_collection.m2a_field
+```
+
+[Understand the M2A field syntax in our global query parameter page](/guides/connect/query-parameters).
+
+</collapsible>
+</callout>
+
+### Changes for Extension Developers
+
+#### Properties Returned from `usersStore`
+
+The `usersStore` has a `role` object that previously contained the `admin_access`, `app_access`, and `enforce_tfa`
+properties. These are now returned directly in the `user` object.
+
+#### `preRegisterCheck` Data Structure
+
+If you use the `preRegisterCheck` guard function in your module extension to determine whether it is shown, it now
+receives a different data structure. It previously received a list of permission objects. Now, it receives the same data
+returned from the new [Get Current User Permissions](/api/permissions#get-current-user-permissions)
+endpoint.
+
+### Replaced `mysql` with `mysql2`
+
+The database client library [`mysql`](https://www.npmjs.com/package/mysql) has been replaced with
+[`mysql2`](https://www.npmjs.com/package/mysql2), which is a continuation of the former. The client is used to connect
+to MySQL/MariaDB databases.
+
+If you're using MySQL/MariaDB, please note that:
+
+- `mysql2` leads to cross-collection queries (filtering on relations) with stricter charset comparison. Therefore,
+ensure again that the value of the config option
+[`DB_CHARSET`/`DB_CHARSET_NUMBER`](/configuration/general#database) matches the charset of your tables.
+- Values of type "Decimal" are now returned as a `string` instead of a `number`, which ensures that the precision is
+preserved.

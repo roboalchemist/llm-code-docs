@@ -1,0 +1,89 @@
+# Source: https://directus.io/docs/raw/getting-started/upload-files.md
+
+# Upload & Access Files
+
+> This guide will cover importing a file via URL, requesting assets, and using transformation parameters.
+
+<video-embed video-id="43612e4c-1bd9-411e-bd73-9c835a9b51e0">
+
+
+
+</video-embed>
+
+This guide will cover importing a file via URL, requesting assets, and using transformation parameters.
+
+<cta-cloud>
+
+
+
+</cta-cloud>
+
+## Import a File
+
+In the module bar, click <icon name="material-symbols:folder-outline-rounded">
+
+
+
+</icon>
+
+ to go to the files module. Click the <icon name="material-symbols:add">
+
+
+
+</icon>
+
+ button and <icon name="material-symbols:link">
+
+
+
+</icon>
+
+ to import a file via URL.
+
+Use `https://directus.io/docs/img/examples/files-import.png` and the file will be uploaded to your asset storage.
+
+## Access a File
+
+The uploaded file is immediately available via the Data Studio for users with the correct access control. From here, you can download, edit, or replace files.
+
+You can access files via URL in your applications by using the following URL pattern:
+
+```text
+https://example.directus.app/assets/<file-id>?access_token=token
+```
+
+The token must belong to a user who has access to read files in the `directus_files` collection. If the public role has read access, you can omit the `access_token` parameter.
+
+<callout color="primary" icon="material-symbols:menu-book-outline" to="/guides/auth/access-control">
+
+Learn how to limit access to data in your project through custom permissions.
+
+</callout>
+
+## Transform an Image
+
+Directus can transform images via query parameters, commonly used to provide the most suitable size and file format.
+
+Add the following query parameter to the end of your file URL:
+
+```text
+width=200
+```
+
+Your new URL should look like this:
+
+```text
+https://example.directus.app/assets/<file-id>?access_token=token&width=200
+```
+
+The asset will be transformed, saved to your asset storage, and returned to the user. On subsequent requests, the already transformed asset will be returned.
+
+## Next Steps
+
+Read more about [uploading files](/guides/files/upload), [advanced transformations](/guides/files/access), and then refer to the Files API reference to manage user accounts.
+
+<callout color="green" icon="material-symbols:code-blocks-rounded" to="/api/files">
+
+Explore the Files API Reference.
+
+</callout>

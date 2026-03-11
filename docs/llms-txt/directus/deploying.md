@@ -1,0 +1,116 @@
+# Source: https://directus.io/docs/raw/self-hosting/deploying.md
+
+# Deploying Directus
+
+> This section covers the deployment process of Directus, including environment variables, versioning, persistence, and initial admin user setup.
+
+Directus is provided as a Docker image. This means you can deploy it on many different platforms. While each is slightly different, the core concepts are the same.
+
+<callout icon="material-symbols:school-outline" color="secondary" to="/tutorials/self-hosting">
+
+See all vendor-specifc self-hosting deployment tutorials.
+
+</callout>
+
+## Environment Variables
+
+Directus uses environment variables for database and asset storage connection details and some [key project configuration](/configuration/general). At the very least, you will need to [configure a database](/configuration/database) and set a `SECRET`.
+
+Dependent on your hosting provider, you will need to set these variables in a different place. In some, it is a dedicated key/value store provided in a Web UI. In others, it is a file that is loaded when the Docker container starts. As Directus is provided as a Docker image, you shouldn't need to do more than set environment variables to get started.
+
+## Version Pinning
+
+The Docker image is published on Docker Hub as `directus/directus`. The version is specified in the tag. For example, `directus/directus:11.1.1`. You can always use the `latest` tag instead of an explicit version, but we recommend pinning to a specific version for production environments.
+
+This also means your project will not be automatically updated to the latest version when restarting the container, which is recommended in case of required changes or breaking changes.
+
+## Persistence
+
+Docker containers are ephemeral by design. This means that any changes you make while the container is running will be lost when the container is stopped or restarted.
+
+To persist data, you will need to mount a volume to the container. When using Docker Compose, this is done by adding a `volumes` section to the `docker-compose.yml` file, which you can see in our [create a project page](/getting-started/overview).
+
+Files can be persisted by mounting a volume to the container, or by setting up an [external storage location](/configuration/files).
+
+## Initial Admin User
+
+You do not need to create the initial admin user in the database manually. When you first access Directus, you'll be guided through the Studio onboarding screen to configure your first admin account.
+
+For automated deployments or scripted setups, you can pre-configure the initial admin user by setting the [`ADMIN_*` environment variables](/configuration/general#first-admin-user) and static access token.
+
+## Docker Compose Examples
+
+<callout icon="material-symbols:info-outline">
+
+**Postgres, Redis, Directus, Local Files**
+Be sure to replace placeholder values with your own.
+
+```yaml
+services:
+  database:
+    image: postgis/postgis:13-master
+    volumes:
+      - ./data/database:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: "directus"
+      POSTGRES_PASSWORD: "directus"
+      POSTGRES_DB: "directus"
+    healthcheck:
+      test: ["CMD", "pg_isready", "--host=localhost", "--username=directus"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_interval: 5s
+      start_period: 30s
+
+  cache:
+    image: redis:6
+    healthcheck:
+      test: ["CMD-SHELL", "[ $$(redis-cli ping) = 'PONG' ]"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_interval: 5s
+      start_period: 30s
+
+  directus:
+    image: directus/directus:REPLACE_WITH_VERSION
+    ports:
+      - 8055:8055
+    volumes:
+      - ./uploads:/directus/uploads
+      - ./extensions:/directus/extensions
+    depends_on:
+      database:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+    environment:
+      SECRET: "REPLACE_WITH_YOUR_SECRET"
+
+      DB_CLIENT: "pg"
+      DB_HOST: "database"
+      DB_PORT: "5432"
+      DB_DATABASE: "directus"
+      DB_USER: "directus"
+      DB_PASSWORD: "directus"
+
+      CACHE_ENABLED: "true"
+      CACHE_AUTO_PURGE: "true"
+      CACHE_STORE: "redis"
+      REDIS: "redis://cache:6379"
+
+      ADMIN_EMAIL: "REPLACE_WITH_YOUR_EMAIL"
+      ADMIN_PASSWORD: "REPLACE_WITH_YOUR_PASSWORD"
+
+      PUBLIC_URL: "REPLACE_WITH_YOUR_URL"
+```
+
+</callout>
+
+<callout icon="material-symbols:info-outline">
+
+**Request Other Examples**
+We're keeping this section light for now, but if you need examples for other database providers, let us know!
+
+</callout>

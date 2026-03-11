@@ -1193,3 +1193,6 @@ sites:
 - name: back4app
   base_url: https://back4app.io/docs/
   description: back4app documentation
+- name: directus
+  base_url: https://directus.io/docs/
+  description: directus documentation

@@ -1,0 +1,314 @@
+# Source: https://directus.io/docs/raw/cloud/projects/create.md
+
+# Create a Project
+
+> Create a project in Directus Cloud.
+
+Projects come with custom URLs, daily [backups](/cloud/projects/backups), and the recommended infrastructure for most projects.
+
+To create a project, open the team menu in the dashboard header and select the desired team and click on "Projects". Select the team you wish to create a project under and click on "Create Project".
+
+Projects come with the following configuration options:
+
+- **Project Name** — Custom. This can be changed at any time.
+- **Project URL** — Custom URL: `your-custom-url.directus.app`. *This cannot be changed*.
+- Datacenter Region — `United States, East`, `Europe, Frankfurt` or
+`Asia Pacific, Singapore`.
+
+## Project Template
+
+This is the base state of your Directus project. You can select from one of the following:
+
+- **Empty Project** – A completely blank project, ready for you to take in the direction you need.
+- **Simple CRM** – A customer relationship management system (CRM) that you can customise to your needs.
+- **Simple eCommerce** – A ready-to-go online store you can get going with.
+- **Simple CMS** – A ready-to-go content management sytem (CMS) that you can customise to your needs.
+
+## Project Tiers
+
+The available [project tiers](/cloud/getting-started/introduction) are billed either monthly or anually.
+
+The Directus Cloud enterprise tier offers power and scale to meet any project's needs and offers more datacenter regions, upgraded support options, and more.
+
+[Contact us](https://directus.io/contact) to find out more.
+
+## Datacenter Regions
+
+the location you choose to host your project in can have a measurable impact. To help optimize your project and meet any local data compliance laws such as GDPR, professional and enterprise offer multiple datacenter regions to host from.
+
+There are 19 regions available for enterprise projects, and 3 for professional projects:
+
+<table>
+<tbody>
+  <tr>
+    <th>
+      Region
+    </th>
+    
+    
+        <th>
+      Enterprise
+    </th>
+    
+    
+        <th>
+      Professional
+    </th>
+  </tr>
+  
+  
+    <tr>
+    <td>
+      United States, N. Virginia
+    </td>
+    
+    
+        <td>
+      ✅
+    </td>
+    
+    
+        <td>
+      ✅
+    </td>
+  </tr>
+  
+  
+    <tr>
+    <td>
+      Europe, Frankfurt
+    </td>
+    
+    
+        <td>
+      ✅
+    </td>
+    
+    
+        <td>
+      ✅
+    </td>
+  </tr>
+  
+  
+    <tr>
+    <td>
+      Asia Pacific, Singapore
+    </td>
+    
+    
+        <td>
+      ✅
+    </td>
+    
+    
+        <td>
+      ✅
+    </td>
+  </tr>
+  
+  
+    <tr>
+    <td>
+      United States, Ohio
+    </td>
+    
+    
+        <td>
+      ✅
+    </td>
+    
+    
+        <td>
+      ✅
+    </td>
+  </tr>
+  
+  
+    <tr>
+    <td>
+      United States, N. California
+    </td>
+    
+    
+        <td>
+      ✅
+    </td>
+    
+    
+        <td>
+      
+    </td>
+  </tr>
+  
+  
+    <tr>
+    <td>
+      United States, Oregon
+    </td>
+    
+    
+        <td>
+      ✅
+    </td>
+    
+    
+        <td>
+      
+    </td>
+  </tr>
+  
+  
+    <tr>
+    <td>
+      Africa, Cape Town
+    </td>
+    
+    
+        <td>
+      ✅
+    </td>
+    
+    
+        <td>
+      
+    </td>
+  </tr>
+  
+  
+    <tr>
+    <td>
+      Asia Pacific, Sydney
+    </td>
+    
+    
+        <td>
+      ✅
+    </td>
+    
+    
+        <td>
+      
+    </td>
+  </tr>
+  
+  
+    <tr>
+    <td>
+      Canada, Central
+    </td>
+    
+    
+        <td>
+      ✅
+    </td>
+    
+    
+        <td>
+      
+    </td>
+  </tr>
+  
+  
+    <tr>
+    <td>
+      Europe, London
+    </td>
+    
+    
+        <td>
+      ✅
+    </td>
+    
+    
+        <td>
+      
+    </td>
+  </tr>
+  
+  
+    <tr>
+    <td>
+      Europe, Milan
+    </td>
+    
+    
+        <td>
+      ✅
+    </td>
+    
+    
+        <td>
+      
+    </td>
+  </tr>
+  
+  
+    <tr>
+    <td>
+      Europe, Paris
+    </td>
+    
+    
+        <td>
+      ✅
+    </td>
+    
+    
+        <td>
+      
+    </td>
+  </tr>
+  
+  
+    <tr>
+    <td>
+      Europe, Stockholm
+    </td>
+    
+    
+        <td>
+      ✅
+    </td>
+    
+    
+        <td>
+      
+    </td>
+  </tr>
+  
+  
+    <tr>
+    <td>
+      Europe, Zurich
+    </td>
+    
+    
+        <td>
+      ✅
+    </td>
+    
+    
+        <td>
+      
+    </td>
+  </tr>
+  
+  
+    <tr>
+    <td>
+      South America, São Paulo
+    </td>
+    
+    
+        <td>
+      ✅
+    </td>
+    
+    
+        <td>
+      
+    </td>
+  </tr>
+</tbody>
+</table>
