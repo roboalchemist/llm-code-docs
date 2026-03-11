@@ -1166,3 +1166,6 @@ sites:
 - name: wdm
   base_url: https://docs.rs/wdm/latest/
   description: wdm documentation
+- name: nuget
+  base_url: https://docs.nuget.org/
+  description: nuget documentation
