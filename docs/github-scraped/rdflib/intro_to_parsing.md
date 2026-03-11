@@ -128,7 +128,7 @@ for s, p, o, g in g.quads((None, RDF.type, None, None)):
 
 This will print out:
 
-```
+```text
 http://example.com/person/drewp http://example.com/person/graph-1
 http://example.com/person/nick http://example.com/person/graph-2
 ```

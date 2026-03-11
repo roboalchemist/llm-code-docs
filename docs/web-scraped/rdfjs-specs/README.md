@@ -12,6 +12,7 @@ This directory contains specifications and documentation for working with RDF (R
 ## Key Concepts
 
 ### RDF Terms
+
 - **NamedNode**: An IRI-identified resource
 - **Literal**: A value with optional language tag or datatype
 - **BlankNode**: An anonymous resource (no explicit IRI)
@@ -19,10 +20,12 @@ This directory contains specifications and documentation for working with RDF (R
 - **DefaultGraph**: Represents the default graph in a dataset
 
 ### Quads vs Triples
+
 - **Triple**: (subject, predicate, object) - basic RDF statement
 - **Quad**: (subject, predicate, object, graph) - extends triples with named graphs support
 
 ### Datasets
+
 - Collection of quads organized by named graphs
 - Supports querying and manipulation of RDF data
 - Primary abstraction for working with RDF in JavaScript

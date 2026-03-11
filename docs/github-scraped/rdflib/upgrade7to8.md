@@ -6,4 +6,3 @@
 ## Python version
 
 RDFLib 7 requires Python 3.9 or later.
-

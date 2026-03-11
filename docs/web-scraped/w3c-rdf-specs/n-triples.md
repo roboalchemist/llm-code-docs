@@ -8,18 +8,13 @@
 
 RDF 1.1 N-Triples
 
-
-
 [![W3C](https://www.w3.org/Icons/w3c_home)](https://www.w3.org/)
 
-RDF 1.1 N-Triples
-=================
+## RDF 1.1 N-Triples
 
 A line-based syntax for an RDF graph
-------------------------------------
 
-W3C Recommendation 25 February 2014
------------------------------------
+## W3C Recommendation 25 February 2014
 
 This version:
 :   [http://www.w3.org/TR/2014/REC-n-triples-20140225/](https://www.w3.org/TR/2014/REC-n-triples-20140225/)
@@ -63,13 +58,11 @@ rules apply.
 
 ---
 
-Abstract
---------
+## Abstract
 
 N-Triples is a line-based, plain text format for encoding an RDF graph.
 
-Status of This Document
------------------------
+## Status of This Document
 
 *This section describes the status of this document at the time of its publication.
 Other documents may supersede this document. A list of current W3C publications and the
@@ -113,37 +106,35 @@ Claim(s)](https://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential) m
 [section
 6 of the W3C Patent Policy](https://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure).
 
-Table of Contents
------------------
+## Table of Contents
 
 * [1. Introduction](#sec-introduction)
 * [2. N-Triples Language](#sec-n-triples-language)
-  + [2.1 Simple Triples](#simple-triples)
-  + [2.2 IRIs](#sec-iri)
-  + [2.3 RDF Literals](#sec-literals)
-  + [2.4 RDF Blank Nodes](#BNodes)
+  * [2.1 Simple Triples](#simple-triples)
+  * [2.2 IRIs](#sec-iri)
+  * [2.3 RDF Literals](#sec-literals)
+  * [2.4 RDF Blank Nodes](#BNodes)
 * [3. Changes from RDF Test Cases format](#n-triples-changes)
 * [4. A Canonical form of N-Triples](#canonical-ntriples)
 * [5. Conformance](#conformance)
 * [6. Media Type and Content Encoding](#n-triples-mediatype)
-  + [6.1 Other Media Types](#sec-other-media-types)
+  * [6.1 Other Media Types](#sec-other-media-types)
 * [7. Grammar](#n-triples-grammar)
 * [8. Parsing](#sec-parsing)
-  + [8.1 RDF Term Constructors](#sec-parsing-terms)
-  + [8.2 RDF Triple Construction](#rdf-triple-construction)
+  * [8.1 RDF Term Constructors](#sec-parsing-terms)
+  * [8.2 RDF Triple Construction](#rdf-triple-construction)
 * [9. Acknowledgements](#section-ack)
 * [A. Change log](#sec-changes)
-  + [A.1 Changes between Proposed Recommendation and Recommendation](#changes-between-proposed-recommendation-and-recommendation)
-  + [A.2 Changes between Candidate Recommendation and Proposed Recommendation](#changes-between-candidate-recommendation-and-proposed-recommendation)
-  + [A.3 Changes between Last Call Working Draft and Candidate recommendation](#changes-between-last-call-working-draft-and-candidate-recommendation)
-  + [A.4 Changes between Last Call Working Draft and publication as Note](#changes-between-last-call-working-draft-and-publication-as-note)
+  * [A.1 Changes between Proposed Recommendation and Recommendation](#changes-between-proposed-recommendation-and-recommendation)
+  * [A.2 Changes between Candidate Recommendation and Proposed Recommendation](#changes-between-candidate-recommendation-and-proposed-recommendation)
+  * [A.3 Changes between Last Call Working Draft and Candidate recommendation](#changes-between-last-call-working-draft-and-candidate-recommendation)
+  * [A.4 Changes between Last Call Working Draft and publication as Note](#changes-between-last-call-working-draft-and-publication-as-note)
 * [B. N-Triples Internet Media Type, File Extension and Macintosh File Type](#sec-mediaReg-n-triples)
 * [C. References](#references)
-  + [C.1 Normative references](#normative-references)
-  + [C.2 Informative references](#informative-references)
+  * [C.1 Normative references](#normative-references)
+  * [C.2 Informative references](#informative-references)
 
-1. Introduction
----------------
+## 1. Introduction
 
 This document defines N-Triples, a concrete syntax for
 RDF [[RDF11-CONCEPTS](#bib-RDF11-CONCEPTS)].
@@ -165,7 +156,8 @@ exactly each triple matching the N-Triples
 [`triple`](#grammar-production-triple)
 production.
 
-2. N-Triples Language
+1. N-Triples Language
+
 ---------------------
 
 ### 2.1 Simple Triples
@@ -209,7 +201,8 @@ Repeated use of the same blank node label identifies the same RDF blank node.
 
 Example 4
 
-3. Changes from RDF Test Cases format
+1. Changes from RDF Test Cases format
+
 -------------------------------------
 
 *This section is non-normative.*
@@ -223,7 +216,8 @@ Example 4
 * More than one way to represent a single character
 * Blank node labels may start with a digit
 
-4. A Canonical form of N-Triples
+1. A Canonical form of N-Triples
+
 --------------------------------
 
 This section defined a canonical form of N-Triples which has
@@ -248,8 +242,7 @@ Canonical N-Triples has the following additional constraints on layout:
   allowed directly in
   [STRING\_LITERAL\_QUOTE](#grammar-production-STRING_LITERAL_QUOTE).
 
-5. Conformance
---------------
+## 5. Conformance
 
 As well as sections marked as non-normative, all authoring guidelines, diagrams, examples,
 and notes in this specification are non-normative. Everything else in this specification is
@@ -275,7 +268,8 @@ A conforming N-Triples parser is a system capable of reading N-Triples documents
 The IRI that identifies the N-Triples language is:
 `http://www.w3.org/ns/formats/N-Triples`
 
-6. Media Type and Content Encoding
+1. Media Type and Content Encoding
+
 ----------------------------------
 
 The media type of N-Triples is `application/n-triples`.
@@ -287,8 +281,7 @@ registration form.
 
 N-Triples has been historically provided with other media types. N-Triples may also be provided as `text/plain`. When used in this way N-Triples *MUST* use the escaped form of any character outside US-ASCII. As N-Triples is a subset of Turtle an N-Triples document *MAY* also be provided as `text/turtle`. In both of these cases the document is not an N-Triples document as an N-Triples document is only provided as `application/n-triples`.
 
-7. Grammar
-----------
+## 7. Grammar
 
 An N-Triples document is a Unicode [[UNICODE](#bib-UNICODE)] character string encoded in UTF-8.
 Unicode code points only in the range U+0 to U+10FFFF inclusive are allowed.
@@ -314,23 +307,22 @@ Escape sequence rules are the same as Turtle
 | [2] | `triple` | ::= | [subject](#grammar-production-subject) [predicate](#grammar-production-predicate) [object](#grammar-production-object) '`.`' |
 | [3] | `subject` | ::= | [IRIREF](#grammar-production-IRIREF) `|`  [BLANK\_NODE\_LABEL](#grammar-production-BLANK_NODE_LABEL) |
 | [4] | `predicate` | ::= | [IRIREF](#grammar-production-IRIREF) |
-| [5] | `object` | ::= | [IRIREF](#grammar-production-IRIREF) `|`  [BLANK\_NODE\_LABEL](#grammar-production-BLANK_NODE_LABEL) `|`  [literal](#grammar-production-literal) |
+| [5] | `object` | ::= | [IRIREF](#grammar-production-IRIREF) `|` [BLANK\_NODE\_LABEL](#grammar-production-BLANK_NODE_LABEL) `|`  [literal](#grammar-production-literal) |
 | [6] | `literal` | ::= | [STRING\_LITERAL\_QUOTE](#grammar-production-STRING_LITERAL_QUOTE) ('`^^`' [IRIREF](#grammar-production-IRIREF) `|`  [LANGTAG](#grammar-production-LANGTAG))? |
 | Productions for terminals | | | |
 | [144s] | `LANGTAG` | ::= | '`@`' [`a-zA-Z`]`+` ('`-`' [`a-zA-Z0-9`]`+`)`*` |
 | [7] | `EOL` | ::= | [`#xD#xA`]`+` |
-| [8] | `IRIREF` | ::= | '`<`' ([`` ^#x00-#x20<>"{}|^`\ ``] `|`  [UCHAR](#grammar-production-UCHAR))`*` '`>`' |
-| [9] | `STRING_LITERAL_QUOTE` | ::= | '`"`' ([`^#x22#x5C#xA#xD`] `|`  [ECHAR](#grammar-production-ECHAR) `|`  [UCHAR](#grammar-production-UCHAR))`*` '`"`' |
-| [141s] | `BLANK_NODE_LABEL` | ::= | '`_:`' ([PN\_CHARS\_U](#grammar-production-PN_CHARS_U) `|`  [`0-9`]) (([PN\_CHARS](#grammar-production-PN_CHARS) `|`  '`.`')`*` [PN\_CHARS](#grammar-production-PN_CHARS))? |
-| [10] | `UCHAR` | ::= | '`\u`' [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) `|`  '`\U`' [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) |
+| [8] | `IRIREF` | ::= | '`<`' ([`` ^#x00-#x20<>"{}|^`\ ``]`|`[UCHAR](#grammar-production-UCHAR))`*`'`>`' |
+| [9] | `STRING_LITERAL_QUOTE` | ::= | '`"`' ([`^#x22#x5C#xA#xD`] `|` [ECHAR](#grammar-production-ECHAR) `|`[UCHAR](#grammar-production-UCHAR))`*`'`"`' |
+| [141s] | `BLANK_NODE_LABEL` | ::= | '`_:`' ([PN\_CHARS\_U](#grammar-production-PN_CHARS_U) `|`[`0-9`]) (([PN\_CHARS](#grammar-production-PN_CHARS)`|`'`.`')`*` [PN\_CHARS](#grammar-production-PN_CHARS))? |
+| [10] | `UCHAR` | ::= | '`\u`' [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) `|`'`\U`' [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) |
 | [153s] | `ECHAR` | ::= | '`\`' [`tbnrf"'\`] |
-| [157s] | `PN_CHARS_BASE` | ::= | [`A-Z`] `|`  [`a-z`] `|`  [`#x00C0-#x00D6`] `|`  [`#x00D8-#x00F6`] `|`  [`#x00F8-#x02FF`] `|`  [`#x0370-#x037D`] `|`  [`#x037F-#x1FFF`] `|`  [`#x200C-#x200D`] `|`  [`#x2070-#x218F`] `|`  [`#x2C00-#x2FEF`] `|`  [`#x3001-#xD7FF`] `|`  [`#xF900-#xFDCF`] `|`  [`#xFDF0-#xFFFD`] `|`  [`#x10000-#xEFFFF`] |
-| [158s] | `PN_CHARS_U` | ::= | [PN\_CHARS\_BASE](#grammar-production-PN_CHARS_BASE) `|`  '`_`' `|`  '`:`' |
-| [160s] | `PN_CHARS` | ::= | [PN\_CHARS\_U](#grammar-production-PN_CHARS_U) `|`  '`-`' `|`  [`0-9`] `|`  `#x00B7` `|`  [`#x0300-#x036F`] `|`  [`#x203F-#x2040`] |
-| [162s] | `HEX` | ::= | [`0-9`] `|`  [`A-F`] `|`  [`a-f`] |
+| [157s] | `PN_CHARS_BASE` | ::= | [`A-Z`] `|`[`a-z`]`|`[`#x00C0-#x00D6`]`|`[`#x00D8-#x00F6`]`|`[`#x00F8-#x02FF`]`|`[`#x0370-#x037D`]`|`[`#x037F-#x1FFF`]`|`[`#x200C-#x200D`]`|`[`#x2070-#x218F`]`|`[`#x2C00-#x2FEF`]`|`[`#x3001-#xD7FF`]`|`[`#xF900-#xFDCF`]`|`[`#xFDF0-#xFFFD`]`|`[`#x10000-#xEFFFF`] |
+| [158s] | `PN_CHARS_U` | ::= | [PN\_CHARS\_BASE](#grammar-production-PN_CHARS_BASE) `|`'`_`'`|`'`:`' |
+| [160s] | `PN_CHARS` | ::= | [PN\_CHARS\_U](#grammar-production-PN_CHARS_U) `|`'`-`'`|`[`0-9`]`|`  `#x00B7` `|`[`#x0300-#x036F`]`|`[`#x203F-#x2040`] |
+| [162s] | `HEX` | ::= | [`0-9`] `|`[`A-F`]`|`[`a-f`] |
 
-8. Parsing
-----------
+## 8. Parsing
 
 Parsing N-Triples requires a state of one item:
 
@@ -352,8 +344,7 @@ This table maps productions and lexical tokens to `RDF terms` or components of `
 
 An N-Triples document defines an RDF graphs composed of a set of RDF triples. The `triple` production produces a triple defined by the terms constructed for `subject`, `predicate` and `object`.
 
-9. Acknowledgements
--------------------
+## 9. Acknowledgements
 
 *This section is non-normative.*
 
@@ -364,8 +355,7 @@ This specification is a product of extended deliberations by the
 members of the RDF Working Group.
 It draws upon the earlier specification in [RDF Test Cases](https://www.w3.org/TR/2004/REC-rdf-testcases-20040210/#ntriples), edited by Dave Beckett.
 
-A. Change log
--------------
+## A. Change log
 
 ### A.1 Changes between Proposed Recommendation and Recommendation
 
@@ -390,8 +380,7 @@ No substantive changes.
 * Removed "Summary of differences in N-Triples and Turtle".
 * Recommendation track, not a working group Note.
 
-B. N-Triples Internet Media Type, File Extension and Macintosh File Type
-------------------------------------------------------------------------
+## B. N-Triples Internet Media Type, File Extension and Macintosh File Type
 
 Contact:
 :   Eric Prud'hommeaux
@@ -474,8 +463,7 @@ Restrictions on usage:
 Author/Change controller:
 :   The N-Triples specification is the product of the RDF WG. The W3C reserves change control over this specifications.
 
-C. References
--------------
+## C. References
 
 ### C.1 Normative references
 

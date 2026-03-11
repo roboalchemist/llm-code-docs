@@ -1,6 +1,7 @@
 # W3C RDF (Resource Description Framework) Specifications
 
 This directory contains W3C specifications for RDF and related technologies, including:
+
 - Core RDF concepts and abstract syntax
 - SPARQL query and update languages
 - Serialization formats (Turtle, JSON-LD, N-Triples, N-Quads, RDF/XML)
@@ -8,10 +9,12 @@ This directory contains W3C specifications for RDF and related technologies, inc
 ## Core Specifications
 
 ### RDF 1.1
+
 - **[RDF 1.1 Concepts and Abstract Syntax](rdf-concepts.md)** - The normative definition of RDF graph syntax and semantics
 - **[RDF 1.1 Semantics](rdf-semantics.md)** - Formal model-theoretic semantics for RDF entailment
 
 ### RDF Serialization Formats
+
 - **[RDF 1.1 Turtle](turtle.md)** - Human-readable RDF serialization format
 - **[RDF 1.1 XML Syntax](rdf-xml.md)** - XML-based RDF serialization (legacy)
 - **[RDF 1.1 N-Triples](n-triples.md)** - Line-based RDF serialization for easy parsing
@@ -19,6 +22,7 @@ This directory contains W3C specifications for RDF and related technologies, inc
 - **[JSON-LD 1.1](json-ld.md)** - JSON-based serialization for linked data
 
 ### SPARQL Query Language
+
 - **[SPARQL 1.1 Overview](sparql-overview.md)** - Overview of SPARQL specifications
 - **[SPARQL 1.1 Query Language](sparql-query.md)** - Query language for RDF
 - **[SPARQL 1.1 Update](sparql-update.md)** - Specification for updating RDF graphs
@@ -26,6 +30,7 @@ This directory contains W3C specifications for RDF and related technologies, inc
 ## Key Concepts
 
 ### RDF Basics
+
 - **Triple**: The fundamental RDF data structure (subject, predicate, object)
 - **IRI**: Internationalized Resource Identifier for identifying resources
 - **Literal**: Values such as strings, numbers, dates
@@ -33,6 +38,7 @@ This directory contains W3C specifications for RDF and related technologies, inc
 - **RDF Graph**: A set of RDF triples
 
 ### SPARQL
+
 - **SPARQL Query**: SELECT, CONSTRUCT, DESCRIBE, ASK query forms
 - **SPARQL Update**: INSERT, DELETE, LOAD, CLEAR operations
 - **SPARQL Endpoint**: HTTP service providing SPARQL query/update access

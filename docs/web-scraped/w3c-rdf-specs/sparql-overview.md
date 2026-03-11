@@ -12,11 +12,9 @@ SPARQL 1.1 Overview
 
 [![W3C](https://www.w3.org/Icons/w3c_home)](https://www.w3.org/)
 
-SPARQL 1.1 Overview
-===================
+## SPARQL 1.1 Overview - Recommendation
 
 W3C Recommendation 21 March 2013
---------------------------------
 
 This version:
 :   [http://www.w3.org/TR/2013/REC-sparql11-overview-20130321/](https://www.w3.org/TR/2013/REC-sparql11-overview-20130321/)
@@ -39,13 +37,11 @@ See also [**translations**](https://www.w3.org/2003/03/Translations/byTechnology
 
 ---
 
-Abstract
---------
+## Abstract
 
 This document is an overview of SPARQL 1.1. It provides an introduction to a set of W3C specifications that facilitate querying and manipulating RDF graph content on the Web or in an RDF store.
 
-Status of this Document
------------------------
+## Status of this Document
 
 #### May Be Superseded
 
@@ -85,8 +81,7 @@ archive](http://lists.w3.org/Archives/Public/public-rdf-dawg-comments/)). Althou
 
 *This document was produced by a group operating under the [5 February 2004 W3C Patent Policy](https://www.w3.org/Consortium/Patent-Policy-20040205/). W3C maintains a [public list of any patent disclosures](https://www.w3.org/2004/01/pp-impl/35463/status) made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains [Essential Claim(s)](https://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential) must disclose the information in accordance with  [section 6 of the W3C Patent Policy](https://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure).*
 
-Table of Contents
------------------
+## Table of Contents
 
 1 [Introduction](#sec-intro)  
     1.1 [Example](#Example)  
@@ -103,8 +98,7 @@ Table of Contents
 
 ---
 
-1 Introduction
---------------
+## 1. Introduction
 
 SPARQL 1.1 is a set of specifications that provide languages and protocols to query and manipulate RDF graph content on the Web or in an RDF store. The standard comprises the following specifications:
 
@@ -126,7 +120,7 @@ Some RDF graph published on the Web at the URL '[http://example.org/alice'](http
 
 Graph: [http://example.org/alice](http://example.org/alice "http://example.org/alice")
 
-```
+```turtle
  @prefix foaf: <http://xmlns.com/foaf/0.1/> .
  @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
@@ -145,12 +139,11 @@ Graph: [http://example.org/alice](http://example.org/alice "http://example.org/a
 
 With SPARQL 1.1 one can query such graphs, load them into RDF stores and manipulate them in various ways.
 
-2 SPARQL 1.1 Query Language
----------------------------
+## 2. SPARQL 1.1 Query Language
 
 Assuming the graph data from above is loaded into a SPARQL service (i.e., an HTTP service endpoint that can process SPARQL queries), the [SPARQL 1.1 Query Language](https://www.w3.org/TR/sparql11-query/ "http://www.w3.org/TR/sparql11-query/") can be used to formulate queries ranging from simple graph pattern matching to complex queries. For instance, one can ask using a SPARQL SELECT query for names of persons and the number of their friends:
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 SELECT ?name (COUNT(?friend) AS ?count)
 WHERE { 
@@ -165,8 +158,7 @@ Compared to SPARQL1.0, SPARQL 1.1 adds a number of new features to the query lan
 
 The [SPARQL 1.1 Query Language](https://www.w3.org/TR/sparql11-query/ "http://www.w3.org/TR/sparql11-query/") document defines the syntax and semantics of SPARQL 1.1 queries and provides various examples for their usage.
 
-3 Different query results formats supported by SPARQL 1.1 (XML, JSON, CSV, TSV)
--------------------------------------------------------------------------------
+## 3. Different query results formats supported by SPARQL 1.1 (XML, JSON, CSV, TSV)
 
 Results of SELECT queries in SPARQL comprise bags of mappings from variables to RDF terms, often conveniently represented in tabular form. For instance, the query from Section 2 has the following results:
 
@@ -189,7 +181,7 @@ The results of our example query, in these three formats look as follows.
 
 **XML:**
 
-```
+```xml
 <?xml version="1.0"?>
 <sparql xmlns="http://www.w3.org/2005/sparql-results#">
  <head>
@@ -227,7 +219,7 @@ The results of our example query, in these three formats look as follows.
 
 **JSON:**
 
-```
+```json
 {
   "head": {
     "vars": [ "name" , "count" ]
@@ -253,7 +245,7 @@ The results of our example query, in these three formats look as follows.
 
 **CSV:**
 
-```
+```csv
 name,count
 Alice,3
 Bob,1
@@ -262,7 +254,7 @@ Charlie,1
 
 **TSV:**
 
-```
+```text
 ?name<TAB>?count
 "Alice"<TAB>3
 "Bob"<TAB>1
@@ -271,14 +263,13 @@ Charlie,1
 
 (***Note:** tab characters are visually marked with* '<TAB>' *here for illustration only.*)
 
-4 SPARQL 1.1 Federated Query
-----------------------------
+## 4. SPARQL 1.1 Federated Query
 
 The [SPARQL 1.1 Federated Query](https://www.w3.org/TR/sparql11-federated-query/ "http://www.w3.org/TR/sparql11-federated-query/") document describes an extension of the basic [SPARQL 1.1 Query Language](https://www.w3.org/TR/sparql11-query/ "http://www.w3.org/TR/sparql11-query/") to explicitly delegate certain subqueries to different SPARQL endpoints.
 
 For instance, in our example, one may want to know whether there is anyone among Alice's friends with the same name as the resource identified by the IRI <[http://dbpedia.org/resource/Snoopy](http://dbpedia.org/resource/Snoopy "http://dbpedia.org/resource/Snoopy")> at DBpedia. This can be done by combining a query for the names of friends with a remote call to the SPARQL endpoint at [http://dbpedia.org/sparql](http://dbpedia.org/sparql "http://dbpedia.org/sparql") finding out the name of <[http://dbpedia.org/resource/Snoopy](http://dbpedia.org/resource/Snoopy "http://dbpedia.org/resource/Snoopy")> using the SERVICE keyword as follows:
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 SELECT ?name
 WHERE {
@@ -296,8 +287,7 @@ with the following result:
 
 Here, the first part of the pattern in the WHERE part is still matched against the local SPARQL service, whereas the evaluation of the pattern following the SERVICE keyword is delegated to the respective remote SPARQL service.
 
-5 SPARQL 1.1 Entailment Regimes
--------------------------------
+## 5. SPARQL 1.1 Entailment Regimes
 
 SPARQL could be used together with ontological information in the form of, for example, RDF Schema or OWL axioms.
 For instance, let us assume that - apart from the data about Alice - some ontological information in the form
@@ -306,7 +296,7 @@ constructs defining the FOAF vocabulary is loaded into our example SPARQL servic
 
 The [FOAF](http://xmlns.com/foaf/0.1/) ontology: (only an excerpt given)
 
-```
+```turtle
  @prefix foaf: <http://xmlns.com/foaf/0.1/> .
  @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
  ...
@@ -316,7 +306,7 @@ The [FOAF](http://xmlns.com/foaf/0.1/) ontology: (only an excerpt given)
 
 The following query asks for labels of persons:
 
-```
+```sparql
 SELECT ?label 
 WHERE { ?person rdfs:label ?label }
 ```
@@ -335,14 +325,13 @@ since foaf:name is a sub-property of rdfs:label.
 
 The [SPARQL 1.1 Entailment Regimes](https://www.w3.org/TR/sparql11-entailment/ "http://www.w3.org/TR/sparql11-entailment/") specification defines which answers should be given under which entailment regime, specifying entailment regimes for RDF, RDF Schema, D-Entailment [[RDF-MT](#RDF-MT)], OWL [[OWL2-Overview](#OWL2-Overview)], and RIF [[RIF-Overview](#RIF-Overview)].
 
-6 SPARQL 1.1 Update Language
-----------------------------
+## 6. SPARQL 1.1 Update Language
 
 The [SPARQL 1.1 Update](https://www.w3.org/TR/sparql11-update/ "http://www.w3.org/TR/sparql11-update/") specification defines the syntax and semantics of SPARQL 1.1 update requests and provides various examples for their usage. Update operations can consist of several sequential requests and are performed on a collection of graphs in a Graph Store. Operations are provided to update, create and remove RDF graphs in a Graph Store.
 
 For instance, the following request inserts a new friend of Alice named Dorothy into the default graph of our example SPARQL service and thereafter deletes all names of Alice's friends with an English language tag.
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/> .
 
 INSERT DATA { <http://www.example.org/alice#me> foaf:knows [ foaf:name "Dorothy" ]. } ;
@@ -353,14 +342,13 @@ WHERE { <http://www.example.org/alice#me> foaf:knows ?person .
 
 As the second operation shows, insertions and deletions can be dependent on the results of queries to the Graph Store; the respective syntax used in the WHERE part is derived from the [SPARQL 1.1 Query Language](https://www.w3.org/TR/sparql11-query/ "http://www.w3.org/TR/sparql11-query/").
 
-7 SPARQL 1.1 Protocol for RDF
------------------------------
+## 7. SPARQL 1.1 Protocol for RDF
 
 The [SPARQL 1.1 Protocol](https://www.w3.org/TR/sparql11-protocol/ "http://www.w3.org/TR/sparql11-protocol/") for RDF defines how to transfer SPARQL 1.1 queries and update requests to a SPARQL service via HTTP. It also defines how to map requests to HTTP GET and POST operations and what respective HTTP responses to such requests should look like.
 
 For instance, the query from Section 3 above issued against a SPARQL query service hosted at [http://www.example.org/sparql/](http://www.example.org/sparql/ "http://www.example.org/sparql/") could according to this specification be wrapped into an HTTP GET request (where the query string is URI-encoded):
 
-```
+```text
 GET /sparql/?query=PREFIX%20foaf%3A%20%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%0ASELECT%20%3Fname%20%28COUNT%28%3Ffriend%29%20AS%20%3Fcount%29%0AWHERE%20%7B%20%0A%20%20%20%20%3Fperson%20foaf%3Aname%20%3Fname%20.%20%0A%20%20%20%20%3Fperson%20foaf%3Aknows%20%3Ffriend%20.%20%0A%7D%20GROUP%20BY%20%3Fperson%20%3Fname HTTP/1.1
 Host: www.example.org
 User-agent: my-sparql-client/0.1
@@ -368,28 +356,27 @@ User-agent: my-sparql-client/0.1
 
 Details about response encoding and different operations for query and update requests, as well as supported HTTP methods, are described in the Protocol specification.
 
-8 SPARQL 1.1 Service Description
+## 8. SPARQL 1.1 Service Description
 --------------------------------
 
 The [SPARQL 1.1 Service Description](https://www.w3.org/TR/sparql11-service-description/ "http://www.w3.org/TR/sparql11-service-description/") document describes a method for discovering and an RDF vocabulary for describing SPARQL services made available via the [SPARQL 1.1 Protocol for RDF](https://www.w3.org/TR/sparql11-protocol/ "http://www.w3.org/TR/sparql11-protocol/").
 
 According to this specification, a service endpoint, when accessed via an HTTP GET operation without further (query or update request) parameters should return an RDF description of the service provided. For instance, the following HTTP request:
 
-```
+```text
 GET /sparql/ HTTP/1.1
 Host: www.example.org
 ```
 
 issued against the SPARQL endpoint hosted at [http://www.example.org/sparql/](http://www.example.org/sparql/ "http://www.example.org/sparql/") should return an RDF description, using the Service Description vocabulary. Such a description provides, for instance, information about the default dataset of the respective endpoint, or about SPARQL query language features and entailment regimes that are supported.
 
-9 SPARQL 1.1 Graph Store HTTP Protocol
---------------------------------------
+## 9. SPARQL 1.1 Graph Store HTTP Protocol
 
 For many applications and services that deal with RDF data, the full [SPARQL 1.1 Update](https://www.w3.org/TR/sparql11-update/ "http://www.w3.org/TR/sparql11-update/") language might not be required. To this end, the [SPARQL 1.1 Graph Store HTTP Protocol](https://www.w3.org/TR/sparql11-http-rdf-update/ "http://www.w3.org/TR/sparql11-http-rdf-update/") provides means to perform certain operations to manage collections of graphs directly via HTTP operations.
 
 For instance, the first part of the update request in Section 4 above is a simple insertion of triples into an RDF graph. On a service supporting this protocol, such insertion can - instead of via a SPARQL 1.1 update request - directly be performed via an HTTP POST operation taking the RDF triples to be inserted as payload:
 
-```
+```text
 POST /rdf-graphs/service?graph=http%3A%2F%2Fwww.example.org%2Falice HTTP/1.1
 Host: example.org
 Content-Type: text/turtle
@@ -399,7 +386,7 @@ Content-Type: text/turtle
 
 Other direct HTTP operations for modifying (e.g. to use HTTP PUT to replace an entire graph, or HTTP DELETE to drop an RDF graph) or retrieving (via HTTP GET) RDF graphs are described in the [SPARQL 1.1 Graph Store HTTP Protocol](https://www.w3.org/TR/sparql11-http-rdf-update/ "http://www.w3.org/TR/sparql11-http-rdf-update/") specification, which can be viewed as a lightweight alternative to the SPARQL 1.1 protocol in combination with the full [SPARQL 1.1 Query](https://www.w3.org/TR/sparql11-query/ "http://www.w3.org/TR/sparql11-query/") and [SPARQL 1.1 Update](https://www.w3.org/TR/sparql11-update/ "http://www.w3.org/TR/sparql11-update/") languages.
 
-10 Acknowledgements
+## 10. Acknowledgements
 -------------------
 
 The members of the W3C SPARQL Working group who actively contributed to the SPARQL 1.1 specifications are:
@@ -423,7 +410,7 @@ The members of the W3C SPARQL Working group who actively contributed to the SPAR
 * Andy Seaborne, The Apache Software Foundation
 * Gregory Todd Williams, Rensselaer Polytechnic Institute
 
-11 References
+## 11. References
 -------------
 
 SPARQL-XML-Result
@@ -454,8 +441,7 @@ SPARQL10-Query
 :   [SPARQL Query Language for RDF](https://www.w3.org/TR/rdf-sparql-query/),
     ed. Eric Prud'hommeaux and Andy Seaborne, W3C Recommendation 15 January 2008 (See http://www.w3.org/TR/rdf-sparql-query/.)
 
-Change Log
-----------
+## Change Log
 
 ### Changes since Proposed Recommendation
 

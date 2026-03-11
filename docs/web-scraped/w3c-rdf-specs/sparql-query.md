@@ -12,11 +12,7 @@ SPARQL 1.1 Query Language
 
 [![W3C](https://www.w3.org/Icons/w3c_home)](https://www.w3.org/)
 
-SPARQL 1.1 Query Language
-=========================
-
-W3C Recommendation 21 March 2013
---------------------------------
+## W3C Recommendation 21 March 2013
 
 This version:
 :   [http://www.w3.org/TR/2013/REC-sparql11-query-20130321/](https://www.w3.org/TR/2013/REC-sparql11-query-20130321/)
@@ -43,8 +39,7 @@ See also [**translations**](https://www.w3.org/2003/03/Translations/byTechnology
 
 ---
 
-Abstract
---------
+## Abstract
 
 RDF is a directed, labeled graph data format for representing information
 in the Web. This specification defines the syntax and semantics of the
@@ -57,8 +52,7 @@ creating values by expressions, extensible value testing, and constraining queri
 by source RDF graph. The results of SPARQL queries can be result
 sets or RDF graphs.
 
-Status of This Document
------------------------
+## Status of This Document
 
 #### May Be Superseded
 
@@ -98,8 +92,7 @@ archive](http://lists.w3.org/Archives/Public/public-rdf-dawg-comments/)). Althou
 
 *This document was produced by a group operating under the [5 February 2004 W3C Patent Policy](https://www.w3.org/Consortium/Patent-Policy-20040205/). W3C maintains a [public list of any patent disclosures](https://www.w3.org/2004/01/pp-impl/35463/status) made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains [Essential Claim(s)](https://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential) must disclose the information in accordance with  [section 6 of the W3C Patent Policy](https://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure).*
 
-Table of Contents
------------------
+## Table of Contents
 
 1 **[Introduction](#introduction)**  
     1.1 [Document Outline](#docOutline)  
@@ -301,7 +294,7 @@ Graphs](#namedAndDefaultGraph)
     18.2 [Translation to the SPARQL Algebra](#sparqlQuery)  
         18.2.1 [Variable Scope](#variableScope)  
         18.2.2 [Converting Graph Patterns](#convertGraphPattern)  
-            18.2.2.1 [Expand Syntax Forms](#sparqlExpandForms)   
+            18.2.2.1 [Expand Syntax Forms](#sparqlExpandForms)
             18.2.2.2 [Collect FILTER Elements](#sparqlCollectFilters)  
             18.2.2.3 [Translate Property Path Expressions](#sparqlTranslatePathExpressions)  
             18.2.2.4 [Translate Property Path Patterns](#sparqlTranslatePathPatterns)  
@@ -360,8 +353,7 @@ A **[References](#sec-bibliography)**
 
 ---
 
-1 Introduction
---------------
+## 1 Introduction
 
 RDF is a directed, labeled graph data format for representing information
 in the Web. RDF is often used to represent, among other things, personal
@@ -459,11 +451,11 @@ This document uses the
 [Turtle](https://www.w3.org/TR/turtle/) [[TURTLE](#TURTLE)]
 data format to show each triple explicitly. Turtle allows IRIs to be abbreviated with prefixes:
 
-```
+```sparql
 @prefix dc:   <http://purl.org/dc/elements/1.1/> .
 @prefix :     <http://example.org/book/> .
 :book1  dc:title  "SPARQL Tutorial" .
-```
+```turtle
 
 #### 1.2.3 Result Descriptions
 
@@ -509,8 +501,7 @@ In addition, we define the following terms:
 * [RDF Term](#defn_RDFTerm), which includes IRIs, blank nodes and literals
 * [Simple Literal](#defn_SimpleLiteral), which covers literals without language tag or datatype IRI
 
-2 Making Simple Queries (Informative)
--------------------------------------
+## 2 Making Simple Queries (Informative)
 
 Most forms of SPARQL query contain a set of triple patterns called a *basic graph pattern*. Triple patterns are like RDF triples except that each of the subject, predicate and object may be a variable. A basic graph pattern *matches* a subgraph of the RDF data when [RDF terms](#defn_RDFTerm) from that subgraph may be substituted for the variables and the result is RDF graph equivalent to the subgraph.
 
@@ -525,19 +516,19 @@ consists of a single triple pattern with a single variable (`?title`) in the obj
 
 Data:
 
-```
+```turtle
 <http://example.org/book/book1> <http://purl.org/dc/elements/1.1/title> "SPARQL Tutorial" .
-```
+```sparql
 
 Query:
 
-```
+```sparql
 SELECT ?title
 WHERE
 {
   <http://example.org/book/book1> <http://purl.org/dc/elements/1.1/title> ?title .
 }
-```
+```text
 
 This query, on the data above, has one solution:
 
@@ -555,7 +546,7 @@ zero, one or multiple solutions to a query.
 
 Data:
 
-```
+```sparql
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
 _:a  foaf:name   "Johnny Lee Outlaw" .
@@ -563,17 +554,17 @@ _:a  foaf:mbox   <mailto:jlow@example.com> .
 _:b  foaf:name   "Peter Goodguy" .
 _:b  foaf:mbox   <mailto:peter@example.org> .
 _:c  foaf:mbox   <mailto:carol@example.org> .
-```
+```sparql
 
 Query:
 
-```
+```sparql
 PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
 SELECT ?name ?mbox
 WHERE
   { ?x foaf:name ?name .
     ?x foaf:mbox ?mbox }
-```
+```sparql
 
 Query Result:
 
@@ -587,15 +578,15 @@ to RDF terms so that the query pattern matches the data. The result set gives
 all the possible solutions. In the above example,
 the following two subsets of the data provided the two matches.
 
-```
+```turtle
  _:a foaf:name  "Johnny Lee Outlaw" .
  _:a foaf:box   <mailto:jlow@example.com> .
-```
+```sparql
 
-```
+```turtle
  _:b foaf:name  "Peter Goodguy" .
  _:b foaf:box   <mailto:peter@example.org> .
-```
+```text
 
 This is a [basic graph pattern match](#BGPsparql); all the
 variables used in the query pattern must be bound in every solution.
@@ -604,7 +595,7 @@ variables used in the query pattern must be bound in every solution.
 
 The data below contains three RDF literals:
 
-```
+```sparql
 @prefix dt:   <http://example.org/datatype#> .
 @prefix ns:   <http://example.org/ns#> .
 @prefix :     <http://example.org/ns#> .
@@ -613,7 +604,7 @@ The data below contains three RDF literals:
 :x   ns:p     "cat"@en .
 :y   ns:p     "42"^^xsd:integer .
 :z   ns:p     "abc"^^dt:specialDatatype .
-```
+```text
 
 Note that, in Turtle, `"cat"@en` is an RDF literal with a lexical form "cat" and a language tag "en"; `"42"^^xsd:integer` is a typed literal with the datatype `http://www.w3.org/2001/XMLSchema#integer`; and `"abc"^^dt:specialDatatype` is a typed literal with the datatype `http://example.org/datatype#specialDatatype`.
 
@@ -627,9 +618,9 @@ language tag, as defined in [Best Common Practice 47](http://www.rfc-editor.org/
 This following query has no solution because `"cat"` is not the
 same RDF literal as `"cat"@en`:
 
-```
+```sparql
 SELECT ?v WHERE { ?v ?p "cat" }
-```
+```sparql
 
 | v |
 | --- |
@@ -637,9 +628,9 @@ SELECT ?v WHERE { ?v ?p "cat" }
 but the query below will find a solution where variable `v` is bound to
 `:x` because the language tag is specified and matches the given data:
 
-```
+```sparql
 SELECT ?v WHERE { ?v ?p "cat"@en }
-```
+```turtle
 
 | v |
 | --- |
@@ -654,9 +645,9 @@ of  `"42"^^<http://www.w3.org/2001/XMLSchema#integer>`.
 The pattern in the following query has a solution with variable `v`
 bound to `:y`.
 
-```
+```sparql
 SELECT ?v WHERE { ?v ?p 42 }
-```
+```turtle
 
 | v |
 | --- |
@@ -671,9 +662,9 @@ The following query has a solution with variable `v` bound to
 of the values in the space of the datatype. Because the lexical form and
 datatype IRI both match, the literal matches.
 
-```
+```sparql
 SELECT ?v WHERE { ?v ?p "abc"^^<http://example.org/datatype#specialDatatype> }
-```
+```turtle
 
 | v |
 | --- |
@@ -696,20 +687,20 @@ result set indicates the same blank node.
 
 Data:
 
-```
+```sparql
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
 _:a  foaf:name   "Alice" .
 _:b  foaf:name   "Bob" .
-```
+```sparql
 
 Query:
 
-```
+```sparql
 PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
 SELECT ?x ?name
 WHERE  { ?x foaf:name ?name }
-```
+```text
 
 | x | name |
 | --- | --- |
@@ -743,24 +734,24 @@ and also assign the value by using the [BIND](#bind) form.
 
 Data:
 
-```
+```sparql
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
           
 _:a  foaf:givenName   "John" .
 _:a  foaf:surname  "Doe" .
-```
+```sparql
 
 Query:
 
-```
+```sparql
 PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
 SELECT ( CONCAT(?G, " ", ?S) AS ?name )
 WHERE  { ?P foaf:givenName ?G ; foaf:surname ?S }
-```
+```sparql
 
 Query:
 
-```
+```sparql
 PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
 SELECT ?name
 WHERE  { 
@@ -768,7 +759,7 @@ WHERE  {
       foaf:surname ?S 
    BIND(CONCAT(?G, " ", ?S) AS ?name)
 }
-```
+```sparql
 
 | name |
 | --- |
@@ -785,7 +776,7 @@ the graph pattern of the query.
 
 Data:
 
-```
+```sparql
 @prefix org:    <http://example.com/ns#> .
 
 _:a  org:employeeName   "Alice" .
@@ -793,31 +784,31 @@ _:a  org:employeeId     12345 .
 
 _:b  org:employeeName   "Bob" .
 _:b  org:employeeId     67890 .
-```
+```sparql
 
 Query:
 
-```
+```sparql
 PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
 PREFIX org:    <http://example.com/ns#>
 
 CONSTRUCT { ?x foaf:name ?name }
 WHERE  { ?x org:employeeName ?name }
-```
+```sparql
 
 Results:
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
       
 _:x foaf:name "Alice" .
 _:y foaf:name "Bob" .
-```
+```text
 
 which can be serialized in
 [RDF/XML](https://www.w3.org/TR/rdf-syntax-grammar/) as:
 
-```
+```turtle
 <rdf:RDF
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:foaf="http://xmlns.com/foaf/0.1/"
@@ -829,10 +820,9 @@ which can be serialized in
     <foaf:name>Bob</foaf:name>
   </rdf:Description>
 </rdf:RDF>
-```
+```sparql
 
-3 RDF Term Constraints (Informative)
-------------------------------------
+## 3 RDF Term Constraints (Informative)
 
 Graph pattern matching produces a solution sequence, where each solution has a set of bindings of variables to RDF terms. SPARQL `FILTER`s
 restrict solutions to those for which the filter expression evaluates to `TRUE`.
@@ -841,7 +831,7 @@ This section provides an informal introduction to SPARQL `FILTER`s; their semant
 
 Data:
 
-```
+```sparql
 @prefix dc:   <http://purl.org/dc/elements/1.1/> .
 @prefix :     <http://example.org/book/> .
 @prefix ns:   <http://example.org/ns#> .
@@ -850,7 +840,7 @@ Data:
 :book1  ns:price  42 .
 :book2  dc:title  "The Semantic Web" .
 :book2  ns:price  23 .
-```
+```text
 
 ### 3.1 Restricting the Value of Strings
 
@@ -861,13 +851,13 @@ function.
 
 Query:
 
-```
+```sparql
 PREFIX  dc:  <http://purl.org/dc/elements/1.1/>
 SELECT  ?title
 WHERE   { ?x dc:title ?title
           FILTER regex(?title, "^SPARQL") 
         }
-```
+```text
 
 Query Result:
 
@@ -880,13 +870,13 @@ flag.
 
 Query:
 
-```
+```sparql
 PREFIX  dc:  <http://purl.org/dc/elements/1.1/>
 SELECT  ?title
 WHERE   { ?x dc:title ?title
           FILTER regex(?title, "web", "i" ) 
         }
-```
+```text
 
 Query Result:
 
@@ -902,14 +892,14 @@ SPARQL `FILTER`s can restrict on arithmetic expressions.
 
 Query:
 
-```
+```sparql
 PREFIX  dc:  <http://purl.org/dc/elements/1.1/>
 PREFIX  ns:  <http://example.org/ns#>
 SELECT  ?title ?price
 WHERE   { ?x ns:price ?price .
           FILTER (?price < 30.5)
           ?x dc:title ?title . }
-```
+```text
 
 Query Result:
 
@@ -930,8 +920,7 @@ Section [Operator Mapping](#OperatorMapping) describes the operators
 and section [Function Definitions](#SparqlOps) the functions that can be
 that can be applied to RDF terms.
 
-4 SPARQL Syntax
----------------
+## 4 SPARQL Syntax
 
 This section covers the syntax used by SPARQL for [RDF terms](#sparqlBasicTerms) and [triple patterns](#sparqlTriplePatterns). The full grammar
 is given in [section 19](#grammar).
@@ -984,19 +973,19 @@ was retrieved. If none of the above specifies the Base URI, the default Base URI
 
 The following fragments are some of the different ways to write the same IRI:
 
-```
+```turtle
 <http://example.org/book/book1>
-```
+```sparql
 
-```
+```turtle
 BASE <http://example.org/book/>
 <book1>
-```
+```sparql
 
-```
+```sparql
 PREFIX book: <http://example.org/book/>
 book:book1
-```
+```sparql
 
 #### 4.1.2 Syntax for Literals
 
@@ -1063,64 +1052,64 @@ subject and object positions.
 
 The following two forms
 
-```
+```json
 [ :p "v" ] .
-```
+```sparql
 
-```
+```json
 [] :p "v" .
-```
+```sparql
 
 allocate a unique blank node label (here "`b57`") and are equivalent
 to writing:
 
-```
+```sparql
 _:b57 :p "v" .
-```
+```sparql
 
 This allocated blank node label can be used as the subject or object of further
 triple patterns. For example, as a subject:
 
-```
+```json
 [ :p "v" ] :q "w" .
-```
+```sparql
 
 which is equivalent to the two triples:
 
-```
+```sparql
 _:b57 :p "v" .
 _:b57 :q "w" .
-```
+```sparql
 
 and as an object:
 
-```
+```text
 :x :q [ :p "v" ] .
-```
+```sparql
 
 which is equivalent to the two triples:
 
-```
+```sparql
 :x  :q _:b57 .
 _:b57 :p "v" .
-```
+```text
 
 Abbreviated blank node syntax can be combined with other abbreviations for
 [common
 subjects](#predObjLists) and [common predicates](#objLists).
 
-```
+```json
   [ foaf:name  ?name ;
     foaf:mbox  <mailto:alice@example.org> ]
-```
+```sparql
 
 This is the same as writing the following basic graph pattern for some uniquely
 allocated blank node label, "`b18`":
 
-```
+```turtle
   _:b18  foaf:name  ?name .
   _:b18  foaf:mbox  <mailto:alice@example.org> .
-```
+```sparql
 
 ### 4.2 Syntax for Triple Patterns
 
@@ -1130,27 +1119,27 @@ constructs.
 
 The following examples express the same query:
 
-```
+```sparql
 PREFIX  dc: <http://purl.org/dc/elements/1.1/>
 SELECT  ?title
 WHERE   { <http://example.org/book/book1> dc:title ?title }
-```
+```sparql
 
-```
+```sparql
 PREFIX  dc: <http://purl.org/dc/elements/1.1/>
 PREFIX  : <http://example.org/book/>
 
 SELECT  $title
 WHERE   { :book1  dc:title  $title }
-```
+```sparql
 
-```
+```sparql
 BASE    <http://example.org/book/>
 PREFIX  dc: <http://purl.org/dc/elements/1.1/>
 
 SELECT  $title
 WHERE   { <book1>  dc:title  ?title }
-```
+```sparql
 
 #### 4.2.1 Predicate-Object Lists
 
@@ -1158,47 +1147,47 @@ Triple patterns with a common subject can be written so that the subject is only
 written once and is used for more than one triple pattern by employing the "`;`"
 notation.
 
-```
+```sparql
     ?x  foaf:name  ?name ;
         foaf:mbox  ?mbox .
-```
+```sparql
 
 This is the same as writing the triple patterns:
 
-```
+```sparql
     ?x  foaf:name  ?name .
     ?x  foaf:mbox  ?mbox .
-```
+```sparql
 
 #### 4.2.2 Object Lists
 
 If triple patterns share both subject and predicate, the objects may be separated
 by "`,`".
 
-```
+```sparql
     ?x foaf:nick  "Alice" , "Alice_" .
-```
+```sparql
 
 is the same as writing the triple patterns:
 
-```
+```sparql
    ?x  foaf:nick  "Alice" .
    ?x  foaf:nick  "Alice_" .
-```
+```sparql
 
 Object lists can be combined with predicate-object lists:
 
-```
+```sparql
    ?x  foaf:name ?name ; foaf:nick  "Alice" , "Alice_" .
-```
+```sparql
 
 is equivalent to:
 
-```
+```sparql
    ?x  foaf:name  ?name .
    ?x  foaf:nick  "Alice" .
    ?x  foaf:nick  "Alice_" .
-```
+```sparql
 
 #### 4.2.3 RDF Collections
 
@@ -1208,14 +1197,14 @@ When used with collection elements, such as `(1 ?x 3 4)`, triple patterns
 with blank nodes are allocated for the collection. The blank node at the head
 of the collection can be used as a subject or object in other triple patterns. The blank nodes allocated by the collection syntax do not occur elsewhere in the query.
 
-```
+```sparql
 (1 ?x 3 4) :p "w" .
-```
+```sparql
 
 is syntactic sugar for (noting that `b0`, `b1`, `b2` and `b3` do not occur anywhere else in the
 query):
 
-```
+```sparql
     _:b0  rdf:first  1 ;
           rdf:rest   _:b1 .
     _:b1  rdf:first  ?x ;
@@ -1225,17 +1214,17 @@ query):
     _:b3  rdf:first  4 ;
           rdf:rest   rdf:nil .
     _:b0  :p         "w" .
-```
+```sparql
 
 RDF collections can be nested and can involve other syntactic forms:
 
-```
+```text
 (1 [:p :q] ( 2 ) ) .
-```
+```sparql
 
 is syntactic sugar for:
 
-```
+```sparql
     _:b0  rdf:first  1 ;
           rdf:rest   _:b1 .
     _:b1  rdf:first  _:b2 .
@@ -1245,7 +1234,7 @@ is syntactic sugar for:
     _:b4  rdf:first  2 ;
           rdf:rest   rdf:nil .
     _:b3  rdf:rest   rdf:nil .
-```
+```sparql
 
 #### 4.2.4 rdf:type
 
@@ -1253,21 +1242,20 @@ The keyword "`a`" can be used as a predicate in a triple pattern and
 is an alternative for the IRI  `http://www.w3.org/1999/02/22-rdf-syntax-ns#type`.
 This keyword is case-sensitive.
 
-```
+```text
   ?x  a  :Class1 .
   [ a :appClass ] :p "v" .
-```
+```sparql
 
 is syntactic sugar for:
 
-```
+```sparql
   ?x    rdf:type  :Class1 .
   _:b0  rdf:type  :appClass .
   _:b0  :p        "v" .
-```
+```sparql
 
-5 Graph Patterns
-----------------
+## 5 Graph Patterns
 
 SPARQL is based around graph pattern matching. More complex graph patterns
 can be formed by combining smaller patterns in various ways:
@@ -1323,42 +1311,42 @@ In a SPARQL query string, a group graph pattern is delimited with braces:
 `{}`. For example, this query's query pattern is a group graph pattern of one basic
 graph pattern.
 
-```
+```sparql
 PREFIX foaf:    <http://xmlns.com/foaf/0.1/>
 SELECT ?name ?mbox
 WHERE  {
           ?x foaf:name ?name .
           ?x foaf:mbox ?mbox .
        }
-```
+```sparql
 
 The same solutions would be obtained from a query that grouped the triple patterns
 into two basic graph patterns. For example, the query below has a different
 structure but would yield the same solutions as the previous query:
 
-```
+```sparql
 PREFIX foaf:    <http://xmlns.com/foaf/0.1/>
 SELECT ?name ?mbox
 WHERE  { { ?x foaf:name ?name . }
          { ?x foaf:mbox ?mbox . }
        }
-```
+```sparql
 
 #### 5.2.1 Empty Group Pattern
 
 The group pattern:
 
-```
+```json
 { }
-```
+```sparql
 
 matches any graph (including the empty graph) with one solution that does not bind any
 variables. For example:
 
-```
+```sparql
 SELECT ?x
 WHERE {}
-```
+```sparql
 
 matches with one solution in which variable `x` is not bound.
 
@@ -1368,63 +1356,62 @@ A constraint, expressed by the keyword `FILTER`, is a
 restriction on solutions over the whole group in which the filter appears. The
 following patterns all have the same solutions:
 
-```
+```json
  {  ?x foaf:name ?name .
     ?x foaf:mbox ?mbox .
     FILTER regex(?name, "Smith")
  }
-```
+```sparql
 
-```
+```json
  {  FILTER regex(?name, "Smith")
     ?x foaf:name ?name .
     ?x foaf:mbox ?mbox .
  }
-```
+```sparql
 
-```
+```json
  {  ?x foaf:name ?name .
     FILTER regex(?name, "Smith")
     ?x foaf:mbox ?mbox .
  }
-```
+```sparql
 
 #### 5.2.3 Group Graph Pattern Examples
 
-```
+```json
   {
     ?x foaf:name ?name .
     ?x foaf:mbox ?mbox .
   }
-```
+```sparql
 
 is a group of one basic graph pattern and that basic graph pattern consists
 of two triple patterns.
 
-```
+```json
   {
     ?x foaf:name ?name . FILTER regex(?name, "Smith")
     ?x foaf:mbox ?mbox .
   }
-```
+```sparql
 
 is a group of one basic graph pattern and a filter, and that basic graph
 pattern consists of two triple patterns; the filter does not break the
 basic graph pattern into two basic graph patterns.
 
-```
+```json
   {
     ?x foaf:name ?name .
     {}
     ?x foaf:mbox ?mbox .
   }
-```
+```sparql
 
 is a group of three elements, a basic graph pattern of one triple pattern,
 an empty group, and another basic graph pattern of one triple pattern.
 
-6 Including Optional Values
----------------------------
+## 6 Including Optional Values
 
 Basic graph patterns allow applications to make queries where the entire query
 pattern must match for there to be a solution. For every solution of a query containing only group graph patterns with at least one basic graph pattern,
@@ -1441,33 +1428,33 @@ the solution.
 Optional parts of the graph pattern may be specified syntactically with the OPTIONAL
 keyword applied to a graph pattern:
 
-```
+```text
 pattern OPTIONAL { pattern }
-```
+```sparql
 
 The syntactic form:
 
-```
+```json
 { OPTIONAL { pattern } }
-```
+```sparql
 
 is equivalent to:
 
-```
+```json
 { { } OPTIONAL { pattern } }
-```
+```sparql
 
 The `OPTIONAL` keyword is left-associative :
 
-```
+```text
 pattern OPTIONAL { pattern } OPTIONAL { pattern }
-```
+```sparql
 
 is the same as:
 
-```
+```json
 { pattern OPTIONAL { pattern } } OPTIONAL { pattern }
-```
+```sparql
 
 In an optional match, either the optional graph pattern matches a graph, thereby
 defining and adding bindings to one or more solutions, or it leaves a solution unchanged without adding
@@ -1475,7 +1462,7 @@ any additional bindings.
 
 Data:
 
-```
+```sparql
 @prefix foaf:       <http://xmlns.com/foaf/0.1/> .
 @prefix rdf:        <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
@@ -1486,17 +1473,17 @@ _:a  foaf:mbox       <mailto:alice@work.example> .
 
 _:b  rdf:type        foaf:Person .
 _:b  foaf:name       "Bob" .
-```
+```sparql
 
 Query:
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 SELECT ?name ?mbox
 WHERE  { ?x foaf:name  ?name .
          OPTIONAL { ?x  foaf:mbox  ?mbox }
        }
-```
+```turtle
 
 With the data above, the query result is:
 
@@ -1520,7 +1507,7 @@ the query solution.
 
 Constraints can be given in an optional graph pattern. For example:
 
-```
+```sparql
 @prefix dc:   <http://purl.org/dc/elements/1.1/> .
 @prefix :     <http://example.org/book/> .
 @prefix ns:   <http://example.org/ns#> .
@@ -1529,16 +1516,16 @@ Constraints can be given in an optional graph pattern. For example:
 :book1  ns:price  42 .
 :book2  dc:title  "The Semantic Web" .
 :book2  ns:price  23 .
-```
+```sparql
 
-```
+```sparql
 PREFIX  dc:  <http://purl.org/dc/elements/1.1/>
 PREFIX  ns:  <http://example.org/ns#>
 SELECT  ?title ?price
 WHERE   { ?x dc:title ?title .
           OPTIONAL { ?x ns:price ?price . FILTER (?price < 30) }
         }
-```
+```text
 
 | title | price |
 | --- | --- |
@@ -1556,7 +1543,7 @@ In this example, there are two optional graph patterns.
 
 Data:
 
-```
+```sparql
 @prefix foaf:       <http://xmlns.com/foaf/0.1/> .
 
 _:a  foaf:name       "Alice" .
@@ -1564,18 +1551,18 @@ _:a  foaf:homepage   <http://work.example.org/alice/> .
 
 _:b  foaf:name       "Bob" .
 _:b  foaf:mbox       <mailto:bob@work.example> .
-```
+```sparql
 
 Query:
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 SELECT ?name ?mbox ?hpage
 WHERE  { ?x foaf:name  ?name .
          OPTIONAL { ?x foaf:mbox ?mbox } .
          OPTIONAL { ?x foaf:homepage ?hpage }
        }
-```
+```turtle
 
 Query result:
 
@@ -1584,8 +1571,7 @@ Query result:
 | "Alice" |  | <http://work.example.org/alice/> |
 | "Bob" | <mailto:bob@work.example> |  |
 
-7 Matching Alternatives
------------------------
+## 7 Matching Alternatives
 
 SPARQL provides a means of combining graph patterns so that one of several alternative
 graph patterns may match. If more than one of the alternatives matches, all the
@@ -1595,7 +1581,7 @@ Pattern alternatives are syntactically specified with the `UNION` keyword.
 
 Data:
 
-```
+```sparql
 @prefix dc10:  <http://purl.org/dc/elements/1.0/> .
 @prefix dc11:  <http://purl.org/dc/elements/1.1/> .
 
@@ -1607,17 +1593,17 @@ _:b  dc11:creator   "Bob" .
 
 _:c  dc10:title     "SPARQL" .
 _:c  dc11:title     "SPARQL (updated)" .
-```
+```sparql
 
 Query:
 
-```
+```sparql
 PREFIX dc10:  <http://purl.org/dc/elements/1.0/>
 PREFIX dc11:  <http://purl.org/dc/elements/1.1/>
 
 SELECT ?title
 WHERE  { { ?book dc10:title  ?title } UNION { ?book dc11:title  ?title } }
-```
+```text
 
 Query result:
 
@@ -1633,13 +1619,13 @@ using [Dublin Core](http://dublincore.org/) properties
 from version 1.0 or version 1.1. To determine exactly how the information was
 recorded, a query could use different variables for the two alternatives:
 
-```
+```sparql
 PREFIX dc10:  <http://purl.org/dc/elements/1.0/>
 PREFIX dc11:  <http://purl.org/dc/elements/1.1/>
 
 SELECT ?x ?y
 WHERE  { { ?book dc10:title ?x } UNION { ?book dc11:title  ?y } }
-```
+```text
 
 | x | y |
 | --- | --- |
@@ -1656,7 +1642,7 @@ The `UNION` pattern combines graph patterns; each alternative possibility can co
 than one triple
 pattern:
 
-```
+```sparql
 PREFIX dc10:  <http://purl.org/dc/elements/1.0/>
 PREFIX dc11:  <http://purl.org/dc/elements/1.1/>
 
@@ -1665,7 +1651,7 @@ WHERE  { { ?book dc10:title ?title .  ?book dc10:creator ?author }
          UNION
          { ?book dc11:title ?title .  ?book dc11:creator ?author }
        }
-```
+```text
 
 | title | author |
 | --- | --- |
@@ -1675,8 +1661,7 @@ WHERE  { { ?book dc10:title ?title .  ?book dc10:creator ?author }
 This query will only match a book if it has both a title and creator predicate
 from the same version of Dublin Core.
 
-8 Negation
-----------
+## 8 Negation
 
 The SPARQL query language incorporates two styles of negation, one
 based on filtering results depending on whether a graph pattern does or
@@ -1700,7 +1685,7 @@ not generate any additional bindings.
 
 Data:
 
-```
+```sparql
 @prefix  :       <http://example/> .
 @prefix  rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix  foaf:   <http://xmlns.com/foaf/0.1/> .
@@ -1708,11 +1693,11 @@ Data:
 :alice  rdf:type   foaf:Person .
 :alice  foaf:name  "Alice" .
 :bob    rdf:type   foaf:Person .
-```
+```sparql
 
 Query:
 
-```
+```sparql
 PREFIX  rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 PREFIX  foaf:   <http://xmlns.com/foaf/0.1/> 
 
@@ -1722,7 +1707,7 @@ WHERE
     ?person rdf:type  foaf:Person .
     FILTER NOT EXISTS { ?person foaf:name ?name }
 }
-```
+```turtle
 
 Query Result:
 
@@ -1738,7 +1723,7 @@ it does not generate any additional bindings.
 
 Query:
 
-```
+```sparql
 PREFIX  rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
 PREFIX  foaf:   <http://xmlns.com/foaf/0.1/> 
 
@@ -1748,7 +1733,7 @@ WHERE
     ?person rdf:type  foaf:Person .
     FILTER EXISTS { ?person foaf:name ?name }
 }
-```
+```turtle
 
 Query Result:
 
@@ -1765,7 +1750,7 @@ compatible with the solutions on the right-hand side.
 
 Data:
 
-```
+```sparql
 @prefix :       <http://example/> .
 @prefix foaf:   <http://xmlns.com/foaf/0.1/> .
 
@@ -1777,11 +1762,11 @@ Data:
 
 :carol  foaf:givenName "Carol" ;
         foaf:familyName "Smith" .
-```
+```sparql
 
 Query:
 
-```
+```sparql
 PREFIX :       <http://example/>
 PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
 
@@ -1792,7 +1777,7 @@ WHERE {
       ?s foaf:givenName "Bob" .
    }
 }
-```
+```turtle
 
 Results:
 
@@ -1812,18 +1797,18 @@ two patterns. In some cases they can produce different answers.
 
 #### 8.3.1 Example: Sharing of variables
 
-```
+```sparql
 @prefix : <http://example/> .
 :a :b :c .
-```
+```sparql
 
-```
+```sparql
 SELECT *
 { 
   ?s ?p ?o
   FILTER NOT EXISTS { ?x ?y ?z }
 }
-```
+```sparql
 
 evaluates to a result set with no solutions because `{ ?x ?y ?z }`
 matches given any `?s ?p ?o`, so `NOT EXISTS { ?x ?y ?z }`
@@ -1836,14 +1821,14 @@ whereas with `MINUS`, there is no shared variable between the
 first part (`?s ?p ?o`) and the second (`?x ?y ?z`)
 so no bindings are eliminated.
 
-```
+```sparql
 SELECT *
 { 
    ?s ?p ?o 
    MINUS 
      { ?x ?y ?z }
 }
-```
+```turtle
 
 Results:
 
@@ -1855,14 +1840,14 @@ Results:
 
 Another case is where there is a concrete pattern (no variables) in the example:
 
-```
+```sparql
 PREFIX : <http://example/>
 SELECT * 
 { 
   ?s ?p ?o 
   FILTER NOT EXISTS { :a :b :c }
 }
-```
+```sparql
 
 evaluates to a result set with no query solutions:
 
@@ -1873,14 +1858,14 @@ Results:
 
 whereas
 
-```
+```sparql
 PREFIX : <http://example/>
 SELECT * 
 { 
   ?s ?p ?o 
   MINUS { :a :b :c }
 }
-```
+```text
 
 evaluates to result set with one query solution:
 
@@ -1898,7 +1883,7 @@ Differences also arise because in a filter, variables from the group are
 [in scope](#scopeFilters). In this example, the `FILTER` inside
 the `NOT EXISTS` has access to the value of ?n for the solution being considered.
 
-```
+```sparql
 @prefix : <http://example.com/> .
 :a :p 1 .
 :a :q 1 .
@@ -1907,11 +1892,11 @@ the `NOT EXISTS` has access to the value of ?n for the solution being considered
 :b :p 3.0 .
 :b :q 4.0 .
 :b :q 5.0 .
-```
+```sparql
 
 When using `FILTER NOT EXISTS`, the test is on each possible solution to `?x :p ?n`:
 
-```
+```sparql
 PREFIX : <http://example.com/>
 SELECT * WHERE {
         ?x :p ?n
@@ -1920,7 +1905,7 @@ SELECT * WHERE {
                 FILTER(?n = ?m)
         }
 }
-```
+```sparql
 
 | x | n |
 | --- | --- |
@@ -1928,7 +1913,7 @@ SELECT * WHERE {
 
 whereas with `MINUS`, the `FILTER` inside the pattern does not have a value for ?n and it is always unbound:
 
-```
+```sparql
 PREFIX : <http://example/>
 SELECT * WHERE {
         ?x :p ?n
@@ -1937,15 +1922,14 @@ SELECT * WHERE {
                 FILTER(?n = ?m)
         }
 }
-```
+```turtle
 
 | x | n |
 | --- | --- |
 | <http://example.com/b> | 3.0 |
 | <http://example.com/a> | 1 |
 
-9 Property Paths
-----------------
+## 9 Property Paths
 
 A property path is a possible route through a graph between two graph nodes.
 A trivial case is a property path of length exactly 1, which is a triple pattern.
@@ -1996,47 +1980,47 @@ Precedence is left-to-right within groups.
 
 *Alternatives*: Match one or both possibilities
 
-```
+```json
   { :book1 dc:title|rdfs:label ?displayString }
-```
+```sparql
 
 which could have writen:
 
-```
+```json
   { :book1 <http://purl.org/dc/elements/1.1/title> | <http://www.w3.org/2000/01/rdf-schema#label> ?displayString }
-```
+```sparql
 
 *Sequence*: Find the name of any people that Alice knows.
 
-```
+```json
   {
     ?x foaf:mbox <mailto:alice@example> .
     ?x foaf:knows/foaf:name ?name .
   }
-```
+```sparql
 
 *Sequence*: Find the names of people 2 "foaf:knows" links away.
 
-```
+```json
   { 
     ?x foaf:mbox <mailto:alice@example> .
     ?x foaf:knows/foaf:knows/foaf:name ?name .
   }
-```
+```sparql
 
 This is the same as the SPARQL query:
 
-```
+```sparql
   SELECT ?x ?name 
   {
      ?x  foaf:mbox <mailto:alice@example> .
      ?x  foaf:knows [ foaf:knows [ foaf:name ?name ]]. 
   }
-```
+```sparql
 
 or, with explicit variables:
 
-```
+```sparql
   SELECT ?x ?name
   {
     ?x  foaf:mbox <mailto:alice@example> .
@@ -2044,95 +2028,95 @@ or, with explicit variables:
     ?a1 foaf:knows ?a2 .
     ?a2 foaf:name ?name .
   }
-```
+```sparql
 
 *Filtering duplicates*: Because someone Alice knows may well know Alice, the example above may
 include Alice herself. This could be avoided with:
 
-```
+```json
   { ?x foaf:mbox <mailto:alice@example> .
     ?x foaf:knows/foaf:knows ?y .
     FILTER ( ?x != ?y )
     ?y foaf:name ?name 
   }
-```
+```sparql
 
 *Inverse Property Paths*: These two are the same query: the second is just reversing the property
 direction which swaps the roles of subject and object.
 
-```
+```json
   { ?x foaf:mbox <mailto:alice@example> }
-```
+```sparql
 
-```
+```json
   { <mailto:alice@example> ^foaf:mbox ?x }
-```
+```sparql
 
 *Inverse Path Sequence*: Find all the people who know someone ?x knows.
 
-```
+```json
   {
     ?x foaf:knows/^foaf:knows ?y .  
     FILTER(?x != ?y)
   }
-```
+```sparql
 
 which is equivalent to (`?gen1` is a system generated variable):
 
-```
+```json
   {
     ?x foaf:knows ?gen1 .
     ?y foaf:knows ?gen1 .  
     FILTER(?x != ?y)
   }
-```
+```sparql
 
 *Arbitrary length match*: Find the names of all the people that can be reached from Alice by foaf:knows:
 
-```
+```json
   {
     ?x foaf:mbox <mailto:alice@example> .
     ?x foaf:knows+/foaf:name ?name .
   }
-```
+```sparql
 
 *Alternatives in an arbitrary length path*:
 
-```
+```json
   { ?ancestor (ex:motherOf|ex:fatherOf)+ <#me> }
-```
+```sparql
 
 *Arbitrary length path match*: Some forms of limited inference are possible as well.
 For example, for RDFS, all types
 and supertypes of a resource:
 
-```
+```json
   { <http://example/thing> rdf:type/rdfs:subClassOf* ?type }
-```
+```sparql
 
 All resources and all their inferred types:
 
-```
+```json
   { ?x rdf:type/rdfs:subClassOf* ?type }
-```
+```sparql
 
 *Subproperty*:
 
-```
+```json
   { ?x ?p ?v . ?p rdfs:subPropertyOf* :property }
-```
+```sparql
 
 *Negated Property Paths*: Find nodes connected but not by rdf:type (either way round):
 
-```
+```json
   { ?x !(rdf:type|^rdf:type) ?y }
-```
+```sparql
 
 *Elements in an RDF collection*:
 
-```
+```json
   { :list rdf:rest*/rdf:first ?element }
-```
+```text
 
 *Note: This path expression does not guarantee the order of the results.*
 
@@ -2148,7 +2132,7 @@ projection of the results to just the variables given in the query.
 
 For example, on the data:
 
-```
+```sparql
 @prefix :       <http://example/> .
 
 :order  :item :z1 .
@@ -2159,15 +2143,15 @@ For example, on the data:
 
 :z2 :name "Large" .
 :z2 :price 5 .
-```
+```sparql
 
 Query:
 
-```
+```sparql
 PREFIX :   <http://example/>
 SELECT * 
 {  ?s :item/:price ?x . }
-```
+```sparql
 
 Results:
 
@@ -2179,12 +2163,12 @@ Results:
 whereas if the query were written out to include the intermediate variable
 (`?_a`), no rows in the results are duplicates:
 
-```
+```sparql
 PREFIX :   <http://example/>
 SELECT * 
 {  ?s :item ?_a .
    ?_a :price ?x . }
-```
+```text
 
 Results:
 
@@ -2197,13 +2181,13 @@ The equivalance to graphs patterns is particularly significant
 when query also involves an aggregation operation. The total cost
 of the order can be found with
 
-```
+```sparql
   PREFIX :   <http://example/>
   SELECT (sum(?x) AS ?total)
   { 
     :order :item/:price ?x
   }
-```
+```text
 
 | total |
 | --- |
@@ -2225,26 +2209,26 @@ path step a number of times, as restricted by the operator.
 For example, finding all the the possible types of a resource,
 including supertypes of resources, can be achieved with:
 
-```
+```sparql
   PREFIX  rdfs:   <http://www.w3.org/2000/01/rdf-schema#> . 
   PREFIX  rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
   SELECT ?x ?type
   { 
     ?x rdf:type/rdfs:subClassOf* ?type
   }
-```
+```sparql
 
 Similarly, finding all the people `:x` connects to via the
 `foaf:knows` relationship,
 
-```
+```sparql
   PREFIX foaf: <http://xmlns.com/foaf/0.1/>
   PREFIX :     <http://example/>
   SELECT ?person
   { 
     :x foaf:knows+ ?person
   }
-```
+```sparql
 
 Such connectivity matching does not introduce duplicates (it does not
 incorporate any count of the number of ways the connection can be made) even
@@ -2253,8 +2237,7 @@ if the repeated path itself would otherwise result in duplicates.
 The graph matched may include cycles. Connectivity matching is defined so that
 matching cycles does not lead to undefined or infinite results.
 
-10 Assignment
--------------
+## 10 Assignment
 
 The value of an expression can be added to a solution mapping by binding a new variable
 to the value of the expression, which is an RDF term.
@@ -2284,7 +2267,7 @@ Example:
 
 Data:
 
-```
+```sparql
 @prefix dc:   <http://purl.org/dc/elements/1.1/> .
 @prefix :     <http://example.org/book/> .
 @prefix ns:   <http://example.org/ns#> .
@@ -2296,11 +2279,11 @@ Data:
 :book2  dc:title     "The Semantic Web" .
 :book2  ns:price     23 .
 :book2  ns:discount  0.25 .
-```
+```sparql
 
 Query:
 
-```
+```sparql
 PREFIX  dc:  <http://purl.org/dc/elements/1.1/>
 PREFIX  ns:  <http://example.org/ns#>
 
@@ -2311,12 +2294,12 @@ SELECT  ?title ?price
    FILTER(?price < 20)
    ?x dc:title ?title . 
 }
-```
+```sparql
 
 Equivalent query (`BIND` ends the basic graph pattern;
 the `FILTER` applies to the whole group graph pattern):
 
-```
+```sparql
 PREFIX  dc:  <http://purl.org/dc/elements/1.1/>
 PREFIX  ns:  <http://example.org/ns#>
 
@@ -2328,7 +2311,7 @@ SELECT  ?title ?price
    {?x dc:title ?title . }
    FILTER(?price < 20)
 }
-```
+```text
 
 Results:
 
@@ -2359,24 +2342,24 @@ In the following example, there is a table of two variables,
 `?x` and `?y`. The second row has no value for
 `?y`.
 
-```
+```text
 VALUES (?x ?y) {
   (:uri1 1)
   (:uri2 UNDEF)
 }
-```
+```sparql
 
 Optionally, when there is a single variable and some values:
 
-```
+```text
 VALUES ?z { "abc" "def" }
-```
+```sparql
 
 which is the same as using the general form:
 
-```
+```text
 VALUES (?z) { ("abc") ("def") }
-```
+```sparql
 
 #### 10.2.2 VALUES Examples
 
@@ -2386,7 +2369,7 @@ at the end of a `SELECT` query, including a
 
 Data:
 
-```
+```sparql
 @prefix dc:   <http://purl.org/dc/elements/1.1/> .
 @prefix :     <http://example.org/book/> .
 @prefix ns:   <http://example.org/ns#> .
@@ -2395,11 +2378,11 @@ Data:
 :book1  ns:price  42 .
 :book2  dc:title  "The Semantic Web" .
 :book2  ns:price  23 .
-```
+```sparql
 
 Query:
 
-```
+```sparql
 PREFIX dc:   <http://purl.org/dc/elements/1.1/> 
 PREFIX :     <http://example.org/book/> 
 PREFIX ns:   <http://example.org/ns#> 
@@ -2410,7 +2393,7 @@ SELECT ?book ?title ?price
    ?book dc:title ?title ;
          ns:price ?price .
 }
-```
+```turtle
 
 Result:
 
@@ -2422,7 +2405,7 @@ If a variable has no value for a particular solution in the
 `VALUES` clause, the keyword `UNDEF` is used
 instead of an RDF term.
 
-```
+```sparql
 PREFIX dc:   <http://purl.org/dc/elements/1.1/> 
 PREFIX :     <http://example.org/book/> 
 PREFIX ns:   <http://example.org/ns#> 
@@ -2436,7 +2419,7 @@ SELECT ?book ?title ?price
      (:book2 UNDEF)
    }
 }
-```
+```sparql
 
 | book | title | price |
 | --- | --- | --- |
@@ -2446,7 +2429,7 @@ SELECT ?book ?title ?price
 In this example, the `VALUES` might have been specified
 to execute over the results of the `SELECT` query:
 
-```
+```sparql
 PREFIX dc:   <http://purl.org/dc/elements/1.1/> 
 PREFIX :     <http://example.org/book/> 
 PREFIX ns:   <http://example.org/ns#> 
@@ -2460,12 +2443,11 @@ VALUES (?book ?title)
 { (UNDEF "SPARQL Tutorial")
   (:book2 UNDEF)
 }
-```
+```sparql
 
 This is a different query but, in the example situation, has the same results.
 
-11 Aggregates
--------------
+## 11 Aggregates
 
 Aggregates apply expressions over groups of solutions. By default
 a solution set consists of a single group, containing all solutions.
@@ -2481,7 +2463,7 @@ Aggregates are used where the querier wishes to see a result which is computed o
 
 Data:
 
-```
+```sparql
 @prefix : <http://books.example/> .
 
 :org1 :affiliates :auth1, :auth2 .
@@ -2493,11 +2475,11 @@ Data:
 :org2 :affiliates :auth3 .
 :auth3 :writesBook :book4 .
 :book4 :price 7 .
-```
+```sparql
 
 Query:
 
-```
+```sparql
 PREFIX : <http://books.example/>
 SELECT (SUM(?lprice) AS ?totalPrice)
 WHERE {
@@ -2507,7 +2489,7 @@ WHERE {
 }
 GROUP BY ?org
 HAVING (SUM(?lprice) > 10)
-```
+```text
 
 Results:
 
@@ -2548,14 +2530,14 @@ For example, given a solution sequence S, ( {?x→2, ?y→3}, {?x→2, ?y→5}, 
 
 This could be written as:
 
-```
+```sparql
 SELECT (AVG(?y) AS ?avg)
 WHERE {
   ?a :x ?x ;
      :y ?y .
 }
 GROUP BY ?x
-```
+```sparql
 
 ### 11.3 HAVING
 
@@ -2566,7 +2548,7 @@ grouped queries, as described in the following section.
 
 An example of the use of `HAVING` is given below.
 
-```
+```sparql
 PREFIX : <http://data.example/>
 SELECT (AVG(?size) AS ?asize)
 WHERE {
@@ -2574,7 +2556,7 @@ WHERE {
 }
 GROUP BY ?x
 HAVING(AVG(?size) > 10)
-```
+```sparql
 
 This will return average sizes, grouped by the subject, but only where the mean size is greater than 10.
 
@@ -2584,14 +2566,14 @@ In a query level which uses aggregates, only expressions consisting of aggregate
 
 For example, the following query is legal as ?x is given as a `GROUP BY` term.
 
-```
+```sparql
 PREFIX : <http://example.com/data/#>
 SELECT ?x (MIN(?y) * 2 AS ?min)
 WHERE {
   ?x :p ?y .
   ?x :q ?z .
 } GROUP BY ?x (STR(?z))
-```
+```sparql
 
 Note that it would not be legal to project `STR(?z)` as this is not a simple variable expression. However, with `GROUP BY (STR(?z) AS ?strZ)` it would be possible to project `?strZ`.
 
@@ -2603,24 +2585,24 @@ This section shows an example query using aggregation, which demonstrates how er
 
 Data:
 
-```
+```sparql
 @prefix : <http://example.com/data/#> .
 
 :x :p 1, 2, 3, 4 .
 :y :p 1, _:b2, 3, 4 .
 :z :p 1.0, 2.0, 3.0, 4 .
-```
+```sparql
 
 Query:
 
-```
+```sparql
 PREFIX : <http://example.com/data/#>
 SELECT ?g (AVG(?p) AS ?avg) ((MIN(?p) + MAX(?p)) / 2 AS ?c)
 WHERE {
   ?g :p ?p .
 }
 GROUP BY ?g
-```
+```turtle
 
 Result:
 
@@ -2632,8 +2614,7 @@ Result:
 
 Note that the bindings for the :y group is not included in the results as the evaluation of Avg({1, \_:b2, 3, 4}), and (\_:b2 + 4) / 2 is an error, removing the bindings from the solution.
 
-12 Subqueries
--------------
+## 12 Subqueries
 
 Subqueries are a way to embed SPARQL queries within other queries, normally to achieve results which cannot otherwise be achieved, such as limiting the number of results from some sub-expression within the query.
 
@@ -2647,20 +2628,20 @@ to the outer query.
 
 Data:
 
-```
+```sparql
 @prefix : <http://people.example/> .
 
 :alice :name "Alice", "Alice Foo", "A. Foo" .
 :alice :knows :bob, :carol .
 :bob :name "Bob", "Bob Bar", "B. Bar" .
 :carol :name "Carol", "Carol Baz", "C. Baz" .
-```
+```sparql
 
 Return a name (the one with the lowest sort order) for all the people that know Alice and have a name.
 
 Query:
 
-```
+```sparql
 PREFIX : <http://people.example/>
 PREFIX : <http://people.example/>
 SELECT ?y ?minName
@@ -2673,7 +2654,7 @@ WHERE {
     } GROUP BY ?y
   }
 }
-```
+```text
 
 Results:
 
@@ -2684,12 +2665,12 @@ Results:
 
 This result is achieved by first evaluating the inner query:
 
-```
+```sparql
 SELECT ?y (MIN(?name) AS ?minName)
 WHERE {
   ?y :name ?name .
 } GROUP BY ?y
-```
+```text
 
 This produces the following solution sequence:
 
@@ -2706,8 +2687,7 @@ Which is joined with the results of the outer query:
 | :bob |
 | :carol |
 
-13 RDF Dataset
---------------
+## 13 RDF Dataset
 
 The RDF data model expresses information as graphs consisting of triples with
 subject, predicate and object. Many RDF data stores hold multiple RDF graphs and
@@ -2743,29 +2723,29 @@ graphs can be exposed. Two useful arrangements are:
 
 **Example 1:**
 
-```
+```sparql
 # Default graph
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
 <http://example.org/bob>    dc:publisher  "Bob" .
 <http://example.org/alice>  dc:publisher  "Alice" .
-```
+```sparql
 
-```
+```sparql
 # Named graph: http://example.org/bob
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 _:a foaf:name "Bob" .
 _:a foaf:mbox <mailto:bob@oldcorp.example.org> .
-```
+```sparql
 
-```
+```sparql
 # Named graph: http://example.org/alice
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 _:a foaf:name "Alice" .
 _:a foaf:mbox <mailto:alice@work.example.org> .
-```
+```text
 
 In this example, the default graph contains the names of the publishers of two
 named graphs. The triples in the named graphs are not visible in the default graph
@@ -2783,7 +2763,7 @@ In this next example, the named graphs contain the same triples as before. The
 RDF dataset includes an RDF merge of the named graphs in the default graph, re-labeling
 blank nodes to keep them distinct.
 
-```
+```sparql
 # Default graph
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
@@ -2792,23 +2772,23 @@ _:x foaf:mbox <mailto:bob@oldcorp.example.org> .
 
 _:y foaf:name "Alice" .
 _:y foaf:mbox <mailto:alice@work.example.org> .
-```
+```sparql
 
-```
+```sparql
 # Named graph: http://example.org/bob
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 _:a foaf:name "Bob" .
 _:a foaf:mbox <mailto:bob@oldcorp.example.org> .
-```
+```sparql
 
-```
+```sparql
 # Named graph: http://example.org/alice
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 _:a foaf:name "Alice" .
 _:a foaf:mbox <mailto:alice@work.example> .
-```
+```sparql
 
 In an RDF merge, blank nodes in the merged graph are not shared with blank
 nodes from the graphs being merged.
@@ -2844,20 +2824,20 @@ used to form the default graph. This does not put the graph in as a named graph.
 
 In this example, the RDF Dataset contains a single default graph and no named graphs:
 
-```
+```sparql
 # Default graph (located at http://example.org/foaf/aliceFoaf)
 @prefix  foaf:  <http://xmlns.com/foaf/0.1/> .
 
 _:a  foaf:name     "Alice" .
 _:a  foaf:mbox     <mailto:alice@work.example> .
-```
+```sparql
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 SELECT  ?name
 FROM    <http://example.org/foaf/aliceFoaf>
 WHERE   { ?x foaf:name ?name }
-```
+```text
 
 | name |
 | --- |
@@ -2875,28 +2855,28 @@ A query can supply IRIs for the named graphs in the RDF Dataset using the
 RDF Dataset. Using the same IRI in two or more `FROM NAMED` clauses results
 in one named graph with that IRI appearing in the dataset.
 
-```
+```sparql
 # Graph: http://example.org/bob
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 _:a foaf:name "Bob" .
 _:a foaf:mbox <mailto:bob@oldcorp.example.org> .
-```
+```sparql
 
-```
+```sparql
 # Graph: http://example.org/alice
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 _:a foaf:name "Alice" .
 _:a foaf:mbox <mailto:alice@work.example> .
-```
+```sparql
 
-```
+```turtle
 ...
 FROM NAMED <http://example.org/alice>
 FROM NAMED <http://example.org/bob>
 ...
-```
+```text
 
 The `FROM NAMED` syntax suggests that the IRI identifies the corresponding
 graph, but the relationship between an IRI and a graph in an RDF dataset
@@ -2910,31 +2890,31 @@ see [[WEBARCH](#WEBARCH)].
 The `FROM` clause and `FROM NAMED` clause can be used in
 the same query.
 
-```
+```sparql
 # Default graph (located at http://example.org/dft.ttl)
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
 <http://example.org/bob>    dc:publisher  "Bob Hacker" .
 <http://example.org/alice>  dc:publisher  "Alice Hacker" .
-```
+```sparql
 
-```
+```sparql
 # Named graph: http://example.org/bob
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 _:a foaf:name "Bob" .
 _:a foaf:mbox <mailto:bob@oldcorp.example.org> .
-```
+```sparql
 
-```
+```sparql
 # Named graph: http://example.org/alice
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 _:a foaf:name "Alice" .
 _:a foaf:mbox <mailto:alice@work.example.org> .
-```
+```sparql
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 
@@ -2947,7 +2927,7 @@ WHERE
    ?g dc:publisher ?who .
    GRAPH ?g { ?x foaf:mbox ?mbox }
 }
-```
+```sparql
 
 The RDF Dataset for this query contains a default graph and two named graphs.
 The `GRAPH` keyword is described below.
@@ -2973,7 +2953,7 @@ matching is done using the default graph.
 
 The following two graphs will be used in examples:
 
-```
+```sparql
 # Named graph: http://example.org/foaf/aliceFoaf
 @prefix  foaf:     <http://xmlns.com/foaf/0.1/> .
 @prefix  rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -2990,9 +2970,9 @@ _:b  rdfs:seeAlso  <http://example.org/foaf/bobFoaf> .
 
 <http://example.org/foaf/bobFoaf>
      rdf:type      foaf:PersonalProfileDocument .
-```
+```sparql
 
-```
+```sparql
 # Named graph: http://example.org/foaf/bobFoaf
 @prefix  foaf:     <http://xmlns.com/foaf/0.1/> .
 @prefix  rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -3004,7 +2984,7 @@ _:z  foaf:nick     "Robert" .
 
 <http://example.org/foaf/bobFoaf>
      rdf:type      foaf:PersonalProfileDocument .
-```
+```sparql
 
 #### 13.3.1 Accessing Graph Names
 
@@ -3013,7 +2993,7 @@ dataset and forms solutions which have the `src` variable bound to
 IRIs of the graph being matched. The graph pattern is matched with the active
 graph being each of the named graphs in the dataset.
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
 SELECT ?src ?bobNick
@@ -3026,7 +3006,7 @@ WHERE
       ?x foaf:nick ?bobNick
     }
   }
-```
+```sparql
 
 The query result gives the name of the graphs where the information was found
 and the value for Bob's nick:
@@ -3041,7 +3021,7 @@ and the value for Bob's nick:
 The query can restrict the matching applied to a specific graph by supplying
 the graph IRI. This sets the active graph to the graph named by the IRI. This query looks for Bob's nick as given in the graph `http://example.org/foaf/bobFoaf`.
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX data: <http://example.org/foaf/>
 
@@ -3054,7 +3034,7 @@ WHERE
          ?x foaf:mbox <mailto:bob@work.example> .
          ?x foaf:nick ?nick }
   }
-```
+```text
 
 which yields a single solution:
 
@@ -3078,7 +3058,7 @@ the blank node used to match for variable `whom` from Alice's FOAF
 file is not the same as the blank node in the profile document (they are in different
 graphs).
 
-```
+```sparql
 PREFIX  data:  <http://example.org/foaf/>
 PREFIX  foaf:  <http://xmlns.com/foaf/0.1/>
 PREFIX  rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
@@ -3102,7 +3082,7 @@ WHERE
          foaf:nick ?nick
   }
 }
-```
+```turtle
 
 | mbox | nick | ppd |
 | --- | --- | --- |
@@ -3126,7 +3106,7 @@ information about them.
 
 RDF Dataset:
 
-```
+```sparql
 # Default graph
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix g:  <tag:example.org,2005-06-06:> .
@@ -3137,9 +3117,9 @@ g:graph1 dc:date "2004-12-06"^^xsd:date .
 
 g:graph2 dc:publisher "Bob" .
 g:graph2 dc:date "2005-01-10"^^xsd:date .
-```
+```sparql
 
-```
+```sparql
 # Graph: locally allocated IRI: tag:example.org,2005-06-06:graph1
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
@@ -3148,9 +3128,9 @@ _:a foaf:mbox <mailto:alice@work.example> .
 
 _:b foaf:name "Bob" .
 _:b foaf:mbox <mailto:bob@oldcorp.example.org> .
-```
+```sparql
 
-```
+```sparql
 # Graph: locally allocated IRI: tag:example.org,2005-06-06:graph2
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
@@ -3159,12 +3139,12 @@ _:a foaf:mbox <mailto:alice@work.example> .
 
 _:b foaf:name "Bob" .
 _:b foaf:mbox <mailto:bob@newcorp.example.org> .
-```
+```sparql
 
 This query finds email addresses, detailing the name of the person and the
 date the information was discovered.
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX dc:   <http://purl.org/dc/elements/1.1/>
 
@@ -3175,7 +3155,7 @@ WHERE
     GRAPH ?g
       { ?person foaf:name ?name ; foaf:mbox ?mbox }
   }
-```
+```turtle
 
 The results show that the email address for "Bob" has changed.
 
@@ -3184,16 +3164,14 @@ The results show that the email address for "Bob" has changed.
 | "Bob" | <mailto:bob@oldcorp.example.org> | "2004-12-06"^^xsd:date |
 | "Bob" | <mailto:bob@newcorp.example.org> | "2005-01-10"^^xsd:date |
 
-14 Basic Federated Query
-------------------------
+## 14 Basic Federated Query
 
 This document incorporates the syntax for SPARQL federation extensions.
 
 This feature is defined in the document
 [SPARQL 1.1 Federated Query](https://www.w3.org/TR/sparql11-federated-query/).
 
-15 Solution Sequences and Modifiers
------------------------------------
+## 15 Solution Sequences and Modifiers
 
 Query patterns generate an unordered collection of solutions, each
 [solution](#defn_sparqlSolutionMapping) being a partial function from variables to RDF terms.
@@ -3222,31 +3200,31 @@ The `ORDER BY` clause establishes the order of a solution sequence.
 
 Following the `ORDER BY` clause is a sequence of order comparators, composed of an expression and an optional order modifier (either `ASC()` or `DESC()`). Each ordering comparator is either ascending (indicated by the `ASC()` modifier or by no modifier) or descending (indicated by the `DESC()` modifier).
 
-```
+```sparql
 PREFIX foaf:    <http://xmlns.com/foaf/0.1/>
 
 SELECT ?name
 WHERE { ?x foaf:name ?name }
 ORDER BY ?name
-```
+```sparql
 
-```
+```sparql
 PREFIX     :    <http://example.org/ns#>
 PREFIX foaf:    <http://xmlns.com/foaf/0.1/>
 
 SELECT ?name
 WHERE { ?x foaf:name ?name ; :empId ?emp }
 ORDER BY DESC(?emp)
-```
+```sparql
 
-```
+```sparql
 PREFIX     :    <http://example.org/ns#>
 PREFIX foaf:    <http://xmlns.com/foaf/0.1/>
 
 SELECT ?name
 WHERE { ?x foaf:name ?name ; :empId ?emp }
 ORDER BY ?name DESC(?emp)
-```
+```text
 
 The ["<" operator](#op_lt) (see the [Operator Mapping](#OperatorMapping) and [17.3.1 Operator Extensibility](#operatorExtensibility)) defines
 the relative order of pairs of `numerics`, `simple literals`, `xsd:strings`, `xsd:booleans`
@@ -3304,7 +3282,7 @@ a specified selection of the variables using the SELECT query form.
 The following example shows a query to extract just the names of people described
 in an RDF graph using FOAF properties.
 
-```
+```sparql
 @prefix foaf:        <http://xmlns.com/foaf/0.1/> .
 
 _:a  foaf:name       "Alice" .
@@ -3312,14 +3290,14 @@ _:a  foaf:mbox       <mailto:alice@work.example> .
 
 _:b  foaf:name       "Bob" .
 _:b  foaf:mbox       <mailto:bob@work.example> .
-```
+```sparql
 
-```
+```sparql
 PREFIX foaf:       <http://xmlns.com/foaf/0.1/>
 SELECT ?name
 WHERE
  { ?x foaf:name ?name }
-```
+```text
 
 | name |
 | --- |
@@ -3333,7 +3311,7 @@ will preserve duplicate solutions.
 
 Data:
 
-```
+```sparql
 @prefix  foaf:  <http://xmlns.com/foaf/0.1/> .
 
 _:x    foaf:name   "Alice" .
@@ -3344,14 +3322,14 @@ _:y    foaf:mbox   <mailto:asmith@example.com> .
 
 _:z    foaf:name   "Alice" .
 _:z    foaf:mbox   <mailto:alice.smith@example.com> .
-```
+```sparql
 
 Query:
 
-```
+```sparql
 PREFIX foaf:    <http://xmlns.com/foaf/0.1/>
 SELECT ?name WHERE { ?x foaf:name ?name }
-```
+```text
 
 Results:
 
@@ -3368,10 +3346,10 @@ The modifiers `DISTINCT` and `REDUCED` affect whether duplicates are included in
 The `DISTINCT` solution modifier eliminates duplicate solutions.
 Only one solution solution that binds the same variables to the same RDF terms is returned from the query.
 
-```
+```sparql
 PREFIX foaf:    <http://xmlns.com/foaf/0.1/>
 SELECT DISTINCT ?name WHERE { ?x foaf:name ?name }
-```
+```text
 
 | name |
 | --- |
@@ -3383,10 +3361,10 @@ Note that, per the [order of solution sequence modifiers](#solutionModifiers), d
 
 While the `DISTINCT` modifier ensures that duplicate solutions are eliminated from the solution set, `REDUCED` simply permits them to be eliminated. The cardinality of any set of variable bindings in a `REDUCED` solution set is at least one and not more than the cardinality of the solution set with no `DISTINCT` or `REDUCED` modifier. For example, using the data above, the query
 
-```
+```sparql
 PREFIX foaf:    <http://xmlns.com/foaf/0.1/>
 SELECT REDUCED ?name WHERE { ?x foaf:name ?name }
-```
+```text
 
 may have one, two (shown here) or three solutions:
 
@@ -3403,7 +3381,7 @@ number of solutions. An `OFFSET` of zero has no effect.
 Using `LIMIT` and `OFFSET` to select different subsets of the query solutions
 will not be useful unless the order is made predictable by using `ORDER BY`.
 
-```
+```sparql
 PREFIX foaf:    <http://xmlns.com/foaf/0.1/>
 
 SELECT  ?name
@@ -3411,7 +3389,7 @@ WHERE   { ?x foaf:name ?name }
 ORDER BY ?name
 LIMIT   5
 OFFSET  10
-```
+```sparql
 
 ### 15.5 LIMIT
 
@@ -3419,18 +3397,17 @@ The `LIMIT` clause puts an upper bound on the number of solutions returned. If t
 number of actual solutions, after `OFFSET` is applied, is greater than the limit,
 then at most the limit number of solutions will be returned.
 
-```
+```sparql
 PREFIX foaf:    <http://xmlns.com/foaf/0.1/>
 
 SELECT ?name
 WHERE { ?x foaf:name ?name }
 LIMIT 20
-```
+```sparql
 
 A `LIMIT` of 0 would cause no results to be returned. A limit may not be negative.
 
-16 Query Forms
---------------
+## 16 Query Forms
 
 SPARQL has four query forms. These query forms use the solutions from
 pattern matching to form result sets or RDF graphs. The query forms are:
@@ -3440,7 +3417,7 @@ pattern matching to form result sets or RDF graphs. The query forms are:
 >
 > [CONSTRUCT](#construct)
 > :   Returns an RDF graph constructed by substituting variables in a set of triple
->     templates.
+> templates.
 >
 > [ASK](#ask)
 > :   Returns a boolean indicating whether a query pattern matches or not.
@@ -3452,7 +3429,6 @@ Formats such as
 [SPARQL 1.1 Query Results JSON Format](https://www.w3.org/TR/sparql11-results-json/),
 [SPARQL Query Results XML Format](https://www.w3.org/TR/rdf-sparql-XMLres/) or
 [SPARQL 1.1 Query Results CSV and TSV Formats](https://www.w3.org/TR/sparql11-results-csv-tsv/)
-
 
 can be used to serialize the result set from a `SELECT` query or the boolean result of an `ASK` query.
 
@@ -3473,7 +3449,7 @@ and takes account of subqueries.
 Use of `SELECT *` is only permitted when the
 query does not have a `GROUP BY` clause.
 
-```
+```sparql
 @prefix  foaf:  <http://xmlns.com/foaf/0.1/> .
 
 _:a    foaf:name   "Alice" .
@@ -3483,10 +3459,10 @@ _:a    foaf:knows  _:c .
 _:b    foaf:name   "Bob" .
 
 _:c    foaf:name   "Clare" .
-_:c    foaf:nick   "CT" .	
-```
+_:c    foaf:nick   "CT" . 
+```sparql
 
-```
+```sparql
 PREFIX foaf:    <http://xmlns.com/foaf/0.1/>
 SELECT ?nameX ?nameY ?nickY
 WHERE
@@ -3495,7 +3471,7 @@ WHERE
     ?y foaf:name ?nameY .
     OPTIONAL { ?y foaf:nick ?nickY }
   }
-```
+```text
 
 | nameX | nameY | nickY |
 | --- | --- | --- |
@@ -3507,7 +3483,7 @@ either JSON, XML, CSV or TSV.
 
 [SPARQL 1.1 Query Results JSON Format](https://www.w3.org/TR/sparql11-results-json/):
 
-```
+```json
 {
   "head": {
     "vars": [ "nameX" , "nameY" , "nickY" ]
@@ -3526,12 +3502,12 @@ either JSON, XML, CSV or TSV.
     ]
   }
 }
-```
+```json
 
 [SPARQL Query
 Results XML Format](https://www.w3.org/TR/rdf-sparql-XMLres/):
 
-```
+```turtle
 <?xml version="1.0"?>
 <sparql xmlns="http://www.w3.org/2005/sparql-results#">
   <head>
@@ -3561,7 +3537,7 @@ Results XML Format](https://www.w3.org/TR/rdf-sparql-XMLres/):
     </result>
   </results>
 </sparql>
-```
+```sparql
 
 #### 16.1.2 SELECT Expressions
 
@@ -3580,7 +3556,7 @@ Example:
 
 Data:
 
-```
+```sparql
 @prefix dc:   <http://purl.org/dc/elements/1.1/> .
 @prefix :     <http://example.org/book/> .
 @prefix ns:   <http://example.org/ns#> .
@@ -3592,11 +3568,11 @@ Data:
 :book2  dc:title  "The Semantic Web" .
 :book2  ns:price  23 .
 :book2  ns:discount 0.25 .
-```
+```sparql
 
 Query:
 
-```
+```sparql
 PREFIX  dc:  <http://purl.org/dc/elements/1.1/>
 PREFIX  ns:  <http://example.org/ns#>
 SELECT  ?title (?p*(1-?discount) AS ?price)
@@ -3604,7 +3580,7 @@ SELECT  ?title (?p*(1-?discount) AS ?price)
   ?x dc:title ?title . 
   ?x ns:discount ?discount 
 }
-```
+```text
 
 Results:
 
@@ -3616,7 +3592,7 @@ Results:
 New variables can also be used in expressions if they are introduced earlier,
 syntactically, in the same SELECT clause:
 
-```
+```sparql
 PREFIX  dc:  <http://purl.org/dc/elements/1.1/>
 PREFIX  ns:  <http://example.org/ns#>
 SELECT  ?title (?p AS ?fullPrice) (?fullPrice*(1-?discount) AS ?customerPrice)
@@ -3624,7 +3600,7 @@ SELECT  ?title (?p AS ?fullPrice) (?fullPrice*(1-?discount) AS ?customerPrice)
    ?x dc:title ?title . 
    ?x ns:discount ?discount 
 }
-```
+```sparql
 
 Results:
 
@@ -3646,27 +3622,27 @@ that triple is not included in the output RDF graph. The graph template can cont
 triples with no variables (known as ground or explicit triples), and these also appear
 in the output RDF graph returned by the CONSTRUCT query form.
 
-```
+```sparql
 @prefix  foaf:  <http://xmlns.com/foaf/0.1/> .
 
 _:a    foaf:name   "Alice" .
 _:a    foaf:mbox   <mailto:alice@example.org> .
-```
+```sparql
 
-```
+```sparql
 PREFIX foaf:    <http://xmlns.com/foaf/0.1/>
 PREFIX vcard:   <http://www.w3.org/2001/vcard-rdf/3.0#>
 CONSTRUCT   { <http://example.org/person#Alice> vcard:FN ?name }
 WHERE       { ?x foaf:name ?name }
-```
+```sparql
 
 creates vcard properties from the FOAF information:
 
-```
+```sparql
 @prefix vcard: <http://www.w3.org/2001/vcard-rdf/3.0#> .
 
 <http://example.org/person#Alice> vcard:FN "Alice" .
-```
+```sparql
 
 #### 16.2.1 Templates with Blank Nodes
 
@@ -3676,7 +3652,7 @@ a template, then there will be one blank node created for each query solution, b
 there will be different blank nodes for triples generated by different query
 solutions.
 
-```
+```sparql
 @prefix  foaf:  <http://xmlns.com/foaf/0.1/> .
 
 _:a    foaf:givenname   "Alice" .
@@ -3684,9 +3660,9 @@ _:a    foaf:family_name "Hacker" .
 
 _:b    foaf:firstname   "Bob" .
 _:b    foaf:surname     "Hacker" .
-```
+```sparql
 
-```
+```sparql
 PREFIX foaf:    <http://xmlns.com/foaf/0.1/>
 PREFIX vcard:   <http://www.w3.org/2001/vcard-rdf/3.0#>
 
@@ -3698,11 +3674,11 @@ WHERE
     { ?x foaf:firstname ?gname } UNION  { ?x foaf:givenname   ?gname } .
     { ?x foaf:surname   ?fname } UNION  { ?x foaf:family_name ?fname } .
  }
-```
+```sparql
 
 creates vcard properties corresponding to the FOAF information:
 
-```
+```sparql
 @prefix vcard: <http://www.w3.org/2001/vcard-rdf/3.0#> .
 
 _:v1 vcard:N         _:x .
@@ -3712,7 +3688,7 @@ _:x vcard:familyName "Hacker" .
 _:v2 vcard:N         _:z .
 _:z vcard:givenName  "Bob" .
 _:z vcard:familyName "Hacker" .
-```
+```sparql
 
 The use of variable `x` in the template, which in this example will be bound to
 blank nodes with labels `_:a` and `_:b` in the data,
@@ -3725,16 +3701,16 @@ graphs from the target RDF dataset. This first example returns the graph (if it
 is in the dataset) with IRI label `http://example.org/aGraph`; otherwise,
 it returns an empty graph.
 
-```
+```sparql
 CONSTRUCT { ?s ?p ?o } WHERE { GRAPH <http://example.org/aGraph> { ?s ?p ?o } . }
-```
+```sparql
 
 The access to the graph can be conditional on other information. For example, if the
 default graph contains metadata about the named graphs in the dataset, then a query
 like the following one can extract one graph based on information about the named
 graph:
 
-```
+```sparql
 PREFIX  dc: <http://purl.org/dc/elements/1.1/>
 PREFIX app: <http://example.org/ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -3746,7 +3722,7 @@ CONSTRUCT { ?s ?p ?o } WHERE
    ?g dc:date ?date .
    FILTER ( app:customDate(?date) > "2005-02-28T00:00:00Z"^^xsd:dateTime ) .
  }
-```
+```sparql
 
 where `app:customDate` identifies an [extension function](#extensionFunctions) to turn the date format into an `xsd:dateTime`
 RDF term.
@@ -3759,7 +3735,7 @@ is formed from just two of the solutions from graph pattern matching. The query 
 a graph with the names of the people with the top two sites, rated by hits. The triples
 in the RDF graph are not ordered.
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix site: <http://example.org/stats#> .
 
@@ -3771,9 +3747,9 @@ _:b site:hits 105 .
 
 _:c foaf:name "Eve" .
 _:c site:hits 181 .
-```
+```sparql
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX site: <http://example.org/stats#>
 
@@ -3784,13 +3760,13 @@ WHERE
 }
 ORDER BY desc(?hits)
 LIMIT 2
-```
+```sparql
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 _:x foaf:name "Alice" .
 _:y foaf:name "Eve" .
-```
+```sparql
 
 #### 16.2.4 CONSTRUCT WHERE
 
@@ -3801,18 +3777,18 @@ The keyword `WHERE` is required in the short form.
 
 The following two queries are the same; the first is a short form of the second.
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 CONSTRUCT WHERE { ?x foaf:name ?name }
-```
+```sparql
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 
 CONSTRUCT { ?x foaf:name ?name } 
 WHERE
 { ?x foaf:name ?name }
-```
+```sparql
 
 ### 16.3 ASK
 
@@ -3820,7 +3796,7 @@ Applications can use the `ASK` form to test whether or not a query
 pattern has a solution. No information is returned about the possible query solutions,
 just whether or not a solution exists.
 
-```
+```sparql
 @prefix foaf:       <http://xmlns.com/foaf/0.1/> .
 
 _:a  foaf:name       "Alice" .
@@ -3828,40 +3804,40 @@ _:a  foaf:homepage   <http://work.example.org/alice/> .
 
 _:b  foaf:name       "Bob" .
 _:b  foaf:mbox       <mailto:bob@work.example> .
-```
+```sparql
 
-```
+```sparql
 PREFIX foaf:    <http://xmlns.com/foaf/0.1/>
 ASK  { ?x foaf:name  "Alice" }
-```
+```sparql
 
-```
+```sparql
 true
-```
+```text
 
 The [SPARQL
 Query Results XML Format](https://www.w3.org/TR/rdf-sparql-XMLres/) form of this result set gives:
 
-```
+```turtle
 <?xml version="1.0"?>
 <sparql xmlns="http://www.w3.org/2005/sparql-results#">
   <head></head>
   <boolean>true</boolean>
 </sparql>
-```
+```sparql
 
 On the same data, the following returns no match because Alice's `mbox`
 is not mentioned.
 
-```
+```sparql
 PREFIX foaf:    <http://xmlns.com/foaf/0.1/>
 ASK  { ?x foaf:name  "Alice" ;
           foaf:mbox  <mailto:alice@work.example> }
-```
+```sparql
 
-```
+```sparql
 false
-```
+```sparql
 
 ### 16.4 DESCRIBE (Informative)
 
@@ -3882,39 +3858,39 @@ The `DESCRIBE` clause itself can take IRIs to identify the resources.
 The simplest `DESCRIBE` query is just an IRI in the `DESCRIBE`
 clause:
 
-```
+```sparql
 DESCRIBE <http://example.org/>
-```
+```sparql
 
 #### 16.4.2 Identifying Resources
 
 The resources to be described can also be taken from the bindings to a query variable in a result set. This enables description
 of resources whether they are identified by IRI or by blank node in the dataset:
 
-```
+```sparql
 PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
 DESCRIBE ?x
 WHERE    { ?x foaf:mbox <mailto:alice@org> }
-```
+```sparql
 
 The property `foaf:mbox` is defined as being an inverse functional property
 in the FOAF vocabulary. If treated as such, this query will return information about
 at most one person. If, however, the query pattern has multiple solutions, the RDF
 data for each is the union of all RDF graph descriptions.
 
-```
+```sparql
 PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
 DESCRIBE ?x
 WHERE    { ?x foaf:name "Alice" }
-```
+```sparql
 
 More than one IRI or variable can be given:
 
-```
+```sparql
 PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
 DESCRIBE ?x ?y <http://example.org/>
 WHERE    {?x foaf:knows ?y}
-```
+```sparql
 
 #### 16.4.3 Descriptions of Resources
 
@@ -3925,15 +3901,15 @@ book may also include details about the author.
 
 A simple query such as
 
-```
+```sparql
 PREFIX ent:  <http://org.example.com/employees#>
 DESCRIBE ?x WHERE { ?x ent:employeeId "1234" }
-```
+```sparql
 
 might return a description of the employee and some other potentially useful
 details:
 
-```
+```sparql
 @prefix foaf:   <http://xmlns.com/foaf/0.1/> .
 @prefix vcard:  <http://www.w3.org/2001/vcard-rdf/3.0> .
 @prefix exOrg:  <http://org.example.com/employees#> .
@@ -3948,7 +3924,7 @@ _:a     exOrg:employeeId    "1234" ;
            vcard:Given        "John"  ] .
 
 foaf:mbox_sha1sum  rdf:type  owl:InverseFunctionalProperty .
-```
+```sparql
 
 which includes the blank node closure for the
 [vcard](https://www.w3.org/TR/vcard-rdf) vocabulary vcard:N.
@@ -3961,15 +3937,14 @@ returning sufficient information to identify a node such as the InverseFunctiona
 would be appropriate. In the example, the match to the `WHERE` clause was returned,
 but this is not required.
 
-17 Expressions and Testing Values
----------------------------------
+## 17 Expressions and Testing Values
 
 SPARQL `FILTERs` restrict the solutions of a graph pattern match according to a given [constraint](#rConstraint). Specifically,
 `FILTERs` eliminate any solutions that, when substituted into the expression, either result in an effective boolean value of `false` or produce an error. Effective boolean values are defined in section [17.2.2 *Effective Boolean Value*](#ebv) and errors are defined in XQuery 1.0: An XML Query Language [[XQUERY](#XQUERY)] section [2.3.1, *Kinds of Errors*](https://www.w3.org/TR/2007/REC-xquery-20070123/#dt-type-error). These errors have no effect outside of `FILTER` evaluation.
 
 RDF literals may have a datatype IRI:
 
-```
+```sparql
 @prefix a:          <http://www.w3.org/2000/10/annotation-ns#> .
 @prefix dc:         <http://purl.org/dc/elements/1.1/> .
 
@@ -3978,13 +3953,13 @@ _:a   dc:date       "2004-12-31T19:00:00-05:00" .
 
 _:b   a:annotates   <http://www.w3.org/TR/rdf-sparql-query/> .
 _:b   dc:date       "2004-12-31T19:01:00-05:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
-```
+```sparql
 
 The object of the first `dc:date` triple has no type information. The second has the datatype `xsd:dateTime`.
 
 SPARQL expressions are constructed according to the grammar and provide access to functions (named by IRI) and operator functions (invoked by keywords and symbols in the SPARQL grammar). SPARQL operators can be used to compare the values of typed literals:
 
-```
+```sparql
 PREFIX a:      <http://www.w3.org/2000/10/annotation-ns#>
 PREFIX dc:     <http://purl.org/dc/elements/1.1/>
 PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
@@ -3993,15 +3968,15 @@ SELECT ?annot
 WHERE { ?annot  a:annotates  <http://www.w3.org/TR/rdf-sparql-query/> .
         ?annot  dc:date      ?date .
         FILTER ( ?date > "2005-01-01T00:00:00Z"^^xsd:dateTime ) }
-```
+```text
 
 The SPARQL operators are listed in [section 17.3](#OperatorMapping) and are associated with their productions in the grammar.
 
 In addition, SPARQL provides the ability to invoke arbitrary functions, including a subset of the XPath casting functions, listed in [section 17.5](#FunctionMapping). These functions are invoked by name (an IRI) within a SPARQL query. For example:
 
-```
+```sparql
 ... FILTER ( xsd:dateTime(?date) < xsd:dateTime("2005-01-01T00:00:00Z") ) ...
-```
+```sparql
 
 Typographical convention in this section: XPath operators are labeled
 with the prefix `op:`. XPath operators have no namespace;
@@ -4188,15 +4163,15 @@ appropriate grammatical constructs.
 
 ##### 17.4.1.1 bound
 
-```
+```sparql
 xsd:boolean  BOUND (variable var)
-```
+```sparql
 
 Returns `true` if `var` is bound to a value. Returns false otherwise. Variables with the value NaN or INF are considered bound.
 
 Data:
 
-```
+```sparql
 @prefix foaf:        <http://xmlns.com/foaf/0.1/> .
 @prefix dc:          <http://purl.org/dc/elements/1.1/> .
 @prefix xsd:          <http://www.w3.org/2001/XMLSchema#> .
@@ -4205,9 +4180,9 @@ _:a  foaf:givenName  "Alice".
 
 _:b  foaf:givenName  "Bob" .
 _:b  dc:date         "2005-04-04T04:04:04Z"^^xsd:dateTime .
-```
+```sparql
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX dc:   <http://purl.org/dc/elements/1.1/>
 PREFIX xsd:   <http://www.w3.org/2001/XMLSchema#>
@@ -4215,7 +4190,7 @@ SELECT ?givenName
  WHERE { ?x foaf:givenName  ?givenName .
          OPTIONAL { ?x dc:date ?date } .
          FILTER ( bound(?date) ) }
-```
+```text
 
 Query result:
 
@@ -4227,14 +4202,14 @@ One may test that a graph pattern is *not* expressed by specifying an OPTIONAL g
 
 This query matches the people with a `name` but *no* expressed `date`:
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX dc:   <http://purl.org/dc/elements/1.1/>
 SELECT ?name
  WHERE { ?x foaf:givenName  ?name .
          OPTIONAL { ?x dc:date ?date } .
          FILTER (!bound(?date)) }
-```
+```text
 
 Query result:
 
@@ -4246,9 +4221,9 @@ Because Bob's `dc:date` was known, `"Bob"` was not a solution to the query.
 
 ##### 17.4.1.2 IF
 
-```
+```sparql
 rdfTerm  IF (expression1, expression2, expression3)
-```
+```text
 
 The `IF` function form evaluates the first argument, interprets it as a [effective boolean value](#ebv), then returns the value of `expression2` if the EBV is true, otherwise it returns the value of `expression3`. Only one of `expression2` and `expression3` is evaluated.
 If evaluating the first argument raises an error,
@@ -4266,9 +4241,9 @@ Examples: Suppose ?x = 2, ?z = 0 and ?y is not bound in some query solution:
 
 ##### 17.4.1.3 COALESCE
 
-```
+```sparql
 rdfTerm  COALESCE(expression, ....)
-```
+```sparql
 
 The `COALESCE` function form returns the RDF term value
 of the first expression that evaluates without error. In SPARQL,
@@ -4299,17 +4274,17 @@ query evaluation.
 No additional binding of variables occurs. The `NOT EXISTS` form
 translates into `fn:not(EXISTS{...})`.
 
-```
+```text
  xsd:boolean  NOT EXISTS { pattern }
-```
+```text
 
 Returns `false` if `pattern` matches. Returns true otherwise.
 
 `NOT EXISTS { pattern }` is equivalent to `fn:not(EXISTS { pattern })`.
 
-```
+```text
  xsd:boolean  EXISTS { pattern }
-```
+```text
 
 Returns `true` if `pattern` matches.
 Returns false otherwise.
@@ -4326,9 +4301,9 @@ being tested by the filter operation.
 
 ##### 17.4.1.5 logical-or
 
-```
+```text
  xsd:boolean  xsd:boolean left || xsd:boolean right
-```
+```text
 
 Returns a logical `OR` of `left` and `right`. Note that logical-or operates on the [effective boolean value](#ebv) of its arguments.
 
@@ -4337,9 +4312,9 @@ the `||` operator's treatment of errors.
 
 ##### 17.4.1.6 logical-and
 
-```
+```sparql
  xsd:boolean  xsd:boolean left && xsd:boolean right
-```
+```text
 
 Returns a logical `AND` of `left` and `right`. Note that logical-and operates on the [effective boolean value](#ebv) of its arguments.
 
@@ -4348,9 +4323,9 @@ the `&&` operator's treatment of errors.
 
 ##### 17.4.1.7 RDFterm-equal
 
-```
+```sparql
  xsd:boolean  RDF term term1 = RDF term term2
-```
+```sparql
 
 Returns TRUE if `term1` and `term2` are the same RDF term as defined in [Resource Description Framework (RDF): Concepts and Abstract Syntax](https://www.w3.org/TR/rdf-concepts/) [[CONCEPTS](#CONCEPTS)]; produces a type error if the arguments are both literal but are not the same RDF term [\*](#func-RDFterm-equal-foot1); returns FALSE otherwise. `term1` and `term2` are the same if any of the following is true:
 
@@ -4361,7 +4336,7 @@ Returns TRUE if `term1` and `term2` are the same RDF term as defined in [Resourc
 * term1 and term2 are the same blank node as described in [6.6 Blank Nodes](https://www.w3.org/TR/rdf-concepts/#section-blank-nodes)
   of [[CONCEPTS](#CONCEPTS)].
 
-```
+```sparql
 @prefix foaf:       <http://xmlns.com/foaf/0.1/> .
 
 _:a  foaf:name       "Alice".
@@ -4369,11 +4344,11 @@ _:a  foaf:mbox       <mailto:alice@work.example> .
 
 _:b  foaf:name       "Ms A.".
 _:b  foaf:mbox       <mailto:alice@work.example> .
-```
+```sparql
 
 This query finds the people who have multiple `foaf:name` triples:
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 SELECT ?name1 ?name2
 WHERE { ?x foaf:name  ?name1 ;
@@ -4382,7 +4357,7 @@ WHERE { ?x foaf:name  ?name1 ;
         foaf:mbox  ?mbox2 .
         FILTER (?mbox1 = ?mbox2 && ?name1 != ?name2)
       }
-```
+```text
 
 Query result:
 
@@ -4393,15 +4368,15 @@ Query result:
 
 In this query for documents that were annotated at a specific date and time (New Year's Day 2005, measures in timezone +00:00), the RDF terms are not the same, but have equivalent values:
 
-```
+```sparql
 @prefix a:          <http://www.w3.org/2000/10/annotation-ns#> .
 @prefix dc:         <http://purl.org/dc/elements/1.1/> .
 
 _:b   a:annotates   <http://www.w3.org/TR/rdf-sparql-query/> .
 _:b   dc:date       "2004-12-31T19:00:00-05:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> .
-```
+```sparql
 
-```
+```sparql
 PREFIX a:      <http://www.w3.org/2000/10/annotation-ns#>
 PREFIX dc:     <http://purl.org/dc/elements/1.1/>
 PREFIX xsd:    <http://www.w3.org/2001/XMLSchema#>
@@ -4411,7 +4386,7 @@ WHERE { ?annot  a:annotates  ?annotates .
         ?annot  dc:date      ?date .
         FILTER ( ?date = xsd:dateTime("2005-01-01T00:00:00Z") ) 
       }
-```
+```turtle
 
 | annotates |
 | --- |
@@ -4424,13 +4399,13 @@ equivalent values. An extended implementation may have support for additional da
 
 ##### 17.4.1.8 sameTerm
 
-```
+```sparql
  xsd:boolean  sameTerm (RDF term term1, RDF term term2)
-```
+```text
 
 Returns TRUE if `term1` and `term2` are the same RDF term as defined in [Resource Description Framework (RDF): Concepts and Abstract Syntax](https://www.w3.org/TR/rdf-concepts/) [[CONCEPTS](#CONCEPTS)]; returns FALSE otherwise.
 
-```
+```sparql
 @prefix foaf:       <http://xmlns.com/foaf/0.1/> .
 
 _:a  foaf:name       "Alice".
@@ -4438,11 +4413,11 @@ _:a  foaf:mbox       <mailto:alice@work.example> .
 
 _:b  foaf:name       "Ms A.".
 _:b  foaf:mbox       <mailto:alice@work.example> .
-```
+```sparql
 
 This query finds the people who have multiple `foaf:name` triples:
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 SELECT ?name1 ?name2
 WHERE { ?x foaf:name  ?name1 ;
@@ -4451,7 +4426,7 @@ WHERE { ?x foaf:name  ?name1 ;
          foaf:mbox  ?mbox2 .
          FILTER (sameTerm(?mbox1, ?mbox2) && !sameTerm(?name1, ?name2))
       }
-```
+```text
 
 Query result:
 
@@ -4462,7 +4437,7 @@ Query result:
 
 Unlike RDFterm-equal, sameTerm can be used to test for non-equivalent typed literals with unsupported datatypes:
 
-```
+```sparql
 @prefix :          <http://example.org/WMterms#> .
 @prefix t:         <http://example.org/types#> .
 
@@ -4477,9 +4452,9 @@ _:c2  :displacement  "85"^^t:liters .
 _:c3  :label        "Container 3" .
 _:c3  :weight       "85"^^t:kilos .
 _:c3  :displacement  "85"^^t:liters .
-```
+```sparql
 
-```
+```sparql
 PREFIX  :      <http://example.org/WMterms#>
 PREFIX  t:     <http://example.org/types#>
 
@@ -4493,7 +4468,7 @@ WHERE { ?a  :label        ?aLabel .
         ?b  :displacement ?bDisp .
 
         FILTER ( sameTerm(?aWeight, ?bWeight) && !sameTerm(?aDisp, ?bDisp)) }
-```
+```text
 
 | aLabel | bLabel |
 | --- | --- |
@@ -4504,9 +4479,9 @@ The test for boxes with the same weight may also be done with the '=' operator (
 
 ##### 17.4.1.9 IN
 
-```
+```sparql
 boolean  rdfTerm IN (expression, ...)
-```
+```text
 
 The `IN` operator tests whether the RDF term on the
 left-hand side is found in the values of list of expressions
@@ -4522,9 +4497,9 @@ elsewhere in the list of terms.
 
 The `IN` operator is equivalent to the SPARQL expression:
 
-```
+```text
 (lhs = expression1) || (lhs = expression2) || ...
-```
+```turtle
 
 Examples:
 
@@ -4539,9 +4514,9 @@ Examples:
 
 ##### 17.4.1.10 NOT IN
 
-```
+```sparql
 boolean  rdfTerm NOT IN (expression, ...)
-```
+```text
 
 The `NOT IN` operator tests whether the RDF term on the
 left-hand side is not found in the values of list of expressions
@@ -4557,9 +4532,9 @@ to be in the list elsewhere in the list of terms.
 
 The `NOT IN` operator is equivalent to the SPARQL expression:
 
-```
+```sparql
 (lhs != expression1) && (lhs != expression2) && ...
-```
+```text
 
 `NOT IN (...)` is equivalent to `!(IN (...))`.
 
@@ -4578,14 +4553,14 @@ Examples:
 
 ##### 17.4.2.1 isIRI
 
-```
+```sparql
  xsd:boolean  isIRI (RDF term term)
  xsd:boolean  isURI (RDF term term)
-```
+```sparql
 
 Returns `true` if `term` is an IRI. Returns `false` otherwise. isURI is an alternate spelling for the isIRI operator.
 
-```
+```sparql
 @prefix foaf:       <http://xmlns.com/foaf/0.1/> .
 
 _:a  foaf:name       "Alice".
@@ -4593,17 +4568,17 @@ _:a  foaf:mbox       <mailto:alice@work.example> .
 
 _:b  foaf:name       "Bob" .
 _:b  foaf:mbox       "bob@work.example" .
-```
+```sparql
 
 This query matches the people with a `name` and an `mbox` which is an IRI:
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 SELECT ?name ?mbox
  WHERE { ?x foaf:name  ?name ;
             foaf:mbox  ?mbox .
          FILTER isIRI(?mbox) }
-```
+```turtle
 
 Query result:
 
@@ -4613,13 +4588,13 @@ Query result:
 
 ##### 17.4.2.2 isBlank
 
-```
+```sparql
  xsd:boolean  isBlank (RDF term term)
-```
+```sparql
 
 Returns `true` if `term` is a blank node. Returns `false` otherwise.
 
-```
+```sparql
 @prefix a:          <http://www.w3.org/2000/10/annotation-ns#> .
 @prefix dc:         <http://purl.org/dc/elements/1.1/> .
 @prefix foaf:       <http://xmlns.com/foaf/0.1/> .
@@ -4631,12 +4606,12 @@ _:b   a:annotates   <http://www.w3.org/TR/rdf-sparql-query/> .
 _:b   dc:creator    _:c .
 _:c   foaf:given    "Bob".
 _:c   foaf:family   "Smith".
-```
+```sparql
 
 This query matches the people with a `dc:creator` which uses
 predicates from the FOAF vocabulary to express the name.
 
-```
+```sparql
 PREFIX a:      <http://www.w3.org/2000/10/annotation-ns#>
 PREFIX dc:     <http://purl.org/dc/elements/1.1/>
 PREFIX foaf:   <http://xmlns.com/foaf/0.1/>
@@ -4647,7 +4622,7 @@ WHERE { ?annot  a:annotates  <http://www.w3.org/TR/rdf-sparql-query/> .
   OPTIONAL { ?c  foaf:given   ?given ; foaf:family  ?family } .
   FILTER isBlank(?c)
 }
-```
+```text
 
 Query result:
 
@@ -4659,13 +4634,13 @@ In this example, there were two objects of `dc:creator` predicates, but only one
 
 ##### 17.4.2.3 isLiteral
 
-```
+```sparql
  xsd:boolean  isLiteral (RDF term term)
-```
+```sparql
 
 Returns `true` if `term` is a literal. Returns `false` otherwise.
 
-```
+```sparql
 @prefix foaf:       <http://xmlns.com/foaf/0.1/> .
               
 _:a  foaf:name       "Alice".
@@ -4673,18 +4648,18 @@ _:a  foaf:mbox       <mailto:alice@work.example> .
 
 _:b  foaf:name       "Bob" .
 _:b  foaf:mbox       "bob@work.example" .
-```
+```text
 
 This query is similar to the one in [17.4.2.1](#func-isIRI) except that is matches the people with a `name` and an `mbox` which is a literal. This could be used to look for erroneous data (`foaf:mbox` should only have an
 IRI as its object).
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 SELECT ?name ?mbox
 WHERE { ?x foaf:name  ?name ;
         foaf:mbox  ?mbox .
         FILTER isLiteral(?mbox) }
-```
+```text
 
 Query result:
 
@@ -4694,9 +4669,9 @@ Query result:
 
 ##### 17.4.2.4 isNumeric
 
-```
+```sparql
  xsd:boolean  isNumeric (RDF term term)
-```
+```text
 
 Returns `true` if `term` is a numeric value. Returns `false` otherwise.
 `term`
@@ -4716,14 +4691,14 @@ Examples:
 
 ##### 17.4.2.5 str
 
-```
+```sparql
  simple literal  STR (literal ltrl)
  simple literal  STR (IRI rsrc)
-```
+```sparql
 
 Returns the lexical form of `ltrl` (a literal); returns the codepoint representation of `rsrc` (an IRI). This is useful for examining parts of an IRI, for instance, the host-name.
 
-```
+```sparql
 @prefix foaf:       <http://xmlns.com/foaf/0.1/> .
 
 _:a  foaf:name       "Alice".
@@ -4731,17 +4706,17 @@ _:a  foaf:mbox       <mailto:alice@work.example> .
 
 _:b  foaf:name       "Bob" .
 _:b  foaf:mbox       <mailto:bob@home.example> .
-```
+```sparql
 
 This query selects the set of people who use their `work.example` address in their foaf profile:
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 SELECT ?name ?mbox
  WHERE { ?x foaf:name  ?name ;
             foaf:mbox  ?mbox .
          FILTER regex(str(?mbox), "@work\\.example$") }
-```
+```turtle
 
 Query result:
 
@@ -4751,29 +4726,29 @@ Query result:
 
 ##### 17.4.2.6 lang
 
-```
+```sparql
  simple literal  LANG (literal ltrl)
-```
+```sparql
 
 Returns the language tag of `ltrl`, if it has one. It returns `""` if `ltrl` has no language tag. Note that the RDF data model does not include literals with an empty language tag.
 
-```
+```sparql
 @prefix foaf:       <http://xmlns.com/foaf/0.1/> .
 
 _:a  foaf:name       "Robert"@en.
 _:a  foaf:name       "Roberto"@es.
 _:a  foaf:mbox       <mailto:bob@work.example> .
-```
+```sparql
 
 This query finds the Spanish `foaf:name` and `foaf:mbox`:
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 SELECT ?name ?mbox
  WHERE { ?x foaf:name  ?name ;
             foaf:mbox  ?mbox .
          FILTER ( lang(?name) = "es" ) }
-```
+```turtle
 
 Query result:
 
@@ -4783,9 +4758,9 @@ Query result:
 
 ##### 17.4.2.7 datatype
 
-```
+```sparql
  iri  DATATYPE (literal literal)
-```
+```sparql
 
 Returns the datatype IRI of a `literal`.
 
@@ -4793,7 +4768,7 @@ Returns the datatype IRI of a `literal`.
 * If the literal is a simple literal, return `xsd:string`
 * If the literal is literal with a language tag, return `rdf:langString`
 
-```
+```sparql
 @prefix foaf:       <http://xmlns.com/foaf/0.1/> .
 @prefix eg:         <http://biometrics.example/ns#> .
 @prefix xsd:        <http://www.w3.org/2001/XMLSchema#> .
@@ -4803,18 +4778,18 @@ _:a  eg:shoeSize     "9.5"^^xsd:float .
 
 _:b  foaf:name       "Bob".
 _:b  eg:shoeSize     "42"^^xsd:integer .
-```
+```sparql
 
 This query finds the `foaf:name` and `foaf:shoeSize` of everyone with a shoeSize that is an integer:
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
 PREFIX eg:   <http://biometrics.example/ns#>
 SELECT ?name ?shoeSize
  WHERE { ?x foaf:name  ?name ; eg:shoeSize  ?shoeSize .
          FILTER ( datatype(?shoeSize) = xsd:integer ) }
-```
+```text
 
 Query result:
 
@@ -4834,14 +4809,14 @@ The SPARQL Working Group is using `rdf:langString` based on the latest Working D
 
 ##### 17.4.2.8 IRI
 
-```
+```sparql
  iri  IRI(simple literal)
  iri  IRI(xsd:string)
  iri  IRI(iri)
  iri  URI(simple literal)
  iri  URI(xsd:string)
  iri  URI(iri)
-```
+```sparql
 
 The `IRI` function constructs an IRI by resolving the string argument
 (see [RFC 3986](http://www.ietf.org/rfc/rfc3986.txt)
@@ -4867,17 +4842,17 @@ Examples:
 
 ##### 17.4.2.9 BNODE
 
-```
+```sparql
 blank node  BNODE()
-```
+```sparql
 
-```
+```sparql
 blank node  BNODE(simple literal)
-```
+```sparql
 
-```
+```sparql
 blank node  BNODE(xsd:string)
-```
+```sparql
 
 The `BNODE` function constructs a blank node that is distinct
 from all blank nodes in the dataset being queried and distinct
@@ -4894,9 +4869,9 @@ of blank nodes in SPARQL CONSTRUCT templates](#tempatesWithBNodes).
 
 ##### 17.4.2.10 STRDT
 
-```
+```sparql
 literal  STRDT(simple literal lexicalForm, IRI datatypeIRI)
-```
+```sparql
 
 The `STRDT` function constructs a literal with lexical
 form and type as specified by the arguments.
@@ -4908,9 +4883,9 @@ form and type as specified by the arguments.
 
 ##### 17.4.2.11 STRLANG
 
-```
+```sparql
 literal  STRLANG(simple literal lexicalForm, simple literal langTag)
-```
+```sparql
 
 The `STRLANG` function constructs a literal with
 lexical form and language tag as specified by the arguments.
@@ -4921,9 +4896,9 @@ lexical form and language tag as specified by the arguments.
 
 ##### 17.4.2.12 UUID
 
-```
+```sparql
 iri  UUID()
-```
+```text
 
 Return a fresh IRI from the
 [UUID URN scheme](http://www.ietf.org/rfc/rfc4122.txt).
@@ -4938,9 +4913,9 @@ implementation dependent.
 
 ##### 17.4.2.13 STRUUID
 
-```
+```sparql
 simple literal  STRUUID()
-```
+```text
 
 Return a string that is the scheme specific part of UUID.
 That is, as a simple literal, the result of generating a UUID, converting to a
@@ -5010,9 +4985,9 @@ based on the details of all its arguments.
 
 ##### 17.4.3.2 STRLEN
 
-```
+```sparql
 xsd:integer  STRLEN(string literal str)
-```
+```text
 
 The `strlen` function corresponds to the
 XPath [fn:string-length](https://www.w3.org/TR/xpath-functions/#func-string-length)
@@ -5027,13 +5002,13 @@ in characters of the lexical form of the literal.
 
 ##### 17.4.3.3 SUBSTR
 
-```
+```sparql
 string literal  SUBSTR(string literal source, xsd:integer startingLoc)
-```
+```sparql
 
-```
+```sparql
 string literal  SUBSTR(string literal source, xsd:integer startingLoc, xsd:integer length)
-```
+```text
 
 The `substr` function corresponds to the XPath
 [fn:substring](https://www.w3.org/TR/xpath-functions/#func-substring)
@@ -5056,9 +5031,9 @@ The index of the first character in a strings is 1.
 
 ##### 17.4.3.4 UCASE
 
-```
+```sparql
 string literal  UCASE(string literal str)
-```
+```text
 
 The `UCASE` function corresponds to the XPath
 [fn:upper-case](https://www.w3.org/TR/xpath-functions/#func-upper-case) function.
@@ -5073,9 +5048,9 @@ lexcial form of the argument.
 
 ##### 17.4.3.5 LCASE
 
-```
+```sparql
 string literal  LCASE(string literal str)
-```
+```text
 
 The `LCASE` function corresponds to the XPath
 [fn:lower-case](https://www.w3.org/TR/xpath-functions/#func-lower-case) function.
@@ -5090,9 +5065,9 @@ lexcial form of the argument.
 
 ##### 17.4.3.6 STRSTARTS
 
-```
+```sparql
 xsd:boolean  STRSTARTS(string literal arg1, string literal arg2)
-```
+```text
 
 The `STRSTARTS` function corresponds to the XPath
 [fn:starts-with](https://www.w3.org/TR/xpath-functions/#func-starts-with) function.
@@ -5114,9 +5089,9 @@ starts with the lexical form of `arg2`, otherwise it returns false.
 
 ##### 17.4.3.7 STRENDS
 
-```
+```sparql
 xsd:boolean  STRENDS(string literal arg1, string literal arg2)
-```
+```text
 
 The `STRENDS` function corresponds to the XPath
 [fn:ends-with](https://www.w3.org/TR/xpath-functions/#func-ends-with) function.
@@ -5138,9 +5113,9 @@ ends with the lexical form of `arg2`, otherwise it returns false.
 
 ##### 17.4.3.8 CONTAINS
 
-```
+```sparql
 xsd:boolean  CONTAINS(string literal arg1, string literal arg2)
-```
+```text
 
 The `CONTAINS` function corresponds to the XPath
 [fn:contains](https://www.w3.org/TR/xpath-functions/#func-contains).
@@ -5159,9 +5134,9 @@ otherwise an error is raised.
 
 ##### 17.4.3.9 STRBEFORE
 
-```
+```sparql
 literal  STRBEFORE(string literal arg1, string literal arg2)
-```
+```text
 
 The `STRBEFORE` function corresponds to the XPath
 [fn:substring-before](https://www.w3.org/TR/xpath-functions/#func-substring-before) function.
@@ -5196,9 +5171,9 @@ If there is no such occurrence, an empty simple literal is returned.
 
 ##### 17.4.3.10 STRAFTER
 
-```
+```sparql
 literal  STRAFTER(string literal arg1, string literal arg2)
-```
+```text
 
 The `STRAFTER` function corresponds to the XPath
 [fn:substring-after](https://www.w3.org/TR/xpath-functions/#func-substring-after) function.
@@ -5233,9 +5208,9 @@ If there is no such occurrence, an empty simple literal is returned.
 
 ##### 17.4.3.11 ENCODE\_FOR\_URI
 
-```
+```sparql
 simple literal  ENCODE_FOR_URI(string literal ltrl)
-```
+```text
 
 The `ENCODE_FOR_URI` function corresponds to the XPath [fn:encode-for-uri](https://www.w3.org/TR/xpath-functions/#func-encode-for-uri) function.
 It returns a simple literal with the lexical form obtained from the lexical
@@ -5250,9 +5225,9 @@ form of its input after translating reserved characters according to the
 
 ##### 17.4.3.12 CONCAT
 
-```
+```sparql
 string literal  CONCAT(string literal ltrl1 ... string literal ltrln)
-```
+```text
 
 The `CONCAT` function corresponds to the XPath [fn:concat](https://www.w3.org/TR/xpath-functions/#func-concat) function. The function accepts string literals as arguments.
 
@@ -5270,33 +5245,33 @@ If all input literals are typed literals of type `xsd:string`, then the returned
 
 ##### 17.4.3.13 langMatches
 
-```
+```sparql
  xsd:boolean  langMatches (simple literal language-tag, simple literal language-range)
-```
+```text
 
 Returns `true` if `language-tag` (first argument) matches `language-range` (second argument) per the basic filtering scheme defined in [[RFC4647](#rfc4647)] section 3.3.1. `language-range` is a basic language range per [Matching of Language Tags](http://www.ietf.org/rfc/rfc4647.txt) [[RFC4647](#rfc4647)] section 2.1. A `language-range` of "\*" matches any non-empty `language-tag` string.
 
-```
+```sparql
 @prefix dc:       <http://purl.org/dc/elements/1.1/> .
 
 _:a  dc:title         "That Seventies Show"@en .
 _:a  dc:title         "Cette Série des Années Soixante-dix"@fr .
 _:a  dc:title         "Cette Série des Années Septante"@fr-BE .
 _:b  dc:title         "Il Buono, il Bruto, il Cattivo" .
-```
+```text
 
 This query uses
 [`langMatches`](#func-langMatches) and
 [`lang`](#func-lang)
 to find the French titles for the show known in English as "That Seventies Show":
 
-```
+```sparql
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 SELECT ?title
  WHERE { ?x dc:title  "That Seventies Show"@en ;
             dc:title  ?title .
          FILTER langMatches( lang(?title), "FR" ) }
-```
+```text
 
 Query result:
 
@@ -5307,12 +5282,12 @@ Query result:
 
 The idiom `langMatches( lang( ?v ), "*" )` will not match literals without a language tag as `lang( ?v )` will return an empty string, so
 
-```
+```sparql
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 SELECT ?title
  WHERE { ?x dc:title  ?title .
          FILTER langMatches( lang(?title), "*" ) }
-```
+```text
 
 will report all of the titles with a language tag:
 
@@ -5324,26 +5299,26 @@ will report all of the titles with a language tag:
 
 ##### 17.4.3.14 REGEX
 
-```
+```sparql
  xsd:boolean  REGEX (string literal text, simple literal pattern)
  xsd:boolean  REGEX (string literal text, simple literal pattern, simple literal flags)
-```
+```text
 
 Invokes the XPath [fn:matches](https://www.w3.org/TR/xpath-functions/#func-matches) function to match `text` against a regular expression `pattern`. The regular expression language is defined in XQuery 1.0 and XPath 2.0 Functions and Operators section [7.6.1 Regular Expression Syntax](https://www.w3.org/TR/xpath-functions/#regex-syntax) [[FUNCOP](#FUNCOP)].
 
-```
+```sparql
 @prefix foaf:       <http://xmlns.com/foaf/0.1/> .
 
 _:a  foaf:name       "Alice".
 _:b  foaf:name       "Bob" .
-```
+```sparql
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 SELECT ?name
  WHERE { ?x foaf:name  ?name
          FILTER regex(?name, "^ali", "i") }
-```
+```text
 
 Query result:
 
@@ -5353,10 +5328,10 @@ Query result:
 
 ##### 17.4.3.15 REPLACE
 
-```
+```sparql
  string literal  REPLACE (string literal arg, simple literal pattern, simple literal replacement )
  string literal  REPLACE (string literal arg, simple literal pattern, simple literal replacement,  simple literal flags)
-```
+```text
 
 The `REPLACE` function corresponds to the XPath
 [fn:replace](https://www.w3.org/TR/xpath-functions/#func-replace) function.
@@ -5373,9 +5348,9 @@ Regular expession matching may involve modifier flags. See [REGEX](#func-regex).
 
 ##### 17.4.4.1 abs
 
-```
+```sparql
  numeric  ABS (numeric term)
-```
+```text
 
 Returns the absolute value of `arg`.
 An error is raised if `arg` is not a numeric value.
@@ -5391,9 +5366,9 @@ for terms with a datatype from [XDM](https://www.w3.org/TR/xpath-datamodel/).
 
 ##### 17.4.4.2 round
 
-```
+```sparql
  numeric  ROUND (numeric term)
-```
+```text
 
 Returns the number with no fractional part that is closest to the argument.
 If there are two such numbers, then the one that is closest to
@@ -5412,9 +5387,9 @@ for terms with a datatype from [XDM](https://www.w3.org/TR/xpath-datamodel/).
 
 ##### 17.4.4.3 ceil
 
-```
+```sparql
  numeric  CEIL (numeric term)
-```
+```text
 
 Returns the smallest (closest to negative infinity) number
 with no fractional part that is not less than the value of `arg`.
@@ -5431,9 +5406,9 @@ for terms with a datatype from [XDM](https://www.w3.org/TR/xpath-datamodel/).
 
 ##### 17.4.4.4 floor
 
-```
+```sparql
  numeric  FLOOR (numeric term)
-```
+```text
 
 Returns the largest (closest to positive infinity) number
 with no fractional part that is not greater than the value of `arg`.
@@ -5450,9 +5425,9 @@ for terms with a datatype from [XDM](https://www.w3.org/TR/xpath-datamodel/).
 
 ##### 17.4.4.5 RAND
 
-```
+```sparql
  xsd:double  RAND ( )
-```
+```text
 
 Returns a pseudo-random number between 0 (inclusive) and 1.0e0 (exclusive).
 Different numbers can be produced every time this function is invoked.
@@ -5466,9 +5441,9 @@ Numbers should be produced with approximately equal probability.
 
 ##### 17.4.5.1 now
 
-```
+```sparql
  xsd:dateTime  NOW ()
-```
+```text
 
 Returns an XSD dateTime value for the current query execution.
 All calls to this function in any one query execution must return the same
@@ -5480,9 +5455,9 @@ value. The exact moment returned is not specified.
 
 ##### 17.4.5.2 year
 
-```
+```sparql
  xsd:integer  YEAR (xsd:dateTime arg)
-```
+```text
 
 Returns the year part of `arg` as an integer.
 
@@ -5495,9 +5470,9 @@ This function corresponds to
 
 ##### 17.4.5.3 month
 
-```
+```sparql
  xsd:integer  MONTH (xsd:dateTime arg)
-```
+```text
 
 Returns the month part of `arg` as an integer.
 
@@ -5510,9 +5485,9 @@ This function corresponds to
 
 ##### 17.4.5.4 day
 
-```
+```sparql
  xsd:integer  DAY (xsd:dateTime arg)
-```
+```text
 
 Returns the day part of `arg` as an integer.
 
@@ -5525,9 +5500,9 @@ This function corresponds to
 
 ##### 17.4.5.5 hours
 
-```
+```sparql
  xsd:integer  HOURS (xsd:dateTime arg)
-```
+```text
 
 Returns the hours part of `arg` as an integer.
 The value is as given in the lexical form of the XSD dateTime.
@@ -5541,9 +5516,9 @@ This function corresponds to
 
 ##### 17.4.5.6 minutes
 
-```
+```sparql
  xsd:integer  MINUTES (xsd:dateTime arg)
-```
+```text
 
 Returns the minutes part of the lexical form of `arg`.
 The value is as given in the lexical form of the XSD dateTime.
@@ -5557,9 +5532,9 @@ This function corresponds to
 
 ##### 17.4.5.7 seconds
 
-```
+```sparql
  xsd:decimal  SECONDS (xsd:dateTime arg)
-```
+```text
 
 Returns the seconds part of the lexical form of `arg`.
 
@@ -5572,9 +5547,9 @@ This function corresponds to
 
 ##### 17.4.5.8 timezone
 
-```
+```sparql
  xsd:dayTimeDuration  TIMEZONE (xsd:dateTime arg)
-```
+```text
 
 Returns the timezone part of `arg` as an xsd:dayTimeDuration.
 Raises an error if there is no timezone.
@@ -5591,9 +5566,9 @@ with no timezone.
 
 ##### 17.4.5.9 tz
 
-```
+```sparql
  simple literal  TZ (xsd:dateTime arg)
-```
+```text
 
 Returns the timezone part of `arg` as a simple literal.
 Returns the empty string if there is no timezone.
@@ -5608,13 +5583,13 @@ Returns the empty string if there is no timezone.
 
 ##### 17.4.6.1 MD5
 
-```
+```sparql
  simple literal  MD5 (simple literal arg)
-```
+```sparql
 
-```
+```sparql
  simple literal  MD5 (xsd:string arg)
-```
+```text
 
 Returns the MD5 checksum, as a hex digit string, calculated on the
 UTF-8 representation of the simple literal or lexical form of the
@@ -5627,13 +5602,13 @@ UTF-8 representation of the simple literal or lexical form of the
 
 ##### 17.4.6.2 SHA1
 
-```
+```sparql
  simple literal  SHA1 (simple literal arg)
-```
+```sparql
 
-```
+```sparql
  simple literal  SHA1 (xsd:string arg)
-```
+```text
 
 Returns the SHA1 checksum, as a hex digit string, calculated on the
 UTF-8 representation of the simple literal or lexical form of the
@@ -5646,13 +5621,13 @@ UTF-8 representation of the simple literal or lexical form of the
 
 ##### 17.4.6.3 SHA256
 
-```
+```sparql
  simple literal  SHA256 (simple literal arg)
-```
+```sparql
 
-```
+```sparql
  simple literal  SHA256 (xsd:string arg)
-```
+```text
 
 Returns the SHA256 checksum, as a hex digit string, calculated on the
 UTF-8 representation of the simple literal or lexical form of the
@@ -5665,13 +5640,13 @@ UTF-8 representation of the simple literal or lexical form of the
 
 ##### 17.4.6.4 SHA384
 
-```
+```sparql
  simple literal  SHA384 (simple literal arg)
-```
+```sparql
 
-```
+```sparql
  simple literal  SHA384 (xsd:string arg)
-```
+```text
 
 Returns the SHA384 checksum, as a hex digit string, calculated on the
 UTF-8 representation of the simple literal or lexical form of the
@@ -5684,13 +5659,13 @@ UTF-8 representation of the simple literal or lexical form of the
 
 ##### 17.4.6.5 SHA512
 
-```
+```sparql
  simple literal  SHA512 (simple literal arg)
-```
+```sparql
 
-```
+```sparql
  simple literal  SHA512 (xsd:string arg)
-```
+```text
 
 Returns the SHA512 checksum, as a hex digit string, calculated on the
 UTF-8 representation of the simple literal or lexical form of the
@@ -5747,28 +5722,28 @@ SPARQL queries using extension functions are likely to have limited interoperabi
 
 As an example, consider a function called `func:even`:
 
-```
+```sparql
  xsd:boolean   func:even (numeric value)
-```
+```sparql
 
 This function would be invoked in a FILTER as such:
 
-```
+```sparql
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX func: <http://example.org/functions#>
 SELECT ?name ?id
 WHERE { ?x foaf:name  ?name ;
            func:empId   ?id .
         FILTER (func:even(?id)) }
-```
+```sparql
 
 For a second example, consider a function `aGeo:distance` that calculates the distance between two points, which is used here to find the places near Grenoble:
 
-```
+```sparql
  xsd:double   aGeo:distance (numeric x1, numeric y1, numeric x2, numeric y2)
-```
+```sparql
 
-```
+```sparql
 PREFIX aGeo: <http://example.org/geo#>
 
 SELECT ?neighbor
@@ -5782,15 +5757,14 @@ WHERE { ?a aGeo:placeName "Grenoble" .
 
         FILTER ( aGeo:distance(?axLoc, ?ayLoc, ?bxLoc, ?byLoc) < 10 ) .
       }
-```
+```sparql
 
 An extension function might be used to test some
 application datatype not supported by the core SPARQL specification, it might
 be a transformation between datatype formats, for example into an XSD dateTime
 RDF term from another date format.
 
-18 Definition of SPARQL
------------------------
+## 18 Definition of SPARQL
 
 This section defines the correct behavior for evaluation of graph patterns
 and solution modifiers, given a query string and an RDF
@@ -5887,11 +5861,11 @@ A triple pattern is member of the set:
 
 This definition of Triple Pattern includes literal subjects. [This has been noted by RDF-core](https://www.w3.org/2000/03/rdf-tracking/#rdfms-literalsubjects).
 
-```
+```text
 "[The RDF core Working Group] noted that it is aware of no reason why literals should
 not be subjects and a future WG with a less restrictive charter may
 extend the syntaxes to allow literals as the subjects of statements."
-```
+```sparql
 
 Because RDF graphs may not contain literal subjects, any SPARQL triple pattern with a literal as subject will fail
 to match on any RDF graph.
@@ -6111,9 +6085,9 @@ The working group notes that in SPARQL 1.0, the point at which the simplificatio
 applied leads to ambiguous transformation
 of queries involving a doubly nested filter and pattern in an optional:
 
-```
+```text
 OPTIONAL { { ... FILTER ( ... ?x ... ) } }..
-```
+```text
 
 This is illustrated by two non-normative test cases:
 
@@ -6141,7 +6115,7 @@ In this step, we also translate graph patterns within `FILTER`
 expressions [`EXISTS` and
 `NOT EXISTS`](#func-filter-exists).
 
-```
+```text
 Let FS := empty set
 
 For each form FILTER(expr) in the group graph pattern:
@@ -6149,7 +6123,7 @@ For each form FILTER(expr) in the group graph pattern:
     In expr, replace EXISTS{P} with exists(translate(P))
     FS := FS ∪ {expr}
     End
-```
+```text
 
 The set of filter expressions `FS` is [used later](#sparqlAddFilters).
 
@@ -6223,7 +6197,7 @@ Examples of the whole path translation process
 
 ?s :p/:q ?o
 
-?s :p ?\_V .   
+?s :p ?\_V .
 ?\_V :q ?o
 
 ?s :p\* ?o
@@ -6246,7 +6220,7 @@ Next, we translate each remaining graph pattern form, recursively applying the t
 
 > If the form is `GroupOrUnionGraphPattern`
 
-```
+```sparql
 Let A := undefined
           
 For each element G in the GroupOrUnionGraphPattern
@@ -6257,23 +6231,23 @@ For each element G in the GroupOrUnionGraphPattern
     End
 
 The result is A
-```
+```sparql
 
 > If the form is `GraphGraphPattern`
 
-```
+```sparql
 If the form is GRAPH IRI GroupGraphPattern
     The result is Graph(IRI, Translate(GroupGraphPattern))
-```
+```sparql
 
-```
+```sparql
 If the form is GRAPH Var GroupGraphPattern
     The result is Graph(Var, Translate(GroupGraphPattern))
-```
+```sparql
 
 > If the form is `GroupGraphPattern`:
 
-```
+```text
 Let FS := the empty set
 Let G := the empty pattern, a basic graph pattern which is the empty set.
 
@@ -6304,13 +6278,13 @@ For each element E in the GroupGraphPattern
    End
    
 The result is G.
-```
+```text
 
 > If the form is [InlineData](#rInlineData)
 
-```
+```sparql
 The result is a multiset of solution mappings 'data'.
-```
+```sparql
 
 > *data* is formed by forming a solution mapping
 > from the variable in the corresponding position in list of variables
@@ -6319,22 +6293,22 @@ The result is a multiset of solution mappings 'data'.
 
 > If the form is [SubSelect](#rSubSelect)
 
-```
+```sparql
 The result is ToMultiset(Translate(SubSelect))
-```
+```sparql
 
 ##### 18.2.2.7 Filters of Group
 
 After the group has been translated, the filter expressions are
 added so they wil apply to the whole of the rest of the group:
 
-```
+```sparql
 If FS is not empty
     Let G := output of preceding step
     Let X := Conjunction of expressions in FS
     G := Filter(X, G)
     End
-```
+```sparql
 
 ##### 18.2.2.8 Simplification step
 
@@ -6343,10 +6317,10 @@ where Z is the empty basic graph pattern
 (which is the empty set). These can be replaced by A.
 The empty graph pattern Z is the identity for join:
 
-```
+```sparql
 Replace join(Z, A) by A
 Replace join(A, Z) by A
-```
+```sparql
 
 #### 18.2.3 Examples of Mapped Graph Patterns
 
@@ -6388,7 +6362,7 @@ Union(
 ,  
     Join(Z, BGP(?s :p3 ?v3)) )
 
-Union(   
+Union(
     Union( BGP(?s :p1 ?v1) ,  
            BGP(?s :p2 ?v2),  
     BGP(?s :p3 ?v3))
@@ -6414,7 +6388,7 @@ LeftJoin(
     LeftJoin(  
         BGP(?s :p1 ?v1),  
         BGP(?s :p2 ?v2),  
-       
+
 true) ,  
     BGP(?s :p3 ?v3),  
     true)
@@ -6440,12 +6414,12 @@ pattern:
 { {?s :p1 ?v1} UNION {?s :p2 ?v2} OPTIONAL {?s :p3 ?v3} }
 
 LeftJoin(  
- 
+
 Union(BGP(?s :p1 ?v1),  
         BGP(?s :p2 ?v2)) ,  
- 
+
 BGP(?s :p3 ?v3) ,  
- 
+
 true )
 
 Example: group consisting of a basic graph pattern, a filter and an optional
@@ -6454,9 +6428,9 @@ graph pattern:
 { ?s :p1 ?v1 FILTER (?v1 < 3 ) OPTIONAL {?s :p2 ?v2} }
 
 Filter( ?v1 < 3 ,  
- 
+
 LeftJoin( BGP(?s :p1 ?v1), BGP(?s :p2 ?v2), true) ,  
- 
+
 )
 
 Example: Pattern involving BIND:
@@ -6465,7 +6439,7 @@ Example: Pattern involving BIND:
 
 Join(  
   
-Extend( BGP(?s :p ?v), ?v2, 2\*?v) ,   
+Extend( BGP(?s :p ?v), ?v2, 2\*?v) ,
   
 BGP(?s :p1 ?v2)
 )
@@ -6475,8 +6449,8 @@ Example: Pattern involving BIND:
 { ?s :p ?v . {} BIND (2\*?v AS ?v2) }
 
 Join(  
-   BGP(?s :p ?v), ?v2, 2\*?v) ,   
-   Extend({}, ?v2, 2\*?v)   
+   BGP(?s :p ?v), ?v2, 2\*?v) ,
+   Extend({}, ?v2, 2\*?v)
 )
 
 Example: Pattern involving MINUS:
@@ -6498,7 +6472,7 @@ Join(
 BGP(?s :p ?o) ,  
   
 ToMultiSet(  
-    
+
 Distinct(Project(BGP(?o ?p ?z), {?o})) )  
   
 )
@@ -6525,7 +6499,7 @@ The aggregation step is applied as a transformation on the query level, replacin
 
 The transformation for query levels that use any aggregates is given below:
 
-```
+```sparql
 Let A := the empty sequence
 Let Q := the query level being evaluated
 Let P := the algebra translation of the GroupGraphPattern of the query level
@@ -6561,30 +6535,30 @@ For each variable V appearing outside of an aggregate
 
 A := Ai, ..., Ai-1
 P := AggregateJoin(A)
-```
+```sparql
 
 Note: aggi is a temporary variable. E is then used in 18.2.4.4 for the processing of select
 expressions.
 
 Example:
 
-```
+```sparql
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 SELECT (SUM(?val) AS ?sum) (COUNT(?a) AS ?count)
 WHERE {
   ?a rdf:value ?val .
 } GROUP BY ?a
-```
+```sparql
 
 The SUM expression becomes agg1, and the COUNT expression becomes agg2.
 
-```
+```text
 Let G := Group((?a), BGP(?a rdf:value ?val))
 A1 = Aggregation((?val), Sum, {}, G)
 A2 = Aggregation((?a), Count, {}, G)
 A := (A1, A2)
 Let P := AggregateJoin(A)
-```
+```sparql
 
 ##### 18.2.4.2 HAVING
 
@@ -6592,24 +6566,24 @@ The HAVING expression is evaluated using the same rules as FILTER(). Note that,
 due to the logic position in which the HAVING clause is evaluated, expressions projected
 by the SELECT clause are not visible to the HAVING clause.
 
-```
+```sparql
 Let Q := the query level being evaluated
 Let P := the algebra translation of the query level so far
 
 For each HAVING(E) in Q
     P := Filter(E, P)
     End
-```
+```sparql
 
 ##### 18.2.4.3 VALUES
 
 If the query has a trailing VALUES clause:
 
-```
+```sparql
 Let P := the algebra translation of the query level so far
 P := Join(P, ToMultiSet(data))
   where data is a solution sequence formed from the VALUES clause
-```
+```sparql
 
 The translatation of the data is the same as for [inline data](#data-block).
 
@@ -6619,12 +6593,12 @@ Step: Select expressions
 
 We have two forms of the abstract syntax to consider:
 
-```
+```sparql
 SELECT selItem ... { pattern }
 SELECT * { pattern }
-```
+```sparql
 
-```
+```sparql
 Let X := algebra from earlier steps
 Let VS := list of all variables visible in the pattern,
            so restricted by sub-SELECT projected variables and GROUP BY variables.
@@ -6655,7 +6629,7 @@ For each pair (var, expr) in E
   
 Result is X  
 The set PV is used later for projection.
-```
+```sparql
 
 The syntax error arises for use of a variable as the named target of AS (e.g.
 ... AS ?x) when the variable is used inside the WHERE clause of the SELECT or
@@ -6848,9 +6822,9 @@ a sequence property path becoming the algebra expession `ZeroOrMorePath(seq(link
 
 Write
 
-```
+```sparql
 eval(Path(X, PP, Y))
-```
+```text
 
 for the evaluation of the property path patterns.
 This produces a multiset of solution mappings μ, each solution mapping having
@@ -6933,9 +6907,9 @@ Let V be a fresh variable.
 
 Informally, this is the same as:
 
-```
+```sparql
 SELECT * { X P _:a . _:a Q Y }
-```
+```sparql
 
 using the fact that a blank node `_:a` acts like a variable (under simple entailment)
 except it does not appear in the results from `SELECT *`.
@@ -6950,9 +6924,9 @@ Let P and Q be property path expressions.
 
 Informally, this is the same as:
 
-```
+```sparql
 SELECT * { { X P Y } UNION { X Q Y } }
-```
+```text
 
 **Definition: Node set of a graph**
 
@@ -6962,24 +6936,24 @@ nodes(G) = { n | n is an RDF term that is used as a subject or object of a tripl
 
 **Definition: Evaluation of ZeroOrOnePath**
 
-```
+```text
 eval(Path(X:term, ZeroOrOnePath(P), Y:var)) = { (Y, yn) | yn = X or {(Y, yn)} in eval(Path(X,P,Y)) }
-```
+```sparql
 
-```
+```text
 eval(Path(X:var, ZeroOrOnePath(P), Y:term)) = { (X, xn) | xn = Y or {(X, xn)} in eval(Path(X,P,Y)) }
-```
+```sparql
 
-```
+```text
 eval(Path(X:term, ZeroOrOnePath(P), Y:term)) = 
     { {} } if X = Y or eval(Path(X,P,Y)) is not empty
     { } othewise
-```
+```sparql
 
-```
+```text
 eval(Path(X:var, ZeroOrOnePath(P), Y:var)) = 
     { (X, xn) (Y, yn) | either (yn in nodes(G) and xn = yn) or {(X,xn), (Y,yn)} in eval(Path(X,P,Y)) }
-```
+```sparql
 
 We define an auxillary function, ALP, used in the definitions of
 ZeroOrMorePath and OneOrMorePath.
@@ -7000,7 +6974,7 @@ under consideration, it is not a candidate for another step.
 
 **Definition: Function ALP**
 
-```
+```sparql
 Let eval(x:term, path) be the evaluation of 'path', starting at RDF term x, 
                        and returning a multiset of RDF terms reached 
                        by repeated matches of path.
@@ -7019,11 +6993,11 @@ ALP(x:term, path, V:set of RDF terms) =
     For n:term in X
         ALP(n, path, V)
         End
-```
+```sparql
 
 **Definition: Evaluation of ZeroOrMorePath**
 
-```
+```text
 eval(Path(X:term, ZeroOrMorePath(path), vy:var)) =
     { { (vy, n) } | n in ALP(X, path) }
 
@@ -7036,14 +7010,14 @@ eval(Path(vx:var, ZeroOrMorePath(path), y:term)) =
 eval(Path(x:term, ZeroOrMorePath(path), y:term)) = 
     { { } } if { (vy:var,y) } in eval(Path(x, ZeroOrMorePath(path) vy)
     { } otherwise
-	
-```
+ 
+```sparql
 
 **Definition: Evaluation of OneOrMorePath**
 
 eval(Path(X, OneOrMorePath(path), Y))
 
-```
+```sparql
 # For OneOrMorePath, we take one step of the path then start
 # recording nodes for results.
 
@@ -7064,24 +7038,24 @@ eval(Path(vx:var, OneOrMorePath(path), y:term)) =
 eval(Path(x:term, OneOrMorePath(path), y:term)) =
     { { } } if { (vy:var, y) } in eval(Path(x, OneOrMorePath(path), vy))
     { } otherwise
-	
-```
+ 
+```sparql
 
 **Definition: Evaluation of NegatedPropertySet**
 
-```
+```sparql
 Write μ' as the extension of a solution mapping:
 μ'(μ,x) = μ(x)   if x is a variable
 μ'(μ,t) = t   if t is a RDF term
-	
-```
+ 
+```sparql
 
-```
+```text
 Let x and y be variables or RDF terms, and S a set of IRIs:
 
 eval(Path(x, NPS(S), y)) = { μ | ∃ triple(μ'(μ,x), p, μ'(μ,y)) in G, such that the IRI of p ∉ S }
-	
-```
+ 
+```sparql
 
 ### 18.5 SPARQL Algebra
 
@@ -7112,7 +7086,7 @@ Join(Ω1, Ω2) = { merge(μ1, μ2) | μ1
 in Ω1and μ2 in Ω2, and μ1 and μ2 are
 compatible }
 
-card[Join(Ω1, Ω2)](μ) =   
+card[Join(Ω1, Ω2)](μ) =
     for each merge(μ1, μ2), μ1
 in Ω1and μ2 in Ω2 such that μ = merge(μ1, μ2),  
         sum over (μ1, μ2), card[Ω1](μ1)\*card[Ω2](μ2)
@@ -7152,16 +7126,16 @@ expr)](μ)
 Written in full that is:
 
 LeftJoin(Ω1, Ω2, expr) =  
-   
+
 { merge(μ1, μ2) | μ1 in Ω1 and μ2 in
 Ω2, μ1 and μ2 are compatible and expr(merge(μ1,
 μ2)) is true }  
 ∪  
-   
+
 { μ1 | μ1 in Ω1, ∀ μ2 in Ω2,
 μ1 and μ2 are not compatible, or Ω2 is empty }  
 ∪  
-   
+
 { μ1 | μ1 in Ω1, ∃ μ2 in Ω2,
 μ1 and μ2 are compatible and expr(merge(μ1, μ2)) is false. }
 
@@ -7273,7 +7247,7 @@ The Reduced solution sequence modifier does not guarantee a defined cardinality.
 
 Let Ψ be a sequence of solution mappings. We define:
 
-Slice(Ψ, start, length)[i] = Ψ[start+i] for i = 0
+Slice[Ψ, start, length](i) = Ψ[start+i] for i = 0
 to (length-1)
 
 **Definition: ToMultiSet**
@@ -7526,36 +7500,36 @@ We define eval(D(G), algebra expression) as the evaluation of an algebra express
 with respect to a dataset D having active
 graph G. The active graph is initially the default graph.
 
-```
+```text
 D : a dataset
 D(G) : D a dataset with active graph G (the one patterns match against)
 D[i] : The graph with IRI i in dataset D
 P, P1, P2 : graph patterns
 L : a solution sequence
 F : an expression
-```
+```sparql
 
 **Definition: Evaluation of a Basic Graph Pattern**
 
-```
+```sparql
 eval(D(G), BGP) = multiset of solution mappings
-```
+```text
 
 See section [Basic Graph Patterns](#BasicGraphPattern)
 
 **Definition: Evaluation of a Property Path Pattern**
 
-```
+```sparql
 eval(D(G), Path(X, path, Y)) = multiset of solution mappings
-```
+```text
 
 See section [Property Path Expresions](#defn_PropertyPathExpr)
 
 **Definition: Evaluation of Filter**
 
-```
+```sparql
 eval(D(G), Filter(F, P)) = Filter(F, eval(D(G),P), D(G))
-```
+```text
 
 'substitute' is a filter function in support of the evaluation of
 [`EXISTS` and `NOT EXISTS`](#func-filter-exists)
@@ -7576,41 +7550,41 @@ Let μ be the current solution mapping for a filter and P a graph pattern:
 
 **Definition: Evaluation of Join**
 
-```
+```sparql
 eval(D(G), Join(P1, P2)) = Join(eval(D(G), P1), eval(D(G), P2))
-```
+```sparql
 
 **Definition: Evaluation of LeftJoin**
 
-```
+```sparql
 eval(D(G), LeftJoin(P1, P2, F)) = LeftJoin(eval(D(G), P1), eval(D(G), P2), F)
-```
+```sparql
 
 **Definition: Evaluation of Union**
 
-```
+```sparql
 eval(D(G), Union(P1,P2)) = Union(eval(D(G), P1), eval(D(G), P2))
-```
+```sparql
 
 **Definition: Evaluation of Graph**
 
-```
+```text
 if IRI is a graph name in D
 eval(D(G), Graph(IRI,P)) = eval(D(D[IRI]), P)
-```
+```sparql
 
-```
+```sparql
 if IRI is not a graph name in D
 eval(D(G), Graph(IRI,P)) = the empty multiset
-```
+```sparql
 
-```
+```text
 eval(D(G), Graph(var,P)) =
      Let R be the empty multiset
      foreach IRI i in D
         R := Union(R, Join( eval(D(D[i]), P) , Ω(?var->i) )
      the result is R
-```
+```sparql
 
 The evaluation of graph uses the SPARQL algebra union operator. The
 cardinality of a solution mapping is the sum of the cardinalities of that
@@ -7632,51 +7606,51 @@ Note that if eval(D(G), Ai) is an error, it is ignored.
 
 **Definition: Evaluation of Extend**
 
-```
+```sparql
 eval(D(G), Extend(P, var, expr)) = Extend(eval(D(G), P), var, expr)
-```
+```sparql
 
 **Definition: Evaluation of ToList**
 
-```
+```sparql
 eval(D(G), ToList(P)) = ToList(eval(D(G), P))
-```
+```sparql
 
 **Definition: Evaluation of Distinct**
 
-```
+```sparql
 eval(D(G), Distinct(L)) = Distinct(eval(D(G), L))
-```
+```sparql
 
 **Definition: Evaluation of Reduced**
 
-```
+```sparql
 eval(D(G), Reduced(L)) = Reduced(eval(D(G), L))
-```
+```sparql
 
 **Definition: Evaluation of Project**
 
-```
+```sparql
 eval(D(G), Project(L, vars)) = Project(eval(D(G), L), vars)
-```
+```sparql
 
 **Definition: Evaluation of OrderBy**
 
-```
+```sparql
 eval(D(G), OrderBy(L, condition)) = OrderBy(eval(D(G), L), condition)
-```
+```sparql
 
 **Definition: Evaluation of ToMultiSet**
 
-```
+```sparql
 eval(D(G), ToMultiSet(L)) = ToMultiSet(eval(D), M))
-```
+```sparql
 
 **Definition: Evaluation of Slice**
 
-```
+```sparql
 eval(D(G), Slice(L, start, length)) = Slice(eval(D(G), L), start, length)
-```
+```sparql
 
 ### 18.7 Extending SPARQL Basic Graph Matching
 
@@ -7713,10 +7687,10 @@ Detailed definitions for querying various entailment regimes can be found in
 Some entailment regimes can categorize some RDF
 graphs as inconsistent. For example, the RDF graph:
 
-```
+```sparql
 _:x rdf:type xsd:string .
 _:x rdf:type xsd:decimal .
-```
+```sparql
 
 is D-inconsistent when D contains the XSD datatypes. The effect of a query
 on an inconsistent graph is not
@@ -7823,8 +7797,7 @@ SG union μ1(BGP1) union ... union
 has an instance which is a subgraph of SG, so is simply entailed by SG by the [RDF interpolation lemma](https://www.w3.org/TR/rdf-mt/#interplemmaprf)
 [[RDF-MT](#RDF-MT)].
 
-19 SPARQL Grammar
------------------
+## 19 SPARQL Grammar
 
 The SPARQL grammar covers both SPARQL Query and
 [SPARQL Update](https://www.w3.org/TR/sparql11-update/).
@@ -7869,11 +7842,11 @@ where [HEX](#HEX) is a hexadecimal character
 
 Examples:
 
-```
+```sparql
 <ab\u00E9xy>        # Codepoint 00E9 is Latin small e with acute - é
 \u03B1:a            # Codepoint x03B1 is Greek small alpha - α
 a\u003Ab            # a:b -- codepoint x3A is colon
-```
+```sparql
 
 Codepoint escape sequences can appear anywhere in the query string. They are
 processed before parsing based on the grammar rules and so may be replaced by codepoints
@@ -7970,11 +7943,11 @@ any `string` production (e.g. `STRING_LITERAL1`, `STRING_LITERAL2`, `STRING_LITE
 
 Examples:
 
-```
+```sparql
 "abc\n"
 "xy\rz"
 'xy\tz'
-```
+```text
 
 ### 19.8 Grammar
 
@@ -8102,7 +8075,7 @@ Notes:
 | `[61]` | `InlineData` | ::= | `'VALUES' DataBlock` |
 | `[62]` | `DataBlock` | ::= | `InlineDataOneVar | InlineDataFull` |
 | `[63]` | `InlineDataOneVar` | ::= | `Var '{' DataBlockValue* '}'` |
-| `[64]` | `InlineDataFull` | ::= | `( NIL | '(' Var* ')' ) '{' ( '(' DataBlockValue* ')' | NIL )* '}'` |
+| `[64]` | `InlineDataFull` | ::= | `( NIL | '(' Var*')' ) '{' ( '(' DataBlockValue* ')' | NIL )* '}'` |
 | `[65]` | `DataBlockValue` | ::= | `iri | RDFLiteral | NumericLiteral | BooleanLiteral | 'UNDEF'` |
 | `[66]` | `MinusGraphPattern` | ::= | `'MINUS' GroupGraphPattern` |
 | `[67]` | `GroupOrUnionGraphPattern` | ::= | `GroupGraphPattern ( 'UNION' GroupGraphPattern )*` |
@@ -8154,7 +8127,7 @@ Notes:
 | `[113]` | `ValueLogical` | ::= | `RelationalExpression` |
 | `[114]` | `RelationalExpression` | ::= | `NumericExpression ( '=' NumericExpression | '!=' NumericExpression | '<' NumericExpression | '>' NumericExpression | '<=' NumericExpression | '>=' NumericExpression | 'IN' ExpressionList | 'NOT' 'IN' ExpressionList )?` |
 | `[115]` | `NumericExpression` | ::= | `AdditiveExpression` |
-| `[116]` | `AdditiveExpression` | ::= | `MultiplicativeExpression ( '+' MultiplicativeExpression | '-' MultiplicativeExpression | ( NumericLiteralPositive | NumericLiteralNegative ) ( ( '*' UnaryExpression ) | ( '/' UnaryExpression ) )* )*` |
+| `[116]` | `AdditiveExpression` | ::= | `MultiplicativeExpression ( '+' MultiplicativeExpression | '-' MultiplicativeExpression | ( NumericLiteralPositive | NumericLiteralNegative ) ( ( '*' UnaryExpression ) | ( '/' UnaryExpression ) )*)*` |
 | `[117]` | `MultiplicativeExpression` | ::= | `UnaryExpression ( '*' UnaryExpression | '/' UnaryExpression )*` |
 | `[118]` | `UnaryExpression` | ::= | `'!' PrimaryExpression  | '+' PrimaryExpression  | '-' PrimaryExpression  | PrimaryExpression` |
 | `[119]` | `PrimaryExpression` | ::= | `BrackettedExpression | BuiltInCall | iriOrFunction | RDFLiteral | NumericLiteral | BooleanLiteral | Var` |
@@ -8218,8 +8191,7 @@ Productions for terminals:
 | `[172]` | `HEX` | ::= | `[0-9] | [A-F] | [a-f]` |
 | `[173]` | `PN_LOCAL_ESC` | ::= | `'\' ( '_' | '~' | '.' | '-' | '!' | '$' | '&' | "'" | '(' | ')' | '*' | '+' | ',' | ';' | '=' | '/' | '?' | '#' | '@' | '%' )` |
 
-20 Conformance
---------------
+## 20 Conformance
 
 See Section [19 SPARQL Grammar](#grammar) regarding conformance of
 [SPARQL Query strings](#defn_SPARQLQueryString), and section
@@ -8236,8 +8208,7 @@ See those specifications for their conformance criteria.
 
 Note that the SPARQL protocol describes a means for conveying SPARQL queries to an SPARQL query processing service and returning the query results to the entity that requested them.
 
-21 Security Considerations (Informative)
-----------------------------------------
+## 21 Security Considerations (Informative)
 
 SPARQL queries using FROM, FROM NAMED, or GRAPH may cause the specified URI to
 be dereferenced. This may cause additional use of network, disk or CPU resources
@@ -8263,8 +8234,7 @@ Considerations](http://www.unicode.org/reports/tr36/) [[UNISEC](#UNISEC)] and
 [Internationalized Resource
 Identifiers (IRIs)](http://www.ietf.org/rfc/rfc3987.txt) [[RFC3987](#rfc3987)] Section 8.
 
-22 Internet Media Type, File Extension and Macintosh File Type
---------------------------------------------------------------
+## 22 Internet Media Type, File Extension and Macintosh File Type
 
 The Internet Media Type / MIME Type for the SPARQL Query Language is "application/sparql-query".
 
@@ -8335,8 +8305,7 @@ Author/Change controller:
 :   The SPARQL 1.1 specification is a work product of the World Wide Web Consortium's
     SPARQL Working Group. The W3C has change control over these specifications.
 
-A References
-------------
+## A References
 
 ### A.1 Normative References
 
@@ -8516,8 +8485,7 @@ A References
     version](http://www.unicode.org/reports/tr31/ "Latest version of Identifier and Pattern Syntax") available at <http://www.unicode.org/reports/tr31/>
     .
 
-Change Log
-----------
+## Change Log
 
 ### Changes since Proposed Recommendation
 

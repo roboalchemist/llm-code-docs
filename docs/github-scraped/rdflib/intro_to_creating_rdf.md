@@ -54,7 +54,6 @@ SOSA.Sensor
 # == rdflib.term.URIRef("http://www.w3.org/ns/sosa/Sensor")
 ```
 
-
 ## Adding Triples to a graph
 
 We already saw in [intro_to_parsing](intro_to_parsing.md), how triples can be added from files and online locations with the [`parse()`][rdflib.graph.Graph.parse] function.
@@ -117,7 +116,6 @@ print(f"Bob is now {g.value(bob, FOAF.age)}")
 # prints: Bob is now 43
 ```
 
-
 [`value()`][rdflib.graph.Graph.value] is the matching query method. It will return a single value for a property, optionally raising an exception if there are more.
 
 You can also add triples by combining entire graphs, see [graph-setops](intro_to_graphs.md).
@@ -131,7 +129,6 @@ When removing, it is possible to leave parts of the triple unspecified (i.e. pas
 ```python
 g.remove((bob, None, None))  # remove all triples about bob
 ```
-
 
 ## An example
 
@@ -155,7 +152,6 @@ for s, p, o in g.triples((None, FOAF['member_name'], None)):
 
 !!! info "Foaf member name"
     Since rdflib 5.0.0, using `foaf:member_name` is somewhat prevented in RDFlib since FOAF is declared as a [`ClosedNamespace`][rdflib.namespace.ClosedNamespace] class instance that has a closed set of members and `foaf:member_name` isn't one of them! If LiveJournal had used RDFlib 5.0.0, an error would have been raised for `foaf:member_name` when the triple was created.
-
 
 ## Creating Containers & Collections
 

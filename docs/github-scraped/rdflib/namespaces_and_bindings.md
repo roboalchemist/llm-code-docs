@@ -35,7 +35,6 @@ g.bind("foaf", FOAF)  # bind an RDFLib-provided namespace to a prefix
 g.bind("ex", EX)      # bind a user-declared namespace to a prefix
 ```
 
-
 The [`bind()`][rdflib.graph.Graph.bind] method is actually supplied by the [`NamespaceManager`][rdflib.namespace.NamespaceManager] class - see next.
 
 ## NamespaceManager
@@ -53,7 +52,6 @@ g = Graph(bind_namespaces="rdflib")  # bind via Graph
 g2 = Graph()
 nm = NamespaceManager(g2, bind_namespaces="rdflib")  # bind via NamespaceManager
 ```
-
 
 Valid strategies are:
 

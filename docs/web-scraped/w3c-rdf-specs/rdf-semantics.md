@@ -8,15 +8,11 @@
 
 RDF 1.1 Semantics
 
-
-
 [![W3C](https://www.w3.org/Icons/w3c_home)](https://www.w3.org/)
 
-RDF 1.1 Semantics
-=================
+# RDF 1.1 Semantics (part 1)
 
-W3C Recommendation 25 February 2014
------------------------------------
+## W3C Recommendation 25 February 2014
 
 This version:
 :   [http://www.w3.org/TR/2014/REC-rdf11-mt-20140225/](https://www.w3.org/TR/2014/REC-rdf11-mt-20140225/)
@@ -60,14 +56,12 @@ rules apply.
 
 ---
 
-Abstract
---------
+## Abstract
 
 This document describes a precise semantics for the Resource Description
 Framework 1.1 [[RDF11-CONCEPTS](#bib-RDF11-CONCEPTS)] and RDF Schema [[RDF11-SCHEMA](#bib-RDF11-SCHEMA)]. It defines a number of distinct entailment regimes and corresponding patterns of entailment. It is part of a suite of documents which comprise the full specification of RDF 1.1.
 
-Status of This Document
------------------------
+## Status of This Document
 
 *This section describes the status of this document at the time of its publication.
 Other documents may supersede this document. A list of current W3C publications and the
@@ -111,58 +105,58 @@ Claim(s)](https://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential) m
 [section
 6 of the W3C Patent Policy](https://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure).
 
-Table of Contents
------------------
+## Table of Contents
 
 * [1. Introduction](#introduction-1)
 * [2. Conformance](#conformance)
 * [3. Semantic Extensions and Entailment Regimes](#semantic-extensions-and-entailment-regimes)
 * [4. Notation and Terminology](#notation-and-terminology)
-  + [4.1 Shared blank nodes, unions and merges](#shared-blank-nodes-unions-and-merges)
+  * [4.1 Shared blank nodes, unions and merges](#shared-blank-nodes-unions-and-merges)
 * [5.  Simple Interpretations](#simple-interpretations)
-  + [5.1 Blank nodes](#blank-nodes)
-    - [5.1.1 Shared blank nodes (Informative)](#shared-blank-nodes-informative)
-  + [5.2 Simple Entailment](#simpleentailment)
-  + [5.3 Properties of simple entailment (Informative)](#properties-of-simple-entailment-informative)
+  * [5.1 Blank nodes](#blank-nodes)
+    * [5.1.1 Shared blank nodes (Informative)](#shared-blank-nodes-informative)
+  * [5.2 Simple Entailment](#simpleentailment)
+  * [5.3 Properties of simple entailment (Informative)](#properties-of-simple-entailment-informative)
 * [6. Skolemization (Informative)](#skolemization-informative)
 * [7. Literals and datatypes](#literals-and-datatypes)
-  + [7.1 D-interpretations](#D_interpretations)
-  + [7.2 Datatype entailment](#datatype-entailment)
-    - [7.2.1 Patterns of datatype entailment (Informative)](#patterns-of-datatype-entailment-informative)
+  * [7.1 D-interpretations](#D_interpretations)
+  * [7.2 Datatype entailment](#datatype-entailment)
+    * [7.2.1 Patterns of datatype entailment (Informative)](#patterns-of-datatype-entailment-informative)
 * [8. RDF Interpretations](#rdf-interpretations)
-  + [8.1 RDF entailment](#rdf-entailment)
-    - [8.1.1 Patterns of RDF entailment (Informative)](#patterns-of-rdf-entailment-informative)
+  * [8.1 RDF entailment](#rdf-entailment)
+    * [8.1.1 Patterns of RDF entailment (Informative)](#patterns-of-rdf-entailment-informative)
 * [9. RDFS Interpretations](#rdfs-interpretations)
-  + [9.1 A note on rdfs:Literal (Informative)](#a-note-on-rdfs-literal-informative)
-  + [9.2 RDFS entailment](#rdfs-entailment)
-    - [9.2.1 Patterns of RDFS entailment (Informative)](#patterns-of-rdfs-entailment-informative)
+  * [9.1 A note on rdfs:Literal (Informative)](#a-note-on-rdfs-literal-informative)
+  * [9.2 RDFS entailment](#rdfs-entailment)
+    * [9.2.1 Patterns of RDFS entailment (Informative)](#patterns-of-rdfs-entailment-informative)
 * [10. RDF Datasets](#rdf-datasets)
 * [A. Entailment rules (Informative)](#entailment-rules-informative)
 * [B. Finite interpretations (Informative)](#finite-interpretations-informative)
 * [C. Proofs of some results (Informative)](#proofs-of-some-results-informative)
 * [D. RDF reification, containers and collections (Informative)](#whatnot)
-  + [D.1 Reification](#reification)
-  + [D.2 RDF containers](#rdf-containers)
-  + [D.3 RDF collections](#rdf-collections)
+  * [D.1 Reification](#reification)
+  * [D.2 RDF containers](#rdf-containers)
+  * [D.3 RDF collections](#rdf-collections)
 * [E. Change Log (informative)](#change-log-informative)
 * [F. Acknowledgements](#acknowledgements-1)
 * [G. References](#references)
-  + [G.1 Normative references](#normative-references)
-  + [G.2 Informative references](#informative-references)
+  * [G.1 Normative references](#normative-references)
+  * [G.2 Informative references](#informative-references)
 
-Notes
------
+## Notes
 
 Notes in this style indicate changes from the 2004 RDF 1.0 semantics.
 
 Notes in this style are technical asides on obscure or recondite matters.
 
 1. Introduction
+
 ---------------
 
 This document defines a model-theoretic semantics for RDF graphs and the RDF and RDFS vocabularies, providing an exact formal specification of when truth is preserved by transformations of RDF or operations which derive RDF content from other RDF.
 
-2. Conformance
+1. Conformance
+
 --------------
 
 As well as sections marked as non-normative, all authoring guidelines, diagrams, examples,
@@ -174,14 +168,15 @@ and *OPTIONAL* in this specification are to be interpreted as described in [[RFC
 
 This specification, *RDF 1.1 Semantics*, is normative for RDF semantics and the validity of RDF inference processes. It is not normative for many aspects of RDF meaning which are not described or specified by this semantics, including social issues of how IRIs are assigned meanings in use and how the referents of IRIs are related to Web content expressed in other media such as natural language texts.
 
-3. Semantic Extensions and Entailment Regimes
+1. Semantic Extensions and Entailment Regimes
+
 ---------------------------------------------
 
 RDF is intended for use as a base notation for a variety of extended notations such as OWL [[OWL2-OVERVIEW](#bib-OWL2-OVERVIEW)] and RIF [[RIF-OVERVIEW](#bib-RIF-OVERVIEW)], whose expressions can be encoded as RDF graphs which use a particular vocabulary with a specially defined meaning. Also, particular IRI vocabularies may be given meanings by other specifications or conventions. When such extra meanings are assumed, a given RDF graph may support more extensive entailments than are sanctioned by the basic RDF semantics. In general, the more assumptions that are made about the meanings of IRIs in an RDF graph, the more entailments follow from those assumptions.
 
 A particular such set of semantic assumptions is called a semantic extension. Each [semantic extension](#dfn-semantic-extension) defines an entailment regime (used here in the same sense as in the SPARQL 1.1 Entailment Regime recommendation [[SPARQL11-ENTAILMENT](#bib-SPARQL11-ENTAILMENT)] ) of entailments which are valid under that extension. RDFS, described later in this document, is one such [semantic extension](#dfn-semantic-extension). We will refer to entailment regimes by names such as  *RDFS entailment*, *D-entailment*, etc.
 
-[Semantic extension](#dfn-semantic-extension)s *MAY* impose special syntactic conditions or restrictions upon RDF graphs, such as requiring certain triples to be present, or prohibiting particular combinations of IRIs in triples, and *MAY* consider RDF graphs which do not conform to these conditions to be errors. For example, RDF statements of the form   
+[Semantic extension](#dfn-semantic-extension)s *MAY* impose special syntactic conditions or restrictions upon RDF graphs, such as requiring certain triples to be present, or prohibiting particular combinations of IRIs in triples, and *MAY* consider RDF graphs which do not conform to these conditions to be errors. For example, RDF statements of the form
   
  `ex:a rdfs:subClassOf "Thing"^^xsd:string .`  
   
@@ -189,7 +184,8 @@ A particular such set of semantic assumptions is called a semantic extension. Ea
 
 All entailment regimes *MUST* be monotonic extensions of the simple entailment regime described in the document, in the sense that if A simply [entail](#dfn-entail)s B then A also entails B under any extended notion of entailment, provided that any syntactic conditions of the extension are also satisfied. Put another way, a [semantic extension](#dfn-semantic-extension) cannot "cancel" an entailment made by a weaker entailment regime, although it can treat the result as a syntax error.
 
-4. Notation and Terminology
+1. Notation and Terminology
+
 ---------------------------
 
 This document uses the following terminology for describing RDF graph syntax, all as defined in the companion RDF Concepts specification [[RDF11-CONCEPTS](#bib-RDF11-CONCEPTS)]: *[IRI](https://www.w3.org/TR/rdf11-concepts/#dfn-iri)*, *[RDF triple](https://www.w3.org/TR/rdf11-concepts/#section-triples), [RDF graph](https://www.w3.org/TR/rdf11-concepts/#section-rdf-graph), [subject](https://www.w3.org/TR/rdf11-concepts/#section-triples), [predicate](https://www.w3.org/TR/rdf11-concepts/#section-triples), [object](https://www.w3.org/TR/rdf11-concepts/#section-triples), [RDF source](https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-source), [node](https://www.w3.org/TR/rdf11-concepts/#dfn-node), [blank node](https://www.w3.org/TR/rdf11-concepts/#dfn-blank-node), [literal](https://www.w3.org/TR/rdf11-concepts/#dfn-literal), [isomorphic](https://www.w3.org/TR/rdf11-concepts/#graph-isomorphism), and [RDF dataset](https://www.w3.org/TR/rdf11-concepts/#section-dataset).* All the definitions in this document apply unchanged to [generalized RDF triples, graphs, and datasets](https://www.w3.org/TR/rdf11-concepts/#section-generalized-rdf).
@@ -264,11 +260,11 @@ RDF applications which manipulate concrete syntaxes for RDF which use blank node
 
 For example, two documents may both use the blank node identifier "`_:x`" to identify a blank node, but unless these documents are in a shared identifier scope or are derived from a common source, the occurrences of "`_:x`" in one document will identify a different blank node than the one in the graph described by the other document. When graphs are formed by combining RDF from multiple sources, it may be necessary to standardize apart the blank node identifiers by replacing them by others which do not occur in the other document(s). For example, the two graphs represented by the following texts:
 
-`ex:a ex:p _:x .`   
+`ex:a ex:p _:x .`
   
 ![Graph 1](RDF11SemanticsDiagrams/example1.jpg)
 
-`ex:b ex:q _:x .`   
+`ex:b ex:q _:x .`
   
 ![Graph 2](RDF11SemanticsDiagrams/example2.jpg)
 
@@ -304,7 +300,8 @@ is the four-node graph
 
 The union is always an instance of the merge. If graphs have no blank nodes in common, then their merge and union are identical.
 
-5.  Simple Interpretations
+1. Simple Interpretations
+
 --------------------------
 
 This section defines the basic notions of simple interpretation and truth for RDF graphs. All [semantic extension](#dfn-semantic-extension)s of any vocabulary or higher-level notation encoded in RDF *MUST* conform to these minimal truth conditions. Other [semantic extension](#dfn-semantic-extension)s may extend and add to these, but they *MUST NOT* modify or negate them. For example, because simple interpretations are mappings which apply to IRIs, a [semantic extension](#dfn-semantic-extension) cannot interpret different occurrences of a single IRI differently.
@@ -446,7 +443,8 @@ The property just above is called *compactness* - RDF is compact. As RDF graphs 
 
 If E contains an IRI which does not occur anywhere in S, then S does not simply entail E.
 
-6. Skolemization (Informative)
+1. Skolemization (Informative)
+
 ------------------------------
 
 *This section is non-normative.*
@@ -465,7 +463,8 @@ For any graph H which does not contain any of the "new" IRIs introduced into sk(
 
 The second property means that a graph is not logically [equivalent](#dfn-equivalent) to its skolemization. Nevertheless, they are in a strong sense almost interchangeable, as shown the next two properties. The third property means that even when conclusions are drawn from the skolemized graph which do contain the new vocabulary, these will exactly mirror what could have been derived from the original graph with the original blank nodes in place. The replacement of blank nodes by IRIs does not effectively alter what can be validly derived from the graph, other than by giving new names to what were formerly anonymous entities. The fourth property, which is a consequence of the third, clearly shows that in some sense a skolemization of G can "stand in for" G as far as entailments are concerned. Using sk(G) instead of G will not affect any entailments which do not involve the new skolem vocabulary.
 
-7. Literals and datatypes
+1. Literals and datatypes
+
 -------------------------
 
 In the 2004 RDF 1.0 specification, datatype D-entailment was defined as a [semantic extension](#dfn-semantic-extension) of RDFS-entailment. Here it is defined as a direct extension to basic RDF. This is more in conformity with actual usage, where RDF with datatypes is widely used without the RDFS vocabulary. If there is a need to distinguish this from the 2004 RDF 1.0 terminology, the longer phrasing "simple D-entailment" or "simple datatype entailment" should be used rather than "D-entailment".
@@ -544,7 +543,8 @@ when D also contains `xsd:integer`.
 
 [Ill-typed](#dfn-ill-typed) literals are the only way in which a graph can be simply [D-unsatisfiable](#dfn-d-unsatisfiable), but datatypes can give rise to a variety of other unsatisfiable graphs when combined with the RDFS vocabulary, defined later.
 
-8. RDF Interpretations
+1. RDF Interpretations
+
 ----------------------
 
 RDF interpretations impose extra semantic conditions on `xsd:string` and part of the infinite
@@ -604,7 +604,7 @@ For example,
 
 RDF entails recognizing {`xsd:integer`}
 
-`ex:a ex:p _:x .   
+`ex:a ex:p _:x .
 _:x rdf:type xsd:integer .`
 
 In addition, the first RDF semantic condition justifies the following entailment pattern:
@@ -621,7 +621,7 @@ recognizing {`xsd:integer`}.
 
 Some datatypes support idiosyncratic entailment patterns which do not hold for other datatypes. For example,
 
-`ex:a ex:p "true"^^xsd:boolean .   
+`ex:a ex:p "true"^^xsd:boolean .
 ex:a ex:p "false"^^xsd:boolean .  
 ex:v rdf:type xsd:boolean .`
 
@@ -636,7 +636,8 @@ In addition, the semantic conditions on value spaces may produce other unsatisfi
 `_:x rdf:type xsd:boolean .  
 _:x rdf:type xsd:integer .`
 
-9. RDFS Interpretations
+1. RDFS Interpretations
+
 -----------------------
 
 RDF Schema [[RDF11-SCHEMA](#bib-RDF11-SCHEMA)]
@@ -773,7 +774,8 @@ RDFS provides for several new ways to be unsatisfiable recognizing D. For exampl
 ex:a rdf:type xsd:integer .  
 ex:a ex:p ex:c .`
 
-10. RDF Datasets
+1. RDF Datasets
+
 ----------------
 
 [RDF datasets](https://www.w3.org/TR/rdf11-concepts/#section-dataset), defined in RDF Concepts [[RDF11-CONCEPTS](#bib-RDF11-CONCEPTS)], package up zero or more named RDF graphs along with a single unnamed, default RDF graph. The graphs in a single dataset may share blank nodes. The association of graph name IRIs with graphs is used by SPARQL [[SPARQL11-QUERY](#bib-SPARQL11-QUERY)] to allow queries to be directed against particular graphs.
@@ -786,11 +788,9 @@ RDF datasets *MAY* be used to express RDF content. When used in this way, a data
 
 Other [semantic extension](#dfn-semantic-extension)s and [entailment regime](#dfn-entailment-regime)s *MAY* place further semantic conditions and restrictions on RDF datasets, just as with RDF graphs. One such extension, for example, could set up a modal-like interpretation structure so that entailment between datasets would require RDF graph entailments between the graphs with the same name (adding in empty graphs as required).
 
-Appendices
-----------
+## Appendices
 
-A. Entailment rules (Informative)
----------------------------------
+## A. Entailment rules (Informative)
 
 *This section is non-normative.*
 
@@ -800,7 +800,7 @@ The RDF and RDFS entailment patterns listed in the above tables can be viewed as
 
 1. Add to S all the RDF (or RDF and RDFS) axiomatic triples except those containing the container membership property IRIs `rdf:_1, rdf:_2, ...`.  
 2. For every container membership property IRI which occurs in E, add the RDF (or RDF and RDFS) axiomatic triples which contain that IRI.  
-3. Apply the RDF (or RDF and RDFS) inference patterns as rules, adding each conclusion to the graph, to exhaustion; that is, until they generate no new triples.   
+3. Apply the RDF (or RDF and RDFS) inference patterns as rules, adding each conclusion to the graph, to exhaustion; that is, until they generate no new triples.
 4. Determine if E has an instance which is a subset of the set, i.e. whether the enlarged set simply entails E.
 
 This process is clearly correct, in that if it gives a positive result then indeed S does RDF (RDFS) entail E. It is not, however, complete: there are cases of S entailing E which are not detectable by this process. Examples include:
@@ -845,7 +845,7 @@ Let S and E be RDF graphs. Define the generalized RDF (RDFS) closure **of S towa
 
 1. Add to S all the RDF (and RDFS) axiomatic triples which do not contain any container membership property IRI.  
 2. For each container membership property IRI which occurs in E, add the RDF (and RDFS) axiomatic triples which contain that IRI.  
-3. If no triples were added in step 2., add the RDF (and RDFS) axiomatic triples which contain `rdf:_1`.   
+3. If no triples were added in step 2., add the RDF (and RDFS) axiomatic triples which contain `rdf:_1`.
 4. Apply the rules [GrdfD1](#dfn-grdfd1) and [rdfD2](#dfn-rdfd2) (and the rules [rdfs1](#dfn-rdfs1) through [rdfs13](#dfn-rdfs13)), with D={`rdf:langString`, `xsd:string`), to the set in all possible ways, to exhaustion.
 
 Then we have the completeness result:
@@ -860,8 +860,7 @@ If it is important to stay within legal RDF syntax, rule [rdfD1](#dfn-rdfd1) may
 
 As noted earlier, detecting datatype entailment for larger sets of datatype IRIs requires attention to idiosyncratic properties of the particular datatypes.
 
-B. Finite interpretations (Informative)
----------------------------------------
+## B. Finite interpretations (Informative)
 
 *This section is non-normative.*
 
@@ -874,8 +873,7 @@ When considering D-entailment, pre-interpretations may be kept finite by weakeni
 
 The whole semantics could be stated in terms of pre-interpretations, yielding the same entailments, and allowing finite RDF graphs to be interpreted in finite structures, if the *finite model property* is considered important.
 
-C. Proofs of some results (Informative)
----------------------------------------
+## C. Proofs of some results (Informative)
 
 *This section is non-normative.*
 
@@ -917,8 +915,7 @@ For any graph H which does not contain any of the "new" IRIs introduced into sk(
 
 Using the terminology in the previous proof: if H does not contain any skolem IRIs, then H=ks(H). So if sk(G) entails H then G entails ks(H)=H; and if G entails H then sk(G) entails G entails H, so sk(G) entails H. QED.
 
-D. RDF reification, containers and collections (Informative)
-------------------------------------------------------------
+## D. RDF reification, containers and collections (Informative)
 
 *This section is non-normative.*
 
@@ -1154,8 +1151,7 @@ The RDFS semantic conditions require that any
 subject of the `rdf:first` property, and any subject or object of
 the `rdf:rest` property, be of `rdf:type rdf:List`.
 
-E. Change Log (informative)
----------------------------
+## E. Change Log (informative)
 
 *This section is non-normative.*
 
@@ -1181,8 +1177,7 @@ Changes since Last Call:
 * The wording looking like a definition of RDF Datasets was replaced by
   more informative wording.
 
-F. Acknowledgements
--------------------
+## F. Acknowledgements
 
 *This section is non-normative.*
 
@@ -1201,8 +1196,7 @@ Brian McBride was the series editor for this earlier specification.
 
 This document was prepared using the [ReSpec.js specification writing tool](http://dev.w3.org/2009/dap/ReSpec.js/documentation.html) developed by Robin Berjon.
 
-G. References
--------------
+## G. References
 
 ### G.1 Normative references
 

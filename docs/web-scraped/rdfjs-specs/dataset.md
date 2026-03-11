@@ -8,9 +8,7 @@
 
 RDF/JS: Dataset specification 1.0
 
-
-Abstract
---------
+## Abstract
 
 The scope of this specification is to provide a way to store multiple quads, as defined in the [RDF/JS: Data model specification](http://rdf.js.org/data-model-spec/#quad-interface), in a so-called dataset.
 Similar to the [RDF/JS: Data model specification](http://rdf.js.org/data-model-spec/), this is a low-level specification that provides only essential methods for working with multiple quads.
@@ -22,12 +20,11 @@ Low-level methods are using explicit parameters that cannot be omitted.
 
 Additional high-level interfaces are outside of the scope of this specification and should be defined elsewhere.
 
-Data interfaces
----------------
+## Data interfaces
 
 ### DatasetCore interface
 
-```
+```typescript
     [Exposed=(Window,Worker)]
     interface DatasetCore {
       readonly attribute unsigned long  size;
@@ -40,13 +37,13 @@ Data interfaces
     };
 ```
 
-### Attributes
+### Attributes (DatasetCore)
 
 size
 
 A non-negative integer that specifies the number of quads in the set.
 
-### Methods
+### Methods (DatasetCore)
 
 add
 
@@ -77,7 +74,7 @@ Note: Since a DatasetCore is an unordered set, the order of the quads within the
 
 ### DatasetCoreFactory interface
 
-```
+```typescript
     [Exposed=(Window,Worker)]
     interface DatasetCoreFactory {
       DatasetCore dataset (optional sequence<Quad> quads);
@@ -98,7 +95,7 @@ The following interfaces are experimental and will change in future versions of 
 
 ### Dataset interface
 
-```
+```typescript
     [Exposed=(Window,Worker)]
     interface Dataset : DatasetCore {
       Dataset                           addAll ((Dataset or sequence<Quad>) quads);
@@ -244,7 +241,7 @@ The given dataset and its content must be treated as immutable (do not cause mut
 
 ### DatasetFactory interface
 
-```
+```typescript
     [Exposed=(Window,Worker)]
     interface DatasetFactory : DataFactory {
       Dataset dataset (optional (Dataset or sequence<Quad>) quads);
@@ -257,7 +254,7 @@ Returns a new dataset and imports all quads, if given.
 
 ### QuadFilterIteratee interface
 
-```
+```typescript
     [Exposed=(Window,Worker)]
     interface QuadFilterIteratee {
       boolean test (Quad quad, Dataset dataset);
@@ -270,7 +267,7 @@ A callable function that returns true if the input quad passes the test this fun
 
 ### QuadMapIteratee interface
 
-```
+```typescript
     [Exposed=(Window,Worker)]
     interface QuadMapIteratee {
       Quad map (Quad quad, Dataset dataset);
@@ -285,7 +282,7 @@ The returned quad can be the given quad or a new one.
 
 ### QuadReduceIteratee interface
 
-```
+```typescript
     [Exposed=(Window,Worker)]
     interface QuadReduceIteratee {
       any run (any accumulator, Quad quad, Dataset dataset);
@@ -298,7 +295,7 @@ A callable function that can be executed on an accumulator and quad and returns 
 
 ### QuadRunIteratee interface
 
-```
+```typescript
     [Exposed=(Window,Worker)]
     interface QuadRunIteratee {
       undefined run (Quad quad, Dataset dataset);
@@ -309,8 +306,7 @@ run
 
 A callable function that can be executed on a quad.
 
-Runtime Semantics
------------------
+## Runtime Semantics
 
 ### Quad Matching
 
@@ -323,14 +319,12 @@ The methods `match` and `deleteMatches` select each quad for which the following
 
 Only quads matching all of the given non-null arguments will be selected.
 
-Acknowledgements
-----------------
+## Acknowledgements
 
 The authors would like to thank the authors of the [RDF Interfaces](https://www.w3.org/TR/rdf-interfaces/) specification.
 Many concepts and definitions were adopted from that specification.
 
-WebIDL references
------------------
+## WebIDL references
 
 The interfaces in this spec make use of the
 DataFactory,

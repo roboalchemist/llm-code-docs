@@ -8,7 +8,6 @@
 
 RDF/JS: Data model specification
 
-
 This document provides a specification of a low level interface definition representing RDF data
 independent of a serialized format in a JavaScript environment. The task force which defines
 this interface was formed by RDF JavaScript library developers with the wish to make existing
@@ -16,8 +15,7 @@ and future libraries interoperable. This definition strives to provide the minim
 interface to enable interoperability of libraries such as serializers, parsers and higher level
 accessors and manipulators.
 
-Design elements and principles
-------------------------------
+## Design elements and principles
 
 * We define data interfaces to represent **quads**,
   **named nodes**, **blank nodes**, **literals** and
@@ -35,14 +33,13 @@ Design elements and principles
 A list of these properties maintained on the
 [RDFJS Representation Task Force wiki](https://github.com/rdfjs/data-model-spec/wiki/Additional-properties).
 
-Data interfaces
----------------
+## Data interfaces
 
 ![UML data interface diagram](img/data_diagram.svg)
 
 ### Term interface
 
-```
+```typescript
     [Exposed=(Window,Worker)]
     interface Term {
       attribute DOMString termType;
@@ -73,7 +70,7 @@ otherwise, it returns `false`.
 
 ### NamedNode interface
 
-```
+```typescript
     [Exposed=(Window,Worker)]
     interface NamedNode : Term {
       attribute DOMString termType;
@@ -93,7 +90,7 @@ otherwise, it returns `false`.
 
 ### BlankNode interface
 
-```
+```typescript
     [Exposed=(Window,Worker)]
     interface BlankNode : Term {
       attribute DOMString termType;
@@ -115,7 +112,7 @@ otherwise, it returns `false`.
 
 ### Literal interface
 
-```
+```typescript
     [Exposed=(Window,Worker)]
     interface Literal : Term {
       attribute DOMString termType;
@@ -160,7 +157,7 @@ otherwise, it returns `false`.
 
 ### Variable interface
 
-```
+```typescript
     [Exposed=(Window,Worker)]
     interface Variable : Term {
       attribute DOMString termType;
@@ -181,7 +178,7 @@ otherwise, it returns `false`.
 
 ### DefaultGraph interface
 
-```
+```typescript
     [Exposed=(Window,Worker)]
     interface DefaultGraph : Term {
       attribute DOMString termType;
@@ -203,7 +200,7 @@ otherwise, it returns `false`.
 
 ### Quad interface
 
-```
+```typescript
     [Exposed=(Window,Worker)]
     interface Quad : Term {
       attribute DOMString termType;
@@ -249,7 +246,7 @@ otherwise, it returns `false`.
 
 ### DataFactory interface
 
-```
+```typescript
     [Exposed=(Window,Worker)]
     interface DataFactory {
       NamedNode namedNode(DOMString value);

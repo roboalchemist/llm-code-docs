@@ -8,15 +8,11 @@
 
 RDF 1.1 XML Syntax
 
-
-
 [![W3C](https://www.w3.org/Icons/w3c_home)](https://www.w3.org/)
 
-RDF 1.1 XML Syntax
-==================
+## RDF 1.1 XML Syntax (Recommendation)
 
-W3C Recommendation 25 February 2014
------------------------------------
+## W3C Recommendation 25 February 2014
 
 This version:
 :   [http://www.w3.org/TR/2014/REC-rdf-syntax-grammar-20140225/](https://www.w3.org/TR/2014/REC-rdf-syntax-grammar-20140225/)
@@ -60,16 +56,16 @@ rules apply.
 
 ---
 
-Abstract
---------
+## Abstract
+
 
 This document defines an XML
 syntax for RDF called RDF/XML in terms of
 Namespaces in XML, the XML Information Set
 and XML Base.
 
-Status of This Document
------------------------
+## Status of This Document
+
 
 *This section describes the status of this document at the time of its publication.
 Other documents may supersede this document. A list of current W3C publications and the
@@ -120,102 +116,102 @@ Claim(s)](https://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential) m
 [section
 6 of the W3C Patent Policy](https://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure).
 
-Table of Contents
------------------
+## Table of Contents
 
 * [1. Introduction](#section-Introduction)
 * [2. An XML Syntax for RDF](#section-Syntax)
-  + [2.1 Introduction](#section-Syntax-intro)
-  + [2.2 Node Elements and Property Elements](#section-Syntax-node-property-elements)
-  + [2.3 Multiple Property Elements](#section-Syntax-multiple-property-elements)
-  + [2.4 Empty Property Elements](#section-Syntax-empty-property-elements)
-  + [2.5 Property Attributes](#section-Syntax-property-attributes)
-  + [2.6 Completing the Document: Document Element and XML Declaration](#section-Syntax-complete-document)
-  + [2.7 Languages: `xml:lang`](#section-Syntax-languages)
-  + [2.8 XML Literals: `rdf:parseType="Literal"`](#section-Syntax-XML-literals)
-  + [2.9 Typed Literals: `rdf:datatype`](#section-Syntax-datatyped-literals)
-  + [2.10 Identifying Blank Nodes: `rdf:nodeID`](#section-Syntax-blank-nodes)
-  + [2.11 Omitting Blank Nodes: `rdf:parseType="Resource"`](#section-Syntax-parsetype-resource)
-  + [2.12 Omitting Nodes: Property Attributes on an empty Property Element](#section-Syntax-property-attributes-on-property-element)
-  + [2.13 Typed Node Elements](#section-Syntax-typed-nodes)
-  + [2.14 Abbreviating URIs: `rdf:ID` and `xml:base`](#section-Syntax-ID-xml-base)
-  + [2.15 Container Membership Property Elements: `rdf:li` and `rdf:_`*n*](#section-Syntax-list-elements)
-  + [2.16 Collections: `rdf:parseType="Collection"`](#section-Syntax-parsetype-Collection)
-  + [2.17 Reifying Statements: `rdf:ID`](#section-Syntax-reifying)
+  * [2.1 Introduction](#section-Syntax-intro)
+  * [2.2 Node Elements and Property Elements](#section-Syntax-node-property-elements)
+  * [2.3 Multiple Property Elements](#section-Syntax-multiple-property-elements)
+  * [2.4 Empty Property Elements](#section-Syntax-empty-property-elements)
+  * [2.5 Property Attributes](#section-Syntax-property-attributes)
+  * [2.6 Completing the Document: Document Element and XML Declaration](#section-Syntax-complete-document)
+  * [2.7 Languages: `xml:lang`](#section-Syntax-languages)
+  * [2.8 XML Literals: `rdf:parseType="Literal"`](#section-Syntax-XML-literals)
+  * [2.9 Typed Literals: `rdf:datatype`](#section-Syntax-datatyped-literals)
+  * [2.10 Identifying Blank Nodes: `rdf:nodeID`](#section-Syntax-blank-nodes)
+  * [2.11 Omitting Blank Nodes: `rdf:parseType="Resource"`](#section-Syntax-parsetype-resource)
+  * [2.12 Omitting Nodes: Property Attributes on an empty Property Element](#section-Syntax-property-attributes-on-property-element)
+  * [2.13 Typed Node Elements](#section-Syntax-typed-nodes)
+  * [2.14 Abbreviating URIs: `rdf:ID` and `xml:base`](#section-Syntax-ID-xml-base)
+  * [2.15 Container Membership Property Elements: `rdf:li` and `rdf:_`*n*](#section-Syntax-list-elements)
+  * [2.16 Collections: `rdf:parseType="Collection"`](#section-Syntax-parsetype-Collection)
+  * [2.17 Reifying Statements: `rdf:ID`](#section-Syntax-reifying)
 * [3. Terminology](#section-Terminology)
 * [4. RDF MIME Type, File Extension and Macintosh File Type](#section-MIME-Type)
 * [5. Global Issues](#section-Global)
-  + [5.1 The RDF Namespace and Vocabulary](#section-Namespace)
-  + [5.2 Identifiers](#section-Identifiers)
-  + [5.3 Resolving IRIs](#section-baseURIs)
-  + [5.4 Constraints](#section-constraints)
-  + [5.5 Conformance](#section-conformance)
+  * [5.1 The RDF Namespace and Vocabulary](#section-Namespace)
+  * [5.2 Identifiers](#section-Identifiers)
+  * [5.3 Resolving IRIs](#section-baseURIs)
+  * [5.4 Constraints](#section-constraints)
+  * [5.5 Conformance](#section-conformance)
 * [6. Syntax Data Model](#section-Data-Model)
-  + [6.1 Events](#section-Nodes)
-    - [6.1.1 Root Event](#section-root-node)
-    - [6.1.2 Element Event](#section-element-node)
-    - [6.1.3 End Element Event](#section-end-element-node)
-    - [6.1.4 Attribute Event](#section-attribute-node)
-    - [6.1.5 Text Event](#section-text-node)
-    - [6.1.6 IRI Event](#section-identifier-node)
-    - [6.1.7 Blank Node Identifier Event](#section-blank-nodeid-event)
-    - [6.1.8 Plain Literal Event](#section-literal-node)
-    - [6.1.9 Typed Literal Event](#section-typed-literal-node)
-  + [6.2 Information Set Mapping](#section-Infoset-Mapping)
-  + [6.3 Grammar Notation](#section-Infoset-Grammar-Notation)
-    - [6.3.1 Grammar General Notation](#section-Infoset-Grammar-General)
-    - [6.3.2 Grammar Event Matching Notation](#section-Infoset-Grammar-Matching)
-    - [6.3.3 Grammar Action Notation](#section-Infoset-Grammar-Action)
+  * [6.1 Events](#section-Nodes)
+    * [6.1.1 Root Event](#section-root-node)
+    * [6.1.2 Element Event](#section-element-node)
+    * [6.1.3 End Element Event](#section-end-element-node)
+    * [6.1.4 Attribute Event](#section-attribute-node)
+    * [6.1.5 Text Event](#section-text-node)
+    * [6.1.6 IRI Event](#section-identifier-node)
+    * [6.1.7 Blank Node Identifier Event](#section-blank-nodeid-event)
+    * [6.1.8 Plain Literal Event](#section-literal-node)
+    * [6.1.9 Typed Literal Event](#section-typed-literal-node)
+  * [6.2 Information Set Mapping](#section-Infoset-Mapping)
+  * [6.3 Grammar Notation](#section-Infoset-Grammar-Notation)
+    * [6.3.1 Grammar General Notation](#section-Infoset-Grammar-General)
+    * [6.3.2 Grammar Event Matching Notation](#section-Infoset-Grammar-Matching)
+    * [6.3.3 Grammar Action Notation](#section-Infoset-Grammar-Action)
 * [7. RDF/XML Grammar](#section-Infoset-Grammar)
-  + [7.1 Grammar summary](#section-grammar-summary)
-  + [7.2 Grammar Productions](#section-grammar-productions)
-    - [7.2.1 Grammar start](#start)
-    - [7.2.2 Production coreSyntaxTerms](#coreSyntaxTerms)
-    - [7.2.3 Production syntaxTerms](#syntaxTerms)
-    - [7.2.4 Production oldTerms](#oldTerms)
-    - [7.2.5 Production nodeElementURIs](#nodeElementURIs)
-    - [7.2.6 Production propertyElementURIs](#propertyElementURIs)
-    - [7.2.7 Production propertyAttributeURIs](#propertyAttributeURIs)
-    - [7.2.8 Production doc](#doc)
-    - [7.2.9 Production RDF](#RDF)
-    - [7.2.10 Production nodeElementList](#nodeElementList)
-    - [7.2.11 Production nodeElement](#nodeElement)
-    - [7.2.12 Production ws](#ws)
-    - [7.2.13 Production propertyEltList](#propertyEltList)
-    - [7.2.14 Production propertyElt](#propertyElt)
-    - [7.2.15 Production resourcePropertyElt](#resourcePropertyElt)
-    - [7.2.16 Production literalPropertyElt](#literalPropertyElt)
-    - [7.2.17 Production parseTypeLiteralPropertyElt](#parseTypeLiteralPropertyElt)
-    - [7.2.18 Production parseTypeResourcePropertyElt](#parseTypeResourcePropertyElt)
-    - [7.2.19 Production parseTypeCollectionPropertyElt](#parseTypeCollectionPropertyElt)
-    - [7.2.20 Production parseTypeOtherPropertyElt](#parseTypeOtherPropertyElt)
-    - [7.2.21 Production emptyPropertyElt](#emptyPropertyElt)
-    - [7.2.22 Production idAttr](#idAttr)
-    - [7.2.23 Production nodeIdAttr](#nodeIdAttr)
-    - [7.2.24 Production aboutAttr](#aboutAttr)
-    - [7.2.25 Production propertyAttr](#propertyAttr)
-    - [7.2.26 Production resourceAttr](#resourceAttr)
-    - [7.2.27 Production datatypeAttr](#datatypeAttr)
-    - [7.2.28 Production parseLiteral](#parseLiteral)
-    - [7.2.29 Production parseResource](#parseResource)
-    - [7.2.30 Production parseCollection](#parseCollection)
-    - [7.2.31 Production parseOther](#parseOther)
-    - [7.2.32 Production IRI](#URI-reference)
-    - [7.2.33 Production literal](#literal)
-    - [7.2.34 Production rdf-id](#rdf-id)
-  + [7.3 Reification Rules](#section-Reification)
-  + [7.4 List Expansion Rules](#section-List-Expand)
+  * [7.1 Grammar summary](#section-grammar-summary)
+  * [7.2 Grammar Productions](#section-grammar-productions)
+    * [7.2.1 Grammar start](#start)
+    * [7.2.2 Production coreSyntaxTerms](#coreSyntaxTerms)
+    * [7.2.3 Production syntaxTerms](#syntaxTerms)
+    * [7.2.4 Production oldTerms](#oldTerms)
+    * [7.2.5 Production nodeElementURIs](#nodeElementURIs)
+    * [7.2.6 Production propertyElementURIs](#propertyElementURIs)
+    * [7.2.7 Production propertyAttributeURIs](#propertyAttributeURIs)
+    * [7.2.8 Production doc](#doc)
+    * [7.2.9 Production RDF](#RDF)
+    * [7.2.10 Production nodeElementList](#nodeElementList)
+    * [7.2.11 Production nodeElement](#nodeElement)
+    * [7.2.12 Production ws](#ws)
+    * [7.2.13 Production propertyEltList](#propertyEltList)
+    * [7.2.14 Production propertyElt](#propertyElt)
+    * [7.2.15 Production resourcePropertyElt](#resourcePropertyElt)
+    * [7.2.16 Production literalPropertyElt](#literalPropertyElt)
+    * [7.2.17 Production parseTypeLiteralPropertyElt](#parseTypeLiteralPropertyElt)
+    * [7.2.18 Production parseTypeResourcePropertyElt](#parseTypeResourcePropertyElt)
+    * [7.2.19 Production parseTypeCollectionPropertyElt](#parseTypeCollectionPropertyElt)
+    * [7.2.20 Production parseTypeOtherPropertyElt](#parseTypeOtherPropertyElt)
+    * [7.2.21 Production emptyPropertyElt](#emptyPropertyElt)
+    * [7.2.22 Production idAttr](#idAttr)
+    * [7.2.23 Production nodeIdAttr](#nodeIdAttr)
+    * [7.2.24 Production aboutAttr](#aboutAttr)
+    * [7.2.25 Production propertyAttr](#propertyAttr)
+    * [7.2.26 Production resourceAttr](#resourceAttr)
+    * [7.2.27 Production datatypeAttr](#datatypeAttr)
+    * [7.2.28 Production parseLiteral](#parseLiteral)
+    * [7.2.29 Production parseResource](#parseResource)
+    * [7.2.30 Production parseCollection](#parseCollection)
+    * [7.2.31 Production parseOther](#parseOther)
+    * [7.2.32 Production IRI](#URI-reference)
+    * [7.2.33 Production literal](#literal)
+    * [7.2.34 Production rdf-id](#rdf-id)
+  * [7.3 Reification Rules](#section-Reification)
+  * [7.4 List Expansion Rules](#section-List-Expand)
 * [8. Serializing an RDF Graph to RDF/XML](#section-Serialising)
 * [9. Using RDF/XML with SVG](#section-rdf-in-SVG)
 * [A. Acknowledgments](#section-Acknowledgments)
 * [B. Changes since 2004 Recommendation](#changes-rdf11)
 * [C. Syntax Schemas](#section-Schemas)
-  + [C.1 RELAX NG Compact Schema](#section-RELAXNG-Schema)
+  * [C.1 RELAX NG Compact Schema](#section-RELAXNG-Schema)
 * [D. References](#references)
-  + [D.1 Normative references](#normative-references)
-  + [D.2 Informative references](#informative-references)
+  * [D.1 Normative references](#normative-references)
+  * [D.2 Informative references](#informative-references)
 
 1. Introduction
+
 ---------------
 
 This document defines the
@@ -238,10 +234,10 @@ documents. Other documents in this suite are:
 * A document describing the formal model-theoretic semantics
   of RDF ("RDF Semantics") [[RDF11-MT](#bib-RDF11-MT)]
 * Specifications of concrete syntaxes for RDF:
-  + Turtle [[TURTLE](#bib-TURTLE)] and TriG [[TRIG](#bib-TRIG)]
-  + JSON-LD [[JSON-LD](#bib-JSON-LD)] (JSON based)
-  + RDFa [[RDFA-PRIMER](#bib-RDFA-PRIMER)] (for HTML embedding)
-  + N-Triples and N-Quads (line-based exchange formats)
+  * Turtle [[TURTLE](#bib-TURTLE)] and TriG [[TRIG](#bib-TRIG)]
+  * JSON-LD [[JSON-LD](#bib-JSON-LD)] (JSON based)
+  * RDFa [[RDFA-PRIMER](#bib-RDFA-PRIMER)] (for HTML embedding)
+  * N-Triples and N-Quads (line-based exchange formats)
 * A document describing RDF Schema [[RDF11-SCHEMA](#bib-RDF11-SCHEMA)], which
   provides a data-modeling vocabulary for RDF data.
 
@@ -249,7 +245,8 @@ For a longer introduction to the RDF/XML syntax with a historical
 perspective, see "RDF: Understanding the Striped RDF/XML
 Syntax" [[STRIPEDRDF](#bib-STRIPEDRDF)].
 
-2. An XML Syntax for RDF
+1. An XML Syntax for RDF
+
 ------------------------
 
 This section introduces the RDF/XML syntax, describes how it
@@ -328,7 +325,6 @@ is the first complete RDF/XML document.
 
 ![Graph for RDF/XML Example](figure1.png)
 
-
 Fig. 1 Graph for RDF/XML Example ([SVG version](figure1.svg))
 
 An RDF graph is given in [Figure 1](#figure1)
@@ -340,7 +336,6 @@ If we follow one node, predicate arc ... , node path through the
 graph shown in [Figure 2](#figure2):
 
 ![One Path Through the Graph](figure2.png)
-
 
 Fig. 2 One Path Through the Graph ([SVG version](figure2.svg))
 
@@ -365,9 +360,9 @@ property elements.
 
 Example 1
 
-```
+```xml
 Striped RDF/XML (nodes and predicate arcs)
-	
+ 
 <rdf:Description>
   <ex:editor>
     <rdf:Description>
@@ -378,7 +373,7 @@ Striped RDF/XML (nodes and predicate arcs)
     </rdf:Description>
   </ex:editor>
 </rdf:Description>
-```
+```xml
 
 The [Figure 2](#figure2) graph consists of some nodes
 that are
@@ -389,9 +384,9 @@ elements to give the result in [Example 2](#example2):
 
 Example 2
 
-```
+```xml
 Node Elements with IRIs added
-	
+ 
 <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar">
   <ex:editor>
     <rdf:Description>
@@ -402,7 +397,7 @@ Node Elements with IRIs added
     </rdf:Description>
   </ex:editor>
 </rdf:Description>
-```
+```xml
 
 Adding the other two paths through the [Figure 1](#figure1)
 graph to the RDF/XML in
@@ -414,7 +409,7 @@ shared between the two paths, see
 
 Example 3
 
-```
+```xml
 Complete description of all graph paths
 
 <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar">
@@ -439,7 +434,7 @@ Complete description of all graph paths
 <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar">
   <dc:title>RDF 1.1 XML Syntax</dc:title>
 </rdf:Description>
-```
+```xml
 
 ### 2.3 Multiple Property Elements
 
@@ -463,9 +458,9 @@ gives the result shown in [Example 4](#example4)
 
 Example 4
 
-```
+```xml
 Using multiple property elements on a node element
-	  
+   
 <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar">
   <ex:editor>
     <rdf:Description>
@@ -478,7 +473,7 @@ Using multiple property elements on a node element
   </ex:editor>
   <dc:title>RDF 1.1 XML Syntax</dc:title>
 </rdf:Description>
-```
+```xml
 
 ### 2.4 Empty Property Elements
 
@@ -500,9 +495,9 @@ the empty property element form giving the result shown in
 
 Example 5
 
-```
+```xml
 Empty property elements
-	  
+   
 <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar">
   <ex:editor>
     <rdf:Description>
@@ -512,7 +507,7 @@ Empty property elements
   </ex:editor>
   <dc:title>RDF 1.1 XML Syntax</dc:title>
 </rdf:Description>
-```
+```xml
 
 ### 2.5 Property Attributes
 
@@ -541,9 +536,9 @@ giving the result shown in [Example 6](#example6):
 
 Example 6
 
-```
+```xml
 Replacing property elements with string literal content into property attributes
-	  
+   
 <rdf:Description rdf:about="http://www.w3.org/TR/rdf-syntax-grammar"
            dc:title="RDF 1.1 XML Syntax">
   <ex:editor>
@@ -552,7 +547,7 @@ Replacing property elements with string literal content into property attributes
     </rdf:Description>
   </ex:editor>
 </rdf:Description>
-```
+```xml
 
 ### 2.6 Completing the Document: Document Element and XML Declaration
 
@@ -579,7 +574,7 @@ in [Example 7](#example7):
 
 Example 7
 
-```
+```xml
 Complete RDF/XML description of Figure 1 graph 
 (example07.rdf, output example07.nt)
 
@@ -598,7 +593,7 @@ Complete RDF/XML description of Figure 1 graph
   </rdf:Description>
 
 </rdf:RDF>
-```
+```xml
 
 It is possible to omit `rdf:RDF` in
 [Example 7](#example7) above since there is only one
@@ -626,7 +621,7 @@ Some examples of marking content languages for RDF properties are shown in
 
 Example 8
 
-```
+```xml
 Complete example of xml:lang
 (example08.rdf, output example08.nt)
 
@@ -647,7 +642,7 @@ Complete example of xml:lang
   </rdf:Description>
 
 </rdf:RDF>
-```
+```xml
 
 ### 2.8 XML Literals: `rdf:parseType="Literal"`
 
@@ -672,10 +667,10 @@ content beginning `a:Box`.
 
 Example 9
 
-```
+```xml
 Complete example of rdf:parseType="Literal"
 (example09.rdf, output example09.nt)
-	  
+   
 <?xml version="1.0"?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
             xmlns:ex="http://example.org/stuff/1.0/">
@@ -690,7 +685,7 @@ Complete example of rdf:parseType="Literal"
   </rdf:Description>
 
 </rdf:RDF>
-```
+```xml
 
 ### 2.9 Typed Literals: `rdf:datatype`
 
@@ -720,10 +715,10 @@ XML Schema [[XMLSCHEMA-2](#bib-XMLSCHEMA-2)] datatype `int`.
 
 Example 10
 
-```
+```xml
 Complete example of rdf:datatype
 (example10.rdf,  output example10.nt)
-	  
+   
 <?xml version="1.0"?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
             xmlns:ex="http://example.org/stuff/1.0/">
@@ -733,7 +728,7 @@ Complete example of rdf:datatype
   </rdf:Description>
 
 </rdf:RDF>
-```
+```xml
 
 ### 2.10 Identifying Blank Nodes: `rdf:nodeID`
 
@@ -762,7 +757,7 @@ about the blank node.
 
 Example 11
 
-```
+```xml
 Complete RDF/XML description of graph using rdf:nodeID identifying the blank node
 (example11.rdf,  output example11.nt)
 
@@ -781,7 +776,7 @@ Complete RDF/XML description of graph using rdf:nodeID identifying the blank nod
   </rdf:Description>
 
 </rdf:RDF>
-```
+```xml
 
 ### 2.11 Omitting Blank Nodes: `rdf:parseType="Resource"`
 
@@ -804,10 +799,10 @@ the form shown in [Example 12](#example12):
 
 Example 12
 
-```
+```xml
 Complete example using rdf:parseType="Resource"
 (example12.rdf, output: example12.nt)
-	  
+   
 <?xml version="1.0"?>
 <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
             xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -820,7 +815,7 @@ Complete example using rdf:parseType="Resource"
     </ex:editor>
   </rdf:Description>
 </rdf:RDF>
-```
+```xml
 
 ### 2.12 Omitting Nodes: Property Attributes on an empty Property Element
 
@@ -849,7 +844,7 @@ The blank node element becomes implicit in the now empty
 
 Example 13
 
-```
+```xml
 Complete example of property attributes on an empty property element
 (example13.rdf, output example13.nt)
 
@@ -865,7 +860,7 @@ Complete example of property attributes on an empty property element
   </rdf:Description>
 
 </rdf:RDF>
-```
+```xml
 
 ### 2.13 Typed Node Elements
 
@@ -891,7 +886,7 @@ could be written as shown in [Example 15](#example15).
 
 Example 14
 
-```
+```xml
 Complete example with rdf:type
 (example14.rdf, output example14.nt)
 
@@ -905,11 +900,11 @@ Complete example with rdf:type
     <dc:title>A marvelous thing</dc:title>
   </rdf:Description>
 </rdf:RDF>
-```
+```xml
 
 Example 15
 
-```
+```xml
 Complete example using a typed node element to replace an rdf:type
 (example15.rdf, output example15.nt)
 
@@ -923,7 +918,7 @@ Complete example using a typed node element to replace an rdf:type
   </ex:Document>
 
 </rdf:RDF>
-```
+```xml
 
 ### 2.14 Abbreviating URIs: `rdf:ID` and `xml:base`
 
@@ -961,7 +956,7 @@ IRI `http://example.org/here/fruit/apple`.
 
 Example 16
 
-```
+```xml
 Complete example using rdf:ID and xml:base for shortening URIs
 (example16.rdf, output example16.nt)
 
@@ -975,7 +970,7 @@ Complete example using rdf:ID and xml:base for shortening URIs
   </rdf:Description>
 
 </rdf:RDF>
-```
+```xml
 
 ### 2.15 Container Membership Property Elements: `rdf:li` and `rdf:_`*n*
 
@@ -998,7 +993,7 @@ in this form is shown in [Example 18](#example18).
 
 Example 17
 
-```
+```xml
 Complex example using RDF list properties
 (example17.rdf, output example17.nt)
 
@@ -1012,11 +1007,11 @@ Complex example using RDF list properties
   </rdf:Seq>
 
 </rdf:RDF>
-```
+```xml
 
 Example 18
 
-```
+```xml
 Complete example using rdf:li property element for list properties
 (example18.rdf, output example18.nt)
 
@@ -1030,7 +1025,7 @@ Complete example using rdf:li property element for list properties
   </rdf:Seq>
 
 </rdf:RDF>
-```
+```xml
 
 ### 2.16 Collections: `rdf:parseType="Collection"`
 
@@ -1052,7 +1047,7 @@ property element using this form.
 
 Example 19
 
-```
+```xml
 Complete example of a RDF collection of nodes using rdf:parseType="Collection"
 (example19.rdf, output example19.nt)
 
@@ -1069,7 +1064,7 @@ Complete example of a RDF collection of nodes using rdf:parseType="Collection"
   </rdf:Description>
 
 </rdf:RDF>
-```
+```xml
 
 ### 2.17 Reifying Statements: `rdf:ID`
 
@@ -1095,7 +1090,7 @@ IRI `http://example.org/triples/#triple1`.
 
 Example 20
 
-```
+```xml
 Complete example of rdf:ID reifying a property element
 (example20.rdf, output example20.nt)
 
@@ -1108,9 +1103,10 @@ Complete example of rdf:ID reifying a property element
   </rdf:Description>
 
 </rdf:RDF>
-```
+```xml
 
-3. Terminology
+1. Terminology
+
 --------------
 
 The key words "*MUST*", "*MUST NOT*", "*REQUIRED*", "*SHALL*", "*SHALL
@@ -1123,7 +1119,8 @@ a Unicode [[UNICODE](#bib-UNICODE)] character string;
 a sequence of characters represented by a code point in
 Unicode.
 
-4. RDF MIME Type, File Extension and Macintosh File Type
+1. RDF MIME Type, File Extension and Macintosh File Type
+
 --------------------------------------------------------
 
 The Internet media type / MIME type for RDF/XML is
@@ -1132,7 +1129,7 @@ RFC 3023 [[RFC3023](#bib-RFC3023)], section 8.18.
 
 Note
 
-**(Informative):** 
+**(Informative):**
 For the state of the MIME type registration, consult
 IANA MIME Media Types [[IANA-MEDIA-TYPES](#bib-IANA-MEDIA-TYPES)]
 
@@ -1143,7 +1140,8 @@ It is recommended that RDF/XML files stored on Macintosh HFS file
 systems be given a file type of `"rdf "`
 (all lowercase, with a space character as the fourth letter).
 
-5. Global Issues
+1. Global Issues
+
 ----------------
 
 ### 5.1 The RDF Namespace and Vocabulary
@@ -1283,7 +1281,7 @@ into an IRI by substituting the in-scope base URI.
 Note
 
 **Test:**
-indicated by:   
+indicated by:
 [test001.rdf](https://www.w3.org/2013/RDFXMLTests/xmlbase/test001.rdf) and
 [test001.nt](https://www.w3.org/2013/RDFXMLTests/xmlbase/test001.nt)
   
@@ -1357,7 +1355,8 @@ Conformance:
     conforming RDF/XML document
     if it adheres to the specification defined in this document.
 
-6. Syntax Data Model
+1. Syntax Data Model
+
 --------------------
 
 This document specifies the syntax of RDF/XML as a grammar on an
@@ -1786,7 +1785,7 @@ See [[CHARMOD](#bib-CHARMOD)] for further information.
 
 Note
 
-**Implementation Note (Informative):** 
+**Implementation Note (Informative):**
 In XML Schema (part 1) [[XMLSCHEMA-1](#bib-XMLSCHEMA-1)],
 [white
 space normalization](https://www.w3.org/TR/2001/REC-xmlschema-1-20010502/#section-White-Space-Normalization-during-Validation)
@@ -1876,7 +1875,8 @@ for event matching and actions.
 | literal(literal-value := string,      literal-language := language, ...) | Create a new [Plain Literal Event](#section-literal-node). |
 | typed-literal(literal-value := string, ...) | Create a new [Typed Literal Event](#section-typed-literal-node). |
 
-7. RDF/XML Grammar
+1. RDF/XML Grammar
+
 ------------------
 
 ### 7.1 Grammar summary
@@ -1931,7 +1931,7 @@ production [nodeElement](#nodeElement).
 If the content is known to be RDF/XML by context, such as when
 RDF/XML is embedded inside other XML content, then the grammar
 can either start
-at [Element Event](#section-element-node) 
+at [Element Event](#section-element-node)
 [RDF](#RDF)
 (only when an element is legal at that point in the XML)
 or at production [nodeElementList](#nodeElementList)
@@ -2337,24 +2337,24 @@ end-element()
   [test005.nt](https://www.w3.org/2013/RDFXMLTests/rdfms-empty-property-elements/test005.nt)
 * Otherwise
 
-  + If `rdf:resource` attribute *i* is present, then
+  * If `rdf:resource` attribute *i* is present, then
     *r* := uri([identifier](#eventterm-identifier-identifier) := resolve(*e*, *i*.[string-value](#eventterm-attribute-string-value)))
-  + If `rdf:nodeID` attribute *i* is present, then
+  * If `rdf:nodeID` attribute *i* is present, then
     *r* := bnodeid([identifier](#eventterm-identifier-identifier) := *i*.[string-value](#eventterm-attribute-string-value))
-  + If neither,
+  * If neither,
     *r* := bnodeid([identifier](#eventterm-identifier-identifier) := generated-blank-node-id())
 
   The following are done in any order:
 
-  + For all [propertyAttr](#propertyAttr)
+  * For all [propertyAttr](#propertyAttr)
     attributes *a* (in any order)
 
-    - If *a*.[URI](#eventterm-attribute-URI) == `rdf:type`
+    * If *a*.[URI](#eventterm-attribute-URI) == `rdf:type`
       then *u*:=uri(identifier:=resolve(*e*, *a*.[string-value](#eventterm-attribute-string-value)))
       and the following triple is added to the graph:
 
       `r.string-value <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> u.string-value .`
-    - Otherwise Unicode string
+    * Otherwise Unicode string
       *a*.[string-value](#eventterm-attribute-string-value)
       *SHOULD* be in Normal Form C [[NFC](#bib-NFC)],
       *o* := literal([literal-value](#eventterm-literal-literal-value) := *a*.[string-value](#eventterm-attribute-string-value), [literal-language](#eventterm-literal-literal-language) := *e*.[language](#eventterm-element-language))
@@ -2377,7 +2377,7 @@ end-element()
     [test014.rdf](https://www.w3.org/2013/RDFXMLTests/rdfms-empty-property-elements/test014.rdf)
     and
     [test014.nt](https://www.w3.org/2013/RDFXMLTests/rdfms-empty-property-elements/test014.nt)
-  + Add the following statement to the graph:
+  * Add the following statement to the graph:
 
     `e.parent.subject.string-value e.URI-string-value r.string-value .`
 
@@ -2487,7 +2487,8 @@ increment the
 *e*.[li-counter](#eventterm-element-liCounter)
 property by 1 and return *u*.
 
-8. Serializing an RDF Graph to RDF/XML
+1. Serializing an RDF Graph to RDF/XML
+
 --------------------------------------
 
 There are some RDF Graphs as defined in
@@ -2524,7 +2525,8 @@ Datatype (XSD), it *SHOULD* be written in a form that does not require
 whitespace processing. XSD support is NOT required by RDF or RDF/XML
 so this is optional.
 
-9. Using RDF/XML with SVG
+1. Using RDF/XML with SVG
+
 -------------------------
 
 *This section is non-normative.*
@@ -2550,8 +2552,7 @@ embedded RDF/XML inside the metadata element:
 and
 [figure 2](https://www.w3.org/TR/rdf-syntax-grammar/figure2.svg).
 
-A. Acknowledgments
-------------------
+## A. Acknowledgments
 
 *This section is non-normative.*
 
@@ -2607,8 +2608,7 @@ Wei (William) Song (SISU), Neel Sundaresan (IBM), Ralph Swick (W3C),
 Naohiko Uramoto (IBM), Charles Wicksteed (Reuters Ltd.), Misha Wolf
 (Reuters Ltd.), Lauren Wood (SoftQuad).
 
-B. Changes since 2004 Recommendation
-------------------------------------
+## B. Changes since 2004 Recommendation
 
 *This section is non-normative.*
 
@@ -2660,8 +2660,7 @@ Changes for RDF 1.1 Proposed Edited Recommendation:
     the RDF 1.1 N-Triples `BLANK_NODE_LABEL`
     production.
 
-C. Syntax Schemas
------------------
+## C. Syntax Schemas
 
 *This section is non-normative.*
 
@@ -2687,7 +2686,7 @@ Note
 The RNGC schema has been updated to attempt to match the grammar but
 this has not been checked or used to validate RDF/XML.
 
-```
+```xml
         #
         # RELAX NG Compact Schema for RDF/XML Syntax
         #
@@ -2890,10 +2889,9 @@ this has not been checked or used to validate RDF/XML.
 
         any =
           mixed { element * { attribute * { text }*, any }* }
-```
+```xml
 
-D. References
--------------
+## D. References
 
 ### D.1 Normative references
 

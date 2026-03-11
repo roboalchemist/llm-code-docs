@@ -8,18 +8,13 @@
 
 RDF 1.1 N-Quads
 
-
-
 [![W3C](https://www.w3.org/Icons/w3c_home)](https://www.w3.org/)
 
-RDF 1.1 N-Quads
-===============
+## RDF 1.1 N-Quads
 
 A line-based syntax for RDF datasets
-------------------------------------
 
-W3C Recommendation 25 February 2014
------------------------------------
+## W3C Recommendation 25 February 2014
 
 This version:
 :   [http://www.w3.org/TR/2014/REC-n-quads-20140225/](https://www.w3.org/TR/2014/REC-n-quads-20140225/)
@@ -59,13 +54,11 @@ rules apply.
 
 ---
 
-Abstract
---------
+## Abstract
 
 N-Quads is a line-based, plain text format for encoding an RDF dataset.
 
-Status of This Document
------------------------
+## Status of This Document
 
 *This section describes the status of this document at the time of its publication.
 Other documents may supersede this document. A list of current W3C publications and the
@@ -107,35 +100,33 @@ Claim(s)](https://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential) m
 [section
 6 of the W3C Patent Policy](https://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure).
 
-Table of Contents
------------------
+## Table of Contents
 
 * [1. Introduction](#sec-intro)
 * [2. N-Quads Language](#n-quads-language)
-  + [2.1 Simple Statements](#simple-triples)
-  + [2.2 IRIs](#sec-iri)
-  + [2.3 RDF Literals](#sec-literals)
-  + [2.4 RDF Blank Nodes](#BNodes)
+  * [2.1 Simple Statements](#simple-triples)
+  * [2.2 IRIs](#sec-iri)
+  * [2.3 RDF Literals](#sec-literals)
+  * [2.4 RDF Blank Nodes](#BNodes)
 * [3. Conformance](#conformance)
-  + [3.1 Media Type and Content Encoding](#sec-mediatype)
-    - [3.1.1 Other Media Types](#sec-other-media-types)
+  * [3.1 Media Type and Content Encoding](#sec-mediatype)
+    * [3.1.1 Other Media Types](#sec-other-media-types)
 * [4. Grammar](#sec-grammar)
 * [5. Parsing](#sec-parsing)
-  + [5.1 RDF Term Constructors](#sec-parsing-terms)
-  + [5.2 RDF Dataset Construction](#rdf-dataset-construction)
+  * [5.1 RDF Term Constructors](#sec-parsing-terms)
+  * [5.2 RDF Dataset Construction](#rdf-dataset-construction)
 * [6. Acknowledgements](#section-ack)
 * [A. Change Log](#sec-changes)
-  + [A.1 Changes between Proposed Recommendation and Recommendation](#changes-between-proposed-recommendation-and-recommendation)
-  + [A.2 Changes between Candidate Recommendation and Proposed Recommendation](#changes-between-candidate-recommendation-and-proposed-recommendation)
-  + [A.3 Changes between Last Call Working Draft and Candidate Recommendation](#changes-between-last-call-working-draft-and-candidate-recommendation)
-  + [A.4 Changes between publication as Note and Last Call Working Draft](#changes-between-publication-as-note-and-last-call-working-draft)
+  * [A.1 Changes between Proposed Recommendation and Recommendation](#changes-between-proposed-recommendation-and-recommendation)
+  * [A.2 Changes between Candidate Recommendation and Proposed Recommendation](#changes-between-candidate-recommendation-and-proposed-recommendation)
+  * [A.3 Changes between Last Call Working Draft and Candidate Recommendation](#changes-between-last-call-working-draft-and-candidate-recommendation)
+  * [A.4 Changes between publication as Note and Last Call Working Draft](#changes-between-publication-as-note-and-last-call-working-draft)
 * [B. N-Quads Internet Media Type, File Extension and Macintosh File Type](#sec-mediaReg)
 * [C. References](#references)
-  + [C.1 Normative references](#normative-references)
-  + [C.2 Informative references](#informative-references)
+  * [C.1 Normative references](#normative-references)
+  * [C.2 Informative references](#informative-references)
 
-1. Introduction
----------------
+## 1. Introduction
 
 This document defines N-Quads, an easy to parse, line-based,
 concrete syntax for
@@ -146,7 +137,8 @@ N-quads statements are a sequence of RDF terms representing the subject, predica
 
 Example 1
 
-2. N-Quads Language
+1. N-Quads Language
+
 -------------------
 
 ### 2.1 Simple Statements
@@ -186,8 +178,7 @@ Repeated use of the same blank node label identifies the same RDF blank node.
 
 Example 3
 
-3. Conformance
---------------
+## 3. Conformance
 
 As well as sections marked as non-normative, all authoring guidelines, diagrams, examples,
 and notes in this specification are non-normative. Everything else in this specification is
@@ -225,8 +216,7 @@ The original specification,
 proposed the use of media type `text/x-nquads` with an encoding
 using 7-bit US-ASCII.
 
-4. Grammar
-----------
+## 4. Grammar
 
 An N-Quads document is a Unicode[[UNICODE](#bib-UNICODE)] character string encoded in UTF-8.
 Unicode code points only in the range U+0 to U+10FFFF inclusive are allowed.
@@ -247,24 +237,23 @@ Escape sequence rules are the same as Turtle
 | [2] | `statement` | ::= | [subject](#grammar-production-subject) [predicate](#grammar-production-predicate) [object](#grammar-production-object) [graphLabel](#grammar-production-graphLabel)? '`.`' |
 | [3] | `subject` | ::= | [IRIREF](#grammar-production-IRIREF) `|`  [BLANK\_NODE\_LABEL](#grammar-production-BLANK_NODE_LABEL) |
 | [4] | `predicate` | ::= | [IRIREF](#grammar-production-IRIREF) |
-| [5] | `object` | ::= | [IRIREF](#grammar-production-IRIREF) `|`  [BLANK\_NODE\_LABEL](#grammar-production-BLANK_NODE_LABEL) `|`  [literal](#grammar-production-literal) |
+| [5] | `object` | ::= | [IRIREF](#grammar-production-IRIREF) `|` [BLANK\_NODE\_LABEL](#grammar-production-BLANK_NODE_LABEL) `|`  [literal](#grammar-production-literal) |
 | [6] | `graphLabel` | ::= | [IRIREF](#grammar-production-IRIREF) `|`  [BLANK\_NODE\_LABEL](#grammar-production-BLANK_NODE_LABEL) |
 | [7] | `literal` | ::= | [STRING\_LITERAL\_QUOTE](#grammar-production-STRING_LITERAL_QUOTE) ('`^^`' [IRIREF](#grammar-production-IRIREF) `|`  [LANGTAG](#grammar-production-LANGTAG))? |
 | Productions for terminals | | | |
 | [144s] | `LANGTAG` | ::= | '`@`' [`a-zA-Z`]`+` ('`-`' [`a-zA-Z0-9`]`+`)`*` |
 | [8] | `EOL` | ::= | [`#xD#xA`]`+` |
-| [10] | `IRIREF` | ::= | '`<`' ([`` ^#x00-#x20<>"{}|^`\ ``] `|`  [UCHAR](#grammar-production-UCHAR))`*` '`>`' |
-| [11] | `STRING_LITERAL_QUOTE` | ::= | '`"`' ([`^#x22#x5C#xA#xD`] `|`  [ECHAR](#grammar-production-ECHAR) `|`  [UCHAR](#grammar-production-UCHAR))`*` '`"`' |
-| [141s] | `BLANK_NODE_LABEL` | ::= | '`_:`' ([PN\_CHARS\_U](#grammar-production-PN_CHARS_U) `|`  [`0-9`]) (([PN\_CHARS](#grammar-production-PN_CHARS) `|`  '`.`')`*` [PN\_CHARS](#grammar-production-PN_CHARS))? |
-| [12] | `UCHAR` | ::= | '`\u`' [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) `|`  '`\U`' [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) |
+| [10] | `IRIREF` | ::= | '`<`' ([`` ^#x00-#x20<>"{}|^`\ ``]`|`[UCHAR](#grammar-production-UCHAR))`*`'`>`' |
+| [11] | `STRING_LITERAL_QUOTE` | ::= | '`"`' ([`^#x22#x5C#xA#xD`] `|` [ECHAR](#grammar-production-ECHAR) `|`[UCHAR](#grammar-production-UCHAR))`*`'`"`' |
+| [141s] | `BLANK_NODE_LABEL` | ::= | '`_:`' ([PN\_CHARS\_U](#grammar-production-PN_CHARS_U) `|`[`0-9`]) (([PN\_CHARS](#grammar-production-PN_CHARS)`|`'`.`')`*` [PN\_CHARS](#grammar-production-PN_CHARS))? |
+| [12] | `UCHAR` | ::= | '`\u`' [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) `|`'`\U`' [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) |
 | [153s] | `ECHAR` | ::= | '`\`' [`tbnrf"'\`] |
-| [157s] | `PN_CHARS_BASE` | ::= | [`A-Z`] `|`  [`a-z`] `|`  [`#x00C0-#x00D6`] `|`  [`#x00D8-#x00F6`] `|`  [`#x00F8-#x02FF`] `|`  [`#x0370-#x037D`] `|`  [`#x037F-#x1FFF`] `|`  [`#x200C-#x200D`] `|`  [`#x2070-#x218F`] `|`  [`#x2C00-#x2FEF`] `|`  [`#x3001-#xD7FF`] `|`  [`#xF900-#xFDCF`] `|`  [`#xFDF0-#xFFFD`] `|`  [`#x10000-#xEFFFF`] |
-| [158s] | `PN_CHARS_U` | ::= | [PN\_CHARS\_BASE](#grammar-production-PN_CHARS_BASE) `|`  '`_`' `|`  '`:`' |
-| [160s] | `PN_CHARS` | ::= | [PN\_CHARS\_U](#grammar-production-PN_CHARS_U) `|`  '`-`' `|`  [`0-9`] `|`  `#x00B7` `|`  [`#x0300-#x036F`] `|`  [`#x203F-#x2040`] |
-| [162s] | `HEX` | ::= | [`0-9`] `|`  [`A-F`] `|`  [`a-f`] |
+| [157s] | `PN_CHARS_BASE` | ::= | [`A-Z`] `|`[`a-z`]`|`[`#x00C0-#x00D6`]`|`[`#x00D8-#x00F6`]`|`[`#x00F8-#x02FF`]`|`[`#x0370-#x037D`]`|`[`#x037F-#x1FFF`]`|`[`#x200C-#x200D`]`|`[`#x2070-#x218F`]`|`[`#x2C00-#x2FEF`]`|`[`#x3001-#xD7FF`]`|`[`#xF900-#xFDCF`]`|`[`#xFDF0-#xFFFD`]`|`[`#x10000-#xEFFFF`] |
+| [158s] | `PN_CHARS_U` | ::= | [PN\_CHARS\_BASE](#grammar-production-PN_CHARS_BASE) `|`'`_`'`|`'`:`' |
+| [160s] | `PN_CHARS` | ::= | [PN\_CHARS\_U](#grammar-production-PN_CHARS_U) `|`'`-`'`|`[`0-9`]`|`  `#x00B7` `|`[`#x0300-#x036F`]`|`[`#x203F-#x2040`] |
+| [162s] | `HEX` | ::= | [`0-9`] `|`[`A-F`]`|`[`a-f`] |
 
-5. Parsing
-----------
+## 5. Parsing
 
 Parsing N-Quads requires a state of one item:
 
@@ -286,8 +275,7 @@ This table maps productions and lexical tokens to `RDF terms` or components of `
 
 An N-Quads document defines an RDF dataset composed of RDF graphs composed of a set of RDF triples. The `statement` production produces a triple defined by the terms constructed for `subject`, `predicate` and `object`. This RDF triple is added to the graph labeled by the production `graphLabel`, if no `graphLabel` is present the triple is added to the RDF datasets default graph.
 
-6. Acknowledgements
--------------------
+## 6. Acknowledgements
 
 *This section is non-normative.*
 
@@ -301,8 +289,7 @@ Feigenbaum, Peter Ansell, Evan Patton and David Booth.
 This specification is a product of extensive deliberations by the
 members of the RDF Working Group chaired by Guus Schreiber and David Wood. It draws upon the eariler specification in *[N-Quads: Extending N-Triples with Context](http://sw.deri.org/2008/07/n-quads/)*, edited by Richard Cyganiak, Andreas Harth, and Aidan Hogan.
 
-A. Change Log
--------------
+## A. Change Log
 
 ### A.1 Changes between Proposed Recommendation and Recommendation
 
@@ -325,8 +312,7 @@ No substitutive changes.
 * Parsing is defined.
 * Recommendation track, not a working group Note.
 
-B. N-Quads Internet Media Type, File Extension and Macintosh File Type
-----------------------------------------------------------------------
+## B. N-Quads Internet Media Type, File Extension and Macintosh File Type
 
 Contact:
 :   Eric Prud'hommeaux
@@ -411,8 +397,7 @@ Restrictions on usage:
 Author/Change controller:
 :   The N-Quads specification is the product of the RDF WG. The W3C reserves change control over this specifications.
 
-C. References
--------------
+## C. References
 
 ### C.1 Normative references
 

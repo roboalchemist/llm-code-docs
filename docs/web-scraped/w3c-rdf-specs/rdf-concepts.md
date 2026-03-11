@@ -8,15 +8,11 @@
 
 RDF 1.1 Concepts and Abstract Syntax
 
-
-
 [![W3C](https://www.w3.org/Icons/w3c_home)](https://www.w3.org/)
 
-RDF 1.1 Concepts and Abstract Syntax
-====================================
+## RDF 1.1 Concepts and Abstract Syntax (Recommendation)
 
 W3C Recommendation 25 February 2014
------------------------------------
 
 This version:
 :   [http://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/](https://www.w3.org/TR/2014/REC-rdf11-concepts-20140225/)
@@ -60,8 +56,8 @@ rules apply.
 
 ---
 
-Abstract
---------
+## Abstract
+
 
 The Resource Description Framework (RDF) is a framework for
 representing information in the Web. This document defines an abstract syntax
@@ -76,8 +72,8 @@ also introduces key concepts and terminology, and discusses
 datatyping and the handling of fragment identifiers in IRIs within
 RDF graphs.
 
-Status of This Document
------------------------
+## Status of This Document
+
 
 *This section describes the status of this document at the time of its publication.
 Other documents may supersede this document. A list of current W3C publications and the
@@ -121,43 +117,43 @@ Claim(s)](https://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential) m
 [section
 6 of the W3C Patent Policy](https://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure).
 
-Table of Contents
------------------
+## Table of Contents
 
 * [1. Introduction](#section-Introduction)
-  + [1.1 Graph-based Data Model](#data-model)
-  + [1.2 Resources and Statements](#resources-and-statements)
-  + [1.3 The Referent of an IRI](#referents)
-  + [1.4 RDF Vocabularies and Namespace IRIs](#vocabularies)
-  + [1.5 RDF and Change over Time](#change-over-time)
-  + [1.6 Working with Multiple RDF Graphs](#managing-graphs)
-  + [1.7 Equivalence, Entailment and Inconsistency](#entailment)
-  + [1.8 RDF Documents and Syntaxes](#rdf-documents)
+  * [1.1 Graph-based Data Model](#data-model)
+  * [1.2 Resources and Statements](#resources-and-statements)
+  * [1.3 The Referent of an IRI](#referents)
+  * [1.4 RDF Vocabularies and Namespace IRIs](#vocabularies)
+  * [1.5 RDF and Change over Time](#change-over-time)
+  * [1.6 Working with Multiple RDF Graphs](#managing-graphs)
+  * [1.7 Equivalence, Entailment and Inconsistency](#entailment)
+  * [1.8 RDF Documents and Syntaxes](#rdf-documents)
 * [2. Conformance](#conformance)
 * [3. RDF Graphs](#section-rdf-graph)
-  + [3.1 Triples](#section-triples)
-  + [3.2 IRIs](#section-IRIs)
-  + [3.3 Literals](#section-Graph-Literal)
-  + [3.4 Blank Nodes](#section-blank-nodes)
-  + [3.5 Replacing Blank Nodes with IRIs](#section-skolemization)
-  + [3.6 Graph Comparison](#graph-isomorphism)
+  * [3.1 Triples](#section-triples)
+  * [3.2 IRIs](#section-IRIs)
+  * [3.3 Literals](#section-Graph-Literal)
+  * [3.4 Blank Nodes](#section-blank-nodes)
+  * [3.5 Replacing Blank Nodes with IRIs](#section-skolemization)
+  * [3.6 Graph Comparison](#graph-isomorphism)
 * [4. RDF Datasets](#section-dataset)
-  + [4.1 RDF Dataset Comparison](#section-dataset-isomorphism)
-  + [4.2 Content Negotiation of RDF Datasets](#section-dataset-conneg)
+  * [4.1 RDF Dataset Comparison](#section-dataset-isomorphism)
+  * [4.2 Content Negotiation of RDF Datasets](#section-dataset-conneg)
 * [5. Datatypes](#section-Datatypes)
-  + [5.1 The XML Schema Built-in Datatypes](#xsd-datatypes)
-  + [5.2 The `rdf:HTML` Datatype](#section-html)
-  + [5.3 The `rdf:XMLLiteral` Datatype](#section-XMLLiteral)
-  + [5.4 Datatype IRIs](#datatype-iris)
+  * [5.1 The XML Schema Built-in Datatypes](#xsd-datatypes)
+  * [5.2 The `rdf:HTML` Datatype](#section-html)
+  * [5.3 The `rdf:XMLLiteral` Datatype](#section-XMLLiteral)
+  * [5.4 Datatype IRIs](#datatype-iris)
 * [6. Fragment Identifiers](#section-fragID)
 * [7. Generalized RDF Triples, Graphs, and Datasets](#section-generalized-rdf)
 * [8. Acknowledgments](#section-Acknowledgments)
 * [A. Changes between RDF 1.0 and RDF 1.1](#changes)
 * [B. References](#references)
-  + [B.1 Normative references](#normative-references)
-  + [B.2 Informative references](#informative-references)
+  * [B.1 Normative references](#normative-references)
+  * [B.2 Informative references](#informative-references)
 
 1. Introduction
+
 ---------------
 
 *This section is non-normative.*
@@ -189,7 +185,6 @@ directed-arc diagram, in which each triple is represented as a
 node-arc-node link.
 
 [![An RDF graph with two nodes (Subject and Object) and a triple connecting them (Predicate)](rdf-graph.svg)](rdf-graph.svg)
-
 
 Fig. 1 An RDF graph with two nodes (Subject and Object) and a triple connecting them (Predicate)
 
@@ -442,7 +437,8 @@ and different ordering of statements. While these aspects can have great
 effect on the convenience of working with the [RDF document](#dfn-rdf-document),
 they are not significant for its meaning.
 
-2. Conformance
+1. Conformance
+
 --------------
 
 As well as sections marked as non-normative, all authoring guidelines, diagrams, examples,
@@ -462,7 +458,8 @@ Implementations cannot directly conform to
 but can conform to such other specifications that normatively
 reference terms defined here.
 
-3. RDF Graphs
+1. RDF Graphs
+
 -------------
 
 An RDF graph is a set of
@@ -632,7 +629,7 @@ the two [datatype IRIs](#dfn-datatype-iri "datatype IRI"), and the two
 character by character. Thus, two literals can have the same value
 without being the same RDF term. For example:
 
-```
+```text
       "1"^^xs:integer
       "01"^^xs:integer
 ```
@@ -699,7 +696,7 @@ path component starts with `/.well-known/genid/`.
 For example, the authority responsible for the domain
 `example.com` could mint the following recognizable Skolem IRI:
 
-```
+```text
 http://example.com/.well-known/genid/d26a2d0e98334696f4ad70a677abc1f6
 ```
 
@@ -733,7 +730,8 @@ in G can be replaced with
 a new blank node to give G'. Graph isomorphism
 is needed to support the RDF Test Cases [[RDF11-TESTCASES](#bib-RDF11-TESTCASES)] specification.
 
-4. RDF Datasets
+1. RDF Datasets
+
 ---------------
 
 An RDF dataset is a collection of
@@ -807,7 +805,8 @@ format that supports the expression of both [RDF datasets](#dfn-rdf-dataset "RDF
 is returned and the consumer is expecting an [RDF graph](#dfn-rdf-graph "RDF graph"),
 the consumer is expected to use the [RDF dataset's](#dfn-rdf-dataset "RDF Dataset") default graph.
 
-5. Datatypes
+1. Datatypes
+
 ------------
 
 Datatypes are used with RDF [literals](#dfn-literal "literal")
@@ -1113,8 +1112,9 @@ identifying
 is suggested in [[SWBP-XSCH-DATATYPES](#bib-SWBP-XSCH-DATATYPES)]. RDF implementations
 are not required to support either of these facilities.
 
-6. Fragment Identifiers
------------------------
+1. Fragment Identifiers
+
+
 
 *This section is non-normative.*
 
@@ -1162,7 +1162,8 @@ document section in an HTML representation of the primary resource, then the
 [denote](#dfn-denote) that same section in all RDF-bearing representations of the
 same primary resource.
 
-7. Generalized RDF Triples, Graphs, and Datasets
+1. Generalized RDF Triples, Graphs, and Datasets
+
 ------------------------------------------------
 
 *This section is non-normative.*
@@ -1203,7 +1204,8 @@ There is no requirement on the part of any RDF tool to
 accept, process, or produce anything beyond standard RDF
 triples, graphs, and datasets.
 
-8. Acknowledgments
+1. Acknowledgments
+
 ------------------
 
 *This section is non-normative.*
@@ -1225,8 +1227,7 @@ Eric Prud'hommeaux, Yves Raimond, Nathan Rixham, Guus Schreiber,
 Andy Seaborne, Manu Sporny, Thomas Steiner, Ted Thibodeau, Mischa Tuffield,
 William Waites, Jan Wielemaker, David Wood, Zhe Wu, and Antoine Zimmermann.
 
-A. Changes between RDF 1.0 and RDF 1.1
---------------------------------------
+## A. Changes between RDF 1.0 and RDF 1.1
 
 *This section is non-normative.*
 
@@ -1234,8 +1235,7 @@ A detailed overview of the differences between RDF versions 1.0
 and 1.1 can be found in
 [What’s New in RDF 1.1](https://www.w3.org/TR/rdf11-new/) [[RDF11-NEW](#bib-RDF11-NEW)].
 
-B. References
--------------
+## B. References
 
 ### B.1 Normative references
 

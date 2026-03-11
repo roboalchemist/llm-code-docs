@@ -32,4 +32,4 @@ For questions about decision records please reach out to the RDFLib maintainers 
 
 ## Decisions list
 
-- [Default branch](decisions/20220826-default_branch.md)
+* [Default branch](decisions/20220826-default_branch.md)

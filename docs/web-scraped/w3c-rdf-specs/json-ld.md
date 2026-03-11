@@ -8,18 +8,14 @@
 
 JSON-LD 1.1
 
-
 [![W3C](https://www.w3.org/StyleSheets/TR/2016/logos/W3C)](https://www.w3.org/)
 
-JSON-LD 1.1
-===========
+# JSON-LD 1.1
 
-A JSON-based Serialization for Linked Data
-------------------------------------------
+## A JSON-based Serialization for Linked Data
 
 W3C Recommendation
-16 July 2020
--------------------------------
+## 16 July 2020
 
 This version:
 :   <https://www.w3.org/TR/2020/REC-json-ld11-20200716/>
@@ -103,8 +99,7 @@ apply.
 
 ---
 
-Abstract
---------
+## Abstract
 
 JSON is a useful data serialization and messaging format.
 This specification defines JSON-LD 1.1, a JSON-based format to serialize
@@ -120,8 +115,7 @@ This specification describes a superset of the features defined in
 and, except where noted,
 documents created using the 1.0 version of this specification remain compatible with JSON-LD 1.1.
 
-Status of This Document
------------------------
+## Status of This Document
 
 *This section describes the status of this
 document at the time of its publication. Other documents may supersede
@@ -185,8 +179,7 @@ This document is one of three JSON-LD 1.1 Recommendations produced by the
 * [JSON-LD 1.1 Processing Algorithms and API](https://www.w3.org/TR/json-ld11-api/)
 * [JSON-LD 1.1 Framing](https://www.w3.org/TR/json-ld11-framing/)
 
-Table of Contents
------------------
+## Table of Contents
 
 1. [1. Introduction](#introduction)
    1. [1.1 How to Read this Document](#how-to-read-this-document)
@@ -308,12 +301,13 @@ Table of Contents
 21. [H. Changes since Proposed Recommendation Release of 7 May 2020](#changes-from-pr)
 22. [I. Acknowledgements](#ack)
 23. [J. References](#references)
-    1. [J.1 
+    1. [J.1
        Normative references](#normative-references)
-    2. [J.2 
+    2. [J.2
        Informative references](#informative-references)
 
-1. Introduction
+24. Introduction
+
 ---------------
 
 *This section is non-normative.*
@@ -469,14 +463,14 @@ Notes are always informative.
 
 [Example 1](#example-1)
 
-```
+```json
 Examples are in light khaki boxes, with khaki left border,
 and with a numbered "Example" header in khaki.
 Examples are always informative. The content of the example is in monospace font and may be syntax colored.
 
 Examples may have tabbed navigation buttons
 to show the results of transforming an example into other representations.
-```
+```json
 
 ### 1.4 Terminology
 
@@ -1184,7 +1178,8 @@ A normative description of the [keywords](#dfn-keyword) is given in [§ 9.16 Ke
 
 All keys, [keywords](#dfn-keyword), and values in JSON-LD are case-sensitive.
 
-2. Conformance
+1. Conformance
+
 --------------
 
 As well as sections marked as non-normative, all authoring guidelines, diagrams, examples, and notes in this specification are non-normative. Everything else in this specification is normative.
@@ -1221,7 +1216,8 @@ These are used within this document as part of a [compact IRI](#dfn-compact-iri)
 as a shorthand for the resulting [IRI](https://tools.ietf.org/html/rfc3987#section-2), such as `dcterms:title`
 used to represent `http://purl.org/dc/terms/title`.
 
-3. Basic Concepts
+1. Basic Concepts
+
 -----------------
 
 *This section is non-normative.*
@@ -1236,13 +1232,13 @@ rest of this section:
 
 [Example 2](#example-2-sample-json-document): Sample JSON document
 
-```
+```json
 {
   "name": "Manu Sporny",
   "homepage": "http://manu.sporny.org/",
   "image": "http://manu.sporny.org/images/manu.png"
 }
-```
+```json
 
 It's obvious to humans that the data is about a person whose
 `name` is "Manu Sporny"
@@ -1273,7 +1269,7 @@ Statements
 Turtle (Result)
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22http%3A%2F%2Fschema.org%2Fname%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%22http%3A%2F%2Fschema.org%2Furl%22%3A%20%7B%0A%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2F%22%0A%20%20%20%20%0A%20%20%7D%2C%0A%20%20%22http%3A%2F%2Fschema.org%2Fimage%22%3A%20%7B%0A%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2Fimages%2Fmanu.png%22%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "http://schema.org/name": "Manu Sporny",
   "http://schema.org/url": {
@@ -1284,7 +1280,7 @@ Turtle (Result)
     "@id": "http://manu.sporny.org/images/manu.png"
   }
 }
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -1292,7 +1288,7 @@ Turtle (Result)
 | \_:b0 | schema:name | Manu Sporny |
 | \_:b0 | schema:url | http://manu.sporny.org/ |
 
-```
+```sparql
 @prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -1301,7 +1297,7 @@ Turtle (Result)
    schema:name "Manu Sporny";
    schema:url <http://manu.sporny.org/>
  ] .
-```
+```sparql
 
 In the example above, every property is unambiguously identified by an [IRI](https://tools.ietf.org/html/rfc3987#section-2) and all values
 representing [IRIs](https://tools.ietf.org/html/rfc3987#section-2) are explicitly marked as such by the
@@ -1340,7 +1336,7 @@ look something like this:
 
 [Example 4](#example-4-context-for-the-sample-document-in-the-previous-section): Context for the sample document in the previous section
 
-```
+```json
 {
   "@context": {
     "name": "http://schema.org/name",
@@ -1361,7 +1357,7 @@ look something like this:
     }
   }
 }
-```
+```turtle
 
 As the [context](#dfn-context) above shows, the value of a [term definition](#dfn-term-definition) can
 either be a simple string, mapping the [term](#dfn-term) to an [IRI](https://tools.ietf.org/html/rfc3987#section-2),
@@ -1399,22 +1395,22 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%22https%3A%2F%2Fjson-ld.org%2Fcontexts%2Fperson.jsonld%22%2C%0A%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%22homepage%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2F%22%2C%0A%20%20%22image%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2Fimages%2Fmanu.png%22%0A%7D)
 
-```
+```json
 {
   "@context": "https://json-ld.org/contexts/person.jsonld",
   "name": "Manu Sporny",
   "homepage": "http://manu.sporny.org/",
   "image": "http://manu.sporny.org/images/manu.png"
 }
-```
+```json
 
-```
+```json
 [{
   "http://xmlns.com/foaf/0.1/name": [{"@value": "Manu Sporny"}],
   "http://xmlns.com/foaf/0.1/homepage": [{ "@id": "http://manu.sporny.org/" }],
   "http://xmlns.com/foaf/0.1/img": [{ "@id": "http://manu.sporny.org/images/manu.png" }]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -1422,7 +1418,7 @@ Turtle
 | \_:b0 | foaf:homepage | http://manu.sporny.org/ |
 | \_:b0 | foaf:img | http://manu.sporny.org/images/manu.png |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -1431,7 +1427,7 @@ Turtle
    foaf:homepage <http://manu.sporny.org/>;
    foaf:img <http://manu.sporny.org/images/manu.png>
  ] .
-```
+```text
 
 The referenced context not only specifies how the terms map to
 [IRIs](https://tools.ietf.org/html/rfc3987#section-2) in the Schema.org vocabulary but also
@@ -1454,14 +1450,14 @@ the referenced context document would be found relative at `http://example.org/c
 
 [Example 6](#example-6-loading-a-relative-context): Loading a relative context
 
-```
+```json
 {
   "@context": "context.jsonld",
   "name": "Manu Sporny",
   "homepage": "http://manu.sporny.org/",
   "image": "http://manu.sporny.org/images/manu.png"
 }
-```
+```sparql
 
 Note
 
@@ -1489,7 +1485,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fschema.org%2Fname%22%2C%0A%20%20%20%20%22image%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fschema.org%2Fimage%22%2C%0A%20%20%20%20%20%20%22%40type%22%3A%20%22%40id%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22homepage%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fschema.org%2Furl%22%2C%0A%20%20%20%20%20%20%22%40type%22%3A%20%22%40id%22%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%22homepage%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2F%22%2C%0A%20%20%22image%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2Fimages%2Fmanu.png%22%0A%7D)
 
-```
+```json
 {
   "@context": {
     "name": "http://schema.org/name",
@@ -1506,15 +1502,15 @@ Turtle
   "homepage": "http://manu.sporny.org/",
   "image": "http://manu.sporny.org/images/manu.png"
 }
-```
+```json
 
-```
+```json
 [{
   "http://schema.org/name": [{"@value": "Manu Sporny"}],
   "http://schema.org/url": [{ "@id": "http://manu.sporny.org/" }],
   "http://schema.org/image": [{ "@id": "http://manu.sporny.org/images/manu.png" }]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -1522,7 +1518,7 @@ Turtle
 | \_:b0 | schema:name | Manu Sporny |
 | \_:b0 | schema:url | http://manu.sporny.org/ |
 
-```
+```sparql
 @prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -1531,7 +1527,7 @@ Turtle
    schema:name "Manu Sporny";
    schema:url <http://manu.sporny.org/>
  ] .
-```
+```text
 
 This section only covers the most basic features of the JSON-LD Context.
 The Context can also be used to help interpret other more
@@ -1580,13 +1576,13 @@ value of a [map entry](https://infra.spec.whatwg.org/#map-entry) with the key `@
 
 [Example 8](#example-8-values-of-id-are-interpreted-as-iri): Values of @id are interpreted as IRI
 
-```
+```json
 {
   ...
   "homepage": { "@id": "http://example.com/" }
   ...
 }
-```
+```sparql
 
 Values that are interpreted as [IRIs](https://tools.ietf.org/html/rfc3987#section-2), can also be
 expressed as [relative IRI references](https://tools.ietf.org/html/rfc3987#section-6.5). For example,
@@ -1598,25 +1594,25 @@ used, please refer to section [§ 9. JSON-LD Grammar](#json-ld-grammar)).
 
 [Example 9](#example-9-iris-can-be-relative): IRIs can be relative
 
-```
+```json
 {
   ...
   "homepage": { "@id": "../" }
   ...
 }
-```
+```json
 
 [IRIs](https://tools.ietf.org/html/rfc3987#section-2) can be expressed directly in the key position like so:
 
 [Example 10](#example-10-iri-as-a-key): IRI as a key
 
-```
+```json
 {
   ...
   "http://schema.org/name": "Manu Sporny",
   ...
 }
-```
+```text
 
 In the example above, the key `http://schema.org/name`
 is interpreted as an [IRI](https://tools.ietf.org/html/rfc3987#section-2).
@@ -1632,7 +1628,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fschema.org%2Fname%22%0A%20%20%7D%2C%0A%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%22status%22%3A%20%22trollin'%22%0A%7D)
 
-```
+```json
 {
   "@context": {
     "name": "http://schema.org/name"
@@ -1640,26 +1636,26 @@ Turtle
   "name": "Manu Sporny",
   "status": "trollin'"
 }
-```
+```json
 
-```
+```json
 [{
   "http://schema.org/name": [{"@value": "Manu Sporny"}]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
 | \_:b0 | schema:name | Manu Sporny |
 
-```
+```sparql
 @prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
  [
    schema:name "Manu Sporny"
  ] .
-```
+```turtle
 
 JSON keys that do not expand to an [IRI](https://tools.ietf.org/html/rfc3987#section-2), such as `status`
 in the example above, are not Linked Data and thus ignored when processed.
@@ -1675,7 +1671,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%0A%20%20%20%20%22homepage%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fschema.org%2Furl%22%2C%0A%20%20%20%20%20%20%22%40type%22%3A%20%22%40id%22%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%7D%2C%0A%20%20%0A%20%20%22homepage%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2F%22%0A%20%20%0A%7D)
 
-```
+```json
 {
   "@context": {
     ...
@@ -1689,26 +1685,26 @@ Turtle
   "homepage": "http://manu.sporny.org/"
   ...
 }
-```
+```json
 
-```
+```json
 [{
   "http://schema.org/url": [{"@id": "http://manu.sporny.org/"}]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
 | \_:b0 | schema:url | http://manu.sporny.org/ |
 
-```
+```sparql
 @prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
  [
    schema:url <http://manu.sporny.org/>
  ] .
-```
+```text
 
 In the example above, since the value `http://manu.sporny.org/`
 is expressed as a JSON [string](https://infra.spec.whatwg.org/#javascript-string), the type [coercion](#dfn-coercion)
@@ -1756,7 +1752,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%0A%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fschema.org%2Fname%22%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fme.markus-lanthaler.com%2F%22%2C%0A%20%20%22name%22%3A%20%22Markus%20Lanthaler%22%0A%7D)
 
-```
+```json
 {
   "@context": {
     ...
@@ -1766,25 +1762,25 @@ Turtle
   "name": "Markus Lanthaler",
   ...
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://me.markus-lanthaler.com/",
   "http://schema.org/name": [{"@value": "Markus Lanthaler"}]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
 | http://me.markus-lanthaler.com/ | schema:name | Markus Lanthaler |
 
-```
+```sparql
 @prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://me.markus-lanthaler.com/> schema:name "Markus Lanthaler" .
-```
+```text
 
 The example above contains a [node object](#dfn-node-object) identified by the IRI
 `http://me.markus-lanthaler.com/`.
@@ -1904,7 +1900,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%0A%20%20%20%20%22givenName%22%3A%20%22http%3A%2F%2Fschema.org%2FgivenName%22%2C%0A%20%20%20%20%22familyName%22%3A%20%22http%3A%2F%2Fschema.org%2FfamilyName%22%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fme.markus-lanthaler.com%2F%22%2C%0A%20%20%22%40type%22%3A%20%22http%3A%2F%2Fschema.org%2FPerson%22%2C%0A%20%20%22givenName%22%3A%20%22Markus%22%2C%0A%20%20%22familyName%22%3A%20%22Lanthaler%22%0A%7D)
 
-```
+```json
 {
   "@context": {
     ...
@@ -1917,16 +1913,16 @@ Turtle
   "familyName": "Lanthaler",
   ...
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://me.markus-lanthaler.com/",
   "@type": ["http://schema.org/Person"],
   "http://schema.org/givenName": [{"@value": "Markus"}],
   "http://schema.org/familyName": [{"@value": "Lanthaler"}]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -1934,14 +1930,14 @@ Turtle
 | http://me.markus-lanthaler.com/ | schema:givenName | Markus |
 | http://me.markus-lanthaler.com/ | schema:familyName | Lanthaler |
 
-```
+```sparql
 @prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://me.markus-lanthaler.com/> a schema:Person;
   schema:givenName "Markus";
   schema:familyName "Lanthaler" .
-```
+```text
 
 A node can be assigned more than one type by using an [array](https://infra.spec.whatwg.org/#list):
 
@@ -1953,7 +1949,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fme.markus-lanthaler.com%2F%22%2C%0A%20%20%22%40type%22%3A%20%5B%0A%20%20%20%20%20%22http%3A%2F%2Fschema.org%2FPerson%22%2C%0A%20%20%20%20%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2FPerson%22%0A%20%20%20%20%5D%0A%7D)
 
-```
+```json
 {
   ...
   "@id": "http://me.markus-lanthaler.com/",
@@ -1963,27 +1959,27 @@ Turtle
     ],
   ...
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://me.markus-lanthaler.com/",
   "@type": ["http://schema.org/Person", "http://xmlns.com/foaf/0.1/Person"]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
 | http://me.markus-lanthaler.com/ | rdf:type | schema:Person |
 | http://me.markus-lanthaler.com/ | rdf:type | foaf:Person |
 
-```
+```sparql
 @prefix schema: <http://schema.org/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://me.markus-lanthaler.com/> a schema:Person, foaf:Person.
-```
+```text
 
 The value of a `@type` key may also be a [term](#dfn-term) defined in the [active context](#dfn-active-context):
 
@@ -1995,7 +1991,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%0A%20%20%20%20%22Person%22%3A%20%22http%3A%2F%2Fschema.org%2FPerson%22%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Fplaces%23BrewEats%22%2C%0A%20%20%22%40type%22%3A%20%22Person%22%0A%7D)
 
-```
+```json
 {
   "@context": {
     ...
@@ -2005,25 +2001,25 @@ Turtle
   "@type": "Person",
   ...
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/places#BrewEats",
   "@type": ["http://schema.org/Person"]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
 | http://example.org/places#BrewEats | rdf:type | schema:Person |
 
-```
+```sparql
 @prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://example.org/places#BrewEats> a schema:Person.
-```
+```text
 
 In addition to setting the type of nodes,
 `@type` can also be used to set the type of a value
@@ -2036,7 +2032,8 @@ Typed values can also be defined implicitly, by specifying
 `@type` in an expanded term definition.
 This is covered more fully in [§ 4.2.3 Type Coercion](#type-coercion).
 
-4. Advanced Concepts
+1. Advanced Concepts
+
 --------------------
 
 *This section is non-normative.*
@@ -2081,7 +2078,7 @@ Referencing objects
     Turtle
     [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40vocab%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%22%2C%0A%20%20%20%20%22knows%22%3A%20%7B%22%40type%22%3A%20%22%40id%22%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2Fabout%23manu%22%2C%0A%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%22knows%22%3A%20%22https%3A%2F%2Fgreggkellogg.net%2Ffoaf%23me%22%0A%7D)
 
-    ```
+```json
     {
       "@context": {
         "@vocab": "http://xmlns.com/foaf/0.1/",
@@ -2092,16 +2089,16 @@ Referencing objects
       "name": "Manu Sporny",
       "knows": "https://greggkellogg.net/foaf#me"
     }
-    ```
+```json
 
-    ```
+```json
     [{
       "@id": "http://manu.sporny.org/about#manu",
       "@type": ["http://xmlns.com/foaf/0.1/Person"],
       "http://xmlns.com/foaf/0.1/name": [{"@value": "Manu Sporny"}],
       "http://xmlns.com/foaf/0.1/knows": [{"@id": "https://greggkellogg.net/foaf#me"}]
     }]
-    ```
+```text
 
     | Subject | Property | Value |
     | --- | --- | --- |
@@ -2109,14 +2106,14 @@ Referencing objects
     | http://manu.sporny.org/about#manu | foaf:name | Manu Sporny |
     | http://manu.sporny.org/about#manu | foaf:knows | https://greggkellogg.net/foaf#me |
 
-    ```
+```sparql
     @prefix foaf: <http://xmlns.com/foaf/0.1/> .
     @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
     <http://manu.sporny.org/about#manu> a foaf:Person;
       foaf:name "Manu Sporny";
       foaf:knows <https://greggkellogg.net/foaf#me> .
-    ```
+```text
 
     In this case, a document residing at `http://manu.sporny.org/about`
     may contain the example above, and reference another document at
@@ -2136,7 +2133,7 @@ Referencing objects
     Turtle
     [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40vocab%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%22%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2Fabout%23manu%22%2C%0A%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%22knows%22%3A%20%7B%0A%20%20%20%20%22%40id%22%3A%20%22https%3A%2F%2Fgreggkellogg.net%2Ffoaf%23me%22%2C%0A%20%20%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%20%20%22name%22%3A%20%22Gregg%20Kellogg%22%0A%20%20%7D%0A%7D)
 
-    ```
+```json
     {
       "@context": {
         "@vocab": "http://xmlns.com/foaf/0.1/"
@@ -2150,9 +2147,9 @@ Referencing objects
         "name": "Gregg Kellogg"
       }
     }
-    ```
+```json
 
-    ```
+```json
     [{
       "@id": "http://manu.sporny.org/about#manu",
       "@type": ["http://xmlns.com/foaf/0.1/Person"],
@@ -2163,7 +2160,7 @@ Referencing objects
         "http://xmlns.com/foaf/0.1/name": [{"@value": "Gregg Kellogg"}]
       }]
     }]
-    ```
+```text
 
     | Subject | Property | Value |
     | --- | --- | --- |
@@ -2173,7 +2170,7 @@ Referencing objects
     | https://greggkellogg.net/foaf#me | foaf:name | Gregg Kellogg |
     | http://manu.sporny.org/about#manu | foaf:knows | https://greggkellogg.net/foaf#me |
 
-    ```
+```sparql
     @prefix foaf: <http://xmlns.com/foaf/0.1/> .
     @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -2182,7 +2179,7 @@ Referencing objects
       foaf:knows <https://greggkellogg.net/foaf#me> .
     <https://greggkellogg.net/foaf#me> a foaf:Person;
       foaf:name "Gregg Kellogg" .
-    ```
+```text
 
     See [§ 4.5 Embedding](#embedding) details these relationships.
 
@@ -2223,7 +2220,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%5B%0A%20%20%7B%0A%20%20%20%20%22%40context%22%3A%20%22https%3A%2F%2Fjson-ld.org%2Fcontexts%2Fperson.jsonld%22%2C%0A%20%20%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%20%20%22homepage%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2F%22%2C%0A%20%20%20%20%22depiction%22%3A%20%22http%3A%2F%2Ftwitter.com%2Faccount%2Fprofile_image%2Fmanusporny%22%0A%20%20%7D%2C%20%7B%0A%20%20%20%20%22%40context%22%3A%20%22https%3A%2F%2Fjson-ld.org%2Fcontexts%2Fplace.jsonld%22%2C%0A%20%20%20%20%22name%22%3A%20%22The%20Empire%20State%20Building%22%2C%0A%20%20%20%20%22description%22%3A%20%22The%20Empire%20State%20Building%20is%20a%20102-story%20landmark%20in%20New%20York%20City.%22%2C%0A%20%20%20%20%22geo%22%3A%20%7B%0A%20%20%20%20%20%20%22latitude%22%3A%20%2240.75%22%2C%0A%20%20%20%20%20%20%22longitude%22%3A%20%2273.98%22%0A%20%20%20%20%7D%0A%20%20%7D%0A%5D)
 
-```
+```json
 [
   {
     "@context": "https://json-ld.org/contexts/person.jsonld",
@@ -2240,9 +2237,9 @@ Turtle
     }
   }
 ]
-```
+```json
 
-```
+```json
 [{
   "http://xmlns.com/foaf/0.1/name": [{"@value": "Manu Sporny"}],
   "http://xmlns.com/foaf/0.1/homepage": [{"@id": "http://manu.sporny.org/"}],
@@ -2263,7 +2260,7 @@ Turtle
     }]
   }]
 }]
-```
+```text
 
 | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- |
@@ -2276,7 +2273,7 @@ Turtle
 | \_:b2 | geo:long | 73.98 | xsd:decimal |
 | \_:b1 | schema:geo | \_:b2 |  |
 
-```
+```sparql
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
@@ -2297,7 +2294,7 @@ Turtle
     geo:long 73.98
   ]
 ] .
-```
+```sparql
 
 The outer array is standard for a document in
 [expanded document form](#dfn-expanded-document-form)
@@ -2316,7 +2313,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%5B%0A%20%20%20%20%22https%3A%2F%2Fjson-ld.org%2Fcontexts%2Fperson.jsonld%22%2C%0A%20%20%20%20%22https%3A%2F%2Fjson-ld.org%2Fcontexts%2Fplace.jsonld%22%2C%0A%20%20%20%20%7B%22title%22%3A%20%22http%3A%2F%2Fpurl.org%2Fdc%2Fterms%2Ftitle%22%7D%0A%20%20%5D%2C%0A%20%20%22%40graph%22%3A%20%5B%7B%0A%20%20%20%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fname%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%20%20%22homepage%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2F%22%2C%0A%20%20%20%20%22depiction%22%3A%20%22http%3A%2F%2Ftwitter.com%2Faccount%2Fprofile_image%2Fmanusporny%22%0A%20%20%7D%2C%20%7B%0A%20%20%20%20%22title%22%3A%20%22The%20Empire%20State%20Building%22%2C%0A%20%20%20%20%22description%22%3A%20%22The%20Empire%20State%20Building%20is%20a%20102-story%20landmark%20in%20New%20York%20City.%22%2C%0A%20%20%20%20%22geo%22%3A%20%7B%0A%20%20%20%20%20%20%22latitude%22%3A%20%2240.75%22%2C%0A%20%20%20%20%20%20%22longitude%22%3A%20%2273.98%22%0A%20%20%20%20%7D%0A%20%20%7D%5D%0A%7D)
 
-```
+```json
 {
   "@context": [
     "https://json-ld.org/contexts/person.jsonld",
@@ -2336,9 +2333,9 @@ Turtle
     }
   }]
 }
-```
+```json
 
-```
+```json
 [{
   "http://xmlns.com/foaf/0.1/name": [{"@value": "Manu Sporny"}],
   "http://xmlns.com/foaf/0.1/homepage": [{"@id": "http://manu.sporny.org/"}],
@@ -2359,7 +2356,7 @@ Turtle
     }]
   }]
 }]
-```
+```text
 
 | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- |
@@ -2372,7 +2369,7 @@ Turtle
 | \_:b2 | geo:long | 73.98 | xsd:decimal |
 | \_:b1 | schema:geo | \_:b2 |  |
 
-```
+```sparql
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
@@ -2393,7 +2390,7 @@ Turtle
     geo:long 73.98
   ]
 ] .
-```
+```text
 
 Duplicate context [terms](#dfn-term) are overridden using a
 most-recently-defined-wins mechanism.
@@ -2406,7 +2403,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fexample.com%2Fperson%23name%22%2C%0A%20%20%20%20%22details%22%3A%20%22http%3A%2F%2Fexample.com%2Fperson%23details%22%0A%20%20%7D%2C%0A%20%20%22name%22%3A%20%22Markus%20Lanthaler%22%2C%0A%20%20%0A%20%20%22details%22%3A%20%7B%0A%20%20%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fexample.com%2Forganization%23name%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22name%22%3A%20%22Graz%20University%20of%20Technology%22%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "name": "http://example.com/person#name",
@@ -2421,9 +2418,9 @@ Turtle
     "name": "Graz University of Technology"
   }
 }
-```
+```json
 
-```
+```json
 [{
   "http://example.com/person#details": [{
     "http://example.com/organization#name": [{
@@ -2432,7 +2429,7 @@ Turtle
   }],
   "http://example.com/person#name": [{"@value": "Markus Lanthaler"}]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -2440,7 +2437,7 @@ Turtle
 | \_:b0 | http://example.com/person#details | \_:b1 |
 | \_:b0 | http://example.com/person#name | Markus Lanthaler |
 
-```
+```sparql
 @prefix person: <http://example.com/person#> .
 @prefix org: <http://example.com/organization#> .
 
@@ -2448,7 +2445,7 @@ Turtle
   person:name "Markus Lanthaler";
   person:details [org:name "Graz University of Technology"]
 ] .
-```
+```text
 
 In the example above, the `name` [term](#dfn-term) is overridden
 in the more deeply nested `details` structure,
@@ -2492,7 +2489,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%5B%0A%20%20%20%20%22https%3A%2F%2Fjson-ld.org%2Fcontexts%2Fperson.jsonld%22%2C%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22pic%22%3A%20%7B%0A%20%20%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fdepiction%22%2C%0A%20%20%20%20%20%20%20%20%22%40type%22%3A%20%22%40id%22%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%5D%2C%0A%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%22homepage%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2F%22%2C%0A%20%20%22pic%22%3A%20%22http%3A%2F%2Ftwitter.com%2Faccount%2Fprofile_image%2Fmanusporny%22%0A%7D)
 
-```
+```json
 {
   "@context": [
     "https://json-ld.org/contexts/person.jsonld",
@@ -2507,9 +2504,9 @@ Turtle
   "homepage": "http://manu.sporny.org/",
   "pic": "http://twitter.com/account/profile_image/manusporny"
 }
-```
+```json
 
-```
+```json
 [{
   "http://xmlns.com/foaf/0.1/name": [{"@value": "Manu Sporny"}],
   "http://xmlns.com/foaf/0.1/homepage": [{"@id": "http://manu.sporny.org/"}],
@@ -2517,7 +2514,7 @@ Turtle
     "@id": "http://twitter.com/account/profile_image/manusporny"
   }]
 }]
-```
+```text
 
 | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- |
@@ -2525,7 +2522,7 @@ Turtle
 | \_:b0 | foaf:homepage | http://manu.sporny.org/ | [IRI](https://tools.ietf.org/html/rfc3987#section-2) |
 | \_:b0 | foaf:depiction | http://twitter.com/account/profile\_image/manusporny | IRI |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 [
@@ -2533,7 +2530,7 @@ Turtle
   foaf:homepage <http://manu.sporny.org/>;
   foaf:depiction <http://twitter.com/account/profile_image/manusporny>
 ] .
-```
+```text
 
 Note
 
@@ -2569,7 +2566,7 @@ will prohibit JSON-LD 1.0 processors from incorrectly processing a JSON-LD 1.1 d
 
 [Example 23](#example-23-setting-version-in-context): Setting @version in context
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -2577,7 +2574,7 @@ will prohibit JSON-LD 1.0 processors from incorrectly processing a JSON-LD 1.1 d
   },
   ...
 }
-```
+```json
 
 The first `context` encountered when processing a
 document which contains `@version` determines the `processing mode`,
@@ -2612,7 +2609,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40vocab%22%3A%20%22http%3A%2F%2Fexample.com%2Fvocab%2F%22%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Fplaces%23BrewEats%22%2C%0A%20%20%22%40type%22%3A%20%22Restaurant%22%2C%0A%20%20%22name%22%3A%20%22Brew%20Eats%22%0A%20%20%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@vocab": "http://example.com/vocab/"
@@ -2622,27 +2619,27 @@ Turtle
   "name": "Brew Eats"
   ...
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/places#BrewEats",
   "@type": ["http://example.com/vocab/Restaurant"],
   "http://example.com/vocab/name": [{"@value": "Brew Eats"}]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
 | http://example.org/places#BrewEats | rdf:type | http://example.com/vocab/Restaurant |
 | http://example.org/places#BrewEats | http://example.com/vocab/name | Brew Eats |
 
-```
+```sparql
 @prefix ex: <http://example.com/vocab/> .
 
 <http://example.org/places#BrewEats> a ex:Restaurant;
   ex:name "Brew Eats" .
-```
+```text
 
 If `@vocab` is used but certain keys in an
 [map](https://infra.spec.whatwg.org/#ordered-map) should not be expanded using
@@ -2659,7 +2656,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%20%22%40vocab%22%3A%20%22http%3A%2F%2Fexample.com%2Fvocab%2F%22%2C%0A%20%20%20%20%20%22databaseId%22%3A%20null%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Fplaces%23BrewEats%22%2C%0A%20%20%22%40type%22%3A%20%22Restaurant%22%2C%0A%20%20%22name%22%3A%20%22Brew%20Eats%22%2C%0A%20%20%22databaseId%22%3A%20%2223987520%22%0A%7D)
 
-```
+```json
 {
   "@context": {
      "@vocab": "http://example.com/vocab/",
@@ -2670,27 +2667,27 @@ Turtle
   "name": "Brew Eats",
   "databaseId": "23987520"
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/places#BrewEats",
   "@type": ["http://example.com/vocab/Restaurant"],
   "http://example.com/vocab/name": [{"@value": "Brew Eats"}]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
 | http://example.org/places#BrewEats | rdf:type | http://example.com/vocab/Restaurant |
 | http://example.org/places#BrewEats | http://example.com/vocab/name | Brew Eats |
 
-```
+```sparql
 @prefix ex: <http://example.com/vocab/> .
 
 <http://example.org/places#BrewEats> a ex:Restaurant;
   ex:name "Brew Eats" .
-```
+```text
 
 Since JSON-LD 1.1,
 the [vocabulary mapping](#dfn-vocabulary-mapping) in a [local context](#dfn-local-context) can be set to a [relative IRI reference](https://tools.ietf.org/html/rfc3987#section-6.5),
@@ -2709,7 +2706,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%5B%7B%0A%20%20%20%20%22%40vocab%22%3A%20%22http%3A%2F%2Fexample.com%2F%22%0A%20%20%7D%2C%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22%40vocab%22%3A%20%22vocab%2F%22%0A%20%20%7D%5D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Fplaces%23BrewEats%22%2C%0A%20%20%22%40type%22%3A%20%22Restaurant%22%2C%0A%20%20%22name%22%3A%20%22Brew%20Eats%22%0A%20%20%0A%7D)
 
-```
+```json
 {
   "@context": [{
     "@vocab": "http://example.com/"
@@ -2722,27 +2719,27 @@ Turtle
   "name": "Brew Eats"
   ...
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/places#BrewEats",
   "@type": ["http://example.com/vocab/Restaurant"],
   "http://example.com/vocab/name": [{"@value": "Brew Eats"}]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
 | http://example.org/places#BrewEats | rdf:type | http://example.com/vocab/Restaurant |
 | http://example.org/places#BrewEats | http://example.com/vocab/name | Brew Eats |
 
-```
+```sparql
 @prefix ex: <http://example.com/vocab/> .
 
 <http://example.org/places#BrewEats> a ex:Restaurant;
   ex:name "Brew Eats" .
-```
+```text
 
 Note
 
@@ -2767,7 +2764,7 @@ For example, if a JSON-LD document was retrieved from `http://example.com/docume
 
 [Example 27](#example-27-use-a-relative-iri-reference-as-node-identifier): Use a relative IRI reference as node identifier
 
-```
+```json
 {
   "@context": {
     "label": "http://www.w3.org/2000/01/rdf-schema#label"
@@ -2775,7 +2772,7 @@ For example, if a JSON-LD document was retrieved from `http://example.com/docume
   "@id": "",
   "label": "Just a simple document"
 }
-```
+```turtle
 
 This document uses an empty `@id`, which resolves to the document base.
 However, if the document is moved to a different location, the [IRI](https://tools.ietf.org/html/rfc3987#section-2) would change.
@@ -2790,7 +2787,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40base%22%3A%20%22http%3A%2F%2Fexample.com%2Fdocument.jsonld%22%2C%0A%20%20%20%20%22label%22%3A%20%22http%3A%2F%2Fwww.w3.org%2F2000%2F01%2Frdf-schema%23label%22%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22%22%2C%0A%20%20%22label%22%3A%20%22Just%20a%20simple%20document%22%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@base": "http://example.com/document.jsonld",
@@ -2799,25 +2796,25 @@ Turtle
   "@id": "",
   "label": "Just a simple document"
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.com/document.jsonld",
   "http://www.w3.org/2000/01/rdf-schema#label": [{"@value": "Just a simple document"}]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
 | http://example.com/document.jsonld | rdfs:label | Just a simple document |
 
-```
+```sparql
 @base <http://example.com/document.jsonld> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 <> rdfs:label "Just a simple document" .
-```
+```turtle
 
 Setting `@base` to [null](https://infra.spec.whatwg.org/#nulls) will prevent
 [relative IRI references](https://tools.ietf.org/html/rfc3987#section-6.5) from being expanded to
@@ -2841,7 +2838,7 @@ to be based on the [base IRI](https://www.w3.org/TR/rdf11-concepts/#dfn-base-iri
 
 [Example 29](#example-29-using-as-the-vocabulary-mapping): Using "#" as the vocabulary mapping
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -2853,7 +2850,7 @@ to be based on the [base IRI](https://www.w3.org/TR/rdf11-concepts/#dfn-base-iri
   "name": "Brew Eats"
   ...
 }
-```
+```text
 
 If this document were located at `http://example/document`, it would expand as follows:
 
@@ -2864,23 +2861,23 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%5B%7B%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Fplaces%23BrewEats%22%2C%0A%20%20%22%40type%22%3A%20%5B%22http%3A%2F%2Fexample%2Fdocument%23Restaurant%22%5D%2C%0A%20%20%22http%3A%2F%2Fexample%2Fdocument%23name%22%3A%20%5B%7B%22%40value%22%3A%20%22Brew%20Eats%22%7D%5D%0A%7D%5D)
 
-```
+```json
 [{
   "@id": "http://example.org/places#BrewEats",
   "@type": ["http://example/document#Restaurant"],
   "http://example/document#name": [{"@value": "Brew Eats"}]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
 | http://example.org/places#BrewEats | rdf:type | http://example/document#Restaurant |
 | http://example.org/places#BrewEats | http://example/document#name | Brew Eats |
 
-```
+```turtle
 <http://example.org/places#BrewEats> a <http://example/document#Restaurant>;
   <http://example/document#name> "Brew Eats" .
-```
+```sparql
 
 #### 4.1.5 Compact IRIs
 
@@ -2907,7 +2904,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22foaf%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%22%0A%20%20%20%20%0A%20%20%7D%2C%0A%20%20%22%40type%22%3A%20%22foaf%3APerson%22%2C%0A%20%20%22foaf%3Aname%22%3A%20%22Dave%20Longley%22%0A%7D)
 
-```
+```json
 {
   "@context": {
     "foaf": "http://xmlns.com/foaf/0.1/"
@@ -2917,21 +2914,21 @@ Turtle
   "foaf:name": "Dave Longley",
   ...
 }
-```
+```json
 
-```
+```json
 [{
   "@type": ["http://xmlns.com/foaf/0.1/Person"],
   "http://xmlns.com/foaf/0.1/name": [{"@value": "Dave Longley"}]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
 | \_:b0 | rdf:type | foaf:Person |
 | \_:b0 | foaf:name | Dave Longley |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -2939,7 +2936,7 @@ Turtle
    a foaf:Person;
    foaf:name "Dave Longley"
  ] .
-```
+```sparql
 
 In the example above, `foaf:name` expands to the [IRI](https://tools.ietf.org/html/rfc3987#section-2)
 `http://xmlns.com/foaf/0.1/name` and `foaf:Person` expands
@@ -2968,7 +2965,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22xsd%22%3A%20%22http%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%22%2C%0A%20%20%20%20%22foaf%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%22%2C%0A%20%20%20%20%22foaf%3Ahomepage%22%3A%20%7B%20%22%40type%22%3A%20%22%40id%22%20%7D%2C%0A%20%20%20%20%22picture%22%3A%20%7B%20%22%40id%22%3A%20%22foaf%3Adepiction%22%2C%20%22%40type%22%3A%20%22%40id%22%20%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fme.markus-lanthaler.com%2F%22%2C%0A%20%20%22%40type%22%3A%20%22foaf%3APerson%22%2C%0A%20%20%22foaf%3Aname%22%3A%20%22Markus%20Lanthaler%22%2C%0A%20%20%22foaf%3Ahomepage%22%3A%20%22http%3A%2F%2Fwww.markus-lanthaler.com%2F%22%2C%0A%20%20%22picture%22%3A%20%22http%3A%2F%2Ftwitter.com%2Faccount%2Fprofile_image%2Fmarkuslanthaler%22%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -2983,9 +2980,9 @@ Turtle
   "foaf:homepage": "http://www.markus-lanthaler.com/",
   "picture": "http://twitter.com/account/profile_image/markuslanthaler"
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://me.markus-lanthaler.com/",
   "@type": ["http://xmlns.com/foaf/0.1/Person"],
@@ -2999,7 +2996,7 @@ Turtle
     "@id": "http://twitter.com/account/profile_image/markuslanthaler"
   }]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -3008,7 +3005,7 @@ Turtle
 | http://me.markus-lanthaler.com/ | foaf:depiction | http://twitter.com/account/profile\_image/markuslanthaler |
 | http://me.markus-lanthaler.com/ | foaf:homepage | http://www.markus-lanthaler.com/ |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -3016,7 +3013,7 @@ Turtle
   foaf:name "Markus Lanthaler";
   foaf:homepage <http://www.markus-lanthaler.com/>;
   foaf:depiction <http://twitter.com/account/profile_image/markuslanthaler> .
-```
+```sparql
 
 When operating explicitly with the [processing mode](#dfn-processing-mode)
 for [JSON-LD 1.0](https://www.w3.org/TR/2014/REC-json-ld-20140116/) compatibility, terms may be chosen as [compact IRI](#dfn-compact-iri) prefixes when
@@ -3046,12 +3043,12 @@ document in expanded form:
 
 [Example 33](#term-selection-example): Expanded document used to illustrate compact IRI creation
 
-```
+```json
 [{
   "http://example.com/vocab/property": [{"@value": "property"}],
   "http://example.com/vocab/propertyOne": [{"@value": "propertyOne"}]
 }]
-```
+```sparql
 
 Using the following context in the 1.0 [processing mode](#dfn-processing-mode)
 will now select the term *vocab* rather than
@@ -3060,14 +3057,14 @@ will now select the term *vocab* rather than
 
 [Example 34](#term-selection-context-0): Compact IRI generation context (1.0)
 
-```
+```json
 {
   "@context": {
     "vocab": "http://example.com/vocab/",
     "property": "http://example.com/vocab/property"
   }
 }
-```
+```sparql
 
 Compacting using the previous context with the above expanded input document
 results in the following compacted result:
@@ -3079,7 +3076,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-compacted&json-ld=%5B%7B%0A%20%20%22http%3A%2F%2Fexample.com%2Fvocab%2Fproperty%22%3A%20%5B%7B%22%40value%22%3A%20%22property%22%7D%5D%2C%0A%20%20%22http%3A%2F%2Fexample.com%2Fvocab%2FpropertyOne%22%3A%20%5B%7B%22%40value%22%3A%20%22propertyOne%22%7D%5D%0A%7D%5D&context=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22vocab%22%3A%20%22http%3A%2F%2Fexample.com%2Fvocab%2F%22%2C%0A%20%20%20%20%22property%22%3A%20%22http%3A%2F%2Fexample.com%2Fvocab%2Fproperty%22%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "vocab": "http://example.com/vocab/",
@@ -3088,18 +3085,18 @@ Turtle
   "property": "property",
   "vocab:propertyOne": "propertyOne"
 }
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
 | \_:b0 | http://example.com/vocab/property | property |
 | \_:b0 | http://example.com/vocab/propertyOne | propertyOne |
 
-```
+```sparql
 @prefix vocab: <http://example.com/vocab/> .
 
 [ vocab:property "property"; vocab:propertyOne "propertyOne"] .
-```
+```sparql
 
 In the original [[JSON-LD10](#bib-json-ld10 "JSON-LD 1.0")],
 the term selection algorithm would have selected *property*,
@@ -3108,7 +3105,7 @@ The original behavior can be made explicit using `@prefix`:
 
 [Example 36](#term-selection-context-1): Compact IRI generation context (1.1)
 
-```
+```sparql
 {
   "@context": {
     "@version": 1.1,
@@ -3119,7 +3116,7 @@ The original behavior can be made explicit using `@prefix`:
     }
   }
 }
-```
+```sparql
 
 [Example 37](#example-37-compact-iri-generation-term-selection-1-1): Compact IRI generation term selection (1.1)
 
@@ -3128,7 +3125,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-compacted&json-ld=%5B%7B%0A%20%20%22http%3A%2F%2Fexample.com%2Fvocab%2Fproperty%22%3A%20%5B%7B%22%40value%22%3A%20%22property%22%7D%5D%2C%0A%20%20%22http%3A%2F%2Fexample.com%2Fvocab%2FpropertyOne%22%3A%20%5B%7B%22%40value%22%3A%20%22propertyOne%22%7D%5D%0A%7D%5D&context=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22vocab%22%3A%20%22http%3A%2F%2Fexample.com%2Fvocab%2F%22%2C%0A%20%20%20%20%22property%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2Fvocab%2Fproperty%22%2C%0A%20%20%20%20%20%20%22%40prefix%22%3A%20true%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)
 
-```
+```sparql
 {
   "@context": {
     "@version": 1.1,
@@ -3141,18 +3138,18 @@ Turtle
   "property": "property",
   "property:One": "propertyOne"
 }
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
 | \_:b0 | http://example.com/vocab/property | property |
 | \_:b0 | http://example.com/vocab/propertyOne | propertyOne |
 
-```
+```sparql
 @prefix vocab: <http://example.com/vocab/> .
 
 [ vocab:property "property"; vocab:propertyOne "propertyOne"] .
-```
+```sparql
 
 In this case, the *property* term would not normally be usable as a prefix, both
 because it is defined with an [expanded term definition](#dfn-expanded-term-definition), and because
@@ -3180,7 +3177,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22url%22%3A%20%22%40id%22%2C%0A%20%20%20%20%22a%22%3A%20%22%40type%22%2C%0A%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fname%22%0A%20%20%7D%2C%0A%20%20%22url%22%3A%20%22http%3A%2F%2Fexample.com%2Fabout%23gregg%22%2C%0A%20%20%22a%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2FPerson%22%2C%0A%20%20%22name%22%3A%20%22Gregg%20Kellogg%22%0A%7D)
 
-```
+```json
 {
   "@context": {
     "url": "@id",
@@ -3191,27 +3188,27 @@ Turtle
   "a": "http://xmlns.com/foaf/0.1/Person",
   "name": "Gregg Kellogg"
 }
-```
+```json
 
-```
+```json
 [{
   "@type": ["http://xmlns.com/foaf/0.1/Person"],
   "http://xmlns.com/foaf/0.1/name": [{"@value": "Gregg Kellogg"}],
   "@id": "http://example.com/about#gregg"
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
 | http://example.com/about#gregg | rdf:type | foaf:Person |
 | http://example.com/about#gregg | foaf:name | Gregg Kellogg |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://example.com/about#gregg> a foaf:Person;
   foaf:name "Gregg Kellogg" .
-```
+```sparql
 
 In the example above, the `@id` and `@type`
 [keywords](#dfn-keyword) have been given the aliases
@@ -3258,7 +3255,7 @@ the `xsd` namespace when defining [typed values](#dfn-typed-value):
 
 [Example 39](#example-39-iri-expansion-within-a-context): IRI expansion within a context
 
-```
+```json
 {
   "@context": {
     "xsd": "http://www.w3.org/2001/XMLSchema#",
@@ -3274,7 +3271,7 @@ the `xsd` namespace when defining [typed values](#dfn-typed-value):
   },
   ...
 }
-```
+```sparql
 
 In this example, the `xsd` [term](#dfn-term) is defined
 and used as a [prefix](#dfn-prefix) for the `@type` coercion
@@ -3285,7 +3282,7 @@ of the `age` property.
 
 [Example 40](#example-40-using-a-term-to-define-the-iri-of-another-term-within-a-context): Using a term to define the IRI of another term within a context
 
-```
+```json
 {
   "@context": {
     "foaf": "http://xmlns.com/foaf/0.1/",
@@ -3302,7 +3299,7 @@ of the `age` property.
   },
   ...
 }
-```
+```json
 
 [Compact IRIs](#dfn-compact-iri)
 and [IRIs](https://tools.ietf.org/html/rfc3987#section-2) may be used on the left-hand side of a
@@ -3310,7 +3307,7 @@ and [IRIs](https://tools.ietf.org/html/rfc3987#section-2) may be used on the lef
 
 [Example 41](#example-41-using-a-compact-iri-as-a-term): Using a compact IRI as a term
 
-```
+```json
 {
   "@context": {
     "foaf": "http://xmlns.com/foaf/0.1/",
@@ -3326,7 +3323,7 @@ and [IRIs](https://tools.ietf.org/html/rfc3987#section-2) may be used on the lef
   },
   ...
 }
-```
+```sparql
 
 In this example, the [compact IRI](#dfn-compact-iri) form is used in two different ways.
 In the first approach, `foaf:age` declares both the
@@ -3347,7 +3344,7 @@ expanding to a different [IRI](https://tools.ietf.org/html/rfc3987#section-2), w
 
 [Example 42](#example-42-illegal-aliasing-of-a-compact-iri-to-a-different-iri): Illegal Aliasing of a compact IRI to a different IRI
 
-```
+```json
 {
   "@context": {
     "foaf": "http://xmlns.com/foaf/0.1/",
@@ -3364,13 +3361,13 @@ expanding to a different [IRI](https://tools.ietf.org/html/rfc3987#section-2), w
   },
   ...
 }
-```
+```json
 
 [IRIs](https://tools.ietf.org/html/rfc3987#section-2) may also be used in the key position in a [context](#dfn-context):
 
 [Example 43](#example-43-associating-context-definitions-with-iris): Associating context definitions with IRIs
 
-```
+```json
 {
   "@context": {
     "foaf": "http://xmlns.com/foaf/0.1/",
@@ -3386,7 +3383,7 @@ expanding to a different [IRI](https://tools.ietf.org/html/rfc3987#section-2), w
   },
   ...
 }
-```
+```sparql
 
 In order for the [IRI](https://tools.ietf.org/html/rfc3987#section-2) to match above, the [IRI](https://tools.ietf.org/html/rfc3987#section-2)
 needs to be used in the [JSON-LD document](#dfn-json-ld-document). Also note that `foaf:homepage`
@@ -3410,7 +3407,7 @@ is illegal:
 
 [Example 44](#example-44-illegal-circular-definition-of-terms-within-a-context): Illegal circular definition of terms within a context
 
-```
+```json
 {
   "@context": {
     "term1": "term2:foo",
@@ -3418,7 +3415,7 @@ is illegal:
   },
   ...
 }
-```
+```turtle
 
 #### 4.1.8 Scoped Contexts
 
@@ -3441,7 +3438,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fschema.org%2Fname%22%2C%0A%20%20%20%20%22interest%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Finterest%22%2C%0A%20%20%20%20%20%20%22%40context%22%3A%20%7B%22%40vocab%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%22%7D%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%22interest%22%3A%20%7B%0A%20%20%20%20%22%40id%22%3A%20%22https%3A%2F%2Fwww.w3.org%2FTR%2Fjson-ld11%2F%22%2C%0A%20%20%20%20%22name%22%3A%20%22JSON-LD%22%2C%0A%20%20%20%20%22topic%22%3A%20%22Linking%20Data%22%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -3458,9 +3455,9 @@ Turtle
     "topic": "Linking Data"
   }
 }
-```
+```json
 
-```
+```json
 [{
   "http://xmlns.com/foaf/0.1/interest": [
     {
@@ -3471,7 +3468,7 @@ Turtle
   ],
   "http://schema.org/name": [{"@value": "Manu Sporny"}]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -3480,7 +3477,7 @@ Turtle
 | \_:b0 | schema:name | Manu Sporny |
 | \_:b0 | foaf:interest | https://www.w3.org/TR/json-ld11/ |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix schema: <http://schema.org/> .
 
@@ -3490,7 +3487,7 @@ Turtle
 ] .
 <https://www.w3.org/TR/json-ld11/> schema:name "JSON-LD";
   foaf:topic "Linking Data" .
-```
+```sparql
 
 In this case, the social profile is defined using the schema.org vocabulary,
 but interest is imported from FOAF,
@@ -3510,7 +3507,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fschema.org%2Fname%22%2C%0A%20%20%20%20%22interest%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Finterest%22%2C%0A%20%20%20%20%22Person%22%3A%20%22http%3A%2F%2Fschema.org%2FPerson%22%2C%0A%20%20%20%20%22Document%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2FDocument%22%2C%0A%20%20%20%20%20%20%22%40context%22%3A%20%7B%22%40vocab%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%22%7D%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%22interest%22%3A%20%7B%0A%20%20%20%20%22%40id%22%3A%20%22https%3A%2F%2Fwww.w3.org%2FTR%2Fjson-ld11%2F%22%2C%0A%20%20%20%20%22%40type%22%3A%20%22Document%22%2C%0A%20%20%20%20%22name%22%3A%20%22JSON-LD%22%2C%0A%20%20%20%20%22topic%22%3A%20%22Linking%20Data%22%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -3531,9 +3528,9 @@ Turtle
     "topic": "Linking Data"
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@type": ["http://schema.org/Person"],
   "http://xmlns.com/foaf/0.1/interest": [
@@ -3546,7 +3543,7 @@ Turtle
   ],
   "http://schema.org/name": [{"@value": "Manu Sporny"}]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -3557,7 +3554,7 @@ Turtle
 | \_:b0 | schema:name | Manu Sporny |
 | \_:b0 | foaf:interest | https://www.w3.org/TR/json-ld11/ |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix schema: <http://schema.org/> .
 
@@ -3569,7 +3566,7 @@ Turtle
 <https://www.w3.org/TR/json-ld11/> a foaf:Document;
   schema:name "JSON-LD";
   foaf:topic "Linking Data" .
-```
+```sparql
 
 Scoping on `@type` is useful when common properties are used to
 relate things of different types, where the vocabularies in use within
@@ -3604,7 +3601,7 @@ scoped contexts, which are included when expanding.
 
 [Example 47](#example-47-expansion-using-embedded-and-scoped-contexts): Expansion using embedded and scoped contexts
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -3643,7 +3640,7 @@ scoped contexts, which are included when expanding.
     "term4": "d"
   }
 }
-```
+```text
 
 Contexts are processed depending on how they are defined.
 A [property-scoped context](#dfn-property-scoped-context) is processed first,
@@ -3653,7 +3650,7 @@ in the appropriate order. The previous example is logically equivalent to the fo
 
 [Example 48](#example-48-expansion-using-embedded-and-scoped-contexts-embedding-equivalent): Expansion using embedded and scoped contexts (embedding equivalent)
 
-```
+```json
 {
   "@context": {
     "@vocab": "http://example.com/vocab/",
@@ -3682,7 +3679,7 @@ in the appropriate order. The previous example is logically equivalent to the fo
     "term4": "d"
   }
 }
-```
+```text
 
 Note
 
@@ -3721,7 +3718,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22term%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Foriginal%22%2C%0A%20%20%20%20%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%20%20%20%20%22%40propagate%22%3A%20false%2C%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%22term%22%3A%20%22http%3A%2F%2Fexample.org%2Fnon-propagated-term%22%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%22term%22%3A%20%7B%0A%20%20%0A%20%20%20%20%22term%22%3A%20%7B%0A%20%20%20%20%0A%20%20%20%20%20%20%22term%22%3A%20%22This%20term%20is%20from%20the%20first%20context%22%0A%20%20%20%20%20%20%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -3743,9 +3740,9 @@ Turtle
     }
   }
 }
-```
+```json
 
-```
+```json
 [{
   "http://example.org/original": [{
     "http://example.org/non-propagated-term": [{
@@ -3755,7 +3752,7 @@ Turtle
     }]
   }]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -3763,7 +3760,7 @@ Turtle
 | \_:b1 | http://example.org/non-propagated-term | \_:b2 |
 | \_:b0 | http://example.org/original | \_:b1 |
 
-```
+```sparql
 @prefix ex: <http://example.org/> .
 [
   ex:original [
@@ -3772,7 +3769,7 @@ Turtle
     ]
   ]
 ] .
-```
+```text
 
 Note
 
@@ -3818,7 +3815,7 @@ via the URL `https://json-ld.org/contexts/remote-context.jsonld`:
 
 [Example 50](#example-50-a-remote-context-to-be-imported-in-a-type-scoped-context): A remote context to be imported in a type-scoped context
 
-```
+```json
 {
   "@context": {
     "Type1": "http://example.com/vocab/Type1",
@@ -3828,13 +3825,13 @@ via the URL `https://json-ld.org/contexts/remote-context.jsonld`:
     ...
   }
 }
-```
+```text
 
 A wrapping [context](#dfn-context) could be used to source it and modify it:
 
 [Example 51](#example-51-sourcing-a-context-in-a-type-scoped-context-and-setting-it-to-propagate): Sourcing a context in a type-scoped context and setting it to propagate
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -3848,14 +3845,14 @@ A wrapping [context](#dfn-context) could be used to source it and modify it:
     }
   }
 }
-```
+```text
 
 The effect would be the same as if the entire imported [context](#dfn-context)
 had been copied into the [type-scoped context](#dfn-type-scoped-context):
 
 [Example 52](#example-52-result-of-sourcing-a-context-in-a-type-scoped-context-and-setting-it-to-propagate): Result of sourcing a context in a type-scoped context and setting it to propagate
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -3873,7 +3870,7 @@ had been copied into the [type-scoped context](#dfn-type-scoped-context):
     }
   }
 }
-```
+```text
 
 Similarly, the wrapping [context](#dfn-context) may replace term definitions or
 set other context-wide keywords that may affect how the imported
@@ -3881,7 +3878,7 @@ set other context-wide keywords that may affect how the imported
 
 [Example 53](#example-53-sourcing-a-context-to-modify-vocab-and-a-term-definition): Sourcing a context to modify @vocab and a term definition
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -3895,14 +3892,14 @@ set other context-wide keywords that may affect how the imported
      ↑ This will replace the old term1 definition prior to processing it
   }
 }
-```
+```text
 
 Again, the effect would be the same as if the entire imported [context](#dfn-context)
 had been copied into the [context](#dfn-context):
 
 [Example 54](#example-54-result-of-sourcing-a-context-to-modify-vocab-and-a-term-definition): Result of sourcing a context to modify @vocab and a term definition
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -3918,7 +3915,7 @@ had been copied into the [context](#dfn-context):
     "@vocab": "http://example.org/vocab#"
   }
 }
-```
+```text
 
 The result of loading imported [contexts](#dfn-context) must be
 [context definition](#dfn-context-definition), not an [IRI](https://tools.ietf.org/html/rfc3987#section-2) or an [array](https://infra.spec.whatwg.org/#list).
@@ -3950,7 +3947,7 @@ Such attempts will raise an error and abort the processing
 
 [Example 55](#example-55-a-protected-term-definition-can-generally-not-be-overridden): A protected term definition can generally not be overridden
 
-```
+```json
 {
   "@context": [
     {
@@ -3978,7 +3975,7 @@ Such attempts will raise an error and abort the processing
     "name": "Gregg Kellogg"
   }
 }
-```
+```turtle
 
 When all or most term definitions of a context need to be protected,
 it is possible to add an [entry](https://infra.spec.whatwg.org/#map-entry) `@protected` set to `true`
@@ -3995,7 +3992,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%5B%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%20%20%22%40protected%22%3A%20true%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fschema.org%2Fname%22%2C%0A%20%20%20%20%20%20%22member%22%3A%20%22http%3A%2F%2Fschema.org%2Fmember%22%2C%0A%20%20%20%20%20%20%22Person%22%3A%20%7B%0A%20%20%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fschema.org%2FPerson%22%2C%0A%20%20%20%20%20%20%20%20%22%40protected%22%3A%20false%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%5D%2C%0A%20%20%22name%22%3A%20%22Digital%20Bazaar%22%2C%0A%20%20%22member%22%3A%20%7B%0A%20%20%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%22Person%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2FPerson%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%20%20%22name%22%3A%20%22Manu%20Sporny%22%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": [
     {
@@ -4021,9 +4018,9 @@ Turtle
     "name": "Manu Sporny"
   }
 }
-```
+```json
 
-```
+```json
 [{
   "http://schema.org/name": [{"@value": "Digital Bazaar"}],
   "http://schema.org/member": [
@@ -4033,7 +4030,7 @@ Turtle
     }
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -4042,7 +4039,7 @@ Turtle
 | \_:b1 | rdf:type | foaf:Person |
 | \_:b1 | schema:name | Manu Sporny |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix schema: <http://schema.org/> .
 
@@ -4053,7 +4050,7 @@ Turtle
     schema:name "Manu Sporny"
   ]
 ] .
-```
+```json
 
 While protected terms can in general not be overridden,
 there are two exceptions to this rule.
@@ -4074,7 +4071,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%5B%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%20%20%22%40protected%22%3A%20true%2C%0A%20%20%20%20%20%20%22id%22%3A%20%22%40id%22%2C%0A%20%20%20%20%20%20%22type%22%3A%20%22%40type%22%2C%0A%20%20%20%20%20%20%22Organization%22%3A%20%22http%3A%2F%2Fexample.org%2Forga%2FOrganization%22%2C%0A%20%20%20%20%20%20%22member%22%3A%20%7B%0A%20%20%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Forga%2Fmember%22%2C%0A%20%20%20%20%20%20%20%20%22%40type%22%3A%20%22%40id%22%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%2C%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22id%22%3A%20%22%40id%22%2C%0A%20%20%20%20%20%20%22type%22%3A%20%22%40type%22%2C%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%22Person%22%3A%20%22http%3A%2F%2Fschema.org%2FPerson%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fschema.org%2Fname%22%0A%20%20%20%20%7D%0A%20%20%5D%2C%0A%20%20%22id%22%3A%20%22https%3A%2F%2Fdigitalbazaar.com%2F%22%2C%0A%20%20%22type%22%3A%20%22Organization%22%2C%0A%20%20%22member%22%20%3A%20%7B%0A%20%20%20%20%22id%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2Fabout%23manu%22%2C%0A%20%20%20%20%22type%22%3A%20%22Person%22%2C%0A%20%20%20%20%22name%22%3A%20%22Manu%20Sporny%22%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": [
     {
@@ -4105,9 +4102,9 @@ Turtle
     "name": "Manu Sporny"
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "https://digitalbazaar.com/",
   "@type": ["http://example.org/orga/Organization"],
@@ -4119,7 +4116,7 @@ Turtle
     }
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -4128,7 +4125,7 @@ Turtle
 | http://manu.sporny.org/about#manu | rdf:type | schema:Person |
 | http://manu.sporny.org/about#manu | schema:name | Manu Sporny |
 
-```
+```sparql
 @prefix o: <http://example.org/orga/>.
 @prefix schema: <http://schema.org/>.
 
@@ -4137,7 +4134,7 @@ Turtle
 
 <http://manu.sporny.org/about#manu> a schema:Person ;
   schema:name "Manu Sporny".
-```
+```turtle
 
 The second exception is that a [property-scoped context](#dfn-property-scoped-context)
 is not affected by protection, and can therefore override protected terms,
@@ -4161,7 +4158,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%5B%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%20%20%22%40protected%22%3A%20true%2C%0A%20%20%20%20%20%20%22Organization%22%3A%20%22http%3A%2F%2Fschema.org%2FOrganization%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fschema.org%2Fname%22%2C%0A%20%20%20%20%20%20%22employee%22%3A%20%7B%0A%20%20%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fschema.org%2Femployee%22%2C%0A%20%20%20%20%20%20%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%20%20%20%20%20%20%22%40protected%22%3A%20true%2C%0A%20%20%20%20%20%20%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fschema.org%2FfamilyName%22%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%2C%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%22location%22%3A%20%7B%0A%20%20%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fbased_near%22%2C%0A%20%20%20%20%20%20%20%20%22%40context%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%20%20null%2C%0A%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%7B%20%22%40vocab%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%22%20%7D%0A%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%5D%2C%0A%20%20%22%40type%22%3A%20%22Organization%22%2C%0A%20%20%22name%22%3A%20%22Digital%20Bazaar%22%2C%0A%20%20%22employee%22%20%3A%20%7B%0A%20%20%20%20%22name%22%3A%20%22Sporny%22%2C%0A%20%20%20%20%22location%22%3A%20%7B%22name%22%3A%20%22Blacksburg%2C%20Virginia%22%7D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": [
     {
@@ -4199,9 +4196,9 @@ Turtle
     "location": {"name": "Blacksburg, Virginia"}
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@type": ["http://schema.org/Organization"],
   "http://schema.org/name": [{"@value": "Digital Bazaar"}],
@@ -4216,7 +4213,7 @@ Turtle
     }
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -4227,7 +4224,7 @@ Turtle
 | \_:b1 | foaf:based\_near | \_:b2 |
 | \_:b2 | foaf:name | Blacksburg, Virginia |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix schema: <http://schema.org/>.
 
@@ -4241,7 +4238,7 @@ Turtle
     ];
   ];
 ] .
-```
+```json
 
 Note
 
@@ -4288,7 +4285,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22modified%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fpurl.org%2Fdc%2Fterms%2Fmodified%22%2C%0A%20%20%20%20%20%20%22%40type%22%3A%20%22http%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23dateTime%22%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2Fdocs%2F1%22%2C%0A%20%20%22modified%22%3A%20%222010-05-29T14%3A17%3A39%2B02%3A00%22%0A%7D)
 
-```
+```json
 {
   "@context": {
     "modified": {
@@ -4301,9 +4298,9 @@ Turtle
   "modified": "2010-05-29T14:17:39+02:00",
   ...
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.com/docs/1",
   "http://purl.org/dc/terms/modified": [
@@ -4313,18 +4310,18 @@ Turtle
     }
   ]
 }]
-```
+```text
 
 | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- |
 | http://example.com/docs/1 | dcterms:modified | 2010-05-29T14:17:39+02:00 | xsd:dateTime |
 
-```
+```sparql
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://example.com/docs/1> dcterms:modified "2010-05-29T14:17:39+02:00"^^xsd:dateTime .
-```
+```turtle
 
 The *modified* key's value above is automatically interpreted as a
 *dateTime* value because of the information specified in the
@@ -4341,7 +4338,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22modified%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fpurl.org%2Fdc%2Fterms%2Fmodified%22%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%0A%20%20%22modified%22%3A%20%7B%0A%20%20%20%20%22%40value%22%3A%20%222010-05-29T14%3A17%3A39%2B02%3A00%22%2C%0A%20%20%20%20%22%40type%22%3A%20%22http%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23dateTime%22%0A%20%20%7D%0A%20%20%0A%7D)
 
-```
+```json
 {
   "@context": {
     "modified": {
@@ -4355,9 +4352,9 @@ Turtle
   }
   ...
 }
-```
+```json
 
-```
+```json
 [{
   "http://purl.org/dc/terms/modified": [
     {
@@ -4366,18 +4363,18 @@ Turtle
     }
   ]
 }]
-```
+```text
 
 | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- |
 | \_:b0 | dcterms:modified | 2010-05-29T14:17:39+02:00 | xsd:dateTime |
 
-```
+```sparql
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 [ dcterms:modified "2010-05-29T14:17:39+02:00"^^xsd:dateTime ] .
-```
+```text
 
 Both examples above would generate the value
 `2010-05-29T14:17:39+02:00` with the type
@@ -4407,7 +4404,7 @@ as an integer, a floating point number, or a date.
 
 [Example 61](#context-sensitivity-for-type): Example demonstrating the context-sensitivity for @type
 
-```
+```json
 {
   ...
   "@id": "http://example.org/posts#TripToWestVirginia",
@@ -4418,7 +4415,7 @@ as an integer, a floating point number, or a date.
   }
   ...
 }
-```
+```text
 
 The first use of `@type` associates a [node type](#dfn-node-type)
 (`http://schema.org/BlogPosting`) with the [node](https://www.w3.org/TR/rdf11-concepts/#dfn-node),
@@ -4443,14 +4440,14 @@ Turtle
 | http://example.org/posts#TripToWestVirginia | rdf:type | schema:BlogPosting |  |
 | http://example.org/posts#TripToWestVirginia | dcterms:modified | 2010-05-29T14:17:39+02:00 | xsd:dateTime |
 
-```
+```sparql
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://example.org/posts#TripToWestVirginia> a schema:BlogPosting;
   dcterms:modified "2010-05-29T14:17:39+02:00"^^xsd:dateTime .
-```
+```sparql
 
 #### 4.2.2 JSON Literals
 
@@ -4493,7 +4490,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22e%22%3A%20%7B%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2Fvocab%2Fjson%22%2C%20%22%40type%22%3A%20%22%40json%22%7D%0A%20%20%7D%2C%0A%20%20%22e%22%3A%20%5B%0A%20%20%20%2056.0%2C%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22d%22%3A%20true%2C%0A%20%20%20%20%20%20%2210%22%3A%20null%2C%0A%20%20%20%20%20%20%221%22%3A%20%5B%20%5D%0A%20%20%20%20%7D%0A%20%20%5D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -4508,9 +4505,9 @@ Turtle
     }
   ]
 }
-```
+```json
 
-```
+```json
 [{
   "http://example.com/vocab/json": [{
     "@value": [
@@ -4524,17 +4521,17 @@ Turtle
     "@type": "@json"
   }]
 }]
-```
+```text
 
 | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- |
 | \_:b0 | http://example.com/vocab/json | [56,{"1":[],"10":null,"d":true}] | rdf:JSON |
 
-```
+```sparql
 @prefix ex: <http://example.com/vocab/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 [ex:json """[56,{"1":[],"10":null,"d":true}]"""^^rdf:JSON] .
-```
+```text
 
 Note
 
@@ -4592,7 +4589,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22xsd%22%3A%20%22http%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%22%2C%0A%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fname%22%2C%0A%20%20%20%20%22age%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fage%22%2C%0A%20%20%20%20%20%20%22%40type%22%3A%20%22xsd%3Ainteger%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22homepage%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fhomepage%22%2C%0A%20%20%20%20%20%20%22%40type%22%3A%20%22%40id%22%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2Fpeople%23john%22%2C%0A%20%20%22name%22%3A%20%22John%20Smith%22%2C%0A%20%20%22age%22%3A%20%2241%22%2C%0A%20%20%22homepage%22%3A%20%5B%0A%20%20%20%20%22http%3A%2F%2Fpersonal.example.org%2F%22%2C%0A%20%20%20%20%22http%3A%2F%2Fwork.example.com%2Fjsmith%2F%22%0A%20%20%5D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "xsd": "http://www.w3.org/2001/XMLSchema#",
@@ -4614,9 +4611,9 @@ Turtle
     "http://work.example.com/jsmith/"
   ]
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.com/people#john",
   "http://xmlns.com/foaf/0.1/name": [{"@value": "John Smith"}],
@@ -4630,7 +4627,7 @@ Turtle
     "@id": "http://work.example.com/jsmith/"
   }]
 }]
-```
+```text
 
 | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- |
@@ -4639,7 +4636,7 @@ Turtle
 | http://example.com/people#john | foaf:homepage | http://personal.example.org/ | [IRI](https://tools.ietf.org/html/rfc3987#section-2) |
 | http://example.com/people#john | foaf:homepage | http://work.example.com/jsmith/ | [IRI](https://tools.ietf.org/html/rfc3987#section-2) |
 
-```
+```sparql
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
@@ -4648,7 +4645,7 @@ Turtle
   foaf:homepage <http://personal.example.org/>,
     <http://work.example.com/jsmith/>
 .
-```
+```text
 
 It is important to note that [terms](#dfn-term) are only used in expansion
 for vocabulary-relative positions, such as for keys and values of [map entries](https://infra.spec.whatwg.org/#map-entry).
@@ -4663,7 +4660,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40base%22%3A%20%22http%3A%2F%2Fexample1.com%2F%22%2C%0A%20%20%20%20%22%40vocab%22%3A%20%22http%3A%2F%2Fexample2.com%2F%22%2C%0A%20%20%20%20%22knows%22%3A%20%7B%22%40type%22%3A%20%22%40vocab%22%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22fred%22%2C%0A%20%20%22knows%22%3A%20%5B%0A%20%20%20%20%7B%22%40id%22%3A%20%22barney%22%2C%20%22mnemonic%22%3A%20%22the%20sidekick%22%7D%2C%0A%20%20%20%20%22barney%22%0A%20%20%5D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@base": "http://example1.com/",
@@ -4676,9 +4673,9 @@ Turtle
     "barney"
   ]
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example1.com/fred",
   "http://example2.com/knows": [{
@@ -4688,7 +4685,7 @@ Turtle
     "@id": "http://example2.com/barney"
   }]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -4696,7 +4693,7 @@ Turtle
 | http://example1.com/fred | http://example2.com/knows | http://example1.com/barney |
 | http://example1.com/fred | http://example2.com/knows | http://example2.com/barney |
 
-```
+```sparql
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix ex1: <http://example1.com/> .
 @prefix ex2: <http://example2.com/> .
@@ -4704,7 +4701,7 @@ Turtle
 ex1:barney ex2:mnemonic "the sidekick" .
 
 ex1:fred ex2:knows ex1:barney, ex2:barney .
-```
+```sparql
 
 The unexpected result is that "barney" expands to both `http://example1.com/barney`
 and `http://example2.com/barney`, depending where it is encountered.
@@ -4731,7 +4728,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40base%22%3A%20%22http%3A%2F%2Fexample1.com%2F%22%2C%0A%20%20%20%20%22%40vocab%22%3A%20%22http%3A%2F%2Fexample2.com%2F%22%2C%0A%20%20%20%20%22knows%22%3A%20%7B%22%40type%22%3A%20%22%40id%22%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22fred%22%2C%0A%20%20%22knows%22%3A%20%5B%0A%20%20%20%20%7B%22%40id%22%3A%20%22barney%22%2C%20%22mnemonic%22%3A%20%22the%20sidekick%22%7D%2C%0A%20%20%20%20%22barney%22%0A%20%20%5D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@base": "http://example1.com/",
@@ -4744,9 +4741,9 @@ Turtle
     "barney"
   ]
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example1.com/fred",
   "http://example2.com/knows": [{
@@ -4756,9 +4753,9 @@ Turtle
     "@id": "http://example1.com/barney"
   }]
 }]
-```
+```json
 
-```
+```sparql
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix ex1: <http://example1.com/> .
 @prefix ex2: <http://example2.com/> .
@@ -4766,7 +4763,7 @@ Turtle
 ex1:barney ex2:mnemonic "the sidekick" .
 
 ex1:fred ex2:knows ex1:barney, ex1:barney .
-```
+```text
 
 Note
 
@@ -4786,7 +4783,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22xsd%22%3A%20%22http%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23%22%2C%0A%20%20%20%20%22foaf%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%22%2C%0A%20%20%20%20%22foaf%3Aage%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fage%22%2C%0A%20%20%20%20%20%20%22%40type%22%3A%20%22xsd%3Ainteger%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fhomepage%22%3A%20%7B%0A%20%20%20%20%20%20%22%40type%22%3A%20%22%40id%22%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%22foaf%3Aname%22%3A%20%22John%20Smith%22%2C%0A%20%20%22foaf%3Aage%22%3A%20%2241%22%2C%0A%20%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fhomepage%22%3A%20%5B%0A%20%20%20%20%22http%3A%2F%2Fpersonal.example.org%2F%22%2C%0A%20%20%20%20%22http%3A%2F%2Fwork.example.com%2Fjsmith%2F%22%0A%20%20%5D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "xsd": "http://www.w3.org/2001/XMLSchema#",
@@ -4806,9 +4803,9 @@ Turtle
     "http://work.example.com/jsmith/"
   ]
 }
-```
+```json
 
-```
+```json
 [{
   "http://xmlns.com/foaf/0.1/age": [{"@type": "http://www.w3.org/2001/XMLSchema#integer", "@value": "41"}],
   "http://xmlns.com/foaf/0.1/name": [{"@value": "John Smith"}],
@@ -4818,7 +4815,7 @@ Turtle
   ]
 }
 ]
-```
+```text
 
 | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- |
@@ -4827,7 +4824,7 @@ Turtle
 | \_:b0 | foaf:homepage | http://personal.example.org/ |  |
 | \_:b0 | foaf:homepage | http://work.example.com/jsmith/ |  |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -4837,7 +4834,7 @@ Turtle
      <http://work.example.com/jsmith/>;
    foaf:name "John Smith"
 ] .
-```
+```sparql
 
 In this case the `@id` definition in the term definition is optional.
 If it does exist, the [IRI](https://tools.ietf.org/html/rfc3987#section-2) or [compact IRI](#dfn-compact-iri) representing
@@ -4873,7 +4870,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fexample.org%2Fname%22%2C%0A%20%20%20%20%22occupation%22%3A%20%22http%3A%2F%2Fexample.org%2Foccupation%22%2C%0A%20%20%20%20%0A%20%20%20%20%22%40language%22%3A%20%22ja%22%0A%20%20%7D%2C%0A%20%20%22name%22%3A%20%22%E8%8A%B1%E6%BE%84%22%2C%0A%20%20%22occupation%22%3A%20%22%E7%A7%91%E5%AD%A6%E8%80%85%22%0A%7D)
 
-```
+```json
 {
   "@context": {
     "name": "http://example.org/name",
@@ -4884,28 +4881,28 @@ Turtle
   "name": "花澄",
   "occupation": "科学者"
 }
-```
+```json
 
-```
+```json
 [{
   "http://example.org/name": [{"@value": "花澄", "@language": "ja"}],
   "http://example.org/occupation": [{"@value": "科学者", "@language": "ja"}]
 }]
-```
+```text
 
 | Subject | Property | Value | Language |
 | --- | --- | --- | --- |
 | \_:b0 | http://example.org/name | 花澄 | ja |
 | \_:b0 | http://example.org/occupation | 科学者 | ja |
 
-```
+```sparql
 @prefix ex: <http://example.org/> .
 
 [
   ex:name "花澄"@ja;
   ex:occupation "科学者"@ja
 ] .
-```
+```text
 
 The example above would associate the `ja` language
 tag with the two [strings](https://infra.spec.whatwg.org/#javascript-string) *花澄* and *科学者*
@@ -4918,7 +4915,7 @@ be set to `null` in an intervening context, such as a [scoped context](#dfn-scop
 
 [Example 69](#example-69-clearing-default-language): Clearing default language
 
-```
+```json
 {
   "@context": {
     ...
@@ -4934,14 +4931,14 @@ be set to `null` in an intervening context, such as a [scoped context](#dfn-scop
   "name": "花澄",
   "details": {"occupation": "Ninja"}
 }
-```
+```text
 
 Second, it is possible to associate a language with a specific [term](#dfn-term)
 using an [expanded term definition](#dfn-expanded-term-definition):
 
 [Example 70](#example-70-expanded-term-definition-with-language): Expanded term definition with language
 
-```
+```json
 {
   "@context": {
     ...
@@ -4958,7 +4955,7 @@ using an [expanded term definition](#dfn-expanded-term-definition):
   "occupation_cs": "Nindža",
   ...
 }
-```
+```text
 
 The example above would associate *忍者* with the specified default
 language tag `ja`, *Ninja* with the language tag
@@ -4982,7 +4979,7 @@ may be utilized.
 
 [Example 71](#example-71-language-map-expressing-a-property-in-three-languages): Language map expressing a property in three languages
 
-```
+```json
 {
   "@context": {
     ...
@@ -4996,7 +4993,7 @@ may be utilized.
   }
   ...
 }
-```
+```json
 
 The example above expresses exactly the same information as the previous
 example but consolidates all values in a single property. To access the
@@ -5014,7 +5011,7 @@ Third, it is possible to override the [default language](#dfn-default-language) 
 
 [Example 72](#example-72-overriding-default-language-using-an-expanded-value): Overriding default language using an expanded value
 
-```
+```json
 {
   "@context": {
     ...
@@ -5026,7 +5023,7 @@ Third, it is possible to override the [default language](#dfn-default-language) 
     "@language": "en"
   }
 }
-```
+```text
 
 This makes it possible to specify a plain string by omitting the
 `@language` tag or setting it to `null` when expressing
@@ -5034,7 +5031,7 @@ it using a [value object](#dfn-value-object):
 
 [Example 73](#example-73-removing-language-information-using-an-expanded-value): Removing language information using an expanded value
 
-```
+```json
 {
   "@context": {
     ...
@@ -5049,7 +5046,7 @@ it using a [value object](#dfn-value-object):
   },
   "speciality": "手裏剣"
 }
-```
+```text
 
 See [§ 9.8 Language Maps](#language-maps) for a description
 of using [language maps](#dfn-language-map) to set the language of mapped values.
@@ -5073,7 +5070,7 @@ Turtle (with datatype)
 Turtle (with bnode structure)
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22title%22%3A%20%22http%3A%2F%2Fexample.org%2Ftitle%22%2C%0A%20%20%20%20%22publisher%22%3A%20%22http%3A%2F%2Fexample.org%2Fpublisher%22%2C%0A%20%20%20%20%0A%20%20%20%20%22%40language%22%3A%20%22ar-EG%22%2C%0A%20%20%20%20%22%40direction%22%3A%20%22rtl%22%0A%20%20%7D%2C%0A%20%20%22title%22%3A%20%22HTML%20%D9%88%20CSS%3A%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D9%88%20%D8%A5%D9%86%D8%B4%D8%A7%D8%A1%20%D9%85%D9%88%D8%A7%D9%82%D8%B9%20%D8%A7%D9%84%D9%88%D9%8A%D8%A8%22%2C%0A%20%20%22publisher%22%3A%20%22%D9%85%D9%83%D8%AA%D8%A8%D8%A9%22%0A%7D)
 
-```
+```json
 {
   "@context": {
     "title": "http://example.org/title",
@@ -5085,21 +5082,21 @@ Turtle (with bnode structure)
   "title": "HTML و CSS: تصميم و إنشاء مواقع الويب",
   "publisher": "مكتبة"
 }
-```
+```json
 
-```
+```json
 [{
   "http://example.org/title": [{"@value": "HTML و CSS: تصميم و إنشاء مواقع الويب", "@language": "ar-EG", "@direction": "rtl"}],
   "http://example.org/publisher": [{"@value": "مكتبة", "@language": "ar-EG", "@direction": "rtl"}]
 }]
-```
+```text
 
 | Subject | Property | Value | Language | Direction |
 | --- | --- | --- | --- | --- |
 | \_:b0 | http://example.org/title | HTML و CSS: تصميم و إنشاء مواقع الويب | ar-EG | rtl |
 | \_:b0 | http://example.org/publisher | مكتبة | ar-EG | rtl |
 
-```
+```sparql
 @prefix ex: <http://example.org/> .
 
 # Note that this version drops the base direction.
@@ -5107,9 +5104,9 @@ Turtle (with bnode structure)
   ex:title "HTML و CSS: تصميم و إنشاء مواقع الويب"@ar-EG;
   ex:publisher "مكتبة"@ar-EG
 ] .
-```
+```json
 
-```
+```sparql
 @prefix ex: <http://example.org/> .
 @prefix i18n: <https://www.w3.org/ns/i18n#> .
 
@@ -5118,9 +5115,9 @@ Turtle (with bnode structure)
   ex:title "HTML و CSS: تصميم و إنشاء مواقع الويب"^^i18n:ar-EG_rtl;
   ex:publisher "مكتبة"^^i18n:ar-EG_rtl
 ] .
-```
+```json
 
-```
+```sparql
 @prefix ex: <http://example.org/> .
 
 # Note that this version preserves the base direction using a bnode structure.
@@ -5136,7 +5133,7 @@ Turtle (with bnode structure)
     rdf:direction "rtl"
   ]
 ] .
-```
+```text
 
 The example above would associate the `ar-EG` language tag
 and "rtl" base direction
@@ -5150,7 +5147,7 @@ be set to `null` in an intervening context, such as a [scoped context](#dfn-scop
 
 [Example 75](#example-75-clearing-default-base-direction): Clearing default base direction
 
-```
+```json
 {
   "@context": {
     ...
@@ -5167,14 +5164,14 @@ be set to `null` in an intervening context, such as a [scoped context](#dfn-scop
   "title": "HTML و CSS: تصميم و إنشاء مواقع الويب",
   "details": {"genre": "Technical Publication"}
 }
-```
+```text
 
 Second, it is possible to associate a base direction with a specific [term](#dfn-term)
 using an [expanded term definition](#dfn-expanded-term-definition):
 
 [Example 76](#example-76-expanded-term-definition-with-language-and-direction): Expanded term definition with language and direction
 
-```
+```json
 {
   "@context": {
     ...
@@ -5191,7 +5188,7 @@ using an [expanded term definition](#dfn-expanded-term-definition):
   "title_en": "HTML and CSS: Design and Build Websites",
   ...
 }
-```
+```text
 
 The example above would create three properties:
 
@@ -5213,7 +5210,7 @@ Third, it is possible to override the [default base direction](#dfn-base-directi
 
 [Example 77](#example-77-overriding-default-language-and-default-base-direction-using-an-expanded-value): Overriding default language and default base direction using an expanded value
 
-```
+```json
 {
   "@context": {
     ...
@@ -5227,7 +5224,7 @@ Third, it is possible to override the [default base direction](#dfn-base-directi
     "@direction": null
   }
 }
-```
+```sparql
 
 See [Strings on the Web: Language and Direction Metadata](https://www.w3.org/TR/string-meta/) [[string-meta](#bib-string-meta "Strings on the Web: Language and Direction Metadata")] for a deeper discussion of [base direction](#dfn-base-direction).
 
@@ -5250,7 +5247,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%22foaf%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%22%7D%2C%0A%20%20%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Fpeople%23joebob%22%2C%0A%20%20%22foaf%3Anick%22%3A%20%5B%20%22joe%22%2C%20%22bob%22%2C%20%22JB%22%20%5D%0A%7D)
 
-```
+```json
 {
   "@context": {"foaf": "http://xmlns.com/foaf/0.1/"},
   ...
@@ -5258,9 +5255,9 @@ Turtle
   "foaf:nick": [ "joe", "bob", "JB" ],
   ...
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/people#joebob",
   "http://xmlns.com/foaf/0.1/nick": [
@@ -5269,7 +5266,7 @@ Turtle
     {"@value": "JB"}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -5277,12 +5274,12 @@ Turtle
 | http://example.org/people#joebob | foaf:nick | bob |
 | http://example.org/people#joebob | foaf:nick | JB |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://example.org/people#joebob> foaf:nick
   "joe", "bob", "JB" .
-```
+```text
 
 Multiple values may also be expressed using the expanded form:
 
@@ -5294,7 +5291,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%22dcterms%22%3A%20%22http%3A%2F%2Fpurl.org%2Fdc%2Fterms%2F%22%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Farticles%2F8%22%2C%0A%20%20%22dcterms%3Atitle%22%3A%20%5B%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22%40value%22%3A%20%22Das%20Kapital%22%2C%0A%20%20%20%20%20%20%22%40language%22%3A%20%22de%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22%40value%22%3A%20%22Capital%22%2C%0A%20%20%20%20%20%20%22%40language%22%3A%20%22en%22%0A%20%20%20%20%7D%0A%20%20%5D%0A%7D)
 
-```
+```json
 {
   "@context": {"dcterms": "http://purl.org/dc/terms/"},
   "@id": "http://example.org/articles/8",
@@ -5309,9 +5306,9 @@ Turtle
     }
   ]
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/articles/8",
   "http://purl.org/dc/terms/title": [
@@ -5319,19 +5316,19 @@ Turtle
     {"@value": "Capital", "@language": "en"}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value | Language |
 | --- | --- | --- | --- |
 | http://example.org/articles/8 | dcterms:title | Das Kapital | de |
 | http://example.org/articles/8 | dcterms:title | Capital | en |
 
-```
+```sparql
 @prefix dcterms: <http://purl.org/dc/terms/> .
 
 <http://example.org/articles/8> dcterms:title
   "Das Kapital"@de, "Capital"@en .
-```
+```json
 
 Note
 
@@ -5350,7 +5347,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%22ex%22%3A%20%22http%3A%2F%2Fexample.org%2F%22%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Fpeople%23michael%22%2C%0A%20%20%22ex%3Aname%22%3A%20%5B%0A%20%20%20%20%22Michael%22%2C%0A%20%20%20%20%7B%22%40value%22%3A%20%22Mike%22%7D%2C%0A%20%20%20%20%7B%22%40value%22%3A%20%22Miguel%22%2C%20%22%40language%22%3A%20%22es%22%7D%2C%0A%20%20%20%20%7B%20%22%40id%22%3A%20%22https%3A%2F%2Fwww.wikidata.org%2Fwiki%2FQ4927524%22%20%7D%2C%0A%20%20%20%2042%0A%20%20%5D%0A%7D)
 
-```
+```json
 {
   "@context": {"ex": "http://example.org/"},
   "@id": "http://example.org/people#michael",
@@ -5362,9 +5359,9 @@ Turtle
     42
   ]
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/people#michael",
   "http://example.org/name": [
@@ -5375,7 +5372,7 @@ Turtle
     {"@value": 42}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value | Language | Value Type |
 | --- | --- | --- | --- | --- |
@@ -5385,7 +5382,7 @@ Turtle
 | http://example.org/people#michael | http://example.org/name | https://www.wikidata.org/wiki/Q4927524 |  |  |
 | http://example.org/people#michael | http://example.org/name | 42 |  | xsd:integer |
 
-```
+```sparql
 @prefix ex: <http://example.org/> .
 
 <http://example.org/people#michael> ex:name
@@ -5394,7 +5391,7 @@ Turtle
   "Miguel"@es,
   <https://www.wikidata.org/wiki/Q4927524>,
   42 .
-```
+```json
 
 Note
 
@@ -5416,7 +5413,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%22foaf%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%22%7D%2C%0A%20%20%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Fpeople%23joebob%22%2C%0A%20%20%22foaf%3Anick%22%3A%20%7B%0A%20%20%20%20%22%40list%22%3A%20%5B%20%22joe%22%2C%20%22bob%22%2C%20%22jaybee%22%20%5D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {"foaf": "http://xmlns.com/foaf/0.1/"},
   ...
@@ -5426,9 +5423,9 @@ Turtle
   },
   ...
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/people#joebob",
   "http://xmlns.com/foaf/0.1/nick": [{
@@ -5439,7 +5436,7 @@ Turtle
     ]
   }]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -5451,11 +5448,11 @@ Turtle
 | \_:b2 | rdf:first | jaybee |
 | \_:b2 | rdf:rest | rdf:nil |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://example.org/people#joebob> foaf:nick ("joe" "bob" "jaybee") .
-```
+```sparql
 
 This describes the use of this [array](https://infra.spec.whatwg.org/#list) as being ordered,
 and order is maintained when processing a document. If every use of a given multi-valued
@@ -5470,7 +5467,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%0A%20%20%20%20%22nick%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fnick%22%2C%0A%20%20%20%20%20%20%22%40container%22%3A%20%22%40list%22%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Fpeople%23joebob%22%2C%0A%20%20%22nick%22%3A%20%5B%20%22joe%22%2C%20%22bob%22%2C%20%22jaybee%22%20%5D%0A%7D)
 
-```
+```json
 {
   "@context": {
     ...
@@ -5484,9 +5481,9 @@ Turtle
   "nick": [ "joe", "bob", "jaybee" ],
   ...
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/people#joebob",
   "http://xmlns.com/foaf/0.1/nick": [{
@@ -5497,7 +5494,7 @@ Turtle
     ]
   }]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -5509,11 +5506,11 @@ Turtle
 | \_:b2 | rdf:first | jaybee |
 | \_:b2 | rdf:rest | rdf:nil |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://example.org/people#joebob> foaf:nick ("joe" "bob" "jaybee") .
-```
+```text
 
 The implementation of [lists](https://www.w3.org/TR/rdf-schema/#ch_collectionvocab) in RDF depends on linking anonymous nodes
 together using the properties `rdf:first` and
@@ -5534,7 +5531,7 @@ represented as an array of two or more numbers:
 
 [Example 83](#example-83-coordinates-expressed-in-geojson): Coordinates expressed in GeoJSON
 
-```
+```json
 {
   "type": "Feature",
   "bbox": [-10.0, -10.0, 10.0, 10.0],
@@ -5551,7 +5548,7 @@ represented as an array of two or more numbers:
   }
   //...
 }
-```
+```text
 
 For these examples, it's important that values
 expressed within *bbox* and *coordinates* maintain their order,
@@ -5567,7 +5564,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40vocab%22%3A%20%22https%3A%2F%2Fpurl.org%2Fgeojson%2Fvocab%23%22%2C%0A%20%20%20%20%22type%22%3A%20%22%40type%22%2C%0A%20%20%20%20%22bbox%22%3A%20%7B%22%40container%22%3A%20%22%40list%22%7D%2C%0A%20%20%20%20%22coordinates%22%3A%20%7B%22%40container%22%3A%20%22%40list%22%7D%0A%20%20%7D%2C%0A%20%20%22type%22%3A%20%22Feature%22%2C%0A%20%20%22bbox%22%3A%20%5B-10.0%2C%20-10.0%2C%2010.0%2C%2010.0%5D%2C%0A%20%20%22geometry%22%3A%20%7B%0A%20%20%20%20%22type%22%3A%20%22Polygon%22%2C%0A%20%20%20%20%22coordinates%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20%5B-10.0%2C%20-10.0%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%5B10.0%2C%20-10.0%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%5B10.0%2C%2010.0%5D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%5B-10.0%2C%20-10.0%5D%0A%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20%5D%0A%20%20%7D%0A%20%20%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@vocab": "https://purl.org/geojson/vocab#",
@@ -5590,9 +5587,9 @@ Turtle
   }
   //...
 }
-```
+```json
 
-```
+```json
 [{
   "@type": ["https://purl.org/geojson/vocab#Feature"],
   "https://purl.org/geojson/vocab#bbox": [{
@@ -5617,7 +5614,7 @@ Turtle
     }]
   }]
 }]
-```
+```text
 
 | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- |
@@ -5661,7 +5658,7 @@ Turtle
 | \_:b18 | rdf:first | -10 | xsd:integer |
 | \_:b18 | rdf:rest | rdf:nil |  |
 
-```
+```sparql
 @prefix geojson: <https://purl.org/geojson/vocab#>.
 
 [
@@ -5679,7 +5676,7 @@ Turtle
     )
   ]
 ] .
-```
+```text
 
 Note that *coordinates* includes three levels of lists.
 
@@ -5713,7 +5710,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%22foaf%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%22%7D%2C%0A%20%20%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Fpeople%23joebob%22%2C%0A%20%20%22foaf%3Anick%22%3A%20%7B%0A%20%20%20%20%22%40set%22%3A%20%5B%20%22joe%22%2C%20%22bob%22%2C%20%22jaybee%22%20%5D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {"foaf": "http://xmlns.com/foaf/0.1/"},
   ...
@@ -5723,9 +5720,9 @@ Turtle
   },
   ...
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/people#joebob",
   "http://xmlns.com/foaf/0.1/nick": [
@@ -5734,7 +5731,7 @@ Turtle
     {"@value": "jaybee"}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -5742,11 +5739,11 @@ Turtle
 | http://example.org/people#joebob | foaf:nick | bob |
 | http://example.org/people#joebob | foaf:nick | jaybee |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://example.org/people#joebob> foaf:nick "joe", "bob", "jaybee" .
-```
+```sparql
 
 This describes the use of this [array](https://infra.spec.whatwg.org/#list) as being unordered,
 and order may change when processing a document. By default,
@@ -5761,7 +5758,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%0A%20%20%20%20%22nick%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fnick%22%2C%0A%20%20%20%20%20%20%22%40container%22%3A%20%22%40set%22%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Fpeople%23joebob%22%2C%0A%20%20%22nick%22%3A%20%5B%20%22joe%22%2C%20%22bob%22%2C%20%22jaybee%22%20%5D%0A%7D)
 
-```
+```json
 {
   "@context": {
     ...
@@ -5775,9 +5772,9 @@ Turtle
   "nick": [ "joe", "bob", "jaybee" ],
   ...
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/people#joebob",
   "http://xmlns.com/foaf/0.1/nick": [
@@ -5786,7 +5783,7 @@ Turtle
     {"@value": "jaybee"}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -5794,11 +5791,11 @@ Turtle
 | http://example.org/people#joebob | foaf:nick | bob |
 | http://example.org/people#joebob | foaf:nick | jaybee |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://example.org/people#joebob> foaf:nick "joe", "bob", "jaybee" .
-```
+```text
 
 Since JSON-LD 1.1, the `@set` keyword may be
 combined with other container specifications within an expanded term
@@ -5817,7 +5814,7 @@ are always represented in an [array](https://infra.spec.whatwg.org/#list).
 
 [Example 87](#example-87-setting-container-set-on-type): Setting @container: @set on @type
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -5825,7 +5822,7 @@ are always represented in an [array](https://infra.spec.whatwg.org/#list).
   },
   "@type": ["http:/example.org/type"]
 }
-```
+```text
 
 ### 4.4 Nested Properties
 
@@ -5844,7 +5841,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22skos%22%3A%20%22http%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%22%2C%0A%20%20%20%20%22labels%22%3A%20%22%40nest%22%2C%0A%20%20%20%20%22main_label%22%3A%20%7B%22%40id%22%3A%20%22skos%3AprefLabel%22%7D%2C%0A%20%20%20%20%22other_label%22%3A%20%7B%22%40id%22%3A%20%22skos%3AaltLabel%22%7D%2C%0A%20%20%20%20%22homepage%22%3A%20%7B%22%40id%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fhomepage%22%2C%20%22%40type%22%3A%20%22%40id%22%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Fmyresource%22%2C%0A%20%20%22homepage%22%3A%20%22http%3A%2F%2Fexample.org%22%2C%0A%20%20%22labels%22%3A%20%7B%0A%20%20%20%20%20%22main_label%22%3A%20%22This%20is%20the%20main%20label%20for%20my%20resource%22%2C%0A%20%20%20%20%20%22other_label%22%3A%20%22This%20is%20the%20other%20label%22%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -5861,9 +5858,9 @@ Turtle
      "other_label": "This is the other label"
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/myresource",
   "http://xmlns.com/foaf/0.1/homepage": [
@@ -5876,7 +5873,7 @@ Turtle
     {"@value": "This is the other label"}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -5884,7 +5881,7 @@ Turtle
 | http://example.org/myresource | skos:prefLabel | This is the main label for my resource |
 | http://example.org/myresource | skos:altLabel | This is the other label |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
@@ -5892,7 +5889,7 @@ Turtle
   skos:prefLabel "This is the main label for my resource";
   skos:altLabel "This is the other label";
   foaf:homepage <http://example.org> .
-```
+```text
 
 By defining *labels* using the [keyword](#dfn-keyword) `@nest`,
 a [JSON-LD processor](https://www.w3.org/TR/json-ld11-api/#dfn-json-ld-processor) will ignore the nesting created by using the
@@ -5910,7 +5907,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22skos%22%3A%20%22http%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%22%2C%0A%20%20%20%20%22main_label%22%3A%20%7B%22%40id%22%3A%20%22skos%3AprefLabel%22%7D%2C%0A%20%20%20%20%22other_label%22%3A%20%7B%22%40id%22%3A%20%22skos%3AaltLabel%22%7D%2C%0A%20%20%20%20%22homepage%22%3A%20%7B%22%40id%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fhomepage%22%2C%20%22%40type%22%3A%20%22%40id%22%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Fmyresource%22%2C%0A%20%20%22homepage%22%3A%20%22http%3A%2F%2Fexample.org%22%2C%0A%20%20%22main_label%22%3A%20%22This%20is%20the%20main%20label%20for%20my%20resource%22%2C%0A%20%20%22other_label%22%3A%20%22This%20is%20the%20other%20label%22%0A%7D)
 
-```
+```json
 {
   "@context": {
     "skos": "http://www.w3.org/2004/02/skos/core#",
@@ -5923,9 +5920,9 @@ Turtle
   "main_label": "This is the main label for my resource",
   "other_label": "This is the other label"
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/myresource",
   "http://xmlns.com/foaf/0.1/homepage": [
@@ -5938,7 +5935,7 @@ Turtle
     {"@value": "This is the other label"}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -5946,7 +5943,7 @@ Turtle
 | http://example.org/myresource | skos:prefLabel | This is the main label for my resource |
 | http://example.org/myresource | skos:altLabel | This is the other label |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
@@ -5954,7 +5951,7 @@ Turtle
   skos:prefLabel "This is the main label for my resource";
   skos:altLabel "This is the other label";
   foaf:homepage <http://example.org> .
-```
+```text
 
 Similarly, [term definitions](#dfn-term-definition) may contain a `@nest` property
 referencing a term aliased to `@nest` which will cause such
@@ -5965,7 +5962,7 @@ with `"@nest": "labels"`, which will cause them to be serialized under
 
 [Example 90](#defining-property-nesting-expanded): Defining property nesting - Expanded Input
 
-```
+```json
 [{
   "@id": "http://example.org/myresource",
   "http://xmlns.com/foaf/0.1/homepage": [
@@ -5978,11 +5975,11 @@ with `"@nest": "labels"`, which will cause them to be serialized under
     {"@value": "This is the other label"}
   ]
 }]
-```
+```json
 
 [Example 91](#defining-property-nesting-context): Defining property nesting - Context
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -5993,7 +5990,7 @@ with `"@nest": "labels"`, which will cause them to be serialized under
     "homepage": {"@id": "http://xmlns.com/foaf/0.1/homepage", "@type": "@id"}
   }
 }
-```
+```json
 
 [Example 92](#example-92-defining-property-nesting): Defining property nesting
 
@@ -6002,7 +5999,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-compacted&json-ld=%5B%7B%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Fmyresource%22%2C%0A%20%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fhomepage%22%3A%20%5B%0A%20%20%20%20%7B%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%22%7D%0A%20%20%5D%2C%0A%20%20%22http%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23prefLabel%22%3A%20%5B%0A%20%20%20%20%7B%22%40value%22%3A%20%22This%20is%20the%20main%20label%20for%20my%20resource%22%7D%0A%20%20%5D%2C%0A%20%20%22http%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23altLabel%22%3A%20%5B%0A%20%20%20%20%7B%22%40value%22%3A%20%22This%20is%20the%20other%20label%22%7D%0A%20%20%5D%0A%7D%5D&context=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22skos%22%3A%20%22http%3A%2F%2Fwww.w3.org%2F2004%2F02%2Fskos%2Fcore%23%22%2C%0A%20%20%20%20%22labels%22%3A%20%22%40nest%22%2C%0A%20%20%20%20%22main_label%22%3A%20%7B%22%40id%22%3A%20%22skos%3AprefLabel%22%2C%20%22%40nest%22%3A%20%22labels%22%7D%2C%0A%20%20%20%20%22other_label%22%3A%20%7B%22%40id%22%3A%20%22skos%3AaltLabel%22%2C%20%22%40nest%22%3A%20%22labels%22%7D%2C%0A%20%20%20%20%22homepage%22%3A%20%7B%22%40id%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fhomepage%22%2C%20%22%40type%22%3A%20%22%40id%22%7D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -6019,7 +6016,7 @@ Turtle
      "other_label": "This is the other label"
   }
 }
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -6027,7 +6024,7 @@ Turtle
 | http://example.org/myresource | skos:prefLabel | This is the main label for my resource |
 | http://example.org/myresource | skos:altLabel | This is the other label |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
@@ -6035,7 +6032,7 @@ Turtle
   skos:prefLabel "This is the main label for my resource";
   skos:altLabel "This is the other label";
   foaf:homepage <http://example.org> .
-```
+```text
 
 Note
 
@@ -6061,7 +6058,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40vocab%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%22%2C%0A%20%20%20%20%22knows%22%3A%20%7B%22%40type%22%3A%20%22%40id%22%7D%0A%20%20%7D%2C%0A%20%20%22%40graph%22%3A%20%5B%7B%0A%20%20%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%20%20%22knows%22%3A%20%22https%3A%2F%2Fgreggkellogg.net%2Ffoaf%23me%22%0A%20%20%7D%2C%20%7B%0A%20%20%20%20%22%40id%22%3A%20%22https%3A%2F%2Fgreggkellogg.net%2Ffoaf%23me%22%2C%0A%20%20%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%20%20%22name%22%3A%20%22Gregg%20Kellogg%22%0A%20%20%7D%5D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@vocab": "http://xmlns.com/foaf/0.1/",
@@ -6077,9 +6074,9 @@ Turtle
     "name": "Gregg Kellogg"
   }]
 }
-```
+```json
 
-```
+```json
 [{
   "@type": ["http://xmlns.com/foaf/0.1/Person"],
   "http://xmlns.com/foaf/0.1/knows": [
@@ -6095,7 +6092,7 @@ Turtle
     {"@value": "Gregg Kellogg"}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -6105,7 +6102,7 @@ Turtle
 | https://greggkellogg.net/foaf#me | rdf:type | foaf:Person |
 | https://greggkellogg.net/foaf#me | foaf:name | Gregg Kellogg |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 [
@@ -6116,7 +6113,7 @@ Turtle
 
 <https://greggkellogg.net/foaf#me> a foaf:Person;
   foaf:name "Gregg Kellogg" .
-```
+```sparql
 
 The previous example describes two [node objects](#dfn-node-object), for Manu and Gregg, with
 the `knows` property defined to treat string values as identifiers.
@@ -6131,7 +6128,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40vocab%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%22%0A%20%20%7D%2C%0A%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%22knows%22%3A%20%7B%0A%20%20%20%20%22%40id%22%3A%20%22https%3A%2F%2Fgreggkellogg.net%2Ffoaf%23me%22%2C%0A%20%20%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%20%20%22name%22%3A%20%22Gregg%20Kellogg%22%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@vocab": "http://xmlns.com/foaf/0.1/"
@@ -6144,9 +6141,9 @@ Turtle
     "name": "Gregg Kellogg"
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@type": ["http://xmlns.com/foaf/0.1/Person"],
   "http://xmlns.com/foaf/0.1/knows": [{
@@ -6160,7 +6157,7 @@ Turtle
     {"@value": "Manu Sporny"}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -6170,7 +6167,7 @@ Turtle
 | https://greggkellogg.net/foaf#me | rdf:type | foaf:Person |
 | https://greggkellogg.net/foaf#me | foaf:name | Gregg Kellogg |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 [
@@ -6181,7 +6178,7 @@ Turtle
 
 <https://greggkellogg.net/foaf#me> a foaf:Person;
   foaf:name "Gregg Kellogg" .
-```
+```text
 
 A [node object](#dfn-node-object), like the one used above, may be used in
 any value position in the body of a JSON-LD document.
@@ -6204,7 +6201,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40vocab%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%22%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22_%3Ab0%22%2C%0A%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%22knows%22%3A%20%7B%0A%20%20%20%20%22%40id%22%3A%20%22https%3A%2F%2Fgreggkellogg.net%2Ffoaf%23me%22%2C%0A%20%20%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%20%20%22name%22%3A%20%22Gregg%20Kellogg%22%2C%0A%20%20%20%20%22knows%22%3A%20%7B%22%40id%22%3A%20%22_%3Ab0%22%7D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@vocab": "http://xmlns.com/foaf/0.1/"
@@ -6219,9 +6216,9 @@ Turtle
     "knows": {"@id": "_:b0"}
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "_:b0",
   "@type": ["http://xmlns.com/foaf/0.1/Person"],
@@ -6239,7 +6236,7 @@ Turtle
     {"@value": "Manu Sporny"}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -6250,7 +6247,7 @@ Turtle
 | https://greggkellogg.net/foaf#me | foaf:name | Gregg Kellogg |
 | https://greggkellogg.net/foaf#me | foaf:knows | \_:b0 |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 _:b0 a foaf:Person;
@@ -6260,7 +6257,7 @@ _:b0 a foaf:Person;
 <https://greggkellogg.net/foaf#me> a foaf:Person;
   foaf:name "Gregg Kellogg";
   foaf:knows _:b0 .
-```
+```sparql
 
 [Blank node identifiers](https://www.w3.org/TR/rdf11-concepts/#dfn-blank-node-identifier) may be automatically introduced by algorithms such as [flattening](https://www.w3.org/TR/json-ld11-api/#dfn-flattened), but they are also useful for authors to describe such relationships directly.
 
@@ -6288,7 +6285,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%22http%3A%2F%2Fschema.org%2F%22%2C%0A%20%20%20%0A%20%20%20%22%40id%22%3A%20%22_%3An1%22%2C%0A%20%20%20%22name%22%3A%20%22Secret%20Agent%201%22%2C%0A%20%20%20%22knows%22%3A%20%7B%0A%20%20%20%20%20%22name%22%3A%20%22Secret%20Agent%202%22%2C%0A%20%20%20%20%20%22knows%22%3A%20%7B%20%22%40id%22%3A%20%22_%3An1%22%20%7D%0A%20%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": "http://schema.org/",
    ...
@@ -6299,9 +6296,9 @@ Turtle
      "knows": { "@id": "_:n1" }
    }
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "_:n1",
   "http://schema.org/name": [{"@value": "Secret Agent 1"}],
@@ -6310,7 +6307,7 @@ Turtle
     "http://schema.org/knows": [{"@id": "_:n1"}]
   }]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -6319,7 +6316,7 @@ Turtle
 | \_:b1 | schema:name | Secret Agent 2 |
 | \_:b1 | schema:knows | \_:b0 |
 
-```
+```sparql
 @prefix schema: <http://schema.org/> .
 
 _:b0 schema:name "Secret Agent 1";
@@ -6327,7 +6324,7 @@ _:b0 schema:name "Secret Agent 1";
 
 _:b1 schema:name "Secret Agent 2";
   schema:knows _:b0 .
-```
+```text
 
 The example above contains information about two secret agents that cannot be identified
 with an [IRI](https://tools.ietf.org/html/rfc3987#section-2). While expressing that *agent 1* knows *agent 2*
@@ -6398,7 +6395,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22schema%22%3A%20%22http%3A%2F%2Fschema.org%2F%22%2C%0A%20%20%20%20%22name%22%3A%20%22schema%3Aname%22%2C%0A%20%20%20%20%22body%22%3A%20%22schema%3AarticleBody%22%2C%0A%20%20%20%20%22athletes%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22schema%3Aathlete%22%2C%0A%20%20%20%20%20%20%22%40container%22%3A%20%22%40index%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22position%22%3A%20%22schema%3AjobTitle%22%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2F%22%2C%0A%20%20%22%40type%22%3A%20%22schema%3ASportsTeam%22%2C%0A%20%20%22name%22%3A%20%22San%20Francisco%20Giants%22%2C%0A%20%20%22athletes%22%3A%20%7B%0A%20%20%20%20%22catcher%22%3A%20%7B%0A%20%20%20%20%20%20%22%40type%22%3A%20%22schema%3APerson%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Buster%20Posey%22%2C%0A%20%20%20%20%20%20%22position%22%3A%20%22Catcher%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22pitcher%22%3A%20%7B%0A%20%20%20%20%20%20%22%40type%22%3A%20%22schema%3APerson%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Madison%20Bumgarner%22%2C%0A%20%20%20%20%20%20%22position%22%3A%20%22Starting%20Pitcher%22%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "schema": "http://schema.org/",
@@ -6427,9 +6424,9 @@ Turtle
     ....
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.com/",
   "@type": ["http://schema.org/SportsTeam"],
@@ -6448,7 +6445,7 @@ Turtle
   ....
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -6463,7 +6460,7 @@ Turtle
 | \_:b1 | schema:jobTitle | Starting Pitcher |
 | http://example.com/ | schema:athlete | \_:b1 |
 
-```
+```sparql
 @prefix schema: <http://schema.org/> .
 
 <http://example.com/> a schema:SportsTeam;
@@ -6479,7 +6476,7 @@ Turtle
   ],
   ....
   .
-```
+```text
 
 In the example above, the **athletes** [term](#dfn-term) has
 been marked as an [index map](#dfn-index-map).
@@ -6518,7 +6515,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22schema%22%3A%20%22http%3A%2F%2Fschema.org%2F%22%2C%0A%20%20%20%20%22name%22%3A%20%22schema%3Aname%22%2C%0A%20%20%20%20%22body%22%3A%20%22schema%3AarticleBody%22%2C%0A%20%20%20%20%22athletes%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22schema%3Aathlete%22%2C%0A%20%20%20%20%20%20%22%40container%22%3A%20%22%40index%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22position%22%3A%20%22schema%3AjobTitle%22%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2F%22%2C%0A%20%20%22%40type%22%3A%20%22schema%3ASportsTeam%22%2C%0A%20%20%22name%22%3A%20%22San%20Francisco%20Giants%22%2C%0A%20%20%22athletes%22%3A%20%7B%0A%20%20%20%20%22catcher%22%3A%20%7B%0A%20%20%20%20%20%20%22%40type%22%3A%20%22schema%3APerson%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Buster%20Posey%22%2C%0A%20%20%20%20%20%20%22position%22%3A%20%22Catcher%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22pitcher%22%3A%20%7B%0A%20%20%20%20%20%20%22%40type%22%3A%20%22schema%3APerson%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Madison%20Bumgarner%22%2C%0A%20%20%20%20%20%20%22position%22%3A%20%22Starting%20Pitcher%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22%40none%22%3A%20%7B%0A%20%20%20%20%20%20%22name%22%3A%20%22Lou%20Seal%22%2C%0A%20%20%20%20%20%20%22position%22%3A%20%22Mascot%22%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
      "@version": 1.1,
@@ -6552,9 +6549,9 @@ Turtle
     ....
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.com/",
   "@type": ["http://schema.org/SportsTeam"],
@@ -6576,7 +6573,7 @@ Turtle
   ....
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -6594,7 +6591,7 @@ Turtle
 | \_:b2 | schema:jobTitle | Mascot |
 | http://example.com/ | schema:athlete | \_:b2 |
 
-```
+```sparql
 @prefix schema: <http://schema.org/> .
 
 <http://example.com/> a schema:SportsTeam;
@@ -6613,7 +6610,7 @@ Turtle
   ],
   ....
   .
-```
+```text
 
 ##### 4.6.1.1 Property-based data indexing
 
@@ -6638,7 +6635,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22schema%22%3A%20%22http%3A%2F%2Fschema.org%2F%22%2C%0A%20%20%20%20%22name%22%3A%20%22schema%3Aname%22%2C%0A%20%20%20%20%22body%22%3A%20%22schema%3AarticleBody%22%2C%0A%20%20%20%20%22athletes%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22schema%3Aathlete%22%2C%0A%20%20%20%20%20%20%22%40container%22%3A%20%22%40index%22%2C%0A%20%20%20%20%20%20%22%40index%22%3A%20%22schema%3AjobTitle%22%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2F%22%2C%0A%20%20%22%40type%22%3A%20%22schema%3ASportsTeam%22%2C%0A%20%20%22name%22%3A%20%22San%20Francisco%20Giants%22%2C%0A%20%20%22athletes%22%3A%20%7B%0A%20%20%20%20%22Catcher%22%3A%20%7B%0A%20%20%20%20%20%20%0A%20%20%20%20%20%20%22%40type%22%3A%20%22schema%3APerson%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Buster%20Posey%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22Starting%20Pitcher%22%3A%20%7B%0A%20%20%20%20%20%20%22%40type%22%3A%20%22schema%3APerson%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Madison%20Bumgarner%22%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -6667,9 +6664,9 @@ Turtle
     ....
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.com/",
   "@type": ["http://schema.org/SportsTeam"],
@@ -6686,7 +6683,7 @@ Turtle
   ....
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -6701,7 +6698,7 @@ Turtle
 | \_:b1 | schema:jobTitle | Starting Pitcher |
 | http://example.com/ | schema:athlete | \_:b1 |
 
-```
+```sparql
 @prefix schema: <http://schema.org/> .
 
 <http://example.com/> a schema:SportsTeam;
@@ -6717,7 +6714,7 @@ Turtle
   ],
   ....
   .
-```
+```text
 
 Note
 
@@ -6746,7 +6743,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22vocab%22%3A%20%22http%3A%2F%2Fexample.com%2Fvocab%2F%22%2C%0A%20%20%20%20%22label%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22vocab%3Alabel%22%2C%0A%20%20%20%20%20%20%22%40container%22%3A%20%22%40language%22%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2Fqueen%22%2C%0A%20%20%22label%22%3A%20%7B%0A%20%20%20%20%22en%22%3A%20%22The%20Queen%22%2C%0A%20%20%20%20%22de%22%3A%20%5B%20%22Die%20K%C3%B6nigin%22%2C%20%22Ihre%20Majest%C3%A4t%22%20%5D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "vocab": "http://example.com/vocab/",
@@ -6761,9 +6758,9 @@ Turtle
     "de": [ "Die Königin", "Ihre Majestät" ]
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.com/queen",
   "http://example.com/vocab/label": [
@@ -6772,7 +6769,7 @@ Turtle
     {"@value": "Ihre Majestät", "@language": "de"}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value | Language |
 | --- | --- | --- | --- |
@@ -6780,14 +6777,14 @@ Turtle
 | http://example.com/queen | http://example.com/vocab/label | Die Königin | de |
 | http://example.com/queen | http://example.com/vocab/label | Ihre Majestät | de |
 
-```
+```sparql
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 <http://example.com/queen> <http://example.com/vocab/label>
      "Ihre Majestät"@de,
      "Die Königin"@de,
      "The Queen"@en .
-```
+```text
 
 In the example above, the **label** [term](#dfn-term) has
 been marked as a [language map](#dfn-language-map). The **en** and
@@ -6811,7 +6808,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22vocab%22%3A%20%22http%3A%2F%2Fexample.com%2Fvocab%2F%22%2C%0A%20%20%20%20%22label%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22vocab%3Alabel%22%2C%0A%20%20%20%20%20%20%22%40container%22%3A%20%5B%22%40language%22%2C%20%22%40set%22%5D%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2Fqueen%22%2C%0A%20%20%22label%22%3A%20%7B%0A%20%20%20%20%22en%22%3A%20%5B%22The%20Queen%22%5D%2C%0A%20%20%20%20%22de%22%3A%20%5B%20%22Die%20K%C3%B6nigin%22%2C%20%22Ihre%20Majest%C3%A4t%22%20%5D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -6827,9 +6824,9 @@ Turtle
     "de": [ "Die Königin", "Ihre Majestät" ]
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.com/queen",
   "http://example.com/vocab/label": [
@@ -6838,7 +6835,7 @@ Turtle
     {"@value": "Ihre Majestät", "@language": "de"}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value | Language |
 | --- | --- | --- | --- |
@@ -6846,14 +6843,14 @@ Turtle
 | http://example.com/queen | http://example.com/vocab/label | Die Königin | de |
 | http://example.com/queen | http://example.com/vocab/label | Ihre Majestät | de |
 
-```
+```sparql
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 <http://example.com/queen> <http://example.com/vocab/label>
      "Ihre Majestät"@de,
      "Die Königin"@de,
      "The Queen"@en .
-```
+```text
 
 Unless the [processing mode](#dfn-processing-mode) is set to `json-ld-1.0`,
 the special index `@none` is used for indexing
@@ -6868,7 +6865,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22vocab%22%3A%20%22http%3A%2F%2Fexample.com%2Fvocab%2F%22%2C%0A%20%20%20%20%22label%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22vocab%3Alabel%22%2C%0A%20%20%20%20%20%20%22%40container%22%3A%20%22%40language%22%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2Fqueen%22%2C%0A%20%20%22label%22%3A%20%7B%0A%20%20%20%20%22en%22%3A%20%22The%20Queen%22%2C%0A%20%20%20%20%22de%22%3A%20%5B%20%22Die%20K%C3%B6nigin%22%2C%20%22Ihre%20Majest%C3%A4t%22%20%5D%2C%0A%20%20%20%20%22%40none%22%3A%20%22The%20Queen%22%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "vocab": "http://example.com/vocab/",
@@ -6884,9 +6881,9 @@ Turtle
     "@none": "The Queen"
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.com/queen",
   "http://example.com/vocab/label": [
@@ -6896,7 +6893,7 @@ Turtle
     {"@value": "The Queen"}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value | Language |
 | --- | --- | --- | --- |
@@ -6905,7 +6902,7 @@ Turtle
 | http://example.com/queen | http://example.com/vocab/label | Ihre Majestät | de |
 | http://example.com/queen | http://example.com/vocab/label | The Queen |  |
 
-```
+```sparql
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
 <http://example.com/queen> <http://example.com/vocab/label>
@@ -6913,7 +6910,7 @@ Turtle
      "Die Königin"@de,
      "The Queen"@en,
      "The Queen" .
-```
+```sparql
 
 #### 4.6.3 Node Identifier Indexing
 
@@ -6936,7 +6933,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22schema%22%3A%20%22http%3A%2F%2Fschema.org%2F%22%2C%0A%20%20%20%20%22name%22%3A%20%22schema%3Aname%22%2C%0A%20%20%20%20%22body%22%3A%20%22schema%3AarticleBody%22%2C%0A%20%20%20%20%22words%22%3A%20%22schema%3AwordCount%22%2C%0A%20%20%20%20%22post%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22schema%3AblogPost%22%2C%0A%20%20%20%20%20%20%22%40container%22%3A%20%22%40id%22%2C%0A%20%20%20%20%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%20%20%20%20%22%40base%22%3A%20%22http%3A%2F%2Fexample.com%2Fposts%2F%22%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2F%22%2C%0A%20%20%22%40type%22%3A%20%22schema%3ABlog%22%2C%0A%20%20%22name%22%3A%20%22World%20Financial%20News%22%2C%0A%20%20%22post%22%3A%20%7B%0A%20%20%20%20%221%2Fen%22%3A%20%7B%0A%20%20%20%20%20%20%22body%22%3A%20%22World%20commodities%20were%20up%20today%20with%20heavy%20trading%20of%20crude%20oil...%22%2C%0A%20%20%20%20%20%20%22words%22%3A%201539%0A%20%20%20%20%7D%2C%0A%20%20%20%20%221%2Fde%22%3A%20%7B%0A%20%20%20%20%20%20%22body%22%3A%20%22Die%20Werte%20an%20Warenb%C3%B6rsen%20stiegen%20im%20Sog%20eines%20starken%20Handels%20von%20Roh%C3%B6l...%22%2C%0A%20%20%20%20%20%20%22words%22%3A%201204%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -6966,9 +6963,9 @@ Turtle
     }
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.com/",
   "@type": ["http://schema.org/Blog"],
@@ -6987,7 +6984,7 @@ Turtle
     "http://schema.org/wordCount": [{"@value": 1204}]
   }]
 }]
-```
+```text
 
 | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- |
@@ -7000,7 +6997,7 @@ Turtle
 | http://example.com/posts/1/en | schema:articleBody | World commodities were up today with heavy trading of crude oil... |  |
 | http://example.com/posts/1/en | schema:wordCount | 1539 | xsd:integer |
 
-```
+```sparql
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -7017,7 +7014,7 @@ Turtle
 <http://example.com/posts/1/en> schema:articleBody
     "World commodities were up today with heavy trading of crude oil...";
    schema:wordCount 1539 .
-```
+```text
 
 In the example above, the `post` [term](#dfn-term) has
 been marked as an [id map](#dfn-id-map). The `http://example.com/posts/1/en` and
@@ -7041,7 +7038,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22schema%22%3A%20%22http%3A%2F%2Fschema.org%2F%22%2C%0A%20%20%20%20%22name%22%3A%20%22schema%3Aname%22%2C%0A%20%20%20%20%22body%22%3A%20%22schema%3AarticleBody%22%2C%0A%20%20%20%20%22words%22%3A%20%22schema%3AwordCount%22%2C%0A%20%20%20%20%22post%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22schema%3AblogPost%22%2C%0A%20%20%20%20%20%20%22%40container%22%3A%20%5B%22%40id%22%2C%20%22%40set%22%5D%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2F%22%2C%0A%20%20%22%40type%22%3A%20%22schema%3ABlog%22%2C%0A%20%20%22name%22%3A%20%22World%20Financial%20News%22%2C%0A%20%20%22post%22%3A%20%7B%0A%20%20%20%20%22http%3A%2F%2Fexample.com%2Fposts%2F1%2Fen%22%3A%20%5B%7B%0A%20%20%20%20%20%20%22body%22%3A%20%22World%20commodities%20were%20up%20today%20with%20heavy%20trading%20of%20crude%20oil...%22%2C%0A%20%20%20%20%20%20%22words%22%3A%201539%0A%20%20%20%20%7D%5D%2C%0A%20%20%20%20%22http%3A%2F%2Fexample.com%2Fposts%2F1%2Fde%22%3A%20%5B%7B%0A%20%20%20%20%20%20%22body%22%3A%20%22Die%20Werte%20an%20Warenb%C3%B6rsen%20stiegen%20im%20Sog%20eines%20starken%20Handels%20von%20Roh%C3%B6l...%22%2C%0A%20%20%20%20%20%20%22words%22%3A%201204%0A%20%20%20%20%7D%5D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -7068,9 +7065,9 @@ Turtle
     }]
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.com/",
   "@type": ["http://schema.org/Blog"],
@@ -7089,7 +7086,7 @@ Turtle
     "http://schema.org/wordCount": [{"@value": 1204}]
   }]
 }]
-```
+```text
 
 | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- |
@@ -7102,7 +7099,7 @@ Turtle
 | http://example.com/posts/1/en | schema:articleBody | World commodities were up today with heavy trading of crude oil... |  |
 | http://example.com/posts/1/en | schema:wordCount | 1539 | xsd:integer |
 
-```
+```sparql
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -7119,7 +7116,7 @@ Turtle
 <http://example.com/posts/1/en> schema:articleBody
     "World commodities were up today with heavy trading of crude oil...";
    schema:wordCount 1539 .
-```
+```text
 
 The special index `@none` is used for indexing
 [node objects](#dfn-node-object) which do not have an `@id`, which is useful to maintain
@@ -7135,7 +7132,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22schema%22%3A%20%22http%3A%2F%2Fschema.org%2F%22%2C%0A%20%20%20%20%22name%22%3A%20%22schema%3Aname%22%2C%0A%20%20%20%20%22body%22%3A%20%22schema%3AarticleBody%22%2C%0A%20%20%20%20%22words%22%3A%20%22schema%3AwordCount%22%2C%0A%20%20%20%20%22post%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22schema%3AblogPost%22%2C%0A%20%20%20%20%20%20%22%40container%22%3A%20%22%40id%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22none%22%3A%20%22%40none%22%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2F%22%2C%0A%20%20%22%40type%22%3A%20%22schema%3ABlog%22%2C%0A%20%20%22name%22%3A%20%22World%20Financial%20News%22%2C%0A%20%20%22post%22%3A%20%7B%0A%20%20%20%20%22http%3A%2F%2Fexample.com%2Fposts%2F1%2Fen%22%3A%20%7B%0A%20%20%20%20%20%20%22body%22%3A%20%22World%20commodities%20were%20up%20today%20with%20heavy%20trading%20of%20crude%20oil...%22%2C%0A%20%20%20%20%20%20%22words%22%3A%201539%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22http%3A%2F%2Fexample.com%2Fposts%2F1%2Fde%22%3A%20%7B%0A%20%20%20%20%20%20%22body%22%3A%20%22Die%20Werte%20an%20Warenb%C3%B6rsen%20stiegen%20im%20Sog%20eines%20starken%20Handels%20von%20Roh%C3%B6l...%22%2C%0A%20%20%20%20%20%20%22words%22%3A%201204%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22none%22%3A%20%7B%0A%20%20%20%20%20%20%22body%22%3A%20%22Description%20for%20object%20without%20an%20%40id%22%2C%0A%20%20%20%20%20%20%22words%22%3A%2020%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -7167,9 +7164,9 @@ Turtle
     }
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.com/",
   "@type": ["http://schema.org/Blog"],
@@ -7193,7 +7190,7 @@ Turtle
     "http://schema.org/wordCount": [{"@value": 20}]
   }]
 }]
-```
+```text
 
 | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- |
@@ -7209,7 +7206,7 @@ Turtle
 | \_:b0 | schema:articleBody | Description for object without an @id |  |
 | \_:b0 | schema:wordCount | 20 | xsd:integer |
 
-```
+```sparql
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -7229,7 +7226,7 @@ Turtle
 <http://example.com/posts/1/en> schema:articleBody
     "World commodities were up today with heavy trading of crude oil...";
    schema:wordCount 1539 .
-```
+```text
 
 Note
 
@@ -7256,7 +7253,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22schema%22%3A%20%22http%3A%2F%2Fschema.org%2F%22%2C%0A%20%20%20%20%22name%22%3A%20%22schema%3Aname%22%2C%0A%20%20%20%20%22affiliation%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22schema%3Aaffiliation%22%2C%0A%20%20%20%20%20%20%22%40container%22%3A%20%22%40type%22%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%22affiliation%22%3A%20%7B%0A%20%20%20%20%22schema%3ACorporation%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22https%3A%2F%2Fdigitalbazaar.com%2F%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Digital%20Bazaar%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22schema%3AProfessionalService%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22https%3A%2F%2Fspec-ops.io%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Spec-Ops%22%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -7279,9 +7276,9 @@ Turtle
     }
   }
 }
-```
+```json
 
-```
+```json
 [{
   "http://schema.org/name": [{"@value": "Manu Sporny"}],
   "http://schema.org/affiliation": [
@@ -7296,7 +7293,7 @@ Turtle
     }
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -7308,7 +7305,7 @@ Turtle
 | \_:b0 | schema:affiliation | https://digitalbazaar.com/ |
 | \_:b0 | schema:affiliation | https://spec-ops.io |
 
-```
+```sparql
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -7323,7 +7320,7 @@ Turtle
    schema:affiliation <https://digitalbazaar.com/>, <https://spec-ops.io>;
    schema:name "Manu Sporny"
 ] .
-```
+```text
 
 In the example above, the `affiliation` [term](#dfn-term) has
 been marked as a [type map](#dfn-type-map). The `schema:Corporation` and
@@ -7343,7 +7340,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22schema%22%3A%20%22http%3A%2F%2Fschema.org%2F%22%2C%0A%20%20%20%20%22name%22%3A%20%22schema%3Aname%22%2C%0A%20%20%20%20%22affiliation%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22schema%3Aaffiliation%22%2C%0A%20%20%20%20%20%20%22%40container%22%3A%20%5B%22%40type%22%2C%20%22%40set%22%5D%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%22affiliation%22%3A%20%7B%0A%20%20%20%20%22schema%3ACorporation%22%3A%20%5B%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22https%3A%2F%2Fdigitalbazaar.com%2F%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Digital%20Bazaar%22%0A%20%20%20%20%7D%5D%2C%0A%20%20%20%20%22schema%3AProfessionalService%22%3A%20%5B%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22https%3A%2F%2Fspec-ops.io%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Spec-Ops%22%0A%20%20%20%20%7D%5D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -7366,9 +7363,9 @@ Turtle
     }]
   }
 }
-```
+```json
 
-```
+```json
 [{
   "http://schema.org/name": [{"@value": "Manu Sporny"}],
   "http://schema.org/affiliation": [
@@ -7383,7 +7380,7 @@ Turtle
     }
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -7395,7 +7392,7 @@ Turtle
 | \_:b0 | schema:affiliation | https://digitalbazaar.com/ |
 | \_:b0 | schema:affiliation | https://spec-ops.io |
 
-```
+```sparql
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -7410,7 +7407,7 @@ Turtle
    schema:affiliation <https://digitalbazaar.com/>, <https://spec-ops.io>;
    schema:name "Manu Sporny"
 ] .
-```
+```text
 
 The special index `@none` is used for indexing
 [node objects](#dfn-node-object) which do not have an `@type`, which is useful to maintain
@@ -7426,7 +7423,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22schema%22%3A%20%22http%3A%2F%2Fschema.org%2F%22%2C%0A%20%20%20%20%22name%22%3A%20%22schema%3Aname%22%2C%0A%20%20%20%20%22affiliation%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22schema%3Aaffiliation%22%2C%0A%20%20%20%20%20%20%22%40container%22%3A%20%22%40type%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22none%22%3A%20%22%40none%22%0A%20%20%7D%2C%0A%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%22affiliation%22%3A%20%7B%0A%20%20%20%20%22schema%3ACorporation%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22https%3A%2F%2Fdigitalbazaar.com%2F%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Digital%20Bazaar%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22schema%3AProfessionalService%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22https%3A%2F%2Fspec-ops.io%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Spec-Ops%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22none%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22https%3A%2F%2Fgreggkellogg.net%2F%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Gregg%20Kellogg%22%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -7454,9 +7451,9 @@ Turtle
     }
   }
 }
-```
+```json
 
-```
+```json
 [{
   "http://schema.org/name": [{"@value": "Manu Sporny"}],
   "http://schema.org/affiliation": [
@@ -7476,7 +7473,7 @@ Turtle
     }
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -7490,7 +7487,7 @@ Turtle
 | \_:b0 | schema:affiliation | https://spec-ops.io |
 | \_:b0 | schema:affiliation | https://greggkellogg.net/ |
 
-```
+```sparql
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -7510,7 +7507,7 @@ Turtle
       <https://greggkellogg.net/>;
    schema:name "Manu Sporny"
 ] .
-```
+```text
 
 As with [id maps](#dfn-id-map), when used with `@type`, a container may also
 include `@set` to ensure that key values are always contained in an array.
@@ -7532,7 +7529,7 @@ some of which share some common elements:
 
 [Example 109](#included-blocks-to-be-flattened): Included Blocks
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -7561,7 +7558,7 @@ some of which share some common elements:
     "label": "A Contractor"
   }]
 }
-```
+```text
 
 When [flattened](https://www.w3.org/TR/json-ld11-api/#dfn-flattened), this will move the `employee` and `contractor` elements
 from the [included block](#dfn-included-block) into the outer [array](https://infra.spec.whatwg.org/#list).
@@ -7573,7 +7570,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22%40vocab%22%3A%20%22http%3A%2F%2Fexample.org%2F%22%2C%0A%20%20%20%20%22classification%22%3A%20%7B%22%40type%22%3A%20%22%40vocab%22%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Forg-1%22%2C%0A%20%20%22members%22%3A%20%5B%7B%0A%20%20%20%20%22%40id%22%3A%22http%3A%2F%2Fexample.org%2Fperson-1%22%2C%0A%20%20%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%20%20%22classification%22%3A%20%22employee%22%0A%20%20%7D%2C%20%7B%0A%20%20%20%20%22%40id%22%3A%22http%3A%2F%2Fexample.org%2Fperson-2%22%2C%0A%20%20%20%20%22name%22%3A%20%22Dave%20Longley%22%2C%0A%20%20%20%20%22classification%22%3A%20%22employee%22%0A%20%20%7D%2C%20%7B%0A%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Fperson-3%22%2C%0A%20%20%20%20%22name%22%3A%20%22Gregg%20Kellogg%22%2C%0A%20%20%20%20%22classification%22%3A%20%22contractor%22%0A%20%20%7D%5D%2C%0A%20%20%22%40included%22%3A%20%5B%7B%0A%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Femployee%22%2C%0A%20%20%20%20%22label%22%3A%20%22An%20Employee%22%0A%20%20%7D%2C%20%7B%0A%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Fcontractor%22%2C%0A%20%20%20%20%22label%22%3A%20%22A%20Contractor%22%0A%20%20%7D%5D%0A%7D)
 
-```
+```json
   [{
     "@id": "http://example.org/org-1",
     "http://example.org/members": [
@@ -7607,7 +7604,7 @@ Turtle
     ]
   }
 ]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -7623,7 +7620,7 @@ Turtle
 | http://example.org/person-3 | http://example.org/name | Gregg Kellogg |
 | http://example.org/person-3 | http://example.org/classification | http://example.org/contractor |
 
-```
+```sparql
 @prefix ex: <http://example.org/> .
 
 ex:org-1 ex:members ex:person-3,
@@ -7641,7 +7638,7 @@ ex:person-3 ex:classification ex:contractor;
 
 ex:employee ex:label "An Employee" .
 ex:contractor ex:label "A Contractor" .
-```
+```sparql
 
 Included resources are described in
 [Inclusion of Related Resources](https://jsonapi.org/format/#fetching-includes) of [JSON API](https://jsonapi.org/format/) [[JSON.API](#bib-json.api "JSON API")]
@@ -7661,7 +7658,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22Person%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2FPerson%22%2C%0A%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fname%22%2C%0A%20%20%20%20%22knows%22%3A%20%7B%22%40id%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fknows%22%2C%20%22%40type%22%3A%20%22%40id%22%7D%0A%20%20%7D%2C%0A%20%20%22%40included%22%3A%20%5B%7B%0A%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2Fabout%23manu%22%2C%0A%20%20%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%20%20%22knows%22%3A%20%22https%3A%2F%2Fgreggkellogg.net%2Ffoaf%23me%22%0A%20%20%7D%2C%20%7B%0A%20%20%20%20%22%40id%22%3A%20%22https%3A%2F%2Fgreggkellogg.net%2Ffoaf%23me%22%2C%0A%20%20%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%20%20%22name%22%3A%20%22Gregg%20Kellogg%22%2C%0A%20%20%20%20%22knows%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2Fabout%23manu%22%0A%20%20%7D%5D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "Person": "http://xmlns.com/foaf/0.1/Person",
@@ -7680,9 +7677,9 @@ Turtle
     "knows": "http://manu.sporny.org/about#manu"
   }]
 }
-```
+```json
 
-```
+```json
 [{
   "@included": [{
     "@id": "http://manu.sporny.org/about#manu",
@@ -7700,9 +7697,9 @@ Turtle
     ]
   }]
 }]
-```
+```json
 
-```
+```json
 [{
   "@id": "http://manu.sporny.org/about#manu",
   "@type": ["http://xmlns.com/foaf/0.1/Person"],
@@ -7718,7 +7715,7 @@ Turtle
     {"@id": "http://manu.sporny.org/about#manu"}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- |
@@ -7729,7 +7726,7 @@ Turtle
 | https://greggkellogg.net/foaf#me | foaf:name | Gregg Kellogg |  |
 | https://greggkellogg.net/foaf#me | foaf:knows | http://manu.sporny.org/about#manu |  |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://manu.sporny.org/about#manu> a foaf:Person;
@@ -7739,7 +7736,7 @@ Turtle
 <https://greggkellogg.net/foaf#me> a foaf:Person;
   foaf:name "Gregg Kellogg";
   foaf:knows <http://manu.sporny.org/about#manu> .
-```
+```text
 
 However, in contrast to `@graph`, `@included` does not interact with other [properties](https://www.w3.org/TR/rdf11-concepts/#dfn-property)
 contained within the same [map](https://infra.spec.whatwg.org/#ordered-map), a feature discussed further in [§ 4.9 Named Graphs](#named-graphs).
@@ -7766,7 +7763,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%5B%0A%20%20%7B%0A%20%20%20%20%22%40id%22%3A%20%22%23homer%22%2C%0A%20%20%20%20%22http%3A%2F%2Fexample.com%2Fvocab%23name%22%3A%20%22Homer%22%0A%20%20%7D%2C%20%7B%0A%20%20%20%20%22%40id%22%3A%20%22%23bart%22%2C%0A%20%20%20%20%22http%3A%2F%2Fexample.com%2Fvocab%23name%22%3A%20%22Bart%22%2C%0A%20%20%20%20%22http%3A%2F%2Fexample.com%2Fvocab%23parent%22%3A%20%7B%20%22%40id%22%3A%20%22%23homer%22%20%7D%0A%20%20%7D%2C%20%7B%0A%20%20%20%20%22%40id%22%3A%20%22%23lisa%22%2C%0A%20%20%20%20%22http%3A%2F%2Fexample.com%2Fvocab%23name%22%3A%20%22Lisa%22%2C%0A%20%20%20%20%22http%3A%2F%2Fexample.com%2Fvocab%23parent%22%3A%20%7B%20%22%40id%22%3A%20%22%23homer%22%20%7D%0A%20%20%7D%0A%5D)
 
-```
+```json
 [
   {
     "@id": "#homer",
@@ -7781,9 +7778,9 @@ Turtle
     "http://example.com/vocab#parent": { "@id": "#homer" }
   }
 ]
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/#homer",
   "http://example.com/vocab#name": [{"@value": "Homer"}]
@@ -7797,7 +7794,7 @@ Turtle
   "http://example.com/vocab#parent": [{"@id": "http://example.org/#homer"}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -7807,7 +7804,7 @@ Turtle
 | http://example.org/#lisa | http://example.com/vocab#name | Lisa |
 | http://example.org/#lisa | http://example.com/vocab#parent | http://example.org/#homer |
 
-```
+```turtle
 @base <http://example.org/> .
 <#homer> <http://example.com/vocab#name> "Homer" .
 
@@ -7816,7 +7813,7 @@ Turtle
 
 <#lisa> <http://example.com/vocab#name> "Lisa";
    <http://example.com/vocab#parent> <#homer> .
-```
+```text
 
 Expressing such data is much simpler by using JSON-LD's `@reverse`
 [keyword](#dfn-keyword):
@@ -7830,7 +7827,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40id%22%3A%20%22%23homer%22%2C%0A%20%20%22http%3A%2F%2Fexample.com%2Fvocab%23name%22%3A%20%22Homer%22%2C%0A%20%20%22%40reverse%22%3A%20%7B%0A%20%20%20%20%22http%3A%2F%2Fexample.com%2Fvocab%23parent%22%3A%20%5B%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%22%40id%22%3A%20%22%23bart%22%2C%0A%20%20%20%20%20%20%20%20%22http%3A%2F%2Fexample.com%2Fvocab%23name%22%3A%20%22Bart%22%0A%20%20%20%20%20%20%7D%2C%20%7B%0A%20%20%20%20%20%20%20%20%22%40id%22%3A%20%22%23lisa%22%2C%0A%20%20%20%20%20%20%20%20%22http%3A%2F%2Fexample.com%2Fvocab%23name%22%3A%20%22Lisa%22%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%5D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@id": "#homer",
   "http://example.com/vocab#name": "Homer",
@@ -7846,9 +7843,9 @@ Turtle
     ]
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/#homer",
   "http://example.com/vocab#name": [{"@value": "Homer"}],
@@ -7862,9 +7859,9 @@ Turtle
     }]
   }
 }]
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/#homer",
   "http://example.com/vocab#name": [{"@value": "Homer"}]
@@ -7878,7 +7875,7 @@ Turtle
   "http://example.com/vocab#parent": [{"@id": "http://example.org/#homer"}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -7888,7 +7885,7 @@ Turtle
 | http://example.org/#lisa | http://example.com/vocab#name | Lisa |
 | http://example.org/#lisa | http://example.com/vocab#parent | http://example.org/#homer |
 
-```
+```turtle
 @base <http://example.org/> .
 <#homer> <http://example.com/vocab#name> "Homer" .
 
@@ -7897,7 +7894,7 @@ Turtle
 
 <#lisa> <http://example.com/vocab#name> "Lisa";
    <http://example.com/vocab#parent> <#homer> .
-```
+```text
 
 The `@reverse` [keyword](#dfn-keyword) can also be used in
 [expanded term definitions](#dfn-expanded-term-definition)
@@ -7912,7 +7909,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%20%22name%22%3A%20%22http%3A%2F%2Fexample.com%2Fvocab%23name%22%2C%0A%20%20%20%20%22children%22%3A%20%7B%20%22%40reverse%22%3A%20%22http%3A%2F%2Fexample.com%2Fvocab%23parent%22%20%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22%23homer%22%2C%0A%20%20%22name%22%3A%20%22Homer%22%2C%0A%20%20%22children%22%3A%20%5B%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22%23bart%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Bart%22%0A%20%20%20%20%7D%2C%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22%23lisa%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Lisa%22%0A%20%20%20%20%7D%0A%20%20%5D%0A%7D)
 
-```
+```json
 {
   "@context": { "name": "http://example.com/vocab#name",
     "children": { "@reverse": "http://example.com/vocab#parent" }
@@ -7929,9 +7926,9 @@ Turtle
     }
   ]
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/#homer",
   "http://example.com/vocab#name": [{"@value": "Homer"}],
@@ -7945,9 +7942,9 @@ Turtle
     }]
   }
 }]
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/#homer",
   "http://example.com/vocab#name": [{"@value": "Homer"}]
@@ -7961,7 +7958,7 @@ Turtle
   "http://example.com/vocab#parent": [{"@id": "http://example.org/#homer"}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -7971,7 +7968,7 @@ Turtle
 | http://example.org/#lisa | http://example.com/vocab#name | Lisa |
 | http://example.org/#lisa | http://example.com/vocab#parent | http://example.org/#homer |
 
-```
+```turtle
 @base <http://example.org/> .
 <#homer> <http://example.com/vocab#name> "Homer" .
 
@@ -7980,7 +7977,7 @@ Turtle
 
 <#lisa> <http://example.com/vocab#name> "Lisa";
    <http://example.com/vocab#parent> <#homer> .
-```
+```text
 
 ### 4.9 Named Graphs
 
@@ -8001,7 +7998,7 @@ Statements
 TriG
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22generatedAt%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fwww.w3.org%2Fns%2Fprov%23generatedAtTime%22%2C%0A%20%20%20%20%20%20%22%40type%22%3A%20%22http%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23dateTime%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22Person%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2FPerson%22%2C%0A%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fname%22%2C%0A%20%20%20%20%22knows%22%3A%20%7B%22%40id%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fknows%22%2C%20%22%40type%22%3A%20%22%40id%22%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Ffoaf-graph%22%2C%0A%20%20%22generatedAt%22%3A%20%222012-04-09T00%3A00%3A00%22%2C%0A%20%20%22%40graph%22%3A%20%5B%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2Fabout%23manu%22%2C%0A%20%20%20%20%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%20%20%20%20%22knows%22%3A%20%22https%3A%2F%2Fgreggkellogg.net%2Ffoaf%23me%22%0A%20%20%20%20%7D%2C%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22https%3A%2F%2Fgreggkellogg.net%2Ffoaf%23me%22%2C%0A%20%20%20%20%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Gregg%20Kellogg%22%2C%0A%20%20%20%20%20%20%22knows%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2Fabout%23manu%22%0A%20%20%20%20%7D%0A%20%20%5D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "generatedAt": {
@@ -8028,9 +8025,9 @@ TriG
     }
   ]
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/foaf-graph",
   "http://www.w3.org/ns/prov#generatedAtTime": [{
@@ -8053,7 +8050,7 @@ TriG
     ]
   }]
 }]
-```
+```text
 
 | Graph | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- | --- |
@@ -8065,7 +8062,7 @@ TriG
 | http://example.org/foaf-graph | https://greggkellogg.net/foaf#me | foaf:name | Gregg Kellogg |  |
 | http://example.org/foaf-graph | https://greggkellogg.net/foaf#me | foaf:knows | http://manu.sporny.org/about#manu |  |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -8082,7 +8079,7 @@ TriG
      foaf:name "Gregg Kellogg";
      foaf:knows <http://manu.sporny.org/about#manu> .
 }
-```
+```text
 
 The example above expresses a [named graph](https://www.w3.org/TR/rdf11-concepts/#dfn-named-graph) that is identified
 by the [IRI](https://tools.ietf.org/html/rfc3987#section-2) `http://example.org/foaf-graph`. That
@@ -8111,7 +8108,7 @@ Statements
 TriG
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40vocab%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%22%0A%20%20%7D%2C%0A%20%20%22%40graph%22%3A%20%5B%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2Fabout%23manu%22%2C%0A%20%20%20%20%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Manu%20Sporny%22%0A%20%20%20%20%7D%2C%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22https%3A%2F%2Fgreggkellogg.net%2Ffoaf%23me%22%2C%0A%20%20%20%20%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Gregg%20Kellogg%22%0A%20%20%20%20%7D%0A%20%20%5D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@vocab": "http://xmlns.com/foaf/0.1/"
@@ -8128,9 +8125,9 @@ TriG
     }
   ]
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://manu.sporny.org/about#manu",
   "@type": ["http://xmlns.com/foaf/0.1/Person"],
@@ -8141,7 +8138,7 @@ TriG
   "@type": ["http://xmlns.com/foaf/0.1/Person"],
   "http://xmlns.com/foaf/0.1/name": [{"@value": "Gregg Kellogg"}]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -8150,7 +8147,7 @@ TriG
 | https://greggkellogg.net/foaf#me | rdf:type | foaf:Person |
 | https://greggkellogg.net/foaf#me | foaf:name | Gregg Kellogg |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <https://greggkellogg.net/foaf#me> a foaf:Person;
@@ -8158,7 +8155,7 @@ TriG
 
 <http://manu.sporny.org/about#manu> a foaf:Person;
    foaf:name "Manu Sporny" .
-```
+```turtle
 
 In this case, [embedding](#dfn-embedding) can not be used as
 the graph contains unrelated nodes.
@@ -8174,7 +8171,7 @@ Statements
 TriG
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%5B%0A%20%20%7B%0A%20%20%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%20%20%22%40vocab%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%22%2C%0A%20%20%20%20%20%20%22knows%22%3A%20%7B%22%40type%22%3A%20%22%40id%22%7D%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2Fabout%23manu%22%2C%0A%20%20%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%20%20%22knows%22%3A%20%22https%3A%2F%2Fgreggkellogg.net%2Ffoaf%23me%22%0A%20%20%7D%2C%0A%20%20%7B%0A%20%20%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%20%20%22%40vocab%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%22%2C%0A%20%20%20%20%20%20%22knows%22%3A%20%7B%22%40type%22%3A%20%22%40id%22%7D%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22%40id%22%3A%20%22https%3A%2F%2Fgreggkellogg.net%2Ffoaf%23me%22%2C%0A%20%20%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%20%20%22name%22%3A%20%22Gregg%20Kellogg%22%2C%0A%20%20%20%20%22knows%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2Fabout%23manu%22%0A%20%20%7D%0A%5D)
 
-```
+```json
 [
   {
     "@context": {
@@ -8197,9 +8194,9 @@ TriG
     "knows": "http://manu.sporny.org/about#manu"
   }
 ]
-```
+```json
 
-```
+```json
 [{
   "@id": "http://manu.sporny.org/about#manu",
   "@type": ["http://xmlns.com/foaf/0.1/Person"],
@@ -8216,7 +8213,7 @@ TriG
     {"@id": "http://manu.sporny.org/about#manu"}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -8227,7 +8224,7 @@ TriG
 | https://greggkellogg.net/foaf#me | foaf:name | Gregg Kellogg |
 | https://greggkellogg.net/foaf#me | foaf:knows | http://manu.sporny.org/about#manu |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <https://greggkellogg.net/foaf#me> a foaf:Person;
@@ -8237,7 +8234,7 @@ TriG
 <http://manu.sporny.org/about#manu> a foaf:Person;
    foaf:knows <https://greggkellogg.net/foaf#me>;
    foaf:name "Manu Sporny" .
-```
+```json
 
 #### 4.9.1 Graph Containers
 
@@ -8267,7 +8264,7 @@ Statements
 TriG
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22%40base%22%3A%20%22http%3A%2F%2Fdbpedia.org%2Fresource%2F%22%2C%0A%20%20%20%20%22said%22%3A%20%22http%3A%2F%2Fexample.com%2Fsaid%22%2C%0A%20%20%20%20%22wrote%22%3A%20%7B%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2Fwrote%22%2C%20%22%40container%22%3A%20%22%40graph%22%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22William_Shakespeare%22%2C%0A%20%20%22wrote%22%3A%20%7B%0A%20%20%20%20%22%40id%22%3A%20%22Richard_III_of_England%22%2C%0A%20%20%20%20%22said%22%3A%20%22My%20kingdom%20for%20a%20horse%22%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -8281,9 +8278,9 @@ TriG
     "said": "My kingdom for a horse"
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://dbpedia.org/resource/William_Shakespeare",
   "http://example.com/wrote": [{
@@ -8293,14 +8290,14 @@ TriG
     }]
   }]
 }]
-```
+```text
 
 | Graph | Subject | Property | Value |
 | --- | --- | --- | --- |
 | \_:b0 | http://dbpedia.org/resource/Richard\_III\_of\_England | http://example.com/said | My kingdom for a horse |
 |  | http://dbpedia.org/resource/William\_Shakespeare | http://example.com/wrote | \_:b0 |
 
-```
+```sparql
 @prefix dbp: <http://dbpedia.org/resource/> .
 @prefix ex:  <http://example.com/> .
 
@@ -8309,7 +8306,7 @@ dbp:William_Shakespeare ex:wrote _:b0 .
 _:b0 {
   dbp:Richard_III_of_England ex:said "My kingdom for a horse" .
 }
-```
+```text
 
 The example above expresses an anonymously [named graph](https://www.w3.org/TR/rdf11-concepts/#dfn-named-graph)
 making a statement. The [default graph](https://www.w3.org/TR/rdf11-concepts/#dfn-default-graph) includes a statement
@@ -8351,7 +8348,7 @@ Statements
 TriG
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%20%22schema%22%3A%20%22http%3A%2F%2Fschema.org%2F%22%2C%0A%20%20%20%20%20%22name%22%3A%20%22schema%3Aname%22%2C%0A%20%20%20%20%20%22body%22%3A%20%22schema%3AarticleBody%22%2C%0A%20%20%20%20%20%22words%22%3A%20%22schema%3AwordCount%22%2C%0A%20%20%20%20%20%22post%22%3A%20%7B%0A%20%20%20%20%20%20%20%22%40id%22%3A%20%22schema%3AblogPost%22%2C%0A%20%20%20%20%20%20%20%22%40container%22%3A%20%5B%22%40graph%22%2C%20%22%40index%22%5D%0A%20%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2F%22%2C%0A%20%20%22%40type%22%3A%20%22schema%3ABlog%22%2C%0A%20%20%22name%22%3A%20%22World%20Financial%20News%22%2C%0A%20%20%22post%22%3A%20%7B%0A%20%20%20%20%20%22en%22%3A%20%7B%0A%20%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2Fposts%2F1%2Fen%22%2C%0A%20%20%20%20%20%20%20%22body%22%3A%20%22World%20commodities%20were%20up%20today%20with%20heavy%20trading%20of%20crude%20oil...%22%2C%0A%20%20%20%20%20%20%20%22words%22%3A%201539%0A%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%22de%22%3A%20%7B%0A%20%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2Fposts%2F1%2Fde%22%2C%0A%20%20%20%20%20%20%20%22body%22%3A%20%22Die%20Werte%20an%20Warenb%C3%B6rsen%20stiegen%20im%20Sog%20eines%20starken%20Handels%20von%20Roh%C3%B6l...%22%2C%0A%20%20%20%20%20%20%20%22words%22%3A%201204%0A%20%20%20%20%20%7D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
      "@version": 1.1,
@@ -8380,9 +8377,9 @@ TriG
      }
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.com/",
   "@type": ["http://schema.org/Blog"],
@@ -8407,7 +8404,7 @@ TriG
     "@index": "de"
   }]
 }]
-```
+```text
 
 | Graph | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- | --- |
@@ -8420,7 +8417,7 @@ TriG
 | \_:b2 | http://example.com/posts/1/en | schema:articleBody | World commodities were up today with heavy trading of crude oil... |  |
 | \_:b2 | http://example.com/posts/1/en | schema:wordCount | 1539 | xsd:integer |
 
-```
+```sparql
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -8442,7 +8439,7 @@ _:b1 {
       "Die Werte an Warenbörsen stiegen im Sog eines starken Handels von Rohöl...";
      schema:wordCount 1204 .
 }
-```
+```sparql
 
 As with [index maps](#dfn-index-map), when used with `@graph`, a container may also
 include `@set` to ensure that key values are always contained in an array.
@@ -8463,7 +8460,7 @@ Statements
 TriG
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%20%22schema%22%3A%20%22http%3A%2F%2Fschema.org%2F%22%2C%0A%20%20%20%20%20%22name%22%3A%20%22schema%3Aname%22%2C%0A%20%20%20%20%20%22body%22%3A%20%22schema%3AarticleBody%22%2C%0A%20%20%20%20%20%22words%22%3A%20%22schema%3AwordCount%22%2C%0A%20%20%20%20%20%22post%22%3A%20%7B%0A%20%20%20%20%20%20%20%22%40id%22%3A%20%22schema%3AblogPost%22%2C%0A%20%20%20%20%20%20%20%22%40container%22%3A%20%5B%22%40graph%22%2C%20%22%40index%22%5D%0A%20%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2F%22%2C%0A%20%20%22%40type%22%3A%20%22schema%3ABlog%22%2C%0A%20%20%22name%22%3A%20%22World%20Financial%20News%22%2C%0A%20%20%22post%22%3A%20%7B%0A%20%20%20%20%20%22en%22%3A%20%7B%0A%20%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2Fposts%2F1%2Fen%22%2C%0A%20%20%20%20%20%20%20%22body%22%3A%20%22World%20commodities%20were%20up%20today%20with%20heavy%20trading%20of%20crude%20oil...%22%2C%0A%20%20%20%20%20%20%20%22words%22%3A%201539%0A%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%22%40none%22%3A%20%7B%0A%20%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.com%2Fposts%2F1%2Fno-language%22%2C%0A%20%20%20%20%20%20%20%22body%22%3A%20%22Die%20Werte%20an%20Warenb%C3%B6rsen%20stiegen%20im%20Sog%20eines%20starken%20Handels%20von%20Roh%C3%B6l...%22%2C%0A%20%20%20%20%20%20%20%22words%22%3A%201204%0A%20%20%20%20%20%7D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
      "@version": 1.1,
@@ -8492,9 +8489,9 @@ TriG
      }
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.com/",
   "@type": ["http://schema.org/Blog"],
@@ -8518,7 +8515,7 @@ TriG
     }]
   }]
 }]
-```
+```text
 
 | Graph | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- | --- |
@@ -8531,7 +8528,7 @@ TriG
 | \_:b1 | http://example.com/posts/1/no-language | schema:articleBody | Die Werte an Warenbörsen stiegen im Sog eines starken Handels von Rohöl... |  |
 | \_:b1 | http://example.com/posts/1/no-language | schema:wordCount | 1204 | xsd:integer |
 
-```
+```sparql
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -8553,7 +8550,7 @@ _:b1 {
        "Die Werte an Warenbörsen stiegen im Sog eines starken Handels von Rohöl...";
      schema:wordCount 1204 .
 }
-```
+```json
 
 Note
 
@@ -8581,7 +8578,7 @@ Statements
 TriG
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22generatedAt%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fwww.w3.org%2Fns%2Fprov%23generatedAtTime%22%2C%0A%20%20%20%20%20%20%22%40type%22%3A%20%22http%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23dateTime%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22Person%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2FPerson%22%2C%0A%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fname%22%2C%0A%20%20%20%20%22knows%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fknows%22%2C%0A%20%20%20%20%20%20%22%40type%22%3A%20%22%40id%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22graphMap%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2FgraphMap%22%2C%0A%20%20%20%20%20%20%22%40container%22%3A%20%5B%22%40graph%22%2C%20%22%40id%22%5D%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Ffoaf-graph%22%2C%0A%20%20%22generatedAt%22%3A%20%222012-04-09T00%3A00%3A00%22%2C%0A%20%20%22graphMap%22%3A%20%7B%0A%20%20%20%20%22http%3A%2F%2Fmanu.sporny.org%2Fabout%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2Fabout%23manu%22%2C%0A%20%20%20%20%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%20%20%20%20%22knows%22%3A%20%22https%3A%2F%2Fgreggkellogg.net%2Ffoaf%23me%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22https%3A%2F%2Fgreggkellogg.net%2Ffoaf%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22https%3A%2F%2Fgreggkellogg.net%2Ffoaf%23me%22%2C%0A%20%20%20%20%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Gregg%20Kellogg%22%2C%0A%20%20%20%20%20%20%22knows%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2Fabout%23manu%22%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -8617,9 +8614,9 @@ TriG
     }
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/foaf-graph",
   "http://www.w3.org/ns/prov#generatedAtTime": [{
@@ -8652,7 +8649,7 @@ TriG
     "@id": "https://greggkellogg.net/foaf"
   }]
 }]
-```
+```text
 
 | Graph | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- | --- |
@@ -8666,7 +8663,7 @@ TriG
 | http://manu.sporny.org/about | http://manu.sporny.org/about#manu | foaf:name | Manu Sporny |  |
 | http://manu.sporny.org/about | http://manu.sporny.org/about#manu | foaf:knows | https://greggkellogg.net/foaf#me |  |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -8689,7 +8686,7 @@ TriG
      foaf:knows <https://greggkellogg.net/foaf#me>;
      foaf:name "Manu Sporny" .
 }
-```
+```text
 
 As with [id maps](#dfn-id-map), when used with `@graph`, a container may also
 include `@set` to ensure that key values are always contained in an array.
@@ -8711,7 +8708,7 @@ Statements
 TriG
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22generatedAt%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fwww.w3.org%2Fns%2Fprov%23generatedAtTime%22%2C%0A%20%20%20%20%20%20%22%40type%22%3A%20%22http%3A%2F%2Fwww.w3.org%2F2001%2FXMLSchema%23dateTime%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%22Person%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2FPerson%22%2C%0A%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fname%22%2C%0A%20%20%20%20%22knows%22%3A%20%7B%22%40id%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fknows%22%2C%20%22%40type%22%3A%20%22%40id%22%7D%2C%0A%20%20%20%20%22graphMap%22%3A%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2FgraphMap%22%2C%0A%20%20%20%20%20%20%22%40container%22%3A%20%5B%22%40graph%22%2C%20%22%40id%22%5D%0A%20%20%20%20%7D%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Ffoaf-graph%22%2C%0A%20%20%22generatedAt%22%3A%20%222012-04-09T00%3A00%3A00%22%2C%0A%20%20%22graphMap%22%3A%20%7B%0A%20%20%20%20%22%40none%22%3A%20%5B%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2Fabout%23manu%22%2C%0A%20%20%20%20%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%20%20%20%20%22knows%22%3A%20%22https%3A%2F%2Fgreggkellogg.net%2Ffoaf%23me%22%0A%20%20%20%20%7D%2C%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22https%3A%2F%2Fgreggkellogg.net%2Ffoaf%23me%22%2C%0A%20%20%20%20%20%20%22%40type%22%3A%20%22Person%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Gregg%20Kellogg%22%2C%0A%20%20%20%20%20%20%22knows%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2Fabout%23manu%22%0A%20%20%20%20%7D%5D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -8743,9 +8740,9 @@ TriG
     }]
   }
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.org/foaf-graph",
   "http://www.w3.org/ns/prov#generatedAtTime": [{
@@ -8773,7 +8770,7 @@ TriG
     }]
   }]
 }]
-```
+```text
 
 | Graph | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- | --- |
@@ -8787,7 +8784,7 @@ TriG
 | \_:b1 | https://greggkellogg.net/foaf#me | foaf:name | Gregg Kellogg |  |
 | \_:b1 | https://greggkellogg.net/foaf#me | foaf:knows | http://manu.sporny.org/about#manu |  |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -8807,7 +8804,7 @@ _:b1 {
      foaf:name "Gregg Kellogg";
      foaf:knows <http://manu.sporny.org/about#manu> .
 }
-```
+```json
 
 Note
 
@@ -8846,7 +8843,8 @@ can be useful in a number of contexts where loading remote documents can be prob
 * For security purposes, the act of remotely retrieving a document may provide a signal of application behavior.
   The judicious use of a [documentLoader](https://www.w3.org/TR/json-ld11-api/#dom-jsonldoptions-documentloader) can isolate the application and reduce its online fingerprint.
 
-5. Forms of JSON-LD
+1. Forms of JSON-LD
+
 -------------------
 
 *This section is non-normative.*
@@ -8892,7 +8890,7 @@ For example, assume the following JSON-LD input document:
 
 [Example 123](#sample-json-ld-document-to-be-expanded): Sample JSON-LD document to be expanded
 
-```
+```json
 {
    "@context": {
       "name": "http://xmlns.com/foaf/0.1/name",
@@ -8904,7 +8902,7 @@ For example, assume the following JSON-LD input document:
    "name": "Manu Sporny",
    "homepage": "http://manu.sporny.org/"
 }
-```
+```text
 
 Running the JSON-LD [Expansion algorithm](https://www.w3.org/TR/json-ld11-api/#expansion-algorithm) against the JSON-LD input document
 provided above would result in the following output:
@@ -8916,7 +8914,7 @@ Statements
 Turtle
 [Open in playground](https://json-ld.org/playground/#startTab=tab-expand&json-ld=%7B%0A%20%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fname%22%2C%0A%20%20%20%20%20%20%22homepage%22%3A%20%7B%0A%20%20%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fhomepage%22%2C%0A%20%20%20%20%20%20%20%20%22%40type%22%3A%20%22%40id%22%0A%20%20%20%20%20%20%7D%0A%20%20%20%7D%2C%0A%20%20%20%22name%22%3A%20%22Manu%20Sporny%22%2C%0A%20%20%20%22homepage%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2F%22%0A%7D)
 
-```
+```json
 [
   {
     "http://xmlns.com/foaf/0.1/name": [
@@ -8927,21 +8925,21 @@ Turtle
     ]
   }
 ]
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
 | \_:b0 | foaf:name | Manu Sporny |
 | \_:b0 | foaf:homepage | http://manu.sporny.org/ |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 [
   foaf:name "Manu Sporny";
   foaf:homepage <http://manu.sporny.org/>
 ] .
-```
+```json
 
 [JSON-LD's media type](#application-ld-json) defines a
 `profile` parameter which can be used to signal or request
@@ -8966,7 +8964,7 @@ For example, assume the following JSON-LD input document:
 
 [Example 125](#sample-expanded-json-ld-document): Sample expanded JSON-LD document
 
-```
+```json
 [
   {
     "http://xmlns.com/foaf/0.1/name": [ "Manu Sporny" ],
@@ -8977,13 +8975,13 @@ For example, assume the following JSON-LD input document:
     ]
   }
 ]
-```
+```text
 
 Additionally, assume the following developer-supplied JSON-LD context:
 
 [Example 126](#sample-context): Sample context
 
-```
+```json
 {
   "@context": {
     "name": "http://xmlns.com/foaf/0.1/name",
@@ -8993,7 +8991,7 @@ Additionally, assume the following developer-supplied JSON-LD context:
     }
   }
 }
-```
+```text
 
 Running the JSON-LD [Compaction algorithm](https://www.w3.org/TR/json-ld11-api/#compaction-algorithm) given the [context](#dfn-context) supplied above
 against the JSON-LD input document provided above would result in the following
@@ -9001,7 +8999,7 @@ output:
 
 [Example 127](#example-127-compact-form-of-the-sample-document-once-sample-context-has-been-applied): Compact form of the sample document once sample context has been applied
 
-```
+```json
 {
   "@context": {
     "name": "http://xmlns.com/foaf/0.1/name",
@@ -9013,7 +9011,7 @@ output:
   "name": "Manu Sporny",
   "homepage": "http://manu.sporny.org/"
 }
-```
+```sparql
 
 [JSON-LD's media type](#application-ld-json) defines a
 `profile` parameter which can be used to signal or request
@@ -9055,27 +9053,27 @@ or as the value of a [term](#dfn-term) described as `"@type": "@vocab"`.
 
 Given the following expanded document:
 
-```
+```json
 [{
   "@id": "http://example.org/places#BrewEats",
   "@type": ["http://example.org/Restaurant"],
   "http://example.org/name": [{"@value": "Brew Eats"}]
 }]
-```
+```json
 
 And the following context:
 
-```
+```json
 {
   "@context": {
     "@vocab": "http://example.org/"
   }
 }
-```
+```json
 
 The compaction algorithm will shorten all vocabulary-relative IRIs that begin with `http://xmlns.com/foaf/0.1/`:
 
-```
+```json
 {
   "@context": {
     "@vocab": "http://example.org/"
@@ -9084,7 +9082,7 @@ The compaction algorithm will shorten all vocabulary-relative IRIs that begin wi
   "@type": "Restaurant",
   "name": "Brew Eats"
 }
-```
+```text
 
 Note that two IRIs were shortened, unnecessary arrays are removed, and simple string
 values are replaced with the string.
@@ -9092,33 +9090,31 @@ values are replaced with the string.
 See [Security Considerations](#iana-security) in [§ C. IANA Considerations](#iana-considerations)
 for a discussion on how string vocabulary-relative IRI resolution via concatenation.
 
-
-
 [Example 129](#example-129-compacting-using-a-base-iri): Compacting using a base IRI
 
 Given the following expanded document:
 
-```
+```json
 [{
   "@id": "http://example.com/document.jsonld",
   "http://www.w3.org/2000/01/rdf-schema#label": [{"@value": "Just a simple document"}]
 }]
-```
+```json
 
 And the following context:
 
-```
+```json
 {
   "@context": {
     "@base": "http://example.com/",
     "label": "http://www.w3.org/2000/01/rdf-schema#label"
   }
 }
-```
+```json
 
 The compaction algorithm will shorten all document-relative IRIs that begin with `http://example.com/`:
 
-```
+```json
 {
   "@context": {
     "@base": "http://example.com/",
@@ -9127,7 +9123,7 @@ The compaction algorithm will shorten all document-relative IRIs that begin with
   "@id": "document.jsonld",
   "label": "Just a simple document"
 }
-```
+```text
 
 #### 5.2.2 Representing Values as Strings
 
@@ -9152,7 +9148,7 @@ See [§ 4.2 Describing Values](#describing-values) for more details.
 
 Given the following expanded document:
 
-```
+```json
 [{
   "http://example.com/plain": [
     {"@value": "string"},
@@ -9172,11 +9168,11 @@ Given the following expanded document:
     {"@id": "http://example.com/some-location"}
   ]
 }]
-```
+```json
 
 And the following context:
 
-```
+```json
 {
   "@context": {
     "@vocab": "http://example.com/",
@@ -9185,7 +9181,7 @@ And the following context:
     "iri": {"@type": "@id"}
   }
 }
-```
+```text
 
 The compacted version will use string values for the defined terms
 when the values match the [term definition](#dfn-term-definition). Note that there is
@@ -9195,7 +9191,7 @@ Also, the other native values,
 `1` and `true`,
 can be represented without defining a specific type mapping.
 
-```
+```json
 {
   "@context": {
     "@vocab": "http://example.com/",
@@ -9208,7 +9204,7 @@ can be represented without defining a specific type mapping.
   "en": "English",
   "iri": "http://example.com/some-location"
 }
-```
+```sparql
 
 #### 5.2.3 Representing Lists as Arrays
 
@@ -9225,7 +9221,7 @@ property using such a term to be considered ordered.
 
 Given the following expanded document:
 
-```
+```json
 [{
   "http://xmlns.com/foaf/0.1/nick": [{
     "@list": [
@@ -9235,11 +9231,11 @@ Given the following expanded document:
     ]
   }]
 }]
-```
+```json
 
 And the following context:
 
-```
+```json
 {
   "@context": {
     "nick": {
@@ -9248,11 +9244,11 @@ And the following context:
     }
   }
 }
-```
+```text
 
 The compacted version eliminates the explicit [list object](#dfn-list-object).
 
-```
+```json
 {
   "@context": {
     "nick": {
@@ -9262,7 +9258,7 @@ The compacted version eliminates the explicit [list object](#dfn-list-object).
   },
   "nick": [ "joe", "bob", "jaybee" ]
 }
-```
+```json
 
 #### 5.2.4 Reversing Node Relationships
 
@@ -9278,7 +9274,7 @@ See [§ 4.8 Reverse Properties](#reverse-properties) for more details.
 
 Given the following expanded document:
 
-```
+```json
 [{
   "@id": "http://example.org/#homer",
   "http://example.com/vocab#name": [{"@value": "Homer"}],
@@ -9292,23 +9288,23 @@ Given the following expanded document:
     }]
   }
 }]
-```
+```json
 
 And the following context:
 
-```
+```json
 {
   "@context": {
     "name": "http://example.com/vocab#name",
     "children": { "@reverse": "http://example.com/vocab#parent" }
   }
 }
-```
+```json
 
 The compacted version eliminates the `@reverse` property
 by describing "children" as the reverse of "parent".
 
-```
+```json
 {
   "@context": {
     "name": "http://example.com/vocab#name",
@@ -9321,7 +9317,7 @@ by describing "children" as the reverse of "parent".
     { "@id": "#lisa", "name": "Lisa"}
   ]
 }
-```
+```text
 
 Reverse properties can be even more useful when combined with
 [framing](https://www.w3.org/TR/json-ld11-framing/#dfn-framing), which can actually make [node objects](#dfn-node-object) defined
@@ -9344,7 +9340,7 @@ using the language `en`.
 
 Given the following expanded document:
 
-```
+```json
 [{
   "@id": "http://example.com/queen",
   "http://example.com/vocab/label": [
@@ -9353,11 +9349,11 @@ Given the following expanded document:
     {"@value": "Ihre Majestät", "@language": "de"}
   ]
 }]
-```
+```json
 
 And the following context:
 
-```
+```json
 {
   "@context": {
     "vocab": "http://example.com/vocab/",
@@ -9367,13 +9363,13 @@ And the following context:
     }
   }
 }
-```
+```text
 
 The compacted version uses a [map](https://infra.spec.whatwg.org/#ordered-map) value
 for "label", with the keys representing the [language tag](https://www.w3.org/TR/rdf11-concepts/#dfn-language-tag)
 and the values are the [strings](https://infra.spec.whatwg.org/#javascript-string) associated with the relevant [language tag](https://www.w3.org/TR/rdf11-concepts/#dfn-language-tag).
 
-```
+```json
 {
   "@context": {
     "vocab": "http://example.com/vocab/",
@@ -9388,7 +9384,7 @@ and the values are the [strings](https://infra.spec.whatwg.org/#javascript-strin
     "de": [ "Die Königin", "Ihre Majestät" ]
   }
 }
-```
+```text
 
 Data can be indexed on a number of different keys, including
 @id, @type, @language, @index and more.
@@ -9409,7 +9405,7 @@ form of values, although components of that value may be compacted.
 
 Given the following expanded document:
 
-```
+```json
 [{
   "http://example.com/notype": [
     {"@value": "string"},
@@ -9424,11 +9420,11 @@ Given the following expanded document:
     {"@id": "http://example.com/iri"}
   ]
 }]
-```
+```json
 
 And the following context:
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -9436,7 +9432,7 @@ And the following context:
     "notype": {"@id": "http://example.com/notype", "@type": "@none"}
   }
 }
-```
+```text
 
 The compacted version will use string values for the defined terms
 when the values match the [term definition](#dfn-term-definition).
@@ -9444,7 +9440,7 @@ Also, the other native values,
 `1` and `true`,
 can be represented without defining a specific type mapping.
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -9464,7 +9460,7 @@ can be represented without defining a specific type mapping.
     {"@id": "http://example.com/iri"}
   ]
 }
-```
+```text
 
 #### 5.2.7 Representing Singular Values as Arrays
 
@@ -9483,7 +9479,7 @@ for example looking at our language-map example from [§ 5.2.5 Indexing Values]
 
 Given the following expanded document:
 
-```
+```json
 [{
   "@id": "http://example.com/queen",
   "http://example.com/vocab/label": [
@@ -9492,11 +9488,11 @@ Given the following expanded document:
     {"@value": "Ihre Majestät", "@language": "de"}
   ]
 }]
-```
+```json
 
 And the following context:
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -9506,13 +9502,13 @@ And the following context:
     }
   }
 }
-```
+```text
 
 The compacted version uses a [map](https://infra.spec.whatwg.org/#ordered-map) value
 for "label" as before,
 and the values are the relevant [strings](https://infra.spec.whatwg.org/#javascript-string) but always represented using an [array](https://infra.spec.whatwg.org/#list).
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -9527,7 +9523,7 @@ and the values are the relevant [strings](https://infra.spec.whatwg.org/#javascr
     "de": [ "Die Königin", "Ihre Majestät" ]
   }
 }
-```
+```sparql
 
 #### 5.2.8 Term Selection
 
@@ -9544,7 +9540,7 @@ the compaction algorithm will compact using the absolute [IRI](https://tools.iet
 
 Given the following expanded document:
 
-```
+```json
 [{
   "http://example.com/vocab/property": [
     {"@value": "string"},
@@ -9557,11 +9553,11 @@ Given the following expanded document:
     {"@id": "http://example.com/some-location"}
   ]
 }]
-```
+```json
 
 And the following context:
 
-```
+```json
 {
   "@context": {
     "vocab":   "http://example.com/vocab/",
@@ -9573,13 +9569,13 @@ And the following context:
     "iri":     {"@id": "vocab:property", "@type": "@id"}
   }
 }
-```
+```text
 
 Note that the values that match the "integer", "english", "date", and "iri"
 terms are properly matched, and that everything that does not explicitly
 match is added to a property created using a [compact IRI](#dfn-compact-iri).
 
-```
+```json
 {
   "@context": {
     "vocab":   "http://example.com/vocab/",
@@ -9599,7 +9595,7 @@ match is added to a property created using a [compact IRI](#dfn-compact-iri).
   "date": "2018-02-17",
   "iri": "http://example.com/some-location"
 }
-```
+```text
 
 ### 5.3 Flattened Document Form
 
@@ -9618,7 +9614,7 @@ For example, assume the following JSON-LD input document:
 
 [Example 137](#sample-expanded-json-ld-document-to-be-flattened): Sample JSON-LD document to be flattened
 
-```
+```json
 {
   "@context": {
     "name": "http://xmlns.com/foaf/0.1/name",
@@ -9635,7 +9631,7 @@ For example, assume the following JSON-LD input document:
     }
   ]
 }
-```
+```text
 
 Running the JSON-LD [Flattening algorithm](https://www.w3.org/TR/json-ld11-api/#flattening-algorithm) against the JSON-LD input document in
 the example above and using the same context would result in the following
@@ -9645,7 +9641,7 @@ output:
 
 [Open in playground](https://json-ld.org/playground/#startTab=tab-flattened&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fname%22%2C%0A%20%20%20%20%22knows%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fknows%22%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fme.markus-lanthaler.com%2F%22%2C%0A%20%20%22name%22%3A%20%22Markus%20Lanthaler%22%2C%0A%20%20%22knows%22%3A%20%5B%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2Fabout%23manu%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Manu%20Sporny%22%0A%20%20%20%20%7D%2C%20%7B%0A%20%20%20%20%20%20%22name%22%3A%20%22Dave%20Longley%22%0A%20%20%20%20%7D%0A%20%20%5D%0A%7D&context=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22name%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fname%22%2C%0A%20%20%20%20%22knows%22%3A%20%22http%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2Fknows%22%0A%20%20%7D%2C%0A%20%20%22%40id%22%3A%20%22http%3A%2F%2Fme.markus-lanthaler.com%2F%22%2C%0A%20%20%22name%22%3A%20%22Markus%20Lanthaler%22%2C%0A%20%20%22knows%22%3A%20%5B%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fmanu.sporny.org%2Fabout%23manu%22%2C%0A%20%20%20%20%20%20%22name%22%3A%20%22Manu%20Sporny%22%0A%20%20%20%20%7D%2C%20%7B%0A%20%20%20%20%20%20%22name%22%3A%20%22Dave%20Longley%22%0A%20%20%20%20%7D%0A%20%20%5D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "name": "http://xmlns.com/foaf/0.1/name",
@@ -9666,7 +9662,7 @@ output:
     "name": "Dave Longley"
   }]
 }
-```
+```json
 
 [JSON-LD's media type](#application-ld-json) defines a
 `profile` parameter which can be used to signal or request
@@ -9690,7 +9686,7 @@ For example, assume the following JSON-LD frame:
 
 [Example 139](#sample-library-frame): Sample library frame
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -9704,7 +9700,7 @@ For example, assume the following JSON-LD frame:
     }
   }
 }
-```
+```sparql
 
 This [frame](https://www.w3.org/TR/json-ld11-framing/#dfn-frame) document describes an embedding structure that would place
 objects with type *Library* at the top, with objects of
@@ -9717,7 +9713,7 @@ When using a flattened set of objects that match the frame components:
 
 [Example 140](#sample-flattened-library-objects): Flattened library objects
 
-```
+```json
 {
   "@context": {
     "@vocab": "http://example.org/",
@@ -9740,7 +9736,7 @@ When using a flattened set of objects that match the frame components:
     "title": "The Introduction"
   }]
 }
-```
+```text
 
 The Frame Algorithm can create a new document which follows the structure
 of the frame:
@@ -9749,7 +9745,7 @@ of the frame:
 
 [Open in playground](https://json-ld.org/playground/#startTab=tab-framed&json-ld=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40vocab%22%3A%20%22http%3A%2F%2Fexample.org%2F%22%2C%0A%20%20%20%20%22contains%22%3A%20%7B%22%40type%22%3A%20%22%40id%22%7D%0A%20%20%7D%2C%0A%20%20%22%40graph%22%3A%20%5B%7B%0A%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Flibrary%22%2C%0A%20%20%20%20%22%40type%22%3A%20%22Library%22%2C%0A%20%20%20%20%22contains%22%3A%20%22http%3A%2F%2Fexample.org%2Flibrary%2Fthe-republic%22%0A%20%20%7D%2C%20%7B%0A%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Flibrary%2Fthe-republic%22%2C%0A%20%20%20%20%22%40type%22%3A%20%22Book%22%2C%0A%20%20%20%20%22creator%22%3A%20%22Plato%22%2C%0A%20%20%20%20%22title%22%3A%20%22The%20Republic%22%2C%0A%20%20%20%20%22contains%22%3A%20%22http%3A%2F%2Fexample.org%2Flibrary%2Fthe-republic%23introduction%22%0A%20%20%7D%2C%20%7B%0A%20%20%20%20%22%40id%22%3A%20%22http%3A%2F%2Fexample.org%2Flibrary%2Fthe-republic%23introduction%22%2C%0A%20%20%20%20%22%40type%22%3A%20%22Chapter%22%2C%0A%20%20%20%20%22description%22%3A%20%22An%20introductory%20chapter%20on%20The%20Republic.%22%2C%0A%20%20%20%20%22title%22%3A%20%22The%20Introduction%22%0A%20%20%7D%5D%0A%7D&context=%7B%7D&frame=%7B%0A%20%20%22%40context%22%3A%20%7B%0A%20%20%20%20%22%40version%22%3A%201.1%2C%0A%20%20%20%20%22%40vocab%22%3A%20%22http%3A%2F%2Fexample.org%2F%22%0A%20%20%7D%2C%0A%20%20%22%40type%22%3A%20%22Library%22%2C%0A%20%20%22contains%22%3A%20%7B%0A%20%20%20%20%22%40type%22%3A%20%22Book%22%2C%0A%20%20%20%20%22contains%22%3A%20%7B%0A%20%20%20%20%20%20%22%40type%22%3A%20%22Chapter%22%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D)
 
-```
+```json
 {
   "@context": {
     "@version": 1.1,
@@ -9770,7 +9766,7 @@ of the frame:
     "title": "The Republic"
   }
 }
-```
+```json
 
 [JSON-LD's media type](#application-ld-json) defines a
 `profile` parameter which can be used to signal or request
@@ -9784,7 +9780,8 @@ The first [script element](https://html.spec.whatwg.org/multipage/scripting.html
 of type `application/ld+json;profile=http://www.w3.org/ns/json-ld#frame`
 will be used to find a [frame](https://www.w3.org/TR/json-ld11-framing/#dfn-frame)..
 
-6. Modifying Behavior with Link Relationships
+1. Modifying Behavior with Link Relationships
+
 ---------------------------------------------
 
 Certain aspects of JSON-LD processing can be modified using
@@ -9849,12 +9846,11 @@ ordinary JSON document over HTTP:
 
 [Example 142](#example-142-referencing-a-json-ld-context-from-a-json-document-via-an-http-link-header): Referencing a JSON-LD context from a JSON document via an HTTP Link Header
 
-```
+```turtle
 GET /ordinary-json-document.json HTTP/1.1
 Host: example.com
 Accept: application/ld+json,application/json,*/*;q=0.1
-
-====================================
+# 
 
 HTTP/1.1 200 OK
 ...
@@ -9866,7 +9862,7 @@ Link: <https://json-ld.org/contexts/person.jsonld>; rel="http://www.w3.org/ns/js
   "homepage": "http://www.markus-lanthaler.com/",
   "image": "http://twitter.com/account/profile_image/markuslanthaler"
 }
-```
+```text
 
 Please note that [JSON-LD documents](#dfn-json-ld-document)
 served with the `application/ld+json`
@@ -9900,12 +9896,11 @@ ordinary HTTP document over HTTP:
 
 [Example 143](#example-143-specifying-an-alternate-location-via-an-http-link-header): Specifying an alternate location via an HTTP Link Header
 
-```
+```turtle
 GET /index.html HTTP/1.1
 Host: example.com
 Accept: application/ld+json,application/json,*/*;q=0.1
-
-====================================
+#  (continued)
 
 HTTP/1.1 200 OK
 ...
@@ -9920,12 +9915,13 @@ Link: <alternate.jsonld>; rel="alternate"; type="application/ld+json"
     <p>This is the primary entrypoint for a vocabulary</p>
   </body>
 </html>
-```
+```json
 
 A processor seeing a non-JSON result will note the presence of the link header
 and load that document instead.
 
-7. Embedding JSON-LD in HTML Documents
+1. Embedding JSON-LD in HTML Documents
+
 --------------------------------------
 
 Note
@@ -9947,7 +9943,7 @@ Expanded (Result)
 Statements
 Turtle
 
-```
+```turtle
 <script type="application/ld+json">
 {
   "@context": "https://json-ld.org/contexts/person.jsonld",
@@ -9957,9 +9953,9 @@ Turtle
   "spouse": "http://dbpedia.org/resource/Cynthia_Lennon"
 }
 </script>
-```
+```json
 
-```
+```json
 [{
   "@id": "http://dbpedia.org/resource/John_Lennon",
   "http://xmlns.com/foaf/0.1/name": [{"@value": "John Lennon"}],
@@ -9970,7 +9966,7 @@ Turtle
     {"@id": "http://dbpedia.org/resource/Cynthia_Lennon"}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- |
@@ -9978,7 +9974,7 @@ Turtle
 | http://dbpedia.org/resource/John\_Lennon | schema:birthDate | 1940-10-09 | xsd:date |
 | http://dbpedia.org/resource/John\_Lennon | schema:spouse | http://dbpedia.org/resource/Cynthia\_Lennon |  |
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix schema: <http://schema.org/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -9986,7 +9982,7 @@ Turtle
 <http://dbpedia.org/resource/John_Lennon> foaf:name "John Lennon";
    schema:birthDate "1940-10-09"^^xsd:date;
    schema:spouse <http://dbpedia.org/resource/Cynthia_Lennon> .
-```
+```text
 
 Defining how such data may be used is beyond the scope of this specification.
 The embedded JSON-LD document might be extracted as is or, e.g., be
@@ -10009,7 +10005,7 @@ HTML Embedded (Input)
 Statements
 Turtle (Result)
 
-```
+```turtle
 <p>Data describing Dave</p>
 <script type="application/ld+json">
 {
@@ -10029,7 +10025,7 @@ Turtle (Result)
   "name": "Gregg Kellogg"
 }
 </script>
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
@@ -10038,7 +10034,7 @@ Turtle (Result)
 | https://greggkellogg.net/foaf#me | rdf:type | schema:Person |
 | https://greggkellogg.net/foaf#me | schema:name | Gregg Kellogg |
 
-```
+```sparql
 @prefix schema: <http://schema.org/> .
 
 <https://digitalbazaar.com/author/dlongley/> a schema:Person;
@@ -10046,7 +10042,7 @@ Turtle (Result)
 
 <https://greggkellogg.net/foaf#me> a schema:Person;
    schema:name "Gregg Kellogg" .
-```
+```text
 
 ### 7.1 Inheriting base IRI from HTML's `base` element
 
@@ -10065,7 +10061,7 @@ Expanded (Result)
 Statements
 Turtle
 
-```
+```turtle
 <html>
   <head>
     <base href="http://dbpedia.org/resource/"/>
@@ -10080,9 +10076,9 @@ Turtle
     </script>
   </head>
 </html>
-```
+```json
 
-```
+```json
 [{
   "@id": "http://dbpedia.org/resource/John_Lennon",
   "http://xmlns.com/foaf/0.1/name": [{"@value": "John Lennon"}],
@@ -10093,7 +10089,7 @@ Turtle
     {"@id": "http://dbpedia.org/resource/Cynthia_Lennon"}
   ]
 }]
-```
+```text
 
 | Subject | Property | Value | Value Type |
 | --- | --- | --- | --- |
@@ -10101,7 +10097,7 @@ Turtle
 | http://dbpedia.org/resource/John\_Lennon | schema:birthDate | 1940-10-09 | xsd:date |
 | http://dbpedia.org/resource/John\_Lennon | schema:spouse | http://dbpedia.org/resource/Cynthia\_Lennon |  |
 
-```
+```sparql
 @base <http://dbpedia.org/resource/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix schema: <http://schema.org/> .
@@ -10110,7 +10106,7 @@ Turtle
 <John_Lennon> foaf:name "John Lennon";
    schema:birthDate "1940-10-09"^^xsd:date;
    schema:spouse <Cynthia_Lennon> .
-```
+```text
 
 HTML allows for [Dynamic changes to base URLs](https://html.spec.whatwg.org/multipage/urls-and-fetching.html#dynamic-changes-to-base-urls).
 This specification does not require any specific behavior,
@@ -10149,7 +10145,7 @@ Compacted (Input)
 Expanded (Result)
 Turtle
 
-```
+```turtle
 <script type="application/ld+json">
 {
   "@context": "http://schema.org/",
@@ -10158,9 +10154,9 @@ Turtle
   "description": "Issues list such as unescaped &lt;/script&gt; or --&gt;"
 }
 </script>
-```
+```json
 
-```
+```json
 [{
   "@type": ["http://schema.org/WebPageElement"],
   "http://schema.org/name": [{"@value": "Encoding Issues"}],
@@ -10168,16 +10164,16 @@ Turtle
     {"@value": "Issues list such as unescaped &lt;/script&gt; or --&gt;"}
   ]
 }]
-```
+```json
 
-```
+```sparql
 @prefix schema: <http://schema.org/> .
 
 [ a schema:WebPageElement;
   schema:name "Encoding Issues";
   schema:description "Issues list such as unescaped &lt;/script&gt; or --&gt;"
 ] .
-```
+```text
 
 ### 7.3 Locating a Specific JSON-LD Script Element
 
@@ -10202,7 +10198,7 @@ Turtle
 
 Targeting a script element with id "gregg"
 
-```
+```turtle
 <p>Data describing Dave</p>
 <script id="dave" type="application/ld+json">
 {
@@ -10222,21 +10218,22 @@ Targeting a script element with id "gregg"
   "name": "Gregg Kellogg"
 }
 </script>
-```
+```text
 
 | Subject | Property | Value |
 | --- | --- | --- |
 | https://greggkellogg.net/foaf#me | rdf:type | schema:Person |
 | https://greggkellogg.net/foaf#me | schema:name | Gregg Kellogg |
 
-```
+```sparql
 @prefix schema: <http://schema.org/> .
 
 <https://greggkellogg.net/foaf#me> a schema:Person;
    schema:name "Gregg Kellogg" .
-```
+```text
 
-8. Data Model
+1. Data Model
+
 -------------
 
 JSON-LD is a serialization format for Linked Data based on JSON.
@@ -10282,11 +10279,11 @@ following summary is provided:
 
   [Example 149](#example-149-illegal-unconnected-node): Illegal Unconnected Node
 
-  ```
+```json
   {
     "@id": "http://example.org/1"
   }
-  ```
+```text
 
   Note
 
@@ -10347,8 +10344,6 @@ the data represented by a JSON document.
 The image depicts a linked data dataset with a default graph
 and two named graphs.
 
-
-
 Figure 1 An illustration of a linked data dataset.  
 A [description of the linked data dataset
 diagram](#fig-linked-data-graph-descr) is available in the Appendix. Image available in
@@ -10365,7 +10360,7 @@ Expanded (Result)
 Statements
 TriG
 
-```
+```json
 {
   "@context": [
     "http://schema.org/",
@@ -10399,9 +10394,9 @@ TriG
     }
   }]
 }
-```
+```json
 
-```
+```json
 [{
   "@id": "http://example.com/people/alice",
   "http://schema.org/name": [{"@value": "Alice"}],
@@ -10433,7 +10428,7 @@ TriG
     }]
   }]
 }]
-```
+```text
 
 | Graph | Subject | Property | Value | Language |
 | --- | --- | --- | --- | --- |
@@ -10447,7 +10442,7 @@ TriG
 | http://example.com/graphs/2 | \_:b0 | schema:name | Mary |  |
 | http://example.com/graphs/2 | \_:b0 | schema:sibling | http://example.com/people/bob |  |
 
-```
+```sparql
 @prefix schema: <http://schema.org/> .
 
 <http://example.com/people/alice> schema:knows <http://example.com/people/bob>;
@@ -10465,7 +10460,7 @@ TriG
     schema:sibling <http://example.com/people/bob>
   ] .
 }
-```
+```sparql
 
 Note
 
@@ -10473,7 +10468,8 @@ Note the use of `@graph` at the outer-most level to describe three top-level
 resources (two of them [named graphs](https://www.w3.org/TR/rdf11-concepts/#dfn-named-graph)). The named graphs use `@graph` in addition
 to `@id` to provide the name for each graph.
 
-9. JSON-LD Grammar
+1. JSON-LD Grammar
+
 ------------------
 
 This section restates the syntactic conventions described in the
@@ -11351,7 +11347,8 @@ Within [local contexts](#dfn-local-context) and [expanded term definitions](#dfn
     This keyword is described further in [§ 9.15 Context Definitions](#context-definitions),
     and [§ 4.1.2 Default Vocabulary](#default-vocabulary).
 
-10. Relationship to RDF
+1. Relationship to RDF
+
 -----------------------
 
 JSON-LD is a
@@ -11452,7 +11449,7 @@ For example, consider the following JSON-LD document in compact form:
 
 [Example 151](#example-151-sample-json-ld-document): Sample JSON-LD document
 
-```
+```json
 {
   "@context": {
     "name": "http://xmlns.com/foaf/0.1/name",
@@ -11469,7 +11466,7 @@ For example, consider the following JSON-LD document in compact form:
     }
   ]
 }
-```
+```text
 
 Running the JSON-LD [Expansion](https://www.w3.org/TR/json-ld11-api/#expansion-algorithm) and [Flattening](https://www.w3.org/TR/json-ld11-api/#flattening-algorithm) algorithms against the
 JSON-LD input document in the example above would result in the
@@ -11477,7 +11474,7 @@ following output:
 
 [Example 152](#example-152-flattened-and-expanded-form-for-the-previous-example): Flattened and expanded form for the previous example
 
-```
+```json
 [
   {
     "@id": "_:b0",
@@ -11494,7 +11491,7 @@ following output:
     ]
   }
 ]
-```
+```text
 
 Deserializing this to RDF now is a straightforward process of turning
 each [node object](#dfn-node-object) into one or more [triples](https://www.w3.org/TR/rdf11-concepts/#dfn-rdf-triple). This can be
@@ -11502,7 +11499,7 @@ expressed in Turtle as follows:
 
 [Example 153](#example-153-turtle-representation-of-expanded-flattened-document): Turtle representation of expanded/flattened document
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 _:b0 foaf:name "Dave Longley" .
@@ -11511,7 +11508,7 @@ _:b0 foaf:name "Dave Longley" .
 
 <http://me.markus-lanthaler.com/> foaf:name "Markus Lanthaler" ;
     foaf:knows <http://manu.sporny.org/about#manu>, _:b0 .
-```
+```sparql
 
 The process of serializing RDF as JSON-LD can be thought of as the
 inverse of this last step, creating an expanded JSON-LD document closely
@@ -11606,7 +11603,7 @@ lower case when creating the datatype IRI.
 The following example shows two statements with literal values of `i18n:ar-EG_rtl`,
 which encodes the language tag `ar-EG` and the base direction `rtl`.
 
-```
+```sparql
 @prefix ex: <http://example.org/> .
 @prefix i18n: <https://www.w3.org/ns/i18n#> .
 
@@ -11615,7 +11612,7 @@ which encodes the language tag `ar-EG` and the base direction `rtl`.
   ex:title "HTML و CSS: تصميم و إنشاء مواقع الويب"^^i18n:ar-eg_rtl;
   ex:publisher "مكتبة"^^i18n:ar-eg_rtl
 ] .
-```
+```text
 
 See [§ 4.2.4.1 Base Direction](#base-direction) for more details
 on using [base direction](#dfn-base-direction) for strings.
@@ -11654,10 +11651,10 @@ lower case when creating the datatype IRI.
 The following example shows two statements with compound literals
 representing strings with the [language tag](https://www.w3.org/TR/rdf11-concepts/#dfn-language-tag) `ar-EG` and [base direction](#dfn-base-direction) `rtl`.
 
-```
+```sparql
 @prefix ex: <http://example.org/> .
 
-# Note that this version preserves the base direction using a bnode structure.
+# Note that this version preserves the base direction using a bnode structure. (continued)
 [
   ex:title [
     rdf:value "HTML و CSS: تصميم و إنشاء مواقع الويب",
@@ -11670,12 +11667,13 @@ representing strings with the [language tag](https://www.w3.org/TR/rdf11-concept
     rdf:direction "rtl"
   ]
 ] .
-```
+```text
 
 See [§ 4.2.4.1 Base Direction](#base-direction) for more details
 on using [base direction](#dfn-base-direction) for strings.
 
-11. Security Considerations
+1. Security Considerations
+
 ---------------------------
 
 See, [Security Considerations](#iana-security) in [§ C. IANA Considerations](#iana-considerations).
@@ -11686,7 +11684,8 @@ Future versions of this specification
 may incorporate subresource integrity [[SRI](#bib-sri "Subresource Integrity")] as a means of ensuring that cached and retrieved
 content matches data retrieved from remote servers; see [issue 86](https://github.com/w3c/json-ld-syntax/issues/86).
 
-12. Privacy Considerations
+1. Privacy Considerations
+
 --------------------------
 
 The retrieval of external contexts can expose the operation of a JSON-LD processor,
@@ -11697,7 +11696,8 @@ To protect against this, publishers should consider caching remote contexts for 
 or use the [documentLoader](https://www.w3.org/TR/json-ld11-api/#dom-jsonldoptions-documentloader)
 to maintain a local version of such contexts.
 
-13. Internationalization Considerations
+1. Internationalization Considerations
+
 ---------------------------------------
 
 As JSON-LD uses the RDF data model, it is restricted by design in its ability to
@@ -11725,8 +11725,7 @@ based on the content of the string.
 See [[string-meta](#bib-string-meta "Strings on the Web: Language and Direction Metadata")] for a discussion best practices for
 identifying language and base direction for strings used on the Web.
 
-A. Image Descriptions
----------------------
+## A. Image Descriptions
 
 *This section is non-normative.*
 
@@ -11769,8 +11768,7 @@ named `http://example.com/people/bob` and the other unnamed.
 The two resources related to each other using `schema:sibling` relationship
 with the second named "Mary".
 
-B. Relationship to Other Linked Data Formats
---------------------------------------------
+## B. Relationship to Other Linked Data Formats
 
 *This section is non-normative.*
 
@@ -11794,17 +11792,17 @@ The JSON-LD context has direct equivalents for the Turtle
 
 [Example 154](#example-154-a-set-of-statements-serialized-in-turtle): A set of statements serialized in Turtle
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://manu.sporny.org/about#manu> a foaf:Person;
   foaf:name "Manu Sporny";
   foaf:homepage <http://manu.sporny.org/> .
-```
+```json
 
 [Example 155](#example-155-the-same-set-of-statements-serialized-in-json-ld): The same set of statements serialized in JSON-LD
 
-```
+```json
 {
   "@context": {
     "foaf": "http://xmlns.com/foaf/0.1/"
@@ -11814,7 +11812,7 @@ The JSON-LD context has direct equivalents for the Turtle
   "foaf:name": "Manu Sporny",
   "foaf:homepage": { "@id": "http://manu.sporny.org/" }
 }
-```
+```text
 
 #### B.1.2 Embedding
 
@@ -11823,18 +11821,18 @@ Both [[Turtle](#bib-turtle "RDF 1.1 Turtle")] and JSON-LD allow embedding, altho
 
 [Example 156](#example-156-embedding-in-turtle): Embedding in Turtle
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://manu.sporny.org/about#manu>
   a foaf:Person;
   foaf:name "Manu Sporny";
   foaf:knows [ a foaf:Person; foaf:name "Gregg Kellogg" ] .
-```
+```json
 
 [Example 157](#example-157-same-embedding-example-in-json-ld): Same embedding example in JSON-LD
 
-```
+```json
 {
   "@context": {
     "foaf": "http://xmlns.com/foaf/0.1/"
@@ -11847,7 +11845,7 @@ Both [[Turtle](#bib-turtle "RDF 1.1 Turtle")] and JSON-LD allow embedding, altho
     "foaf:name": "Gregg Kellogg"
   }
 }
-```
+```text
 
 #### B.1.3 Conversion of native data types
 
@@ -11864,7 +11862,7 @@ literal. All typed literals are in canonical lexical form.
 
 [Example 158](#example-158-json-ld-using-native-data-types-for-numbers-and-boolean-values): JSON-LD using native data types for numbers and boolean values
 
-```
+```json
 {
   "@context": {
     "ex": "http://example.com/vocab#"
@@ -11873,18 +11871,18 @@ literal. All typed literals are in canonical lexical form.
   "ex:numbers": [ 14, 2.78 ],
   "ex:booleans": [ true, false ]
 }
-```
+```json
 
 [Example 159](#example-159-same-example-in-turtle-using-typed-literals): Same example in Turtle using typed literals
 
-```
+```sparql
 @prefix ex: <http://example.com/vocab#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 <http://example.com/>
   ex:numbers "14"^^xsd:integer, "2.78E0"^^xsd:double ;
   ex:booleans "true"^^xsd:boolean, "false"^^xsd:boolean .
-```
+```text
 
 Note
 
@@ -11900,17 +11898,17 @@ Both JSON-LD and [[Turtle](#bib-turtle "RDF 1.1 Turtle")] can represent sequenti
 
 [Example 160](#example-160-a-list-of-values-in-turtle): A list of values in Turtle
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://example.org/people#joebob> a foaf:Person;
   foaf:name "Joe Bob";
   foaf:nick ( "joe" "bob" "jaybee" ) .
-```
+```json
 
 [Example 161](#example-161-same-example-with-a-list-of-values-in-json-ld): Same example with a list of values in JSON-LD
 
-```
+```json
 {
   "@context": {
     "foaf": "http://xmlns.com/foaf/0.1/"
@@ -11922,7 +11920,7 @@ Both JSON-LD and [[Turtle](#bib-turtle "RDF 1.1 Turtle")] can represent sequenti
     "@list": [ "joe", "bob", "jaybee" ]
   }
 }
-```
+```sparql
 
 ### B.2 RDFa
 
@@ -11933,7 +11931,7 @@ homepages in RDFa [[RDFA-CORE](#bib-rdfa-core "RDFa Core 1.1 - Third Edition")].
 
 [Example 162](#example-162-rdfa-fragment-that-describes-three-people): RDFa fragment that describes three people
 
-```
+```sparql
 <div prefix="foaf: http://xmlns.com/foaf/0.1/">
    <ul>
       <li typeof="foaf:Person">
@@ -11953,14 +11951,14 @@ homepages in RDFa [[RDFA-CORE](#bib-rdfa-core "RDFa Core 1.1 - Third Edition")].
       </li>
    </ul>
 </div>
-```
+```sparql
 
 An example JSON-LD implementation using a single [context](#dfn-context) is
 described below.
 
 [Example 163](#example-163-same-description-in-json-ld-context-shared-among-node-objects): Same description in JSON-LD (context shared among node objects)
 
-```
+```json
 {
   "@context": {
     "foaf": "http://xmlns.com/foaf/0.1/",
@@ -11982,7 +11980,7 @@ described below.
     }
   ]
 }
-```
+```sparql
 
 ### B.3 Microdata
 
@@ -11993,7 +11991,7 @@ a Microdata Work item.
 
 [Example 164](#example-164-html-that-describes-a-book-using-microdata): HTML that describes a book using microdata
 
-```
+```turtle
 <dl itemscope
     itemtype="http://purl.org/vocab/frbr/core#Work"
     itemid="http://purl.oreilly.com/works/45U8QJGZSQKDH8N">
@@ -12017,7 +12015,7 @@ a Microdata Work item.
   Ebook
  </dd>
 </dl>
-```
+```text
 
 Note that the JSON-LD representation of the Microdata information stays
 true to the desires of the Microdata community to avoid contexts and
@@ -12025,7 +12023,7 @@ instead refer to items by their full [IRI](https://tools.ietf.org/html/rfc3987#s
 
 [Example 165](#example-165-same-book-description-in-json-ld-avoiding-contexts): Same book description in JSON-LD (avoiding contexts)
 
-```
+```json
 [
   {
     "@id": "http://purl.oreilly.com/works/45U8QJGZSQKDH8N",
@@ -12047,10 +12045,9 @@ instead refer to items by their full [IRI](https://tools.ietf.org/html/rfc3987#s
     "http://purl.org/dc/elements/1.1/type": {"@id": "http://purl.oreilly.com/product-types/EBOOK"}
   }
 ]
-```
+```json
 
-C. IANA Considerations
-----------------------
+## C. IANA Considerations
 
 This section has been submitted to the Internet Engineering Steering
 Group (IESG) for review, approval, and registration with IANA.
@@ -12213,22 +12210,22 @@ to describe different acceptable responses.
 
 [Example 166](#example-166-http-request-with-profile-requesting-an-expanded-document): HTTP Request with profile requesting an expanded document
 
-```
+```json
 GET /ordinary-json-document.json HTTP/1.1
 Host: example.com
 Accept: application/ld+json;profile=http://www.w3.org/ns/json-ld#expanded
-```
+```text
 
 Requests the server to return the requested resource as JSON-LD
 in [expanded document form](#dfn-expanded-document-form).
 
 [Example 167](#example-167-http-request-with-profile-requesting-a-compacted-document): HTTP Request with profile requesting a compacted document
 
-```
+```json
 GET /ordinary-json-document.json HTTP/1.1
 Host: example.com
 Accept: application/ld+json;profile=http://www.w3.org/ns/json-ld#compacted
-```
+```text
 
 Requests the server to return the requested resource as JSON-LD
 in [compacted document form](#dfn-compacted-document-form).
@@ -12237,11 +12234,11 @@ using an application-specific default context.
 
 [Example 168](#example-168-http-request-with-profile-requesting-a-compacted-document-with-a-reference-to-a-compaction-context): HTTP Request with profile requesting a compacted document with a reference to a compaction context
 
-```
+```json
 GET /ordinary-json-document.json HTTP/1.1
 Host: example.com
 Accept: application/ld+json;profile="http://www.w3.org/ns/json-ld#flattened http://www.w3.org/ns/json-ld#compacted"
-```
+```text
 
 Requests the server to return the requested resource as JSON-LD
 in both [compacted document form](#dfn-compacted-document-form)
@@ -12249,8 +12246,7 @@ and [flattened document form](#dfn-flattened-document-form).
 Note that as whitespace is used to separate the two URIs, they
 are enclosed in double quotes (`"`).
 
-D. Open Issues
---------------
+## D. Open Issues
 
 *This section is non-normative.*
 
@@ -12280,8 +12276,7 @@ Suggestion about `@prefix`.
 
 Type Coercion / Node Conversion: @coerce keyword or similar.
 
-E. Changes since 1.0 Recommendation of 16 January 2014
-------------------------------------------------------
+## E. Changes since 1.0 Recommendation of 16 January 2014
 
 *This section is non-normative.*
 
@@ -12327,8 +12322,7 @@ E. Changes since 1.0 Recommendation of 16 January 2014
 
 Additionally, see [§ F. Changes since JSON-LD Community Group Final Report](#changes-from-cg).
 
-F. Changes since JSON-LD Community Group Final Report
------------------------------------------------------
+## F. Changes since JSON-LD Community Group Final Report
 
 *This section is non-normative.*
 
@@ -12381,8 +12375,7 @@ F. Changes since JSON-LD Community Group Final Report
 * When creating an `i18n` datatype or `rdf:CompoundLiteral`, [language tags](https://www.w3.org/TR/rdf11-concepts/#dfn-language-tag) are
   normalized to lower case to improve interoperability between implementations.
 
-G. Changes since Candidate Release of 12 December 2019
-------------------------------------------------------
+## G. Changes since Candidate Release of 12 December 2019
 
 *This section is non-normative.*
 
@@ -12398,8 +12391,7 @@ G. Changes since Candidate Release of 12 December 2019
   and `rdf:CompoundLiteral` class in [§ 10.4 The `rdf:CompoundLiteral` class and the `rdf:language` and `rdf:direction` properties](#the-rdf-compoundliteral-class-and-the-rdf-language-and-rdf-direction-properties)
   to normalize language tags to lowercase when generating RDF.
 
-H. Changes since Proposed Recommendation Release of 7 May 2020
---------------------------------------------------------------
+## H. Changes since Proposed Recommendation Release of 7 May 2020
 
 *This section is non-normative.*
 
@@ -12409,8 +12401,7 @@ H. Changes since Proposed Recommendation Release of 7 May 2020
   which was unintentionally diverging from the normative description of the `@embed` keyword in [JSON-LD 1.1 Framing](https://www.w3.org/TR/json-ld11-framing/).
   This is in response to [Issue 358](https://github.com/w3c/json-ld-syntax/issues/358).
 
-I. Acknowledgements
--------------------
+## I. Acknowledgements
 
 *This section is non-normative.*
 
@@ -12446,8 +12437,7 @@ Additionally, the following people were members of the Working Group at the time
 
 A large amount of thanks goes out to the [JSON-LD Community Group](https://www.w3.org/community/json-ld/) participants who worked through many of the technical issues on the mailing list and the weekly telecons: Chris Webber, David Wood, Drummond Reed, Eleanor Joslin, Fabien Gandon, Herm Fisher, Jamie Pitts, Kim Hamilton Duffy, Niklas Lindström, Paolo Ciccarese, Paul Frazze, Paul Warren, Reto Gmür, Rob Trainer, Ted Thibodeau Jr., and Victor Charpenay.
 
-J. References
--------------
+## J. References
 
 ### J.1 Normative references
 

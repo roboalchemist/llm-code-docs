@@ -9,8 +9,7 @@
 RDF/JS: Query specification
 
 
-Abstract
---------
+## Abstract
 
 The scope of this specification is to provide a way to query over RDF quads in JavaScript, as defined in the [RDF/JS: Data model specification](http://rdf.js.org/data-model-spec/#quad-interface).
 It contains high-level interfaces for libraries that want to expose querying capabilities,
@@ -24,16 +23,14 @@ interface to enable interoperability of RDF querying libraries.
 **Currently, this specification provides high-level interfaces such as `Queryable` for exposing querying capabilities,
 and low-level interfaces such as `FilterableSource` for interoperability across query engines.**
 
-Design elements and principles
-------------------------------
+## Design elements and principles
 
 * *All [design elements and principles from the RDF/JS data model specification](http://rdf.js.org/data-model-spec/#design-elements-and-principles) apply here as well.*
 * Interfaces do not conflict with other RDF/JS interfaces, and users and implementers of purely other RDF/JS interfaces should not be aware of the interfaces in this specification if they are not needed.
 * Data interfaces should not contain methods, as to enable straightforward transmission over low-level communication protocols such as Web Assembly.
 * To enable querying over large graphs, interfaces should handle quads in a streaming manner, such as the [RDF/JS stream interfaces](https://rdf.js.org/stream-spec/).
 
-SPARQL Queryable interfaces
----------------------------
+## SPARQL Queryable interfaces
 
 This section introduces queryable interfaces that can be implemented by SPARQL-constrained query engines.
 These interfaces guarantees that result objects are of the expected type as defined by the SPARQL spec,
@@ -41,7 +38,7 @@ and is often more convenient to use compared to the general queryable interfaces
 
 ### StringSparqlQueryable interface
 
-```
+```typescript
     interface StringSparqlQueryable {
       optional Promise<Stream<Bindings>> queryBindings(String query, QueryStringContext? context);
       optional Promise<Stream<Quad>> queryQuads(String query, QueryStringContext? context);
@@ -71,7 +68,7 @@ context is an optional context in which query execution options can be passed.
 
 ### AlgebraSparqlQueryable interface
 
-```
+```typescript
     interface AlgebraSparqlQueryable {
       optional Promise<Stream<Bindings>> queryBindings(Algebra query, QueryStringContext? context);
       optional Promise<Stream<Quad>> queryQuads(Algebra query, QueryStringContext? context);
@@ -98,14 +95,13 @@ queryVoid() is an optional method that asynchronously returns a `void`.
 query is a query `Algebra` object that SHOULD be a SPARQL update query.
 context is an optional context in which query execution options can be passed.
 
-Queryable interfaces
---------------------
+## Queryable interfaces
 
 This section introduces interfaces that can be implemented by query engines to make them expose a query execution interface.
 
 ### StringQueryable interface
 
-```
+```typescript
     interface StringQueryable {
       Promise<Query> query(String query, QueryStringContext? context);
     };
@@ -119,7 +115,7 @@ context is an optional context in which query execution options can be passed.
 
 ### AlgebraQueryable interface
 
-```
+```typescript
     interface AlgebraQueryable {
       Promise<Query> query(Algebra query, QueryAlgebraContext? context);
     };
@@ -131,14 +127,13 @@ query() asynchronously returns a new Query object that can be executed later.
 query is a query `Algebra` object.
 context is an optional context in which query execution options can be passed.
 
-Query interfaces
-----------------
+## Query interfaces
 
 This section introduces query interfaces that act as intermediary objects that represent queries that can be executed.
 
 ### Query interface
 
-```
+```typescript
     interface Query {
       readonly attribute string resultType;
       Promise<any> execute(any options);
@@ -154,7 +149,7 @@ execute() asynchronously returns the query result, where the signature depends o
 
 ### QueryBindings interface
 
-```
+```typescript
     interface QueryBindings {
       readonly attribute string resultType;
       Promise<Stream<Bindings>> execute(QueryExecuteOptions<Variable>? options);
@@ -174,7 +169,7 @@ options is an optional argument in which desired metadata options can be passed.
 
 ### QueryQuads interface
 
-```
+```typescript
     interface QueryQuads {
       readonly attribute string resultType;
       Promise<Stream<Quad>> execute(QueryExecuteOptions<("subject" or "predicate" or "object" or "graph")>? options);
@@ -194,7 +189,7 @@ options is an optional argument in which desired metadata options can be passed.
 
 ### QueryBoolean interface
 
-```
+```typescript
     interface QueryBoolean {
       readonly attribute string resultType;
       Promise<boolean> execute();
@@ -209,7 +204,7 @@ execute() asynchronously returns a `boolean`.
 
 ### QueryVoid interface
 
-```
+```typescript
     interface QueryVoid {
       readonly attribute string resultType;
       Promise<void> execute();
@@ -224,7 +219,7 @@ execute() asynchronously returns nothing.
 
 ### QueryExecuteOptions interface
 
-```
+```typescript
     interface QueryExecuteOptions<OrderType> {
       readonly attribute Array<QueryOperationOrderTerm<OrderType>> order;
     };
@@ -236,7 +231,7 @@ order contains the desired order of query results.
 
 ### QueryMetadataOptions interface
 
-```
+```typescript
     interface QueryMetadataOptions {
       attribute ("estimate" or "exact")? cardinality;
       attribute boolean order;
@@ -252,14 +247,13 @@ order indicates if the `order` metadata field should be returned.
 
 availableOrders indicates if the `availableOrders` metadata field should be returned.
 
-Metadata interfaces
--------------------
+## Metadata interfaces
 
 This section introduces metadata interfaces that can contain additional information about the query execution process.
 
 ### QueryMetadata interface
 
-```
+```typescript
     interface QueryMetadata<OrderType> {
       readonly attribute QueryResultCardinality? cardinality;
       readonly attribute Array<QueryOperationOrderTerm<OrderType>>? order;
@@ -277,7 +271,7 @@ availableOrders is an array of alternative orders that may be requested when exe
 
 ### QueryResultCardinality interface
 
-```
+```typescript
     interface QueryResultCardinality {
       attribute ("estimate" or "exact") type;
       attribute unsigned long value;
@@ -293,7 +287,7 @@ value contains the cardinality value.
 
 ### QueryOperationOrderTerm interface
 
-```
+```typescript
     interface QueryOperationOrderTerm<OrderType> {
       attribute OrderType term;
       attribute ("asc" or "desc") direction;
@@ -309,7 +303,7 @@ which respectively refer to an ascending or descending order.
 
 ### QueryResultOrderCost interface
 
-```
+```typescript
     interface QueryResultOrderCost<OrderType> {
       attribute QueryOperationCost cost;
       attribute Array<QueryOperationOrderTerm<OrderType>> terms;
@@ -324,7 +318,7 @@ terms represents the order of terms in an ordering.
 
 ### QueryOperationCost interface
 
-```
+```typescript
     interface QueryOperationCost {
       attribute unsigned long iterations;
       attribute unsigned long persistedItems;
@@ -343,15 +337,14 @@ blockingItems is estimation of how many items block the stream. This is used to 
 
 requestTime is estimation of the time to request items from sources. This is used to determine the I/O cost.
 
-Query context interfaces
-------------------------
+## Query context interfaces
 
 This section introduces interfaces related to query contexts,
 which are an optional argument to queryable interfaces for passing additional in information to query engines.
 
 ### QueryContext interface
 
-```
+```typescript
     interface QueryContext {
       attribute Date? queryTimestamp;
     };
@@ -363,7 +356,7 @@ queryTimestamp The date that should be used by SPARQL operations such as `NOW()`
 
 ### QueryStringContext interface
 
-```
+```typescript
     interface QueryStringContext : QueryContext {
       attribute QueryFormat? queryFormat;
       attribute string? baseIRI;
@@ -378,7 +371,7 @@ baseIRI The base IRI for parsing the query.
 
 ### QueryAlgebraContext interface
 
-```
+```typescript
     interface QueryAlgebraContext : QueryContext {};
 ```
 
@@ -386,7 +379,7 @@ A `QueryAlgebraContext` is a context that can be passed together with a query `A
 
 ### QuerySourceContext interface
 
-```
+```typescript
     interface QuerySourceContext : QueryContext {
       attribute Array? sources;
     };
@@ -398,7 +391,7 @@ sources An array of data sources the query engine must use.
 
 ### QueryFormat interface
 
-```
+```typescript
     interface QueryFormat {
       attribute string language;
       attribute string version;
@@ -414,14 +407,12 @@ version The version of the query language, e.g. `"1.1"`.
 
 language An optional array of extensions on the query language. The representation of these extensions is undefined.
 
-Bindings interfaces
--------------------
+## Bindings interfaces
 
 This section introduces interfaces related to query result bindings.
 In SPARQL SELECT queries, these bindings correspond to [solution mappings](https://www.w3.org/TR/sparql11-query/#sparqlSolutions).
 
-Goals
------
+## Goals
 
 * Query engines should be able to interact with bindings created by different libraries.
 * Bindings are immutable
@@ -429,7 +420,7 @@ Goals
 
 ### Bindings interface
 
-```
+```typescript
     interface Bindings {
       iterable<(Variable, Term)>;
 
@@ -521,7 +512,7 @@ where the returned [Term](http://rdf.js.org/data-model-spec/#term-interface) is 
 
 ### BindingsFactory interface
 
-```
+```typescript
     interface BindingsFactory {
       Bindings bindings(Array<(Variable, Term)>? entries);
       Bindings fromBindings(Bindings bindings);
@@ -537,13 +528,11 @@ The following interfaces are experimental and will change in future versions of 
 
 `FilterableSource`, `FilterResult`, `QueryResultMetadata`, `QueryResultMetadataCount`, `QueryResultMetadataOptions`, `Expression`, `OperatorExpression`, `TermExpression`, `ExpressionFactory`
 
-Filter expression interfaces
-----------------------------
+## Filter expression interfaces
 
 This section introduces interfaces that enable quad sources to be filtered based on a declarative expression.
 
-Goals
------
+### Goals (Mapping Goals)
 
 * Query engines MUST be able to push down filters into sources.
 * Query engines MUST be able to detect what expressions are supported by sources.
@@ -551,7 +540,7 @@ Goals
 
 ### FilterableSource interface
 
-```
+```typescript
     interface FilterableSource {
       FilterResult matchExpression (
         optional Term? subject,
@@ -591,7 +580,7 @@ then the `Expression` MUST be instantiated for each variable's binding in the re
 
 ### FilterResult interface
 
-```
+```typescript
     interface FilterResult {
       Stream quads();
       Promise<QueryResultMetadata> metadata(optional QueryResultMetadataOptions? options);
@@ -612,7 +601,7 @@ If it returns `false`, `quads()` MUST return a stream emitting an error, and `me
 
 ### QueryResultMetadata interface
 
-```
+```typescript
     interface QueryResultMetadata {
       attribute QueryResultMetadataCount? count;
     };
@@ -625,7 +614,7 @@ count is an optional field that contains metadata about the number of quads in t
 
 ### QueryResultMetadataCount interface
 
-```
+```typescript
     interface QueryResultMetadataCount {
       attribute string type;
       attribute number value;
@@ -642,7 +631,7 @@ or the exact number of quads in the stream if `type = "exact"`.
 
 ### QueryResultMetadataOptions interface
 
-```
+```typescript
     interface QueryResultMetadataOptions {
       attribute string? count;
     };
@@ -656,7 +645,7 @@ If defined, this type MUST correspond to the type in `QueryResultMetadataCount`.
 
 ### Expression interface
 
-```
+```typescript
     interface Expression {
       attribute string expressionType;
     };
@@ -669,7 +658,7 @@ Possible values include `"operator"` and `"term"`.
 
 ### OperatorExpression interface
 
-```
+```typescript
     interface OperatorExpression {
       attribute string expressionType;
       attribute string operator;
@@ -689,7 +678,7 @@ The length of this array depends on the operator.
 
 ### TermExpression interface
 
-```
+```typescript
     interface TermExpression {
       attribute string expressionType;
       attribute Term term;
@@ -704,7 +693,7 @@ term contains a [`Term`](http://rdf.js.org/data-model-spec/#term-interface).
 
 ### ExpressionFactory interface
 
-```
+```typescript
     interface ExpressionFactory {
       OperatorExpression operatorExpression(string operator, sequence<Expression> args);
       TermExpression termExpression(Term term);
@@ -717,8 +706,7 @@ operatorExpression creates a new `OperatorExpression` instance for the given ope
 
 termExpression creates a new `TermExpression` instance for the given term.
 
-Expression operators
---------------------
+## Expression operators
 
 This section introduces a non-exhaustive list of operators that MAY be used in `OperatorExpression`.
 
@@ -726,8 +714,7 @@ Implementers MAY decide to support only a subset of these operators.
 
 We omit any formal semantics behind these operators in this specification, and refer to their [SPARQL 1.1. semantics](https://www.w3.org/TR/sparql11-query/).
 
-Relational operators
---------------------
+## Relational operators
 
 This section introduces [relational operators](https://www.w3.org/TR/sparql11-query/#OperatorMapping).
 
@@ -747,8 +734,7 @@ This section introduces [relational operators](https://www.w3.org/TR/sparql11-qu
 | `≤` | 1. `Term` 2. `Term` | `Literal (xsd:boolean)` | If the first value is lesser than or equal to the second value. If the terms are `Literal`s, their lexical value is compared |
 | `≥` | 1. `Term` 2. `Term` | `Literal (xsd:boolean)` | If the first value is greater than or equal to the second value. If the terms are `Literal`s, their lexical value is compared |
 
-Term functions
---------------
+## Term functions
 
 This section introduces [functions on RDF terms](https://www.w3.org/TR/sparql11-query/#func-rdfTerms).
 
@@ -768,8 +754,7 @@ This section introduces [functions on RDF terms](https://www.w3.org/TR/sparql11-
 | [`uuid`](https://www.w3.org/TR/sparql11-query/#func-uuid) | / | `NamedNode` | Returns a new `NamedNode` following the [UUID URN scheme](https://www.ietf.org/rfc/rfc4122.txt). |
 | [`struuid`](https://www.w3.org/TR/sparql11-query/#func-struuid) | / | `Literal` (xsd:string) | Returns a new `Literal` following the [UUID URN scheme](https://www.ietf.org/rfc/rfc4122.txt). |
 
-String functions
-----------------
+## String functions
 
 This section introduces [string functions](https://www.w3.org/TR/sparql11-query/#func-strings).
 
@@ -790,8 +775,7 @@ This section introduces [string functions](https://www.w3.org/TR/sparql11-query/
 | [`regex`](https://www.w3.org/TR/sparql11-query/#func-regex) | 1. `Literal (xsd:string)` 2. `Literal (xsd:string)` 3. `Literal (xsd:string)` (optional) | `Literal (xsd:boolean)` | Check if on the given first string, the given second regular expression matches. The third parameter indicates optional regex flags. |
 | [`replace`](https://www.w3.org/TR/sparql11-query/#func-replace) | 1. `Literal (xsd:string)` 2. `Literal (xsd:string)` 3. `Literal (xsd:string)` 4. `Literal (xsd:string)` (optional) | `Literal (xsd:boolean)` | In the given first string, match the given second regular expression, and replace it with the given third string. The fourth parameter indicates optional regex flags. |
 
-Numerical functions
--------------------
+## Numerical functions
 
 This section introduces [numerical functions](https://www.w3.org/TR/sparql11-query/#func-numerics).
 
@@ -803,8 +787,7 @@ This section introduces [numerical functions](https://www.w3.org/TR/sparql11-que
 | [`floor`](https://www.w3.org/TR/sparql11-query/#func-floor) | 1. `Literal (numeric)` | `Literal (numeric)` | Returns the largest (closest to positive infinity) number with no fractional part that is not greater than the value of arg. |
 | [`rand`](https://www.w3.org/TR/sparql11-query/#func-rand) | / | `Literal (xsd:double)` | Returns a pseudo-random, number between 0 (inclusive) and 1.0e0 (exclusive). Different numbers can be produced every time this function is invoked. Numbers should be produced with approximately equal probability. |
 
-Date and time functions
------------------------
+## Date and time functions
 
 This section introduces [date and time functions](https://www.w3.org/TR/sparql11-query/#func-date-time).
 
@@ -820,8 +803,7 @@ This section introduces [date and time functions](https://www.w3.org/TR/sparql11
 | [`timezone`](https://www.w3.org/TR/sparql11-query/#func-timezone) | 1. `Literal (xsd:dateTime)` | `Literal (xsd:dayTimeDuration)` | Returns the timezone part of the given date. |
 | [`tz`](https://www.w3.org/TR/sparql11-query/#func-tz) | 1. `Literal (xsd:dateTime)` | `Literal (xsd:string)` | Returns the timezone part of the given date. |
 
-Hash functions
---------------
+## Hash functions
 
 This section introduces [hash functions](https://www.w3.org/TR/sparql11-query/#func-hash).
 
@@ -833,8 +815,7 @@ This section introduces [hash functions](https://www.w3.org/TR/sparql11-query/#f
 | [`sha384`](https://www.w3.org/TR/sparql11-query/#func-sha384) | 1. `Literal (xsd:string)` | `Literal (xsd:string)` | Returns the SHA384 checksum of the given string. |
 | [`sha512`](https://www.w3.org/TR/sparql11-query/#func-sha512) | 1. `Literal (xsd:string)` | `Literal (xsd:string)` | Returns the SHA512 checksum of the given string. |
 
-XPath constructor functions
----------------------------
+## XPath constructor functions
 
 This section introduces [XPath constructor functions](https://www.w3.org/TR/sparql11-query/#FunctionMapping).
 
@@ -849,8 +830,7 @@ This section introduces [XPath constructor functions](https://www.w3.org/TR/spar
 | `http://www.w3.org/2001/XMLSchema#date` | 1. `Term` | `Literal (xsd:date)` | Cast the given term to `xsd:date` |
 | `http://www.w3.org/2001/XMLSchema#boolean` | 1. `Term` | `Literal (xsd:boolean)` | Cast the given term to `xsd:boolean` |
 
-Functional forms
-----------------
+## Functional forms
 
 This section introduces [functional operators](https://www.w3.org/TR/sparql11-query/#func-forms).
 

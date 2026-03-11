@@ -8,7 +8,6 @@
 
 RDF/JS: Stream interfaces
 
-
 This document provides a specification of a low level interface definition representing RDF data
 independent of a serialized format in a JavaScript environment. The task force which defines
 this interface was formed by RDF JavaScript library developers with the wish to make existing
@@ -16,8 +15,7 @@ and future libraries interoperable. This definition strives to provide the minim
 interface to enable interoperability of libraries such as serializers, parsers and higher level
 accessors and manipulators.
 
-Stream interfaces
------------------
+## Stream interfaces
 
 Streams are used only in a readable manner. This requires only a single queue per stream, which
 simplifies implementations and doesn't have performance drawbacks, compared to writeable
@@ -29,7 +27,7 @@ The interfaces introduces in this spec make use of the Term and DataFactory inte
 
 ### Stream interface
 
-```
+```typescript
       [Exposed=(Window,Worker)]
       interface Stream : EventEmitter {
         any read();
@@ -49,7 +47,7 @@ The EventEmitter and Event types originate from [Node.JS](https://nodejs.org/doc
 
 This specification uses the following notation, for a known type `T` of a Stream:
 
-```
+```typescript
 Stream<T>
 ```
 
@@ -73,7 +71,7 @@ prefix `prefix(string prefix, NamedNode iri)` This event is emitted every time a
 
 ### ConstructorOptions interface
 
-```
+```typescript
       [Exposed=(Window,Worker)]
       interface ConstructorOptions {
         attribute DataFactory? dataFactory;
@@ -89,7 +87,7 @@ baseIRI Base IRI that created instance implementing the interface will use to re
 
 ### Source interface
 
-```
+```typescript
       [Exposed=(Window,Worker)]
       interface Source {
         constructor();
@@ -110,7 +108,7 @@ set `graph` to a `DefaultGraph`
 
 ### Sink interface
 
-```
+```typescript
       [Exposed=(Window,Worker)]
       interface Sink {
         constructor();
@@ -131,28 +129,31 @@ case, subtypes of `EventEmitter` or `Stream` are used.
 
 * **Parser:**
 
-  ```
+```typescript
   Stream<Quad> import(Stream stream)
-  ```
+```
+
 * **Serializer**
 
-  ```
+```typescript
   Stream import(Stream<Quad> stream)
-  ```
+```
+
 * **Transformation**
 
-  ```
+```typescript
   Stream<Quad> import(Stream<Quad> stream)
-  ```
+```
+
 * **Store**
 
-  ```
+```typescript
   EventEmitter .import(Stream<Quad> stream)
-  ```
+```
 
 ### Store interface
 
-```
+```typescript
       [Exposed=(Window,Worker)]
       interface Store { // Extends Source and Sink
         constructor();

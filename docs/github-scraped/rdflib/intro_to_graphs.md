@@ -86,7 +86,6 @@ name = g.value(bob, FOAF.name)
 person = g.value(predicate=FOAF.knows, object=bob, any=False)
 ```
 
-
 ## Graph methods for accessing triples
 
 Here is a list of all convenience methods for querying Graphs:

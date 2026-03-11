@@ -8,18 +8,13 @@
 
 RDF 1.1 Turtle
 
-
-
 [![W3C](https://www.w3.org/Icons/w3c_home)](https://www.w3.org/)
 
-RDF 1.1 Turtle
-==============
+# RDF 1.1 Turtle
 
-Terse RDF Triple Language
--------------------------
+## Terse RDF Triple Language
 
-W3C Recommendation 25 February 2014
------------------------------------
+## W3C Recommendation 25 February 2014
 
 This version:
 :   [http://www.w3.org/TR/2014/REC-turtle-20140225/](https://www.w3.org/TR/2014/REC-turtle-20140225/)
@@ -66,8 +61,7 @@ rules apply.
 
 ---
 
-Abstract
---------
+## Abstract
 
 The Resource Description Framework
 (RDF) is a
@@ -82,8 +76,7 @@ format as well as the triple pattern syntax of the
 [SPARQL](https://www.w3.org/TR/sparql11-query/)
 W3C Recommendation.
 
-Status of This Document
------------------------
+## Status of This Document
 
 *This section describes the status of this document at the time of its publication.
 Other documents may supersede this document. A list of current W3C publications and the
@@ -124,55 +117,55 @@ Claim(s)](https://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential) m
 [section
 6 of the W3C Patent Policy](https://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure).
 
-Table of Contents
------------------
+## Table of Contents
 
 * [1. Introduction](#sec-intro)
 * [2. Turtle Language](#language-features)
-  + [2.1 Simple Triples](#simple-triples)
-  + [2.2 Predicate Lists](#predicate-lists)
-  + [2.3 Object Lists](#object-lists)
-  + [2.4 IRIs](#sec-iri)
-  + [2.5 RDF Literals](#literals)
-    - [2.5.1 Quoted Literals](#turtle-literals)
-    - [2.5.2 Numbers](#abbrev)
-    - [2.5.3 Booleans](#booleans)
-  + [2.6 RDF Blank Nodes](#BNodes)
-  + [2.7 Nesting Unlabeled Blank Nodes in Turtle](#unlabeled-bnodes)
-  + [2.8 Collections](#collections)
+  * [2.1 Simple Triples](#simple-triples)
+  * [2.2 Predicate Lists](#predicate-lists)
+  * [2.3 Object Lists](#object-lists)
+  * [2.4 IRIs](#sec-iri)
+  * [2.5 RDF Literals](#literals)
+    * [2.5.1 Quoted Literals](#turtle-literals)
+    * [2.5.2 Numbers](#abbrev)
+    * [2.5.3 Booleans](#booleans)
+  * [2.6 RDF Blank Nodes](#BNodes)
+  * [2.7 Nesting Unlabeled Blank Nodes in Turtle](#unlabeled-bnodes)
+  * [2.8 Collections](#collections)
 * [3. Examples](#sec-examples)
 * [4. Turtle compared to SPARQL](#sec-diff-sparql)
 * [5. Conformance](#conformance)
-  + [5.1 Media Type and Content Encoding](#sec-mime)
+  * [5.1 Media Type and Content Encoding](#sec-mime)
 * [6. Turtle Grammar](#sec-grammar)
-  + [6.1 White Space](#sec-grammar-ws)
-  + [6.2 Comments](#sec-grammar-comments)
-  + [6.3 IRI References](#sec-iri-references)
-  + [6.4 Escape Sequences](#sec-escapes)
-  + [6.5 Grammar](#sec-grammar-grammar)
+  * [6.1 White Space](#sec-grammar-ws)
+  * [6.2 Comments](#sec-grammar-comments)
+  * [6.3 IRI References](#sec-iri-references)
+  * [6.4 Escape Sequences](#sec-escapes)
+  * [6.5 Grammar](#sec-grammar-grammar)
 * [7. Parsing](#sec-parsing)
-  + [7.1 Parser State](#sec-parsing-state)
-  + [7.2 RDF Term Constructors](#sec-parsing-terms)
-  + [7.3 RDF Triples Constructors](#sec-parsing-triples)
-  + [7.4 Parsing Example](#sec-parsing-example)
+  * [7.1 Parser State](#sec-parsing-state)
+  * [7.2 RDF Term Constructors](#sec-parsing-terms)
+  * [7.3 RDF Triples Constructors](#sec-parsing-triples)
+  * [7.4 Parsing Example](#sec-parsing-example)
 * [A. Embedding Turtle in HTML documents](#in-html)
-  + [A.1 XHTML](#xhtml)
-  + [A.2 Parsing Turtle in HTML](#in-html-parsing)
+  * [A.1 XHTML](#xhtml)
+  * [A.2 Parsing Turtle in HTML](#in-html-parsing)
 * [B. Internet Media Type, File Extension and Macintosh File Type](#sec-mediaReg)
 * [C. Acknowledgements](#sec-acks)
 * [D. Change Log](#sec-changelog)
-  + [D.1 Changes since January
+  * [D.1 Changes since January
     2014 Proposed Recommendation](#sec-change-log-PR-REC)
-  + [D.2 Changes from February
+  * [D.2 Changes from February
     2013 Candidate Recommendation to January
     2014 Proposed Recommendation](#sec-changelog-CR-PR)
-  + [D.3 Changes from August 2011 First Public Working Draft to Candidate Recommendation](#sec-changelog-WD-CR)
-  + [D.4 Changes from January 2008 Team Submission to First Public Working Draft](#sec-changelog-Subm-WD)
+  * [D.3 Changes from August 2011 First Public Working Draft to Candidate Recommendation](#sec-changelog-WD-CR)
+  * [D.4 Changes from January 2008 Team Submission to First Public Working Draft](#sec-changelog-Subm-WD)
 * [E. References](#references)
-  + [E.1 Normative references](#normative-references)
-  + [E.2 Informative references](#informative-references)
+  * [E.1 Normative references](#normative-references)
+  * [E.2 Informative references](#informative-references)
 
 1. Introduction
+
 ---------------
 
 *This section is non-normative.*
@@ -185,7 +178,7 @@ A Turtle document is a textual representations of an RDF graph. The following Tu
 
 Example 1
 
-```
+```sparql
 @base <http://example.org/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -201,7 +194,7 @@ Example 1
     rel:enemyOf <#green-goblin> ;
     a foaf:Person ;
     foaf:name "Spiderman", "Человек-паук"@ru .
-```
+```sparql
 
 This example introduces many of features of the Turtle language:
 [@base and Relative IRIs](#relative-iri),
@@ -218,7 +211,8 @@ The two grammars share production and terminal names where possible.
 
 The construction of an RDF graph from a Turtle document is defined in [Turtle Grammar](#sec-grammar) and [Parsing](#sec-parsing).
 
-2. Turtle Language
+1. Turtle Language
+
 ------------------
 
 *This section is non-normative.*
@@ -233,10 +227,10 @@ The simplest triple statement is a sequence of (subject, predicate, object) term
 
 Example 2
 
-```
+```turtle
 <http://example.org/#spiderman> <http://www.perceive.net/schemas/relationship/enemyOf> <http://example.org/#green-goblin> .
-			
-```
+   
+```text
 
 ### 2.2 Predicate Lists
 
@@ -248,19 +242,19 @@ These two examples are equivalent ways of writing the triples about Spiderman.
 
 Example 3
 
-```
+```turtle
 <http://example.org/#spiderman> <http://www.perceive.net/schemas/relationship/enemyOf> <http://example.org/#green-goblin> ;
-				<http://xmlns.com/foaf/0.1/name> "Spiderman" .
-			
-```
+    <http://xmlns.com/foaf/0.1/name> "Spiderman" .
+   
+```turtle
 
 Example 4
 
-```
+```turtle
 <http://example.org/#spiderman> <http://www.perceive.net/schemas/relationship/enemyOf> <http://example.org/#green-goblin> .
 <http://example.org/#spiderman> <http://xmlns.com/foaf/0.1/name> "Spiderman" .
-			
-```
+   
+```text
 
 ### 2.3 Object Lists
 
@@ -272,18 +266,18 @@ These two examples are equivalent ways of writing Spiderman's name in two langua
 
 Example 5
 
-```
+```turtle
 <http://example.org/#spiderman> <http://xmlns.com/foaf/0.1/name> "Spiderman", "Человек-паук"@ru .
-			
-```
+   
+```turtle
 
 Example 6
 
-```
+```turtle
 <http://example.org/#spiderman> <http://xmlns.com/foaf/0.1/name> "Spiderman" .
 <http://example.org/#spiderman> <http://xmlns.com/foaf/0.1/name> "Человек-паук"@ru .
-			
-```
+   
+```text
 
 There are three types of *RDF Term* defined in RDF Concepts:
 [IRIs](https://www.w3.org/TR/rdf11-concepts/#dfn-iri) (Internationalized Resource Identifiers),
@@ -319,23 +313,23 @@ This can be written using either the original Turtle syntax for prefix declarati
 
 Example 7
 
-```
+```sparql
 @prefix somePrefix: <http://www.perceive.net/schemas/relationship/> .
 
 <http://example.org/#green-goblin> somePrefix:enemyOf <http://example.org/#spiderman> .
-				
-```
+    
+```sparql
 
 or SPARQL's syntax for prefix declarations:
 
 Example 8
 
-```
+```sparql
 PREFIX somePrefix: <http://www.perceive.net/schemas/relationship/>
 
 <http://example.org/#green-goblin> somePrefix:enemyOf <http://example.org/#spiderman> .
-				
-```
+    
+```sparql
 
 Note
 
@@ -350,7 +344,7 @@ The following Turtle document contains examples of all the different ways of wri
 
 Example 9
 
-```
+```turtle
 # A triple with all absolute IRIs
 <http://one.example/subject1> <http://one.example/predicate1> <http://one.example/object1> .
 
@@ -375,7 +369,7 @@ p:subject4 p:predicate4 p:object4 .     # prefixed name, e.g. http://one.example
 :subject6 a :subject7 .                 # same as :subject6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> :subject7 .
 
 <http://伝言.example/?user=أكرم&amp;channel=R%26D> a :subject8 . # a multi-script subject IRI .
-```
+```sparql
 
 Note
 
@@ -387,13 +381,13 @@ The '`@prefix`' and '`@base`' directives require a trailing '`.`' after the IRI,
 
 Example 10
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <http://example.org/#green-goblin> foaf:name "Green Goblin" .
 
 <http://example.org/#spiderman> foaf:name "Spiderman" .
-```
+```sparql
 
 #### 2.5.1 Quoted Literals
 
@@ -412,7 +406,7 @@ If there is no language tag, there may be a [datatype IRI](https://www.w3.org/TR
 
 Example 11
 
-```
+```sparql
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix show: <http://example.org/vocab/show/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -426,7 +420,7 @@ show:218 show:localName "Cette Série des Années Septante"@fr-be .  # literal w
 show:218 show:blurb '''This is a multi-line                        # literal with embedded new lines and quotes
 literal with many quotes (""""")
 and up to two sequential apostrophes ('').''' .
-```
+```text
 
 #### 2.5.2 Numbers
 
@@ -440,14 +434,14 @@ Numbers can be written like other literals with lexical form and datatype (e.g. 
 
 Example 12
 
-```
+```sparql
 @prefix : <http://example.org/elements> .                                                                              
 <http://en.wikipedia.org/wiki/Helium>                                                                                  
     :atomicNumber 2 ;               # xsd:integer                                                                      
     :atomicMass 4.002602 ;          # xsd:decimal                                                                      
     :specificGravity 1.663E-4 .     # xsd:double                                                                       
-				
-```
+    
+```text
 
 #### 2.5.3 Booleans
 
@@ -455,11 +449,11 @@ Boolean values may be written as either '`true`' or '`false`' (case-sensitive) a
 
 Example 13
 
-```
+```sparql
 @prefix : <http://example.org/stats> .
 <http://somecountry.example/census2007>
     :isLandlocked false .           # xsd:boolean
-```
+```sparql
 
 ### 2.6 RDF Blank Nodes
 
@@ -475,12 +469,12 @@ Repeated use of the same blank node label identifies the same RDF blank node.
 
 Example 14
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 _:alice foaf:knows _:bob .
 _:bob foaf:knows _:alice .
-```
+```sparql
 
 ### 2.7 Nesting Unlabeled Blank Nodes in Turtle
 
@@ -493,12 +487,12 @@ Blank nodes are also allocated for [collections](#collections) described below.
 
 Example 15
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 # Someone knows someone else, who has the name "Bob".
 [] foaf:knows [ foaf:name "Bob" ] .
-```
+```text
 
 The Turtle grammar allows [blankNodePropertyList](#grammar-production-blankNodePropertyList)s to be nested.
 In this case, each inner `[` establishes a new subject blank node which reverts to the outer node at the `]`, and serves as the current subject for [predicate object lists](#grammar-production-predicateObjectList).
@@ -509,7 +503,7 @@ Abbreviated:
 
 Example 16
 
-```
+```sparql
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 [ foaf:name "Alice" ] foaf:knows [
@@ -517,22 +511,22 @@ Example 16
     foaf:knows [
         foaf:name "Eve" ] ;
     foaf:mbox <bob@example.com> ] .
-				
-```
+    
+```turtle
 
 Corresponding simple triples:
 
 Example 17
 
-```
+```turtle
 _:a <http://xmlns.com/foaf/0.1/name> "Alice" .
 _:a <http://xmlns.com/foaf/0.1/knows> _:b .
 _:b <http://xmlns.com/foaf/0.1/name> "Bob" .
 _:b <http://xmlns.com/foaf/0.1/knows> _:c .
 _:c <http://xmlns.com/foaf/0.1/name> "Eve" .
 _:b <http://xmlns.com/foaf/0.1/mbox> <bob@example.com> .
-				
-```
+    
+```text
 
 ### 2.8 Collections
 
@@ -545,17 +539,18 @@ The blank node at the head of the list is the subject or object of the containin
 
 Example 18
 
-```
+```sparql
 @prefix : <http://example.org/foo> .
 # the object of this triple is the RDF collection blank node
 :subject :predicate ( :a :b :c ) .
 
 # an empty collection value - rdf:nil
 :subject :predicate2 () .
-				
-```
+    
+```text
 
-3. Examples
+1. Examples
+
 -----------
 
 *This section is non-normative.*
@@ -568,7 +563,7 @@ in the
 
 Example 19
 
-```
+```sparql
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix ex: <http://example.org/stuff/1.0/> .
@@ -579,22 +574,22 @@ Example 19
     ex:fullname "Dave Beckett";
     ex:homePage <http://purl.org/net/dajobe/>
   ] .
-```
+```turtle
 
 An example of an RDF collection of two literals.
 
 Example 20
 
-```
+```sparql
 PREFIX : <http://example.org/stuff/1.0/>
 :a :b ( "apple" "banana" ) .
-```
+```text
 
 which is short for ([example2.ttl](examples/example2.ttl)):
 
 Example 21
 
-```
+```sparql
 @prefix : <http://example.org/stuff/1.0/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 :a :b
@@ -602,7 +597,7 @@ Example 21
     rdf:rest [ rdf:first "banana";
                rdf:rest rdf:nil ]
   ] .
-```
+```text
 
 An example of two identical triples containing literal objects
 containing newlines, written in plain and long literal forms.
@@ -611,7 +606,7 @@ The line breaks in this example are LINE FEED characters (U+000A).
 
 Example 22
 
-```
+```sparql
 @prefix : <http://example.org/stuff/1.0/> .
 
 :a :b "The first line\nThe second line\n  more" .
@@ -619,7 +614,7 @@ Example 22
 :a :b """The first line
 The second line
   more""" .
-```
+```text
 
 As indicated by the grammar, a [collection](#grammar-production-collection) can be either a [subject](#grammar-production-subject) or an [object](#grammar-production-object). This subject or object will be the novel blank node for the first object, if the collection has one or more objects, or `rdf:nil` if the collection is empty.
 
@@ -627,16 +622,16 @@ For example,
 
 Example 23
 
-```
+```sparql
 @prefix : <http://example.org/stuff/1.0/> .
 (1 2.0 3E1) :p "w" .
-```
+```sparql
 
 is syntactic sugar for (noting that the blank nodes `b0`, `b1` and `b2` do not occur anywhere else in the RDF graph):
 
 Example 24
 
-```
+```sparql
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
     _:b0  rdf:first  1 ;
           rdf:rest   _:b1 .
@@ -645,22 +640,22 @@ Example 24
     _:b2  rdf:first  3E1 ;
           rdf:rest   rdf:nil .
     _:b0  :p         "w" .
-```
+```turtle
 
 RDF collections can be nested and can involve other syntactic forms:
 
 Example 25
 
-```
+```sparql
 PREFIX : <http://example.org/stuff/1.0/>
 (1 [:p :q] ( 2 ) ) :p2 :q2 .
-```
+```turtle
 
 is syntactic sugar for:
 
 Example 26
 
-```
+```sparql
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
     _:b0  rdf:first  1 ;
           rdf:rest   _:b1 .
@@ -671,9 +666,10 @@ Example 26
     _:b4  rdf:first  2 ;
           rdf:rest   rdf:nil .
     _:b3  rdf:rest   rdf:nil .
-```
+```text
 
-4. Turtle compared to SPARQL
+1. Turtle compared to SPARQL
+
 ----------------------------
 
 *This section is non-normative.*
@@ -693,7 +689,8 @@ For further information see the
 and [SPARQL Grammar](https://www.w3.org/TR/sparql11-query/#grammar)
 sections of the SPARQL query document [[SPARQL11-QUERY](#bib-SPARQL11-QUERY)].
 
-5. Conformance
+1. Conformance
+
 --------------
 
 As well as sections marked as non-normative, all authoring guidelines, diagrams, examples,
@@ -727,7 +724,8 @@ parameters on the mime type are required until such time as the
 charset parameter. See [section B. Internet Media Type, File Extension and Macintosh File Type](#sec-mediaReg) for the media type
 registration form.
 
-6. Turtle Grammar
+1. Turtle Grammar
+
 -----------------
 
 A Turtle document is a
@@ -789,6 +787,7 @@ There are three forms of escapes used in turtle documents:
   | '\"' | U+0022 |
   | '\'' | U+0027 |
   | '\\' | U+005C |
+
 * *reserved character escape sequences* consist of a '\' followed by one of `~.-!$&'()*+,;=/?#@%_` and represent the character to the right of the '\'.
 
 Context where each kind of escape sequence can be used
@@ -833,8 +832,8 @@ Notes:
 |  |  |  |  |
 | --- | --- | --- | --- |
 | [1] | `turtleDoc` | ::= | [statement](#grammar-production-statement)`*` |
-| [2] | `statement` | ::= | [directive](#grammar-production-directive) `|`  [triples](#grammar-production-triples) '`.`' |
-| [3] | `directive` | ::= | [prefixID](#grammar-production-prefixID) `|`  [base](#grammar-production-base) `|`  [sparqlPrefix](#grammar-production-sparqlPrefix) `|`  [sparqlBase](#grammar-production-sparqlBase) |
+| [2] | `statement` | ::= | [directive](#grammar-production-directive) `|`[triples](#grammar-production-triples) '`.`' |
+| [3] | `directive` | ::= | [prefixID](#grammar-production-prefixID) `|` [base](#grammar-production-base) `|` [sparqlPrefix](#grammar-production-sparqlPrefix) `|`  [sparqlBase](#grammar-production-sparqlBase) |
 | [4] | `prefixID` | ::= | '`@prefix`' [PNAME\_NS](#grammar-production-PNAME_NS) [IRIREF](#grammar-production-IRIREF) '`.`' |
 | [5] | `base` | ::= | '`@base`' [IRIREF](#grammar-production-IRIREF) '`.`' |
 | [5s] | `sparqlBase` | ::= | "`BASE`" [IRIREF](#grammar-production-IRIREF) |
@@ -842,49 +841,50 @@ Notes:
 | [6] | `triples` | ::= | [subject](#grammar-production-subject) [predicateObjectList](#grammar-production-predicateObjectList) `|`  [blankNodePropertyList](#grammar-production-blankNodePropertyList) [predicateObjectList](#grammar-production-predicateObjectList)? |
 | [7] | `predicateObjectList` | ::= | [verb](#grammar-production-verb) [objectList](#grammar-production-objectList) ('`;`' ([verb](#grammar-production-verb) [objectList](#grammar-production-objectList))?)`*` |
 | [8] | `objectList` | ::= | [object](#grammar-production-object) ('`,`' [object](#grammar-production-object))`*` |
-| [9] | `verb` | ::= | [predicate](#grammar-production-predicate) `|`  '`a`' |
-| [10] | `subject` | ::= | [iri](#grammar-production-iri) `|`  [BlankNode](#grammar-production-BlankNode) `|`  [collection](#grammar-production-collection) |
+| [9] | `verb` | ::= | [predicate](#grammar-production-predicate) `|`'`a`' |
+| [10] | `subject` | ::= | [iri](#grammar-production-iri) `|` [BlankNode](#grammar-production-BlankNode) `|`  [collection](#grammar-production-collection) |
 | [11] | `predicate` | ::= | [iri](#grammar-production-iri) |
-| [12] | `object` | ::= | [iri](#grammar-production-iri) `|`  [BlankNode](#grammar-production-BlankNode) `|`  [collection](#grammar-production-collection) `|`  [blankNodePropertyList](#grammar-production-blankNodePropertyList) `|`  [literal](#grammar-production-literal) |
-| [13] | `literal` | ::= | [RDFLiteral](#grammar-production-RDFLiteral) `|`  [NumericLiteral](#grammar-production-NumericLiteral) `|`  [BooleanLiteral](#grammar-production-BooleanLiteral) |
+| [12] | `object` | ::= | [iri](#grammar-production-iri) `|` [BlankNode](#grammar-production-BlankNode) `|` [collection](#grammar-production-collection) `|` [blankNodePropertyList](#grammar-production-blankNodePropertyList) `|`  [literal](#grammar-production-literal) |
+| [13] | `literal` | ::= | [RDFLiteral](#grammar-production-RDFLiteral) `|` [NumericLiteral](#grammar-production-NumericLiteral) `|`  [BooleanLiteral](#grammar-production-BooleanLiteral) |
 | [14] | `blankNodePropertyList` | ::= | '`[`' [predicateObjectList](#grammar-production-predicateObjectList) '`]`' |
 | [15] | `collection` | ::= | '`(`' [object](#grammar-production-object)`*` '`)`' |
-| [16] | `NumericLiteral` | ::= | [INTEGER](#grammar-production-INTEGER) `|`  [DECIMAL](#grammar-production-DECIMAL) `|`  [DOUBLE](#grammar-production-DOUBLE) |
-| [128s] | `RDFLiteral` | ::= | [String](#grammar-production-String) ([LANGTAG](#grammar-production-LANGTAG) `|`  '`^^`' [iri](#grammar-production-iri))? |
-| [133s] | `BooleanLiteral` | ::= | '`true`' `|`  '`false`' |
-| [17] | `String` | ::= | [STRING\_LITERAL\_QUOTE](#grammar-production-STRING_LITERAL_QUOTE) `|`  [STRING\_LITERAL\_SINGLE\_QUOTE](#grammar-production-STRING_LITERAL_SINGLE_QUOTE) `|`  [STRING\_LITERAL\_LONG\_SINGLE\_QUOTE](#grammar-production-STRING_LITERAL_LONG_SINGLE_QUOTE) `|`  [STRING\_LITERAL\_LONG\_QUOTE](#grammar-production-STRING_LITERAL_LONG_QUOTE) |
+| [16] | `NumericLiteral` | ::= | [INTEGER](#grammar-production-INTEGER) `|` [DECIMAL](#grammar-production-DECIMAL) `|`  [DOUBLE](#grammar-production-DOUBLE) |
+| [128s] | `RDFLiteral` | ::= | [String](#grammar-production-String) ([LANGTAG](#grammar-production-LANGTAG) `|`'`^^`' [iri](#grammar-production-iri))? |
+| [133s] | `BooleanLiteral` | ::= | '`true`' `|`'`false`' |
+| [17] | `String` | ::= | [STRING\_LITERAL\_QUOTE](#grammar-production-STRING_LITERAL_QUOTE) `|` [STRING\_LITERAL\_SINGLE\_QUOTE](#grammar-production-STRING_LITERAL_SINGLE_QUOTE) `|` [STRING\_LITERAL\_LONG\_SINGLE\_QUOTE](#grammar-production-STRING_LITERAL_LONG_SINGLE_QUOTE) `|`  [STRING\_LITERAL\_LONG\_QUOTE](#grammar-production-STRING_LITERAL_LONG_QUOTE) |
 | [135s] | `iri` | ::= | [IRIREF](#grammar-production-IRIREF) `|`  [PrefixedName](#grammar-production-PrefixedName) |
 | [136s] | `PrefixedName` | ::= | [PNAME\_LN](#grammar-production-PNAME_LN) `|`  [PNAME\_NS](#grammar-production-PNAME_NS) |
 | [137s] | `BlankNode` | ::= | [BLANK\_NODE\_LABEL](#grammar-production-BLANK_NODE_LABEL) `|`  [ANON](#grammar-production-ANON) |
 | Productions for terminals | | | |
-| [18] | `IRIREF` | ::= | '`<`' ([`` ^#x00-#x20<>"{}|^`\ ``] `|`  [UCHAR](#grammar-production-UCHAR))`*` '`>`' /\* #x00=NULL #01-#x1F=control codes #x20=space \*/ |
+| [18] | `IRIREF` | ::= | '`<`' ([`` ^#x00-#x20<>"{}|^`\ ``]`|`[UCHAR](#grammar-production-UCHAR))`*`'`>`' /\* #x00=NULL #01-#x1F=control codes #x20=space \*/ |
 | [139s] | `PNAME_NS` | ::= | [PN\_PREFIX](#grammar-production-PN_PREFIX)? '`:`' |
 | [140s] | `PNAME_LN` | ::= | [PNAME\_NS](#grammar-production-PNAME_NS) [PN\_LOCAL](#grammar-production-PN_LOCAL) |
-| [141s] | `BLANK_NODE_LABEL` | ::= | '`_:`' ([PN\_CHARS\_U](#grammar-production-PN_CHARS_U) `|`  [`0-9`]) (([PN\_CHARS](#grammar-production-PN_CHARS) `|`  '`.`')`*` [PN\_CHARS](#grammar-production-PN_CHARS))? |
+| [141s] | `BLANK_NODE_LABEL` | ::= | '`_:`' ([PN\_CHARS\_U](#grammar-production-PN_CHARS_U) `|`[`0-9`]) (([PN\_CHARS](#grammar-production-PN_CHARS)`|`'`.`')`*` [PN\_CHARS](#grammar-production-PN_CHARS))? |
 | [144s] | `LANGTAG` | ::= | '`@`' [`a-zA-Z`]`+` ('`-`' [`a-zA-Z0-9`]`+`)`*` |
 | [19] | `INTEGER` | ::= | [`+-`]? [`0-9`]`+` |
 | [20] | `DECIMAL` | ::= | [`+-`]? [`0-9`]`*` '`.`' [`0-9`]`+` |
-| [21] | `DOUBLE` | ::= | [`+-`]? ([`0-9`]`+` '`.`' [`0-9`]`*` [EXPONENT](#grammar-production-EXPONENT) `|`  '`.`' [`0-9`]`+` [EXPONENT](#grammar-production-EXPONENT) `|`  [`0-9`]`+` [EXPONENT](#grammar-production-EXPONENT)) |
+| [21] | `DOUBLE` | ::= | [`+-`]? ([`0-9`]`+` '`.`' [`0-9`]`*` [EXPONENT](#grammar-production-EXPONENT) `|`'`.`' [`0-9`]`+` [EXPONENT](#grammar-production-EXPONENT) `|`[`0-9`]`+` [EXPONENT](#grammar-production-EXPONENT)) |
 | [154s] | `EXPONENT` | ::= | [`eE`] [`+-`]? [`0-9`]`+` |
-| [22] | `STRING_LITERAL_QUOTE` | ::= | '`"`' ([`^#x22#x5C#xA#xD`] `|`  [ECHAR](#grammar-production-ECHAR) `|`  [UCHAR](#grammar-production-UCHAR))`*` '`"`' /\* #x22=" #x5C=\ #xA=new line #xD=carriage return \*/ |
-| [23] | `STRING_LITERAL_SINGLE_QUOTE` | ::= | "`'`" ([`^#x27#x5C#xA#xD`] `|`  [ECHAR](#grammar-production-ECHAR) `|`  [UCHAR](#grammar-production-UCHAR))`*` "`'`" /\* #x27=' #x5C=\ #xA=new line #xD=carriage return \*/ |
-| [24] | `STRING_LITERAL_LONG_SINGLE_QUOTE` | ::= | "`'''`" (("`'`" `|`  "`''`")? ([`^'\`] `|`  [ECHAR](#grammar-production-ECHAR) `|`  [UCHAR](#grammar-production-UCHAR)))`*` "`'''`" |
-| [25] | `STRING_LITERAL_LONG_QUOTE` | ::= | '`"""`' (('`"`' `|`  '`""`')? ([`^"\`] `|`  [ECHAR](#grammar-production-ECHAR) `|`  [UCHAR](#grammar-production-UCHAR)))`*` '`"""`' |
-| [26] | `UCHAR` | ::= | '`\u`' [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) `|`  '`\U`' [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) |
+| [22] | `STRING_LITERAL_QUOTE` | ::= | '`"`' ([`^#x22#x5C#xA#xD`] `|` [ECHAR](#grammar-production-ECHAR) `|`[UCHAR](#grammar-production-UCHAR))`*`'`"`' /\* #x22=" #x5C=\ #xA=new line #xD=carriage return \*/ |
+| [23] | `STRING_LITERAL_SINGLE_QUOTE` | ::= | "`'`" ([`^#x27#x5C#xA#xD`] `|` [ECHAR](#grammar-production-ECHAR) `|`[UCHAR](#grammar-production-UCHAR))`*`"`'`" /\* #x27=' #x5C=\ #xA=new line #xD=carriage return \*/ |
+| [24] | `STRING_LITERAL_LONG_SINGLE_QUOTE` | ::= | "`'''`" (("`'`" `|`"`''`")? ([`^'\`] `|` [ECHAR](#grammar-production-ECHAR) `|`[UCHAR](#grammar-production-UCHAR)))`*`"`'''`" |
+| [25] | `STRING_LITERAL_LONG_QUOTE` | ::= | '`"""`' (('`"`' `|`'`""`')? ([`^"\`] `|` [ECHAR](#grammar-production-ECHAR) `|`[UCHAR](#grammar-production-UCHAR)))`*`'`"""`' |
+| [26] | `UCHAR` | ::= | '`\u`' [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) `|`'`\U`' [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) |
 | [159s] | `ECHAR` | ::= | '`\`' [`tbnrf"'\`] |
 | [161s] | `WS` | ::= | `#x20` `|`  `#x9` `|`  `#xD` `|`  `#xA` /\* #x20=space #x9=character tabulation #xD=carriage return #xA=new line \*/ |
 | [162s] | `ANON` | ::= | '`[`' [WS](#grammar-production-WS)`*` '`]`' |
-| [163s] | `PN_CHARS_BASE` | ::= | [`A-Z`] `|`  [`a-z`] `|`  [`#x00C0-#x00D6`] `|`  [`#x00D8-#x00F6`] `|`  [`#x00F8-#x02FF`] `|`  [`#x0370-#x037D`] `|`  [`#x037F-#x1FFF`] `|`  [`#x200C-#x200D`] `|`  [`#x2070-#x218F`] `|`  [`#x2C00-#x2FEF`] `|`  [`#x3001-#xD7FF`] `|`  [`#xF900-#xFDCF`] `|`  [`#xFDF0-#xFFFD`] `|`  [`#x10000-#xEFFFF`] |
-| [164s] | `PN_CHARS_U` | ::= | [PN\_CHARS\_BASE](#grammar-production-PN_CHARS_BASE) `|`  '`_`' |
-| [166s] | `PN_CHARS` | ::= | [PN\_CHARS\_U](#grammar-production-PN_CHARS_U) `|`  '`-`' `|`  [`0-9`] `|`  `#x00B7` `|`  [`#x0300-#x036F`] `|`  [`#x203F-#x2040`] |
-| [167s] | `PN_PREFIX` | ::= | [PN\_CHARS\_BASE](#grammar-production-PN_CHARS_BASE) (([PN\_CHARS](#grammar-production-PN_CHARS) `|`  '`.`')`*` [PN\_CHARS](#grammar-production-PN_CHARS))? |
-| [168s] | `PN_LOCAL` | ::= | ([PN\_CHARS\_U](#grammar-production-PN_CHARS_U) `|`  '`:`' `|`  [`0-9`] `|`  [PLX](#grammar-production-PLX)) (([PN\_CHARS](#grammar-production-PN_CHARS) `|`  '`.`' `|`  '`:`' `|`  [PLX](#grammar-production-PLX))`*` ([PN\_CHARS](#grammar-production-PN_CHARS) `|`  '`:`' `|`  [PLX](#grammar-production-PLX)))? |
+| [163s] | `PN_CHARS_BASE` | ::= | [`A-Z`] `|`[`a-z`]`|`[`#x00C0-#x00D6`]`|`[`#x00D8-#x00F6`]`|`[`#x00F8-#x02FF`]`|`[`#x0370-#x037D`]`|`[`#x037F-#x1FFF`]`|`[`#x200C-#x200D`]`|`[`#x2070-#x218F`]`|`[`#x2C00-#x2FEF`]`|`[`#x3001-#xD7FF`]`|`[`#xF900-#xFDCF`]`|`[`#xFDF0-#xFFFD`]`|`[`#x10000-#xEFFFF`] |
+| [164s] | `PN_CHARS_U` | ::= | [PN\_CHARS\_BASE](#grammar-production-PN_CHARS_BASE) `|`'`_`' |
+| [166s] | `PN_CHARS` | ::= | [PN\_CHARS\_U](#grammar-production-PN_CHARS_U) `|`'`-`'`|`[`0-9`]`|`  `#x00B7` `|`[`#x0300-#x036F`]`|`[`#x203F-#x2040`] |
+| [167s] | `PN_PREFIX` | ::= | [PN\_CHARS\_BASE](#grammar-production-PN_CHARS_BASE) (([PN\_CHARS](#grammar-production-PN_CHARS) `|`'`.`')`*` [PN\_CHARS](#grammar-production-PN_CHARS))? |
+| [168s] | `PN_LOCAL` | ::= | ([PN\_CHARS\_U](#grammar-production-PN_CHARS_U) `|`'`:`'`|`[`0-9`]`|` [PLX](#grammar-production-PLX)) (([PN\_CHARS](#grammar-production-PN_CHARS) `|`'`.`'`|`'`:`'`|`[PLX](#grammar-production-PLX))`*` ([PN\_CHARS](#grammar-production-PN_CHARS) `|`'`:`'`|`  [PLX](#grammar-production-PLX)))? |
 | [169s] | `PLX` | ::= | [PERCENT](#grammar-production-PERCENT) `|`  [PN\_LOCAL\_ESC](#grammar-production-PN_LOCAL_ESC) |
 | [170s] | `PERCENT` | ::= | '`%`' [HEX](#grammar-production-HEX) [HEX](#grammar-production-HEX) |
-| [171s] | `HEX` | ::= | [`0-9`] `|`  [`A-F`] `|`  [`a-f`] |
-| [172s] | `PN_LOCAL_ESC` | ::= | '`\`' ('`_`' `|`  '`~`' `|`  '`.`' `|`  '`-`' `|`  '`!`' `|`  '`$`' `|`  '`&`' `|`  "`'`" `|`  '`(`' `|`  '`)`' `|`  '`*`' `|`  '`+`' `|`  '`,`' `|`  '`;`' `|`  '`=`' `|`  '`/`' `|`  '`?`' `|`  '`#`' `|`  '`@`' `|`  '`%`') |
+| [171s] | `HEX` | ::= | [`0-9`] `|`[`A-F`]`|`[`a-f`] |
+| [172s] | `PN_LOCAL_ESC` | ::= | '`\`' ('`_`' `|`'`~`'`|`'`.`'`|`'`-`'`|`'`!`'`|`'`$`'`|`'`&`'`|`"`'`"`|`'`(`'`|`'`)`'`|`'`*`'`|`'`+`'`|`'`,`'`|`'`;`'`|`'`=`'`|`'`/`'`|`'`?`'`|`'`#`'`|`'`@`'`|`'`%`') |
 
-7. Parsing
+1. Parsing
+
 ----------
 
 The RDF 1.1 Concepts and Abstract Syntax specification [[RDF11-CONCEPTS](#bib-RDF11-CONCEPTS)] defines three types of *RDF Term*:
@@ -961,13 +961,13 @@ The `subject` production sets the `curSubject`.
 The `verb` production sets the `curPredicate`.
 Each [object](#grammar-production-object) `N` in the document produces an RDF triple: `curSubject` `curPredicate` `N` .
 
-### Property Lists:
+### Property Lists
 
 Beginning the `blankNodePropertyList` production records the `curSubject` and `curPredicate`, and sets `curSubject` to a novel `blank node` `B`.
 Finishing the `blankNodePropertyList` production restores `curSubject` and `curPredicate`.
 The node produced by matching `blankNodePropertyList` is the blank node `B`.
 
-### Collections:
+### Collections
 
 Beginning the `collection` production records the `curSubject` and `curPredicate`.
 Each `object` in the `collection` production has a `curSubject` set to a novel `blank node` `B` and a `curPredicate` set to `rdf:first`.
@@ -983,14 +983,14 @@ The following informative example shows the semantic actions performed when pars
 
 Example 27
 
-```
+```sparql
 @prefix ericFoaf: <http://www.w3.org/People/Eric/ericP-foaf.rdf#> .
 @prefix : <http://xmlns.com/foaf/0.1/> .
 ericFoaf:ericP :givenName "Eric" ;
               :knows <http://norman.walsh.name/knows/who/dan-brickley> ,
                       [ :mbox <mailto:timbl@w3.org> ] ,
                       <http://getopenid.com/amyvdh> .
-```
+```sparql
 
 * Map the prefix `ericFoaf` to the IRI `http://www.w3.org/People/Eric/ericP-foaf.rdf#`.
 * Map the empty prefix to the IRI `http://xmlns.com/foaf/0.1/`.
@@ -1007,8 +1007,7 @@ ericFoaf:ericP :givenName "Eric" ;
 * Restore `curSubject` and `curPredicate` to their saved values (`<...rdf#ericP>`, `<.../knows>`).
 * Emit an RDF triple: `<...rdf#ericP>` `<.../knows>` `<http://getopenid.com/amyvdh>` .
 
-A. Embedding Turtle in HTML documents
--------------------------------------
+## A. Embedding Turtle in HTML documents
 
 *This section is non-normative.*
 
@@ -1017,7 +1016,7 @@ can be used to embed data blocks in documents. Turtle can be easily embedded in 
 
 Example 28
 
-```
+```sparql
 <script type="text/turtle">
 @prefix dc: <http://purl.org/dc/terms/> .
 @prefix frbr: <http://purl.org/vocab/frbr/core#> .
@@ -1034,7 +1033,7 @@ Example 28
 <http://books.example.com/products/9780596802189.EBOOK> a frbr:Expression ;
      dc:type <http://books.example.com/product-types/EBOOK> .
 </script>
-```
+```turtle
 
 Turtle content should be placed in a `script` tag with the
 `type` attribute set to `text/turtle`. `<` and `>` symbols
@@ -1050,7 +1049,7 @@ Like JavaScript, Turtle authored for HTML (`text/html`) can break when used in X
 
 Example 29
 
-```
+```sparql
 <script type="text/turtle">
 # <![CDATA[
 @prefix frbr: <http://purl.org/vocab/frbr/core#> .
@@ -1058,7 +1057,7 @@ Example 29
 <http://books.example.com/works/45U8QJGZSQKDH8N> a frbr:Work .
 # ]]>
 </script>
-```
+```text
 
 When embedded in XHTML Turtle data blocks must be enclosed in CDATA sections. Those CDATA markers must be in Turtle comments. If the character sequence "`]]>`" occurs in the document it must be escaped using strings escapes (`\u005d\u0054\u003e`). This will also make Turtle safe in polyglot documents served as both `text/html`
 and `application/xhtml+xml`. Failing to use CDATA sections or escape "`]]>`" may result in a non well-formed XML document.
@@ -1072,8 +1071,7 @@ and normal Turtle documents. A Turtle document parsed from an HTML DOM will be a
 The HTML `lang` attribute or XHTML `xml:lang` attribute have no effect on the parsing of the data blocks.
 The base URI of the encapsulating HTML document provides a "Base URI Embedded in Content" per RFC3986 section 5.1.1.
 
-B. Internet Media Type, File Extension and Macintosh File Type
---------------------------------------------------------------
+## B. Internet Media Type, File Extension and Macintosh File Type
 
 Contact:
 :   Eric Prud'hommeaux
@@ -1161,8 +1159,7 @@ Restrictions on usage:
 Author/Change controller:
 :   The Turtle specification is the product of the RDF WG. The W3C reserves change control over this specifications.
 
-C. Acknowledgements
--------------------
+## C. Acknowledgements
 
 This work was described in the paper
 [New Syntaxes for RDF](http://www.dajobe.org/2003/11/new-syntaxes-rdf/)
@@ -1181,8 +1178,7 @@ Kellogg, Andy Seaborn, Sandro Hawke and the members of the RDF Working Group.
 
 The document was improved through the review process by the wider community.
 
-D. Change Log
--------------
+## D. Change Log
 
 ### D.1 Changes since [January 2014 Proposed Recommendation](https://www.w3.org/TR/2014/PR-turtle-20140109/)
 
@@ -1216,16 +1212,15 @@ D. Change Log
 
 * Adopted three additional string syntaxes from SPARQL: [STRING\_LITERAL2](https://www.w3.org/TR/2013/REC-sparql11-query-20130321/#rSTRING_LITERAL2), [STRING\_LITERAL\_LONG1](https://www.w3.org/TR/2013/REC-sparql11-query-20130321/#rSTRING_LITERAL_LONG1), [STRING\_LITERAL\_LONG2](https://www.w3.org/TR/2013/REC-sparql11-query-20130321/#rSTRING_LITERAL_LONG2)
 * Adopted SPARQL's syntax for prefixed names (see [editor's draft](https://www.w3.org/TR/sparql11-query/#rPrefixedName)):
-  + '.'s in names in all positions of a local name apart from the first or last, e.g. `ex:first.name`.
-  + digits in the first character of the [PN\_LOCAL](https://www.w3.org/TR/rdf-sparql-query/#rPN_LOCAL) lexical token, e.g. `ex:7tm`.
+  * '.'s in names in all positions of a local name apart from the first or last, e.g. `ex:first.name`.
+  * digits in the first character of the [PN\_LOCAL](https://www.w3.org/TR/rdf-sparql-query/#rPN_LOCAL) lexical token, e.g. `ex:7tm`.
 * adopted SPARQL's IRI resolution and prefix substitution text.
 * explicitly allowed re-use of the same prefix.
 * Added [parsing rules](#sec-parsing).
 
 See also the [pre-W3C Submission changelog](https://www.w3.org/TeamSubmission/2008/SUBM-turtle-20080114#sec-changelog).
 
-E. References
--------------
+## E. References
 
 ### E.1 Normative references
 

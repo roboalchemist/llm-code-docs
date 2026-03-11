@@ -12,11 +12,7 @@ SPARQL 1.1 Update
 
 [![W3C](https://www.w3.org/Icons/w3c_home)](https://www.w3.org/)
 
-SPARQL 1.1 Update
-=================
-
-W3C Recommendation 21 March 2013
---------------------------------
+## W3C Recommendation 21 March 2013
 
 This version:
 :   [http://www.w3.org/TR/2013/REC-sparql11-update-20130321/](https://www.w3.org/TR/2013/REC-sparql11-update-20130321/)
@@ -41,16 +37,14 @@ See also [**translations**](https://www.w3.org/2003/03/Translations/byTechnology
 
 ---
 
-Abstract
---------
+## Abstract
 
 This document describes SPARQL 1.1 Update, an update
 language for RDF graphs. It uses a syntax derived from the SPARQL Query Language for RDF. Update
 operations are performed on a collection of graphs in a Graph Store.
 Operations are provided to update, create, and remove RDF graphs in a Graph Store.
 
-Status of this Document
------------------------
+## Status of this Document
 
 #### May Be Superseded
 
@@ -90,8 +84,7 @@ archive](http://lists.w3.org/Archives/Public/public-rdf-dawg-comments/)). Althou
 
 *This document was produced by a group operating under the [5 February 2004 W3C Patent Policy](https://www.w3.org/Consortium/Patent-Policy-20040205/). W3C maintains a [public list of any patent disclosures](https://www.w3.org/2004/01/pp-impl/35463/status) made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains [Essential Claim(s)](https://www.w3.org/Consortium/Patent-Policy-20040205/#def-essential) must disclose the information in accordance with  [section 6 of the W3C Patent Policy](https://www.w3.org/Consortium/Patent-Policy-20040205/#sec-Disclosure).*
 
-Table of Contents
------------------
+## Table of Contents
 
 1 [Introduction](#sec-intro)  
     1.1 [Document Conventions](#documentConventions)  
@@ -149,8 +142,7 @@ D [References](#sec-bibliography)
 
 ---
 
-1 Introduction
---------------
+## 1 Introduction
 
 SPARQL 1.1 Update is
 intended to be a standard language for specifying and executing updates to RDF
@@ -187,12 +179,12 @@ The operations in this document contain language forms describing their use. The
 
 Language forms are shown informally in this document as for instance:
 
-```
+```sparql
 ( WITH IRIref  )?
 ( ( DeleteClause InsertClause? ) | InsertClause )
 ( USING ( NAMED )? IRIref )*
 WHERE GroupGraphPattern
-```
+```sparql
 
 Unlike other forms of EBNF where square brackets denote optionality, here `[]` is
 used for blank nodes, as in SPARQL Query. `|` is used to denote alternatives, `()` is used for grouping terms, `?` indicates 0 or 1 occurrence of a term, `*` indicates 0 or more occurrences, and `+` indicates 1 or more occurrences.
@@ -201,10 +193,10 @@ used for blank nodes, as in SPARQL Query. `|` is used to denote alternatives, `(
 
 Example update requests are shown as follows:
 
-```
+```sparql
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 INSERT { <http://example/egbook> dc:title  "This is an example title" } WHERE {}
-```
+```sparql
 
 **Note:**
 
@@ -212,11 +204,11 @@ INSERT { <http://example/egbook> dc:title  "This is an example title" } WHERE {}
 
 Data is shown in Turtle syntax as follows:
 
-```
+```sparql
 @prefix dc:   <http://purl.org/dc/elements/1.1/> .
 @prefix :     <http://example.org/books/> .
 :book0  dc:title  "SPARQL Tutorial" .
-```
+```sparql
 
 #### 1.1.2 Terminology
 
@@ -236,8 +228,7 @@ The following terms are also used in this document as defined in the SPARQL 1.1 
 * `QuadData` - A `QuadPattern` without variables.
 * `GroupGraphPattern` - A syntactic construct for referring to a set of triples, possibly with complex constraints.
 
-2 The Graph Store
------------------
+## 2 The Graph Store
 
 A Graph Store is a mutable container of RDF graphs managed by a single service. Similar to an
 [RDF Dataset](https://www.w3.org/TR/sparql11-query/#sparqlDataset)
@@ -279,8 +270,7 @@ After an update request is completed, a store that performs consistency checking
 
 Also of note is that some stores may be capable of performing entailments with respect to an ontology capable of higher level processing, such as RDFS or OWL. Updates may interact with these entailment regimes in these systems.
 
-3 SPARQL 1.1 Update Language
-----------------------------
+## 3 SPARQL 1.1 Update Language
 
 SPARQL 1.1 Update supports two categories of update operations on a Graph Store:
 
@@ -311,7 +301,7 @@ SPARQL 1.1 Update provides these graph update operations:
   query patterns.
   The difference between `INSERT` / `DELETE`
   and `INSERT DATA` / `DELETE DATA` is that `INSERT
-  DATA` and `DELETE DATA` do not substitute bindings into a template from a pattern. The `DATA` forms require concrete data (triple templates containing variables within `DELETE DATA` and `INSERT DATA` operations are disallowed and blank nodes are disallowed within `DELETE DATA`, see Notes 8+9 in the [grammar](https://www.w3.org/TR/sparql11-query/#sparqlGrammar)). 
+  DATA` and `DELETE DATA` do not substitute bindings into a template from a pattern. The `DATA` forms require concrete data (triple templates containing variables within `DELETE DATA` and `INSERT DATA` operations are disallowed and blank nodes are disallowed within `DELETE DATA`, see Notes 8+9 in the [grammar](https://www.w3.org/TR/sparql11-query/#sparqlGrammar)).
   Having specific operations for concrete data means that a request can be streamed so that large,
   pure-data updates can be done.
 * The `LOAD` operation reads the contents of a document representing
@@ -322,15 +312,15 @@ SPARQL 1.1 Update provides these graph update operations:
 
 The `INSERT DATA` operation adds some triples, given inline in the request, into the Graph Store:
 
-```
+```sparql
 INSERT DATA  QuadData
-```
+```sparql
 
 where `QuadData` are formed by `TriplesTemplate`s, i.e., sets of triple patterns, optionally wrapped into a `GRAPH` block.
 
-```
+```text
  ( GRAPH  VarOrIri )? { TriplesTemplate? }
-```
+```sparql
 
 Variables in `QuadData`s are disallowed in `INSERT DATA` requests (see Notes 8 in the [grammar](https://www.w3.org/TR/sparql11-query/#sparqlGrammar)). That is, the `INSERT DATA` statement only allows to insert ground triples. Blank nodes in `QuadData`s are assumed to be disjoint from the blank nodes in the Graph Store, i.e., will be inserted with "fresh" blank nodes.
 
@@ -338,9 +328,9 @@ If no graph is described in the `QuadData`, then the default graph is presumed. 
 
 Note that a triple *MAY* be considered to be "processed" with no action if that triple already exists in the graph. Further, note that
 
-```
+```turtle
 INSERT DATA { GRAPH <g> {} } ...
-```
+```sparql
 
 does not create `<g>`. If a user intends to just create a graph, then the graph management operations (`CREATE`/`LOAD`) may be used prior to any insertion operations.
 
@@ -349,28 +339,28 @@ does not create `<g>`. If a user intends to just create a graph, then the graph 
 This snippet
 describes two RDF triples to be inserted into the default graph of the Graph Store.
 
-```
+```sparql
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 INSERT DATA
 { 
   <http://example/book1> dc:title "A new book" ;
                          dc:creator "A.N.Other" .
 }
-```
+```sparql
 
 Data before:
 
-```
+```sparql
 # Default graph
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix ns: <http://example.org/ns#> .
 
 <http://example/book1> ns:price 42 .
-```
+```sparql
 
 Data after:
 
-```
+```sparql
 # Default graph
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix ns: <http://example.org/ns#> .
@@ -378,44 +368,44 @@ Data after:
 <http://example/book1> ns:price 42 .
 <http://example/book1> dc:title "A new book" .
 <http://example/book1> dc:creator "A.N.Other" .
-```
+```sparql
 
 **Example 2:**
 
 This SPARQL 1.1 Update request adds a triple to provide the price of a book. As opposed to the previous example, which affected the default graph, the requested change happens in the named graph identified by the IRI `http://example/bookStore`.
 
-```
+```sparql
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX ns: <http://example.org/ns#>
 INSERT DATA
 { GRAPH <http://example/bookStore> { <http://example/book1>  ns:price  42 } }
-```
+```sparql
 
 Data before:
 
-```
+```sparql
 # Graph: http://example/bookStore
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 <http://example/book1> dc:title "Fundamentals of Compiler Design" .
-```
+```sparql
 
 Data after:
 
-```
+```sparql
 # Graph: http://example/bookStore
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix ns: <http://example.org/ns#> .
 <http://example/book1> dc:title "Fundamentals of Compiler Design" .
 <http://example/book1> ns:price 42 .
-```
+```sparql
 
 #### 3.1.2 DELETE DATA
 
 The `DELETE DATA` operation removes some triples, given inline in the request, if the respective graphs in the Graph Store contain those:
 
-```
+```sparql
 DELETE DATA  QuadData
-```
+```sparql
 
 `QuadData` denotes triples to be removed and is as described in `INSERT DATA`, with the difference that in a `DELETE DATA` operation neither variables nor blank nodes are allowed (see Notes 8+9 in the [grammar](https://www.w3.org/TR/sparql11-query/#sparqlGrammar)).
 
@@ -427,7 +417,7 @@ Note that the deletion of non-existing triples has no effect, i.e., triples in t
 
 This request describes 2 triples to be removed from the default graph of the Graph Store.
 
-```
+```sparql
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 
 DELETE DATA
@@ -435,11 +425,11 @@ DELETE DATA
   <http://example/book2> dc:title "David Copperfield" ;
                          dc:creator "Edmund Wells" .
 }
-```
+```sparql
 
 Data before:
 
-```
+```sparql
 # Default graph
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix ns: <http://example.org/ns#> .
@@ -447,23 +437,23 @@ Data before:
 <http://example/book2> ns:price 42 .
 <http://example/book2> dc:title "David Copperfield" .
 <http://example/book2> dc:creator "Edmund Wells" .
-```
+```sparql
 
 Data after:
 
-```
+```sparql
 # Default graph
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix ns: <http://example.org/ns#> .
 
 <http://example/book2> ns:price 42 .
-```
+```sparql
 
 **Example 4:**
 
 This SPARQL 1.1 Update request consists of two operations, including a triple to be deleted and a triple to be added (used here to correct a book title). As opposed to the previous example, which affected the default graph, the requested change happens in the named graph identified by the IRI `http://example/bookStore`.
 
-```
+```sparql
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 DELETE DATA
 { GRAPH <http://example/bookStore> { <http://example/book1>  dc:title  "Fundamentals of Compiler Desing" } } ;
@@ -471,41 +461,41 @@ DELETE DATA
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 INSERT DATA
 { GRAPH <http://example/bookStore> { <http://example/book1>  dc:title  "Fundamentals of Compiler Design" } }
-```
+```sparql
 
 Data before:
 
-```
+```sparql
 # Graph: http://example/bookStore
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 <http://example/book1> dc:title "Fundamentals of Compiler Desing" .
-```
+```sparql
 
 Data after:
 
-```
+```sparql
 # Graph: http://example/bookStore
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 <http://example/book1> dc:title "Fundamentals of Compiler Design" .
-```
+```sparql
 
 #### 3.1.3 DELETE/INSERT
 
 The `DELETE/INSERT` operation can be used to remove or add triples from/to the Graph Store based on bindings for a query pattern specified in a `WHERE` clause:
 
-```
+```sparql
 ( WITH IRIref )?
 ( ( DeleteClause InsertClause? ) | InsertClause )
 ( USING ( NAMED )? IRIref )*
 WHERE GroupGraphPattern
-```
+```sparql
 
 The *DeleteClause* and *InsertClause* forms can be broken down as follows:
 
-```
+```text
 DeleteClause ::= DELETE  QuadPattern 
 InsertClause ::= INSERT  QuadPattern
-```
+```sparql
 
 This operation identifies data with the `WHERE` clause, which will be used to compute solution sequences of bindings for a set of variables. The bindings for each solution are then substituted into the `DELETE` template to remove triples, and then in the `INSERT` template to create new triples. If any solution produces a triple containing an unbound variable or an illegal RDF construct, such as a literal in a subject or predicate position, then that triple is not included when processing the operation: `INSERT` will not instantiate new data in the output graph, and `DELETE` will not remove anything. The graphs used for computing a solution sequence may be different to the graphs modified with the `DELETE` and `INSERT` templates.
 
@@ -529,15 +519,15 @@ Again, `QuadPattern`s are formed by `TriplesTemplate`s, i.e., sets of triple pat
 
 To illustrate the use of the `WITH` clause, an operation of the general form:
 
-```
+```sparql
 WITH <g1> DELETE { a b c } INSERT { x y z } WHERE { ... }
-```
+```sparql
 
 is considered equivalent to:
 
-```
+```sparql
 DELETE { GRAPH <g1> { a b c } } INSERT { GRAPH <g1> { x y z } } USING <g1> WHERE { ... }
-```
+```text
 
 Note that explicit `GRAPH` clauses override a `WITH` clause. `WITH` provides a fallback to specify a graph (different from the default graph) to use when one is not explicitly stipulated via `GRAPH`.
 
@@ -545,9 +535,9 @@ Deleting triples that are not present, or from a graph that is not present will 
 
 If an operation tries to insert into a graph that does not exist, then that graph *SHOULD* be created; again, there may be implementations providing an update service over a fixed set of graphs which in such case *MUST* return with failure for update requests that would create an unallowed graph. If no data is to be inserted, then no graph will be created. Particularly, note that
 
-```
+```turtle
 INSERT ... { GRAPH <g> {} } ...
-```
+```sparql
 
 does not create <g>. If a user intends to create a graph regardless of the data to be inserted, then the graph management operations (`CREATE`/`LOAD`) may be used prior to any insertion operations.
 
@@ -557,7 +547,7 @@ Blank nodes that appear in an `INSERT` clause operate similarly to blank nodes i
 
 An example to update the graph `http://example/addresses` to rename all people with the given name "Bill" to "William".
 
-```
+```sparql
 PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
 
 WITH <http://example/addresses>
@@ -566,11 +556,11 @@ INSERT { ?person foaf:givenName 'William' }
 WHERE
   { ?person foaf:givenName 'Bill'
   }
-```
+```sparql
 
 Data before:
 
-```
+```sparql
 # Graph: http://example/addresses
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
@@ -580,11 +570,11 @@ Data before:
 <http://example/president27> foaf:familyName "Taft" .
 <http://example/president42> foaf:givenName "Bill" .
 <http://example/president42> foaf:familyName "Clinton" .
-```
+```sparql
 
 Data after:
 
-```
+```sparql
 # Graph: http://example/addresses
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
@@ -594,16 +584,16 @@ Data after:
 <http://example/president27> foaf:familyName "Taft" .
 <http://example/president42> foaf:givenName "William" .
 <http://example/president42> foaf:familyName "Clinton" .
-```
+```sparql
 
 ##### 3.1.3.1 DELETE (Informative)
 
-```
+```sparql
 ( WITH  IRIref )?
 DELETE  QuadPattern 
 ( USING ( NAMED )? IRIref )*
 WHERE GroupGraphPattern
-```
+```sparql
 
 The `DELETE` operation is a form of the [`DELETE/INSERT`](#deleteInsert)
 operation having no `INSERT` section. A compliant implementation of `DELETE/INSERT` will already implement this operation correctly. The `DELETE` operation is described here separately for clarity. Analogous to [`DELETE/INSERT`](#deleteInsert), deleting triples that are not present, or from a graph that is not present will have no effect and will result in success.
@@ -616,7 +606,7 @@ The `WHERE` clause identifies data in existing graphs, and creates bindings to b
 
 This example request deletes all records of old books (with date before year 1970) from the store's default graph:
 
-```
+```sparql
 PREFIX dc:  <http://purl.org/dc/elements/1.1/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
@@ -627,13 +617,13 @@ WHERE
    FILTER ( ?date > "1970-01-01T00:00:00-02:00"^^xsd:dateTime )
    ?book ?p ?v
  }
-```
+```sparql
 
 The pattern in `WHERE` is matched against the Graph Store. The resulting sequence of solutions to the WHERE clause is used to instantiate the triple patterns in the `DELETE` template similar to CONSTRUCT in SPARQL 1.1 Query. The resulting triples are then removed from the Graph Store.
 
 Data before:
 
-```
+```sparql
 # Default graph
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
@@ -646,11 +636,11 @@ Data before:
 <http://example/book2> dc:date "1948-01-01T00:00:00-02:00"^^xsd:dateTime .
 
 <http://example/book3> dc:title "SPARQL 1.1 Tutorial" .
-```
+```sparql
 
 Data after:
 
-```
+```sparql
 # Default graph
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
@@ -660,23 +650,23 @@ Data after:
 <http://example/book2> dc:date "1948-01-01T00:00:00-02:00"^^xsd:dateTime .
 
 <http://example/book3> dc:title "SPARQL 1.1 Tutorial" .
-```
+```sparql
 
 **Example 7:**
 
 This example request removes all statements about anything with a given name of "Fred" from the graph `http://example/addresses`. A `WITH` clause is present, meaning that graph `http://example/addresses` is both the one from which triples are being removed and the one which the `WHERE` clause is matched against.
 
-```
+```sparql
 PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
 
 WITH <http://example/addresses>
 DELETE { ?person ?property ?value } 
 WHERE { ?person ?property ?value ; foaf:givenName 'Fred' }
-```
+```sparql
 
 Data before:
 
-```
+```sparql
 # Graph: http://example/addresses
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
@@ -687,29 +677,29 @@ Data before:
 <http://example/fred> a foaf:Person .
 <http://example/fred> foaf:givenName "Fred" .
 <http://example/fred> foaf:mbox  <mailto:fred@example> .
-```
+```sparql
 
 Data after:
 
-```
+```sparql
 # Graph: http://example/addresses
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
 <http://example/william> a foaf:Person .
 <http://example/william> foaf:givenName "William" .
 <http://example/william> foaf:mbox  <mailto:bill@example> .
-```
+```text
 
 Another example of `DELETE` is provided in the [final example](#example_9) in the following section which demonstrates multiple operations combining an `INSERT` with a `DELETE`.
 
 ##### 3.1.3.2 INSERT (Informative)
 
-```
+```sparql
 ( WITH  IRIref )?
 INSERT  QuadPattern 
 ( USING ( NAMED )?  IRIref )*
 WHERE GroupGraphPattern
-```
+```sparql
 
 The `INSERT` operation is a form of the [`DELETE/INSERT`](#deleteInsert)
 operation having no `DELETE` section. A compliant implementation of `DELETE/INSERT` will already implement this operation correctly. The `INSERT` operation is described here separately for clarity.
@@ -724,7 +714,7 @@ If any instantiation arising from the solution sequence produces a triple contai
 
 This example copies triples from one named graph to another named graph based on a pattern:
 
-```
+```sparql
 PREFIX dc:  <http://purl.org/dc/elements/1.1/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
@@ -735,12 +725,12 @@ WHERE
        { ?book dc:date ?date .
          FILTER ( ?date > "1970-01-01T00:00:00-02:00"^^xsd:dateTime )
          ?book ?p ?v
-  } }	
-```
+  } } 
+```sparql
 
 Data before:
 
-```
+```sparql
 # Graph: http://example/bookStore
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -754,18 +744,18 @@ Data before:
 <http://example/book2> dc:date "1948-01-01T00:00:00-02:00"^^xsd:dateTime .
 
 <http://example/book3> dc:title "SPARQL 1.1 Tutorial" .
-```
+```sparql
 
-```
+```sparql
 # Graph: http://example/bookStore2
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
 <http://example/book4> dc:title "SPARQL 1.0 Tutorial" .
-```
+```sparql
 
 Data after:
 
-```
+```sparql
 # Graph: http://example/bookStore
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -779,9 +769,9 @@ Data after:
 <http://example/book2> dc:date "1948-01-01T00:00:00-02:00"^^xsd:dateTime .
 
 <http://example/book3> dc:title "SPARQL 1.1 Tutorial" .
-```
+```sparql
 
-```
+```sparql
 # Graph: http://example/bookStore2
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
@@ -790,13 +780,13 @@ Data after:
 <http://example/book1> dc:date "1977-01-01T00:00:00-02:00"^^xsd:dateTime .
 
 <http://example/book4> dc:title "SPARQL 1.0 Tutorial" .
-```
+```sparql
 
 **Example 9:**
 
 This example copies triples of name and email from one named graph to another. Some individuals may not have an address, but the name is copied regardless:
 
-```
+```sparql
 PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 
@@ -812,11 +802,11 @@ WHERE
       ?person  foaf:name  ?name .
       OPTIONAL { ?person  foaf:mbox  ?email }
     } }
-```
+```sparql
 
 Data before:
 
-```
+```sparql
 # Graph: http://example/people
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdf:  >http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -827,17 +817,17 @@ _:a  foaf:mbox       <mailto:alice@example.com> .
 
 _:b  rdf:type        foaf:Person .
 _:b  foaf:name       "Bob" .
-```
+```sparql
 
-```
+```sparql
 # Graph: http://example/addresses
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-```
+```sparql
 
 Data after:
 
-```
-# Graph: http://example/people
+```sparql
+# Graph: http://example/people (continued)
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdf:  >http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
@@ -847,9 +837,9 @@ _:a  foaf:mbox       <mailto:alice@example.com> .
 
 _:b  rdf:type        foaf:Person .
 _:b  foaf:name       "Bob" .
-```
+```sparql
 
-```
+```sparql
 # Graph: http://example/addresses
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
@@ -857,13 +847,13 @@ _:a  foaf:name       "Alice" .
 _:a  foaf:mbox       <mailto:alice@example.com> .
 
 _:b  foaf:name       "Bob" .
-```
+```sparql
 
 **Example 10:**
 
 This example request first copies triples from one named graph to another named graph based on a pattern; triples about all the copied objects that are classified as Physical Objects are then deleted. This demonstrates two operations in a single request, both of which share common `PREFIX` definitions.
 
-```
+```sparql
 PREFIX dc:  <http://purl.org/dc/elements/1.1/>
 PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
@@ -887,11 +877,11 @@ WHERE
    FILTER ( ?date < "2000-01-01T00:00:00-02:00"^^xsd:dateTime ) 
    ?book ?p ?v
  }
-```
+```sparql
 
 Data before:
 
-```
+```sparql
 # Graph: http://example/bookStore
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcmitype: <http://purl.org/dc/dcmitype/> .
@@ -901,26 +891,26 @@ Data before:
 <http://example/book1> a dcmitype:PhysicalObject .
 
 <http://example/book3> dc:title "SPARQL 1.1 Tutorial" .
-```
+```sparql
 
-```
+```sparql
 # Graph: http://example/bookStore2
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 
 <http://example/book4> dc:title "SPARQL 1.0 Tutorial" .
-```
+```sparql
 
 Data after:
 
-```
+```sparql
 # Graph: http://example/bookStore
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcmitype: <http://purl.org/dc/dcmitype/> .
 
 <http://example/book3> dc:title "SPARQL 1.1 Tutorial" .
-```
+```sparql
 
-```
+```sparql
 # Graph: http://example/bookStore2
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix dcmitype: <http://purl.org/dc/dcmitype/> .
@@ -930,13 +920,13 @@ Data after:
 <http://example/book1> a dcmitype:PhysicalObject .
 
 <http://example/book4> dc:title "SPARQL 1.0 Tutorial" .
-```
+```sparql
 
 ##### 3.1.3.3 DELETE WHERE
 
-```
+```sparql
 DELETE WHERE  QuadPattern
-```
+```sparql
 
 The `DELETE WHERE` operation is a shortcut form for the [`DELETE/INSERT`](#deleteInsert) operation where bindings matched by the `WHERE` clause are used to define the triples in a graph that will be deleted. Analogous to `DELETE/INSERT`, deleting triples that are not present, or from a graph that is not present will have no effect and will result in success.
 
@@ -946,16 +936,16 @@ The `QuadPattern` is used both as a pattern for matching against triples and gra
 
 This example request removes all statements about anything with a given name of "Fred" from the default graph:
 
-```
+```sparql
 PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
 
 DELETE WHERE { ?person foaf:givenName 'Fred';
                        ?property      ?value }
-```
+```sparql
 
 Data before:
 
-```
+```sparql
 # Default graph
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
@@ -966,24 +956,24 @@ Data before:
 <http://example/fred> a foaf:Person .
 <http://example/fred> foaf:givenName "Fred" .
 <http://example/fred> foaf:mbox  <mailto:fred@example> .
-```
+```sparql
 
 Data after:
 
-```
+```sparql
 # Default graph
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
 <http://example/william> a foaf:Person .
 <http://example/william> foaf:givenName "William" .
 <http://example/william> foaf:mbox  <mailto:bill@example> .
-```
+```sparql
 
 **Example 12:**
 
 This example request removes both statements naming some resource "Fred" in the graph `http://example.com/names`, and also statements about that resource from the graph `http://example/addresses` (assuming that some of the resources in the graph `http://example.com/names` have corresponding triples in the graph `http://example/addresses`).
 
-```
+```sparql
 PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
 
 DELETE WHERE {
@@ -995,9 +985,9 @@ DELETE WHERE {
     ?person ?property2 ?value2
   }
 }
-```
+```sparql
 
-```
+```sparql
 # Graph: http://example.com/names
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
@@ -1006,41 +996,41 @@ DELETE WHERE {
 
 <http://example/fred> a foaf:Person .
 <http://example/fred> foaf:givenName "Fred" .
-```
+```sparql
 
-```
+```sparql
 # Graph: http://example.com/addresses
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
 <http://example/william> foaf:mbox  <mailto:bill@example> .
 
 <http://example/fred> foaf:mbox  <mailto:fred@example> .
-```
+```sparql
 
 Data after:
 
-```
-# Graph: http://example.com/names
+```sparql
+# Graph: http://example.com/names (continued)
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
 <http://example/william> a foaf:Person .
 <http://example/william> foaf:givenName "William" .
-```
+```sparql
 
-```
-# Graph: http://example.com/addresses
+```sparql
+# Graph: http://example.com/addresses (continued)
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
 <http://example/william> foaf:mbox  <mailto:bill@example> .
-```
+```sparql
 
 #### 3.1.4 LOAD
 
 The `LOAD` operation reads an RDF document from a IRI and inserts its triples into the specified graph in the Graph Store. The specified destination graph *SHOULD* be created if required; again, implementations providing an update service over a fixed set of graphs *MUST* return with failure for a request that would create a disallowed graph. If the destination graph already exists, then no data in that graph will be removed.
 
-```
+```sparql
 LOAD ( SILENT )? IRIref_from ( INTO GRAPH IRIref_to )?
-```
+```sparql
 
 *IRIref\_from* specifies the IRI of a document such that a store will be able to identify, locate and read the document.
 The most common form will be URLs with the *http* IRI schemes. Once the document has been read, the resulting triples will be inserted into the destination graph named by the IRI referred to by *IRIref\_to*.
@@ -1053,24 +1043,24 @@ In case no RDF data can be retrieved (as opposed to the empty graph being retrie
 
 The `CLEAR` operation removes all the triples in the specified graph(s) in the Graph Store.
 
-```
+```text
 CLEAR  ( SILENT )? (GRAPH IRIref | DEFAULT | NAMED | ALL )
-```
+```sparql
 
 Here, the `DEFAULT` keyword is used to remove all triples in the default graph of the Graph Store, the `NAMED` keyword is used to remove all triples in all named graphs of the Graph Store and the `ALL` keyword is used to remove all triples in all graphs of the Graph Store. The `GRAPH` keyword is used to remove all triples from a graph denoted by `IRIref`.
 This operation is not required to remove the empty graphs from the Graph Store, but an implementation *MAY* decide to do so.
 
-```
+```sparql
 # Remove all triples from a specified graph.
 CLEAR GRAPH IRIref
-```
+```sparql
 
 in principle has the same effect as:
 
-```
+```sparql
 # Remove all triples from the graph named with the IRI denoted by IRIref.
 DELETE { GRAPH IRIref { ?s ?p ?o } } WHERE { GRAPH IRIref { ?s ?p ?o } }
-```
+```sparql
 
 **Note:**
 
@@ -1100,9 +1090,9 @@ SPARQL 1.1 Update provides these graph management operations:
 
 This operation creates a graph in the Graph Store:
 
-```
+```sparql
 CREATE ( SILENT )? GRAPH IRIref
-```
+```sparql
 
 For stores that record empty graphs, this will create a new empty graph in the store with a name specified by the IRI.
 If the graph already exists, then a *failure* *SHOULD* be returned, except when the `SILENT` keyword is used; in either case, the contents of already existing graphs remain unchanged. If the graph may not be created, then a *failure* *MUST* be returned, except when the `SILENT` keyword is used.
@@ -1111,9 +1101,9 @@ Stores that do not record empty named graphs will always return *success* on cre
 
 #### 3.2.2 DROP
 
-```
+```text
 DROP  ( SILENT )? (GRAPH IRIref | DEFAULT | NAMED | ALL )
-```
+```sparql
 
 The `DROP` operation removes the specified graph(s) from the Graph Store.
 The `GRAPH` keyword is used to remove a graph denoted by `IRIref`, the `DEFAULT` keyword is used to remove the default graph from the Graph Store, the `NAMED` keyword is used to remove all named graphs from the Graph Store, and the `ALL` keyword is used to remove all graphs from the Graph Store, i.e., resetting the store.
@@ -1132,16 +1122,16 @@ Stores that do not record empty graphs will always return *success*.
 
 The `COPY` operation is a shortcut for inserting all data from an input graph into a destination graph. Data from the input graph is not affected, but data from the destination graph, if any, is removed before insertion.
 
-```
+```text
 COPY ( SILENT )? ( ( GRAPH )? IRIref_from | DEFAULT) TO ( ( GRAPH )? IRIref_to | DEFAULT )
-```
+```sparql
 
 is similar in operation to:
 
-```
+```sparql
 DROP SILENT (GRAPH IRIref_to | DEFAULT);
       INSERT { ( GRAPH IRIref_to )? { ?s ?p ?o } } WHERE { ( GRAPH IRIref_from )? { ?s ?p ?o } }
-```
+```sparql
 
 The difference between `COPY` and the `DROP/INSERT` combination is that if `COPY` is used to copy a graph onto itself then no operation will be performed and the data will be left as it was. Using `DROP/INSERT` in this situation would result in an empty graph.
 
@@ -1153,46 +1143,46 @@ If `SILENT` is present, the result of the operation will always be success.
 
 This example request copies all statements from the default graph to a named graph:
 
-```
+```turtle
 COPY DEFAULT TO <http://example.org/named>
-```
+```sparql
 
 Data before:
 
-```
+```sparql
 # Default graph
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
 <http://example/william> a foaf:Person .
 <http://example/william> foaf:givenName "William" .
 <http://example/william> foaf:mbox  <mailto:bill@example> .
-```
+```sparql
 
-```
+```turtle
 # Graph http://example.org/named
 <http://example/fred> a foaf:Person .
 <http://example/fred> foaf:givenName "Fred" .
-```
+```sparql
 
 Data after:
 
-```
+```sparql
 # Default graph
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
 <http://example/william> a foaf:Person .
 <http://example/william> foaf:givenName "William" .
 <http://example/william> foaf:mbox  <mailto:bill@example> .
-```
+```sparql
 
-```
+```sparql
 # Graph http://example.org/named
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
 <http://example/william> a foaf:Person .
 <http://example/william> foaf:givenName "William" .
 <http://example/william> foaf:mbox  <mailto:bill@example> .
-```
+```sparql
 
 Note that the original content in `http://example.org/named` is lost by a `COPY` operation.
 
@@ -1200,17 +1190,17 @@ Note that the original content in `http://example.org/named` is lost by a `COPY`
 
 The `MOVE` operation is a shortcut for moving all data from an input graph into a destination graph. The input graph is removed after insertion and data from the destination graph, if any, is removed before insertion.
 
-```
+```text
 MOVE (SILENT)? ( ( GRAPH )? IRIref_from | DEFAULT) TO ( ( GRAPH )? IRIref_to | DEFAULT)
-```
+```sparql
 
 is similar in operation to:
 
-```
+```sparql
 DROP SILENT (GRAPH IRIref_to | DEFAULT);
       INSERT { ( GRAPH IRIref_to )? { ?s ?p ?o } } WHERE { ( GRAPH IRIref_from )? { ?s ?p ?o } };
 DROP ( GRAPH IRIref_from | DEFAULT)
-```
+```sparql
 
 The difference between `MOVE` and the `DROP/INSERT/DROP` combination is that if `MOVE` is used to move a graph onto itself then no operation will be performed and the data will be left as it was. Using `DROP/INSERT/DROP` in this situation would result in the graph being removed.
 
@@ -1222,43 +1212,43 @@ If `SILENT` is present, the result of the operation will always be success.
 
 This example request moves all statements from the default graph into a named graph:
 
-```
+```turtle
 MOVE DEFAULT TO <http://example.org/named>
-```
+```sparql
 
 Data before:
 
-```
+```sparql
 # Default graph
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
 <http://example/william> a foaf:Person .
 <http://example/william> foaf:givenName "William" .
 <http://example/william> foaf:mbox  <mailto:bill@example> .
-```
+```sparql
 
-```
+```sparql
 # Graph http://example.org/named
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
 <http://example/fred> a foaf:Person .
 <http://example/fred> foaf:givenName "Fred" .
-```
+```sparql
 
 Data after:
 
-```
+```sparql
 # Default graph
-```
+```sparql
 
-```
+```sparql
 # Graph http://example.org/named
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
 <http://example/william> a foaf:Person .
 <http://example/william> foaf:givenName "William" .
 <http://example/william> foaf:mbox  <mailto:bill@example> .
-```
+```sparql
 
 Note that the original content in `http://example.org/named` is lost by a `MOVE` operation.
 
@@ -1266,15 +1256,15 @@ Note that the original content in `http://example.org/named` is lost by a `MOVE`
 
 The `ADD` operation is a shortcut for inserting all data from an input graph into a destination graph. Data from the input graph is not affected, and initial data from the destination graph, if any, is kept intact.
 
-```
+```text
 ADD ( SILENT )? ( ( GRAPH )? IRIref_from | DEFAULT) TO ( ( GRAPH )? IRIref_to | DEFAULT)
-```
+```sparql
 
 is equivalent to:
 
-```
+```sparql
 INSERT { ( GRAPH IRIref_to )? { ?s ?p ?o } } WHERE { ( GRAPH IRIref_from )? { ?s ?p ?o } }
-```
+```sparql
 
 If the destination graph does not exist, it will be created.
 By default, the service *MAY* return *failure* if the input graph does not exist.
@@ -1284,40 +1274,40 @@ If `SILENT` is present, the result of the operation will always be success.
 
 This example request adds all statements from the default graph to a named graph:
 
-```
+```turtle
 ADD DEFAULT TO <http://example.org/named>
-```
+```sparql
 
 Data before:
 
-```
+```sparql
 # Default graph
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
 <http://example/william> a foaf:Person .
 <http://example/william> foaf:givenName "William" .
 <http://example/william> foaf:mbox  <mailto:bill@example> .
-```
+```sparql
 
-```
+```sparql
 # Graph http://example.org/named
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
 <http://example/fred> a foaf:Person .
-```
+```sparql
 
 Data after:
 
-```
+```sparql
 # Default graph
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
 <http://example/william> a foaf:Person .
 <http://example/william> foaf:givenName "William" .
 <http://example/william> foaf:mbox  <mailto:bill@example> .
-```
+```sparql
 
-```
+```sparql
 # Graph http://example.org/named
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
@@ -1326,10 +1316,9 @@ Data after:
 <http://example/william> a foaf:Person .
 <http://example/william> foaf:givenName "William" .
 <http://example/william> foaf:mbox  <mailto:bill@example> .
-```
+```sparql
 
-4 SPARQL Update Formal Model
-----------------------------
+## 4 SPARQL Update Formal Model
 
 This section formally defines the semantics of Update Operations by describing their effects in terms of transformations of the Graph Store.
 
@@ -1457,29 +1446,29 @@ i.e., blank nodes from the active graph are preserved in solutions.
 The definition of eval'() guarantees that co-referent blank nodes in DS are not "lost" during pattern evaluation, cf. [Treatment of Blank Nodes](https://www.w3.org/TR/sparql11-query/#BGPsparqlBNodes) in [SPARQL1.1 Query](https://www.w3.org/TR/sparql11-query/). The latter is necessary to ensure that blank nodes in DS can be matched against existing blank nodes in GS to remove/add triples. In order to illustrate matching against existing blank nodes in the Graph Store,
 the following update request removes all triples with blank node as subject.
 
-```
+```sparql
 DELETE { ?S ?P ?O . } WHERE { ?S ?P ?O . FILTER ( isBlank(?S)) }
-```
+```sparql
 
 Data before:
 
-```
+```sparql
 # Default graph
 @prefix :      <http://example.com/> .
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
 _:b a foaf:Person .
 :s  a foaf:Person .
-```
+```sparql
 
 Data after:
 
-```
+```sparql
 # Default graph
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 
 :s  a foaf:Person .
-```
+```text
 
 ### 4.3 Graph Update Operations
 
@@ -1609,22 +1598,20 @@ set of `USING` and `USING NAMED` clauses and is defined as follows:
 Table 2: Mapping *[UsingClause](https://www.w3.org/TR/sparql11-query/#rUsingClause)*s to RDF Datasets
 
 | Translation Function | Definition |
-| *TrDataset*(GS,*[UsingClause](https://www.w3.org/TR/sparql11-query/#rUsingClause)*\*) = | * the RDF Dataset DS described by the *UsingClause*s, if non-empty * the RDF Dataset corresponding to the current state of GS, otherwise |
+| *TrDataset*(GS,*[UsingClause](https://www.w3.org/TR/sparql11-query/#rUsingClause)*\*) = | *the RDF Dataset DS described by the *UsingClause*s, if non-empty* the RDF Dataset corresponding to the current state of GS, otherwise |
 
 **Note:**
 
 How exactly an RDF Dataset is obtained from the `USING` and `USING NAMED` clauses (e.g. by dereferencing graph name IRIs and trying to retrieve them, or by picking those graphs from the existing Graph Store) is implementation dependent. Particularly, this specification does not mandate
 any assumptions about blank node identity beyond the consideration for the analogous `FROM` and `FROM NAMED` clauses in Section [Specifying RDF Datasets](https://www.w3.org/TR/sparql11-query/#specifyingDataset) of the SPARQL 1.1 Query Language specification.
 
-5 Conformance
--------------
+## 5 Conformance
 
 See [appendix B SPARQL 1.1 Update Grammar](#grammar) regarding conformance of SPARQL Update strings.
 
 This specification is intended for use in conjunction with: the [SPARQL 1.1 Graph Store HTTP Protocol](https://www.w3.org/TR/sparql11-http-rdf-update/) and the [SPARQL 1.1 Protocol for RDF](https://www.w3.org/TR/sparql11-protocol/).
 
-A Security Considerations (Informative)
----------------------------------------
+## A Security Considerations (Informative)
 
 Exposing RDF data for update creates many security issues which all deployments must be aware of, and
 consider the risks involved. This submission discusses some of the potential issues. New security
@@ -1663,8 +1650,7 @@ cannot be considered complete nor authoritative.
   Operation. Therefore, simple syntactic tests are inadequate to
   determine if a string describes a query or an update.
 
-B Internet Media Type, File Extension and Macintosh File Type
--------------------------------------------------------------
+## B Internet Media Type, File Extension and Macintosh File Type
 
 The Internet Media Type / MIME Type for the SPARQL Update Language is "application/sparql-update".
 
@@ -1735,13 +1721,11 @@ Author/Change controller:
 :   The SPARQL 1.1 specification is a work product of the World Wide Web Consortium's
     SPARQL Working Group. The W3C has change control over these specifications.
 
-C SPARQL 1.1 Update Grammar
----------------------------
+## C SPARQL 1.1 Update Grammar
 
 The formal definition for the SPARQL 1.1 Update grammar is provided with the [SPARQL 1.1 Query grammar](https://www.w3.org/TR/sparql11-query/#grammar). This is because the grammar for SPARQL 1.1 Update shares most of its structure with SPARQL 1.1 Query.
 
-D References
-------------
+## D References
 
 ### D.1 Normative References
 
@@ -1852,8 +1836,7 @@ XML Names
     Dave Hollander, and Andrew Layman, editors. [Namespaces in XML](https://www.w3.org/TR/xml-names/).
     Textuality, Hewlett-Packard, and Microsoft. World Wide Web Consortium, 1999. (See http://www.w3.org/TR/xml-names/.)
 
-Change Log
-----------
+## Change Log
 
 ### Changes since Proposed Recommendation
 

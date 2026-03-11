@@ -69,9 +69,9 @@ RDFLib has been around for more than a decade, and in this time both Python and 
 
 There are more or less two ways to introduce breaking changes to RDFLib's public API:
 
-- Revolutionary: Create a new API from scratch and reimplement it, and when
+* Revolutionary: Create a new API from scratch and reimplement it, and when
   ready, release a new version of RDFLib with the new API.
-- Evolutionary: Incrementally improve the existing API with small changes and
+* Evolutionary: Incrementally improve the existing API with small changes and
   release any breaking changes that were made at regular intervals.
 
 While the revolutionary approach seems appealing, it is also risky and time-consuming.
@@ -86,7 +86,7 @@ There is however no hard requirement that something may only be removed after a 
 
 Consequently, functionality may be removed without it ever being marked as deprecated.
 
-#### Rationale
+#### Rationale for no hard deprecation requirement
 
 Current resource limitations and the backlog of issues make it impractical to first release or incorporate deprecation notices before making quality of life changes.
 
