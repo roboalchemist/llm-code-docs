@@ -1205,3 +1205,6 @@ sites:
 - name: courier
   base_url: https://www.courier.com/docs/
   description: courier documentation
+- name: heroku
+  base_url: https://devcenter.heroku.com/
+  description: heroku documentation
