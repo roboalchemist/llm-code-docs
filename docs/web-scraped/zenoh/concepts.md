@@ -1,6 +1,6 @@
 # Zenoh Concepts Reference
 
-> **Comprehensive reference documentation for Eclipse Zenoh — the unified pub/sub/query/storage protocol for edge, fog, and cloud. Based on the Zenoh 1.x Rust API.**
+> **Definitive reference for Eclipse Zenoh** — the unified pub/sub/query protocol designed for the continuum from microcontrollers to cloud. Based on zenoh source code (0.11.x/1.x), RFCs, and official documentation.
 
 ---
 
@@ -27,7 +27,7 @@
 19. [CongestionControl](#congestioncontrol)
 20. [Locality](#locality)
 21. [Timestamp](#timestamp)
-22. [Shared Memory](#shared-memory)
+22. [Shared Memory (SHM)](#shared-memory-shm)
 23. [Admin Space](#admin-space)
 24. [Handlers](#handlers)
 25. [Builders](#builders)
@@ -36,228 +36,214 @@
 
 ## Session
 
-### What It Is
+### What it is
 
-A `Session` is the root object in Zenoh — the gateway to the network. Every operation (publish, subscribe, query, etc.) flows through a session. Sessions manage:
+The `Session` is the central entry point for all zenoh operations. It represents a connection to the zenoh network and is the factory for every other zenoh entity: publishers, subscribers, queryables, queriers, and liveliness tokens. All resources are tied to the session's lifetime.
 
-- Network connections to routers or peers
-- Resource declarations (publishers, subscribers, queryables, etc.)
-- A unique **ZenohId** (128-bit UUID) identifying this participant
-- The local routing table and all internal state
+A session is created via `zenoh::open()`, which takes a `Config`. When the session is dropped (or explicitly closed), all declared entities are undeclared and all in-flight operations are terminated. The close operation has a configurable timeout (default: 10 seconds).
 
-A session is relatively heavyweight: you should create one per process (or one per logical subsystem in advanced deployments), not one per message.
+### When to use
+
+Create one session per process (occasionally per major logical component in a large application). Sessions are `Arc`-wrapped internally and cloneable (the clone refers to the same underlying session). Prefer a single session to avoid redundant network connections.
 
 ### Lifecycle
 
-Sessions are opened asynchronously with `zenoh::open()` and closed explicitly or on drop. Closing is graceful: the session sends un-declaration messages, allowing peers to clean up subscriptions. The close builder supports a configurable timeout (default 10 seconds).
+```
+zenoh::open(config) → Session
+     │
+     ├── declare_publisher(...)
+     ├── declare_subscriber(...)
+     ├── declare_queryable(...)
+     ├── declare_querier(...)
+     ├── get(...)
+     ├── liveliness()
+     └── close() → CloseBuilder
+```
+
+The session can be closed explicitly with `session.close().await` (or `.wait()`). Dropping the `Session` without closing it triggers an implicit close. The `CloseBuilder` exposes:
+- `.timeout(Duration)` — override the 10-second close timeout.
+- `.wait_callbacks()` *(unstable)* — block until all running callbacks have returned before closing.
+
+### Builder pattern
+
+`zenoh::open()` returns an `OpenBuilder` that resolves to `ZResult<Session>`. Configuration is provided via `zenoh::Config`.
 
 ```rust
-// Open a session with default config
+// Async open
 let session = zenoh::open(zenoh::Config::default()).await?;
 
-// Access session metadata
-let zid = session.info().zid().await;                    // Own ZenohId
-let routers = session.info().routers_zid().await;        // Connected routers
-let peers   = session.info().peers_zid().await;          // Connected peers
+// Sync open
+let session = zenoh::open(zenoh::Config::default()).wait()?;
 
-// Explicit close (graceful, waits up to 10s)
+// Open with custom config
+let mut config = zenoh::Config::default();
+config.set_mode(Some(WhatAmI::Peer));
+let session = zenoh::open(config).await?;
+
+// Explicit close
 session.close().await?;
 
-// Close and wait for all callbacks to finish
+// Close with callback drain
 session.close().wait_callbacks().await?;
 ```
 
-### Configuration
+### Key session methods
 
-The `Config` object controls:
+| Method | Returns | Description |
+|---|---|---|
+| `session.info()` | `SessionInfo` | Access ZID, connected routers/peers |
+| `session.declare_publisher(ke)` | `PublisherBuilder` | Declare a publisher |
+| `session.declare_subscriber(ke)` | `SubscriberBuilder` | Declare a subscriber |
+| `session.declare_queryable(ke)` | `QueryableBuilder` | Declare a queryable |
+| `session.declare_querier(ke)` | `QuerierBuilder` | Declare a reusable querier |
+| `session.get(selector)` | `SessionGetBuilder` | Ad-hoc query |
+| `session.put(ke, payload)` | `SessionPutBuilder` | Direct put (no predeclared publisher) |
+| `session.delete(ke)` | `SessionDeleteBuilder` | Direct delete |
+| `session.liveliness()` | `Liveliness` | Access liveliness API |
+| `session.declare_keyexpr(ke)` | key expr optimization | Pre-declare a key expression |
+| `session.zid()` | `ZenohId` | This session's unique ID |
 
-- **Mode**: `router`, `peer`, or `client` (see [WhatAmI](#whatami))
-- **Endpoints**: list of `locator` strings (`tcp/192.168.1.1:7447`, `udp/...`, `tls/...`, etc.)
-- **Scouting**: multicast group, gossip settings
-- **QoS overrides**: per-key-expression defaults for priority, congestion control, etc.
-- **Access control**: ACL rules
-- **Shared memory**: SHM configuration
-
-```rust
-// From a JSON5 config file
-let config = zenoh::Config::from_file("zenoh.json5")?;
-
-// Programmatic config
-let mut config = zenoh::Config::default();
-config.set_mode(Some(WhatAmI::Client))?;
-config.connect.endpoints.set(vec!["tcp/192.168.1.100:7447".parse()?])?;
-
-let session = zenoh::open(config).await?;
-```
-
-### Builder Pattern
-
-`zenoh::open()` returns an `OpenBuilder` that resolves to `ZResult<Session>`. All Zenoh builders implement both `.await` (async) and `.wait()` (sync):
+### Session Info
 
 ```rust
-// Async
-let session = zenoh::open(config).await?;
-
-// Sync (blocks current thread)
-let session = zenoh::open(config).wait()?;
+let info = session.info();
+let my_zid = info.zid().await;
+let routers: Vec<ZenohId> = info.routers_zid().await.collect();
+let peers: Vec<ZenohId> = info.peers_zid().await.collect();
 ```
-
-### WeakSession
-
-Internal subsystems (admin space, publishers stored in state) hold a `WeakSession` — a non-owning reference that does not prevent the session from being dropped. User code always holds the strong `Session`.
-
-### Key Properties
-
-| Property | Description |
-|---|---|
-| `session.info().zid()` | Own 128-bit ZenohId |
-| `session.info().routers_zid()` | ZenohIds of connected routers |
-| `session.info().peers_zid()` | ZenohIds of connected peers |
-| `session.declare_publisher(ke)` | Declare a publisher |
-| `session.declare_subscriber(ke)` | Declare a subscriber |
-| `session.declare_queryable(ke)` | Declare a queryable |
-| `session.declare_querier(ke)` | Declare a querier |
-| `session.get(selector)` | Ad-hoc query |
-| `session.put(ke, payload)` | Ad-hoc publish |
-| `session.delete(ke)` | Ad-hoc delete |
-| `session.liveliness()` | Liveliness subsystem |
 
 ---
 
 ## Key Expressions
 
-### What They Are
+### What it is
 
-Key Expressions (KEs) are the addressing primitive in Zenoh — the equivalent of topics in pub/sub or resource paths in REST. Every piece of data is associated with a key expression, and routing decisions are made by matching key expressions.
+A **Key Expression** (KE) is the fundamental addressing mechanism in zenoh. It is a `/`-separated path that identifies a resource. Every put, subscribe, query, and reply operates on key expressions. KEs can be concrete (identifying a single resource) or contain wildcards (identifying a set of resources).
 
-A key expression is a UTF-8 string composed of **chunks** separated by `/`. Each chunk is a sequence of characters that may include wildcards.
+### Syntax rules
 
-### Syntax Rules
-
-```
-key_expr  ::= chunk ('/' chunk)*
-chunk     ::= non-empty string of printable characters (no '/')
-            | '*'       -- single-chunk wildcard
-            | '**'      -- multi-chunk wildcard (only at chunk boundaries)
-```
-
-**Valid examples:**
-```
-robot/arm/joint1
-sensors/temperature
-fleet/*/status          -- matches fleet/A/status, fleet/B/status, etc.
-fleet/**/telemetry      -- matches any depth under fleet/
-a/**/b                  -- matches a/b, a/x/b, a/x/y/b, etc.
-**                      -- matches everything
-```
-
-**Invalid examples:**
-```
-/leading/slash          -- chunks cannot be empty
-trailing/slash/         -- chunks cannot be empty
-a**b                    -- ** must occupy an entire chunk
-a/b*c/d                 -- * must occupy an entire chunk
-```
+- Segments are separated by `/`
+- A segment must not be empty (no `//`)
+- The string must not start or end with `/`
+- Allowed characters in segments: any except `*`, `?`, `#`, `[`, `]`
 
 ### Wildcards
 
 | Wildcard | Meaning | Example |
 |---|---|---|
-| `*` | Matches exactly one chunk (any content) | `a/*/c` matches `a/b/c` but not `a/b/x/c` |
-| `**` | Matches zero or more chunks | `a/**/c` matches `a/c`, `a/b/c`, `a/b/d/c` |
+| `*` | Matches any single segment (one chunk, no `/`) | `home/*/temp` matches `home/kitchen/temp` |
+| `**` | Matches any number of segments including zero | `home/**/temp` matches `home/temp`, `home/floor1/room2/temp` |
+| `$*` | DSL — alternative (within segments) | Not commonly used in basic API |
+
+Examples:
+```
+home/kitchen/temperature     # concrete
+home/*/temperature           # single wildcard — any room
+home/**/temperature          # double wildcard — any depth
+**/temperature               # all temperatures anywhere
+**                           # everything
+```
 
 ### Canonicalization
 
-KEs must be in canonical form before use. Non-canonical KEs (e.g., double slashes, redundant wildcards) are automatically canonicalized. The API will reject or normalize KEs at declaration time.
+Key expressions are canonicalized on construction. Canonicalization:
+- Removes redundant `**` patterns (e.g., `a/**/**/b` → `a/**/b`)
+- Normalizes the expression to its minimal form
+
+Always prefer the `keyexpr!` macro for compile-time-validated literals, or `KeyExpr::try_from("...")` for runtime construction.
+
+### Operators
+
+Two key expressions can be tested for relationships:
+
+| Method | Meaning |
+|---|---|
+| `ke1.intersects(ke2)` | Is there any string matched by both? |
+| `ke1.includes(ke2)` | Does ke1 match everything ke2 matches? (ke1 ⊇ ke2) |
+| `ke1 / ke2` | Concatenate with `/` separator |
 
 ```rust
 use zenoh::key_expr::KeyExpr;
 
-// Static checked at compile time (macro)
-let ke = zenoh::kedefine!(pub KE_SENSORS: "sensors/**");
+// Construction
+let ke: KeyExpr = "home/kitchen/temp".try_into()?;
 
-// Runtime construction — canonicalized automatically
-let ke: KeyExpr = "sensors/*/temp".try_into()?;
+// Compile-time validated via macro
+use zenoh_macros::ke;
+let ke: &keyexpr = ke!("home/kitchen/temp");
 
-// Concatenation via / operator
-let base: KeyExpr = "robot".try_into()?;
-let full = &base / "arm" / "joint1";  // "robot/arm/joint1"
+// Wildcards
+let wildcard: KeyExpr = "home/*/temp".try_into()?;
+
+// Relationships
+assert!(wildcard.intersects(&ke));
+assert!(wildcard.includes(&ke));
+assert!(!ke.includes(&wildcard));
+
+// Concatenation
+let base: KeyExpr = "home".try_into()?;
+let full = base / KeyExpr::try_from("kitchen/temp")?;
+// => "home/kitchen/temp"
+
+// Pre-declare to optimize routing (reduces wire overhead)
+let optimized = session.declare_keyexpr("home/kitchen/temp").await?;
 ```
 
-### Operators
+### Pre-declared key expressions
 
-```rust
-// Intersection: do these two KEs share any common resources?
-ke1.intersects(&ke2)   // true if any string matches both
-
-// Inclusion: does ke1 include all resources of ke2?
-ke1.includes(&ke2)     // true if every string matching ke2 also matches ke1
-
-// Equality
-ke1 == ke2
-```
-
-### Owned vs Borrowed
-
-| Type | Description |
-|---|---|
-| `KeyExpr<'a>` | Borrowed — may reference a string slice |
-| `OwnedKeyExpr` | Owned — heap-allocated, `'static` |
-| `&keyexpr` | Borrowed reference to a validated KE slice (low-level) |
-
-Use `KeyExpr::autocanonize()` when constructing from user input, and `ke.into_owned()` when you need to store or move a KE.
-
-### Key Expression Declaration
-
-Declaring a KE with the session allows the runtime to assign a compact numeric alias, reducing wire overhead:
-
-```rust
-let declared_ke = session.declare_keyexpr("robot/arm/**").await?;
-// Now 'declared_ke' carries the alias; use it for publishers/subscribers
-```
+Calling `session.declare_keyexpr(ke)` registers the key expression with the session and network, returning a mapped `KeyExpr` that carries a compact numeric ID on the wire. This is an optimization — not a requirement.
 
 ---
 
 ## Selector
 
-### What It Is
+### What it is
 
-A `Selector` extends a Key Expression with an optional **parameters** string, using the syntax:
+A `Selector` extends a key expression with an optional parameter string, separated by `?`. Selectors are used exclusively in `get()` and `Queryable` interactions to pass filtering or query parameters to queryables.
+
+### Syntax
 
 ```
-selector ::= key_expression ['?' parameters]
-parameters ::= key=value('&'key=value)*
+<key_expression>?<parameters>
 ```
 
-Selectors are used exclusively for **queries** (`session.get()`). The parameters are passed to queryables as metadata — Zenoh itself does not interpret them (except for the special `_anyke` parameter). The queryable's application logic interprets parameters to filter or transform the reply.
+Parameters are a `&`-separated list of `key=value` pairs (query-string style):
+
+```
+home/sensors?room=kitchen&value>20
+temperature/**?unit=celsius&precision=2
+```
+
+The `?` and everything after it is the **parameters** portion. The key expression portion is the part before `?`.
+
+### Key properties
+
+- Parameters are queryable-application-defined — zenoh does not interpret them (except for built-in ones like `_anyke` for disjoint replies)
+- A `Selector` with no `?` is equivalent to just a key expression
+- The special parameter `_anyke` (constant `REPLY_KEY_EXPR_ANY_SEL_PARAM`) tells zenoh to accept replies on key expressions that don't intersect with the query KE
 
 ```rust
-// Simple selector
-let replies = session.get("sensors/temperature").await?;
+use zenoh::selector::Selector;
 
-// With parameters
-let replies = session.get("sensors/temperature?location=room1&unit=celsius").await?;
+// From a string (parsed at runtime)
+let sel: Selector = "home/*/temp?room=kitchen".try_into()?;
 
-// Explicit construction
-let selector = Selector::new("sensors/**", "ts>1000&ts<2000");
-```
+// Accessing parts
+let ke = sel.key_expr();       // "home/*/temp"
+let params = sel.parameters(); // "room=kitchen"
 
-### Special Parameters
+// In a get call
+let replies = session
+    .get("home/*/temp?room=kitchen")
+    .await?;
 
-| Parameter | Meaning |
-|---|---|
-| `_anyke` (internal) | Accept replies on any key expression (not just intersecting ones) |
+// Explicit selector construction
+let sel = Selector::new("home/*/temp", "room=kitchen&min=18");
 
-### Accessing Parameters in a Queryable
-
-```rust
-session.declare_queryable("sensors/**")
-    .callback(|query| {
-        let params = query.parameters();
-        let location = params.get("location");
-        // ... use params to filter reply
-        query.reply(query.key_expr(), "25.3").await.unwrap();
-    })
+// Accept disjoint replies
+let replies = session
+    .get("home/*/temp")
+    .accept_replies(ReplyKeyExpr::Any)
     .await?;
 ```
 
@@ -265,342 +251,348 @@ session.declare_queryable("sensors/**")
 
 ## Publisher
 
-### What It Is
+### What it is
 
-A `Publisher` is a declared, reusable object for sending data on a fixed key expression. Declaring a publisher:
-- Registers the publisher with the session, enabling matching detection
-- Negotiates a key expression alias (saves wire bytes)
-- Captures default QoS settings (priority, congestion control, encoding, etc.)
+A `Publisher` is a declared entity that sends data (samples) to all matching subscribers on a specific key expression. Declaring a publisher pre-registers QoS settings and the key expression with the network, enabling routing optimization. Publishers send `Put` and `Delete` samples.
 
-### Declaration
+### When to use
+
+Use a declared publisher (vs `session.put()`) when you publish to the same key expression repeatedly. Pre-declaration:
+- Reduces wire overhead (key expression ID instead of full string)
+- Allows the network to pre-establish routing paths
+- Enables `MatchingListener` (subscriber presence detection)
+- Applies QoS defaults consistently across all publications
+
+Use `session.put()` for occasional one-off publications.
+
+### Declaration and options
+
+All options are set on the `PublisherBuilder` before resolution:
 
 ```rust
 let publisher = session
-    .declare_publisher("robot/arm/joint_angles")
-    .priority(Priority::RealTime)
-    .congestion_control(CongestionControl::Drop)
-    .encoding(Encoding::APPLICATION_JSON)
-    .reliability(Reliability::Reliable)      // unstable
-    .allowed_destination(Locality::Any)
+    .declare_publisher("home/kitchen/temp")
+    .encoding(Encoding::APPLICATION_JSON)          // default encoding for put()
+    .priority(Priority::RealTime)                   // traffic priority
+    .congestion_control(CongestionControl::Block)   // backpressure behavior
+    .express(true)                                  // skip batching for low latency
+    .reliability(Reliability::Reliable)             // wire-level hint (unstable)
+    .allowed_destination(Locality::Any)             // local-only, remote-only, or any
     .await?;
 ```
 
-### Publishing
+### Publishing data
 
 ```rust
-// Put (data publication)
-publisher.put("payload data").await?;
-
-// Delete (tombstone — marks key as deleted)
-publisher.delete().await?;
-
-// Per-message overrides
-publisher.put("payload")
+// Put (with optional per-put overrides)
+publisher.put("25.3")
     .encoding(Encoding::TEXT_PLAIN)
     .timestamp(session.new_timestamp())
-    .attachment(b"extra metadata")
-    .await?;
-```
-
-### Ad-hoc Publishing (without declaring a publisher)
-
-```rust
-// One-shot put — less efficient but simpler
-session.put("robot/arm/joint_angles", "data")
-    .priority(Priority::Interactive)
+    .attachment(b"sensor-v2")
     .await?;
 
-session.delete("robot/arm/joint_angles").await?;
+// Delete
+publisher.delete().await?;
+
+// Direct session put (no predeclared publisher)
+session.put("home/kitchen/temp", "25.3")
+    .encoding(Encoding::TEXT_PLAIN)
+    .priority(Priority::DataHigh)
+    .await?;
+
+// Direct session delete
+session.delete("home/kitchen/temp").await?;
 ```
 
-### QoS Options
+### QoS options summary
 
 | Option | Type | Default | Description |
 |---|---|---|---|
-| `priority` | `Priority` | `DataHigh` | Message scheduling priority |
-| `congestion_control` | `CongestionControl` | `Drop` | Behavior when queues are full |
-| `express` | `bool` | `false` | Skip batching for low-latency |
-| `reliability` | `Reliability` (unstable) | `BestEffort` | Wire-level reliability hint |
-| `encoding` | `Encoding` | `ZENOH_BYTES` | Content type |
-| `allowed_destination` | `Locality` | `Any` | Filter which subscribers receive data |
+| `priority` | `Priority` | `Data` (4) | Message scheduling priority |
+| `congestion_control` | `CongestionControl` | `Drop` | Behavior when buffers are full |
+| `express` | `bool` | `false` | Skip batching for lower latency |
+| `reliability` | `Reliability` | `BestEffort` | Wire-level transport hint |
+| `allowed_destination` | `Locality` | `Any` | Restrict to local/remote/both |
 
-### Undeclaring
+### Publisher lifecycle
 
 ```rust
+// Explicit undeclare
 publisher.undeclare().await?;
-// or just drop — publishers auto-undeclare on drop
+
+// Drop (implicit undeclare)
+drop(publisher);
+
+// Background publisher (lives until session closes)
+session
+    .declare_publisher("key/expression")
+    .callback_mut(|_| {})   // Not applicable here, but background
+    // Publishers don't have background mode; hold the variable or undeclare explicitly
 ```
 
 ---
 
 ## Subscriber
 
-### What It Is
+### What it is
 
-A `Subscriber` receives data published to matching key expressions. Declaring a subscriber registers interest with the network so routers can route matching publications here.
+A `Subscriber` receives samples published on key expressions that match its declared key expression. A subscriber's key expression typically includes wildcards to receive from multiple publishers. Each received sample includes the key expression, payload, encoding, timestamp, QoS metadata, and attachment.
 
 ### Declaration
 
 ```rust
-// With FIFO channel (default)
+// With FIFO channel handler (default)
 let subscriber = session
-    .declare_subscriber("robot/arm/**")
+    .declare_subscriber("home/**/temperature")
+    .allowed_origin(Locality::Any)  // SessionLocal, Remote, or Any
     .await?;
 
-// Receive samples
+// Receive samples from the channel
 while let Ok(sample) = subscriber.recv_async().await {
-    println!("key: {}, payload: {:?}", sample.key_expr(), sample.payload());
+    println!("{}: {:?}", sample.key_expr(), sample.payload());
 }
 ```
 
 ### Handlers
 
+Three handler patterns are available (see [Handlers](#handlers)):
+
 ```rust
-// Callback handler
-let subscriber = session
-    .declare_subscriber("sensors/**")
+// 1. Callback — fires on every sample, no buffering
+let sub = session
+    .declare_subscriber("home/**/temperature")
     .callback(|sample| {
         println!("Received: {}", sample.key_expr());
     })
     .await?;
 
-// Callback (mutable, never called concurrently)
+// 2. Mutable callback (serialized — never concurrent)
 let mut count = 0;
-let subscriber = session
-    .declare_subscriber("sensors/**")
+let sub = session
+    .declare_subscriber("home/**/temperature")
     .callback_mut(move |_sample| { count += 1; })
     .await?;
 
-// Ring channel (drops oldest on overflow)
-let subscriber = session
-    .declare_subscriber("sensors/**")
-    .with(zenoh::handlers::RingChannel::new(16))
+// 3. Custom handler (FIFO or ring channel)
+let sub = session
+    .declare_subscriber("home/**/temperature")
+    .with(flume::bounded(128))  // FIFO, drops oldest when full
     .await?;
 
-// FIFO channel (blocks or drops on overflow depending on config)
-let subscriber = session
-    .declare_subscriber("sensors/**")
-    .with(flume::bounded(64))
-    .await?;
-
-// Background subscriber (no handle needed)
+// 4. Background subscriber (lives until session closes, no variable needed)
 session
-    .declare_subscriber("sensors/**")
-    .callback(|s| println!("{}", s.key_expr()))
+    .declare_subscriber("home/**/temperature")
+    .callback(|sample| { println!("{}", sample.key_expr()); })
     .background()
     .await?;
 ```
 
-### Locality Filtering
+### Locality filtering
+
+`allowed_origin(Locality)` restricts which samples are delivered:
+
+| Value | Behavior |
+|---|---|
+| `Locality::SessionLocal` | Only samples from publishers in the **same session** |
+| `Locality::Remote` | Only samples from **other sessions** (different process or host) |
+| `Locality::Any` | All samples (default) |
 
 ```rust
-// Only receive publications from within this session (loopback)
-let subscriber = session
-    .declare_subscriber("data/**")
+// Only receive data published in the same process
+let local_sub = session
+    .declare_subscriber("**")
     .allowed_origin(Locality::SessionLocal)
-    .await?;
-
-// Only from remote (other sessions/nodes)
-let subscriber = session
-    .declare_subscriber("data/**")
-    .allowed_origin(Locality::Remote)
-    .await?;
-
-// Both (default)
-let subscriber = session
-    .declare_subscriber("data/**")
-    .allowed_origin(Locality::Any)
     .await?;
 ```
 
-### Key Properties
+### Undeclaring a subscriber
 
-| Method | Description |
-|---|---|
-| `subscriber.recv_async()` | Async receive (if using channel handler) |
-| `subscriber.recv()` | Sync receive |
-| `subscriber.key_expr()` | The subscribed key expression |
-| `subscriber.undeclare()` | Stop receiving and unregister |
+```rust
+subscriber.undeclare().await?;
+// Or just drop it — undeclare happens automatically
+```
 
 ---
 
 ## Queryable
 
-### What It Is
+### What it is
 
-A `Queryable` is the server side of Zenoh's request/reply pattern. When a query arrives matching its key expression, the queryable's handler is invoked with a `Query` object. The handler must respond with zero or more replies by calling `query.reply()`, `query.reply_err()`, or `query.reply_del()`.
-
-Queryables are used to implement on-demand data access — think of them as "data servers" or "service endpoints."
+A `Queryable` is the server-side entity in zenoh's query/reply model. It declares interest in receiving queries matching a key expression, and for each received query it can send back zero or more replies. Queryables are the foundation of request-response, data-retrieval-from-storage, and RPC patterns.
 
 ### Declaration
 
 ```rust
 let queryable = session
-    .declare_queryable("robot/config/**")
-    .complete(true)    // signals this KE is fully served by this queryable
+    .declare_queryable("home/**/temperature")
+    .complete(true)     // signals this queryable has complete data for its KE
     .allowed_origin(Locality::Any)
-    .callback(|query| {
-        println!("Query on: {}", query.key_expr());
-        println!("Params: {}", query.parameters());
+    .await?;
+```
 
-        // Reply with data
-        query.reply(query.key_expr(), "config_value")
-            .encoding(Encoding::TEXT_PLAIN)
-            .await
-            .unwrap();
+**`complete` flag**: When `true`, the queryable declares that it has all data for its key expression. Queries with `QueryTarget::BestMatching` will route to this queryable and stop there rather than querying other nodes. Set to `false` (default) for queryables that may only have partial data.
+
+### Handling queries and replying
+
+Each `Query` object received has:
+- `query.key_expr()` — the query's key expression
+- `query.parameters()` — the selector parameters string
+- `query.payload()` / `query.encoding()` / `query.attachment()` — optional request body
+- `query.reply(ke, payload)` — send a successful reply
+- `query.reply_err(payload)` — send an error reply
+- `query.reply_del(ke)` — send a delete reply
+
+```rust
+// With channel handler
+let queryable = session
+    .declare_queryable("home/**/temperature")
+    .complete(true)
+    .with(flume::bounded(32))
+    .await?;
+
+while let Ok(query) = queryable.recv_async().await {
+    println!(
+        "Query on '{}' with params '{}'",
+        query.key_expr(),
+        query.parameters()
+    );
+
+    // Reply with data
+    query
+        .reply("home/kitchen/temperature", "23.5")
+        .encoding(Encoding::TEXT_PLAIN)
+        .await?;
+
+    // Reply with an error
+    // query.reply_err("sensor offline").await?;
+
+    // Reply indicating deletion
+    // query.reply_del("home/kitchen/temperature").await?;
+}
+```
+
+### Callback-based queryable
+
+```rust
+let queryable = session
+    .declare_queryable("home/**/temperature")
+    .callback(|query| {
+        let ke = query.key_expr().clone();
+        tokio::spawn(async move {
+            query.reply(ke, "22.0").await.unwrap();
+        });
     })
     .await?;
 ```
 
-### The `complete` Flag
-
-When `complete(true)`, the queryable promises to have authoritative data for its entire key expression. This enables `QueryTarget::BestMatching` optimization — when a complete queryable is found, the query need not be forwarded further.
-
-```
-complete = true  → "I own all data for this KE"
-complete = false → "I have some data for this KE" (default)
-```
-
-### Replying
-
-```rust
-// Successful reply
-query.reply(query.key_expr(), payload)
-    .encoding(Encoding::APPLICATION_JSON)
-    .timestamp(ts)
-    .await?;
-
-// Delete reply (tombstone)
-query.reply_del(query.key_expr()).await?;
-
-// Error reply
-query.reply_err("not found").await?;
-```
-
-### Multiple Replies
-
-A queryable can send multiple replies for a single query:
-
-```rust
-.callback(|query| {
-    for item in &data_store {
-        if query.key_expr().intersects(&item.key) {
-            query.reply(item.key.clone(), item.value.clone())
-                .wait()
-                .unwrap();
-        }
-    }
-    // query is dropped here — signals end of replies
-})
-```
-
-### Background Queryable
+### Background queryable
 
 ```rust
 session
-    .declare_queryable("data/**")
-    .callback(|q| { q.reply(q.key_expr(), "value").wait().unwrap(); })
+    .declare_queryable("home/**/temperature")
+    .callback(|query| {
+        let _ = query.reply(query.key_expr().clone(), "22.0");
+    })
     .background()
     .await?;
-// Lives until session closes
+// No variable needed — lives until session closes
 ```
+
+### Consolidation
+
+Queryables themselves don't set consolidation — that is done by the **querier**. However, queryables should be aware that they may receive the same query from multiple network paths. The `complete` flag helps the network avoid redundant delivery.
 
 ---
 
 ## Query / Get
 
-### What It Is
+### What it is
 
-A **Get** (`session.get()`) initiates a query: it sends a request to all matching queryables in the network and collects their replies. This is the client side of the request/reply pattern.
+`session.get()` sends a query into the network matching a selector and collects replies from all matching queryables. This is the **request/response** or **data-retrieval** primitive in zenoh. Replies arrive asynchronously through a handler until the query times out or all queryables have replied.
 
-### Basic Usage
+### When to use
 
-```rust
-let replies = session
-    .get("robot/config/**")
-    .await?;  // returns a handler (FIFO channel by default)
+- Fetching current state from a storage or queryable
+- RPC (remote procedure call) patterns
+- Discovering live data: "what values exist for `home/**/temperature`?"
+- Complementary to subscriptions: get current value, then subscribe for updates
 
-while let Ok(reply) = replies.recv_async().await {
-    match reply.result() {
-        Ok(sample) => println!("Got: {} = {:?}", sample.key_expr(), sample.payload()),
-        Err(err)   => println!("Error: {:?}", err.payload()),
-    }
-}
-```
+### `ConsolidationMode`
 
-### QueryTarget
+Controls deduplication/merging of replies when multiple paths return data for the same key:
 
-Controls which queryables should respond:
-
-```rust
-use zenoh::query::QueryTarget;
-
-session.get("key/**")
-    .target(QueryTarget::BestMatching)  // default: first complete match
-    .target(QueryTarget::All)           // all matching queryables
-    .target(QueryTarget::AllComplete)   // only complete queryables
-    .await?;
-```
-
-| Target | Description |
+| Mode | Behavior |
 |---|---|
-| `BestMatching` | Prefer complete queryables; stop when found |
-| `All` | Send to all matching queryables |
-| `AllComplete` | Send only to complete queryables |
+| `ConsolidationMode::None` | Deliver all replies as received — duplicates included |
+| `ConsolidationMode::Monotonic` | Only deliver replies with strictly increasing timestamps for each key |
+| `ConsolidationMode::Latest` | Only deliver the single latest reply per key (highest timestamp) |
+| `QueryConsolidation::AUTO` | Let the implementation choose the best mode |
 
-### ConsolidationMode
+### `QueryTarget`
 
-Controls how duplicate replies (same key expression) are filtered:
+Controls which queryables receive the query:
 
-```rust
-use zenoh::query::ConsolidationMode;
-
-session.get("key/**")
-    .consolidation(ConsolidationMode::None)      // all replies, no filtering
-    .consolidation(ConsolidationMode::Monotonic) // keep latest per key
-    .consolidation(ConsolidationMode::Latest)    // deduplicate by timestamp
-    .await?;
-```
-
-| Mode | Description |
+| Target | Behavior |
 |---|---|
-| `None` | Deliver all replies as received |
-| `Monotonic` | Only deliver a reply if its timestamp is newer than any previously seen for the same key |
-| `Latest` | Deduplicate: only deliver the single latest reply per key (after timeout) |
-| `Auto` | Let the implementation choose (default) |
+| `QueryTarget::BestMatching` | Route to the "best" matching queryable (considers `complete` flag) |
+| `QueryTarget::All` | Send to all matching queryables |
+| `QueryTarget::AllComplete` | Send only to queryables declared as `complete(true)` |
 
 ### Reply and ReplyError
 
+Each reply is a `Reply` which has:
+- `reply.result()` → `Result<&Sample, &ReplyError>`
+- On success: a full `Sample` with key expression, payload, encoding, timestamp
+- On error: a `ReplyError` with a payload describing the failure
+
 ```rust
-match reply.result() {
-    Ok(sample) => {
-        // sample: &Sample — key_expr, payload, encoding, timestamp, etc.
-        println!("key={}, payload={:?}", sample.key_expr(), sample.payload());
-    }
-    Err(reply_err) => {
-        // ReplyError: payload + encoding describing the error
-        println!("error payload: {:?}", reply_err.payload());
+// Basic get
+let replies = session
+    .get("home/**/temperature")
+    .await?;
+
+while let Ok(reply) = replies.recv_async().await {
+    match reply.result() {
+        Ok(sample) => {
+            println!("  Key: {}", sample.key_expr());
+            println!("  Value: {:?}", sample.payload());
+        }
+        Err(err) => println!("  Error: {:?}", err.payload()),
     }
 }
-```
 
-### With Parameters / Payload
-
-```rust
-// Send a query with parameters (passed to queryable)
-session.get("sensors/temperature?unit=celsius")
-    .payload("optional request body")
-    .encoding(Encoding::TEXT_PLAIN)
+// With full options
+let replies = session
+    .get("home/**/temperature?room=kitchen")
+    .target(QueryTarget::All)
+    .consolidation(ConsolidationMode::Latest)
     .timeout(Duration::from_secs(5))
+    .allowed_destination(Locality::Any)
+    .priority(Priority::DataHigh)
+    .congestion_control(CongestionControl::Block)
+    .express(true)
+    .payload(b"query-body")         // optional request body
+    .encoding(Encoding::ZENOH_BYTES)
+    .attachment(b"meta")
+    .with(flume::bounded(64))       // use a bounded channel
+    .await?;
+
+// With callback
+session
+    .get("home/**/temperature")
+    .callback(|reply| {
+        println!("Reply: {:?}", reply.result());
+    })
     .await?;
 ```
 
-### ReplyKeyExpr
+### `ReplyKeyExpr`
 
-By default, replies must have a key expression that intersects the query's key expression. Use `accept_replies(ReplyKeyExpr::Any)` to accept replies on any key expression (useful for wildcard queries where replies may use concrete sub-keys):
+By default, replies must be on key expressions that intersect with the query KE. Setting `accept_replies(ReplyKeyExpr::Any)` removes this restriction, allowing queryables to reply with any key:
 
 ```rust
-session.get("sensors/**")
+let replies = session
+    .get("home/sensors")
     .accept_replies(ReplyKeyExpr::Any)
     .await?;
 ```
@@ -609,98 +601,111 @@ session.get("sensors/**")
 
 ## Querier
 
-### What It Is
+### What it is
 
-A `Querier` is a **declared, reusable** query object — the query-side analog of `Publisher`. Declaring a querier:
-- Pre-negotiates the key expression alias
-- Captures default query parameters (target, consolidation, timeout, QoS)
-- Enables matching detection (like publishers)
+A `Querier` is a **declared reusable querier** — the query analog to `Publisher` for get operations. Like a publisher pre-declares QoS settings and key expression for repeated publications, a `Querier` pre-declares all query settings for repeated get operations to the same key expression.
 
-Use a Querier when you repeatedly query the same key expression with the same settings — it is more efficient than repeated `session.get()` calls.
+### Querier vs ad-hoc `session.get()`
 
-### Declaration and Use
+| Aspect | `session.get()` | `Querier` |
+|---|---|---|
+| Declaration overhead | Per call | Once at declaration |
+| Key expression wire optimization | No | Yes (numeric ID) |
+| Routing pre-computation | No | Yes |
+| `MatchingListener` support | No | Yes |
+| Best for | Occasional queries | Frequent queries to same KE |
+
+### Declaration and use
 
 ```rust
+// Declare a querier
 let querier = session
-    .declare_querier("robot/config/**")
+    .declare_querier("home/**/temperature")
     .target(QueryTarget::All)
     .consolidation(ConsolidationMode::None)
     .timeout(Duration::from_secs(5))
-    .priority(Priority::DataHigh)
     .allowed_destination(Locality::Any)
+    .accept_replies(ReplyKeyExpr::Any)
+    .priority(Priority::Data)
+    .congestion_control(CongestionControl::Block)
     .await?;
 
-// Issue a get — inherits all defaults from the querier
-let replies = querier.get()
-    .parameters("subsystem=arm")
+// Issue a get via the querier (inherits declared settings)
+let replies = querier
+    .get()
+    .parameters("room=kitchen&value>20")  // add selector parameters
+    .payload(b"request-body")             // optional body
+    .with(flume::bounded(32))
     .await?;
 
 while let Ok(reply) = replies.recv_async().await {
     println!("{:?}", reply.result());
 }
+
+// Undeclare
+querier.undeclare().await?;
 ```
 
-### Querier vs Ad-hoc Get
-
-| | `session.get()` | `Querier` |
-|---|---|---|
-| Key expression alias | Not pre-negotiated | Pre-negotiated |
-| Matching listener | Not available | Available |
-| Reuse overhead | High (re-resolves KE each time) | Low |
-| Flexibility | Any KE/params per call | Fixed KE, variable params |
+The `querier.get()` builder only exposes options that vary per-call (parameters, payload, encoding, attachment). Options fixed at declaration time (target, consolidation, timeout, destination) come from the declared state.
 
 ---
 
 ## Liveliness
 
-### What It Is
+### What it is
 
-Liveliness is a **presence detection** system built on top of Zenoh's pub/sub infrastructure. A **liveliness token** is a virtual assertion: "I (this session) am alive and associated with this key expression." When the token is undeclared or the session closes, a `Delete` event is automatically generated, notifying all liveliness subscribers.
+The **Liveliness** API provides presence/reachability detection. A `LivelinessToken` is a declaration that says "I am alive and reachable on this key expression." When the token is undeclared or the session closes, a `Delete` sample is published to liveliness subscribers. This enables building liveness/heartbeat mechanisms without polling.
 
-This is used for service discovery, presence awareness, health monitoring, and distributed system membership.
+### When to use
 
-### Key Space
+- Service discovery: detect when microservices come online/go offline
+- Robot/device presence: "is robot-3 currently connected?"
+- Health monitoring: detect disconnections without polling
+- Complementary to subscriptions: know if a publisher is still alive
 
-Liveliness tokens use a special key prefix managed by Zenoh. From the user's perspective, tokens are associated with user-defined key expressions (e.g., `robot/fleet/robot1`).
-
-### Tokens
+### Liveliness Token
 
 ```rust
-// Declare a token — publishes "I am alive at this key"
+// Declare a liveliness token (I am alive)
 let token = session
     .liveliness()
-    .declare_token("robot/fleet/robot1")
+    .declare_token("robots/robot-3/status")
     .await?;
 
-// Token is live while this object is held
-// When dropped or undeclared, a Delete is auto-published
+// Token is alive while this variable is held.
+// When dropped or undeclared → Delete sample sent to subscribers.
+
 token.undeclare().await?;
 ```
 
-### Liveliness Subscribers
+### Liveliness Subscriber
 
 ```rust
-let subscriber = session
+// Subscribe to liveliness events
+let sub = session
     .liveliness()
-    .declare_subscriber("robot/fleet/**")
-    .history(true)   // receive currently-alive tokens on startup
+    .declare_subscriber("robots/**")
+    .history(true)   // get currently-live tokens on declaration
     .await?;
 
-while let Ok(sample) = subscriber.recv_async().await {
+while let Ok(sample) = sub.recv_async().await {
     match sample.kind() {
-        SampleKind::Put    => println!("Joined: {}", sample.key_expr()),
-        SampleKind::Delete => println!("Left:   {}", sample.key_expr()),
+        SampleKind::Put    => println!("ALIVE: {}", sample.key_expr()),
+        SampleKind::Delete => println!("GONE:  {}", sample.key_expr()),
     }
 }
 ```
 
-### Getting Current Live Tokens
+**`history(true)`**: On subscriber declaration, zenoh queries the network for currently live tokens and delivers them as `Put` samples before live events. This ensures the subscriber sees the current state, not just future changes.
+
+### Getting current live tokens
 
 ```rust
+// One-shot query for all currently live tokens
 let live = session
     .liveliness()
-    .get("robot/fleet/**")
-    .timeout(Duration::from_secs(1))
+    .get("robots/**")
+    .timeout(Duration::from_secs(2))
     .await?;
 
 while let Ok(reply) = live.recv_async().await {
@@ -710,271 +715,201 @@ while let Ok(reply) = live.recv_async().await {
 }
 ```
 
-### When to Use
+### Summary of liveliness semantics
 
-- **Service registry**: Declare a token when a service starts; subscribers detect join/leave.
-- **Robot fleet management**: Each robot declares a token; a monitor subscribes to the fleet namespace.
-- **Health monitoring**: Watchdog processes detect token disappearance as a crash signal.
-- **Leader election**: First to declare wins; subscriber detects leadership changes.
+| Event | Wire effect |
+|---|---|
+| Token declared | `Put` sample delivered to matching subscribers |
+| Token undeclared | `Delete` sample delivered |
+| Session closes (token in scope) | `Delete` sample delivered |
+| Network partition heals | Tokens may be re-announced |
 
 ---
 
 ## Matching
 
-### What It Is
+### What it is
 
-The matching subsystem lets publishers and queriers discover whether matching subscribers or queryables currently exist. This enables **adaptive behavior** — e.g., stop computing expensive data if nobody is listening.
+The **Matching** API allows a `Publisher` or `Querier` to know whether there are currently any matching subscribers (for publishers) or queryables (for queriers) in the network. This is useful for avoiding wasteful work when no one is listening.
 
 ### MatchingStatus
 
-A point-in-time snapshot of whether matching entities exist:
+A point-in-time snapshot: "does this publisher currently have matching subscribers?"
 
 ```rust
-let publisher = session.declare_publisher("data/stream").await?;
-
-let status = publisher.matching_status().await?;
+// Check once
+let status: MatchingStatus = publisher.matching_status().await?;
 if status.matching() {
-    println!("Someone is subscribed — start publishing");
+    println!("Publisher has subscribers — worth publishing");
 } else {
-    println!("No subscribers — can skip computation");
+    println!("No subscribers — can skip expensive computation");
 }
 ```
 
 ### MatchingListener
 
-A continuous listener that fires whenever the matching status changes:
+A reactive listener that fires when the matching status changes:
 
 ```rust
 let listener = publisher
     .matching_listener()
-    .callback(|status| {
+    .callback(|status: MatchingStatus| {
         if status.matching() {
-            println!("Subscriber(s) appeared!");
+            println!("Subscribers connected — start publishing");
         } else {
-            println!("No more subscribers");
+            println!("No more subscribers — can pause");
         }
     })
     .await?;
 
-// Background variant (auto-cleaned when publisher drops)
+// With channel
+let listener = publisher
+    .matching_listener()
+    .with(flume::bounded(8))
+    .await?;
+
+while let Ok(status) = listener.recv_async().await {
+    println!("Matching changed: {}", status.matching());
+}
+
+// Background (lives with publisher)
 publisher
     .matching_listener()
-    .callback(|s| println!("matching: {}", s.matching()))
+    .callback(|s| println!("{}", s.matching()))
     .background()
     .await?;
+
+// Undeclare
+listener.undeclare().await?;
 ```
 
-### For Queriers
+### Querier matching
 
-Queriers also support matching detection — detecting whether matching queryables exist:
+The same API is available on `Querier` to detect when queryables become available:
 
 ```rust
-let querier = session.declare_querier("robot/config/**").await?;
-let status = querier.matching_status().await?;
+let listener = querier
+    .matching_listener()
+    .callback(|status| {
+        println!("Queryable available: {}", status.matching());
+    })
+    .await?;
 ```
-
-### When to Use
-
-- **Lazy publishers**: Only compute and send data when subscribers are present.
-- **Adaptive rate control**: Increase/decrease publication frequency based on subscriber count changes.
-- **Service health**: Alert when a required queryable disappears.
 
 ---
 
 ## Scouting
 
-### What It Is
+### What it is
 
-Scouting is Zenoh's peer/router **discovery mechanism**. Before a session is opened (or independently), you can scout the network to find other Zenoh participants. Scouting uses UDP multicast (on a configured group/port) and/or the gossip protocol.
+**Scouting** is zenoh's peer/router discovery mechanism. It allows a process to discover other zenoh nodes on the local network without prior configuration. Scouting sends `Scout` messages (via UDP multicast or broadcast) and collects `Hello` responses from any zenoh nodes that hear them.
 
-### Scout API
+### When to use
+
+- Auto-configuration: discover routers to connect to
+- Network inventory: list all zenoh nodes on the LAN
+- Diagnostics: verify the network topology
+- Bootstrap: find initial peers before opening a session
+
+### `scout()`
 
 ```rust
-use zenoh::scouting::{Scout, WhatAmI};
+use zenoh::scouting::{WhatAmI, Scout};
 
-let scout = zenoh::scout(WhatAmI::Peer | WhatAmI::Router, Config::default())
+// Scout for all zenoh nodes
+let scout = zenoh::scout(WhatAmI::Router | WhatAmI::Peer, zenoh::Config::default())
     .await?;
 
 while let Some(hello) = scout.recv_async().await {
     println!(
-        "Found {:?} at {:?} with ZenohId {}",
+        "Found {:?} at {:?} (ZID: {})",
         hello.whatami(),
         hello.locators(),
         hello.zid()
     );
 }
+
+// Scout only for routers
+let scout = zenoh::scout(WhatAmI::Router, zenoh::Config::default())
+    .callback(|hello| {
+        println!("Router found: {}", hello.zid());
+    })
+    .await?;
 ```
 
-### Hello Message
+### Discovery mechanisms
 
-Each scouted peer returns a `Hello` containing:
-- `zid()` — ZenohId of the discovered peer
-- `whatami()` — role (Router / Peer / Client)
-- `locators()` — list of locators where you can connect
+Zenoh supports two discovery modes, configured in `Config`:
 
-### Discovery Mechanisms
-
-| Mechanism | Config Key | Description |
+| Mode | Mechanism | Use case |
 |---|---|---|
-| UDP Multicast | `scouting.multicast` | Sends Hello on `224.0.0.224:7447` (default). Works on LAN. |
-| Gossip | `scouting.gossip` | Routers/peers relay Hello messages. Works across subnets. |
+| **Multicast** | UDP multicast packets | LAN environments, automatic discovery |
+| **Gossip** | Peer-to-peer gossip protocol | WAN, cloud, environments without multicast |
 
-### When to Use Scouting
+Multicast discovery uses a configurable multicast address (default: `224.0.0.224:7447`). Gossip discovery propagates reachability information through known connections.
 
-- **Dynamic discovery**: Automatically find routers without hardcoded addresses.
-- **Introspection tools**: Build network topology visualizers.
-- **Automated configuration**: Pick the closest router at startup.
-- **Testing**: Verify which nodes are active on the network.
+### Hello message
+
+Each discovered node returns a `Hello` containing:
+- `hello.zid()` — the node's unique ZenohID
+- `hello.whatami()` — `Router`, `Peer`, or `Client`
+- `hello.locators()` — list of endpoints the node is reachable at
 
 ---
 
 ## WhatAmI
 
-### What It Is
+### What it is
 
-`WhatAmI` is an enum describing the **role** of a Zenoh participant. It determines routing behavior, scouting visibility, and connection topology.
-
-### Variants
-
-#### `Router`
-
-```rust
-config.set_mode(Some(WhatAmI::Router))?;
-```
-
-- **Purpose**: Infrastructure node. Routes data between clients and peers across network boundaries.
-- **Connects to**: Other routers and peers.
-- **Routing**: Full routing table — routes for all known key expressions.
-- **Use when**: Running a dedicated Zenoh infrastructure process, a bridge, or a backbone node.
-
-#### `Peer`
-
-```rust
-config.set_mode(Some(WhatAmI::Peer))?;  // default
-```
-
-- **Purpose**: Application node that also participates in peer-to-peer routing.
-- **Connects to**: Routers, other peers.
-- **Routing**: Partial routing (routes for its own subscriptions/publishers and those it learns from peers).
-- **Use when**: Running application logic on a capable machine (PC, server, powerful embedded). This is the **default mode**.
-
-#### `Client`
-
-```rust
-config.set_mode(Some(WhatAmI::Client))?;
-```
-
-- **Purpose**: Leaf node. Relies entirely on a connected router for routing.
-- **Connects to**: Exactly one router (or a pool of routers for failover).
-- **Routing**: None — all routing delegated to the router.
-- **Use when**: Constrained devices, mobile nodes, or any process that should not participate in routing.
-
-### Decision Guide
-
-```
-Do you need this node to route data for others?
-├─ Yes → Router
-└─ No
-   ├─ Can it maintain connections to multiple peers?
-   │  ├─ Yes → Peer (default)
-   │  └─ No (constrained/mobile) → Client
-```
-
-### In Scouting Filters
-
-```rust
-// Scout for only routers
-zenoh::scout(WhatAmI::Router, config).await?;
-
-// Scout for peers or routers
-zenoh::scout(WhatAmI::Peer | WhatAmI::Router, config).await?;
-```
-
----
-
-## Sample
-
-### What It Is
-
-A `Sample` is the fundamental data unit received by subscribers and queryables. Every published value, delete, and query reply arrives as a `Sample`. It is an immutable snapshot containing all metadata associated with a data event.
-
-### Fields
-
-```rust
-// Received in a subscriber callback
-fn handle(sample: Sample) {
-    let key   = sample.key_expr();           // KeyExpr — which resource
-    let body  = sample.payload();            // &ZBytes — raw payload
-    let kind  = sample.kind();               // SampleKind::Put or Delete
-    let enc   = sample.encoding();           // &Encoding — content type
-    let ts    = sample.timestamp();          // Option<&Timestamp> — HLC timestamp
-    let qos   = sample.qos();               // QoS parameters
-    let att   = sample.attachment();         // Option<&ZBytes> — sidecar data
-    let src   = sample.source_info();        // unstable: source ZenohId + SN
-}
-```
-
-### QoS from Sample
-
-```rust
-let priority = sample.qos().priority();
-let congestion = sample.qos().congestion_control();
-let express = sample.qos().express();
-let reliability = sample.qos().reliability();  // unstable
-```
-
-### Attachment
-
-The attachment is an optional sidecar `ZBytes` that travels alongside the payload without Zenoh interpreting it. Use it for message metadata, correlation IDs, or custom headers:
-
-```rust
-publisher.put("payload")
-    .attachment(b"correlation-id:42")
-    .await?;
-
-// In subscriber:
-if let Some(att) = sample.attachment() {
-    println!("attachment: {:?}", att);
-}
-```
-
----
-
-## SampleKind
-
-### What It Is
-
-`SampleKind` is a two-variant enum indicating whether a sample represents data being written or data being deleted (a tombstone).
+`WhatAmI` is a 3-valued enum describing the **role** of a zenoh node in the network. The role determines routing behavior, connection topology, and resource usage.
 
 ### Variants
 
+#### `WhatAmI::Router`
+
+A **router** is a dedicated infrastructure node that:
+- Participates in network-level routing and topology management
+- Maintains routing tables for all key expressions
+- Connects to other routers to form the backbone of the zenoh network
+- Can be connected to by both `Peer` and `Client` nodes
+- Typically runs as a standalone process (`zenohd`)
+
+**When to use**: For infrastructure deployments — cloud gateways, data center bridges, WAN routing nodes.
+
+#### `WhatAmI::Peer`
+
+A **peer** is a fully-featured node that:
+- Participates in distributed routing decisions
+- Performs peer-to-peer routing with neighboring peers (no dedicated router needed)
+- Can connect to both routers and other peers
+- Can form ad-hoc mesh networks without any router
+- Has higher resource usage than Client but supports fully decentralized operation
+
+**When to use**: For devices that need to communicate in ad-hoc networks (robots, edge devices, IoT gateways) without a dedicated router. The default mode for most applications.
+
+#### `WhatAmI::Client`
+
+A **client** is a lightweight node that:
+- Relies entirely on a router (or peer acting as a broker) for routing
+- Performs no routing itself
+- Minimal resource usage
+- Must connect to at least one `Router` or `Peer`
+- Suitable for constrained devices
+
+**When to use**: For resource-constrained devices (microcontrollers, embedded systems) that connect to a known router.
+
+### Configuration
+
 ```rust
-pub enum SampleKind {
-    Put,     // Data is being published/written
-    Delete,  // Data is being removed (tombstone)
-}
-```
+// Set role in config
+let mut config = zenoh::Config::default();
+config.set_mode(Some(WhatAmI::Peer));   // or Router, Client
 
-### When Each Is Produced
+// Router
+config.set_mode(Some(WhatAmI::Router));
+// Typically also set listeners:
+// config.listen.endpoints = ["tcp/0.0.0.0:7447"]
 
-| Event | SampleKind |
-|---|---|
-| `publisher.put(...)` | `Put` |
-| `publisher.delete()` | `Delete` |
-| `session.put(...)` | `Put` |
-| `session.delete(...)` | `Delete` |
-| Liveliness token declared | `Put` |
-| Liveliness token undeclared/session closed | `Delete` |
-
-### Usage
-
-```rust
-match sample.kind() {
-    SampleKind::Put    => println!("New value: {:?}", sample.payload()),
-    SampleKind::Delete => println!("Key deleted: {}", sample.key_expr()),
-}
-```
-
----
-
-##
+// Client connecting to a known router
+config.set_mode(Some(WhatAmI::Client));
+// config.connect.endpoints = ["
