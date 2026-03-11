@@ -1759,3 +1759,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/dapper
   branch: main
+- name: fivetran
+  description: fivetran from GitHub
+  repo_url: https://github.com/fivetran/terraform-provider-fivetran.git
+  source_folder: docs
+  target_folder: docs/github-scraped/fivetran
+  branch: main
