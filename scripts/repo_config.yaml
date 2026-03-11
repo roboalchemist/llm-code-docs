@@ -1555,3 +1555,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/flagsmith
   branch: main
+- name: hydrogen
+  description: hydrogen from GitHub
+  repo_url: https://github.com/nteract/hydrogen.git
+  source_folder: docs
+  target_folder: docs/github-scraped/hydrogen
+  branch: main
