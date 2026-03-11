@@ -1163,3 +1163,6 @@ sites:
 - name: stackstate
   base_url: https://archivedocs.stackstate.com/
   description: stackstate documentation
+- name: wdm
+  base_url: https://docs.rs/wdm/latest/
+  description: wdm documentation
