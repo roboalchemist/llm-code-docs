@@ -1220,3 +1220,6 @@ sites:
 - name: pulumi
   base_url: https://www.pulumi.com/
   description: pulumi documentation
+- name: opencart
+  base_url: https://docs.opencart.com/
+  description: opencart documentation
