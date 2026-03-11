@@ -1543,3 +1543,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/wf
   branch: main
+- name: playfab
+  description: playfab from GitHub
+  repo_url: https://github.com/PlayFab/thundernetes.git
+  source_folder: docs
+  target_folder: docs/github-scraped/playfab
+  branch: main
