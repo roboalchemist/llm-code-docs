@@ -1,0 +1,111 @@
+# Source: https://sap.github.io/cloud-sdk/docs/java/overview-cloud-sdk-for-java
+
+Title: Java SDK Overview | SAP Cloud SDK
+
+URL Source: https://sap.github.io/cloud-sdk/docs/java/overview-cloud-sdk-for-java
+
+Markdown Content:
+[![Image 1: maven central](https://maven-badges.sml.io/sonatype-central/com.sap.cloud.sdk/sdk-bom/badge.svg)](https://maven-badges.sml.io/sonatype-central/com.sap.cloud.sdk/sdk-bom)
+
+Quick Start[​](https://sap.github.io/cloud-sdk/docs/java/overview-cloud-sdk-for-java#quick-start "Direct link to Quick Start")
+------------------------------------------------------------------------------------------------------------------------------
+
+For a quick start check out the [getting started](https://sap.github.io/cloud-sdk/docs/java/getting-started) section.
+
+Why the SAP Cloud SDK for Java?[​](https://sap.github.io/cloud-sdk/docs/java/overview-cloud-sdk-for-java#why-the-sap-cloud-sdk-for-java "Direct link to Why the SAP Cloud SDK for Java?")
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The SAP Cloud SDK for Java makes it easy to build highly connected, resilient, multi tenant SaaS applications on the SAP Business Technology Platform (SAP BTP). It enables you to perform outbound requests using various protocols while only writing the business logic.
+
+For example, with the SAP Cloud SDK for Java you can connect to an SAP S/4HANA (Cloud) system via OData with only a few lines of code:
+
+`Destination destination = DestinationAccessor.getDestination("my-s4-system");List<BusinessPartner> businessPartners = new DefaultBusinessPartnerService()                .getAllBusinessPartner()                .top(5)                .executeRequest(destination);`
+
+This example uses the pre-generated OData client together with the destination API to interact with the [Business Partner Service](https://api.sap.com/api/API_BUSINESS_PARTNER/overview) of SAP S/4HANA Cloud.
+
+The image below shows a typical architecture of an application built with the SAP Cloud SDK:
+
+![Image 2: General architecture](https://sap.github.io/cloud-sdk/img/general-architecture_light.svg)
+
+Main Features of the SAP Cloud SDK for Java[​](https://sap.github.io/cloud-sdk/docs/java/overview-cloud-sdk-for-java#main-features-of-the-sap-cloud-sdk-for-java "Direct link to Main Features of the SAP Cloud SDK for Java")
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+The SAP Cloud SDK for Java brings a wide variety of features to power your business application.
+
+At its core, the SAP Cloud SDK for Java integrates the SAP BTP Destination and Connectivity services with powerful clients (e.g. OData) in a multi tenant and resilient manner. This integration reduces the code for typical outbound requests down to just a few statements.
+
+The image below visualises the main components of the SAP Cloud SDK for Java.
+
+![Image 3: Core packages](https://sap.github.io/cloud-sdk/img/java-sdk-overview-5.svg)
+
+### Connectivity[​](https://sap.github.io/cloud-sdk/docs/java/overview-cloud-sdk-for-java#connectivity "Direct link to Connectivity")
+
+The SAP Cloud SDK for Java provides an API that abstracts the details of establishing connections to other systems: The [Destination API](https://sap.github.io/cloud-sdk/docs/java/features/connectivity/destination-service). This API makes it easy to connect to cloud and On-Premise systems with various authentication methods. Under the hood the SAP Cloud SDK handles all the necessary authorization and token flows that are necessary for the specific destination.
+
+You can [access destinations defined in the SAP BTP Cockpit](https://sap.github.io/cloud-sdk/docs/java/features/connectivity/destination-service#accessing-destinations) directly in your code. Or you can define your own destinations, for example to [connect to SAP BTP services](https://sap.github.io/cloud-sdk/docs/java/features/connectivity/destination-service#skip-destination-creation-step-for-certain-authentication-types-on-cloud-foundry).
+
+You can then use these destinations to perform REST (OpenAPI or OData), RFC or SOAP requests. Or you can [get a ready-made Http Client](https://sap.github.io/cloud-sdk/docs/java/features/connectivity/http-client#general-usage) for a destination to execute your own requests.
+
+### OData and OpenAPI[​](https://sap.github.io/cloud-sdk/docs/java/overview-cloud-sdk-for-java#odata-and-openapi "Direct link to OData and OpenAPI")
+
+The SAP Cloud SDK for Java also provides an easy and convenient type safe way to consume OData and OpenAPI services in your applications.
+
+![Image 4: IDE support for VDM](https://sap.github.io/cloud-sdk/img/ide-support-for-vdm-light.gif)
+
+You can generate your own API client for [OData](https://sap.github.io/cloud-sdk/docs/java/features/odata/vdm-generator) or [OpenAPI](https://sap.github.io/cloud-sdk/docs/java/features/rest/generate-rest-client) using the respective generators provided by the SAP Cloud SDK. You can also find detailed steps and a usage examples on the [SAP Business Accelerator Hub](https://api.sap.com/).
+
+![Image 5: API Business Hub](https://sap.github.io/cloud-sdk/img/api_business_hub.png)
+
+### Resilience[​](https://sap.github.io/cloud-sdk/docs/java/overview-cloud-sdk-for-java#resilience "Direct link to Resilience")
+
+To ensure that applications can handle and recover from potential failures, the SAP Cloud SDK for Java provides abstractions for frequently used resilience patterns. These patterns include caching, timeouts, retires, rate limiters, circuit breakers and bulkheads. You can build a `ResilienceConfiguration` to define which patterns you need and then use the `ResilienceDecorator` to apply them to your operations.
+
+For example, to configure a timeout of 100 ms for an operation:
+
+`TimeLimiterConfiguration timeLimiterConfig =        TimeLimiterConfiguration.of().timeoutDuration(Duration.ofMillis(100));ResilienceConfiguration resilienceConfiguration =        ResilienceConfiguration.empty("my-resilience-config")          .timeLimiterConfiguration(timeLimiterConfig);ResilienceDecorator.executeSupplier(() -> operation(), configuration);`
+
+You can find more details in our dedicated guide on [Resilience](https://sap.github.io/cloud-sdk/docs/java/features/resilience).
+
+### Multitenancy[​](https://sap.github.io/cloud-sdk/docs/java/overview-cloud-sdk-for-java#multitenancy "Direct link to Multitenancy")
+
+Multitenancy enables a single instance of an application to serve multiple technically separated user groups. To achieve this the SAP Cloud SDK for Java applies all its features in a tenant and user aware manner by default. For example, fetching a destination with the SAP Cloud SDK will fetch and cache it for the _current tenant_.
+
+You can access the current tenant or user and other information via the dedicated accessors, for example `TenantAccessor` and `PrincipalAccessor`. This enables you to run any code in a tenant aware manner.
+
+This is achieved using the concept of `ThreadContext` and you can read more about this on the dedicated guide on [Multitenancy](https://sap.github.io/cloud-sdk/docs/java/features/multi-tenancy/thread-context).
+
+Further Information[​](https://sap.github.io/cloud-sdk/docs/java/overview-cloud-sdk-for-java#further-information "Direct link to Further Information")
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Supported Platforms and Environments[​](https://sap.github.io/cloud-sdk/docs/java/overview-cloud-sdk-for-java#supported-platforms-and-environments "Direct link to Supported Platforms and Environments")
+
+The SAP Cloud SDK abstracts away from details of the underlying platform the application is running upon. This enables applications to adopt platform changes or fully switch to a different platform without any code changes.
+
+Currently supported environments are :
+
+1.   [SAP BTP Cloud Foundry](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/9c7092c7b7ae4d49bc8ae35fdd0e0b18.html)
+2.   [K8S](https://kubernetes.io/) , [K8S with SAP Gardener](https://gardener.cloud/)
+3.   [SAP BTP Kyma](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/en-US/468c2f3c3ca24c2c8497ef9f83154c44.html)
+4.   Deploy with Confidence (For SAP internal customers only)
+
+### Supported Java Versions[​](https://sap.github.io/cloud-sdk/docs/java/overview-cloud-sdk-for-java#supported-java-versions "Direct link to Supported Java Versions")
+
+The SAP Cloud SDK for Java runs with Java 17 or higher.
+
+### Supported Frameworks[​](https://sap.github.io/cloud-sdk/docs/java/overview-cloud-sdk-for-java#supported-frameworks "Direct link to Supported Frameworks")
+
+The SAP Cloud SDK can be integrated into applications based on [SAP Cloud Application Programming Model](https://cap.cloud.sap/docs/) version `2.4.0` or higher, [Spring 6](https://spring.io/projects/spring-framework) or [Spring Boot 3](https://spring.io/projects/spring-boot).
+
+### Availability and Licensing[​](https://sap.github.io/cloud-sdk/docs/java/overview-cloud-sdk-for-java#availability-and-licensing "Direct link to Availability and Licensing")
+
+All libraries are available on [Maven Central](https://central.sonatype.dev/search?namespace=com.sap.cloud.sdk) under the Apache 2.0 license. The license of clients generated with any of the SAP Cloud SDK code generators depends on the used service spec license.
+
+### Release Schedule[​](https://sap.github.io/cloud-sdk/docs/java/overview-cloud-sdk-for-java#release-schedule "Direct link to Release Schedule")
+
+We usually release minor versions bi-weekly.
+
+We intend to release a new major version of the SAP Cloud SDK for Java every twelve months. For details, check the [release policy](https://sap.github.io/cloud-sdk/docs/java/release-policy).
+
+### Support[​](https://sap.github.io/cloud-sdk/docs/java/overview-cloud-sdk-for-java#support "Direct link to Support")
+
+The SAP Cloud SDK is actively supported via various internal and external channels which you can find [here](https://sap.github.io/cloud-sdk/docs/java/support).
