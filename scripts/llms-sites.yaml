@@ -1256,3 +1256,6 @@ sites:
 - name: taurus
   base_url: https://docs.taurushq.com/
   description: taurus documentation
+- name: testkube
+  base_url: https://testkube.io/
+  description: testkube documentation
