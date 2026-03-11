@@ -1492,6 +1492,11 @@ repositories:
   repo_url: https://github.com/bebnev/react-native-local-authentication.git
   source_folder: docs
   target_folder: docs/github-scraped/localauthentication
+- name: slint
+  description: slint from GitHub
+  repo_url: https://github.com/slint-ui/slint.git
+  source_folder: docs
+  target_folder: docs/github-scraped/slint
   branch: main
 - name: homekit
   description: homekit from GitHub
