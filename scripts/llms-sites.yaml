@@ -1205,3 +1205,6 @@ sites:
 - name: supastarter
   base_url: https://supastarter.dev/
   description: supastarter documentation
+- name: rolldown
+  base_url: https://rolldown.rs/
+  description: rolldown documentation
