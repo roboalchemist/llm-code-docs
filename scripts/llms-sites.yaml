@@ -1274,3 +1274,6 @@ sites:
 - name: glow
   base_url: https://glow-docs.xrpl-commons.org/
   description: glow documentation
+- name: hugging-face-accelerate
+  base_url: https://huggingface.co/docs/accelerate/
+  description: hugging-face-accelerate documentation
