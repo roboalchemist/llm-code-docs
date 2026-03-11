@@ -1612,3 +1612,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/quirrel
   branch: main
+- name: river
+  description: river from GitHub
+  repo_url: https://github.com/online-ml/river.git
+  source_folder: docs
+  target_folder: docs/github-scraped/river
+  branch: main
