@@ -1304,3 +1304,6 @@ sites:
 - name: contentful
   base_url: https://contentful.ferndocs.com/
   description: contentful documentation
+- name: hoppscotch
+  base_url: https://docs.hoppscotch.io/
+  description: hoppscotch documentation

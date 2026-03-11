@@ -1,0 +1,42 @@
+# Source: https://docs.hoppscotch.io/guides/articles.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.hoppscotch.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Index
+
+> Complete list of articles and guides for Hoppscotch.
+
+<Tip>Interested in writing an article about Hoppscotch? Contact us at `support@hoppscotch.io`.</Tip>
+
+<CardGroup cols={1}>
+  <Card title="RESTful API testing with Hoppscotch" iconType="light" icon="circle-arrow-right" href="/guides/articles/restful-api-testing-with-hoppscotch">
+    Representational State Transfer (REST) APIs are a core part of communication between a web/mobile client and a server...
+  </Card>
+
+  <Card title="Improving your API workflow" iconType="light" icon="circle-arrow-right" href="/guides/articles/improving-your-api-workflow">
+    Hoppscotch provides you with a minimal and blazing platform to design, develop and test your APIs...
+  </Card>
+
+  <Card title="Understanding GraphQL" iconType="light" icon="circle-arrow-right" href="/guides/articles/understanding-graphql">
+    The GraphQL schema is at the core of any GraphQL server. It defines the capabilities of the API and specifies how clients can access that data...
+  </Card>
+
+  <Card title="Downgrading and Restoring Backups" iconType="light" icon="circle-arrow-right" href="/guides/articles/downgrading-and-restoring-backups">
+    If an update causes issues with Hoppscotch Desktop, you can downgrade to a previous version and restore your data from an automatic backup...
+  </Card>
+</CardGroup>
+
+# Community Articles
+
+<CardGroup cols={1}>
+  <Card title="Uplifting Web Experience with Hoppscotch Widgets" iconType="light" icon="circle-arrow-right" href="/guides/articles/uplifting-web-experience-with-hoppscotch-widgets">
+    Widgets are interactive components that can be embedded in HTML pages to enhance user experience...
+  </Card>
+</CardGroup>
+
+<Tip>We're looking for more articles! If you have written an article about Hoppscotch, please [open a pull request](https://github.com/hoppscotch/docs) on our documentation repository. We'll be happy to add it to this list.</Tip>
+
+
+Built with [Mintlify](https://mintlify.com).
