@@ -1247,3 +1247,6 @@ sites:
 - name: gatling
   base_url: https://www.gatling.io/docs/
   description: gatling documentation
+- name: conduktor
+  base_url: https://www.conduktor.io/
+  description: conduktor documentation
