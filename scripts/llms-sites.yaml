@@ -1283,3 +1283,6 @@ sites:
 - name: unsloth
   base_url: https://unsloth.ai/docs/
   description: unsloth documentation
+- name: llama.cpp
+  base_url: https://node-llama-cpp.withcat.ai/
+  description: llama.cpp documentation
