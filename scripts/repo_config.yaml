@@ -1768,6 +1768,11 @@ repositories:
   repo_url: https://github.com/knime/knime-python.git
   source_folder: doc
   target_folder: docs/github-scraped/knime
+- name: apollo-federation
+  description: apollo-federation from GitHub
+  repo_url: https://github.com/apollographql/federation.git
+  source_folder: docs
+  target_folder: docs/github-scraped/apollo-federation
   branch: main
 - name: paddle-lite
   description: paddle-lite from GitHub
