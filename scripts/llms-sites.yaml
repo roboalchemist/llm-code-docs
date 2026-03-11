@@ -1196,3 +1196,6 @@ sites:
 - name: directus
   base_url: https://directus.io/docs/
   description: directus documentation
+- name: xano
+  base_url: https://docs.xano.com/
+  description: xano documentation
