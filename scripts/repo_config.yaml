@@ -1820,3 +1820,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/gql
   branch: main
+- name: webonyx/graphql-php
+  description: webonyx/graphql-php from GitHub
+  repo_url: https://github.com/webonyx/graphql-php.git
+  source_folder: docs
+  target_folder: docs/github-scraped/webonyx/graphql-php
+  branch: main
