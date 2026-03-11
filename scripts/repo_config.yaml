@@ -1606,3 +1606,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/litestream
   branch: main
+- name: quirrel
+  description: quirrel from GitHub
+  repo_url: https://github.com/quirrel-dev/quirrel.git
+  source_folder: docs
+  target_folder: docs/github-scraped/quirrel
+  branch: main
