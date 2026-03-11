@@ -1202,3 +1202,6 @@ sites:
 - name: cerbos
   base_url: https://docs.cerbos.dev/
   description: cerbos documentation
+- name: courier
+  base_url: https://www.courier.com/docs/
+  description: courier documentation
