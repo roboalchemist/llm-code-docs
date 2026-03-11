@@ -1244,3 +1244,6 @@ sites:
 - name: karate-dsl
   base_url: https://docs.karatelabs.io/
   description: karate-dsl documentation
+- name: gatling
+  base_url: https://www.gatling.io/docs/
+  description: gatling documentation
