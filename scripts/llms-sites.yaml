@@ -1178,3 +1178,6 @@ sites:
 - name: natively
   base_url: https://docs.buildnatively.com/
   description: natively documentation
+- name: fmod-studio
+  base_url: https://www.fmod.com/
+  description: fmod-studio documentation
