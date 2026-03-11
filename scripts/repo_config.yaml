@@ -1585,3 +1585,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/logto
   branch: main
+- name: django-oauth-toolkit
+  description: django-oauth-toolkit from GitHub
+  repo_url: https://github.com/django-oauth/django-oauth-toolkit.git
+  source_folder: docs
+  target_folder: docs/github-scraped/django-oauth-toolkit
+  branch: main
