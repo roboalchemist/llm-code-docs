@@ -1196,3 +1196,6 @@ sites:
 - name: bunup
   base_url: https://bunup.dev/
   description: bunup documentation
+- name: open-saas
+  base_url: https://docs.opensaas.sh/
+  description: open-saas documentation
