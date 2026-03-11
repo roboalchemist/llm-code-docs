@@ -1214,3 +1214,6 @@ sites:
 - name: cherrypy
   base_url: https://docs.cherrypy.org/en/latest/
   description: cherrypy documentation
+- name: adempiere
+  base_url: https://adempiere.gitbook.io/docs/
+  description: adempiere documentation
