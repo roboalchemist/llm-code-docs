@@ -1217,3 +1217,6 @@ sites:
 - name: next.js
   base_url: https://nextjs.org/docs/
   description: next.js documentation
+- name: stytch
+  base_url: https://stytch.com/
+  description: stytch documentation
