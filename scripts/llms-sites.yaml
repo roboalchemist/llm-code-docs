@@ -1202,3 +1202,6 @@ sites:
 - name: scalekit
   base_url: https://docs.scalekit.com/
   description: scalekit documentation
+- name: supastarter
+  base_url: https://supastarter.dev/
+  description: supastarter documentation
