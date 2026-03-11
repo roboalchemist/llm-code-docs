@@ -1409,3 +1409,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/google-cloud-storage
   branch: main
+- name: ray-serve
+  description: ray-serve from GitHub
+  repo_url: https://github.com/ray-project/ray.git
+  source_folder: doc
+  target_folder: docs/github-scraped/ray-serve
+  branch: main
