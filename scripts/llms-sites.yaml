@@ -1172,3 +1172,6 @@ sites:
 - name: renderdoc
   base_url: https://docs.rs/renderdoc/latest/renderdoc/
   description: renderdoc documentation
+- name: base44
+  base_url: https://docs.base44.com/
+  description: base44 documentation
