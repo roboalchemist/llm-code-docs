@@ -1262,3 +1262,6 @@ sites:
 - name: dbt-cloud
   base_url: https://docs.getdbt.com/
   description: dbt-cloud documentation
+- name: cortex
+  base_url: https://docs.cortexlabs.com/
+  description: cortex documentation
