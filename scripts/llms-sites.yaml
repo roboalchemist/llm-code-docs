@@ -1271,3 +1271,6 @@ sites:
 - name: terragrunt
   base_url: https://docs.terragrunt.com/
   description: terragrunt documentation
+- name: ibm-cloud-functions
+  base_url: https://cloud.ibm.com/docs/
+  description: ibm-cloud-functions documentation
