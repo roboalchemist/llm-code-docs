@@ -1232,3 +1232,6 @@ sites:
 - name: redocly
   base_url: https://redoc.ly/
   description: redocly documentation
+- name: stripe-node
+  base_url: https://docs.stripe.com/
+  description: stripe-node documentation
