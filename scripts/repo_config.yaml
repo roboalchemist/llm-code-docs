@@ -157,6 +157,12 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/matter.js
   branch: main
+- name: KuzuDB
+  description: KuzuDB - Embedded property graph database with vector search, full-text search, Cypher query language, and multi-language bindings (Python, Node.js, Java, Rust, Go, C++)
+  repo_url: https://github.com/kuzudb/docs.git
+  source_folder: src/content/docs
+  target_folder: docs/github-scraped/kuzudb
+  branch: main
 - name: Laravel
   description: Laravel - PHP framework with elegant middleware system for HTTP request
     handling
@@ -1362,6 +1368,12 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/rich
   branch: main
+- name: RDFLib
+  description: RDFLib - Python library for working with RDF, SPARQL queries, and semantic web technologies
+  repo_url: https://github.com/RDFLib/rdflib.git
+  source_folder: docs
+  target_folder: docs/github-scraped/rdflib
+  branch: main
 - name: pgx
   description: pgx from GitHub
   repo_url: https://github.com/sotetsuk/pgx.git
@@ -1429,3 +1441,11 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/metabase
   branch: master
+- name: GraphRAG
+  description: Microsoft's graph-based retrieval augmented generation framework that builds
+    knowledge graphs from documents and enables graph-based querying with comprehensive
+    indexing, query, and configuration documentation
+  repo_url: https://github.com/microsoft/graphrag.git
+  source_folder: docs
+  target_folder: docs/github-scraped/graphrag
+  branch: main
