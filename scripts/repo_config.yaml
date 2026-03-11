@@ -1583,3 +1583,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/mongoengine
   branch: main
+- name: plac
+  description: plac from GitHub
+  repo_url: https://github.com/ialbert/plac.git
+  source_folder: doc
+  target_folder: docs/github-scraped/plac
+  branch: main
