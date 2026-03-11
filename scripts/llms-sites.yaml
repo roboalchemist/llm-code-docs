@@ -1256,3 +1256,6 @@ sites:
 - name: jfrog-xray
   base_url: https://docs.jfrog.com/docs/
   description: jfrog-xray documentation
+- name: kubearmor
+  base_url: https://docs.kubearmor.io/
+  description: kubearmor documentation
