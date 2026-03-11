@@ -1589,3 +1589,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/plac
   branch: main
+- name: djangorestframework
+  description: djangorestframework from GitHub
+  repo_url: https://github.com/encode/django-rest-framework.git
+  source_folder: docs
+  target_folder: docs/github-scraped/djangorestframework
+  branch: main
