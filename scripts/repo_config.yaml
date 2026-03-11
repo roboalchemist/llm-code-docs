@@ -1721,3 +1721,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/embeddedmongo
   branch: main
+- name: pacto
+  description: pacto from GitHub
+  repo_url: https://github.com/thoughtworks/pacto.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pacto
+  branch: main
