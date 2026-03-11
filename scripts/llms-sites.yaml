@@ -1247,3 +1247,6 @@ sites:
 - name: portainer
   base_url: https://docs.portainer.io/
   description: portainer documentation
+- name: aikido-security
+  base_url: https://help.aikido.dev/
+  description: aikido-security documentation
