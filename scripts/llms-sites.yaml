@@ -1277,3 +1277,6 @@ sites:
 - name: hugging-face-accelerate
   base_url: https://huggingface.co/docs/accelerate/
   description: hugging-face-accelerate documentation
+- name: mystic-ai
+  base_url: https://docs.mystic.ai/
+  description: mystic-ai documentation
