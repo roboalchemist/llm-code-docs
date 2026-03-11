@@ -1548,6 +1548,11 @@ repositories:
   repo_url: https://github.com/boxyhq/website.git
   source_folder: docs
   target_folder: docs/github-scraped/boxyhq
+- name: karma
+  description: karma from GitHub
+  repo_url: https://github.com/karma-runner/karma.git
+  source_folder: docs
+  target_folder: docs/github-scraped/karma
   branch: main
 - name: flagsmith
   description: flagsmith from GitHub
