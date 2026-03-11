@@ -1283,3 +1283,6 @@ sites:
 - name: eloquent-orm
   base_url: https://laravel.com/docs/eloquent/
   description: eloquent-orm documentation
+- name: mikroorm
+  base_url: https://mikro-orm.io/
+  description: mikroorm documentation

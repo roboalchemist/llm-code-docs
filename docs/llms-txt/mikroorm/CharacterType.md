@@ -1,0 +1,308 @@
+# Source: https://mikro-orm.io/api/core/class/CharacterType.md
+
+# CharacterType<!-- -->
+
+### Hierarchy
+
+* [StringType](https://mikro-orm.io/api/core/class/StringType.md)
+  * *CharacterType*
+
+## Index[**](#index)
+
+### Constructors
+
+* [**constructor](#constructor)
+
+### Properties
+
+* [**meta](#meta)
+* [**platform](#platform)
+* [**prop](#prop)
+
+### Accessors
+
+* [**name](#name)
+* [**runtimeType](#runtimeType)
+
+### Methods
+
+* [**compareAsType](#compareAsType)
+* [**compareValues](#compareValues)
+* [**convertToDatabaseValue](#convertToDatabaseValue)
+* [**convertToDatabaseValueSQL](#convertToDatabaseValueSQL)
+* [**convertToJSValue](#convertToJSValue)
+* [**convertToJSValueSQL](#convertToJSValueSQL)
+* [**ensureComparable](#ensureComparable)
+* [**getColumnType](#getcolumntype)
+* [**getDefaultLength](#getdefaultlength)
+* [**toJSON](#toJSON)
+* [**getType](#getType)
+* [**isMappedType](#isMappedType)
+
+## Constructors<!-- -->[**](#constructors)
+
+### [**](#constructor)constructor
+
+* ****new CharacterType**(): [CharacterType](https://mikro-orm.io/api/core/class/CharacterType.md)
+
+* Inherited from StringType.constructor
+
+  #### Returns [CharacterType](https://mikro-orm.io/api/core/class/CharacterType.md)
+
+## Properties<!-- -->[**](#properties)
+
+### [**](#meta)[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/types/Type.ts#L22)optionalinheritedmeta
+
+**meta?
+
+<!-- -->
+
+: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any, [EntityCtor](https://mikro-orm.io/api/core.md#EntityCtor)\<any>>
+
+Inherited from StringType.meta
+
+### [**](#platform)[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/types/Type.ts#L21)optionalinheritedplatform
+
+**platform?
+
+<!-- -->
+
+: [Platform](https://mikro-orm.io/api/core/class/Platform.md)
+
+Inherited from StringType.platform
+
+### [**](#prop)[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/types/Type.ts#L23)optionalinheritedprop
+
+**prop?
+
+<!-- -->
+
+: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+
+Inherited from StringType.prop
+
+## Accessors<!-- -->[**](#accessors)
+
+### [**](#name)[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/types/Type.ts#L67)inheritedname
+
+* **get name(): string
+
+* Inherited from StringType.name
+
+  #### Returns string
+
+### [**](#runtimeType)[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/types/Type.ts#L62)inheritedruntimeType
+
+* **get runtimeType(): string
+
+* Inherited from StringType.runtimeType
+
+  #### Returns string
+
+## Methods<!-- -->[**](#methods)
+
+### [**](#compareAsType)[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/types/StringType.ts#L10)inheritedcompareAsType
+
+* ****compareAsType**(): string
+
+* Inherited from StringType.compareAsType
+
+  How should the raw database values be compared? Used in `EntityComparator`. Possible values: string | number | bigint | boolean | date | any | buffer | array
+
+  ***
+
+  #### Returns string
+
+### [**](#compareValues)[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/types/Type.ts#L60)optionalinheritedcompareValues
+
+* ****compareValues**(a, b): boolean
+
+* Inherited from StringType.compareValues
+
+  Allows to override the internal comparison logic.
+
+  ***
+
+  #### Parameters
+
+  * ##### a: undefined | null | string
+
+  * ##### b: undefined | null | string
+
+  #### Returns boolean
+
+### [**](#convertToDatabaseValue)[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/types/Type.ts#L28)inheritedconvertToDatabaseValue
+
+* ****convertToDatabaseValue**(value, platform, context): undefined | null | string
+
+* Inherited from StringType.convertToDatabaseValue
+
+  Converts a value from its JS representation to its database representation of this type.
+
+  ***
+
+  #### Parameters
+
+  * ##### value: undefined | null | string
+
+  * ##### platform: [Platform](https://mikro-orm.io/api/core/class/Platform.md)
+
+  * ##### optionalcontext: [TransformContext](https://mikro-orm.io/api/core/interface/TransformContext.md)
+
+  #### Returns undefined | null | string
+
+### [**](#convertToDatabaseValueSQL)[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/types/Type.ts#L42)optionalinheritedconvertToDatabaseValueSQL
+
+* ****convertToDatabaseValueSQL**(key, platform): string
+
+* Inherited from StringType.convertToDatabaseValueSQL
+
+  Converts a value from its JS representation to its database representation of this type.
+
+  ***
+
+  #### Parameters
+
+  * ##### key: string
+
+  * ##### platform: [Platform](https://mikro-orm.io/api/core/class/Platform.md)
+
+  #### Returns string
+
+### [**](#convertToJSValue)[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/types/Type.ts#L35)inheritedconvertToJSValue
+
+* ****convertToJSValue**(value, platform, context): undefined | null | string
+
+* Inherited from StringType.convertToJSValue
+
+  Converts a value from its database representation to its JS representation of this type.
+
+  ***
+
+  #### Parameters
+
+  * ##### value: undefined | null | string
+
+  * ##### platform: [Platform](https://mikro-orm.io/api/core/class/Platform.md)
+
+  * ##### optionalcontext: [TransformContext](https://mikro-orm.io/api/core/interface/TransformContext.md)
+
+  #### Returns undefined | null | string
+
+### [**](#convertToJSValueSQL)[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/types/Type.ts#L47)optionalinheritedconvertToJSValueSQL
+
+* ****convertToJSValueSQL**(key, platform): string
+
+* Inherited from StringType.convertToJSValueSQL
+
+  Modifies the SQL expression (identifier, parameter) to convert to a JS value.
+
+  ***
+
+  #### Parameters
+
+  * ##### key: string
+
+  * ##### platform: [Platform](https://mikro-orm.io/api/core/class/Platform.md)
+
+  #### Returns string
+
+### [**](#ensureComparable)[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/types/StringType.ts#L14)inheritedensureComparable
+
+* ****ensureComparable**(): boolean
+
+* Inherited from StringType.ensureComparable
+
+  When a value is hydrated, we convert it back to the database value to ensure comparability, as often the raw database response is not the same as the `convertToDatabaseValue` result. This allows to disable the additional conversion in case you know it is not needed.
+
+  ***
+
+  #### Returns boolean
+
+### [**](#getcolumntype)[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/types/CharacterType.ts#L6)getColumnType
+
+* ****getColumnType**(prop, platform): string
+
+* Overrides StringType.getColumnType
+
+  Gets the SQL declaration snippet for a field of this type.
+
+  ***
+
+  #### Parameters
+
+  * ##### prop: [EntityProperty](https://mikro-orm.io/api/core/interface/EntityProperty.md)\<any, any>
+
+  * ##### platform: [Platform](https://mikro-orm.io/api/core/class/Platform.md)
+
+  #### Returns string
+
+### [**](#getdefaultlength)[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/types/CharacterType.ts#L10)getDefaultLength
+
+* ****getDefaultLength**(platform): number
+
+* Overrides StringType.getDefaultLength
+
+  Get the default length for values of this type
+
+  When doing schema generation, if neither "length" nor "columnType" option is provided, the length will be defaulted to this value.
+
+  When doing entity generation, if the type is recognized to this type, and the inferred length is this value, the length option will be omitted in the output. If this method is not defined, length is always outputted based on what is in the database metadata.
+
+  ***
+
+  #### Parameters
+
+  * ##### platform: [Platform](https://mikro-orm.io/api/core/class/Platform.md)
+
+    The platform the default will be used for.
+
+  #### Returns number
+
+  The default value for the given platform.
+
+### [**](#toJSON)[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/types/Type.ts#L84)inheritedtoJSON
+
+* ****toJSON**(value, platform): undefined | null | string
+
+* Inherited from StringType.toJSON
+
+  Converts a value from its JS representation to its serialized JSON form of this type. By default uses the runtime value.
+
+  ***
+
+  #### Parameters
+
+  * ##### value: undefined | null | string
+
+  * ##### platform: [Platform](https://mikro-orm.io/api/core/class/Platform.md)
+
+  #### Returns undefined | null | string
+
+### [**](#getType)[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/types/Type.ts#L111)staticinheritedgetType
+
+* ****getType**\<JSType, DBType, TypeClass>(cls): InstanceType\<TypeClass>
+
+* Inherited from StringType.getType
+
+  #### Parameters
+
+  * ##### cls: TypeClass
+
+  #### Returns InstanceType\<TypeClass>
+
+### [**](#isMappedType)[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/types/Type.ts#L128)staticinheritedisMappedType
+
+* ****isMappedType**(data): data is [Type](https://mikro-orm.io/api/core/class/Type.md)\<any, any>
+
+* Inherited from StringType.isMappedType
+
+  Checks whether the argument is instance of `Type`.
+
+  ***
+
+  #### Parameters
+
+  * ##### data: any
+
+  #### Returns data is [Type](https://mikro-orm.io/api/core/class/Type.md)\<any, any>
