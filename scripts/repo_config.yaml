@@ -1751,3 +1751,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/nextflow
   branch: main
+- name: quartz.net
+  description: quartz.net from GitHub
+  repo_url: https://github.com/quartznet/quartznet.git
+  source_folder: docs
+  target_folder: docs/github-scraped/quartz.net
+  branch: main
