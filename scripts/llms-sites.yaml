@@ -1301,3 +1301,6 @@ sites:
 - name: nginx
   base_url: https://docs.nginx.com/
   description: nginx documentation
+- name: contentful
+  base_url: https://contentful.ferndocs.com/
+  description: contentful documentation
