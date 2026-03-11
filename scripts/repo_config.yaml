@@ -1459,3 +1459,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/juce
   branch: main
+- name: .net-maui
+  description: .net-maui from GitHub
+  repo_url: https://github.com/dotnet/maui.git
+  source_folder: docs
+  target_folder: docs/github-scraped/.net-maui
+  branch: main
