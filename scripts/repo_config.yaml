@@ -1635,4 +1635,9 @@ repositories:
   repo_url: https://github.com/strongloop/loopback.git
   source_folder: docs
   target_folder: docs/github-scraped/loopback
+- name: pimcore
+  description: pimcore from GitHub
+  repo_url: https://github.com/pimcore/pimcore.git
+  source_folder: doc
+  target_folder: docs/github-scraped/pimcore
   branch: main
