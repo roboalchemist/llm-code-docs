@@ -1208,3 +1208,6 @@ sites:
 - name: rolldown
   base_url: https://rolldown.rs/
   description: rolldown documentation
+- name: verba
+  base_url: https://docs.verba.ink/
+  description: verba documentation
