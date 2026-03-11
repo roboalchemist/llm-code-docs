@@ -1493,3 +1493,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/localauthentication
   branch: main
+- name: homekit
+  description: homekit from GitHub
+  repo_url: https://github.com/jlusiardi/homekit_python.git
+  source_folder: doc
+  target_folder: docs/github-scraped/homekit
+  branch: main
