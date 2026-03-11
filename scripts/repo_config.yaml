@@ -1657,4 +1657,9 @@ repositories:
   repo_url: https://github.com/devtron-labs/devtron.git
   source_folder: docs
   target_folder: docs/github-scraped/devtron
+- name: argocd
+  description: argocd from GitHub
+  repo_url: https://github.com/argoproj/argo-cd.git
+  source_folder: docs
+  target_folder: docs/github-scraped/argocd
   branch: main
