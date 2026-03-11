@@ -1769,3 +1769,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/knime
   branch: main
+- name: paddle-lite
+  description: paddle-lite from GitHub
+  repo_url: https://github.com/PaddlePaddle/Paddle-Lite.git
+  source_folder: docs
+  target_folder: docs/github-scraped/paddle-lite
+  branch: main
