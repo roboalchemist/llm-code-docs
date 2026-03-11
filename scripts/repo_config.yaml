@@ -1775,3 +1775,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/paddle-lite
   branch: main
+- name: sparseml
+  description: sparseml from GitHub
+  repo_url: https://github.com/neuralmagic/sparseml.git
+  source_folder: docs
+  target_folder: docs/github-scraped/sparseml
+  branch: main
