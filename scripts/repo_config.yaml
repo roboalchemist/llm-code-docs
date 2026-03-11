@@ -1526,3 +1526,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/.net-core
   branch: main
+- name: teamcity
+  description: teamcity from GitHub
+  repo_url: https://github.com/cvbarros/terraform-provider-teamcity.git
+  source_folder: docs
+  target_folder: docs/github-scraped/teamcity
+  branch: main
