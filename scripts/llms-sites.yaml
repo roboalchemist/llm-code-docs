@@ -1274,3 +1274,6 @@ sites:
 - name: ibm-cloud-functions
   base_url: https://cloud.ibm.com/docs/
   description: ibm-cloud-functions documentation
+- name: tyk-gateway
+  base_url: https://www.tyk.io/docs/
+  description: tyk-gateway documentation
