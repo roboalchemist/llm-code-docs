@@ -1624,3 +1624,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/valkey
   branch: main
+- name: ristretto
+  description: ristretto from GitHub
+  repo_url: https://github.com/erichson/ristretto.git
+  source_folder: docs
+  target_folder: docs/github-scraped/ristretto
+  branch: main
