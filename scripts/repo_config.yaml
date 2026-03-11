@@ -1817,3 +1817,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/nose2
   branch: main
+- name: plotly
+  description: plotly from GitHub
+  repo_url: https://github.com/plotly/plotly.py.git
+  source_folder: doc
+  target_folder: docs/github-scraped/plotly
+  branch: main
