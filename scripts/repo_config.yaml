@@ -1579,3 +1579,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/salesforce-api
   branch: main
+- name: logto
+  description: logto from GitHub
+  repo_url: https://github.com/logto-io/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/logto
+  branch: main
