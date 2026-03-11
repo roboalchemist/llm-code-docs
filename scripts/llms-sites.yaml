@@ -1238,3 +1238,6 @@ sites:
 - name: backstage
   base_url: https://roadie.io/
   description: backstage documentation
+- name: cosign
+  base_url: https://edu.chainguard.dev/
+  description: cosign documentation
