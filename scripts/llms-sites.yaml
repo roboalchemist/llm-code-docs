@@ -1280,3 +1280,6 @@ sites:
 - name: mystic-ai
   base_url: https://docs.mystic.ai/
   description: mystic-ai documentation
+- name: unsloth
+  base_url: https://unsloth.ai/docs/
+  description: unsloth documentation
