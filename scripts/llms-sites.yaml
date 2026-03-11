@@ -1229,3 +1229,6 @@ sites:
 - name: plex-manufacturing-cloud
   base_url: https://plex.rockwellautomation.com/
   description: plex-manufacturing-cloud documentation
+- name: redocly
+  base_url: https://redoc.ly/
+  description: redocly documentation
