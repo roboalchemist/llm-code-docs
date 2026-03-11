@@ -1646,4 +1646,9 @@ repositories:
   repo_url: https://github.com/htcondor/htcondor.git
   source_folder: docs
   target_folder: docs/github-scraped/condor
+- name: socketio
+  description: socketio from GitHub
+  repo_url: https://github.com/socketio/socket.io.git
+  source_folder: docs
+  target_folder: docs/github-scraped/socketio
   branch: main
