@@ -1808,4 +1808,9 @@ repositories:
   repo_url: https://github.com/Azure/azure-cosmos-dotnet-v3.git
   source_folder: docs
   target_folder: docs/github-scraped/azure-cosmos-db
+- name: stepzen
+  description: stepzen from GitHub
+  repo_url: https://github.com/stepzen-dev/vscode-stepzen.git
+  source_folder: docs
+  target_folder: docs/github-scraped/stepzen
   branch: main
