@@ -1241,3 +1241,6 @@ sites:
 - name: wso2
   base_url: https://wso2.com/
   description: wso2 documentation
+- name: flux
+  base_url: https://docs.flux.ai/docs/
+  description: flux documentation
