@@ -1244,3 +1244,6 @@ sites:
 - name: flux
   base_url: https://docs.flux.ai/docs/
   description: flux documentation
+- name: pega
+  base_url: https://pega.org/docs/
+  description: pega documentation
