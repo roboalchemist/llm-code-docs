@@ -1465,3 +1465,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/.net-maui
   branch: main
+- name: wails
+  description: wails from GitHub
+  repo_url: https://github.com/wailsapp/wails.git
+  source_folder: website/docs
+  target_folder: docs/github-scraped/wails
+  branch: main
