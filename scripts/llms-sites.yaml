@@ -1235,3 +1235,6 @@ sites:
 - name: stripe-node
   base_url: https://docs.stripe.com/
   description: stripe-node documentation
+- name: supabase-auth
+  base_url: https://docs.supabase.com/
+  description: supabase-auth documentation
