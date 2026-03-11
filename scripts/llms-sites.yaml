@@ -1307,3 +1307,6 @@ sites:
 - name: hoppscotch
   base_url: https://docs.hoppscotch.io/
   description: hoppscotch documentation
+- name: neuron
+  base_url: https://docs.neuron.world/
+  description: neuron documentation
