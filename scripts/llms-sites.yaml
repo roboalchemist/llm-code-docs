@@ -1310,3 +1310,6 @@ sites:
 - name: neuron
   base_url: https://docs.neuron.world/
   description: neuron documentation
+- name: agora
+  base_url: https://docs.agora.io/
+  description: agora documentation
