@@ -1509,6 +1509,11 @@ repositories:
   repo_url: https://github.com/vestrel00/contacts-android.git
   source_folder: docs
   target_folder: docs/github-scraped/contacts
+- name: accelerate
+  description: accelerate from GitHub
+  repo_url: https://github.com/huggingface/accelerate.git
+  source_folder: docs
+  target_folder: docs/github-scraped/accelerate
   branch: main
 - name: vision
   description: vision from GitHub
