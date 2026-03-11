@@ -1591,3 +1591,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/django-oauth-toolkit
   branch: main
+- name: junit
+  description: junit from GitHub
+  repo_url: https://github.com/junit-team/junit4.git
+  source_folder: doc
+  target_folder: docs/github-scraped/junit
+  branch: main
