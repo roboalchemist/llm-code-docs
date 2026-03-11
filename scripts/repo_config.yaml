@@ -1470,4 +1470,9 @@ repositories:
   repo_url: https://github.com/wailsapp/wails.git
   source_folder: website/docs
   target_folder: docs/github-scraped/wails
+- name: cloudkit
+  description: cloudkit from GitHub
+  repo_url: https://github.com/openstack/cloudkitty.git
+  source_folder: doc
+  target_folder: docs/github-scraped/cloudkit
   branch: main
