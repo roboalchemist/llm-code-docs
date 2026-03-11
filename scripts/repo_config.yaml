@@ -1481,3 +1481,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/avalonia
   branch: main
+- name: cryptokit
+  description: cryptokit from GitHub
+  repo_url: https://github.com/istommao/cryptokit.git
+  source_folder: docs
+  target_folder: docs/github-scraped/cryptokit
+  branch: main
