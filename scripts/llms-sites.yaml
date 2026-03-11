@@ -1265,3 +1265,6 @@ sites:
 - name: cortex
   base_url: https://docs.cortexlabs.com/
   description: cortex documentation
+- name: '@nestjs/schedule'
+  base_url: https://docs.nestjs.com/
+  description: '@nestjs/schedule documentation'

@@ -1733,3 +1733,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/whylogs
   branch: main
+- name: apache-flink
+  description: apache-flink from GitHub
+  repo_url: https://github.com/apache/flink.git
+  source_folder: docs
+  target_folder: docs/github-scraped/apache-flink
+  branch: main
