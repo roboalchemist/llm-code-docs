@@ -1475,4 +1475,9 @@ repositories:
   repo_url: https://github.com/openstack/cloudkitty.git
   source_folder: doc
   target_folder: docs/github-scraped/cloudkit
+- name: avalonia
+  description: avalonia from GitHub
+  repo_url: https://github.com/AvaloniaUI/avalonia-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/avalonia
   branch: main
