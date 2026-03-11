@@ -1805,3 +1805,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/pdfplumber
   branch: main
+- name: ragatouille
+  description: ragatouille from GitHub
+  repo_url: https://github.com/AnswerDotAI/RAGatouille.git
+  source_folder: docs
+  target_folder: docs/github-scraped/ragatouille
+  branch: main
