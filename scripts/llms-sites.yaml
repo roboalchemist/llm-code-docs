@@ -1226,3 +1226,6 @@ sites:
 - name: syspro
   base_url: https://www.syspro.com/
   description: syspro documentation
+- name: vueuse
+  base_url: https://vueuse.org/
+  description: vueuse documentation
