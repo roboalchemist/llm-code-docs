@@ -904,3 +904,9 @@ routing: {
 ### 4.3 Failover Brokering (`peers_failover_brokering`)
 
 When two peers are both connected to the same router but not directly connected to each other, normally they cannot communicate in `peer_to
+---
+
+## See Also
+- [transports.md](transports.md) — Transport protocols for inter-node communication
+- [configuration.md](configuration.md) — Full configuration reference
+- [ros2.md](ros2.md) — Deploying zenoh as a ROS 2 middleware bridge

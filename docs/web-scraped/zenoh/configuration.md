@@ -771,3 +771,10 @@ The `qos` section provides two mechanisms to override message QoS attributes ind
 | **Default** | `[]` (disabled) |
 
 **What it controls:** Overrides QoS for PUT and DELETE messages matching specified key expressions, applied **before** the message enters the network. This is the highest-performance override path.
+---
+
+## See Also
+- [configuration-guide.md](configuration-guide.md) — Annotated walkthrough of common configuration patterns
+- [transports.md](transports.md) — Transport-specific configuration options
+- [security.md](security.md) — TLS, ACLs, and authentication configuration
+- [deployment.md](deployment.md) — Deploying routers, peers, and clients with custom configs

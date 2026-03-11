@@ -851,3 +851,8 @@ curl -X DELETE \
   'http://localhost:8080/@/local/router/config/plugins/storage_manager/storages/live'
 
 #
+---
+
+## See Also
+- [concepts.md](../concepts.md) — Core zenoh abstractions used in plugin development
+- [configuration.md](../configuration.md) — Plugin configuration schema and runtime injection

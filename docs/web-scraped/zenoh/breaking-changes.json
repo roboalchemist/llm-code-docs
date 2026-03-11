@@ -1,0 +1,92 @@
+[
+  {
+    "version": "1.0.0",
+    "change": "Access to `Config` elements is internal now.",
+    "before": "Direct access to `zenoh::Config` elements.",
+    "after": "Need to activate via: `zenoh = { version = \"1.0.0\", features = [\"internal\", \"internal_config\"] }`",
+    "affected": [
+      "rust"
+    ],
+    "source": "the access to `Config` elements is internal now, add this to migration guide"
+  },
+  {
+    "version": "post-https://github.com/eclipse-zenoh/zenoh/issues/1474",
+    "change": "Stored data format for storage backends `filesystem` and `rocksdb` has changed.",
+    "before": "Old serialization format.",
+    "after": "New serialization format; migration tool needed.",
+    "affected": [
+      "all"
+    ],
+    "source": "migration from old to new serialization format for storage backends"
+  },
+  {
+    "version": "1.0",
+    "change": "Default endpoints to listen on must be specified if not using TCP.",
+    "before": "Zenoh session in peer mode without specifying listening endpoints.",
+    "after": "Explicit specification of listening endpoints is required.",
+    "affected": [
+      "all"
+    ],
+    "source": "The default endpoints to listen on"
+  },
+  {
+    "version": "post-https://github.com/eclipse-zenoh/zenoh/issues/1472",
+    "change": "Move serialization into zenoh-ext.",
+    "before": "Part of core API.",
+    "after": "Moved to zenoh-ext.",
+    "affected": [
+      "all"
+    ],
+    "source": "feat!: move serialization into zenoh-ext"
+  },
+  {
+    "version": "[ZEN-587]",
+    "change": "Return type of `Reply::replier_id()` changed to `EntityGlobalId`.",
+    "before": "`Reply::replier_id()` returned `ZenohId`.",
+    "after": "`Reply::replier_id()` returns `EntityGlobalId`.",
+    "affected": [
+      "all"
+    ],
+    "source": "[ZEN-587] Make `Reply::replier_id()` return an `EntityGlobalId`"
+  },
+  {
+    "version": "post-https://github.com/eclipse-zenoh/zenoh/issues/1504",
+    "change": "Change return type of FIFO `recv` functions to use `Option<T>`.",
+    "before": "Used `flume` error types.",
+    "after": "Return `ZResult<Option<T>>` to handle errors.",
+    "affected": [
+      "rust"
+    ],
+    "source": "Make FIFO `(try)recv{,_deadline,_timeout}` return `ZResult<Option<T>>`"
+  },
+  {
+    "version": "post-flume::Receiver",
+    "change": "Encapsulate `flume::Receiver` API.",
+    "before": "`flume::Receiver` API was public.",
+    "after": "`flume::Receiver` API is encapsulated.",
+    "affected": [
+      "rust"
+    ],
+    "source": "Encapsulate `flume::Receiver`"
+  },
+  {
+    "version": "feat",
+    "change": "TLS configuration parameters renamed.",
+    "before": "Uses `server`/`client` naming convention.",
+    "after": "Renamed to `listen`/`connect` and other clarifications.",
+    "affected": [
+      "all"
+    ],
+    "source": "feat!: renaming of TLS configuration parameters"
+  },
+  {
+    "version": "refactor!(storage-manager)",
+    "change": "Remove replication feature for rewriting.",
+    "before": "Previous implementation of Replication feature.",
+    "after": "Replication feature removed.",
+    "affected": [
+      "all"
+    ],
+    "source": "refactor!(storage-manager): remove replication to start-over"
+  }
+]

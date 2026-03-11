@@ -650,3 +650,9 @@ zp_config_insert(z_loan_mut(config), Z_CONFIG_CONNECT_KEY, "tcp/192.168.1.100:74
 | Key | Values | Default |
 |---|---|---|
 | `Z_CONFIG_MODE_KEY` | `"client"`, `"peer"` | `"client"
+---
+
+## See Also
+- [transports.md](transports.md) — Transport protocols available on embedded and constrained devices
+- [serialization.md](serialization.md) — Efficient payload serialization for bandwidth-limited environments
+- [ros2.md](ros2.md) — Bridging embedded zenoh-pico nodes into ROS 2 ecosystems

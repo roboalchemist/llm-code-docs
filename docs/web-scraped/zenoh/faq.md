@@ -830,3 +830,9 @@ With SHM enabled, zenoh can pass a pointer to shared memory instead of copying d
   - Zenoh: 31 packets, ~6.6 KB (**97.37% reduction**)
   - Zenoh with resource generalization: 13 packets, ~1.8 KB (**99.29% reduction**)
   - Zenoh warm start + resource generalization: 1 packet, 82 bytes 
+---
+
+## See Also
+- [concepts.md](concepts.md) — Core zenoh abstractions and terminology
+- [configuration-guide.md](configuration-guide.md) — Annotated configuration walkthroughs for common scenarios
+- [deployment.md](deployment.md) — Deployment patterns for routers, peers, and clients

@@ -1006,3 +1006,10 @@ zenoh = { version = "1.x", features = ["shared-memory"] }
 
 ```json5
 {
+---
+
+## See Also
+- [deployment.md](deployment.md) — Using transports in router and peer deployments
+- [configuration.md](configuration.md) — Configuring transport endpoints and parameters
+- [shared-memory.md](shared-memory.md) — Shared-memory transport for zero-copy intra-host messaging
+- [embedded.md](embedded.md) — Transport support on resource-constrained devices
