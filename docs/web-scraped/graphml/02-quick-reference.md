@@ -21,20 +21,25 @@
 ## Root Elements
 
 ### `<graphml>`
+
 Root element containing the entire graph definition.
 
 **Attributes:**
+
 - `xmlns` - XML namespace (required): `http://graphml.graphdrawing.org/xmlns`
 - `version` - GraphML version (typically "1.0")
 
 **Child Elements:**
+
 - `<key>` - Define custom data attributes (0 or more)
 - `<graph>` - The actual graph definition (1 or more)
 
 ### `<graph>`
+
 Container for nodes and edges.
 
 **Attributes:**
+
 - `id` - Unique identifier (required)
 - `edgedefault` - Default edge direction: `directed` or `undirected` (required)
 - `parse.nodeids` - Node ID validation: `free` or `canonical`
@@ -42,6 +47,7 @@ Container for nodes and edges.
 - `parse.order` - Edge order tracking: `free` or `canonical`
 
 **Child Elements:**
+
 - `<desc>` - Optional description
 - `<data>` - Custom graph attributes
 - `<node>` - Node definitions (0 or more)
@@ -49,40 +55,50 @@ Container for nodes and edges.
 - `<graph>` - Nested subgraphs (for hierarchical graphs)
 
 ### `<node>`
+
 Represents a single node/vertex in the graph.
 
 **Attributes:**
+
 - `id` - Unique identifier within the graph (required)
 
 **Child Elements:**
+
 - `<desc>` - Optional description
 - `<data>` - Custom node attributes
 
 ### `<edge>`
+
 Represents a connection between two nodes.
 
 **Attributes:**
+
 - `id` - Unique identifier (optional but recommended)
 - `source` - ID of source node (required)
 - `target` - ID of target node (required)
 - `directed` - Override default edge direction: `true` or `false`
 
 **Child Elements:**
+
 - `<desc>` - Optional description
 - `<data>` - Custom edge attributes
 
 ### `<data>`
+
 Associates custom data with an element.
 
 **Attributes:**
+
 - `key` - References a `<key>` element's id (required)
 
 **Content:** The actual data value
 
 ### `<key>`
+
 Defines custom attributes for nodes, edges, graphs, or ports.
 
 **Attributes:**
+
 - `id` - Unique identifier (required)
 - `for` - Element type: `graph`, `node`, `edge`, `all` (required)
 - `attr.name` - Attribute name (required for typed keys)
@@ -90,6 +106,7 @@ Defines custom attributes for nodes, edges, graphs, or ports.
 - `attr.default` - Default value if not specified (optional)
 
 **Child Elements:**
+
 - `<desc>` - Description
 - `<default>` - Default value
 
@@ -219,6 +236,7 @@ Nodes can contain graphs, creating hierarchical structures:
 ```
 
 This is useful for:
+
 - Compound graphs (nodes containing subgraphs)
 - Cluster visualization
 - Hierarchical network representation
@@ -257,6 +275,7 @@ This enables XML schema validation against the official XSD.
 ## File Size Optimization
 
 For large graphs:
+
 - Use gzip compression (`.graphml.gz`)
 - Consider specialized graph formats (GraphSON, edge list)
 - Remove unnecessary attributes

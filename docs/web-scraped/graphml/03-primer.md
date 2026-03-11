@@ -1,4 +1,4 @@
-#  GraphML Primer
+# GraphML Primer
 
 Editors:
 
@@ -8,14 +8,14 @@ Editors:
 
 * * *
 
-##  Abstract
+## Abstract
 
 GraphML Primer is a non-normative document intended to provide an easily readable description of the
 GraphML facilities, and is oriented towards quickly understanding how to create GraphML documents.
 This primer describes the language features through examples which are complemented by references to
 normative texts.  
 
-##  Table of contents
+## Table of contents
 
 1 Introduction  
 2 Basic Concepts  
@@ -40,14 +40,13 @@ normative texts.
 
 * * *
 
-##  1 Introduction
+## 1 Introduction
 
 This document, GraphML Primer, provides an description of GraphML, and should be used alongside the
 formal descriptions of the language contained in the GraphML specification. The intended audience of
 this document includes application developers whose programs read and write GraphML files, and users
 who want to communicate with programs using GraphML import/export. The text assumes that you have a
-basic understanding of [XML 1.0](http://www.w3.org/TR/2000/REC-xml-20001006) and [ XML-
-Namespaces](http://www.w3.org/TR/1999/REC-xml-names-19990114/). Basic knowledge of [XML
+basic understanding of [XML 1.0](http://www.w3.org/TR/2000/REC-xml-20001006) and [XML-Namespaces](http://www.w3.org/TR/1999/REC-xml-names-19990114/). Basic knowledge of [XML
 Schema](http://www.w3.org/TR/2001/REC-xmlschema-0-20010502) is also assumed for some parts of this
 document. Each major section of the primer introduces new features of the language, and describes
 those features in the context of concrete examples.
@@ -65,7 +64,7 @@ are provided to help you understand GraphML, but they may not always provide def
 such cases, you will need to refer to the GraphML specification, and to help you do this, we provide
 many links pointing to the relevant parts of the specification.
 
-##  2 Basic Concepts
+## 2 Basic Concepts
 
 The purpose of a GraphML document is to define a graph. Let us start by considering the graph shown
 in the figure below. It contains 11 nodes and 12 edges.
@@ -74,15 +73,14 @@ A simple graph
 
 ![Image of example graph](simple.png)
 
-###  2.1 A Simple Graph
+### 2.1 A Simple Graph
 
-The graph is contained in the file ` [simple.graphml](simple.graphml)`:
+The graph is contained in the file `[simple.graphml](simple.graphml)`:
 
 A simple graph
 
-    
-    
-    <?xml version="1.0" encoding="UTF-8"?>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
     <graphml xmlns="http://graphml.graphdrawing.org/xmlns"  
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
@@ -113,7 +111,7 @@ A simple graph
         <edge source="n8" target="n10"/>
       </graph>
     </graphml>
-    
+```
 
 The GraphML document consists of a `graphml` element and a variety of subelements: `graph`, `node`,
 `edge`. In the remainder of this section we will discuss these elements in detail and show how they
@@ -126,9 +124,8 @@ basically the `graphml` element.
 
 A Header with XML Schema reference
 
-    
-    
-    <?xml version="1.0" encoding="UTF-8"?>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
     <graphml xmlns="http://graphml.graphdrawing.org/xmlns"  
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns 
@@ -137,7 +134,7 @@ A Header with XML Schema reference
       ...
     
     </graphml>
-    
+```
 
 The first line of the document is an XML process instruction which defines that the document adheres
 to the XML 1.0 standard and that the encoding of the document is UTF-8, the standard encoding for
@@ -151,8 +148,7 @@ namespace in the document by adding the XML Attribute
 specify the XML Schema for this document. In our example we use the standard schema for GraphML
 documents located on the `graphdrawing.org` server. The first attribute,
 `xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"`, defines `xsi` as the XML Schema namespace.
-The second attribute, `xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
-http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd" `, defines the XML Schema location for all
+The second attribute, `xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"`, defines the XML Schema location for all
 elements in the GraphML namespace.
 
 The XML Schema reference is not required but it provides means to validate the document and is
@@ -160,15 +156,14 @@ therefore strongly recommended.
 
 A Header without XML Schema reference
 
-    
-    
-    <?xml version="1.0" encoding="UTF-8"?>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
     <graphml xmlns="http://graphml.graphdrawing.org/xmlns">
     
       ...
     
     </graphml>
-    
+```
 
 ### 2.3 The Graph
 
@@ -178,9 +173,8 @@ declarations of nodes and edges. A node is declared with a `node` element, and a
 
 The definition of the graph
 
-    
-    
-      <graph id="G" edgedefault="directed">
+```xml
+<graph id="G" edgedefault="directed">
         <node id="n0"/>
         <node id="n1"/>
         ...
@@ -190,23 +184,22 @@ The definition of the graph
         ...
         <edge source="n8" target="n10"/>
       </graph>
-    
+```
 
 In GraphML there is no order defined for the appearance of `node` and `edge` elements. Therefore the
 following example is a perfectly valid GraphML fragment:
 
 The definition of the graph
 
-    
-    
-      <graph id="G" edgedefault="directed">
+```xml
+<graph id="G" edgedefault="directed">
         <node id="n0"/>
         <edge source="n0" target="n2"/>
         <node id="n1"/>
         <node id="n2"/>
         ...
       </graph>
-    
+```
 
 #### 2.3.1 Declaring a Graph
 
@@ -244,13 +237,11 @@ necessary to reference the edge, the `id` XML-Attribute is used.
 
 An edge with all XML-Attributes defined
 
-    
-    
-     
-        ...
-        <edge id="e1" directed="true" source="n0" target="n2"/>
-        ...
-    
+```xml
+...
+<edge id="e1" directed="true" source="n0" target="n2"/>
+...
+```
 
 ## 2.4 GraphML-Attributes
 
@@ -279,9 +270,8 @@ We will use GraphML-Attributes to store the extra data on the nodes and edges. T
 
 Example of a GraphML Document with GraphML-Attributes
 
-    
-    
-    <?xml version="1.0" encoding="UTF-8"?>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
     <graphml xmlns="http://graphml.graphdrawing.org/xmlns"  
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns 
@@ -322,7 +312,7 @@ Example of a GraphML Document with GraphML-Attributes
         </edge>
       </graph>
     </graphml>
-    
+```
 
 ### 2.4.2 Declaring GraphML-Attributes
 
@@ -345,28 +335,24 @@ declared. Possible values include `graph`, `node`, `edge`, and `all`.
 
 Declaration of a GraphML Attribute
 
-    
-    
-     
-        ...
-        <key id="d1" for="edge" attr.name="weight" attr.type="double"/>
-        ...
-    
+```xml
+...
+<key id="d1" for="edge" attr.name="weight" attr.type="double"/>
+...
+```
 
 It is possible to define a default value for a GraphML-Attribute. The text content of the `default`
 element defines this default value.
 
 Declaration of a GraphML Attribute with Default Value
 
-    
-    
-     
-        ...
-      <key id="d0" for="node" attr.name="color" attr.type="string">
-        <default>yellow</default>
-      </key>
-        ...
-    
+```xml
+...
+<key id="d0" for="node" attr.name="color" attr.type="string">
+  <default>yellow</default>
+</key>
+...
+```
 
 ### 2.4.3 Defining GraphML-Attribute Values
 
@@ -377,33 +363,32 @@ the `data` element. This value _must_ be of the type declared in the correspondi
 
 GraphML-Attribute Values
 
-    
-    
-      ...
-      <key id="d0" for="node" attr.name="color" attr.type="string">
-        <default>yellow</default>
-      </key>
-      <key id="d1" for="edge" attr.name="weight" attr.type="double"/>
-      <graph id="G" edgedefault="undirected">
-        <node id="n0">
-          <data key="d0">green</data>
-        </node>
-        <node id="n1"/>
-        ...
-        <edge id="e0" source="n0" target="n2">
-          <data key="d1">1.0</data>
-        </edge>
-        <edge id="e1" source="n0" target="n1">
-          <data key="d1">1.0</data>
-        </edge>
-        <edge id="e2" source="n1" target="n3">
-          <data key="d1">2.0</data>
-        </edge>
-        <edge id="e3" source="n3" target="n2"/>
-        ...
-      </graph>
-      ...
-    
+```xml
+...
+<key id="d0" for="node" attr.name="color" attr.type="string">
+  <default>yellow</default>
+</key>
+<key id="d1" for="edge" attr.name="weight" attr.type="double"/>
+<graph id="G" edgedefault="undirected">
+  <node id="n0">
+    <data key="d0">green</data>
+  </node>
+  <node id="n1"/>
+  ...
+  <edge id="e0" source="n0" target="n2">
+    <data key="d1">1.0</data>
+  </edge>
+  <edge id="e1" source="n0" target="n1">
+    <data key="d1">1.0</data>
+  </edge>
+  <edge id="e2" source="n1" target="n3">
+    <data key="d1">2.0</data>
+  </edge>
+  <edge id="e3" source="n3" target="n2"/>
+  ...
+</graph>
+...
+```
 
 There can be graph elements for which a GraphML-Attribute is defined but no value is declared by a
 corresponding `data` element. If a default value is defined for this GraphML-Attribute, then this
@@ -443,9 +428,8 @@ The following example demonstrates the parse info meta-data on our running examp
 
 A graph with additional parse info attributes.
 
-    
-    
-    <?xml version="1.0" encoding="UTF-8"?>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
     <!-- This file was written by the JAVA GraphML Library.-->
     <graphml xmlns="http://graphml.graphdrawing.org/xmlns"  
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -481,9 +465,9 @@ A graph with additional parse info attributes.
         <edge id="edge0012" source="n8" target="n10"/>
       </graph>
     </graphml>
-    
+```
 
-## 3\. Advanced Concepts I: Nested Graphs, Hyperedges & Ports
+## 3. Advanced Concepts I: Nested Graphs, Hyperedges & Ports
 
 In some applications the graph model described in the previous section is too restrictive and does
 not model adequatly the application data.
@@ -491,7 +475,7 @@ not model adequatly the application data.
 In this section we discuss advanced graph models which can model a nesting hierarchy, hyperedges and
 ports.
 
-###  3.1 Nested Graphs
+### 3.1 Nested Graphs
 
 GraphML supports _nested graphs_ , i.e., graphs in which the nodes are hierarchically ordered. The
 hierarchy is expressed by the structure of the GraphML document. A node in a GraphML document may
@@ -509,9 +493,8 @@ The file [nested.graphml](nested.graphml) shows the corresponding GraphML docume
 
 GraphML Document with Nested Graphs
 
-    
-    
-    <?xml version="1.0" encoding="UTF-8"?>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
     <graphml xmlns="http://graphml.graphdrawing.org/xmlns"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
       <graph id="G" edgedefault="undirected">
@@ -552,7 +535,7 @@ GraphML Document with Nested Graphs
         <edge id="e9" source="n6::n1" target="n4"/>
       </graph>
     </graphml>
-    
+```
 
 The edges between two nodes in a nested graph have to be declared in a graph, which is an ancestor
 of both nodes in the hierarchy. Note that this is true for our example. Declaring the edge between
@@ -564,7 +547,7 @@ For applications which can not handle nested graphs the fall-back behaviour is t
 are not contained in the top-level graph and to ignore edges which have do not have both endpoints
 in the top-level graph.
 
-###  3.2 Hyperedges
+### 3.2 Hyperedges
 
 Hyperedges are a generalization of edges in the sense that they do not only relate two endpoints to
 each other, they express a relation between an arbitrary number of enpoints. Hyperedges are declared
@@ -583,9 +566,8 @@ The file [hyper.graphml](hyper.graphml) shows the corresponding GraphML document
 
 GraphML Document with Hyperedges
 
-    
-    
-    <?xml version="1.0" encoding="UTF-8"?>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
     <graphml xmlns="http://graphml.graphdrawing.org/xmlns"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
       <graph id="G" edgedefault="undirected">
@@ -614,12 +596,12 @@ GraphML Document with Hyperedges
         <edge source="n0" target="n4"/>
       </graph>
     </graphml>
-    
+```
 
 Like edges, hyperedges and enpoints may have an XML-Attribute `id`, which defines a unique
 identifier for the corresponding element.
 
-###  3.3 Ports
+### 3.3 Ports
 
 A node may specify different logical locations for edges and hyperedges to connect. The logical
 locations are called "ports". As an analogy, think of the graph as a motherboard, the nodes as
@@ -637,9 +619,8 @@ The document [port.graphml](port.graphml) is an example for a document with port
 
 GraphML Document with Ports
 
-    
-    
-    <?xml version="1.0" encoding="UTF-8"?>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
     <graphml xmlns="http://graphml.graphdrawing.org/xmlns"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
       <graph id="G" edgedefault="directed">
@@ -671,9 +652,9 @@ GraphML Document with Ports
          </hyperedge>
       </graph>
     </graphml>
-    
+```
 
-# 4\. Advanced Concepts II: Extending GraphML
+# 4. Advanced Concepts II: Extending GraphML
 
 GraphML is designed to be easily extensible. With GraphML the topology of a graph and simple
 attributes of graph elements can be serialized. To store more complex application data one has to
@@ -683,7 +664,7 @@ Extensions of GraphML should be defined by an XML Schema. The Schema which defin
 be derived from the GraphML Schema documents by using a standard mechanism similar to the one used
 by XHTML.
 
-###  4.1 Adding XML Attributes to GraphML Elements
+### 4.1 Adding XML Attributes to GraphML Elements
 
 In most cases, additional information can (and should) be attached to GraphML elements by usage of
 GraphML-Attributes. This assures readability for other GraphML parsers. However, sometimes it might
@@ -695,12 +676,11 @@ node to the page it models you write the page's URL in an `xlink:href` attribute
 
 A `node` element pointing to a URL
 
-    
-    
-        ...
-     <node id="n0" xlink:href="http://graphml.graphdrawing.org"/>
-        ...
-    
+```xml
+...
+<node id="n0" xlink:href="http://graphml.graphdrawing.org"/>
+...
+```
 
 To add XML attributes to GraphML elements one has to extend GraphML. This extension can be defined
 by an XML Schema. The document [graphml+xlink.xsd](graphml+xlink.xsd) shows how the `href` attribute
@@ -710,9 +690,8 @@ preliminary version, e.g. `http://graphml.graphdrawing.org/xmlns/1.0/xlink.xsd`.
 
 Extending GraphML: Attributes
 
-    
-    
-    <?xml version="1.0" encoding="UTF-8"?>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
     <xs:schema 
        targetNamespace="http://graphml.graphdrawing.org/xmlns"
        xmlns="http://graphml.graphdrawing.org/xmlns"  
@@ -734,17 +713,17 @@ Extending GraphML: Attributes
     </xs:redefine>
     
     </xs:schema>
-    
+```
 
 The parts in the above document have the following function: The document
 [graphml+xlink.xsd](graphml+xlink.xsd) has a `schema` element as its root element.
 `targetNamespace="http://graphml.graphdrawing.org/xmlns"` says that the language defined by this
 document is GraphML. The next three lines specify the default namespace and the namespace prefixes
 for XLink and XMLSchema. The attributes `elementFormDefault` and `attributeFormDefault` are of no
-importance for this example.  
+importance for this example.
 `<xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>` gives access to
-the XLink namespace, located at the file `xlink.xsd`.  
-`<xs:redefine schemaLocation="http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"> ` specifies
+the XLink namespace, located at the file `xlink.xsd`.
+`<xs:redefine schemaLocation="http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">` specifies
 the file, (part of) which is being redefined. The attribute group `node.extra.attrib` is included in
 the attribute-list of `node`. After redefinition, this attribute group has its old content plus one
 more attribute, namely `xlink:href`, which is _optional_.
@@ -757,9 +736,8 @@ valid with respect to the schema [graphml+xlink.xsd](graphml+xlink.xsd).
 
 GraphML Document with additional XML attributes
 
-    
-    
-    <?xml version="1.0" encoding="UTF-8"?>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
     <graphml xmlns="http://graphml.graphdrawing.org/xmlns"  
                 xmlns:xlink="http://www.w3.org/1999/xlink"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -771,29 +749,28 @@ GraphML Document with additional XML attributes
         <edge source="n0" target="n1"/>
       </graph>
     </graphml>
-    
+```
 
-###  4.2 Adding Complex Types
+### 4.2 Adding Complex Types
 
 Structured content can be added within the `data` element. For example a user wants to store images
 for nodes, written in [SVG](http://www.w3.org/Graphics/SVG).
 
 A `node` element and its graphical representation
 
-    
-    
-        ...
-     xmlns:svg="http://www.w3.org/2000/svg"
-        ...
-     <node id="n0" >
-       <data key="k0">
-         <svg:svg width="4cm" height="8cm" version="1.1">
-           <svg:ellipse cx="2cm" cy="4cm" rx="2cm" ry="1cm" />
-         </svg:svg>  
-       </data>
-     </node>
-        ...
-    
+```xml
+...
+xmlns:svg="http://www.w3.org/2000/svg"
+...
+<node id="n0" >
+  <data key="k0">
+    <svg:svg width="4cm" height="8cm" version="1.1">
+      <svg:ellipse cx="2cm" cy="4cm" rx="2cm" ry="1cm" />
+    </svg:svg>
+  </data>
+</node>
+...
+```
 
 To add structured data to GraphML elements one has to extend GraphML. This extension can be defined
 by an XML Schema. The document [graphml+svg.xsd](graphml+svg.xsd) shows how
@@ -804,9 +781,8 @@ the attribute `schemaLocation` points to some preliminary version, e.g.
 
 Extending GraphML: Structured Data
 
-    
-    
-    <?xml version="1.0" encoding="UTF-8"?>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
     <xs:schema 
        targetNamespace="http://graphml.graphdrawing.org/xmlns"
        xmlns="http://graphml.graphdrawing.org/xmlns"  
@@ -833,7 +809,7 @@ Extending GraphML: Structured Data
     </xs:redefine>
     
     </xs:schema>
-    
+```
 
 The above Schema is similar to the example in Adding Attributes: First the necessary namespace
 declarations are made. Then the SVG namespace is imported. Finally the complex type `data-
@@ -845,9 +821,8 @@ With the Schema in [graphml+svg.xsd](graphml+svg.xsd), the GraphML Document
 
 GraphML Document including SVG data
 
-    
-    
-    <?xml version="1.0" encoding="UTF-8"?>
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
     <graphml xmlns="http://graphml.graphdrawing.org/xmlns"  
                 xmlns:svg="http://www.w3.org/2000/svg"
                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -885,7 +860,7 @@ GraphML Document including SVG data
         </edge>
       </graph>
     </graphml>
-    
+```
 
 Note that the node with id `n1` admits the default graphical representation given in `key k0`. The
 above example shows also the usefulness of XML Namespaces: there are two different `desc` elements -
@@ -893,4 +868,3 @@ one in the GraphML namespace and one in the SVG namespace. Possible conflicts, d
 different XML languages that happen to have identical names, are resolved by different namespaces.
 
 [![Valid XHTML 1.0!](http://www.w3.org/Icons/valid-xhtml10)](http://validator.w3.org/check/referer)
-

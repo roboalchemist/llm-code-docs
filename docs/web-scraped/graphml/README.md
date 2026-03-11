@@ -43,6 +43,7 @@ This directory contains comprehensive documentation for GraphML (Graph Markup La
 ## Tools Support
 
 GraphML is supported by many tools:
+
 - **Visualization**: yEd, Gephi, Cytoscape, Graphviz (via plugins)
 - **Parsing**: Python (networkx), Java (JGraphT), C# (.NET)
 - **Analysis**: Community detection, centrality measures, pathfinding
