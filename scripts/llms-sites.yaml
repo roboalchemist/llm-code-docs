@@ -1157,3 +1157,6 @@ sites:
 - name: uptrace
   base_url: https://uptrace.dev/
   description: uptrace documentation
+- name: flutter
+  base_url: https://docs.flutter.dev/
+  description: flutter documentation
