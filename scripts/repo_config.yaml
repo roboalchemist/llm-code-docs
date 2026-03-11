@@ -1543,3 +1543,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/wf
   branch: main
+- name: boxyhq
+  description: boxyhq from GitHub
+  repo_url: https://github.com/boxyhq/website.git
+  source_folder: docs
+  target_folder: docs/github-scraped/boxyhq
+  branch: main
