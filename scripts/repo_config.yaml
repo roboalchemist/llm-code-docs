@@ -1594,4 +1594,9 @@ repositories:
   repo_url: https://github.com/encode/django-rest-framework.git
   source_folder: docs
   target_folder: docs/github-scraped/djangorestframework
+- name: statsmodels
+  description: statsmodels from GitHub
+  repo_url: https://github.com/statsmodels/statsmodels.git
+  source_folder: docs
+  target_folder: docs/github-scraped/statsmodels
   branch: main
