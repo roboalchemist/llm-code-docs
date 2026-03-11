@@ -1532,3 +1532,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/teamcity
   branch: main
+- name: ole
+  description: ole from GitHub
+  repo_url: https://github.com/decalage2/olefile.git
+  source_folder: doc
+  target_folder: docs/github-scraped/ole
+  branch: main
