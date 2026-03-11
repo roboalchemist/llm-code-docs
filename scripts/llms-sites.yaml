@@ -86,7 +86,8 @@ sites:
     EC2, Lambda, S3)
 - name: aws-athena
   base_url: https://docs.aws.amazon.com/athena/latest/ug/
-  description: Amazon Athena user guide - serverless SQL query service for S3 data analysis
+  description: Amazon Athena user guide - serverless SQL query service for S3 data
+    analysis
 - name: aws-cli
   base_url: https://docs.aws.amazon.com/cli/latest/userguide/
   description: AWS Command Line Interface (CLI) v2 User Guide - installation, configuration,
@@ -1153,3 +1154,6 @@ sites:
 - name: fiber
   base_url: https://docs.gofiber.io/
   description: fiber documentation
+- name: uptrace
+  base_url: https://uptrace.dev/
+  description: uptrace documentation
