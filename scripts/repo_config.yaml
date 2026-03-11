@@ -1741,3 +1741,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/openfaas
   branch: main
+- name: active-record
+  description: active-record from GitHub
+  repo_url: https://github.com/yiisoft/active-record.git
+  source_folder: docs
+  target_folder: docs/github-scraped/active-record
+  branch: main
