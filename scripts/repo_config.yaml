@@ -1711,3 +1711,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/veracode
   branch: main
+- name: zenduty
+  description: zenduty from GitHub
+  repo_url: https://github.com/Zenduty/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/zenduty
+  branch: main
