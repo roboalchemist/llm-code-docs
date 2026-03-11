@@ -1675,3 +1675,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/oauth-2.0
   branch: main
+- name: node-oauth2-server
+  description: node-oauth2-server from GitHub
+  repo_url: https://github.com/oauthjs/node-oauth2-server.git
+  source_folder: docs
+  target_folder: docs/github-scraped/node-oauth2-server
+  branch: main
