@@ -1567,3 +1567,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/magento
   branch: main
+- name: sap-cloud-sdk
+  description: sap-cloud-sdk from GitHub
+  repo_url: https://github.com/SAP/cloud-sdk-java.git
+  source_folder: docs
+  target_folder: docs/github-scraped/sap-cloud-sdk
+  branch: main
