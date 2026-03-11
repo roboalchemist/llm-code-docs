@@ -1265,3 +1265,6 @@ sites:
 - name: signoz
   base_url: https://signoz.io/
   description: signoz documentation
+- name: startree
+  base_url: https://docs.startree.ai/
+  description: startree documentation
