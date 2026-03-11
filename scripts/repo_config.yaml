@@ -1699,3 +1699,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/opentofu
   branch: main
+- name: tekton
+  description: tekton from GitHub
+  repo_url: https://github.com/tektoncd/pipeline.git
+  source_folder: docs
+  target_folder: docs/github-scraped/tekton
+  branch: main
