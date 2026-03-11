@@ -1826,3 +1826,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/webonyx/graphql-php
   branch: main
+- name: rpyc
+  description: rpyc from GitHub
+  repo_url: https://github.com/tomerfiliba-org/rpyc.git
+  source_folder: docs
+  target_folder: docs/github-scraped/rpyc
+  branch: main
