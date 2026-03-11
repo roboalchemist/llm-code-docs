@@ -1223,3 +1223,6 @@ sites:
 - name: opencart
   base_url: https://docs.opencart.com/
   description: opencart documentation
+- name: syspro
+  base_url: https://www.syspro.com/
+  description: syspro documentation
