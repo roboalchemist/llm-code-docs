@@ -1560,4 +1560,9 @@ repositories:
   repo_url: https://github.com/nteract/hydrogen.git
   source_folder: docs
   target_folder: docs/github-scraped/hydrogen
+- name: permit.io
+  description: permit.io from GitHub
+  repo_url: https://github.com/permitio/terraform-provider-permit-io.git
+  source_folder: docs
+  target_folder: docs/github-scraped/permit.io
   branch: main
