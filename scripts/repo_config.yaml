@@ -1657,4 +1657,9 @@ repositories:
   repo_url: https://github.com/devtron-labs/devtron.git
   source_folder: docs
   target_folder: docs/github-scraped/devtron
+- name: okta
+  description: okta from GitHub
+  repo_url: https://github.com/okta/okta-sdk-python.git
+  source_folder: docs
+  target_folder: docs/github-scraped/okta
   branch: main
