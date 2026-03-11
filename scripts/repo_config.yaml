@@ -1415,3 +1415,10 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/ray-serve
   branch: main
+- name: Metabase
+  description: Metabase - Open-source business intelligence and analytics platform with
+    comprehensive documentation for installation, administration, querying, and embedding
+  repo_url: https://github.com/metabase/metabase.git
+  source_folder: docs
+  target_folder: docs/github-scraped/metabase
+  branch: master
