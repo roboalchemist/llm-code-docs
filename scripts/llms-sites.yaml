@@ -1199,3 +1199,6 @@ sites:
 - name: open-saas
   base_url: https://docs.opensaas.sh/
   description: open-saas documentation
+- name: scalekit
+  base_url: https://docs.scalekit.com/
+  description: scalekit documentation
