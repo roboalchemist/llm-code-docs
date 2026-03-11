@@ -1723,3 +1723,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/chalice
   branch: main
+- name: k3s
+  description: k3s from GitHub
+  repo_url: https://github.com/k3s-io/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/k3s
+  branch: main
