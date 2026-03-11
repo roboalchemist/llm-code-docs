@@ -1295,3 +1295,6 @@ sites:
 - name: linkup
   base_url: https://docs.linkup.so/
   description: linkup documentation
+- name: mage
+  base_url: https://docs.mage.ai/
+  description: mage documentation
