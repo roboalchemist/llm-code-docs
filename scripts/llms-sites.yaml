@@ -1169,3 +1169,6 @@ sites:
 - name: nuget
   base_url: https://docs.nuget.org/
   description: nuget documentation
+- name: renderdoc
+  base_url: https://docs.rs/renderdoc/latest/renderdoc/
+  description: renderdoc documentation
