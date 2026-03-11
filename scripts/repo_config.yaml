@@ -1814,3 +1814,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/stepzen
   branch: main
+- name: gql
+  description: gql from GitHub
+  repo_url: https://github.com/graphql-python/gql.git
+  source_folder: docs
+  target_folder: docs/github-scraped/gql
+  branch: main
