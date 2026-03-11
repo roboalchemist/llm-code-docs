@@ -1709,3 +1709,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/marathon
   branch: main
+- name: oozie
+  description: oozie from GitHub
+  repo_url: https://github.com/apache/oozie.git
+  source_folder: docs
+  target_folder: docs/github-scraped/oozie
+  branch: main
