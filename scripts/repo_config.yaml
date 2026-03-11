@@ -1735,3 +1735,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/puppet
   branch: main
+- name: openfaas
+  description: openfaas from GitHub
+  repo_url: https://github.com/openfaas/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/openfaas
+  branch: main
