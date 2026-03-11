@@ -1717,3 +1717,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/zenduty
   branch: main
+- name: chalice
+  description: chalice from GitHub
+  repo_url: https://github.com/aws/chalice.git
+  source_folder: docs
+  target_folder: docs/github-scraped/chalice
+  branch: main
