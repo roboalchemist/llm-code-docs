@@ -1765,3 +1765,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/fivetran
   branch: main
+- name: postgrest
+  description: postgrest from GitHub
+  repo_url: https://github.com/PostgREST/postgrest.git
+  source_folder: docs
+  target_folder: docs/github-scraped/postgrest
+  branch: main
