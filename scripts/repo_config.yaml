@@ -1669,3 +1669,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/nextauth.js
   branch: main
+- name: oauth-2.0
+  description: oauth-2.0 from GitHub
+  repo_url: https://github.com/node-oauth/node-oauth2-server.git
+  source_folder: docs
+  target_folder: docs/github-scraped/oauth-2.0
+  branch: main
