@@ -1573,3 +1573,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/sap-cloud-sdk
   branch: main
+- name: salesforce-api
+  description: salesforce-api from GitHub
+  repo_url: https://github.com/simple-salesforce/simple-salesforce.git
+  source_folder: docs
+  target_folder: docs/github-scraped/salesforce-api
+  branch: main
