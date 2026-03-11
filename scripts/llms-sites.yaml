@@ -1289,3 +1289,6 @@ sites:
 - name: anyscale
   base_url: https://docs.anyscale.com/
   description: anyscale documentation
+- name: eden-ai
+  base_url: https://docs.edenai.co/
+  description: eden-ai documentation
