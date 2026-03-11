@@ -1241,3 +1241,6 @@ sites:
 - name: cosign
   base_url: https://edu.chainguard.dev/
   description: cosign documentation
+- name: nomad
+  base_url: https://docs.nomad.xyz/
+  description: nomad documentation
