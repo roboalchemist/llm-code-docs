@@ -1235,3 +1235,6 @@ sites:
 - name: anchore-enterprise
   base_url: https://docs.anchore.com/
   description: anchore-enterprise documentation
+- name: enate
+  base_url: https://docs.enate.net/
+  description: enate documentation

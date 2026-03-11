@@ -1,0 +1,26 @@
+# Source: https://docs.enate.net/enate-help/builder/builder-2021.1/shared-standardised-settings-flavours/general-settings-flavours-action-only.md
+
+# General Settings Flavours (Action Only)
+
+Further general settings are set for Actions in the Action info grid.
+
+![](https://3859925423-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-MWYnDNwe3Cuo4zlGbs5%2F-MWpv3TCDYg2A_ocQW_M%2F-MWpxRkqPEUA81ai278j%2Fimage.png?alt=media\&token=c8d0335e-0aa3-46aa-92e7-9b051e431d15)
+
+General Settings attributes have been grouped together and standard combinations of them *are* shared but not completely globally (i.e. not between Cases, Ticket, Actions like the other types of flavours). Instead, these are shared for an individual Action type, i.e. shared among anywhere that a specific Action you pick from the menu of Actions is used.
+
+<figure><img src="https://3859925423-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MWYnDNwe3Cuo4zlGbs5-887967055%2Fuploads%2FpQIZIWKTpS5FMaNettOx%2Fimage.png?alt=media&#x26;token=0fd7b84f-a63d-49a2-9920-c26cc549923a" alt=""><figcaption></figcaption></figure>
+
+General Settings flavours are made up of the following attributes:
+
+| Setting                                 | Description                                                                                                                                                                                                                                                                                      |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Name                                    | A name for the this General Settings flavor that will show in the dropdown list in Builder.                                                                                                                                                                                                      |
+| Description                             | A description for this combination of general settings.                                                                                                                                                                                                                                          |
+| Instructions                            | Instructions entered here will show on the Action screen in Work Manager for end user agents to see.                                                                                                                                                                                             |
+| SOP URL:                                | If a Standard Operating Procedure exists on e.g. your company intranet, a link to this can be provided here. If a URL is entered here, a direct link will display on the Action form in Work Manager. Please enter a full url.                                                                   |
+| Action Type                             | You can chose the Action type from Action Types already specified in Builder.                                                                                                                                                                                                                    |
+| Robot Farm                              | If you have Robot Farm groups set up (done via user Manager), you can specify which Robot group can be given access to perform the Action.                                                                                                                                                       |
+| Hide Case Link                          | This option controls whether a hyperlink to this Action's parent Case would be displayed on the Action form in Work Manager.                                                                                                                                                                     |
+| Auto-complete on Timeout                | If toggled ON, this Action gets automatically completed after it has timed out.                                                                                                                                                                                                                  |
+| Pausing this Action will pause the Case | If toggled ON, the SLA clock of this Action's parent Case ALSO pauses if this Action is set to pause / wait.                                                                                                                                                                                     |
+| Skills                                  | This is a list of skills which are required to perform this task, and are used for MI purposes (in conjunction with other information such as Action duration and volume) to help decision making on which activities to consider for automating. MULTIPLE SKILLS CAN BE SELECTED FROM THE LIST. |
