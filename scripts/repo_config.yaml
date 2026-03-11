@@ -1600,3 +1600,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/statsmodels
   branch: main
+- name: litestream
+  description: litestream from GitHub
+  repo_url: https://github.com/benbjohnson/litestream.git
+  source_folder: docs
+  target_folder: docs/github-scraped/litestream
+  branch: main
