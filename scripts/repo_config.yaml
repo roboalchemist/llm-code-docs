@@ -1549,3 +1549,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/playfab
   branch: main
+- name: quasar
+  description: quasar from GitHub
+  repo_url: https://github.com/quasarframework/quasar.git
+  source_folder: docs
+  target_folder: docs/github-scraped/quasar
+  branch: main
