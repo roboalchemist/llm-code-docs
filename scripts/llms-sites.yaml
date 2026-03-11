@@ -1277,3 +1277,6 @@ sites:
 - name: tyk-gateway
   base_url: https://www.tyk.io/docs/
   description: tyk-gateway documentation
+- name: flagger
+  base_url: https://docs.flagger.app/
+  description: flagger documentation
