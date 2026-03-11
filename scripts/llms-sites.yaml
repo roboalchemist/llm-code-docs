@@ -1259,3 +1259,6 @@ sites:
 - name: testkube
   base_url: https://testkube.io/
   description: testkube documentation
+- name: dbt-cloud
+  base_url: https://docs.getdbt.com/
+  description: dbt-cloud documentation
