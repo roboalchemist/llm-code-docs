@@ -12,7 +12,6 @@
 - [Set up access](https://docs.aws.amazon.com/athena/latest/ug/setting-up.html): Learn how to sign up for an AWS account and create an identity that you can use with Athena.
 - [AWS service integrations](https://docs.aws.amazon.com/athena/latest/ug/athena-aws-service-integrations.html): Learn more about the AWS integrations with Athena.
 
-
 ## [Use Athena SQL](https://docs.aws.amazon.com/athena/latest/ug/using-athena-sql.html)
 
 - [Tables, databases, and data catalogs](https://docs.aws.amazon.com/athena/latest/ug/understanding-tables-databases-and-the-data-catalog.html): Understand the meaning and use of tables, databases, and data catalogs in Athena
@@ -1013,7 +1012,6 @@ Use the SDK for Java 2.x to write Athena applications.
 - [Create a named query](https://docs.aws.amazon.com/athena/latest/ug/create-a-named-query.html): The CreateNamedQueryExample shows how to create a named query.
 - [Delete a named query](https://docs.aws.amazon.com/athena/latest/ug/delete-a-named-query.html): The DeleteNamedQueryExample shows how to delete a named query by using the named query ID.
 - [List named queries](https://docs.aws.amazon.com/athena/latest/ug/list-named-queries.html): The ListNamedQueryExample shows how to obtain a list of named query IDs.
-
 
 ## [Use Apache Spark](https://docs.aws.amazon.com/athena/latest/ug/notebooks-spark.html)
 

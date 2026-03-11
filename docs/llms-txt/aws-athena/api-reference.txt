@@ -79,7 +79,6 @@
 - [UpdatePreparedStatement](https://docs.aws.amazon.com/athena/latest/APIReference/API_UpdatePreparedStatement.html): Updates a prepared statement.
 - [UpdateWorkGroup](https://docs.aws.amazon.com/athena/latest/APIReference/API_UpdateWorkGroup.html): Updates the workgroup with the specified name.
 
-
 ## [Data Types](https://docs.aws.amazon.com/athena/latest/APIReference/API_Types.html)
 
 - [AclConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_AclConfiguration.html): Indicates that an Amazon S3 canned ACL should be set to control ownership of stored query results, including data files inserted by Athena as the result of statements like CTAS or INSERT INTO.
