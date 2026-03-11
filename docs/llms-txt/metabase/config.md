@@ -5,7 +5,7 @@ title: Modular embedding SDK - config
 summary: Configure the Metabase modular embedding SDK with MetabaseProvider, set up authentication, handle global events, and reload embedded components.
 ---
 
-# Modular embedding SDK - config
+# Modular embedding SDK - config (from Metabase)
 
 {% include plans-blockquote.html feature="Modular embedding SDK" sdk=true %}
 
@@ -17,18 +17,18 @@ To use the SDK in your app, you need to import the `MetabaseProvider` component 
 
 A component that configures the SDK and provides the Metabase SDK's context and theme.
 
-#### API Reference
+#### MetabaseProvider - API Reference
 
 - [Component](./api/MetabaseProvider.html)
 - [Props](./api/MetabaseProviderProps.html)
 
-#### Example
+#### MetabaseProvider - Example
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/config/config-base.tsx" %}
 ```
 
-#### Props
+#### MetabaseProvider - Props
 
 {% include_file "{{ dirname }}/api/snippets/MetabaseProviderProps.md" snippet="properties" %}
 
@@ -40,17 +40,17 @@ You can listen for events by defining the `eventHandlers` prop for `MetabaseProv
 
 Accepts an object where each key is an event type and the corresponding value is the event handler function.
 
-#### API Reference
+#### SdkEventHandlersConfig - API Reference
 
 - [Type](./api/SdkEventHandlersConfig.html)
 
-#### Example
+#### SdkEventHandlersConfig - Example
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/config/config-with-event-handlers.tsx" snippet="example" %}
 ```
 
-#### Props
+#### SdkEventHandlersConfig - Props
 
 {% include_file "{{ dirname }}/api/snippets/SdkEventHandlersConfig.md" snippet="properties" %}
 

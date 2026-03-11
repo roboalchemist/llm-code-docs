@@ -4,6 +4,7 @@
 title: SAML with Auth0
 redirect_from:
   - /docs/latest/enterprise-guide/saml-auth0
+
 ---
 
 # SAML with Auth0
@@ -48,7 +49,7 @@ In the **Addons** section, select the **SAML 2 Web App** to load the settings po
 
 On the top of the **Settings** section on this page, you need to re-enter the value you included in **Allowed Callback URLs** in the field named **Application Callback URL**. Copy and paste the following JSON file in the settings box so that Auth0 can send the correct mappings to Metabase when a user logs in:
 
-```
+```json
 {
     "mappings": {
         "email":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress",

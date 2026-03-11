@@ -1,6 +1,7 @@
 # Source: https://raw.githubusercontent.com/metabase/metabase/refs/heads/release-x.59.x/docs/configuring-metabase/config-file.md
 
 ---
+
 title: "Configuration file"
 ---
 
@@ -165,7 +166,7 @@ config:
 
 You can also use an environment variable to supply an API key, like so:
 
-```
+```yaml
 {% raw %}
 api-keys:
   - name: "ENV API Key"
@@ -187,7 +188,7 @@ echo "mb_$(openssl rand -base64 32)"
 
 Which would generate something like:
 
-```
+```text
 mb_aDqk1Tc4ZotWb2TyjHY71glALKlB+g75dLgmSufWGLc=
 ```
 
@@ -205,7 +206,7 @@ Some other things to note about API keys in the config file:
 
 As shown in the examples above, environment variables can be specified with template tags like so:
 
-```
+```yaml
 {% raw %}
 setting: "{{ env POSTGRES_TEST_DATA_PASSWORD }}"
 {% endraw %}
@@ -219,7 +220,7 @@ Metabase doesn't support recursive expansion, so if one of your environment vari
 
 If a value contains double braces (`{%raw %}}}{% endraw %}` or `{%raw %}{{{% endraw %}`), you must use triple braces to tell the config parser to use the literal value. For example, if your password was `{% raw %}MetaPa$$123{{>{% endraw %}`, you'd need to wrap the value in triple braces, like so:
 
-```
+```yaml
 {% raw %}
 password: "{{{ MetaPa$$123{{> }}}"
 {% endraw %}

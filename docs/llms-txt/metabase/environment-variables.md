@@ -3,14 +3,16 @@
 ---
 title: Environment variables
 redirect_from:
-  - /docs/latest/operations-guide/environment-variables
+
+- /docs/latest/operations-guide/environment-variables
+
 ---
 
 # Environment variables
 
 _This documentation was generated from source by running:_
 
-```
+```bash
 clojure -M:ee:doc environment-variables-documentation
 ```
 
@@ -22,7 +24,7 @@ Setting environment variables can be done in various ways depending on how you'r
 
 JAR file:
 
-```
+```bash
 # Mac, Linux and other Unix-based systems
 export MB_SITE_NAME="Awesome Company"
 # Windows Powershell
@@ -35,13 +37,13 @@ java --add-opens java.base/java.nio=ALL-UNNAMED -jar metabase.jar
 
 Or set it as Java property, which works the same across all systems:
 
-```
+```bash
 java -DMB_SITE_NAME="Awesome Company" -jar metabase.jar
 ```
 
 Docker:
 
-```
+```bash
 docker run -d -p 3000:3000 -e MB_SITE_NAME="Awesome Company" --name metabase metabase/metabase
 ```
 
@@ -52,7 +54,6 @@ If you're running Metabase Cloud, you can [contact support](https://www.metabase
 ---
 
 ## List of environment variables
-
 
 ### `MB_ADMIN_EMAIL`
 
@@ -137,7 +138,7 @@ Choose the colors used in the user interface throughout Metabase and others spec
 
 To change the user interface colors:
 
-```
+```json
 {
  "brand":"#ff003b",
  "filter":"#FF003B",
@@ -147,7 +148,7 @@ To change the user interface colors:
 
 To change the chart colors:
 
-```
+```json
 {
  "accent0":"#FF0005",
  "accent1":"#E6C367",
@@ -195,7 +196,7 @@ Tell us where to find the file for each font weight. You don’t need to include
 
 Example value:
 
-```
+```json
 [
   {
     "src": "https://example.com/resources/font-400",
@@ -765,6 +766,7 @@ Prevent the exception middleware from including stacktraces in responses.
 
 Controls which types of hosts are allowed as HTTP channel destinations.
 Options:
+
 - external-only (default - only external hosts)
 - allow-private (external + private networks but NOT localhost)
 - allow-all (no restrictions including localhost).
@@ -2146,7 +2148,7 @@ Note that the `currentSchema` JDBC parameter has no effect. [The schema used for
 
 Examples:
 
-```
+```text
 jdbc:postgresql://db.example.com:5432/mydb?user=dbuser&password=dbpassword
 
 jdbc:postgresql://db.example.com:5432/mydb?user=dbuser&password=dbpassword&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
@@ -2501,4 +2503,3 @@ Type: string<br>
 Default: `null`
 
 Base-64 encoded public key for this sites SSL certificate. Specify this to enable HTTP Public Key Pinning. Using HPKP is no longer recommended. See http://mzl.la/1EnfqBf for more information.
-

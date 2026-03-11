@@ -4,6 +4,7 @@
 title: SAML-based authentication
 redirect_from:
   - /docs/latest/enterprise-guide/authenticating-with-saml
+
 ---
 
 # SAML-based authentication
@@ -68,7 +69,7 @@ The redirect URL is the web address that people will be sent to after signing in
 
 For example, if your Metabase Site URL is `https://metabase.yourcompany.com`, you'll use
 
-```
+```text
 https://metabase.yourcompany.com/auth/sso
 ```
 
@@ -158,7 +159,7 @@ The endpoint for SLO: `/auth/sso/handle_slo`
 
 So if your Metabase is served at `metabase.example.com` the logout service POST binding URL would be:
 
-```
+```text
 https://metabase.example.com/auth/sso/handle_slo
 ```
 

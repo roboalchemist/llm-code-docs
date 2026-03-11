@@ -5,7 +5,7 @@ title: Guest embeds
 summary: Embed questions, dashboards, and documents without requiring SSO.
 ---
 
-# Guest embeds
+# Guest embeds (from Metabase)
 
 {% include shared/in-page-promo-embedding-workshop.html %}
 
@@ -134,7 +134,7 @@ To configure parameters:
 
 When you set Editable parameters, you can set default values for the filters, but users can change these when viewing the question or dashboard.
 
-**Server code**
+#### Server code
 
 On the server, you pass an empty `params` object:
 
@@ -153,7 +153,7 @@ const payload = {
 const token = jwt.sign(payload, METABASE_SECRET_KEY);
 ```
 
-**Client code**
+#### Client code
 
 You set default parameters on the client side with the `initial-parameters` key.
 
@@ -199,7 +199,7 @@ To use locked parameters, you need to:
 
 Here's an example of the server and client code that Metabase will generate if you lock a "category" parameter:
 
-**Server code (Node.js)**
+#### Server code (Node.js)
 
 You set the locked parameter on the server, passing it in the token.
 
@@ -220,7 +220,7 @@ const payload = {
 const token = jwt.sign(payload, METABASE_SECRET_KEY);
 ```
 
-**Client code (HTML)**
+#### Client code (HTML)
 
 The parameter is set by the JWT:
 

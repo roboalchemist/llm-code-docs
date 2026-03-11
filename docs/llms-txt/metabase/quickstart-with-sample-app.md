@@ -24,15 +24,15 @@ This guide sets up the modular embedding SDK with a [sample React app](https://g
 
 1. Clone the [sample React app](https://github.com/metabase/metabase-nodejs-react-sdk-embedding-sample/tree/{{page.version | remove: "v0."}}-stable).
 
-```bash
-git clone git@github.com:metabase/metabase-nodejs-react-sdk-embedding-sample.git
-```
+   ```bash
+   git clone git@github.com:metabase/metabase-nodejs-react-sdk-embedding-sample.git
+   ```
 
 2. Check out the branch in the [metabase-nodejs-react-sdk-embedding-sample](https://github.com/metabase/metabase-nodejs-react-sdk-embedding-sample/tree/{{page.version | remove: "v0."}}-stable) repo that corresponds to your Metabase version.
 
-```bash
-git checkout {{page.version}}-stable
-```
+   ```bash
+   git checkout {{page.version}}-stable
+   ```
 
 E.g., if you're running Metabase 1.57 make sure the sample app repo is on the `57-stable` branch. You can find your Metabase version in the Metabase UI by clicking the **grid icon** in the upper right, selecting **Help**, then choosing **About Metabase**.
 
@@ -49,17 +49,17 @@ This setup will run a Docker container with the sample app and a sample Metabase
 
    In the cloned directory, run:
 
-```bash
-cp .env.docker.example .env.docker
-```
+   ```bash
+   cp .env.docker.example .env.docker
+   ```
 
 2. In the `.env.docker` file, replace `<your_enterprise_token>` with your premium embedding token.
 
 3. In the top-level directory, run:
 
-```bash
-yarn start
-```
+   ```bash
+   yarn start
+   ```
 
 This script will:
 
@@ -91,9 +91,9 @@ Here's a quick overview of what you'll be doing:
 
 ### Start up the sample application
 
-5. [Set up the application environment](#set-up-the-application-environment).
-6. [Run the app server](#set-up-the-application-server) to handle authentication with JWT and serve the embedded Metabase components.
-7. [Run the client application](#set-up-the-client-application) that will contain Metabase components built with the SDK.
+1. [Set up the application environment](#set-up-the-application-environment).
+2. [Run the app server](#set-up-the-application-server) to handle authentication with JWT and serve the embedded Metabase components.
+3. [Run the client application](#set-up-the-client-application) that will contain Metabase components built with the SDK.
 
 And then fiddle around with styling.
 
@@ -171,7 +171,7 @@ Be sure to hit the **Save and enable** button, or all is void.
 
 In the sample app's main directory, copy the `.env.example` template to `.env`.
 
-```sh
+```bash
 cp .env.example .env
 ```
 
@@ -194,19 +194,19 @@ METABASE_JWT_SHARED_SECRET="TODO"
 
 Change into the `server` directory:
 
-```sh
+```bash
 cd server
 ```
 
 Install packages:
 
-```sh
+```bash
 npm install
 ```
 
 Start the server:
 
-```sh
+```bash
 npm start
 ```
 
@@ -214,13 +214,13 @@ npm start
 
 In a different terminal, change into the `client` directory:
 
-```sh
+```bash
 cd client
 ```
 
 Install dependencies:
 
-```sh
+```bash
 npm install
 ```
 
@@ -230,7 +230,7 @@ You can also install a [different version of the SDK](./version.md). Just make s
 
 Start the client app:
 
-```sh
+```bash
 npm start
 ```
 
@@ -240,7 +240,7 @@ Your browser should automatically open the app. By default, the app runs on [htt
 
 In your app, you'll see an embedded `InteractiveQuestion` component.
 
-```javascript
+```tsx
 {% include_file "{{ dirname }}/snippets/quickstart-with-sample-app/example.tsx" snippet="example" %}
 ```
 

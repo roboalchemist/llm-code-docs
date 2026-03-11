@@ -3,11 +3,8 @@
 ---
 title: Parameters for static embeds
 summary: Using parameters to customize embedded static questions and dashboards.
-redirect_from:
-  - /docs/latest/embedding/signed-embedding-parameters
+redirect_from: ["/docs/latest/embedding/signed-embedding-parameters"]
 ---
-
-# Parameters for static embeds
 
 Also known as: parameters for signed embeds, or standalone embeds.
 
@@ -55,25 +52,25 @@ If the filter on a dashboard or question is set to [Always require a value](../d
 
 If you want to set a default value for your [editable filter widget](#adding-a-filter-widget-to-a-static-embed), you can pass that default value to the corresponding parameter name in your iframe's `src` attribute:
 
-```
+```plaintext
 your_embedding_url?parameter_name=value
 ```
 
 For example, if your embedded dashboard has a filter connected to an editable parameter called "Breakfast", and you want to set the default value to "Hash browns":
 
-```
+```plaintext
 your_embedding_url?breakfast=Hash_browns
 ```
 
 To specify default values for multiple filters, separate them with ampersands (&):
 
-```
+```plaintext
 your_embedding_url?breakfast=Hash_browns&lunch=Sandwich
 ```
 
 You can set multiple default values for a single filter by separating the values with ampersands (&):
 
-```
+```plaintext
 your_embedding_url?breakfast=Hash_browns&breakfast=Pancakes
 ```
 
@@ -81,25 +78,25 @@ your_embedding_url?breakfast=Hash_browns&breakfast=Pancakes
 
 If you have multiple editable parameters (resulting in multiple filter widgets), you can hide specific ones from your static embed by adding `#hide_parameters` to the end of the URL in your iframe's `src` attribute:
 
-```
+```plaintext
 your_embedding_url#hide_parameters=parameter_name
 ```
 
 For example, to hide a filter called "Breakfast" from your embedded dashboard:
 
-```
+```plaintext
 your_embedding_url#hide_parameters=breakfast
 ```
 
 You can hide multiple filter widgets by separating the parameter names with commas:
 
-```
+```plaintext
 your_embedding_url#hide_parameters=breakfast,lunch
 ```
 
 You can also simultaneously assign a parameter a default value _and_ hide its filter widget:
 
-```
+```plaintext
 your_embedding_url?breakfast=Hash_browns#hide_parameters=breakfast
 ```
 
@@ -177,7 +174,7 @@ You can change the appearance of an embedded item by adding hash parameters (e.g
 
 For example, the following embedding URL will display an embedded item in dark mode, without a border, and with its original title:
 
-```
+```plaintext
 your_embedding_url#theme=night&bordered=false&titled=true
 ```
 
@@ -206,13 +203,13 @@ For global appearance settings, such as the colors and fonts used across your en
 
 To change the UI language for a static embed, you can set its [locale](../configuring-metabase/localization.md#supported-languages). For example, to set a public link's language to Korean, append `#locale=ko`:
 
-```
+```plaintext
 https://metabase.example.com/public/dashboard/7b6e347b-6928-4aff-a56f-6cfa5b718c6b?category=&city=&state=#locale=ko
 ```
 
 If you have multiple parameters, separate them with an ampersand (`&`):
 
-```
+```plaintext
 category=Gadget&state=Vermont#theme=night&locale=ko
 ```
 

@@ -5,6 +5,7 @@ title: Google Sign-In
 redirect_from:
   - /docs/latest/administration-guide/10-single-sign-on
   - /docs/latest/people-and-groups/google-and-ldap
+
 ---
 
 # Google Sign-In
@@ -63,5 +64,3 @@ User attributes can't be synced with regular Google Sign-In. To synchronize user
 [google-saml-docs]: ./saml-google.md
 [jwt-docs]: ./authenticating-with-jwt.md
 [saml-docs]: ./authenticating-with-saml.md
-[user-attributes-docs]: ../permissions/row-and-column-security.md#choosing-user-attributes-for-row-and-column-security
-[user-attributes-def]: https://www.metabase.com/glossary/attribute#user-attributes-in-metabase

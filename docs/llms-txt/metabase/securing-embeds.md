@@ -5,8 +5,6 @@ title: Securing embedded Metabase
 summary: How to hide and protect sensitive data in different types of embeds.
 ---
 
-# Securing embedded Metabase
-
 ## Securing embeds with authentication and authorization
 
 There are two basic ways to secure stuff on the internet:

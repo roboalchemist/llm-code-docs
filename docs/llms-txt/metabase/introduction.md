@@ -1,15 +1,13 @@
-# Source: https://raw.githubusercontent.com/metabase/metabase/refs/heads/release-x.59.x/docs/embedding/sdk/introduction.md
-
 # Source: https://raw.githubusercontent.com/metabase/metabase/refs/heads/release-x.59.x/docs/embedding/introduction.md
 
 ---
 title: Embedding introduction
 summary: Different ways you can embed charts and dashboards, or all of Metabase, in your app.
 redirect_from:
-  - /docs/latest/administration-guide/13-embedding
+- /docs/latest/administration-guide/13-embedding
 ---
 
-# Embedding introduction
+# Embedding introduction (from Metabase)
 
 {% include shared/in-page-promo-embedding-workshop.html %}
 

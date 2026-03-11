@@ -34,7 +34,7 @@ See docs for specific components:
 - [Interactive question plugins](./questions.md#interactive-question-plugins)
 - [Dashboard plugins](./dashboards.md#dashboard-plugins)
 
-## Global plugins
+## Plugin reference
 
 ### `mapQuestionClickActions`
 

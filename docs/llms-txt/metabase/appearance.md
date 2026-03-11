@@ -4,7 +4,9 @@
 title: "Customizing the appearance of modular embeds"
 summary: "Style your embedded Metabase components using themes to customize colors, backgrounds, and more."
 redirect_from:
-  - /docs/latest/embedding/sdk/appearance
+
+- /docs/latest/embedding/sdk/appearance
+
 ---
 
 # Customizing the appearance of modular embeds

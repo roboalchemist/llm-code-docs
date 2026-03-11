@@ -2,6 +2,7 @@
 
 ---
 title: LDAP
+
 ---
 
 # LDAP
@@ -56,7 +57,7 @@ For example, let's say you're configuring LDAP for your company, WidgetCo, where
 
 You'll see the following grayed-out default value in the **User filter** field:
 
-```
+```text
 (&(objectClass=inetOrgPerson)(|(uid={login})(mail={login})))
 ```
 
@@ -103,8 +104,5 @@ You can manage [user attributes][user-attributes-def] such as names, emails, and
 - [Permissions overview](../permissions/start.md).
 
 [row-and-column-security]: ../permissions/row-and-column-security.md
-[google-saml-docs]: ./saml-google.md
-[jwt-docs]: ./authenticating-with-jwt.md
-[saml-docs]: ./authenticating-with-saml.md
 [user-attributes-docs]: ../permissions/row-and-column-security.md#choosing-user-attributes-for-row-and-column-security
 [user-attributes-def]: https://www.metabase.com/glossary/attribute#user-attributes-in-metabase

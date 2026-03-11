@@ -4,7 +4,9 @@
 title: Full app embedding UI components
 description: Customize the UI components in your full app Metabase embed by adding parameters to the embedding URL.
 redirect_from:
-  - /docs/latest/embedding/interactive-ui-components
+
+- /docs/latest/embedding/interactive-ui-components
+
 ---
 
 # Full app embedding UI components
@@ -17,7 +19,7 @@ To change the interface of your full app embed, you can add parameters to the en
 
 For example, you can disable Metabase's [top nav bar](#top_nav) and [side nav menu](#side_nav) like this:
 
-```
+```text
 your_embedding_url?top_nav=false&side_nav=false
 ```
 
@@ -59,7 +61,7 @@ Visible by default on question pages when the [header](#header) is enabled.
 
 To hide the action buttons such as **Filter**, **Summarize**, the query builder button, and so on:
 
-```
+```text
 header=false&action_buttons=false
 ```
 
@@ -71,7 +73,7 @@ Visible by default on question and dashboard pages when the [header](#header) is
 
 To hide the gray text "Edited X days ago by FirstName LastName", as well as the breadcrumbs with collection, database, and table names:
 
-```
+```text
 header=false&additional_info=false
 ```
 
@@ -81,7 +83,7 @@ header=false&additional_info=false
 
 Shown by default in the top nav bar. Collection breadcrumbs show the path to the item (i.e., the collection(s) the item is in). This does not effect Data breadcrumbs if the user has Query Builder permissions. To hide the breadcrumbs:
 
-```
+```text
 breadcrumbs=false
 ```
 
@@ -103,7 +105,7 @@ You can opt for the full data picker by setting `data_picker=staged`:
 
 The above data picker has three entity types selected:
 
-```
+```text
 data_picker=staged&entity_types=table,model,question
 ```
 
@@ -111,7 +113,7 @@ data_picker=staged&entity_types=table,model,question
 
 You can show or hide different entity types in the data picker, sidebar, and the New button menu. For example, you may only want to show tables:
 
-```
+```text
 entity_types=table
 ```
 
@@ -127,7 +129,7 @@ Available entity types are:
 
 You can separate entity types with a comma:
 
-```
+```text
 entity_types=table,model
 ```
 
@@ -137,7 +139,7 @@ Visible by default on question and dashboard pages.
 
 To hide a question or dashboard's title, [additional info](#additional_info), and [action buttons](#action_buttons):
 
-```
+```text
 header=false
 ```
 
@@ -145,7 +147,7 @@ header=false
 
 You can change the language of the user interface via a parameter. For example, to set the locale to Spanish:
 
-```
+```text
 locale=es
 ```
 
@@ -166,7 +168,7 @@ Whether to show the logo that opens and closes the sidebar nav. Default is true.
 
 Hidden by default. To show the **+ New** button used to create queries or dashboards:
 
-```
+```text
 top_nav=true&new_button=true
 ```
 
@@ -174,7 +176,7 @@ top_nav=true&new_button=true
 
 Hidden by default. To show the search box in the top nav:
 
-```
+```text
 top_nav=true&search=true
 ```
 
@@ -184,7 +186,7 @@ The navigation sidebar is shown on `/collection` and home page routes, and hidde
 
 To allow people to minimize the sidebar:
 
-```
+```text
 top_nav=true&side_nav=true
 ```
 
@@ -194,7 +196,7 @@ top_nav=true&side_nav=true
 
 Shown by default. To hide the top navigation bar:
 
-```
+```text
 top_nav=false
 ```
 

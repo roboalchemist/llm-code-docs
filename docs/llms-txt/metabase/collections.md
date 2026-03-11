@@ -5,7 +5,7 @@ title: Modular embedding SDK - collections
 summary: Embed Metabase collection browser in your application using the MetabaseProvider SDK component.
 ---
 
-# Modular embedding SDK - collections
+# Modular embedding SDK - collections (from Metabase)
 
 {% include plans-blockquote.html feature="Modular embedding SDK" sdk=true %}
 

@@ -53,13 +53,13 @@ When installing the npm package, it's critical to use the npm dist-tag that corr
 
 Via npm:
 
-```
+```sh
 npm install @metabase/embedding-sdk-react@53-stable
 ```
 
 Via Yarn:
 
-```
+```sh
 yarn add @metabase/embedding-sdk-react@53-stable
 ```
 

@@ -1,8 +1,9 @@
 # Source: https://raw.githubusercontent.com/metabase/metabase/refs/heads/release-x.59.x/docs/embedding/components.md
 
 ---
+
 title: Modular embedding components
-summary: Embed dashboards, questions, query builder, AI chat, and a collection browser.
+summary: Embed dashboards, questions, query builder, AI chat, and a collection browser
 ---
 
 # Modular embedding components

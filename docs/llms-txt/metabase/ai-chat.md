@@ -1,11 +1,11 @@
 # Source: https://raw.githubusercontent.com/metabase/metabase/refs/heads/release-x.59.x/docs/embedding/sdk/ai-chat.md
 
 ---
-title: "Modular embedding SDK - AI chat"
+title: Modular embedding SDK - AI chat
 summary: Embed an AI chat component in your app that can create queries from natural language questions.
 ---
 
-# Modular embedding SDK - AI chat
+# Modular embedding SDK - AI chat (from Metabase)
 
 ![Embedded AI chat](../images/ai-chat.png)
 

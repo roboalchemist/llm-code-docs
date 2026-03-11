@@ -26,18 +26,18 @@ A lightweight question component. Use this component when you want to display re
 
 The component has a default height, which can be customized by using the `height` prop. To inherit the height from the parent container, you can pass `100%` to the height prop.
 
-#### API Reference
+#### Static question API Reference
 
 - [Component](./api/StaticQuestion.html)
 - [Props](./api/StaticQuestionProps.html)
 
-#### Example
+#### Static question example
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/questions/static-question.tsx" %}
 ```
 
-#### Props
+#### Static question props
 
 {% include_file "{{ dirname }}/api/snippets/StaticQuestionProps.md" snippet="properties" %}
 
@@ -47,18 +47,18 @@ Use this component when you want to allow people to explore their data and custo
 
 ![Interactive question](../images/interactive-question.png)
 
-#### API Reference
+#### Interactive question API Reference
 
 - [Component](./api/InteractiveQuestion.html)
 - [Props](./api/InteractiveQuestionProps.html)
 
-#### Example
+#### Interactive question example
 
 ```typescript
 {% include_file "{{ dirname }}/snippets/questions/interactive-question.tsx" %}
 ```
 
-#### Props
+#### Interactive question props
 
 {% include_file "{{ dirname }}/api/snippets/InteractiveQuestionProps.md" snippet="properties" %}
 
@@ -106,7 +106,7 @@ To customize the layout, use namespaced components within the `InteractiveQuesti
 
 These components are available via the `InteractiveQuestion` namespace (e.g., `<InteractiveQuestion.Filter />`).
 
-#### API Reference:
+#### Interactive question component API reference
 
 - [InteractiveQuestion.BackButton](./api/InteractiveQuestion.html#backbutton)
 - [InteractiveQuestion.Breakout](./api/InteractiveQuestion.html#breakout)

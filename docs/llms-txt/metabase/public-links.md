@@ -3,11 +3,11 @@
 ---
 title: Public sharing
 redirect_from:
-  - /docs/latest/administration-guide/12-public-links
-  - /docs/latest/embedding/12-public-links
+- /docs/latest/administration-guide/12-public-links
+- /docs/latest/embedding/12-public-links
 ---
 
-# Public sharing
+# Public sharing (from Metabase)
 
 > Only admins can create public links and iframes.
 
@@ -72,7 +72,7 @@ You can simulate drill-through on a public dashboard by setting up a [custom cli
 5. Set the custom destination to the destination dashboard's public link.
 6. Optional: pass a filter value from the primary dashboard to the destination dashboard by adding a query parameter to the end of the destination URL:
 
-```
+```text
 {% raw %}
 /public/dashboard/?child_filter_name={{parent_column_name}}
 {% endraw %}
@@ -116,37 +116,37 @@ You can display a filtered view of your question or dashboard in a public embed.
 
 To apply a filter to your embedded question or dashboard, add a _query_ parameter to the end of the link in your iframe's `src` attribute, like this:
 
-```
+```text
 /dashboard/42?filter_name=value
 ```
 
 For example, say that we have a dashboard with an "ID" filter. We can give this filter a value of 7:
 
-```
+```text
 /dashboard/42?id=7
 ```
 
 To set the "ID" filter to a value of 7 _and_ hide the "ID" filter widget from the public embed:
 
-```
+```text
 /dashboard/42?id=7#hide_parameters=id
 ```
 
 To specify multiple values for filters, separate the values with ampersands (&), like this:
 
-```
+```text
 /dashboard/42?id=7&name=janet
 ```
 
 You can hide multiple filter widgets by separating the filter names with commas, like this:
 
-```
+```text
 /dashboard/42#hide_parameters=id,customer_name
 ```
 
 Note that the name of the filter in the URL should be specified in lower case, and with underscores instead of spaces. If your filter is called "Filter for User ZIP Code", you'd write:
 
-```
+```text
 /dashboard/42?filter_for_user_zip_code=02116
 ```
 

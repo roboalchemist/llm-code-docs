@@ -3,11 +3,8 @@
 ---
 title: JWT-based authentication
 description: How to set up JWT-based authentication in Metabase to connect with your identity provider and manage user access.
-redirect_from:
-  - /docs/latest/enterprise-guide/authenticating-with-jwt
+redirect_from: ["/docs/latest/enterprise-guide/authenticating-with-jwt"]
 ---
-
-# JWT-based authentication
 
 {% include plans-blockquote.html feature="JWT-based authentication" %}
 
@@ -73,13 +70,13 @@ You can use the following environment variables to configure JTW group mappings 
 
 - [`MB_JWT_GROUP_SYNC`](../configuring-metabase/environment-variables.md#mb_jwt_group_sync) to turn group sync on or off (sync is off by default).
 
-  ```
+  ```sh
   MB_JWT_GROUP_SYNC=true
   ```
 
 - [`MB_JWT_GROUP_MAPPINGS`](../configuring-metabase/environment-variables.md#mb_jwt_group_mappings) to configure group mapping. It accepts a JSON object where the keys are JWT groups and the values are lists of Metabase groups IDs. For example:
 
-  ```
+  ```sh
   MB_JWT_GROUP_MAPPINGS='{"extHR":[7], "extSales":[3,4]}'
   ```
 

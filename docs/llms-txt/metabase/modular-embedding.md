@@ -4,10 +4,10 @@
 title: Modular embedding
 summary: Getting started with modular embedding for embedding Metabase entities into external applications
 redirect_from:
-  - /docs/latest/embedding/embedded-analytics-js
+- /docs/latest/embedding/embedded-analytics-js
 ---
 
-# Modular embedding
+# Modular embedding (from Metabase)
 
 {% include shared/in-page-promo-embedding-workshop.html %}
 
@@ -28,8 +28,8 @@ If you're using React, check out the [Modular embedding SDK](./sdk/introduction.
 
 **For authenticated embeds** (Pro/Enterprise only), some more steps:
 
-3. Under **Cross-Origin Resource Sharing (CORS)**, add the URLs of the websites where you want to embed Metabase (such as `https://*.example.com`). For testing embeds, you can use `localhost` which is always included in CORS policy.
-4. If embedding on a different domain, see [Embedding Metabase in a different domain](./authentication.md#embedding-metabase-in-a-different-domain).
+1. Under **Cross-Origin Resource Sharing (CORS)**, add the URLs of the websites where you want to embed Metabase (such as `https://*.example.com`). For testing embeds, you can use `localhost` which is always included in CORS policy.
+2. If embedding on a different domain, see [Embedding Metabase in a different domain](./authentication.md#embedding-metabase-in-a-different-domain).
 
 ## Create a new embed
 

@@ -4,6 +4,7 @@
 title: SAML with Google
 redirect_from:
   - /docs/latest/enterprise-guide/saml-google
+
 ---
 
 # SAML with Google
@@ -15,7 +16,7 @@ redirect_from:
 
 - [Save information about Google for Metabase](#saving-google-idp-info-for-metabase).
 - [Provide Google info to Metabase](#filling-out-the-metabase-saml-form).
-- [Provide Metabase info to Google ](#filling-out-service-provider-details).
+- [Provide Metabase info to Google](#filling-out-service-provider-details).
 - [Set up attribute mappings in Google](#setting-up-attribute-mappings).
 
 See [authenticating with SAML](./authenticating-with-saml.md) for general SAML info.

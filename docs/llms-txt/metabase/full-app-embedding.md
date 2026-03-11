@@ -3,9 +3,11 @@
 ---
 title: Full app embedding
 redirect_from:
-  - /docs/latest/enterprise-guide/full-app-embedding
-  - /docs/latest/embedding/full-app-embedding
-  - /docs/latest/embedding/interactive-embedding
+
+- /docs/latest/enterprise-guide/full-app-embedding
+- /docs/latest/embedding/full-app-embedding
+- /docs/latest/embedding/interactive-embedding
+
 ---
 
 # Full app embedding
@@ -67,25 +69,25 @@ Go to your Metabase and find the page that you want to embed.
 
 For example, to embed your Metabase home page, set the `src` attribute to your [site URL](../configuring-metabase/settings.md#site-url), such as:
 
-```
+```text
 src="https://metabase.yourcompany.com/"
 ```
 
 To embed a specific Metabase dashboard, you'll want to use the dashboard's Entity ID URL `/dashboard/entity/[Entity ID]`.
 
-```
+```text
 src="https://metabase.yourcompany.com/dashboard/entity/[Entity ID]"
 ```
 
 To get a dashboard's Entity ID, visit the dashboard and click on the **info** button. In the **Overview** tab, copy the **Entity ID**. Then in your iframe's `src` attribute to:
 
-```
+```text
 src=https://metabase.yourcompany.com/dashboard/entity/Dc_7X8N7zf4iDK9Ps1M3b
 ```
 
 If your dashboard has more than one tab, select the tab you want people to land on and copy the Tab's ID. Add the tab's ID to the URL:
 
-```
+```text
 src=https://metabase.yourcompany.com/dashboard/entity/Dc_7X8N7zf4iDK9Ps1M3b?tab=YLNdEYtzuSMA0lqO7u3FD
 ```
 
@@ -103,19 +105,19 @@ Use this option if you want to send people directly to your SSO login screen (i.
 
 You'll need to set the `src` attribute to your auth endpoint, with a `return_to` parameter pointing to the encoded Metabase URL. For example, to send people to your SSO login page and automatically redirect them to `https://metabase.yourcompany.com/dashboard/1`:
 
-```
+```text
 https://metabase.example.com/auth/sso?return_to=http%3A%2F%2Fmetabase.yourcompany.com%2Fdashboard%2F1
 ```
 
 If you're using [JWT](../people-and-groups/authenticating-with-jwt.md), you can use the relative path for the redirect (i.e., your Metabase URL without the [site URL](../configuring-metabase/settings.md#site-url)). For example, to send people to a Metabase page at `/dashboard/1`:
 
-```
+```text
 https://metabase.example.com/auth/sso?jwt=<token>&return_to=%2Fdashboard%2F1
 ```
 
 You must URL encode (or double encode, depending on your web setup) all of the parameters in your redirect link, including parameters for filters (e.g., `filter=value`) and [UI settings](#showing-or-hiding-metabase-ui-components) (e.g., `top_nav=true`). For example, if you added two filter parameters to the JWT example shown above, your `src` link would become:
 
-```
+```text
 https://metabase.example.com/auth/sso?jwt=<token>&redirect=%2Fdashboard%2F1%3Ffilter1%3Dvalue%26filter2%3Dvalue
 ```
 

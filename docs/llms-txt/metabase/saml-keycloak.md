@@ -4,6 +4,7 @@
 title: SAML with Keycloak
 redirect_from:
   - /docs/latest/enterprise-guide/saml-keycloak
+
 ---
 
 # SAML with Keycloak

@@ -2,9 +2,9 @@
 
 ---
 title: SAML with Microsoft Entra ID
-
 redirect_from:
   - /docs/latest/enterprise-guide/authenticating-with-saml-azure-ad
+
 ---
 
 # SAML with Microsoft Entra ID

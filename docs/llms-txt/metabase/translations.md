@@ -5,8 +5,6 @@ title: Translate embedded components
 summary: Upload a translation dictionary to translate the UI and content of embedded components like questions and dashboards into different languages.
 ---
 
-# Translate embedded components
-
 {% include plans-blockquote.html feature="Translation of embedded content" convert_pro_link_to_embbedding=true %}
 
 You can set a locale on modular embeds (guest, SSO, and SDK) to translate Metabase's UI. If you've uploaded a translation dictionary, Metabase will also translate content strings (like dashboard names and filter labels) for all [modular embeds](./modular-embedding.md).
@@ -112,7 +110,6 @@ If the strings you want to translate include markdown formatting, you'll need to
 | pt-BR    | `**Examples**` | `**Exemplos**` |
 | pt-BR    | `_Examples_`   | `_Exemplos_`   |
 | pt-BR    | `## Examples`  | `## Exemplos`  |
-
 
 ## The AI chat component isn't translated
 

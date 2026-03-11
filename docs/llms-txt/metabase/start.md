@@ -2,11 +2,8 @@
 
 ---
 title: Embedding overview
-redirect_from:
-  - /docs/latest/embedding
+redirect_from: ["/docs/latest/embedding"]
 ---
-
-# Embedding overview
 
 ## [Introduction](./introduction.md)
 

@@ -4,7 +4,9 @@
 title: Modular embedding - authentication
 summary: Adding SSO with JWT or SAML for authenticating modular embeds.
 redirect_from:
-  - /docs/latest/embedding/sdk/authentication
+
+- /docs/latest/embedding/sdk/authentication
+
 ---
 
 # Modular embedding - authentication
@@ -39,7 +41,7 @@ You'll need to add a library to your backend to sign your JSON Web Tokens.
 
 For Node.js, we recommend jsonwebtoken:
 
-```
+```bash
 npm install jsonwebtoken --save
 ```
 
