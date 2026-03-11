@@ -1510,3 +1510,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/contacts
   branch: main
+- name: vision
+  description: vision from GitHub
+  repo_url: https://github.com/pytorch/vision.git
+  source_folder: docs
+  target_folder: docs/github-scraped/vision
+  branch: main
