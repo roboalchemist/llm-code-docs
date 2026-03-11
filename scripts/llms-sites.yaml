@@ -1187,3 +1187,6 @@ sites:
 - name: amplitude
   base_url: https://amplitude.com/docs/
   description: amplitude documentation
+- name: architect
+  base_url: https://docs.architect.co/
+  description: architect documentation
