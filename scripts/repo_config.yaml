@@ -1571,3 +1571,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/permit.io
   branch: main
+- name: altair
+  description: altair from GitHub
+  repo_url: https://github.com/vega/altair.git
+  source_folder: doc
+  target_folder: docs/github-scraped/altair
+  branch: main
