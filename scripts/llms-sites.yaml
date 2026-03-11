@@ -1238,3 +1238,6 @@ sites:
 - name: enate
   base_url: https://docs.enate.net/
   description: enate documentation
+- name: wso2
+  base_url: https://wso2.com/
+  description: wso2 documentation
