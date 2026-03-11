@@ -1739,3 +1739,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/apache-flink
   branch: main
+- name: kube-batch
+  description: kube-batch from GitHub
+  repo_url: https://github.com/kubernetes-retired/kube-batch.git
+  source_folder: doc
+  target_folder: docs/github-scraped/kube-batch
+  branch: main
