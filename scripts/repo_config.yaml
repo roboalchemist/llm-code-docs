@@ -1781,3 +1781,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/sparseml
   branch: main
+- name: tensorflow-extended
+  description: tensorflow-extended from GitHub
+  repo_url: https://github.com/tensorflow/tfx.git
+  source_folder: docs
+  target_folder: docs/github-scraped/tensorflow-extended
+  branch: main
