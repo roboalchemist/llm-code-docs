@@ -1641,3 +1641,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/pimcore
   branch: main
+- name: condor
+  description: condor from GitHub
+  repo_url: https://github.com/htcondor/htcondor.git
+  source_folder: docs
+  target_folder: docs/github-scraped/condor
+  branch: main
