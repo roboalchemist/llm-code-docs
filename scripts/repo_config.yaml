@@ -1561,3 +1561,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/sails.js
   branch: main
+- name: magento
+  description: magento from GitHub
+  repo_url: https://github.com/OpenMage/magento-lts.git
+  source_folder: docs
+  target_folder: docs/github-scraped/magento
+  branch: main
