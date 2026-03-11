@@ -1757,3 +1757,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/quartz.net
   branch: main
+- name: rocketry
+  description: rocketry from GitHub
+  repo_url: https://github.com/Miksus/rocketry.git
+  source_folder: docs
+  target_folder: docs/github-scraped/rocketry
+  branch: main
