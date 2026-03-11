@@ -1520,4 +1520,9 @@ repositories:
   repo_url: https://github.com/pytorch/vision.git
   source_folder: docs
   target_folder: docs/github-scraped/vision
+- name: .net-core
+  description: .net-core from GitHub
+  repo_url: https://github.com/dotnet/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/.net-core
   branch: main
