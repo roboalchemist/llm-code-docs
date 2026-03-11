@@ -1797,6 +1797,11 @@ repositories:
   repo_url: https://github.com/sipeed/TinyMaix.git
   source_folder: doc
   target_folder: docs/github-scraped/tinymaix
+- name: ariadne
+  description: ariadne from GitHub
+  repo_url: https://github.com/mirumee/ariadne.git
+  source_folder: docs
+  target_folder: docs/github-scraped/ariadne
   branch: main
 - name: azure-cosmos-db
   description: azure-cosmos-db from GitHub
