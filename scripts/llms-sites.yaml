@@ -603,6 +603,9 @@ sites:
 - name: meshconnect
   base_url: https://docs.meshconnect.com/
   description: Meshconnect documentation
+- name: metabase
+  base_url: https://www.metabase.com/docs/
+  description: Metabase open source business intelligence and analytics
 - name: mintlify
   base_url: https://mintlify.com/docs/
   description: Mintlify documentation platform
@@ -1147,24 +1150,3 @@ sites:
 - name: fiber
   base_url: https://docs.gofiber.io/
   description: fiber documentation
-- name: milvus
-  base_url: https://milvus.io/
-  description: milvus documentation
-- name: ragas
-  base_url: https://docs.ragas.io/
-  description: ragas documentation
-- name: weaviate
-  base_url: https://docs.weaviate.io/
-  description: weaviate documentation
-- name: mlflow
-  base_url: https://www.mlflow.org/
-  description: mlflow documentation
-- name: modal
-  base_url: https://modal.com/
-  description: modal documentation
-- name: jina-ai
-  base_url: https://docs.jina.ai/docs/
-  description: jina-ai documentation
-- name: apache-kafka
-  base_url: https://docs.confluent.io/
-  description: apache-kafka documentation
