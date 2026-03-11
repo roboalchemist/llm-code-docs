@@ -1292,3 +1292,6 @@ sites:
 - name: eden-ai
   base_url: https://docs.edenai.co/
   description: eden-ai documentation
+- name: linkup
+  base_url: https://docs.linkup.so/
+  description: linkup documentation
