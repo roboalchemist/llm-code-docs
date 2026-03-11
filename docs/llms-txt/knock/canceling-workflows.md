@@ -1,0 +1,67 @@
+# Source: https://docs.knock.app/send-notifications/canceling-workflows.md
+
+---
+title: Canceling workflows
+description: Learn more about canceling workflows in Knock and see code examples to get started.
+tags: ["cancellations", "cancellation_key", "cancel", "batch", "remove"]
+section: Send notifications
+---
+
+Canceling a workflow allows you to stop a workflow run mid-execution. This action will stop the workflow from sending new messages to recipients. This can be useful in situations like reminder workflows, where a notification needs to be canceled once a user has performed an intended action.
+
+Only workflows with a step that can pause the run can be canceled, since otherwise Knock will _immediately_ send a notification to your recipients. The three steps that can pause a workflow run are:
+
+- [Batch functions](/send-notifications/designing-workflows/batch-function) will pause workflows while the batch window is open.
+- [Delay functions](/send-notifications/designing-workflows/delay-function) will pause workflows for the configured delay window.
+- [Fetch functions](/send-notifications/designing-workflows/fetch-function) may pause workflows during a [retry backoff](/send-notifications/designing-workflows/fetch-function#error-handling).
+
+## Canceling a triggered workflow
+
+To perform a cancellation, you first need to provide a `cancellation_key` in the [workflow trigger](/send-notifications/triggering-workflows) request. Knock will use this key to uniquely identify the triggered workflow for cancellation.
+
+You can read about generating workflow cancellation keys and some best practices in the [triggering workflows documentation](/send-notifications/triggering-workflows/api#generating-a-cancellation-key).
+
+<MultiLangCodeBlock
+  snippet="workflows.cancel"
+  title="Canceling a triggered workflow"
+/>
+
+### Schema
+
+| Property         | Type                  | Description                                                                    |
+| ---------------- | --------------------- | ------------------------------------------------------------------------------ |
+| key\*            | string                | The human readable key of the workflow from the Knock dashboard                |
+| cancellation_key | string                | A unique identifier for the workflow run                                       |
+| recipients       | RecipientIdentifier[] | A list of specific recipient identifiers to cancel the workflow for (optional) |
+
+## Canceling for subsets of recipients
+
+In some cases you may need to cancel a workflow for a subset of recipients only. You can do this by specifying the recipients list on the cancellation:
+
+<MultiLangCodeBlock
+  snippet="workflows.cancel-with-recipients"
+  title="Canceling for subsets of recipients"
+/>
+
+## Gotchas and recommendations
+
+There are a few fundamentals to consider when using workflow cancellations:
+
+1. A cancellation cannot be performed on a specific channel step, it can only be performed against the _entire_ workflow.
+
+2. You cannot cancel a given workflow run after it has finished. If you need to revoke messages for persistent channels like the in-app feed, then you can `archive` a message instead.
+
+3. Workflow cancellations are both deferred and executed concurrently to the workflow run itself. The [cancel workflow API](/api-reference/workflows/cancel) will return a `204 No Content` response on success, but this only means Knock has successfully enqueued the cancellation request, _not_ that the cancellation has been performed. **We recommend against issuing a cancellation request within 5 seconds of a given workflow trigger**. Cancellations issued too soon after a workflow trigger may not cancel the intended target. Cancellations issued prior to a workflow trigger may overtake and cancel the subsequent workflow.
+
+4. Canceling a workflow with a [batch step](/send-notifications/designing-workflows/batch-function) will not close the open batch window. Read more [here](/designing-workflows/batch-function#using-workflow-cancellation-with-batches).
+
+## Frequently asked questions
+
+<AccordionGroup>
+  <Accordion title="Can I cancel a workflow run for a specific recipient if they were notified via an object subscription?">
+    Yes, you can. Because workflow cancellation requests can be scoped to one or
+    more specific recipients, you can target any recipient who was notified via
+    an object subscription, even if that recipient was not explicitly included
+    in the workflow trigger request.
+  </Accordion>
+</AccordionGroup>

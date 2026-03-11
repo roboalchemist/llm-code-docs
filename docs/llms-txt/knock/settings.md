@@ -1,0 +1,83 @@
+# Source: https://docs.knock.app/integrations/email/settings.md
+
+---
+title: Email settings and overrides
+description: Learn more about how to configure your email channels in Knock.
+section: Integrations
+layout: integrations
+tags: ["bcc", "cc", "JSON overrides", "email settings", "email overrides"]
+---
+
+Knock email channel configurations support a number of settings. These include email-specific fields (such as `cc`, `bcc`, and `reply-to`) as well as JSON overrides to be passed in API calls to the configured provider's API endpoints.
+
+When you configure a setting in a channel's configuration, it will be used on all instances of that channel across all workflows.
+
+## Configuring email settings
+
+You can override email settings on a per-channel basis, or on a per-template basis.
+
+- **At the channel level**. The `to`, `cc`, `bcc`, and `reply-to` fields can be found in the "Overrides" section of the channel's "Settings" tab.
+- **At the template level**. The email settings fields can be found at the top of the email template editor.
+
+All email configuration fields support Liquid usage. You will be able to use any variables available in your workflow trigger payloads, as well as system variables such as the current workflow, activities, and any other variables you have access to when building templates.
+
+As an example, if you wanted to conditionally change the "From name" on an email depending on whether one is configured on the actor that triggered the notification, you'd use the following liquid in the "From name" field of your email configuration.
+
+```js title="A From name email configuration using Liquid"
+{{ actor.from_name | default: "no-reply@knock.app" }}
+```
+
+## Overriding the default `to` address
+
+By default, Knock will send your emails to the `email` property stored on the `recipient` for the workflow run. If you need to override this, you can do so by setting the `to` field in your email configuration either at the channel or the template level.
+
+As an example, if you wanted to send all emails to a single address, you could set the `to` field at the channel level to either a static value (like `hello@example.com`) or a dynamic value (like `{{ data.email_to_override }}`).
+
+### Using multiple `to` addresses
+
+It's possible to set multiple `to` addresses via an override. However, because Knock is designed to process a unique workflow run for each `recipient` in your workflow trigger, this approach comes with some caveats and limitations:
+
+- You must always provide at least one `recipient` on your workflow trigger.
+- Although you may override the `to` email addresses to send an email to more than one address in a given workflow run, that run will reference only the original `recipient`'s properties and notification preferences.
+- Delivery and engagement metrics will also be associated with the original `recipient`, because all of the delivered emails will be related to a single <a href="/api-reference/messages/schemas/message" style={{textDecoration: 'none'}}><code>Message</code></a> record in Knock. This means that you won't be able to track per-recipient metrics for the list of email addresses in your override; they'll all be tracked by the workflow `recipient`.
+- Knock does not currently support a comma-separated list of `to` addresses in the same way as we do for `cc` and `bcc` addresses (see section below). This means that you will need to provide a [JSON payload override](#provider-json-overrides) in your workflow step's configuration in order to format the `to` list according to your provider's API requirements. Please [reach out to our support team](mailto:support@knock.app) if you need help with this.
+
+## Setting `cc` and `bcc` addresses
+
+The `cc` and `bcc` fields can be used to support a single or multiple addresses. In order to use several addresses on any of these fields, make sure to separate them with a comma.
+
+<Callout
+  emoji="🌠"
+  title="Liquid support."
+  text={
+    <>
+      You can pass multiple cc and bcc addresses using workflow trigger
+      variables, and configure these fields to use them.
+    </>
+  }
+/>
+
+## Provider JSON overrides
+
+Sometimes you may want to customize the API call Knock sends to your email provider.
+A good example of this is passing custom arguments as part of the API payload.
+Take an example where we're using SendGrid as our email provider. SendGrid allows sending custom arguments under the
+`custom_args` key of the JSON payload of their API. By default, Knock sends some arguments using that key, such
+the Knock message id. If you want to add more arguments, you can check the following image on how to add them as
+JSON overrides:
+
+<figure>
+  <Image
+    src="/images/integrations/email/email-channel-json-overrides.png"
+    width={500}
+    height={600}
+    className="rounded-md mx-auto border border-gray-200"
+    alt="Channel JSON overrides"
+  />
+  <figcaption>Configuring email channel JSON overrides.</figcaption>
+</figure>
+
+In this example, we want to add two arguments to the `custom_args` attribute of the
+API call we send to SendGrid. In this case, the first argument will be hardcoded,
+and the second argument's value will be the value of `dynamic_value`, which we
+expect to be passed in the payload of the workflow trigger call.

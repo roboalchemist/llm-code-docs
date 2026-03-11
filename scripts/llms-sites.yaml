@@ -1208,3 +1208,6 @@ sites:
 - name: heroku
   base_url: https://devcenter.heroku.com/
   description: heroku documentation
+- name: knock
+  base_url: https://docs.knock.app/
+  description: knock documentation

@@ -1,0 +1,355 @@
+# Source: https://docs.knock.app/concepts/conditions.md
+
+---
+title: Conditions
+description: Learn how Knock's conditions model provides dynamic control flow to your workflow runs.
+tags:
+  [
+    "triggers",
+    "conditions",
+    "conditionals",
+    "steps",
+    "channels",
+    "workflows",
+    "preferences",
+    "conditional send",
+    "routing",
+  ]
+section: Concepts
+---
+
+Knock uses conditions to model checks that determine variations in your [workflow](/designing-workflows) runs. They provide a powerful way to create more advanced notification logic flows.
+
+You can use conditions in three areas of the Knock model:
+
+1. [**Step conditions**](/designing-workflows/step-conditions) — Used to determine if a single step in one of your workflows should execute during each workflow run. For example, only send an email if the preceding in-app notification has not yet been read or seen.
+2. [**Channel conditions**](/integrations/overview#channel-conditions) — Used to determine if any step using the given channel should execute across all workflow runs. For example, only execute your Postmark email channel steps in your production environment.
+3. [**Preference conditions**](/preferences/preference-conditions) — Used to determine the complete set of preferences available to the current workflow run. For example, allow a recipient to mute notifications for specific resources in your product.
+
+Each of these three cases share the same underlying data model and UI editor, which we outline in detail here.
+
+## Condition types
+
+Knock's shared conditions model supports the following types of conditions:
+
+- **Data** — Evaluates against a property in the [workflow trigger](/send-notifications/triggering-workflows) data payload.
+- **Recipient** — Evaluates against a property on the workflow run [recipient](/concepts/recipients).
+- **Actor** — Evaluates against a property on the workflow run [actor](/send-notifications/triggering-workflows/api#attributing-the-action-to-a-user-or-object).
+- **Environment variable** — Evaluates against one of your [environment variables](/concepts/variables).
+- **Workflow** — Evaluates against a property of the currently executing workflow.
+- **Workflow run state** — Evaluates against a property of the current workflow run.
+- **Tenant** — Evaluates against a property on the [tenant](/concepts/tenants) associated with the current workflow run.
+- **Message status** — Evaluates against the [delivery status](/send-notifications/message-statuses#delivery-status) or [engagement status](/send-notifications/message-statuses#engagement-status) of a message from a previous step in the current workflow run.
+
+<Callout
+  type="info"
+  title="Message status conditions are only available when designing step-level
+        conditions."
+  text={
+    <>
+      They are not available for use with channel-level or preference-level
+      conditions. You can learn more about how to work with message status
+      conditions in our{" "}
+      <a href="/designing-workflows/step-conditions">
+        documentation on step-level conditions
+      </a>
+      .
+    </>
+  }
+/>
+
+## Modeling conditions
+
+Knock models each condition as a combination of three properties: a `variable`, an `operator`, and an `argument`. This will feel familiar to boolean logic with infix operators in many modern programming languages.
+
+In our [JSON representation of a workflow](/mapi-reference/workflows/schemas/workflow) this will look something like:
+
+```json title="A workflow run condition"
+{
+  "variable": "run.total_activities",
+  "operator": "greater_than",
+  "argument": "5"
+}
+```
+
+We also provide a [conditions editor](#the-conditions-editor) that provides some helpful UX abstractions on top of this model for building conditions in the Knock dashboard.
+
+### Variables
+
+A condition variable is always a string formatted like `"<prefix>.<path>"`. Knock uses the variable `prefix` to determine the condition type and the variable `path` to determine where to look up the data for evaluation.
+
+See the [conditions scope](#conditions-scope) for a list of available prefixes.
+
+### Arguments
+
+Knock uses the condition argument as the expected value in the condition evaluation. Arguments can be either static values or dynamic properties.
+
+#### Static arguments
+
+Static arguments can be any of the following JSON literals:
+
+- Strings (`"foo"`, `"bar"`, `"baz"`)
+- Numbers (`1.0`, `2`, `10000`)
+- Booleans (`true`, `false`)
+- `null`
+
+Plus arrays of any of the above.
+
+#### Dynamic arguments
+
+Dynamic arguments are nearly identical to variables. Knock will expect a string formatted like `"<prefix>.<path>"` and use the information within to resolve a value from some runtime data property.
+
+See the [conditions scope](#conditions-scope) for a list of available prefixes.
+
+#### Timestamp arguments
+
+The timestamp operators (`is_timestamp_before`, `is_timestamp_on_or_after`, and `is_timestamp_between`) accept timestamp arguments in three formats:
+
+- **Relative.** A time relative to when the condition is evaluated. Relative timestamps include a value, a unit (`minutes`, `hours`, `days`, or `weeks`), and a modifier (`from now` or `ago`). For example, "7 days ago" or "3 days from now".
+- **Absolute.** A fixed date and time. In JSON, this is represented in ISO 8601 format (e.g., `"2025-06-15T14:30:00Z"`).
+- **Dynamic.** A Liquid template variable that resolves to a timestamp at runtime (e.g., `{{ recipient.subscription_ends_at }}`). Dynamic timestamp arguments are available in workflows, broadcasts, and guides.
+
+<Callout
+  type="info"
+  text={
+    <>
+      <p>Timestamp condition limitations:</p>
+      <ul>
+        <li>
+          <strong>Minimum duration.</strong> Relative timestamps must be at
+          least 15 minutes.
+        </li>
+        <li>
+          <strong>Precise calculations.</strong> Relative times are calculated
+          precisely from the current time. For example, "1 day from now" means
+          exactly 24 hours from the moment the condition is evaluated, not
+          "tomorrow".
+        </li>
+        <li>
+          <strong>Between operator.</strong> The{" "}
+          <code>is_timestamp_between</code> operator only supports absolute
+          dates or dynamic variables, not relative timestamps.
+        </li>
+      </ul>
+    </>
+  }
+/>
+
+### Operators
+
+You can use any of the following operators in condition comparisons:
+
+| Operator                   | Description                                                                              |
+| -------------------------- | ---------------------------------------------------------------------------------------- |
+| `equal_to`                 | `==`                                                                                     |
+| `not_equal_to`             | `!=`                                                                                     |
+| `greater_than`             | `>`                                                                                      |
+| `greater_than_or_equal_to` | `>=`                                                                                     |
+| `less_than`                | `<`                                                                                      |
+| `less_than_or_equal_to`    | `<=`                                                                                     |
+| `contains`                 | Checks whether `argument` is in `variable` (works with strings and lists)                |
+| `contains_all`             | Checks whether all `argument` values are present in `variable` (for comparing lists)     |
+| `not_contains`             | Checks whether `argument` is not in `variable` (works with strings and lists)            |
+| `not_contains_all`         | Checks whether all `argument` values are not present in `variable` (for comparing lists) |
+| `empty`                    | Checks whether `variable` is in `["", null, []]`                                         |
+| `not_empty`                | Checks whether `variable` is not in `["", null, []]`                                     |
+| `exists`                   | Checks whether `variable` is provided and has a value that is not `null`                 |
+| `not_exists`               | Checks whether `variable` is not provided or has a `null` value                          |
+| `is_timestamp_before`      | Checks whether `variable` is a timestamp before the `argument` value                     |
+| `is_timestamp_on_or_after` | Checks whether `variable` is a timestamp on or after the `argument` value                |
+| `is_timestamp_between`     | Checks whether `variable` is a timestamp between the `argument`'s start and end values   |
+
+<Callout
+  type="info"
+  text={
+    <>
+      The <code>empty</code>, <code>not_empty</code>, <code>exists</code>, and{" "}
+      <code>not_exists</code> operators do not require an argument value. Knock
+      checks for the absence of data at the variable path.
+    </>
+  }
+/>
+
+### Conditions scope
+
+Knock makes the following available to be used in a condition variable or dynamic argument:
+
+| Property                              | Description                                                                                                                                                                                                                                                                                   |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `data.<path>`                         | A data condition, where `<path>` is used to select a property from the workflow trigger data payload.                                                                                                                                                                                         |
+| `recipient.<prop>`                    | A recipient condition, where `<prop>` is used to select a property on the current recipient. [See full list of properties available](/template-editor/variables#recipient-user-or-object).                                                                                                    |
+| `actor.<prop>`                        | An actor condition, where `<prop>` is used to select a property on the current actor. [See full list of properties available](/template-editor/variables#recipient-user-or-object).                                                                                                           |
+| `vars.<var>`                          | An environment variable condition, where `<var>` is the name of one of your environment variables.                                                                                                                                                                                            |
+| `workflow.{id,name,categories}`       | A workflow condition.                                                                                                                                                                                                                                                                         |
+| `run.{total_activities,total_actors}` | A workflow run condition.                                                                                                                                                                                                                                                                     |
+| `tenant.<prop>`                       | A tenant condition, where `<prop>` is used to select a property on the current tenant. [See full list of properties available](/template-editor/variables#tenant).                                                                                                                            |
+| `refs.<ref>.delivery_status`          | A [message status condition](/designing-workflows/step-conditions#message-status-conditions) that evaluates against a message's [delivery status](/send-notifications/message-statuses#delivery-status), where `<ref>` identifies the preceding workflow step that generated the message.     |
+| `refs.<ref>.engagement_status`        | A [message status condition](/designing-workflows/step-conditions#message-status-conditions) that evaluates against a message's [engagement status](/send-notifications/message-statuses#engagement-status), where `<ref>` identifies the preceding workflow step that generated the message. |
+
+In cases where data is not found at the path given by the variable, Knock falls back to an empty string as the default value.
+
+### Combining conditions
+
+<Callout
+  emoji="📤"
+  title="Preference conditions note."
+  text={
+    <>
+      The following syntax does not apply to preference conditions. See the{" "}
+      <a href="/preferences/preference-conditions#frequently-asked-questions">
+        preference conditions FAQs
+      </a>{" "}
+      for more information on combining multiple conditions on a preference.
+    </>
+  }
+/>
+
+You can combine multiple conditions together via either `AND` or `OR` operators.
+
+- `AND` combined conditions require all conditions to be true for the evaluation to pass.
+
+```json title="JSON representation of AND combined conditions"
+"conditions": {
+  // the AND operator is represented by the "all" key
+  "all": [
+    {
+      "argument": "true",
+      "operator": "equal_to",
+      "variable": "recipient.is_active"
+    },
+    {
+      "argument": "true",
+      "operator": "equal_to",
+      "variable": "actor.is_active"
+    }
+  ]
+}
+```
+
+- `OR` combined conditions require at least one condition to be true for the evaluation to pass.
+
+```json title="JSON representation of OR combined conditions"
+"conditions": {
+  // the OR operator is represented by the "any" key
+  "any": [
+    {
+      "argument": "true",
+      "operator": "equal_to",
+      "variable": "recipient.is_active"
+    },
+    {
+      "argument": "true",
+      "operator": "equal_to",
+      "variable": "actor.is_active"
+    }
+  ]
+}
+```
+
+- You may also use a combination of `AND` and `OR` operators to create more complex conditions.
+
+```json title="JSON representation of OR plus AND combined conditions"
+"conditions": {
+  "any": [
+    {
+      "all": [
+        {
+          "argument": "true",
+          "operator": "equal_to",
+          "variable": "recipient.is_active"
+        },
+        {
+          "argument": "true",
+          "operator": "equal_to",
+          "variable": "actor.is_active"
+        }
+      ]
+    },
+    {
+      "all": [
+        {
+          "argument": "true",
+          "operator": "equal_to",
+          "variable": "data.force_delivery"
+        }
+      ]
+    }
+  ]
+}
+```
+
+## The conditions editor
+
+The Knock Dashboard ships with a conditions editor that provides helpful abstractions on top of this data model. Rather than needing to remember how to format variables or name operators, Knock makes the appropriate options available to you.
+
+When creating or modifying a condition, you'll see:
+
+- A dropdown to select the condition type. Knock will use this option to determine the variable `<prefix>` value.
+- An input or dropdown to provide the variable data path.
+- A dropdown to select the operator.
+- An input or dropdown to provide the argument data path.
+
+<figure>
+  <Image
+    src="/images/notifications/conditions-editor-example.png"
+    width={500}
+    height={522}
+    className="rounded-md mx-auto border border-gray-200"
+    alt="Working with the conditions editor to build a recipient data condition."
+  />
+  <figcaption>
+    Working with the conditions editor to build a recipient data condition.
+  </figcaption>
+</figure>
+
+You can also use the conditions editor to combine multiple conditions together via either `AND` or `OR` operators.
+
+<figure>
+  <Image
+    src="/images/notifications/conditions-groups-example.png"
+    width={500}
+    height={418}
+    className="rounded-md mx-auto border border-gray-200"
+    alt="Managing condition groups in the conditions editor."
+  />
+  <figcaption>Managing condition groups in the conditions editor.</figcaption>
+</figure>
+
+The condition editor is available for use in the [workflow step editor](/designing-workflows#the-workflow-canvas) and the [channel environment settings editor](/integrations/overview#per-environment-configurations).
+
+## Debugging conditions
+
+Knock executes any step, channel, and preference conditions for each step within a workflow run. As part of execution, Knock captures detailed information about each condition evaluation for use in the [workflow debugger](/send-notifications/debugging-workflows).
+
+### Debugging step and channel conditions
+
+Knock will display step and channel conditions evaluation results together in the step detail panel in the debugger. The overall evaluation result will show whether the step was skipped. For each individual condition within the set, Knock will show either:
+
+1. **The condition evaluation result.** This will include any dynamically resolved variable and argument data captured at workflow run time.
+2. **A "not evaluated" state.** This will occur when a preceding condition or group has determined the result, meaning subsequent conditions did not require full evaluation.
+
+<figure>
+  <Image
+    src="/images/notifications/step-channel-conditions-debugger.png"
+    width={2526}
+    height={1622}
+    className="rounded-md mx-auto border border-gray-200"
+    alt="Debugging step and channel conditions."
+  />
+  <figcaption>Debugging step and channel conditions.</figcaption>
+</figure>
+
+### Debugging preference conditions
+
+Knock will display any preference conditions evaluations just below the step and channel conditions results. Knock will group each condition evaluation by location within the resolved preference set. The overall evaluation result will show whether the recipient opted-out for the given workflow, category, or channel type.
+
+<figure>
+  <Image
+    src="/images/notifications/preference-conditions-debugger.png"
+    width={2560}
+    height={1578}
+    className="rounded-md mx-auto border border-gray-200"
+    alt="Debugging preference conditions."
+  />
+  <figcaption>Debugging preference conditions.</figcaption>
+</figure>

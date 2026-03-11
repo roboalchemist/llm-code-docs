@@ -1,0 +1,142 @@
+# Source: https://docs.knock.app/integrations/extensions/new-relic.md
+
+---
+title: Connecting Knock to your New Relic account
+description: Learn more about how to connect Knock with your New Relic account.
+layout: integrations
+tags: ["new relic", "extensions"]
+section: Integrations > Extensions
+---
+
+You can use the Knock + New Relic integration to stream workflow, channel, and message metrics from your Knock account to your New Relic account. With this you can:
+
+- Set up custom New Relic monitors and dashboards to track your Knock workflows & channels
+- Get up-to-the-minute data on workflows triggered and messages delivered
+- Monitor events ingested and actions triggered from event platforms like [Segment](/integrations/sources/segment) and [RudderStack](/integrations/sources/rudderstack)
+
+<Callout
+  type="enterprise"
+  style={{ alignItems: "center" }}
+  title="Enterprise plan feature."
+  text={
+    <>
+      The Knock New Relic extension is only available on our{" "}
+      <a href="https://knock.app/pricing">Enterprise plan</a>.
+    </>
+  }
+/>
+
+## What this integration does
+
+This integration will stream metrics from your Knock account to your New Relic account. Metrics are prefixed `knock.*` and include success and failure codes. Metrics are tagged (where applicable) by:
+
+- Environment
+- Workflow key
+- Workflow category
+- Workflow exec mode
+- Channel or workflow step type
+- Channel provider
+- Integration source type
+- Error reason
+
+Please refer to your New Relic pricing agreement for information on how custom metrics sent to New Relic are priced for your account.
+
+At this time there is no way to selectively enable specific metrics, but metrics will only be emitted to New Relic for features that you are actively using in Knock.
+
+A workflow can have one or more [categories](/concepts/workflows#workflow-categories). For applicable metrics, each category will have a unique tag on the emitted metrics; a workflow with categories `transactional` and `updates` will have the tags `workflow_category:transactional` and `workflow_category:updates`.
+
+## Installing the integration
+
+1. Visit the **Extensions** page under the **Integrations** section of your Knock dashboard account settings
+2. Click "Configure New Relic"
+3. Enter a New Relic API Key from New Relic's [API Keys](https://one.newrelic.com/launcher/api-keys-ui.api-keys-launcher) page (we recommend creating a dedicated key just for Knock)
+4. Pick the correct site for your New Relic data hosting (visit [New Relic's docs](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/choose-your-data-center/) for more information)
+5. Click "Connect"
+
+<Callout
+  emoji="🔦"
+  text={
+    <>
+      When creating a New Relic API key, make sure "Key Type" is marked as{" "}
+      <strong> Ingest - License </strong>
+    </>
+  }
+/>
+
+## Dashboard starter kit
+
+Get started with our New Relic dashboard starter kit to start monitoring Knock metrics with just a few clicks:
+
+1. Visit New Relic's [all capabilities page](https://one.newrelic.com/all-capabilities) and click on "Dashboards"
+2. In the top-right corner, click "Import dashboard"
+3. Click the button below to copy the dashboard JSON
+4. Paste the updated JSON into the New Relic modal
+5. Replace all instances of `"accountIds":[0]` in the JSON with `"accountIds":[YOUR_ACCOUNT_ID]`, substituting your actual New Relic account ID. Your New Relic account ID can be found by either locating it in the URL after `/accounts/` or by opening the user menu in the bottom-left corner and navigating to **Administration** > **Access management** > **Accounts** to view IDs for all accounts you have access to.
+6. Click "Import dashboard"
+
+<CopyableText
+  label="Copy Dashboard Starter Kit JSON"
+  content={JSON.stringify(newRelicDashboardJson)}
+/>
+
+<Image
+  src="/images/integrations/extensions/new_relic_dashboard.png"
+  width={1714}
+  height={966}
+  className="rounded-md mx-auto border border-gray-200"
+  alt="The Knock New Relic Dashboard in action"
+/>
+
+## Reported metrics
+
+<Attributes>
+  <Attribute
+    name="knock.message_delivered.total"
+    type="count"
+    description="How many messages have been delivered, segmented by `channel`, `provider`, `workflow` key, and `workflow_category`."
+  />
+  <Attribute
+    name="knock.message_delivered_retryable_error.total"
+    type="count"
+    description="How many deliveries ended in a retryable failure, segmented by `channel`, `provider`, `workflow` key, and `workflow_category`."
+  />
+  <Attribute
+    name="knock.message_delivered_error.total"
+    type="count"
+    description="How many deliveries ended in failure (not retryable), segmented by `channel`, `provider`, `workflow` key, and `workflow_category`."
+  />
+  <Attribute
+    name="knock.workflow_recipient_run.total"
+    type="count"
+    description="How many workflow recipient runs have been started, segmented by `workflow` key, `exec_mode`, and `workflow_category`."
+  />
+  <Attribute
+    name="knock.workflow_recipient_run_error.total"
+    type="count"
+    description="How many errors were experienced during a workflow recipient run, segmented by `workflow` key, `exec_mode`, `step_type`, `workflow_category`, and the error `reason`. A workflow recipient run can report more than one error."
+  />
+  <Attribute
+    name="knock.integration_event_received.total"
+    type="count"
+    description="Hhe raw number of events received by Knock from an [integration source](https://docs.knock.app/integrations/sources/overview), segmented by `source_type`."
+  />
+  <Attribute
+    name="knock.integration_action_run.total"
+    type="count"
+    description="How many actions were triggered by received events, segmented by `source_type` and `action`."
+  />
+  <Attribute
+    name="knock.integration_action_run_error.total"
+    type="count"
+    description="How many actions failed to run, segmented by `source_type` and `action`."
+  />
+</Attributes>
+
+- All metrics are segmented by `environment` name (e.g. `production`, `development`)
+- For each of the error cases, [the Knock dashboard](https://dashboard.knock.app) can provide more insights into specific failures (e.g. misconfigured workflow, channel, or integration action)
+
+## Uninstalling the integration
+
+1. Visit the **Extensions** page under the **Integrations** section of your Knock dashboard account settings
+2. Click the "Disconnect" button for the New Relic extension, and then click "Confirm"
+3. If you created a dedicated New Relic API key for Knock, you can now delete the key from New Relics's [API Keys](https://one.newrelic.com/launcher/api-keys-ui.api-keys-launcher) page

@@ -1,0 +1,271 @@
+# Source: https://docs.knock.app/managing-recipients/setting-channel-data.md
+
+---
+title: Setting channel data
+description: Learn about how to set channel data for your recipients and users to make it easy to connect recipients with push and chat channels.
+tags: ["channels", "slack", "push", "tokens", "recipients", "msteams", "teams"]
+section: Managing recipients
+---
+
+Some channel integrations require user and channel-specific data to send notifications. Push channels like APNs (Apple Push Notification Service) and FCM (Firebase Cloud Messaging) are good examples, where both require that there are device-specific tokens that target the user in a push notification. Slack is another good example, where the channel data from a Slack integration in your product is stored on a Knock [object](/concepts/objects).
+
+At Knock we call this concept <a href="/api-reference/recipients/channel_data">`ChannelData`</a>. `ChannelData` lives under a [user](/concepts/users) or an [object](/concepts/objects) and stores channel-specific data to be used when that user or object is included as a recipient on a [triggered workflow](/send-notifications/triggering-workflows).
+
+## Things to know about channel data
+
+- For channel types that require channel data (such as [push](/integrations/push/overview) channels and [chat](/integrations/chat/overview) channels like Slack), the channel step will be skipped during a workflow run if the required `channel_data` is not stored on the recipient.
+- Knock stores channel data for you but makes no assumptions about whether the stored channel data is valid. That means that if a push token expires, it's your responsibility to omit/update that token for future notifications.
+- For push providers, Knock offers an opt-in [token deregistration](/integrations/push/token-deregistration) feature that automatically removes invalid tokens from a recipient's channel data when messages bounce.
+- Setting channel data always requires a `channel_id`, which can be obtained in the Dashboard under the **Channels and sources** page in your account settings. A channel ID is always a UUID v4.
+
+## Setting channel data
+
+Before getting or setting channel data, you must first configure that channel in your environments. You can do this inside the Knock dashboard under the **Channels and sources** page in your account settings. Once the channel for which you want to store channel data has been created, you're ready to store the channel data for your users and objects.
+
+There are three ways of setting channel data for a given recipient:
+
+1. Explicitly using the set channel data method
+2. Inline through a workflow trigger
+3. When identifying a recipient
+
+<AccordionGroup>
+  <Accordion title="Explicitly setting for Users">
+    You can set channel data for a given user using the `users.setChannelData` method. Please note that the channel data will always be overwritten with each `set` call.
+
+    If no user exists in the current environment for the given `user_id`, Knock will create the user entry as part of this request.
+
+    In the example below, we're setting a user's device token when they download our mobile app so we can send them push notifications. If this token wasn't set for the user, they wouldn't receive push notifications from our notification workflows.
+
+    <MultiLangCodeBlock
+      snippet="users.setChannelData"
+      title="Set channel data for a User"
+    />
+
+  </Accordion>
+  <Accordion title="Explicitly setting for Objects">
+    You can set channel data for a given object using the `objects.setChannelData` method. Please note that the channel data will always be overwritten with each `set` call.
+
+    In the example below, we're setting an object's Slack channel ID and access token, presumably after a user in our product has decided to connect the object to their Slack workspace. This enables us to send Slack notifications to the connected Slack channel when an event is triggered within the scope of the object.
+
+    <MultiLangCodeBlock
+      snippet="objects.setChannelData.slack"
+      title="Set channel data for an Object"
+    />
+
+    You can learn more about objects in [the objects concept overview](/concepts/objects) and [API reference](/api-reference/objects).
+
+  </Accordion>
+  <Accordion title="Setting channel data inline">
+    For both user and object recipients, channel data can be specified inline during a [workflow trigger call](/managing-recipients/identifying-recipients#inline-identification).
+
+    When setting channel data inline for a recipient entity, you must supply the channel data as a dictionary containing the channel ID as a key, and a dictionary of channel data to set for that channel.
+
+    <MultiLangCodeBlock
+      snippet="workflows.trigger-with-user-channel-data"
+      title="Trigger workflow with inline channel data"
+    />
+
+  </Accordion>
+  <Accordion title="Setting channel data on an identify request">
+    For both [user](/api-reference/users/update) and [object](/api-reference/objects/set) recipients, channel data can be specified as a recipient property on an identify request.
+
+    When setting channel data for a recipient entity on an identify request, you must supply the channel data as a dictionary containing the channel ID as a key, and a dictionary of channel data to set for that channel. The below example is for a `User`, but the same pattern can be followed for an `Object`.
+
+    <MultiLangCodeBlock
+      snippet="users.identifyChannelData"
+      title="Identify a User with channel data"
+    />
+
+  </Accordion>
+</AccordionGroup>
+
+## Getting channel data
+
+To retrieve the currently set channel data, you can use the `getChannelData` method on `users` and `objects`. If
+channel data is not set for the recipient you'll receive a `404` response.
+
+<AccordionGroup>
+  <Accordion title="Getting channel data for a User">
+    <MultiLangCodeBlock
+      snippet="users.getChannelData"
+      title="Get channel data for a User"
+    />
+  </Accordion>
+  <Accordion title="Getting channel data for an Object">
+    <MultiLangCodeBlock
+      snippet="objects.getChannelData"
+      title="Get channel data for an Object"
+    />
+  </Accordion>
+</AccordionGroup>
+
+## Clearing channel data
+
+Any previously set channel data can be cleared by issuing an `unsetChannelData` call. Unsetting channel data for a recipient requires a valid channel ID to be passed.
+
+<Callout
+  type="info"
+  title="Token deregistration."
+  text={
+    <>
+      For push providers, Knock can automatically remove invalid tokens from a
+      recipient's channel data when messages bounce. Learn more about this
+      opt-in feature in our{" "}
+      <a href="/integrations/push/token-deregistration">
+        token deregistration documentation
+      </a>
+      .
+    </>
+  }
+/>
+
+<AccordionGroup>
+  <Accordion title="Unset channel data for a User">
+    <MultiLangCodeBlock
+      snippet="users.unsetChannelData"
+      title="Unset channel data for a User"
+    />
+  </Accordion>
+  <Accordion title="Unset channel data for an Object">
+    <MultiLangCodeBlock
+      snippet="objects.unsetChannelData"
+      title="Unset channel data for an Object"
+    />
+  </Accordion>
+</AccordionGroup>
+
+## Provider data requirements
+
+Channel data requirements for each channel type and provider are listed below. Typically `channel_data` comprises a `token` or other value that is used to uniquely identify a user's device.
+
+### Push channels
+
+You can set push channel data by passing either:
+
+- A list of `tokens` (or `target_arns` for [Amazon SNS](/integrations/push/aws-sns)) strings
+- A list of `devices` objects for supported push providers. If set, this [device-level metadata](/integrations/push/device-metadata) will be used when evaluating [translations](/template-editor/translations) and [send windows](/designing-workflows/send-windows).
+
+#### The `PushDevice` object
+
+The `PushDevice` object is used to optionally set device-level metadata for a push channel. It contains the following properties:
+
+| Property     | Type     | Description                                                                                                                               |
+| ------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| token\*      | `string` | The device token to send the push notification to. Required for providers other than Amazon SNS.                                          |
+| target_arn\* | `string` | The ARN of a platform endpoint associated with a platform application and a device token. Required for Amazon SNS.                        |
+| locale       | `string` | The [locale](/template-editor/translations#supported-locales) of the device.                                                              |
+| timezone     | `string` | The timezone of the device. Must be a valid [tz database time zone string](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). |
+
+#### Provider-specific requirements
+
+<AccordionGroup>
+  <Accordion title ="APNs (Apple Push Notification service)">
+    You must provide one of `tokens` or `devices`.
+    
+    | Property  | Type                                     | Description                 |
+    | --------- | ---------------------------------------- | --------------------------- |
+    | tokens\*  | `string[]`                               | One or more device tokens.  |
+    | devices\* | [`PushDevice[]`](#the-pushdevice-object) | One or more device objects. |
+  
+  </Accordion>
+  <Accordion title ="FCM (Firebase Cloud Messaging)">
+    You must provide one of `tokens` or `devices`.
+    
+    | Property  | Type                                     | Description                 |
+    | --------- | ---------------------------------------- | --------------------------- |
+    | tokens\*  | `string[]`                               | One or more device tokens.  |
+    | devices\* | [`PushDevice[]`](#the-pushdevice-object) | One or more device objects. |
+
+  </Accordion>
+  <Accordion title ="Expo">
+    You must provide one of `tokens` or `devices`.
+    
+    | Property  | Type                                     | Description                 |
+    | --------- | ---------------------------------------- | --------------------------- |
+    | tokens\*  | `string[]`                               | One or more device tokens.  |
+    | devices\* | [`PushDevice[]`](#the-pushdevice-object) | One or more device objects. |
+  
+  </Accordion>
+  <Accordion title ="AWS SNS">
+    You must provide one of `target_arns` or `devices`.
+    
+    | Property      | Type                                     | Description                     |
+    | ------------- | ---------------------------------------- | ------------------------------- |
+    | target_arns\* | `string[]`                               | One or more device target ARNs. |
+    | devices\*     | [`PushDevice[]`](#the-pushdevice-object) | One or more device objects.     |
+
+  </Accordion>
+  <Accordion title ="OneSignal">
+    | Property     | Type       | Description            |
+    | ------------ | ---------- | ---------------------- |
+    | player_ids\* | `string[]` | One or more player_ids |
+
+  </Accordion>
+</AccordionGroup>
+
+### Chat app channels
+
+<AccordionGroup>
+  <Accordion title ="Slack">
+    | Property    | Type                | Description                      |
+    | ----------- | ------------------- | -------------------------------- |
+    | connections | `SlackConnection[]` | One or more connections to Slack |
+
+    A `SlackConnection` can have one of two schemas, depending on whether you're using standard Slack OAuth scopes or an incoming webhook.
+    We cover Slack app scopes in detail in our [Slack scopes documentation](/in-app-ui/react/slack-kit).
+
+    If you're using standard Slack OAuth with access token scopes, your `SlackConnection` schema looks like this. You'll use
+    either a `channel_id` or `user_id` depending on whether you're storing connection data to message a channel or user in Slack:
+
+    | Property     | Type     | Description        |
+    | ------------ | -------- | ------------------ |
+    | access_token | `string` | A bot access token |
+    | channel_id   | `string` | A Slack channel ID |
+    | user_id      | `string` | A Slack user ID    |
+
+    If you're using a Slack app with the `incoming-webhook` scope your `SlackConnection` schema is quite simple:
+
+    | Property             | Type     | Description                                                                 |
+    | -------------------- | -------- | --------------------------------------------------------------------------- |
+    | incoming_webhook.url | `string` | The Slack incoming webhook URL (to be used instead of the properties above) |
+
+  </Accordion>
+  <Accordion title ="Discord">
+    | Property    | Type                  | Description                        |
+    | ----------- | --------------------- | ---------------------------------- |
+    | connections | `DiscordConnection[]` | One or more connections to Discord |
+
+    A `DiscordConnection` has the following schema:
+
+    | Property             | Type     | Description                                                                   |
+    | -------------------- | -------- | ----------------------------------------------------------------------------- |
+    | channel_id           | `string` | A Discord channel ID                                                          |
+    | incoming_webhook.url | `string` | The Discord incoming webhook URL (to be used instead of the properties above) |
+
+  </Accordion>
+  <Accordion title ="Microsoft Teams">
+    | Property    | Type                  | Description                        |
+    | ----------- | --------------------- | ---------------------------------- |
+    | connections | `MsTeamsConnection[]` | One or more connections to MsTeams |
+
+    An `MsTeamsConnection` can have one of two schemas, depending on whether you're using a Microsoft Teams bot or an incoming webhook.
+
+    If you're using a Microsoft Teams bot, your `MsTeamsConnection` schema looks like this. You'll use either
+    `ms_teams_channel_id` or `ms_teams_user_id` depending on whether you're storing connection data to message
+    a channel or user in Microsoft Teams:
+
+    | Property            | Type     | Description                    |
+    | ------------------- | -------- | ------------------------------ |
+    | ms_teams_tenant_id  | `string` | A Microsoft Entra tenant ID    |
+    | ms_teams_team_id    | `string` | A Microsoft Teams team ID      |
+    | ms_teams_channel_id | `string` | A Microsoft Teams channel ID   |
+    | ms_teams_user_id    | `string` | A Microsoft Teams user ID      |
+
+    If you're using an incoming webhook, your `MsTeamsConnection` schema is quite simple:
+
+    | Property             | Type     | Description                       |
+    | -------------------- | -------- | --------------------------------- |
+    | incoming_webhook.url | `string` | The Microsoft Teams incoming webhook URL (to be used instead of the properties above) |
+
+  </Accordion>
+</AccordionGroup>
