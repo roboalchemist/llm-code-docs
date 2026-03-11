@@ -1268,3 +1268,6 @@ sites:
 - name: '@nestjs/schedule'
   base_url: https://docs.nestjs.com/
   description: '@nestjs/schedule documentation'
+- name: edge-impulse
+  base_url: https://docs.edgeimpulse.com/
+  description: edge-impulse documentation
