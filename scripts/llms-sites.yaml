@@ -1253,3 +1253,6 @@ sites:
 - name: env0
   base_url: https://docs.env0.com/
   description: env0 documentation
+- name: jfrog-xray
+  base_url: https://docs.jfrog.com/docs/
+  description: jfrog-xray documentation
