@@ -1793,3 +1793,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/tinymaix
   branch: main
+- name: azure-cosmos-db
+  description: azure-cosmos-db from GitHub
+  repo_url: https://github.com/Azure/azure-cosmos-dotnet-v3.git
+  source_folder: docs
+  target_folder: docs/github-scraped/azure-cosmos-db
+  branch: main
