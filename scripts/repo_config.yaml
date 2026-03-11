@@ -1703,4 +1703,9 @@ repositories:
   repo_url: https://github.com/sinonjs/sinon.git
   source_folder: docs
   target_folder: docs/github-scraped/sinon
+- name: marathon
+  description: marathon from GitHub
+  repo_url: https://github.com/d2iq-archive/marathon.git
+  source_folder: docs
+  target_folder: docs/github-scraped/marathon
   branch: main
