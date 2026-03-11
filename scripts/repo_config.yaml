@@ -1681,3 +1681,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/open-service-mesh
   branch: main
+- name: in-toto
+  description: in-toto from GitHub
+  repo_url: https://github.com/in-toto/in-toto.git
+  source_folder: doc
+  target_folder: docs/github-scraped/in-toto
+  branch: main
