@@ -5,7 +5,7 @@ description: "End-to-end testing framework for Kuzu using Cypher statements and 
 
 ## Introduction
 
-Testing is a crucial part of Kuzu to ensure that existing features continue to work correctly 
+Testing is a crucial part of Kuzu to ensure that existing features continue to work correctly
 while developing new features. In general, we avoid testing individual components of the code.
 Instead, we test most of the functionality with end-to-end (e2e) tests using Cypher statements.
 
@@ -17,7 +17,7 @@ The test files are split into two sections: the test header and body, explained 
 Cypher statements are specified in the body, grouped under a `CASE` block, together with the expected result.
 Here is a basic test file:
 
-```
+```cmd
 # test/test_files/basic.test
 # Comments are allowed
 -DATASET CSV tinysnb
@@ -106,6 +106,7 @@ Windows has different syntax for setting environment variables:
 ```cmd
 $ set "E2E_TEST_FILES_DIRECTORY=extension" && ctest -R e2e_test
 ```
+
 :::
 
 #### 2. Using the `e2e_test` binary
@@ -127,6 +128,7 @@ $ ./e2e_test .
 
 Use `E2E_TEST_FILES_DIRECTORY` to set a different root directory for the test files, for example when running the tests
 from the root directory of the Kuzu repo:
+
 ```bash
 # Run all tests inside test/test_files/copy
 $ E2E_TEST_FILES_DIRECTORY='.' ./build/relwithdebinfo/test/runner/e2e_test test/test_files/copy
@@ -139,6 +141,7 @@ $ E2E_TEST_FILES_DIRECTORY='.' ./build/relwithdebinfo/test/runner/e2e_test test/
 ```
 
 You can similarly run any of the extension tests:
+
 ```bash
 # Run all tests inside extension/duckdb
 $ E2E_TEST_FILES_DIRECTORY='.' ./build/relwithdebinfo/test/runner/e2e_test extension/duckdb
@@ -180,12 +183,12 @@ The `KUZU` dataset type is a Kuzu database file.
 
 Examples:
 
-```
+```cmd
 -DATASET CSV tinysnb
 --
 ```
 
-```
+```cmd
 -DATASET PARQUET demo-db/parquet
 --
 ```
@@ -197,7 +200,7 @@ using `CSV_TO_PARQUET(dataset path)`. This case is especially useful to ensure
 the expected result remains the same for both CSV and PARQUET file format
 without storing the same dataset in the codebase twice.
 
-```
+```cmd
 -DATASET PARQUET CSV_TO_PARQUET(tinysnb)
 --
 ```
@@ -212,7 +215,7 @@ Skipped tests can be [forced to run](#running-skipped-tests) with a flag.
 
 The following example illustrates a basic structure of how to create a test case:
 
-```
+```cmd
 -DATASET tinysnb
 --
 
@@ -256,7 +259,7 @@ use `-CHECK_ORDER`. Note that when using the `hash` result type, the actual outp
 original order of the tuples used to compute the specified hash.
 :::
 
-```
+```cmd
 # Expects error message
 -STATEMENT MATCH (p:person) RETURN COUNT(intended-error);
 ---- error
@@ -320,7 +323,7 @@ It is also possible to use the additional properties inside each test case:
 A variable can be defined and re-used inside a statement, results, or error
 message:
 
-```
+```cmd
 -DEFINE EXPECTED_RESULT "0|1:0|0"
 -CASE Backward
 -STATEMENT MATCH (p0:person)<-[r:knows]-(p1:person) WHERE p0.ID = 0 RETURN p0.ID, ID(r), p1.ID;
@@ -508,27 +511,30 @@ Bob
 ```
 
 To rewrite the full test suite, the rewrite mode can be turned on using a single thread only:
+
 ```bash
 $ E2E_REWRITE_TESTS=1 make test NUM_THREADS=7 TEST_JOBS=1
 ```
 
 :::caution[Info]
+
 If unordered results in a test file match the actual output from Kuzu, the
 existing results will be left unmodified to avoid unnecessary changes. However,
 on a mismatch, the correct results will be written in a sorted order.
 
 Currently, this mode does not support rewriting tests using the following features and are left unmodified:
+
 * Results stored in a file using `<FILE>:`.
 * Statement in statement blocks or batch statements.
 * Results containing variables such as `${KUZU_ROOT_DIRECTORY}`.
-:::
 
+:::
 
 ## Examples
 
 ### Full example with comments
 
-```
+```cmd
 # Header
 # We can add -SKIP here if we need to temporarily skip the whole file
 -BUFFER_POOL_SIZE 64000000

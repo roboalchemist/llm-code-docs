@@ -12,7 +12,9 @@ Copying using a subquery is useful when you need to transform data
 before inserting it into the database, or if you want to copy data from a `LOAD FROM` scan operation
 on a data structure that's already in memory, such as a DataFrame.
 
-#### Create node/relationship tables
+### Create node/relationship tables
+
+
 
 Consider that we have a database of `Person`, `Product` and `HasReward` relationships (where a
 person is eligible for a product reward if they have made a certain number of purchases).

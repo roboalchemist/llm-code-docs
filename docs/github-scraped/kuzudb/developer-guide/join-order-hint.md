@@ -10,11 +10,13 @@ join algorithm used by the system.
 ## HINT and JOIN clauses
 
 We explain the `HINT` clause through an example. Consider the following query:
+
 ```cypher
 MATCH (a:person)-[e:LivesIn]->(b:City)
 WHERE b.ID = 0
 RETURN *;
 ```
+
 The Kuzu optimizer has the freedom to generate a query plan that matches all relationships from `a` to `b` using
 forward adjacency lists or from `b` to `a` using backward adjacency lists.
 Both query plans are correct and will generate the same query result. However, there is a potential performance difference because
@@ -23,12 +25,14 @@ In the above case, because there is a filter on `b`, you can expect there to be 
 
 For experimental purposes, or when the optimizer provides a sub-optimal plan, you can enforce a particular join order
 by using the `HINT` clause and writing a join order. This works as follows:
+
 - Join hints work within the scope of a single `MATCH` pattern.
 - The pattern must be connected, e.g., it cannot be `MATCH (a:Person), (b:Person) RETURN *;` where there are 2 disconnected components.
 - Every node/relationship variable must be named and appear in the join order exactly once. Relationship variables can be [recursive](https://kuzudb.github.io/docs/cypher/query-clauses/match/#match-variable-lengthrecursive-relationships), e.g., `-[e*1..3]->` or `-[e* SHORTEST]->`.
 - The join order is a binary tree, expressed through the structure of the parentheses inside the `HINT` clause. Every sub-tree in the plan specified by `HINT` must be connected.
 
 As an example, the below hint enforces a query plan that scans edges using backward adjacency lists from `b`:
+
 ```cypher
 MATCH (a)-[e]->(b)
 WHERE b.ID = 0
@@ -41,7 +45,8 @@ with the result of `(e JOIN b)`. The `(e JOIN b)` enforces the join of b node re
 The result of this will then be joined with `a` node records. If the parenthesization was `((a JOIN e) JOIN b)`, then the
 top join operator would join `(a JOIN e)`, which would be computed by scanning `a` nodes in the forward direction, with `b`.
 
-### Effect of left/right side of JOIN:
+### Effect of left/right side of JOIN
+
 In a single parenthesis that uses the `JOIN` clause, swapping the left and right sides of JOIN has an effect.
 Specifically, `(x JOIN y)` and `(y JOIN x)` will generally (though not always) lead to different plans.
 In both cases `x` and `y` will be joined, however if the JOIN operator is a hash join operator, then the left side
@@ -74,6 +79,7 @@ That's the essence of the WCOJ operator in Kuzu.
 For example, in the following triangle query,  Kuzu will compute `(a JOIN e1)`, which will produce a set of `(a, e1, b)` tuples.
 Then for each `(a, e1, b)` tuple, the Kuzu's WCOJ operator will find the forward adjacency list for `e2` and `e3` and intersect them to
 produce  `(a, e1, b, e2, e3, c)` outputs.
+
 ```cypher
 MATCH (a:person)<-[e1:knows]-(b:person)-[e2:knows]->(c:person),
       (a)-[e3:knows]->(c)

@@ -41,6 +41,7 @@ COPY (MATCH (a:User)-[f:Follows]->(b:User) RETURN a.name, f.since, b.name) TO 'f
 ```
 
 This outputs the following results to `follows.csv`:
+
 ```csv
 Adam|2020|Karissa
 Adam|2020|Zhang

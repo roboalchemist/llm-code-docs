@@ -29,7 +29,7 @@ RETURN x;
 ```
 
 If the `UNWIND`ed list L contained as elements other lists,
-then the output would be elements with one fewer nesting. For example, if L was a list of 
+then the output would be elements with one fewer nesting. For example, if L was a list of
 list of strings, after unwinding, you'd get a table of list of strings. For example:
 
 ```cypher
@@ -59,7 +59,9 @@ UNWIND [1, 2, 3, 4, 5] AS x
 WHERE x > 2
 RETURN x;
 ```
+
 However, this will throw a parser error:
+
 ```
 Error: Parser exception: Query must conclude with RETURN clause (line: 1, offset: 0)
 "UNWIND [1, 2, 3, 4, 5] AS x WHERE x > 2 RETURN x"
@@ -86,4 +88,3 @@ RETURN x;
 │ 5     │
 └───────┘
 ```
-

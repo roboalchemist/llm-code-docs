@@ -11,6 +11,7 @@ The dataset used in the tutorials is a social network dataset of users and posts
 
 You can download the zipped data by clicking on [this link](https://kuzudb.github.io/data/tutorial/tutorial_data.zip),
 or use curl as shown below. Once downloaded, unzip the files to your current working directory.
+
 ```bash
 curl -o tutorial_data.zip https://kuzudb.github.io/data/tutorial/tutorial_data.zip
 unzip tutorial_data.zip
@@ -19,10 +20,13 @@ unzip tutorial_data.zip
 ## Nodes
 
 ### `User`
+
 The User node represents users within the social network. Each user has their information attached, such as:
+
 - **user_id** (INT64): This is a unique ID which is used to sort and find users.
 - **username** (STRING): This is the unique username which each user will have.
 - **account_creation_date** (DATE): This represents the date which the account was created.
+
 ```
 userID,username,account_creation_date
 1,epicwolf202,2022-09-09
@@ -33,11 +37,14 @@ userID,username,account_creation_date
 ```
 
 ### `Post`
+
 The Post node represents the posts which have been made on the social network. Each post has its information attached, such as:
+
 - **post_id** (INT64): This is a unique ID which is used to sort and find posts.
 - **creation_date** (DATE): This represents the date which the post was created.
 - **like_count** (INT64): This represents the number of likes the post has received.
 - **retweet_count** (INT64): This represents the number of retweets the post has received.
+
 ```
 postID,creation_date,like_count,retweet_count
 1,2021-12-08,427,29
@@ -50,7 +57,9 @@ postID,creation_date,like_count,retweet_count
 ## Relationships
 
 ### `FOLLOWS`
+
 The relationship `FOLLOWS` goes from `User` node to `User` node. This relation represents a user following another user on the social network.
+
 ```
 followerID,followeeID
 1,7
@@ -61,7 +70,9 @@ followerID,followeeID
 ```
 
 ### `POSTS`
+
 The relationship `POSTS` goes from `User` node to `Post` node. This relation represents a user posting the post on the social network.
+
 ```
 userID,postID
 17,1
@@ -72,7 +83,9 @@ userID,postID
 ```
 
 ### `LIKES`
+
 The relationship `LIKES` goes from `User` node to `Post` node. This relation represents a user liking the post on the social network.
+
 ```
 userID,postID
 16,1

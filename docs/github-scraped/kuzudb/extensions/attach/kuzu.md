@@ -33,13 +33,16 @@ Suppose you are connected to a local database `example.kuzu`. After configuring 
 ```cypher
 ATTACH 's3://kuzu-example/university.kuzu.kuzu' AS uw (dbtype kuzu);
 ```
+
 After attaching a remote Kuzu database, you no longer have access to the original local Kuzu database `example.kuzu`.
 After the `ATTACH` statement above, you can only query the external Kuzu database under `s3://kuzu-example/university.kuzu.kuzu`.
 
 If you wish to attach to a database hosted on GCS instead, just replace the prefix `s3://` with `gs://` (in this case it would become `gs://kuzu-example/university.kuzu`). For more information on how to set up Kuzu with GCS, see [here](/extensions/gcs).
 
-#### Execute queries on external Kuzu database
+### Execute queries on external Kuzu database
+
 We only allow **read-only** queries to execute on external Kuzu databases (even if the external database is stored on local disk).
+
 ```cypher
 MATCH (p:Person)
 RETURN p.name AS name, p.age AS age;
@@ -60,11 +63,14 @@ RETURN p.name AS name, p.age AS age;
 ### List attached databases
 
 You can list all the databases you have attached to by running the following command:
+
 ```cypher
 CALL SHOW_ATTACHED_DATABASES() RETURN *;
 ```
 
 ### Detach from a remote Kuzu database
+
+
 
 To detach from an external Kuzu database, use `DETACH [ALIAS]`:
 

@@ -23,12 +23,15 @@ mentor-mentee relationships between the scholars. Laureates who won prizes in Ph
 Medicine, and Economics are in the dataset.
 
 To run the code examples below, you can install the following dependencies:
+
 ```bash
 uv init
 uv add kuzu polars pyarrow networkx numpy scipy
 ```
 
 ## Create the graph
+
+
 
 First, initialize a connection to a new Kuzu database named `example.kuzu`:
 
@@ -47,6 +50,8 @@ conn = kuzu.Connection(db)
 
 There will be one node table `Scholar`, and one relationship table `MENTORED` in this graph:
 
+### Node and relationship table schema
+
 ```py
 # Node table schema
 conn.execute(
@@ -63,7 +68,10 @@ conn.execute(
 conn.execute("CREATE REL TABLE MENTORED(FROM Scholar TO Scholar);")
 ```
 
+### Ingest node and relationship data
+
 The node data can be ingested into Kuzu using `MERGE` commands as follows:
+
 ```py
 res = conn.execute(
     """
@@ -81,6 +89,7 @@ print(f"Merged {res.get_as_pl()['num_scholars'][0]} scholar nodes into the datab
 ```
 
 The relationship data can also be similarly ingested:
+
 ```py
 res = conn.execute(
     """
@@ -92,11 +101,15 @@ res = conn.execute(
 )
 print(f"Merged {res.get_as_pl()['num_mentorships'][0]} mentorship relationships into the database")
 ```
+
 You should see the following output:
+
 ```
 Merged 3384 scholar nodes into the database
 Merged 5657 mentorship relationships into the database
 ```
+
+### Visualize the graph
 
 The resulting graph can be visualized using [Kuzu Explorer](/visualization/kuzu-explorer),
 and shows rich connections between scholars who mentored one another.
@@ -109,7 +122,7 @@ Now that you've loaded the mentorship graph, you're ready to run graph algorithm
 
 The first method to run a graph algorithm natively in Kuzu is using the `algo` extension.
 
-#### Install and load the extension
+### Install and load the extension
 
 ```py
 import kuzu
@@ -123,7 +136,7 @@ conn = kuzu.Connection(db)
 conn.execute("INSTALL algo; LOAD algo;")
 ```
 
-#### Project a subgraph
+### Project a subgraph
 
 When using the `algo` extension in Kuzu, graph algorithms run
 on a [projected subgraph](/extensions/algo/#projected-graphs).
@@ -131,9 +144,11 @@ on a [projected subgraph](/extensions/algo/#projected-graphs).
 ```py
 conn.execute("CALL project_graph('MentorshipGraph', ['Scholar'], ['MENTORED']);")
 ```
-#### Run PageRank
+
+### Run PageRank
 
 Run the PageRank algorithm on the projected subgraph and collect the results in a Polars DataFrame. You can alternatively use Pandas DataFrames if you wish.
+
 ```py
 # Run PageRank on the projected graph
 res = conn.execute(
@@ -146,7 +161,9 @@ res = conn.execute(
 pagerank_df = res.get_as_pl()
 ```
 
-#### Write results to Kuzu
+### Write results to Kuzu
+
+
 
 The above steps computed the PageRank metrics for the nodes, but didn't persist them to the Kuzu database.
 To do this, you can use the `pagerank_df` DataFrame to write the PageRank scores to the `Scholar` node table.
@@ -176,6 +193,8 @@ print("Finished adding graph algorithm metric scores to Kuzu database")
 You can test that the results were ingested correctly in Kuzu by running the
 following query:
 
+### Query PageRank results
+
 ```py
 res = conn.execute(
     """
@@ -188,6 +207,7 @@ res = conn.execute(
 )
 print(res.get_as_pl())
 ```
+
 ```table
 ┌────────────────────────┬────────────┐
 │ s.name                 ┆ s.pagerank │
@@ -201,6 +221,8 @@ print(res.get_as_pl())
 │ Chen-Ning Yang         ┆ 0.000455   │
 └────────────────────────┴────────────┘
 ```
+
+### Visualize PageRank results in Kuzu Explorer
 
 You can also run the following query in Kuzu Explorer to visualize the tree structure that led to the
 person with the highest PageRank score:
@@ -228,6 +250,7 @@ You can also run graph algorithms via NetworkX. This involves transforming a Kuz
 a NetworkX graph object, running the algorithm on it, and then writing the results back to Kuzu.
 
 :::note[Note]
+
 Running a graph algorithm in NetworkX will be slower than using Kuzu's `algo` extension, due to
 additional overhead in dealing with Python objects, but NetworkX can be a useful fallback when
 you want to run a graph algorithm that's not yet supported in Kuzu. It's trivial to transform
@@ -245,7 +268,7 @@ db = kuzu.Database(db_path)
 conn = kuzu.Connection(db)
 ```
 
-#### Create a NetworkX graph
+### Create a NetworkX graph
 
 The first step is to extract a subgraph from Kuzu and convert it to a NetworkX graph object.
 
@@ -274,10 +297,11 @@ pagerank_df = (
     .with_columns(pl.col("name").str.replace("Scholar_", "").alias("name"))
 )
 ```
+
 The results from NetworkX are transformed into a Polars DataFrame and the columns
 are renamed appropriately, to match with the node table's columns in Kuzu.
 
-#### Write NetworkX results to Kuzu
+### Write NetworkX results to Kuzu
 
 To ingest the data back in, first run `ALTER TABLE` to add a new column
 `pagerank` to the `Scholar` node table. Then, scan the data from the Polars
@@ -297,6 +321,8 @@ conn.execute(
 print("Finished adding graph algorithm metric scores to Kuzu database")
 ```
 
+### Test NetworkX results
+
 We can test that the results were ingested correctly in Kuzu by running the
 following Cypher query:
 
@@ -312,6 +338,7 @@ res = conn.execute(
 )
 print(res.get_as_pl())
 ```
+
 ```table
 ┌────────────────────────┬────────────┐
 │ s.name                 ┆ s.pagerank │
@@ -343,10 +370,13 @@ betweenness_centrality_df = (
 ```
 
 The following command adds a new column `betweenness_centrality` to the `Scholar` node table:
+
 ```py
 conn.execute("ALTER TABLE Scholar ADD IF NOT EXISTS betweenness_centrality DOUBLE DEFAULT 0.0;")
 ```
+
 Then, write the results back to the Kuzu database as before:
+
 ```py
 conn.execute(
     """
@@ -358,8 +388,11 @@ conn.execute(
 print("Finished adding graph algorithm metric scores to Kuzu database")
 ```
 
+### Query betweenness centrality results
+
 The query below shows the top 5 Physics laureates with the highest betweenness centrality scores and
 the number of mentors and mentees for each of them.
+
 ```py
 res = conn.execute(
     """

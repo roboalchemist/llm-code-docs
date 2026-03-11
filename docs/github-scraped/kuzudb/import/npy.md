@@ -11,14 +11,19 @@ large node features or vectors that are stored in `.npy` format. You can use the
 to import a set of `*.npy` files into a node table.
 
 :::caution[Notes]
+
 This feature is an experimental feature and will evolve. Currently, this feature has the following constraints:
+
 - **Import to node table only**: For now, Kuzu supports loading `.npy` files into **node tables** only.
 - **NPY file mapped to column**: Each `.npy` file will be loaded as a node table column. So, in the `COPY FROM` statement, the
 number of `.npy` files must be equal to the number of columns defined in the DDL.
 - **Numerical types only**: A `.npy` file can only contain numerical values.
+
 :::
 
 ## Import to node table
+
+
 Consider a `Paper` table with an `id` column, a feature column that is an embedding (vector) with 768 dimensions,
 a `year` column and a `label` column as ground truth. We first define the schema with the following statement:
 

@@ -32,6 +32,7 @@ LOAD FROM
     (file_format='iceberg', allow_moved_paths=true)
 RETURN *;
 ```
+
 ```table
 ┌────────────┬──────┬──────────┐
 │ University │ Rank │ Funding  │
@@ -43,7 +44,6 @@ RETURN *;
 │ MIT        │ 3    │ 170.000  │
 │ Oxford     │ 4    │ 300.000  │
 └────────────┴──────┴──────────┘
-
 ```
 
 :::note[Notes]
@@ -54,6 +54,8 @@ Iceberg tables that are moved from their original location.
 :::
 
 ### Copy Iceberg tables into Kuzu
+
+
 You can use a `COPY FROM` statement to copy the contents of an Iceberg table into Kuzu.
 
 ```cypher
@@ -62,6 +64,7 @@ COPY university FROM
     '/tmp/iceberg_tables/person_table'
     (file_format='iceberg', allow_moved_paths=true);
 ```
+
 ```table
 ┌─────────────────────────────────────────────────────┐
 │ result                                              │
@@ -72,6 +75,8 @@ COPY university FROM
 ```
 
 ### Access Iceberg metadata
+
+
 At the heart of Iceberg’s table structure is the metadata, which tracks everything from the schema, to partition information,
 and snapshots of the table's state.
 
@@ -96,6 +101,8 @@ RETURN *;
 ```
 
 ### List Iceberg snapshots
+
+
 Iceberg tables maintain a series of snapshots, which are consistent views of the table at a specific point in time.
 Snapshots are the core of Iceberg’s versioning system, allowing you to track, query, and manage changes to your table over time.
 
@@ -105,6 +112,7 @@ Note that for snapshots, you do not need to specify the `allow_moved_paths` opti
 ```cypher
 CALL ICEBERG_SNAPSHOTS('/tmp/iceberg_tables/lineitem_iceberg') RETURN *;
 ```
+
 ```table
 ┌─────────────────┬─────────────────────┬─────────────────────────┬────────────────────────────────────────────────────────────────────────────────────────────────┐
 │ sequence_number │ snapshot_id         │ timestamp_ms            │ manifest_list                                                                                  │
@@ -122,6 +130,7 @@ Kuzu also supports scanning and copying Iceberg tables hosted on S3.
 #### Configure the S3 connection
 
 Before reading and writing from S3, you have to configure the connection using a [CALL](/cypher/configuration) statement.
+
 ```cypher
 CALL <option_name>='<option_value>'
 ```
@@ -134,14 +143,17 @@ CALL <option_name>='<option_value>'
 | `s3_region` | S3 region |
 | `s3_url_style` | Uses [S3 url style](https://docs.aws.amazon.com/AmazonS3/latest/userguide/VirtualHosting.html) (should either be `vhost` or `path`) |
 
-#### Requirements on the S3 server APIs
+### Requirements on the S3 server APIs
+
 
 | Feature | Required S3 API features |
 |----------|----------|
 | Public file reads | HTTP Range request |
 | Private file reads | Secret key authentication |
 
-#### Scan Iceberg tables from S3
+### Scan Iceberg tables from S3
+
+
 
 ```cypher
 LOAD FROM
@@ -150,7 +162,7 @@ LOAD FROM
 RETURN *;
 ```
 
-#### Copy Iceberg tables from S3 into Kuzu
+### Copy Iceberg tables from S3 into Kuzu
 
 ```cypher
 CREATE NODE TABLE student (ID INT64 PRIMARY KEY, name STRING);
@@ -163,13 +175,15 @@ COPY student FROM
 
 The following optional parameters are supported when using the functions from the `iceberg` extension.
 
-#### `allow_moved_paths`
+### `allow_moved_paths`
+
 - Type: `BOOLEAN`
 - Default: `false`
 
 Allows scanning Iceberg tables that are not located in their original directory.
 
-#### `metadata_compression_codec`
+### `metadata_compression_codec`
+
 - Type: `STRING`
 - Allowed values: `gzip`
 - Default: `''`
@@ -186,7 +200,8 @@ LOAD FROM '/tmp/iceberg_tables/lineitem_iceberg_gz' (
 RETURN *;
 ```
 
-#### `version`
+### `version`
+
 - Type: `STRING`
 - Default: determined from `version-hint.txt`
 
@@ -201,7 +216,8 @@ LOAD FROM '/tmp/iceberg_tables/lineitem_iceberg' (
 RETURN *;
 ```
 
-#### `version_name_format`
+### `version_name_format`
+
 - Type: `STRING`
 - Default: `'v%s%s.metadata.json,%s%s.metadata.json'`
 

@@ -22,6 +22,7 @@ Similar to CSV import, the order of columns in a Parquet file need to match the 
 properties for node tables in the catalog, i.e. the order used when defining the schema of a node table.
 
 The following example is for a file named `user.parquet`. The output is obtained by using `print(pyarrow.Table)`.
+
 ```py
 pyarrow.Table
 name: string

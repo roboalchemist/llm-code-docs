@@ -62,7 +62,7 @@ of the data, including which field is the primary key (if it is a node).
 ## Query progress
 
 For expensive queries that might take a significant amount of time to execute, a progress bar can be enabled that displays
-the number of pipelines that have been executed (each query is broken down into one or more pipelines), 
+the number of pipelines that have been executed (each query is broken down into one or more pipelines),
 as well as the percentage of the data processed in a pipeline. This gives an estimate for how much of a pipeline
 has executed.
 
@@ -99,13 +99,17 @@ for query generation.
 If you're using Docker Desktop, you may need to enable host networking to be able to access your locally running Ollama server
 from within the Docker container that's running Kuzu Explorer. In Docker Desktop, go to "Settings", and then navigate to "Resources" > "Network" > "Enable host networking".
 Once this is enabled, you should be able to run the following command and then open `http://localhost:8000` as normal.
+
 ```bash
 # Run the following command to start Kuzu Explorer with host networking enabled
 docker run --net=host --rm kuzudb/explorer:latest
 ```
+
 :::
 
 ### Use LLMs to generate Cypher queries
+
+
 
 You can now use the AI Query tab to generate Cypher queries from natural language. Simply type in the natural language query and
 run the cell. This will generate a Cypher query using the selected LLM, which you can inspect by clicking back on the "Cypher Query" tab.

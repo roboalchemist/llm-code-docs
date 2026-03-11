@@ -134,7 +134,8 @@ CREATE REL TABLE IF NOT EXISTS HAS_CONDITION(
 )
 ```
 
-The `has_condition.json` file can then directly be copied into the relationship table that was just created. 
+The `has_condition.json` file can then directly be copied into the relationship table that was just created.
+
 ```cypher
 COPY HAS_CONDITION FROM 'has_condition.json'
 ```

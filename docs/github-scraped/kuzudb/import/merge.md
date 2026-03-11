@@ -18,6 +18,7 @@ Say you have an existing node table `User` with `name` and `age` properties and 
 ```cypher
 MATCH (a:User) RETURN a
 ```
+
 Initially, there is just one user in the database:
 
 ```table
@@ -49,6 +50,8 @@ The result will be:
 ```
 
 The same approach can be used to import relationships -- just ensure that the node tables and their
+
+
 data with the primary key values from your source data exist before trying to merge relationships.
 
 ## `MERGE` from DataFrames
@@ -91,6 +94,7 @@ print(res.get_as_df())
 ```
 
 Initially, there are 3 rows in the `Person` and `Item` tables:
+
 ```
     p.name p.current_city      i.name
 0  Karissa        Seattle  smartphone
@@ -130,6 +134,7 @@ print(res.get_as_df())
 ```
 
 The following steps are performed:
+
 1. The `LOAD FROM` clause loads the data from the DataFrame into the database.
 2. The first two `MERGE` clauses merge the data into the `Person` and `Item` tables.
 3. The third `MERGE` clause merges the data into the `Purchased` relationship table.

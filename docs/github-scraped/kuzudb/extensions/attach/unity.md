@@ -15,7 +15,9 @@ issues or to discuss your use case, please reach out to us on GitHub or Discord.
 
 Please see [Install an extension](/extensions#install-an-extension) and [Load an extension](/extensions#load-an-extension) first before getting started.
 
-#### Set up a Unity Catalog server
+### Set up a Unity Catalog server
+
+
 
 First, set up the open-source version of Unity Catalog:
 
@@ -60,7 +62,7 @@ The table below shows the mapping from Unity Catalog types to Kuzu types:
 
 ### Scan data from a Unity Catalog table
 
-You can use the `LOAD FROM` statement to scan the `numbers` table. Note that you need to prefix the 
+You can use the `LOAD FROM` statement to scan the `numbers` table. Note that you need to prefix the
 external `numbers` table with the database alias (in our example `unity`).
 
 ```cypher
@@ -125,6 +127,7 @@ copy numbers from unity.numbers;
 ```
 
 You can also use a subquery to copy only a subset of the columns:
+
 ```cypher
 COPY numbers FROM (LOAD FROM unity.numbers RETURN score);
 ```

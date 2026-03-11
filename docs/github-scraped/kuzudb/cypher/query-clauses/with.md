@@ -1,12 +1,12 @@
 ---
 title: With
-description: WITH can be used to project some expressions, and possibly compute some aggregations, from what your query has computed up to a point before starting the next part of your query. 
+description: WITH can be used to project some expressions, and possibly compute some aggregations, from what your query has computed up to a point before starting the next part of your query.
 ---
 
-`WITH` can be used to project some expressions, and possibly compute some aggregations, from what your query has computed up 
+`WITH` can be used to project some expressions, and possibly compute some aggregations, from what your query has computed up
 to a point before starting the next part of your query. Although there are other common use cases
-two very common cases of using WITH are: (1) to compute a numeric result, often through an aggregation, 
-that can be used as a predicate in the following parts; and (2) performing a "top-k" computation on 
+two very common cases of using WITH are: (1) to compute a numeric result, often through an aggregation,
+that can be used as a predicate in the following parts; and (2) performing a "top-k" computation on
 some query, before performing other querying on those top-k. We give examples of each.
 
 We will use the example database for demonstration, whose schema and data import commands are given [here](/cypher/query-clauses/example-database).

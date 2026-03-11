@@ -14,6 +14,7 @@ Please see [Install an extension](/extensions#install-an-extension) and [Load an
 ### Example dataset
 
 Let's create a Delta table containing student information using Python and save the Delta table in the `'/tmp/student'` directory:
+
 ```shell
 pip install deltalake pandas
 ```
@@ -40,6 +41,7 @@ To scan the Delta table created above, you can do the following:
 ```cypher
 LOAD FROM '/tmp/student' (file_format='delta') RETURN *;
 ```
+
 ```table
 ┌────────┬───────┐
 │ name   │ ID    │
@@ -50,18 +52,22 @@ LOAD FROM '/tmp/student' (file_format='delta') RETURN *;
 │ Carol  │ 7     │
 └────────┴───────┘
 ```
+
 :::note[Note]
 The `file_format` parameter is required here to explicitly specify the file format of the given path.
 Kuzu is currently not capable of autodetecting Delta tables.
 :::
 
 ### Copy Delta tables into Kuzu
+
+
 You can use a `COPY FROM` statement to copy the contents of a Delta table into Kuzu.
 
 ```cypher
 CREATE NODE TABLE student (ID INT64 PRIMARY KEY, name STRING);
 COPY student FROM '/tmp/student' (file_format='delta');
 ```
+
 ```table
 ┌─────────────────────────────────────────────────┐
 │ result                                          │
@@ -72,16 +78,21 @@ COPY student FROM '/tmp/student' (file_format='delta');
 ```
 
 ### Access Delta tables hosted on S3
+
+
 Kuzu also supports scanning and copying Delta tables hosted on S3.
 
 #### Configure the S3 connection
 
 Before reading and writing from S3, you have to configure the connection using a [CALL](/cypher/configuration) statement.
+
 ```cypher
 CALL <option_name>='<option_value>'
 ```
 
 The following options are supported:
+
+
 | Option | Description |
 |----------|----------|
 | `s3_access_key_id` | S3 access key ID |
@@ -92,12 +103,15 @@ The following options are supported:
 
 #### Requirements on the S3 server API
 
+
+
 | Feature | Required S3 API features |
 |----------|----------|
 | Public file reads | HTTP Range request |
 | Private file reads | Secret key authentication |
 
 #### Scan Delta tables from S3
+
 ```cypher
 LOAD FROM 's3://kuzu-sample/sample-delta' (file_format='delta')
 RETURN *;

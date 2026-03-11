@@ -23,6 +23,7 @@ SET n.price = 20;
 MATCH (n:Bücher)
 RETURN label(n);
 ```
+
 ```table
 ┌─────────┐
 │ Bücher  │
@@ -46,6 +47,7 @@ SET n.date = TIMESTAMP('2025-01-01');
 MATCH (n:`Return`)
 RETURN n.*;
 ```
+
 ```table
 ┌───────┬─────────────────────┐
 │ n.id  │ n.date              │
@@ -76,10 +78,12 @@ The end of a statement is marked with a semicolon `;`, and the query parser look
 to know when a statement is complete.
 
 Examples of clauses include:
+
 - `MATCH`: Find patterns in the graph
 - `RETURN`: Specify what subset of the matched data to return
 
 Examples of subclauses (that must reside under a clause) include:
+
 - `WHERE`: Filter the results of a `MATCH` clause
 - `LIMIT`: Limit the number of results returned by a query
 
@@ -87,6 +91,7 @@ Examples of subclauses (that must reside under a clause) include:
 
 Comments are for humans to read and document their code, and are ignored by the
 query parser.
+
 - Single line comments begin with `//` and continue up to the end of the
 line. They can be placed at the beginning, in the middle, or at the end of a query.
 - Multi-line comments begin with `/*` and continue until they encounter `*/`.
@@ -132,7 +137,7 @@ the column name in the source is `mycolumn`.
 
 The following naming rules and guidelines apply to node and relationship table names:
 
-- Should begin with a valid alphabetic character of type unicode string: `Person`, `CarOwner` 
+- Should begin with a valid alphabetic character of type unicode string: `Person`, `CarOwner`
 - Should **not** begin with a number: `1Person` is invalid, but `Person1` is valid
 - Should **not** contain whitespaces or special characters other than underscores: `CarOwner` is valid, but `Car Owner` is invalid
 
