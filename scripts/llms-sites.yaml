@@ -1184,3 +1184,6 @@ sites:
 - name: manifest
   base_url: https://www.manifest.build/docs/
   description: manifest documentation
+- name: amplitude
+  base_url: https://amplitude.com/docs/
+  description: amplitude documentation
