@@ -1,0 +1,96 @@
+# Source: https://plausible.io/docs/ecommerce-revenue-tracking
+
+Title: Ecommerce revenue and attribution tracking | Plausible docs
+
+URL Source: https://plausible.io/docs/ecommerce-revenue-tracking
+
+Markdown Content:
+You can assign dynamic monetary values to custom events to track revenue attribution. Revenue attribution helps you determine which marketing campaigns and landing pages result in the most revenue for your business or ecommerce store.
+
+When you create a new custom event, you can optionally assign a monetary value to it. Our revenue tracking supports multi-currencies too. You can send data in any local currency that the purchase is made in. When using revenue tracking, you'll be able to see these metrics in your dashboard:
+
+*   Unique conversions
+*   Total conversions
+*   Conversion rate
+*   Total revenue
+*   Average revenue
+
+![Image 1: Ecommerce revenue goal top graph](https://plausible.io/docs/img/plausible-ecommerce-revenue-top-graph.png)
+
+The revenue metrics are fully filterable. For instance, you can see the total or average revenue for a particular custom event per any dimension such as a specific date, referral source, marketing campaign, entry page, country or device.
+
+You can add multiple filters to [create audience segments](https://plausible.io/docs/filters-segments) too. This allows you to see the conversions and revenue from for instance the audience segment that's located in Germany, Austria and Switzerland, that were referred by a particular UTM campaign and are using Mac OS.
+
+When the revenue goal filter is applied on the dashboard, you will also find the "Revenue" column appear in all the individual reports (when expanded using the "Details" option). This is useful in seeing the breakdown of your revenue by individual traffic sources, entry or exit pages, locations, browser types and properties. You can also sort your reports by revenue in either ascending or descending order.
+
+Clean referral source attribution[​](https://plausible.io/docs/ecommerce-revenue-tracking#clean-referral-source-attribution "Direct link to Clean referral source attribution")
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Plausible automatically excludes unwanted referral sources such as payment processors like PayPal, Stripe and Paddle to keep your data clean.
+
+Referral sources are counted only when they start a new session on your site. This means that when visitors briefly leave your site to complete a payment on an external gateway before returning, the payment processor won't show up as a referral source. The original source that brought the visitor to your site will remain the one attributed for that conversion.
+
+This ensures your revenue is attributed to the marketing campaigns, referral sources and landing pages that actually drove the sale rather than the payment gateway the visitor passed through along the way.
+
+How to track ecommerce revenue[​](https://plausible.io/docs/ecommerce-revenue-tracking#how-to-track-ecommerce-revenue "Direct link to How to track ecommerce revenue")
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+If you want to track ecommerce revenue, here's how to enable it:
+
+### Step 1: Add a new custom event and specify the currency of your choice[​](https://plausible.io/docs/ecommerce-revenue-tracking#step-1-add-a-new-custom-event-and-specify-the-currency-of-your-choice "Direct link to Step 1: Add a new custom event and specify the currency of your choice")
+
+Go to your [site settings](https://plausible.io/docs/website-settings) and in the "**Goals**" section click on the "**Add goal**" button. Choose "**Custom event**" as the goal trigger, enter the goal name in the "**Event name**" field, switch to "**Enable Revenue Tracking**" and set the base currency of your choice. This currency will be used for total and average revenue metrics in the dashboard. Note that the currency for a specific event cannot be changed later.
+
+![Image 2: Add goal and choose your currency](https://plausible.io/docs/img/plausible-ecommerce-currency-goal.png)
+
+### Step 2: Send the revenue data from your site[​](https://plausible.io/docs/ecommerce-revenue-tracking#step-2-send-the-revenue-data-from-your-site "Direct link to Step 2: Send the revenue data from your site")
+
+You can now start sending revenue data from your site alongside custom events. You can send the revenue data in the currency that the purchase was made in too and we'll convert it to your goal's base currency.
+
+How to send revenue data depends on the way you've set up custom events. You can either use [the CSS class name approach](https://plausible.io/docs/custom-event-goals):
+
+`<button class="plausible-event-name=Purchase plausible-revenue-amount=10.29 plausible-revenue-currency=EUR"></button>`
+
+Or [the JavaScript function approach](https://plausible.io/docs/custom-event-goals#trigger-custom-events-manually-with-a-javascript-function):
+
+`window.plausible("goal name", {revenue: {currency: "USD", amount: 10.29}})`
+
+Or using the [Events API](https://plausible.io/docs/events-api) directly.
+
+Custom events and revenue goals are listed at the bottom of your dashboard and will appear as soon as the first conversion has been tracked.
+
+![Image 3: Ecommerce revenue tracking goal](https://plausible.io/docs/img/plausible-ecommerce-revenue-goal.png)
+
+You can add more details to your revenue tracking by using custom properties
+
+This lets you track product names, coupon codes, if customers are logged in and more. [Learn more](https://plausible.io/docs/custom-props/introduction).
+
+Integrating with WooCommerce[​](https://plausible.io/docs/ecommerce-revenue-tracking#integrating-with-woocommerce "Direct link to Integrating with WooCommerce")
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+If you're running WooCommerce, you can use our WordPress plugin. [Plausible WordPress plugin](https://wordpress.org/plugins/plausible-analytics/) has a built-in support for tracking of WooCommerce store activity including:
+
+*   Tracking of several custom events including actions such as add to cart, complete purchase and revenue
+*   Tracking of several custom properties including product name and product category
+*   A purchase funnel looking at the user journey from viewing a product to completing a purchase
+
+All this is done automatically for you by our plugin and you don't need to manually set up any custom events nor make any changes to the code of your store. Check here for [more details about our WordPress plugin](https://plausible.io/wordpress-analytics-plugin). Check here to learn more about [WooCommerce site tracking with Plausible](https://plausible.io/blog/woocommerce-analytics-plugin).
+
+Integrating with Shopify[​](https://plausible.io/docs/ecommerce-revenue-tracking#integrating-with-shopify "Direct link to Integrating with Shopify")
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+If you're using Shopify, you can track sales and revenue by making a few changes to the order status page. See [our complete Shopify guide here](https://plausible.io/docs/shopify-integration).
+
+Integrating with Magento[​](https://plausible.io/docs/ecommerce-revenue-tracking#integrating-with-magento "Direct link to Integrating with Magento")
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+There's a third-party Plausible plugin for Magento that supports custom events and revenue goals tracking. [Take a look](https://github.com/Pixel-Open/magento-plausible).
+
+What's next?[​](https://plausible.io/docs/ecommerce-revenue-tracking#whats-next "Direct link to What's next?")
+--------------------------------------------------------------------------------------------------------------
+
+*   Set up a [funnel](https://plausible.io/docs/funnel-analysis) to follow the purchase journey from landing page to checkout
+*   Use [custom properties](https://plausible.io/docs/custom-props/introduction) to break down revenue by product name, category or coupon code
+*   [Filter and segment](https://plausible.io/docs/filters-segments) your dashboard to see revenue by source, campaign, country or device
+
+Learn more about tracking [ecommerce revenue attribution](https://plausible.io/blog/ecommerce-revenue-attribution) on our blog.
