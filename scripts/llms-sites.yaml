@@ -1160,3 +1160,6 @@ sites:
 - name: flutter
   base_url: https://docs.flutter.dev/
   description: flutter documentation
+- name: stackstate
+  base_url: https://archivedocs.stackstate.com/
+  description: stackstate documentation
