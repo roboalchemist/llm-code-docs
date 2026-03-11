@@ -1253,3 +1253,6 @@ sites:
 - name: red-hat-openshift
   base_url: https://docs.openshift.com/
   description: red-hat-openshift documentation
+- name: taurus
+  base_url: https://docs.taurushq.com/
+  description: taurus documentation
