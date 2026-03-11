@@ -1844,3 +1844,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/stimulus
   branch: main
+- name: websocket-client
+  description: websocket-client from GitHub
+  repo_url: https://github.com/websocket-client/websocket-client.git
+  source_folder: docs
+  target_folder: docs/github-scraped/websocket-client
+  branch: main
