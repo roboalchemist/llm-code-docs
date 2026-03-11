@@ -13,143 +13,170 @@
 
 ## 1. WhatAmI: Router, Peer, Client
 
-Every Zenoh session declares one of three roles. This role governs how the node participates in topology discovery, how it routes messages, and what responsibilities it takes on.
+Every zenoh session declares one of three roles. The role governs how the session discovers neighbors, how it routes messages, and what infrastructure responsibilities it accepts.
 
 ### 1.1 Router
 
-A **router** is a dedicated infrastructure node, typically run as `zenohd`. Its defining characteristics are:
+A router is a dedicated infrastructure node. It:
 
-- **Fixed topology**: Routers do not perform autonomous self-discovery of other routers. They must be explicitly told where to connect via static `connect` endpoints, or they must `listen` and wait for incoming connections.
-- **Routes for others**: A router forwards messages between any combination of clients, peers, and other routers connected to it.
-- **Stable, always-on**: Routers are long-lived processes. They form the backbone of a Zenoh deployment.
-- **Linkstate propagation**: In multi-router deployments, routers exchange topology information (link-state) so that each router has a global view of the network graph and can compute optimal forwarding paths.
+- **Routes messages on behalf of others.** Clients and peers that connect to a router rely on it to forward publications, queries, and declarations to the rest of the network.
+- **Does not self-discover via multicast.** Routers listen on explicit endpoints and wait for others to connect to them; they do not join multicast groups to find peers spontaneously.
+- **Participates in router-level linkstate.** When multiple routers are present they exchange linkstate advertisements so that every router has a full map of the router mesh and can compute shortest paths.
+- **Supports failover brokering.** A router can detect that two of its directly-connected peers are not connected to each other and broker messages between them (`peers_failover_brokering`).
 
-Routers are the right choice when you need a reliable rendezvous point, when you need to bridge network segments, or when you are building cloud infrastructure.
+Routers are typically long-lived, publicly reachable daemons (`zenohd`). They are the backbone of any multi-segment or cloud deployment.
 
 ### 1.2 Peer
 
-A **peer** is a full participant in the Zenoh mesh that discovers other participants and routes its own traffic. Its defining characteristics are:
+A peer is an application-level participant that also performs some routing on its own behalf. It:
 
-- **Dynamic self-discovery**: Peers use multicast scouting and/or gossip scouting to find each other without any prior configuration.
-- **Direct connections**: Once two peers discover each other, they open a direct transport session. There is no mandatory intermediary.
-- **Mesh networking**: A peer network converges to a mesh where every peer has direct links to every other discovered peer (in `peer_to_peer` mode) or exchanges link-state to route over multi-hop paths (in `linkstate` mode).
-- **No dedicated infrastructure required**: A local LAN can function fully with only peers — no router process is needed.
+- **Self-discovers** using UDP multicast scouting (LAN) or gossip scouting (WAN/mesh).
+- **Forms a direct mesh** with other peers it discovers, without needing a router intermediary.
+- **Routes within the peer subsystem** using either peer-to-peer mode (flat, direct forwarding) or linkstate mode (topology-aware shortest-path forwarding).
+- **Can connect to routers** to bridge with other network segments or cloud infrastructure.
 
-Peers are the right choice for local-area deployments (robots, lab equipment, embedded devices on a LAN) where low latency and mesh resilience are important.
+Peers suit scenarios where low administrative overhead is acceptable and all nodes are on the same reachable network segment.
 
 ### 1.3 Client
 
-A **client** delegates all routing responsibility to a connected router or peer gateway. Its defining characteristics:
+A client is the lightest role. It:
 
-- **Single upstream**: A client connects to exactly one router (or peer acting as a gateway). All pub/sub/query traffic flows through that single connection.
-- **No routing**: A client does not forward traffic on behalf of anyone else. It only sends and receives its own data.
-- **Lightweight**: Clients maintain minimal state. They do not need to track the rest of the topology.
-- **Reconnection**: If the upstream router fails, a client can be configured with multiple endpoints to try in sequence or with retry logic.
+- **Delegates all routing** to a single connected router or peer (its "gateway").
+- **Does not route for others.** Messages from other sessions never transit through a client.
+- **Connects to one gateway** at a time (though it may be configured with multiple candidate endpoints for failover).
+- **Does not participate in scouting** by default — it connects to a statically configured endpoint.
 
-Clients are the right choice for resource-constrained devices, browser applications (via WebSocket), or any node that simply wants to publish or subscribe without participating in infrastructure.
+Clients are ideal for constrained devices, browser-based applications, or any endpoint where a full routing stack is undesirable.
 
-### Summary Table
-
-| Characteristic | Router | Peer | Client |
-|---|---|---|---|
-| Self-discovers | No (static config) | Yes (multicast/gossip) | No |
-| Routes for others | Yes | Yes (in mesh) | No |
-| Requires `zenohd` | Typically yes | No | No |
-| Topology role | Infrastructure backbone | Mesh participant | Leaf node |
-| Typical use case | Cloud, gateway, WAN bridge | LAN devices, robots | IoT sensors, browsers |
+```
+┌───────────┐         ┌───────────┐         ┌───────────┐
+│  Client   │────────▶│  Router   │◀────────│  Client   │
+└───────────┘         │           │         └───────────┘
+                      │  (routes) │
+┌───────────┐         │           │         ┌───────────┐
+│   Peer    │◀───────▶│           │◀───────▶│   Peer    │
+└───────────┘         └─────┬─────┘         └───────────┘
+                            │
+                      ┌─────▼─────┐
+                      │  Router   │  (another segment)
+                      └───────────┘
+```
 
 ---
 
 ## 2. Scouting Mechanisms
 
-Scouting is the process by which Zenoh nodes discover each other and decide whether to establish transport sessions. There are three approaches: multicast, gossip, and static configuration.
+Scouting is how zenoh nodes discover each other without requiring pre-configured addresses for every pair.
 
 ### 2.1 Multicast Scouting
 
-Multicast scouting uses UDP multicast to announce presence and discover neighbors on the same Layer 2 network segment.
+Multicast scouting is the default discovery mechanism for local networks.
 
 **How it works:**
 
-1. On startup, a node sends a `Scout` UDP multicast packet to the configured multicast group address and port.
-2. Any node already listening on that address responds with a `Hello` message containing its ZID, its WhatAmI role, and its listening locators.
-3. The scouting node evaluates the `autoconnect` configuration to decide whether to open a transport session to the discovered node.
-4. Scouting continues periodically so that nodes joining later are discovered.
+1. When a session opens, it sends a `Scout` datagram to a well-known UDP multicast group.
+2. Any session listening on that group responds with a `Hello` containing its ZID, mode, and listen locators.
+3. The scouting session inspects the `Hello` and, if the responder's `WhatAmI` matches its `autoconnect` filter, initiates a unicast transport session to the advertised locator.
 
-**Key configuration fields under `scouting.multicast`:**
+**Key configuration parameters:**
 
-| Field | Default | Description |
+| Parameter | Description | Default |
 |---|---|---|
-| `enabled` | `true` | Enable or disable multicast scouting entirely |
-| `address` | `224.0.0.224:7446` | Multicast group address and UDP port |
-| `interface` | auto | Network interface to use |
-| `ttl` | `1` | IP TTL on multicast packets (1 = LAN only) |
-| `autoconnect` | role-dependent | Which WhatAmI roles to automatically connect to on discovery |
-| `autoconnect_strategy` | `always` | `always` or `greater_zid` (see below) |
-| `listen` | role-dependent | Whether to reply to incoming scout messages |
+| `scouting.multicast.enabled` | Enable/disable multicast scouting | `true` (peer), `false` (router) |
+| `scouting.multicast.address` | Multicast group + port | `224.0.0.224:7446` |
+| `scouting.multicast.interface` | Network interface for multicast socket | auto-selected |
+| `scouting.multicast.ttl` | IP TTL on scout datagrams | `1` |
+| `scouting.multicast.autoconnect` | Which `WhatAmI` types to connect to upon discovery | mode-dependent |
+| `scouting.multicast.autoconnect_strategy` | `always` or `greater-zid` | `always` |
+| `scouting.multicast.listen` | Whether to reply to incoming scout messages | mode-dependent |
+| `scouting.delay` | How long (ms) a peer waits for scouts before proceeding | `200` |
+| `scouting.timeout` | How long (ms) a client waits to find a router | `3000` |
 
-**TTL:** The default TTL of `1` prevents multicast packets from leaving the local subnet. Increasing TTL allows discovery across routers that forward multicast, but this is rarely desired — multicast scouting is fundamentally a LAN mechanism.
+**TTL = 1** means multicast packets do not cross router boundaries — scouting is confined to the local subnet. This is intentional for local peer discovery. To extend multicast across subnets you would raise TTL and ensure your network infrastructure supports multicast routing (PIM, etc.), though for WAN scenarios gossip scouting is usually more practical.
 
-**AutoConnectStrategy:**
+**AutoConnect strategies:**
 
-The `autoconnect_strategy` field controls duplicate-connection prevention in a peer mesh:
+- `always` — Upon receiving a `Hello`, unconditionally attempt to connect. Both sides may attempt simultaneously; one connection will be closed as redundant after establishment. This is safe but wastes a brief setup cycle.
+- `greater-zid` — Only attempt a connection if your ZID (a 128-bit UUID) is lexicographically greater than the remote's ZID. Since only one side will satisfy this condition, exactly one connection attempt is made. **Caveat:** this assumes both nodes can reach each other. If one is behind NAT and unreachable from the other side, use `always`.
 
-- **`always`** (default): Every node that discovers another will attempt to connect. Two peers discovering each other simultaneously will both attempt to connect, resulting in two parallel transport sessions briefly. Zenoh detects and closes the duplicate, but there is a window of redundancy.
-- **`greater_zid`**: A node will only initiate a connection if its own ZID (a 128-bit value) is lexicographically greater than the discovered node's ZID. Since both nodes use the same rule, exactly one will initiate. This eliminates duplicate connections entirely in a well-connected mesh.
-
-`greater_zid` is recommended for stable peer meshes. `always` is safer when NAT or asymmetric connectivity means one peer cannot reach the other.
+```json5
+// Multicast scouting config excerpt
+scouting: {
+  delay: 200,
+  multicast: {
+    enabled: true,
+    address: "224.0.0.224:7446",
+    ttl: 1,
+    // autoconnect is mode-dependent: peer connects to peers+routers, client connects to routers
+    autoconnect: { peer: "peer|router", client: "router" },
+    autoconnect_strategy: { peer: { peer: "greater-zid" }, client: { router: "always" } },
+    listen: { peer: true, client: false },
+  },
+},
+```
 
 ### 2.2 Gossip Scouting
 
-Gossip scouting propagates discovery information through the network by piggybacking on existing transport sessions. It is the mechanism used when multicast is not available (WAN, cloud, VPN, cross-subnet).
+Gossip scouting propagates discovery information through the already-established zenoh transport graph. It is the mechanism used when multicast is unavailable — for example, across the internet, between cloud VMs, or in complex multi-hop mesh deployments.
 
 **How it works:**
 
-1. When two nodes are connected, they exchange information about other nodes they know about.
-2. This "gossip" propagates through the network, allowing nodes that cannot see each other via multicast to learn about each other's existence and locators.
-3. Based on the `autoconnect` configuration, a node may then open a direct transport session to a newly gossip-discovered node.
+1. When two nodes establish a transport session, they exchange gossip messages describing what other nodes they know about (ZID, mode, locators).
+2. Each recipient can connect to the newly-announced nodes.
+3. With `multihop: true`, gossip is re-propagated: a node forwards discovery information it received from one neighbor to all other neighbors, allowing discovery to propagate across multiple hops even when there is no direct connectivity.
 
-**Key configuration fields under `scouting.gossip`:**
+**Key parameters:**
 
-| Field | Default | Description |
+| Parameter | Description | Default |
 |---|---|---|
-| `enabled` | `true` | Enable or disable gossip scouting |
-| `multihop` | `false` | Whether gossip information is re-propagated beyond one hop |
-| `target` | role-dependent | Which WhatAmI roles to send gossip messages to |
-| `autoconnect` | role-dependent | Which WhatAmI roles to automatically connect to via gossip |
-| `autoconnect_strategy` | `always` | `always` or `greater_zid` |
+| `scouting.gossip.enabled` | Enable gossip scouting | `true` |
+| `scouting.gossip.multihop` | Propagate gossip beyond direct neighbors | `false` |
+| `scouting.gossip.target` | Which node types receive gossip messages | mode-dependent |
+| `scouting.gossip.autoconnect` | Which discovered node types to connect to | mode-dependent |
+| `scouting.gossip.autoconnect_strategy` | `always` or `greater-zid` | `always` |
 
-**`multihop`:** When `false`, gossip only propagates one hop (to directly connected nodes). When `true`, each node re-propagates the gossip it receives, allowing discovery across the entire connected network. Multihop is primarily useful with `linkstate` peer routing mode, where not all nodes are directly connected. It increases scouting traffic and reduces scalability, so it should be enabled only when needed.
-
-### 2.3 Static Configuration
-
-For maximum control and predictability, scouting can be disabled entirely and connections configured statically.
-
-**Disabling scouting:**
+**When to enable `multihop`:** Primarily in `linkstate` peer routing mode, where not every peer has a direct connection to every other peer. Without multihop, a peer only learns about nodes its direct neighbors know about. With multihop, discovery flows through the entire connected component. Be aware that multihop gossip increases scouting traffic proportionally to the network size.
 
 ```json5
+// Gossip scouting for a WAN/cloud scenario
+scouting: {
+  gossip: {
+    enabled: true,
+    multihop: true,   // needed for non-fully-connected meshes
+    target: { router: "router", peer: "peer|router" },
+    autoconnect: { peer: "peer|router" },
+    autoconnect_strategy: { peer: { peer: "greater-zid", router: "always" } },
+  },
+},
+```
+
+### 2.3 Static Configuration (No Scouting)
+
+When the network topology is fully known in advance, scouting can be disabled entirely. Nodes are told exactly which endpoints to connect to.
+
+```json5
+// Static connect, no scouting
 scouting: {
   multicast: { enabled: false },
   gossip:    { enabled: false },
-}
-```
-
-**Static connect endpoints:**
-
-```json5
+},
 connect: {
-  endpoints: ["tcp/192.168.1.10:7447", "tcp/192.168.1.11:7447"],
-}
+  endpoints: ["tcp/router1.example.com:7447", "tcp/router2.example.com:7447"],
+},
 ```
 
-**Static listen endpoints:**
+This is the safest approach for production deployments where you want deterministic behavior and no surprise connections.
 
-```json5
-listen: {
-  endpoints: ["tcp/0.0.0.0:7447"],
-}
+### 2.4 AutoConnect Strategy Summary
+
 ```
-
-Static configuration is appropriate for production infrastructure where topology must be explicit and deterministic, for security-sensitive environments where autodiscovery is a risk, and for WAN/cloud deployments where multicast is unavailable and gossip would require a pre-existing connection anyway.
+Scenario                              Recommended strategy
+─────────────────────────────────────────────────────────────
+All peers mutually reachable (LAN)    greater-zid   (avoids duplicate connections)
+One side behind NAT                   always         (NAT'd side can't receive inbound)
+Client → Router                       always         (client always initiates)
+Router mesh (static connect)          N/A            (scouting disabled)
+```
 
 ---
 
@@ -157,25 +184,25 @@ Static configuration is appropriate for production infrastructure where topology
 
 ### Pattern 1: Peer-to-Peer Local Network
 
-**Use case:** A group of devices on the same LAN (robots, lab instruments, developer workstations) that need to communicate directly without any infrastructure process.
+**Use case:** A group of applications on the same LAN that want to publish and subscribe to each other without any dedicated infrastructure.
 
-**Topology:**
+**Characteristics:**
+- All nodes run in `peer` mode
+- Multicast scouting discovers all peers automatically
+- Each peer connects directly to every other peer it discovers
+- No router required
+- Scales well up to ~50–100 peers; beyond that, consider adding routers
 
 ```
-[Peer A] ←——→ [Peer B]
-    ↑               ↑
-    └———→ [Peer C] ←┘
+┌────────┐    ┌────────┐    ┌────────┐
+│ Peer A │◀──▶│ Peer B │◀──▶│ Peer C │
+└────────┘    └────────┘    └────────┘
+     ▲                           ▲
+     └───────────────────────────┘
+       (all connected via multicast discovery)
 ```
 
-All nodes run as peers. Multicast scouting discovers all participants, and each pair establishes a direct transport session. This forms a full mesh.
-
-**How it works:**
-- Each peer sends multicast scout packets on startup.
-- Each peer replies to incoming scout messages.
-- `autoconnect: ["peer"]` causes each peer to connect to every other peer it discovers.
-- With `greater_zid` strategy, each pair of peers ends up with exactly one connection between them.
-
-**Config (all nodes use this):**
+**Config for each peer:**
 
 ```json5
 // peer_local.json5
@@ -183,21 +210,19 @@ All nodes run as peers. Multicast scouting discovers all participants, and each 
   mode: "peer",
 
   scouting: {
+    delay: 200,
     multicast: {
       enabled: true,
       address: "224.0.0.224:7446",
       ttl: 1,
-      // Connect to any peer discovered via multicast
-      autoconnect: { peer: ["peer"] },
-      autoconnect_strategy: {
-        peer: { peer: "greater_zid" }
-      },
+      autoconnect: { peer: "peer|router" },
+      autoconnect_strategy: { peer: { peer: "greater-zid" } },
       listen: { peer: true },
     },
     gossip: {
       enabled: true,
       multihop: false,
-      autoconnect: { peer: ["peer"] },
+      autoconnect: { peer: "peer" },
     },
   },
 
@@ -209,29 +234,29 @@ All nodes run as peers. Multicast scouting discovers all participants, and each 
 }
 ```
 
-**Tradeoffs:**
-- Zero infrastructure required.
-- Each node must be on the same multicast domain (same LAN/VLAN).
-- Full mesh means O(n²) connections as the network grows — use `linkstate` mode for larger peer networks.
+**Notes:**
+- `greater-zid` prevents both sides attempting to connect simultaneously.
+- `peer_to_peer` routing mode is appropriate here — every peer has a direct link to every other.
+- If peers are added dynamically, gossip scouting propagates their existence.
 
 ---
 
 ### Pattern 2: Client + Single Router (IoT Gateway)
 
-**Use case:** Resource-constrained IoT devices connect to a central gateway router. Sensors publish data; actuators subscribe. The router is the single point of rendezvous.
-
-**Topology:**
+**Use case:** Many constrained devices (sensors, actuators) send data to a central aggregation point. The router acts as the gateway; clients connect to it and rely on it for all routing.
 
 ```
-[Sensor A] ──┐
-[Sensor B] ──┼──→ [Router / Gateway] ←── [Dashboard Client]
-[Sensor C] ──┘
+┌──────────┐    ┌──────────┐    ┌──────────┐
+│ Client 1 │───▶│          │◀───│ Client 3 │
+└──────────┘    │  Router  │    └──────────┘
+┌──────────┐    │ (zenohd) │
+│ Client 2 │───▶│          │
+└──────────┘    └──────────┘
 ```
 
-**Router config:**
+**Router config (`router_gateway.json5`):**
 
 ```json5
-// router_gateway.json5
 {
   mode: "router",
 
@@ -240,15 +265,8 @@ All nodes run as peers. Multicast scouting discovers all participants, and each 
   },
 
   scouting: {
-    multicast: {
-      enabled: true,
-      // Router listens for scouts but doesn't autoconnect to clients
-      autoconnect: { router: [] },
-      listen: { router: true },
-    },
-    gossip: {
-      enabled: true,
-    },
+    multicast: { enabled: false },
+    gossip:    { enabled: false },
   },
 
   routing: {
@@ -264,127 +282,72 @@ All nodes run as peers. Multicast scouting discovers all participants, and each 
 }
 ```
 
-**Client (sensor/device) config:**
+**Client config (`client_iot.json5`):**
 
 ```json5
-// client_sensor.json5
 {
   mode: "client",
 
   connect: {
-    endpoints: ["tcp/192.168.1.1:7447"],
-    // Retry connection if router is temporarily unavailable
-    exit_on_failure: { client: false },
-    retry: {
-      period_init_ms: 1000,
-      period_max_ms:  30000,
-      period_increase_factor: 2.0,
-    },
+    endpoints: ["tcp/192.168.1.100:7447"],
+    timeout_ms: { client: 10000 },
+    exit_on_failure: { client: true },
   },
 
   scouting: {
-    // Clients can use multicast to find the router automatically
-    // if they don't know the router's IP in advance
-    multicast: {
-      enabled: true,
-      autoconnect: { client: ["router"] },
-    },
     timeout: 3000,
+    multicast: { enabled: false },
+    gossip:    { enabled: false },
   },
 }
 ```
 
 **Notes:**
-- If the router's address is known, set `scouting.multicast.enabled: false` and rely entirely on `connect.endpoints`.
-- The `exit_on_failure: false` combined with retry config lets clients survive router restarts.
-- If scouting is used for discovery, the client will connect to the first router it finds.
+- Clients use `exit_on_failure: true` so that a failed connection to the router causes the process to exit cleanly rather than silently dropping data.
+- Setting `timeout_ms` ensures the client doesn't wait indefinitely.
+- Scouting is disabled on both sides — the router's address is statically known.
 
 ---
 
 ### Pattern 3: Client + Router Cluster (High Availability)
 
-**Use case:** Production deployment where a single router is a single point of failure. Multiple routers are deployed, and clients connect to whichever is available.
-
-**Topology:**
+**Use case:** Multiple routers in a cluster provide redundancy. Clients connect to whichever router is available. If a router fails, the client reconnects to another.
 
 ```
-[Client] ──→ [Router 1] ←——→ [Router 2]
-                                  ↑
-[Client] ──────────────────────→─┘
+                ┌──────────────┐
+           ┌───▶│   Router A   │◀──────────────────────┐
+           │    └──────┬───────┘                       │
+           │           │ (router-to-router link)        │
+┌──────────┴┐   ┌──────▼───────┐                ┌──────┴────┐
+│  Client 1  │   │   Router B   │                │  Client 2  │
+└──────────┬┘   └──────────────┘                └──────┬────┘
+           │                                           │
+           └──────────────────┬────────────────────────┘
+                              │ (clients try both routers)
 ```
 
-The two routers are connected to each other so that messages published on one are forwarded to subscribers on the other. Clients list both routers in their `connect.endpoints` and will connect to the first available.
-
-**Router 1 config:**
+**Router A config (`router_a.json5`):**
 
 ```json5
-// router1.json5
 {
   mode: "router",
+  id: "router-a",
 
   listen: {
     endpoints: ["tcp/0.0.0.0:7447"],
   },
 
   connect: {
-    // Connect to router 2 to form a router mesh
-    endpoints: ["tcp/192.168.1.12:7447"],
-    exit_on_failure: { router: false },
-    retry: {
-      period_init_ms: 1000,
-      period_max_ms: 10000,
-      period_increase_factor: 2.0,
-    },
+    // Connect to Router B to form the cluster
+    endpoints: ["tcp/router-b.internal:7447"],
   },
 
   scouting: {
     multicast: { enabled: false },
     gossip: {
       enabled: true,
-      // Gossip to routers and peers; clients discover via connect endpoints
-      target: { router: ["router", "peer"] },
+      multihop: false,
     },
-  },
-
-  routing: {
-    router: {
-      peers_failover_brokering: true,
-      linkstate: {},
-    },
-  },
-
-  adminspace: {
-    enabled: true,
-    permissions: { read: true, write: false },
-  },
-}
-```
-
-**Router 2 config** — identical except it does not `connect` to Router 1 (Router 1 initiates), or both can initiate with idempotent connection handling:
-
-```json5
-// router2.json5
-{
-  mode: "router",
-
-  listen: {
-    endpoints: ["tcp/0.0.0.0:7447"],
-  },
-
-  // Router 2 also tries to connect to Router 1 for resilience
-  connect: {
-    endpoints: ["tcp/192.168.1.11:7447"],
-    exit_on_failure: { router: false },
-    retry: {
-      period_init_ms: 1000,
-      period_max_ms: 10000,
-      period_increase_factor: 2.0,
-    },
-  },
-
-  scouting: {
-    multicast: { enabled: false },
-    gossip: { enabled: true },
   },
 
   routing: {
@@ -400,98 +363,80 @@ The two routers are connected to each other so that messages published on one ar
 }
 ```
 
-**Client config (HA-aware):**
+**Router B config (`router_b.json5`):** Mirror of Router A with `connect` pointing to Router A.
+
+**Client config with HA failover (`client_ha.json5`):**
 
 ```json5
-// client_ha.json5
 {
   mode: "client",
 
   connect: {
-    // List both routers; client will connect to the first reachable one
+    // List multiple routers; zenoh will use the first available and reconnect on failure
     endpoints: [
-      "tcp/192.168.1.11:7447",
-      "tcp/192.168.1.12:7447",
+      "tcp/router-a.internal:7447",
+      "tcp/router-b.internal:7447",
     ],
-    exit_on_failure: { client: false },
+    timeout_ms: { client: 5000 },
+    exit_on_failure: { client: false },  // keep retrying, don't exit
     retry: {
-      period_init_ms: 500,
-      period_max_ms: 5000,
+      period_init_ms: 1000,
+      period_max_ms:  10000,
       period_increase_factor: 2.0,
     },
   },
 
   scouting: {
+    timeout: 5000,
     multicast: { enabled: false },
+    gossip:    { enabled: false },
   },
 }
 ```
 
 **Notes:**
-- The client connects to exactly one router at a time. If that router fails, the client retries the endpoint list.
-- The two routers maintain a session between themselves, so a subscriber on Router 2 receives publications from a client on Router 1.
-- `peers_failover_brokering: true` allows the router to broker messages between two peers that are both connected to it but not connected to each other.
+- Routers connect to each other, forming a small router mesh. Publications from a client on Router A reach subscribers on Router B automatically.
+- `peers_failover_brokering: true` allows a router to broker between two clients that are both connected to it but not to each other — useful when clients on the same router can't communicate directly.
+- The client's endpoint list is tried in order. On disconnect the client retries with exponential backoff.
 
 ---
 
-### Pattern 4: Multi-Hop Mesh (Routers Linking Network Segments)
+### Pattern 4: Multi-Hop Router Mesh
 
-**Use case:** Multiple network segments (factory floors, building wings, data center racks) each have their own local devices and a local router. The routers are connected over a WAN or management network to form a multi-hop topology.
-
-**Topology:**
+**Use case:** Multiple physically separated network segments (e.g., factory floors, buildings, data centers) each have a local router. These routers interconnect to form a WAN mesh. Peers and clients in each segment connect to their local router.
 
 ```
-Segment A                  WAN                  Segment B
-[Peer A1]─┐                                    ┌─[Peer B1]
-[Peer A2]─┼─→ [Router A] ←——— TCP ———→ [Router B] ←─┤
-[Peer A3]─┘        ↑                        ↑   └─[Peer B2]
-                   └──────── [Router C] ────┘
-                              ↑
-                         Segment C
+  Segment A                Segment B                Segment C
+┌────────────┐           ┌────────────┐           ┌────────────┐
+│  Peer A1   │           │  Peer B1   │           │  Peer C1   │
+│  Peer A2   │           │  Peer B2   │           │  Client C1 │
+│     │      │           │     │      │           │     │      │
+│  Router A  │───WAN────▶│  Router B  │───WAN────▶│  Router C  │
+└────────────┘           └────────────┘           └────────────┘
+                                ▲
+                                │ WAN
+                                ▼
+                         ┌────────────┐
+                         │  Router D  │  (hub/core router)
+                         └────────────┘
 ```
 
-**Router A config:**
+**Core router config (`router_core.json5`):**
 
 ```json5
-// router_segment_a.json5
 {
   mode: "router",
+  id: "router-core",
 
   listen: {
-    // Listen for local peers on the LAN
-    endpoints: [
-      "tcp/10.0.1.1:7447",    // local segment interface
-    ],
-  },
-
-  connect: {
-    // Connect to other routers over WAN
-    endpoints: [
-      "tcp/10.100.0.2:7447",  // Router B WAN address
-      "tcp/10.100.0.3:7447",  // Router C WAN address
-    ],
-    exit_on_failure: { router: false },
-    retry: {
-      period_init_ms: 2000,
-      period_max_ms:  60000,
-      period_increase_factor: 2.0,
-    },
+    endpoints: ["tcp/0.0.0.0:7447"],
   },
 
   scouting: {
-    // Use multicast locally to discover peers on the LAN
-    multicast: {
-      enabled: true,
-      interface: "eth0",       // LAN interface
-      ttl: 1,
-      autoconnect: { router: ["peer"] },
-      listen: { router: true },
-    },
+    multicast: { enabled: false },
     gossip: {
       enabled: true,
-      // Propagate peer discovery info to other routers via gossip
-      target: { router: ["router", "peer"] },
-      autoconnect: { router: ["peer"] },
+      multihop: false,   // router mesh uses linkstate, not gossip multihop
     },
   },
 
@@ -499,128 +444,149 @@ Segment A                  WAN                  Segment B
     router: {
       peers_failover_brokering: true,
       linkstate: {
-        // Optionally weight this router's links
-        transport_weights: [
-          // Lower weight = preferred path to Router B
-          // { dst_zid: "<router_b_zid>", weight: 50 }
-        ],
+        // Optional: tune weights for asymmetric WAN links
+        transport_weights: [],
       },
     },
   },
 
-  adminspace: { enabled: true },
+  adminspace: {
+    enabled: true,
+    permissions: { read: true, write: true },
+  },
 }
 ```
 
-**Peers on Segment A** use the standard peer config but with `autoconnect: { peer: ["router"] }` in multicast to ensure they connect to Router A:
+**Edge router config (`router_edge_a.json5`):**
 
 ```json5
-// peer_segment_a.json5
+{
+  mode: "router",
+  id: "router-edge-a",
+
+  listen: {
+    // Listen locally for peers/clients in Segment A
+    endpoints: ["tcp/0.0.0.0:7447"],
+  },
+
+  connect: {
+    // Connect to the core router (and optionally peer edge routers for redundancy)
+    endpoints: ["tcp/core-router.example.com:7447"],
+  },
+
+  scouting: {
+    // Allow local peers to discover this router via multicast
+    multicast: {
+      enabled: true,
+      address: "224.0.0.224:7446",
+      ttl: 1,
+      autoconnect: { router: "peer" },
+      listen: { router: true },
+    },
+    gossip: {
+      enabled: true,
+      multihop: false,
+    },
+  },
+
+  routing: {
+    router: {
+      peers_failover_brokering: true,
+    },
+  },
+}
+```
+
+**Local peer config (connects to edge router):**
+
+```json5
 {
   mode: "peer",
 
   scouting: {
+    delay: 200,
     multicast: {
       enabled: true,
-      interface: "eth0",
+      address: "224.0.0.224:7446",
       ttl: 1,
-      autoconnect: {
-        peer: ["router", "peer"],  // connect to router and other local peers
-      },
-      autoconnect_strategy: {
-        peer: {
-          peer: "greater_zid",
-          router: "always",
-        }
-      },
+      // Connect to routers found via multicast, and to other local peers
+      autoconnect: { peer: "peer|router" },
+      autoconnect_strategy: { peer: { peer: "greater-zid", router: "always" } },
       listen: { peer: true },
     },
     gossip: {
       enabled: true,
-      multihop: true,   // needed for cross-segment peer discovery
+      multihop: false,
+      autoconnect: { peer: "router" },
     },
   },
 
   routing: {
     peer: {
-      mode: "linkstate",  // needed for multi-hop peer routing
+      mode: "peer_to_peer",
     },
   },
 }
 ```
 
 **Notes:**
-- Router-to-router links carry traffic between segments. Each router is responsible for routing local traffic to and from remote segments.
-- `gossip.multihop: true` on peers allows them to discover peers in other segments via the router chain.
-- Link-state weights allow traffic engineering: you can prefer certain inter-router links over others.
+- Router-to-router links form the WAN backbone. Routers exchange linkstate so each knows the full router topology.
+- Local peers use multicast to find their segment's router; the router's `listen` on multicast enables it to respond to scout messages.
+- The core router can be a single point of failure — for production, deploy Router D with redundant connections and use a VIP or load-balancer.
 
 ---
 
 ### Pattern 5: Cloud + Edge
 
-**Use case:** Edge devices (cameras, sensors, PLCs) at remote sites connect to a centralized cloud router cluster. The cloud exposes data to analytics applications and dashboards.
-
-**Topology:**
+**Use case:** Edge devices (industrial controllers, cameras, sensors) run as clients or peers. A cloud-hosted router cluster aggregates all data and exposes it to cloud-based analytics, dashboards, or storage.
 
 ```
-Cloud Region
-┌────────────────────────────────┐
-│  [Cloud Router 1]              │
-│         ↕  (router mesh)       │
-│  [Cloud Router 2]              │
-└───────────┬────────────────────┘
-            │ Internet / VPN
-     ┌──────┴──────┐
-     ↓             ↓
-[Edge Router A]  [Edge Router B]
-  ↓    ↓           ↓     ↓
-[Dev] [Dev]      [Dev]  [Dev]
+         CLOUD
+┌─────────────────────────┐
+│   ┌──────────┐          │
+│   │ Router 1 │          │
+│   └────┬─────┘          │
+│        │                │
+│   ┌────▼─────┐          │
+│   │ Router 2 │          │
+│   └──────────┘          │
+│        ▲                │
+└────────┼────────────────┘
+         │  TLS/QUIC over internet
+    ┌────┴─────────────────────────┐
+    │  EDGE SITE                   │
+    │  ┌──────────┐  ┌──────────┐  │
+    │  │ Client 1 │  │ Client 2 │  │
+    │  └──────────┘  └──────────┘  │
+    └──────────────────────────────┘
 ```
 
-**Cloud router config:**
+**Cloud router config (`cloud_router.json5`):**
 
 ```json5
-// cloud_router.json5
 {
   mode: "router",
+  id: "cloud-router-1",
 
   listen: {
-    endpoints: [
-      "tcp/0.0.0.0:7447",
-      // TLS for external connections from edge
-      "tls/0.0.0.0:7448",
-    ],
-  },
-
-  connect: {
-    // Connect to peer cloud router(s)
-    endpoints: ["tcp/10.0.0.2:7447"],  // internal cloud network
-    exit_on_failure: { router: false },
-    retry: {
-      period_init_ms: 1000,
-      period_max_ms: 10000,
-      period_increase_factor: 2.0,
-    },
-  },
-
-  scouting: {
-    // No multicast in cloud
-    multicast: { enabled: false },
-    gossip: {
-      enabled: true,
-      target: { router: ["router"] },
-    },
+    // Accept TLS connections from edge clients
+    endpoints: ["tls/0.0.0.0:7447"],
   },
 
   transport: {
     link: {
       tls: {
-        listen_certificate: "/etc/zenoh/certs/server.pem",
-        listen_private_key: "/etc/zenoh/certs/server.key",
-        root_ca_certificate: "/etc/zenoh/certs/ca.pem",
-        enable_mtls: true,
+        listen_private_key: "/etc/zenoh/server.key",
+        listen_certificate: "/etc/zenoh/server.crt",
+        root_ca_certificate: "/etc/zenoh/ca.crt",
+        enable_mtls: true,   // require client certificates for mutual auth
       },
     },
+  },
+
+  scouting: {
+    multicast: { enabled: false },
+    gossip:    { enabled: true, multihop: false },
   },
 
   routing: {
@@ -629,181 +595,141 @@ Cloud Region
     },
   },
 
-  adminspace: { enabled: true },
+  adminspace: {
+    enabled: true,
+    permissions: { read: true, write: false },
+  },
 }
 ```
 
-**Edge router config:**
+**Edge client config (`edge_client.json5`):**
 
 ```json5
-// edge_router.json5
 {
-  mode: "router",
-
-  listen: {
-    // Listen for local edge devices on LAN
-    endpoints: ["tcp/192.168.10.1:7447"],
-  },
+  mode: "client",
 
   connect: {
-    // Connect to cloud router(s) over TLS
     endpoints: [
-      "tls/cloud-router-1.example.com:7448",
-      "tls/cloud-router-2.example.com:7448",
+      "tls/cloud-router-1.example.com:7447",
+      "tls/cloud-router-2.example.com:7447",
     ],
-    exit_on_failure: { router: false },
+    timeout_ms: { client: 15000 },
+    exit_on_failure: { client: false },
     retry: {
-      period_init_ms: 5000,
-      period_max_ms:  120000,
+      period_init_ms: 2000,
+      period_max_ms:  60000,
       period_increase_factor: 2.0,
     },
-  },
-
-  scouting: {
-    // Multicast to find local edge devices
-    multicast: {
-      enabled: true,
-      interface: "eth1",  // LAN-facing interface
-      ttl: 1,
-      autoconnect: { router: ["peer", "client"] },
-      listen: { router: true },
-    },
-    gossip: { enabled: true },
   },
 
   transport: {
     link: {
       tls: {
-        root_ca_certificate: "/etc/zenoh/certs/ca.pem",
-        connect_certificate: "/etc/zenoh/certs/edge-client.pem",
-        connect_private_key: "/etc/zenoh/certs/edge-client.key",
+        root_ca_certificate: "/etc/zenoh/ca.crt",
+        connect_private_key: "/etc/zenoh/edge-device.key",
+        connect_certificate:  "/etc/zenoh/edge-device.crt",
         verify_name_on_connect: true,
       },
     },
   },
 
-  routing: {
-    router: {
-      peers_failover_brokering: true,
-    },
-  },
-}
-```
-
-**Edge device (client) config:**
-
-```json5
-// edge_device_client.json5
-{
-  mode: "client",
-
-  connect: {
-    // Connect to local edge router
-    endpoints: ["tcp/192.168.10.1:7447"],
-    exit_on_failure: { client: false },
-    retry: {
-      period_init_ms: 1000,
-      period_max_ms: 30000,
-      period_increase_factor: 2.0,
-    },
-  },
-
   scouting: {
-    multicast: {
-      enabled: true,
-      // Will auto-find the edge router via multicast if IP unknown
-      autoconnect: { client: ["router"] },
-    },
-    timeout: 5000,
+    timeout: 10000,
+    multicast: { enabled: false },
+    gossip:    { enabled: false },
   },
 }
 ```
 
 **Notes:**
-- Mutual TLS (mTLS) is strongly recommended for cloud-facing links. The `enable_mtls: true` setting on the cloud router, combined with client certificates on edge routers, ensures bidirectional authentication.
-- The edge router bridges the local LAN (multicast-based discovery) to the cloud (static TLS connections).
-- If the cloud connection drops, edge devices can still communicate locally through the edge router.
+- Use `tls` or `quic` locators for encrypted WAN transport. Mutual TLS ensures both the server and the device are authenticated.
+- Exponential backoff retry (`period_increase_factor: 2.0`) prevents thundering-herd reconnects if the cloud router restarts.
+- `exit_on_failure: false` allows edge devices to keep running and buffer data locally while the cloud is unreachable (combine with `zenoh-ext` AdvancedPublisher for reliable delivery).
 
 ---
 
 ### Pattern 6: Isolated Peer Groups
 
-**Use case:** Multiple independent peer groups on the same physical network (e.g., multiple robot teams in the same building) that must not interfere with each other. Each group forms its own mesh, invisible to the others.
+**Use case:** Multiple independent peer meshes coexist on the same network segment but must not discover or connect to each other. For example, a factory with separate production lines, or a test environment alongside production.
 
-**The isolation problem:** If all groups use the default multicast address `224.0.0.224:7446`, they will discover each other and potentially cross-connect.
+**Isolation mechanisms:**
 
-**Two isolation approaches:**
+1. **Different multicast addresses** — the most reliable isolation method
+2. **Different network interfaces** — if groups are on separate VLANs
+3. **Disabled scouting + static connect** — total isolation, fully manual topology
 
-#### Approach A: Different Multicast Addresses
-
-Give each group a distinct multicast group address and/or port:
+**Group A config (`peer_group_a.json5`):**
 
 ```json5
-// group_alpha.json5
 {
   mode: "peer",
+  id: "peer-group-a-1",
+
   scouting: {
+    delay: 200,
     multicast: {
       enabled: true,
-      address: "224.0.0.225:7446",  // Group Alpha's exclusive address
+      // Use a non-default multicast address for Group A
+      address: "224.0.0.1:7446",
+      interface: "eth0",
       ttl: 1,
-      autoconnect: { peer: ["peer"] },
-      autoconnect_strategy: { peer: { peer: "greater_zid" } },
+      autoconnect: { peer: "peer" },
+      autoconnect_strategy: { peer: { peer: "greater-zid" } },
+      listen: { peer: true },
     },
-    gossip: { enabled: true },
+    gossip: {
+      enabled: true,
+      multihop: false,
+      autoconnect: { peer: "peer" },
+    },
   },
-  routing: { peer: { mode: "peer_to_peer" } },
+
+  routing: {
+    peer: {
+      mode: "peer_to_peer",
+    },
+  },
 }
 ```
 
+**Group B config (`peer_group_b.json5`):**
+
 ```json5
-// group_beta.json5
 {
   mode: "peer",
+  id: "peer-group-b-1",
+
   scouting: {
+    delay: 200,
     multicast: {
       enabled: true,
-      address: "224.0.0.226:7446",  // Group Beta's exclusive address
+      // Different multicast address — Group B peers never see Group A scouts
+      address: "224.0.0.2:7446",
+      interface: "eth0",
       ttl: 1,
-      autoconnect: { peer: ["peer"] },
-      autoconnect_strategy: { peer: { peer: "greater_zid" } },
+      autoconnect: { peer: "peer" },
+      autoconnect_strategy: { peer: { peer: "greater-zid" } },
+      listen: { peer: true },
     },
-    gossip: { enabled: true },
+    gossip: {
+      enabled: true,
+      multihop: false,
+      autoconnect: { peer: "peer" },
+    },
   },
-  routing: { peer: { mode: "peer_to_peer" } },
-}
-```
 
-#### Approach B: Disable Multicast, Use Static Endpoints
-
-Each group disables multicast scouting and uses explicit connect addresses:
-
-```json5
-// group_alpha_node.json5
-{
-  mode: "peer",
-  scouting: {
-    multicast: { enabled: false },  // No cross-group discovery
-    gossip: { enabled: true },
+  routing: {
+    peer: {
+      mode: "peer_to_peer",
+    },
   },
-  connect: {
-    // Only connect to known members of this group
-    endpoints: [
-      "tcp/10.0.1.11:7447",
-      "tcp/10.0.1.12:7447",
-    ],
-  },
-  listen: {
-    endpoints: ["tcp/0.0.0.0:7447"],
-  },
-  routing: { peer: { mode: "peer_to_peer" } },
 }
 ```
 
 **Notes:**
-- Different multicast addresses is simpler to manage as group membership grows.
-- Static endpoints are more secure but require updating configs when nodes are added.
-- VLANs at the network layer provide the strongest isolation, but Zenoh-level isolation (different multicast groups) is practical when VLAN configuration is not available.
+- Since `224.0.0.1` and `224.0.0.2` are different multicast groups, the two sets of peers are completely invisible to each other at the scouting level.
+- Combine with key-expression namespacing (`namespace: "group_a"`) to prevent accidental subscription overlap even if the transport isolation is ever bridged.
+- For strict security isolation, also bind listeners to specific interfaces and use ACL rules.
 
 ---
 
@@ -811,70 +737,48 @@ Each group disables multicast scouting and uses explicit connect addresses:
 
 ### 4.1 Peer Routing: `peer_to_peer` vs `linkstate`
 
-The `routing.peer.mode` field controls how peers route messages in a peer mesh. This setting **must be consistent across all peers and routers in a deployment**.
+The `routing.peer.mode` setting controls how peers route publications when they have multiple paths available.
 
 #### `peer_to_peer` (default)
 
-In `peer_to_peer` mode, a peer only routes messages along its directly established transport sessions. It does not maintain or exchange a global topology map.
-
-- **Subscription propagation**: When peer A subscribes to key expression `foo/**`, it declares that interest to all peers directly connected to it. Those peers will forward matching publications to A.
-- **Scope**: Only works across direct connections. If peer A is connected to peer B, and B is connected to peer C, but A is not directly connected to C, then A will not receive publications from C (unless the router provides failover brokering).
-- **Best for**: Small-to-medium fully connected meshes (all peers connected to all others). Most LAN deployments.
-- **Scalability**: O(n²) connections; practical up to tens of peers.
-
 ```json5
-routing: {
-  peer: {
-    mode: "peer_to_peer",
-  },
-}
+routing: { peer: { mode: "peer_to_peer" } }
 ```
+
+- Each peer forwards a message on **all** outgoing links to neighbors that have expressed interest.
+- Simple and low-overhead; no global topology state is maintained.
+- Best when all peers are fully or nearly fully connected (i.e., every peer can directly reach every other peer on the LAN).
+- Does **not** handle multi-hop routing within the peer subsystem — if Peer A cannot reach Peer C directly, messages will not route through Peer B.
 
 #### `linkstate`
 
-In `linkstate` mode, every peer exchanges its full link-state (what it is connected to) with every other peer in the network. Each node builds a global graph and computes shortest paths.
-
-- **Multi-hop routing**: Peer A can route messages to peer C via peer B even without a direct A↔C connection. This allows sparse mesh topologies.
-- **Gossip required**: `scouting.gossip.multihop: true` should be enabled so that nodes learn about each other beyond one hop.
-- **State overhead**: Each peer maintains the full topology graph. This increases memory and CPU usage as the network grows.
-- **Best for**: Large peer networks, cases where direct full-mesh connectivity is not possible (e.g., mixed wired/wireless with range limitations), or geographic deployments.
-
 ```json5
-routing: {
-  peer: {
-    mode: "linkstate",
-  },
-  // Also enable multihop gossip for multi-hop peer discovery
-}
+routing: { peer: { mode: "linkstate" } }
 ```
 
-Combined with multihop gossip:
+- Peers exchange linkstate advertisements to build a complete map of the peer-to-peer topology.
+- Shortest-path routing is computed; messages hop through intermediate peers when no direct link exists.
+- Required for **multi-hop peer meshes** where not all peers are directly connected.
+- Increases scouting and routing overhead. Enable `gossip.multihop: true` so discovery propagates across the entire mesh.
+- **All peers and routers in the subsystem must use the same mode.** Mixing `peer_to_peer` and `linkstate` leads to undefined routing behavior.
 
-```json5
-{
-  mode: "peer",
-  scouting: {
-    gossip: {
-      enabled: true,
-      multihop: true,
-      autoconnect: { peer: ["peer", "router"] },
-    },
-    multicast: {
-      enabled: true,
-      autoconnect: { peer: ["peer", "router"] },
-    },
-  },
-  routing: {
-    peer: {
-      mode: "linkstate",
-    },
-  },
-}
+```
+When to use linkstate:
+  ✓ Peer mesh spans multiple hops (e.g., wireless mesh, serial chains)
+  ✓ Not all peers are directly reachable from each other
+  ✓ You need optimal routing across a large peer network
+
+When to use peer_to_peer:
+  ✓ All peers on the same LAN segment with direct connectivity
+  ✓ Small number of peers (<20)
+  ✓ Lowest possible routing overhead required
 ```
 
-### 4.2 Router Link-State
+### 4.2 Router Linkstate
 
-Router-to-router routing always uses link-state. The `routing.router.linkstate` section configures per-link weights for traffic engineering:
+Routers always use linkstate routing among themselves — this is not configurable. Every router advertises its connections to all other routers, enabling the full router mesh to compute optimal paths.
+
+The `routing.router.linkstate.transport_weights` option assigns weights to specific router-to-router links, influencing path selection in asymmetric topologies:
 
 ```json5
 routing: {
@@ -882,31 +786,56 @@ routing: {
     linkstate: {
       transport_weights: [
         {
-          // Prefer traffic to this specific router over a faster link
           dst_zid: "aabbccddeeff00112233445566778899",
-          weight: 50,  // Lower weight = preferred (like OSPF cost)
-        },
-        {
-          dst_zid: "112233445566778899aabbccddeeff00",
-          weight: 200,  // Higher weight = backup path
+          weight: 200,   // higher weight = less preferred
         },
       ],
     },
   },
-}
+},
 ```
 
-**Weight semantics:**
-- If neither endpoint specifies a weight, the default weight of `100` is used.
-- If only one endpoint specifies a weight, that weight is used.
-- If both specify weights, the **greater** value is applied (conservative approach: the link is as slow as its slowest estimator).
+**Weight semantics:** If neither endpoint specifies a weight, the link defaults to weight 100. If one endpoint specifies a weight, that value is used. If both specify weights, the **greater** value is used (conservative — the higher cost wins to avoid loops and asymmetric routing).
 
 ### 4.3 Failover Brokering (`peers_failover_brokering`)
 
-When two peers are both connected to the same router but not directly connected to each other, normally they cannot communicate in `peer_to
+```json5
+routing: {
+  router: {
+    peers_failover_brokering: true,
+  },
+},
+```
+
+When enabled, a router monitors which of its directly-connected peers are also connected to each other (via gossip). If two peers are both connected to the router but **not** to each other, the router proactively routes messages between them, acting as a broker.
+
+This is essentially a "soft mesh" feature: peers that would normally only communicate through a direct link can fall back to using the router as an intermediary when the direct link is absent or unavailable. Requires gossip scouting to be enabled (the router uses gossip information to detect peer-to-peer connectivity).
+
 ---
 
-## See Also
-- [transports.md](transports.md) — Transport protocols for inter-node communication
-- [configuration.md](configuration.md) — Full configuration reference
-- [ros2.md](ros2.md) — Deploying zenoh as a ROS 2 middleware bridge
+## 5. zenohd Router Daemon
+
+### 5.1 Starting zenohd
+
+```bash
+# From a binary installation
+zenohd
+
+# With a configuration file
+zenohd --config /etc/zenoh/router.json5
+
+# With individual config overrides (JSON5 key=value pairs)
+zenohd --config /etc/zenoh/router.json5 \
+       --cfg "listen/endpoints:[\"tcp/0.0.0.0:7448\"]" \
+       --cfg "adminspace/enabled:true"
+
+# From source with cargo
+cargo run --release --bin zenohd -- --config DEFAULT_CONFIG.json5
+```
+
+**Command-line flags:**
+
+| Flag | Description |
+|---|---|
+| `--config <path>` | Path to a JSON5, YAML, or JSON config file |
+| `--cfg <key=value>` | Override a single config key

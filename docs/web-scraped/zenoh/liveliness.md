@@ -7,38 +7,42 @@
 3. [How It Works](#how-it-works)
 4. [Key Expressions for Liveliness](#key-expressions-for-liveliness)
 5. [API Reference](#api-reference)
-   - [Accessing the Liveliness API](#accessing-the-liveliness-api)
-   - [Declaring a Liveliness Token](#declaring-a-liveliness-token)
-   - [Subscribing to Liveliness Changes](#subscribing-to-liveliness-changes)
-   - [Querying Currently Alive Tokens](#querying-currently-alive-tokens)
-6. [Liveliness vs. Regular Pub/Sub](#liveliness-vs-regular-pubsub)
-7. [Worked Example: Service Registry](#worked-example-service-registry)
-8. [Comparison with ROS 2 Graph Events](#comparison-with-ros-2-graph-events)
-9. [Known Limitations and Edge Cases](#known-limitations-and-edge-cases)
+6. [Difference from Regular Pub/Sub](#difference-from-regular-pubsub)
+7. [Worked Example: Service Registry Pattern](#worked-example-service-registry-pattern)
+8. [Difference from ROS 2 Graph Events](#difference-from-ros-2-graph-events)
 
 ---
 
 ## What Is Liveliness?
 
-Liveliness is a **token-based presence detection** mechanism built into Zenoh's routing layer. It is not a messaging pattern — it does not send data payloads between applications. Instead, it answers one question:
+Liveliness is a **token-based presence detection** mechanism built into Zenoh. It lets any application in the system declare that it is "alive" by publishing a named token, and lets other applications observe when those tokens appear or disappear — without requiring any application-level heartbeat logic.
 
-> *Is this logical entity currently alive and reachable on the network?*
+A **liveliness token** is a named object tied to a Zenoh session. It is:
 
-A **liveliness token** is a handle declared by a Zenoh session on a key expression. While that token exists and its declaring session is reachable, any other session in the system can observe the token as *alive*. When the token is dropped, undeclared, or its declaring session disconnects or crashes, the token is automatically seen as *gone*.
+- Declared on a **key expression** that names the entity.
+- **Alive** for exactly as long as the declaring session is alive and has network connectivity to the observer.
+- **Automatically removed** — without any application code — when the session closes, crashes, or loses connectivity.
 
-This is distinct from heartbeat-based presence systems (like Zenoh's group management in `zenoh-ext`). Those require each participant to periodically broadcast a message to prove it is alive. Liveliness tokens instead rely on the liveness of the underlying Zenoh transport session itself — no polling, no heartbeats, no periodic traffic.
+This is fundamentally different from regular pub/sub, where the application must explicitly publish a "goodbye" message before shutting down. With liveliness, the infrastructure itself detects and propagates the disappearance.
 
+```rust
+// Declare a token. While `token` is in scope and the session is alive,
+// remote observers see this entity as present.
+let session = zenoh::open(zenoh::Config::default()).await.unwrap();
+let token = session
+    .liveliness()
+    .declare_token("robots/robot-42/navigation")
+    .await
+    .unwrap();
+
+// When `token` is dropped — or the process crashes — the infrastructure
+// automatically notifies all observers that "robots/robot-42/navigation"
+// is gone. No explicit cleanup code required.
 ```
-Node A declares token "services/camera/front"
-        │
-        ├── Node B subscribes → receives Put("services/camera/front")
-        │
-        │   ... time passes ...
-        │
-        └── Node A crashes or loses connectivity
-                │
-                └── Node B receives Delete("services/camera/front")
-```
+
+### Multiple Tokens on the Same Key
+
+If multiple sessions declare tokens on the same key expression, the key is considered alive as long as **at least one** of those tokens exists. It only becomes "dead" when the **last** token on that key is dropped or the last declaring session disconnects.
 
 ---
 
@@ -46,19 +50,31 @@ Node A declares token "services/camera/front"
 
 ### Service Discovery
 
-Nodes can advertise their availability by declaring a liveliness token on a structured key expression such as `services/<type>/<instance-id>`. Other nodes query the liveliness space at startup to find currently running services, and subscribe to receive notifications as services come and go.
+Microservices or robot nodes declare a liveliness token when they start. Other nodes subscribe to the token namespace to learn which services are currently available, without polling or maintaining a central registry.
+
+```
+services/image-processor/node-a
+services/path-planner/node-b
+services/localization/node-c
+```
+
+When `node-b`'s process is killed, a `Delete` event is automatically delivered to all subscribers of `services/**`.
 
 ### Health Monitoring
 
-An operator dashboard can subscribe to `nodes/**` and receive real-time `Put`/`Delete` events as compute nodes join and leave the system. No polling or dedicated health-check protocols are needed.
+A watchdog process subscribes to `fleet/**`. Each vehicle declares a token under `fleet/<vehicle-id>`. The watchdog receives a `Delete` sample the moment any vehicle loses connectivity, without the vehicle needing to send a shutdown message.
 
 ### Detecting Node Failures
 
-Because liveliness cleanup is performed by the routing infrastructure — not the application — a crashed node (one that did not call `close()` or `undeclare()`) is handled identically to a graceful shutdown. Subscribers see a `Delete` event either way, as soon as connectivity to the dead node is lost.
+Unlike application-level health checks (which require the application to be responsive enough to send a heartbeat), liveliness detection works at the **transport session** level. If a node is alive but stuck in an infinite loop and cannot send heartbeats, it may falsely appear healthy to application-level monitors. Liveliness tokens are managed by Zenoh's routing layer, so they disappear as soon as the underlying transport session is lost — even if the application code is frozen.
 
 ### Presence Notifications
 
-In multi-robot or distributed sensor systems, each agent declares a token under its own identity key. Other agents subscribe to the entire fleet namespace and maintain a live roster without any application-level coordination protocol.
+Chat systems, collaborative editors, and multi-robot coordination all benefit from knowing which participants are currently online. Liveliness tokens provide this with zero application-level bookkeeping.
+
+### Dynamic Subscription Routing
+
+A data broker can subscribe to `sources/**` liveliness events and use them to dynamically set up or tear down forwarding pipelines whenever a new data source appears or disappears.
 
 ---
 
@@ -66,100 +82,120 @@ In multi-robot or distributed sensor systems, each agent declares a token under 
 
 ### Liveliness Tokens
 
-A liveliness token is declared by calling `session.liveliness().declare_token(key_expr)`. Internally, this registers the token with the Zenoh routing layer, which propagates knowledge of the token's existence to interested subscribers across the network.
+A liveliness token is declared on a **key expression**. The key expression is the public name of the entity — it is what other nodes use to identify it.
 
-A token is considered *alive* for as long as **all three** of these conditions hold:
+Internally, Zenoh's routing layer tracks which sessions have declared which tokens. This state is propagated through the router network so that any application anywhere in the system can observe it.
 
-1. The token has not been explicitly undeclared or dropped.
-2. The Zenoh session that declared the token has not stopped or crashed.
-3. There is Zenoh connectivity between the declaring session and the observing session.
+### Lifecycle and Automatic Cleanup
 
-If any condition becomes false, the token is seen as *dropped* by all remote observers.
+A token's liveliness ends under any of the following conditions:
 
-### Automatic Cleanup on Session Close
+| Condition | Effect |
+|---|---|
+| `token.undeclare().await` called | Token is explicitly removed; observers receive `Delete` |
+| `token` is dropped | Token is automatically undeclared; observers receive `Delete` |
+| The declaring session is closed | All tokens from that session are removed |
+| The declaring process crashes | Transport session is lost; routers propagate `Delete` |
+| Network partition separates declarer from observer | Observers on the isolated side receive `Delete` for all tokens they can no longer reach |
 
-The automatic cleanup is the key property that distinguishes liveliness from regular pub/sub. When a session closes — whether gracefully or due to a crash — the Zenoh routers that were relaying that session's liveliness tokens automatically propagate `Delete` events to all matching subscribers. The application does not need to send any final message; the infrastructure handles it.
+```rust
+// Explicit undeclaration
+token.undeclare().await.unwrap();
 
-This cleanup is tied to the **transport session liveliness**: routers detect when a transport connection drops and immediately notify downstream subscribers.
+// Or just let it drop — same effect
+drop(token);
+```
 
-### Multiple Tokens on the Same Key
+The `#[must_use]` attribute on `LivelinessToken` ensures you bind it to a variable. Failing to do so causes an immediate drop and immediate undeclaration:
 
-If multiple sessions declare tokens on the same key expression, that key is considered *alive* until the **last** token is dropped. The first declaration triggers a `Put` event; subsequent declarations on the same key from different sessions do not trigger additional events. Only when the final token disappears does a `Delete` event propagate.
+```rust
+// WARNING: this token is immediately dropped and undeclared!
+session.liveliness().declare_token("my/service").await.unwrap();
+
+// CORRECT: bind to a variable to keep it alive
+let _token = session.liveliness().declare_token("my/service").await.unwrap();
+```
 
 ### Network Partitions
 
-In a network partition scenario, behavior is partition-local:
+If a client application subscribing to liveliness events loses all connectivity (e.g., its router goes down), the Zenoh infrastructure signals the loss of **all** previously known tokens by delivering a synthetic `Delete` with key `**`. This tells the application that its entire view of the system is now stale, without requiring the infrastructure to enumerate every individual token the client was tracking.
 
-- Sessions that retain connectivity to the declaring node continue to see the token as *alive*.
-- Sessions that lose connectivity to the declaring node see the token as *dropped* and receive a `Delete` event.
+### Routing Layer Integration
 
-This is the correct behavior: from the perspective of a partitioned observer, the entity is genuinely unreachable and should be treated as gone.
+Liveliness is implemented at the **routing layer**, not the application layer. This means:
 
-### Connectivity Loss for Subscribers
-
-When a subscriber session itself loses all connectivity (e.g., a client that cannot reach its router), it cannot know the current state of any token. To signal this condition, the infrastructure delivers a synthetic `Delete` on key `**` to matching liveliness subscribers. Applications should interpret this as "all previously known tokens are now unknown" and treat the liveliness state as invalidated until connectivity is restored.
+- No periodic heartbeat messages are required.
+- The overhead scales with the number of **declared tokens**, not the number of nodes observing them.
+- Detection latency is bounded by the underlying transport session detection timeout, not by a heartbeat interval.
 
 ---
 
 ## Key Expressions for Liveliness
 
-Liveliness tokens use the same key expression syntax as regular Zenoh resources. There are no special reserved prefixes enforced by the API — the `@/liveliness/` namespace is used internally by the routing layer, but applications declare tokens using their own logical key expressions.
+Liveliness tokens use **standard Zenoh key expressions**. There is no special namespace prefix required in your application code — you choose the key expression schema that makes sense for your system.
 
-**Recommended conventions:**
+### Recommended Conventions
+
+**Group/Member pattern** (most common):
 
 ```
-# Group membership
-<group-name>/<member-id>
-robots/rover_01
-robots/rover_02
-
-# Typed service registry
-services/<service-type>/<instance-id>
-services/camera/front_left
-services/lidar/top
-
-# Hierarchical node registry
-nodes/<datacenter>/<rack>/<node-id>
-nodes/us-east/rack-3/worker-07
-
-# Application-specific namespaces
-myapp/workers/**
-myapp/workers/alpha
+<group>/<member-id>
 ```
 
-**Wildcard queries** use standard Zenoh wildcards:
+Example: `robots/arm-controller-1`, `fleet/truck-007`, `services/localization`
 
-- `*` matches a single path segment: `robots/*` matches `robots/rover_01` but not `robots/fleet/rover_01`.
-- `**` matches any number of segments: `services/**` matches all services at any depth.
+**Hierarchical role pattern** (for systems with multiple entity types):
 
-Choose key expressions that reflect the logical structure of your system. Hierarchical naming makes it easy to subscribe to subsets of the presence space — for example, subscribing to `services/camera/**` to watch only camera services.
+```
+<system>/<subsystem>/<role>/<instance-id>
+```
+
+Example: `factory/line-a/sensor/temp-42`, `factory/line-a/actuator/motor-7`
+
+**Session-scoped pattern** (when you need to associate tokens with session identities):
+
+```
+<group>/<zenoh-session-id>
+```
+
+This is useful when one session may declare multiple tokens and you want to correlate all tokens from the same session.
+
+### Wildcard Queries and Subscriptions
+
+Key expression wildcards work exactly as they do in regular Zenoh:
+
+| Key Expression | Matches |
+|---|---|
+| `robots/*` | All direct children: `robots/arm-1`, `robots/base-2`, etc. |
+| `robots/**` | All descendants at any depth |
+| `**/localization` | Any entity named `localization` anywhere in the hierarchy |
+| `fleet/truck-*/navigation` | Navigation component of any truck |
+
+```rust
+// Subscribe to all members of group1
+let sub = session.liveliness().declare_subscriber("group1/**").await.unwrap();
+
+// Query all alive robots
+let replies = session.liveliness().get("robots/**").await.unwrap();
+```
+
+### Avoiding Conflicts with Regular Key Expressions
+
+Liveliness tokens occupy a **separate internal namespace** managed by Zenoh. You do not need to prefix your liveliness keys to avoid collisions with regular publisher/subscriber key expressions. A token declared on `robots/arm-1` does not conflict with a publisher writing data to `robots/arm-1`.
 
 ---
 
 ## API Reference
 
-### Accessing the Liveliness API
-
-All liveliness operations are accessed through the `Liveliness` struct, obtained from an open session:
+All liveliness functions are accessed through `session.liveliness()`, which returns a `Liveliness` struct bound to the session's lifetime.
 
 ```rust
-use zenoh::Config;
-
-#[tokio::main]
-async fn main() {
-    let session = zenoh::open(Config::default()).await.unwrap();
-    let liveliness = session.liveliness();
-    // liveliness.declare_token(...)
-    // liveliness.declare_subscriber(...)
-    // liveliness.get(...)
-}
+let liveliness = session.liveliness();
 ```
-
-The `Liveliness` struct is a lightweight wrapper; it holds a reference to the session and incurs no additional overhead.
 
 ---
 
-### Declaring a Liveliness Token
+### `declare_token` — Announce Presence
 
 ```rust
 pub fn declare_token<'b, TryIntoKeyExpr>(
@@ -168,15 +204,11 @@ pub fn declare_token<'b, TryIntoKeyExpr>(
 ) -> LivelinessTokenBuilder<'a, 'b>
 ```
 
-**Returns:** A `LivelinessTokenBuilder` that resolves (via `.await`) to a `LivelinessToken`.
+Declares a liveliness token on the given key expression. Returns a builder that resolves to a `LivelinessToken` upon `.await`.
 
-**Behavior:**
+**The returned `LivelinessToken` must be bound to a variable.** It is annotated `#[must_use]`; dropping it immediately undeclares the token.
 
-- Declaring the token causes all matching liveliness subscribers in the system to receive a `SampleKind::Put` event.
-- The token remains alive until it is dropped or explicitly undeclared.
-- `LivelinessToken` is annotated with `#[must_use]` — if the returned value is not bound to a variable, it is immediately dropped and the token never actually becomes active.
-
-#### Declaring a token
+#### Example
 
 ```rust
 use zenoh::Config;
@@ -185,62 +217,32 @@ use zenoh::Config;
 async fn main() {
     let session = zenoh::open(Config::default()).await.unwrap();
 
-    // Declare a liveliness token. The token is alive for as long as
-    // `token` is in scope and this session is connected.
+    // Declare the token. This node is now "alive" as "group1/member1".
     let token = session
         .liveliness()
-        .declare_token("robots/rover_01")
+        .declare_token("group1/member1")
         .await
         .unwrap();
 
-    println!("Token is alive. Press CTRL-C to exit.");
+    println!("Token declared. Press Ctrl-C to exit.");
     tokio::signal::ctrl_c().await.unwrap();
 
-    // Token is automatically undeclared when dropped.
-    // Equivalent to: token.undeclare().await.unwrap();
-    drop(token);
-}
-```
-
-#### Explicitly undeclaring a token
-
-```rust
-use zenoh::Config;
-
-#[tokio::main]
-async fn main() {
-    let session = zenoh::open(Config::default()).await.unwrap();
-
-    let token = session
-        .liveliness()
-        .declare_token("robots/rover_01")
-        .await
-        .unwrap();
-
-    // ... do work ...
-
-    // Explicit undeclaration. Subscribers will receive a Delete event.
+    // Explicit undeclaration — optional, dropping `token` has the same effect.
     token.undeclare().await.unwrap();
-
-    // The session remains open; only the token is gone.
 }
 ```
 
-#### The `#[must_use]` rule
+#### `LivelinessToken` Methods
 
-This is a common mistake:
+| Method | Description |
+|---|---|
+| `token.undeclare()` | Explicitly undeclares the token. Returns a `Resolve<ZResult<()>>`. |
 
-```rust
-// WRONG: token is immediately dropped; it is never actually alive
-session.liveliness().declare_token("robots/rover_01").await.unwrap();
-
-// CORRECT: bind to a variable
-let _token = session.liveliness().declare_token("robots/rover_01").await.unwrap();
-```
+Dropping a `LivelinessToken` without calling `undeclare()` is safe and correct — Zenoh will automatically undeclare it.
 
 ---
 
-### Subscribing to Liveliness Changes
+### `declare_subscriber` — Watch for Presence Changes
 
 ```rust
 pub fn declare_subscriber<'b, TryIntoKeyExpr>(
@@ -249,18 +251,23 @@ pub fn declare_subscriber<'b, TryIntoKeyExpr>(
 ) -> LivelinessSubscriberBuilder<'a, 'b, DefaultHandler>
 ```
 
-**Returns:** A `LivelinessSubscriberBuilder` that resolves to a `Subscriber`.
+Declares a subscriber that receives notifications whenever a liveliness token matching the given key expression appears or disappears.
 
-**Behavior:**
+**Received samples:**
 
-- The subscriber receives `SampleKind::Put` when a matching token becomes alive.
-- The subscriber receives `SampleKind::Delete` when a matching token is dropped or lost.
-- The subscriber only receives events that occur **after** it is declared. Tokens that were already alive before the subscriber was created are **not** delivered as `Put` events. Use `liveliness().get()` or a `QueryingSubscriber` (from `zenoh-ext`) to retrieve pre-existing tokens.
+| `sample.kind()` | Meaning |
+|---|---|
+| `SampleKind::Put` | A new token has appeared (entity joined) |
+| `SampleKind::Delete` | A token has disappeared (entity left, crashed, or lost connectivity) |
 
-#### Basic subscriber
+The `sample.key_expr()` identifies which token changed.
+
+> **Note:** A liveliness subscriber only receives events that occur **after** it is declared. Tokens that were already alive before the subscriber was declared are **not** delivered as `Put` events. To get both pre-existing tokens and future changes, use a `QueryingSubscriber` from `zenoh-ext` (see [Getting Current State + Future Changes](#getting-current-state--future-changes)), or issue a `get()` call followed by `declare_subscriber()`.
+
+#### Example
 
 ```rust
-use zenoh::{sample::SampleKind, Config};
+use zenoh::{Config, sample::SampleKind};
 
 #[tokio::main]
 async fn main() {
@@ -268,87 +275,42 @@ async fn main() {
 
     let subscriber = session
         .liveliness()
-        .declare_subscriber("robots/**")
+        .declare_subscriber("group1/**")
         .await
         .unwrap();
 
-    println!("Watching for robot presence changes...");
+    println!("Watching for liveliness changes on 'group1/**'...");
+
     while let Ok(sample) = subscriber.recv_async().await {
         match sample.kind() {
             SampleKind::Put => {
-                println!("[+] Robot appeared: {}", sample.key_expr());
+                println!("[JOIN]  {}", sample.key_expr());
             }
             SampleKind::Delete => {
-                println!("[-] Robot lost:     {}", sample.key_expr());
+                println!("[LEAVE] {}", sample.key_expr());
             }
         }
     }
 }
 ```
 
-#### Callback-based subscriber
+#### Builder Options
+
+The `LivelinessSubscriberBuilder` supports a `history` option (when available) to also receive samples for tokens that were alive before the subscriber was declared:
 
 ```rust
-use zenoh::{sample::SampleKind, Config};
-
-#[tokio::main]
-async fn main() {
-    let session = zenoh::open(Config::default()).await.unwrap();
-
-    let _subscriber = session
-        .liveliness()
-        .declare_subscriber("services/**")
-        .callback(|sample| {
-            match sample.kind() {
-                SampleKind::Put => {
-                    println!("Service online:  {}", sample.key_expr());
-                }
-                SampleKind::Delete => {
-                    println!("Service offline: {}", sample.key_expr());
-                }
-            }
-        })
-        .background()
-        .await
-        .unwrap();
-
-    // Keep the session alive
-    tokio::signal::ctrl_c().await.unwrap();
-}
-```
-
-#### Getting history (pre-existing tokens) with the subscriber
-
-By default `declare_subscriber` only receives future events. To also receive currently alive tokens at subscription time, use the `.history(true)` option on the builder:
-
-```rust
-use zenoh::{sample::SampleKind, Config};
-
-#[tokio::main]
-async fn main() {
-    let session = zenoh::open(Config::default()).await.unwrap();
-
-    // history(true) causes already-alive tokens to be delivered as Put events
-    // before any future events arrive.
-    let subscriber = session
-        .liveliness()
-        .declare_subscriber("robots/**")
-        .history(true)
-        .await
-        .unwrap();
-
-    while let Ok(sample) = subscriber.recv_async().await {
-        match sample.kind() {
-            SampleKind::Put => println!("Alive: {}", sample.key_expr()),
-            SampleKind::Delete => println!("Gone:  {}", sample.key_expr()),
-        }
-    }
-}
+// Receive history of already-alive tokens as Put events, then watch for changes
+let subscriber = session
+    .liveliness()
+    .declare_subscriber("group1/**")
+    .history(true)  // also get pre-existing tokens
+    .await
+    .unwrap();
 ```
 
 ---
 
-### Querying Currently Alive Tokens
+### `get` — Snapshot of Currently Alive Tokens
 
 ```rust
 pub fn get<'b, TryIntoKeyExpr>(
@@ -357,45 +319,19 @@ pub fn get<'b, TryIntoKeyExpr>(
 ) -> LivelinessGetBuilder<'a, 'b, DefaultHandler>
 ```
 
-**Returns:** A `LivelinessGetBuilder` that resolves to a `Handler` (default: a FIFO channel of `Reply` values).
+Queries the current set of alive liveliness tokens matching the given key expression. Returns a builder that resolves to a receiver of `Reply` values.
 
-**Behavior:**
+Each reply contains a `Sample` with `kind == SampleKind::Put` and a `key_expr` identifying an alive token.
 
-- Returns a snapshot of all tokens currently alive that match the key expression.
-- Each matching token produces one `Reply` containing a `Sample` with `SampleKind::Put`.
-- The query blocks until all matching routers have replied or the timeout elapses.
-- Default timeout is taken from the session's `queries_default_timeout` configuration.
+This is a **point-in-time snapshot**. It does not deliver future changes — use `declare_subscriber` for ongoing monitoring.
 
-#### Querying alive tokens
+#### Builder Options
 
-```rust
-use zenoh::Config;
+| Option | Type | Default | Description |
+|---|---|---|---|
+| `.timeout(duration)` | `Duration` | Session default | Maximum time to wait for replies |
 
-#[tokio::main]
-async fn main() {
-    let session = zenoh::open(Config::default()).await.unwrap();
-
-    let replies = session
-        .liveliness()
-        .get("services/**")
-        .await
-        .unwrap();
-
-    println!("Currently alive services:");
-    while let Ok(reply) = replies.recv_async().await {
-        match reply.result() {
-            Ok(sample) => {
-                println!("  {}", sample.key_expr());
-            }
-            Err(err) => {
-                eprintln!("  Error: {:?}", err);
-            }
-        }
-    }
-}
-```
-
-#### Query with explicit timeout
+#### Example
 
 ```rust
 use std::time::Duration;
@@ -407,274 +343,384 @@ async fn main() {
 
     let replies = session
         .liveliness()
-        .get("robots/**")
-        .timeout(Duration::from_secs(5))
+        .get("group1/**")
+        .timeout(Duration::from_secs(1))
         .await
         .unwrap();
 
-    let mut alive_robots: Vec<String> = Vec::new();
+    println!("Currently alive tokens in 'group1':");
     while let Ok(reply) = replies.recv_async().await {
-        if let Ok(sample) = reply.result() {
-            alive_robots.push(sample.key_expr().to_string());
+        match reply.result() {
+            Ok(sample) => println!("  alive: {}", sample.key_expr()),
+            Err(err) => eprintln!("  error: {:?}", err.payload()),
         }
     }
-
-    println!("Found {} alive robots: {:?}", alive_robots.len(), alive_robots);
 }
 ```
 
 ---
 
-## Liveliness vs. Regular Pub/Sub
+### Getting Current State + Future Changes
 
-Liveliness and pub/sub are both built on key expressions and both deliver `Put`/`Delete` samples to subscribers. The critical differences are in **who manages the lifecycle** and **what the data represents**.
+A common requirement is to get a consistent view that includes **both** tokens that were alive before your observer started **and** future changes. There are two approaches:
 
-| Property | Regular Pub/Sub | Liveliness |
-|---|---|---|
-| **Lifecycle management** | Application must explicitly publish and delete | Automatically managed by the routing infrastructure |
-| **Crash handling** | Publisher crash leaves last value; no delete sent | Token automatically deleted when session dies |
-| **Data payload** | Arbitrary bytes | No payload; presence is the information |
-| **Backfill** | Depends on storage/queryable setup | `liveliness().get()` returns current snapshot |
-| **Network partition** | Data stops flowing | Partitioned observers receive Delete events |
-| **Purpose** | Transmitting data between nodes | Detecting whether a node is present and reachable |
-
-In pub/sub, if a publisher crashes after publishing `"status": "healthy"`, subscribers retain that last value indefinitely — there is no automatic correction. With liveliness, the token disappears the moment the routing layer detects the session is gone, and all matching subscribers receive a `Delete` event immediately.
-
-Regular pub/sub requires the application to publish a tombstone (a `delete()` call or a final "I am shutting down" message) to inform other nodes. Liveliness tokens require no such coordination; the infrastructure handles it transparently.
-
----
-
-## Worked Example: Service Registry
-
-This example demonstrates a complete service registry using liveliness: a service advertises itself, and a registry node maintains a live roster.
-
-### Service node (advertiser)
-
-Each service instance declares a token encoding its type and unique ID.
+#### Approach 1: `get` then `subscribe` (manual)
 
 ```rust
-// service_node.rs
-use zenoh::Config;
+use zenoh::{Config, sample::SampleKind};
+use std::collections::HashSet;
 
 #[tokio::main]
 async fn main() {
     let session = zenoh::open(Config::default()).await.unwrap();
 
-    let service_type = "image_processor";
-    let instance_id = std::process::id(); // Use PID as a simple unique ID
+    // Step 1: subscribe first to avoid missing events during the query
+    let subscriber = session
+        .liveliness()
+        .declare_subscriber("group1/**")
+        .await
+        .unwrap();
+
+    // Step 2: snapshot current state
+    let mut alive: HashSet<String> = HashSet::new();
+    let replies = session
+        .liveliness()
+        .get("group1/**")
+        .await
+        .unwrap();
+
+    while let Ok(reply) = replies.recv_async().await {
+        if let Ok(sample) = reply.result() {
+            alive.insert(sample.key_expr().to_string());
+        }
+    }
+    println!("Initial alive tokens: {:?}", alive);
+
+    // Step 3: process ongoing changes
+    while let Ok(sample) = subscriber.recv_async().await {
+        match sample.kind() {
+            SampleKind::Put => {
+                alive.insert(sample.key_expr().to_string());
+                println!("[JOIN]  {} | total alive: {}", sample.key_expr(), alive.len());
+            }
+            SampleKind::Delete => {
+                alive.remove(&sample.key_expr().to_string());
+                println!("[LEAVE] {} | total alive: {}", sample.key_expr(), alive.len());
+            }
+        }
+    }
+}
+```
+
+#### Approach 2: `declare_subscriber` with `history(true)`
+
+If the builder option is available in your Zenoh version:
+
+```rust
+let subscriber = session
+    .liveliness()
+    .declare_subscriber("group1/**")
+    .history(true)
+    .await
+    .unwrap();
+
+// All pre-existing tokens are delivered as Put, then future changes stream in
+while let Ok(sample) = subscriber.recv_async().await {
+    // handle Put and Delete as normal
+}
+```
+
+---
+
+## Difference from Regular Pub/Sub
+
+Liveliness and regular pub/sub both deliver `Sample` values with key expressions, but they serve fundamentally different purposes and have different lifecycle semantics.
+
+| Property | Regular Pub/Sub | Liveliness |
+|---|---|---|
+| **Purpose** | Data distribution | Presence detection |
+| **Lifetime of state** | Explicit: you publish and delete | Automatic: tied to session/transport |
+| **Crash detection** | Application must publish a "goodbye" | Routing layer detects transport loss |
+| **Historical data** | Via storage/queryable | Via `liveliness().get()` |
+| **Payload** | Arbitrary bytes | No payload (key expression only) |
+| **Namespace** | Any key expression | Any key expression (separate internal namespace) |
+| **Subscriber sees** | All published/deleted values | Join (`Put`) and leave (`Delete`) events |
+| **Who sends Delete?** | Application explicitly | Zenoh infrastructure automatically |
+
+### The Core Difference: Automatic Lifecycle
+
+With regular pub/sub, the application controls the entire lifecycle of published data:
+
+```rust
+// Regular pub/sub — the application must explicitly signal departure
+let session = zenoh::open(Config::default()).await.unwrap();
+session.put("services/my-service", "online").await.unwrap();
+
+// ... if the process crashes here, no "offline" is ever sent ...
+
+session.put("services/my-service", "offline").await.unwrap(); // never reached on crash
+```
+
+With liveliness, the routing infrastructure handles departure automatically:
+
+```rust
+// Liveliness — crash = automatic Delete delivered to all subscribers
+let session = zenoh::open(Config::default()).await.unwrap();
+let token = session
+    .liveliness()
+    .declare_token("services/my-service")
+    .await
+    .unwrap();
+
+// ... if the process crashes here, Zenoh delivers Delete to all observers automatically ...
+
+// No explicit "offline" announcement needed
+drop(token); // or just let the session close
+```
+
+---
+
+## Worked Example: Service Registry Pattern
+
+This example shows a complete service registry where:
+
+- Each service process declares a liveliness token when it starts.
+- A central registry process tracks which services are alive.
+- The registry stays accurate even when services crash.
+
+### The Service Process
+
+Each service declares a token under `services/<service-type>/<instance-id>`. Because the token is tied to the session, no shutdown hook is needed — a crash, OOM kill, or graceful exit all result in the same `Delete` notification to the registry.
+
+```rust
+// service.rs — run one instance per service node
+use zenoh::Config;
+
+#[tokio::main]
+async fn main() {
+    let service_type = std::env::var("SERVICE_TYPE")
+        .unwrap_or_else(|_| "localization".to_string());
+    let instance_id = std::env::var("INSTANCE_ID")
+        .unwrap_or_else(|_| "node-1".to_string());
+
+    let session = zenoh::open(Config::default()).await.unwrap();
+
+    // Declare presence. Format: services/<type>/<instance>
     let key = format!("services/{}/{}", service_type, instance_id);
-
-    println!("Advertising service at '{}'", key);
-
-    // Declare the token. This triggers Put events in all matching subscribers.
-    let _token = session
+    let token = session
         .liveliness()
         .declare_token(&key)
         .await
         .unwrap();
 
-    println!("Service running. Press CTRL-C to stop.");
+    println!("[{}] Declared liveliness token on '{}'", instance_id, key);
+
+    // Do actual service work here...
+    println!("[{}] Running. Press Ctrl-C to stop.", instance_id);
     tokio::signal::ctrl_c().await.unwrap();
 
-    // _token is dropped here; all subscribers receive a Delete event.
-    println!("Service shutting down.");
+    println!("[{}] Shutting down gracefully.", instance_id);
+    // token.undeclare() is called implicitly when `token` is dropped,
+    // but explicit undeclaration gives a cleaner shutdown signal.
+    token.undeclare().await.unwrap();
 }
 ```
 
-### Registry node (watcher)
+### The Registry Process
 
-The registry queries current state at startup and then subscribes to all future changes.
+The registry combines a `get()` for the initial snapshot with a `declare_subscriber()` for ongoing changes. It maintains an in-memory map of which services are alive.
 
 ```rust
-// registry.rs
-use std::collections::HashSet;
-use std::sync::{Arc, Mutex};
-use zenoh::{sample::SampleKind, Config};
+// registry.rs — run once as the service monitor
+use std::collections::{HashMap, HashSet};
+use zenoh::{Config, sample::SampleKind};
 
 #[tokio::main]
 async fn main() {
     let session = zenoh::open(Config::default()).await.unwrap();
 
-    let registry: Arc<Mutex<HashSet<String>>> = Arc::new(Mutex::new(HashSet::new()));
-
-    // --- Step 1: Query currently alive services ---
-    let replies = session
-        .liveliness()
-        .get("services/**")
-        .await
-        .unwrap();
-
-    {
-        let mut reg = registry.lock().unwrap();
-        while let Ok(reply) = replies.recv_async().await {
-            if let Ok(sample) = reply.result() {
-                let key = sample.key_expr().to_string();
-                println!("[startup] Found alive service: {}", key);
-                reg.insert(key);
-            }
-        }
-        println!("[startup] Registry initialized with {} services.", reg.len());
-    }
-
-    // --- Step 2: Subscribe to future changes ---
-    let registry_clone = Arc::clone(&registry);
+    // --- Step 1: Subscribe BEFORE querying to avoid a race condition.
+    // If we queried first, a service could join between query completion
+    // and subscriber declaration, and we'd miss the Put event.
     let subscriber = session
         .liveliness()
         .declare_subscriber("services/**")
         .await
         .unwrap();
 
-    println!("Watching for service changes...");
+    // --- Step 2: Snapshot currently alive services.
+    // Map of service_type -> set of alive instance_ids
+    let mut registry: HashMap<String, HashSet<String>> = HashMap::new();
 
+    let replies = session
+        .liveliness()
+        .get("services/**")
+        .await
+        .unwrap();
+
+    while let Ok(reply) = replies.recv_async().await {
+        if let Ok(sample) = reply.result() {
+            let key = sample.key_expr().to_string();
+            if let Some((service_type, instance_id)) = parse_service_key(&key) {
+                registry
+                    .entry(service_type.to_string())
+                    .or_default()
+                    .insert(instance_id.to_string());
+            }
+        }
+    }
+
+    println!("=== Initial Registry State ===");
+    print_registry(&registry);
+
+    // --- Step 3: Process live changes.
+    println!("\n=== Watching for Changes (Ctrl-C to quit) ===");
     while let Ok(sample) = subscriber.recv_async().await {
         let key = sample.key_expr().to_string();
-        let mut reg = registry_clone.lock().unwrap();
 
         match sample.kind() {
             SampleKind::Put => {
-                println!("[+] Service online:  {}", key);
-                reg.insert(key);
+                if let Some((service_type, instance_id)) = parse_service_key(&key) {
+                    registry
+                        .entry(service_type.to_string())
+                        .or_default()
+                        .insert(instance_id.to_string());
+                    println!(
+                        "[JOIN]  {}::{} | alive instances: {:?}",
+                        service_type,
+                        instance_id,
+                        registry.get(service_type).map(|s| s.len()).unwrap_or(0)
+                    );
+                }
             }
             SampleKind::Delete => {
-                println!("[-] Service offline: {}", key);
-                reg.remove(&key);
+                // Handle the wildcard Delete that indicates total connectivity loss
+                if key == "**" {
+                    println!("[WARN]  Lost all connectivity — clearing registry");
+                    registry.clear();
+                    continue;
+                }
+
+                if let Some((service_type, instance_id)) = parse_service_key(&key) {
+                    if let Some(instances) = registry.get_mut(service_type) {
+                        instances.remove(instance_id);
+                        if instances.is_empty() {
+                            registry.remove(service_type);
+                        }
+                    }
+                    println!(
+                        "[LEAVE] {}::{} (crash or graceful shutdown)",
+                        service_type, instance_id
+                    );
+                }
+
+                print_registry(&registry);
             }
         }
+    }
+}
 
-        println!("    Active services ({}):", reg.len());
-        for svc in reg.iter() {
-            println!("      {}", svc);
+/// Parse "services/<service_type>/<instance_id>" into its components.
+fn parse_service_key(key: &str) -> Option<(&str, &str)> {
+    let mut parts = key.splitn(3, '/');
+    let prefix = parts.next()?;
+    if prefix != "services" {
+        return None;
+    }
+    let service_type = parts.next()?;
+    let instance_id = parts.next()?;
+    Some((service_type, instance_id))
+}
+
+fn print_registry(registry: &HashMap<String, HashSet<String>>) {
+    if registry.is_empty() {
+        println!("  (no services alive)");
+        return;
+    }
+    for (service_type, instances) in registry {
+        println!("  {} ({} alive):", service_type, instances.len());
+        for instance in instances {
+            println!("    - {}", instance);
         }
     }
 }
 ```
 
-### Running the example
+### Running the Example
 
+Start the registry:
 ```bash
-# Terminal 1: start the registry
 cargo run --bin registry
-
-# Terminal 2: start a service (token declared)
-cargo run --bin service_node
-# Output: "Advertising service at 'services/image_processor/12345'"
-
-# Terminal 1 output:
-# [+] Service online: services/image_processor/12345
-#     Active services (1):
-#       services/image_processor/12345
-
-# Terminal 2: press CTRL-C or kill the process
-# Terminal 1 output:
-# [-] Service offline: services/image_processor/12345
-#     Active services (0):
 ```
 
-The registry receives the `Delete` event whether the service shuts down cleanly or crashes.
+Start several service instances in separate terminals:
+```bash
+SERVICE_TYPE=localization INSTANCE_ID=node-1 cargo run --bin service
+SERVICE_TYPE=localization INSTANCE_ID=node-2 cargo run --bin service
+SERVICE_TYPE=path-planner INSTANCE_ID=node-1 cargo run --bin service
+```
 
-### Handling the startup race condition
+Kill one of them with `kill -9` (no graceful shutdown) and observe the registry immediately receiving a `Delete` event — without any application-level timeout or polling.
 
-There is a potential race between the `get()` call completing and new `Put` events arriving before the subscriber is declared. To avoid missing events, declare the subscriber **before** calling `get()`, or use the `history(true)` option on the subscriber, which internally performs this coordination:
+---
+
+## Difference from ROS 2 Graph Events
+
+Zenoh's liveliness feature solves a similar problem to ROS 2's graph change events, but with significant design differences.
+
+### ROS 2 Graph Events
+
+ROS 2 provides graph event notifications through `rclcpp::Node::get_graph_event()` and `rclcpp::Node::wait_for_graph_change()`. These notifications fire when any of the following change:
+
+- A node appears or disappears.
+- A publisher or subscription is created or destroyed on any topic.
+- A service server or client appears or disappears.
+
+This is a **coarse-grained, whole-graph notification**. The application knows *something* changed, but must then call graph introspection APIs (`get_node_names()`, `get_topic_names_and_types()`, etc.) to discover *what* changed.
+
+### Zenoh Liveliness
+
+Zenoh liveliness is **fine-grained and selective**:
+
+| Property | ROS 2 Graph Events | Zenoh Liveliness |
+|---|---|---|
+| **Granularity** | Any graph change fires a single event | Each token has its own named key expression |
+| **What changed** | Not specified — must query graph | Exact key expression of the changed token |
+| **Filtering** | None — all graph changes or none | Arbitrary key expression wildcards |
+| **Payload** | None | None (key expression only; payload support planned) |
+| **Crash detection** | Relies on DDS liveliness QoS | Built into routing layer transport detection |
+| **Custom entities** | Only ROS 2 entities (nodes, topics, services) | Any named entity the application defines |
+| **Network partitions** | Behavior depends on DDS configuration | Explicit: synthetic `Delete` with key `**` |
+| **Performance** | All watchers are notified on any change | Only subscribers matching the key are notified |
+
+### Key Conceptual Difference
+
+ROS 2 graph events describe the **communication graph** — nodes, topics, services, and their type information. They are tightly coupled to the ROS 2 middleware layer.
+
+Zenoh liveliness describes **application-defined named entities**. The token key expressions are entirely under the application's control. A token can represent a ROS node, but equally well a database connection, a robot arm, a configuration version, or any other concept the application cares about. There is no centrally maintained "graph" — liveliness is a distributed, decentralized mechanism.
+
+### Achieving ROS 2 Graph-Like Behavior in Zenoh
+
+Applications that need ROS 2-style whole-graph awareness can subscribe to a wildcard:
 
 ```rust
-// Preferred: declare subscriber first, use history to get current state
+// Subscribe to ALL liveliness changes anywhere in the system
 let subscriber = session
     .liveliness()
-    .declare_subscriber("services/**")
-    .history(true)   // delivers pre-existing tokens as Put events
+    .declare_subscriber("**")
     .await
     .unwrap();
-
-// Now drain: both historical and live events arrive through the same channel
-while let Ok(sample) = subscriber.recv_async().await {
-    // handle Put/Delete
-}
 ```
 
----
-
-## Comparison with ROS 2 Graph Events
-
-ROS 2 provides graph event notifications through `rclcpp::Node::get_node_graph_interface()` and the `rcl_wait_set` mechanism. Zenoh Liveliness and ROS 2 graph events solve similar problems but with different scopes, models, and guarantees.
-
-### Scope
-
-**ROS 2 graph events** are scoped to a single DDS domain and reflect the ROS graph structure: nodes, topics, services, and actions. The information is inherently structured around ROS concepts.
-
-**Zenoh Liveliness** is generic. It knows nothing about "nodes" or "services" in a ROS sense — it tracks the presence of arbitrary key expressions. Applications impose their own structure through key expression conventions. This makes it applicable outside ROS contexts and easier to extend with custom entity types.
-
-### What triggers an event
-
-In ROS 2, graph events fire when the DDS discovery layer detects a new participant, publisher, subscriber, service server, or service client. The application has limited control over what is tracked.
-
-In Zenoh, only entities that explicitly call `declare_token()` are tracked. An application that does not declare a token is invisible to liveliness monitoring. This is intentional: it prevents unbounded scalability costs from monitoring every entity in a large system.
-
-### Crash detection
-
-ROS 2 graph events rely on DDS participant liveness QoS or lease duration mechanisms. Detection latency is configurable but often on the order of seconds and depends on correct QoS configuration.
-
-Zenoh liveliness is tied to the Zenoh transport session. When a transport connection drops, the routing layer immediately detects it and propagates `Delete` events. Detection latency is bounded by the transport keepalive configuration, not an application-level QoS setting.
-
-### Network transparency
-
-ROS 2 graph events are traditionally local to a single machine or DDS domain. Cross-host graph awareness requires bridging (e.g., using `zenoh-bridge-ros2dds`).
-
-Zenoh liveliness works natively across the entire Zenoh network, including across routers, WAN links, and heterogeneous transports. A subscriber in one datacenter can monitor liveliness tokens declared in another datacenter without any additional configuration.
-
-### Query capability
-
-ROS 2 provides synchronous graph introspection calls (`get_node_names()`, `get_topic_names_and_types()`, etc.) that return a snapshot of the current graph state.
-
-Zenoh provides the equivalent through `liveliness().get()`, which queries the distributed liveliness state and returns currently alive tokens. The semantics are similar, but the Zenoh version is asynchronous and network-wide.
-
-### Summary table
-
-| Dimension | ROS 2 Graph Events | Zenoh Liveliness |
-|---|---|---|
-| **Scope** | ROS graph entities (nodes, topics, services) | Any user-defined key expression |
-| **Opt-in tracking** | No — all entities tracked automatically | Yes — only declared tokens are tracked |
-| **Crash detection latency** | Seconds (DDS QoS-dependent) | Transport keepalive (configurable, typically fast) |
-| **Network reach** | DDS domain (single host by default) | Entire Zenoh network, WAN-capable |
-| **Snapshot query** | Synchronous graph API | Async `liveliness().get()` |
-| **Scalability** | Scales with DDS discovery overhead | Scales well; only declared tokens propagate |
-| **Payload** | None (event only) | None (presence only) |
-
----
-
-## Known Limitations and Edge Cases
-
-### No associated payload (current release)
-
-Liveliness tokens carry no user-defined payload. The token's key expression is the only information conveyed. If you need to associate metadata with a presence event (e.g., version, endpoint address, capabilities), encode that information in the key expression itself or publish it separately on a regular key expression after declaring the token.
-
-The RFC notes that associated values are a planned future addition.
-
-### Subscriber does not see historical tokens by default
-
-A freshly declared subscriber only receives events that occur after its declaration. If tokens were already alive before the subscriber was created, those tokens are invisible to it unless `history(true)` is used or `liveliness().get()` is called separately.
-
-### `#[must_use]` on `LivelinessToken`
-
-Always bind the returned `LivelinessToken` to a named variable. A token bound to `_` (single underscore, not `_name`) is dropped immediately at the end of the statement:
+Applications that need fine-grained, role-specific awareness subscribe to a narrow expression:
 
 ```rust
-// WRONG: dropped immediately, token never becomes active
-let _ = session.liveliness().declare_token("my/service").await.unwrap();
-
-// CORRECT: lives for the duration of the enclosing scope
-let _token = session.liveliness().declare_token("my/service").await.unwrap();
+// Only care about path-planner instances
+let subscriber = session
+    .liveliness()
+    .declare_subscriber("robots/*/path-planner")
+    .await
+    .unwrap();
 ```
 
-### Connectivity loss to the subscriber itself
-
-If the monitoring application loses all connectivity, the infrastructure delivers a synthetic `Delete` on `**`. Applications should treat this as a signal to invalidate their entire cached liveliness state and rebuild it via `liveliness().get()` once connectivity is restored.
-
-### Feature stability
-
-The liveliness API is marked **unstable** in the Zenoh roadmap. The routing-layer key space, API signatures, and value formats may change in future releases. Pin your dependency version if API stability is required.
----
-
-## See Also
-- [concepts.md](concepts.md) — Core zenoh abstractions (sessions, publishers, subscribers)
-- [deployment.md](deployment.md) — Network topology and routing behavior
-- [api/rust.md](api/rust.md) — Rust API reference for liveliness tokens and subscribers
+This selective subscription means that in a large system with thousands of entities, a node watching only one service type receives no traffic when unrelated entities join or leave — a significant scalability advantage over the ROS 2 model where any graph change wakes up all graph-event watchers.

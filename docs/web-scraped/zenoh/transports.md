@@ -1,30 +1,18 @@
 # Zenoh Transport Layer: Complete Guide
 
-## Overview
-
-Zenoh's transport layer is modular — each transport is implemented as a separate link plugin. All transports share the same Zenoh protocol framing; only the underlying carrier changes. The endpoint format follows a consistent pattern:
-
-```
-protocol/address:port[?config_key=value&...]
-```
-
-Transport selection happens at configuration time. Multiple transports can be active simultaneously, each handling a different class of peer or network segment.
-
----
-
 ## Table of Contents
 
 1. [TCP](#1-tcp)
 2. [UDP Unicast](#2-udp-unicast)
 3. [UDP Multicast](#3-udp-multicast)
 4. [TLS](#4-tls)
-5. [QUIC (Stream)](#5-quic-stream)
-6. [QUIC Datagram](#6-quic-datagram)
-7. [WebSocket](#7-websocket)
-8. [Serial](#8-serial)
-9. [Shared Memory](#9-shared-memory)
-10. [Link-Level Configuration](#10-link-level-configuration)
-11. [TX Queue and Congestion Control](#11-tx-queue-and-congestion-control)
+5. [QUIC](#5-quic)
+6. [WebSocket](#6-websocket)
+7. [Serial](#7-serial)
+8. [Shared Memory](#8-shared-memory)
+9. [Link-Level Configuration](#9-link-level-configuration)
+10. [TX Queue and Congestion Control](#10-tx-queue-and-congestion-control)
+11. [RX Buffer Sizes](#11-rx-buffer-sizes)
 12. [Multiple Transports Simultaneously](#12-multiple-transports-simultaneously)
 13. [Transport Selection Priority](#13-transport-selection-priority)
 
@@ -32,113 +20,101 @@ Transport selection happens at configuration time. Multiple transports can be ac
 
 ## 1. TCP
 
+### Overview
+
+TCP is Zenoh's **default transport**. It is the most widely supported, reliable, and stream-oriented. When you specify no transport in your config, Zenoh defaults to `tcp/`.
+
 ### Endpoint Format
 
 ```
 tcp/<host>:<port>
 tcp/0.0.0.0:7447          # listen on all interfaces
-tcp/192.168.1.10:7447     # listen on specific interface
-tcp/router.example.com:7447  # connect by hostname
-tcp/[::1]:7447            # IPv6 loopback
+tcp/192.168.1.10:7447     # listen on specific IP
+tcp/localhost:7447         # connect to local host
+tcp/[::]:7447              # IPv6 any-address
+tcp/[::1]:7447             # IPv6 loopback
 ```
 
 ### Use Cases
 
-- **Default transport for all Zenoh deployments.** If you do not specify a transport, Zenoh uses TCP.
-- Reliable, ordered delivery required (e.g., telemetry pipelines, command-and-control).
-- Long-lived persistent connections between routers, clients, and peers.
-- WAN links where packet loss must be handled by the transport.
-- Firewall-friendly: single TCP connection, predictable port usage.
+- General-purpose peer-to-peer and client-router communication
+- LAN and WAN deployments where reliability is required
+- Default for zenohd router processes
+- Any scenario where you don't have specific constraints favoring other transports
+- Environments where UDP is blocked by firewalls
 
 ### Performance Characteristics
 
-| Property | Value |
-|---|---|
-| Reliable | ✅ Yes |
-| Ordered | ✅ Yes |
-| Streamed | ✅ Yes (byte-stream) |
-| Multicast | ❌ No |
-| MTU | Up to 65535 bytes (BatchSize::MAX) |
-| Effective batch size | Negotiated from TCP MSS |
+- **Reliability:** Yes (TCP guarantees delivery and ordering)
+- **Streamed:** Yes (byte-stream; Zenoh uses 16-bit length prefix framing)
+- **Max MTU:** 65535 bytes (`BatchSize::MAX`, i.e., `2^16 - 1`)
+- **Effective MTU:** Computed at link creation time from the TCP MSS; on Unix the actual MTU is the largest multiple of MSS that fits within the 65535 ceiling. For IPv4 a 40-byte header overhead is subtracted; for IPv6, 60 bytes.
+- **Latency:** Low but higher than UDP due to TCP's built-in ACK/retransmit mechanism
+- **Throughput:** High; TCP window scaling handles long-fat networks well
+- **TCP_NODELAY:** Enabled automatically on every link
+- **SO_LINGER:** Set to 10 seconds by default
 
-TCP is a byte-stream transport. Zenoh uses 2-byte length framing on top of it, so the practical batch limit is 65535 bytes. On Linux/Unix, the MTU is further refined against the TCP MSS: Zenoh reads the socket's MSS via `socket2`, then computes the largest multiple of MSS/2 that fits below the default MTU. This minimises per-message overhead.
+### TCP-Specific Configuration Options
 
-TCP enables `TCP_NODELAY` (disabling Nagle's algorithm) and sets `SO_LINGER` to 10 seconds by default.
+These can be placed in the global config under `transport.link.tcp` **or** inline in the endpoint config string.
 
-### Configuration Options
+| Key | Description | Default |
+|-----|-------------|---------|
+| `so_rcvbuf` | Socket receive buffer size (bytes) | OS default |
+| `so_sndbuf` | Socket send buffer size (bytes) | OS default |
+| `iface` | Bind to a specific network interface name | unset |
+| `bind` | Bind to a specific local `ip:port` | unset |
+| `dscp` | DSCP value for QoS marking (0–63) | unset |
 
-TCP has both global config (applied via the `zenoh.json5` config file) and per-endpoint config (appended as query parameters to the endpoint URI).
+> **Note:** `iface` and `bind` are mutually exclusive. Setting both causes an error.
 
-#### Global config (`transport.link.tcp`)
+### Config Snippets
 
+**Minimal listener (JSON5):**
 ```json5
 {
-  "transport": {
-    "link": {
-      "tcp": {
-        "so_rcvbuf": 1048576,   // OS RX socket buffer (bytes)
-        "so_sndbuf": 1048576    // OS TX socket buffer (bytes)
-      }
-    }
+  listen: {
+    endpoints: ["tcp/0.0.0.0:7447"]
   }
 }
 ```
 
-#### Per-endpoint config (query parameters)
-
-| Parameter | Description | Example |
-|---|---|---|
-| `so_rcvbuf` | OS RX buffer size (bytes) | `so_rcvbuf=1048576` |
-| `so_sndbuf` | OS TX buffer size (bytes) | `so_sndbuf=1048576` |
-| `iface` | Bind to specific network interface | `iface=eth0` |
-| `bind` | Bind to specific local socket address | `bind=192.168.1.5:0` |
-| `dscp` | DSCP/QoS byte for the socket | `dscp=46` |
-
-> **Note:** `iface` and `bind` are mutually exclusive. Using both will produce an error.
-
-### Example Configurations
-
-#### Listener (router or peer accepting connections)
-
+**Connect to a remote router:**
 ```json5
-// zenoh-router.json5
 {
-  "listen": {
-    "endpoints": [
-      "tcp/0.0.0.0:7447"
-    ]
+  connect: {
+    endpoints: ["tcp/192.168.1.100:7447"]
+  }
+}
+```
+
+**Full TCP config with buffer tuning:**
+```json5
+{
+  listen: {
+    endpoints: ["tcp/0.0.0.0:7447"]
   },
-  "transport": {
-    "link": {
-      "tcp": {
-        "so_rcvbuf": 2097152,
-        "so_sndbuf": 2097152
+  transport: {
+    link: {
+      tcp: {
+        so_rcvbuf: 2097152,   // 2 MiB receive buffer
+        so_sndbuf: 2097152    // 2 MiB send buffer
       }
     }
   }
 }
 ```
 
-#### Connector (client or peer initiating connections)
-
-```json5
-{
-  "connect": {
-    "endpoints": [
-      "tcp/192.168.1.10:7447?so_rcvbuf=524288&so_sndbuf=524288"
-    ]
-  }
-}
+**Per-endpoint config via inline parameters (endpoint config string):**
+```
+tcp/192.168.1.100:7447#so_rcvbuf=2097152;so_sndbuf=2097152;iface=eth0
 ```
 
-#### Bind to specific interface
-
+**Bind to specific local address:**
 ```json5
 {
-  "connect": {
-    "endpoints": [
-      "tcp/192.168.1.10:7447?iface=eth1"
-    ]
+  connect: {
+    endpoints: ["tcp/192.168.1.100:7447#bind=192.168.1.50:0"]
   }
 }
 ```
@@ -146,6 +122,10 @@ TCP has both global config (applied via the `zenoh.json5` config file) and per-e
 ---
 
 ## 2. UDP Unicast
+
+### Overview
+
+UDP unicast sends datagrams to a single specific endpoint. It trades TCP's reliability guarantees for lower per-packet overhead and latency. Zenoh handles framing and sequencing at the protocol level when needed.
 
 ### Endpoint Format
 
@@ -158,858 +138,730 @@ udp/[::]:7447
 
 ### Use Cases
 
-- Lower latency than TCP for small, infrequent messages where head-of-line blocking matters.
-- Best-effort telemetry where occasional loss is acceptable (sensor readings, LIDAR point clouds).
-- Environments where TCP connection setup overhead is a concern.
-- Pairing with Zenoh's own reliability/fragmentation layer when needed.
-
-> **When to prefer TCP instead:** Use TCP when you need guaranteed delivery, when messages are large and need fragmentation, or when the network is lossy.
+- Low-latency telemetry where occasional packet loss is acceptable
+- Local network environments with negligible packet loss
+- High-frequency sensor data where freshness matters more than completeness
+- When multicast is not needed but UDP overhead savings are desired
+- Systems where TCP connection overhead is significant (many short-lived sessions)
 
 ### Performance Characteristics
 
-| Property | Value |
-|---|---|
-| Reliable | ❌ No (unreliable by default) |
-| Ordered | ❌ No |
-| Streamed | ❌ No (datagram) |
-| Multicast | ❌ No (unicast variant) |
-| MTU (Linux/Windows) | 65527 bytes (u16::MAX − 8 − 40) |
-| MTU (macOS) | 9216 bytes |
-| MTU (other) | 8192 bytes |
+- **Reliability:** No (best-effort delivery)
+- **Streamed:** No (datagram-based)
+- **Max MTU:** Platform-dependent:
+  - Linux / Windows: `65535 - 8 (UDP header) - 40 (IP header) = 65487`
+  - macOS: `9216`
+  - Other platforms: `8192`
+- **Latency:** Lower than TCP; no connection setup, no ACK round-trips
+- **Throughput:** Good for small messages; large messages fragment at IP layer
+- **Head-of-line blocking:** None (each datagram is independent)
 
-Because UDP is datagram-based, each Zenoh batch must fit in a single UDP datagram. This makes the effective MTU platform-dependent and significantly smaller than TCP's 65535 cap.
+### UDP Unicast-Specific Configuration Options
 
-### Configuration Options
+| Key | Description | Default |
+|-----|-------------|---------|
+| `so_rcvbuf` | Socket receive buffer size (bytes) | OS default |
+| `so_sndbuf` | Socket send buffer size (bytes) | OS default |
+| `iface` | Bind to a specific network interface | unset |
+| `bind` | Bind to a specific local `ip:port` | unset |
+| `dscp` | DSCP/ToS value for QoS | unset |
 
-| Parameter | Description |
-|---|---|
-| `iface` | Bind to specific network interface |
-| `bind` | Bind to specific local socket address |
-| `dscp` | DSCP/QoS byte |
-| `so_rcvbuf` | OS RX socket buffer |
-| `so_sndbuf` | OS TX socket buffer |
+### Config Snippets
 
-Global config:
-
+**Listen on UDP:**
 ```json5
 {
-  "transport": {
-    "link": {
-      "udp": {
-        "so_rcvbuf": 2097152,
-        "so_sndbuf": 2097152
+  listen: {
+    endpoints: ["udp/0.0.0.0:7447"]
+  }
+}
+```
+
+**Connect via UDP:**
+```json5
+{
+  connect: {
+    endpoints: ["udp/192.168.1.100:7447"]
+  }
+}
+```
+
+**UDP with buffer tuning:**
+```json5
+{
+  listen: {
+    endpoints: ["udp/0.0.0.0:7447"]
+  },
+  transport: {
+    link: {
+      udp: {
+        so_rcvbuf: 4194304,   // 4 MiB
+        so_sndbuf: 4194304
       }
     }
   }
 }
 ```
 
-### Example Configurations
-
-#### UDP Listener
-
-```json5
-{
-  "listen": {
-    "endpoints": [
-      "udp/0.0.0.0:7447"
-    ]
-  }
-}
+**Inline per-endpoint config:**
 ```
-
-#### UDP Connector
-
-```json5
-{
-  "connect": {
-    "endpoints": [
-      "udp/192.168.1.10:7447"
-    ]
-  }
-}
-```
-
-#### Mixed TCP + UDP (accept either)
-
-```json5
-{
-  "listen": {
-    "endpoints": [
-      "tcp/0.0.0.0:7447",
-      "udp/0.0.0.0:7447"
-    ]
-  }
-}
+udp/192.168.1.100:7447#so_rcvbuf=4194304;iface=eth0
 ```
 
 ---
 
 ## 3. UDP Multicast
 
+### Overview
+
+UDP multicast enables one-to-many communication within a multicast group. Zenoh uses multicast primarily for **scouting** — the automatic discovery of other Zenoh peers and routers on the local network without requiring pre-configured endpoints. Each node joins a multicast group, and scouting messages are sent to that group so all members discover each other.
+
 ### Endpoint Format
 
 ```
 udp/<multicast-group>:<port>
-udp/224.0.0.224:7447           # IPv4 multicast group
-udp/[ff02::1]:7447             # IPv6 link-local multicast
+udp/224.0.0.224:7446      # default Zenoh scouting address (IPv4)
+udp/[ff02::1]:7446         # IPv6 link-local all-nodes multicast
 ```
 
-Multicast addresses:
-- IPv4 range: `224.0.0.0` – `239.255.255.255`
-- IPv6 range: `ff00::/8`
+The default Zenoh multicast scouting address is `224.0.0.224:7446`.
 
 ### Use Cases
 
-- **Scouting**: discovering peers on the local network without pre-configured addresses. This is Zenoh's primary use of multicast.
-- One-to-many data distribution (e.g., broadcast sensor data to all subscribers on a LAN).
-- Robot swarms or peer discovery in embedded/IoT deployments.
-- Local network segments (multicast does not cross routers by default without PIM/IGMP).
+- **Automatic peer discovery** on a LAN (the primary use case)
+- Broadcast-style data distribution where all group members should receive every message
+- IoT deployments where nodes should self-organize without a central router
+- Lab or development environments for zero-configuration setup
+- Edge computing clusters on a common L2 segment
 
 ### Performance Characteristics
 
-| Property | Value |
-|---|---|
-| Reliable | ❌ No |
-| Ordered | ❌ No |
-| Streamed | ❌ No (datagram) |
-| Multicast | ✅ Yes |
-| MTU | Same as UDP unicast (platform-dependent) |
+- **Reliability:** No (UDP best-effort)
+- **Streamed:** No (datagram-based)
+- **Scope:** Limited to the multicast TTL / scope (default link-local)
+- **Latency:** Very low for discovery (single UDP packet sent, all receivers process simultaneously)
+- **MTU:** Same platform limits as UDP unicast
+- **Scalability:** Degrades with very large numbers of group members due to multicast amplification
 
-Multicast delivery is inherently best-effort. If reliability is required, use multicast only for discovery and fall back to unicast TCP/UDP for data.
+### Multicast Group and Interface Configuration
 
-### Scouting Configuration
+| Config Path | Description | Default |
+|-------------|-------------|---------|
+| `scouting.multicast.address` | Multicast group address and port | `224.0.0.224:7446` |
+| `scouting.multicast.enabled` | Enable multicast scouting | `true` |
+| `scouting.multicast.interface` | Network interface to use for multicast | `auto` |
+| `scouting.multicast.ttl` | Multicast TTL (hops) | `1` (link-local) |
+| `scouting.multicast.autoconnect` | Auto-connect to discovered peers | peer-mode specific |
+| `scouting.multicast.listen` | Whether to listen for multicast scouts | `true` |
 
-Zenoh uses multicast scouting automatically. The scouting address and period are configured separately from data links:
+### Config Snippets
 
+**Default multicast scouting (no explicit config needed):**
 ```json5
 {
-  "scouting": {
-    "multicast": {
-      "enabled": true,
-      "listen": true,
-      "address": "224.0.0.224:7446",   // default scouting group
-      "interface": "auto",             // or "eth0", "lo", etc.
-      "autoconnect": {
-        "router": "peer|router",
-        "peer": "router|peer"
-      },
-      "delay": 200                     // ms before declaring scouting done
-    },
-    "gossip": {
-      "enabled": true,
-      "multihop": false,
-      "autoconnect": {
-        "router": "peer|router",
-        "peer": "router|peer"
-      }
+  scouting: {
+    multicast: {
+      enabled: true
     }
   }
 }
 ```
 
-### Example Configurations
-
-#### Multicast Listener (for data, not just scouting)
-
+**Custom multicast group:**
 ```json5
 {
-  "listen": {
-    "endpoints": [
-      "udp/224.0.0.224:7447"
-    ]
+  scouting: {
+    multicast: {
+      enabled: true,
+      address: "224.0.0.123:7446",
+      interface: "eth0",
+      ttl: 1
+    }
   }
 }
 ```
 
-#### Disable Multicast Scouting (fixed topology)
-
+**Disable multicast scouting (use only configured endpoints):**
 ```json5
 {
-  "scouting": {
-    "multicast": {
-      "enabled": false
+  scouting: {
+    multicast: {
+      enabled: false
     }
   },
-  "connect": {
-    "endpoints": [
-      "tcp/192.168.1.10:7447"
-    ]
+  connect: {
+    endpoints: ["tcp/192.168.1.100:7447"]
   }
 }
 ```
 
-#### Multicast on Specific Interface
-
+**IPv6 multicast:**
 ```json5
 {
-  "scouting": {
-    "multicast": {
-      "enabled": true,
-      "interface": "eth0",
-      "address": "224.0.0.224:7446"
+  scouting: {
+    multicast: {
+      enabled: true,
+      address: "[ff02::1]:7446",
+      interface: "eth0"
     }
   }
 }
 ```
+
+**Explicitly add a multicast listen endpoint:**
+```json5
+{
+  listen: {
+    endpoints: ["udp/224.0.0.224:7446"]
+  }
+}
+```
+
+### Multicast Notes
+
+- TTL of `1` means multicast is confined to the local network segment (does not cross routers). Increase to extend scope, but be mindful of network policies.
+- On multi-homed hosts, always specify the `interface` to avoid sending scouting traffic on unintended interfaces.
+- Multicast scouting does **not** replace unicast data transport; once peers discover each other, they typically establish TCP or UDP unicast sessions for data exchange.
 
 ---
 
 ## 4. TLS
+
+### Overview
+
+TLS provides **TCP + TLS 1.3** encrypted transport. It uses the same byte-stream model as TCP but adds authentication (via X.509 certificates) and encryption. Zenoh's TLS implementation is built on `rustls` + `tokio-rustls`.
 
 ### Endpoint Format
 
 ```
 tls/<host>:<port>
 tls/0.0.0.0:7447
-tls/router.example.com:7447
 tls/192.168.1.10:7447
+tls/my.broker.example.com:7447
 ```
 
 ### Use Cases
 
-- Secure communication over untrusted networks (WAN, cloud, internet).
-- Authentication of peers via X.509 certificates.
-- Mutual TLS (mTLS) for zero-trust environments where both sides must present certificates.
-- Regulatory compliance requiring encryption in transit.
-- Any scenario where TCP is appropriate but confidentiality is also required.
+- Any deployment over untrusted networks (WAN, public internet)
+- IoT fleets requiring device authentication (use mTLS)
+- Regulatory or compliance requirements mandating encryption in transit
+- Multi-tenant environments where peer identity must be verified
+- Cloud-to-edge communication across organizational boundaries
 
 ### Performance Characteristics
 
-| Property | Value |
-|---|---|
-| Reliable | ✅ Yes |
-| Ordered | ✅ Yes |
-| Streamed | ✅ Yes |
-| Multicast | ❌ No |
-| MTU | Up to 65535 bytes |
-| Overhead | TLS record overhead (~13–53 bytes/record) + handshake latency |
+- **Reliability:** Yes (inherits TCP reliability)
+- **Streamed:** Yes
+- **Max MTU:** 65535 bytes (same as TCP)
+- **Effective MTU:** Same MSS-based computation as TCP, minus TLS record overhead
+- **Latency overhead:** ~1 RTT for TLS 1.3 handshake on first connect (0-RTT resumption not currently used)
+- **CPU overhead:** AES-NI hardware acceleration used when available via `ring` crypto provider
+- **Auth:** Server certificate verified by default; mTLS adds client certificate verification
 
-TLS uses TLS 1.3 exclusively (via `rustls`). The first connection incurs a 1-RTT handshake. Session resumption can reduce this in future connections. The MTU computation mirrors TCP (MSS-based on Unix).
+### Certificate Loading Methods
 
-### Certificate Setup
+Certificates and keys can be supplied in three ways for each parameter:
 
-Zenoh's TLS uses PEM-format certificates. You can supply them as:
-1. **File paths** (`*_file` keys) — read from disk at startup
-2. **Inline Base64** (`*_base64` keys) — embedded in config, decoded at runtime
-3. **Raw PEM string** (`*_raw` keys) — inline PEM text
+| Method | Config Key Suffix |
+|--------|-------------------|
+| File path | `_file` |
+| Base64-encoded PEM string | `_base64` |
+| Raw inline string | `_raw` |
 
-All three forms are equivalent; choose based on your deployment model.
+### TLS Configuration Options
 
-#### Generate a Self-Signed CA and Certificates (example with openssl)
+These live under `transport.link.tls` in the global config **or** inline in the endpoint config string.
 
-```bash
-# Generate CA
-openssl req -x509 -newkey rsa:4096 -keyout ca.key -out ca.pem \
-  -days 365 -nodes -subj "/CN=ZenohCA"
+| Key | Description | Default |
+|-----|-------------|---------|
+| `root_ca_certificate_file` | Path to PEM CA certificate to trust | unset |
+| `root_ca_certificate_base64` | Base64 PEM CA cert | unset |
+| `listen_private_key_file` | Server private key (PEM) | required for listener |
+| `listen_private_key_base64` | Base64 server private key | required for listener |
+| `listen_certificate_file` | Server certificate chain (PEM) | required for listener |
+| `listen_certificate_base64` | Base64 server cert chain | required for listener |
+| `connect_private_key_file` | Client private key (PEM) for mTLS | required if mTLS |
+| `connect_private_key_base64` | Base64 client private key | required if mTLS |
+| `connect_certificate_file` | Client certificate chain (PEM) for mTLS | required if mTLS |
+| `connect_certificate_base64` | Base64 client cert | required if mTLS |
+| `enable_mtls` | Enable mutual TLS (client cert required) | `false` |
+| `verify_name_on_connect` | Verify server hostname in cert | `true` |
+| `close_link_on_expiration` | Auto-close when cert expires | `false` |
+| `so_rcvbuf` | TCP receive buffer size | OS default |
+| `so_sndbuf` | TCP send buffer size | OS default |
+| `iface` | Bind to interface | unset |
+| `bind` | Bind to local `ip:port` | unset |
+| `dscp` | DSCP value | unset |
 
-# Generate server key and CSR
-openssl req -newkey rsa:4096 -keyout server.key -out server.csr \
-  -nodes -subj "/CN=zenoh-router"
+> **Key formats supported:** RSA, PKCS8, EC private keys (auto-detected via `rustls-pemfile`).
 
-# Sign server certificate with CA
-openssl x509 -req -in server.csr -CA ca.pem -CAkey ca.key \
-  -CAcreateserial -out server.pem -days 365
+### Config Snippets
 
-# Generate client key and cert (for mTLS)
-openssl req -newkey rsa:4096 -keyout client.key -out client.csr \
-  -nodes -subj "/CN=zenoh-client"
-openssl x509 -req -in client.csr -CA ca.pem -CAkey ca.key \
-  -CAcreateserial -out client.pem -days 365
-```
-
-### Configuration Options
-
-#### Server-side (listener) TLS config keys
-
-| Key | Description |
-|---|---|
-| `tls_listen_certificate_file` | Path to server PEM certificate |
-| `tls_listen_private_key_file` | Path to server PEM private key |
-| `tls_listen_certificate_base64` | Base64-encoded server certificate |
-| `tls_listen_private_key_base64` | Base64-encoded server private key |
-| `tls_root_ca_certificate_file` | CA cert for verifying clients (mTLS) |
-| `tls_root_ca_certificate_base64` | Base64-encoded CA cert |
-| `tls_enable_mtls` | `true` to require client certificates |
-| `tls_close_link_on_expiration` | Close link when certificate expires |
-
-#### Client-side (connector) TLS config keys
-
-| Key | Description |
-|---|---|
-| `tls_root_ca_certificate_file` | CA cert to trust the server |
-| `tls_root_ca_certificate_base64` | Base64-encoded CA cert |
-| `tls_connect_certificate_file` | Client cert (for mTLS) |
-| `tls_connect_private_key_file` | Client private key (for mTLS) |
-| `tls_connect_certificate_base64` | Base64-encoded client cert |
-| `tls_connect_private_key_base64` | Base64-encoded client private key |
-| `tls_enable_mtls` | `true` to send client certificate |
-| `tls_verify_name_on_connect` | `true` (default) to verify server hostname |
-| `tls_close_link_on_expiration` | Close link when certificate expires |
-
-### Example Configurations
-
-#### Server (TLS, one-way authentication)
-
+**TLS listener (server-side):**
 ```json5
-// router.json5
 {
-  "listen": {
-    "endpoints": [
-      "tls/0.0.0.0:7447"
-    ]
+  listen: {
+    endpoints: ["tls/0.0.0.0:7447"]
   },
-  "transport": {
-    "link": {
-      "tls": {
-        "listen_private_key": "/etc/zenoh/certs/server.key",
-        "listen_certificate": "/etc/zenoh/certs/server.pem",
-        "root_ca_certificate": "/etc/zenoh/certs/ca.pem"
+  transport: {
+    link: {
+      tls: {
+        listen_private_key_file: "/etc/zenoh/server.key",
+        listen_certificate_file: "/etc/zenoh/server.crt"
       }
     }
   }
 }
 ```
 
-#### Client (TLS, one-way)
-
+**TLS client connecting to a known CA:**
 ```json5
 {
-  "connect": {
-    "endpoints": [
-      "tls/router.example.com:7447"
-    ]
+  connect: {
+    endpoints: ["tls/router.example.com:7447"]
   },
-  "transport": {
-    "link": {
-      "tls": {
-        "root_ca_certificate": "/etc/zenoh/certs/ca.pem"
+  transport: {
+    link: {
+      tls: {
+        root_ca_certificate_file: "/etc/zenoh/ca.crt"
       }
     }
   }
 }
 ```
 
-#### Mutual TLS (mTLS)
-
+**Mutual TLS (mTLS) — both sides authenticate:**
 ```json5
-// router.json5
+// Server config
 {
-  "listen": {
-    "endpoints": ["tls/0.0.0.0:7447"]
+  listen: {
+    endpoints: ["tls/0.0.0.0:7447"]
   },
-  "transport": {
-    "link": {
-      "tls": {
-        "listen_certificate": "/certs/server.pem",
-        "listen_private_key": "/certs/server.key",
-        "root_ca_certificate": "/certs/ca.pem",
-        "enable_mtls": true
+  transport: {
+    link: {
+      tls: {
+        listen_private_key_file: "/etc/zenoh/server.key",
+        listen_certificate_file: "/etc/zenoh/server.crt",
+        root_ca_certificate_file: "/etc/zenoh/ca.crt",
+        enable_mtls: true
       }
     }
   }
 }
 
-// client.json5
+// Client config
 {
-  "connect": {
-    "endpoints": ["tls/router.example.com:7447"]
+  connect: {
+    endpoints: ["tls/router.example.com:7447"]
   },
-  "transport": {
-    "link": {
-      "tls": {
-        "root_ca_certificate": "/certs/ca.pem",
-        "connect_certificate": "/certs/client.pem",
-        "connect_private_key": "/certs/client.key",
-        "enable_mtls": true,
-        "verify_name_on_connect": true
+  transport: {
+    link: {
+      tls: {
+        root_ca_certificate_file: "/etc/zenoh/ca.crt",
+        connect_private_key_file: "/etc/zenoh/client.key",
+        connect_certificate_file: "/etc/zenoh/client.crt",
+        enable_mtls: true
       }
     }
   }
 }
 ```
 
-#### Per-endpoint TLS (inline in endpoint URI)
-
+**Disable hostname verification (testing only — not for production):**
 ```json5
 {
-  "connect": {
-    "endpoints": [
-      "tls/router.example.com:7447?tls_root_ca_certificate_file=/certs/ca.pem&tls_enable_mtls=false"
-    ]
-  }
-}
-```
-
-#### Certificate expiration monitoring
-
-```json5
-{
-  "transport": {
-    "link": {
-      "tls": {
-        "close_link_on_expiration": true
+  transport: {
+    link: {
+      tls: {
+        verify_name_on_connect: false
       }
     }
   }
 }
 ```
 
-When enabled, Zenoh monitors the earliest `not_after` date in the peer's certificate chain and proactively closes the link as it approaches expiry, triggering reconnection with fresh certificates.
+**Inline endpoint parameters:**
+```
+tls/router.example.com:7447#root_ca_certificate_file=/etc/zenoh/ca.crt;enable_mtls=false
+```
+
+**Base64-encoded certificates (for containerized deployments):**
+```json5
+{
+  transport: {
+    link: {
+      tls: {
+        root_ca_certificate_base64: "LS0tLS1CRUdJTi...",
+        listen_private_key_base64: "LS0tLS1CRUdJTi...",
+        listen_certificate_base64: "LS0tLS1CRUdJTi..."
+      }
+    }
+  }
+}
+```
+
+### Certificate Expiration Monitoring
+
+When `close_link_on_expiration: true`, Zenoh spawns a background task that monitors the peer certificate chain's `not_after` field and closes the link when the earliest expiring certificate in the chain expires. This forces a reconnect, which will fail if the certificate has not been renewed.
 
 ---
 
-## 5. QUIC (Stream)
-
-### Endpoint Format
-
-```
-quic/<host>:<port>
-quic/0.0.0.0:7447
-quic/router.example.com:7447
-```
-
-### Use Cases
-
-- **Low-latency encrypted connections** where TLS over TCP adds too much handshake latency. QUIC performs a 1-RTT (or 0-RTT) handshake.
-- Environments with packet loss or reordering (QUIC avoids TCP's head-of-line blocking at the transport level).
-- Mobile or roaming clients where the underlying IP address changes (QUIC connection migration).
-- When you need both encryption and UDP-based multiplexing.
-- Replacing TLS in environments where TCP itself is a bottleneck.
-
-> **QUIC vs TLS over TCP:** QUIC is preferred when connection establishment speed matters, the network is lossy, or clients are mobile. TLS/TCP is simpler to operate and debug.
-
-### Performance Characteristics
-
-| Property | Value |
-|---|---|
-| Reliable | ✅ Yes |
-| Ordered | ✅ Yes (within a stream) |
-| Streamed | ✅ Yes |
-| Multicast | ❌ No |
-| MTU | Up to 65535 bytes (BatchSize::MAX) |
-| Encryption | ✅ Always (TLS 1.3 mandatory) |
-| Linger timeout | 10 seconds |
-| Accept throttle | 100 ms on error |
-
-QUIC uses a single bidirectional QUIC stream per Zenoh session. Unidirectional streams and additional bidirectional streams are disabled. QUIC requires certificates — it cannot run without TLS.
-
-### Certificate Configuration
-
-QUIC uses the same certificate keys as TLS:
-
-| Key | Description |
-|---|---|
-| `tls_listen_certificate_file` | Server certificate |
-| `tls_listen_private_key_file` | Server private key |
-| `tls_root_ca_certificate_file` | CA certificate |
-| `tls_enable_mtls` | Enable mutual authentication |
-| `tls_verify_name_on_connect` | Verify server hostname |
-| `tls_close_link_on_expiration` | Auto-close on cert expiry |
-| `iface` | Bind to interface |
-| `bind` | Bind to specific local address |
-| `dscp` | DSCP marking |
-
-### Example Configurations
-
-#### QUIC Listener (router)
-
-```json5
-{
-  "listen": {
-    "endpoints": [
-      "quic/0.0.0.0:7447"
-    ]
-  },
-  "transport": {
-    "link": {
-      "tls": {
-        "listen_certificate": "/certs/server.pem",
-        "listen_private_key": "/certs/server.key",
-        "root_ca_certificate": "/certs/ca.pem"
-      }
-    }
-  }
-}
-```
-
-#### QUIC Connector (client)
-
-```json5
-{
-  "connect": {
-    "endpoints": [
-      "quic/router.example.com:7447"
-    ]
-  },
-  "transport": {
-    "link": {
-      "tls": {
-        "root_ca_certificate": "/certs/ca.pem"
-      }
-    }
-  }
-}
-```
-
-#### QUIC with mTLS
-
-```json5
-// listener
-{
-  "listen": {
-    "endpoints": ["quic/0.0.0.0:7447"]
-  },
-  "transport": {
-    "link": {
-      "tls": {
-        "listen_certificate": "/certs/server.pem",
-        "listen_private_key": "/certs/server.key",
-        "root_ca_certificate": "/certs/ca.pem",
-        "enable_mtls": true
-      }
-    }
-  }
-}
-
-// connector
-{
-  "connect": {
-    "endpoints": ["quic/router.example.com:7447"]
-  },
-  "transport": {
-    "link": {
-      "tls": {
-        "root_ca_certificate": "/certs/ca.pem",
-        "connect_certificate": "/certs/client.pem",
-        "connect_private_key": "/certs/client.key",
-        "enable_mtls": true
-      }
-    }
-  }
-}
-```
-
-#### Per-endpoint QUIC config
-
-```json5
-{
-  "connect": {
-    "endpoints": [
-      "quic/router.example.com:7447?tls_root_ca_certificate_file=/certs/ca.pem&iface=eth0"
-    ]
-  }
-}
-```
-
----
-
-## 6. QUIC Datagram
-
-### Endpoint Format
-
-```
-quic/<host>:<port>?rel=0
-```
-
-The `rel=0` metadata tag in the locator marks this as the unreliable QUIC datagram variant (as opposed to the reliable QUIC stream variant above).
-
-### Use Cases
-
-- **Low-latency unreliable delivery with encryption.** Combines UDP-like datagram semantics with QUIC's mandatory TLS 1.3.
-- Sensor data where staleness matters more than completeness.
-- Real-time control loops tolerating occasional dropped messages.
-- Environments requiring encryption but not ordering or reliability guarantees.
-
-### Performance Characteristics
-
-| Property | Value |
-|---|---|
-| Reliable | ❌ No |
-| Ordered | ❌ No |
-| Streamed | ❌ No (datagram) |
-| Multicast | ❌ No |
-| MTU | Dynamic (from `connection.max_datagram_size()`) |
-| Encryption | ✅ Always (TLS 1.3) |
-
-The MTU is negotiated dynamically by QUIC's MTU discovery mechanism. The server can configure an initial MTU and discovery interval:
-
-| Config key | Description |
-|---|---|
-| `initial_mtu` | Starting MTU value (u16) |
-| `mtu_discovery_interval_secs` | Seconds between MTU probes |
-
-### Example Configuration
-
-```json5
-// listener
-{
-  "listen": {
-    "endpoints": ["quic/0.0.0.0:7448"]
-  },
-  "transport": {
-    "link": {
-      "tls": {
-        "listen_certificate": "/certs/server.pem",
-        "listen_private_key": "/certs/server.key",
-        "root_ca_certificate": "/certs/ca.pem"
-      }
-    }
-  }
-}
-```
-
-Per-endpoint MTU config (on the listener endpoint URI):
-
-```
-quic/0.0.0.0:7448?initial_mtu=1400&mtu_discovery_interval_secs=60
-```
-
----
-
-## 7. WebSocket
-
-### Endpoint Format
-
-```
-ws://<host>:<port>
-ws://0.0.0.0:7447
-ws://router.example.com:7447
-wss://router.example.com:7447    # WebSocket over TLS
-```
-
-### Use Cases
-
-- **Browser-based Zenoh clients** using the zenoh-js or zenoh-ts libraries.
-- Environments where only HTTP/WebSocket traffic is permitted through firewalls or proxies.
-- Web applications subscribing to or publishing Zenoh topics directly.
-- Cloud environments where WebSocket is the standard upgrade from HTTP.
-
-### Performance Characteristics
-
-| Property | Value |
-|---|---|
-| Reliable | ✅ Yes |
-| Ordered | ✅ Yes |
-| Streamed | ✅ Yes |
-| Multicast | ❌ No |
-| MTU | Up to 65535 bytes |
-| Overhead | WebSocket framing (2–14 bytes/frame) + HTTP upgrade handshake |
-
-WebSocket adds a one-time HTTP upgrade handshake and per-frame overhead compared to raw TCP, but this is negligible for most workloads.
-
-### Example Configurations
-
-#### WebSocket Listener
-
-```json5
-{
-  "listen": {
-    "endpoints": [
-      "tcp/0.0.0.0:7447",
-      "ws/0.0.0.0:7448"
-    ]
-  }
-}
-```
-
-#### WebSocket Connector (from a server-side process)
-
-```json5
-{
-  "connect": {
-    "endpoints": [
-      "ws/router.example.com:7448"
-    ]
-  }
-}
-```
-
-#### Browser client (zenoh-js)
-
-```javascript
-import init, { Session, Config } from "@eclipse-zenoh/zenoh-ts";
-
-await init();
-const conf = new Config('ws/router.example.com:7448');
-const session = await Session.open(conf);
-```
-
-#### WebSocket with TLS (wss)
-
-```json5
-{
-  "listen": {
-    "endpoints": [
-      "tls/0.0.0.0:7447",
-      "wss/0.0.0.0:7448"
-    ]
-  },
-  "transport": {
-    "link": {
-      "tls": {
-        "listen_certificate": "/certs/server.pem",
-        "listen_private_key": "/certs/server.key"
-      }
-    }
-  }
-}
-```
-
----
-
-## 8. Serial
-
-### Endpoint Format
-
-```
-serial/<device-path>[?baudrate=<rate>&exclusive=<bool>&tout=<us>]
-
-# Linux/macOS
-serial//dev/ttyUSB0
-serial//dev/ttyUSB0?baudrate=115200&exclusive=true
-
-# Windows
-serial/COM3
-serial/COM3?baudrate=9600&exclusive=true
-```
-
-### Use Cases
-
-- **Embedded systems and microcontrollers** running zenoh-pico.
-- UART links between MCUs and host systems.
-- USB-serial adapters connecting constrained devices.
-- Industrial sensors using RS-232/RS-485 serial interfaces.
-- Scenarios where no IP networking is available.
-
-### Performance Characteristics
-
-| Property | Value |
-|---|---|
-| Reliable | ❌ No (best-effort) |
-| Ordered | Depends on medium |
-| Streamed | ❌ No (message-framed) |
-| Multicast | ❌ No |
-| MTU | `z_serial::MAX_MTU` (platform-defined) |
-| Default baud rate | 9600 bps |
-| Default timeout | 50,000 μs (50 ms) |
-
-Serial is not streamed in the TCP sense — it uses message-level framing from the `z-serial` library. The link is unreliable (no retransmission at the serial transport level; Zenoh's session layer handles reliability if configured).
-
-### Configuration Options
-
-| Parameter | Default | Description |
-|---|---|---|
-| `baudrate` | `9600` | Serial baud rate (e.g., 9600, 115200, 921600) |
-| `exclusive` | `true` | Exclusive port access |
-| `tout` | `50000` | Read timeout in microseconds |
-| `release_on_close` | `true` | Release port when link closes |
-
-### Example Configurations
-
-#### Serial Listener (embedded device acting as server)
-
-```json5
-{
-  "listen": {
-    "endpoints": [
-      "serial//dev/ttyUSB0?baudrate=115200&exclusive=true"
-    ]
-  }
-}
-```
-
-#### Serial Connector (host connecting to device)
-
-```json5
-{
-  "connect": {
-    "endpoints": [
-      "serial//dev/ttyUSB0?baudrate=115200&exclusive=true&tout=100000"
-    ]
-  }
-}
-```
-
-#### Serial with Low Timeout (for responsive embedded loops)
-
-```json5
-{
-  "connect": {
-    "endpoints": [
-      "serial//dev/ttyACM0?baudrate=921600&tout=10000"
-    ]
-  }
-}
-```
-
-#### Release on Close Disabled (keep port open across reconnects)
-
-```json5
-{
-  "listen": {
-    "endpoints": [
-      "serial//dev/ttyUSB0?baudrate=115200&release_on_close=false"
-    ]
-  }
-}
-```
-
-### zenoh-pico Serial Example (C)
-
-```c
-// zenoh-pico on embedded (e.g., Arduino/Zephyr)
-z_owned_config_t config;
-z_config_default(&config);
-zp_config_insert(z_config_loan(&config),
-    Z_CONFIG_CONNECT_KEY,
-    "serial//dev/ttyUSB0?baudrate=115200");
-```
-
----
-
-## 9. Shared Memory
+## 5. QUIC
 
 ### Overview
 
-Shared Memory (SHM) is not a separate transport protocol in the same sense as TCP or UDP. It is a **zero-copy optimization layer** applied on top of an existing unicast transport (typically TCP or Unix domain sockets between processes on the same host). When SHM is available and the publisher and subscriber are co-located on the same machine, Zenoh replaces the serialized payload with a handle pointing into a shared memory region. The receiver maps that region and reads the payload without copying.
+QUIC runs over UDP but provides stream multiplexing, built-in TLS 1.3, and connection migration. Zenoh supports **two QUIC modes**:
+
+- **`quic/` (stream mode):** Uses a single bidirectional QUIC stream per connection. Reliable and ordered, similar to TLS/TCP but with faster connection setup. This is the standard QUIC transport.
+- **`quic_datagram/` (datagram mode):** Uses QUIC's unreliable datagram extension (RFC 9221). Provides encryption and authentication without reliability guarantees. Lower latency than stream mode.
+
+Zenoh's QUIC implementation uses the `quinn` crate with `rustls` as the crypto backend.
+
+### Endpoint Format
+
+```
+quic/<host>:<port>          # stream mode (reliable)
+quic/0.0.0.0:7447
+quic/router.example.com:7448
+```
 
 ### Use Cases
 
-- **High-throughput inter-process communication on a single host** (zero-copy).
-- Large payloads (images, point clouds, video frames) where serialization cost is significant.
-- Real-time systems requiring deterministic latency without memory allocation on the data path.
-- Any scenario where publisher and subscriber are on the same physical machine.
+**Prefer QUIC over TCP when:**
+- You need **TLS-equivalent security** with **faster connection establishment** (0-RTT or 1-RTT vs TCP's 3-way handshake + TLS handshake)
+- You're on a **lossy network** where TCP's head-of-line blocking would hurt throughput
+- **Mobile or multi-homed** scenarios where IP addresses may change (QUIC connection migration)
+- Traversing **NATs** where UDP is more likely to succeed than TCP
+- You want encryption **mandatory by design** (QUIC cannot run without TLS)
+
+**Prefer QUIC datagram when:**
+- You want encryption + authentication but can tolerate packet loss
+- Low-latency telemetry over secured channels
+- Same use cases as UDP unicast but on networks where UDP requires TLS-level authentication
 
 ### Performance Characteristics
 
-| Property | Value |
-|---|---|
-| Reliable | Depends on underlying transport |
-| Zero-copy | ✅ Yes (on same host) |
-| Cross-host | ❌ No (falls back to normal transport) |
-| Requires feature flag | ✅ Yes (`shared-memory` Cargo feature) |
-| Memory backend | Platform-specific POSIX/Windows SHM |
+| Property | QUIC Stream | QUIC Datagram |
+|----------|-------------|---------------|
+| Reliability | Yes | No |
+| Streamed | Yes | No |
+| Max MTU | 65535 | Platform UDP MTU |
+| Encryption | Mandatory TLS 1.3 | Mandatory TLS 1.3 |
+| Head-of-line blocking | None (per-stream) | None |
+| Connection setup | 1-RTT (0-RTT possible) | 1-RTT |
+| MTU discovery | Static | Dynamic (configurable) |
 
-When the receiver is on a different host, Zenoh automatically falls back to serialized transmission — no code change required.
+QUIC stream MTU is `65535` (constrained by Zenoh's 16-bit batch size encoding). QUIC datagram MTU is discovered dynamically and is queried from `connection.max_datagram_size()` at runtime.
 
-### Enabling SHM
+### QUIC Requires TLS Certificates
 
-#### Cargo feature flag (Rust)
+Unlike TCP/UDP, QUIC **always requires TLS configuration**. A listener with no TLS config will fail with `"No QUIC configuration provided"`. The certificate options are identical to the TLS transport.
 
-```toml
-[dependencies]
-zenoh = { version = "1.x", features = ["shared-memory"] }
+### QUIC Configuration Options
+
+| Key | Description | Default |
+|-----|-------------|---------|
+| `root_ca_certificate_file` | CA cert to trust for server verification | unset |
+| `root_ca_certificate_base64` | Base64 CA cert | unset |
+| `listen_private_key_file` | Server private key | required for listener |
+| `listen_certificate_file` | Server certificate | required for listener |
+| `connect_private_key_file` | Client key for mTLS | required if mTLS |
+| `connect_certificate_file` | Client cert for mTLS | required if mTLS |
+| `enable_mtls` | Mutual TLS | `false` |
+| `verify_name_on_connect` | Verify server hostname | `true` |
+| `close_link_on_expiration` | Close on cert expiry | `false` |
+| `iface` | Bind to interface | unset |
+| `bind` | Bind to local socket | unset |
+| `dscp` | DSCP value | unset |
+| `initial_mtu` *(datagram only)* | Initial MTU hint | unset |
+| `mtu_discovery_interval_secs` *(datagram only)* | MTU discovery interval | QUIC default |
+
+### QUIC Protocol Constraints
+
+From the source code, each QUIC connection allows:
+- **0 unidirectional streams** (`max_concurrent_uni_streams = 0`)
+- **1 bidirectional stream** (`max_concurrent_bidi_streams = 1`)
+
+ALPN protocol negotiated: `hq-29` (HTTP/3 draft compatible — used as a standard ALPN token).
+
+### Config Snippets
+
+**QUIC listener:**
+```json5
+{
+  listen: {
+    endpoints: ["quic/0.0.0.0:7448"]
+  },
+  transport: {
+    link: {
+      tls: {
+        listen_private_key_file: "/etc/zenoh/server.key",
+        listen_certificate_file: "/etc/zenoh/server.crt"
+      }
+    }
+  }
+}
 ```
 
-#### Configuration
+**QUIC client:**
+```json5
+{
+  connect: {
+    endpoints: ["quic/router.example.com:7448"]
+  },
+  transport: {
+    link: {
+      tls: {
+        root_ca_certificate_file: "/etc/zenoh/ca.crt"
+      }
+    }
+  }
+}
+```
+
+**QUIC with inline cert config:**
+```
+quic/router.example.com:7448#root_ca_certificate_file=/etc/zenoh/ca.crt;enable_mtls=false
+```
+
+**QUIC datagram listener:**
+```json5
+{
+  listen: {
+    endpoints: ["quic/0.0.0.0:7448#rel=0;initial_mtu=1400;mtu_discovery_interval_secs=60"]
+  },
+  transport: {
+    link: {
+      tls: {
+        listen_private_key_file: "/etc/zenoh/server.key",
+        listen_certificate_file: "/etc/zenoh/server.crt"
+      }
+    }
+  }
+}
+```
+
+> **Note on reliability metadata:** The `rel=0` metadata tag in the locator signals unreliable transport to the Zenoh protocol layer when using QUIC datagrams.
+
+---
+
+## 6. WebSocket
+
+### Overview
+
+The WebSocket transport (`ws://` or `wss://` for secure) enables Zenoh to communicate through browser environments and WebSocket-capable proxies. It wraps Zenoh's binary protocol in WebSocket frames, which are HTTP-upgradeable TCP connections.
+
+### Endpoint Format
+
+```
+ws/<host>:<port>
+ws/0.0.0.0:7447
+ws/127.0.0.1:7447
+wss/0.0.0.0:7448          # WebSocket over TLS
+```
+
+### Use Cases
+
+- **Browser-based Zenoh clients** (zenoh-ts, zenoh-js) connecting to a router
+- Environments where only HTTP/WebSocket ports (80, 443) are open through firewalls
+- REST/WebSocket API gateways bridging web clients to the Zenoh fabric
+- CDN or load balancer environments that support WebSocket passthrough
+- Web dashboards and monitoring applications
+
+### Performance Characteristics
+
+- **Reliability:** Yes (WebSocket runs over TCP)
+- **Streamed:** Yes
+- **MTU:** 65535 bytes (same 16-bit limit as TCP)
+- **Overhead:** HTTP upgrade handshake on connection; per-frame header (2–10 bytes per message) on top of TCP
+- **Latency:** Similar to TCP after handshake; slightly higher due to framing
+- **Browser compatibility:** Full (any modern browser supports WebSocket)
+
+### WebSocket Configuration
+
+WebSocket shares most config with TCP. The primary config is the endpoint itself:
 
 ```json5
 {
+  listen: {
+    endpoints: ["ws/0.0.0.0:7447"]
+  }
+}
+```
+
+For TLS-secured WebSocket (`wss://`), configure TLS certificates just as you would for the `tls/` transport:
+```json5
+{
+  listen: {
+    endpoints: ["ws/0.0.0.0:8443"]
+  },
+  transport: {
+    link: {
+      tls: {
+        listen_private_key_file: "/etc/zenoh/server.key",
+        listen_certificate_file: "/etc/zenoh/server.crt"
+      }
+    }
+  }
+}
+```
+
+### Multi-Transport Router (TCP + WebSocket)
+
+A common pattern is to run TCP for native clients and WebSocket for web clients on the same router:
+
+```json5
+{
+  listen: {
+    endpoints: [
+      "tcp/0.0.0.0:7447",
+      "ws/0.0.0.0:7446"
+    ]
+  }
+}
+```
+
 ---
 
-## See Also
-- [deployment.md](deployment.md) — Using transports in router and peer deployments
-- [configuration.md](configuration.md) — Configuring transport endpoints and parameters
-- [shared-memory.md](shared-memory.md) — Shared-memory transport for zero-copy intra-host messaging
-- [embedded.md](embedded.md) — Transport support on resource-constrained devices
+## 7. Serial
+
+### Overview
+
+The Serial transport enables Zenoh communication over **UART / RS-232 / USB serial** connections. This is the primary transport for embedded systems using **zenoh-pico** (Zenoh's C implementation for microcontrollers) connected to a host machine.
+
+### Endpoint Format
+
+```
+serial/<device-path>
+serial//dev/ttyUSB0
+serial//dev/ttyACM0
+serial/COM3               # Windows
+serial//dev/ttyS0         # hardware UART
+```
+
+The device path is the OS device node for the serial port.
+
+### Use Cases
+
+- Connecting microcontrollers / embedded devices (Arduino, STM32, ESP32) to a Zenoh network via USB-serial adapter
+- UART-based sensor networks bridged to IP networks
+- Industrial equipment using RS-232 or RS-485 interfaces
+- Robotics platforms communicating with motor controllers or sensor boards
+- Any zenoh-pico device connected to a zenoh (full) router via serial cable
+
+### Performance Characteristics
+
+- **Reliability:** No (serial framing with `z_serial`'s COBS-like encoding; no guaranteed delivery at this layer)
+- **Streamed:** No (message-framed)
+- **Max MTU:** Determined by `z_serial::MAX_MTU` (the `z-serial` crate's maximum message size)
+- **Baudrate:** 9600 baud default; configurable up to hardware maximum
+- **Latency:** Proportional to baudrate; a 115200 baud link has ~87 µs per byte
+- **Exclusive access:** Port is locked exclusively by default to prevent conflicts
+
+### Serial-Specific Configuration Options
+
+These are set via endpoint config parameters:
+
+| Key | Description | Default |
+|-----|-------------|---------|
+| `baudrate` | Serial port baud rate | `9600` |
+| `exclusive` | Lock port exclusively | `true` |
+| `tout` | Read timeout in microseconds | `50000` (50 ms) |
+| `release_on_close` | Release (close) the port file handle when link closes | `true` |
+
+### Config Snippets
+
+**Listen on a serial port (waiting for a device to connect):**
+```json5
+{
+  listen: {
+    endpoints: ["serial//dev/ttyUSB0#baudrate=115200"]
+  }
+}
+```
+
+**Connect to a device via serial:**
+```json5
+{
+  connect: {
+    endpoints: ["serial//dev/ttyACM0#baudrate=115200;exclusive=true;tout=100000"]
+  }
+}
+```
+
+**Windows serial port:**
+```json5
+{
+  connect: {
+    endpoints: ["serial/COM3#baudrate=9600"]
+  }
+}
+```
+
+**Keep port open across reconnects:**
+```json5
+{
+  listen: {
+    endpoints: ["serial//dev/ttyUSB0#baudrate=115200;release_on_close=false"]
+  }
+}
+```
+
+When `release_on_close=false`, the serial file descriptor is kept open even after the link closes, which reduces reconnect latency when the remote device reboots.
+
+### Serial Listener Behavior
+
+The serial listener (`new_listener`) spawns an accept loop that:
+1. Waits for the port to become disconnected
+2. Opens the serial device (if `release_on_close=true`)
+3. Clears RX buffers
+4. Calls `port.accept()` in a poll loop with 100 ms sleeps until a connection handshake is detected
+5. Reports the new link to the transport manager
+
+This means serial connections are **re-established automatically** after a disconnect, making it suitable for hot-pluggable USB devices.
+
+---
+
+## 8. Shared Memory
+
+### Overview
+
+Shared Memory (SHM) is not a network transport in the traditional sense — it is a **zero-copy IPC mechanism** for processes on the **same host**. Instead of copying message payloads through sockets, the publisher writes data into a shared memory segment and sends only a reference (pointer + metadata) over the normal transport. The subscriber maps the same segment and reads directly from it.
+
+### Requirements
+
+- Both publisher and subscriber must be on the **same machine**
+- The `transport.shared_memory.enabled` config must be set to `true`
+- Both processes must use a transport that supports SHM metadata (TCP and UDP unicast work; the metadata message is tiny)
+- The `zenoh` crate must be compiled with the `shared-memory` feature (or use the official release builds which include it)
+
+### How It Works
+
+1. **Publisher side:** When publishing, if SHM is enabled and the message is large enough, Zenoh allocates the payload in a named SHM segment. The message sent over the transport contains only a **SHM descriptor** (segment ID, offset, length) rather than the actual bytes.
+2. **Transport:** The SHM descriptor rides over the normal transport (TCP/UDP) as a small control message.
+3. **Subscriber side:** Upon receiving an SHM descriptor, Zenoh maps the referenced segment and presents the data directly to the application — **zero copy**, no data movement.
+4. **Garbage collection:** Reference counting ensures the SHM segment is released only after all readers have finished.
+
+### Automatic vs Explicit SHM
+
+**Automatic (transparent):** Enable SHM globally; Zenoh decides when to use it based on whether both endpoints are on the same host and the payload is above a threshold.
+
+```json5
+{
+  transport: {
+    shared_memory: {
+      enabled: true
+    }
+  }
+}
+```
+
+**Explicit (API-level):** Use `ShmProvider` and `ZSlice` APIs to explicitly allocate and publish from SHM buffers. Gives full control over allocation and reuse.
+
+### SHM Configuration Options
+
+| Config Path | Description | Default |
+|-------------|-------------|---------|
+| `transport.shared_memory.enabled` | Enable SHM transport globally | `false` |
+
+Additional configuration is done programmatically via the `ShmProvider` API

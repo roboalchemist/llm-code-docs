@@ -2,217 +2,283 @@
 
 ## Table of Contents
 
-1. [Overview & File Format](#overview)
-2. [Node Identity & Metadata](#identity)
-3. [Mode](#mode)
-4. [Connect](#connect)
-5. [Listen](#listen)
-6. [Open (Session Open Behavior)](#open)
-7. [Scouting](#scouting)
-   - [Multicast Scouting](#multicast-scouting)
-   - [Gossip Scouting](#gossip-scouting)
-8. [Timestamping](#timestamping)
-9. [Queries](#queries)
-10. [Routing](#routing)
-11. [QoS Overwrite](#qos-overwrite)
-12. [Aggregation](#aggregation)
-13. [Namespace](#namespace)
-14. [Transport](#transport)
+1. [Configuration File Format](#configuration-file-format)
+2. [Node Identity: `id`, `mode`, `metadata`](#node-identity)
+3. [Connect Configuration](#connect-configuration)
+4. [Listen Configuration](#listen-configuration)
+5. [Session Open Behavior](#session-open-behavior)
+6. [Scouting Configuration](#scouting-configuration)
+7. [Timestamping](#timestamping)
+8. [Queries Default Timeout](#queries-default-timeout)
+9. [Routing Configuration](#routing-configuration)
+10. [QoS Configuration](#qos-configuration)
+11. [Transport Configuration](#transport-configuration)
     - [Unicast Transport](#unicast-transport)
     - [Multicast Transport](#multicast-transport)
-    - [Link Layer](#link-layer)
+    - [Link Configuration](#link-configuration)
     - [Shared Memory](#shared-memory)
     - [Authentication](#authentication)
-15. [Access Control (ACL)](#access-control)
-16. [Downsampling](#downsampling)
-17. [Low Pass Filter](#low-pass-filter)
-18. [Admin Space](#admin-space)
+12. [Access Control (ACL)](#access-control)
+13. [Downsampling](#downsampling)
+14. [Low-Pass Filter](#low-pass-filter)
+15. [Admin Space](#admin-space)
+16. [Namespace](#namespace)
+17. [Aggregation](#aggregation)
+18. [Stats](#stats)
 19. [Plugins](#plugins)
-20. [Configuration Decision Guide](#decision-guide)
+20. [Configuration Decision Guide](#configuration-decision-guide)
 
 ---
 
-## Overview & File Format {#overview}
+## Configuration File Format
 
-Zenoh configuration files use JSON5 format (`.json5`), which supports comments (`//`), trailing commas, and unquoted keys. YAML (`.yaml`/`.yml`) is also supported. TOML is supported as an unstable feature.
+Zenoh configuration files use **JSON5** format (`.json5`), which is a superset of JSON that allows:
+- Comments (`//` and `/* */`)
+- Trailing commas
+- Unquoted keys
+- Single-quoted strings
 
-Pass the config file to `zenohd` with `-c my_config.json5`, or load programmatically via `Config::from_file()`.
+Files can also be written in **YAML** (`.yaml`/`.yml`) or **TOML** (`.toml`, unstable).
 
-**Key concepts:**
-- Many options accept a **mode-dependent value**: either a single value applying to all modes, or an object with `router`, `peer`, and `client` keys supplying per-mode values.
-- Options commented out with `//` show valid structure but are disabled by default.
-- `null` means "not set / use default."
+**Loading a config file:**
+```
+zenohd --config /path/to/config.json5
+```
+
+**Programmatic loading (Rust):**
+```rust
+let config = Config::from_file("config.json5")?;
+let session = zenoh::open(config).await?;
+```
+
+**Partial key insertion at runtime:**
+```rust
+config.insert_json5("transport/unicast/lowlatency", "true")?;
+```
+
+> **Note:** Values shown in `DEFAULT_CONFIG.json5` are correctly typed but may not represent sensible defaults for all deployments. Many values are illustrative examples.
 
 ---
 
-## Node Identity & Metadata {#identity}
+## Node Identity
 
 ### `id`
 
 | Property | Value |
-|---|---|
-| **Path** | `id` |
-| **Type** | String (hex unsigned 128-bit integer, no leading zeros) |
-| **Default** | Random u128 generated at startup |
-| **Example** | `"1234567890abcdef"` |
+|----------|-------|
+| **Type** | String (hex, lowercase, no leading zeros) |
+| **Valid values** | 1–32 hex characters representing a u128 |
+| **Default** | Not set (random u128 generated at startup) |
 
-**What it controls:** The unique identifier of this zenoh node across the entire zenoh network. Used for routing decisions and visible in the admin space at `@/<zid>/router` (or `peer`/`client`).
+**What it controls:** The unique identifier of this zenoh node in the network. Visible to other nodes and used for routing, admin space queries (`@/<zid>/router` etc.), and session identification.
 
-**When to change:** Set explicitly when you need deterministic node identity—for example, when another node's ACL or routing policy references this node by ZID, or when you need reproducible testing environments.
+**When to change:** When you need deterministic, reproducible node identities (e.g., for persistent storage keys, fixed ACL rules referencing ZIDs, or reproducible test setups).
 
 **Tradeoffs:**
-- ✅ Deterministic identity, useful for ACL rules referencing `zids`
-- ✅ Consistent admin space paths across restarts
-- ⚠️ **ZIDs must be globally unique.** Duplicate ZIDs in a network cause undefined routing behavior and may silently corrupt message delivery. Never copy a config file with a fixed `id` to multiple nodes without changing it.
+- ✅ Enables stable admin space paths and ACL rules keyed by ZID
+- ✅ Required if you want to reference a specific node in `routing.router.linkstate.transport_weights` or ACL `subjects.zids`
+- ⚠️ **MUST be globally unique.** Duplicate ZIDs in the same network cause undefined routing behavior
+- ⚠️ Do not reuse IDs across deployments without careful coordination
+
+```json5
+id: "1234567890abcdef"
+```
+
+---
+
+### `mode`
+
+| Property | Value |
+|----------|-------|
+| **Type** | String enum |
+| **Valid values** | `"router"`, `"peer"`, `"client"` |
+| **Default** | `"peer"` (in library); `"router"` in `zenohd` |
+
+**What it controls:** The fundamental role this node plays in the zenoh network.
+
+| Mode | Description |
+|------|-------------|
+| `"router"` | Dedicated infrastructure node. Forwards data between other nodes. Listens for incoming connections. Does not join peer-to-peer mesh by default. |
+| `"peer"` | Full participant. Can both publish and subscribe, and routes data between directly connected peers. Forms meshes with other peers. |
+| `"client"` | Lightweight endpoint. Connects to a router for all communication. Does not forward data. Cannot be connected *to* by other nodes. |
+
+**When to change:**
+- Use `"router"` for dedicated brokers/infrastructure nodes (cloud, edge hubs)
+- Use `"peer"` for embedded devices or services that should form direct P2P connections
+- Use `"client"` for resource-constrained devices, mobile apps, or nodes behind NAT/firewall that cannot accept incoming connections
+
+**Tradeoffs:**
+
+| Mode | CPU/Memory | Connectivity | Complexity |
+|------|-----------|--------------|------------|
+| `router` | Highest | Can reach all nodes | Requires fixed endpoints |
+| `peer` | Medium | Direct P2P + router | Auto-discovery via scouting |
+| `client` | Lowest | Router-dependent | Simple, no listening |
+
+```json5
+mode: "router"
+```
 
 ---
 
 ### `metadata`
 
 | Property | Value |
-|---|---|
-| **Path** | `metadata` |
+|----------|-------|
 | **Type** | Arbitrary JSON object |
-| **Default** | `{}` (empty) |
-| **Example** | `{ name: "edge-sensor-01", location: "building-A", role: "publisher" }` |
+| **Valid values** | Any JSON object |
+| **Default** | `{}` |
 
-**What it controls:** Human-readable metadata attached to this node. Not interpreted by zenoh itself. Exposed in the admin space at `@/<zid>/router` (or `peer`/`client`). Useful for fleet management, diagnostics, and monitoring tools.
+**What it controls:** Arbitrary, user-defined metadata attached to this node. Not interpreted by zenoh. Available in the admin space at `@/<zid>/router`, `@/<zid>/peer`, or `@/<zid>/client`.
 
-**When to change:** Always populate in production deployments for observability. Add any fields relevant to your operational context.
+**When to change:** Add identifying information for operational visibility — node names, physical location, rack/region, DNS names, hardware type, software version.
 
 **Tradeoffs:**
-- ✅ Visible in admin space for diagnostics with no runtime cost
-- ✅ Completely free-form; any JSON is valid
-- ℹ️ Not transmitted on the data plane; only in admin/scouting info
+- ✅ Purely informational, zero performance impact
+- ✅ Useful for monitoring dashboards and topology visualization
+- ⚠️ Not validated or processed by zenoh; purely a pass-through for operators
+
+```json5
+metadata: {
+  name: "edge-gateway-01",
+  location: "rack-3-datacenter-eu-west",
+  version: "1.2.3",
+}
+```
 
 ---
 
-## Mode {#mode}
+## Connect Configuration
 
-### `mode`
-
-| Property | Value |
-|---|---|
-| **Path** | `mode` |
-| **Type** | String enum |
-| **Valid Values** | `"router"`, `"peer"`, `"client"` |
-| **Default** | `"peer"` |
-
-**What it controls:** The fundamental operational role of this zenoh node.
-
-| Mode | Description |
-|---|---|
-| `"router"` | Forwards data between peers and clients. Listens on well-known ports. Acts as a broker/relay. Participates in all routing protocols. |
-| `"peer"` | Full participant: publishes, subscribes, and can relay data to other directly-connected peers. Participates in gossip. Does not run linkstate by default. |
-| `"client"` | Lightweight consumer/producer. Connects to routers only. Does not relay data. Does not participate in gossip or multicast scouting (only initiates scout). |
-
-**When to change:**
-- Use `"router"` for infrastructure nodes (cloud VMs, gateways, brokers).
-- Use `"peer"` for devices that need direct P2P communication or can assist in local relay.
-- Use `"client"` for resource-constrained devices or applications that only need to talk to a router.
-
-**Tradeoffs:**
-
-| Mode | CPU/Memory | Connectivity | Routing participation |
-|---|---|---|---|
-| `router` | High | Listens + connects | Full (linkstate, gossip) |
-| `peer` | Medium | Listens (ephemeral port) + connects | Gossip, P2P |
-| `client` | Low | Connects only | None |
-
----
-
-## Connect {#connect}
-
-Controls outbound connections to other zenoh nodes.
+The `connect` section defines which remote endpoints this node should connect to at startup, and how connection failures are handled.
 
 ### `connect.endpoints`
 
 | Property | Value |
-|---|---|
-| **Path** | `connect.endpoints` |
+|----------|-------|
 | **Type** | Array of endpoint strings, or mode-dependent object |
-| **Default** | `[]` (empty) |
-| **Examples** | `["tcp/10.0.0.1:7447"]`, `{ router: ["tcp/router:7447"], peer: [] }` |
+| **Valid values** | List of `"<proto>/<address>"` strings |
+| **Default** | `[]` (empty — rely on scouting) |
 
-**What it controls:** The list of remote endpoints this node attempts to connect to at startup. Supports TCP, UDP, TLS, QUIC, WebSocket, Unix sockets, and vSock. Endpoint URIs follow the pattern `<protocol>/<address>:<port>`.
+**What it controls:** The explicit list of remote zenoh nodes to connect to. Bypasses scouting discovery for these nodes.
 
-**Endpoint modifiers** (appended with `#`):
-- `iface=eth0` — bind outgoing connection to a specific interface (Linux only)
-- `so_sndbuf=65000;so_rcvbuf=65000` — TCP socket buffer sizes
-- `bind=192.168.0.1:0` — local bind address (incompatible with `iface`)
-- `dscp=0x08` — IP DSCP field for QoS marking
-- `retry_period_init_ms=5000;retry_period_max_ms=30000` — per-endpoint retry override
+**Supported protocols and endpoint formats:**
 
-**Link-level QoS modifiers** (appended with `?`):
-- `prio=6-7` — restrict this link to carrying only priority levels 6–7 (data_low, background)
-- `rel=0` — mark link as best-effort
+| Protocol | Example | Notes |
+|----------|---------|-------|
+| TCP | `tcp/192.168.1.10:7447` | Standard reliable transport |
+| UDP | `udp/192.168.1.10:7447` | Unreliable, low overhead |
+| TLS | `tls/192.168.1.10:7447` | Encrypted TCP |
+| QUIC | `quic/192.168.1.10:7447` | Encrypted UDP-based |
+| WebSocket | `ws/192.168.1.10:7447` | Browser/firewall traversal |
+| Unix Socket | `unixsock-stream//tmp/zenoh.sock` | Local IPC |
+| Unix Pipe | `unixpipe//tmp/zenoh.pipe` | Local IPC |
+| vSock | `vsock/2:7447` | VM-to-hypervisor |
+| Serial | `serial//dev/ttyS0#baudrate=115200` | Serial link |
 
-**When to change:** Set explicit endpoints when:
-- Multicast scouting is not available (e.g., cross-subnet, cloud)
-- You want to connect to a known router/peer deterministically
-- You need to disable discovery entirely and use static topology
+**Per-endpoint options** (appended as `#key=value;key=value`):
+
+| Option | Example | Description |
+|--------|---------|-------------|
+| `iface` | `#iface=eth0` | Bind to specific interface (Linux TCP/UDP) |
+| `prio` | `#prio=1-3` | Assign priority range to this link |
+| `rel` | `#rel=0` | Set reliability (`0`=best-effort, `1`=reliable) |
+| `so_sndbuf` | `#so_sndbuf=65000` | TCP send buffer size |
+| `so_rcvbuf` | `#so_rcvbuf=65000` | TCP receive buffer size |
+| `bind` | `#bind=192.168.0.1:0` | Local socket address |
+| `dscp` | `#dscp=0x08` | IP DSCP field value |
+| `retry_period_init_ms` | `#retry_period_init_ms=5000` | Per-endpoint retry override |
+| `retry_period_max_ms` | `#retry_period_max_ms=30000` | Per-endpoint retry max |
+
+**Mode-dependent format:**
+```json5
+endpoints: {
+  router: ["tcp/router1.example.com:7447"],
+  peer:   ["tcp/10.0.0.1:7447"],
+  client: ["tcp/10.0.0.1:7447"],
+}
+```
+
+**When to change:** Whenever scouting is unavailable or unreliable — WAN connections, fixed infrastructure, cloud deployments, CI/CD environments, or whenever you want deterministic topology.
 
 **Tradeoffs:**
-- ✅ Deterministic, works across subnets and firewalls
-- ✅ Can partition traffic across links by priority
-- ⚠️ Static topology—doesn't adapt to network changes without config update
-- ⚠️ Must be kept in sync with the remote's `listen.endpoints`
+- ✅ Predictable topology, no reliance on multicast
+- ✅ Works across subnets and WAN
+- ⚠️ Requires knowing endpoint addresses ahead of time
+- ⚠️ No automatic failover to alternate endpoints unless multiple are listed
+
+```json5
+connect: {
+  endpoints: [
+    "tcp/router.example.com:7447",
+    "tcp/router-backup.example.com:7447",
+  ],
+}
+```
 
 ---
 
 ### `connect.timeout_ms`
 
 | Property | Value |
-|---|---|
-| **Path** | `connect.timeout_ms` |
+|----------|-------|
 | **Type** | Integer (ms) or mode-dependent object |
+| **Valid values** | `-1` (infinite), `0` (no retry), positive integer |
 | **Default** | `{ router: -1, peer: -1, client: 0 }` |
 
-**What it controls:** How long the node waits for **all** configured `connect.endpoints` to be successfully connected before proceeding.
+**What it controls:** How long to wait for *all* configured endpoints to be connected before proceeding. This is the total timeout for the full connect cycle, not per-endpoint.
 
-| Value | Behavior |
-|---|---|
-| `0` | No retry; proceed immediately even if connections failed |
-| `-1` | Wait indefinitely until all connections are established |
-| `N > 0` | Wait up to N milliseconds |
+**Semantics:**
+- `-1` — Wait indefinitely (block until all endpoints connect)
+- `0` — Do not retry; fail immediately if connection fails
+- `N` — Wait up to N milliseconds total
 
 **When to change:**
-- Set to `-1` for routers and critical peers that must not start without their upstream connections.
-- Set to `0` for clients that should start immediately and reconnect in the background.
-- Set to a positive value (e.g., `30000`) for startup orchestration with a timeout.
+- Set `client: -1` if your client **must** have a router connection before it can function
+- Set `client: 0` in test/dev environments where failure should be immediately visible
+- Keep default `-1` for routers and peers that should keep retrying in production
 
 **Tradeoffs:**
-- `-1` guarantees connectivity before proceeding but can block startup indefinitely if peers are unavailable
-- `0` allows fast startup but may lose early publications/queries
-- Positive value provides a bounded startup delay
+- `0` (no retry): Fast failure detection, good for tests; bad for resilient production systems
+- `-1` (infinite): Resilient; application startup blocks until network is available
+- Fixed value: Bounded startup time; may fail if infrastructure is slow
+
+```json5
+connect: {
+  timeout_ms: { router: -1, peer: -1, client: 30000 },
+}
+```
 
 ---
 
 ### `connect.exit_on_failure`
 
 | Property | Value |
-|---|---|
-| **Path** | `connect.exit_on_failure` |
+|----------|-------|
 | **Type** | Boolean or mode-dependent object |
+| **Valid values** | `true`, `false` |
 | **Default** | `{ router: false, peer: false, client: true }` |
 
-**What it controls:** Whether the process exits if the `connect.timeout_ms` deadline is exceeded without all connections being established.
+**What it controls:** Whether the application exits if the connect timeout is exceeded.
 
 **When to change:**
-- Set to `true` for clients in managed environments where a failed connection should trigger a restart (e.g., via systemd or Kubernetes).
-- Set to `false` for peers/routers that should continue operating in degraded mode.
+- Set `client: false` if your client application can function without a router connection (degraded mode)
+- Set `router: true` / `peer: true` in production to force restart on connectivity loss (let systemd/k8s restart the service)
+
+**Tradeoffs:**
+- `true`: Clean failure model, integrates with process supervisors
+- `false`: Application continues in a degraded state; useful for edge nodes with intermittent connectivity
 
 ---
 
 ### `connect.retry`
 
-Controls the exponential backoff behavior for reconnection attempts.
+Controls the retry backoff behavior when connection attempts fail.
 
 #### `connect.retry.period_init_ms`
 
 | Property | Value |
-|---|---|
-| **Path** | `connect.retry.period_init_ms` |
+|----------|-------|
 | **Type** | Integer (ms) or mode-dependent |
 | **Default** | `1000` |
 
@@ -221,560 +287,542 @@ Initial wait before the first retry attempt.
 #### `connect.retry.period_max_ms`
 
 | Property | Value |
-|---|---|
-| **Path** | `connect.retry.period_max_ms` |
+|----------|-------|
 | **Type** | Integer (ms) or mode-dependent |
 | **Default** | `4000` |
 
-Maximum interval between retries (cap for exponential backoff).
+Maximum wait between retry attempts. The backoff will not exceed this value.
 
 #### `connect.retry.period_increase_factor`
 
 | Property | Value |
-|---|---|
-| **Path** | `connect.retry.period_increase_factor` |
+|----------|-------|
 | **Type** | Float |
 | **Default** | `2.0` |
 
-Multiplier applied to the retry interval after each failed attempt. With defaults: 1s → 2s → 4s (capped).
+Exponential backoff multiplier. Each retry waits `previous_wait * factor`, capped at `period_max_ms`.
 
-**When to change retry parameters:**
-- Reduce `period_max_ms` (e.g., `2000`) for fast-reconnecting sensors.
-- Increase `period_max_ms` (e.g., `60000`) for cloud/WAN connections to reduce connection storm during outages.
-- Set `period_increase_factor: 1.0` for a fixed-interval retry (no backoff).
+**Backoff sequence example (defaults):** 1s → 2s → 4s → 4s → 4s → ...
+
+**When to change:**
+- Increase `period_init_ms` and `period_max_ms` in WAN environments with slow recovery (e.g., 5s → 60s)
+- Decrease both for local/LAN environments where recovery is fast
+- Set `period_increase_factor: 1.0` for linear retry (constant interval)
+
+**Tradeoffs:**
+- Aggressive retry (low values): Faster reconnect, higher CPU and network load during outage
+- Conservative retry (high values): Lower load, slower reconnect
+
+```json5
+connect: {
+  retry: {
+    period_init_ms: 2000,
+    period_max_ms: 30000,
+    period_increase_factor: 2.0,
+  },
+}
+```
 
 ---
 
-## Listen {#listen}
+## Listen Configuration
 
-Controls which local endpoints this node binds and accepts connections on.
+The `listen` section configures which local endpoints this node exposes for incoming connections.
 
 ### `listen.endpoints`
 
 | Property | Value |
-|---|---|
-| **Path** | `listen.endpoints` |
-| **Type** | Array of endpoint strings, or mode-dependent object |
+|----------|-------|
+| **Type** | Array of endpoint strings or mode-dependent object |
+| **Valid values** | List of `"<proto>/<address>"` strings |
 | **Default** | `{ router: ["tcp/[::]:7447"], peer: ["tcp/[::]:0"] }` |
 
-**What it controls:** The local addresses this node listens on for incoming connections.
+**What it controls:** The local sockets/interfaces this node listens on. Other nodes can connect to these addresses.
 
-- `[::]:7447` — all interfaces, IPv4+IPv6, port 7447 (router well-known port)
-- `[::]:0` — all interfaces, OS-assigned ephemeral port (peer default)
-- `0.0.0.0:7447` — IPv4 only
-- `tcp/0.0.0.0:7447#iface=eth0` — bind only to eth0
+**Key defaults:**
+- Routers listen on `tcp/[::]:7447` (dual-stack IPv4+IPv6, port 7447)
+- Peers listen on `tcp/[::]:0` (OS-assigned random port)
+- Clients do not listen by default
 
-Same modifier syntax as `connect.endpoints` applies (`#iface`, `#so_sndbuf`, `?prio`, etc.).
+**Per-endpoint options:** Same as `connect.endpoints` (`iface`, `prio`, `rel`, `so_sndbuf`, `so_rcvbuf`, `dscp`).
 
 **When to change:**
-- Clients typically do not listen; set `endpoints: []` for pure clients.
-- Bind to a specific interface/IP for security (avoid listening on untrusted interfaces).
-- Use a fixed port for firewall rules.
-- Use Unix sockets (`unixsock-stream`) for local IPC.
+- Restrict to specific interface: `tcp/192.168.1.0:7447#iface=eth0`
+- Listen on specific port for firewall rules
+- Add TLS endpoint alongside TCP: `["tcp/[::]:7447", "tls/[::]:7448"]`
+- Disable listening entirely: `[]`
+- Add Unix socket for local IPC: `["tcp/[::]:7447", "unixsock-stream//tmp/zenoh.sock"]`
 
 **Tradeoffs:**
-- Listening on `[::]:0` (peer default) makes peer discoverable but uses an unpredictable port
-- Listening on a fixed port is firewall-friendly but requires port uniqueness per host
-- Not listening at all (client mode) reduces attack surface but requires a router
+- Listening on `0.0.0.0`/`[::]` accepts connections from any interface (convenient but broad)
+- Binding to specific IP limits exposure but requires static IP configuration
+- Multiple listen endpoints increase connectivity options at the cost of resource usage
+
+```json5
+listen: {
+  endpoints: ["tcp/[::]:7447", "tls/[::]:7448"],
+}
+```
 
 ---
 
 ### `listen.timeout_ms`
 
 | Property | Value |
-|---|---|
-| **Path** | `listen.timeout_ms` |
+|----------|-------|
 | **Type** | Integer (ms) or mode-dependent |
+| **Valid values** | `0` (no retry), `-1` (infinite), positive integer |
 | **Default** | `0` |
 
-**What it controls:** How long to wait for all listen endpoints to be successfully bound. `0` means try once with no retry. `-1` means wait indefinitely.
+**What it controls:** How long to wait for all listen endpoints to successfully bind.
 
-**When to change:** Set to `-1` for routers that must bind before accepting connections, or when the desired port may be temporarily unavailable (e.g., TIME_WAIT state).
+**Note:** Default is `0` (fail immediately if bind fails), unlike connect which defaults to `-1`.
+
+**When to change:** Set to `-1` or a positive value in orchestrated environments where the port may be temporarily unavailable during container startup races.
 
 ---
 
 ### `listen.exit_on_failure`
 
 | Property | Value |
-|---|---|
-| **Path** | `listen.exit_on_failure` |
+|----------|-------|
 | **Type** | Boolean or mode-dependent |
 | **Default** | `true` |
 
-**What it controls:** Whether the process exits if any listen endpoint fails to bind within `listen.timeout_ms`.
+**What it controls:** Whether to exit if listen binding fails.
 
-**When to change:** Set to `false` for resilient deployments where partial listen failure is acceptable.
+**When to change:** Set `false` if you want the node to start even if some listen endpoints fail (e.g., optional TLS endpoint fails but TCP is acceptable).
 
 ---
 
 ### `listen.retry`
 
-Same structure and semantics as `connect.retry`. Controls backoff when retrying a failed listen bind.
+Same structure as `connect.retry` — controls backoff for listen bind retries.
 
-| Sub-option | Default |
-|---|---|
+| Parameter | Default |
+|-----------|---------|
 | `period_init_ms` | `1000` |
 | `period_max_ms` | `4000` |
 | `period_increase_factor` | `2.0` |
 
 ---
 
-## Open (Session Open Behavior) {#open}
+## Session Open Behavior
 
 ### `open.return_conditions.connect_scouted`
 
 | Property | Value |
-|---|---|
-| **Path** | `open.return_conditions.connect_scouted` |
+|----------|-------|
 | **Type** | Boolean |
 | **Default** | `true` |
 
-**What it controls:** When `true`, `zenoh::open()` blocks until the session has connected to all scouted peers and routers before returning to the application.
+**What it controls:** When `true`, `zenoh::open()` blocks until it has connected to all scouted peers/routers before returning. When `false`, `open()` returns immediately and connections are established asynchronously.
 
-**When to change:** Set to `false` for applications that must start immediately (e.g., embedded systems with tight boot deadlines) and can tolerate losing early messages.
+**When to change:** Set `false` for faster startup in scenarios where you accept that initial publications may be lost before connections are established.
 
 **Tradeoffs:**
-- `true`: Safer startup, first publications are more likely delivered; slight startup delay
-- `false`: Faster startup; early publications/queries to scouted nodes may be lost
+- `true`: Slower startup, but first publications after `open()` are reliably delivered to already-discovered peers
+- `false`: Faster startup; early publications may be lost if subscribers haven't connected yet
 
 ---
 
 ### `open.return_conditions.declares`
 
 | Property | Value |
-|---|---|
-| **Path** | `open.return_conditions.declares` |
+|----------|-------|
 | **Type** | Boolean |
 | **Default** | `true` |
 
-**What it controls:** When `true`, `zenoh::open()` waits to receive initial declarations (subscriber/publisher/queryable info) from connected peers before returning.
+**What it controls:** When `true`, `zenoh::open()` waits to receive the full set of initial interest declarations from connected peers before returning. When `false`, `open()` returns without waiting.
 
-**When to change:** Set to `false` if startup time is critical; but note this may cause extra redundant traffic as peers re-declare interests.
+**When to change:** Set `false` to reduce startup latency when declaration exchange overhead is acceptable or when you expect peers to re-declare interests dynamically.
+
+**Tradeoffs:**
+- `true`: All subscribers/publishers are visible immediately after `open()`; avoids extra startup traffic from peers sending declarations for already-known interests
+- `false`: Faster `open()` return; may cause redundant network traffic as peers catch up
 
 ---
 
-## Scouting {#scouting}
+## Scouting Configuration
 
-Scouting is zenoh's peer discovery mechanism. Two mechanisms exist: UDP multicast and gossip (over established sessions).
+Scouting is the mechanism by which zenoh nodes discover each other. There are two mechanisms: **multicast UDP** (local network) and **gossip** (via existing connections).
 
 ### `scouting.timeout`
 
 | Property | Value |
-|---|---|
-| **Path** | `scouting.timeout` |
+|----------|-------|
 | **Type** | Integer (ms) |
 | **Default** | `3000` |
-| **Applies to** | Client mode |
 
-**What it controls:** How long a **client** waits for a router to be found via scouting before failing. If no router is found within this window, the client connect attempt fails (subject to `connect.exit_on_failure`).
+**What it controls:** In **client mode**, the maximum time to wait for a router to be discovered via scouting before failing.
 
 **When to change:**
-- Increase (e.g., `10000`) in environments where router startup is slow or unreliable
-- Decrease (e.g., `1000`) for fast-fail applications that have a fallback
+- Decrease (e.g., `1000`) for faster failure detection in dev/test
+- Increase (e.g., `10000`) in slow or congested networks where routers may take time to respond
 
 ---
 
 ### `scouting.delay`
 
 | Property | Value |
-|---|---|
-| **Path** | `scouting.delay` |
+|----------|-------|
 | **Type** | Integer (ms) |
 | **Default** | `500` |
-| **Applies to** | Peer mode |
 
-**What it controls:** How long a **peer** dedicates to scouting for other remote peers before proceeding with other operations.
+**What it controls:** In **peer mode**, the maximum time spent scouting for remote peers before proceeding with other operations.
 
 **When to change:**
-- Increase for larger or slower networks where peer discovery takes longer
-- Decrease for fast-startup peers in a known topology
+- Decrease for faster startup when peers are already known via `connect.endpoints`
+- Increase in large networks or when peer discovery is slow
 
 ---
 
-## Multicast Scouting {#multicast-scouting}
+### Multicast Scouting
 
-### `scouting.multicast.enabled`
+#### `scouting.multicast.enabled`
 
 | Property | Value |
-|---|---|
-| **Path** | `scouting.multicast.enabled` |
+|----------|-------|
 | **Type** | Boolean |
 | **Default** | `true` |
 
-**What it controls:** Enables UDP multicast-based peer discovery. When enabled, this node sends and receives multicast scout packets to automatically discover other zenoh nodes on the local network segment.
+**What it controls:** Enables/disables UDP multicast-based node discovery on the local network.
 
 **When to change:** Disable when:
-- Operating in a multicast-hostile environment (many cloud VMs, some VLANs, VPNs)
-- All endpoints are statically configured and discovery is unnecessary
-- You want to prevent unintended peer discovery
+- Running in containers/VMs where multicast is not supported
+- On cloud networks (AWS, GCP, Azure) which typically don't support multicast
+- When all endpoints are explicitly configured via `connect.endpoints`
+- In security-sensitive environments where broadcast discovery is undesirable
 
 **Tradeoffs:**
-- `true`: Zero-configuration local discovery; may cause unwanted connections in shared networks
-- `false`: No automatic discovery; all peers must be explicitly configured in `connect.endpoints`
+- `true`: Zero-config discovery on local network
+- `false`: Requires explicit endpoint configuration; more predictable but less flexible
 
 ---
 
-### `scouting.multicast.address`
+#### `scouting.multicast.address`
 
 | Property | Value |
-|---|---|
-| **Path** | `scouting.multicast.address` |
-| **Type** | String (`IP:port`) |
+|----------|-------|
+| **Type** | String (IP:port) |
 | **Default** | `"224.0.0.224:7446"` |
 
-**What it controls:** The UDP multicast group address and port used for scouting traffic.
+**What it controls:** The multicast group and port used for scouting UDP messages.
 
-**When to change:** Change when:
-- `224.0.0.224` conflicts with another application on the network
-- Your network policy restricts which multicast groups are allowed
-- You want to isolate separate zenoh networks on the same L2 segment (use different addresses per network)
+**When to change:** Change if `224.0.0.224:7446` conflicts with other software on your network, or if you want to segregate zenoh deployments on the same network.
+
+**Tradeoffs:** Must be identical on all nodes in the same scouting domain.
 
 ---
 
-### `scouting.multicast.interface`
+#### `scouting.multicast.interface`
 
 | Property | Value |
-|---|---|
-| **Path** | `scouting.multicast.interface` |
-| **Type** | String |
+|----------|-------|
+| **Type** | String or `"auto"` |
 | **Default** | `"auto"` |
 
-**What it controls:** The network interface to use for multicast scouting. `"auto"` lets zenoh select the best available interface automatically.
+**What it controls:** Which network interface to use for multicast scouting.
 
-**When to change:** Specify explicitly (e.g., `"eth0"`, `"wlan0"`) when:
-- The host has multiple interfaces and you want scouting on a specific one
-- `auto` selects the wrong interface (e.g., selects loopback or VPN adapter)
+**When to change:** On hosts with multiple network interfaces (e.g., `eth0` for data, `eth1` for management), specify the correct interface explicitly to prevent scouting on the wrong network.
+
+```json5
+interface: "eth0"
+```
 
 ---
 
-### `scouting.multicast.ttl`
+#### `scouting.multicast.ttl`
 
 | Property | Value |
-|---|---|
-| **Path** | `scouting.multicast.ttl` |
-| **Type** | Integer (1–255) |
+|----------|-------|
+| **Type** | Integer |
+| **Valid values** | `1`–`255` |
 | **Default** | `1` |
 
-**What it controls:** IP Time-to-Live on multicast scout packets. TTL 1 limits packets to the local subnet only (packets don't cross routers).
+**What it controls:** IP Time-To-Live on multicast scouting packets. TTL=1 means packets are restricted to the local subnet (will not cross routers).
 
 **When to change:**
-- Increase (e.g., `4`) only if you want multicast scouting to span multiple hops (requires network infrastructure support for multicast routing, which is rare)
-- Keep at `1` for security (prevents scouting traffic from leaking beyond the local segment)
+- Increase only if your topology requires scouting across multiple IP subnets connected by multicast-capable routers (unusual)
+- Keep at `1` for standard local network discovery
 
 **Tradeoffs:**
-- `1`: Secure, local-only scouting
-- `>1`: Cross-subnet scouting (complex, rarely needed; use gossip instead for multi-hop)
+- `1` (default): Safest, discovery limited to local segment
+- Higher values: Risk of scouting traffic leaking across network boundaries
 
 ---
 
-### `scouting.multicast.autoconnect`
+#### `scouting.multicast.autoconnect`
 
 | Property | Value |
-|---|---|
-| **Path** | `scouting.multicast.autoconnect` |
-| **Type** | Array of strings, or mode-dependent object |
+|----------|-------|
+| **Type** | Array of WhatAmI strings, or mode-dependent object |
+| **Valid values** | Lists containing `"router"`, `"peer"`, `"client"` |
 | **Default** | `{ router: [], peer: ["router", "peer"], client: ["router"] }` |
-| **Valid values** | Subset of `["router", "peer", "client"]` |
 
-**What it controls:** Which types of discovered zenoh nodes this node automatically establishes a session with upon multicast discovery.
+**What it controls:** Which types of discovered nodes this node will automatically attempt to connect to upon multicast discovery.
 
-| Default behavior | |
-|---|---|
-| Router | Does not autoconnect to anything via multicast (routers are usually explicitly connected) |
-| Peer | Autoconnects to discovered routers and peers |
-| Client | Autoconnects only to discovered routers |
+**Defaults explained:**
+- Routers do not auto-connect to anything via multicast (connections are manually configured or via gossip)
+- Peers auto-connect to both routers and other peers
+- Clients auto-connect only to routers
 
 **When to change:**
-- Set `peer: []` to disable automatic peer-to-peer connections and force all traffic through routers
-- Set `router: ["router"]` to allow router-to-router connections via multicast (unusual)
-- Add `"client"` to allow connections to discovered clients (generally not recommended)
+- `peer: []` — Disable automatic peer-to-peer mesh formation; peers connect only to manually configured endpoints
+- `client: ["router", "peer"]` — Allow clients to connect directly to peers (unusual but possible)
+- `peer: ["router"]` — Peer only connects to routers, not other peers (router-centric topology)
+
+**Tradeoffs:**
+- More permissive autoconnect: Richer mesh, but potentially redundant connections
+- More restrictive: Cleaner topology but requires manual configuration
 
 ---
 
-### `scouting.multicast.autoconnect_strategy`
+#### `scouting.multicast.autoconnect_strategy`
 
 | Property | Value |
-|---|---|
-| **Path** | `scouting.multicast.autoconnect_strategy` |
-| **Type** | String enum or mode/target-dependent object |
-| **Default** | `{ peer: { to_router: "always", to_peer: "always" } }` |
+|----------|-------|
+| **Type** | String or mode/target-dependent object |
 | **Valid values** | `"always"`, `"greater-zid"` |
+| **Default** | `{ peer: { to_router: "always", to_peer: "always" } }` |
 
-**What it controls:** Strategy to avoid redundant bidirectional connections when two nodes discover each other simultaneously.
+**What it controls:** Strategy to avoid redundant connections when multiple nodes discover each other simultaneously.
 
 | Strategy | Behavior |
-|---|---|
-| `"always"` | Both nodes attempt to connect; zenoh deduplicates the resulting sessions |
-| `"greater-zid"` | Only the node with the numerically greater ZID initiates; prevents redundant connections |
+|----------|----------|
+| `"always"` | Every node that discovers another will attempt to connect. May result in bidirectional connections (both are then deduplicated at transport level). |
+| `"greater-zid"` | Only the node with the larger ZID initiates the connection. Prevents double-connections in symmetric peer discovery. |
 
-**When to change:** Use `"greater-zid"` in dense peer networks to halve the number of simultaneous connection attempts. Do **not** use `"greater-zid"` if one side is behind NAT (it may not be reachable).
+**When to change:** Use `"greater-zid"` for `to_peer` when you have many peers on the same subnet and want to minimize redundant connection attempts.
+
+**Tradeoffs:**
+- `"always"`: Simpler, always connects; safe when one node may be unreachable from the other (asymmetric NAT/firewall)
+- `"greater-zid"`: Halves connection attempts in symmetric topologies; may fail if the "greater" node cannot reach the "lesser" node
+
+```json5
+autoconnect_strategy: {
+  peer: { to_router: "always", to_peer: "greater-zid" }
+}
+```
 
 ---
 
-### `scouting.multicast.listen`
+#### `scouting.multicast.listen`
 
 | Property | Value |
-|---|---|
-| **Path** | `scouting.multicast.listen` |
+|----------|-------|
 | **Type** | Boolean or mode-dependent |
-| **Default** | `true` for router and peer; `false` for client |
+| **Default** | `{ router: true, peer: true, client: false }` |
 
-**What it controls:** Whether this node listens for incoming scout messages on the multicast group and replies with its own locator information.
+**What it controls:** Whether this node listens for incoming scout messages on the multicast socket and replies to them (making itself discoverable).
 
-**When to change:** Set to `false` to make a node "invisible" to multicast scouting while still being able to initiate scouting itself.
+**When to change:** Set `false` to make a node invisible to multicast scouting (it can still scout others). Useful for "shadow" monitoring nodes.
 
 ---
 
-## Gossip Scouting {#gossip-scouting}
+### Gossip Scouting
 
-Gossip propagates discovery information over already-established sessions. Clients do not participate in gossip.
+Gossip scouting propagates discovery information through existing transport connections, enabling discovery of nodes not reachable by multicast.
 
-### `scouting.gossip.enabled`
+#### `scouting.gossip.enabled`
 
 | Property | Value |
-|---|---|
-| **Path** | `scouting.gossip.enabled` |
+|----------|-------|
 | **Type** | Boolean |
 | **Default** | `true` |
 
-**What it controls:** Enables gossip-based discovery. When enabled, nodes share topology information (who else they know about) with their direct connections, propagating discovery beyond the local L2 segment.
+**What it controls:** Enables gossip-based node discovery. Nodes share information about known peers/routers with their direct neighbors.
 
-**When to change:** Disable when:
-- All topology is statically configured
-- You want to minimize control-plane overhead in very constrained environments
+**When to change:** Disable in large, stable deployments with fully explicit configuration where gossip overhead is undesirable.
+
+> **Note:** Clients do not participate in gossip.
 
 ---
 
-### `scouting.gossip.multihop`
+#### `scouting.gossip.multihop`
 
 | Property | Value |
-|---|---|
-| **Path** | `scouting.gossip.multihop` |
+|----------|-------|
 | **Type** | Boolean |
 | **Default** | `false` |
 
-**What it controls:** When `true`, gossip information is propagated through multiple hops, eventually reaching all nodes in the subsystem even without direct connectivity between all pairs. When `false`, gossip only goes one hop (direct neighbors).
+**What it controls:** When `true`, gossip information is propagated beyond the immediate next hop — spreading discovery information through the entire network. When `false`, gossip is only sent to directly connected neighbors.
 
-**When to change:** Enable when using `linkstate` routing mode, where not all nodes have direct connections. Required for full topology discovery in a multi-hop linkstate network.
+**When to change:** Enable **only** when using `routing.peer.mode: "linkstate"` and the network topology has nodes that are not directly connected to each other but need to discover each other.
 
 **Tradeoffs:**
-- `false`: Lower gossip traffic, scales better; but discovery limited to direct neighbors
-- `true`: Complete topology discovery; more traffic; lower scalability in large networks
+- `false`: Lower traffic, better scalability, sufficient for most topologies
+- `true`: More thorough discovery in complex multi-hop topologies; significantly more scouting traffic; reduced scalability
 
 ---
 
-### `scouting.gossip.target`
+#### `scouting.gossip.target`
 
 | Property | Value |
-|---|---|
-| **Path** | `scouting.gossip.target` |
-| **Type** | Array or mode-dependent object |
+|----------|-------|
+| **Type** | Array or mode-dependent |
 | **Default** | `{ router: ["router", "peer"], peer: ["router", "peer"] }` |
 
-**What it controls:** Which types of nodes this node sends gossip messages to. Controls the direction of gossip propagation.
+**What it controls:** Which types of nodes this node sends gossip messages to.
 
-**When to change:** Restrict to reduce gossip traffic in large deployments. For example, peers in a client-only leaf network could target only `["router"]`.
+**When to change:** Restrict to reduce gossip traffic in large networks (e.g., `peer: ["router"]` to only gossip with routers).
 
 ---
 
-### `scouting.gossip.autoconnect`
+#### `scouting.gossip.autoconnect`
 
 | Property | Value |
-|---|---|
-| **Path** | `scouting.gossip.autoconnect` |
-| **Type** | Array or mode-dependent object |
+|----------|-------|
+| **Type** | Array or mode-dependent |
 | **Default** | `{ router: [], peer: ["router", "peer"] }` |
 
-**What it controls:** Which discovered node types to automatically connect to based on gossip information (nodes learned about indirectly, not seen directly via multicast).
+**What it controls:** Which types of nodes discovered via gossip this node will automatically connect to.
 
-**When to change:** Same considerations as `scouting.multicast.autoconnect`. Note that clients are not included because clients don't participate in gossip.
+**When to change:** Same considerations as `scouting.multicast.autoconnect` but for gossip-discovered nodes.
 
 ---
 
-### `scouting.gossip.autoconnect_strategy`
+#### `scouting.gossip.autoconnect_strategy`
+
+Same options as `scouting.multicast.autoconnect_strategy` — `"always"` or `"greater-zid"`.
 
 | Property | Value |
-|---|---|
-| **Path** | `scouting.gossip.autoconnect_strategy` |
-| **Type** | String enum or mode/target-dependent object |
+|----------|-------|
 | **Default** | `{ peer: { to_router: "always", to_peer: "always" } }` |
-| **Valid values** | `"always"`, `"greater-zid"` |
-
-Same semantics as `scouting.multicast.autoconnect_strategy` but applied to gossip-discovered nodes.
 
 ---
 
-## Timestamping {#timestamping}
+## Timestamping
 
 ### `timestamping.enabled`
 
 | Property | Value |
-|---|---|
-| **Path** | `timestamping.enabled` |
-| **Type** | Boolean or mode-dependent object |
+|----------|-------|
+| **Type** | Boolean or mode-dependent |
 | **Default** | `{ router: true, peer: false, client: false }` |
 
-**What it controls:** When enabled, zenoh automatically attaches a HLC (Hybrid Logical Clock) timestamp to any data message that doesn't already have one before forwarding it.
+**What it controls:** When enabled, any data message received or generated that does not already have a timestamp will be assigned a timestamp (HLC — Hybrid Logical Clock) before being forwarded/stored.
 
-**When to change:** Enable on peers and clients when:
-- Using the storage manager plugin with replication (timestamps are required for conflict resolution)
-- Your application logic needs timestamps on all messages
-- You need consistent causal ordering across distributed publishers
+**When to change:**
+- Enable on peers/clients if you need timestamps for causality tracking, storage replication, or ordering guarantees without a router in the path
+- Keep enabled on routers (default) for distributed storage consistency
+- Required for `storage_manager` replication to work correctly
 
 **Tradeoffs:**
-- `true`: All messages have timestamps; small overhead (timestamp attachment + HLC maintenance); required for distributed storage replication
-- `false`: No overhead; messages without timestamps pass through unchanged
+- `true`: Adds a few bytes per message (timestamp metadata); ensures global ordering
+- `false`: Slightly lower per-message overhead; timestamps not added (but existing timestamps are preserved and passed through)
+
+```json5
+timestamping: {
+  enabled: { router: true, peer: true, client: false },
+}
+```
 
 ---
 
 ### `timestamping.drop_future_timestamp`
 
 | Property | Value |
-|---|---|
-| **Path** | `timestamping.drop_future_timestamp` |
+|----------|-------|
 | **Type** | Boolean |
 | **Default** | `false` |
 
-**What it controls:** What happens when a message arrives with a timestamp in the future (indicates clock skew between nodes). When `false`, the timestamp is replaced with the current time (retimestamped). When `true`, the message is dropped entirely.
+**What it controls:** How to handle messages with timestamps in the future (which indicate clock skew between nodes).
 
-**When to change:** Set to `true` in security-sensitive environments where future timestamps could indicate message replay attacks or clock manipulation.
+- `false` (default): Messages with future timestamps are **re-timestamped** to the current time
+- `true`: Messages with future timestamps are **dropped**
+
+**When to change:** Enable `true` in strict environments where clock skew should be treated as an error and you want to protect against replayed or malformed messages.
 
 **Tradeoffs:**
-- `false`: Tolerant of clock skew; all messages delivered
-- `true`: Strict; messages with future timestamps lost; requires accurate NTP across all nodes
+- `false`: More forgiving; handles clock skew gracefully at the cost of timestamp accuracy
+- `true`: Strict; requires well-synchronized clocks (e.g., NTP/PTP); protects against replay attacks
 
 ---
 
-## Queries {#queries}
+## Queries Default Timeout
 
 ### `queries_default_timeout`
 
 | Property | Value |
-|---|---|
-| **Path** | `queries_default_timeout` |
+|----------|-------|
 | **Type** | Integer (ms) |
 | **Default** | `10000` (10 seconds) |
 
-**What it controls:** The default timeout applied to `session.get()` queries if the application does not specify one explicitly. After this timeout, no more replies are accepted for the query.
+**What it controls:** The default timeout applied to `get()` queries when no explicit timeout is specified by the application.
 
 **When to change:**
-- Reduce (e.g., `2000`) for latency-sensitive query/reply applications
-- Increase for queries that may trigger slow storage lookups
-- Applications should generally set per-query timeouts explicitly rather than relying on this default
+- Decrease (e.g., `1000`) for responsive UIs or health checks
+- Increase (e.g., `60000`) for queries to slow queryables (database backends, remote APIs)
+
+**Tradeoffs:**
+- Short timeout: Query fails fast; may miss slow responders
+- Long timeout: More complete results; application blocks longer on `get()`
+
+```json5
+queries_default_timeout: 5000
+```
 
 ---
 
-## Routing {#routing}
+## Routing Configuration
 
 ### `routing.router.peers_failover_brokering`
 
 | Property | Value |
-|---|---|
-| **Path** | `routing.router.peers_failover_brokering` |
+|----------|-------|
 | **Type** | Boolean |
 | **Default** | `true` |
-| **Applies to** | Router mode |
 
-**What it controls:** When `true`, a router detects if two peers connected to it are not directly connected to each other, and if so, the router will forward data between them (acting as a broker/proxy for that peer-to-peer traffic). Requires gossip discovery to be enabled with peers configured to gossip to routers.
+**What it controls:** When `true`, a router that detects two directly-connected peers that are **not** connected to each other will broker data between them (act as a relay). This provides automatic failover routing when the direct peer-to-peer link is unavailable.
 
-**When to change:** Set to `false` when:
-- You explicitly want to prevent the router from brokering peer-to-peer traffic
-- All peers are directly connected to each other and brokering adds unnecessary overhead
+**Prerequisites:** Gossip scouting must be enabled, and peers must have `gossip.target` including `"router"`.
 
-**Tradeoffs:**
-- `true`: Resilience—peers can communicate through the router even without direct connectivity; adds latency through the router hop
-- `false`: Peers must be directly reachable; potentially lower latency for direct connections
-
----
-
-### `routing.peer.mode`
-
-| Property | Value |
-|---|---|
-| **Path** | `routing.peer.mode` |
-| **Type** | String enum |
-| **Valid Values** | `"peer_to_peer"`, `"linkstate"` |
-| **Default** | `"peer_to_peer"` |
-| **Applies to** | Peer mode |
-
-**What it controls:** The routing algorithm used by peers.
-
-| Mode | Description |
-|---|---|
-| `"peer_to_peer"` | Each peer only routes to nodes it is directly connected to. Simple, low overhead. |
-| `"linkstate"` | Peers exchange full topology information (link-state advertisements). Enables multi-hop routing through peers without a central router. Requires gossip multihop enabled. |
-
-**⚠️ Important:** All peers and routers in a subsystem must use the same routing mode.
-
-**When to change:** Use `"linkstate"` when:
-- You want a fully decentralized network with no routers
-- Peers are not all directly connected but need to route through each other
-- You require dynamic path selection based on link weights
+**When to change:** Set `false` if you explicitly want to prevent the router from acting as a relay between peers (e.g., in strict security topologies where peer-to-peer isolation is required).
 
 **Tradeoffs:**
-- `peer_to_peer`: Simple, scalable, low overhead; but requires direct connectivity or a router for relay
-- `linkstate`: Full mesh routing without routers; more control-plane overhead; requires consistent configuration; more complex
+- `true`: Resilience — data flows through router when direct P2P link is unavailable; slight router overhead
+- `false`: Strict topology — peers only communicate if directly connected
 
 ---
 
 ### `routing.router.linkstate.transport_weights`
 
 | Property | Value |
-|---|---|
-| **Path** | `routing.router.linkstate.transport_weights` |
-| **Type** | Array of `{ dst_zid: string, weight: integer }` |
-| **Default** | `[]` (empty; all links default to weight 100) |
+|----------|-------|
+| **Type** | Array of `{ dst_zid, weight }` objects |
+| **Default** | `[]` (all links weight 100) |
 
-**What it controls:** Assigns routing weights to outgoing links in linkstate mode. Lower weight = preferred path. If both endpoints specify weights, the greater value is used. If neither specifies, weight 100 is used.
+**What it controls:** In linkstate routing mode, assigns weights to outgoing transport links for routing cost calculations. Higher weight = less preferred path.
 
-**When to change:** Use to prefer high-bandwidth or low-latency links over expensive WAN links in linkstate topology.
+**Weight resolution:**
+- Both endpoints specify weight → the **greater** weight wins
+- Only one endpoint specifies weight → that weight is used
+- Neither specifies → default weight `100`
 
-**Example:**
+**When to change:** In multi-hop linkstate topologies where you want to prefer certain paths (e.g., high-bandwidth fiber over slow WAN).
+
 ```json5
-transport_weights: [
-  { dst_zid: "abcdef1234567890", weight: 10 },  // prefer this fast link
-  { dst_zid: "fedcba0987654321", weight: 200 }, // avoid this expensive WAN link
-]
+routing: {
+  router: {
+    linkstate: {
+      transport_weights: [
+        { dst_zid: "aabbccdd11223344", weight: 10 },   // prefer this link
+        { dst_zid: "99887766554433aa", weight: 500 },  // avoid this link
+      ],
+    },
+  },
+}
 ```
 
-The same configuration exists under `routing.peer.linkstate.transport_weights`.
-
 ---
 
-### `routing.interests.timeout`
+### `routing.peer.mode`
 
 | Property | Value |
-|---|---|
-| **Path** | `routing.interests.timeout` |
-| **Type** | Integer (ms) |
-| **Default** | `10000` |
+|----------|-------|
+| **Type** | String enum |
+| **Valid values** | `"peer_to_peer"`, `"linkstate"` |
+| **Default** | `"peer_to_peer"` |
 
-**What it controls:** How long a node waits for incoming interest declarations (subscriber/publisher/queryable declarations from peers) when a new session is established. Expiration before all interests are received may cause incomplete routing tables and lost messages at startup.
-
-**When to change:**
-- Increase in slow networks where session establishment takes longer
-- Decrease in fast local networks where 10 seconds is excessive
-- Usually does not need adjustment
-
----
-
-## QoS Overwrite {#qos-overwrite}
-
-The `qos` section provides two mechanisms to override message QoS attributes independent of what the application API sets.
-
-### `qos.publication` — Publisher QoS Override
-
-| Property | Value |
-|---|---|
-| **Path** | `qos.publication` |
-| **Type** | Array of `{ key_exprs, config }` objects |
-| **Default** | `[]` (disabled) |
-
-**What it controls:** Overrides QoS for PUT and DELETE messages matching specified key expressions, applied **before** the message enters the network. This is the highest-performance override path.
----
-
-## See Also
-- [configuration-guide.md](configuration-guide.md) — Annotated walkthrough of common configuration patterns
-- [transports.md](transports.md) — Transport-specific configuration options
-- [security.md](security.md) — TLS, ACLs, and authentication configuration
-- [deployment.md](deployment.md) — Deploying routers, peers, and clients with custom configs
+**What it controls:**

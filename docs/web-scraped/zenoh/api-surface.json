@@ -1635,7 +1635,7 @@
     "module": "queryable",
     "file": "repos/zenoh/zenoh/src/api/queryable.rs",
     "params": "&self",
-    "returns": "ZResult<ReplyKeyExpr>"
+    "returns": "ReplyKeyExpr"
   },
   {
     "kind": "fn",

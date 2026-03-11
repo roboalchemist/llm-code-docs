@@ -2,512 +2,580 @@
 
 ---
 
+## Table of Contents
+1. [Getting Started](#getting-started)
+2. [Key Expressions and Selectors](#key-expressions-and-selectors)
+3. [Pub/Sub](#pubsub)
+4. [Query/Reply (Queryable)](#queryreply-queryable)
+5. [Liveliness](#liveliness)
+6. [Performance](#performance)
+7. [Deployment](#deployment)
+8. [ROS 2](#ros-2)
+9. [Embedded / IoT](#embedded--iot)
+10. [Troubleshooting](#troubleshooting)
+
+---
+
 ## Getting Started
 
----
+### Q: What is zenoh and how does it compare to MQTT/DDS/Kafka/ROS 2?
 
-**Q: What is zenoh and how does it compare to MQTT/DDS/Kafka/ROS2?**
+**A:** Zenoh (pronounced *"zeno"*) is a protocol and middleware stack that unifies **data in motion, data at rest, and computations**. It blends traditional pub/sub with geo-distributed storage, queries, and computation — with time and space efficiency designed to surpass mainstream stacks.
 
-Zenoh (pronounced *"zeno"*) is an open-source, unified data-in-motion and data-at-rest protocol that blends pub/sub, geo-distributed storage, queries, and computations into a single stack. The tagline is "Zero Overhead Pub/Sub, Store/Query and Compute."
+| Feature | Zenoh | MQTT | DDS | Kafka | ROS 2 (DDS) |
+|---|---|---|---|---|---|
+| Broker required | No (optional) | Yes (broker) | No | Yes (broker) | No |
+| Peer-to-peer | Yes | No | Yes | No | Yes |
+| Query/storage | Native | No | Limited | Consumer-pull | No |
+| WAN/internet | Yes | Yes | Difficult | Yes | Difficult |
+| Embedded/IoT | Yes (zenoh-pico) | Yes | Limited | No | No |
+| Wildcard routing | Yes (key exprs) | Yes (topics) | Yes (content filter) | No | Partial |
+| Throughput | >1 Gbps @ 128B | Lower | High | High | Medium |
+| Latency | Sub-microsecond | Milliseconds | Microseconds | Milliseconds | Milliseconds |
 
-Unlike single-paradigm protocols, zenoh natively handles:
-- **Pub/Sub** (like MQTT or DDS)
-- **Queryable/Get** (like a distributed key-value store or REST)
-- **Storages** (geo-distributed, queryable data at rest)
-- **Liveliness** (presence detection without heartbeat polling)
-
-| Feature | MQTT | DDS | Kafka | Zenoh |
-|---|---|---|---|---|
-| Broker required | Yes (mandatory) | No (multicast) | Yes (mandatory) | No (optional) |
-| Peer-to-peer | No | Yes (LAN) | No | Yes (LAN + WAN) |
-| Query/Reply | No | Limited | Consumer API | Native first-class |
-| WAN / internet | With bridges | Hard | Yes | Yes (native) |
-| Embedded support | Yes (lite) | Partial | No | Yes (zenoh-pico, ~100KB) |
-| Data at rest | No | No | Yes | Yes (pluggable backends) |
-| Language support | Many | Many | Many | Rust, C, C++, Python, Java, Kotlin, TypeScript |
-
-**vs MQTT:** MQTT requires a broker and uses a simple topic string model with limited QoS. Zenoh supports brokerless peer-to-peer, richer wildcard key expressions, native query/reply, and is significantly faster for high-throughput scenarios.
-
-**vs DDS:** DDS is powerful but complex (IDL, XML configuration, multicast-heavy). Zenoh achieves similar or better performance with a dramatically simpler API and natural WAN traversal.
-
-**vs Kafka:** Kafka is designed for persistent log streaming with consumer groups. Zenoh targets low-latency real-time messaging with optional storage, not high-volume log archival.
-
-**vs ROS2:** ROS2 uses DDS under the hood. Zenoh can replace DDS as the ROS2 transport layer (via `rmw_zenoh`) and extends naturally beyond a single robot to multi-robot fleets, cloud connectivity, and IoT.
+Key differentiators:
+- **vs MQTT**: No mandatory broker; native peer-to-peer; built-in query/reply; dramatically higher performance; works fine without internet connectivity.
+- **vs DDS**: Simpler API; works transparently over WAN; supports clients with minimal resource footprint (zenoh-pico); avoids multicast flooding issues.
+- **vs Kafka**: Not a message queue/log; designed for real-time low-latency, not durable stream processing; no broker required; embedded-friendly.
+- **vs ROS 2 / DDS**: Drop-in replacement as ROS 2 RMW layer; handles WAN natively; works on microcontrollers; significantly lower overhead.
 
 ---
 
-**Q: How do I install zenoh?**
+### Q: How do I install zenoh?
 
-**Rust (primary implementation):**
-```bash
-# Install Rust toolchain (>= 1.75.0)
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+**A:** Zenoh has several installation paths depending on your use case.
 
-# Add zenoh to your Cargo.toml
+**Rust library (recommended for Rust apps):**
+```toml
+# Cargo.toml
 [dependencies]
 zenoh = "1.5.1"
+# For shared memory support:
+zenoh = { version = "1.5.1", features = ["shared-memory"] }
 ```
 
-**Zenoh router (zenohd):**
+**Build from source:**
 ```bash
-# Build from source
+# Install Rust first: https://doc.rust-lang.org/cargo/getting-started/installation.html
+rustup update
 git clone https://github.com/eclipse-zenoh/zenoh.git
 cd zenoh
-cargo build --release
-./target/release/zenohd
+cargo build --release --all-targets
+```
 
-# Or download a pre-built release from:
-# https://github.com/eclipse-zenoh/zenoh/releases
+**Run the zenohd router:**
+```bash
+cargo run --bin zenohd -- --config DEFAULT_CONFIG.json5
+# Or from release binary:
+./target/release/zenohd
 ```
 
 **Other languages:**
 - **C/C++**: [zenoh-c](https://github.com/eclipse-zenoh/zenoh-c) or [zenoh-pico](https://github.com/eclipse-zenoh/zenoh-pico)
-- **Python**: `pip install eclipse-zenoh`
-- **Java/Kotlin**: Maven/Gradle packages at [zenoh-java](https://github.com/eclipse-zenoh/zenoh-java) / [zenoh-kotlin](https://github.com/eclipse-zenoh/zenoh-kotlin)
+- **Python**: [zenoh-python](https://github.com/eclipse-zenoh/zenoh-python) → `pip install eclipse-zenoh`
+- **Kotlin/Java**: [zenoh-kotlin](https://github.com/eclipse-zenoh/zenoh-kotlin) / [zenoh-java](https://github.com/eclipse-zenoh/zenoh-java)
+- **TypeScript**: [zenoh-ts](https://github.com/eclipse-zenoh/zenoh-ts)
 
-See [zenoh.io/docs/getting-started/installation/](https://zenoh.io/docs/getting-started/installation/) for platform-specific instructions.
+Requires Rust ≥ 1.75.0 to compile from source.
 
 ---
 
-**Q: What programming languages does zenoh support?**
+### Q: What programming languages does zenoh support?
+
+**A:** Zenoh supports a wide range of languages:
 
 | Language | Repository | Notes |
 |---|---|---|
-| **Rust** | `eclipse-zenoh/zenoh` | Primary/reference implementation |
-| **C** | `eclipse-zenoh/zenoh-c` | Rust binding; same API as zenoh-pico |
-| **C** (pure) | `eclipse-zenoh/zenoh-pico` | Pure C for embedded/microcontrollers |
-| **C++** | `eclipse-zenoh/zenoh-cpp` | C++ wrapper over zenoh-c or zenoh-pico |
-| **Python** | `eclipse-zenoh/zenoh-python` | Python bindings |
-| **Java** | `eclipse-zenoh/zenoh-java` | JVM |
-| **Kotlin** | `eclipse-zenoh/zenoh-kotlin` | JVM / Android |
+| **Rust** | `eclipse-zenoh/zenoh` | Reference implementation |
+| **C** | `eclipse-zenoh/zenoh-c` | Bindings to Rust lib |
+| **C** (pure) | `eclipse-zenoh/zenoh-pico` | Pure C, for microcontrollers |
+| **C++** | `eclipse-zenoh/zenoh-cpp` | Wrapper over zenoh-c |
+| **Python** | `eclipse-zenoh/zenoh-python` | Bindings to Rust lib |
+| **Kotlin** | `eclipse-zenoh/zenoh-kotlin` | JVM-based |
+| **Java** | `eclipse-zenoh/zenoh-java` | JVM-based |
 | **TypeScript** | `eclipse-zenoh/zenoh-ts` | WebSocket client via zenohd plugin |
 
-All non-Rust bindings wrap the Rust core library (except zenoh-pico), so behavior is consistent across languages.
+The Rust crate is the primary, reference implementation. All other language bindings (except zenoh-pico) are wrappers around it.
 
 ---
 
-**Q: Do I need a broker/server to use zenoh?**
+### Q: Do I need a broker/server to use zenoh?
 
-**No.** Zenoh can operate completely broker-free in **peer mode**, where nodes discover each other via multicast scouting and communicate directly. This is one of zenoh's key differentiators from MQTT (which mandates a broker).
+**A:** No — zenoh is designed to work **without any infrastructure** in many scenarios. Three modes govern how zenoh nodes connect:
 
-However, you can optionally run a **zenoh router** (`zenohd`) when you need:
-- WAN/internet connectivity (NAT traversal)
-- Bridging isolated network segments
-- Persistent storage plugins
-- Centralized access control
-- Routing between peers that cannot directly reach each other
+- **Peer mode**: Nodes discover each other directly (via multicast scouting or configured endpoints) and route messages among themselves. No central broker needed.
+- **Client mode**: Nodes connect to a router (zenohd) and rely on it for routing. Simpler but requires a router to be running.
+- **Router mode**: The `zenohd` daemon acts as a routing infrastructure node, enabling larger networks, WAN connectivity, and plugin services (storage, REST API, etc.).
 
-**Quick rule of thumb:**
-- Single machine or local LAN with multicast → no router needed
-- Multiple sites, cloud, internet, or complex topologies → use a router
+For simple local networks or embedded scenarios, **peer mode with no infrastructure** works out of the box. A router becomes valuable when you need WAN bridging, storage, or a stable rendezvous point.
 
 ---
 
-**Q: What's the difference between zenoh router, peer, and client mode?**
+### Q: What's the difference between zenoh router, peer, and client mode?
 
-Zenoh has three node **whatami** modes, set in configuration:
+**A:**
 
-| Mode | Routing | Discovery | Use Case |
-|---|---|---|---|
-| **Router** | Full routing tables | Multicast + unicast | Infrastructure node (`zenohd`) |
-| **Peer** | Participates in routing | Multicast scouting | Application nodes that also route for others |
-| **Client** | None (offloads to router) | Unicast to known router | Resource-constrained devices, IoT, mobile |
+| Mode | Binary | Routing | Discovery | Use case |
+|---|---|---|---|---|
+| **Router** | `zenohd` | Full routing tables | Responds to scout messages | Infrastructure node, WAN bridges, plugins |
+| **Peer** | Your app | Routes among peers | Multicast scouting or configured endpoints | Local/LAN P2P, no infrastructure needed |
+| **Client** | Your app | Delegates to router | Connects to router endpoint | Lightweight nodes, IoT devices, mobile apps |
 
-**Router:** Runs as `zenohd`. Maintains full routing state, connects multiple network segments, hosts plugins (storage, REST API, etc.).
+**Router**: Runs as `zenohd`. Builds and maintains full routing tables. Supports plugins (storage, REST, etc.). Necessary for connecting different network segments.
 
-**Peer:** An application node that both communicates *and* routes data for other peers. Peers can form mesh networks and discover each other via multicast. Two peers on the same LAN can communicate without any router.
+**Peer**: Your application acts as a full participant. It can route data between itself and other peers. Supports arbitrary connectivity graphs. No single point of failure.
 
-**Client:** A lightweight node that connects to a router (or peer acting as a router) and delegates all routing. Ideal for embedded devices, mobile apps, or nodes behind NAT.
+**Client**: Your application connects to one or more routers and delegates all routing to them. Lower resource overhead. Best for constrained devices or nodes that don't need to route.
 
-```json5
-// Example config snippet
-{
-  mode: "peer",           // or "router" or "client"
-  connect: {
-    endpoints: ["tcp/192.168.1.100:7447"]  // for client mode
-  }
-}
+**Configure the mode in your config or code:**
+```rust
+// Rust: set peer mode (default)
+let mut config = zenoh::Config::default();
+config.set_mode(Some(zenoh_config::WhatAmI::Peer)).unwrap();
+
+// Client mode connecting to a router
+config.set_mode(Some(zenoh_config::WhatAmI::Client)).unwrap();
+config.connect.endpoints.set(
+    vec!["tcp/192.168.1.100:7447".parse().unwrap()]
+).unwrap();
 ```
 
 ---
 
 ## Key Expressions and Selectors
 
----
+### Q: What is a key expression?
 
-**Q: What is a key expression?**
-
-A key expression is zenoh's addressing mechanism — similar to a topic in MQTT or a subject in NATS, but more powerful. It is a hierarchical path composed of `/`-separated chunks (called **chunks**).
+**A:** A key expression (KE) is zenoh's addressing mechanism — analogous to MQTT topics or DDS resource names, but more powerful. It is a UTF-8 string structured as a **path** using `/` as a separator.
 
 ```
 robot/arm/joint1/position
 sensors/temperature/room42
+vehicle/telemetry/**
 ```
 
 Key expressions can be:
-1. **Concrete** — an exact resource name: `robot/arm/joint1`
-2. **Wildcarded** — using `*`, `**`, or `$*` to match multiple resources
+- **Concrete** (no wildcards): `robot/arm/joint1` — identifies a single resource.
+- **Wildcard** (with `*`, `**`, `$*`): match multiple resources.
 
-Key expressions are validated at compile/declaration time. Declaring a key expression with `session.declare_keyexpr()` registers it with the network for wire-level compression (numeric IDs instead of strings).
+In the API, you declare key expressions to enable wire-level optimization (the session assigns a numeric ID to avoid sending the full string repeatedly):
 
 ```rust
-// Declare a key expression for repeated use (optimized on wire)
-let ke = session.declare_keyexpr("robot/arm/**").await?;
-
-// Or use inline strings (slightly less efficient but simpler)
-let publisher = session.declare_publisher("robot/arm/joint1").await?;
+// Declare a key expression for reuse (wire optimization)
+let session = zenoh::open(zenoh::Config::default()).await.unwrap();
+let ke = session.declare_keyexpr("robot/arm/**").await.unwrap();
+let publisher = session.declare_publisher(&ke).await.unwrap();
 ```
 
 ---
 
-**Q: How do wildcards work? (`*`, `**`, `$*`)**
+### Q: How do wildcards work? (`*`, `**`, `$*`)
+
+**A:** Zenoh key expressions support three wildcard forms:
 
 | Wildcard | Matches | Example |
 |---|---|---|
-| `*` | Any single non-empty chunk (no `/`) | `robot/*/position` matches `robot/arm/position` but NOT `robot/arm/elbow/position` |
-| `**` | Any sequence of chunks, including zero chunks | `robot/**/position` matches `robot/position`, `robot/arm/position`, `robot/arm/elbow/position` |
-| `$*` | A **DSL suffix** within a single chunk — matches any suffix of a chunk | `robot/arm$*` matches `robot/arm`, `robot/arm1`, `robot/arm_left` |
+| `*` | Any single chunk (between `/` separators), no `/` | `robot/*/position` matches `robot/arm/position` but NOT `robot/arm/joint1/position` |
+| `**` | Any number of chunks, including zero, spanning `/` | `robot/**` matches `robot/arm`, `robot/arm/joint1`, `robot/arm/joint1/position` |
+| `$*` | Used inside a chunk for partial matching | `robot/arm$*` matches `robot/arm`, `robot/arm1`, `robot/armL` |
 
-**Important rules:**
-- `*` never crosses a `/` boundary
-- `**` can appear as a standalone chunk: `a/**/b` or as part of an expression
-- `**` at the end matches everything under a prefix: `sensors/**`
+**Examples:**
+```
+# * — single level wildcard
+sensors/*/temp     → matches sensors/room1/temp, sensors/room2/temp
+                   → does NOT match sensors/building1/room1/temp
 
+# ** — multi-level wildcard
+sensors/**         → matches sensors/room1/temp, sensors/building1/room1/temp, sensors/
+
+# $* — partial chunk wildcard
+robot/joint$*      → matches robot/joint1, robot/joint2, robot/jointA
 ```
-# Examples
-"a/*/c"   matches "a/b/c" ✓  but NOT "a/b/d/c" ✗
-"a/**/c"  matches "a/c" ✓, "a/b/c" ✓, "a/b/d/c" ✓
-"a/**"    matches "a/" ✓, "a/b" ✓, "a/b/c/d" ✓
-```
+
+**Intersection vs. Inclusion:**
+- Two key expressions *intersect* if there is at least one concrete key matching both.
+- Key expression A *includes* B if every key matching B also matches A.
+
+Subscribers receive a sample if their key expression **intersects** with the publisher's key expression.
 
 ---
 
-**Q: What's the difference between `*` and `**`?**
+### Q: What's the difference between `*` and `**`?
 
-`*` matches exactly **one chunk** (the part between two `/` separators).
-`**` matches **zero or more chunks** including their separators.
+**A:** The critical difference is **slash crossing**:
+
+- `*` matches **exactly one path chunk** — it will not cross a `/`.
+- `**` matches **zero or more chunks** — it crosses `/` boundaries freely.
 
 ```
-Expression: sensor/*/value
-Matches:    sensor/temp/value    ✓
-            sensor/humidity/value ✓
-Does NOT:   sensor/room1/temp/value ✗  (two chunks between sensor and value)
+Key expr: a/*/c
+Matches:  a/b/c        ✓
+Misses:   a/b/d/c      ✗ (two chunks between a and c)
+Misses:   a/c          ✗ (zero chunks between a and c)
 
-Expression: sensor/**/value
-Matches:    sensor/value         ✓  (zero chunks)
-            sensor/temp/value    ✓  (one chunk)
-            sensor/room1/temp/value ✓  (two chunks)
+Key expr: a/**/c
+Matches:  a/b/c        ✓
+Matches:  a/b/d/c      ✓
+Matches:  a/c          ✓ (** can match zero chunks)
+Matches:  a/b/d/e/f/c  ✓
 ```
 
-Use `*` when you know there is exactly one level of hierarchy between your anchors. Use `**` when the depth is variable or unknown.
+**Practical tip:** Use `**` when you want to subscribe to an entire subtree. Use `*` when you want exactly one dynamic segment.
 
 ---
 
-**Q: What is a Selector?**
+### Q: What is a Selector?
 
-A `Selector` extends a key expression with an optional **parameter string** separated by `?`. It is used exclusively with `session.get()` and queryables.
+**A:** A Selector extends a key expression with **query parameters**, similar to a URL query string. It is used in `session.get()` to query data from Queryables and storages.
 
 ```
-key/expression?param1=value1&param2=value2
+Selector syntax:  <key_expression>?<parameters>
+
+Examples:
+  sensors/temperature?room=42
+  robot/**?since=2024-01-01&limit=100
+  data/metrics?_time=[now(-1h)..]
 ```
 
-The key expression part routes the query to matching queryables. The parameter string is passed to the queryable as-is — its meaning is defined by the application. Common built-in uses include:
-
-- **Time range queries** on storages: `sensor/temp?_time=[2024-01-01T00:00:00Z/now]`
-- **Filtering**: `robot/state?status=active`
+The part after `?` is the **Parameters** string. Queryables receive the full selector and can parse the parameters to filter/customize their response.
 
 ```rust
-// Using a selector with parameters
+// Send a query with selector parameters
 let replies = session
-    .get("sensor/temperature?_time=[now(-1h)/now]")
-    .await?;
+    .get("sensors/temperature?room=42&format=json")
+    .await
+    .unwrap();
+
+while let Ok(reply) = replies.recv_async().await {
+    match reply.result() {
+        Ok(sample) => println!("Got: {}", sample.key_expr()),
+        Err(err) => println!("Error: {:?}", err),
+    }
+}
 ```
+
+Time-range queries (using the `_time` parameter) are a special built-in parameter understood by zenoh storages for historical data retrieval.
 
 ---
 
-**Q: How do key expression operators work?**
+### Q: How do key expression operators work (`&`, `|`, `)`)?
 
-Zenoh key expressions support set operations for advanced matching:
+**A:** Zenoh supports **set operations** on key expressions for advanced routing and subscription scenarios (these are part of the unstable/advanced API):
 
-- **Union** (`|`): `a/b|c/d` — matches resources matching either `a/b` or `c/d`
-- **Intersection** (`&`): matches resources in the intersection of two key expression sets (less commonly used directly in APIs)
-- **Negation / complement**: used internally in routing optimizations
+- **`|` (Union)**: A key expression that matches resources matched by either operand.
+  ```
+  sensors/temp | sensors/humidity
+  ```
+  Matches anything matching `sensors/temp` OR `sensors/humidity`.
 
-In practice, most users work with wildcards (`*`, `**`) rather than explicit set operators. The operators are most relevant when building routing logic or advanced storage plugins.
+- **`&` (Intersection)**: Restricts to resources matched by both (rarely used directly, more relevant for routing logic).
 
-```
-"robot/arm|robot/leg"  // matches robot/arm OR robot/leg
-```
+- **Canonicalization**: Zenoh automatically simplifies and canonicalizes key expressions to avoid redundancy (e.g., `a/** | a/b` simplifies to `a/**`).
+
+These operators are primarily relevant when working with zenoh's internal routing logic and advanced key expression algebra. Most application developers use simple key expressions with wildcards (`*`, `**`) rather than explicit set operators.
 
 ---
 
 ## Pub/Sub
 
----
+### Q: How does pub/sub differ from traditional MQTT?
 
-**Q: How does pub/sub differ from traditional MQTT?**
+**A:** Several important differences:
 
-| Aspect | MQTT | Zenoh |
+| Aspect | Zenoh | MQTT |
 |---|---|---|
-| Broker | Required | Optional |
-| Wildcards | `+` (one level), `#` (multi) | `*`, `**`, `$*` (richer) |
-| QoS levels | 0, 1, 2 (at-most-once, at-least-once, exactly-once) | Priority levels + BestEffort/Reliable |
-| Query/Reply | None | Native (Queryable) |
-| Retained messages | Yes (last value) | Via storage plugins |
-| Peer-to-peer | No | Yes |
-| WAN | With broker | Native |
-| Performance | Moderate | Significantly higher |
+| Infrastructure | Optional (peer-to-peer possible) | Requires broker |
+| Wildcards | Rich (`*`, `**`, `$*`, set ops) | Basic (`+`, `#`) |
+| QoS | Priority levels, congestion control, reliability | QoS 0/1/2 |
+| Locality filtering | Yes (local-only, remote-only, any) | No |
+| Query/storage | Native (queryable, storages) | No |
+| Payload | Any bytes (`ZBytes`), encoding metadata | Any bytes |
+| WAN | Native | Native |
+| Embedded | zenoh-pico (pure C) | Many implementations |
+| Performance | Orders of magnitude faster | Moderate |
 
+**Basic pub/sub in Rust:**
 ```rust
-// Publisher
-let session = zenoh::open(zenoh::Config::default()).await?;
-let publisher = session
-    .declare_publisher("robot/arm/joint1")
-    .await?;
-publisher.put("42.5").await?;
-
 // Subscriber
+let session = zenoh::open(zenoh::Config::default()).await.unwrap();
 let subscriber = session
-    .declare_subscriber("robot/arm/**")
-    .await?;
-while let Ok(sample) = subscriber.recv_async().await {
-    println!("Key: {}, Value: {:?}", sample.key_expr(), sample.payload());
-}
+    .declare_subscriber("sensors/temperature/**")
+    .await
+    .unwrap();
+
+tokio::spawn(async move {
+    while let Ok(sample) = subscriber.recv_async().await {
+        println!("Received on {}: {:?}", sample.key_expr(), sample.payload());
+    }
+});
+
+// Publisher
+let publisher = session
+    .declare_publisher("sensors/temperature/room42")
+    .await
+    .unwrap();
+publisher.put("23.5").await.unwrap();
 ```
 
 ---
 
-**Q: What is Locality filtering?**
+### Q: What is Locality filtering?
 
-Locality (called `origin` for subscribers, `destination` for publishers) filters whether messages are routed locally, remotely, or both.
+**A:** Locality filtering controls whether a publisher or subscriber interacts only with entities on the **same session** (process), only **remote** entities, or **both**.
 
-| `Locality` | Behavior |
-|---|---|
-| `Locality::Any` | Default — send/receive both local (same session) and remote |
-| `Locality::SessionLocal` | Only route within the same session (no network traffic) |
-| `Locality::Remote` | Only route to/from remote nodes (skip local callbacks) |
+Three values:
+- `Locality::SessionLocal` — only communicate with entities in the same zenoh session (same process). Messages never go on the wire.
+- `Locality::Remote` — only communicate with remote entities. Local messages are ignored.
+- `Locality::Any` — communicate with both local and remote entities (default).
 
 **Use cases:**
-- `SessionLocal`: inter-task communication within one process with zero network overhead
-- `Remote`: a publisher that should not trigger its own co-located subscribers
-- `Any`: standard behavior
+- `SessionLocal`: In-process communication without network overhead. Useful for decoupling components within a single application.
+- `Remote`: Useful when you have a local handler that should not react to its own publications.
+- `Any`: Standard behavior — widest reach.
 
 ```rust
-// Only receive from remote publishers (not same session)
+// Subscriber that only sees remote publications (not from same session)
 let subscriber = session
-    .declare_subscriber("sensor/data")
+    .declare_subscriber("data/topic")
     .allowed_origin(Locality::Remote)
-    .await?;
+    .await
+    .unwrap();
 
-// Only publish to remote subscribers
+// Publisher that only publishes locally (no wire traffic)
 let publisher = session
-    .declare_publisher("sensor/data")
-    .allowed_destination(Locality::Remote)
-    .await?;
+    .declare_publisher("data/topic")
+    .allowed_destination(Locality::SessionLocal)
+    .await
+    .unwrap();
 ```
 
 ---
 
-**Q: What are the priority levels and when do I use them?**
+### Q: What are the priority levels and when do I use them?
 
-Zenoh defines 8 priority levels (lower number = higher priority). From the source, `Priority::DEFAULT` is used unless overridden.
+**A:** Zenoh defines **8 priority levels** (from highest to lowest priority):
 
-| Priority | Numeric | Use Case |
+| Level | Name | Typical Use |
 |---|---|---|
-| `RealTime` | 1 | Safety-critical, control loops, emergency stop |
-| `InteractiveHigh` | 2 | User-facing interactive commands |
-| `InteractiveLow` | 3 | Interactive but delay-tolerant |
-| `DataHigh` | 4 | High-value sensor data |
-| `Data` | 5 | **Default** — general data |
-| `DataLow` | 6 | Background telemetry |
-| `Background` | 7 | Bulk transfers, logs |
+| 1 | `RealTime` | Safety-critical, hard real-time control |
+| 2 | `InteractiveHigh` | High-priority interactive/UI data |
+| 3 | `InteractiveLow` | Lower-priority interactive data |
+| 4 | `DataHigh` | Important sensor data |
+| 5 | `Data` | Standard data (default) |
+| 6 | `DataLow` | Background sensor data |
+| 7 | `Background` | Best-effort background transfers |
 
-Priority affects message scheduling in the router's transmit queue. Higher priority messages are sent first when the queue is contested.
+Priority affects the **scheduling order** when multiple messages are queued. Higher priority messages are dequeued and sent first. In congested conditions, lower priority messages are more likely to be dropped (with `CongestionControl::Drop`).
 
 ```rust
 use zenoh::pubsub::Priority;
 
 let publisher = session
-    .declare_publisher("robot/emergency_stop")
+    .declare_publisher("robot/control/velocity")
     .priority(Priority::RealTime)
-    .await?;
+    .await
+    .unwrap();
 ```
+
+**Guidelines:**
+- Use `RealTime` / `InteractiveHigh` sparingly for truly latency-sensitive control commands.
+- Use `Data` (default) for normal sensor telemetry.
+- Use `Background` for bulk transfers, logs, or diagnostics that shouldn't compete with operational data.
 
 ---
 
-**Q: What's the difference between `BestEffort` and `Reliable`?**
+### Q: What's the difference between `BestEffort` and `Reliable`?
 
-`Reliability` controls the delivery guarantee on a per-publisher basis.
+**A:** These control **delivery guarantees** at the transport layer:
 
-| Mode | Guarantee | Overhead |
-|---|---|---|
-| `BestEffort` | No retransmission, may be dropped | Lower latency, lower CPU |
-| `Reliable` | Ordered, loss-detected delivery | Slight overhead for sequencing |
-
-**When to use each:**
-- `BestEffort`: Video streams, high-frequency sensor data (100 Hz+), telemetry where a dropped sample is acceptable
-- `Reliable`: Commands, configuration updates, state changes where every message matters
-
-> **Note:** As of zenoh 1.x, the `reliability` field on publishers is under the `unstable` feature flag. The default behavior provides reliable delivery over TCP transports.
+| Mode | Guarantee | Overhead | Use case |
+|---|---|---|---|
+| `BestEffort` | No retransmission; packet may be lost | Lowest | High-rate sensor streams, video, position updates where latest matters |
+| `Reliable` | Ordered, lossless delivery (retransmission if needed) | Higher | Commands, configuration, events where every message matters |
 
 ```rust
-#[cfg(feature = "unstable")]
-use zenoh::qos::Reliability;
+// Currently in unstable API:
+use zenoh::pubsub::Reliability;
 
 let publisher = session
-    .declare_publisher("sensor/imu")
-    .reliability(Reliability::BestEffort)
-    .await?;
+    .declare_publisher("robot/arm/position")
+    .reliability(Reliability::BestEffort)  // high-rate stream, OK to drop
+    .await
+    .unwrap();
+
+let publisher = session
+    .declare_publisher("robot/commands")
+    .reliability(Reliability::Reliable)    // commands must arrive
+    .await
+    .unwrap();
 ```
+
+**Important**: `Reliable` does not mean *exactly-once* delivery end-to-end — it means the transport layer will attempt retransmission on lossy links. For application-level guarantees, use `zenoh-ext`'s `AdvancedPublisher`/`AdvancedSubscriber`.
 
 ---
 
-**Q: What is `CongestionControl` and when does `Drop` vs `Block` matter?**
+### Q: What is `CongestionControl` and when does `Drop` vs `Block` matter?
 
-`CongestionControl` determines what happens when the transmit buffer is full:
+**A:** `CongestionControl` determines what happens when a publisher produces data faster than it can be sent (i.e., the outgoing buffer is full):
 
-| Mode | Behavior | Use Case |
+| Mode | Behavior | Use case |
 |---|---|---|
-| `Drop` | **Default** — discard the message if the queue is full | High-frequency streams, telemetry |
-| `Block` | Block the caller until space is available | Commands that must not be lost |
-
-**Practical guidance:**
-- Use `Drop` for sensor streams (100+ Hz). If one sample is lost, the next will arrive shortly. Blocking a 100 Hz publisher for even 10 ms causes severe jitter.
-- Use `Block` for important infrequent messages (robot commands, configuration) where losing the message is unacceptable and you can tolerate the sender blocking briefly.
+| `Drop` | **Discard** the message (default for most cases) | High-rate streams; latest-value more important than completeness |
+| `Block` | **Block the publisher** until there is space | Slow but complete delivery; commands or critical events |
 
 ```rust
-use zenoh::qos::CongestionControl;
+use zenoh_protocol::core::CongestionControl;
 
-// High-frequency sensor — drop if congested
-let sensor_pub = session
-    .declare_publisher("sensor/lidar")
+// Sensor stream: drop if congested (don't stall the publisher)
+let publisher = session
+    .declare_publisher("sensors/lidar/points")
     .congestion_control(CongestionControl::Drop)
-    .await?;
+    .await
+    .unwrap();
 
-// Command — never drop, block if needed
-let cmd_pub = session
-    .declare_publisher("robot/command")
+// Critical event: block until delivered
+let publisher = session
+    .declare_publisher("robot/estop")
     .congestion_control(CongestionControl::Block)
-    .await?;
+    .await
+    .unwrap();
 ```
+
+**Warning**: `Block` can cause your publishing thread/task to stall indefinitely if the downstream consumer is slow or disconnected. Use it only when message completeness is more important than publisher responsiveness.
 
 ---
 
-**Q: How do I handle backpressure?**
+### Q: How do I handle backpressure?
 
-Zenoh provides several mechanisms:
+**A:** Zenoh provides several mechanisms:
 
-1. **`CongestionControl::Block`** — naturally applies backpressure to the publisher by blocking `put()` until the network can accept the message.
+1. **`CongestionControl::Drop`** (default): The publisher drops messages when the send buffer is full. No backpressure propagated to the application — the publisher never blocks.
 
-2. **`CongestionControl::Drop`** — the publisher never blocks; messages are silently dropped. Monitor drop rates via the admin space (`@/router/local/subscriber/**`).
+2. **`CongestionControl::Block`**: The publisher call blocks until buffer space is available. This propagates backpressure to the application but risks blocking indefinitely.
 
-3. **Priority queuing** — assign lower priority to less critical publishers so high-priority messages are never starved.
+3. **Priority levels**: Lower-priority messages are dropped first under congestion, protecting higher-priority traffic.
 
-4. **Shared Memory (SHM)** — for intra-host pub/sub, SHM eliminates copy overhead and effectively removes the serialization bottleneck that often causes backpressure.
-
-5. **Application-level flow control** — use `session.get()` (request/reply) instead of pub/sub when you need explicit acknowledgement before sending the next message.
+4. **Subscriber channel sizing**: The default internal channel size is 256 messages (`API_DATA_RECEPTION_CHANNEL_SIZE`). If your callback is slow, consider processing in a separate task:
 
 ```rust
-// Pattern: send-and-wait for acknowledgement (no backpressure buildup)
-let querier = session.declare_querier("robot/arm/move").await?;
-let replies = querier.get().payload("goto_home").await?;
-while let Ok(reply) = replies.recv_async().await {
-    // process ack
-}
+// Fast callback: offload heavy processing to avoid blocking the receive loop
+let (tx, mut rx) = tokio::sync::mpsc::channel(1024);
+
+let subscriber = session
+    .declare_subscriber("data/**")
+    .callback(move |sample| {
+        let _ = tx.try_send(sample); // non-blocking; drop if full
+    })
+    .await
+    .unwrap();
+
+tokio::spawn(async move {
+    while let Some(sample) = rx.recv().await {
+        // heavy processing here
+        process(sample).await;
+    }
+});
 ```
+
+5. **`zenoh-ext` AdvancedSubscriber**: Provides more sophisticated delivery guarantees including sequence-number-based retransmission for applications requiring reliable ordered delivery.
 
 ---
 
 ## Query/Reply (Queryable)
 
----
+### Q: What is a Queryable and when do I use it instead of a subscriber?
 
-**Q: What is a Queryable and when do I use it instead of a subscriber?**
+**A:** A **Queryable** is an entity that responds to queries — it's zenoh's mechanism for **request/reply** patterns and **on-demand data retrieval**.
 
-A `Queryable` is an entity that listens for queries and replies with data. Think of it as a server-side handler for pull-based communication.
-
-**Use a Subscriber when:**
-- Data is pushed continuously and you want all samples as they arrive
-- You don't need to ask "what is the current state?" — you maintain state from the stream
-
-**Use a Queryable when:**
-- You provide on-demand data (current state, computed results, database queries)
-- You want request/reply semantics (one request → one or more responses)
-- You need to return data to late-joining nodes that missed pub/sub messages
-- You're implementing a service (like ROS2 services but more flexible)
+| Use Subscriber when... | Use Queryable when... |
+|---|---|
+| You want a continuous stream of data as it's published | You want to serve data on demand, only when asked |
+| Push model (publisher drives data flow) | Pull/query model (requester drives data flow) |
+| You need the latest state delivered automatically | You need point-in-time or historical data retrieval |
+| Simple event-driven processing | RPC-like interactions, storage backends |
 
 ```rust
-// Queryable — acts like a server
+// Queryable: listens for queries and replies
 let queryable = session
-    .declare_queryable("robot/status")
-    .await?;
+    .declare_queryable("robot/config/**")
+    .await
+    .unwrap();
 
 tokio::spawn(async move {
     while let Ok(query) = queryable.recv_async().await {
-        println!("Query from: {}, params: {}", query.key_expr(), query.parameters());
+        println!("Query on: {} params: {}", query.key_expr(), query.parameters());
+        
+        // Reply with data
         query
-            .reply("robot/status", "online")
+            .reply("robot/config/max_speed", "1.5")
             .await
             .unwrap();
     }
 });
 
-// Client — queries the server
-let replies = session.get("robot/status").await?;
+// Requester: sends a query and collects replies
+let replies = session.get("robot/config/**").await.unwrap();
 while let Ok(reply) = replies.recv_async().await {
-    println!("Status: {:?}", reply.result());
+    if let Ok(sample) = reply.result() {
+        println!("{}: {:?}", sample.key_expr(), sample.payload());
+    }
 }
 ```
 
+**Key difference from pub/sub**: Queries are **targeted and transient** — they collect replies from all matching Queryables (and storages) that are currently alive and respond within the timeout.
+
 ---
 
-**Q: What is `ConsolidationMode`?**
+### Q: What is `ConsolidationMode`?
 
-`ConsolidationMode` controls how multiple replies for the same key expression are merged before being delivered to the application.
+**A:** When multiple Queryables (or storages) reply to the same query, you may receive multiple replies for the same key expression. `ConsolidationMode` controls how these are deduplicated:
 
-| Mode | Behavior |
-|---|---|
-| `None` | All replies delivered immediately as received |
-| `Monotonic` | For each key, only deliver replies with increasing timestamps (filter outdated) |
-| `Latest` *(default)* | For each key, only deliver the single most recent reply after all replies arrive |
-| `Auto` | Use `Latest` normally; use `None` if a time-range parameter is present |
-
-**When to use each:**
-- `None`: You want every reply from every storage, even duplicates or older versions. Use for debugging or when you need the full picture.
-- `Monotonic`: Streaming results where you want progressively newer data without waiting.
-- `Latest`: You want exactly one "current" answer per key — ideal for getting current state.
-- `Auto`: Good default for general use.
+| Mode | Behavior | Use case |
+|---|---|---|
+| `None` | All replies forwarded immediately as received | When you need all replies (e.g., votes, fan-out) |
+| `Monotonic` | Forward a reply only if newer than any previously seen for same key | Streaming results, always-improving |
+| `Latest` (default) | Buffer all replies; return only the newest per key at end | When you only care about the most recent value |
+| `Auto` | `Latest` normally; `None` if time-range query | General use |
 
 ```rust
-use zenoh::query::ConsolidationMode;
+use zenoh::query::{ConsolidationMode, QueryConsolidation};
 
+// Get only the latest value per key (default behavior)
 let replies = session
-    .get("sensor/temperature/**")
+    .get("sensors/**")
     .consolidation(ConsolidationMode::Latest)
-    .await?;
+    .await
+    .unwrap();
+
+// Get ALL replies (e.g., from multiple storage replicas)
+let replies = session
+    .get("sensors/**")
+    .consolidation(ConsolidationMode::None)
+    .await
+    .unwrap();
 ```
+
+**Note**: With `Latest`/`Monotonic`, replies are buffered until the query times out, then delivered. With `None`, replies are delivered as they arrive.
 
 ---
 
-**Q: How does storage work with queries?**
+### Q: How does storage work with queries?
 
-Zenoh supports pluggable storage backends (memory, InfluxDB, RocksDB, etc.) that:
-1. **Subscribe** to a key expression and store incoming publications
-2. **Register a Queryable** on the same key expression to serve stored data
+**A:** Zenoh storages are **Queryable + Subscriber** combinations. They:
+1. **Subscribe** to a key expression and persist received data (in memory, InfluxDB, RocksDB, etc.)
+2. **Respond to queries** on that key expression by returning stored data
 
-When you `session.get("sensor/**")`, the query is routed to all matching queryables — including storage queryables — which reply with their stored data.
-
-Storage plugins run inside `zenohd` and are configured in the router config:
+Storages are implemented as **plugins** to `zenohd`. The router handles the storage lifecycle.
 
 ```json5
-// zenohd config with in-memory storage
+// DEFAULT_CONFIG.json5 — enable in-memory storage
 {
   plugins: {
     storage_manager: {
       storages: {
-        sensor_storage: {
-          key_expr: "sensor/**",
-          volume: { id: "memory" }
+        my_store: {
+          key_expr: "sensors/**",
+          volume: "memory"
         }
       }
     }
@@ -515,290 +583,197 @@ Storage plugins run inside `zenohd` and are configured in the router config:
 }
 ```
 
-Available backends: Memory, InfluxDB, RocksDB, S3, MySQL, PostgreSQL, SQLite.
+Once configured:
+```rust
+// Any publication to sensors/** is stored automatically
+
+// Query retrieves stored values (including historical if configured)
+let replies = session.get("sensors/**").await.unwrap();
+```
+
+Supported storage backends include: Memory, InfluxDB, RocksDB, filesystem, and custom backends via the plugin API.
 
 ---
 
-**Q: What's the difference between a `Querier` and `session.get()`?**
+### Q: What's the difference between a `Querier` and `session.get()`?
 
-Both send queries, but they differ in lifecycle and optimization:
+**A:** Both issue queries, but with different trade-offs:
 
 | | `session.get()` | `session.declare_querier()` |
 |---|---|---|
-| Lifecycle | One-shot, creates/destroys per call | Declared once, reused many times |
-| Network efficiency | Announces interest each time | Pre-announces interest, allows routers to optimize routing tables |
-| Use case | Occasional queries | Frequent queries to the same key expression |
-
-`session.get()` is a convenience shortcut. `Querier` is more efficient when you query the same key expression repeatedly because the router can pre-compute routes.
+| Declaration overhead | None (ad-hoc) | Declared upfront |
+| Wire optimization | No key expression pre-registration | Key expression registered on declaration |
+| Reuse | One-shot | Multiple `.get()` calls on same querier |
+| Routing hint | None (remote routing discovers queryables on each call) | Router informed upfront; can optimize routing |
 
 ```rust
-// One-shot (simpler)
-let replies = session.get("sensor/temperature").await?;
+// Ad-hoc: simple, no declaration needed
+let replies = session.get("robot/config/**").await.unwrap();
 
-// Reusable querier (more efficient for repeated queries)
+// Declared querier: better for repeated queries on same key
 let querier = session
-    .declare_querier("sensor/temperature")
-    .await?;
-// Query many times efficiently
-for _ in 0..100 {
-    let replies = querier.get().await?;
-    // ...
+    .declare_querier("robot/config/**")
+    .await
+    .unwrap();
+
+loop {
+    let replies = querier.get().await.unwrap();
+    // process replies...
+    tokio::time::sleep(Duration::from_secs(1)).await;
 }
 ```
+
+**Rule of thumb**: Use `declare_querier` when you issue the same query repeatedly (e.g., polling). Use `session.get()` for one-off or infrequent queries.
 
 ---
 
 ## Liveliness
 
----
+### Q: What is liveliness and when should I use it?
 
-**Q: What is liveliness and when should I use it?**
-
-Liveliness is a built-in mechanism to declare that an entity is "alive" and to detect when it goes away. It uses **tokens** — lightweight presence markers attached to key expressions.
-
-**Use cases:**
-- Service discovery: "Is robot_arm_1 online?"
-- Fleet management: detect when a robot disconnects
-- Health monitoring without implementing custom heartbeats
-- Gate functionality: only subscribe to data if the publisher is alive
+**A:** Liveliness is zenoh's built-in mechanism for **presence detection** — detecting when nodes join or leave the network. It works via **tokens**: a session declares a liveliness token on a key expression, and other sessions can subscribe to token appearances/disappearances.
 
 ```rust
-// Node declares it is alive
-let token = session
+// Node A: declare that it is "alive"
+let session_a = zenoh::open(zenoh::Config::default()).await.unwrap();
+let token = session_a
     .liveliness()
-    .declare_token("robot/fleet/robot_001")
-    .await?;
-// Token is alive as long as this variable lives.
-// When dropped (or session closes), a "death" event is emitted.
+    .declare_token("robot/fleet/robot42")
+    .await
+    .unwrap();
+// Token is alive as long as `token` is not dropped and session is open
 
-// Observer watches for presence/absence
-let subscriber = session
+// Node B: watch for liveliness changes
+let session_b = zenoh::open(zenoh::Config::default()).await.unwrap();
+let subscriber = session_b
     .liveliness()
     .declare_subscriber("robot/fleet/**")
-    .history(true)  // get current state of all tokens on subscribe
-    .await?;
+    .history(true)  // get currently-alive tokens on subscribe
+    .await
+    .unwrap();
 
 while let Ok(sample) = subscriber.recv_async().await {
     match sample.kind() {
-        SampleKind::Put => println!("{} came online", sample.key_expr()),
-        SampleKind::Delete => println!("{} went offline", sample.key_expr()),
+        SampleKind::Put    => println!("Robot joined: {}", sample.key_expr()),
+        SampleKind::Delete => println!("Robot left:   {}", sample.key_expr()),
     }
 }
 ```
 
+**When to use liveliness:**
+- Fleet management (track which robots are online)
+- Service discovery (detect when a service provider comes online)
+- Health monitoring (detect crashes vs. clean shutdowns)
+- Distributed coordination (wait for peers before starting)
+
 ---
 
-**Q: How is liveliness different from a regular pub/sub heartbeat?**
+### Q: How is liveliness different from a regular pub/sub heartbeat?
 
-| Aspect | Heartbeat (pub/sub) | Zenoh Liveliness |
+**A:**
+
+| Aspect | Liveliness Token | Heartbeat via Pub/Sub |
 |---|---|---|
-| Implementation | You write it | Built-in, zero application code |
-| False positives | Possible (missed heartbeat ≠ dead) | Session-level: token disappears exactly when session closes or is dropped |
-| Latency to detect failure | ≥ heartbeat interval | Near-immediate (transport-level detection) |
-| Bandwidth | Periodic messages | Zero bandwidth while alive; single event on death |
-| History | Requires retained/last-value storage | `history(true)` gives current snapshot on subscribe |
+| Protocol-level | Yes — built into zenoh routing | No — application-level |
+| Automatic cleanup | Yes — token undeclared on session close/crash | No — must implement timeout logic |
+| Bandwidth | Very low (one message on join/leave) | Continuous (e.g., every second) |
+| Crash detection | Yes — detected by router when transport drops | Only after heartbeat timeout |
+| False positives | None | Possible (slow network ≠ dead) |
+| History | Yes (`history=true` gets current tokens) | No |
 
-Liveliness is more reliable because it is tied directly to the transport session lifecycle — if the process crashes, the network connection drops, or the session is explicitly closed, the token disappears and subscribers are notified without waiting for a missed heartbeat.
+Liveliness tokens are **automatically undeclared** when the session closes (even on crash), because the router detects the transport-layer disconnection and propagates the "gone" event. A heartbeat-based system requires tuning timeout values and is prone to false alarms on slow networks.
 
 ---
 
-**Q: How do I detect when a node leaves the network?**
+### Q: How do I detect when a node leaves the network?
 
-Use a liveliness subscriber with `history(true)` to get both current state and future changes:
+**A:** Subscribe to liveliness with the matching key expression and watch for `SampleKind::Delete` samples:
 
 ```rust
 let liveliness_sub = session
     .liveliness()
-    .declare_subscriber("robot/fleet/**")
-    .history(true)  // receive current tokens immediately on subscribe
-    .await?;
+    .declare_subscriber("myapp/nodes/**")
+    .history(true)  // Receive current state on startup
+    .await
+    .unwrap();
 
 while let Ok(sample) = liveliness_sub.recv_async().await {
+    let node_id = sample.key_expr().to_string();
     match sample.kind() {
         SampleKind::Put => {
-            println!("Node JOINED: {}", sample.key_expr());
+            println!("Node ONLINE:  {node_id}");
+            // Add to active set
         }
         SampleKind::Delete => {
-            println!("Node LEFT: {}", sample.key_expr());
-            // Trigger failover, alert, cleanup, etc.
+            println!("Node OFFLINE: {node_id}");
+            // Remove from active set; trigger recovery logic
         }
     }
 }
 ```
 
-You can also query current liveness state once without subscribing:
+You can also **query** current liveliness state at any time (e.g., on startup) without waiting for events:
 
 ```rust
 let replies = session
     .liveliness()
-    .get("robot/fleet/**")
-    .await?;
-// Each reply represents a currently-alive token
+    .get("myapp/nodes/**")
+    .timeout(Duration::from_secs(1))
+    .await
+    .unwrap();
+
+while let Ok(reply) = replies.recv_async().await {
+    if let Ok(sample) = reply.result() {
+        println!("Currently alive: {}", sample.key_expr());
+    }
+}
 ```
 
 ---
 
 ## Performance
 
----
+### Q: How fast is zenoh? (throughput, latency numbers)
 
-**Q: How fast is zenoh? (throughput and latency numbers)**
+**A:** Based on published benchmarks (2020 blog post measurements on an Intel Core i7 Linux laptop):
 
-Published benchmark results (from blog posts, circa 2020 on a Linux laptop with Intel Core i7):
+**Throughput:**
+- **1 Gbps reached** at just **128-byte** message payloads
+- Scales linearly with payload size up to network saturation
 
-- **Throughput**: Reaches **1 Gbps** with message payloads of just **128 bytes**
-- At larger payloads, throughput scales to saturate 10 GbE links
-- **Latency**: Sub-100 microsecond end-to-end latency on localhost; low single-digit milliseconds on LAN
+**From the 2020 benchmark:**
+```
+Payload size | Throughput
+-------------|------------
+     8 bytes | ~100 Mbps
+    64 bytes | ~700 Mbps
+   128 bytes | ~1 Gbps
+  1024 bytes | ~1 Gbps (wire-saturated)
+```
 
-In comparisons with other middleware:
-- Zenoh significantly outperforms MQTT in both throughput and latency
-- Zenoh matches or exceeds DDS performance while using less CPU
-- Over shared memory (same host), zenoh achieves near-zero-copy performance approaching memory bandwidth limits
+**Latency:**
+- Sub-microsecond in shared-memory mode (intra-host)
+- Low single-digit microseconds on loopback
+- Competitive with or better than DDS implementations on LAN
 
-> **Note:** Performance depends heavily on transport (TCP, UDP, shared memory), hardware, payload size, and configuration. Always benchmark for your specific use case.
+**Comparison context**: These numbers significantly exceed MQTT brokers (which add broker round-trip latency of milliseconds) and are competitive with or better than DDS on equivalent hardware.
 
-The repository includes dedicated throughput and latency benchmark examples:
+**Note**: Performance depends heavily on hardware, OS tuning, network, and configuration. Run zenoh's built-in throughput benchmarks in your environment:
+
 ```bash
-# Run throughput benchmark
-cargo run --example z_sub_thr --release
-cargo run --example z_pub_thr --release 1024  # 1024-byte payload
+# Build benchmarks
+cargo build --release --examples
+
+# Terminal 1: subscriber
+./target/release/examples/z_sub_thr
+
+# Terminal 2: publisher with 1024-byte payload
+./target/release/examples/z_pub_thr 1024
 ```
 
 ---
 
-**Q: When should I use shared memory (SHM)?**
+### Q: When should I use shared memory?
 
-Use shared memory when:
-- Publisher and subscriber are on the **same physical machine** (different processes)
-- Payload is **large** (images, point clouds, video frames — typically > 64 KB)
-- You need **zero-copy** semantics (the subscriber gets a pointer into the SHM buffer, no copy occurs)
-
-SHM is **not useful** for:
-- Cross-machine communication (data must be serialized for the network anyway)
-- Small messages (SHM setup overhead outweighs the copy savings)
-
-**Enabling SHM:**
-```toml
-# Cargo.toml
-zenoh = { version = "1.5.1", features = ["shared-memory"] }
-```
-
-```json5
-// Config: enable SHM transport
-{
-  transport: {
-    shared_memory: { enabled: true }
-  }
-}
-```
-
-The session exposes `session.get_shm_provider()` (unstable API) for accessing the SHM provider for custom zero-copy publishing.
-
----
-
-**Q: How does zenoh compare to DDS performance?**
-
-Zenoh consistently matches or beats DDS (FastDDS, CycloneDDS) in benchmarks:
-
-- **Lower latency** for peer-to-peer on LAN (no multicast-based discovery overhead)
-- **Higher throughput** especially for many-to-many scenarios
-- **Lower CPU** usage due to simpler protocol encoding
-- **Better WAN performance** since DDS is not designed for WAN and requires bridges
-
-For ROS2 specifically, `rmw_zenoh` (Zenoh RMW) has demonstrated lower latency than `rmw_fastrtps` and `rmw_cyclonedds` in controlled tests, particularly at higher message rates and larger payload sizes.
-
----
-
-**Q: What configuration settings improve performance?**
-
-Key settings to tune (in the zenoh JSON5 config):
-
-```json5
-{
-  transport: {
-    unicast: {
-      // Increase buffer sizes for high-throughput
-      lowlatency: false,      // set true to reduce batching latency (trades throughput)
-    },
-    // Enable SHM for same-host communication
-    shared_memory: { enabled: true }
-  },
-  // Disable timestamping if not needed (saves ~100ns per message)
-  timestamping: { enabled: false },
-  
-  // Tune QoS
-  qos: {
-    publication: [
-      {
-        key_exprs: ["sensor/lidar/**"],
-        congestion_control: "Drop",
-        priority: "DataHigh"
-      }
-    ]
-  }
-}
-```
-
-**General tips:**
-1. Use `Priority::RealTime` for latency-sensitive topics
-2. Use `CongestionControl::Drop` for high-frequency streams
-3. Enable SHM for intra-host large-payload pub/sub
-4. Use `declare_keyexpr()` for key expressions used repeatedly — reduces wire overhead
-5. Use `Publisher` objects (declared once) rather than `session.put()` for repeated publications
-6. Set `is_express: true` on publishers to skip batching for lowest latency (trades throughput)
-
----
-
-## Deployment
-
----
-
-**Q: When do I need a zenoh router vs just peers?**
-
-**Peers only (no router) is sufficient when:**
-- All nodes are on the same LAN with multicast available
-- The network is a simple clique (everyone can reach everyone)
-- You don't need persistent storage or access control plugins
-
-**You need a zenoh router (`zenohd`) when:**
-- Connecting across different networks or the internet (WAN)
-- Nodes are behind NAT or firewall
-- You need storage plugins (InfluxDB, memory, etc.)
-- You want centralized REST API access (`zenoh-plugin-rest`)
-- You need access control / security policies
-- Network topology is complex (hub-and-spoke, hierarchical)
-- Multicast is unavailable or disabled
-
----
-
-**Q: How does peer discovery work?**
-
-Zenoh uses a **scouting** protocol for automatic peer discovery:
-
-1. **Multicast scouting** (default on LAN): Nodes send multicast "Hello" messages on `239.255.0.1:7446`. Other nodes on the same multicast domain respond and establish connections automatically.
-
-2. **Unicast scouting**: For environments without multicast, specify known endpoints in config. Starting from one known peer, zenoh discovers the "closure" — all peers reachable directly or indirectly.
-
-```json5
-// Explicit connect for client mode or when multicast is unavailable
-{
-  mode: "client",
-  connect: {
-    endpoints: ["tcp/192.168.1.10:7447"]
-  }
-}
-
-// Disable multicast scouting (for controlled environments)
-{
-  scouting: {
-    multicast: { enabled: false },
-    gossip: { enabled: true }  // use gossip-based discovery instead
-  }
-}
-```
-
----
-
-**Q: Can zenoh work over the internet (WAN)?**
-
-Yes. WAN connectivity is a first-class zenoh feature, unlike DDS which is primarily L
+**A:** Shared memory (SHM) transport is beneficial when:
+- Publisher and subscriber are on the **same host** (same machine, different processes

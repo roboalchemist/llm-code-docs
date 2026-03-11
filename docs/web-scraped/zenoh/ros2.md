@@ -1,83 +1,83 @@
-# Zenoh ROS 2 Integration: Complete Documentation
+# Eclipse Zenoh ROS 2 Integration — Complete Documentation
 
 ---
 
 ## Table of Contents
 
-1. [Overview](#1-overview)
-2. [Architecture](#2-architecture)
-3. [Installation](#3-installation)
-4. [What Gets Bridged](#4-what-gets-bridged)
-5. [Key Concepts](#5-key-concepts)
-6. [Configuration Reference](#6-configuration-reference)
-7. [Deployment Patterns](#7-deployment-patterns)
-8. [Multi-Robot Patterns](#8-multi-robot-patterns)
-9. [Example Configurations](#9-example-configurations)
-10. [TurtleBot3 / ROS 2 Demo Walkthrough](#10-turtlebot3--ros-2-demo-walkthrough)
-11. [Admin Space & Observability](#11-admin-space--observability)
-12. [Troubleshooting](#12-troubleshooting)
+1. [Overview](#overview)
+2. [Architecture](#architecture)
+3. [Installation](#installation)
+4. [What Gets Bridged](#what-gets-bridged)
+5. [Key Concepts](#key-concepts)
+6. [Configuration Reference](#configuration-reference)
+7. [Deployment Patterns](#deployment-patterns)
+8. [Multi-Robot Patterns](#multi-robot-patterns)
+9. [Example Configurations](#example-configurations)
+10. [TurtleBot3 Demo Walkthrough](#turtlebot3-demo-walkthrough)
+11. [Admin Space and Monitoring](#admin-space-and-monitoring)
+12. [Troubleshooting](#troubleshooting)
 
 ---
 
-## 1. Overview
+## Overview
 
-`zenoh-bridge-ros2dds` bridges all ROS 2 communications — topics, services, actions, and graph discovery — over the Zenoh protocol. It intercepts DDS traffic on the local machine and relays it across Zenoh networks, enabling ROS 2 systems to communicate across machines, networks, and even cloud infrastructure without exposing raw DDS multicast traffic beyond the local host.
+`zenoh-bridge-ros2dds` bridges all ROS 2 communications—topics, services, actions, and graph discovery—over the Eclipse Zenoh protocol. This enables ROS 2 robots to communicate across networks where direct DDS multicast would be impractical or impossible: across subnets, over the internet, through NAT, and to cloud infrastructure.
 
-### Why Zenoh Instead of Raw DDS?
+The bridge is built on top of [CycloneDDS](https://github.com/eclipse-cyclonedds/cyclonedds) and participates in the local DDS domain exactly like any other ROS 2 node. On the other side it speaks native Zenoh, inheriting Zenoh's efficient routing, multiplexing, and transport-layer flexibility.
 
-ROS 2 relies on DDS (Data Distribution Service), which uses UDP multicast for discovery and communication. Multicast works well on a single LAN but does not cross routers, traverse firewalls well, or scale to large fleets. Zenoh solves these problems by:
+```
+  Robot Host                           Remote Host / Cloud
+  ┌────────────────────────────┐       ┌────────────────────────────┐
+  │  ROS 2 Node A  ──DDS──┐   │       │   ┌──DDS── ROS 2 Node C   │
+  │  ROS 2 Node B  ──DDS──┤   │       │   ├──DDS── ROS 2 Node D   │
+  │                        ▼   │       │   ▼                        │
+  │              zenoh-bridge  │◄─────►│  zenoh-bridge             │
+  │              ros2dds       │ zenoh │  ros2dds                  │
+  └────────────────────────────┘       └────────────────────────────┘
+```
 
-- Replacing multicast discovery with configurable point-to-point or gossip-based discovery
-- Supporting TCP, UDP unicast, TLS, QUIC, and WebSocket transports
-- Providing bandwidth control via downsampling (`pub_max_frequencies`)
-- Supporting cloud and edge deployments via a router/plugin architecture
-- Giving each robot a namespace so fleet topics do not collide
+### Plugin or Bridge?
 
----
+The software ships in two forms with identical features and configuration:
 
-## 2. Architecture
-
-### Two Deployment Forms
-
-The bridge ships as two artifacts that share identical configuration and behavior:
-
-| Form | Name | Use Case |
+| Form | Package | Use Case |
 |---|---|---|
-| Standalone executable | `zenoh-bridge-ros2dds` | Simplest deployment; run alongside ROS 2 nodes |
-| Zenoh router plugin | `zenoh-plugin-ros2dds` | Load dynamically into `zenohd`; share a single router process |
+| **Standalone executable** | `zenoh-bridge-ros2dds` | Run directly on a host alongside ROS 2 nodes |
+| **Zenoh router plugin** | `zenoh-plugin-ros2dds` | Load dynamically inside `zenohd`; share one router process |
 
-### How the Bridge Works
-
-```
-┌──────────────────────────────────────┐
-│           Robot (ROS 2 host)         │
-│                                      │
-│  ROS Node A ──┐                      │
-│  ROS Node B ──┼──► DDS Domain 0 ──► zenoh-bridge-ros2dds ──► Zenoh network
-│  ROS Node C ──┘                      │
-└──────────────────────────────────────┘
-```
-
-1. The bridge joins the DDS domain (default: domain 0) and participates in standard DDS discovery.
-2. It discovers all ROS 2 publishers, subscribers, service servers/clients, and action servers/clients.
-3. For each discovered interface, it creates a bidirectional route between the DDS topic and a Zenoh key expression.
-4. Remote bridges or native Zenoh applications can then communicate over that key expression.
-
-### Zenoh Session Modes
-
-Starting from v0.11.0, the bridge defaults to **router** mode:
-
-- Listens on TCP port 7447 on all interfaces
-- Does **not** auto-connect to other discovered bridges
-- Remote bridges must be told explicitly to connect via `-e` or the `connect` section in config
-
-Prior to v0.11.0, the bridge defaulted to **peer** mode (auto-connects to any discovered peer).
+Throughout this document the words *bridge* and *plugin* are interchangeable.
 
 ---
 
-## 3. Installation
+## Architecture
 
-### Linux Debian / Ubuntu (Recommended)
+### How It Works
+
+1. The bridge joins the DDS domain (same `ROS_DOMAIN_ID` as local ROS nodes).
+2. It discovers every publisher, subscriber, service server/client, and action server/client on that domain via standard DDS discovery.
+3. For each discovered interface it creates a corresponding Zenoh route:
+   - DDS publisher → Zenoh publisher
+   - DDS subscriber → Zenoh subscriber (queryable for TRANSIENT_LOCAL)
+   - DDS service server → Zenoh queryable
+   - DDS service client → Zenoh get() caller
+4. All ROS interface names are mapped to Zenoh key expressions using a well-defined convention (see [Topic Name Mapping](#topic-name-mapping)).
+5. A second bridge on a remote host mirrors the same mapping, so data flows transparently end-to-end.
+
+### Zenoh Mode
+
+From **v0.11.0** onwards the bridge defaults to `router` mode:
+
+- Listens on `tcp/0.0.0.0:7447` for incoming connections from other bridges or any Zenoh application.
+- Does **not** auto-connect to anything on startup.
+- Connectivity must be configured explicitly via the `-e` CLI option or `connect.endpoints` in the config file.
+
+Automatic connection between two routers can be re-enabled by adding scouting configuration (see [Connectivity Configuration](#connectivity-configuration)).
+
+---
+
+## Installation
+
+### Linux Debian / Ubuntu (recommended)
 
 ```bash
 # Add the Eclipse Zenoh repository
@@ -90,25 +90,23 @@ echo "deb [signed-by=/etc/apt/keyrings/zenoh-public-key.gpg] \
 
 sudo apt update
 
-# Install the standalone bridge
+# Install standalone bridge
 sudo apt install zenoh-bridge-ros2dds
 
-# OR install the router plugin
+# Or install the router plugin
 sudo apt install zenoh-plugin-ros2dds
 ```
 
-### Manual Binary Installation
+### Manual / All Platforms
 
-Download from: https://download.eclipse.org/zenoh/zenoh-plugin-ros2dds/latest/
+Download from:
 
-```bash
-# For the standalone bridge
-unzip zenoh-bridge-ros2dds-<version>-<platform>.zip
-./zenoh-bridge-ros2dds
-
-# For the plugin (place alongside zenohd or in /usr/lib)
-unzip zenoh-plugin-ros2dds-<version>-<platform>.zip
 ```
+https://download.eclipse.org/zenoh/zenoh-plugin-ros2dds/latest/
+```
+
+- `zenoh-bridge-ros2dds-<version>-<platform>.zip` — standalone executable
+- `zenoh-plugin-ros2dds-<version>-<platform>.zip` — router plugin (`.so`/`.dylib`/`.dll`)
 
 ### Docker
 
@@ -116,43 +114,43 @@ unzip zenoh-plugin-ros2dds-<version>-<platform>.zip
 # Latest release
 docker pull eclipse/zenoh-bridge-ros2dds:latest
 
-# Nightly build
+# Nightly build (main branch)
 docker pull eclipse/zenoh-bridge-ros2dds:nightly
-
-# Run (example)
-docker run --network host eclipse/zenoh-bridge-ros2dds:latest
 ```
-
-> **Note:** `--network host` is typically required so the bridge can reach DDS traffic on the local machine.
 
 ### Build from Source
 
-**Prerequisites:**
+Prerequisites: Rust toolchain, `llvm-dev`, `libclang-dev`, CMake.
 
 ```bash
-# Install Rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-rustup update
-
-# Install LLVM/Clang (Debian/Ubuntu)
+# Install dependencies (Debian/Ubuntu)
 sudo apt install llvm-dev libclang-dev cmake
 
-# Install CMake (required to build CycloneDDS)
-sudo apt install cmake
-```
+# Install / update Rust
+rustup update
 
-```bash
+# Build
 git clone https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds.git
 cd zenoh-plugin-ros2dds
 cargo build --release
-# Outputs: target/release/zenoh-bridge-ros2dds
-#          target/release/libzenoh_plugin_ros2dds.so
 ```
+
+Binaries are placed in `target/release/`.
+
+#### Optional Feature: DDS Symbol Prefixing
+
+If you need to load both `zenoh-plugin-ros2dds` and `zenoh-plugin-dds` in the same router process, build with prefixed symbols to avoid DDS library clashes:
+
+```bash
+cargo build --release --features prefix_symbols
+```
+
+> **Note:** `prefix_symbols` and `dds_shm` cannot be enabled at the same time.
 
 ### ROS 2 Package Build
 
 ```bash
-# From workspace root
+# From the repo root
 rosdep install --from-paths . --ignore-src -r -y
 colcon build --packages-select zenoh_bridge_ros2dds \
              --cmake-args -DCMAKE_BUILD_TYPE=Release
@@ -160,189 +158,132 @@ colcon build --packages-select zenoh_bridge_ros2dds \
 
 ---
 
-## 4. What Gets Bridged
+## What Gets Bridged
 
-The bridge automatically discovers and routes the following ROS 2 interface types:
+### Topics
 
-### Topics (Publishers and Subscribers)
+Every ROS 2 publisher and subscriber on the DDS domain is discovered and routed bidirectionally over Zenoh. QoS reliability (RELIABLE vs BEST_EFFORT) and durability (TRANSIENT_LOCAL) are preserved across the bridge (see [QoS Preservation](#qos-preservation)).
 
-All DDS topics corresponding to ROS 2 topics are bridged bidirectionally. A publisher on one side of the bridge is visible as a publisher to subscribers on the other side, and vice versa.
+### Services
 
-**Zenoh key expression mapping:**
+ROS 2 services are mapped to Zenoh Queryables. A service server on the DDS side becomes a queryable that answers `get()` calls arriving from the Zenoh network. A service client initiates `get()` calls that are routed to the appropriate server.
 
-ROS 2 topic names are mapped to Zenoh key expressions following a convention derived from the DDS topic name. ROS 2 DDS topic names use the prefix `rt/` (for "ros topic"):
+### Actions
 
-| ROS 2 topic | Zenoh key expression (no namespace) |
-|---|---|
-| `/cmd_vel` | `rt/cmd_vel` |
-| `/scan` | `rt/scan` |
-| `/rosout` | `rt/rosout` |
-| `/tf` | `rt/tf` |
-| `/robot/odom` | `rt/robot/odom` |
-
-When a namespace is configured (e.g., `/bot1`), the namespace is prepended:
-
-| ROS 2 topic | Zenoh key expression (namespace `/bot1`) |
-|---|---|
-| `/cmd_vel` | `bot1/rt/cmd_vel` |
-| `/scan` | `bot1/rt/scan` |
-| `/rosout` | `bot1/rt/rosout` |
-| `/tf` | `bot1/rt/tf` |
-
-> **Important:** The namespace is applied to **all** topics, including absolute paths like `/rosout`, `/tf`, and `/tf_static`.
-
-### Services (Clients and Servers)
-
-ROS 2 services are mapped to Zenoh Queryables. A service call from a ROS 2 client is translated into a Zenoh `get()` query; the service server's response is returned as a reply.
-
-**Zenoh key expression mapping** (prefix `rq/` for request, `rr/` for reply, or via Queryable):
-
-| ROS 2 service | Zenoh key expression |
-|---|---|
-| `/set_parameters` | `rq/set_parameters` / `rr/set_parameters` |
-| `/robot/get_state` | `rq/robot/get_state` |
-
-### Actions (Clients and Servers)
-
-ROS 2 actions are composed of three sub-services (send_goal, cancel_goal, get_result) plus feedback and status topics. The bridge handles all of these automatically, mapping them to Zenoh Queryables (for the service parts) and key expressions (for feedback and status).
+ROS 2 actions are composed of multiple DDS topics and services internally. The bridge handles all of them as a unit, mapping each action to a set of Zenoh key expressions. Action clients and servers are both fully bridged.
 
 ### ROS 2 Graph Discovery
 
-The bridge propagates ROS 2 graph information (which nodes exist, which topics/services/actions they expose) across the Zenoh network. This means that tools like `ros2 topic list`, `ros2 service list`, and `ros2 action list` work correctly on a host connected through the bridge, as though all remote ROS 2 nodes were local.
+The bridge propagates the ROS 2 graph (node names, topic types, QoS) to remote bridges so that `ros2 topic list`, `ros2 service list`, `ros2 action list`, and tools like `rviz2` work correctly on a remote host as if it were on the same LAN.
 
 ---
 
-## 5. Key Concepts
+## Key Concepts
 
 ### DDS Domain ID
 
-ROS 2 uses DDS domain IDs to partition communications. Nodes with different domain IDs cannot communicate over DDS. The bridge joins a specific DDS domain (configured via `domain` or the `ROS_DOMAIN_ID` environment variable, defaulting to `0`).
-
-**Critical rule:** There must be **no direct DDS path** between two hosts that are bridged. If DDS traffic leaks between bridged hosts, you will see duplicate or looping messages.
-
-To prevent DDS leakage, use **one** of these approaches:
+The bridge participates in the DDS domain identified by `ROS_DOMAIN_ID` (default `0`). All ROS nodes that should be bridged must share the same domain ID on a given host.
 
 ```bash
-# Option 1: Restrict DDS to localhost (ROS Iron and later)
-export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
-sudo ip l set lo multicast on   # enable multicast on loopback
-
-# Option 2: Restrict DDS to localhost (before ROS Iron)
-export ROS_LOCALHOST_ONLY=1
-sudo ip l set lo multicast on
-
-# Option 3: Use different ROS_DOMAIN_ID on each host
-export ROS_DOMAIN_ID=1   # on host A
-export ROS_DOMAIN_ID=2   # on host B
-
-# Option 4: CycloneDDS XML config to restrict to specific interfaces
-export CYCLONEDDS_URI=file:///path/to/cyclonedds.xml
+# Set explicitly
+export ROS_DOMAIN_ID=42
+zenoh-bridge-ros2dds
 ```
 
-Example `cyclonedds.xml` for a robot with a USB inter-board link:
+Or use the `domain` config key (see [Configuration Reference](#configuration-reference)).
 
-```xml
-<CycloneDDS>
-  <Domain>
-    <General>
-      <Interfaces>
-        <NetworkInterface name="usb0"/>
-        <NetworkInterface address="127.0.0.1" multicast="true"/>
-      </Interfaces>
-      <DontRoute>true</DontRoute>
-    </General>
-  </Domain>
-</CycloneDDS>
-```
+### DDS Isolation — Preventing Loops
+
+> **Critical:** If two hosts are connected by both DDS *and* the Zenoh bridge, traffic will loop. You must ensure DDS traffic cannot flow directly between the bridged hosts.
+
+Choose one of:
+
+1. **Localhost-only DDS** (recommended for single-machine bridge scenarios):
+
+   ```bash
+   # ROS 2 Iron and later
+   export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
+   # Before Iron
+   export ROS_LOCALHOST_ONLY=1
+   # Also enable multicast on loopback
+   sudo ip l set lo multicast on
+   ```
+
+2. **Different `ROS_DOMAIN_ID`** on each host.
+
+3. **CycloneDDS interface restriction** via `CYCLONEDDS_URI`:
+
+   ```xml
+   <CycloneDDS>
+     <Domain>
+       <General>
+         <Interfaces>
+           <NetworkInterface name="usb0"/>
+           <NetworkInterface address="127.0.0.1" multicast="true"/>
+         </Interfaces>
+         <DontRoute>true</DontRoute>
+       </General>
+     </Domain>
+   </CycloneDDS>
+   ```
 
 ### Namespace Remapping
 
-The `namespace` configuration option prefixes all bridged interface names when they are published to Zenoh. This is the primary mechanism for multi-robot isolation.
+A `namespace` configured on the bridge is prepended to every ROS interface name before it is published to the Zenoh network. This applies to **all** interfaces including `/rosout`, `/tf`, and `/tf_static`.
 
 ```
-Robot config:  namespace: "/bot1"
-
-DDS topic:     /cmd_vel
-Zenoh key:     bot1/rt/cmd_vel
-
-DDS topic:     /scan
-Zenoh key:     bot1/rt/scan
+DDS side:   /cmd_vel
+Zenoh side: /robot1/cmd_vel   (with namespace: "/robot1")
 ```
 
-On a monitoring host, you have two options:
+This is the foundation of multi-robot isolation (see [Multi-Robot Patterns](#multi-robot-patterns)).
 
-**Option A:** Run a bridge with the same namespace. ROS 2 tools work without any remapping.
+### Topic Name to Zenoh Key Expression Mapping
 
-```bash
-zenoh-bridge-ros2dds -e tcp/<robot-ip>:7447 --namespace /bot1
-# Now: ros2 topic list shows /cmd_vel, /scan, etc.
-```
+ROS 2 DDS topic names follow a convention established by the RMW layer:
 
-**Option B:** Run a bridge without a namespace. Use topic remapping in ROS tools.
+| Interface Type | DDS Name Prefix | Example DDS Name | Zenoh Key |
+|---|---|---|---|
+| Topic | `rt/` | `rt/cmd_vel` | `cmd_vel` |
+| Service request | `rq/` | `rq/add_two_ints/_service_event_info` | mapped internally |
+| Service response | `rr/` | `rr/add_two_ints/_service_event_info` | mapped internally |
+| Action | `ra/` | `ra/navigate_to_pose/_action/...` | mapped internally |
 
-```bash
-zenoh-bridge-ros2dds -e tcp/<robot-ip>:7447
-# Now: ros2 topic list shows /bot1/cmd_vel, /bot1/scan, etc.
-rviz2 --ros-args -r /tf:=/bot1/tf -r /tf_static:=/bot1/tf_static
+The `rt/` prefix stands for "ROS topic". When writing Zenoh native clients that interoperate with the bridge, use the full DDS name (including `rt/`, `rq/`, etc.) as the Zenoh key expression.
+
+For example, from the Python teleop demo:
+
+```python
+# This key expression is the DDS topic name for /turtle1/cmd_vel
+session.put('rt/turtle1/cmd_vel', twist_bytes)
 ```
 
 ### QoS Preservation
 
-The bridge preserves ROS 2 Quality of Service settings:
-
-**Reliability:**
-- `RELIABLE` DDS writers → Zenoh `CongestionControl::Block` (when `reliable_routes_blocking: true`)
-- `BEST_EFFORT` DDS writers → Zenoh `CongestionControl::Drop`
-
-**Durability (TRANSIENT_LOCAL):**
-
-When a `TRANSIENT_LOCAL` publisher is discovered, the bridge creates a `PublicationCache` in Zenoh to store recent publications. Late-joining subscribers (on other bridges) query this cache to receive the historical data they would have received from the DDS publisher directly.
-
-The cache size is `history_length × transient_local_cache_multiplier` (default multiplier: 10).
-
-### Topic Name to Zenoh Key Expression Convention
-
-The mapping follows the DDS topic name as assigned by the ROS 2 middleware:
-
-| Interface type | DDS prefix | Example DDS name | Zenoh key |
-|---|---|---|---|
-| Topic | `rt/` | `rt/cmd_vel` | `rt/cmd_vel` |
-| Service request | `rq/` | `rq/set_parameters` | `rq/set_parameters` |
-| Service reply | `rr/` | `rr/set_parameters` | `rr/set_parameters` |
-| Action goal | `rq/` | `rq/navigate_to_pose/_action/send_goal` | (mapped internally) |
-
-With namespace `/bot1`:
-- `rt/cmd_vel` → `bot1/rt/cmd_vel`
-- `rq/set_parameters` → `bot1/rq/set_parameters`
+| DDS QoS | Zenoh Behavior |
+|---|---|
+| `RELIABLE` | Uses `CongestionControl::Block` (when `reliable_routes_blocking: true`). The route blocks on congestion, back-pressuring the DDS writer. |
+| `BEST_EFFORT` | Uses `CongestionControl::Drop`. Data may be dropped under congestion. |
+| `TRANSIENT_LOCAL` | The bridge creates a `PublicationCache` on the Zenoh route. Late-joining subscribers receive the cached history from the publisher's `history_length` QoS setting, multiplied by `transient_local_cache_multiplier`. |
 
 ---
 
-## 6. Configuration Reference
+## Configuration Reference
 
-The bridge is configured via a JSON5 file passed with `-c <file>`. The full reference file is `DEFAULT_CONFIG.json5`. All settings are optional; values shown are defaults.
+The bridge is configured via a JSON5 file passed with `-c <file>`. All settings live under the `plugins.ros2dds` key. When using the router plugin, this section goes into the router's config under `plugins`.
 
-### Configuration File Structure
-
-```json5
-{
-  plugins: {
-    ros2dds: {
-      // ROS 2 bridge settings go here
-    }
-  },
-  // Zenoh session settings (mode, connect, listen, scouting)
-}
-```
+Run `zenoh-bridge-ros2dds -h` to see which options are also available as CLI flags (CLI flags override config file values).
 
 ---
 
 ### `nodename`
 
-**What it does:** Sets the ROS 2 node name used by the bridge itself on the DDS domain. This is the name the bridge appears as in `ros2 node list`.
+The name of the ROS node that the bridge itself creates on the DDS domain.
 
-**Default:** `"zenoh_bridge_ros2dds"`
-
-**Example:**
+| | |
+|---|---|
+| **Default** | `"zenoh_bridge_ros2dds"` |
+| **Type** | string |
 
 ```json5
 nodename: "my_bridge_node"
@@ -352,29 +293,32 @@ nodename: "my_bridge_node"
 
 ### `namespace`
 
-**What it does:** Sets a ROS 2 namespace that is:
-1. Applied to the bridge's own node.
-2. Prepended to **all** bridged interface names when routing to Zenoh (topics, services, actions — including `/rosout`, `/tf`, `/tf_static`).
+A ROS namespace prepended to every bridged interface name when publishing to Zenoh. Also applied to the bridge's own node.
 
-**Default:** `"/"` (no prefix applied)
-
-**Example:**
+| | |
+|---|---|
+| **Default** | `"/"` (no prefix) |
+| **Type** | string |
 
 ```json5
+// Robot 1 bridge config
 namespace: "/robot1"
+
+// A topic /cmd_vel on the robot becomes robot1/cmd_vel on Zenoh
 ```
 
-With this setting, a robot's `/scan` topic appears as `robot1/rt/scan` in Zenoh.
+> **Note:** Setting the namespace on the bridge eliminates the need to configure namespaces on individual ROS nodes. DDS traffic between nodes on the same robot stays un-namespaced internally.
 
 ---
 
 ### `domain`
 
-**What it does:** Specifies the DDS domain ID the bridge joins. All ROS 2 nodes in the same domain on the same host will be discovered and bridged.
+The DDS Domain ID the bridge will join.
 
-**Default:** `0`, or the value of `$ROS_DOMAIN_ID` if set.
-
-**Example:**
+| | |
+|---|---|
+| **Default** | `0`, or the value of `$ROS_DOMAIN_ID` if set |
+| **Type** | integer |
 
 ```json5
 domain: 42
@@ -384,50 +328,50 @@ domain: 42
 
 ### `ros_localhost_only`
 
-**What it does:** When `true`, restricts all DDS discovery and traffic to the loopback interface (`127.0.0.1`). Equivalent to setting `ROS_LOCALHOST_ONLY=1`. Use this to prevent DDS traffic from leaking to the physical network when bridging with zenoh.
+When `true`, restricts all DDS discovery and traffic to `127.0.0.1`. Equivalent to `ROS_LOCALHOST_ONLY=1`.
 
-**Default:** `false`, unless `ROS_LOCALHOST_ONLY=1` is set in the environment.
-
-**Example:**
+| | |
+|---|---|
+| **Default** | `false`, unless `ROS_LOCALHOST_ONLY=1` is set |
+| **Type** | boolean |
 
 ```json5
 ros_localhost_only: true
 ```
 
-> **Note:** Also run `sudo ip l set lo multicast on` to ensure DDS multicast works on loopback.
-
 ---
 
 ### `ros_automatic_discovery_range`
 
-**What it does:** Controls how far the bridge's DDS participant attempts to discover other ROS 2 nodes. Available in ROS 2 Iron and later.
+Controls how far DDS discovery propagates. Introduced in ROS 2 Iron.
 
-**Valid values:**
-
-| Value | Meaning |
+| | |
 |---|---|
-| `"SUBNET"` | Discover any node reachable via multicast (default DDS behavior) |
-| `"LOCALHOST"` | Only discover nodes on the same machine |
-| `"OFF"` | No discovery at all |
-| `"SYSTEM_DEFAULT"` | Do not modify any discovery settings |
-
-**Default:** `"SUBNET"`
-
-**Example:**
+| **Default** | `"SUBNET"` |
+| **Valid values** | `"SUBNET"`, `"LOCALHOST"`, `"OFF"`, `"SYSTEM_DEFAULT"` |
+| **ROS version** | Iron and later |
 
 ```json5
 ros_automatic_discovery_range: "LOCALHOST"
 ```
 
+| Value | Behavior |
+|---|---|
+| `"SUBNET"` | Standard DDS multicast discovery across the subnet |
+| `"LOCALHOST"` | Discover only nodes on the same machine |
+| `"OFF"` | No discovery at all |
+| `"SYSTEM_DEFAULT"` | Do not override any discovery settings |
+
 ---
 
 ### `ros_static_peers`
 
-**What it does:** A semicolon-separated list of IP addresses that ROS 2 should explicitly attempt to discover nodes on. Useful when multicast is unavailable. Available in ROS 2 Iron and later.
+A semicolon-separated list of IP addresses for explicit peer discovery. ROS 2 Iron and later.
 
-**Default:** unset
-
-**Example:**
+| | |
+|---|---|
+| **Default** | unset |
+| **Type** | string |
 
 ```json5
 ros_static_peers: "192.168.1.10;192.168.1.11"
@@ -437,11 +381,12 @@ ros_static_peers: "192.168.1.10;192.168.1.11"
 
 ### `shm_enabled`
 
-**What it does:** Enables Iceoryx shared memory for DDS communications. Requires the bridge to be built with the `dds_shm` feature flag. Cannot be used together with `prefix_symbols`.
+Enable Iceoryx shared memory for DDS communications. Requires the bridge to be compiled with the `dds_shm` feature.
 
-**Default:** `false`
-
-**Example:**
+| | |
+|---|---|
+| **Default** | `false` |
+| **Type** | boolean |
 
 ```json5
 shm_enabled: true
@@ -451,21 +396,25 @@ shm_enabled: true
 
 ### `allow` / `deny`
 
-**What it does:** Filters which ROS 2 interfaces are routed over Zenoh. Each entry is a regular expression matched against the full interface name. You cannot set both `allow` and `deny` simultaneously.
+Filter which ROS 2 interfaces are bridged. You can specify **either** `allow` or `deny`, but not both.
 
-**Behavior:**
+Each value is a list of regular expressions matched against the full interface name.
 
-- **`allow`**: Only listed interfaces are bridged. An interface type with an empty list or not mentioned means **no** interfaces of that type are bridged.
-- **`deny`**: All interfaces are bridged **except** those listed. An interface type with an empty list or not mentioned means **all** interfaces of that type are bridged.
-- **Neither set**: All interfaces are bridged.
+**`allow`**: Only the listed interfaces are bridged. An interface type with an empty list or not specified means **no** interfaces of that type are bridged.
 
-**Interface types:** `publishers`, `subscribers`, `service_servers`, `service_clients`, `action_servers`, `action_clients`
+**`deny`**: All interfaces are bridged **except** the listed ones. An interface type with an empty list or not specified means **all** interfaces of that type are bridged.
 
-**Default:** unset (all interfaces bridged)
+Interface types:
 
-**Example — allow only specific interfaces:**
+- `publishers`
+- `subscribers`
+- `service_servers`
+- `service_clients`
+- `action_servers`
+- `action_clients`
 
 ```json5
+// Allow only specific interfaces
 allow: {
   publishers: [".*/laser_scan", "/tf", ".*/pose"],
   subscribers: [".*/cmd_vel"],
@@ -473,12 +422,11 @@ allow: {
   service_clients: [],
   action_servers: [".*/rotate_absolute"],
   action_clients: [],
-}
+},
 ```
 
-**Example — deny noisy system topics:**
-
 ```json5
+// Deny specific noisy topics
 deny: {
   publishers: ["/rosout", "/parameter_events"],
   subscribers: ["/rosout"],
@@ -486,29 +434,27 @@ deny: {
   service_clients: [".*/set_parameters"],
   action_servers: [],
   action_clients: [],
-}
+},
 ```
 
 ---
 
 ### `pub_max_frequencies`
 
-**What it does:** Rate-limits publication routing to Zenoh for matching publishers. If a publisher produces messages faster than the configured limit, the bridge will drop excess messages (downsampling). Useful for reducing bandwidth on high-rate sensors like LiDAR or cameras.
+Downsampling: cap the publication rate of specific topics over Zenoh. Useful for high-frequency sensors (LiDAR, cameras) where the remote consumer does not need every sample.
 
-**Format:** `["<regex>=<float_hz>", ...]`
+Format: `"<regex>=<hz>"`
 
-- `regex`: Regular expression matching the publisher's topic name
-- `float_hz`: Maximum frequency in Hz
-
-**Default:** unset (no rate limiting)
-
-**Example:**
+| | |
+|---|---|
+| **Default** | unset (no rate limiting) |
+| **Type** | list of strings |
 
 ```json5
 pub_max_frequencies: [
-  ".*/laser_scan=5",   // max 5 Hz for all laser_scan topics
+  ".*/laser_scan=5",   // max 5 Hz for any laser_scan topic
   "/tf=10",            // max 10 Hz for /tf
-  ".*/camera/image=2"  // max 2 Hz for camera images
+  ".*/image_raw=2",    // max 2 Hz for camera images
 ]
 ```
 
@@ -516,24 +462,24 @@ pub_max_frequencies: [
 
 ### `pub_priorities`
 
-**What it does:** Assigns Zenoh publication priorities to matching publisher topics. Higher-priority messages are preferentially transmitted when the network is congested. Optionally enables the "express" policy for reduced batching latency on a topic.
+Set Zenoh publication priority for specific topics. Higher-priority publications preempt lower-priority ones when the Zenoh network is congested.
 
-**Format:** `["<regex>=<integer>[:<express>]", ...]`
+Format: `"<regex>=<priority>[:<policy>]"`
 
-**Priority range:** 1 (highest) to 7 (lowest), default is 5.
+- Priority range: `1` (highest) to `7` (lowest). Default is `5`.
+- Optional `:express` policy sends the message immediately without batching, reducing latency at the cost of throughput.
 
-**`:express` option:** When present, the message is sent immediately without waiting to be batched with other messages. Reduces latency but increases per-message overhead.
-
-**Default:** unset (all topics at default priority 5)
-
-**Example:**
+| | |
+|---|---|
+| **Default** | unset (priority 5 for all) |
+| **Type** | list of strings |
 
 ```json5
 pub_priorities: [
-  "/scan=1:express",  // highest priority, immediate send
-  "/pose=2",          // high priority, batched
-  "/map=6",           // low priority
-  "/rosout=7"         // lowest priority
+  "/scan=1:express",   // highest priority, no batching
+  "/pose=2",           // high priority
+  "/map=6",            // low priority (large, infrequent)
+  "/rosout=7",         // lowest priority
 ]
 ```
 
@@ -541,72 +487,69 @@ pub_priorities: [
 
 ### `reliable_routes_blocking`
 
-**What it does:** Controls the Zenoh congestion control policy for `RELIABLE` DDS writers.
+When `true`, publications from a RELIABLE DDS writer use `CongestionControl::Block` in Zenoh. The route will block (and back-pressure the DDS writer) if the Zenoh network is congested, preventing data loss for RELIABLE topics.
 
-- `true`: Uses `CongestionControl::Block` — if the network is congested, the bridge blocks the DDS reader/writer until the message can be sent. Preserves all messages at the cost of potential backpressure.
-- `false`: Uses `CongestionControl::Drop` — drops messages under congestion. Never blocks DDS.
+When `false` (or for BEST_EFFORT writers), `CongestionControl::Drop` is used.
 
-`BEST_EFFORT` publishers always use `CongestionControl::Drop` regardless of this setting.
-
-**Default:** `true`
-
-**Example:**
+| | |
+|---|---|
+| **Default** | `true` |
+| **Type** | boolean |
 
 ```json5
-reliable_routes_blocking: false
+reliable_routes_blocking: true
 ```
 
 ---
 
 ### `queries_timeout`
 
-**What it does:** Configures timeout durations for Zenoh queries used by services, action calls, and TRANSIENT_LOCAL subscriber history retrieval.
+Timeout configuration for Zenoh queries used by services, actions, and TRANSIENT_LOCAL subscribers.
 
-**Fields:**
+Each field accepts either a single float (seconds, applies to all matching queries) or a list of `"<regex>=<float>"` strings for per-interface timeouts.
 
-| Field | Description | Default |
-|---|---|---|
-| `default` | Fallback timeout for all queries not matched below | `5.0` seconds |
-| `transient_local_subscribers` | Timeout when querying publishers for historical TRANSIENT_LOCAL data | `1.0` seconds |
-| `services` | Timeout for service calls; can be a float or a `["<regex>=<float>", ...]` list | `5.0` seconds |
-| `actions.send_goal` | Timeout for sending a goal to an action server | `5.0` seconds |
-| `actions.cancel_goal` | Timeout for cancelling an action goal | `5.0` seconds |
-| `actions.get_result` | Timeout for waiting on an action result; can be a float or list | `300.0` seconds |
-
-**Default:** As shown in the table above.
-
-**Example:**
+| | |
+|---|---|
+| **Default** | `default: 5.0`, `actions.get_result: 300.0` |
 
 ```json5
 queries_timeout: {
+  // Fallback timeout for any query not matched below
   default: 5.0,
+
+  // Timeout when querying publishers for TRANSIENT_LOCAL history
   transient_local_subscribers: 1.0,
+
+  // Per-service timeouts: first match wins
   services: ["add_two_ints=0.5", ".*=1.0"],
+
+  // Action sub-timeouts
   actions: {
     send_goal: 1.0,
     cancel_goal: 1.0,
-    get_result: [".*long_mission=3600", ".*short_action=10.0", ".*=300"]
+    // Long-running missions get a long timeout
+    get_result: [".*long_mission=3600", ".*short_action=10.0", ".*=300"],
   }
-}
+},
 ```
 
 ---
 
 ### `transient_local_cache_multiplier`
 
-**What it does:** Determines the size of the Zenoh `PublicationCache` created for each `TRANSIENT_LOCAL` topic route. Since one route may serve multiple publishers on the same topic, the cache size is:
+Determines the size of the `PublicationCache` created for TRANSIENT_LOCAL publisher routes. The cache stores publications for late-joining subscribers.
 
-```
-cache_size = publisher_history_length × transient_local_cache_multiplier
-```
+Cache size = `publisher history_length QoS` × `transient_local_cache_multiplier`
 
-Increase this value if you have more than 10 `TRANSIENT_LOCAL` publishers on the same topic.
+Because one route may serve multiple publishers on the same topic, this multiplier accounts for that.
 
-**Default:** `10`
-
-**Example:**
+| | |
+|---|---|
+| **Default** | `10` |
+| **Type** | integer |
 
 ```json5
+// Increase if more than 10 TRANSIENT_LOCAL publishers share a topic
 transient_local_cache_multiplier: 20
 ```
 
@@ -614,11 +557,12 @@ transient_local_cache_multiplier: 20
 
 ### `work_thread_num`
 
-**What it does:** Sets the number of worker threads in the Tokio async runtime used by the plugin. Worker threads handle non-blocking tasks. **Only applies when running as a plugin inside `zenohd`; has no effect on the standalone bridge.**
+Number of Tokio worker threads for the asynchronous runtime. **Plugin only** — has no effect on the standalone bridge.
 
-**Default:** `2`
-
-**Example:**
+| | |
+|---|---|
+| **Default** | `2` |
+| **Type** | integer |
 
 ```json5
 work_thread_num: 4
@@ -628,11 +572,12 @@ work_thread_num: 4
 
 ### `max_block_thread_num`
 
-**What it does:** Sets the maximum number of blocking threads in the Tokio async runtime used by the plugin. Blocking threads handle I/O and other blocking operations, spawned on demand. **Only applies when running as a plugin inside `zenohd`; has no effect on the standalone bridge.**
+Maximum number of Tokio blocking threads for I/O operations. **Plugin only**.
 
-**Default:** `50`
-
-**Example:**
+| | |
+|---|---|
+| **Default** | `50` |
+| **Type** | integer |
 
 ```json5
 max_block_thread_num: 100
@@ -640,42 +585,31 @@ max_block_thread_num: 100
 
 ---
 
-### Zenoh Session Configuration
+### Zenoh-Level Configuration
 
-These fields appear at the top level of the config file (not under `plugins.ros2dds`) and control the Zenoh session itself.
+These are standard Zenoh settings that sit alongside the `plugins` block, not inside `ros2dds`.
 
 #### `mode`
 
 ```json5
-mode: "router"   // "router" | "peer" | "client"
+mode: "router"  // or "peer" or "client"
 ```
 
-Default is `"router"`. Routers listen for incoming connections; peers connect to peers and routers; clients connect only to routers.
-
-#### `connect`
+#### `connect.endpoints`
 
 ```json5
 connect: {
-  endpoints: [
-    "tcp/192.168.1.100:7447",
-    "tls/cloud.example.com:7447"
-  ]
+  endpoints: ["tcp/192.168.1.100:7447"]
 }
 ```
 
-Specifies remote bridges or routers to connect to at startup.
-
-#### `listen`
+#### `listen.endpoints`
 
 ```json5
 listen: {
-  endpoints: [
-    "tcp/0.0.0.0:7447"
-  ]
+  endpoints: ["tcp/0.0.0.0:7447"]
 }
 ```
-
-Specifies what interfaces and ports to accept incoming connections on. Default in router mode: `tcp/0.0.0.0:7447`.
 
 #### `scouting`
 
@@ -684,24 +618,11 @@ scouting: {
   multicast: {
     enabled: true,
     address: "224.0.0.224:7446",
-    autoconnect: { router: [], peer: ["router", "peer"] }
-  },
-  gossip: {
-    enabled: true,
-    multihop: false,
-    autoconnect: { router: [], peer: ["router", "peer"] }
-  }
-}
-```
-
-To enable automatic connection between routers (e.g., for local network auto-discovery of bridges):
-
-```json5
-scouting: {
-  multicast: {
+    // Re-enable auto-connect between routers
     autoconnect: { router: "router" }
   },
   gossip: {
+    enabled: true,
     autoconnect: { router: "router" }
   }
 }
@@ -709,208 +630,355 @@ scouting: {
 
 ---
 
-## 7. Deployment Patterns
+## Connectivity Configuration
+
+### DDS Side
+
+The bridge discovers local ROS nodes via DDS UDP multicast on the configured domain. CycloneDDS configuration (via `CYCLONEDDS_URI`) controls which network interfaces DDS uses.
+
+Tested with `RMW_IMPLEMENTATION=rmw_cyclonedds_cpp`. Other RMW implementations are interoperable over standard DDS but non-standard features (e.g., vendor-specific shared memory) may cause issues.
+
+### Zenoh Side
+
+By default (v0.11.0+), the bridge:
+
+- Listens on `tcp/0.0.0.0:7447`
+- Does not auto-connect to any remote endpoint
+
+To connect a robot bridge to a remote bridge or router:
+
+```bash
+# CLI
+zenoh-bridge-ros2dds -e tcp/192.168.1.100:7447
+
+# Or in config
+connect: {
+  endpoints: ["tcp/192.168.1.100:7447"]
+}
+```
+
+---
+
+## Deployment Patterns
 
 ### Pattern 1: Single Machine
 
-Run the bridge on the same host as all ROS 2 nodes. Useful for exposing a local ROS 2 system to remote Zenoh applications without a second bridge.
+Bridge and ROS nodes on the same host. Use LOCALHOST-only DDS to prevent any external DDS traffic.
 
 ```
-┌─────────────────────────────┐
-│         Robot Host          │
-│                             │
-│  ROS 2 Nodes ──► DDS ──────►│──► zenoh-bridge-ros2dds (port 7447)
-│                             │         │
-└─────────────────────────────┘         │ TCP
-                                        │
-                              Remote Zenoh App / Monitoring Tool
+Host
+├── ROS Node A
+├── ROS Node B
+└── zenoh-bridge-ros2dds
+    └── listens on tcp/0.0.0.0:7447
 ```
-
-**Setup:**
 
 ```bash
-# On the robot
-export ROS_LOCALHOST_ONLY=1
+export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
 sudo ip l set lo multicast on
 zenoh-bridge-ros2dds
-
-# On the remote monitoring host
-zenoh-bridge-ros2dds -e tcp/<robot-ip>:7447
-ros2 topic list
 ```
+
+A remote Zenoh application or bridge can then connect to `tcp/<host-ip>:7447`.
 
 ---
 
 ### Pattern 2: Multi-Machine Local Network
 
-Each machine runs its own bridge. Bridges connect to each other. DDS is restricted to localhost on each machine to prevent DDS traffic from crossing the network.
+A bridge on each machine. Machines are on the same LAN but DDS multicast across machines must be prevented.
 
 ```
-┌──────────────┐    TCP     ┌──────────────┐
-│   Machine A  │◄──────────►│   Machine B  │
-│              │            │              │
-│ ROS Nodes    │            │ ROS Nodes    │
-│ Bridge A     │            │ Bridge B     │
-└──────────────┘            └──────────────┘
+Machine A (Robot)              Machine B (Operator)
+├── ROS nodes                  ├── ROS nodes
+└── zenoh-bridge ──────────── └── zenoh-bridge
+    (router mode)       TCP        (router mode, connects to A)
+    :7447
 ```
-
-**Setup:**
 
 ```bash
-# On Machine A (acts as the "server")
-export ROS_LOCALHOST_ONLY=1
-sudo ip l set lo multicast on
+# On Machine A
+export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
 zenoh-bridge-ros2dds
-# Listens on tcp/0.0.0.0:7447 by default
 
-# On Machine B (connects to A)
-export ROS_LOCALHOST_ONLY=1
-sudo ip l set lo multicast on
+# On Machine B
+export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
 zenoh-bridge-ros2dds -e tcp/<machine-a-ip>:7447
+
+# Verify
+ros2 topic list   # should show Machine A's topics
 ```
 
-For automatic discovery between machines on the same LAN (no explicit `-e` needed), enable router autoconnect:
+To enable automatic discovery between peers on the same LAN instead of static connection:
 
 ```json5
-// bridge.config.json5
-{
-  scouting: {
-    multicast: {
-      autoconnect: { router: "router" }
-    }
+// Add to both bridge configs
+scouting: {
+  multicast: {
+    autoconnect: { router: "router" }
   }
 }
 ```
 
 ---
 
-### Pattern 3: Cloud + Robot (Edge/Cloud Architecture)
+### Pattern 3: Cloud + Robot (Edge Gateway)
 
-A Zenoh router runs in the cloud. The robot's bridge connects to it as a client. A monitoring application on any internet-connected host also connects to the cloud router.
+The bridge on the robot connects out to a Zenoh router in the cloud. The cloud router can serve multiple services and monitoring dashboards.
 
 ```
-┌─────────────┐   TCP/TLS    ┌──────────────────┐   TCP/TLS   ┌─────────────────┐
-│    Robot    │◄────────────►│  Cloud (zenohd)  │◄───────────►│ Monitoring Host │
-│             │              │                  │             │                 │
-│ ROS Nodes   │              │  Zenoh Router    │             │  ros2 topic     │
-│ Bridge      │              │  (port 7447)     │             │  rviz2          │
-│ (client)    │              └──────────────────┘             └─────────────────┘
-└─────────────┘
+Robot (edge)                   Cloud
+├── ROS nodes                  ├── zenohd (router)
+└── zenoh-bridge               │   ├── REST plugin → HTTP dashboard
+    -m client                  │   ├── Storage plugin → data history
+    -e tcp/<cloud>:7447 ───────┘   └── Other bridges / services
 ```
-
-**Cloud router** (`zenohd` with no special config, just listening on 7447):
 
 ```bash
-zenohd
+# On the robot
+zenoh-bridge-ros2dds \
+  -m client \
+  -e tcp/<cloud-ip>:7447 \
+  --namespace /robot1
 ```
 
-**Robot bridge config** (`robot.config.json5`):
-
 ```json5
+// Cloud zenohd config
 {
-  mode: "client",
-  connect: {
-    endpoints: ["tcp/<cloud-ip>:7447"]
+  mode: "router",
+  listen: {
+    endpoints: ["tcp/0.0.0.0:7447"]
   },
   plugins: {
-    ros2dds: {
-      namespace: "/robot1",
-      ros_localhost_only: true,
-      domain: 0
+    rest: { http_port: 8000 },
+    storage_manager: {
+      volumes: { influxdb: { url: "http://localhost:8086" } },
+      storages: {
+        robot_data: {
+          key_expr: "robot1/**",
+          volume: { id: "influxdb", db: "robots", create_db: true }
+        }
+      }
     }
   }
 }
-```
-
-```bash
-# On robot
-zenoh-bridge-ros2dds -c robot.config.json5
-```
-
-**Monitoring host:**
-
-```bash
-zenoh-bridge-ros2dds -e tcp/<cloud-ip>:7447 --namespace /robot1
-ros2 topic list  # sees /scan, /cmd_vel, etc.
 ```
 
 ---
 
 ### Pattern 4: Multi-Robot Fleet
 
-Each robot has its own bridge with a unique namespace. A cloud router aggregates traffic. The monitoring host connects to the cloud.
+Each robot runs a bridge with a unique namespace. A central aggregation host connects to all robots, allowing fleet-wide monitoring.
 
 ```
-Robot 1 (namespace /bot1) ──────────────────────────┐
-Robot 2 (namespace /bot2) ────────────────────────► Cloud zenohd ◄──── Fleet Monitor
-Robot 3 (namespace /bot3) ──────────────────────────┘
+Robot 1                  Robot 2                  Fleet Monitor
+├── ROS nodes            ├── ROS nodes            ├── zenoh-bridge (no ns)
+└── zenoh-bridge ───┐    └── zenoh-bridge ───┐    │   or zenoh-bridge (/robot1)
+    ns=/robot1      │        ns=/robot2      │    │
+                    └────────────────────────┴────┘
+                              (zenohd or direct peer connections)
 ```
 
-**Robot bridges:**
+Fleet monitor options:
 
-```bash
-# Robot 1
-zenoh-bridge-ros2dds --namespace /bot1 -e tcp/<cloud>:7447 -m client
+1. **Bridge with matching namespace**: Run one bridge per robot on the monitor, each with the corresponding robot namespace.
 
-# Robot 2
-zenoh-bridge-ros2dds --namespace /bot2 -e tcp/<cloud>:7447 -m client
+   ```bash
+   zenoh-bridge-ros2dds --namespace /robot1 -e tcp/<robot1-ip>:7447
+   # Then use standard ROS tools without remapping
+   rviz2
+   ```
 
-# Robot 3
-zenoh-bridge-ros2dds --namespace /bot3 -e tcp/<cloud>:7447 -m client
-```
+2. **Bridge without namespace**: Run one bridge connecting to all robots. Use ROS remapping to target a specific robot.
 
-**Fleet monitor** (no namespace — sees all robots' namespaced topics):
-
-```bash
-zenoh-bridge-ros2dds -e tcp/<cloud>:7447 -m client
-ros2 topic list
-# /bot1/scan
-# /bot1/cmd_vel
-# /bot2/scan
-# /bot2/cmd_vel
-# /bot3/scan
-# /bot3/cmd_vel
-```
+   ```bash
+   zenoh-bridge-ros2dds -e tcp/<robot1-ip>:7447 -e tcp/<robot2-ip>:7447
+   # Use remapping to work with robot1
+   rviz2 --ros-args -r /tf:=/robot1/tf -r /tf_static:=/robot1/tf_static
+   ```
 
 ---
 
-## 8. Multi-Robot Patterns
+## Multi-Robot Patterns
 
 ### Namespace Isolation Per Robot
 
-Each robot's `zenoh-bridge-ros2dds` is configured with a unique namespace. No changes are required on the individual ROS 2 nodes — they continue using their standard topic names within the DDS domain. The bridge handles the namespacing transparently.
+Each robot's bridge gets a unique namespace. All topics, services, and actions are automatically prefixed.
 
-**Robot-side:** Nodes publish on `/scan`, `/cmd_vel`, `/odom` as normal.
-**Cloud/monitor-side:** These appear as `/botX/scan`, `/botX/cmd_vel`, `/botX/odom`.
+```
+Without namespace:   /cmd_vel, /odom, /scan, /tf
+With /robot1:        /robot1/cmd_vel, /robot1/odom, /robot1/scan, /robot1/tf
+With /robot2:        /robot2/cmd_vel, /robot2/odom, /robot2/scan, /robot2/tf
+```
+
+This means:
+- No ROS node on the robot needs to be reconfigured with a namespace.
+- DDS traffic between nodes on the same robot stays internal and namespace-free.
+- The bridge applies the prefix only when routing to Zenoh.
 
 ### Fleet-Wide Topic Aggregation
 
-To subscribe to the same topic from all robots simultaneously, use Zenoh wildcard key expressions from native Zenoh applications:
+A Zenoh key expression wildcard on the aggregation side can subscribe to matching topics across all robots:
 
 ```python
-import zenoh
-
-session = zenoh.open(zenoh.Config())
-# Subscribe to /scan from all robots at once
-sub = session.declare_subscriber("*/rt/scan", lambda sample: handle_scan(sample))
-```
-
-Or query all robots' status:
-
-```python
-replies = session.get("*/rt/diagnostics")
+# Python — subscribe to /scan from all robots at once
+session.declare_subscriber("*/scan", handle_scan)
+# Receives: /robot1/scan, /robot2/scan, /robot3/scan ...
 ```
 
 ### Mixed Fleet
 
-Different robot types can share the same Zenoh network as long as each has a unique namespace. A monitoring bridge can subscribe to any combination of namespaces:
+Robots of different types can share a single Zenoh network. Each has its own bridge with its own namespace. A monitoring bridge without a namespace sees all of them under their respective prefixes.
 
-```bash
-# Monitor robot1 specifically
-zenoh-bridge-ros
+```
+/robot_arm1/joint_states
+/mobile_base2/cmd_vel
+/drone3/pose
+```
+
 ---
 
-## See Also
-- [deployment.md](deployment.md) — Network topology and multi-host deployment patterns
-- [concepts.md](concepts.md) — Core zenoh abstractions mapped to ROS 2 concepts
-- [faq.md](faq.md) — Common questions including ROS 2 integration scenarios
+## Example Configurations
+
+### Minimal Bridge Config
+
+```json5
+// minimal-bridge.json5
+{
+  plugins: {
+    ros2dds: {
+      namespace: "/robot1",
+      domain: 0,
+      ros_automatic_discovery_range: "LOCALHOST",
+    }
+  },
+  mode: "router",
+  listen: {
+    endpoints: ["tcp/0.0.0.0:7447"]
+  }
+}
+```
+
+```bash
+zenoh-bridge-ros2dds -c minimal-bridge.json5
+```
+
+---
+
+### Selective Topic Bridging
+
+Bridge only essential topics to conserve bandwidth. Deny noisy internal ROS topics.
+
+```json5
+// selective-bridge.json5
+{
+  plugins: {
+    ros2dds: {
+      namespace: "/robot1",
+      ros_automatic_discovery_range: "LOCALHOST",
+
+      // Deny high-volume / internal topics
+      deny: {
+        publishers: [
+          "/rosout",
+          "/parameter_events",
+          ".*/transition_event",
+        ],
+        subscribers: [
+          "/rosout",
+          "/parameter_events",
+        ],
+        service_servers: [
+          ".*/describe_parameters",
+          ".*/get_parameter_types",
+          ".*/list_parameters",
+          ".*/set_parameters",
+          ".*/set_parameters_atomically",
+        ],
+        service_clients: [
+          ".*/set_parameters",
+        ],
+        action_servers: [],
+        action_clients: [],
+      },
+    }
+  },
+  mode: "router",
+  connect: {
+    endpoints: ["tcp/cloud-host:7447"]
+  }
+}
+```
+
+Alternatively, use `allow` to whitelist only what is needed:
+
+```json5
+{
+  plugins: {
+    ros2dds: {
+      allow: {
+        publishers: [".*/scan", ".*/odom", "/tf", "/tf_static", ".*/battery_state"],
+        subscribers: [".*/cmd_vel", ".*/goal_pose"],
+        service_servers: [],
+        service_clients: [],
+        action_servers: [".*/navigate_to_pose"],
+        action_clients: [],
+      }
+    }
+  }
+}
+```
+
+---
+
+### Rate-Limited Bridging
+
+Cap publication rates for high-frequency sensor data and assign priorities.
+
+```json5
+// rate-limited-bridge.json5
+{
+  plugins: {
+    ros2dds: {
+      namespace: "/robot1",
+      ros_automatic_discovery_range: "LOCALHOST",
+
+      pub_max_frequencies: [
+        ".*/scan=5",          // LiDAR: max 5 Hz over Zenoh
+        ".*/image_raw=2",     // Camera: max 2 Hz
+        ".*/point_cloud=1",   // 3D cloud: max 1 Hz
+        "/tf=20",             // TF: max 20 Hz
+        ".*/imu=50",          // IMU: max 50 Hz
+      ],
+
+      pub_priorities: [
+        ".*/cmd_vel=1:express",     // Control commands: highest priority, low latency
+        ".*/e_stop=1:express",      // Emergency stop: highest priority
+        ".*/pose=2",                // Pose: high priority
+        ".*/odom=3",                // Odometry: elevated priority
+        ".*/scan=5",                // LiDAR: normal priority
+        ".*/image_raw=6",           // Images: low priority
+        "/rosout=7",                // Logs: lowest priority
+      ],
+
+      reliable_routes_blocking: true,
+    }
+  },
+  mode: "router",
+  connect: {
+    endpoints: ["tcp/cloud-host:7447"]
+  }
+}
+```
+
+---
+
+### Multi-Robot Fleet Config
+
+**Robot bridge config (deploy one per robot, varying `namespace` and `connect` endpoint):**
+
+```json5
+// robot-bridge.json5  (robot1)
+{
+  plugins: {
+    ros2dds: {
+      nodename: "zenoh_bridge_robot1",
