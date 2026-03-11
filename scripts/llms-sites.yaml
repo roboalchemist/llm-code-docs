@@ -1262,3 +1262,6 @@ sites:
 - name: ox-security
   base_url: https://docs.ox.security/
   description: ox-security documentation
+- name: signoz
+  base_url: https://signoz.io/
+  description: signoz documentation
