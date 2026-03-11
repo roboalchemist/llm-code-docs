@@ -1193,3 +1193,6 @@ sites:
 - name: launchdarkly
   base_url: https://docs.launchdarkly.com/
   description: launchdarkly documentation
+- name: bunup
+  base_url: https://bunup.dev/
+  description: bunup documentation
