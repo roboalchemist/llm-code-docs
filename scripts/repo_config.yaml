@@ -1549,3 +1549,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/boxyhq
   branch: main
+- name: flagsmith
+  description: flagsmith from GitHub
+  repo_url: https://github.com/Flagsmith/flagsmith.git
+  source_folder: docs
+  target_folder: docs/github-scraped/flagsmith
+  branch: main
