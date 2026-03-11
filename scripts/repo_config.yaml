@@ -1675,3 +1675,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/kuma
   branch: main
+- name: open-service-mesh
+  description: open-service-mesh from GitHub
+  repo_url: https://github.com/openservicemesh/osm.git
+  source_folder: docs
+  target_folder: docs/github-scraped/open-service-mesh
+  branch: main
