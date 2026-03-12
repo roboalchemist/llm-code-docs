@@ -1349,3 +1349,6 @@ sites:
 - name: naive-ui
   base_url: https://pinx-docs.vercel.app/naive-ui/
   description: naive-ui documentation
+- name: gsap
+  base_url: https://gsap.com/
+  description: gsap documentation
