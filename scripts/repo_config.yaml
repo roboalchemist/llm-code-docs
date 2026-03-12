@@ -1609,3 +1609,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/mytap
   branch: main
+- name: particle-device-os
+  description: particle-device-os from GitHub
+  repo_url: https://github.com/particle-iot/device-os.git
+  source_folder: docs
+  target_folder: docs/github-scraped/particle-device-os
+  branch: main
