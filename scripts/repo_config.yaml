@@ -1873,3 +1873,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/azkaban
   branch: main
+- name: singer
+  description: singer from GitHub
+  repo_url: https://github.com/singer-io/getting-started.git
+  source_folder: docs
+  target_folder: docs/github-scraped/singer
+  branch: main
