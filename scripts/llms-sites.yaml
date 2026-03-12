@@ -1295,3 +1295,6 @@ sites:
 - name: zincsearch
   base_url: https://zincsearch.com/
   description: zincsearch documentation
+- name: clickhouse
+  base_url: https://clickhouse.ferndocs.com/
+  description: clickhouse documentation

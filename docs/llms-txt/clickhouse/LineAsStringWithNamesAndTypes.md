@@ -1,0 +1,44 @@
+# Source: https://clickhouse.ferndocs.com/reference/interfaces/formats/LineAsStringWithNamesAndTypes.md
+
+---
+alias: []
+description: Documentation for the LineAsStringWithNamesAndTypes format
+input_format: false
+keywords:
+
+- LineAsStringWithNamesAndTypes
+output_format: true
+slug: /interfaces/formats/LineAsStringWithNamesAndTypes
+title: LineAsStringWithNamesAndTypes <Badge intent="success">Output</Badge>
+doc_type: reference
+
+---
+
+## Description [#description]
+
+The `LineAsStringWithNames` format is similar to the [`LineAsString`](/reference/interfaces/formats/LineAsString) format
+but prints two header rows: one with column names, the other with types.
+
+## Example usage [#example-usage]
+
+```sql
+CREATE TABLE example (
+    name String,
+    value Int32
+)
+ENGINE = Memory;
+
+INSERT INTO example VALUES ('John', 30), ('Jane', 25), ('Peter', 35);
+
+SELECT * FROM example FORMAT LineAsStringWithNamesAndTypes;
+```
+
+```response title="Response"
+name    value
+String    Int32
+John    30
+Jane    25
+Peter    35
+```
+
+## Format settings [#format-settings]
