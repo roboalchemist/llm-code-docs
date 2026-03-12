@@ -1961,3 +1961,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/stepci
   branch: main
+- name: apache-dolphinscheduler
+  description: apache-dolphinscheduler from GitHub
+  repo_url: https://github.com/apache/dolphinscheduler-sdk-python.git
+  source_folder: docs
+  target_folder: docs/github-scraped/apache-dolphinscheduler
+  branch: main
