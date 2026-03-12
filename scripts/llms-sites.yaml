@@ -1298,3 +1298,6 @@ sites:
 - name: amazon-opensearch-service
   base_url: https://docs.aws.amazon.com/
   description: amazon-opensearch-service documentation
+- name: searchwp
+  base_url: https://searchwp.com/
+  description: searchwp documentation
