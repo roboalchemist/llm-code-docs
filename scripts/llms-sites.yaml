@@ -1379,3 +1379,6 @@ sites:
 - name: cloudsmith
   base_url: https://help.cloudsmith.io/
   description: cloudsmith documentation
+- name: meson
+  base_url: https://docs.meson.fi/
+  description: meson documentation
