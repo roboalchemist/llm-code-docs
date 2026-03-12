@@ -1322,3 +1322,6 @@ sites:
 - name: fail2ban
   base_url: https://www.fail2ban.org/
   description: fail2ban documentation
+- name: keepnet
+  base_url: https://doc.keepnetlabs.com/
+  description: keepnet documentation
