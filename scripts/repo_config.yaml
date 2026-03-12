@@ -1615,3 +1615,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/particle-device-os
   branch: main
+- name: tvm-microtvm
+  description: tvm-microtvm from GitHub
+  repo_url: https://github.com/apache/tvm.git
+  source_folder: docs
+  target_folder: docs/github-scraped/tvm-microtvm
+  branch: main
