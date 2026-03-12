@@ -1301,3 +1301,6 @@ sites:
 - name: searchwp
   base_url: https://searchwp.com/
   description: searchwp documentation
+- name: zinc
+  base_url: https://www.zinc.com/docs/
+  description: zinc documentation
