@@ -1316,3 +1316,6 @@ sites:
 - name: bullmq
   base_url: https://docs.bullmq.io/
   description: bullmq documentation
+- name: aws-fargate
+  base_url: https://docs.aws.amazon.com/
+  description: aws-fargate documentation
