@@ -1382,3 +1382,6 @@ sites:
 - name: meson
   base_url: https://docs.meson.fi/
   description: meson documentation
+- name: pkgx
+  base_url: https://docs.pkgx.sh/
+  description: pkgx documentation
