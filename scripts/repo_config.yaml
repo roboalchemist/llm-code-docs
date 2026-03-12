@@ -1891,3 +1891,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/django-channels
   branch: main
+- name: swiftmailer
+  description: swiftmailer from GitHub
+  repo_url: https://github.com/swiftmailer/swiftmailer.git
+  source_folder: doc
+  target_folder: docs/github-scraped/swiftmailer
+  branch: main
