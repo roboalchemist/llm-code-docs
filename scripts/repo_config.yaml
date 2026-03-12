@@ -1856,3 +1856,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/chasquid
   branch: main
+- name: docker-mailserver
+  description: docker-mailserver from GitHub
+  repo_url: https://github.com/docker-mailserver/docker-mailserver.git
+  source_folder: docs
+  target_folder: docs/github-scraped/docker-mailserver
+  branch: main
