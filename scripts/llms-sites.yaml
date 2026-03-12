@@ -1358,3 +1358,6 @@ sites:
 - name: mongodb-atlas-charts
   base_url: https://www.mongodb.com/docs/
   description: mongodb-atlas-charts documentation
+- name: arktype
+  base_url: https://arktype.io/
+  description: arktype documentation
