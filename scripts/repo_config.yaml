@@ -1880,3 +1880,9 @@ repositories:
   source_folder: documentation
   target_folder: docs/github-scraped/getx
   branch: main
+- name: play-framework
+  description: play-framework from GitHub
+  repo_url: https://github.com/playframework/playframework.git
+  source_folder: documentation
+  target_folder: docs/github-scraped/play-framework
+  branch: main
