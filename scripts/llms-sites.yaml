@@ -1340,3 +1340,6 @@ sites:
 - name: octopus-deploy
   base_url: https://docs.octopus.com/
   description: octopus-deploy documentation
+- name: statsig
+  base_url: https://docs.statsig.com/
+  description: statsig documentation
