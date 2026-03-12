@@ -1783,3 +1783,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/github-code-search
   branch: main
+- name: humio
+  description: humio from GitHub
+  repo_url: https://github.com/humio/python-humio.git
+  source_folder: docs
+  target_folder: docs/github-scraped/humio
+  branch: main
