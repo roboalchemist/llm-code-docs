@@ -1883,3 +1883,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/jmeter
   branch: main
+- name: spotbugs
+  description: spotbugs from GitHub
+  repo_url: https://github.com/spotbugs/spotbugs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/spotbugs
+  branch: main
