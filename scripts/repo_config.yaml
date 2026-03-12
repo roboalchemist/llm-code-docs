@@ -1877,3 +1877,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/gitlab-ci
   branch: main
+- name: jmeter
+  description: jmeter from GitHub
+  repo_url: https://github.com/abstracta/jmeter-java-dsl.git
+  source_folder: docs
+  target_folder: docs/github-scraped/jmeter
+  branch: main
