@@ -1283,3 +1283,6 @@ sites:
 - name: jfrog-artifactory
   base_url: https://docs.jfrog.com/docs/
   description: jfrog-artifactory documentation
+- name: parity
+  base_url: https://docs.rs/parity/latest/parity/
+  description: parity documentation
