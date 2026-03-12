@@ -1358,3 +1358,6 @@ sites:
 - name: onesignal
   base_url: https://documentation.onesignal.com/
   description: onesignal documentation
+- name: drip
+  base_url: https://docs.drip.re/
+  description: drip documentation
