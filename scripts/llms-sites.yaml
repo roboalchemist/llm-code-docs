@@ -1316,3 +1316,6 @@ sites:
 - name: mongodb
   base_url: https://www.mongodb.com/docs/
   description: mongodb documentation
+- name: kedro
+  base_url: https://docs.kedro.org/
+  description: kedro documentation
