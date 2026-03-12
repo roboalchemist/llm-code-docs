@@ -1310,3 +1310,6 @@ sites:
 - name: apache-spark
   base_url: https://spark.apache.org/docs/
   description: apache-spark documentation
+- name: dagster
+  base_url: https://docs.dagster.io/
+  description: dagster documentation
