@@ -1328,3 +1328,6 @@ sites:
 - name: hashicorp-nomad
   base_url: https://www.nomadproject.io/
   description: hashicorp-nomad documentation
+- name: kubearmor
+  base_url: https://docs.kubearmor.io/
+  description: kubearmor documentation
