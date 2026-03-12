@@ -1340,3 +1340,6 @@ sites:
 - name: nivo
   base_url: https://docs.nivo.video/
   description: nivo documentation
+- name: ng-zorro
+  base_url: https://ng-zorro.github.io/
+  description: ng-zorro documentation
