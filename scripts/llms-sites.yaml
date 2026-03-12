@@ -1361,3 +1361,6 @@ sites:
 - name: arktype
   base_url: https://arktype.io/
   description: arktype documentation
+- name: payload-cms
+  base_url: https://payloadcms.com/
+  description: payload-cms documentation
