@@ -1337,3 +1337,6 @@ sites:
 - name: getint
   base_url: https://docs.getint.io/
   description: getint documentation
+- name: aws-step-functions
+  base_url: https://docs.aws.amazon.com/
+  description: aws-step-functions documentation
