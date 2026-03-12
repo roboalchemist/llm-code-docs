@@ -1892,3 +1892,9 @@ repositories:
   source_folder: website/docs
   target_folder: docs/github-scraped/riverpod
   branch: main
+- name: scylladb
+  description: scylladb from GitHub
+  repo_url: https://github.com/scylladb/scylladb.git
+  source_folder: docs
+  target_folder: docs/github-scraped/scylladb
+  branch: main
