@@ -1367,3 +1367,6 @@ sites:
 - name: valibot
   base_url: https://valibot.dev/
   description: valibot documentation
+- name: vue
+  base_url: https://vuejs.org/
+  description: vue documentation
