@@ -1259,3 +1259,6 @@ sites:
 - name: clickhouse
   base_url: https://clickhouse.ferndocs.com/
   description: clickhouse documentation
+- name: deep-lake
+  base_url: https://docs-v3.activeloop.ai/
+  description: deep-lake documentation
