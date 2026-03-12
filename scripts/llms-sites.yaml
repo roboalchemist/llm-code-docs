@@ -1370,3 +1370,6 @@ sites:
 - name: airbyte
   base_url: https://docs.airbyte.com/
   description: airbyte documentation
+- name: masstransit
+  base_url: https://masstransit.org/
+  description: masstransit documentation
