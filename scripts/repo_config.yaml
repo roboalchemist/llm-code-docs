@@ -1879,3 +1879,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/singer
   branch: main
+- name: twirp
+  description: twirp from GitHub
+  repo_url: https://github.com/twitchtv/twirp.git
+  source_folder: docs
+  target_folder: docs/github-scraped/twirp
+  branch: main
