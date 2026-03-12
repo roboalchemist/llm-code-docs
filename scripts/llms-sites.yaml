@@ -1319,3 +1319,6 @@ sites:
 - name: nats-io/nats.go
   base_url: https://docs.nats.io/
   description: nats-io/nats.go documentation
+- name: superstruct
+  base_url: https://docs.superstructjs.org/
+  description: superstruct documentation
