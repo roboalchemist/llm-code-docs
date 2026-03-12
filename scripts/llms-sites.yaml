@@ -1352,3 +1352,9 @@ sites:
 - name: ably
   base_url: https://ably.com/
   description: ably documentation
+- name: libwebsockets
+  base_url: https://libwebsockets.org/
+  description: libwebsockets documentation
+- name: onesignal
+  base_url: https://documentation.onesignal.com/
+  description: onesignal documentation
