@@ -1352,3 +1352,6 @@ sites:
 - name: perplexity-ai
   base_url: https://docs.perplexity.ai/
   description: perplexity-ai documentation
+- name: read-the-docs
+  base_url: https://docs.readthedocs.com/
+  description: read-the-docs documentation
