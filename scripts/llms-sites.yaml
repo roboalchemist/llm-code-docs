@@ -1289,3 +1289,6 @@ sites:
 - name: port.io
   base_url: https://docs.port.io/
   description: port.io documentation
+- name: qodo
+  base_url: https://docs.qodo.ai/
+  description: qodo documentation
