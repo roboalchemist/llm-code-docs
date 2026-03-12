@@ -1307,3 +1307,6 @@ sites:
 - name: timeplus
   base_url: https://docs.timeplus.com/
   description: timeplus documentation
+- name: apache-spark
+  base_url: https://spark.apache.org/docs/
+  description: apache-spark documentation
