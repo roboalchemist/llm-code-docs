@@ -1982,3 +1982,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/tfsec
   branch: main
+- name: sql-lint
+  description: sql-lint from GitHub
+  repo_url: https://github.com/joereynolds/sql-lint.git
+  source_folder: docs
+  target_folder: docs/github-scraped/sql-lint
+  branch: main
