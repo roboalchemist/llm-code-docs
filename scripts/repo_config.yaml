@@ -1865,3 +1865,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/runc
   branch: main
+- name: argo-cd
+  description: argo-cd from GitHub
+  repo_url: https://github.com/argoproj/argo-cd.git
+  source_folder: docs
+  target_folder: docs/github-scraped/argo-cd
+  branch: main
