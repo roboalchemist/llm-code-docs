@@ -1328,3 +1328,6 @@ sites:
 - name: mailtrap
   base_url: https://docs.mailtrap.io/
   description: mailtrap documentation
+- name: sendinblue
+  base_url: https://developers.sendinblue.com/
+  description: sendinblue documentation
