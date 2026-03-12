@@ -1925,3 +1925,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/thanos
   branch: main
+- name: apache-atlas
+  description: apache-atlas from GitHub
+  repo_url: https://github.com/apache/atlas.git
+  source_folder: docs
+  target_folder: docs/github-scraped/apache-atlas
+  branch: main
