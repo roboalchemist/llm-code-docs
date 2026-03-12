@@ -1355,3 +1355,6 @@ sites:
 - name: tokens-studio
   base_url: https://docs.tokens.studio/
   description: tokens-studio documentation
+- name: mongodb-atlas-charts
+  base_url: https://www.mongodb.com/docs/
+  description: mongodb-atlas-charts documentation
