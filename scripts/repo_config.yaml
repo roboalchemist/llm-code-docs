@@ -1964,3 +1964,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/babel
   branch: main
+- name: flutterflow
+  description: flutterflow from GitHub
+  repo_url: https://github.com/FlutterFlow/flutterflow-documentation.git
+  source_folder: docs
+  target_folder: docs/github-scraped/flutterflow
+  branch: main
