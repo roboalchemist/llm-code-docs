@@ -1931,3 +1931,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/apache-atlas
   branch: main
+- name: attrs
+  description: attrs from GitHub
+  repo_url: https://github.com/python-attrs/attrs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/attrs
+  branch: main
