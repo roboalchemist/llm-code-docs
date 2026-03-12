@@ -1331,3 +1331,6 @@ sites:
 - name: sendinblue
   base_url: https://developers.sendinblue.com/
   description: sendinblue documentation
+- name: beehiiv
+  base_url: https://developers.beehiiv.com/
+  description: beehiiv documentation
