@@ -1376,3 +1376,6 @@ sites:
 - name: taskfile
   base_url: https://taskfile.dev/
   description: taskfile documentation
+- name: cloudsmith
+  base_url: https://help.cloudsmith.io/
+  description: cloudsmith documentation
