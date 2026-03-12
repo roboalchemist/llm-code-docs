@@ -1337,3 +1337,6 @@ sites:
 - name: mailparse
   base_url: https://docs.rs/mailparse/latest/mailparse/
   description: mailparse documentation
+- name: nivo
+  base_url: https://docs.nivo.video/
+  description: nivo documentation
