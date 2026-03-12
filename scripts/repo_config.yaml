@@ -1907,3 +1907,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/silver-searcher
   branch: main
+- name: cratedb
+  description: cratedb from GitHub
+  repo_url: https://github.com/crate/cratedb-guide.git
+  source_folder: docs
+  target_folder: docs/github-scraped/cratedb
+  branch: main
