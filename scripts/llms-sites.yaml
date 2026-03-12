@@ -1310,3 +1310,6 @@ sites:
 - name: apache-spark
   base_url: https://spark.apache.org/docs/
   description: apache-spark documentation
+- name: mongodb-atlas
+  base_url: https://www.mongodb.com/docs/
+  description: mongodb-atlas documentation
