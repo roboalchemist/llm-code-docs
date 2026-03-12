@@ -1313,3 +1313,6 @@ sites:
 - name: dagster
   base_url: https://docs.dagster.io/
   description: dagster documentation
+- name: bullmq
+  base_url: https://docs.bullmq.io/
+  description: bullmq documentation
