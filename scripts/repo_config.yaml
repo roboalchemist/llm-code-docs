@@ -1916,3 +1916,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/shoelace
   branch: main
+- name: vue-formulate
+  description: vue-formulate from GitHub
+  repo_url: https://github.com/wearebraid/vueformulate.com.git
+  source_folder: docs
+  target_folder: docs/github-scraped/vue-formulate
+  branch: main
