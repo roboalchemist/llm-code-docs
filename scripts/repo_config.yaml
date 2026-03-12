@@ -1831,3 +1831,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/pytorch-geometric
   branch: main
+- name: graphviz
+  description: graphviz from GitHub
+  repo_url: https://github.com/xflr6/graphviz.git
+  source_folder: docs
+  target_folder: docs/github-scraped/graphviz
+  branch: main
