@@ -1850,3 +1850,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/websocket-client
   branch: main
+- name: chasquid
+  description: chasquid from GitHub
+  repo_url: https://github.com/albertito/chasquid.git
+  source_folder: docs
+  target_folder: docs/github-scraped/chasquid
+  branch: main
