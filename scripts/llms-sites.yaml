@@ -1268,3 +1268,6 @@ sites:
 - name: prefect
   base_url: https://docs.prefect.io/
   description: prefect documentation
+- name: lettuce
+  base_url: https://lettuce.io/
+  description: lettuce documentation
