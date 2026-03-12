@@ -1855,3 +1855,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/grass-gis
   branch: main
+- name: great-expectations
+  description: great-expectations from GitHub
+  repo_url: https://github.com/great-expectations/great_expectations.git
+  source_folder: docs
+  target_folder: docs/github-scraped/great-expectations
+  branch: main
