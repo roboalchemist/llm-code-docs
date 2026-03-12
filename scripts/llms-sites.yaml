@@ -1304,3 +1304,6 @@ sites:
 - name: zinc
   base_url: https://www.zinc.com/docs/
   description: zinc documentation
+- name: timeplus
+  base_url: https://docs.timeplus.com/
+  description: timeplus documentation
