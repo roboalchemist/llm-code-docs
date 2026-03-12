@@ -1364,3 +1364,6 @@ sites:
 - name: acceldata
   base_url: https://docs.acceldata.io/.well-known/
   description: acceldata documentation
+- name: qlik
+  base_url: https://help.qlik.com/
+  description: qlik documentation
