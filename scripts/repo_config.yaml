@@ -1789,3 +1789,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/humio
   branch: main
+- name: manticore
+  description: manticore from GitHub
+  repo_url: https://github.com/trailofbits/manticore.git
+  source_folder: docs
+  target_folder: docs/github-scraped/manticore
+  branch: main
