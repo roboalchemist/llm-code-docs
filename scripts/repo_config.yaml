@@ -1771,3 +1771,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/postgrest
   branch: main
+- name: duckduckgo-api
+  description: duckduckgo-api from GitHub
+  repo_url: https://github.com/gentlero/duckduckgo-api.git
+  source_folder: docs
+  target_folder: docs/github-scraped/duckduckgo-api
+  branch: main
