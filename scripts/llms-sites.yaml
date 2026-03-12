@@ -1370,3 +1370,6 @@ sites:
 - name: vue
   base_url: https://vuejs.org/
   description: vue documentation
+- name: dagger
+  base_url: https://docs.dagger.io/
+  description: dagger documentation
