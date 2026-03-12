@@ -1859,3 +1859,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/vmware-tanzu
   branch: main
+- name: runc
+  description: runc from GitHub
+  repo_url: https://github.com/opencontainers/runc.git
+  source_folder: docs
+  target_folder: docs/github-scraped/runc
+  branch: main
