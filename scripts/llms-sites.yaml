@@ -1355,3 +1355,6 @@ sites:
 - name: read-the-docs
   base_url: https://docs.readthedocs.com/
   description: read-the-docs documentation
+- name: tavily-api
+  base_url: https://docs.tavily.com/
+  description: tavily-api documentation
