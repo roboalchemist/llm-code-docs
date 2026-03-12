@@ -1325,3 +1325,6 @@ sites:
 - name: tsdown
   base_url: https://tsdown.dev/
   description: tsdown documentation
+- name: hashicorp-nomad
+  base_url: https://www.nomadproject.io/
+  description: hashicorp-nomad documentation
