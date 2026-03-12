@@ -1,0 +1,232 @@
+# Source: https://docs.port.io/build-your-software-catalog/sync-data-to-catalog/git/github/custom-github-app.md
+
+# Custom GitHub App
+
+Deprecated
+
+This page documents the legacy custom GitHub App creation method, which is **deprecated**.
+
+**Use [GitHub Ocean](/build-your-software-catalog/sync-data-to-catalog/git/github-ocean/installation/.md) instead**, which offers:
+
+* Better performance and reliability.
+* OAuth-based setup for custom GitHub Apps.
+* Enhanced features and capabilities.
+* Active support and updates.
+
+GitHub Ocean uses custom GitHub Apps under the hood, providing all the benefits of custom apps through a modern, supported integration.
+
+## Overview[â](#overview "Direct link to Overview")
+
+Port's Custom GitHub App feature allowed you to create and manage your own GitHub applications using the legacy API. This approach is now deprecated in favor of [GitHub Ocean](/build-your-software-catalog/sync-data-to-catalog/git/github-ocean/installation/.md).
+
+**For new integrations, use GitHub Ocean:**
+
+* [Install GitHub Ocean](/build-your-software-catalog/sync-data-to-catalog/git/github-ocean/installation/.md) - The recommended approach for all new GitHub integrations.
+* GitHub Ocean supports custom GitHub Apps via OAuth or manual setup, providing the same functionality with better performance and support.
+
+## Prerequisites[â](#prerequisites "Direct link to Prerequisites")
+
+* A registered organization in Port.
+* Your Port user role is set to `Admin`.
+* Access to Port's API credentials.
+* Admin permissions in your GitHub organization.
+
+## Benefits of custom GitHub apps[â](#benefits-of-custom-github-apps "Direct link to Benefits of custom GitHub apps")
+
+* **Workspace Isolation**: Each team can have their own GitHub App with specific repository access.
+* **Enhanced Security**: Better permission boundaries between different teams and projects.
+* **Multi-Organization Support**: Same GitHub organizations can be integrated with multiple Port organizations.
+* **Self-Hosted Support**: Works with both cloud and self-hosted GitHub Enterprise instances.
+* **Custom Configuration**: Create tailored integration setups for specific use cases.
+
+## Create a custom app[â](#create-a-custom-app "Direct link to Create a custom app")
+
+Deprecated method
+
+The form and API endpoint documented below are **deprecated** and should not be used for new integrations.
+
+**Use [GitHub Ocean](/build-your-software-catalog/sync-data-to-catalog/git/github-ocean/installation/.md) instead**, which provides OAuth-based setup for custom GitHub Apps.
+
+Legacy API method (deprecated)
+
+**This API endpoint is deprecated. Use [GitHub Ocean](/build-your-software-catalog/sync-data-to-catalog/git/github-ocean/installation/.md) instead.**
+
+The legacy method involved:
+
+1. Making a GET request to the GitHub App creation URL endpoint:
+
+   ```
+   https://api.port.io/v1/integration/github-app-creation-url
+   ```
+
+2. Including the following query parameters:
+
+   * `isSelfHostedEnterprise=false` (set to `true` for GitHub Enterprise).
+   * `githubOrgName=YOUR_ORG_NAME` (replace with your GitHub organization name).
+   * `selfHostedEnterpriseUrl=YOUR_GH_ENTERPRISE_URL` (replace with your self hosted github enterprise url).
+
+3. Adding your Port authentication token in the Authorization header:
+
+   ```
+   Authorization: Bearer YOUR_TOKEN
+   ```
+
+4. The response would contain a `url` and a `manifest` object.
+
+5. Creating an HTML form with a button that triggers a POST request to the `url` provided by Port's API. The request should include the GitHub App `manifest` as the payload.
+
+tip
+
+You'll need your Port API credentials for this process:
+
+To get your Port credentials, go to your [Port application](https://app.getport.io), click on the `...` button in the top right corner, and select `Credentials`. Here you can view and copy your `CLIENT_ID` and `CLIENT_SECRET`:
+
+![](/img/software-catalog/credentials-modal.png)
+
+Technical Details
+
+### GitHub App Manifest
+
+The GitHub App manifest is a JSON configuration file that defines:
+
+* App name and description.
+* Webhook URL and events.
+* Required permissions.
+* Callback URLs.
+* Other configuration parameters.
+
+Port generates this manifest automatically based on best practices, ensuring the app has the correct permissions for integration with Port.
+
+### Required Permissions
+
+Custom GitHub Apps must be configured with the following minimum permissions:
+
+#### Repository Permissions
+
+* **Actions**: Read and Write (for executing self-service action using GitHub workflow).
+* **Checks**: Read and Write (for validating `Port.yml`).
+* **Contents**: Readonly (for reading port configuration files and repository files).
+* **Metadata**: Readonly.
+* **Issues**: Readonly.
+* **Pull Request**: Read and Write.
+* **Dependabot alerts**: Readonly.
+* **Administration**: Readonly (for syncing github teams).
+
+#### Organization Permissions
+
+* **Members**: Readonly (for syncing github teams).
+
+#### Repository Events
+
+* Issues.
+* Pull Request.
+* Push.
+* Workflow Run.
+* Team.
+* Dependabot alerts.
+
+### Credential Storage
+
+After creating a GitHub App, Port securely stores:
+
+* App ID.
+* Github org name.
+* Private key.
+* Webhook secret.
+
+These credentials are stored in Port's secure credential store and are never exposed in plaintext.
+
+### API Endpoints
+
+Port provides the following API endpoints for Custom GitHub App creation:
+
+| Endpoint                                  | Method | Description                                   |
+| ----------------------------------------- | ------ | --------------------------------------------- |
+| `/v1/integration/github-app-creation-url` | GET    | Gets the GitHub App creation URL and manifest |
+
+Query parameters:
+
+* `isSelfHostedEnterprise` (boolean): Whether the GitHub instance is Self-Hosted Enterprise.
+* `githubOrgName` (string, optional): Name of the GitHub organization.
+* `selfHostedEnterpriseUrl` (string, optional): GitHub Enterprise host URL.
+
+## Using with Self-Hosted GitHub Enterprise[â](#using-with-self-hosted-github-enterprise "Direct link to Using with Self-Hosted GitHub Enterprise")
+
+Deprecated
+
+For self-hosted GitHub Enterprise instances, use [GitHub Ocean](/build-your-software-catalog/sync-data-to-catalog/git/github-ocean/installation/.md?auth=custom-github-app) instead, which provides proper support for self-hosted GitHub Enterprise.
+
+The legacy method required:
+
+1. Selecting the "Enterprise" option in the deprecated form.
+2. Providing your GitHub Enterprise host URL (e.g., `github.company.com`).
+3. Ensuring your GitHub Enterprise instance could reach Port's self hosted github app webhook endpoints.
+
+Configuration limitation
+
+When using a custom GitHub App with self-hosted GitHub Enterprise, the mapping configuration must be included as part of the repository using the `port-app-config.yml` file, and cannot be configured via Port's UI/API.
+
+For more details on configuration options, refer to the [GitHub Ocean documentation](/build-your-software-catalog/sync-data-to-catalog/git/github-ocean/.md).
+
+## Limitations[â](#limitations "Direct link to Limitations")
+
+* Custom GitHub Apps must have all the required permissions to function properly.
+* You cannot modify the permissions after creation (you would need to create a new app).
+* For secure credential management, Port does not expose the raw credential values after initial creation.
+* You can't identify the Github app is custom from the UI
+* You can't delete the Github app from the UI, you need to delete it directly from your Github organization ([https://github.com/organizations/{{GITHUB\_ORG\_NAME}}/settings/installations](https://github.com/organizations/%7B%7BGITHUB_ORG_NAME%7D%7D/settings/installations))
+
+## Frequently Asked Questions[â](#frequently-asked-questions "Direct link to Frequently Asked Questions")
+
+### What is a custom GitHub App in Port?[â](#what-is-a-custom-github-app-in-port "Direct link to What is a custom GitHub App in Port?")
+
+A custom GitHub App is a GitHub integration that you own and manage, instead of using Port's official app.<br />**For new integrations, use [GitHub Ocean](/build-your-software-catalog/sync-data-to-catalog/git/github-ocean/installation/.md)**, which provides custom GitHub App support via OAuth or manual setup.
+
+### What can I use a custom GitHub App for?[â](#what-can-i-use-a-custom-github-app-for "Direct link to What can I use a custom GitHub App for?")
+
+Use cases include:
+
+* **Multi-environment support**: Connect the same GitHub organization to multiple Port organizations (e.g., development/staging/production).
+* **Integration scaling**: Split data ingestion by concern (e.g., one app for services, another for workflows) to reduce load and improve performance.
+* **Self-hosted GitHub**: Use with GitHub Enterprise Server setups.
+
+**All of these use cases are now supported by [GitHub Ocean](/build-your-software-catalog/sync-data-to-catalog/git/github-ocean/installation/.md).**
+
+### Why do I need multiple custom apps for the same GitHub organization?[â](#why-do-i-need-multiple-custom-apps-for-the-same-github-organization "Direct link to Why do I need multiple custom apps for the same GitHub organization?")
+
+GitHub only allows installing a given GitHub App once per GitHub organization. To connect multiple Port organizations to the same GitHub organization, after installing the Port Github App in the first Port organization, each additional Port organization must have its own custom GitHub App. These apps can target the same repositories but function independently, this is ideal for multi-environment rollouts or segmented pipelines.
+
+**GitHub Ocean supports this use case with its OAuth-based custom GitHub App creation.**
+
+### How can I connect the same Github organization to my Production and Staging instance?[â](#how-can-i-connect-the-same-github-organization-to-my-production-and-staging-instance "Direct link to How can I connect the same Github organization to my Production and Staging instance?")
+
+* In your Production instance install the [Port Github app](/build-your-software-catalog/sync-data-to-catalog/git/github/.md#setup) or [GitHub Ocean](/build-your-software-catalog/sync-data-to-catalog/git/github-ocean/installation/.md).
+* In your other (Staging or Dev) instance install [GitHub Ocean](/build-your-software-catalog/sync-data-to-catalog/git/github-ocean/installation/.md) with a custom GitHub App.
+* Once completed you should see the same Github organization listed in the GitHub integration for each Port organization.
+
+## Troubleshooting[â](#troubleshooting "Direct link to Troubleshooting")
+
+Deprecated
+
+If you're using the legacy custom GitHub App method, consider migrating to [GitHub Ocean](/build-your-software-catalog/sync-data-to-catalog/git/github-ocean/installation/.md) for better support and reliability.
+
+If you encounter issues with your custom GitHub app, try the following:
+
+* **Webhook Connection Issues**
+
+  * Verify the webhook URL is correctly configured in the GitHub App settings.
+  * Check that your GitHub instance can reach Port's webhook endpoints.
+  * Review webhook delivery logs in GitHub for any failed delivery attempts.
+
+* **Permission Problems**
+
+  * Ensure the app has been granted all the necessary permissions.
+  * Check that the app is installed on the repositories you want to monitor.
+  * Verify that the correct repository events are selected.
+
+* **Authentication Errors**
+
+  * Ensure your Port token is valid and has not expired.
+  * Verify that the app has not been uninstalled or modified in GitHub.
+
+For additional assistance, contact Port support. For new integrations, use [GitHub Ocean](/build-your-software-catalog/sync-data-to-catalog/git/github-ocean/installation/.md) instead.
