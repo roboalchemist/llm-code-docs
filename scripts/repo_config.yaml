@@ -1976,3 +1976,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/setuptools
   branch: main
+- name: tfsec
+  description: tfsec from GitHub
+  repo_url: https://github.com/aquasecurity/tfsec.git
+  source_folder: docs
+  target_folder: docs/github-scraped/tfsec
+  branch: main
