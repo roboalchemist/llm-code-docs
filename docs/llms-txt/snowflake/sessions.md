@@ -1,0 +1,38 @@
+# Source: https://docs.snowflake.com/en/sql-reference/organization-usage/sessions.md
+
+# Source: https://docs.snowflake.com/en/sql-reference/account-usage/sessions.md
+
+Schema:
+:   [ACCOUNT_USAGE](../account-usage.md)
+
+# SESSIONS view
+
+This Account Usage view provides information on the session, including information on the authentication method to Snowflake and the
+Snowflake login event. Snowflake returns one row for each session created over the last year.
+
+## Columns
+
+| Column Name | Data Type | Description |
+| --- | --- | --- |
+| SESSION_ID | Number | The unique identifier for the current session. |
+| CREATED_ON | TIMESTAMP_LTZ | Date and time (in the UTC time zone) when the session was created. |
+| USER_NAME | String | The user name of the user. |
+| AUTHENTICATION_METHOD | String | The authentication method used to access Snowflake. |
+| LOGIN_EVENT_ID | Number | The unique identifier for the login event. |
+| CLIENT_APPLICATION_VERSION | String | The version number (e.g. 3.8.7) of the Snowflake-provided client application used to create the remote session to Snowflake. |
+| CLIENT_APPLICATION_ID | String | The identifier for the Snowflake-provided client application used to create the remote session to Snowflake (e.g. JDBC 3.8.7) |
+| CLIENT_ENVIRONMENT | String | The environment variables (e.g. operating system, OCSP mode) of the client used to create a remote session to Snowflake. |
+| CLIENT_BUILD_ID | String | The build number (e.g. 41897) of the third-party client application used to create a remote session to Snowflake, if available. For example, a third-party Java application that uses the JDBC driver to connect to Snowflake. |
+| CLIENT_VERSION | String | The version number (e.g. 47154) of the third-party client application that uses a Snowflake-provided client to create a remote session to Snowflake, if available. . |
+| ACCESS_TIME | TIMESTAMP_LTZ | Date and time when the session was last used. |
+| IS_OPEN | BOOLEAN | Whether the session is currently open (TRUE) or closed (FALSE). |
+| CLOSED_REASON | String | The reason why a Snowflake session closed. NULL for sessions that are currently open. One of the following for closed sessions: DROP_USER, LOGOUT, FORCED_LOGOUT, ABANDONED, OAUTH_CRITICAL_CHANGE_INTEGRATION, DROP_ACCOUNT, OAUTH_CONSENT_REVOKED, TASK_COMPLETED, SFC_FORCED_LOGOUT. |
+
+## Usage notes
+
+* Latency for the view may be up to 180 minutes (3 hours).
+* The view displays data starting from July 20-21, 2020.
+
+* The SESSIONS view does not currently track SQL API transient sessions.
+* This view does not record the activity of internal users the system defines to perform various operations
+  (e.g. maintain Snowsight worksheets).

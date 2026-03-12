@@ -1304,3 +1304,6 @@ sites:
 - name: tempo
   base_url: https://docs.tempo.xyz/
   description: tempo documentation
+- name: snowflake
+  base_url: https://docs.snowflake.com/
+  description: snowflake documentation
