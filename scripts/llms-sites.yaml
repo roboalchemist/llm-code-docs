@@ -1274,3 +1274,6 @@ sites:
 - name: pulumi
   base_url: https://www.pulumi.com/
   description: pulumi documentation
+- name: kong
+  base_url: https://developer.konghq.com/
+  description: kong documentation
