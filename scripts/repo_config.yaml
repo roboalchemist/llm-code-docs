@@ -1913,3 +1913,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/cratedb
   branch: main
+- name: starrocks
+  description: starrocks from GitHub
+  repo_url: https://github.com/StarRocks/starrocks.git
+  source_folder: docs
+  target_folder: docs/github-scraped/starrocks
+  branch: main
