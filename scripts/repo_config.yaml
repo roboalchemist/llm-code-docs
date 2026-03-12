@@ -1621,3 +1621,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/tvm-microtvm
   branch: main
+- name: cement
+  description: cement from GitHub
+  repo_url: https://github.com/datafolklabs/cement.git
+  source_folder: docs
+  target_folder: docs/github-scraped/cement
+  branch: main
