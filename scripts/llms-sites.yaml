@@ -1325,3 +1325,6 @@ sites:
 - name: openshift
   base_url: https://docs.openshift.com/
   description: openshift documentation
+- name: pipedream
+  base_url: https://pipedream.com/docs/
+  description: pipedream documentation
