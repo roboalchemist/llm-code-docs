@@ -1777,3 +1777,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/duckduckgo-api
   branch: main
+- name: github-code-search
+  description: github-code-search from GitHub
+  repo_url: https://github.com/fulll/github-code-search.git
+  source_folder: docs
+  target_folder: docs/github-scraped/github-code-search
+  branch: main
