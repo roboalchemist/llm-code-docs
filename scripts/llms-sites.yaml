@@ -1292,3 +1292,6 @@ sites:
 - name: qodo
   base_url: https://docs.qodo.ai/
   description: qodo documentation
+- name: middleware.io
+  base_url: https://middleware.io/
+  description: middleware.io documentation
