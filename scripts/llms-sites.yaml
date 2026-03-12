@@ -1364,3 +1364,6 @@ sites:
 - name: payload-cms
   base_url: https://payloadcms.com/
   description: payload-cms documentation
+- name: valibot
+  base_url: https://valibot.dev/
+  description: valibot documentation
