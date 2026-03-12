@@ -1904,3 +1904,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/chart.js
   branch: main
+- name: ionic-framework
+  description: ionic-framework from GitHub
+  repo_url: https://github.com/ionic-team/ionic-framework.git
+  source_folder: docs
+  target_folder: docs/github-scraped/ionic-framework
+  branch: main
