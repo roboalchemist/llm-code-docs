@@ -1651,3 +1651,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/seaborn
   branch: main
+- name: aiohttp
+  description: aiohttp from GitHub
+  repo_url: https://github.com/aio-libs/aiohttp.git
+  source_folder: docs
+  target_folder: docs/github-scraped/aiohttp
+  branch: main
