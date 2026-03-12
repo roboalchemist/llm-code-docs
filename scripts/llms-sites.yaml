@@ -1346,3 +1346,6 @@ sites:
 - name: adobe-spectrum
   base_url: https://react-spectrum.adobe.com/
   description: adobe-spectrum documentation
+- name: naive-ui
+  base_url: https://pinx-docs.vercel.app/naive-ui/
+  description: naive-ui documentation
