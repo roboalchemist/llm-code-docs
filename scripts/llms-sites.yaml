@@ -1376,3 +1376,6 @@ sites:
 - name: trigger.dev
   base_url: https://trigger.dev/docs/
   description: trigger.dev documentation
+- name: dask
+  base_url: https://docs.dask.org/
+  description: dask documentation
