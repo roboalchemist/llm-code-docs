@@ -1253,3 +1253,6 @@ sites:
 - name: hugging-face-optimum
   base_url: https://huggingface.co/docs/optimum/
   description: hugging-face-optimum documentation
+- name: arize
+  base_url: https://arize.com/docs/
+  description: arize documentation
