@@ -1946,3 +1946,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/formly/ngx-formly
   branch: main
+- name: veevalidate
+  description: veevalidate from GitHub
+  repo_url: https://github.com/logaretm/vee-validate.git
+  source_folder: docs
+  target_folder: docs/github-scraped/veevalidate
+  branch: main
