@@ -1874,3 +1874,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/wildduck
   branch: main
+- name: getx
+  description: getx from GitHub
+  repo_url: https://github.com/jonataslaw/getx.git
+  source_folder: documentation
+  target_folder: docs/github-scraped/getx
+  branch: main
