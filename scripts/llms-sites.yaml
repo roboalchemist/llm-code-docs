@@ -1298,3 +1298,6 @@ sites:
 - name: clickhouse
   base_url: https://clickhouse.ferndocs.com/
   description: clickhouse documentation
+- name: timescaledb
+  base_url: https://timescaledb.com/docs/
+  description: timescaledb documentation
