@@ -1717,3 +1717,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/spark-graphx
   branch: main
+- name: cytoscape
+  description: cytoscape from GitHub
+  repo_url: https://github.com/cytoscape/cytoscape.js.git
+  source_folder: documentation
+  target_folder: docs/github-scraped/cytoscape
+  branch: main
