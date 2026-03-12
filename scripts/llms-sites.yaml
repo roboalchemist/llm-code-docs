@@ -1343,3 +1343,6 @@ sites:
 - name: ng-zorro
   base_url: https://ng-zorro.github.io/
   description: ng-zorro documentation
+- name: adobe-spectrum
+  base_url: https://react-spectrum.adobe.com/
+  description: adobe-spectrum documentation
