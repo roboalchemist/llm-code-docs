@@ -1328,3 +1328,6 @@ sites:
 - name: pipedream
   base_url: https://pipedream.com/docs/
   description: pipedream documentation
+- name: tower
+  base_url: https://docs.tower.dev/
+  description: tower documentation
