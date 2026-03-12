@@ -1346,3 +1346,6 @@ sites:
 - name: red-hat-openshift
   base_url: https://docs.openshift.com/
   description: red-hat-openshift documentation
+- name: gravitee
+  base_url: https://documentation.gravitee.io/
+  description: gravitee documentation
