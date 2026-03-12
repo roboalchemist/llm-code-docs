@@ -2000,3 +2000,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/brew
   branch: main
+- name: pip
+  description: pip from GitHub
+  repo_url: https://github.com/pypa/pip.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pip
+  branch: main
