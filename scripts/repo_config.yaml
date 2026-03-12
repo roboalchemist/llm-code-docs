@@ -1705,3 +1705,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/doris
   branch: main
+- name: neomodel
+  description: neomodel from GitHub
+  repo_url: https://github.com/neo4j-contrib/neomodel.git
+  source_folder: doc
+  target_folder: docs/github-scraped/neomodel
+  branch: main
