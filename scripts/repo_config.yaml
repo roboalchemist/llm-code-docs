@@ -1867,3 +1867,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/appian
   branch: main
+- name: azkaban
+  description: azkaban from GitHub
+  repo_url: https://github.com/azkaban/azkaban.git
+  source_folder: docs
+  target_folder: docs/github-scraped/azkaban
+  branch: main
