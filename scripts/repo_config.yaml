@@ -1723,3 +1723,9 @@ repositories:
   source_folder: documentation
   target_folder: docs/github-scraped/cytoscape
   branch: main
+- name: cerberus
+  description: cerberus from GitHub
+  repo_url: https://github.com/pyeve/cerberus.git
+  source_folder: docs
+  target_folder: docs/github-scraped/cerberus
+  branch: main
