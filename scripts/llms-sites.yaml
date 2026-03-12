@@ -1280,3 +1280,6 @@ sites:
 - name: cto.ai
   base_url: https://docs.cto.new/
   description: cto.ai documentation
+- name: jfrog-artifactory
+  base_url: https://docs.jfrog.com/docs/
+  description: jfrog-artifactory documentation
