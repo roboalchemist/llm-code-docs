@@ -1801,3 +1801,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/quickwit
   branch: main
+- name: searx
+  description: searx from GitHub
+  repo_url: https://github.com/searxng/searxng.git
+  source_folder: docs
+  target_folder: docs/github-scraped/searx
+  branch: main
