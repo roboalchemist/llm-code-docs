@@ -1928,3 +1928,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/unity
   branch: main
+- name: mo.js
+  description: mo.js from GitHub
+  repo_url: https://github.com/mojs/mojs.github.io.git
+  source_folder: docs
+  target_folder: docs/github-scraped/mo.js
+  branch: main
