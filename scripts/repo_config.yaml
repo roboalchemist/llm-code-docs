@@ -1919,3 +1919,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/starrocks
   branch: main
+- name: thanos
+  description: thanos from GitHub
+  repo_url: https://github.com/thanos-io/thanos.git
+  source_folder: docs
+  target_folder: docs/github-scraped/thanos
+  branch: main
