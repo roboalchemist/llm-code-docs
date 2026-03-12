@@ -1316,3 +1316,6 @@ sites:
 - name: huggingface
   base_url: https://huggingface.co/docs/transformers/
   description: huggingface documentation
+- name: nats-io/nats.go
+  base_url: https://docs.nats.io/
+  description: nats-io/nats.go documentation
