@@ -1319,3 +1319,6 @@ sites:
 - name: aws-fargate
   base_url: https://docs.aws.amazon.com/
   description: aws-fargate documentation
+- name: databricks
+  base_url: https://docs.databricks.com/
+  description: databricks documentation
