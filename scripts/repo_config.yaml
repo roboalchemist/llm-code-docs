@@ -1633,3 +1633,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/django-orm
   branch: main
+- name: falcon
+  description: falcon from GitHub
+  repo_url: https://github.com/falconry/falcon.git
+  source_folder: docs
+  target_folder: docs/github-scraped/falcon
+  branch: main
