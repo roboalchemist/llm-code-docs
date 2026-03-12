@@ -1868,3 +1868,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/haraka
   branch: main
+- name: wildduck
+  description: wildduck from GitHub
+  repo_url: https://github.com/zone-eu/wildduck.git
+  source_folder: docs
+  target_folder: docs/github-scraped/wildduck
+  branch: main
