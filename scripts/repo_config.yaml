@@ -1657,3 +1657,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/aiohttp
   branch: main
+- name: ginkgo
+  description: ginkgo from GitHub
+  repo_url: https://github.com/ginkgo-project/ginkgo.git
+  source_folder: doc
+  target_folder: docs/github-scraped/ginkgo
+  branch: main
