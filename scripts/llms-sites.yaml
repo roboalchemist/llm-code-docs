@@ -1277,3 +1277,6 @@ sites:
 - name: kong
   base_url: https://developer.konghq.com/
   description: kong documentation
+- name: cto.ai
+  base_url: https://docs.cto.new/
+  description: cto.ai documentation
