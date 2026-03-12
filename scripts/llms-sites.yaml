@@ -1367,3 +1367,6 @@ sites:
 - name: qlik
   base_url: https://help.qlik.com/
   description: qlik documentation
+- name: airbyte
+  base_url: https://docs.airbyte.com/
+  description: airbyte documentation
