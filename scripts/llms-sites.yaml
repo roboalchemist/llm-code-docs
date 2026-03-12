@@ -1319,3 +1319,6 @@ sites:
 - name: kedro
   base_url: https://docs.kedro.org/
   description: kedro documentation
+- name: pentaho
+  base_url: https://docs.pentaho.com/
+  description: pentaho documentation

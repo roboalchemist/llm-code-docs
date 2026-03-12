@@ -1,0 +1,21 @@
+# Source: https://docs.pentaho.com/pdia-data-integration/9.3-data-integration/pdi-transformation-steps-reference-overview/catalog-output/before-you-begin-catalog-output/general-catalog-output/fields-tab-catalog-output/options-tab-catalog-output/csv-options-catalog-output.md
+
+# CSV options
+
+![CSV options](https://3411831820-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAYwCj9fPr1B2pjC11IOQ%2Fuploads%2Fgit-blob-580db910f94ace533a3f8f859b29ab943a38008f%2FPDI_CatalogOutput_Options_CSV.png?alt=media)
+
+In the **Options** tab, you can define properties for the CSV file output.
+
+| Option                                 | Description                                                                                                                                                                                                                               |
+| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Separator**                          | Specify the character used to separate the fields in a single line of text, typically a semicolon or tab. Click **Insert TAB** to place a tab in the **Separator** field. The default value is semicolon (;).                             |
+| **Enclosure**                          | Specify to enclose fields with a pair of specified strings. It allows for separator characters in fields. This setting is optional and can be left blank. The default value is double quotes (").                                         |
+| **Force the enclosure around fields?** | Specify to force all field names to be enclosed with the character specified in the **Enclosure** option.                                                                                                                                 |
+| **Disable the enclosure fix?**         | Specify to disregard enclosures on string fields and separators.                                                                                                                                                                          |
+| **Header**                             | Clear to indicate that the first line in the output file is not a header row.                                                                                                                                                             |
+| **Footer**                             | <p>Select to specify that the last line in the output file is a footer row.</p><p>When using the <strong>Append</strong> option, it is not possible to strip a footer from the file content before appending new rows.</p>                |
+| **Format**                             | Specify the type of formatting to use. It can be either DOS or UNIX. UNIX files have lines separated by line feeds, while DOS files have lines separated by carriage returns and line feeds. The default value is CR + LF (Windows, DOS). |
+| **Compression**                        | Specify the type of compression (`.ZIP` or `Gzip`) to use when compressing the output file. Only one file is placed in a single archive. The default value is None.                                                                       |
+| **Encoding**                           | Specify the file encoding to use. Leave blank to use the default encoding on your system. To use Unicode, specify `UTF-8` or `UTF-16`. On first use, PDI searches your system for available encodings.                                    |
+| **Right pad fields**                   | Select to add spaces to the end of the fields (or remove characters at the end) until the length specified in the table under the **Fields** tab is reached.                                                                              |
+| **Add Ending line of file**            | Specify an alternate ending row to the output file.                                                                                                                                                                                       |
