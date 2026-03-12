@@ -1346,3 +1346,6 @@ sites:
 - name: kong-gateway
   base_url: https://developer.konghq.com/
   description: kong-gateway documentation
+- name: seaorm
+  base_url: https://www.sea-ql.org/
+  description: seaorm documentation
