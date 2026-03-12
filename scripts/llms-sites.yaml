@@ -1271,3 +1271,6 @@ sites:
 - name: lettuce
   base_url: https://lettuce.io/
   description: lettuce documentation
+- name: pulumi
+  base_url: https://www.pulumi.com/
+  description: pulumi documentation
