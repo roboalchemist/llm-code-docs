@@ -1837,3 +1837,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/graphviz
   branch: main
+- name: marquez
+  description: marquez from GitHub
+  repo_url: https://github.com/MarquezProject/marquez.git
+  source_folder: docs
+  target_folder: docs/github-scraped/marquez
+  branch: main
