@@ -1349,3 +1349,6 @@ sites:
 - name: seaorm
   base_url: https://www.sea-ql.org/
   description: seaorm documentation
+- name: perplexity-ai
+  base_url: https://docs.perplexity.ai/
+  description: perplexity-ai documentation
