@@ -1898,3 +1898,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/scylladb
   branch: main
+- name: chart.js
+  description: chart.js from GitHub
+  repo_url: https://github.com/chartjs/Chart.js.git
+  source_folder: docs
+  target_folder: docs/github-scraped/chart.js
+  branch: main
