@@ -1843,3 +1843,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/marquez
   branch: main
+- name: shapely
+  description: shapely from GitHub
+  repo_url: https://github.com/shapely/shapely.git
+  source_folder: docs
+  target_folder: docs/github-scraped/shapely
+  branch: main
