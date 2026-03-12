@@ -1861,3 +1861,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/great-expectations
   branch: main
+- name: appian
+  description: appian from GitHub
+  repo_url: https://github.com/appian-design/aurora.git
+  source_folder: docs
+  target_folder: docs/github-scraped/appian
+  branch: main
