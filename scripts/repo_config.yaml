@@ -1949,3 +1949,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/openrefine
   branch: main
+- name: kubeflow
+  description: kubeflow from GitHub
+  repo_url: https://github.com/kubeflow/arena.git
+  source_folder: docs
+  target_folder: docs/github-scraped/kubeflow
+  branch: main
