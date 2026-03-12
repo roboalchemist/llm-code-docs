@@ -1943,3 +1943,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/meltano
   branch: main
+- name: openrefine
+  description: openrefine from GitHub
+  repo_url: https://github.com/OpenRefine/openrefine.org.git
+  source_folder: docs
+  target_folder: docs/github-scraped/openrefine
+  branch: main
