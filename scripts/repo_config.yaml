@@ -1994,3 +1994,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/bazel
   branch: main
+- name: brew
+  description: brew from GitHub
+  repo_url: https://github.com/Homebrew/brew.git
+  source_folder: docs
+  target_folder: docs/github-scraped/brew
+  branch: main
