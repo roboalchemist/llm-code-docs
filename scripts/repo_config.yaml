@@ -1687,3 +1687,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/argo-cd
   branch: main
+- name: apache-openwhisk
+  description: apache-openwhisk from GitHub
+  repo_url: https://github.com/apache/openwhisk.git
+  source_folder: docs
+  target_folder: docs/github-scraped/apache-openwhisk
+  branch: main
