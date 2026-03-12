@@ -1295,3 +1295,6 @@ sites:
 - name: middleware.io
   base_url: https://middleware.io/
   description: middleware.io documentation
+- name: amazon-opensearch-service
+  base_url: https://docs.aws.amazon.com/
+  description: amazon-opensearch-service documentation
