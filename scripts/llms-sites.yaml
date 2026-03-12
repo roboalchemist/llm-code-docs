@@ -1349,3 +1349,6 @@ sites:
 - name: gravitee
   base_url: https://documentation.gravitee.io/
   description: gravitee documentation
+- name: ably
+  base_url: https://ably.com/
+  description: ably documentation
