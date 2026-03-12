@@ -1322,3 +1322,6 @@ sites:
 - name: databricks
   base_url: https://docs.databricks.com/
   description: databricks documentation
+- name: openshift
+  base_url: https://docs.openshift.com/
+  description: openshift documentation
