@@ -1639,3 +1639,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/falcon
   branch: main
+- name: peewee
+  description: peewee from GitHub
+  repo_url: https://github.com/coleifer/peewee.git
+  source_folder: docs
+  target_folder: docs/github-scraped/peewee
+  branch: main
