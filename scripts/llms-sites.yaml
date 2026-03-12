@@ -1334,3 +1334,6 @@ sites:
 - name: vellum-ai
   base_url: https://docs.vellum.ai/
   description: vellum-ai documentation
+- name: getint
+  base_url: https://docs.getint.io/
+  description: getint documentation
