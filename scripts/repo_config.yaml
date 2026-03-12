@@ -1934,3 +1934,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/mo.js
   branch: main
+- name: flask-wtf
+  description: flask-wtf from GitHub
+  repo_url: https://github.com/pallets-eco/flask-wtf.git
+  source_folder: docs
+  target_folder: docs/github-scraped/flask-wtf
+  branch: main
