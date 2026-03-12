@@ -1871,3 +1871,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/argo-cd
   branch: main
+- name: gitlab-ci
+  description: gitlab-ci from GitHub
+  repo_url: https://github.com/gitlabhq/gitlab-ci.git
+  source_folder: doc
+  target_folder: docs/github-scraped/gitlab-ci
+  branch: main
