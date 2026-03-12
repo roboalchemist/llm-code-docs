@@ -1,0 +1,33 @@
+# Source: https://clickhouse.ferndocs.com/reference/sql-reference/table-functions/timeSeriesTags.md
+
+---
+description: >-
+  timeSeriesTags table function returns the tags table use by table
+  `db_name.time_series_table` whose table engine is the TimeSeries engine.
+sidebar_label: timeSeriesTags
+sidebar_position: 145
+slug: /sql-reference/table-functions/timeSeriesTags
+title: timeSeriesTags
+doc_type: reference
+---
+
+`timeSeriesTags(db_name.time_series_table)` - Returns the [tags](/reference/engines/table-engines/special/time_series#tags-table) table
+used by table `db_name.time_series_table` whose table engine is the [TimeSeries](/reference/engines/table-engines/special/time_series) engine:
+
+```sql
+CREATE TABLE db_name.time_series_table ENGINE=TimeSeries TAGS tags_table
+```
+
+The function also works if the _tags_ table is inner:
+
+```sql
+CREATE TABLE db_name.time_series_table ENGINE=TimeSeries TAGS INNER UUID '01234567-89ab-cdef-0123-456789abcdef'
+```
+
+The following queries are equivalent:
+
+```sql
+SELECT * FROM timeSeriesTags(db_name.time_series_table);
+SELECT * FROM timeSeriesTags('db_name.time_series_table');
+SELECT * FROM timeSeriesTags('db_name', 'time_series_table');
+```

@@ -1256,3 +1256,6 @@ sites:
 - name: arize
   base_url: https://arize.com/docs/
   description: arize documentation
+- name: clickhouse
+  base_url: https://clickhouse.ferndocs.com/
+  description: clickhouse documentation
