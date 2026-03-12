@@ -1322,3 +1322,6 @@ sites:
 - name: pentaho
   base_url: https://docs.pentaho.com/
   description: pentaho documentation
+- name: atlan
+  base_url: https://docs.atlan.com/
+  description: atlan documentation
