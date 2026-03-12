@@ -1301,3 +1301,6 @@ sites:
 - name: timescaledb
   base_url: https://timescaledb.com/docs/
   description: timescaledb documentation
+- name: tempo
+  base_url: https://docs.tempo.xyz/
+  description: tempo documentation
