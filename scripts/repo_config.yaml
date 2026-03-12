@@ -1940,3 +1940,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/flask-wtf
   branch: main
+- name: formly/ngx-formly
+  description: formly/ngx-formly from GitHub
+  repo_url: https://github.com/ngx-formly/ngx-formly.git
+  source_folder: docs
+  target_folder: docs/github-scraped/formly/ngx-formly
+  branch: main
