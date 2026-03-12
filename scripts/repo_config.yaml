@@ -1675,3 +1675,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/templ
   branch: main
+- name: node-fetch
+  description: node-fetch from GitHub
+  repo_url: https://github.com/node-fetch/node-fetch.git
+  source_folder: docs
+  target_folder: docs/github-scraped/node-fetch
+  branch: main
