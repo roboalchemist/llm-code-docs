@@ -1361,3 +1361,6 @@ sites:
 - name: questdb
   base_url: https://questdb.io/
   description: questdb documentation
+- name: acceldata
+  base_url: https://docs.acceldata.io/.well-known/
+  description: acceldata documentation
