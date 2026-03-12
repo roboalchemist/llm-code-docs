@@ -1358,3 +1358,6 @@ sites:
 - name: tavily-api
   base_url: https://docs.tavily.com/
   description: tavily-api documentation
+- name: questdb
+  base_url: https://questdb.io/
+  description: questdb documentation
