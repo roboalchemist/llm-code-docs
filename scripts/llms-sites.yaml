@@ -1322,3 +1322,6 @@ sites:
 - name: superstruct
   base_url: https://docs.superstructjs.org/
   description: superstruct documentation
+- name: tsdown
+  base_url: https://tsdown.dev/
+  description: tsdown documentation
