@@ -1289,3 +1289,6 @@ sites:
 - name: apache-pinot
   base_url: https://docs.pinot.apache.org/
   description: apache-pinot documentation
+- name: wolfram-alpha-api
+  base_url: https://www.wolfram.com/
+  description: wolfram-alpha-api documentation
