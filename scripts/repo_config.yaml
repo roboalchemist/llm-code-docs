@@ -1847,3 +1847,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/authjs
   branch: main
+- name: clair
+  description: clair from GitHub
+  repo_url: https://github.com/quay/claircore.git
+  source_folder: docs
+  target_folder: docs/github-scraped/clair
+  branch: main
