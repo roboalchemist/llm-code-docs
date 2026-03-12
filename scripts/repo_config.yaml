@@ -1645,3 +1645,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/peewee
   branch: main
+- name: seaborn
+  description: seaborn from GitHub
+  repo_url: https://github.com/mwaskom/seaborn.git
+  source_folder: doc
+  target_folder: docs/github-scraped/seaborn
+  branch: main
