@@ -1382,3 +1382,6 @@ sites:
 - name: make
   base_url: https://developers.make.com/
   description: make documentation
+- name: nomad
+  base_url: https://docs.nomad.xyz/
+  description: nomad documentation
