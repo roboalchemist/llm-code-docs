@@ -1937,3 +1937,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/attrs
   branch: main
+- name: meltano
+  description: meltano from GitHub
+  repo_url: https://github.com/meltano/meltano.git
+  source_folder: docs
+  target_folder: docs/github-scraped/meltano
+  branch: main
