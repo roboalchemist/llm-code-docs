@@ -1970,3 +1970,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/flutterflow
   branch: main
+- name: setuptools
+  description: setuptools from GitHub
+  repo_url: https://github.com/pypa/setuptools.git
+  source_folder: docs
+  target_folder: docs/github-scraped/setuptools
+  branch: main
