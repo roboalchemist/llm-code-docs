@@ -1952,3 +1952,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/veevalidate
   branch: main
+- name: web2py
+  description: web2py from GitHub
+  repo_url: https://github.com/web2py/web2py.git
+  source_folder: docs
+  target_folder: docs/github-scraped/web2py
+  branch: main
