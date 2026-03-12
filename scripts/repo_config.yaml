@@ -1819,3 +1819,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/arangodb
   branch: main
+- name: nebulagraph
+  description: nebulagraph from GitHub
+  repo_url: https://github.com/wey-gu/jupyter_nebulagraph.git
+  source_folder: docs
+  target_folder: docs/github-scraped/nebulagraph
+  branch: main
