@@ -1319,3 +1319,6 @@ sites:
 - name: activecampaign
   base_url: https://developers.activecampaign.com/
   description: activecampaign documentation
+- name: fail2ban
+  base_url: https://www.fail2ban.org/
+  description: fail2ban documentation
