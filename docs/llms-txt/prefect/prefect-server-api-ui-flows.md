@@ -1,0 +1,60 @@
+# Source: https://docs.prefect.io/v3/api-ref/python/prefect-server-api-ui-flows.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.prefect.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# flows
+
+# `prefect.server.api.ui.flows`
+
+## Functions
+
+### `count_deployments_by_flow` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/ui/flows.py#L48" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+count_deployments_by_flow(flow_ids: List[UUID] = Body(default=..., embed=True, max_items=200), db: PrefectDBInterface = Depends(provide_database_interface)) -> Dict[UUID, int]
+```
+
+Get deployment counts by flow id.
+
+### `next_runs_by_flow` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/ui/flows.py#L143" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+next_runs_by_flow(flow_ids: List[UUID] = Body(default=..., embed=True, max_items=200), db: PrefectDBInterface = Depends(provide_database_interface)) -> Dict[UUID, Optional[SimpleNextFlowRun]]
+```
+
+Get the next flow run by flow id.
+
+## Classes
+
+### `SimpleNextFlowRun` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/ui/flows.py#L29" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+**Methods:**
+
+#### `model_validate_list` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/_internal/schemas/bases.py#L56" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+model_validate_list(cls, obj: Any) -> list[Self]
+```
+
+#### `reset_fields` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/_internal/schemas/bases.py#L85" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+reset_fields(self: Self) -> Self
+```
+
+Reset the fields of the model that are in the `_reset_fields` set.
+
+**Returns:**
+
+* A new instance of the model with the reset fields.
+
+#### `validate_next_scheduled_start_time` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/ui/flows.py#L41" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+validate_next_scheduled_start_time(cls, v: DateTime | datetime) -> DateTime
+```
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1265,3 +1265,6 @@ sites:
 - name: latenode
   base_url: https://documentation.latenode.com/
   description: latenode documentation
+- name: prefect
+  base_url: https://docs.prefect.io/
+  description: prefect documentation

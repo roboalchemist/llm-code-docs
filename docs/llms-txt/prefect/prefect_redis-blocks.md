@@ -1,0 +1,121 @@
+# Source: https://docs.prefect.io/integrations/prefect-redis/api-ref/prefect_redis-blocks.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.prefect.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# blocks
+
+# `prefect_redis.blocks`
+
+Redis credentials handling
+
+## Classes
+
+### `RedisDatabase` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/integrations/prefect-redis/prefect_redis/blocks.py#L16" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+Block used to manage authentication with a Redis database
+
+**Attributes:**
+
+* `host`: The host of the Redis server
+* `port`: The port the Redis server is running on
+* `db`: The database to write to and read from
+* `username`: The username to use when connecting to the Redis server
+* `password`: The password to use when connecting to the Redis server
+* `ssl`: Whether to use SSL when connecting to the Redis server
+
+**Methods:**
+
+#### `as_connection_params` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/integrations/prefect-redis/prefect_redis/blocks.py#L160" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+as_connection_params(self) -> Dict[str, Any]
+```
+
+Return a dictionary suitable for unpacking
+
+#### `block_initialization` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/integrations/prefect-redis/prefect_redis/blocks.py#L63" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+block_initialization(self) -> None
+```
+
+Validate parameters
+
+#### `from_connection_string` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/integrations/prefect-redis/prefect_redis/blocks.py#L130" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+from_connection_string(cls, connection_string: Union[str, SecretStr]) -> 'RedisDatabase'
+```
+
+Create block from a Redis connection string
+
+Supports the following URL schemes:
+
+* `redis://` creates a TCP socket connection
+* `rediss://` creates a SSL wrapped TCP socket connection
+
+**Args:**
+
+* `connection_string`: Redis connection string
+
+**Returns:**
+
+* `RedisCredentials` instance
+
+#### `get_async_client` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/integrations/prefect-redis/prefect_redis/blocks.py#L114" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+get_async_client(self) -> redis.asyncio.Redis
+```
+
+Get Redis Client
+
+**Returns:**
+
+* An initialized Redis async client
+
+#### `get_client` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/integrations/prefect-redis/prefect_redis/blocks.py#L99" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+get_client(self) -> redis.Redis
+```
+
+Get Redis Client
+
+**Returns:**
+
+* An initialized Redis async client
+
+#### `read_path` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/integrations/prefect-redis/prefect_redis/blocks.py#L71" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+read_path(self, path: str) -> bytes
+```
+
+Read a redis key
+
+**Args:**
+
+* `path`: Redis key to read from
+
+**Returns:**
+
+* Contents at key as bytes
+
+#### `write_path` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/integrations/prefect-redis/prefect_redis/blocks.py#L86" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+write_path(self, path: str, content: bytes) -> None
+```
+
+Write to a redis key
+
+**Args:**
+
+* `path`: Redis key to write to
+* `content`: Binary object to write
+
+
+Built with [Mintlify](https://mintlify.com).

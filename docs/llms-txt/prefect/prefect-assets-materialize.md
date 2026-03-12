@@ -1,0 +1,28 @@
+# Source: https://docs.prefect.io/v3/api-ref/python/prefect-assets-materialize.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.prefect.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# materialize
+
+# `prefect.assets.materialize`
+
+## Functions
+
+### `materialize` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/assets/materialize.py#L17" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+materialize(*assets: Union[str, Asset], **task_kwargs: Unpack[TaskOptions]) -> Callable[[Callable[P, R]], MaterializingTask[P, R]]
+```
+
+Decorator for materializing assets.
+
+**Args:**
+
+* `*assets`: Assets to materialize
+* `by`: An optional tool that is ultimately responsible for materializing the asset e.g. "dbt" or "spark"
+* `**task_kwargs`: Additional task configuration
+
+
+Built with [Mintlify](https://mintlify.com).

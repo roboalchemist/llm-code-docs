@@ -1,0 +1,32 @@
+# Source: https://docs.prefect.io/integrations/prefect-kubernetes/api-ref/prefect_kubernetes-exceptions.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.prefect.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# exceptions
+
+# `prefect_kubernetes.exceptions`
+
+Module to define common exceptions within `prefect_kubernetes`.
+
+## Classes
+
+### `KubernetesJobDefinitionError` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/integrations/prefect-kubernetes/prefect_kubernetes/exceptions.py#L6" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+An exception for when a Kubernetes job definition is invalid.
+
+### `KubernetesJobFailedError` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/integrations/prefect-kubernetes/prefect_kubernetes/exceptions.py#L10" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+An exception for when a Kubernetes job fails.
+
+### `KubernetesResourceNotFoundError` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/integrations/prefect-kubernetes/prefect_kubernetes/exceptions.py#L14" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+An exception for when a Kubernetes resource cannot be found by a client.
+
+### `KubernetesJobTimeoutError` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/integrations/prefect-kubernetes/prefect_kubernetes/exceptions.py#L18" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+An exception for when a Kubernetes job times out.
+
+
+Built with [Mintlify](https://mintlify.com).
