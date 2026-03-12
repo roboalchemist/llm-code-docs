@@ -1292,3 +1292,6 @@ sites:
 - name: wolfram-alpha-api
   base_url: https://www.wolfram.com/
   description: wolfram-alpha-api documentation
+- name: zincsearch
+  base_url: https://zincsearch.com/
+  description: zincsearch documentation
