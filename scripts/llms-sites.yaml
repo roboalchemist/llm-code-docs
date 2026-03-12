@@ -1325,3 +1325,6 @@ sites:
 - name: keepnet
   base_url: https://doc.keepnetlabs.com/
   description: keepnet documentation
+- name: mailtrap
+  base_url: https://docs.mailtrap.io/
+  description: mailtrap documentation
