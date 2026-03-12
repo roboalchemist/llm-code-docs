@@ -1862,3 +1862,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/docker-mailserver
   branch: main
+- name: haraka
+  description: haraka from GitHub
+  repo_url: https://github.com/haraka/Haraka.git
+  source_folder: docs
+  target_folder: docs/github-scraped/haraka
+  branch: main
