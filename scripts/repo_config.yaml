@@ -1627,3 +1627,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/cement
   branch: main
+- name: django-orm
+  description: django-orm from GitHub
+  repo_url: https://github.com/agiliq/django-orm-cookbook.git
+  source_folder: docs
+  target_folder: docs/github-scraped/django-orm
+  branch: main
