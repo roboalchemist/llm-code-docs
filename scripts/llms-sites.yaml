@@ -1286,3 +1286,6 @@ sites:
 - name: mikroorm
   base_url: https://mikro-orm.io/
   description: mikroorm documentation
+- name: apache-pinot
+  base_url: https://docs.pinot.apache.org/
+  description: apache-pinot documentation
