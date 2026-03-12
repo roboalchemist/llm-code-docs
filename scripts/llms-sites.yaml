@@ -1313,3 +1313,6 @@ sites:
 - name: mongodb-atlas
   base_url: https://www.mongodb.com/docs/
   description: mongodb-atlas documentation
+- name: mongodb
+  base_url: https://www.mongodb.com/docs/
+  description: mongodb documentation
