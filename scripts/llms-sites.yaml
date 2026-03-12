@@ -1331,3 +1331,6 @@ sites:
 - name: tower
   base_url: https://docs.tower.dev/
   description: tower documentation
+- name: vellum-ai
+  base_url: https://docs.vellum.ai/
+  description: vellum-ai documentation
