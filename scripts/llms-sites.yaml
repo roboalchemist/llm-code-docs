@@ -1379,3 +1379,6 @@ sites:
 - name: dask
   base_url: https://docs.dask.org/
   description: dask documentation
+- name: make
+  base_url: https://developers.make.com/
+  description: make documentation
