@@ -1337,3 +1337,6 @@ sites:
 - name: nagios
   base_url: https://library.nagios.com/
   description: nagios documentation
+- name: octopus-deploy
+  base_url: https://docs.octopus.com/
+  description: octopus-deploy documentation
