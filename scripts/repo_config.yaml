@@ -2105,3 +2105,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/react-vis
   branch: main
+- name: dhtmlx-gantt
+  description: dhtmlx-gantt from GitHub
+  repo_url: https://github.com/DHTMLX/gantt-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/dhtmlx-gantt
+  branch: main
