@@ -2024,3 +2024,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/pytermgui
   branch: main
+- name: puppet
+  description: puppet from GitHub
+  repo_url: https://github.com/puppetlabs/puppet.git
+  source_folder: docs
+  target_folder: docs/github-scraped/puppet
+  branch: main
