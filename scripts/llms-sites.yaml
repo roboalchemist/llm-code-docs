@@ -1424,3 +1424,6 @@ sites:
 - name: virustotal
   base_url: https://docs.virustotal.com/
   description: virustotal documentation
+- name: akka
+  base_url: https://docs.akka.io/
+  description: akka documentation
