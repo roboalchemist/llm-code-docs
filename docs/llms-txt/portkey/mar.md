@@ -1,0 +1,194 @@
+# Source: https://docs.portkey.ai/docs/changelog/2025/mar.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.portkey.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# March
+
+**Introducing the Prompt Engineering Studio! 🧪✨**
+
+March brings the official launch of our highly anticipated Prompt Engineering Studio – a comprehensive platform for creating, testing, and deploying production-ready prompts with confidence.
+
+We're also excited to announce that Portkey is now being evaluated as the official AI Gateway solution by several prestigious universities, including Harvard, Princeton, and UC Berkeley.
+
+Additionally, we've expanded our multimodal capabilities with Claude image support, added PDF uploads, and introduced thinking mode across major providers. All this with enhanced enterprise security through AWS KMS integration and SCIM for identity management.
+
+Let's explore all that's new:
+
+## Summary
+
+| Area          | Key Updates                                                                                                                                                                                                                                             |
+| :------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Platform      | • **Prompt Engineering Studio** official launch<br />• Support for PDF uploads to Claude<br />• Thinking mode across major providers<br />• University evaluations across Ivy League institutions<br />• 1-click AWS EC2 deployment with CloudFormation |
+| Gateway       | • Multimodal support for Claude (images via URL)<br />• New providers: ncompass and Snowflake Cortex<br />• Enhanced grounding with cached streaming<br />• Improved retry handling and error detection                                                 |
+| Security      | • Bring your own encryption key with AWS KMS<br />• SCIM integration for Okta & Azure Entra (AD)<br />• Org-level guardrail and metadata enforcement<br />• Email notifications for usage limits                                                        |
+| Guardrails    | • AWS Bedrock Guardrails integration<br />• Mistral Moderations endpoint support<br />• New Guardrail provider: Lasso<br />• New input/output guardrails format                                                                                         |
+| Documentation | • Admin API documentation<br />• Updated Enterprise Architecture specs<br />• Prompt documentation revamp<br />• Enterprise code visibility in API docs                                                                                                 |
+
+***
+
+## Platform
+
+**Prompt Engineering Studio**
+
+<Frame>
+  <img width="700" src="https://mintcdn.com/portkey-docs/QFjngWBmb6CT7QXC/images/changelog/prompt-studio-header.png?fit=max&auto=format&n=QFjngWBmb6CT7QXC&q=85&s=6e5fc8fc69e170afa16314ed61bd387c" data-path="images/changelog/prompt-studio-header.png" />
+</Frame>
+
+Our flagship release this month is the official launch of the Prompt Engineering Studio, bringing professional-grade prompt development to teams of all sizes:
+
+* **Version control**: Track changes, compare versions, and roll back when needed
+* **Collaborative workflow**: Work together with your team on prompt development
+* **Variables & templates**: Create reusable prompt components and patterns
+* **Testing framework**: Validate performance before production deployment
+* **Production integration**: Seamlessly connect to your applications
+
+Read about our design journey in our [detailed case study](https://portkey.ai/blog/portkey-prompt-engineering-studio-a-user-centric-design-facelift/).
+
+**Claude Multimodal Capabilities**
+
+You can now send images to Claude models across various providers:
+
+* Send image URLs to Claude via Anthropic, Vertex, or Bedrock APIs
+* Full support for multimodal conversations and analysis
+* Consistent interface across all Claude providers
+
+**PDF Support for Claude**
+
+Enhance your document processing workflows with native PDF support:
+
+* Send PDF files directly to Claude requests
+* Process long-form documents without manual extraction
+* Maintain formatting and structure in analysis
+
+**Thinking Mode Expansion**
+
+Access model reasoning across all major providers:
+
+* Support for Anthropic (Bedrock, Vertex), OpenAI, and more
+* Full compatibility with streaming responses
+* Complete observability of reasoning process
+* Consistent interface across all supported models
+
+## Enterprise
+
+**University Validation**
+
+We're proud to announce that Portkey is being evaluated as the official AI Gateway solution by leading academic institutions:
+
+* Harvard University
+* Princeton University
+* University of California, Berkeley
+* Cornell University
+* New York University
+* Lehigh University
+* Bowdoin College
+
+Learn more about the [Internet2 NET+ AI service evaluation](https://internet2.edu/new-net-service-evaluations-for-ai-services/).
+
+**Enhanced Security Controls**
+
+* **AWS KMS Integration**: Bring your own encryption keys for maximum security
+* **SCIM Support**: Automated user provisioning with Okta & Azure Entra (AD)
+* **Organizational Controls**: Enforce guardrails and metadata requirements at the org level
+* **Usage Limit Notifications**: Configure email alerts for rate/budget/usage thresholds
+
+**Simplified Deployment**
+
+* **CloudFormation Template**: 1-click deployment of Portkey Gateway on AWS EC2
+* **Real-Time Model Pricing**: Pricing configs now fetched dynamically from control plane
+* **Internal POD Communication**: Secure HTTPS between components
+* **Enhanced Metrics**: Track last byte latency for streaming responses
+
+## Gateway & Providers
+
+**New Providers**
+
+<CardGroup cols={2}>
+  <Card title="Snowflake Cortex">
+    Access Snowflake's AI capabilities through the unified Portkey interface
+  </Card>
+
+  <Card title="ncompass">
+    Integration with ncompass AI services
+  </Card>
+</CardGroup>
+
+**Technical Improvements**
+
+* **Enhanced Retry Handling**: Better detection of errors in retry process
+* **Improved Tool Support**: Fixed handling of null content for Bedrock tool\_calls
+* **Cached Grounding**: Support for cached streaming in grounding requests
+* **Search Parameters**: Support for perplexity.ai search options
+* **Webhook Enhancement**: Return appropriate status codes for streaming webhook failures
+
+## Guardrails
+
+We've significantly expanded our guardrails capabilities:
+
+* **AWS Bedrock Guardrails**: Native integration with AWS content filtering
+* **Mistral Moderations**: Added support for Mistral's moderation endpoint
+* **Lasso Integration**: New provider for enhanced content safety
+* **Input/Output Format**: New standardized format for setting guardrails
+* **Default Headers**: Simplified configuration through new API & SDK headers
+
+## Documentation
+
+<Card icon="book" title="Admin API Introduction" href="https://portkey.ai/docs/api-reference/admin-api/introduction" horizontal />
+
+We've made significant improvements to our documentation:
+
+* **Admin API Docs**: Comprehensive guide to our Control Plane API
+* **Enterprise Architecture**: [Updated deployment architecture](https://portkey.ai/docs/product/enterprise-offering/private-cloud-deployments/architecture)
+* **Enterprise Code Visibility**: API docs now show code for enterprise deployments
+* **Prompt Documentation**: Complete revamp of our prompt engineering guides
+* **New Cookbook**: [Building an LLM as a judge](/guides/prompts/llm-as-a-judge)
+
+## SDK Updates
+
+* **Custom Headers**: Send headers with `extra_headers` param in any method
+* **Private Deployment Tracing**: Instrument LlamaIndex/LangChain with private deployments
+* **Support for OpenAI Developer Role**: Full compatibility with OpenAI's new permissions
+
+## Analytics
+
+New filtering capabilities in logs & analytics dashboards:
+
+* Filter requests by cache status:
+  * Cache Hit
+  * Cache Miss
+  * Cache Disabled
+  * Cache Semantic Hit
+
+## Community
+
+<Frame>
+  <img src="https://mintcdn.com/portkey-docs/Hf1XgyjG_b79ym4Q/images/changelog/aman-testimonial.jpeg?fit=max&auto=format&n=Hf1XgyjG_b79ym4Q&q=85&s=c474159ad4e79dc2ce38a76630961df6" width="2090" height="400" data-path="images/changelog/aman-testimonial.jpeg" />
+</Frame>
+
+"Describing Portkey as merely useful would be an understatement; it's a must-have." - @AManInTech
+
+### Community Contributors
+
+A special thanks to our community contributors this month:
+
+* [urbanonymous](https://github.com/urbanonymous)
+* [vineye25](https://github.com/vineye25)
+* [Ignacio](https://github.com/elentaure)
+* [Ajay Satish](https://github.com/Ajay-Satish-01)
+
+## Support
+
+<CardGroup cols={2}>
+  <Card title="Need Help?" icon="bug" href="https://github.com/Portkey-AI/gateway/issues">
+    Open an issue on GitHub
+  </Card>
+
+  <Card title="Join Us" icon="discord" href="https://portkey.wiki/community">
+    Get support in our Discord
+  </Card>
+</CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

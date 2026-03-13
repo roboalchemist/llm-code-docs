@@ -1,0 +1,223 @@
+# Source: https://docs.portkey.ai/docs/product/ai-gateway/cache-simple-and-semantic.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.portkey.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Cache (Simple & Semantic)
+
+> Speed up requests and reduce costs by caching LLM responses.
+
+<Info>
+  **Simple** caching is available for all plans.<br />
+  **Semantic** caching requires a vector database and is only available on select Enterprise plans. [Contact us](https://portkey.ai/docs/support/contact-us) to learn more about enabling this feature.
+</Info>
+
+Cache LLM responses to serve requests up to **20x faster** and cheaper.
+
+| Mode         | How it Works                          | Best For                         | Supported Routes                      |
+| ------------ | ------------------------------------- | -------------------------------- | ------------------------------------- |
+| **Simple**   | Exact match on input                  | Repeated identical prompts       | All models including image generation |
+| **Semantic** | Matches semantically similar requests | Denoising variations in phrasing | `/chat/completions`, `/completions`   |
+
+## Enable Cache
+
+Add `cache` to your [config object](/api-reference/config-object#cache-object-details):
+
+<CodeGroup>
+  ```json Simple Cache theme={"system"}
+  { "cache": { "mode": "simple" } }
+  ```
+
+  ```json Semantic Cache theme={"system"}
+  { "cache": { "mode": "semantic" } }
+  ```
+
+  ```json With TTL (60 seconds) theme={"system"}
+  { "cache": { "mode": "semantic", "max_age": 60 } }
+  ```
+</CodeGroup>
+
+<Note>
+  Caching won't work if `x-portkey-debug: "false"` header is included.
+</Note>
+
+## Simple Cache
+
+Exact match on input prompts. If the same request comes again, Portkey returns the cached response.
+
+## Semantic Cache
+
+Matches requests with similar meaning using cosine similarity. [Learn more →](https://portkey.ai/blog/reducing-llm-costs-and-latency-semantic-cache/)
+
+<Info>
+  Semantic cache is a superset—it handles simple cache hits too.
+</Info>
+
+<Note>
+  Semantic cache works with requests under 8,191 tokens and ≤4 messages.
+</Note>
+
+### System Message Ignored
+
+Semantic cache requires **at least two messages**. The first message (typically `system`) is ignored for matching:
+
+```json  theme={"system"}
+[
+  { "role": "system", "content": "You are a helpful assistant" },
+  { "role": "user", "content": "Who is the president of the US?" }
+]
+```
+
+Only the `user` message is used for matching. Change the system message without affecting cache hits.
+
+## Cache TTL
+
+Set expiration with `max_age` (in seconds):
+
+```json  theme={"system"}
+{ "cache": { "mode": "semantic", "max_age": 60 } }
+```
+
+| Setting | Value                       |
+| ------- | --------------------------- |
+| Minimum | 60 seconds                  |
+| Maximum | 90 days (7,776,000 seconds) |
+| Default | 7 days (604,800 seconds)    |
+
+### Organization-Level TTL
+
+Admins can set default TTL for all workspaces to align with data retention policies:
+
+1. Go to **Admin Settings** → **Organization Properties** → **Cache Settings**
+2. Enter default TTL (seconds)
+3. Save
+
+**Precedence:**
+
+* No `max_age` in request → org default used
+* Request `max_age` > org default → org default wins
+* Request `max_age` \< org default → request value honored
+
+Max org-level TTL: 25,923,000 seconds.
+
+## Force Refresh
+
+Fetch a fresh response even when a cached response exists. This is set **per-request** (not in Config):
+
+<CodeGroup>
+  ```python Python theme={"system"}
+  response = portkey.with_options(
+      cache_force_refresh=True
+  ).chat.completions.create(
+      messages=[{"role": "user", "content": "Hello!"}],
+      model="@openai-prod/gpt-4o"
+  )
+  ```
+
+  ```javascript Node theme={"system"}
+  const response = await portkey.chat.completions.create({
+      messages: [{ role: 'user', content: 'Hello' }],
+      model: '@openai-prod/gpt-4o',
+  }, {
+      cacheForceRefresh: true
+  });
+  ```
+
+  ```bash cURL theme={"system"}
+  curl https://api.portkey.ai/v1/chat/completions \
+    -H "x-portkey-api-key: $PORTKEY_API_KEY" \
+    -H "x-portkey-config: pc-cache-xxx" \
+    -H "x-portkey-cache-force-refresh: true" \
+    -d '{"model": "@openai-prod/gpt-4o", "messages": [{"role": "user","content": "Hello!"}]}'
+  ```
+</CodeGroup>
+
+<Info>
+  * Requires cache config to be passed
+  * For semantic hits, refreshes ALL matching entries
+</Info>
+
+## Cache Namespace
+
+By default, Portkey partitions cache by all request headers. Use a custom namespace to partition only by your custom string—useful for per-user caching or optimizing hit ratio:
+
+<CodeGroup>
+  ```python Python theme={"system"}
+  response = portkey.with_options(
+      cache_namespace="user-123"
+  ).chat.completions.create(
+      messages=[{"role": "user", "content": "Hello!"}],
+      model="@openai-prod/gpt-4o"
+  )
+  ```
+
+  ```javascript Node theme={"system"}
+  const response = await portkey.chat.completions.create({
+      messages: [{ role: 'user', content: 'Hello' }],
+      model: '@openai-prod/gpt-4o',
+  }, {
+      cacheNamespace: 'user-123'
+  });
+  ```
+
+  ```bash cURL theme={"system"}
+  curl https://api.portkey.ai/v1/chat/completions \
+    -H "x-portkey-api-key: $PORTKEY_API_KEY" \
+    -H "x-portkey-config: pc-cache-xxx" \
+    -H "x-portkey-cache-namespace: user-123" \
+    -d '{"model": "@openai-prod/gpt-4o", "messages": [{"role": "user","content": "Hello!"}]}'
+  ```
+</CodeGroup>
+
+## Cache with Configs
+
+Set cache at top-level or per-target:
+
+<CodeGroup>
+  ```json Top-Level (all targets) theme={"system"}
+  {
+    "cache": { "mode": "semantic", "max_age": 60 },
+    "strategy": { "mode": "fallback" },
+    "targets": [
+      { "override_params": { "model": "@openai-prod/gpt-4o" } },
+      { "override_params": { "model": "@anthropic-prod/claude-3-5-sonnet-20241022" } }
+    ]
+  }
+  ```
+
+  ```json Per-Target theme={"system"}
+  {
+    "strategy": { "mode": "fallback" },
+    "targets": [
+      { "override_params": { "model": "@openai-prod/gpt-4o" }, "cache": { "mode": "simple", "max_age": 200 } },
+      { "override_params": { "model": "@anthropic-prod/claude-3-5-sonnet-20241022" }, "cache": { "mode": "semantic", "max_age": 100 } }
+    ]
+  }
+  ```
+</CodeGroup>
+
+<Info>
+  Target-level cache takes precedence over top-level.
+</Info>
+
+<Note>
+  Targets with `override_params` need that exact param combination cached before hits occur.
+</Note>
+
+## Analytics & Logs
+
+**Analytics** → Cache tab shows:
+
+* Cache hit rate
+* Latency savings
+* Cost savings
+
+**Logs** → Status column shows: `Cache Hit`, `Cache Semantic Hit`, `Cache Miss`, `Cache Refreshed`, or `Cache Disabled`. [Learn more →](/product/observability/logs)
+
+<Frame>
+  <img src="https://mintcdn.com/portkey-docs/VWP2Y8zxPP5N4jE6/images/product/ai-gateway/ai-11.png?fit=max&auto=format&n=VWP2Y8zxPP5N4jE6&q=85&s=1027b849de233a4e1a1d4236c624276d" width="398" height="352" data-path="images/product/ai-gateway/ai-11.png" />
+</Frame>
+
+
+Built with [Mintlify](https://mintlify.com).

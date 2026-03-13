@@ -1,0 +1,198 @@
+# Source: https://docs.portkey.ai/docs/changelog/2024/dec.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.portkey.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# December
+
+**Ending the year with MCP, intelligence, and enterprise controls! 🛠️**
+
+This month we [announced our MCP(Model Context Protocol)](https://portkey.ai/mcp) product - enabling LLMs to leverage 800+ tools through a unified interface. We've also added dynamic usage limits on keys, integrated OpenAI's realtime API, and some new Guardrails. OpenAI's o1, Llama 3.3 models, Gemini & Perplexity's grounding features, and the entire HuggingFace model garden on Vertex AI are also available on Portkey now.
+
+For enterprises, we're introducing comprehensive SSO/SCIM support, enhanced usage controls, and more.
+
+Let's explore what's new!
+
+## Summary
+
+| Area         | Key Updates                                                                                                                                                                                                                                                                                             |
+| :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Platform     | • Announced Portkey MCP Client with support for 800+ tools<br />• Set Usage & budget limits for keys<br />• New strict OpenAI compliance mode                                                                                                                                                           |
+| Integrations | • Support for o1 and Llama 3.3<br /> • Full HuggingFace model garden on Vertex AI<br />• Support for Amazon Nova models<br />• Gemini grounding mode for search-backed responses<br />• Anthropic's new PDF input capabilities<br />• Microsoft Semantic Kernel integration<br />• Realtime API support |
+| Enterprise   | • Flexible SSO/SCIM for any OIDC/SAML provider<br /><br />• New workspace management APIs                                                                                                                                                                                                               |
+| Guardrail    | • New guardrail integrations with Promptfoo, and Mistral Moderations<br />• Enhanced regex guardrail capabilities                                                                                                                                                                                       |
+
+## Model Context Protocol
+
+<Frame>
+  <iframe width="712" height="400" src="https://www.youtube.com/embed/g2_vcYVB4Ig?si=oYkkE-5u7Wn4pLIb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+</Frame>
+
+Portkey's Model Context Protocol client enables your AI agents to seamlessly interact with hundreds of tools while maintaining enterprise-grade observability and control.
+
+* Connect to any database or data source
+* Build and integrate custom tools
+* Execute code safely in controlled environments
+* Maintain complete observability and control
+
+All while radically simplifying the complexity of tool calling with MCP.
+
+<Card icon="rocket" title="Join the MCP waitlist →" href="https://portkey.ai/mcp" horizontal />
+
+***
+
+## Platform
+
+**Dynamic Usage Limits**
+
+<Frame>
+  <img src="https://mintcdn.com/portkey-docs/QFjngWBmb6CT7QXC/images/changelog/usage-limits.png?fit=max&auto=format&n=QFjngWBmb6CT7QXC&q=85&s=5fc135890a55bdaecd1f3ebe0272b160" width="1160" height="1408" data-path="images/changelog/usage-limits.png" />
+</Frame>
+
+We're introducing comprehensive usage controls for both Virtual Keys and API Keys, giving platform teams precise control over LLM access and resource consumption. This release introduces:
+
+* **Time-based Access Control**: Create short-lived keys that automatically expire after a specified duration – perfect for temporary access needs like POCs or time-limited projects
+
+* **Resource Consumption Limits**: Set granular limits including:
+  * Requests per minute (RPM) / Request per hour / Request per day
+  * Tokens per minute (TPM) / Tokens per hour / Tokens per day
+  * Budget caps based on cost incurred or tokens consumed, with periodic reset options (weekly/monthly)
+
+**Enhanced Provider Features**
+
+* Perplexity Integration: Full support for Perplexity API's advanced features including search domain filtering, related questions generation, and citation capabilities
+
+<Card horizontal title="Browse Docs →" href="/integrations/llms/perplexity-ai#perplexity-specific-features" />
+
+**And, there's more!**
+
+* **Bulk Prompt Management**: Move & Delete multiple prompt templates efficiently
+* **Enhanced Logging**: Automatic language detection in logs view
+* [**Local Gateway Console**](https://github.com/portkey-ai/gateway): Complete request logging with key statistics on the open source Gateway
+* [**Virtual Key API**](/api-reference/admin-api/control-plane/virtual-keys/create-virtual-key): Programmatically create virtual keys for cloud deployments
+
+<CardGroup cols={2}>
+  <Card horizontal title="Gemini Grounding" href="/integrations/llms/gemini">
+    Ground LLM responses with real-world data through Google search integration
+  </Card>
+
+  <Card horizontal title="Anthropic PDF" href="/integrations/llms/anthropic">
+    Native support for PDF processing in Anthropic models, with OpenAI's `image_url` field
+  </Card>
+
+  <Card horizontal title="Realtime API" href="/product/ai-gateway/realtime-api">
+    Complete request and response logging for OpenAI realtime API, including model response, cost, and guardrail violations
+  </Card>
+
+  <Card horizontal title="Flag for Strict OpenAI Compliance" href="/product/ai-gateway/strict-open-ai-compliance">
+    New flag to toggle provider-specific features while maintaining OpenAI API compatibility
+  </Card>
+</CardGroup>
+
+## Enterprise
+
+<Frame>
+  <img src="https://mintcdn.com/portkey-docs/QFjngWBmb6CT7QXC/images/changelog/sso.webp?fit=max&auto=format&n=QFjngWBmb6CT7QXC&q=85&s=600e4524a3182584d38428fd7ae782cd" width="1920" height="1338" data-path="images/changelog/sso.webp" />
+</Frame>
+
+**Universal Identity Management**
+
+* **SSO Integration**: Support for all major identity providers through OIDC/SAML standards, enabling seamless enterprise authentication
+* **Automated User Management**: SCIM provisioning for automatic user lifecycle management - from onboarding to role changes and offboarding
+* **Granular Access Control**: Define precise access patterns and manage permissions at both user and workspace levels
+* **Workspace Management API**: Programmatically manage workspaces, user invites, and access controls
+
+**Private Deployments**
+
+Updated documentation for fully private Portkey installations with enhanced security configurations [(*Docs*)](https://github.com/Portkey-AI/helm/tree/main/charts)
+
+## Integrations
+
+**New Providers**
+
+<CardGroup cols={3}>
+  <Card title="HuggingFace on Vertex">
+    Access the complete HuggingFace model garden through Vertex AI
+  </Card>
+
+  <Card title="Self-deployed models on Vertex">
+    You can now call your self-deployed models on Vertex AI through Portkey
+  </Card>
+
+  <Card title="Amazon Nova">
+    Support for Nova models in prompt playground
+  </Card>
+
+  <Card title="Azure AI Inference" href="">
+    Full integration with Azure AI platform
+  </Card>
+
+  <Card title="Qdrant">
+    Route your Qdrant vector DB queries through Portkey
+  </Card>
+
+  <Card title="Additional Providers">
+    Nebius AI, Inference.net, Voyage AI, Recraft AI
+  </Card>
+</CardGroup>
+
+**Model & Framework Updates**
+
+<CardGroup cols={2}>
+  <Card title="OpenAI o1">
+    Integrated OpenAI's latest o1 model across OpenAI & Azure OpenAI
+  </Card>
+
+  <Card title="Llama 3.3">
+    Integration with Meta's latest Llama 3.3 model across multiple providers
+  </Card>
+
+  <Card title="Microsoft Semantic Kernel" href="/api-reference/inference-api/sdks/c-sharp#microsoft-semantic-kernel-example">
+    First-class C# support for Microsoft's Semantic Kernel framework
+  </Card>
+</CardGroup>
+
+## Guardrails
+
+<CardGroup cols={2}>
+  <Card title="Mistral Content Moderation">
+    Content moderation powered by Mistral's latest model
+  </Card>
+
+  <Card title="Promptfoo">
+    Comprehensive evals for jailbreak detection, harmful content, and PII identification
+  </Card>
+</CardGroup>
+
+All guardrail responses now include detailed explanations for check results, helping you understand why specific checks passed or failed.
+
+## Resources
+
+Essential reading for your AI infrastructure:
+
+* [Prompt Injection Attacks](https://portkey.ai/blog/prompt-injection-attacks-in-llms-what-are-they-and-how-to-prevent-them/): Understanding and preventing security risks
+* [Real-time vs Batch Evaluation](https://portkey.ai/blog/real-time-guardrails-vs-batch-evals/): Choosing the right guardrail strategy
+
+## Improvements
+
+* Fixed Cohere streaming on Bedrock
+* Improved media support in moderations API
+* Enhanced regex guardrail functionality
+
+***
+
+## Support
+
+<CardGroup cols={2}>
+  <Card title="Need Help?" icon="bug" href="https://github.com/Portkey-AI/gateway/issues">
+    Open an issue on GitHub
+  </Card>
+
+  <Card title="Join Us" icon="discord" href="https://portkey.wiki/community">
+    Get support in our Discord
+  </Card>
+</CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).
