@@ -1391,3 +1391,6 @@ sites:
 - name: layerchart
   base_url: https://next.layerchart.com/docs/
   description: layerchart documentation
+- name: bryntum-gantt
+  base_url: https://bryntum.com/products/gantt/docs/
+  description: bryntum-gantt documentation
