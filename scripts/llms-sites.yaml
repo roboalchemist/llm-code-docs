@@ -1409,3 +1409,6 @@ sites:
 - name: beefree
   base_url: https://docs.beefree.io/
   description: beefree documentation
+- name: convertkit
+  base_url: https://developers.convertkit.com/
+  description: convertkit documentation
