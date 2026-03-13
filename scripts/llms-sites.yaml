@@ -1397,3 +1397,6 @@ sites:
 - name: hivemq
   base_url: https://docs.hivemq.com/
   description: hivemq documentation
+- name: yarp
+  base_url: https://yarp.dot.net/docs/
+  description: yarp documentation
