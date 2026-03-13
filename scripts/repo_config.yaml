@@ -1795,3 +1795,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/flux
   branch: main
+- name: openstack-heat
+  description: openstack-heat from GitHub
+  repo_url: https://github.com/openstack/heat.git
+  source_folder: doc
+  target_folder: docs/github-scraped/openstack-heat
+  branch: main
