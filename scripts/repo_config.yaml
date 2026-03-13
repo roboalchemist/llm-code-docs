@@ -1855,3 +1855,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/yorkie
   branch: main
+- name: d3.js
+  description: d3.js from GitHub
+  repo_url: https://github.com/d3/d3.git
+  source_folder: docs
+  target_folder: docs/github-scraped/d3.js
+  branch: main
