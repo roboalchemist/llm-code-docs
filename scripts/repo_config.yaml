@@ -1915,3 +1915,9 @@ repositories:
   source_folder: documentation
   target_folder: docs/github-scraped/cytoscape.js
   branch: main
+- name: prince
+  description: prince from GitHub
+  repo_url: https://github.com/yeslogic/prince-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/prince
+  branch: main
