@@ -1445,3 +1445,6 @@ sites:
 - name: microsoft-fluent
   base_url: https://react.fluentui.dev/
   description: microsoft-fluent documentation
+- name: reka-ui
+  base_url: https://reka-ui.com/
+  description: reka-ui documentation
