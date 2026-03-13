@@ -1973,3 +1973,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/netflix-conductor
   branch: main
+- name: quartz-scheduler
+  description: quartz-scheduler from GitHub
+  repo_url: https://github.com/quartz-scheduler/quartz-scheduler.org-site.git
+  source_folder: documentation
+  target_folder: docs/github-scraped/quartz-scheduler
+  branch: main
