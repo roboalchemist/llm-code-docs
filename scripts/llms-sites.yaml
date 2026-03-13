@@ -1337,3 +1337,6 @@ sites:
 - name: aws-ecs
   base_url: https://docs.aws.amazon.com/
   description: aws-ecs documentation
+- name: dify
+  base_url: https://docs.dify.ai/
+  description: dify documentation

@@ -1,0 +1,40 @@
+# Source: https://docs.dify.ai/en/develop-plugin/publishing/faq/faq.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.dify.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Frequently Asked Questions
+
+> This document answers common questions about Dify plugin development and installation, including how to resolve plugin upload failures (by modifying the author field) and how to handle verification exceptions during plugin installation (by setting the FORCE_VERIFYING_SIGNATURE environment variable).
+
+## What should I do if the plugin upload fails during installation?
+
+**Error Details**: An error message `PluginDaemonBadRequestError: plugin_unique_identifier is not valid` appears.
+
+**Solution**: Modify the `author` field in the `manifest.yaml` file under the plugin project and the `.yaml` file under the `/provider` path to your GitHub ID.
+
+Rerun the plugin packaging command and install the new plugin package.
+
+## How should I handle exceptions encountered during plugin installation?
+
+**Problem Description**: An exception message is encountered during plugin installation: `plugin verification has been enabled, and the plugin you want to install has a bad signature`. How should this be handled?
+
+**Solution**: Add the field `FORCE_VERIFYING_SIGNATURE=false` to the end of the `/docker/.env` configuration file. Then, run the following commands to restart the Dify service:
+
+```bash  theme={null}
+cd docker
+docker compose down
+docker compose up -d
+```
+
+After adding this field, the Dify platform will allow the installation of all plugins not listed (reviewed) on the Dify Marketplace, which may pose security risks.
+
+It is recommended to install plugins in a testing/sandbox environment first and confirm their safety before installing them in a production environment.
+
+***
+
+[Edit this page](https://github.com/langgenius/dify-docs/edit/main/en/develop-plugin/publishing/faq/faq.mdx) | [Report an issue](https://github.com/langgenius/dify-docs/issues/new?template=docs.yml)
+
+
+Built with [Mintlify](https://mintlify.com).
