@@ -1457,3 +1457,6 @@ sites:
 - name: vuetify
   base_url: https://vuetifyjs.com/
   description: vuetify documentation
+- name: cesiumjs
+  base_url: https://cesiumjs.org/docs/
+  description: cesiumjs documentation
