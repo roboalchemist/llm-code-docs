@@ -1460,3 +1460,6 @@ sites:
 - name: cesiumjs
   base_url: https://cesiumjs.org/docs/
   description: cesiumjs documentation
+- name: dash
+  base_url: https://docs.dash.org/
+  description: dash documentation
