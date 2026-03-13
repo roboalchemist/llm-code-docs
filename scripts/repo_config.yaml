@@ -1735,3 +1735,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/openlineage
   branch: main
+- name: geoserver
+  description: geoserver from GitHub
+  repo_url: https://github.com/geoserver/geoserver.git
+  source_folder: doc
+  target_folder: docs/github-scraped/geoserver
+  branch: main
