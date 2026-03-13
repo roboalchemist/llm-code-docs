@@ -1397,3 +1397,6 @@ sites:
 - name: zerobounce
   base_url: https://www.zerobounce.net/
   description: zerobounce documentation
+- name: rxdb
+  base_url: https://rxdb.info/
+  description: rxdb documentation
