@@ -1394,3 +1394,6 @@ sites:
 - name: bryntum-gantt
   base_url: https://bryntum.com/products/gantt/docs/
   description: bryntum-gantt documentation
+- name: vest
+  base_url: https://www.vestjs.dev/
+  description: vest documentation
