@@ -1454,3 +1454,6 @@ sites:
 - name: mantine
   base_url: https://mantine.dev/
   description: mantine documentation
+- name: vuetify
+  base_url: https://vuetifyjs.com/
+  description: vuetify documentation
