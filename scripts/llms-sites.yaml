@@ -1442,3 +1442,6 @@ sites:
 - name: react-navigation
   base_url: https://reactnavigation.org/
   description: react-navigation documentation
+- name: microsoft-fluent
+  base_url: https://react.fluentui.dev/
+  description: microsoft-fluent documentation
