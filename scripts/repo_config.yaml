@@ -2006,3 +2006,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/pip
   branch: main
+- name: salt
+  description: salt from GitHub
+  repo_url: https://github.com/saltstack/salt.git
+  source_folder: doc
+  target_folder: docs/github-scraped/salt
+  branch: main
