@@ -1951,3 +1951,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/unform
   branch: main
+- name: gatsby
+  description: gatsby from GitHub
+  repo_url: https://github.com/gatsbyjs/gatsby.git
+  source_folder: docs
+  target_folder: docs/github-scraped/gatsby
+  branch: main
