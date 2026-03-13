@@ -1400,3 +1400,6 @@ sites:
 - name: beyondtrust-password-safe
   base_url: https://www.beyondtrust.com/docs/
   description: beyondtrust-password-safe documentation
+- name: safety
+  base_url: https://docs.safetycli.com/
+  description: safety documentation
