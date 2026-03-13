@@ -1,0 +1,115 @@
+# Source: https://docs.iredmail.org/iredmail.releases.html
+
+Title: iRedMail release notes and upgrade tutorials
+
+URL Source: https://docs.iredmail.org/iredmail.releases.html
+
+Published Time: Thu, 26 Feb 2026 14:16:49 GMT
+
+Markdown Content:
+iRedMail release notes and upgrade tutorials
+===============
+
+[![Image 1: iRedMail web site](https://docs.iredmail.org/images/logo-iredmail.png)iRedMail](https://www.iredmail.org/)//[Document Index](https://docs.iredmail.org/index.html)
+
+iRedMail release notes and upgrade tutorials
+============================================
+
+Attention
+
+*   iRedMail source code: [https://github.com/iredmail/iRedMail](https://github.com/iredmail/iRedMail).
+*   Download the [latest iRedMail stable release](https://www.iredmail.org/download.html).
+
+Attention
+
+Check out the lightweight on-premises email archiving software developed by iRedMail team: [Spider Email Archiver](https://spiderd.io/).
+
+*   [iRedMail release notes and upgrade tutorials](https://docs.iredmail.org/iredmail.releases.html#iredmail-release-notes-and-upgrade-tutorials)
+    *   [Why keep your iRedMail server up to date](https://docs.iredmail.org/iredmail.releases.html#why-keep-your-iredmail-server-up-to-date)
+    *   [How upgrading works](https://docs.iredmail.org/iredmail.releases.html#how-upgrading-works)
+    *   [Release notes and upgrade tutorials](https://docs.iredmail.org/iredmail.releases.html#release-notes-and-upgrade-tutorials)
+
+### Why keep your iRedMail server up to date
+
+*   The latest iRedMail release brings new features, improvements, and bug fixes.
+*   If you plan to migrate to a new iRedMail server someday, migrating iRedMail to another server which runs the same release is the easiest path.
+
+### How upgrading works
+
+*   Usually, upgrading iRedMail is just updating some config files to achieve new features or fix bugs, you do **NOT** need to download and run the latest iRedMail installer (`bash iRedMail.sh`).
+
+*   **Do NOT skip releases**. Upgrades are only supported from one release to the release immediately following it.
+
+*   If you're looking for upgrading a very old iRedMail server to the latest iRedMail release, there's an alternative solution: [Migrating to a new iRedMail server](https://docs.iredmail.org/migrate.to.new.iredmail.server.html).
+
+### Release notes and upgrade tutorials
+
+Remote Upgrade Assistance
+
+Check out our [remote upgrade support](https://www.iredmail.org/support.html) if you need assistance.
+
+| Release Notes | Date | Upgrade tutorial | Comment |
+| --- | --- | --- | --- |
+| [1.7.4](https://forum.iredmail.org/topic20900.html) | Jun 3, 2025 | [Upgrade from iRedMail-1.7.3](https://docs.iredmail.org/upgrade.iredmail.1.7.3-1.7.4.html) | Roundcube security fix. |
+| [1.7.3](https://forum.iredmail.org/topic20846.html) | Apr 4, 2025 | [Upgrade from iRedMail-1.7.2](https://docs.iredmail.org/upgrade.iredmail.1.7.2-1.7.3.html) | LDAP schema change. |
+| [1.7.2](https://forum.iredmail.org/topic20760.html) | Jan 24, 2025 | [Upgrade from iRedMail-1.7.1](https://docs.iredmail.org/upgrade.iredmail.1.7.1-1.7.2.html) | LDAP schema change. |
+| [1.7.1](https://forum.iredmail.org/topic20547.html) | Aug 5, 2024 | [Upgrade from iRedMail-1.7.0](https://docs.iredmail.org/upgrade.iredmail.1.7.0-1.7.1.html) |  |
+| [1.7.0](https://forum.iredmail.org/topic20501.html) | Jul 17, 2024 | [Upgrade from iRedMail-1.6.8](https://docs.iredmail.org/upgrade.iredmail.1.6.8-1.7.0.html) |  |
+| [1.6.8](https://forum.iredmail.org/topic20243.html) | Dec 29, 2023 | [Upgrade from iRedMail-1.6.7](https://docs.iredmail.org/upgrade.iredmail.1.6.7-1.6.8.html) | Mitigate Postfix "SMTP Smuggling" issue. |
+| [1.6.7](https://forum.iredmail.org/topic20143.html) | Nov 9, 2023 | [Upgrade from iRedMail-1.6.6](https://docs.iredmail.org/upgrade.iredmail.1.6.6-1.6.7.html) | SECURITY UPDATE of Roundcube webmail (v1.6.5). |
+| [1.6.6](https://forum.iredmail.org/topic20106.html) | Oct 23, 2023 | [Upgrade from iRedMail-1.6.5](https://docs.iredmail.org/upgrade.iredmail.1.6.5-1.6.6.html) | SECURITY UPDATE of Roundcube webmail (v1.6.4). |
+| [1.6.5](https://forum.iredmail.org/topic20041.html) | Sep 20, 2023 | [Upgrade from iRedMail-1.6.4](https://docs.iredmail.org/upgrade.iredmail.1.6.4-1.6.5.html) | SECURITY UPDATE of Roundcube webmail (v1.6.3). |
+| [1.6.4](https://forum.iredmail.org/topic19949.html) | Jul 28, 2023 | [Upgrade from iRedMail-1.6.3](https://docs.iredmail.org/upgrade.iredmail.1.6.3-1.6.4.html) | Supports Debian 12, enables SOGo on CentOS / Rocky / AlmaLinux 9. |
+| [1.6.3](https://forum.iredmail.org/topic19786.html) | May 23, 2023 | [Upgrade from iRedMail-1.6.1 or 1.6.2](https://docs.iredmail.org/upgrade.iredmail.1.6.1-1.6.3.html) | Supports new OpenBSD release (7.3), also contains MySQL structure change. |
+| [1.6.2](https://forum.iredmail.org/topic19336.html) | Sep 30, 2022 |  | No upgrade required for iRedMail-1.6.1. |
+| [1.6.1](https://forum.iredmail.org/topic19232.html) | Aug 22, 2022 | [Upgrade from iRedMail-1.6.0](https://docs.iredmail.org/upgrade.iredmail.1.6.0-1.6.1.html) |  |
+| [1.6.0](https://forum.iredmail.org/topic19008.html) | May 20, 2022 | [Upgrade from iRedMail-1.5.2](https://docs.iredmail.org/upgrade.iredmail.1.5.2-1.6.0.html) |  |
+| [1.5.2](https://forum.iredmail.org/topic18820.html) | Mar 16, 2022 | [Upgrade from iRedMail-1.5.1](https://docs.iredmail.org/upgrade.iredmail.1.5.1-1.5.2.html) |  |
+| [1.5.1](https://forum.iredmail.org/topic18638.html) | Dec 31, 2021 | [Upgrade from iRedMail-1.5.0](https://docs.iredmail.org/upgrade.iredmail.1.5.0-1.5.1.html) |  |
+| [1.5.0](https://forum.iredmail.org/topic18626.html) | Dec 27, 2021 | [Upgrade from iRedMail-1.4.2](https://docs.iredmail.org/upgrade.iredmail.1.4.2-1.5.0.html) |  |
+| [1.4.2](https://forum.iredmail.org/topic18407.html) | Sep 13, 2021 | [Upgrade from iRedMail-1.4.1](https://docs.iredmail.org/upgrade.iredmail.1.4.1-1.4.2.html) | Contains SQL/LDAP structure change. |
+| [1.4.1](https://forum.iredmail.org/topic18392.html) | Sep 8, 2021 | [Upgrade from iRedMail-1.4.0](https://docs.iredmail.org/upgrade.iredmail.1.4.0-1.4.1.html) | Contains SQL/LDAP structure change. |
+| [1.4.0](https://forum.iredmail.org/topic18033.html) | Apr 13, 2021 | [Upgrade from iRedMail-1.3.2](https://docs.iredmail.org/upgrade.iredmail.1.3.2-1.4.0.html) | Contains SQL/LDAP structure change. |
+| [1.3.2](https://forum.iredmail.org/topic17474.html) | Oct 28, 2020 | [Upgrade from iRedMail-1.3.1](https://docs.iredmail.org/upgrade.iredmail.1.3.1-1.3.2.html) | Bug fix release. |
+| [1.3.1](https://forum.iredmail.org/topic17065.html) | Jul 7, 2020 | [Upgrade from iRedMail-1.3](https://docs.iredmail.org/upgrade.iredmail.1.3-1.3.1.html) | New Roundcube release (1.4.7) with one security fix. |
+| [1.3](https://forum.iredmail.org/topic17020.html) | Jun 29, 2020 | [Upgrade from iRedMail-1.2.1](https://docs.iredmail.org/upgrade.iredmail.1.2.1-1.3.html) | New Roundcube release (1.4.6) with few security fixes. |
+| [1.2.1](https://forum.iredmail.org/topic16756.html) | Apr 30, 2020 | [Upgrade from iRedMail-1.2](https://docs.iredmail.org/upgrade.iredmail.1.2-1.2.1.html) | New Roundcube release (1.4.4) with few security fixes. |
+| [1.2](https://forum.iredmail.org/topic16714.html) | Apr 16, 2020 | [Upgrade from iRedMail-1.1](https://docs.iredmail.org/upgrade.iredmail.1.1-1.2.html) | Bug fix release. |
+| [1.1](https://forum.iredmail.org/topic16507.html) | Feb 11, 2020 | [Upgrade from iRedMail-1.0](https://docs.iredmail.org/upgrade.iredmail.1.0-1.1.html) | Bug fix release. |
+| [1.0](https://forum.iredmail.org/topic16275.html) | Dec 9, 2019 | [Upgrade from iRedMail-0.9.9](https://docs.iredmail.org/upgrade.iredmail.0.9.9-1.0.html) | Contains SQL/LDAP structure change |
+| [0.9.9](https://forum.iredmail.org/topic15064.html) | Dec 17, 2018 | [Upgrade from iRedMail-0.9.8](https://docs.iredmail.org/upgrade.iredmail.0.9.8-0.9.9.html) | Contains SQL/LDAP structure change |
+| [0.9.8](https://forum.iredmail.org/topic14077.html) | Apr 3, 2018 | [Upgrade from iRedMail-0.9.7](https://docs.iredmail.org/upgrade.iredmail.0.9.7-0.9.8.html) | Contains SQL/LDAP structure change |
+| [0.9.7](https://forum.iredmail.org/topic12944.html) | Jul 1, 2017 | [Upgrade from iRedMail-0.9.6](https://docs.iredmail.org/upgrade.iredmail.0.9.6-0.9.7.html) | Contains SQL structure change |
+| [0.9.6](https://forum.iredmail.org/topic12262.html) | Jan 23, 2017 | [Upgrade from iRedMail-0.9.5-1](https://docs.iredmail.org/upgrade.iredmail.0.9.5.1-0.9.6.html) | Contains SQL/LDAP structure changes |
+| [0.9.5-1](https://forum.iredmail.org/topic11049.html) | May 10, 2016 | [Upgrade from iRedMail-0.9.5](https://docs.iredmail.org/upgrade.iredmail.0.9.5-0.9.5-1.html) | Small bug fix release |
+| [0.9.5](https://forum.iredmail.org/topic10994.html) | May 3, 2016 | [Upgrade from iRedMail-0.9.4](https://docs.iredmail.org/upgrade.iredmail.0.9.4-0.9.5.html) | Contains SQL/LDAP structure changes |
+| [0.9.4](https://forum.iredmail.org/topic10512.html) | Jan 25, 2016 | [Upgrade from iRedMail-0.9.3](https://docs.iredmail.org/upgrade.iredmail.0.9.3-0.9.4.html) |  |
+| [0.9.3](https://forum.iredmail.org/topic10261.html) | Dec 14, 2015 | [Upgrade from iRedMail-0.9.2](https://docs.iredmail.org/upgrade.iredmail.0.9.2-0.9.3.html) | Contains SQL/LDAP structure changes |
+| [0.9.2](https://forum.iredmail.org/topic9280.html) | Jun 3, 2015 | [Upgrade from iRedMail-0.9.1](https://docs.iredmail.org/upgrade.iredmail.0.9.1-0.9.2.html) |  |
+| [0.9.1](https://forum.iredmail.org/topic9144.html) | May 15, 2015 | [Upgrade from iRedMail-0.9.0](https://docs.iredmail.org/upgrade.iredmail.0.9.0-0.9.1.html) | Contains SQL/LDAP structure changes |
+| [0.9.0](https://forum.iredmail.org/topic8443.html) | Dec 31, 2014 | [Upgrade from iRedMail-0.8.7](https://docs.iredmail.org/upgrade.iredmail.0.8.7-0.9.0.html) | Contains SQL/LDAP structure changes |
+| [0.8.7](https://forum.iredmail.org/topic6872-news-announcements-bug-fixes-iredmail087-has-been-released.html) | May 13, 2014 | [Upgrade from iRedMail-0.8.6](https://docs.iredmail.org/upgrade.iredmail.0.8.6-0.8.7.html) | Contains SQL/LDAP structure changes |
+| [0.8.6](https://forum.iredmail.org/topic5831-iredmail086-has-been-released.html) | Dec 16, 2013 | [Upgrade from iRedMail-0.8.5](https://docs.iredmail.org/upgrade.iredmail.0.8.5-0.8.6.html) |  |
+| [0.8.5](https://forum.iredmail.org/topic5167-news-announcements-bug-fixes-iredmail085-has-been-released.html) | Jul 16, 2013 | [Upgrade from iRedMail-0.8.4](https://docs.iredmail.org/upgrade.iredmail.0.8.4-0.8.5.html) |  |
+| [0.8.4](https://forum.iredmail.org/topic4646-news-announcements-bug-fixes-iredmail084-has-been-released.html) | Mar 26, 2013 | [Upgrade from iRedMail-0.8.3](https://docs.iredmail.org/upgrade.iredmail.0.8.3-0.8.4.html) |  |
+| [0.8.3](https://forum.iredmail.org/topic4016-news-announcements-bug-fixes-iredmail083-has-been-released.html) | Oct 13, 2012 | [Upgrade from iRedMail-0.8.2](https://docs.iredmail.org/upgrade.iredmail.0.8.2-0.8.3.html) |  |
+| [0.8.2](https://forum.iredmail.org/topic3913-news-announcements-bug-fixes-iredmail082-has-been-released.html) | Sep 19, 2012 | [Upgrade from iRedMail-0.8.1](https://docs.iredmail.org/upgrade.iredmail.0.8.1-0.8.2.html) |  |
+| [0.8.1](https://forum.iredmail.org/topic3499-news-announcements-bug-fixes-iredmail081-has-been-released.html) | Jun 8, 2012 | [Upgrade from iRedMail-0.8.0](https://docs.iredmail.org/upgrade.iredmail.0.8.0-0.8.1.html) |  |
+| [0.8.0](https://forum.iredmail.org/topic3345.html) | May 10, 2012 | [Upgrade from iRedMail-0.7.4](https://docs.iredmail.org/upgrade.iredmail.0.7.4-0.8.0.html) |  |
+| [0.7.4](https://forum.iredmail.org/topic2816-iredmail074-has-been-released.html) | Jan 9, 2012 | [Upgrade from iRedMail-0.7.3](https://docs.iredmail.org/upgrade.iredmail.0.7.3-0.7.4.html) |  |
+| 0.7.3 | Aug 17, 2011 | [Upgrade from iRedMail-0.7.2](https://docs.iredmail.org/upgrade.iredmail.0.7.2-0.7.3.html) |  |
+| 0.7.2 | Jun 10, 2011 | [Upgrade from iRedMail-0.7.1](https://docs.iredmail.org/upgrade.iredmail.0.7.1-0.7.2.html) |  |
+| 0.7.1 | May 1, 2011 | [Upgrade from iRedMail-0.7.0](https://docs.iredmail.org/upgrade.iredmail.0.7.0-0.7.1.html) |  |
+| 0.7.0 | Apr 1, 2011 | [Upgrade from iRedMail-0.6.1](https://docs.iredmail.org/upgrade.iredmail.0.6.1-0.7.0.html) |  |
+| 0.6.1 | Aug 14, 2010 | [Upgrade from iRedMail-0.6.0](https://docs.iredmail.org/upgrade.iredmail.0.6.0-0.6.1.html) |  |
+| 0.6.0 | May 31, 2010 | [Upgrade from iRedMail-0.5.1](https://docs.iredmail.org/upgrade.iredmail.0.5.1-0.6.0.html) |  |
+| 0.5.1 | Oct 31, 2009 | [Upgrade from iRedMail-0.5.1](https://docs.iredmail.org/upgrade.iredmail.0.5.0-0.5.1.html) |  |
+| 0.5.0 | Aug 16, 2009 | [Upgrade from iRedMail-0.4.0](https://docs.iredmail.org/upgrade.iredmail.0.4.0-0.5.0.html) |  |
+| 0.4.0 | Mar 10, 2009 | [Upgrade from iRedMail-0.3.2](https://docs.iredmail.org/upgrade.iredmail.0.3.2-0.4.0.html) |  |
+| 0.3.2 | Dec 11, 2008 |  |  |
+| 0.3.1 | Oct 21, 2008 |  |  |
+| 0.3.0 | Sep 22, 2008 |  |  |
+| 0.2 | Aug 20, 2008 |  |  |
+| 0.1 | Jun 28, 2008 |  |  |
+
+All documents are available in [GitHub repository](https://github.com/iredmail/docs/), and published under [Creative Commons](http://creativecommons.org/licenses/by-nd/3.0/us/) license. You can [download the latest version](https://github.com/iredmail/docs/archive/master.zip) for offline reading. If you found something wrong, please do [contact us](https://www.iredmail.org/contact.html) to fix it.
