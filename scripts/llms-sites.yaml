@@ -1343,3 +1343,6 @@ sites:
 - name: estuary
   base_url: https://estuary.dev/
   description: estuary documentation
+- name: fluxcd
+  base_url: https://fluxcd.control-plane.io/
+  description: fluxcd documentation
