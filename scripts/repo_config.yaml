@@ -1813,3 +1813,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/ariadne-codegen
   branch: main
+- name: graphql-playground
+  description: graphql-playground from GitHub
+  repo_url: https://github.com/graphcool/graphql-playground.git
+  source_folder: docs
+  target_folder: docs/github-scraped/graphql-playground
+  branch: main
