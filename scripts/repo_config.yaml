@@ -1789,3 +1789,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/uipath
   branch: main
+- name: flux
+  description: flux from GitHub
+  repo_url: https://github.com/facebookarchive/flux.git
+  source_folder: docs
+  target_folder: docs/github-scraped/flux
+  branch: main
