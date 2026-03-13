@@ -1394,3 +1394,6 @@ sites:
 - name: portkey
   base_url: https://portkey.ai/docs/
   description: portkey documentation
+- name: hivemq
+  base_url: https://docs.hivemq.com/
+  description: hivemq documentation
