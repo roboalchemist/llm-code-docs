@@ -1406,3 +1406,6 @@ sites:
 - name: docker-scout
   base_url: https://docs.docker.com/
   description: docker-scout documentation
+- name: gitguardian
+  base_url: https://docs.gitguardian.com/
+  description: gitguardian documentation
