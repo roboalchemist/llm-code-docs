@@ -1771,3 +1771,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/apache-mesos
   branch: main
+- name: datarobot
+  description: datarobot from GitHub
+  repo_url: https://github.com/datarobot/airflow-provider-datarobot.git
+  source_folder: docs
+  target_folder: docs/github-scraped/datarobot
+  branch: main
