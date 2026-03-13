@@ -2060,3 +2060,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/direnv
   branch: main
+- name: veracode
+  description: veracode from GitHub
+  repo_url: https://github.com/veracode/veracode-api-py.git
+  source_folder: docs
+  target_folder: docs/github-scraped/veracode
+  branch: main
