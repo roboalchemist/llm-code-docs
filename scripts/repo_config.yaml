@@ -2021,3 +2021,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/apigee
   branch: main
+- name: elastic-email
+  description: elastic-email from GitHub
+  repo_url: https://github.com/ElasticEmail/elasticemail-js.git
+  source_folder: docs
+  target_folder: docs/github-scraped/elastic-email
+  branch: main
