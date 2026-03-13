@@ -1424,3 +1424,6 @@ sites:
 - name: pinpoint
   base_url: https://pinpoint-apm.gitbook.io/
   description: pinpoint documentation
+- name: clickhouse
+  base_url: https://clickhouse.ferndocs.com/
+  description: clickhouse documentation
