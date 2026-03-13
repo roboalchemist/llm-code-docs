@@ -1418,3 +1418,6 @@ sites:
 - name: instana
   base_url: https://www.instana.com/
   description: instana documentation
+- name: aws-x-ray
+  base_url: https://docs.aws.amazon.com/
+  description: aws-x-ray documentation
