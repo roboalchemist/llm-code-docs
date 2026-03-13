@@ -1370,3 +1370,6 @@ sites:
 - name: ibm-carbon-design-system
   base_url: https://carbondesignsystem.com/
   description: ibm-carbon-design-system documentation
+- name: capacitor
+  base_url: https://www.capgo.app/
+  description: capacitor documentation
