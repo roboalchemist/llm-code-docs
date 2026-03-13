@@ -1939,3 +1939,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/napari
   branch: main
+- name: deck.gl
+  description: deck.gl from GitHub
+  repo_url: https://github.com/visgl/deck.gl.git
+  source_folder: docs
+  target_folder: docs/github-scraped/deck.gl
+  branch: main
