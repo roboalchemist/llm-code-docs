@@ -1385,3 +1385,6 @@ sites:
 - name: mailerlite
   base_url: https://developers-classic.mailerlite.com/
   description: mailerlite documentation
+- name: maizzle
+  base_url: https://maizzle.com/
+  description: maizzle documentation
