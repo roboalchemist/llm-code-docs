@@ -1388,3 +1388,6 @@ sites:
 - name: unity-package-manager
   base_url: https://docs.unity3d.com/Packages/com.unity.package-manager-ui@2.0/manual/
   description: unity-package-manager documentation
+- name: rye
+  base_url: https://rye.dev/
+  description: rye documentation
