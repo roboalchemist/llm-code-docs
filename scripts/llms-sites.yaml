@@ -1415,3 +1415,6 @@ sites:
 - name: mailcatcher
   base_url: https://mailcatcher.dev/
   description: mailcatcher documentation
+- name: mailchimp-transactional
+  base_url: https://mailchimp.com/
+  description: mailchimp-transactional documentation
