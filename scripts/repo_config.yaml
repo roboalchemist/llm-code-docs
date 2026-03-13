@@ -2018,3 +2018,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/winget
   branch: main
+- name: pytermgui
+  description: pytermgui from GitHub
+  repo_url: https://github.com/bczsalba/PyTermGUI.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pytermgui
+  branch: main
