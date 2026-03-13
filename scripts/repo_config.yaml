@@ -2051,3 +2051,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/observable-plot
   branch: main
+- name: flowbite-vue
+  description: flowbite-vue from GitHub
+  repo_url: https://github.com/themesberg/flowbite-vue.git
+  source_folder: docs
+  target_folder: docs/github-scraped/flowbite-vue
+  branch: main
