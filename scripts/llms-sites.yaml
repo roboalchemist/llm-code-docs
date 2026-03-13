@@ -1394,3 +1394,6 @@ sites:
 - name: pastel
   base_url: https://pastel.innei.dev/
   description: pastel documentation
+- name: asciify
+  base_url: https://asciify.org/
+  description: asciify documentation
