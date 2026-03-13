@@ -1397,3 +1397,6 @@ sites:
 - name: vest
   base_url: https://www.vestjs.dev/
   description: vest documentation
+- name: tinacms
+  base_url: https://www.tina.io/
+  description: tinacms documentation
