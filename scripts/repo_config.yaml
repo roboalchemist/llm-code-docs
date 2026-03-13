@@ -2075,3 +2075,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/bulma
   branch: main
+- name: spectrum-design-system
+  description: spectrum-design-system from GitHub
+  repo_url: https://github.com/adobe/spectrum-design-data.git
+  source_folder: docs
+  target_folder: docs/github-scraped/spectrum-design-system
+  branch: main
