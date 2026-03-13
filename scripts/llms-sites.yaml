@@ -1391,3 +1391,6 @@ sites:
 - name: rye
   base_url: https://rye.dev/
   description: rye documentation
+- name: pastel
+  base_url: https://pastel.innei.dev/
+  description: pastel documentation
