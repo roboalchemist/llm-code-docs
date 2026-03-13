@@ -1403,3 +1403,6 @@ sites:
 - name: safety
   base_url: https://docs.safetycli.com/
   description: safety documentation
+- name: docker-scout
+  base_url: https://docs.docker.com/
+  description: docker-scout documentation
