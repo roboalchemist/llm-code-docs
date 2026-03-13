@@ -2030,3 +2030,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/puppet
   branch: main
+- name: colorist
+  description: colorist from GitHub
+  repo_url: https://github.com/jakob-bagterp/colorist-for-python.git
+  source_folder: docs
+  target_folder: docs/github-scraped/colorist
+  branch: main
