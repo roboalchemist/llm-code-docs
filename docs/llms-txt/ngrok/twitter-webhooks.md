@@ -1,0 +1,179 @@
+# Source: https://ngrok.com/docs/integrations/webhooks/twitter-webhooks.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# X (formerly Twitter) Webhooks
+
+> Develop and test X (formerly Twitter) webhooks from localhost.
+
+This guide walks you through using ngrok to receive X (formerly Twitter) webhooks on your localhost app.
+
+By integrating ngrok with X, you can:
+
+* Develop and test X webhooks locally without deploying to a public environment or setting up HTTPS.
+* Inspect and troubleshoot requests from X in real time via the inspection UI and API.
+* Modify and replay X webhook requests with a single click instead of reproducing events manually in your X account.
+* Secure your app with X webhook validation provided by ngrok.
+  Invalid requests are blocked by ngrok before reaching your app.
+
+## What you'll need
+
+* An [ngrok account](https://ngrok.com/signup) and your [authtoken](https://dashboard.ngrok.com/get-started/your-authtoken).
+* The [ngrok agent](https://ngrok.com/download) installed.
+* [Node.js](https://nodejs.org/) installed (for the sample app, or use your own app).
+* An approved X Developer account.
+
+## 1. Start your app
+
+For this tutorial, you can use the [sample Node.js app on GitHub](https://github.com/ngrok/ngrok-webhook-nodejs-sample).
+
+To install the sample, run the following in a terminal:
+
+```bash  theme={null}
+git clone https://github.com/ngrok/ngrok-webhook-nodejs-sample.git
+cd ngrok-webhook-nodejs-sample
+npm install
+```
+
+Then start the app:
+
+```bash  theme={null}
+npm start
+```
+
+The app runs on port 3000 by default.
+
+You can confirm it's running by visiting `http://localhost:3000`.
+The app logs request headers and body in the terminal and shows a message in the browser.
+
+## 2. Expose your app with ngrok
+
+Once your app is running locally, you're ready to put it online securely using ngrok.
+
+* Copy [your ngrok authtoken](https://dashboard.ngrok.com/get-started/your-authtoken) from the dashboard.
+
+<Tip>
+  The ngrok agent uses your authtoken to authenticate when you start a tunnel.
+</Tip>
+
+* Start ngrok:
+
+  ```bash  theme={null}
+  ngrok http 3000
+  ```
+
+* Copy the URL ngrok displays.
+  Your app is now exposed at that URL for use with X.
+
+## 3. Configure X to send webhooks
+
+X can send webhook requests to your app for Account Activity API events.
+To register:
+
+* Sign in to the [X Developer Portal](https://developer.twitter.com/) and click **Developer Portal**.
+
+* Create a project and app (e.g. **Development** environment), and note **API Key**, **API Key Secret**, **Bearer Token**, and generate **Access Token** and **Access Token Secret** under **Keys and tokens**.
+
+* Under **Products**, click **Premium** and **Dev environments**, then **Set up dev environment** for **Account Activity API**, name the environment, and select your app.
+
+* Register the webhook with a POST request (URL-encode your ngrok URL). Example:
+
+  ```bash  theme={null}
+  curl --request POST --url 'https://api.twitter.com/1.1/account_activity/webhooks.json?url=ENCODED_URL' \
+  --header 'authorization: OAuth oauth_consumer_key="CONSUMER_KEY", oauth_nonce="GENERATED", oauth_signature="GENERATED", oauth_signature_method="HMAC-SHA1", oauth_timestamp="GENERATED", oauth_token="ACCESS_TOKEN", oauth_version="1.0"'
+  ```
+
+  Replace `ENCODED_URL`, `CONSUMER_KEY`, `ACCESS_TOKEN`, and generated OAuth values as needed.
+
+* Subscribe a user to the webhook (use the same OAuth signing with the subscribing user’s access token):
+
+  ```bash  theme={null}
+  curl --request POST --url 'https://api.twitter.com/1.1/account_activity/all/APP_NAME/subscriptions.json' \
+  --header 'authorization: OAuth ...'
+  ```
+
+### Run webhooks with X and ngrok
+
+X sends different request body contents depending on the event.
+To trigger a notification:
+
+* Sign in to [X](https://www.twitter.com/) and post a tweet.
+
+Confirm your localhost app receives the notification and logs both headers and body in the terminal.
+
+### Inspecting requests
+
+ngrok's [Traffic Inspector](https://dashboard.ngrok.com/traffic-inspector) captures all requests made through your ngrok endpoint to your localhost app.
+Select any request to view detailed information about both the request and response.
+
+<Info>
+  To avoid exposing secrets, accounts only collect traffic metadata by default.
+  You must enable full capture in the Observability section of [your account settings](https://dashboard.ngrok.com/settings) to capture complete request and response data.
+</Info>
+
+Use the traffic inspector to:
+
+* Validate webhook payloads and response data
+* Debug request headers, methods, and status codes
+* Troubleshoot integration issues without adding logging to your app
+
+### Replaying requests
+
+Test your webhook handling code without triggering new events from your service using the Traffic Inspector's replay feature:
+
+1. Send a test webhook from your service to generate traffic in your Traffic Inspector.
+
+2. Select the request you want to replay in the traffic inspector.
+
+3. Choose your replay option:
+   * Click **Replay** to send the exact same request again
+   * Select **Replay with modifications** to edit the request before sending
+
+4. (Optional) Modify the request: Edit any part of the original request, such as changing field values in the request body.
+
+5. Send the request by clicking **Replay**.
+
+Your local application will receive the replayed request and log the data to the terminal.
+
+## Secure webhook requests
+
+ngrok can verify that incoming requests are from your X webhook so only that traffic reaches your app.
+
+<Note>
+  Webhook verification is limited to 500 validations per month on free accounts.
+  If you need more, you can upgrade to Hobbyist or Pay-as-you-go.
+  See [TPU Pricing](/pricing-limits/traffic-policy-unit-pricing/) for details.
+</Note>
+
+To add verification:
+
+* In the X Developer Portal, click **DEVELOPER TOOLS** and **Webhooks**.
+
+* On the **Webhooks** page, click **Copy** to copy the **Secret** value.
+
+* Create a Traffic Policy file named `twitter_policy.yml`.
+  Replace `{your webhook secret}` with the value you copied:
+
+  ```yaml  theme={null}
+  on_http_request:
+    - actions:
+        - type: verify-webhook
+          config:
+            provider: twitter
+            secret: "{your webhook secret}"
+  ```
+
+* Restart ngrok with the policy file:
+
+  ```bash  theme={null}
+  ngrok http 3000 --traffic-policy-file twitter_policy.yml
+  ```
+
+* Post a new tweet on [X](https://www.twitter.com/) to trigger the webhook.
+
+Your app should receive the request and log it in the terminal.
+
+
+Built with [Mintlify](https://mintlify.com).

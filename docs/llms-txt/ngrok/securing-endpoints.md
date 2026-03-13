@@ -1,0 +1,125 @@
+# Source: https://ngrok.com/docs/ai-gateway/guides/securing-endpoints.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Securing Your Gateway
+
+> How AI Gateway API Keys provide built-in authorization for your gateway.
+
+AI Gateway API Keys provide built-in authorization for your gateway. Each key is validated by ngrok before any request reaches a provider—no additional Traffic Policy configuration needed.
+
+## How it works
+
+1. [Create an AI Gateway API Key](/ai-gateway/concepts/api-keys) via the dashboard, CLI, or API
+2. Use the key as the `apiKey` in your SDK or `Authorization: Bearer` header
+3. ngrok validates the key on every request
+4. Invalid or missing keys are rejected—requests do not fall through to passthrough mode
+
+```python  theme={null}
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://your-ai-gateway.ngrok.app/v1",
+    api_key="ng-xxxxx-g1-xxxxx"  # Your AI Gateway API Key
+)
+
+response = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[{"role": "user", "content": "Hello!"}]
+)
+```
+
+<Note>
+  Your AI Gateway API Key token is never sent to the provider—ngrok strips it and injects its own managed provider keys.
+</Note>
+
+## Per-client keys
+
+Create separate AI Gateway API Keys for each client or application. This enables:
+
+* **Independent revocation**: disable one client without affecting others
+* **Usage tracking per client**: each key tracks `last_used` so you can see activity
+* **Organization**: use different descriptions and metadata to identify each client
+
+```bash  theme={null}
+# Create keys for different clients
+ngrok api ai-gateway-api-keys create \
+  --endpoint-id ep_xxxxx \
+  --description "Production web app"
+
+ngrok api ai-gateway-api-keys create \
+  --endpoint-id ep_xxxxx \
+  --description "Internal analytics pipeline"
+```
+
+## Revoking access
+
+Delete the key via the dashboard, CLI, or API. The key immediately stops working.
+
+```bash  theme={null}
+ngrok api ai-gateway-api-keys delete <id>
+```
+
+Or via the API:
+
+```
+DELETE /ai_gateway_api_keys/{id}
+```
+
+<Warning>
+  Deletion is permanent. Any client using the revoked key will immediately receive authentication errors.
+</Warning>
+
+## Additional security layers
+
+You can layer additional protections on top of AI Gateway API Keys using Traffic Policy.
+
+### Rate limiting
+
+Limit requests per key to prevent abuse:
+
+```yaml  theme={null}
+on_http_request:
+  - actions:
+      - type: rate-limit
+        config:
+          name: ai-gateway-limit
+          algorithm: sliding_window
+          capacity: 100
+          rate: 100/min
+          bucket_key:
+            - req.headers['authorization']
+```
+
+### IP restrictions
+
+Restrict access to specific IP ranges for an additional layer of defense. See [Securing Endpoints (BYOK)](/ai-gateway/guides/protecting-byok-endpoints#combining-with-ip-restrictions) for full configuration examples.
+
+## Using BYOK?
+
+If you're managing your own provider keys, you'll need to add your own authorization layer. See [Securing Endpoints (BYOK)](/ai-gateway/guides/protecting-byok-endpoints) for complete examples including secret-based auth, JWT validation, and IP restrictions.
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="AI Gateway API Keys" icon="key" href="/ai-gateway/concepts/api-keys">
+    Learn how API keys work and how to manage them.
+  </Card>
+
+  <Card title="Securing Endpoints (BYOK)" icon="shield-halved" href="/ai-gateway/guides/protecting-byok-endpoints">
+    Add authorization when managing your own provider keys.
+  </Card>
+
+  <Card title="Rate Limiting" icon="gauge-high" href="/traffic-policy/actions/rate-limit">
+    Add rate limiting to your gateway.
+  </Card>
+
+  <Card title="Restricting Model Access" icon="filter" href="/ai-gateway/guides/restricting-access">
+    Control which providers and models clients can use.
+  </Card>
+</CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

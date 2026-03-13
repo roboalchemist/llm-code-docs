@@ -1,0 +1,214 @@
+# Source: https://ngrok.com/docs/ai-gateway/sdks/langchain.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# LangChain
+
+> Use the ngrok AI Gateway with LangChain.
+
+<Note>
+  **Prerequisite**: You need an AI Gateway endpoint before continuing. Create one using the [dashboard quickstart](/ai-gateway/quickstart) or follow the [manual setup guide](/ai-gateway/guides/creating-endpoints).
+</Note>
+
+[LangChain](https://langchain.com/) is a framework for building applications with LLMs. The ngrok AI Gateway works with LangChain's OpenAI-compatible integrations, adding automatic failover and key rotation.
+
+## Installation
+
+<CodeGroup>
+  ```bash Python theme={null}
+  pip install langchain langchain-openai
+  ```
+
+  ```bash TypeScript theme={null}
+  npm install langchain @langchain/openai
+  ```
+</CodeGroup>
+
+## Basic usage
+
+Configure LangChain to use your AI Gateway.
+
+**Which API key do I use?**
+
+* **AI Gateway API Keys** (recommended): Use your [AI Gateway API Key](/ai-gateway/concepts/api-keys) (format: `ng-xxxxx-g1-xxxxx`). ngrok handles provider keys for you.
+* **BYOK (passthrough mode)**: Use your provider API key (for example, `sk-...` from OpenAI). See [Bring Your Own Keys](/ai-gateway/concepts/bring-your-own-keys).
+
+<CodeGroup>
+  ```python Python highlight={4} theme={null}
+  from langchain_openai import ChatOpenAI
+
+  llm = ChatOpenAI(
+      base_url="https://your-ai-gateway.ngrok.app/v1",
+      api_key="ng-xxxxx-g1-xxxxx",  # Your AI Gateway API Key
+      model="gpt-4o"
+  )
+
+  response = llm.invoke("What is the capital of France?")
+  print(response.content)
+  ```
+
+  ```typescript TypeScript highlight={4} theme={null}
+  import { ChatOpenAI } from "@langchain/openai";
+
+  const llm = new ChatOpenAI({
+    configuration: {
+      baseURL: "https://your-ai-gateway.ngrok.app/v1",
+    },
+    apiKey: "ng-xxxxx-g1-xxxxx",  // Your AI Gateway API Key
+    model: "gpt-4o",
+  });
+
+  const response = await llm.invoke("What is the capital of France?");
+  console.log(response.content);
+  ```
+</CodeGroup>
+
+## Streaming
+
+Stream responses for real-time output:
+
+```python highlight={9} theme={null}
+from langchain_openai import ChatOpenAI
+
+llm = ChatOpenAI(
+    base_url="https://your-ai-gateway.ngrok.app/v1",
+    api_key="ng-xxxxx-g1-xxxxx",  # Your AI Gateway API Key
+    model="gpt-4o"
+)
+
+for chunk in llm.stream("Write a poem about AI"):
+    print(chunk.content, end="", flush=True)
+```
+
+## Using different providers
+
+Route to different providers with model prefixes:
+
+```python highlight={7-8} theme={null}
+from langchain_openai import ChatOpenAI
+
+llm = ChatOpenAI(
+    base_url="https://your-ai-gateway.ngrok.app/v1",
+    api_key="unused",  # Gateway handles auth
+    model="anthropic:claude-3-5-sonnet-latest"  # Use Anthropic through gateway
+)
+
+response = llm.invoke("Hello!")
+```
+
+## Chains
+
+Build chains that route through the gateway:
+
+```python highlight={4} theme={null}
+from langchain_openai import ChatOpenAI
+from langchain_core.prompts import ChatPromptTemplate
+
+llm = ChatOpenAI(
+    base_url="https://your-ai-gateway.ngrok.app/v1",
+    api_key="ng-xxxxx-g1-xxxxx",  # Your AI Gateway API Key
+    model="gpt-4o"
+)
+
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "You are a helpful assistant that translates {input_language} to {output_language}."),
+    ("human", "{input}")
+])
+
+chain = prompt | llm
+
+response = chain.invoke({
+    "input_language": "English",
+    "output_language": "French",
+    "input": "Hello, how are you?"
+})
+
+print(response.content)
+```
+
+## Embeddings
+
+Generate embeddings through the gateway:
+
+```python highlight={4} theme={null}
+from langchain_openai import OpenAIEmbeddings
+
+embeddings = OpenAIEmbeddings(
+    base_url="https://your-ai-gateway.ngrok.app/v1",
+    api_key="ng-xxxxx-g1-xxxxx",  # Your AI Gateway API Key
+    model="text-embedding-3-small"
+)
+
+vector = embeddings.embed_query("Hello world")
+```
+
+## RAG applications
+
+Build RAG applications with automatic failover:
+
+```python highlight={5,11} theme={null}
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain_core.prompts import ChatPromptTemplate
+
+llm = ChatOpenAI(
+    base_url="https://your-ai-gateway.ngrok.app/v1",
+    api_key="ng-xxxxx-g1-xxxxx",  # Your AI Gateway API Key
+    model="gpt-4o"
+)
+
+embeddings = OpenAIEmbeddings(
+    base_url="https://your-ai-gateway.ngrok.app/v1",
+    api_key="ng-xxxxx-g1-xxxxx"  # Your AI Gateway API Key
+)
+
+# Create vector store
+texts = ["Document 1 content", "Document 2 content"]
+vectorstore = FAISS.from_texts(texts, embeddings)
+
+# Query with RAG
+retriever = vectorstore.as_retriever()
+docs = retriever.invoke("query")
+
+prompt = ChatPromptTemplate.from_template(
+    "Answer based on context: {context}\n\nQuestion: {question}"
+)
+
+chain = prompt | llm
+response = chain.invoke({"context": docs, "question": "Your question"})
+```
+
+## Agents
+
+Build agents that use the gateway:
+
+```python highlight={5} theme={null}
+from langchain_openai import ChatOpenAI
+from langchain.agents import create_react_agent, AgentExecutor
+from langchain_core.tools import tool
+
+llm = ChatOpenAI(
+    base_url="https://your-ai-gateway.ngrok.app/v1",
+    api_key="ng-xxxxx-g1-xxxxx",  # Your AI Gateway API Key
+    model="gpt-4o"
+)
+
+@tool
+def search(query: str) -> str:
+    """Search for information."""
+    return f"Results for: {query}"
+
+# Create and run agent
+# ...
+```
+
+## Next steps
+
+* [LangChain Documentation](https://python.langchain.com/docs/) - Full LangChain reference
+* [Model Selection Strategies](/ai-gateway/guides/model-selection-strategies) - Configure routing
+* [Configuring Providers](/ai-gateway/guides/configuring-providers) - Set up providers
+
+
+Built with [Mintlify](https://mintlify.com).

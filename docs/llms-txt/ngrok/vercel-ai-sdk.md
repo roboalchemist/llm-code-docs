@@ -1,0 +1,275 @@
+# Source: https://ngrok.com/docs/ai-gateway/sdks/vercel-ai-sdk.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Vercel AI SDK
+
+> Use the ngrok AI Gateway with Vercel's AI SDK.
+
+<Note>
+  **Prerequisite**: You need an AI Gateway endpoint before continuing. Create one using the [dashboard quickstart](/ai-gateway/quickstart) or follow the [manual setup guide](/ai-gateway/guides/creating-endpoints).
+</Note>
+
+The [Vercel AI SDK](https://sdk.vercel.ai/) provides a unified interface for building AI applications. It works with the ngrok AI Gateway, adding provider failover, key rotation, and observability to Vercel's streaming and UI components.
+
+## Installation
+
+```bash  theme={null}
+npm install ai @ai-sdk/openai
+```
+
+## Basic usage
+
+Point the OpenAI provider at your AI Gateway endpoint:
+
+<CodeGroup>
+  ```typescript Next.js App Router highlight={5} theme={null}
+  import { generateText } from "ai";
+  import { createOpenAI } from "@ai-sdk/openai";
+
+  const openai = createOpenAI({
+    baseURL: "https://your-ai-gateway.ngrok.app/v1",
+    apiKey: "ng-xxxxx-g1-xxxxx",  // Your AI Gateway API Key
+  });
+
+  const { text } = await generateText({
+    model: openai("gpt-4o"),
+    prompt: "What is the meaning of life?",
+  });
+  ```
+
+  ```typescript Edge Runtime highlight={5} theme={null}
+  import { generateText } from "ai";
+  import { createOpenAI } from "@ai-sdk/openai";
+
+  const openai = createOpenAI({
+    baseURL: "https://your-ai-gateway.ngrok.app/v1",
+    apiKey: "ng-xxxxx-g1-xxxxx",  // Your AI Gateway API Key
+  });
+
+  export const runtime = "edge";
+
+  export async function POST(req: Request) {
+    const { prompt } = await req.json();
+    
+    const { text } = await generateText({
+      model: openai("gpt-4o"),
+      prompt,
+    });
+    
+    return Response.json({ text });
+  }
+  ```
+</CodeGroup>
+
+## Streaming responses
+
+The AI Gateway supports streaming. Use `streamText` for real-time responses:
+
+```typescript highlight={9-12} theme={null}
+import { streamText } from "ai";
+import { createOpenAI } from "@ai-sdk/openai";
+
+const openai = createOpenAI({
+  baseURL: "https://your-ai-gateway.ngrok.app/v1",
+  apiKey: "ng-xxxxx-g1-xxxxx",  // Your AI Gateway API Key
+});
+
+const result = streamText({
+  model: openai("gpt-4o"),
+  prompt: "Write a poem about AI gateways.",
+});
+
+for await (const textPart of result.textStream) {
+  process.stdout.write(textPart);
+}
+```
+
+## Chat interface
+
+Build chat applications with the `useChat` hook:
+
+```tsx title="app/page.tsx" highlight={7} theme={null}
+"use client";
+
+import { useChat } from "ai/react";
+
+export default function Chat() {
+  const { messages, input, handleInputChange, handleSubmit } = useChat({
+    api: "/api/chat",
+  });
+
+  return (
+    <div>
+      {messages.map((m) => (
+        <div key={m.id}>
+          {m.role}: {m.content}
+        </div>
+      ))}
+      <form onSubmit={handleSubmit}>
+        <input value={input} onChange={handleInputChange} />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  );
+}
+```
+
+```typescript title="app/api/chat/route.ts" highlight={5} theme={null}
+import { streamText } from "ai";
+import { createOpenAI } from "@ai-sdk/openai";
+
+const openai = createOpenAI({
+  baseURL: "https://your-ai-gateway.ngrok.app/v1",
+  apiKey: "ng-xxxxx-g1-xxxxx",  // Your AI Gateway API Key
+});
+
+export async function POST(req: Request) {
+  const { messages } = await req.json();
+
+  const result = streamText({
+    model: openai("gpt-4o"),
+    messages,
+  });
+
+  return result.toDataStreamResponse();
+}
+```
+
+## Using different providers
+
+The AI Gateway routes based on the model name. Use provider prefixes to be explicit:
+
+```typescript highlight={10-11} theme={null}
+import { generateText } from "ai";
+import { createOpenAI } from "@ai-sdk/openai";
+
+const gateway = createOpenAI({
+  baseURL: "https://your-ai-gateway.ngrok.app/v1",
+  apiKey: "unused", // Gateway handles auth
+});
+
+// Use different providers through the same gateway
+const openaiResult = await generateText({ model: gateway("openai:gpt-4o"), prompt: "Hello" });
+const anthropicResult = await generateText({ model: gateway("anthropic:claude-3-5-sonnet-latest"), prompt: "Hello" });
+```
+
+## Automatic model selection
+
+Let the gateway choose the best model with `ngrok/auto`:
+
+```typescript highlight={9} theme={null}
+import { generateText } from "ai";
+import { createOpenAI } from "@ai-sdk/openai";
+
+const gateway = createOpenAI({
+  baseURL: "https://your-ai-gateway.ngrok.app/v1",
+  apiKey: "unused",
+});
+
+const { text } = await generateText({
+  model: gateway("ngrok/auto"),  // Gateway selects based on your strategy
+  prompt: "Explain quantum computing",
+});
+```
+
+Configure your selection strategy in the Traffic Policy:
+
+```yaml title="traffic-policy.yaml" highlight={6-9} theme={null}
+on_http_request:
+  - type: ai-gateway
+    config:
+      providers:
+        - id: openai
+          api_keys:
+            - value: ${secrets.get('openai', 'api-key')}
+        - id: anthropic
+          api_keys:
+            - value: ${secrets.get('anthropic', 'api-key')}
+      model_selection:
+        strategy:
+          - "ai.models.sortBy(m, m.pricing.input)"  # Cheapest first
+```
+
+## Environment variables
+
+Set up your environment:
+
+```bash title=".env.local" theme={null}
+# Your AI Gateway endpoint
+AI_GATEWAY_URL=https://your-ai-gateway.ngrok.app/v1
+
+# Optional: API key if using passthrough mode
+OPENAI_API_KEY=sk-...
+```
+
+```typescript  theme={null}
+const openai = createOpenAI({
+  baseURL: process.env.AI_GATEWAY_URL,
+  apiKey: process.env.OPENAI_API_KEY ?? "unused",
+});
+```
+
+## Tool calling
+
+The AI Gateway supports function/tool calling:
+
+```typescript highlight={12-22} theme={null}
+import { generateText, tool } from "ai";
+import { createOpenAI } from "@ai-sdk/openai";
+import { z } from "zod";
+
+const openai = createOpenAI({
+  baseURL: "https://your-ai-gateway.ngrok.app/v1",
+  apiKey: "ng-xxxxx-g1-xxxxx",  // Your AI Gateway API Key
+});
+
+const { text, toolCalls } = await generateText({
+  model: openai("gpt-4o"),
+  tools: {
+    weather: tool({
+      description: "Get the weather in a location",
+      parameters: z.object({
+        location: z.string().describe("The location to get weather for"),
+      }),
+      execute: async ({ location }) => {
+        return { temperature: 72, condition: "sunny" };
+      },
+    }),
+  },
+  prompt: "What's the weather in San Francisco?",
+});
+```
+
+## Error handling
+
+Handle errors gracefully:
+
+```typescript  theme={null}
+import { generateText, APICallError } from "ai";
+
+try {
+  const { text } = await generateText({
+    model: openai("gpt-4o"),
+    prompt: "Hello",
+  });
+} catch (error) {
+  if (error instanceof APICallError) {
+    console.error("API Error:", error.message);
+    console.error("Status:", error.statusCode);
+  }
+}
+```
+
+With the AI Gateway's failover, many errors are handled automatically by retrying with different providers or keys.
+
+## Next steps
+
+* [Vercel AI SDK Documentation](https://sdk.vercel.ai/docs) - Full SDK reference
+* [Model Selection Strategies](/ai-gateway/guides/model-selection-strategies) - Configure routing logic
+* [Configuring Providers](/ai-gateway/guides/configuring-providers) - Set up providers and keys
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,0 +1,2007 @@
+# Source: https://ngrok.com/docs/universal-gateway/http.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# HTTP/S Agent Endpoints
+
+> Learn how to create and configure HTTP and HTTPS endpoints with ngrok including domain configuration, TLS, and Traffic Policies.
+
+HTTP/S endpoints enable you to serve web services like REST APIs, web applications, websites, and WebSocket servers.
+Serving a web application is as simple as `ngrok http 80`.
+
+Once your endpoint is running, check out:
+
+* [Traffic Policy](/traffic-policy/) - Add routing, authentication and traffic transformation
+* [Traffic Inspector](https://dashboard.ngrok.com/traffic-inspection/) - Real-time observability with request/response introspection
+* [Endpoint Pooling](/universal-gateway/endpoint-pooling/) - Load balancing
+
+## Quickstart
+
+Agent Endpoints are the easiest way to get started with ngrok. An [agent
+endpoint](/universal-gateway/cloud-endpoints/) is started by a
+[Secure Tunnels](/agent/) agent. The endpoint lives for the lifetime of the
+process and forwards traffic to a port or URL of your choosing.
+
+Create the endpoint `https://example.ngrok.app` and forward its traffic to a
+local port.
+
+<Tabs>
+  <Tab title="Agent CLI">
+    ```bash  theme={null}
+    ngrok http 8080 --url https://example.ngrok.app
+    ```
+  </Tab>
+
+  <Tab title="Agent Config">
+    ```yaml  theme={null}
+    version: 3
+    endpoints:
+      - name: example
+        url: https://example.ngrok.app
+        upstream:
+          url: 8080
+    ```
+  </Tab>
+
+  <Tab title="SSH Reverse Tunnel">
+    ```bash  theme={null}
+    ssh -R example.ngrok.app:443:localhost:8080 v2@connect.ngrok-agent.com http
+    ```
+  </Tab>
+
+  <Tab title="Go">
+    ```go  theme={null}
+    import (
+    	"context"
+    	"net"
+
+    	"golang.ngrok.com/ngrok/v2"
+    )
+
+    func ngrokListener(ctx context.Context) (net.Listener, error) {
+    	return ngrok.Forward(ctx,
+    		ngrok.WithUpstream("http://localhost:8080"),
+    		ngrok.WithURL("https://example.ngrok.app"),
+    	)
+    }
+    ```
+  </Tab>
+
+  <Tab title="Javascript">
+    ```jsx  theme={null}
+    const ngrok = require("@ngrok/ngrok");
+
+    (async function () {
+    	const listener = await ngrok.forward({
+    		addr: 8080,
+    		authtoken_from_env: true,
+    		domain: "example.ngrok.app",
+    	});
+
+    	console.log(`Ingress established at: ${listener.url()}`);
+    })();
+    ```
+
+    Javascript SDK Docs:
+
+    * [https://ngrok.github.io/ngrok-javascript/interfaces/Config.html#domain](https://ngrok.github.io/ngrok-javascript/interfaces/Config.html#domain)
+    * [https://ngrok.github.io/ngrok-javascript/classes/HttpListenerBuilder.html#domain](https://ngrok.github.io/ngrok-javascript/classes/HttpListenerBuilder.html#domain)
+  </Tab>
+
+  <Tab title="Python">
+    ```python  theme={null}
+    import ngrok
+
+    listener = ngrok.forward("localhost:8080", authtoken_from_env=True,
+        domain="example.ngrok.app")
+
+    print(f"Ingress established at: {listener.url()}");
+    ```
+
+    Python SDK Docs:
+
+    * [https://ngrok.github.io/ngrok-python/http\_listener\_builder.html#ngrok.HttpListenerBuilder.domain](https://ngrok.github.io/ngrok-python/http_listener_builder.html#ngrok.HttpListenerBuilder.domain)
+    * [https://ngrok.github.io/ngrok-python/index.html#full-configuration](https://ngrok.github.io/ngrok-python/index.html#full-configuration)
+  </Tab>
+
+  <Tab title="Rust">
+    ```rust  theme={null}
+    use ngrok::prelude::*;
+
+    async fn listen_ngrok() -> anyhow::Result<impl Tunnel> {
+        let sess = ngrok::Session::builder()
+            .authtoken_from_env()
+            .connect()
+            .await?;
+
+        let tun = sess
+            .http_endpoint()
+            .domain("example.ngrok.app")
+            .listen()
+            .await?;
+
+        println!("Listening on URL: {:?}", tun.url());
+
+        Ok(tun)
+    }
+    ```
+
+    Rust Crate Docs:
+
+    * [https://docs.rs/ngrok/latest/ngrok/config/struct.HttpTunnelBuilder.html#method.domain](https://docs.rs/ngrok/latest/ngrok/config/struct.HttpTunnelBuilder.html#method.domain)
+  </Tab>
+
+  <Tab title="Kubernetes Controller">
+    ```yaml  theme={null}
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: example-ingress
+    spec:
+      ingressClassName: ngrok
+      rules:
+        - host: example.ngrok.app
+          http:
+            paths:
+              - path: /
+                pathType: Prefix
+                backend:
+                  service:
+                    name: example-service
+                    port:
+                      number: 80
+    ```
+  </Tab>
+</Tabs>
+
+## URL
+
+URLs are validated differently depending on their
+[binding](/universal-gateway/bindings). Consult the
+following documentation for details on valid URLs for TCP endpoints:
+
+* [Public Endpoint URLs](/universal-gateway/public-endpoints/#urls)
+* [Internal Endpoint URLs](/universal-gateway/internal-endpoints/#urls)
+* [Kubernetes Endpoint URLs](/universal-gateway/kubernetes-endpoints/#urls)
+
+### Public
+
+#### HTTP
+
+* The hostname must be a domain with a valid [public suffix](https://publicsuffix.org/).
+* The port must be `80`. If you do not specify a port, the default `80` will be used for you.
+
+**Examples**
+
+* `http://example.ngrok.app`
+* `http://example.ngrok.app:80`
+* `http://example.party`
+* `http://example.ngrok.app:81` - invalid port: port number must be `80`, not `81`
+* `http://example.doesnotexist` - invalid hostname: `.doesnotexist` is not a public suffix domain
+* `http://example.internal` - invalid hostname: `.internal` is not a public suffix domain
+
+#### HTTPS
+
+* The hostname must be a domain with a valid [public suffix](https://publicsuffix.org/).
+* The port must be `443`. If you do not specify a port, the default `443` will be used for you.
+
+### Internal
+
+### Kubernetes
+
+#### Valid URLs
+
+* [https://example.ngrok.app](https://example.ngrok.app)
+* [https://example.ngrok.app:443](https://example.ngrok.app:443)
+* [https://example.party](https://example.party)
+
+#### Invalid URLs
+
+* [https://example.ngrok.app:8443](https://example.ngrok.app:8443)
+* [https://example.nosuchtld](https://example.nosuchtld)
+* [https://example.internal](https://example.internal)
+
+### Validation
+
+When you create an Agent Endpoint, if you do not specify a complete URL,
+the following defaults are used to construct the endpoint URL.
+
+| URL Part | Default                                                   |
+| -------- | --------------------------------------------------------- |
+| Scheme   | `https`                                                   |
+| Hostname | randomly selected                                         |
+| Port     | `443` if scheme is `https`<br /> `80` if scheme is `http` |
+
+Consult the following table of examples of URL defaulting:
+
+| Value                           | Endpoint URL                                             |
+| ------------------------------- | -------------------------------------------------------- |
+| `https://example.ngrok.app`     | `https://example.ngrok.app`                              |
+| `http://example.ngrok.app`      | `http://example.ngrok.app`                               |
+| `example.ngrok.app`             | `https://example.ngrok.app`                              |
+| `app.example.com`               | `https://app.example.com`                                |
+| `https://example.internal`      | `https://example.internal`                               |
+| `https://example.internal:1234` | `https://example.internal:1234`                          |
+| `http://example.internal`       | `http://example.internal`                                |
+| `foo.internal`                  | `https://foo.internal`                                   |
+| `{empty}`                       | `https://1eb2-181-80-12-3.ngrok.app` (randomly selected) |
+
+If you would like to listen for both http and https traffic, create two endpoints.
+
+#### Domains
+
+When you create a public endpoint, it must match a
+[Domain](/universal-gateway/domains) on your account. Domains help you set up
+branded domains and manage TLS certificates. You may create wildcard endpoints as well.
+
+Endpoints with randomly assigned hostnames are an exception and won't match an
+existing Domain object.
+
+### Bring your own domain
+
+If you want to bring your own domain, first [create a Domain record and set up
+a DNS CNAME record](/universal-gateway/domains/#branded-domains). Then
+create an endpoint on that domain by specifying a URL with a matching hostname.
+
+For example, to create an HTTPS endpoint on `https://app.example.com`, [create
+a Domain](https://dashboard.ngrok.com/domains) and follow the instructions to
+set up a CNAME record. Then use the following example to start an endpoint on
+your domain:
+
+<Tabs>
+  <Tab title="Agent CLI">
+    ```bash  theme={null}
+    ngrok http 80 --url https://app.example.com
+    ```
+  </Tab>
+
+  <Tab title="Agent Config">
+    ```yaml  theme={null}
+    version: 3
+    endpoints:
+      - name: example
+        url: https://app.example.com
+        upstream:
+          url: 8080
+    ```
+  </Tab>
+
+  <Tab title="SSH Reverse Tunnel">
+    ```bash  theme={null}
+    ssh -R app.example.com:443:localhost:80 v2@connect.ngrok-agent.com http
+    ```
+  </Tab>
+
+  <Tab title="Go">
+    ```go  theme={null}
+    import (
+    	"context"
+    	"net"
+
+    	"golang.ngrok.com/ngrok/v2"
+    )
+
+    func ngrokListener(ctx context.Context) (net.Listener, error) {
+    	return ngrok.Listen(ctx,
+    		ngrok.WithURL("https://app.example.com"),
+    	)
+    }
+    ```
+  </Tab>
+
+  <Tab title="Javascript">
+    ```jsx  theme={null}
+    const ngrok = require("@ngrok/ngrok");
+
+    (async function () {
+    	const listener = await ngrok.forward({
+    		addr: 8080,
+    		authtoken_from_env: true,
+    		domain: "example.ngrok.app",
+    	});
+
+    	console.log(`Ingress established at: ${listener.url()}`);
+    })();
+    ```
+
+    Javascript SDK Docs:
+
+    * [https://ngrok.github.io/ngrok-javascript/interfaces/Config.html#domain](https://ngrok.github.io/ngrok-javascript/interfaces/Config.html#domain)
+    * [https://ngrok.github.io/ngrok-javascript/classes/HttpListenerBuilder.html#domain](https://ngrok.github.io/ngrok-javascript/classes/HttpListenerBuilder.html#domain)
+  </Tab>
+
+  <Tab title="Python">
+    ```python  theme={null}
+    import ngrok
+
+    listener = ngrok.forward("localhost:8080", authtoken_from_env=True,
+        domain="example.ngrok.app")
+
+    print(f"Ingress established at: {listener.url()}");
+    ```
+
+    Python SDK Docs:
+
+    * [https://ngrok.github.io/ngrok-python/http\_listener\_builder.html#ngrok.HttpListenerBuilder.domain](https://ngrok.github.io/ngrok-python/http_listener_builder.html#ngrok.HttpListenerBuilder.domain)
+    * [https://ngrok.github.io/ngrok-python/index.html#full-configuration](https://ngrok.github.io/ngrok-python/index.html#full-configuration)
+  </Tab>
+
+  <Tab title="Rust">
+    ```rust  theme={null}
+    use ngrok::prelude::*;
+
+    async fn listen_ngrok() -> anyhow::Result<impl Tunnel> {
+        let sess = ngrok::Session::builder()
+            .authtoken_from_env()
+            .connect()
+            .await?;
+
+        let tun = sess
+            .http_endpoint()
+            .domain("example.ngrok.app")
+            .listen()
+            .await?;
+
+        println!("Listening on URL: {:?}", tun.url());
+
+        Ok(tun)
+    }
+    ```
+
+    Rust Crate Docs:
+
+    * [https://docs.rs/ngrok/latest/ngrok/config/struct.HttpTunnelBuilder.html#method.domain](https://docs.rs/ngrok/latest/ngrok/config/struct.HttpTunnelBuilder.html#method.domain)
+  </Tab>
+
+  <Tab title="Kubernetes Controller">
+    ```yaml  theme={null}
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: example-ingress
+    spec:
+      ingressClassName: ngrok
+      rules:
+        - host: app.example.com
+          http:
+            paths:
+              - path: /
+                pathType: Prefix
+                backend:
+                  service:
+                    name: example-service
+                    port:
+                      number: 80
+    ```
+  </Tab>
+</Tabs>
+
+### Wildcard endpoints
+
+You can create a wildcard endpoint which will receive traffic for all of the subdomains
+matching a wildcard pattern like `*.example.com`. To create a public wildcard endpoint, you must first reserve a [wildcard domain](/universal-gateway/domains/#wildcard-domains).
+
+For example, if you create the wildcard endpoint `https://*.example.com`, it
+will receive traffic for `https://foo.example.com` and
+`https://bar.example.com`.
+
+* Connections to URLs which match an online wildcard endpoint will be routed to
+  it. For example, if you have created a wildcard endpoint
+  `https://*.example.com`, connections to `https://foo.bar.baz.example.com` will
+  route to it.
+* Connections are routed to the most specific online endpoint. For example, if
+  the endpoints `https://*.example.com` and `https://app.example.com` are both
+  online, a connection to `https://app.example.com` will not be routed to the
+  wildcard endpoint.
+
+<Tabs>
+  <Tab title="Agent CLI">
+    ```bash  theme={null}
+    ngrok http 80 --url "https://*.example.com"
+    ```
+  </Tab>
+
+  <Tab title="Agent Config">
+    ```yaml  theme={null}
+    version: 3
+    examples:
+      - name: example
+        url: https://*.example.com
+        upstream:
+          url: 80
+    ```
+  </Tab>
+
+  <Tab title="SSH Reverse Tunnel">
+    ```bash  theme={null}
+    ssh -R '*.example.com:443:localhost:80' v2@connect.ngrok-agent.com http
+    ```
+  </Tab>
+
+  <Tab title="Go">
+    ```go  theme={null}
+    import (
+    	"context"
+    	"net"
+
+    	"golang.ngrok.com/ngrok/v2"
+    )
+
+    func ngrokListener(ctx context.Context) (net.Listener, error) {
+    	return ngrok.Listen(ctx,
+    		ngrok.WithURL("https://*.example.com"),
+    	)
+    }
+    ```
+  </Tab>
+
+  <Tab title="Javascript">
+    ```jsx  theme={null}
+    const ngrok = require("@ngrok/ngrok");
+
+    (async function () {
+    	const listener = await ngrok.forward({
+    		addr: 8080,
+    		authtoken_from_env: true,
+    		domain: "*.example.com",
+    	});
+
+    	console.log(`Ingress established at: ${listener.url()}`);
+    })();
+    ```
+
+    Javascript SDK Docs:
+
+    * [https://ngrok.github.io/ngrok-javascript/interfaces/Config.html#domain](https://ngrok.github.io/ngrok-javascript/interfaces/Config.html#domain)
+    * [https://ngrok.github.io/ngrok-javascript/classes/HttpListenerBuilder.html#domain](https://ngrok.github.io/ngrok-javascript/classes/HttpListenerBuilder.html#domain)
+  </Tab>
+
+  <Tab title="Python">
+    ```python  theme={null}
+    import ngrok
+
+    listener = ngrok.forward("localhost:8080", authtoken_from_env=True,
+        domain="*.example.com")
+
+    print(f"Ingress established at: {listener.url()}");
+    ```
+
+    Python SDK Docs:
+
+    * [https://ngrok.github.io/ngrok-python/http\_listener\_builder.html#ngrok.HttpListenerBuilder.domain](https://ngrok.github.io/ngrok-python/http_listener_builder.html#ngrok.HttpListenerBuilder.domain)
+    * [https://ngrok.github.io/ngrok-python/index.html#full-configuration](https://ngrok.github.io/ngrok-python/index.html#full-configuration)
+  </Tab>
+
+  <Tab title="Rust">
+    ```rust  theme={null}
+    use ngrok::prelude::*;
+
+    async fn listen_ngrok() -> anyhow::Result<impl Tunnel> {
+        let sess = ngrok::Session::builder()
+            .authtoken_from_env()
+            .connect()
+            .await?;
+
+        let tun = sess
+            .http_endpoint()
+            .domain("*.example.com")
+            .listen()
+            .await?;
+
+        println!("Listening on URL: {:?}", tun.url());
+
+        Ok(tun)
+    }
+    ```
+
+    Rust Crate Docs:
+
+    * [https://docs.rs/ngrok/latest/ngrok/config/struct.HttpTunnelBuilder.html#method.domain](https://docs.rs/ngrok/latest/ngrok/config/struct.HttpTunnelBuilder.html#method.domain)
+  </Tab>
+
+  <Tab title="Kubernetes Controller">
+    ```yaml  theme={null}
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: example-ingress
+    spec:
+      ingressClassName: ngrok
+      rules:
+        - host: "*.example.com"
+          http:
+            paths:
+              - path: /
+                pathType: Prefix
+                backend:
+                  service:
+                    name: example-service
+                    port:
+                      number: 80
+    ```
+  </Tab>
+</Tabs>
+
+<Note>
+  For information on how wildcard endpoints are billed, including endpoint hours and Traffic Policy charges when forwarding to internal endpoints, see the [wildcard endpoints pricing documentation](/pricing-limits/#wildcard-endpoints).
+</Note>
+
+### Randomly assigned hostnames
+
+If you run create a public endpoint without specifying a hostname, ngrok will
+automatically assign a random one for you by selecting a random subdomain of one of the [ngrok-managed
+Domains](/universal-gateway/domains#ngrok-managed-domains) to your endpoint.
+For example, the command `ngrok http 80` may create an endpoint like
+`https://1eb2-181-80-12-3.ngrok.app`.
+
+The following example create an HTTPS endpoint on a randomly assigned hostname
+that forwards to port 8080.
+
+<Tabs>
+  <Tab title="Agent CLI">
+    ```bash  theme={null}
+    ngrok http 8080
+    ```
+  </Tab>
+
+  <Tab title="Agent Config">
+    ```yaml  theme={null}
+    version: 3
+    endpoints:
+      - name: example
+        url: https://
+        upstream:
+          url: 8080
+    ```
+  </Tab>
+
+  <Tab title="SSH Reverse Tunnel">
+    ```bash  theme={null}
+    ssh -R 443:localhost:80 v2@connect.ngrok-agent.com http
+    ```
+  </Tab>
+
+  <Tab title="Go">
+    ```go  theme={null}
+    import (
+    	"context"
+    	"net"
+
+    	"golang.ngrok.com/ngrok/v2"
+    )
+
+    func ngrokListener(ctx context.Context) (net.Listener, error) {
+    	return ngrok.Listen(ctx)
+    }
+    ```
+  </Tab>
+
+  <Tab title="Javascript">
+    ```jsx  theme={null}
+    const ngrok = require("@ngrok/ngrok");
+
+    (async function () {
+    	const listener = await ngrok.forward({
+    		addr: 8080,
+    		authtoken_from_env: true,
+    	});
+
+    	console.log(`Ingress established at: ${listener.url()}`);
+    })();
+    ```
+
+    Javascript SDK Docs:
+
+    * [https://ngrok.github.io/ngrok-javascript/classes/HttpListenerBuilder.html](https://ngrok.github.io/ngrok-javascript/classes/HttpListenerBuilder.html)
+    * [https://ngrok.github.io/ngrok-javascript/classes/Session.html#httpEndpoint](https://ngrok.github.io/ngrok-javascript/classes/Session.html#httpEndpoint)
+    * [https://ngrok.github.io/ngrok-javascript/functions/connect.html](https://ngrok.github.io/ngrok-javascript/functions/connect.html)
+  </Tab>
+
+  <Tab title="Python">
+    ```python  theme={null}
+    import ngrok
+
+    listener = ngrok.forward("localhost:8080", authtoken_from_env=True)
+
+    print(f"Ingress established at: {listener.url()}");
+    ```
+
+    Python SDK Docs:
+
+    * [https://ngrok.github.io/ngrok-python/http\_listener\_builder.html](https://ngrok.github.io/ngrok-python/http_listener_builder.html)
+    * [https://ngrok.github.io/ngrok-python/session.html#ngrok.Session.http\_endpoint](https://ngrok.github.io/ngrok-python/session.html#ngrok.Session.http_endpoint)
+    * [https://ngrok.github.io/ngrok-python/module.html#ngrok.connect](https://ngrok.github.io/ngrok-python/module.html#ngrok.connect)
+  </Tab>
+
+  <Tab title="Rust">
+    ```rust  theme={null}
+    use ngrok::prelude::*;
+
+    async fn listen_ngrok() -> anyhow::Result<impl Tunnel> {
+        let sess = ngrok::Session::builder()
+            .authtoken_from_env()
+            .connect()
+            .await?;
+
+        let tun = sess
+            .http_endpoint()
+            .listen()
+            .await?;
+
+        println!("Listening on URL: {:?}", tun.url());
+
+        Ok(tun)
+    }
+    ```
+
+    Rust Crate Docs:
+
+    * [https://docs.rs/ngrok/latest/ngrok/session/struct.Session.html#method.http\_endpoint](https://docs.rs/ngrok/latest/ngrok/session/struct.Session.html#method.http_endpoint)
+  </Tab>
+
+  <Tab title="Kubernetes Controller">
+    <StaticDomainKubernetesExample />
+  </Tab>
+</Tabs>
+
+## Traffic Policy
+
+Attach [Traffic Policy](/traffic-policy/) to endpoints to route, authenticate and transform the traffic through the endpoint.
+
+### Authentication
+
+Public endpoints are accessible to the public internet unless you secure them
+with authentication. That's desirable if you're hosting a public website but
+most often you want to add authentication. You can secure your endpoints with
+[Traffic Policy](/traffic-policy) with any of the following actions:
+
+* [Basic Auth](/traffic-policy/actions/basic-auth)
+* [OAuth](/traffic-policy/actions/oauth)
+* [IP Restriction](/traffic-policy/actions/restrict-ips/)
+* [Webhook Verification](/traffic-policy/actions/verify-webhook/)
+* [JWT](/traffic-policy/actions/jwt-validation/)
+* [Mutual TLS](/traffic-policy/actions/terminate-tls/)
+* [OpenID Connect](/traffic-policy/actions/oidc/)
+* [SAML](/traffic-policy/actions/saml/)
+
+### Basic auth example
+
+Adds a username and password with the [Basic
+Auth](/traffic-policy/actions/basic-auth) Traffic Policy action.
+
+<Tabs>
+  <Tab title="Agent CLI">
+    ```bash  theme={null}
+    ngrok http 80 --traffic-policy-file traffic-policy.yml
+    ```
+
+    ##### `traffic-policy.yml`
+
+    ```yaml  theme={null}
+    on_http_request:
+      - actions:
+          - type: basic-auth
+            config:
+              credentials:
+                - username1:password1
+                - username2:password2
+    ```
+  </Tab>
+
+  <Tab title="Agent Config">
+    ```yaml  theme={null}
+    version: 3
+    endpoints:
+      - name: example
+        url: https://your-subdomain-here.ngrok-free.app
+        upstream:
+          url: 80
+        traffic_policy:
+          on_http_request:
+            - actions:
+                - type: basic-auth
+                  config:
+                    credentials:
+                      - username1:password1
+                      - username2:password2
+    ```
+  </Tab>
+
+  <Tab title="SSH Reverse Tunnel">
+    ```bash  theme={null}
+    ssh -R 443:localhost:80 v2@connect.ngrok-agent.com http \
+      --basic-auth "username1:password1" \
+      --basic-auth "username2:password2"
+    ```
+  </Tab>
+
+  <Tab title="Go">
+    ```go  theme={null}
+    import (
+    	"context"
+    	"net"
+
+    	"golang.ngrok.com/ngrok/v2"
+    )
+
+    trafficPolicy := `
+    on_http_request:
+      - actions:
+          - type: basic-auth
+            config:
+              credentials:
+                - username1:password1
+                - username2:password2
+    `
+
+    func ngrokListener(ctx context.Context) (net.Listener, error) {
+    	return ngrok.Listen(ctx,
+    		ngrok.WithTrafficPolicy(trafficPolicy),
+    	)
+    }
+    ```
+  </Tab>
+
+  <Tab title="Javascript">
+    ```jsx  theme={null}
+    const ngrok = require("@ngrok/ngrok");
+
+    (async function () {
+    	const listener = await ngrok.forward({
+    		addr: 8080,
+    		authtoken_from_env: true,
+    		basic_auth: ["username1:password1", "username2:password2"],
+    	});
+
+    	console.log(`Ingress established at: ${listener.url()}`);
+    })();
+    ```
+
+    Javascript SDK Docs:
+
+    * [https://ngrok.github.io/ngrok-javascript/interfaces/Config.html#basic\_auth](https://ngrok.github.io/ngrok-javascript/interfaces/Config.html#basic_auth)
+    * [https://ngrok.github.io/ngrok-javascript/classes/HttpListenerBuilder.html#basicAuth](https://ngrok.github.io/ngrok-javascript/classes/HttpListenerBuilder.html#basicAuth)
+  </Tab>
+
+  <Tab title="Python">
+    ```python  theme={null}
+    import ngrok
+
+    listener = ngrok.forward("localhost:8080", authtoken_from_env=True,
+        basic_auth=["username1:password1", "username2:password2"])
+
+    print(f"Ingress established at: {listener.url()}");
+    ```
+
+    Python SDK Docs:
+
+    * [https://ngrok.github.io/ngrok-python/http\_listener\_builder.html#ngrok.HttpListenerBuilder.basic\_auth](https://ngrok.github.io/ngrok-python/http_listener_builder.html#ngrok.HttpListenerBuilder.basic_auth)
+    * [https://ngrok.github.io/ngrok-python/index.html#full-configuration](https://ngrok.github.io/ngrok-python/index.html#full-configuration)
+  </Tab>
+
+  <Tab title="Rust">
+    ```rust  theme={null}
+    use ngrok::prelude::*;
+
+    async fn listen_ngrok() -> anyhow::Result<impl Tunnel> {
+        let sess = ngrok::Session::builder()
+            .authtoken_from_env()
+            .connect()
+            .await?;
+
+        let tun = sess
+            .http_endpoint()
+            .basic_auth("username1", "password1")
+            .basic_auth("username2", "password2")
+            .listen()
+            .await?;
+
+        println!("Listening on URL: {:?}", tun.url());
+
+        Ok(tun)
+    }
+    ```
+
+    Rust Crate Docs:
+
+    * [https://docs.rs/ngrok/latest/ngrok/config/struct.HttpTunnelBuilder.html#method.basic\_auth](https://docs.rs/ngrok/latest/ngrok/config/struct.HttpTunnelBuilder.html#method.basic_auth)
+  </Tab>
+
+  <Tab title="Kubernetes Controller">
+    ```yaml  theme={null}
+    ---
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: example-ingress
+      annotations:
+        k8s.ngrok.com/traffic-policy: example
+    spec:
+      ingressClassName: ngrok
+      rules:
+        - host: your-domain.ngrok.app
+          http:
+            paths:
+              - path: /
+                pathType: Prefix
+                backend:
+                  service:
+                    name: example-service
+                    port:
+                      number: 80
+    ---
+    kind: NgrokTrafficPolicy
+    apiVersion: ingress.k8s.ngrok.com/v1alpha1
+    metadata:
+      name: example
+    policy:
+      on_http_request:
+        - actions:
+            - type: basic-auth
+              config:
+                credentials:
+                  - username1:password1
+                  - username2:password2
+    ```
+  </Tab>
+</Tabs>
+
+<br />
+
+### Google OAuth example
+
+The following example enforces a browser-based OAuth redirect flow in front of
+your endpoint using Google as the identity provider by using the
+[OAuth](/traffic-policy/actions/oauth) Traffic Policy action.
+
+<Tabs>
+  <Tab title="Agent CLI">
+    ```
+    ngrok http 80 --traffic-policy-file traffic-policy.yml
+    ```
+
+    ##### `traffic-policy.yml`
+
+    ```yaml  theme={null}
+    on_http_request:
+      - actions:
+          - type: oauth
+            config:
+              provider: google
+    ```
+  </Tab>
+
+  <Tab title="Agent Config">
+    ```yaml  theme={null}
+    version: 3
+    endpoints:
+      - name: example
+        url: https://example.ngrok.app
+        upstream:
+          url: 80
+        traffic_policy:
+          on_http_request:
+            - actions:
+                - type: oauth
+                  config:
+                    provider: google
+    ```
+  </Tab>
+
+  <Tab title="SSH Reverse Tunnel">
+    When creating a reverse tunnel, you must provide a publicly accessible URL to your traffic policy file, as shown in this example.
+
+    First, create the `oauth-policy.yml` file:
+
+    ```yaml  theme={null}
+    on_http_request:
+      - actions:
+          - type: oauth
+            config:
+              provider: google
+    ```
+
+    Store this file at a publicly accessible address online. For example, you could add it to a github repository.
+
+    Finally, add your traffic policy to your reverse tunnel using the `--traffic-policy-url` flag.
+
+    ```bash  theme={null}
+    ssh -R 443:localhost:80 v2@connect.ngrok-agent.com http --traffic-policy-url=https://some-website/oauth-policy.yml
+    ```
+  </Tab>
+
+  <Tab title="Go">
+    ```go  theme={null}
+    import (
+    	"context"
+    	"fmt"
+    	"log"
+    	"net/http"
+
+    	"golang.ngrok.com/ngrok/v2"
+    )
+
+    const trafficPolicy = `
+    on_http_request:
+      - name: OAuth
+        actions:
+          - type: oauth
+            config:
+              auth_id: oauth
+              provider: google
+          - type: add-headers
+            config:
+              headers:
+                authenticated-user: "${actions.ngrok.oauth.identity.email}"
+      - name: bad email
+        expressions:
+          - actions.ngrok.oauth.identity.email != 'alan@example.com'
+        actions:
+          - type: custom-response
+            config:
+              body: "Access denied: ${actions.ngrok.oauth.identity.name}!"
+              status_code: 403
+    `
+
+    func main() {
+    	ctx := context.Background()
+
+    	ln, err := ngrok.Listen(ctx,
+    		ngrok.WithTrafficPolicy(trafficPolicy),
+    	)
+    	if err != nil {
+    		log.Fatal(err)
+    	}
+
+    	log.Println("Endpoint online:", ln.URL())
+    	http.Serve(ln, http.HandlerFunc(handler))
+    }
+
+    func handler(w http.ResponseWriter, r *http.Request) {
+    	fmt.Fprintf(w, "Hello, %s\n", r.Header.Get("authenticated-user"))
+    }
+    ```
+  </Tab>
+
+  <Tab title="Javascript">
+    ```jsx  theme={null}
+    const ngrok = require("@ngrok/ngrok");
+
+    (async function () {
+    	const listener = await ngrok.forward({
+    		addr: 8080,
+    		authtoken_from_env: true,
+    		oauth_provider: "google",
+    	});
+
+    	console.log(`Ingress established at: ${listener.url()}`);
+    })();
+    ```
+
+    Javascript SDK Docs:
+
+    * [https://ngrok.github.io/ngrok-javascript/interfaces/Config.html#oauth\_provider](https://ngrok.github.io/ngrok-javascript/interfaces/Config.html#oauth_provider)
+    * [https://ngrok.github.io/ngrok-javascript/classes/HttpListenerBuilder.html#oauth](https://ngrok.github.io/ngrok-javascript/classes/HttpListenerBuilder.html#oauth)
+  </Tab>
+
+  <Tab title="Python">
+    ```python  theme={null}
+    import ngrok
+
+    listener = ngrok.forward("localhost:8080", authtoken_from_env=True,
+        oauth_provider="google")
+
+    print(f"Ingress established at: {listener.url()}");
+    ```
+
+    Python SDK Docs:
+
+    * [https://ngrok.github.io/ngrok-python/http\_listener\_builder.html#ngrok.HttpListenerBuilder.oauth](https://ngrok.github.io/ngrok-python/http_listener_builder.html#ngrok.HttpListenerBuilder.oauth)
+    * [https://ngrok.github.io/ngrok-python/index.html#full-configuration](https://ngrok.github.io/ngrok-python/index.html#full-configuration)
+  </Tab>
+
+  <Tab title="Rust">
+    ```rust  theme={null}
+    use ngrok::prelude::*;
+
+    async fn listen_ngrok() -> anyhow::Result<impl Tunnel> {
+        let sess = ngrok::Session::builder()
+            .authtoken_from_env()
+            .connect()
+            .await?;
+        let tun = sess
+            .http_endpoint()
+            .oauth(OauthOptions::new("google"))
+            .listen()
+            .await?;
+        println!("Listening on URL: {:?}", tun.url());
+        Ok(tun)
+    }
+    ```
+
+    Rust Crate Docs:
+
+    * [https://docs.rs/ngrok/latest/ngrok/config/struct.HttpTunnelBuilder.html#method.oauth](https://docs.rs/ngrok/latest/ngrok/config/struct.HttpTunnelBuilder.html#method.oauth)
+    * [https://docs.rs/ngrok/latest/ngrok/config/struct.OauthOptions.html](https://docs.rs/ngrok/latest/ngrok/config/struct.OauthOptions.html)
+  </Tab>
+
+  <Tab title="Kubernetes Controller">
+    ```yaml  theme={null}
+    ---
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: example-ingress
+      annotations:
+        k8s.ngrok.com/traffic-policy: example
+    spec:
+      ingressClassName: ngrok
+      rules:
+        - host: your-domain.ngrok.app
+          http:
+            paths:
+              - path: /
+                pathType: Prefix
+                backend:
+                  service:
+                    name: example-service
+                    port:
+                      number: 80
+    ---
+    kind: NgrokTrafficPolicy
+    apiVersion: ingress.k8s.ngrok.com/v1alpha1
+    metadata:
+      name: example
+    policy:
+      on_http_request:
+        - actions:
+            - type: oauth
+              config:
+                provider: google
+    ```
+  </Tab>
+</Tabs>
+
+### Rewriting the `host` header
+
+Some application servers expect the `host` header to match a specific value
+when they receive requests and some use the `host` header to determine which of
+many sites to display. ngrok can rewrite the `host` header of incoming requests
+so that your application behaves correctly.
+
+When you rewrite the `host` header, ngrok also rewrites the `location` header of
+HTTP responses automatically to match the hostname of your Endpoint URL.
+
+The following example rewrites the `host` header to the value `localhost` using
+the [`add-headers`](/traffic-policy/actions/add-headers) Traffic Policy action.
+Adding the `Host` header [is a special
+case](/traffic-policy/actions/add-headers/#special-cases) that replaces the existing
+`Host` header instead of appending a second value.
+
+<Tabs>
+  <Tab title="Agent CLI">
+    ```bash  theme={null}
+    ngrok http 8080 --traffic-policy-file traffic-policy.yml
+    ```
+
+    ##### `traffic-policy.yml`
+
+    ```yaml  theme={null}
+    on_http_request:
+      - actions:
+          - type: add-headers
+            config:
+              headers:
+                host: localhost
+    ```
+  </Tab>
+
+  <Tab title="Agent Config">
+    ```yaml  theme={null}
+    version: 3
+    endpoints:
+      - name: example
+        url: https://example.ngrok.app
+        upstream:
+          url: 8080
+        traffic_policy:
+          on_http_request:
+            - actions:
+                - type: add-headers
+                  config:
+                    headers:
+                      host: localhost
+    ```
+  </Tab>
+
+  <Tab title="SSH Reverse Tunnel">
+    ```bash  theme={null}
+    ssh -R 443:localhost:80 v2@connect.ngrok-agent.com http \
+      --request-header-add='host: localhost'
+    ```
+  </Tab>
+
+  <Tab title="Go">
+    ```go  theme={null}
+    import (
+    	"context"
+    	"net"
+
+    	"golang.ngrok.com/ngrok/v2"
+    )
+
+    trafficPolicy := `
+    on_http_request:
+      - actions:
+          - type: add-headers
+            config:
+              headers:
+                host: localhost
+    `
+
+    func ngrokListener(ctx context.Context) (net.Listener, error) {
+    	return ngrok.Listen(ctx,
+    		ngrok.WithTrafficPolicy(trafficPolicy),
+    	)
+    }
+    ```
+  </Tab>
+
+  <Tab title="Javascript">
+    ```jsx  theme={null}
+    const ngrok = require("@ngrok/ngrok");
+
+    (async function () {
+    	const listener = await ngrok.forward({
+    		addr: 8080,
+    		authtoken_from_env: true,
+    		request_header_add: "host:localhost",
+    	});
+
+    	console.log(`Ingress established at: ${listener.url()}`);
+    })();
+    ```
+
+    Javascript SDK Docs:
+
+    * [https://ngrok.github.io/ngrok-javascript/interfaces/Config.html#request\_header\_add](https://ngrok.github.io/ngrok-javascript/interfaces/Config.html#request_header_add)
+    * [https://ngrok.github.io/ngrok-javascript/classes/HttpListenerBuilder.html#requestHeader](https://ngrok.github.io/ngrok-javascript/classes/HttpListenerBuilder.html#requestHeader)
+  </Tab>
+
+  <Tab title="Python">
+    ```python  theme={null}
+    import ngrok
+
+    listener = ngrok.forward("localhost:8080", authtoken_from_env=True,
+        request_header_add="host:localhost")
+
+    print(f"Ingress established at: {listener.url()}");
+    ```
+
+    Python SDK Docs:
+
+    * [https://ngrok.github.io/ngrok-python/http\_listener\_builder.html#ngrok.HttpListenerBuilder.request\_header](https://ngrok.github.io/ngrok-python/http_listener_builder.html#ngrok.HttpListenerBuilder.request_header)
+    * [https://ngrok.github.io/ngrok-python/index.html#full-configuration](https://ngrok.github.io/ngrok-python/index.html#full-configuration)
+  </Tab>
+
+  <Tab title="Rust">
+    ```rust  theme={null}
+    use ngrok::prelude::*;
+
+    async fn listen_ngrok() -> anyhow::Result<impl Tunnel> {
+        let sess = ngrok::Session::builder()
+            .authtoken_from_env()
+            .connect()
+            .await?;
+
+        let tun = sess
+            .http_endpoint()
+            .request_header("host", "localhost")
+            .listen()
+            .await?;
+
+        println!("Listening on URL: {:?}", tun.url());
+
+        Ok(tun)
+    }
+    ```
+
+    Rust Crate Docs:
+
+    * [https://docs.rs/ngrok/latest/ngrok/config/struct.HttpTunnelBuilder.html#method.request\_header](https://docs.rs/ngrok/latest/ngrok/config/struct.HttpTunnelBuilder.html#method.request_header)
+  </Tab>
+
+  <Tab title="Kubernetes Controller">
+    ```yaml  theme={null}
+    ---
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: example-ingress
+      annotations:
+        k8s.ngrok.com/traffic-policy: example
+    spec:
+      ingressClassName: ngrok
+      rules:
+        - host: your-domain.ngrok.app
+          http:
+            paths:
+              - path: /
+                pathType: Prefix
+                backend:
+                  service:
+                    name: example-service
+                    port:
+                      number: 80
+    ---
+    kind: NgrokTrafficPolicy
+    apiVersion: ingress.k8s.ngrok.com/v1alpha1
+    metadata:
+      name: example
+    policy:
+      on_http_request:
+        - actions:
+            - type: add-headers
+              config:
+                headers:
+                  host: localhost
+    ```
+  </Tab>
+</Tabs>
+
+## Agent forwarding
+
+The [ngrok agent](/agent/) and [Agent
+SDKs](/agent-sdks/) forward traffic that your endpoints receive
+to upstream services. You specify a URL or port number to instruct the ngrok
+agent where and how to forward traffic.
+
+### HTTPS forwarding
+
+The scheme in your upstream URL is used to determine whether to forward HTTP or
+HTTPS traffic to the upstream service. If you do not specify a scheme, the
+default `http` scheme is chosen *unless* you forward to port `443`, in which
+case ngrok will use `https`. Consult the following table of examples.
+
+| Upstream URL             | Normalized Value         |
+| ------------------------ | ------------------------ |
+| `http://localhost:1234`  | `http://localhost:1234`  |
+| `https://localhost:1234` | `https://localhost:1234` |
+| `localhost:1234`         | `http://localhost:1234`  |
+| `1234`                   | `http://localhost:1234`  |
+| `localhost:443`          | `https://localhost:443`  |
+| `443`                    | `https://localhost:443`  |
+
+ngrok assumes that the network you run the agent on is private and it does not
+verify the TLS certificate presented by the upstream service. You may change
+this behavior with the [flags `--upstream-tls-verify` and
+`upstream-tls-verify-cas`](/agent/cli/#ngrok-http).
+
+<Tabs>
+  <Tab title="Agent CLI">
+    ```bash  theme={null}
+    ngrok http https://localhost:8443
+    ```
+  </Tab>
+
+  <Tab title="Agent Config">
+    ```yaml  theme={null}
+    version: 3
+    endpoints:
+      - name: example
+        url: "https://example.ngrok.app"
+        upstream:
+          url: https://localhost:8443
+    ```
+  </Tab>
+
+  <Tab title="SSH Reverse Tunnel">
+    <Info>
+      Forwarding to an upstream HTTPS service is not supported via SSH.
+    </Info>
+  </Tab>
+
+  <Tab title="Go">
+    ```go  theme={null}
+    import (
+    	"context"
+
+    	"golang.ngrok.com/ngrok/v2"
+    )
+
+    func ngrokForwarder(ctx context.Context) (ngrok.EndpointForwarder, error) {
+    	return ngrok.Forward(ctx,
+    		ngrok.WithUpstream("https://localhost:8443"),
+    	)
+    }
+    ```
+
+    For HTTP/2 Use: `ngrok.WithUpstream("https://localhost:8443", ngrok.WithUpstreamProtocol("http2"))`
+  </Tab>
+
+  <Tab title="Javascript">
+    ```jsx  theme={null}
+    const ngrok = require("@ngrok/ngrok");
+
+    (async function () {
+    	const listener = await ngrok.forward({
+    		addr: "https://localhost:8443",
+    		authtoken_from_env: true,
+    	});
+
+    	console.log(`Ingress established at: ${listener.url()}`);
+    })();
+    ```
+
+    Javascript SDK Docs:
+
+    * [https://ngrok.github.io/ngrok-javascript/interfaces/Config.html#addr](https://ngrok.github.io/ngrok-javascript/interfaces/Config.html#addr)
+    * [https://ngrok.github.io/ngrok-javascript/classes/HttpListenerBuilder.html#listenAndForward](https://ngrok.github.io/ngrok-javascript/classes/HttpListenerBuilder.html#listenAndForward)
+  </Tab>
+
+  <Tab title="Python">
+    ```python  theme={null}
+    import ngrok
+
+    listener = ngrok.forward("https://localhost:8443", authtoken_from_env=True)
+
+    print(f"Ingress established at: {listener.url()}");
+    ```
+
+    Python SDK Docs:
+
+    * [https://ngrok.github.io/ngrok-python/module.html#ngrok.connect](https://ngrok.github.io/ngrok-python/module.html#ngrok.connect)
+    * [https://ngrok.github.io/ngrok-python/http\_listener\_builder.html#ngrok.HttpListenerBuilder.listen\_and\_forward](https://ngrok.github.io/ngrok-python/http_listener_builder.html#ngrok.HttpListenerBuilder.listen_and_forward)
+  </Tab>
+
+  <Tab title="Rust">
+    ```rust  theme={null}
+    use ngrok::prelude::*;
+    use ngrok::tunnel;
+    use ngrok::forwarder::Forwarder;
+    use url::Url;
+
+    async fn forward_ngrok() -> Result<Forwarder<tunnel::HttpTunnel>, Error> {
+        let sess = ngrok::Session::builder()
+            .authtoken_from_env()
+            .connect()
+            .await?;
+        sess
+            .http_endpoint()
+            .listen_and_forward(Url::parse("https://localhost:8443")?)
+            .await
+            .map_err(Into::into)
+    }
+    ```
+
+    Rust Crate Docs:
+
+    * [https://docs.rs/ngrok/0.14.0-pre.13/ngrok/config/struct.HttpTunnelBuilder.html#method.listen\_and\_forward](https://docs.rs/ngrok/0.14.0-pre.13/ngrok/config/struct.HttpTunnelBuilder.html#method.listen_and_forward)
+  </Tab>
+
+  <Tab title="Kubernetes Controller">
+    Add the `k8s.ngrok.com/app-protocols` label to the **Service** definition
+    targeted by your ingress backend to instruct the Operator to use
+    `https` when forwarding connections.
+
+    ```yaml  theme={null}
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: example-service
+      annotations:
+        k8s.ngrok.com/app-protocols: '{"example-https-port":"HTTPS"}'
+    spec:
+      ports:
+        - name: example-https-port
+          port: 443
+          protocol: TCP
+          targetPort: 8443
+      selector:
+        app-name: some-example-app-label
+    ---
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: example-ingress
+    spec:
+      ingressClassName: ngrok
+      rules:
+        - host: app.example.com
+          http:
+            paths:
+              - path: /
+                pathType: Prefix
+                backend:
+                  service:
+                    name: example-service
+                    port:
+                      number: 443
+    ```
+  </Tab>
+</Tabs>
+
+### Non-local forwarding
+
+Agents don't just forward to ports on your localhost. You can forward traffic
+to any address or URL reachable from the agent. For example, if you want to
+forward traffic to a HTTP server running on your network at `192.168.1.2:80`:
+
+<Tabs>
+  <Tab title="Agent CLI">
+    ```bash  theme={null}
+    ngrok http 192.168.1.2:80
+    ```
+  </Tab>
+
+  <Tab title="Agent Config">
+    ```yaml  theme={null}
+    version: 3
+    endpoints:
+      - name: example
+        url: http://example.ngrok.app
+        upstream:
+          url: http://192.168.1.2
+    ```
+  </Tab>
+
+  <Tab title="SSH Reverse Tunnel">
+    ```bash  theme={null}
+    ssh -R 0:192.168.1.2:80 v2@connect.ngrok-agent.com http
+    ```
+  </Tab>
+
+  <Tab title="Go">
+    ```go  theme={null}
+    import (
+    	"context"
+
+    	"golang.ngrok.com/ngrok/v2"
+    )
+
+    func ngrokForwarder(ctx context.Context) (ngrok.EndpointForwarder, error) {
+    	return ngrok.Forward(ctx,
+    		ngrok.WithUpstream("http://192.168.1.2:80"),
+    	)
+    }
+    ```
+  </Tab>
+
+  <Tab title="Javascript">
+    ```jsx  theme={null}
+    const ngrok = require("@ngrok/ngrok");
+
+    (async function () {
+    	const listener = await ngrok.forward({
+    		addr: "192.168.1.2:80",
+    		authtoken_from_env: true,
+    	});
+
+    	console.log(`Ingress established at: ${listener.url()}`);
+    })();
+    ```
+
+    Javascript SDK Docs:
+
+    * [https://ngrok.github.io/ngrok-javascript/interfaces/Config.html#addr](https://ngrok.github.io/ngrok-javascript/interfaces/Config.html#addr)
+    * [https://ngrok.github.io/ngrok-javascript/classes/HttpListenerBuilder.html#listenAndForward](https://ngrok.github.io/ngrok-javascript/classes/HttpListenerBuilder.html#listenAndForward)
+  </Tab>
+
+  <Tab title="Python">
+    ```python  theme={null}
+    import ngrok
+
+    listener = ngrok.forward("192.168.1.2:80", authtoken_from_env=True)
+
+    print(f"Ingress established at: {listener.url()}");
+    ```
+
+    Python SDK Docs:
+
+    * [https://ngrok.github.io/ngrok-python/module.html#ngrok.connect](https://ngrok.github.io/ngrok-python/module.html#ngrok.connect)
+    * [https://ngrok.github.io/ngrok-python/http\_listener\_builder.html#ngrok.HttpListenerBuilder.listen\_and\_forward](https://ngrok.github.io/ngrok-python/http_listener_builder.html#ngrok.HttpListenerBuilder.listen_and_forward)
+  </Tab>
+
+  <Tab title="Rust">
+    ```rust  theme={null}
+    use ngrok::prelude::*;
+    use ngrok::tunnel;
+    use ngrok::forwarder::Forwarder;
+    use url::Url;
+
+    async fn forward_ngrok() -> Result<Forwarder<tunnel::HttpTunnel>, Error> {
+        let sess = ngrok::Session::builder()
+            .authtoken_from_env()
+            .connect()
+            .await?;
+        sess
+            .http_endpoint()
+            .listen_and_forward(Url::parse("http://192.168.1.2:80")?)
+            .await
+            .map_err(Into::into)
+    }
+    ```
+
+    Rust Crate Docs:
+
+    * [https://docs.rs/ngrok/0.14.0-pre.13/ngrok/config/struct.HttpTunnelBuilder.html#method.listen\_and\_forward](https://docs.rs/ngrok/0.14.0-pre.13/ngrok/config/struct.HttpTunnelBuilder.html#method.listen_and_forward)
+  </Tab>
+
+  <Tab title="Kubernetes Controller">
+    The ngrok Kubernetes Operator always forwards its traffic. All of our other
+    examples show the most common forwarding case: a `Service` object that defines
+    a label selector of matching pods to forward traffic to.
+
+    But you can also [forward to an explicit set of IP
+    addresses](https://kubernetes.io/docs/concepts/services-networking/service/#services-without-selectors)
+    on the same network using `Service` and `EndpointSlice` objects.
+
+    ```yaml  theme={null}
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: example-service
+    spec:
+      ports:
+        - protocol: TCP
+          port: 80
+          targetPort: 80
+    ---
+    apiVersion: discovery.k8s.io/v1
+    kind: EndpointSlice
+    metadata:
+      name: example-service-1
+      labels:
+        kubernetes.io/service-name: example-service
+    addressType: IPv4
+    ports:
+      - name: "http"
+        appProtocol: http
+        protocol: TCP
+        port: 80
+    endpoints:
+      - addresses:
+          - "192.168.1.2"
+    ---
+    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+      name: example-ingress
+    spec:
+      ingressClassName: ngrok
+      rules:
+        - host: app.example.com
+          http:
+            paths:
+              - path: /
+                pathType: Prefix
+                backend:
+                  service:
+                    name: example-service
+                    port:
+                      number: 80
+    ```
+  </Tab>
+</Tabs>
+
+### HTTP/2 forwarding
+
+When agents forward to upstream http/2 services, connections use HTTP/1.1 by
+default.
+
+You can configure the agent, SDKs, and Kubernetes Operator to instead use HTTP/2 when forwarding to your upstream service.
+
+| Forwarder           | Option                            | Docs                                      |
+| ------------------- | --------------------------------- | ----------------------------------------- |
+| Agent               | `--upstream-protocol`             | [Agent CLI flags](/agent/cli/#ngrok-http) |
+| Agent SDKs          | language-dependent                | [Agent SDKs](/agent-sdks)                 |
+| Kubernetes Operator | `appProtocol` on the `Tunnel` CRD | [Kubernetes Operator](/k8s)               |
+
+When http2 forwarding is enabled, all requests to your upstream service will be
+transmitted over HTTP/2 Cleartext since TLS was already terminated at the ngrok
+cloud service. [TLS-ALPN](https://httpwg.org/specs/rfc7540.html#TLS-ALPN) cannot be used
+at this time. ngrok
+relies on [HTTP/2 with Prior
+Knowledge](https://httpwg.org/specs/rfc7540.html#known-http) currently.
+
+### Serving file directories
+
+The ngrok agent supports the `file://` scheme in a forwarding URL. When you use
+the `file://` scheme, the ngrok agent serves local file system directories by
+using its own built-in file server, no separate server needed. It works just
+like `python3 -m http.server` but it is built directly into the ngrok agent.
+
+Paths in `file://` URLs must be specified as absolute paths.
+
+#### Serve files in `/var/log`
+
+<Tabs>
+  <Tab title="Agent CLI">
+    ```bash  theme={null}
+    ngrok http "file:///var/log"
+    ```
+  </Tab>
+
+  <Tab title="Agent Config">
+    ```yaml  theme={null}
+    version: 3
+    endpoints:
+      - name: example
+        url: "https://example.ngrok.app"
+        upstream:
+          url: "file:///var/log"
+    ```
+  </Tab>
+
+  <Tab title="SSH Reverse Tunnel">
+    <Info>
+      Serving directory files is not supported via SSH.
+    </Info>
+  </Tab>
+
+  <Tab title="Go">
+    ```go  theme={null}
+    import (
+    	"context"
+    	"net"
+    	"net/http"
+
+    	"golang.ngrok.com/ngrok/v2"
+    )
+
+    func serveFiles(ctx context.Context) error {
+    	l, _ := ngrok.Listen(ctx)
+    	http.Serve(l, http.FileServer(http.Dir("/var/log")))
+    }
+    ```
+  </Tab>
+
+  <Tab title="Javascript">
+    <Info>
+      Serving directory files is not supported in the Javascript SDK.
+    </Info>
+  </Tab>
+
+  <Tab title="Python">
+    <Info>
+      Serving directory files is not supported in the Python SDK.
+    </Info>
+  </Tab>
+
+  <Tab title="Rust">
+    <Info>
+      Serving directory files is not supported in the Rust SDK.
+    </Info>
+  </Tab>
+
+  <Tab title="Kubernetes Controller">
+    <Info>
+      Serving directory files is not supported in the ngrok Kubernetes Operator.
+    </Info>
+  </Tab>
+</Tabs>
+
+<br />
+
+#### Serve files on Windows
+
+<Tabs>
+  <Tab title="Agent CLI">
+    ```bash  theme={null}
+    ngrok http "file://C:\Users\alan\Directory Name"
+    ```
+  </Tab>
+
+  <Tab title="Agent Config">
+    ```yaml  theme={null}
+    version: 3
+    endpoints:
+      - name: example
+        url: "https://example.ngrok.app"
+        upstream:
+          url: "file://C:\\Users\\alan\\Directory Name"
+    ```
+  </Tab>
+
+  <Tab title="SSH Reverse Tunnel">
+    <Info>
+      Serving directory files is not supported via SSH.
+    </Info>
+  </Tab>
+
+  <Tab title="Go">
+    ```go  theme={null}
+    import (
+    	"context"
+    	"net"
+    	"net/http"
+
+    	"golang.ngrok.com/ngrok/v2"
+    )
+
+    func serveFiles(ctx context.Context) error {
+    	l, _ := ngrok.Listen(ctx)
+    	http.Serve(l, http.FileServer(http.Dir("C:\\Users\\alan\\Directory Name")))
+    }
+    ```
+  </Tab>
+
+  <Tab title="Javascript">
+    <Info>
+      Serving directory files is not supported in the Javascript SDK.
+    </Info>
+  </Tab>
+
+  <Tab title="Python">
+    <Info>
+      Serving directory files is not supported in the Python SDK.
+    </Info>
+  </Tab>
+
+  <Tab title="Rust">
+    <Info>
+      Serving directory files is not supported in the Rust SDK.
+    </Info>
+  </Tab>
+
+  <Tab title="Kubernetes Controller">
+    <Info>
+      Serving directory files is not supported in the ngrok Kubernetes Operator.
+    </Info>
+  </Tab>
+</Tabs>
+
+<br />
+
+#### Serve files in your current working directory
+
+<Tabs>
+  <Tab title="Agent CLI">
+    ```bash  theme={null}
+    ngrok http file://`pwd`
+    ```
+  </Tab>
+
+  <Tab title="Agent Config">
+    <Info>
+      Serving the current working directory is not supported via the agent configuration file.
+    </Info>
+  </Tab>
+
+  <Tab title="SSH Reverse Tunnel">
+    <Info>
+      Serving directory files is not supported via SSH.
+    </Info>
+  </Tab>
+
+  <Tab title="Go">
+    ```go  theme={null}
+    import (
+    	"context"
+    	"net"
+    	"net/http"
+
+    	"golang.ngrok.com/ngrok/v2"
+    )
+
+    func serveFiles(ctx context.Context) error {
+    	l, _ := ngrok.Listen(ctx)
+    	http.Serve(l, http.FileServer(http.Dir(".")))
+    }
+    ```
+  </Tab>
+
+  <Tab title="Javascript">
+    <Info>
+      Serving directory files is not supported in the Javascript SDK.
+    </Info>
+  </Tab>
+
+  <Tab title="Python">
+    <Info>
+      Serving directory files is not supported in the Python SDK.
+    </Info>
+  </Tab>
+
+  <Tab title="Rust">
+    <Info>
+      Serving directory files is not supported in the Rust SDK.
+    </Info>
+  </Tab>
+
+  <Tab title="Kubernetes Controller">
+    <Info>
+      Serving directory files is not supported in the ngrok Kubernetes Operator.
+    </Info>
+  </Tab>
+</Tabs>
+
+## Traffic observability
+
+### Traffic Inspector
+
+[Traffic Inspector](/obs/traffic-inspection/) gives you a real-time view in the
+ngrok dashboard of the HTTP traffic flowing through your HTTP/S endpoints. You
+can choose whether Traffic Inspector captures only request metadata or full
+request and response bodies.
+
+### Log export logs
+
+You can export logs of traffic to HTTP/S endpoints with [ngrok's events
+system](/obs/). The following events are published for log exporting:
+
+| Log                                                                        | When                                                              |
+| -------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| [http\_request\_complete.v0](/obs/events/reference/#http-request-complete) | Published when an HTTP request to an HTTP/S endpoints completes.  |
+| [tcp\_connection\_closed.v0](/obs/events/reference/#tcp-connection-closed) | Published when a TCP connection to an HTTP/S endpoints completes. |
+
+## Advanced
+
+HTTP/S endpoints are standards-compliant HTTP reverse proxies.
+
+### Versions
+
+* HTTP/S endpoints support HTTP/1.1.
+* HTTPS endpoints support HTTP/1.1 and HTTP/2.
+* HTTP/1.0, HTTP/3 and QUIC are **not** supported.
+
+### HTTP/2
+
+HTTPS endpoints will automatically use HTTP/2 for all connections if the client
+supports it. Client support is determined via standard ALPN negotiation.
+
+HTTP/2 is used between the client and your endpoint even even if your upstream
+service does not support HTTP/2.
+
+The section on [HTTP/2 agent forwarding](#http2-forwarding) has details on how to
+configure the use of HTTP/2 when sending traffic to an upstream service.
+
+### Websockets
+
+Websocket connections are supported out-of-the-box. No configuration is required.
+
+### Hop by hop headers
+
+ngrok does not forward any [hop-by-hop
+headers](https://datatracker.ietf.org/doc/html/rfc2616#section-13.5.1) to the
+upstream service. As an exception, `Connection: upgrade` headers are forwarded
+to support [websockets](#websockets).
+
+For information on headers added automatically by ngrok, see
+[Upstream Headers](#upstream-headers).
+
+### Persistent connections
+
+When a connection is made to HTTP/S ngrok endpoints with HTTP/1.1, ngrok may
+choose to use persistent connections (such as HTTP keep-alive) to improve the
+performance of future requests from the same client if the client supports it.
+
+This behavior is not guaranteed and it is not configurable.
+
+See [RFC 7230](https://datatracker.ietf.org/doc/html/rfc7230#section-6.3) for
+additional details.
+
+### Well known URIs
+
+#### `/.well-known/acme-challenge`
+
+ngrok takes over handling of this path of any HTTP endpoint matching a
+[Domain](/universal-gateway/domains) with automated certificate management
+enabled. You may disable this behavior by uploading your own certificate on the
+matching Domain.
+
+## TLS
+
+ngrok automatically handles TLS (SSL) certificate management and termination for you.
+There is nothing to set up, configure, or manage.
+
+TLS connections to `https` endpoints are terminated at ngrok's cloud service.
+If you wish to terminate TLS traffic at the ngrok agent or in your upstream
+application, use a [TLS Endpoint](/universal-gateway/tls) instead.
+
+Consult the following documentation for additional details on how ngrok handles
+TLS termination and certificiate management:
+
+* [TLS Certificates](/universal-gateway/tls-certificates)
+* [TLS Termination](/universal-gateway/tls-termination)
+
+## Upstream headers
+
+ngrok adds headers to each HTTP request with information about the original
+client IP, request scheme and request `host` header value.
+
+| Header              | Description                                                                                                                                 |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `x-forwarded-for`   | The IP address of the client who initiated the request. If this header exists on the original request, ngrok will append a new value.       |
+| `x-forwarded-proto` | The scheme of the original request, either `http` or `https`. If this header exists on the original request, ngrok will append a new value. |
+| `x-forwarded-host`  | The header from the client's request if it existed, otherwise is set to the request's `Host` header value.                                  |
+
+Because ngrok appends values to `x-forwarded-for` and `x-forwarded-proto`, be
+sure to use the last value of the header in your application code to read the
+values injected by ngrok.
+
+You may remove these headers with the [Remove
+Headers](/traffic-policy/actions/remove-headers/) Traffic Policy action.
+
+## Limits & timeouts
+
+[Contact Support](mailto:support@ngrok.com) if you need to configure limits and
+timeouts on connections to HTTP endpoints.
+
+### Connection
+
+| Limit     | Name                | Notes                                                        |
+| --------- | ------------------- | ------------------------------------------------------------ |
+| 5 minutes | Client Idle Timeout | Time since data was last transmitted by the upstream service |
+| 5 minutes | Server Idle Timeout | Time since data was last transmitted by the upstream service |
+| No limit  | Data transmitted    | Data transmitted by the client or upstream service           |
+
+### TLS
+
+| Limit      | Name                     | Notes                                                      |
+| ---------- | ------------------------ | ---------------------------------------------------------- |
+| 60 seconds | TLS Handshake Duration   | Time between ClientHello received and handshake completion |
+| 64 KB      | Handshake Message Size   | Max size of non-certificate handshake messages             |
+| 256 KB     | Certificate Message Size | Max size of certificate handshake messages                 |
+| 16 KB      | Record Payload Size      |                                                            |
+
+### HTTP
+
+| Limit      | Name               | Notes                                         |
+| ---------- | ------------------ | --------------------------------------------- |
+| No timeout | Round Trip Timeout | Time for the entire HTTP request and response |
+
+### HTTP request
+
+| Limit      | Name                   | Notes                                                |
+| ---------- | ---------------------- | ---------------------------------------------------- |
+| 1 MB       | Request Header Size    | Includes method, URI, and headers                    |
+| 1 MB       | Request URI Length     | Limited by the size of the request header            |
+| No timeout | Request Timeout        | Time to read the entire HTTP request from the client |
+| No timeout | Request Header Timeout | Time to read the HTTP request header from the client |
+| No limit   | Request Body Size      |                                                      |
+
+### HTTP response
+
+| Limit      | Name                    | Notes                                                 |
+| ---------- | ----------------------- | ----------------------------------------------------- |
+| 1 MB       | Response Header Size    | Includes method, URI, and headers                     |
+| No timeout | Response Timeout        | Time to read the entire HTTP response from the server |
+| No timeout | Response Header Timeout | Time to read the HTTP response header from the server |
+| No limit   | Response Body Size      |                                                       |
+
+## Errors
+
+If ngrok fails to handle an HTTP request it will set the `ngrok-error-code`
+header in the HTTP response with a [unique ngrok Error Code](/errors/)
+describing the failure.
+
+ngrok guarantees that the upstream service may never set the `ngrok-error-code`
+HTTP response header so you know reliably that it was set by ngrok.
+
+ngrok may return an error under the following conditions:
+
+* Your upstream service timed out or rejected the connection
+* Your upstream service returned a response that was not valid HTTP
+* A [Traffic Policy](/traffic-policy) action rejected the request.
+* [Traffic Policy](/traffic-policy) execution encountered a runtime error.
+* ngrok encountered an internal error
+
+## API
+
+HTTP/S Endpoints can be created programmatically. Consult the documentation on
+\[Endpoint APIs]\(/api-reference/endpoints/list.
+
+## Pricing
+
+HTTP/S endpoints are available on all plans. Consult the [Endpoints
+Pricing](/universal-gateway/endpoints/#pricing) documentation for
+billing details.
+
+See [Domains pricing](/universal-gateway/domains/#pricing) for details on
+pricing for custom domains, wildcard endpoints and more.
+
+
+Built with [Mintlify](https://mintlify.com).

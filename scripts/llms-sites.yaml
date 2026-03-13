@@ -1367,3 +1367,6 @@ sites:
 - name: krakend
   base_url: https://krakend.com/
   description: krakend documentation
+- name: ngrok
+  base_url: https://ngrok.com/docs/
+  description: ngrok documentation
