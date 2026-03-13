@@ -1400,3 +1400,6 @@ sites:
 - name: tinacms
   base_url: https://www.tina.io/
   description: tinacms documentation
+- name: ansible
+  base_url: https://ansible-book.gitbook.io/
+  description: ansible documentation
