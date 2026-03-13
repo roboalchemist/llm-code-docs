@@ -2090,3 +2090,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/gmp
   branch: main
+- name: simplesamlphp
+  description: simplesamlphp from GitHub
+  repo_url: https://github.com/simplesamlphp/simplesamlphp.git
+  source_folder: docs
+  target_folder: docs/github-scraped/simplesamlphp
+  branch: main
