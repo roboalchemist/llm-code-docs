@@ -2087,3 +2087,9 @@ repositories:
   source_folder: website/docs
   target_folder: docs/github-scraped/lightweight-charts
   branch: main
+- name: dygraphs
+  description: dygraphs from GitHub
+  repo_url: https://github.com/danvk/dygraphs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/dygraphs
+  branch: main
