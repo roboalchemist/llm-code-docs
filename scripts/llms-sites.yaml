@@ -1328,3 +1328,6 @@ sites:
 - name: dbt
   base_url: https://docs.getdbt.com/
   description: dbt documentation
+- name: bull
+  base_url: https://docs.bullmq.io/
+  description: bull documentation
