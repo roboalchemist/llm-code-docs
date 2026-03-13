@@ -2063,3 +2063,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/melt-ui
   branch: main
+- name: final-form
+  description: final-form from GitHub
+  repo_url: https://github.com/final-form/final-form.git
+  source_folder: docs
+  target_folder: docs/github-scraped/final-form
+  branch: main
