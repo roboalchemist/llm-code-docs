@@ -1,0 +1,32 @@
+```ts
+function fromJSON(json: string | ZkappCommand): Transaction<false, false>;
+```
+
+Defined in: [lib/mina/v1/transaction.ts:102](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/transaction.ts#L102)
+
+Deserializes a transaction from a JSON object or JSON string representation.
+This method accepts both parsed JSON objects and JSON strings, making it flexible for different use cases.
+
+## Parameters
+
+### json
+
+A JSON object representation of a transaction (Types.Json.ZkappCommand) or a JSON string
+
+`string` | `ZkappCommand`
+
+## Returns
+
+[`Transaction`](../../../../type-aliases/Transaction.mdx)\<`false`, `false`\>
+
+A new Transaction instance reconstructed from the JSON input
+
+## Example
+
+```ts
+const originalTx = await Mina.transaction(sender, () => {
+  zkapp.someMethod();
+});
+const serialized = originalTx.toJSON();
+const deserializedTx = Transaction.fromJSON(serialized);
+```

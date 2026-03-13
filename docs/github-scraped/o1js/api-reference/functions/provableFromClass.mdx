@@ -1,0 +1,97 @@
+```ts
+function provableFromClass<A, T, V, J>(Class: Constructor<T> & {
+  check?: (x: T) => void;
+  empty?: () => T;
+}, typeObj: A): IsPure<A, Field> extends true ? ProvablePureExtended<T, V, J> : ProvableExtended<T, V, J>;
+```
+
+Defined in: [lib/provable/types/provable-derivers.ts:85](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/types/provable-derivers.ts#L85)
+
+## Type Parameters
+
+### A
+
+`A` *extends* `NestedProvable`
+
+### T
+
+`T` *extends* `any`
+
+### V
+
+`V` *extends* `any`
+
+### J
+
+`J` *extends* 
+  \| `null`
+  \| `string`
+  \| `number`
+  \| `boolean`
+  \| \{
+[`key`: `number`]: 
+  \| `null`
+  \| `string`
+  \| `number`
+  \| `boolean`
+  \| \{ \[x: number\]: string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| ... 5 more ... \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; ...
+  \| string \| number \| boolean \| \{ \[x: number\]: string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| ... 5 more ... \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null; \} \| (string \| ... ...[]
+  \| \{
+[`key`: `string`]: string \| number \| boolean \| \{ \[x: number\]: string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| ... 5 more ... \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null; \} \| (string \| ... ...;
+\};
+\}
+  \| \{
+[`key`: `number`]: 
+  \| `null`
+  \| `string`
+  \| `number`
+  \| `boolean`
+  \| \{
+[`key`: `number`]: string \| number \| boolean \| \{ \[x: number\]: string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| ... 5 more ... \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null; \} \| (string \| ... ...;
+\}
+  \| string \| number \| boolean \| \{ \[x: number\]: string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| ... 5 more ... \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null; \} \| (string \| ... ...[]
+  \| \{
+[`key`: `string`]: string \| number \| boolean \| \{ \[x: number\]: string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| ... 5 more ... \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null; \} \| (string \| ... ...;
+\};
+\}
+  \| (
+  \| `null`
+  \| `string`
+  \| `number`
+  \| `boolean`
+  \| \{
+[`key`: `number`]: string \| number \| boolean \| \{ \[x: number\]: string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| ... 5 more ... \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null; \} \| (string \| ... ...;
+\}
+  \| (string \| number \| boolean \| \{ \[x: number\]: string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| ... 5 more ... \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null; \} \| (string \| ......
+  \| \{
+[`key`: `string`]: string \| number \| boolean \| \{ \[x: number\]: string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| ... 5 more ... \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null; \} \| (string \| ... ...;
+\})[]
+  \| \{
+[`key`: `string`]: 
+  \| `null`
+  \| `string`
+  \| `number`
+  \| `boolean`
+  \| \{
+[`key`: `number`]: string \| number \| boolean \| \{ \[x: number\]: string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| ... 5 more ... \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null; \} \| (string \| ... ...;
+\}
+  \| string \| number \| boolean \| \{ \[x: number\]: string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| ... 5 more ... \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null)\[\] \| \{ ...; \} \| null; \} \| (string \| ... ...[]
+  \| \{ \[x: string\]: string \| number \| boolean \| \{ \[x: number\]: string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| number \| boolean \| ... \| (string \| ... 5 more ... \| null)\[\] \| ... \| null)\[\] \| ... \| null)\[\] \| ... \| null)\[\] \| ... \| null; \} \| (string \| ... 5 mor...;
+\}
+
+## Parameters
+
+### Class
+
+`Constructor`\<`T`\> & \{
+  `check?`: (`x`: `T`) => `void`;
+  `empty?`: () => `T`;
+\}
+
+### typeObj
+
+`A`
+
+## Returns
+
+`IsPure`\<`A`, [`Field`](../classes/Field.mdx)\> *extends* `true` ? `ProvablePureExtended`\<`T`, `V`, `J`\> : `ProvableExtended`\<`T`, `V`, `J`\>

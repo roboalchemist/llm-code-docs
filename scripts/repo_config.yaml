@@ -2096,3 +2096,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/simplesamlphp
   branch: main
+- name: o1js
+  description: o1js from GitHub
+  repo_url: https://github.com/o1-labs/o1js-documentation-site.git
+  source_folder: docs
+  target_folder: docs/github-scraped/o1js
+  branch: main

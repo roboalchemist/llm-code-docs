@@ -1,0 +1,28 @@
+---
+title: ZkProgram Proofs as Inputs
+---
+
+# ZkProgram Proofs as Inputs
+
+ZkProgram proofs can be used as inputs to zkApp methods, enabling powerful composition patterns. This allows you to verify complex computations off-chain and use the verified results in your smart contracts.
+
+## Basic ZkProgram Integration
+
+Define a ZkProgram and use its proofs in a smart contract:
+
+```ts file=../snippets/zkapps/zkprogram-inputs/zkprogram-inputs.ts start=start_basic_zkprogram end=end_basic_zkprogram
+```
+
+## Recursive Proofs
+
+Build recursive computations using self-referencing proofs:
+
+```ts file=../snippets/zkapps/zkprogram-inputs/zkprogram-inputs.ts start=start_recursive_proofs end=end_recursive_proofs
+```
+
+This enables scalable computation, state transitions, and proof compression for arbitrary-length computations.
+
+## API Reference
+
+For detailed information about ZkProgram and proofs, see:
+- [ZkProgram API reference](/docs/api-reference/functions/ZkProgram.mdx)

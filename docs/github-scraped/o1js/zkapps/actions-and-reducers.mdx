@@ -1,0 +1,47 @@
+---
+title: Actions and Reducers
+---
+
+# Actions and Reducers
+
+Actions are similar to [Events](/docs/zkapps/events.mdx), in terms of implementation.  Both are Field arrays that are emitted by ZkApp methods and stored on an archive node.  The added feature of actions is that the hash of all emitted actions is also stored on chain, so it is possible to process every action with a reducer and prove that every past transaction has been rolled up.
+
+So events are useful for off-chain indexing and user interfaces.  You can track app state changes, or store a dashboard of user activity.  Actions are meant to be used on-chain to update state in batches.
+
+## Actions
+
+Actions are an array of Fields under the hood, but o1js allows you to define a TypeScript interface for better structure in your business logic.  A SmartContract may have only one type of action.  Unlike events, all actions must be exactly the same shape, because that shape is what will be used in the reducer constraint system.
+
+```ts file=../snippets/zkapps/actions-reducers/actions-reducers.ts start=start_basic_actions end=end_basic_actions
+```
+
+## Reducers
+
+The reducer is a special function that can process several actions in a row and set the new state in a single proof/transaction.  You need to write your own reducer function based on your business logic.  For instance, you may have a voting app where the number of processed voted always goes up, or you could have a marketplace where the price can go up or down.
+
+```ts file=../snippets/zkapps/actions-reducers/actions-reducers.ts start=start_reducer_ex end=end_reducer_ex
+```
+
+## Fetching Actions
+
+Use `fetchActions` to retrieve previously emitted actions from an archive node.  The difference between Mina.fetchActions and reducer.fetchActions is that the former returns raw Field arrays, while the latter automatically converts the Fields into your defined action type.
+
+### Using Mina.fetchActions
+
+Fetch actions for any public key with optional filtering:
+
+```ts file=../snippets/zkapps/actions-reducers/actions-reducers.ts start=start_fetch_actions end=end_fetch_actions
+```
+
+### Using reducer.fetchActions
+
+Fetch actions for a specific contract with automatic type conversion:
+
+```ts file=../snippets/zkapps/actions-reducers/actions-reducers.ts start=start_reducer_fetch_actions end=end_reducer_fetch_actions
+```
+
+## Further Reading
+
+See ZkNoid's excellent article series on [Actions and Reducers](https://medium.com/zknoid/mina-action-reducers-guide-why-we-need-them-81b6836c1700) for guide motivated by real use cases.
+
+Also, see the API reference for [Reducers](/docs/api-reference/variables/Reducer.mdx).

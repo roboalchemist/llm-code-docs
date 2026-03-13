@@ -1,0 +1,35 @@
+---
+title: Full Proof Flow with ZkProgram
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+`ZkProgram` is the culmination of all the provable types, functions and constraint system tools in o1js.  This is the
+building block that let's you actually prove and verify execution of specific code.  You can see the api reference
+for full type information, but two features that the `ZkProgram` gives you are access to the methods you define on
+the system which generate a proof, and access to the `verify` method that clients can use to verify the proof.
+
+## Simple ZkProgram Example
+
+Every `ZkProgram` has a name, and a set of public input and output types.  These types are shared for every method in 
+the system, so they can all generate the same kind of proof.
+
+Methods in the `ZkProgram` can have custom private inputs and auxiliary output.  Private inputs are 
+where the magic happens.  These allow you to pass in private data that you don't want to share with the verifier, and
+use it in the proof.  Auxiliary output is more often used as a developer utility.  It is not available to the verifier,
+but it does provide a return value to the prover.  This can be used for debugging, or tracking some metadata that's not
+available in the public output.
+
+```ts file=../snippets/zk-program/zk-program.ts start=start_simple end=end_simple
+```
+
+## ZkProgram with complex types
+
+Most real world use cases for `ZkProgram` will involve complex data structures.  This is where you see the tangible
+benefit of the o1js provable type APIs.  You can use any provable type as input into a `ZkProgram`, so with tools like
+[Struct](/docs/basic-types/structs.mdx), and [IndexedMerkleMap](/docs/basic-types/merkle-trees.mdx#indexedmerklemap),
+you can model realistic data structures and easily use them as inputs in your proofs.
+
+```ts file=../snippets/zk-program/zk-program.ts start=start_complex end=end_complex
+```
+

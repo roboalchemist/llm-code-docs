@@ -1,0 +1,32 @@
+---
+title: Account Updates
+---
+
+# Account Updates
+
+AccountUpdates are the fundamental building blocks of zkApp transactions. They represent changes to account state and enable complex, multi-account operations within a single transaction. Understanding AccountUpdates is crucial for building sophisticated zkApps.
+
+## What are AccountUpdates?
+
+Contrary to what the name might suggest, AccountUpdates are not just about updating account information. They function more like CRUD operations on ZkApp account state.
+
+With ZkApps, you can't simply read state and use it in a circuit.  You need to read the state _and_ prove that you read it correctly.  That's why an AccountUpdate is required, even for reads.
+
+AccountUpdates are the interface through which all ZkApp interactions on Mina occur. The various helper methods and DSL tools provided by o1js, with respect to smart contracts and on-chain functionality, are all wrappers around AccountUpdates.
+- Changes to account balances, and assertions about them
+- State updates, and assertions about current state
+- Permissions and authorization
+- Calling ZkApp methods, including cross-contract calls
+- Creating new accounts
+- And more...
+
+## Basic AccountUpdate Usage
+
+Here's a simple example of creating and using AccountUpdates:
+
+```ts file=../snippets/zkapps/account-updates/account-updates.ts start=start_basic_account_update end=end_basic_account_update
+```
+
+## API Reference
+
+For detailed information about AccountUpdates, see: [AccountUpdate API reference](/docs/api-reference/classes/AccountUpdate.mdx)
