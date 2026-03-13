@@ -1403,3 +1403,6 @@ sites:
 - name: ansible
   base_url: https://ansible-book.gitbook.io/
   description: ansible documentation
+- name: buildkite
+  base_url: https://www.buildkite.com/docs/
+  description: buildkite documentation
