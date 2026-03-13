@@ -1448,3 +1448,6 @@ sites:
 - name: reka-ui
   base_url: https://reka-ui.com/
   description: reka-ui documentation
+- name: stencil
+  base_url: https://stenciljs.com/docs/
+  description: stencil documentation
