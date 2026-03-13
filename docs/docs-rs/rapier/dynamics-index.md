@@ -1,0 +1,26 @@
+rapier3d
+
+# Module dynamics
+
+Source
+
+## Structs§
+
+AxesMaskFlags affecting the behavior of the constraints solver for a given contact manifold.BodyPairA pair of rigid body handles.CCDSolverContinuous Collision Detection solver that prevents fast objects from tunneling through geometry.FixedJointA joint that rigidly connects two bodies together (like welding them).FixedJointBuilderCreate fixed joints using the builder pattern.GenericJointA generic joint.GenericJointBuilderCreate generic joints using the builder pattern.ImpulseJointAn impulse-based joint attached to two bodies.ImpulseJointHandleThe unique identifier of a joint added to the joint set.
+The unique identifier of a collider added to a collider set.ImpulseJointSetThe collection that stores all joints connecting rigid bodies in your physics world.IntegrationParametersConfiguration parameters that control the physics simulation quality and behavior.InverseKinematicsOptionOptions for the jacobian-based Inverse Kinematics solver for multibodies.IslandManagerSystem that manages which bodies are active (awake) vs sleeping to optimize performance.JointAxesMaskA bit mask identifying multiple degrees of freedom of a joint.JointLimitsLimits that restrict a joint’s range of motion along one axis.JointMotorA powered motor that drives a joint toward a target position/velocity.LockedAxesFlags that lock specific movement axes to prevent translation or rotation.MassPropertiesThe mass properties of a rigid body.MultibodyAn articulated body simulated using the reduced-coordinates approach.MultibodyIndexThe temporary index of a multibody added to a `MultibodyJointSet`.MultibodyJointAn joint attached to two bodies based on the reduced coordinates formalism.MultibodyJointHandleThe unique handle of an multibody_joint added to a `MultibodyJointSet`.MultibodyJointSetA set of rigid bodies that can be handled by a physics pipeline.MultibodyLinkOne link of a multibody.MultibodyLinkIdIndexes usable to get a multibody link from a `MultibodyJointSet`.PinSlotJointA pin slot joint, locks all relative motion between two bodies except for translation along the joint’s principal axis and relative rotations.
+This joint is also known as a groove joint in Godot.PinSlotJointBuilderCreate pin slot joints using the builder pattern.PrismaticJointA sliding joint that allows movement along one axis only (like a piston or sliding door).PrismaticJointBuilderCreate prismatic joints using the builder pattern.RevoluteJointA hinge joint that allows rotation around one axis (like a door hinge or wheel axle).RevoluteJointBuilderCreate revolute joints using the builder pattern.RigidBodyA physical object that can move, rotate, and collide with other objects in your simulation.RigidBodyActivationControls when a body goes to sleep (becomes inactive to save CPU).RigidBodyBuilderA builder for creating rigid bodies with custom properties.RigidBodyCcdInformation used for Continuous-Collision-Detection.RigidBodyChangesFlags describing how the rigid-body has been modified by the user.RigidBodyCollidersThe set of colliders attached to this rigid-bodies.RigidBodyDampingDamping factors to progressively slow down a rigid-body.RigidBodyDominanceThe dominance groups of a rigid-body.RigidBodyForcesThe user-defined external forces applied to this rigid-body.RigidBodyHandleThe unique handle of a rigid body added to a `RigidBodySet`.RigidBodyIdsInternal identifiers used by the physics engine.RigidBodyMassPropsThe mass properties of a rigid-body.RigidBodyPositionThe position of this rigid-body.RigidBodySetThe collection that stores all rigid bodies in your physics world.RigidBodyVelocityThe velocities of this rigid-body.RopeJointA distance-limiting joint (like a rope or cable connecting two objects).RopeJointBuilderCreate rope joints using the builder pattern.SphericalJointA ball-and-socket joint that allows free rotation but no translation (like a shoulder joint).SphericalJointBuilderCreate spherical joints using the builder pattern.SpringCoefficientsCoefficients for a spring, typically used for configuring constraint softness for contacts and
+joints.SpringJointA spring joint that pulls/pushes two bodies toward a target distance (like a spring or shock absorber).SpringJointBuilderA SpringJoint joint using the builder pattern.
+
+## Enums§
+
+CoefficientCombineRuleHow to combine friction/restitution values when two colliders touch.FrictionModelFriction models used for all contact constraints between two rigid-bodies.JointAxisIdentifiers of degrees of freedoms of a joint.JointEnabledEnum indicating whether or not a joint is enabled.MotorModelHow motor stiffness/damping values are interpreted (mass-dependent vs mass-independent).RigidBodyAdditionalMassPropsMass and angular inertia added to a rigid-body on top of its attached colliders’ contributions.RigidBodyTypeThe type of a rigid body, determining how it responds to forces and movement.
+
+## Functions§
+
+unit_joint_limit_constraintInitializes and generate the velocity constraints applicable to the multibody links attached
+to this multibody_joint.unit_joint_motor_constraintInitializes and generate the velocity constraints applicable to the multibody links attached
+to this multibody_joint.
+
+## Type Aliases§
+
+BodyStatusDeprecatedThe type of a body, governing the way it is affected by external forces.
