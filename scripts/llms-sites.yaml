@@ -1334,3 +1334,6 @@ sites:
 - name: cloud-run
   base_url: https://cloud.run/docs/
   description: cloud-run documentation
+- name: aws-ecs
+  base_url: https://docs.aws.amazon.com/
+  description: aws-ecs documentation
