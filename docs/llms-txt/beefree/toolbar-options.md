@@ -1,0 +1,42 @@
+# Source: https://docs.beefree.io/beefree-sdk/server-side-configurations/server-side-options/toolbar-options.md
+
+# Toolbar options
+
+{% hint style="info" %}
+Please note that server-side configurations are only available on [paid plans](https://developers.beefree.io/pricing-plans).
+{% endhint %}
+
+## Toolbar Options
+
+In the Toolbar Options tab you can:
+
+* control individual settings that affect the top toolbar in the builder
+* decide whether to hide the toolbar completely
+
+<figure><img src="https://806400411-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F8c7XIQHfAtM23Dp3ozIC%2Fuploads%2FGHtxpR0t7Y4LtC3qWvKu%2FCleanShot%202025-03-13%20at%2014.33.00.png?alt=media&#x26;token=355ff4f8-4022-4830-b1b9-aa69228b6020" alt=""><figcaption></figcaption></figure>
+
+The toolbar contains all the actions not related directly with content edition, like save, send a test or preview.
+
+You can decide the inner elements from it, from hiding our brand to removing the save button, to create the builder version that better fits in your application.
+
+Not enough? Remove the toolbar completely and offer all the actions with your own UI elements.
+
+## Remove Toolbar and Create Custom UI Elements
+
+For example, in our MailUp App for Shopify, we hide the toolbar completely and control the builder (Show preview, Send test, Save) from buttons in the app UI (not in the builder). Here is how it looks.
+
+<figure><img src="https://806400411-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F8c7XIQHfAtM23Dp3ozIC%2Fuploads%2FklCHsaTLwpsQ0FvwM3Kx%2F2bee_plugin_embedded_shopify2.jpeg?alt=media&#x26;token=fba6897b-af8a-4cdf-b2cd-5102d563c7f7" alt=""><figcaption></figcaption></figure>
+
+If you decide to go this route, use the [methods from this page](https://docs.beefree.io/beefree-sdk/getting-started/readme/installation/methods-and-events) to control the builder from your UI.
+
+| Option                            | Description                                                                                                                                                                                     |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Show toolbar**                  | Is the main option: if is not active, the elements listed bellow get hidden                                                                                                                     |
+| **Show Beefree SDK logo**         | Show our logo and links our site                                                                                                                                                                |
+| **Show preview**                  | Trigger the preview window                                                                                                                                                                      |
+| **Show send test**                | Trigger the function for sending a test                                                                                                                                                         |
+| **Show save as template**         | Is used to save only the editable version of the message                                                                                                                                        |
+| **Show save button**              | If you don’t have a external one, better not to hide this 🙂                                                                                                                                    |
+| **Show auto-save icon**           | This tiny icon alert the user every time the auto-save works                                                                                                                                    |
+| **Show help link**                | This option is special, because you can also introduce your custom help URL                                                                                                                     |
+| **Show Multi-Language Templates** | Use this to enable a custom top bar that allows the end user to [change the language](https://docs.beefree.io/beefree-sdk/other-customizations/multi-language-templates#changing-the-language). |

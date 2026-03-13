@@ -1406,3 +1406,6 @@ sites:
 - name: plivo
   base_url: https://www.plivo.com/docs/
   description: plivo documentation
+- name: beefree
+  base_url: https://docs.beefree.io/
+  description: beefree documentation
