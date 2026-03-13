@@ -1921,3 +1921,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/prince
   branch: main
+- name: hvplot
+  description: hvplot from GitHub
+  repo_url: https://github.com/holoviz/hvplot.git
+  source_folder: doc
+  target_folder: docs/github-scraped/hvplot
+  branch: main
