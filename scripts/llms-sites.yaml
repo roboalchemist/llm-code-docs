@@ -1349,3 +1349,6 @@ sites:
 - name: keboola
   base_url: https://www.keboola.com/
   description: keboola documentation
+- name: mlrun
+  base_url: https://docs.mlrun.org/
+  description: mlrun documentation
