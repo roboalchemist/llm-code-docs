@@ -1430,3 +1430,6 @@ sites:
 - name: automerge
   base_url: https://automerge.org/
   description: automerge documentation
+- name: svelte-store
+  base_url: https://svelte.dev/
+  description: svelte-store documentation
