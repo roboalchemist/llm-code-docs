@@ -1391,3 +1391,6 @@ sites:
 - name: neverbounce
   base_url: https://developers.neverbounce.com/
   description: neverbounce documentation
+- name: stripo
+  base_url: https://stripo.io/
+  description: stripo documentation
