@@ -1361,3 +1361,6 @@ sites:
 - name: dask
   base_url: https://docs.dask.org/
   description: dask documentation
+- name: hatchet
+  base_url: https://docs.hatchet.run/
+  description: hatchet documentation
