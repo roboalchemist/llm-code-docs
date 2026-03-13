@@ -1388,3 +1388,6 @@ sites:
 - name: portainer
   base_url: https://docs.portainer.io/
   description: portainer documentation
+- name: kong
+  base_url: https://developer.konghq.com/
+  description: kong documentation
