@@ -2144,3 +2144,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/sematext
   branch: main
+- name: tracetest
+  description: tracetest from GitHub
+  repo_url: https://github.com/kubeshop/tracetest.git
+  source_folder: docs
+  target_folder: docs/github-scraped/tracetest
+  branch: main
