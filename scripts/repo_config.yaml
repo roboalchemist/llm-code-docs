@@ -1819,3 +1819,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/graphql-playground
   branch: main
+- name: keystonejs
+  description: keystonejs from GitHub
+  repo_url: https://github.com/keystonejs/keystone.git
+  source_folder: docs
+  target_folder: docs/github-scraped/keystonejs
+  branch: main
