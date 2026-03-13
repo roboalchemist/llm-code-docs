@@ -1451,3 +1451,6 @@ sites:
 - name: stencil
   base_url: https://stenciljs.com/docs/
   description: stencil documentation
+- name: mantine
+  base_url: https://mantine.dev/
+  description: mantine documentation
