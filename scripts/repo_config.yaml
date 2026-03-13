@@ -1967,3 +1967,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/apache-dolphinscheduler
   branch: main
+- name: netflix-conductor
+  description: netflix-conductor from GitHub
+  repo_url: https://github.com/Netflix/conductor.git
+  source_folder: docs
+  target_folder: docs/github-scraped/netflix-conductor
+  branch: main
