@@ -2048,3 +2048,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/py-cui
   branch: main
+- name: thycotic-secret-server
+  description: thycotic-secret-server from GitHub
+  repo_url: https://github.com/thycotic-ps/thycotic.secretserver.git
+  source_folder: docs
+  target_folder: docs/github-scraped/thycotic-secret-server
+  branch: main
