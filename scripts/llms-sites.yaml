@@ -1400,3 +1400,6 @@ sites:
 - name: yarp
   base_url: https://yarp.dot.net/docs/
   description: yarp documentation
+- name: swiftgraphql
+  base_url: https://swift-graphql.com/
+  description: swiftgraphql documentation
