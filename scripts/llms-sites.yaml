@@ -1400,3 +1400,9 @@ sites:
 - name: rxdb
   base_url: https://rxdb.info/
   description: rxdb documentation
+- name: shadcn/ui
+  base_url: https://ui.shadcn.com/
+  description: shadcn/ui documentation
+- name: vuetify
+  base_url: https://vuetifyjs.com/
+  description: vuetify documentation
