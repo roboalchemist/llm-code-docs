@@ -1382,3 +1382,6 @@ sites:
 - name: klaviyo
   base_url: https://developers.klaviyo.com/
   description: klaviyo documentation
+- name: mailerlite
+  base_url: https://developers-classic.mailerlite.com/
+  description: mailerlite documentation
