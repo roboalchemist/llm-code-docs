@@ -2102,3 +2102,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/o1js
   branch: main
+- name: winston
+  description: winston from GitHub
+  repo_url: https://github.com/winstonjs/winston.git
+  source_folder: docs
+  target_folder: docs/github-scraped/winston
+  branch: main
