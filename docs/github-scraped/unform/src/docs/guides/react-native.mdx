@@ -1,0 +1,116 @@
+---
+title: React Native
+description: Get started with Unform in React Native apps
+---
+
+The Unform API is almost identical between web and mobile; below, you can see an 
+Input and a Form using Unform on React Native.
+
+## Input component
+
+In React Native, we need to use `TextInput` provided by the `react-native` package.
+
+Also, to keep the field uncontrolled, don't store its value within a state, we 
+need to use the references `value` to hold the field value and use the 
+`setNativeProps` to set the value native renderer.
+
+```jsx title=Input.js lineNumbers=true
+import React, { useRef, useEffect, useCallback } from 'react';
+import { Text, TextInput } from 'react-native';
+import { useField } from '@unform/core';
+
+function Input({ name, label, onChangeText, ...rest }) {
+  const inputRef = useRef(null);
+
+  const { fieldName, registerField, defaultValue, error } = useField(name);
+
+  useEffect(() => {
+    inputRef.current.value = defaultValue;
+  }, [defaultValue]);
+
+  useEffect(() => {
+    if (inputRef.current) inputRef.current.value = defaultValue;
+  }, [defaultValue]);
+
+  useEffect(() => {
+    registerField({
+      name: fieldName,
+      ref: inputRef.current,
+      getValue() {
+        if (inputRef.current) return inputRef.current.value;
+
+        return '';
+      },
+      setValue(ref, value) {
+        if (inputRef.current) {
+          inputRef.current.setNativeProps({ text: value });
+          inputRef.current.value = value;
+        }
+      },
+      clearValue() {
+        if (inputRef.current) {
+          inputRef.current.setNativeProps({ text: '' });
+          inputRef.current.value = '';
+        }
+      },
+    });
+  }, [fieldName, registerField]);
+
+  const handleChangeText = useCallback(
+    text => {
+      if (inputRef.current) inputRef.current.value = text;
+
+      if (onChangeText) onChangeText(text);
+    },
+    [onChangeText],
+  );
+
+  return (
+    <>
+      {label && <Text>{label}</Text>}
+
+      <TextInput
+        ref={inputRef}
+        onChangeText={handleChangeText}
+        defaultValue={defaultValue}
+        {...rest}
+      />
+    </>
+  );
+}
+
+export default Input;
+```
+
+## Form component
+
+The only difference between the web form is that in React Native, we don't have 
+`<button type="submit" />`, so the form submit must be triggered manually.
+
+```jsx title=SignIn.js lineNumbers=true
+import React, { useRef } from 'react';
+import { Button } from 'react-native';
+import { Form } from '@unform/mobile';
+import Input from './components/Input';
+
+export default function SignIn() {
+  const formRef = useRef(null);
+
+  function handleSubmit(data) {
+    console.log(data);
+    // { email: 'test@example.com', password: '123456' }
+  }
+
+  return (
+    <Form ref={formRef} onSubmit={handleSubmit}>
+      <Input name="email" type="email" />
+      <Input name="password" type="password" />
+
+      <Button title="Sign in" onPress={() => formRef.current.submitForm()} />
+    </Form>
+  );
+}
+```
+
+Unform exposes a `submitForm` function within form reference, so calling it will 
+trigger `onSubmit` prop passing all the field data.

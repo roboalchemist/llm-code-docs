@@ -1945,3 +1945,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/deck.gl
   branch: main
+- name: unform
+  description: unform from GitHub
+  repo_url: https://github.com/unform/unform.git
+  source_folder: docs
+  target_folder: docs/github-scraped/unform
+  branch: main
