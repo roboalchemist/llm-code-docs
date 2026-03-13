@@ -2033,3 +2033,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/phpmailer
   branch: main
+- name: reflex
+  description: reflex from GitHub
+  repo_url: https://github.com/reflex-dev/reflex-web.git
+  source_folder: docs
+  target_folder: docs/github-scraped/reflex
+  branch: main
