@@ -2009,3 +2009,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/messagepack
   branch: main
+- name: zerorpc
+  description: zerorpc from GitHub
+  repo_url: https://github.com/0rpc/zerorpc-python.git
+  source_folder: doc
+  target_folder: docs/github-scraped/zerorpc
+  branch: main
