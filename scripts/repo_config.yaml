@@ -1843,3 +1843,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/bootstrap-email
   branch: main
+- name: sharedb
+  description: sharedb from GitHub
+  repo_url: https://github.com/share/sharedb.git
+  source_folder: docs
+  target_folder: docs/github-scraped/sharedb
+  branch: main
