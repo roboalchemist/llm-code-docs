@@ -1421,3 +1421,6 @@ sites:
 - name: aws-x-ray
   base_url: https://docs.aws.amazon.com/
   description: aws-x-ray documentation
+- name: pinpoint
+  base_url: https://pinpoint-apm.gitbook.io/
+  description: pinpoint documentation
