@@ -1352,3 +1352,6 @@ sites:
 - name: mlrun
   base_url: https://docs.mlrun.org/
   description: mlrun documentation
+- name: workato
+  base_url: https://workato.docs.buildwithfern.com/
+  description: workato documentation
