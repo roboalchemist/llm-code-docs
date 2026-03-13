@@ -1927,3 +1927,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/hvplot
   branch: main
+- name: datoviz
+  description: datoviz from GitHub
+  repo_url: https://github.com/datoviz/datoviz.git
+  source_folder: docs
+  target_folder: docs/github-scraped/datoviz
+  branch: main
