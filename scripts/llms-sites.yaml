@@ -1427,3 +1427,6 @@ sites:
 - name: akka
   base_url: https://docs.akka.io/
   description: akka documentation
+- name: automerge
+  base_url: https://automerge.org/
+  description: automerge documentation
