@@ -2138,3 +2138,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/pingdom
   branch: main
+- name: sematext
+  description: sematext from GitHub
+  repo_url: https://github.com/sematext/sematext-api-client-javascript.git
+  source_folder: docs
+  target_folder: docs/github-scraped/sematext
+  branch: main
