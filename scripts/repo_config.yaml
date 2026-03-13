@@ -1963,3 +1963,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/react-static
   branch: main
+- name: zola
+  description: zola from GitHub
+  repo_url: https://github.com/getzola/zola.git
+  source_folder: docs
+  target_folder: docs/github-scraped/zola
+  branch: main
