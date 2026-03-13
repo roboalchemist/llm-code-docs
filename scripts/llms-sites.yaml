@@ -1427,3 +1427,6 @@ sites:
 - name: clickhouse
   base_url: https://clickhouse.ferndocs.com/
   description: clickhouse documentation
+- name: logrocket
+  base_url: https://docs.logrocket.com/
+  description: logrocket documentation
