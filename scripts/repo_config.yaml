@@ -2036,3 +2036,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/colorist
   branch: main
+- name: progressbar
+  description: progressbar from GitHub
+  repo_url: https://github.com/wolph/python-progressbar.git
+  source_folder: docs
+  target_folder: docs/github-scraped/progressbar
+  branch: main
