@@ -2054,3 +2054,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/thycotic-secret-server
   branch: main
+- name: direnv
+  description: direnv from GitHub
+  repo_url: https://github.com/direnv/direnv.git
+  source_folder: docs
+  target_folder: docs/github-scraped/direnv
+  branch: main
