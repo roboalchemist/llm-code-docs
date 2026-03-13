@@ -1340,3 +1340,6 @@ sites:
 - name: dify
   base_url: https://docs.dify.ai/
   description: dify documentation
+- name: estuary
+  base_url: https://estuary.dev/
+  description: estuary documentation
