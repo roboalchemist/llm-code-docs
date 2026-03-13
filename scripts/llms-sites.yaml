@@ -1367,3 +1367,6 @@ sites:
 - name: heroicons
   base_url: https://heroicons.com/
   description: heroicons documentation
+- name: ibm-carbon-design-system
+  base_url: https://carbondesignsystem.com/
+  description: ibm-carbon-design-system documentation
