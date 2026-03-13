@@ -1777,3 +1777,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/datarobot
   branch: main
+- name: rq
+  description: rq from GitHub
+  repo_url: https://github.com/rq/rq.git
+  source_folder: docs
+  target_folder: docs/github-scraped/rq
+  branch: main
