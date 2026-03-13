@@ -1747,3 +1747,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/git-lfs
   branch: main
+- name: amazon-deequ
+  description: amazon-deequ from GitHub
+  repo_url: https://github.com/awslabs/python-deequ.git
+  source_folder: docs
+  target_folder: docs/github-scraped/amazon-deequ
+  branch: main
