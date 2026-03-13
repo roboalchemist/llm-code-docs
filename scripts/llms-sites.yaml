@@ -1433,3 +1433,6 @@ sites:
 - name: svelte-store
   base_url: https://svelte.dev/
   description: svelte-store documentation
+- name: element-plus
+  base_url: https://element-plus.org/
+  description: element-plus documentation
