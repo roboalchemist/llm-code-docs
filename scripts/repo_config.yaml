@@ -1933,3 +1933,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/datoviz
   branch: main
+- name: napari
+  description: napari from GitHub
+  repo_url: https://github.com/napari/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/napari
+  branch: main
