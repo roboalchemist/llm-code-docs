@@ -2084,3 +2084,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/qualys
   branch: main
+- name: gmp
+  description: gmp from GitHub
+  repo_url: https://github.com/gmpy2/gmpy2.git
+  source_folder: docs
+  target_folder: docs/github-scraped/gmp
+  branch: main
