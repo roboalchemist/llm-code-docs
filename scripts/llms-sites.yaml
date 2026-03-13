@@ -1385,3 +1385,6 @@ sites:
 - name: fast
   base_url: https://docs.fast.io/docs/
   description: fast documentation
+- name: carbon-design-system
+  base_url: https://carbondesignsystem.com/
+  description: carbon-design-system documentation
