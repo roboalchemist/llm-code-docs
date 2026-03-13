@@ -2111,3 +2111,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/dhtmlx-gantt
   branch: main
+- name: express-validator
+  description: express-validator from GitHub
+  repo_url: https://github.com/express-validator/express-validator.git
+  source_folder: docs
+  target_folder: docs/github-scraped/express-validator
+  branch: main
