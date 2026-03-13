@@ -1361,3 +1361,6 @@ sites:
 - name: drip
   base_url: https://docs.drip.re/
   description: drip documentation
+- name: mantine
+  base_url: https://mantine.dev/
+  description: mantine documentation
