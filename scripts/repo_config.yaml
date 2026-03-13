@@ -1903,3 +1903,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/react-native-paper
   branch: main
+- name: shoelace
+  description: shoelace from GitHub
+  repo_url: https://github.com/shoelace-style/shoelace.git
+  source_folder: docs
+  target_folder: docs/github-scraped/shoelace
+  branch: main
