@@ -1331,3 +1331,6 @@ sites:
 - name: bull
   base_url: https://docs.bullmq.io/
   description: bull documentation
+- name: cloud-run
+  base_url: https://cloud.run/docs/
+  description: cloud-run documentation
