@@ -1382,3 +1382,6 @@ sites:
 - name: ark-ui-solid
   base_url: https://ark-ui.com/
   description: ark-ui-solid documentation
+- name: fast
+  base_url: https://docs.fast.io/docs/
+  description: fast documentation
