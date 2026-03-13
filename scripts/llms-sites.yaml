@@ -1418,3 +1418,6 @@ sites:
 - name: mailchimp-transactional
   base_url: https://mailchimp.com/
   description: mailchimp-transactional documentation
+- name: smtp2go
+  base_url: https://developers.smtp2go.com/
+  description: smtp2go documentation
