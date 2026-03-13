@@ -1373,3 +1373,6 @@ sites:
 - name: capacitor
   base_url: https://www.capgo.app/
   description: capacitor documentation
+- name: atlassian-design-system
+  base_url: https://atlassian.design/
+  description: atlassian-design-system documentation
