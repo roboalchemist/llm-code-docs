@@ -1409,3 +1409,6 @@ sites:
 - name: gitguardian
   base_url: https://docs.gitguardian.com/
   description: gitguardian documentation
+- name: fluentd
+  base_url: https://docs.fluentd.org/
+  description: fluentd documentation

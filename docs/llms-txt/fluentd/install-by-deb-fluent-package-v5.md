@@ -1,0 +1,175 @@
+# Source: https://docs.fluentd.org/installation/obsolete-installation/fluent-package-v5-eol-installation/install-by-deb-fluent-package-v5.md
+
+# Install by DEB Package v5 (Debian/Ubuntu)
+
+This article explains how to install stable versions of `fluent-package` deb packages, the stable Fluentd distribution packages maintained by [Fluentd Project](https://www.fluentd.org/).
+
+## What is `fluent-package`?
+
+Please see [fluent-package-v5-vs-td-agent](https://docs.fluentd.org/quickstart/fluent-package-v5-vs-td-agent).
+
+## How to install `fluent-package`
+
+{% hint style="info" %}
+NOTE:
+
+* If you upgrade from `td-agent` v4, See [Upgrade to fluent-package v5](https://www.fluentd.org/blog/upgrade-td-agent-v4-to-v5).
+* Do not directly upgrade from v3 to v5. Such a workflow is not supported. It causes a trouble. Upgrade in stages. (v3 to v4, then v4 to v5)
+  {% endhint %}
+
+{% hint style="danger" %}
+The following are deprecated fluent-package and td-agent (EOL) information:
+
+* As [Drop schedule announcement about EOL of Fluent Package v5](https://www.fluentd.org/blog/schedule-for-fluent-package-5-eol), recommend to upgrade to Fluent Package v6. See [Upgrade Guide for fluent-package v6](https://www.fluentd.org/blog/upgrade-guide-for-fluent-package-v6).
+* About [Treasure Agent (td-agent) v4 (EOL)](https://www.fluentd.org/blog/schedule-for-td-agent-4-eol), See [Install by DEB Package v4](https://docs.fluentd.org/installation/obsolete-installation/treasure-agent-v4-eol-installation/install-by-deb-td-agent-v4).
+* About [Treasure Agent (td-agent) 3 will not be maintained anymore](https://www.fluentd.org/blog/schedule-for-td-agent-3-eol), see [Install by DEB Package v3](https://docs.fluentd.org/installation/obsolete-installation/treasure-agent-v3-eol-installation/install-by-deb-td-agent-v3).
+  {% endhint %}
+
+### Step 0: Before Installation
+
+Please follow the [Pre-installation Guide](https://docs.fluentd.org/installation/before-install) to configure your OS properly.
+
+### Step 1: Install from Apt Repository
+
+NOTE: If your OS is not supported, consider [gem installation](https://docs.fluentd.org/installation/install-by-gem) instead.
+
+A shell script is provided to automate the installation process for each version. The shell script registers a new apt repository at `/etc/apt/sources.list.d/fluent.sources` (or `/etc/apt/sources.list.d/fluent-lts.sources`) and installs the `fluent-package` deb package.
+
+#### For Ubuntu Noble:
+
+**fluent-package 5 (LTS)**
+
+```bash
+curl -fsSL https://fluentd.cdn.cncf.io/sh/install-ubuntu-noble-fluent-package5-lts.sh | sh
+```
+
+**fluent-package 5**
+
+```bash
+curl -fsSL https://fluentd.cdn.cncf.io/sh/install-ubuntu-noble-fluent-package5.sh | sh
+```
+
+#### For Ubuntu Jammy:
+
+**fluent-package 5 (LTS)**
+
+```bash
+curl -fsSL https://fluentd.cdn.cncf.io/sh/install-ubuntu-jammy-fluent-package5-lts.sh | sh
+```
+
+**fluent-package 5**
+
+```bash
+curl -fsSL https://fluentd.cdn.cncf.io/sh/install-ubuntu-jammy-fluent-package5.sh | sh
+```
+
+#### For Ubuntu Focal:
+
+{% hint style="info" %}
+fluent-package v6 will not be shipped for Ubuntu Focal.
+{% endhint %}
+
+**fluent-package 5 (LTS)**
+
+```bash
+curl -fsSL https://fluentd.cdn.cncf.io/sh/install-ubuntu-focal-fluent-package5-lts.sh | sh
+```
+
+**fluent-package 5**
+
+```bash
+curl -fsSL https://fluentd.cdn.cncf.io/sh/install-ubuntu-focal-fluent-package5.sh | sh
+```
+
+#### For Debian Bookworm:
+
+**fluent-package 5 (LTS)**
+
+```bash
+curl -fsSL https://fluentd.cdn.cncf.io/sh/install-debian-bookworm-fluent-package5-lts.sh | sh
+```
+
+**fluent-package 5**
+
+```bash
+curl -fsSL https://fluentd.cdn.cncf.io/sh/install-debian-bookworm-fluent-package5.sh | sh
+```
+
+#### For Debian Bullseye:
+
+{% hint style="info" %}
+fluent-package v6 will not be shipped for Debian Bullseye.
+{% endhint %}
+
+**fluent-package 5 (LTS)**
+
+```bash
+curl -fsSL https://fluentd.cdn.cncf.io/sh/install-debian-bullseye-fluent-package5-lts.sh | sh
+```
+
+**fluent-package 5**
+
+```bash
+curl -fsSL https://fluentd.cdn.cncf.io/sh/install-debian-bullseye-fluent-package5.sh | sh
+```
+
+### Step 2: Launch Daemon
+
+### `systemd`
+
+Use `/lib/systemd/system/fluentd` script to `start`, `stop`, or `restart` the agent:
+
+```
+$ sudo systemctl start fluentd.service
+$ sudo systemctl status fluentd.service
+ sudo systemctl status fluentd
+● fluentd.service - fluentd: All in one package of Fluentd
+     Loaded: loaded (/lib/systemd/system/fluentd.service; enabled; vendor preset: enabled)
+     Active: active (running) since Wed 2023-08-16 08:18:22 UTC; 18s ago
+       Docs: https://docs.fluentd.org/
+    Process: 494 ExecStart=/opt/fluent/bin/fluentd --log $FLUENT_PACKAGE_LOG_FILE --daemon /var/run/fluent/fluentd.pid $FLUENT_PACKAGE_OPTI>
+   Main PID: 826 (fluentd)
+      Tasks: 9 (limit: 4660)
+     Memory: 95.4M
+        CPU: 731ms
+     CGroup: /system.slice/fluentd.service
+             ├─826 /opt/fluent/bin/ruby /opt/fluent/bin/fluentd --log /var/log/fluent/fluentd.log --daemon /var/run/fluent/fluentd.pid
+             └─833 /opt/fluent/bin/ruby -Eascii-8bit:ascii-8bit /opt/fluent/bin/fluentd --log /var/log/fluent/fluentd.log --daemon /var/run>
+```
+
+To customize `systemd` behavior, put your `fluentd.service` in `/etc/systemd/system`.
+
+NOTE: In fluent-package v5, path is different. `/opt/fluent/bin` instead of `/opt/td-agent/bin`
+
+### Step 3: Post Sample Logs via HTTP
+
+The default configuration (`/etc/fluent/fluentd.conf`) is to receive logs at an HTTP endpoint and route them to `stdout`. For `fluent-package` logs, see `/var/log/fluent/fluentd.log`.
+
+You can post sample log records with `curl` command:
+
+```
+$ curl -X POST -d 'json={"json":"message"}' http://localhost:8888/debug.test
+$ tail -n 1 /var/log/fluent/fluentd.log
+2018-01-01 17:51:47 -0700 debug.test: {"json":"message"}
+```
+
+## Next Steps
+
+You are now ready to collect real logs with Fluentd. Refer to the following tutorials on how to collect data from various sources:
+
+* Basic Configuration
+  * [Config File](https://docs.fluentd.org/configuration/config-file)
+* Application Logs
+  * [Ruby](https://docs.fluentd.org/language-bindings/ruby), [Java](https://docs.fluentd.org/language-bindings/java), [Python](https://docs.fluentd.org/language-bindings/python), [PHP](https://docs.fluentd.org/language-bindings/php),
+
+    [Perl](https://docs.fluentd.org/language-bindings/perl), [Node.js](https://docs.fluentd.org/language-bindings/nodejs), [Scala](https://docs.fluentd.org/language-bindings/scala)
+* Examples
+  * [Store Apache Log into Amazon S3](https://docs.fluentd.org/how-to-guides/apache-to-s3)
+  * [Store Apache Log into MongoDB](https://docs.fluentd.org/how-to-guides/apache-to-mongodb)
+  * [Data Collection into HDFS](https://docs.fluentd.org/how-to-guides/http-to-hdfs)
+
+{% hint style="info" %}
+There are some commercial supports for Fluentd, see [Enterprise Services](https://www.fluentd.org/enterprise_services). If you use Fluentd on production, Let's share your use-case/testimonial on [Testimonials](https://www.fluentd.org/testimonials) page. Please consider to feedback via [GitHub](https://github.com/fluent/fluentd-website/issues/new?template=testimonials.yml).
+{% endhint %}
+
+If this article is incorrect or outdated, or omits critical information, please [let us know](https://github.com/fluent/fluentd-docs-gitbook/issues?state=open). [Fluentd](http://www.fluentd.org/) is an open-source project under [Cloud Native Computing Foundation (CNCF)](https://cncf.io/). All components are available under the Apache 2 License.
