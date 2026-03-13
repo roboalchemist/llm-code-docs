@@ -1421,3 +1421,6 @@ sites:
 - name: smtp2go
   base_url: https://developers.smtp2go.com/
   description: smtp2go documentation
+- name: virustotal
+  base_url: https://docs.virustotal.com/
+  description: virustotal documentation
