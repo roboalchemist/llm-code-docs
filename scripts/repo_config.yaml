@@ -1837,3 +1837,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/web3.js
   branch: main
+- name: bootstrap-email
+  description: bootstrap-email from GitHub
+  repo_url: https://github.com/bootstrap-email/documentation-1.x.git
+  source_folder: docs
+  target_folder: docs/github-scraped/bootstrap-email
+  branch: main
