@@ -1346,3 +1346,6 @@ sites:
 - name: fluxcd
   base_url: https://fluxcd.control-plane.io/
   description: fluxcd documentation
+- name: keboola
+  base_url: https://www.keboola.com/
+  description: keboola documentation
