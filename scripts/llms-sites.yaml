@@ -1358,3 +1358,6 @@ sites:
 - name: dbt-core
   base_url: https://docs.getdbt.com/
   description: dbt-core documentation
+- name: dask
+  base_url: https://docs.dask.org/
+  description: dask documentation
