@@ -1379,3 +1379,6 @@ sites:
 - name: rive
   base_url: https://www.rive.app/docs/
   description: rive documentation
+- name: ark-ui-solid
+  base_url: https://ark-ui.com/
+  description: ark-ui-solid documentation
