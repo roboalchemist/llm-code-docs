@@ -1406,3 +1406,6 @@ sites:
 - name: buildkite
   base_url: https://www.buildkite.com/docs/
   description: buildkite documentation
+- name: earthly
+  base_url: https://docs.earthly.dev/
+  description: earthly documentation

@@ -1,0 +1,27 @@
+# Source: https://docs.earthly.dev/ci-integration/vendor-specific-guides/circle-integration.md
+
+# Source: https://docs.earthly.dev/earthly-0.7/ci-integration/vendor-specific-guides/circle-integration.md
+
+# Source: https://docs.earthly.dev/earthly-0.6/ci-integration/vendor-specific-guides/circle-integration.md
+
+# Circle CI
+
+Here is an example of a Circle CI build, where we build the Earthly target `+build`.
+
+```yml
+# .circleci/config.yml
+
+version: 2.1
+jobs:
+  build:
+    machine:
+      image: ubuntu-2004:2023.02.1
+    steps:
+      - checkout
+      - run: docker login --username "$DOCKERHUB_USERNAME" --password "$DOCKERHUB_TOKEN"
+      - run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.6.30/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+      - run: earthly --version
+      - run: earthly --ci --push +build
+```
+
+For a complete guide on CI integration see the [CI integration guide](https://docs.earthly.dev/earthly-0.6/ci-integration/overview).
