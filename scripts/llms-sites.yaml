@@ -1376,3 +1376,6 @@ sites:
 - name: atlassian-design-system
   base_url: https://atlassian.design/
   description: atlassian-design-system documentation
+- name: rive
+  base_url: https://www.rive.app/docs/
+  description: rive documentation

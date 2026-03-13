@@ -1,0 +1,24 @@
+# Source: https://uat.rive.app/docs/account-admin/workspaces/removing-workspace-members.md
+
+> ## Documentation Index
+>
+> Fetch the complete documentation index at: https://uat.rive.app/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Removing Workspace Members
+
+Admins can remove members from a workspace at any time.
+
+1. Go to [rive.app/account](https://rive.app/account)
+2. Find the workspace in the left sidebar
+3. Click "Manage Workspace"
+4. Find the member you want to remove
+5. Click to remove them or change their role
+
+You can also leave a workspace yourself from this page.
+
+**Can't remove someone?**
+
+Check that you've verified your email address. Go to [rive.app/account](https://rive.app/account) → Profile tab → click "Resend verification email" on the right if needed.
+
+**Note:** The workspace owner cannot be removed. If you need to change ownership, contact [support@rive.app](mailto:support@rive.app).
