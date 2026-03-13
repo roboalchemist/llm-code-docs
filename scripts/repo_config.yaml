@@ -1991,3 +1991,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/graphiql
   branch: main
+- name: graphql-kotlin
+  description: graphql-kotlin from GitHub
+  repo_url: https://github.com/ExpediaGroup/graphql-kotlin.git
+  source_folder: website/docs
+  target_folder: docs/github-scraped/graphql-kotlin
+  branch: main
