@@ -1801,3 +1801,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/openstack-heat
   branch: main
+- name: yunikorn
+  description: yunikorn from GitHub
+  repo_url: https://github.com/apache/yunikorn-site.git
+  source_folder: docs
+  target_folder: docs/github-scraped/yunikorn
+  branch: main
