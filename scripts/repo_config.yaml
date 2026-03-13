@@ -2099,3 +2099,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/solara
   branch: main
+- name: react-vis
+  description: react-vis from GitHub
+  repo_url: https://github.com/uber-common/react-vis.git
+  source_folder: docs
+  target_folder: docs/github-scraped/react-vis
+  branch: main
