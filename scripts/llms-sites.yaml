@@ -1370,3 +1370,6 @@ sites:
 - name: ngrok
   base_url: https://ngrok.com/docs/
   description: ngrok documentation
+- name: apidog
+  base_url: https://docs.apidog.com/
+  description: apidog documentation
