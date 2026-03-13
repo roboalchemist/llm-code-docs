@@ -1364,3 +1364,6 @@ sites:
 - name: mantine
   base_url: https://mantine.dev/
   description: mantine documentation
+- name: heroicons
+  base_url: https://heroicons.com/
+  description: heroicons documentation
