@@ -1,0 +1,176 @@
+# Source: https://learn.microsoft.com/en-us/azure/machine-learning/overview-what-is-azure-machine-learning?view=azureml-api-2
+
+Title: What is Azure Machine Learning? - Azure Machine Learning
+
+URL Source: https://learn.microsoft.com/en-us/azure/machine-learning/overview-what-is-azure-machine-learning?view=azureml-api-2
+
+Markdown Content:
+Azure Machine Learning is a cloud service that accelerates and manages the machine learning (ML) project lifecycle. ML professionals, data scientists, and engineers use it in their daily workflows to train and deploy models and manage machine learning operations (MLOps).
+
+You can create a model in Machine Learning or use a model built from an open-source platform, such as PyTorch, TensorFlow, or scikit-learn. MLOps tools help you monitor, retrain, and redeploy models.
+
+Tip
+
+**Free trial!** If you don't have an Azure subscription, create a free account before you begin. [Try the free or paid version of Azure Machine Learning](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn). You get credits to spend on Azure services. After you use up the credits, you can keep the account and use [free Azure services](https://azure.microsoft.com/pricing/purchase-options/azure-account?cid=msft_learn). Your credit card isn't charged unless you explicitly change your settings and ask to be charged.
+
+Machine Learning is for individuals and teams implementing MLOps within their organization to bring ML models into production in a secure and auditable production environment.
+
+Data scientists and ML engineers can use tools to accelerate and automate their daily workflows. Application developers can use tools for integrating models into applications or services. Platform developers can use a robust set of tools, backed by durable Azure Resource Manager APIs, for building advanced ML tooling.
+
+Enterprises working in the Microsoft Azure cloud can use familiar security and role-based access control for infrastructure. You can set up a project to deny access to protected data and select operations.
+
+ML projects often require a team with varied skills to build and maintain. Machine Learning has tools that enable you to:
+
+*   Collaborate with your team via shared notebooks, compute resources, [serverless compute](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-use-serverless-compute?view=azureml-api-2), data, and environments
+
+*   Develop models for fairness and explainability, tracking, and auditability to fulfill lineage and audit compliance requirements
+
+*   Deploy ML models quickly and easily at scale, and manage and govern them efficiently with MLOps
+
+*   Run machine learning workloads anywhere with built-in governance, security, and compliance
+
+Anyone on an ML team can use their preferred tools to get the job done. Whether you're running rapid experiments, hyperparameter tuning, building pipelines, or managing inferences, you can use familiar interfaces including:
+
+*   [Azure Machine Learning studio](https://ml.azure.com/)
+*   [Python SDK (v2)](https://aka.ms/sdk-v2-install)
+*   [Azure CLI (v2)](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-configure-cli?view=azureml-api-2)
+*   [Azure Resource Manager REST APIs](https://learn.microsoft.com/en-us/rest/api/azureml/)
+
+As you refine the model and collaborate with others throughout the rest of the Machine Learning development cycle, you can share and find assets, resources, and metrics for your projects on the Machine Learning studio UI.
+
+[Machine Learning studio](https://ml.azure.com/) offers multiple authoring experiences depending on the type of project and level of your past ML experience, without requiring you to install anything.
+
+*   **Notebooks**: Write and run your own code in managed Jupyter Notebook servers that are directly integrated in the studio. Or, open the notebooks in [VS Code](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-work-in-vs-code-remote?view=azureml-api-2), on the web or on your desktop.
+
+*   **Visualize run metrics**: Analyze and optimize your experiments with visualization.
+
+![Image 1: Screenshot that shows metrics for a training run.](https://learn.microsoft.com/en-us/azure/machine-learning/media/how-to-log-view-metrics/metrics.png?view=azureml-api-2)
+
+*   **Azure Machine Learning designer**: Use the designer to train and deploy ML models without writing any code. Drag and drop datasets and components to create ML pipelines.
+
+*   **Automated machine learning UI**: Learn how to create [automated ML experiments](https://learn.microsoft.com/en-us/azure/machine-learning/tutorial-first-experiment-automated-ml?view=azureml-api-2) with an easy-to-use interface.
+
+*   **Data labeling**: Use Machine Learning data labeling to efficiently coordinate [image labeling](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-create-image-labeling-projects?view=azureml-api-2) or [text labeling](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-create-text-labeling-projects?view=azureml-api-2) projects.
+
+Azure Machine Learning includes tools to help you build Generative AI applications powered by Large Language Models (LLMs). The solution includes a model catalog, prompt flow, and a suite of tools to streamline the development cycle of AI applications.
+
+Both Azure Machine Learning studio and Microsoft Foundry allow you to work with LLMs. Use this guide to determine [which studio you should use](https://learn.microsoft.com/en-us/ai/ai-studio-experiences-overview?toc=/azure/machine-learning/toc.json&bc=/azure/machine-learning/breadcrumb/toc.json).
+
+The model catalog in Azure Machine Learning studio is the hub to discover and use a wide range of models that enable you to build Generative AI applications. The model catalog features hundreds of models from model providers such as Azure OpenAI service, Mistral, Meta, Cohere, NVIDIA, and Hugging Face, including models trained by Microsoft. Models from providers other tha Microsoft are Non-Microsoft Products, as defined in [Microsoft's Product Terms](https://www.microsoft.com/licensing/terms/welcome/welcomepage), and subject to the terms provided with the model.
+
+Azure Machine Learning prompt flow is a development tool designed to streamline the entire development cycle of AI applications powered by Large Language Models (LLMs). Prompt flow provides a comprehensive solution that simplifies the process of prototyping, experimenting, iterating, and deploying your AI applications.
+
+Machine Learning integrates with the Azure cloud platform to add security to ML projects.
+
+Security integrations include:
+
+*   Azure Virtual Networks with network security groups
+*   Azure Key Vault, where you can save security secrets, such as access information for storage accounts
+*   Azure Container Registry set up behind a virtual network
+
+For more information, see [Tutorial: Set up a secure workspace](https://learn.microsoft.com/en-us/azure/machine-learning/tutorial-create-secure-workspace?view=azureml-api-2).
+
+Other integrations with Azure services support an ML project from end to end. They include:
+
+*   Azure Synapse Analytics, to process and stream data with Spark
+*   Azure Arc, where you can run Azure services in a Kubernetes environment
+*   Storage and database options, such as Azure SQL Database and Azure Blob Storage
+*   Azure App Service, to deploy and manage ML-powered apps
+*   [Microsoft Purview, to discover and catalog data assets across your organization](https://learn.microsoft.com/en-us/azure/purview/register-scan-azure-machine-learning)
+
+Important
+
+Azure Machine Learning doesn't store or process your data outside of the region where you deploy.
+
+Typically, models are developed as part of a project with an objective and goals. Projects often involve more than one person. When you experiment with data, algorithms, and models, development is iterative.
+
+The project lifecycle can vary by project, but it often looks like this diagram.
+
+![Image 2: Diagram that shows the machine learning project lifecycle](https://learn.microsoft.com/en-us/azure/machine-learning/media/overview-what-is-azure-machine-learning/overview-ml-development-lifecycle.png?view=azureml-api-2)
+
+A workspace organizes a project and allows for collaboration for many users all working toward a common objective. Users in a workspace can easily share the results of their runs from experimentation in the studio user interface. Or they can use versioned assets for jobs like environments and storage references.
+
+For more information, see [Manage Azure Machine Learning workspaces](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-manage-workspace?view=azureml-api-2&tabs=python).
+
+When a project is ready for operationalization, users' work can be automated in an ML pipeline and triggered on a schedule or HTTPS request.
+
+You can deploy models to the managed inferencing solution, for both real-time and batch deployments, abstracting away the infrastructure management typically required for deploying models.
+
+In Azure Machine Learning, you can run your training script in the cloud or build a model from scratch. Customers often bring models they've built and trained in open-source frameworks so that they can operationalize them in the cloud.
+
+Data scientists can use models in Azure Machine Learning that they've created in common Python frameworks, such as:
+
+*   PyTorch
+*   TensorFlow
+*   scikit-learn
+*   XGBoost
+*   LightGBM
+
+Other languages and frameworks are also supported:
+
+*   R
+*   .NET
+
+For more information, see [Open-source integration with Azure Machine Learning](https://learn.microsoft.com/en-us/azure/machine-learning/concept-open-source?view=azureml-api-2).
+
+In classical ML, data scientists use prior experience and intuition to select the right data featurization and algorithm for training in a repetitive, time-consuming process. Automated ML (AutoML) speeds this process. You can use it through the Machine Learning studio UI or the Python SDK.
+
+For more information, see [What is automated machine learning?](https://learn.microsoft.com/en-us/azure/machine-learning/concept-automated-ml?view=azureml-api-2).
+
+Hyperparameter optimization, or hyperparameter tuning, can be a tedious task. Machine Learning can automate this task for arbitrary parameterized commands with little modification to your job definition. Results are visualized in the studio.
+
+For more information, see [Tune hyperparameters](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-tune-hyperparameters?view=azureml-api-2).
+
+Training efficiency for deep learning and sometimes classical machine learning training jobs can be drastically improved via multinode distributed training. Azure Machine Learning compute clusters and [serverless compute](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-use-serverless-compute?view=azureml-api-2) offer the latest GPU options.
+
+Supported via Azure Machine Learning Kubernetes, Azure Machine Learning compute clusters, and [serverless compute](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-use-serverless-compute?view=azureml-api-2):
+
+*   PyTorch
+*   TensorFlow
+*   MPI
+
+You can use MPI distribution for Horovod or custom multinode logic. Apache Spark is supported via [serverless Spark compute and attached Synapse Spark pool](https://learn.microsoft.com/en-us/azure/machine-learning/apache-spark-azure-ml-concepts?view=azureml-api-2) that use Azure Synapse Analytics Spark clusters.
+
+For more information, see [Distributed training with Azure Machine Learning](https://learn.microsoft.com/en-us/azure/machine-learning/concept-distributed-training?view=azureml-api-2).
+
+Scaling an ML project might require scaling embarrassingly parallel model training. This pattern is common for scenarios like forecasting demand, where a model might be trained for many stores.
+
+To bring a model into production, you deploy the model. The Azure Machine Learning managed endpoints abstract the required infrastructure for both batch or real-time (online) model scoring (inferencing).
+
+_Batch scoring_, or _batch inferencing_, involves invoking an endpoint with a reference to data. The batch endpoint runs jobs asynchronously to process data in parallel on compute clusters and store the data for further analysis.
+
+_Real-time scoring_, or _online inferencing_, involves invoking an endpoint with one or more model deployments and receiving a response in near real time via HTTPS. Traffic can be split across multiple deployments, allowing for testing new model versions by diverting some amount of traffic initially and increasing after confidence in the new model is established.
+
+For more information, see:
+
+*   [Deploy a model with a real-time managed endpoint](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-online-endpoints?view=azureml-api-2)
+*   [Use batch endpoints for scoring](https://learn.microsoft.com/en-us/azure/machine-learning/batch-inference/how-to-use-batch-endpoint?view=azureml-api-2)
+
+DevOps for ML models, often called MLOps, is a process for developing models for production. A model's lifecycle from training to deployment must be auditable if not reproducible.
+
+![Image 3: Diagram that shows the machine learning model lifecycle * MLOps.](https://learn.microsoft.com/en-us/azure/machine-learning/media/overview-what-is-azure-machine-learning/model-lifecycle.png?view=azureml-api-2)
+
+Learn more about [MLOps in Azure Machine Learning](https://learn.microsoft.com/en-us/azure/machine-learning/concept-model-management-and-deployment?view=azureml-api-2).
+
+Machine Learning is built with the model lifecycle in mind. You can audit the model lifecycle down to a specific commit and environment.
+
+Some key features enabling MLOps include:
+
+*   Git integration
+*   MLflow integration
+*   Machine learning pipeline scheduling
+*   Azure Event Grid integration for custom triggers
+*   Ease of use with CI/CD tools like GitHub Actions or Azure DevOps
+
+Machine Learning also includes features for monitoring and auditing:
+
+*   Job artifacts, such as code snapshots, logs, and other outputs
+*   Lineage between jobs and assets, such as containers, data, and compute resources
+
+If you use Apache Airflow, the [airflow-provider-azure-machinelearning](https://github.com/Azure/airflow-provider-azure-machinelearning) package is a provider that enables you to submit workflows to Azure Machine Learning from Apache Airflow.
+
+Start using Azure Machine Learning:
+
+*   [Set up an Azure Machine Learning workspace](https://learn.microsoft.com/en-us/azure/machine-learning/quickstart-create-resources?view=azureml-api-2)
+*   [Tutorial: Build a first machine learning project](https://learn.microsoft.com/en-us/azure/machine-learning/tutorial-1st-experiment-hello-world?view=azureml-api-2)
+*   [Run training jobs](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-train-model?view=azureml-api-2)
