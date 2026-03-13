@@ -1909,3 +1909,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/shoelace
   branch: main
+- name: cytoscape.js
+  description: cytoscape.js from GitHub
+  repo_url: https://github.com/cytoscape/cytoscape.js.git
+  source_folder: documentation
+  target_folder: docs/github-scraped/cytoscape.js
+  branch: main
