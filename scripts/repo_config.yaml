@@ -2057,3 +2057,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/flowbite-vue
   branch: main
+- name: melt-ui
+  description: melt-ui from GitHub
+  repo_url: https://github.com/melt-ui/next-gen.git
+  source_folder: docs
+  target_folder: docs/github-scraped/melt-ui
+  branch: main
