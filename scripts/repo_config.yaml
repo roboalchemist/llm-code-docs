@@ -1741,3 +1741,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/geoserver
   branch: main
+- name: git-lfs
+  description: git-lfs from GitHub
+  repo_url: https://github.com/git-lfs/git-lfs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/git-lfs
+  branch: main
