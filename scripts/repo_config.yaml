@@ -2045,3 +2045,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/vuex
   branch: main
+- name: observable-plot
+  description: observable-plot from GitHub
+  repo_url: https://github.com/observablehq/plot.git
+  source_folder: docs
+  target_folder: docs/github-scraped/observable-plot
+  branch: main
