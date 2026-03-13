@@ -1436,3 +1436,6 @@ sites:
 - name: element-plus
   base_url: https://element-plus.org/
   description: element-plus documentation
+- name: skeleton
+  base_url: https://www.skeleton.dev/
+  description: skeleton documentation
