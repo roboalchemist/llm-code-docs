@@ -2069,3 +2069,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/final-form
   branch: main
+- name: bulma
+  description: bulma from GitHub
+  repo_url: https://github.com/jgthms/bulma.git
+  source_folder: docs
+  target_folder: docs/github-scraped/bulma
+  branch: main
