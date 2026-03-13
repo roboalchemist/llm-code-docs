@@ -2132,3 +2132,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/grafana-faro
   branch: main
+- name: pingdom
+  description: pingdom from GitHub
+  repo_url: https://github.com/mbabineau/pingdom-python.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pingdom
+  branch: main
