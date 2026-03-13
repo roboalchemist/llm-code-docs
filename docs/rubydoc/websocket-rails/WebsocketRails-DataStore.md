@@ -1,0 +1,46 @@
+# Module: WebsocketRails::DataStore
+  
+  
+  
+
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  
+    Defined in:
+    lib/websocket_rails/data_store.rb
+  
+  
+
+## Overview
+
+  
+    
+
+The DataStore provides a convenient way to persist information between execution of events. Since every event is executed within a new instance of the controller class, instance variables set while processing an action will be lost after the action finishes executing.
+
+There are two different DataStore classes that you can use:
+
+The Connection class is unique for every active connection. You can use it similar to the Rails session store. The connection data store can be accessed within your controller using the `#connection_store` method.
+
+The Controller class is unique for every controller. You can use it similar to how you would use instance variables within a plain ruby class. The values set within the controller store will be persisted between events. The controller store can be accessed within your controller using the `#controller_store` method.
+
+  
+
+  
+
+## Defined Under Namespace
+
+  
+    
+  
+    
+      **Classes:** Base, Connection, Controller
