@@ -1364,3 +1364,6 @@ sites:
 - name: hatchet
   base_url: https://docs.hatchet.run/
   description: hatchet documentation
+- name: krakend
+  base_url: https://krakend.com/
+  description: krakend documentation
