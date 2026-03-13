@@ -1759,3 +1759,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/simplebus
   branch: main
+- name: tigerbeetle
+  description: tigerbeetle from GitHub
+  repo_url: https://github.com/tigerbeetle/tigerbeetle.git
+  source_folder: docs
+  target_folder: docs/github-scraped/tigerbeetle
+  branch: main
