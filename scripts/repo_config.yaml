@@ -2042,3 +2042,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/progressbar
   branch: main
+- name: py-cui
+  description: py-cui from GitHub
+  repo_url: https://github.com/jwlodek/py_cui.git
+  source_folder: docs
+  target_folder: docs/github-scraped/py-cui
+  branch: main
