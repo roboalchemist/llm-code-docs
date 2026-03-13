@@ -2126,3 +2126,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/embrace
   branch: main
+- name: grafana-faro
+  description: grafana-faro from GitHub
+  repo_url: https://github.com/grafana/faro-web-sdk.git
+  source_folder: docs
+  target_folder: docs/github-scraped/grafana-faro
+  branch: main
