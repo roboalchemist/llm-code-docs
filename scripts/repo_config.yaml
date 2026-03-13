@@ -2015,3 +2015,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/zerorpc
   branch: main
+- name: apigee
+  description: apigee from GitHub
+  repo_url: https://github.com/apigee/apigeecli.git
+  source_folder: docs
+  target_folder: docs/github-scraped/apigee
+  branch: main
