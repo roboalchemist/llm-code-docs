@@ -2072,3 +2072,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/dependency-track
   branch: main
+- name: kics
+  description: kics from GitHub
+  repo_url: https://github.com/Checkmarx/kics.git
+  source_folder: docs
+  target_folder: docs/github-scraped/kics
+  branch: main
