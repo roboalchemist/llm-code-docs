@@ -1388,3 +1388,6 @@ sites:
 - name: maizzle
   base_url: https://maizzle.com/
   description: maizzle documentation
+- name: neverbounce
+  base_url: https://developers.neverbounce.com/
+  description: neverbounce documentation
