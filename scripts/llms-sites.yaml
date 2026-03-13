@@ -1376,3 +1376,6 @@ sites:
 - name: nexus
   base_url: https://docs.nexus.xyz/
   description: nexus documentation
+- name: sinch
+  base_url: https://docs.sinch.com/
+  description: sinch documentation
