@@ -1975,3 +1975,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/bazel
   branch: main
+- name: buck
+  description: buck from GitHub
+  repo_url: https://github.com/facebook/buck2.git
+  source_folder: docs
+  target_folder: docs/github-scraped/buck
+  branch: main
