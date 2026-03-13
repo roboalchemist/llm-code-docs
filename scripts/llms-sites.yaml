@@ -1415,3 +1415,6 @@ sites:
 - name: wazuh
   base_url: https://documentation.wazuh.com/
   description: wazuh documentation
+- name: instana
+  base_url: https://www.instana.com/
+  description: instana documentation
