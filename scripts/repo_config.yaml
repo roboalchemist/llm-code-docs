@@ -1825,3 +1825,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/keystonejs
   branch: main
+- name: apache-thrift
+  description: apache-thrift from GitHub
+  repo_url: https://github.com/apache/thrift.git
+  source_folder: doc
+  target_folder: docs/github-scraped/apache-thrift
+  branch: main
