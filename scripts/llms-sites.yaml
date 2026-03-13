@@ -1412,3 +1412,6 @@ sites:
 - name: convertkit
   base_url: https://developers.convertkit.com/
   description: convertkit documentation
+- name: mailcatcher
+  base_url: https://mailcatcher.dev/
+  description: mailcatcher documentation
