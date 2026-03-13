@@ -1807,3 +1807,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/yunikorn
   branch: main
+- name: ariadne-codegen
+  description: ariadne-codegen from GitHub
+  repo_url: https://github.com/mirumee/ariadne-codegen.git
+  source_folder: docs
+  target_folder: docs/github-scraped/ariadne-codegen
+  branch: main
