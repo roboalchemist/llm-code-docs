@@ -1412,3 +1412,6 @@ sites:
 - name: fluentd
   base_url: https://docs.fluentd.org/
   description: fluentd documentation
+- name: wazuh
+  base_url: https://documentation.wazuh.com/
+  description: wazuh documentation
