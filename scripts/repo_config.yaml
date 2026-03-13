@@ -1957,3 +1957,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/gatsby
   branch: main
+- name: react-static
+  description: react-static from GitHub
+  repo_url: https://github.com/react-static/react-static.git
+  source_folder: docs
+  target_folder: docs/github-scraped/react-static
+  branch: main
