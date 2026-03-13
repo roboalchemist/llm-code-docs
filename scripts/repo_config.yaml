@@ -1831,3 +1831,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/apache-thrift
   branch: main
+- name: web3.js
+  description: web3.js from GitHub
+  repo_url: https://github.com/web3/web3.js.git
+  source_folder: docs
+  target_folder: docs/github-scraped/web3.js
+  branch: main
