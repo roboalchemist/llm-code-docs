@@ -1985,3 +1985,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/ferry
   branch: main
+- name: graphiql
+  description: graphiql from GitHub
+  repo_url: https://github.com/graphql/graphiql.git
+  source_folder: docs
+  target_folder: docs/github-scraped/graphiql
+  branch: main
