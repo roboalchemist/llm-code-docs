@@ -1969,3 +1969,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/zola
   branch: main
+- name: bazel
+  description: bazel from GitHub
+  repo_url: https://github.com/bazelbuild/bazel.git
+  source_folder: docs
+  target_folder: docs/github-scraped/bazel
+  branch: main
