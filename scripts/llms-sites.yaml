@@ -1394,3 +1394,6 @@ sites:
 - name: stripo
   base_url: https://stripo.io/
   description: stripo documentation
+- name: zerobounce
+  base_url: https://www.zerobounce.net/
+  description: zerobounce documentation
