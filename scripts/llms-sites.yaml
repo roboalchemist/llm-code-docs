@@ -1406,3 +1406,6 @@ sites:
 - name: vuetify
   base_url: https://vuetifyjs.com/
   description: vuetify documentation
+- name: gsap
+  base_url: https://gsap.com/
+  description: gsap documentation
