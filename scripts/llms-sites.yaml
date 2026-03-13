@@ -1433,3 +1433,6 @@ sites:
 - name: rollbar
   base_url: https://docs.rollbar.com/
   description: rollbar documentation
+- name: manageengine-applications-manager
+  base_url: https://www.manageengine.com/
+  description: manageengine-applications-manager documentation
