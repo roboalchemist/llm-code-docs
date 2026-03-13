@@ -2108,3 +2108,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/winston
   branch: main
+- name: loki
+  description: loki from GitHub
+  repo_url: https://github.com/grafana/loki.git
+  source_folder: docs
+  target_folder: docs/github-scraped/loki
+  branch: main
