@@ -2217,4 +2217,9 @@ repositories:
   repo_url: https://github.com/csurfer/rake-nltk.git
   source_folder: docs
   target_folder: docs/github-scraped/rake
+- name: json-schema-validator
+  description: json-schema-validator from GitHub
+  repo_url: https://github.com/networknt/json-schema-validator.git
+  source_folder: doc
+  target_folder: docs/github-scraped/json-schema-validator
   branch: main
