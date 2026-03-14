@@ -1475,3 +1475,6 @@ sites:
 - name: nx
   base_url: https://nx.dev/docs/
   description: nx documentation
+- name: wireit
+  base_url: https://wireit.dev/
+  description: wireit documentation
