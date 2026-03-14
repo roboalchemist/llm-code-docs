@@ -2044,4 +2044,9 @@ repositories:
   repo_url: https://github.com/rust-lang/rustup.git
   source_folder: doc
   target_folder: docs/github-scraped/rustup
+- name: io-ts
+  description: io-ts from GitHub
+  repo_url: https://github.com/gcanti/io-ts.git
+  source_folder: docs
+  target_folder: docs/github-scraped/io-ts
   branch: main
