@@ -2120,3 +2120,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/codacy
   branch: main
+- name: apt
+  description: apt from GitHub
+  repo_url: https://github.com/Debian/apt.git
+  source_folder: doc
+  target_folder: docs/github-scraped/apt
+  branch: main
