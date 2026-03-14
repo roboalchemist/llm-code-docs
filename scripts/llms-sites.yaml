@@ -1499,3 +1499,6 @@ sites:
 - name: aws-secrets-manager
   base_url: https://docs.aws.amazon.com/
   description: aws-secrets-manager documentation
+- name: ivy
+  base_url: https://docs.ivy.app/
+  description: ivy documentation
