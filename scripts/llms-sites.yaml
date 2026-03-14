@@ -1460,3 +1460,6 @@ sites:
 - name: luzmo
   base_url: https://developer.cumul.io/
   description: luzmo documentation
+- name: vue-flow
+  base_url: https://vueflow.dev/
+  description: vue-flow documentation
