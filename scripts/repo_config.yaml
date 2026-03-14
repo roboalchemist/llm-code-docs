@@ -1940,4 +1940,9 @@ repositories:
   repo_url: https://github.com/aws-cloudformation/cfn-lint.git
   source_folder: docs
   target_folder: docs/github-scraped/cfn-lint
+- name: hoverfly
+  description: hoverfly from GitHub
+  repo_url: https://github.com/SpectoLabs/hoverfly.git
+  source_folder: docs
+  target_folder: docs/github-scraped/hoverfly
   branch: main
