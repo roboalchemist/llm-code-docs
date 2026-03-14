@@ -2011,3 +2011,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/datafaker
   branch: main
+- name: uncrustify
+  description: uncrustify from GitHub
+  repo_url: https://github.com/uncrustify/uncrustify.git
+  source_folder: documentation
+  target_folder: docs/github-scraped/uncrustify
+  branch: main
