@@ -2251,4 +2251,9 @@ repositories:
   repo_url: https://github.com/arcanis/clipanion.git
   source_folder: website/docs
   target_folder: docs/github-scraped/clipanion
+- name: opa
+  description: opa from GitHub
+  repo_url: https://github.com/open-policy-agent/opa.git
+  source_folder: docs
+  target_folder: docs/github-scraped/opa
   branch: main
