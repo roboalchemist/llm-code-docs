@@ -1861,3 +1861,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/d3.js
   branch: main
+- name: multer
+  description: multer from GitHub
+  repo_url: https://github.com/expressjs/multer.git
+  source_folder: doc
+  target_folder: docs/github-scraped/multer
+  branch: main
