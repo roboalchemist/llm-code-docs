@@ -1973,4 +1973,9 @@ repositories:
   repo_url: https://github.com/vuejs/vue-test-utils.git
   source_folder: docs
   target_folder: docs/github-scraped/vue-test-utils
+- name: poetry
+  description: poetry from GitHub
+  repo_url: https://github.com/python-poetry/poetry.git
+  source_folder: docs
+  target_folder: docs/github-scraped/poetry
   branch: main
