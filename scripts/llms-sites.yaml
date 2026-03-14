@@ -1418,3 +1418,6 @@ sites:
 - name: stylex
   base_url: https://www.stylexjs.com/
   description: stylex documentation
+- name: ruff
+  base_url: https://docs.astral.sh/ruff/
+  description: ruff documentation
