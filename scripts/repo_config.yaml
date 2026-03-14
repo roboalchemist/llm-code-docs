@@ -2125,4 +2125,9 @@ repositories:
   repo_url: https://github.com/Debian/apt.git
   source_folder: doc
   target_folder: docs/github-scraped/apt
+- name: verify-dotnet
+  description: verify-dotnet from GitHub
+  repo_url: https://github.com/VerifyTests/Verify.git
+  source_folder: docs
+  target_folder: docs/github-scraped/verify-dotnet
   branch: main
