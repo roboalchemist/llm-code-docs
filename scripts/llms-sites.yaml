@@ -1514,3 +1514,6 @@ sites:
 - name: ashen
   base_url: https://www.ashen.sh/
   description: ashen documentation
+- name: aws-systems-manager-parameter-store
+  base_url: https://docs.aws.amazon.com/
+  description: aws-systems-manager-parameter-store documentation
