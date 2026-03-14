@@ -1929,3 +1929,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/sinon.js
   branch: main
+- name: megalinter
+  description: megalinter from GitHub
+  repo_url: https://github.com/oxsecurity/megalinter.git
+  source_folder: docs
+  target_folder: docs/github-scraped/megalinter
+  branch: main
