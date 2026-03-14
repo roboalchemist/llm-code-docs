@@ -1457,3 +1457,6 @@ sites:
 - name: fiddler
   base_url: https://docs.fiddler.ai/
   description: fiddler documentation
+- name: luzmo
+  base_url: https://developer.cumul.io/
+  description: luzmo documentation
