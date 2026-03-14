@@ -2206,3 +2206,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/luarocks
   branch: main
+- name: stylelint
+  description: stylelint from GitHub
+  repo_url: https://github.com/stylelint/stylelint.git
+  source_folder: docs
+  target_folder: docs/github-scraped/stylelint
+  branch: main
