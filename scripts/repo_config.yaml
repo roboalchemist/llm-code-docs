@@ -2188,4 +2188,9 @@ repositories:
   repo_url: https://github.com/wezterm/wezterm.git
   source_folder: docs
   target_folder: docs/github-scraped/wezterm
+- name: go-mod
+  description: go-mod from GitHub
+  repo_url: https://github.com/scagogogo/go-mod-parser.git
+  source_folder: docs
+  target_folder: docs/github-scraped/go-mod
   branch: main
