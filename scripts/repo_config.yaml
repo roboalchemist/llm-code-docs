@@ -2171,3 +2171,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/nix-flakes
   branch: main
+- name: composer
+  description: composer from GitHub
+  repo_url: https://github.com/composer/composer.git
+  source_folder: doc
+  target_folder: docs/github-scraped/composer
+  branch: main
