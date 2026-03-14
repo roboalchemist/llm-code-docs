@@ -2257,3 +2257,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/opa
   branch: main
+- name: xonsh
+  description: xonsh from GitHub
+  repo_url: https://github.com/xonsh/xonsh.git
+  source_folder: docs
+  target_folder: docs/github-scraped/xonsh
+  branch: main
