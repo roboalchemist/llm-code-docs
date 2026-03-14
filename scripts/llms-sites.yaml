@@ -1511,3 +1511,6 @@ sites:
 - name: art
   base_url: https://art.openpipe.ai/
   description: art documentation
+- name: ashen
+  base_url: https://www.ashen.sh/
+  description: ashen documentation
