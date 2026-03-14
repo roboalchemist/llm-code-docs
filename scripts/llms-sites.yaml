@@ -1427,3 +1427,6 @@ sites:
 - name: vagrant
   base_url: https://www.vagrantup.com/
   description: vagrant documentation
+- name: appdynamics
+  base_url: https://www.appdynamics.com/
+  description: appdynamics documentation
