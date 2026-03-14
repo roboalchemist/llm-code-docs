@@ -1478,3 +1478,6 @@ sites:
 - name: wireit
   base_url: https://wireit.dev/
   description: wireit documentation
+- name: wiremock.net
+  base_url: https://wiremock.org/
+  description: wiremock.net documentation
