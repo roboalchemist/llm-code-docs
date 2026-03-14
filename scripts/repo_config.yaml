@@ -1918,3 +1918,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/bundler
   branch: main
+- name: dragonbones
+  description: dragonbones from GitHub
+  repo_url: https://github.com/DragonBones/DragonBonesJS.git
+  source_folder: docs
+  target_folder: docs/github-scraped/dragonbones
+  branch: main
