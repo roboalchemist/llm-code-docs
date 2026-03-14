@@ -1445,3 +1445,6 @@ sites:
 - name: moonrepo
   base_url: https://moonrepo.dev/
   description: moonrepo documentation
+- name: localstack
+  base_url: https://docs.localstack.cloud/
+  description: localstack documentation
