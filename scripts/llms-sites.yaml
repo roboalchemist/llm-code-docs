@@ -1454,3 +1454,6 @@ sites:
 - name: aws-codeartifact
   base_url: https://docs.aws.amazon.com/
   description: aws-codeartifact documentation
+- name: fiddler
+  base_url: https://docs.fiddler.ai/
+  description: fiddler documentation
