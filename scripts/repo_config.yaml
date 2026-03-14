@@ -2234,3 +2234,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/markdownlint
   branch: main
+- name: super-linter
+  description: super-linter from GitHub
+  repo_url: https://github.com/super-linter/super-linter.git
+  source_folder: docs
+  target_folder: docs/github-scraped/super-linter
+  branch: main
