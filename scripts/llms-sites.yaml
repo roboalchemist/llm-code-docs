@@ -1505,3 +1505,6 @@ sites:
 - name: moon
   base_url: https://moonrepo.dev/
   description: moon documentation
+- name: chalk
+  base_url: https://docs.chalk.ai/
+  description: chalk documentation
