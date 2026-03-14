@@ -1895,3 +1895,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/open-web-components
   branch: main
+- name: nunjucks
+  description: nunjucks from GitHub
+  repo_url: https://github.com/mozilla/nunjucks.git
+  source_folder: docs
+  target_folder: docs/github-scraped/nunjucks
+  branch: main
