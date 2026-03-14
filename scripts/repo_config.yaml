@@ -2016,4 +2016,9 @@ repositories:
   repo_url: https://github.com/uncrustify/uncrustify.git
   source_folder: documentation
   target_folder: docs/github-scraped/uncrustify
+- name: vega
+  description: vega from GitHub
+  repo_url: https://github.com/vega/vega.git
+  source_folder: docs
+  target_folder: docs/github-scraped/vega
   branch: main
