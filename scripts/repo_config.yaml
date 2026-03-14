@@ -2143,3 +2143,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/lanterna
   branch: main
+- name: moulti
+  description: moulti from GitHub
+  repo_url: https://github.com/xavierog/moulti.git
+  source_folder: doc
+  target_folder: docs/github-scraped/moulti
+  branch: main
