@@ -2005,4 +2005,9 @@ repositories:
   repo_url: https://github.com/astrolabsoftware/fink-documentation.git
   source_folder: docs
   target_folder: docs/github-scraped/fink
+- name: datafaker
+  description: datafaker from GitHub
+  repo_url: https://github.com/datafaker-net/datafaker.git
+  source_folder: docs
+  target_folder: docs/github-scraped/datafaker
   branch: main
