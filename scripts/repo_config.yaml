@@ -2055,3 +2055,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/dredd
   branch: main
+- name: refine
+  description: refine from GitHub
+  repo_url: https://github.com/refinedev/refine.git
+  source_folder: documentation
+  target_folder: docs/github-scraped/refine
+  branch: main
