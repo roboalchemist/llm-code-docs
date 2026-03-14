@@ -2149,3 +2149,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/moulti
   branch: main
+- name: textual
+  description: textual from GitHub
+  repo_url: https://github.com/Textualize/textual.git
+  source_folder: docs
+  target_folder: docs/github-scraped/textual
+  branch: main
