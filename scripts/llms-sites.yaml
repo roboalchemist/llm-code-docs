@@ -1490,3 +1490,6 @@ sites:
 - name: sanity
   base_url: https://logo-soup.sanity.dev/docs/
   description: sanity documentation
+- name: artifactory
+  base_url: https://docs.jfrog.com/.well-known/
+  description: artifactory documentation
