@@ -1481,3 +1481,6 @@ sites:
 - name: wiremock.net
   base_url: https://wiremock.org/
   description: wiremock.net documentation
+- name: clerc
+  base_url: https://clerc.so1ve.dev/
+  description: clerc documentation
