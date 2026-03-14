@@ -1,0 +1,156 @@
+# Source: https://nx.dev/docs/enterprise/single-tenant/custom-github-app.md
+
+---
+
+title: Custom GitHub App
+description: Create and configure a custom GitHub App for Nx Cloud Enterprise integration
+filter: 'type:Guides'
+---
+
+Before creating your container, you'll need to create a GitHub app for your organisation.
+
+## Creating a GitHub app
+
+From GitHub, click on your profile picture and chose "Settings":
+
+![Step 1](../../../../assets/enterprise/single-tenant/github_auth_step_1.png)
+
+Then "Developer settings" from the left-hand menu:
+
+![Step 2](../../../../assets/enterprise/single-tenant/github_auth_step_2.png)
+
+Then "GitHub Apps":
+
+![Step 3](../../../../assets/enterprise/single-tenant/github_custom_app_step_3.avif)
+
+And create a new GitHub app:
+
+![Step 4](../../../../assets/enterprise/single-tenant/github_custom_app_step_5.avif)
+
+Give it a name, and a homepage URL. The callback URL is the important bit. It needs to be in this form:
+
+```text
+[your-nx-cloud-url]/callbacks/github-user
+
+# for example
+https://my.nx-enterprise.url:8080/callbacks/github-user
+```
+
+Configure a webhook and give it a secret:
+(the URL needs to match `https://<your-NxCloud-instance-URL>/nx-cloud/github-webhook-handler`)
+
+![Step 5](../../../../assets/enterprise/single-tenant/webhook.png)
+
+Make sure you subscribe to the "Organization" events:
+
+![Step 5.1](../../../../assets/enterprise/single-tenant/webhook_events.png)
+
+Once you create the app, keep a note of the Client ID and App ID:
+
+![Step 6](../../../../assets/enterprise/single-tenant/github_custom_app_step_6.avif)
+
+Then generate a new client secret, and save it somewhere secure (we'll use it in a bit):
+
+![Step 7](../../../../assets/enterprise/single-tenant/github_auth_step_7.png)
+
+Finally, scroll down and download a private key:
+
+![Step 7](../../../../assets/enterprise/single-tenant/private-key.png)
+
+Then navigate to your download location locally and stringify the contents of the private key:
+
+```bash
+awk 'NF {sub(/\r/, ""); printf "%s\\n",$0;}' your-key.pem # keep a note of the output
+```
+
+Save the output of the above, as we'll also use it in a bit.
+
+## Configure Permissions for the GitHub App
+
+The following permissions are required for Nx Cloud to work:
+
+Repository permissions:
+
+- `Administration: Read & Write`
+- `Checks: Read & Write`
+- `Contents: Read & Write`
+- `Commit Statuses: Read`
+- `Issues: Read & Write`
+- `Metadata: Read`
+- `Pull requests: Read & Write`
+- `Workflows: Read & Write`
+
+Organization permissions:
+
+- `Administration: Read Only`
+- `Members: Read Only`
+
+### Administration (write)
+
+**Used for:** Creating new repositories with a pre-configured Nx workspace during initial onboarding.
+
+**When it's used:** Only when you explicitly choose to create a new workspace through Nx Cloud's setup flow. [Single tenant instances](/docs/enterprise/single-tenant/overview) can safely forego this scope and will only lose the ability to create new workspaces through the app.
+
+### Checks (write)
+
+**Used for:** Updating CI run statuses so you can see the progress and results of your Nx Cloud pipeline executions directly in GitHub. Also used for Self-Healing CI status check runs in PRs.
+
+**When it's used:** Automatically during CI runs to provide real-time status updates.
+
+### Contents (read & write)
+
+**Used for:**
+
+- **Read:** Detecting your workspace's current Nx version to ensure compatibility. Reading files for Self-Healing CI.
+- **Write:** Adding Nx Cloud configuration (`nxCloudId` or access token) to your repository during setup. Creating commits and pushing fixes for Self-Healing CI.
+
+**When it's used:** During initial setup and configuration, and regularly if Self-Healing CI is enabled.
+
+### Commit statuses (read)
+
+**Used for:** Reading commit status information to coordinate with other CI tools and provide accurate pipeline context.
+
+**When it's used:** During CI pipeline executions to gather context about your commits.
+
+### Issues (read & write)
+
+**Used for:** PR comments (GitHub uses the Issues API for PR comments — see "Pull requests" below for more detail).
+
+**When it's used:** During CI runs and when posting status comments.
+
+### Metadata (read)
+
+**Used for:** Accessing basic repository information (name, description, visibility). This is a required baseline permission for most GitHub App functionality.
+
+### Pull requests (read & write)
+
+**Used for:**
+
+- **Read:** Gathering branch information, SHAs, and metadata necessary for CI pipeline execution and distributed task coordination.
+- **Write:** Posting comments on PRs with CI pipeline status, command results, and Self-Healing CI fixes. Creating PRs during initial Nx Cloud setup. Creating demo PRs for optional features like Self-Healing CI (only when you opt in).
+
+**When it's used:** Read operations occur during CI runs. Write operations occur during setup and when posting status comments.
+
+### Workflows (write)
+
+**Used for:** Automatically configuring GitHub Actions workflow files when you opt in to features like Self-Healing CI and distributed task execution.
+
+**When it's used:** Only when you explicitly enable these features through the Nx Cloud interface.
+
+## Your Data and Security
+
+Most information accessed through these permissions is used transiently during operations and is not stored. Limited version control metadata (such as branch names, SHAs, and commit information) may be stored as part of your CI pipeline execution records for analytics and debugging purposes.
+
+[Nx Cloud is SOC2 Type II certified](https://security.nx.app). We implement industry-standard security practices including encryption at rest and in transit, access logging, and regular security audits.
+
+You can revoke access to the Nx Cloud GitHub app at any time through your GitHub settings. Write operations (creating repos, posting comments, modifying workflows) only occur when explicitly triggered by your actions or when you opt in to specific features.
+
+## Connect Your Nx Cloud Installation
+
+Provide the following values to your developer productivity engineer so they can help connect Nx Cloud to your custom GitHub app:
+
+- Github App Client ID
+- Github App Client Secret
+- Github App App ID
+- Github App Private Key
+- GitHub App Webhook Secret

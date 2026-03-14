@@ -1,0 +1,24 @@
+# Source: https://nx.dev/docs/reference/devkit/getPackageManagerCommand.md
+
+▸ **getPackageManagerCommand**(`packageManager?`, `root?`): `PackageManagerCommands`
+
+Returns commands for the package manager used in the workspace.
+By default, the package manager is derived based on the lock file,
+but it can also be passed in explicitly.
+
+Example:
+
+```javascript
+execSync(`${getPackageManagerCommand().addDev} my-dev-package`);
+```
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `packageManager?` | [`PackageManager`](/docs/reference/devkit/PackageManager) | The package manager to use. If not provided, it will be detected based on the lock file. |
+| `root?` | `string` | The directory the commands will be ran inside of. Defaults to the current workspace's root. |
+
+#### Returns
+
+`PackageManagerCommands`

@@ -1472,3 +1472,6 @@ sites:
 - name: pixi
   base_url: https://pixijs.com/
   description: pixi documentation
+- name: nx
+  base_url: https://nx.dev/docs/
+  description: nx documentation
