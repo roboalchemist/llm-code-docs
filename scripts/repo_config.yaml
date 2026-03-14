@@ -2263,3 +2263,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/xonsh
   branch: main
+- name: ghostty
+  description: ghostty from GitHub
+  repo_url: https://github.com/ghostty-org/website.git
+  source_folder: docs
+  target_folder: docs/github-scraped/ghostty
+  branch: main
