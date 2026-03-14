@@ -2039,3 +2039,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/fluentvalidation
   branch: main
+- name: rustup
+  description: rustup from GitHub
+  repo_url: https://github.com/rust-lang/rustup.git
+  source_folder: doc
+  target_folder: docs/github-scraped/rustup
+  branch: main
