@@ -1415,3 +1415,6 @@ sites:
 - name: pdm
   base_url: https://pdm-project.org/
   description: pdm documentation
+- name: stylex
+  base_url: https://www.stylexjs.com/
+  description: stylex documentation
