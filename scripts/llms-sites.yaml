@@ -1451,3 +1451,6 @@ sites:
 - name: task
   base_url: https://taskfile.dev/
   description: task documentation
+- name: aws-codeartifact
+  base_url: https://docs.aws.amazon.com/
+  description: aws-codeartifact documentation
