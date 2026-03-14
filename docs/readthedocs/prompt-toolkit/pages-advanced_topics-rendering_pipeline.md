@@ -29,12 +29,12 @@ machine with a vt100 terminal, we read the input from the pseudo terminal
 device, by calling os.read. This however returns a sequence of bytes. There
 are two difficulties:
 
-- 
+-
 
 The input could be UTF-8 encoded, and there is always the possibility that we
 receive only a portion of a multi-byte character.
 
-- 
+-
 
 vt100 key presses consist of multiple characters. For instance the “left
 arrow” would generate something like `\x1b[D`. It could be that when we
@@ -43,14 +43,14 @@ a key press, and we have to wait for the rest to arrive.
 
 Both problems are implemented using state machines.
 
-- 
+-
 
 The UTF-8 problem is solved using codecs.getincrementaldecoder, which is an
 object in which we can feed the incoming bytes, and it will only return the
 complete UTF-8 characters that we have so far. The rest is buffered for the
 next read operation.
 
-- 
+-
 
 Vt100 parsing is solved by the
 `Vt100Parser` state machine. The
@@ -103,18 +103,18 @@ again.
 
 The rendering is pretty complex for several reasons:
 
-- 
+-
 
 We have to compute the dimensions of all user interface elements. Sometimes
 they are given, but sometimes this requires calculating the size of
 `UIControl` objects.
 
-- 
+-
 
 It needs to be very efficient, because it’s something that happens on every
 single key stroke.
 
-- 
+-
 
 We should output as little as possible on stdout in order to reduce latency
 on slow network connections and older terminals.

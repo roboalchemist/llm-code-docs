@@ -8,64 +8,64 @@ used for building full screen applications.
 
 Some features:
 
-- 
+-
 
 Syntax highlighting of the input while typing. (For instance, with a Pygments lexer.)
 
-- 
+-
 
 Multi-line input editing.
 
-- 
+-
 
 Advanced code completion.
 
-- 
+-
 
 Selecting text for copy/paste. (Both Emacs and Vi style.)
 
-- 
+-
 
 Mouse support for cursor positioning and scrolling.
 
-- 
+-
 
 Auto suggestions. (Like fish shell [http://fishshell.com/].)
 
-- 
+-
 
 No global state.
 
 Like readline:
 
-- 
+-
 
 Both Emacs and Vi key bindings.
 
-- 
+-
 
 Reverse and forward incremental search.
 
-- 
+-
 
 Works well with Unicode double width characters. (Chinese input.)
 
 Works everywhere:
 
-- 
+-
 
 Pure Python. Runs on all Python versions starting at Python 3.6.
 (Python 2.6 - 3.x is supported in prompt_toolkit 2.0; not 3.0).
 
-- 
+-
 
 Runs on Linux, OS X, OpenBSD and Windows systems.
 
-- 
+-
 
 Lightweight, the only dependencies are Pygments and wcwidth.
 
-- 
+-
 
 No assumptions about I/O are made. Every prompt_toolkit application should
 also run in a telnet/ssh server or an asyncio [https://docs.python.org/3/library/asyncio.html] process.
@@ -77,7 +77,7 @@ Have a look at the gallery to get an idea of what is possible.
 Go to getting started and build your first prompt.
 Issues are tracked on the Github project [https://github.com/prompt-toolkit/python-prompt-toolkit].
 
-## Thanks to:
+## Thanks to
 
 A special thanks to all the contributors [https://github.com/prompt-toolkit/python-prompt-toolkit/graphs/contributors]
 for making prompt_toolkit possible.

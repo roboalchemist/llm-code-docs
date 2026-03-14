@@ -3,20 +3,20 @@
 Many places in prompt_toolkit require a boolean value that can change over
 time. For instance:
 
-- 
+-
 
 to specify whether a part of the layout needs to be visible or not;
 
-- 
+-
 
 or to decide whether a certain key binding needs to be active or not;
 
-- 
+-
 
 or the `wrap_lines` option of
 `BufferControl`;
 
-- 
+-
 
 etcetera.
 

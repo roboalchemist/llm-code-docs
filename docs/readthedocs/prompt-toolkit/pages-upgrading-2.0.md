@@ -17,14 +17,14 @@ and output handling were present, but the API was in the first place designed
 for simple command line prompts. This was mostly notably in the following two
 places:
 
-- 
+-
 
 First, there was the focus which was always pointing to a
 `Buffer` (or text input widget), but in full
 screen applications there are other widgets, like menus and buttons which
 can be focused.
 
-- 
+-
 
 And secondly, it was impossible to make reusable UI components. All the key
 bindings for the entire applications were stored together in one
@@ -37,7 +37,7 @@ For simple prompts, the changes wouldn’t be that invasive, but given that ther
 would be some, I took the opportunity to fix a couple of other things. For
 instance:
 
-- 
+-
 
 In prompt_toolkit 1.0, we translated \r into \n during the input
 processing. This was not a good idea, because some people wanted to handle
@@ -50,7 +50,7 @@ Given that we were going to break compatibility anyway, we changed a couple of
 other important things that effect both simple prompt applications and
 full screen applications. These are the most important:
 
-- 
+-
 
 We no longer depend on Pygments for styling. While we like Pygments, it was
 not flexible enough to provide all the styling options that we need, and the
@@ -64,7 +64,7 @@ sheet.
 There are still adaptors available for using Pygments lexers as well as for
 Pygments styles.
 
-- 
+-
 
 The way that key bindings were defined was too complex.
 `KeyBindingsManager` was too complex and no longer exists. Every set of key
@@ -73,14 +73,14 @@ bindings is now a
 can be merged together at any time. The runtime performance remains the same,
 but it’s now easier for users.
 
-- 
+-
 
 The separation between the `CommandLineInterface` and
 `Application` class was confusing and in
 the end, didn’t really had an advantage. These two are now merged together in
 one `Application` class.
 
-- 
+-
 
 We no longer pass around the active `CommandLineInterface`. This was one of
 the most annoying things. Key bindings need it in order to change anything
@@ -100,12 +100,12 @@ confidence that prompt_toolkit 2.0 is a better prompt_toolkit.
 Apart from the breaking changes above, there are also some exciting new
 features.
 
-- 
+-
 
 We now support vt100 escape codes for Windows consoles on Windows 10. This
 means much faster rendering, and full color support.
 
-- 
+-
 
 We have a concept of formatted text. This is an object that evaluates to
 styled text. Every input that expects some text, like the message in a
@@ -115,12 +115,12 @@ text) tuples (similar to a Pygments tokenized string), or an
 `HTML` object. This simplifies many
 APIs.
 
-- 
+-
 
 New utilities were added. We now have function for printing formatted text
 and an experimental module for displaying progress bars.
 
-- 
+-
 
 Autocompletion, input validation, and auto suggestion can now either be
 asynchronous or synchronous. By default they are synchronous, but by wrapping
@@ -160,7 +160,7 @@ that definitely doesn’t mean that you can’t use any Pygments functionality
 anymore. The only difference is that Pygments stuff needs to be wrapped in an
 adaptor to make it compatible with the native prompt_toolkit objects.
 
-- 
+-
 
 For instance, if you have a list of `(pygments.Token, text)` tuples for
 formatting, then this needs to be wrapped in a
@@ -168,13 +168,13 @@ formatting, then this needs to be wrapped in a
 adaptor that turns it into prompt_toolkit “formatted text”. Feel free to keep
 using this.
 
-- 
+-
 
 Pygments lexers need to be wrapped in a
 `PygmentsLexer`. This will convert the list of
 Pygments tokens into prompt_toolkit formatted text.
 
-- 
+-
 
 If you have a Pygments style, then this needs to be converted as well. A
 Pygments style class can be converted in a prompt_toolkit

@@ -11,7 +11,7 @@ output device to be used. By default, these are output objects that correspond
 with sys.stdin and sys.stdout. In unit tests however, we want to replace
 these.
 
-- 
+-
 
 For the input, we want a “pipe input”. This is an input device, in which we
 can programmatically send some input. It can be created with
@@ -20,7 +20,7 @@ can programmatically send some input. It can be created with
 `Win32PipeInput` depending on the
 platform.
 
-- 
+-
 
 For the output, we want a `DummyOutput`. This is
 an output device that doesn’t render anything. We don’t want to render

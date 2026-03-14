@@ -2,7 +2,7 @@
 
 ## Application
 
-*class *prompt_toolkit.application.AppSession(*input: Input | None = None*, *output: Output | None = None*)
+*class*prompt_toolkit.application.AppSession(*input: Input | None = None*, *output: Output | None = None*)
 
 An AppSession is an interactive session, usually connected to one terminal.
 Within one such session, interaction with many applications can happen, one
@@ -15,58 +15,58 @@ instance, so that it gets activated correctly.
 
 Parameters:
 
-- 
+-
 
 **input** – Use this as a default input for all applications
 running in this session, unless an input is passed to the Application
 explicitly.
 
-- 
+-
 
 **output** – Use this as a default output.
 
-*class *prompt_toolkit.application.Application(*layout: Layout | None = None*, *style: BaseStyle | None = None*, *include_default_pygments_style: FilterOrBool = True*, *style_transformation: StyleTransformation | None = None*, *key_bindings: KeyBindingsBase | None = None*, *clipboard: Clipboard | None = None*, *full_screen: bool = False*, *color_depth: ColorDepth | Callable[[], ColorDepth | None] | None = None*, *mouse_support: FilterOrBool = False*, *enable_page_navigation_bindings: None | FilterOrBool = None*, *paste_mode: FilterOrBool = False*, *editing_mode: EditingMode = EditingMode.EMACS*, *erase_when_done: bool = False*, *reverse_vi_search_direction: FilterOrBool = False*, *min_redraw_interval: float | int | None = None*, *max_render_postpone_time: float | int | None = 0.01*, *refresh_interval: float | None = None*, *terminal_size_polling_interval: float | None = 0.5*, *cursor: AnyCursorShapeConfig = None*, *on_reset: ApplicationEventHandler[_AppResult] | None = None*, *on_invalidate: ApplicationEventHandler[_AppResult] | None = None*, *before_render: ApplicationEventHandler[_AppResult] | None = None*, *after_render: ApplicationEventHandler[_AppResult] | None = None*, *input: Input | None = None*, *output: Output | None = None*)
+*class*prompt_toolkit.application.Application(*layout: Layout | None = None*, *style: BaseStyle | None = None*, *include_default_pygments_style: FilterOrBool = True*, *style_transformation: StyleTransformation | None = None*, *key_bindings: KeyBindingsBase | None = None*, *clipboard: Clipboard | None = None*, *full_screen: bool = False*, *color_depth: ColorDepth | Callable[[], ColorDepth | None] | None = None*, *mouse_support: FilterOrBool = False*, *enable_page_navigation_bindings: None | FilterOrBool = None*, *paste_mode: FilterOrBool = False*, *editing_mode: EditingMode = EditingMode.EMACS*, *erase_when_done: bool = False*, *reverse_vi_search_direction: FilterOrBool = False*, *min_redraw_interval: float | int | None = None*, *max_render_postpone_time: float | int | None = 0.01*, *refresh_interval: float | None = None*, *terminal_size_polling_interval: float | None = 0.5*, *cursor: AnyCursorShapeConfig = None*, *on_reset: ApplicationEventHandler[_AppResult] | None = None*, *on_invalidate: ApplicationEventHandler[_AppResult] | None = None*, *before_render: ApplicationEventHandler[_AppResult] | None = None*, *after_render: ApplicationEventHandler[_AppResult] | None = None*, *input: Input | None = None*, *output: Output | None = None*)
 
 The main Application class!
 This glues everything together.
 
 Parameters:
 
-- 
+-
 
 **layout** – A `Layout` instance.
 
-- 
+-
 
 **key_bindings** – `KeyBindingsBase` instance for
 the key bindings.
 
-- 
+-
 
 **clipboard** – `Clipboard` to use.
 
-- 
+-
 
 **full_screen** – When True, run the application on the alternate screen buffer.
 
-- 
+-
 
 **color_depth** – Any `ColorDepth` value, a callable that
 returns a `ColorDepth` or None for default.
 
-- 
+-
 
 **erase_when_done** – (bool) Clear the application output when it finishes.
 
-- 
+-
 
 **reverse_vi_search_direction** – Normally, in Vi mode, a ‘/’ searches
 forward and a ‘?’ searches backward. In Readline mode, this is usually
 reversed.
 
-- 
+-
 
-**min_redraw_interval** – 
+**min_redraw_interval** –
 
 Number of seconds to wait between redraws. Use
 this for applications where invalidate is called a lot. This could cause
@@ -79,19 +79,19 @@ When one invalidate is called, but a scheduled redraw of a previous
 invalidate call has not been executed yet, nothing will happen in any
 case.
 
-- 
+-
 
 **max_render_postpone_time** – When there is high CPU (a lot of other
 scheduled calls), postpone the rendering max x seconds.  ‘0’ means:
 don’t postpone. ‘.5’ means: try to draw at least twice a second.
 
-- 
+-
 
 **refresh_interval** – Automatically invalidate the UI every so many
 seconds. When None (the default), only invalidate when invalidate
 has been called.
 
-- 
+-
 
 **terminal_size_polling_interval** – Poll the terminal size every so many
 seconds. Useful if the applications runs in a thread other then then
@@ -101,20 +101,20 @@ Filters:
 
 Parameters:
 
-- 
+-
 
 **mouse_support** – (`Filter` or
 boolean). When True, enable mouse support.
 
-- 
+-
 
 **paste_mode** – `Filter` or boolean.
 
-- 
+-
 
 **editing_mode** – `EditingMode`.
 
-- 
+-
 
 **enable_page_navigation_bindings** – When True, enable the page
 navigation key bindings. These include both Emacs and Vi bindings like
@@ -128,19 +128,19 @@ Callbacks (all of these should accept an
 
 Parameters:
 
-- 
+-
 
 **on_reset** – Called during reset.
 
-- 
+-
 
 **on_invalidate** – Called when the UI has been invalidated.
 
-- 
+-
 
 **before_render** – Called right before rendering.
 
-- 
+-
 
 **after_render** – Called right after rendering.
 
@@ -152,11 +152,11 @@ AppSession using a with create_app_session(): block.
 
 Parameters:
 
-- 
+-
 
 **input** – `Input` instance.
 
-- 
+-
 
 **output** – `Output` instance. (Probably
 Vt100_Output or Win32Output.)
@@ -167,4 +167,5 @@ app = Application(…)
 app.run()
 
 # Or
+
 await app.run_async()

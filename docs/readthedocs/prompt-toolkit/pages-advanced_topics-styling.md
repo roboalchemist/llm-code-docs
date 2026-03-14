@@ -12,87 +12,87 @@ Many user interface controls, like `Window`
 accept a `style` argument which can be used to pass the formatting as a
 string. For instance, we can select a foreground color:
 
-- 
+-
 
 `"fg:ansired"`  (ANSI color palette)
 
-- 
+-
 
 `"fg:ansiblue"` (ANSI color palette)
 
-- 
+-
 
 `"fg:#ffaa33"`  (hexadecimal notation)
 
-- 
+-
 
 `"fg:darkred"`  (named color)
 
 Or a background color:
 
-- 
+-
 
 `"bg:ansired"`  (ANSI color palette)
 
-- 
+-
 
 `"bg:#ffaa33"`  (hexadecimal notation)
 
 Or we can add one of the following flags:
 
-- 
+-
 
 `"bold"`
 
-- 
+-
 
 `"italic"`
 
-- 
+-
 
 `"underline"`
 
-- 
+-
 
 `"blink"`
 
-- 
+-
 
 `"reverse"`  (reverse foreground and background on the terminal.)
 
-- 
+-
 
 `"hidden"`
 
 Or their negative variants:
 
-- 
+-
 
 `"nobold"`
 
-- 
+-
 
 `"noitalic"`
 
-- 
+-
 
 `"nounderline"`
 
-- 
+-
 
 `"noblink"`
 
-- 
+-
 
 `"noreverse"`
 
-- 
+-
 
 `"nohidden"`
 
 All of these formatting options can be combined as well:
 
-- 
+-
 
 `"fg:ansiyellow bg:black bold underline"`
 
