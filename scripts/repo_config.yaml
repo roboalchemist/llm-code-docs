@@ -1956,4 +1956,9 @@ repositories:
   repo_url: https://github.com/bokeh/bokeh.git
   source_folder: docs
   target_folder: docs/github-scraped/bokeh
+- name: pants
+  description: pants from GitHub
+  repo_url: https://github.com/pantsbuild/pants.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pants
   branch: main
