@@ -1923,4 +1923,9 @@ repositories:
   repo_url: https://github.com/DragonBones/DragonBonesJS.git
   source_folder: docs
   target_folder: docs/github-scraped/dragonbones
+- name: sinon.js
+  description: sinon.js from GitHub
+  repo_url: https://github.com/sinonjs/sinon.git
+  source_folder: docs
+  target_folder: docs/github-scraped/sinon.js
   branch: main
