@@ -1984,4 +1984,9 @@ repositories:
   repo_url: https://github.com/FakeItEasy/FakeItEasy.git
   source_folder: docs
   target_folder: docs/github-scraped/fakeiteasy
+- name: bioconductor
+  description: bioconductor from GitHub
+  repo_url: https://github.com/Bioconductor/OrchestratingSingleCellAnalysis-release.git
+  source_folder: docs
+  target_folder: docs/github-scraped/bioconductor
   branch: main
