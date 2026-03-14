@@ -1502,3 +1502,6 @@ sites:
 - name: ivy
   base_url: https://docs.ivy.app/
   description: ivy documentation
+- name: moon
+  base_url: https://moonrepo.dev/
+  description: moon documentation
