@@ -2108,3 +2108,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/bridgecrew
   branch: main
+- name: husky
+  description: husky from GitHub
+  repo_url: https://github.com/typicode/husky.git
+  source_folder: docs
+  target_folder: docs/github-scraped/husky
+  branch: main
