@@ -2240,3 +2240,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/super-linter
   branch: main
+- name: oclif
+  description: oclif from GitHub
+  repo_url: https://github.com/oclif/oclif.git
+  source_folder: docs
+  target_folder: docs/github-scraped/oclif
+  branch: main
