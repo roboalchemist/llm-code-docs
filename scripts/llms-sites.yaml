@@ -1484,3 +1484,6 @@ sites:
 - name: clerc
   base_url: https://clerc.so1ve.dev/
   description: clerc documentation
+- name: yq
+  base_url: https://mikefarah.gitbook.io/
+  description: yq documentation
