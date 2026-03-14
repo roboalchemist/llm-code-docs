@@ -2072,3 +2072,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/yargs
   branch: main
+- name: spectral
+  description: spectral from GitHub
+  repo_url: https://github.com/stoplightio/spectral.git
+  source_folder: docs
+  target_folder: docs/github-scraped/spectral
+  branch: main
