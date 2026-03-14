@@ -2033,4 +2033,9 @@ repositories:
   repo_url: https://github.com/ocaml/opam.git
   source_folder: doc
   target_folder: docs/github-scraped/opam
+- name: fluentvalidation
+  description: fluentvalidation from GitHub
+  repo_url: https://github.com/FluentValidation/FluentValidation.git
+  source_folder: docs
+  target_folder: docs/github-scraped/fluentvalidation
   branch: main
