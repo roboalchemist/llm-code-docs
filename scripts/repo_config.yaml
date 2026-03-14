@@ -2049,4 +2049,9 @@ repositories:
   repo_url: https://github.com/gcanti/io-ts.git
   source_folder: docs
   target_folder: docs/github-scraped/io-ts
+- name: dredd
+  description: dredd from GitHub
+  repo_url: https://github.com/apiaryio/dredd.git
+  source_folder: docs
+  target_folder: docs/github-scraped/dredd
   branch: main
