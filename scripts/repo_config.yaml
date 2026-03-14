@@ -2177,3 +2177,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/composer
   branch: main
+- name: coursier
+  description: coursier from GitHub
+  repo_url: https://github.com/coursier/coursier.git
+  source_folder: docs
+  target_folder: docs/github-scraped/coursier
+  branch: main
