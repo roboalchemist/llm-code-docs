@@ -1,10 +1,5 @@
 # Class: Pod::Generator::CopyResourcesScript
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,52 +8,21 @@
 
           
 - Object
-          
-            
+
 - Pod::Generator::CopyResourcesScript
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/generator/copy_resources_script.rb
   
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**platform**  ⇒ Platform 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -73,22 +37,10 @@
 
 The platform of the library for which the copy resources script is needed.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**resources_by_config**  ⇒ Hash{String, Array{String}] A list of files relative to the project pods root, keyed by build configuration. 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -103,14 +55,8 @@ The platform of the library for which the copy resources script is needed.
 
 HashArray{String] A list of files relative to the project pods root, keyed by build configuration.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -119,9 +65,8 @@ HashArray{String] A list of files relative to the project pods root, keyed by bu
 
       
         
-- 
+-
   
-    
       #**generate**  ⇒ String 
     
 
@@ -140,20 +85,10 @@ HashArray{String] A list of files relative to the project pods root, keyed by bu
 
 The contents of the copy resources script.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**initialize**(resources_by_config, platform)  ⇒ CopyResourcesScript 
-    
 
-    
-  
-  
-  
     constructor
   
   
@@ -167,45 +102,15 @@ The contents of the copy resources script.
 
 Initialize a new instance.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**save_as**(pathname)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Saves the resource script to the given pathname.
 
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(resources_by_config, platform)  ⇒ CopyResourcesScript 
   
@@ -219,45 +124,15 @@ Saves the resource script to the given pathname.
 
 Initialize a new instance
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 @see resources_by_config
 
-      
-    
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 @see platform
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -266,10 +141,6 @@ Parameters:
 24
 25
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/copy_resources_script.rb', line 22
@@ -281,21 +152,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**platform**  ⇒ Platform  (readonly)
   
@@ -309,31 +168,11 @@ end
 
 Returns The platform of the library for which the copy resources script is needed.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The platform of the library for which the copy resources script is needed.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -341,10 +180,6 @@ The platform of the library for which the copy resources script is needed.
 13
 14
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/copy_resources_script.rb', line 12
@@ -355,54 +190,18 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**resources_by_config**  ⇒ Hash{String, Array{String}] A list of files relative to the
 project pods root, keyed by build configuration.  (readonly)
   
-
-  
-
-  
-
-  
-    
-
 Returns HashArray{String] A list of files relative to the project pods root, keyed by build configuration.
-
-  
-
-  
 
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 HashArray{String] A list of files relative to the project pods root, keyed by build configuration.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -410,10 +209,6 @@ HashArray{String] A list of files relative to the project pods root, keyed by bu
 8
 9
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/copy_resources_script.rb', line 7
@@ -424,20 +219,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**generate**  ⇒ String 
   
@@ -451,31 +235,11 @@ end
 
 Returns The contents of the copy resources script.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The contents of the copy resources script.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -483,10 +247,6 @@ The contents of the copy resources script.
 44
 45
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/copy_resources_script.rb', line 43
@@ -497,13 +257,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**save_as**(pathname)  ⇒ void 
   
@@ -519,31 +273,11 @@ This method returns an undefined value.
 
 Saves the resource script to the given pathname.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The path where the copy resources script should be saved.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -554,10 +288,6 @@ The path where the copy resources script should be saved.
 38
 39
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/copy_resources_script.rb', line 34

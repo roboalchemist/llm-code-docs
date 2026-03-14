@@ -1,18 +1,5 @@
 # Module: Pod::Executable
   
-  
-  
-
-  
-
-  
-  
-  
-  
-  
-
-  
-  
     Included in:
     Command::Lib::Create, Command::Repo, Command::Repo::Push, Generator::BridgeSupport, Installer::PodSourcePreparer, Source
   
@@ -23,12 +10,7 @@
     Defined in:
     lib/cocoapods/executable.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Module which provides support for running executables.
 
@@ -42,23 +24,16 @@ executable :git
 
 This will create two methods `git` and `git!` both accept a command but the later will raise on non successful executions. The methods return the output of the command.
 
-  
-
-  
-
 ## Defined Under Namespace
 
-  
-    
-  
-    
       **Classes:** Indenter
     
   
 
   
     
-## 
+##
+
       Class Method Summary
       collapse
     
@@ -67,9 +42,8 @@ This will create two methods `git` and `git!` both accept a command but the late
 
       
         
-- 
+-
   
-    
       .**capture_command**(executable, command, capture: :merge, env: {}, **kwargs)  ⇒ (String, Process::Status) 
     
 
@@ -88,114 +62,32 @@ This will create two methods `git` and `git!` both accept a command but the late
 
 Runs the given command, capturing the desired output.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**capture_command!**(executable, command, **kwargs)  ⇒ (String, Process::Status) 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Runs the given command, capturing the desired output.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**execute_command**(executable, command, raise_on_failure = true)  ⇒ String 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Executes the given command displaying it if in verbose mode.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**which**(program)  ⇒ String, Nil 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Returns the absolute path to the binary with the given name on the current `PATH`, or `nil` if none is found.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**which!**(program)  ⇒ String 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Returns the absolute path to the binary with the given name on the current `PATH`, or raises if none is found.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -204,9 +96,8 @@ Returns the absolute path to the binary with the given name on the current `PATH
 
       
         
-- 
+-
   
-    
       #**executable**(name)  ⇒ void 
     
 
@@ -225,21 +116,9 @@ Returns the absolute path to the binary with the given name on the current `PATH
 
 Creates the methods for the executable with the given name.
 
-  
-
-      
-    
-
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**capture_command**(executable, command, capture: :merge, env: {}, **kwargs)  ⇒ (String, Process::Status) 
   
@@ -253,19 +132,12 @@ Creates the methods for the executable with the given name.
 
 Runs the given command, capturing the desired output.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         executable
-      
-      
+
         (String)
       
       
@@ -275,15 +147,10 @@ Parameters:
 
 The binary to use.
 
-      
-    
-  
-    
-- 
-      
+-
+
         command
-      
-      
+
         (Array<#to_s>)
       
       
@@ -293,15 +160,10 @@ The binary to use.
 
 The command to send to the binary.
 
-      
-    
-  
-    
-- 
-      
+-
+
         capture
-      
-      
+
         (Symbol)
       
       
@@ -313,15 +175,10 @@ The command to send to the binary.
 
 Whether it should raise if the command fails.
 
-      
-    
-  
-    
-- 
-      
+-
+
         env
-      
-      
+
         (Hash)
       
       
@@ -333,53 +190,22 @@ Whether it should raise if the command fails.
 
 Environment variables to be set for the command.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         ((String, Process::Status))
-      
-      
-      
+
         —
         
 
 The desired captured output from the command, and the status from running the command.
 
-      
-    
-  
-
 Raises:
 
-  
-    
-- 
-      
-      
-        
-      
-      
-      
-        
-        
+-
 
 If the executable could not be located.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -397,10 +223,6 @@ If the executable could not be located.
 153
 154
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/executable.rb', line 142
@@ -420,13 +242,7 @@ def self.capture_command(executable, command, capture: :merge, env: {}, **kwargs
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**capture_command!**(executable, command, **kwargs)  ⇒ (String, Process::Status) 
   
@@ -440,19 +256,12 @@ end
 
 Runs the given command, capturing the desired output.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         executable
-      
-      
+
         (String)
       
       
@@ -462,15 +271,10 @@ Parameters:
 
 The binary to use.
 
-      
-    
-  
-    
-- 
-      
+-
+
         command
-      
-      
+
         (Array<#to_s>)
       
       
@@ -480,15 +284,10 @@ The binary to use.
 
 The command to send to the binary.
 
-      
-    
-  
-    
-- 
-      
+-
+
         capture
-      
-      
+
         (Symbol)
       
       
@@ -498,15 +297,10 @@ The command to send to the binary.
 
 Whether it should raise if the command fails.
 
-      
-    
-  
-    
-- 
-      
+-
+
         env
-      
-      
+
         (Hash)
       
       
@@ -516,69 +310,26 @@ Whether it should raise if the command fails.
 
 Environment variables to be set for the command.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         ((String, Process::Status))
-      
-      
-      
+
         —
         
 
 The desired captured output from the command, and the status from running the command.
 
-      
-    
-  
-
 Raises:
 
-  
-    
-- 
-      
-      
-        
-      
-      
-      
-        
-        
+-
 
 If the executable could not be located.
 
-      
-    
-  
-    
-- 
-      
-      
-        
-      
-      
-      
-        
-        
+-
 
 If running the command fails
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -593,10 +344,6 @@ If running the command fails
 168
 169
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/executable.rb', line 160
@@ -613,13 +360,7 @@ def self.capture_command!(executable, command, **kwargs)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**execute_command**(executable, command, raise_on_failure = true)  ⇒ String 
   
@@ -633,19 +374,12 @@ end
 
 Executes the given command displaying it if in verbose mode.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         executable
-      
-      
+
         (String)
       
       
@@ -655,15 +389,10 @@ Parameters:
 
 The binary to use.
 
-      
-    
-  
-    
-- 
-      
+-
+
         command
-      
-      
+
         (Array<#to_s>)
       
       
@@ -673,15 +402,10 @@ The binary to use.
 
 The command to send to the binary.
 
-      
-    
-  
-    
-- 
-      
+-
+
         raise_on_failure
-      
-      
+
         (Boolean)
       
       
@@ -693,69 +417,26 @@ The command to send to the binary.
 
 Whether it should raise if the command fails.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 the output of the command (STDOUT and STDERR).
 
-      
-    
-  
-
 Raises:
 
-  
-    
-- 
-      
-      
-        
-      
-      
-      
-        
-        
+-
 
 If the executable could not be located.
 
-      
-    
-  
-    
-- 
-      
-      
-        
-      
-      
-      
-        
-        
+-
 
 If the command fails and the `raise_on_failure` is set to true.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -793,10 +474,6 @@ If the command fails and the `raise_on_failure` is set to true.
 79
 80
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/executable.rb', line 48
@@ -836,13 +513,7 @@ def self.execute_command(executable, command, raise_on_failure = true)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**which**(program)  ⇒ String, Nil 
   
@@ -856,19 +527,12 @@ end
 
 Returns the absolute path to the binary with the given name on the current `PATH`, or `nil` if none is found.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         program
-      
-      
+
         (String)
       
       
@@ -878,33 +542,16 @@ Parameters:
 
 The name of the program being searched for.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String, Nil)
-      
-      
-      
+
         —
         
 
 The absolute path to the given program, or `nil` if it wasn’t found in the current `PATH`.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -925,10 +572,6 @@ The absolute path to the given program, or `nil` if it wasn’t found in the cur
 105
 106
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/executable.rb', line 91
@@ -951,13 +594,7 @@ def self.which(program)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**which!**(program)  ⇒ String 
   
@@ -971,19 +608,12 @@ end
 
 Returns the absolute path to the binary with the given name on the current `PATH`, or raises if none is found.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         program
-      
-      
+
         (String)
       
       
@@ -993,33 +623,16 @@ Parameters:
 
 The name of the program being searched for.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The absolute path to the given program.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1029,10 +642,6 @@ The absolute path to the given program.
 119
 120
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/executable.rb', line 116
@@ -1044,20 +653,9 @@ def self.which!(program)
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**executable**(name)  ⇒ void 
   
@@ -1073,19 +671,12 @@ This method returns an undefined value.
 
 Creates the methods for the executable with the given name.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         name
-      
-      
+
         (Symbol)
       
       
@@ -1094,14 +685,6 @@ Parameters:
         
 
 the name of the executable.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1115,10 +698,6 @@ the name of the executable.
 28
 29
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/executable.rb', line 21

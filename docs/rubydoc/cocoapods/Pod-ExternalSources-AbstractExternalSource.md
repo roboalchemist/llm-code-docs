@@ -1,10 +1,5 @@
 # Class: Pod::ExternalSources::AbstractExternalSource
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,65 +8,29 @@
 
           
 - Object
-          
-            
+
 - Pod::ExternalSources::AbstractExternalSource
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/external_sources/abstract_external_source.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Abstract class that defines the common behaviour of external sources.
 
-  
-
-  
-
-  
 ## Direct Known Subclasses
-
-  
 
 DownloaderSource, PathSource, PodspecSource
 
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**can_cache**  ⇒ Boolean 
-    
 
-    
       (also: #can_cache?)
     
   
@@ -93,22 +52,10 @@ DownloaderSource, PathSource, PodspecSource
 
 Whether the source is allowed to touch the cache.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**name**  ⇒ String 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -123,22 +70,10 @@ Whether the source is allowed to touch the cache.
 
 The name of the Pod described by this external source.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**params**  ⇒ Hash{Symbol => String} 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -153,22 +88,10 @@ The name of the Pod described by this external source.
 
 The hash representation of the external source.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**podfile_path**  ⇒ String 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -183,14 +106,8 @@ The hash representation of the external source.
 
 The path where the podfile is defined to resolve relative paths.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Subclasses hooks
       collapse
     
@@ -199,9 +116,8 @@ The path where the podfile is defined to resolve relative paths.
 
       
         
-- 
+-
   
-    
       #**description**  ⇒ String 
     
 
@@ -220,39 +136,14 @@ The path where the podfile is defined to resolve relative paths.
 
 A string representation of the source suitable for UI.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**fetch**(_sandbox)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Fetches the external source from the remote according to the params.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -261,9 +152,8 @@ Fetches the external source from the remote according to the params.
 
       
         
-- 
+-
   
-    
       #**==**(other)  ⇒ Boolean 
     
 
@@ -282,20 +172,10 @@ Fetches the external source from the remote according to the params.
 
 Whether an external source source is equal to another according to the #name and to the #params.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**initialize**(name, params, podfile_path, can_cache = true)  ⇒ AbstractExternalSource 
-    
 
-    
-  
-  
-  
     constructor
   
   
@@ -309,20 +189,9 @@ Whether an external source source is equal to another according to the #name and
 
 Initialize a new instance.
 
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(name, params, podfile_path, can_cache = true)  ⇒ AbstractExternalSource 
   
@@ -336,19 +205,12 @@ Initialize a new instance.
 
 Initialize a new instance
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         name
-      
-      
+
         (String)
       
       
@@ -358,15 +220,10 @@ Parameters:
 
 @see #name
 
-      
-    
-  
-    
-- 
-      
+-
+
         params
-      
-      
+
         (Hash)
       
       
@@ -376,15 +233,10 @@ Parameters:
 
 @see #params
 
-      
-    
-  
-    
-- 
-      
+-
+
         podfile_path
-      
-      
+
         (String)
       
       
@@ -394,15 +246,10 @@ Parameters:
 
 @see #podfile_path
 
-      
-    
-  
-    
-- 
-      
+-
+
         can_cache
-      
-      
+
         (Boolean)
       
       
@@ -414,14 +261,6 @@ Parameters:
 
 @see #can_cache
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 32
@@ -431,10 +270,6 @@ Parameters:
 36
 37
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/external_sources/abstract_external_source.rb', line 32
@@ -448,21 +283,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**can_cache**  ⇒ Boolean  (readonly)
   
@@ -480,33 +303,16 @@ end
 
 Returns Whether the source is allowed to touch the cache.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Boolean)
-      
-      
-      
+
         —
         
 
 Whether the source is allowed to touch the cache.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -514,10 +320,6 @@ Whether the source is allowed to touch the cache.
 23
 24
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/external_sources/abstract_external_source.rb', line 22
@@ -528,15 +330,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**name**  ⇒ String  (readonly)
   
@@ -550,33 +344,16 @@ end
 
 Returns the name of the Pod described by this external source.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 the name of the Pod described by this external source.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -584,10 +361,6 @@ the name of the Pod described by this external source.
 9
 10
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/external_sources/abstract_external_source.rb', line 8
@@ -598,15 +371,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**params**  ⇒ Hash{Symbol => String}  (readonly)
   
@@ -620,33 +385,16 @@ end
 
 Returns the hash representation of the external source.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Hash{Symbol => String})
-      
-      
-      
+
         —
         
 
 the hash representation of the external source.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -654,10 +402,6 @@ the hash representation of the external source.
 14
 15
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/external_sources/abstract_external_source.rb', line 13
@@ -668,15 +412,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**podfile_path**  ⇒ String  (readonly)
   
@@ -690,33 +426,16 @@ end
 
 Returns the path where the podfile is defined to resolve relative paths.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 the path where the podfile is defined to resolve relative paths.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -724,10 +443,6 @@ the path where the podfile is defined to resolve relative paths.
 19
 20
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/external_sources/abstract_external_source.rb', line 18
@@ -738,20 +453,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**==**(other)  ⇒ Boolean 
   
@@ -765,33 +469,16 @@ end
 
 Returns whether an external source source is equal to another according to the #name and to the #params.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Boolean)
-      
-      
-      
+
         —
         
 
 whether an external source source is equal to another according to the #name and to the #params.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -800,10 +487,6 @@ whether an external source source is equal to another according to the #name and
 44
 45
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/external_sources/abstract_external_source.rb', line 42
@@ -815,13 +498,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**description**  ⇒ String 
   
@@ -835,33 +512,16 @@ end
 
 Returns a string representation of the source suitable for UI.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 a string representation of the source suitable for UI.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -869,10 +529,6 @@ a string representation of the source suitable for UI.
 65
 66
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/external_sources/abstract_external_source.rb', line 64
@@ -883,13 +539,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**fetch**(_sandbox)  ⇒ void 
   
@@ -905,19 +555,12 @@ This method returns an undefined value.
 
 Fetches the external source from the remote according to the params.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         _sandbox
-      
-      
+
         (Sandbox)
       
       
@@ -927,24 +570,12 @@ Parameters:
 
 the sandbox where the specification should be stored.
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 58
 59
 60
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/external_sources/abstract_external_source.rb', line 58

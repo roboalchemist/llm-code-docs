@@ -1,10 +1,5 @@
 # Class: Pod::Command::Install
   
-  
-  
-
-  
-  
     Inherits:
     
       Pod::Command
@@ -13,17 +8,12 @@
 
           
 - Object
-          
-            
+
 - CLAide::Command
-          
-            
+
 - Pod::Command
-          
-            
+
 - Pod::Command::Install
-          
-        
 
         show all
       
@@ -39,21 +29,11 @@
       Includes:
       ProjectDirectory, RepoUpdate
   
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/command/install.rb
   
-  
+##
 
-  
-    
-## 
       Class Method Summary
       collapse
     
@@ -62,9 +42,8 @@
 
       
         
-- 
+-
   
-    
       .**options**  ⇒ Object 
     
 
@@ -87,7 +66,8 @@
 
   
     
-## 
+##
+
       Instance Method Summary
       collapse
     
@@ -96,9 +76,8 @@
 
       
         
-- 
+-
   
-    
       #**initialize**(argv)  ⇒ Install 
     
 
@@ -119,81 +98,21 @@
 
 A new instance of Install.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**run**  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Pod::Command
 
-  
+# ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, report_error, run
 
-#ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, report_error, run
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Pod::Config::Mixin
 
-  
+# config
 
-#config
-
-  
-  
-  
-  
-  
-  
-  
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(argv)  ⇒ Install 
   
@@ -207,14 +126,6 @@ A new instance of Install.
 
 Returns a new instance of Install.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 39
@@ -223,10 +134,6 @@ Returns a new instance of Install.
 42
 43
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/install.rb', line 39
@@ -238,19 +145,9 @@ def initialize(argv)
 end
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**options**  ⇒ Object 
   
@@ -275,10 +172,6 @@ end
 37
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/install.rb', line 30
 
@@ -292,20 +185,9 @@ def self.options
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**run**  ⇒ Object 
   
@@ -330,10 +212,6 @@ end
 52
 53
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/install.rb', line 45

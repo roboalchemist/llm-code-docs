@@ -1,24 +1,7 @@
 # Top Level Namespace
   
-  
-  
-
-  
-
-  
-  
-  
-  
-  
-
-  
-
-  
-
 ## Defined Under Namespace
 
-  
-    
       **Modules:** Molinillo, OpenURI, Pod, Xcodeproj
     
   
@@ -27,7 +10,8 @@
 
   
     
-## 
+##
+
       Private Helpers
       collapse
     
@@ -36,9 +20,8 @@
 
       
         
-- 
+-
   
-    
       #**merge_to_docc_folder**(paths)  ⇒ Array<Pathname> 
     
 
@@ -57,21 +40,9 @@
 
 If we have an non-empty .docc folder, remove all paths under the folder but keep the folder itself.
 
-  
-
-      
-    
-
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**merge_to_docc_folder**(paths)  ⇒ Array<Pathname> 
   
@@ -85,19 +56,12 @@ If we have an non-empty .docc folder, remove all paths under the folder but keep
 
 If we have an non-empty .docc folder, remove all paths under the folder but keep the folder itself
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         paths
-      
-      
+
         (Array<Pathname>)
       
       
@@ -107,33 +71,16 @@ Parameters:
 
 the paths to inspect
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<Pathname>)
-      
-      
-      
+
         —
         
 
 The resulted list of paths.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -160,10 +107,6 @@ The resulted list of paths.
 362
 363
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/file_references_installer.rb', line 342

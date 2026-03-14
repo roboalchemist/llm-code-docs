@@ -1,10 +1,5 @@
 # Class: Pod::Generator::FileList
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,63 +8,25 @@
 
           
 - Object
-          
-            
+
 - Pod::Generator::FileList
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/generator/file_list.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Generates an xcfilelist file.
 
-  
-
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**paths**  ⇒ Array<String> 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -84,14 +41,8 @@ Generates an xcfilelist file.
 
 The paths of the files in the file list.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -100,9 +51,8 @@ The paths of the files in the file list.
 
       
         
-- 
+-
   
-    
       #**generate**  ⇒ String 
     
 
@@ -121,20 +71,10 @@ The paths of the files in the file list.
 
 Generates the contents of the file list.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**initialize**(paths)  ⇒ FileList 
-    
 
-    
-  
-  
-  
     constructor
   
   
@@ -148,45 +88,15 @@ Generates the contents of the file list.
 
 Initialize a new instance.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**save_as**(path)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Generates and saves the file list to the given path.
 
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(paths)  ⇒ FileList 
   
@@ -200,31 +110,11 @@ Generates and saves the file list to the given path.
 
 Initialize a new instance
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 @see paths
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -232,10 +122,6 @@ Parameters:
 16
 17
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/file_list.rb', line 15
@@ -245,21 +131,9 @@ def initialize(paths)
 end
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**paths**  ⇒ Array<String>  (readonly)
   
@@ -273,31 +147,11 @@ end
 
 Returns The paths of the files in the file list.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The paths of the files in the file list.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -305,10 +159,6 @@ The paths of the files in the file list.
 9
 10
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/file_list.rb', line 8
@@ -318,20 +168,9 @@ def paths
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**generate**  ⇒ String 
   
@@ -345,25 +184,9 @@ end
 
 Generates the contents of the file list.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-    
-  
-
-  
-    
-      
+-
 
 ```
 
@@ -371,10 +194,6 @@ Returns:
 24
 25
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/file_list.rb', line 23
@@ -384,13 +203,7 @@ def generate
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**save_as**(path)  ⇒ void 
   
@@ -406,31 +219,11 @@ This method returns an undefined value.
 
 Generates and saves the file list to the given path.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The path where the file list should be stored.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -438,10 +231,6 @@ The path where the file list should be stored.
 35
 36
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/file_list.rb', line 34

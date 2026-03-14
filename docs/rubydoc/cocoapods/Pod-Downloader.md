@@ -1,20 +1,5 @@
 # Module: Pod::Downloader
   
-  
-  
-
-  
-
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/downloader.rb,
 
@@ -22,22 +7,16 @@
  lib/cocoapods/downloader/request.rb,
  lib/cocoapods/downloader/response.rb
 
-  
-  
-
 ## Defined Under Namespace
 
-  
-    
-  
-    
       **Classes:** Base, Cache, DownloaderError, Request, Response
     
   
 
   
     
-## 
+##
+
       Class Method Summary
       collapse
     
@@ -46,9 +25,8 @@
 
       
         
-- 
+-
   
-    
       .**download**(request, target, can_cache: true, cache_path: Config.instance.cache_root + 'Pods')  ⇒ Response 
     
 
@@ -67,46 +45,15 @@
 
 Downloads a pod from the given `request` to the given `target` location.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**download_request**(request, target)  ⇒ Response, Hash<String,Specification> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Performs the download from the given `request` to the given `target` location.
 
-  
-
-      
-    
-
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**download**(request, target, can_cache: true, cache_path: Config.instance.cache_root + 'Pods')  ⇒ Response 
   
@@ -120,95 +67,33 @@ Performs the download from the given `request` to the given `target` location.
 
 Downloads a pod from the given `request` to the given `target` location.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the request that describes this pod download.
 
-      
-    
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the location to which this pod should be downloaded. If `nil`, then the pod will only be cached.
 
-      
-    
-  
-    
-- 
-      
-      
-      
+-
+
         *(defaults to: true)*
-      
-      
-        
-        
 
 whether caching is allowed.
 
-      
-    
-  
-    
-- 
-      
-      
-      
+-
+
         *(defaults to: Config.instance.cache_root + 'Pods')*
-      
-      
-        
-        
 
 the path used to cache pod downloads.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The download response for this download.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -245,10 +130,6 @@ The download response for this download.
 59
 60
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/downloader.rb', line 29
@@ -288,13 +169,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**download_request**(request, target)  ⇒ Response, Hash<String,Specification> 
   
@@ -308,63 +183,21 @@ end
 
 Performs the download from the given `request` to the given `target` location.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the request that describes this pod download.
 
-      
-    
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the location to which this pod should be downloaded. If `nil`, then the pod will only be cached.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The download response for this download, and the specifications for this download grouped by name.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -389,10 +222,6 @@ The download response for this download, and the specifications for this downloa
 93
 94
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/downloader.rb', line 75

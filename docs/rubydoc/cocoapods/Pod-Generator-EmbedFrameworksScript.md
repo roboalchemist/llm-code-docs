@@ -1,10 +1,5 @@
 # Class: Pod::Generator::EmbedFrameworksScript
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,52 +8,21 @@
 
           
 - Object
-          
-            
+
 - Pod::Generator::EmbedFrameworksScript
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/generator/embed_frameworks_script.rb
   
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**frameworks_by_config**  ⇒ Hash{String => Array<FrameworkPaths>} 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -73,22 +37,10 @@
 
 Multiple lists of frameworks per configuration.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**xcframeworks_by_config**  ⇒ Hash{String => Array<XCFrameworkPaths>} 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -103,14 +55,8 @@ Multiple lists of frameworks per configuration.
 
 Multiple lists of frameworks per configuration.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -119,9 +65,8 @@ Multiple lists of frameworks per configuration.
 
       
         
-- 
+-
   
-    
       #**generate**  ⇒ String 
     
 
@@ -140,20 +85,10 @@ Multiple lists of frameworks per configuration.
 
 The contents of the embed frameworks script.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**initialize**(frameworks_by_config, xcframeworks_by_config)  ⇒ EmbedFrameworksScript 
-    
 
-    
-  
-  
-  
     constructor
   
   
@@ -167,45 +102,15 @@ The contents of the embed frameworks script.
 
 A new instance of EmbedFrameworksScript.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**save_as**(pathname)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Saves the resource script to the given pathname.
 
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(frameworks_by_config, xcframeworks_by_config)  ⇒ EmbedFrameworksScript 
   
@@ -219,49 +124,19 @@ Saves the resource script to the given pathname.
 
 Returns a new instance of EmbedFrameworksScript.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 # > Array<FrameworkPaths>] frameworks_by_config
 
 @see #frameworks_by_config
 
-      
-    
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 # > Array<XCFramework>] xcframeworks_by_config
 
 @see #xcframeworks_by_config
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -270,10 +145,6 @@ Parameters:
 24
 25
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/embed_frameworks_script.rb', line 22
@@ -285,21 +156,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**frameworks_by_config**  ⇒ Hash{String => Array<FrameworkPaths>}  (readonly)
   
@@ -313,31 +172,11 @@ end
 
 Returns Multiple lists of frameworks per configuration.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 Multiple lists of frameworks per configuration.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -345,10 +184,6 @@ Multiple lists of frameworks per configuration.
 10
 11
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/embed_frameworks_script.rb', line 9
@@ -359,15 +194,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**xcframeworks_by_config**  ⇒ Hash{String => Array<XCFrameworkPaths>}  (readonly)
   
@@ -381,31 +208,11 @@ end
 
 Returns Multiple lists of frameworks per configuration.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 Multiple lists of frameworks per configuration.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -413,10 +220,6 @@ Multiple lists of frameworks per configuration.
 15
 16
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/embed_frameworks_script.rb', line 14
@@ -427,20 +230,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**generate**  ⇒ String 
   
@@ -454,31 +246,11 @@ end
 
 Returns The contents of the embed frameworks script.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The contents of the embed frameworks script.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -486,10 +258,6 @@ The contents of the embed frameworks script.
 44
 45
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/embed_frameworks_script.rb', line 43
@@ -500,13 +268,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**save_as**(pathname)  ⇒ void 
   
@@ -522,31 +284,11 @@ This method returns an undefined value.
 
 Saves the resource script to the given pathname.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The path where the embed frameworks script should be saved.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -557,10 +299,6 @@ The path where the embed frameworks script should be saved.
 38
 39
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/embed_frameworks_script.rb', line 34

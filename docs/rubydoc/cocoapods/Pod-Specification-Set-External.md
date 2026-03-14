@@ -1,10 +1,5 @@
 # Class: Pod::Specification::Set::External
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,36 +8,17 @@
 
           
 - Object
-          
-            
+
 - Pod::Specification::Set::External
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/resolver/lazy_specification.rb
   
-  
+##
 
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -51,9 +27,8 @@
 
       
         
-- 
+-
   
-    
       #**all_specifications**(_warn_for_multiple_pod_sources, requirement)  ⇒ Object 
     
 
@@ -80,10 +55,7 @@
     
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**all_specifications**(_warn_for_multiple_pod_sources, requirement)  ⇒ Object 
   
@@ -106,10 +78,6 @@
 50
 51
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/resolver/lazy_specification.rb', line 45

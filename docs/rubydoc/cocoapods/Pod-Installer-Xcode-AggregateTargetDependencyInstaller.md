@@ -1,10 +1,5 @@
 # Class: Pod::Installer::Xcode::AggregateTargetDependencyInstaller
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,63 +8,25 @@
 
           
 - Object
-          
-            
+
 - Pod::Installer::Xcode::AggregateTargetDependencyInstaller
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/installer/xcode/pods_project_generator/aggregate_target_dependency_installer.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Wires up the dependencies for aggregate targets from the target installation results
 
-  
-
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**aggregate_target_installation_results**  ⇒ Hash{String => TargetInstallationResult} 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -84,22 +41,10 @@ Wires up the dependencies for aggregate targets from the target installation res
 
 The target installation results for aggregate targets.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**metadata_cache**  ⇒ ProjectMetadataCache 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -114,22 +59,10 @@ The target installation results for aggregate targets.
 
 The project metadata cache.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**pod_target_installation_results**  ⇒ Hash{String => TargetInstallationResult} 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -144,22 +77,10 @@ The project metadata cache.
 
 The target installation results for pod targets.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**sandbox**  ⇒ Sandbox 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -174,14 +95,8 @@ The target installation results for pod targets.
 
 The sandbox used for this installation.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -190,9 +105,8 @@ The sandbox used for this installation.
 
       
         
-- 
+-
   
-    
       #**initialize**(sandbox, aggregate_target_installation_results, pod_target_installation_results, metadata_cache)  ⇒ AggregateTargetDependencyInstaller 
     
 
@@ -213,42 +127,13 @@ The sandbox used for this installation.
 
 Initialize a new instance.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**install!**  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(sandbox, aggregate_target_installation_results, pod_target_installation_results, metadata_cache)  ⇒ AggregateTargetDependencyInstaller 
   
@@ -262,19 +147,12 @@ Initialize a new instance.
 
 Initialize a new instance.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         sandbox
-      
-      
+
         (Sandbox)
       
       
@@ -284,15 +162,10 @@ Parameters:
 
 @see #sandbox
 
-      
-    
-  
-    
-- 
-      
+-
+
         aggregate_target_installation_results
-      
-      
+
         (Hash{String => TargetInstallationResult})
       
       
@@ -302,15 +175,10 @@ Parameters:
 
 @see #aggregate_target_installation_results
 
-      
-    
-  
-    
-- 
-      
+-
+
         pod_target_installation_results
-      
-      
+
         (Hash{String => TargetInstallationResult})
       
       
@@ -320,15 +188,10 @@ Parameters:
 
 @see #pod_target_installation_results
 
-      
-    
-  
-    
-- 
-      
+-
+
         metadata_cache
-      
-      
+
         (ProjectMetadataCache)
       
       
@@ -337,14 +200,6 @@ Parameters:
         
 
 @see #metadata_cache
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -355,10 +210,6 @@ Parameters:
 36
 37
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/aggregate_target_dependency_installer.rb', line 32
@@ -371,21 +222,9 @@ def initialize(sandbox, aggregate_target_installation_results, pod_target_instal
 end
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**aggregate_target_installation_results**  ⇒ Hash{String => TargetInstallationResult}  (readonly)
   
@@ -399,33 +238,16 @@ end
 
 Returns The target installation results for aggregate targets.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Hash{String => TargetInstallationResult})
-      
-      
-      
+
         —
         
 
 The target installation results for aggregate targets.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -433,10 +255,6 @@ The target installation results for aggregate targets.
 16
 17
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/aggregate_target_dependency_installer.rb', line 15
@@ -446,15 +264,7 @@ def aggregate_target_installation_results
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**metadata_cache**  ⇒ ProjectMetadataCache  (readonly)
   
@@ -468,33 +278,16 @@ end
 
 Returns The project metadata cache.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (ProjectMetadataCache)
-      
-      
-      
+
         —
         
 
 The project metadata cache.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -502,10 +295,6 @@ The project metadata cache.
 20
 21
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/aggregate_target_dependency_installer.rb', line 19
@@ -515,15 +304,7 @@ def metadata_cache
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**pod_target_installation_results**  ⇒ Hash{String => TargetInstallationResult}  (readonly)
   
@@ -537,33 +318,16 @@ end
 
 Returns The target installation results for pod targets.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Hash{String => TargetInstallationResult})
-      
-      
-      
+
         —
         
 
 The target installation results for pod targets.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -571,10 +335,6 @@ The target installation results for pod targets.
 12
 13
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/aggregate_target_dependency_installer.rb', line 11
@@ -584,15 +344,7 @@ def pod_target_installation_results
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**sandbox**  ⇒ Sandbox  (readonly)
   
@@ -606,33 +358,16 @@ end
 
 Returns The sandbox used for this installation.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Sandbox)
-      
-      
-      
+
         —
         
 
 The sandbox used for this installation.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -640,10 +375,6 @@ The sandbox used for this installation.
 24
 25
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/aggregate_target_dependency_installer.rb', line 23
@@ -653,20 +384,9 @@ def sandbox
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**install!**  ⇒ Object 
   
@@ -706,10 +426,6 @@ end
 61
 62
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/aggregate_target_dependency_installer.rb', line 39

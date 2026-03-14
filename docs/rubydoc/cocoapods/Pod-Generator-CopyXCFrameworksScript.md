@@ -1,10 +1,5 @@
 # Class: Pod::Generator::CopyXCFrameworksScript
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,52 +8,21 @@
 
           
 - Object
-          
-            
+
 - Pod::Generator::CopyXCFrameworksScript
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/generator/copy_xcframework_script.rb
   
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**platform**  ⇒ Platform 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -73,22 +37,10 @@
 
 The platform of the target for which this script will run.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**sandbox_root**  ⇒ Pathname 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -103,22 +55,10 @@ The platform of the target for which this script will run.
 
 The root directory of the sandbox.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**xcframeworks**  ⇒ Array<Pod::Xcode::XCFramework> 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -133,14 +73,8 @@ The root directory of the sandbox.
 
 List of xcframeworks to copy.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Private Helpers
       collapse
     
@@ -149,9 +83,8 @@ List of xcframeworks to copy.
 
       
         
-- 
+-
   
-    
       .**dsym_folder**(xcframework_path)  ⇒ Array<Pathname> 
     
 
@@ -170,14 +103,8 @@ List of xcframeworks to copy.
 
 All found .dSYM paths.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -186,9 +113,8 @@ All found .dSYM paths.
 
       
         
-- 
+-
   
-    
       #**generate**  ⇒ String 
     
 
@@ -207,20 +133,10 @@ All found .dSYM paths.
 
 The contents of the embed frameworks script.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**initialize**(xcframeworks, sandbox_root, platform)  ⇒ CopyXCFrameworksScript 
-    
 
-    
-  
-  
-  
     constructor
   
   
@@ -234,45 +150,15 @@ The contents of the embed frameworks script.
 
 Creates a script for copying XCFramework slcies into an intermediate build directory.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**save_as**(pathname)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Saves the resource script to the given pathname.
 
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(xcframeworks, sandbox_root, platform)  ⇒ CopyXCFrameworksScript 
   
@@ -286,19 +172,12 @@ Saves the resource script to the given pathname.
 
 Creates a script for copying XCFramework slcies into an intermediate build directory
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         xcframeworks
-      
-      
+
         (Array<Pod::Xcode::XCFramework>)
       
       
@@ -308,15 +187,10 @@ Parameters:
 
 the list of xcframeworks to copy
 
-      
-    
-  
-    
-- 
-      
+-
+
         sandbox_root
-      
-      
+
         (Pathname)
       
       
@@ -326,15 +200,10 @@ the list of xcframeworks to copy
 
 the root of the Sandbox into which this script will be installed
 
-      
-    
-  
-    
-- 
-      
+-
+
         platform
-      
-      
+
         (Platform)
       
       
@@ -344,14 +213,6 @@ the root of the Sandbox into which this script will be installed
 
 the platform of the target for which this script will be run
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 29
@@ -360,10 +221,6 @@ the platform of the target for which this script will be run
 32
 33
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/copy_xcframework_script.rb', line 29
@@ -375,21 +232,9 @@ def initialize(xcframeworks, sandbox_root, platform)
 end
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**platform**  ⇒ Platform  (readonly)
   
@@ -403,33 +248,16 @@ end
 
 Returns the platform of the target for which this script will run.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Platform)
-      
-      
-      
+
         —
         
 
 the platform of the target for which this script will run
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -437,10 +265,6 @@ the platform of the target for which this script will run
 17
 18
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/copy_xcframework_script.rb', line 16
@@ -450,15 +274,7 @@ def platform
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**sandbox_root**  ⇒ Pathname  (readonly)
   
@@ -472,33 +288,16 @@ end
 
 Returns the root directory of the sandbox.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 the root directory of the sandbox
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -506,10 +305,6 @@ the root directory of the sandbox
 13
 14
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/copy_xcframework_script.rb', line 12
@@ -519,15 +314,7 @@ def sandbox_root
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**xcframeworks**  ⇒ Array<Pod::Xcode::XCFramework>  (readonly)
   
@@ -541,33 +328,16 @@ end
 
 Returns List of xcframeworks to copy.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<Pod::Xcode::XCFramework>)
-      
-      
-      
+
         —
         
 
 List of xcframeworks to copy
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -575,10 +345,6 @@ List of xcframeworks to copy
 9
 10
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/copy_xcframework_script.rb', line 8
@@ -588,20 +354,9 @@ def xcframeworks
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**dsym_folder**(xcframework_path)  ⇒ Array<Pathname> 
   
@@ -615,19 +370,12 @@ end
 
 Returns all found .dSYM paths.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         xcframework_path
-      
-      
+
         (Pathname)
       
       
@@ -637,33 +385,16 @@ Parameters:
 
 the base path of the .xcframework bundle
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<Pathname>)
-      
-      
-      
+
         —
         
 
 all found .dSYM paths
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -674,10 +405,6 @@ all found .dSYM paths
 222
 223
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/copy_xcframework_script.rb', line 218
@@ -690,20 +417,9 @@ def dsym_folder(xcframework_path)
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**generate**  ⇒ String 
   
@@ -717,33 +433,16 @@ end
 
 Returns The contents of the embed frameworks script.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The contents of the embed frameworks script.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -751,10 +450,6 @@ The contents of the embed frameworks script.
 52
 53
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/copy_xcframework_script.rb', line 51
@@ -764,13 +459,7 @@ def generate
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**save_as**(pathname)  ⇒ void 
   
@@ -786,19 +475,12 @@ This method returns an undefined value.
 
 Saves the resource script to the given pathname.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         pathname
-      
-      
+
         (Pathname)
       
       
@@ -807,14 +489,6 @@ Parameters:
         
 
 The path where the embed frameworks script should be saved.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -825,10 +499,6 @@ The path where the embed frameworks script should be saved.
 46
 47
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/copy_xcframework_script.rb', line 42

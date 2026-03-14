@@ -1,10 +1,5 @@
 # Class: Pod::Executable::Indenter
   
-  
-  
-
-  
-  
     Inherits:
     
       Array
@@ -13,66 +8,27 @@
 
           
 - Object
-          
-            
+
 - Array
-          
-            
+
 - Pod::Executable::Indenter
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/executable.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Helper class that allows to write to an IO instance taking into account the UI indentation level.
 
-  
-
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**indent**  ⇒ Fixnum 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -87,22 +43,10 @@ Helper class that allows to write to an IO instance taking into account the UI i
 
 The indentation level of the UI.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**io**  ⇒ IO 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -117,14 +61,8 @@ The indentation level of the UI.
 
 The IO to which the output should be printed.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -133,9 +71,8 @@ The IO to which the output should be printed.
 
       
         
-- 
+-
   
-    
       #**<<**(value)  ⇒ void 
     
 
@@ -154,20 +91,10 @@ The IO to which the output should be printed.
 
 Stores a portion of the output and prints it to the IO instance.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**initialize**(io = nil)  ⇒ Indenter 
-    
 
-    
-  
-  
-  
     constructor
   
   
@@ -181,21 +108,9 @@ Stores a portion of the output and prints it to the IO instance.
 
 Init a new Indenter.
 
-  
-
-      
-    
-
-  
-
-  
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(io = nil)  ⇒ Indenter 
   
@@ -209,19 +124,12 @@ Init a new Indenter.
 
 Init a new Indenter
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         io
-      
-      
+
         (IO)
       
       
@@ -233,14 +141,6 @@ Parameters:
 
 @see io
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 229
@@ -248,10 +148,6 @@ Parameters:
 231
 232
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/executable.rb', line 229
@@ -263,21 +159,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**indent**  ⇒ Fixnum  (readonly)
   
@@ -291,33 +175,16 @@ end
 
 Returns The indentation level of the UI.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Fixnum)
-      
-      
-      
+
         —
         
 
 The indentation level of the UI.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -325,10 +192,6 @@ The indentation level of the UI.
 220
 221
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/executable.rb', line 219
@@ -339,15 +202,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**io**  ⇒ IO  (readonly)
   
@@ -361,33 +216,16 @@ end
 
 Returns the IO to which the output should be printed.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (IO)
-      
-      
-      
+
         —
         
 
 the IO to which the output should be printed.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -395,10 +233,6 @@ the IO to which the output should be printed.
 224
 225
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/executable.rb', line 223
@@ -409,20 +243,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**<<**(value)  ⇒ void 
   
@@ -438,19 +261,12 @@ This method returns an undefined value.
 
 Stores a portion of the output and prints it to the IO instance.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         value
-      
-      
+
         (String)
       
       
@@ -460,14 +276,6 @@ Parameters:
 
 the output to print.
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 241
@@ -475,10 +283,6 @@ the output to print.
 243
 244
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/executable.rb', line 241

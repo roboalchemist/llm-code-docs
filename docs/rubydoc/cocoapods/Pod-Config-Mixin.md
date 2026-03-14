@@ -1,18 +1,5 @@
 # Module: Pod::Config::Mixin
   
-  
-  
-
-  
-
-  
-  
-  
-  
-  
-
-  
-  
     Included in:
     Pod::Command, Installer, Installer::Analyzer, UserInterface, Validator
   
@@ -23,22 +10,12 @@
     Defined in:
     lib/cocoapods/config.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Provides support for accessing the configuration instance in other scopes.
 
-  
+##
 
-  
-
-  
-    
-## 
       Singleton
       collapse
     
@@ -47,9 +24,8 @@ Provides support for accessing the configuration instance in other scopes.
 
       
         
-- 
+-
   
-    
       #**config**  ⇒ Object 
     
 
@@ -76,10 +52,7 @@ Provides support for accessing the configuration instance in other scopes.
     
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**config**  ⇒ Object 
   
@@ -98,10 +71,6 @@ Provides support for accessing the configuration instance in other scopes.
 363
 364
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 362

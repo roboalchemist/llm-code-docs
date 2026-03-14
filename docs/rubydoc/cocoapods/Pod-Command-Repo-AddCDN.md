@@ -1,10 +1,5 @@
 # Class: Pod::Command::Repo::AddCDN
   
-  
-  
-
-  
-  
     Inherits:
     
       Pod::Command::Repo
@@ -13,45 +8,23 @@
 
           
 - Object
-          
-            
+
 - CLAide::Command
-          
-            
+
 - Pod::Command
-          
-            
+
 - Pod::Command::Repo
-          
-            
+
 - Pod::Command::Repo::AddCDN
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/command/repo/add_cdn.rb
   
-  
+##
 
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -60,9 +33,8 @@
 
       
         
-- 
+-
   
-    
       #**initialize**(argv)  ⇒ AddCDN 
     
 
@@ -83,131 +55,33 @@
 
 A new instance of AddCDN.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**run**  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**validate!**  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Pod::Command::Repo
 
-  
+# dir
 
-#dir
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Executable
-
-  
 
 capture_command, capture_command!, #executable, execute_command, which, which!
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Pod::Command
 
-  
+# ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, options, report_error, run
 
-#ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, options, report_error, run
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Pod::Config::Mixin
 
-  
+# config
 
-#config
-
-  
-  
-  
-  
-  
-  
-  
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(argv)  ⇒ AddCDN 
   
@@ -229,10 +103,6 @@ capture_command, capture_command!, #executable, execute_command, which, which!
 21
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/repo/add_cdn.rb', line 17
 
@@ -244,19 +114,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**run**  ⇒ Object 
   
@@ -280,10 +140,6 @@ end
 40
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/repo/add_cdn.rb', line 34
 
@@ -297,13 +153,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**validate!**  ⇒ Object 
   
@@ -329,10 +179,6 @@ end
 31
 32
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/repo/add_cdn.rb', line 23

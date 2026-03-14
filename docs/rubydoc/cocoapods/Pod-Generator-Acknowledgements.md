@@ -1,10 +1,5 @@
 # Class: Pod::Generator::Acknowledgements
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,59 +8,25 @@
 
           
 - Object
-          
-            
+
 - Pod::Generator::Acknowledgements
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/generator/acknowledgements.rb
   
-  
-
-  
 ## Direct Known Subclasses
-
-  
 
 Markdown, Plist
 
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**file_accessors**  ⇒ Array<Sandbox::FileAccessor> 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -80,14 +41,8 @@ Markdown, Plist
 
 The list of the file accessors for the specs of the target that needs to generate the acknowledgements.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Class Method Summary
       collapse
     
@@ -96,9 +51,8 @@ The list of the file accessors for the specs of the target that needs to generat
 
       
         
-- 
+-
   
-    
       .**generators**  ⇒ Array<Class> 
     
 
@@ -117,14 +71,8 @@ The list of the file accessors for the specs of the target that needs to generat
 
 The classes of the acknowledgements generator subclasses.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -133,9 +81,8 @@ The classes of the acknowledgements generator subclasses.
 
       
         
-- 
+-
   
-    
       #**footnote_text**  ⇒ String 
     
 
@@ -154,95 +101,28 @@ The classes of the acknowledgements generator subclasses.
 
 The foot notes.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**footnote_title**  ⇒ String 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The title of the foot notes.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**header_text**  ⇒ String 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 A text to present before listing the acknowledgements.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**header_title**  ⇒ String 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The title of the acknowledgements file.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**initialize**(file_accessors)  ⇒ Acknowledgements 
-    
 
-    
-  
-  
-  
     constructor
   
   
@@ -256,20 +136,9 @@ The title of the acknowledgements file.
 
 A new instance of Acknowledgements.
 
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(file_accessors)  ⇒ Acknowledgements 
   
@@ -283,19 +152,12 @@ A new instance of Acknowledgements.
 
 Returns a new instance of Acknowledgements.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         @see
-      
-      
+
         (Array<Sandbox::FileAccessor>)
       
       
@@ -305,24 +167,12 @@ Parameters:
 
 file_accessors.
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 19
 20
 21
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/acknowledgements.rb', line 19
@@ -333,21 +183,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**file_accessors**  ⇒ Array<Sandbox::FileAccessor>  (readonly)
   
@@ -361,33 +199,16 @@ end
 
 Returns the list of the file accessors for the specs of the target that needs to generate the acknowledgements.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<Sandbox::FileAccessor>)
-      
-      
-      
+
         —
         
 
 the list of the file accessors for the specs of the target that needs to generate the acknowledgements.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -395,10 +216,6 @@ the list of the file accessors for the specs of the target that needs to generat
 16
 17
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/acknowledgements.rb', line 15
@@ -409,20 +226,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**generators**  ⇒ Array<Class> 
   
@@ -436,33 +242,16 @@ end
 
 Returns The classes of the acknowledgements generator subclasses.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<Class>)
-      
-      
-      
+
         —
         
 
 The classes of the acknowledgements generator subclasses.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -470,10 +259,6 @@ The classes of the acknowledgements generator subclasses.
 8
 9
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/acknowledgements.rb', line 7
@@ -484,20 +269,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**footnote_text**  ⇒ String 
   
@@ -511,33 +285,16 @@ end
 
 Returns the foot notes.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 the foot notes.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -545,10 +302,6 @@ the foot notes.
 48
 49
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/acknowledgements.rb', line 47
@@ -559,13 +312,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**footnote_title**  ⇒ String 
   
@@ -579,33 +326,16 @@ end
 
 Returns The title of the foot notes.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The title of the foot notes.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -613,10 +343,6 @@ The title of the foot notes.
 42
 43
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/acknowledgements.rb', line 41
@@ -627,13 +353,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**header_text**  ⇒ String 
   
@@ -647,33 +367,16 @@ end
 
 Returns A text to present before listing the acknowledgements.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 A text to present before listing the acknowledgements.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -681,10 +384,6 @@ A text to present before listing the acknowledgements.
 36
 37
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/acknowledgements.rb', line 35
@@ -695,13 +394,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**header_title**  ⇒ String 
   
@@ -715,33 +408,16 @@ end
 
 Returns The title of the acknowledgements file.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The title of the acknowledgements file.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -749,10 +425,6 @@ The title of the acknowledgements file.
 30
 31
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/acknowledgements.rb', line 29

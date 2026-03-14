@@ -1,10 +1,5 @@
 # Class: Pod::Generator::ModuleMap
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,73 +8,30 @@
 
           
 - Object
-          
-            
+
 - Pod::Generator::ModuleMap
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/generator/module_map.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Generates LLVM module map files. A module map file is generated for each Pod and for each Pod target definition that is built as a framework. It specifies a different umbrella header than usual to avoid name conflicts with existing headers of the podspec.
 
-  
-
-  
-
 ## Defined Under Namespace
 
-  
-    
-  
-    
       **Classes:** Header
     
   
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**headers**  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -94,22 +46,10 @@ Generates LLVM module map files. A module map file is generated for each Pod and
 
 Returns the value of attribute headers.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**target**  ⇒ PodTarget, AggregateTarget 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -124,14 +64,8 @@ Returns the value of attribute headers.
 
 The target the module map is generated for.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -140,9 +74,8 @@ The target the module map is generated for.
 
       
         
-- 
+-
   
-    
       #**generate**  ⇒ String 
     
 
@@ -161,20 +94,10 @@ The target the module map is generated for.
 
 Generates the contents of the module.modulemap file.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**initialize**(target)  ⇒ ModuleMap 
-    
 
-    
-  
-  
-  
     constructor
   
   
@@ -188,45 +111,15 @@ Generates the contents of the module.modulemap file.
 
 Initialize a new instance.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**save_as**(path)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Generates and saves the Info.plist to the given path.
 
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(target)  ⇒ ModuleMap 
   
@@ -240,19 +133,12 @@ Generates and saves the Info.plist to the given path.
 
 Initialize a new instance
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         target
-      
-      
+
         (PodTarget, AggregateTarget)
       
       
@@ -261,14 +147,6 @@ Parameters:
         
 
 @see target
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -279,10 +157,6 @@ Parameters:
 47
 48
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/module_map.rb', line 43
@@ -296,21 +170,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**headers**  ⇒ Object  (readonly)
   
@@ -324,24 +186,12 @@ end
 
 Returns the value of attribute headers.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 13
 14
 15
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/module_map.rb', line 13
@@ -352,15 +202,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**target**  ⇒ PodTarget, AggregateTarget  (readonly)
   
@@ -374,33 +216,16 @@ end
 
 Returns the target the module map is generated for.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (PodTarget, AggregateTarget)
-      
-      
-      
+
         —
         
 
 the target the module map is generated for.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -408,10 +233,6 @@ the target the module map is generated for.
 12
 13
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/module_map.rb', line 11
@@ -422,20 +243,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**generate**  ⇒ String 
   
@@ -449,27 +259,11 @@ end
 
 Generates the contents of the module.modulemap file.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (String)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (String)
 
 ```
 
@@ -485,10 +279,6 @@ Returns:
 77
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/generator/module_map.rb', line 68
 
@@ -497,13 +287,7 @@ def generate
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**save_as**(path)  ⇒ void 
   
@@ -519,19 +303,12 @@ This method returns an undefined value.
 
 Generates and saves the Info.plist to the given path.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         path
-      
-      
+
         (Pathname)
       
       
@@ -540,14 +317,6 @@ Parameters:
         
 
 the path where the prefix header should be stored.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -558,10 +327,6 @@ the path where the prefix header should be stored.
 61
 62
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/module_map.rb', line 57

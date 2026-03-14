@@ -1,10 +1,5 @@
 # Class: Pod::Downloader::Cache
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,63 +8,25 @@
 
           
 - Object
-          
-            
+
 - Pod::Downloader::Cache
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/downloader/cache.rb
   
-  
-
 ## Overview
-
-  
-    
 
 The class responsible for managing Pod downloads, transparently caching them in a cache directory.
 
-  
-
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**root**  ⇒ Pathname 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -84,14 +41,8 @@ The class responsible for managing Pod downloads, transparently caching them in 
 
 The root directory where this cache store its downloads.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Class Method Summary
       collapse
     
@@ -100,9 +51,8 @@ The root directory where this cache store its downloads.
 
       
         
-- 
+-
   
-    
       .**lock**(location, lock_type)  ⇒ void 
     
 
@@ -121,89 +71,26 @@ The root directory where this cache store its downloads.
 
 Creates a .lock file at `location`, aquires a lock of type `lock_type`, checks that it is valid, and executes passed block while holding on to that lock.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**read_lock**(location, &block)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Convenience method for acquiring a shared lock to safely read from the cache.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**valid_lock?**(file, filename)  ⇒ Boolean 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Checks that the lock is on a file that still exists on the filesystem.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**write_lock**(location, &block)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Convenience method for acquiring an exclusive lock to safely write to the cache.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -212,9 +99,8 @@ Convenience method for acquiring an exclusive lock to safely write to the cache.
 
       
         
-- 
+-
   
-    
       #**cache_descriptors_per_pod**  ⇒ Hash<String, Hash<Symbol, String>> 
     
 
@@ -233,45 +119,16 @@ Convenience method for acquiring an exclusive lock to safely write to the cache.
 
 A hash whose keys are the pod name And values are a hash with the following keys: :spec_file : path to the spec file :name      : name of the pod :version   : pod version :release   : boolean to tell if that’s a release pod :slug      : the slug path where the pod cache is located.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**download_pod**(request)  ⇒ Response 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Downloads the Pod from the given `request`.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**initialize**(root)  ⇒ Cache 
-    
 
-    
-  
-  
-  
     constructor
   
   
@@ -285,20 +142,9 @@ Downloads the Pod from the given `request`.
 
 Initialize a new instance.
 
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(root)  ⇒ Cache 
   
@@ -312,19 +158,12 @@ Initialize a new instance.
 
 Initialize a new instance
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         root
-      
-      
+
         (Pathname, String)
       
       
@@ -334,14 +173,6 @@ Parameters:
 
 see #root
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 20
@@ -349,10 +180,6 @@ see #root
 22
 23
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/downloader/cache.rb', line 20
@@ -363,21 +190,9 @@ def initialize(root)
 end
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**root**  ⇒ Pathname  (readonly)
   
@@ -391,33 +206,16 @@ end
 
 Returns The root directory where this cache store its downloads.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 The root directory where this cache store its downloads.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -425,10 +223,6 @@ The root directory where this cache store its downloads.
 14
 15
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/downloader/cache.rb', line 13
@@ -438,20 +232,9 @@ def root
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**lock**(location, lock_type)  ⇒ void 
   
@@ -467,19 +250,12 @@ This method returns an undefined value.
 
 Creates a .lock file at `location`, aquires a lock of type `lock_type`, checks that it is valid, and executes passed block while holding on to that lock. Afterwards, the .lock file is deleted, which is why validation of the lock is necessary, as you might have a lock on a file that doesn’t exist on the filesystem anymore.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         location
-      
-      
+
         (Pathname)
       
       
@@ -489,15 +265,10 @@ Parameters:
 
 the path to require a lock for.
 
-      
-    
-  
-    
-- 
-      
+-
+
         lock_type
-      
-      
+
         (locking_constant)
       
       
@@ -507,27 +278,11 @@ the path to require a lock for.
 
 the type of lock, either exclusive (File::LOCK_EX) or shared (File::LOCK_SH).
 
-      
-    
-  
-
 Raises:
 
-  
-    
-- 
-      
-      
-        (ArgumentError)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (ArgumentError)
 
 ```
 
@@ -554,10 +309,6 @@ Raises:
 137
 138
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/downloader/cache.rb', line 117
@@ -586,13 +337,7 @@ def self.lock(location, lock_type)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**read_lock**(location, &block)  ⇒ void 
   
@@ -608,19 +353,12 @@ This method returns an undefined value.
 
 Convenience method for acquiring a shared lock to safely read from the cache. See `Cache.lock` for more details.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         location
-      
-      
+
         (Pathname)
       
       
@@ -630,15 +368,10 @@ Parameters:
 
 the path to require a lock for.
 
-      
-    
-  
-    
-- 
-      
+-
+
         &block
-      
-      
+
         (block)
       
       
@@ -648,24 +381,12 @@ the path to require a lock for.
 
 the block to execute inside the lock.
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 83
 84
 85
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/downloader/cache.rb', line 83
@@ -675,13 +396,7 @@ def self.read_lock(location, &block)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**valid_lock?**(file, filename)  ⇒ Boolean 
   
@@ -695,19 +410,12 @@ end
 
 Checks that the lock is on a file that still exists on the filesystem.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         file
-      
-      
+
         (File)
       
       
@@ -717,15 +425,10 @@ Parameters:
 
 the actual file that we have a lock for.
 
-      
-    
-  
-    
-- 
-      
+-
+
         filename
-      
-      
+
         (String)
       
       
@@ -735,33 +438,16 @@ the actual file that we have a lock for.
 
 the filename of the file that we have a lock for.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Boolean)
-      
-      
-      
+
         —
         
 
 true if `filename` still exists and is the same file as `file`
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -771,10 +457,6 @@ true if `filename` still exists and is the same file as `file`
 154
 155
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/downloader/cache.rb', line 151
@@ -786,13 +468,7 @@ rescue Errno::ENOENT
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**write_lock**(location, &block)  ⇒ void 
   
@@ -808,19 +484,12 @@ This method returns an undefined value.
 
 Convenience method for acquiring an exclusive lock to safely write to the cache. See `Cache.lock` for more details.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         location
-      
-      
+
         (Pathname)
       
       
@@ -830,15 +499,10 @@ Parameters:
 
 the path to require a lock for.
 
-      
-    
-  
-    
-- 
-      
+-
+
         &block
-      
-      
+
         (block)
       
       
@@ -848,24 +512,12 @@ the path to require a lock for.
 
 the block to execute inside the lock.
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 98
 99
 100
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/downloader/cache.rb', line 98
@@ -875,20 +527,9 @@ def self.write_lock(location, &block)
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**cache_descriptors_per_pod**  ⇒ Hash<String, Hash<Symbol, String>> 
   
@@ -902,33 +543,16 @@ end
 
 Returns A hash whose keys are the pod name And values are a hash with the following keys: :spec_file : path to the spec file :name      : name of the pod :version   : pod version :release   : boolean to tell if that’s a release pod :slug      : the slug path where the pod cache is located.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Hash<String, Hash<Symbol, String>>)
-      
-      
-      
+
         —
         
 
 A hash whose keys are the pod name And values are a hash with the following keys: :spec_file : path to the spec file :name      : name of the pod :version   : pod version :release   : boolean to tell if that’s a release pod :slug      : the slug path where the pod cache is located
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -954,10 +578,6 @@ A hash whose keys are the pod name And values are a hash with the following keys
 69
 70
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/downloader/cache.rb', line 50
@@ -985,13 +605,7 @@ def cache_descriptors_per_pod
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**download_pod**(request)  ⇒ Response 
   
@@ -1005,19 +619,12 @@ end
 
 Downloads the Pod from the given `request`
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         request
-      
-      
+
         (Request)
       
       
@@ -1027,33 +634,16 @@ Parameters:
 
 the request to be downloaded.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Response)
-      
-      
-      
+
         —
         
 
 the response from downloading `request`
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1066,10 +656,6 @@ the response from downloading `request`
 38
 39
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/downloader/cache.rb', line 32

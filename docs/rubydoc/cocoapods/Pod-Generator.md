@@ -1,20 +1,5 @@
 # Module: Pod::Generator
   
-  
-  
-
-  
-
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods.rb,
 
@@ -37,13 +22,8 @@
  lib/cocoapods/generator/embed_frameworks_script.rb,
  lib/cocoapods/generator/acknowledgements/markdown.rb
 
-  
-  
-
 ## Defined Under Namespace
 
-  
-    
       **Modules:** AppTargetHelper, ScriptPhaseConstants
     
   

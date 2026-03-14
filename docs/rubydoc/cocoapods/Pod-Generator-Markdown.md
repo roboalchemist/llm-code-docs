@@ -1,10 +1,5 @@
 # Class: Pod::Generator::Markdown
   
-  
-  
-
-  
-  
     Inherits:
     
       Acknowledgements
@@ -13,50 +8,25 @@
 
           
 - Object
-          
-            
+
 - Acknowledgements
-          
-            
+
 - Pod::Generator::Markdown
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/generator/acknowledgements/markdown.rb
   
-  
-
-  
 ## Instance Attribute Summary
 
-  
-  
 ### Attributes inherited from Acknowledgements
 
-  
+# file_accessors
 
-#file_accessors
+##
 
-  
-    
-## 
       Class Method Summary
       collapse
     
@@ -65,9 +35,8 @@
 
       
         
-- 
+-
   
-    
       .**path_from_basepath**(path)  ⇒ Object 
     
 
@@ -90,7 +59,8 @@
 
   
     
-## 
+##
+
       Instance Method Summary
       collapse
     
@@ -99,9 +69,8 @@
 
       
         
-- 
+-
   
-    
       #**generate**  ⇒ String 
     
 
@@ -120,133 +89,33 @@
 
 The contents of the acknowledgements in Markdown format.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**licenses**  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**save_as**(path)  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**string_for_spec**(spec)  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**title_from_string**(string, level)  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Acknowledgements
 
-  
+# footnote_text, #footnote_title, generators, #header_text, #header_title, #initialize
 
-#footnote_text, #footnote_title, generators, #header_text, #header_title, #initialize
-
-  
 ## Constructor Details
-
-  
-    
 
 This class inherits a constructor from Pod::Generator::Acknowledgements
   
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**path_from_basepath**(path)  ⇒ Object 
   
@@ -266,10 +135,6 @@ This class inherits a constructor from Pod::Generator::Acknowledgements
 6
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/generator/acknowledgements/markdown.rb', line 4
 
@@ -278,20 +143,9 @@ def self.path_from_basepath(path)
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**generate**  ⇒ String 
   
@@ -305,33 +159,16 @@ end
 
 Returns The contents of the acknowledgements in Markdown format.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The contents of the acknowledgements in Markdown format.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -339,10 +176,6 @@ The contents of the acknowledgements in Markdown format.
 17
 18
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/acknowledgements/markdown.rb', line 16
@@ -352,13 +185,7 @@ def generate
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**licenses**  ⇒ Object 
   
@@ -385,10 +212,6 @@ end
 41
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/generator/acknowledgements/markdown.rb', line 32
 
@@ -404,13 +227,7 @@ def licenses
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**save_as**(path)  ⇒ Object 
   
@@ -432,10 +249,6 @@ end
 12
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/generator/acknowledgements/markdown.rb', line 8
 
@@ -446,13 +259,7 @@ def save_as(path)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**string_for_spec**(spec)  ⇒ Object 
   
@@ -474,10 +281,6 @@ end
 30
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/generator/acknowledgements/markdown.rb', line 26
 
@@ -488,13 +291,7 @@ def string_for_spec(spec)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**title_from_string**(string, level)  ⇒ Object 
   
@@ -515,10 +312,6 @@ end
 23
 24
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/acknowledgements/markdown.rb', line 20

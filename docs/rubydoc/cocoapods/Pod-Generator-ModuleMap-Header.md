@@ -1,10 +1,5 @@
 # Class: Pod::Generator::ModuleMap::Header
   
-  
-  
-
-  
-  
     Inherits:
     
       Struct
@@ -13,134 +8,41 @@
 
           
 - Object
-          
-            
+
 - Struct
-          
-            
+
 - Pod::Generator::ModuleMap::Header
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/generator/module_map.rb
   
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**exclude**  ⇒ Object 
-    
-
-    
-  
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    
 
 Returns the value of attribute exclude.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**mtime**  ⇒ Object 
-    
-
-    
-  
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    
 
 Returns the value of attribute mtime.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**path**  ⇒ Object 
-    
-
-    
-  
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    
 
 Returns the value of attribute path.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**private**  ⇒ Object 
-    
 
-    
       (also: #private?)
     
   
@@ -160,98 +62,26 @@ Returns the value of attribute path.
 
 Returns the value of attribute private.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**size**  ⇒ Object 
-    
-
-    
-  
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    
 
 Returns the value of attribute size.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**textual**  ⇒ Object 
-    
-
-    
-  
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    
 
 Returns the value of attribute textual.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**umbrella**  ⇒ Object 
-    
-
-    
-  
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    
 
 Returns the value of attribute umbrella.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -260,9 +90,8 @@ Returns the value of attribute umbrella.
 
       
         
-- 
+-
   
-    
       #**attrs**  ⇒ Object 
     
 
@@ -282,9 +111,8 @@ Returns the value of attribute umbrella.
 
       
         
-- 
+-
   
-    
       #**to_s**  ⇒ Object 
     
 
@@ -312,12 +140,7 @@ Returns the value of attribute umbrella.
     
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**exclude**  ⇒ Object 
   
@@ -331,33 +154,16 @@ Returns the value of attribute umbrella.
 
 Returns the value of attribute exclude
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Object)
-      
-      
-      
+
         —
         
 
 the current value of exclude
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -365,10 +171,6 @@ the current value of exclude
 16
 17
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/module_map.rb', line 15
@@ -378,15 +180,7 @@ def exclude
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**mtime**  ⇒ Object 
   
@@ -400,33 +194,16 @@ end
 
 Returns the value of attribute mtime
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Object)
-      
-      
-      
+
         —
         
 
 the current value of mtime
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -434,10 +211,6 @@ the current value of mtime
 16
 17
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/module_map.rb', line 15
@@ -447,15 +220,7 @@ def mtime
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**path**  ⇒ Object 
   
@@ -469,33 +234,16 @@ end
 
 Returns the value of attribute path
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Object)
-      
-      
-      
+
         —
         
 
 the current value of path
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -503,10 +251,6 @@ the current value of path
 16
 17
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/module_map.rb', line 15
@@ -516,15 +260,7 @@ def path
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**private**  ⇒ Object 
   
@@ -542,33 +278,16 @@ end
 
 Returns the value of attribute private
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Object)
-      
-      
-      
+
         —
         
 
 the current value of private
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -576,10 +295,6 @@ the current value of private
 16
 17
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/module_map.rb', line 15
@@ -589,15 +304,7 @@ def private
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**size**  ⇒ Object 
   
@@ -611,33 +318,16 @@ end
 
 Returns the value of attribute size
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Object)
-      
-      
-      
+
         —
         
 
 the current value of size
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -645,10 +335,6 @@ the current value of size
 16
 17
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/module_map.rb', line 15
@@ -658,15 +344,7 @@ def size
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**textual**  ⇒ Object 
   
@@ -680,33 +358,16 @@ end
 
 Returns the value of attribute textual
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Object)
-      
-      
-      
+
         —
         
 
 the current value of textual
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -714,10 +375,6 @@ the current value of textual
 16
 17
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/module_map.rb', line 15
@@ -727,15 +384,7 @@ def textual
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**umbrella**  ⇒ Object 
   
@@ -749,33 +398,16 @@ end
 
 Returns the value of attribute umbrella
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Object)
-      
-      
-      
+
         —
         
 
 the current value of umbrella
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -783,10 +415,6 @@ the current value of umbrella
 16
 17
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/module_map.rb', line 15
@@ -796,20 +424,9 @@ def umbrella
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**attrs**  ⇒ Object 
   
@@ -834,10 +451,6 @@ end
 36
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/generator/module_map.rb', line 29
 
@@ -851,13 +464,7 @@ def attrs
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**to_s**  ⇒ Object 
   
@@ -884,10 +491,6 @@ end
 26
 27
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/module_map.rb', line 17

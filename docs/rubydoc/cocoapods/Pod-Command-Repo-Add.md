@@ -1,10 +1,5 @@
 # Class: Pod::Command::Repo::Add
   
-  
-  
-
-  
-  
     Inherits:
     
       Pod::Command::Repo
@@ -13,45 +8,23 @@
 
           
 - Object
-          
-            
+
 - CLAide::Command
-          
-            
+
 - Pod::Command
-          
-            
+
 - Pod::Command::Repo
-          
-            
+
 - Pod::Command::Repo::Add
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/command/repo/add.rb
   
-  
+##
 
-  
-    
-## 
       Class Method Summary
       collapse
     
@@ -60,9 +33,8 @@
 
       
         
-- 
+-
   
-    
       .**options**  ⇒ Object 
     
 
@@ -85,7 +57,8 @@
 
   
     
-## 
+##
+
       Instance Method Summary
       collapse
     
@@ -94,9 +67,8 @@
 
       
         
-- 
+-
   
-    
       #**initialize**(argv)  ⇒ Add 
     
 
@@ -117,131 +89,33 @@
 
 A new instance of Add.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**run**  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**validate!**  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Pod::Command::Repo
 
-  
+# dir
 
-#dir
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Executable
-
-  
 
 capture_command, capture_command!, #executable, execute_command, which, which!
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Pod::Command
 
-  
+# ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, report_error, run
 
-#ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, report_error, run
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Pod::Config::Mixin
 
-  
+# config
 
-#config
-
-  
-  
-  
-  
-  
-  
-  
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(argv)  ⇒ Add 
   
@@ -255,14 +129,6 @@ capture_command, capture_command!, #executable, execute_command, which, which!
 
 Returns a new instance of Add.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 24
@@ -273,10 +139,6 @@ Returns a new instance of Add.
 29
 30
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/repo/add.rb', line 24
@@ -291,19 +153,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**options**  ⇒ Object 
   
@@ -325,10 +177,6 @@ end
 22
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/repo/add.rb', line 18
 
@@ -340,20 +188,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**run**  ⇒ Object 
   
@@ -380,10 +217,6 @@ end
 52
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/repo/add.rb', line 43
 
@@ -400,13 +233,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**validate!**  ⇒ Object 
   
@@ -432,10 +259,6 @@ end
 40
 41
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/repo/add.rb', line 32

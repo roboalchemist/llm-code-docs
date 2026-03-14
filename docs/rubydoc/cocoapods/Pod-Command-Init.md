@@ -1,10 +1,5 @@
 # Class: Pod::Command::Init
   
-  
-  
-
-  
-  
     Inherits:
     
       Pod::Command
@@ -13,42 +8,21 @@
 
           
 - Object
-          
-            
+
 - CLAide::Command
-          
-            
+
 - Pod::Command
-          
-            
+
 - Pod::Command::Init
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/command/init.rb
   
-  
+##
 
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -57,9 +31,8 @@
 
       
         
-- 
+-
   
-    
       #**initialize**(argv)  ⇒ Init 
     
 
@@ -80,101 +53,25 @@
 
 A new instance of Init.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**run**  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**validate!**  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Pod::Command
 
-  
+# ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, options, report_error, run
 
-#ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, options, report_error, run
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Pod::Config::Mixin
 
-  
+# config
 
-#config
-
-  
-  
-  
-  
-  
-  
-  
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(argv)  ⇒ Init 
   
@@ -188,14 +85,6 @@ A new instance of Init.
 
 Returns a new instance of Init.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 23
@@ -205,10 +94,6 @@ Returns a new instance of Init.
 27
 28
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/init.rb', line 23
@@ -221,19 +106,9 @@ def initialize(argv)
 end
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**run**  ⇒ Object 
   
@@ -253,10 +128,6 @@ end
 46
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/init.rb', line 44
 
@@ -265,13 +136,7 @@ def run
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**validate!**  ⇒ Object 
   
@@ -283,27 +148,11 @@ end
   
     
 
-  
-
-  
-
 Raises:
 
-  
-    
-- 
-      
-      
-        (Informative)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Informative)
 
 ```
 
@@ -321,10 +170,6 @@ Raises:
 41
 42
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/init.rb', line 30

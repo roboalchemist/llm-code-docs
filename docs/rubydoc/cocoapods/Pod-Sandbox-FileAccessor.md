@@ -1,10 +1,5 @@
 # Class: Pod::Sandbox::FileAccessor
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,54 +8,26 @@
 
           
 - Object
-          
-            
+
 - Pod::Sandbox::FileAccessor
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/sandbox/file_accessor.rb
   
-  
-
 ## Overview
 
-  
-    
-  
     **Note:**
     
 
 The FileAccessor always returns absolute paths.
 
-  
-
 Resolves the file patterns of a specification against its root directory, taking into account any exclude pattern and the default extensions to use for directories.
 
-  
+##
 
-  
-
-  
-    
-## 
       Constant Summary
       collapse
     
@@ -77,7 +44,6 @@ Xcodeproj::Constants::HEADER_FILES_EXTENSIONS
 
 ```
 
-      
         SOURCE_FILE_EXTENSIONS =
           
         
@@ -88,7 +54,6 @@ Xcodeproj::Constants::HEADER_FILES_EXTENSIONS
 
 ```
 
-      
         GLOB_PATTERNS =
           
         
@@ -106,29 +71,12 @@ Xcodeproj::Constants::HEADER_FILES_EXTENSIONS
 
 ```
 
-      
-    
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**path_list**  ⇒ Sandbox::PathList 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -143,22 +91,10 @@ Xcodeproj::Constants::HEADER_FILES_EXTENSIONS
 
 The directory where the source of the Pod is located.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**spec_consumer**  ⇒ Specification::Consumer 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -173,14 +109,8 @@ The directory where the source of the Pod is located.
 
 The consumer of the specification for which the file patterns should be resolved.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Paths
       collapse
     
@@ -189,9 +119,8 @@ The consumer of the specification for which the file patterns should be resolved
 
       
         
-- 
+-
   
-    
       .**all_files**(file_accessors)  ⇒ Array<Pathname> 
     
 
@@ -210,939 +139,230 @@ The consumer of the specification for which the file patterns should be resolved
 
 The list of all file accessors that a target will integrate into the project.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**vendored_frameworks_headers**(framework)  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The paths of the headers included in the vendored framework.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**vendored_frameworks_headers_dir**(framework)  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The path of the header directory of the vendored framework.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**vendored_xcframework_headers**(target_name, framework_path)  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The paths to all the headers included in the vendored xcframework.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**arc_source_files**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The source files of the specification that use ARC.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**developer_files**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Paths to include for local pods to assist in development.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**docs**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The paths of auto-detected docs.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**headers**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The headers of the specification.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**license**  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The path of the license file as indicated in the specification or auto-detected.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**module_map**  ⇒ Pathname, Nil 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The path of the custom module map file of the specification, if specified.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**non_arc_source_files**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The source files of the specification that do not use ARC.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**on_demand_resources**  ⇒ Hash{String => Hash] The expanded paths of the on demand resources specified keyed by their tag including their category. 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Hash{String => Hash] The expanded paths of the on demand resources specified keyed by their tag including their category.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**on_demand_resources_files**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The expanded paths of the on demand resources.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**other_source_files**  ⇒ Array<Pathname] the source files that do not match any of the recognized file extensions 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Array<Pathname] the source files that do not match any of the recognized file extensions.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**prefix_header**  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The of the prefix header file of the specification.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**preserve_paths**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The files of the specification to preserve.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**private_headers**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The private headers of the specification.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**project_headers**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The project headers of the specification.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**public_headers**(include_frameworks = false)  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The public headers of the specification.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**readme**  ⇒ Pathname? 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The path of the auto-detected README file.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**resource_bundle_files**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The paths of the files which should be included in resources bundles by the Pod.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**resource_bundles**  ⇒ Hash{String => Array<Pathname>} 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 A hash that describes the resource bundles of the Pod.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**resources**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The resources of the specification.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**source_files**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The source files of the specification.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**spec_license**  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The path of the license file specified in the specification, if it exists.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**specs**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The paths of auto-detected podspecs.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**vendored_dynamic_artifacts**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The paths of the dynamic binary artifacts that come shipped with the Pod.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**vendored_dynamic_frameworks**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The paths of the dynamic framework bundles that come shipped with the Pod.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**vendored_dynamic_libraries**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The paths of the dynamic libraries that come shipped with the Pod.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**vendored_dynamic_xcframeworks**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The paths of the dynamic xcframework bundles that come shipped with the Pod.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**vendored_frameworks**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The paths of the framework bundles that come shipped with the Pod.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**vendored_frameworks_headers**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The paths of the framework headers that come shipped with the Pod.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**vendored_libraries**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The paths of the library bundles that come shipped with the Pod.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**vendored_static_artifacts**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The paths of the static binary artifacts that come shipped with the Pod.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**vendored_static_frameworks**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The paths of the static (fake) framework bundles that come shipped with the Pod.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**vendored_static_libraries**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The paths of the static libraries that come shipped with the Pod.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**vendored_static_xcframeworks**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The paths of the static xcframework bundles that come shipped with the Pod.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**vendored_xcframeworks**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The paths of vendored .xcframework bundles that come shipped with the Pod.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -1151,9 +371,8 @@ The paths of vendored .xcframework bundles that come shipped with the Pod.
 
       
         
-- 
+-
   
-    
       #**initialize**(path_list, spec_consumer)  ⇒ FileAccessor 
     
 
@@ -1174,120 +393,33 @@ The paths of vendored .xcframework bundles that come shipped with the Pod.
 
 Initialize a new instance.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**inspect**  ⇒ String 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 A string suitable for debugging.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**platform_name**  ⇒ Specification 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The platform used to consume the specification.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**root**  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The directory which contains the files of the Pod.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**spec**  ⇒ Specification 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The specification.
 
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(path_list, spec_consumer)  ⇒ FileAccessor 
   
@@ -1301,45 +433,15 @@ The specification.
 
 Initialize a new instance
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 @see #path_list
 
-      
-    
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 @see #spec_consumer
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1356,10 +458,6 @@ Parameters:
 49
 50
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 39
@@ -1379,21 +477,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**path_list**  ⇒ Sandbox::PathList  (readonly)
   
@@ -1407,31 +493,11 @@ end
 
 Returns the directory where the source of the Pod is located.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the directory where the source of the Pod is located.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1439,10 +505,6 @@ the directory where the source of the Pod is located.
 28
 29
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 27
@@ -1453,15 +515,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**spec_consumer**  ⇒ Specification::Consumer  (readonly)
   
@@ -1475,31 +529,11 @@ end
 
 Returns the consumer of the specification for which the file patterns should be resolved.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the consumer of the specification for which the file patterns should be resolved.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1507,10 +541,6 @@ the consumer of the specification for which the file patterns should be resolved
 33
 34
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 32
@@ -1521,20 +551,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**all_files**(file_accessors)  ⇒ Array<Pathname> 
   
@@ -1548,49 +567,17 @@ end
 
 Returns The list of all file accessors that a target will integrate into the project.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The list of all file accessors to compute.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The list of all file accessors that a target will integrate into the project.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1611,10 +598,6 @@ The list of all file accessors that a target will integrate into the project.
 235
 236
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 221
@@ -1638,13 +621,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**vendored_frameworks_headers**(framework)  ⇒ Array<Pathname> 
   
@@ -1658,49 +635,17 @@ end
 
 Returns The paths of the headers included in the vendored framework.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The vendored framework to search into.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The paths of the headers included in the vendored framework.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1709,10 +654,6 @@ The paths of the headers included in the vendored framework.
 255
 256
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 253
@@ -1724,13 +665,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**vendored_frameworks_headers_dir**(framework)  ⇒ Pathname 
   
@@ -1744,49 +679,17 @@ end
 
 Returns The path of the header directory of the vendored framework.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The vendored framework to search into.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The path of the header directory of the vendored framework.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1795,10 +698,6 @@ The path of the header directory of the vendored framework.
 245
 246
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 243
@@ -1810,13 +709,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**vendored_xcframework_headers**(target_name, framework_path)  ⇒ Array<Pathname> 
   
@@ -1830,63 +723,21 @@ end
 
 Returns The paths to all the headers included in the vendored xcframework.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The target name this .xcframework belongs to
 
-      
-    
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The path to the .xcframework
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The paths to all the headers included in the vendored xcframework
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1897,10 +748,6 @@ The paths to all the headers included in the vendored xcframework
 271
 272
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 267
@@ -1914,20 +761,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**arc_source_files**  ⇒ Array<Pathname> 
   
@@ -1941,31 +777,11 @@ end
 
 Returns the source files of the specification that use ARC.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the source files of the specification that use ARC.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1980,10 +796,6 @@ the source files of the specification that use ARC.
 99
 100
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 91
@@ -2001,13 +813,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**developer_files**  ⇒ Array<Pathname> 
   
@@ -2021,31 +827,11 @@ end
 
 Returns Paths to include for local pods to assist in development.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 Paths to include for local pods to assist in development
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2073,10 +859,6 @@ Paths to include for local pods to assist in development
 440
 441
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 419
@@ -2107,13 +889,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**docs**  ⇒ Array<Pathname> 
   
@@ -2127,31 +903,11 @@ end
 
 Returns The paths of auto-detected docs.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The paths of auto-detected docs
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2159,10 +915,6 @@ The paths of auto-detected docs
 404
 405
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 403
@@ -2173,13 +925,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**headers**  ⇒ Array<Pathname> 
   
@@ -2193,31 +939,11 @@ end
 
 Returns the headers of the specification.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the headers of the specification.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2226,10 +952,6 @@ the headers of the specification.
 120
 121
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 118
@@ -2241,13 +963,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**inspect**  ⇒ String 
   
@@ -2261,31 +977,11 @@ end
 
 Returns A string suitable for debugging.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 A string suitable for debugging.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2293,10 +989,6 @@ A string suitable for debugging.
 73
 74
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 72
@@ -2307,13 +999,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**license**  ⇒ Pathname 
   
@@ -2327,31 +1013,11 @@ end
 
 Returns The path of the license file as indicated in the specification or auto-detected.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The path of the license file as indicated in the specification or auto-detected.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2359,10 +1025,6 @@ The path of the license file as indicated in the specification or auto-detected.
 384
 385
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 383
@@ -2373,13 +1035,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**module_map**  ⇒ Pathname, Nil 
   
@@ -2393,31 +1049,11 @@ end
 
 Returns The path of the custom module map file of the specification, if specified.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The path of the custom module map file of the specification, if specified.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2427,10 +1063,6 @@ The path of the custom module map file of the specification, if specified.
 392
 393
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 389
@@ -2443,13 +1075,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**non_arc_source_files**  ⇒ Array<Pathname> 
   
@@ -2463,31 +1089,11 @@ end
 
 Returns the source files of the specification that do not use ARC.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the source files of the specification that do not use ARC.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2495,10 +1101,6 @@ the source files of the specification that do not use ARC.
 106
 107
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 105
@@ -2509,52 +1111,18 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**on_demand_resources**  ⇒ Hash{String => Hash] The expanded paths of the on demand resources specified
-keyed by their tag including their category. 
+keyed by their tag including their category.
   
-
-  
-
-  
-
-  
-    
-
 Returns Hash{String => Hash] The expanded paths of the on demand resources specified keyed by their tag including their category.
-
-  
-
-  
 
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 Hash{String => Hash] The expanded paths of the on demand resources specified keyed by their tag including their category.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2569,10 +1137,6 @@ Hash{String => Hash] The expanded paths of the on demand resources specified key
 357
 358
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 349
@@ -2590,13 +1154,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**on_demand_resources_files**  ⇒ Array<Pathname> 
   
@@ -2610,31 +1168,11 @@ end
 
 Returns The expanded paths of the on demand resources.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The expanded paths of the on demand resources.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2642,10 +1180,6 @@ The expanded paths of the on demand resources.
 363
 364
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 362
@@ -2656,52 +1190,18 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**other_source_files**  ⇒ Array<Pathname] the source files that do not match any of the
-recognized file extensions 
+recognized file extensions
   
-
-  
-
-  
-
-  
-    
-
 Returns Array<Pathname] the source files that do not match any of the recognized file extensions.
-
-  
-
-  
 
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 Array<Pathname] the source files that do not match any of the recognized file extensions
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2710,10 +1210,6 @@ Array<Pathname] the source files that do not match any of the recognized file ex
 113
 114
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 111
@@ -2725,13 +1221,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**platform_name**  ⇒ Specification 
   
@@ -2745,31 +1235,11 @@ end
 
 Returns the platform used to consume the specification.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the platform used to consume the specification.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2777,10 +1247,6 @@ the platform used to consume the specification.
 67
 68
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 66
@@ -2791,13 +1257,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**prefix_header**  ⇒ Pathname 
   
@@ -2811,31 +1271,11 @@ end
 
 Returns The of the prefix header file of the specification.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The of the prefix header file of the specification.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2845,10 +1285,6 @@ The of the prefix header file of the specification.
 371
 372
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 368
@@ -2861,13 +1297,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**preserve_paths**  ⇒ Array<Pathname> 
   
@@ -2881,31 +1311,11 @@ end
 
 Returns the files of the specification to preserve.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the files of the specification to preserve.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2913,10 +1323,6 @@ the files of the specification to preserve.
 163
 164
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 162
@@ -2927,13 +1333,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**private_headers**  ⇒ Array<Pathname> 
   
@@ -2947,31 +1347,11 @@ end
 
 Returns The private headers of the specification.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The private headers of the specification.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2979,10 +1359,6 @@ The private headers of the specification.
 151
 152
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 150
@@ -2993,13 +1369,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**project_headers**  ⇒ Array<Pathname> 
   
@@ -3013,31 +1383,11 @@ end
 
 Returns The project headers of the specification.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The project headers of the specification.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3045,10 +1395,6 @@ The project headers of the specification.
 145
 146
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 144
@@ -3059,13 +1405,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**public_headers**(include_frameworks = false)  ⇒ Array<Pathname> 
   
@@ -3079,51 +1419,19 @@ end
 
 Returns the public headers of the specification.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
-      
-      
+-
+
         *(defaults to: false)*
-      
-      
-        
-        
 
 Whether or not to include the headers of the vendored frameworks. Defaults to not include them.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the public headers of the specification.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3140,10 +1448,6 @@ the public headers of the specification.
 139
 140
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 129
@@ -3163,13 +1467,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**readme**  ⇒ Pathname? 
   
@@ -3183,31 +1481,11 @@ end
 
 Returns The path of the auto-detected README file.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The path of the auto-detected README file.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3215,10 +1493,6 @@ The path of the auto-detected README file.
 377
 378
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 376
@@ -3229,13 +1503,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**resource_bundle_files**  ⇒ Array<Pathname> 
   
@@ -3249,31 +1517,11 @@ end
 
 Returns The paths of the files which should be included in resources bundles by the Pod.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The paths of the files which should be included in resources bundles by the Pod.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3281,10 +1529,6 @@ The paths of the files which should be included in resources bundles by the Pod.
 343
 344
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 342
@@ -3295,13 +1539,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**resource_bundles**  ⇒ Hash{String => Array<Pathname>} 
   
@@ -3315,31 +1553,11 @@ end
 
 Returns A hash that describes the resource bundles of the Pod. The keys represent the name of the bundle while the values the path of the resources.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 A hash that describes the resource bundles of the Pod. The keys represent the name of the bundle while the values the path of the resources.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3354,10 +1572,6 @@ A hash that describes the resource bundles of the Pod. The keys represent the na
 336
 337
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 328
@@ -3375,13 +1589,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**resources**  ⇒ Array<Pathname> 
   
@@ -3395,31 +1603,11 @@ end
 
 Returns the resources of the specification.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the resources of the specification.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3427,10 +1615,6 @@ the resources of the specification.
 157
 158
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 156
@@ -3441,13 +1625,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**root**  ⇒ Pathname 
   
@@ -3461,31 +1639,11 @@ end
 
 Returns the directory which contains the files of the Pod.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the directory which contains the files of the Pod.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3493,10 +1651,6 @@ the directory which contains the files of the Pod.
 55
 56
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 54
@@ -3507,13 +1661,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**source_files**  ⇒ Array<Pathname> 
   
@@ -3527,31 +1675,11 @@ end
 
 Returns the source files of the specification.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the source files of the specification.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3559,10 +1687,6 @@ the source files of the specification.
 85
 86
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 84
@@ -3573,13 +1697,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**spec**  ⇒ Specification 
   
@@ -3593,31 +1711,11 @@ end
 
 Returns the specification.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the specification.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3625,10 +1723,6 @@ the specification.
 61
 62
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 60
@@ -3639,13 +1733,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**spec_license**  ⇒ Pathname 
   
@@ -3659,31 +1747,11 @@ end
 
 Returns The path of the license file specified in the specification, if it exists.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The path of the license file specified in the specification, if it exists
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3694,10 +1762,6 @@ The path of the license file specified in the specification, if it exists
 414
 415
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 410
@@ -3711,13 +1775,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**specs**  ⇒ Array<Pathname> 
   
@@ -3731,31 +1789,11 @@ end
 
 Returns The paths of auto-detected podspecs.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The paths of auto-detected podspecs
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3763,10 +1801,6 @@ The paths of auto-detected podspecs
 398
 399
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 397
@@ -3777,13 +1811,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**vendored_dynamic_artifacts**  ⇒ Array<Pathname> 
   
@@ -3797,31 +1825,11 @@ end
 
 Returns The paths of the dynamic binary artifacts that come shipped with the Pod.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The paths of the dynamic binary artifacts that come shipped with the Pod.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3829,10 +1837,6 @@ The paths of the dynamic binary artifacts that come shipped with the Pod.
 314
 315
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 313
@@ -3843,13 +1847,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**vendored_dynamic_frameworks**  ⇒ Array<Pathname> 
   
@@ -3863,31 +1861,11 @@ end
 
 Returns The paths of the dynamic framework bundles that come shipped with the Pod.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The paths of the dynamic framework bundles that come shipped with the Pod.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3897,10 +1875,6 @@ The paths of the dynamic framework bundles that come shipped with the Pod.
 179
 180
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 176
@@ -3913,13 +1887,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**vendored_dynamic_libraries**  ⇒ Array<Pathname> 
   
@@ -3933,31 +1901,11 @@ end
 
 Returns The paths of the dynamic libraries that come shipped with the Pod.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The paths of the dynamic libraries that come shipped with the Pod.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3967,10 +1915,6 @@ The paths of the dynamic libraries that come shipped with the Pod.
 300
 301
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 297
@@ -3983,13 +1927,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**vendored_dynamic_xcframeworks**  ⇒ Array<Pathname> 
   
@@ -4003,31 +1941,11 @@ end
 
 Returns The paths of the dynamic xcframework bundles that come shipped with the Pod.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The paths of the dynamic xcframework bundles that come shipped with the Pod.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4037,10 +1955,6 @@ The paths of the dynamic xcframework bundles that come shipped with the Pod.
 197
 198
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 194
@@ -4053,13 +1967,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**vendored_frameworks**  ⇒ Array<Pathname> 
   
@@ -4073,31 +1981,11 @@ end
 
 Returns The paths of the framework bundles that come shipped with the Pod.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The paths of the framework bundles that come shipped with the Pod.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4105,10 +1993,6 @@ The paths of the framework bundles that come shipped with the Pod.
 170
 171
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 169
@@ -4119,13 +2003,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**vendored_frameworks_headers**  ⇒ Array<Pathname> 
   
@@ -4139,31 +2017,11 @@ end
 
 Returns The paths of the framework headers that come shipped with the Pod.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The paths of the framework headers that come shipped with the Pod.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4177,10 +2035,6 @@ The paths of the framework headers that come shipped with the Pod.
 284
 285
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 277
@@ -4197,13 +2051,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**vendored_libraries**  ⇒ Array<Pathname> 
   
@@ -4217,31 +2065,11 @@ end
 
 Returns The paths of the library bundles that come shipped with the Pod.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The paths of the library bundles that come shipped with the Pod.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4249,10 +2077,6 @@ The paths of the library bundles that come shipped with the Pod.
 291
 292
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 290
@@ -4263,13 +2087,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**vendored_static_artifacts**  ⇒ Array<Pathname> 
   
@@ -4283,31 +2101,11 @@ end
 
 Returns The paths of the static binary artifacts that come shipped with the Pod.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The paths of the static binary artifacts that come shipped with the Pod.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4315,10 +2113,6 @@ The paths of the static binary artifacts that come shipped with the Pod.
 321
 322
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 320
@@ -4329,13 +2123,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**vendored_static_frameworks**  ⇒ Array<Pathname> 
   
@@ -4349,31 +2137,11 @@ end
 
 Returns The paths of the static (fake) framework bundles that come shipped with the Pod.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The paths of the static (fake) framework bundles that come shipped with the Pod.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4381,10 +2149,6 @@ The paths of the static (fake) framework bundles that come shipped with the Pod.
 204
 205
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 203
@@ -4395,13 +2159,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**vendored_static_libraries**  ⇒ Array<Pathname> 
   
@@ -4415,31 +2173,11 @@ end
 
 Returns The paths of the static libraries that come shipped with the Pod.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The paths of the static libraries that come shipped with the Pod.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4447,10 +2185,6 @@ The paths of the static libraries that come shipped with the Pod.
 307
 308
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 306
@@ -4461,13 +2195,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**vendored_static_xcframeworks**  ⇒ Array<Pathname> 
   
@@ -4481,31 +2209,11 @@ end
 
 Returns The paths of the static xcframework bundles that come shipped with the Pod.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The paths of the static xcframework bundles that come shipped with the Pod.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4515,10 +2223,6 @@ The paths of the static xcframework bundles that come shipped with the Pod.
 188
 189
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 185
@@ -4531,13 +2235,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**vendored_xcframeworks**  ⇒ Array<Pathname> 
   
@@ -4551,31 +2249,11 @@ end
 
 Returns The paths of vendored .xcframework bundles that come shipped with the Pod.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The paths of vendored .xcframework bundles that come shipped with the Pod.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4585,10 +2263,6 @@ The paths of vendored .xcframework bundles that come shipped with the Pod.
 213
 214
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/file_accessor.rb', line 210

@@ -1,10 +1,5 @@
 # Class: Pod::Command::Lib::Lint
   
-  
-  
-
-  
-  
     Inherits:
     
       Pod::Command::Lib
@@ -13,45 +8,23 @@
 
           
 - Object
-          
-            
+
 - CLAide::Command
-          
-            
+
 - Pod::Command
-          
-            
+
 - Pod::Command::Lib
-          
-            
+
 - Pod::Command::Lib::Lint
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/command/lib/lint.rb
   
-  
+##
 
-  
-    
-## 
       Class Method Summary
       collapse
     
@@ -60,9 +33,8 @@
 
       
         
-- 
+-
   
-    
       .**options**  ⇒ Object 
     
 
@@ -85,7 +57,8 @@
 
   
     
-## 
+##
+
       Instance Method Summary
       collapse
     
@@ -94,9 +67,8 @@
 
       
         
-- 
+-
   
-    
       #**initialize**(argv)  ⇒ Lint 
     
 
@@ -117,107 +89,25 @@
 
 A new instance of Lint.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**run**  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**validate!**  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Pod::Command
 
-  
+# ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, report_error, run
 
-#ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, report_error, run
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Pod::Config::Mixin
 
-  
+# config
 
-#config
-
-  
-  
-  
-  
-  
-  
-  
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(argv)  ⇒ Lint 
   
@@ -230,14 +120,6 @@ A new instance of Lint.
     
 
 Returns a new instance of Lint.
-
-  
-
-  
-
-  
-    
-      
 
 ```
 
@@ -267,10 +149,6 @@ Returns a new instance of Lint.
 68
 69
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/lib/lint.rb', line 45
@@ -303,19 +181,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**options**  ⇒ Object 
   
@@ -361,10 +229,6 @@ end
 43
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/lib/lint.rb', line 15
 
@@ -400,20 +264,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**run**  ⇒ Object 
   
@@ -475,10 +328,6 @@ end
 119
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/lib/lint.rb', line 75
 
@@ -530,13 +379,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**validate!**  ⇒ Object 
   
@@ -555,10 +398,6 @@ end
 72
 73
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/lib/lint.rb', line 71

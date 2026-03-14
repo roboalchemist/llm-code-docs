@@ -1,10 +1,5 @@
 # Class: Pod::AggregateTarget
   
-  
-  
-
-  
-  
     Inherits:
     
       Target
@@ -13,50 +8,23 @@
 
           
 - Object
-          
-            
+
 - Target
-          
-            
+
 - Pod::AggregateTarget
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/target/aggregate_target.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Stores the information relative to the target used to cluster the targets of the single Pods. The client targets will then depend on this one.
 
-  
+##
 
-  
-
-  
-    
-## 
       Constant Summary
       collapse
     
@@ -70,52 +38,24 @@ Stores the information relative to the target used to cluster the targets of the
 
 Product types where the product’s frameworks must be embedded in a host target
 
-  
-
-  
-
-        
-        
-
 ```
 [:app_extension, :framework, :static_library, :messages_extension,
 :watch_extension, :xpc_service].freeze
 
 ```
 
-      
-    
-  
-
-  
-  
-  
 ### Constants inherited
-     from Target
 
-  
+     from Target
 
 Target::DEFAULT_BUILD_CONFIGURATIONS, Target::DEFAULT_NAME, Target::DEFAULT_VERSION
 
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**client_root**  ⇒ Pathname 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -130,22 +70,10 @@ Target::DEFAULT_BUILD_CONFIGURATIONS, Target::DEFAULT_NAME, Target::DEFAULT_VERS
 
 The folder where the client is stored used for computing the relative paths.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**pod_targets**  ⇒ Array<PodTarget> 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -160,22 +88,10 @@ The folder where the client is stored used for computing the relative paths.
 
 The dependencies for this target.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**search_paths_aggregate_targets**  ⇒ Array<AggregateTarget> 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -190,22 +106,10 @@ The dependencies for this target.
 
 The aggregate targets whose pods this target must be able to import, but will not directly link against.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**target_definition**  ⇒ TargetDefinition 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -220,22 +124,10 @@ The aggregate targets whose pods this target must be able to import, but will no
 
 The target definition of the Podfile that generated this target.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**user_project**  ⇒ Xcodeproj::Project 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -250,22 +142,10 @@ The target definition of the Podfile that generated this target.
 
 The user project that this target will integrate as identified by the analyzer.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**user_target_uuids**  ⇒ Array<String> 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -280,22 +160,10 @@ The user project that this target will integrate as identified by the analyzer.
 
 The list of the UUIDs of the user targets that will be integrated by this target as identified by the analyzer.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**xcconfigs**  ⇒ Hash<String, Xcodeproj::Config> 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -310,23 +178,12 @@ The list of the UUIDs of the user targets that will be integrated by this target
 
 Map from configuration name to configuration file for the target.
 
-  
-
-    
-  
-
-  
-  
-  
 ### Attributes inherited from Target
 
-  
+# application_extension_api_only, #archs, #build_library_for_distribution, #platform, #sandbox, #user_build_configurations
 
-#application_extension_api_only, #archs, #build_library_for_distribution, #platform, #sandbox, #user_build_configurations
+##
 
-  
-    
-## 
       Support files
       collapse
     
@@ -335,9 +192,8 @@ Map from configuration name to configuration file for the target.
 
       
         
-- 
+-
   
-    
       #**acknowledgements_basepath**  ⇒ Pathname 
     
 
@@ -356,473 +212,159 @@ Map from configuration name to configuration file for the target.
 
 The absolute path of acknowledgements file.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**check_manifest_lock_script_output_file_path**  ⇒ String 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The output file path fo the check manifest lock script.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**copy_resources_script_input_files_path**(configuration)  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The absolute path of the copy resources script input file list.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**copy_resources_script_input_files_relative_path**  ⇒ String 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The path of the copy resources script input file list relative to the root of the Pods project.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**copy_resources_script_output_files_path**(configuration)  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The absolute path of the copy resources script output file list.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**copy_resources_script_output_files_relative_path**  ⇒ String 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The path of the copy resources script output file list relative to the root of the Pods project.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**copy_resources_script_path**  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The absolute path of the copy resources script.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**copy_resources_script_relative_path**  ⇒ String 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The path of the copy resources script relative to the root of the Pods project.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**embed_frameworks_script_input_files_path**(configuration)  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The absolute path of the embed frameworks script input file list.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**embed_frameworks_script_input_files_relative_path**  ⇒ String 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The path of the embed frameworks script input file list relative to the root of the Pods project.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**embed_frameworks_script_output_files_path**(configuration)  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The absolute path of the embed frameworks script output file list.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**embed_frameworks_script_output_files_relative_path**  ⇒ String 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The path of the embed frameworks script output file list relative to the root of the Pods project.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**embed_frameworks_script_path**  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The absolute path of the embed frameworks script.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**embed_frameworks_script_relative_path**  ⇒ String 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The path of the embed frameworks relative to the root of the Pods project.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**podfile_dir_relative_path**  ⇒ String 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The path of the Podfile directory relative to the root of the user project.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**prepare_artifacts_script_input_files_path**(configuration)  ⇒ Pathname 
-    
 
-    
-  
-  
-  
-  
-  
-  
   deprecated
-  
-
   
     **Deprecated.** 
   
 
       
         
-- 
+-
   
-    
       #**prepare_artifacts_script_input_files_relative_path**  ⇒ String 
     
 
     
   
-  
-  
-  
-  
-  
   deprecated
-  
-
   
     **Deprecated.** 
   
 
       
         
-- 
+-
   
-    
       #**prepare_artifacts_script_output_files_path**(configuration)  ⇒ Pathname 
     
 
     
   
-  
-  
-  
-  
-  
   deprecated
-  
-
   
     **Deprecated.** 
   
 
       
         
-- 
+-
   
-    
       #**prepare_artifacts_script_output_files_relative_path**  ⇒ String 
     
 
     
   
-  
-  
-  
-  
-  
   deprecated
-  
-
   
     **Deprecated.** 
   
 
       
         
-- 
+-
   
-    
       #**prepare_artifacts_script_relative_path**  ⇒ String 
     
 
     
   
-  
-  
-  
-  
-  
   deprecated
-  
-
   
     **Deprecated.** 
   
 
       
         
-- 
+-
   
-    
       #**relative_pods_root**  ⇒ String 
     
 
@@ -841,64 +383,20 @@ The path of the Podfile directory relative to the root of the user project.
 
 The xcconfig path of the root from the ‘$(SRCROOT)` variable of the user’s project.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**relative_pods_root_path**  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The relative path of the Pods directory from user project’s directory.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**xcconfig_relative_path**(config_name)  ⇒ String 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The path of the xcconfig file relative to the root of the user project.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -907,9 +405,8 @@ The path of the xcconfig file relative to the root of the user project.
 
       
         
-- 
+-
   
-    
       #**bridge_support_file**  ⇒ Pathname 
     
 
@@ -928,167 +425,44 @@ The path of the xcconfig file relative to the root of the user project.
 
 The path of the bridge support file relative to the sandbox or `nil` if bridge support is disabled.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**build_settings**(configuration_name = nil)  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**framework_paths_by_config**  ⇒ Hash{String => Array<FrameworkPaths>} 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The vendored dynamic artifacts and framework target input and output paths grouped by config.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**includes_frameworks?**  ⇒ Boolean 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Whether the target contains frameworks to be embedded into the user target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**includes_on_demand_resources?**  ⇒ Boolean 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Whether the target contains any on demand resources.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**includes_resources?**  ⇒ Boolean 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Whether the target contains any resources.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**includes_xcframeworks?**  ⇒ Boolean 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Whether the target contains xcframeworks to be embedded into the user target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**initialize**(sandbox, build_type, user_build_configurations, archs, platform, target_definition, client_root, user_project, user_target_uuids, pod_targets_for_build_configuration)  ⇒ AggregateTarget 
-    
 
-    
-  
-  
-  
     constructor
   
   
@@ -1102,410 +476,103 @@ Whether the target contains xcframeworks to be embedded into the user target.
 
 Initialize a new instance.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**label**  ⇒ String 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The label for the target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**library?**  ⇒ Boolean 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 True if the user_target refers to a library (framework, static or dynamic lib).
 
+-
   
-
-      
-        
-- 
-  
-    
       #**merge_embedded_pod_targets**(embedded_pod_targets_for_build_configuration)  ⇒ AggregateTarget 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Merges this aggregate target with additional pod targets that are part of embedded aggregate targets.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**on_demand_resources**  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 the resources build phase.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**pod_targets_for_build_configuration**(build_configuration)  ⇒ Array<PodTarget> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The pod targets for the given build configuration.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**podfile**  ⇒ Podfile 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The podfile which declares the dependency.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**requires_host_target?**  ⇒ Boolean 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 True if the user_target’s pods are for an extension and must be embedded in a host, target, otherwise false.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**resource_paths_by_config**  ⇒ Hash{String => Array<String>} 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Uniqued Resources grouped by config.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**spec_consumers**  ⇒ Array<Specification::Consumer> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The consumers of the Pod.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**specs**  ⇒ Array<Specification> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The specifications used by this aggregate target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**specs_by_build_configuration**  ⇒ Hash{Symbol => Array<Specification>} 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The pod targets for each build configuration.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**user_project_path**  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The path of the user project that this target will integrate as identified by the analyzer.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**user_targets**  ⇒ Array<PBXNativeTarget> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 List all user targets that will be integrated by this #target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**uses_swift?**  ⇒ Boolean 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Whether the target uses Swift code.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**xcframeworks_by_config**  ⇒ Hash{String => Array<Xcode::XCFramework>} 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The vendored dynamic artifacts and framework target input and output paths grouped by config.
 
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Target
 
-  
+# bridge_support_path, #build_as_dynamic?, #build_as_dynamic_framework?, #build_as_dynamic_library?, #build_as_framework?, #build_as_library?, #build_as_static?, #build_as_static_framework?, #build_as_static_library?, #dummy_source_path, #framework_name, #info_plist_entries, #info_plist_path, #inspect, #mark_application_extension_api_only, #mark_build_library_for_distribution, #module_map_path, #module_map_path_to_write, #name, output_extension_for_resource, #prepare_artifacts_script_path, #product_basename, #product_module_name, #product_name, #product_type, #requires_frameworks?, resource_extension_compilable?, #static_framework?, #static_library_name, #support_files_dir, #umbrella_header_path, #umbrella_header_path_to_write, #version, #xcconfig_path
 
-#bridge_support_path, #build_as_dynamic?, #build_as_dynamic_framework?, #build_as_dynamic_library?, #build_as_framework?, #build_as_library?, #build_as_static?, #build_as_static_framework?, #build_as_static_library?, #dummy_source_path, #framework_name, #info_plist_entries, #info_plist_path, #inspect, #mark_application_extension_api_only, #mark_build_library_for_distribution, #module_map_path, #module_map_path_to_write, #name, output_extension_for_resource, #prepare_artifacts_script_path, #product_basename, #product_module_name, #product_name, #product_type, #requires_frameworks?, resource_extension_compilable?, #static_framework?, #static_library_name, #support_files_dir, #umbrella_header_path, #umbrella_header_path_to_write, #version, #xcconfig_path
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(sandbox, build_type, user_build_configurations, archs, platform, target_definition, client_root, user_project, user_target_uuids, pod_targets_for_build_configuration)  ⇒ AggregateTarget 
   
@@ -1519,19 +586,12 @@ The vendored dynamic artifacts and framework target input and output paths group
 
 Initialize a new instance
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         sandbox
-      
-      
+
         (Sandbox)
       
       
@@ -1541,15 +601,10 @@ Parameters:
 
 @see Target#sandbox
 
-      
-    
-  
-    
-- 
-      
+-
+
         build_type
-      
-      
+
         (BuildType)
       
       
@@ -1559,15 +614,10 @@ Parameters:
 
 @see Target#build_type
 
-      
-    
-  
-    
-- 
-      
+-
+
         user_build_configurations
-      
-      
+
         (Hash{String=>Symbol})
       
       
@@ -1577,15 +627,10 @@ Parameters:
 
 @see Target#user_build_configurations
 
-      
-    
-  
-    
-- 
-      
+-
+
         archs
-      
-      
+
         (Array<String>)
       
       
@@ -1595,15 +640,10 @@ Parameters:
 
 @see Target#archs
 
-      
-    
-  
-    
-- 
-      
+-
+
         platform
-      
-      
+
         (Platform)
       
       
@@ -1613,15 +653,10 @@ Parameters:
 
 @see #Target#platform
 
-      
-    
-  
-    
-- 
-      
+-
+
         target_definition
-      
-      
+
         (TargetDefinition)
       
       
@@ -1631,15 +666,10 @@ Parameters:
 
 @see #target_definition
 
-      
-    
-  
-    
-- 
-      
+-
+
         client_root
-      
-      
+
         (Pathname)
       
       
@@ -1649,15 +679,10 @@ Parameters:
 
 @see #client_root
 
-      
-    
-  
-    
-- 
-      
+-
+
         user_project
-      
-      
+
         (Xcodeproj::Project)
       
       
@@ -1667,15 +692,10 @@ Parameters:
 
 @see #user_project
 
-      
-    
-  
-    
-- 
-      
+-
+
         user_target_uuids
-      
-      
+
         (Array<String>)
       
       
@@ -1685,15 +705,10 @@ Parameters:
 
 @see #user_target_uuids
 
-      
-    
-  
-    
-- 
-      
+-
+
         pod_targets_for_build_configuration
-      
-      
+
         (Hash{String=>Array<PodTarget>})
       
       
@@ -1702,14 +717,6 @@ Parameters:
         
 
 @see #pod_targets_for_build_configuration
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1728,10 +735,6 @@ Parameters:
 82
 83
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 70
@@ -1753,21 +756,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**client_root**  ⇒ Pathname  (readonly)
   
@@ -1781,33 +772,16 @@ end
 
 Returns the folder where the client is stored used for computing the relative paths. If integrating it should be the folder where the user project is stored, otherwise it should be the installation root.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 the folder where the client is stored used for computing the relative paths. If integrating it should be the folder where the user project is stored, otherwise it should be the installation root.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1815,10 +789,6 @@ the folder where the client is stored used for computing the relative paths. If 
 25
 26
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 24
@@ -1829,15 +799,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**pod_targets**  ⇒ Array<PodTarget>  (readonly)
   
@@ -1851,33 +813,16 @@ end
 
 Returns The dependencies for this target.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<PodTarget>)
-      
-      
-      
+
         —
         
 
 The dependencies for this target.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1885,10 +830,6 @@ The dependencies for this target.
 51
 52
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 50
@@ -1899,15 +840,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**search_paths_aggregate_targets**  ⇒ Array<AggregateTarget>  (readonly)
   
@@ -1921,33 +854,16 @@ end
 
 Returns The aggregate targets whose pods this target must be able to import, but will not directly link against.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<AggregateTarget>)
-      
-      
-      
+
         —
         
 
 The aggregate targets whose pods this target must be able to import, but will not directly link against.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1955,10 +871,6 @@ The aggregate targets whose pods this target must be able to import, but will no
 56
 57
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 55
@@ -1969,15 +881,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**target_definition**  ⇒ TargetDefinition  (readonly)
   
@@ -1991,33 +895,16 @@ end
 
 Returns the target definition of the Podfile that generated this target.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (TargetDefinition)
-      
-      
-      
+
         —
         
 
 the target definition of the Podfile that generated this target.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2025,10 +912,6 @@ the target definition of the Podfile that generated this target.
 18
 19
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 17
@@ -2039,15 +922,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**user_project**  ⇒ Xcodeproj::Project  (readonly)
   
@@ -2061,33 +936,16 @@ end
 
 Returns the user project that this target will integrate as identified by the analyzer.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Xcodeproj::Project)
-      
-      
-      
+
         —
         
 
 the user project that this target will integrate as identified by the analyzer.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2095,10 +953,6 @@ the user project that this target will integrate as identified by the analyzer.
 30
 31
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 29
@@ -2109,15 +963,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**user_target_uuids**  ⇒ Array<String>  (readonly)
   
@@ -2134,37 +980,18 @@ end
 
 The target instances are not stored to prevent editing different instances.
 
-  
-
 Returns the list of the UUIDs of the user targets that will be integrated by this target as identified by the analyzer.
-
-  
-
-  
 
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<String>)
-      
-      
-      
+
         —
         
 
 the list of the UUIDs of the user targets that will be integrated by this target as identified by the analyzer.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2172,10 +999,6 @@ the list of the UUIDs of the user targets that will be integrated by this target
 38
 39
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 37
@@ -2186,15 +1009,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**xcconfigs**  ⇒ Hash<String, Xcodeproj::Config>  (readonly)
   
@@ -2211,37 +1026,18 @@ end
 
 The configurations are generated by the TargetInstaller and used by UserProjectIntegrator to check for any overridden values.
 
-  
-
 Returns Map from configuration name to configuration file for the target.
-
-  
-
-  
 
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Hash<String, Xcodeproj::Config>)
-      
-      
-      
+
         —
         
 
 Map from configuration name to configuration file for the target
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2249,10 +1045,6 @@ Map from configuration name to configuration file for the target
 47
 48
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 46
@@ -2263,20 +1055,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**acknowledgements_basepath**  ⇒ Pathname 
   
@@ -2293,37 +1074,18 @@ end
 
 The acknowledgements generators add the extension according to the file type.
 
-  
-
 Returns The absolute path of acknowledgements file.
-
-  
-
-  
 
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 The absolute path of acknowledgements file.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2331,10 +1093,6 @@ The absolute path of acknowledgements file.
 348
 349
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 347
@@ -2345,13 +1103,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**bridge_support_file**  ⇒ Pathname 
   
@@ -2365,33 +1117,16 @@ end
 
 Returns the path of the bridge support file relative to the sandbox or `nil` if bridge support is disabled.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 the path of the bridge support file relative to the sandbox or `nil` if bridge support is disabled.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2399,10 +1134,6 @@ the path of the bridge support file relative to the sandbox or `nil` if bridge s
 335
 336
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 334
@@ -2413,13 +1144,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**build_settings**(configuration_name = nil)  ⇒ Object 
   
@@ -2445,10 +1170,6 @@ end
 113
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 105
 
@@ -2464,13 +1185,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**check_manifest_lock_script_output_file_path**  ⇒ String 
   
@@ -2484,33 +1199,16 @@ end
 
 Returns The output file path fo the check manifest lock script.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The output file path fo the check manifest lock script.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2518,10 +1216,6 @@ The output file path fo the check manifest lock script.
 422
 423
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 421
@@ -2532,13 +1226,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**copy_resources_script_input_files_path**(configuration)  ⇒ Pathname 
   
@@ -2552,19 +1240,12 @@ end
 
 Returns The absolute path of the copy resources script input file list.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         configuration
-      
-      
+
         (String)
       
       
@@ -2574,33 +1255,16 @@ Parameters:
 
 the configuration this path is for.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 The absolute path of the copy resources script input file list.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2608,10 +1272,6 @@ The absolute path of the copy resources script input file list.
 368
 369
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 367
@@ -2622,13 +1282,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**copy_resources_script_input_files_relative_path**  ⇒ String 
   
@@ -2642,33 +1296,16 @@ end
 
 Returns The path of the copy resources script input file list relative to the root of the Pods project.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The path of the copy resources script input file list relative to the root of the Pods project.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2676,10 +1313,6 @@ The path of the copy resources script input file list relative to the root of th
 467
 468
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 466
@@ -2690,13 +1323,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**copy_resources_script_output_files_path**(configuration)  ⇒ Pathname 
   
@@ -2710,19 +1337,12 @@ end
 
 Returns The absolute path of the copy resources script output file list.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         configuration
-      
-      
+
         (String)
       
       
@@ -2732,33 +1352,16 @@ Parameters:
 
 the configuration this path is for.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 The absolute path of the copy resources script output file list.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2766,10 +1369,6 @@ The absolute path of the copy resources script output file list.
 376
 377
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 375
@@ -2780,13 +1379,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**copy_resources_script_output_files_relative_path**  ⇒ String 
   
@@ -2800,33 +1393,16 @@ end
 
 Returns The path of the copy resources script output file list relative to the root of the Pods project.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The path of the copy resources script output file list relative to the root of the Pods project.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2834,10 +1410,6 @@ The path of the copy resources script output file list relative to the root of t
 474
 475
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 473
@@ -2848,13 +1420,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**copy_resources_script_path**  ⇒ Pathname 
   
@@ -2868,33 +1434,16 @@ end
 
 Returns The absolute path of the copy resources script.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 The absolute path of the copy resources script.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2902,10 +1451,6 @@ The absolute path of the copy resources script.
 354
 355
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 353
@@ -2916,13 +1461,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**copy_resources_script_relative_path**  ⇒ String 
   
@@ -2936,33 +1475,16 @@ end
 
 Returns The path of the copy resources script relative to the root of the Pods project.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The path of the copy resources script relative to the root of the Pods project.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2970,10 +1492,6 @@ The path of the copy resources script relative to the root of the Pods project.
 460
 461
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 459
@@ -2984,13 +1502,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**embed_frameworks_script_input_files_path**(configuration)  ⇒ Pathname 
   
@@ -3004,19 +1516,12 @@ end
 
 Returns The absolute path of the embed frameworks script input file list.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         configuration
-      
-      
+
         (String)
       
       
@@ -3026,33 +1531,16 @@ Parameters:
 
 the configuration this path is for.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 The absolute path of the embed frameworks script input file list.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3060,10 +1548,6 @@ The absolute path of the embed frameworks script input file list.
 384
 385
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 383
@@ -3074,13 +1558,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**embed_frameworks_script_input_files_relative_path**  ⇒ String 
   
@@ -3094,33 +1572,16 @@ end
 
 Returns The path of the embed frameworks script input file list relative to the root of the Pods project.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The path of the embed frameworks script input file list relative to the root of the Pods project.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3128,10 +1589,6 @@ The path of the embed frameworks script input file list relative to the root of 
 488
 489
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 487
@@ -3142,13 +1599,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**embed_frameworks_script_output_files_path**(configuration)  ⇒ Pathname 
   
@@ -3162,19 +1613,12 @@ end
 
 Returns The absolute path of the embed frameworks script output file list.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         configuration
-      
-      
+
         (String)
       
       
@@ -3184,33 +1628,16 @@ Parameters:
 
 the configuration this path is for.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 The absolute path of the embed frameworks script output file list.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3218,10 +1645,6 @@ The absolute path of the embed frameworks script output file list.
 392
 393
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 391
@@ -3232,13 +1655,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**embed_frameworks_script_output_files_relative_path**  ⇒ String 
   
@@ -3252,33 +1669,16 @@ end
 
 Returns The path of the embed frameworks script output file list relative to the root of the Pods project.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The path of the embed frameworks script output file list relative to the root of the Pods project.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3286,10 +1686,6 @@ The path of the embed frameworks script output file list relative to the root of
 495
 496
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 494
@@ -3300,13 +1696,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**embed_frameworks_script_path**  ⇒ Pathname 
   
@@ -3320,33 +1710,16 @@ end
 
 Returns The absolute path of the embed frameworks script.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 The absolute path of the embed frameworks script.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3354,10 +1727,6 @@ The absolute path of the embed frameworks script.
 360
 361
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 359
@@ -3368,13 +1737,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**embed_frameworks_script_relative_path**  ⇒ String 
   
@@ -3388,33 +1751,16 @@ end
 
 Returns The path of the embed frameworks relative to the root of the Pods project.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The path of the embed frameworks relative to the root of the Pods project.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3422,10 +1768,6 @@ The path of the embed frameworks relative to the root of the Pods project.
 481
 482
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 480
@@ -3436,13 +1778,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**framework_paths_by_config**  ⇒ Hash{String => Array<FrameworkPaths>} 
   
@@ -3456,33 +1792,16 @@ end
 
 Returns The vendored dynamic artifacts and framework target input and output paths grouped by config.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Hash{String => Array<FrameworkPaths>})
-      
-      
-      
+
         —
         
 
 The vendored dynamic artifacts and framework target input and output paths grouped by config
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3500,10 +1819,6 @@ The vendored dynamic artifacts and framework target input and output paths group
 262
 263
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 251
@@ -3524,13 +1839,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**includes_frameworks?**  ⇒ Boolean 
   
@@ -3544,33 +1853,16 @@ end
 
 Returns Whether the target contains frameworks to be embedded into the user target.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Boolean)
-      
-      
-      
+
         —
         
 
 Whether the target contains frameworks to be embedded into the user target
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3578,10 +1870,6 @@ Whether the target contains frameworks to be embedded into the user target
 238
 239
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 237
@@ -3592,13 +1880,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**includes_on_demand_resources?**  ⇒ Boolean 
   
@@ -3612,33 +1894,16 @@ end
 
 Returns Whether the target contains any on demand resources.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Boolean)
-      
-      
-      
+
         —
         
 
 Whether the target contains any on demand resources
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3646,10 +1911,6 @@ Whether the target contains any on demand resources
 231
 232
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 230
@@ -3660,13 +1921,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**includes_resources?**  ⇒ Boolean 
   
@@ -3680,33 +1935,16 @@ end
 
 Returns Whether the target contains any resources.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Boolean)
-      
-      
-      
+
         —
         
 
 Whether the target contains any resources
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3714,10 +1952,6 @@ Whether the target contains any resources
 225
 226
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 224
@@ -3728,13 +1962,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**includes_xcframeworks?**  ⇒ Boolean 
   
@@ -3748,33 +1976,16 @@ end
 
 Returns Whether the target contains xcframeworks to be embedded into the user target.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Boolean)
-      
-      
-      
+
         —
         
 
 Whether the target contains xcframeworks to be embedded into the user target
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3782,10 +1993,6 @@ Whether the target contains xcframeworks to be embedded into the user target
 245
 246
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 244
@@ -3796,13 +2003,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**label**  ⇒ String 
   
@@ -3816,33 +2017,16 @@ end
 
 Returns the label for the target.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 the label for the target.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3850,10 +2034,6 @@ the label for the target.
 150
 151
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 149
@@ -3864,13 +2044,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**library?**  ⇒ Boolean 
   
@@ -3884,33 +2058,16 @@ end
 
 Returns True if the user_target refers to a library (framework, static or dynamic lib).
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Boolean)
-      
-      
-      
+
         —
         
 
 True if the user_target refers to a library (framework, static or dynamic lib).
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3925,10 +2082,6 @@ True if the user_target refers to a library (framework, static or dynamic lib).
 126
 127
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 118
@@ -3946,13 +2099,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**merge_embedded_pod_targets**(embedded_pod_targets_for_build_configuration)  ⇒ AggregateTarget 
   
@@ -3966,19 +2113,12 @@ end
 
 Merges this aggregate target with additional pod targets that are part of embedded aggregate targets.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         embedded_pod_targets_for_build_configuration
-      
-      
+
         (Hash{String=>Array<PodTarget>})
       
       
@@ -3988,33 +2128,16 @@ Parameters:
 
 The pod targets to merge with.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (AggregateTarget)
-      
-      
-      
+
         —
         
 
 a new instance of this aggregate target with additional pod targets to be used from pod targets of embedded aggregate targets.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4030,10 +2153,6 @@ a new instance of this aggregate target with additional pod targets to be used f
 102
 103
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 93
@@ -4052,13 +2171,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**on_demand_resources**  ⇒ Array<Pathname> 
   
@@ -4075,37 +2188,18 @@ end
 
 On Demand Resources are not separated by config as they are integrated directly into the users target via
 
-  
-
 the resources build phase.
-
-  
-
-  
 
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<Pathname>)
-      
-      
-      
+
         —
         
 
 Uniqued On Demand Resources for this target.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4118,10 +2212,6 @@ Uniqued On Demand Resources for this target.
 293
 294
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 287
@@ -4137,13 +2227,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**pod_targets_for_build_configuration**(build_configuration)  ⇒ Array<PodTarget> 
   
@@ -4157,19 +2241,12 @@ end
 
 Returns the pod targets for the given build configuration.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         build_configuration
-      
-      
+
         (String)
       
       
@@ -4179,33 +2256,16 @@ Parameters:
 
 The build configuration for which the the pod targets should be returned.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<PodTarget>)
-      
-      
-      
+
         —
         
 
 the pod targets for the given build configuration.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4213,10 +2273,6 @@ the pod targets for the given build configuration.
 189
 190
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 188
@@ -4227,13 +2283,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**podfile**  ⇒ Podfile 
   
@@ -4247,33 +2297,16 @@ end
 
 Returns The podfile which declares the dependency.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Podfile)
-      
-      
-      
+
         —
         
 
 The podfile which declares the dependency
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4281,10 +2314,6 @@ The podfile which declares the dependency
 156
 157
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 155
@@ -4295,13 +2324,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**podfile_dir_relative_path**  ⇒ String 
   
@@ -4315,33 +2338,16 @@ end
 
 Returns The path of the Podfile directory relative to the root of the user project.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The path of the Podfile directory relative to the root of the user project.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4352,10 +2358,6 @@ The path of the Podfile directory relative to the root of the user project.
 445
 446
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 441
@@ -4369,13 +2371,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**prepare_artifacts_script_input_files_path**(configuration)  ⇒ Pathname 
   
@@ -4393,23 +2389,14 @@ end
 
 Remove in 2.0
 
-  
-
 Returns The absolute path of the prepare artifacts script input file list.
-
-  
-
-  
 
 Parameters:
 
-  
-    
-- 
-      
+-
+
         configuration
-      
-      
+
         (String)
       
       
@@ -4419,33 +2406,16 @@ Parameters:
 
 the configuration this path is for.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 The absolute path of the prepare artifacts script input file list.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4453,10 +2423,6 @@ The absolute path of the prepare artifacts script input file list.
 404
 405
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 403
@@ -4467,13 +2433,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**prepare_artifacts_script_input_files_relative_path**  ⇒ String 
   
@@ -4491,37 +2451,18 @@ end
 
 Remove in 2.0
 
-  
-
 Returns The path of the prepare artifacts script input file list relative to the root of the Pods project.
-
-  
-
-  
 
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The path of the prepare artifacts script input file list relative to the root of the Pods project.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4529,10 +2470,6 @@ The path of the prepare artifacts script input file list relative to the root of
 517
 518
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 516
@@ -4543,13 +2480,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**prepare_artifacts_script_output_files_path**(configuration)  ⇒ Pathname 
   
@@ -4567,23 +2498,14 @@ end
 
 Remove in 2.0
 
-  
-
 Returns The absolute path of the prepare artifacts script output file list.
-
-  
-
-  
 
 Parameters:
 
-  
-    
-- 
-      
+-
+
         configuration
-      
-      
+
         (String)
       
       
@@ -4593,33 +2515,16 @@ Parameters:
 
 the configuration this path is for.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 The absolute path of the prepare artifacts script output file list.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4627,10 +2532,6 @@ The absolute path of the prepare artifacts script output file list.
 416
 417
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 415
@@ -4641,13 +2542,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**prepare_artifacts_script_output_files_relative_path**  ⇒ String 
   
@@ -4665,37 +2560,18 @@ end
 
 Remove in 2.0
 
-  
-
 Returns The path of the prepare artifacts script output file list relative to the root of the Pods project.
-
-  
-
-  
 
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The path of the prepare artifacts script output file list relative to the root of the Pods project.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4703,10 +2579,6 @@ The path of the prepare artifacts script output file list relative to the root o
 528
 529
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 527
@@ -4717,13 +2589,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**prepare_artifacts_script_relative_path**  ⇒ String 
   
@@ -4741,37 +2607,18 @@ end
 
 Remove in 2.0
 
-  
-
 Returns The path of the prepare artifacts script relative to the root of the Pods project.
-
-  
-
-  
 
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The path of the prepare artifacts script relative to the root of the Pods project.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4779,10 +2626,6 @@ The path of the prepare artifacts script relative to the root of the Pods projec
 506
 507
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 505
@@ -4793,13 +2636,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**relative_pods_root**  ⇒ String 
   
@@ -4813,33 +2650,16 @@ end
 
 Returns The xcconfig path of the root from the ‘$(SRCROOT)` variable of the user’s project.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The xcconfig path of the root from the ‘$(SRCROOT)` variable of the user’s project.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4847,10 +2667,6 @@ The xcconfig path of the root from the ‘$(SRCROOT)` variable of the user’s p
 435
 436
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 434
@@ -4861,13 +2677,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**relative_pods_root_path**  ⇒ Pathname 
   
@@ -4881,33 +2691,16 @@ end
 
 Returns The relative path of the Pods directory from user project’s directory.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 The relative path of the Pods directory from user project’s directory.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4915,10 +2708,6 @@ The relative path of the Pods directory from user project’s directory.
 428
 429
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 427
@@ -4929,13 +2718,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**requires_host_target?**  ⇒ Boolean 
   
@@ -4949,33 +2732,16 @@ end
 
 Returns True if the user_target’s pods are for an extension and must be embedded in a host, target, otherwise false.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Boolean)
-      
-      
-      
+
         —
         
 
 True if the user_target’s pods are for an extension and must be embedded in a host, target, otherwise false.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -4993,10 +2759,6 @@ True if the user_target’s pods are for an extension and must be embedded in a 
 144
 145
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 133
@@ -5017,13 +2779,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**resource_paths_by_config**  ⇒ Hash{String => Array<String>} 
   
@@ -5037,33 +2793,16 @@ end
 
 Returns Uniqued Resources grouped by config.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Hash{String => Array<String>})
-      
-      
-      
+
         —
         
 
 Uniqued Resources grouped by config
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -5100,10 +2839,6 @@ Uniqued Resources grouped by config
 328
 329
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 298
@@ -5143,13 +2878,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**spec_consumers**  ⇒ Array<Specification::Consumer> 
   
@@ -5163,33 +2892,16 @@ end
 
 Returns The consumers of the Pod.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<Specification::Consumer>)
-      
-      
-      
+
         —
         
 
 The consumers of the Pod.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -5197,10 +2909,6 @@ The consumers of the Pod.
 213
 214
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 212
@@ -5211,13 +2919,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**specs**  ⇒ Array<Specification> 
   
@@ -5231,33 +2933,16 @@ end
 
 Returns The specifications used by this aggregate target.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<Specification>)
-      
-      
-      
+
         —
         
 
 The specifications used by this aggregate target.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -5265,10 +2950,6 @@ The specifications used by this aggregate target.
 195
 196
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 194
@@ -5279,13 +2960,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**specs_by_build_configuration**  ⇒ Hash{Symbol => Array<Specification>} 
   
@@ -5299,33 +2974,16 @@ end
 
 Returns The pod targets for each build configuration.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Hash{Symbol => Array<Specification>})
-      
-      
-      
+
         —
         
 
 The pod targets for each build configuration.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -5338,10 +2996,6 @@ The pod targets for each build configuration.
 207
 208
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 201
@@ -5357,13 +3011,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**user_project_path**  ⇒ Pathname 
   
@@ -5377,33 +3025,16 @@ end
 
 Returns the path of the user project that this target will integrate as identified by the analyzer.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 the path of the user project that this target will integrate as identified by the analyzer.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -5411,10 +3042,6 @@ the path of the user project that this target will integrate as identified by th
 163
 164
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 162
@@ -5425,13 +3052,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**user_targets**  ⇒ Array<PBXNativeTarget> 
   
@@ -5445,27 +3066,11 @@ end
 
 List all user targets that will be integrated by this #target.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Array<PBXNativeTarget>)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Array<PBXNativeTarget>)
 
 ```
 
@@ -5481,10 +3086,6 @@ Returns:
 179
 180
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 170
@@ -5503,13 +3104,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**uses_swift?**  ⇒ Boolean 
   
@@ -5523,33 +3118,16 @@ end
 
 Returns Whether the target uses Swift code.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Boolean)
-      
-      
-      
+
         —
         
 
 Whether the target uses Swift code
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -5557,10 +3135,6 @@ Whether the target uses Swift code
 219
 220
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 218
@@ -5571,13 +3145,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**xcconfig_relative_path**(config_name)  ⇒ String 
   
@@ -5591,19 +3159,12 @@ end
 
 Returns The path of the xcconfig file relative to the root of the user project.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         config_name
-      
-      
+
         (String)
       
       
@@ -5613,33 +3174,16 @@ Parameters:
 
 The build configuration name to get the xcconfig for
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The path of the xcconfig file relative to the root of the user project.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -5647,10 +3191,6 @@ The path of the xcconfig file relative to the root of the user project.
 453
 454
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 452
@@ -5661,13 +3201,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**xcframeworks_by_config**  ⇒ Hash{String => Array<Xcode::XCFramework>} 
   
@@ -5681,33 +3215,16 @@ end
 
 Returns The vendored dynamic artifacts and framework target input and output paths grouped by config.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Hash{String => Array<Xcode::XCFramework>})
-      
-      
-      
+
         —
         
 
 The vendored dynamic artifacts and framework target input and output paths grouped by config
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -5725,10 +3242,6 @@ The vendored dynamic artifacts and framework target input and output paths group
 279
 280
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/aggregate_target.rb', line 268

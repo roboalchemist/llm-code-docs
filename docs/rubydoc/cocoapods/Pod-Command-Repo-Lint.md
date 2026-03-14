@@ -1,10 +1,5 @@
 # Class: Pod::Command::Repo::Lint
   
-  
-  
-
-  
-  
     Inherits:
     
       Pod::Command::Repo
@@ -13,45 +8,23 @@
 
           
 - Object
-          
-            
+
 - CLAide::Command
-          
-            
+
 - Pod::Command
-          
-            
+
 - Pod::Command::Repo
-          
-            
+
 - Pod::Command::Repo::Lint
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/command/repo/lint.rb
   
-  
+##
 
-  
-    
-## 
       Class Method Summary
       collapse
     
@@ -60,9 +33,8 @@
 
       
         
-- 
+-
   
-    
       .**options**  ⇒ Object 
     
 
@@ -85,7 +57,8 @@
 
   
     
-## 
+##
+
       Instance Method Summary
       collapse
     
@@ -94,9 +67,8 @@
 
       
         
-- 
+-
   
-    
       #**initialize**(argv)  ⇒ Lint 
     
 
@@ -117,112 +89,31 @@
 
 A new instance of Lint.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**run**  ⇒ Object 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Run the command.
 
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Pod::Command::Repo
 
-  
+# dir
 
-#dir
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Executable
-
-  
 
 capture_command, capture_command!, #executable, execute_command, which, which!
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Pod::Command
 
-  
+# ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, report_error, run
 
-#ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, report_error, run
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Pod::Config::Mixin
 
-  
+# config
 
-#config
-
-  
-  
-  
-  
-  
-  
-  
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(argv)  ⇒ Lint 
   
@@ -236,14 +127,6 @@ capture_command, capture_command!, #executable, execute_command, which, which!
 
 Returns a new instance of Lint.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 23
@@ -252,10 +135,6 @@ Returns a new instance of Lint.
 26
 27
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/repo/lint.rb', line 23
@@ -268,19 +147,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**options**  ⇒ Object 
   
@@ -302,10 +171,6 @@ end
 21
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/repo/lint.rb', line 17
 
@@ -317,20 +182,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**run**  ⇒ Object 
   
@@ -347,25 +201,12 @@ end
 
 Part of this logic needs to be ported to cocoapods-core so web services can validate the repo.
 
-  
-
-  
     **TODO:**
     
 
 add UI.print and enable print statements again.
 
-  
-
 Run the command
-
-  
-
-  
-
-  
-    
-      
 
 ```
 
@@ -413,10 +254,6 @@ Run the command
 77
 78
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/repo/lint.rb', line 36

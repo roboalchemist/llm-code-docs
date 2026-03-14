@@ -1,10 +1,5 @@
 # Class: Pod::Command::Spec::Edit
   
-  
-  
-
-  
-  
     Inherits:
     
       Pod::Command::Spec
@@ -13,45 +8,23 @@
 
           
 - Object
-          
-            
+
 - CLAide::Command
-          
-            
+
 - Pod::Command
-          
-            
+
 - Pod::Command::Spec
-          
-            
+
 - Pod::Command::Spec::Edit
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/command/spec/edit.rb
   
-  
+##
 
-  
-    
-## 
       Class Method Summary
       collapse
     
@@ -60,9 +33,8 @@
 
       
         
-- 
+-
   
-    
       .**options**  ⇒ Object 
     
 
@@ -85,7 +57,8 @@
 
   
     
-## 
+##
+
       Instance Method Summary
       collapse
     
@@ -94,9 +67,8 @@
 
       
         
-- 
+-
   
-    
       #**exec_editor**(*args)  ⇒ Object 
     
 
@@ -116,9 +88,8 @@
 
       
         
-- 
+-
   
-    
       #**initialize**(argv)  ⇒ Edit 
     
 
@@ -139,151 +110,33 @@
 
 A new instance of Edit.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**run**  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**safe_exec**(cmd, *args)  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**validate!**  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**which_editor**  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Pod::Command
 
-  
+# ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, report_error, run
 
-#ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, report_error, run
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Pod::Config::Mixin
 
-  
+# config
 
-#config
-
-  
-  
-  
-  
-  
-  
-  
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(argv)  ⇒ Edit 
   
@@ -297,14 +150,6 @@ A new instance of Edit.
 
 Returns a new instance of Edit.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 22
@@ -315,10 +160,6 @@ Returns a new instance of Edit.
 27
 28
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/spec/edit.rb', line 22
@@ -333,19 +174,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**options**  ⇒ Object 
   
@@ -368,10 +199,6 @@ end
 20
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/spec/edit.rb', line 15
 
@@ -384,20 +211,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**exec_editor**(*args)  ⇒ Object 
   
@@ -418,10 +234,6 @@ end
 77
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/spec/edit.rb', line 74
 
@@ -432,13 +244,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**run**  ⇒ Object 
   
@@ -450,25 +256,9 @@ end
   
     
 
-  
-
-  
-
 Raises:
 
-  
-    
-- 
-      
-      
-      
-      
-    
-  
-
-  
-    
-      
+-
 
 ```
 
@@ -487,10 +277,6 @@ Raises:
 48
 49
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/spec/edit.rb', line 36
@@ -512,13 +298,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**safe_exec**(cmd, *args)  ⇒ Object 
   
@@ -540,10 +320,6 @@ end
 83
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/spec/edit.rb', line 79
 
@@ -555,13 +331,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**validate!**  ⇒ Object 
   
@@ -583,10 +353,6 @@ end
 34
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/spec/edit.rb', line 30
 
@@ -598,13 +364,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**which_editor**  ⇒ Object 
   
@@ -616,25 +376,9 @@ end
   
     
 
-  
-
-  
-
 Raises:
 
-  
-    
-- 
-      
-      
-      
-      
-    
-  
-
-  
-    
-      
+-
 
 ```
 
@@ -661,10 +405,6 @@ Raises:
 71
 72
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/spec/edit.rb', line 51

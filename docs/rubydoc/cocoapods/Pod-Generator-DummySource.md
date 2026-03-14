@@ -1,10 +1,5 @@
 # Class: Pod::Generator::DummySource
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,52 +8,21 @@
 
           
 - Object
-          
-            
+
 - Pod::Generator::DummySource
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/generator/dummy_source.rb
   
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**class_name**  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -73,14 +37,8 @@
 
 Returns the value of attribute class_name.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -89,9 +47,8 @@ Returns the value of attribute class_name.
 
       
         
-- 
+-
   
-    
       #**generate**  ⇒ String 
     
 
@@ -110,20 +67,10 @@ Returns the value of attribute class_name.
 
 The string contents of the dummy source file.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**initialize**(class_name_identifier)  ⇒ DummySource 
-    
 
-    
-  
-  
-  
     constructor
   
   
@@ -137,42 +84,13 @@ The string contents of the dummy source file.
 
 A new instance of DummySource.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**save_as**(pathname)  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(class_name_identifier)  ⇒ DummySource 
   
@@ -186,14 +104,6 @@ A new instance of DummySource.
 
 Returns a new instance of DummySource.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 6
@@ -201,10 +111,6 @@ Returns a new instance of DummySource.
 8
 9
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/dummy_source.rb', line 6
@@ -216,21 +122,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**class_name**  ⇒ Object  (readonly)
   
@@ -244,24 +138,12 @@ end
 
 Returns the value of attribute class_name.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 4
 5
 6
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/dummy_source.rb', line 4
@@ -272,20 +154,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**generate**  ⇒ String 
   
@@ -299,33 +170,16 @@ end
 
 Returns the string contents of the dummy source file.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 the string contents of the dummy source file.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -341,10 +195,6 @@ the string contents of the dummy source file.
 22
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/generator/dummy_source.rb', line 13
 
@@ -353,13 +203,7 @@ def generate
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**save_as**(pathname)  ⇒ Object 
   
@@ -380,10 +224,6 @@ def generate
 27
 28
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/dummy_source.rb', line 24

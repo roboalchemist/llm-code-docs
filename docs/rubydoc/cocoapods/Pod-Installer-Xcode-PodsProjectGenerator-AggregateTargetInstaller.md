@@ -1,10 +1,5 @@
 # Class: Pod::Installer::Xcode::PodsProjectGenerator::AggregateTargetInstaller
   
-  
-  
-
-  
-  
     Inherits:
     
       TargetInstaller
@@ -13,66 +8,27 @@
 
           
 - Object
-          
-            
+
 - TargetInstaller
-          
-            
+
 - Pod::Installer::Xcode::PodsProjectGenerator::AggregateTargetInstaller
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/installer/xcode/pods_project_generator/aggregate_target_installer.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Creates the targets which aggregate the Pods libraries in the Pods project and the relative support files.
 
-  
-
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**target**  ⇒ AggregateTarget 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -88,19 +44,12 @@ Creates the targets which aggregate the Pods libraries in the Pods project and t
 
     
   
-
-  
-  
-  
 ### Attributes inherited from TargetInstaller
 
-  
+# project, #sandbox
 
-#project, #sandbox
+##
 
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -109,9 +58,8 @@ Creates the targets which aggregate the Pods libraries in the Pods project and t
 
       
         
-- 
+-
   
-    
       #**install!**  ⇒ TargetInstallationResult 
     
 
@@ -130,62 +78,21 @@ Creates the targets which aggregate the Pods libraries in the Pods project and t
 
 Creates the target in the Pods project and the relative support files.
 
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from TargetInstaller
 
-  
+# initialize
 
-#initialize
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from TargetInstallerHelper
-
-  
 
 create_info_plist_file_with_sandbox, create_prefix_header, update_changed_file
 
-  
 ## Constructor Details
-
-  
-    
 
 This class inherits a constructor from Pod::Installer::Xcode::PodsProjectGenerator::TargetInstaller
   
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**target**  ⇒ AggregateTarget  (readonly)
   
@@ -205,10 +112,6 @@ This class inherits a constructor from Pod::Installer::Xcode::PodsProjectGenerat
 13
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/aggregate_target_installer.rb', line 11
 
@@ -218,20 +121,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**install!**  ⇒ TargetInstallationResult 
   
@@ -244,14 +136,6 @@ end
     
 
 Creates the target in the Pods project and the relative support files.
-
-  
-
-  
-
-  
-    
-      
 
 ```
 
@@ -285,10 +169,6 @@ Creates the target in the Pods project and the relative support files.
 44
 45
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/aggregate_target_installer.rb', line 17

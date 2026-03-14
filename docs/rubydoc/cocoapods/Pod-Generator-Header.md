@@ -1,10 +1,5 @@
 # Class: Pod::Generator::Header
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,100 +8,37 @@
 
           
 - Object
-          
-            
+
 - Pod::Generator::Header
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/generator/header.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Generates a header file.
 
 According to the platform the header imports `UIKit/UIKit.h` or `Cocoa/Cocoa.h`.
 
-  
-
-  
-
-  
 ## Direct Known Subclasses
-
-  
 
 PrefixHeader, UmbrellaHeader
 
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**imports**  ⇒ Array<String> 
-    
-
-    
-  
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    
 
 The list of the headers to import.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**module_imports**  ⇒ Array<String> 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -121,22 +53,10 @@ The list of the headers to import.
 
 The list of the modules to import.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**platform**  ⇒ Symbol 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -151,14 +71,8 @@ The list of the modules to import.
 
 The platform for which the prefix header will be generated.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -167,9 +81,8 @@ The platform for which the prefix header will be generated.
 
       
         
-- 
+-
   
-    
       #**generate**  ⇒ String 
     
 
@@ -188,20 +101,10 @@ The platform for which the prefix header will be generated.
 
 Generates the contents of the header according to the platform.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**initialize**(platform)  ⇒ Header 
-    
 
-    
-  
-  
-  
     constructor
   
   
@@ -215,45 +118,15 @@ Generates the contents of the header according to the platform.
 
 Initialize a new instance.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**save_as**(path)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Generates and saves the header to the given path.
 
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(platform)  ⇒ Header 
   
@@ -267,19 +140,12 @@ Generates and saves the header to the given path.
 
 Initialize a new instance
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         platform
-      
-      
+
         (Symbol)
       
       
@@ -289,14 +155,6 @@ Parameters:
 
 @see platform
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 27
@@ -305,10 +163,6 @@ Parameters:
 30
 31
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/header.rb', line 27
@@ -321,21 +175,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**imports**  ⇒ Array<String> 
   
@@ -349,33 +191,16 @@ end
 
 Returns The list of the headers to import.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<String>)
-      
-      
-      
+
         —
         
 
 The list of the headers to import.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -383,10 +208,6 @@ The list of the headers to import.
 17
 18
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/header.rb', line 16
@@ -397,15 +218,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**module_imports**  ⇒ Array<String>  (readonly)
   
@@ -419,33 +232,16 @@ end
 
 Returns The list of the modules to import.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<String>)
-      
-      
-      
+
         —
         
 
 The list of the modules to import.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -453,10 +249,6 @@ The list of the modules to import.
 21
 22
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/header.rb', line 20
@@ -467,15 +259,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**platform**  ⇒ Symbol  (readonly)
   
@@ -489,33 +273,16 @@ end
 
 Returns the platform for which the prefix header will be generated.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Symbol)
-      
-      
-      
+
         —
         
 
 the platform for which the prefix header will be generated.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -523,10 +290,6 @@ the platform for which the prefix header will be generated.
 13
 14
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/header.rb', line 12
@@ -537,20 +300,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**generate**  ⇒ String 
   
@@ -567,31 +319,13 @@ end
 
 If the platform is iOS an import call to `UIKit/UIKit.h` is added to the top of the prefix header. For OS X `Cocoa/Cocoa.h` is imported.
 
-  
-
 Generates the contents of the header according to the platform.
-
-  
-
-  
 
 Returns:
 
-  
-    
-- 
-      
-      
-        (String)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (String)
 
 ```
 
@@ -624,10 +358,6 @@ Returns:
 67
 68
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/header.rb', line 41
@@ -663,13 +393,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**save_as**(path)  ⇒ void 
   
@@ -685,19 +409,12 @@ This method returns an undefined value.
 
 Generates and saves the header to the given path.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         path
-      
-      
+
         (Pathname)
       
       
@@ -707,24 +424,12 @@ Parameters:
 
 The path where the header should be stored.
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 77
 78
 79
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/header.rb', line 77

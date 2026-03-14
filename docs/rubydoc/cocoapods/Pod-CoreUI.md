@@ -1,39 +1,14 @@
 # Module: Pod::CoreUI
   
-  
-  
-
-  
-
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/user_interface.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Redirects cocoapods-core UI.
 
-  
+##
 
-  
-
-  
-    
-## 
       Helpers
       collapse
     
@@ -42,9 +17,8 @@ Redirects cocoapods-core UI.
 
       
         
-- 
+-
   
-    
       .**print**(message)  ⇒ Object 
     
 
@@ -64,9 +38,8 @@ Redirects cocoapods-core UI.
 
       
         
-- 
+-
   
-    
       .**puts**(message)  ⇒ Object 
     
 
@@ -86,9 +59,8 @@ Redirects cocoapods-core UI.
 
       
         
-- 
+-
   
-    
       .**warn**(message)  ⇒ Object 
     
 
@@ -115,10 +87,7 @@ Redirects cocoapods-core UI.
     
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**print**(message)  ⇒ Object 
   
@@ -138,10 +107,6 @@ Redirects cocoapods-core UI.
 440
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/user_interface.rb', line 438
 
@@ -150,13 +115,7 @@ def print(message)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**puts**(message)  ⇒ Object 
   
@@ -176,10 +135,6 @@ end
 436
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/user_interface.rb', line 434
 
@@ -188,13 +143,7 @@ def puts(message)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**warn**(message)  ⇒ Object 
   
@@ -213,10 +162,6 @@ end
 443
 444
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/user_interface.rb', line 442

@@ -1,10 +1,5 @@
 # Class: Pod::Command::IPC::List
   
-  
-  
-
-  
-  
     Inherits:
     
       Pod::Command::IPC
@@ -13,45 +8,23 @@
 
           
 - Object
-          
-            
+
 - CLAide::Command
-          
-            
+
 - Pod::Command
-          
-            
+
 - Pod::Command::IPC
-          
-            
+
 - Pod::Command::IPC::List
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/command/ipc/list.rb
   
-  
+##
 
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -60,9 +33,8 @@
 
       
         
-- 
+-
   
-    
       #**run**  ⇒ Object 
     
 
@@ -83,77 +55,25 @@
       
     
 
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Pod::Command::IPC
 
-  
+# output_pipe
 
-#output_pipe
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Pod::Command
 
-  
+# ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, #initialize, options, report_error, run
 
-#ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, #initialize, options, report_error, run
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Pod::Config::Mixin
 
-  
+# config
 
-#config
-
-  
-  
-  
-  
-  
-  
-  
-  
 ## Constructor Details
-
-  
-    
 
 This class inherits a constructor from Pod::Command
   
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**run**  ⇒ Object 
   
@@ -188,10 +108,6 @@ This class inherits a constructor from Pod::Command
 35
 36
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/ipc/list.rb', line 18

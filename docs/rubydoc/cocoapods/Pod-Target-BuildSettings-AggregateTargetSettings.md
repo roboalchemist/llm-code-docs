@@ -1,10 +1,5 @@
 # Class: Pod::Target::BuildSettings::AggregateTargetSettings
   
-  
-  
-
-  
-  
     Inherits:
     
       Pod::Target::BuildSettings
@@ -13,96 +8,41 @@
 
           
 - Object
-          
-            
+
 - Pod::Target::BuildSettings
-          
-            
+
 - Pod::Target::BuildSettings::AggregateTargetSettings
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/target/build_settings.rb
   
-  
-
 ## Overview
-
-  
-    
 
 A subclass that generates build settings for a `PodTarget`
 
-  
-
-  
-
 Since:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 1.5.0
 
-      
-    
-  
-
-  
 ## Constant Summary
 
-  
-  
 ### Constants inherited
-     from Pod::Target::BuildSettings
 
-  
+     from Pod::Target::BuildSettings
 
 CONFIGURATION_BUILD_DIR_VARIABLE, PLURAL_SETTINGS, XCFRAMEWORKS_BUILD_DIR_VARIABLE
 
-  
 ## Public API collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**configuration_name**  ⇒ Symbol 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -117,23 +57,12 @@ CONFIGURATION_BUILD_DIR_VARIABLE, PLURAL_SETTINGS, XCFRAMEWORKS_BUILD_DIR_VARIAB
 
 The build configuration these settings will be used for.
 
-  
-
-    
-  
-
-  
-  
-  
 ### Attributes inherited from Pod::Target::BuildSettings
 
-  
+# target
 
-#target
+##
 
-  
-    
-## 
       Public API
       collapse
     
@@ -142,9 +71,8 @@ The build configuration these settings will be used for.
 
       
         
-- 
+-
   
-    
       .**build_settings_names**  ⇒ Object 
     
 
@@ -164,9 +92,8 @@ The build configuration these settings will be used for.
 
       
         
-- 
+-
   
-    
       #**initialize**(target, configuration_name, configuration: nil)  ⇒ AggregateTargetSettings 
     
 
@@ -187,39 +114,14 @@ The build configuration these settings will be used for.
 
 Initializes a new instance.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**xcconfig**  ⇒ Xcodeproj::Config 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The `xcconfig` build setting for the #target.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Paths
       collapse
     
@@ -228,9 +130,8 @@ The `xcconfig` build setting for the #target.
 
       
         
-- 
+-
   
-    
       #**pods_podfile_dir_path**  ⇒ String 
     
 
@@ -249,39 +150,14 @@ The `xcconfig` build setting for the #target.
 
 The `pods_podfile_dir_path` build setting for the #target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**pods_root**  ⇒ String 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The `pods_root` build setting for the #target.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Frameworks
       collapse
     
@@ -290,9 +166,8 @@ The `pods_root` build setting for the #target.
 
       
         
-- 
+-
   
-    
       #**framework_search_paths**  ⇒ Array<String> 
     
 
@@ -311,64 +186,20 @@ The `pods_root` build setting for the #target.
 
 The `framework_search_paths` build setting for the #target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**frameworks**  ⇒ Array<String> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The `frameworks` build setting for the #target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**weak_frameworks**  ⇒ Array<String> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The `weak_frameworks` build setting for the #target.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Libraries
       collapse
     
@@ -377,9 +208,8 @@ The `weak_frameworks` build setting for the #target.
 
       
         
-- 
+-
   
-    
       #**libraries**  ⇒ Array<String> 
     
 
@@ -398,39 +228,14 @@ The `weak_frameworks` build setting for the #target.
 
 The `libraries` build setting for the #target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**library_search_paths**  ⇒ Array<String> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The `library_search_paths` build setting for the #target.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Clang
       collapse
     
@@ -439,9 +244,8 @@ The `library_search_paths` build setting for the #target.
 
       
         
-- 
+-
   
-    
       #**header_search_paths**  ⇒ Array<String> 
     
 
@@ -460,89 +264,26 @@ The `library_search_paths` build setting for the #target.
 
 The `header_search_paths` build setting for the #target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**module_map_files**  ⇒ Array<String> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The `module_map_files` build setting for the #target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**other_cflags**  ⇒ Array<String> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The `other_cflags` build setting for the #target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**other_module_verifier_flags**  ⇒ Array<String> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The `other_module_verifier_flags` build setting for the #target.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Swift
       collapse
     
@@ -551,9 +292,8 @@ The `other_module_verifier_flags` build setting for the #target.
 
       
         
-- 
+-
   
-    
       #**always_embed_swift_standard_libraries**  ⇒ String 
     
 
@@ -572,111 +312,30 @@ The `other_module_verifier_flags` build setting for the #target.
 
 The `always_embed_swift_standard_libraries` build setting for the #target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**embedded_content_contains_swift**  ⇒ String 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The `embedded_content_contains_swift` build setting for the #target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**must_embed_swift?**  ⇒ Boolean 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The `must_embed_swift?` build setting for the #target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**other_swift_flags_without_swift?**  ⇒ Boolean 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**swift_include_paths**  ⇒ Array<String> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The `swift_include_paths` build setting for the #target.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Linking
       collapse
     
@@ -685,9 +344,8 @@ The `swift_include_paths` build setting for the #target.
 
       
         
-- 
+-
   
-    
       #**any_vendored_dynamic_artifacts?**  ⇒ Boolean 
     
 
@@ -706,114 +364,32 @@ The `swift_include_paths` build setting for the #target.
 
 The `any_vendored_dynamic_artifacts?` build setting for the #target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**any_vendored_static_artifacts?**  ⇒ Boolean 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The `any_vendored_static_artifacts?` build setting for the #target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**ld_runpath_search_paths**  ⇒ Array<String> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The `ld_runpath_search_paths` build setting for the #target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**requires_fobjc_arc?**  ⇒ Boolean 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The `requires_fobjc_arc?` build setting for the #target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**requires_objc_linker_flag?**  ⇒ Boolean 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The `requires_objc_linker_flag?` build setting for the #target.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Target Properties
       collapse
     
@@ -822,9 +398,8 @@ The `requires_objc_linker_flag?` build setting for the #target.
 
       
         
-- 
+-
   
-    
       #**merged_user_target_xcconfigs**  ⇒ Hash{String, String} 
     
 
@@ -843,160 +418,43 @@ The `requires_objc_linker_flag?` build setting for the #target.
 
 Merges the `user_target_xcconfig` for all pod targets into a single hash and warns on conflicting definitions.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**pod_targets**  ⇒ Array<PodTarget> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Returns the PodTargets which are active for the current configuration name.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**pod_targets_to_link**  ⇒ Array<PodTarget> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The `pod_targets_to_link` build setting for the #target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**search_paths_aggregate_target_pod_target_build_settings**  ⇒ Array<PodTarget> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The `search_paths_aggregate_target_pod_target_build_settings` build setting for the #target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**target_swift_version**  ⇒ Version 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The `target_swift_version` build setting for the #target.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**user_target_xcconfig_values_by_consumer_by_key**  ⇒ Hash{String,Hash{Target,String}] 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Returns the `user_target_xcconfig` for all pod targets and their spec consumers grouped by keys.
 
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Pod::Target::BuildSettings
 
-  
+# clang_warn_quoted_include_in_framework_header, #code_sign_identity, #framework_search_paths_to_import_developer_frameworks, #gcc_preprocessor_definitions, #initialize_copy, #other_ldflags, #other_swift_flags, #pods_build_dir, #pods_configuration_build_dir, #pods_xcframeworks_build_dir, #save_as, #use_recursive_script_inputs_in_script_phases, xcframework_intermediate_dir
 
-#clang_warn_quoted_include_in_framework_header, #code_sign_identity, #framework_search_paths_to_import_developer_frameworks, #gcc_preprocessor_definitions, #initialize_copy, #other_ldflags, #other_swift_flags, #pods_build_dir, #pods_configuration_build_dir, #pods_xcframeworks_build_dir, #save_as, #use_recursive_script_inputs_in_script_phases, xcframework_intermediate_dir
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(target, configuration_name, configuration: nil)  ⇒ AggregateTargetSettings 
   
@@ -1010,19 +468,12 @@ Returns the `user_target_xcconfig` for all pod targets and their spec consumers 
 
 Initializes a new instance
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         target
-      
-      
+
         (AggregateTarget)
       
       
@@ -1032,15 +483,10 @@ Parameters:
 
 see Pod::Target::BuildSettings#target
 
-      
-    
-  
-    
-- 
-      
+-
+
         configuration_name
-      
-      
+
         (Symbol)
       
       
@@ -1050,31 +496,11 @@ see Pod::Target::BuildSettings#target
 
 see #configuration_name
 
-      
-    
-  
-
 Since:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 1.5.0
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1084,10 +510,6 @@ Since:
 1133
 1134
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1130
@@ -1100,21 +522,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**configuration_name**  ⇒ Symbol  (readonly)
   
@@ -1128,51 +538,22 @@ end
 
 Returns The build configuration these settings will be used for.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Symbol)
-      
-      
-      
+
         —
         
 
 The build configuration these settings will be used for
 
-      
-    
-  
-
 Since:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 1.5.0
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1180,10 +561,6 @@ Since:
 1121
 1122
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1120
@@ -1194,20 +571,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**build_settings_names**  ⇒ Object 
   
@@ -1219,42 +585,15 @@ end
   
     
 
-  
-
-  
-
-  
-
 See Also:
   
-
-    
-      
 - Pod::Target::BuildSettings.build_settings_names
-    
-  
 
 Since:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 1.5.0
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1262,10 +601,6 @@ Since:
 1115
 1116
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1114
@@ -1276,20 +611,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**always_embed_swift_standard_libraries**  ⇒ String 
   
@@ -1305,27 +629,11 @@ The `always_embed_swift_standard_libraries` build setting for the Pod::Target::B
 
 The return value from this method will be: ‘always_embed_swift_standard_libraries, build_setting, memoized`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (String)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (String)
 
 ```
 
@@ -1336,10 +644,6 @@ Returns:
 1273
 1274
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1269
@@ -1353,13 +657,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**any_vendored_dynamic_artifacts?**  ⇒ Boolean 
   
@@ -1375,27 +673,11 @@ The `any_vendored_dynamic_artifacts?` build setting for the Pod::Target::BuildSe
 
 The return value from this method will be: ‘any_vendored_dynamic_artifacts?, memoized`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Boolean)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Boolean)
 
 ```
 
@@ -1407,10 +689,6 @@ Returns:
 1308
 1309
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1303
@@ -1425,13 +703,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**any_vendored_static_artifacts?**  ⇒ Boolean 
   
@@ -1447,27 +719,11 @@ The `any_vendored_static_artifacts?` build setting for the Pod::Target::BuildSet
 
 The return value from this method will be: ‘any_vendored_static_artifacts?, memoized`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Boolean)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Boolean)
 
 ```
 
@@ -1479,10 +735,6 @@ Returns:
 1317
 1318
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1312
@@ -1497,13 +749,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**embedded_content_contains_swift**  ⇒ String 
   
@@ -1519,27 +765,11 @@ The `embedded_content_contains_swift` build setting for the Pod::Target::BuildSe
 
 The return value from this method will be: ‘embedded_content_contains_swift, build_setting, memoized`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (String)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (String)
 
 ```
 
@@ -1550,10 +780,6 @@ Returns:
 1281
 1282
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1277
@@ -1567,13 +793,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**framework_search_paths**  ⇒ Array<String> 
   
@@ -1589,27 +809,11 @@ The `framework_search_paths` build setting for the Pod::Target::BuildSettings#ta
 
 The return value from this method will be: ‘framework_search_paths, build_setting, memoized, sorted, uniqued, from_pod_targets_to_link, from_search_paths_aggregate_targets`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Array<String>)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Array<String>)
 
 ```
 
@@ -1617,10 +821,6 @@ Returns:
 1172
 1173
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1171
@@ -1631,13 +831,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**frameworks**  ⇒ Array<String> 
   
@@ -1653,27 +847,11 @@ The `frameworks` build setting for the Pod::Target::BuildSettings#target.
 
 The return value from this method will be: ‘frameworks, memoized, sorted, uniqued, from_pod_targets_to_link, from_search_paths_aggregate_targets`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Array<String>)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Array<String>)
 
 ```
 
@@ -1681,10 +859,6 @@ Returns:
 1162
 1163
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1161
@@ -1695,13 +869,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**header_search_paths**  ⇒ Array<String> 
   
@@ -1717,27 +885,11 @@ The `header_search_paths` build setting for the Pod::Target::BuildSettings#targe
 
 The return value from this method will be: ‘header_search_paths, build_setting, memoized, sorted, uniqued`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Array<String>)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Array<String>)
 
 ```
 
@@ -1766,10 +918,6 @@ Returns:
 1216
 1217
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1194
@@ -1801,13 +949,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**ld_runpath_search_paths**  ⇒ Array<String> 
   
@@ -1823,27 +965,11 @@ The `ld_runpath_search_paths` build setting for the Pod::Target::BuildSettings#t
 
 The return value from this method will be: ‘ld_runpath_search_paths, build_setting, memoized, uniqued`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Array<String>)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Array<String>)
 
 ```
 
@@ -1855,10 +981,6 @@ Returns:
 1299
 1300
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1294
@@ -1873,13 +995,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**libraries**  ⇒ Array<String> 
   
@@ -1895,27 +1011,11 @@ The `libraries` build setting for the Pod::Target::BuildSettings#target.
 
 The return value from this method will be: ‘libraries, memoized, sorted, uniqued, from_pod_targets_to_link, from_search_paths_aggregate_targets`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Array<String>)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Array<String>)
 
 ```
 
@@ -1923,10 +1023,6 @@ Returns:
 1181
 1182
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1180
@@ -1937,13 +1033,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**library_search_paths**  ⇒ Array<String> 
   
@@ -1959,27 +1049,11 @@ The `library_search_paths` build setting for the Pod::Target::BuildSettings#targ
 
 The return value from this method will be: ‘library_search_paths, build_setting, memoized, sorted, uniqued, from_pod_targets_to_link, from_search_paths_aggregate_targets`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Array<String>)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Array<String>)
 
 ```
 
@@ -1987,10 +1061,6 @@ Returns:
 1186
 1187
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1185
@@ -2001,13 +1071,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**merged_user_target_xcconfigs**  ⇒ Hash{String, String} 
   
@@ -2025,27 +1089,11 @@ The `merged_user_target_xcconfigs` build setting for the Pod::Target::BuildSetti
 
 The return value from this method will be: ‘merged_user_target_xcconfigs, memoized`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Hash{String, String})
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Hash{String, String})
 
 ```
 
@@ -2053,10 +1101,6 @@ Returns:
 1396
 1397
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1395
@@ -2067,13 +1111,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**module_map_files**  ⇒ Array<String> 
   
@@ -2089,27 +1127,11 @@ The `module_map_files` build setting for the Pod::Target::BuildSettings#target.
 
 The return value from this method will be: ‘module_map_files, memoized, sorted, uniqued, compacted, from_search_paths_aggregate_targets`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Array<String>)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Array<String>)
 
 ```
 
@@ -2117,10 +1139,6 @@ Returns:
 1251
 1252
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1250
@@ -2131,13 +1149,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**must_embed_swift?**  ⇒ Boolean 
   
@@ -2153,27 +1165,11 @@ The `must_embed_swift?` build setting for the Pod::Target::BuildSettings#target.
 
 The return value from this method will be: ‘must_embed_swift?, memoized`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Boolean)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Boolean)
 
 ```
 
@@ -2181,10 +1177,6 @@ Returns:
 1286
 1287
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1285
@@ -2195,13 +1187,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**other_cflags**  ⇒ Array<String> 
   
@@ -2217,27 +1203,11 @@ The `other_cflags` build setting for the Pod::Target::BuildSettings#target.
 
 The return value from this method will be: ‘other_cflags, build_setting, memoized`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Array<String>)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Array<String>)
 
 ```
 
@@ -2263,10 +1233,6 @@ Returns:
 1239
 1240
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1220
@@ -2295,13 +1261,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**other_module_verifier_flags**  ⇒ Array<String> 
   
@@ -2317,27 +1277,11 @@ The `other_module_verifier_flags` build setting for the Pod::Target::BuildSettin
 
 The return value from this method will be: ‘other_module_verifier_flags, memoized`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Array<String>)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Array<String>)
 
 ```
 
@@ -2347,10 +1291,6 @@ Returns:
 1246
 1247
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1243
@@ -2363,13 +1303,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**other_swift_flags_without_swift?**  ⇒ Boolean 
   
@@ -2381,56 +1315,21 @@ end
   
     
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Boolean)
-      
-      
-      
-    
-  
+-
 
-  
+        (Boolean)
 
 See Also:
   
-
-    
-      
 - Pod::Target::BuildSettings#other_swift_flags_without_swift?
-    
-  
 
 Since:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 1.5.0
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2438,10 +1337,6 @@ Since:
 1260
 1261
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1259
@@ -2452,13 +1347,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**pod_targets**  ⇒ Array<PodTarget> 
   
@@ -2476,27 +1365,11 @@ The `pod_targets` build setting for the Pod::Target::BuildSettings#target.
 
 The return value from this method will be: ‘pod_targets, memoized`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Array<PodTarget>)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Array<PodTarget>)
 
 ```
 
@@ -2504,10 +1377,6 @@ Returns:
 1353
 1354
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1352
@@ -2518,13 +1387,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**pod_targets_to_link**  ⇒ Array<PodTarget> 
   
@@ -2540,27 +1403,11 @@ The `pod_targets_to_link` build setting for the Pod::Target::BuildSettings#targe
 
 The return value from this method will be: ‘pod_targets_to_link, memoized`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Array<PodTarget>)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Array<PodTarget>)
 
 ```
 
@@ -2569,10 +1416,6 @@ Returns:
 1359
 1360
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1357
@@ -2584,13 +1427,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**pods_podfile_dir_path**  ⇒ String 
   
@@ -2606,27 +1443,11 @@ The `pods_podfile_dir_path` build setting for the Pod::Target::BuildSettings#tar
 
 The return value from this method will be: ‘pods_podfile_dir_path, build_setting, memoized`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (String)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (String)
 
 ```
 
@@ -2634,10 +1455,6 @@ Returns:
 1148
 1149
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1147
@@ -2648,13 +1465,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**pods_root**  ⇒ String 
   
@@ -2670,27 +1481,11 @@ The `pods_root` build setting for the Pod::Target::BuildSettings#target.
 
 The return value from this method will be: ‘pods_root, build_setting, memoized`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (String)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (String)
 
 ```
 
@@ -2698,10 +1493,6 @@ Returns:
 1153
 1154
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1152
@@ -2712,13 +1503,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**requires_fobjc_arc?**  ⇒ Boolean 
   
@@ -2734,27 +1519,11 @@ The `requires_fobjc_arc?` build setting for the Pod::Target::BuildSettings#targe
 
 The return value from this method will be: ‘requires_fobjc_arc?, memoized`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Boolean)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Boolean)
 
 ```
 
@@ -2763,10 +1532,6 @@ Returns:
 1329
 1330
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1327
@@ -2778,13 +1543,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**requires_objc_linker_flag?**  ⇒ Boolean 
   
@@ -2800,27 +1559,11 @@ The `requires_objc_linker_flag?` build setting for the Pod::Target::BuildSetting
 
 The return value from this method will be: ‘requires_objc_linker_flag?, memoized`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Boolean)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Boolean)
 
 ```
 
@@ -2829,10 +1572,6 @@ Returns:
 1323
 1324
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1321
@@ -2844,13 +1583,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**search_paths_aggregate_target_pod_target_build_settings**  ⇒ Array<PodTarget> 
   
@@ -2866,27 +1599,11 @@ The `search_paths_aggregate_target_pod_target_build_settings` build setting for 
 
 The return value from this method will be: ‘search_paths_aggregate_target_pod_target_build_settings, memoized, uniqued`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Array<PodTarget>)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Array<PodTarget>)
 
 ```
 
@@ -2896,10 +1613,6 @@ Returns:
 1366
 1367
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1363
@@ -2912,13 +1625,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**swift_include_paths**  ⇒ Array<String> 
   
@@ -2934,27 +1641,11 @@ The `swift_include_paths` build setting for the Pod::Target::BuildSettings#targe
 
 The return value from this method will be: ‘swift_include_paths, build_setting, memoized, sorted, uniqued, from_pod_targets_to_link, from_search_paths_aggregate_targets`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Array<String>)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Array<String>)
 
 ```
 
@@ -2962,10 +1653,6 @@ Returns:
 1265
 1266
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1264
@@ -2976,13 +1663,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**target_swift_version**  ⇒ Version 
   
@@ -2998,33 +1679,16 @@ The `target_swift_version` build setting for the Pod::Target::BuildSettings#targ
 
 The return value from this method will be: ‘target_swift_version, memoized, frozen`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Version)
-      
-      
-      
+
         —
         
 
 the SWIFT_VERSION of the target being integrated
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3034,10 +1698,6 @@ the SWIFT_VERSION of the target being integrated
 1341
 1342
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1338
@@ -3050,13 +1710,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**user_target_xcconfig_values_by_consumer_by_key**  ⇒ Hash{String,Hash{Target,String}] 
   
@@ -3070,51 +1724,22 @@ end
 
 Returns the `user_target_xcconfig` for all pod targets and their spec consumers grouped by keys
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Hash{String,Hash{Target,String}])
-      
-      
-      
+
         —
         
 
 HashString,Hash{Target,String]
 
-      
-    
-  
-
 Since:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 1.5.0
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3134,10 +1759,6 @@ Since:
 1387
 1388
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1374
@@ -3160,13 +1781,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**weak_frameworks**  ⇒ Array<String> 
   
@@ -3182,27 +1797,11 @@ The `weak_frameworks` build setting for the Pod::Target::BuildSettings#target.
 
 The return value from this method will be: ‘weak_frameworks, memoized, sorted, uniqued, from_pod_targets_to_link, from_search_paths_aggregate_targets`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Array<String>)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Array<String>)
 
 ```
 
@@ -3210,10 +1809,6 @@ Returns:
 1167
 1168
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1166
@@ -3224,13 +1819,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**xcconfig**  ⇒ Xcodeproj::Config 
   
@@ -3246,33 +1835,16 @@ The `xcconfig` build setting for the Pod::Target::BuildSettings#target.
 
 The return value from this method will be: ‘xcconfig, memoized`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Xcodeproj::Config)
-      
-      
-      
+
         —
         
 
 xcconfig
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -3281,10 +1853,6 @@ xcconfig
 1139
 1140
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/target/build_settings.rb', line 1137

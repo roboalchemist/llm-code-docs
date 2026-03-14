@@ -1,39 +1,14 @@
 # Module: Pod::Generator::AppTargetHelper
   
-  
-  
-
-  
-
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/generator/app_target_helper.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Stores the common logic for creating app targets within projects including generating standard import and main files for app hosts.
 
-  
+##
 
-  
-
-  
-    
-## 
       Constant Summary
       collapse
     
@@ -80,7 +55,6 @@ int main(int argc, char *argv[])
 EOS
 ```
 
-      
         MACOS_APP_HOST_MAIN_CONTENTS =
           
         
@@ -96,7 +70,6 @@ int main(int argc, const char * argv[]) {
 EOS
 ```
 
-      
         LAUNCHSCREEN_STORYBOARD_CONTENTS_IOS_8 =
           
         
@@ -134,7 +107,6 @@ EOS
 XML
 ```
 
-      
         LAUNCHSCREEN_STORYBOARD_CONTENTS =
           
         
@@ -170,13 +142,8 @@ XML
 XML
 ```
 
-      
-    
-  
+##
 
-  
-    
-## 
       Class Method Summary
       collapse
     
@@ -185,9 +152,8 @@ XML
 
       
         
-- 
+-
   
-    
       .**add_app_host_main_file**(project, target, platform, group, name = 'App')  ⇒ Array<PBXBuildFile> 
     
 
@@ -206,246 +172,63 @@ XML
 
 Creates and links a default app host ‘main.m’ file.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**add_app_project_import**(project, target, pod_target, platform, name = 'App')  ⇒ Array<PBXBuildFile> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Creates and links an import file for the given pod target and into the given native target.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**add_app_target**(project, platform_name, deployment_target, name = 'App', product_basename = nil)  ⇒ PBXNativeTarget 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Adds a single app target to the given project with the provided name.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**add_empty_swift_file**(project, target, name = 'App')  ⇒ Array<PBXBuildFile> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Creates and links an empty Swift file for the given target.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**add_launchscreen_storyboard**(project, target, group, deployment_target, name = 'App')  ⇒ PBXFileReference 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Creates a default launchscreen storyboard.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**add_swift_version**(target, swift_version)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Adds the provided swift version into the given target.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**add_xctest_search_paths**(target)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Adds the xctest framework search paths into the given target.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**create_app_host_main_file**(project, platform, name = 'App')  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Creates a default app host ‘main.m’ file.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**create_app_import_source_file**(project, pod_target, platform, name = 'App')  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Creates a default import file for the given pod target.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**create_launchscreen_storyboard_file**(project, deployment_target, name = 'App')  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Creates a default launchscreen storyboard file.
 
-  
-
-      
-    
-
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**add_app_host_main_file**(project, target, platform, group, name = 'App')  ⇒ Array<PBXBuildFile> 
   
@@ -459,19 +242,12 @@ Creates a default launchscreen storyboard file.
 
 Creates and links a default app host ‘main.m’ file.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         project
-      
-      
+
         (Project)
       
       
@@ -481,15 +257,10 @@ Parameters:
 
 the Xcodeproj to generate the main file into.
 
-      
-    
-  
-    
-- 
-      
+-
+
         target
-      
-      
+
         (PBXNativeTarget)
       
       
@@ -499,15 +270,10 @@ the Xcodeproj to generate the main file into.
 
 the native target to link the generated main file into.
 
-      
-    
-  
-    
-- 
-      
+-
+
         platform
-      
-      
+
         (Symbol)
       
       
@@ -517,15 +283,10 @@ the native target to link the generated main file into.
 
 the platform of the target. Can be `:ios` or `:osx`, etc.
 
-      
-    
-  
-    
-- 
-      
+-
+
         name
-      
-      
+
         (String)
       
       
@@ -537,33 +298,16 @@ the platform of the target. Can be `:ios` or `:osx`, etc.
 
 The name to use for the target, defaults to ‘App’.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<PBXBuildFile>)
-      
-      
-      
+
         —
         
 
 the created build file references.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -573,10 +317,6 @@ the created build file references.
 98
 99
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/app_target_helper.rb', line 95
@@ -588,13 +328,7 @@ def self.add_app_host_main_file(project, target, platform, group, name = 'App')
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**add_app_project_import**(project, target, pod_target, platform, name = 'App')  ⇒ Array<PBXBuildFile> 
   
@@ -608,19 +342,12 @@ end
 
 Creates and links an import file for the given pod target and into the given native target.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         project
-      
-      
+
         (Project)
       
       
@@ -630,15 +357,10 @@ Parameters:
 
 the Xcodeproj to generate the target into.
 
-      
-    
-  
-    
-- 
-      
+-
+
         target
-      
-      
+
         (PBXNativeTarget)
       
       
@@ -648,15 +370,10 @@ the Xcodeproj to generate the target into.
 
 the native target to link the generated import file into.
 
-      
-    
-  
-    
-- 
-      
+-
+
         pod_target
-      
-      
+
         (PodTarget)
       
       
@@ -666,15 +383,10 @@ the native target to link the generated import file into.
 
 the pod target to use for when generating the contents of the import file.
 
-      
-    
-  
-    
-- 
-      
+-
+
         platform
-      
-      
+
         (Symbol)
       
       
@@ -684,15 +396,10 @@ the pod target to use for when generating the contents of the import file.
 
 the platform of the target. Can be `:ios` or `:osx`, etc.
 
-      
-    
-  
-    
-- 
-      
+-
+
         name
-      
-      
+
         (String)
       
       
@@ -704,33 +411,16 @@ the platform of the target. Can be `:ios` or `:osx`, etc.
 
 The name to use for the target, defaults to ‘App’.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<PBXBuildFile>)
-      
-      
-      
+
         —
         
 
 the created build file references.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -741,10 +431,6 @@ the created build file references.
 54
 55
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/app_target_helper.rb', line 50
@@ -757,13 +443,7 @@ def self.add_app_project_import(project, target, pod_target, platform, name = 'A
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**add_app_target**(project, platform_name, deployment_target, name = 'App', product_basename = nil)  ⇒ PBXNativeTarget 
   
@@ -777,19 +457,12 @@ end
 
 Adds a single app target to the given project with the provided name.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         project
-      
-      
+
         (Project)
       
       
@@ -799,15 +472,10 @@ Parameters:
 
 the Xcodeproj to generate the target into.
 
-      
-    
-  
-    
-- 
-      
+-
+
         platform_name
-      
-      
+
         (Symbol)
       
       
@@ -817,15 +485,10 @@ the Xcodeproj to generate the target into.
 
 the platform of the target. Can be `:ios` or `:osx`, etc.
 
-      
-    
-  
-    
-- 
-      
+-
+
         deployment_target
-      
-      
+
         (String)
       
       
@@ -835,15 +498,10 @@ the platform of the target. Can be `:ios` or `:osx`, etc.
 
 the deployment target for the platform.
 
-      
-    
-  
-    
-- 
-      
+-
+
         name
-      
-      
+
         (String)
       
       
@@ -855,15 +513,10 @@ the deployment target for the platform.
 
 The name to use for the target, defaults to ‘App’.
 
-      
-    
-  
-    
-- 
-      
+-
+
         product_basename
-      
-      
+
         (String)
       
       
@@ -875,33 +528,16 @@ The name to use for the target, defaults to ‘App’.
 
 The product basename to use for the target, defaults to `name`.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (PBXNativeTarget)
-      
-      
-      
+
         —
         
 
 the new target that was created.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -910,10 +546,6 @@ the new target that was created.
 28
 29
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/app_target_helper.rb', line 26
@@ -924,13 +556,7 @@ def self.add_app_target(project, platform_name, deployment_target, name = 'App',
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**add_empty_swift_file**(project, target, name = 'App')  ⇒ Array<PBXBuildFile> 
   
@@ -944,19 +570,12 @@ end
 
 Creates and links an empty Swift file for the given target.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         project
-      
-      
+
         (Project)
       
       
@@ -966,15 +585,10 @@ Parameters:
 
 the Xcodeproj to generate the target into.
 
-      
-    
-  
-    
-- 
-      
+-
+
         target
-      
-      
+
         (PBXNativeTarget)
       
       
@@ -984,15 +598,10 @@ the Xcodeproj to generate the target into.
 
 the native target to link the generated import file into.
 
-      
-    
-  
-    
-- 
-      
+-
+
         name
-      
-      
+
         (String)
       
       
@@ -1004,33 +613,16 @@ the native target to link the generated import file into.
 
 The name to use for the target, defaults to ‘App’.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<PBXBuildFile>)
-      
-      
-      
+
         —
         
 
 the created build file references.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1043,10 +635,6 @@ the created build file references.
 76
 77
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/app_target_helper.rb', line 70
@@ -1061,13 +649,7 @@ def self.add_empty_swift_file(project, target, name = 'App')
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**add_launchscreen_storyboard**(project, target, group, deployment_target, name = 'App')  ⇒ PBXFileReference 
   
@@ -1081,19 +663,12 @@ end
 
 Creates a default launchscreen storyboard.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         project
-      
-      
+
         (Project)
       
       
@@ -1103,15 +678,10 @@ Parameters:
 
 the Xcodeproj to generate the launchscreen storyboard into.
 
-      
-    
-  
-    
-- 
-      
+-
+
         target
-      
-      
+
         (PBXNativeTarget)
       
       
@@ -1121,15 +691,10 @@ the Xcodeproj to generate the launchscreen storyboard into.
 
 the native target to link the generated launchscreen storyboard into.
 
-      
-    
-  
-    
-- 
-      
+-
+
         platform
-      
-      
+
         (Symbol)
       
       
@@ -1139,15 +704,10 @@ the native target to link the generated launchscreen storyboard into.
 
 the platform of the target. Can be `:ios` or `:osx`, etc.
 
-      
-    
-  
-    
-- 
-      
+-
+
         deployment_target
-      
-      
+
         (String)
       
       
@@ -1157,15 +717,10 @@ the platform of the target. Can be `:ios` or `:osx`, etc.
 
 the deployment target for the platform.
 
-      
-    
-  
-    
-- 
-      
+-
+
         name
-      
-      
+
         (String)
       
       
@@ -1177,33 +732,16 @@ the deployment target for the platform.
 
 The name to use for the target, defaults to ‘App’.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (PBXFileReference)
-      
-      
-      
+
         —
         
 
 the created file reference of the launchscreen storyboard.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1213,10 +751,6 @@ the created file reference of the launchscreen storyboard.
 123
 124
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/app_target_helper.rb', line 120
@@ -1228,13 +762,7 @@ def self.add_launchscreen_storyboard(project, target, group, deployment_target, 
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**add_swift_version**(target, swift_version)  ⇒ void 
   
@@ -1250,19 +778,12 @@ This method returns an undefined value.
 
 Adds the provided swift version into the given target.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         target
-      
-      
+
         (PBXNativeTarget)
       
       
@@ -1272,15 +793,10 @@ Parameters:
 
 the native target to add the swift version into.
 
-      
-    
-  
-    
-- 
-      
+-
+
         swift_version
-      
-      
+
         (String)
       
       
@@ -1289,14 +805,6 @@ the native target to add the swift version into.
         
 
 the swift version to set to.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1307,10 +815,6 @@ the swift version to set to.
 162
 163
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/app_target_helper.rb', line 158
@@ -1323,13 +827,7 @@ def self.add_swift_version(target, swift_version)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**add_xctest_search_paths**(target)  ⇒ void 
   
@@ -1345,19 +843,12 @@ This method returns an undefined value.
 
 Adds the xctest framework search paths into the given target.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         target
-      
-      
+
         (PBXNativeTarget)
       
       
@@ -1366,14 +857,6 @@ Parameters:
         
 
 the native target to add XCTest into.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1392,10 +875,6 @@ the native target to add XCTest into.
 145
 146
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/app_target_helper.rb', line 133
@@ -1416,13 +895,7 @@ def self.add_xctest_search_paths(target)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**create_app_host_main_file**(project, platform, name = 'App')  ⇒ Pathname 
   
@@ -1436,19 +909,12 @@ end
 
 Creates a default app host ‘main.m’ file.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         project
-      
-      
+
         (Project)
       
       
@@ -1458,15 +924,10 @@ Parameters:
 
 the Xcodeproj to generate the target into.
 
-      
-    
-  
-    
-- 
-      
+-
+
         platform
-      
-      
+
         (Symbol)
       
       
@@ -1476,15 +937,10 @@ the Xcodeproj to generate the target into.
 
 the platform of the target. Can be `:ios` or `:osx`.
 
-      
-    
-  
-    
-- 
-      
+-
+
         name
-      
-      
+
         (String)
       
       
@@ -1496,33 +952,16 @@ the platform of the target. Can be `:ios` or `:osx`.
 
 The name of the folder to use and save the generated main file.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 the new source file that was generated.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1540,10 +979,6 @@ the new source file that was generated.
 260
 261
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/app_target_helper.rb', line 249
@@ -1563,13 +998,7 @@ def self.create_app_host_main_file(project, platform, name = 'App')
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**create_app_import_source_file**(project, pod_target, platform, name = 'App')  ⇒ Pathname 
   
@@ -1583,19 +1012,12 @@ end
 
 Creates a default import file for the given pod target.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         project
-      
-      
+
         (Project)
       
       
@@ -1605,15 +1027,10 @@ Parameters:
 
 the Xcodeproj to generate the target into.
 
-      
-    
-  
-    
-- 
-      
+-
+
         pod_target
-      
-      
+
         (PodTarget)
       
       
@@ -1623,15 +1040,10 @@ the Xcodeproj to generate the target into.
 
 the pod target to use for when generating the contents of the import file.
 
-      
-    
-  
-    
-- 
-      
+-
+
         platform
-      
-      
+
         (Symbol)
       
       
@@ -1641,15 +1053,10 @@ the pod target to use for when generating the contents of the import file.
 
 the platform of the target. Can be `:ios` or `:osx`, etc.
 
-      
-    
-  
-    
-- 
-      
+-
+
         name
-      
-      
+
         (String)
       
       
@@ -1661,33 +1068,16 @@ the platform of the target. Can be `:ios` or `:osx`, etc.
 
 The name of the folder to use and save the generated main file.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 the new source file that was generated.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1722,10 +1112,6 @@ the new source file that was generated.
 209
 210
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/app_target_helper.rb', line 181
@@ -1762,13 +1148,7 @@ def self.create_app_import_source_file(project, pod_target, platform, name = 'Ap
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**create_launchscreen_storyboard_file**(project, deployment_target, name = 'App')  ⇒ Pathname 
   
@@ -1782,19 +1162,12 @@ end
 
 Creates a default launchscreen storyboard file.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         project
-      
-      
+
         (Project)
       
       
@@ -1804,15 +1177,10 @@ Parameters:
 
 the Xcodeproj to generate the launchscreen storyboard into.
 
-      
-    
-  
-    
-- 
-      
+-
+
         deployment_target
-      
-      
+
         (String)
       
       
@@ -1822,15 +1190,10 @@ the Xcodeproj to generate the launchscreen storyboard into.
 
 the deployment target for the platform.
 
-      
-    
-  
-    
-- 
-      
+-
+
         name
-      
-      
+
         (String)
       
       
@@ -1842,33 +1205,16 @@ the deployment target for the platform.
 
 The name of the folder to use and save the generated launchscreen storyboard file.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 the new launchscreen storyboard file that was generated.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1883,10 +1229,6 @@ the new launchscreen storyboard file that was generated.
 233
 234
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/app_target_helper.rb', line 225

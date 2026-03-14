@@ -2,10 +2,10 @@
 
 CocoaPods manages dependencies for your Xcode projects.
 
-You specify the dependencies for your project in a simple text file: your `Podfile`. 
-CocoaPods recursively resolves dependencies between libraries, fetches 
-source code for all dependencies, and creates and maintains an Xcode 
-workspace to build your project. The latest released Xcode versions and the 
+You specify the dependencies for your project in a simple text file: your `Podfile`.
+CocoaPods recursively resolves dependencies between libraries, fetches
+source code for all dependencies, and creates and maintains an Xcode
+workspace to build your project. The latest released Xcode versions and the
 prior version are supported.
 
 Installing and updating CocoaPods is very easy. Don't miss the Installation
@@ -14,7 +14,7 @@ Getting Started guide.
 
 ## Project Goals
 
-CocoaPods aims to improve the engagement with, and discoverability 
+CocoaPods aims to improve the engagement with, and discoverability
 of, third party open-source Cocoa libraries. These
 project goals influence and drive the design of CocoaPods:
 
@@ -25,16 +25,16 @@ CocoaPods library with a simple transparent `Podspec` standard.
 
 - Allow library authors to structure their libraries however they like.
 
-- Save time for library authors by automating a lot of Xcode work not 
+- Save time for library authors by automating a lot of Xcode work not
 related to their libraries' functionality.
 
-- Support any source management system. (Currently supported are `git`, 
+- Support any source management system. (Currently supported are `git`,
 `svn`, `mercurial`, `bazaar`, and various types of archives downloaded over HTTP.)
 
 - Promote a culture of distributed collaboration on pods, but also provide
 features only possible with a centralised solution to foster a community.
 
-- Build tools on top of the core Cocoa development system, including those 
+- Build tools on top of the core Cocoa development system, including those
 typically deployed to other operating systems, such as web-services.
 
 - Provide opinionated and automated integration, but make it completely
@@ -45,12 +45,12 @@ into your Xcode project as you see fit, with or without a workspace.
 
 ## Sponsors
 
-Lovingly sponsored by a collection of companies, see the footer of CocoaPods.org for an up-to-date list. 
+Lovingly sponsored by a collection of companies, see the footer of CocoaPods.org for an up-to-date list.
 
 ## Collaborate
 
 All CocoaPods development happens on GitHub. Contributions make for good karma and
-we welcome new contributors with joy. We take contributors seriously, and thus have a 
+we welcome new contributors with joy. We take contributors seriously, and thus have a
 contributor code of conduct.
 
 ## Links
@@ -115,6 +115,6 @@ Molinillo
 A powerful generic dependency resolver.
 docs
 
-Master Repo 
+Master Repo
 Master repository of specifications.
 guides

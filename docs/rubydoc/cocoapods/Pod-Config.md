@@ -1,10 +1,5 @@
 # Class: Pod::Config
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,48 +8,21 @@
 
           
 - Object
-          
-            
+
 - Pod::Config
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/config.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Stores the global configuration of CocoaPods.
 
-  
-
-  
-
 ## Defined Under Namespace
 
-  
-    
       **Modules:** Mixin
     
   
@@ -63,7 +31,8 @@ Stores the global configuration of CocoaPods.
 
   
     
-## 
+##
+
       Constant Summary
       collapse
     
@@ -86,13 +55,6 @@ new_version_message: false
 
 ```
 
-  
-
-  
-
-        
-        
-
 ```
 {
   :verbose             => false,
@@ -105,24 +67,12 @@ new_version_message: false
 }
 ```
 
-      
-    
-  
-
-  
 ## UI collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**allow_root**  ⇒ Boolean 
-    
 
-    
       (also: #allow_root?)
     
   
@@ -142,17 +92,10 @@ new_version_message: false
 
 Whether CocoaPods is allowed to run as root.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**new_version_message**  ⇒ Boolean 
-    
 
-    
       (also: #new_version_message?)
     
   
@@ -172,17 +115,10 @@ Whether CocoaPods is allowed to run as root.
 
 Whether a message should be printed when a new version of CocoaPods is available.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**silent**  ⇒ Boolean 
-    
 
-    
       (also: #silent?)
     
   
@@ -202,25 +138,12 @@ Whether a message should be printed when a new version of CocoaPods is available
 
 Whether CocoaPods should produce not output.
 
-  
-
-    
-  
-
-  
 ## Installation collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**skip_download_cache**  ⇒ Boolean 
-    
 
-    
       (also: #skip_download_cache?)
     
   
@@ -240,97 +163,28 @@ Whether CocoaPods should produce not output.
 
 Whether the installer should skip the download cache.
 
-  
-
-    
-  
-
-  
 ## Cache collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**cache_root**  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    
 
 The directory where CocoaPods should cache remote data and other expensive to compute information.
 
-  
-
-    
-  
-
-  
 ## Initialization collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**verbose**  ⇒ Boolean 
-    
-
-    
-  
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    
 
 Whether CocoaPods should provide detailed output about the performed actions.
 
-  
-
-    
-  
-
-  
 ## Paths collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**installation_root**  ⇒ Pathname 
-    
 
-    
       (also: #project_root)
     
   
@@ -350,70 +204,20 @@ Whether CocoaPods should provide detailed output about the performed actions.
 
 The root of the CocoaPods installation where the Podfile is located.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**podfile**  ⇒ Podfile, Nil 
-    
 
-    
+-
   
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-    
-      
-- 
-  
-    
       #**repos_dir**  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    
 
 The directory where the CocoaPods sources are stored.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**sandbox_root**  ⇒ Pathname 
-    
 
-    
       (also: #project_pods_root)
     
   
@@ -433,50 +237,16 @@ The directory where the CocoaPods sources are stored.
 
 The root of the sandbox.
 
-  
-
-    
-  
-
-  
 ## Singleton collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       .**instance**  ⇒ Config 
-    
-
-    
-  
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    
 
 The current config instance creating one if needed.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       UI
       collapse
     
@@ -485,9 +255,8 @@ The current config instance creating one if needed.
 
       
         
-- 
+-
   
-    
       #**verbose?**  ⇒ Boolean 
     
 
@@ -506,14 +275,8 @@ The current config instance creating one if needed.
 
 Whether CocoaPods should provide detailed output about the performed actions.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Initialization
       collapse
     
@@ -522,9 +285,8 @@ Whether CocoaPods should provide detailed output about the performed actions.
 
       
         
-- 
+-
   
-    
       #**initialize**(use_user_settings = true)  ⇒ Config 
     
 
@@ -545,14 +307,8 @@ Whether CocoaPods should provide detailed output about the performed actions.
 
 A new instance of Config.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Paths
       collapse
     
@@ -561,9 +317,8 @@ A new instance of Config.
 
       
         
-- 
+-
   
-    
       #**default_podfile_path**  ⇒ Pathname 
     
 
@@ -582,236 +337,60 @@ A new instance of Config.
 
 Returns the path of the default Podfile pods.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**default_test_podfile_path**  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Returns the path of the default Podfile test pods.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**home_dir**  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The directory where repos, templates and configuration files are stored.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**lockfile**  ⇒ Lockfile, Nil 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**lockfile_path**  ⇒ Object 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Returns the path of the Lockfile.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**podfile_path**  ⇒ Pathname, Nil 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Returns the path of the Podfile.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**sandbox**  ⇒ Sandbox 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The sandbox of the current project.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**search_index_file**  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The file to use to cache the search data.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**sources_manager**  ⇒ Source::Manager 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The source manager for the spec repos in `repos_dir`.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**templates_dir**  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The directory where the CocoaPods templates are stored.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Private helpers
       collapse
     
@@ -820,9 +399,8 @@ The directory where the CocoaPods templates are stored.
 
       
         
-- 
+-
   
-    
       #**exclude_from_backup**(dir)  ⇒ void 
     
 
@@ -841,39 +419,14 @@ The directory where the CocoaPods templates are stored.
 
 Excludes the given dir from Time Machine backups.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**podfile_path_in_dir**(dir)  ⇒ Pathname, Nil 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Returns the path of the Podfile in the given dir if any exists.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -882,9 +435,8 @@ Returns the path of the Podfile in the given dir if any exists.
 
       
         
-- 
+-
   
-    
       #**with_changes**(changes) { ... } ⇒ Object 
     
 
@@ -903,20 +455,9 @@ Returns the path of the Podfile in the given dir if any exists.
 
 Applies the given changes to the config for the duration of the given block.
 
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(use_user_settings = true)  ⇒ Config 
   
@@ -929,14 +470,6 @@ Applies the given changes to the config for the duration of the given block.
     
 
 Returns a new instance of Config.
-
-  
-
-  
-
-  
-    
-      
 
 ```
 
@@ -959,10 +492,6 @@ Returns a new instance of Config.
 121
 122
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 105
@@ -987,21 +516,9 @@ def initialize(use_user_settings = true)
 end
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Class Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     .**instance**  ⇒ Config 
   
@@ -1015,31 +532,11 @@ end
 
 Returns the current config instance creating one if needed.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the current config instance creating one if needed.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1047,10 +544,6 @@ the current config instance creating one if needed.
 344
 345
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 343
@@ -1060,22 +553,9 @@ def self.instance
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**allow_root**  ⇒ Boolean 
   
@@ -1093,31 +573,11 @@ end
 
 Returns Whether CocoaPods is allowed to run as root.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 Whether CocoaPods is allowed to run as root.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1125,10 +585,6 @@ Whether CocoaPods is allowed to run as root.
 66
 67
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 65
@@ -1138,15 +594,7 @@ def allow_root
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**cache_root**  ⇒ Pathname 
   
@@ -1160,31 +608,11 @@ end
 
 Returns The directory where CocoaPods should cache remote data and other expensive to compute information.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The directory where CocoaPods should cache remote data and other expensive to compute information.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1192,10 +620,6 @@ The directory where CocoaPods should cache remote data and other expensive to co
 93
 94
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 92
@@ -1205,15 +629,7 @@ def cache_root
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**installation_root**  ⇒ Pathname 
   
@@ -1231,31 +647,11 @@ end
 
 Returns the root of the CocoaPods installation where the Podfile is located.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the root of the CocoaPods installation where the Podfile is located.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1278,10 +674,6 @@ the root of the CocoaPods installation where the Podfile is located.
 181
 182
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 165
@@ -1306,15 +698,7 @@ def installation_root
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**new_version_message**  ⇒ Boolean 
   
@@ -1332,31 +716,11 @@ end
 
 Returns Whether a message should be printed when a new version of CocoaPods is available.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 Whether a message should be printed when a new version of CocoaPods is available.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1364,10 +728,6 @@ Whether a message should be printed when a new version of CocoaPods is available
 72
 73
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 71
@@ -1377,15 +737,7 @@ def new_version_message
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**podfile**  ⇒ Podfile, Nil 
   
@@ -1397,45 +749,15 @@ end
   
     
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The Podfile to use for the current execution.
 
-      
-    
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 If no Podfile is available.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1443,10 +765,6 @@ If no Podfile is available.
 206
 207
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 205
@@ -1456,15 +774,7 @@ def podfile
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**repos_dir**  ⇒ Pathname 
   
@@ -1478,31 +788,11 @@ end
 
 Returns the directory where the CocoaPods sources are stored.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the directory where the CocoaPods sources are stored.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1510,10 +800,6 @@ the directory where the CocoaPods sources are stored.
 144
 145
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 143
@@ -1523,15 +809,7 @@ def repos_dir
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**sandbox_root**  ⇒ Pathname 
   
@@ -1549,31 +827,11 @@ end
 
 Returns The root of the sandbox.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The root of the sandbox.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1581,10 +839,6 @@ The root of the sandbox.
 190
 191
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 189
@@ -1594,15 +848,7 @@ def sandbox_root
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**silent**  ⇒ Boolean 
   
@@ -1620,31 +866,11 @@ end
 
 Returns Whether CocoaPods should produce not output.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 Whether CocoaPods should produce not output.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1652,10 +878,6 @@ Whether CocoaPods should produce not output.
 61
 62
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 60
@@ -1665,15 +887,7 @@ def silent
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**skip_download_cache**  ⇒ Boolean 
   
@@ -1691,31 +905,11 @@ end
 
 Returns Whether the installer should skip the download cache.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 Whether the installer should skip the download cache.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1723,10 +917,6 @@ Whether the installer should skip the download cache.
 81
 82
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 80
@@ -1736,15 +926,7 @@ def skip_download_cache
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**verbose**  ⇒ Boolean 
   
@@ -1758,31 +940,11 @@ end
 
 Returns Whether CocoaPods should provide detailed output about the performed actions.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 Whether CocoaPods should provide detailed output about the performed actions.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1790,10 +952,6 @@ Whether CocoaPods should provide detailed output about the performed actions.
 56
 57
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 55
@@ -1803,20 +961,9 @@ def verbose
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**default_podfile_path**  ⇒ Pathname 
   
@@ -1833,29 +980,11 @@ end
 
 The file is expected to be named Podfile.default
 
-  
-
 Returns the path of the default Podfile pods.
-
-  
-
-  
 
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-    
-  
-
-  
-    
-      
+-
 
 ```
 
@@ -1863,10 +992,6 @@ Returns:
 245
 246
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 244
@@ -1876,13 +1001,7 @@ def default_podfile_path
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**default_test_podfile_path**  ⇒ Pathname 
   
@@ -1899,29 +1018,11 @@ end
 
 The file is expected to be named Podfile.test
 
-  
-
 Returns the path of the default Podfile test pods.
-
-  
-
-  
 
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-    
-  
-
-  
-    
-      
+-
 
 ```
 
@@ -1929,10 +1030,6 @@ Returns:
 255
 256
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 254
@@ -1942,13 +1039,7 @@ def default_test_podfile_path
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**exclude_from_backup**(dir)  ⇒ void 
   
@@ -1964,31 +1055,11 @@ This method returns an undefined value.
 
 Excludes the given dir from Time Machine backups.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The directory to exclude from Time Machine backups.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1997,10 +1068,6 @@ The directory to exclude from Time Machine backups.
 332
 333
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 330
@@ -2011,13 +1078,7 @@ def exclude_from_backup(dir)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**home_dir**  ⇒ Pathname 
   
@@ -2031,31 +1092,11 @@ end
 
 Returns the directory where repos, templates and configuration files are stored.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the directory where repos, templates and configuration files are stored.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2063,10 +1104,6 @@ the directory where repos, templates and configuration files are stored.
 138
 139
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 137
@@ -2076,13 +1113,7 @@ def home_dir
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**lockfile**  ⇒ Lockfile, Nil 
   
@@ -2094,45 +1125,15 @@ end
   
     
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The Lockfile to use for the current execution.
 
-      
-    
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 If no Lockfile is available.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2140,10 +1141,6 @@ If no Lockfile is available.
 214
 215
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 213
@@ -2153,13 +1150,7 @@ def lockfile
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**lockfile_path**  ⇒ Object 
   
@@ -2176,17 +1167,7 @@ end
 
 The Lockfile is named `Podfile.lock`.
 
-  
-
 Returns the path of the Lockfile.
-
-  
-
-  
-
-  
-    
-      
 
 ```
 
@@ -2194,10 +1175,6 @@ Returns the path of the Lockfile.
 235
 236
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 234
@@ -2207,13 +1184,7 @@ def lockfile_path
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**podfile_path**  ⇒ Pathname, Nil 
   
@@ -2230,37 +1201,13 @@ end
 
 The Podfile can be named either `CocoaPods.podfile.yaml`, `CocoaPods.podfile` or `Podfile`.  The first two are preferred as they allow to specify an OS X UTI.
 
-  
-
 Returns the path of the Podfile.
-
-  
-
-  
 
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-    
-  
-    
-- 
-      
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+-
 
 ```
 
@@ -2268,10 +1215,6 @@ Returns:
 227
 228
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 226
@@ -2281,13 +1224,7 @@ def podfile_path
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**podfile_path_in_dir**(dir)  ⇒ Pathname, Nil 
   
@@ -2301,63 +1238,21 @@ end
 
 Returns the path of the Podfile in the given dir if any exists.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The directory where to look for the Podfile.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The path of the Podfile.
 
-      
-    
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 If not Podfile was found in the given dir
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2371,10 +1266,6 @@ If not Podfile was found in the given dir
 320
 321
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 313
@@ -2390,13 +1281,7 @@ def podfile_path_in_dir(dir)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**sandbox**  ⇒ Sandbox 
   
@@ -2410,31 +1295,11 @@ end
 
 Returns The sandbox of the current project.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The sandbox of the current project.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2442,10 +1307,6 @@ The sandbox of the current project.
 199
 200
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 198
@@ -2455,13 +1316,7 @@ def sandbox
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**search_index_file**  ⇒ Pathname 
   
@@ -2475,31 +1330,11 @@ end
 
 Returns The file to use to cache the search data.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 The file to use to cache the search data.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2507,10 +1342,6 @@ The file to use to cache the search data.
 261
 262
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 260
@@ -2520,13 +1351,7 @@ def search_index_file
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**sources_manager**  ⇒ Source::Manager 
   
@@ -2540,31 +1365,11 @@ end
 
 Returns the source manager for the spec repos in `repos_dir`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the source manager for the spec repos in `repos_dir`
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2573,10 +1378,6 @@ the source manager for the spec repos in `repos_dir`
 153
 154
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 151
@@ -2587,13 +1388,7 @@ def sources_manager
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**templates_dir**  ⇒ Pathname 
   
@@ -2607,31 +1402,11 @@ end
 
 Returns the directory where the CocoaPods templates are stored.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the directory where the CocoaPods templates are stored.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2639,10 +1414,6 @@ the directory where the CocoaPods templates are stored.
 159
 160
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 158
@@ -2652,13 +1423,7 @@ def templates_dir
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**verbose?**  ⇒ Boolean 
   
@@ -2672,31 +1437,11 @@ end
 
 Returns Whether CocoaPods should provide detailed output about the performed actions.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 Whether CocoaPods should provide detailed output about the performed actions.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2704,10 +1449,6 @@ Whether CocoaPods should provide detailed output about the performed actions.
 57
 58
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 56
@@ -2717,13 +1458,7 @@ def verbose
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**with_changes**(changes) { ... } ⇒ Object 
   
@@ -2737,51 +1472,17 @@ end
 
 Applies the given changes to the config for the duration of the given block.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
-      
-      
-      
-        
-        
+-
 
 the changes to merge temporarily with the current config
 
-      
-    
-  
-
 Yields:
 
-  
-    
-- 
-      
-      
-        
-      
-      
-      
-        
-        
+-
 
 is called while the changes are applied
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -2797,10 +1498,6 @@ is called while the changes are applied
 43
 44
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/config.rb', line 34

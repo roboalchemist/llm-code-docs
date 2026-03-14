@@ -1,10 +1,5 @@
 # Class: Pod::Generator::InfoPlistFile
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,63 +8,25 @@
 
           
 - Object
-          
-            
+
 - Pod::Generator::InfoPlistFile
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/generator/info_plist_file.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Generates Info.plist files. A Info.plist file is generated for each Pod and for each Pod target definition, that requires to be built as framework. It states public attributes.
 
-  
-
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**additional_entries**  ⇒ Hash 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -84,22 +41,10 @@ Generates Info.plist files. A Info.plist file is generated for each Pod and for 
 
 Any additional entries to include in this Info.plist.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**bundle_package_type**  ⇒ Symbol 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -114,22 +59,10 @@ Any additional entries to include in this Info.plist.
 
 The CFBundlePackageType of the target this Info.plist file is for.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**platform**  ⇒ Platform 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -144,22 +77,10 @@ The CFBundlePackageType of the target this Info.plist file is for.
 
 The platform to use for when generating this Info.plist file.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**version**  ⇒ String 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -174,14 +95,8 @@ The platform to use for when generating this Info.plist file.
 
 Version The version to use for when generating this Info.plist file.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -190,9 +105,8 @@ Version The version to use for when generating this Info.plist file.
 
       
         
-- 
+-
   
-    
       #**generate**  ⇒ String 
     
 
@@ -211,20 +125,10 @@ Version The version to use for when generating this Info.plist file.
 
 Generates the contents of the Info.plist.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**initialize**(version, platform, bundle_package_type = :fmwk, additional_entries = {})  ⇒ InfoPlistFile 
-    
 
-    
-  
-  
-  
     constructor
   
   
@@ -238,45 +142,15 @@ Generates the contents of the Info.plist.
 
 Initialize a new instance.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**save_as**(path)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Generates and saves the Info.plist to the given path.
 
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(version, platform, bundle_package_type = :fmwk, additional_entries = {})  ⇒ InfoPlistFile 
   
@@ -290,19 +164,12 @@ Generates and saves the Info.plist to the given path.
 
 Initialize a new instance
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         version
-      
-      
+
         (String)
       
       
@@ -312,15 +179,10 @@ Parameters:
 
 @see #version
 
-      
-    
-  
-    
-- 
-      
+-
+
         platform
-      
-      
+
         (Platform)
       
       
@@ -330,15 +192,10 @@ Parameters:
 
 @see #platform
 
-      
-    
-  
-    
-- 
-      
+-
+
         bundle_package_type
-      
-      
+
         (Symbol)
       
       
@@ -350,15 +207,10 @@ Parameters:
 
 @see #bundle_package_type
 
-      
-    
-  
-    
-- 
-      
+-
+
         additional_entries
-      
-      
+
         (Hash)
       
       
@@ -370,14 +222,6 @@ Parameters:
 
 @see #additional_entries
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 32
@@ -387,10 +231,6 @@ Parameters:
 36
 37
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/info_plist_file.rb', line 32
@@ -403,21 +243,9 @@ def initialize(version, platform, bundle_package_type = :fmwk, additional_entrie
 end
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**additional_entries**  ⇒ Hash  (readonly)
   
@@ -431,33 +259,16 @@ end
 
 Returns any additional entries to include in this Info.plist.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Hash)
-      
-      
-      
+
         —
         
 
 any additional entries to include in this Info.plist
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -465,10 +276,6 @@ any additional entries to include in this Info.plist
 24
 25
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/info_plist_file.rb', line 23
@@ -478,15 +285,7 @@ def additional_entries
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**bundle_package_type**  ⇒ Symbol  (readonly)
   
@@ -500,33 +299,16 @@ end
 
 Returns the CFBundlePackageType of the target this Info.plist file is for.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Symbol)
-      
-      
-      
+
         —
         
 
 the CFBundlePackageType of the target this Info.plist file is for.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -534,10 +316,6 @@ the CFBundlePackageType of the target this Info.plist file is for.
 20
 21
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/info_plist_file.rb', line 19
@@ -547,15 +325,7 @@ def bundle_package_type
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**platform**  ⇒ Platform  (readonly)
   
@@ -569,33 +339,16 @@ end
 
 Returns The platform to use for when generating this Info.plist file.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Platform)
-      
-      
-      
+
         —
         
 
 The platform to use for when generating this Info.plist file.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -603,10 +356,6 @@ The platform to use for when generating this Info.plist file.
 15
 16
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/info_plist_file.rb', line 14
@@ -616,15 +365,7 @@ def platform
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**version**  ⇒ String  (readonly)
   
@@ -638,33 +379,16 @@ end
 
 Returns version The version to use for when generating this Info.plist file.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 version The version to use for when generating this Info.plist file.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -672,10 +396,6 @@ version The version to use for when generating this Info.plist file.
 11
 12
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/info_plist_file.rb', line 10
@@ -685,20 +405,9 @@ def version
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**generate**  ⇒ String 
   
@@ -712,27 +421,11 @@ end
 
 Generates the contents of the Info.plist
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (String)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (String)
 
 ```
 
@@ -740,10 +433,6 @@ Returns:
 58
 59
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/info_plist_file.rb', line 57
@@ -753,13 +442,7 @@ def generate
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**save_as**(path)  ⇒ void 
   
@@ -775,19 +458,12 @@ This method returns an undefined value.
 
 Generates and saves the Info.plist to the given path.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         path
-      
-      
+
         (Pathname)
       
       
@@ -796,14 +472,6 @@ Parameters:
         
 
 the path where the prefix header should be stored.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -814,10 +482,6 @@ the path where the prefix header should be stored.
 50
 51
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/info_plist_file.rb', line 46

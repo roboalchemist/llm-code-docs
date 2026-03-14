@@ -1,10 +1,5 @@
 # Class: Pod::Installer
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,11 +8,8 @@
 
           
 - Object
-          
-            
+
 - Pod::Installer
-          
-        
 
         show all
       
@@ -32,13 +24,6 @@
   
       Includes:
       Config::Mixin
-  
-  
-  
-
-  
-
-  
   
     Defined in:
     lib/cocoapods/installer.rb,
@@ -97,13 +82,7 @@
  lib/cocoapods/installer/user_project_integrator/target_integrator/xcconfig_integrator.rb,
  lib/cocoapods/installer/xcode/pods_project_generator/aggregate_target_dependency_installer.rb
 
-  
-  
-
 ## Overview
-
-  
-    
 
 The Installer is responsible of taking a Podfile and transform it in the Pods libraries. It also integrates the user project so the Pods libraries can be used out of the box.
 
@@ -128,14 +107,8 @@ The Installer gets the information that it needs mainly from 3 files:
 
 The Installer is designed to work in environments where the Podfile folder is under source control and environments where it is not. The rest of the files, like the user project and the workspace are assumed to be under source control.
 
-  
-
-  
-
 ## Defined Under Namespace
 
-  
-    
       **Modules:** ProjectCache
     
   
@@ -146,7 +119,8 @@ The Installer is designed to work in environments where the Podfile folder is un
 
   
     
-## 
+##
+
       Constant Summary
       collapse
     
@@ -163,29 +137,12 @@ The Installer is designed to work in environments where the Podfile folder is un
 
 ```
 
-      
-    
-  
-
-  
 ## Installation results collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**aggregate_targets**  ⇒ Array<AggregateTarget> 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -200,22 +157,10 @@ The Installer is designed to work in environments where the Podfile folder is un
 
 The model representations of an aggregation of pod targets generated for a target definition in the Podfile as result of the analyzer.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**analysis_result**  ⇒ Analyzer::AnalysisResult 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -230,22 +175,10 @@ The model representations of an aggregation of pod targets generated for a targe
 
 The result of the analysis performed during installation.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**generated_aggregate_targets**  ⇒ Array<AggregateTarget> 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -260,22 +193,10 @@ The result of the analysis performed during installation.
 
 The list of aggregate targets that were generated from the installation.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**generated_pod_targets**  ⇒ Array<PodTarget> 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -290,22 +211,10 @@ The list of aggregate targets that were generated from the installation.
 
 The list of pod targets that were generated from the installation.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**generated_projects**  ⇒ Array<Project> 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -320,50 +229,16 @@ The list of pod targets that were generated from the installation.
 
 The list of projects generated from the installation.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**installed_specs**  ⇒ Array<Specification> 
-    
-
-    
-  
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    
 
 The specifications that were installed.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**pod_target_subprojects**  ⇒ Array<Pod::Project> 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -378,22 +253,10 @@ The specifications that were installed.
 
 The subprojects nested under pods_project.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**pod_targets**  ⇒ Array<PodTarget> 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -408,22 +271,10 @@ The subprojects nested under pods_project.
 
 The model representations of pod targets generated as result of the analyzer.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**pods_project**  ⇒ Pod::Project 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -438,22 +289,10 @@ The model representations of pod targets generated as result of the analyzer.
 
 The `Pods/Pods.xcodeproj` project.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**target_installation_results**  ⇒ Array<Hash{String, TargetInstallationResult}> 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -468,25 +307,12 @@ The `Pods/Pods.xcodeproj` project.
 
 The installation results produced by the pods project generator.
 
-  
-
-    
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**clean_install**  ⇒ Boolean 
-    
 
-    
       (also: #clean_install?)
     
   
@@ -506,17 +332,10 @@ The installation results produced by the pods project generator.
 
 when incremental installation is enabled.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**deployment**  ⇒ Boolean 
-    
 
-    
       (also: #deployment?)
     
   
@@ -536,17 +355,10 @@ when incremental installation is enabled.
 
 Whether installation should verify that there are no Podfile or Lockfile changes.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**has_dependencies**  ⇒ Boolean 
-    
 
-    
       (also: #has_dependencies?)
     
   
@@ -566,22 +378,10 @@ Whether installation should verify that there are no Podfile or Lockfile changes
 
 Whether it has dependencies.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**lockfile**  ⇒ Lockfile 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -596,22 +396,10 @@ Whether it has dependencies.
 
 The Lockfile that stores the information about the Pods previously installed on any machine.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**podfile**  ⇒ Podfile 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -626,17 +414,10 @@ The Lockfile that stores the information about the Pods previously installed on 
 
 The Podfile specification that contains the information of the Pods that should be installed.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**repo_update**  ⇒ Boolean 
-    
 
-    
       (also: #repo_update?)
     
   
@@ -656,22 +437,10 @@ The Podfile specification that contains the information of the Pods that should 
 
 Whether the spec repos should be updated.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**sandbox**  ⇒ Sandbox 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -686,45 +455,16 @@ Whether the spec repos should be updated.
 
 The sandbox where the Pods should be installed.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**update**  ⇒ Hash, ... 
-    
-
-    
-  
-  
-  
-  
-    
-    
-  
-  
-  
-  
-  
-
-  
-    
 
 Pods that have been requested to be updated or true if all Pods should be updated.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**use_default_plugins**  ⇒ Boolean 
-    
 
-    
       (also: #use_default_plugins?)
     
   
@@ -744,14 +484,8 @@ Pods that have been requested to be updated or true if all Pods should be update
 
 Whether default plugins should be used during installation.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Hooks
       collapse
     
@@ -760,9 +494,8 @@ Whether default plugins should be used during installation.
 
       
         
-- 
+-
   
-    
       #**development_pod_targets**(targets = pod_targets)  ⇒ Array<PodTarget> 
     
 
@@ -781,14 +514,8 @@ Whether default plugins should be used during installation.
 
 The targets of the development pods generated by the installation process.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Convenience Methods
       collapse
     
@@ -797,9 +524,8 @@ The targets of the development pods generated by the installation process.
 
       
         
-- 
+-
   
-    
       .**targets_from_sandbox**(sandbox, podfile, lockfile)  ⇒ Object 
     
 
@@ -822,7 +548,8 @@ The targets of the development pods generated by the installation process.
 
   
     
-## 
+##
+
       Instance Method Summary
       collapse
     
@@ -831,9 +558,8 @@ The targets of the development pods generated by the installation process.
 
       
         
-- 
+-
   
-    
       #**analyze_project_cache**  ⇒ Object 
     
 
@@ -853,9 +579,8 @@ The targets of the development pods generated by the installation process.
 
       
         
-- 
+-
   
-    
       #**download_dependencies**  ⇒ Object 
     
 
@@ -875,9 +600,8 @@ The targets of the development pods generated by the installation process.
 
       
         
-- 
+-
   
-    
       #**initialize**(sandbox, podfile, lockfile = nil)  ⇒ Installer 
     
 
@@ -898,176 +622,43 @@ The targets of the development pods generated by the installation process.
 
 Initialize a new instance.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**install!**  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Installs the Pods.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**integrate**  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**prepare**  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**resolve_dependencies**  ⇒ Analyzer 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The analyzer used to resolve dependencies.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**show_skip_pods_project_generation_message**  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**stage_sandbox**(sandbox, pod_targets)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Stages the sandbox after analysis.
 
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Config::Mixin
 
-  
+# config
 
-#config
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(sandbox, podfile, lockfile = nil)  ⇒ Installer 
   
@@ -1081,14 +672,6 @@ Stages the sandbox after analysis.
 
 Initialize a new instance
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 76
@@ -1101,10 +684,6 @@ Initialize a new instance
 83
 84
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer.rb', line 76
@@ -1121,21 +700,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**aggregate_targets**  ⇒ Array<AggregateTarget>  (readonly)
   
@@ -1155,10 +722,6 @@ end
 388
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 386
 
@@ -1168,15 +731,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**analysis_result**  ⇒ Analyzer::AnalysisResult  (readonly)
   
@@ -1196,10 +751,6 @@ end
 369
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 367
 
@@ -1209,15 +760,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**clean_install**  ⇒ Boolean 
   
@@ -1235,24 +778,12 @@ end
 
 when incremental installation is enabled.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 118
 119
 120
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer.rb', line 118
@@ -1263,15 +794,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**deployment**  ⇒ Boolean 
   
@@ -1295,10 +818,6 @@ end
 114
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 112
 
@@ -1308,15 +827,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**generated_aggregate_targets**  ⇒ Array<AggregateTarget>  (readonly)
   
@@ -1336,10 +847,6 @@ end
 405
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 403
 
@@ -1349,15 +856,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**generated_pod_targets**  ⇒ Array<PodTarget>  (readonly)
   
@@ -1377,10 +876,6 @@ end
 401
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 399
 
@@ -1390,15 +885,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**generated_projects**  ⇒ Array<Project>  (readonly)
   
@@ -1418,10 +905,6 @@ end
 397
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 395
 
@@ -1431,15 +914,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**has_dependencies**  ⇒ Boolean 
   
@@ -1463,10 +938,6 @@ end
 97
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 95
 
@@ -1476,15 +947,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**installed_specs**  ⇒ Array<Specification> 
   
@@ -1504,10 +967,6 @@ end
 409
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 407
 
@@ -1517,15 +976,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**lockfile**  ⇒ Lockfile  (readonly)
   
@@ -1545,10 +996,6 @@ end
 70
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 68
 
@@ -1558,15 +1005,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**pod_target_subprojects**  ⇒ Array<Pod::Project>  (readonly)
   
@@ -1586,10 +1025,6 @@ end
 382
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 380
 
@@ -1599,15 +1034,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**pod_targets**  ⇒ Array<PodTarget>  (readonly)
   
@@ -1627,10 +1054,6 @@ end
 393
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 391
 
@@ -1640,15 +1063,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**podfile**  ⇒ Podfile  (readonly)
   
@@ -1668,10 +1083,6 @@ end
 65
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 63
 
@@ -1681,15 +1092,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**pods_project**  ⇒ Pod::Project  (readonly)
   
@@ -1709,10 +1112,6 @@ end
 378
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 376
 
@@ -1722,15 +1121,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**repo_update**  ⇒ Boolean 
   
@@ -1754,10 +1145,6 @@ end
 102
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 100
 
@@ -1767,15 +1154,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**sandbox**  ⇒ Sandbox  (readonly)
   
@@ -1795,10 +1174,6 @@ end
 60
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 58
 
@@ -1808,15 +1183,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**target_installation_results**  ⇒ Array<Hash{String, TargetInstallationResult}>  (readonly)
   
@@ -1836,10 +1203,6 @@ end
 374
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 372
 
@@ -1849,15 +1212,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**update**  ⇒ Hash, ... 
   
@@ -1877,10 +1232,6 @@ end
 93
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 91
 
@@ -1890,15 +1241,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**use_default_plugins**  ⇒ Boolean 
   
@@ -1922,10 +1265,6 @@ end
 108
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 106
 
@@ -1935,20 +1274,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**targets_from_sandbox**(sandbox, podfile, lockfile)  ⇒ Object 
   
@@ -1960,27 +1288,11 @@ end
   
     
 
-  
-
-  
-
 Raises:
 
-  
-    
-- 
-      
-      
-        (Informative)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Informative)
 
 ```
 
@@ -2001,10 +1313,6 @@ Raises:
 1107
 1108
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer.rb', line 1093
@@ -2028,20 +1336,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**analyze_project_cache**  ⇒ Object 
   
@@ -2084,10 +1381,6 @@ end
 216
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 191
 
@@ -2120,13 +1413,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**development_pod_targets**(targets = pod_targets)  ⇒ Array<PodTarget> 
   
@@ -2148,10 +1435,6 @@ end
 1060
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 1056
 
@@ -2163,13 +1446,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**download_dependencies**  ⇒ Object 
   
@@ -2193,10 +1470,6 @@ end
 262
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 256
 
@@ -2210,13 +1483,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**install!**  ⇒ void 
   
@@ -2234,21 +1501,13 @@ Installs the Pods.
 
 The installation process is mostly linear with a few minor complications to keep in mind:
 
-- 
+-
 
 The stored podspecs need to be cleaned before the resolution step otherwise the sandbox might return an old podspec and not download the new one from an external source.
 
-- 
+-
 
 The resolver might trigger the download of Pods from external sources necessary to retrieve their podspec (unless it is instructed not to do it).
-
-  
-
-  
-
-  
-    
-      
 
 ```
 
@@ -2268,10 +1527,6 @@ The resolver might trigger the download of Pods from external sources necessary 
 173
 174
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer.rb', line 160
@@ -2294,13 +1549,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**integrate**  ⇒ Object 
   
@@ -2326,10 +1575,6 @@ end
 189
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 181
 
@@ -2345,13 +1590,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**prepare**  ⇒ Object 
   
@@ -2382,10 +1621,6 @@ end
 231
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 218
 
@@ -2406,13 +1641,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**resolve_dependencies**  ⇒ Analyzer 
   
@@ -2449,10 +1678,6 @@ end
 254
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 235
 
@@ -2479,13 +1704,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**show_skip_pods_project_generation_message**  ⇒ Object 
   
@@ -2506,10 +1725,6 @@ end
 179
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/installer.rb', line 176
 
@@ -2520,13 +1735,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**stage_sandbox**(sandbox, pod_targets)  ⇒ void 
   
@@ -2542,24 +1751,12 @@ This method returns an undefined value.
 
 Stages the sandbox after analysis.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 274
 275
 276
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer.rb', line 274

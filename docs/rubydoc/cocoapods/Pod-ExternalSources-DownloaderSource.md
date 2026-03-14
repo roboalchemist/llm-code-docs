@@ -1,10 +1,5 @@
 # Class: Pod::ExternalSources::DownloaderSource
   
-  
-  
-
-  
-  
     Inherits:
     
       AbstractExternalSource
@@ -13,68 +8,34 @@
 
           
 - Object
-          
-            
+
 - AbstractExternalSource
-          
-            
+
 - Pod::ExternalSources::DownloaderSource
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/external_sources/downloader_source.rb
   
-  
-
 ## Overview
 
-  
-    
-  
     **Note:**
     
 
 The podspec must be in the root of the repository and should have a name matching the one of the dependency.
 
-  
-
 Provides support for fetching a specification file from a source handled by the downloader. Supports all the options of the downloader
 
-  
-
-  
-
-  
 ## Instance Attribute Summary
 
-  
-  
 ### Attributes inherited from AbstractExternalSource
 
-  
+# can_cache, #name, #params, #podfile_path
 
-#can_cache, #name, #params, #podfile_path
+##
 
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -83,9 +44,8 @@ Provides support for fetching a specification file from a source handled by the 
 
       
         
-- 
+-
   
-    
       #**description**  ⇒ Object 
     
 
@@ -105,9 +65,8 @@ Provides support for fetching a specification file from a source handled by the 
 
       
         
-- 
+-
   
-    
       #**fetch**(sandbox)  ⇒ Object 
     
 
@@ -128,40 +87,17 @@ Provides support for fetching a specification file from a source handled by the 
       
     
 
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from AbstractExternalSource
 
-  
+# ==, #initialize
 
-#==, #initialize
-
-  
 ## Constructor Details
-
-  
-    
 
 This class inherits a constructor from Pod::ExternalSources::AbstractExternalSource
   
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**description**  ⇒ Object 
   
@@ -173,24 +109,9 @@ This class inherits a constructor from Pod::ExternalSources::AbstractExternalSou
   
     
 
-  
-
-  
-
-  
-
 See Also:
   
-
-    
-      
 - AbstractExternalSource#description
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -205,10 +126,6 @@ See Also:
 26
 27
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/external_sources/downloader_source.rb', line 18
@@ -225,13 +142,7 @@ def description
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**fetch**(sandbox)  ⇒ Object 
   
@@ -243,24 +154,9 @@ end
   
     
 
-  
-
-  
-
-  
-
 See Also:
   
-
-    
-      
 - AbstractExternalSource#fetch
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -268,10 +164,6 @@ See Also:
 13
 14
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/external_sources/downloader_source.rb', line 12

@@ -1,10 +1,5 @@
 # Class: Pod::Command::Spec::Cat
   
-  
-  
-
-  
-  
     Inherits:
     
       Pod::Command::Spec
@@ -13,45 +8,23 @@
 
           
 - Object
-          
-            
+
 - CLAide::Command
-          
-            
+
 - Pod::Command
-          
-            
+
 - Pod::Command::Spec
-          
-            
+
 - Pod::Command::Spec::Cat
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/command/spec/cat.rb
   
-  
+##
 
-  
-    
-## 
       Class Method Summary
       collapse
     
@@ -60,9 +33,8 @@
 
       
         
-- 
+-
   
-    
       .**options**  ⇒ Object 
     
 
@@ -85,7 +57,8 @@
 
   
     
-## 
+##
+
       Instance Method Summary
       collapse
     
@@ -94,9 +67,8 @@
 
       
         
-- 
+-
   
-    
       #**initialize**(argv)  ⇒ Cat 
     
 
@@ -117,107 +89,25 @@
 
 A new instance of Cat.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**run**  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**validate!**  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Pod::Command
 
-  
+# ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, report_error, run
 
-#ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, report_error, run
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Pod::Config::Mixin
 
-  
+# config
 
-#config
-
-  
-  
-  
-  
-  
-  
-  
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(argv)  ⇒ Cat 
   
@@ -231,14 +121,6 @@ A new instance of Cat.
 
 Returns a new instance of Cat.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 23
@@ -250,10 +132,6 @@ Returns a new instance of Cat.
 29
 30
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/spec/cat.rb', line 23
@@ -269,19 +147,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**options**  ⇒ Object 
   
@@ -305,10 +173,6 @@ end
 21
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/spec/cat.rb', line 15
 
@@ -322,20 +186,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**run**  ⇒ Object 
   
@@ -364,10 +217,6 @@ end
 49
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/spec/cat.rb', line 38
 
@@ -386,13 +235,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**validate!**  ⇒ Object 
   
@@ -413,10 +256,6 @@ end
 35
 36
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/spec/cat.rb', line 32

@@ -1,10 +1,5 @@
 # Class: Pod::HooksManager::Hook
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,63 +8,25 @@
 
           
 - Object
-          
-            
+
 - Pod::HooksManager::Hook
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/hooks_manager.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Represents a single registered hook.
 
-  
-
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**block**  ⇒ Proc 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -84,22 +41,10 @@ Represents a single registered hook.
 
 The block.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**name**  ⇒ String 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -114,22 +59,10 @@ The block.
 
 The name of the hook.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**plugin_name**  ⇒ String 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -144,14 +77,8 @@ The name of the hook.
 
 The name of the plugin that registered the hook.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -160,9 +87,8 @@ The name of the plugin that registered the hook.
 
       
         
-- 
+-
   
-    
       #**initialize**(name, plugin_name, block)  ⇒ Hook 
     
 
@@ -183,20 +109,9 @@ The name of the plugin that registered the hook.
 
 Initialize a new instance.
 
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(name, plugin_name, block)  ⇒ Hook 
   
@@ -210,19 +125,12 @@ Initialize a new instance.
 
 Initialize a new instance
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         name
-      
-      
+
         (String)
       
       
@@ -232,15 +140,10 @@ Parameters:
 
 @see #name.
 
-      
-    
-  
-    
-- 
-      
+-
+
         plugin_name
-      
-      
+
         (String)
       
       
@@ -250,15 +153,10 @@ Parameters:
 
 @see #plugin_name.
 
-      
-    
-  
-    
-- 
-      
+-
+
         block
-      
-      
+
         (Proc)
       
       
@@ -268,27 +166,11 @@ Parameters:
 
 @see #block.
 
-      
-    
-  
-
 Raises:
 
-  
-    
-- 
-      
-      
-        (ArgumentError)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (ArgumentError)
 
 ```
 
@@ -302,10 +184,6 @@ Raises:
 52
 53
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/hooks_manager.rb', line 45
@@ -321,21 +199,9 @@ def initialize(name, plugin_name, block)
 end
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**block**  ⇒ Proc  (readonly)
   
@@ -349,33 +215,16 @@ end
 
 Returns The block.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Proc)
-      
-      
-      
+
         —
         
 
 The block.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -383,10 +232,6 @@ The block.
 36
 37
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/hooks_manager.rb', line 35
@@ -396,15 +241,7 @@ def block
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**name**  ⇒ String  (readonly)
   
@@ -418,33 +255,16 @@ end
 
 Returns The name of the hook.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The name of the hook.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -452,10 +272,6 @@ The name of the hook.
 31
 32
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/hooks_manager.rb', line 30
@@ -465,15 +281,7 @@ def name
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**plugin_name**  ⇒ String  (readonly)
   
@@ -487,33 +295,16 @@ end
 
 Returns The name of the plugin that registered the hook.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The name of the plugin that registered the hook.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -521,10 +312,6 @@ The name of the plugin that registered the hook.
 26
 27
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/hooks_manager.rb', line 25

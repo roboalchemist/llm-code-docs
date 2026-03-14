@@ -1,20 +1,5 @@
 # Module: Pod::ExternalSources
   
-  
-  
-
-  
-
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/external_sources.rb,
 
@@ -23,33 +8,20 @@
  lib/cocoapods/external_sources/downloader_source.rb,
  lib/cocoapods/external_sources/abstract_external_source.rb
 
-  
-  
-
 ## Overview
-
-  
-    
 
 Provides support for initializing the correct concrete class of an external source.
 
-  
-
-  
-
 ## Defined Under Namespace
 
-  
-    
-  
-    
       **Classes:** AbstractExternalSource, DownloaderSource, PathSource, PodspecSource
     
   
 
   
     
-## 
+##
+
       Class Method Summary
       collapse
     
@@ -58,9 +30,8 @@ Provides support for initializing the correct concrete class of an external sour
 
       
         
-- 
+-
   
-    
       .**concrete_class_from_params**(params)  ⇒ Class 
     
 
@@ -79,68 +50,19 @@ Provides support for initializing the correct concrete class of an external sour
 
 Get the class to represent the defined source type of a dependency.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**from_dependency**(dependency, podfile_path, can_cache)  ⇒ AbstractExternalSource 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Instantiate a matching AbstractExternalSource for a given dependency.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**from_params**(params, dependency, podfile_path, can_cache)  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-    
-
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**concrete_class_from_params**(params)  ⇒ Class 
   
@@ -154,19 +76,12 @@ Instantiate a matching AbstractExternalSource for a given dependency.
 
 Get the class to represent the defined source type of a dependency
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         params
-      
-      
+
         (Array<Symbol>)
       
       
@@ -176,27 +91,11 @@ Parameters:
 
 the source params of the dependency
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Class)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Class)
 
 ```
 
@@ -210,10 +109,6 @@ Returns:
 54
 55
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/external_sources.rb', line 47
@@ -229,13 +124,7 @@ def self.concrete_class_from_params(params)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**from_dependency**(dependency, podfile_path, can_cache)  ⇒ AbstractExternalSource 
   
@@ -249,19 +138,12 @@ end
 
 Instantiate a matching AbstractExternalSource for a given dependency.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         dependency
-      
-      
+
         (Dependency)
       
       
@@ -271,15 +153,10 @@ Parameters:
 
 the dependency
 
-      
-    
-  
-    
-- 
-      
+-
+
         podfile_path
-      
-      
+
         (String)
       
       
@@ -289,15 +166,10 @@ the dependency
 
 @see AbstractExternalSource#podfile_path
 
-      
-    
-  
-    
-- 
-      
+-
+
         can_cache
-      
-      
+
         (Boolean)
       
       
@@ -307,33 +179,16 @@ the dependency
 
 @see AbstractExternalSource#can_cache
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (AbstractExternalSource)
-      
-      
-      
+
         —
         
 
 an initialized instance of the concrete external source class associated with the option specified in the hash.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -341,10 +196,6 @@ an initialized instance of the concrete external source class associated with th
 27
 28
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/external_sources.rb', line 26
@@ -354,13 +205,7 @@ def self.from_dependency(dependency, podfile_path, can_cache)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**from_params**(params, dependency, podfile_path, can_cache)  ⇒ Object 
   
@@ -385,10 +230,6 @@ end
 37
 38
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/external_sources.rb', line 30

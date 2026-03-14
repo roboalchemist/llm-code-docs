@@ -1,10 +1,5 @@
 # Class: Pod::Xcode::FrameworkPaths
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,52 +8,21 @@
 
           
 - Object
-          
-            
+
 - Pod::Xcode::FrameworkPaths
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/xcode/framework_paths.rb
   
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**bcsymbolmap_paths**  ⇒ Array<String>, Nil 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -73,22 +37,10 @@
 
 The bcsymbolmap files path array, if one exists.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**dsym_path**  ⇒ String, Nil 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -103,22 +55,10 @@ The bcsymbolmap files path array, if one exists.
 
 The dSYM path, if one exists.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**source_path**  ⇒ String 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -133,14 +73,8 @@ The dSYM path, if one exists.
 
 The path to the .framework.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Class Method Summary
       collapse
     
@@ -149,9 +83,8 @@ The path to the .framework.
 
       
         
-- 
+-
   
-    
       .**from_path**(path)  ⇒ FrameworkPaths 
     
 
@@ -170,14 +103,8 @@ The path to the .framework.
 
 The path of the framework with dsym & bcsymbolmap paths, if found.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -186,9 +113,8 @@ The path of the framework with dsym & bcsymbolmap paths, if found.
 
       
         
-- 
+-
   
-    
       #**==**(other)  ⇒ Object 
     
 
@@ -210,9 +136,8 @@ The path of the framework with dsym & bcsymbolmap paths, if found.
 
       
         
-- 
+-
   
-    
       #**all_paths**  ⇒ Object 
     
 
@@ -232,9 +157,8 @@ The path of the framework with dsym & bcsymbolmap paths, if found.
 
       
         
-- 
+-
   
-    
       #**hash**  ⇒ Object 
     
 
@@ -254,9 +178,8 @@ The path of the framework with dsym & bcsymbolmap paths, if found.
 
       
         
-- 
+-
   
-    
       #**initialize**(source_path, dsym_path = nil, bcsymbolmap_paths = nil)  ⇒ FrameworkPaths 
     
 
@@ -277,20 +200,9 @@ The path of the framework with dsym & bcsymbolmap paths, if found.
 
 A new instance of FrameworkPaths.
 
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(source_path, dsym_path = nil, bcsymbolmap_paths = nil)  ⇒ FrameworkPaths 
   
@@ -304,14 +216,6 @@ A new instance of FrameworkPaths.
 
 Returns a new instance of FrameworkPaths.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 16
@@ -320,10 +224,6 @@ Returns a new instance of FrameworkPaths.
 19
 20
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/xcode/framework_paths.rb', line 16
@@ -335,21 +235,9 @@ def initialize(source_path, dsym_path = nil, bcsymbolmap_paths = nil)
 end
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**bcsymbolmap_paths**  ⇒ Array<String>, Nil  (readonly)
   
@@ -363,33 +251,16 @@ end
 
 Returns the bcsymbolmap files path array, if one exists.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<String>, Nil)
-      
-      
-      
+
         —
         
 
 the bcsymbolmap files path array, if one exists
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -397,10 +268,6 @@ the bcsymbolmap files path array, if one exists
 15
 16
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/xcode/framework_paths.rb', line 14
@@ -410,15 +277,7 @@ def bcsymbolmap_paths
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**dsym_path**  ⇒ String, Nil  (readonly)
   
@@ -432,33 +291,16 @@ end
 
 Returns the dSYM path, if one exists.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String, Nil)
-      
-      
-      
+
         —
         
 
 the dSYM path, if one exists
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -466,10 +308,6 @@ the dSYM path, if one exists
 11
 12
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/xcode/framework_paths.rb', line 10
@@ -479,15 +317,7 @@ def dsym_path
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**source_path**  ⇒ String  (readonly)
   
@@ -501,33 +331,16 @@ end
 
 Returns the path to the .framework.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 the path to the .framework
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -535,10 +348,6 @@ the path to the .framework
 7
 8
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/xcode/framework_paths.rb', line 6
@@ -548,20 +357,9 @@ def source_path
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**from_path**(path)  ⇒ FrameworkPaths 
   
@@ -575,19 +373,12 @@ end
 
 Returns the path of the framework with dsym & bcsymbolmap paths, if found.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         path
-      
-      
+
         (Pathname)
       
       
@@ -597,33 +388,16 @@ Parameters:
 
 the path to the `.framework` bundle
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (FrameworkPaths)
-      
-      
-      
+
         —
         
 
 the path of the framework with dsym & bcsymbolmap paths, if found
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -636,10 +410,6 @@ the path of the framework with dsym & bcsymbolmap paths, if found
 50
 51
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/xcode/framework_paths.rb', line 44
@@ -654,20 +424,9 @@ def self.from_path(path)
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**==**(other)  ⇒ Object 
   
@@ -695,10 +454,6 @@ end
 28
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/xcode/framework_paths.rb', line 22
 
@@ -711,13 +466,7 @@ def ==(other)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**all_paths**  ⇒ Object 
   
@@ -737,10 +486,6 @@ end
 38
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/xcode/framework_paths.rb', line 36
 
@@ -749,13 +494,7 @@ def all_paths
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**hash**  ⇒ Object 
   
@@ -774,10 +513,6 @@ end
 33
 34
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/xcode/framework_paths.rb', line 32

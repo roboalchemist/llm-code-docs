@@ -1,10 +1,5 @@
 # Class: Pod::Command
   
-  
-  
-
-  
-  
     Inherits:
     
       CLAide::Command
@@ -13,14 +8,10 @@
 
           
 - Object
-          
-            
+
 - CLAide::Command
-          
-            
+
 - Pod::Command
-          
-        
 
         show all
       
@@ -35,13 +26,6 @@
   
       Includes:
       Options, Pod::Config::Mixin
-  
-  
-  
-
-  
-
-  
   
     Defined in:
     lib/cocoapods/command.rb,
@@ -83,20 +67,12 @@
  lib/cocoapods/command/ipc/update_search_index.rb,
  lib/cocoapods/command/options/project_directory.rb
 
-  
-  
-
-  
 ## Direct Known Subclasses
-
-  
 
 Cache, Env, IPC, Init, Install, Lib, List, Outdated, Repo, Setup, Spec, Update
 
 ## Defined Under Namespace
 
-  
-    
       **Modules:** Options
     
   
@@ -107,7 +83,8 @@ Cache, Env, IPC, Init, Install, Lib, List, Outdated, Repo, Setup, Spec, Update
 
   
     
-## 
+##
+
       Class Method Summary
       collapse
     
@@ -116,9 +93,8 @@ Cache, Env, IPC, Init, Install, Lib, List, Outdated, Repo, Setup, Spec, Update
 
       
         
-- 
+-
   
-    
       .**ensure_not_root_or_allowed!**(argv, uid = Process.uid, is_windows = Gem.win_platform?)  ⇒ void 
     
 
@@ -137,80 +113,20 @@ Cache, Env, IPC, Init, Install, Lib, List, Outdated, Repo, Setup, Spec, Update
 
 Ensure root user.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**options**  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       .**report_error**(exception)  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       .**run**(argv)  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-  
-  
-  
-  
+##
 
-  
-    
-  
-
-      
-    
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -219,9 +135,8 @@ Ensure root user.
 
       
         
-- 
+-
   
-    
       #**ensure_master_spec_repo_exists!**  ⇒ void 
     
 
@@ -240,20 +155,10 @@ Ensure root user.
 
 Ensure that the master spec repo exists.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**initialize**(argv)  ⇒ Command 
-    
 
-    
-  
-  
-  
     constructor
   
   
@@ -267,42 +172,13 @@ Ensure that the master spec repo exists.
 
 A new instance of Command.
 
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Pod::Config::Mixin
 
-  
+# config
 
-#config
-
-  
-  
-  
-  
-  
-  
-  
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(argv)  ⇒ Command 
   
@@ -319,41 +195,22 @@ A new instance of Command.
 
 If a command is run inside another one some settings which where true might return false.
 
-  
-
-  
     **TODO:**
     
 
 We should probably not even load colored unless needed.
 
-  
-
-  
     **TODO:**
     
 
 Move silent flag to CLAide.
 
-  
-
-  
     **Note:**
     
 
 It is important that the commands don’t override the default settings if their flag is missing (i.e. their value is nil)
 
-  
-
 Returns a new instance of Command.
-
-  
-
-  
-
-  
-    
-      
 
 ```
 
@@ -368,10 +225,6 @@ Returns a new instance of Command.
 93
 94
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command.rb', line 85
@@ -389,19 +242,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**ensure_not_root_or_allowed!**(argv, uid = Process.uid, is_windows = Gem.win_platform?)  ⇒ void 
   
@@ -417,14 +260,6 @@ This method returns an undefined value.
 
 Ensure root user
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 100
@@ -432,10 +267,6 @@ Ensure root user
 102
 103
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command.rb', line 100
@@ -447,13 +278,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**options**  ⇒ Object 
   
@@ -476,10 +301,6 @@ end
 45
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command.rb', line 40
 
@@ -492,13 +313,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**report_error**(exception)  ⇒ Object 
   
@@ -532,10 +347,6 @@ end
 73
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command.rb', line 57
 
@@ -559,13 +370,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**run**(argv)  ⇒ Object 
   
@@ -591,10 +396,6 @@ end
 55
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command.rb', line 47
 
@@ -610,20 +411,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**ensure_master_spec_repo_exists!**  ⇒ void 
   
@@ -639,14 +429,6 @@ This method returns an undefined value.
 
 Ensure that the master spec repo exists
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 109
@@ -655,10 +437,6 @@ Ensure that the master spec repo exists
 112
 113
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command.rb', line 109

@@ -1,29 +1,9 @@
 # Module: Pod::HooksManager
   
-  
-  
-
-  
-
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/hooks_manager.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Provides support for the hook system of CocoaPods. The system is designed especially for plugins. Interested clients can register to notifications by name.
 
@@ -31,39 +11,17 @@ The blocks, to prevent compatibility issues, will receive one and only one argum
 
 Context object should not remove attribute accessors to not break compatibility with the plugins (this promise will be honoured strictly from CocoaPods 1.0).
 
-  
-
-  
-
 ## Defined Under Namespace
 
-  
-    
-  
-    
       **Classes:** Hook
     
   
-
-  
 ## Class Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       .**registrations**  ⇒ Hash{Symbol => Array<Hook>} 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -78,14 +36,8 @@ Context object should not remove attribute accessors to not break compatibility 
 
 The list of the hooks that are registered for each hook name.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Class Method Summary
       collapse
     
@@ -94,9 +46,8 @@ The list of the hooks that are registered for each hook name.
 
       
         
-- 
+-
   
-    
       .**hooks_to_run**(name, whitelisted_plugins = nil)  ⇒ Array<Hook> 
     
 
@@ -115,73 +66,21 @@ The list of the hooks that are registered for each hook name.
 
 Returns all the hooks to run for the given event name and set of whitelisted plugins.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**register**(plugin_name, hook_name, &block)  ⇒ Object 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Registers a block for the hook with the given name.
 
+-
   
-
-      
-        
-- 
-  
-    
       .**run**(name, context, whitelisted_plugins = nil)  ⇒ Object 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Runs all the registered blocks for the hook with the given name.
 
-  
-
-      
-    
-
-  
-
-  
-    
 ## Class Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     .**registrations**  ⇒ Hash{Symbol => Array<Hook>}  (readonly)
   
@@ -195,33 +94,16 @@ Runs all the registered blocks for the hook with the given name.
 
 Returns The list of the hooks that are registered for each hook name.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Hash{Symbol => Array<Hook>})
-      
-      
-      
+
         —
         
 
 The list of the hooks that are registered for each hook name.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -229,10 +111,6 @@ The list of the hooks that are registered for each hook name.
 61
 62
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/hooks_manager.rb', line 60
@@ -243,20 +121,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**hooks_to_run**(name, whitelisted_plugins = nil)  ⇒ Array<Hook> 
   
@@ -270,44 +137,20 @@ end
 
 Returns all the hooks to run for the given event name and set of whitelisted plugins
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<Hook>)
-      
-      
-      
+
         —
         
 
 the hooks to run
 
-      
-    
-  
-
-  
-
 See Also:
   
-
-    
-      
 - #run
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -318,10 +161,6 @@ See Also:
 90
 91
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/hooks_manager.rb', line 86
@@ -335,13 +174,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**register**(plugin_name, hook_name, &block)  ⇒ Object 
   
@@ -355,19 +188,12 @@ end
 
 Registers a block for the hook with the given name.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         plugin_name
-      
-      
+
         (String)
       
       
@@ -377,15 +203,10 @@ Parameters:
 
 The name of the plugin the hook comes from.
 
-      
-    
-  
-    
-- 
-      
+-
+
         hook_name
-      
-      
+
         (Symbol)
       
       
@@ -395,15 +216,10 @@ The name of the plugin the hook comes from.
 
 The name of the notification.
 
-      
-    
-  
-    
-- 
-      
+-
+
         block
-      
-      
+
         (Proc)
       
       
@@ -413,14 +229,6 @@ The name of the notification.
 
 The block.
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 73
@@ -429,10 +237,6 @@ The block.
 76
 77
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/hooks_manager.rb', line 73
@@ -445,13 +249,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**run**(name, context, whitelisted_plugins = nil)  ⇒ Object 
   
@@ -465,19 +263,12 @@ end
 
 Runs all the registered blocks for the hook with the given name.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         name
-      
-      
+
         (Symbol)
       
       
@@ -487,15 +278,10 @@ Parameters:
 
 The name of the hook.
 
-      
-    
-  
-    
-- 
-      
+-
+
         context
-      
-      
+
         (Object)
       
       
@@ -505,15 +291,10 @@ The name of the hook.
 
 The context object which should be passed to the blocks.
 
-      
-    
-  
-    
-- 
-      
+-
+
         whitelisted_plugins
-      
-      
+
         (Hash<String, Hash>)
       
       
@@ -525,27 +306,11 @@ The context object which should be passed to the blocks.
 
 The plugins that should be run, in the form of a hash keyed by plugin name, where the values are the custom options that should be passed to the hook’s block if it supports taking a second argument.
 
-      
-    
-  
-
 Raises:
 
-  
-    
-- 
-      
-      
-        (ArgumentError)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (ArgumentError)
 
 ```
 
@@ -573,10 +338,6 @@ Raises:
 128
 129
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/hooks_manager.rb', line 107

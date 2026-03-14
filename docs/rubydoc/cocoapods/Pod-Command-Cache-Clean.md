@@ -1,10 +1,5 @@
 # Class: Pod::Command::Cache::Clean
   
-  
-  
-
-  
-  
     Inherits:
     
       Pod::Command::Cache
@@ -13,45 +8,23 @@
 
           
 - Object
-          
-            
+
 - CLAide::Command
-          
-            
+
 - Pod::Command
-          
-            
+
 - Pod::Command::Cache
-          
-            
+
 - Pod::Command::Cache::Clean
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/command/cache/clean.rb
   
-  
+##
 
-  
-    
-## 
       Class Method Summary
       collapse
     
@@ -60,9 +33,8 @@
 
       
         
-- 
+-
   
-    
       .**options**  ⇒ Object 
     
 
@@ -85,7 +57,8 @@
 
   
     
-## 
+##
+
       Instance Method Summary
       collapse
     
@@ -94,9 +67,8 @@
 
       
         
-- 
+-
   
-    
       #**initialize**(argv)  ⇒ Clean 
     
 
@@ -117,107 +89,25 @@
 
 A new instance of Clean.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**run**  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**validate!**  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Pod::Command
 
-  
+# ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, report_error, run
 
-#ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, report_error, run
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Pod::Config::Mixin
 
-  
+# config
 
-#config
-
-  
-  
-  
-  
-  
-  
-  
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(argv)  ⇒ Clean 
   
@@ -231,14 +121,6 @@ A new instance of Clean.
 
 Returns a new instance of Clean.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 27
@@ -247,10 +129,6 @@ Returns a new instance of Clean.
 30
 31
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/cache/clean.rb', line 27
@@ -263,19 +141,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**options**  ⇒ Object 
   
@@ -297,10 +165,6 @@ end
 25
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/cache/clean.rb', line 21
 
@@ -312,20 +176,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**run**  ⇒ Object 
   
@@ -363,10 +216,6 @@ end
 53
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/cache/clean.rb', line 33
 
@@ -394,13 +243,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**validate!**  ⇒ Object 
   
@@ -423,10 +266,6 @@ end
 60
 61
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/cache/clean.rb', line 55

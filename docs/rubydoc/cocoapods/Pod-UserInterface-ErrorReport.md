@@ -1,20 +1,5 @@
 # Module: Pod::UserInterface::ErrorReport
   
-  
-  
-
-  
-
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/user_interface/error_report.rb
   
@@ -22,7 +7,8 @@
 
   
     
-## 
+##
+
       Class Method Summary
       collapse
     
@@ -31,9 +17,8 @@
 
       
         
-- 
+-
   
-    
       .**markdown_podfile**  ⇒ Object 
     
 
@@ -53,9 +38,8 @@
 
       
         
-- 
+-
   
-    
       .**plugins_string**  ⇒ Object 
     
 
@@ -75,9 +59,8 @@
 
       
         
-- 
+-
   
-    
       .**report**(exception)  ⇒ Object 
     
 
@@ -97,9 +80,8 @@
 
       
         
-- 
+-
   
-    
       .**report_instructions**  ⇒ Object 
     
 
@@ -119,9 +101,8 @@
 
       
         
-- 
+-
   
-    
       .**search_for_exceptions**(exception)  ⇒ Object 
     
 
@@ -141,9 +122,8 @@
 
       
         
-- 
+-
   
-    
       .**stack**  ⇒ Object 
     
 
@@ -170,10 +150,7 @@
     
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**markdown_podfile**  ⇒ Object 
   
@@ -201,10 +178,6 @@
 114
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/user_interface/error_report.rb', line 104
 
@@ -215,13 +188,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**plugins_string**  ⇒ Object 
   
@@ -245,10 +212,6 @@ end
 102
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/user_interface/error_report.rb', line 96
 
@@ -262,13 +225,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**report**(exception)  ⇒ Object 
   
@@ -329,10 +286,6 @@ end
 54
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/user_interface/error_report.rb', line 11
 
@@ -342,13 +295,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**report_instructions**  ⇒ Object 
   
@@ -376,10 +323,6 @@ end
 66
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/user_interface/error_report.rb', line 56
 
@@ -389,13 +332,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**search_for_exceptions**(exception)  ⇒ Object 
   
@@ -420,10 +357,6 @@ end
 123
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/user_interface/error_report.rb', line 116
 
@@ -438,13 +371,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     .**stack**  ⇒ Object 
   
@@ -487,10 +414,6 @@ end
 93
 94
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/user_interface/error_report.rb', line 68

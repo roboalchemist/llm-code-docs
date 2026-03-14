@@ -1,10 +1,5 @@
 # Class: Pod::Specification::Set::LazySpecification
   
-  
-  
-
-  
-  
     Inherits:
     
       Pod::Specification
@@ -13,55 +8,23 @@
 
           
 - Object
-          
-            
+
 - Pod::Specification
-          
-            
+
 - Pod::Specification::Set::LazySpecification
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/resolver/lazy_specification.rb
   
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**name**  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -76,22 +39,10 @@
 
 Returns the value of attribute name.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**spec_source**  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -106,22 +57,10 @@ Returns the value of attribute name.
 
 Returns the value of attribute spec_source.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**version**  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -136,14 +75,8 @@ Returns the value of attribute spec_source.
 
 Returns the value of attribute version.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -152,9 +85,8 @@ Returns the value of attribute version.
 
       
         
-- 
+-
   
-    
       #**initialize**(name, version, spec_source)  ⇒ LazySpecification 
     
 
@@ -175,17 +107,10 @@ Returns the value of attribute version.
 
 A new instance of LazySpecification.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**specification**  ⇒ Object 
-    
 
-    
       (also: #__getobj__)
     
   
@@ -203,9 +128,8 @@ A new instance of LazySpecification.
 
       
         
-- 
+-
   
-    
       #**subspec_by_name**(name = nil, raise_if_missing = true, include_non_library_specifications = false)  ⇒ Object 
     
 
@@ -226,21 +150,9 @@ A new instance of LazySpecification.
       
     
 
-  
-
-  
-  
-  
-  
-  
-  
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(name, version, spec_source)  ⇒ LazySpecification 
   
@@ -254,14 +166,6 @@ A new instance of LazySpecification.
 
 Returns a new instance of LazySpecification.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 18
@@ -270,10 +174,6 @@ Returns a new instance of LazySpecification.
 21
 22
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/resolver/lazy_specification.rb', line 18
@@ -285,21 +185,9 @@ def initialize(name, version, spec_source)
 end
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**name**  ⇒ Object  (readonly)
   
@@ -313,24 +201,12 @@ end
 
 Returns the value of attribute name.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 16
 17
 18
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/resolver/lazy_specification.rb', line 16
@@ -340,15 +216,7 @@ def name
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**spec_source**  ⇒ Object  (readonly)
   
@@ -362,24 +230,12 @@ end
 
 Returns the value of attribute spec_source.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 16
 17
 18
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/resolver/lazy_specification.rb', line 16
@@ -389,15 +245,7 @@ def spec_source
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**version**  ⇒ Object  (readonly)
   
@@ -411,24 +259,12 @@ end
 
 Returns the value of attribute version.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 16
 17
 18
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/resolver/lazy_specification.rb', line 16
@@ -438,20 +274,9 @@ def version
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**specification**  ⇒ Object 
   
@@ -475,10 +300,6 @@ end
 38
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/resolver/lazy_specification.rb', line 36
 
@@ -487,13 +308,7 @@ def specification
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**subspec_by_name**(name = nil, raise_if_missing = true, include_non_library_specifications = false)  ⇒ Object 
   
@@ -520,10 +335,6 @@ end
 33
 34
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/resolver/lazy_specification.rb', line 24

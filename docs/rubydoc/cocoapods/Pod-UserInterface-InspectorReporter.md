@@ -1,10 +1,5 @@
 # Class: Pod::UserInterface::InspectorReporter
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,47 +8,21 @@
 
           
 - Object
-          
-            
+
 - Pod::UserInterface::InspectorReporter
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/user_interface/inspector_reporter.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Redirects GH-issues delegate callbacks to CocoaPods UI methods.
 
-  
+##
 
-  
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -62,9 +31,8 @@ Redirects GH-issues delegate callbacks to CocoaPods UI methods.
 
       
         
-- 
+-
   
-    
       #**inspector_could_not_create_report**(error, query, inspector)  ⇒ void 
     
 
@@ -83,96 +51,27 @@ Redirects GH-issues delegate callbacks to CocoaPods UI methods.
 
 Called when there have been networking issues in creating the report.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**inspector_received_empty_report**(_, inspector)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Called once the report has been received, but when there are no issues found.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**inspector_started_query**(_, inspector)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Called just as the investigation has begun.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**inspector_successfully_received_report**(report, _)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Called once the inspector has received a report with more than one issue, showing the top 3 issues, and offering a link to see more.
 
-  
-
-      
-    
-
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**inspector_could_not_create_report**(error, query, inspector)  ⇒ void 
   
@@ -188,19 +87,12 @@ This method returns an undefined value.
 
 Called when there have been networking issues in creating the report.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         error
-      
-      
+
         (Error)
       
       
@@ -210,15 +102,10 @@ Parameters:
 
 The error returned during networking
 
-      
-    
-  
-    
-- 
-      
+-
+
         query
-      
-      
+
         (String)
       
       
@@ -228,15 +115,10 @@ The error returned during networking
 
 The original search query
 
-      
-    
-  
-    
-- 
-      
+-
+
         inspector
-      
-      
+
         (GhInspector::Inspector)
       
       
@@ -245,14 +127,6 @@ The original search query
         
 
 The current inspector
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -263,10 +137,6 @@ The current inspector
 67
 68
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/user_interface/inspector_reporter.rb', line 63
@@ -279,13 +149,7 @@ def inspector_could_not_create_report(error, query, inspector)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**inspector_received_empty_report**(_, inspector)  ⇒ void 
   
@@ -301,19 +165,12 @@ This method returns an undefined value.
 
 Called once the report has been received, but when there are no issues found.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         inspector
-      
-      
+
         (GhInspector::Inspector)
       
       
@@ -323,14 +180,6 @@ Parameters:
 
 The current inspector
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 45
@@ -338,10 +187,6 @@ The current inspector
 47
 48
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/user_interface/inspector_reporter.rb', line 45
@@ -352,13 +197,7 @@ def inspector_received_empty_report(_, inspector)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**inspector_started_query**(_, inspector)  ⇒ void 
   
@@ -374,19 +213,12 @@ This method returns an undefined value.
 
 Called just as the investigation has begun. Lets the user know that it’s looking for an issue.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         inspector
-      
-      
+
         (GhInspector::Inspector)
       
       
@@ -396,24 +228,12 @@ Parameters:
 
 The current inspector
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 17
 18
 19
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/user_interface/inspector_reporter.rb', line 17
@@ -423,13 +243,7 @@ def inspector_started_query(_, inspector)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**inspector_successfully_received_report**(report, _)  ⇒ void 
   
@@ -445,19 +259,12 @@ This method returns an undefined value.
 
 Called once the inspector has received a report with more than one issue, showing the top 3 issues, and offering a link to see more.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         report
-      
-      
+
         (GhInspector::InspectionReport)
       
       
@@ -466,14 +273,6 @@ Parameters:
         
 
 Report a list of the issues
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -486,10 +285,6 @@ Report a list of the issues
 35
 36
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/user_interface/inspector_reporter.rb', line 29

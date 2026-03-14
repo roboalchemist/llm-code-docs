@@ -1,10 +1,5 @@
 # Class: Pod::Command::Spec::Create
   
-  
-  
-
-  
-  
     Inherits:
     
       Pod::Command::Spec
@@ -13,45 +8,23 @@
 
           
 - Object
-          
-            
+
 - CLAide::Command
-          
-            
+
 - Pod::Command
-          
-            
+
 - Pod::Command::Spec
-          
-            
+
 - Pod::Command::Spec::Create
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/command/spec/create.rb
   
-  
+##
 
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -60,9 +33,8 @@
 
       
         
-- 
+-
   
-    
       #**initialize**(argv)  ⇒ Create 
     
 
@@ -83,107 +55,25 @@
 
 A new instance of Create.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**run**  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**validate!**  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Pod::Command
 
-  
+# ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, options, report_error, run
 
-#ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, options, report_error, run
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Pod::Config::Mixin
 
-  
+# config
 
-#config
-
-  
-  
-  
-  
-  
-  
-  
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(argv)  ⇒ Create 
   
@@ -197,14 +87,6 @@ A new instance of Create.
 
 Returns a new instance of Create.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 17
@@ -213,10 +95,6 @@ Returns a new instance of Create.
 20
 21
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/spec/create.rb', line 17
@@ -229,19 +107,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**run**  ⇒ Object 
   
@@ -272,10 +140,6 @@ end
 41
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/spec/create.rb', line 28
 
@@ -296,13 +160,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**validate!**  ⇒ Object 
   
@@ -322,10 +180,6 @@ end
 25
 26
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/spec/create.rb', line 23

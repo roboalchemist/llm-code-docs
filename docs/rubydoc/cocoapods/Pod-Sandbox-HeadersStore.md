@@ -1,10 +1,5 @@
 # Class: Pod::Sandbox::HeadersStore
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,73 +8,30 @@
 
           
 - Object
-          
-            
+
 - Pod::Sandbox::HeadersStore
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/sandbox/headers_store.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Provides support for managing a header directory. It also keeps track of the header search paths.
 
-  
-
-  
-
 ## Defined Under Namespace
 
-  
-    
-  
-    
       **Classes:** SEARCH_PATHS_KEY
     
   
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**sandbox**  ⇒ Sandbox 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -94,14 +46,8 @@ Provides support for managing a header directory. It also keeps track of the hea
 
 The sandbox where this header directory is stored.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Adding headers
       collapse
     
@@ -110,9 +56,8 @@ The sandbox where this header directory is stored.
 
       
         
-- 
+-
   
-    
       #**add_file**(namespace, relative_header_path, mkdir: true)  ⇒ Pathname 
     
 
@@ -131,64 +76,20 @@ The sandbox where this header directory is stored.
 
 Adds a header to the directory.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**add_files**(namespace, relative_header_paths)  ⇒ Array<Pathname> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Adds headers to the directory.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**add_search_path**(path, platform)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Adds an header search path to the sandbox.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -197,9 +98,8 @@ Adds an header search path to the sandbox.
 
       
         
-- 
+-
   
-    
       #**implode!**  ⇒ void 
     
 
@@ -218,45 +118,16 @@ Adds an header search path to the sandbox.
 
 Removes the entire root directory.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**implode_path!**(path)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Removes the directory at the given path relative to the root.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**initialize**(sandbox, relative_path, visibility_scope)  ⇒ HeadersStore 
-    
 
-    
-  
-  
-  
     constructor
   
   
@@ -270,70 +141,21 @@ Removes the directory at the given path relative to the root.
 
 A new instance of HeadersStore.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**root**  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The absolute path of this header directory.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**search_paths**(platform, target_name = nil, use_modular_headers = false)  ⇒ Array<String> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 All the search paths of the header directory in xcconfig format.
 
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(sandbox, relative_path, visibility_scope)  ⇒ HeadersStore 
   
@@ -347,19 +169,12 @@ All the search paths of the header directory in xcconfig format.
 
 Returns a new instance of HeadersStore.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         @see
-      
-      
+
         (Sandbox)
       
       
@@ -367,17 +182,12 @@ Parameters:
         —
         
 
-#sandbox
+# sandbox
 
-      
-    
-  
-    
-- 
-      
+-
+
         relative_path
-      
-      
+
         (String)
       
       
@@ -387,15 +197,10 @@ Parameters:
 
 the relative path to the sandbox root and hence to the Pods project.
 
-      
-    
-  
-    
-- 
-      
+-
+
         visibility_scope
-      
-      
+
         (Symbol)
       
       
@@ -404,14 +209,6 @@ the relative path to the sandbox root and hence to the Pods project.
         
 
 the header visibility scope to use in this store. Can be `:private` or `:public`.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -423,10 +220,6 @@ the header visibility scope to use in this store. Can be `:private` or `:public`
 33
 34
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/headers_store.rb', line 28
@@ -441,21 +234,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**sandbox**  ⇒ Sandbox  (readonly)
   
@@ -469,33 +250,16 @@ end
 
 Returns the sandbox where this header directory is stored.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Sandbox)
-      
-      
-      
+
         —
         
 
 the sandbox where this header directory is stored.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -503,10 +267,6 @@ the sandbox where this header directory is stored.
 18
 19
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/headers_store.rb', line 17
@@ -517,20 +277,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**add_file**(namespace, relative_header_path, mkdir: true)  ⇒ Pathname 
   
@@ -547,23 +296,14 @@ end
 
 This method does *not* add the file to the search paths.
 
-  
-
 Adds a header to the directory.
-
-  
-
-  
 
 Parameters:
 
-  
-    
-- 
-      
+-
+
         namespace
-      
-      
+
         (Pathname)
       
       
@@ -573,15 +313,10 @@ Parameters:
 
 the path where the header file should be stored relative to the headers directory.
 
-      
-    
-  
-    
-- 
-      
+-
+
         relative_header_path
-      
-      
+
         (Pathname)
       
       
@@ -591,27 +326,11 @@ the path where the header file should be stored relative to the headers director
 
 the path of the header file relative to the Pods project (`PODS_ROOT` variable of the xcconfigs).
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Pathname)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Pathname)
 
 ```
 
@@ -629,10 +348,6 @@ Returns:
 143
 144
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/headers_store.rb', line 132
@@ -653,13 +368,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**add_files**(namespace, relative_header_paths)  ⇒ Array<Pathname> 
   
@@ -676,23 +385,14 @@ end
 
 This method does *not* add the files to the search paths.
 
-  
-
 Adds headers to the directory.
-
-  
-
-  
 
 Parameters:
 
-  
-    
-- 
-      
+-
+
         namespace
-      
-      
+
         (Pathname)
       
       
@@ -702,15 +402,10 @@ Parameters:
 
 the path where the header file should be stored relative to the headers directory.
 
-      
-    
-  
-    
-- 
-      
+-
+
         relative_header_paths
-      
-      
+
         (Array<Pathname>)
       
       
@@ -720,27 +415,11 @@ the path where the header file should be stored relative to the headers director
 
 the path of the header file relative to the Pods project (`PODS_ROOT` variable of the xcconfigs).
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (Array<Pathname>)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (Array<Pathname>)
 
 ```
 
@@ -751,10 +430,6 @@ Returns:
 115
 116
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/headers_store.rb', line 111
@@ -768,13 +443,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**add_search_path**(path, platform)  ⇒ void 
   
@@ -790,19 +459,12 @@ This method returns an undefined value.
 
 Adds an header search path to the sandbox.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         path
-      
-      
+
         (Pathname)
       
       
@@ -812,15 +474,10 @@ Parameters:
 
 the path to add.
 
-      
-    
-  
-    
-- 
-      
+-
+
         platform
-      
-      
+
         (String)
       
       
@@ -830,24 +487,12 @@ the path to add.
 
 the platform the search path applies to
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 156
 157
 158
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/headers_store.rb', line 156
@@ -858,13 +503,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**implode!**  ⇒ void 
   
@@ -880,24 +519,12 @@ This method returns an undefined value.
 
 Removes the entire root directory.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 75
 76
 77
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/headers_store.rb', line 75
@@ -908,13 +535,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**implode_path!**(path)  ⇒ void 
   
@@ -930,19 +551,12 @@ This method returns an undefined value.
 
 Removes the directory at the given path relative to the root.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         path
-      
-      
+
         (Pathname)
       
       
@@ -952,14 +566,6 @@ Parameters:
 
 The path used to join with #root and remove.
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 86
@@ -967,10 +573,6 @@ The path used to join with #root and remove.
 88
 89
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/headers_store.rb', line 86
@@ -982,13 +584,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**root**  ⇒ Pathname 
   
@@ -1002,33 +598,16 @@ end
 
 Returns the absolute path of this header directory.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 the absolute path of this header directory.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1036,10 +615,6 @@ the absolute path of this header directory.
 12
 13
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/headers_store.rb', line 11
@@ -1050,13 +625,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**search_paths**(platform, target_name = nil, use_modular_headers = false)  ⇒ Array<String> 
   
@@ -1070,19 +639,12 @@ end
 
 Returns All the search paths of the header directory in xcconfig format. The paths are specified relative to the pods root with the ‘$PODS_ROOT` variable.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         platform
-      
-      
+
         (Platform)
       
       
@@ -1092,15 +654,10 @@ Parameters:
 
 the platform for which the header search paths should be returned.
 
-      
-    
-  
-    
-- 
-      
+-
+
         target_name
-      
-      
+
         (String)
       
       
@@ -1112,15 +669,10 @@ the platform for which the header search paths should be returned.
 
 the target for which the header search paths should be returned. Can be `nil` in which case all headers that match the platform will be returned.
 
-      
-    
-  
-    
-- 
-      
+-
+
         use_modular_headers
-      
-      
+
         (Boolean)
       
       
@@ -1132,33 +684,16 @@ the target for which the header search paths should be returned. Can be `nil` in
 
 whether the search paths generated should use modular (stricter) style.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<String>)
-      
-      
-      
+
         —
         
 
 All the search paths of the header directory in xcconfig format. The paths are specified relative to the pods root with the ‘$PODS_ROOT` variable.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1181,10 +716,6 @@ All the search paths of the header directory in xcconfig format. The paths are s
 68
 69
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sandbox/headers_store.rb', line 52

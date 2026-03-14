@@ -1,10 +1,5 @@
 # Class: Pod::Command::Lib::Create
   
-  
-  
-
-  
-  
     Inherits:
     
       Pod::Command::Lib
@@ -13,20 +8,14 @@
 
           
 - Object
-          
-            
+
 - CLAide::Command
-          
-            
+
 - Pod::Command
-          
-            
+
 - Pod::Command::Lib
-          
-            
+
 - Pod::Command::Lib::Create
-          
-        
 
         show all
       
@@ -40,23 +29,11 @@
       Extended by:
       Executable
   
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/command/lib/create.rb
   
-  
+##
 
-  
-    
-## 
       Class Method Summary
       collapse
     
@@ -65,9 +42,8 @@
 
       
         
-- 
+-
   
-    
       .**options**  ⇒ Object 
     
 
@@ -90,7 +66,8 @@
 
   
     
-## 
+##
+
       Instance Method Summary
       collapse
     
@@ -99,9 +76,8 @@
 
       
         
-- 
+-
   
-    
       #**initialize**(argv)  ⇒ Create 
     
 
@@ -122,122 +98,29 @@
 
 A new instance of Create.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**run**  ⇒ Object 
-    
 
-    
+-
   
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-        
-- 
-  
-    
       #**validate!**  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Executable
-
-  
 
 capture_command, capture_command!, executable, execute_command, which, which!
 
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Pod::Command
 
-  
+# ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, report_error, run
 
-#ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, report_error, run
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Pod::Config::Mixin
 
-  
+# config
 
-#config
-
-  
-  
-  
-  
-  
-  
-  
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(argv)  ⇒ Create 
   
@@ -251,14 +134,6 @@ capture_command, capture_command!, executable, execute_command, which, which!
 
 Returns a new instance of Create.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 24
@@ -268,10 +143,6 @@ Returns a new instance of Create.
 28
 29
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/lib/create.rb', line 24
@@ -284,19 +155,9 @@ def initialize(argv)
 end
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**options**  ⇒ Object 
   
@@ -318,10 +179,6 @@ end
 22
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/lib/create.rb', line 18
 
@@ -332,20 +189,9 @@ def self.options
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**run**  ⇒ Object 
   
@@ -367,10 +213,6 @@ end
 43
 ```
 
-    
-    
-      
-
 ```
 # File 'lib/cocoapods/command/lib/create.rb', line 39
 
@@ -381,13 +223,7 @@ def run
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**validate!**  ⇒ Object 
   
@@ -410,10 +246,6 @@ end
 36
 37
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/lib/create.rb', line 31

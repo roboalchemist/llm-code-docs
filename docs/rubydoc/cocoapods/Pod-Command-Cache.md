@@ -1,10 +1,5 @@
 # Class: Pod::Command::Cache
   
-  
-  
-
-  
-  
     Inherits:
     
       Pod::Command
@@ -13,63 +8,36 @@
 
           
 - Object
-          
-            
+
 - CLAide::Command
-          
-            
+
 - Pod::Command
-          
-            
+
 - Pod::Command::Cache
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/command/cache.rb,
 
   lib/cocoapods/command/cache/list.rb,
  lib/cocoapods/command/cache/clean.rb
 
-  
-  
-
-  
 ## Direct Known Subclasses
-
-  
 
 Clean, List
 
 ## Defined Under Namespace
 
-  
-    
-  
-    
       **Classes:** Clean, List
     
   
 
   
     
-## 
+##
+
       Instance Method Summary
       collapse
     
@@ -78,9 +46,8 @@ Clean, List
 
       
         
-- 
+-
   
-    
       #**initialize**(argv)  ⇒ Cache 
     
 
@@ -101,57 +68,17 @@ Clean, List
 
 A new instance of Cache.
 
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Pod::Command
 
-  
+# ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, options, report_error, run
 
-#ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, options, report_error, run
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Pod::Config::Mixin
 
-  
+# config
 
-#config
-
-  
-  
-  
-  
-  
-  
-  
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(argv)  ⇒ Cache 
   
@@ -165,14 +92,6 @@ A new instance of Cache.
 
 Returns a new instance of Cache.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 16
@@ -180,10 +99,6 @@ Returns a new instance of Cache.
 18
 19
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/cache.rb', line 16

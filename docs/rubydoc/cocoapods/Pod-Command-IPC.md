@@ -1,10 +1,5 @@
 # Class: Pod::Command::IPC
   
-  
-  
-
-  
-  
     Inherits:
     
       Pod::Command
@@ -13,34 +8,16 @@
 
           
 - Object
-          
-            
+
 - CLAide::Command
-          
-            
+
 - Pod::Command
-          
-            
+
 - Pod::Command::IPC
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/command/ipc.rb,
 
@@ -51,29 +28,20 @@
  lib/cocoapods/command/ipc/podfile_json.rb,
  lib/cocoapods/command/ipc/update_search_index.rb
 
-  
-  
-
-  
 ## Direct Known Subclasses
-
-  
 
 List, Podfile, PodfileJSON, Repl, Spec, UpdateSearchIndex
 
 ## Defined Under Namespace
 
-  
-    
-  
-    
       **Classes:** List, Podfile, PodfileJSON, Repl, Spec, UpdateSearchIndex
     
   
 
   
     
-## 
+##
+
       Instance Method Summary
       collapse
     
@@ -82,9 +50,8 @@ List, Podfile, PodfileJSON, Repl, Spec, UpdateSearchIndex
 
       
         
-- 
+-
   
-    
       #**output_pipe**  ⇒ Object 
     
 
@@ -105,62 +72,21 @@ List, Podfile, PodfileJSON, Repl, Spec, UpdateSearchIndex
       
     
 
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods inherited from Pod::Command
 
-  
+# ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, #initialize, options, report_error, run
 
-#ensure_master_spec_repo_exists!, ensure_not_root_or_allowed!, #initialize, options, report_error, run
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Pod::Config::Mixin
 
-  
+# config
 
-#config
-
-  
-  
-  
-  
-  
-  
-  
-  
 ## Constructor Details
-
-  
-    
 
 This class inherits a constructor from Pod::Command
   
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**output_pipe**  ⇒ Object 
   
@@ -179,10 +105,6 @@ This class inherits a constructor from Pod::Command
 15
 16
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/command/ipc.rb', line 14

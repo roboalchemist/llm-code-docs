@@ -1,10 +1,5 @@
 # Class: Pod::Installer::Analyzer
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,11 +8,8 @@
 
           
 - Object
-          
-            
+
 - Pod::Installer::Analyzer
-          
-        
 
         show all
       
@@ -33,13 +25,6 @@
       Includes:
       Config::Mixin
   
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/installer/analyzer.rb,
 
@@ -53,24 +38,12 @@
  lib/cocoapods/installer/analyzer/target_inspection_result.rb,
  lib/cocoapods/installer/analyzer/locking_dependency_analyzer.rb
 
-  
-  
-
 ## Overview
-
-  
-    
 
 Analyzes the Podfile, the Lockfile, and the sandbox manifest to generate the information relative to a CocoaPods installation.
 
-  
-
-  
-
 ## Defined Under Namespace
 
-  
-    
       **Modules:** LockingDependencyAnalyzer
     
   
@@ -81,7 +54,8 @@ Analyzes the Podfile, the Lockfile, and the sandbox manifest to generate the inf
 
   
     
-## 
+##
+
       Constant Summary
       collapse
     
@@ -95,38 +69,21 @@ Analyzes the Podfile, the Lockfile, and the sandbox manifest to generate the inf
 
 Returns The version of iOS which requires binaries with only 64-bit architectures.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The version of iOS which requires binaries with only 64-bit architectures
 
-      
-    
-  
-
-        
-        
-
 ```
 Version.new('11.0')
 ```
 
-      
         IOS_64_BIT_ONLY_PROJECT_VERSION =
           
   
@@ -134,55 +91,27 @@ Version.new('11.0')
 
 Xcode 10 will automatically select the correct architectures based on deployment target
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Integer)
-      
-      
-      
+
         —
         
 
 The Xcode object version until which 64-bit architectures should be manually specified
 
-      
-    
-  
-
-        
-        
-
 ```
 50
 ```
 
-      
-    
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**has_dependencies**  ⇒ Boolean 
-    
 
-    
       (also: #has_dependencies?)
     
   
@@ -204,22 +133,10 @@ The Xcode object version until which 64-bit architectures should be manually spe
 
 Whether the analysis has dependencies and thus sources must be configured.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**installation_options**  ⇒ InstallationOptions 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -234,22 +151,10 @@ Whether the analysis has dependencies and thus sources must be configured.
 
 The installation options specified by the Podfile.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**lockfile**  ⇒ Lockfile? 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -264,22 +169,10 @@ The installation options specified by the Podfile.
 
 The Lockfile, if available, that stores the information about the Pods previously installed.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**plugin_sources**  ⇒ Array<Source> 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -294,22 +187,10 @@ The Lockfile, if available, that stores the information about the Pods previousl
 
 Sources provided by plugins or `nil`.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**podfile**  ⇒ Podfile 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -324,22 +205,10 @@ Sources provided by plugins or `nil`.
 
 The Podfile specification that contains the information of the Pods that should be installed.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**pods_to_update**  ⇒ Hash, ... 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -354,22 +223,10 @@ The Podfile specification that contains the information of the Pods that should 
 
 Pods that have been requested to be updated or true if all Pods should be updated.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**sandbox**  ⇒ Sandbox 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -384,22 +241,10 @@ Pods that have been requested to be updated or true if all Pods should be update
 
 The sandbox to use for this analysis.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**sources_manager**  ⇒ Source::Manager 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -414,14 +259,8 @@ The sandbox to use for this analysis.
 
 The sources manager to use when resolving dependencies.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Analysis steps
       collapse
     
@@ -430,9 +269,8 @@ The sources manager to use when resolving dependencies.
 
       
         
-- 
+-
   
-    
       .**requires_64_bit_archs?**(platform, object_version)  ⇒ Boolean 
     
 
@@ -451,14 +289,8 @@ The sources manager to use when resolving dependencies.
 
 Whether the platform requires 64-bit architectures.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -467,9 +299,8 @@ Whether the platform requires 64-bit architectures.
 
       
         
-- 
+-
   
-    
       #**analyze**(allow_fetches = true)  ⇒ AnalysisResult 
     
 
@@ -488,20 +319,10 @@ Whether the platform requires 64-bit architectures.
 
 Performs the analysis.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**initialize**(sandbox, podfile, lockfile = nil, plugin_sources = nil, has_dependencies = true, pods_to_update = false, sources_manager = Source::Manager.new(config.repos_dir))  ⇒ Analyzer 
-    
 
-    
-  
-  
-  
     constructor
   
   
@@ -515,85 +336,25 @@ Performs the analysis.
 
 Initialize a new instance.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**sources**  ⇒ Array<Source> 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Returns the sources used to query for specifications.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**update_repositories**  ⇒ Object 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Updates the git source repositories.
 
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from Config::Mixin
 
-  
+# config
 
-#config
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(sandbox, podfile, lockfile = nil, plugin_sources = nil, has_dependencies = true, pods_to_update = false, sources_manager = Source::Manager.new(config.repos_dir))  ⇒ Analyzer 
   
@@ -607,19 +368,12 @@ Updates the git source repositories.
 
 Initialize a new instance
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         sandbox
-      
-      
+
         (Sandbox)
       
       
@@ -629,15 +383,10 @@ Parameters:
 
 @see #sandbox
 
-      
-    
-  
-    
-- 
-      
+-
+
         podfile
-      
-      
+
         (Podfile)
       
       
@@ -647,15 +396,10 @@ Parameters:
 
 @see #podfile
 
-      
-    
-  
-    
-- 
-      
+-
+
         lockfile
-      
-      
+
         (Lockfile, nil)
       
       
@@ -667,15 +411,10 @@ Parameters:
 
 @see #lockfile
 
-      
-    
-  
-    
-- 
-      
+-
+
         plugin_sources
-      
-      
+
         (Array<Source>)
       
       
@@ -687,15 +426,10 @@ Parameters:
 
 @see #plugin_sources
 
-      
-    
-  
-    
-- 
-      
+-
+
         has_dependencies
-      
-      
+
         (Boolean)
       
       
@@ -707,15 +441,10 @@ Parameters:
 
 @see #has_dependencies
 
-      
-    
-  
-    
-- 
-      
+-
+
         pods_to_update
-      
-      
+
         (Hash, Boolean, nil)
       
       
@@ -727,15 +456,10 @@ Parameters:
 
 @see #pods_to_update
 
-      
-    
-  
-    
-- 
-      
+-
+
         sources_manager
-      
-      
+
         (Source::Manager)
       
       
@@ -746,14 +470,6 @@ Parameters:
         
 
 @see #sources_manager
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -772,10 +488,6 @@ Parameters:
 88
 89
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/analyzer.rb', line 76
@@ -796,21 +508,9 @@ def initialize(sandbox, podfile, lockfile = nil, plugin_sources = nil, has_depen
 end
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**has_dependencies**  ⇒ Boolean  (readonly)
   
@@ -831,37 +531,18 @@ end
 
 This is used by the ‘pod lib lint` command to prevent update of specs when not needed.
 
-  
-
 Returns Whether the analysis has dependencies and thus sources must be configured.
-
-  
-
-  
 
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Boolean)
-      
-      
-      
+
         —
         
 
 Whether the analysis has dependencies and thus sources must be configured.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -869,10 +550,6 @@ Whether the analysis has dependencies and thus sources must be configured.
 51
 52
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/analyzer.rb', line 50
@@ -882,15 +559,7 @@ def has_dependencies
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**installation_options**  ⇒ InstallationOptions  (readonly)
   
@@ -904,33 +573,16 @@ end
 
 Returns the installation options specified by the Podfile.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (InstallationOptions)
-      
-      
-      
+
         —
         
 
 the installation options specified by the Podfile
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -938,10 +590,6 @@ the installation options specified by the Podfile
 61
 62
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/analyzer.rb', line 60
@@ -951,15 +599,7 @@ def installation_options
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**lockfile**  ⇒ Lockfile?  (readonly)
   
@@ -973,33 +613,16 @@ end
 
 Returns The Lockfile, if available, that stores the information about the Pods previously installed.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Lockfile, nil)
-      
-      
-      
+
         —
         
 
 The Lockfile, if available, that stores the information about the Pods previously installed.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1007,10 +630,6 @@ The Lockfile, if available, that stores the information about the Pods previousl
 41
 42
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/analyzer.rb', line 40
@@ -1020,15 +639,7 @@ def lockfile
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**plugin_sources**  ⇒ Array<Source>  (readonly)
   
@@ -1042,33 +653,16 @@ end
 
 Returns Sources provided by plugins or `nil`.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<Source>)
-      
-      
-      
+
         —
         
 
 Sources provided by plugins or `nil`.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1076,10 +670,6 @@ Sources provided by plugins or `nil`.
 45
 46
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/analyzer.rb', line 44
@@ -1089,15 +679,7 @@ def plugin_sources
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**podfile**  ⇒ Podfile  (readonly)
   
@@ -1111,33 +693,16 @@ end
 
 Returns The Podfile specification that contains the information of the Pods that should be installed.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Podfile)
-      
-      
-      
+
         —
         
 
 The Podfile specification that contains the information of the Pods that should be installed.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1145,10 +710,6 @@ The Podfile specification that contains the information of the Pods that should 
 37
 38
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/analyzer.rb', line 36
@@ -1158,15 +719,7 @@ def podfile
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**pods_to_update**  ⇒ Hash, ...  (readonly)
   
@@ -1180,33 +733,16 @@ end
 
 Returns Pods that have been requested to be updated or true if all Pods should be updated. This can be false if no pods should be updated.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Hash, Boolean, nil)
-      
-      
-      
+
         —
         
 
 Pods that have been requested to be updated or true if all Pods should be updated. This can be false if no pods should be updated.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1214,10 +750,6 @@ Pods that have been requested to be updated or true if all Pods should be update
 57
 58
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/analyzer.rb', line 56
@@ -1227,15 +759,7 @@ def pods_to_update
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**sandbox**  ⇒ Sandbox  (readonly)
   
@@ -1249,33 +773,16 @@ end
 
 Returns The sandbox to use for this analysis.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Sandbox)
-      
-      
-      
+
         —
         
 
 The sandbox to use for this analysis.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1283,10 +790,6 @@ The sandbox to use for this analysis.
 33
 34
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/analyzer.rb', line 32
@@ -1296,15 +799,7 @@ def sandbox
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**sources_manager**  ⇒ Source::Manager  (readonly)
   
@@ -1318,33 +813,16 @@ end
 
 Returns the sources manager to use when resolving dependencies.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Source::Manager)
-      
-      
-      
+
         —
         
 
 the sources manager to use when resolving dependencies
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1352,10 +830,6 @@ the sources manager to use when resolving dependencies
 65
 66
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/analyzer.rb', line 64
@@ -1365,20 +839,9 @@ def sources_manager
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Class Method Details
 
-    
-      
-  
-### 
+###
   
     .**requires_64_bit_archs?**(platform, object_version)  ⇒ Boolean 
   
@@ -1392,19 +855,12 @@ end
 
 Returns Whether the platform requires 64-bit architectures.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         platform
-      
-      
+
         (Platform)
       
       
@@ -1414,15 +870,10 @@ Parameters:
 
 The platform to build against
 
-      
-    
-  
-    
-- 
-      
+-
+
         object_version
-      
-      
+
         (String, Nil)
       
       
@@ -1432,33 +883,16 @@ The platform to build against
 
 The user project’s object version, or nil if not available
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Boolean)
-      
-      
-      
+
         —
         
 
 Whether the platform requires 64-bit architectures
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1480,10 +914,6 @@ Whether the platform requires 64-bit architectures
 1157
 1158
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/analyzer.rb', line 1142
@@ -1507,20 +937,9 @@ def requires_64_bit_archs?(platform, object_version)
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**analyze**(allow_fetches = true)  ⇒ AnalysisResult 
   
@@ -1536,19 +955,12 @@ Performs the analysis.
 
 The Podfile and the Lockfile provide the information necessary to compute which specification should be installed. The manifest of the sandbox returns which specifications are installed.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         allow_fetches
-      
-      
+
         (Boolean)
       
       
@@ -1560,27 +972,11 @@ Parameters:
 
 whether external sources may be fetched
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
-        (AnalysisResult)
-      
-      
-      
-    
-  
+-
 
-  
-    
-      
+        (AnalysisResult)
 
 ```
 
@@ -1623,10 +1019,6 @@ Returns:
 138
 139
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/analyzer.rb', line 102
@@ -1671,13 +1063,7 @@ def analyze(allow_fetches = true)
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**sources**  ⇒ Array<Source> 
   
@@ -1693,33 +1079,16 @@ Returns the sources used to query for specifications.
 
 When no explicit Podfile sources or plugin sources are defined, this defaults to the master spec repository.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<Source>)
-      
-      
-      
+
         —
         
 
 the sources to be used in finding specifications, as specified by the podfile or all sources.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1753,10 +1122,6 @@ the sources to be used in finding specifications, as specified by the podfile or
 188
 189
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/analyzer.rb', line 161
@@ -1792,13 +1157,7 @@ def sources
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**update_repositories**  ⇒ Object 
   
@@ -1811,14 +1170,6 @@ end
     
 
 Updates the git source repositories.
-
-  
-
-  
-
-  
-    
-      
 
 ```
 
@@ -1833,10 +1184,6 @@ Updates the git source repositories.
 151
 152
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/analyzer.rb', line 143

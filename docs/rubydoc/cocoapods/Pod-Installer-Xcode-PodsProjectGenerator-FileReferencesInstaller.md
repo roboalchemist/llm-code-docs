@@ -1,10 +1,5 @@
 # Class: Pod::Installer::Xcode::PodsProjectGenerator::FileReferencesInstaller
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,47 +8,21 @@
 
           
 - Object
-          
-            
+
 - Pod::Installer::Xcode::PodsProjectGenerator::FileReferencesInstaller
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/installer/xcode/pods_project_generator/file_references_installer.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Controller class responsible of installing the file references of the specifications in the Pods project.
 
-  
+##
 
-  
-
-  
-    
-## 
       Constant Summary
       collapse
     
@@ -67,41 +36,17 @@ Controller class responsible of installing the file references of the specificat
 
 Regex for extracting the region portion of a localized file path. Ex. `Resources/en.lproj` –> `en`
 
-  
-
-  
-
-        
-        
-
 ```
 /(\/|^)(?<region>[^\/]*?)\.lproj(\/|$)/
 
 ```
 
-      
-    
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**pod_targets**  ⇒ Array<PodTarget> 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -116,22 +61,10 @@ Regex for extracting the region portion of a localized file path. Ex. `Resources
 
 The pod targets of the installation.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**pods_project**  ⇒ Project 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -146,22 +79,10 @@ The pod targets of the installation.
 
 The project to install the file references into.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**preserve_pod_file_structure**  ⇒ Boolean 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -176,22 +97,10 @@ The project to install the file references into.
 
 Add support for preserving the file structure of externally sourced pods, in addition to local pods.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**sandbox**  ⇒ Sandbox 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -206,14 +115,8 @@ Add support for preserving the file structure of externally sourced pods, in add
 
 The sandbox of the installation.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -222,9 +125,8 @@ The sandbox of the installation.
 
       
         
-- 
+-
   
-    
       #**initialize**(sandbox, pod_targets, pods_project, preserve_pod_file_structure = false)  ⇒ FileReferencesInstaller 
     
 
@@ -245,45 +147,15 @@ The sandbox of the installation.
 
 Initialize a new instance.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**install!**  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Installs the file references.
 
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(sandbox, pod_targets, pods_project, preserve_pod_file_structure = false)  ⇒ FileReferencesInstaller 
   
@@ -297,19 +169,12 @@ Installs the file references.
 
 Initialize a new instance
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         sandbox
-      
-      
+
         (Sandbox)
       
       
@@ -319,15 +184,10 @@ Parameters:
 
 @see #sandbox
 
-      
-    
-  
-    
-- 
-      
+-
+
         pod_targets
-      
-      
+
         (Array<PodTarget>)
       
       
@@ -337,15 +197,10 @@ Parameters:
 
 @see #pod_targets
 
-      
-    
-  
-    
-- 
-      
+-
+
         pods_project
-      
-      
+
         (Project)
       
       
@@ -355,15 +210,10 @@ Parameters:
 
 @see #pods_project
 
-      
-    
-  
-    
-- 
-      
+-
+
         preserve_pod_file_structure
-      
-      
+
         (Boolean)
       
       
@@ -375,14 +225,6 @@ Parameters:
 
 @see #preserve_pod_file_structure
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 35
@@ -392,10 +234,6 @@ Parameters:
 39
 40
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/file_references_installer.rb', line 35
@@ -409,21 +247,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**pod_targets**  ⇒ Array<PodTarget>  (readonly)
   
@@ -437,33 +263,16 @@ end
 
 Returns The pod targets of the installation.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<PodTarget>)
-      
-      
-      
+
         —
         
 
 The pod targets of the installation.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -471,10 +280,6 @@ The pod targets of the installation.
 19
 20
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/file_references_installer.rb', line 18
@@ -485,15 +290,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**pods_project**  ⇒ Project  (readonly)
   
@@ -507,33 +304,16 @@ end
 
 Returns The project to install the file references into.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Project)
-      
-      
-      
+
         —
         
 
 The project to install the file references into.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -541,10 +321,6 @@ The project to install the file references into.
 23
 24
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/file_references_installer.rb', line 22
@@ -555,15 +331,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**preserve_pod_file_structure**  ⇒ Boolean  (readonly)
   
@@ -577,33 +345,16 @@ end
 
 Returns add support for preserving the file structure of externally sourced pods, in addition to local pods.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Boolean)
-      
-      
-      
+
         —
         
 
 add support for preserving the file structure of externally sourced pods, in addition to local pods.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -611,10 +362,6 @@ add support for preserving the file structure of externally sourced pods, in add
 27
 28
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/file_references_installer.rb', line 26
@@ -625,15 +372,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**sandbox**  ⇒ Sandbox  (readonly)
   
@@ -647,33 +386,16 @@ end
 
 Returns The sandbox of the installation.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Sandbox)
-      
-      
-      
+
         —
         
 
 The sandbox of the installation.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -681,10 +403,6 @@ The sandbox of the installation.
 15
 16
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/file_references_installer.rb', line 14
@@ -695,20 +413,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**install!**  ⇒ void 
   
@@ -724,14 +431,6 @@ This method returns an undefined value.
 
 Installs the file references.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 46
@@ -745,10 +444,6 @@ Installs the file references.
 54
 55
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/file_references_installer.rb', line 46

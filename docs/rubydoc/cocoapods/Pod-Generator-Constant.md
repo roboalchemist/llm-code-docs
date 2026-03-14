@@ -1,10 +1,5 @@
 # Class: Pod::Generator::Constant
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,63 +8,25 @@
 
           
 - Object
-          
-            
+
 - Pod::Generator::Constant
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/generator/constant.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Generates a constant file.
 
-  
-
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**generate**  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -84,14 +41,8 @@ Generates a constant file.
 
 Returns the value of attribute generate.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -100,9 +51,8 @@ Returns the value of attribute generate.
 
       
         
-- 
+-
   
-    
       #**initialize**(contents)  ⇒ Constant 
     
 
@@ -123,42 +73,13 @@ Returns the value of attribute generate.
 
 A new instance of Constant.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**save_as**(path)  ⇒ Object 
-    
 
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(contents)  ⇒ Constant 
   
@@ -172,24 +93,12 @@ A new instance of Constant.
 
 Returns a new instance of Constant.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 6
 7
 8
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/constant.rb', line 6
@@ -200,21 +109,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**generate**  ⇒ Object  (readonly)
   
@@ -228,24 +125,12 @@ end
 
 Returns the value of attribute generate.
 
-  
-
-  
-
-  
-    
-      
-
 ```
 
 10
 11
 12
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/constant.rb', line 10
@@ -256,20 +141,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**save_as**(path)  ⇒ Object 
   
@@ -290,10 +164,6 @@ end
 15
 16
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/constant.rb', line 12

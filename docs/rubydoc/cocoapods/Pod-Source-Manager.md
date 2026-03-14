@@ -1,10 +1,5 @@
 # Class: Pod::Source::Manager
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,36 +8,17 @@
 
           
 - Object
-          
-            
+
 - Pod::Source::Manager
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/sources_manager.rb
   
-  
+##
 
-  
-    
-## 
       Updating Sources
       collapse
     
@@ -51,9 +27,8 @@
 
       
         
-- 
+-
   
-    
       #**add_source**(source)  ⇒ Object 
     
 
@@ -72,39 +47,14 @@
 
 Adds the provided source to the list of sources.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**update**(source_name = nil, show_output = false)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Updates the local clone of the spec-repo with the given name or of all the git repos if the name is omitted.
 
-  
+##
 
-      
-    
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -113,9 +63,8 @@ Updates the local clone of the spec-repo with the given name or of all the git r
 
       
         
-- 
+-
   
-    
       #**cdn_url?**(url)  ⇒ Boolean 
     
 
@@ -134,121 +83,33 @@ Updates the local clone of the spec-repo with the given name or of all the git r
 
 Determines whether `url` is a CocoaPods CDN URL.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**create_source_with_url**(url)  ⇒ Source 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Adds the source whose Source#url is equal to `url`, in a manner similarly to ‘pod repo add` if it is not found.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**find_or_create_source_with_url**(url)  ⇒ Source 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Returns the source whose Source#url is equal to `url`, adding the repo in a manner similarly to ‘pod repo add` if it is not found.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**search_index_path**  ⇒ Pathname 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The path where the search index should be stored.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**source_with_name_or_url**(name_or_url)  ⇒ Source 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Returns the source whose Source#name or Source#url is equal to the given `name_or_url`.
 
-  
-
-      
-    
-
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**add_source**(source)  ⇒ Object 
   
@@ -262,19 +123,12 @@ Returns the source whose Source#name or Source#url is equal to the given `name_o
 
 Adds the provided source to the list of sources
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         source
-      
-      
+
         (Source)
       
       
@@ -284,24 +138,12 @@ Parameters:
 
 the source to add
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 158
 159
 160
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sources_manager.rb', line 158
@@ -312,13 +154,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**cdn_url?**(url)  ⇒ Boolean 
   
@@ -332,19 +168,12 @@ end
 
 Determines whether `url` is a CocoaPods CDN URL.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         url
-      
-      
+
         (String)
       
       
@@ -354,33 +183,16 @@ Parameters:
 
 The URL of the source.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Boolean)
-      
-      
-      
+
         —
         
 
 whether `url` is a CocoaPods CDN URL,
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -406,10 +218,6 @@ whether `url` is a CocoaPods CDN URL,
 92
 93
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sources_manager.rb', line 73
@@ -438,13 +246,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**create_source_with_url**(url)  ⇒ Source 
   
@@ -458,19 +260,12 @@ end
 
 Adds the source whose Source#url is equal to `url`, in a manner similarly to ‘pod repo add` if it is not found.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         url
-      
-      
+
         (String)
       
       
@@ -480,53 +275,22 @@ Parameters:
 
 The URL of the source.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Source)
-      
-      
-      
+
         —
         
 
 The source whose Source#url is equal to `url`,
 
-      
-    
-  
-
 Raises:
 
-  
-    
-- 
-      
-      
-        
-      
-      
-      
-        
-        
+-
 
 If no source with the given `url` could be created,
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -561,10 +325,6 @@ If no source with the given `url` could be created,
 63
 64
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sources_manager.rb', line 35
@@ -602,13 +362,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**find_or_create_source_with_url**(url)  ⇒ Source 
   
@@ -622,19 +376,12 @@ end
 
 Returns the source whose Source#url is equal to `url`, adding the repo in a manner similarly to ‘pod repo add` if it is not found.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         url
-      
-      
+
         (String)
       
       
@@ -644,53 +391,22 @@ Parameters:
 
 The URL of the source.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Source)
-      
-      
-      
+
         —
         
 
 The source whose Source#url is equal to `url`,
 
-      
-    
-  
-
 Raises:
 
-  
-    
-- 
-      
-      
-        
-      
-      
-      
-        
-        
+-
 
 If no source with the given `url` could be created,
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -698,10 +414,6 @@ If no source with the given `url` could be created,
 22
 23
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sources_manager.rb', line 21
@@ -712,13 +424,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**search_index_path**  ⇒ Pathname 
   
@@ -732,33 +438,16 @@ end
 
 Returns The path where the search index should be stored.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pathname)
-      
-      
-      
+
         —
         
 
 The path where the search index should be stored.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -766,10 +455,6 @@ The path where the search index should be stored.
 112
 113
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sources_manager.rb', line 111
@@ -780,13 +465,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**source_with_name_or_url**(name_or_url)  ⇒ Source 
   
@@ -800,19 +479,12 @@ end
 
 Returns the source whose Source#name or Source#url is equal to the given `name_or_url`.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         name_or_url
-      
-      
+
         (String)
       
       
@@ -822,33 +494,16 @@ Parameters:
 
 The name or the URL of the source.
 
-      
-    
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Source)
-      
-      
-      
+
         —
         
 
 The source whose Source#name or Source#url is equal to the given `name_or_url`.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -857,10 +512,6 @@ The source whose Source#name or Source#url is equal to the given `name_or_url`.
 106
 107
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sources_manager.rb', line 104
@@ -872,13 +523,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**update**(source_name = nil, show_output = false)  ⇒ void 
   
@@ -894,19 +539,12 @@ This method returns an undefined value.
 
 Updates the local clone of the spec-repo with the given name or of all the git repos if the name is omitted.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         source_name
-      
-      
+
         (String)
       
       
@@ -916,8 +554,8 @@ Parameters:
     
   
     
-- 
-      
+-
+
         show_output
       
       
@@ -964,10 +602,6 @@ Parameters:
 151
 152
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/sources_manager.rb', line 126

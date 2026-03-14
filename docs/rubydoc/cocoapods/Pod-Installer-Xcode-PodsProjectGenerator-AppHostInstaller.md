@@ -1,10 +1,5 @@
 # Class: Pod::Installer::Xcode::PodsProjectGenerator::AppHostInstaller
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,11 +8,8 @@
 
           
 - Object
-          
-            
+
 - Pod::Installer::Xcode::PodsProjectGenerator::AppHostInstaller
-          
-        
 
         show all
       
@@ -33,48 +25,19 @@
       Includes:
       TargetInstallerHelper
   
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/installer/xcode/pods_project_generator/app_host_installer.rb
   
-  
-
 ## Overview
-
-  
-    
 
 Installs an app host target to a given project.
 
-  
-
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**add_launchscreen_storyboard**  ⇒ Boolean 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -89,22 +52,10 @@ Installs an app host target to a given project.
 
 Whether the app host installer should add a launch screen storyboard.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**add_main**  ⇒ Boolean 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -119,22 +70,10 @@ Whether the app host installer should add a launch screen storyboard.
 
 Whether the app host installer should add main.m.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**app_target_label**  ⇒ String 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -149,22 +88,10 @@ Whether the app host installer should add main.m.
 
 The name of the app target label that will be used.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**group_name**  ⇒ String 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -179,22 +106,10 @@ The name of the app target label that will be used.
 
 The name of the group the app host installer will be installing within.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**info_plist_entries**  ⇒ Hash 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -209,22 +124,10 @@ The name of the group the app host installer will be installing within.
 
 Info.plist entries for the app host.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**platform**  ⇒ Platform 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -239,22 +142,10 @@ Info.plist entries for the app host.
 
 The platform to use for this app host.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**product_basename**  ⇒ String 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -269,22 +160,10 @@ The platform to use for this app host.
 
 Product_basename The product basename to use for the target.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**project**  ⇒ Pod::Project 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -299,22 +178,10 @@ Product_basename The product basename to use for the target.
 
 The project to install the app host into.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**sandbox**  ⇒ Sandbox 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -329,22 +196,10 @@ The project to install the app host into.
 
 The sandbox used for this installation.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**subgroup_name**  ⇒ String 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -359,14 +214,8 @@ The sandbox used for this installation.
 
 The name of the sub group.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -375,9 +224,8 @@ The name of the sub group.
 
       
         
-- 
+-
   
-    
       #**initialize**(sandbox, project, platform, subgroup_name, group_name, app_target_label, add_main: true, add_launchscreen_storyboard: platform == :ios, info_plist_entries: {}, product_basename: nil)  ⇒ AppHostInstaller 
     
 
@@ -398,60 +246,19 @@ The name of the sub group.
 
 Initialize a new instance.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**install!**  ⇒ PBXNativeTarget 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 The app host native target that was installed.
 
-  
-
-      
-    
-
-  
-
-  
-  
-  
-  
-  
-  
-  
-  
-  
 ### Methods included from TargetInstallerHelper
-
-  
 
 create_info_plist_file_with_sandbox, create_prefix_header, update_changed_file
 
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(sandbox, project, platform, subgroup_name, group_name, app_target_label, add_main: true, add_launchscreen_storyboard: platform == :ios, info_plist_entries: {}, product_basename: nil)  ⇒ AppHostInstaller 
   
@@ -465,19 +272,12 @@ create_info_plist_file_with_sandbox, create_prefix_header, update_changed_file
 
 Initialize a new instance
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         sandbox
-      
-      
+
         (Sandbox)
       
       
@@ -487,15 +287,10 @@ Parameters:
 
 @see #sandbox
 
-      
-    
-  
-    
-- 
-      
+-
+
         project
-      
-      
+
         (Pod::Project)
       
       
@@ -505,15 +300,10 @@ Parameters:
 
 @see #project
 
-      
-    
-  
-    
-- 
-      
+-
+
         platform
-      
-      
+
         (Platform)
       
       
@@ -523,15 +313,10 @@ Parameters:
 
 @see #platform
 
-      
-    
-  
-    
-- 
-      
+-
+
         subgroup_name
-      
-      
+
         (String)
       
       
@@ -541,15 +326,10 @@ Parameters:
 
 @see #subgroup_name
 
-      
-    
-  
-    
-- 
-      
+-
+
         group_name
-      
-      
+
         (String)
       
       
@@ -559,15 +339,10 @@ Parameters:
 
 @see #group_name
 
-      
-    
-  
-    
-- 
-      
+-
+
         app_target_label
-      
-      
+
         (String)
       
       
@@ -577,15 +352,10 @@ Parameters:
 
 see #app_target_label
 
-      
-    
-  
-    
-- 
-      
+-
+
         add_main
-      
-      
+
         (Boolean)
       
       
@@ -597,15 +367,10 @@ see #app_target_label
 
 see #add_main
 
-      
-    
-  
-    
-- 
-      
+-
+
         info_plist_entries
-      
-      
+
         (Hash)
       
       
@@ -617,15 +382,10 @@ see #add_main
 
 see #info_plist_entries
 
-      
-    
-  
-    
-- 
-      
+-
+
         product_basename
-      
-      
+
         (String)
       
       
@@ -636,14 +396,6 @@ see #info_plist_entries
         
 
 see #product_basename
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -663,10 +415,6 @@ see #product_basename
 78
 79
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/app_host_installer.rb', line 65
@@ -689,21 +437,9 @@ end
 
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**add_launchscreen_storyboard**  ⇒ Boolean  (readonly)
   
@@ -717,33 +453,16 @@ end
 
 Returns whether the app host installer should add a launch screen storyboard.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Boolean)
-      
-      
-      
+
         —
         
 
 whether the app host installer should add a launch screen storyboard
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -751,10 +470,6 @@ whether the app host installer should add a launch screen storyboard
 43
 44
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/app_host_installer.rb', line 42
@@ -765,15 +480,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**add_main**  ⇒ Boolean  (readonly)
   
@@ -787,33 +494,16 @@ end
 
 Returns whether the app host installer should add main.m.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Boolean)
-      
-      
-      
+
         —
         
 
 whether the app host installer should add main.m
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -821,10 +511,6 @@ whether the app host installer should add main.m
 39
 40
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/app_host_installer.rb', line 38
@@ -835,15 +521,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**app_target_label**  ⇒ String  (readonly)
   
@@ -857,33 +535,16 @@ end
 
 Returns the name of the app target label that will be used.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 the name of the app target label that will be used.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -891,10 +552,6 @@ the name of the app target label that will be used.
 35
 36
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/app_host_installer.rb', line 34
@@ -905,15 +562,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**group_name**  ⇒ String  (readonly)
   
@@ -927,33 +576,16 @@ end
 
 Returns the name of the group the app host installer will be installing within.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 the name of the group the app host installer will be installing within.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -961,10 +593,6 @@ the name of the group the app host installer will be installing within.
 31
 32
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/app_host_installer.rb', line 30
@@ -975,15 +603,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**info_plist_entries**  ⇒ Hash  (readonly)
   
@@ -997,33 +617,16 @@ end
 
 Returns Info.plist entries for the app host.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Hash)
-      
-      
-      
+
         —
         
 
 Info.plist entries for the app host
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1031,10 +634,6 @@ Info.plist entries for the app host
 47
 48
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/app_host_installer.rb', line 46
@@ -1045,15 +644,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**platform**  ⇒ Platform  (readonly)
   
@@ -1067,33 +658,16 @@ end
 
 Returns the platform to use for this app host.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Platform)
-      
-      
-      
+
         —
         
 
 the platform to use for this app host.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1101,10 +675,6 @@ the platform to use for this app host.
 23
 24
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/app_host_installer.rb', line 22
@@ -1115,15 +685,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**product_basename**  ⇒ String  (readonly)
   
@@ -1137,33 +699,16 @@ end
 
 Returns product_basename The product basename to use for the target.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 product_basename The product basename to use for the target.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1171,10 +716,6 @@ product_basename The product basename to use for the target.
 52
 53
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/app_host_installer.rb', line 51
@@ -1185,15 +726,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**project**  ⇒ Pod::Project  (readonly)
   
@@ -1207,33 +740,16 @@ end
 
 Returns The project to install the app host into.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Pod::Project)
-      
-      
-      
+
         —
         
 
 The project to install the app host into.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1241,10 +757,6 @@ The project to install the app host into.
 19
 20
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/app_host_installer.rb', line 18
@@ -1255,15 +767,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**sandbox**  ⇒ Sandbox  (readonly)
   
@@ -1277,33 +781,16 @@ end
 
 Returns The sandbox used for this installation.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Sandbox)
-      
-      
-      
+
         —
         
 
 The sandbox used for this installation.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1311,10 +798,6 @@ The sandbox used for this installation.
 14
 15
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/app_host_installer.rb', line 13
@@ -1325,15 +808,7 @@ end
 
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**subgroup_name**  ⇒ String  (readonly)
   
@@ -1347,33 +822,16 @@ end
 
 Returns the name of the sub group.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 the name of the sub group.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1381,10 +839,6 @@ the name of the sub group.
 27
 28
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/app_host_installer.rb', line 26
@@ -1395,20 +849,9 @@ end
 
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**install!**  ⇒ PBXNativeTarget 
   
@@ -1422,33 +865,16 @@ end
 
 Returns the app host native target that was installed.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (PBXNativeTarget)
-      
-      
-      
+
         —
         
 
 the app host native target that was installed.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -1475,10 +901,6 @@ the app host native target that was installed.
 103
 104
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/installer/xcode/pods_project_generator/app_host_installer.rb', line 83

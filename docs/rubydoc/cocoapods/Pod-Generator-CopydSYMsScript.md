@@ -1,10 +1,5 @@
 # Class: Pod::Generator::CopydSYMsScript
   
-  
-  
-
-  
-  
     Inherits:
     
       Object
@@ -13,52 +8,21 @@
 
           
 - Object
-          
-            
+
 - Pod::Generator::CopydSYMsScript
-          
-        
 
         show all
       
-    
-  
-  
 
-  
-  
-  
-  
-  
-
-  
-
-  
-  
     Defined in:
     lib/cocoapods/generator/copy_dsyms_script.rb
   
-  
-
-  
 ## Instance Attribute Summary collapse
 
+-
   
-
-    
-      
-- 
-  
-    
       #**bcsymbolmap_paths**  ⇒ Array<Pathname, String> 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -73,22 +37,10 @@
 
 Bcsymbolmap_paths the bcsymbolmap paths to include in the script contents.
 
+-
   
-
-    
-      
-- 
-  
-    
       #**dsym_paths**  ⇒ Array<Pathname, String> 
-    
 
-    
-  
-  
-  
-  
-    
       readonly
     
     
@@ -103,14 +55,8 @@ Bcsymbolmap_paths the bcsymbolmap paths to include in the script contents.
 
 Dsym_paths the dSYM paths to include in the script contents.
 
-  
+##
 
-    
-  
-
-  
-    
-## 
       Instance Method Summary
       collapse
     
@@ -119,9 +65,8 @@ Dsym_paths the dSYM paths to include in the script contents.
 
       
         
-- 
+-
   
-    
       #**generate**  ⇒ String 
     
 
@@ -140,20 +85,10 @@ Dsym_paths the dSYM paths to include in the script contents.
 
 The generated of the copy dSYMs script.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**initialize**(dsym_paths, bcsymbolmap_paths)  ⇒ CopydSYMsScript 
-    
 
-    
-  
-  
-  
     constructor
   
   
@@ -167,45 +102,15 @@ The generated of the copy dSYMs script.
 
 Initialize a new instance.
 
+-
   
-
-      
-        
-- 
-  
-    
       #**save_as**(pathname)  ⇒ void 
-    
-
-    
-  
-  
-  
-  
-  
-  
-  
-  
-
-  
-    
 
 Saves the copy dSYMs script to the given pathname.
 
-  
-
-      
-    
-
-  
-
-  
 ## Constructor Details
 
-  
-    
-  
-### 
+###
   
     #**initialize**(dsym_paths, bcsymbolmap_paths)  ⇒ CopydSYMsScript 
   
@@ -219,19 +124,12 @@ Saves the copy dSYMs script to the given pathname.
 
 Initialize a new instance
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         dsym_paths
-      
-      
+
         (Array<Pathname, String>)
       
       
@@ -241,15 +139,10 @@ Parameters:
 
 @see dsym_paths
 
-      
-    
-  
-    
-- 
-      
+-
+
         bcsymbolmap_paths
-      
-      
+
         (Array<Pathname, String>)
       
       
@@ -259,14 +152,6 @@ Parameters:
 
 @see bcsymbolmap_paths
 
-      
-    
-  
-
-  
-    
-      
-
 ```
 
 17
@@ -274,10 +159,6 @@ Parameters:
 19
 20
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/copy_dsyms_script.rb', line 17
@@ -288,21 +169,9 @@ def initialize(dsym_paths, bcsymbolmap_paths)
 end
 ```
 
-    
-  
-
-  
-
-  
-    
 ## Instance Attribute Details
 
-    
-      
-      
-      
-  
-### 
+###
   
     #**bcsymbolmap_paths**  ⇒ Array<Pathname, String>  (readonly)
   
@@ -316,33 +185,16 @@ end
 
 Returns bcsymbolmap_paths the bcsymbolmap paths to include in the script contents.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<Pathname, String>)
-      
-      
-      
+
         —
         
 
 bcsymbolmap_paths the bcsymbolmap paths to include in the script contents.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -350,10 +202,6 @@ bcsymbolmap_paths the bcsymbolmap paths to include in the script contents.
 11
 12
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/copy_dsyms_script.rb', line 10
@@ -363,15 +211,7 @@ def bcsymbolmap_paths
 end
 ```
 
-    
-  
-
-    
-      
-      
-      
-  
-### 
+###
   
     #**dsym_paths**  ⇒ Array<Pathname, String>  (readonly)
   
@@ -385,33 +225,16 @@ end
 
 Returns dsym_paths the dSYM paths to include in the script contents.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (Array<Pathname, String>)
-      
-      
-      
+
         —
         
 
 dsym_paths the dSYM paths to include in the script contents.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -419,10 +242,6 @@ dsym_paths the dSYM paths to include in the script contents.
 7
 8
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/copy_dsyms_script.rb', line 6
@@ -432,20 +251,9 @@ def dsym_paths
 end
 ```
 
-    
-  
-
-    
-  
-
-  
-    
 ## Instance Method Details
 
-    
-      
-  
-### 
+###
   
     #**generate**  ⇒ String 
   
@@ -459,33 +267,16 @@ end
 
 Returns The generated of the copy dSYMs script.
 
-  
-
-  
-
 Returns:
 
-  
-    
-- 
-      
-      
+-
+
         (String)
-      
-      
-      
+
         —
         
 
 The generated of the copy dSYMs script.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -506,10 +297,6 @@ The generated of the copy dSYMs script.
 52
 53
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/copy_dsyms_script.rb', line 38
@@ -532,13 +319,7 @@ def generate
 end
 ```
 
-    
-  
-
-    
-      
-  
-### 
+###
   
     #**save_as**(pathname)  ⇒ void 
   
@@ -554,19 +335,12 @@ This method returns an undefined value.
 
 Saves the copy dSYMs script to the given pathname.
 
-  
-
-  
-
 Parameters:
 
-  
-    
-- 
-      
+-
+
         pathname
-      
-      
+
         (Pathname)
       
       
@@ -575,14 +349,6 @@ Parameters:
         
 
 The path where the copy dSYMs script should be saved.
-
-      
-    
-  
-
-  
-    
-      
 
 ```
 
@@ -593,10 +359,6 @@ The path where the copy dSYMs script should be saved.
 33
 34
 ```
-
-    
-    
-      
 
 ```
 # File 'lib/cocoapods/generator/copy_dsyms_script.rb', line 29
