@@ -2228,4 +2228,9 @@ repositories:
   repo_url: https://github.com/brentyi/tyro.git
   source_folder: docs
   target_folder: docs/github-scraped/tyro
+- name: markdownlint
+  description: markdownlint from GitHub
+  repo_url: https://github.com/DavidAnson/markdownlint.git
+  source_folder: doc
+  target_folder: docs/github-scraped/markdownlint
   branch: main
