@@ -1496,3 +1496,6 @@ sites:
 - name: google-cloud-build
   base_url: https://cloud.google.com/python/docs/reference/cloudbuild/latest/
   description: google-cloud-build documentation
+- name: aws-secrets-manager
+  base_url: https://docs.aws.amazon.com/
+  description: aws-secrets-manager documentation
