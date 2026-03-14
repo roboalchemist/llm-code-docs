@@ -1466,3 +1466,6 @@ sites:
 - name: oxlint
   base_url: https://oxc.rs/
   description: oxlint documentation
+- name: nimble
+  base_url: https://docs.nimbleway.io/
+  description: nimble documentation
