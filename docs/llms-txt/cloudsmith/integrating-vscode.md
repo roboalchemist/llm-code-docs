@@ -1,0 +1,80 @@
+# Source: https://help.cloudsmith.io/docs/integrating-vscode.md
+
+# VS Code Extension
+
+The Cloudsmith extension for Visual Studio Code allows you to view and manage your Cloudsmith packages directly within your VS Code IDE.
+
+<Image align="center" src="https://files.readme.io/9fc072815234b2daae0d4dedc825c39256a1bc3036a643d9f548087f6abf722e-overview.gif" />
+
+## Installation
+
+You can install the extension from the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Cloudsmith.cloudsmith-vsc) or by using the `.vsix` file from [a release](https://github.com/cloudsmith-io/cloudsmith-vscode-extension/releases). We recommend installing via the Marketplace for ease of use and automatic updates.
+
+### From the VS Code Marketplace (Recommended)
+
+1. Open the **Extensions** view in VS Code (or press `Ctrl +Shift+X`).
+2. Search for `cloudsmith` in the search bar.
+3. Select the Cloudsmith extension published by Cloudsmith and click **Install**.
+
+### From a .vsix File
+
+You can also install the extension manually from a `.vsix` file, which is available on the [GitHub repository releases page](https://github.com/cloudsmith-io/cloudsmith-vscode-extension/releases).
+
+1. In the **Extensions** view, click the **Views and More Actions...** (`...`) button.
+2. Select **Install from VSIX...** and choose the downloaded `cloudsmith-x.x.x.vsix` file.
+
+Alternatively, open your terminal and run:
+
+```shell
+code --install-extension cloudsmith-x.x.x.vsix
+```
+
+## Configuration
+
+### Authentication
+
+After installation, connect the extension to your Cloudsmith account using an [API Key](/about-cloudsmith/api-key) or a [Service Account Token](/accounts-and-teams/service-accounts) (Entitlement tokens are not supported).
+
+1. Navigate to the Cloudsmith view in the VS Code Activity Bar.
+2. Click the **key icon** located in the view's menu.
+3. Enter your Personal API Key or Service Account Token into the input box that appears and press `Enter`.
+4. Click the **connect/refresh icon** to load your workspaces and repositories.
+
+<Image align="center" src="https://files.readme.io/a58483ae46aac5e9a31a1a891f556cbad7fba3207c4add2c2767e07160c5848a-configure.gif" />
+
+### Settings
+
+You can configure the extension's behavior by navigating to **File > Preferences > Settings** and searching for `Cloudsmith`:
+
+* **Show Packages by Group**: If enabled, the explorer will display packages as [Package Groups](https://help.cloudsmith.io/docs/package-groups). By default, individual packages are shown.
+* **Inspect Output Target**: Choose where the `Inspect Package` command sends its output: `Output` window or a `New Document`.
+* **Maximum Packages Per Repository**: Set the maximum number of packages to display per repository. The value can be between 1 and 30. The default (and maximum) is 30.
+* **Use Legacy Web App**: If enabled, URLs opened via the `Open Package in Cloudsmith` command will point to the legacy Cloudsmith web app ([https://cloudsmith.io/](https://cloudsmith.io/)).
+
+## Using the Cloudsmith VS Code extension
+
+The extension adds a **Cloudsmith Explorer** view to VS Code. This view provides a tree-based navigator to explore your Cloudsmith assets, including workspaces, repositories, and packages.
+
+Selecting a package or package group in the explorer will display a selection of its most important details directly in the tree view. You can right-click on any detail (e.g., Name, Version) to copy its value to the clipboard.
+
+This is a subset of the full data available via the Cloudsmith API. For the complete dataset, use the `Inspect Package` command.
+
+| Field                     | Description                                                                               |
+| :------------------------ | :---------------------------------------------------------------------------------------- |
+| **Status**                | Indicates the current state of the package (e.g., Completed, Failed, Deleted, etc.).      |
+| **Name**                  | The human-readable title or name of the package.                                          |
+| **Slug**                  | A URL-friendly version of the package name, typically lowercase with hyphens for spaces.  |
+| **Slug Perm**             | A permanent, unique slug that does not change, even if the package name is updated.       |
+| **Number of downloads**   | The total count of how many times the package has been downloaded.                        |
+| **Version**               | The specific release version number, often following semantic versioning (e.g., `1.2.3`). |
+| **Tags**                  | Keywords or labels used to categorize the package and make it discoverable.               |
+| **Uploaded at date/time** | The timestamp indicating the exact date and time the package version was published.       |
+
+> 📘 Note
+>
+> When the **Package Groups** option is enabled, the next fields are available for each of the package groups: **Count of packages in group**, **Size**, **Number of downloads**, and **Last pushed date/time**.
+
+Right-clicking on a package or package group in the explorer opens a context menu with several commands:
+
+* **Inspect Package**: this command retrieves the raw JSON data for the selected package or group. By default, the output is sent to the VS Code `Output` window. You can change this behavior in the extension settings to send the output to a new, untitled text document instead.
+* **Open Package in Cloudsmith**: this command opens the selected package's page directly in the Cloudsmith web application using your default browser.

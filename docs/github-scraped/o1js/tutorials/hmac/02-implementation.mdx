@@ -1,0 +1,19 @@
+---
+title: HMAC-SHA256 Implementation
+sidebar_label: Implementation
+description: Complete HMAC-SHA256 zero-knowledge circuit in o1js
+pagination_prev: tutorials/hmac/hmac-basics
+pagination_next: tutorials/hmac/tests
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+Here's our complete implementation:
+
+```ts file=../../snippets/hmac-sha256/hmac-sha256.ts
+```
+
+With o1js, you can compose HMAC proofs with other zero-knowledge circuits. Here's how to integrate it into your ZkProgram:
+
+```ts file=../../snippets/hmac-sha256/run.ts
+```

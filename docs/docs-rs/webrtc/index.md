@@ -1,0 +1,6 @@
+# Crate webrtc 
+Source 
+## Re-exports§
+`pub use error::Error;``pub use data;``pub use dtls;``pub use ice;``pub use interceptor;``pub use mdns;``pub use media;``pub use rtcp;``pub use rtp;``pub use sctp;``pub use sdp;``pub use srtp;``pub use stun;``pub use turn;``pub use util;`
+## Modules§
+apiSet of constructors for WebRTC primitives. Subject to deprecation in future.data_channelWebRTC DataChannel can be used for peer-to-peer transmitting arbitrary binary data.dtls_transporterror`Error` enumerates WebRTC problems, `error::OnErrorHdlrFn` defines type for callback-logger.ice_transportThe utilities defining transport between peers. Contains `ice_transport::ice_server::RTCIceServer` struct which describes how peer does ICE (Interactive Connectivity Establishment).muxModule responsible for multiplexing data streams of different protocols on one socket. Custom `mux::endpoint::Endpoint` with `mux::mux_func::MatchFunc` can be used for parsing your application-specific byte stream.peer_connection`peer_connection::RTCPeerConnection` allows to establish connection between two peers given RTC configuration. Its API is similar to one in JavaScript.rtp_transceiversctp_transportstatsMeasuring connection statistics, such as amount of data transmitted or round trip time.track

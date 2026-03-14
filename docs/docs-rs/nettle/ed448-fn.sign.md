@@ -1,0 +1,12 @@
+nettle::ed448
+# Function sign 
+Source 
+
+```
+pub fn sign(
+    public: &[u8],
+    private: &[u8],
+    msg: &[u8],
+    signature: &mut [u8],
+) -> Result<()>
+```

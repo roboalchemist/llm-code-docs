@@ -1,0 +1,51 @@
+# Source: https://docs.statsig.com/session-replay/watch.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.statsig.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Watch Session Replays
+
+Session Replays can be found under the User’s group in the Statsig console’s navigation panel.
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/5xtPmPJYdSOq64ez/images/session-replay/watch/2f9ca1b1-f8e0-403f-9d3f-898434f06266.png?fit=max&auto=format&n=5xtPmPJYdSOq64ez&q=85&s=cfd2f42fecb06eb8076eff83fa79a1ee" alt="Session replay navigation in Statsig console" width="2000" height="1148" data-path="images/session-replay/watch/2f9ca1b1-f8e0-403f-9d3f-898434f06266.png" />
+</Frame>
+
+The main interface contains three major sections. The leftmost column shows a list of available replays to watch, and a way to filter among them. The middle playback surface is where can play the replay, pause, and skip ahead and back to events of interest. You can also skip ahead by clicking the next button to jump ahead to the next event. You can also click on an event of interest in the right most “events panel” to skip to that event in the replay timeline.
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/5xtPmPJYdSOq64ez/images/session-replay/watch/f810ceb5-b6fc-4312-8e5d-9acfec0809bb.png?fit=max&auto=format&n=5xtPmPJYdSOq64ez&q=85&s=80b2c82caca8cbe444da8ef342638da0" alt="Session replay interface with playback controls and events panel" width="2000" height="1134" data-path="images/session-replay/watch/f810ceb5-b6fc-4312-8e5d-9acfec0809bb.png" />
+</Frame>
+
+For a more immersive replay experience you can hide the events panel:
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/5xtPmPJYdSOq64ez/images/session-replay/watch/d63fdf9e-cfc4-45e5-9365-d478504574c3.png?fit=max&auto=format&n=5xtPmPJYdSOq64ez&q=85&s=85ff6d981b3d8851b355688a28a8f3b1" alt="Session replay interface with hidden events panel" width="2000" height="1144" data-path="images/session-replay/watch/d63fdf9e-cfc4-45e5-9365-d478504574c3.png" />
+</Frame>
+
+You can also enter full screen mode.
+
+# Find a Replay
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/5xtPmPJYdSOq64ez/images/session-replay/watch/45ce3a59-6847-43d6-bfc8-6d3cd5d45917.png?fit=max&auto=format&n=5xtPmPJYdSOq64ez&q=85&s=6dee44c9c179ffc2b8f7b31ac0556389" alt="Session replay selection interface with replay cards" width="2000" height="1144" data-path="images/session-replay/watch/45ce3a59-6847-43d6-bfc8-6d3cd5d45917.png" />
+</Frame>
+
+You can select a replay to watch by selecting it from the list of replays on the left. The “Replay Card” contains information such as the URL, Browser, Country, and more, that you can use to quickly scan for interesting replays or as a way to quickly filter to interesting replays.
+
+To more narrowly scope the set of replays to watch, you can add filters. Filters allow you to scope to replays that contain a specific event, user, Feature Gate exposure (pass or fail), or Experiment group exposure. As a reminder, session replay is currently in beta - we will be adding more powerful filtering functionality in the coming weeks.
+
+# Playlists
+
+Playlists allow you to organize and group related session recordings for easier analysis and collaboration. Instead of searching through individual sessions, you can create curated collections of recordings that focus on specific user behaviors, issues, or research questions.
+
+## Key Features
+
+* Organized Collections: Create named playlists to group related session recordings together. This makes it easier to focus on specific user journeys, bug reports, or research topics without getting lost in a sea of individual sessions.
+* Collaborative Analysis: Share playlists with your team members to collaborate on user experience analysis. Team members can view the same curated set of recordings to discuss findings and insights together.
+* Persistent Organization: Unlike temporary filters, playlists persist your organizational structure, making it easy to return to specific sets of recordings for ongoing analysis or follow-up research.
+* Seamless Integration: Playlists integrate seamlessly with the existing session replay interface. When you open a playlist, you can view all the recordings within it using the same powerful replay player and analysis tools.
+
+
+Built with [Mintlify](https://mintlify.com).

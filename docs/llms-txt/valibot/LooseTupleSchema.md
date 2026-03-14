@@ -1,0 +1,19 @@
+# Source: https://valibot.dev/api/LooseTupleSchema.md
+
+# LooseTupleSchema
+
+Loose tuple schema interface.
+
+## Generics
+
+- `TItems` <Property {...properties.TItems} />
+- `TMessage` <Property {...properties.TMessage} />
+
+## Definition
+
+- `LooseTupleSchema` <Property {...properties.BaseSchema} />
+  - `type` <Property {...properties.type} />
+  - `reference` <Property {...properties.reference} />
+  - `expects` <Property {...properties.expects} />
+  - `items` <Property {...properties.items} />
+  - `message` <Property {...properties.message} />

@@ -1,0 +1,178 @@
+```ts
+const Poseidon: {
+  Sponge: typeof Sponge;
+  Unsafe: {
+     hashToGroup: Group;
+  };
+  hash: Field;
+  hashPacked: Field;
+  hashToGroup: Group;
+  hashWithPrefix: Field;
+  initialState: [Field, Field, Field];
+  update: [Field, Field, Field];
+};
+```
+
+Defined in: [lib/provable/crypto/poseidon.ts:57](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/crypto/poseidon.ts#L57)
+
+## Type declaration
+
+### Sponge
+
+```ts
+Sponge: typeof Sponge;
+```
+
+### Unsafe
+
+```ts
+Unsafe: {
+  hashToGroup: Group;
+};
+```
+
+#### Unsafe.hashToGroup()
+
+```ts
+hashToGroup(input: Field[]): Group;
+```
+
+Low-level version of `Poseidon.hashToGroup()`.
+
+**Warning**: This function is marked unsafe because its output is not deterministic.
+It returns the square root of a value without constraining which of the two possible
+square roots is chosen. This allows the prover to choose between two different hashes,
+which can be a vulnerability if consuming code treats the output as unique.
+
+##### Parameters
+
+###### input
+
+[`Field`](../classes/Field.mdx)[]
+
+##### Returns
+
+[`Group`](../classes/Group.mdx)
+
+### hash()
+
+```ts
+hash(input: Field[]): Field;
+```
+
+#### Parameters
+
+##### input
+
+[`Field`](../classes/Field.mdx)[]
+
+#### Returns
+
+[`Field`](../classes/Field.mdx)
+
+### hashPacked()
+
+```ts
+hashPacked<T>(type: WithProvable<Hashable<T>>, value: T): Field;
+```
+
+Hashes a provable type efficiently.
+
+```ts
+let skHash = Poseidon.hashPacked(PrivateKey, secretKey);
+```
+
+Note: Instead of just doing `Poseidon.hash(value.toFields())`, this
+uses the `toInput()` method on the provable type to pack the input into as few
+field elements as possible. This saves constraints because packing has a much
+lower per-field element cost than hashing.
+
+#### Type Parameters
+
+##### T
+
+`T`
+
+#### Parameters
+
+##### type
+
+[`WithProvable`](../type-aliases/WithProvable.mdx)\<`Hashable`\<`T`\>\>
+
+##### value
+
+`T`
+
+#### Returns
+
+[`Field`](../classes/Field.mdx)
+
+### hashToGroup()
+
+```ts
+hashToGroup(input: Field[]): Group;
+```
+
+Hashes a list of field elements to a point on the Pallas curve.
+
+The output point is deterministic and its discrete log is not efficiently computable.
+
+#### Parameters
+
+##### input
+
+[`Field`](../classes/Field.mdx)[]
+
+#### Returns
+
+[`Group`](../classes/Group.mdx)
+
+### hashWithPrefix()
+
+```ts
+hashWithPrefix(prefix: string, input: Field[]): Field;
+```
+
+#### Parameters
+
+##### prefix
+
+`string`
+
+##### input
+
+[`Field`](../classes/Field.mdx)[]
+
+#### Returns
+
+[`Field`](../classes/Field.mdx)
+
+### initialState()
+
+```ts
+initialState(): [Field, Field, Field];
+```
+
+#### Returns
+
+\[[`Field`](../classes/Field.mdx), [`Field`](../classes/Field.mdx), [`Field`](../classes/Field.mdx)\]
+
+### update()
+
+```ts
+update(state: [Field, Field, Field], input: Field[]): [Field, Field, Field];
+```
+
+#### Parameters
+
+##### state
+
+\[[`Field`](../classes/Field.mdx), [`Field`](../classes/Field.mdx), [`Field`](../classes/Field.mdx)\]
+
+##### input
+
+[`Field`](../classes/Field.mdx)[]
+
+#### Returns
+
+\[[`Field`](../classes/Field.mdx), [`Field`](../classes/Field.mdx), [`Field`](../classes/Field.mdx)\]

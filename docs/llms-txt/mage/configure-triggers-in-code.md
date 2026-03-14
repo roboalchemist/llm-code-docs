@@ -1,0 +1,121 @@
+# Source: https://docs.mage.ai/orchestration/triggers/configure-triggers-in-code.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.mage.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Configure triggers in code
+
+> Configure triggers in triggers.yaml under pipeline folder.
+
+In addition to configuring triggers via UI, you can also configure triggers in code.
+
+You can either manually define the triggers in code or you can go to the triggers detail page in the
+UI and click the button labeled <b>Save trigger in code</b> on the left side panel to store the
+current trigger’s settings to code.
+
+## How triggers in code are synced to the database and UI
+
+* **Source of truth:** The `triggers.yaml` file is the source of truth for trigger definitions.
+* **Sync flow:** A background scheduler process periodically syncs triggers from `triggers.yaml` into the database. Only triggers that pass the **envs filter** (see [Envs filter](#envs-filter)) are created or updated on that instance. After a trigger is synced to the database, it appears in the Triggers UI.
+* **New/updates flow both ways:** New or updated triggers in the YAML are pushed to the database when the scheduler runs. Edits you make in the UI to a trigger that's defined in code are written back to `triggers.yaml` so UI and code stay in sync.
+* **Deletions are not synced:** Removing a trigger from `triggers.yaml` does **not** remove it from the database. You must delete the trigger in the UI (or via API) to remove it from the database. See [Delete triggers](#delete-triggers).
+
+## Create and configure triggers
+
+Here are the steps to create and configure triggers via code:
+
+1. Create a `triggers.yaml` file under your pipeline folder. The file path should be `pipelines/[pipeline_uuid]/triggers.yaml`.
+
+2. Enter your trigger configs into the `triggers.yaml` file.
+   1. Content structure
+      ```yaml  theme={"system"}
+      triggers:
+      - name: test_trigger
+        schedule_type: time
+        start_time: 2023-01-01
+        status: active
+      - name: xxx
+        ...
+      - name: xxx
+        ...
+      ```
+   2. **Required trigger fields**
+      * `name`: Unique identifier of the trigger (per pipeline).
+      * `schedule_type`: `time`, `api`, or `event`. Determines how the trigger runs (schedule vs API vs event).
+      * For **time (schedule)** triggers: `schedule_interval` and `start_time` are required.
+        * `schedule_interval`: `@once`, `@hourly`, `@daily`, `@weekly`, `@monthly`, `@always_on`, or a Cron expression (e.g. `* * * * *`).
+        * `start_time`: When the schedule starts (e.g. `2023-01-01` or `2023-01-01 00:00:00`).
+      * For **api** and **event** triggers: `schedule_interval` and `start_time` are typically not used for execution but may still be present in the config.
+   3. **Optional trigger fields**
+      * `status`: `active` or `inactive`. Defaults to `inactive` if omitted.
+      * `variables`: A dictionary of [runtime variables](/getting-started/runtime-variable) for this trigger.
+      * `sla`: SLA in seconds for this trigger.
+      * `settings`: A dictionary of [advanced settings](/orchestration/triggers/triggering-pipelines#additional-trigger-settings):
+        * `skip_if_previous_running`: `true`/`false` — do not start a new run if the previous run is still in progress.
+        * `allow_blocks_to_fail`: `true`/`false` — allow the pipeline to continue running non-dependent blocks if some blocks fail.
+        * `create_initial_pipeline_run`: `true`/`false` — create an initial run when the start time is in the past (schedule triggers).
+      * `envs`: List of environments where this trigger should be synced and run. See [Envs filter](#envs-filter) below.
+
+3. Save the `triggers.yaml` file. On the next scheduler run, trigger configs are synced to the database (subject to the envs filter) and then show in the Triggers UI.
+
+### Example triggers config:
+
+```yaml  theme={"system"}
+triggers:
+- name: test_example_trigger
+  schedule_type: time
+  schedule_interval: "@daily"
+  start_time: 2023-01-01
+  status: active
+- name: test_example_trigger_2
+  schedule_type: time
+  schedule_interval: "@hourly"
+  start_time: 2023-03-01
+  status: inactive
+- name: test_example_trigger_with_extra_settings
+  schedule_type: time
+  schedule_interval: "@hourly"
+  start_time: 2023-03-01
+  status: inactive
+  settings:
+    skip_if_previous_running: true
+    allow_blocks_to_fail: true
+  envs:
+  - prod
+  - dev
+```
+
+## Envs filter
+
+The optional `envs` field limits which instances or workspaces sync and run the trigger. Each instance/workspace has an environment set by the `ENV` [environment variable](/development/variables/environment-variables).
+
+* **When `envs` is not set or empty:** The trigger is synced to **all** instances/workspaces. Every environment will get the trigger in the database and can run it.
+* **When `envs` is set:** The trigger is synced **only** to instances/workspaces whose `ENV` value is in the `envs` list. Other instances will not create or update this trigger in their database, so they will not run it.
+  * **OSS:** Allowed values are `dev`, `staging`, `prod`, and `test`.
+  * **Mage Pro:** Any value is allowed; it must match the `ENV` set for that instance or workspace.
+
+**If you add an `envs` filter to a trigger that already exists everywhere:** Triggers that were previously synced (e.g. when `envs` was empty) remain in the database on instances that no longer match the new `envs` list. The sync process only creates or updates triggers; it does not delete them. To stop such a trigger from existing (and running) on those instances, you must **delete the trigger manually** in the UI on each affected instance or workspace.
+
+## Modify triggers
+
+If an existing trigger is defined in the YAML file, changes flow both ways: updates in the UI are written back to `triggers.yaml`, and updates in the YAML are synced to the database (and reflected in the UI when you reload). Only triggers that pass the [envs filter](#envs-filter) are synced to the database on each instance.
+
+## Delete triggers
+
+The `triggers.yaml` file is synced into the database automatically, but **deletions work differently**:
+
+* **Deleting triggers completely:**
+  Removing a trigger from the YAML file does not delete it from the database. You must delete the trigger in the UI on each instance where it exists.
+
+  * In the Pipeline triggers table (`/pipeline/[pipeline_uuid]/triggers`), click the trash can icon.
+  * In **Mage Pro**, right-click on the trigger row and click <b>Delete</b>.
+
+  This removes the trigger from both the database and the pipeline’s `triggers.yaml` config file. If you added an [envs filter](#envs-filter) and the trigger was already created on other instances, delete it manually on those instances as well; sync does not remove triggers from the database.
+
+* **Alternative to deletion:**
+  Instead of deleting, you can update the trigger status in the YAML file (e.g. set `status: inactive`).
+  Status changes are automatically synced to the database and UI.
+
+
+Built with [Mintlify](https://mintlify.com).

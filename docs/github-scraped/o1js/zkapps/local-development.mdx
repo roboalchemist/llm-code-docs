@@ -1,0 +1,45 @@
+---
+title: Local Development
+---
+
+# Local Development
+
+LocalBlockchain provides a local testing environment for ZkApp development. Unlike live networks, LocalBlockchain runs entirely in-memory with pre-funded test accounts and configurable settings for rapid development and testing.
+
+LocalBlockchain is essential for unit testing, integration testing, and development workflows. It provides instant transaction finality, deterministic behavior, and the ability to control proof generation for different testing scenarios.
+
+## Basic Setup
+
+Configure LocalBlockchain for your development environment:
+
+```ts file=../snippets/zkapps/local-development/local-development.ts start=start_basic_setup end=end_basic_setup
+```
+
+## Configuration Options
+
+LocalBlockchain accepts configuration parameters to control its behavior:
+
+```ts file=../snippets/zkapps/local-development/local-development.ts start=start_configuration_options end=end_configuration_options
+```
+
+## Test Accounts
+
+LocalBlockchain provides 10 pre-funded test accounts:
+
+```ts file=../snippets/zkapps/local-development/local-development.ts start=start_test_accounts end=end_test_accounts
+```
+
+## Deploying and Testing ZkApps
+
+Here's a complete example showing how to define, deploy, and test a ZkApp on LocalBlockchain:
+
+```ts file=../snippets/zkapps/local-development/local-development.ts start=start_deploy_and_test end=end_deploy_and_test
+```
+
+This example demonstrates the typical LocalBlockchain development workflow: define contracts, deploy to local environment, execute methods, and verify state changes.
+
+## API Reference
+
+For detailed LocalBlockchain information, see:
+- [Mina.LocalBlockchain](/docs/api-reference/namespaces/Mina/functions/LocalBlockchain.mdx)
+- [TestPublicKey](/docs/api-reference/namespaces/Mina/type-aliases/TestPublicKey.mdx)

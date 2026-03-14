@@ -1,0 +1,28 @@
+# Source: https://docs.enate.net/enate-help/builder/builder-2021.1/system-wide-settings/suppliers.md
+
+# Suppliers
+
+As part of [system-level settings](https://docs.enate.net/enate-help/builder/builder-2021.1/system-wide-settings) you can define one or more Supplier (Service Provider) companies (this replaces the previous approach where this option was presented in the customer data popup of the Service Matrix page).
+
+![](https://3859925423-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MWYnDNwe3Cuo4zlGbs5-887967055%2Fuploads%2FhP7Wr5vKZvbQMwXYudEJ%2FSupplier_image.png?alt=media\&token=0389aa01-1c90-4a3c-b017-49af632b7e0d)
+
+The settings for a supplier company are:
+
+| Setting                               | Description                                                                                                                                                                                                                                                                                                                                         |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name                                  | The name of the company. This is mandatory and must be unique.                                                                                                                                                                                                                                                                                      |
+| Description                           | A description of the company                                                                                                                                                                                                                                                                                                                        |
+| Default Calendar                      | This a default working calendar which will be used as the suggested ‘Supplier Calendar’ value when creating contracts. Working calendars are used when calculating any Due Date/Times for activities configured to use the Supplier’s working hours (e.g. ‘must be completed within 5 working hours, according to the Supplier’s Working Calendar). |
+| This company may also receive service | It is possible that a supplier company also *receives* Service, i.e. is also a Customer. If so, you should tick this. When you tick this, the Working Hours per Day and Self Service Environment settings will become accessible.                                                                                                                   |
+| Default Language                      | The default language of the company.                                                                                                                                                                                                                                                                                                                |
+
+When you tick the 'This company may also receive service' icon, the following additional customer-relevant settings will also become accessible:
+
+| Setting                    | Description                                                                                                                                                                                                                                                 | Notes                                                                                                                                      |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| Working Hours per Day      | <p>The number of standard hours in a Working Day for this customer. This value defaults to 8 hours, but can be set to any value.</p><p>This value can be set at company level as a default suggestion whenever a contract is created for this customer.</p> | Value specified should not exceed the difference between start and end hours of work in the Default Calendar selected above.               |
+| Self Service Environment\* | If this customer’s employees are allowed to access Self Service, select the Self Service site to be used.                                                                                                                                                   | \*Will only show if Self Service environments are set up in your system (setup carried out via the administrator’s ‘Manager’ application). |
+
+When editing a supplier, you are also able to see the activity history of the supplier by clicking on the Show Activity button. You can see when the supplier was created and by who and you can see if any subsequent edits have been made, when they were made and by who.&#x20;
+
+![](https://3859925423-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-MWYnDNwe3Cuo4zlGbs5%2F-MWq25-LnWlv1WFp-ufq%2F-MWq3qwGhGgkmov4u4Jy%2Fimage.png?alt=media\&token=05594128-e25e-433a-98a3-34f05fd0da13)

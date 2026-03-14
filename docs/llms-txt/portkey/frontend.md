@@ -1,0 +1,319 @@
+# Source: https://docs.portkey.ai/docs/changelog/frontend.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.portkey.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Frontend
+
+<Card title="Schedule Call" href="https://portkey.sh/demo-21" icon="calendar" horizontal>
+  Discuss how Portkey's AI Gateway can enhance your organization's AI infrastructure
+</Card>
+
+<Update label="1.6.6" description="2026-02-23">
+  ## v1.6.6
+
+  ***
+
+  ### Fixes and Improvements
+
+  * Multiline variable support for Prompt Playground calls
+  * Bug fixes and performance improvements
+  * Ability to filter API keys by API Key Type (User, Service).
+  * Ability to Sort the API key by column name.
+</Update>
+
+<Update label="1.6.5" description="2026-02-20">
+  ## v1.6.5
+
+  ***
+
+  ### Fixes and Improvements
+
+  * Added visibility of Budget inside Workspace Control
+  * Bug fixes and performance improvements
+</Update>
+
+<Update label="1.6.4" description="2026-02-20">
+  ## v1.6.4
+
+  ***
+
+  ### Fixes and Improvements
+
+  * Support for Data Visibility security setting for self-only Logs and Analytics
+</Update>
+
+<Update label="1.6.3" description="2026-02-18">
+  ## v1.6.3
+
+  ***
+
+  ### Fixes and Improvements
+
+  * Support for User and Service key filter in API Key List page
+  * Security setting for Prompts View and Management
+  * Support for Workspace Budget periodic reset by date
+</Update>
+
+<Update label="1.6.2" description="2026-02-16">
+  ## v1.6.2
+
+  ***
+
+  ### Fixes and Improvements
+
+  * MCP Gateway Icon and Description updates
+  * Support for multiple traces search in Logs and Analytics Filter
+  * Security setting changes to view Analytics page
+</Update>
+
+<Update label="1.6.1" description="2026-02-04">
+  ## v1.6.1
+
+  ***
+
+  ### Fixes and Improvements
+
+  * Security setting UI Updates
+  * SSO login support for multiple SSO enabled Organisations
+  * API key creation support by Workspace Managers for Users
+  * Policy management UI Updates
+  * Organisation level multiple guardrails support
+  * MCP capabilities support for the MCP Gateway
+  * MCP access control support at Workspace level
+  * Search support for Saved Filters
+  * Logs Table column resize support
+</Update>
+
+<Update label="1.6.0" description="2026-01-07">
+  ## v1.6.0
+
+  ***
+
+  ### Fixes and Improvements
+
+  * Added configuration changes to sync with the models list and model capabilities specific to provider
+  * Added UI support to add option to next reset date for API keys
+</Update>
+
+<Update label="1.5.7" description="2026-01-06">
+  ## v1.5.7
+
+  ***
+
+  ### Fixes and Improvements
+
+  * Added UI support for Retry Exhausted state for Logs
+  * Added nested Prompt folder support on UI
+  * Added Oracle Provider support on UI
+  * Added option to execute Guardrails sequentially
+  * Added support for breakdown of LLM requests and responses
+</Update>
+
+<Update label="1.5.6" description="2025-12-16">
+  ## v1.5.6
+
+  ***
+
+  ### Fixes and Improvements
+
+  * Added more AI Provider models support for ai21, anyscale, cerebras, cohere, deepinfra, fireworks, groq, mistral, novita, perplexity and together ai
+</Update>
+
+<Update label="1.5.5" description="2025-12-13">
+  ## v1.5.5
+
+  ***
+
+  ### Fixes and Improvements
+
+  * Added embedding text and completion support on getting started and model integrations
+  * Added copy option on Prompt Playground on Each messages
+  * Updated new Guardrails and Plugins support
+</Update>
+
+<Update label="1.5.4" description="2025-11-24">
+  ## v1.5.4
+
+  ***
+
+  ### Fixes and Improvements
+
+  * Provided support of stream parameter for gpt 5.1 models
+  * Added confirmation modal before enabling SSO Only Login flow
+  * Added UI support for SCIM group workspace mapping management
+  * Added AWS region configuration support for Bedrock and Sagemaker service role authentication, enabling users to specify the AWS region when using service role-based authentication instead of access keys
+</Update>
+
+<Update label="1.5.3" description="2025-11-19">
+  ## v1.5.3
+
+  ***
+
+  ### Fixes and Improvements
+
+  * Added gemini-3-pro models for Google and VertexAI
+  * Minor updates to support log fetch for configurable log store file path format released in Gateway v1.17.0
+</Update>
+
+<Update label="1.5.2" description="2025-11-18">
+  ## v1.5.2
+
+  ***
+
+  ### Fixes and Improvements
+
+  * The UI now supports completion calls in the Integrations section of the Getting Started page.
+  * UI support for new Azure OpenAI models.
+</Update>
+
+<Update label="1.5.1" description="2025-11-18">
+  ## v1.5.1
+
+  ***
+
+  ### Fixes and Improvements
+
+  * Support for OpenAI gpt5.1 models
+  * UI update to display any base64 url inside logs with option to download them.
+  * Enhanced the Integrations interface: selected models are now prominently displayed at the top of the Update Integration Models page.
+</Update>
+
+<Update label="1.5.0" description="2025-11-17">
+  ## v1.5.0
+
+  ***
+
+  ### Fixes and Improvements
+
+  <Note>
+    **Needs a Helm repo update(>app-1.4.0)**
+  </Note>
+
+  * Security patch — removed root user from container image (BREAKING CHANGE). The container image used by this chart no longer runs as root. The image now runs processes as a non-root UID and enforces a non-root container securityContext. Requires Helm repo upgrade (>app-1.4.0) to deploy the new image and chart settings.
+  * New Security Feature to provide access to Workspace Members to Manage Configs
+  * UI update to highlight Traces by their category
+  * UI update to improve visibility of Logs with Guardrails
+  * Update zhipu provider to include new models
+  * Improve the accessibility of Login/Signup pages
+</Update>
+
+<Update label="1.4.9" description="2025-11-06">
+  ## v1.4.9
+
+  ***
+
+  ### Fixes and Improvements
+
+  * Added a JSON mode for prompt parameters, allowing real-time updates and easier editing.
+  * Improvement of MCP Consent page to search by workspaces
+  * Fix for Model Catalog page to display the Usage Limit on page load
+  * Fix for Prompt Labels delete functionality. This will remove the label from the prompt version which it is assigned to before deletion.
+  * Analytics Filter API key now have search functionality.
+  * Support added for transcribe models under azure and OpenAI providers.
+  * Added more detailed support for Logs with Tools. On hover fields, description and their types will be visible.
+  * Configuration options for Contact Us, Discord, and custom support are now available.
+  * Added support for new OpenAI Models.
+</Update>
+
+<Update label="1.4.8" description="2025-10-24">
+  ## v1.4.8
+
+  ***
+
+  ### Fixes and Improvements
+
+  * Added Support for Bedrock Service Role changes
+  * Added missing tool\_choice and response\_format parameters to Groq provider
+</Update>
+
+<Update label="1.4.7" description="2025-10-22">
+  ## v1.4.7
+
+  ***
+
+  ### Fixes and Improvements
+
+  * Added Claude 4.5 Haiku models for Anthropic, AWS Bedrock, and VertexAI base providers
+</Update>
+
+<Update label="1.4.6" description="2025-10-17">
+  ## v1.4.6
+
+  ***
+
+  ### API Key Enhancements
+
+  * Added multiple rate limit support. It is now possible to set both cost-based and token-based rate limits on a single key
+  * Introduced a security setting to restrict the maximum number of `User` API keys that can be created per user
+  * Introduced a security setting to configure the default and maximum expiry of `User` API keys
+
+  ### MCP Improvements
+
+  * Updated the MCP OAuth consent screen to allow selection from eligible workspaces
+  * Added better states for consent approval, rejection, and failures
+  * Fixed an issue to allow Workspace admins to edit Workspace-created MCP integrations
+
+  ### Fixes and Improvements
+
+  * Hide embedding models in prompt playground
+  * Allow updating base models for custom models
+  * Made alias a required field for Azure-OpenAI deployment configurations
+  * Added gpt-5-codex, gpt-5-pro, and several other OpenAI and Azure-OpenAI models
+  * Added new Together AI and Grok models
+  * Added AWS Bedrock Titan Embedding and Titan v1 models
+</Update>
+
+<Update label="1.4.3" description="2025-10-02">
+  ## v1.4.3
+
+  ***
+
+  ### Fixes and Improvements
+
+  * Added Claude Sonnet 4.5 models for Anthropic, AWS Bedrock, and VertexAI base providers
+  * Updated the Model Catalog Workspace Provisioning page to display full workspace names instead of trimming them
+</Update>
+
+<Update label="1.4.2" description="2025-09-24">
+  ## v1.4.2
+
+  ***
+
+  ### Fixes and Improvements
+
+  * Added `gemini-2.5-flash-image-preview` model for vertex-ai and google base providers
+</Update>
+
+<Update label="1.4.1" description="2025-09-24">
+  ## v1.4.1
+
+  ***
+
+  ### Configs Security Settings
+
+  * Added configs under security settings along with Workspace Overrides option
+</Update>
+
+<Update label="1.4.0" description="2025-09-23">
+  ## v1.4.0
+
+  ***
+
+  ### MCP Enhancements
+
+  * Added enhancements for the MCP integrations and servers management
+  * Updates to the MCP OAuth consent screen
+
+  ### Fixes and Improvements
+
+  * Added span name as tooltip for better trace visibility
+  * Fixed Vertex AI Anthropic model name mapping issue
+  * Fixed Azure-OpenAI `Add Model` button state in update view
+  * Removed config, metadata, and rate limits fields for admin keys
+  * Fixed display base\_url for Model Catalog Python SDK code snippets
+</Update>
+
+
+Built with [Mintlify](https://mintlify.com).

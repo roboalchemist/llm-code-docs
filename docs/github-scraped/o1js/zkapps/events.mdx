@@ -1,0 +1,35 @@
+---
+title: Events
+---
+
+# Events
+
+Events are Field arrays that are emitted by zkApp methods and stored on an archive node. They provide an off-chain log of contract activity that can be used for indexing, user interfaces, and tracking app state changes.
+
+## Basic Events
+
+Define and emit events from your zkApp methods:
+
+```ts file=../snippets/zkapps/events/events.ts start=start_basic_events end=end_basic_events
+```
+
+## Event Structure
+
+Events are arrays of Fields and can be structured for different use cases:
+
+```ts file=../snippets/zkapps/events/events.ts start=start_structured_events end=end_structured_events
+```
+
+Events are useful for creating audit trails, enabling off-chain indexing, and providing data for user interfaces.
+
+## Fetching Events
+
+Use `fetchEvents` to retrieve previously emitted events from an archive node:
+
+```ts file=../snippets/zkapps/events/events.ts start=start_fetch_events end=end_fetch_events
+```
+
+## API Reference
+
+For detailed information about events, see:
+- [SmartContract events](/docs/api-reference/classes/SmartContract.mdx#events)

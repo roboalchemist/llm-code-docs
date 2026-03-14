@@ -1,0 +1,148 @@
+# Source: https://docs.portkey.ai/docs/product/ai-gateway/multimodal-capabilities/speech-to-text.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.portkey.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Speech-to-Text
+
+> Portkey's AI gateway supports STT models like Whisper by OpenAI.
+
+## Transcription & Translation Usage
+
+Portkey supports both `Transcription` and `Translation` methods for STT models and follows the OpenAI signature where you can send the file (in `flac`, `mp3`, `mp4`, `mpeg`, `mpga`, `m4a`, `ogg`, `wav`, or `webm` formats) as part of the API request.
+
+Here's an example:
+
+OpenAI NodeJSOpenAI PythonREST
+
+<Tabs>
+  <Tab title="OpenAI NodeJS">
+    ```js  theme={"system"}
+    import fs from "fs";
+    import OpenAI from "openai";
+    import { PORTKEY_GATEWAY_URL, createHeaders } from 'portkey-ai'
+
+    const openai = new OpenAI({
+      apiKey: "PORTKEY_API_KEY",
+      baseURL: PORTKEY_GATEWAY_URL
+    });
+
+    // Transcription
+
+    async function transcribe() {
+      const transcription = await openai.audio.transcriptions.create({
+        file: fs.createReadStream("/path/to/file.mp3"),
+        model: "@openai/whisper-1",
+      });
+
+      console.log(transcription.text);
+    }
+    transcribe();
+
+    // Translation
+
+    async function translate() {
+        const translation = await openai.audio.translations.create({
+            file: fs.createReadStream("/path/to/file.mp3"),
+            model: "@openai/whisper-1",
+        });
+        console.log(translation.text);
+    }
+    translate();
+    ```
+  </Tab>
+
+  <Tab title="OpenAI Python">
+    ```py  theme={"system"}
+    from openai import OpenAI
+    from portkey_ai import PORTKEY_GATEWAY_URL, createHeaders
+
+    client = OpenAI(
+        api_key="PORTKEY_API_KEY",
+        base_url=PORTKEY_GATEWAY_URL
+    )
+
+    audio_file= open("/path/to/file.mp3", "rb")
+
+    # Transcription
+
+    transcription = client.audio.transcriptions.create(
+      model="@openai/whisper-1",
+      file=audio_file
+    )
+    print(transcription.text)
+
+    # Translation
+
+    translation = client.audio.translations.create(
+      model="@openai/whisper-1",
+      file=audio_file
+    )
+    print(translation.text)
+    ```
+  </Tab>
+
+  <Tab title="Python SDK">
+    ```python  theme={"system"}
+    from pathlib import Path
+    from portkey_ai import Portkey
+
+    # Initialize the Portkey client
+    portkey = Portkey(
+        api_key="PORTKEY_API_KEY",  # Replace with your Portkey API key
+        provider="@PROVIDER"   
+    )
+    audio_file= open("/path/to/file.mp3", "rb")
+
+    # Transcription
+    transcription = portkey.audio.transcriptions.create(
+      model="@openai/whisper-1",
+      file=audio_file
+    )
+
+    print(transcription.text)
+    # Translation
+    translation = portkey.audio.translations.create(
+      model="@openai/whisper-1",
+      file=audio_file
+    )
+    print(translation.text)
+    ```
+  </Tab>
+
+  <Tab title="cURL">
+    For Transcriptions:
+
+    ```sh  theme={"system"}
+    curl "https://api.portkey.ai/v1/audio/transcriptions" \
+      -H "x-portkey-api-key: $PORTKEY_API_KEY" \
+      -H 'Content-Type: multipart/form-data' \
+      --form file=@/path/to/file/audio.mp3 \
+      --form model=@openai/whisper-1
+    ```
+
+    For Translations:
+
+    ```sh  theme={"system"}
+    curl "https://api.portkey.ai/v1/audio/translations" \
+      -H "x-portkey-api-key: $PORTKEY_API_KEY" \
+      -H 'Content-Type: multipart/form-data' \
+      --form file=@/path/to/file/audio.mp3 \
+      --form model=@openai/whisper-1
+    ```
+  </Tab>
+</Tabs>
+
+On completion, the request will get logged in the logs UI where you can see trasncribed or translated text, along with the cost and latency incurred.
+
+## Supported Providers and Models
+
+The following providers are supported for speech-to-text with more providers getting added soon. Please raise a [request](/integrations/llms/suggest-a-new-integration) or a [PR](https://github.com/Portkey-AI/gateway/pulls) to add model or provider to the AI gateway.
+
+| Provider                            | Models    | Functions                 |
+| ----------------------------------- | --------- | ------------------------- |
+| [OpenAI](/integrations/llms/openai) | whisper-1 | Transcription Translation |
+
+
+Built with [Mintlify](https://mintlify.com).

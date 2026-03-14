@@ -1,0 +1,161 @@
+# Source: https://parceljs.org/features/code-splitting/
+
+Title: Code Splitting
+
+URL Source: https://parceljs.org/features/code-splitting/
+
+Markdown Content:
+Parcel supports zero configuration code splitting out of the box. This allows you to split your application code into separate bundles which can be loaded on demand, resulting in smaller initial bundle sizes and faster load times.
+
+Code splitting is controlled by use of the dynamic `import()` syntax, which works like the normal `import` statement, but returns a Promise. This means that the module can be loaded asynchronously.
+
+Using dynamic imports
+---------------------
+
+[#](https://parceljs.org/features/code-splitting/#using-dynamic-imports)
+The following example shows how you might use dynamic imports to load a sub-page of your application on demand.
+
+_pages/index.js:_
+
+`import("./pages/about").then(function (page) {  // Render page  page.render();});`
+
+_pages/about.js:_
+
+`export function render() {  // Render the page}`
+
+Because `import()` returns a Promise, you can also use async/await syntax.
+
+_pages/index.js:_
+
+`async function load() {  const page = await import("./pages/about");  // Render page  page.render();}load();`
+
+_pages/about.js:_
+
+`export function render() {  // Render the page}`
+
+### Tree shaking
+
+[#](https://parceljs.org/features/code-splitting/#tree-shaking)
+When Parcel can determine which exports of a dynamically imported module you use, it will tree shake the unused exports from that module. This works with static property accesses or destructuring, with either `await` or Promise `.then` syntax.
+
+**Note:** For the `await` cases, unused exports can unfortunately only be removed when `await` is not transpilied away (i.e. with a modern browserslist config).
+
+`let { x: y } = await import("./b.js");`
+
+`let ns = await import("./b.js");console.log(ns.x);`
+
+`import("./b.js").then((ns) => console.log(ns.x));`
+
+`import("./b.js").then(({ x: y }) => console.log(y));`
+
+[#](https://parceljs.org/features/code-splitting/#shared-bundles)
+When multiple parts of your application depend on the same common modules, they are automatically deduplicated into a separate bundle. This allows commonly used dependencies to be loaded in parallel with your application code and cached separately by the browser.
+
+For example, if your application has multiple pages with `<script>` tags that depend on the same common modules, those modules will be split out into a "shared bundle”. This way, if a user navigates from one page to another, they only need to download the new code for that page, and not the common dependencies between the pages.
+
+_home.html:_
+
+`<!doctype html><div id="app"></div><script type="module" src="home.js"></script>`
+
+_home.js:_
+
+`import { createRoot } from 'react-dom';createRoot(app).render(<h1>Home</h1>, app);`
+
+_profile.html:_
+
+`<!doctype html><div id="app"></div><script type="module" src="profile.js"></script>`
+
+_profile.js:_
+
+`import { createRoot } from 'react-dom';createRoot(app).render(<h1>Profile</h1>, app);`
+
+Compiled HTML:
+
+_home.html:_
+
+`<!doctype html><div id="app"></div><script type="module" src="react-dom.23f6d9.js"></script><script type="module" src="home.fac9ed.js"></script>`
+
+_profile.html:_
+
+`<!doctype html><div id="app"></div><script type="module" src="react-dom.23f6d9.js"></script><script type="module" src="profile.9fc67e.js"></script>`
+
+In the above example, both `home.js` and `profile.js` depend on `react-dom`, so it is split out into a separate bundle and loaded in parallel by adding an extra `<script>` tag to both HTML pages.
+
+This also works between different sections of an app that have been code split with dynamic `import()`. Common dependencies shared between two dynamic imports will be split out and loaded in parallel with the dynamically imported modules.
+
+### Configuration
+
+[#](https://parceljs.org/features/code-splitting/#configuration)
+By default, Parcel only creates shared bundles when shared modules reach a size threshold. This avoids splitting out very small modules and creating extra HTTP requests, which have overhead even with HTTP/2. If a module is below the threshold, it will be duplicated between pages instead.
+
+Parcel also has a maximum parallel request limit to avoid overloading the browser with too many requests at once, and will duplicate modules if this limit is reached. Larger modules are prioritized over smaller ones when creating shared bundles.
+
+By default, these parameters have been tuned for HTTP/2. However, you can adjust these options to raise or lower them for your application. You can do this by configuring the `@parcel/bundler-default` key in the package.json in your project root.
+
+_package.json:_
+
+`{  "@parcel/bundler-default": {    "minBundles": 1,    "minBundleSize": 3000,    "maxParallelRequests": 20  }}`
+
+The available options are:
+
+*   **minBundles** – For an asset to be split, it must be used by more than `minBundles` bundles.
+*   **minBundleSize** – For a shared bundled to be created, it has to be at least `minBundleSize`bytes big (before minification and tree shaking).
+*   **maxParallelRequests** – To prevent overloading the network with too many concurrent requests, this ensures that a maximum of `maxParallelRequests` sibling bundles can be loaded together.
+*   **http** – A shorthand for setting the above values to defaults which are optimized for HTTP/1 or HTTP/2. See the table below for these default values.
+
+| `http` | `minBundles` | `minBundleSize` | `maxParallelRequests` |
+| --- | --- | --- | --- |
+| 1 | 1 | 30000 | 6 |
+| 2 (default) | 1 | 20000 | 25 |
+
+You can read more about this topic on [web.dev](https://web.dev/granular-chunking-nextjs/).
+
+Internalized async bundles
+--------------------------
+
+[#](https://parceljs.org/features/code-splitting/#internalized-async-bundles)
+If a module is imported both synchronously and asynchronously from within the same bundle, rather than splitting it out into a separate bundle, the async dependency will be “internalized”. This means it will be kept within the same bundle as the dynamic import to avoid duplication, but wrapped in a `Promise` to preserve semantics.
+
+For this reason, dynamic import is merely a _hint_ that a dependency is not needed synchronously, not a guarantee that a new bundle will be created.
+
+Deduplication
+-------------
+
+[#](https://parceljs.org/features/code-splitting/#deduplication)
+If a dynamically imported module has a dependency that is already available in all of its possible ancestries, it will be deduplicated. For example, if a page imports a library which is also used by a dynamically imported module, the library will only be included in the parent since it will already be on the page at runtime.
+
+[#](https://parceljs.org/features/code-splitting/#manual-shared-bundles)
+**Note**: Manual shared bundles are currently experimental and subject to change.
+
+By default, Parcel automatically splits commonly used modules into "shared bundles" and creates bundles in the scenarios listed above. However, in certain cases, you may want to specify exactly what goes into a bundle and who can request that bundle.
+
+These scenarios include but are not limited to...
+
+*   Porting over your config from another build tool or bundler to Parcel
+*   Reducing your HTTP requests without duplicating assets, in favor of over-fetching 
+    *   Over-fetching and loading fewer bundles overall can benefit measurements like [time-to-interactive](https://web.dev/articles/tti), especially for very large projects.
+
+*   Creating an optimized shared bundle for a specific route or set of modules
+
+Manual Shared Bundles can be specified in your project root `package.json`. The `assets` property must be set to a list of globs. Any asset file paths matching these globs will be included in the manual shared bundle.
+
+This example creates a vendor bundle which includes all JS assets in the graph starting from `manual.js`, split into 3 parallel HTTP requests.
+
+_package.json:_
+
+`{  "@parcel/bundler-default": {   "manualSharedBundles": [      {        "name": "vendor",        "root": "manual.js",        "assets": ["**/*"],        "types": ["js"],        "split": 3      },    ],  },}`
+
+The full list of options are as follows:
+
+*   **name** (optional) - Sets field `manualSharedBundle` on bundle to <name>, this can be read in a custom reporter or namer for development purposes
+*   **root** (optional) - Narrows the scope of the glob to the file specified. In the example above, the glob, `**/*` will match all imports within `manual.js`
+*   **assets** (required) - glob for Parcel to match on. Files that match the glob will be placed into a singular bundle, and deduplicated across the project unless otherwise specified. If no `root` is specified, Parcel attempts to match the glob **globally**.
+*   **types** (optional) - Limits globs to only match on a certain type. This field must be set if your `root` file imports multiple types (e.g. JS and CSS) or if the `assets` glob can match different types. A bundle can only contain assets of the same type. 
+    *   A **root** file can contain imports of multiple types. Make sure to add an object in the `manualSharedBundle` array per type.
+
+*   **split** (optional) - splits the manual bundle into x bundles. 
+    *   For very large bundles, splitting into multiple parallel HTTP requests can improve measurements like CHR (cache hit ratio), as a smaller bundle is invalidated for a given change.
+
+**Be careful!**
+
+Configuring manual shared bundles overrides all automatic code splitting normally done by Parcel, and can cause unintended load-order issues as it maps on your **entire** code base, **including**`node_modules`. Be mindful of the globs you use, only specify 1 bundle per file type, and we recommend you specify a **root** file.
