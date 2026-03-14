@@ -1439,3 +1439,6 @@ sites:
 - name: physx
   base_url: https://embark.rs/
   description: physx documentation
+- name: vale
+  base_url: https://docs.vale.sh/
+  description: vale documentation
