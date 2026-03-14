@@ -1877,4 +1877,9 @@ repositories:
   repo_url: https://github.com/ROCm/omnitrace.git
   source_folder: docs
   target_folder: docs/github-scraped/omnitrace
+- name: podman
+  description: podman from GitHub
+  repo_url: https://github.com/containers/podman.git
+  source_folder: docs
+  target_folder: docs/github-scraped/podman
   branch: main
