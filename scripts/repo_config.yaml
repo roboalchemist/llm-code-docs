@@ -1995,3 +1995,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/maplibre-gl
   branch: main
+- name: flake8
+  description: flake8 from GitHub
+  repo_url: https://github.com/pycqa/flake8.git
+  source_folder: docs
+  target_folder: docs/github-scraped/flake8
+  branch: main
