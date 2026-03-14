@@ -1912,3 +1912,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/material-ui
   branch: main
+- name: bundler
+  description: bundler from GitHub
+  repo_url: https://github.com/rubygems/bundler.git
+  source_folder: doc
+  target_folder: docs/github-scraped/bundler
+  branch: main
