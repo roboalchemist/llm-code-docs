@@ -2154,4 +2154,9 @@ repositories:
   repo_url: https://github.com/Textualize/textual.git
   source_folder: docs
   target_folder: docs/github-scraped/textual
+- name: lerna
+  description: lerna from GitHub
+  repo_url: https://github.com/lerna/lerna.git
+  source_folder: website/docs
+  target_folder: docs/github-scraped/lerna
   branch: main
