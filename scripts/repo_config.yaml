@@ -2194,3 +2194,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/go-mod
   branch: main
+- name: julia
+  description: julia from GitHub
+  repo_url: https://github.com/JuliaLang/julia.git
+  source_folder: doc
+  target_folder: docs/github-scraped/julia
+  branch: main
