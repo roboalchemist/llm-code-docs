@@ -2200,3 +2200,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/julia
   branch: main
+- name: luarocks
+  description: luarocks from GitHub
+  repo_url: https://github.com/luarocks/luarocks.git
+  source_folder: docs
+  target_folder: docs/github-scraped/luarocks
+  branch: main
