@@ -1487,3 +1487,6 @@ sites:
 - name: yq
   base_url: https://mikefarah.gitbook.io/
   description: yq documentation
+- name: sanity
+  base_url: https://logo-soup.sanity.dev/docs/
+  description: sanity documentation
