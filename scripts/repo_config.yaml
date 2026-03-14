@@ -1935,3 +1935,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/megalinter
   branch: main
+- name: cfn-lint
+  description: cfn-lint from GitHub
+  repo_url: https://github.com/aws-cloudformation/cfn-lint.git
+  source_folder: docs
+  target_folder: docs/github-scraped/cfn-lint
+  branch: main
