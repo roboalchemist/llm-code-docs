@@ -1,0 +1,937 @@
+# Source: https://kestra.io/docs/installation/digitalocean-droplet
+
+Title: Deploy Kestra on DigitalOcean Droplet – Managed Database | Kestra
+
+URL Source: https://kestra.io/docs/installation/digitalocean-droplet
+
+Markdown Content:
+Deploy Kestra on DigitalOcean Droplet – Managed Database | Kestra
+===============
+
+[](https://kestra.io/)
+
+[](https://kestra.io/docs/installation/digitalocean-droplet# "Search")Menu
+
+* [Product](https://kestra.io/docs/installation/digitalocean-droplet#)
+
+  * [Core Features](https://kestra.io/features)
+  * [Enterprise Edition](https://kestra.io/enterprise)
+  * [Cloud Edition**Request Access**](https://kestra.io/cloud)
+
+* [Solutions](https://kestra.io/docs/installation/digitalocean-droplet#)
+
+Capabilities
+
+    *   [Declarative Orchestration](https://kestra.io/features/declarative-data-orchestration)
+    *   [Automation Platform](https://kestra.io/features/scheduling-and-automation)
+    *   [Language Agnostic](https://kestra.io/features/code-in-any-language)
+    *   [Kestra's Terraform Provider](https://kestra.io/use-cases/terraform-provider)
+    *   [API-First](https://kestra.io/features/api-first)
+    *   [Platform Overview](https://kestra.io/overview)
+
+    
+By Roles
+
+    *   [Data Engineers](https://kestra.io/use-cases/data-engineers)
+    *   [Software Engineers](https://kestra.io/use-cases/software-engineers)
+    *   [Platform Engineers](https://kestra.io/use-cases/platform-engineers)
+
+    
+By Industries
+
+    *   [Retail & Supply Chain](https://kestra.io/use-cases/retail)
+    *   [Healthcare & Pharmaceuticals](https://kestra.io/use-cases/healthcare)
+    *   [Automotive & Heavy Equipment](https://kestra.io/use-cases/automotive)
+    *   [All use-cases](https://kestra.io/docs/use-cases)
+
+    
+Resources
+
+    *   [About Us](https://kestra.io/about-us)
+    *   [Partner](https://kestra.io/partners)
+    *   [FAQ](https://kestra.io/faq)
+    *   [Community Overview](https://kestra.io/community)
+    *   [Community Contents](https://kestra.io/blogs/community)
+    *   [Customer Stories](https://kestra.io/use-cases/stories)
+    *   [Changelog](https://kestra.io/docs/changelog)
+
+* [Learn](https://kestra.io/docs/installation/digitalocean-droplet#)
+
+  * [Docs](https://kestra.io/docs)
+  * [Blog](https://kestra.io/blogs)
+  * [Blueprints](https://kestra.io/blueprints)
+  * [Video Tutorials](https://kestra.io/tutorial-videos)
+
+  * [How to guides](https://kestra.io/docs/how-to-guides)
+  * [Why kestra](https://kestra.io/docs/why-kestra)
+  * [Quickstart installation guide](https://kestra.io/docs/installation)
+
+* [Plugins](https://kestra.io/plugins)
+* [Pricing](https://kestra.io/pricing)
+
+* [Star 26,531](https://github.com/kestra-io/kestra) [Talk to us](https://kestra.io/demo)[Get Started!](https://kestra.io/docs/quickstart#start-kestra)[Talk to Us](https://kestra.io/demo)
+
+* [Core Features Explore Kestra's Core Capabilities](https://kestra.io/features)
+* [Enterprise Edition Security and Governance for Enterprise Needs](https://kestra.io/enterprise)
+* [Cloud Edition**Request Access** the Cloud edition managed by Kestra](https://kestra.io/cloud)
+
+Capabilities
+
+* [Declarative Orchestration Infrastructure as Code of All Your Workflows](https://kestra.io/features/declarative-data-orchestration)
+* [Automation Platform Scheduling and Automation Made Easy](https://kestra.io/features/scheduling-and-automation)
+* [Language Agnostic Orchestrate business logic in any language](https://kestra.io/features/code-in-any-language)
+* [Kestra's Terraform Provider Deploy & manage all resources with Terraform](https://kestra.io/use-cases/terraform-provider)
+* [API-First Learn more about Kestra's API features](https://kestra.io/features/api-first)
+* [Platform Overview Powerful Capabilities from the UI](https://kestra.io/overview)
+
+By Roles
+
+* [Data Engineers](https://kestra.io/use-cases/data-engineers)
+* [Software Engineers](https://kestra.io/use-cases/software-engineers)
+* [Platform Engineers](https://kestra.io/use-cases/platform-engineers)
+
+By Industries
+
+* [Retail & Supply Chain](https://kestra.io/use-cases/retail)
+* [Healthcare & Pharmaceuticals](https://kestra.io/use-cases/healthcare)
+* [Automotive & Heavy Equipment](https://kestra.io/use-cases/automotive)
+* [All use-cases](https://kestra.io/docs/use-cases)
+
+Resources
+
+* [About Us](https://kestra.io/about-us)
+* [Partner](https://kestra.io/partners)
+* [FAQ](https://kestra.io/faq)
+* [Community Overview](https://kestra.io/community)
+* [Community Contents](https://kestra.io/blogs/community)
+* [Customer Stories](https://kestra.io/use-cases/stories)
+* [Changelog](https://kestra.io/docs/changelog)
+
+* [Docs Everything Kestra](https://kestra.io/docs)
+* [Blog Tutorials, Guides, Market Trends and More](https://kestra.io/blogs)
+* [Blueprints A Library of ready to use Workflows](https://kestra.io/blueprints)
+* [Video Tutorials your favourite tutorials in video](https://kestra.io/tutorial-videos)
+
+* [How to guides Learn step by step how to address use-cases](https://kestra.io/docs/how-to-guides)
+* [Why kestra Trust kestra as your unified orchestration tool](https://kestra.io/docs/why-kestra)
+* [Quickstart installation guide Trust kestra as your unified orchestration tool](https://kestra.io/docs/installation)
+
+Search
+
+![Image 22: Kestra AI](https://kestra.io/_astro/ks-ai.CwKVu__t.svg)Ask Kestra AI Ask AI ESC
+
+All(0)
+
+Ask Kestra AI
+
+Search ESC
+
+![Image 23: Kestra AI](https://kestra.io/icon-simple.svg)
+
+Hi! I'm your Kestra AI assistant.
+
+Ask me anything about workflows.
+
+###### EXAMPLE QUESTIONS
+
+How to sync my flows with Git?
+
+How to run a Ansible playbook?
+
+What are main differences between Open Source and Enterprise?
+
+1. [Kestra 1.3 is here: production-grade controls release](https://kestra.io/blogs/release-1-3)
+
+Item 1 of 1
+
+ Documentation Menu
+
+![Image 24: Kestra AI](https://kestra.io/_astro/ks-ai.CwKVu__t.svg) Ask Kestra AI
+
+Search
+
+Ctrl + K
+
+* Get Started with Kestra
+
+  * [Quickstart](https://kestra.io/docs/quickstart)
+  * [Installation Guide](https://kestra.io/docs/installation)
+
+    * [Docker](https://kestra.io/docs/installation/docker)
+    * [Docker Compose](https://kestra.io/docs/installation/docker-compose)
+    * [Kubernetes](https://kestra.io/docs/installation/kubernetes)
+    * [Kubernetes on AWS EKS with Amazon RDS and S3](https://kestra.io/docs/installation/kubernetes-aws-eks)
+    * [Kubernetes on GCP GKE with CloudSQL and Cloud Storage](https://kestra.io/docs/installation/kubernetes-gcp-gke)
+    * [Kubernetes on Azure AKS with Azure Database and Blob Storage](https://kestra.io/docs/installation/kubernetes-azure-aks)
+    * [AWS EC2 with Amazon RDS and S3](https://kestra.io/docs/installation/aws-ec2)
+    * [GCP VM with Cloud SQL and GCS](https://kestra.io/docs/installation/gcp-vm)
+    * [Azure VM with Azure Database](https://kestra.io/docs/installation/azure-vm)
+    * [DigitalOcean Droplet with Managed Database](https://kestra.io/docs/installation/digitalocean-droplet)
+    * [Standalone Server](https://kestra.io/docs/installation/standalone-server)
+    * [Podman Compose](https://kestra.io/docs/installation/podman-compose)
+
+  * [Tutorial](https://kestra.io/docs/tutorial)
+
+    * [Fundamentals](https://kestra.io/docs/tutorial/fundamentals)
+    * [Inputs](https://kestra.io/docs/tutorial/inputs)
+    * [Outputs](https://kestra.io/docs/tutorial/outputs)
+    * [Triggers](https://kestra.io/docs/tutorial/triggers)
+    * [Flowable tasks](https://kestra.io/docs/tutorial/flowable)
+    * [Error Handling](https://kestra.io/docs/tutorial/errors)
+
+  * [Architecture](https://kestra.io/docs/architecture)
+
+    * [Main components](https://kestra.io/docs/architecture/main-components)
+    * [Server components](https://kestra.io/docs/architecture/server-components)
+    * [Deployment architecture](https://kestra.io/docs/architecture/deployment-architecture)
+    * [Multi-tenancy](https://kestra.io/docs/architecture/multi-tenancy)
+    * [Data Storage in Kestra](https://kestra.io/docs/architecture/data-components)
+
+  * [Contribute to Kestra](https://kestra.io/docs/contribute-to-kestra)
+
+    * [Kestra Codebase](https://kestra.io/docs/contribute-to-kestra/contributing)
+    * [Kestra Documentation](https://kestra.io/docs/contribute-to-kestra/docs-contributor-guide)
+    * [Community Guidelines](https://kestra.io/docs/contribute-to-kestra/community-guidelines)
+
+  * [User Interface](https://kestra.io/docs/ui)
+
+    * [Dashboards](https://kestra.io/docs/ui/dashboard)
+    * [Flows](https://kestra.io/docs/ui/flows)
+    * [Executions](https://kestra.io/docs/ui/executions)
+    * [Logs](https://kestra.io/docs/ui/logs)
+    * [Namespaces](https://kestra.io/docs/ui/namespaces)
+    * [Blueprints](https://kestra.io/docs/ui/blueprints)
+    * [Settings](https://kestra.io/docs/ui/settings)
+    * [Bookmarks](https://kestra.io/docs/ui/bookmarks)
+    * [Playground](https://kestra.io/docs/ui/playground)
+
+* Build with Kestra
+
+  * [Workflow Components](https://kestra.io/docs/workflow-components)
+
+    * [Flow](https://kestra.io/docs/workflow-components/flow)
+    * [Tasks](https://kestra.io/docs/workflow-components/tasks)
+
+      * [Flowable Tasks](https://kestra.io/docs/workflow-components/tasks/flowable-tasks)
+      * [Runnable Tasks](https://kestra.io/docs/workflow-components/tasks/runnable-tasks)
+      * [Task Runs](https://kestra.io/docs/workflow-components/tasks/taskruns)
+
+    * [Namespace](https://kestra.io/docs/workflow-components/namespace)
+    * [Plugins](https://kestra.io/docs/workflow-components/plugins)
+    * [Execution](https://kestra.io/docs/workflow-components/execution)
+    * [Variables](https://kestra.io/docs/workflow-components/variables)
+    * [Inputs](https://kestra.io/docs/workflow-components/inputs)
+    * [Outputs](https://kestra.io/docs/workflow-components/outputs)
+    * [Checks](https://kestra.io/docs/workflow-components/checks)
+    * [Triggers](https://kestra.io/docs/workflow-components/triggers)
+
+      * [Schedule Trigger](https://kestra.io/docs/workflow-components/triggers/schedule-trigger)
+      * [Flow Trigger](https://kestra.io/docs/workflow-components/triggers/flow-trigger)
+      * [Webhook Trigger](https://kestra.io/docs/workflow-components/triggers/webhook-trigger)
+      * [Polling Trigger](https://kestra.io/docs/workflow-components/triggers/polling-trigger)
+      * [Realtime Trigger](https://kestra.io/docs/workflow-components/triggers/realtime-trigger)
+
+    * [Labels](https://kestra.io/docs/workflow-components/labels)
+    * [Plugin Defaults](https://kestra.io/docs/workflow-components/plugin-defaults)
+    * [Subflows](https://kestra.io/docs/workflow-components/subflows)
+    * [Errors](https://kestra.io/docs/workflow-components/errors)
+    * [Retries](https://kestra.io/docs/workflow-components/retries)
+    * [Task timeout](https://kestra.io/docs/workflow-components/timeout)
+    * [Concurrency Limits](https://kestra.io/docs/workflow-components/concurrency)
+    * [Descriptions](https://kestra.io/docs/workflow-components/descriptions)
+    * [Disabled flag](https://kestra.io/docs/workflow-components/disabled)
+    * [States](https://kestra.io/docs/workflow-components/states)
+    * [SLA](https://kestra.io/docs/workflow-components/sla)
+    * [Finally](https://kestra.io/docs/workflow-components/finally)
+    * [afterExecution](https://kestra.io/docs/workflow-components/afterexecution)
+    * [Task Cache](https://kestra.io/docs/workflow-components/task-cache)
+
+  * [Concepts](https://kestra.io/docs/concepts)
+
+    * [Namespace Files](https://kestra.io/docs/concepts/namespace-files)
+    * [Revision](https://kestra.io/docs/concepts/revision)
+    * [Secrets](https://kestra.io/docs/concepts/secret)
+    * [Key Value (KV) Store](https://kestra.io/docs/concepts/kv-store)
+    * [Pebble Templating Engine](https://kestra.io/docs/concepts/pebble)
+    * [Blueprints](https://kestra.io/docs/concepts/blueprints)
+    * [Backfill](https://kestra.io/docs/concepts/backfill)
+    * [Replay](https://kestra.io/docs/concepts/replay)
+    * [Data storage and processing](https://kestra.io/docs/concepts/storage)
+    * [Caching](https://kestra.io/docs/concepts/caching)
+    * [File Access in Kestra](https://kestra.io/docs/concepts/file-access)
+    * [System Flows](https://kestra.io/docs/concepts/system-flows)
+    * [System Labels & Hidden Labels](https://kestra.io/docs/concepts/system-labels)
+
+  * [Multi-Language Script Tasks](https://kestra.io/docs/scripts)
+
+    * [Programming Languages](https://kestra.io/docs/scripts/languages)
+    * [Commands and Script Tasks](https://kestra.io/docs/scripts/commands-vs-scripts)
+    * [Inline Scripts in Docker](https://kestra.io/docs/scripts/inline-scripts-in-docker)
+    * [Task Runners](https://kestra.io/docs/scripts/task-runners)
+    * [Building a Custom Docker Image](https://kestra.io/docs/scripts/custom-docker-image)
+    * [Installing Dependencies at Runtime](https://kestra.io/docs/scripts/installing-dependencies)
+    * [Outputs and Metrics](https://kestra.io/docs/scripts/outputs-metrics)
+    * [Input and Output Files](https://kestra.io/docs/scripts/input-output-files)
+    * [Logging](https://kestra.io/docs/scripts/logging)
+    * [Bind Mount](https://kestra.io/docs/scripts/bind-mount)
+    * [Git Clone task](https://kestra.io/docs/scripts/git-clone)
+    * [Working Directory](https://kestra.io/docs/scripts/working-directory)
+
+  * [AI Tools](https://kestra.io/docs/ai-tools)
+
+    * [Agent Skills](https://kestra.io/docs/ai-tools/agent-skills)
+    * [AI Agents](https://kestra.io/docs/ai-tools/ai-agents)
+    * [AI Copilot](https://kestra.io/docs/ai-tools/ai-copilot)
+    * [RAG Workflows](https://kestra.io/docs/ai-tools/ai-rag-workflows)
+    * [AI Workflows](https://kestra.io/docs/ai-tools/ai-workflows)
+
+  * [Version Control & CI/CD](https://kestra.io/docs/version-control-cicd)
+
+    * [Version Control with Git](https://kestra.io/docs/version-control-cicd/git)
+    * [CI/CD Pipeline](https://kestra.io/docs/version-control-cicd/cicd)
+
+      * [GitHub Actions](https://kestra.io/docs/version-control-cicd/cicd/github-action)
+      * [GitLab CI](https://kestra.io/docs/version-control-cicd/cicd/gitlab)
+      * [Terraform](https://kestra.io/docs/version-control-cicd/cicd/terraform)
+      * [Helpers](https://kestra.io/docs/version-control-cicd/cicd/helpers)
+      * [Azure DevOps](https://kestra.io/docs/version-control-cicd/cicd/05-azure-devops)
+      * [Bitbucket Pipes](https://kestra.io/docs/version-control-cicd/cicd/bitbucket-pipes)
+      * [Kubernetes Operator](https://kestra.io/docs/version-control-cicd/cicd/kubernetes-operator)
+
+  * [Plugin Developer Guide](https://kestra.io/docs/plugin-developer-guide)
+
+    * [Set Up for Plugin Development](https://kestra.io/docs/plugin-developer-guide/setup)
+    * [Contribution Guidelines](https://kestra.io/docs/plugin-developer-guide/contribution-guidelines)
+    * [Gradle Configuration](https://kestra.io/docs/plugin-developer-guide/gradle)
+    * [Develop a Task](https://kestra.io/docs/plugin-developer-guide/task)
+    * [Develop a Trigger](https://kestra.io/docs/plugin-developer-guide/trigger)
+    * [Develop a Condition](https://kestra.io/docs/plugin-developer-guide/condition)
+    * [Add Unit Tests](https://kestra.io/docs/plugin-developer-guide/unit-tests)
+    * [Document Your Plugin](https://kestra.io/docs/plugin-developer-guide/document)
+    * [Build and Publish a Plugin](https://kestra.io/docs/plugin-developer-guide/publish)
+
+  * [How-to Guides](https://kestra.io/docs/how-to-guides)
+
+* Scale with Kestra
+
+  * [Cloud & Enterprise Edition](https://kestra.io/docs/enterprise)
+
+    * [Overview](https://kestra.io/docs/enterprise/overview)
+
+      * [Features](https://kestra.io/docs/enterprise/overview/enterprise-edition)
+      * [Enterprise Edition Setup Guide](https://kestra.io/docs/enterprise/overview/setup)
+      * [Standalone Server Installation Guide](https://kestra.io/docs/enterprise/overview/standalone-server-installation)
+
+    * [Governance](https://kestra.io/docs/enterprise/governance)
+
+      * [Assets](https://kestra.io/docs/enterprise/governance/assets)
+      * [Audit Logs](https://kestra.io/docs/enterprise/governance/audit-logs)
+      * [Namespace Management](https://kestra.io/docs/enterprise/governance/namespace-management)
+      * [Allowed & Restricted Plugins](https://kestra.io/docs/enterprise/governance/allowed-plugins)
+      * [Custom Blueprints](https://kestra.io/docs/enterprise/governance/custom-blueprints)
+      * [Log Shipper](https://kestra.io/docs/enterprise/governance/logshipper)
+      * [Read-only Secret Manager](https://kestra.io/docs/enterprise/governance/read-only-secrets)
+      * [Secrets Manager](https://kestra.io/docs/enterprise/governance/secrets-manager)
+      * [Secrets](https://kestra.io/docs/enterprise/governance/secrets)
+      * [Tenants](https://kestra.io/docs/enterprise/governance/tenants)
+      * [Unit Tests](https://kestra.io/docs/enterprise/governance/unit-tests)
+      * [Worker Isolation](https://kestra.io/docs/enterprise/governance/worker-isolation)
+
+    * [Authentication & Users](https://kestra.io/docs/enterprise/auth)
+
+      * [Authentication](https://kestra.io/docs/enterprise/auth/authentication)
+      * [API Tokens](https://kestra.io/docs/enterprise/auth/api-tokens)
+      * [Kestra EE API](https://kestra.io/docs/enterprise/auth/api)
+      * [Credentials](https://kestra.io/docs/enterprise/auth/credentials)
+      * [Invitations](https://kestra.io/docs/enterprise/auth/invitations)
+      * [Role-Based Access Control (RBAC)](https://kestra.io/docs/enterprise/auth/rbac)
+
+        * [Permissions Reference](https://kestra.io/docs/enterprise/auth/rbac/permissions-reference)
+
+      * [SCIM Directory Sync](https://kestra.io/docs/enterprise/auth/scim)
+
+        * [authentik SCIM Provisioning](https://kestra.io/docs/enterprise/auth/scim/authentik)
+        * [Keycloak SCIM Provisioning](https://kestra.io/docs/enterprise/auth/scim/keycloak)
+        * [Microsoft Entra ID SCIM Provisioning](https://kestra.io/docs/enterprise/auth/scim/microsoft-entra-id)
+        * [Okta SCIM Provisioning](https://kestra.io/docs/enterprise/auth/scim/okta)
+
+      * [Service Accounts](https://kestra.io/docs/enterprise/auth/service-accounts)
+      * [SSO](https://kestra.io/docs/enterprise/auth/sso)
+
+        * [authentik SSO](https://kestra.io/docs/enterprise/auth/sso/authentik)
+        * [Google OIDC SSO](https://kestra.io/docs/enterprise/auth/sso/google-oidc)
+        * [Keycloak SSO](https://kestra.io/docs/enterprise/auth/sso/keycloak)
+        * [LDAP](https://kestra.io/docs/enterprise/auth/sso/ldap)
+        * [Microsoft OIDC SSO](https://kestra.io/docs/enterprise/auth/sso/microsoft-oidc)
+        * [Okta OIDC SSO](https://kestra.io/docs/enterprise/auth/sso/okta)
+
+    * [Scalability & Productivity](https://kestra.io/docs/enterprise/scalability)
+
+      * [Apps](https://kestra.io/docs/enterprise/scalability/apps)
+      * [Task Runners](https://kestra.io/docs/enterprise/scalability/task-runners)
+      * [Worker Group](https://kestra.io/docs/enterprise/scalability/worker-group)
+
+    * [Instance Management](https://kestra.io/docs/enterprise/instance)
+
+      * [Announcements](https://kestra.io/docs/enterprise/instance/announcements)
+      * [Kill Switch](https://kestra.io/docs/enterprise/instance/kill-switch)
+      * [Maintenance Mode](https://kestra.io/docs/enterprise/instance/maintenance-mode)
+      * [Versioned Plugins](https://kestra.io/docs/enterprise/instance/versioned-plugins)
+
+    * [Cloud & Enterprise Edition FAQ](https://kestra.io/docs/enterprise/ee-faq)
+
+  * [Task Runners](https://kestra.io/docs/task-runners)
+
+    * [Task Runner Overview](https://kestra.io/docs/task-runners/overview)
+    * [Task Runner Benefits](https://kestra.io/docs/task-runners/benefits)
+    * [Task Runner vs. Worker Group](https://kestra.io/docs/task-runners/task-runners-vs-worker-groups)
+    * [Task Runner Types](https://kestra.io/docs/task-runners/types)
+
+      * [Process Task Runner](https://kestra.io/docs/task-runners/types/process-task-runner)
+      * [Docker Task Runner](https://kestra.io/docs/task-runners/types/docker-task-runner)
+      * [Kubernetes Task Runner](https://kestra.io/docs/task-runners/types/kubernetes-task-runner)
+      * [AWS Batch Task Runner](https://kestra.io/docs/task-runners/types/aws-batch-task-runner)
+      * [Azure Batch Task Runner](https://kestra.io/docs/task-runners/types/azure-batch-task-runner)
+      * [Google Batch Task Runner](https://kestra.io/docs/task-runners/types/google-batch-task-runner)
+      * [Google Cloud Run Task Runner](https://kestra.io/docs/task-runners/types/google-cloudrun-task-runner)
+
+  * [Best Practices](https://kestra.io/docs/best-practices)
+
+    * [Flow Best Practices](https://kestra.io/docs/best-practices/flows)
+    * [Dev to Prod](https://kestra.io/docs/best-practices/from-dev-to-prod)
+    * [Sensitive and Shared Values](https://kestra.io/docs/best-practices/credentials-vs-secrets-vs-kv-store)
+    * [Purging Data](https://kestra.io/docs/best-practices/purging-data)
+    * [Naming Conventions](https://kestra.io/docs/best-practices/naming-conventions)
+    * [Manage Environments](https://kestra.io/docs/best-practices/manage-environments)
+    * [pip Dependencies](https://kestra.io/docs/best-practices/managing-pip-dependencies)
+    * [Expressions with Namespace Files](https://kestra.io/docs/best-practices/expressions-with-namespace-files)
+    * [Git Version Control](https://kestra.io/docs/best-practices/git)
+    * [Flow Outputs](https://kestra.io/docs/best-practices/outputs)
+    * [Business Unit Separation](https://kestra.io/docs/best-practices/business-unit-separation)
+    * [Secrets](https://kestra.io/docs/best-practices/secrets-management)
+
+* Manage Kestra
+
+  * [Administrator Guide](https://kestra.io/docs/administrator-guide)
+
+    * [Software and Hardware Requirements](https://kestra.io/docs/administrator-guide/requirements)
+    * [Alerting & Monitoring](https://kestra.io/docs/administrator-guide/monitoring)
+    * [Troubleshooting](https://kestra.io/docs/administrator-guide/troubleshooting)
+    * [Backup & Restore](https://kestra.io/docs/administrator-guide/backup-and-restore)
+    * [Troubleshooting Basic Authentication](https://kestra.io/docs/administrator-guide/basic-auth-troubleshooting)
+    * [MITM Proxy for DinD](https://kestra.io/docs/administrator-guide/dind-behind-proxy)
+    * [High Availability](https://kestra.io/docs/administrator-guide/high-availability)
+    * [JVM CPU Limits](https://kestra.io/docs/administrator-guide/jvm-cpu-limits)
+    * [MITM Proxy for Kestra](https://kestra.io/docs/administrator-guide/mitm-proxy-configuration)
+    * [OpenTelemetry](https://kestra.io/docs/administrator-guide/open-telemetry)
+    * [Prometheus Metrics](https://kestra.io/docs/administrator-guide/prometheus-metrics)
+    * [Purge](https://kestra.io/docs/administrator-guide/purge)
+    * [Security Hardening](https://kestra.io/docs/administrator-guide/security-hardening)
+    * [Server Components Liveness](https://kestra.io/docs/administrator-guide/server-lifecycle)
+    * [Configure SSL for Kestra](https://kestra.io/docs/administrator-guide/ssl-configuration)
+    * [Managing Upgrades](https://kestra.io/docs/administrator-guide/upgrades)
+    * [Usage](https://kestra.io/docs/administrator-guide/usage)
+    * [Webserver URL](https://kestra.io/docs/administrator-guide/webserver-url)
+
+  * [Migration Guide](https://kestra.io/docs/migration-guide)
+
+    * [0.11.0](https://kestra.io/docs/migration-guide/v0.11.0)
+
+      * [Script tasks moved to dedicated plugins](https://kestra.io/docs/migration-guide/v0.11.0/core-script-tasks)
+      * [Deprecation of Templates](https://kestra.io/docs/migration-guide/v0.11.0/templates)
+
+    * [0.12.0](https://kestra.io/docs/migration-guide/v0.12.0)
+
+      * [Deprecation of Listeners](https://kestra.io/docs/migration-guide/v0.12.0/listeners)
+
+    * [0.13.0](https://kestra.io/docs/migration-guide/v0.13.0)
+
+      * [Sync Users Access to a Default Tenant](https://kestra.io/docs/migration-guide/v0.13.0/default-tenant)
+
+    * [0.14.0](https://kestra.io/docs/migration-guide/v0.14.0)
+
+      * [Change in managing Groups via the API](https://kestra.io/docs/migration-guide/v0.14.0/group-list)
+      * [Recursive rendering of Pebble expressions](https://kestra.io/docs/migration-guide/v0.14.0/recursive-rendering)
+
+    * [0.15.0](https://kestra.io/docs/migration-guide/v0.15.0)
+
+      * [Inputs Name](https://kestra.io/docs/migration-guide/v0.15.0/inputs-name)
+      * [Migration to Micronaut 4.3](https://kestra.io/docs/migration-guide/v0.15.0/micronaut4)
+      * [Schedule Conditions](https://kestra.io/docs/migration-guide/v0.15.0/schedule-conditions)
+      * [Subflow outputs behavior](https://kestra.io/docs/migration-guide/v0.15.0/subflow-outputs)
+
+    * [0.17.0](https://kestra.io/docs/migration-guide/v0.17.0)
+
+      * [JSON Object Serialization](https://kestra.io/docs/migration-guide/v0.17.0/json-objects-serialization)
+      * [Deprecation of LocalFiles and outputDir](https://kestra.io/docs/migration-guide/v0.17.0/local-files)
+      * [Plugin Discovery Mechanism](https://kestra.io/docs/migration-guide/v0.17.0/plugin-discovery-mechanism)
+      * [Renamed Plugins](https://kestra.io/docs/migration-guide/v0.17.0/renamed-plugins)
+      * [Volume Mount](https://kestra.io/docs/migration-guide/v0.17.0/volume-mount)
+
+    * [0.18.0](https://kestra.io/docs/migration-guide/v0.18.0)
+
+      * [Deprecation of runner property in favor of taskRunner](https://kestra.io/docs/migration-guide/v0.18.0/runners)
+      * [Deprecation of Terraform task_defaults in favor of plugin_defaults](https://kestra.io/docs/migration-guide/v0.18.0/tf-task-defaults)
+
+    * [0.19.0](https://kestra.io/docs/migration-guide/v0.19.0)
+
+      * [Deprecation of State Store in favor of KV Store](https://kestra.io/docs/migration-guide/v0.19.0/state-store)
+
+    * [0.20.0](https://kestra.io/docs/migration-guide/v0.20.0)
+
+      * [Different permissions for accessing Cluster Monitoring](https://kestra.io/docs/migration-guide/v0.20.0/cluster-monitoring)
+      * [Conditions renamed](https://kestra.io/docs/migration-guide/v0.20.0/conditions-renamed)
+      * [Custom plugins](https://kestra.io/docs/migration-guide/v0.20.0/custom-plugins)
+      * [Elasticsearch indexer](https://kestra.io/docs/migration-guide/v0.20.0/elasticsearch-indexer)
+      * [Retrieving KV pairs from other namespaces](https://kestra.io/docs/migration-guide/v0.20.0/kv-function)
+      * [Restore Kafka queue](https://kestra.io/docs/migration-guide/v0.20.0/restore-kafka-queue)
+      * [Server configuration](https://kestra.io/docs/migration-guide/v0.20.0/server-configuration)
+      * [Usernames replaced by email addresses](https://kestra.io/docs/migration-guide/v0.20.0/username-replaced-by-email)
+      * [Fallback on unhealthy workers](https://kestra.io/docs/migration-guide/v0.20.0/worker-group-fallback)
+
+    * [0.21.0](https://kestra.io/docs/migration-guide/v0.21.0)
+
+      * [Default Git Branch](https://kestra.io/docs/migration-guide/v0.21.0/default-git-branch)
+      * [Restarting parent flow](https://kestra.io/docs/migration-guide/v0.21.0/restarting-parent-flow)
+      * [Retrieving non-existing secrets](https://kestra.io/docs/migration-guide/v0.21.0/secret-function)
+      * [Log level for stderr output](https://kestra.io/docs/migration-guide/v0.21.0/stderr-log-level)
+      * [ME and APITOKEN user permissions](https://kestra.io/docs/migration-guide/v0.21.0/token-permissions)
+
+    * [0.22.0](https://kestra.io/docs/migration-guide/v0.22.0)
+
+      * [Azure Log Exporter](https://kestra.io/docs/migration-guide/v0.22.0/azure-log-exporter)
+      * [Default Tenant & Multi-Tenancy](https://kestra.io/docs/migration-guide/v0.22.0/default-tenant)
+      * [Enterprise Edition API changes](https://kestra.io/docs/migration-guide/v0.22.0/ee-api-changes)
+      * [Failed Attempts Lockout](https://kestra.io/docs/migration-guide/v0.22.0/failed-attempts-lockout)
+      * [Helm Chart Health Check Paths](https://kestra.io/docs/migration-guide/v0.22.0/healthcheck-paths)
+      * [KV function errors on missing key](https://kestra.io/docs/migration-guide/v0.22.0/kv-error-on-missing)
+      * [Version property renamed](https://kestra.io/docs/migration-guide/v0.22.0/renamed-version-property)
+
+    * [0.23.0](https://kestra.io/docs/migration-guide/v0.23.0)
+
+      * [The BOOLEAN-type input is deprecated in favor of BOOL](https://kestra.io/docs/migration-guide/v0.23.0/boolean-input-change)
+      * [Default environment variable prefix changed from KESTRA_ to ENV_ for security](https://kestra.io/docs/migration-guide/v0.23.0/default-env-prefix)
+      * [The default pullPolicy for Docker-based tasks changed](https://kestra.io/docs/migration-guide/v0.23.0/default-pull-policy)
+      * [Flow trigger now also reacts to PAUSED state by default](https://kestra.io/docs/migration-guide/v0.23.0/flow-trigger-paused-state)
+      * [Internal Storage Migration Guide for S3 and GCS Users](https://kestra.io/docs/migration-guide/v0.23.0/internal-storage-migration)
+      * [The autocommit property removed from JDBC Query and Queries tasks](https://kestra.io/docs/migration-guide/v0.23.0/jdbc-autocommit)
+      * [LoopUntil task changed default values for checkFrequency](https://kestra.io/docs/migration-guide/v0.23.0/loop-until-defaults)
+      * [Python script tasks now use official python:3-13-slim image](https://kestra.io/docs/migration-guide/v0.23.0/python-script-image)
+      * [No more WARNING state on script tasks when ERROR logs are present](https://kestra.io/docs/migration-guide/v0.23.0/script-warnings)
+      * [SQL Server backend is no longer supported](https://kestra.io/docs/migration-guide/v0.23.0/sql-server-backend)
+      * [Manual user refresh to migrate Superadmin property](https://kestra.io/docs/migration-guide/v0.23.0/superadmin-refresh)
+      * [Enterprise Migration Guide from defaultTenant to Multitenancy](https://kestra.io/docs/migration-guide/v0.23.0/tenant-migration-ee)
+      * [Open-Source Migration Guide to introduce defaultTenant](https://kestra.io/docs/migration-guide/v0.23.0/tenant-migration-oss)
+      * [Removal of tenant from Superadmin API routes](https://kestra.io/docs/migration-guide/v0.23.0/tenant-segment-removed-from-superadmin-apis)
+
+    * [0.24.0](https://kestra.io/docs/migration-guide/v0.24.0)
+
+      * [Required Basic Authentication](https://kestra.io/docs/migration-guide/v0.24.0/basic-authentication)
+      * [Capture filename on input type FILE](https://kestra.io/docs/migration-guide/v0.24.0/capture-filename)
+      * [IAM and API Endpoint Changes](https://kestra.io/docs/migration-guide/v0.24.0/endpoint-changes)
+      * [Migrate from LangChain4j Plugin to Plugin AI](https://kestra.io/docs/migration-guide/v0.24.0/renaming-langchain4j-plugin-ai)
+      * [maxAttempt renamed maxAttempts](https://kestra.io/docs/migration-guide/v0.24.0/retries-maxAttempts)
+
+    * [1.0.0](https://kestra.io/docs/migration-guide/v1.0.0)
+
+      * [Internal Package Structure Changes (Custom Plugins Only)](https://kestra.io/docs/migration-guide/v1.0.0/custom-plugin-packages)
+      * [Helm Chart Updates](https://kestra.io/docs/migration-guide/v1.0.0/helm-charts)
+      * [Input defaults are now dynamic](https://kestra.io/docs/migration-guide/v1.0.0/inputs-defaults-property)
+      * [Audit Log's permissions are renamed to resources](https://kestra.io/docs/migration-guide/v1.0.0/purge-audit-logs)
+      * [Reserved keywords cannot be used as Flow IDs](https://kestra.io/docs/migration-guide/v1.0.0/reserved-flow-ids)
+      * [Singer Tap Plugin Removal](https://kestra.io/docs/migration-guide/v1.0.0/singer-plugin)
+
+    * [1.1.0](https://kestra.io/docs/migration-guide/v1.1.0)
+
+      * [ForEachItem now starts iteration at 0 instead of 1](https://kestra.io/docs/migration-guide/v1.1.0/foreach-item)
+      * [Key-value Store and Secrets Metadata Migration](https://kestra.io/docs/migration-guide/v1.1.0/kv-secrets-metadata-migration)
+      * [New prefill Property for Inputs – Breaking Change for Input defaults](https://kestra.io/docs/migration-guide/v1.1.0/prefill-inputs)
+      * [The Query Task Now Supports Only One SQL Statement](https://kestra.io/docs/migration-guide/v1.1.0/query-task)
+      * [Task Runs UI Page Removed](https://kestra.io/docs/migration-guide/v1.1.0/task-runs-ui)
+      * [Webhook Execution API Return Type Changed](https://kestra.io/docs/migration-guide/v1.1.0/webhook-response)
+
+    * [1.2.0](https://kestra.io/docs/migration-guide/v1.2.0)
+
+      * [Namespace Files Migration](https://kestra.io/docs/migration-guide/v1.2.0/namespace-file-migration)
+      * [Split notifications plugins (Non-Breaking Change)](https://kestra.io/docs/migration-guide/v1.2.0/notifications-plugin-split)
+
+    * [1.3.0](https://kestra.io/docs/migration-guide/v1.3.0)
+
+      * [Enterprise License Upgrade](https://kestra.io/docs/migration-guide/v1.3.0/ee-license-upgrade)
+      * [File-listing plugins now default to 25 results](https://kestra.io/docs/migration-guide/v1.3.0/file-listing-default-limit)
+      * [LTS Migration (1.0 → 1.3)](https://kestra.io/docs/migration-guide/v1.3.0/lts-migration)
+
+  * [Performance](https://kestra.io/docs/performance)
+
+    * [Benchmarks](https://kestra.io/docs/performance/benchmark)
+    * [Performance Tuning](https://kestra.io/docs/performance/performance-tuning)
+    * [Sizing and Scaling Infrastructure](https://kestra.io/docs/performance/sizing-and-scaling-infrastructure)
+
+* Reference Docs
+
+  * [Configuration](https://kestra.io/docs/configuration)
+  * [Releases & LTS Policy](https://kestra.io/docs/releases)
+  * [Expressions](https://kestra.io/docs/expressions)
+  * [Terraform Provider](https://kestra.io/docs/terraform)
+
+    * [Kestra Terraform Provider – Read Index](https://kestra.io/docs/installation/digitalocean-droplet)
+
+      * [Kestra Terraform Provider – Read Bindings](https://kestra.io/docs/terraform/data-sources/binding)
+      * [Kestra Terraform Provider – Read Flows](https://kestra.io/docs/terraform/data-sources/flow)
+      * [Kestra Terraform Provider – Read Groups](https://kestra.io/docs/terraform/data-sources/group)
+      * [Kestra Terraform Provider – Read KV entries](https://kestra.io/docs/terraform/data-sources/kv)
+      * [Kestra Terraform Provider – Read Namespace Files](https://kestra.io/docs/terraform/data-sources/namespace_file)
+      * [Kestra Terraform Provider – Read Namespaces](https://kestra.io/docs/terraform/data-sources/namespace)
+      * [Kestra Terraform Provider – Read Roles](https://kestra.io/docs/terraform/data-sources/role)
+      * [Kestra Terraform Provider – Read Service Account API Tokens](https://kestra.io/docs/terraform/data-sources/service_account_api_tokens)
+      * [Kestra Terraform Provider – Read Service Accounts](https://kestra.io/docs/terraform/data-sources/service_account)
+      * [Kestra Terraform Provider – Read Templates](https://kestra.io/docs/terraform/data-sources/template)
+      * [Kestra Terraform Provider – Read Tenants](https://kestra.io/docs/terraform/data-sources/tenant)
+      * [Kestra Terraform Provider – Read Tests](https://kestra.io/docs/terraform/data-sources/test)
+      * [Kestra Terraform Provider – Read User API Tokens](https://kestra.io/docs/terraform/data-sources/user_api_tokens)
+      * [Kestra Terraform Provider – Read Users](https://kestra.io/docs/terraform/data-sources/user)
+      * [Kestra Terraform Provider – Read Worker Groups](https://kestra.io/docs/terraform/data-sources/worker_group)
+
+    * [Guides](https://kestra.io/docs/installation/digitalocean-droplet)
+
+      * [Provider configurations](https://kestra.io/docs/terraform/guides/configurations)
+      * [Working with Yaml](https://kestra.io/docs/terraform/guides/working-with-yaml)
+
+    * [Kestra Terraform Provider – Manage Index](https://kestra.io/docs/installation/digitalocean-droplet)
+
+      * [Kestra Terraform Provider – Manage Apps](https://kestra.io/docs/terraform/resources/app)
+      * [Kestra Terraform Provider – Manage Bindings](https://kestra.io/docs/terraform/resources/binding)
+      * [Kestra Terraform Provider – Manage Dashboards](https://kestra.io/docs/terraform/resources/dashboard)
+      * [Kestra Terraform Provider – Manage Flows](https://kestra.io/docs/terraform/resources/flow)
+      * [Kestra Terraform Provider – Manage Groups](https://kestra.io/docs/terraform/resources/group)
+      * [Kestra Terraform Provider – Manage KV entries](https://kestra.io/docs/terraform/resources/kv)
+      * [Kestra Terraform Provider – Manage Namespace Files](https://kestra.io/docs/terraform/resources/namespace_file)
+      * [Kestra Terraform Provider – Manage Namespace Secrets](https://kestra.io/docs/terraform/resources/namespace_secret)
+      * [Kestra Terraform Provider – Manage Namespaces](https://kestra.io/docs/terraform/resources/namespace)
+      * [Kestra Terraform Provider – Manage Roles](https://kestra.io/docs/terraform/resources/role)
+      * [Kestra Terraform Provider – Manage Security Integrations](https://kestra.io/docs/terraform/resources/security_integration)
+      * [Kestra Terraform Provider – Manage Service Account API Tokens](https://kestra.io/docs/terraform/resources/service_account_api_token)
+      * [Kestra Terraform Provider – Manage Service Accounts](https://kestra.io/docs/terraform/resources/service_account)
+      * [Kestra Terraform Provider – Manage Templates](https://kestra.io/docs/terraform/resources/template)
+      * [Kestra Terraform Provider – Manage Tenants](https://kestra.io/docs/terraform/resources/tenant)
+      * [Kestra Terraform Provider – Manage Tests](https://kestra.io/docs/terraform/resources/test)
+      * [Kestra Terraform Provider – Manage User API Tokens](https://kestra.io/docs/terraform/resources/user_api_token)
+      * [Kestra Terraform Provider – Manage User Passwords](https://kestra.io/docs/terraform/resources/user_password)
+      * [Kestra Terraform Provider – Manage Users](https://kestra.io/docs/terraform/resources/user)
+      * [Kestra Terraform Provider – Manage Worker Groups](https://kestra.io/docs/terraform/resources/worker_group)
+
+  * [API Reference](https://kestra.io/docs/api-reference)
+
+    * [Cloud & Enterprise Edition API](https://kestra.io/docs/api-reference/enterprise)
+    * [Open Source API](https://kestra.io/docs/api-reference/open-source)
+    * [SDKs](https://kestra.io/docs/api-reference/kestra-sdk)
+
+      * [Java SDK](https://kestra.io/docs/api-reference/kestra-sdk/java-sdk)
+      * [JavaScript SDK – Client Setup and Examples](https://kestra.io/docs/api-reference/kestra-sdk/javascript-sdk)
+      * [Python SDK](https://kestra.io/docs/api-reference/kestra-sdk/python-sdk)
+
+  * [Kestra CLI](https://kestra.io/docs/kestra-cli)
+
+    * [Kestra Server Commmands](https://kestra.io/docs/kestra-cli/kestra-server)
+    * [kestractl](https://kestra.io/docs/kestra-cli/kestractl)
+
+  * [Glossary](https://kestra.io/docs/glossary)
+
+1. [Docs](https://kestra.io/docs)
+2. [Installation Guide](https://kestra.io/docs/installation)
+3. DigitalOcean Droplet with Managed Database
+
+Deploy Kestra on DigitalOcean Droplet – Managed Database
+========================================================
+
+Table of Contents
+
+**OVERVIEW**
+
+Plugins have a Min. Compatible Kestra Version i.e. a Kestra version from where the corresponding plugin version is compatible. [Learn more](https://kestra.io/docs/releases)
+
+Created by
+
+Kestra Core Team
+
+Managed by
+
+Kestra Core Team
+
+**Table of Contents**
+
+* [Deploy Kestra on DigitalOcean Droplet with managed database](https://kestra.io/docs/installation/digitalocean-droplet#deploy-kestra-on-digitalocean-droplet-with-managed-database)
+
+* [Create a DigitalOcean Droplet](https://kestra.io/docs/installation/digitalocean-droplet#create-a-digitalocean-droplet)
+
+* [Install Docker](https://kestra.io/docs/installation/digitalocean-droplet#install-docker)
+
+* [Install Kestra](https://kestra.io/docs/installation/digitalocean-droplet#install-kestra)
+
+* [Launch DigitalOcean Database](https://kestra.io/docs/installation/digitalocean-droplet#launch-digitalocean-database)
+
+* [Configure Spaces Object Storage](https://kestra.io/docs/installation/digitalocean-droplet#configure-spaces-object-storage)
+
+* [Next steps](https://kestra.io/docs/installation/digitalocean-droplet#next-steps)
+
+**Contribute**
+
+* [Edit this page](https://github.com/kestra-io/docs/edit/main/src/contents/docs/02.installation/11.digitalocean-droplet/index.md)
+* [Join us on Slack](https://kestra.io/slack)
+* [YouTube](https://www.youtube.com/@kestra-io)
+* [GitHub](https://github.com/kestra-io/kestra)
+* [Twitter](https://twitter.com/kestra_io)
+* [BlueSky](https://web-cdn.bsky.app/profile/kestra.io)
+* [LinkedIn](https://www.linkedin.com/company/kestra)
+
+Install Kestra on DigitalOcean Droplet with DigitalOcean Database as a database backend.
+
+This guide provides instructions for deploying Kestra on DigitalOcean Droplet with Managed Database from DigitalOcean as a database backend.
+
+[](https://kestra.io/docs/installation/digitalocean-droplet#deploy-kestra-on-digitalocean-droplet-with-managed-database)Deploy Kestra on DigitalOcean Droplet with managed database
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Prerequisites:
+
+* Basic knowledge about using a command line interface
+* Basic knowledge about DigitalOcean and PostgreSQL
+
+[](https://kestra.io/docs/installation/digitalocean-droplet#create-a-digitalocean-droplet)Create a DigitalOcean Droplet
+-----------------------------------------------------------------------------------------------------------------------
+
+First, we need to create a virtual machine known as a Droplet in DigitalOcean. To do so, go to the DigitalOcean portal and choose [Droplets](https://www.digitalocean.com/products/droplets) from the left navigation bar.
+
+1. On the Droplets page, click on `Create Droplet` button. This will navigate you to the “Create Droplets” page.
+2. Choose an appropriate region.
+3. Choose `Ubuntu` as the OS image with the latest version.
+4. Kestra needs at least 4GiB Memory and 2vCPU to run correctly. You can go with Shared or Dedicated CPU configuraton options as per your requirement. Here, we are choosing `Basic` plan with `Regular` CPU option and a plan that provides us with 4GiB Memory and 2vCPU.
+5. You can choose an appropriate authentication method: SSH Key or Password based.
+6. Provide an appropriate hostname and click on the `Create Droplet` button at the bottom.
+
+![Image 25: droplet_setup1](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3450,height=1610,format=webp/_astro/droplet_setup1.myV-i_7g.png)
+
+![Image 26: droplet_setup2](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3446,height=1606,format=webp/_astro/droplet_setup2.BQ7YT8-9.png)
+
+![Image 27: droplet_setup3](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3456,height=1620,format=webp/_astro/droplet_setup3.PA42_Uzq.png)
+
+![Image 28: droplet_setup4](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3452,height=1842,format=webp/_astro/droplet_setup4.cb7KZvNp.png)
+
+Wait until the virtual machine is up and running. From the Droplets page, you can navigate to the recently created Droplet. From here, you can open the machine’s console by clicking on the `Console` button at the top.
+
+![Image 29: droplet_setup5](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3456,height=1828,format=webp/_astro/droplet_setup5.L9WJgFSc.png)
+
+[](https://kestra.io/docs/installation/digitalocean-droplet#install-docker)Install Docker
+-----------------------------------------------------------------------------------------
+
+Once in the console terminal, you can run the commands to install Kestra.
+
+Kestra can be started directly from a `.jar` binary or using Docker. We use Docker here for a quick setup:
+
+1. Install Docker on the Droplet. [You can find the last updated instruction on the Docker website](https://docs.docker.com/engine/install/ubuntu/).
+2. [Install docker compose](https://docs.docker.com/compose/install/).
+
+To check your installation, run `sudo docker version` and `sudo docker compose version`. You’re now ready to download and launch the Kestra server.
+
+[](https://kestra.io/docs/installation/digitalocean-droplet#install-kestra)Install Kestra
+-----------------------------------------------------------------------------------------
+
+Download the official Docker-Compose file:
+
+``curl -o docker-compose.yml https://raw.githubusercontent.com/kestra-io/kestra/develop/docker-compose.yml``
+
+Use an editor such as Vim to modify the `docker-compose.yml`, set basic authentication to `true`, and configure your basic authentication credentials to secure your Kestra instance.
+
+`kestra:  server:    basic-auth:      enabled: true      username: admin@kestra.io # it must be a valid email address      password: kestra`
+
+Next, use the following command to start the Kestra server:
+
+`sudo docker compose up -d`
+
+You can now access the Kestra UI at `http://<public_droplet_ip>:8080` and start developing flows.
+
+[](https://kestra.io/docs/installation/digitalocean-droplet#launch-digitalocean-database)Launch DigitalOcean Database
+---------------------------------------------------------------------------------------------------------------------
+
+This first installation relies on a PostgreSQL database running alongside the Kestra server - on the VM instance (see the PostgreSQL service running thanks to the docker-compose).
+
+For a simple proof of concept (PoC), you can keep the PostgreSQL database running in Docker.
+
+However, for a production-grade installation, we recommend a managed database service such as DigitalOcean Database.
+
+**Launch a PostgreSQL database using [DigitalOcean Database](https://www.digitalocean.com/products/managed-databases-postgresql)**
+
+1. Go to the [DigitalOcean Databases](https://cloud.digitalocean.com/databases).
+2. Click on `Create Database` button on the top.
+3. Choose an appropriate region and select `PostgreSQL` as the database engine (Kestra also supports MySQL, but PostgreSQL is recommended).
+4. Choose the database configuration as per your requirement.
+5. Provide an appropriate database cluster name.
+6. Click on the `Create Database Cluster` button at the bottom of the page.
+7. Wait for the database to be provisioned. Generally, this takes around 5 minutes.
+
+![Image 30: db_setup1](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3454,height=1864,format=webp/_astro/db_setup1.YujWsPLX.png)
+
+![Image 31: db_setup2](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3456,height=1868,format=webp/_astro/db_setup2.BCDtZOHX.png)
+
+![Image 32: db_setup3](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3452,height=1950,format=webp/_astro/db_setup3.ByAMWwWC.png)
+
+1. Once the database is ready, you can click on the `Get Started` button.
+2. In the `Add trusted sources` dropbox, you can select your computer (in case you want to connect to this database from the PostgreSQL client running on your computer) and the `kestra-host` droplet created in the earlier section.
+3. Click on `Allow these inbound sources only`.
+4. On this page, ensure `Public network` is selected on the top. Take a note of the Connection Details that appear, and click on `Continue`.
+5. On the next page, click on `Great, I'm done` button.
+
+![Image 33: db_setup4](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3456,height=1424,format=webp/_astro/db_setup4.CHKeqyEp.png)
+
+![Image 34: db_setup5](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3456,height=1716,format=webp/_astro/db_setup5.CPAm3wLh.png)
+
+![Image 35: db_setup6](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3454,height=1714,format=webp/_astro/db_setup6.BZ6UpzxI.png)
+
+![Image 36: db_setup7](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3454,height=1828,format=webp/_astro/db_setup7.C-Ywm2lr.png)
+
+**Create a Kestra database**
+
+1. Go to the database overview page and navigate to `Users & Databases` tab.
+2. Under `Databases`, type an appropriate database name and click on `Save`.
+
+![Image 37: db_setup8](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3444,height=1488,format=webp/_astro/db_setup8.Bt6fF8ZC.png)
+
+![Image 38: db_setup9](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3448,height=1806,format=webp/_astro/db_setup9.COH3SFHU.png)
+
+**Update Kestra configuration**
+
+In the docker-compose configuration, edit the `datasources` property of the Kestra service to point Kestra to your Azure database:
+
+`datasources:  postgres:    url: jdbc:postgresql://<your-db-host>:25060/<db_name>    driver-class-name: org.postgresql.Driver    username: doadmin    password: <your-password>`
+
+Because you now use the database powered by “DigitalOcean Database”, you don’t need the PostgreSQL Docker service anymore. Remove it from the `docker-compose.yml` file. You’ll also need to delete the `depends_on` section at the end of the YAML file:
+
+`depends_on:  postgres:    condition: service_started`
+
+In order for the changes to take effect, restart the docker services with `sudo docker compose restart` or `sudo docker compose up -d`.
+
+[](https://kestra.io/docs/installation/digitalocean-droplet#configure-spaces-object-storage)Configure Spaces Object Storage
+---------------------------------------------------------------------------------------------------------------------------
+
+By default, internal storage is implemented using the local file system. This section guides you how to change the storage backend to Spaces Object Storage to ensure more reliable, durable, and scalable storage.
+
+First, we create the access key and secret key that can be used to connect to Spaces Object Storage.
+
+1. Navigate to the `API` from the left navigation menu.
+2. Go to the `Spaces Keys` tab.
+3. Click on `Generate New Key` button.
+4. Provide an appropriate name for the spaces access key and click on `Create Access Key`.
+5. A new access key with the given name will be generated. Take a note of the secret key as you will not be able to retrieve it later.
+
+![Image 39: spaces_api1](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3454,height=1978,format=webp/_astro/spaces_api1.B9fMgoig.png)
+
+![Image 40: spaces_api2](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3452,height=762,format=webp/_astro/spaces_api2.CeO_iTHB.png)
+
+![Image 41: spaces_api3](https://kestra.io/cdn-cgi/image/onerror=redirect,width=1198,height=636,format=webp/_astro/spaces_api3.Div_hi7L.png)
+
+Let’s create a bucket in the Spaces Object Storage.
+
+1. Go to the [Spaces Object Storage](https://cloud.digitalocean.com/spaces). You can also navigate to the Spaces Object Storage from the left navigation menu.
+2. Click on `Create Spaces Bucket` button.
+3. Choose an appropriate data center region.
+4. Put an appropriate unique Spaces Bucket name and select the corresponding project in which the Spaces Bucket needs to be created.
+5. Click on `Create a Spaces Bucket` at the bottom to create the Spaces Bucket.
+6. Once the bucket is created, you can go to the bucket’s page and note down the `Original Endpoint`.
+7. Edit the Kestra storage configuration in the `docker-compose.yml` file.
+
+`kestra:  storage:    type: minio    minio:      endpoint: "<bucket-original-endpoint>"      port: "443"      secure: true      access-key: "<spaces-access-key>"      secret-key: "<spaces-secret-key>"      region: "FRA1"      bucket: "<bucket-name>"`
+
+In order for the changes to take effect, restart the docker services with `sudo docker compose restart` or `sudo docker compose up -d`.
+
+![Image 42: spaces_object_storage1](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3456,height=1866,format=webp/_astro/spaces_object_storage1.DMjLcIoP.png)
+
+![Image 43: spaces_object_storage2](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3456,height=350,format=webp/_astro/spaces_object_storage2.Vh1_OOa8.png)
+
+![Image 44: spaces_object_storage3](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3456,height=1982,format=webp/_astro/spaces_object_storage3.D72EMjmp.png)
+
+![Image 45: spaces_object_storage4](https://kestra.io/cdn-cgi/image/onerror=redirect,width=3456,height=1344,format=webp/_astro/spaces_object_storage4.DGz4nAnE.png)
+
+[](https://kestra.io/docs/installation/digitalocean-droplet#next-steps)Next steps
+---------------------------------------------------------------------------------
+
+This guide walked you through installing Kestra on a DigitalOcean Droplet with DigitalOcean Database.
+
+This setup provides a simple starting point for running Kestra in production on a single machine.
+
+Reach out via [Slack](https://kestra.io/slack) if you encounter any issues or if you have any questions regarding deploying Kestra to production.
+
+Make sure to also check the [CI/CD guide](https://kestra.io/docs/version-control-cicd/cicd) to automate your workflow deployments based on changes in Git.
+
+[Previous](https://kestra.io/docs/installation/azure-vm)[Standalone Server Run Kestra from Standalone JAR – No Docker Deployment Next](https://kestra.io/docs/installation/standalone-server)
+
+Was this page helpful?
+
+ Yes  No
+
+##### Send Feedback
+
+😔
+
+ Share your thoughts (Optional)  
+
+ Cancel  Submit
+
+#### Get Kestra Updates
+
+Subscribe
+
+[![Image 46: SOC 2](https://kestra.io/soc2.png)](https://kestra.io/trust "SOC 2")[![Image 47: GDPR](https://kestra.io/gdpr.svg)](https://kestra.io/trust "GDPR")
+
+[![Image 48: Kestra's logo](https://kestra.io/docs/installation/digitalocean-droplet)](https://kestra.io/)
+Open Source Declarative
+
+ Orchestration Platform
+
+* [](https://github.com/kestra-io "GitHub")
+* [](https://twitter.com/kestra_io "Twitter")
+* [](https://web-cdn.bsky.app/profile/kestra.io "BlueSky")
+* [](https://www.linkedin.com/company/kestra "LinkedIn")
+* [](https://www.youtube.com/@kestra-io "YouTube")
+* [](https://kestra.io/slack "Slack")
+
+##### Get Started
+
+* [Getting Started](https://kestra.io/docs/quickstart)
+* [Documentation](https://kestra.io/docs)
+* [Blueprints](https://kestra.io/blueprints)
+* [Plugins](https://kestra.io/plugins)
+* [FAQs](https://kestra.io/faq)
+
+##### Learn
+
+* [Blogs](https://kestra.io/blogs)
+* [Videos](https://kestra.io/tutorial-videos)
+* [Administrator Guide](https://kestra.io/docs/administrator-guide)
+* [Release Notes](https://kestra.io/docs/changelog)
+* [API Reference](https://kestra.io/docs/api-reference)
+
+##### Compare
+
+* [Airflow vs Kestra](https://kestra.io/vs/airflow)
+* [Prefect vs Kestra](https://kestra.io/vs/prefect)
+* [Dagster vs Kestra](https://kestra.io/vs/dagster)
+* [AWS Step Functions vs Kestra](https://kestra.io/vs/aws-step-functions)
+
+##### Community
+
+* [Community Overview](https://kestra.io/community)
+* [Slack](https://kestra.io/slack)
+* [GitHub](https://github.com/kestra-io/kestra)
+* [Write for Us](https://kestra.io/write-for-us)
+
+##### Company
+
+* [About Us](https://kestra.io/about-us)
+* [Partners](https://kestra.io/partners)
+* [Careers Hiring!](https://kestra.io/careers)
+* [Contact](https://kestra.io/contact-us)
+
+© 2026 [Kestra Technologies](https://kestra.io/). Developed with  on 🌎.
+
+[Privacy Policy](https://kestra.io/privacy-policy)[Cookie Policy](https://kestra.io/cookie-policy)
+
+[Slack 5,594 members](https://kestra.io/slack)
