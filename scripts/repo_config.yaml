@@ -2084,3 +2084,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/swagger
   branch: main
+- name: swagger-ui
+  description: swagger-ui from GitHub
+  repo_url: https://github.com/swagger-api/swagger-ui.git
+  source_folder: docs
+  target_folder: docs/github-scraped/swagger-ui
+  branch: main
