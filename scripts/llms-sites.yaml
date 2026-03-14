@@ -1448,3 +1448,6 @@ sites:
 - name: localstack
   base_url: https://docs.localstack.cloud/
   description: localstack documentation
+- name: task
+  base_url: https://taskfile.dev/
+  description: task documentation
