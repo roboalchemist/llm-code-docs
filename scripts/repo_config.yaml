@@ -2137,3 +2137,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/inquirer
   branch: main
+- name: lanterna
+  description: lanterna from GitHub
+  repo_url: https://github.com/mabe02/lanterna.git
+  source_folder: docs
+  target_folder: docs/github-scraped/lanterna
+  branch: main
