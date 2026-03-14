@@ -2061,3 +2061,9 @@ repositories:
   source_folder: documentation
   target_folder: docs/github-scraped/refine
   branch: main
+- name: skywalking
+  description: skywalking from GitHub
+  repo_url: https://github.com/apache/skywalking.git
+  source_folder: docs
+  target_folder: docs/github-scraped/skywalking
+  branch: main
