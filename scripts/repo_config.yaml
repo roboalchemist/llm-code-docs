@@ -2183,3 +2183,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/coursier
   branch: main
+- name: wezterm
+  description: wezterm from GitHub
+  repo_url: https://github.com/wezterm/wezterm.git
+  source_folder: docs
+  target_folder: docs/github-scraped/wezterm
+  branch: main
