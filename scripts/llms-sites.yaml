@@ -1442,3 +1442,6 @@ sites:
 - name: vale
   base_url: https://docs.vale.sh/
   description: vale documentation
+- name: moonrepo
+  base_url: https://moonrepo.dev/
+  description: moonrepo documentation
