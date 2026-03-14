@@ -1866,4 +1866,9 @@ repositories:
   repo_url: https://github.com/expressjs/multer.git
   source_folder: doc
   target_folder: docs/github-scraped/multer
+- name: nativebase
+  description: nativebase from GitHub
+  repo_url: https://github.com/GeekyAnts/nativebase-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/nativebase
   branch: main
