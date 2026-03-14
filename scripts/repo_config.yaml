@@ -2165,4 +2165,9 @@ repositories:
   repo_url: https://github.com/moby/buildkit.git
   source_folder: docs
   target_folder: docs/github-scraped/buildkit
+- name: nix-flakes
+  description: nix-flakes from GitHub
+  repo_url: https://github.com/ryan4yin/nixos-and-flakes-book.git
+  source_folder: docs
+  target_folder: docs/github-scraped/nix-flakes
   branch: main
