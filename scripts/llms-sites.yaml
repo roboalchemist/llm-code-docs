@@ -1409,3 +1409,6 @@ sites:
 - name: gsap
   base_url: https://gsap.com/
   description: gsap documentation
+- name: base-ui
+  base_url: https://base-ui.com/
+  description: base-ui documentation
