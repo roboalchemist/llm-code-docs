@@ -1493,3 +1493,6 @@ sites:
 - name: artifactory
   base_url: https://docs.jfrog.com/.well-known/
   description: artifactory documentation
+- name: google-cloud-build
+  base_url: https://cloud.google.com/python/docs/reference/cloudbuild/latest/
+  description: google-cloud-build documentation
