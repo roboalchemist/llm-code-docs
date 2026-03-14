@@ -1430,3 +1430,6 @@ sites:
 - name: appdynamics
   base_url: https://www.appdynamics.com/
   description: appdynamics documentation
+- name: uv
+  base_url: https://docs.astral.sh/uv/
+  description: uv documentation
