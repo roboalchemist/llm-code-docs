@@ -1436,3 +1436,6 @@ sites:
 - name: openstatus
   base_url: https://docs.openstatus.dev/
   description: openstatus documentation
+- name: physx
+  base_url: https://embark.rs/
+  description: physx documentation
