@@ -1,0 +1,17 @@
+# Source: https://ansible-book.gitbook.io/ansible-first-book/ansible-de-jia-gou.md
+
+# Ansible的架构
+
+Ansilbe管理员节点和远程主机节点通过ssh协议进行通信。所以Ansible配置的时候只需要保证从Ansible管理节点通过SSH能够连接到被管理的远程的远程节点即可。。但是SSH必须配置为公钥认证登录方式，而非密码认证，下一章会讲到具体的配置方法。
+
+## 连接方式SSH
+
+在管理员节点安装Ansible，编写脚本。在管理节点执行命令或者脚本时，通过SSH连接被管理的主机。 被管理的远程节点不需要进行特殊安装软件。
+
+![](https://2595035868-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LGiDuCkkLvN8QOCFccd%2F-LGiDyiUZAiAzWHvDCNO%2F-LGiE0KbauUJNtDRweZz%2Fansible-two-machine-edited.png?generation=1530857794833641\&alt=media)
+
+## 支持多种类型的主机
+
+Ansible可以同时管理Redhat系的Linux，Debian系的Linux，以及Windows主机。管理节点只在执行脚本时与远程主机连接，没有特别的同步机制，所以断电等异常一般不会影响ansbile。
+
+![](https://2595035868-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LGiDuCkkLvN8QOCFccd%2F-LGiDyiUZAiAzWHvDCNO%2F-LGiE0Kdj_6WbaT2FIZa%2Fansible-multiple-machine-edited.png?generation=1530857794818013\&alt=media)

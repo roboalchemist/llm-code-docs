@@ -1,0 +1,24 @@
+# Source: https://www.skeleton.dev/docs/svelte/resources/llms.md
+
+# Source: https://www.skeleton.dev/docs/react/resources/llms.md
+
+# LLMs
+
+Documentation for LLMs. Beep Boop.
+
+The Skeleton `LLMs.txt` files provide concise, up-to-date documentation optimized for large language models. The have been implemented to follow the **LLM.txt Standard**.
+
+<figure class="linker bg-noise">
+  <a class="btn preset-filled" href="https://llmstxt.org/" target="_blank">
+    View LLM Standard →
+  </a>
+</figure>
+
+## Paths
+
+\| Path                                 | Description                                               |
+\| ------------------------------------ | --------------------------------------------------------- |
+\| [/llms.txt](/llms.txt)               | Comprehensive list of LLMs txt files.                     |
+\| [/llms-react.txt](/llms-react.txt)   | Complete documentation for Skeleton, tailored for React.  |
+\| [/llms-svelte.txt](/llms-svelte.txt) | Complete documentation for Skeleton, tailored for Svelte. |
+\| [/llms-full.txt](/llms-full.txt)     | Complete documentation for Skeleton                       |

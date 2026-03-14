@@ -1,0 +1,977 @@
+Defined in: [lib/mina/v1/zkapp.ts:516](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L516)
+
+The main zkapp class. To write a zkapp, extend this class as such:
+
+```
+class YourSmartContract extends SmartContract {
+  // your smart contract code here
+}
+```
+
+## Extends
+
+- `SmartContractBase`
+
+## Extended by
+
+- [`TokenContract`](TokenContract.mdx)
+
+## Constructors
+
+### Constructor
+
+```ts
+new SmartContract(address: PublicKey, tokenId?: Field): SmartContract;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:552](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L552)
+
+#### Parameters
+
+##### address
+
+[`PublicKey`](PublicKey.mdx)
+
+##### tokenId?
+
+[`Field`](Field.mdx)
+
+#### Returns
+
+`SmartContract`
+
+#### Overrides
+
+```ts
+SmartContractBase.constructor
+```
+
+## Properties
+
+### address
+
+```ts
+address: PublicKey;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:517](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L517)
+
+***
+
+### events
+
+```ts
+events: {
+[key: string]: FlexibleProvablePure<any>;
+} = {};
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:970](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L970)
+
+A list of event types that can be emitted using this.emitEvent()`.
+
+#### Index Signature
+
+```ts
+[key: string]: FlexibleProvablePure<any>
+```
+
+***
+
+### sender
+
+```ts
+sender: {
+  self: SmartContract;
+  getAndRequireSignature: PublicKey;
+  getUnconstrained: PublicKey;
+};
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:862](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L862)
+
+#### self
+
+```ts
+self: SmartContract;
+```
+
+#### getAndRequireSignature()
+
+```ts
+getAndRequireSignature(): PublicKey;
+```
+
+Return a public key that is forced to sign this transaction.
+
+Note: This doesn't prove that the return value is the transaction sender, but it proves that whoever created
+the transaction controls the private key associated with the returned public key.
+
+##### Returns
+
+[`PublicKey`](PublicKey.mdx)
+
+#### getUnconstrained()
+
+```ts
+getUnconstrained(): PublicKey;
+```
+
+The public key of the current transaction's sender account.
+
+Throws an error if not inside a transaction, or the sender wasn't passed in.
+
+**Warning**: The fact that this public key equals the current sender is not part of the proof.
+A malicious prover could use any other public key without affecting the validity of the proof.
+
+Consider using `this.sender.getAndRequireSignature()` if you need to prove that the sender controls this account.
+
+##### Returns
+
+[`PublicKey`](PublicKey.mdx)
+
+***
+
+### tokenId
+
+```ts
+tokenId: Field;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:518](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L518)
+
+***
+
+### \_methodMetadata?
+
+```ts
+static optional _methodMetadata: Record<string, {
+  actions: number;
+  digest: string;
+  gates: Gate[];
+  proofs: ProofClass[];
+  rows: number;
+}>;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:527](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L527)
+
+***
+
+### \_methods?
+
+```ts
+static optional _methods: MethodInterface[];
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:526](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L526)
+
+***
+
+### \_provers?
+
+```ts
+static optional _provers: Prover[];
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:537](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L537)
+
+***
+
+### \_verificationKey?
+
+```ts
+static optional _verificationKey: {
+  data: string;
+  hash: Field;
+};
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:538](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L538)
+
+#### data
+
+```ts
+data: string;
+```
+
+#### hash
+
+```ts
+hash: Field;
+```
+
+## Accessors
+
+### account
+
+#### Get Signature
+
+```ts
+get account(): Account;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:914](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L914)
+
+Current account of the SmartContract.
+
+##### Returns
+
+`Account`
+
+***
+
+### balance
+
+#### Get Signature
+
+```ts
+get balance(): {
+  addInPlace: void;
+  subInPlace: void;
+};
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:964](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L964)
+
+Balance of this SmartContract.
+
+##### Returns
+
+```ts
+{
+  addInPlace: void;
+  subInPlace: void;
+}
+```
+
+###### addInPlace()
+
+```ts
+addInPlace(x: 
+  | string
+  | number
+  | bigint
+  | UInt64
+  | UInt32
+  | Int64): void;
+```
+
+###### Parameters
+
+###### x
+
+`string` | `number` | `bigint` | [`UInt64`](UInt64.mdx) | [`UInt32`](UInt32.mdx) | [`Int64`](Int64.mdx)
+
+###### Returns
+
+`void`
+
+###### subInPlace()
+
+```ts
+subInPlace(x: 
+  | string
+  | number
+  | bigint
+  | UInt64
+  | UInt32
+  | Int64): void;
+```
+
+###### Parameters
+
+###### x
+
+`string` | `number` | `bigint` | [`UInt64`](UInt64.mdx) | [`UInt32`](UInt32.mdx) | [`Int64`](Int64.mdx)
+
+###### Returns
+
+`void`
+
+***
+
+### currentSlot
+
+#### Get Signature
+
+```ts
+get currentSlot(): CurrentSlot;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:928](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L928)
+
+Current global slot on the network. This is the slot at which this transaction is included in a block. Since we cannot know this value
+at the time of transaction construction, this only has the `assertBetween()` method but no `get()` (impossible to implement)
+or `assertEquals()` (confusing, because the developer can't know the exact slot at which this will be included either)
+
+##### Returns
+
+`CurrentSlot`
+
+***
+
+### network
+
+#### Get Signature
+
+```ts
+get network(): Network;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:920](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L920)
+
+Current network state of the SmartContract.
+
+##### Returns
+
+`Network`
+
+***
+
+### self
+
+#### Get Signature
+
+```ts
+get self(): AccountUpdate;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:820](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L820)
+
+Returns the current [AccountUpdate](AccountUpdate.mdx) associated to this SmartContract.
+
+##### Returns
+
+[`AccountUpdate`](AccountUpdate.mdx)
+
+## Methods
+
+### approve()
+
+```ts
+approve(update: 
+  | AccountUpdate
+  | AccountUpdateTree
+  | AccountUpdateForest): void;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:953](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L953)
+
+Approve an account update or tree / forest of updates. Doing this means you include the account update in the zkApp's public input,
+which allows you to read and use its content in a proof, make assertions about it, and modify it.
+
+```ts
+`@method` myApprovingMethod(update: AccountUpdate) {
+  this.approve(update);
+
+  // read balance on the account (for example)
+  let balance = update.account.balance.getAndRequireEquals();
+}
+```
+
+Under the hood, "approving" just means that the account update is made a child of the zkApp in the
+tree of account updates that forms the transaction. Similarly, if you pass in an [AccountUpdateTree](AccountUpdateTree.mdx),
+the entire tree will become a subtree of the zkApp's account update.
+
+Passing in a forest is a bit different, because it means you set the entire children of the zkApp's account update
+at once. `approve()` will fail if the zkApp's account update already has children, to prevent you from accidentally
+excluding important information from the public input.
+
+#### Parameters
+
+##### update
+
+[`AccountUpdate`](AccountUpdate.mdx) | [`AccountUpdateTree`](AccountUpdateTree.mdx) | [`AccountUpdateForest`](AccountUpdateForest.mdx)
+
+#### Returns
+
+`void`
+
+***
+
+### deploy()
+
+```ts
+deploy(__namedParameters: {
+  verificationKey?: {
+     data: string;
+     hash: string | Field;
+  };
+}): Promise<void>;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:658](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L658)
+
+Deploys a SmartContract.
+
+```ts
+let tx = await Mina.transaction(sender, async () => {
+  AccountUpdate.fundNewAccount(sender);
+  await zkapp.deploy();
+});
+tx.sign([senderKey, zkAppKey]);
+```
+
+#### Parameters
+
+##### \_\_namedParameters
+
+###### verificationKey?
+
+\{
+  `data`: `string`;
+  `hash`: `string` \| [`Field`](Field.mdx);
+\}
+
+###### verificationKey.data
+
+`string`
+
+###### verificationKey.hash
+
+`string` \| [`Field`](Field.mdx)
+
+#### Returns
+
+`Promise`\<`void`\>
+
+***
+
+### emitEvent()
+
+```ts
+emitEvent<K>(type: K, event: any): void;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:1017](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L1017)
+
+Emits an event. Events will be emitted as a part of the transaction and can be collected by archive nodes.
+
+#### Type Parameters
+
+##### K
+
+`K` *extends* `string` \| `number`
+
+#### Parameters
+
+##### type
+
+`K`
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+***
+
+### emitEventIf()
+
+```ts
+emitEventIf<K>(
+   condition: Bool, 
+   type: K, 
+   event: any): void;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:978](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L978)
+
+Conditionally emits an event.
+
+Events will be emitted as a part of the transaction and can be collected by archive nodes.
+
+#### Type Parameters
+
+##### K
+
+`K` *extends* `string` \| `number`
+
+#### Parameters
+
+##### condition
+
+[`Bool`](Bool.mdx)
+
+##### type
+
+`K`
+
+##### event
+
+`any`
+
+#### Returns
+
+`void`
+
+***
+
+### fetchEvents()
+
+```ts
+fetchEvents(start?: UInt32, end?: UInt32): Promise<{
+  blockHash: string;
+  blockHeight: UInt32;
+  chainStatus: string;
+  event: {
+     data: ProvablePure<any>;
+     transactionInfo: {
+        transactionHash: string;
+        transactionMemo: string;
+        transactionStatus: string;
+     };
+  };
+  globalSlot: UInt32;
+  parentBlockHash: string;
+  type: string;
+}[]>;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:1033](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L1033)
+
+Asynchronously fetches events emitted by this SmartContract and returns an array of events with their corresponding types.
+
+#### Parameters
+
+##### start?
+
+[`UInt32`](UInt32.mdx) = `...`
+
+The start height of the events to fetch.
+
+##### end?
+
+[`UInt32`](UInt32.mdx)
+
+The end height of the events to fetch. If not provided, fetches events up to the latest height.
+
+#### Returns
+
+`Promise`\<\{
+  `blockHash`: `string`;
+  `blockHeight`: [`UInt32`](UInt32.mdx);
+  `chainStatus`: `string`;
+  `event`: \{
+     `data`: [`ProvablePure`](../type-aliases/ProvablePure.mdx)\<`any`\>;
+     `transactionInfo`: \{
+        `transactionHash`: `string`;
+        `transactionMemo`: `string`;
+        `transactionStatus`: `string`;
+     \};
+  \};
+  `globalSlot`: [`UInt32`](UInt32.mdx);
+  `parentBlockHash`: `string`;
+  `type`: `string`;
+\}[]\>
+
+A promise that resolves to an array of objects, each containing the event type and event data for the specified range.
+
+#### Throws
+
+If there is an error fetching events from the Mina network.
+
+#### Example
+
+```ts
+const startHeight = UInt32.from(1000);
+const endHeight = UInt32.from(2000);
+const events = await myZkapp.fetchEvents(startHeight, endHeight);
+console.log(events);
+```
+
+***
+
+### init()
+
+```ts
+init(): void;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:768](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L768)
+
+`SmartContract.init()` is called when a SmartContract is first deployed.
+By default, it initializes the smart contract's state to zero, and sets the
+`provedState` to `false`.
+
+#### Returns
+
+`void`
+
+#### Note
+
+The first time any [method](../functions/method.mdx) is called on the smart contract, `provedState`
+will be set to `true`.  The `init` method itself may be decorated with `@method`
+in this way.  Review the examples below to see how init can be called with or
+without a method decorator.
+
+#### Note
+
+`init` may be overridden to set state fields to values other than zero, but the
+method takes no arguments.  Therefore, only static values may be set.
+
+#### Note
+
+To initialize a smart contract with custom values provided as arguments, a separate
+method is required.
+
+#### Examples
+
+```ts
+class MyContract extends SmartContract {
+ @state(Field) x = State<Field>();
+
+ // Overwrite init to set static, non-zero values
+ init() {
+  super.init();
+  this.x.set(Field(1));
+ }
+
+ // Use custom method to initialize dynamic values
+ @method async initialize(x: Field) {
+   // This method may only be called once, immediately after deployment
+   this.account.provedState.getAndRequireEquals().assertFalse();
+
+   this.x.set(x);
+ }
+}
+```
+
+```ts
+class MyContract extends SmartContract {
+ @state(Field) x = State<Field>();
+
+ // Use init as a @method to set state fields to zero, and also
+ // set provedState to true, making any other initialization impossible.
+ @method async init() {
+   super.init();
+   this.x.set(Field(1));
+ }
+
+ // This method is invalid because `init` is a `@method`
+ @method async initialize(x: Field) {
+   // This assertion will fail because `provedState` is true after `init` is called
+   this.account.provedState.getAndRequireEquals().assertFalse();
+
+   this.x.set(x);
+ }
+}
+```
+
+***
+
+### newSelf()
+
+```ts
+newSelf(methodName?: string): AccountUpdate;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:852](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L852)
+
+Same as `SmartContract.self` but explicitly creates a new [AccountUpdate](AccountUpdate.mdx).
+
+#### Parameters
+
+##### methodName?
+
+`string`
+
+#### Returns
+
+[`AccountUpdate`](AccountUpdate.mdx)
+
+***
+
+### requireSignature()
+
+```ts
+requireSignature(): void;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:801](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L801)
+
+Use this command if the account update created by this SmartContract should be signed by the account owner,
+instead of authorized with a proof.
+
+Note that the smart contract's [Permissions](../variables/Permissions.mdx) determine which updates have to be (can be) authorized by a signature.
+
+If you only want to avoid creating proofs for quicker testing, we advise you to
+use `LocalBlockchain({ proofsEnabled: false })` instead of `requireSignature()`. Setting
+`proofsEnabled` to `false` allows you to test your transactions with the same authorization flow as in production,
+with the only difference being that quick mock proofs are filled in instead of real proofs.
+
+#### Returns
+
+`void`
+
+***
+
+### send()
+
+```ts
+send(args: {
+  amount: number | bigint | UInt64;
+  to:   | PublicKey
+     | AccountUpdate
+     | SmartContract;
+}): AccountUpdate;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:957](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L957)
+
+#### Parameters
+
+##### args
+
+###### amount
+
+`number` \| `bigint` \| [`UInt64`](UInt64.mdx)
+
+###### to
+
+  \| [`PublicKey`](PublicKey.mdx)
+  \| [`AccountUpdate`](AccountUpdate.mdx)
+  \| `SmartContract`
+
+#### Returns
+
+[`AccountUpdate`](AccountUpdate.mdx)
+
+***
+
+### skipAuthorization()
+
+```ts
+skipAuthorization(): void;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:813](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L813)
+
+Use this command if the account update created by this SmartContract should have no authorization on it,
+instead of being authorized with a proof.
+
+WARNING: This is a method that should rarely be useful. If you want to disable proofs for quicker testing, take a look
+at `LocalBlockchain({ proofsEnabled: false })`, which causes mock proofs to be created and doesn't require changing the
+authorization flow.
+
+#### Returns
+
+`void`
+
+***
+
+### analyzeMethods()
+
+```ts
+static analyzeMethods(__namedParameters: {
+  printSummary?: boolean;
+}): Promise<Record<string, {
+  actions: number;
+  digest: string;
+  gates: Gate[];
+  proofs: ProofClass[];
+  rows: number;
+}>>;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:1153](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L1153)
+
+This function is run internally before compiling a smart contract, to collect metadata about what each of your
+smart contract methods does.
+
+For external usage, this function can be handy because calling it involves running all methods in the same "mode" as `compile()` does,
+so it serves as a quick-to-run check for whether your contract can be compiled without errors, which can greatly speed up iterating.
+
+`analyzeMethods()` will also return the number of `rows` of each of your method circuits (i.e., the number of constraints in the underlying proof system),
+which is a good indicator for circuit size and the time it will take to create proofs.
+To inspect the created circuit in detail, you can look at the returned `gates`.
+
+Note: If this function was already called before, it will short-circuit and just return the metadata collected the first time.
+
+#### Parameters
+
+##### \_\_namedParameters
+
+###### printSummary?
+
+`boolean` = `false`
+
+#### Returns
+
+`Promise`\<`Record`\<`string`, \{
+  `actions`: `number`;
+  `digest`: `string`;
+  `gates`: `Gate`[];
+  `proofs`: `ProofClass`[];
+  `rows`: `number`;
+\}\>\>
+
+an object, keyed by method name, each entry containing:
+ - `rows` the size of the constraint system created by this method
+ - `digest` a digest of the method circuit
+ - `actions` the number of actions the method dispatches
+ - `gates` the constraint system, represented as an array of gates
+
+***
+
+### compile()
+
+```ts
+static compile(__namedParameters: {
+  cache?: Cache;
+  forceRecompile?: boolean;
+}): Promise<{
+  provers: Prover[];
+  verificationKey: {
+     data: string;
+     hash: Field;
+  };
+  verify: (statement: Statement<FieldConst>, proof: unknown) => Promise<boolean>;
+}>;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:580](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L580)
+
+Compile your smart contract.
+
+This generates both the prover functions, needed to create proofs for running `@method`s,
+and the verification key, needed to deploy your zkApp.
+
+Although provers and verification key are returned by this method, they are also cached internally and used when needed,
+so you don't actually have to use the return value of this function.
+
+Under the hood, "compiling" means calling into the lower-level [Pickles and Kimchi libraries](https://o1-labs.github.io/proof-systems/kimchi/overview.html) to
+create multiple prover & verifier indices (one for each smart contract method as part of a "step circuit" and one for the "wrap circuit" which recursively wraps
+it so that proofs end up in the original finite field). These are fairly expensive operations, so **expect compiling to take at least 20 seconds**,
+up to several minutes if your circuit is large or your hardware is not optimal for these operations.
+
+#### Parameters
+
+##### \_\_namedParameters
+
+###### cache?
+
+[`Cache`](../type-aliases/Cache.mdx) = `Cache.FileSystemDefault`
+
+###### forceRecompile?
+
+`boolean` = `false`
+
+#### Returns
+
+`Promise`\<\{
+  `provers`: `Prover`[];
+  `verificationKey`: \{
+     `data`: `string`;
+     `hash`: [`Field`](Field.mdx);
+  \};
+  `verify`: (`statement`: `Statement`\<`FieldConst`\>, `proof`: `unknown`) => `Promise`\<`boolean`\>;
+\}\>
+
+***
+
+### digest()
+
+```ts
+static digest(): Promise<string>;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:621](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L621)
+
+Computes a hash of your smart contract, which will reliably change _whenever one of your method circuits changes_.
+This digest is quick to compute. it is designed to help with deciding whether a contract should be re-compiled or
+a cached verification key can be used.
+
+#### Returns
+
+`Promise`\<`string`\>
+
+the digest, as a hex string
+
+***
+
+### getMaxProofsVerified()
+
+```ts
+static getMaxProofsVerified(): Promise<0 | 1 | 2>;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:632](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L632)
+
+The maximum number of proofs that are verified by any of the zkApp methods.
+This is an internal parameter needed by the proof system.
+
+#### Returns
+
+`Promise`\<`0` \| `1` \| `2`\>
+
+***
+
+### Proof()
+
+```ts
+static Proof(): typeof __class;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:543](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L543)
+
+Returns a Proof type that belongs to this SmartContract.
+
+#### Returns
+
+*typeof* `__class`
+
+***
+
+### runOutsideCircuit()
+
+```ts
+static runOutsideCircuit(run: () => void): void;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:1129](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L1129)
+
+#### Parameters
+
+##### run
+
+() => `void`
+
+#### Returns
+
+`void`
+
+***
+
+### setVerificationKeyUnsafe()
+
+```ts
+static setVerificationKeyUnsafe(verificationKey: {
+  data: string;
+  hash: string | Field;
+}): void;
+```
+
+Defined in: [lib/mina/v1/zkapp.ts:640](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/zkapp.ts#L640)
+
+Manually set the verification key.
+
+#### Parameters
+
+##### verificationKey
+
+###### data
+
+`string`
+
+###### hash
+
+`string` \| [`Field`](Field.mdx)
+
+#### Returns
+
+`void`

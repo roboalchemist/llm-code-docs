@@ -1,0 +1,47 @@
+# Source: https://docs.mage.ai/extensibility/api-reference/blocks/read-block.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.mage.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Read block
+
+`GET /api/pipelines/:pipeline_uuid/blocks/:block_uuid`
+
+Fetch and return the contents and metadata of a block.
+
+<RequestExample>
+  ```bash Request theme={"system"}
+  curl --location 'http://localhost:6789/api/pipelines/broken_wave/blocks/solitary_silence' \
+  --header 'Cookie: oauth_token=long_token_string' \
+  --header 'X-API-KEY: zkWlN0PkIKSN0C11CfUHUj84OT5XOJ6tDZ6bDRO2'
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json Response theme={"system"}
+  {
+      "block": {
+          "all_upstream_blocks_executed": true,
+          "color": null,
+          "configuration": {},
+          "downstream_blocks": [],
+          "executor_config": null,
+          "executor_type": "local_python",
+          "has_callback": false,
+          "name": "solitary silence",
+          "language": "python",
+          "retry_config": null,
+          "status": "not_executed",
+          "type": "data_loader",
+          "upstream_blocks": [],
+          "uuid": "solitary_silence",
+          "content": "some_long_block_content_string",
+          "outputs": []
+      }
+  }
+  ```
+</ResponseExample>
+
+
+Built with [Mintlify](https://mintlify.com).

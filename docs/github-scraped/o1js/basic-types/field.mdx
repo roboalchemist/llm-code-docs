@@ -1,0 +1,43 @@
+---
+title: Field
+---
+
+import CodeBlock from '@theme/CodeBlock';
+import constants from '@site/docs/snippets/field/constants.json';
+
+Field elements are the basic unit of data in zero knowledge proof programming.  An element of a Field is like an integer, except that all operations
+are performed modulo a prime.  Each field element can store a number up to almost 256 bits in size.  All other data types that can be used in 
+provable code can be represented as Fields.
+
+:::note
+
+For the cryptography inclined, the exact max value that a field can store is: {BigInt(constants.max_size).toLocaleString()}.
+
+:::
+
+For example, in typical programming, you might use:
+
+`const sum = 1 + 3;`.
+
+In o1js, you write this as:
+
+```ts file=../snippets/field/field.ts start=start_sum_1 end=end_sum_1
+```
+
+This can be simplified as:
+
+```ts file=../snippets/field/field.ts start=start_sum_2 end=end_sum_2
+```
+
+### Overflow Behavior
+
+Field arithmetic supports overflow and underflow.  See [Integers](/docs/basic-types/int.mdx) for an o1js type that behaves more like a traditional integer type.
+
+```ts file=../snippets/field/field.ts start=start_overflow end=end_overflow
+```
+
+```ts file=../snippets/field/field.ts start=start_underflow end=end_underflow
+```
+
+
+Read more at the language reference: [Field](/docs/api-reference/classes/Field.mdx).

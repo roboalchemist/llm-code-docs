@@ -1,6 +1,7 @@
 # Zenoh Serialization Documentation
 
 ## Table of Contents
+
 1. [ZBytes: The Payload Container](#zbytes)
 2. [Encoding](#encoding)
 3. [zenoh-ext Serialization Helpers](#zenoh-ext)
@@ -10,165 +11,129 @@
 
 ---
 
-## ZBytes: The Payload Container
+## ZBytes: The Payload Container {#zbytes}
 
-`ZBytes` is zenoh's opaque, zero-copy byte buffer. It is the fundamental type for all payload data flowing through zenoh — every published message, query payload, and reply body is carried as a `ZBytes`.
+`ZBytes` is the fundamental payload container in zenoh. It is an opaque, reference-counted byte buffer designed for zero-copy data transport across the network. Every published value, query payload, and reply body is carried in a `ZBytes`.
 
-### What ZBytes Is
+### Key Properties
 
-`ZBytes` makes no assumptions about the content of the bytes it holds. It is deliberately opaque: the type system does not tell you whether the bytes are UTF-8 text, a serialized struct, a raw sensor reading, or anything else. That information is conveyed separately via `Encoding` (see below).
-
-`ZBytes` is designed for zero-copy operation. When you create a `ZBytes` from a `Vec<u8>`, the buffer is moved rather than copied. When zenoh receives data from the network, it can hand you a `ZBytes` that references the underlying network buffer directly, avoiding an extra allocation.
-
-`ZBytes` is a **non-exhaustive** type. Do not pattern-match on its internal structure; always interact with it through its provided methods.
+- **Opaque**: Internal representation is not part of the public API. Always access contents via the provided methods.
+- **Zero-copy**: Backed by a reference-counted buffer; cloning is cheap and avoids memory copies where possible.
+- **Non-exhaustive**: The type is `#[non_exhaustive]`. Never match on its internals; always use conversion methods.
+- **Composable**: Multiple logical values can be packed into a single `ZBytes` using `ZSerializer`.
 
 ### Creating ZBytes
 
 ```rust
 use zenoh::bytes::ZBytes;
 
-// From a byte slice (copies the data)
+// From a byte slice
 let bytes: ZBytes = ZBytes::from(b"hello".as_slice());
 
-// From a Vec<u8> (moves the data, no copy)
-let vec: Vec<u8> = vec![1, 2, 3, 4];
-let bytes: ZBytes = ZBytes::from(vec);
+// From a Vec<u8>
+let bytes: ZBytes = ZBytes::from(vec![1u8, 2, 3, 4]);
 
-// From a String (moves the data)
-let s = String::from("hello zenoh");
-let bytes: ZBytes = ZBytes::from(s);
-
-// From a &str (copies the data)
+// From a String or &str
 let bytes: ZBytes = ZBytes::from("hello zenoh");
+let bytes: ZBytes = ZBytes::from(String::from("hello zenoh"));
 
-// From a number — converts to little-endian bytes
+// From a number (uses native byte representation)
 let bytes: ZBytes = ZBytes::from(42u32);
+let bytes: ZBytes = ZBytes::from(3.14f64);
 
 // Empty payload
 let bytes: ZBytes = ZBytes::default();
 ```
 
-When using `zenoh-ext`, the `z_serialize` helper provides a uniform interface:
-
-```rust
-use zenoh_ext::z_serialize;
-
-let bytes = z_serialize(&42u32);
-let bytes = z_serialize(&"hello");
-let bytes = z_serialize(&vec![1u8, 2, 3]);
-```
-
 ### Extracting Data from ZBytes
-
-Reading back from `ZBytes` is done through typed deserialization:
 
 ```rust
 use zenoh::bytes::ZBytes;
 
 let bytes = ZBytes::from("hello zenoh");
 
-// Extract as a Cow<str> — zero-copy if the bytes are contiguous UTF-8
-let text: std::borrow::Cow<str> = bytes.try_into().unwrap();
-println!("{}", text);
-
 // Extract as Vec<u8>
-let bytes = ZBytes::from(vec![1u8, 2, 3]);
-let raw: Vec<u8> = bytes.into();
+let raw: Vec<u8> = bytes.to_bytes().to_vec();
 
-// Extract a number
-let bytes = ZBytes::from(42u32);
-let n: u32 = bytes.try_into().unwrap();
+// Extract as a reader for streaming
+let mut reader = bytes.reader();
+
+// Deserialize back to a known type
+let text: String = bytes.deserialize::<String>().unwrap();
+let number: u32 = bytes.deserialize::<u32>().unwrap();
 ```
 
-Using `zenoh-ext`:
+> **Important**: `ZBytes` is non-exhaustive. Never attempt to inspect its internal structure directly. Always use the `.reader()`, `.deserialize()`, or extension crate helpers to access the content.
+
+### Shared Memory (SHM)
+
+When the `shared-memory` feature is enabled, `ZBytes` can wrap an SHM buffer for true zero-copy between processes on the same machine:
 
 ```rust
-use zenoh_ext::z_deserialize;
+#[cfg(feature = "shared-memory")]
+{
+    use zenoh::shm::{ZShm, ZShmMut};
 
-let bytes = ZBytes::from(42u32);
-let n: u32 = z_deserialize(&bytes).unwrap();
-
-let bytes = ZBytes::from("hello");
-let s: String = z_deserialize(&bytes).unwrap();
-```
-
-### Iterating Over Raw Bytes
-
-`ZBytes` may be internally fragmented (e.g., composed of multiple network buffers). Always use the iterator interface rather than assuming contiguity:
-
-```rust
-use zenoh::bytes::ZBytes;
-
-let bytes = ZBytes::from(vec![1u8, 2, 3, 4, 5]);
-
-// Iterate over byte slices (each slice is a contiguous fragment)
-for slice in bytes.slices() {
-    println!("{:?}", slice);
+    // Wrap SHM buffer — zero-copy put
+    let shm_buf: ZShmMut = /* acquire from SHM provider */;
+    let bytes = ZBytes::from(shm_buf);
 }
-
-// Collect all bytes into a contiguous Vec<u8>
-let raw: Vec<u8> = bytes.into();
 ```
 
 ---
 
-## Encoding
+## Encoding {#encoding}
 
-`Encoding` is a MIME-type-like label attached to a `ZBytes` payload. It is metadata: zenoh does not interpret or enforce it. Its purpose is to let subscribers and queryables understand how to deserialize the payload they receive.
+`Encoding` describes the content type of a `ZBytes` payload. It is conceptually similar to an HTTP `Content-Type` header. Setting the encoding correctly allows subscribers and queryables to interpret received data without out-of-band agreement.
 
-### What Encoding Is
-
-An `Encoding` value is a string identifier, optionally with a schema suffix separated by a semicolon. Examples:
-
-- `application/octet-stream`
-- `text/plain;charset=utf-8`
-- `application/json`
-- `application/cbor`
-
-`Encoding` travels alongside the payload in every `Sample`. The sender sets it; the receiver reads it.
+Encoding is metadata — zenoh does not inspect or validate it. The sender sets it; the receiver reads it.
 
 ### Predefined Encodings
 
-`zenoh` provides constants for common encodings in `Encoding`:
+zenoh ships with a set of well-known encoding constants that cover the most common cases:
 
 ```rust
 use zenoh::bytes::Encoding;
 
-// Raw bytes — no interpretation
-let enc = Encoding::APPLICATION_OCTET_STREAM;
+// Raw binary — no structure assumed
+Encoding::ZENOH_BYTES            // application/octet-stream equivalent
 
-// UTF-8 text
-let enc = Encoding::TEXT_PLAIN;
+// Text
+Encoding::ZENOH_STRING           // UTF-8 string
+Encoding::TEXT_PLAIN
+Encoding::TEXT_HTML
+Encoding::TEXT_XML
+Encoding::TEXT_CSV
 
-// JSON
-let enc = Encoding::APPLICATION_JSON;
+// Structured
+Encoding::APPLICATION_JSON
+Encoding::APPLICATION_JSON5
+Encoding::APPLICATION_CBOR
+Encoding::APPLICATION_PROTOBUF
+Encoding::APPLICATION_XML
+Encoding::APPLICATION_OCTET_STREAM
 
-// CBOR
-let enc = Encoding::APPLICATION_CBOR;
+// Images / media
+Encoding::IMAGE_PNG
+Encoding::IMAGE_JPEG
+Encoding::IMAGE_GIF
 
-// Protobuf
-let enc = Encoding::APPLICATION_PROTOBUF;
-
-// CDR (used for ROS 2 / DDS interop)
-let enc = Encoding::APPLICATION_CDR;
-
-// Zenoh's own serialization format (used by zenoh-ext)
-let enc = Encoding::ZENOH_SERIALIZATION;
+// zenoh-specific
+Encoding::ZENOH_SERIALIZED       // data serialized with ZSerializer
 ```
-
-A complete list is available in the `zenoh::bytes::Encoding` documentation.
 
 ### Custom Encodings
 
-Any string can be used as an encoding:
+If none of the predefined constants suit your application, create a custom encoding from any string:
 
 ```rust
 use zenoh::bytes::Encoding;
 
-let enc = Encoding::from("application/vnd.mycompany.widget+json");
-let enc = Encoding::from("application/flatbuffers");
-let enc = Encoding::from("image/png");
+let enc = Encoding::from("application/x-my-format");
+let enc = Encoding::from("application/vnd.mycompany.v1+json");
 ```
+
+Custom encoding strings are arbitrary UTF-8. By convention, follow MIME type syntax (`type/subtype` or `type/subtype+suffix`), but zenoh does not enforce this.
 
 ### Setting Encoding When Publishing
 
@@ -177,226 +142,192 @@ use zenoh::bytes::Encoding;
 
 let session = zenoh::open(zenoh::Config::default()).await.unwrap();
 
-// Set encoding on a one-shot put
 session
-    .put("my/topic", serde_json::to_vec(&my_value).unwrap())
+    .put("my/key", payload)
     .encoding(Encoding::APPLICATION_JSON)
     .await
     .unwrap();
 
-// Set default encoding on a declared publisher
+// Or on a declared publisher
 let publisher = session
-    .declare_publisher("my/topic")
+    .declare_publisher("my/key")
     .encoding(Encoding::APPLICATION_JSON)
     .await
     .unwrap();
-
-publisher.put(serde_json::to_vec(&my_value).unwrap()).await.unwrap();
-
-// Override encoding per message
-publisher
-    .put(payload)
-    .encoding(Encoding::APPLICATION_CBOR)
-    .await
-    .unwrap();
+publisher.put(payload).await.unwrap();
 ```
 
-### Checking Encoding When Receiving
+### Checking Encoding on Receipt
 
 ```rust
 use zenoh::bytes::Encoding;
 
 let subscriber = session
-    .declare_subscriber("my/topic")
+    .declare_subscriber("my/**")
     .await
     .unwrap();
 
 while let Ok(sample) = subscriber.recv_async().await {
-    let encoding = sample.encoding();
-    
-    if *encoding == Encoding::APPLICATION_JSON {
-        let text: String = sample.payload().try_into().unwrap();
-        let value: serde_json::Value = serde_json::from_str(&text).unwrap();
-        println!("JSON: {:?}", value);
-    } else if *encoding == Encoding::APPLICATION_OCTET_STREAM {
-        let raw: Vec<u8> = sample.payload().clone().into();
-        println!("raw bytes: {} bytes", raw.len());
+    let enc = sample.encoding();
+    if enc == &Encoding::APPLICATION_JSON {
+        // parse as JSON
+    } else if enc == &Encoding::ZENOH_SERIALIZED {
+        // use ZDeserializer
     } else {
-        println!("unknown encoding: {}", encoding);
+        eprintln!("unexpected encoding: {enc}");
     }
 }
 ```
 
 ---
 
-## zenoh-ext Serialization Helpers
+## zenoh-ext Serialization Helpers {#zenoh-ext}
 
-The `zenoh-ext` crate provides `ZSerializer` and `ZDeserializer` for packing multiple typed values into a single `ZBytes`, and the convenience functions `z_serialize` / `z_deserialize` for single-value round-trips.
+The `zenoh-ext` crate provides `ZSerializer` and `ZDeserializer` — ergonomic helpers for packing multiple typed values into a single `ZBytes` and unpacking them again. This eliminates the need to manually frame fields when building structured messages.
 
-Add to `Cargo.toml`:
+Add `zenoh-ext` to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-zenoh = "1.x"
-zenoh-ext = "1.x"
+zenoh = "1"
+zenoh-ext = "1"
 ```
 
-### z_serialize / z_deserialize
+### ZSerializer
 
-For single values, use the top-level functions:
-
-```rust
-use zenoh_ext::{z_serialize, z_deserialize};
-
-// Serialize
-let payload = z_serialize(&42u32);
-let payload = z_serialize(&"hello world");
-let payload = z_serialize(&vec![1u8, 2, 3]);
-let payload = z_serialize(&true);
-let payload = z_serialize(&3.14f64);
-
-// Deserialize
-let n: u32      = z_deserialize(&payload).unwrap();
-let s: String   = z_deserialize(&payload).unwrap();
-let v: Vec<u8>  = z_deserialize(&payload).unwrap();
-let b: bool     = z_deserialize(&payload).unwrap();
-let f: f64      = z_deserialize(&payload).unwrap();
-```
-
-### ZSerializer: Packing Multiple Values
-
-`ZSerializer` writes values sequentially into a single `ZBytes`. Each call to `serialize` appends to the buffer. The resulting `ZBytes` must be deserialized in the same order with `ZDeserializer`.
+`ZSerializer` lets you append multiple values into one `ZBytes` sequentially. The wire format is length-prefixed, so each field's boundary is recoverable by `ZDeserializer`.
 
 ```rust
 use zenoh_ext::ZSerializer;
 
-let mut serializer = ZSerializer::new();
+let mut ser = ZSerializer::new();
+ser.serialize(42u32);
+ser.serialize("hello");
+ser.serialize(3.14f64);
+ser.serialize(true);
 
-serializer.serialize(42u32);
-serializer.serialize("status");
-serializer.serialize(true);
-serializer.serialize(3.14f64);
-
-let payload: zenoh::bytes::ZBytes = serializer.finish();
+let zbytes: zenoh::bytes::ZBytes = ser.finish();
 ```
 
-### ZDeserializer: Unpacking Multiple Values
-
-```rust
-use zenoh_ext::ZDeserializer;
-
-let mut deserializer = ZDeserializer::new(&payload);
-
-let id: u32         = deserializer.deserialize().unwrap();
-let label: String   = deserializer.deserialize().unwrap();
-let active: bool    = deserializer.deserialize().unwrap();
-let value: f64      = deserializer.deserialize().unwrap();
-
-assert!(deserializer.done()); // verify all bytes were consumed
-```
-
-### Supported Types
-
-The following types implement zenoh-ext's `Serialize` / `Deserialize` traits:
+#### Supported Types
 
 | Type | Notes |
 |------|-------|
 | `u8`, `u16`, `u32`, `u64`, `u128` | Little-endian |
 | `i8`, `i16`, `i32`, `i64`, `i128` | Little-endian |
-| `f32`, `f64` | IEEE 754, little-endian |
-| `bool` | 1 byte, 0 or 1 |
-| `String` | Length-prefixed UTF-8 |
-| `&str` | Length-prefixed UTF-8 (serialize only) |
-| `Vec<u8>` | Length-prefixed raw bytes |
-| `&[u8]` | Length-prefixed raw bytes (serialize only) |
-| `Vec<T>` | Length-prefixed sequence of serialized `T` |
-| `(A, B)` | Two values in order |
-| `(A, B, C)` | Three values in order |
+| `f32`, `f64` | IEEE 754 little-endian |
+| `bool` | Single byte |
+| `String`, `&str` | Length-prefixed UTF-8 |
+| `Vec<u8>`, `&[u8]` | Length-prefixed bytes |
+| `Vec<T>` | Length-prefixed sequence of `T` |
+| Tuples `(A, B)`, `(A, B, C)` | Fields written in order |
 
-### Sequences
+### ZDeserializer
 
-```rust
-use zenoh_ext::ZSerializer;
-
-let mut serializer = ZSerializer::new();
-
-// Vec<u32> — serialized as: [length: u32][elem0: u32][elem1: u32]...
-let values = vec![10u32, 20, 30, 40];
-serializer.serialize(values);
-
-let payload = serializer.finish();
-```
+`ZDeserializer` reads values back out of a `ZBytes` in the same order they were written:
 
 ```rust
 use zenoh_ext::ZDeserializer;
 
-let mut deserializer = ZDeserializer::new(&payload);
-let values: Vec<u32> = deserializer.deserialize().unwrap();
-assert_eq!(values, vec![10u32, 20, 30, 40]);
+let mut de = ZDeserializer::new(&zbytes);
+let n: u32 = de.deserialize().unwrap();
+let s: String = de.deserialize().unwrap();
+let f: f64 = de.deserialize().unwrap();
+let b: bool = de.deserialize().unwrap();
 ```
 
-### Tuples
+> Fields must be deserialized in exactly the same order they were serialized. There is no field tagging or schema — the serialization format is positional.
+
+### Serializing Sequences
 
 ```rust
 use zenoh_ext::ZSerializer;
 
-let mut serializer = ZSerializer::new();
+let mut ser = ZSerializer::new();
+let values: Vec<u32> = vec![1, 2, 3, 4, 5];
+ser.serialize(values);
 
-// Tuple (u32, String) — values written in order
-serializer.serialize((42u32, String::from("hello")));
+let zbytes = ser.finish();
 
-let payload = serializer.finish();
+// Deserialize
+use zenoh_ext::ZDeserializer;
+let mut de = ZDeserializer::new(&zbytes);
+let recovered: Vec<u32> = de.deserialize().unwrap();
+assert_eq!(recovered, vec![1, 2, 3, 4, 5]);
 ```
+
+### Serializing Tuples
 
 ```rust
-use zenoh_ext::ZDeserializer;
+use zenoh_ext::ZSerializer;
 
-let mut deserializer = ZDeserializer::new(&payload);
-let (id, label): (u32, String) = deserializer.deserialize().unwrap();
+let mut ser = ZSerializer::new();
+ser.serialize(("sensor_1", 98.6f32, true));
+let zbytes = ser.finish();
+
+use zenoh_ext::ZDeserializer;
+let mut de = ZDeserializer::new(&zbytes);
+let (id, temp, active): (String, f32, bool) = de.deserialize().unwrap();
 ```
 
-### Custom Types via Serde
+### Convenience Functions
 
-When the `serde` feature is enabled in `zenoh-ext`, types that implement `serde::Serialize` + `serde::Deserialize` can be serialized using a configured codec (e.g., JSON, CBOR).
+`zenoh-ext` also provides top-level functions for single-value serialization:
+
+```rust
+use zenoh_ext::{z_serialize, z_deserialize};
+
+// Serialize a single value
+let zbytes = z_serialize(&42u32);
+
+// Deserialize a single value
+let n: u32 = z_deserialize(&zbytes).unwrap();
+```
+
+### Custom Types with Serde
+
+When the `serde` feature is enabled in `zenoh-ext`, you can serialize arbitrary types that implement `serde::Serialize` + `serde::Deserialize` using JSON, CBOR, or other serde-compatible formats:
 
 ```toml
 [dependencies]
-zenoh-ext = { version = "1.x", features = ["serde", "serde_json"] }
+zenoh-ext = { version = "1", features = ["serde"] }
 serde = { version = "1", features = ["derive"] }
+serde_json = "1"
 ```
 
 ```rust
 use serde::{Serialize, Deserialize};
-use zenoh_ext::{z_serialize, z_deserialize};
+use zenoh::bytes::ZBytes;
 
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
+#[derive(Serialize, Deserialize)]
 struct SensorReading {
-    sensor_id: u32,
+    sensor_id: String,
     temperature: f64,
     humidity: f64,
-    label: String,
+    timestamp_ms: u64,
 }
 
+// Serialize to JSON bytes manually
 let reading = SensorReading {
-    sensor_id: 7,
-    temperature: 22.5,
-    humidity: 60.0,
-    label: "office".to_string(),
+    sensor_id: "sensor-42".to_string(),
+    temperature: 23.5,
+    humidity: 60.1,
+    timestamp_ms: 1_700_000_000_000,
 };
 
-// Serialize using the serde codec
-let payload = z_serialize(&reading);
+let json_bytes = serde_json::to_vec(&reading).unwrap();
+let zbytes = ZBytes::from(json_bytes);
 
 // Deserialize
-let decoded: SensorReading = z_deserialize(&payload).unwrap();
-assert_eq!(reading, decoded);
+let raw: Vec<u8> = zbytes.to_bytes().to_vec();
+let recovered: SensorReading = serde_json::from_slice(&raw).unwrap();
 ```
 
 ---
 
-## Examples
+## Examples {#examples}
 
-### 1. Publishing a Plain String
+### Example 1: Publishing a String
 
 ```rust
 use zenoh::bytes::Encoding;
@@ -405,368 +336,400 @@ use zenoh::bytes::Encoding;
 async fn main() {
     let session = zenoh::open(zenoh::Config::default()).await.unwrap();
 
+    // Simple string publish — encoding defaults to ZENOH_BYTES
     session
-        .put("sensors/temperature", "23.4 C")
+        .put("demo/hello", "Hello, zenoh!")
+        .await
+        .unwrap();
+
+    // Explicit text encoding
+    session
+        .put("demo/hello", "Hello, zenoh!")
         .encoding(Encoding::TEXT_PLAIN)
         .await
         .unwrap();
-
-    println!("Published temperature string.");
 }
 ```
 
-### 2. Publishing JSON
+### Example 2: Publishing JSON
+
+Serialize a Rust struct to JSON, then publish it with the `APPLICATION_JSON` encoding so subscribers know how to parse it:
 
 ```rust
-use zenoh::bytes::Encoding;
-use serde_json::json;
+use zenoh::bytes::{Encoding, ZBytes};
+use serde::{Serialize, Deserialize};
+
+#[derive(Serialize, Deserialize, Debug)]
+struct Event {
+    event_type: String,
+    value: f64,
+}
 
 #[tokio::main]
 async fn main() {
     let session = zenoh::open(zenoh::Config::default()).await.unwrap();
 
-    let data = json!({
-        "sensor_id": 42,
-        "temperature": 22.5,
-        "unit": "celsius"
-    });
+    let event = Event {
+        event_type: "temperature".to_string(),
+        value: 22.3,
+    };
 
-    let payload = serde_json::to_vec(&data).unwrap();
+    // Serialize with serde_json
+    let json_bytes = serde_json::to_vec(&event).unwrap();
+    let payload = ZBytes::from(json_bytes);
 
     session
-        .put("sensors/data", payload)
+        .put("sensors/temperature", payload)
         .encoding(Encoding::APPLICATION_JSON)
         .await
         .unwrap();
-
-    println!("Published JSON payload.");
 }
 ```
 
-On the subscriber side:
+**Subscriber side:**
 
 ```rust
-let subscriber = session.declare_subscriber("sensors/data").await.unwrap();
-
 while let Ok(sample) = subscriber.recv_async().await {
-    if *sample.encoding() == Encoding::APPLICATION_JSON {
-        let raw: Vec<u8> = sample.payload().clone().into();
-        let value: serde_json::Value = serde_json::from_slice(&raw).unwrap();
-        println!("Received JSON: {:?}", value);
+    if sample.encoding() == &Encoding::APPLICATION_JSON {
+        let raw = sample.payload().to_bytes();
+        let event: Event = serde_json::from_slice(&raw).unwrap();
+        println!("Received: {:?}", event);
     }
 }
 ```
 
-### 3. Multi-Field Message with ZSerializer
+### Example 3: Multi-Field Message with ZSerializer
 
-Pack a structured message without defining a schema:
+Pack a structured message without defining a schema format manually:
 
 ```rust
-use zenoh::bytes::Encoding;
 use zenoh_ext::ZSerializer;
+use zenoh::bytes::Encoding;
 
 #[tokio::main]
 async fn main() {
     let session = zenoh::open(zenoh::Config::default()).await.unwrap();
 
-    let mut s = ZSerializer::new();
-    s.serialize(7u32);           // device ID
-    s.serialize("pressure");     // metric name
-    s.serialize(101325.0f64);    // value
-    s.serialize(true);           // valid flag
-    let payload = s.finish();
+    let mut ser = ZSerializer::new();
+    ser.serialize("sensor-7");           // sensor ID
+    ser.serialize(23.5f32);              // temperature
+    ser.serialize(60u32);               // humidity percent
+    ser.serialize(1_700_000_000u64);     // unix timestamp
+    ser.serialize(true);                 // is_active
+
+    let payload = ser.finish();
 
     session
-        .put("devices/reading", payload)
-        .encoding(Encoding::ZENOH_SERIALIZATION)
+        .put("sensors/readings", payload)
+        .encoding(Encoding::ZENOH_SERIALIZED)
         .await
         .unwrap();
 }
 ```
 
-### 4. Reading a Structured Message with ZDeserializer
+### Example 4: Reading a Structured Message with ZDeserializer
 
 ```rust
-use zenoh::bytes::Encoding;
 use zenoh_ext::ZDeserializer;
+use zenoh::bytes::Encoding;
 
 #[tokio::main]
 async fn main() {
     let session = zenoh::open(zenoh::Config::default()).await.unwrap();
-    let subscriber = session.declare_subscriber("devices/reading").await.unwrap();
+    let subscriber = session
+        .declare_subscriber("sensors/readings")
+        .await
+        .unwrap();
 
     while let Ok(sample) = subscriber.recv_async().await {
-        if *sample.encoding() != Encoding::ZENOH_SERIALIZATION {
-            eprintln!("Unexpected encoding: {}", sample.encoding());
+        if sample.encoding() != &Encoding::ZENOH_SERIALIZED {
+            eprintln!("unexpected encoding: {}", sample.encoding());
             continue;
         }
 
-        let mut d = ZDeserializer::new(sample.payload());
+        let mut de = ZDeserializer::new(sample.payload());
 
-        let device_id: u32  = d.deserialize().unwrap();
-        let metric: String  = d.deserialize().unwrap();
-        let value: f64      = d.deserialize().unwrap();
-        let valid: bool     = d.deserialize().unwrap();
-
-        assert!(d.done(), "unexpected trailing bytes");
+        let sensor_id: String  = de.deserialize().unwrap();
+        let temperature: f32   = de.deserialize().unwrap();
+        let humidity: u32      = de.deserialize().unwrap();
+        let timestamp: u64     = de.deserialize().unwrap();
+        let is_active: bool    = de.deserialize().unwrap();
 
         println!(
-            "Device {}: {} = {} (valid={})",
-            device_id, metric, value, valid
+            "[{}] sensor={} temp={}°C humidity={}% active={}",
+            timestamp, sensor_id, temperature, humidity, is_active
         );
     }
 }
 ```
 
-### 5. Custom Type Serialization (Full Round-Trip)
+### Example 5: Custom Type Serialization
+
+For complex nested types, implement the serialization yourself using `ZSerializer` and `ZDeserializer`, or use serde with a binary format like CBOR for compact encoding:
 
 ```rust
+use zenoh::bytes::{Encoding, ZBytes};
+use zenoh_ext::ZSerializer;
 use serde::{Serialize, Deserialize};
-use zenoh::bytes::Encoding;
-use zenoh_ext::{z_serialize, z_deserialize};
 
-#[derive(Serialize, Deserialize, Debug, PartialEq)]
-struct Pose {
+#[derive(Serialize, Deserialize, Debug, Clone)]
+struct Point3D {
     x: f64,
     y: f64,
-    heading_deg: f32,
+    z: f64,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+struct PointCloud {
+    frame_id: String,
+    points: Vec<Point3D>,
 }
 
 #[tokio::main]
 async fn main() {
     let session = zenoh::open(zenoh::Config::default()).await.unwrap();
 
-    // Publisher
-    let publisher = session
-        .declare_publisher("robot/pose")
-        .encoding(Encoding::ZENOH_SERIALIZATION)
+    let cloud = PointCloud {
+        frame_id: "world".to_string(),
+        points: vec![
+            Point3D { x: 1.0, y: 2.0, z: 3.0 },
+            Point3D { x: 4.0, y: 5.0, z: 6.0 },
+        ],
+    };
+
+    // Option A: serde_json
+    let json_bytes = serde_json::to_vec(&cloud).unwrap();
+    let payload_json = ZBytes::from(json_bytes);
+    session
+        .put("lidar/cloud", payload_json)
+        .encoding(Encoding::APPLICATION_JSON)
         .await
         .unwrap();
 
-    let pose = Pose { x: 1.0, y: 2.5, heading_deg: 90.0 };
-    publisher.put(z_serialize(&pose)).await.unwrap();
+    // Option B: Manual ZSerializer for flat structures
+    let mut ser = ZSerializer::new();
+    ser.serialize(cloud.frame_id.as_str());
+    ser.serialize(cloud.points.len() as u32);
+    for p in &cloud.points {
+        ser.serialize(p.x);
+        ser.serialize(p.y);
+        ser.serialize(p.z);
+    }
+    let payload_ser = ser.finish();
 
-    // Subscriber
-    let subscriber = session.declare_subscriber("robot/pose").await.unwrap();
+    session
+        .put("lidar/cloud/binary", payload_ser)
+        .encoding(Encoding::ZENOH_SERIALIZED)
+        .await
+        .unwrap();
+}
+```
 
-    if let Ok(sample) = subscriber.recv_async().await {
-        let received: Pose = z_deserialize(sample.payload()).unwrap();
-        println!("Received pose: {:?}", received);
-        assert_eq!(pose, received);
+### Example 6: Using z_serialize / z_deserialize for Single Values
+
+```rust
+use zenoh_ext::{z_serialize, z_deserialize};
+
+#[tokio::main]
+async fn main() {
+    let session = zenoh::open(zenoh::Config::default()).await.unwrap();
+
+    // Publish a single integer
+    let payload = z_serialize(&1234u32);
+    session.put("counter/value", payload).await.unwrap();
+
+    // Subscribe and deserialize
+    let subscriber = session.declare_subscriber("counter/value").await.unwrap();
+    while let Ok(sample) = subscriber.recv_async().await {
+        let value: u32 = z_deserialize(sample.payload()).unwrap();
+        println!("Counter: {}", value);
     }
 }
 ```
 
 ---
 
-## Language Binding Differences
+## Language Binding Differences {#language-bindings}
+
+Zenoh supports multiple languages. The serialization story differs per binding:
 
 ### Rust
 
-Rust uses `ZBytes` directly, with `zenoh-ext` providing `ZSerializer`/`ZDeserializer` and the `z_serialize`/`z_deserialize` convenience functions. Serde integration is available as a cargo feature.
+The native binding. Use `ZBytes` directly for raw bytes and `zenoh-ext` (`ZSerializer` / `ZDeserializer`) for structured multi-field messages.
 
 ```rust
-// Cargo.toml
-// zenoh = "1.x"
-// zenoh-ext = { version = "1.x", features = ["serde", "serde_json"] }
-
-use zenoh_ext::{z_serialize, z_deserialize};
-
-let payload = z_serialize(&42u32);
-let value: u32 = z_deserialize(&payload).unwrap();
+// Rust: zenoh + zenoh-ext
+use zenoh_ext::{ZSerializer, ZDeserializer};
+let mut ser = ZSerializer::new();
+ser.serialize(42u32);
+let zbytes = ser.finish();
 ```
 
 ### Python
 
-The Python bindings expose `ZBytes` and provide helpers that wrap common Python types:
+The Python binding (`zenoh-python`) accepts Python objects. Serialization is handled by the user before passing data to zenoh. Common patterns:
 
 ```python
-import zenoh
+import zenoh, json
 
 session = zenoh.open(zenoh.Config())
 
-# String payload
-session.put("my/key", "hello from python")
-
-# Bytes payload
-session.put("my/key", bytes([1, 2, 3, 4]))
-
-# On receive
-def callback(sample):
-    # payload is a ZBytes — convert to bytes
-    raw: bytes = bytes(sample.payload)
-    text: str = sample.payload.decode("utf-8")  # if text
-    print(f"Received: {text}")
-
-sub = session.declare_subscriber("my/key", callback)
-```
-
-For structured data, Python users typically serialize with `json`, `msgpack`, or `struct` before passing bytes to zenoh:
-
-```python
-import json, zenoh
-from zenoh import Encoding
-
-data = {"sensor": 1, "value": 42.0}
+# Publish JSON
+data = {"temperature": 22.5, "unit": "C"}
 payload = json.dumps(data).encode("utf-8")
-session.put("sensors/data", payload, encoding=Encoding.APPLICATION_JSON())
+session.put("sensors/temp", payload)
+
+# Publish raw bytes
+session.put("sensors/raw", bytes([0x01, 0x02, 0x03]))
 ```
 
-### C
+For ROS 2 interop from Python, CDR encoding is managed by the `zenoh-plugin-ros2dds` bridge rather than user code.
 
-The C API uses `z_bytes_t` and requires manual serialization. There is no built-in serialization framework; users bring their own (e.g., nanopb for protobuf, a hand-rolled packer, etc.).
+### C / C++
+
+The C binding exposes `z_bytes_t`. Serialization is entirely manual:
 
 ```c
-#include "zenoh.h"
+// C: raw bytes
+const char *msg = "hello";
+z_owned_bytes_t payload;
+z_bytes_from_static_str(&payload, msg);
+z_publisher_put(z_loan(pub), z_move(payload), NULL);
 
-// Publish raw bytes
-z_owned_session_t session;
-z_open(&session, z_move(config), NULL);
-
-const char *msg = "hello from C";
-z_view_bytes_t payload;
-z_view_bytes_from_buf(&payload, (const uint8_t *)msg, strlen(msg));
-
-z_publisher_put_options_t opts;
-z_publisher_put_options_default(&opts);
-
-z_publisher_put(z_loan(pub), z_loan(payload), &opts);
-
-// Receive
-void data_handler(z_loaned_sample_t *sample, void *arg) {
-    z_view_string_t key_str;
-    z_keyexpr_as_view_string(z_sample_keyexpr(sample), &key_str);
-
-    z_bytes_slice_iterator_t iter = z_bytes_get_slice_iterator(z_sample_payload(sample));
-    z_view_slice_t slice;
-    while (z_bytes_slice_iterator_next(&iter, &slice)) {
-        // process slice.data, slice.len
-    }
-}
+// Read
+z_owned_bytes_t received = /* from sample */;
+z_owned_string_t text;
+z_bytes_to_string(&text, z_loan(received));
+printf("%s\n", z_string_data(z_loan(text)));
+z_drop(z_move(text));
 ```
 
-For structured data in C, use an external serialization library and pass the resulting byte buffer to zenoh.
+For structured data in C, you must implement your own framing (e.g., protobuf, flatbuffers, or a custom binary format).
 
 ### TypeScript / JavaScript
 
-The TypeScript bindings use `Uint8Array` as the payload type. JSON is the most common approach for structured data:
+The TypeScript/JavaScript binding works with `Uint8Array`. JSON is the most common format:
 
 ```typescript
-import zenoh from "@eclipse-zenoh/zenoh-ts";
+import { open, Config } from "@eclipse-zenoh/zenoh-ts";
 
-const session = await zenoh.open(new zenoh.Config());
-
-// Publish a string
-const encoder = new TextEncoder();
-await session.put("my/topic", encoder.encode("hello from typescript"));
+const session = await open(new Config());
 
 // Publish JSON
-const data = { sensor: 1, value: 42.0 };
-const payload = encoder.encode(JSON.stringify(data));
-await session.put("sensors/data", payload, {
-    encoding: zenoh.Encoding.APPLICATION_JSON,
-});
+const data = { temperature: 22.5 };
+const payload = new TextEncoder().encode(JSON.stringify(data));
+await session.put("sensors/temp", payload);
 
 // Subscribe
-const subscriber = await session.declareSubscriber("my/topic");
+const subscriber = await session.declareSubscriber("sensors/temp");
 for await (const sample of subscriber.receiver()) {
-    const decoder = new TextDecoder();
-    const text = decoder.decode(sample.payload());
-    console.log("Received:", text);
+    const text = new TextDecoder().decode(sample.payload());
+    const parsed = JSON.parse(text);
+    console.log(parsed.temperature);
 }
 ```
 
+### Interoperability Between Bindings
+
+When interoperating across language bindings, agree on:
+
+1. **Encoding**: always set it explicitly (e.g., `APPLICATION_JSON`, `APPLICATION_PROTOBUF`)
+2. **Byte order**: `ZSerializer` uses little-endian; match this in C/Python
+3. **Schema**: use a schema-based format (protobuf, flatbuffers, JSON Schema) for cross-language structured messages
+
 ---
 
-## CDR and ROS 2 Interop
+## CDR and ROS 2 Interop {#cdr}
+
+CDR (Common Data Representation) is the wire format used by DDS and ROS 2. If you are bridging zenoh with ROS 2, understanding CDR is important.
 
 ### What CDR Is
 
-CDR (Common Data Representation) is the binary serialization format used by OMG DDS and ROS 2. It encodes structs, arrays, strings, and primitives in a platform-aware format with alignment padding. All ROS 2 messages on the wire use CDR.
+CDR is a binary serialization format standardized by the Object Management Group (OMG). It is used by all DDS implementations (Cyclone DDS, Fast DDS, etc.) and therefore by ROS 2. CDR encodes primitive types with explicit alignment padding, handles endianness via a leading byte, and encodes strings as null-terminated with a 4-byte length prefix.
 
-### Using zenoh-plugin-ros2dds
+### Automatic CDR via zenoh-plugin-ros2dds
 
-When bridging between ROS 2 and zenoh via `zenoh-plugin-ros2dds`, CDR encoding and decoding are handled automatically. ROS 2 messages arrive at the plugin as CDR-encoded `ZBytes`, and are forwarded to zenoh subscribers with `Encoding::APPLICATION_CDR`. In the reverse direction, the plugin decodes CDR from zenoh payloads and publishes them to the DDS bus.
+The recommended path for ROS 2 integration is `zenoh-plugin-ros2dds` (or `zenoh-bridge-ros2dds`). The plugin automatically handles CDR encoding and decoding when bridging ROS 2 topics to zenoh key expressions:
 
-No manual CDR handling is required when using the plugin.
+```
+ROS 2 Topic (CDR) <---> zenoh-plugin-ros2dds <---> zenoh (ZBytes carrying raw CDR bytes)
+```
+
+When you receive a sample on the zenoh side that originated from a ROS 2 publisher, its payload is raw CDR bytes. The encoding will typically be `APPLICATION_CDR` or `APPLICATION_OCTET_STREAM`. You can deserialize it with a CDR library or pass it to another ROS 2 node via the bridge.
 
 ### Manual CDR
 
-If you need to manually produce or consume CDR payloads — for example, when communicating with a ROS 2 node directly without the plugin — use a CDR library:
+When you need to produce CDR bytes manually (e.g., to send data that a ROS 2 subscriber will consume without a bridge), use a CDR library:
 
 ```toml
 [dependencies]
-cdr = "0.2"
+cdr = "0.2"           # or another CDR crate
+zenoh = "1"
 ```
 
 ```rust
 use zenoh::bytes::{Encoding, ZBytes};
-use cdr::{CdrLe, Infinite};
-use serde::{Serialize, Deserialize};
 
-// A ROS 2-compatible message type
-#[derive(Serialize, Deserialize, Debug)]
-struct Twist {
-    linear_x: f64,
-    linear_y: f64,
-    angular_z: f64,
+#[derive(serde::Serialize, serde::Deserialize)]
+struct RosString {
+    data: String,
 }
 
 #[tokio::main]
 async fn main() {
     let session = zenoh::open(zenoh::Config::default()).await.unwrap();
 
-    let cmd = Twist {
-        linear_x: 0.5,
-        linear_y: 0.0,
-        angular_z: 0.1,
+    let msg = RosString {
+        data: "Hello from zenoh".to_string(),
     };
 
-    // Serialize to CDR (little-endian, with 4-byte header)
-    let cdr_bytes = cdr::serialize::<_, _, CdrLe>(&cmd, Infinite).unwrap();
+    // Serialize to CDR (little-endian, with 4-byte encapsulation header)
+    let cdr_bytes = cdr::serialize::<_, _, cdr::CdrLe>(&msg, cdr::Infinite).unwrap();
     let payload = ZBytes::from(cdr_bytes);
 
     session
-        .put("rt/cmd_vel", payload)
-        .encoding(Encoding::APPLICATION_CDR)
+        .put("rt/chatter", payload)
+        .encoding(Encoding::from("application/cdr"))
         .await
         .unwrap();
+}
+```
 
-    // Receive and decode CDR
-    let subscriber = session
-        .declare_subscriber("rt/cmd_vel")
-        .await
-        .unwrap();
+### CDR Key Points for Zenoh Users
 
-    if let Ok(sample) = subscriber.recv_async().await {
-        if *sample.encoding() == Encoding::APPLICATION_CDR {
-            let raw: Vec<u8> = sample.payload().clone().into();
-            let twist: Twist = cdr::deserialize::<Twist>(&raw).unwrap();
-            println!("Received Twist: {:?}", twist);
-        }
+| Concern | Detail |
+|---------|--------|
+| **Endianness** | CDR carries endianness in the encapsulation header. Most DDS implementations use little-endian in practice. |
+| **Alignment** | CDR pads fields to their natural alignment. A `u32` is padded to a 4-byte boundary. Hand-rolled parsers must account for this. |
+| **String encoding** | Strings are 4-byte length prefix (including null terminator) + UTF-8 bytes + null byte. |
+| **Plugin bridge** | `zenoh-plugin-ros2dds` handles all of this automatically for bridged topics. Prefer the plugin over manual CDR. |
+| **Type mapping** | ROS 2 `.msg` type definitions map to CDR. Use the generated code from `rosidl` or a compatible CDR library. |
+
+### Checking for CDR Payload on Receipt
+
+```rust
+while let Ok(sample) = subscriber.recv_async().await {
+    let enc = sample.encoding().to_string();
+    if enc.contains("cdr") || enc == "application/octet-stream" {
+        // May be CDR — check context or use a CDR parser
+        let raw: Vec<u8> = sample.payload().to_bytes().to_vec();
+        // Pass to CDR deserializer...
     }
 }
 ```
 
-### CDR Encoding Notes
-
-- CDR uses native or explicit endianness. ROS 2 defaults to little-endian (XCDR version 1).
-- The first 4 bytes of a CDR buffer are a representation identifier header: `[0x00, 0x01, 0x00, 0x00]` for little-endian.
-- String fields are null-terminated and length-prefixed in CDR.
-- When setting encoding on CDR payloads destined for ROS 2, use `Encoding::APPLICATION_CDR`.
-
 ---
 
-## Summary
+## Quick Reference
 
-| Task | API |
+| Goal | API |
 |------|-----|
-| Publish raw bytes | `session.put(key, bytes)` |
-| Publish with encoding | `.put(key, bytes).encoding(Encoding::APPLICATION_JSON)` |
-| Serialize one value | `z_serialize(&value)` |
-| Deserialize one value | `z_deserialize::<T>(&zbytes)` |
-| Pack multiple values | `ZSerializer::new()` → `s.serialize(v)` → `s.finish()` |
-| Unpack multiple values | `ZDeserializer::new(&zbytes)` → `d.deserialize::<T>()` |
-| Custom struct (serde) | `z_serialize(&my_struct)` with serde feature |
-| Check payload encoding | `sample.encoding()` |
-| ROS 2 / CDR interop | `zenoh-plugin-ros2dds` or manual `cdr` crate |
+| Wrap raw bytes | `ZBytes::from(vec![...])` |
+| Wrap a string | `ZBytes::from("hello")` |
+| Pack multiple fields | `ZSerializer::new()` → `ser.serialize(v)` → `ser.finish()` |
+| Unpack multiple fields | `ZDeserializer::new(&zbytes)` → `de.deserialize::<T>()` |
+| Single value round-trip | `z_serialize(&v)` / `z_deserialize::<T>(&bytes)` |
+| Set encoding on publish | `.encoding(Encoding::APPLICATION_JSON)` |
+| Read encoding on receipt | `sample.encoding()` |
+| Access raw bytes | `sample.payload().to_bytes()` |
+| ROS 2 interop | Use `zenoh-plugin-ros2dds` for automatic CDR handling |

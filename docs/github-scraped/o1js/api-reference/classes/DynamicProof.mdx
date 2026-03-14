@@ -1,0 +1,655 @@
+Defined in: [lib/proof-system/proof.ts:235](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L235)
+
+The `DynamicProof` class enables circuits to verify proofs using in-circuit verification keys.
+This is opposed to the baked-in verification keys of the `Proof` class.
+
+In order to use this, a subclass of DynamicProof that specifies the public input and output types along with the maxProofsVerified number has to be created.
+
+```ts
+export class SideloadedProgramProof extends DynamicProof<MyStruct, Field> {
+  static publicInputType = MyStruct;
+  static publicOutputType = Field;
+  static maxProofsVerified = 0 as const;
+}
+```
+
+The `maxProofsVerified` constant is a product of the child circuit and indicates the maximum number that that circuit verifies itself.
+If you are unsure about what that is for you, you should use `2`.
+
+Any `DynamicProof` subclass can be used as private input to ZkPrograms or SmartContracts along with a `VerificationKey` input.
+```ts
+proof.verify(verificationKey)
+```
+
+NOTE: In the case of `DynamicProof`s, the circuit makes no assertions about the verificationKey used on its own.
+This is the responsibility of the application developer and should always implement appropriate checks.
+This pattern differs a lot from the usage of normal `Proof`, where the verification key is baked into the compiled circuit.
+
+## See
+
+src/examples/zkprogram/dynamic-keys-merkletree.ts for an example of how this can be done using merkle trees
+
+Assertions generally only happen using the vk hash that is part of the `VerificationKey` struct along with the raw vk data as auxiliary data.
+When using verify() on a `DynamicProof`, Pickles makes sure that the verification key data matches the hash.
+Therefore all manual assertions have to be made on the vk's hash and it can be assumed that the vk's data is checked to match the hash if it is used with verify().
+
+## Extends
+
+- [`ProofBase`](ProofBase.mdx)\<`Input`, `Output`\>
+
+## Type Parameters
+
+### Input
+
+`Input`
+
+### Output
+
+`Output`
+
+## Constructors
+
+### Constructor
+
+```ts
+new DynamicProof<Input, Output>(__namedParameters: {
+  maxProofsVerified: 0 | 1 | 2;
+  proof: unknown;
+  publicInput: Input;
+  publicOutput: Output;
+}): DynamicProof<Input, Output>;
+```
+
+Defined in: [lib/proof-system/proof.ts:71](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L71)
+
+#### Parameters
+
+##### \_\_namedParameters
+
+###### maxProofsVerified
+
+`0` \| `1` \| `2`
+
+###### proof
+
+`unknown`
+
+###### publicInput
+
+`Input`
+
+###### publicOutput
+
+`Output`
+
+#### Returns
+
+`DynamicProof`\<`Input`, `Output`\>
+
+#### Inherited from
+
+[`ProofBase`](ProofBase.mdx).[`constructor`](ProofBase.mdx#constructor)
+
+## Properties
+
+### maxProofsVerified
+
+```ts
+maxProofsVerified: 0 | 1 | 2;
+```
+
+Defined in: [lib/proof-system/proof.ts:37](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L37)
+
+#### Inherited from
+
+[`ProofBase`](ProofBase.mdx).[`maxProofsVerified`](ProofBase.mdx#maxproofsverified)
+
+***
+
+### proof
+
+```ts
+proof: unknown;
+```
+
+Defined in: [lib/proof-system/proof.ts:36](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L36)
+
+#### Inherited from
+
+[`ProofBase`](ProofBase.mdx).[`proof`](ProofBase.mdx#proof)
+
+***
+
+### publicInput
+
+```ts
+publicInput: Input;
+```
+
+Defined in: [lib/proof-system/proof.ts:34](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L34)
+
+#### Inherited from
+
+[`ProofBase`](ProofBase.mdx).[`publicInput`](ProofBase.mdx#publicinput)
+
+***
+
+### publicOutput
+
+```ts
+publicOutput: Output;
+```
+
+Defined in: [lib/proof-system/proof.ts:35](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L35)
+
+#### Inherited from
+
+[`ProofBase`](ProofBase.mdx).[`publicOutput`](ProofBase.mdx#publicoutput)
+
+***
+
+### shouldVerify
+
+```ts
+shouldVerify: Bool;
+```
+
+Defined in: [lib/proof-system/proof.ts:38](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L38)
+
+#### Inherited from
+
+[`ProofBase`](ProofBase.mdx).[`shouldVerify`](ProofBase.mdx#shouldverify)
+
+***
+
+### usedVerificationKey?
+
+```ts
+optional usedVerificationKey: VerificationKey;
+```
+
+Defined in: [lib/proof-system/proof.ts:267](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L267)
+
+***
+
+### featureFlags
+
+```ts
+static featureFlags: FeatureFlags = FeatureFlags.allNone;
+```
+
+Defined in: [lib/proof-system/proof.ts:254](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L254)
+
+As the name indicates, feature flags are features of the proof system.
+
+If we want to side load proofs and verification keys, we first have to tell Pickles what _shape_ of proofs it should expect.
+
+For example, if we want to side load proofs that use foreign field arithmetic custom gates, we have to make Pickles aware of that by defining
+these custom gates.
+
+_Note:_ Only proofs that use the exact same composition of custom gates which were expected by Pickles can be verified using side loading.
+If you want to verify _any_ proof, no matter what custom gates it uses, you can use [FeatureFlags.allMaybe](../variables/FeatureFlags.mdx#allmaybe). Please note that this might incur a significant overhead.
+
+You can also toggle specific feature flags manually by specifying them here.
+Alternatively, you can use [FeatureFlags.fromZkProgram](../variables/FeatureFlags.mdx#fromzkprogram) to compute the set of feature flags that are compatible with a given program.
+
+***
+
+### maxProofsVerified
+
+```ts
+static maxProofsVerified: 0 | 1 | 2;
+```
+
+Defined in: [lib/proof-system/proof.ts:236](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L236)
+
+***
+
+### publicInputType
+
+```ts
+static publicInputType: FlexibleProvable<any>;
+```
+
+Defined in: [lib/proof-system/proof.ts:26](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L26)
+
+#### Inherited from
+
+[`ProofBase`](ProofBase.mdx).[`publicInputType`](ProofBase.mdx#publicinputtype)
+
+***
+
+### publicOutputType
+
+```ts
+static publicOutputType: FlexibleProvable<any>;
+```
+
+Defined in: [lib/proof-system/proof.ts:27](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L27)
+
+#### Inherited from
+
+[`ProofBase`](ProofBase.mdx).[`publicOutputType`](ProofBase.mdx#publicoutputtype)
+
+## Accessors
+
+### provable
+
+#### Get Signature
+
+```ts
+get static provable(): ProvableProof<DynamicProof<any, any>>;
+```
+
+Defined in: [lib/proof-system/proof.ts:349](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L349)
+
+##### Returns
+
+`ProvableProof`\<`DynamicProof`\<`any`, `any`\>\>
+
+#### Overrides
+
+[`ProofBase`](ProofBase.mdx).[`provable`](ProofBase.mdx#provable)
+
+## Methods
+
+### declare()
+
+```ts
+declare(): boolean;
+```
+
+Defined in: [lib/proof-system/proof.ts:54](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L54)
+
+To verify a recursive proof inside a ZkProgram method, it has to be "declared" as part of
+the method. This is done by calling `declare()` on the proof.
+
+Note: `declare()` is a low-level method that most users will not have to call directly.
+For proofs that are inputs to the ZkProgram, it is done automatically.
+
+You can think of declaring a proof as a similar step as witnessing a variable, which introduces
+that variable to the circuit. Declaring a proof will tell Pickles to add the additional constraints
+for recursive proof verification.
+
+Similar to `Provable.witness()`, `declare()` is a no-op when run outside ZkProgram compilation or proving.
+It returns `false` in that case, and `true` if the proof was actually declared.
+
+#### Returns
+
+`boolean`
+
+#### Inherited from
+
+[`ProofBase`](ProofBase.mdx).[`declare`](ProofBase.mdx#declare)
+
+***
+
+### publicFields()
+
+```ts
+publicFields(): {
+  input: Field[];
+  output: Field[];
+};
+```
+
+Defined in: [lib/proof-system/proof.ts:111](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L111)
+
+#### Returns
+
+```ts
+{
+  input: Field[];
+  output: Field[];
+}
+```
+
+##### input
+
+```ts
+input: Field[];
+```
+
+##### output
+
+```ts
+output: Field[];
+```
+
+#### Inherited from
+
+[`ProofBase`](ProofBase.mdx).[`publicFields`](ProofBase.mdx#publicfields)
+
+***
+
+### toJSON()
+
+```ts
+toJSON(): JsonProof;
+```
+
+Defined in: [lib/proof-system/proof.ts:61](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L61)
+
+#### Returns
+
+[`JsonProof`](../type-aliases/JsonProof.mdx)
+
+#### Inherited from
+
+[`ProofBase`](ProofBase.mdx).[`toJSON`](ProofBase.mdx#tojson)
+
+***
+
+### verify()
+
+```ts
+verify(vk: VerificationKey): void;
+```
+
+Defined in: [lib/proof-system/proof.ts:278](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L278)
+
+Sets the `shouldVerify` flag to `true`
+The downstream effect of this is that the proof will be verified when the circuit is run
+
+#### Parameters
+
+##### vk
+
+[`VerificationKey`](VerificationKey.mdx)
+
+The verification key this proof will be verified against
+
+#### Returns
+
+`void`
+
+#### Note
+
+This method is meant to be called in a circuit.  Executing it outside of a circuit will have no effect.
+
+#### Note
+
+The vk parameter will have its auxiliary data checked in the circuit, so the hash must match the data, or else the proof will fail
+
+***
+
+### verifyIf()
+
+```ts
+verifyIf(vk: VerificationKey, condition: Bool): void;
+```
+
+Defined in: [lib/proof-system/proof.ts:293](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L293)
+
+Sets the `shouldVerify` flag to the given condition param
+If set to `Bool(true)`, the proof will be verified when the circuit is run
+If set to `Bool(false)`, the proof will not be verified when the circuit is run
+
+#### Parameters
+
+##### vk
+
+[`VerificationKey`](VerificationKey.mdx)
+
+The verification key this proof will be verified against
+
+##### condition
+
+[`Bool`](Bool.mdx)
+
+The condition to set the shouldVerify flag to
+
+#### Returns
+
+`void`
+
+#### Note
+
+This method is meant to be called in a circuit.  Executing it outside of a circuit will have no effect.
+
+#### Note
+
+The vk parameter will have its auxiliary data checked in the circuit, so the hash must match the data, or else the proof will fail
+
+***
+
+### \_proofFromBase64()
+
+```ts
+static _proofFromBase64(proofString: string, maxProofsVerified: 0 | 1 | 2): unknown;
+```
+
+Defined in: [lib/proof-system/proof.ts:115](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L115)
+
+#### Parameters
+
+##### proofString
+
+`string`
+
+##### maxProofsVerified
+
+`0` | `1` | `2`
+
+#### Returns
+
+`unknown`
+
+#### Inherited from
+
+[`ProofBase`](ProofBase.mdx).[`_proofFromBase64`](ProofBase.mdx#_prooffrombase64)
+
+***
+
+### \_proofToBase64()
+
+```ts
+static _proofToBase64(proof: unknown, maxProofsVerified: 0 | 1 | 2): string;
+```
+
+Defined in: [lib/proof-system/proof.ts:119](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L119)
+
+#### Parameters
+
+##### proof
+
+`unknown`
+
+##### maxProofsVerified
+
+`0` | `1` | `2`
+
+#### Returns
+
+`string`
+
+#### Inherited from
+
+[`ProofBase`](ProofBase.mdx).[`_proofToBase64`](ProofBase.mdx#_prooftobase64)
+
+***
+
+### dummy()
+
+```ts
+static dummy<S>(
+   this: S, 
+   publicInput: InferProvable<S["publicInputType"]>, 
+   publicOutput: InferProvable<S["publicOutputType"]>, 
+   maxProofsVerified: 0 | 1 | 2, 
+domainLog2: number): Promise<InstanceType<S>>;
+```
+
+Defined in: [lib/proof-system/proof.ts:315](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L315)
+
+#### Type Parameters
+
+##### S
+
+`S` *extends* `Subclass`\<*typeof* `DynamicProof`\>
+
+#### Parameters
+
+##### this
+
+`S`
+
+##### publicInput
+
+[`InferProvable`](../type-aliases/InferProvable.mdx)\<`S`\[`"publicInputType"`\]\>
+
+##### publicOutput
+
+[`InferProvable`](../type-aliases/InferProvable.mdx)\<`S`\[`"publicOutputType"`\]\>
+
+##### maxProofsVerified
+
+`0` | `1` | `2`
+
+##### domainLog2
+
+`number` = `14`
+
+#### Returns
+
+`Promise`\<`InstanceType`\<`S`\>\>
+
+***
+
+### fromJSON()
+
+```ts
+static fromJSON<S>(this: S, __namedParameters: JsonProof): Promise<DynamicProof<InferProvable<S["publicInputType"]>, InferProvable<S["publicOutputType"]>>>;
+```
+
+Defined in: [lib/proof-system/proof.ts:298](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L298)
+
+#### Type Parameters
+
+##### S
+
+`S` *extends* `Subclass`\<*typeof* `DynamicProof`\>
+
+#### Parameters
+
+##### this
+
+`S`
+
+##### \_\_namedParameters
+
+[`JsonProof`](../type-aliases/JsonProof.mdx)
+
+#### Returns
+
+`Promise`\<`DynamicProof`\<[`InferProvable`](../type-aliases/InferProvable.mdx)\<`S`\[`"publicInputType"`\]\>, [`InferProvable`](../type-aliases/InferProvable.mdx)\<`S`\[`"publicOutputType"`\]\>\>\>
+
+***
+
+### fromProof()
+
+```ts
+static fromProof<S>(this: S, proof: Proof<InferProvable<S["publicInputType"]>, InferProvable<S["publicOutputType"]>>): InstanceType<S>;
+```
+
+Defined in: [lib/proof-system/proof.ts:337](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L337)
+
+Converts a Proof into a DynamicProof carrying over all relevant data.
+This method can be used to convert a Proof computed by a ZkProgram
+into a DynamicProof that is accepted in a circuit that accepts DynamicProofs
+
+#### Type Parameters
+
+##### S
+
+`S` *extends* `Subclass`\<*typeof* `DynamicProof`\>
+
+#### Parameters
+
+##### this
+
+`S`
+
+##### proof
+
+[`Proof`](Proof.mdx)\<[`InferProvable`](../type-aliases/InferProvable.mdx)\<`S`\[`"publicInputType"`\]\>, [`InferProvable`](../type-aliases/InferProvable.mdx)\<`S`\[`"publicOutputType"`\]\>\>
+
+#### Returns
+
+`InstanceType`\<`S`\>
+
+***
+
+### publicFields()
+
+```ts
+static publicFields(value: ProofBase): {
+  input: Field[];
+  output: Field[];
+};
+```
+
+Defined in: [lib/proof-system/proof.ts:103](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L103)
+
+#### Parameters
+
+##### value
+
+[`ProofBase`](ProofBase.mdx)
+
+#### Returns
+
+```ts
+{
+  input: Field[];
+  output: Field[];
+}
+```
+
+##### input
+
+```ts
+input: Field[];
+```
+
+##### output
+
+```ts
+output: Field[];
+```
+
+#### Inherited from
+
+[`ProofBase`](ProofBase.mdx).[`publicFields`](ProofBase.mdx#publicfields-2)
+
+***
+
+### tag()
+
+```ts
+static tag(): {
+  name: string;
+};
+```
+
+Defined in: [lib/proof-system/proof.ts:256](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/proof-system/proof.ts#L256)
+
+#### Returns
+
+```ts
+{
+  name: string;
+}
+```
+
+##### name
+
+```ts
+name: string;
+```
+
+#### Overrides
+
+```ts
+ProofBase.tag
+```

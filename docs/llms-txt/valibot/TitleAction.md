@@ -1,0 +1,17 @@
+# Source: https://valibot.dev/api/TitleAction.md
+
+# TitleAction
+
+Title action interface.
+
+## Generics
+
+- `TInput` <Property {...properties.TInput} />
+- `TTitle` <Property {...properties.TTitle} />
+
+## Definition
+
+- `TitleAction` <Property {...properties.BaseMetadata} />
+  - `type` <Property {...properties.type} />
+  - `reference` <Property {...properties.reference} />
+  - `title` <Property {...properties.title} />

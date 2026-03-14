@@ -1,0 +1,30 @@
+---
+title: Serialization
+---
+
+Proofs and verification keys can be serialized to disk for convenience and interoperability.  Compiled
+constraint systems also have a cache protocol which can be used to speed up the time it takes to generate
+and verify proofs.  In the following examples, pretend we have a dummy `ZkProgram` like so:
+
+```ts file=../snippets/serialization/serialization.ts start=start_dummy end=end_dummy
+```
+
+## Serializing Proofs and Verification Keys
+
+Proofs and verification keys in o1js are really representations of `Pickles` artifacts that are passed through
+the bindings layer into OCaml.  In JavaScript, we only store base64 encoded strings, which can be easily
+serialized to save for later use.
+
+```ts file=../snippets/serialization/serialization.ts start=start_proofs_and_vks end=end_proofs_and_vks
+```
+
+## Using the Cache Protocol for ZkProgram and SmartContract
+
+When calling `compile` on a `ZkProgram` or `SmartContract`, you can pass in a cache parameter.  The cache must
+be an object that implements the Cache protocol.  o1js exports a file system cache implementation by default.
+Here's an example of how to use it:
+
+```ts file=../snippets/serialization/serialization.ts start=start_cache end=end_cache
+```
+
+Check out the [api reference](/api-reference/variables/Cache.mdx) for more details.

@@ -1,0 +1,62 @@
+# Source: https://buildkite.com/docs/pipelines/integrations/secrets/plugins.md
+
+# Source: https://buildkite.com/docs/pipelines/integrations/security-and-compliance/plugins.md
+
+# Source: https://buildkite.com/docs/pipelines/integrations/observability/plugins.md
+
+# Source: https://buildkite.com/docs/pipelines/integrations/notifications/plugins.md
+
+# Source: https://buildkite.com/docs/pipelines/integrations/plugins.md
+
+# Buildkite plugins
+
+Plugins are small self-contained pieces of extra functionality that help you customize Buildkite to your specific workflow. Plugins modify your build [command steps](/docs/pipelines/configure/step-types/command-step) at one or more of the ten [job lifecycle hooks](/docs/agent/hooks). Each hook modifies a different part of the job lifecycle, for example:
+
+- Setting up the environment.
+- Checking out the code.
+- Running commands.
+- Handling artifacts.
+- Cleaning up the environment.
+
+The following diagram shows how a plugin might hook into the job lifecycle:
+
+<img alt="A plugin interacts with the job lifecycle using environment, post-command, and pre-exit hooks" class="no-decoration" src="/docs/assets/plugins-job-lifecycle-example-De7LXH5L.png" />
+
+Plugins can be *open source* and available for anyone to use, or *private* and kept in private repositories that only your organization and agents can access. Plugins can be hosted and referenced using [a number of sources](/docs/pipelines/integrations/plugins/using#plugin-sources).
+
+Plugins can be also be *vendored* (if they are already present in the repository, and included using a relative path) or *non-vendored* (when they are included from elsewhere), which affects the [order](/docs/agent/hooks#job-lifecycle-hooks) they are run in.
+
+## How to use plugins
+
+Add plugins to [command steps](/docs/pipelines/configure/step-types/command-step) in your YAML pipeline to add functionality to Buildkite. Plugins can do things like execute steps in Docker containers, read values from a credential store, or add test summary annotations to builds.
+
+<div style="max-width: 537px"><div class="no-decoration responsive-image-container"><img alt="Screenshot of a pipeline step with a plugin, and the plugin from the directory" src="/docs/assets/plugins-overview-CTM7ESkO.png" /></div></div>
+
+Reference plugins in your pipeline configuration, and when the step containing the plugin runs, your agent will override the default behavior with hooks defined in the plugin [hooks](/docs/agent/hooks). In case there is more than one, it will be with the command hook of the first plugin that defines it.
+
+> 📘 Plugin execution and conditionals
+> Plugins run during the job lifecycle, before the step-level `if` conditionals are evaluated. To conditionally run plugins, use either [group steps with conditionals](/docs/pipelines/configure/conditionals#conditionally-running-plugins-with-group-steps) or [dynamic pipeline uploads](/docs/pipelines/configure/conditionals#conditionally-running-plugins-with-dynamic-uploads).
+
+Some plugins allow configuration. This is usually defined in your `pipeline.yml` file and is read by the agent before the plugin hooks are run. See plugins' readme files for detailed configuration and usage instructions.
+
+See [Using plugins](/docs/pipelines/integrations/plugins/using) for more information about adding plugins to your pipeline definition.
+
+## Finding plugins
+
+The [Buildkite plugins directory](https://buildkite.com/resources/plugins) allows you to discover and find all plugins maintained by Buildkite, as well as those from third-party developers.
+
+<a class="Frameheader" href='https://buildkite.com/resources/plugins' target='_blank'>
+  <span class="Frameheader__address">buildkite.com/resources/plugins</span>
+</a>
+<iframe
+  src='https://buildkite.com/resources/plugins/embed'
+  referrerPolicy='same-origin'
+  allow="fullscreen" crossorigin="anonymous" width="100%" height="800px"
+  style="border-radius:0 0 8px 8px;box-sizing: border-box;"
+/>
+
+Plugins supported by the Buildkite team display the Buildkite logo in the directory, and can be found in the [Buildkite Plugins GitHub organization](https://github.com/buildkite-plugins).
+
+## Creating a plugin
+
+Learn more about how to create plugins, along with step-by-step instructions, on the [Writing plugins](/docs/pipelines/integrations/plugins/writing) page, along with some [useful tools](/docs/pipelines/integrations/plugins/writing#plugin-tools) to help you develop them.

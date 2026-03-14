@@ -1,0 +1,100 @@
+# Preloading Functions for Distribution
+
+OpenFaaS Edge is licensed for distribution of bespoke solutions to end customers. The product itself can shipped as a convenient DEB/RPM package, or pre-installed in a VM image.
+
+But when it comes to functions, you generally have to deploy these via `faas-cli`.
+
+Preloading is a solution to this problem.
+
+On the first boot of the `faasd-provider` service, any OpenFaaS Stack YAML files found will be deployed automatically.
+
+So before you install OpenFaaS Edge, create the: `/var/lib/faasd-provider/functions` folder, and place any number of OpenFaaS function YAML files within it.
+
+This is designed for an initial deployment of a set of functions when shipping a product to an end customer.
+
+To update existing functions or to deploy new ones after the initial preload, you have two options:
+
+* Use `faas-cli deploy`
+* Remove `/var/lib/faasd-provider/bootstrap.ran` and restart the `faasd-provider` service.
+
+To delete functions which were previously deployed via preloading, use `faas-cli remove`. Removing them from the `/var/lib/faasd-provider/functions` folder will have no effect.
+
+## Secrets for preloaded functions
+
+If any of your functions require secrets, make sure you pre-create the secrets folder: `/var/lib/faasd-provider/secrets`.
+
+Then create functions in a folder that matches the destination namespace, so for a secret named `api-key` in `openfaas-fn`:
+
+```bash
+mkdir -p /var/lib/faasd-provider/secrets/openfaas-fn
+echo "secret" | sudo tee /var/lib/faasd-provider/secrets/openfaas-fn/api-key
+```
+
+## A single stack.yaml
+
+You can ship a single stack.yaml file with all your functions defined separately within it.
+
+*stack.yaml*
+
+```yaml
+provider:
+  name: openfaas
+
+functions:
+  env:
+    image: ghcr.io/openfaas/alpine:latest
+    fprocess: env
+  nodeinfo:
+    image: ghcr.io/openfaas/nodeinfo:latest
+```
+
+You can leave in build data such as the template and handler folder, or you can trim it away for brevity. It won't be used at deployment time.
+
+Copy the files to the destination:
+
+```bash
+sudo mkdir -p /var/lib/faasd-provider/functions/
+sudo cp stack.yaml /var/lib/faasd-provider/functions/
+```
+
+## Multiple YAML files
+
+You could also create multiple YAML files - one per function:
+
+*env.yaml*
+
+```yaml
+provider:
+  name: openfaas
+
+functions:
+  env:
+    image: ghcr.io/openfaas/alpine:latest
+    fprocess: env
+```
+
+*nodeinfo.yaml*
+
+```yaml
+provider:
+  name: openfaas
+
+functions:
+  nodeinfo:
+    image: ghcr.io/openfaas/nodeinfo:latest
+    fprocess: nodeinfo
+```
+
+Copy the files to the destination:
+
+```bash
+sudo mkdir -p /var/lib/faasd-provider/functions/
+sudo cp nodeinfo.yaml /var/lib/faasd-provider/functions/
+sudo cp env.yaml /var/lib/faasd-provider/functions/
+```
+
+## Running the preload a second time
+
+By default, the preload will only run once, then a file is written out to prevent it from running again.
+
+To have the preload run a second time i.e. during testing, simply remove the run file: `sudo rm -rf /var/lib/faasd-provider/bootstrap.ran`.

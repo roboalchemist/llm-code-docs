@@ -1,0 +1,131 @@
+# Source: https://docs.statsig.com/statsig-warehouse-native/guides/quick-start.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.statsig.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Warehouse Native Quickstart
+
+You can get experiment results in record time with Statsig Warehouse Native. This page walks you through connecting your data, configuring a metric, and getting experiment results.
+
+All you'll need is a table in your warehouse that has metric or event logging data.
+
+## Step 1: Connect Your Warehouse
+
+Statsig will use your warehouse to store and analyze your experiment data; you have total control and visibility over the data itself. To connect your warehouse, visit your warehouse's setup page.
+
+* [Snowflake](/statsig-warehouse-native/connecting-your-warehouse/snowflake)
+* [Athena](/statsig-warehouse-native/connecting-your-warehouse/athena)
+* [BigQuery](/statsig-warehouse-native/connecting-your-warehouse/bigquery)
+* [Databricks](/statsig-warehouse-native/connecting-your-warehouse/databricks)
+* [Redshift](/statsig-warehouse-native/connecting-your-warehouse/redshift)
+* [Trino](/statsig-warehouse-native/connecting-your-warehouse/trino)
+* [Clickhouse](/statsig-warehouse-native/connecting-your-warehouse/clickhouse)
+* [Fabric](/statsig-warehouse-native/connecting-your-warehouse/fabric)
+
+## Step 2: Connect to Data
+
+To connect your event or metric, data, you'll create a [Metric Source](/statsig-warehouse-native/configuration/metric-sources). Navigate to the Metric Sources page and click Create to make a new Metric Source.
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/oeabJ0ow-rt3PoHE/images/statsig-warehouse-native/guides/quick-start/66229d92-99a8-45c6-9a1c-7f8585465338.png?fit=max&auto=format&n=oeabJ0ow-rt3PoHE&q=85&s=eaa3fc8e7e61ae653ad4523eefa1bb9b" alt="Create metric source button" width="308" height="148" data-path="images/statsig-warehouse-native/guides/quick-start/66229d92-99a8-45c6-9a1c-7f8585465338.png" />
+</Frame>
+
+If you have a table, use the `Table` metric source type and put in the path to your table. Otherwise, you can write a query to access or generate some test data.
+
+Press analyze to generate samples from your table, and then map required columns (Timestamp and UserID) so that Statsig can connect your metric data to your assignment data.
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/oeabJ0ow-rt3PoHE/images/statsig-warehouse-native/guides/quick-start/c0982d71-71c5-4899-bed9-a72c7db59515.png?fit=max&auto=format&n=oeabJ0ow-rt3PoHE&q=85&s=690fe7b3340bb50363ed4f7d5dc5343b" alt="Metric source configuration mapping timestamp and user ID" width="973" height="816" data-path="images/statsig-warehouse-native/guides/quick-start/c0982d71-71c5-4899-bed9-a72c7db59515.png" />
+</Frame>
+
+Save your changes, and you've connected to your data!
+
+## Step 3: Make a Metric
+
+Now that you've connected to data, you can build metrics on top of this. Later, this can be configured programmatically, but for now navigate to your Metrics Catalog and click Create to make a new Metric.
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/oeabJ0ow-rt3PoHE/images/statsig-warehouse-native/guides/quick-start/8b997a0c-22e9-409d-8918-d21a95af1367.png?fit=max&auto=format&n=oeabJ0ow-rt3PoHE&q=85&s=d184da49574ffbd243ef62d0a030d357" alt="Metrics catalog create button" width="517" height="641" data-path="images/statsig-warehouse-native/guides/quick-start/8b997a0c-22e9-409d-8918-d21a95af1367.png" />
+</Frame>
+
+Point to the metric source you just configured, name your metric, and press Create. This will take you to the new Metric's page, where you can configure your metric.
+
+To get started, we recommend just making a [count metric](/statsig-warehouse-native/metrics/count). This is the simplest kind of metric, which just counts the number of rows in your metric source. This is useful for event logging - for example, you might filter to a "purchase" event to count the number of times users purchased an item.
+
+Select "Count" and save - or, feel free to pause here and explore the options here.
+
+## Step 4: Connect an Experiment
+
+Next, you'll connect to experiment data. If you have a table with exposures you've already logged, feel free to use that. You'll just need to make sure that you've logged the same identifier there as you used in your metric source.
+
+Otherwise, you can quickly follow our guide to setting up an [A/A test](/guides/aa-test), using the same data you used for your exposures. This should generate a neutral experiment result.
+
+Navigate to Assignment Sources and create a new one.
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/oeabJ0ow-rt3PoHE/images/statsig-warehouse-native/guides/quick-start/fe0e4c5d-e2a6-4943-9b09-cb81dbadee9e.png?fit=max&auto=format&n=oeabJ0ow-rt3PoHE&q=85&s=4c6562af3d4c7a05cc0020632bb99f12" alt="Create assignment source page" width="518" height="446" data-path="images/statsig-warehouse-native/guides/quick-start/fe0e4c5d-e2a6-4943-9b09-cb81dbadee9e.png" />
+</Frame>
+
+If using an AA test, follow the instructions to randomly assign users to groups. If you're using existing assignments, write a query to pull the data from your logs and map the unit, group, experiment, and timestamp columns.
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/oeabJ0ow-rt3PoHE/images/statsig-warehouse-native/guides/quick-start/08e3f20c-1590-4b08-ad60-fa96ecbf15cb.png?fit=max&auto=format&n=oeabJ0ow-rt3PoHE&q=85&s=e75c1a0241ba8ce07c70fa19a89b9a2a" alt="Assignment source query configuration" width="517" height="641" data-path="images/statsig-warehouse-native/guides/quick-start/08e3f20c-1590-4b08-ad60-fa96ecbf15cb.png" />
+</Frame>
+
+Pressing save and scan will save your new source and detect experiments that exist on the source. This should only take seconds to a few minutes, and once it's done you can scroll down to look through the experiments Statsig found.
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/oeabJ0ow-rt3PoHE/images/statsig-warehouse-native/guides/quick-start/8be2f079-4440-4742-9727-08e25b65c84b.png?fit=max&auto=format&n=oeabJ0ow-rt3PoHE&q=85&s=e81d0a9762fcb96b2779cb7b57df1f48" alt="Detected experiments table" width="957" height="403" data-path="images/statsig-warehouse-native/guides/quick-start/8be2f079-4440-4742-9727-08e25b65c84b.png" />
+</Frame>
+
+## Step 5: Analyze Your Experiment
+
+Press Create on your experiment of interest to start creating your experiment.
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/oeabJ0ow-rt3PoHE/images/statsig-warehouse-native/guides/quick-start/fc6e7092-b621-494a-bedb-8cd03a64d510.png?fit=max&auto=format&n=oeabJ0ow-rt3PoHE&q=85&s=d528d3f8bb7c0562657fa6389c04409e" alt="Experiment creation wizard" width="516" height="931" data-path="images/statsig-warehouse-native/guides/quick-start/fc6e7092-b621-494a-bedb-8cd03a64d510.png" />
+</Frame>
+
+Add a display name and hypothesis, and press Create. This will take you to the final setup step, where you specify the metrics for your experiment. Choose the metric you created in step 3).
+
+Statsig will automatically detect the group split, but if the detected split is incorrect you can manually adjust it to the intended value.
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/oeabJ0ow-rt3PoHE/images/statsig-warehouse-native/guides/quick-start/287bc60b-23a6-4681-ac26-282ce8b88c13.png?fit=max&auto=format&n=oeabJ0ow-rt3PoHE&q=85&s=12644f08e50e13119d17e9d7a0c05b7b" alt="Experiment setup selecting metrics and group split" width="1365" height="932" data-path="images/statsig-warehouse-native/guides/quick-start/287bc60b-23a6-4681-ac26-282ce8b88c13.png" />
+</Frame>
+
+Press Save and Analyze, and Statsig will start calculating Pulse Results. You can track the progress in the loading bar at the bottom of the experiment's results page.
+
+## Step 6: Read Results
+
+If everything worked, you should see:
+
+* Your hypothesis. This lives at the top of the results page to give context and guide interpretation of the results.
+* Cumulative exposures. This shows you the number of unique units exposed to each group, and the balance between groups
+* Your scorecard. This shows a quick summary of the observed differences in metrics between your experiment groups, with access to additional views and raw statistics
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/oeabJ0ow-rt3PoHE/images/statsig-warehouse-native/guides/quick-start/38f4f438-2592-44cb-9063-d3bc97da404b.png?fit=max&auto=format&n=oeabJ0ow-rt3PoHE&q=85&s=015efcfb476bdbbd723c646b0ea2b1ab" alt="Experiment results showing hypothesis and exposures" width="1358" height="422" data-path="images/statsig-warehouse-native/guides/quick-start/38f4f438-2592-44cb-9063-d3bc97da404b.png" />
+</Frame>
+
+There's a lot of features here - please explore the product and the docs to learn more!
+
+* Click into a result's error bar to view raw statistics, timeseries, and projected [timeline impact](/stats-engine/topline-impact)
+* Hover over a metric to get detailed context on its inputs and how the pulse result was calculated
+* Navigate to the diagnostics tab to see the [checks](/statsig-warehouse-native/features/monitor-an-experiment) Statsig automatically ran to make sure your experiment results were valid
+* Click into the reloaded timestamp to see the run time and query cost of your pulse analysis, as well as the SQL queries used to calculate the pulse results
+* Visit the explore tab to start filtering data, exploring results by dimensions, or running other follow-up analyses
+* Visit the summary tab to start putting together a [report](/statsig-warehouse-native/features/reports) to share out the results of your analysis
+* Start a discussion or add context, either in the discussion tab or with in-context comments on top of the results themselves
+
+Note that our experiment was not an AA test, and there was an experimental impact. In this case, we have a statistically significant result, with an estimated lift of +12.89% ±0.93% from our control group to our test group. We can also click into see additional details, like the expected change to our overall topline metric value if we were to ship this experiment.
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/oeabJ0ow-rt3PoHE/images/statsig-warehouse-native/guides/quick-start/33e5fc2a-9b36-43f9-a6c2-2936867a7980.png?fit=max&auto=format&n=oeabJ0ow-rt3PoHE&q=85&s=193acf9bbee9d46cdc6d50e9a94daece" alt="Detailed metric lift view with significance" width="1016" height="568" data-path="images/statsig-warehouse-native/guides/quick-start/33e5fc2a-9b36-43f9-a6c2-2936867a7980.png" />
+</Frame>
+
+Congratulations - you've completed the Quick Start guide!
+
+
+Built with [Mintlify](https://mintlify.com).

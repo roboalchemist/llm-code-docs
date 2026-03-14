@@ -1,0 +1,218 @@
+# Source: https://help.cloudsmith.io/reference/packages_validate-upload_deb.md
+
+# Validate parameters for create Debian package
+
+Validate parameters for create Debian package
+
+# OpenAPI definition
+
+```json
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Cloudsmith API (v1)",
+    "description": "The API to the Cloudsmith Service",
+    "termsOfService": "https://help.cloudsmith.io",
+    "contact": {
+      "name": "Cloudsmith Support",
+      "url": "https://help.cloudsmith.io",
+      "email": "support@cloudsmith.io"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "version": "v1"
+  },
+  "security": [
+    {
+      "apikey": []
+    },
+    {
+      "basic": []
+    }
+  ],
+  "paths": {
+    "/packages/{owner}/{repo}/validate-upload/deb/": {
+      "post": {
+        "operationId": "packages_validate-upload_deb",
+        "summary": "Validate parameters for create Debian package",
+        "description": "Validate parameters for create Debian package",
+        "requestBody": {
+          "$ref": "#/components/requestBodies/DebPackageUploadRequest"
+        },
+        "responses": {
+          "204": {
+            "description": "Validation was successful, parameters are OK."
+          },
+          "400": {
+            "description": "Request could not be processed (see detail).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Namespace (owner) or repository not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Missing or invalid parameters (see detail).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorDetail"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "packages"
+        ]
+      },
+      "parameters": [
+        {
+          "name": "owner",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        },
+        {
+          "name": "repo",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.cloudsmith.io"
+    }
+  ],
+  "components": {
+    "requestBodies": {
+      "DebPackageUploadRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/DebPackageUploadRequest"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "apikey": {
+        "type": "apiKey",
+        "name": "X-Api-Key",
+        "in": "header"
+      },
+      "basic": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    },
+    "schemas": {
+      "ErrorDetail": {
+        "required": [
+          "detail"
+        ],
+        "type": "object",
+        "properties": {
+          "detail": {
+            "title": "Detail",
+            "description": "An extended message for the response.",
+            "type": "string",
+            "minLength": 1
+          },
+          "fields": {
+            "title": "Fields",
+            "description": "A Dictionary of related errors where key: Field and value: Array of Errors related to that field",
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      },
+      "DebPackageUploadRequest": {
+        "required": [
+          "distribution",
+          "package_file"
+        ],
+        "type": "object",
+        "properties": {
+          "changes_file": {
+            "title": "Changes file",
+            "description": "The changes archive containing the changes made to the source and debian packaging files",
+            "type": "string",
+            "minLength": 1,
+            "nullable": true
+          },
+          "component": {
+            "title": "Component",
+            "description": "The component (channel) for the package (e.g. 'main', 'unstable', etc.)",
+            "type": "string",
+            "pattern": "^[-_.\\w]+$",
+            "default": "main",
+            "maxLength": 64,
+            "minLength": 1
+          },
+          "distribution": {
+            "title": "Distribution",
+            "description": "The distribution to store the package for.",
+            "type": "string",
+            "minLength": 1
+          },
+          "package_file": {
+            "title": "Package file",
+            "description": "The primary file for the package.",
+            "type": "string",
+            "minLength": 1
+          },
+          "republish": {
+            "title": "Republish",
+            "description": "If true, the uploaded package will overwrite any others with the same attributes (e.g. same version); otherwise, it will be flagged as a duplicate.",
+            "type": "boolean"
+          },
+          "sources_file": {
+            "title": "Sources file",
+            "description": "The sources archive containing the source code for the binary",
+            "type": "string",
+            "minLength": 1,
+            "nullable": true
+          },
+          "tags": {
+            "title": "Tags",
+            "description": "A comma-separated values list of tags to add to the package.",
+            "type": "string",
+            "maxLength": 1024,
+            "minLength": 1,
+            "nullable": true
+          }
+        }
+      }
+    }
+  }
+}
+```

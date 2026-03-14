@@ -1,0 +1,92 @@
+# Source: https://docs.statsig.com/ai-evals/online-evals.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.statsig.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Online Evals
+
+## What are Online Evals
+
+Online evals let you grade your model output in production on real world use cases. You can run the "live" version of a prompt, but can also shadow run "candidate" versions of a prompt, without exposing users to them. Grading works directly on the model output, and has to work without a ground truth to compare against.
+
+Steps to do this in Statsig -
+
+1. Create a Prompt. This contains the prompt for your task (e.g. Summarize ticket content. Don't include email addresses or credit cards in the summary). Create a v2 prompt that improves on this.
+2. In your app, use and produce model output using the v1 and v2 prompts. The output from v1 is rendered to the user; the output from v1 and v2 are judged by an LLM-as-a-judge.
+3. The grades from v1 and v2 are logged back to Statsig and can be compared there.
+
+<Info>
+  Online Evals is currently in beta. If you're interested in this feature, reach out to us on Slack!
+</Info>
+
+## Create/analyze an online eval in 15 minutes
+
+<Note>(Coming soon: How to start an online eval in 15 minutes)</Note>
+
+**1. Identify the prompts you want to serve**
+
+In Prompts, there are four prompt types: Live, Candidate, Draft and Archive. Before starting an online evaluation, it’s important to organize your prompt versions into these categories:
+
+* **Live** prompt is the version actively served to users.
+
+* **Candidate** prompts are not shown to users but still served to your code. The user’s input is still processed against them, and their outputs are logged and graded alongside the live version.
+
+* **Draft** prompts are the offline prompts you will iterate on in console, before deciding that you want to serve them. In order to start serving them, you should promote them to "Candidate" or "Live"
+
+* **Archive** prompts are inactive versions that are not iterated on and kept offline.
+
+Prompts that you can access in code will comprise of the Live version and Candidate versions.
+
+<img src="https://mintcdn.com/statsig-4b2ff144/wCEDbYY1o3ep-nQK/images/ai/version-types.png?fit=max&auto=format&n=wCEDbYY1o3ep-nQK&q=85&s=8013f9036e99be2490df6bb1563a99a4" alt="Prompt versions list showing live, candidate, draft, and archived prompts with setup form" width="1451" height="819" data-path="images/ai/version-types.png" />
+
+**2. Load your prompts in code and run completions on user input**
+
+In the example below, we demonstrate how to integrate your prompts in your application using the [Statsig AI SDKs](/ai-evals/node). Once you grab your Live or Candidate prompts, pass in the approriate values to replace your macros in your prompt (\{\{input}} should be replaced by the user input).
+You can then run completions on each of these prompts.
+
+```js  theme={null}
+const prompts = statsigAI.getPrompt(user, "ai_config_name");
+
+// get the live prompt
+const livePrompt = prompts.getLive();
+
+// get the candidate prompts
+const candidatePrompts = prompts.getCandidates();
+
+// get the live prompt messages
+const livePromptMessages = livePrompt.getPromptMessages({ input: userInput });
+
+// run completions on your live prompt and show the output to the user
+const liveOutput = client.completions.create(
+  my_model,
+  livePromptMessages,
+  (temperature = livePrompt.getTemperature())
+);
+
+// simulateneously run completions on the candidate prompts to get their output
+```
+
+**3. Score your output using graders**
+
+Once you have a completion’s output, it should be evaluated using a grader—either one created in Statsig or a custom grader of your choice. The resulting score should always fall within the range of 0 to 1.
+
+**4. Log Eval Results to Statsig**
+
+You can log your scores as events in Statsig to see the results in your console
+
+```js  theme={null}
+// Log the results of the eval
+statsigAI.logEvalGrade(user, livePromptVersion, 0.5, "my_grader", {
+  session_id: "1234567890",
+});
+```
+
+**5. View Results in Statsig**
+
+You can now view these results in Statsig! Select the version you want to evaluate and the versions you want to compare it against. This end to end online eval helps you iterate on your prompts and gain valuable insights.
+
+<img src="https://mintcdn.com/statsig-4b2ff144/TiOgrX7JboecrQKm/images/ai/online-results.png?fit=max&auto=format&n=TiOgrX7JboecrQKm&q=85&s=2d02e551e61a34a580f54fc3f784fc06" alt="Online eval results dashboard comparing prompt versions with cumulative events chart and grader deltas" width="1309" height="879" data-path="images/ai/online-results.png" />
+
+
+Built with [Mintlify](https://mintlify.com).

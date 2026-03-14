@@ -1,0 +1,55 @@
+# Source: https://uat.rive.app/docs/account-admin/workspaces/creating-a-workspace.md
+
+> ## Documentation Index
+>
+> Fetch the complete documentation index at: https://uat.rive.app/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Creating a Workspace
+
+> You can have multiple workspaces—some free, some paid. Each is billed separately.
+
+## Create a Free Workspace
+
+1. In the editor, click "Create new Workspace"
+2. Name your workspace
+3. Add members by email (optional)
+4. Select each person's role
+5. Click "Create Workspace"
+
+Invitations are emailed immediately.
+
+## Upgrade to a Paid Workspace
+
+**From the editor:**
+
+1. Click "Free" next to your workspace name in the left menu
+2. Choose your plan tier (monthly or yearly)
+3. Select your billing plan under "Setup Billing"
+4. Click "Confirm & Pay"
+
+**From the website:**
+
+1. Go to [rive.app/pricing](https://rive.app/pricing)
+2. Select a plan and click "Get Started"
+3. Choose your tier and billing cycle
+4. Click "Confirm & Pay"
+
+***
+
+## Member Roles
+
+| Role       | Access                            | Cost      |
+| :--------- | :-------------------------------- | :-------- |
+| **Owner**  | Full access + billing control     | Paid seat |
+| **Admin**  | Full access + manage members      | Paid seat |
+| **Editor** | View and edit files               | Paid seat |
+| **Viewer** | View and download .riv files only | Free      |
+
+***
+
+## ⚠️ Multiple Rive Accounts?
+
+If you have more than one Rive account (work and personal, for example), **log out before accepting any workspace invite**. The invite links to whichever account you're currently logged into—not necessarily the email it was sent to.
+
+**Questions?** [support@rive.app](mailto:support@rive.app)

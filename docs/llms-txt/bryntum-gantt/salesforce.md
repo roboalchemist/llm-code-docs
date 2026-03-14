@@ -1,0 +1,21 @@
+# Source: https://bryntum.com/products/gantt/docs-llm/guide/Gantt/quick-start/salesforce.md
+
+# Getting Started with Bryntum Gantt as Lightning Web Component
+
+Bryntum components support Salesforce LWC. To use it you need to follow a few steps:
+
+1. Create new static resource from Bryntum theme, fonts and a special JS bundle
+2. Create new Lightning Web Component using this static resource.
+
+For your convenience we prepared a Lightning Application which features all supported
+components and published it in a public repository:
+
+[Bryntum Salesforce Showcase](https://github.com/bryntum/bryntum-salesforce-showcase#bryntum-salesforce-showcase)
+
+To get started you need to check out this repository and deploy to a scratch org. Please
+check our repository [Readme](https://github.com/bryntum/bryntum-salesforce-showcase#bryntum-salesforce-showcase)
+for detailed installation steps.
+
+## Online example
+
+Bryntum Salesforce Showcase is deployed to a Salesforce Digital Experiences [page](https://bryntum-dev-ed.develop.my.site.com/demo/gantt).

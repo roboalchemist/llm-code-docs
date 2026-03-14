@@ -1,0 +1,212 @@
+---
+title: Understanding HMAC-SHA256
+sidebar_label: Understanding the Algorithm
+description: Learn about HMAC-SHA256 and how it works with a practical example.
+pagination_next: tutorials/hmac/implementation
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+## Introduction
+
+Welcome to this guide on HMAC-SHA256! Before diving into implementation, let's understand what HMAC is, why it's important, and how it works. This foundational knowledge will help you better understand the zero-knowledge implementation.
+
+### What You'll Learn
+
+- Implementing HMAC-SHA256 in a zero-knowledge circuit using o1js
+- Working with provable arrays and bit manipulation in ZkPrograms
+- Using cryptographic gadgets like SHA256 in o1js
+- Applying metaprogramming patterns to shape circuit structure - using static control flow to shape circuit structure
+- Best practices for writing complex zero-knowledge circuits
+
+:::tip New to o1js?
+If you're just getting started, check out the [o1js basics](../../getting-started/intro.mdx) first.
+:::
+
+## What is HMAC?
+
+HMAC (Hash-based Message Authentication Code) is a specific type of message authentication code that combines:
+- A cryptographic hash function
+- A secret key
+
+It provides a way to verify both:
+- Data integrity (message hasn't been modified)
+- Message authenticity (sender is verified)
+
+:::info Historical Note
+The HMAC construction was first published in 1996 by Mihir Bellare, Ran Canetti, and Hugo Krawczyk. It has since become a fundamental building block in standards like TLS, JWT, and many others.
+:::
+
+### Why Use HMAC?
+
+1. **Message Integrity**: Ensures the message hasn't been tampered with
+2. **Authentication**: Verifies the sender's identity through the shared secret key
+3. **Non-repudiation**: The sender cannot deny sending the message (when combined with other cryptographic primitives)
+
+### Why HMAC-SHA256 Specifically? 
+
+HMAC-SHA256 uses SHA-256 as its underlying hash function. It's widely used because:
+- SHA-256 is cryptographically secure
+- The 256-bit output size provides strong security against collision attacks
+- It's relatively fast to compute
+- It's widely supported across different platforms and languages
+
+## HMAC-SHA256: Under the Hood
+
+### The Algorithm
+
+The HMAC algorithm can be expressed as:
+
+```
+HMAC(k,m) = H((k_0 ^ opad) || H((k_0 ^ ipad) || m))
+```
+
+Where:
+| Symbol | Meaning |
+|--------|---------|
+| k | Secret key |
+| m | Message to authenticate |
+| H | Hash function (SHA-256) |
+| k_0 | Derived key (padded/hashed key) |
+| opad | Outer padding (0x5c repeated) |
+| ipad | Inner padding (0x36 repeated) |
+| \|\| | Concatenation |
+| ^ | XOR operation |
+
+:::note Block Size
+Since we're using SHA-256 as our hash function, the block size is 64 bytes (512 bits). This is a property of SHA-256's internal block processing. The key `k` is processed into `k_0` based on its length:
+- If key length < 64 bytes: Padded with zeros to 64 bytes
+- If key length = 64 bytes: Used as-is without modification
+- If key length > 64 bytes: Hashed using SHA-256 (producing 32 bytes) and then padded with zeros to 64 bytes
+:::
+
+### The Process Step by Step
+
+1. **Key Preparation** 🔑
+   ```mermaid
+   graph LR
+   A[Input Key] --> B{Key Length?}:::secondary
+   B -->|\> 64 bytes| C[Hash Key] --> D[Pad with Zeros] --> E[k_0]
+   B -->|= 64 bytes| E
+   B -->|< 64 bytes| D
+
+   classDef secondary fill:#000000,color:#ffffff
+   ```
+
+2. **Inner Hash** 🔄
+   ```mermaid
+   graph LR
+   A[k_0] --> B[XOR with ipad]
+   B --> C[Concatenate Message]
+   C --> D[SHA-256]
+   ```
+
+3. **Outer Hash** 🔄
+   ```mermaid
+   graph LR
+   A[k_0] --> B[XOR with opad]
+   B --> C[Concatenate Inner Hash]
+   C --> D[SHA-256]
+   ```
+
+## Interactive Example
+
+Let's walk through a real HMAC-SHA256 calculation. You can follow along using these online tools:
+- [ASCII to Hex Converter](https://www.rapidtables.com/convert/number/ascii-to-hex.html)
+- [XOR Calculator](https://toolslick.com/math/bitwise/xor-calculator)
+- [SHA-256 Calculator](https://emn178.github.io/online-tools/sha256.html)
+
+### Our Input Values
+
+```text
+const key = "key123";              // Our secret key
+const message = "Hello, World!";    // Message to authenticate
+```
+
+### Step-by-Step Calculation
+
+<details>
+<summary>1️⃣ Convert Inputs to Hex</summary>
+
+```text
+// Key in hex
+"key123" → 6B6579313233
+
+// Message in hex
+"Hello, World!" → 48656C6C6F2C20576F726C6421
+```
+</details>
+
+<details>
+<summary>2️⃣ Prepare the Key</summary>
+
+```text
+// Original key (6 bytes)
+6B6579313233
+
+// Padded to 64 bytes
+6B657931323300000000000000000000
+00000000000000000000000000000000
+00000000000000000000000000000000
+00000000000000000000000000000000
+```
+</details>
+
+<details>
+<summary>3️⃣ Create Padding Values</summary>
+
+```text
+// ipad - 0x36 repeated 64 times
+36363636363636363636363636363636
+36363636363636363636363636363636
+36363636363636363636363636363636
+36363636363636363636363636363636
+
+// opad - 0x5C repeated 64 times
+5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C
+5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C
+5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C
+5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C
+```
+</details>
+
+<details>
+<summary>4️⃣ Calculate Inner Hash</summary>
+
+```text
+// 1. XOR key with ipad
+k_0 ^ ipad = 5D534F0704053636363636363636363636363636363636363636363636363636363636363636363636363636363636363636363636363636363636363636363636
+
+// 2. Concatenate with message
+(k_0 ^ ipad) || m =  5D534F0704053636363636363636363636363636363636363636363636363636363636363636363636363636363636363636363636363636363636363636363648656C6C6F2C20576F726C6421
+
+// 3. SHA-256 result
+H((k_0 ^ ipad) || m) = 9d9c48d074304040cb5efa94008a719d95773a778cae5ff52fae84f89fa7dd45
+```
+</details>
+
+<details>
+<summary>5️⃣ Calculate Outer Hash</summary>
+
+```text
+// 1. XOR key with opad
+k_0 ^ opad = 3739256D6E6F5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C
+
+// 2. Concatenate with inner hash
+(k_0 ^ opad) || H((k_0 ^ ipad) || m) = 3739256D6E6F5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C5C9d9c48d074304040cb5efa94008a719d95773a778cae5ff52fae84f89fa7dd45
+
+// 3. Final HMAC-SHA256
+H((k_0 ^ opad) || H((k_0 ^ ipad) || m)) = 81c362d8cfc25d551d72d86cc700e6d5574191d49dc55dd500086840e34563b8
+```
+</details>
+
+:::tip Verify Your Result
+You can verify this result using the [HMAC Calculator](https://cryptotools.net/hmac):
+- Algorithm: SHA-256
+- Key: key123
+- Message: Hello, World!
+:::
+
+## Next Steps
+
+Now that you understand how HMAC-SHA256 works, you're ready to learn how to implement it in o1js! In the next section, we'll cover how to handle write zk-circuits in o1js

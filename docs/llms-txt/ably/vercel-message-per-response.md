@@ -1,0 +1,481 @@
+# Source: https://ably.com/docs/ai-transport/guides/vercel-ai-sdk/vercel-message-per-response.md
+
+# Guide: Stream Vercel AI SDK responses using the message-per-response pattern
+
+This guide shows you how to stream AI responses from the [Vercel AI SDK](https://ai-sdk.dev/docs/ai-sdk-core/generating-text) over Ably using the [message-per-response pattern](https://ably.com/docs/ai-transport/token-streaming/message-per-response.md). Specifically, it appends each response token to a single Ably message, creating a complete AI response that grows incrementally while delivering tokens in realtime.
+
+Using Ably to distribute tokens from the Vercel AI SDK enables you to broadcast AI responses to thousands of concurrent subscribers with reliable message delivery and ordering guarantees. This approach stores each complete response as a single message in channel history, making it easy to retrieve conversation history without processing thousands of individual token messages.
+
+<Aside data-type="further-reading">
+To discover other approaches to token streaming, including the [message-per-token](https://ably.com/docs/ai-transport/token-streaming/message-per-token.md) pattern, see the [token streaming](https://ably.com/docs/ai-transport/token-streaming.md) documentation.
+</Aside>
+
+## Prerequisites
+
+To follow this guide, you need:
+
+- Node.js 20 or higher
+- A Vercel AI Gateway API key
+- An Ably API key
+
+Useful links:
+
+- [Vercel AI Gateway documentation](https://vercel.com/docs/ai-gateway)
+- [Vercel AI SDK documentation](https://ai-sdk.dev/docs)
+- [Ably JavaScript SDK getting started](https://ably.com/docs/getting-started/javascript.md)
+
+Create a new Node project, which will contain the publisher and subscriber code:
+
+<Code>
+
+### Shell
+
+```
+mkdir ably-vercel-message-per-response && cd ably-vercel-message-per-response
+npm init -y
+```
+
+</Code>
+
+Install the required packages using NPM:
+
+<Code>
+
+### Shell
+
+```
+npm install ai@^6 ably@^2
+```
+
+</Code>
+
+<Aside data-type="note">
+This guide uses version 6.x of the AI SDK. You can use any model from any [supported provider](https://ai-sdk.dev/providers/ai-sdk-providers) by specifying it as a string (e.g., `'openai/gpt-4o'`, `'anthropic/claude-sonnet-4'`). Some details of interacting with the SDK may differ if using a different major version.
+</Aside>
+
+Export your Vercel AI Gateway API key to the environment, which will be used later in the guide by the Vercel AI SDK:
+
+<Code>
+
+### Shell
+
+```
+export AI_GATEWAY_API_KEY="your_api_key_here"
+```
+
+</Code>
+
+## Step 1: Enable message appends
+
+Message append functionality requires "Message annotations, updates, deletes and appends" to be enabled in a [channel rule](https://ably.com/docs/channels.md#rules) associated with the channel.
+
+<Aside data-type="important">
+When the "Message annotations, updates, deletes and appends" channel rule is enabled, messages are persisted irrespective of whether or not persistence has also been explicitly enabled. This increases usage since [we charge for persisting messages](https://faqs.ably.com/how-does-ably-count-messages).
+</Aside>
+
+To enable the channel rule:
+
+1. Go to the [Ably dashboard](https://www.ably.com/dashboard) and select your app.
+2. Navigate to the "Configuration" > "Rules" section from the left-hand navigation bar.
+3. Choose "Add new rule".
+4. Enter a channel name or namespace pattern (e.g. `ai` for all channels starting with `ai:`).
+5. Select the "Message annotations, updates, deletes and appends" option from the list.
+6. Click "Create channel rule".
+
+The examples in this guide use the `ai:` namespace prefix, which assumes you have configured the rule for `ai:*`.
+
+<Aside data-type="note">
+The `ai:` namespace is just a naming convention used in this guide. There's nothing special about it - you can use any namespace pattern you like, as long as your channel name matches the configured channel rule.
+</Aside>
+
+## Step 2: Get a streamed response from Vercel AI SDK
+
+Initialize the Vercel AI SDK and use [`streamText`](https://ai-sdk.dev/docs/reference/ai-sdk-core/stream-text) to stream model output as a series of events.
+
+Create a new file `agent.mjs` with the following contents:
+
+<Code>
+
+### Javascript
+
+```
+import { streamText } from 'ai';
+
+// Process each streaming event
+async function processEvent(event) {
+  console.log(JSON.stringify(event));
+  // This function is updated in the next sections
+}
+
+// Create streaming response from Vercel AI SDK
+async function streamVercelResponse(prompt) {
+  const result = streamText({
+    model: 'openai/gpt-4o',
+    prompt: prompt,
+  });
+
+  // Iterate through streaming events using fullStream
+  for await (const event of result.fullStream) {
+    await processEvent(event);
+  }
+}
+
+// Usage example
+streamVercelResponse("Tell me a short joke");
+```
+
+</Code>
+
+### Understand Vercel AI SDK streaming events
+
+The Vercel AI SDK's [`streamText`](https://ai-sdk.dev/docs/ai-sdk-core/generating-text#streamtext) function provides a [`fullStream`](https://ai-sdk.dev/docs/ai-sdk-core/generating-text#fullstream-property) property that returns all stream events. Each event includes a `type` property which describes the event type. A complete text response can be constructed from the following event types:
+
+- [`text-start`](https://ai-sdk.dev/docs/ai-sdk-ui/stream-protocol#text-start-part): Signals the start of a text response. Contains an `id` to correlate subsequent events.
+
+- [`text-delta`](https://ai-sdk.dev/docs/ai-sdk-ui/stream-protocol#text-delta-part): Contains a single text token in the `text` field. These events represent incremental text chunks as the model generates them.
+
+- [`text-end`](https://ai-sdk.dev/docs/ai-sdk-ui/stream-protocol#text-end-part): Signals the completion of a text response.
+
+The following example shows the event sequence received when streaming a response:
+
+<Code>
+
+#### Json
+
+```
+// 1. Stream initialization
+{"type":"start"}
+{"type":"start-step","request":{...}}
+{"type":"text-start","id":"msg_0cc4da489ab9d4d101696f97d7c9548196a04f71d10a3a4c99","providerMetadata":{...}}
+
+// 2. Text tokens stream in as delta events
+{"type":"text-delta","id":"msg_0cc4da489ab9d4d101696f97d7c9548196a04f71d10a3a4c99","text":"Why"}
+{"type":"text-delta","id":"msg_0cc4da489ab9d4d101696f97d7c9548196a04f71d10a3a4c99","text":" don't"}
+{"type":"text-delta","id":"msg_0cc4da489ab9d4d101696f97d7c9548196a04f71d10a3a4c99","text":" skeleton"}
+{"type":"text-delta","id":"msg_0cc4da489ab9d4d101696f97d7c9548196a04f71d10a3a4c99","text":"s"}
+{"type":"text-delta","id":"msg_0cc4da489ab9d4d101696f97d7c9548196a04f71d10a3a4c99","text":" fight"}
+{"type":"text-delta","id":"msg_0cc4da489ab9d4d101696f97d7c9548196a04f71d10a3a4c99","text":" each"}
+{"type":"text-delta","id":"msg_0cc4da489ab9d4d101696f97d7c9548196a04f71d10a3a4c99","text":" other"}
+{"type":"text-delta","id":"msg_0cc4da489ab9d4d101696f97d7c9548196a04f71d10a3a4c99","text":"?\n\n"}
+{"type":"text-delta","id":"msg_0cc4da489ab9d4d101696f97d7c9548196a04f71d10a3a4c99","text":"They"}
+{"type":"text-delta","id":"msg_0cc4da489ab9d4d101696f97d7c9548196a04f71d10a3a4c99","text":" don't"}
+{"type":"text-delta","id":"msg_0cc4da489ab9d4d101696f97d7c9548196a04f71d10a3a4c99","text":" have"}
+{"type":"text-delta","id":"msg_0cc4da489ab9d4d101696f97d7c9548196a04f71d10a3a4c99","text":" the"}
+{"type":"text-delta","id":"msg_0cc4da489ab9d4d101696f97d7c9548196a04f71d10a3a4c99","text":" guts"}
+{"type":"text-delta","id":"msg_0cc4da489ab9d4d101696f97d7c9548196a04f71d10a3a4c99","text":"!"}
+
+// 3. Stream completion
+{"type":"text-end","id":"msg_0cc4da489ab9d4d101696f97d7c9548196a04f71d10a3a4c99","providerMetadata":{...}}
+{"type":"finish-step","finishReason":"stop","usage":{"inputTokens":12,"outputTokens":15,"totalTokens":27,"reasoningTokens":0,"cachedInputTokens":0},"providerMetadata":{...}}
+{"type":"finish","finishReason":"stop","totalUsage":{"inputTokens":12,"outputTokens":15,"totalTokens":27,"reasoningTokens":0,"cachedInputTokens":0}}
+```
+
+</Code>
+
+<Aside data-type="note">
+This is only an illustrative example for a simple "text in, text out" use case and may not reflect the exact sequence of events that you observe from the Vercel AI SDK. The SDK also supports other event types such as `reasoning-delta` for chain-of-thought reasoning, `tool-call` for function calling, and `error` for handling failures. For complete details on all event types and their properties, see [Vercel AI SDK fullStream reference](https://ai-sdk.dev/docs/reference/ai-sdk-core/stream-text#full-stream).
+</Aside>
+
+## Step 3: Publish streaming tokens to Ably
+
+Publish Vercel AI SDK streaming events to Ably using message appends to reliably and scalably distribute them to subscribers.
+
+Each AI response is stored as a single Ably message that grows as tokens are appended.
+
+### Initialize the Ably client
+
+Add the Ably client initialization to your `agent.mjs` file:
+
+<Code>
+
+#### Javascript
+
+```
+import Ably from 'ably';
+
+// Initialize Ably Realtime client
+const realtime = new Ably.Realtime({
+  key: 'your-api-key',
+  echoMessages: false
+});
+
+// Create a channel for publishing streamed AI responses
+const channel = realtime.channels.get('ai:your-channel-name');
+```
+
+</Code>
+
+The Ably Realtime client maintains a persistent connection to the Ably service, which allows you to publish tokens at high message rates with low latency.
+
+<Aside data-type="note">
+Set [`echoMessages`](https://ably.com/docs/api/realtime-sdk/types.md#client-options) to `false` on the agent's Ably client to prevent the agent from receiving its own streamed tokens, avoiding billing for [echoed messages](https://ably.com/docs/pub-sub/advanced.md#echo).
+</Aside>
+
+### Publish initial message and append tokens
+
+When a new response begins, publish an initial message to create it. Ably assigns a [`serial`](https://ably.com/docs/messages.md#properties) identifier to the message. Use this `serial` to append each token to the message as it arrives from the AI model.
+
+Update your `agent.mjs` file to publish the initial message and append tokens:
+
+<Code>
+
+#### Javascript
+
+```
+// Track state across events
+let msgSerial = null;
+
+// Process each streaming event and publish to Ably
+async function processEvent(event) {
+  switch (event.type) {
+    case 'text-start':
+      // Publish initial empty message when response starts
+      const result = await channel.publish({
+        name: 'response',
+        data: ''
+      });
+
+      // Capture the message serial for appending tokens
+      msgSerial = result.serials[0];
+      break;
+
+    case 'text-delta':
+      // Append each text token to the message
+      if (msgSerial) {
+        channel.appendMessage({
+          serial: msgSerial,
+          data: event.text
+        });
+      }
+      break;
+
+    case 'text-end':
+      console.log('Stream completed!');
+      break;
+  }
+}
+```
+
+</Code>
+
+This implementation:
+
+- Publishes an initial empty message when the response begins and captures the `serial`
+- Filters for `text-delta` events and appends each token to the original message
+- Logs completion when the `text-end` event is received
+
+<Aside data-type="note">
+Append operations are published without `await` to maximize throughput. Ably maintains message ordering even without awaiting each append. For more information, see [Publishing tokens](https://ably.com/docs/ai-transport/token-streaming/message-per-response.md#publishing).
+</Aside>
+
+<Aside data-type="important">
+Standard Ably message [size limits](https://ably.com/docs/platform/pricing/limits.md#message) apply to the complete concatenated message. If appending a token would exceed the maximum message size, the append is rejected.
+</Aside>
+
+Run the publisher to see tokens streaming to Ably:
+
+<Code>
+
+#### Shell
+
+```
+node agent.mjs
+```
+
+</Code>
+
+## Step 4: Subscribe to streaming tokens
+
+Create a subscriber that receives the streaming tokens from Ably and reconstructs the response in realtime.
+
+Create a new file `client.mjs` with the following contents:
+
+<Code>
+
+### Javascript
+
+```
+import Ably from 'ably';
+
+// Initialize Ably Realtime client
+const realtime = new Ably.Realtime({ key: 'your-api-key' });
+
+// Get the same channel used by the publisher
+const channel = realtime.channels.get('ai:your-channel-name');
+
+// Track responses by message serial
+const responses = new Map();
+
+// Subscribe to receive messages
+await channel.subscribe((message) => {
+  switch (message.action) {
+    case 'message.create':
+      // New response started
+      console.log('\n[Response started]', message.serial);
+      responses.set(message.serial, message.data);
+      break;
+
+    case 'message.append':
+      // Append token to existing response
+      const current = responses.get(message.serial) || '';
+      responses.set(message.serial, current + message.data);
+
+      // Display token as it arrives
+      process.stdout.write(message.data);
+      break;
+
+    case 'message.update':
+      // Replace entire response content
+      responses.set(message.serial, message.data);
+      console.log('\n[Response updated with full content]');
+      break;
+  }
+});
+
+console.log('Subscriber ready, waiting for tokens...');
+```
+
+</Code>
+
+Subscribers receive different message actions depending on when they join and how they're retrieving messages:
+
+- `message.create`: Indicates a new response has started (i.e. a new message was created). The message `data` contains the initial content (often empty or the first token). Store this as the beginning of a new response using `serial` as the identifier.
+
+- `message.append`: Contains a single token fragment to append. The message `data` contains only the new token, not the full concatenated response. Append this token to the existing response identified by `serial`.
+
+- `message.update`: Contains the whole response up to that point. The message `data` contains the full concatenated text so far. Replace the entire response content with this data for the message identified by `serial`. This action occurs when the channel needs to resynchronize the full message state, such as after a client [resumes](https://ably.com/docs/connect/states.md#resume) from a transient disconnection.
+
+Run the subscriber in a separate terminal:
+
+<Code>
+
+### Shell
+
+```
+node client.mjs
+```
+
+</Code>
+
+With the subscriber running, run the publisher in another terminal. The tokens stream in realtime as the AI model generates them.
+
+## Step 5: Stream with multiple publishers and subscribers
+
+Ably's [channel-oriented sessions](https://ably.com/docs/ai-transport/sessions-identity.md#connection-oriented-vs-channel-oriented-sessions) enables multiple AI agents to publish responses and multiple users to receive them on a single channel simultaneously. Ably handles message delivery to all participants, eliminating the need to implement routing logic or manage state synchronization across connections.
+
+### Broadcasting to multiple subscribers
+
+Each subscriber receives the complete stream of tokens independently, enabling you to build collaborative experiences or multi-device applications.
+
+Run a subscriber in multiple separate terminals:
+
+<Code>
+
+#### Shell
+
+```
+# Terminal 1
+node client.mjs
+
+# Terminal 2
+node client.mjs
+
+# Terminal 3
+node client.mjs
+```
+
+</Code>
+
+All subscribers receive the same stream of tokens in realtime.
+
+### Publishing concurrent responses
+
+Multiple publishers can stream different responses concurrently on the same [channel](https://ably.com/docs/channels.md). Each response is a distinct message with its own unique `serial` identifier, so tokens from different responses are isolated to distinct messages and don't interfere with each other.
+
+To demonstrate this, run a publisher in multiple separate terminals:
+
+<Code>
+
+#### Shell
+
+```
+# Terminal 1
+node agent.mjs
+
+# Terminal 2
+node agent.mjs
+
+# Terminal 3
+node agent.mjs
+```
+
+</Code>
+
+All running subscribers receive tokens from all responses concurrently. Each subscriber correctly reconstructs each response separately using the `serial` to correlate tokens.
+
+## Step 6: Retrieve complete responses from history
+
+One key advantage of the message-per-response pattern is that each complete AI response is stored as a single message in channel history. This makes it efficient to retrieve conversation history without processing thousands of individual token messages.
+
+Use Ably's [rewind](https://ably.com/docs/channels/options/rewind.md) channel option to attach to the channel at some point in the recent past and automatically receive complete responses from history. Historical messages are delivered as `message.update` events containing the complete concatenated response, which then seamlessly transition to live `message.append` events for any ongoing responses:
+
+<Code>
+
+### Javascript
+
+```
+// Use rewind to receive recent historical messages
+const channel = realtime.channels.get('ai:your-channel-name', {
+  params: { rewind: '2m' } // Retrieve messages from the last 2 minutes
+});
+
+const responses = new Map();
+
+await channel.subscribe((message) => {
+  switch (message.action) {
+    case 'message.create':
+      responses.set(message.serial, message.data);
+      break;
+
+    case 'message.append':
+      const current = responses.get(message.serial) || '';
+      responses.set(message.serial, current + message.data);
+      process.stdout.write(message.data);
+      break;
+
+    case 'message.update':
+      // Historical messages contain full concatenated response
+      responses.set(message.serial, message.data);
+      console.log('\n[Historical response]:', message.data);
+      break;
+  }
+});
+```
+
+</Code>
+
+<Aside data-type="further-reading">
+For more advanced hydration strategies, including using channel history with `untilAttach`, handling in-progress responses, and correlating with database records, see [client hydration](https://ably.com/docs/ai-transport/token-streaming/message-per-response.md#hydration) in the message-per-response documentation.
+</Aside>
+
+## Next steps
+
+- Learn more about the [message-per-response pattern](https://ably.com/docs/ai-transport/token-streaming/message-per-response.md) used in this guide
+- Learn about [client hydration strategies](https://ably.com/docs/ai-transport/token-streaming/message-per-response.md#hydration) for handling late joiners and reconnections
+- Understand [sessions and identity](https://ably.com/docs/ai-transport/sessions-identity.md) in AI enabled applications
+- Explore the [message-per-token pattern](https://ably.com/docs/ai-transport/token-streaming/message-per-token.md) for explicit control over individual token messages
+
+## Related Topics
+
+- [Message per token](https://ably.com/docs/ai-transport/guides/vercel-ai-sdk/vercel-message-per-token.md): Stream tokens from the Vercel AI SDK over Ably in realtime.
+- [Human-in-the-loop](https://ably.com/docs/ai-transport/guides/vercel-ai-sdk/vercel-human-in-the-loop.md): Implement human approval workflows for AI agent tool calls using the Vercel AI SDK and Ably with role-based access control.
+
+## Documentation Index
+
+To discover additional Ably documentation:
+
+1. Fetch [llms.txt](https://ably.com/llms.txt) for the canonical list of available pages.
+2. Identify relevant URLs from that index.
+3. Fetch target pages as needed.
+
+Avoid using assumed or outdated documentation paths.

@@ -7,280 +7,239 @@
 3. [Installation & Build](#3-installation--build)
 4. [Compile-Time Feature Flags](#4-compile-time-feature-flags)
 5. [Runtime Configuration](#5-runtime-configuration)
-6. [Core Concepts & API Patterns](#6-core-concepts--api-patterns)
+6. [Core Concepts & API](#6-core-concepts--api)
 7. [API Reference Overview](#7-api-reference-overview)
-8. [API Differences from Full Zenoh](#8-api-differences-from-full-zenoh)
+8. [Differences from Full Zenoh](#8-differences-from-full-zenoh)
 9. [Getting Started Examples](#9-getting-started-examples)
 10. [Memory Optimization](#10-memory-optimization)
-11. [Troubleshooting](#11-troubleshooting)
+11. [Debugging & Troubleshooting](#11-debugging--troubleshooting)
+12. [Adding a Custom Platform](#12-adding-a-custom-platform)
 
 ---
 
 ## 1. What is zenoh-pico?
 
-zenoh-pico is the native C implementation of the [Eclipse Zenoh](https://zenoh.io) protocol, designed specifically for resource-constrained embedded systems and microcontrollers. It is fully wire-compatible with the main [Rust Zenoh implementation](https://github.com/eclipse-zenoh/zenoh), allowing microcontrollers to participate as first-class citizens in Zenoh networks alongside servers, gateways, and cloud nodes.
+**zenoh-pico** is the native C implementation of the [Eclipse Zenoh](https://zenoh.io/) protocol, purpose-built for microcontrollers and deeply constrained embedded systems. It provides a lightweight, feature-selective subset of the full Zenoh functionality in a C API that can run without an operating system, on an RTOS, or bare-metal.
 
-### Key Characteristics
+### Key Properties
 
 | Property | Detail |
 |---|---|
-| **Language** | C (C99/C11) |
+| **Language** | Pure C (C99/C11) |
+| **Compatibility** | Wire-protocol compatible with Rust zenoh and zenoh-c |
+| **Footprint** | Configurable; can be stripped to a minimal pub/sub-only build |
+| **Threading model** | Optional; can run fully single-threaded with manual task spinning |
+| **Dynamic memory** | Minimized; buffer sizes are compile-time constants |
 | **License** | EPL-2.0 OR Apache-2.0 |
-| **Wire Compatibility** | 100% compatible with zenoh (Rust) |
-| **OS Requirement** | None — runs on bare-metal, RTOS, or full OS |
-| **Memory Model** | Configurable static/dynamic allocation |
-| **Threading** | Optional — can run single-threaded with manual task spinning |
 
 ### What zenoh-pico Provides
 
-- **Pub/Sub**: Publish data on key expressions; subscribe to data matching key expression patterns
-- **Query/Queryable**: Issue queries to key expressions; respond to queries (request/reply)
-- **Liveliness**: Track presence of nodes in the network
-- **Scouting**: Discover peers and routers on the network automatically
-- **Fragmentation**: Send/receive messages larger than a single packet
-- **Multiple Transports**: TCP, UDP unicast, UDP multicast, Serial, Bluetooth, WebSocket, TLS
-- **Client and Peer modes**: Connect to a router (client) or form a direct P2P mesh (peer)
+- **Pub/Sub** — Declare publishers and subscribers with key-expression routing
+- **Queryable/Get** — Request/reply pattern (optional)
+- **Liveliness** — Detect peer presence (optional)
+- **Scouting** — Automatic peer/router discovery via UDP multicast (optional)
+- **Serialization helpers** — Typed encode/decode for common primitives
+- **Multiple transports** — TCP, UDP unicast, UDP multicast, Serial, Bluetooth, WebSocket, TLS (platform-dependent)
+- **Client and Peer modes** — Connect to a router or operate P2P
 
-### What zenoh-pico Does NOT Provide (vs. full Zenoh)
+### What zenoh-pico Does NOT Provide (vs. Full Zenoh)
 
-- No built-in storage/queryable backend
-- No plugin system
-- No admin REST API (optional Admin Space is available but limited)
-- No Zenoh Flow (computation graphs)
-- Reduced advanced pub/sub features (configurable at compile time)
+- Built-in storage backends
+- Full async Rust runtime
+- Admin REST API (admin space is optional and limited)
+- Plugin system
+- Some advanced routing optimizations present only in the router
 
 ---
 
 ## 2. Supported Platforms & Transport Matrix
 
-### Full Platform/Transport Matrix
+### Full Platform × Transport Matrix
 
-| **(RT)OS** | **UDP Unicast** | **UDP Multicast** | **TCP** | **Serial** | **Bluetooth** | **WebSocket** | **TLS** | **6LoWPAN** |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Linux/Unix** | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ |
-| **Windows** | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ |
-| **macOS/BSD** | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ |
-| **Zephyr RTOS** | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ |
-| **Arduino** | ✅ | ✅ | ✅ | ✅ | ✅ (Serial profile) | ❌ | ❌ | ❌ |
-| **ESP-IDF** | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| **MbedOS** | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| **OpenCR** | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| **Emscripten** | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ |
-| **FreeRTOS-Plus-TCP** | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| **FreeRTOS + LWIP** | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
-| **Raspberry Pi Pico** | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| **STM32 ThreadX** | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| **Generic (bare-metal)** | custom | custom | custom | custom | custom | custom | ❌ | ❌ |
+| **(RT)OS** | **TCP** | **UDP Unicast** | **UDP Multicast** | **Serial** | **Bluetooth (Serial)** | **WebSocket** | **TLS** | **Network Layers** | **Data Links** |
+|---|---|---|---|---|---|---|---|---|---|
+| **Linux / macOS / BSD** | ✅ | ✅ | ✅ | ✅ | — | — | ✅ | IPv4, IPv6, 6LoWPAN | WiFi, Ethernet, Thread |
+| **Windows** | ✅ | ✅ | ✅ | — | — | — | ✅ | IPv4, IPv6 | WiFi, Ethernet |
+| **Zephyr RTOS** | ✅ | ✅ | ✅ | ✅ | — | — | ✅ | IPv4, IPv6, 6LoWPAN | WiFi, Ethernet, Thread, Serial |
+| **Arduino** | ✅ | ✅ | ✅ | ✅ | ✅ (Serial profile) | — | — | IPv4, IPv6 | WiFi, Ethernet, BT Serial |
+| **ESP-IDF** | ✅ | ✅ | ✅ | ✅ | — | — | — | IPv4, IPv6 | WiFi, Ethernet |
+| **MbedOS** | ✅ | ✅ | ✅ | ✅ | — | — | — | IPv4, IPv6 | WiFi, Ethernet |
+| **OpenCR** | ✅ | ✅ | ✅ | — | — | — | — | IPv4 | WiFi |
+| **FreeRTOS-Plus-TCP** | ✅ | ✅ | — | — | — | — | — | IPv4 | Ethernet |
+| **FreeRTOS + LWIP** | ✅ | ✅ | ✅ | — | — | — | — | IPv4 | Ethernet |
+| **Raspberry Pi Pico** | ✅ (Pico W) | ✅ (Pico W) | ✅ (Pico W) | ✅ | — | — | — | IPv4 | WiFi (W models), Serial, USB CDC |
+| **Emscripten** | — | — | — | — | — | ✅ | — | IPv4, IPv6 | WiFi, Ethernet |
+| **STM32 ThreadX** | — | — | — | ✅ | — | — | — | — | UART |
+| **Generic/Bare-metal** | platform-defined | platform-defined | — | platform-defined | — | — | — | platform-defined | platform-defined |
 
-> **Note:** USB CDC Serial is experimentally supported on Raspberry Pi Pico when `Z_FEATURE_LINK_SERIAL_USB` and `Z_FEATURE_UNSTABLE_API` are enabled.
+### Zephyr RTOS — Tested Boards
 
----
-
-### Platform-Specific Notes
-
-#### Zephyr RTOS
-- **Tested boards**: `reel_board`, `nucleo-f767zi`, `nucleo-f420zi`, `nRF52840`
-- **Network layers**: IPv4, IPv6, 6LoWPAN (Thread network)
-- **Data link**: WiFi, Ethernet, Thread (OpenThread), Serial
-- **Build system**: PlatformIO or native Zephyr west/CMake
-- Requires `prj.conf` with networking and socket support enabled
-
-#### Arduino
-- **Tested boards**: `az-delivery-devkit-v4` (ESP32), `OpenCR 1.0`
-- **Network layers**: IPv4, IPv6
-- **Data link**: WiFi, Ethernet, Bluetooth (Serial profile), Serial (UART)
-- **Build system**: PlatformIO (recommended) or Arduino IDE
-
-#### ESP-IDF
-- **Tested chips**: ESP32 (az-delivery-devkit-v4)
-- **Network layers**: IPv4, IPv6
-- **Data link**: WiFi, Ethernet, Serial
-- **Build system**: PlatformIO or native ESP-IDF `idf.py`
-
-#### FreeRTOS
-Two variants are supported:
-- **FreeRTOS-Plus-TCP**: UDP unicast + TCP, IPv4, Ethernet only
-- **FreeRTOS + LWIP**: UDP unicast + multicast + TCP, IPv4, Ethernet
-
-#### Raspberry Pi Pico
-- **Tested boards**: `Raspberry Pi Pico W` (RP2040), `Raspberry Pi Pico 2 W` (RP2350)
-- **Network**: WiFi (W variants only), Serial UART, USB CDC (experimental)
-- **Board types**: `pico`, `pico_w`, `pico2`, `pico2_w`
-- **Serial UART pin mappings**:
-
-| TX/RX Pins | Device Name |
+| Board | Notes |
 |---|---|
-| 0 / 1 | `uart0_0` |
-| 4 / 5 | `uart1_0` |
-| 8 / 9 | `uart1_1` |
-| 12 / 13 | `uart0_1` |
-| 16 / 17 | `uart0_2` |
+| `reel_board` | Nordic nRF52840-based |
+| `nucleo-f767zi` | STM32F767ZI |
+| `nucleo-f420zi` | STM32F420ZI |
+| `nRF52840` DK | Nordic Bluetooth/Thread SoC |
 
-#### MbedOS
-- **Tested boards**: `nucleo-f747zi`, `nucleo-f429zi`
-- **Network layers**: IPv4, IPv6
-- **Data link**: WiFi, Ethernet, Serial
+Zephyr supports the widest transport selection of any RTOS target, including 6LoWPAN over Thread networks.
 
-#### Emscripten (WebAssembly)
-- Only WebSocket transport is available
-- Useful for running Zenoh in a browser or Node.js environment
+### Arduino — Tested Boards
 
-#### STM32 ThreadX
-- Serial transport only (UART with DMA)
-- Requires STM32CubeIDE project setup
-- See [Section 3.7](#stm32-threadx) for detailed setup
+| Board | Platform | Notes |
+|---|---|---|
+| `az-delivery-devkit-v4` | ESP32 | WiFi via Arduino WiFi library |
+| `OpenCR 1.0` | ROBOTIS OpenCR | ROS-capable board |
+| Various Arduino-compatible | Various | Any board with WiFi/Ethernet/Serial support |
 
-#### Generic / Bare-Metal
-- Set `ZENOH_GENERIC=1` compile flag
-- Provide custom `network.c` and `system.c` implementations
-- See [`docs/generic_platform.md`](https://github.com/eclipse-zenoh/zenoh-pico/blob/main/docs/generic_platform.md)
+### Raspberry Pi Pico — Board Variants
+
+| Board | WiFi | UART Serial | USB CDC Serial |
+|---|---|---|---|
+| Pico | — | ✅ | Experimental |
+| Pico W | ✅ | ✅ | Experimental |
+| Pico 2 | — | ✅ | Experimental |
+| Pico 2 W | ✅ | ✅ | Experimental |
+
+**RPi Pico UART pin assignments:**
+
+| TX/RX Pins | Device Name | UART Instance |
+|---|---|---|
+| 0 / 1 | `uart0_0` | UART0 |
+| 4 / 5 | `uart1_0` | UART1 |
+| 8 / 9 | `uart1_1` | UART1 |
+| 12 / 13 | `uart0_1` | UART0 |
+| 16 / 17 | `uart0_2` | UART0 |
 
 ---
 
 ## 3. Installation & Build
 
-### 3.1 Linux/macOS (Unix)
-
-Requirements: `cmake >= 3.14`, a C compiler (GCC or Clang)
+### 3.1 Linux / macOS / BSD (CMake)
 
 ```bash
-git clone https://github.com/eclipse-zenoh/zenoh-pico.git
-cd zenoh-pico
-
-# Release build
-make
-sudo make install
+cd /path/to/zenoh-pico
+make               # Release build
+make install       # sudo required on Linux
 
 # Debug build
 BUILD_TYPE=Debug make
-sudo make install
+make install
+```
 
-# With specific feature flags
-cmake -Bbuild \
+Alternatively with explicit CMake:
+
+```bash
+mkdir build && cd build
+cmake -DCMAKE_BUILD_TYPE=Release ..
+make
+make install
+```
+
+**Key CMake options at configure time:**
+
+```bash
+cmake .. \
   -DCMAKE_BUILD_TYPE=Release \
+  -DBATCH_UNICAST_SIZE=1024 \
+  -DBATCH_MULTICAST_SIZE=1024 \
+  -DFRAG_MAX_SIZE=2048 \
   -DZ_FEATURE_PUBLICATION=1 \
   -DZ_FEATURE_SUBSCRIPTION=1 \
   -DZ_FEATURE_QUERY=0 \
   -DZ_FEATURE_QUERYABLE=0 \
-  -DBATCH_UNICAST_SIZE=1024 \
-  -DFRAG_MAX_SIZE=2048
-cmake --build build
+  -DZ_FEATURE_LIVELINESS=0 \
+  -DZENOH_LOG=INFO
 ```
 
-### 3.2 PlatformIO (Embedded Targets)
-
-PlatformIO is the recommended build system for all embedded targets. Install it from [platformio.org](https://platformio.org).
-
-#### Common `platformio.ini` Patterns
-
-**Arduino/ESP32:**
-```ini
-[env:esp32]
-platform = espressif32
-board = az-delivery-devkit-v4
-framework = arduino
-lib_deps = https://github.com/eclipse-zenoh/zenoh-pico
-monitor_speed = 115200
-board_build.cmake_extra_args =
-    -DZ_FEATURE_SUBSCRIPTION=1
-    -DZ_FEATURE_PUBLICATION=1
-    -DZ_FEATURE_QUERY=0
-    -DZ_FEATURE_QUERYABLE=0
-    -DBATCH_UNICAST_SIZE=1024
-    -DFRAG_MAX_SIZE=2048
-```
-
-**Zephyr (reel_board):**
-```ini
-[env:reel_board]
-platform = nordicnrf52
-board = reel_board
-framework = zephyr
-lib_deps = https://github.com/eclipse-zenoh/zenoh-pico
-```
-
-**MbedOS (Nucleo F747ZI):**
-```ini
-[env:nucleo_f747zi]
-platform = ststm32
-board = nucleo_f747zi
-framework = mbed
-lib_deps = https://github.com/eclipse-zenoh/zenoh-pico
-```
-
-**OpenCR:**
-```ini
-[env:opencr]
-platform = opencr
-board = opencr
-framework = arduino
-lib_deps = https://github.com/eclipse-zenoh/zenoh-pico
-```
-
-#### Build and Flash Commands
-```bash
-platformio run               # Build
-platformio run -t upload     # Build and flash
-platformio device monitor    # Open serial monitor
-```
-
-### 3.3 Zephyr (Detailed Setup)
+### 3.2 Zephyr RTOS (PlatformIO)
 
 Project structure:
 ```
 project_dir/
-├── include/
-├── lib/
-│   └── zenoh-pico -> /path/to/zenoh-pico   # symlink or copy
-├── src/
-│   └── main.c
+├── src/main.c
 ├── zephyr/
 │   ├── prj.conf
 │   └── CMakeLists.txt
 └── platformio.ini
 ```
 
-Minimal `prj.conf` for TCP/UDP networking:
+`platformio.ini`:
 ```ini
-# Networking
-CONFIG_NETWORKING=y
-CONFIG_NET_TCP=y
-CONFIG_NET_UDP=y
-CONFIG_NET_IPV4=y
-CONFIG_NET_SOCKETS=y
-CONFIG_NET_SOCKETS_POSIX_NAMES=y
-
-# For WiFi
-CONFIG_WIFI=y
-CONFIG_NET_DHCPV4=y
-
-# Stack sizes
-CONFIG_MAIN_STACK_SIZE=8192
-CONFIG_SYSTEM_WORKQUEUE_STACK_SIZE=4096
+[env:reel_board]
+platform = nordicnrf52
+board = reel_board
+framework = zephyr
+lib_deps = https://github.com/eclipse-zenoh/zenoh-pico
+board_build.cmake_extra_args =
+    -DBATCH_UNICAST_SIZE=1024
+    -DFRAG_MAX_SIZE=2048
+    -DZ_FEATURE_QUERY=0
+    -DZ_FEATURE_QUERYABLE=0
 ```
 
-### 3.4 Raspberry Pi Pico
+Build and flash:
+```bash
+platformio run
+platformio run -t upload
+```
 
-Prerequisites:
+### 3.3 Arduino / ESP32 (PlatformIO)
+
+Project structure:
+```
+project_dir/
+├── src/main.ino
+└── platformio.ini
+```
+
+`platformio.ini`:
+```ini
+[env:az-delivery-devkit-v4]
+platform = espressif32
+board = az-delivery-devkit-v4
+framework = arduino
+lib_deps = https://github.com/eclipse-zenoh/zenoh-pico
+board_build.cmake_extra_args =
+    -DBATCH_UNICAST_SIZE=1024
+    -DFRAG_MAX_SIZE=2048
+```
+
+### 3.4 ESP-IDF (PlatformIO)
+
+```ini
+[env:az-delivery-devkit-v4]
+platform = espressif32
+board = az-delivery-devkit-v4
+framework = espidf
+lib_deps = https://github.com/eclipse-zenoh/zenoh-pico
+```
+
+### 3.5 Raspberry Pi Pico SDK
+
+Install prerequisites:
 ```bash
 sudo apt update
 sudo apt install -y cmake gcc-arm-none-eabi libnewlib-arm-none-eabi \
     build-essential g++ libstdc++-arm-none-eabi-newlib
+```
 
-# Pico SDK
+Set up the Pico SDK:
+```bash
 export PICO_SDK_PATH=$HOME/src/pico-sdk
 git clone https://github.com/raspberrypi/pico-sdk.git $PICO_SDK_PATH
 cd $PICO_SDK_PATH && git submodule update --init
+```
 
-# FreeRTOS (required for Pico examples)
+Set up FreeRTOS (required for Pico examples):
+```bash
 export FREERTOS_KERNEL_PATH=$HOME/src/FreeRTOS-Kernel
 git clone https://github.com/FreeRTOS/FreeRTOS-Kernel.git $FREERTOS_KERNEL_PATH
 cd $FREERTOS_KERNEL_PATH && git submodule update --init
 ```
 
-Build examples:
+Build for Pico W with WiFi:
 ```bash
-cd zenoh-pico/examples/rpi_pico
+cd examples/rpi_pico
 cmake -Bbuild \
     -DPICO_BOARD=pico_w \
     -DWIFI_SSID="MyNetwork" \
@@ -290,363 +249,442 @@ cmake -Bbuild \
 cmake --build ./build
 ```
 
-Flash: Connect Pico in bootloader mode (hold BOOTSEL while plugging in USB), then copy the `.uf2` file to the mounted drive.
+Flash: copy the generated `.uf2` file to the Pico when it appears as a USB drive (hold BOOTSEL while connecting).
 
-**Serial connection example:**
+**Serial transport connect string examples:**
 ```bash
--DZENOH_CONFIG_CONNECT="serial/uart0_0#baudrate=115200"
-# or using pin numbers:
+# By pin numbers (TX.RX)
 -DZENOH_CONFIG_CONNECT="serial/0.1#baudrate=115200"
-```
-
-**USB CDC (experimental):**
-```bash
-# Build with USB serial support
--DZ_FEATURE_LINK_SERIAL_USB=1 -DZ_FEATURE_UNSTABLE_API=1
-
-# Connect string on Pico side:
+# By device name
+-DZENOH_CONFIG_CONNECT="serial/uart1_0#baudrate=38400"
+# USB CDC (requires Z_FEATURE_LINK_SERIAL_USB and Z_FEATURE_UNSTABLE_API)
 -DZENOH_CONFIG_CONNECT="serial/usb#baudrate=115200"
-
-# On host side (zenoh router):
-zenohd -l serial//dev/ttyACM0#baudrate=115200
-```
-
-### 3.5 ESP-IDF
-
-```bash
-cd zenoh-pico/examples/espidf
-idf.py set-target esp32
-idf.py menuconfig   # configure WiFi SSID/password under Zenoh Configuration
-idf.py build
-idf.py -p /dev/ttyUSB0 flash monitor
 ```
 
 ### 3.6 STM32 ThreadX
 
-1. Create a new STM32CubeIDE project for your MCU
+1. Create a new STM32CubeIDE project for your target MCU.
 2. In CubeMX:
-   - Enable **Azure RTOS (ThreadX)** middleware
-   - Enable UART peripheral with **RX DMA in circular mode** and **UART global interrupt**
-   - Set HAL tick source to a TIM peripheral (not SysTick, which ThreadX uses)
-3. Clone zenoh-pico into your project folder
-4. Add `zenoh-pico/src` to source folders (exclude all `platforms/*` except `common` and `threadx/stm32`)
-5. Add `zenoh-pico/include` to include paths
-6. Create `hal.h` in your project: `#include "stm32f4xx_hal.h"` (adjust for your MCU)
-7. Add compiler defines:
-   ```
-   ZENOH_THREADX_STM32
-   ZENOH_HUART=huart2
-   ```
-8. Exclude `Core/Src/app_threadx.c` and replace with a zenoh-pico example from `examples/threadx_stm32/`
-9. Set static byte pool size to at least 25 KB
-10. Run zenoh router on host:
-    ```bash
-    zenohd -l serial//dev/ttyACM0#baudrate=115200
-    ```
-
-### 3.7 Generic / Bare-Metal Platform
-
-To port zenoh-pico to a new platform:
-
-1. Set `ZENOH_GENERIC=1` in your compile flags
-2. Create two implementation files:
-   - `network.c` — socket/link layer (TCP, UDP, Serial, etc.)
-   - `system.c` — time, sleep, mutex, threads (or stubs for single-thread)
-3. Create `zenoh_generic_config.h` and `zenoh_generic_platform.h`
-
-Example `platformio.ini` for a custom TI Tiva platform:
-```ini
-[env:tiva]
-platform = titiva
-board = lplm4f120h5qr
-framework = libopencm3
-lib_deps =
-    https://github.com/eclipse/zenoh-pico
-build_flags =
-    -DZENOH_GENERIC=1
-    -DZENOH_DEBUG=0
-    -std=gnu++17
-```
+   - Add Azure RTOS (ThreadX) middleware.
+   - Enable UART with RX DMA in circular mode and global interrupt.
+   - Move HAL_Tick to a TIM peripheral.
+3. Generate code, then clone zenoh-pico into the project folder.
+4. Add `zenoh-pico/src` to source folders; exclude all `platforms/*` except `common` and `threadx/stm32`.
+5. Add `zenoh-pico/include` to include paths.
+6. Add a `hal.h` file: `#include "stm32f4xx_hal.h"` (adjust for your MCU).
+7. Add project defines:
+   - `ZENOH_THREADX_STM32`
+   - `ZENOH_HUART=huart1` (or whichever UART)
+8. Set static bytepool size > 25 KB.
+9. On host, run: `zenohd -l serial//dev/ttyACM0#baudrate=115200`
 
 ---
 
 ## 4. Compile-Time Feature Flags
 
-All feature flags are set via CMake (or passed as `-D` flags to the build system). They generate constants in `include/zenoh-pico/config.h`.
+All feature flags are defined in `include/zenoh-pico/config.h` (generated from `config.h.in` by CMake) and can be overridden via CMake arguments or `platformio.ini`'s `board_build.cmake_extra_args`.
 
-### 4.1 Threading
-
-#### `Z_FEATURE_MULTI_THREAD`
-| Property | Value |
-|---|---|
-| **Default** | `1` (ON) |
-| **What it enables** | Multi-threaded operation: background read task, lease task, mutex primitives |
-| **When to disable** | Ultra-constrained MCUs with no RTOS, single-core bare-metal where you manually call `zp_read()` and `zp_send_keep_alive()` in your main loop |
-| **Memory impact** | Disabling saves significant RAM (no thread stacks) and code size |
-| **Dependencies** | Required by `Z_FEATURE_UNICAST_PEER`, `Z_FEATURE_ADVANCED_SUBSCRIPTION` |
-
-> ⚠️ When disabled, you **must** manually call `zp_read()` and `zp_send_keep_alive()` periodically in your application loop.
+### 4.1 Core Communication Features
 
 ---
-
-### 4.2 Publication
 
 #### `Z_FEATURE_PUBLICATION`
-| Property | Value |
-|---|---|
-| **Default** | `1` (ON) |
-| **What it enables** | `z_put()`, `z_delete()`, `z_declare_publisher()`, `z_publisher_put()`, `z_publisher_delete()` |
-| **When to disable** | Subscriber-only nodes (e.g., actuator endpoints that only receive commands) |
-| **Memory impact** | ~2–5 KB flash savings |
+**Default:** `1` (ON)
 
-#### `Z_FEATURE_ADVANCED_PUBLICATION`
-| Property | Value |
-|---|---|
-| **Default** | `0` (OFF) |
-| **What it enables** | `ze_declare_advanced_publisher()` — maintains a local cache of published samples for late-joining subscribers |
-| **Dependencies** | Requires `Z_FEATURE_UNSTABLE_API=1`, `Z_FEATURE_PUBLICATION=1`, `Z_FEATURE_LIVELINESS=1` |
-| **Memory impact** | Additional RAM for sample cache |
+Enables the publication API: `z_put()`, `z_declare_publisher()`, `z_publisher_put()`, `z_publisher_delete()`.
+
+Without this flag, the device cannot send any data into the zenoh network.
+
+**When to disable:** Receive-only nodes (e.g., sensor aggregators that only subscribe), display nodes, actuators controlled purely by subscription.
+
+**Memory impact:** Removing saves code space for all publisher data path logic (~1–4 KB depending on platform).
 
 ---
-
-### 4.3 Subscription
 
 #### `Z_FEATURE_SUBSCRIPTION`
-| Property | Value |
-|---|---|
-| **Default** | `1` (ON) |
-| **What it enables** | `z_declare_subscriber()`, `z_undeclare_subscriber()`, subscriber callbacks |
-| **When to disable** | Publisher-only nodes (e.g., sensors that only send data) |
-| **Memory impact** | ~2–5 KB flash savings |
+**Default:** `1` (ON)
 
-#### `Z_FEATURE_LOCAL_SUBSCRIBER`
-| Property | Value |
-|---|---|
-| **Default** | `0` (OFF) |
-| **What it enables** | Subscribers are triggered by publications from the **same session** (local loopback) |
-| **When to enable** | Applications that need to react to their own publications |
-| **Memory impact** | Minimal — adds a loopback routing path |
+Enables the subscription API: `z_declare_subscriber()`, `z_declare_background_subscriber()`.
 
-#### `Z_FEATURE_ADVANCED_SUBSCRIPTION`
-| Property | Value |
-|---|---|
-| **Default** | `0` (OFF) |
-| **What it enables** | `ze_declare_advanced_subscriber()` — can receive historical samples and detect/recover missed samples |
-| **Dependencies** | Requires `Z_FEATURE_UNSTABLE_API=1`, `Z_FEATURE_SUBSCRIPTION=1`, `Z_FEATURE_LIVELINESS=1`, `Z_FEATURE_MULTI_THREAD=1` |
+Without this flag, the device cannot receive published data.
+
+**When to disable:** Transmit-only sensor nodes that never need to receive data.
+
+**Memory impact:** Removes subscriber dispatch table and callback infrastructure.
 
 ---
-
-### 4.4 Query / Queryable
 
 #### `Z_FEATURE_QUERY`
-| Property | Value |
-|---|---|
-| **Default** | `1` (ON) |
-| **What it enables** | `z_get()` — send queries and receive replies |
-| **When to disable** | Devices that never query (pure pub/sub only) |
-| **Memory impact** | ~3–6 KB flash savings |
+**Default:** `1` (ON)
+
+Enables the query (get) API: `z_get()`, `z_declare_querier()`. Allows the device to issue queries and receive replies from queryables.
+
+**When to disable:** Devices that only publish/subscribe and never need to query stored data or services.
+
+---
 
 #### `Z_FEATURE_QUERYABLE`
-| Property | Value |
-|---|---|
-| **Default** | `1` (ON) |
-| **What it enables** | `z_declare_queryable()` — respond to incoming queries |
-| **When to disable** | Devices that never answer queries |
-| **Memory impact** | ~3–6 KB flash savings |
+**Default:** `1` (ON)
 
-#### `Z_FEATURE_LOCAL_QUERYABLE`
-| Property | Value |
-|---|---|
-| **Default** | `0` (OFF) |
-| **What it enables** | Queryables are triggered by local queries from the same session |
-| **When to enable** | Same as `Z_FEATURE_LOCAL_SUBSCRIBER` but for queryables |
+Enables the queryable API: `z_declare_queryable()`. Allows the device to respond to incoming queries.
+
+**When to disable:** Devices that are pure data producers/consumers, not service providers.
 
 ---
-
-### 4.5 Liveliness
 
 #### `Z_FEATURE_LIVELINESS`
-| Property | Value |
-|---|---|
-| **Default** | `1` (ON) |
-| **What it enables** | `z_liveliness_declare_token()`, `z_liveliness_declare_subscriber()`, `z_liveliness_get()` |
-| **When to disable** | When presence tracking is not needed |
-| **Memory impact** | ~2–4 KB flash savings |
+**Default:** `1` (ON)
+
+Enables liveliness tokens and liveliness subscriptions. Allows detection of peer presence/absence.
+
+**When to disable:** Systems that do not need peer health monitoring. Saves both code and a small amount of session state.
+
+**Dependencies:** Required by `Z_FEATURE_ADVANCED_PUBLICATION` and `Z_FEATURE_ADVANCED_SUBSCRIPTION`.
 
 ---
-
-### 4.6 Transport Link Types
-
-#### `Z_FEATURE_LINK_TCP`
-| Property | Value |
-|---|---|
-| **Default** | `1` (ON) |
-| **What it enables** | TCP transport link (reliable, ordered, unicast) |
-| **When to disable** | WiFi-less or serial-only devices |
-
-#### `Z_FEATURE_LINK_UDP_UNICAST`
-| Property | Value |
-|---|---|
-| **Default** | `1` (ON) |
-| **What it enables** | UDP unicast transport (unreliable, low-latency) |
-| **When to disable** | Devices where only TCP or serial is used |
-| **Note** | Disabling this also disables `Z_FEATURE_SCOUTING` automatically |
-
-#### `Z_FEATURE_LINK_UDP_MULTICAST`
-| Property | Value |
-|---|---|
-| **Default** | `1` (ON) |
-| **What it enables** | UDP multicast transport — required for peer mode without a router |
-| **When to disable** | Devices in client mode only, or where multicast is not supported |
-
-#### `Z_FEATURE_LINK_SERIAL`
-| Property | Value |
-|---|---|
-| **Default** | `0` (OFF) |
-| **What it enables** | Serial (UART) transport — common for MCUs without WiFi/Ethernet |
-| **When to enable** | Any MCU connected via UART to a host running a zenoh router |
-| **Memory impact** | Small overhead for serial buffers |
-
-#### `Z_FEATURE_LINK_SERIAL_USB`
-| Property | Value |
-|---|---|
-| **Default** | `0` (OFF) |
-| **What it enables** | USB CDC serial transport (experimental) |
-| **Dependencies** | Requires `Z_FEATURE_UNSTABLE_API=1` and `Z_FEATURE_LINK_SERIAL=1` |
-| **Platform** | Currently Raspberry Pi Pico only |
-
-#### `Z_FEATURE_LINK_BLUETOOTH`
-| Property | Value |
-|---|---|
-| **Default** | `0` (OFF) |
-| **What it enables** | Bluetooth Serial Profile transport |
-| **Platform** | Arduino only (tested on ESP32) |
-| **When to enable** | Wireless embedded devices without WiFi that have Bluetooth |
-
-#### `Z_FEATURE_LINK_WS`
-| Property | Value |
-|---|---|
-| **Default** | `0` (OFF) |
-| **What it enables** | WebSocket transport |
-| **Platform** | Linux/Unix, Emscripten (WebAssembly) |
-| **When to enable** | Browser-based applications or environments where only HTTP/WS is available |
-
-#### `Z_FEATURE_LINK_TLS`
-| Property | Value |
-|---|---|
-| **Default** | `0` (OFF) |
-| **What it enables** | TLS-encrypted TCP transport (via Mbed TLS 2.x or 3.x) |
-| **Dependencies** | Requires Mbed TLS installed on the system |
-| **Memory impact** | Significant — TLS handshake requires several KB of stack and heap |
-| **When to enable** | Production deployments where data security is required |
-
----
-
-### 4.7 Scouting
 
 #### `Z_FEATURE_SCOUTING`
-| Property | Value |
-|---|---|
-| **Default** | `1` (ON) |
-| **What it enables** | `z_scout()` — automatically discover zenoh routers/peers on the network via UDP multicast |
-| **When to disable** | When the router address is always known (hardcoded connect string), saving code size |
-| **Dependencies** | Automatically disabled if `Z_FEATURE_LINK_UDP_UNICAST=0` |
+**Default:** `1` (ON)
+
+Enables UDP multicast scouting for automatic router/peer discovery. When enabled, a node without an explicit connect/listen endpoint will attempt to find peers automatically.
+
+**When to disable:** Always-connected systems with static router addresses. Saves UDP socket management code.
+
+**Dependency:** Requires `Z_FEATURE_LINK_UDP_UNICAST`. If UDP unicast is disabled, scouting is automatically disabled.
 
 ---
-
-### 4.8 Fragmentation
 
 #### `Z_FEATURE_FRAGMENTATION`
-| Property | Value |
-|---|---|
-| **Default** | `1` (ON) |
-| **What it enables** | Send and receive messages larger than a single transport batch (`Z_FRAG_MAX_SIZE`) |
-| **When to disable** | When you can guarantee all messages fit in one packet — saves a defragmentation buffer |
-| **Memory impact** | Disabling saves `Z_FRAG_MAX_SIZE` bytes of RAM (default 4096 bytes) |
+**Default:** `1` (ON)
+
+Enables message fragmentation/defragmentation. Without this, the device cannot send or receive messages larger than the batch buffer size (`Z_BATCH_UNICAST_SIZE` or `Z_BATCH_MULTICAST_SIZE`).
+
+**When to disable:** Devices with very limited RAM that only exchange small messages. The defragmentation buffer (`Z_FRAG_MAX_SIZE`, default 4096 bytes) is the largest single buffer in zenoh-pico; disabling fragmentation eliminates it entirely.
+
+**Memory impact:** Eliminating the 4096-byte defrag buffer is one of the most impactful memory savings available.
 
 ---
-
-### 4.9 Batching
 
 #### `Z_FEATURE_BATCHING`
-| Property | Value |
-|---|---|
-| **Default** | `1` (ON) |
-| **What it enables** | Batch multiple small messages into a single transport packet for improved throughput |
-| **When to disable** | When latency matters more than throughput, or on very constrained devices |
+**Default:** `1` (ON)
+
+Enables message batching (packing multiple messages into one transport packet). Improves throughput at the cost of slightly increased latency.
+
+**When to disable:** Ultra-low-latency systems where every message must be sent immediately. Very low-memory systems can save the batch buffer logic.
 
 ---
 
-### 4.10 Automatic Reconnection
+### 4.2 Transport & Link Features
+
+---
+
+#### `Z_FEATURE_LINK_TCP`
+**Default:** `1` (ON)
+
+Enables TCP transport. TCP provides reliable, ordered delivery and is the most common transport for connecting to a zenoh router.
+
+**When to disable:** Systems using only UDP, Serial, or other transports. Saves TCP socket management code.
+
+---
+
+#### `Z_FEATURE_LINK_UDP_UNICAST`
+**Default:** `1` (ON)
+
+Enables UDP unicast transport. Used for unicast point-to-point communication without TCP overhead. Also required for scouting.
+
+**When to disable:** TCP-only or serial-only systems.
+
+---
+
+#### `Z_FEATURE_LINK_UDP_MULTICAST`
+**Default:** `1` (ON)
+
+Enables UDP multicast transport. Used for peer-to-peer multicast communication (peer mode without a router).
+
+**When to disable:** Client-mode-only devices that always connect to a router via TCP/unicast. Saves multicast group management code.
+
+---
+
+#### `Z_FEATURE_LINK_SERIAL`
+**Default:** `0` (OFF)
+
+Enables serial (UART) transport. Used to connect to a zenoh router over a physical serial link — ideal for microcontrollers without network hardware.
+
+**When to enable:** Any device using UART to communicate with a router or another embedded node.
+
+**Typical use:** RPi Pico without WiFi, STM32 boards, Arduino without network shields.
+
+---
+
+#### `Z_FEATURE_LINK_SERIAL_USB`
+**Default:** `0` (OFF)
+
+Enables USB CDC (virtual serial) transport. **Experimental.**
+
+**Dependency:** Requires both `Z_FEATURE_LINK_SERIAL` and `Z_FEATURE_UNSTABLE_API`.
+
+---
+
+#### `Z_FEATURE_LINK_BLUETOOTH`
+**Default:** `0` (OFF)
+
+Enables Bluetooth Serial Profile transport. Available on Arduino-compatible boards with Bluetooth.
+
+**When to enable:** Systems communicating over Bluetooth to a router or another node.
+
+---
+
+#### `Z_FEATURE_LINK_WS`
+**Default:** `0` (OFF)
+
+Enables WebSocket transport. Used by Emscripten (browser) targets.
+
+---
+
+#### `Z_FEATURE_LINK_TLS`
+**Default:** `0` (OFF)
+
+Enables TLS transport for encrypted TCP connections. Uses **Mbed TLS** (versions 2.x or 3.x supported; 4.x not supported).
+
+**When to enable:** Production deployments requiring encryption and/or mutual authentication.
+
+**Memory impact:** Significant. Mbed TLS adds substantial code and RAM overhead; evaluate carefully for constrained targets.
+
+---
+
+### 4.3 Threading & Task Management
+
+---
+
+#### `Z_FEATURE_MULTI_THREAD`
+**Default:** `1` (ON)
+
+Enables multi-threading support. When ON, background read and lease tasks can be started with `zp_start_read_task()` and `zp_start_lease_task()`, which run in separate threads.
+
+When OFF, the library is single-threaded only. You must manually call `zp_read()` and `zp_send_keep_alive()` in your main loop.
+
+**When to disable:** Bare-metal or RTOS systems without POSIX thread support, or systems where you want full manual control of timing.
+
+**Dependencies:** `Z_FEATURE_UNICAST_PEER` and `Z_FEATURE_ADVANCED_SUBSCRIPTION` require this to be ON.
+
+---
 
 #### `Z_FEATURE_AUTO_RECONNECT`
-| Property | Value |
-|---|---|
-| **Default** | `1` (ON) |
-| **What it enables** | Automatically attempt to reconnect to a router/peer if the connection is lost |
-| **When to disable** | Applications that prefer to manage connection state explicitly |
+**Default:** `1` (ON)
+
+Enables automatic reconnection when a transport link is lost. The library will attempt to re-establish the connection transparently.
+
+**When to disable:** Systems where reconnection must be application-controlled, or where the overhead of reconnection logic is unacceptable.
 
 ---
 
-### 4.11 Matching
+### 4.4 Local Loopback Features
+
+---
+
+#### `Z_FEATURE_LOCAL_SUBSCRIBER`
+**Default:** `0` (OFF)
+
+When ON, subscribers are triggered by publications made by the same session (local loopback). By default, local publications do not trigger local subscribers — they go only to the network.
+
+**When to enable:** Systems where a single node both publishes and subscribes to the same key expression and needs local delivery.
+
+**Memory impact:** Minimal code addition; slightly increases dispatch overhead.
+
+---
+
+#### `Z_FEATURE_LOCAL_QUERYABLE`
+**Default:** `0` (OFF)
+
+When ON, queryables are triggered by queries made by the same session (local loopback).
+
+---
+
+### 4.5 Advanced & Unstable Features
+
+---
+
+#### `Z_FEATURE_UNSTABLE_API`
+**Default:** `0` (OFF)
+
+Gates compilation of unstable APIs that may change in future releases. Required to enable:
+- `Z_FEATURE_LINK_SERIAL_USB`
+- `Z_FEATURE_PERIODIC_TASKS`
+- `Z_FEATURE_ADVANCED_PUBLICATION`
+- `Z_FEATURE_ADVANCED_SUBSCRIPTION`
+- `Z_FEATURE_ADMIN_SPACE`
+
+---
+
+#### `Z_FEATURE_ADVANCED_PUBLICATION` *(Unstable)*
+**Default:** `0` (OFF)
+
+Enables advanced publisher with sample cache, allowing late-joining subscribers to retrieve missed samples.
+
+**Dependencies:** `Z_FEATURE_UNSTABLE_API`, `Z_FEATURE_PUBLICATION`, `Z_FEATURE_LIVELINESS`
+
+---
+
+#### `Z_FEATURE_ADVANCED_SUBSCRIPTION` *(Unstable)*
+**Default:** `0` (OFF)
+
+Enables advanced subscriber with missed-sample detection and recovery.
+
+**Dependencies:** `Z_FEATURE_UNSTABLE_API`, `Z_FEATURE_SUBSCRIPTION`, `Z_FEATURE_LIVELINESS`, `Z_FEATURE_MULTI_THREAD`
+
+---
 
 #### `Z_FEATURE_MATCHING`
-| Property | Value |
-|---|---|
-| **Default** | `1` (ON) |
-| **What it enables** | `z_publisher_get_matching_status()`, `z_publisher_declare_matching_listener()` — notify publishers when subscribers appear/disappear |
-| **Dependencies** | Requires `Z_FEATURE_INTEREST=1` |
+**Default:** `1` (ON)
+
+Enables matching status listeners — notifications when a publisher gains or loses matching subscribers (or vice versa).
+
+**Dependency:** Requires `Z_FEATURE_INTEREST`.
 
 ---
 
-### 4.12 Miscellaneous Feature Flags
+#### `Z_FEATURE_ADMIN_SPACE` *(Unstable)*
+**Default:** `0` (OFF)
 
-| Flag | Default | Description |
-|---|---|---|
-| `Z_FEATURE_UNSTABLE_API` | `0` | Enables experimental/unstable APIs (required by some advanced features) |
-| `Z_FEATURE_INTEREST` | `1` | Interest protocol for write filtering and matching |
-| `Z_FEATURE_ENCODING_VALUES` | `1` | Predefined encoding constants (e.g., `z_encoding_application_json()`) |
-| `Z_FEATURE_MULTICAST_TRANSPORT` | `1` | Multicast transport layer |
-| `Z_FEATURE_UNICAST_TRANSPORT` | `1` | Unicast transport layer |
-| `Z_FEATURE_RAWETH_TRANSPORT` | `0` | Raw Ethernet frame transport |
-| `Z_FEATURE_UNICAST_PEER` | `1` | Peer-to-peer unicast mode (requires `Z_FEATURE_MULTI_THREAD`) |
-| `Z_FEATURE_TCP_NODELAY` | `1` | Disable Nagle's algorithm on TCP sockets (reduces latency) |
-| `Z_FEATURE_SESSION_CHECK` | `1` | Validate session is still open before operations |
-| `Z_FEATURE_RX_CACHE` | `0` | LRU cache on RX side (improves throughput, costs heap) |
-| `Z_FEATURE_MULTICAST_DECLARATIONS` | `0` | Declare key expressions over multicast |
-| `Z_FEATURE_PERIODIC_TASKS` | `0` | Periodic task scheduler (required by advanced pub/sub) |
-| `Z_FEATURE_LOCAL_SUBSCRIBER` | `0` | Trigger subscribers on local publications |
-| `Z_FEATURE_LOCAL_QUERYABLE` | `0` | Trigger queryables on local queries |
-| `Z_FEATURE_ADMIN_SPACE` | `0` | Runtime diagnostics queryable (requires `Z_FEATURE_UNSTABLE_API`) |
-| `Z_FEATURE_BATCH_TX_MUTEX` | `0` | Coarse-grained TX mutex (higher throughput, risk of keep-alive loss) |
-| `Z_FEATURE_BATCH_PEER_MUTEX` | `0` | Coarse-grained peer mutex |
+Exposes internal runtime state (transports, peers, links) via a queryable namespace, useful for diagnostics.
 
-### 4.13 Feature Flag Quick Reference Table
+**Dependency:** Requires `Z_FEATURE_UNSTABLE_API`.
 
-| Use Case | Recommended Flags |
-|---|---|
-| **Minimal publisher (sensor)** | `PUBLICATION=1`, `SUBSCRIPTION=0`, `QUERY=0`, `QUERYABLE=0`, `LIVELINESS=0`, `SCOUTING=0`, `FRAGMENTATION=0` |
-| **Minimal subscriber (actuator)** | `PUBLICATION=0`, `SUBSCRIPTION=1`, `QUERY=0`, `QUERYABLE=0`, `LIVELINESS=0`, `SCOUTING=0` |
-| **Serial-only device** | `LINK_TCP=0`, `LINK_UDP_UNICAST=0`, `LINK_UDP_MULTICAST=0`, `LINK_SERIAL=1`, `SCOUTING=0`, `MULTI_THREAD=0` |
-| **Single-thread bare-metal** | `MULTI_THREAD=0`, `UNICAST_PEER=0`, `BATCHING=0` |
-| **Full-featured embedded** | All defaults |
-| **Secure production** | `LINK_TLS=1`, `AUTO_RECONNECT=1` |
+---
+
+### 4.6 Feature Flag Quick Reference Table
+
+| Flag | Default | Description | Can Safely Disable When... |
+|---|---|---|---|
+| `Z_FEATURE_PUBLICATION` | ON | Publish data | Receive-only node |
+| `Z_FEATURE_SUBSCRIPTION` | ON | Subscribe to data | Transmit-only node |
+| `Z_FEATURE_QUERY` | ON | Issue queries | No query/reply pattern needed |
+| `Z_FEATURE_QUERYABLE` | ON | Respond to queries | Not a service provider |
+| `Z_FEATURE_LIVELINESS` | ON | Peer presence detection | No health monitoring needed |
+| `Z_FEATURE_SCOUTING` | ON | Auto router discovery | Static router address configured |
+| `Z_FEATURE_FRAGMENTATION` | ON | Large message support | Only small messages (<2 KB) |
+| `Z_FEATURE_BATCHING` | ON | Message batching | Ultra-low-latency required |
+| `Z_FEATURE_MULTI_THREAD` | ON | Background thread tasks | Single-thread / bare-metal |
+| `Z_FEATURE_AUTO_RECONNECT` | ON | Automatic reconnection | App-controlled reconnect |
+| `Z_FEATURE_LINK_TCP` | ON | TCP transport | Serial/UDP-only systems |
+| `Z_FEATURE_LINK_UDP_UNICAST` | ON | UDP unicast | TCP/Serial-only systems |
+| `Z_FEATURE_LINK_UDP_MULTICAST` | ON | UDP multicast | Client-only, no P2P needed |
+| `Z_FEATURE_LINK_SERIAL` | OFF | UART transport | Network-connected systems |
+| `Z_FEATURE_LINK_BLUETOOTH` | OFF | Bluetooth transport | No Bluetooth hardware |
+| `Z_FEATURE_LINK_WS` | OFF | WebSocket transport | Non-browser targets |
+| `Z_FEATURE_LINK_TLS` | OFF | TLS encryption | Trusted/internal networks |
+| `Z_FEATURE_LOCAL_SUBSCRIBER` | OFF | Local pub→sub loopback | No local delivery needed |
+| `Z_FEATURE_LOCAL_QUERYABLE` | OFF | Local query→queryable loopback | No local queries |
+| `Z_FEATURE_MATCHING` | ON | Matching status listener | No subscriber tracking needed |
+| `Z_FEATURE_UNSTABLE_API` | OFF | Unstable API gate | Stable production builds |
+| `Z_FEATURE_ADVANCED_PUBLICATION` | OFF | Publisher sample cache | No late-joiner support |
+| `Z_FEATURE_ADVANCED_SUBSCRIPTION` | OFF | Subscriber miss detection | No reliability guarantees |
+| `Z_FEATURE_ADMIN_SPACE` | OFF | Runtime diagnostic queries | No external diagnostics |
+| `Z_FEATURE_ENCODING_VALUES` | ON | Encoding constants | Custom encoding only |
+| `Z_FEATURE_SESSION_CHECK` | ON | Publisher/querier session check | Maximum performance mode |
 
 ---
 
 ## 5. Runtime Configuration
 
-Runtime configuration is managed through a `z_owned_config_t` object passed to `z_open()`. Use `zp_config_insert()` to set values by key.
+Runtime configuration is applied before opening a session using `zp_config_insert()`.
 
-```c
-z_owned_config_t config;
-z_config_default(&config);
-zp_config_insert(z_loan_mut(config), Z_CONFIG_MODE_KEY, "client");
-zp_config_insert(z_loan_mut(config), Z_CONFIG_CONNECT_KEY, "tcp/192.168.1.100:7447");
+### 5.1 Buffer Size Parameters (CMake / compile-time)
+
+These are the most critical parameters for memory-constrained devices:
+
+| Parameter | CMake Variable | Default | Description |
+|---|---|---|---|
+| Defragmentation buffer | `FRAG_MAX_SIZE` | `4096` | Maximum size (bytes) of a reassembled fragmented message. Any incoming message larger than this is dropped. |
+| Unicast batch buffer | `BATCH_UNICAST_SIZE` | `2048` | Maximum packet size (bytes) in client/unicast mode. Larger messages are fragmented. |
+| Multicast batch buffer | `BATCH_MULTICAST_SIZE` | `2048` | Maximum packet size (bytes) in peer/multicast mode. |
+
+> **Warning:** Multicast batch sizes must match across all nodes in a multicast group. Linux/Windows defaults are 65535; macOS defaults to 9216; zenoh-pico defaults to 2048 (or 8192 for other Zenoh implementations). Mismatch causes session open failures.
+
+**Setting via CMake:**
+```bash
+cmake .. \
+  -DBATCH_UNICAST_SIZE=1024 \
+  -DBATCH_MULTICAST_SIZE=1024 \
+  -DFRAG_MAX_SIZE=2048
 ```
 
-### 5.1 Mode
+**Setting via platformio.ini:**
+```ini
+board_build.cmake_extra_args =
+    -DBATCH_UNICAST_SIZE=1024
+    -DFRAG_MAX_SIZE=2048
+```
 
-| Key | Values | Default |
-|---|---|---|
-| `Z_CONFIG_MODE_KEY` | `"client"`, `"peer"` | `"client"
+### 5.2 Session & Timing Parameters
+
+| Parameter | CMake Variable | Default | Description |
+|---|---|---|---|
+| Socket timeout | `Z_CONFIG_SOCKET_TIMEOUT` | `100` ms | Timeout for blocking socket operations |
+| Transport lease | `Z_TRANSPORT_LEASE` | `10000` ms | Maximum time without receiving a message before closing a connection |
+| Lease expire factor | `Z_TRANSPORT_LEASE_EXPIRE_FACTOR` | `3` | Divisor for calculating keep-alive interval (`lease / factor`) |
+| Join interval | `Z_JOIN_INTERVAL` | configured | Delay between multicast join messages (ms) |
+| Scouting timeout | `Z_CONFIG_SCOUTING_TIMEOUT_DEFAULT` | configured | How long to wait for scouting replies (ms) |
+
+### 5.3 Periodic Scheduler
+
+| Parameter | CMake Variable | Default | Description |
+|---|---|---|---|
+| Max scheduler tasks | `ZP_PERIODIC_SCHEDULER_MAX_TASKS` | `64` | Maximum number of concurrent periodic task slots |
+
+Reduce this on very constrained systems if you use fewer periodic tasks.
+
+### 5.4 Runtime Configuration Keys
+
+Use `zp_config_insert(z_loan(cfg), key, value)` with the following keys:
+
+```c
+z_owned_config_t cfg;
+z_config_default(&cfg);
+
+// Set client mode
+zp_config_insert(z_loan(cfg), Z_CONFIG_MODE_KEY, Z_CONFIG_MODE_CLIENT);
+
+// Connect to a specific router
+zp_config_insert(z_loan(cfg), Z_CONFIG_CONNECT_KEY, "tcp/192.168.1.100:7447");
+
+// Or listen (peer mode)
+zp_config_insert(z_loan(cfg), Z_CONFIG_LISTEN_KEY, "udp/224.0.0.123:7447#iface=eth0");
+
+// Disable multicast scouting (when router address is known)
+zp_config_insert(z_loan(cfg), Z_CONFIG_MULTICAST_SCOUTING_KEY, "false");
+
+// Custom session ID
+zp_config_insert(z_loan(cfg), Z_CONFIG_SESSION_ZID_KEY, "aabbccddeeff00112233445566778899");
+```
+
+#### Mode Keys
+- `Z_CONFIG_MODE_KEY` — `Z_CONFIG_MODE_CLIENT` or `Z_CONFIG_MODE_PEER`
+
+#### Connectivity Keys
+- `Z_CONFIG_CONNECT_KEY` — Endpoint to connect to (e.g., `tcp/192.168.1.1:7447`, `serial/0.1#baudrate=115200`)
+- `Z_CONFIG_LISTEN_KEY` — Endpoint to listen on (peer mode)
+
+#### Scouting Keys
+- `Z_CONFIG_MULTICAST_SCOUTING_KEY` — `"true"` / `"false"`
+- `Z_CONFIG_MULTICAST_LOCATOR_KEY` — Multicast address for scouting (default: `udp/224.0.0.224:7447`)
+- `Z_CONFIG_SCOUTING_TIMEOUT_KEY` — Timeout in milliseconds
+- `Z_CONFIG_SCOUTING_WHAT_KEY` — Bitmask of `z_whatami_t` to scout for
+
+#### TLS Keys (when `Z_FEATURE_LINK_TLS` enabled)
+- `Z_CONFIG_TLS_ROOT_CA_CERTIFICATE_KEY` — Path to CA certificate bundle
+- `Z_CONFIG_TLS_ROOT_CA_CERTIFICATE_BASE64_KEY` — Base64-encoded CA certificate
+- `Z_CONFIG_TLS_LISTEN_PRIVATE_KEY_KEY` — Listener private key path
+- `Z_CONFIG_TLS_LISTEN_CERTIFICATE_KEY` — Listener certificate path
+- `Z_CONFIG_TLS_ENABLE_MTLS_KEY` — Enable mutual TLS (`"true"`/`"false"`)
+- `Z_CONFIG_TLS_CONNECT_PRIVATE_KEY_KEY` — Client private key (mTLS)
+- `Z_CONFIG_TLS_CONNECT_CERTIFICATE_KEY` — Client certificate (mTLS)
+- `Z_CONFIG_TLS_VERIFY_NAME_ON_CONNECT_KEY` — Verify server hostname (`"true"`/`"false"`)
+
+---
+
+## 6. Core Concepts & API
+
+### 6.1 Type System
+
+zenoh-pico uses a structured ownership model enforced through naming conventions:

@@ -1,0 +1,600 @@
+# Source: https://opensource.adobe.com/spectrum-web-components/components/number-field/
+
+Title: Number Field: Spectrum Web Components - Spectrum Web Components
+
+URL Source: https://opensource.adobe.com/spectrum-web-components/components/number-field/
+
+Markdown Content:
+Overview API Changelog
+`<sp-number-field>` elements are used for numeric inputs.
+
+![Image 1: See it on NPM!](https://img.shields.io/npm/v/@spectrum-web-components/number-field?style=for-the-badge)![Image 2: How big is this package in your project?](https://img.shields.io/bundlephobia/minzip/@spectrum-web-components/number-field?style=for-the-badge)![Image 3: Try it on Stackblitz](https://img.shields.io/badge/Try%20it%20on-Stackblitz-blue?style=for-the-badge)
+
+yarn add @spectrum-web-components/number-field
+
+Import the side effectful registration of `<sp-number-field>` via:
+
+import '@spectrum-web-components/number-field/sp-number-field.js';
+
+When looking to leverage the `NumberField` base class as a type and/or for extension purposes, do so via:
+
+import { NumberField } from '@spectrum-web-components/number-field';
+
+A number field consists of an input field for numeric values and optional stepper buttons for incrementing and decrementing the value. The stepper UI can be hidden using the `hide-stepper` attribute.
+
+<sp-field-label>
+  What is the air-speed velocity of an unladen swallow?
+</sp-field-label>
+<sp-number-field id="anatomy" format-options='{ "style": "unit", "unit": "MPH", "unitDisplay": "long" }'></sp-number-field>Small<sp-number-field label="Size" value="1024" size="s"></sp-number-field>Medium<sp-number-field label="Size" value="1024" size="m"></sp-number-field>Large<sp-number-field label="Size" value="1024" size="l"></sp-number-field>Extra Large<sp-number-field label="Size" value="1024" size="xl"></sp-number-field>
+An `<sp-number-field>` element will process its numeric value with `new Intl.NumberFormat(this.resolvedLanguage, this.formatOptions).format(this.value)` in order to prepare it for visual delivery in the input. In order to customize this processing supply your own `Intl.NumberFormatOptions` via the `formatOptions` property, or `format-options` attribute as seen below.
+
+`this.resolvedLanguage` represents the language in which the `<sp-number-field>` element is currently being delivered. By default, this value will represent the language established by the `lang` attribute on the root `<html>` element while falling back to `navigator.language` when that is not present. This value can be customized via a language context provided by a parent element that listens for the `sp-language-context` event and supplies update language settings to the `callback` function contained therein. Applications leveraging the `<sp-theme>` element to manage the visual delivery or text direction of their content will be also be provided a reactive context for supplying language information to its descendants.
+
+Decimals
+The following example uses the `signDisplay` option to include the plus sign for positive numbers, for example to display an offset from some value. In addition, it always displays a minimum of 1 digit after the decimal point, and allows up to 2 fraction digits. If the user enters more than 2 fraction digits, the result will be rounded.
+
+<sp-field-label for="decimals">Adjust exposure</sp-field-label>
+<sp-number-field id="decimals" value="0" format-options='{ "signDisplay": "exceptZero", "minimumFractionDigits": 1, "maximumFractionDigits": 2 }'></sp-number-field>Percentages
+The `style: 'percent'` option can be passed to the `formatOptions` property to treat the value as a percentage. In this mode, the value is multiplied by 100 before it is displayed, i.e. `0.45` is displayed as "45%". The reverse is also true: when the user enters a value, the `change` event will be triggered with the entered value divided by 100. When the percent option is enabled, the default step automatically changes to 0.01 such that incrementing and decrementing occurs by 1%. This can be overridden with the step property.
+
+<sp-field-label for="percents">Sales tax</sp-field-label>
+<sp-number-field id="percents" value="0.05" format-options='{ "style": "percent" }'></sp-number-field>Currency values
+The `style: 'currency'` option can be passed to the `formatOptions` property to treat the value as a currency value. The `currency` option must also be passed to set the currency code (e.g. `USD`) to use. In addition, the `currencyDisplay` option can be used to choose whether to display the currency `symbol`, currency `code`, or currency `name`. Finally, the `currencySign` option can be set to `accounting` to use accounting notation for negative numbers, which uses parentheses rather than a minus sign in some locales.
+
+If you need to allow the user to change the currency, you should include a separate dropdown next to the `sp-number-field`. The `sp-number-field` itself will not determine the currency from the user input.
+
+<sp-field-label for="currency">Transaction amount</sp-field-label>
+<sp-number-field id="currency" value="45" format-options='{ "style": "currency", "currency": "EUR", "currencyDisplay": "code", "currencySign": "accounting" }'></sp-number-field>Units
+The `style: 'unit'` option can be passed to the `formatOptions` property to format the value with a unit of measurement. The `unit` option must also be passed to set which unit to use (e.g. `inch`). In addition, the `unitDisplay` option can be used to choose whether to display the unit in `long`, `short`, or `narrow` format.
+
+If you need to allow the user to change the unit, you should include a separate dropdown next to the number field. The number field itself will not determine the unit from the user input.
+
+Note: The unit style is not currently supported in Safari. A polyfill may be necessary.
+
+<sp-field-label for="units">Package width</sp-field-label>
+<sp-number-field id="units" value="4" format-options='{ "style": "unit", "unit": "inch", "unitDisplay": "long" }'></sp-number-field>Custom Units
+While `Intl.NumberFormatOptions` does support a wide range of units, it is possible to encounter units (e.g. the graphics units of `pixel`, `pixels`, `points`, etc.) that are not supported therein. When this occurs, an `<sp-number-field>` element will attempt to polyfill support for this unit. See the following example delivering `{ style: "unit", unit: "px" }` below:
+
+<sp-field-label for="units">Document width in pixels</sp-field-label>
+<sp-number-field id="units" value="500" format-options='{ "style": "unit", "unit": "px" }'></sp-number-field>
+Note: the polyfilling done here is very simplistic and is triggered by supplying options that would otherwise cause the `Intl.NumberFormat()` call to throw an error. Once the unsupporting unit of `px` causes the construction of the object to throw, a back up formatter/parser pair will be created without the supplied unit data. When the `style` is set to `unit`, the `unit` value of will be adopted as the _static_ unit display. This means that neither pluralization or translation will be handled within the `<sp-number-field>` element itself. If pluralization or translation is important to the delivered interface, please be sure to handle passing those strings into to element via the `formatOptions` property reactively to the value of the element or locale of that page in question.
+
+Minimum and maximum values
+The `min` and `max` properties can be used to limit the entered value to a specific range. The value will be clamped when the user commits the value to the `<sp-number-field>` element. In addition, the increment and decrement buttons will be disabled when the value is within one step value from the bounds. Ranges can be open ended by only providing a value for either `min` or `max` rather than both.
+
+If a valid range is known ahead of time, it is a good idea to provide it to `<sp-number-field>` so it can optimize the experience. For example, when the minimum value is greater than or equal to zero, it is possible to use a numeric keyboard on iOS rather than a full text keyboard (necessary to enter a minus sign).
+
+<sp-field-label for="red">Red value</sp-field-label>
+<sp-number-field id="red" value="4" min="0" max="255"></sp-number-field>Step values
+The step prop can be used to snap the value to certain increments. If there is a `min` defined, the steps are calculated starting from that minimum value. For example, if `min === 2`, and `step === 3`, the valid step values would be 2, 5, 8, 11, etc. If no `min` is defined, the steps are calculated starting from zero and extending in both directions. In other words, such that the values are evenly divisible by the step. A step can be any positive decimal. If no step is defined, any decimal value may be typed, but incrementing and decrementing snaps the value to an integer.
+
+If the user types a value that is between two steps and blurs the input, the value will be snapped to the nearest step. When incrementing or decrementing, the value is snapped to the nearest step that is higher or lower, respectively. When incrementing or decrementing from an empty field, the value starts at the minValue or maxValue, respectively, if defined. Otherwise, the value starts from 0.
+
+<sp-field-label for="step">Step</sp-field-label>
+<sp-number-field id="step" step="10"></sp-number-field>
+
+<sp-field-label for="step-min">Step + min</sp-field-label>
+<sp-number-field id="step-min" min="2" step="3"></sp-number-field>
+
+<sp-field-label for="step-min-max">Step + min + max</sp-field-label>
+<sp-number-field id="step-min-max" min="2" max="21" step="3"></sp-number-field>
+The `invalid` attribute indicates that the number field's value is invalid. When set, appropriate ARIA attributes will be automatically applied.
+
+<sp-field-label for="invalid">
+  It's one banana, Michael, how much could it cost?
+</sp-field-label>
+<sp-number-field id="invalid" invalid style="width: 130px" value="10" min="0" max="0.3" step="0.01" format-options='{ "style": "currency", "currency": "USD", "currencyDisplay": "code", "currencySign": "accounting", "minimumFractionDigits": 2, "maximumFractionDigits": 2 }'></sp-number-field>
+<sp-help-text variant="negative">
+  Value should be between $0 and $0.3.
+</sp-help-text>
+The `valid` attribute indicates that the number field's value is valid.
+
+<sp-field-label for="valid">
+  It's one banana, Michael, how much could it cost?
+</sp-field-label>
+<sp-number-field id="valid" valid style="width: 130px" value="0.23" min="0" max="0.3" step="0.01" format-options='{ "style": "currency", "currency": "USD", "currencyDisplay": "code", "currencySign": "accounting", "minimumFractionDigits": 2, "maximumFractionDigits": 2 }'></sp-number-field>
+Use the `required` attribute to indicate a number field value is required. Dictate the validity or invalidity state of the text entry with the `valid` or `invalid` attributes.
+
+<sp-field-label for="number-1" required>Count</sp-field-label>
+<sp-number-field id="number-1" valid value="123"></sp-number-field>
+<sp-field-label for="number-2" required>Size</sp-field-label>
+<sp-number-field id="number-2" invalid value="152"></sp-number-field>
+The `disabled` attribute prevents the number field from receiving focus or events. The number field will appear faded.
+
+<sp-field-label for="disabled" disabled>Number of tickets</sp-field-label>
+<sp-number-field id="disabled" disabled value="0"></sp-number-field>
+Number fields have a `readonly` attribute for when they’re in the disabled state but still need their labels to be shown. This allows for content to be copied, but not interacted with or changed.
+
+<sp-field-label for="readonly">Number of tickets</sp-field-label>
+<sp-number-field id="readonly" readonly value="0"></sp-number-field>
+The number field works with the following interactions:
+
+*   the input field,
+*   ArrowUp or ArrowDown keys,
+*   the scroll wheel, or
+*   the stepper UI, when not hidden by the `hide-stepper` attribute.
+
+The input value incrementally increases or decreases by the value of the `step` attribute. The shift key can be used to apply steps at 10 times (or the value of the `step-modifier` attribute times) their normal rate.
+
+The `<sp-number-field>` component doesn't manage a default value by itself. This means that consumers can set the value of the number-field as an empty string by clearing the input. If we want the number-field to reset to a `default-value` when the user clears the input, we can listen for the `change` event on the number-field component and set its value to the desired `default-value` if the input is empty.
+
+<sp-field-label for="default">
+  Default value of this number field is 42
+</sp-field-label>
+<sp-number-field id="default" value="20"></sp-number-field>
+
+<script type="module"> const numberField = document.querySelector('#default'); numberField.addEventListener('change', (event) => { alert('change'); const target = event.target; if (isNaN(target.value)) { target.value = '42'; } });</script>
+Every number field must have a label that clearly describes its purpose. The label can be provided either via the `label` attribute or with an associated `<sp-field-label>` element.
+
+Number fields support the following keyboard interactions:
+
+*   ArrowUp and ArrowDown keys increment and decrement the value
+*   Shift + ArrowUp or ArrowDown applies steps at 10 times (or the value of `step-modifier`) the normal rate
+*   The scroll wheel can be used to increment and decrement the value when focused
+
+Consider providing help text to explain:
+
+*   The expected format of the input
+*   Any minimum or maximum values
+*   The meaning of units or special formatting (e.g., currency, percentages)
+*   Step increments if they differ from the default
+
+*   Updated dependencies []: 
+    *   @spectrum-web-components/base@1.11.2
+    *   @spectrum-web-components/shared@1.11.2
+    *   @spectrum-web-components/reactive-controllers@1.11.2
+    *   @spectrum-web-components/icon@1.11.2
+    *   @spectrum-web-components/icons-ui@1.11.2
+    *   @spectrum-web-components/infield-button@1.11.2
+    *   @spectrum-web-components/textfield@1.11.2
+
+*   Updated dependencies [`95e1c25`]: 
+    *   @spectrum-web-components/shared@1.11.1
+    *   @spectrum-web-components/base@1.11.1
+    *   @spectrum-web-components/textfield@1.11.1
+    *   @spectrum-web-components/icon@1.11.1
+    *   @spectrum-web-components/icons-ui@1.11.1
+    *   @spectrum-web-components/infield-button@1.11.1
+    *   @spectrum-web-components/reactive-controllers@1.11.1
+
+*   Updated dependencies [`b95e254`, `f8bdeec`, `9cb816b`]: 
+    *   @spectrum-web-components/reactive-controllers@1.11.0
+    *   @spectrum-web-components/shared@1.11.0
+    *   @spectrum-web-components/base@1.11.0
+    *   @spectrum-web-components/textfield@1.11.0
+    *   @spectrum-web-components/icon@1.11.0
+    *   @spectrum-web-components/icons-ui@1.11.0
+    *   @spectrum-web-components/infield-button@1.11.0
+
+*   Updated dependencies []: 
+    *   @spectrum-web-components/base@1.10.0
+    *   @spectrum-web-components/icon@1.10.0
+    *   @spectrum-web-components/icons-ui@1.10.0
+    *   @spectrum-web-components/infield-button@1.10.0
+    *   @spectrum-web-components/textfield@1.10.0
+    *   @spectrum-web-components/shared@1.10.0
+    *   @spectrum-web-components/reactive-controllers@1.10.0
+
+*   Updated dependencies []: 
+    *   @spectrum-web-components/icon@1.9.1
+    *   @spectrum-web-components/icons-ui@1.9.1
+    *   @spectrum-web-components/infield-button@1.9.1
+    *   @spectrum-web-components/textfield@1.9.1
+    *   @spectrum-web-components/base@1.9.1
+    *   @spectrum-web-components/reactive-controllers@1.9.1
+    *   @spectrum-web-components/shared@1.9.1
+
+*   Updated dependencies [`72d807c`, `14ebeb9`, `7d23140`]: 
+    *   @spectrum-web-components/textfield@1.9.0
+    *   @spectrum-web-components/reactive-controllers@1.9.0
+    *   @spectrum-web-components/infield-button@1.9.0
+    *   @spectrum-web-components/icon@1.9.0
+    *   @spectrum-web-components/icons-ui@1.9.0
+    *   @spectrum-web-components/base@1.9.0
+    *   @spectrum-web-components/shared@1.9.0
+
+*   Updated dependencies []: 
+    *   @spectrum-web-components/infield-button@1.8.0
+    *   @spectrum-web-components/icon@1.8.0
+    *   @spectrum-web-components/icons-ui@1.8.0
+    *   @spectrum-web-components/textfield@1.8.0
+    *   @spectrum-web-components/base@1.8.0
+    *   @spectrum-web-components/reactive-controllers@1.8.0
+    *   @spectrum-web-components/shared@1.8.0
+
+*   Updated dependencies [`cde976d`]: 
+    *   @spectrum-web-components/textfield@1.7.0
+    *   @spectrum-web-components/icon@1.7.0
+    *   @spectrum-web-components/icons-ui@1.7.0
+    *   @spectrum-web-components/infield-button@1.7.0
+    *   @spectrum-web-components/base@1.7.0
+    *   @spectrum-web-components/reactive-controllers@1.7.0
+    *   @spectrum-web-components/shared@1.7.0
+
+*   #5408`74386e8` Thanks @marissahuysentruyt! - The changes included resolve UI issues with number-field by proxy of textfield. The validation icons in number-field no longer overlap the infield buttons. The width of the number-field now calculates accurately and can be modified via `--mod-stepper-width` token as it was before.
+
+*   #5157`9e15a66` Thanks @TarunAdobe! - # Release Note
+
+    *   #3615`f09c84a`Thanks@Rajdeepc! - ### Infield button fast follows 
+        *   Updated infield button disabled border color to use`-spectrum-gray-300`for spectrum-two theme and`-spectrum-gray-200`for other themes.
+
+📝#3536`f77aa72`Thanks@marissahuysentruyt!
+
+    *   S2 Foundations fixes 
+        *   Adjusts the background-color of the infield button components within stepper to use`gray-100`as opposed to`gray-25`. 
+            *   This corresponds to the background-color updates picker has for S2.
+
+        *   Corrects the border color for the default picker for S2 foundations, using`gray-500`(instead of`gray-800`) to align with other field/form components.
+        *   Refactors the`&.is-keyboardFocused&.is-placeholder`selector to`&.is-keyboardFocused.spectrum-Picker-label.is-placeholder`to avoid unexpectedly targeting the nested placeholder class.
+
+📝#3541`1a3245c`Thanks@castastrophe!
+
+Dependency alignment across the project.
+
+    *   Updated dependencies [`205182b`,`1a3245c`]: 
+        *   @spectrum-css/icon@9.1.0
+        *   @spectrum-css/tokens@16.0.1
+
+Bump @spectrum-css/stepper to 7.1.3
+
+    *   #3621`3aec28a`Thanks@marissahuysentruyt! 
+        *   Updates`-spectrum-stepper-buttons-border-color-keyboard-focus`from`gray-900`to`gray-800`to match the rest of the border color on keyboardFocus.
+
+📝#3594`6200a63`Thanks@TarunAdobe!
+
+    *   Updates Stepper's key-focus border color (`-spectrum-stepper-border-color-keyboard-focus`) to`-spectrum-gray-800`.
+
+📝#3536`f77aa72`Thanks@marissahuysentruyt!
+
+    *   S2 Foundations fixes 
+        *   Adjusts the background-color of the infield button components within stepper to use`gray-100`as opposed to`gray-25`. 
+            *   This corresponds to the background-color updates picker has for S2.
+
+        *   Corrects the border color for the default picker for S2 foundations, using`gray-500`(instead of`gray-800`) to align with other field/form components.
+        *   Refactors the`&.is-keyboardFocused&.is-placeholder`selector to`&.is-keyboardFocused.spectrum-Picker-label.is-placeholder`to avoid unexpectedly targeting the nested placeholder class.
+
+📝#3541`1a3245c`Thanks@castastrophe!
+
+Dependency alignment across the project.
+
+    *   Updated dependencies [`205182b`,`9b108f7`,`1a3245c`]: 
+        *   @spectrum-css/actionbutton@8.0.0
+        *   @spectrum-css/icon@9.1.0
+        *   @spectrum-css/infieldbutton@7.0.0
+        *   @spectrum-css/textfield@9.0.0
+        *   @spectrum-css/tokens@16.0.1
+
+📝#3575`2e17d10`Thanks@TarunAdobe!
+
+    *   Updated border color on keyboard focus state for textfield in spectrum-two theme.
+
+📝#3539`9b108f7`Thanks@rise-erpelding!
+
+    *   Updates invalid icon spacing to be vertically centered for S2.
+
+📝#3541`1a3245c`Thanks@castastrophe!
+
+    *   Dependency alignment across the project.
+
+Set component peerDependencies as optional to reduce console warnings on downstream projects.
+
+    *   Updated dependencies [`205182b`,`1a3245c`]: 
+        *   @spectrum-css/helptext@8.0.0
+        *   @spectrum-css/tokens@16.0.1
+
+    *   #3658`e9fde67`Thanks@rise-erpelding! - Change S2 theme border color to gray-800 on keyfocus per design request in order to align with text field.
+
+📝#3593`d829abb`Thanks@TarunAdobe!
+
+Updated`--spectrum-search-background-color-disabled`to`--spectrum-gray-25`and`--spectrum-search-border-color-disabled`to`--spectrum-gray-300`for the S2 foundations contexts.
+
+Also defines disabled quiet border and background colors (`--system-search-quiet-background-color-disabled`and`--system-search-quiet-border-color-disabled`) in order to maintain disabled quiet styling.
+
+📝#3541`1a3245c`Thanks@castastrophe!
+
+Dependency alignment across the project.
+
+    *   Updated dependencies [`205182b`,`9b108f7`,`1a3245c`]: 
+        *   @spectrum-css/clearbutton@8.0.0
+        *   @spectrum-css/icon@9.1.0
+        *   @spectrum-css/textfield@9.0.0
+        *   @spectrum-css/tokens@16.0.1
+
+*   Updated dependencies [`9e15a66`]:
+
+    *   @spectrum-web-components/infield-button@1.6.0
+    *   @spectrum-web-components/textfield@1.6.0
+    *   @spectrum-web-components/icon@1.6.0
+    *   @spectrum-web-components/icons-ui@1.6.0
+    *   @spectrum-web-components/base@1.6.0
+    *   @spectrum-web-components/reactive-controllers@1.6.0
+    *   @spectrum-web-components/shared@1.6.0
+
+*   #5284`5a3bc6d` Thanks @blunteshwar! - Fixed keyboard flickering on mobile devices when using NumberField's increment/decrement buttons
+
+*   Updated dependencies []: 
+    *   @spectrum-web-components/textfield@1.5.0
+    *   @spectrum-web-components/infield-button@1.5.0
+    *   @spectrum-web-components/icon@1.5.0
+    *   @spectrum-web-components/icons-ui@1.5.0
+    *   @spectrum-web-components/base@1.5.0
+    *   @spectrum-web-components/reactive-controllers@1.5.0
+    *   @spectrum-web-components/shared@1.5.0
+
+*   Updated dependencies []: 
+    *   @spectrum-web-components/icon@1.4.0
+    *   @spectrum-web-components/icons-ui@1.4.0
+    *   @spectrum-web-components/infield-button@1.4.0
+    *   @spectrum-web-components/textfield@1.4.0
+    *   @spectrum-web-components/base@1.4.0
+    *   @spectrum-web-components/reactive-controllers@1.4.0
+    *   @spectrum-web-components/shared@1.4.0
+
+*   Updated dependencies [`ea38ef0`]: 
+    *   @spectrum-web-components/reactive-controllers@1.3.0
+    *   @spectrum-web-components/infield-button@1.3.0
+    *   @spectrum-web-components/icon@1.3.0
+    *   @spectrum-web-components/icons-ui@1.3.0
+    *   @spectrum-web-components/textfield@1.3.0
+    *   @spectrum-web-components/base@1.3.0
+    *   @spectrum-web-components/shared@1.3.0
+
+All notable changes to this project will be documented in this file. See Conventional Commits for commit guidelines.
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   lock prerelease versions for Spectrum CSS (#5014) (8aa7734)
+
+*   **number-field:** added aria-hidden attribute for inc/dec buttons (#4933) (b16a839)
+
+*   **number-field, slider:** ensure cached value is cleared when toggling between different steps (#4846) (1c84c96)
+*   **number-field:** allow only numeric characters for Japanese/Chinese IME (#4817) (a791bd1)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   **number-field:** show decimal on iPad minimized keyboard (#4784) (deb7a1c)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   add null check in updated method of sp-number-field (#4709) (7b1eeab)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   **number-field:** update IME change detection (#4672) (de05aee)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   **number-field:** multiple separators use-cases in decimal inputs in iOS devices (#4571) (6319da8)
+
+*   **number-field:** updated number field to respect all locales (#4508) (cc6e928)
+
+*   **number-field:** select full value when using Tab to enter a field with a unit (#4340) (a9d5cef)
+
+*   **number-field, slider:** floating point roundoff precision bug (#4263) (74480ef)
+*   **number-field:** handles values greater than 1000 (#4417) (45d69d0)
+
+*   **number-field, slider:** floating point roundoff precision bug (#4263) (74480ef)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   **styles, theme:** surface exports that omit Spectrum Vars proactively (#4142) (5b524c1)
+
+*   **asset:** use core tokens (99e76f4)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   **combobox:** add combobox pattern (#3894) (47d7d71), closes #3887
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   **number-field:** validate min/max in more contexts (2328a62)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   **number-field:** update display value on scroll and arrow up/down (fc59a18)
+
+*   **infield-button:** add infield-button package (057b885)
+
+*   **number-field:** prevent over excited "change" events (7b93724)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   **number-field:** handle negative numbers (#3673) (62553dd)
+*   **number-field:** update number-field value on pressing "enter" (#3638) (649eb2f)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   correct composition entry of multi-byte numbers (#3610) (5e11934)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   **number-field:** update button label to use number-field-labels as part of the text (#3474) (b92daf2)
+
+*   **number-field,search,textfield:** add t-shirt sizes (fda8f96)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   **number-field:** simplify width management (ef4765a)
+
+*   **number-field:** use core tokens (23a924e)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   add "editable" option to "sp-slider" (e86d7fa)
+*   add input validation to Number Field (b1dd5ea)
+*   allow user input of extemely large number when a max is applied (0644b7f)
+*   allow value when step=0 (41de75a)
+*   apply "HelpTextMixin" to form elements (a952447)
+*   convert the langage resolution workflow to a Reactive Controller (b7781db)
+*   correct the origin on "maximumFractionDigits" when deciding "inputMode" (e2fe9c8)
+*   ensure "wheel" interactions lead to a "change" event (3be87cd)
+*   ensure dependencies included in package.json (eb77858)
+*   ensure reactivity of resolved language (5863a15)
+*   ensure streamingListener ends even if pointercancel not fired (74105f2)
+*   explicitly setting NumberField wheel event handler as not passive (fad1496)
+*   manage "lang" via context provided by "sp-theme" (b1e3457)
+*   move hover/focus hoisting into conditioning (15ac2f7)
+*   normalize wheel input directionally for more predictable input (e4383a8)
+*   **number-field:** add an "indeterminate" state (8bde8a1)
+*   **number-field:** add support for modified stepping (#1534) (f8ec763)
+*   **number-field:** added flag to scroll event to allow slider component to update on scroll (4199eb0)
+*   **number-field:** clean up delivery of quiet variant (cd93964)
+*   **number-field:** dispatch input/change events as expected (4a457ee)
+*   **number-field:** ensure "quiet" Number Field is sized correctly in the DOM (3ea2c8f)
+*   **number-field:** include dependancy listings (5c9031d)
+*   **number-field:** prevent changes by user when readonly (64a7e93)
+*   **number-field:** prevent interactin with stepper buttons when disabled (ae20343)
+*   **number-field:** process 2 byte characters as their single byte cousins (f424c0a)
+*   **number-field:** readonly - no pointer events for stepper buttons (05364fb)
+*   **number-field:** support non-supported units in "Intl.numberFormat" (d846c0b)
+*   **number-field:** validate value before dispatching "change" event (8c2ad89)
+*   prevent console.log in source and test files (3ee082c)
+*   **theme:** stop language resolution propagation and demo using local languages (6b81391)
+
+*   adopt DNA@7 base Spectrum CSS (e08cafd)
+*   include all Dev Mode files in side effects (f70817c)
+*   **number-field:** add number field pattern (384ab34)
+*   **number-field:** use new config (8d42d69)
+*   shared pkg versions, devmode define warning, registry-conflicts docs (6e49565)
+*   support Spectrum Token consumption and update Action Button to use them (743ab16)
+*   update lit-* dependencies, wip (377f3c8)
+
+*   ensure streamingListener ends even if pointercancel not fired (74105f2)
+
+*   **theme:** stop language resolution propagation and demo using local languages (6b81391)
+
+*   move hover/focus hoisting into conditioning (15ac2f7)
+
+*   **number-field:** use new config (8d42d69)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   ensure "wheel" interactions lead to a "change" event (3be87cd)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   ensure dependencies included in package.json (eb77858)
+
+*   correct the origin on "maximumFractionDigits" when deciding "inputMode" (e2fe9c8)
+*   ensure reactivity of resolved language (5863a15)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   convert the langage resolution workflow to a Reactive Controller (b7781db)
+
+*   **number-field:** added flag to scroll event to allow slider component to update on scroll (4199eb0)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   include all Dev Mode files in side effects (f70817c)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   **number-field:** ensure "quiet" Number Field is sized correctly in the DOM (3ea2c8f)
+
+*   support Spectrum Token consumption and update Action Button to use them (743ab16)
+
+*   explicitly setting NumberField wheel event handler as not passive (fad1496)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   **number-field:** validate value before dispatching "change" event (8c2ad89)
+
+*   **number-field:** process 2 byte characters as their single byte cousins (f424c0a)
+
+*   **number-field:** clean up delivery of quiet variant (cd93964)
+*   allow user input of extemely large number when a max is applied (0644b7f)
+*   allow value when step=0 (41de75a)
+
+*   apply "HelpTextMixin" to form elements (a952447)
+*   **number-field:** prevent interactin with stepper buttons when disabled (ae20343)
+
+*   update lit-* dependencies, wip (377f3c8)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   **number-field:** prevent changes by user when readonly (64a7e93)
+*   **number-field:** readonly - no pointer events for stepper buttons (05364fb)
+
+*   adopt DNA@7 base Spectrum CSS (e08cafd)
+
+*   **number-field:** add an "indeterminate" state (8bde8a1)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   **number-field:** support non-supported units in "Intl.numberFormat" (d846c0b)
+*   add input validation to Number Field (b1dd5ea)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   add "editable" option to "sp-slider" (e86d7fa)
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+**Note:** Version bump only for package @spectrum-web-components/number-field
+
+*   **number-field:** add support for modified stepping (#1534) (f8ec763)
+*   manage "lang" via context provided by "sp-theme" (b1e3457)
+*   normalize wheel input directionally for more predictable input (e4383a8)
+
+*   prevent console.log in source and test files (3ee082c)
+
+*   **number-field:** dispatch input/change events as expected (4a457ee)
+*   **number-field:** include dependancy listings (5c9031d)
+
+*   **number-field:** add number field pattern (384ab34)
+
+ Property  Attribute  Type  Default  Description `allowedKeys``allowed-keys``string``''` A regular expression outlining the keys that will be allowed to update the value of the form control. `autocomplete``autocomplete``| 'list' | 'none' | HTMLInputElement['autocomplete'] | HTMLTextAreaElement['autocomplete'] | undefined` What form of assistance should be provided when attempting to supply a value to the form control 
+Note: combobox overrides `autocomplete` intentionally with `aria-autocomplete` values, which is why those values (although invalid for native `autocomplete`) are included here to support the combobox accessibility pattern.
+
+`disabled``disabled``boolean``false` Disable this control. It will not receive focus or events `formatOptions``format-options``Intl.NumberFormatOptions``{}` An `<sp-number-field>` element will process its numeric value with `new Intl.NumberFormat(this.resolvedLanguage, this.formatOptions).format(this.valueAsNumber)` in order to prepare it for visual delivery in the input. In order to customize this processing supply your own `Intl.NumberFormatOptions` object here. 
+See: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat
+
+`grows``grows``boolean``false` Whether a form control delivered with the `multiline` attribute will change size vertically to accomodate longer input `hideStepper``hide-stepper``boolean``false` Whether the stepper UI is hidden or not. `indeterminate``indeterminate``boolean``false``invalid``invalid``boolean``false` Whether the `value` held by the form control is invalid. `keyboardFocused``keyboard-focused``boolean``false``label``label``string``''` A string applied via `aria-label` to the form control when a user visible label is not provided. `max``max``number | undefined``maxlength``maxlength``number``-1` Defines the maximum string length that the user can enter `min``min``number | undefined``minlength``minlength``number``-1` Defines the minimum string length that the user can enter `multiline``multiline``boolean``false` Whether the form control should accept a value longer than one line `name``name``string | undefined` Name of the form control. `pattern``pattern``string | undefined` Pattern the `value` must match to be valid `placeholder``placeholder``string``''` Text that appears in the form control when it has no value set `quiet``quiet``boolean``false` Whether to display the form control with no visible background `readonly``readonly``boolean``false` Whether a user can interact with the value of the form control `required``required``boolean``false` Whether the form control will be found to be invalid when it holds no `value` `rows``rows``number``-1` The specific number of rows the form control should provide in the user interface `step``step``number | undefined` The distance by which to alter the value of the element when taking a "step". 
+When `this.formatOptions.style === 'percentage'` the default step will be set to 0.01 unless otherwise supplied to the element.
+
+`stepModifier``step-modifier``number``10``tabIndex``tabIndex``number` The tab index to apply to this control. See general documentation about the tabindex HTML property `valid``valid``boolean``false` Whether the `value` held by the form control is valid. `value``value``string | number` The value held by the form control 
+
+Name  Description `help-text` default or non-negative help text to associate to your form element `negative-help-text` negative help text to associate to your form element when `invalid`
+
+Name  Type  Description `change``Event``An alteration to the value of the element has been committed by the user.``input``Event``The value of the element has changed.`

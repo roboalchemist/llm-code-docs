@@ -1,0 +1,216 @@
+# Source: https://docs.statsig.com/session-replay/configure.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.statsig.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Configure Statsig Session Replay
+
+## Conditional Recording
+
+In the Statsig Console, you can configure your Session Replay settings under **Project Settings → Analytics & Session Replay**. You must be a project admin to modify these settings.
+
+### Global Targeting Gate
+
+The Global Targeting Gate controls who is *eligible* for session recording. If a user does not pass this gate, their sessions will never be recorded. By default, this is set to Everyone, meaning there are no restrictions—anyone can be recorded. You can think of this as defining the "top of the funnel" for session recording eligibility.
+
+### Global Sampling Rate
+
+The Global Sampling Rate determines what percentage of eligible sessions are recorded from the start. By default, this is set to **100%**, meaning all eligible sessions are recorded automatically. You can lower this if you want to limit session recordings but still ensure a consistent percentage of sessions are always captured. This rate applies only to sessions that begin at the start and does not affect conditional triggers.
+
+### Conditional Triggers: Events and Exposures
+
+Conditional triggers can start a session recording mid-session, even if it wasn’t recorded from the beginning. These triggers respect the Global Targeting Gate but operate independently of the Global Sampling Rate. When triggered, the recording includes the last 30 seconds leading up to the event (if rolling window is enabled).
+
+Types of conditional triggers:
+
+* **Individual Gate Exposures** — Trigger based on exposure to a specific gate, optionally filtered by group (e.g., Pass/Fail).
+* **All Gate Exposures** — Trigger based on exposure to any gate, optionally filtered by group (e.g., Pass/Fail). Individual Gate Exposure triggers override All Gate configuration
+* **Individual Experiment Exposures** — Trigger based on exposure to a specific experiment, optionally filtered by group (e.g., Test/Control).
+* **All Experiment Exposures** — Trigger based on exposure to any experiment, filtered by groups Test/Control. No other group names are supported, if an experiment includes additional groups, individual triggers must be configured for each one. Individual Experiment Exposure triggers override All Experiment configuration
+* **Events** — Trigger based on specific logged event, optionally filtered by event values (e.g., "purchase\_event" with value "book").
+
+For each trigger, you can define an individual sampling rate. This rate is evaluated based on session\_id, meaning the result (pass or fail) will remain consistent for the same session, even if the trigger occurs multiple times.
+
+**All Gates** and **All Experiments** conditional triggers are only available in `3.30.1` or higher
+
+Important: If a conditional trigger occurs while a session recording is already in progress, the recording simply continues uninterrupted.
+
+<img src="https://mintcdn.com/statsig-4b2ff144/nSBTTgzvwOEKOriT/images/session_replay/settings.png?fit=max&auto=format&n=nSBTTgzvwOEKOriT&q=85&s=fa705471437c9457b48fe3d9e6150495" alt="Session replay settings panel with targeting and sampling controls" width="1708" height="1312" data-path="images/session_replay/settings.png" />
+
+<img src="https://mintcdn.com/statsig-4b2ff144/nSBTTgzvwOEKOriT/images/session_replay/conditional_recording_flowchart.png?fit=max&auto=format&n=nSBTTgzvwOEKOriT&q=85&s=b1e67758a0ba6886cab9ffbdce6dba45" alt="Flowchart outlining conditional recording logic for events and exposures" style={{ border: "1px solid black" }} width="1168" height="891" data-path="images/session_replay/conditional_recording_flowchart.png" />
+
+### Example Walkthrough
+
+Suppose you have the following setup (See image above):
+
+* The Global Targeting Gate `session_replay_global_targeting_gate` allows all US users and excludes everyone else.
+* The Global Sampling Rate is set to 25%, so only 25% of eligible US user sessions are recorded from the start.
+* For the remaining 75% of eligible users, session recording can still begin mid-session if a conditional trigger occurs.
+
+Example Scenario:
+
+1. A US user starts a session. They do not pass the 25% Global Sampling Rate, so their session is not recorded from the beginning.
+2. Later, a `purchase_event` occurs with value `book`. This event is set up as a conditional trigger with a 50% sampling rate. If this session fails the sampling rate check, recording does not start.
+3. A minute later, the user is exposed to the `cool_new_feature` gate, and the recording begins
+
+<Note>
+  A trigger's sampling rate is consistent for the entire session based on
+  session\_id. So if `purchase_event` fails the sampling rate once, future
+  occurrences of the same event in that session will also fail.
+</Note>
+
+### Initialization - StatsigTriggeredSessionReplay
+
+<Tabs>
+  <Tab title="Javascript" icon="JS">
+    ```jsx  theme={null}
+    import { StatsigClient } from "@statsig/js-client";
+    import { runStatsigTriggeredSessionReplay } from "@statsig/session-replay";
+    import { runStatsigAutoCapture } from "@statsig/web-analytics";
+
+    const client = new StatsigClient(
+      sdkKey,
+      { userID: "some_user_id" },
+      { environment: { tier: "production" } } // optional, pass options here if needed
+    );
+    runStatsigTriggeredSessionReplay(client, {
+      autoStartRecording: true,
+      keepRollingWindow: true,
+    });
+    runStatsigAutoCapture(client);
+    await client.initializeAsync();
+    ```
+  </Tab>
+
+  <Tab title="React" icon="react">
+    ```jsx  theme={null}
+    import { StatsigProvider, useClientAsyncInit } from "@statsig/react-bindings";
+    import { StatsigTriggeredSessionReplayPlugin } from "@statsig/session-replay";
+    import { StatsigAutoCapturePlugin } from "@statsig/web-analytics";
+
+    function App() {
+      return (
+        <StatsigProvider
+          sdkKey={YOUR_CLIENT_KEY}
+          user={{ userID: "a-user" }}
+          loadingComponent={<div>Loading...</div>}
+          options={{
+            plugins: [
+              new StatsigTriggeredSessionReplayPlugin({
+                autoStartRecording: true,
+                keepRollingWindow: true,
+              }),
+              new StatsigAutoCapturePlugin(),
+            ],
+          }}
+        >
+          <Content />
+        </StatsigProvider>
+      );
+    }
+    ```
+  </Tab>
+</Tabs>
+
+#### Initialization Options
+
+* `autoStartRecording`
+  * `true`: Recording *can* start automatically after initialization. Global targeting gate and sample rate are respected
+  * `false`: You *must* manually start recording using startRecording(). This is helpful if you want to start the recording after a set point and block any auto-recording before then
+* `keepRollingWindow`
+  * `true`: Statsig maintains a local rolling window of the last 30 seconds of the session, allowing recordings to include context leading up to a trigger.
+  * `false`: If a conditional trigger occurs, recording begins from that moment onward, with no historical context.
+
+<Warning>
+  If you are utilizing bootstrapping, reach out to the Statsig team to confirm
+  your server sdk is supported for conditional recording
+</Warning>
+
+## Advanced: Forcing a Recording on Demand
+
+You may have a use case where you want to manually start a recording. To do this, we offer the startRecording API which will begin recording as soon as you call it.
+
+* `startRecording`: Respects both the Global Targeting Gate and Global Sampling Rate. This is useful if you still want to start your recordings after a certain point (e.g. after login) but still take advantage of the Global Sampling Rate
+* `forceStartRecording`: Respects the Global Targeting Gate but is not subject to the Global Sampling Rate. Useful for debugging or when you don't want to be subjected to the Global Sampling Rate
+* `stopRecording`: Stops the current recording, if one is in progress. Calling this method when no recording is active has no adverse effects. After stopRecording is called, conditional recording triggers will **not** automatically restart the recording. Only an explicit call to `startRecording` or `forceStartRecording` will resume recording.
+
+If you have access to your Session Replay client, you can call these functions directly on the client instance.
+
+```
+const sessionReplayClient = new SessionReplay(client);
+…
+
+if (someCondition) {
+  sessionReplayClient.startRecording();
+}
+```
+
+If not, you can import the function from `@Statsig/session-replay` and call it using your SDK key
+
+```
+import { startRecording } from '@Statsig/session-replay';
+…
+
+
+startRecording(CLIENT_SDK_KEY)
+```
+
+## Additional Options
+
+These are options offered by the rrweb recorder (the open source recording tool we use)
+
+| key                      | default              | description                                                                                                                                                                                   |
+| ------------------------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| blockClass               | 'rr-block'           | Use a string or RegExp to configure which elements should be blocked                                                                                                                          |
+| blockSelector            | null                 | Use a string to configure which selector should be blocked                                                                                                                                    |
+| ignoreClass              | 'rr-ignore'          | Use a string or RegExp to configure which elements should be ignored                                                                                                                          |
+| ignoreSelector           | null                 | Use a string to configure which selector should be ignored                                                                                                                                    |
+| ignoreCSSAttributes      | null                 | array of CSS attributes that should be ignored                                                                                                                                                |
+| maskTextClass            | 'rr-mask'            | Use a string or RegExp to configure which elements should be masked                                                                                                                           |
+| maskTextSelector         | null                 | Use a string to configure which selector should be masked                                                                                                                                     |
+| maskAllInputs            | false                | mask all input content as \*                                                                                                                                                                  |
+| maskInputOptions         | `{ password: true }` | mask some kinds of input \*<br />refer to the [list](https://github.com/rrweb-io/rrweb/blob/588164aa12f1d94576f89ae0210b98f6e971c895/packages/rrweb-snapshot/src/types.ts#L77-L95)            |
+| maskInputFn              | -                    | customize mask input content recording logic                                                                                                                                                  |
+| maskTextFn               | -                    | customize mask text content recording logic                                                                                                                                                   |
+| slimDOMOptions           | `{}`                 | remove unnecessary parts of the DOM <br />refer to the [list](https://github.com/rrweb-io/rrweb/blob/588164aa12f1d94576f89ae0210b98f6e971c895/packages/rrweb-snapshot/src/types.ts#L97-L108)  |
+| dataURLOptions           | `{}`                 | Canvas image format and quality ,This parameter will be passed to the OffscreenCanvas.convertToBlob(),Using this parameter effectively reduces the size of the recorded data                  |
+| inlineStylesheet         | true                 | whether to inline the stylesheet in the events                                                                                                                                                |
+| hooks                    | `{}`                 | hooks for events<br />refer to the [list](https://github.com/rrweb-io/rrweb/blob/9488deb6d54a5f04350c063d942da5e96ab74075/src/types.ts#L207)                                                  |
+| packFn                   | -                    | refer to the [storage optimization recipe](https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/optimize-storage.md)                                                                    |
+| sampling                 | -                    | refer to the [storage optimization recipe](https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/optimize-storage.md)                                                                    |
+| recordCanvas             | false                | Whether to record the canvas element. Available options:<br />`false`, <br />`true`                                                                                                           |
+| recordCrossOriginIframes | false                | Whether to record cross origin iframes. rrweb has to be injected in each child iframe for this to work. Available options:<br />`false`, <br />`true`                                         |
+| recordAfter              | 'load'               | If the document is not ready, then the recorder will start recording after the specified event is fired. Available options: `DOMContentLoaded`, `load`                                        |
+| inlineImages             | false                | whether to record the image content                                                                                                                                                           |
+| collectFonts             | false                | whether to collect fonts in the website                                                                                                                                                       |
+| userTriggeredOnInput     | false                | whether to add `userTriggered` on input events that indicates if this event was triggered directly by the user or not. [What is `userTriggered`?](https://github.com/rrweb-io/rrweb/pull/495) |
+| plugins                  | \[]                  | load plugins to provide extended record functions. [What is plugins?](https://github.com/rrweb-io/rrweb/blob/master/docs/recipes/plugin.md)                                                   |
+| errorHandler             | -                    | A callback that is called if something inside of rrweb throws an error. The callback receives the error as argument.                                                                          |
+
+## Limits
+
+### 4 Hours Per Session or 30 Min Inactive Time
+
+Sessions will end after four hours total or if the user returns from inactive time greater than 30 minutes later.
+
+### Recording Limits
+
+| Tier       | Monthly Limit | Daily Limit | Hourly Limit |
+| :--------- | ------------: | ----------: | -----------: |
+| Free       |        50,000 |       3,500 |        3,500 |
+| Pro        |       100,000 |       7,000 |        7,000 |
+| Enterprise |       100,000 |       7,000 |        7,000 |
+
+Once these limit is reached, the SDK will automatically prevent new recordings from starting. You can monitor your session replay usage in your project settings. [Contact us](https://statsig.com/contact/demo) for custom contracts
+
+### Replay Availability Time
+
+It can currently take about 1 hour from when the session is recorded to seeing it in your Statsig console.
+
+### Default 30 Day Retention
+
+Sessions have a default retention period of 30 days and are automatically deleted after that time. You can configure a shorter retention period in settings if needed. Reducing your retention period does not affect your monthly session replay limit and is typically done for privacy and compliance purposes.
+
+
+Built with [Mintlify](https://mintlify.com).

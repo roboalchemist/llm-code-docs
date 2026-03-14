@@ -1,0 +1,168 @@
+# Source: https://docs.edgeimpulse.com/tools/libraries/api-bindings/studio/python/edgeimpulse_api/models/set_keras_parameter_request.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.edgeimpulse.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# edgeimpulse_api.models.set_keras_parameter_request
+
+## Classes
+
+### SetKerasParameterRequest
+
+```python  theme={"system"}
+edgeimpulse_api.models.set_keras_parameter_request.SetKerasParameterRequest(
+	**data: Any
+)
+```
+
+Create a new model by parsing and validating input data from keyword arguments.
+
+Raises ValidationError if the input data cannot be parsed to form a valid model.
+
+| Parameters |       |
+| ---------- | ----- |
+| `**data`   | `Any` |
+
+| Bases                              |
+| ---------------------------------- |
+| `pydantic.v1.main.BaseModel`       |
+| `pydantic.v1.utils.Representation` |
+
+| Class variables                       |                                                                                                |
+| ------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `Config`                              | ` `                                                                                            |
+| `akida_edge_learning_config`          | `edgeimpulse_api.models.akida_edge_learning_config.AkidaEdgeLearningConfig \| None`            |
+| `anomaly_capacity`                    | `edgeimpulse_api.models.anomaly_capacity.AnomalyCapacity \| None`                              |
+| `augmentation_policy_image`           | `edgeimpulse_api.models.augmentation_policy_image_enum.AugmentationPolicyImageEnum \| None`    |
+| `augmentation_policy_spectrogram`     | `edgeimpulse_api.models.augmentation_policy_spectrogram.AugmentationPolicySpectrogram \| None` |
+| `auto_class_weights`                  | `pydantic.v1.types.StrictBool \| None`                                                         |
+| `batch_size`                          | `float \| None`                                                                                |
+| `block_parameters`                    | `edgeimpulse_api.models.block_parameters.BlockParameters \| None`                              |
+| `custom_parameters`                   | `Dict[str, pydantic.v1.types.StrictStr] \| None`                                               |
+| `custom_validation_metadata_key`      | `pydantic.v1.types.StrictStr \| None`                                                          |
+| `last_shown_model_variant`            | `edgeimpulse_api.models.keras_model_variant_enum.KerasModelVariantEnum \| None`                |
+| `learning_rate`                       | `float \| None`                                                                                |
+| `minimum_confidence_rating`           | `float \| None`                                                                                |
+| `mode`                                | `pydantic.v1.types.StrictStr \| None`                                                          |
+| `profile_int8`                        | `pydantic.v1.types.StrictBool \| None`                                                         |
+| `script`                              | `pydantic.v1.types.StrictStr \| None`                                                          |
+| `selected_model_type`                 | `edgeimpulse_api.models.keras_model_type_enum.KerasModelTypeEnum \| None`                      |
+| `show_advanced_training_settings`     | `pydantic.v1.types.StrictBool \| None`                                                         |
+| `show_augmentation_training_settings` | `pydantic.v1.types.StrictBool \| None`                                                         |
+| `skip_embeddings_and_memory`          | `pydantic.v1.types.StrictBool \| None`                                                         |
+| `train_test_split`                    | `float \| None`                                                                                |
+| `training_cycles`                     | `pydantic.v1.types.StrictInt \| None`                                                          |
+| `use_learned_optimizer`               | `pydantic.v1.types.StrictBool \| None`                                                         |
+| `visual_layers`                       | `List[edgeimpulse_api.models.keras_visual_layer.KerasVisualLayer] \| None`                     |
+
+***
+
+**STATIC METHODS**
+
+#### from\_dict
+
+```python  theme={"system"}
+edgeimpulse_api.models.set_keras_parameter_request.SetKerasParameterRequest.from_dict(
+	obj: dict
+) ‑> edgeimpulse_api.models.set_keras_parameter_request.SetKerasParameterRequest
+```
+
+Create an instance of SetKerasParameterRequest from a dict
+
+| Parameters |        |
+| ---------- | ------ |
+| `obj`      | `dict` |
+
+| Returns                                                                       |
+| ----------------------------------------------------------------------------- |
+| `edgeimpulse_api.models.set_keras_parameter_request.SetKerasParameterRequest` |
+
+#### from\_json
+
+```python  theme={"system"}
+edgeimpulse_api.models.set_keras_parameter_request.SetKerasParameterRequest.from_json(
+	json_str: str
+) ‑> edgeimpulse_api.models.set_keras_parameter_request.SetKerasParameterRequest
+```
+
+Create an instance of SetKerasParameterRequest from a JSON string
+
+| Parameters |       |
+| ---------- | ----- |
+| `json_str` | `str` |
+
+| Returns                                                                       |
+| ----------------------------------------------------------------------------- |
+| `edgeimpulse_api.models.set_keras_parameter_request.SetKerasParameterRequest` |
+
+#### mode\_validate\_enum
+
+```python  theme={"system"}
+edgeimpulse_api.models.set_keras_parameter_request.SetKerasParameterRequest.mode_validate_enum(
+	v
+)
+```
+
+| Parameters |     |
+| ---------- | --- |
+| `v`        | ` ` |
+
+***
+
+**METHODS**
+
+#### to\_dict
+
+```python  theme={"system"}
+edgeimpulse_api.models.set_keras_parameter_request.SetKerasParameterRequest.to_dict(
+	self
+)
+```
+
+Returns the dictionary representation of the model using alias
+
+| Parameters |     |
+| ---------- | --- |
+| `self`     | ` ` |
+
+#### to\_json
+
+```python  theme={"system"}
+edgeimpulse_api.models.set_keras_parameter_request.SetKerasParameterRequest.to_json(
+	self,
+	indent=None
+) ‑> str
+```
+
+Returns the JSON representation of the model using alias
+
+| Parameters    |     |
+| ------------- | --- |
+| `self`        | ` ` |
+| `indent=None` | ` ` |
+
+| Returns |
+| ------- |
+| `str`   |
+
+#### to\_str
+
+```python  theme={"system"}
+edgeimpulse_api.models.set_keras_parameter_request.SetKerasParameterRequest.to_str(
+	self
+) ‑> str
+```
+
+Returns the string representation of the model using alias
+
+| Parameters |     |
+| ---------- | --- |
+| `self`     | ` ` |
+
+| Returns |
+| ------- |
+| `str`   |
+
+
+Built with [Mintlify](https://mintlify.com).

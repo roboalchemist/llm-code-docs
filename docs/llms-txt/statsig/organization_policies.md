@@ -1,0 +1,24 @@
+# Source: https://docs.statsig.com/access-management/org-admin/organization_policies.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.statsig.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Organization Policies
+
+<Info>
+  Organization-level Experiment and Gate Policies are an Enterprise only feature.
+</Info>
+
+## Overview
+
+You can configure Organization-level [Experimentation](https://console.statsig.com/settings/products/experimentation?tab=org) and [Feature Management](https://console.statsig.com/settings/feature_management?tab=org) policies via your **[Settings](https://console.statsig.com/settings)** page.
+These policies will apply to all experiments and gates created within any Project in your Organization.
+
+Read more about:
+
+* [Experiment Policy](/access-management/org-admin/experiment_policy)
+* [Feature Gate Policy](/access-management/org-admin/gates_policy)
+
+
+Built with [Mintlify](https://mintlify.com).

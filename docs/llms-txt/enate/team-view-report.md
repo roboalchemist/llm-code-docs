@@ -1,0 +1,51 @@
+# Source: https://docs.enate.net/enate-help/work-manager/work-manager-2021.1/reports/team-view-report.md
+
+# Team View Report
+
+The Team View report displays information relating to email sentiment analysis allowing users to quickly and clearly see developing trends regarding incoming emails and take action where necessary.&#x20;
+
+<figure><img src="https://3859925423-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MWYnDNwe3Cuo4zlGbs5-887967055%2Fuploads%2FhM4LTJIKJdJ2smcGNH1o%2Fimage.png?alt=media&#x26;token=abf9e210-a14d-4bb7-9018-66ef4e2476a6" alt=""><figcaption></figcaption></figure>
+
+### Accessing the Team View Report
+
+Access to and the ability to edit the Team View is controlled by permissions in user roles, in the same way as all other reports within Enate. If users do not have the right permissions enabled, they will not be able to access or edit the report.
+
+Here are some of the type of information which can be found within the report
+
+### Team view Report Default Structure
+
+#### Work Items Started by Month
+
+<figure><img src="https://3859925423-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MWYnDNwe3Cuo4zlGbs5-887967055%2Fuploads%2FmELCxDvWMKYkxrJxIoUp%2FUntitled%20(7).png?alt=media&#x26;token=07ad2542-4981-4338-a61e-d8bcbe8ac93e" alt=""><figcaption></figcaption></figure>
+
+* Ensure uninterrupted service and efficient workload planning by tracking monthly work item initiation volumes.
+
+#### Work Items Closed by Month
+
+<figure><img src="https://3859925423-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MWYnDNwe3Cuo4zlGbs5-887967055%2Fuploads%2FH0vyJKcNSgD2eUUG9GGc%2FUntitled%20(8).png?alt=media&#x26;token=49a5ee9b-c96d-4b16-b3f4-39c9fecbed7c" alt=""><figcaption></figcaption></figure>
+
+* Optimize resource availability and streamline operational efficiency by monitoring monthly work item closures.
+
+#### Work Items Open by Ageing Category
+
+<figure><img src="https://3859925423-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MWYnDNwe3Cuo4zlGbs5-887967055%2Fuploads%2F4FK09y7uriB0jCudSTRM%2FUntitled%20(9).png?alt=media&#x26;token=369f45ae-9479-4b82-ab08-47b96dd35cd1" alt=""><figcaption></figcaption></figure>
+
+* Prioritize backlog resolution and task management by categorizing open work items by age in days.
+
+#### Work item Count by Defect Category & Status
+
+<figure><img src="https://3859925423-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MWYnDNwe3Cuo4zlGbs5-887967055%2Fuploads%2FZSg2vl69ZJ6N6GzX0k80%2FUntitled%20(10).png?alt=media&#x26;token=2386bd1a-ca5c-4d1b-b947-11dcc75086db" alt=""><figcaption></figcaption></figure>
+
+* Aid targeted defect resolution and service quality improvement by highlighting defect categories needing attention.
+
+#### Total Number of Users & Active Users by Month
+
+<figure><img src="https://3859925423-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MWYnDNwe3Cuo4zlGbs5-887967055%2Fuploads%2FPvx8XbL8aUfOYyXTDkbi%2FUntitled%20(11).png?alt=media&#x26;token=304601f4-88e5-48f6-9d5d-af71f939451a" alt=""><figcaption></figcaption></figure>
+
+* Enable efficient resource allocation and service delivery optimization with monthly user and active user counts.
+
+### Available Data Fields for User Insights
+
+See below for a complete list of all the available data fields that can be used within the User Insights report:
+
+<table><thead><tr><th width="133">Table</th><th width="261">Fields</th><th width="380">Description</th></tr></thead><tbody><tr><td>Activity</td><td>Active Users</td><td>Count of users who are active on a selected date</td></tr><tr><td>Activity</td><td>Total Hrs Logged</td><td>Total time in hours spent by an Agent on all the Work Items they worked on for the selected date range</td></tr><tr><td>Activity</td><td>Total Users</td><td>Total number of users responsible for all the Work Items in a Queue</td></tr><tr><td>Activity</td><td>Activity Type</td><td>The type of activity performed on the Work Item by an Agent (e.g. 'Saved' or 'Completed')</td></tr><tr><td>Activity</td><td>Duration in Sec</td><td>Time spent in seconds on a Work Item by an Agent. Manually entered time is considered if available.</td></tr><tr><td>Activity</td><td>StartDate</td><td>The Work Item activity Start Date in date/time format</td></tr><tr><td>Activity</td><td>StartDate_date</td><td>The Work Item activity Start Date in date only format</td></tr><tr><td>Activity</td><td>User Name</td><td>The user who performed the activity</td></tr><tr><td>Context</td><td>Contract</td><td>The name of the contract</td></tr><tr><td>Context</td><td>Customer</td><td>The name of the customer</td></tr><tr><td>Context</td><td>Service</td><td>The name of the service</td></tr><tr><td>Context</td><td>Supplier</td><td>The name of the supplier</td></tr><tr><td>Date</td><td>Date</td><td>Calendar range of dates for filtering data</td></tr><tr><td>Date</td><td>Month</td><td>Months of the dates</td></tr><tr><td>Date</td><td>Week</td><td>Weeks of the dates</td></tr><tr><td>Date</td><td>Year</td><td>Year of the dates</td></tr><tr><td>Defects</td><td>Work Item Count</td><td>Number of Work Items that have defects</td></tr><tr><td>Defects</td><td>Date Raised</td><td>Date on which the defect was raised for a Work Item</td></tr><tr><td>Defects</td><td>Defect Category</td><td>Category of the defect</td></tr><tr><td>Defects</td><td>Description</td><td>Description of the defect</td></tr><tr><td>Defects</td><td>Status</td><td>States whether the defect is resolved or not</td></tr><tr><td>Feedback</td><td>Avg. rating</td><td>Average of ratings for each Work Item</td></tr><tr><td>Feedback</td><td>Rating</td><td>User rating for each Work Item</td></tr><tr><td>Feedback</td><td>Reference</td><td>Reference number of a Work Item that has feedback</td></tr><tr><td>Process</td><td>Process</td><td>Name of the process each Work Item belongs to</td></tr><tr><td>Process</td><td>Work Item Type</td><td>Type of the Work Item (Ticket, Action or Case)</td></tr><tr><td>Queues</td><td>Queue</td><td>Name of the queue the Work Item was last present in</td></tr><tr><td>Status</td><td>Status</td><td>Work Item Status (To Do, In Progress, Waiting , Resolved , Closed)</td></tr><tr><td>Status Reason</td><td>Status Reason</td><td>Reason behind the status change of the Work Item (Newly Created, new Info Receieved, Blocked by Business rule etc.)</td></tr><tr><td>Wait Status History</td><td>Waiting each Day</td><td>Count of Work Items that are set to waiting status on a particular day by the Agent (out of the Work Items he/she working/worked on)</td></tr><tr><td>Wait Status History</td><td>EndDate</td><td>End Date in Date time format when Work Item was in waiting state</td></tr><tr><td>Wait Status History</td><td>EndDate_date</td><td>End Date in Date only format when Work Item was in waiting state</td></tr><tr><td>Wait Status History</td><td>StartDate</td><td>Start Date in Date time format when Work Item was in waiting state</td></tr><tr><td>Wait Status History</td><td>StartDate_date</td><td>Start Date in Date only format when Work Item was in waiting state</td></tr><tr><td>Wait Status History</td><td>User Name</td><td>Agent who set the status of Work Item to Waiting</td></tr><tr><td>Work Items</td><td>Action</td><td>Sum of Closed and Waiting work items on a particular day by an Agent</td></tr><tr><td>Work Items</td><td>Work Items Assigned Today</td><td>Count of Work Items that are assgined to the agent today</td></tr><tr><td>Work Items</td><td>Work Items Closed</td><td>Total Work Items closed by agent for the selected date range</td></tr><tr><td>Work Items</td><td>Work Items Closed Today</td><td>Count of Work Items that are closed by agent today</td></tr><tr><td>Work Items</td><td>Work Items Due Today</td><td>Count of Work Items that are due today by agent</td></tr><tr><td>Work Items</td><td>Work Items Open</td><td>Total Work Items that are Open by agent</td></tr><tr><td>Work Items</td><td>Work Items Overdue</td><td>Total Work Items that are Overdue by agent</td></tr><tr><td>Work Items</td><td>Work Items Reopened</td><td>Total Tickets that are reopened for the agent</td></tr><tr><td>Work Items</td><td>Work Items Resolved</td><td>Total Work Items that are Resolved by agent for the selected date range</td></tr><tr><td>Work Items</td><td>Work Items Started</td><td>Total Work Items started by agent for the selected date range</td></tr><tr><td></td><td>Ageing Category</td><td>Grouping of Aging in Days into different buckets</td></tr><tr><td>Work Items</td><td>Ageing In Days</td><td>Ageing in calendar days. For completed Work Items its (end date - start date), for open items its (today - start date).</td></tr><tr><td>Work Items</td><td>Count of Affected Records</td><td>Records affected count</td></tr><tr><td>Work Items</td><td>Count of Defects</td><td>Count of defects each Work Item has (if any)</td></tr><tr><td>Work Items</td><td>Count of Rework</td><td>Count of rework each Work Item has (if any)</td></tr><tr><td>Work Items</td><td>DueDate</td><td>Work Item Due Date in date time format</td></tr><tr><td>Work Items</td><td>DueDate_date</td><td>Work Item Due Date in date only format</td></tr><tr><td>Work Items</td><td>EndDate</td><td>Work Item End Date in date time format</td></tr><tr><td>Work Items</td><td>EndDate_date</td><td>Work Item End Date in date only format</td></tr><tr><td>Work Items</td><td>Has Defects</td><td>Whether the Work Item has defect or not (Yes or No)</td></tr><tr><td>Work Items</td><td>Is Reopened</td><td>Tickets that got opened after going to resolved status</td></tr><tr><td>Work Items</td><td>Reference</td><td>Reference number of each Work Item</td></tr><tr><td></td><td>Resolved Date</td><td>Work Item resolved date in date/time format</td></tr><tr><td></td><td>Resolved Date_date</td><td>Work Item resolved date in date format</td></tr><tr><td>Work Items</td><td>SLA</td><td>Service Level Agreement to indicate where Work Item is Overdue or not</td></tr><tr><td>Work Items</td><td>StartDate</td><td>Work Item Start Date in date time format</td></tr><tr><td>Work Items</td><td>Start Date_date</td><td>Work Item Start Date in date only format</td></tr><tr><td>Work Items</td><td>Title</td><td>Title of the Work Item</td></tr></tbody></table>

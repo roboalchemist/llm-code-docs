@@ -1,0 +1,22 @@
+# Source: https://docs.celeryq.dev/projects/kombu/en/stable/reference/kombu.log.html
+
+Title: kombu.log — Kombu 5.6.2 documentation
+
+URL Source: https://docs.celeryq.dev/projects/kombu/en/stable/reference/kombu.log.html
+
+Markdown Content:
+This document is for Kombu's development version, which can be significantly different from previous releases. Get the stable docs here: [5.3](https://kombu.readthedocs.io/en/latest/reference/kombu.log.html).
+
+Logging - `kombu.log`[¶](https://docs.celeryq.dev/projects/kombu/en/stable/reference/kombu.log.html#logging-kombu-log "Link to this heading")
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Logging Utilities.
+
+_class_ kombu.log.LogMixin[[source]](https://docs.celeryq.dev/projects/kombu/en/stable/_modules/kombu/log.html#LogMixin)[¶](https://docs.celeryq.dev/projects/kombu/en/stable/reference/kombu.log.html#kombu.log.LogMixin "Link to this definition")
+Mixin that adds severity methods to any class.
+
+annotate(_text_)[[source]](https://docs.celeryq.dev/projects/kombu/en/stable/_modules/kombu/log.html#LogMixin.annotate)[¶](https://docs.celeryq.dev/projects/kombu/en/stable/reference/kombu.log.html#kombu.log.LogMixin.annotate "Link to this definition")critical(_*args_, _**kwargs_)[[source]](https://docs.celeryq.dev/projects/kombu/en/stable/_modules/kombu/log.html#LogMixin.critical)[¶](https://docs.celeryq.dev/projects/kombu/en/stable/reference/kombu.log.html#kombu.log.LogMixin.critical "Link to this definition")debug(_*args_, _**kwargs_)[[source]](https://docs.celeryq.dev/projects/kombu/en/stable/_modules/kombu/log.html#LogMixin.debug)[¶](https://docs.celeryq.dev/projects/kombu/en/stable/reference/kombu.log.html#kombu.log.LogMixin.debug "Link to this definition")error(_*args_, _**kwargs_)[[source]](https://docs.celeryq.dev/projects/kombu/en/stable/_modules/kombu/log.html#LogMixin.error)[¶](https://docs.celeryq.dev/projects/kombu/en/stable/reference/kombu.log.html#kombu.log.LogMixin.error "Link to this definition")get_logger()[[source]](https://docs.celeryq.dev/projects/kombu/en/stable/_modules/kombu/log.html#LogMixin.get_logger)[¶](https://docs.celeryq.dev/projects/kombu/en/stable/reference/kombu.log.html#kombu.log.LogMixin.get_logger "Link to this definition")get_loglevel(_level_)[[source]](https://docs.celeryq.dev/projects/kombu/en/stable/_modules/kombu/log.html#LogMixin.get_loglevel)[¶](https://docs.celeryq.dev/projects/kombu/en/stable/reference/kombu.log.html#kombu.log.LogMixin.get_loglevel "Link to this definition")info(_*args_, _**kwargs_)[[source]](https://docs.celeryq.dev/projects/kombu/en/stable/_modules/kombu/log.html#LogMixin.info)[¶](https://docs.celeryq.dev/projects/kombu/en/stable/reference/kombu.log.html#kombu.log.LogMixin.info "Link to this definition")is_enabled_for(_level_)[[source]](https://docs.celeryq.dev/projects/kombu/en/stable/_modules/kombu/log.html#LogMixin.is_enabled_for)[¶](https://docs.celeryq.dev/projects/kombu/en/stable/reference/kombu.log.html#kombu.log.LogMixin.is_enabled_for "Link to this definition")log(_severity_, _*args_, _**kwargs_)[[source]](https://docs.celeryq.dev/projects/kombu/en/stable/_modules/kombu/log.html#LogMixin.log)[¶](https://docs.celeryq.dev/projects/kombu/en/stable/reference/kombu.log.html#kombu.log.LogMixin.log "Link to this definition")_property_ logger[¶](https://docs.celeryq.dev/projects/kombu/en/stable/reference/kombu.log.html#kombu.log.LogMixin.logger "Link to this definition")_property_ logger_name[¶](https://docs.celeryq.dev/projects/kombu/en/stable/reference/kombu.log.html#kombu.log.LogMixin.logger_name "Link to this definition")warn(_*args_, _**kwargs_)[[source]](https://docs.celeryq.dev/projects/kombu/en/stable/_modules/kombu/log.html#LogMixin.warn)[¶](https://docs.celeryq.dev/projects/kombu/en/stable/reference/kombu.log.html#kombu.log.LogMixin.warn "Link to this definition")kombu.log.get_loglevel(_level_)[[source]](https://docs.celeryq.dev/projects/kombu/en/stable/_modules/kombu/log.html#get_loglevel)[¶](https://docs.celeryq.dev/projects/kombu/en/stable/reference/kombu.log.html#kombu.log.get_loglevel "Link to this definition")
+Get loglevel by name.
+
+kombu.log.setup_logging(_loglevel=None_, _logfile=None_)[[source]](https://docs.celeryq.dev/projects/kombu/en/stable/_modules/kombu/log.html#setup_logging)[¶](https://docs.celeryq.dev/projects/kombu/en/stable/reference/kombu.log.html#kombu.log.setup_logging "Link to this definition")
+Setup logging.
