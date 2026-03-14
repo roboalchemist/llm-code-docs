@@ -2028,3 +2028,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/asp.net-core-validation
   branch: main
+- name: opam
+  description: opam from GitHub
+  repo_url: https://github.com/ocaml/opam.git
+  source_folder: doc
+  target_folder: docs/github-scraped/opam
+  branch: main
