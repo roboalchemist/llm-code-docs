@@ -1,0 +1,53 @@
+# Source: https://docs.statsig.com/feature-flags/view-exposures.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.statsig.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Viewing Feature Gate exposures
+
+> Monitor feature impact by viewing gate exposures, balanced gates, and metric lifts in Statsig console
+
+## Gate Exposures
+
+To see the number of users who are being exposed to a feature gate,
+
+* Log into the Statsig console at [https://console.statsig.com](https://console.statsig.com)
+* On the left-hand navigation panel, select **Feature Gates**
+* Select the feature gate that you want to test
+* Click on the **Pulse Results** tab
+* The **Cumulative Exposures** panel shows total exposures of a feature gate, broken down into three groups-
+  1. Units that passed the feature gate, and were used for analysis
+  2. Units that did not pass the feature gate, and were used for analysis vs. the "Pass" group
+  3. Units that did not pass the feature gate, and were *not* used for analysis vs. the "Pass" group
+
+<Frame>
+  <img width="1417" alt="Feature gate cumulative exposures view" src="https://mintcdn.com/statsig-4b2ff144/ZM1xE0fkOvd3nIHq/images/feature-flags/view-exposures/9b115b7b-026c-4364-aac9-24a2e0007b5d.png?fit=max&auto=format&n=ZM1xE0fkOvd3nIHq&q=85&s=b80d85eb9590f3d855bdca27a35c5b9e" data-path="images/feature-flags/view-exposures/9b115b7b-026c-4364-aac9-24a2e0007b5d.png" />
+</Frame>
+
+## Balanced Gates
+
+Statsig balances gates and holdouts by default in Cloud, and as an opt-in option for Warehouse Native holdouts (on the Setup page). This reduces false positives, trading that off for losing sample size. Generally, this is considered a best practice and Statsig lands on the side of preferring a balanced analysis. See section 7 of [AB Testing Intuition Busters](https://drive.google.com/file/d/1oK2HpKKXeQLX6gQeQpfEaCGZtNr2kR76/view) for more discussion.
+
+This sampling is achieved during analysis by downsampling the larger arm proportionally to match the smaller group - e.g. a `(100 - large_group_pct)/(large_group_pct)` sampling rate is applied to the larger group using an unbiased hashing approach, keeping the user pool consistent. The hash salt is rotated across different gates and holdouts.
+
+## Metric Lifts
+
+The **Metrics Lifts** panel shows how your feature is performing based on lifts in any business metrics added to the list of **Monitoring Metrics** for your gate.
+
+After working with experimentation experts across the industry, we aligned on an equal variant comparison (i.e. 10% vs 10% in this example) for calculating metric lifts for gate rollouts. You can read more about the advantages of this methodology in ["A/B Testing Intuition Busters: Common Misunderstandings in Online Controlled Experiments"](https://www.researchgate.net/publication/361226478_AB_Testing_Intuition_Busters_Common_Misunderstandings_in_Online_Controlled_Experiments) by Ron Kohavi, Alex Deng, & Lukas Vermeer.
+
+In the example below, the rises in *product view count* and *purchase event count* are statistically significant, suggesting this feature positively impacts the number of product views, but may actually be *negatively* impacting conversions to purchases itself.
+
+<Frame>
+  <img width="1420" alt="Metric lifts showing feature performance" src="https://mintcdn.com/statsig-4b2ff144/ZM1xE0fkOvd3nIHq/images/feature-flags/view-exposures/01207199-5a5a-4505-a0af-7e6354b4590d.png?fit=max&auto=format&n=ZM1xE0fkOvd3nIHq&q=85&s=b6865c12ce5864125ef7c758224cbb18" data-path="images/feature-flags/view-exposures/01207199-5a5a-4505-a0af-7e6354b4590d.png" />
+</Frame>
+
+## Bots & Filtering
+
+<Info>
+  Information on Bots & Filtering has been moved to its [own page](/experiments/monitoring/bots)
+</Info>
+
+
+Built with [Mintlify](https://mintlify.com).

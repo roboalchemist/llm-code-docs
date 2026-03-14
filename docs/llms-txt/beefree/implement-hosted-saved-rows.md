@@ -1,0 +1,273 @@
+# Source: https://docs.beefree.io/beefree-sdk/rows/reusable-content/create/save/implement-hosted-saved-rows.md
+
+# Implement Hosted Saved Rows
+
+{% hint style="info" %}
+This feature is available on Beefree SDK [Core plan](https://developers.beefree.io/pricing-plans) and above. It is enabled by default.
+{% endhint %}
+
+## **Overview**
+
+With Hosted Saved Rows, you can provide your end users with the option to save and manage reusable content directly within the builder. Hosted Saved Rows are on by default. You can disable and re-enable them through a check within the [Developer Console](https://developers.beefree.io/login?from=website_menu). With this feature, your end users will be able to save the rows they create within the builder, and reuse them easily in the future. They can also perform actions to manage the rows that they save, such as renaming them, deleting them, categorizing, or recategorizing them. This page covers [the steps](#enable-hosted-saved-rows) you need to take to successfully configure [Hosted Saved Rows](https://docs.beefree.io/beefree-sdk/rows/storage/hosted-saved-rows).
+
+The following video tutorial discusses what Saved Rows are, how reusable content can support your end users throughout their content creation journeys, and how you can customize Hosted Saved Rows in your application.
+
+Reference the [GitHub repository with a sample implementation](https://github.com/BeefreeSDK/beefree-sdk-hosted-saved-rows-demo) of Hosted Saved Rows to learn more.
+
+{% embed url="<https://www.youtube.com/watch?v=5m80DgKW0x8>" %}
+Save Time with Hosted Rows Video Tutorial
+{% endembed %}
+
+## **Enable or Disable Hosted Saved Rows**
+
+{% hint style="info" %}
+Hosted Saved Rows are enabled by default. Take the steps in this section to disable or re-enable Hosted Saved Rows.
+{% endhint %}
+
+To enable or disable Hosted Saved Rows for your application, follow these steps:
+
+1. Log in to the [Developer Console](https://developers.beefree.io/login?from=website_menu).
+2. Navigate to the application you'd like to configure Hosted Saved Rows for.
+3. Click on **Details.**
+4. Navigate to **Application configuration** and click **View more.**
+5. Scroll to the **Saved Rows** section.
+   1. Check the **Hosted on the Beefree SDK Infrastructure** option to on or off.
+
+      <figure><img src="https://806400411-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F8c7XIQHfAtM23Dp3ozIC%2Fuploads%2FoirgE3LqhGvo3Zcg7D32%2FCleanShot%202024-11-20%20at%2020.28.15.png?alt=media&#x26;token=20c88c66-56b7-45bd-b8aa-f0af99e4b2b6" alt="Beefree SDK Developer console user interface displaying the toggle options for hosted and self-hosted saved rows" width="563"><figcaption></figcaption></figure>
+   2. (Applicable if you are enabling) Read the pricing information in the popup closely, because additional fees may apply.\*
+
+      <figure><img src="https://806400411-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F8c7XIQHfAtM23Dp3ozIC%2Fuploads%2F2zzzn292aOA9d1GF9XAl%2FCleanShot%202024-11-20%20at%2020.28.37.png?alt=media&#x26;token=f63bff5d-1488-4546-bd88-5a3985d0fe98" alt="Beefree SDK Developer console user interface displaying the popup confirming usage based fees may apply" width="443"><figcaption></figcaption></figure>
+   3. Save your changes.
+
+{% hint style="info" %}
+**Important:** Keep in mind that charges apply for saved rows that are hosted not only in your production applications, but also for your development applications.
+{% endhint %}
+
+\*Hosted Saved Rows have the following pricing structure:
+
+| Pricing Considerations | Free          | Essential     | Core              | Superpowers      | Enterprise       |
+| ---------------------- | ------------- | ------------- | ----------------- | ---------------- | ---------------- |
+| Allotment              | Not available | Not available | 100 Hosted Rows   | 250 Hosted Rows  | 1000 Hosted Rows |
+| Price for extra unit   |               |               | $0.35/Hosted Rows | $0.25/Hosted Row | $0.20/Hosted Row |
+
+**Note:** Visit our [Usage-based fees article](https://devportal.beefree.io/hc/en-us/articles/4403095825042-Usage-based-fees#h_01JE4K84YM3M040X7JBQR7GVW1) to learn more about Hosted Saved Rows pricing.
+
+Hosted Saved Rows give you access to the following:
+
+* Rows saved by your application's end users will be stored and hosted in the Beefree SDK storage option.
+* End users can save rows directly to the hosted infrastructure and retrieve them as needed.
+
+## User Interface and End User Experience
+
+When enabled, your application's end users will have access to a new **Save** icon for each row, and other options for managing the rows they save.
+
+The Hosted Saved Rows UI includes the following experience for end users:
+
+* End users can save a row using the **Save** icon.
+
+  <figure><img src="https://806400411-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F8c7XIQHfAtM23Dp3ozIC%2Fuploads%2FJSwQKQ6ezPDMzXumPiq5%2FCleanShot%202025-01-27%20at%2014.00.04.png?alt=media&#x26;token=449e6366-0a02-4cca-921b-d73271737dd1" alt="Beefree SDK user interface displaying the save icon on the builder stage end users see"><figcaption></figcaption></figure>
+* They have the ability to name and categorize rows.
+
+  <figure><img src="https://806400411-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F8c7XIQHfAtM23Dp3ozIC%2Fuploads%2FXAu9efkBCay2B6xln45V%2FCleanShot%202025-01-27%20at%2014.03.25.png?alt=media&#x26;token=44778c01-0450-496c-bc48-eacbf99e1cb1" alt="Beefree SDK user interface displaying the save row modal with Row name and Category options"><figcaption></figcaption></figure>
+* They can edit a row's name or category and save those changes.
+
+  <figure><img src="https://806400411-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F8c7XIQHfAtM23Dp3ozIC%2Fuploads%2FMzKh6uTb8GRTg71EPYJy%2FCleanShot%202025-01-27%20at%2014.07.16.gif?alt=media&#x26;token=198bed8d-2133-4fca-96e1-e9d02c75b794" alt="Beefree SDK user interface displaying the edit row options, which allows editing the name or category of a row"><figcaption></figcaption></figure>
+* End users can decide to reuse or delete rows through the **Rows** tab in the side panel.
+
+  <figure><img src="https://806400411-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F8c7XIQHfAtM23Dp3ozIC%2Fuploads%2FpwAaVVeaZ3lD0XAT5ZIk%2FCleanShot%202025-01-27%20at%2014.08.29.gif?alt=media&#x26;token=ceef7edf-3dbd-4474-bf2b-cd0c00b262b3" alt="Beefree SDK user interface displaying the delete row option, which allows deleting a row"><figcaption></figcaption></figure>
+* They can also use the vertical three dots to add and manage categories.
+
+  <figure><img src="https://806400411-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F8c7XIQHfAtM23Dp3ozIC%2Fuploads%2F5TISCmYxEEfJeMWHlcxI%2FCleanShot%202025-01-27%20at%2014.09.34.gif?alt=media&#x26;token=b892c5ac-bacc-436a-9947-d31f3c264f23" alt="Beefree SDK user interface displaying the add new category option, which allows adding more row categories in the builder"><figcaption></figcaption></figure>
+
+Reference the [Hosted Saved Rows end user documentation](https://docs.beefree.io/end-user-guide/hosted-saved-rows) for more information on the end user steps and experience.
+
+## Limit the Number of Hosted Saved Rows by UID
+
+You can limit the number of Hosted Saved Rows an end user can save by their unique UID. The `maxHostedRowsLimit` parameter lets you define the maximum number of Hosted Saved Rows an end user can create in your Beefree SDK configuration. Use this parameter to establish predictable saving patterns for Hosted Saved Rows within your application.
+
+**Why use `maxHostedRowsLimit`?**
+
+* **Customize at the user level:** Set unique limits per user ID (UID), giving you flexibility to adapt quotas based on specific needs or plan tiers.
+* **Control usage and make costs more predictable:** Prevent scenarios where users save large numbers of rows, leading to unexpected usage-based charges. By setting a clear upper limit, you can better forecast and manage your costs.
+* **Differentiate your pricing plans:** Create customized experiences for different user segments. For example, offer 3 saved rows to free-tier users and unlock higher limits for premium users. This allows you to align features with your pricing model and incentivize upgrades.
+
+**Code Snippet Example**
+
+The following code snippet shows an example of how to use the `maxHostedRowsLimit` parameter in your `beeConfig` file.
+
+```javascript
+const beeConfig = {
+  rowsConfiguration: {
+    // Define custom row behavior or limitations here
+    // e.g., maxColumnsPerRow: 2,
+  },
+  maxHostedRowsLimit: 10, // Maximum number of hosted saved rows the user can save
+};
+```
+
+In this example, the user can save up to 10 Hosted Saved Rows. Beefree SDK will block attempts to save more than this limit.
+
+### **Custom the Toast Message**
+
+When you limit the number Hosted Saved Rows for an end user, they will see a toast message on the lower right-hand side of the screen when their limit is reached. The default message for this toast message is the following:
+
+> **Title:** Saved rows limit reached
+>
+> **Description:** You've saved 5 of 5 rows. To save a new row, please delete an existing one first.
+
+The following image shows how this default toast message looks within the user interface.
+
+<figure><img src="https://806400411-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F8c7XIQHfAtM23Dp3ozIC%2Fuploads%2FfLjdpCYcwEwUP62gvEkV%2FCleanShot%202025-06-07%20at%2016.14.11.png?alt=media&#x26;token=ff2265a0-8c6a-4e11-9df0-2ab3b9199a57" alt="Default toast message the end user sees when they&#x27;ve reached their saved rows limit"><figcaption></figcaption></figure>
+
+You can use [Custom Languages](https://docs.beefree.io/beefree-sdk/other-customizations/advanced-options/custom-languages) to customize both the title and description text within this message. For example, if you have more of playful brand tone within your application, and want to adjust the message accordingly, you can.
+
+In the following code snippet, the default text was changed to the following:
+
+> **Title:** Whoa there, design superstar!
+>
+> **Description:** You’ve hit your 5-row max—time to let one go before saving another.
+
+This was achieved by adding the `translations` object to the `beeConfig`, and then adding the strings within the object with the new text.
+
+#### Code Snippet of Example Toast Message Customization
+
+```javascript
+var beeConfig = {
+  container: "bee-plugin-container", // [mandatory]
+  language: "en-US",
+  trackChanges: true,
+  mergeTags: mergeTags,
+  translations: {
+    "hosted-content": {
+      "save-row-max-limit-error-toast-title": "Whoa there, design superstar! ", // Title text
+      "save-row-max-limit-error-toast-description": "You’ve hit your 5-row max—time to let one go before saving another.", // Message text
+    },
+  },
+  saveRows: uid === "Admin" || uid === "Designer",
+};
+```
+
+## **Configure Advanced Permissions**
+
+Hosted Saved Rows includes [advanced permissions](https://docs.beefree.io/beefree-sdk/other-customizations/advanced-options/advanced-permissions#hosted-saved-rows) to control how rows and categories are accessed and managed. These permissions allow you to define user capabilities, such as editing or deleting rows.
+
+### **Available Permissions**
+
+The permissions you can control for Hosted Saved Rows through Advanced Permissions are the following:
+
+* **`canDeleteHostedRow`:** Allows or prevents deleting hosted rows.
+* **`canEditHostedRow`:** Enables or disables editing of hosted rows.
+* **`canManageHostedRowCategory`:** Controls whether end users can manage row categories.
+* **`canAddHostedRowCategory`:** Determines if end users can add new categories.
+
+### **Permission Behavior**
+
+Keep the following behaviors in mind when setting advanced permissions:
+
+* If both `canDeleteHostedRow` and `canEditHostedRow` are set to `false`, the row menu will be hidden.
+* If both `canManageHostedRowCategory` and `canAddHostedRowCategory` are set to `false`, the category management menu will be hidden.
+
+#### **Example Configuration**
+
+The following configuration displays an example of the `rows` object inside of `advancedPermissions`:
+
+```javascript
+{
+...
+advancedPermissions:{
+  ...
+  rows:{
+    behaviors: {
+        canDeleteHostedRow: false,
+        canEditHostedRow: false,
+        canManageHostedRowCategory: false,
+        canAddHostedRowCategory: false,
+      },
+    ...
+  },
+  ...
+  }
+...
+}
+```
+
+## **Making Saved Rows Available to Select Users**
+
+You can disable Saved Rows for specific users using the `saveRows` parameter in the `beeConfig` document. This lets you control access based on subscription plans, feature purchases, or beta testing.
+
+Take the following step to disable access for specific users:
+
+* Set `saveRows` to `false` for users who shouldn’t have access.
+
+The following code provides a simple example of how to add the `saveRows` configuration parameter and set it to `false` to make the feature unavailable to select users.
+
+```javascript
+
+const beeConfig = {
+    language: 'en-US',
+    ...
+    saveRows: false // boolean
+    ...
+}
+
+```
+
+### Default Behavior
+
+The following image shows the save icon when the end user clicks on the row.
+
+<figure><img src="https://806400411-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F8c7XIQHfAtM23Dp3ozIC%2Fuploads%2Fl5G6DUeBPS1IpPYFGAH7%2FCleanShot%202025-01-27%20at%2021.02.35.png?alt=media&#x26;token=5227b1fe-4bad-47d1-a597-4041207382cb" alt="User interface showing the save icon and default behavior of saveRows boolean"><figcaption></figcaption></figure>
+
+### Hiding the Save Icon
+
+The following image does not show the save icon when the end user clicks on the row. This behavior occurs after adding `saveRows` to your `beeConfig` and setting it to `false`.
+
+<figure><img src="https://806400411-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F8c7XIQHfAtM23Dp3ozIC%2Fuploads%2FD7hJbR1JfAVMnmSkNHFj%2FCleanShot%202025-01-27%20at%2021.02.03.png?alt=media&#x26;token=4d845967-ada3-4ef2-bc4b-30e17a4c1b62" alt="User interface not showing the save icon and the behavior of saveRows boolean when set to false"><figcaption></figcaption></figure>
+
+## Removing the Rows Tab for Select Users
+
+Similar to how you may want to restrict which end users can save rows based on subscription type, plan type, and so on, you can also control which users have access to the **ROWS** tab within the builder altogether. By default, the **ROWS** tab is available within the builder.
+
+You can remove the **ROWS** tab by:
+
+* Add the `defaultTabsOrder` parameter to your `beeConfig` and set it to: `['content', 'settings']` or `['settings', 'content']`.
+
+{% hint style="info" %}
+**Note:** The only difference between these two options is the order in which they will appear in the builder.
+{% endhint %}
+
+Keep in mind the `defaultTabsOrder` is a string array (`string[]`).
+
+The tab order represented in the snippet below with `content` first and `settings` second, results in the visualization displayed in the image after.
+
+```javascript
+defaultTabsOrder: ['content', 'settings']
+```
+
+In the following image, the **ROWS** tab is no longer available to the end user. In the following image, the **ROWS** tab is no longer available to the end user and the order of the tabs are **Content** first and **Settings** second.
+
+<figure><img src="https://806400411-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F8c7XIQHfAtM23Dp3ozIC%2Fuploads%2FBNm4PYHghDlDG6aWOjaj%2FCleanShot%202025-01-27%20at%2015.04.18.png?alt=media&#x26;token=1f33415b-874c-431c-aae2-9b37e4df5deb" alt="User interface not showing the rows tab based on the custom configuration"><figcaption></figcaption></figure>
+
+The tab order represented in the snippet below with `settings` first and `content` second, results in the visualization displayed in the image after.
+
+```javascript
+defaultTabsOrder: ['settings', 'content']
+```
+
+In the following image, the **ROWS** tab is no longer available to the end user and the order of the tabs are **Settings** first and **Content** second.
+
+<figure><img src="https://806400411-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F8c7XIQHfAtM23Dp3ozIC%2Fuploads%2FSC1C7LSNEdSICqYgGCFk%2FCleanShot%202025-01-27%20at%2015.10.54.png?alt=media&#x26;token=c06517b5-a8c2-4c0e-96a2-165af5c920fa" alt="User interface not showing the rows tab based on the custom configuration with the order of the tabs showing Settings first and Content second"><figcaption></figcaption></figure>
+
+Reference the [Hosted Saved Rows Webinar](https://docs.beefree.io/beefree-sdk/storage/hosted-saved-rows#webinar-tutorial) to learn more about other customizations that are compatible with Hosted Saved Rows. The webinar discusses the following topics:
+
+* What Hosted Saved Rows are
+* How to use [Advanced Permissions](https://docs.beefree.io/beefree-sdk/other-customizations/advanced-options/advanced-permissions#hosted-saved-rows) with Hosted Saved Rows
+* How to restrict which end users can save rows
+* How to customize the modals related to Hosted Saved Rows
+* How to use Hosted Saved Rows with [Content Services API](https://docs.beefree.io/beefree-sdk/apis/content-services-api)
+
+Reference the [sample code in this GitHub repository](https://github.com/BeefreeSDK/beefree-sdk-hosted-saved-rows-demo) to follow along with the [webinar tutorial](https://docs.beefree.io/beefree-sdk/storage/hosted-saved-rows#webinar-tutorial).
+
+Visit the [Hosted Saved Rows page](https://docs.beefree.io/beefree-sdk/rows/storage/hosted-saved-rows) to also learn more about the following topics:
+
+* [Troubleshooting and FAQs](https://docs.beefree.io/beefree-sdk/storage/hosted-saved-rows#troubleshooting-and-faqs)

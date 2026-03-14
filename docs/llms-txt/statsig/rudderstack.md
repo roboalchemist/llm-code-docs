@@ -1,0 +1,83 @@
+# Source: https://docs.statsig.com/integrations/data-connectors/rudderstack.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.statsig.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# RudderStack
+
+## Overview
+
+Enabling the RudderStack integration for Statsig will allow Statsig to pull in your RudderStack events. This allows you to run your experiment analysis on Statsig with all of your existing events from RudderStack without requiring any additional logging.
+
+When Statsig receives events from RudderStack, these will be visible and aggregated in the [Metrics](/metrics) tab in the Statsig console. These events will automatically be included in your [Pulse](/pulse/read-pulse) results for A/B tests with Statsig's [feature flags](/feature-flags/overview) as well as all your [Experiment](/experiments-plus/monitor) results.
+
+## Configuring Incoming Events
+
+To ingest your events from RudderStack,
+
+1. On [app.rudderstack.com](https://app.rudderstack.com/), navigate to "Connections" and click **Add Destination** .
+2. Search for “Statsig” in the Destinations Catalog, and select the “Statsig” destination.
+3. Give your connection a name and choose which Source should send data to the “Statsig” destination.
+4. From the [Statsig dashboard](https://console.statsig.com/api_keys), copy the Statsig "Server Secret Key”.
+5. Enter the Statsig “Server Secret Key” in the “Statsig” destination settings in RudderStack.
+6. On the Statsig [Integration page](https://console.statsig.com/integrations) enable the RudderStack integration.
+7. As your RudderStack events flow into Statsig, you'll see a live **Log Stream** in the [Metrics](/metrics) tab in the Statsig console. You can click one of these events to see the details that are logged as part of the event.
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/aXbnJ_Igoga8-0MX/images/integrations/data-connectors/rudderstack/171243268-29d4717f-05f9-4ea7-b658-dfc434d06da6.png?fit=max&auto=format&n=aXbnJ_Igoga8-0MX&q=85&s=0e6683e7577d6dcec3f18ddeb6499d98" alt="Statsig metrics log stream interface" width="790" height="861" data-path="images/integrations/data-connectors/rudderstack/171243268-29d4717f-05f9-4ea7-b658-dfc434d06da6.png" />
+</Frame>
+
+#### User IDs and Custom IDs
+
+Statsig automatically detects the `event` and `userID` fields that you log through your RudderStack events. If you're running an experiment with the user as your unit type, this userID should match the user identifier that you log with the Statsig SDK.
+
+If you're using a [custom ID](/guides/experiment-on-custom-id-types) as the unit type for your experiment, you can provide this identifier using the key `statsigCustomIDs` as part of the RudderStack `properties` field as shown below.
+
+```bash title="JSON Body" theme={null}
+{
+  ...
+  properties: {
+    "statsigCustomIDs": [ "companyID", "<this_company_id>", "stableID", "<this_stable_id>",]
+  }
+}
+```
+
+The `statsigCustomIDs` field in properties should be an array, where the even index is the name of the user ID type and the odd index is the value of the previous element in the array. Assuming you've created this custom ID type on Statsig (under **ID Type Settings** in your [Project Settings](https://console.statsig.com/settings)), Statsig will automatically recognize these custom identifiers to compute your experiment results appropriately.
+
+#### Environments
+
+By default, all events are treated as "production" events, but you can also differentiate your event traffic by specifying the environment that the events are coming from.
+This allows you to avoid non-production data making it into your production metrics.
+
+If you would like to include the environment tier, you can add it to the properties object of your event.
+The required format is below:
+
+```json  theme={null}
+{
+  ...
+  "properties": {
+   "statsigEnvironment": {
+        "tier": "staging"
+    }
+  }
+}
+```
+
+To learn more about environments see [Using Environment](/guides/using-environments).
+
+## Configuring Outbound Events
+
+To export your Statsig events to RudderStack,
+
+1. Log into the Statsig console and navigate to the [**Integrations**](https://console.statsig.com/integrations) page.
+2. Click on the **RudderStack** card and switch to the **Outbound** tab.
+3. Follow the steps outlined in [RudderStack's Webhook Source](https://www.rudderstack.com/docs/stream-sources/webhook-source/) to get the required "Write Key" and "Data Plane URL".
+4. Once filled out, hit enable to save your changes.
+
+## Filtering Events
+
+You can customize which events should be sent and received via RudderStack using [Event Filtering](/integrations/event_filtering)
+
+
+Built with [Mintlify](https://mintlify.com).

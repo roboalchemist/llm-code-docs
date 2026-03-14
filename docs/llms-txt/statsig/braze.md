@@ -1,0 +1,82 @@
+# Source: https://docs.statsig.com/integrations/data-connectors/braze.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.statsig.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Braze
+
+## Overview
+
+Enabling the Braze integration allows you to export Statsig exposure events to your configured Braze app with information on the status of each user's feature gate and experimentation groups. These exposures will be forwarded to Braze as a [Custom Attribute](https://www.braze.com/docs/user_guide/data/custom_data/custom_attributes) object on the user. There will be one Custom Attribute per gate/experiment the user has been exposed to. The Custom Attribute in Braze will be named `statsig_exposure::{gate/experiment name}` and be of the form:
+
+```
+{
+  group_name: String,
+  timestamp: Time
+}
+```
+
+You can then filter exposed users into a Segment in Braze. Custom Attributes will be forwarded to Braze users by having the unit ID from the gate/experiment as the `external_id` in Braze by default. You can choose to provide a custom Unit ID Type from your Statsig project to be forwarded as the `external_id` for all gate/experiment exposures. This can be provided in the ID Type Mapping section of the Setup dialog for this integration. The integration will attempt to use this custom ID Type if it is provided in the SDK call at the time of exposure, and will fall back to the experiment's Unit ID Type if not.
+
+## Setup in Statsig
+
+<Info>
+  This is available for Enterprise contracts. Please reach out to our support team, your sales contact, or via our [Slack community](https://statsig.com/slack) if you want this enabled.
+</Info>
+
+After it has been enabled, you will be able to find 'Braze' as an option in your Statsig project's [list of integrations](https://console.statsig.com/integrations) from within Statsig console.
+
+1. Open your [Braze dashboard](https://dashboard.braze.com/). Navigate to Settings > APIs and Identifiers, then open the API Keys tab.
+2. Create or select an existing API key that has the 'users.track' permission. Enter the API Key Identifier in the Braze Integration Setup dialog in your Statsig project.
+3. Find your Instance's REST Endpoint from the [Braze API docs](https://www.braze.com/docs/api/basics/#api-definitions/). Enter it in the Integration Setup dialog.
+
+## Segment Filtering in Braze
+
+Once your integration is set up in Statsig, exposures can start firing into your Braze app. When exposures arrive in Braze from a new gate/experiment, you can create a filter on these users.
+
+1. Open your [Braze dashboard](https://dashboard.braze.com/). Navigate to Data Settings > Custom Attributes. You should see your new Custom Attribute from Statsig like below:
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/aXbnJ_Igoga8-0MX/images/integrations/data-connectors/braze/9b09c6b2-b230-499a-a303-29bfe254c6bd.png?fit=max&auto=format&n=aXbnJ_Igoga8-0MX&q=85&s=4fcca3a3c48b928cb17a38e3a61d5269" alt="image.png" width="1406" height="51" data-path="images/integrations/data-connectors/braze/9b09c6b2-b230-499a-a303-29bfe254c6bd.png" />
+</Frame>
+
+2. Click 'Generate Schema'. It will automatically detect the schema like below:
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/aXbnJ_Igoga8-0MX/images/integrations/data-connectors/braze/f6545fc7-e328-44af-8f32-700d442c7869.png?fit=max&auto=format&n=aXbnJ_Igoga8-0MX&q=85&s=7077e57d49e56131768c1341ff83e509" alt="image.png" width="747" height="496" data-path="images/integrations/data-connectors/braze/f6545fc7-e328-44af-8f32-700d442c7869.png" />
+</Frame>
+
+3. Now you can create a Segment from these users. Navigate to Audience > Segments, and click 'Create Segment'.
+
+4. Under the 'Segment Builder' section, add a new filter. Click 'Custom Attributes', then 'Nested Custom Attributes'.
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/aXbnJ_Igoga8-0MX/images/integrations/data-connectors/braze/d0257d44-793c-4ceb-b81e-4a0d58019ff0.png?fit=max&auto=format&n=aXbnJ_Igoga8-0MX&q=85&s=205bbb2f40b6f89b44b01f948b1316eb" alt="image.png" width="585" height="624" data-path="images/integrations/data-connectors/braze/d0257d44-793c-4ceb-b81e-4a0d58019ff0.png" />
+</Frame>
+
+5. Now you can filter to a specific group\_name (true/false for gates, group name for experiments), or timestamp for your set of users. An example Segment filter for all users that have passed a specific gate is like below:
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/aXbnJ_Igoga8-0MX/images/integrations/data-connectors/braze/20d71870-98bf-47b0-aa8d-e0aed4d7a2df.png?fit=max&auto=format&n=aXbnJ_Igoga8-0MX&q=85&s=eed539dea8c8fd119bace65d4ed32ca0" alt="image.png" width="1137" height="483" data-path="images/integrations/data-connectors/braze/20d71870-98bf-47b0-aa8d-e0aed4d7a2df.png" />
+</Frame>
+
+## First Exposures
+
+[First exposures](/pulse/export#first-exposures-file-description) are an enterprise-tier feature that simplifies your project insights.
+
+<Info>
+  This is available for Enterprise contracts. Please reach out to our support team, your sales contact, or via our [Slack community](https://statsig.com/slack) if you want this enabled.
+</Info>
+
+### What is it?
+
+Our Braze Integration offers the flexibility to forward first exposures instead of every exposure, reducing the overall number of events being forwarded. First exposures are calculated daily and forwarded to integrations at around 7pm UTC.
+
+### How to enable
+
+First ensure that the "first exposure" feature has been enabled for your company by reaching out to support team, your sales contact, or via our [Slack community](https://statsig.com/slack).
+Once this is done you will be able to go into the event filtering tab of the integration and enabled "First Exposure" setting.
+
+
+Built with [Mintlify](https://mintlify.com).

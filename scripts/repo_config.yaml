@@ -2150,3 +2150,321 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/tracetest
   branch: main
+- name: pdfplumber
+  description: pdfplumber from GitHub
+  repo_url: https://github.com/jsvine/pdfplumber.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pdfplumber
+  branch: main
+- name: ragatouille
+  description: ragatouille from GitHub
+  repo_url: https://github.com/AnswerDotAI/RAGatouille.git
+  source_folder: docs
+  target_folder: docs/github-scraped/ragatouille
+  branch: main
+- name: nose2
+  description: nose2 from GitHub
+  repo_url: https://github.com/nose-devs/nose2.git
+  source_folder: docs
+  target_folder: docs/github-scraped/nose2
+  branch: main
+- name: plotly
+  description: plotly from GitHub
+  repo_url: https://github.com/plotly/plotly.py.git
+  source_folder: doc
+  target_folder: docs/github-scraped/plotly
+  branch: main
+- name: python-fire
+  description: python-fire from GitHub
+  repo_url: https://github.com/google/python-fire.git
+  source_folder: docs
+  target_folder: docs/github-scraped/python-fire
+  branch: main
+- name: zerolog
+  description: zerolog from GitHub
+  repo_url: https://github.com/TheGhouls/zerolog.git
+  source_folder: docs
+  target_folder: docs/github-scraped/zerolog
+  branch: main
+- name: ava
+  description: ava from GitHub
+  repo_url: https://github.com/avajs/ava.git
+  source_folder: docs
+  target_folder: docs/github-scraped/ava
+  branch: main
+- name: authjs
+  description: authjs from GitHub
+  repo_url: https://github.com/nextauthjs/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/authjs
+  branch: main
+- name: clair
+  description: clair from GitHub
+  repo_url: https://github.com/quay/claircore.git
+  source_folder: docs
+  target_folder: docs/github-scraped/clair
+  branch: main
+- name: vmware-tanzu
+  description: vmware-tanzu from GitHub
+  repo_url: https://github.com/vmware-tanzu/tanzu-cli.git
+  source_folder: docs
+  target_folder: docs/github-scraped/vmware-tanzu
+  branch: main
+- name: runc
+  description: runc from GitHub
+  repo_url: https://github.com/opencontainers/runc.git
+  source_folder: docs
+  target_folder: docs/github-scraped/runc
+  branch: main
+- name: argo-cd
+  description: argo-cd from GitHub
+  repo_url: https://github.com/argoproj/argo-cd.git
+  source_folder: docs
+  target_folder: docs/github-scraped/argo-cd
+  branch: main
+- name: gitlab-ci
+  description: gitlab-ci from GitHub
+  repo_url: https://github.com/gitlabhq/gitlab-ci.git
+  source_folder: doc
+  target_folder: docs/github-scraped/gitlab-ci
+  branch: main
+- name: jmeter
+  description: jmeter from GitHub
+  repo_url: https://github.com/abstracta/jmeter-java-dsl.git
+  source_folder: docs
+  target_folder: docs/github-scraped/jmeter
+  branch: main
+- name: spotbugs
+  description: spotbugs from GitHub
+  repo_url: https://github.com/spotbugs/spotbugs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/spotbugs
+  branch: main
+- name: kics
+  description: kics from GitHub
+  repo_url: https://github.com/Checkmarx/kics.git
+  source_folder: docs
+  target_folder: docs/github-scraped/kics
+  branch: main
+- name: dapper
+  description: dapper from GitHub
+  repo_url: https://github.com/DapperLib/Dapper.git
+  source_folder: docs
+  target_folder: docs/github-scraped/dapper
+  branch: main
+- name: silver-searcher
+  description: silver-searcher from GitHub
+  repo_url: https://github.com/ggreer/the_silver_searcher.git
+  source_folder: doc
+  target_folder: docs/github-scraped/silver-searcher
+  branch: main
+- name: cratedb
+  description: cratedb from GitHub
+  repo_url: https://github.com/crate/cratedb-guide.git
+  source_folder: docs
+  target_folder: docs/github-scraped/cratedb
+  branch: main
+- name: starrocks
+  description: starrocks from GitHub
+  repo_url: https://github.com/StarRocks/starrocks.git
+  source_folder: docs
+  target_folder: docs/github-scraped/starrocks
+  branch: main
+- name: thanos
+  description: thanos from GitHub
+  repo_url: https://github.com/thanos-io/thanos.git
+  source_folder: docs
+  target_folder: docs/github-scraped/thanos
+  branch: main
+- name: apache-atlas
+  description: apache-atlas from GitHub
+  repo_url: https://github.com/apache/atlas.git
+  source_folder: docs
+  target_folder: docs/github-scraped/apache-atlas
+  branch: main
+- name: attrs
+  description: attrs from GitHub
+  repo_url: https://github.com/python-attrs/attrs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/attrs
+  branch: main
+- name: meltano
+  description: meltano from GitHub
+  repo_url: https://github.com/meltano/meltano.git
+  source_folder: docs
+  target_folder: docs/github-scraped/meltano
+  branch: main
+- name: openrefine
+  description: openrefine from GitHub
+  repo_url: https://github.com/OpenRefine/openrefine.org.git
+  source_folder: docs
+  target_folder: docs/github-scraped/openrefine
+  branch: main
+- name: kubeflow
+  description: kubeflow from GitHub
+  repo_url: https://github.com/kubeflow/arena.git
+  source_folder: docs
+  target_folder: docs/github-scraped/kubeflow
+  branch: main
+- name: stepci
+  description: stepci from GitHub
+  repo_url: https://github.com/stepci/stepci.git
+  source_folder: docs
+  target_folder: docs/github-scraped/stepci
+  branch: main
+- name: apache-dolphinscheduler
+  description: apache-dolphinscheduler from GitHub
+  repo_url: https://github.com/apache/dolphinscheduler-sdk-python.git
+  source_folder: docs
+  target_folder: docs/github-scraped/apache-dolphinscheduler
+  branch: main
+- name: netflix-conductor
+  description: netflix-conductor from GitHub
+  repo_url: https://github.com/Netflix/conductor.git
+  source_folder: docs
+  target_folder: docs/github-scraped/netflix-conductor
+  branch: main
+- name: quartz-scheduler
+  description: quartz-scheduler from GitHub
+  repo_url: https://github.com/quartz-scheduler/quartz-scheduler.org-site.git
+  source_folder: documentation
+  target_folder: docs/github-scraped/quartz-scheduler
+  branch: main
+- name: ferry
+  description: ferry from GitHub
+  repo_url: https://github.com/gql-dart/ferry.git
+  source_folder: docs
+  target_folder: docs/github-scraped/ferry
+  branch: main
+- name: graphiql
+  description: graphiql from GitHub
+  repo_url: https://github.com/graphql/graphiql.git
+  source_folder: docs
+  target_folder: docs/github-scraped/graphiql
+  branch: main
+- name: graphql-kotlin
+  description: graphql-kotlin from GitHub
+  repo_url: https://github.com/ExpediaGroup/graphql-kotlin.git
+  source_folder: website/docs
+  target_folder: docs/github-scraped/graphql-kotlin
+  branch: main
+- name: flatbuffers
+  description: flatbuffers from GitHub
+  repo_url: https://github.com/google/flatbuffers.git
+  source_folder: docs
+  target_folder: docs/github-scraped/flatbuffers
+  branch: main
+- name: messagepack
+  description: messagepack from GitHub
+  repo_url: https://github.com/MessagePack-CSharp/MessagePack-CSharp.git
+  source_folder: doc
+  target_folder: docs/github-scraped/messagepack
+  branch: main
+- name: zerorpc
+  description: zerorpc from GitHub
+  repo_url: https://github.com/0rpc/zerorpc-python.git
+  source_folder: doc
+  target_folder: docs/github-scraped/zerorpc
+  branch: main
+- name: apigee
+  description: apigee from GitHub
+  repo_url: https://github.com/apigee/apigeecli.git
+  source_folder: docs
+  target_folder: docs/github-scraped/apigee
+  branch: main
+- name: elastic-email
+  description: elastic-email from GitHub
+  repo_url: https://github.com/ElasticEmail/elasticemail-js.git
+  source_folder: docs
+  target_folder: docs/github-scraped/elastic-email
+  branch: main
+- name: phpmailer
+  description: phpmailer from GitHub
+  repo_url: https://github.com/PHPMailer/PHPMailer.git
+  source_folder: docs
+  target_folder: docs/github-scraped/phpmailer
+  branch: main
+- name: reflex
+  description: reflex from GitHub
+  repo_url: https://github.com/reflex-dev/reflex-web.git
+  source_folder: docs
+  target_folder: docs/github-scraped/reflex
+  branch: main
+- name: vuex
+  description: vuex from GitHub
+  repo_url: https://github.com/vuejs/vuex.git
+  source_folder: docs
+  target_folder: docs/github-scraped/vuex
+  branch: main
+- name: observable-plot
+  description: observable-plot from GitHub
+  repo_url: https://github.com/observablehq/plot.git
+  source_folder: docs
+  target_folder: docs/github-scraped/observable-plot
+  branch: main
+- name: flowbite-vue
+  description: flowbite-vue from GitHub
+  repo_url: https://github.com/themesberg/flowbite-vue.git
+  source_folder: docs
+  target_folder: docs/github-scraped/flowbite-vue
+  branch: main
+- name: melt-ui
+  description: melt-ui from GitHub
+  repo_url: https://github.com/melt-ui/next-gen.git
+  source_folder: docs
+  target_folder: docs/github-scraped/melt-ui
+  branch: main
+- name: final-form
+  description: final-form from GitHub
+  repo_url: https://github.com/final-form/final-form.git
+  source_folder: docs
+  target_folder: docs/github-scraped/final-form
+  branch: main
+- name: bulma
+  description: bulma from GitHub
+  repo_url: https://github.com/jgthms/bulma.git
+  source_folder: docs
+  target_folder: docs/github-scraped/bulma
+  branch: main
+- name: spectrum-design-system
+  description: spectrum-design-system from GitHub
+  repo_url: https://github.com/adobe/spectrum-design-data.git
+  source_folder: docs
+  target_folder: docs/github-scraped/spectrum-design-system
+  branch: main
+- name: lightweight-charts
+  description: lightweight-charts from GitHub
+  repo_url: https://github.com/tradingview/lightweight-charts.git
+  source_folder: website/docs
+  target_folder: docs/github-scraped/lightweight-charts
+  branch: main
+- name: dygraphs
+  description: dygraphs from GitHub
+  repo_url: https://github.com/danvk/dygraphs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/dygraphs
+  branch: main
+- name: solara
+  description: solara from GitHub
+  repo_url: https://github.com/widgetti/solara.git
+  source_folder: docs
+  target_folder: docs/github-scraped/solara
+  branch: main
+- name: react-vis
+  description: react-vis from GitHub
+  repo_url: https://github.com/uber-common/react-vis.git
+  source_folder: docs
+  target_folder: docs/github-scraped/react-vis
+  branch: main
+- name: dhtmlx-gantt
+  description: dhtmlx-gantt from GitHub
+  repo_url: https://github.com/DHTMLX/gantt-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/dhtmlx-gantt
+  branch: main
+- name: express-validator
+  description: express-validator from GitHub
+  repo_url: https://github.com/express-validator/express-validator.git
+  source_folder: docs
+  target_folder: docs/github-scraped/express-validator
+  branch: main
