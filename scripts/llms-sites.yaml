@@ -1424,3 +1424,6 @@ sites:
 - name: ghost
   base_url: https://docs.ghost.org/
   description: ghost documentation
+- name: vagrant
+  base_url: https://www.vagrantup.com/
+  description: vagrant documentation
