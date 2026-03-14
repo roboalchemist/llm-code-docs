@@ -2131,3 +2131,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/verify-dotnet
   branch: main
+- name: inquirer
+  description: inquirer from GitHub
+  repo_url: https://github.com/magmax/python-inquirer.git
+  source_folder: docs
+  target_folder: docs/github-scraped/inquirer
+  branch: main
