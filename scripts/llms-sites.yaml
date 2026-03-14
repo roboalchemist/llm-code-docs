@@ -1469,3 +1469,6 @@ sites:
 - name: nimble
   base_url: https://docs.nimbleway.io/
   description: nimble documentation
+- name: pixi
+  base_url: https://pixijs.com/
+  description: pixi documentation
