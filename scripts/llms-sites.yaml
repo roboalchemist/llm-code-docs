@@ -1412,3 +1412,6 @@ sites:
 - name: base-ui
   base_url: https://base-ui.com/
   description: base-ui documentation
+- name: pdm
+  base_url: https://pdm-project.org/
+  description: pdm documentation
