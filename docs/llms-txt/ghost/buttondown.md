@@ -1,0 +1,38 @@
+# Source: https://docs.ghost.org/migration/buttondown.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ghost.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Migrating from Buttondown
+
+> Migrate from Buttondown and import your content to Ghost with this guide
+
+<Note>
+  If you're a Ghost(Pro) customer, our team may be able to help you migrate your content and subscribers. Learn more about our [Concierge service](https://ghost.org/concierge/).
+</Note>
+
+## Export your subscribers
+
+To get started, export your current subscribers in CSV format.
+
+## Import subscribers to Ghost
+
+Under the Ghost Admin members settings, select the import option from the settings menu.
+
+<Frame>
+  <img src="https://mintcdn.com/ghost/5_xpDDjqLTzEezAK/images/2f96f746-import-members-1_huc3d26abd3bec140dac4d1e5fd61f2b53_17353_1000x0_resize_q100_h2_box_3.webp?fit=max&auto=format&n=5_xpDDjqLTzEezAK&q=85&s=1f2f8d5b608e1dd8e7ac1b58960fc752" width="1000" height="167" data-path="images/2f96f746-import-members-1_huc3d26abd3bec140dac4d1e5fd61f2b53_17353_1000x0_resize_q100_h2_box_3.webp" />
+</Frame>
+
+Upload your CSV file to Ghost, and map each of the fields contained in your export file to the corresponding fields in Ghost. The **email** field is required in order to create members in Ghost, while the other fields are optional.
+
+To import paid members with an existing Stripe subscription, you must import their **Stripe customer ID**.
+
+<Frame>
+  <img src="https://mintcdn.com/ghost/5_xpDDjqLTzEezAK/images/19216f0e-import-members-2_hu4666f031efd860d74fa4f40b2a587fd0_130604_1000x0_resize_q100_h2_box_3.webp?fit=max&auto=format&n=5_xpDDjqLTzEezAK&q=85&s=6d35692e55955554d4cb0ec7505539d8" width="1000" height="1022" data-path="images/19216f0e-import-members-2_hu4666f031efd860d74fa4f40b2a587fd0_130604_1000x0_resize_q100_h2_box_3.webp" />
+</Frame>
+
+Once the import has completed, all your subscribers will be migrated to Ghost. There’s nothing else you need to do, members can now log into your site and receive email newsletters.
+
+
+Built with [Mintlify](https://mintlify.com).
