@@ -2160,3 +2160,9 @@ repositories:
   source_folder: website/docs
   target_folder: docs/github-scraped/lerna
   branch: main
+- name: buildkit
+  description: buildkit from GitHub
+  repo_url: https://github.com/moby/buildkit.git
+  source_folder: docs
+  target_folder: docs/github-scraped/buildkit
+  branch: main
