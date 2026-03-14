@@ -1962,3 +1962,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/pants
   branch: main
+- name: holoviews
+  description: holoviews from GitHub
+  repo_url: https://github.com/holoviz/holoviews.git
+  source_folder: doc
+  target_folder: docs/github-scraped/holoviews
+  branch: main
