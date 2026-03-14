@@ -1463,3 +1463,6 @@ sites:
 - name: vue-flow
   base_url: https://vueflow.dev/
   description: vue-flow documentation
+- name: oxlint
+  base_url: https://oxc.rs/
+  description: oxlint documentation
