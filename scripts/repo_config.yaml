@@ -2114,3 +2114,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/husky
   branch: main
+- name: codacy
+  description: codacy from GitHub
+  repo_url: https://github.com/codacy/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/codacy
+  branch: main
