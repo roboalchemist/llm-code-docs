@@ -1556,3 +1556,6 @@ sites:
 - name: scout-apm
   base_url: https://docs.scoutapm.com/
   description: scout-apm documentation
+- name: firebase-crashlytics
+  base_url: https://firebase.google.com/docs/
+  description: firebase-crashlytics documentation
