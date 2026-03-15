@@ -2341,3 +2341,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/line_profiler
   branch: main
+- name: tcpdump
+  description: tcpdump from GitHub
+  repo_url: https://github.com/the-tcpdump-group/tcpdump.git
+  source_folder: doc
+  target_folder: docs/github-scraped/tcpdump
+  branch: main
