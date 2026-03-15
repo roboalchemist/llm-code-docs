@@ -1,0 +1,173 @@
+# Source: https://posthog.com/docs/workflows/workflow-builder.md
+
+# Workflow builder - Docs
+
+Workflows are a collection of steps that automate a process or deliver messages to your users based on your configured logic. In PostHog, you can create a workflow using our no-code workflow builder.
+
+![Fresh workflow with trigger block](https://res.cloudinary.com/dmukukwp6/image/upload/w_1600,c_limit,q_auto,f_auto/new_campaign_light_acfabde4ca.png)![Fresh workflow with trigger block](https://res.cloudinary.com/dmukukwp6/image/upload/w_1600,c_limit,q_auto,f_auto/new_campaign_dark_8ed34dd06e.png)
+
+Workflows are composed of the following components:
+
+| Component | Description |
+| --- | --- |
+| [Triggers](#triggers) | What starts the workflow. We let you start a workflow when an event is performed (e.g. a user signs up), or programmatically via a webhook. |
+| [Dispatches](#dispatches) | The messages you send, mail, slack, SMS, webhook, or any PostHog real time destinations. |
+| [Delays](#delays) | Wait steps such as "wait 2 days" or "wait until condition is true." |
+| [Audience splits](#audience-splits) | Target and split your users so you can automate some action for them or send a message with more specificity. |
+| [PostHog actions](#posthog-actions) | Change a person's properties, or trigger other events, once a person reaches a specific point in your workflow. |
+| [Output variables](#output-variables) | Store data from step results in workflow variables for use in later steps. |
+
+## Draft and enabled workflows
+
+Workflows have two states: **draft** and **enabled**.
+
+| State | Description |
+| --- | --- |
+| Draft | A work-in-progress workflow that isn't active. You can save drafts with incomplete or invalid configurations. |
+| Enabled | An active workflow that runs when triggered. Full validation is required before enabling. |
+
+When building a workflow, you can save your progress at any time as a draft, even if the configuration is incomplete or has errors. This lets you iteratively build complex workflows without needing a complete, valid configuration at every save.
+
+Validation is only enforced when you enable a workflow. Before enabling, PostHog checks that all required fields are filled and configurations are valid. If there are errors, you'll see a message prompting you to fix them before the workflow can be enabled.
+
+Draft workflows can also be archived, even if they contain invalid configurations.
+
+## Triggers
+
+Every workflow starts with a trigger. Triggers represent actions taken by users that kick off the workflow. There are two types of triggers:
+
+| Trigger type | Description |
+| --- | --- |
+| Event trigger | A captured [PostHog event](/docs/data/events.md) (e.g. signed up) |
+| Webhook trigger | Programmatically start a workflow with a webhook |
+
+### Event triggers
+
+Event triggers are any PostHog event. These can be manually or automatically [autocaptured](/docs/data/autocapture.md) by our SDKs. They can be filtered by the event properties and persons properties attached to the event.
+
+To filter your events, click on the three lines icon next to the event name and select **Add filter**.
+
+![Event trigger filter](https://res.cloudinary.com/dmukukwp6/image/upload/w_1600,c_limit,q_auto,f_auto/trigger_filters_light_bbc4307d87.png)![Event trigger filter](https://res.cloudinary.com/dmukukwp6/image/upload/w_1600,c_limit,q_auto,f_auto/trigger_filters_dark_423c919d26.png)
+
+## Dispatches
+
+Dispatches are the messages you send, mail, slack, SMS, webhook, or any PostHog real time destinations. There are 4 main types of dispatches:
+
+| Dispatch type | Description |
+| --- | --- |
+| Email | Send an email natively through PostHog. Configured in the [channels](/docs/workflows/configure-channels.md) section. |
+| Slack | Send a message to a slack channel. Configured in the [channels](/docs/workflows/configure-channels.md) section. |
+| Webhook | Call external systems. Configured in the [channels](/docs/workflows/configure-channels.md) section. |
+| CDP destinations | Use any [realtime destination](/docs/cdp/destinations.md) as an dispatch step to deliver messages to users or other services. |
+
+## Delays
+
+Delays help you control the timing of your messages. There are 3 types of delays:
+
+| Delay type | Description |
+| --- | --- |
+| Fixed wait | Wait for a fixed amount of time (minutes/hours/days). |
+| Wait until condition | Wait until a specific condition is met (e.g. user has property set to a specific value). |
+| Wait until time window | Wait until a specific time window (e.g. only send on weekdays 9-5). |
+
+You can see an example of a delay in the [email drip campaign](/docs/workflows/email-drip-campaign.md) tutorial.
+
+## Audience splits
+
+Audience splits help you target your automation or messages to specific groups of users. There are 2 types of audience splits:
+
+| Audience split type | Description |
+| --- | --- |
+| Conditional branch | Segment by [event](/docs/data/events.md) or [persons](/docs/product-analytics/identify.md) properties. |
+| Random branch | [Experiment or A/B test](/docs/experiments.md). |
+
+These can be used to target users based on their behavior or properties.
+
+## PostHog Actions
+
+PostHog Actions allow you to change a person's properties, trigger other events, or chain workflows together once a person reaches a specific point in your workflow. There are 2 types of PostHog actions:
+
+| PostHog action type | Description |
+| --- | --- |
+| Capture Event | Trigger a PostHog event. This can be a useful way to chain workflows together, or track the effectiveness of workflows in analytics dashboards. |
+| Update Person Properties | Set a specific person property, or create a new one. This can be a useful way to chain workflows together. |
+
+## Conversations actions
+
+If you have [Conversations](/docs/support.md) enabled, two additional actions become available in the workflow builder. These let you automate support ticket management.
+
+| Conversations action | Description | Properties / Options |
+| --- | --- | --- |
+| Get ticket | Fetch the current ticket's data into workflow variables | ticket_id, ticket_number, status, priority, channel_source |
+| Update ticket | Change a ticket's status, priority, or assignee | Status: new, open, pending, on_hold, resolved. Priority: low, medium, high. Assignee: user or role |
+
+### Example use cases
+
+Use these actions together with [conversation events](#conversation-event-triggers) to automate support workflows:
+
+-   **Auto-resolve inactive tickets** - If a customer hasn't replied for 5 days, change the ticket status from `pending` to `resolved`
+-   **Escalate priority** - If a message contains the word "refund", update the ticket priority to `high`
+-   **Send reminders** - Wait 2 hours after a ticket is created, then send a Slack notification if still unresolved
+-   **Route to specialists** - If a ticket contains "billing", assign it to a billing specialist
+
+### Conversation event triggers
+
+When Conversations is enabled, you can trigger workflows using these events:
+
+| Event | Description | Properties |
+| --- | --- | --- |
+| $conversation_ticket_created | A new support ticket was created | — |
+| $conversation_ticket_status_changed | Ticket status was updated | old_status, new_status |
+| $conversation_ticket_priority_changed | Ticket priority was updated | old_priority, new_priority |
+| $conversation_ticket_assigned | Ticket was assigned to a team member or AI | assignee_type, assignee_id |
+| $conversation_message_sent | Team member sent a message on a ticket | message_id, message_content, author_type, author_id |
+| $conversation_message_received | Customer sent a message on a ticket | message_id, message_content, author_type, customer_name, customer_email |
+
+All events include the following base properties: `ticket_id`, `ticket_number`, `channel_source`, `status`, and `priority`.
+
+## Output variables
+
+Output variables let you store data from a workflow step's result for use in later steps. This is useful when you need to chain workflow steps together, such as extracting an ID from a webhook response to use in a subsequent API call.
+
+### Configuring output variables
+
+To configure output variables on a step:
+
+1.  Click on a workflow step (like a Webhook dispatch)
+2.  Expand the **Output variables** section
+3.  Click **Add mapping** to add a variable mapping
+4.  Select a workflow variable to store the result in
+5.  Specify a result path to extract specific data from the response
+
+You can add multiple output variable mappings to a single step to extract different pieces of data. For example, you might extract both a `ticket_id` and `ticket_number` from a single API response.
+
+### Using the property picker
+
+Instead of typing result paths manually, use the **Pick from response** button to select paths interactively:
+
+1.  Click **Pick from response** to execute a real HTTP request to the step's endpoint
+2.  The response is displayed as an interactive JSON tree
+3.  Click on any key in the tree to use it as the result path
+4.  If you have multiple variable mappings, select which variable to assign the path to
+
+### Result path syntax
+
+Result paths let you extract specific data from a step's response. Use dot notation for nested objects and bracket notation for arrays:
+
+| Example path | Description |
+| --- | --- |
+| body | The entire response body |
+| body.id | A top-level property from the response |
+| body.user.email | A nested property |
+| body.results[0] | The first item in an array |
+| body.results[0].id | A property from the first array item |
+
+Leave the result path blank to store the entire step result.
+
+### Community questions
+
+Ask a question
+
+### Was this page useful?
+
+HelpfulCould be better

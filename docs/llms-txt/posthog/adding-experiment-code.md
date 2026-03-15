@@ -1,0 +1,171 @@
+# Source: https://posthog.com/docs/experiments/adding-experiment-code.md
+
+# Adding experiment code - Docs
+
+Once you've created your experiment in PostHog, the next step is to add your code.
+
+## Fetch the feature flag
+
+In your experiment, each user is randomly assigned to a variant (usually either 'control' or 'test'). To check which variant a user has been assigned to, fetch the experiment feature flag. You can then customize their experience based on the value in the feature flag:
+
+PostHog AI
+
+### Web
+
+```javascript
+// Ensure flags are loaded before usage.
+// You only need to call this on the code the first time a user visits.
+// See this doc for more details: /docs/feature-flags/manual#ensuring-flags-are-loaded-before-usage
+posthog.onFeatureFlags(function() {
+    // feature flags should be available at this point
+    if (posthog.getFeatureFlag('experiment-feature-flag-key')  == 'variant-name') {
+        // do something
+    }
+})
+// Otherwise, you can just do:
+if (posthog.getFeatureFlag('experiment-feature-flag-key')  == 'variant-name') {
+    // do something
+}
+// You can also test your code by overriding the feature flag:
+// e.g., posthog.featureFlags.overrideFeatureFlags({ flags: {'experiment-feature-flag-key': 'test'}})
+```
+
+### React
+
+```jsx
+// You can either use the `useFeatureFlagVariantKey` hook,
+// or you can use the feature flags component - /docs/libraries/react#feature-flags-react-component
+// Method one: using the useFeatureFlagVariantKey hook
+import { useFeatureFlagVariantKey } from '@posthog/react'
+function App() {
+    const variant = useFeatureFlagVariantKey('experiment-feature-flag-key')
+    if (variant == 'variant-name') {
+        // do something
+    }
+}
+// Method two: using the feature flags component
+import { PostHogFeature } from '@posthog/react'
+function App() {
+    return (
+        <PostHogFeature flag='experiment-feature-flag-key' match={'variant-name'}>
+            <div>
+                <!-- the component to show -->
+            </div>
+        </PostHogFeature>
+    )
+}
+// You can also test your code by overriding the feature flag:
+// e.g., posthog.featureFlags.overrideFeatureFlags({ flags: {'experiment-feature-flag-key': 'test'}})
+```
+
+### React Native
+
+```jsx
+// With the useFeatureFlag hook
+import { useFeatureFlag } from 'posthog-react-native'
+const MyComponent = () => {
+    const variant = useFeatureFlag('experiment-feature-flag-key')
+    if (variant === undefined) {
+        // the response is undefined if the flags are being loaded
+        return null
+    }
+    if (variant == 'variant-name') {
+        // do something
+    }
+}
+```
+
+### Android
+
+```kotlin
+if (PostHog.getFeatureFlag("experiment-feature-flag-key")  == "variant-name") {
+    // do something
+}
+```
+
+### iOS
+
+```swift
+if (PostHogSDK.shared.getFeatureFlag("experiment-feature-flag-key") as? String == "variant-name") {
+    // do something
+}
+```
+
+### Node.js
+
+```javascript
+const variant = await client.getFeatureFlag('experiment-feature-flag-key', 'user_distinct_id')
+if (variant === 'variant-name') {
+    // do something
+}
+```
+
+### Python
+
+```python
+variant = posthog.get_feature_flag('experiment-feature-flag-key', 'user_distinct_id')
+if variant == 'variant-name':
+    # Do something
+```
+
+### PHP
+
+```php
+$variant = PostHog::getFeatureFlag('experiment-feature-flag-key', 'user_distinct_id')
+if ($variant === 'variant-name') {
+    // Do something differently for this user
+}
+```
+
+### Ruby
+
+```ruby
+variant = posthog.get_feature_flag('experiment-feature-flag-key', 'user_distinct_id')
+if variant == 'variant-name'
+    # Do something
+end
+```
+
+### Go
+
+```go
+variant, err := client.GetFeatureFlag(posthog.FeatureFlagPayload{
+    Key:        "experiment-feature-flag-key",
+    DistinctId: "user_distinct_id",
+})
+if err != nil {
+    // Handle error (e.g. capture error and fallback to default behavior)
+}
+if variant == "variant-name" {
+    // Do something
+}
+```
+
+### Elixir
+
+```elixir
+{:ok, feature_flag} = PostHog.feature_flag("experiment-feature-flag-key", "user_distinct_id")
+if feature_flag.enabled == "variant-name" do
+    # Do something
+end
+```
+
+### dotnet
+
+```dotnet
+var featureFlag = await posthog.GetFeatureFlagAsync("experiment-feature-flag-key", "user_distinct_id");
+if (featureFlag is { VariantKey: "variant-name" })
+{
+    // Do something
+}
+```
+
+> Since feature flags are not supported yet in our Java SDK, to run an experiment using this SDK see our docs on [how to run experiments without feature flags](/docs/experiments/running-experiments-without-feature-flags.md). This also applies to running experiments using our API.
+
+### Community questions
+
+Ask a question
+
+### Was this page useful?
+
+HelpfulCould be better

@@ -1,0 +1,36 @@
+# Source: https://posthog.com/docs/error-tracking/fix-with-ai-prompts.md
+
+# Fix with AI prompts - Docs
+
+For each issue, we provide a ready-to-use prompt you can paste into your favorite coding assistant to help debug and fix errors. The prompt is in Markdown and contains the issue's stack trace along with prepared instructions for the AI to follow.
+
+You can find the prompt by clicking **Fix with AI** on the issue details page.
+
+![Fix with AI prompts](https://res.cloudinary.com/dmukukwp6/image/upload/q_auto,f_auto/SCR_20250913_quia1_a619423b38.png)![Fix with AI prompts](https://res.cloudinary.com/dmukukwp6/image/upload/q_auto,f_auto/SCR_20250913_qulw2_2f49419ef1.png)
+
+The **Fix with AI** prompt looks like this:
+
+markdown
+
+PostHog AI
+
+```markdown
+Please help me fix this error. Here's the stack trace:
+// Stack trace appears here
+Note: Frames marked with [IN-APP] are from the application code (my code), while frames without this marker are from external libraries/frameworks.
+Focus your analysis primarily on the [IN-APP] frames as these are most likely where the issue needs to be fixed.
+Can you:
+1. Analyze what's causing this error
+2. Suggest the most likely fix
+3. Provide code examples if applicable
+4. Explain why this error occurred
+Please be specific about the file and line number where the fix should be applied.
+```
+
+### Community questions
+
+Ask a question
+
+### Was this page useful?
+
+HelpfulCould be better
