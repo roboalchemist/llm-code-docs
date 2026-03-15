@@ -1571,3 +1571,6 @@ sites:
 - name: visualvm
   base_url: https://docs.oracle.com/javase/8/docs/technotes/guides/visualvm/
   description: visualvm documentation
+- name: better-stack
+  base_url: https://www.better-stack.ai/docs/
+  description: better-stack documentation
