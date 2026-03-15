@@ -2335,3 +2335,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/heapster
   branch: main
+- name: line_profiler
+  description: line_profiler from GitHub
+  repo_url: https://github.com/pyutils/line_profiler.git
+  source_folder: docs
+  target_folder: docs/github-scraped/line_profiler
+  branch: main
