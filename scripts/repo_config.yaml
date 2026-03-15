@@ -2329,3 +2329,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/syslog-ng
   branch: main
+- name: heapster
+  description: heapster from GitHub
+  repo_url: https://github.com/kubernetes/heapster.git
+  source_folder: docs
+  target_folder: docs/github-scraped/heapster
+  branch: main
