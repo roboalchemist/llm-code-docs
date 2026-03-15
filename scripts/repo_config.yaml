@@ -2287,3 +2287,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/pmd
   branch: main
+- name: psalm
+  description: psalm from GitHub
+  repo_url: https://github.com/vimeo/psalm.git
+  source_folder: docs
+  target_folder: docs/github-scraped/psalm
+  branch: main
