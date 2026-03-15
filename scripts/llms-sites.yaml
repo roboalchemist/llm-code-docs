@@ -1538,3 +1538,6 @@ sites:
 - name: pycryptodome
   base_url: https://www.pycryptodome.org/
   description: pycryptodome documentation
+- name: logback
+  base_url: https://logbackcn.gitbook.io/
+  description: logback documentation
