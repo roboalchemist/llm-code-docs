@@ -1553,3 +1553,6 @@ sites:
 - name: posthog
   base_url: https://posthog.com/
   description: posthog documentation
+- name: scout-apm
+  base_url: https://docs.scoutapm.com/
+  description: scout-apm documentation
