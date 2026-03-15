@@ -18,6 +18,7 @@ Users input regulator parameters and select which value to calculate.
 ### 2. RF-Attenuators
 
 Determines resistor values for four attenuator configurations:
+
 - PI attenuator
 - Tee attenuator
 - Bridged Tee attenuator
@@ -36,6 +37,7 @@ Translates resistor color bands into resistance values. Supports three tolerance
 ### 5. TransLine (Transmission Lines)
 
 Analyzes frequency-dependent transmission line characteristics across multiple configurations:
+
 - Microstrip lines
 - Coplanar waveguides
 - Rectangular waveguides
@@ -61,11 +63,13 @@ Provides minimum clearance recommendations between conductors at specified volta
 References IPC-6011 and IPC-6012B standards:
 
 **Performance Classes**:
+
 - General (Class 1)
 - Dedicated Service (Class 2)
 - High Reliability (Class 3)
 
 **PCB Types**:
+
 - Single-sided through multilayer metal core boards with optional blind/buried vias
 
 ---

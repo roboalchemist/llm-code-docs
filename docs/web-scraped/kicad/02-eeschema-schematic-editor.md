@@ -18,6 +18,7 @@ The editor integrates schematic drawing, PCB footprint selection, library manage
 ### Hierarchical Schematic Support
 
 The editor accommodates three organizational approaches:
+
 1. Flat hierarchies (unconnected schematic sheets)
 2. Simple hierarchies (single-use sheets)
 3. Complex hierarchies (multi-use sheets)
@@ -46,6 +47,7 @@ The central editing canvas displays the active schematic, surrounded by:
 ### Cursor Position Information
 
 The status bar continuously displays:
+
 - Current X and Y coordinates
 - Zoom factor (Z)
 - Relative cursor position (dx, dy, distance)
@@ -77,12 +79,14 @@ Hotkeys are displayed via Ctrl+F1. The documentation's Actions Reference section
 ### Platform-Specific Modifiers
 
 On Apple keyboards:
+
 - Replace Ctrl with Cmd
 - Replace Alt with Option
 
 ### Hotkey Management
 
 Hotkeys are stored in `user.hotkeys` files located at platform-specific paths:
+
 - **Windows**: `%APPDATA%\kicad\9.0\user.hotkeys`
 - **Linux**: `~/.config/kicad/9.0/user.hotkeys`
 - **macOS**: `~/Library/Preferences/kicad/9.0/user.hotkeys`
@@ -94,6 +98,7 @@ The hotkey editor supports importing settings via the **Import Hotkeys** button.
 ### Single-Item Selection
 
 Left-clicking selects objects. Box selection works through:
+
 - **Left-to-right**: Exclusive selection (yellow box, items fully inside only)
 - **Right-to-left**: Inclusive selection (blue box, items touching the box)
 
@@ -126,6 +131,7 @@ The lower-left corner panel controls which object types are selectable. The "All
 ### Schematic Composition
 
 A schematic consists primarily of:
+
 - Symbols (from libraries)
 - Wires and buses
 - Labels and junctions
@@ -231,7 +237,7 @@ The dialog displays symbols grouped by library, with name, library, and descript
 
 **Search Filtering**: Symbols filter by name, keywords, description, and additional symbol fields based on search input.
 
-**Advanced Filter Options**
+### Advanced Filter Options
 
 - **Wildcards**: `*` matches any number of characters (including none); `?` matches single characters
 - **Key-value Pairs**: Match tags like "Key:123" using comparison operators (e.g., "Key>123", "Key<123")
@@ -256,10 +262,12 @@ Fields can be added, deleted, edited, reordered, moved, or resized. Field names 
 #### Special Field Behaviors
 
 **Footprint Field**:
+
 - Defines the corresponding PCB footprint
 - Button opens footprint chooser
 
 **Datasheet Field**:
+
 - Contains manufacturer datasheet references
 - Local file or remote URL support
 - Right-click symbol to **Show Datasheet** (D hotkey)
@@ -280,6 +288,7 @@ Fields can be added, deleted, edited, reordered, moved, or resized. Field names 
 ### Reference Designator Concepts
 
 Reference designators provide unique component identifiers consisting of:
+
 - Letter(s) indicating component type (R for resistor, C for capacitor, U for IC)
 - Sequential number
 - Trailing letter for multi-unit symbols indicating the unit
@@ -292,6 +301,7 @@ Reference designators must be globally unique within a design.
 When enabled, symbols receive automatic reference designators upon addition to the schematic.
 
 **Enable Auto-Annotation**:
+
 - Check **Automatically annotate symbols** in **Schematic Editor** → **Annotation Options** preferences
 - Toggle the auto-annotate button on the left toolbar
 
@@ -300,6 +310,7 @@ When enabled, symbols receive automatic reference designators upon addition to t
 Launch via the Annotate button in the top toolbar.
 
 **Scope Options**:
+
 - Entire schematic
 - Current sheet only
 - Selected symbols only
@@ -429,6 +440,7 @@ Provides dedicated interface for bulk footprint assignment. Access via the right
 ### Plotting
 
 **File** → **Plot** exports schematics to multiple formats:
+
 - Postscript
 - PDF
 - HPGL
@@ -477,6 +489,7 @@ Preferences dialog (**Preferences** → **Preferences…**) controls display opt
 Text variables enable dynamic text substitution. Variables are specified using `${VARIABLE_NAME}` syntax and expand to corresponding values at display or export time.
 
 **Common Variables**:
+
 - `${SYMBOL_NAME}`: Symbol name in library
 - `${SYMBOL_LIBRARY}`: Library containing symbol
 - `${INTERSHEET_REFS}`: Inter-sheet reference list for global labels

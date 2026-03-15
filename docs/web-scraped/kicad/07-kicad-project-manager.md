@@ -15,6 +15,7 @@ KiCad runs on various hardware configurations, though a dedicated graphics card 
 Upon launching a new KiCad version, users receive a settings initialization prompt. The system can automatically detect and import configurations from previous versions, though symbol and footprint library tables require manual migration.
 
 Configuration folders are version-specific:
+
 - **Windows**: `%APPDATA%\kicad\9.0`
 - **Linux**: `~/.config/kicad/9.0`
 - **macOS**: `/Users/<username>/Library/Preferences/kicad/9.0`
@@ -44,6 +45,7 @@ The interface features a left-side tree view displaying project files and a righ
 ### Project Structure
 
 A complete KiCad project requires:
+
 - Project file (`.kicad_pro`)
 - Schematic root sheet (`.kicad_sch`)
 - Board file (`.kicad_pcb`)
@@ -65,6 +67,7 @@ Use **File** → **New Project** (or `Ctrl+N`) to create a new project. The syst
 ### Importing from Other Tools
 
 KiCad supports importing complete projects from:
+
 - Eagle 6.x+ (`.sch`, `.brd`)
 - CADSTAR (`.csa`, `.cpa`)
 - EasyEDA Standard/Pro (`.zip`)
@@ -76,6 +79,7 @@ Standalone schematics and boards can be imported from Altium Designer, P-Cad, an
 ### Creating Backups
 
 Use **File** → **Archive Project** to create zip archives containing:
+
 - Design files (`.kicad_pro`, `.kicad_sch`, `.kicad_pcb`, etc.)
 - Legacy files (`.sch`, `.lib`, `.brd`)
 - 3D models (`.stp`, `.step`)
@@ -91,6 +95,7 @@ The Unarchive tool (**File** → **Unarchive Project**) automatically reloads pr
 ### Enabling Version Control
 
 KiCad provides integrated Git support for tracking project changes. Projects already under version control display:
+
 - Active branch name next to project title
 - File status icons indicating changes, additions, or tracked status
 
@@ -99,6 +104,7 @@ Disable Git features via **Preferences** → **Version Control**.
 ### Adding Version Control to Existing Projects
 
 Right-click project files and select **Version Control** → **Add Project to Version Control**. Configuration requires:
+
 - Remote location (HTTPS, SSH, or local path)
 - Authentication credentials
 - SSH key information (if applicable)
@@ -146,6 +152,7 @@ Right-click project files and select **Version Control** → **Add Project to Ve
 ### Legacy Formats
 
 KiCad reads but doesn't write files from earlier versions:
+
 - `.sch` and `.lib` (KiCad 5.x)
 - `.brd` and `.mod` (KiCad 4.x)
 - `-cache.lib` (legacy component library cache)
@@ -211,6 +218,7 @@ Configure via **Preferences** → **Configure Paths**:
 ### Advanced Environment Variables
 
 Set externally (not in Preferences):
+
 - `KICAD_CONFIG_HOME`: Configuration file base path
 - `KICAD_DOCUMENTS_HOME`: User documents base path
 - `KICAD_STOCK_DATA_HOME`: Default library and data location
@@ -224,6 +232,7 @@ Versioned path variables from older KiCad versions automatically resolve to curr
 Access via **Preferences** → **Manage Symbol Libraries**
 
 Maintains two tables:
+
 - **Global**: Available to all projects
 - **Project-specific**: Optional, located in project directory
 
@@ -250,6 +259,7 @@ Template files are copied to the new project location with renamed filenames ref
 ### Creating Templates
 
 A template is a directory containing project files plus a `meta` subfolder with:
+
 - `info.html`: Template description displayed in selector (required)
 - `icon.png`: 64×64 pixel template icon (optional)
 
@@ -276,6 +286,7 @@ Project-stored jobsets appear in the project file tree and can be opened by doub
 ### Jobs
 
 Jobs represent individual output types. Right-click to:
+
 - **Edit Job Description**: Modify display name
 - **Edit Job Settings**: Reconfigure output parameters
 - **Remove**: Delete from jobset
@@ -285,10 +296,12 @@ Output filenames support text variables: `${PROJECTNAME}`, `${CURRENT_DATE}`, an
 ### Jobset Destinations
 
 Destinations define how outputs are stored:
+
 - **Archive**: Compress outputs in zip file
 - **Folder**: Save outputs uncompressed
 
 Features:
+
 - Select which jobs run for this destination
 - Set absolute or relative output paths
 - Use path and text variables in output locations

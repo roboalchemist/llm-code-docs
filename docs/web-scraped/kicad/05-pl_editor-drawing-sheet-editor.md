@@ -78,6 +78,7 @@ To display literal `\n` text, enter `\\n`.
 ### Page-Specific Display
 
 Items can be configured to display on:
+
 - All pages
 - First page only
 - Subsequent pages only

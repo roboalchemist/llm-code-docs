@@ -5,6 +5,7 @@
 GerbView functions as a specialized viewer for Gerber files (RS-274X format) and Excellon drill files. The application supports simultaneous display of up to 32 files.
 
 For technical specifications, users can consult:
+
 - [The Gerber File Format Specification](http://www.ucamco.com/files/downloads/file/81/the_gerber_file_format_specification.pdf)
 - [The Excellon format description](http://web.archive.org/web/20071030075236/http://www.excellon.com/manuals/program.htm)
 
@@ -48,6 +49,7 @@ The Layers Manager presents a comprehensive control interface with these interac
 The File menu includes an export feature: Export to PCB Editor provides conversion of Gerber files into KiCad PCBs with limitations based on RS-274X features used.
 
 Conversion capabilities include:
+
 - Flashed items convert to vias
 - Lines convert to track segments (or graphics for non-copper layers)
 - Rasterized items cannot be converted

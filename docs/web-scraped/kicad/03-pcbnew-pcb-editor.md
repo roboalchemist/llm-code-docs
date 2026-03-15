@@ -7,6 +7,7 @@ The KiCad PCB Editor is a cross-platform layout application for designing printe
 ## Core Interface Components
 
 **Main UI Elements:**
+
 - Top toolbars for file management and zoom tools
 - Left toolbar displaying options
 - Right toolbar for design and drawing tools
@@ -20,6 +21,7 @@ The editor supports pan and zoom operations via middle/right mouse button draggi
 ## Layer System
 
 The layer architecture supports:
+
 - Up to 32 copper layers
 - 14 technical layers (silkscreen, solder mask, adhesive, paste)
 - 13 general-purpose drawing layers
@@ -29,7 +31,9 @@ The active layer is always drawn on top of other layers, with related layers dis
 ## Board Setup and Configuration
 
 ### Physical Parameters
+
 Board stackup configuration includes:
+
 - Copper layer count and thickness specifications
 - Dielectric material parameters
 - Solder mask and paste clearance settings
@@ -38,6 +42,7 @@ Board stackup configuration includes:
 ### Design Rules
 
 Three-tier constraint system:
+
 1. **Constraints section** - absolute minimums that cannot be overridden
 2. **Net Classes** - routing rules for groups of nets
 3. **Custom Rules** - scriptable design rule language for complex scenarios
@@ -53,11 +58,13 @@ The system allows dynamic text substitution using "${VARIABLENAME}" syntax. Vari
 ### Footprint Operations
 
 **Placement methods:**
+
 - Automatic import from schematic
 - Manual placement via Add Footprint tool
 - Repositioning with Move, Drag, Flip, and Rotate commands
 
 **Positioning Tools:**
+
 - Standard Move (M) - ignores unselected tracks
 - Drag (D) - maintains track connections using interactive router
 - Move Exactly (Shift+M) - precise coordinate input
@@ -65,6 +72,7 @@ The system allows dynamic text substitution using "${VARIABLENAME}" syntax. Vari
 - Position Interactively - vector-based positioning
 
 **Multi-footprint operations:**
+
 - Move Individually (Ctrl+M) - sequential repositioning
 - Pack and Move (P) - grouped movement
 - Swap (Alt+S) - exchange positions between footprints
@@ -72,12 +80,14 @@ The system allows dynamic text substitution using "${VARIABLENAME}" syntax. Vari
 ### Grids and Snapping
 
 The grid system features:
+
 - Dynamic grid sizing via toolbar dropdown
 - Custom grid creation with unequal X/Y spacing
 - Grid overrides for specific object types
 - Configurable origin points (grid, page, drill/place, local)
 
 Tools only snap to objects on visible layers, with modifier keys disabling individual snap types:
+
 - Ctrl disables grid snapping
 - Shift disables object snapping
 
@@ -103,6 +113,7 @@ Available tools from right toolbar:
 ## Routing System
 
 The interactive router supports:
+
 - Push-and-shove mode for obstacle avoidance
 - Walkaround mode circumventing obstacles
 - Highlight collisions mode showing blockages
@@ -110,6 +121,7 @@ The interactive router supports:
 - Multiple via placement modes
 
 Length tuning patterns allow:
+
 - Single-track length adjustment
 - Differential pair length matching
 - Skew tuning for signal integrity
@@ -117,6 +129,7 @@ Length tuning patterns allow:
 ## Design Rule Checking
 
 The DRC system validates:
+
 - Clearance violations (copper spacing)
 - Track width constraints
 - Via diameter specifications
@@ -143,6 +156,7 @@ Preset system stores layer visibility configurations for quick recall. Viewports
 ### Display Modes
 
 Non-active layer rendering options:
+
 - Normal - all layers visible
 - Dimmed - inactive layers reduced opacity; selection restricted to active layer
 - Hidden - inactive layers invisible; selection restricted to active layer
@@ -150,12 +164,14 @@ Non-active layer rendering options:
 ## Selection Mechanics
 
 **Single-click selection** allows item targeting with modifier behavior:
+
 - Ctrl/Cmd - toggle selection
 - Shift - add to selection
 - Ctrl+Shift/Cmd+Shift - remove from selection
 - Long-click/Alt/Option - clarify from popup menu
 
 **Box selection:**
+
 - Left-to-right (yellow box) - exclusive (fully inside only)
 - Right-to-left (blue box) - inclusive (touching selected)
 
@@ -164,12 +180,14 @@ Non-active layer rendering options:
 ## Net Highlighting and Cross-Probing
 
 Net highlighting visualizes electrical routing by emphasizing selected nets and dimming others. Activation methods:
+
 - Hotkey ` after selecting copper objects
 - Right-click context menu
 - Nets tab in Appearance panel
 - Net Inspector double-click
 
 **Cross-probing** enables bidirectional schematic-PCB synchronization:
+
 - Selection cross-probing highlights corresponding items
 - Highlight cross-probing synchronizes net emphasis
 - Both can be configured independently in Preferences
@@ -177,6 +195,7 @@ Net highlighting visualizes electrical routing by emphasizing selected nets and 
 ## Fabrication Outputs
 
 Supported export formats:
+
 - Gerber with job files
 - IPC-2581 (unified format)
 - ODB++ (advanced format)
@@ -190,6 +209,7 @@ Component placement and drill files support various CAM formats for manufacturin
 ### Teardrops
 
 Connection fillets at pad-track junctions configure:
+
 - Round pad connections
 - Rectangular pad connections
 - Track-to-track connections
@@ -199,6 +219,7 @@ Parameters include length, height, and curve styling with individual override ca
 ### 3D Viewer
 
 Visualizes board in three dimensions with:
+
 - Model viewing and rotation
 - Layer color representation
 - Stackup height visualization
@@ -207,6 +228,7 @@ Visualizes board in three dimensions with:
 ### Custom Design Rules Language
 
 Scriptable rule system enables:
+
 - Complex conditional constraints
 - Pattern-based net class assignments
 - Syntax validation before application
@@ -218,6 +240,7 @@ Docked panel displaying editable properties of selected items. Supports multi-it
 ## Keyboard Shortcuts
 
 **Key Navigation:**
+
 - Ctrl+F1 - display hotkey list
 - Space - reset relative coordinates to zero
 - N/Shift+N - cycle to next/previous grid
