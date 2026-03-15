@@ -1532,3 +1532,6 @@ sites:
 - name: terrascan
   base_url: https://runterrascan.io/
   description: terrascan documentation
+- name: jit
+  base_url: https://docs.jit.io/
+  description: jit documentation
