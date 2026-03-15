@@ -1,4 +1,5 @@
 :::::: {#header}
+
 # PCB Calculator
 
 ::: details
@@ -60,6 +61,7 @@ Please direct any bug reports, suggestions or new versions to here:
 :::
 
 ::: ulist
+
 - About KiCad document:
   [https://github.com/KiCad/kicad-doc/issues](https://github.com/KiCad/kicad-doc/issues){.bare}
 
@@ -81,6 +83,7 @@ july 17, 2019
 ::::::::::::::
 
 :::::: sect1
+
 ## Introduction
 
 ::::: sectionbody
@@ -91,6 +94,7 @@ the following tools:
 :::
 
 ::: ulist
+
 - Regulators
 
 - Track Width
@@ -109,10 +113,12 @@ the following tools:
 ::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Calculators
 
 :::::::::::::::::::::::::::::::::::::::::::::: sectionbody
 :::::::::::::: sect2
+
 ### Regulators
 
 ::: paragraph
@@ -162,6 +168,7 @@ values.
 ::::::::::::::
 
 :::::: sect2
+
 ### Track-Width
 
 ::: paragraph
@@ -178,6 +185,7 @@ formulas from IPC-2221 (formerly IPC-D-275).
 ::::::
 
 ::::::: sect2
+
 ### Electrical-Spacing
 
 ::: paragraph
@@ -199,6 +207,7 @@ left corner and press *Update Values*.
 :::::::
 
 :::::::::: sect2
+
 ### TransLine
 
 ::: paragraph
@@ -223,9 +232,11 @@ models are listed below:
 :::
 
 ::: ulist
+
 - Microstrip line:
 
   ::: ulist
+
   - H. A. Atwater, "Simplified Design Equations for Microstrip Line
     Parameters", Microwave Journal, pp. 109-115, November 1989.
   :::
@@ -237,6 +248,7 @@ models are listed below:
 - Rectangular waveguide:
 
   ::: ulist
+
   - S. Ramo, J. R. Whinnery and T. van Duzer, \"Fields and Waves in
     Communication Electronics\", Wiley-India, 2008, ISBN: 9788126515257.
   :::
@@ -246,6 +258,7 @@ models are listed below:
 - Coupled microstrip line:
 
   ::: ulist
+
   - H. A. Atwater, "Simplified Design Equations for Microstrip Line
     Parameters", Microwave Journal, pp. 109-115, November 1989.
 
@@ -277,6 +290,7 @@ models are listed below:
 ::::::::::
 
 :::::::: sect2
+
 ### RF-Attenuators
 
 ::: paragraph
@@ -285,6 +299,7 @@ resistors needed for different types of attenuators:
 :::
 
 ::: ulist
+
 - PI
 
 - Tee
@@ -308,6 +323,7 @@ Ohms).
 ::::::::
 
 ::::::: sect2
+
 ### Color-Code
 
 ::: paragraph
@@ -317,6 +333,7 @@ its value. To use it, first select the *tolerance* of the resistor: 10%,
 :::
 
 ::: ulist
+
 - Yellow Violet Red Gold: 4 7 x100 ±5% = 4700 Ohm, 5% tolerance
 
 - 1kOhm, 1% tolerance: Brown Black Black Brown Brown
@@ -330,6 +347,7 @@ its value. To use it, first select the *tolerance* of the resistor: 10%,
 :::::::
 
 ::::: sect2
+
 ### Board-Classes
 
 :::: imageblock

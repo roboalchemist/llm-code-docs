@@ -1,4 +1,5 @@
 :::::: {#header}
+
 # Pcbnew
 
 ::: details
@@ -6,172 +7,300 @@
 :::
 
 :::: {#toc .toc}
+
 ::: {#toctitle}
+
 Table of Contents
 :::
 
 - [Introduction to Pcbnew](#_introduction_to_pcbnew)
+
   - [Description](#_description)
+
   - [Principal design features](#_principal_design_features)
+
   - [General remarks](#_general_remarks)
+
 - [Installation](#_installation)
+
   - [Installation of the software](#_installation_of_the_software)
+
   - [Modifying the default
     configuration](#_modifying_the_default_configuration)
+
   - [Managing Footprint Libraries](#_managing_footprint_libraries)
+
 - [General operations](#_general_operations)
+
   - [Toolbars and commands](#_toolbars_and_commands)
+
   - [Mouse commands](#_mouse_commands)
+
   - [Selection of grid size](#_selection_of_grid_size)
+
   - [Adjustment of the zoom level](#_adjustment_of_the_zoom_level)
+
   - [Displaying cursor coordinates](#_displaying_cursor_coordinates)
+
   - [Keyboard commands - hotkeys](#_keyboard_commands_hotkeys)
+
   - [Operation on blocks](#_operation_on_blocks)
+
   - [Units used in dialogs](#_units_used_in_dialogs)
+
   - [Top menu bar](#_top_menu_bar)
+
   - [Using icons on the top toolbar](#_using_icons_on_the_top_toolbar)
+
   - [Right-hand side toolbar](#_right_hand_side_toolbar)
+
   - [Left-hand side toolbar](#_left_hand_side_toolbar)
+
   - [Pop-up windows and fast editing](#_pop_up_windows_and_fast_editing)
+
   - [Available modes](#_available_modes)
+
 - [Schematic Implementation](#_schematic_implementation)
+
   - [Linking a schematic to a printed circuit
     board](#_linking_a_schematic_to_a_printed_circuit_board)
+
   - [Procedure for creating a printed circuit
     board](#_procedure_for_creating_a_printed_circuit_board)
+
   - [Procedure for updating a printed circuit
     board](#_procedure_for_updating_a_printed_circuit_board)
+
   - [Reading netlist file - loading
     footprints](#_reading_netlist_file_loading_footprints)
+
 - [Layers](#_layers)
+
   - [Introduction](#_introduction)
+
   - [Setting up layers](#_setting_up_layers)
+
   - [Layer Description](#_layer_description)
+
   - [Selection of the active layer](#_selection_of_the_active_layer)
+
   - [Selection of the Layers for
     Vias](#_selection_of_the_layers_for_vias)
+
   - [Using the high-contrast mode](#_using_the_high_contrast_mode)
+
 - [Create and modify a board](#_create_and_modify_a_board)
+
   - [Creating a board](#_creating_a_board)
+
   - [Correcting a board](#_correcting_a_board)
+
   - [Direct exchange for footprints already placed on
     board](#_direct_exchange_for_footprints_already_placed_on_board)
+
 - [Footprint placement](#_footprint_placement)
+
   - [Assisted placement](#_assisted_placement)
+
   - [Manual placement](#_manual_placement)
+
   - [Automatic Footprint
     Distribution](#_automatic_footprint_distribution)
+
   - [Automatic placement of
     footprints](#_automatic_placement_of_footprints)
+
 - [Setting routing parameters](#_setting_routing_parameters)
+
   - [Current settings](#_current_settings)
+
   - [General options](#_general_options)
+
   - [Netclasses](#_netclasses)
+
   - [Examples and typical dimensions](#_examples_and_typical_dimensions)
+
   - [Examples](#_examples)
+
   - [Manual routing](#_manual_routing)
+
   - [Help when creating tracks](#_help_when_creating_tracks)
+
   - [Select/edit the track width and via
     size](#_selectedit_the_track_width_and_via_size)
+
   - [Editing and changing tracks](#_editing_and_changing_tracks)
+
 - [Interactive Router](#_interactive_router)
+
   - [Setting up](#_setting_up)
+
   - [Laying out tracks](#_laying_out_tracks)
+
   - [Setting track widths and via
     sizes](#_setting_track_widths_and_via_sizes)
+
   - [Dragging](#_dragging)
+
   - [Options](#_options)
+
 - [Creating copper zones](#_creating_copper_zones)
+
   - [Creating zones on copper layers](#_creating_zones_on_copper_layers)
+
   - [Creating a zone](#_creating_a_zone)
+
   - [Filling options](#_filling_options)
+
   - [Adding a cutout area inside a
     zone](#_adding_a_cutout_area_inside_a_zone)
+
   - [Outlines editing](#_outlines_editing)
+
   - [Editing zone parameters](#_editing_zone_parameters)
+
   - [Final zone filling](#_final_zone_filling)
+
   - [Change zones net names](#_change_zones_net_names)
+
   - [Creating zones on technical
     layers](#_creating_zones_on_technical_layers)
+
   - [Creating a Keepout area](#_creating_a_keepout_area)
+
 - [Files for circuit fabrication](#_files_for_circuit_fabrication)
+
   - [Final preparations](#_final_preparations)
+
   - [Final DRC test](#_final_drc_test)
+
   - [Setting coordinates origin](#_setting_coordinates_origin)
+
   - [Generating files for
     photo-tracing](#_generating_files_for_photo_tracing)
+
   - [Global clearance settings for the solder stop and the solder paste
     mask](#_global_clearance_settings_for_the_solder_stop_and_the_solder_paste_mask)
+
   - [Generating drill files](#_generating_drill_files)
+
   - [Generating wiring documentation](#_generating_wiring_documentation)
+
   - [Generation of files for automatic component
     insertion](#_generation_of_files_for_automatic_component_insertion)
+
   - [Advanced tracing options](#_advanced_tracing_options)
+
 - [Footprint Editor - Managing
   Libraries](#_footprint_editor_managing_libraries)
+
   - [Overview of Footprint Editor](#_overview_of_footprint_editor)
+
   - [Accessing Footprint Editor](#_accessing_footprint_editor)
+
   - [Footprint Editor user interface](#_footprint_editor_user_interface)
+
   - [Top toolbar in Footprint Editor](#_top_toolbar_in_footprint_editor)
+
   - [Creating a new library](#_creating_a_new_library)
+
   - [Saving a footprint in the active
     library](#_saving_a_footprint_in_the_active_library)
+
   - [Transferring a footprint from one library to
     another](#_transferring_a_footprint_from_one_library_to_another)
+
   - [Saving all footprints of your board in the active
     library](#_saving_all_footprints_of_your_board_in_the_active_library)
+
   - [Documentation for library
     footprints](#_documentation_for_library_footprints)
+
   - [Documenting libraries - recommended
     practice](#_documenting_libraries_recommended_practice)
+
   - [Footprint Libraries Management](#_footprint_libraries_management)
+
   - [3D Shapes Libraries Management](#_3d_shapes_libraries_management)
+
 - [Footprint Editor - Creating and Editing
   Footprints](#_footprint_editor_creating_and_editing_footprints)
+
   - [Footprint Editor Overview](#_footprint_editor_overview)
+
   - [Footprint Elements](#_footprint_elements)
+
   - [Starting Footprint Editor and Selecting a Footprint to
     Edit](#_starting_footprint_editor_and_selecting_a_footprint_to_edit)
+
   - [Footprint Editor Toolbars](#_footprint_editor_toolbars)
+
   - [Context Menus](#_context_menus)
+
   - [Footprint Properties Dialog](#_footprint_properties_dialog)
+
   - [Creating a New Footprint](#_creating_a_new_footprint)
+
   - [Adding and Editing Pads](#_adding_and_editing_pads)
+
   - [Fields Properties](#_fields_properties)
+
   - [Automatic Placement of a
     Footprint](#_automatic_placement_of_a_footprint)
+
   - [Attributes](#_attributes)
+
   - [Documenting Footprints in a
     Library](#_documenting_footprints_in_a_library)
+
   - [3-Dimensional Visualization](#_3_dimensional_visualization)
+
   - [Saving a Footprint into the Active
     Library](#_saving_a_footprint_into_the_active_library)
+
   - [Saving a footprint to the board](#_saving_a_footprint_to_the_board)
+
 - [Advanced PCB editing tools](#_advanced_pcb_editing_tools)
+
   - [Duplicating items](#_duplicating_items)
+
   - [Moving items exactly](#_moving_items_exactly)
+
   - [Array tools](#_array_tools)
+
   - [Measurement (ruler) tool](#_measurement_ruler_tool)
+
 - [KiCad Scripting Reference](#_kicad_scripting_reference)
+
   - [KiCad Objects](#_kicad_objects)
+
   - [Basic API Reference](#_basic_api_reference)
+
   - [Loading and Saving a Board](#_loading_and_saving_a_board)
+
   - [Listing and Loading Libraries](#_listing_and_loading_libraries)
+
   - [BOARD](#_board)
+
   - [Examples](#_examples_2)
+
   - [Footprint Wizards](#Footprint_Wizards)
+
   - [Action Plugins](#action_menu)
 ::::
 ::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: {#content}
+
 ::::::::::::::: {#preamble}
+
 :::::::::::::: sectionbody
 ::: paragraph
 *Reference manual*
 :::
 
 ::: {#copyright .paragraph}
+
 **Copyright**
 :::
 
@@ -190,6 +319,7 @@ All trademarks within this guide belong to their legitimate owners.
 :::
 
 ::: {#contributors .paragraph}
+
 **Contributors**
 :::
 
@@ -198,6 +328,7 @@ Jean-Pierre Charras, Fabrizio Tappero.
 :::
 
 ::: {#feedback .paragraph}
+
 **Feedback**
 :::
 
@@ -206,6 +337,7 @@ Please direct any bug reports, suggestions or new versions to here:
 :::
 
 ::: ulist
+
 - About KiCad document:
   [https://github.com/KiCad/kicad-doc/issues](https://github.com/KiCad/kicad-doc/issues){.bare}
 
@@ -217,6 +349,7 @@ Please direct any bug reports, suggestions or new versions to here:
 :::
 
 ::: {#publication_date_and_software_version .paragraph}
+
 **Publication date and software version**
 :::
 
@@ -227,10 +360,12 @@ Please direct any bug reports, suggestions or new versions to here:
 :::::::::::::::
 
 ::::::::::::::::::::::::::: sect1
+
 ## Introduction to Pcbnew {#_introduction_to_pcbnew}
 
 :::::::::::::::::::::::::: sectionbody
 ::::::::: sect2
+
 ### Description {#_description}
 
 ::: paragraph
@@ -277,6 +412,7 @@ complex form, automatic layout of coils on the printed circuit, etc).
 :::::::::
 
 ::::::::::::::: sect2
+
 ### Principal design features {#_principal_design_features}
 
 ::: paragraph
@@ -297,6 +433,7 @@ customizable:
 :::
 
 ::: ulist
+
 - In full or outline.
 
 - With or without track clearance.
@@ -322,6 +459,7 @@ The Footprint Editor provides many time saving tools such as:
 :::
 
 ::: ulist
+
 - Fast pad numbering by simply dragging the mouse over pads in the order
   you want them numbered.
 
@@ -346,9 +484,11 @@ Pcbnew easily generates all the documents necessary for production:
 :::
 
 ::: ulist
+
 - Fabrication outputs:
 
   ::: ulist
+
   - Files for Photoplotters in GERBER RS274X format.
 
   - Files for drilling in EXCELLON format.
@@ -363,6 +503,7 @@ Pcbnew easily generates all the documents necessary for production:
 :::::::::::::::
 
 ::::: sect2
+
 ### General remarks {#_general_remarks}
 
 ::: paragraph
@@ -384,10 +525,12 @@ features **only** exist in the new OpenGL and Cairo view modes.
 :::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Installation {#_installation}
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
 :::: sect2
+
 ### Installation of the software {#_installation_of_the_software}
 
 ::: paragraph
@@ -396,6 +539,7 @@ The installation procedure is described in the KiCad documentation.
 ::::
 
 ::::::: sect2
+
 ### Modifying the default configuration {#_modifying_the_default_configuration}
 
 ::: paragraph
@@ -414,6 +558,7 @@ To do this:
 :::
 
 ::: ulist
+
 - Launch Pcbnew using kicad or directly. On Windows it is in
   `C:\kicad\bin\pcbnew.exe` and on Linux you can run
   `/usr/local/kicad/bin/kicad` or `/usr/local/kicad/bin/pcbnew` if the
@@ -429,6 +574,7 @@ To do this:
 :::::::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect2
+
 ### Managing Footprint Libraries {#_managing_footprint_libraries}
 
 ::: paragraph
@@ -445,6 +591,7 @@ supported by a \"plugin\":
 :::
 
 ::: ulist
+
 - KiCad - native KiCad footprint libraries stored on a local filesystem
   in the *.pretty* format (folders containing *.kicad_mod* files)
 
@@ -459,6 +606,7 @@ supported by a \"plugin\":
 :::
 
 ::: {.admonitionblock .note}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | ::: ulist                         |
 | Note                              | - You can write only KiCad        |
@@ -486,6 +634,7 @@ one.
 :::
 
 :::: sect3
+
 #### Global Footprint Library Table {#_global_footprint_library_table}
 
 ::: paragraph
@@ -497,6 +646,7 @@ The location of this folder is dependent on the operating system.
 ::::
 
 ::::: sect3
+
 #### Project Specific Footprint Library Table {#_project_specific_footprint_library_table}
 
 ::: paragraph
@@ -517,6 +667,7 @@ folder of the currently open PCB.
 :::::
 
 :::::::: sect3
+
 #### Initial Configuration {#_initial_configuration}
 
 ::: paragraph
@@ -536,6 +687,7 @@ footprint libraries that are installed as part of KiCad.
 :::
 
 ::: {.admonitionblock .tip}
+
 +-----------------------------------+----------------------------------------------------------------------------------------------------------------------------+
 | ::: title                         | ::: paragraph                                                                                                              |
 | Tip                               | There are also sample `fp-lib-table` files in the official [KiCad library                                                  |
@@ -562,6 +714,7 @@ need for your projects.
 :::
 
 ::: {.admonitionblock .tip}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | It can be time consuming to have  |
 | Tip                               | many libraries, especially if     |
@@ -574,6 +727,7 @@ need for your projects.
 ::::::::
 
 ::::::::::::::: sect3
+
 #### Adding Table Entries using the Libraries Manager {#_adding_table_entries_using_the_libraries_manager}
 
 ::: paragraph
@@ -615,6 +769,7 @@ There are some rules for valid library table entries:
 :::
 
 ::: ulist
+
 - The colon `:` character cannot be used anywhere in the nickname.
 
 - Each library entry must have a valid path and/or file name depending
@@ -640,6 +795,7 @@ take precedence over the global table entry when duplicated names occur.
 :::::::::::::::
 
 ::::::: sect3
+
 #### Environment Variable Substitution {#_environment_variable_substitution}
 
 ::: paragraph
@@ -658,6 +814,7 @@ There are some default variables that KiCad defines:
 :::
 
 ::: ulist
+
 - `$KISYSMOD`: This points to where the default footprint libraries that
   were installed along with KiCad are located. You can override
   `$KISYSMOD` by defining it yourself which allows you to substitute
@@ -671,6 +828,7 @@ There are some default variables that KiCad defines:
 :::::::
 
 :::::::::::::::::::::::::::::::::::::: sect3
+
 #### Adding Table Entries using the Library Wizard {#_adding_table_entries_using_the_library_wizard}
 
 ::: paragraph
@@ -738,6 +896,7 @@ The last choice is the footprint library table to populate either:
 :::
 
 ::: ulist
+
 - the global table, or
 
 - the project specific table
@@ -751,6 +910,7 @@ folder](images/en/fplib_wizard_chooseflt.png)
 ::::
 
 ::::::::: sect4
+
 ##### Adding Existing Local Libraries {#_adding_existing_local_libraries}
 
 ::: paragraph
@@ -758,6 +918,7 @@ You might have local libraries already on your computer. For example:
 :::
 
 ::: ulist
+
 - Previously downloaded KiCad pretty directories
 
 - Legacy KiCad *.mod* files from older installations
@@ -784,6 +945,7 @@ format.
 :::::::::
 
 ::::::::::: sect4
+
 ##### Adding Libraries from Github {#_adding_libraries_from_github}
 
 ::: paragraph
@@ -797,6 +959,7 @@ you want to add.
 :::
 
 ::: {.admonitionblock .tip}
+
 +-----------------------------------+-------------------------------------------------------------+
 | ::: title                         | The offical KiCad library Github account is                 |
 | Tip                               | [https://github.com/KiCad](https://github.com/KiCad){.bare} |
@@ -833,6 +996,7 @@ when needed.
 ::::::::::::::::::::::::::::::::::::::
 
 :::::::::::: sect3
+
 #### Using the KiCad plugin {#_using_the_kicad_plugin}
 
 ::: paragraph
@@ -847,6 +1011,7 @@ library collection, 3rd party libraries or your own curated libraries.
 :::
 
 ::::::::: sect4
+
 ##### Installing KiCad plugin libraries {#_installing_kicad_plugin_libraries}
 
 ::: paragraph
@@ -881,6 +1046,7 @@ libraries directly and pull as needed.
 :::
 
 ::: {.admonitionblock .note}
+
 +-----------------------------------+------------------------------------------------------------------------------------+
 | ::: title                         | Sending pull requests via Github will allow the automatic library standards        |
 | Note                              | checker to verify your proposed changes. See [KiCad Library                        |
@@ -892,6 +1058,7 @@ libraries directly and pull as needed.
 ::::::::::::
 
 :::::::::::::::::::::::::: sect3
+
 #### Using the GitHub Plugin {#_using_the_github_plugin}
 
 ::: paragraph
@@ -902,6 +1069,7 @@ editing footprints read from the GitHub repo and saving them locally.
 :::
 
 ::: {.admonitionblock .important}
+
 +-----------------------------------+----------------------------------------------------+
 | ::: title                         | ::: ulist                                          |
 | Important                         | - The \"GitHub\" plugin is for **read-only access  |
@@ -959,6 +1127,7 @@ options (no COW support):
 +-------------+-----------------------------------------------------------------------------------------------------------+-------------+-------------+-------------+
 
 :::::::: sect4
+
 ##### Copy-On-Write {#_copy_on_write}
 
 ::: paragraph
@@ -1022,6 +1191,7 @@ using the `${}` notation to create the path in the same way as the
 ::::::::
 
 ::::: sect4
+
 ##### Using Copy-On-Write to share footprints {#_using_copy_on_write_to_share_footprints}
 
 ::: paragraph
@@ -1038,6 +1208,7 @@ contributing frequently to the shared master copies at
 :::
 
 ::: {.admonitionblock .tip}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | You can also contribute to        |
 | Tip                               | library developement using local  |
@@ -1051,6 +1222,7 @@ contributing frequently to the shared master copies at
 :::::
 
 ::::: sect4
+
 ##### Caching Github requests {#_caching_github_requests}
 
 ::: paragraph
@@ -1071,6 +1243,7 @@ IP or domain name of the machine running nginx.
 ::::::::::::::::::::::::::
 
 :::::::::::: sect3
+
 #### Usage Patterns {#_usage_patterns}
 
 ::: paragraph
@@ -1090,10 +1263,12 @@ There are advantages and disadvantages to each method:
 :::
 
 ::: ulist
+
 - You can define all of your libraries in the global table which means
   they will always be available when you need them.
 
   ::: ulist
+
   - The disadvantage of this is that you may have to search through a
     lot of libraries to find the footprint you are looking for.
   :::
@@ -1101,6 +1276,7 @@ There are advantages and disadvantages to each method:
 - You can define all your libraries on a project specific basis.
 
   ::: ulist
+
   - The advantage of this is that you only need to define the libraries
     you actually need for the project which cuts down on searching.
 
@@ -1120,6 +1296,7 @@ libraries.
 :::
 
 ::::::: sect4
+
 ##### Modifying footprints in a PCB project {#_modifying_footprints_in_a_pcb_project}
 
 ::: paragraph
@@ -1140,6 +1317,7 @@ instance, it will not match existing footprints of the same name.
 :::
 
 ::: {.admonitionblock .tip}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | A common practice is to copy all  |
 | Tip                               | the footprints you use to a       |
@@ -1160,10 +1338,12 @@ instance, it will not match existing footprints of the same name.
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## General operations {#_general_operations}
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
 :::::::: sect2
+
 ### Toolbars and commands {#_toolbars_and_commands}
 
 ::: paragraph
@@ -1171,6 +1351,7 @@ In Pcbnew it is possible to execute commands using various means:
 :::
 
 ::: ulist
+
 - Text-based menu at the top of the main window.
 
 - Top toolbar menu.
@@ -1182,6 +1363,7 @@ In Pcbnew it is possible to execute commands using various means:
 - Mouse buttons (menu options). Specifically:
 
   ::: ulist
+
   - The right mouse button reveals a pop-up menu the content of which
     depends on the element under the mouse arrow.
   :::
@@ -1204,15 +1386,19 @@ operations:
 ::::::::
 
 ::::::::::::: sect2
+
 ### Mouse commands {#_mouse_commands}
 
 :::: sect3
+
 #### Basic commands {#_basic_commands}
 
 ::: ulist
+
 - Left button
 
   ::: ulist
+
   - Single-click displays the characteristics of the footprint or text
     under the cursor in the lower status bar.
 
@@ -1223,6 +1409,7 @@ operations:
 - Centre button/wheel
 
   ::: ulist
+
   - Rapid zoom and some commands in layer manager.
 
   - Hold down the centre button and draw a rectangle to zoom to the
@@ -1233,12 +1420,14 @@ operations:
 - Right button
 
   ::: ulist
+
   - Displays a pop-up menu
   :::
 :::
 ::::
 
 :::::::::: sect3
+
 #### Operations on blocks {#_operations_on_blocks}
 
 ::: paragraph
@@ -1282,6 +1471,7 @@ When moving a block:
 :::
 
 ::: ulist
+
 - Move block to new position and operate left mouse button to place the
   elements.
 
@@ -1303,6 +1493,7 @@ limited to only some elements.
 :::::::::::::
 
 ::::: sect2
+
 ### Selection of grid size {#_selection_of_grid_size}
 
 ::: paragraph
@@ -1319,6 +1510,7 @@ menu bar option Dimensions → User Grid Size.
 :::::
 
 ::::: sect2
+
 ### Adjustment of the zoom level {#_adjustment_of_the_zoom_level}
 
 ::: paragraph
@@ -1326,12 +1518,14 @@ The zoom level can be changed using any of the following methods:
 :::
 
 ::: ulist
+
 - Open the pop-up window (using the right mouse button) and then select
   the desired zoom.
 
 - Use the following function keys:
 
   ::: ulist
+
   - `F1`: Enlarge (zoom in)
 
   - `F2`: Reduce (zoom out)
@@ -1349,6 +1543,7 @@ The zoom level can be changed using any of the following methods:
 :::::
 
 :::::::::: sect2
+
 ### Displaying cursor coordinates {#_displaying_cursor_coordinates}
 
 ::: paragraph
@@ -1366,6 +1561,7 @@ The status bar at the bottom of the screen gives:
 :::
 
 ::: ulist
+
 - The current zoom setting.
 
 - The absolute position of the cursor.
@@ -1390,6 +1586,7 @@ display](images/Pcbnew_coordinate_status_display.png)
 ::::::::::
 
 ::::: sect2
+
 ### Keyboard commands - hotkeys {#_keyboard_commands_hotkeys}
 
 ::: paragraph
@@ -1399,6 +1596,7 @@ hot keys that do not appear are:
 :::
 
 ::: ulist
+
 - `Delete`: deletes a footprint or a track. (*Available only if the
   Footprint mode or the Track mode is active*)
 
@@ -1414,6 +1612,7 @@ hot keys that do not appear are:
 :::::
 
 :::::::::: sect2
+
 ### Operation on blocks {#_operation_on_blocks}
 
 ::: paragraph
@@ -1472,6 +1671,7 @@ dialog](images/Pcbnew_legacy_block_selection_dialog.png)
 ::::::::::
 
 ::::::: sect2
+
 ### Units used in dialogs {#_units_used_in_dialogs}
 
 ::: paragraph
@@ -1503,6 +1703,7 @@ The rules are:
 :::
 
 ::: ulist
+
 - Spaces between the number and the unit are accepted.
 
 - Only the first two letters are significant.
@@ -1514,6 +1715,7 @@ The rules are:
 :::::::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect2
+
 ### Top menu bar {#_top_menu_bar}
 
 ::: paragraph
@@ -1528,6 +1730,7 @@ configuration options, printing, plotting and the help files.
 ::::
 
 :::::: sect3
+
 #### The File menu {#_the_file_menu}
 
 :::: imageblock
@@ -1545,6 +1748,7 @@ automatic testers.
 ::::::
 
 :::::: sect3
+
 #### Edit menu {#_edit_menu}
 
 ::: paragraph
@@ -1559,6 +1763,7 @@ Allows some global edit actions:
 ::::::
 
 :::::::::::: sect3
+
 #### View menu {#_view_menu}
 
 ::: paragraph
@@ -1566,6 +1771,7 @@ Allows:
 :::
 
 ::: ulist
+
 - Hide/Show the Layers manager (colors selection for displaying layers
   and other elements. Also enables the display of elements to be turned
   on and off).
@@ -1592,6 +1798,7 @@ Zoom functions and 3D board display.
 :::
 
 :::::: sect4
+
 ##### 3D Viewer {#_3d_viewer}
 
 ::: paragraph
@@ -1607,6 +1814,7 @@ Opens the 3D Viewer. Here is a sample:
 ::::::::::::
 
 ::::::::: sect3
+
 #### Setup menu {#_setup_menu}
 
 ::: paragraph
@@ -1614,6 +1822,7 @@ Provides access to 2 dialogs:
 :::
 
 ::: ulist
+
 - Setting Layers (number, enabled and layers names)
 
 - Setting Design Rules (tracks and vias sizes, clearances).
@@ -1624,6 +1833,7 @@ An important menu. Allows adjustment of:
 :::
 
 ::: ulist
+
 - Size of texts and the line width for drawings.
 
 - Dimensions and characteristic of pads.
@@ -1639,6 +1849,7 @@ An important menu. Allows adjustment of:
 :::::::::
 
 :::::: sect3
+
 #### Place menu {#_place_menu}
 
 ::: paragraph
@@ -1653,6 +1864,7 @@ Same function as the right-hand toolbar.
 ::::::
 
 :::::: sect3
+
 #### Route menu {#_route_menu}
 
 ::: paragraph
@@ -1667,6 +1879,7 @@ Routing function.
 ::::::
 
 ::::::: sect3
+
 #### Inspect menu {#_inspect_menu}
 
 ::: paragraph
@@ -1674,6 +1887,7 @@ Allows:
 :::
 
 ::: ulist
+
 - List nets
 
 - Measure function
@@ -1689,6 +1903,7 @@ Allows:
 :::::::
 
 ::::::: sect3
+
 #### Tools menu {#_tools_menu}
 
 ::: paragraph
@@ -1696,6 +1911,7 @@ Allows:
 :::
 
 ::: ulist
+
 - Display load netlist dialog
 
 - Update PCB from schematic
@@ -1717,6 +1933,7 @@ Allows:
 :::::::
 
 ::::::: sect3
+
 #### The Preferences menu {#_the_preferences_menu}
 
 :::: imageblock
@@ -1730,6 +1947,7 @@ Allows:
 :::
 
 ::: ulist
+
 - Selection of the footprint libraries.
 
 - Management of general options (units, etc.).
@@ -1741,6 +1959,7 @@ Allows:
 :::::::
 
 :::: sect3
+
 #### The Help menu {#_the_help_menu}
 
 ::: paragraph
@@ -1751,6 +1970,7 @@ Provides access to the user manuals and to the version information menu
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::: sect2
+
 ### Using icons on the top toolbar {#_using_icons_on_the_top_toolbar}
 
 ::: paragraph
@@ -1819,6 +2039,7 @@ This toolbar gives access to the principal functions of Pcbnew.
 +---------------------------------------------------------------------+--------------------------------------------------+
 
 :::: sect3
+
 #### Auxiliary toolbar {#_auxiliary_toolbar}
 
 +----------------------------------------------------------------+--------------------------------------------------+
@@ -1846,6 +2067,7 @@ This toolbar gives access to the principal functions of Pcbnew.
 ::::::::
 
 :::::: sect2
+
 ### Right-hand side toolbar {#_right_hand_side_toolbar}
 
 ::: paragraph
@@ -1906,6 +2128,7 @@ Pcbnew.
 +-----------------------------------------------------------------+-----------------------------------------------------+------------------------------------------------------------+
 
 ::: ulist
+
 - Placement of footprints, tracks, zones of copper, texts, etc.
 
 - Net Highlighting.
@@ -1920,6 +2143,7 @@ Pcbnew.
 ::::::
 
 :::: sect2
+
 ### Left-hand side toolbar {#_left_hand_side_toolbar}
 
 ::: paragraph
@@ -1979,6 +2203,7 @@ affect Pcbnew's interface.
 ::::
 
 ::::::: sect2
+
 ### Pop-up windows and fast editing {#_pop_up_windows_and_fast_editing}
 
 ::: paragraph
@@ -1991,6 +2216,7 @@ This gives immediate access to:
 :::
 
 ::: ulist
+
 - Changing the display (centre display on cursor, zoom in or out or
   selecting the zoom).
 
@@ -2006,6 +2232,7 @@ The screenshots below show what the pop-up windows looks like.
 :::::::
 
 :::::::::::::::::::::::::::::::::::: sect2
+
 ### Available modes {#_available_modes}
 
 ::: paragraph
@@ -2030,9 +2257,11 @@ modes add or remove some specific commands.
 +------------------------------------------------+--------------------------------------------------+
 
 :::::::::::: sect3
+
 #### Normal mode {#_normal_mode}
 
 ::: ulist
+
 - Pop-up menu with no selection:
 :::
 
@@ -2043,6 +2272,7 @@ modes add or remove some specific commands.
 ::::
 
 ::: ulist
+
 - Pop-up menu with track selected:
 :::
 
@@ -2054,6 +2284,7 @@ track](images/Pcbnew_popup_normal_mode_track.png)
 ::::
 
 ::: ulist
+
 - Pop-up menu with footprint selected:
 :::
 
@@ -2066,6 +2297,7 @@ footprint](images/Pcbnew_popup_normal_mode_footprint.png)
 ::::::::::::
 
 ::::::::::::: sect3
+
 #### Footprint mode {#_footprint_mode}
 
 ::: paragraph
@@ -2074,6 +2306,7 @@ module](images/icons/mode_module.png)]{.image} enabled)
 :::
 
 ::: ulist
+
 - Pop-up menu with no selection:
 :::
 
@@ -2084,6 +2317,7 @@ module](images/icons/mode_module.png)]{.image} enabled)
 ::::
 
 ::: ulist
+
 - Pop-up menu with track selected:
 :::
 
@@ -2095,6 +2329,7 @@ track](images/Pcbnew_popup_footprint_mode_track.png)
 ::::
 
 ::: ulist
+
 - Pop-up menu with footprint selected:
 :::
 
@@ -2107,6 +2342,7 @@ footprint](images/Pcbnew_popup_footprint_mode_footprint.png)
 :::::::::::::
 
 ::::::::::::: sect3
+
 #### Tracks mode {#_tracks_mode}
 
 ::: paragraph
@@ -2115,6 +2351,7 @@ track](images/icons/mode_track.png)]{.image} enabled)
 :::
 
 ::: ulist
+
 - Pop-up menu with no selection:
 :::
 
@@ -2125,6 +2362,7 @@ track](images/icons/mode_track.png)]{.image} enabled)
 ::::
 
 ::: ulist
+
 - Pop-up menu with track selected:
 :::
 
@@ -2136,6 +2374,7 @@ track](images/Pcbnew_popup_track_mode_track.png)
 ::::
 
 ::: ulist
+
 - Pop-up menu with footprint selected:
 :::
 
@@ -2151,10 +2390,12 @@ footprint](images/Pcbnew_popup_track_mode_footprint.png)
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Schematic Implementation {#_schematic_implementation}
 
 :::::::::::::::::::::::::::::::::::::: sectionbody
 ::::::: sect2
+
 ### Linking a schematic to a printed circuit board {#_linking_a_schematic_to_a_printed_circuit_board}
 
 ::: paragraph
@@ -2195,6 +2436,7 @@ that comprise KiCad.
 :::::::
 
 :::::: sect2
+
 ### Procedure for creating a printed circuit board {#_procedure_for_creating_a_printed_circuit_board}
 
 ::: paragraph
@@ -2202,6 +2444,7 @@ After having created your schematic in Eeschema:
 :::
 
 ::: ulist
+
 - Generate the netlist using Eeschema.
 
 - Assign each component in your netlist file to the corresponding land
@@ -2220,6 +2463,7 @@ tracks can be routed.
 ::::::
 
 :::::: sect2
+
 ### Procedure for updating a printed circuit board {#_procedure_for_updating_a_printed_circuit_board}
 
 ::: paragraph
@@ -2228,6 +2472,7 @@ generated), the following steps must be repeated:
 :::
 
 ::: ulist
+
 - Generate a new netlist file using Eeschema.
 
 - If the changes to the schematic involve new components, the
@@ -2246,9 +2491,11 @@ updated.
 ::::::
 
 :::::::::::::::::::::::: sect2
+
 ### Reading netlist file - loading footprints {#_reading_netlist_file_loading_footprints}
 
 :::::: sect3
+
 #### Dialog box {#_dialog_box}
 
 ::: paragraph
@@ -2263,6 +2510,7 @@ Accessible from the icon [![netlist](images/icons/netlist.png)]{.image}
 ::::::
 
 ::: sect3
+
 #### Available options {#_available_options}
 
 +-----------------------------------+-----------------------------------+
@@ -2291,6 +2539,7 @@ Accessible from the icon [![netlist](images/icons/netlist.png)]{.image}
 :::
 
 :::::::::::::::::: sect3
+
 #### Loading new footprints {#_loading_new_footprints}
 
 ::: paragraph
@@ -2339,6 +2588,7 @@ on the right button:
 ::::
 
 ::: ulist
+
 - Automatically Place New Footprints, if there is already a board with
   existing footprints.
 
@@ -2361,10 +2611,12 @@ The following screenshot shows the results.
 :::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Layers {#_layers}
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
 ::::: sect2
+
 ### Introduction {#_introduction}
 
 ::: paragraph
@@ -2372,11 +2624,13 @@ Pcbnew can work with 50 different layers:
 :::
 
 ::: ulist
+
 - Between 1 and 32 copper layers for routing tracks.
 
 - 14 fixed-purpose technical layers:
 
   ::: ulist
+
   - 12 paired layers (Front/Back): **Adhesive**, **Solder Paste**,
     **Silk Screen**, **Solder Mask**, **Courtyard**, **Fabrication**
 
@@ -2389,6 +2643,7 @@ Pcbnew can work with 50 different layers:
 :::::
 
 ::::::: sect2
+
 ### Setting up layers {#_setting_up_layers}
 
 ::: paragraph
@@ -2409,9 +2664,11 @@ function are configured there. Unused technical layers can be disabled.
 :::::::
 
 ::::::::::::::::: sect2
+
 ### Layer Description {#_layer_description}
 
 ::::::: sect3
+
 #### Copper Layers {#_copper_layers}
 
 ::: paragraph
@@ -2438,6 +2695,7 @@ properties](images/Pcbnew_layer_setup_dialog_layer_properties.png)
 :::::::
 
 :::::: sect3
+
 #### Paired Technical Layers {#_paired_technical_layers}
 
 ::: paragraph
@@ -2490,6 +2748,7 @@ The paired technical layers are:
 ::::::
 
 :::: sect3
+
 #### Independant Technical Layers {#_independant_technical_layers}
 
 ::: dlist
@@ -2507,6 +2766,7 @@ The paired technical layers are:
 ::::
 
 ::::: sect3
+
 #### Layers for general use {#_layers_for_general_use}
 
 ::: paragraph
@@ -2516,6 +2776,7 @@ used to create a file for assembly or machining. Their names are:
 :::
 
 ::: ulist
+
 - Comments
 
 - E.C.O. 1
@@ -2528,6 +2789,7 @@ used to create a file for assembly or machining. Their names are:
 :::::::::::::::::
 
 ::::::::::::::::::: sect2
+
 ### Selection of the active layer {#_selection_of_the_active_layer}
 
 ::: paragraph
@@ -2535,6 +2797,7 @@ The selection of the active working layer can be done in several ways:
 :::
 
 ::: ulist
+
 - Using the right toolbar (Layer manager).
 
 - Using the upper toolbar.
@@ -2547,6 +2810,7 @@ The selection of the active working layer can be done in several ways:
 :::
 
 ::::: sect3
+
 #### Selection using the layer manager {#_selection_using_the_layer_manager}
 
 :::: imageblock
@@ -2557,6 +2821,7 @@ The selection of the active working layer can be done in several ways:
 :::::
 
 ::::::: sect3
+
 #### Selection using the upper toolbar {#_selection_using_the_upper_toolbar}
 
 :::: imageblock
@@ -2576,6 +2841,7 @@ Hot keys to select the working layer are displayed.
 :::::::
 
 :::::::: sect3
+
 #### Selection using the pop-up window {#_selection_using_the_pop_up_window}
 
 :::: imageblock
@@ -2599,6 +2865,7 @@ dialog](images/Pcbnew_layer_selection_dialog.png)
 :::::::::::::::::::
 
 ::::::::::: sect2
+
 ### Selection of the Layers for Vias {#_selection_of_the_layers_for_vias}
 
 ::: paragraph
@@ -2637,6 +2904,7 @@ is in progress, a via will be inserted.
 :::::::::::
 
 ::::::::::::::::::::::: sect2
+
 ### Using the high-contrast mode {#_using_the_high_contrast_mode}
 
 ::: paragraph
@@ -2654,6 +2922,7 @@ There are two useful cases:
 :::
 
 :::::::::: sect3
+
 #### Copper layers in high-contrast mode {#_copper_layers_in_high_contrast_mode}
 
 ::: paragraph
@@ -2685,6 +2954,7 @@ high](images/Pcbnew_copper_layers_contrast_high.png)
 ::::::::::
 
 ::::::::::: sect3
+
 #### Technical layers {#_technical_layers}
 
 ::: paragraph
@@ -2723,13 +2993,16 @@ high](images/Pcbnew_technical_layers_contrast_high.png)
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Create and modify a board {#_create_and_modify_a_board}
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
 :::::::::::::::::::::::::::::::::::::::::::: sect2
+
 ### Creating a board {#_creating_a_board}
 
 ::::::::: sect3
+
 #### Drawing the board outline {#_drawing_the_board_outline}
 
 ::: paragraph
@@ -2747,6 +3020,7 @@ circular (or arc) outline:
 :::
 
 ::: {.olist .arabic}
+
 1.  Select the \'Add graphic circle\' or \'Add graphic arc\' tool
 
 2.  Click to fix the circle centre
@@ -2757,6 +3031,7 @@ circular (or arc) outline:
 :::
 
 ::: {.admonitionblock .note}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | The width of the outline can be   |
 | Note                              | adjusted in the Parameters menu   |
@@ -2780,6 +3055,7 @@ The resulting outline might look something like this:
 :::::::::
 
 ::::::::::::::::::::::::: sect3
+
 #### Using a DXF drawing for the board outline {#_using_a_dxf_drawing_for_the_board_outline}
 
 ::: paragraph
@@ -2798,6 +3074,7 @@ that fits a particular enclosure.
 :::
 
 ::::::::::: sect4
+
 ##### Preparing the DXF drawing for import into KiCad {#_preparing_the_dxf_drawing_for_import_into_kicad}
 
 ::: paragraph
@@ -2816,6 +3093,7 @@ their original simpler shapes. In LibreCAD use the following steps:
 :::
 
 ::: {.olist .arabic}
+
 1.  Open a copy of the DXF file.
 
 2.  Select the board shape (selected shapes are shown with dashed
@@ -2843,6 +3121,7 @@ format:
 :::
 
 ::: {.olist .arabic}
+
 1.  In the **File** menu, use **Save As...​**
 
 2.  In the **Save Drawing As** dialog, there is a **Save as type:**
@@ -2860,6 +3139,7 @@ Your DXF file is now ready for import into KiCad.
 :::::::::::
 
 :::::::: sect4
+
 ##### Importing the DXF file into KiCad {#_importing_the_dxf_file_into_kicad}
 
 ::: paragraph
@@ -2873,6 +3153,7 @@ Using the \"default\" canvas mode:
 :::
 
 ::: {.olist .arabic}
+
 1.  In the **File** menu, select **Import** and then the **DXF File**
     option.
 
@@ -2896,6 +3177,7 @@ Using the \"OpenGL\" or \"Cairo\" canvas modes:
 :::
 
 ::: {.olist .arabic}
+
 1.  In the **File** menu, select **Import** and then the **DXF File**
     option.
 
@@ -2918,6 +3200,7 @@ Using the \"OpenGL\" or \"Cairo\" canvas modes:
 ::::::::
 
 :::::: sect4
+
 ##### Example imported DXF shape {#_example_imported_dxf_shape}
 
 ::: paragraph
@@ -2935,6 +3218,7 @@ DXF](images/Pcbnew_board_outline_imported_from_a_DXF.png)
 :::::::::::::::::::::::::
 
 ::::::::::::: sect3
+
 #### Reading the netlist generated from the schematic {#_reading_the_netlist_generated_from_the_schematic}
 
 ::: paragraph
@@ -2978,6 +3262,7 @@ modules](images/Pcbnew_board_outline_with_globally_placed_modules.png)
 ::::
 
 ::: {.admonitionblock .note}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | If a board is modified by         |
 | Note                              | replacing an existing footprint   |
@@ -2999,6 +3284,7 @@ modules](images/Pcbnew_board_outline_with_globally_placed_modules.png)
 ::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::: sect2
+
 ### Correcting a board {#_correcting_a_board}
 
 ::: paragraph
@@ -3007,9 +3293,11 @@ change in the schematic.
 :::
 
 :::: sect3
+
 #### Steps to follow {#_steps_to_follow}
 
 ::: {.olist .arabic}
+
 1.  Create a new netlist from the modified schematic.
 
 2.  If new components have been added, link these to their corresponding
@@ -3020,6 +3308,7 @@ change in the schematic.
 ::::
 
 ::::::: sect3
+
 #### Deleting incorrect tracks {#_deleting_incorrect_tracks}
 
 ::: paragraph
@@ -3042,6 +3331,7 @@ function allows their identification).
 :::::::
 
 :::::::::: sect3
+
 #### Deleted components {#_deleted_components}
 
 ::: paragraph
@@ -3078,6 +3368,7 @@ option](images/Pcbnew_unlock_footprint_option.png)
 ::::::::::
 
 ::::::: sect3
+
 #### Modified footprints {#_modified_footprints}
 
 ::: paragraph
@@ -3101,6 +3392,7 @@ for instance) can be effected directly by editing the footprint.
 :::::::
 
 :::::::: sect3
+
 #### Advanced options - selection using time stamps {#_advanced_options_selection_using_time_stamps}
 
 ::: paragraph
@@ -3128,6 +3420,7 @@ component was placed in the schematic).
 :::
 
 ::: {.admonitionblock .warning}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | Great care should be exercised    |
 | Warning                           | when using this option (save the  |
@@ -3148,6 +3441,7 @@ component was placed in the schematic).
 ::::::::::::::::::::::::::::::
 
 :::::::::::: sect2
+
 ### Direct exchange for footprints already placed on board {#_direct_exchange_for_footprints_already_placed_on_board}
 
 ::: paragraph
@@ -3156,6 +3450,7 @@ footprint is very useful, and is very easy:
 :::
 
 ::: {.olist .arabic}
+
 1.  Click on a footprint to open the Edit dialog box.
 
 2.  Activate Change Footprints.
@@ -3183,6 +3478,7 @@ One must choose a new footprint name and use:
 :::
 
 ::: ulist
+
 - **Change footprint of \'xx\'** for the current footprint
 
 - **Change footprints \'yy\'** for all footprints like the current
@@ -3199,10 +3495,12 @@ One must choose a new footprint name and use:
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Footprint placement {#_footprint_placement}
 
 ::::::::::::::::::::::::::::::::::::::::::::: sectionbody
 :::: sect2
+
 ### Assisted placement {#_assisted_placement}
 
 ::: paragraph
@@ -3214,6 +3512,7 @@ toolbar must be activated.
 ::::
 
 :::::::::: sect2
+
 ### Manual placement {#_manual_placement}
 
 ::: paragraph
@@ -3247,6 +3546,7 @@ placement](images/Pcbnew_circuit_after_placement.png)
 ::::::::::
 
 :::::::::::::: sect2
+
 ### Automatic Footprint Distribution {#_automatic_footprint_distribution}
 
 ::: paragraph
@@ -3264,6 +3564,7 @@ selection and placement easier.
 :::
 
 ::: ulist
+
 - Select the option \"Footprint Mode\" (Icon [![mode
   module](images/icons/mode_module.png)]{.image} on the upper toolbar).
 
@@ -3297,6 +3598,7 @@ In both cases the following commands are available:
 :::
 
 ::: ulist
+
 - **Spread out All Footprints** allows the automatic distribution of all
   the footprints not Fixed. This is generally used after the first
   reading of a netlist.
@@ -3310,9 +3612,11 @@ In both cases the following commands are available:
 ::::::::::::::
 
 :::::::::::::::::::::: sect2
+
 ### Automatic placement of footprints {#_automatic_placement_of_footprints}
 
 ::::: sect3
+
 #### Characteristics of the automatic placer {#_characteristics_of_the_automatic_placer}
 
 ::: paragraph
@@ -3332,6 +3636,7 @@ many pads.
 :::::
 
 :::::::::: sect3
+
 #### Preparation {#_preparation}
 
 ::: paragraph
@@ -3345,6 +3650,7 @@ Before an automatic placement is carried out one must:
 :::
 
 ::: ulist
+
 - Create the outline of the board (It can be complex, but it must be
   closed if the form is not rectangular).
 
@@ -3395,6 +3701,7 @@ inherited each time the footprint is used.
 ::::::::::
 
 :::::: sect3
+
 #### Interactive auto-placement {#_interactive_auto_placement}
 
 ::: paragraph
@@ -3419,6 +3726,7 @@ autoplacement on the footprint pointed to by the mouse, even if its
 ::::::
 
 :::::: sect3
+
 #### Additional note {#_additional_note}
 
 ::: paragraph
@@ -3445,13 +3753,16 @@ area in order to determine the optimum position at which to place it.
 ::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Setting routing parameters {#_setting_routing_parameters}
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
 :::::::::::: sect2
+
 ### Current settings {#_current_settings}
 
 ::::::: sect3
+
 #### Accessing the main dialog {#_accessing_the_main_dialog}
 
 ::: paragraph
@@ -3471,6 +3782,7 @@ and are set in the Design Rules dialog.
 :::::::
 
 :::::: sect3
+
 #### Current settings {#_current_settings_2}
 
 ::: paragraph
@@ -3487,6 +3799,7 @@ toolbar](images/Pcbnew_design_rules_top_toolbar.png)
 ::::::::::::
 
 ::::::::::: sect2
+
 ### General options {#_general_options}
 
 ::: paragraph
@@ -3516,6 +3829,7 @@ For the creation of tracks the necessary parameters are:
 :::
 
 ::: ulist
+
 - **Tracks 45 Only**: Directions allowed for track segments are 0, 45 or
   90 degrees.
 
@@ -3533,6 +3847,7 @@ For the creation of tracks the necessary parameters are:
 :::::::::::
 
 :::::::::::::::::::::::::::::::::: sect2
+
 ### Netclasses {#_netclasses}
 
 ::: paragraph
@@ -3541,6 +3856,7 @@ Parameters are defined by a group of nets.
 :::
 
 ::: ulist
+
 - A group of nets is called a Netclass.
 
 - There is always a netclass called \"default\".
@@ -3553,6 +3869,7 @@ A netclass specifies:
 :::
 
 ::: ulist
+
 - The width of tracks, via diameters and drills.
 
 - The clearance between pads and tracks (or vias).
@@ -3563,6 +3880,7 @@ A netclass specifies:
 :::
 
 :::: sect3
+
 #### Setting routing parameters {#_setting_routing_parameters_2}
 
 ::: paragraph
@@ -3571,6 +3889,7 @@ The choice is made in the menu: Design Rules → Design Rules.
 ::::
 
 ::::::: sect3
+
 #### Netclass editor {#_netclass_editor}
 
 ::: paragraph
@@ -3578,6 +3897,7 @@ The Netclass editor allows you to:
 :::
 
 ::: ulist
+
 - Add or delete Netclasses.
 
 - Set routing parameters values: clearance, track width, via sizes.
@@ -3594,6 +3914,7 @@ tab](images/Pcbnew_design_rules_editor_netclass_tab.png)
 :::::::
 
 ::::::::::: sect3
+
 #### Global Design Rules {#_global_design_rules}
 
 ::: paragraph
@@ -3601,6 +3922,7 @@ The global design rules are:
 :::
 
 ::: ulist
+
 - Enabling/disabling Blind/buried Vias use.
 
 - Enabling/disabling Micro Vias use.
@@ -3636,6 +3958,7 @@ size.
 :::::::::::
 
 ::::::: sect3
+
 #### Via parameters {#_via_parameters}
 
 ::: paragraph
@@ -3643,6 +3966,7 @@ Pcbnew handles 3 types of vias:
 :::
 
 ::: ulist
+
 - Through vias (usual vias).
 
 - Blind or buried vias.
@@ -3664,6 +3988,7 @@ On a board, a via smaller than specified here generates a DRC error.
 :::::::
 
 :::: sect3
+
 #### Track parameters {#_track_parameters}
 
 ::: paragraph
@@ -3673,6 +3998,7 @@ smaller than specified here generates a DRC error.
 ::::
 
 :::::: sect3
+
 #### Specific sizes {#_specific_sizes}
 
 :::: imageblock
@@ -3690,9 +4016,11 @@ current netclass values.
 ::::::::::::::::::::::::::::::::::
 
 ::::::: sect2
+
 ### Examples and typical dimensions {#_examples_and_typical_dimensions}
 
 :::: sect3
+
 #### Track width {#_track_width}
 
 ::: paragraph
@@ -3710,6 +4038,7 @@ here.
 ::::
 
 :::: sect3
+
 #### Insulation (clearance) {#_insulation_clearance}
 
 +----------+----------+----------+----------+----------+-----------+
@@ -3728,12 +4057,15 @@ width.
 :::::::
 
 ::::::::::: sect2
+
 ### Examples {#_examples}
 
 :::::: sect3
+
 #### Rustic {#_rustic}
 
 ::: ulist
+
 - Clearance: 0.35 mm (0.0138 inches).
 
 - Track width: 0.8 mm (0.0315 inches).
@@ -3753,9 +4085,11 @@ width.
 ::::::
 
 :::::: sect3
+
 #### Standard {#_standard}
 
 ::: ulist
+
 - Clearance: 0.35 mm (0.0138 inches).
 
 - Track width: 0.5 mm (0.0127 inches).
@@ -3776,6 +4110,7 @@ width.
 :::::::::::
 
 :::: sect2
+
 ### Manual routing {#_manual_routing}
 
 ::: paragraph
@@ -3793,6 +4128,7 @@ hand.
 ::::
 
 :::::::::::::::::::::::: sect2
+
 ### Help when creating tracks {#_help_when_creating_tracks}
 
 ::: paragraph
@@ -3814,6 +4150,7 @@ recommended, use it only in specific cases.
 :::
 
 :::::::::::::: sect3
+
 #### Creating tracks {#_creating_tracks}
 
 ::: paragraph
@@ -3873,6 +4210,7 @@ context](images/Pcbnew_track_in_progres_context.png)
 ::::::::::::::
 
 :::: sect3
+
 #### Moving and dragging tracks {#_moving_and_dragging_tracks}
 
 ::: paragraph
@@ -3884,6 +4222,7 @@ hotkey \'M\'. If you want to drag the track you can use the hotkey
 ::::
 
 :::::: sect3
+
 #### Via Insertion {#_via_insertion}
 
 ::: paragraph
@@ -3891,6 +4230,7 @@ A via can be inserted only when a track is in progress:
 :::
 
 ::: ulist
+
 - By the pop-up menu.
 
 - By the hotkey \'V\'.
@@ -3908,6 +4248,7 @@ routing.
 ::::::::::::::::::::::::
 
 :::::::::::::: sect2
+
 ### Select/edit the track width and via size {#_selectedit_the_track_width_and_via_size}
 
 ::: paragraph
@@ -3922,6 +4263,7 @@ extra tracks and via sizes.
 :::
 
 ::: ulist
+
 - The horizontal toolbar can be used to select a size.
 
 - When the button [![add tracks](images/icons/add_tracks.png)]{.image}
@@ -3933,6 +4275,7 @@ extra tracks and via sizes.
 :::
 
 ::::: sect3
+
 #### Using the horizontal toolbar {#_using_the_horizontal_toolbar}
 
 :::: imageblock
@@ -3976,6 +4319,7 @@ extra tracks and via sizes.
 :::::
 
 ::::::: sect3
+
 #### Using the pop-up menu {#_using_the_pop_up_menu}
 
 ::: paragraph
@@ -3998,9 +4342,11 @@ changes).
 ::::::::::::::
 
 :::::::::::::::::::: sect2
+
 ### Editing and changing tracks {#_editing_and_changing_tracks}
 
 ::::::::::: sect3
+
 #### Change a track {#_change_a_track}
 
 ::: paragraph
@@ -4033,6 +4379,7 @@ Pcbnew will automatically remove the old track if it is redundant.
 :::::::::::
 
 :::::::::: sect3
+
 #### Global changes {#_global_changes}
 
 ::: paragraph
@@ -4052,6 +4399,7 @@ The dialog editor allows global changes of tracks and/or vias for:
 :::
 
 ::: ulist
+
 - The current net.
 
 - The whole board.
@@ -4069,6 +4417,7 @@ dialog](images/Pcbnew_track_global_edit_dialog.png)
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::: sect1
+
 ## Interactive Router {#_interactive_router}
 
 :::::::::::::::::::::::::::::::::: sectionbody
@@ -4083,6 +4432,7 @@ Following modes are supported:
 :::
 
 ::: ulist
+
 - **Highlight collisions**, which highlights all violating objects with
   a nice, shiny green color and shows violating clearance regions.
 
@@ -4094,6 +4444,7 @@ Following modes are supported:
 :::
 
 :::::::::: sect2
+
 ### Setting up {#_setting_up}
 
 ::: paragraph
@@ -4101,6 +4452,7 @@ Before using the Interactive Router, please set up these two things:
 :::
 
 ::: ulist
+
 - **Clearance settings** To set the clearances, open the *Design Rules*
   dialog and make sure at least the default clearance value looks
   sensible.
@@ -4113,6 +4465,7 @@ Before using the Interactive Router, please set up these two things:
 ::::
 
 ::: ulist
+
 - **Enable OpenGL mode** By selecting *View→Switch canvas to OpenGL*
   menu option or pressing **F11**.
 :::
@@ -4125,6 +4478,7 @@ Before using the Interactive Router, please set up these two things:
 ::::::::::
 
 ::::::::::: sect2
+
 ### Laying out tracks {#_laying_out_tracks}
 
 ::: paragraph
@@ -4175,6 +4529,7 @@ diagonal.
 :::
 
 ::: {.admonitionblock .note}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | By default, the router snaps to   |
 | Note                              | centers/axes of the items.        |
@@ -4186,6 +4541,7 @@ diagonal.
 :::::::::::
 
 ::::: sect2
+
 ### Setting track widths and via sizes {#_setting_track_widths_and_via_sizes}
 
 ::: paragraph
@@ -4194,6 +4550,7 @@ it during routing:
 :::
 
 ::: ulist
+
 - Use standard KiCad shortcuts.
 
 - Press **W** or select *Custom Track Width* from the context menu to
@@ -4209,6 +4566,7 @@ it during routing:
 :::::
 
 :::: sect2
+
 ### Dragging {#_dragging}
 
 ::: paragraph
@@ -4220,6 +4578,7 @@ clicking again or abort by pressing *Esc*.
 ::::
 
 :::::::: sect2
+
 ### Options {#_options}
 
 ::: paragraph
@@ -4239,6 +4598,7 @@ The options are:
 ::::
 
 ::: ulist
+
 - **Mode** - select how the router handles DRC violation (shoving,
   walking around, etc.)
 
@@ -4275,6 +4635,7 @@ The options are:
 :::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Creating copper zones {#_creating_copper_zones}
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
@@ -4285,6 +4646,7 @@ copper layer or alternatively on a technical layer.
 :::
 
 ::::::::::: sect2
+
 ### Creating zones on copper layers {#_creating_zones_on_copper_layers}
 
 ::: paragraph
@@ -4305,6 +4667,7 @@ each change, but only:
 :::
 
 ::: ulist
+
 - If a filling zone command is executed.
 
 - When a DRC test is performed.
@@ -4321,6 +4684,7 @@ In order to create a copper zone you should:
 :::
 
 ::: ulist
+
 - Select parameters (net name, layer...​). Turning on the layer and
   highlighting this net is not mandatory but it is good practice.
 
@@ -4338,9 +4702,11 @@ areas.
 :::::::::::
 
 :::::::::::::::::::::::::::::::::::::: sect2
+
 ### Creating a zone {#_creating_a_zone}
 
 ::::::::::::: sect3
+
 #### Creating the limits of a zone {#_creating_the_limits_of_a_zone}
 
 ::: paragraph
@@ -4361,6 +4727,7 @@ You can specify all parameters for this zone:
 :::
 
 ::: ulist
+
 - Net
 
 - Layer
@@ -4381,6 +4748,7 @@ point.
 :::
 
 ::: {.admonitionblock .note}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | ::: ulist                         |
 | Note                              | - The DRC is active when creating |
@@ -4406,6 +4774,7 @@ in thin hatched line):
 :::::::::::::
 
 :::::::::::::: sect3
+
 #### Priority level {#_priority_level}
 
 ::: paragraph
@@ -4451,6 +4820,7 @@ filling](images/Pcbnew_zone_priority_example_after_filling.png)
 ::::::::::::::
 
 :::::::::::::: sect3
+
 #### Filling the zone {#_filling_the_zone}
 
 ::: paragraph
@@ -4481,12 +4851,14 @@ area inside the zone, because this area is not accessible:
 :::
 
 ::: ulist
+
 - A track creates a border, and
 
 - There is no starting point for filling in this area.
 :::
 
 ::: {.admonitionblock .note}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | You can use many polygons to      |
 | Note                              | create cutout areas. Here you can |
@@ -4504,6 +4876,7 @@ cutout](images/Pcbnew_zone_filled_with_cutout.png)
 ::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::: sect2
+
 ### Filling options {#_filling_options}
 
 :::: imageblock
@@ -4517,6 +4890,7 @@ When you fill an area, you must choose:
 :::
 
 ::: ulist
+
 - The mode for filling.
 
 - The clearance and minimum copper thickness.
@@ -4527,6 +4901,7 @@ When you fill an area, you must choose:
 :::
 
 :::: sect3
+
 #### Filling mode {#_filling_mode}
 
 ::: paragraph
@@ -4537,6 +4912,7 @@ use segments.
 ::::
 
 ::::: sect3
+
 #### Clearance and minimum copper thickness {#_clearance_and_minimum_copper_thickness}
 
 ::: paragraph
@@ -4546,6 +4922,7 @@ too small copper areas.
 :::
 
 ::: {.admonitionblock .warning}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | if this value is too large, small |
 | Warning                           | shapes like thermal stubs in      |
@@ -4555,6 +4932,7 @@ too small copper areas.
 :::::
 
 ::::::::::::: sect3
+
 #### Pad options {#_pad_options}
 
 ::: paragraph
@@ -4563,6 +4941,7 @@ connected by thermal reliefs.
 :::
 
 ::: ulist
+
 - If included, soldering and un-soldering can be very difficult due to
   the high thermal mass of the large copper area.
 :::
@@ -4574,9 +4953,11 @@ connected by thermal reliefs.
 ::::
 
 ::: ulist
+
 - If excluded, the connection to the zone will not be very good.
 
   ::: ulist
+
   - The zone can be filled only if tracks exists to connect zone areas.
 
   - Pads must be connected by tracks.
@@ -4590,9 +4971,11 @@ connected by thermal reliefs.
 ::::
 
 ::: ulist
+
 - A thermal relief is a good compromise.
 
   ::: ulist
+
   - Pad is connected by 4 track segments.
 
   - The segment width is the current value used for the track width.
@@ -4607,6 +4990,7 @@ connected by thermal reliefs.
 :::::::::::::
 
 :::::::: sect3
+
 #### Thermal relief parameters {#_thermal_relief_parameters}
 
 :::: imageblock
@@ -4629,6 +5013,7 @@ parameters](images/Pcbnew_thermal_relief_parameters.png)
 ::::::::
 
 ::::: sect3
+
 #### Choice of parameters {#_choice_of_parameters}
 
 ::: paragraph
@@ -4646,6 +5031,7 @@ sizes used for SMD components).
 ::::::::::::::::::::::::::::::::
 
 :::::::::: sect2
+
 ### Adding a cutout area inside a zone {#_adding_a_cutout_area_inside_a_zone}
 
 ::: paragraph
@@ -4654,6 +5040,7 @@ inside the zone):
 :::
 
 ::: ulist
+
 - Right-click on an existing edge outline.
 
 - Select Add Cutout Area.
@@ -4666,6 +5053,7 @@ inside the zone):
 ::::
 
 ::: ulist
+
 - Create the new outline.
 :::
 
@@ -4678,6 +5066,7 @@ outline](images/Pcbnew_zone_unfilled_cutout_outline.png)
 ::::::::::
 
 ::::::::::::::::::::::: sect2
+
 ### Outlines editing {#_outlines_editing}
 
 ::: paragraph
@@ -4685,6 +5074,7 @@ An outline can be modified by:
 :::
 
 ::: ulist
+
 - Moving a corner or an edge.
 
 - Deleting or adding a corner.
@@ -4735,6 +5125,7 @@ Polygons are combined.
 :::
 
 ::::::::: sect3
+
 #### Adding a similar zone {#_adding_a_similar_zone}
 
 ::: paragraph
@@ -4762,6 +5153,7 @@ after](images/Pcbnew_zone_add_similar_after.png)
 :::::::::::::::::::::::
 
 :::: sect2
+
 ### Editing zone parameters {#_editing_zone_parameters}
 
 ::: paragraph
@@ -4772,6 +5164,7 @@ If the zone is already filled, refilling it will be necessary.
 ::::
 
 :::::: sect2
+
 ### Final zone filling {#_final_zone_filling}
 
 ::: paragraph
@@ -4780,6 +5173,7 @@ this:
 :::
 
 ::: ulist
+
 - Activate the tool zones via the button [![add
   zone](images/icons/add_zone.png)]{.image}.
 
@@ -4790,6 +5184,7 @@ this:
 :::
 
 ::: {.admonitionblock .warning}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | Calculation can take some time if |
 | Warning                           | the filling grid is small.        |
@@ -4799,6 +5194,7 @@ this:
 ::::::
 
 :::::: sect2
+
 ### Change zones net names {#_change_zones_net_names}
 
 ::: paragraph
@@ -4818,9 +5214,11 @@ name to the new one.
 ::::::
 
 :::::::::: sect2
+
 ### Creating zones on technical layers {#_creating_zones_on_technical_layers}
 
 ::::::::: sect3
+
 #### Creating zone limits {#_creating_zone_limits}
 
 ::: paragraph
@@ -4846,6 +5244,7 @@ like explained previously for copper layers.
 :::
 
 ::: {.admonitionblock .note}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | ::: ulist                         |
 | Note                              | - For editing outlines use the    |
@@ -4861,6 +5260,7 @@ like explained previously for copper layers.
 ::::::::::
 
 :::::::::::: sect2
+
 ### Creating a Keepout area {#_creating_a_keepout_area}
 
 ::: paragraph
@@ -4889,6 +5289,7 @@ One can select disallowed items:
 :::
 
 ::: ulist
+
 - Tracks.
 
 - Vias.
@@ -4911,6 +5312,7 @@ analogous to copper zone editing.
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Files for circuit fabrication {#_files_for_circuit_fabrication}
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
@@ -4926,6 +5328,7 @@ circuit board.
 :::
 
 ::::::::: sect2
+
 ### Final preparations {#_final_preparations}
 
 ::: paragraph
@@ -4934,6 +5337,7 @@ circuit board includes the following preparatory steps.
 :::
 
 ::: ulist
+
 - Mark any layer (e.g., \'top or front\' and \'bottom or back\') with
   the project name by placing appropriate text upon each of the layers.
 
@@ -4967,6 +5371,7 @@ layer colour key](images/Pcbnew_layer_colour_key.png)]{.image}
 :::::::::
 
 ::::::::: sect2
+
 ### Final DRC test {#_final_drc_test}
 
 ::: paragraph
@@ -4997,6 +5402,7 @@ This final check will prevent any unpleasant surprises.
 :::::::::
 
 :::::: sect2
+
 ### Setting coordinates origin {#_setting_coordinates_origin}
 
 ::: paragraph
@@ -5014,6 +5420,7 @@ by left-clicking on the chosen location.
 ::::::
 
 :::::::::::::::::::::::::::::::::::: sect2
+
 ### Generating files for photo-tracing {#_generating_files_for_photo_tracing}
 
 ::: paragraph
@@ -5053,6 +5460,7 @@ setting](images/Pcbnew_plot_fine_scale_setting.png)
 ::::
 
 ::::::::: sect3
+
 #### GERBER format {#_gerber_format}
 
 ::: paragraph
@@ -5076,6 +5484,7 @@ represents the name of the .brd file).
 :::
 
 ::: ulist
+
 - xxxx-F_Cu.gbr for the component side.
 
 - xxxx-B_Cu.gbr for the copper side.
@@ -5104,6 +5513,7 @@ omitted, Abs format. These are very usual settings.
 :::::::::
 
 ::::: sect3
+
 #### POSTSCRIPT format {#_postscript_format}
 
 ::: paragraph
@@ -5120,6 +5530,7 @@ If the Print Sheet Ref option is active, the sheet cartridge is traced.
 :::::
 
 :::::::::: sect3
+
 #### Plot options {#_plot_options}
 
 ::: paragraph
@@ -5161,6 +5572,7 @@ GERBER format specific options:
 ::::::::::
 
 :::::::: sect3
+
 #### Other formats {#_other_formats}
 
 ::: paragraph
@@ -5188,6 +5600,7 @@ If the Print Sheet Ref option is active, the sheet cartridge is traced.
 ::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::: sect2
+
 ### Global clearance settings for the solder stop and the solder paste mask {#_global_clearance_settings_for_the_solder_stop_and_the_solder_paste_mask}
 
 ::: paragraph
@@ -5197,6 +5610,7 @@ levels.
 :::
 
 ::: ulist
+
 - At pads level.
 
 - At footprint level.
@@ -5209,6 +5623,7 @@ And Pcbnew uses by priority order.
 :::
 
 ::: ulist
+
 - Pad values. If null:
 
 - Footprint values. If null:
@@ -5217,6 +5632,7 @@ And Pcbnew uses by priority order.
 :::
 
 ::::::::: sect3
+
 #### Access {#_access}
 
 ::: paragraph
@@ -5243,6 +5659,7 @@ dialog](images/Pcbnew_pad_mask_settings_dialog.png)
 :::::::::
 
 :::::: sect3
+
 #### Solder mask clearance {#_solder_mask_clearance}
 
 ::: paragraph
@@ -5261,6 +5678,7 @@ shapes will be merged.
 ::::::
 
 ::::: sect3
+
 #### Solder paste clearance {#_solder_paste_clearance}
 
 ::: paragraph
@@ -5275,6 +5693,7 @@ This value is negative because the mask is usually smaller than the pad.
 :::::::::::::::::::::
 
 ::::::::::::::: sect2
+
 ### Generating drill files {#_generating_drill_files}
 
 ::: paragraph
@@ -5288,6 +5707,7 @@ map.
 :::
 
 ::: ulist
+
 - The drill map can be plotted using several formats.
 
 - The drill report is a plain text file.
@@ -5298,6 +5718,7 @@ The generation of these files is controlled via:
 :::
 
 ::: ulist
+
 - \"Create Drill File\" button, or
 
 - Files/Fabrication Outputs/Drill file menu selection.
@@ -5324,6 +5745,7 @@ For setting the coordinate origin, the following dialog box is used:
 ::::
 
 ::: ulist
+
 - Absolute: absolute coordinate system is used.
 
 - Auxiliary axis: coordinates are relative to the auxiliary axis, use
@@ -5332,6 +5754,7 @@ For setting the coordinate origin, the following dialog box is used:
 :::::::::::::::
 
 :::: sect2
+
 ### Generating wiring documentation {#_generating_wiring_documentation}
 
 ::: paragraph
@@ -5344,6 +5767,7 @@ be readable.
 ::::
 
 :::: sect2
+
 ### Generation of files for automatic component insertion {#_generation_of_files_for_automatic_component_insertion}
 
 ::: paragraph
@@ -5357,6 +5781,7 @@ names of the file(s) created.
 ::::
 
 ::::::: sect2
+
 ### Advanced tracing options {#_advanced_tracing_options}
 
 ::: paragraph
@@ -5417,10 +5842,12 @@ The available options are:
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Footprint Editor - Managing Libraries {#_footprint_editor_managing_libraries}
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
 :::::::::: sect2
+
 ### Overview of Footprint Editor {#_overview_of_footprint_editor}
 
 ::: paragraph
@@ -5436,6 +5863,7 @@ Footprint Editor enables the creation and the editing of footprints:
 :::
 
 ::: ulist
+
 - Adding and removing pads.
 
 - Changing pad properties (shape, layer) for individual pads or globally
@@ -5454,6 +5882,7 @@ by:
 :::
 
 ::: ulist
+
 - Listing the footprints in the active library.
 
 - Deletion of a footprint from the active library.
@@ -5473,6 +5902,7 @@ The library extension is `.mod`.
 ::::::::::
 
 :::::::: sect2
+
 ### Accessing Footprint Editor {#_accessing_footprint_editor}
 
 ::: paragraph
@@ -5480,6 +5910,7 @@ The Footprint Editor can be accessed in two different ways:
 :::
 
 ::: ulist
+
 - Directly, via the icon [![module
   editor](images/icons/module_editor.png)]{.image} in the main toolbar
   of Pcbnew.
@@ -5502,6 +5933,7 @@ archiving.
 ::::::::
 
 :::::: sect2
+
 ### Footprint Editor user interface {#_footprint_editor_user_interface}
 
 ::: paragraph
@@ -5516,6 +5948,7 @@ By calling Footprint Editor the following window will appear:
 ::::::
 
 :::::: sect2
+
 ### Top toolbar in Footprint Editor {#_top_toolbar_in_footprint_editor}
 
 :::: imageblock
@@ -5599,6 +6032,7 @@ From this toolbar, the following functions are available:
 ::::::
 
 :::::: sect2
+
 ### Creating a new library {#_creating_a_new_library}
 
 ::: paragraph
@@ -5616,6 +6050,7 @@ the footprint being edited.
 :::
 
 ::: {.admonitionblock .warning}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | If an old library of the same     |
 | Warning                           | name exists, it will be           |
@@ -5625,6 +6060,7 @@ the footprint being edited.
 ::::::
 
 ::::: sect2
+
 ### Saving a footprint in the active library {#_saving_a_footprint_in_the_active_library}
 
 ::: paragraph
@@ -5643,9 +6079,11 @@ the name of the footprint as identified in the library.
 :::::
 
 :::::: sect2
+
 ### Transferring a footprint from one library to another {#_transferring_a_footprint_from_one_library_to_another}
 
 ::: ulist
+
 - Select the source library via the button
   [![library](images/icons/library.png)]{.image}.
 
@@ -5664,6 +6102,7 @@ You may also wish to delete the source footprint.
 :::
 
 ::: ulist
+
 - Reselect the source library with
   [![library](images/icons/library.png)]{.image}
 
@@ -5673,6 +6112,7 @@ You may also wish to delete the source footprint.
 ::::::
 
 ::::: sect2
+
 ### Saving all footprints of your board in the active library {#_saving_all_footprints_of_your_board_in_the_active_library}
 
 ::: paragraph
@@ -5682,6 +6122,7 @@ names. This command has two uses:
 :::
 
 ::: ulist
+
 - To create an archive or complete a library with the footprints from a
   board, in the event of the loss of a library.
 
@@ -5691,6 +6132,7 @@ names. This command has two uses:
 :::::
 
 :::::::::::: sect2
+
 ### Documentation for library footprints {#_documentation_for_library_footprints}
 
 ::: paragraph
@@ -5715,6 +6157,7 @@ This dialog accepts:
 :::
 
 ::: ulist
+
 - A one-line comment/description.
 
 - Multiple keywords.
@@ -5740,6 +6183,7 @@ keyword lists contain the word `CONN`.
 ::::::::::::
 
 :::::::::::::: sect2
+
 ### Documenting libraries - recommended practice {#_documenting_libraries_recommended_practice}
 
 ::: paragraph
@@ -5790,6 +6234,7 @@ This technique has several advantages:
 :::
 
 ::: ulist
+
 - The circuit can be printed to scale and serve as documentation for the
   library with no further effort.
 
@@ -5802,6 +6247,7 @@ This technique has several advantages:
 ::::::::::::::
 
 :::::: sect2
+
 ### Footprint Libraries Management {#_footprint_libraries_management}
 
 ::: paragraph
@@ -5827,6 +6273,7 @@ Library Tables*.
 ::::::
 
 :::: sect2
+
 ### 3D Shapes Libraries Management {#_3d_shapes_libraries_management}
 
 ::: paragraph
@@ -5839,10 +6286,12 @@ Downloader.
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Footprint Editor - Creating and Editing Footprints {#_footprint_editor_creating_and_editing_footprints}
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
 ::::: sect2
+
 ### Footprint Editor Overview {#_footprint_editor_overview}
 
 ::: paragraph
@@ -5851,6 +6300,7 @@ This includes:
 :::
 
 ::: ulist
+
 - Adding and removing pads.
 
 - Changing pad properties (shape, layer), for individual pads or for all
@@ -5865,6 +6315,7 @@ This includes:
 :::::
 
 ::::::::::::: sect2
+
 ### Footprint Elements {#_footprint_elements}
 
 ::: paragraph
@@ -5874,6 +6325,7 @@ your schematic. Each footprint includes three different elements:
 :::
 
 ::: ulist
+
 - The pads.
 
 - Graphical contours and text.
@@ -5888,6 +6340,7 @@ generation of auto-insertion files.
 :::
 
 ::::: sect3
+
 #### Pads {#_pads}
 
 ::: paragraph
@@ -5895,6 +6348,7 @@ Two pad properties are important:
 :::
 
 ::: ulist
+
 - Geometry (shape, layers, drill holes).
 
 - The pad number, which is constituted by up to four alphanumeric
@@ -5906,6 +6360,7 @@ Two pad properties are important:
 :::::
 
 :::: sect3
+
 #### Contours {#_contours}
 
 ::: paragraph
@@ -5917,6 +6372,7 @@ graphical aids.
 ::::
 
 :::: sect3
+
 #### Fields {#_fields}
 
 ::: paragraph
@@ -5933,6 +6389,7 @@ graphical text.
 :::::::::::::
 
 ::::: sect2
+
 ### Starting Footprint Editor and Selecting a Footprint to Edit {#_starting_footprint_editor_and_selecting_a_footprint_to_edit}
 
 ::: paragraph
@@ -5940,6 +6397,7 @@ Footprint Editor can be started in two ways:
 :::
 
 ::: ulist
+
 - Directly via the [![module
   editor](images/icons/module_editor.png)]{.image} icon from the main
   toolbar of Pcbnew. This allows the creation or modification of a
@@ -5953,6 +6411,7 @@ Footprint Editor can be started in two ways:
 :::::
 
 :::::::::::: sect2
+
 ### Footprint Editor Toolbars {#_footprint_editor_toolbars}
 
 ::: paragraph
@@ -5966,6 +6425,7 @@ Calling Footprint Editor will launch a new window that looks like this:
 ::::
 
 :::::: sect3
+
 #### Edit Toolbar (right-hand side) {#_edit_toolbar_right_hand_side}
 
 ::: paragraph
@@ -5973,6 +6433,7 @@ This toolbar contains tools for:
 :::
 
 ::: ulist
+
 - Placing pads.
 
 - Adding graphic elements (contours, text).
@@ -6015,6 +6476,7 @@ The specific functions are the following:
 ::::::
 
 :::: sect3
+
 #### Display Toolbar (left-hand side) {#_display_toolbar_left_hand_side}
 
 ::: paragraph
@@ -6050,6 +6512,7 @@ These tools manage the display options in Footprint Editor:
 ::::::::::::
 
 ::::::::::::: sect2
+
 ### Context Menus {#_context_menus}
 
 ::: paragraph
@@ -6091,6 +6554,7 @@ graphics](images/Modedit_context_menu_graphics.png)
 :::::::::::::
 
 ::::::: sect2
+
 ### Footprint Properties Dialog {#_footprint_properties_dialog}
 
 ::: paragraph
@@ -6112,6 +6576,7 @@ The dialog can be used to define the main footprint parameters.
 :::::::
 
 :::::::::: sect2
+
 ### Creating a New Footprint {#_creating_a_new_footprint}
 
 ::: paragraph
@@ -6131,6 +6596,7 @@ The new footprint will require:
 :::
 
 ::: ulist
+
 - Contours (and possibly graphic text).
 
 - Pads.
@@ -6149,6 +6615,7 @@ footprint is as follows:
 :::
 
 ::: ulist
+
 - Load the similar footprint ([![load module
   lib](images/icons/load_module_lib.png)]{.image}, [![load module
   board](images/icons/load_module_board.png)]{.image} or [![import
@@ -6162,6 +6629,7 @@ footprint is as follows:
 ::::::::::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::: sect2
+
 ### Adding and Editing Pads {#_adding_and_editing_pads}
 
 ::: paragraph
@@ -6171,6 +6639,7 @@ under the cursor, or global, affecting all pads of the footprint.
 :::
 
 ::::: sect3
+
 #### Adding Pads {#_adding_pads}
 
 ::: paragraph
@@ -6186,6 +6655,7 @@ Do not forget to enter the pad number.
 :::::
 
 :::::::::::::::::::::::::::: sect3
+
 #### Setting Pad Properties {#_setting_pad_properties}
 
 ::: paragraph
@@ -6193,6 +6663,7 @@ This can be done in three different ways:
 :::
 
 ::: ulist
+
 - Selecting the [![options pad](images/icons/options_pad.png)]{.image}
   icon from the horizontal toolbar.
 
@@ -6228,6 +6699,7 @@ generally sufficient.
 :::
 
 :::: sect4
+
 ##### Rectangular Pads {#_rectangular_pads}
 
 ::: paragraph
@@ -6241,6 +6713,7 @@ operation.
 ::::
 
 :::: sect4
+
 ##### Rotate Pads {#_rotate_pads}
 
 ::: paragraph
@@ -6250,6 +6723,7 @@ microwave footprints.
 ::::
 
 :::::::: sect4
+
 ##### Non-plated Through Hole Pads {#_non_plated_through_hole_pads}
 
 ::: paragraph
@@ -6278,6 +6752,7 @@ net name is allowed. A connection to a net is not possible.
 ::::::::
 
 :::::: sect4
+
 ##### Offset Parameter {#_offset_parameter}
 
 ::: paragraph
@@ -6292,6 +6767,7 @@ Pad 3 has an offset Y = 15 mils:
 ::::::
 
 :::::: sect4
+
 ##### Delta Parameter (trapezoidal pads) {#_delta_parameter_trapezoidal_pads}
 
 ::: paragraph
@@ -6307,6 +6783,7 @@ Pad 1 has its parameter Delta X = 10 mils
 ::::::::::::::::::::::::::::
 
 :::::::::: sect3
+
 #### Setting Clearances for Solder Mask and Solder Paste Layers {#_setting_clearances_for_solder_mask_and_solder_paste_layers}
 
 ::: paragraph
@@ -6317,6 +6794,7 @@ is based on the following order of precedence:
 :::
 
 ::: ulist
+
 - Pad setting
 
 - Footprint setting
@@ -6325,6 +6803,7 @@ is based on the following order of precedence:
 :::
 
 ::: {.admonitionblock .note}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | ::: paragraph                     |
 | Note                              | The solder mask pad shape is      |
@@ -6339,6 +6818,7 @@ is based on the following order of precedence:
 :::
 
 :::::: sect4
+
 ##### Solder Paste Settings {#_solder_paste_settings}
 
 ::: paragraph
@@ -6346,6 +6826,7 @@ Two settings are used to calculate the solder paste aperture:
 :::
 
 ::: ulist
+
 - A fixed clearance setting.
 
 - A percentage of the pad size.
@@ -6359,6 +6840,7 @@ clearance setting.
 ::::::::::
 
 ::::::::::: sect3
+
 #### Pads Not on Copper Layers {#_pads_not_on_copper_layers}
 
 ::: paragraph
@@ -6371,6 +6853,7 @@ level settings and only use the pad level settings.
 :::
 
 ::: {.admonitionblock .warning}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | ::: paragraph                     |
 | Warning                           | Pads without copper layers        |
@@ -6411,6 +6894,7 @@ settings](images/Modedit_pad_level_pad_settings.png)
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::: sect2
+
 ### Fields Properties {#_fields_properties}
 
 ::: paragraph
@@ -6432,6 +6916,7 @@ properties](images/Modedit_footprint_text_properties.png)
 :::::::
 
 ::::::::: sect2
+
 ### Automatic Placement of a Footprint {#_automatic_placement_of_a_footprint}
 
 ::: paragraph
@@ -6469,6 +6954,7 @@ resistor might have a permission of 10 to rotate 180 degrees
 :::::::::
 
 ::::::: sect2
+
 ### Attributes {#_attributes}
 
 ::: paragraph
@@ -6482,6 +6968,7 @@ The attributes window is the following:
 ::::
 
 ::: ulist
+
 - Normal is the standard attribute.
 
 - Normal+Insert indicates that the footprint must appear in the
@@ -6495,6 +6982,7 @@ The attributes window is the following:
 :::::::
 
 ::::::::::: sect2
+
 ### Documenting Footprints in a Library {#_documenting_footprints_in_a_library}
 
 ::: paragraph
@@ -6520,6 +7008,7 @@ This menu allows:
 :::
 
 ::: ulist
+
 - The entry of a comment line (description).
 
 - Multiple keywords.
@@ -6540,6 +7029,7 @@ the keyword `TO220`
 :::::::::::
 
 :::::::::::::::::::::::::::: sect2
+
 ### 3-Dimensional Visualization {#_3_dimensional_visualization}
 
 ::: paragraph
@@ -6549,6 +7039,7 @@ a model file, select the *3D Settings* tab as shown below.
 :::
 
 ::::: {#img-Modedit_module_3d_options .imageblock}
+
 ::: content
 ![Modedit module 3d options](images/Modedit_module_3d_options.png)
 :::
@@ -6563,6 +7054,7 @@ The buttons on the right have the following functions:
 :::
 
 ::: ulist
+
 - **Add 3D Shape** shows a 3D file selection dialog and creates a new
   model entry for the component.
 
@@ -6617,6 +7109,7 @@ OpenCascade Community Edition (OCE) software.
 :::
 
 ::::::::::::::::: sect3
+
 #### 3D Model Paths {#_3d_model_paths}
 
 ::: paragraph
@@ -6658,6 +7151,7 @@ with *\${MY_ENV_VAR}* where *MY_ENV_VAR* is a variable defined via the
 :::
 
 ::::: {#img-Modedit_internal_path_config .imageblock}
+
 ::: content
 ![Modedit internal path config](images/Modedit_internal_path_config.png)
 :::
@@ -6680,6 +7174,7 @@ dialog is shown below.
 :::
 
 ::::: {#img-Modedit_alias_path_config .imageblock}
+
 ::: content
 ![Modedit alias path config](images/Modedit_alias_path_config.png)
 :::
@@ -6701,6 +7196,7 @@ seconds to display.
 :::
 
 ::::: {#img-Modedit_3D_file_browser .imageblock}
+
 ::: content
 ![Modedit 3D file browser](images/Modedit_3D_file_browser.png)
 :::
@@ -6713,6 +7209,7 @@ Figure 4. KiCad 3D File Browser
 ::::::::::::::::::::::::::::
 
 :::::: sect2
+
 ### Saving a Footprint into the Active Library {#_saving_a_footprint_into_the_active_library}
 
 ::: paragraph
@@ -6735,6 +7232,7 @@ of the footprint to be equal to the library name of the footprint.
 ::::::
 
 :::: sect2
+
 ### Saving a footprint to the board {#_saving_a_footprint_to_the_board}
 
 ::: paragraph
@@ -6747,6 +7245,7 @@ will update this footprint on the board.
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Advanced PCB editing tools {#_advanced_pcb_editing_tools}
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
@@ -6757,6 +7256,7 @@ on the canvas.
 :::
 
 ::::: sect2
+
 ### Duplicating items {#_duplicating_items}
 
 ::: paragraph
@@ -6774,6 +7274,7 @@ the duplicate item option in the context menu, icon
 :::::
 
 :::::::::::::: sect2
+
 ### Moving items exactly {#_moving_items_exactly}
 
 ::: paragraph
@@ -6834,6 +7335,7 @@ objects.
 ::::::::::::::
 
 :::::::::::::::::::::::::::::::::::: sect2
+
 ### Array tools {#_array_tools}
 
 ::: paragraph
@@ -6843,6 +7345,7 @@ lay out repetitive elements on PCBs and in footprints.
 :::
 
 :::::: sect3
+
 #### Activating the array tool {#_activating_the_array_tool}
 
 ::: paragraph
@@ -6867,6 +7370,7 @@ right.
 ::::::
 
 :::::::::::::::::::::: sect3
+
 #### Grid arrays {#_grid_arrays}
 
 ::: paragraph
@@ -6886,6 +7390,7 @@ The settings dialog for grid arrays look like this:
 ::::
 
 ::::::::::::::: sect4
+
 ##### Geometric options {#_geometric_options}
 
 ::: paragraph
@@ -6893,6 +7398,7 @@ The geometric options are as follow:
 :::
 
 ::: ulist
+
 - **Horizontal count**: the number of \"columns\" in the grid.
 
 - **Vertical count**: the number of \"rows\" in the grid.
@@ -6923,6 +7429,7 @@ Figure 5. 3x3 grid with x and y offsets
 :::::
 
 ::: ulist
+
 - **Stagger**: add an offset to every set of \"n\" rows/columns, with
   each row progressing by 1/n'th of the relevant spacing dimension:
 :::
@@ -6951,9 +7458,11 @@ Figure 7. 4x3 grid with a column stagger of 3
 :::::::::::::::
 
 :::: sect4
+
 ##### Numbering options {#_numbering_options}
 
 ::: ulist
+
 - **Numbering Direction**: Determines whether numbers proceed along rows
   and then moves to the next row, or down columns and then to the next
   column. Note that the direction on numbering is defined by the sign of
@@ -6973,6 +7482,7 @@ Figure 7. 4x3 grid with a column stagger of 3
 - **Numbering Scheme**
 
   ::: ulist
+
   - **Continuous**: the numbering just continues across a row/column
     break - if the last item in the first row is numbered \"7\", the
     first item in the second row will be \"8\".
@@ -6986,6 +7496,7 @@ Figure 7. 4x3 grid with a column stagger of 3
   Choices are
 
   ::: ulist
+
   - **Numerals** for normal integer indices
 
   - **Hexadecimal** for base-16 indexing
@@ -7001,6 +7512,7 @@ Figure 7. 4x3 grid with a column stagger of 3
 ::::::::::::::::::::::
 
 :::::::::: sect3
+
 #### Circular arrays {#_circular_arrays}
 
 ::: paragraph
@@ -7017,9 +7529,11 @@ circular array configuration dialog:
 ::::
 
 :::: sect4
+
 ##### Geometric options {#_geometric_options_2}
 
 ::: ulist
+
 - **Horizontal center**, **Vertical center**: The centre of the circle.
   The radius field below will update automatically when you adjust
   these.
@@ -7037,6 +7551,7 @@ circular array configuration dialog:
 ::::
 
 :::: sect4
+
 ##### Numbering options {#_numbering_options_2}
 
 ::: paragraph
@@ -7050,6 +7565,7 @@ negative angle.
 ::::::::::::::::::::::::::::::::::::
 
 ::::::: sect2
+
 ### Measurement (ruler) tool {#_measurement_ruler_tool}
 
 ::: paragraph
@@ -7079,6 +7595,7 @@ using the ususal hotkey (Ctrl-U by default).
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## KiCad Scripting Reference {#_kicad_scripting_reference}
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
@@ -7102,10 +7619,12 @@ Using scripting you can create:
 :::
 
 ::: ulist
+
 - **Plugins**: this type of script is loaded when KiCad starts.
   Examples:
 
   ::: ulist
+
   - **Footprint Wizards**: To help you build footprints easily filling
     in parameters. See the dedicated section [Footprint
     Wizards](#Footprint_Wizards) below.
@@ -7128,6 +7647,7 @@ scripting is Pcbnew. It is also planned for Eeschema in the future.
 :::
 
 ::::: sect2
+
 ### KiCad Objects {#_kicad_objects}
 
 ::: paragraph
@@ -7138,11 +7658,13 @@ Then MODULEs have D_PADs, EDGEs, etc.
 :::
 
 ::: ulist
+
 - See the BOARD section below.
 :::
 :::::
 
 :::: sect2
+
 ### Basic API Reference {#_basic_api_reference}
 
 ::: paragraph
@@ -7154,9 +7676,11 @@ action plugins.
 ::::
 
 ::::::: sect2
+
 ### Loading and Saving a Board {#_loading_and_saving_a_board}
 
 ::: ulist
+
 - **LoadBoard(filename):** loads a board from file returning a BOARD
   object, using the file format that matches the filename extension.
 
@@ -7173,7 +7697,9 @@ Example that loads a board, hides all values, shows all references
 :::
 
 ::: content
-``` highlight
+
+```python
+
 #!/usr/bin/env python2.7
 import sys
 from pcbnew import *
@@ -7187,12 +7713,15 @@ for module in pcb.GetModules():
     module.Reference().SetVisible(True)   # set Reference as Visible
 
 pcb.Save("mod_"+filename)
+
 ```
+
 :::
 :::::
 :::::::
 
 :::::: sect2
+
 ### Listing and Loading Libraries {#_listing_and_loading_libraries}
 
 ::::: listingblock
@@ -7201,7 +7730,9 @@ Enumerate library, enumerate modules, enumerate pads
 :::
 
 ::: content
-``` highlight
+
+```python
+
 #!/usr/bin/python
 
 from pcbnew import *
@@ -7210,8 +7741,10 @@ libpath = "/usr/share/kicad/modules/Sockets.pretty"
 print ">> enumerate footprints, pads of",libpath
 
 # Load the suitable plugin to read/write the .pretty library
+
 # (containing the .kicad_mod footprint files)
 src_type = IO_MGR.GuessPluginTypeFromLibPath( libpath );
+
 # Rem: we can force the plugin type by using IO_MGR.PluginFind( IO_MGR.KICAD )
 plugin = IO_MGR.PluginFind( src_type )
 
@@ -7235,12 +7768,15 @@ for name in list_of_footprints:
         "pos0", ToMM(pad.GetPos0().x), ToMM(pad.GetPos0().y),"mm",\
         "shape offset", ToMM(pad.GetOffset().x), ToMM(pad.GetOffset().y), "mm"
     print ""
+
 ```
+
 :::
 :::::
 ::::::
 
 ::::::::: sect2
+
 ### BOARD {#_board}
 
 ::: paragraph
@@ -7254,6 +7790,7 @@ using \"for obj in list:\"
 :::
 
 ::: ulist
+
 - **board.GetModules():** This method returns a list of MODULE objects,
   all the modules available in the board will be exposed here.
 
@@ -7283,7 +7820,9 @@ Board Inspection Example
 :::
 
 ::: content
-``` highlight
+
+```python
+
 #!/usr/bin/env python
 import sys
 from pcbnew import *
@@ -7294,7 +7833,9 @@ pcb = LoadBoard(filename)
 
 ToUnits = ToMM
 FromUnits = FromMM
+
 #ToUnits=ToMils
+
 #FromUnits=FromMils
 
 print "LISTING VIAS:"
@@ -7349,15 +7890,19 @@ for idx in range(0, pcb.GetAreaCount()):
 
 print ""
 print "NetClasses:", pcb.GetNetClasses().GetCount(),
+
 ```
+
 :::
 :::::
 :::::::::
 
 ::::::: sect2
+
 ### Examples {#_examples_2}
 
 :::::: sect3
+
 #### Change a component pin's paste mask margin {#_change_a_component_pins_paste_mask_margin}
 
 ::::: listingblock
@@ -7367,7 +7912,9 @@ be kept as it is.
 :::
 
 ::: content
-``` highlight
+
+```python
+
 #!/usr/bin/env python2.7
 import sys
 from pcbnew import *
@@ -7387,13 +7934,16 @@ for p in pads:
     if id<15: p.SetLocalSolderPasteMargin(0)
 
 pcb.Save("mod_"+filename)
+
 ```
+
 :::
 :::::
 ::::::
 :::::::
 
 :::::::::: sect2
+
 ### Footprint Wizards {#Footprint_Wizards}
 
 ::: paragraph
@@ -7424,7 +7974,8 @@ Build footprints easily filling in parameters.
 :::
 
 ::: content
-``` highlight
+
+```python
 from __future__ import division
 import pcbnew
 
@@ -7569,12 +8120,15 @@ class FPC_FootprintWizard(HFPW.HelpfulFootprintWizardPlugin):
 
 # register into pcbnew
 FPC_FootprintWizard().register()
+
 ```
+
 :::
 :::::
 ::::::::::
 
 :::::::::::: sect2
+
 ### Action Plugins {#action_menu}
 
 ::: paragraph
@@ -7593,6 +8147,7 @@ New menu are available inside menu **Tools** ⇒ **External plugins**.
 ::::
 
 ::: ulist
+
 - **Refresh**: reload plugins (create new menu if needed)
 
 - **Add date on PCB**: An example plugin.
@@ -7610,7 +8165,8 @@ Action plugin example: Add date to any text item with content
 :::
 
 ::: content
-``` highlight
+
+```python
 import pcbnew
 import re
 import datetime
@@ -7620,8 +8176,11 @@ class text_by_date(pcbnew.ActionPlugin):
     test_by_date: A sample plugin as an example of ActionPlugin
     Add the date to any text field of the board where the content is '$date$'
     How to use:
+
     - Add a text on your board with the content '$date$'
+
     - Call the plugin
+
     - Automaticaly the date will be added to the text (format YYYY-MM-DD)
     """
 
@@ -7648,7 +8207,9 @@ class text_by_date(pcbnew.ActionPlugin):
 
 
 text_by_date().register()
+
 ```
+
 :::
 :::::
 ::::::::::::
@@ -7657,7 +8218,9 @@ text_by_date().register()
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::: {#footer}
+
 ::: {#footer-text}
+
 Last updated 2026-03-15 16:35:47 -0700
 :::
 ::::
@@ -7669,11 +8232,14 @@ Last updated 2026-03-15 16:35:47 -0700
 :::
 
 :::::::::::::::::::::::::::: {#content}
+
 ::::::::::::::::::::::::::: sect1
+
 ## Introduction to Pcbnew {#_introduction_to_pcbnew}
 
 :::::::::::::::::::::::::: sectionbody
 ::::::::: sect2
+
 ### Description {#_description}
 
 ::: paragraph
@@ -7720,6 +8286,7 @@ complex form, automatic layout of coils on the printed circuit, etc).
 :::::::::
 
 ::::::::::::::: sect2
+
 ### Principal design features {#_principal_design_features}
 
 ::: paragraph
@@ -7740,6 +8307,7 @@ customizable:
 :::
 
 ::: ulist
+
 - In full or outline.
 
 - With or without track clearance.
@@ -7765,6 +8333,7 @@ The Footprint Editor provides many time saving tools such as:
 :::
 
 ::: ulist
+
 - Fast pad numbering by simply dragging the mouse over pads in the order
   you want them numbered.
 
@@ -7789,9 +8358,11 @@ Pcbnew easily generates all the documents necessary for production:
 :::
 
 ::: ulist
+
 - Fabrication outputs:
 
   ::: ulist
+
   - Files for Photoplotters in GERBER RS274X format.
 
   - Files for drilling in EXCELLON format.
@@ -7806,6 +8377,7 @@ Pcbnew easily generates all the documents necessary for production:
 :::::::::::::::
 
 ::::: sect2
+
 ### General remarks {#_general_remarks}
 
 ::: paragraph
@@ -7828,7 +8400,9 @@ features **only** exist in the new OpenGL and Cairo view modes.
 ::::::::::::::::::::::::::::
 
 :::: {#footer}
+
 ::: {#footer-text}
+
 Last updated 2026-03-15 16:35:47 -0700
 :::
 ::::
@@ -7840,11 +8414,14 @@ Last updated 2026-03-15 16:35:47 -0700
 :::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: {#content}
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Installation {#_installation}
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
 :::: sect2
+
 ### Installation of the software {#_installation_of_the_software}
 
 ::: paragraph
@@ -7853,6 +8430,7 @@ The installation procedure is described in the KiCad documentation.
 ::::
 
 ::::::: sect2
+
 ### Modifying the default configuration {#_modifying_the_default_configuration}
 
 ::: paragraph
@@ -7871,6 +8449,7 @@ To do this:
 :::
 
 ::: ulist
+
 - Launch Pcbnew using kicad or directly. On Windows it is in
   `C:\kicad\bin\pcbnew.exe` and on Linux you can run
   `/usr/local/kicad/bin/kicad` or `/usr/local/kicad/bin/pcbnew` if the
@@ -7886,6 +8465,7 @@ To do this:
 :::::::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect2
+
 ### Managing Footprint Libraries {#_managing_footprint_libraries}
 
 ::: paragraph
@@ -7902,6 +8482,7 @@ supported by a \"plugin\":
 :::
 
 ::: ulist
+
 - KiCad - native KiCad footprint libraries stored on a local filesystem
   in the *.pretty* format (folders containing *.kicad_mod* files)
 
@@ -7916,6 +8497,7 @@ supported by a \"plugin\":
 :::
 
 ::: {.admonitionblock .note}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | ::: ulist                         |
 | Note                              | - You can write only KiCad        |
@@ -7943,6 +8525,7 @@ one.
 :::
 
 :::: sect3
+
 #### Global Footprint Library Table {#_global_footprint_library_table}
 
 ::: paragraph
@@ -7954,6 +8537,7 @@ The location of this folder is dependent on the operating system.
 ::::
 
 ::::: sect3
+
 #### Project Specific Footprint Library Table {#_project_specific_footprint_library_table}
 
 ::: paragraph
@@ -7974,6 +8558,7 @@ folder of the currently open PCB.
 :::::
 
 :::::::: sect3
+
 #### Initial Configuration {#_initial_configuration}
 
 ::: paragraph
@@ -7993,6 +8578,7 @@ footprint libraries that are installed as part of KiCad.
 :::
 
 ::: {.admonitionblock .tip}
+
 +-----------------------------------+----------------------------------------------------------------------------------------------------------------------------+
 | ::: title                         | ::: paragraph                                                                                                              |
 | Tip                               | There are also sample `fp-lib-table` files in the official [KiCad library                                                  |
@@ -8019,6 +8605,7 @@ need for your projects.
 :::
 
 ::: {.admonitionblock .tip}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | It can be time consuming to have  |
 | Tip                               | many libraries, especially if     |
@@ -8031,6 +8618,7 @@ need for your projects.
 ::::::::
 
 ::::::::::::::: sect3
+
 #### Adding Table Entries using the Libraries Manager {#_adding_table_entries_using_the_libraries_manager}
 
 ::: paragraph
@@ -8072,6 +8660,7 @@ There are some rules for valid library table entries:
 :::
 
 ::: ulist
+
 - The colon `:` character cannot be used anywhere in the nickname.
 
 - Each library entry must have a valid path and/or file name depending
@@ -8097,6 +8686,7 @@ take precedence over the global table entry when duplicated names occur.
 :::::::::::::::
 
 ::::::: sect3
+
 #### Environment Variable Substitution {#_environment_variable_substitution}
 
 ::: paragraph
@@ -8115,6 +8705,7 @@ There are some default variables that KiCad defines:
 :::
 
 ::: ulist
+
 - `$KISYSMOD`: This points to where the default footprint libraries that
   were installed along with KiCad are located. You can override
   `$KISYSMOD` by defining it yourself which allows you to substitute
@@ -8128,6 +8719,7 @@ There are some default variables that KiCad defines:
 :::::::
 
 :::::::::::::::::::::::::::::::::::::: sect3
+
 #### Adding Table Entries using the Library Wizard {#_adding_table_entries_using_the_library_wizard}
 
 ::: paragraph
@@ -8195,6 +8787,7 @@ The last choice is the footprint library table to populate either:
 :::
 
 ::: ulist
+
 - the global table, or
 
 - the project specific table
@@ -8208,6 +8801,7 @@ folder](images/en/fplib_wizard_chooseflt.png)
 ::::
 
 ::::::::: sect4
+
 ##### Adding Existing Local Libraries {#_adding_existing_local_libraries}
 
 ::: paragraph
@@ -8215,6 +8809,7 @@ You might have local libraries already on your computer. For example:
 :::
 
 ::: ulist
+
 - Previously downloaded KiCad pretty directories
 
 - Legacy KiCad *.mod* files from older installations
@@ -8241,6 +8836,7 @@ format.
 :::::::::
 
 ::::::::::: sect4
+
 ##### Adding Libraries from Github {#_adding_libraries_from_github}
 
 ::: paragraph
@@ -8254,6 +8850,7 @@ you want to add.
 :::
 
 ::: {.admonitionblock .tip}
+
 +-----------------------------------+-------------------------------------------------------------+
 | ::: title                         | The offical KiCad library Github account is                 |
 | Tip                               | [https://github.com/KiCad](https://github.com/KiCad){.bare} |
@@ -8290,6 +8887,7 @@ when needed.
 ::::::::::::::::::::::::::::::::::::::
 
 :::::::::::: sect3
+
 #### Using the KiCad plugin {#_using_the_kicad_plugin}
 
 ::: paragraph
@@ -8304,6 +8902,7 @@ library collection, 3rd party libraries or your own curated libraries.
 :::
 
 ::::::::: sect4
+
 ##### Installing KiCad plugin libraries {#_installing_kicad_plugin_libraries}
 
 ::: paragraph
@@ -8338,6 +8937,7 @@ libraries directly and pull as needed.
 :::
 
 ::: {.admonitionblock .note}
+
 +-----------------------------------+------------------------------------------------------------------------------------+
 | ::: title                         | Sending pull requests via Github will allow the automatic library standards        |
 | Note                              | checker to verify your proposed changes. See [KiCad Library                        |
@@ -8349,6 +8949,7 @@ libraries directly and pull as needed.
 ::::::::::::
 
 :::::::::::::::::::::::::: sect3
+
 #### Using the GitHub Plugin {#_using_the_github_plugin}
 
 ::: paragraph
@@ -8359,6 +8960,7 @@ editing footprints read from the GitHub repo and saving them locally.
 :::
 
 ::: {.admonitionblock .important}
+
 +-----------------------------------+----------------------------------------------------+
 | ::: title                         | ::: ulist                                          |
 | Important                         | - The \"GitHub\" plugin is for **read-only access  |
@@ -8416,6 +9018,7 @@ options (no COW support):
 +-------------+-----------------------------------------------------------------------------------------------------------+-------------+-------------+-------------+
 
 :::::::: sect4
+
 ##### Copy-On-Write {#_copy_on_write}
 
 ::: paragraph
@@ -8479,6 +9082,7 @@ using the `${}` notation to create the path in the same way as the
 ::::::::
 
 ::::: sect4
+
 ##### Using Copy-On-Write to share footprints {#_using_copy_on_write_to_share_footprints}
 
 ::: paragraph
@@ -8495,6 +9099,7 @@ contributing frequently to the shared master copies at
 :::
 
 ::: {.admonitionblock .tip}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | You can also contribute to        |
 | Tip                               | library developement using local  |
@@ -8508,6 +9113,7 @@ contributing frequently to the shared master copies at
 :::::
 
 ::::: sect4
+
 ##### Caching Github requests {#_caching_github_requests}
 
 ::: paragraph
@@ -8528,6 +9134,7 @@ IP or domain name of the machine running nginx.
 ::::::::::::::::::::::::::
 
 :::::::::::: sect3
+
 #### Usage Patterns {#_usage_patterns}
 
 ::: paragraph
@@ -8547,10 +9154,12 @@ There are advantages and disadvantages to each method:
 :::
 
 ::: ulist
+
 - You can define all of your libraries in the global table which means
   they will always be available when you need them.
 
   ::: ulist
+
   - The disadvantage of this is that you may have to search through a
     lot of libraries to find the footprint you are looking for.
   :::
@@ -8558,6 +9167,7 @@ There are advantages and disadvantages to each method:
 - You can define all your libraries on a project specific basis.
 
   ::: ulist
+
   - The advantage of this is that you only need to define the libraries
     you actually need for the project which cuts down on searching.
 
@@ -8577,6 +9187,7 @@ libraries.
 :::
 
 ::::::: sect4
+
 ##### Modifying footprints in a PCB project {#_modifying_footprints_in_a_pcb_project}
 
 ::: paragraph
@@ -8597,6 +9208,7 @@ instance, it will not match existing footprints of the same name.
 :::
 
 ::: {.admonitionblock .tip}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | A common practice is to copy all  |
 | Tip                               | the footprints you use to a       |
@@ -8618,7 +9230,9 @@ instance, it will not match existing footprints of the same name.
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::: {#footer}
+
 ::: {#footer-text}
+
 Last updated 2026-03-15 16:35:47 -0700
 :::
 ::::
@@ -8630,11 +9244,14 @@ Last updated 2026-03-15 16:35:47 -0700
 :::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: {#content}
+
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## General operations {#_general_operations}
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
 :::::::: sect2
+
 ### Toolbars and commands {#_toolbars_and_commands}
 
 ::: paragraph
@@ -8642,6 +9259,7 @@ In Pcbnew it is possible to execute commands using various means:
 :::
 
 ::: ulist
+
 - Text-based menu at the top of the main window.
 
 - Top toolbar menu.
@@ -8653,6 +9271,7 @@ In Pcbnew it is possible to execute commands using various means:
 - Mouse buttons (menu options). Specifically:
 
   ::: ulist
+
   - The right mouse button reveals a pop-up menu the content of which
     depends on the element under the mouse arrow.
   :::
@@ -8675,15 +9294,19 @@ operations:
 ::::::::
 
 ::::::::::::: sect2
+
 ### Mouse commands {#_mouse_commands}
 
 :::: sect3
+
 #### Basic commands {#_basic_commands}
 
 ::: ulist
+
 - Left button
 
   ::: ulist
+
   - Single-click displays the characteristics of the footprint or text
     under the cursor in the lower status bar.
 
@@ -8694,6 +9317,7 @@ operations:
 - Centre button/wheel
 
   ::: ulist
+
   - Rapid zoom and some commands in layer manager.
 
   - Hold down the centre button and draw a rectangle to zoom to the
@@ -8704,12 +9328,14 @@ operations:
 - Right button
 
   ::: ulist
+
   - Displays a pop-up menu
   :::
 :::
 ::::
 
 :::::::::: sect3
+
 #### Operations on blocks {#_operations_on_blocks}
 
 ::: paragraph
@@ -8753,6 +9379,7 @@ When moving a block:
 :::
 
 ::: ulist
+
 - Move block to new position and operate left mouse button to place the
   elements.
 
@@ -8774,6 +9401,7 @@ limited to only some elements.
 :::::::::::::
 
 ::::: sect2
+
 ### Selection of grid size {#_selection_of_grid_size}
 
 ::: paragraph
@@ -8790,6 +9418,7 @@ menu bar option Dimensions → User Grid Size.
 :::::
 
 ::::: sect2
+
 ### Adjustment of the zoom level {#_adjustment_of_the_zoom_level}
 
 ::: paragraph
@@ -8797,12 +9426,14 @@ The zoom level can be changed using any of the following methods:
 :::
 
 ::: ulist
+
 - Open the pop-up window (using the right mouse button) and then select
   the desired zoom.
 
 - Use the following function keys:
 
   ::: ulist
+
   - `F1`: Enlarge (zoom in)
 
   - `F2`: Reduce (zoom out)
@@ -8820,6 +9451,7 @@ The zoom level can be changed using any of the following methods:
 :::::
 
 :::::::::: sect2
+
 ### Displaying cursor coordinates {#_displaying_cursor_coordinates}
 
 ::: paragraph
@@ -8837,6 +9469,7 @@ The status bar at the bottom of the screen gives:
 :::
 
 ::: ulist
+
 - The current zoom setting.
 
 - The absolute position of the cursor.
@@ -8861,6 +9494,7 @@ display](images/Pcbnew_coordinate_status_display.png)
 ::::::::::
 
 ::::: sect2
+
 ### Keyboard commands - hotkeys {#_keyboard_commands_hotkeys}
 
 ::: paragraph
@@ -8870,6 +9504,7 @@ hot keys that do not appear are:
 :::
 
 ::: ulist
+
 - `Delete`: deletes a footprint or a track. (*Available only if the
   Footprint mode or the Track mode is active*)
 
@@ -8885,6 +9520,7 @@ hot keys that do not appear are:
 :::::
 
 :::::::::: sect2
+
 ### Operation on blocks {#_operation_on_blocks}
 
 ::: paragraph
@@ -8943,6 +9579,7 @@ dialog](images/Pcbnew_legacy_block_selection_dialog.png)
 ::::::::::
 
 ::::::: sect2
+
 ### Units used in dialogs {#_units_used_in_dialogs}
 
 ::: paragraph
@@ -8974,6 +9611,7 @@ The rules are:
 :::
 
 ::: ulist
+
 - Spaces between the number and the unit are accepted.
 
 - Only the first two letters are significant.
@@ -8985,6 +9623,7 @@ The rules are:
 :::::::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect2
+
 ### Top menu bar {#_top_menu_bar}
 
 ::: paragraph
@@ -8999,6 +9638,7 @@ configuration options, printing, plotting and the help files.
 ::::
 
 :::::: sect3
+
 #### The File menu {#_the_file_menu}
 
 :::: imageblock
@@ -9016,6 +9656,7 @@ automatic testers.
 ::::::
 
 :::::: sect3
+
 #### Edit menu {#_edit_menu}
 
 ::: paragraph
@@ -9030,6 +9671,7 @@ Allows some global edit actions:
 ::::::
 
 :::::::::::: sect3
+
 #### View menu {#_view_menu}
 
 ::: paragraph
@@ -9037,6 +9679,7 @@ Allows:
 :::
 
 ::: ulist
+
 - Hide/Show the Layers manager (colors selection for displaying layers
   and other elements. Also enables the display of elements to be turned
   on and off).
@@ -9063,6 +9706,7 @@ Zoom functions and 3D board display.
 :::
 
 :::::: sect4
+
 ##### 3D Viewer {#_3d_viewer}
 
 ::: paragraph
@@ -9078,6 +9722,7 @@ Opens the 3D Viewer. Here is a sample:
 ::::::::::::
 
 ::::::::: sect3
+
 #### Setup menu {#_setup_menu}
 
 ::: paragraph
@@ -9085,6 +9730,7 @@ Provides access to 2 dialogs:
 :::
 
 ::: ulist
+
 - Setting Layers (number, enabled and layers names)
 
 - Setting Design Rules (tracks and vias sizes, clearances).
@@ -9095,6 +9741,7 @@ An important menu. Allows adjustment of:
 :::
 
 ::: ulist
+
 - Size of texts and the line width for drawings.
 
 - Dimensions and characteristic of pads.
@@ -9110,6 +9757,7 @@ An important menu. Allows adjustment of:
 :::::::::
 
 :::::: sect3
+
 #### Place menu {#_place_menu}
 
 ::: paragraph
@@ -9124,6 +9772,7 @@ Same function as the right-hand toolbar.
 ::::::
 
 :::::: sect3
+
 #### Route menu {#_route_menu}
 
 ::: paragraph
@@ -9138,6 +9787,7 @@ Routing function.
 ::::::
 
 ::::::: sect3
+
 #### Inspect menu {#_inspect_menu}
 
 ::: paragraph
@@ -9145,6 +9795,7 @@ Allows:
 :::
 
 ::: ulist
+
 - List nets
 
 - Measure function
@@ -9160,6 +9811,7 @@ Allows:
 :::::::
 
 ::::::: sect3
+
 #### Tools menu {#_tools_menu}
 
 ::: paragraph
@@ -9167,6 +9819,7 @@ Allows:
 :::
 
 ::: ulist
+
 - Display load netlist dialog
 
 - Update PCB from schematic
@@ -9188,6 +9841,7 @@ Allows:
 :::::::
 
 ::::::: sect3
+
 #### The Preferences menu {#_the_preferences_menu}
 
 :::: imageblock
@@ -9201,6 +9855,7 @@ Allows:
 :::
 
 ::: ulist
+
 - Selection of the footprint libraries.
 
 - Management of general options (units, etc.).
@@ -9212,6 +9867,7 @@ Allows:
 :::::::
 
 :::: sect3
+
 #### The Help menu {#_the_help_menu}
 
 ::: paragraph
@@ -9222,6 +9878,7 @@ Provides access to the user manuals and to the version information menu
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::: sect2
+
 ### Using icons on the top toolbar {#_using_icons_on_the_top_toolbar}
 
 ::: paragraph
@@ -9290,6 +9947,7 @@ This toolbar gives access to the principal functions of Pcbnew.
 +---------------------------------------------------------------------+--------------------------------------------------+
 
 :::: sect3
+
 #### Auxiliary toolbar {#_auxiliary_toolbar}
 
 +----------------------------------------------------------------+--------------------------------------------------+
@@ -9317,6 +9975,7 @@ This toolbar gives access to the principal functions of Pcbnew.
 ::::::::
 
 :::::: sect2
+
 ### Right-hand side toolbar {#_right_hand_side_toolbar}
 
 ::: paragraph
@@ -9377,6 +10036,7 @@ Pcbnew.
 +-----------------------------------------------------------------+-----------------------------------------------------+------------------------------------------------------------+
 
 ::: ulist
+
 - Placement of footprints, tracks, zones of copper, texts, etc.
 
 - Net Highlighting.
@@ -9391,6 +10051,7 @@ Pcbnew.
 ::::::
 
 :::: sect2
+
 ### Left-hand side toolbar {#_left_hand_side_toolbar}
 
 ::: paragraph
@@ -9450,6 +10111,7 @@ affect Pcbnew's interface.
 ::::
 
 ::::::: sect2
+
 ### Pop-up windows and fast editing {#_pop_up_windows_and_fast_editing}
 
 ::: paragraph
@@ -9462,6 +10124,7 @@ This gives immediate access to:
 :::
 
 ::: ulist
+
 - Changing the display (centre display on cursor, zoom in or out or
   selecting the zoom).
 
@@ -9477,6 +10140,7 @@ The screenshots below show what the pop-up windows looks like.
 :::::::
 
 :::::::::::::::::::::::::::::::::::: sect2
+
 ### Available modes {#_available_modes}
 
 ::: paragraph
@@ -9501,9 +10165,11 @@ modes add or remove some specific commands.
 +------------------------------------------------+--------------------------------------------------+
 
 :::::::::::: sect3
+
 #### Normal mode {#_normal_mode}
 
 ::: ulist
+
 - Pop-up menu with no selection:
 :::
 
@@ -9514,6 +10180,7 @@ modes add or remove some specific commands.
 ::::
 
 ::: ulist
+
 - Pop-up menu with track selected:
 :::
 
@@ -9525,6 +10192,7 @@ track](images/Pcbnew_popup_normal_mode_track.png)
 ::::
 
 ::: ulist
+
 - Pop-up menu with footprint selected:
 :::
 
@@ -9537,6 +10205,7 @@ footprint](images/Pcbnew_popup_normal_mode_footprint.png)
 ::::::::::::
 
 ::::::::::::: sect3
+
 #### Footprint mode {#_footprint_mode}
 
 ::: paragraph
@@ -9545,6 +10214,7 @@ module](images/icons/mode_module.png)]{.image} enabled)
 :::
 
 ::: ulist
+
 - Pop-up menu with no selection:
 :::
 
@@ -9555,6 +10225,7 @@ module](images/icons/mode_module.png)]{.image} enabled)
 ::::
 
 ::: ulist
+
 - Pop-up menu with track selected:
 :::
 
@@ -9566,6 +10237,7 @@ track](images/Pcbnew_popup_footprint_mode_track.png)
 ::::
 
 ::: ulist
+
 - Pop-up menu with footprint selected:
 :::
 
@@ -9578,6 +10250,7 @@ footprint](images/Pcbnew_popup_footprint_mode_footprint.png)
 :::::::::::::
 
 ::::::::::::: sect3
+
 #### Tracks mode {#_tracks_mode}
 
 ::: paragraph
@@ -9586,6 +10259,7 @@ track](images/icons/mode_track.png)]{.image} enabled)
 :::
 
 ::: ulist
+
 - Pop-up menu with no selection:
 :::
 
@@ -9596,6 +10270,7 @@ track](images/icons/mode_track.png)]{.image} enabled)
 ::::
 
 ::: ulist
+
 - Pop-up menu with track selected:
 :::
 
@@ -9607,6 +10282,7 @@ track](images/Pcbnew_popup_track_mode_track.png)
 ::::
 
 ::: ulist
+
 - Pop-up menu with footprint selected:
 :::
 
@@ -9623,7 +10299,9 @@ footprint](images/Pcbnew_popup_track_mode_footprint.png)
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::: {#footer}
+
 ::: {#footer-text}
+
 Last updated 2026-03-15 16:35:47 -0700
 :::
 ::::
@@ -9635,14 +10313,18 @@ Last updated 2026-03-15 16:35:47 -0700
 :::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: {#content}
+
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Create and modify a board {#_create_and_modify_a_board}
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
 :::::::::::::::::::::::::::::::::::::::::::: sect2
+
 ### Creating a board {#_creating_a_board}
 
 ::::::::: sect3
+
 #### Drawing the board outline {#_drawing_the_board_outline}
 
 ::: paragraph
@@ -9660,6 +10342,7 @@ circular (or arc) outline:
 :::
 
 ::: {.olist .arabic}
+
 1.  Select the \'Add graphic circle\' or \'Add graphic arc\' tool
 
 2.  Click to fix the circle centre
@@ -9670,6 +10353,7 @@ circular (or arc) outline:
 :::
 
 ::: {.admonitionblock .note}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | The width of the outline can be   |
 | Note                              | adjusted in the Parameters menu   |
@@ -9693,6 +10377,7 @@ The resulting outline might look something like this:
 :::::::::
 
 ::::::::::::::::::::::::: sect3
+
 #### Using a DXF drawing for the board outline {#_using_a_dxf_drawing_for_the_board_outline}
 
 ::: paragraph
@@ -9711,6 +10396,7 @@ that fits a particular enclosure.
 :::
 
 ::::::::::: sect4
+
 ##### Preparing the DXF drawing for import into KiCad {#_preparing_the_dxf_drawing_for_import_into_kicad}
 
 ::: paragraph
@@ -9729,6 +10415,7 @@ their original simpler shapes. In LibreCAD use the following steps:
 :::
 
 ::: {.olist .arabic}
+
 1.  Open a copy of the DXF file.
 
 2.  Select the board shape (selected shapes are shown with dashed
@@ -9756,6 +10443,7 @@ format:
 :::
 
 ::: {.olist .arabic}
+
 1.  In the **File** menu, use **Save As...​**
 
 2.  In the **Save Drawing As** dialog, there is a **Save as type:**
@@ -9773,6 +10461,7 @@ Your DXF file is now ready for import into KiCad.
 :::::::::::
 
 :::::::: sect4
+
 ##### Importing the DXF file into KiCad {#_importing_the_dxf_file_into_kicad}
 
 ::: paragraph
@@ -9786,6 +10475,7 @@ Using the \"default\" canvas mode:
 :::
 
 ::: {.olist .arabic}
+
 1.  In the **File** menu, select **Import** and then the **DXF File**
     option.
 
@@ -9809,6 +10499,7 @@ Using the \"OpenGL\" or \"Cairo\" canvas modes:
 :::
 
 ::: {.olist .arabic}
+
 1.  In the **File** menu, select **Import** and then the **DXF File**
     option.
 
@@ -9831,6 +10522,7 @@ Using the \"OpenGL\" or \"Cairo\" canvas modes:
 ::::::::
 
 :::::: sect4
+
 ##### Example imported DXF shape {#_example_imported_dxf_shape}
 
 ::: paragraph
@@ -9848,6 +10540,7 @@ DXF](images/Pcbnew_board_outline_imported_from_a_DXF.png)
 :::::::::::::::::::::::::
 
 ::::::::::::: sect3
+
 #### Reading the netlist generated from the schematic {#_reading_the_netlist_generated_from_the_schematic}
 
 ::: paragraph
@@ -9891,6 +10584,7 @@ modules](images/Pcbnew_board_outline_with_globally_placed_modules.png)
 ::::
 
 ::: {.admonitionblock .note}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | If a board is modified by         |
 | Note                              | replacing an existing footprint   |
@@ -9912,6 +10606,7 @@ modules](images/Pcbnew_board_outline_with_globally_placed_modules.png)
 ::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::: sect2
+
 ### Correcting a board {#_correcting_a_board}
 
 ::: paragraph
@@ -9920,9 +10615,11 @@ change in the schematic.
 :::
 
 :::: sect3
+
 #### Steps to follow {#_steps_to_follow}
 
 ::: {.olist .arabic}
+
 1.  Create a new netlist from the modified schematic.
 
 2.  If new components have been added, link these to their corresponding
@@ -9933,6 +10630,7 @@ change in the schematic.
 ::::
 
 ::::::: sect3
+
 #### Deleting incorrect tracks {#_deleting_incorrect_tracks}
 
 ::: paragraph
@@ -9955,6 +10653,7 @@ function allows their identification).
 :::::::
 
 :::::::::: sect3
+
 #### Deleted components {#_deleted_components}
 
 ::: paragraph
@@ -9991,6 +10690,7 @@ option](images/Pcbnew_unlock_footprint_option.png)
 ::::::::::
 
 ::::::: sect3
+
 #### Modified footprints {#_modified_footprints}
 
 ::: paragraph
@@ -10014,6 +10714,7 @@ for instance) can be effected directly by editing the footprint.
 :::::::
 
 :::::::: sect3
+
 #### Advanced options - selection using time stamps {#_advanced_options_selection_using_time_stamps}
 
 ::: paragraph
@@ -10041,6 +10742,7 @@ component was placed in the schematic).
 :::
 
 ::: {.admonitionblock .warning}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | Great care should be exercised    |
 | Warning                           | when using this option (save the  |
@@ -10061,6 +10763,7 @@ component was placed in the schematic).
 ::::::::::::::::::::::::::::::
 
 :::::::::::: sect2
+
 ### Direct exchange for footprints already placed on board {#_direct_exchange_for_footprints_already_placed_on_board}
 
 ::: paragraph
@@ -10069,6 +10772,7 @@ footprint is very useful, and is very easy:
 :::
 
 ::: {.olist .arabic}
+
 1.  Click on a footprint to open the Edit dialog box.
 
 2.  Activate Change Footprints.
@@ -10096,6 +10800,7 @@ One must choose a new footprint name and use:
 :::
 
 ::: ulist
+
 - **Change footprint of \'xx\'** for the current footprint
 
 - **Change footprints \'yy\'** for all footprints like the current
@@ -10113,7 +10818,9 @@ One must choose a new footprint name and use:
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::: {#footer}
+
 ::: {#footer-text}
+
 Last updated 2026-03-15 16:35:47 -0700
 :::
 ::::
@@ -10125,11 +10832,14 @@ Last updated 2026-03-15 16:35:47 -0700
 :::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: {#content}
+
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Layers {#_layers}
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
 ::::: sect2
+
 ### Introduction {#_introduction}
 
 ::: paragraph
@@ -10137,11 +10847,13 @@ Pcbnew can work with 50 different layers:
 :::
 
 ::: ulist
+
 - Between 1 and 32 copper layers for routing tracks.
 
 - 14 fixed-purpose technical layers:
 
   ::: ulist
+
   - 12 paired layers (Front/Back): **Adhesive**, **Solder Paste**,
     **Silk Screen**, **Solder Mask**, **Courtyard**, **Fabrication**
 
@@ -10154,6 +10866,7 @@ Pcbnew can work with 50 different layers:
 :::::
 
 ::::::: sect2
+
 ### Setting up layers {#_setting_up_layers}
 
 ::: paragraph
@@ -10174,9 +10887,11 @@ function are configured there. Unused technical layers can be disabled.
 :::::::
 
 ::::::::::::::::: sect2
+
 ### Layer Description {#_layer_description}
 
 ::::::: sect3
+
 #### Copper Layers {#_copper_layers}
 
 ::: paragraph
@@ -10203,6 +10918,7 @@ properties](images/Pcbnew_layer_setup_dialog_layer_properties.png)
 :::::::
 
 :::::: sect3
+
 #### Paired Technical Layers {#_paired_technical_layers}
 
 ::: paragraph
@@ -10255,6 +10971,7 @@ The paired technical layers are:
 ::::::
 
 :::: sect3
+
 #### Independant Technical Layers {#_independant_technical_layers}
 
 ::: dlist
@@ -10272,6 +10989,7 @@ The paired technical layers are:
 ::::
 
 ::::: sect3
+
 #### Layers for general use {#_layers_for_general_use}
 
 ::: paragraph
@@ -10281,6 +10999,7 @@ used to create a file for assembly or machining. Their names are:
 :::
 
 ::: ulist
+
 - Comments
 
 - E.C.O. 1
@@ -10293,6 +11012,7 @@ used to create a file for assembly or machining. Their names are:
 :::::::::::::::::
 
 ::::::::::::::::::: sect2
+
 ### Selection of the active layer {#_selection_of_the_active_layer}
 
 ::: paragraph
@@ -10300,6 +11020,7 @@ The selection of the active working layer can be done in several ways:
 :::
 
 ::: ulist
+
 - Using the right toolbar (Layer manager).
 
 - Using the upper toolbar.
@@ -10312,6 +11033,7 @@ The selection of the active working layer can be done in several ways:
 :::
 
 ::::: sect3
+
 #### Selection using the layer manager {#_selection_using_the_layer_manager}
 
 :::: imageblock
@@ -10322,6 +11044,7 @@ The selection of the active working layer can be done in several ways:
 :::::
 
 ::::::: sect3
+
 #### Selection using the upper toolbar {#_selection_using_the_upper_toolbar}
 
 :::: imageblock
@@ -10341,6 +11064,7 @@ Hot keys to select the working layer are displayed.
 :::::::
 
 :::::::: sect3
+
 #### Selection using the pop-up window {#_selection_using_the_pop_up_window}
 
 :::: imageblock
@@ -10364,6 +11088,7 @@ dialog](images/Pcbnew_layer_selection_dialog.png)
 :::::::::::::::::::
 
 ::::::::::: sect2
+
 ### Selection of the Layers for Vias {#_selection_of_the_layers_for_vias}
 
 ::: paragraph
@@ -10402,6 +11127,7 @@ is in progress, a via will be inserted.
 :::::::::::
 
 ::::::::::::::::::::::: sect2
+
 ### Using the high-contrast mode {#_using_the_high_contrast_mode}
 
 ::: paragraph
@@ -10419,6 +11145,7 @@ There are two useful cases:
 :::
 
 :::::::::: sect3
+
 #### Copper layers in high-contrast mode {#_copper_layers_in_high_contrast_mode}
 
 ::: paragraph
@@ -10450,6 +11177,7 @@ high](images/Pcbnew_copper_layers_contrast_high.png)
 ::::::::::
 
 ::::::::::: sect3
+
 #### Technical layers {#_technical_layers}
 
 ::: paragraph
@@ -10489,7 +11217,9 @@ high](images/Pcbnew_technical_layers_contrast_high.png)
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::: {#footer}
+
 ::: {#footer-text}
+
 Last updated 2026-03-15 16:35:47 -0700
 :::
 ::::
@@ -10501,11 +11231,14 @@ Last updated 2026-03-15 16:35:47 -0700
 :::
 
 ::::::::::::::::::::::::::::::::::::::::::::::: {#content}
+
 :::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Footprint placement {#_footprint_placement}
 
 ::::::::::::::::::::::::::::::::::::::::::::: sectionbody
 :::: sect2
+
 ### Assisted placement {#_assisted_placement}
 
 ::: paragraph
@@ -10517,6 +11250,7 @@ toolbar must be activated.
 ::::
 
 :::::::::: sect2
+
 ### Manual placement {#_manual_placement}
 
 ::: paragraph
@@ -10550,6 +11284,7 @@ placement](images/Pcbnew_circuit_after_placement.png)
 ::::::::::
 
 :::::::::::::: sect2
+
 ### Automatic Footprint Distribution {#_automatic_footprint_distribution}
 
 ::: paragraph
@@ -10567,6 +11302,7 @@ selection and placement easier.
 :::
 
 ::: ulist
+
 - Select the option \"Footprint Mode\" (Icon [![mode
   module](images/icons/mode_module.png)]{.image} on the upper toolbar).
 
@@ -10600,6 +11336,7 @@ In both cases the following commands are available:
 :::
 
 ::: ulist
+
 - **Spread out All Footprints** allows the automatic distribution of all
   the footprints not Fixed. This is generally used after the first
   reading of a netlist.
@@ -10613,9 +11350,11 @@ In both cases the following commands are available:
 ::::::::::::::
 
 :::::::::::::::::::::: sect2
+
 ### Automatic placement of footprints {#_automatic_placement_of_footprints}
 
 ::::: sect3
+
 #### Characteristics of the automatic placer {#_characteristics_of_the_automatic_placer}
 
 ::: paragraph
@@ -10635,6 +11374,7 @@ many pads.
 :::::
 
 :::::::::: sect3
+
 #### Preparation {#_preparation}
 
 ::: paragraph
@@ -10648,6 +11388,7 @@ Before an automatic placement is carried out one must:
 :::
 
 ::: ulist
+
 - Create the outline of the board (It can be complex, but it must be
   closed if the form is not rectangular).
 
@@ -10698,6 +11439,7 @@ inherited each time the footprint is used.
 ::::::::::
 
 :::::: sect3
+
 #### Interactive auto-placement {#_interactive_auto_placement}
 
 ::: paragraph
@@ -10722,6 +11464,7 @@ autoplacement on the footprint pointed to by the mouse, even if its
 ::::::
 
 :::::: sect3
+
 #### Additional note {#_additional_note}
 
 ::: paragraph
@@ -10749,7 +11492,9 @@ area in order to determine the optimum position at which to place it.
 :::::::::::::::::::::::::::::::::::::::::::::::
 
 :::: {#footer}
+
 ::: {#footer-text}
+
 Last updated 2026-03-15 16:35:47 -0700
 :::
 ::::
@@ -10761,11 +11506,14 @@ Last updated 2026-03-15 16:35:47 -0700
 :::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: {#content}
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Footprint Editor - Creating and Editing Footprints {#_footprint_editor_creating_and_editing_footprints}
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
 ::::: sect2
+
 ### Footprint Editor Overview {#_footprint_editor_overview}
 
 ::: paragraph
@@ -10774,6 +11522,7 @@ This includes:
 :::
 
 ::: ulist
+
 - Adding and removing pads.
 
 - Changing pad properties (shape, layer), for individual pads or for all
@@ -10788,6 +11537,7 @@ This includes:
 :::::
 
 ::::::::::::: sect2
+
 ### Footprint Elements {#_footprint_elements}
 
 ::: paragraph
@@ -10797,6 +11547,7 @@ your schematic. Each footprint includes three different elements:
 :::
 
 ::: ulist
+
 - The pads.
 
 - Graphical contours and text.
@@ -10811,6 +11562,7 @@ generation of auto-insertion files.
 :::
 
 ::::: sect3
+
 #### Pads {#_pads}
 
 ::: paragraph
@@ -10818,6 +11570,7 @@ Two pad properties are important:
 :::
 
 ::: ulist
+
 - Geometry (shape, layers, drill holes).
 
 - The pad number, which is constituted by up to four alphanumeric
@@ -10829,6 +11582,7 @@ Two pad properties are important:
 :::::
 
 :::: sect3
+
 #### Contours {#_contours}
 
 ::: paragraph
@@ -10840,6 +11594,7 @@ graphical aids.
 ::::
 
 :::: sect3
+
 #### Fields {#_fields}
 
 ::: paragraph
@@ -10856,6 +11611,7 @@ graphical text.
 :::::::::::::
 
 ::::: sect2
+
 ### Starting Footprint Editor and Selecting a Footprint to Edit {#_starting_footprint_editor_and_selecting_a_footprint_to_edit}
 
 ::: paragraph
@@ -10863,6 +11619,7 @@ Footprint Editor can be started in two ways:
 :::
 
 ::: ulist
+
 - Directly via the [![module
   editor](images/icons/module_editor.png)]{.image} icon from the main
   toolbar of Pcbnew. This allows the creation or modification of a
@@ -10876,6 +11633,7 @@ Footprint Editor can be started in two ways:
 :::::
 
 :::::::::::: sect2
+
 ### Footprint Editor Toolbars {#_footprint_editor_toolbars}
 
 ::: paragraph
@@ -10889,6 +11647,7 @@ Calling Footprint Editor will launch a new window that looks like this:
 ::::
 
 :::::: sect3
+
 #### Edit Toolbar (right-hand side) {#_edit_toolbar_right_hand_side}
 
 ::: paragraph
@@ -10896,6 +11655,7 @@ This toolbar contains tools for:
 :::
 
 ::: ulist
+
 - Placing pads.
 
 - Adding graphic elements (contours, text).
@@ -10938,6 +11698,7 @@ The specific functions are the following:
 ::::::
 
 :::: sect3
+
 #### Display Toolbar (left-hand side) {#_display_toolbar_left_hand_side}
 
 ::: paragraph
@@ -10973,6 +11734,7 @@ These tools manage the display options in Footprint Editor:
 ::::::::::::
 
 ::::::::::::: sect2
+
 ### Context Menus {#_context_menus}
 
 ::: paragraph
@@ -11014,6 +11776,7 @@ graphics](images/Modedit_context_menu_graphics.png)
 :::::::::::::
 
 ::::::: sect2
+
 ### Footprint Properties Dialog {#_footprint_properties_dialog}
 
 ::: paragraph
@@ -11035,6 +11798,7 @@ The dialog can be used to define the main footprint parameters.
 :::::::
 
 :::::::::: sect2
+
 ### Creating a New Footprint {#_creating_a_new_footprint}
 
 ::: paragraph
@@ -11054,6 +11818,7 @@ The new footprint will require:
 :::
 
 ::: ulist
+
 - Contours (and possibly graphic text).
 
 - Pads.
@@ -11072,6 +11837,7 @@ footprint is as follows:
 :::
 
 ::: ulist
+
 - Load the similar footprint ([![load module
   lib](images/icons/load_module_lib.png)]{.image}, [![load module
   board](images/icons/load_module_board.png)]{.image} or [![import
@@ -11085,6 +11851,7 @@ footprint is as follows:
 ::::::::::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::: sect2
+
 ### Adding and Editing Pads {#_adding_and_editing_pads}
 
 ::: paragraph
@@ -11094,6 +11861,7 @@ under the cursor, or global, affecting all pads of the footprint.
 :::
 
 ::::: sect3
+
 #### Adding Pads {#_adding_pads}
 
 ::: paragraph
@@ -11109,6 +11877,7 @@ Do not forget to enter the pad number.
 :::::
 
 :::::::::::::::::::::::::::: sect3
+
 #### Setting Pad Properties {#_setting_pad_properties}
 
 ::: paragraph
@@ -11116,6 +11885,7 @@ This can be done in three different ways:
 :::
 
 ::: ulist
+
 - Selecting the [![options pad](images/icons/options_pad.png)]{.image}
   icon from the horizontal toolbar.
 
@@ -11151,6 +11921,7 @@ generally sufficient.
 :::
 
 :::: sect4
+
 ##### Rectangular Pads {#_rectangular_pads}
 
 ::: paragraph
@@ -11164,6 +11935,7 @@ operation.
 ::::
 
 :::: sect4
+
 ##### Rotate Pads {#_rotate_pads}
 
 ::: paragraph
@@ -11173,6 +11945,7 @@ microwave footprints.
 ::::
 
 :::::::: sect4
+
 ##### Non-plated Through Hole Pads {#_non_plated_through_hole_pads}
 
 ::: paragraph
@@ -11201,6 +11974,7 @@ net name is allowed. A connection to a net is not possible.
 ::::::::
 
 :::::: sect4
+
 ##### Offset Parameter {#_offset_parameter}
 
 ::: paragraph
@@ -11215,6 +11989,7 @@ Pad 3 has an offset Y = 15 mils:
 ::::::
 
 :::::: sect4
+
 ##### Delta Parameter (trapezoidal pads) {#_delta_parameter_trapezoidal_pads}
 
 ::: paragraph
@@ -11230,6 +12005,7 @@ Pad 1 has its parameter Delta X = 10 mils
 ::::::::::::::::::::::::::::
 
 :::::::::: sect3
+
 #### Setting Clearances for Solder Mask and Solder Paste Layers {#_setting_clearances_for_solder_mask_and_solder_paste_layers}
 
 ::: paragraph
@@ -11240,6 +12016,7 @@ is based on the following order of precedence:
 :::
 
 ::: ulist
+
 - Pad setting
 
 - Footprint setting
@@ -11248,6 +12025,7 @@ is based on the following order of precedence:
 :::
 
 ::: {.admonitionblock .note}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | ::: paragraph                     |
 | Note                              | The solder mask pad shape is      |
@@ -11262,6 +12040,7 @@ is based on the following order of precedence:
 :::
 
 :::::: sect4
+
 ##### Solder Paste Settings {#_solder_paste_settings}
 
 ::: paragraph
@@ -11269,6 +12048,7 @@ Two settings are used to calculate the solder paste aperture:
 :::
 
 ::: ulist
+
 - A fixed clearance setting.
 
 - A percentage of the pad size.
@@ -11282,6 +12062,7 @@ clearance setting.
 ::::::::::
 
 ::::::::::: sect3
+
 #### Pads Not on Copper Layers {#_pads_not_on_copper_layers}
 
 ::: paragraph
@@ -11294,6 +12075,7 @@ level settings and only use the pad level settings.
 :::
 
 ::: {.admonitionblock .warning}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | ::: paragraph                     |
 | Warning                           | Pads without copper layers        |
@@ -11334,6 +12116,7 @@ settings](images/Modedit_pad_level_pad_settings.png)
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ::::::: sect2
+
 ### Fields Properties {#_fields_properties}
 
 ::: paragraph
@@ -11355,6 +12138,7 @@ properties](images/Modedit_footprint_text_properties.png)
 :::::::
 
 ::::::::: sect2
+
 ### Automatic Placement of a Footprint {#_automatic_placement_of_a_footprint}
 
 ::: paragraph
@@ -11392,6 +12176,7 @@ resistor might have a permission of 10 to rotate 180 degrees
 :::::::::
 
 ::::::: sect2
+
 ### Attributes {#_attributes}
 
 ::: paragraph
@@ -11405,6 +12190,7 @@ The attributes window is the following:
 ::::
 
 ::: ulist
+
 - Normal is the standard attribute.
 
 - Normal+Insert indicates that the footprint must appear in the
@@ -11418,6 +12204,7 @@ The attributes window is the following:
 :::::::
 
 ::::::::::: sect2
+
 ### Documenting Footprints in a Library {#_documenting_footprints_in_a_library}
 
 ::: paragraph
@@ -11443,6 +12230,7 @@ This menu allows:
 :::
 
 ::: ulist
+
 - The entry of a comment line (description).
 
 - Multiple keywords.
@@ -11463,6 +12251,7 @@ the keyword `TO220`
 :::::::::::
 
 :::::::::::::::::::::::::::: sect2
+
 ### 3-Dimensional Visualization {#_3_dimensional_visualization}
 
 ::: paragraph
@@ -11472,6 +12261,7 @@ a model file, select the *3D Settings* tab as shown below.
 :::
 
 ::::: {#img-Modedit_module_3d_options .imageblock}
+
 ::: content
 ![Modedit module 3d options](images/Modedit_module_3d_options.png)
 :::
@@ -11486,6 +12276,7 @@ The buttons on the right have the following functions:
 :::
 
 ::: ulist
+
 - **Add 3D Shape** shows a 3D file selection dialog and creates a new
   model entry for the component.
 
@@ -11540,6 +12331,7 @@ OpenCascade Community Edition (OCE) software.
 :::
 
 ::::::::::::::::: sect3
+
 #### 3D Model Paths {#_3d_model_paths}
 
 ::: paragraph
@@ -11581,6 +12373,7 @@ with *\${MY_ENV_VAR}* where *MY_ENV_VAR* is a variable defined via the
 :::
 
 ::::: {#img-Modedit_internal_path_config .imageblock}
+
 ::: content
 ![Modedit internal path config](images/Modedit_internal_path_config.png)
 :::
@@ -11603,6 +12396,7 @@ dialog is shown below.
 :::
 
 ::::: {#img-Modedit_alias_path_config .imageblock}
+
 ::: content
 ![Modedit alias path config](images/Modedit_alias_path_config.png)
 :::
@@ -11624,6 +12418,7 @@ seconds to display.
 :::
 
 ::::: {#img-Modedit_3D_file_browser .imageblock}
+
 ::: content
 ![Modedit 3D file browser](images/Modedit_3D_file_browser.png)
 :::
@@ -11636,6 +12431,7 @@ Figure 4. KiCad 3D File Browser
 ::::::::::::::::::::::::::::
 
 :::::: sect2
+
 ### Saving a Footprint into the Active Library {#_saving_a_footprint_into_the_active_library}
 
 ::: paragraph
@@ -11658,6 +12454,7 @@ of the footprint to be equal to the library name of the footprint.
 ::::::
 
 :::: sect2
+
 ### Saving a footprint to the board {#_saving_a_footprint_to_the_board}
 
 ::: paragraph
@@ -11671,7 +12468,9 @@ will update this footprint on the board.
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::: {#footer}
+
 ::: {#footer-text}
+
 Last updated 2026-03-15 16:35:47 -0700
 :::
 ::::
@@ -11683,7 +12482,9 @@ Last updated 2026-03-15 16:35:47 -0700
 :::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: {#content}
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Advanced PCB editing tools {#_advanced_pcb_editing_tools}
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
@@ -11694,6 +12495,7 @@ on the canvas.
 :::
 
 ::::: sect2
+
 ### Duplicating items {#_duplicating_items}
 
 ::: paragraph
@@ -11711,6 +12513,7 @@ the duplicate item option in the context menu, icon
 :::::
 
 :::::::::::::: sect2
+
 ### Moving items exactly {#_moving_items_exactly}
 
 ::: paragraph
@@ -11771,6 +12574,7 @@ objects.
 ::::::::::::::
 
 :::::::::::::::::::::::::::::::::::: sect2
+
 ### Array tools {#_array_tools}
 
 ::: paragraph
@@ -11780,6 +12584,7 @@ lay out repetitive elements on PCBs and in footprints.
 :::
 
 :::::: sect3
+
 #### Activating the array tool {#_activating_the_array_tool}
 
 ::: paragraph
@@ -11804,6 +12609,7 @@ right.
 ::::::
 
 :::::::::::::::::::::: sect3
+
 #### Grid arrays {#_grid_arrays}
 
 ::: paragraph
@@ -11823,6 +12629,7 @@ The settings dialog for grid arrays look like this:
 ::::
 
 ::::::::::::::: sect4
+
 ##### Geometric options {#_geometric_options}
 
 ::: paragraph
@@ -11830,6 +12637,7 @@ The geometric options are as follow:
 :::
 
 ::: ulist
+
 - **Horizontal count**: the number of \"columns\" in the grid.
 
 - **Vertical count**: the number of \"rows\" in the grid.
@@ -11860,6 +12668,7 @@ Figure 1. 3x3 grid with x and y offsets
 :::::
 
 ::: ulist
+
 - **Stagger**: add an offset to every set of \"n\" rows/columns, with
   each row progressing by 1/n'th of the relevant spacing dimension:
 :::
@@ -11888,9 +12697,11 @@ Figure 3. 4x3 grid with a column stagger of 3
 :::::::::::::::
 
 :::: sect4
+
 ##### Numbering options {#_numbering_options}
 
 ::: ulist
+
 - **Numbering Direction**: Determines whether numbers proceed along rows
   and then moves to the next row, or down columns and then to the next
   column. Note that the direction on numbering is defined by the sign of
@@ -11910,6 +12721,7 @@ Figure 3. 4x3 grid with a column stagger of 3
 - **Numbering Scheme**
 
   ::: ulist
+
   - **Continuous**: the numbering just continues across a row/column
     break - if the last item in the first row is numbered \"7\", the
     first item in the second row will be \"8\".
@@ -11923,6 +12735,7 @@ Figure 3. 4x3 grid with a column stagger of 3
   Choices are
 
   ::: ulist
+
   - **Numerals** for normal integer indices
 
   - **Hexadecimal** for base-16 indexing
@@ -11938,6 +12751,7 @@ Figure 3. 4x3 grid with a column stagger of 3
 ::::::::::::::::::::::
 
 :::::::::: sect3
+
 #### Circular arrays {#_circular_arrays}
 
 ::: paragraph
@@ -11954,9 +12768,11 @@ circular array configuration dialog:
 ::::
 
 :::: sect4
+
 ##### Geometric options {#_geometric_options_2}
 
 ::: ulist
+
 - **Horizontal center**, **Vertical center**: The centre of the circle.
   The radius field below will update automatically when you adjust
   these.
@@ -11974,6 +12790,7 @@ circular array configuration dialog:
 ::::
 
 :::: sect4
+
 ##### Numbering options {#_numbering_options_2}
 
 ::: paragraph
@@ -11987,6 +12804,7 @@ negative angle.
 ::::::::::::::::::::::::::::::::::::
 
 ::::::: sect2
+
 ### Measurement (ruler) tool {#_measurement_ruler_tool}
 
 ::: paragraph
@@ -12017,7 +12835,9 @@ using the ususal hotkey (Ctrl-U by default).
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::: {#footer}
+
 ::: {#footer-text}
+
 Last updated 2026-03-15 16:35:47 -0700
 :::
 ::::
@@ -12029,7 +12849,9 @@ Last updated 2026-03-15 16:35:47 -0700
 :::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: {#content}
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Creating copper zones {#_creating_copper_zones}
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
@@ -12040,6 +12862,7 @@ copper layer or alternatively on a technical layer.
 :::
 
 ::::::::::: sect2
+
 ### Creating zones on copper layers {#_creating_zones_on_copper_layers}
 
 ::: paragraph
@@ -12060,6 +12883,7 @@ each change, but only:
 :::
 
 ::: ulist
+
 - If a filling zone command is executed.
 
 - When a DRC test is performed.
@@ -12076,6 +12900,7 @@ In order to create a copper zone you should:
 :::
 
 ::: ulist
+
 - Select parameters (net name, layer...​). Turning on the layer and
   highlighting this net is not mandatory but it is good practice.
 
@@ -12093,9 +12918,11 @@ areas.
 :::::::::::
 
 :::::::::::::::::::::::::::::::::::::: sect2
+
 ### Creating a zone {#_creating_a_zone}
 
 ::::::::::::: sect3
+
 #### Creating the limits of a zone {#_creating_the_limits_of_a_zone}
 
 ::: paragraph
@@ -12116,6 +12943,7 @@ You can specify all parameters for this zone:
 :::
 
 ::: ulist
+
 - Net
 
 - Layer
@@ -12136,6 +12964,7 @@ point.
 :::
 
 ::: {.admonitionblock .note}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | ::: ulist                         |
 | Note                              | - The DRC is active when creating |
@@ -12161,6 +12990,7 @@ in thin hatched line):
 :::::::::::::
 
 :::::::::::::: sect3
+
 #### Priority level {#_priority_level}
 
 ::: paragraph
@@ -12206,6 +13036,7 @@ filling](images/Pcbnew_zone_priority_example_after_filling.png)
 ::::::::::::::
 
 :::::::::::::: sect3
+
 #### Filling the zone {#_filling_the_zone}
 
 ::: paragraph
@@ -12236,12 +13067,14 @@ area inside the zone, because this area is not accessible:
 :::
 
 ::: ulist
+
 - A track creates a border, and
 
 - There is no starting point for filling in this area.
 :::
 
 ::: {.admonitionblock .note}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | You can use many polygons to      |
 | Note                              | create cutout areas. Here you can |
@@ -12259,6 +13092,7 @@ cutout](images/Pcbnew_zone_filled_with_cutout.png)
 ::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::: sect2
+
 ### Filling options {#_filling_options}
 
 :::: imageblock
@@ -12272,6 +13106,7 @@ When you fill an area, you must choose:
 :::
 
 ::: ulist
+
 - The mode for filling.
 
 - The clearance and minimum copper thickness.
@@ -12282,6 +13117,7 @@ When you fill an area, you must choose:
 :::
 
 :::: sect3
+
 #### Filling mode {#_filling_mode}
 
 ::: paragraph
@@ -12292,6 +13128,7 @@ use segments.
 ::::
 
 ::::: sect3
+
 #### Clearance and minimum copper thickness {#_clearance_and_minimum_copper_thickness}
 
 ::: paragraph
@@ -12301,6 +13138,7 @@ too small copper areas.
 :::
 
 ::: {.admonitionblock .warning}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | if this value is too large, small |
 | Warning                           | shapes like thermal stubs in      |
@@ -12310,6 +13148,7 @@ too small copper areas.
 :::::
 
 ::::::::::::: sect3
+
 #### Pad options {#_pad_options}
 
 ::: paragraph
@@ -12318,6 +13157,7 @@ connected by thermal reliefs.
 :::
 
 ::: ulist
+
 - If included, soldering and un-soldering can be very difficult due to
   the high thermal mass of the large copper area.
 :::
@@ -12329,9 +13169,11 @@ connected by thermal reliefs.
 ::::
 
 ::: ulist
+
 - If excluded, the connection to the zone will not be very good.
 
   ::: ulist
+
   - The zone can be filled only if tracks exists to connect zone areas.
 
   - Pads must be connected by tracks.
@@ -12345,9 +13187,11 @@ connected by thermal reliefs.
 ::::
 
 ::: ulist
+
 - A thermal relief is a good compromise.
 
   ::: ulist
+
   - Pad is connected by 4 track segments.
 
   - The segment width is the current value used for the track width.
@@ -12362,6 +13206,7 @@ connected by thermal reliefs.
 :::::::::::::
 
 :::::::: sect3
+
 #### Thermal relief parameters {#_thermal_relief_parameters}
 
 :::: imageblock
@@ -12384,6 +13229,7 @@ parameters](images/Pcbnew_thermal_relief_parameters.png)
 ::::::::
 
 ::::: sect3
+
 #### Choice of parameters {#_choice_of_parameters}
 
 ::: paragraph
@@ -12401,6 +13247,7 @@ sizes used for SMD components).
 ::::::::::::::::::::::::::::::::
 
 :::::::::: sect2
+
 ### Adding a cutout area inside a zone {#_adding_a_cutout_area_inside_a_zone}
 
 ::: paragraph
@@ -12409,6 +13256,7 @@ inside the zone):
 :::
 
 ::: ulist
+
 - Right-click on an existing edge outline.
 
 - Select Add Cutout Area.
@@ -12421,6 +13269,7 @@ inside the zone):
 ::::
 
 ::: ulist
+
 - Create the new outline.
 :::
 
@@ -12433,6 +13282,7 @@ outline](images/Pcbnew_zone_unfilled_cutout_outline.png)
 ::::::::::
 
 ::::::::::::::::::::::: sect2
+
 ### Outlines editing {#_outlines_editing}
 
 ::: paragraph
@@ -12440,6 +13290,7 @@ An outline can be modified by:
 :::
 
 ::: ulist
+
 - Moving a corner or an edge.
 
 - Deleting or adding a corner.
@@ -12490,6 +13341,7 @@ Polygons are combined.
 :::
 
 ::::::::: sect3
+
 #### Adding a similar zone {#_adding_a_similar_zone}
 
 ::: paragraph
@@ -12517,6 +13369,7 @@ after](images/Pcbnew_zone_add_similar_after.png)
 :::::::::::::::::::::::
 
 :::: sect2
+
 ### Editing zone parameters {#_editing_zone_parameters}
 
 ::: paragraph
@@ -12527,6 +13380,7 @@ If the zone is already filled, refilling it will be necessary.
 ::::
 
 :::::: sect2
+
 ### Final zone filling {#_final_zone_filling}
 
 ::: paragraph
@@ -12535,6 +13389,7 @@ this:
 :::
 
 ::: ulist
+
 - Activate the tool zones via the button [![add
   zone](images/icons/add_zone.png)]{.image}.
 
@@ -12545,6 +13400,7 @@ this:
 :::
 
 ::: {.admonitionblock .warning}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | Calculation can take some time if |
 | Warning                           | the filling grid is small.        |
@@ -12554,6 +13410,7 @@ this:
 ::::::
 
 :::::: sect2
+
 ### Change zones net names {#_change_zones_net_names}
 
 ::: paragraph
@@ -12573,9 +13430,11 @@ name to the new one.
 ::::::
 
 :::::::::: sect2
+
 ### Creating zones on technical layers {#_creating_zones_on_technical_layers}
 
 ::::::::: sect3
+
 #### Creating zone limits {#_creating_zone_limits}
 
 ::: paragraph
@@ -12601,6 +13460,7 @@ like explained previously for copper layers.
 :::
 
 ::: {.admonitionblock .note}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | ::: ulist                         |
 | Note                              | - For editing outlines use the    |
@@ -12616,6 +13476,7 @@ like explained previously for copper layers.
 ::::::::::
 
 :::::::::::: sect2
+
 ### Creating a Keepout area {#_creating_a_keepout_area}
 
 ::: paragraph
@@ -12644,6 +13505,7 @@ One can select disallowed items:
 :::
 
 ::: ulist
+
 - Tracks.
 
 - Vias.
@@ -12667,7 +13529,9 @@ analogous to copper zone editing.
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::: {#footer}
+
 ::: {#footer-text}
+
 Last updated 2026-03-15 16:35:47 -0700
 :::
 ::::
@@ -12679,14 +13543,18 @@ Last updated 2026-03-15 16:35:47 -0700
 :::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: {#content}
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Setting routing parameters {#_setting_routing_parameters}
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
 :::::::::::: sect2
+
 ### Current settings {#_current_settings}
 
 ::::::: sect3
+
 #### Accessing the main dialog {#_accessing_the_main_dialog}
 
 ::: paragraph
@@ -12706,6 +13574,7 @@ and are set in the Design Rules dialog.
 :::::::
 
 :::::: sect3
+
 #### Current settings {#_current_settings_2}
 
 ::: paragraph
@@ -12722,6 +13591,7 @@ toolbar](images/Pcbnew_design_rules_top_toolbar.png)
 ::::::::::::
 
 ::::::::::: sect2
+
 ### General options {#_general_options}
 
 ::: paragraph
@@ -12751,6 +13621,7 @@ For the creation of tracks the necessary parameters are:
 :::
 
 ::: ulist
+
 - **Tracks 45 Only**: Directions allowed for track segments are 0, 45 or
   90 degrees.
 
@@ -12768,6 +13639,7 @@ For the creation of tracks the necessary parameters are:
 :::::::::::
 
 :::::::::::::::::::::::::::::::::: sect2
+
 ### Netclasses {#_netclasses}
 
 ::: paragraph
@@ -12776,6 +13648,7 @@ Parameters are defined by a group of nets.
 :::
 
 ::: ulist
+
 - A group of nets is called a Netclass.
 
 - There is always a netclass called \"default\".
@@ -12788,6 +13661,7 @@ A netclass specifies:
 :::
 
 ::: ulist
+
 - The width of tracks, via diameters and drills.
 
 - The clearance between pads and tracks (or vias).
@@ -12798,6 +13672,7 @@ A netclass specifies:
 :::
 
 :::: sect3
+
 #### Setting routing parameters {#_setting_routing_parameters_2}
 
 ::: paragraph
@@ -12806,6 +13681,7 @@ The choice is made in the menu: Design Rules → Design Rules.
 ::::
 
 ::::::: sect3
+
 #### Netclass editor {#_netclass_editor}
 
 ::: paragraph
@@ -12813,6 +13689,7 @@ The Netclass editor allows you to:
 :::
 
 ::: ulist
+
 - Add or delete Netclasses.
 
 - Set routing parameters values: clearance, track width, via sizes.
@@ -12829,6 +13706,7 @@ tab](images/Pcbnew_design_rules_editor_netclass_tab.png)
 :::::::
 
 ::::::::::: sect3
+
 #### Global Design Rules {#_global_design_rules}
 
 ::: paragraph
@@ -12836,6 +13714,7 @@ The global design rules are:
 :::
 
 ::: ulist
+
 - Enabling/disabling Blind/buried Vias use.
 
 - Enabling/disabling Micro Vias use.
@@ -12871,6 +13750,7 @@ size.
 :::::::::::
 
 ::::::: sect3
+
 #### Via parameters {#_via_parameters}
 
 ::: paragraph
@@ -12878,6 +13758,7 @@ Pcbnew handles 3 types of vias:
 :::
 
 ::: ulist
+
 - Through vias (usual vias).
 
 - Blind or buried vias.
@@ -12899,6 +13780,7 @@ On a board, a via smaller than specified here generates a DRC error.
 :::::::
 
 :::: sect3
+
 #### Track parameters {#_track_parameters}
 
 ::: paragraph
@@ -12908,6 +13790,7 @@ smaller than specified here generates a DRC error.
 ::::
 
 :::::: sect3
+
 #### Specific sizes {#_specific_sizes}
 
 :::: imageblock
@@ -12925,9 +13808,11 @@ current netclass values.
 ::::::::::::::::::::::::::::::::::
 
 ::::::: sect2
+
 ### Examples and typical dimensions {#_examples_and_typical_dimensions}
 
 :::: sect3
+
 #### Track width {#_track_width}
 
 ::: paragraph
@@ -12945,6 +13830,7 @@ here.
 ::::
 
 :::: sect3
+
 #### Insulation (clearance) {#_insulation_clearance}
 
 +----------+----------+----------+----------+----------+-----------+
@@ -12963,12 +13849,15 @@ width.
 :::::::
 
 ::::::::::: sect2
+
 ### Examples {#_examples}
 
 :::::: sect3
+
 #### Rustic {#_rustic}
 
 ::: ulist
+
 - Clearance: 0.35 mm (0.0138 inches).
 
 - Track width: 0.8 mm (0.0315 inches).
@@ -12988,9 +13877,11 @@ width.
 ::::::
 
 :::::: sect3
+
 #### Standard {#_standard}
 
 ::: ulist
+
 - Clearance: 0.35 mm (0.0138 inches).
 
 - Track width: 0.5 mm (0.0127 inches).
@@ -13011,6 +13902,7 @@ width.
 :::::::::::
 
 :::: sect2
+
 ### Manual routing {#_manual_routing}
 
 ::: paragraph
@@ -13028,6 +13920,7 @@ hand.
 ::::
 
 :::::::::::::::::::::::: sect2
+
 ### Help when creating tracks {#_help_when_creating_tracks}
 
 ::: paragraph
@@ -13049,6 +13942,7 @@ recommended, use it only in specific cases.
 :::
 
 :::::::::::::: sect3
+
 #### Creating tracks {#_creating_tracks}
 
 ::: paragraph
@@ -13108,6 +14002,7 @@ context](images/Pcbnew_track_in_progres_context.png)
 ::::::::::::::
 
 :::: sect3
+
 #### Moving and dragging tracks {#_moving_and_dragging_tracks}
 
 ::: paragraph
@@ -13119,6 +14014,7 @@ hotkey \'M\'. If you want to drag the track you can use the hotkey
 ::::
 
 :::::: sect3
+
 #### Via Insertion {#_via_insertion}
 
 ::: paragraph
@@ -13126,6 +14022,7 @@ A via can be inserted only when a track is in progress:
 :::
 
 ::: ulist
+
 - By the pop-up menu.
 
 - By the hotkey \'V\'.
@@ -13143,6 +14040,7 @@ routing.
 ::::::::::::::::::::::::
 
 :::::::::::::: sect2
+
 ### Select/edit the track width and via size {#_selectedit_the_track_width_and_via_size}
 
 ::: paragraph
@@ -13157,6 +14055,7 @@ extra tracks and via sizes.
 :::
 
 ::: ulist
+
 - The horizontal toolbar can be used to select a size.
 
 - When the button [![add tracks](images/icons/add_tracks.png)]{.image}
@@ -13168,6 +14067,7 @@ extra tracks and via sizes.
 :::
 
 ::::: sect3
+
 #### Using the horizontal toolbar {#_using_the_horizontal_toolbar}
 
 :::: imageblock
@@ -13211,6 +14111,7 @@ extra tracks and via sizes.
 :::::
 
 ::::::: sect3
+
 #### Using the pop-up menu {#_using_the_pop_up_menu}
 
 ::: paragraph
@@ -13233,9 +14134,11 @@ changes).
 ::::::::::::::
 
 :::::::::::::::::::: sect2
+
 ### Editing and changing tracks {#_editing_and_changing_tracks}
 
 ::::::::::: sect3
+
 #### Change a track {#_change_a_track}
 
 ::: paragraph
@@ -13268,6 +14171,7 @@ Pcbnew will automatically remove the old track if it is redundant.
 :::::::::::
 
 :::::::::: sect3
+
 #### Global changes {#_global_changes}
 
 ::: paragraph
@@ -13287,6 +14191,7 @@ The dialog editor allows global changes of tracks and/or vias for:
 :::
 
 ::: ulist
+
 - The current net.
 
 - The whole board.
@@ -13305,7 +14210,9 @@ dialog](images/Pcbnew_track_global_edit_dialog.png)
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::: {#footer}
+
 ::: {#footer-text}
+
 Last updated 2026-03-15 16:35:47 -0700
 :::
 ::::
@@ -13317,7 +14224,9 @@ Last updated 2026-03-15 16:35:47 -0700
 :::
 
 :::::::::::::::::::::::::::::::::::: {#content}
+
 ::::::::::::::::::::::::::::::::::: sect1
+
 ## Interactive Router {#_interactive_router}
 
 :::::::::::::::::::::::::::::::::: sectionbody
@@ -13332,6 +14241,7 @@ Following modes are supported:
 :::
 
 ::: ulist
+
 - **Highlight collisions**, which highlights all violating objects with
   a nice, shiny green color and shows violating clearance regions.
 
@@ -13343,6 +14253,7 @@ Following modes are supported:
 :::
 
 :::::::::: sect2
+
 ### Setting up {#_setting_up}
 
 ::: paragraph
@@ -13350,6 +14261,7 @@ Before using the Interactive Router, please set up these two things:
 :::
 
 ::: ulist
+
 - **Clearance settings** To set the clearances, open the *Design Rules*
   dialog and make sure at least the default clearance value looks
   sensible.
@@ -13362,6 +14274,7 @@ Before using the Interactive Router, please set up these two things:
 ::::
 
 ::: ulist
+
 - **Enable OpenGL mode** By selecting *View→Switch canvas to OpenGL*
   menu option or pressing **F11**.
 :::
@@ -13374,6 +14287,7 @@ Before using the Interactive Router, please set up these two things:
 ::::::::::
 
 ::::::::::: sect2
+
 ### Laying out tracks {#_laying_out_tracks}
 
 ::: paragraph
@@ -13424,6 +14338,7 @@ diagonal.
 :::
 
 ::: {.admonitionblock .note}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | By default, the router snaps to   |
 | Note                              | centers/axes of the items.        |
@@ -13435,6 +14350,7 @@ diagonal.
 :::::::::::
 
 ::::: sect2
+
 ### Setting track widths and via sizes {#_setting_track_widths_and_via_sizes}
 
 ::: paragraph
@@ -13443,6 +14359,7 @@ it during routing:
 :::
 
 ::: ulist
+
 - Use standard KiCad shortcuts.
 
 - Press **W** or select *Custom Track Width* from the context menu to
@@ -13458,6 +14375,7 @@ it during routing:
 :::::
 
 :::: sect2
+
 ### Dragging {#_dragging}
 
 ::: paragraph
@@ -13469,6 +14387,7 @@ clicking again or abort by pressing *Esc*.
 ::::
 
 :::::::: sect2
+
 ### Options {#_options}
 
 ::: paragraph
@@ -13488,6 +14407,7 @@ The options are:
 ::::
 
 ::: ulist
+
 - **Mode** - select how the router handles DRC violation (shoving,
   walking around, etc.)
 
@@ -13525,7 +14445,9 @@ The options are:
 ::::::::::::::::::::::::::::::::::::
 
 :::: {#footer}
+
 ::: {#footer-text}
+
 Last updated 2026-03-15 16:35:47 -0700
 :::
 ::::
@@ -13537,11 +14459,14 @@ Last updated 2026-03-15 16:35:47 -0700
 :::
 
 :::::::::::::::::::::::::::::::::::::::: {#content}
+
 ::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Schematic Implementation {#_schematic_implementation}
 
 :::::::::::::::::::::::::::::::::::::: sectionbody
 ::::::: sect2
+
 ### Linking a schematic to a printed circuit board {#_linking_a_schematic_to_a_printed_circuit_board}
 
 ::: paragraph
@@ -13582,6 +14507,7 @@ that comprise KiCad.
 :::::::
 
 :::::: sect2
+
 ### Procedure for creating a printed circuit board {#_procedure_for_creating_a_printed_circuit_board}
 
 ::: paragraph
@@ -13589,6 +14515,7 @@ After having created your schematic in Eeschema:
 :::
 
 ::: ulist
+
 - Generate the netlist using Eeschema.
 
 - Assign each component in your netlist file to the corresponding land
@@ -13607,6 +14534,7 @@ tracks can be routed.
 ::::::
 
 :::::: sect2
+
 ### Procedure for updating a printed circuit board {#_procedure_for_updating_a_printed_circuit_board}
 
 ::: paragraph
@@ -13615,6 +14543,7 @@ generated), the following steps must be repeated:
 :::
 
 ::: ulist
+
 - Generate a new netlist file using Eeschema.
 
 - If the changes to the schematic involve new components, the
@@ -13633,9 +14562,11 @@ updated.
 ::::::
 
 :::::::::::::::::::::::: sect2
+
 ### Reading netlist file - loading footprints {#_reading_netlist_file_loading_footprints}
 
 :::::: sect3
+
 #### Dialog box {#_dialog_box}
 
 ::: paragraph
@@ -13650,6 +14581,7 @@ Accessible from the icon [![netlist](images/icons/netlist.png)]{.image}
 ::::::
 
 ::: sect3
+
 #### Available options {#_available_options}
 
 +-----------------------------------+-----------------------------------+
@@ -13678,6 +14610,7 @@ Accessible from the icon [![netlist](images/icons/netlist.png)]{.image}
 :::
 
 :::::::::::::::::: sect3
+
 #### Loading new footprints {#_loading_new_footprints}
 
 ::: paragraph
@@ -13726,6 +14659,7 @@ on the right button:
 ::::
 
 ::: ulist
+
 - Automatically Place New Footprints, if there is already a board with
   existing footprints.
 
@@ -13749,7 +14683,9 @@ The following screenshot shows the results.
 ::::::::::::::::::::::::::::::::::::::::
 
 :::: {#footer}
+
 ::: {#footer-text}
+
 Last updated 2026-03-15 16:35:47 -0700
 :::
 ::::
@@ -13761,7 +14697,9 @@ Last updated 2026-03-15 16:35:47 -0700
 :::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: {#content}
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Files for circuit fabrication {#_files_for_circuit_fabrication}
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
@@ -13777,6 +14715,7 @@ circuit board.
 :::
 
 ::::::::: sect2
+
 ### Final preparations {#_final_preparations}
 
 ::: paragraph
@@ -13785,6 +14724,7 @@ circuit board includes the following preparatory steps.
 :::
 
 ::: ulist
+
 - Mark any layer (e.g., \'top or front\' and \'bottom or back\') with
   the project name by placing appropriate text upon each of the layers.
 
@@ -13818,6 +14758,7 @@ layer colour key](images/Pcbnew_layer_colour_key.png)]{.image}
 :::::::::
 
 ::::::::: sect2
+
 ### Final DRC test {#_final_drc_test}
 
 ::: paragraph
@@ -13848,6 +14789,7 @@ This final check will prevent any unpleasant surprises.
 :::::::::
 
 :::::: sect2
+
 ### Setting coordinates origin {#_setting_coordinates_origin}
 
 ::: paragraph
@@ -13865,6 +14807,7 @@ by left-clicking on the chosen location.
 ::::::
 
 :::::::::::::::::::::::::::::::::::: sect2
+
 ### Generating files for photo-tracing {#_generating_files_for_photo_tracing}
 
 ::: paragraph
@@ -13904,6 +14847,7 @@ setting](images/Pcbnew_plot_fine_scale_setting.png)
 ::::
 
 ::::::::: sect3
+
 #### GERBER format {#_gerber_format}
 
 ::: paragraph
@@ -13927,6 +14871,7 @@ represents the name of the .brd file).
 :::
 
 ::: ulist
+
 - xxxx-F_Cu.gbr for the component side.
 
 - xxxx-B_Cu.gbr for the copper side.
@@ -13955,6 +14900,7 @@ omitted, Abs format. These are very usual settings.
 :::::::::
 
 ::::: sect3
+
 #### POSTSCRIPT format {#_postscript_format}
 
 ::: paragraph
@@ -13971,6 +14917,7 @@ If the Print Sheet Ref option is active, the sheet cartridge is traced.
 :::::
 
 :::::::::: sect3
+
 #### Plot options {#_plot_options}
 
 ::: paragraph
@@ -14012,6 +14959,7 @@ GERBER format specific options:
 ::::::::::
 
 :::::::: sect3
+
 #### Other formats {#_other_formats}
 
 ::: paragraph
@@ -14039,6 +14987,7 @@ If the Print Sheet Ref option is active, the sheet cartridge is traced.
 ::::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::: sect2
+
 ### Global clearance settings for the solder stop and the solder paste mask {#_global_clearance_settings_for_the_solder_stop_and_the_solder_paste_mask}
 
 ::: paragraph
@@ -14048,6 +14997,7 @@ levels.
 :::
 
 ::: ulist
+
 - At pads level.
 
 - At footprint level.
@@ -14060,6 +15010,7 @@ And Pcbnew uses by priority order.
 :::
 
 ::: ulist
+
 - Pad values. If null:
 
 - Footprint values. If null:
@@ -14068,6 +15019,7 @@ And Pcbnew uses by priority order.
 :::
 
 ::::::::: sect3
+
 #### Access {#_access}
 
 ::: paragraph
@@ -14094,6 +15046,7 @@ dialog](images/Pcbnew_pad_mask_settings_dialog.png)
 :::::::::
 
 :::::: sect3
+
 #### Solder mask clearance {#_solder_mask_clearance}
 
 ::: paragraph
@@ -14112,6 +15065,7 @@ shapes will be merged.
 ::::::
 
 ::::: sect3
+
 #### Solder paste clearance {#_solder_paste_clearance}
 
 ::: paragraph
@@ -14126,6 +15080,7 @@ This value is negative because the mask is usually smaller than the pad.
 :::::::::::::::::::::
 
 ::::::::::::::: sect2
+
 ### Generating drill files {#_generating_drill_files}
 
 ::: paragraph
@@ -14139,6 +15094,7 @@ map.
 :::
 
 ::: ulist
+
 - The drill map can be plotted using several formats.
 
 - The drill report is a plain text file.
@@ -14149,6 +15105,7 @@ The generation of these files is controlled via:
 :::
 
 ::: ulist
+
 - \"Create Drill File\" button, or
 
 - Files/Fabrication Outputs/Drill file menu selection.
@@ -14175,6 +15132,7 @@ For setting the coordinate origin, the following dialog box is used:
 ::::
 
 ::: ulist
+
 - Absolute: absolute coordinate system is used.
 
 - Auxiliary axis: coordinates are relative to the auxiliary axis, use
@@ -14183,6 +15141,7 @@ For setting the coordinate origin, the following dialog box is used:
 :::::::::::::::
 
 :::: sect2
+
 ### Generating wiring documentation {#_generating_wiring_documentation}
 
 ::: paragraph
@@ -14195,6 +15154,7 @@ be readable.
 ::::
 
 :::: sect2
+
 ### Generation of files for automatic component insertion {#_generation_of_files_for_automatic_component_insertion}
 
 ::: paragraph
@@ -14208,6 +15168,7 @@ names of the file(s) created.
 ::::
 
 ::::::: sect2
+
 ### Advanced tracing options {#_advanced_tracing_options}
 
 ::: paragraph
@@ -14269,7 +15230,9 @@ The available options are:
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::: {#footer}
+
 ::: {#footer-text}
+
 Last updated 2026-03-15 16:35:47 -0700
 :::
 ::::
@@ -14281,11 +15244,14 @@ Last updated 2026-03-15 16:35:47 -0700
 :::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: {#content}
+
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Footprint Editor - Managing Libraries {#_footprint_editor_managing_libraries}
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
 :::::::::: sect2
+
 ### Overview of Footprint Editor {#_overview_of_footprint_editor}
 
 ::: paragraph
@@ -14301,6 +15267,7 @@ Footprint Editor enables the creation and the editing of footprints:
 :::
 
 ::: ulist
+
 - Adding and removing pads.
 
 - Changing pad properties (shape, layer) for individual pads or globally
@@ -14319,6 +15286,7 @@ by:
 :::
 
 ::: ulist
+
 - Listing the footprints in the active library.
 
 - Deletion of a footprint from the active library.
@@ -14338,6 +15306,7 @@ The library extension is `.mod`.
 ::::::::::
 
 :::::::: sect2
+
 ### Accessing Footprint Editor {#_accessing_footprint_editor}
 
 ::: paragraph
@@ -14345,6 +15314,7 @@ The Footprint Editor can be accessed in two different ways:
 :::
 
 ::: ulist
+
 - Directly, via the icon [![module
   editor](images/icons/module_editor.png)]{.image} in the main toolbar
   of Pcbnew.
@@ -14367,6 +15337,7 @@ archiving.
 ::::::::
 
 :::::: sect2
+
 ### Footprint Editor user interface {#_footprint_editor_user_interface}
 
 ::: paragraph
@@ -14381,6 +15352,7 @@ By calling Footprint Editor the following window will appear:
 ::::::
 
 :::::: sect2
+
 ### Top toolbar in Footprint Editor {#_top_toolbar_in_footprint_editor}
 
 :::: imageblock
@@ -14464,6 +15436,7 @@ From this toolbar, the following functions are available:
 ::::::
 
 :::::: sect2
+
 ### Creating a new library {#_creating_a_new_library}
 
 ::: paragraph
@@ -14481,6 +15454,7 @@ the footprint being edited.
 :::
 
 ::: {.admonitionblock .warning}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | If an old library of the same     |
 | Warning                           | name exists, it will be           |
@@ -14490,6 +15464,7 @@ the footprint being edited.
 ::::::
 
 ::::: sect2
+
 ### Saving a footprint in the active library {#_saving_a_footprint_in_the_active_library}
 
 ::: paragraph
@@ -14508,9 +15483,11 @@ the name of the footprint as identified in the library.
 :::::
 
 :::::: sect2
+
 ### Transferring a footprint from one library to another {#_transferring_a_footprint_from_one_library_to_another}
 
 ::: ulist
+
 - Select the source library via the button
   [![library](images/icons/library.png)]{.image}.
 
@@ -14529,6 +15506,7 @@ You may also wish to delete the source footprint.
 :::
 
 ::: ulist
+
 - Reselect the source library with
   [![library](images/icons/library.png)]{.image}
 
@@ -14538,6 +15516,7 @@ You may also wish to delete the source footprint.
 ::::::
 
 ::::: sect2
+
 ### Saving all footprints of your board in the active library {#_saving_all_footprints_of_your_board_in_the_active_library}
 
 ::: paragraph
@@ -14547,6 +15526,7 @@ names. This command has two uses:
 :::
 
 ::: ulist
+
 - To create an archive or complete a library with the footprints from a
   board, in the event of the loss of a library.
 
@@ -14556,6 +15536,7 @@ names. This command has two uses:
 :::::
 
 :::::::::::: sect2
+
 ### Documentation for library footprints {#_documentation_for_library_footprints}
 
 ::: paragraph
@@ -14580,6 +15561,7 @@ This dialog accepts:
 :::
 
 ::: ulist
+
 - A one-line comment/description.
 
 - Multiple keywords.
@@ -14605,6 +15587,7 @@ keyword lists contain the word `CONN`.
 ::::::::::::
 
 :::::::::::::: sect2
+
 ### Documenting libraries - recommended practice {#_documenting_libraries_recommended_practice}
 
 ::: paragraph
@@ -14655,6 +15638,7 @@ This technique has several advantages:
 :::
 
 ::: ulist
+
 - The circuit can be printed to scale and serve as documentation for the
   library with no further effort.
 
@@ -14667,6 +15651,7 @@ This technique has several advantages:
 ::::::::::::::
 
 :::::: sect2
+
 ### Footprint Libraries Management {#_footprint_libraries_management}
 
 ::: paragraph
@@ -14692,6 +15677,7 @@ Library Tables*.
 ::::::
 
 :::: sect2
+
 ### 3D Shapes Libraries Management {#_3d_shapes_libraries_management}
 
 ::: paragraph
@@ -14705,7 +15691,9 @@ Downloader.
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::: {#footer}
+
 ::: {#footer-text}
+
 Last updated 2026-03-15 16:35:47 -0700
 :::
 ::::
@@ -14717,7 +15705,9 @@ Last updated 2026-03-15 16:35:47 -0700
 :::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::: {#content}
+
 :::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## KiCad Scripting Reference {#_kicad_scripting_reference}
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
@@ -14741,10 +15731,12 @@ Using scripting you can create:
 :::
 
 ::: ulist
+
 - **Plugins**: this type of script is loaded when KiCad starts.
   Examples:
 
   ::: ulist
+
   - **Footprint Wizards**: To help you build footprints easily filling
     in parameters. See the dedicated section [Footprint
     Wizards](#Footprint_Wizards) below.
@@ -14767,6 +15759,7 @@ scripting is Pcbnew. It is also planned for Eeschema in the future.
 :::
 
 ::::: sect2
+
 ### KiCad Objects {#_kicad_objects}
 
 ::: paragraph
@@ -14777,11 +15770,13 @@ Then MODULEs have D_PADs, EDGEs, etc.
 :::
 
 ::: ulist
+
 - See the BOARD section below.
 :::
 :::::
 
 :::: sect2
+
 ### Basic API Reference {#_basic_api_reference}
 
 ::: paragraph
@@ -14793,9 +15788,11 @@ action plugins.
 ::::
 
 ::::::: sect2
+
 ### Loading and Saving a Board {#_loading_and_saving_a_board}
 
 ::: ulist
+
 - **LoadBoard(filename):** loads a board from file returning a BOARD
   object, using the file format that matches the filename extension.
 
@@ -14812,7 +15809,9 @@ Example that loads a board, hides all values, shows all references
 :::
 
 ::: content
-``` highlight
+
+```python
+
 #!/usr/bin/env python2.7
 import sys
 from pcbnew import *
@@ -14826,12 +15825,15 @@ for module in pcb.GetModules():
     module.Reference().SetVisible(True)   # set Reference as Visible
 
 pcb.Save("mod_"+filename)
+
 ```
+
 :::
 :::::
 :::::::
 
 :::::: sect2
+
 ### Listing and Loading Libraries {#_listing_and_loading_libraries}
 
 ::::: listingblock
@@ -14840,7 +15842,9 @@ Enumerate library, enumerate modules, enumerate pads
 :::
 
 ::: content
-``` highlight
+
+```python
+
 #!/usr/bin/python
 
 from pcbnew import *
@@ -14849,8 +15853,10 @@ libpath = "/usr/share/kicad/modules/Sockets.pretty"
 print ">> enumerate footprints, pads of",libpath
 
 # Load the suitable plugin to read/write the .pretty library
+
 # (containing the .kicad_mod footprint files)
 src_type = IO_MGR.GuessPluginTypeFromLibPath( libpath );
+
 # Rem: we can force the plugin type by using IO_MGR.PluginFind( IO_MGR.KICAD )
 plugin = IO_MGR.PluginFind( src_type )
 
@@ -14874,12 +15880,15 @@ for name in list_of_footprints:
         "pos0", ToMM(pad.GetPos0().x), ToMM(pad.GetPos0().y),"mm",\
         "shape offset", ToMM(pad.GetOffset().x), ToMM(pad.GetOffset().y), "mm"
     print ""
+
 ```
+
 :::
 :::::
 ::::::
 
 ::::::::: sect2
+
 ### BOARD {#_board}
 
 ::: paragraph
@@ -14893,6 +15902,7 @@ using \"for obj in list:\"
 :::
 
 ::: ulist
+
 - **board.GetModules():** This method returns a list of MODULE objects,
   all the modules available in the board will be exposed here.
 
@@ -14922,7 +15932,9 @@ Board Inspection Example
 :::
 
 ::: content
-``` highlight
+
+```python
+
 #!/usr/bin/env python
 import sys
 from pcbnew import *
@@ -14933,7 +15945,9 @@ pcb = LoadBoard(filename)
 
 ToUnits = ToMM
 FromUnits = FromMM
+
 #ToUnits=ToMils
+
 #FromUnits=FromMils
 
 print "LISTING VIAS:"
@@ -14988,15 +16002,19 @@ for idx in range(0, pcb.GetAreaCount()):
 
 print ""
 print "NetClasses:", pcb.GetNetClasses().GetCount(),
+
 ```
+
 :::
 :::::
 :::::::::
 
 ::::::: sect2
+
 ### Examples {#_examples}
 
 :::::: sect3
+
 #### Change a component pin's paste mask margin {#_change_a_component_pins_paste_mask_margin}
 
 ::::: listingblock
@@ -15006,7 +16024,9 @@ be kept as it is.
 :::
 
 ::: content
-``` highlight
+
+```python
+
 #!/usr/bin/env python2.7
 import sys
 from pcbnew import *
@@ -15026,13 +16046,16 @@ for p in pads:
     if id<15: p.SetLocalSolderPasteMargin(0)
 
 pcb.Save("mod_"+filename)
+
 ```
+
 :::
 :::::
 ::::::
 :::::::
 
 :::::::::: sect2
+
 ### Footprint Wizards {#Footprint_Wizards}
 
 ::: paragraph
@@ -15063,7 +16086,8 @@ Build footprints easily filling in parameters.
 :::
 
 ::: content
-``` highlight
+
+```python
 from __future__ import division
 import pcbnew
 
@@ -15208,12 +16232,15 @@ class FPC_FootprintWizard(HFPW.HelpfulFootprintWizardPlugin):
 
 # register into pcbnew
 FPC_FootprintWizard().register()
+
 ```
+
 :::
 :::::
 ::::::::::
 
 :::::::::::: sect2
+
 ### Action Plugins {#action_menu}
 
 ::: paragraph
@@ -15232,6 +16259,7 @@ New menu are available inside menu **Tools** ⇒ **External plugins**.
 ::::
 
 ::: ulist
+
 - **Refresh**: reload plugins (create new menu if needed)
 
 - **Add date on PCB**: An example plugin.
@@ -15249,7 +16277,8 @@ Action plugin example: Add date to any text item with content
 :::
 
 ::: content
-``` highlight
+
+```python
 import pcbnew
 import re
 import datetime
@@ -15259,8 +16288,11 @@ class text_by_date(pcbnew.ActionPlugin):
     test_by_date: A sample plugin as an example of ActionPlugin
     Add the date to any text field of the board where the content is '$date$'
     How to use:
+
     - Add a text on your board with the content '$date$'
+
     - Call the plugin
+
     - Automaticaly the date will be added to the text (format YYYY-MM-DD)
     """
 
@@ -15287,7 +16319,9 @@ class text_by_date(pcbnew.ActionPlugin):
 
 
 text_by_date().register()
+
 ```
+
 :::
 :::::
 ::::::::::::
@@ -15296,7 +16330,9 @@ text_by_date().register()
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::: {#footer}
+
 ::: {#footer-text}
+
 Last updated 2026-03-15 16:35:47 -0700
 :::
 ::::

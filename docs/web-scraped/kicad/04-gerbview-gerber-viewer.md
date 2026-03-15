@@ -1,4 +1,5 @@
 :::::: {#header}
+
 # GerbView
 
 ::: details
@@ -6,38 +7,59 @@
 :::
 
 :::: {#toc .toc}
+
 ::: {#toctitle}
+
 Table of Contents
 :::
 
 - [Introduction to GerbView](#_introduction_to_gerbview)
+
 - [Interface](#_interface)
+
   - [Main window](#_main_window)
+
   - [Top toolbar](#_top_toolbar)
+
   - [Left toolbar](#_left_toolbar)
+
   - [Layers Manager](#_layers_manager)
+
 - [Commands in menu bar](#_commands_in_menu_bar)
+
   - [File menu](#_file_menu)
+
   - [Preferences menu](#_preferences_menu)
+
   - [Miscellaneous menu](#_miscellaneous_menu)
+
 - [Display modes](#_display_modes)
+
   - [Raw mode](#_raw_mode)
+
   - [Stacked mode](#_stacked_mode)
+
   - [Transparency mode](#_transparency_mode)
+
   - [Layer occlusion](#_layer_occlusion)
+
 - [Moving items](#_moving_items)
+
 - [Printing](#_printing)
 ::::
 ::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: {#content}
+
 :::::::::::::::: {#preamble}
+
 ::::::::::::::: sectionbody
 ::: paragraph
 *Reference manual*
 :::
 
 ::: {#copyright .paragraph}
+
 **Copyright**
 :::
 
@@ -56,6 +78,7 @@ All trademarks within this guide belong to their legitimate owners.
 :::
 
 ::: {#contributors .paragraph}
+
 **Contributors**
 :::
 
@@ -64,6 +87,7 @@ The KiCad Team.
 :::
 
 ::: {#feedback .paragraph}
+
 **Feedback**
 :::
 
@@ -72,6 +96,7 @@ Please direct any bug reports, suggestions or new versions to here:
 :::
 
 ::: ulist
+
 - About KiCad document:
   [https://github.com/KiCad/kicad-doc/issues](https://github.com/KiCad/kicad-doc/issues){.bare}
 
@@ -83,6 +108,7 @@ Please direct any bug reports, suggestions or new versions to here:
 :::
 
 ::: {#publication_date_and_software_version .paragraph}
+
 **Publication date and software version**
 :::
 
@@ -96,6 +122,7 @@ Published on February 24, 2018.
 ::::::::::::::::
 
 :::::: sect1
+
 ## Introduction to GerbView {#_introduction_to_gerbview}
 
 ::::: sectionbody
@@ -115,10 +142,12 @@ description](http://web.archive.org/web/20071030075236/http://www.excellon.com/m
 ::::::
 
 ::::::::::::::::::::: sect1
+
 ## Interface {#_interface}
 
 :::::::::::::::::::: sectionbody
 :::::: sect2
+
 ### Main window {#_main_window}
 
 :::: imageblock
@@ -132,6 +161,7 @@ description](http://web.archive.org/web/20071030075236/http://www.excellon.com/m
 ::::::
 
 :::::: sect2
+
 ### Top toolbar {#_top_toolbar}
 
 :::: imageblock
@@ -182,6 +212,7 @@ description](http://web.archive.org/web/20071030075236/http://www.excellon.com/m
 ::::::
 
 :::: sect2
+
 ### Left toolbar {#_left_toolbar}
 
 +--------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------+------------------------------------------------------------+
@@ -220,6 +251,7 @@ description](http://web.archive.org/web/20071030075236/http://www.excellon.com/m
 ::::
 
 ::::::::: sect2
+
 ### Layers Manager {#_layers_manager}
 
 :::: imageblock
@@ -239,6 +271,7 @@ Mouse button assignments:
 :::
 
 ::: ulist
+
 - Left click: select the active layer
 
 - Right click: show/hide/sort layers options
@@ -256,10 +289,12 @@ color and display of the grid, D Codes, and negative objects.
 :::::::::::::::::::::
 
 ::::::::::::::::::: sect1
+
 ## Commands in menu bar {#_commands_in_menu_bar}
 
 :::::::::::::::::: sectionbody
 :::::: sect2
+
 ### File menu {#_file_menu}
 
 :::: imageblock
@@ -269,6 +304,7 @@ color and display of the grid, D Codes, and negative objects.
 ::::
 
 ::: ulist
+
 - **Export to Pcbnew** is a limited capability to export Gerber files
   into Pcbnew. The final result depends on what features of the RS-274X
   format are used in the original Gerber files: rasterized items cannot
@@ -279,6 +315,7 @@ color and display of the grid, D Codes, and negative objects.
 ::::::
 
 ::::::::: sect2
+
 ### Preferences menu {#_preferences_menu}
 
 :::: imageblock
@@ -288,6 +325,7 @@ color and display of the grid, D Codes, and negative objects.
 ::::
 
 :::::: sect3
+
 #### Toolsets {#_toolsets}
 
 ::: paragraph
@@ -314,6 +352,7 @@ The Legacy toolset will be removed in a future version of GerbView.
 :::::::::
 
 :::::: sect2
+
 ### Miscellaneous menu {#_miscellaneous_menu}
 
 :::: imageblock
@@ -323,6 +362,7 @@ The Legacy toolset will be removed in a future version of GerbView.
 ::::
 
 ::: ulist
+
 - **List DCodes** shows the D Code information for all layers.
 
 - **Show Source** displays the Gerber file contents of the active layer
@@ -338,6 +378,7 @@ The Legacy toolset will be removed in a future version of GerbView.
 :::::::::::::::::::
 
 :::::::::::::::::::::::::::: sect1
+
 ## Display modes {#_display_modes}
 
 ::::::::::::::::::::::::::: sectionbody
@@ -347,6 +388,7 @@ situations or requirements.
 :::
 
 ::: {.admonitionblock .note}
+
 +-----------------------------------+-----------------------------------+
 | ::: title                         | Stacked mode and Transparency     |
 | Note                              | mode provide a better graphical   |
@@ -356,6 +398,7 @@ situations or requirements.
 :::
 
 ::::::: sect2
+
 ### Raw mode {#_raw_mode}
 
 ::: paragraph
@@ -378,6 +421,7 @@ visible on already-drawn layers.
 :::::::
 
 ::::::: sect2
+
 ### Stacked mode {#_stacked_mode}
 
 ::: paragraph
@@ -401,6 +445,7 @@ local buffer before it is shown on screen.
 :::::::
 
 :::::: sect2
+
 ### Transparency mode {#_transparency_mode}
 
 ::: paragraph
@@ -417,6 +462,7 @@ blended together with the active layer on top.
 ::::::
 
 :::::::::: sect2
+
 ### Layer occlusion {#_layer_occlusion}
 
 ::: paragraph
@@ -449,6 +495,7 @@ Making layer 2 (blue) the active layer brings it to the top:
 ::::::::::::::::::::::::::::
 
 :::::: sect1
+
 ## Moving items {#_moving_items}
 
 ::::: sectionbody
@@ -465,6 +512,7 @@ This behavior is deprecated and not available in the modern toolsets.
 ::::::
 
 :::::: sect1
+
 ## Printing {#_printing}
 
 ::::: sectionbody
@@ -475,6 +523,7 @@ To print layers, use the
 :::
 
 ::: {.admonitionblock .caution}
+
 +-----------------------------------+------------------------------------------------------+
 | ::: title                         | ::: paragraph                                        |
 | Caution                           | Be sure items are inside the printable area. Use     |
@@ -495,7 +544,9 @@ To print layers, use the
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::: {#footer}
+
 ::: {#footer-text}
+
 Last updated 2026-03-15 16:35:47 -0700
 :::
 ::::

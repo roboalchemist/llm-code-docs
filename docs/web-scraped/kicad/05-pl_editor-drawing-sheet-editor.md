@@ -1,4 +1,5 @@
 :::::: {#header}
+
 # Pl_Editor
 
 ::: details
@@ -14,30 +15,39 @@ Table of Contents
 - [Pl_Editor files](#pl_editor-files)
   - [Input file and default title
     block](#input-file-and-default-title-block)
+
   - [Output file](#output-file)
+
 - [Theory of operations](#theory-of-operations)
   - [Basic page layout items
     properties:](#basic-page-layout-items-properties)
+
   - [Coordinates definition](#coordinates-definition)
   - [Reference corners and
     coordinates:](#reference-corners-and-coordinates)
+
   - [Rotation](#rotation)
   - [Repeat option](#repeat-option)
+
 - [Texts and formats](#texts-and-formats)
   - [Format symbols:](#format-symbols)
   - [Multi-line texts:](#multi-line-texts)
   - [Multi-line texts in Page Setup
     dialog:](#multi-line-texts-in-page-setup-dialog)
+
 - [Constraints](#constraints)
   - [Page 1 constraint](#page-1-constraint)
   - [Text full size constraint](#text-full-size-constraint)
+
 - [Invoking Pl_Editor](#invoking-pl_editor)
 - [Pl_Editor Commands](#pl_editor-commands)
   - [Main Screen](#main-screen)
   - [Main Window Toolbar](#main-window-toolbar)
   - [Commands in drawing area (draw
     panel)](#commands-in-drawing-area-draw-panel)
+
   - [Status Bar Information](#status-bar-information)
+
 - [Left window](#left-window)
 - [Right window](#right-window)
 - [Interactive edition](#interactive-edition)
@@ -45,6 +55,7 @@ Table of Contents
   - [Item creation](#item-creation)
   - [Adding lines, rectangles and
     texts](#adding-lines-rectangles-and-texts)
+
   - [Adding logos](#adding-logos)
   - [Adding image bitmaps](#adding-image-bitmaps)
 ::::
@@ -88,6 +99,7 @@ Please direct any bug reports, suggestions or new versions to here:
 :::
 
 ::: ulist
+
 - About KiCad document:
   [https://github.com/KiCad/kicad-doc/issues](https://github.com/KiCad/kicad-doc/issues){.bare}
 
@@ -112,6 +124,7 @@ may 23, 2015.
 :::::::::::::::
 
 :::::::::: sect1
+
 ## Introduction to **Pl_Editor**
 
 ::::::::: sectionbody
@@ -130,6 +143,7 @@ Basic page layout items are:
 :::
 
 ::: ulist
+
 - **Lines**
 
 - **Rectangles**
@@ -153,16 +167,19 @@ Basic page layout items are:
 :::
 
 ::: ulist
+
 - Items can be repeated, and texts and poly_polygons can be rotated.
 :::
 :::::::::
 ::::::::::
 
 ::::::::::: sect1
+
 ## Pl_Editor files
 
 :::::::::: sectionbody
 ::::: sect2
+
 ### Input file and default title block
 
 ::: paragraph
@@ -177,6 +194,7 @@ title block is used until a file is read.
 :::::
 
 :::::: sect2
+
 ### Output file
 
 ::: paragraph
@@ -196,17 +214,20 @@ Pcbnew.
 :::::::::::
 
 ::::::::::::::::::::::::::::::::::: sect1
+
 ## Theory of operations
 
 :::::::::::::::::::::::::::::::::: sectionbody
 :::::::::: sect2
-### Basic page layout items properties:
+
+### Basic page layout items properties
 
 ::: paragraph
 Basic page layout items are:
 :::
 
 ::: ulist
+
 - **Lines**
 
 - **Rectangles**
@@ -235,6 +256,7 @@ Therefore:
 :::
 
 ::: ulist
+
 - **Texts, poly-polygons** and **bitmaps** are defined by a position,
   and can be rotated.
 
@@ -254,6 +276,7 @@ meaning only if the text is one letter or one digit).
 ::::::::::
 
 ::::: sect2
+
 ### Coordinates definition
 
 ::: paragraph
@@ -268,13 +291,15 @@ dependent on the paper size**.
 :::::
 
 ::::::: sect2
-### Reference corners and coordinates:
+
+### Reference corners and coordinates
 
 ::: paragraph
 [![page property 1](images/en/page_property_1.png)]{.image}
 :::
 
 ::: ulist
+
 - When the page size is changed, the position of the item, relative to
   its reference corner does not change.
 
@@ -292,6 +317,7 @@ has its reference corner.
 :::::::
 
 ::::::::::: sect2
+
 ### Rotation
 
 ::: paragraph
@@ -324,6 +350,7 @@ Rotated: Rotation = 20 and 10 degrees.
 :::::::::::
 
 :::::::: sect2
+
 ### Repeat option
 
 ::: paragraph
@@ -347,11 +374,13 @@ This is useful to create grid and grid labels.
 :::::::::::::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Texts and formats
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
 ::::::::::::::::::::::::::::::: sect2
-### Format symbols:
+
+### Format symbols
 
 ::: paragraph
 Texts can be simple strings or can include format symbols.
@@ -465,7 +494,8 @@ The native texts entered in Pl_Editor, with their format symbols.
 :::::::::::::::::::::::::::::::
 
 :::::::::::::: sect2
-### Multi-line texts:
+
+### Multi-line texts
 
 ::: paragraph
 Texts can be multi-line.
@@ -476,10 +506,11 @@ There are 2 ways to insert a new line in texts:
 :::
 
 ::: {.olist .arabic}
-1.  Insert the \"\\n\" 2 chars sequence (mainly in Page setup dialog in
+
+1. Insert the \"\\n\" 2 chars sequence (mainly in Page setup dialog in
     KiCad).
 
-2.  Insert a new line in Pl_Editor Design window.
+2. Insert a new line in Pl_Editor Design window.
 :::
 
 ::: paragraph
@@ -511,7 +542,8 @@ Output
 ::::::::::::::
 
 :::::::::::::: sect2
-### Multi-line texts in Page Setup dialog:
+
+### Multi-line texts in Page Setup dialog
 
 ::: paragraph
 In the page setup dialog, text controls do not accept a multi-line text.
@@ -563,10 +595,12 @@ And the displayed text:
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::: sect1
+
 ## Constraints
 
 ::::::::::::::::::::::::::::: sectionbody
 :::::::::: sect2
+
 ### Page 1 constraint
 
 ::: paragraph
@@ -591,6 +625,7 @@ Page 1 option:
 :::
 
 ::: ulist
+
 - None: no constraint.
 
 - Page 1 only: the items is visible only on page 1.
@@ -603,6 +638,7 @@ Page 1 option:
 ::::::::::
 
 :::::::::::::::::::: sect2
+
 ### Text full size constraint
 
 ::: paragraph
@@ -614,6 +650,7 @@ Only for texts, one can set 2 parameters :
 :::
 
 ::: ulist
+
 - the max size X
 
 - the max size Y
@@ -681,6 +718,7 @@ Output
 ::::::::::::::::::::::::::::::
 
 :::::: sect1
+
 ## Invoking Pl_Editor
 
 ::::: sectionbody
@@ -697,10 +735,12 @@ open\>.
 ::::::
 
 ::::::::::::::::::::::::::::: sect1
+
 ## Pl_Editor Commands
 
 :::::::::::::::::::::::::::: sectionbody
 ::::::::: sect2
+
 ### Main Screen
 
 ::: paragraph
@@ -726,6 +766,7 @@ The right pane is the item settings editor.
 :::::::::
 
 ::::: sect2
+
 ### Main Window Toolbar
 
 ::: paragraph
@@ -783,9 +824,11 @@ The top toolbar allows for easy access to the following commands:
 :::::
 
 ::::::::::: sect2
+
 ### Commands in drawing area (draw panel)
 
 ::: sect3
+
 #### Keyboard Commands
 
 +-------------+--------------------------------------------------------+
@@ -813,6 +856,7 @@ The top toolbar allows for easy access to the following commands:
 :::
 
 ::: sect3
+
 #### Mouse Commands
 
 +----------------------+-----------------------------------------------+
@@ -828,6 +872,7 @@ The top toolbar allows for easy access to the following commands:
 :::
 
 :::::::: sect3
+
 #### Context Menu
 
 ::: paragraph
@@ -835,6 +880,7 @@ Displayed by right-clicking the mouse:
 :::
 
 ::: ulist
+
 - Add Line
 
 - Add Rectangle
@@ -850,6 +896,7 @@ description.
 :::
 
 ::: ulist
+
 - Zoom selection: direct selection of the display zoom.
 
 - Grid selection: direct selection of the grid.
@@ -876,6 +923,7 @@ description.
 :::::::::::
 
 :::::::: sect2
+
 ### Status Bar Information
 
 ::: paragraph
@@ -901,6 +949,7 @@ Coordinates are **always relative to the corner** selected as
 :::::::::::::::::::::::::::::
 
 :::::::::::: sect1
+
 ## Left window
 
 ::::::::::: sectionbody
@@ -939,6 +988,7 @@ draw panel.
 ::::::::::::
 
 ::::::::: sect1
+
 ## Right window
 
 :::::::: sectionbody
@@ -981,10 +1031,12 @@ Displayed settings depend on the selected item:
 :::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+
 ## Interactive edition
 
 :::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
 ::::::::::::: sect2
+
 ### Item selection
 
 ::: paragraph
@@ -992,6 +1044,7 @@ An item can be selected:
 :::
 
 ::: ulist
+
 - From the Design tree.
 
 - By Left clicking on it.
@@ -1050,6 +1103,7 @@ select the item:
 :::::::::::::
 
 ::::::::::::::: sect2
+
 ### Item creation
 
 ::: paragraph
@@ -1101,6 +1155,7 @@ logo (a poly polygon).
 :::::::::::::::
 
 ::::::::::::::: sect2
+
 ### Adding lines, rectangles and texts
 
 ::: paragraph
@@ -1153,6 +1208,7 @@ position (this is very useful for texts and small lines or rectangles)
 :::::::::::::::
 
 :::::::: sect2
+
 ### Adding logos
 
 ::: paragraph
@@ -1183,6 +1239,7 @@ edited.
 ::::::::
 
 :::::: sect2
+
 ### Adding image bitmaps
 
 ::: paragraph
@@ -1191,6 +1248,7 @@ You can add an image bitmap using most of bitmap formats (PNG, JPEG, BMP
 :::
 
 ::: ulist
+
 - When a bitmap is imported, its PPI (pixel per inch) definition is set
   to 300PPI.
 

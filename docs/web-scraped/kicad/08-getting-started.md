@@ -1,4 +1,5 @@
 :::::: {#header}
+
 # Getting Started in KiCad
 
 ::: details
@@ -42,6 +43,7 @@ Table of Contents
   files](#note-about-portability-of-kicad-project-files)
 - [More about KiCad documentation](#more-about-kicad-documentation)
   - [KiCad documentation on the Web](#kicad-documentation-on-the-web)
+
 ::::
 ::::::
 
@@ -89,6 +91,7 @@ Please direct any bug reports, suggestions or new versions to here:
 :::
 
 ::: ulist
+
 - About KiCad document:
   [https://github.com/KiCad/kicad-doc/issues](https://github.com/KiCad/kicad-doc/issues){.bare}
 
@@ -97,6 +100,7 @@ Please direct any bug reports, suggestions or new versions to here:
 
 - About KiCad software internationalization (i18n):
   [https://github.com/KiCad/kicad-i18n/issues](https://github.com/KiCad/kicad-i18n/issues){.bare}
+
 :::
 
 ::: {#publication_date .paragraph}
@@ -110,6 +114,7 @@ Please direct any bug reports, suggestions or new versions to here:
 :::::::::::::::
 
 :::::::::::::::::::::::::::::::::::: sect1
+
 ## Introduction to KiCad
 
 ::::::::::::::::::::::::::::::::::: sectionbody
@@ -187,6 +192,7 @@ On the Internet, the homepage of KiCad is:
 :::
 
 :::::::::::::::::::::::: sect2
+
 ### Downloading and installing KiCad {#download-and-install-kicad}
 
 ::: paragraph
@@ -210,6 +216,7 @@ up to date instructions and download links at:
 :::
 
 :::::::::::::: sect3
+
 #### Under GNU/Linux {#under-linux}
 
 ::: paragraph
@@ -271,6 +278,7 @@ KiCad, or directly download the source code, compile and install KiCad.
 ::::::::::::::
 
 ::::: sect3
+
 #### Under Apple macOS {#under-apple-os-x}
 
 ::: paragraph
@@ -285,6 +293,7 @@ Unstable nightly development builds can be found at:
 :::::
 
 ::::: sect3
+
 #### Under Windows {#under-Windows}
 
 ::: paragraph
@@ -300,6 +309,7 @@ For Windows you can find nightly development builds at:
 ::::::::::::::::::::::::
 
 ::::: sect2
+
 ### Support
 
 ::: paragraph
@@ -307,18 +317,21 @@ If you have ideas, remarks or questions, or if you just need help:
 :::
 
 ::: ulist
+
 - [Visit the forum](https://forum.kicad.info/)
 
 - Join the [#kicad IRC
   channel](http://webchat.freenode.net/?channels=kicad) on Freenode
 
 - [Watch tutorials](http://www.kicad-pcb.org/help/tutorials/)
+
 :::
 :::::
 :::::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::: sect1
+
 ## KiCad Workflow {#kicad-work-flow}
 
 ::::::::::::::: sectionbody
@@ -330,6 +343,7 @@ assigned to the components.
 :::
 
 ::::::::: sect2
+
 ### Overview {#kicad-work-flow-overview}
 
 ::: paragraph
@@ -368,6 +382,7 @@ Quicklib](#make-schematic-components-with-quicklib).
 :::::::::
 
 :::::: sect2
+
 ### Forward and backward annotation
 
 ::: paragraph
@@ -400,10 +415,12 @@ to the schematic.
 ::::::::::::::::
 
 :::::::::::::::::::::: sect1
+
 ## Using KiCad
 
 ::::::::::::::::::::: sectionbody
 :::::::::::::::::::: sect2
+
 ### Shortcut keys {#_shortcut_keys}
 
 ::: paragraph
@@ -413,6 +430,7 @@ the keyboard instead of the mouse to change commands.
 :::
 
 ::::::: sect3
+
 #### Accelerator keys {#_accelerator_keys}
 
 ::: paragraph
@@ -434,6 +452,7 @@ Accelerator keys are shown on the right side of all menu panes:
 :::::::
 
 ::::::::: sect3
+
 #### Hotkeys {#_hotkeys}
 
 ::: paragraph
@@ -471,6 +490,7 @@ the ***Preferences → Hotkeys Options*** menu.
 :::::::::
 
 :::::: sect3
+
 #### Example {#_example}
 
 ::: paragraph
@@ -493,6 +513,7 @@ from the current cursor location.
 ::::::::::::::::::::::
 
 ::::::::::: sect1
+
 ## Draw electronic schematics
 
 :::::::::: sectionbody
@@ -502,10 +523,12 @@ schematic using KiCad.
 :::
 
 ::::: sect2
+
 ### Using Eeschema
 
 ::: {.olist .arabic}
-1.  Under Windows run kicad.exe. Under Linux type \'kicad\' in your
+
+1. Under Windows run kicad.exe. Under Linux type \'kicad\' in your
     Terminal. You are now in the main window of the KiCad project
     manager. From here you have access to eight stand-alone software
     tools: *Eeschema*, *Schematic Library Editor*, *Pcbnew*, *PCB
@@ -519,18 +542,18 @@ schematic using KiCad.
     :::
     ::::
 
-2.  Create a new project: **File** → **New** → **Project**. Name the
+2. Create a new project: **File** → **New** → **Project**. Name the
     project file \'tutorial1\'. The project file will automatically take
     the extension \".pro\". The exact appearance of the dialog depends
     on the used platform, but there should be a checkbox for creating a
     new directory. Let it stay checked unless you already have a
     dedicated directory. All your project files will be saved there.
 
-3.  Let's begin by creating a schematic. Start the schematic editor
+3. Let's begin by creating a schematic. Start the schematic editor
     *Eeschema*, [![Eeschema](images/icons/eeschema.png)]{.image}. It is
     the first button from the left.
 
-4.  Click on the \'Page Settings\' icon [![Sheet settings
+4. Click on the \'Page Settings\' icon [![Sheet settings
     icon](images/icons/sheetset.png)]{.image} on the top toolbar. Set
     the appropriate \'paper size\' (\'A4\',\'8.5x11\' etc.) and enter
     the Title as \'Tutorial1\'. You will see that more information can
@@ -539,12 +562,12 @@ schematic using KiCad.
     mouse wheel to zoom in. Save the whole schematic: **File** →
     **Save**
 
-5.  We will now place our first component. Click on the \'Place symbol\'
+5. We will now place our first component. Click on the \'Place symbol\'
     icon [![Add component Icon](images/icons/add_component.png)]{.image}
     in the right toolbar. You may also press the \'Add Symbol\' hotkey
     \[a\].
 
-6.  Click on the middle of your schematic sheet. A *Choose Symbol*
+6. Click on the middle of your schematic sheet. A *Choose Symbol*
     window will appear on the screen. We're going to place a resistor.
     Search / filter on the \'R\' of **R**esistor. You may notice the
     \'Device\' heading above the Resistor. This \'Device\' heading is
@@ -557,15 +580,15 @@ schematic using KiCad.
     :::
     ::::
 
-7.  Double click on it. This will close the \'Choose Symbol\' window.
+7. Double click on it. This will close the \'Choose Symbol\' window.
     Place the component in the schematic sheet by clicking where you
     want it to be.
 
-8.  Click on the magnifier icon to zoom in on the component.
+8. Click on the magnifier icon to zoom in on the component.
     Alternatively, use the mouse wheel to zoom in and zoom out. Press
     the wheel (central) mouse button to pan horizontally and vertically.
 
-9.  Try to hover the mouse over the component \'R\' and press \[r\]. The
+9. Try to hover the mouse over the component \'R\' and press \[r\]. The
     component should rotate. You do not need to actually click on the
     component to rotate it.
 
@@ -1152,6 +1175,7 @@ schematic using KiCad.
 59. Now press \'Generate\'. The file (same name as your project) is
     located in your project folder. Open the **\*.csv** file with
     LibreOffice Calc or Excel. An import window will appear, press OK.
+
 :::
 
 ::: paragraph
@@ -1162,6 +1186,7 @@ how to connect component pins using a bus line.
 :::::
 
 ::::: sect2
+
 ### Bus connections in KiCad
 
 ::: paragraph
@@ -1172,18 +1197,19 @@ connection. Let's see how to do it.
 :::
 
 ::: {.olist .arabic}
-1.  Let us suppose that you have three 4-pin connectors that you want to
+
+1. Let us suppose that you have three 4-pin connectors that you want to
     connect together pin to pin. Use the label option (press \[l\]) to
     label pin 4 of the P4 part. Name this label \'a1\'. Now press
     \[Insert\] to have the same item automatically added on the pin
     below pin 4 (PIN 3). Notice how the label is automatically renamed
     \'a2\'.
 
-2.  Press \[Insert\] two more times. This key corresponds to the action
+2. Press \[Insert\] two more times. This key corresponds to the action
     \'Repeat last item\' and it is an infinitely useful command that can
     make your life a lot easier.
 
-3.  Repeat the same labelling action on the two other connectors CONN_2
+3. Repeat the same labelling action on the two other connectors CONN_2
     and CONN_3 and you are done. If you proceed and make a PCB you will
     see that the three connectors are connected to each other. Figure 2
     shows the result of what we described. For aesthetic purposes it is
@@ -1194,31 +1220,31 @@ connection. Let's see how to do it.
     entry](images/icons/add_bus2bus.png)]{.image}, as shown in Figure 3.
     Mind, however, that there will be no effect on the PCB.
 
-4.  It should be pointed out that the short wire attached to the pins in
+4. It should be pointed out that the short wire attached to the pins in
     Figure 2 is not strictly necessary. In fact, the labels could have
     been applied directly to the pins.
 
-5.  Let's take it one step further and suppose that you have a fourth
+5. Let's take it one step further and suppose that you have a fourth
     connector named CONN_4 and, for whatever reason, its labelling
     happens to be a little different (b1, b2, b3, b4). Now we want to
     connect *Bus a* with *Bus b* in a pin to pin manner. We want to do
     that without using pin labelling (which is also possible) but by
     instead using labelling on the bus line, with one label per bus.
 
-6.  Connect and label CONN_4 using the labelling method explained
+6. Connect and label CONN_4 using the labelling method explained
     before. Name the pins b1, b2, b3 and b4. Connect the pin to a series
     of \'Wire to bus entry\' using the icon
     [![add_line2bus_png](images/icons/add_line2bus.png)]{.image} and to
     a bus line using the icon
     [![add_bus_png](images/icons/add_bus.png)]{.image}. See Figure 4.
 
-7.  Put a label (press \[l\]) on the bus of CONN_4 and name it
+7. Put a label (press \[l\]) on the bus of CONN_4 and name it
     \'b\[1..4\]\'.
 
-8.  Put a label (press \[l\]) on the previous bus and name it
+8. Put a label (press \[l\]) on the previous bus and name it
     \'a\[1..4\]\'.
 
-9.  What we can now do is connect bus a\[1..4\] with bus b\[1..4\] using
+9. What we can now do is connect bus a\[1..4\] with bus b\[1..4\] using
     a bus line with the button
     [![add_bus_png](images/icons/add_bus.png)]{.image}.
 
@@ -1249,12 +1275,14 @@ connection. Let's see how to do it.
     ![gsik_bus_connection_png](images/gsik_bus_connection.png)
     :::
     ::::
+
 :::
 :::::
 ::::::::::
 :::::::::::
 
 :::::::::::::::::: sect1
+
 ## Layout printed circuit boards
 
 ::::::::::::::::: sectionbody
@@ -1277,22 +1305,24 @@ This is done with the *Pcbnew* tool.
 :::
 
 :::: sect2
+
 ### Using Pcbnew
 
 ::: {.olist .arabic}
-1.  From the KiCad project manager, click on the \'Pcb layout editor\'
+
+1. From the KiCad project manager, click on the \'Pcb layout editor\'
     icon [![pcbnew_png](images/icons/pcbnew.png)]{.image}. You can also
     use the corresponding toolbar button from *Eeschema*. The \'Pcbnew\'
     window will open. If you get a message saying that a *\*.kicad_pcb*
     file does not exist and asks if you want to create it, just click
     Yes.
 
-2.  Begin by entering some schematic information. Click on the \'Page
+2. Begin by entering some schematic information. Click on the \'Page
     settings\' icon [![sheetset_png](images/icons/sheetset.png)]{.image}
     on the top toolbar. Set the appropriate \'paper size\'
     (\'A4\',\'8.5x11\' etc.) and \'title\' as \'Tutorial1\'.
 
-3.  It is a good idea to start by setting the **clearance** and the
+3. It is a good idea to start by setting the **clearance** and the
     **minimum track width** to those required by your PCB manufacturer.
     In general you can set the clearance to \'0.25\' and the minimum
     track width to \'0.25\'. Click on the **Setup** → **Design Rules**
@@ -1307,31 +1337,31 @@ This is done with the *Pcbnew* tool.
     :::
     ::::
 
-4.  Click on the \'Global Design Rules\' tab and set \'Minimum track
+4. Click on the \'Global Design Rules\' tab and set \'Minimum track
     width\' to \'0.25\'. Click the OK button to commit your changes and
     close the Design Rules Editor window.
 
-5.  Now we will import the netlist file if you created one. Click on the
+5. Now we will import the netlist file if you created one. Click on the
     \'Read netlist\' icon
     [![netlist_png](images/icons/netlist.png)]{.image} on the top
     toolbar. The netlist file \'tutorial1.net\' should be selected in
     the \'Netlist file\' field if it was created from Eeschema. Click on
     \'Read Current Netlist\'. Then click the \'Close\' button.
 
-6.  All components should now be visible. They are selected and follow
+6. All components should now be visible. They are selected and follow
     the mouse cursor.
 
-7.  Move the components to the middle of the board. If necessary you can
+7. Move the components to the middle of the board. If necessary you can
     zoom in and out while you move the components. Click the left mouse
     button.
 
-8.  All components are connected via a thin group of wires called
+8. All components are connected via a thin group of wires called
     *ratsnest*. Make sure that the \'Show/hide board ratsnest\' button
     [![general_ratsnest_png](images/icons/general_ratsnest.png)]{.image}
     is pressed. In this way you can see the ratsnest linking all
     components.
 
-9.  You can move each component by hovering over it and pressing \[m\].
+9. You can move each component by hovering over it and pressing \[m\].
     Click where you want to place them. Alternatively you can select a
     component by clicking on it and then drag it. Press \[r\] to rotate
     a component. Move all components around until you minimise the
@@ -1494,10 +1524,12 @@ This is done with the *Pcbnew* tool.
 
 28. Your board is complete. To send it off to a manufacturer you will
     need to generate all Gerber files.
+
 :::
 ::::
 
 ::::: sect2
+
 ### Generate Gerber files
 
 ::: paragraph
@@ -1507,17 +1539,19 @@ board for you.
 :::
 
 ::: {.olist .arabic}
-1.  From KiCad, open the *Pcbnew* board editor.
 
-2.  Click on **File** → **Plot**. Select \'Gerber\' as the \'Plot
+1. From KiCad, open the *Pcbnew* board editor.
+
+2. Click on **File** → **Plot**. Select \'Gerber\' as the \'Plot
     format\' and select the folder in which to put all Gerber files.
     Proceed by clicking on the \'Plot\' button.
 
-3.  To generate the drill file, from *Pcbnew* go again to the **File** →
+3. To generate the drill file, from *Pcbnew* go again to the **File** →
     **Plot** option. Default settings should be fine.
 
-4.  These are the layers you need to select for making a typical 2-layer
+4. These are the layers you need to select for making a typical 2-layer
     PCB:
+
 :::
 
 +-----------------+-----------------+-----------------+-----------------+
@@ -1543,10 +1577,12 @@ board for you.
 :::::
 
 :::: sect2
+
 ### Using GerbView
 
 ::: {.olist .arabic}
-1.  To view all your Gerber files go to the KiCad project manager and
+
+1. To view all your Gerber files go to the KiCad project manager and
     click on the \'GerbView\' icon. On the drop-down menu or in the
     Layers manager select \'Graphic layer 1\'. Click on **File** →
     **Open Gerber file(s)** or click on the icon
@@ -1554,19 +1590,21 @@ board for you.
     and open all generated Gerber files. Note how they all get displayed
     one on top of the other.
 
-2.  Open the drill files with **File** → **Open Excellon Drill
+2. Open the drill files with **File** → **Open Excellon Drill
     File(s)**.
 
-3.  Use the Layers manager on the right to select/deselect which layer
+3. Use the Layers manager on the right to select/deselect which layer
     to show. Carefully inspect each layer before sending them for
     production.
 
-4.  The view works similarly to Pcbnew. Right click inside the view and
+4. The view works similarly to Pcbnew. Right click inside the view and
     click \'Grid\' to change the grid.
+
 :::
 ::::
 
 ::::::: sect2
+
 ### Automatically route with FreeRouter
 
 ::: paragraph
@@ -1592,17 +1630,18 @@ traces. The autorouter we will use here is FreeRouting.
 :::
 
 ::: {.olist .arabic}
-1.  From *Pcbnew* click on **File** → **Export** → **Specctra DSN** and
+
+1. From *Pcbnew* click on **File** → **Export** → **Specctra DSN** and
     save the file locally. Launch FreeRouter and click on the \'Open
     Your Own Design\' button, browse for the *dsn* file and load it.
 
-2.  FreeRouter has some features that KiCad does not currently have,
+2. FreeRouter has some features that KiCad does not currently have,
     both for manual routing and for automatic routing. FreeRouter
     operates in two main steps: first, routing the board and then
     optimising it. Full optimisation can take a long time, however you
     can stop it at any time need be.
 
-3.  You can start the automatic routing by clicking on the
+3. You can start the automatic routing by clicking on the
     \'Autorouter\' button on the top bar. The bottom bar gives you
     information about the on-going routing process. If the \'Pass\'
     count gets above 30, your board probably can not be autorouted with
@@ -1610,18 +1649,19 @@ traces. The autorouter we will use here is FreeRouting.
     and try again. The goal in rotation and position of parts is to
     lower the number of crossed airlines in the ratsnest.
 
-4.  Making a left-click on the mouse can stop the automatic routing and
+4. Making a left-click on the mouse can stop the automatic routing and
     automatically start the optimisation process. Another left-click
     will stop the optimisation process. Unless you really need to stop,
     it is better to let FreeRouter finish its job.
 
-5.  Click on the **File** → **Export Specctra Session File** menu and
+5. Click on the **File** → **Export Specctra Session File** menu and
     save the board file with the *.ses* extension. You do not really
     need to save the FreeRouter rules file.
 
-6.  Back to *Pcbnew*. You can import your freshly routed board by
+6. Back to *Pcbnew*. You can import your freshly routed board by
     clicking on **File** → **Import** → **Spectra Session** and
     selecting your *.ses* file.
+
 :::
 
 ::: paragraph
@@ -1635,6 +1675,7 @@ icon](images/icons/add_tracks.png)]{.image} on the right toolbar.
 ::::::::::::::::::
 
 :::::::: sect1
+
 ## Forward annotation in KiCad
 
 ::::::: sectionbody
@@ -1656,40 +1697,41 @@ you do it:
 :::
 
 ::: {.olist .arabic}
-1.  Let's suppose that you want to replace a hypothetical connector CON1
+
+1. Let's suppose that you want to replace a hypothetical connector CON1
     with CON2.
 
-2.  You already have a completed schematic and a fully routed PCB.
+2. You already have a completed schematic and a fully routed PCB.
 
-3.  From KiCad, start *Eeschema*, make your modifications by deleting
+3. From KiCad, start *Eeschema*, make your modifications by deleting
     CON1 and adding CON2. Save your schematic project with the icon
     [![Save icon](images/icons/save.png)]{.image} and c lick on the
     \'Netlist generation\' icon
     [![netlist_png](images/icons/netlist.png)]{.image} on the top
     toolbar.
 
-4.  Click on \'Netlist\' then on \'save\'. Save to the default file
+4. Click on \'Netlist\' then on \'save\'. Save to the default file
     name. You have to rewrite the old one.
 
-5.  Now assign a footprint to CON2. Click on the \'Run Cvpcb\' icon
+5. Now assign a footprint to CON2. Click on the \'Run Cvpcb\' icon
     [![cvpcb](images/icons/cvpcb.png)]{.image} on the top toolbar.
     Assign the footprint to the new device CON2. The rest of the
     components still have the previous footprints assigned to them.
     Close *Cvpcb*.
 
-6.  Back in the schematic editor, save the project by clicking on
+6. Back in the schematic editor, save the project by clicking on
     \'File\' → \'Save Whole Schematic Project\'. Close the schematic
     editor.
 
-7.  From the KiCad project manager, click on the \'Pcbnew\' icon. The
+7. From the KiCad project manager, click on the \'Pcbnew\' icon. The
     \'Pcbnew\' window will open.
 
-8.  The old, already routed, board should automatically open. Let's
+8. The old, already routed, board should automatically open. Let's
     import the new netlist file. Click on the \'Read Netlist\' icon
     [![netlist_png](images/icons/netlist.png)]{.image} on the top
     toolbar.
 
-9.  Click on the \'Browse Netlist Files\' button, select the netlist
+9. Click on the \'Browse Netlist Files\' button, select the netlist
     file in the file selection dialogue, and click on \'Read Current
     Netlist\'. Then click the \'Close\' button.
 
@@ -1700,6 +1742,7 @@ you do it:
 
 11. Place CON2 and route it. Once done, save and proceed with the Gerber
     file generation as usual.
+
 :::
 
 ::: paragraph
@@ -1715,6 +1758,7 @@ described here.
 ::::::::
 
 :::::::::::::::::::::::::::: sect1
+
 ## Make schematic symbols in KiCad
 
 ::::::::::::::::::::::::::: sectionbody
@@ -1734,16 +1778,18 @@ file you can just use the cut and paste commands of a text editor.
 :::
 
 :::: sect2
+
 ### Using Component Library Editor
 
 ::: {.olist .arabic}
-1.  We can use the *Component Library Editor* (part of *Eeschema*) to
+
+1. We can use the *Component Library Editor* (part of *Eeschema*) to
     make new components. In our project folder \'tutorial1\' let's
     create a folder named \'library\'. Inside we will put our new
     library file *myLib.lib* as soon as we have created our new
     component.
 
-2.  Now we can start creating our new component. From KiCad, start
+2. Now we can start creating our new component. From KiCad, start
     *Eeschema*, click on the \'Library Editor\' icon
     [![libedit_png](images/icons/libedit.png)]{.image} and then click on
     the \'New component\' icon
@@ -1757,7 +1803,7 @@ file you can just use the cut and paste commands of a text editor.
     toolbar. To place the pin, left click in the centre of the part
     editor sheet just below the \'MYCONN3\' label.
 
-3.  In the Pin Properties window that appears, set the pin name to
+3. In the Pin Properties window that appears, set the pin name to
     \'VCC\', set the pin number to \'1\', and the \'Electrical type\' to
     \'Power input\' then click OK.
 
@@ -1767,20 +1813,20 @@ file you can just use the cut and paste commands of a text editor.
     :::
     ::::
 
-4.  Place the pin by clicking on the location you would like it to go,
+4. Place the pin by clicking on the location you would like it to go,
     right below the \'MYCONN3\' label.
 
-5.  Repeat the place-pin steps, this time \'Pin name\' should be
+5. Repeat the place-pin steps, this time \'Pin name\' should be
     \'INPUT\', \'Pin number\' should be \'2\', and \'Electrical Type\'
     should be \'Passive\'.
 
-6.  Repeat the place-pin steps, this time \'Pin name\' should be
+6. Repeat the place-pin steps, this time \'Pin name\' should be
     \'GND\', \'Pin number\' should be \'3\', and \'Electrical Type\'
     should be \'Passive\'. Arrange the pins one on top of the other. The
     component label \'MYCONN3\' should be in the centre of the page
     (where the blue lines cross).
 
-7.  Next, draw the contour of the component. Click on the \'Add
+7. Next, draw the contour of the component. Click on the \'Add
     rectangle\' icon
     [![add_rectangle_png](images/icons/add_rectangle.png)]{.image}. We
     want to draw a rectangle next to the pins, as shown below. To do
@@ -1794,12 +1840,12 @@ file you can just use the cut and paste commands of a text editor.
     :::
     ::::
 
-8.  If you want to fill the rectangle with yellow, set the fill colour
+8. If you want to fill the rectangle with yellow, set the fill colour
     to \'yellow 4\' in **Preferences** → **Select color scheme**, then
     select the rectangle in the editing screen with \[e\], selecting
     \'Fill background\'.
 
-9.  Save the component in your library *myLib.lib*. Click on the \'New
+9. Save the component in your library *myLib.lib*. Click on the \'New
     Library\' icon
     [![new_library_png](images/icons/new_library.png)]{.image}, navigate
     into *tutorial1/library/* folder and save the new library file with
@@ -1832,10 +1878,12 @@ file you can just use the cut and paste commands of a text editor.
     it to the library path. From *Eeschema*, go to **Preferences** →
     **Library** and add both the path to it in \'User defined search
     path\' and *file.lib* in \'Component library files\'.
+
 :::
 ::::
 
 ::::: sect2
+
 ### Export, import and modify library components
 
 ::: paragraph
@@ -1846,7 +1894,8 @@ will see how to export a component from the KiCad standard library
 :::
 
 ::: {.olist .arabic}
-1.  From KiCad, start *Eeschema*, click on the \'Library Editor\' icon
+
+1. From KiCad, start *Eeschema*, click on the \'Library Editor\' icon
     [![libedit_png](images/icons/libedit.png)]{.image}, click on the
     \'Select working library\' icon
     [![library_png](images/icons/library.png)]{.image} and choose the
@@ -1855,40 +1904,42 @@ will see how to export a component from the KiCad standard library
     [![import_cmp_from_lib_png](images/icons/import_cmp_from_lib.png)]{.image}
     and import the \'RELAY_2RT\'.
 
-2.  Click on the \'Export component\' icon
+2. Click on the \'Export component\' icon
     [![export_png](images/icons/export.png)]{.image}, navigate into the
     *library/* folder and save the new library file with the name
     *myOwnLib.lib.*
 
-3.  You can make this component and the whole library *myOwnLib.lib*
+3. You can make this component and the whole library *myOwnLib.lib*
     available to you by adding it to the library path. From *Eeschema*,
     go to **Preferences** → **Component Libraries** and add both
     *library/* in \'User defined search path\' and *myOwnLib.lib* in the
     \'Component library files\'. Close the window.
 
-4.  Click on the \'Select working library\' icon
+4. Click on the \'Select working library\' icon
     [![library_png](images/icons/library.png)]{.image}. In the Select
     Library window click on *myOwnLib* and click OK. Notice how the
     heading of the window indicates the library currently in use, it
     should be *myOwnLib*.
 
-5.  Click on the \'Load component to edit from the current lib\' icon
+5. Click on the \'Load component to edit from the current lib\' icon
     [![import_cmp_from_lib_png](images/icons/import_cmp_from_lib.png)]{.image}
     and import the \'RELAY_2RT\'.
 
-6.  You can now modify the component as you like. Hover over the label
+6. You can now modify the component as you like. Hover over the label
     \'RELAY_2RT\', press \[e\] and rename it \'MY_RELAY_2RT\'.
 
-7.  Click on \'Update current component in current library\' icon
+7. Click on \'Update current component in current library\' icon
     [![save_part_in_mem_png](images/icons/save_part_in_mem.png)]{.image}
     in the top toolbar. Save all changes by clicking on the \'Save
     current loaded library on disk\' icon
     [![save_library_png](images/icons/save_library.png)]{.image} in the
     top toolbar.
+
 :::
 :::::
 
 :::::: sect2
+
 ### Make schematic components with quicklib
 
 ::: paragraph
@@ -1898,21 +1949,22 @@ tool *quicklib*.
 :::
 
 ::: {.olist .arabic}
-1.  Head to the *quicklib* web page:
+
+1. Head to the *quicklib* web page:
     [http://kicad.rohrbacher.net/quicklib.php](http://kicad.rohrbacher.net/quicklib.php){.bare}
 
-2.  Fill out the page with the following information: Component name:
+2. Fill out the page with the following information: Component name:
     MYCONN3 Reference Prefix: J Pin Layout Style: SIL Pin Count, N: 3
 
-3.  Click on the \'Assign Pins\' icon. Fill out the page with the
+3. Click on the \'Assign Pins\' icon. Fill out the page with the
     following information: Pin 1: VCC Pin 2: input Pin 3: GND. Type :
     Passive for all 3 pins.
 
-4.  Click on the icon \'Preview it\' and, if you are satisfied, click on
+4. Click on the icon \'Preview it\' and, if you are satisfied, click on
     the \'Build Library Component\'. Download the file and rename it
     *tutorial1/library/myQuickLib.lib.*. You are done!
 
-5.  Have a look at it using KiCad. From the KiCad project manager, start
+5. Have a look at it using KiCad. From the KiCad project manager, start
     *Eeschema*, click on the \'Library Editor\' icon
     [![libedit_png](images/icons/libedit.png)]{.image}, click on the
     \'Import Component\' icon
@@ -1925,11 +1977,12 @@ tool *quicklib*.
     :::
     ::::
 
-6.  You can make this component and the whole library *myQuickLib.lib*
+6. You can make this component and the whole library *myQuickLib.lib*
     available to you by adding it to the KiCad library path. From
     *Eeschema*, go to **Preferences** → **Component Libraries** and add
     *library* in \'User defined search path\' and *myQuickLib.lib* in
     \'Component library files\'.
+
 :::
 
 ::: paragraph
@@ -1940,6 +1993,7 @@ count.
 ::::::
 
 ::::::::::::::: sect2
+
 ### Make a high pin count schematic component
 
 ::: paragraph
@@ -1951,21 +2005,23 @@ this is not a very complicated task.
 :::
 
 ::: {.olist .arabic}
-1.  Suppose that you want to create a schematic component for a device
+
+1. Suppose that you want to create a schematic component for a device
     with 50 pins. It is common practise to draw it using multiple low
     pin-count drawings, for example two drawings with 25 pins each. This
     component representation allows for easy pin connection.
 
-2.  The best way to create our component is to use *quicklib* to
+2. The best way to create our component is to use *quicklib* to
     generate two 25-pin components separately, re-number their pins
     using a Python script and finally merge the two by using copy and
     paste to make them into one single DEF and ENDDEF component.
 
-3.  You will find an example of a simple Python script below that can be
+3. You will find an example of a simple Python script below that can be
     used in conjunction with an *in.txt* file and an *out.txt* file to
     re-number the line: X PIN1 1 -750 600 300 R 50 50 1 1 I into X PIN26
     26 -750 600 300 R 50 50 1 1 I this is done for all lines in the file
     *in.txt*.
+
 :::
 
 ::::: listingblock
@@ -1974,6 +2030,7 @@ Simple script
 :::
 
 ::: content
+
 ``` highlight
 #!/usr/bin/env python
 ''' simple script to manipulate KiCad component pins numbering'''
@@ -1996,14 +2053,17 @@ fin.close(); fout.close()
 # http://gskinner.com/RegExr/
 # http://kicad.rohrbacher.net/quicklib.php
 ```
+
 :::
 :::::
 
 ::: {.olist .arabic}
-1.  While merging the two components into one, it is necessary to use
+
+1. While merging the two components into one, it is necessary to use
     the Library Editor from Eeschema to move the first component so that
     the second does not end up on top of it. Below you will find the
     final .lib file and its representation in *Eeschema*.
+
 :::
 
 ::::: listingblock
@@ -2039,17 +2099,20 @@ Contents of a \*.lib file
 ::::
 
 ::: {.olist .arabic}
-1.  The Python script presented here is a very powerful tool for
+
+1. The Python script presented here is a very powerful tool for
     manipulating both pin numbers and pin labels. Mind, however, that
     all its power comes for the arcane and yet amazingly useful Regular
     Expression syntax:
     *[http://gskinner.com/RegExr/](http://gskinner.com/RegExr/){.bare}.*
+
 :::
 :::::::::::::::
 :::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::
 
 ::::::::: sect1
+
 ## Make component footprints
 
 :::::::: sectionbody
@@ -2072,15 +2135,17 @@ Here are the steps for creating a new PCB footprint in KiCad:
 :::
 
 :::: sect2
+
 ### Using Footprint Editor
 
 ::: {.olist .arabic}
-1.  From the KiCad project manager start the *Pcbnew* tool. Click on the
+
+1. From the KiCad project manager start the *Pcbnew* tool. Click on the
     \'Open Footprint Editor\' icon
     [![edit_module_png](images/icons/edit_module.png)]{.image} on the
     top toolbar. This will open the \'Footprint Editor\'.
 
-2.  We are going to save the new footprint \'MYCONN3\' in the new
+2. We are going to save the new footprint \'MYCONN3\' in the new
     footprint library \'myfootprint\'. Create a new folder
     *myfootprint.pretty* in the *tutorial1/* project folder. Click on
     the **Preferences** → **Footprint Libraries Manager** and press
@@ -2091,7 +2156,7 @@ Here are the steps for creating a new PCB footprint in KiCad:
     [![open_library_png](images/icons/open_library.png)]{.image} on the
     top toolbar. Select the \'myfootprint\' library.
 
-3.  Click on the \'New Footprint\' icon
+3. Click on the \'New Footprint\' icon
     [![new_footprint_png](images/icons/new_footprint.png)]{.image} on
     the top toolbar. Type \'MYCONN3\' as the \'footprint name\'. In the
     middle of the screen the \'MYCONN3\' label will appear. Under the
@@ -2100,7 +2165,7 @@ Here are the steps for creating a new PCB footprint in KiCad:
     \'Edit Text\' and rename it to \'SMD\'. Set the \'Display\' value to
     \'Invisible\'.
 
-4.  Select the \'Add Pads\' icon
+4. Select the \'Add Pads\' icon
     [![pad_png](images/icons/pad.png)]{.image} on the right toolbar.
     Click on the working sheet to place the pad. Right click on the new
     pad and click \'Edit Pad\'. You can also use \[e\].
@@ -2111,26 +2176,26 @@ Here are the steps for creating a new PCB footprint in KiCad:
     :::
     ::::
 
-5.  Set the \'Pad Num\' to \'1\', \'Pad Shape\' to \'Rect\', \'Pad
+5. Set the \'Pad Num\' to \'1\', \'Pad Shape\' to \'Rect\', \'Pad
     Type\' to \'SMD\', \'Shape Size X\' to \'0.4\', and \'Shape Size Y\'
     to \'0.8\'. Click OK. Click on \'Add Pads\' again and place two more
     pads.
 
-6.  If you want to change the grid size, **Right click** → **Grid
+6. If you want to change the grid size, **Right click** → **Grid
     Select**. Be sure to select the appropriate grid size before laying
     down the components.
 
-7.  Move the \'MYCONN3\' label and the \'SMD\' label out of the way so
+7. Move the \'MYCONN3\' label and the \'SMD\' label out of the way so
     that it looks like the image shown above.
 
-8.  When placing pads it is often necessary to measure relative
+8. When placing pads it is often necessary to measure relative
     distances. Place the cursor where you want the relative coordinate
     point *(0,0)* to be and press the space bar. While moving the cursor
     around, you will see a relative indication of the position of the
     cursor at the bottom of the page. Press the space bar at any time to
     set the new origin.
 
-9.  Now add a footprint contour. Click on the \'Add graphic line or
+9. Now add a footprint contour. Click on the \'Add graphic line or
     polygon\' button
     [![add_polygon_png](images/icons/add_polygon.png)]{.image} in the
     right toolbar. Draw an outline of the connector around the
@@ -2139,12 +2204,14 @@ Here are the steps for creating a new PCB footprint in KiCad:
 10. Click on the \'Save Footprint in Active Library\' icon
     [![save_library_png](images/icons/save_library.png)]{.image} on the
     top toolbar, using the default name MYCONN3.
+
 :::
 ::::
 ::::::::
 :::::::::
 
 ::::::::::: sect1
+
 ## Note about portability of KiCad project files
 
 :::::::::: sectionbody
@@ -2218,6 +2285,7 @@ following project directory:
 :::::::::::
 
 ::::::::::::::::::: sect1
+
 ## More about KiCad documentation
 
 :::::::::::::::::: sectionbody
@@ -2277,6 +2345,7 @@ On OS X:
 ::::
 
 :::: sect2
+
 ### KiCad documentation on the Web
 
 ::: paragraph

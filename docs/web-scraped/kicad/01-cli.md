@@ -873,6 +873,7 @@ Here is a sample **info.html** file:
 
 :::: listingblock
 ::: content
+
 ``` highlight
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
@@ -897,6 +898,7 @@ BORDER=0><BR><BR><BR><BR>
 </BODY>
 </HTML>
 ```
+
 :::
 ::::
 ::::::::
