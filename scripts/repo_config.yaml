@@ -2275,3 +2275,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/detect-secrets
   branch: main
+- name: openvas
+  description: openvas from GitHub
+  repo_url: https://github.com/greenbone/openvas-scanner.git
+  source_folder: doc
+  target_folder: docs/github-scraped/openvas
+  branch: main
