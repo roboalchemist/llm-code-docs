@@ -1529,3 +1529,6 @@ sites:
 - name: sonatype
   base_url: https://help.sonatype.com/
   description: sonatype documentation
+- name: terrascan
+  base_url: https://runterrascan.io/
+  description: terrascan documentation
