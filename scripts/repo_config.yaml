@@ -2269,3 +2269,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/ghostty
   branch: main
+- name: detect-secrets
+  description: detect-secrets from GitHub
+  repo_url: https://github.com/Yelp/detect-secrets.git
+  source_folder: docs
+  target_folder: docs/github-scraped/detect-secrets
+  branch: main
