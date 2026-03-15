@@ -1520,3 +1520,6 @@ sites:
 - name: akeyless-vault-platform
   base_url: https://docs.akeyless.io/
   description: akeyless-vault-platform documentation
+- name: aikido
+  base_url: https://help.aikido.dev/docs/
+  description: aikido documentation
