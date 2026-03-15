@@ -1,0 +1,39 @@
+# Source: https://docs.akeyless.io/docs/gitlab-oidc.md
+
+# GitLab - OIDC
+
+To use GitLab as an IdP to authenticate the Akeyless Platform by way of OIDC, follow the steps below.
+
+## Create an Application
+
+1. In your GitLab account, go to **Edit profile > Applications.**
+
+2. For **Redirect URI** set `https://auth.akeyless.io/oidc/callback`, select the **"openid", “profile”** and **“email“** scope and click **Save application**.
+
+   ![Illustration for: Redirecting the URI, selecting the "openid", “profile” and "email" scope.](https://files.readme.io/0f670ff-image-20210825-084902.png)
+
+3. Once the application has been created, you need to obtain the **Client ID** and **Client secret**:
+
+   ![Illustration for: Once the Application has been created, you need to obtain the Client ID and Client secret.](https://files.readme.io/c2aeb6f-image-20210825-084833.png)
+
+4. To bind the GitLab Client ID with your Akeyless account, create an OIDC Authentication Method using either CLI or UI, as described below.
+
+## Create an OIDC Authentication Method with the CLI
+
+```shell
+akeyless auth-method create oidc --name 'my GitLab app' --issuer https://gitlab.com --client-id {your-client-id} --client-secret {your-client-secret} --unique-identifier {your-unique-identifier (for example, 'email' or 'username')}
+```
+
+## Log in With OIDC Using the CLI
+
+1. Configure a new profile with your Access ID from the previous step and OIDC type (if no profile name is provided, the default will be configured):
+
+   ```shell
+   akeyless configure --access-id <your-access-id> --access-type oidc --profile 'gitlab-oidc'
+   ```
+
+2. Now, you can run any Akeyless CLI command and be authenticated with GitLab:
+
+   ```shell
+   akeyless list-items --profile gitlab-oidc
+   ```

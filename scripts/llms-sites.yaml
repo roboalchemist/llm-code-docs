@@ -1517,3 +1517,6 @@ sites:
 - name: aws-systems-manager-parameter-store
   base_url: https://docs.aws.amazon.com/
   description: aws-systems-manager-parameter-store documentation
+- name: akeyless-vault-platform
+  base_url: https://docs.akeyless.io/
+  description: akeyless-vault-platform documentation
