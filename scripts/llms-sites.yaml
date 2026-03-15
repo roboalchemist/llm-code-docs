@@ -1568,3 +1568,6 @@ sites:
 - name: luciq
   base_url: https://docs.luciq.ai/
   description: luciq documentation
+- name: visualvm
+  base_url: https://docs.oracle.com/javase/8/docs/technotes/guides/visualvm/
+  description: visualvm documentation
