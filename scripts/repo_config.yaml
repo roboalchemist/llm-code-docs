@@ -2317,3 +2317,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/liboqs
   branch: main
+- name: s2n-bignum
+  description: s2n-bignum from GitHub
+  repo_url: https://github.com/awslabs/s2n-bignum.git
+  source_folder: doc
+  target_folder: docs/github-scraped/s2n-bignum
+  branch: main
