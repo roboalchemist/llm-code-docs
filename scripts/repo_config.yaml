@@ -2323,3 +2323,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/s2n-bignum
   branch: main
+- name: syslog-ng
+  description: syslog-ng from GitHub
+  repo_url: https://github.com/syslog-ng/syslog-ng.github.io.git
+  source_folder: doc
+  target_folder: docs/github-scraped/syslog-ng
+  branch: main

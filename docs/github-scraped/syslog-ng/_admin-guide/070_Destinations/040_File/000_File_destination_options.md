@@ -1,0 +1,180 @@
+---
+title: file() destination options
+driver: 'file'
+d_flags: 'no-multi-line, syslog-protocol, threaded'
+id: adm-dest-file-opt
+description: >-
+    This section describes the options of the file() destination in {{ site.product.short_name }}.
+---
+
+The file() destination has the following options:
+
+![]({{ site.baseurl}}/assets/images/caution.png) **CAUTION:** When
+creating several thousands separate log files, {{ site.product.name }}
+({{ site.product.short_name }}) might not be able to open the required number of files.
+This might happen for example, when using the ${HOST} macro in the
+filename while receiving messages from a large number of hosts. To overcome
+this problem, adjust the --fd-limit command-line parameter of {{ site.product.short_name }}
+or the global ulimit parameter of your host. For setting the --fd-limit
+command-line parameter of{{ site.product.short_name }} see the The {{ site.product.short_name }} manual page.
+For setting the ulimit parameter of the host, see the documentation
+of your operating system.
+{: .notice--warning}
+
+{% include doc/admin-guide/options/create-dirs.md %}
+
+{% include doc/admin-guide/options/dir-options.md %}
+
+{% include doc/admin-guide/options/disk-buffer.md %}
+
+{% include doc/admin-guide/options/destination-flags.md %}
+
+- *threaded*: The threaded flag enables multithreading for the
+    destination. For details on multithreading, see
+    Multithreading and scaling in {{ site.product.short_name }}.
+
+    **NOTE:** The file destination uses multiple threads only if the
+    destination filename contains macros.
+    {: .notice--info}
+
+{% include doc/admin-guide/options/flush-lines.md %}
+
+{% include doc/admin-guide/options/frac-digits.md %}
+
+## fsync()
+
+|  Type:|      yes or no|
+  |Default:|   no|
+
+*Description:* Forces an fsync() call on the destination fd after each
+write.
+
+**NOTE:** Enabling this option may seriously degrade performance.
+{: .notice--info}
+
+{% include doc/admin-guide/options/hook.md %}
+
+## group()
+
+|  Type:|      string|
+  |Default:|   Use the global settings|
+
+*Description:* Set the group of the created file to the one specified.
+To preserve the original properties of an existing file, use the option
+without specifying an attribute: group().
+
+{% include doc/admin-guide/options/local-time-zone.md %}
+
+## logrotate()
+
+*Description:* This option enables to rotate log files based on their size. The number of rotations and maximum filesize are set via a parameter list. 
+It has the following suboptions:
+
+### enable()
+
+|  Type:|      yes/no|
+  |Default:|   no|
+
+*Description:* Enable or disable logrotate feature.
+
+### size()
+
+|  Type:|      positive number (bytes)|
+  |Default:|   1MB|
+
+*Description:* Maximum filesize that should trigger logrotation.
+
+### rotations()
+
+|  Type:|      positive number|
+  |Default:|   1|
+
+*Description:* Maximum number of rotated files. This number does not include the *main* log file, meaning if this option is set to a number N then at most N+1 files are created.
+Rotated files are named based on the given log file name and their rotation id (`<file-name>.<id>`).
+
+### Example: logrotate()
+An example to enable logrotation with a maximum filesize of 500KB and 5 rotations:
+
+```config
+file("/var/log/my-logfile.log" logrotate(enable(yes), size(500KB), rotations(5)));
+```
+This configuration snippet results in at most 6 files (/var/log/my-logfile.log, /var/log/my-logfile.log.1 ... /var/log/my-logfile.log.5).
+
+{% include doc/admin-guide/options/log-fifo-size.md %}
+
+{% include doc/admin-guide/options/mark-freq.md %}
+
+{% include doc/admin-guide/options/mark-mode.md %}
+
+## overwrite-if-older()
+
+|  Type:|      number (seconds)|
+  |Default:|   0|
+
+*Description:* If set to a value higher than 0, {{ site.product.short_name }} checks
+when the file was last modified before starting to write into the file.
+If the file is older than the specified amount of time (in seconds),
+then {{ site.product.short_name }} removes the existing file and opens a new file with the
+same name. In combination with for example, the ${WEEKDAY} macro, this
+can be used for simple log rotation, in case not all history has to be
+kept. (Note that in this weekly log rotation example if its Monday
+00:01, then the file from last Monday is not seven days old, because it
+was probably last modified shortly before 23:59 last Monday, so it is
+actually not even six days old. So in this case, set the
+overwrite-if-older() parameter to a-bit-less-than-six-days, for example,
+to **518000** seconds.
+
+## owner()
+
+|  Type:|      string|
+  |Default:|   Use the global settings|
+
+*Description:* Set the owner of the created file to the one specified.
+To preserve the original properties of an existing file, use the option
+without specifying an attribute: owner().
+
+{% include doc/admin-guide/options/pad-size.md %}
+
+![]({{ site.baseurl}}/assets/images/caution.png) **CAUTION:**
+Hazard of data loss! If the size of the incoming message is larger
+than the previously set pad-size() value, {{ site.product.short_name }} will truncate
+the message to the specified size. Therefore, all message content
+above that size will be lost.
+{: .notice--danger}
+
+{% include doc/admin-guide/options/perm.md %}
+
+{% include doc/admin-guide/options/suppress.md %}
+
+## symlink-as()
+
+|  Type:|      Filename|
+  |Default:|   N/A|
+
+*Description:* The configured file name will be used as a symbolic link
+to the last created file by file destination.
+
+### Example: symlink-as()
+
+An example when time-based macro is used:
+
+```config
+file("/var/log/cron.${YEAR}${MONTH}" symlink-as("/var/log/cron"));
+```
+
+In this case the /var/log/cron should point to the current month.
+
+**NOTE:** The symlink uses the same permissions as the file destination.
+{: .notice--info}
+
+{% include doc/admin-guide/options/template-logformat.md %}
+
+{% include doc/admin-guide/options/template-escape.md %}
+
+{% include doc/admin-guide/options/time-reap.md %}
+
+{% include doc/admin-guide/options/time-reopen.md %}
+
+{% include doc/admin-guide/options/time-zone.md %}
+
+{% include doc/admin-guide/options/ts-format.md %}
