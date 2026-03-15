@@ -1544,3 +1544,6 @@ sites:
 - name: parseable
   base_url: https://www.parseable.com/docs/
   description: parseable documentation
+- name: cloudwatch
+  base_url: https://docs.aws.amazon.com/
+  description: cloudwatch documentation
