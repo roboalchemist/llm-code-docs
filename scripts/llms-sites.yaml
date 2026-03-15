@@ -1565,3 +1565,6 @@ sites:
 - name: pendo
   base_url: https://help.pendo.io/
   description: pendo documentation
+- name: luciq
+  base_url: https://docs.luciq.ai/
+  description: luciq documentation
