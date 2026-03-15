@@ -1535,3 +1535,6 @@ sites:
 - name: jit
   base_url: https://docs.jit.io/
   description: jit documentation
+- name: pycryptodome
+  base_url: https://www.pycryptodome.org/
+  description: pycryptodome documentation
