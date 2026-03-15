@@ -2311,3 +2311,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/gnupg
   branch: main
+- name: liboqs
+  description: liboqs from GitHub
+  repo_url: https://github.com/open-quantum-safe/liboqs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/liboqs
+  branch: main
