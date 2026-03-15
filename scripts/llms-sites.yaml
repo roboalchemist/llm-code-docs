@@ -1523,3 +1523,6 @@ sites:
 - name: aikido
   base_url: https://help.aikido.dev/docs/
   description: aikido documentation
+- name: sumo-logic
+  base_url: https://www.sumologic.com/
+  description: sumo-logic documentation
