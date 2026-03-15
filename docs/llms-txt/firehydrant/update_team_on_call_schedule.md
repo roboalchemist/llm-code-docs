@@ -1,0 +1,571 @@
+# Source: https://docs.firehydrant.com/reference/update_team_on_call_schedule.md
+
+# Update an on-call schedule for a team
+
+Update a Signals on-call schedule by ID. For backwards compatibility, all parameters except for
+`name` and `description` will be ignored if the schedule has more than one rotation. If the schedule
+has only one rotation, you can continue to update that rotation using the rotation-specific parameters.
+
+
+# OpenAPI definition
+
+````json
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "FireHydrant API",
+    "description": "The FireHydrant API is based around REST. It uses Bearer token authentication and returns JSON responses. You can use the FireHydrant API to configure integrations, define incidents, and set up webhooks--anything you can do on the FireHydrant UI.\n\n* [Dig into our API endpoints](https://developers.firehydrant.io/docs/api)\n* [View your bot users](https://app.firehydrant.io/organizations/bots)\n\n## Base API endpoint\n\n[https://api.firehydrant.io/v1](https://api.firehydrant.io/v1)\n\n## Current version\n\nv1\n\n## Authentication\n\nAll requests to the FireHydrant API require an `Authorization` header with the value set to `Bearer {token}`. FireHydrant supports bot tokens to act on behalf of a computer instead of a user's account. This prevents integrations from breaking when people leave your organization or their token is revoked. See the Bot tokens section (below) for more information on this.\n\nAn example of a header to authenticate against FireHydrant would look like:\n\n```\nAuthorization: Bearer fhb-thisismytoken\n```\n\n## Bot tokens\n\nTo access the FireHydrant API, you must authenticate with a bot token. (You must have owner permissions on your organization to see bot tokens.) Bot users allow you to interact with the FireHydrant API by using token-based authentication. To create bot tokens, log in to your organization and refer to the **Bot users** [page](https://app.firehydrant.io/organizations/bots).\n\nBot tokens enable you to create a bot that has no ties to any user. Normally, all actions associated with an API token are associated with the user who created it. Bot tokens attribute all actions to the bot user itself. This way, all data associated with the token actions can be performed against the FireHydrant API without a user.\n\nEvery request to the API is authenticated unless specified otherwise.\n\n### Rate Limiting\n\nCurrently, requests made with bot tokens are rate limited on a per-account level. If your account has multiple bot token then the rate limit is shared across all of them. As of February 7th, 2023, the rate limit is at least 50 requests per account every 10 seconds, or 300 requests per minute.\n\nRate limited responses will be served with a `429` status code and a JSON body of:\n\n```json\n{\"error\": \"rate limit exceeded\"}\n```\nand headers of:\n```\n\"RateLimit-Limit\" -> the maximum number of requests in the rate limit pool\n\"Retry-After\" -> the number of seconds to wait before trying again\n```\n\n## How lists are returned\n\nAPI lists are returned as arrays. A paginated entity in FireHydrant will return two top-level keys in the response object: a data key and a pagination key.\n\n### Paginated requests\n\nThe `data` key is returned as an array. Each item in the array includes all of the entity data specified in the API endpoint. (The per-page default for the array is 20 items.)\n\nPagination is the second key (`pagination`) returned in the overall response body. It includes medtadata around the current page, total count of items, and options to go to the next and previous page. All of the specifications returned in the pagination object are available as URL parameters. So if you want to specify, for example, going to the second page of a response, you can send a request to the same endpoint but pass the URL parameter **page=2**.\n\nFor example, you might request **https://api.firehydrant.io/v1/environments/** to retrieve environments data. The JSON returned contains the above-mentioned data section and pagination section. The data section includes various details about an incident, such as the environment name, description, and when it was created.\n\n```\n{\n  \"data\": [\n    {\n      \"id\": \"f8125cf4-b3a7-4f88-b5ab-57a60b9ed89b\",\n      \"name\": \"Production - GCP\",\n      \"description\": \"\",\n      \"created_at\": \"2021-02-17T20:02:10.679Z\"\n    },\n    {\n      \"id\": \"a69f1f58-af77-4708-802d-7e73c0bf261c\",\n      \"name\": \"Staging\",\n      \"description\": \"\",\n      \"created_at\": \"2021-04-16T13:41:59.418Z\"\n    }\n  ],\n  \"pagination\": {\n    \"count\": 2,\n    \"page\": 1,\n    \"items\": 2,\n    \"pages\": 1,\n    \"last\": 1,\n    \"prev\": null,\n    \"next\": null\n  }\n}\n```\n\nTo request the second page, you'd request the same endpoint with the additional query parameter of `page` in the URL:\n\n```\nGET https://api.firehydrant.io/v1/environments?page=2\n```\n\nIf you need to modify the number of records coming back from FireHydrant, you can use the `per_page` parameter (max is 200):\n\n```\nGET https://api.firehydrant.io/v1/environments?per_page=50\n```",
+    "version": "0.0.1"
+  },
+  "servers": [
+    {
+      "url": "https://api.firehydrant.io/"
+    }
+  ],
+  "security": [
+    {
+      "api_key": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Signals",
+      "description": "Operations related to Signals"
+    }
+  ],
+  "paths": {
+    "/v1/teams/{team_id}/on_call_schedules/{schedule_id}": {
+      "patch": {
+        "tags": [
+          "Signals"
+        ],
+        "summary": "Update an on-call schedule for a team",
+        "description": "Update a Signals on-call schedule by ID. For backwards compatibility, all parameters except for\n`name` and `description` will be ignored if the schedule has more than one rotation. If the schedule\nhas only one rotation, you can continue to update that rotation using the rotation-specific parameters.\n",
+        "operationId": "update_team_on_call_schedule",
+        "parameters": [
+          {
+            "name": "team_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "schedule_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/update_team_on_call_schedule"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Update a Signals on-call schedule by ID. For backwards compatibility, all parameters except for\n`name` and `description` will be ignored if the schedule has more than one rotation. If the schedule\nhas only one rotation, you can continue to update that rotation using the rotation-specific parameters.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Signals_API_OnCallScheduleEntity"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "update_team_on_call_schedule"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AuthorEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "source": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "SuccinctEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "Signals_API_OnCallScheduleEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "rotations": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Signals_API_OnCallRotationEntity"
+            }
+          },
+          "team": {
+            "$ref": "#/components/schemas/NullableSuccinctEntity"
+          },
+          "created_by": {
+            "$ref": "#/components/schemas/NullableAuthorEntity"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "signals_ical_url": {
+            "type": "string",
+            "nullable": true
+          },
+          "time_zone": {
+            "type": "string",
+            "nullable": true
+          },
+          "color": {
+            "type": "string",
+            "nullable": true
+          },
+          "slack_user_group_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "members": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/SuccinctEntity"
+            }
+          },
+          "shifts": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Signals_API_OnCallShiftEntity"
+            }
+          },
+          "strategy": {
+            "$ref": "#/components/schemas/NullableSignals_API_OnCallStrategyEntity"
+          },
+          "restrictions": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Signals_API_OnCallRestrictionEntity"
+            }
+          }
+        },
+        "description": "Signals_API_OnCallScheduleEntity model"
+      },
+      "Signals_API_OnCallRotationEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "time_zone": {
+            "type": "string",
+            "nullable": true
+          },
+          "color": {
+            "type": "string",
+            "nullable": true
+          },
+          "slack_user_group_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "enable_slack_channel_notifications": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "prevent_shift_deletion": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "coverage_gap_notification_interval": {
+            "type": "string",
+            "nullable": true
+          },
+          "members": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/SuccinctEntity"
+            }
+          },
+          "shifts": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Signals_API_OnCallShiftEntity"
+            }
+          },
+          "team": {
+            "$ref": "#/components/schemas/NullableSuccinctEntity"
+          },
+          "strategy": {
+            "$ref": "#/components/schemas/NullableSignals_API_OnCallStrategyEntity"
+          },
+          "restrictions": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Signals_API_OnCallRestrictionEntity"
+            }
+          },
+          "created_by": {
+            "$ref": "#/components/schemas/NullableAuthorEntity"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "description": "Signals_API_OnCallRotationEntity model"
+      },
+      "Signals_API_OnCallShiftEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "user": {
+            "$ref": "#/components/schemas/NullableSuccinctEntity"
+          },
+          "coverage_request": {
+            "type": "string",
+            "nullable": true
+          },
+          "color": {
+            "type": "string",
+            "nullable": true
+          },
+          "time_zone": {
+            "type": "string",
+            "nullable": true
+          },
+          "on_call_schedule": {
+            "$ref": "#/components/schemas/NullableSuccinctEntity"
+          },
+          "on_call_rotation": {
+            "$ref": "#/components/schemas/NullableSuccinctEntity"
+          },
+          "team": {
+            "$ref": "#/components/schemas/NullableSuccinctEntity"
+          },
+          "start_time": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "end_time": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "description": "Signals_API_OnCallShiftEntity model"
+      },
+      "Signals_API_OnCallStrategyEntity": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "handoff_time": {
+            "type": "string",
+            "nullable": true
+          },
+          "handoff_day": {
+            "type": "string",
+            "nullable": true
+          },
+          "shift_duration": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "Signals_API_OnCallRestrictionEntity": {
+        "type": "object",
+        "properties": {
+          "start_day": {
+            "type": "string",
+            "nullable": true
+          },
+          "start_time": {
+            "type": "string",
+            "nullable": true
+          },
+          "end_day": {
+            "type": "string",
+            "nullable": true
+          },
+          "end_time": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "update_team_on_call_schedule": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "A new name for the on-call schedule.",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "description": "A new, detailed description for the on-call schedule.",
+            "nullable": true
+          },
+          "rotation_name": {
+            "type": "string",
+            "description": "A new name for the schedule's rotation.",
+            "nullable": true
+          },
+          "rotation_description": {
+            "type": "string",
+            "description": "A new, detailed description for the schedule's rotation.",
+            "nullable": true
+          },
+          "color": {
+            "type": "string",
+            "description": "A hex color code that will be used to represent the schedule's rotation in FireHydrant's UI.",
+            "nullable": true
+          },
+          "time_zone": {
+            "type": "string",
+            "description": "The time zone in which the on-call schedule's rotation will operate. This value must be a valid IANA time zone name.",
+            "nullable": true
+          },
+          "slack_user_group_id": {
+            "type": "string",
+            "description": "The ID of a Slack user group to sync the rotation's on-call members to.",
+            "nullable": true
+          },
+          "members": {
+            "type": "array",
+            "description": "An ordered list of objects that specify members of the schedule's rotation.",
+            "nullable": true,
+            "items": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "type": "string",
+                  "description": "The ID of a user who should be added to the schedule's rotation. You can add a user to the rotation\nmultiple times to construct more complex rotations, and you can specify a `null` user ID to create\nunassigned slots in the rotation.\n",
+                  "nullable": true
+                }
+              }
+            }
+          },
+          "strategy": {
+            "required": [
+              "type"
+            ],
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "The type of strategy. Must be one of \"daily\", \"weekly\", or \"custom\".",
+                "enum": [
+                  "daily",
+                  "weekly",
+                  "custom"
+                ]
+              },
+              "handoff_time": {
+                "type": "string",
+                "description": "An ISO8601 time string specifying when on-call shifts should hand off. This value is only used if the strategy type is \"daily\" or \"weekly\".",
+                "nullable": true
+              },
+              "handoff_day": {
+                "type": "string",
+                "description": "The day of the week on which on-call shifts should hand off, as its long-form name (e.g. \"monday\", \"tuesday\", etc). This value is only used if the strategy type is \"weekly\".",
+                "nullable": true,
+                "enum": [
+                  "monday",
+                  "tuesday",
+                  "wednesday",
+                  "thursday",
+                  "friday",
+                  "saturday",
+                  "sunday"
+                ]
+              },
+              "shift_duration": {
+                "type": "string",
+                "description": "An ISO8601 duration string specifying how long each shift should last. This value is only used if the strategy type is \"custom\".",
+                "nullable": true
+              }
+            },
+            "description": "An object that specifies how the rotation's on-call shifts should be generated.",
+            "nullable": true
+          },
+          "restrictions": {
+            "type": "array",
+            "description": "A list of objects that restrict the schedule's rotation to specific on-call periods.",
+            "nullable": true,
+            "items": {
+              "required": [
+                "end_day",
+                "end_time",
+                "start_day",
+                "start_time"
+              ],
+              "type": "object",
+              "properties": {
+                "start_day": {
+                  "type": "string",
+                  "description": "The day of the week on which the restriction should start, as its long-form name (e.g. \"monday\", \"tuesday\", etc).",
+                  "enum": [
+                    "monday",
+                    "tuesday",
+                    "wednesday",
+                    "thursday",
+                    "friday",
+                    "saturday",
+                    "sunday"
+                  ]
+                },
+                "start_time": {
+                  "type": "string",
+                  "description": "An ISO8601 time string specifying when the restriction should start."
+                },
+                "end_day": {
+                  "type": "string",
+                  "description": "The day of the week on which the restriction should end, as its long-form name (e.g. \"monday\", \"tuesday\", etc).",
+                  "enum": [
+                    "monday",
+                    "tuesday",
+                    "wednesday",
+                    "thursday",
+                    "friday",
+                    "saturday",
+                    "sunday"
+                  ]
+                },
+                "end_time": {
+                  "type": "string",
+                  "description": "An ISO8601 time string specifying when the restriction should end."
+                }
+              }
+            }
+          },
+          "effective_at": {
+            "type": "string",
+            "description": "An ISO8601 time string specifying when the updated schedule should take effect. This\nvalue must be provided if editing an attribute that would affect how the schedule's\nshifts are generated, such as the time zone, members, strategy, or restrictions.\n",
+            "nullable": true
+          },
+          "member_ids": {
+            "type": "array",
+            "description": "This parameter is deprecated; use `members` instead.",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "description": "Update a Signals on-call schedule by ID. For backwards compatibility, all parameters except for\n`name` and `description` will be ignored if the schedule has more than one rotation. If the schedule\nhas only one rotation, you can continue to update that rotation using the rotation-specific parameters.\n"
+      },
+      "NullableAuthorEntity": {
+        "nullable": true,
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/AuthorEntity"
+          }
+        ]
+      },
+      "NullableSuccinctEntity": {
+        "nullable": true,
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/SuccinctEntity"
+          }
+        ]
+      },
+      "NullableSignals_API_OnCallStrategyEntity": {
+        "nullable": true,
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/Signals_API_OnCallStrategyEntity"
+          }
+        ]
+      }
+    },
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "x-original-swagger-version": "2.0"
+}
+````

@@ -1574,3 +1574,6 @@ sites:
 - name: better-stack
   base_url: https://www.better-stack.ai/docs/
   description: better-stack documentation
+- name: firehydrant
+  base_url: https://docs.firehydrant.com/
+  description: firehydrant documentation
