@@ -1547,3 +1547,6 @@ sites:
 - name: cloudwatch
   base_url: https://docs.aws.amazon.com/
   description: cloudwatch documentation
+- name: kafka
+  base_url: https://docs.confluent.io/
+  description: kafka documentation
