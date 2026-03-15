@@ -2347,3 +2347,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/tcpdump
   branch: main
+- name: checkmk
+  description: checkmk from GitHub
+  repo_url: https://github.com/Checkmk/checkmk.git
+  source_folder: doc
+  target_folder: docs/github-scraped/checkmk
+  branch: main
