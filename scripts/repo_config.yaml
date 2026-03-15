@@ -2293,3 +2293,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/psalm
   branch: main
+- name: kubewarden
+  description: kubewarden from GitHub
+  repo_url: https://github.com/kubewarden/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/kubewarden
+  branch: main
