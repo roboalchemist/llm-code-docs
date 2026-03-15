@@ -2299,3 +2299,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/kubewarden
   branch: main
+- name: cyclonedx
+  description: cyclonedx from GitHub
+  repo_url: https://github.com/CycloneDX/cyclonedx-python-lib.git
+  source_folder: docs
+  target_folder: docs/github-scraped/cyclonedx
+  branch: main
