@@ -2281,3 +2281,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/openvas
   branch: main
+- name: pmd
+  description: pmd from GitHub
+  repo_url: https://github.com/pmd/pmd.git
+  source_folder: docs
+  target_folder: docs/github-scraped/pmd
+  branch: main
