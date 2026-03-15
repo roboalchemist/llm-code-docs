@@ -1,190 +1,1217 @@
-# KiCad 9.0 Drawing Sheet Editor (pl_editor) Documentation
+:::::: {#header}
+# Pl_Editor
 
-## Overview
+::: details
+[The KiCad Team]{#author .author}\
+:::
 
-The Drawing Sheet Editor is a specialized tool within KiCad designed to create customizable drawing sheets for use in schematic and PCB designs. These sheets can incorporate title blocks, frames, logos, and other graphic elements.
+:::: {#toc .toc}
+::: {#toctitle}
+Table of Contents
+:::
 
-## Core Components
+- [Introduction to **Pl_Editor**](#introduction-to-pl_editor)
+- [Pl_Editor files](#pl_editor-files)
+  - [Input file and default title
+    block](#input-file-and-default-title-block)
+  - [Output file](#output-file)
+- [Theory of operations](#theory-of-operations)
+  - [Basic page layout items
+    properties:](#basic-page-layout-items-properties)
+  - [Coordinates definition](#coordinates-definition)
+  - [Reference corners and
+    coordinates:](#reference-corners-and-coordinates)
+  - [Rotation](#rotation)
+  - [Repeat option](#repeat-option)
+- [Texts and formats](#texts-and-formats)
+  - [Format symbols:](#format-symbols)
+  - [Multi-line texts:](#multi-line-texts)
+  - [Multi-line texts in Page Setup
+    dialog:](#multi-line-texts-in-page-setup-dialog)
+- [Constraints](#constraints)
+  - [Page 1 constraint](#page-1-constraint)
+  - [Text full size constraint](#text-full-size-constraint)
+- [Invoking Pl_Editor](#invoking-pl_editor)
+- [Pl_Editor Commands](#pl_editor-commands)
+  - [Main Screen](#main-screen)
+  - [Main Window Toolbar](#main-window-toolbar)
+  - [Commands in drawing area (draw
+    panel)](#commands-in-drawing-area-draw-panel)
+  - [Status Bar Information](#status-bar-information)
+- [Left window](#left-window)
+- [Right window](#right-window)
+- [Interactive edition](#interactive-edition)
+  - [Item selection](#item-selection)
+  - [Item creation](#item-creation)
+  - [Adding lines, rectangles and
+    texts](#adding-lines-rectangles-and-texts)
+  - [Adding logos](#adding-logos)
+  - [Adding image bitmaps](#adding-image-bitmaps)
+::::
+::::::
 
-### Basic Drawing Sheet Items
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: {#content}
+::::::::::::::: {#preamble}
+:::::::::::::: sectionbody
+::: paragraph
+*Reference manual*
+:::
 
-The editor supports several fundamental element types:
+::: {#copyright .paragraph}
+**Copyright**
+:::
 
-- **Lines**: Segments defined by start and end points
-- **Rectangles**: Two-point shapes with defined corners
-- **Text**: Strings with optional keyword replacement functionality
-- **Poly-polygons**: Complex vector shapes (created via Image Converter tool)
-- **Bitmaps**: Raster images in common formats (PNG, JPEG, BMP)
+::: paragraph
+This document is Copyright © 2015 by it's contributors as listed below.
+You may distribute it and/or modify it under the terms of either the GNU
+General Public License
+([http://www.gnu.org/licenses/gpl.html](http://www.gnu.org/licenses/gpl.html){.bare}),
+version 3 or later, or the Creative Commons Attribution License
+([http://creativecommons.org/licenses/by/3.0/](http://creativecommons.org/licenses/by/3.0/){.bare}),
+version 3.0 or later.
+:::
 
-**Note**: Bitmaps render only in PDF and PostScript; other formats show bounding boxes.
+::: {#contributors .paragraph}
+**Contributors**
+:::
 
-## File Format
+::: paragraph
+Jean-Pierre Charras.
+:::
 
-Drawing sheets are stored as `.kicad_wks` files. The default sheet loads automatically when the editor starts; alternative sheets can be opened through the standard file dialog.
+::: {#feedback .paragraph}
+**Feedback**
+:::
 
-## Coordinate System
+::: paragraph
+Please direct any bug reports, suggestions or new versions to here:
+:::
 
-### Position Definition
+::: ulist
+- About KiCad document:
+  [https://github.com/KiCad/kicad-doc/issues](https://github.com/KiCad/kicad-doc/issues){.bare}
 
-All item positions reference a specific page corner, enabling sheets to adapt automatically when paper sizes change. This prevents repositioning when dimensions shift.
+- About KiCad software:
+  [https://bugs.launchpad.net/kicad](https://bugs.launchpad.net/kicad){.bare}
 
-### Reference Corners
+- About KiCad software i18n:
+  [https://github.com/KiCad/kicad-i18n/issues](https://github.com/KiCad/kicad-i18n/issues){.bare}
+:::
 
-Four corners serve as reference points: top-left, top-right, bottom-left, and bottom-right. Title blocks typically anchor to the bottom-right corner by default.
+::: {#publication_date_and_software_version .paragraph}
+**Publication date and software version**
+:::
 
-For multi-point items like lines and rectangles, each endpoint can reference different corners.
+::: paragraph
+may 23, 2015.
+:::
 
-## Text and Keywords
+::: {style="page-break-after: always;"}
+:::
+::::::::::::::
+:::::::::::::::
 
-### Keyword Syntax
+:::::::::: sect1
+## Introduction to **Pl_Editor**
 
-Keywords follow the pattern `${KEYWORD}` and are replaced with actual values during use:
+::::::::: sectionbody
+::: paragraph
+Pl_Editor is a page layout editor tool to create custom title blocks,
+and frame references.
+:::
 
-| Keyword | Function |
-|---------|----------|
-| `KICAD_VERSION` | Software version number |
-| `#` | Current sheet number |
-| `##` | Total sheet count |
-| `COMMENT1`-`COMMENT9` | User-defined comment fields |
-| `COMPANY` | Organization name |
-| `FILENAME` | Source file name with extension |
-| `ISSUE_DATE` | Release date field |
-| `LAYER` | Active PCB layer (plots only) |
-| `PAPER` | Current paper size designation |
-| `REVISION` | Revision identifier |
-| `SHEETNAME` | Current sheet designation |
-| `SHEETPATH` | Hierarchical sheet location |
-| `TITLE` | Project title |
+::: paragraph
+The title block, associated to frame references, and other graphic items
+(logos) is called here a page layout.
+:::
 
-**Example**: "Size: ${PAPER}" displays "Size: A4" when A4 is selected.
+::: paragraph
+Basic page layout items are:
+:::
 
-### Multi-line Text
+::: ulist
+- **Lines**
 
-Two methods enable line breaks:
+- **Rectangles**
 
-1. Insert `\n` character sequence (primarily in Page Setup dialogs)
-2. Press Enter directly in the Design window
+- **Texts** (with format symbols, that will be replaced by the actual
+  text, like the date, page number...​) in Eeschema or Pcbnew.
 
-To display literal `\n` text, enter `\\n`.
+- **Poly-polygons** (mainly to place logos and special graphic shapes)
 
-## Display Modes
+- **Bitmaps**.
+:::
 
-**Preview Mode**: Displays the sheet as end-users see it, with keywords replaced by actual values.
+::: {.admonitionblock .warning}
++-----------------------------------+-----------------------------------+
+| ::: title                         | Bitmaps can be plotted only by    |
+| Warning                           | few plotters (PDF and PS only)    |
+| :::                               | Therefore, for other plotters,    |
+|                                   | only a bounding box will be       |
+|                                   | plotted.                          |
++-----------------------------------+-----------------------------------+
+:::
 
-**Edit Mode**: Shows raw content including unreplaced keywords.
+::: ulist
+- Items can be repeated, and texts and poly_polygons can be rotated.
+:::
+:::::::::
+::::::::::
 
-## Constraints and Limitations
+::::::::::: sect1
+## Pl_Editor files
 
-### Page-Specific Display
+:::::::::: sectionbody
+::::: sect2
+### Input file and default title block
 
-Items can be configured to display on:
+::: paragraph
+Pl_Editor reads or writes page layout description files \*.kicad_wks
+(KiCad worksheet).
+:::
 
-- All pages
-- First page only
-- Subsequent pages only
+::: paragraph
+An internal default page layout description to display the default KiCad
+title block is used until a file is read.
+:::
+:::::
 
-This setting appears in the Item Properties panel dropdown.
+:::::: sect2
+### Output file
 
-### Text Size Constraints
+::: paragraph
+The current page layout description can be written in a **\*.kicad_wks**
+file, using the S-expression format, which is widely used in KiCad.
+:::
 
-Text elements support maximum height and width boundaries. When text exceeds these limits, it compresses to fit—potentially causing visual distortion. Setting either parameter to `0` disables that constraint.
+::: paragraph
+This file can be used to show the custom page layout in Eeschema and/or
+Pcbnew.
+:::
 
-## Rotation and Repetition
+::: {style="page-break-after: always;"}
+:::
+::::::
+::::::::::
+:::::::::::
 
+::::::::::::::::::::::::::::::::::: sect1
+## Theory of operations
+
+:::::::::::::::::::::::::::::::::: sectionbody
+:::::::::: sect2
+### Basic page layout items properties:
+
+::: paragraph
+Basic page layout items are:
+:::
+
+::: ulist
+- **Lines**
+
+- **Rectangles**
+
+- **Texts** (with format symbols, with will be replaced by the actual
+  text, like the date, page number...​) in Eeschema or Pcbnew.
+
+- **Poly-polygons** (mainly to place logos and special graphic shapes).
+  These poly polygons are created by **Bitmap2component**, and cannot be
+  built inside pl_editor, because it is not possible to create such
+  shapes by hand.
+
+- **Bitmaps** to place logos.
+:::
+
+::: {.admonitionblock .warning}
++-----------------------------------+-----------------------------------+
+| ::: title                         | Bitmaps can be plotted only by    |
+| Warning                           | few plotters: PDF and PS only.    |
+| :::                               |                                   |
++-----------------------------------+-----------------------------------+
+:::
+
+::: paragraph
+Therefore:
+:::
+
+::: ulist
+- **Texts, poly-polygons** and **bitmaps** are defined by a position,
+  and can be rotated.
+
+- **Lines** (in fact segments) and **rectangles** are defined by two
+  points: a start point and a end point. They cannot be rotated (this is
+  useless for segments).
+:::
+
+::: paragraph
+These basic items can be repeated.
+:::
+
+::: paragraph
+Texts which are repeated accept also an increment value for labels (has
+meaning only if the text is one letter or one digit).
+:::
+::::::::::
+
+::::: sect2
+### Coordinates definition
+
+::: paragraph
+Each position, start point and end point of items is always relative to
+a page corner.
+:::
+
+::: paragraph
+**This feature ensure you can define a page layout which is not
+dependent on the paper size**.
+:::
+:::::
+
+::::::: sect2
+### Reference corners and coordinates:
+
+::: paragraph
+[![page property 1](images/en/page_property_1.png)]{.image}
+:::
+
+::: ulist
+- When the page size is changed, the position of the item, relative to
+  its reference corner does not change.
+
+- Usually, title blocks are attached to the right bottom corner, and
+  therefore this corner is the default corner, when creating an item.
+:::
+
+::: paragraph
+For rectangles and segments, which have two defined points, each point
+has its reference corner.
+:::
+
+::: {style="page-break-after: always;"}
+:::
+:::::::
+
+::::::::::: sect2
 ### Rotation
 
-Text and poly-polygons support angular rotation (measured in degrees). Lines and rectangles cannot rotate.
+::: paragraph
+Items which have a position defined by just one point (texts and
+poly-polygons) can be rotated:
+:::
 
-### Repeat Option
+::: paragraph
+Normal: Rotation = 0
+:::
 
-Items can be duplicated across the sheet. Repeated text accepts increment values for numeric or alphabetic sequences—useful for gridlines and labels.
+:::: imageblock
+::: content
+![text noriented](images/en/text_noriented.png)
+:::
+::::
 
-## Interface Components
+::: paragraph
+Rotated: Rotation = 20 and 10 degrees.
+:::
 
-### Main Toolbar Icons
+:::: imageblock
+::: content
+![text rotated](images/en/text_rotated.png)
+:::
+::::
 
-| Icon | Function |
-|------|----------|
-| New | Create new sheet |
-| Open | Load existing sheet |
-| Save | Save to `.kicad_wks` format |
-| Settings | Configure page size and user data |
-| Print | Print current view |
-| Undo/Redo | Revert/restore changes |
-| Zoom controls | Navigation and magnification |
+::: {style="page-break-after: always;"}
+:::
+:::::::::::
 
-### Keyboard Shortcuts
+:::::::: sect2
+### Repeat option
 
-| Key | Action |
-|-----|--------|
-| F1 | Zoom in |
-| F2 | Zoom out |
-| F3 | Refresh display |
-| F4 | Center view |
-| Home | Fit to window |
-| Space | Set relative coordinates |
-| Arrow keys | Cursor movement (grid-based) |
+::: paragraph
+Items can be repeated:
+:::
 
-### Mouse Operations
+::: paragraph
+This is useful to create grid and grid labels.
+:::
 
-- **Scroll wheel**: Zoom at cursor position
-- **Ctrl + Scroll**: Horizontal panning
-- **Shift + Scroll**: Vertical panning
-- **Right-click**: Context menu with add/zoom/grid options
+:::: imageblock
+::: content
+![page property 2](images/en/page_property_2.png){width="]"}
+:::
+::::
 
-## Properties Editor
+::: {style="page-break-after: always;"}
+:::
+::::::::
+::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::
 
-The right panel displays item-specific settings when an item is selected. Two tabs appear:
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+## Texts and formats
 
-**Item Properties**: Type-dependent parameters for the selected element
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
+::::::::::::::::::::::::::::::: sect2
+### Format symbols:
 
-**General Options**: Default values and margins for the entire sheet
+::: paragraph
+Texts can be simple strings or can include format symbols.
+:::
 
-Changes require clicking the **Apply** button to take effect.
+::: paragraph
+Format symbols are replaced by the actual values in Eeschema or Pcbnew.
+:::
 
-## Design Inspector
+::: paragraph
+They are like format symbols in printf function.
+:::
 
-This table view lists all sheet elements and their attributes. Accessible via **Inspect** → **Show Design Inspector**, it provides an alternative selection method and maintains selections when closed.
+::: paragraph
+A format symbol is **%** followed by 1 letter.
+:::
 
-## Workflow: Adding Items
+::: paragraph
+The **%C** format has one digit (comment identifier).
+:::
 
-### Creating Elements
+::: paragraph
+Formats symbols are:
+:::
 
-1. Click the appropriate toolbar icon (line, rectangle, text, or bitmap)
-2. Click the canvas to place the item
-3. Configure properties in the right panel
-4. Click **Apply** to finalize
+::: paragraph
+**%% = replaced by %**
+:::
 
-Alternative: Right-click canvas and select from context menu.
+::: paragraph
+**%K = KiCad version**
+:::
 
-### Moving Items
+::: paragraph
+**%Z = paper format name (A4, USLetter ...​)**
+:::
 
-Use keyboard shortcut `M` or drag directly on canvas. Multi-point shapes allow individual point manipulation.
+::: paragraph
+**%Y = company name**
+:::
 
-### Adding Logos
+::: paragraph
+**%D = date**
+:::
 
-1. Use the Image Converter tool to create a poly-polygon
-2. Select **Append Existing Drawing Sheet** in the menu
-3. Choose the converted file
-4. Position and adjust the imported logo
+::: paragraph
+**%R = revision**
+:::
 
-### Importing Bitmaps
+::: paragraph
+**%S = sheet number**
+:::
 
-Supported formats include PNG, JPEG, and BMP. Default resolution is 300 PPI; adjust in properties editor. Higher PPI values increase file size and rendering time.
+::: paragraph
+**%N = number of sheets**
+:::
 
-## Practical Considerations
+::: paragraph
+**%Cx = comment (x = 0 to 9 to identify the comment)**
+:::
 
-### Corner Reference Best Practices
+::: paragraph
+**%F = filename**
+:::
 
-For stable sheets across size changes, use consistent corner references for both endpoints of lines and rectangles.
+::: paragraph
+**%P = sheet path (sheet full name, for Eeschema)**
+:::
 
-### Bitmap Limitations
+::: paragraph
+**%T = title**
+:::
 
-- PDF and PostScript support full rendering
-- Other output formats display only bounding boxes
-- Plan accordingly when selecting export methods
+::: paragraph
+Example:
+:::
 
----
+::: paragraph
+\"Size: %Z\" displays \"Size: A4\" or \"Size: USLetter\"
+:::
 
-**Document Status**: Based on KiCad 9.0.8
-**License**: Content available under Creative Commons Attribution 3.0 or GNU General Public License v3
+::: {style="page-break-after: always;"}
+:::
+
+::: paragraph
+User display mode: [![pagelayout normal view
+mode](images/icons/pagelayout_normal_view_mode.png)]{.image} activated.
+Title block displayed like in Eeschema and Pcbnew
+:::
+
+:::: imageblock
+::: content
+![show fields data](images/en/show_fields_data.png)
+:::
+::::
+
+::: paragraph
+\"Native\" display mode: [![pagelayout special view
+mode](images/icons/pagelayout_special_view_mode.png)]{.image} activated.
+The native texts entered in Pl_Editor, with their format symbols.
+:::
+
+:::: imageblock
+::: content
+![show fields codes](images/en/show_fields_codes.png)
+:::
+::::
+
+::: {style="page-break-after: always;"}
+:::
+:::::::::::::::::::::::::::::::
+
+:::::::::::::: sect2
+### Multi-line texts:
+
+::: paragraph
+Texts can be multi-line.
+:::
+
+::: paragraph
+There are 2 ways to insert a new line in texts:
+:::
+
+::: {.olist .arabic}
+1.  Insert the \"\\n\" 2 chars sequence (mainly in Page setup dialog in
+    KiCad).
+
+2.  Insert a new line in Pl_Editor Design window.
+:::
+
+::: paragraph
+Here is an example:
+:::
+
+::: paragraph
+Setup
+:::
+
+:::: imageblock
+::: content
+![options multi line](images/en/options_multi_line.png)
+:::
+::::
+
+::: paragraph
+Output
+:::
+
+:::: imageblock
+::: content
+![multi line](images/en/multi_line.png)
+:::
+::::
+
+::: {style="page-break-after: always;"}
+:::
+::::::::::::::
+
+:::::::::::::: sect2
+### Multi-line texts in Page Setup dialog:
+
+::: paragraph
+In the page setup dialog, text controls do not accept a multi-line text.
+:::
+
+::: paragraph
+The **\"\\n\"** 2 chars sequence should be inserted to force a new line
+inside a text.
+:::
+
+::: paragraph
+Here is a two lines text, in *comment 2* field:
+:::
+
+::: paragraph
+[![insert newline code](images/en/insert_newline_code.png)]{.image}
+:::
+
+::: paragraph
+Here is the actual text:
+:::
+
+::: paragraph
+[![multi line 2](images/en/multi_line_2.png)]{.image}
+:::
+
+::: paragraph
+However, if you really want the **\"\\n\"** inside the text, enter
+**\"\\\\n\"**.
+:::
+
+::: paragraph
+[![insert slashnewline
+code](images/en/insert_slashnewline_code.png)]{.image}
+:::
+
+::: paragraph
+And the displayed text:
+:::
+
+::: paragraph
+[![multi line 3](images/en/multi_line_3.png)]{.image}
+:::
+
+::: {style="page-break-after: always;"}
+:::
+::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::: sect1
+## Constraints
+
+::::::::::::::::::::::::::::: sectionbody
+:::::::::: sect2
+### Page 1 constraint
+
+::: paragraph
+When using Eeschema, the full schematic often uses more than one page.
+:::
+
+::: paragraph
+Usually page layout items are displayed on all pages.
+:::
+
+::: paragraph
+But if a user want some items to be displayed only on page 1, or not on
+page 1, the \"page 1 option\" this is possible by setting this option:
+:::
+
+::: paragraph
+[![display options](images/en/display_options.png)]{.image}
+:::
+
+::: paragraph
+Page 1 option:
+:::
+
+::: ulist
+- None: no constraint.
+
+- Page 1 only: the items is visible only on page 1.
+
+- Not on page 1: the items is visible on all pages but the page 1.
+:::
+
+::: {style="page-break-after: always;"}
+:::
+::::::::::
+
+:::::::::::::::::::: sect2
+### Text full size constraint
+
+::: paragraph
+[![constraint options](images/en/constraint_options.png)]{.image}
+:::
+
+::: paragraph
+Only for texts, one can set 2 parameters :
+:::
+
+::: ulist
+- the max size X
+
+- the max size Y
+:::
+
+::: paragraph
+which define a bounding box.
+:::
+
+::: paragraph
+When these parameters are not 0, when displaying the text, the actual
+text height and the actual text width are dynamically modified if the
+full text size is bigger than the max size X and/or the max size Y, to
+fit the full text size with this bounding box.
+:::
+
+::: paragraph
+When the actual full text size is smaller than the max size X and/or the
+max size Y, the text height and/or the text width is not modified.
+:::
+
+::: paragraph
+The text with no bounding box. Max size X = 0,0 Max size Y = 0,0
+:::
+
+::: paragraph
+[![constraints none](images/en/constraints_none.png)]{.image}
+:::
+
+::: paragraph
+The **same** text with constraint. Max size X = 40,0 Max size Y = 0,0
+:::
+
+::: paragraph
+[![constraints defined](images/en/constraints_defined.png)]{.image}
+:::
+
+::: {style="page-break-after: always;"}
+:::
+
+::: paragraph
+A multi line text, constrained:
+:::
+
+::: paragraph
+Setup
+:::
+
+::: paragraph
+[![constraint options](images/en/constraint_options.png)]{.image}
+:::
+
+::: paragraph
+Output
+:::
+
+::: paragraph
+[![block constraints](images/en/block_constraints.png)]{.image}
+:::
+
+::: {style="page-break-after: always;"}
+:::
+::::::::::::::::::::
+:::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::
+
+:::::: sect1
+## Invoking Pl_Editor
+
+::::: sectionbody
+::: paragraph
+Pl_Editor is typically invoked from a command line, or from the KiCad
+manager.
+:::
+
+::: paragraph
+From a command line, the syntax is pl_editor \<\*.kicad_wks file to
+open\>.
+:::
+:::::
+::::::
+
+::::::::::::::::::::::::::::: sect1
+## Pl_Editor Commands
+
+:::::::::::::::::::::::::::: sectionbody
+::::::::: sect2
+### Main Screen
+
+::: paragraph
+The image below shows the main window of Pl_Editor.
+:::
+
+:::: imageblock
+::: content
+![main window](images/en/main_window.png)
+:::
+::::
+
+::: paragraph
+The left pane contains the list of basic items.
+:::
+
+::: paragraph
+The right pane is the item settings editor.
+:::
+
+::: {style="page-break-after: always;"}
+:::
+:::::::::
+
+::::: sect2
+### Main Window Toolbar
+
+::: paragraph
+[![main toolbar](images/en/main_toolbar.png)]{.image}
+:::
+
+::: paragraph
+The top toolbar allows for easy access to the following commands:
+:::
+
++---------------------------------------------------------------+--------------------------------------------------+
+| [![new page                                                   | Select the net list file to be processed.        |
+| layout](images/icons/new_page_layout.png)]{.image}            |                                                  |
++---------------------------------------------------------------+--------------------------------------------------+
+| [![open page                                                  | Load a page layout description file.             |
+| layout](images/icons/open_page_layout.png)]{.image}           |                                                  |
++---------------------------------------------------------------+--------------------------------------------------+
+| [![save](images/icons/save.png)]{.image}                      | Save the current page layout description in a    |
+|                                                               | .kicad_wks file.                                 |
++---------------------------------------------------------------+--------------------------------------------------+
+| [![sheetset](images/icons/sheetset.png)]{.image}              | Display the page size selector and the title     |
+|                                                               | block user data editor.                          |
++---------------------------------------------------------------+--------------------------------------------------+
+| [![print button](images/icons/print_button.png)]{.image}      | Prints the current page.                         |
++---------------------------------------------------------------+--------------------------------------------------+
+| [![delete](images/icons/delete.png)]{.image}                  | Delete the currently selected item.              |
++---------------------------------------------------------------+--------------------------------------------------+
+| [![undo](images/icons/undo.png)]{.image}                      | Undo/redo tools.                                 |
+| [![redo](images/icons/redo.png)]{.image}                      |                                                  |
++---------------------------------------------------------------+--------------------------------------------------+
+| [![zoom in](images/icons/zoom_in.png)]{.image} [![zoom        | Zoom in, out, redraw and auto, respectively.     |
+| out](images/icons/zoom_out.png)]{.image} [![zoom              |                                                  |
+| redraw](images/icons/zoom_redraw.png)]{.image} [![zoom fit in |                                                  |
+| page](images/icons/zoom_fit_in_page.png)]{.image}             |                                                  |
++---------------------------------------------------------------+--------------------------------------------------+
+| [![pagelayout normal view                                     | Show the page layout in user mode: texts are     |
+| mode](images/icons/pagelayout_normal_view_mode.png)]{.image}  | shown like in Eeschema or Pcbnew: text format    |
+|                                                               | symbols are replaced by the user texts.          |
++---------------------------------------------------------------+--------------------------------------------------+
+| [![pagelayout special view                                    | Show the page layout in native mode: texts are   |
+| mode](images/icons/pagelayout_special_view_mode.png)]{.image} | displayed \"as is\", with the contained formats, |
+|                                                               | without any replacement.                         |
++---------------------------------------------------------------+--------------------------------------------------+
+| [![set base                                                   | Reference corner selection, for coordinates      |
+| corner](images/en/set_base_corner.png){width="70%"}]{.image}  | displayed to the status bar.                     |
++---------------------------------------------------------------+--------------------------------------------------+
+| [![set current                                                | Selection of the page number (page & or other    |
+| page](images/en/set_current_page.png){width="85%"}]{.image}   | pages).                                          |
+|                                                               |                                                  |
+|                                                               | This selection has meaning only if some items    |
+|                                                               | than have a page option, are not shown on all    |
+|                                                               | pages (in a schematic for instance, which        |
+|                                                               | contains more than one page).                    |
++---------------------------------------------------------------+--------------------------------------------------+
+:::::
+
+::::::::::: sect2
+### Commands in drawing area (draw panel)
+
+::: sect3
+#### Keyboard Commands
+
++-------------+--------------------------------------------------------+
+| F1          | Zoom In                                                |
++-------------+--------------------------------------------------------+
+| F2          | Zoom Out                                               |
++-------------+--------------------------------------------------------+
+| F3          | Refresh Display                                        |
++-------------+--------------------------------------------------------+
+| F4          | Move cursor to center of display window                |
++-------------+--------------------------------------------------------+
+| Home        | Fit footprint into display window                      |
++-------------+--------------------------------------------------------+
+| Space Bar   | Set relative coordinates to the current cursor         |
+|             | position                                               |
++-------------+--------------------------------------------------------+
+| Right Arrow | Move cursor right one grid position                    |
++-------------+--------------------------------------------------------+
+| Left Arrow  | Move cursor left one grid position                     |
++-------------+--------------------------------------------------------+
+| Up Arrow    | Move cursor up one grid position                       |
++-------------+--------------------------------------------------------+
+| Down Arrow  | Move cursor down one grid position                     |
++-------------+--------------------------------------------------------+
+:::
+
+::: sect3
+#### Mouse Commands
+
++----------------------+-----------------------------------------------+
+| Scroll Wheel         | Zoom in and out at the current cursor         |
+|                      | position                                      |
++----------------------+-----------------------------------------------+
+| Ctrl + Scroll Wheel  | Pan right and left                            |
++----------------------+-----------------------------------------------+
+| Shift + Scroll Wheel | Pan up and down                               |
++----------------------+-----------------------------------------------+
+| Right Button Click   | Open context menu                             |
++----------------------+-----------------------------------------------+
+:::
+
+:::::::: sect3
+#### Context Menu
+
+::: paragraph
+Displayed by right-clicking the mouse:
+:::
+
+::: ulist
+- Add Line
+
+- Add Rectangle
+
+- Add Text
+
+- Append Page Layout Descr File
+:::
+
+::: paragraph
+Are commands to add a basic layout item to the current page layout
+description.
+:::
+
+::: ulist
+- Zoom selection: direct selection of the display zoom.
+
+- Grid selection: direct selection of the grid.
+:::
+
+::: {.admonitionblock .note}
++-----------------------------------+-----------------------------------+
+| ::: title                         | ::: paragraph                     |
+| Note                              | *Append Page Layout Descr File*   |
+| :::                               | is intended to add poly polygons  |
+|                                   | to make logos.                    |
+|                                   | :::                               |
+|                                   |                                   |
+|                                   | ::: paragraph                     |
+|                                   | Because usually a logo it needs   |
+|                                   | hundred of vertices, you cannot   |
+|                                   | create a polygon by hand. But you |
+|                                   | can append a description file,    |
+|                                   | created by Bitmap2Component.      |
+|                                   | :::                               |
++-----------------------------------+-----------------------------------+
+:::
+::::::::
+:::::::::::
+
+:::::::: sect2
+### Status Bar Information
+
+::: paragraph
+The status bar is located at the bottom of the Pl_Editor and provides
+useful information to the user.
+:::
+
+:::: imageblock
+::: content
+![pl status bar](images/en/pl_status_bar.png)
+:::
+::::
+
+::: paragraph
+Coordinates are **always relative to the corner** selected as
+**reference**.
+:::
+
+::: {style="page-break-after: always;"}
+:::
+::::::::
+::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::
+
+:::::::::::: sect1
+## Left window
+
+::::::::::: sectionbody
+::: paragraph
+The left windows shows the list of layout items.
+:::
+
+::: paragraph
+One can select a given item (left clicking on the line) or, when right
+clicking on the line, display a pop up menu.
+:::
+
+::: paragraph
+This menu allows basic operations: add a new item, or delete the
+selected item.
+:::
+
+::: paragraph
+**→ A selected item is also drawn in a different color on draw panel**.
+:::
+
+::: paragraph
+Design tree: the item 19 is selected, and shown in highlighted on the
+draw panel.
+:::
+
+:::: imageblock
+::: content
+![project tree](images/en/project_tree.png)
+:::
+::::
+
+::: {style="page-break-after: always;"}
+:::
+:::::::::::
+::::::::::::
+
+::::::::: sect1
+## Right window
+
+:::::::: sectionbody
+::: paragraph
+The right window is the edit window.
+:::
+
++----------------------------------------------------------+----------------------------------------------------------+
+| [![property                                              | [![property                                              |
+| none](images/en/property_none.png){width="50%"}]{.image} | main](images/en/property_main.png){width="50%"}]{.image} |
++----------------------------------------------------------+----------------------------------------------------------+
+
+::: paragraph
+On this dialog you can set the page property and the item property of
+the current item.
+:::
+
+::: {style="page-break-after: always;"}
+:::
+
+::: paragraph
+Displayed settings depend on the selected item:
+:::
+
++------------------------------------------------------------------+--------------------------------------------------------------+
+| Settings for lines and rectangles                                | Settings for texts                                           |
++------------------------------------------------------------------+--------------------------------------------------------------+
+| [![property                                                      | [![property                                                  |
+| line](images/en/property_line.png){width="50%"}]{.image}         | text](images/en/property_text.png){width="50%"}]{.image}     |
++------------------------------------------------------------------+--------------------------------------------------------------+
+| Settings for poly-polygons                                       | Setting for bitmaps                                          |
++------------------------------------------------------------------+--------------------------------------------------------------+
+| [![property                                                      | [![property                                                  |
+| polyline](images/en/property_polyline.png){width="50%"}]{.image} | bitmap](images/en/property_bitmap.png){width="50%"}]{.image} |
++------------------------------------------------------------------+--------------------------------------------------------------+
+
+::: {style="page-break-after: always;"}
+:::
+::::::::
+:::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::: sect1
+## Interactive edition
+
+:::::::::::::::::::::::::::::::::::::::::::::::::: sectionbody
+::::::::::::: sect2
+### Item selection
+
+::: paragraph
+An item can be selected:
+:::
+
+::: ulist
+- From the Design tree.
+
+- By Left clicking on it.
+
+- By Right clicking on it (and a pop up menu will be displayed).
+:::
+
+::: paragraph
+When selected, this item is drawn in yellow.
+:::
+
++---------------------------------------------------+----------------------------------------------+
+| [![edit                                           | The starting point ([![edit line             |
+| line](images/edit_line.png){width="70%"}]{.image} | start](images/edit_line_start.png)]{.image}) |
+|                                                   | and the ending point ([![edit line           |
+|                                                   | end](images/edit_line_end.png)]{.image}) are |
+|                                                   | highlighted.                                 |
++---------------------------------------------------+----------------------------------------------+
+
+::: paragraph
+When right clicking on the item, a pop-up menu is displayed.
+:::
+
+::: paragraph
+The pop menu options slightly depend on the selection:
+:::
+
++---------------------------------------------------------------------+-----------------------------------------------------------------+--------------------------------------------------------------+
+| [![context line move                                                | [![context line move                                            | [![context line                                              |
+| start](images/en/context_line_move_start.png){width="50%"}]{.image} | end](images/en/context_line_move_end.png){width="50%"}]{.image} | move](images/en/context_line_move.png){width="50%"}]{.image} |
++---------------------------------------------------------------------+-----------------------------------------------------------------+--------------------------------------------------------------+
+
+::: {style="page-break-after: always;"}
+:::
+
+::: paragraph
+If more than one item is found, a menu clarification will be shown, to
+select the item:
+:::
+
+:::: imageblock
+::: content
+![dialog select element](images/en/dialog_select_element.png)
+:::
+::::
+
++---------------------------------------------------------+-----------------------------------+
+| [![drag                                                 | Once selected, the item, or one   |
+| element](images/drag_element.png){width="70%"}]{.image} | of its end points, can be moved   |
+|                                                         | by moving the mouse and placed    |
+|                                                         | (right clicking on the mouse).    |
++---------------------------------------------------------+-----------------------------------+
+
+::: {style="page-break-after: always;"}
+:::
+:::::::::::::
+
+::::::::::::::: sect2
+### Item creation
+
+::: paragraph
+To add a new item, right click the mouse button when the cursor is on
+the left window or the draw area.
+:::
+
+::: paragraph
+A popup menu is displayed:
+:::
+
+::: paragraph
+Pop up menu in left window
+:::
+
+:::: imageblock
+::: content
+![context createnew](images/en/context_createnew.png)
+:::
+::::
+
+::: paragraph
+Pop up menu in draw area.
+:::
+
+:::: imageblock
+::: content
+![context createnew2](images/en/context_createnew2.png)
+:::
+::::
+
+::: paragraph
+Lines, rectangles and texts are added just by clicking on the
+corresponding menu item.
+:::
+
+::: paragraph
+Logos must first be created by Bitmap2component, which creates a page
+layout description file.
+:::
+
+::: paragraph
+The Append Page Layout Descr File option append this file, to insert the
+logo (a poly polygon).
+:::
+
+::: {style="page-break-after: always;"}
+:::
+:::::::::::::::
+
+::::::::::::::: sect2
+### Adding lines, rectangles and texts
+
+::: paragraph
+When clicking on the option, a dialog is opened:
+:::
+
+::: paragraph
+Adding line or rectangle
+:::
+
+:::: imageblock
+::: content
+![dialog newline](images/en/dialog_newline.png)
+:::
+::::
+
+::: paragraph
+Adding text
+:::
+
+:::: imageblock
+::: content
+![dialog newtext](images/en/dialog_newtext.png)
+:::
+::::
+
+::: paragraph
+Position of end points, and corner reference can be defined here.
+:::
+
+::: paragraph
+However they can be defined later, from the right window, or by moving
+the item, or one of its end points.
+:::
+
+::: paragraph
+Most of time the corner reference is the same for both points.
+:::
+
+::: paragraph
+If this is not the case, define the corner reference at creation is
+better, because if a corner reference is changed later, the geometry of
+the item will be a bit strange.
+:::
+
+::: paragraph
+When an item is created, if is put in move mode, and you can refine its
+position (this is very useful for texts and small lines or rectangles)
+:::
+:::::::::::::::
+
+:::::::: sect2
+### Adding logos
+
+::: paragraph
+To add a logo, a poly polygon (the vectored image of the logo) must be
+first created using Bitmap2component.
+:::
+
+::: paragraph
+Bitmap2component creates a page layout description file which is append
+to the current design, using the **Append Page Layout Descr File**
+option.
+:::
+
+::: paragraph
+Bitmap2component creates a page layout description file which contains
+only one item: a poly polygon.
+:::
+
+::: paragraph
+*However, this command can be used to append any page layout description
+file, which is merged with the current design.*
+:::
+
+::: paragraph
+Once a poly polygon is inserted, it can be moved and its parameters
+edited.
+:::
+::::::::
+
+:::::: sect2
+### Adding image bitmaps
+
+::: paragraph
+You can add an image bitmap using most of bitmap formats (PNG, JPEG, BMP
+...​).
+:::
+
+::: ulist
+- When a bitmap is imported, its PPI (pixel per inch) definition is set
+  to 300PPI.
+
+- This value can be modified in panel Properties (right panel).
+
+- The actual size depend on this parameter.
+
+- Be aware that using higher definition values brings larger output
+  files, and can have a noticeable draw or plot time.
+:::
+
+::: paragraph
+A bitmap can be repeated, **but not rotated**.
+:::
+::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::: {#footer}
+::: {#footer-text}
+Last updated 2026-03-15 16:35:47 -0700
+:::
+::::
