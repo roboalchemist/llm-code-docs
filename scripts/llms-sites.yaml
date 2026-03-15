@@ -1562,3 +1562,6 @@ sites:
 - name: instabug
   base_url: https://docs.instabug.com/
   description: instabug documentation
+- name: pendo
+  base_url: https://help.pendo.io/
+  description: pendo documentation
