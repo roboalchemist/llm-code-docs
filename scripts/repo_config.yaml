@@ -2305,3 +2305,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/cyclonedx
   branch: main
+- name: gnupg
+  description: gnupg from GitHub
+  repo_url: https://github.com/isislovecruft/python-gnupg.git
+  source_folder: docs
+  target_folder: docs/github-scraped/gnupg
+  branch: main
