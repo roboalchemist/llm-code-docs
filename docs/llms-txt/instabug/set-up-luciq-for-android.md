@@ -1,0 +1,61 @@
+# Source: https://docs.instabug.com/android/set-up-luciq-for-android.md
+
+# Set up Luciq for Android
+
+- [Integrate Luciq on Android](/android/set-up-luciq-for-android/integrate-luciq-on-android.md): This page covers how to install the Luciq SDK in your Android application.
+- [Jetpack Compose Integration](/android/set-up-luciq-for-android/integrate-luciq-on-android/jetpack-compose-integration.md)
+- [Updating the SDK](/android/set-up-luciq-for-android/integrate-luciq-on-android/updating-the-sdk.md)
+- [Guide for AI Coding Agents to Integrate Luciq on Android](/android/set-up-luciq-for-android/integrate-luciq-on-android/luciq-ai-android-guide.md)
+- [One Code Apps For Android](/android/set-up-luciq-for-android/integrate-luciq-on-android/one-code-apps-for-android.md)
+- [WebView Support](/android/set-up-luciq-for-android/android-webview-support.md): Track and capture user interactions, network logs, and screen loading within WebViews.
+- [Set up Bug Reporting](/android/set-up-luciq-for-android/set-up-bug-reporting.md)
+- [Showing Luciq](/android/set-up-luciq-for-android/set-up-bug-reporting/showing-luciq.md): This section covers how to set the user action that initializes Luciq, as well as how to customize what appears to your app users after the SDK is shown for Android apps.
+- [Customize Report Fields](/android/set-up-luciq-for-android/set-up-bug-reporting/customize-report-fields.md)
+- [Bug Reporting Callbacks](/android/set-up-luciq-for-android/set-up-bug-reporting/bug-reporting-callbacks.md): Covered here are callbacks that you can use to have a block of code executed when a certain action is triggered for your Android apps.
+- [Set up Proactive Reporting](/android/set-up-luciq-for-android/set-up-bug-reporting/set-up-proactive-reporting.md): This page covers how to configure proactive bug reporting using APIs.
+- [Proactive Reporting for Android](/android/set-up-luciq-for-android/set-up-bug-reporting/proactive-reporting-for-android.md)
+- [Extended Bug Report for Android](/android/set-up-luciq-for-android/set-up-bug-reporting/extended-bug-report-for-android.md): This section documents the APIs you can use to collect specific details in your bug reports from your QA team, internal testers, or beta testers on your Android apps.
+- [Disabling/Enabling Bug Reporting](/android/set-up-luciq-for-android/set-up-bug-reporting/disabling-enabling-bug-reporting.md): This section covers how to disable and enable bug reporting on Android.
+- [Set up Crash Reporting](/android/set-up-luciq-for-android/set-up-crash-reporting.md)
+- [Disabling/Enabling Crash Reporting](/android/set-up-luciq-for-android/set-up-crash-reporting/disabling-enabling-crash-reporting.md): This page details the API for disabling and enabling crash reporting for your Android apps.
+- [Deobfuscation for Android](/android/set-up-luciq-for-android/set-up-crash-reporting/deobfuscation-for-android.md): This guide explains how to deobfuscate crashes in your Android apps to get fully readable stack traces for Java, Kotlin and C++.
+- [Crash Reporting Callbacks](/android/set-up-luciq-for-android/set-up-crash-reporting/crash-reporting-callbacks.md): Covered here is how to set up the callbacks that fire before every crash report is sent so that a specific block of code is executed in your Android app.
+- [Reporting Crashes For Android](/android/set-up-luciq-for-android/set-up-crash-reporting/reporting-crashes-for-android.md)
+- [Capturing ANRs For Android](/android/set-up-luciq-for-android/set-up-crash-reporting/reporting-crashes-for-android/capturing-anrs-for-android.md)
+- [Set up Application Performance Monitoring](/android/set-up-luciq-for-android/set-up-application-performance-monitoring.md)
+- [Set up App Launch](/android/set-up-luciq-for-android/set-up-application-performance-monitoring/set-up-app-launch.md)
+- [Set up Network Monitoring](/android/set-up-luciq-for-android/set-up-application-performance-monitoring/set-up-network-monitoring.md): This page helps you get started with Luciq's network performance monitoring on Android
+- [Set up Screen Rendering](/android/set-up-luciq-for-android/set-up-application-performance-monitoring/set-up-screen-rendering.md): Detect slow and frozen frames in your app’s screens and debug their root cause.
+- [Enable/Disable Screen Rendering](/android/set-up-luciq-for-android/set-up-application-performance-monitoring/set-up-screen-rendering/enable-disable-screen-rendering.md)
+- [Set up Screen Loading](/android/set-up-luciq-for-android/set-up-application-performance-monitoring/set-up-screen-loading.md): Capture how long it takes for a particular screen to load automatically in your Android apps.
+- [WebViews Screen Loading](/android/set-up-luciq-for-android/set-up-application-performance-monitoring/set-up-screen-loading/webviews-screen-loading.md): Measure the loading performance of your WebViews with Web Vitals
+- [Set up Flows](/android/set-up-luciq-for-android/set-up-application-performance-monitoring/set-up-flows.md): Flows provides visibility on the health and performance of the most important user flows in your application.
+- [Instrumentation for Android](/android/set-up-luciq-for-android/set-up-application-performance-monitoring/instrumentation-for-android.md)
+- [SDK Debugging](/android/set-up-luciq-for-android/set-up-application-performance-monitoring/sdk-debugging.md): This page explains the different tools to debug your APM Android integration, bypass the 6-hour batching, and change the SDK log level for your Android apps.
+- [Disabling/Enabling APM for Android](/android/set-up-luciq-for-android/set-up-application-performance-monitoring/disabling-enabling-apm-for-android.md)
+- [Set up Session Replay](/android/set-up-luciq-for-android/set-up-session-replay.md)
+- [Video-Like Replay](/android/set-up-luciq-for-android/set-up-session-replay/video-like-replay.md): Enhance your Session Replay experience with video-like playback. Configure screenshot quality and capture frequency to see exactly what your users experienced during their sessions.
+- [Support Tools Integration](/android/set-up-luciq-for-android/set-up-session-replay/support-tools-integration.md)
+- [Setup In-app Surveys](/android/set-up-luciq-for-android/setup-in-app-surveys.md)
+- [Disabling/Enabling In-App Surveys](/android/set-up-luciq-for-android/setup-in-app-surveys/disabling-enabling-in-app-surveys.md)
+- [Survey Callbacks for Android](/android/set-up-luciq-for-android/setup-in-app-surveys/survey-callbacks-for-android.md): Covered here is how to set up the callback that fires before and after every survey is shown for your Android apps.
+- [In-App Feature Requests](/android/set-up-luciq-for-android/in-app-feature-requests.md)
+- [Showing Feature Requests List](/android/set-up-luciq-for-android/in-app-feature-requests/showing-feature-requests-list.md)
+- [Disabling/Enabling Feature Requests](/android/set-up-luciq-for-android/in-app-feature-requests/disabling-enabling-feature-requests.md): Described here is how to disable or enable the feature requests for your Android app.
+- [Identify users](/android/set-up-luciq-for-android/identify-users.md)
+- [User Identification](/android/set-up-luciq-for-android/identify-users/user-identification.md)
+- [Setting Custom Data](/android/set-up-luciq-for-android/identify-users/setting-custom-data.md)
+- [Logs & Profiling](/android/set-up-luciq-for-android/logs-and-profiling.md): An overview of the different types of logs can be found in this section along with details regarding the session profiler for your Android app.
+- [Custom Spans](/android/set-up-luciq-for-android/logs-and-profiling/custom-spans.md)
+- [Repro Steps for Android](/android/set-up-luciq-for-android/logs-and-profiling/repro-steps-for-android.md)
+- [Session Profiler for Android](/android/set-up-luciq-for-android/logs-and-profiling/session-profiler-for-android.md): This section covers the details contained in the Session Profiler that appears with all bug and crash reports in your dashboard for Android apps.
+- [Report Logs for Android](/android/set-up-luciq-for-android/logs-and-profiling/report-logs-for-android.md): This section covers how Luciq automatically attaches console logs, verbose logs, and all steps made by your users before a bug report is sent for Android apps.
+- [Unified Network Interception](/android/set-up-luciq-for-android/logs-and-profiling/unified-network-interception.md): Luciq's Unified Network Interception provides a streamlined approach to capturing network logs across all Luciq products — Bug Reporting, Crash Reporting, Session Replay, and APM — through a single in
+- [SDK Customizations](/android/set-up-luciq-for-android/sdk-customizations.md): This page covers how to make your users' experience with the Luciq SDK in your app as simple and seamless as possible by customizing the invocation methods, design, popups, locale, and on-boarding.
+- [Welcome Message](/android/set-up-luciq-for-android/sdk-customizations/welcome-message.md)
+- [Prompt Options](/android/set-up-luciq-for-android/sdk-customizations/prompt-options.md)
+- [UI Color & Theme](/android/set-up-luciq-for-android/sdk-customizations/ui-color-and-theme.md)
+- [SDK Locale](/android/set-up-luciq-for-android/sdk-customizations/sdk-locale.md)
+- [Kotlin Compilers Compatibility](/android/set-up-luciq-for-android/kotlin-compilers-compatibility.md)
+- [Setup Push Notifications](/android/set-up-luciq-for-android/setup-push-notifications.md)
+- [Setup App Ratings & Reviews](/android/set-up-luciq-for-android/setup-app-ratings-and-reviews.md)

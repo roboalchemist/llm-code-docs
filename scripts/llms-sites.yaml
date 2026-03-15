@@ -1559,3 +1559,6 @@ sites:
 - name: firebase-crashlytics
   base_url: https://firebase.google.com/docs/
   description: firebase-crashlytics documentation
+- name: instabug
+  base_url: https://docs.instabug.com/
+  description: instabug documentation
