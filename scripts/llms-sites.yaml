@@ -1526,3 +1526,6 @@ sites:
 - name: sumo-logic
   base_url: https://www.sumologic.com/
   description: sumo-logic documentation
+- name: sonatype
+  base_url: https://help.sonatype.com/
+  description: sonatype documentation
