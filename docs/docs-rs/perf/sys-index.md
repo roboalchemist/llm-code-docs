@@ -1,0 +1,5 @@
+perf
+# Module sys 
+Source 
+## Functions§
+perf_event_ioc_disableperf_event_ioc_enableperf_event_ioc_resetperf_event_ioc_set_bpfperf_event_open
