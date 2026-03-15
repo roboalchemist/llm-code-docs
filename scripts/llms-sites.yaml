@@ -1541,3 +1541,6 @@ sites:
 - name: logback
   base_url: https://logbackcn.gitbook.io/
   description: logback documentation
+- name: parseable
+  base_url: https://www.parseable.com/docs/
+  description: parseable documentation
