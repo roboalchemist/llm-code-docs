@@ -2377,3 +2377,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/test.check
   branch: main
+- name: fluent-assertions
+  description: fluent-assertions from GitHub
+  repo_url: https://github.com/fluentassertions/fluentassertions.git
+  source_folder: docs
+  target_folder: docs/github-scraped/fluent-assertions
+  branch: main
