@@ -1580,3 +1580,6 @@ sites:
 - name: pagerduty
   base_url: https://docs.pagerduty.com/
   description: pagerduty documentation
+- name: rootly
+  base_url: https://docs.rootly.com/
+  description: rootly documentation
