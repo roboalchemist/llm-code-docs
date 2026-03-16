@@ -1,0 +1,175 @@
+# Source: https://www.apollographql.com/docs/rover/commands/graphs.md
+
+# Rover graph Commands
+
+These Rover commands are primarily for interacting with [monographs](https://www.apollographql.com/docs/graphos/graphs/overview#monographs) that do not use [federation](https://www.apollographql.com/docs/federation/). However, you can also use them to fetch a federated graph's API schema [from GraphOS](https://www.apollographql.com/docs/rover/commands/graphs.md#graph-fetch) or [via introspection](https://www.apollographql.com/docs/rover/commands/graphs.md#graph-introspect).
+
+* To fetch a federated graph's supergraph schema instead of its API schema, use [`supergraph` commands](https://www.apollographql.com/docs/rover/commands/supergraphs). [Learn about different schema types.](https://www.apollographql.com/docs/federation/federated-types/overview/)
+* When interacting directly with a federated subgraph, instead use [`subgraph` commands](https://www.apollographql.com/docs/rover/commands/subgraphs).
+
+## Fetching a schema
+
+### `graph fetch`
+
+This command requires [authenticating Rover with GraphOS](https://www.apollographql.com/docs/rover/configuring/#authenticating-with-graphos).
+
+You can use Rover to fetch the current schema of any GraphOS graph and variant it has access to.
+
+Run the `graph fetch` command, like so:
+
+```bash
+rover graph fetch my-graph@my-variant
+```
+
+The argument `my-graph@my-variant` in the example above specifies the ID of the Studio graph you're fetching from, along with which [variant](https://www.apollographql.com/docs/graphos/graphs/#variants) you're fetching.
+
+If you omit `@` and the variant name, Rover uses the supergraph's default variant, named `current`.
+
+### `graph introspect`
+
+If you need to obtain the schema of a running GraphQL server or federated gateway, you can use Rover to execute an introspection query on it. This is especially helpful if you're developing a GraphQL server that doesn't define its schema via SDL, such as [`graphql-kotlin`](https://github.com/ExpediaGroup/graphql-kotlin).
+
+Use the `graph introspect` command, like so:
+
+```shell
+rover graph introspect http://example.com/graphql
+```
+
+The server must be reachable by Rover and it must have introspection enabled.
+
+#### Watching for schema changes
+
+If you pass `--watch` to `rover graph introspect`, Rover introspects your GraphQL endpoint every second. Whenever the returned schema differs from the previously returned schema, Rover outputs the updated schema.
+
+#### Including headers
+
+If the endpoint you're trying to reach requires HTTP headers, you can use the `--header` (`-H`) flag to pass `key:value` pairs of headers. If you have multiple headers to pass, use the header multiple times. If the header includes any spaces, the pair must be quoted.
+
+```shell
+rover graph introspect http://example.com/graphql --header "Authorization: Bearer token329r"
+```
+
+### Output format
+
+By default, both `graph fetch` and `graph introspect` output fetched SDL to `stdout`. This is useful for providing the schema as input to other Rover commands:
+
+```shell
+rover graph introspect http://localhost:4000 | rover graph publish my-graph@dev --schema -
+```
+
+You can also save the output to a local `.graphql` file like so:
+
+```bash
+# Creates prod-schema.graphql or overwrites if it already exists
+rover graph fetch my-graph@my-variant --output prod-schema.graphql
+```
+
+For more on passing values via `stdout`, see [Conventions](https://www.apollographql.com/docs/rover/conventions#using-stdout).
+
+## Publishing a schema to GraphOS
+
+### `graph publish`
+
+This command requires [authenticating Rover with GraphOS](https://www.apollographql.com/docs/rover/configuring/#authenticating-with-graphos).
+
+You can use Rover to publish schema changes to one of your [GraphOS monographs](https://www.apollographql.com/docs/graphos/graphs/#monographs).
+
+Use the `graph publish` command, like so:
+
+```shell
+rover graph publish my-graph@my-variant --schema ./schema.graphql
+```
+
+The argument `my-graph@my-variant` in the example above specifies the ID of the GraphOS graph you're publishing to, along with which [variant](https://www.apollographql.com/docs/graphos/graphs/#variants) you're publishing to.
+
+If the graph exists in GraphOS but the variant doesn't, a new variant is be created on publish.
+
+### Providing the schema
+
+You provide your schema to Rover commands via the `--schema` option. The value is usually the path to a local `.graphql` or `.gql` file in SDL format.
+
+If your schema isn't stored in a compatible file, you can provide `-` as the value of the `--schema` flag to instead accept an SDL string from `stdin`. This enables you to pipe the output of another Rover command (such as `graph introspect`), like so:
+
+```shell
+rover graph introspect http://localhost:4000 | rover graph publish my-graph@dev --schema -
+```
+
+Whenever possible, we recommend publishing a `.graphql` file directly instead of using introspection. An introspection result omits schema comments and most uses of directives.
+
+For more on accepting input via `stdin`, see [Conventions](https://www.apollographql.com/docs/rover/conventions#using-stdin).
+
+## Validating schema changes
+
+### `graph check`
+
+This command requires [authenticating Rover with GraphOS](https://www.apollographql.com/docs/rover/configuring/#authenticating-with-graphos).
+
+Before you [publish schema changes to GraphOS](https://www.apollographql.com/docs/rover/commands/graphs.md#publishing-a-schema-to-graphos), you can [check those changes](https://www.apollographql.com/docs/graphos/delivery/schema-checks/) to confirm that you aren't introducing breaking changes to your application clients.
+
+To do so, you can run the `graph check` command:
+
+```shell
+# Using a schema file
+rover graph check my-graph@my-variant --schema ./schema.graphql
+
+# Using piped input to stdin
+rover graph introspect http://localhost:4000 | rover graph check my-graph --schema -
+```
+
+As shown, arguments and options are similar to [`graph publish`](https://www.apollographql.com/docs/rover/commands/graphs.md#graph-publish).
+
+To configure the behavior of schema checks (such as the time range of past operations to check against), see the [documentation for schema checks](https://www.apollographql.com/docs/graphos/delivery/check-configurations/#using-apollo-studio-recommended).
+
+If you don't want to wait for the check to complete, you can run the command with the `--background` flag. You can then look up the check's result in GraphOS Studio on the Checks tab.
+
+#### Running checks in CI
+
+If you're running schema checks in CI, you might want to pass the `--background` flag to `rover graph check`. This flag instructs Rover to initiate schema checks but not await their result. If you've [connected GraphOS to your GitHub repository](https://www.apollographql.com/docs/graphos/delivery/github-integration/), the integration detects the checks execution and adds a status to the associated pull request.
+
+### `graph lint`
+
+This command requires [authenticating Rover with GraphOS](https://www.apollographql.com/docs/rover/configuring/#authenticating-with-graphos).
+
+You can run the GraphOS schema linter against your local schema to identify any violations of formatting and naming best practices:
+
+```bash title=Example command
+rover graph lint --schema ./schema.graphql my-graph@my-variant
+```
+
+The argument `my-graph@my-variant` in the example above is a **graph ref** that specifies the ID of the graph you're comparing your schema changes against, along with which [variant](https://www.apollographql.com/docs/graphos/graphs/#variants) you're comparing against.
+
+Schema linting also runs as one of the checks included in [`graph check`](https://www.apollographql.com/docs/rover/commands/graphs.md#graph-check). Use this command to perform one-off linting.
+
+Options include:
+
+Name
+Description
+
+###### `--schema`
+
+**Required.** The path to a local `.graphql` or `.gql` file, in SDL format.
+
+Alternatively, you can provide `-`, in which case the command uses an SDL string piped to `stdin` instead (see [Using `stdin`](https://www.apollographql.com/docs/rover/conventions#using-stdin)).
+
+###### `--ignore-existing-lint-violations`
+
+If provided, the linter only flags violations that are present in the diff between your local schema and your published schema.
+
+By default, this command flags all violations in your local schema.
+
+## Deleting a variant
+
+### `graph delete`
+
+This command requires [authenticating Rover with GraphOS](https://www.apollographql.com/docs/rover/configuring/#authenticating-with-graphos).
+
+You can delete a single variant of a graph by running `rover graph delete`:
+
+```bash
+# ⚠️ This action is irreversible!
+rover graph delete my-graph@variant-to-delete
+```
+
+This command prompts you for confirmation because the action is irreversible. You can bypass confirmation by passing the `--confirm` flag.
+
+If you delete a federated variant with this command, it also deletes all of that variant's subgraphs. To delete a single subgraph while preserving the variant, see [Deleting a subgraph](https://www.apollographql.com/docs/rover/commands/subgraphs#deleting-a-subgraph).

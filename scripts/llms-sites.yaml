@@ -1583,3 +1583,6 @@ sites:
 - name: rootly
   base_url: https://docs.rootly.com/
   description: rootly documentation
+- name: apollo-graphos
+  base_url: https://www.apollographql.com/
+  description: apollo-graphos documentation

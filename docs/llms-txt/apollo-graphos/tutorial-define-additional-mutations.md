@@ -1,0 +1,263 @@
+# Source: https://www.apollographql.com/docs/ios/tutorial/tutorial-define-additional-mutations.md
+
+# 12. Define additional mutations
+
+In this section you will implement additional mutations for booking and cancelling trips.
+
+## Add the `BookTrip` mutation
+
+In [Sandbox](https://studio.apollographql.com/sandbox/explorer?endpoint=https%3A%2F%2Fapollo-fullstack-tutorial.herokuapp.com), open the Schema tab by clicking its icon, select the `Mutations`, and take a look at the `bookTrips` mutation:
+
+Click the play button to the right to open this mutation in Explorer. Click the plus button to add the `bookTrips` mutation:
+
+You can see in the left sidebar that this takes an argument of an array of IDs (which was added as `$bookTripsLaunchIds`), and the object returned from the operation has three properties:
+
+* A `success` boolean indicating whether the booking succeeded
+* A `message` string to display to the user
+* A list of `launches` the current user has booked
+
+Click the plus signs next to `success` and `message` to add those to your operation.
+
+In the "Variables" section of Sandbox Explorer, add an array of identifiers. In this case, we'll use a single identifier to book one trip:
+
+```json title=(Sandbox Explorer)
+{"bookTripsLaunchIds": ["25"]}
+```
+
+Next, directly next to the word "Variables", you'll see the word "Headers". Click that to bring up the headers section. Click the "New Header" button, and add "Authorization" in the header key text box and paste the token you got back in the last section for the value:
+
+Now, click the Submit Operation button to run your authorized query. You'll get back information regarding the trips (or in this case, trip) you've just booked.
+
+> Note: If you receive an error that says "Cannot read property 'id' of null", that means your user was not found based on the token you passed through. Make sure your authorization header is properly formatted and that you're actually logged in!
+
+With a mutation written like this, you can book any number of trips you want at the same time. However, the booking mechanism in our application will only let you book one trip at a time.
+
+Luckily, there's an easy way to update the mutation so it's required to only take a single object. First, update the name of your operation in Explorer to the singular `BookTrip`. Next, update the mutation to take a single `$id`, then pass an array containing that `$id` to the `bookTrips` mutation:
+
+```graphql title=(Sandbox Explorer)
+mutation BookTrip($id:ID!) {
+  bookTrips(launchIds:[$id]) {
+    success
+    message
+  }
+}
+```
+
+This is helpful because the Swift code generation will now generate a method that only accepts a single `ID` instead of an array, but you'll still be calling the same mutation under the hood, without the backend needing to change anything.
+
+In the Variables section of Sandbox Explorer, update the JSON dictionary to use `id` as the key, and remove the array brackets from around the identifier:
+
+```json title=(Sandbox Explorer)
+{"id": "25"}
+```
+
+Click the Submit Operation button to run your updated query. The response you get back should be identical to the one you got earlier:
+
+Now that you've fleshed out your operation, it's time to put it into the app. Go to **File > New > File... > Empty**, name this file `BookTrip.graphql` and add it next to your other GraphQL files. Paste in the final query from the Sandbox Explorer.
+
+```graphql title=BookTrip.graphql
+mutation BookTrip($id: ID!) {
+  bookTrips(launchIds: [$id]) {
+    success
+    message
+  }
+}
+```
+
+Now run code generation in Terminal to generate the new mutation code.
+
+## Implement the `bookTrip` logic
+
+Now that you have the `BookTrip` mutation, it's time to implement the logic to book a trip in the app. Start by going to `DetailViewModel.swift` and finding the `bookTrip()` method.
+
+Replacing the existing function with this code:
+
+```swift title=DetailViewModel.swift
+private func bookTrip(with id: RocketReserverAPI.ID) async {
+    do {
+        let response = try await ApolloClient.shared.perform(mutation: BookTripMutation(id: id))
+        
+        if let errors = response.errors {
+            appAlert = .errors(errors: errors)
+        }
+        
+        if let bookingResult = response.data?.bookTrips {
+            if bookingResult.success {
+                appAlert = .basic(title: "Success!",
+                                    message: bookingResult.message ?? "Trip booked successfully")
+                await loadLaunchDetails()
+            } else {
+                appAlert = .basic(title: "Could not book trip",
+                                    message: bookingResult.message ??
+                                    "Something went wrong while booking the trip")
+            }
+        }
+    } catch {
+        appAlert = .errors(errors: [error])
+    }
+}
+```
+
+You've now got the code to book a trip. Before you run it, let's add the code to cancel a trip as well.
+
+## Add the `CancelTrip` mutation
+
+The process for the `CancelTrip` mutation is similar to the one for `BookTrip`. Go back to the Sandbox's Schema tab, select Mutations, and look at the `cancelTrip` mutation's documentation:
+
+Click the play button to the right to open this operation in Explorer, add a new tab to Explorer for this new operation, then click the plus button to create your operation.
+
+Check off `success` and `message` again to add those properties to the list of ones you want to get back with your cancellation information.
+
+Again, Explorer's gotten a little verbose here, so update your operation's name and variables to be a little shorter:
+
+```graphql title=(Sandbox Explorer)
+mutation CancelTrip($id: ID!) {
+  cancelTrip(launchId: $id) {
+    success
+    message
+  }
+}
+```
+
+One key difference from `bookTrips` is that you're only allowed to cancel one trip at a time because only one `ID!` is accepted as a parameter.
+
+In the Variables section of Sandbox Explorer, you can use the exact same JSON that you used for `BookTrip` (because it also used a single identifier called "id"):
+
+```json title=(GraphiQL)
+{"id": "25"}
+```
+
+Make sure that in the Headers section, you add your authorization token again (the token added to the tab with `BookTrip` won't carry over to this new tab):
+
+Click the Submit Operation button to cancel the trip, and you should see a successful request:
+
+Once again, go back to Xcode and create a new empty file, name it `CancelTrip.graphql`, and add it next to your other GraphQL files. Then, paste in the final query from Sandbox Explorer:
+
+```graphql title=CancelTrip.graphql
+mutation CancelTrip($launchId: ID!) {
+  cancelTrip(launchId: $launchId) {
+    success
+    message
+  }
+}
+```
+
+Now run code generation in Terminal to generate the new mutation code.
+
+## Implement the `cancelTrip` logic
+
+Now let's implement the logic to cancel a trip in the app, go back to `DetailViewModel.swift`, find the `cancelTrip()` method and replace it with the following code:
+
+```swift title=DetailViewModel.swift
+private func cancelTrip(with id: RocketReserverAPI.ID) async {
+    do {
+        let response = try await ApolloClient.shared.perform(mutation: CancelTripMutation(launchId: id))
+        
+        if let errors = response.errors {
+            appAlert = .errors(errors: errors)
+        }
+        
+        if let cancelResult = response.data?.cancelTrip {
+            if cancelResult.success {
+                appAlert = .basic(
+                    title: "Trip cancelled",
+                    message: cancelResult.message ?? "Your trip has been officially cancelled"
+                )
+                await loadLaunchDetails()
+            } else {
+                appAlert = .basic(
+                    title: "Could not cancel trip",
+                    message: cancelResult.message ?? "Something went wrong"
+                )
+            }
+        }
+    } catch {
+        appAlert = .errors(errors: [error])
+    }
+}
+```
+
+One more thing we need to do is update the `bookOrCancel()` method to actually call our `bookTrip(...)` and `cancelTrip(...)` methods, replace the `TODO` in `bookOrCancel()` with the following code:
+
+```swift title=DetailViewModel.swift
+guard let launch = launch else {
+    return
+}
+        
+launch.isBooked ? cancelTrip(with: launch.id) : bookTrip(with: launch.id)
+```
+
+Now build and run the application, if you go to the detail view for any launch and click "Book trip" you should get a message that the trip was successfully booked, but you'll notice that the UI doesn't update, even if you go out of the detail view and back into it again.
+
+Why is that? Because the trip you've got stored locally in your cache still has the old value for `isBooked`.
+
+There are a number of ways to change this, but for now we'll focus on the one that requires the fewest changes to your code: re-fetching the booking info from the network.
+
+## Force a fetch from the network
+
+The `fetch` method of `ApolloClient` provides defaults for most of its parameters, so if you're using the default configuration, the only value you need to provide yourself is the `Query`.
+
+An important parameter to be aware of is `cachePolicy`. By default, its value is `cacheFirst`, which first attempts to fulfill the request from the cache. If the data isn't in the cache, it fetches from the network.
+
+If the data *is* present, the default behavior is to return the local copy to prevent an unnecessary network fetch. However, this is sometimes not the desired behavior (especially after executing a mutation).
+
+Multiple [cache policies are available](https://www.apollographql.com/docs/ios/fetching/fetching-data#fetching-locally-cached-data). To force a refresh from the network that also updates the cache, use the `networkOnly` policy. This policy bypasses the cache for the request but stores the fetched results in the cache for future use.
+
+Update the `loadLaunchDetails` method to take a parameter to determine if it should force reload. If it should force reload, update the cache policy from the default `.returnCacheDataElseFetch`, which will return data from the cache if it exists, to `.fetchIgnoringCacheData`:
+
+```swift title=DetailViewModel.swift
+func loadLaunchDetails(forceReload: Bool = false) async { // highlight-line
+    guard forceReload || launchID != launch?.id else { // highlight-line
+        return
+    }
+    
+    let cachePolicy: CachePolicy.Query.SingleResponse = forceReload ? .networkOnly : .cacheFirst // highlight-line
+    
+    do {
+        let response = try await ApolloClient.shared.fetch( // highlight-line
+            query: LaunchDetailsQuery(launchId: launchID), // highlight-line
+            cachePolicy: cachePolicy // highlight-line
+        ) // highlight-line
+        
+        if let errors = response.errors {
+            appAlert = .errors(errors: errors)
+        }
+        
+        if let launch = response.data?.launch {
+            self.launch = launch
+        }
+    } catch {
+        appAlert = .errors(errors: [error])
+    }
+}
+```
+
+Next, update both the `bookTrip(...)` and `cancelTrip(...)` methods to use the updated `loadLaunchDetails(...)` call:
+
+```swift title=DetailViewModel.swift
+// bookTrip()
+appAlert = .basic(title: "Success!",
+                message: bookingResult.message ?? "Trip booked successfully")
+await loadLaunchDetails(forceReload: true) // highlight-line
+
+// cancelTrip()
+appAlert = .basic(title: "Trip cancelled",
+                message: cancelResult.message ?? "Your trip has been officially cancelled")
+await loadLaunchDetails(forceReload: true) // hightlight-line
+```
+
+## Test the mutations
+
+Run the application. When you book or cancel a trip, the application will fetch the updated state and update the UI with the correct state. When you go out and back in, the cache will be updated with the most recent state, and the most recent state will display.
+
+## More resources
+
+> **Note:** The subscriptions section of this tutorial is temporarily removed while Apollo rewrites the WebSocket functionality for an upcoming v2.x release.
+
+You can do much more with the Apollo iOS SDK. The rest of this documentation covers advanced topics, including:
+
+* Using [fragments](https://www.apollographql.com/docs/ios/fetching/fragments/)
+* Working with [custom scalars](https://www.apollographql.com/docs/ios/custom-scalars)
+* [Managing the cache](https://www.apollographql.com/docs/ios/caching/introduction)
+
+Feel free to ask questions in [Apollo's Community Forum](https://community.apollographql.com/new-topic?category=Help\&tags=mobile,client).

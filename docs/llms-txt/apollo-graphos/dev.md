@@ -1,0 +1,269 @@
+# Source: https://www.apollographql.com/docs/rover/commands/dev.md
+
+# The Rover dev Command
+
+The `rover dev` command runs your supergraph locally. With the `--mcp` flag, it can also [run your MCP server](https://www.apollographql.com/docs/rover/commands/dev.md#run-your-mcp-server) alongside your supergraph.
+
+# Run your supergraph
+
+A *supergraph* is an architecture consisting of multiple GraphQL APIs (*subgraphs*) and a *graph router* that runs in front of them:
+
+```mermaid
+graph LR;
+  clients(Clients);
+  subgraph "Supergraph";
+  router(["Graph Router"]);
+  serviceA[Subgraph A];
+  serviceB[Subgraph B];
+  router --- serviceA & serviceB;
+  end;
+  clients -.- router;
+  class clients secondary;
+```
+
+While you're making local changes to an individual subgraph, you can use the `rover dev` command to start a local router instance and test the effects of subgraph changes on your entire supergraph.
+
+Whenever you add, modify, or remove a subgraph from your local supergraph, Rover automatically re-composes your individual subgraph schemas into a unified supergraph schema and provides it to your local router session.
+
+Don't run `rover dev` in production. It's for local development only.
+
+Rover v0.27.0 introduces some new features and breaking changes to `rover dev`. See the [release notes](https://github.com/apollographql/rover/releases/tag/v0.27.0) for details.
+
+## Starting a router session
+
+To use `rover dev`, you need at least one running GraphQL API (subgraph). Rover can obtain a subgraph's schema via introspection (either standard or [federated introspection](https://www.apollographql.com/docs/federation/subgraph-spec#enhanced-introspection-with-query_service)), or you can provide a local schema file.
+
+Here's an example `rover dev` command that points to a locally running subgraph and provides its schema via a local file:
+
+```bash title=Example command
+rover dev --name products --schema ./products.graphql --url http://localhost:4000
+```
+
+To use [GraphOS Router features](https://www.apollographql.com/docs/graphos/routing/graphos-features#graphos-router-features) or the `@connect` directive in your schema, provide the `APOLLO_KEY` and `APOLLO_GRAPH_REF` environment variables.
+
+You don't have to provide a locally running subgraph. You can point to any GraphQL endpoint that your local environment can reach. You can even mix and match local and remote subgraphs, which is helpful for testing local changes against your staging subgraphs.
+
+When you start your first `rover dev` process:
+
+1. Rover obtains the subgraph schema(s) you provide via the [supergraph config file](https://www.apollographql.com/docs/rover/commands/supergraphs#yaml-configuration-file).
+2. Rover composes a [supergraph schema](https://www.apollographql.com/docs/federation/federated-types/overview/#supergraph-schema) from the subgraph schema(s).
+3. Rover starts a locally running [router](https://www.apollographql.com/docs/router) session and provides it the supergraph schema.
+4. Rover starts watching the provided subgraph schema(s) for changes, recomposing the supergraph schema whenever it detects a change. This automatically reloads the router.
+5. When provided via the `--router-config` CLI option, Rover starts watching the router config for changes, automatically reloading the router whenever it detects a change.
+
+### Starting a session with multiple subgraphs
+
+If you work with a standard set of subgraphs, you can create a [supergraph config file](https://www.apollographql.com/docs/rover/commands/supergraphs#yaml-configuration-file) and add all of them to your local router session with a single `rover dev` command.
+
+For example, this `supergraph.yaml` file provides the necessary details for two subgraphs:
+
+```yaml title=supergraph.yaml
+federation_version: =2.4.7
+subgraphs:
+  products:
+    routing_url: http://localhost:4000
+    schema:
+      file: ./products.graphql # Schema provided via file
+  reviews:
+    schema:
+      subgraph_url: http://localhost:4001 # Schema provided via introspection, routing_url can be omitted
+  users:
+    # routing_url: <Optional, pulled from GraphOS registry by default>
+    schema:  # Schema downloaded from GraphOS registry, does not poll for updates
+      graphref: mygraph@current
+      subgraph: actors
+```
+
+You provide this file to `rover dev` like so:
+
+```bash
+rover dev --supergraph-config supergraph.yaml
+```
+
+If you do, a router session starts with one of the subgraphs listed, then adds the remaining subgraphs one at a time (order is undefined). Because of this, you might observe composition errors during intermediate steps.
+
+Providing a `supergraph.yaml` file also enables you to take advantage of [other config options](https://www.apollographql.com/docs/rover/commands/supergraphs#yaml-configuration-file), such as `introspection_headers`.
+
+Rover watches the [supergraph config file](https://www.apollographql.com/docs/rover/commands/supergraphs#yaml-configuration-file) for changes, allowing you to add, remove, or update subgraphs, making those changes available to the router instance. Only one config file may be used at a time for the `rover dev` session.
+
+### Starting a session from a GraphOS Studio variant
+
+Apollo is actively improving the integration between Rover and GraphOS Studio.
+If you have feedback on this functionality, please [get in touch](mailto:cloud@apollographql.com).
+
+To start a local router instance using a GraphOS Studio variant, include the variant's graph ref with the `--graph-ref` option like so:
+
+```bash
+rover dev --graph-ref docs-example-graph@current
+```
+
+To pass a graph ref, you need a graph API key configured in Rover.
+
+When you include a graph ref, Rover uses the associated variant's subgraph routing URLs and schemas from Studio as the supergraph config.
+You can view a variant's subgraphs, including their routing URLs and schemas, on the variant's **Subgraphs** page in Studio.
+You may also use remote subgraphs in your [supergraph config file](https://www.apollographql.com/docs/rover/commands/supergraphs#yaml-configuration-file). See the `actors` subgraph in the `supergraph.yaml` example above for the syntax.
+
+#### Overriding variant subgraphs
+
+While developing locally, you may want to override one or more subgraph(s) in your Studio variant with subgraphs from your local environment.
+You can do this by passing a [supergraph config file](https://www.apollographql.com/docs/rover/commands/supergraphs#yaml-configuration-file) alongside a graph ref. Any subgraphs defined in the supergraph config file override those from the graph ref.
+
+For example, given a `supergraph_override.yaml` file like this:
+
+```yaml title=supergraph_override.yaml
+subgraphs:
+  products:
+    routing_url: http://localhost:4000
+    schema:
+      file: ./products.graphql
+```
+
+You can override a variant's published `products` subgraph like so:
+
+```bash
+rover dev \
+  --graph-ref docs-example-graph@current \
+  --supergraph-config path/to/supergraph_override.yaml
+
+```
+
+This command overrides the variant's published `products` subgraph in your local development session.
+If the Studio variant doesn't include a `products` subgraph, this command adds the subgraph and recomposes the supergraph schema.
+
+#### Overriding federation versions
+
+You can also use a [supergraph config file](https://www.apollographql.com/docs/rover/commands/supergraphs#yaml-configuration-file) to safely test a new federation version locally before putting it in production.
+
+For example, given a `federation_override.yaml` file like this:
+
+```yaml title=federation_override.yaml
+federation_version: =2.4.7
+```
+
+You can override a variant's federation version like so:
+
+```bash
+rover dev \
+  --graph-ref docs-example-graph@current \
+  --supergraph-config federation_override.yaml
+```
+
+You can also override a variant's federation version by passing the `--federation-version` option. This argument accepts fully qualified [federation versions](https://github.com/apollographql/federation/releases), prefixed with an equals sign (`=`), for example '=2.9.3'. Alternatively, you can use `1` or `2` (without an equals sign) for the latest release of Federation 1 or 2 respectively.
+
+```bash
+rover dev \
+  --graph-ref docs-example-graph@current \
+  --supergraph-config federation_override.yaml
+  --federation-version '=2.9.3'
+```
+
+If both a `federation_override.yaml` and the `--federation-version` option are used, `--federation-version` takes precedence.
+
+## Adding, removing, or updating subgraphs in a `rover dev` session
+
+While running `rover dev`, it's possible to add, remove, and update subgraphs by updating the [supergraph config file](https://www.apollographql.com/docs/rover/commands/supergraphs#yaml-configuration-file).
+
+## Health check
+
+By default, the router's health check endpoint is disabled in `rover dev`. You can enable it again by enabling it in a router configuration YAML file and passing it to `rover dev` via the `--router-config` argument described in the following section.
+
+## Configuring the router
+
+To configure advanced router functionality like CORS settings or header passthrough for subgraphs, you can pass a valid [router configuration YAML file](https://www.apollographql.com/docs/router/configuration/overview#yaml-config-file) to `rover dev` via the `--router-config <ROUTER_CONFIG_PATH>` argument.
+
+### GraphOS Router features
+
+If you want to use [GraphOS Router features](https://www.apollographql.com/docs/graphos/routing/graphos-features#graphos-router-features), you must provide both:
+
+1. A [graph API key](https://www.apollographql.com/docs/graphos/api-keys/#graph-api-keys) either via the `APOLLO_KEY` environment variable or by [configuring credentials](https://www.apollographql.com/docs/rover/commands/config#creating-configuration-profiles) in Rover
+2. A graph ref either via the `APOLLO_GRAPH_REF` environment variable or the `--graph-ref` option. Learn about the difference between these in the section below
+
+#### Understanding `APOLLO_GRAPH_REF` vs `--graph-ref`
+
+While both the `APOLLO_GRAPH_REF` environment variable and `--graph-ref` option provide a graph ref to `rover dev`, they work slightly differently:
+
+| Method                                  | Purpose                                                                                                                                                                                                                                                                                        |
+| --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `APOLLO_GRAPH_REF` environment variable | Passed directly to the router that `rover dev` spins up in order to enable [GraphOS Router features](https://www.apollographql.com/docs/graphos/routing/graphos-features#graphos-router-features). This environment variable is used only by the router and not by Rover for schema retrieval. |
+| `--graph-ref` option                    | Tells Rover to pull the supergraph schema from GraphOS, allowing you to [use a published variant](https://www.apollographql.com/docs/rover/commands/dev.md#starting-a-session-from-a-graphos-studio-variant) as the foundation for your local development.                                     |
+
+This means you should:
+
+* Use `APOLLO_GRAPH_REF` environment variable when you are using local schema files for development and need to enable GraphOS Router features.
+* Use the `--graph-ref` option when you want to develop against a published graph variant, pulling its schema from GraphOS. This option also enables GraphOS Router features if the referenced graph has access to them.
+
+## Federation 2 ELv2 license
+
+The first time you use Federation 2 composition on a particular machine, Rover prompts you to accept the terms and conditions of the [ELv2 license](https://www.apollographql.com/docs/resources/elastic-license-v2-faq/). On future invocations, Rover remembers that you already accepted the license and doesn't prompt you again (even if you update Rover).
+
+## Plugins
+
+The ELv2-licensed plugins, `supergraph` (built from [this source](https://github.com/apollographql/federation-rs)) and `router` (built from [this source](https://github.com/apollographql/router)) are installed to `~/.rover/bin` if you installed with the `curl | sh` installer, and to `./node_modules/.bin/` if you installed with npm.
+
+## Versioning
+
+By default, `rover dev` uses the version of the router, composition, and MCP server plugins [defined in the Rover GitHub repo](https://raw.githubusercontent.com/apollographql/rover/main/latest_plugin_versions.json). You can override any of these versions:
+
+* Router: Set the `APOLLO_ROVER_DEV_ROUTER_VERSION` environment variable (e.g., `APOLLO_ROVER_DEV_ROUTER_VERSION=1.0.0`)
+* Composition: Use the `--federation-version` flag or set the `APOLLO_ROVER_DEV_COMPOSITION_VERSION` environment variable (e.g., `--federation-version 2.0.0` or `APOLLO_ROVER_DEV_COMPOSITION_VERSION=2.0.0`)
+* MCP Server: Use the `--mcp-version` flag or set the `APOLLO_ROVER_DEV_MCP_VERSION` environment variable (e.g., `--mcp-version 1.0.0` or `APOLLO_ROVER_DEV_MCP_VERSION=1.0.0`)
+
+If you already have these plugins installed, you can pass `--skip-update` to `rover dev` in order to keep the plugins at the same version.
+
+# Run your MCP server
+
+Run and test your [Apollo MCP Server](https://www.apollographql.com/docs/apollo-mcp-server) locally alongside your graph.
+
+### `rover dev --mcp`
+
+Use the `rover dev` command, with the addition of the `--mcp` flag to start your MCP server, with an optional configuration file:
+
+```terminal
+rover dev \
+  --supergraph-config supergraph.yaml \
+  --mcp .apollo/mcp.local.yaml
+```
+
+You can optionally specify a specific version of the MCP server to use:
+
+```terminal
+rover dev \
+  --supergraph-config supergraph.yaml \
+  --mcp .apollo/mcp.local.yaml \
+  --mcp-version 1.1.0-rc.1
+```
+
+This starts and serves your graph and MCP server as two local endpoints:
+
+* GraphQL API: `http://localhost:4000`
+* MCP Server: `http://localhost:8000`
+
+To provide your graph credentials, you can define the `APOLLO_KEY` and `APOLLO_GRAPH_REF` in the terminal as environment variables, or set a source `.env` file.
+
+Setting environment variables:
+
+```terminal
+# MacOS / Linux
+APOLLO_KEY=<YOUR_APOLLO_KEY> \
+APOLLO_GRAPH_REF=<YOUR_APOLLO_GRAPH_REF> \
+rover dev <OPTIONS>
+```
+
+```terminal
+# Windows
+$env:APOLLO_KEY="<YOUR_APOLLO_KEY>"; `
+$env:APOLLO_GRAPH_REF="<YOUR_APOLLO_GRAPH_REF>"; `
+rover dev <OPTIONS>
+```
+
+Sourcing an `.env` file:
+
+```terminal
+source .env && rover dev --supergraph-config supergraph.yaml --mcp .apollo/mcp.local.yaml
+```
+
+### Additional resources
+
+You can also run the Apollo MCP Server with [Docker](https://www.apollographql.com/docs/apollo-mcp-server/run#with-docker), the [Apollo Runtime Container](https://www.apollographql.com/docs/apollo-mcp-server/run#with-the-apollo-runtime-container) or using the [standalone MCP server binary](https://www.apollographql.com/docs/apollo-mcp-server/run#standalone-mcp-server-binary).
+
+For a full guide on the different ways to run your MCP server, read [Running the Apollo MCP Server](https://www.apollographql.com/docs/apollo-mcp-server/run).

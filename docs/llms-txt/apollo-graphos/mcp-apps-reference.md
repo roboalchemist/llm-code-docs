@@ -1,0 +1,191 @@
+# Source: https://www.apollographql.com/docs/apollo-mcp-server/mcp-apps-reference.md
+
+# MCP Apps Reference
+
+This reference guide provides a comprehensive overview of MCP Apps configuration elements. Use the tables below to understand what each element is, where it's configured (GraphQL operations come from your app code, while app-level settings come from your configuration files or `package.json`), and how it maps to the MCP/ChatGPT side.
+
+For more information about MCP Apps specifications, visit the [OpenAI Apps SDK documentation](https://developers.openai.com/apps-sdk) and the [Model Context Protocol documentation](https://modelcontextprotocol.io/docs/extensions/apps).
+
+## App-level configuration
+
+App-level configuration is used to configure the Apollo MCP server to serve your application. App-level configuration is defined using a config file. Configuration is loaded by [`cosmiconfig`](https://github.com/cosmiconfig/cosmiconfig), which supports multiple file formats and locations. Configuration is automatically loaded from:
+
+* `.apollo-client-ai-apps.config.json`
+* `apollo-client-ai-apps.config.json`
+* `.apollo-client-ai-apps.config.yml`
+* `apollo-client-ai-apps.config.yml`
+* `.apollo-client-ai-apps.config.yaml`
+* `apollo-client-ai-apps.config.yaml`
+* `.apollo-client-ai-apps.config.js`
+* `apollo-client-ai-apps.config.js`
+* `.apollo-client-ai-apps.config.ts`
+* `apollo-client-ai-apps.config.ts`
+* `.apollo-client-ai-apps.config.cjs`
+* `apollo-client-ai-apps.config.cjs`
+* An `apollo-client-ai-apps` key in `package.json`
+
+This file should be placed at the root of your client application code (the `dev/<app-name>` directory if following the conventions from the [Apollo AI Apps Template](https://github.com/apollographql/ai-apps-template)).
+
+### TypeScript config file
+
+If you use a TypeScript config file, use the `ApolloClientAiAppsConfig` type from the `@apollo/client-ai-apps/config` entry point to get TypeScript validation on your config object.
+
+```ts
+// apollo-client-ai-apps.config.ts
+import { ApolloClientAiAppsConfig } from "@apollo/client-ai-apps/config";
+
+const config: ApolloClientAiAppsConfig.Config = {
+  // your configuration
+};
+
+export default config;
+```
+
+When updating the TypeScript config file in development, you may need to restart your dev server in between edits in order for the manifest to update correctly due to how the `cosmiconfig` TypeScript loader caches the config file.
+
+### Configuration options
+
+The following app-level configuration options are supported:
+
+| Element                                    | What it is                            | Where it maps to                                                                            | Notes                                                                                                                                                                                                                                                                                                   |
+| ------------------------------------------ | ------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`(optional)                           | Application name                      | MCP tool namespace                                                                          | If not provided by app configuration, defaults to the `name` property in `package.json`                                                                                                                                                                                                                 |
+| `description`(optional)                    | Application description               | Tool description prefix                                                                     | If not provided by app configuration, defaults to the `description` property in `package.json`. Prefixed to tool descriptions                                                                                                                                                                           |
+| `version`(optional)                        | Application version                   | Reported as part of `appInfo` during `ui/initialize` notification                           | If not provided, defaults to `version` property in `package.json`                                                                                                                                                                                                                                       |
+| `entry`(optional)                          | Entry point configuration             | `resource` in manifest                                                                      | Map that configures the entry point for a mode. Can be a string (used for both `mcp` and `openai` environments) or an object with `mcp` and `openai` keys. Defaults: `development` points to local Vite dev server URL; `production` points to `index.html`. Custom modes supported via `--mode` option |
+| `csp.connectDomains` (optional)            | Approved origins for network requests | `openai/widgetCSP.connect_domains` (ChatGPT Apps)`_meta.ui.csp.connectDomains` (MCP Apps)   | Approved origins for fetch/XHR/WebSocket requests. Must include protocol (`https://`)                                                                                                                                                                                                                   |
+| `csp.frameDomains`(optional)               | Approved origins for nested iframes   | `openai/widgetCSP.frame_domains` (ChatGPT Apps)`_meta.ui.csp.frameDomains` (MCP Apps)       | Approved origins for nested iframes (frame-src directive). Must include protocol (`https://`)                                                                                                                                                                                                           |
+| `csp.redirectDomains`(optional)            | Approved origins for redirects        | `openai/widgetCSP.redirect_domains` (ChatGPT Apps only)                                     | OpenAI environment only. Enables ChatGPT return link to the same conversation. ChatGPT skips the safe-link modal and appends a `redirectUrl` query parameter                                                                                                                                            |
+| `csp.resourceDomains`(optional)            | Approved origins for static resources | `openai/widgetCSP.resource_domains` (ChatGPT Apps)`_meta.ui.csp.resourceDomains` (MCP Apps) | Approved origins for static resources (scripts, images, styles, fonts). Must include protocol (`https://`)                                                                                                                                                                                              |
+| `widgetSettings.prefersBorder`(optional)   | Visual boundary preference            | `openai/widgetPrefersBorder` (ChatGPT Apps)`_meta.ui.prefersBorder` (MCP Apps)              | Boolean flag for visual boundary display                                                                                                                                                                                                                                                                |
+| `widgetSettings.description`(optional)     | Widget description                    | `openai/widgetDescription` (ChatGPT Apps only)                                              | OpenAI environment only. Lets the widget describe itself                                                                                                                                                                                                                                                |
+| `widgetSettings.domain`(optional)          | Dedicated origin for the view         | `openai/widgetDomain` (ChatGPT Apps)`_meta.ui.domain` (MCP Apps)                            | Dedicated origin for the view                                                                                                                                                                                                                                                                           |
+| `labels.toolInvocation.invoking`(optional) | Status text while tool runs           | `openai/toolInvocation/invoking` (ChatGPT Apps only)                                        | OpenAI environment only. Short status text shown while the tool runs. Applies to all tools unless overridden                                                                                                                                                                                            |
+| `labels.toolInvocation.invoked`(optional)  | Status text after tool completes      | `openai/toolInvocation/invoked` (ChatGPT Apps only)                                         | OpenAI environment only. Short status text shown after the tool completes. Applies to all tools unless overridden                                                                                                                                                                                       |
+
+#### Example config file
+
+```ts
+// apollo-client-ai-apps.config.ts
+import { ApolloClientAiAppsConfig } from "@apollo/client-ai-apps/config";
+
+const config: ApolloClientAiAppsConfig.Config = {
+  name: "My App",
+  description: "My app description",
+  version: "1.0.0",
+  entry: {
+    // Override the default entry point configuration for the 'development' mode.
+    // When the value is a string, the location is used for both MCP and ChatGPT apps.
+    development: "<url or location/of/index.html>",
+
+    // Override the default entry point configuration for the 'production' mode.
+    production: {
+      // Configures the 'mcp' environment entry point in production mode
+      mcp: "...",
+      // Configures the 'openai' environment entry point in production mode
+      openai: "...",
+    },
+
+    // All other keys are treated as custom modes which need a `--mode` option
+    // provided to the vite CLI.
+    staging: {
+      /* ... */
+    },
+  },
+
+  csp: {
+    connectDomains: ["https://example.com"],
+    frameDomains: ["https://example.com"],
+    redirectDomains: ["https://example.com"],
+    resourceDomains: ["https://example.com"],
+  },
+  widgetSettings: {
+    prefersBorder: true,
+    description: "My widget description for ChatGPT apps",
+    domain: "https://example.com",
+  },
+  labels: {
+    toolInvocation: {
+      invoking: "Tool working...",
+      invoked: "Complete!",
+    },
+  },
+};
+
+export default config;
+```
+
+## Manifest file
+
+The manifest file (`.application-manifest.json`) is automatically generated from your app code and your configuration files. GraphQL operations come from your app code, while app-level configuration comes from your configuration files or `package.json`.
+
+Don't edit the manifest directly. Instead, make changes to your app code (for
+GraphQL operations) and your configuration files or `package.json` (for
+app-level configuration). The manifest file generates automatically.
+
+## App vs Host
+
+An **app** is your MCP App—the code, configuration, and built resource you create that combines GraphQL operations with custom UI. The **host** is the MCP Apps-compatible application (such as ChatGPT) that discovers your app, invokes tools, and displays your UI.
+
+This table shows what you work with in your app code versus what the host does:
+
+| In Your App                                                                    | In the Host                                                                                |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| You define your app code and configuration files, which generates the manifest | The host discovers your app via the MCP protocol and pre-fetches the built resource        |
+| You specify the resource                                                       | The host pre-fetches it file during discovery and creates an iframe when tools are invoked |
+| You define tools backed by GraphQL operations                                  | The host invokes tools and receives data from the MCP server                               |
+| You access data in your UI code                                                | The host injects tool result data into the iframe                                          |
+
+## Tool-level configuration
+
+Tools are defined using directives on GraphQL operations in your app code. Available directives:
+
+* **`@tool`**: Defines a GraphQL operation as an MCP tool that hosts can invoke
+* **`@prefetch`**: Marks an operation that runs automatically when any tool in the app is invoked
+
+### `@tool` directive arguments
+
+| Argument      | What it is             | Required | Where it maps to                | Notes                                                                                                                                                                       |
+| ------------- | ---------------------- | -------- | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`        | Tool name              | Yes      | MCP tool `name`                 | Must be unique within the app                                                                                                                                               |
+| `description` | Tool description       | Yes      | MCP tool `description`          | App description is prefixed to tool description if present                                                                                                                  |
+| `extraInputs` | Additional tool inputs | No       | Extra inputs in MCP tool schema | Array of objects with `name`, `description`, and `type` ("string", "number", or "boolean"). These inputs are not part of the GraphQL operation but are provided by the host |
+| `labels`      | Tool-specific labels   | No       | Tool labels in manifest         | Object with `toolInvocation/invoking` and/or `toolInvocation/invoked` string values. Overrides app-level labels for this specific tool. Only available in ChatGPT apps.     |
+
+### `@prefetch` directive
+
+The `@prefetch` directive marks a GraphQL operation to run automatically whenever any tool in the app is invoked. Prefetch operations execute after the main tool operation and their results are included in the tool response.
+
+**Usage**: Add `@prefetch` to any GraphQL operation (query or mutation).
+
+| Element     | What it is                | Where it comes from                        | Where it maps to               | Notes                                                            |
+| ----------- | ------------------------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------- |
+| `@prefetch` | Prefetch operation marker | `@prefetch` directive on GraphQL operation | Prefetch operation in manifest | Operation runs automatically when any tool in the app is invoked |
+
+## App query parameter
+
+Use the `app` query parameter to specify which app to load: `https://your-server.com/mcp?app=my-app`. The app name corresponds to the directory name in `apps/` (where build artifacts are located).
+
+**Development vs Build Artifacts**: The `apps/` directory contains build artifacts that the MCP Server reads from. Development happens in a separate directory (we recommend using `dev/<app-name>`, like the [Apollo AI Apps Template](https://github.com/apollographql/ai-apps-template) does).
+
+## App target
+
+Apollo MCP Server supports two targets: OpenAI Apps (for hosts supporting OpenAI's Apps SDK specification) and MCP Apps (for MCP-compatible clients). Use the `appTarget` query parameter to specify the target.
+
+OpenAI Apps: `https://your-server.com/mcp?app=my-app&appTarget=openai`
+
+MCP Apps: `https://your-server.com/mcp?app=my-app&appTarget=mcp`
+
+## TypeScript configuration
+
+The template includes TypeScript configuration files (`tsconfig.json`, `tsconfig.app.json`, `tsconfig.node.json`) that enable TypeScript support and allow the build process to extract GraphQL operations from your code.
+
+These configuration files are **extensible**, allowing you to organize your TypeScript settings by specification:
+
+* **Shared configurations**: Common TypeScript settings that apply to both ChatGPT Apps and MCP Apps targets
+* **ChatGPT Apps-specific configurations**: Settings specific to the OpenAI Apps SDK specification
+* **MCP Apps-specific configurations**: Settings specific to the MCP Apps specification
+
+You can extend the base `tsconfig.json` with specification-specific configurations using TypeScript's `extends` feature. This allows you to maintain separate type definitions, compiler options, or path mappings for different targets while sharing a common configuration.
+
+The pattern helps you maintain type safety and proper configuration for each specification while avoiding duplication.

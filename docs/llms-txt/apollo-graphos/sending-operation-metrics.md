@@ -1,0 +1,275 @@
+# Source: https://www.apollographql.com/docs/graphos/platform/insights/sending-operation-metrics.md
+
+# Sending Metrics to GraphOS
+
+While Insights are available on all GraphOS plans, metrics retention varies by [plan](https://www.apollographql.com/pricing?referrer=docs-content).
+
+GraphOS Studio offers visualizations of metrics like request rate, latency, and more to help you analyze your supergraph's performance. Studio also lets you analyze how clients are using individual fields in your GraphQL requests. To analyze operation metrics and field usage in Studio, you first need to report them to GraphOS.
+
+## Reporting operation metrics
+
+How you report operation metrics to GraphOS depends on whether you're [using Apollo Router or Apollo Server](https://www.apollographql.com/docs/graphos/platform/insights/sending-operation-metrics.md#from-the-apollo-router-or-apollo-server) or whether you're [using a third-party server](https://www.apollographql.com/docs/graphos/platform/insights/sending-operation-metrics.md#from-a-third-party-server-advanced).
+
+### From the Apollo Router or Apollo Server
+
+Both the Apollo Router and Apollo Server use the same mechanism to enable operation metrics reporting to GraphOS:
+
+1. Obtain a *graph API key* from GraphOS Studio.
+
+   API keys are secret credentials. Never share them outside your organization or commit them to version control. Delete and replace API keys that you believe are compromised.
+
+   1. Go to [studio.apollographql.com](https://studio.apollographql.com/?referrer=docs-content) and click the graph you want to obtain an API key for.
+
+   2. If a **Publish your Schema** dialog appears, copy the protected value that appears after `APOLLO_KEY=` in the example code block (it begins with `service:`), and you're all set.
+
+      Otherwise, proceed to the next step.
+
+   3. Open your graph's Settings page and select the API Keys tab. Click **Create New Key**. Give your key a name, such as `Production`. This helps you keep track of each API key's use.
+
+      If you don't see the API Keys tab, you don't have sufficient permissions for your graph. Only organization members with the **Org Admin** or **Graph Admin** role can manage graph API keys. [Learn more about member roles.](https://www.apollographql.com/docs/graphos/platform/access-management/member-roles/)
+
+   4. Copy the key's value. For security, you cannot view an API key's value in Studio after creating it.
+
+   The graph API key you use must have at least the [**Contributor** role](https://www.apollographql.com/docs/graphos/platform/access-management/member-roles#organization-wide-member-roles) to report metrics for a non-protected variant, and either an **Org Admin** or **Graph Admin** role to report metrics for a [protected variant](https://www.apollographql.com/docs/graphos/platform/graph-management/variants#protected-variants-enterprise-only).
+
+2. Obtain the *graph ref* for the graph and variant you want to report metrics for. You can find your variant's graph ref at the top of the variant's README page in Studio. It has the format `graph-id@variant-name` (such as `my-graph@staging`).
+
+3. Use the obtained values to set the following environment variables in your environment before starting up your router/server:
+
+   ```bash
+   export APOLLO_KEY=<YOUR_GRAPH_API_KEY>
+   export APOLLO_GRAPH_REF=<YOUR_GRAPH_REF>
+   ```
+
+Consult your production environment's documentation to learn how to set its environment variables.
+
+Now, when your router or server starts up, it automatically begins reporting operation metrics to GraphOS.
+
+### From a third-party server (advanced)
+
+You can set up a reporting agent in your GraphQL server to push metrics to GraphOS. The agent is responsible for:
+
+* Translating operation details into the correct [reporting format](https://www.apollographql.com/docs/graphos/platform/insights/sending-operation-metrics.md#reporting-format)
+* Implementing a default signature function to identify each executed operation
+* Emitting batches of traces and metrics to the GraphOS reporting endpoint
+* Optionally defining plugins to enable advanced reporting features
+
+Apollo Server defines its agent for performing these tasks in [the usage reporting plugin](https://github.com/apollographql/apollo-server/blob/main/packages/server/src/plugin/usageReporting).
+
+If you're interested in collaborating with Apollo on creating a dedicated integration for your GraphQL server, please contact us at [support@apollographql.com](mailto:support@apollographql.com).
+
+#### Reporting format
+
+The GraphOS reporting endpoint accepts batches of traces and metrics that are encoded in *protocol buffer* format. Each trace corresponds to the execution of a single GraphQL operation, including a breakdown of the timing and error information for each field that's resolved as part of the operation. The schema for this protocol buffer is defined as the `Report` message in [the protobuf schema](https://usage-reporting.api.apollographql.com/proto/reports.proto).
+
+[The protobuf schema](https://usage-reporting.api.apollographql.com/proto/reports.proto) document describes how to create a report whose `tracesPerQuery` objects consist solely of a list of detailed execution traces in the `trace` array. GraphOS now allows your server to describe usage as a mix of detailed execution traces and pre-aggregated metrics (released in Apollo Server 2.24), which leads to much more efficient reports. This document doesn't describe how to generate these metrics. Nor does it describe how to report the number of requests for a particular operation shown in the [**Clients & Operations** table](https://www.apollographql.com/docs/graphos/platform/insights/field-usage#field-details) on the Insights page.
+
+We strongly encourage developers to contact [Apollo Support](https://support.apollographql.com/) to discuss their use case before building their own reporting agent using this module.
+
+As a starting point, we recommend implementing an extension to the GraphQL execution that creates a report with a single trace, as defined in the `Trace` message of [the protobuf schema](https://usage-reporting.api.apollographql.com/proto/reports.proto). Then, you can batch multiple traces into a single report. We recommend sending batches approximately every 20 seconds and limiting each batch to a reasonable size (\~4 MB).
+
+Many server runtimes already support emitting tracing information as a [GraphQL extension](https://github.com/apollographql/apollo-tracing). Such extensions are available for [Node](https://www.apollographql.com/docs/apollo-server/api/plugin/usage-reporting/), [Ruby](https://github.com/uniiverse/apollo-tracing-ruby), [Scala](https://github.com/sangria-graphql/sangria-slowlog#apollo-tracing-extension), [Java](https://github.com/graphql-java/graphql-java/pull/577), [Elixir](https://github.com/sikanhe/apollo-tracing-elixir), and [.NET](https://graphql-dotnet.github.io/docs/getting-started/metrics/). If you're working on adding metrics reporting functionality for one of these languages, reading through that tracing instrumentation is a good place to start. For other languages, we recommend consulting the [Apollo Server usage reporting plugin](https://www.apollographql.com/docs/apollo-server/api/plugin/usage-reporting).
+
+#### Operation signing
+
+For GraphOS Studio to correctly group GraphQL queries, your reporting agent should define a function to generate an [operation signature](https://www.apollographql.com/docs/graphos/platform/insights/operation-signatures) for each distinct operation. This can be challenging because two structurally different operations can be functionally equivalent. For instance, all the following queries request the same information:
+
+```graphql
+query AuthorForPost($foo: String!) {
+  post(id: $foo) {
+    author
+  }
+}
+
+query AuthorForPost($bar: String!) {
+  post(id: $bar) {
+    author
+  }
+}
+
+query AuthorForPost {
+  post(id: "my-post-id") {
+    author
+  }
+}
+
+query AuthorForPost {
+  post(id: "my-post-id") {
+    writer: author
+  }
+}
+```
+
+It's important to decide how to group such queries when tracking metrics. The [TypeScript reference implementation](https://github.com/apollographql/apollo-tooling/blob/master/packages/apollo-graphql/src/operationId.ts) does the following to every query before generating its signature to better group functionally equivalent operations:
+
+* Drop unused fragments and/or operations
+* Hide string literals
+* Ignore aliases
+* Sort the tree deterministically
+* Ignore differences in whitespace.
+
+We recommend using the same default signature method for consistency across different server runtimes.
+
+#### Sending metrics to the reporting endpoint
+
+After your GraphQL server prepares a batch of traces, it should send them to the Studio reporting endpoint at the following URL:
+
+```text
+https://usage-reporting.api.apollographql.com/api/ingress/traces
+```
+
+Each batch should be sent as an HTTP POST request. The body of the request can be one of the following:
+
+* A binary serialization of a `Report` message
+* A gzipped binary serialization of a `Report` message
+
+To authenticate with Studio, each request must include either:
+
+* An `X-Api-Key` header with a valid API key for your graph
+* An `authtoken` cookie with a valid API key for your graph
+
+Only graph-level API keys (starting with the prefix `service:`) are supported.
+
+The request can also optionally include a `Content-Type` header with value `application/protobuf`, but this is not required.
+
+The reporting endpoint rejects reports that are older than 50 minutes. If you see an error like `Rejecting report from service {your service} with skewed timestamp`, ensure your traces are current and that your timestamp calculations are accurate.
+
+For a reference implementation, see the `sendReport()` function in the [TypeScript reference agent](https://github.com/apollographql/apollo-server/blob/main/packages/server/src/plugin/usageReporting/plugin.ts).
+
+#### Tuning reporting behavior
+
+We recommend implementing retries with backoff when you encounter `5xx` responses or networking errors when communicating with the reporting endpoint. Additionally, implement a shutdown hook to ensure you push all pending reports before your server initiates a stable shutdown.
+
+#### Implementing additional reporting features
+
+The reference TypeScript implementation includes several features that you might want to include in your implementation. All these features are implemented in the usage reporting plugin itself and are documented in [the plugin's API reference](https://www.apollographql.com/docs/apollo-server/api/plugin/usage-reporting/).
+
+For example, you can restrict which information is sent to GraphOS, particularly to avoid reporting personal data. Because personal data most commonly appears in variables and headers, the TypeScript agent offers options to `sendVariablesValues` and `sendHeaders`.
+
+## Reporting field usage metrics
+
+Your GraphQL router or server can report one or both of the following field usage metrics:
+
+* **Requests**: How many times an operation that requests a particular field has been observed
+* **Executions**: How many times the resolver for a particular field has been executed
+
+How you report these metrics to GraphOS depends on whether you're using the [Apollo Router](https://www.apollographql.com/docs/graphos/platform/insights/sending-operation-metrics.md#from-the-apollo-router) or [Apollo Server](https://www.apollographql.com/docs/graphos/platform/insights/sending-operation-metrics.md#from-apollo-server).
+
+### From the Apollo Router
+
+If you have a [cloud](https://www.apollographql.com/docs/graphos/routing/cloud#cloud-supergraphs) or [self-hosted supergraph](https://www.apollographql.com/docs/graphos/routing/self-hosted#self-hosted-supergraphs), you only need to configure your router to [send operation metrics to GraphOS](https://www.apollographql.com/docs/graphos/platform/insights/sending-operation-metrics.md#from-the-apollo-router-or-apollo-server), and field usage will be automatically reported. Subgraphs should not send any metrics to GraphOS directly. Instead, they can include [trace data](https://www.apollographql.com/docs/graphos/platform/insights/operation-metrics#enabling-traces) in their responses to the router. The router then includes that data in its own reports to GraphOS.
+
+Subgraphs send field tracing and error data to the router using the [federated tracing implementation](https://www.apollographql.com/docs/graphos/metrics/operations#enabling-traces). This means your subgraphs must support federated tracing and that it is enabled for your environment before you start seeing error details in GraphOS for a supergraph.
+
+### From Apollo Server
+
+Apollo Server automatically reports field usage metrics as long as you follow these prerequisites:
+
+* You must first configure your server to [send operation metrics to GraphOS](https://www.apollographql.com/docs/graphos/platform/insights/sending-operation-metrics.md#from-the-apollo-router-or-apollo-server).
+
+* To report requests:
+
+  * Your GraphQL server must run Apollo Server 3.6 or later.
+  * If you have a [federated graph](https://www.apollographql.com/docs/federation), your gateway must run Apollo Server 3.6 or later, but there are no requirements for your subgraphs.
+
+* To report executions:
+  * Your GraphQL server can run any recent version of Apollo Server 2.x or 3.x.
+  * If you have a [federated graph](https://www.apollographql.com/docs/federation), your subgraphs must support federated tracing. For compatible libraries, see the `FEDERATED TRACING` entry for libraries in [this table](https://www.apollographql.com/docs/graphos/federated-schemas/reference/compatible-subgraphs).
+
+If some of your subgraphs support federated tracing and others don't, only executions in compatible subgraphs are reported to Apollo.
+
+#### Disabling execution metrics
+
+In Apollo Server 3.6 and later, you can turn off field-level instrumentation for some or all operations by providing the [`fieldLevelInstrumentation` option to `ApolloServerPluginUsageReporting`](https://www.apollographql.com/docs/apollo-server/api/plugin/usage-reporting#fieldlevelinstrumentation).
+
+Turning off field-level instrumentation for a particular request has the following effects:
+
+* The request does not contribute to the "executions" statistic on the Insights page in Studio.
+* The request does not contribute to field-level execution timing hints that can be displayed in the [GraphOS Studio Explorer](https://www.apollographql.com/docs/graphos/platform/explorer) and VS Code.
+* The request does not produce a trace that can be viewed in the [Traces section](https://www.apollographql.com/docs/graphos/platform/insights/operation-metrics#resolver-level-traces) of the Insights page in Studio.
+
+These requests still contribute to most features of Studio, such as schema checks, the Insights page, and the "Request" metrics on the Insights page.
+
+To turn off field-level instrumentation for all requests, pass `() => false` as the `fieldLevelInstrumentation` option:
+
+```ts
+new ApolloServer({
+  plugins: [
+    ApolloServerPluginUsageReporting({
+      fieldLevelInstrumentation: () => false
+    })
+  ]
+  // ...
+});
+```
+
+If you do this, execution metrics do not appear on the Insights page.
+
+#### Fractional sampling
+
+You can enable field-level instrumentation for a fixed fraction of all requests by passing a number between `0` and `1` as the `fieldLevelInstrumentation` option:
+
+```ts
+new ApolloServer({
+  plugins: [
+    ApolloServerPluginUsageReporting({
+      fieldLevelInstrumentation: 0.01
+    })
+  ]
+  // ...
+});
+```
+
+If you do so, Apollo Server randomly chooses to enable field-level instrumentation for each request according to the given probability.
+
+Make sure to pass a number (like `0.01`), not a function that always returns the same number (like `() => 0.01`), which has a [different effect](https://www.apollographql.com/docs/graphos/platform/insights/sending-operation-metrics.md#custom-sampling).
+
+In this case, whenever field-level instrumentation is enabled for a particular request, Apollo Server reports it to Studio with a weight based on the given probability. The "executions" statistic on the Insights page (along with execution timing hints) is scaled by this weight.
+
+For example, if you pass `0.01`, your server enables field-level execution for approximately 1% of requests, and every observed execution is counted as 100 executions on the Insights page. (The actual observed execution count is available in a tooltip in the table.)
+
+#### Custom sampling
+
+You can decide whether to enable field-level instrumentation (and what the weight should be) on a per-operation basis by passing a function as the value of `fieldLevelInstrumentation`.
+
+For example, you might want to enable field-level instrumentation more often for rare operations and less often for common operations. For details, see the [usage reporting plugin docs](https://www.apollographql.com/docs/apollo-server/api/plugin/usage-reporting#fieldlevelinstrumentation).
+
+### Performance considerations
+
+Calculating execution metrics can affect performance for large queries or high-traffic graphs. This is especially true for [federated graphs](https://www.apollographql.com/docs/federation) because a subgraph includes each operation's full trace data in its response to the gateway.
+
+## Limitations
+
+GraphOS enforces the following limitations to optimize insights performance.
+
+### Character limitation
+
+GraphOS began enforcing a 256-character limit on the following data attributes in October 2024:
+
+* Operation name
+* Client name
+* Client version
+* Parent type
+* Field name
+
+Any data exceeding this limit will be truncated before it is stored.
+
+### Cardinality limitation
+
+GraphOS began enforcing cardinality limits on the following data attributes in December 2024:
+
+* Operation shape (a combination of the operation name and selection set)
+* Client name
+* Client version
+
+If the cardinality of these metrics exceeds predefined thresholds, data may be redacted. Redacted values are replaced with `# CardinalityLimitExceeded` instead of their actual values.
+
+#### Cardinality remediation
+
+To remediate cardinality issues, you should find the source of your high-cardinality usage reports. Some examples of issues that can cause high cardinality include:
+
+* Bot traffic
+* Malformed operations
+* Uniquely named or autogenerated operations or client identifiers
+
+Please email [support@apollographql.com](mailto:support@apollographql.com) for further assistance.

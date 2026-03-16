@@ -1,0 +1,58 @@
+# Source: https://www.apollographql.com/docs/ios/tutorial/tutorial-execute-first-query.md
+
+# 5. Execute your first query
+
+To use the generated operations in `RocketReserverAPI`, first create an instance of `ApolloClient`. This instance uses your generated code to make network calls to your server. The recommended approach is to use a single instance of this object throughout your codebase.
+
+## Create an ApolloClient
+
+1. Create a new Swift file named `ApolloClient+Setup.swift`.
+
+2. Now add the following code into the file:
+
+```swift title=ApolloClient+Setup.swift
+import Apollo
+import Foundation
+
+extension ApolloClient {
+    static let shared: ApolloClient = {
+        return ApolloClient(url: URL(string: "https://apollo-fullstack-tutorial.herokuapp.com/graphql")!)
+    }()
+}
+```
+
+## Implement the query
+
+To verify that your `ApolloClient` instance is communicating correctly with the server, go to `LaunchListViewModel` and add an `init()` method with the following code:
+
+```swift title=LaunchListViewModel.swift
+import Apollo
+import RocketReserverAPI
+
+...
+
+init() {
+    Task {
+        do {
+            let response = try await ApolloClient.shared.fetch(query: LaunchListQuery())
+            if let errors = response.errors {
+                print("Error fetching launches: \(errors)")
+            }
+            
+            print("GraphQL Response - \(response)")
+        } catch {
+            print("Failure! Error - \(error)")
+        }
+    }
+}
+```
+
+## Test your query
+
+Build and run your application. The web host might take a few seconds to spin up your GraphQL server if nobody's been using it recently, but once it's up, you should see a response that resembles the following:
+
+This means the request was correctly executed and you now have a list of launch sites 🚀🚀🚀.
+
+Remove the `init()` method. The next section explains how to use the `ApolloClient`.
+
+Next, let's [connect this data to your UI](https://www.apollographql.com/docs/ios/tutorial/tutorial-connect-queries-to-ui)
