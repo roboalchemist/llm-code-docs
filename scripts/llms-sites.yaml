@@ -1595,3 +1595,6 @@ sites:
 - name: testsprite
   base_url: https://docs.testsprite.com/
   description: testsprite documentation
+- name: foundry
+  base_url: https://www.getfoundry.sh/
+  description: foundry documentation
