@@ -2431,3 +2431,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/sitecore
   branch: main
+- name: openimaj
+  description: openimaj from GitHub
+  repo_url: https://github.com/openimaj/openimaj.git
+  source_folder: documentation
+  target_folder: docs/github-scraped/openimaj
+  branch: main
