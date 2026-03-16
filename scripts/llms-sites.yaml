@@ -1592,3 +1592,6 @@ sites:
 - name: kreya
   base_url: https://kreya.app/
   description: kreya documentation
+- name: testsprite
+  base_url: https://docs.testsprite.com/
+  description: testsprite documentation

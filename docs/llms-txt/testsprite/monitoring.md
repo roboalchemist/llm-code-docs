@@ -1,0 +1,153 @@
+# Source: https://docs.testsprite.com/web-portal/maintenance/monitoring.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.testsprite.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Monitoring & Scheduling
+
+> Automate your testing workflow with TestSprite's Monitoring feature.
+
+The Monitoring feature allows you to schedule **automated test executions** at regular intervals. Instead of manually running tests, you can set up schedules that automatically execute your test lists, providing **continuous monitoring** of your application's health and performance.
+
+<Frame>
+  <img src="https://mintcdn.com/testspriteinc/etE5QHi14YOHx37z/images/monitoring-overview.png?fit=max&auto=format&n=etE5QHi14YOHx37z&q=85&s=f880cd232111c1361d52720fe3877356" alt="plan" width="1642" height="977" data-path="images/monitoring-overview.png" />
+</Frame>
+
+<br />
+
+## Key Benefits
+
+* **Continuous Quality Assurance**: Automatically detect issues before they reach users. 24/7 monitoring and regression detection without manual effort.
+* **Flexible Scheduling**: Recurring test executions with multiple scheduling options. Monitor run times and pause/modify schedules as needed.
+* **Proactive Issue Detection**: Immediate notifications when tests fail. Track trends and identify performance degradation over time.
+
+## Getting Started with Monitoring
+
+### Prerequisites
+
+Before setting up schedules:
+
+* **[Create Test Lists](/web-portal/maintenance/test-lists)**: You need existing test lists to schedule
+* **Verify Test Stability**: Ensure your tests run reliably
+* **Set Up Notifications**: Configure how you want to receive alerts
+* **Check Account Limits**: Verify your plan supports scheduling
+
+### Steps
+
+<Steps>
+  <Step title="Navigate to Monitoring">
+    Go to <kbd>Monitoring</kbd> and click <kbd>New Schedule</kbd> to get started
+
+    <Frame>
+      <img src="https://mintcdn.com/testspriteinc/etE5QHi14YOHx37z/images/monitoring-start.png?fit=max&auto=format&n=etE5QHi14YOHx37z&q=85&s=37d56c12f6a4c1c462ccddfb4c926a8a" alt="plan" width="1642" height="789" data-path="images/monitoring-start.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Select Test List">
+    Choose an existing test list to schedule
+
+    <Note>Review test cases and execution settings, and confirm test list is ready for automation.</Note>
+
+    <Frame>
+      <img src="https://mintcdn.com/testspriteinc/etE5QHi14YOHx37z/images/select-testlist.png?fit=max&auto=format&n=etE5QHi14YOHx37z&q=85&s=d17261dcea8c8fb25c9307ac13baaa80" alt="plan" width="1350" height="402" data-path="images/select-testlist.png" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Schedule">
+    Set **execution frequency** (daily, weekly, monthly), choose **specific times and days**, configure **timezone settings**, and set up **failure notifications**.
+
+    <Frame>
+      <img src="https://mintcdn.com/testspriteinc/QYauUtR7JhW8Lgzr/images/configure-schedule.png?fit=max&auto=format&n=QYauUtR7JhW8Lgzr&q=85&s=a34a3e297c14e8acfc68bc906009003c" alt="plan" width="1350" height="724" data-path="images/configure-schedule.png" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Schedule Configuration
+
+Configure when and how often your tests run automatically. Choose from multiple frequency options, set specific times and timezones, and customize scheduling patterns to match your monitoring needs.
+
+### Frequency Options
+
+Select how frequently your tests execute. Available options include daily runs, weekly schedules on specific days, monthly executions on set dates, and custom patterns for advanced scheduling needs.
+
+<Frame>
+  <img src="https://mintcdn.com/testspriteinc/QYauUtR7JhW8Lgzr/images/frequency.png?fit=max&auto=format&n=QYauUtR7JhW8Lgzr&q=85&s=e3d043986f401195247f8c000cf3bfc6" alt="plan" width="762" height="279" data-path="images/frequency.png" />
+</Frame>
+
+<br />
+
+<Tabs>
+  <Tab title="Frequency Options">
+    Choose how often your tests run automatically. Select from daily, weekly, monthly, or create custom scheduling patterns.
+
+    | Frequency Options  | Description                                  |
+    | :----------------- | :------------------------------------------- |
+    | <kbd>Daily</kbd>   | Execute tests every day at specified time    |
+    | <kbd>Weekly</kbd>  | Run tests on specific days of the week       |
+    | <kbd>Monthly</kbd> | Schedule tests for specific dates each month |
+    | <kbd>Custom</kbd>  | Define complex scheduling patterns           |
+  </Tab>
+
+  <Tab title="Example Configurations">
+    Real-world examples showing how to configure different schedule types with specific times and timezones.
+
+    ```yaml  theme={null}
+    Daily Schedule:
+      Time: 06:00 AM UTC
+      Frequency: Every day
+      
+    Weekly Schedule:
+      Days: Monday, Wednesday, Friday
+      Time: 09:00 AM EST
+      
+    Monthly Schedule:
+      Date: 1st of every month
+      Time: 12:00 PM PST
+    ```
+  </Tab>
+</Tabs>
+
+### Timezone Settings
+
+Configure the timezone for your scheduled test executions. All schedules use **UTC by default**. You can specify different timezones to match your local time or business hours.
+
+<Frame>
+  <img src="https://mintcdn.com/testspriteinc/etE5QHi14YOHx37z/images/time-zone.png?fit=max&auto=format&n=etE5QHi14YOHx37z&q=85&s=7b833b2e35642a9f8e00fab9d5a43947" alt="plan" width="762" height="402" data-path="images/time-zone.png" />
+</Frame>
+
+<Note>
+  **Timezone Best Practices:** Convert your **local time to UTC** for accurate scheduling. Consider **daylight saving time changes** that may affect execution times. Use a **consistent timezone** across your team to avoid confusion.
+</Note>
+
+## Managing Schedules
+
+Once schedules are created, you can monitor their execution, view detailed status information, and manage them through the schedule dashboard. Track execution history, pause or modify schedules as needed, and ensure your monitoring runs smoothly.
+
+### Schedule Dashboard
+
+The Schedule Dashboard provides a comprehensive overview of all your automated test schedules, allowing you to monitor their status, execution history, and upcoming runs at a glance.
+
+| Overview Information     | Description                                         |
+| :----------------------- | :-------------------------------------------------- |
+| <kbd>Schedule Name</kbd> | Descriptive name for the scheduled execution        |
+| <kbd>Test List</kbd>     | Associated test list that will be executed          |
+| <kbd>Frequency</kbd>     | How often the schedule runs (daily, weekly, etc.)   |
+| <kbd>Next Run</kbd>      | When the next execution is scheduled                |
+| <kbd>Status</kbd>        | Current schedule status (active, paused, completed) |
+| <kbd>Last Result</kbd>   | Result of the most recent execution                 |
+
+### Schedule Actions
+
+Manage your test schedules with these available actions. Each schedule can be controlled individually to fit your testing workflow and requirements.
+
+| Action                     | Description                      |
+| :------------------------- | :------------------------------- |
+| <kbd>Run Now</kbd>         | Execute the schedule immediately |
+| <kbd>Edit Schedule</kbd>   | Modify timing and configuration  |
+| <kbd>Pause/Resume</kbd>    | Temporarily disable or re-enable |
+| <kbd>View Results</kbd>    | See detailed execution history   |
+| <kbd>Delete Schedule</kbd> | Remove schedule permanently      |
+
+
+Built with [Mintlify](https://mintlify.com).
