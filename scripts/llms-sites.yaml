@@ -1622,3 +1622,6 @@ sites:
 - name: statamic
   base_url: https://docs.statamic.com/
   description: statamic documentation
+- name: saleor
+  base_url: https://docs.saleor.io/
+  description: saleor documentation
