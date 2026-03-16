@@ -1613,3 +1613,6 @@ sites:
 - name: bugbug
   base_url: https://docs.bugbug.io/
   description: bugbug documentation
+- name: testim
+  base_url: https://help.testim.io/
+  description: testim documentation
