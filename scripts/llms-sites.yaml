@@ -1619,3 +1619,6 @@ sites:
 - name: crawlee
   base_url: https://www.crawlee.dev/
   description: crawlee documentation
+- name: statamic
+  base_url: https://docs.statamic.com/
+  description: statamic documentation
