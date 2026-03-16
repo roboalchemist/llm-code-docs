@@ -2389,3 +2389,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/saucelabs
   branch: main
+- name: testing-library
+  description: testing-library from GitHub
+  repo_url: https://github.com/testing-library/testing-library-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/testing-library
+  branch: main
