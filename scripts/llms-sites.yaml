@@ -1586,3 +1586,6 @@ sites:
 - name: apollo-graphos
   base_url: https://www.apollographql.com/
   description: apollo-graphos documentation
+- name: dreamfactory
+  base_url: https://www.dreamfactory.com/
+  description: dreamfactory documentation
