@@ -1577,3 +1577,6 @@ sites:
 - name: firehydrant
   base_url: https://docs.firehydrant.com/
   description: firehydrant documentation
+- name: pagerduty
+  base_url: https://docs.pagerduty.com/
+  description: pagerduty documentation
