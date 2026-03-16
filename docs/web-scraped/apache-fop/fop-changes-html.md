@@ -1,0 +1,1820 @@
+# Source: https://xmlgraphics.apache.org/fop/changes.html
+
+Title: History of Changes
+
+URL Source: https://xmlgraphics.apache.org/fop/changes.html
+
+Markdown Content:
+[Version 2.11](https://xmlgraphics.apache.org/fop/2.11/changes_2.11.html)
+
+[Version 2.10](https://xmlgraphics.apache.org/fop/2.10/changes_2.10.html)
+
+[Version 2.9](https://xmlgraphics.apache.org/fop/2.9/changes_2.9.html)
+
+[Version 2.8](https://xmlgraphics.apache.org/fop/2.8/changes_2.8.html)
+
+[Version 2.7](https://xmlgraphics.apache.org/fop/2.7/changes_2.7.html)
+
+[Version 2.6](https://xmlgraphics.apache.org/fop/2.6/changes_2.6.html)
+
+[Version 2.5](https://xmlgraphics.apache.org/fop/2.5/changes_2.5.html)
+
+[Version 2.4](https://xmlgraphics.apache.org/fop/2.4/changes_2.4.html)
+
+[Version 2.3](https://xmlgraphics.apache.org/fop/2.3/changes_2.3.html)
+
+[Version 2.2](https://xmlgraphics.apache.org/fop/2.2/changes_2.2.html)
+
+[Version 2.1](https://xmlgraphics.apache.org/fop/2.1/changes_2.1.html)
+
+Version 2.0 (3 June 2015)
+-------------------------
+
+See [Change list in Jira](https://issues.apache.org/jira/issues/?jql=project%20%3D%20FOP%20AND%20resolution%20%3D%20Fixed%20AND%20fixVersion%20%3D%20trunk%20ORDER%20BY%20updated%20DESC%2C%20created%20DESC%2C%20priority%20DESC).
+
+*   FOP-2456: PDF VT and Page Piece support
+
+*   FOP-2448: PDF to PS deduplication of images
+
+*   FOP-2447: Text cut off for changing IPD for page starting with a table
+
+*   FOP-2446: OTF subset error
+
+*   FOP-2445: PDF Linearization
+
+*   FOP-2443: Repeated Table headers and footers with markers are not being treated as artifacts
+
+*   FOP-2442: Specifying the expansion of an abbreviation
+
+*   FOP-2433: Support CMYK TIFFs in AFP through IOCA FS45
+
+*   FOP-2432: OTF font NPE
+
+*   FOP-2424: Allow for type1 afm/pfm files to be in a different path than the pfb file
+
+*   FOP-2422: fix erroneous use of mapped char with fixed width space chars
+
+*   FOP-2420: ensure word area's bidi level is initialized when word is mapped to empty string, e.g., when controls are elided
+
+*   FOP-2417: Exception caused by letter space handling in Chinese sentence
+
+*   FOP-2416: add support for Arabic Joiners (ZWJ/ZWNJ) - preliminary
+
+*   FOP-2415: prevent NPE when Indic script syllabizer is not available
+
+*   FOP-2412: Reduce PDF to PS filesize
+
+*   FOP-2411: PDF to PDF Link not working
+
+*   FOP-2410: fix fo:page-number in bidi context
+
+*   FOP-2410: add test for bug fix
+
+*   FOP-2406: Error when image next to pdf
+
+*   FOP-2398: Image written as having 72 DPI instead of its intrinstic resolution
+
+*   FOP-2395: PDF encryption does not work when PDF version is set in FOP config; change suggested by Seifeddine Dridi.
+
+*   FOP-2394: Removed non-standard layout extensions
+
+*   FOP-2393: only the gradient's transform should be used. Other transforms will have already been applied to the user space.
+
+*   FOP-2391: preliminary (but incomplete) support for complex script text nodes in svg foreign object
+
+*   FOP-2389: PDFEncryption: error when Password length>32
+
+*   FOP-2385: Add ability to specify custom properties in the Document Information Dictionary
+
+*   FOP-2372: New extension to resize background images
+
+*   FOP-2367: Support for color space OCA; patch submitted by Seifeddine Dridi
+
+*   FOP-2363: Better error message when PDF/A enabled and SVG contains bitmap with transparency
+
+*   FOP-2357: When an SVG image has transparency and a PDF profile is used that disallows it, ignore it and issue a warning rather than throw an error
+
+*   FOP-2354: Subset support for Type 1 fonts
+
+*   FOP-2353: PDF-A preflight warnings
+
+*   FOP-2348: PDF File Attachment Extension is broken
+
+*   FOP-2346: UnsupportedOperationException when handling an SVG containing a font-face
+
+*   FOP-2345: SVG to AFP text spacing wrong
+
+*   FOP-2341: Infinite loop when smaller used with a zero length font-size
+
+*   FOP-2340: 64bit image missing in pdf; patch submitted by Simon Steiner
+
+*   FOP-2339: GIF to PS transparency is black; patch by Simon Steiner
+
+*   FOP-2337: Remove xobj type=form
+
+*   FOP-2336: OOM for tiff output
+
+*   FOP-2326: CMYK TIFF is rendered using RGB colourspace in Postscript output; patch submitted by Simon Steiner (xgc jar updated)
+
+*   FOP-2323: NPE caused by missing local subroutine index in private dictonary of OTF font
+
+*   FOP-2322: Type1 Font with Custom Encoding not visible in Postscript output; Patch submitted by Simon Steiner
+
+*   FOP-2321: Latest fop snapshot crashes when processing rindolf-spec.fo
+
+*   FOP-2317: crash when issuing warning for invalid property value
+
+*   FOP-2315: Incorrect example for leaders
+
+*   FOP-2314: Caching xmlParserClassName in org.apache.fop.svg.SimpleSVGUserAgent; patch submitted by Gonzalo Vasquez
+
+*   FOP-2313: add support for svg gradients when generating PostScript; most code authored by Robert Meyer with a small contribution by Athanasios Giannimaras.
+
+*   FOP-2312: font-base configuration setting not working as expected
+
+*   FOP-2311: revert changes from FOP-1069 that regresses shorthand property handling.
+
+*   FOP-2310: Fix misplaced table cell border in WM RTL context.
+
+*   FOP-2308: text-transform="capitalize" assumes input text is lowercase
+
+*   FOP-2307: Weird border color inheritance (hashCode collisions) -- patch submitted by Alexios Giotis.
+
+*   FOP-2306: use the URI of the source FO document rather than the config file as a default base URI
+
+*   FOP-2305: Poor resolution of PCL output in trunk vs. 1.1; fixed regression
+
+*   FOP-2303: fix negative text indent in bidi context
+
+*   FOP-2301: Enable support for PDF sub-page transitions.
+
+*   FOP-2299: Non Unicode named glyphs not loaded for Type1 fonts
+
+*   FOP-2298: Enable support for PDF Transitions by defining low-level mechanism to augment /Catalog and /Page dictionaries.
+
+*   FOP-2296: SVG fill pattern not visible with encryption; patch submitted by Simon Steiner
+
+*   FOP-2293: extension to the layout engine for managing white space at the bottom of a page
+
+*   FOP-2287: support Tamil script (preliminary)
+
+*   FOP-2281: factory is not initialized when -cache is used in org.apache.fop.cli.Main; patch submitted by Thanasis Giannimaras.
+
+*   FOP-2275: Quadratic Bezier curves not properly rendered
+
+*   FOP-2273: Stroke miter limit is not clamped when writing PDFs; patch submitted by Max Gilead
+
+*   FOP-2271: XSL Infinite loop; patch submitted by Simon Steiner.
+
+*   FOP-2265: Enable xlint cast; patch submitted by Simon Steiner
+
+*   FOP-2263: PDFDocumentGraphics2D.closePage() should not nullify currentStream; change suggested by Max Gilead
+
+*   FOP-2260: Smart quotes broken in RTF if at start of text
+
+*   FOP-2259: 1 bit TIFF error; patch submitted by Simon Steiner
+
+*   FOP-2258: fix erroneous mirroring
+
+*   FOP-2252: OpenType CFF support for FOP; patch submitted by Robert Meyer
+
+*   FOP-2250: Arabic characters are not connected on PCL; partial implementation.
+
+*   FOP-2249: elide formatting controls - preliminary
+
+*   FOP-2248: add support for AES 256 PDF encryption
+
+*   FOP-2246: Exception java.lang.IllegalArgumentException: min (1650) > opt (0); changes to avoid exception and default to "reasonable" values if no invalid value was explicitly provided.
+
+*   FOP-2245: height attribute on external-graphic with percentage value behaves incorrectly
+
+*   FOP-2244: Encrypted image colorspace fails; patch submitted by Simon Steiner
+
+*   FOP-2238: updated xgc jar (revision 1477369)
+
+*   FOP-2226: Image resources are not closed when rendering into the Intermediate Format
+
+*   FOP-2224: NPE for SVG text in AFP; patch submitted by Simon Steiner
+
+*   FOP-2223: Lines do not span to the end in rounded border cells in AFP; patch submitted by Simon Steiner.
+
+*   FOP-2221: Make overflow messages easier to read and fix wrong/ missing messages; patch submitted by Simon Steiner.
+
+*   FOP-2217; Image scaling change was adversely affecting other image types
+
+*   FOP-2216: PDF forms are offset; patch submitted by Simon Steiner
+
+*   FOP-2215; Thin dashed border look like dots
+
+*   FOP-2214; forgot to commit status.xml
+
+*   FOP-2213: use kern table when no GPOS kern lookups are present
+
+*   FOP-2211: fixed in previous
+
+*   FOP-2206: Add support for CS placement and escapement data in PS renderer.
+
+*   FOP-2203: Fix xml syntax in XSD
+
+*   FOP-2197: missing GlyphTester class in transcoder archives
+
+*   FOP-2195: use sparse arrays for position adjustments
+
+*   FOP-2194: optimize lazy font load invocation for hot methods
+
+*   FOP-2192: fix checkstyle and findbugs warnings
+
+*   FOP-2191: cache matched lookups, assembled lookup spec uses; reduce glyph processing state allocation
+
+*   FOP-2188: optimize string allocation in pdf output processing
+
+*   FOP-2187: Generating pdf works awt & png crashes when overflow hidden
+
+*   FOP-2186: optimize inefficient glyph processing state update operations
+
+*   FOP-2184: optimize inefficient position adjustment array allocation in non-CS path.
+
+*   FOP-2183: Use event producer when Colour Profile in PNG Image is bad; patch submitted by Simon Steiner
+
+*   FOP-2181: Add a test case for the recent fix made in FOP-2174 and XGC-76 regarding source resolution scaling with SVG and images; patch submitted by Robert Meyer
+
+*   FOP-2180: TTFReader outputs bounding box information for glyphs.
+
+*   FOP-2179: Fix checkstyle and findbugs warnings.
+
+*   FOP-2178: Fix incomplete kerning when complex script features are enabled.
+
+*   FOP-2177: If a right aligned image exceeds a table cells bounds, it will overflow in the wrong direction; patch submitted by Robert Meyer
+
+*   FOP-2174: When using SVG drawings, if no content-width and content-height is specified, 72 will be used instead of the source-resolution option
+
+*   FOP-2173: Invalid Postscript created with SVG and custom fonts
+
+*   FOP-2171: Missing Glyph in Postscript using DejaVuSans. Submitted by Simon Steiner.
+
+*   FOP-2160: Fix NPE when rl writing mode is used in certain contexts.
+
+*   FOP-2157: Deadlock in CompareUtil class; patch by Jacopo Cappellato based on original proposal by Morten Knudsen.
+
+*   FOP-2148: make page-position="only" work
+
+*   FOP-2107: org.apache.batik.bridge.BridgeException: Unable to make sense of URL for connection; patch suggested by Matthias Reischenbacher and Robert Meyer comments.
+
+*   FOP-2106: Footnote put on earlier page than the one that contains the footnote call
+
+*   FOP-2104: RTF renderer barfs when fo:table-row is missing inside fo-table-header
+
+*   FOP-2094: preliminary support for mapping OTF script tags from @script property
+
+*   FOP-2093: preliminary support for mapping OTF language tags from @language property
+
+*   FOP-2060: adjoining blocks with break-before="page" break-after="page" cause extra empty page
+
+*   FOP-2044: Hyphenation of Uppercase Words, Combined with Underlines; patch submitted by Robert Meyer
+
+*   FOP-1976; committed change suggested by Matthias Reischenbacher
+
+*   FOP-1872: External document is clipped when rotated; patch submitted by Thanasis Giannimaras.
+
+*   FOP-1840: column balancing algorithm; applied patch 12550540 submitted by Robert Meyer.
+
+*   FOP-1801: conversion B&W GIF=>PDF creates PDF with colorspace RGB if FOP0.95 and Gray if FOP0.20.5; patch submitted by Thanasis Giannimaras following suggestion by Jeremias Maerki
+
+*   FOP-1749: Fix offset of footnote when it has a margin-top
+
+*   FOP-1342: Incorrect rendering of GIF images; patch to xgc submitted by Thanasis Giannimaras.
+
+*   FOP-1099: when table headers/footers are repeated at page breaks, also repeat the footnotes they may contain
+
+*   FOP-1099: process footnotes coming from table headers or footers
+
+*   FOP-1069: Warn instead or error on invalid property values.
+
+*   FOP-1069: No error message on illegal/unknown values on a property
+
+*   Bugzilla 37114: Implementation of changes necessary to warn of invalid property values.
+
+*   Bugzilla #54196: configure big / little endian support for TIFF images; patch 29628 applied; submitted by Robert Meyer
+
+*   Bugzilla #54169: Split the parent tree (the number tree corresponding to the ParentTree entry in the structure tree root) to avoid reaching the internal limits of Acrobat Pro, that would otherwise split it at the wrong place when saving the document.
+
+*   Bugzilla #54167: Disable the overflow recovery mechanism when the flow IPD changes
+
+*   Bugzilla #54120: Prevented NPEs when FOP asks Batik for AWT fonts for AFP output
+
+*   Bugzilla #54081: properly tag hyphenated words in PDF output when accessibility is enabled
+
+*   Bugzilla #54075: Fixed a regression
+
+*   Bugzilla #54041: Added support for Rounded Corners.
+
+*   Bugzilla #54038: Added PDF/A-2 output option
+
+*   Bugzilla #54037: Issue a warning when accessibility is enabled for PDF output and language information is missing
+
+*   Bugzilla #54024: rewrote generation of /PageLabels dictionary
+
+*   Bugzilla #53980: PDF accessibility: Store language information coming from fo:block or fo:character in the structure tree.
+
+*   Bugzilla #53942: fo:flow not rendered with -awt; patch 29465 submitted by Robert Meyer
+
+*   Bugzilla #53924: Support for retrieve-table-markers, submitted by Luis Bernardo.
+
+*   Bugzilla #53902: Added possibility to define 'header' table columns (the same way as fo:table-header allows to define header rows).
+
+*   Bugzilla #53887: A revert of r1325624 as the java.awt.headless JVM argument should be enabled by the user
+
+*   Bugzilla #53868: Full font embedding in PDF
+
+*   Bugzilla #53865: Add Rows per Strip configuration for Tiff renderer
+
+*   Bugzilla #53827: When an fo:block has a non-zero value for its text-indent property and is broken over two pages of different widths, then the first line on the second page is missing one word and appears indented.
+
+*   Bugzilla #53790: Prevented the TIFF configurator from overriding the Bitmap configurator unless CCITT compression is enabled.
+
+*   Bugzilla #53778: When PDF accessibility is enabled, the contents for the different regions must appear in the proper order in the structure tree.
+
+*   Bugzilla #53751: Slightly restructured the way the FontCache creates a cache-file
+
+*   Bugzilla #53688: Wrong page number reported when a column overflows the region-body in a multi-column document
+
+*   Bugzilla #53685 - AFP charactersets are cached using more unique keys
+
+*   Bugzilla #53639: When PDF accessibility is enabled, the Scope attribute must be present in the structure tree for table header elements.
+
+*   Bugzilla #53630: make it clear that the PDFConformanceException is due to accessibility not being enabled
+
+*   Bugzilla #53600: Added an event if a glyph and its metric information does not exist in the character set
+
+*   Bugzilla #53598: avoid IllegalArgumentException by setting the breakClass field in BreakElement to a legal default value
+
+*   Bugzilla #53596: When PDF accessibility is enabled, the structure tree must contain information about the number of columns or rows spanned by a table cell.
+
+*   Bugzilla #53563: Removed a method call that could cause a java.awt.HeadlessException in PCLGraphics2D (brought it inline with PDF/PS/AFP-Graphics2D classes)
+
+*   Bugzilla #53502: MODCA end structured field now more conformant with the spec by allowing 0xFFFF match (match any). Submitted by Robert Meyer
+
+*   Bugzilla #48955: Allow AFP font codepage names to be less than 8 chars
+
+*   Bugzilla #48954: Support for character encoding of TLEs in AFP output. Submitted by PH.
+
+*   Bugzilla #48063: patches 28912 and 29015; fixes infinite loop in footnotes code
+
+*   Bugzilla #45822: Changed the dashed borders to appear more like dashes and less like dotted-borders
+
+*   Bugzilla #45715: Restored support for break-before on fo:table.
+
+*   Bugzilla #40676: patch 29132 with changes, support for sRGB and iCCP chunks
+
+### Contributors to this release
+
+We thank the following people for their contributions to this release.
+
+This is a list of all people who participated as committers:
+
+*   Adrian Cumiskey
+*   Andreas Delmelle
+*   Chris Bowditch
+*   Clay Leeds
+*   Glenn Adams
+*   Luis Bernardo
+*   Luca Furini
+*   Mehdi Houshmand
+*   Peter Hancock
+*   Pascal Sancho
+*   Robert Meyer
+*   Simon Steiner
+*   Vincent Hennebert
+
+This is a list of other contributors:
+
+*   Alexey Neyman
+*   Alexios Giotis
+*   Athanasios Giannimaras
+*   Gonzalo Vasquez
+*   Jacopo Cappellato
+*   Jeremias Maerki
+*   Matthias Reischenbacher
+*   Max Gilead
+*   Morten Knudsen
+*   Seifeddine Dridi
+*   Stephen Moore
+
+Version 1.1 (20 October 2012)
+-----------------------------
+
+### Changes to the Code Base
+
+*   ![Image 1: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for the role property on fo:page-sequence, fo:flow and fo:static-content. This allows to change the mapping of those FOs to PDF structure types when enabling accessibility. Committed by VH.
+
+*   ![Image 2: add](https://xmlgraphics.apache.org/images/add.jpg) A global setting to wrap F11 images in page segments. Committed by PH. See issue [FOP-1854](https://issues.apache.org/jira/browse/FOP-1854).
+
+*   ![Image 3: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for PDF Object Streams. When accessibility is enabled and PDF version 1.5 selected, the structure tree will be stored in object streams in order to reduce the size of the final PDF. Committed by VH. Thanks to Peter Hancock.
+
+*   ![Image 4: add](https://xmlgraphics.apache.org/images/add.jpg) Improved support for empty flow-name mapping. Committed by PH. See issue [FOP-1870](https://issues.apache.org/jira/browse/FOP-1870).
+
+*   ![Image 5: add](https://xmlgraphics.apache.org/images/add.jpg) Improvements of the Accessibility features. Committed by PH. Thanks to Vincent Hennebert.
+
+*   ![Image 6: add](https://xmlgraphics.apache.org/images/add.jpg) Suppress unnecessary "font not found warnings" when generating AFP with raster fonts Committed by CB. Thanks to Luis Bernardo. See issue [FOP-2010](https://issues.apache.org/jira/browse/FOP-2010).
+
+*   ![Image 7: add](https://xmlgraphics.apache.org/images/add.jpg) SVG text in AFP creates miscoded GOCA text Committed by CB. Thanks to Luis Bernardo. See issue [FOP-1934](https://issues.apache.org/jira/browse/FOP-1934).
+
+*   ![Image 8: add](https://xmlgraphics.apache.org/images/add.jpg) Add support for different flow-name of fo:region-body in FOP Committed by CB. Thanks to Peter Hancock. See issue [FOP-1870](https://issues.apache.org/jira/browse/FOP-1870).
+
+*   ![Image 9: add](https://xmlgraphics.apache.org/images/add.jpg) Tagged PDF performance improvement plus tests Committed by CB. Thanks to Mehdi Houshmand. See issue [FOP-1958](https://issues.apache.org/jira/browse/FOP-1958).
+
+*   ![Image 10: add](https://xmlgraphics.apache.org/images/add.jpg) Improved AdobeStandardEncoding support in AFM files for type1 fonts Committed by MH. See issue [FOP-1995](https://issues.apache.org/jira/browse/FOP-1995).
+
+*   ![Image 11: add](https://xmlgraphics.apache.org/images/add.jpg) Added ant script to get JaCoCo code coverage. Committed by VH. Thanks to Mehdi Houshmand. See issue [FOP-1991](https://issues.apache.org/jira/browse/FOP-1991).
+
+*   ![Image 12: add](https://xmlgraphics.apache.org/images/add.jpg) Added to build file JUnit target that uses a regex to run all of the test cases. This reduces the risk that some of them are omitted when building FOP. Committed by VH. Thanks to Mehdi Houshmand. See issue [FOP-1986](https://issues.apache.org/jira/browse/FOP-1986).
+
+*   ![Image 13: add](https://xmlgraphics.apache.org/images/add.jpg) Allow JPEG images to be embedded in an AFP document as is, without being decoded and encoded. Committed by PH. Thanks to Mehdi Houshmand. See issue [FOP-1984](https://issues.apache.org/jira/browse/FOP-1984).
+
+*   ![Image 14: add](https://xmlgraphics.apache.org/images/add.jpg) Simplification of the build: Reduced code duplication and layout engine tests. Committed by PH. Thanks to Mehdi Houshmand. See issue [FOP-1980](https://issues.apache.org/jira/browse/FOP-1980).
+
+*   ![Image 15: add](https://xmlgraphics.apache.org/images/add.jpg) Fix for when the last simple-page-master referenced in a page-sequence-master is not chosen when force-page-count=odd. Committed by PH. Thanks to Mehdi Houshmand. See issue [FOP-1976](https://issues.apache.org/jira/browse/FOP-1976).
+
+*   ![Image 16: add](https://xmlgraphics.apache.org/images/add.jpg) Upgraded all tests to JUnit 4. Committed by VH. Thanks to Mehdi Houshmand. See issue [FOP-1973](https://issues.apache.org/jira/browse/FOP-1973).
+
+*   ![Image 17: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for resolution of relative URIs against a specified xml:base during property refinement. Committed by AD. See issue [FOP-1744](https://issues.apache.org/jira/browse/FOP-1744).
+
+*   ![Image 18: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix incorrect language and country code key generation in hyphenation tree cache. Committed by GA. Thanks to Dieter von Holten. See issue [FOP-2082](https://issues.apache.org/jira/browse/FOP-2082).
+
+*   ![Image 19: fix](https://xmlgraphics.apache.org/images/fix.jpg) Eliminate javadocs warnings. Committed by GA.
+
+*   ![Image 20: fix](https://xmlgraphics.apache.org/images/fix.jpg) Eliminate incorrect use of object identity which produces excessive property cache collisions. Committed by GA. Thanks to Alexios Giotis. See issue [FOP-2078](https://issues.apache.org/jira/browse/FOP-2078).
+
+*   ![Image 21: fix](https://xmlgraphics.apache.org/images/fix.jpg) Eliminate javadocs warnings. Committed by GA.
+
+*   ![Image 22: fix](https://xmlgraphics.apache.org/images/fix.jpg) Use new double format utility to improve thread safety and performance. Committed by GA. Thanks to Ognjen Blagojevic. See issue [FOP-1460](https://issues.apache.org/jira/browse/FOP-1460).
+
+*   ![Image 23: fix](https://xmlgraphics.apache.org/images/fix.jpg) Convert block container overflow exception to event model, improving overflow property behavior. Committed by GA. Thanks to Luis Bernardo. See issue [FOP-2045](https://issues.apache.org/jira/browse/FOP-2045).
+
+*   ![Image 24: fix](https://xmlgraphics.apache.org/images/fix.jpg) Update to use of checkstyle-5.5 as default configuration. Remove checkstyle-4.0 configuration. Also, import environment build properties before local properties, so that latter can refer to former. Committed by GA. See issue [FOP-2042](https://issues.apache.org/jira/browse/FOP-2042).
+
+*   ![Image 25: fix](https://xmlgraphics.apache.org/images/fix.jpg) Prevent NPE on use of unsupported collapse-with-precedence; fall back to collapse. Fix checkstyle errors from prior commit. Committed by GA. Thanks to Pascal Sancho. See issue [FOP-2018](https://issues.apache.org/jira/browse/FOP-2018).
+
+*   ![Image 26: fix](https://xmlgraphics.apache.org/images/fix.jpg) Invoke JVM in headless mode from FOP command scripts and JS shell to prevent stealing focus from GUI applications. Committed by GA. See issue [FOP-1858](https://issues.apache.org/jira/browse/FOP-1858).
+
+*   ![Image 27: fix](https://xmlgraphics.apache.org/images/fix.jpg) Support list-block in marker, thus preventing NPE. Committed by GA. See issue [FOP-2027](https://issues.apache.org/jira/browse/FOP-2027).
+
+*   ![Image 28: fix](https://xmlgraphics.apache.org/images/fix.jpg) Must use unqualified (local name) when reporting invalid child error. Committed by GA.
+
+*   ![Image 29: fix](https://xmlgraphics.apache.org/images/fix.jpg) Restore lookup on Event message lookup field part. Add locale field to Event to enable locale dependent deferred bundle load during lookup field part substitution. Committed by GA. See issue [FOP-2040](https://issues.apache.org/jira/browse/FOP-2040).
+
+*   ![Image 30: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bug in AFP font metrics that performed integer arithmetic when it should have been double arithemetic. Committed by MH.
+
+*   ![Image 31: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bring clone() in line with the recommendations in Object.clone(). Committed by GA. Thanks to Simon Pepping. See issue [FOP-1836](https://issues.apache.org/jira/browse/FOP-1836).
+
+*   ![Image 32: fix](https://xmlgraphics.apache.org/images/fix.jpg) How to use native text with EPSDocumentGraphics2D. Committed by GA. Thanks to Luis Bernardo. See issue [FOP-2032](https://issues.apache.org/jira/browse/FOP-2032).
+
+*   ![Image 33: fix](https://xmlgraphics.apache.org/images/fix.jpg) Allow https scheme URI for PDF external action target. Committed by GA. Thanks to Paul Huemer. See issue [FOP-1954](https://issues.apache.org/jira/browse/FOP-1954).
+
+*   ![Image 34: fix](https://xmlgraphics.apache.org/images/fix.jpg) RTF percentage table column width not calculated from table. Committed by GA. Thanks to Carsten Pfeiffer. See issue [FOP-1908](https://issues.apache.org/jira/browse/FOP-1908).
+
+*   ![Image 35: fix](https://xmlgraphics.apache.org/images/fix.jpg) RTF generates unexpected lines for blocks in tables. Also fix three findbugs issues. Committed by GA. Thanks to Max Aster. See issue [FOP-1918](https://issues.apache.org/jira/browse/FOP-1918).
+
+*   ![Image 36: fix](https://xmlgraphics.apache.org/images/fix.jpg) RTF tables do not support percent column-widths. Committed by GA. Thanks to Max Aster. See issue [FOP-1916](https://issues.apache.org/jira/browse/FOP-1916).
+
+*   ![Image 37: fix](https://xmlgraphics.apache.org/images/fix.jpg) Access denied (java.util.PropertyPermission org.apache.fop.fo.properties.use-cache read). Committed by GA. Thanks to Armin Haaf. See issue [FOP-1873](https://issues.apache.org/jira/browse/FOP-1873).
+
+*   ![Image 38: fix](https://xmlgraphics.apache.org/images/fix.jpg) Incorrect message when encountering a block in an inline in a footnote. Committed by GA. Thanks to Adrian Buza. See issue [FOP-1837](https://issues.apache.org/jira/browse/FOP-1837).
+
+*   ![Image 39: fix](https://xmlgraphics.apache.org/images/fix.jpg) Specified rule-thickness applies only when leader-pattern is rule, otherwise should use default thickness. Committed by GA. Thanks to Georg Datterl. See issue [FOP-1676](https://issues.apache.org/jira/browse/FOP-1676).
+
+*   ![Image 40: fix](https://xmlgraphics.apache.org/images/fix.jpg) Eliminate duplicate code. Committed by GA. Thanks to Julien Aymé. See issue [FOP-1806](https://issues.apache.org/jira/browse/FOP-1806)
+
+*   ![Image 41: fix](https://xmlgraphics.apache.org/images/fix.jpg) Correct coding error in AFPResourceLevel#equals. Committed by GA. Thanks to Julien Aymé. See issue [FOP-1807](https://issues.apache.org/jira/browse/FOP-1807).
+
+*   ![Image 42: fix](https://xmlgraphics.apache.org/images/fix.jpg) Throw IFException instead of NPE if navigation target (page reference) doesn't exist. Committed by GA. Thanks to Melanie Drake. See issue [FOP-1968](https://issues.apache.org/jira/browse/FOP-1968).
+
+*   ![Image 43: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed memory waste in traits map. Committed by GA. Thanks to Sergey Vladimirov. See issue [FOP-1967](https://issues.apache.org/jira/browse/FOP-1967).
+
+*   ![Image 44: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed small memory waste in rowCells array construction. Committed by GA. Thanks to Sergey Vladimirov. See issue [FOP-1966](https://issues.apache.org/jira/browse/FOP-1966).
+
+*   ![Image 45: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed incorrect rejection of fo:wrapper inside fo:inline inside fo:footnote-body. Committed by GA. Thanks to Alberto Simões. See issue [FOP-2036](https://issues.apache.org/jira/browse/FOP-2036).
+
+*   ![Image 46: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed deadlock in PropertyCache. Committed by VH. Thanks to Alexios Giotis. See issue [FOP-1646](https://issues.apache.org/jira/browse/FOP-1646).
+
+*   ![Image 47: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed bug that caused a configured and installed SVG font to be stroked, also added an event indicating when fonts are stroked. Committed by MH. Thanks to Luis Bernardo. See issue [FOP-2029](https://issues.apache.org/jira/browse/FOP-2029).
+
+*   ![Image 48: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix of a bug introduced when merging ImproveAccessibility. Committed by PH.
+
+*   ![Image 49: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed rendering of special glyphs when using single-byte encoding mode. Committed by VH. Thanks to Luis Bernardo. See issue [FOP-2023](https://issues.apache.org/jira/browse/FOP-2023).
+
+*   ![Image 50: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed regression introduced by issue [FOP-1886](https://issues.apache.org/jira/browse/FOP-1886): bookmarks pointing to a non-existing internal destination should just trigger a warning. Committed by AD. See issue [FOP-1886](https://issues.apache.org/jira/browse/FOP-1886).
+
+*   ![Image 51: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for issue in RenderPagesModel.checkPreparedPages() where the same page-sequence is potentially started multiple times. Committed by AD. Thanks to Martin Koegler. See issue [FOP-1889](https://issues.apache.org/jira/browse/FOP-1889).
+
+*   ![Image 52: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for performance issue when adding pages, if the total number of pages is significantly large. Committed by AD. Thanks to Martin Koegler. See issue [FOP-1890](https://issues.apache.org/jira/browse/FOP-1890).
+
+*   ![Image 53: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for performance issue when adding nodes, if the number of children is significantly large. Committed by AD. Thanks to Martin Koegler. See issue [FOP-1888](https://issues.apache.org/jira/browse/FOP-1888).
+
+*   ![Image 54: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for avoid ArrayIndexOutOfBoundsException for codepoints without a linebreak class Committed by AD. See issue [FOP-1874](https://issues.apache.org/jira/browse/FOP-1874).
+
+*   ![Image 55: fix](https://xmlgraphics.apache.org/images/fix.jpg) Replaced magic numbers with constants from UnitConv and GraphicsConstants. Committed by VH. Thanks to Joshua Marquart. See issue [FOP-1828](https://issues.apache.org/jira/browse/FOP-1828).
+
+*   ![Image 56: update](https://xmlgraphics.apache.org/images/update.jpg) Update xmlgraphics common jar to reflect recent fixes in XGC. Committed by GA. See issue [FOP-2039](https://issues.apache.org/jira/browse/FOP-2039).
+
+*   ![Image 57: update](https://xmlgraphics.apache.org/images/update.jpg) Fix handling of NaN, {+,-}Infinity, and other edge cases. Submitted by Julien Aymé. Committed by GA. Thanks to Julien Aymé. See issue [FOP-1460](https://issues.apache.org/jira/browse/FOP-1460).
+
+*   ![Image 58: update](https://xmlgraphics.apache.org/images/update.jpg) Improve property function argument parsing, specifically, better separate required, optional, and variable arguments and the handling of optional argument defaults. Regularize property function class names. Committed by GA.
+
+*   ![Image 59: update](https://xmlgraphics.apache.org/images/update.jpg) Add run target for embedded examples. Add increased JVM memory heap flag for example8 in case font cache is rebuilt. Committed by GA. See issue [FOP-1955](https://issues.apache.org/jira/browse/FOP-1955).
+
+### Changes to the User Configuration
+
+*   ![Image 60: add](https://xmlgraphics.apache.org/images/add.jpg) Added configuration option to set the version of the output PDF document. Committed by VH. Thanks to Mehdi Houshmand. See issue [FOP-1945](https://issues.apache.org/jira/browse/FOP-1945).
+
+*   ![Image 61: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix crash on use of version switch (-v). Committed by GA. Thanks to Luis Bernardo. See issue [FOP-1988](https://issues.apache.org/jira/browse/FOP-1988).
+
+*   ![Image 62: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix exception thrown from use of -print option in CLI. Committed by GA. Thanks to Luis Bernardo. See issue [FOP-2065](https://issues.apache.org/jira/browse/FOP-2065).
+
+*   ![Image 63: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for relative URIs in the configuration file (base, font-base, hyphenation-base) are evaluated relative to the base URI of the configuration file. Committed by SP.
+
+### Changes to Documentation
+
+*   ![Image 64: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix renderer mime type for PCL output; should be application/x-pcl. Committed by GA. See issue [FOP-2064](https://issues.apache.org/jira/browse/FOP-2064).
+
+*   ![Image 65: update](https://xmlgraphics.apache.org/images/update.jpg) Update FAQ and New Bug documentation. Committed by GA.
+
+### Changes to the Font Subsystem
+
+*   ![Image 66: add](https://xmlgraphics.apache.org/images/add.jpg) Add support for OpenType advanced typographic tables (GDEF, GSUB, GPOS). Committed by GA.
+
+*   ![Image 67: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for lookup of alternative glyphs when additional single-byte encodings are used, ex. replacing "Omegagreek" by "Omega" and vice versa. Committed by JM. Thanks to Alexandros Papadakis. See issue [FOP-1892](https://issues.apache.org/jira/browse/FOP-1892).
+
+*   ![Image 68: add](https://xmlgraphics.apache.org/images/add.jpg) Added convenience support for the flushing of the Fop font cache file from the command line. Committed by AC.
+
+*   ![Image 69: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix performance regression in JDK 1.6 Update 19 due to use of Java Beans API. Fix checkstyle errors. Committed by GA. Thanks to Tassos Charoulis. See issue [FOP-2057](https://issues.apache.org/jira/browse/FOP-2057).
+
+*   ![Image 70: fix](https://xmlgraphics.apache.org/images/fix.jpg) Ensure fonts are not loaded twice (redundantly). Committed by GA. See issue [FOP-2055](https://issues.apache.org/jira/browse/FOP-2055).
+
+*   ![Image 71: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix for color model in IOCA IDE structure parameter for 4- and 8-bit grayscale images. Revision 4. Committed by PH. See issue [FOP-1767](https://issues.apache.org/jira/browse/FOP-1767).
+
+*   ![Image 72: fix](https://xmlgraphics.apache.org/images/fix.jpg) Changes the way PostScript handles Graphics2D images such that if the language is set to level 3, the image is stored as an embedded file which has no length limit. Previously it was stored as an array which has a implementation limit of 65535 elements. Committed by PH. Thanks to Mehdi Houshmand. See issue [FOP-1962](https://issues.apache.org/jira/browse/FOP-1962).
+
+*   ![Image 73: fix](https://xmlgraphics.apache.org/images/fix.jpg) PDFFactory responsible for asdigning name to a subset font. Committed by PH. Thanks to Mehdi Houshmand. See issue [FOP-1961](https://issues.apache.org/jira/browse/FOP-1961).
+
+*   ![Image 74: fix](https://xmlgraphics.apache.org/images/fix.jpg) Improved support for EBCDIC encoded double byte fonts fo AFP. Committed by PH. Thanks to Mehdi Houshmand. See issue [FOP-1950](https://issues.apache.org/jira/browse/FOP-1950).
+
+*   ![Image 75: fix](https://xmlgraphics.apache.org/images/fix.jpg) Corrected typographical errors in AFPBase12FontCollection. Committed by PH. Thanks to Mehdi Houshmand. See issue [FOP-1933](https://issues.apache.org/jira/browse/FOP-1933).
+
+*   ![Image 76: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a bug in TTF subsetting where a composite glyph could get remapped more than once resulting in garbled character. Committed by JM. Thanks to Mehdi Houshmand. See issue [FOP-1953](https://issues.apache.org/jira/browse/FOP-1953).
+
+*   ![Image 77: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a number of bugs concerning Type 1 and other single-byte fonts (glyph width mismatches and overlapping characters). Committed by JM. See issue [FOP-1887](https://issues.apache.org/jira/browse/FOP-1887).
+
+*   ![Image 78: fix](https://xmlgraphics.apache.org/images/fix.jpg) Removed invalid entries in ToUnicode table of CID subset fonts. Committed by JM. Thanks to Mehdi Houshmand. See issue [FOP-1931](https://issues.apache.org/jira/browse/FOP-1931).
+
+*   ![Image 79: fix](https://xmlgraphics.apache.org/images/fix.jpg) Reinstated support for being able to specify a font cache filepath in the fop user configuration. Committed by AC.
+
+*   ![Image 80: update](https://xmlgraphics.apache.org/images/update.jpg) Removing experimental feature that violates XSL-FO and Unicode semantics by misinterpreting Basic Latin code points. Users must use private use codepoints to access font specific character mappings that have no assigned Unicode code point. See bug 50492. Committed by GA.
+
+### Changes to the Image Support
+
+*   ![Image 81: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix incorrect SVG line dash pattern with PDF output format. Committed by GA. Thanks to Luis Bernardo. See issue [FOP-2079](https://issues.apache.org/jira/browse/FOP-2079).
+
+*   ![Image 82: fix](https://xmlgraphics.apache.org/images/fix.jpg) Support use of ImageLoaderRawPNG decoder in order to prevent re-encoding of PNG images (and unnecssary output file bloat). Committed by GA. Thanks to Luis Bernardo, Matthias Reischenbacher. See issue [FOP-1256](https://issues.apache.org/jira/browse/FOP-1256).
+
+*   ![Image 83: update](https://xmlgraphics.apache.org/images/update.jpg) Fix interoperability issue with Adobe reader regarding use of multiple filters. Committed by GA. Thanks to Luis Bernardo. See issue [FOP-1256](https://issues.apache.org/jira/browse/FOP-1256).
+
+*   ![Image 84: update](https://xmlgraphics.apache.org/images/update.jpg) Update site documentation about PNG image loading configuration and support. Committed by GA. Thanks to Luis Bernardo. See issue [FOP-1256](https://issues.apache.org/jira/browse/FOP-1256).
+
+*   ![Image 85: update](https://xmlgraphics.apache.org/images/update.jpg) Fix newly introduced findbugs warnings. Committed by GA. Thanks to Luis Bernardo. See issue [FOP-1256](https://issues.apache.org/jira/browse/FOP-1256).
+
+### Changes to the Layout Engine
+
+*   ![Image 86: add](https://xmlgraphics.apache.org/images/add.jpg) Add support for complex scripts, including: full bidi support, support for advanced typographic tables, advanced support for number conversion. Committed by GA. See issues [FOP-959](https://issues.apache.org/jira/browse/FOP-959), [FOP-1790](https://issues.apache.org/jira/browse/FOP-1790), [FOP-1827](https://issues.apache.org/jira/browse/FOP-1827).
+
+*   ![Image 87: fix](https://xmlgraphics.apache.org/images/fix.jpg) Unify date formatting between FOP and XGC as well as tidying the date format code. Committed by GA. Thanks to Robert Meyer. See issue [FOP-2059](https://issues.apache.org/jira/browse/FOP-2059).
+
+*   ![Image 88: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for break before (break-before) not respected on blocks nested in inlines. Committed by GA. Thanks to Luis Bernardo. See issue [FOP-1567](https://issues.apache.org/jira/browse/FOP-1567).
+
+*   ![Image 89: fix](https://xmlgraphics.apache.org/images/fix.jpg) Don't restart layout unless abs(ipd difference) > 1 in order to prevent rounding issues from triggering false restart. Committed by GA. Thanks to Pascal Sancho. See issue [FOP-1921](https://issues.apache.org/jira/browse/FOP-1921).
+
+*   ![Image 90: fix](https://xmlgraphics.apache.org/images/fix.jpg) Ensure that table cell spanning works in right-to-left writing mode. Committed by GA. Thanks to Matthias Reischenbacher. See issue [FOP-2047](https://issues.apache.org/jira/browse/FOP-2047).
+
+*   ![Image 91: fix](https://xmlgraphics.apache.org/images/fix.jpg) Ensure that table footer and header are included in bididirectional resolution. Committed by GA. See issue [FOP-2043](https://issues.apache.org/jira/browse/FOP-2043).
+
+*   ![Image 92: fix](https://xmlgraphics.apache.org/images/fix.jpg) Ensure writing-mode specified on fo:table is used to determine writing mode of table and its descendants. Committed by GA. See issue [FOP-2046](https://issues.apache.org/jira/browse/FOP-2046).
+
+*   ![Image 93: fix](https://xmlgraphics.apache.org/images/fix.jpg) Ensure square image is appropriately scaled. Committed by GA. Thanks to Luis Bernardo. See issue [FOP-2014](https://issues.apache.org/jira/browse/FOP-2014).
+
+*   ![Image 94: fix](https://xmlgraphics.apache.org/images/fix.jpg) Issue [FOP-1911](https://issues.apache.org/jira/browse/FOP-1911): Fixed a regression in BlockContainerLayoutManager where margins were no longer reset after forced breaks. Committed by AD. Thanks to Martin Koegler. See issue [FOP-1911](https://issues.apache.org/jira/browse/FOP-1911).
+
+*   ![Image 95: fix](https://xmlgraphics.apache.org/images/fix.jpg) Implemented non-standard behavior for basic-link areas, such that they take into account the heights of their descendants areas. Committed by VH.
+
+*   ![Image 96: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for keep-together does not apply to fo:table-cell. Committed by VH.
+
+*   ![Image 97: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for keep-together on a table containing row-spanning cells that was not honored. Committed by VH.
+
+*   ![Image 98: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for padding-start ignored when table-header/footer is repeated. Committed by VH. Thanks to Matthias Reischenbacher. See issue [FOP-1864](https://issues.apache.org/jira/browse/FOP-1864).
+
+*   ![Image 99: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for correct behavior of keep-together.within-line in case there are nested inlines Committed by AD. See issue [FOP-1847](https://issues.apache.org/jira/browse/FOP-1847).
+
+*   ![Image 100: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for avoid ClassCastException when using fox:widow-content-limit Committed by AD. See issue [FOP-1746](https://issues.apache.org/jira/browse/FOP-1746).
+
+*   ![Image 101: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for content after forced break in block-container is not rendered. Committed by VH. See issue [FOP-1859](https://issues.apache.org/jira/browse/FOP-1859).
+
+*   ![Image 102: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed adjustment of inline parent area for justified text containing a forward page reference. Committed by JM. See issue [FOP-1344](https://issues.apache.org/jira/browse/FOP-1344).
+
+*   ![Image 103: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed behavior when combining hyphenation with preserved linefeeds or whitespace. Committed by AD. See issue [FOP-1133](https://issues.apache.org/jira/browse/FOP-1133).
+
+*   ![Image 104: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed retrieval of available BPD for cases spanning columns and multiple pages with differing page masters. Committed by JM. See issue [FOP-1853](https://issues.apache.org/jira/browse/FOP-1853).
+
+### Changes to Renderers (Output Formats)
+
+*   ![Image 105: add](https://xmlgraphics.apache.org/images/add.jpg) Added possibility to embed TrueType fonts in PostScript. Committed by VH. See issue [FOP-2004](https://issues.apache.org/jira/browse/FOP-2004).
+
+*   ![Image 106: add](https://xmlgraphics.apache.org/images/add.jpg) Various bugfixes to make PDFDocumentGraphics2D operational again. Committed by JM.
+
+*   ![Image 107: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for 128bit encryption in PDF output. Committed by VH. Thanks to Michael Rubin.
+
+*   ![Image 108: add](https://xmlgraphics.apache.org/images/add.jpg) Added an IFDocumentHandler filter for triggering rendering events. Created an Event that captures an end page event with the page number. Committed by PH.
+
+*   ![Image 109: add](https://xmlgraphics.apache.org/images/add.jpg) Added option to place AFP NOPs right before the end of a named page group (page-sequence), rather than after the start. Committed by JM.
+
+*   ![Image 110: add](https://xmlgraphics.apache.org/images/add.jpg) Added option for PostScript output to optimize for file size rather than quality. Committed by JM.
+
+*   ![Image 111: add](https://xmlgraphics.apache.org/images/add.jpg) AFP GOCA: Added option to disable GOCA and to control text painting inside GOCA graphics. Committed by JM.
+
+*   ![Image 112: add](https://xmlgraphics.apache.org/images/add.jpg) Added id element to intermediate format to track the origin of content. Committed by VH.
+
+*   ![Image 113: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for CIE Lab colors (from XSL-FO 2.0 WD). Committed by JM.
+
+*   ![Image 114: add](https://xmlgraphics.apache.org/images/add.jpg) Initial work on spot colors (aka named colors) for PDF output. Committed by JM. Thanks to Patrick Jaromin. See issue [FOP-1810](https://issues.apache.org/jira/browse/FOP-1810).
+
+*   ![Image 115: add](https://xmlgraphics.apache.org/images/add.jpg) Allow afp:no-operation to also appear under fo:page-sequence and fo:declarations. Committed by JM.
+
+*   ![Image 116: add](https://xmlgraphics.apache.org/images/add.jpg) Added some support for break-before/-after for RTF output. Committed by JM. Thanks to Max Aster. See issue [FOP-1371](https://issues.apache.org/jira/browse/FOP-1371).
+
+*   ![Image 117: add](https://xmlgraphics.apache.org/images/add.jpg) Added ability to embed an external AFP page segment resource file (AFP output only). Committed by JM. Thanks to Peter Hancock. See issue [FOP-1809](https://issues.apache.org/jira/browse/FOP-1809).
+
+*   ![Image 118: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for PDF File Attachments (Embedded Files). Committed by JM. Thanks to Andrejus Chaliapinas. See issue [FOP-1498](https://issues.apache.org/jira/browse/FOP-1498).
+
+*   ![Image 119: fix](https://xmlgraphics.apache.org/images/fix.jpg) Add version attribute to AT and IF intermediate formats. Also eliminate redundant use of reversed attribute in AT format. Committed by GA. See issues [FOP-2072](https://issues.apache.org/jira/browse/FOP-2072), [FOP-2073](https://issues.apache.org/jira/browse/FOP-2073).
+
+*   ![Image 120: fix](https://xmlgraphics.apache.org/images/fix.jpg) Add extension to place code just before PostScript %PageTrailer. Committed by GA. Thanks to Luis Bernardo. See issue [FOP-2069](https://issues.apache.org/jira/browse/FOP-2069).
+
+*   ![Image 121: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix invalid PostScript file being created when font-size is 0. Committed by GA. Thanks to Robert Meyer. See issue [FOP-2068](https://issues.apache.org/jira/browse/FOP-2068).
+
+*   ![Image 122: fix](https://xmlgraphics.apache.org/images/fix.jpg) Stop outputting the Type entry for structure elements in order to create a smaller PDF ouptut when accessibility is enabled. Committed by VH. Thanks to Martin Koegler.
+
+*   ![Image 123: fix](https://xmlgraphics.apache.org/images/fix.jpg) Support fractional line widths in AFP renderer, fixing problem with SVG line drawing. Committed by GA. Thanks to Luis Bernardo. See issue [FOP-2063](https://issues.apache.org/jira/browse/FOP-2063).
+
+*   ![Image 124: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for invalid PDF for certain numerical values in SVG lineargradient. Committed by GA. Thanks to Luis Bernardo. See issue [FOP-1259](https://issues.apache.org/jira/browse/FOP-1259).
+
+*   ![Image 125: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for XGC when rendering PostScript using SVG being drawn upside down when using a custom affine transform. Committed by GA. Thanks to Robert Meyer. See issue [FOP-1769](https://issues.apache.org/jira/browse/FOP-1769).
+
+*   ![Image 126: fix](https://xmlgraphics.apache.org/images/fix.jpg) Don't write final /sect suffix in RTF if section is last section. Committed by GA. Thanks to Benjamin Riefenstahl. See issue [FOP-1948](https://issues.apache.org/jira/browse/FOP-1948).
+
+*   ![Image 127: fix](https://xmlgraphics.apache.org/images/fix.jpg) Take leading derived space before/after into account when computing rows for TXT renderer. Committed by GA. See issue [FOP-1985](https://issues.apache.org/jira/browse/FOP-1985).
+
+*   ![Image 128: fix](https://xmlgraphics.apache.org/images/fix.jpg) Improved fix of a bug relating to PCL painter thread safetly. Previous fix in rev 895012 worked by synchronizing methods of a static instance of Java2DFontMetrics. This fix uses a unique instance for per thread. Committed by PH. See issue [FOP-1718](https://issues.apache.org/jira/browse/FOP-1718).
+
+*   ![Image 129: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a bug in AFP where an ArrayOutofBoundsException is throwqn when embedding a Page Segment. Committed by PH.
+
+*   ![Image 130: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a bug in AFP where the object area axes of an Include Object was incorrectly set when rotated by 180. Committed by PH.
+
+*   ![Image 131: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a multi-threading bug for SVG images included through svg:image inside SVG documents. Committed by JM.
+
+*   ![Image 132: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for alternative text not working in tagged PDF for TIFF images. Committed by VH.
+
+*   ![Image 133: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed io exception in MODCAParser caused by the improper use of mark() and reset() on the MODCA data input stream. Added unit test. Committed by PH. See issue [FOP-1909](https://issues.apache.org/jira/browse/FOP-1909).
+
+*   ![Image 134: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed mapping of font weights between CSS values and TextAttribute.WEIGHT_*. Committed by JM. Thanks to Glenn Adams. See issue [FOP-1907](https://issues.apache.org/jira/browse/FOP-1907).
+
+*   ![Image 135: fix](https://xmlgraphics.apache.org/images/fix.jpg) AFP GOCA: fonts were not embedded from within AFPGraphics2D. Committed by JM.
+
+*   ![Image 136: fix](https://xmlgraphics.apache.org/images/fix.jpg) AFP GOCA: Changed the way FOP fonts are selected based on Batik's GVT fonts to match the behaviour of PDF/PS output. Committed by JM.
+
+*   ![Image 137: fix](https://xmlgraphics.apache.org/images/fix.jpg) AFP GOCA: Work-around for InfoPrint's AFP implementation which seems to lose the character set state over Graphics Data (GAD) boundaries. Committed by JM.
+
+*   ![Image 138: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix for AFP GOCA segments: they were not properly marked as appended which could lead to graphics state changes in some implementations. Committed by JM.
+
+*   ![Image 139: fix](https://xmlgraphics.apache.org/images/fix.jpg) Issue [FOP-1919](https://issues.apache.org/jira/browse/FOP-1919): Bookmarks create useless lines in RTF Committed by CB. Thanks to Max Aster. See issue [FOP-1919](https://issues.apache.org/jira/browse/FOP-1919).
+
+*   ![Image 140: fix](https://xmlgraphics.apache.org/images/fix.jpg) Issue [FOP-1917](https://issues.apache.org/jira/browse/FOP-1917): page-number-citation-last does not work in RTF Committed by CB. Thanks to Max Aster. See issue [FOP-1917](https://issues.apache.org/jira/browse/FOP-1917).
+
+*   ![Image 141: fix](https://xmlgraphics.apache.org/images/fix.jpg) Issue [FOP-1915](https://issues.apache.org/jira/browse/FOP-1915): Fixed a NullPointerException in case a white-space fo:character was removed due to white-space handling. Committed by AD. Thanks to Matthias Reischenbacher. See issue [FOP-1915](https://issues.apache.org/jira/browse/FOP-1915).
+
+*   ![Image 142: fix](https://xmlgraphics.apache.org/images/fix.jpg) Issue [FOP-1914](https://issues.apache.org/jira/browse/FOP-1914): Fixed an issue in PDF output where a link was added to the parent tree instead of the related structure element. Committed by AD. Thanks to Martin Koegler. See issue [FOP-1914](https://issues.apache.org/jira/browse/FOP-1914).
+
+*   ![Image 143: fix](https://xmlgraphics.apache.org/images/fix.jpg) Issue [FOP-1913](https://issues.apache.org/jira/browse/FOP-1913): Fixed an issue where invalid PDF page content was generated due to incorrect ET/EMC sequences. Committed by AD. Thanks to Martin Koegler. See issue [FOP-1913](https://issues.apache.org/jira/browse/FOP-1913).
+
+*   ![Image 144: fix](https://xmlgraphics.apache.org/images/fix.jpg) Increased maximum possible PDF size from 2GB to around 9GB (hard maximum imposed by the PDF specification). Committed by JM.
+
+*   ![Image 145: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix to preserve the order of AFP TLEs and NOPs as given in the XSL-FO document. Committed by JM. Thanks to Mehdi Houshmand. See issue [FOP-1894](https://issues.apache.org/jira/browse/FOP-1894).
+
+*   ![Image 146: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a multi-threading issue when rendering SVG. Committed by JM. Thanks to Alexios Giotis. See issue [FOP-1610](https://issues.apache.org/jira/browse/FOP-1610).
+
+*   ![Image 147: remove](https://xmlgraphics.apache.org/images/remove.jpg) Removed old Renderer implementations for those output formats that have a version based on the new DocumentHandler architecture available (AFP, PCL, PDF, PS). Committed by VH.
+
+### Changes to unit tests or other test code
+
+*   ![Image 148: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix errors and warnings in example files. Add build.xml for documentation examples. Committed by GA.
+
+*   ![Image 149: update](https://xmlgraphics.apache.org/images/update.jpg) Add test for basic-link with padding. Committed by GA. Thanks to Matthias Reischenbacher. See issue [FOP-1864](https://issues.apache.org/jira/browse/FOP-1864).
+
+### Contributors to this release
+
+We thank the following people for their contributions to this release.
+
+This is a list of all people who participated as committers:
+
+Adrian Cumiskey (AC), Andreas Delmelle (AD), Chris Bowditch (CB), Glenn Adams (GA), Jeremias Märki (JM), Mehdi Houshmand (MH), Peter Hancock (PH), Simon Pepping (SP), Vincent Hennebert (VH).
+
+This is a list of other contributors:
+
+Adrian Buza, Alberto Simões, Alexandros Papadakis, Alexios Giotis, Andrejus Chaliapinas, Armin Haaf, Benjamin Riefenstahl, Carsten Pfeiffer, Dieter von Holten, Georg Datterl, Glenn Adams, Joshua Marquart, Julien Aymé, Luis Bernardo, Martin Koegler, Matthias Reischenbacher, Max Aster, Mehdi Houshmand, Melanie Drake, Michael Rubin, Ognjen Blagojevic, Pascal Sancho, Patrick Jaromin, Paul Huemer, Peter Hancock, Robert Meyer, Sergey Vladimirov, Simon Pepping, Tassos Charoulis, Vincent Hennebert.
+
+Version 1.0 (21 July 2010)
+--------------------------
+
+### Changes to the End-User API
+
+*   ![Image 150: add](https://xmlgraphics.apache.org/images/add.jpg) Added a command-line option '-catalog' to use a catalog resolver for the XML and XSLT files Committed by SP.
+
+### Changes to the Code Base
+
+*   ![Image 151: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for xmlfile and xsltfile parameters in FOP's Ant Task. Committed by AC.
+
+*   ![Image 152: add](https://xmlgraphics.apache.org/images/add.jpg) Added the possibility to use CachedRenderPagesModel, to conserve memory in case of large documents with a lot of cross-references (area tree will be serialized to disk to avoid keeping it entirely in memory). Committed by AD. Thanks to Dario Laera. See issue [FOP-1637](https://issues.apache.org/jira/browse/FOP-1637).
+
+*   ![Image 153: add](https://xmlgraphics.apache.org/images/add.jpg) Added an event handling framework which allows to get better feedback from within FOP with the ability to customize problem management. Committed by JM.
+
+*   ![Image 154: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: when #CMYK pseudo-profile was used in the rgb-icc() function, always the fallback RGB colors were used instead. Committed by VH. Thanks to Venkat Reddy. See issue [FOP-1730](https://issues.apache.org/jira/browse/FOP-1730).
+
+*   ![Image 155: fix](https://xmlgraphics.apache.org/images/fix.jpg) White-space handling in markers with inline-content throws a NullPointerException in some cases. Committed by AD. See issue [FOP-1695](https://issues.apache.org/jira/browse/FOP-1695).
+
+*   ![Image 156: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: previously retrieved markers were not cleared if the new marker was empty. Committed by AD. See issue [FOP-1645](https://issues.apache.org/jira/browse/FOP-1645).
+
+*   ![Image 157: fix](https://xmlgraphics.apache.org/images/fix.jpg) Changed meaning of ‘-v’ option to ‘verbose’, which will print FOP’s version and proceed. Added a ‘-version’ option to simply print the version then exit, following Java practices. Committed by VH.
+
+*   ![Image 158: fix](https://xmlgraphics.apache.org/images/fix.jpg) MinOptMaxUtil.toMinOptMax was converting LengthRangeProperty objects into illegal MinOptMax objects (in some cases opt could be inferior to min). Committed by VH. See issue [FOP-1623](https://issues.apache.org/jira/browse/FOP-1623).
+
+*   ![Image 159: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a memory-leak in Marker.MarkerAttribute, where an instance was used both as key and value in a WeakHashMap, effectively neutralizing the benefit of using WeakReferences. Solved by extending PropertyCache to work for MarkerAttributes as well. Committed by AD. See issue [FOP-1605](https://issues.apache.org/jira/browse/FOP-1605).
+
+*   ![Image 160: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed some multi-threading issues in FontCache.java:
+
+    *   remove the unused private readObject()
+
+    *   make the changeLock member final (initialization-safety + impossible to reassign)
+
+    *   perform the HashMap check for a failed font inside the synchronized block to avoid a race condition Committed by AD. Thanks to rogov.AT.devexperts.com.
+
+See issue [FOP-1594](https://issues.apache.org/jira/browse/FOP-1594).
+
+*   ![Image 161: fix](https://xmlgraphics.apache.org/images/fix.jpg) Improved the behaviour of the command line interface. Committed by VH. Thanks to Tow Browder. See issue [FOP-1586](https://issues.apache.org/jira/browse/FOP-1586).
+
+*   ![Image 162: fix](https://xmlgraphics.apache.org/images/fix.jpg) Make fop.bat and fop.cmd use the %FOP_OPTS% environment variable. Committed by AD. Thanks to Carsten Siedentop. See issue [FOP-1578](https://issues.apache.org/jira/browse/FOP-1578).
+
+*   ![Image 163: fix](https://xmlgraphics.apache.org/images/fix.jpg) Quick-fix to avoid a possible NullPointerException when using empty inlines and hyphenation. Committed by AD. See issue [FOP-1564](https://issues.apache.org/jira/browse/FOP-1564).
+
+*   ![Image 164: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed memory leak in property cache (not cleaning stale PropertyCache$CacheEntry instances). Committed by JM.
+
+*   ![Image 165: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a slight error when resolving non-file URLs: avoid altering the original 'href' if the protocol is other than 'file:' Committed by AD. Thanks to Thomas Stieler. See issue [FOP-1559](https://issues.apache.org/jira/browse/FOP-1559).
+
+*   ![Image 166: fix](https://xmlgraphics.apache.org/images/fix.jpg) Corrected white-space-treatment for situations where an inline-node is the first/last child node of an fo:block, without preceding/following text. Committed by AD. See issue [FOP-1536](https://issues.apache.org/jira/browse/FOP-1536).
+
+*   ![Image 167: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a logic error in Hyphenator.java: If the source had an associated InputStream, an UnsupportedOperationException was triggered. Committed by AD. See issue [FOP-1478](https://issues.apache.org/jira/browse/FOP-1478).
+
+*   ![Image 168: update](https://xmlgraphics.apache.org/images/update.jpg) Changed FONode.addCharacters() parameter to closer match the signature of the standard SAX characters() event (reduces confusion and computations). _!! Implementors of extensions that subclass FONode directly, and offer an implementation for addCharacters() should take care to make similar modifications in their code !!_ Committed by AD.
+
+### Changes to the Bundled Extensions
+
+*   ![Image 169: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for the #CMYK pseudo-profile supported by some commercial XSL implementations on the rgb-icc() function. Committed by JM.
+
+### Changes to the Font Subsystem
+
+*   ![Image 170: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for TrueType fonts with symbol character maps (like "Wingdings" and "Symbol"). Character for these fonts are usually found in the 0xF020 to 0xF0FF range (a Unicode private use area). Committed by JM.
+
+*   ![Image 171: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for specifying referenced fonts per renderer in addition to the general match list. Committed by JM.
+
+*   ![Image 172: add](https://xmlgraphics.apache.org/images/add.jpg) Added a command-line tool to list all configured fonts (org.apache.fop.tools.fontlist.FontListMain). Committed by JM.
+
+*   ![Image 173: add](https://xmlgraphics.apache.org/images/add.jpg) AFP Fonts: Added support for full URI resolution on configured AFP fonts. Committed by JM.
+
+*   ![Image 174: add](https://xmlgraphics.apache.org/images/add.jpg) FOP now creates ToUnicode CMaps for single-byte fonts that don't use built-in encodings to help PDF text extractors interpreting characters. Committed by JM.
+
+*   ![Image 175: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for forcing single-byte encodings for TrueType fonts without creating an XML font metric file (see "encoding-mode" attribute on "font" element) Committed by JM.
+
+*   ![Image 176: add](https://xmlgraphics.apache.org/images/add.jpg) For auto-detected fonts it is now possible to specify that a font needs to be referenced rather than embedded (for the output formats that support this distinction). Committed by JM.
+
+*   ![Image 177: add](https://xmlgraphics.apache.org/images/add.jpg) Add support for font substitution. Committed by AC.
+
+*   ![Image 178: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for auto-configuring TrueType Collections. XML font metrics files for *.ttc fonts are not required anymore. Committed by JM. Thanks to Jason Harrop. See issue [FOP-1516](https://issues.apache.org/jira/browse/FOP-1516).
+
+*   ![Image 179: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for addressing all glyphs available in a Type 1 font, not just the ones in the font's primary encoding. Committed by JM.
+
+*   ![Image 180: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Font selection fallbacks did not work in some cases (ex. bold+italic to normal) Committed by JM.
+
+*   ![Image 181: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed generation of CIDSet object in PDF output. Committed by JM. Thanks to Nicolas Peninguy. See issue [FOP-1696](https://issues.apache.org/jira/browse/FOP-1696).
+
+*   ![Image 182: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: support PFM Files with no extent table. Committed by CB.
+
+*   ![Image 183: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: for the last character of a Type1 font, always a width of 0 was returned. Committed by VH. Thanks to Maxim Wirt. See issue [FOP-1666](https://issues.apache.org/jira/browse/FOP-1666).
+
+*   ![Image 184: fix](https://xmlgraphics.apache.org/images/fix.jpg) Use temporary directory for the font cache if the user home directory is not write-accessible. Committed by JM. Thanks to Alok Singh. See issue [FOP-1625](https://issues.apache.org/jira/browse/FOP-1625).
+
+*   ![Image 185: fix](https://xmlgraphics.apache.org/images/fix.jpg) More robust AFP font parsing, although it is still in need of some rework in the future. Committed by AC.
+
+*   ![Image 186: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for PFMReader after bug #43089 changed the behavior of PFMFile. Fixes baseline problems when Type 1 fonts are used in conjunction with XML font metric files. Committed by JM. Thanks to J. Frantzius. See issue [FOP-1570](https://issues.apache.org/jira/browse/FOP-1570).
+
+### Changes to the Image Support
+
+*   ![Image 187: add](https://xmlgraphics.apache.org/images/add.jpg) Added customization ability for the image loading framework from FOP's configuration file. Committed by JM.
+
+*   ![Image 188: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for SVG 1.2 functionality inside fo:instream-foreign-object. Committed by JM. See issue [FOP-1317](https://issues.apache.org/jira/browse/FOP-1317).
+
+*   ![Image 189: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: use the effective color profile supplied by the ImageEncodingHelper, instead of the original one. Committed by JM.
+
+### Changes to the Layout Engine
+
+*   ![Image 190: add](https://xmlgraphics.apache.org/images/add.jpg) Implement internal character classes if the hyphenation pattern file does not contain them Committed by SP.
+
+*   ![Image 191: add](https://xmlgraphics.apache.org/images/add.jpg) Added limited support for pages of different inline-progression-dimensions within a page-sequence. Committed by VH.
+
+*   ![Image 192: add](https://xmlgraphics.apache.org/images/add.jpg) Added basic implementation for column-keeps. Committed by AD. See issue [FOP-1643](https://issues.apache.org/jira/browse/FOP-1643).
+
+*   ![Image 193: add](https://xmlgraphics.apache.org/images/add.jpg) Added extension to disable column balancing before blocks spanning the whole page, in multiple-column documents. Committed by VH. Thanks to Georg Datterl. See issue [FOP-1604](https://issues.apache.org/jira/browse/FOP-1604).
+
+*   ![Image 194: add](https://xmlgraphics.apache.org/images/add.jpg) Added missing generation of areas for empty grid units in tables with collapsing border model. Committed by JM.
+
+*   ![Image 195: add](https://xmlgraphics.apache.org/images/add.jpg) Allowing non-zero borders and padding on page regions when relaxed validation is turned on. Committed by LF.
+
+*   ![Image 196: add](https://xmlgraphics.apache.org/images/add.jpg) Implemented word-by-ford font-selection strategy on text. Committed by MB.
+
+*   ![Image 197: add](https://xmlgraphics.apache.org/images/add.jpg) Support character-by-character font-selection strategy on fo:character element. Committed by MB.
+
+*   ![Image 198: add](https://xmlgraphics.apache.org/images/add.jpg) Added minimal support for integer keep values on the various keep properties on block-level FOs. For now, all integer values are treated the same (i.e. without strength distinction). Using integers allows to avoid overflows that can happen when "always" is used extensively. Committed by JM.
+
+*   ![Image 199: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: having a special page-master for the last page caused loss of content when normal blocks were mixed with blocks spanning all columns. Committed by VH. See issue [FOP-1618](https://issues.apache.org/jira/browse/FOP-1618).
+
+*   ![Image 200: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: value of conditional space not always taken into account in the calculation of a table’s height. Committed by VH. See issue [FOP-1723](https://issues.apache.org/jira/browse/FOP-1723).
+
+*   ![Image 201: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed handling of percentage values for provisional-label-separation. Committed by VH.
+
+*   ![Image 202: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed handling of percentage values for provisional-distance-between-starts. Committed by VH. Thanks to Jonathan Levinson. See issue [FOP-1704](https://issues.apache.org/jira/browse/FOP-1704).
+
+*   ![Image 203: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: The cells of a table inside a marker were duplicated at every marker retrieval. Committed by VH. See issue [FOP-1656](https://issues.apache.org/jira/browse/FOP-1656).
+
+*   ![Image 204: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: footnotes occurring within the forced height of a table row did not appear on the output Committed by VH.
+
+*   ![Image 205: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a bug when combining a forced break with a "last" page-master. The restart of the algorithm would start at the index of the penalty corresponding to the last page-break. This has been changed to the index of the first element after the last page-break. Committed by AD. See issue [FOP-1619](https://issues.apache.org/jira/browse/FOP-1619).
+
+*   ![Image 206: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed BPD trait and border painting for leaders with leader-pattern="space" (and similar cases). Committed by JM.
+
+*   ![Image 207: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed fo:instream-foreign-object inside fo:marker. Committed by JM. See issue [FOP-1550](https://issues.apache.org/jira/browse/FOP-1550).
+
+*   ![Image 208: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a bug when combining break-before with a span change. Committed by AD. See issue [FOP-1595](https://issues.apache.org/jira/browse/FOP-1595).
+
+*   ![Image 209: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a problem where the BPD or a block area could be wrong if there is a nested, absolutely positioned area (for example a block-container). Committed by JM.
+
+*   ![Image 210: fix](https://xmlgraphics.apache.org/images/fix.jpg) Issue [FOP-1264](https://issues.apache.org/jira/browse/FOP-1264): A conditional-page-master-reference with page-position="last" qualifies for a first page, if it is also the last. Additionally: also added support for page-position="only". Committed by AD. See issue [FOP-1264](https://issues.apache.org/jira/browse/FOP-1264).
+
+*   ![Image 211: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed the source for a division by zero when the content of an fo:leader with leader-pattern="use-content" collapses to zero width during layout. Committed by JM.
+
+*   ![Image 212: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed ID resolution for nested bookmarks with duplicated IDs. Committed by JM.
+
+*   ![Image 213: fix](https://xmlgraphics.apache.org/images/fix.jpg) Added LayoutManagerMapping.registerMaker() to make registration of custom layout managers easier. Committed by JM. See issue [FOP-1558](https://issues.apache.org/jira/browse/FOP-1558).
+
+*   ![Image 214: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed absolute positioning of block-containers when specified using right and bottom instead of left and top. Committed by LF.
+
+*   ![Image 215: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed an inconsistency in footnote handling that led to unnecessary empty areas in pages whose last normal line contains footnotes when the page bpd is not the same for all pages. Committed by LF.
+
+*   ![Image 216: fix](https://xmlgraphics.apache.org/images/fix.jpg) Added support for page-number-citation and page-number-citation-last of fo:inline. Corrected behavior for page-number-citation-last of fo:block: forward references now properly resolved. Committed by AD. See issue [FOP-1520](https://issues.apache.org/jira/browse/FOP-1520).
+
+*   ![Image 217: fix](https://xmlgraphics.apache.org/images/fix.jpg) Added support for the "id" attribute on fo:wrappers when used as a child of the fo:flow. Committed by AD. See issue [FOP-1363](https://issues.apache.org/jira/browse/FOP-1363).
+
+*   ![Image 218: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a ClassCastException when using an fo:wrapper as a child of an fo:block-container. Committed by AD. See issue [FOP-1301](https://issues.apache.org/jira/browse/FOP-1301).
+
+*   ![Image 219: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a regression introduced by the fix for [FOP-1482](https://issues.apache.org/jira/browse/FOP-1482). Committed by AD. See issue [FOP-1377](https://issues.apache.org/jira/browse/FOP-1377).
+
+*   ![Image 220: fix](https://xmlgraphics.apache.org/images/fix.jpg) Activated min-height/max-height and min-width/max-width properties. Committed by AD. See issue [FOP-1428](https://issues.apache.org/jira/browse/FOP-1428).
+
+### Changes to Renderers (Output Formats)
+
+*   ![Image 221: add](https://xmlgraphics.apache.org/images/add.jpg) AFP Output: Added enhanced dithering functionality for images that are converted to bi-level images. Committed by JM.
+
+*   ![Image 222: add](https://xmlgraphics.apache.org/images/add.jpg) Initial support for CID-keyed double-byte fonts (Type 0) in AFP output. Committed by JM. Thanks to Peter Hancock. See issue [FOP-1762](https://issues.apache.org/jira/browse/FOP-1762).
+
+*   ![Image 223: add](https://xmlgraphics.apache.org/images/add.jpg) Added possibility to customize PDF tagging via the ‘role’ property. Committed by VH.
+
+*   ![Image 224: add](https://xmlgraphics.apache.org/images/add.jpg) Added basic accessibility and Tagged PDF support. Committed by JM,VH. Thanks to Jost Klopfstein. See issue [FOP-1627](https://issues.apache.org/jira/browse/FOP-1627).
+
+*   ![Image 225: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for encoding CMYK bitmap images (IOCA FS45) and TIFF images as embedded objects. Committed by JM.
+
+*   ![Image 226: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for positioning Page Overlays in AFP Output Committed by CB.
+
+*   ![Image 227: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for creating thumbnails or preview bitmaps of fixed size for PNG and TIFF output. Committed by JM.
+
+*   ![Image 228: add](https://xmlgraphics.apache.org/images/add.jpg) AFP Output: Added support for IMM Extension on fo:simple-page-master. Committed by CB.
+
+*   ![Image 229: add](https://xmlgraphics.apache.org/images/add.jpg) Added an initial set of extensions for prepress support (fox:bleed, fox:crop-offset, fox:crop-box and fox:scale). This is currently supported only by PDF and Java2D renderers. Committed by JM. Thanks to Peter Coppens. See issue [FOP-1671](https://issues.apache.org/jira/browse/FOP-1671).
+
+*   ![Image 230: add](https://xmlgraphics.apache.org/images/add.jpg) PCL Output: Added support for specifying the output bin. Committed by JM.
+
+*   ![Image 231: add](https://xmlgraphics.apache.org/images/add.jpg) AFP Output: Added support for embedding external AFP form maps (form defs) using the afp:include-form-map extension. Committed by JM.
+
+*   ![Image 232: add](https://xmlgraphics.apache.org/images/add.jpg) AFP Output: Added support for AFP font embedding. Note: this changes the default behaviour. Like with PDF and PS, all fonts are embedded by default unless matched in the "referenced-fonts" section in the configuration. Committed by JM.
+
+*   ![Image 233: add](https://xmlgraphics.apache.org/images/add.jpg) AFP Renderer Raster Fonts:
+
+    *   added support for fractional font-sizes in the configuration.
+
+    *   selection of the smaller font-size, in case two possible fallbacks have the same difference to a requested size.
+
+Committed by AD.
+
+*   ![Image 234: add](https://xmlgraphics.apache.org/images/add.jpg) Added setting to enable dithered painting of filled rectangles in AFP and PCL. Committed by JM.
+
+*   ![Image 235: add](https://xmlgraphics.apache.org/images/add.jpg) Added a custom text painter for rendering SVG text using text operators when rendering to PostScript or EPS. Text is no longer painted as shapes, thus creating much smaller files. Committed by JM. See issue [FOP-1649](https://issues.apache.org/jira/browse/FOP-1649).
+
+*   ![Image 236: add](https://xmlgraphics.apache.org/images/add.jpg) AFP Output: Tag Logical Element (TLE) is now also allowed on fo:page-sequence (page group level). Committed by JM.
+
+*   ![Image 237: add](https://xmlgraphics.apache.org/images/add.jpg) AFP Output: Added support for Invoke Medium Map (IMM). Committed by JM.
+
+*   ![Image 238: add](https://xmlgraphics.apache.org/images/add.jpg) Introduced a new, additional intermediate format optimized for performance. Please see the intermediate format documentation for details. Committed by JM.
+
+*   ![Image 239: add](https://xmlgraphics.apache.org/images/add.jpg) AFP Output: Added a configuration option to override the resource level defaults in the code. Committed by JM.
+
+*   ![Image 240: add](https://xmlgraphics.apache.org/images/add.jpg) AFP Output: Bilevel images in resource groups as generated as hard page segments (instead of image objects) for better interoperability with older IPDS environments and for better printing performance. Committed by JM.
+
+*   ![Image 241: add](https://xmlgraphics.apache.org/images/add.jpg) AFP Output: An AFPGraphics2D implementation which provides the ability to use Batik to drive the production of AFP Graphics (GOCA) output from SVG. Committed by AC.
+
+*   ![Image 242: add](https://xmlgraphics.apache.org/images/add.jpg) AFP Output: Resource group leveling, external streaming, and de-duplication of images and graphics using IncludeObject and ResourceGroup. Committed by AC.
+
+*   ![Image 243: add](https://xmlgraphics.apache.org/images/add.jpg) AFP Output: Native image embedding support (e.g. JPEG, GIF, TIFF) using ObjectContainer and a MOD:CA Registry implementation. Committed by AC.
+
+*   ![Image 244: add](https://xmlgraphics.apache.org/images/add.jpg) Added PDF /Launch action: references to URIs using the file:// protocol will now generate a /Launch action as opposed to a more general /URI (which doesn't yield the expected result for this protocol). Committed by AD. Thanks to Alexander Stamenov. See issue [FOP-1539](https://issues.apache.org/jira/browse/FOP-1539).
+
+*   ![Image 245: add](https://xmlgraphics.apache.org/images/add.jpg) PDF Output: Added support for handling 16-bit alpha channel. They are currently converted to 8 bits. Committed by JM. See issue [FOP-1574](https://issues.apache.org/jira/browse/FOP-1574).
+
+*   ![Image 246: add](https://xmlgraphics.apache.org/images/add.jpg) Added PDF encryption parameter support in configuration. Committed by AC.
+
+*   ![Image 247: add](https://xmlgraphics.apache.org/images/add.jpg) Added a PCL-specific extension attribute on simple-page-master for controlling the simplex/duplex mode. Committed by JM. Thanks to Martin Edge. See issue [FOP-1540](https://issues.apache.org/jira/browse/FOP-1540).
+
+*   ![Image 248: add](https://xmlgraphics.apache.org/images/add.jpg) Add partial support for the "show-destination" property on fo:basic-link (PDF output only; see limitations on the compliance page) Committed by AD. See issue [FOP-1510](https://issues.apache.org/jira/browse/FOP-1510).
+
+*   ![Image 249: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for rendering pages using JPS (Java Printing System). See new example: examples/embedding/java/ExamplesFO2JPSPrint.java Committed by JM.
+
+*   ![Image 250: add](https://xmlgraphics.apache.org/images/add.jpg) Restored ability to specify from/to and odd/even pages as well as the number of copies for printing from the command-line. Committed by JM. See issue [FOP-1320](https://issues.apache.org/jira/browse/FOP-1320).
+
+*   ![Image 251: add](https://xmlgraphics.apache.org/images/add.jpg) Added ability to pass a preconfigured PrinterJob instance to the PrintRenderer via the rendering options map. Committed by JM. Thanks to Antti Karanta. See issue [FOP-1514](https://issues.apache.org/jira/browse/FOP-1514).
+
+*   ![Image 252: add](https://xmlgraphics.apache.org/images/add.jpg) Added a public accessor for reference to the current page to PDFGraphics2D. Committed by JM. Thanks to Yegor Kozlov. See issue [FOP-1517](https://issues.apache.org/jira/browse/FOP-1517).
+
+*   ![Image 253: fix](https://xmlgraphics.apache.org/images/fix.jpg) AFP Output: Fixed positioning of Java2D-based images (when GOCA is enabled). Committed by JM.
+
+*   ![Image 254: fix](https://xmlgraphics.apache.org/images/fix.jpg) AFP Output: Fix for bitmap images inside an SVG or G2D graphic (printer errors) and positioning fix for bitmaps from G2D graphics. Committed by JM.
+
+*   ![Image 255: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for AWT viewer to correctly track page numbers in continuous display mode. Committed by JM. Thanks to Richard Wheeldon. See issue [FOP-1356](https://issues.apache.org/jira/browse/FOP-1356).
+
+*   ![Image 256: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix for formatting of floating point numbers which could lead to invalid PDFs. Committed by JM.
+
+*   ![Image 257: fix](https://xmlgraphics.apache.org/images/fix.jpg) Added a save/restoreGraphicsState pair for the initial coordinate system in PDF output for easier post-processing. Committed by JM.
+
+*   ![Image 258: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix for color model in IOCA IDE structure parameter for 4- and 8-bit grayscale images. Committed by JM. Thanks to Peter Hancock. See issue [FOP-1767](https://issues.apache.org/jira/browse/FOP-1767).
+
+*   ![Image 259: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: AFP Renderer: Respect image color settings for svg Committed by CB. Thanks to Peter Hancock. See issue [FOP-1736](https://issues.apache.org/jira/browse/FOP-1736).
+
+*   ![Image 260: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: AFP Renderer: Page Overlays not generated when using Intermediate Format Committed by CB. Thanks to Venkat Reddy. See issue [FOP-1745](https://issues.apache.org/jira/browse/FOP-1745).
+
+*   ![Image 261: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: AFP Renderer: Underline is incorrectly placed when reference-orientation != 0 Committed by CB. See issue [FOP-1752](https://issues.apache.org/jira/browse/FOP-1752).
+
+*   ![Image 262: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: AFP Renderer: Page Segments not positioned correctly when reference-orientation != 0 Committed by CB. See issue [FOP-1751](https://issues.apache.org/jira/browse/FOP-1751).
+
+*   ![Image 263: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: AFP Renderer: AttributeQualifier Triplet occurs before TLE Value. Committed by CB. See issue [FOP-1740](https://issues.apache.org/jira/browse/FOP-1740).
+
+*   ![Image 264: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix in AFP output: fixed flags in GOCA GBAR order. Committed by JM. Thanks to D.W. Harks. See issue [FOP-1716](https://issues.apache.org/jira/browse/FOP-1716).
+
+*   ![Image 265: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix in AFP output: rounding error when computing the CMYK components of a color. Committed by VH. Thanks to Harald G. Henne. See issue [FOP-1733](https://issues.apache.org/jira/browse/FOP-1733).
+
+*   ![Image 266: fix](https://xmlgraphics.apache.org/images/fix.jpg) BugFix: Maintain valid AFP by providing TLE truncation on Attribute Value Triplet values that are greater than 250 chars in length. Committed by AC. See issue [FOP-1709](https://issues.apache.org/jira/browse/FOP-1709).
+
+*   ![Image 267: fix](https://xmlgraphics.apache.org/images/fix.jpg) Dithered Background Shading can produce illegal AFP if objects are very small Committed by CB. See issue [FOP-1693](https://issues.apache.org/jira/browse/FOP-1693).
+
+*   ![Image 268: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Error while writing TLE's attribute qualifier in the output. Committed by AD. Thanks to Bharat Attaluri. See issue [FOP-1681](https://issues.apache.org/jira/browse/FOP-1681).
+
+*   ![Image 269: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: support justified text in AFP Renderer (already working in AFP Painter) Committed by CB.
+
+*   ![Image 270: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: reset graphic state when a page is finished in PostScript. Committed by JM.
+
+*   ![Image 271: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a bug that left the PrintRenderer unconfigured even if a configuration was specified for "application/X-fop-print". Committed by JM.
+
+*   ![Image 272: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed the handling of CMYK colors in PDFGraphics2D. Committed by JM. Thanks to Yegor Kozlov. See issue [FOP-1641](https://issues.apache.org/jira/browse/FOP-1641).
+
+*   ![Image 273: fix](https://xmlgraphics.apache.org/images/fix.jpg) AFP Fonts: Fixed interpretation of metric for fonts with fixed metrics and made sure all repeating groups in FNP (Font Position) are processed. Committed by JM. Thanks to Emil Maskovsky. See issue [FOP-1552](https://issues.apache.org/jira/browse/FOP-1552).
+
+*   ![Image 274: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed black backgrounds occurring for transparent images in PCL output. Committed by JM.
+
+*   ![Image 275: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed bug that caused AFP Renderer Extensions to be ignored. Committed by CB. See issue [FOP-1613](https://issues.apache.org/jira/browse/FOP-1613).
+
+*   ![Image 276: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a multi-threading issue when rendering SVG. Committed by JM.
+
+*   ![Image 277: fix](https://xmlgraphics.apache.org/images/fix.jpg) PDF Output: Made sure the XMP Metadata stream is never compressed. Committed by JM.
+
+*   ![Image 278: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for table handling in RTF output, so the output works with OpenOffice and AbiWord, too. Committed by JM. Thanks to Pavel Kysilka. See issue [FOP-1563](https://issues.apache.org/jira/browse/FOP-1563).
+
+*   ![Image 279: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed text stroking in SVG when the stroke-width is zero. Committed by JM.
+
+*   ![Image 280: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed border trait parsing for the area tree XML when CMYK or ICC colors were used. Committed by JM.
+
+*   ![Image 281: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed generation of "fonttbl" for RTF output to fix loading problem with AbiWord. Committed by JM. Thanks to Pavel Kysilka. See issue [FOP-1562](https://issues.apache.org/jira/browse/FOP-1562).
+
+*   ![Image 282: fix](https://xmlgraphics.apache.org/images/fix.jpg) PCL Renderer: Improved page format selection so it doesn't interfere with duplex printing. Committed by JM. See issue [FOP-1435](https://issues.apache.org/jira/browse/FOP-1435).
+
+*   ![Image 283: update](https://xmlgraphics.apache.org/images/update.jpg) PDFGraphics2D.writeClip doesn't generate a clip command anymore when the clip path is empty. Committed by JM. Thanks to Francois Fernandes. See issue [FOP-1651](https://issues.apache.org/jira/browse/FOP-1651).
+
+*   ![Image 284: update](https://xmlgraphics.apache.org/images/update.jpg) When a JPEG image is embedded, an optionally embedded color profile is filtered out as it's already embedded separately in the PDF file. Committed by JM.
+
+### Contributors to this release
+
+We thank the following people for their contributions to this release.
+
+This is a list of all people who participated as committers:
+
+Adrian Cumiskey (AC), Andreas Delmelle (AD), Chris Bowditch (CB), Jeremias Märki (JM), (JM,VH), Luca Furini (LF), Max Berger (MB), Simon Pepping (SP), Vincent Hennebert (VH).
+
+This is a list of other contributors:
+
+Alexander Stamenov, Alok Singh, Antti Karanta, Bharat Attaluri, Carsten Siedentop, D.W. Harks, Dario Laera, Emil Maskovsky, Francois Fernandes, Georg Datterl, Harald G. Henne, J. Frantzius, Jason Harrop, Jonathan Levinson, Jost Klopfstein, Martin Edge, Maxim Wirt, Nicolas Peninguy, Pavel Kysilka, Peter Coppens, Peter Hancock, Richard Wheeldon, rogov.AT.devexperts.com, Thomas Stieler, Tow Browder, Venkat Reddy, Yegor Kozlov.
+
+Version 0.95 (05 August 2008)
+-----------------------------
+
+### Changes to the End-User API
+
+*   ![Image 285: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed the -imagein command-line option. Committed by JM.
+
+### Changes to the Code Base
+
+*   ![Image 286: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed potential multi-threading problem concerning the use of DecimalFormat. Committed by JM. See issue [XGC-13](https://issues.apache.org/jira/browse/XGC-13).
+
+### Changes to the Font Subsystem
+
+*   ![Image 287: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed text extraction problem with ZapfDingbats and Symbol font in PDF output. Committed by JM.
+
+*   ![Image 288: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed NullPointerException when loading a TrueType font using XML font metric files. Committed by JM.
+
+### Changes to the Image Support
+
+*   ![Image 289: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed two bugs concerning resolution handling with SVG images and their conversion to bitmaps for RTF output. Committed by JM.
+
+*   ![Image 290: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a performance problem concerning image serialization. Committed by JM.
+
+### Changes to the Layout Engine
+
+*   ![Image 291: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed NullPointerException when page-number-citations are used inside a marker. Committed by AD. See issue [FOP-1549](https://issues.apache.org/jira/browse/FOP-1549).
+
+*   ![Image 292: fix](https://xmlgraphics.apache.org/images/fix.jpg) Regression bugfix: Multiple collapsible breaks don't cause empty pages anymore. Committed by JM. See issue [FOP-1492](https://issues.apache.org/jira/browse/FOP-1492).
+
+*   ![Image 293: fix](https://xmlgraphics.apache.org/images/fix.jpg) Various bugfixes for table layout. Committed by VH. See issue [FOP-1509](https://issues.apache.org/jira/browse/FOP-1509).
+
+### Changes to Renderers (Output Formats)
+
+*   ![Image 294: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for fo:leader for RTF output (no full support!). Fixes problems with empty leaders being used to force empty lines among other issues. Committed by JM. Thanks to Maximilian Aster. See issue [FOP-1452](https://issues.apache.org/jira/browse/FOP-1452).
+
+*   ![Image 295: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for page-number-citation for RTF output. Committed by JM. Thanks to Maximilian Aster. See issue [FOP-1451](https://issues.apache.org/jira/browse/FOP-1451).
+
+*   ![Image 296: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a color selection problem which occurred after an image has been painted through the Graphics2DAdapter in PDF output. Committed by JM.
+
+*   ![Image 297: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed page ordering problem with AWTRenderer. Committed by JM. See issue [FOP-1287](https://issues.apache.org/jira/browse/FOP-1287).
+
+*   ![Image 298: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed image scaling for RTF output. Committed by JM. See issue [FOP-1208](https://issues.apache.org/jira/browse/FOP-1208).
+
+*   ![Image 299: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed handling of proportional-column-width() and percentages for table column in RTF output. Committed by JM. Thanks to Maximilian Aster. See issue [FOP-1431](https://issues.apache.org/jira/browse/FOP-1431).
+
+*   ![Image 300: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed resolution handling inside AWT preview dialog. Committed by JM.
+
+*   ![Image 301: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed positioning of absolutely positioned block-containers in multi-column documents. Committed by JM.
+
+*   ![Image 302: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed rendering of fixed block-containers in AFP output. Committed by JM.
+
+*   ![Image 303: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed regression causing bad positioning of block-containers if used as descendant of a table-cell. Committed by JM.
+
+### Contributors to this release
+
+We thank the following people for their contributions to this release.
+
+This is a list of all people who participated as committers:
+
+Andreas Delmelle (AD), Jeremias Märki (JM), Vincent Hennebert (VH).
+
+This is a list of other contributors:
+
+Maximilian Aster.
+
+Version 0.95beta (26 March 2008)
+--------------------------------
+
+### Changes to the End-User API
+
+*   ![Image 304: remove](https://xmlgraphics.apache.org/images/remove.jpg) Removed deprecated methods in the "apps" package that were left-overs from the API discussions. Committed by JM.
+
+### Changes to the Code Base
+
+*   ![Image 305: add](https://xmlgraphics.apache.org/images/add.jpg) Turned on XInclude processing for the main source given on the command line. Committed by MB.
+
+*   ![Image 306: add](https://xmlgraphics.apache.org/images/add.jpg) Added very basic parsing for the xml:lang shorthand. Committed by AD.
+
+*   ![Image 307: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for SVGZ. Committed by JM. Thanks to Max Berger. See issue [FOP-1429](https://issues.apache.org/jira/browse/FOP-1429).
+
+*   ![Image 308: fix](https://xmlgraphics.apache.org/images/fix.jpg) Added correct percentage resolution for arguments to the proportional-column-width() function. Committed by AD. See issue [FOP-1308](https://issues.apache.org/jira/browse/FOP-1308).
+
+*   ![Image 309: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a bug when the rgb-icc() function was used either before the fo:declarations, or in documents without a fo:declarations node. In such cases, the sRGB fallback is now used to avoid an ugly NullPointerException. Committed by AD. See issue [FOP-1440](https://issues.apache.org/jira/browse/FOP-1440).
+
+*   ![Image 310: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a bug when using relative font-size (smaller/larger) in combination with percentages. Committed by AD. See issue [FOP-1489](https://issues.apache.org/jira/browse/FOP-1489).
+
+*   ![Image 311: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a memory-leak in XMLWhiteSpaceHandler. Committed by AD. Thanks to Stefan Ziel. See issue [FOP-1482](https://issues.apache.org/jira/browse/FOP-1482).
+
+*   ![Image 312: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix for URI resolution: Make StreamSources without system identifier work again. Committed by JM.
+
+*   ![Image 313: fix](https://xmlgraphics.apache.org/images/fix.jpg) Avoid a NullPointerException in AreaTreeHandler.endDocument(). Committed by JM. Thanks to David Delbecq. See issue [FOP-1456](https://issues.apache.org/jira/browse/FOP-1456).
+
+### Changes to the Bundled Extensions
+
+*   ![Image 314: add](https://xmlgraphics.apache.org/images/add.jpg) New extension attribute fox:transform on fo:block-container allows free-form transformation (rotation, scaling etc.) of absolute and fixed block-containers. Supported only for PDF, PS and Java2D-based renderers. Committed by JM.
+
+*   ![Image 315: add](https://xmlgraphics.apache.org/images/add.jpg) Added new extension element: fox:external-document. It allows to add whole documents such as multi-page TIFF images to be inserted as peers to a page-sequence. Each image will make up an entire page. See the documentation for details. Committed by JM.
+
+### Changes to the Font Subsystem
+
+*   ![Image 316: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for unusual font encodings (like for Symbol or Cyrillic fonts) of Type 1 fonts in PDF and PostScript output. Committed by JM.
+
+*   ![Image 317: add](https://xmlgraphics.apache.org/images/add.jpg) Add Font support in jar files. Committed by AC. Thanks to Max Berger. See issue [FOP-1399](https://issues.apache.org/jira/browse/FOP-1399).
+
+*   ![Image 318: fix](https://xmlgraphics.apache.org/images/fix.jpg) Improved the font auto-detection so fonts accessed using the font-family name are selected with higher accuracy. Committed by JM. Thanks to Justus Piater. See issue [FOP-1496](https://issues.apache.org/jira/browse/FOP-1496).
+
+*   ![Image 319: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix for date formatting with negative time zones in the PDF's Info object. This affected PDF/A compliance. Committed by JM.
+
+*   ![Image 320: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix for handling of optional tables in subset TrueType fonts. This bug caused errors in various PDF viewers. Committed by JM.
+
+*   ![Image 321: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Use Font.getName() (logical font name) instead of Font.getFontName() (localized) when registering fonts from AWT. Committed by JM. Thanks to David Churavy. See issue [FOP-1453](https://issues.apache.org/jira/browse/FOP-1453).
+
+*   ![Image 322: fix](https://xmlgraphics.apache.org/images/fix.jpg) Made the way TrueType fonts are embedded in PDF compliant to the specification so viewers correctly identify subset fonts. Committed by JM.
+
+*   ![Image 323: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed font-autodetection so fonts with uppercase extensions are detected, too. Committed by JM.
+
+*   ![Image 324: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix to avoid NullPointerException when parsing ExpertEncoded and ExpertSubsetEncoded Type 1 fonts. Committed by AC. See issue [FOP-1405](https://issues.apache.org/jira/browse/FOP-1405).
+
+*   ![Image 325: update](https://xmlgraphics.apache.org/images/update.jpg) Improved font auto-detection and handling of AWT-supplied fonts in order to achieve better results when using multiple output formats. Whenever possible, the font names appearing in the operating system can also be used in XSL-FO. Committed by JM.
+
+### Changes to the Image Support
+
+*   ![Image 326: fix](https://xmlgraphics.apache.org/images/fix.jpg) A new image loading framework has been introduced to fix various problems with external graphics and improve performance. Committed by JM.
+
+### Changes to the Layout Engine
+
+*   ![Image 327: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for background on fo:table-column and fo:table-header/footer/body elements. Committed by VH.
+
+*   ![Image 328: add](https://xmlgraphics.apache.org/images/add.jpg) Added full support for keep-with-previous on fo:table-row and in fo:table-cell elements. Committed by VH.
+
+*   ![Image 329: add](https://xmlgraphics.apache.org/images/add.jpg) Added full support for breaks before and after table cells (that is, break-before/after set on the first/last child of a cell). Committed by VH.
+
+*   ![Image 330: add](https://xmlgraphics.apache.org/images/add.jpg) Added full support for breaks inside the cells of a table. Committed by VH.
+
+*   ![Image 331: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for conditional borders in tables, for both the separate and the collapsing border model. Committed by VH. See issue [FOP-1459](https://issues.apache.org/jira/browse/FOP-1459).
+
+*   ![Image 332: add](https://xmlgraphics.apache.org/images/add.jpg) Added minimal support for the .minimum/.maximum components of block/inline-progression-dimension on fo:external-graphic and fo:instream-foreign-object. Committed by JM.
+
+*   ![Image 333: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for scale-down-to-fit and scale-up-to-fit (introduced in XSL 1.1). Committed by JM.
+
+*   ![Image 334: add](https://xmlgraphics.apache.org/images/add.jpg) Added methods for fo:page-number-citation(-last) in FOEventHandler. Committed by JM. Thanks to V. Schappert. See issue [FOP-1430](https://issues.apache.org/jira/browse/FOP-1430).
+
+*   ![Image 335: add](https://xmlgraphics.apache.org/images/add.jpg) Step towards performance: the collapsing-border resolution algorithm no longer triggers the retrieving of the whole table, when possible. Committed by VH.
+
+*   ![Image 336: add](https://xmlgraphics.apache.org/images/add.jpg) Added check for table-cells which span more rows than available in their parent element (table-header/footer/body). Committed by VH.
+
+*   ![Image 337: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for fo:markers in fo:inline and fo:basic-link. Committed by AD.
+
+*   ![Image 338: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for ids on empty fo:inlines. Committed by AD. See issue [FOP-1380](https://issues.apache.org/jira/browse/FOP-1380).
+
+*   ![Image 339: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: The before border of a block is no longer swallowed if its first child issues a break-before. Committed by JM. See issue [FOP-1492](https://issues.apache.org/jira/browse/FOP-1492).
+
+*   ![Image 340: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: When there was a forced break after a block with (conditional) borders the border-after wasn't painted. Committed by JM. See issue [FOP-1492](https://issues.apache.org/jira/browse/FOP-1492).
+
+*   ![Image 341: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: a forced break inside a cell was ignored when occurring before the minimum height set on the enclosing row was set. Committed by VH.
+
+*   ![Image 342: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed exceptions when lists, tables or block-container are children of an inline-level FO. Committed by JM.
+
+*   ![Image 343: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed the rendering of the area of a table corresponding to border-separation, which must be filled with the background of the table, and not the rows. Committed by VH.
+
+*   ![Image 344: fix](https://xmlgraphics.apache.org/images/fix.jpg) Improved conformance: even if a table-cell spans several rows its background must correspond to the first row spanned. Committed by VH.
+
+*   ![Image 345: fix](https://xmlgraphics.apache.org/images/fix.jpg) Moved to the FO tree stage the check for break-before/after on table-row while spanning in progress. Committed by VH. See issue [FOP-1486](https://issues.apache.org/jira/browse/FOP-1486).
+
+*   ![Image 346: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed the resolution of borders when header/footer is omitted at page breaks. Committed by VH. See issue [FOP-1483](https://issues.apache.org/jira/browse/FOP-1483).
+
+*   ![Image 347: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a possible IndexOutOfBoundsException that could happen with certain constellations when footnotes are used. Committed by JM. See issue [FOP-1473](https://issues.apache.org/jira/browse/FOP-1473).
+
+*   ![Image 348: fix](https://xmlgraphics.apache.org/images/fix.jpg) Compliance fix: for absolutely positioned block-containers, "top" wasn't interpreted correctly. Committed by JM.
+
+*   ![Image 349: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: content of a row with zero height overriding the previous row Committed by VH. See issue [FOP-1434](https://issues.apache.org/jira/browse/FOP-1434).
+
+*   ![Image 350: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix for border-after painting and element list generation when a forced break is involved. Committed by JM. See issue [FOP-1457](https://issues.apache.org/jira/browse/FOP-1457).
+
+*   ![Image 351: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: no empty page is generated anymore if there's no content after a break-after. Committed by JM. See issue [FOP-1223](https://issues.apache.org/jira/browse/FOP-1223).
+
+*   ![Image 352: fix](https://xmlgraphics.apache.org/images/fix.jpg) Restored proper handling of fo:table-cell having no children, which is allowed in relaxed validation mode. Committed by VH. See issue [FOP-1448](https://issues.apache.org/jira/browse/FOP-1448).
+
+*   ![Image 353: fix](https://xmlgraphics.apache.org/images/fix.jpg) Memory Leak fixed in the Property Cache. Fixed by Jeremias Maerki. Reported and Tested By Chris Bowditch. Committed by JM.
+
+*   ![Image 354: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix in tables: wrong element generation by the merging algorithm when glues must be produced to cope with conditional spaces. The corresponding length was added twice: one in the glue itself and one in the following box. Committed by VH. See issue [FOP-1442](https://issues.apache.org/jira/browse/FOP-1442).
+
+*   ![Image 355: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: breaks generated by the merging algorithm for a table-row containing empty cells had always a penalty of 900. Committed by VH. See issue [FOP-1446](https://issues.apache.org/jira/browse/FOP-1446).
+
+*   ![Image 356: fix](https://xmlgraphics.apache.org/images/fix.jpg) In case of missing cells the border-end of the table was applied to an inner cell, instead of the (empty) cell in the last column. Committed by VH.
+
+*   ![Image 357: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed the resolution of borders with table-columns (border-before/after was wrongly applied to every cell of the column). Committed by VH.
+
+*   ![Image 358: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed the resolution of border-end on cells spanning several rows. Committed by VH. See issue [FOP-1381](https://issues.apache.org/jira/browse/FOP-1381).
+
+*   ![Image 359: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix for NPE with empty table-row (regression from 0.93). Committed by JM.
+
+*   ![Image 360: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed swallowing PCDATA in text-node children of retrieved markers. Committed by AD. See issue [FOP-1378](https://issues.apache.org/jira/browse/FOP-1378).
+
+*   ![Image 361: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed erroneous white-space removal in retrieved markers. Committed by AD. See issue [FOP-1377](https://issues.apache.org/jira/browse/FOP-1377).
+
+*   ![Image 362: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed erroneous usage of inherited color-values in SVG. Committed by AD. Thanks to ckohrn.at.tng.de. See issue [FOP-1410](https://issues.apache.org/jira/browse/FOP-1410).
+
+*   ![Image 363: update](https://xmlgraphics.apache.org/images/update.jpg) Facilitate the implementation for font-selection-strategy:
+
+    *   Changed FontInfo.fontLookup to always return an array of FontTriplet.
+    *   Changed CommonFont.getFontState to return an array of FontTriplet.
+    *   Initial modifications to the related LMs: initialized with the font corresponding to the first of the triplets.
+
+Committed by AD.
+
+*   ![Image 364: update](https://xmlgraphics.apache.org/images/update.jpg) PropertyCache phase 2:
+
+    *   improvement of the PropertyCache itself should now guarantee acceptable performance of the static caches in multi-session environments, which is a possible problem with synchronizedMap.
+    *   changed CommonFont to use the cache: added CachedCommonFont to contain the properties that are always cacheable CommonFont itself is only cached if the remaining properties are absolutes.
+    *   changed CommonHyphenation, KeepProperty, ColorProperty and FontFamilyProperty to use the cache.
+
+Committed by AD.
+
+### Changes to Renderers (Output Formats)
+
+*   ![Image 365: add](https://xmlgraphics.apache.org/images/add.jpg) Added an option to disable the default sRGB profile in PDF output for those who don't care about color fidelity, but care about PDF file size. Committed by JM.
+
+*   ![Image 366: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for the natural language indentifier ("Lang" in the document catalog) for PDF documents based on the language/country values on fo:page-sequence. Committed by JM.
+
+*   ![Image 367: add](https://xmlgraphics.apache.org/images/add.jpg) PostScript output now generates the bounding box DSC comments for the whole document. Committed by JM.
+
+*   ![Image 368: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for PDF page labels. Committed by JM.
+
+*   ![Image 369: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for custom fonts in Java2DRenderer and derived renderers. Committed by JM. Thanks to Patrick Jaromin. See issue [FOP-1474](https://issues.apache.org/jira/browse/FOP-1474).
+
+*   ![Image 370: add](https://xmlgraphics.apache.org/images/add.jpg) Added generic structures to the PDF library in order to support PDF file in fo:external-graphic later. Committed by JM.
+
+*   ![Image 371: add](https://xmlgraphics.apache.org/images/add.jpg) Added a configuration setting to the PCL renderer to disable PJL commands. Committed by JM.
+
+*   ![Image 372: add](https://xmlgraphics.apache.org/images/add.jpg) Added a configuration setting for the renderer/device resolution to the AFP renderer. Committed by JM. Thanks to Adrian Cumiskey. See issue [FOP-1400](https://issues.apache.org/jira/browse/FOP-1400).
+
+*   ![Image 373: fix](https://xmlgraphics.apache.org/images/fix.jpg) Slight improvement for thin lines in Java2D/AWT output. Committed by JM. Thanks to Gordon Cooke.
+
+*   ![Image 374: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed logic error setting the transformation matrix for block-container viewports (applies to absolute and fixed block-containers only). Important: External renderer implementations need to adjust for the change and implement the new method concatenateTransformationMatrix(AffineTransform) if the renderer is derived from AbstractPathOrientedRenderer. Committed by JM.
+
+*   ![Image 375: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed generation of named destinations so it works when the PDF document is encrypted. Committed by JM.
+
+*   ![Image 376: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: allow multiple bookmarks to point at the same destination. Committed by JM. See issue [FOP-1116](https://issues.apache.org/jira/browse/FOP-1116).
+
+*   ![Image 377: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed regression: transparent-page-background was not recognized for PNG output. Committed by JM.
+
+*   ![Image 378: fix](https://xmlgraphics.apache.org/images/fix.jpg) Postscript extension cleanup. Committed by AC. Thanks to Andrejus Chaliapinas. See issue [FOP-1401](https://issues.apache.org/jira/browse/FOP-1401).
+
+*   ![Image 379: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix to avoid ClassCastException where multiple ps:ps-comments are declared within fo:declarations. Committed by AC. See issue [FOP-1427](https://issues.apache.org/jira/browse/FOP-1427).
+
+*   ![Image 380: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixes missing TLE value attribute when using AreaTree input with the AFP renderer. Committed by AC. See issue [FOP-1419](https://issues.apache.org/jira/browse/FOP-1419).
+
+*   ![Image 381: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix to avoid a ClassCastException in renderer configuration. Committed by JM. Thanks to Bruno Feurer. See issue [FOP-1420](https://issues.apache.org/jira/browse/FOP-1420).
+
+*   ![Image 382: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed the restoration of the TLE values from the intermediate format for the AFP extension elements. Committed by JM. Thanks to Adrian Cumiskey. See issue [FOP-1419](https://issues.apache.org/jira/browse/FOP-1419).
+
+*   ![Image 383: update](https://xmlgraphics.apache.org/images/update.jpg) PDF Transcoder (SVG) text painting has been completely rewritten. Except for some special cases (with filters for example), all text (including flow text) is now painted using PDF text operators. Committed by JM.
+
+### Contributors to this release
+
+We thank the following people for their contributions to this release.
+
+This is a list of all people who participated as committers:
+
+Adrian Cumiskey (AC), Andreas Delmelle (AD), Jeremias Märki (JM), Max Berger (MB), Vincent Hennebert (VH).
+
+This is a list of other contributors:
+
+Adrian Cumiskey, Andrejus Chaliapinas, Bruno Feurer, ckohrn.at.tng.de, David Churavy, David Delbecq, Gordon Cooke, Justus Piater, Max Berger, Patrick Jaromin, Stefan Ziel, V. Schappert.
+
+Version 0.94 (24th August 2007)
+-------------------------------
+
+### Changes to the Code Base
+
+*   ![Image 384: add](https://xmlgraphics.apache.org/images/add.jpg) Support for keep-together.within-line="always". Committed by MM.
+
+*   ![Image 385: add](https://xmlgraphics.apache.org/images/add.jpg) Add support for conditional spaces in table-cells. Committed by VH.
+
+*   ![Image 386: add](https://xmlgraphics.apache.org/images/add.jpg) Support alignment-adjust for images. Committed by AD. Thanks to Max Berger. See issue [FOP-1385](https://issues.apache.org/jira/browse/FOP-1385).
+
+*   ![Image 387: add](https://xmlgraphics.apache.org/images/add.jpg) Partial application of the patch in patch [FOP-1271](https://issues.apache.org/jira/browse/FOP-1271): * addition of a generic PropertyCache to be used by all Property types that can be safely canonicalized * modified EnumProperty, StringProperty, NumberProperty, EnumNumber and FixedLength to make use of the cache infrastructure Committed by AD. Thanks to Richard Wheeldon. See issue [FOP-1271](https://issues.apache.org/jira/browse/FOP-1271).
+
+*   ![Image 388: add](https://xmlgraphics.apache.org/images/add.jpg) Slight improvement of relative font-weight handling in the properties package. Committed by AD.
+
+*   ![Image 389: add](https://xmlgraphics.apache.org/images/add.jpg) Add support for font auto-detection (easier font configuration). Committed by JM. Thanks to Adrian Cumiskey. See issue [FOP-1326](https://issues.apache.org/jira/browse/FOP-1326).
+
+*   ![Image 390: add](https://xmlgraphics.apache.org/images/add.jpg) Add support for exact positioning of internal PDF links. Committed by JM. Thanks to Paul Vinkenoog. See issue [FOP-1348](https://issues.apache.org/jira/browse/FOP-1348).
+
+*   ![Image 391: add](https://xmlgraphics.apache.org/images/add.jpg) Add support for the collapsing-border model in tables. Committed by VH, JM. See issue [FOP-1064](https://issues.apache.org/jira/browse/FOP-1064).
+
+*   ![Image 392: add](https://xmlgraphics.apache.org/images/add.jpg) Add support for named destinations in PDF. Committed by JB.
+
+*   ![Image 393: add](https://xmlgraphics.apache.org/images/add.jpg) Add support for a two-pass production for PostScript output to minimize file size. This adds images only once and adds only the fonts that are really used. Committed by JM.
+
+*   ![Image 394: add](https://xmlgraphics.apache.org/images/add.jpg) Support for GIF images in RTF output (RTF handler, only. Does not affect the RTF library.) Committed by JM.
+
+*   ![Image 395: add](https://xmlgraphics.apache.org/images/add.jpg) Support for soft masks (transparency) with ImageIO image adapter. Committed by JM.
+
+*   ![Image 396: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for the soft hyphen (SHY) character. Committed by MM.
+
+*   ![Image 397: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for line-height-shift-adjustment property. Committed by MM.
+
+*   ![Image 398: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for the system property fop.home to cli.Main.getJARList(). Committed by SP.
+
+*   ![Image 399: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for display-align for table-cell in RTF output. Committed by JM. See issue [FOP-1268](https://issues.apache.org/jira/browse/FOP-1268).
+
+*   ![Image 400: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for UAX#14 type line breaking. Support does not extend across nested fo:inline elements. Committed by MM.
+
+*   ![Image 401: fix](https://xmlgraphics.apache.org/images/fix.jpg) AFP Renderer: Bugfix for 1 bit images where the width is not a multiple of 8. Committed by JM.
+
+*   ![Image 402: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed incomplete support for Unicode Word Joiner characters (U+2060 and U+FEFF). Committed by MM.
+
+*   ![Image 403: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed the rendering of zero-width spaces for certain fonts by not generating them into the area tree. Committed by JM. Thanks to Paul Vinkenoog. See issue [FOP-1349](https://issues.apache.org/jira/browse/FOP-1349).
+
+*   ![Image 404: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a problem with disappearing footnotes inside hyphenated inlines (and footnotes with hyphenated inline child). Committed by LF.
+
+*   ![Image 405: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix PDF Genaration for non-ASCII compatible locales. Committed by JM. Thanks to Martin Kögler. See issue [FOP-1294](https://issues.apache.org/jira/browse/FOP-1294).
+
+*   ![Image 406: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix several exceptions when break-before/after is set on the first/last row of a table. Committed by VH.
+
+*   ![Image 407: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix extra page break when break-before is set on both a table and its first row. Committed by VH.
+
+*   ![Image 408: fix](https://xmlgraphics.apache.org/images/fix.jpg) Make keep-with-next and keep-with-previous work on fo:table. Committed by VH.
+
+*   ![Image 409: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a problem with keep-with-next on table-rows. Once a keep-with-next was set inside a table, the FO following the table would always be glued to the previous table. Committed by JM.
+
+*   ![Image 410: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a problem with the auto-rotate-landscape setting in the PostScript renderer. It didn't generate the right setpagedevice command. Committed by JM.
+
+*   ![Image 411: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed an IllegalArgumentException for absolutely positioned block-containers with a border and no height/bpd set. Committed by JM.
+
+*   ![Image 412: fix](https://xmlgraphics.apache.org/images/fix.jpg) If a line contained nothing but a linefeed, this didn't produce empty lines. Replaced the auxiliary zero-width box with a glue the width of a line, and shrinkable to zero-width. Committed by AD. See issue [FOP-1315](https://issues.apache.org/jira/browse/FOP-1315).
+
+*   ![Image 413: fix](https://xmlgraphics.apache.org/images/fix.jpg) Stricter FOP user configuration checking Committed by VH. Thanks to Adrian Cumiskey. See issue [FOP-1217](https://issues.apache.org/jira/browse/FOP-1217).
+
+*   ![Image 414: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix parsing 'url(...)' when the URL itself contains a bracketed part. Committed by AD. Thanks to Erwin Tratar. See issue [FOP-1306](https://issues.apache.org/jira/browse/FOP-1306).
+
+*   ![Image 415: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for NPE with PNG images for RTF output. Committed by JM.
+
+*   ![Image 416: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for properly parsing font-family names containing spaces. Committed by AD.
+
+*   ![Image 417: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix incorrect behaviour of the BreakingAlgorithm when some inline content is wider than the available ipd, causing a restart. Committed by LF. See issue [FOP-1270](https://issues.apache.org/jira/browse/FOP-1270).
+
+*   ![Image 418: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for PDF corruption when a TrueType font with spaces in its name is embedded and no XML font metrics file for that font is used. Committed by JM.
+
+*   ![Image 419: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix for ClassCastException when fo:wrapper was used as direct child of fo:flow. Note: "id" attributes are still not handled properly on fo:wrapper! Committed by JM. Thanks to Adrian Cumiskey. See issue [FOP-1293](https://issues.apache.org/jira/browse/FOP-1293).
+
+*   ![Image 420: update](https://xmlgraphics.apache.org/images/update.jpg) Refactoring in the fo package: -> removal of the childNodes instance member in fop.fo.FObj -> addition of a firstChild instance member in fop.fo.FObj -> addition of a siblings instance member in fop.fo.FONode -> addition of a FONodeIterator interface in FONode + corresponding implementation in FObj -> changed implementations of FObj.addChildNode(), .removeChild() and .getChildNodes() Committed by AD. See issue [FOP-1316](https://issues.apache.org/jira/browse/FOP-1316).
+
+*   ![Image 421: update](https://xmlgraphics.apache.org/images/update.jpg) Code cleanup and restructuring: Refactoring of PageSequenceLayoutManager and provide common FObj id property use Committed by AD. Thanks to Adrian Cumiskey. See issue [FOP-1387](https://issues.apache.org/jira/browse/FOP-1387).
+
+*   ![Image 422: update](https://xmlgraphics.apache.org/images/update.jpg) Updated PDF/A-1b support according to ISO-19005-1:2005/Cor.1:2007. Committed by JM.
+
+*   ![Image 423: update](https://xmlgraphics.apache.org/images/update.jpg) Use source resolution setting for bitmap images which don't provide their own resolution. Committed by JM. Thanks to Hussein Shafie. See issue [FOP-1362](https://issues.apache.org/jira/browse/FOP-1362).
+
+### Contributors to this release
+
+We thank the following people for their contributions to this release.
+
+This is a list of all people who participated as committers:
+
+Andreas Delmelle (AD), Jay Bryant (JB), Jeremias Märki (JM), Luca Furini (LF), Manuel Mall (MM), Simon Pepping (SP), Vincent Hennebert (VH), (VH, JM).
+
+This is a list of other contributors:
+
+Adrian Cumiskey, Erwin Tratar, Hussein Shafie, Martin Kögler, Max Berger, Paul Vinkenoog, Richard Wheeldon.
+
+Version 0.93 (9 January 2007)
+-----------------------------
+
+### Changes to the Code Base
+
+*   ![Image 424: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for the use of Open Type fonts Committed by BD.
+
+*   ![Image 425: add](https://xmlgraphics.apache.org/images/add.jpg) Added initial support for loading fonts without a pre-created XML font metric file. Committed by JM.
+
+*   ![Image 426: add](https://xmlgraphics.apache.org/images/add.jpg) Support for the rgb-icc() function and for a proprietary cmyk() function (for device CMYK colors only through the PDF renderer so far). Committed by JM. Thanks to Peter Coppens. See issue [FOP-1261](https://issues.apache.org/jira/browse/FOP-1261).
+
+*   ![Image 427: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for SVG in fo:instream-foreign objects for RTF output. Committed by JM. Thanks to Dominic Brügger. See issue [FOP-1267](https://issues.apache.org/jira/browse/FOP-1267).
+
+*   ![Image 428: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for CCITT compression in the TIFFRenderer by switching to the ImageWriter abstraction from XML Graphics Commons. Committed by JM. Thanks to Oliver Hernàndez Valls. See issue [FOP-1243](https://issues.apache.org/jira/browse/FOP-1243).
+
+*   ![Image 429: add](https://xmlgraphics.apache.org/images/add.jpg) Extension properties fox:orphan-content-limit and fox:widow-content-limit which help with list-block and table layout. See the documentation for details. Committed by JM.
+
+*   ![Image 430: add](https://xmlgraphics.apache.org/images/add.jpg) Configuration option in the Java2D-based renderers that allows to disable the default white background in order to produce bitmap output with transparency. Committed by JM.
+
+*   ![Image 431: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for PDF/A-1b and PDF/X-3:2003. (Note: this may still be a bit incomplete. Feedback is welcome!) Committed by JM.
+
+*   ![Image 432: add](https://xmlgraphics.apache.org/images/add.jpg) The CIDSet object is now generated for CID fonts which are embedded in PDFs. (Required by PDF/A). Committed by JM.
+
+*   ![Image 433: add](https://xmlgraphics.apache.org/images/add.jpg) Automatic support for all fonts available to the Java2D subsystem for all Java2D-descendant renderers (TIFF, PNG, print, AWT). Committed by JM.
+
+*   ![Image 434: add](https://xmlgraphics.apache.org/images/add.jpg) Initial support for page-number-citation-last (XSL 1.1). Works without problems only for page-sequence so far. Committed by JM. Thanks to Pierre-Henri Kraus. See issue [FOP-1167](https://issues.apache.org/jira/browse/FOP-1167).
+
+*   ![Image 435: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Fixed bug when the sum of column widths of a table is larger than the specified widths. The table width was not adjusted. Committed by JM.
+
+*   ![Image 436: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Nested tables with headers and footers were not handled correctly and could overlap with the region-after. Committed by JM.
+
+*   ![Image 437: fix](https://xmlgraphics.apache.org/images/fix.jpg) Split up FOText instances larger than 32K characters to avoid integer overflow during layout. Committed by AD. See issue [FOP-1178](https://issues.apache.org/jira/browse/FOP-1178).
+
+*   ![Image 438: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Corrected painting of shading patterns and position of links for SVG images inside FO documents. Committed by JM.
+
+*   ![Image 439: fix](https://xmlgraphics.apache.org/images/fix.jpg) Deferred property resolution for markers until they are actually retrieved, which leads to percentages and relative font-sizes now getting the correct values. Also deferred white-space-handling for markers. Committed by AD.
+
+*   ![Image 440: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a memory-leak: The FO tree part of a page-sequence was not released when a page-sequence was finished. Committed by JM.
+
+*   ![Image 441: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Table headers and footers were swallowed when a table was nested in a list-block. Committed by JM.
+
+*   ![Image 442: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a bug with indent handling when margins are used on a surrounding block and not start/end-indent. Committed by JM.
+
+*   ![Image 443: fix](https://xmlgraphics.apache.org/images/fix.jpg) Compatibility fix for GCJ (GNU Classpath): Using "UTF-16BE" instead of "UnicodeBigUnmarked" encoding. Committed by JM. Thanks to Jeroen Meijer. See issue [FOP-1215](https://issues.apache.org/jira/browse/FOP-1215).
+
+*   ![Image 444: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed handling for CCITT Group 4 TIFF images with fill order 2. Committed by JM. Thanks to Gilles Beaugeais. See issue [FOP-1211](https://issues.apache.org/jira/browse/FOP-1211).
+
+*   ![Image 445: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed setting of page margins in AWT Renderer like it was done in the print renderer. Committed by JM. Thanks to Igor Istomin. See issue [FOP-1210](https://issues.apache.org/jira/browse/FOP-1210).
+
+*   ![Image 446: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed two memory-leaks in image handling. The image cache is finally working properly. Committed by JM.
+
+*   ![Image 447: fix](https://xmlgraphics.apache.org/images/fix.jpg) Let numeric property values without a unit be treated as pixels like in HTML. This fixes certain NullPointerException when no units are specified. (Note: the use of pixels in XSL-FO is discouraged!) Committed by JM. See issue [FOP-1189](https://issues.apache.org/jira/browse/FOP-1189).
+
+*   ![Image 448: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Potential multi-threading issue (ConcurrentModificationException) eliminated for ElementMapping classes. Committed by JM.
+
+*   ![Image 449: fix](https://xmlgraphics.apache.org/images/fix.jpg) No more System.exit() and look & feel setting calls inside the reusable parts of the AWT viewer. Committed by JM.
+
+*   ![Image 450: fix](https://xmlgraphics.apache.org/images/fix.jpg) Proper escaping of characters in list-items labels for RTF output. Committed by JM.
+
+*   ![Image 451: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: FOUserAgent specific configuration parameters specified in config file were not set when FOP was invoked from command line. Committed by MM.
+
+*   ![Image 452: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: components of the border-separation property weren't set when in shorthand-mode, leading to a NPE being thrown. Committed by AD. See issue [FOP-1194](https://issues.apache.org/jira/browse/FOP-1194).
+
+*   ![Image 453: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Table headers were omitted when a table is a child of a block-container. Committed by JM.
+
+*   ![Image 454: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Bookmarks in PDF will be generated even if some bookmarks cannot be resolved. Committed by JM.
+
+*   ![Image 455: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: the interaction between the table FOs and properties package in determining initial values for column-number should be a one-time process, not repeated when the table is in a marker that is retrieved. Committed by AD. See issue [FOP-1185](https://issues.apache.org/jira/browse/FOP-1185).
+
+*   ![Image 456: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: All fonts names were converted unnecessarily to lower case in RTF output. Committed by JM.
+
+*   ![Image 457: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: The combination of hyphenation and kerning resulted in slightly ragged right ends for right-aligned and justified text. Committed by JM.
+
+*   ![Image 458: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: NullPointerException in AreaAdditionUtil in a table-cell spanning multiple pages and with a marker. Committed by JM.
+
+*   ![Image 459: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: NullPointerException in RTF output when a table does not contain table-columns. Committed by JM. See issue [FOP-1184](https://issues.apache.org/jira/browse/FOP-1184).
+
+*   ![Image 460: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: NullPointerException in RTF library when there are no borders on the parent table. Committed by JM. Thanks to Julien Aymé. See issue [FOP-1188](https://issues.apache.org/jira/browse/FOP-1188).
+
+*   ![Image 461: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Improved baseline detection in TTFReader for TrueType fonts. Committed by JM.
+
+*   ![Image 462: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: tables nested in inline elements caused a NullPointerException. Committed by JM. See issue [FOP-1182](https://issues.apache.org/jira/browse/FOP-1182).
+
+*   ![Image 463: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Sections with span="all" lead to overlapping text if spanning multiple pages. Committed by JM. See issue [FOP-1182](https://issues.apache.org/jira/browse/FOP-1182).
+
+*   ![Image 464: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Percentages in vertical-align property values were not correctly handled. Committed by MM.
+
+*   ![Image 465: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Gaps in table-columns cause a NullPointerException. Committed by JM. Thanks to Gerhard Oettl. See issue [FOP-1129](https://issues.apache.org/jira/browse/FOP-1129).
+
+*   ![Image 466: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: TABs were not correctly replaced by spaces in some circumstances. Committed by MM.
+
+*   ![Image 467: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: basic-links with internal destinations in documents with multiple page-sequences sometimes pointed at the wrong page. Committed by JM.
+
+*   ![Image 468: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Fixed ClassCastException when retrieve-marker is used as a direct child if static-content in which case leading and trailing white space is not properly removed. Committed by JM.
+
+*   ![Image 469: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Fixed OutOfMemoryException with long data URLs (RFC 2397). Committed by JM. See issue [FOP-1172](https://issues.apache.org/jira/browse/FOP-1172).
+
+*   ![Image 470: update](https://xmlgraphics.apache.org/images/update.jpg) Enabled Copy/Paste from PDF content in Acrobat Reader for text using embedded TrueType fonts. Committed by BD. Thanks to Adam Strzelecki, Victor Mote. See issue [FOP-230](https://issues.apache.org/jira/browse/FOP-230).
+
+*   ![Image 471: update](https://xmlgraphics.apache.org/images/update.jpg) Commented out unused properties, in order to minimize memory usage. Committed by SP. Thanks to Richard Wheeldon. See issue [FOP-1271](https://issues.apache.org/jira/browse/FOP-1271).
+
+*   ![Image 472: update](https://xmlgraphics.apache.org/images/update.jpg) Removed unused attributes from TableCell. Committed by SP. Thanks to Richard Wheeldon. See issue [FOP-1269](https://issues.apache.org/jira/browse/FOP-1269).
+
+*   ![Image 473: update](https://xmlgraphics.apache.org/images/update.jpg) Minor fixes and improvements for the AWT Preview (keyboard shortcuts, scrolling, windows setup). Committed by JM. Thanks to Richard Wheeldon. See issue [FOP-1265](https://issues.apache.org/jira/browse/FOP-1265).
+
+*   ![Image 474: update](https://xmlgraphics.apache.org/images/update.jpg) Minor fix: correctly set negative values for ipd/bpd to zero. Committed by AD.
+
+*   ![Image 475: update](https://xmlgraphics.apache.org/images/update.jpg) Rework of default column-creation / column-width setting from cells in the first row. Committed by AD. See issue [FOP-997](https://issues.apache.org/jira/browse/FOP-997).
+
+*   ![Image 476: update](https://xmlgraphics.apache.org/images/update.jpg) Added relaxed validation for empty list-item-*, as suggested by Gary Reed. Committed by AD. Thanks to Gary Reed. See issue [FOP-1225](https://issues.apache.org/jira/browse/FOP-1225).
+
+*   ![Image 477: update](https://xmlgraphics.apache.org/images/update.jpg) Modified proportional-column-width() function to log an error if used with table-layout=auto Committed by AD.
+
+*   ![Image 478: update](https://xmlgraphics.apache.org/images/update.jpg) Changed the way overflowing pages are handled. The overflow property on region-body is now used to define the behaviour. Committed by JM.
+
+*   ![Image 479: update](https://xmlgraphics.apache.org/images/update.jpg) The Java2DRenderer (and therefore the print and bitmap renderers) is now offering the same quality as the PDF and PS renderers. Note: There can still be little differences between PDF and Print/PNG/TIFF because the latter uses a different font metrics source. Committed by JM.
+
+*   ![Image 480: update](https://xmlgraphics.apache.org/images/update.jpg) The default sRGB color profile provided by the Java class library is no longer embedded if it is encountered. This should reduce the PDF size considerably. Committed by JM.
+
+*   ![Image 481: update](https://xmlgraphics.apache.org/images/update.jpg) Changed the internal representation of colors to use Java's own color infrastructure instead of FOP's home-grown classes. Committed by JM. Thanks to Max Berger. See issue [FOP-1159](https://issues.apache.org/jira/browse/FOP-1159).
+
+*   ![Image 482: update](https://xmlgraphics.apache.org/images/update.jpg) Content in block-containers makes better use of shrink to fit content vertically into the available area. This can be used indirectly to justify content vertically in a block-container. Committed by JM.
+
+### Contributors to this release
+
+We thank the following people for their contributions to this release.
+
+This is a list of all people who participated as committers:
+
+Andreas Delmelle (AD), Bertrand Delacrétaz (BD), Jeremias Märki (JM), Manuel Mall (MM), Simon Pepping (SP).
+
+This is a list of other contributors:
+
+Adam Strzelecki, Victor Mote, Dominic Brügger, Gary Reed, Gerhard Oettl, Gilles Beaugeais, Igor Istomin, Jeroen Meijer, Julien Aymé, Max Berger, Oliver Hernàndez Valls, Peter Coppens, Pierre-Henri Kraus, Richard Wheeldon.
+
+Version 0.92beta (18 Apr 2006)
+------------------------------
+
+### Changes to the Code Base
+
+*   ![Image 483: add](https://xmlgraphics.apache.org/images/add.jpg) Initial support for page-position="last" added. Committed by JM.
+
+*   ![Image 484: add](https://xmlgraphics.apache.org/images/add.jpg) Reenabled loading of user-supplied hyphenation patterns that was available in FOP 0.20.5. (See "hyphenation-base" option in the user configuration) Committed by JM.
+
+*   ![Image 485: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for fixed-width spaces. Committed by JM.
+
+*   ![Image 486: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for kerning. Committed by JM.
+
+*   ![Image 487: add](https://xmlgraphics.apache.org/images/add.jpg) Support for "userconfig" attribute in FOP Ant Task. Committed by JM. Thanks to Jirí Mareš.
+
+*   ![Image 488: add](https://xmlgraphics.apache.org/images/add.jpg) Initial support for XMP metadata (PDF 1.4) under fo:declarations. Committed by JM.
+
+*   ![Image 489: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for the background-position shorthand property. Committed by AD.
+
+*   ![Image 490: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for the font shorthand property. Committed by AD.
+
+*   ![Image 491: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for system-color() function. Committed by JM. Thanks to Max Berger. See issue [FOP-1144](https://issues.apache.org/jira/browse/FOP-1144).
+
+*   ![Image 492: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for the from-table-column() function. Committed by AD. Thanks to Gerhard Oettl (gerhard.oettl.at.oesoft.at). See issue [FOP-1134](https://issues.apache.org/jira/browse/FOP-1134).
+
+*   ![Image 493: add](https://xmlgraphics.apache.org/images/add.jpg) New feature: "Intermediate format" (IF). The IF is basically the XML dialect written by the area tree renderer (XMLRenderer). A new parser for this format allows reparsing a serialized and possibly modified area tree and rendering it to the final target format. Committed by JM.
+
+*   ![Image 494: add](https://xmlgraphics.apache.org/images/add.jpg) Relative URLs for the font configuration attributes metrics-url and embed-url are now supported. A new configuration property font-base has been added. It sets the base URL against which relative font URLs are resolved. If font-base is not set base is used. Committed by MM. See issue [FOP-1059](https://issues.apache.org/jira/browse/FOP-1059).
+
+*   ![Image 495: add](https://xmlgraphics.apache.org/images/add.jpg) Added support for RFC2397 "data" URLs. Committed by JM. Thanks to Richard Wheeldon. See issue [FOP-1125](https://issues.apache.org/jira/browse/FOP-1125).
+
+*   ![Image 496: add](https://xmlgraphics.apache.org/images/add.jpg) The font loading code now reads the encoding value from the XML font metrics file so that fonts like Symbol and ZapfDingbats can be embedded explicitely (Required by PDF/A). Committed by JM.
+
+*   ![Image 497: add](https://xmlgraphics.apache.org/images/add.jpg) Added feature: support for white-space shorthand Committed by AD.
+
+*   ![Image 498: add](https://xmlgraphics.apache.org/images/add.jpg) Added feature: support for page-break-* shorthands Committed by AD.
+
+*   ![Image 499: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: The generation of the PDF "d" (setdash) command was assuming that only integer values can be used but that isn't the case. Dash patterns PDFGraphics2D would be wrong in the process. Committed by JM.
+
+*   ![Image 500: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Fixed a division by zero problem in TTFReader and improved the detection of the capHeight and xHeight font metric values for TrueType fonts. Committed by JM.
+
+*   ![Image 501: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Allow URLs in basic-link's external-destination to be wrapped in "url()". Committed by JM.
+
+*   ![Image 502: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Corrected enumerated property value for white-space property from "no-wrap" to "nowrap". Committed by MM.
+
+*   ![Image 503: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Added support for white-space-treatment="preserve" in particular to support the white-space="pre" short hand property. Committed by MM. See issue [FOP-1141](https://issues.apache.org/jira/browse/FOP-1141).
+
+*   ![Image 504: fix](https://xmlgraphics.apache.org/images/fix.jpg) Corrected expectation and behaviour for the text-indent property to only apply to the first line area generated by a block. Committed by JM.
+
+*   ![Image 505: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix for invalid handling of ICC color profiles in JPEG images and for dealing with CMYK JPEG images with the Adobe APPE marker. Committed by JM.
+
+*   ![Image 506: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Certain filter combinations in PDF could lead to invalid PDFs. DecodeParams were not properly handled. Committed by JM.
+
+*   ![Image 507: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: CCITT Group 4 encoded TIFF images with multiple strips are now properly embedded in PDF files. Committed by JM.
+
+*   ![Image 508: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Fixed a copy/paste error in the table layout code that caused wrong page break decisions when table-headers and/or table-footers are used. Committed by JM.
+
+*   ![Image 509: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Fixed an NPE that was thrown when a table was used inside a footnote-body. Committed by JM.
+
+*   ![Image 510: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Fixed a problem with certain TrueType fonts which are missing the "PCLT" table, where a baseline-shift="sub" had no effect due to a missing x-height value. (Note: This only affects TTFReader, so the font metric file has to be regenerated.) Committed by JM.
+
+*   ![Image 511: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: When the base URL was specified as a file system path, the constructed URL was wrong. Committed by JM.
+
+*   ![Image 512: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Fixed two causes for ClassCastExceptions in BlockContainerLayoutManager. Committed by JM.
+
+*   ![Image 513: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: padding-top and padding-bottom on list-items could lead to wrong page break decisions and thus to overlapping text. Committed by JM.
+
+*   ![Image 514: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: break-before and break-after were ignored on list-items. Committed by JM.
+
+*   ![Image 515: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: The elements representing a non-breaking space weren't always correct. Committed by LF. See issue [FOP-1142](https://issues.apache.org/jira/browse/FOP-1142).
+
+*   ![Image 516: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Text-decoration was not promoted if no text-decoration attribute was specified on a nested element. Committed by JM. See issue [FOP-1140](https://issues.apache.org/jira/browse/FOP-1140).
+
+*   ![Image 517: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Spanned cells could lead to an false error message about overlapping cells and ultimately a NullPointerException. Committed by JM. See issue [FOP-1136](https://issues.apache.org/jira/browse/FOP-1136).
+
+*   ![Image 518: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Regions with non-standard names got ignored in RTF output leading to missing headers and footers. Committed by JM.
+
+*   ![Image 519: fix](https://xmlgraphics.apache.org/images/fix.jpg) The RTF output now properly generates the "\landscape" flag for documents in landscape orientation. Committed by JM.
+
+*   ![Image 520: fix](https://xmlgraphics.apache.org/images/fix.jpg) Following a clarification by the XSL FO SG, space traits are only set on the first and last area generated by an FO, and not on every area anymore. Committed by JM.
+
+*   ![Image 521: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Floating point numbers were not properly formatted in the PDF renderer which could lead to error messages while opening a PDF in Acrobat Reader. Committed by JM.
+
+*   ![Image 522: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Spans that end up with a negative height don't get swallowed anymore. Committed by JM. See issue [FOP-1119](https://issues.apache.org/jira/browse/FOP-1119).
+
+*   ![Image 523: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Certain border styles could lead to a NullPointerException. Committed by JM. See issue [FOP-1125](https://issues.apache.org/jira/browse/FOP-1125).
+
+*   ![Image 524: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Space was not adjusted if the space was on a nested block. This could lead to content overflowing the bottom of a page. Committed by JM. See issue [FOP-1123](https://issues.apache.org/jira/browse/FOP-1123)..
+
+*   ![Image 525: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: TableCell did not properly report that it generates reference-areas which could lead to wrong inherited values for start-indent and end-indent. Committed by JM.
+
+*   ![Image 526: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Image height for BMP images was incorrectly calculated Committed by MM. See issue [FOP-1121](https://issues.apache.org/jira/browse/FOP-1121)..
+
+*   ![Image 527: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: NullPointerException on certain fo:inline within lists. Committed by MM. See issue [FOP-1118](https://issues.apache.org/jira/browse/FOP-1118)..
+
+*   ![Image 528: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: ClassCastException on certain fo:inline with border combinations. Committed by MM. See issue [FOP-1105](https://issues.apache.org/jira/browse/FOP-1105)..
+
+*   ![Image 529: fix](https://xmlgraphics.apache.org/images/fix.jpg) Changed a method name in LineArea from finalize to finalise because it was never intended for the method to be an override of the Java Object finalize method. If invoked by the Java garbage collector it may cause a NPE. Committed by MM.
+
+*   ![Image 530: update](https://xmlgraphics.apache.org/images/update.jpg) Implement property name as default argument on some xsl-function calls. Committed by SP. Thanks to Gerhard Oettl. See issue [FOP-1122](https://issues.apache.org/jira/browse/FOP-1122)..
+
+*   ![Image 531: update](https://xmlgraphics.apache.org/images/update.jpg) Implement force-page-count property of page-sequence. Committed by SP. Thanks to Gerhard Oettl. See issue [FOP-1120](https://issues.apache.org/jira/browse/FOP-1120)..
+
+*   ![Image 532: update](https://xmlgraphics.apache.org/images/update.jpg) Improvements to the code for inline block content. Committed by SP.
+
+*   ![Image 533: update](https://xmlgraphics.apache.org/images/update.jpg) Revision of refinement white-space handling. Committed by AD.
+
+### Contributors to this release
+
+We thank the following people for their contributions to this release.
+
+This is a list of all people who participated as committers:
+
+Andreas Delmelle (AD), Jeremias Märki (JM), Luca Furini (LF), Manuel Mall (MM), Simon Pepping (SP).
+
+This is a list of other contributors:
+
+Gerhard Oettl, Gerhard Oettl (gerhard.oettl.at.oesoft.at), Jirí Mareš, Max Berger, Richard Wheeldon.
+
+Version 0.91beta (23 Dec 2005)
+------------------------------
+
+### Changes to the Code Base
+
+*   ![Image 534: add](https://xmlgraphics.apache.org/images/add.jpg) Added checks that warn about tables and block-containers that are wider than the available content area. Committed by JM.
+
+*   ![Image 535: add](https://xmlgraphics.apache.org/images/add.jpg) First attempt at SVG support in RTF output. SVG images are converted to 300dpi JPEG images internally. Committed by JM.
+
+*   ![Image 536: add](https://xmlgraphics.apache.org/images/add.jpg) The command-line now automatically sets two parameters for any XSLT transformation: "fop-output-format" contains the MIME type of the currently selected output format, "fop-version" contains FOP's version number. Committed by JM.
+
+*   ![Image 537: add](https://xmlgraphics.apache.org/images/add.jpg) Added an alternative set of rules for calculating text indents which tries to mimic the behaviour of many commercial FO implementations that chose to break the rules in the FO specification in order to better meet the natural expectations of inexperienced FO users. Committed by JM.
+
+*   ![Image 538: add](https://xmlgraphics.apache.org/images/add.jpg) font-family list still not fully supported but a comma-separated list is now properly tokenized. FOP will now go through all fonts in the list to find one that is available, but it doesn't do so per character, yet. Committed by JM.
+
+*   ![Image 539: add](https://xmlgraphics.apache.org/images/add.jpg) Implemented "Overconstrained Geometry" rules (5.3.4, XSL 1.0) for the most important cases. Committed by JM.
+
+*   ![Image 540: add](https://xmlgraphics.apache.org/images/add.jpg) Support for leader painting in PostScript output. Committed by JM.
+
+*   ![Image 541: add](https://xmlgraphics.apache.org/images/add.jpg) Support for hyphenation-ladder-count. Committed by LF, MM.
+
+*   ![Image 542: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a bug where the linefeed-treatment property value "preserve" was not honoured when used in conjunction with text-align="center". Committed by MM.
+
+*   ![Image 543: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: hard breaks with even-page or odd-page were not handled correctly when spaces were surrounding the break. Committed by JM. See issue [FOP-1114](https://issues.apache.org/jira/browse/FOP-1114)..
+
+*   ![Image 544: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a bug where SVG content could be clipped when rendered to PostScript. Committed by JM.
+
+*   ![Image 545: fix](https://xmlgraphics.apache.org/images/fix.jpg) Changed the way resolutions are handled. The single resolution in the user agent got split up into source and target resolutions. For more info, see the updated documentation. Note: backwards-incompatible change! Committed by JM.
+
+*   ![Image 546: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Some content inside a table-header may not have been renderered on pages n > 1 in certain conditions. Committed by JM. See issue [FOP-1109](https://issues.apache.org/jira/browse/FOP-1109)..
+
+*   ![Image 547: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a bug where an empty line, i.e. a block containing only a , was not rendered at all. Committed by MM.
+
+*   ![Image 548: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fixed a bug where the area for a finished cell that is broken over pages was created once for each row it was spanned over instead of only once. Committed by JM.
+
+*   ![Image 549: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Footnotes were lost if the footnote appeared in centered text. Committed by JM. See issue [FOP-1112](https://issues.apache.org/jira/browse/FOP-1112)..
+
+*   ![Image 550: fix](https://xmlgraphics.apache.org/images/fix.jpg) Fix to correct image sizes in RTF output. Committed by JM.
+
+*   ![Image 551: fix](https://xmlgraphics.apache.org/images/fix.jpg) The output file is now deleted when an exception occurs when calling FOP from the command-line. Committed by JM.
+
+*   ![Image 552: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Areas for table-cells that are broken over more than one page are now generated even if all its content is already painted on a previous page. This fixes strange effects like a table grid that is not completely painted. Committed by JM.
+
+*   ![Image 553: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Column balancing produced strange break decisions in certain multi-column documents with large amounts of text. Committed by JM. See issue [FOP-1108](https://issues.apache.org/jira/browse/FOP-1108)..
+
+*   ![Image 554: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: The combination of content-width="scale-to-fit" and content-height="100%" did not work as expected due to a datatype conversion bug. Committed by JM. Thanks to Tom Craddock. See issue [FOP-1107](https://issues.apache.org/jira/browse/FOP-1107)..
+
+*   ![Image 555: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: A span="all" on the first block cause a subsequent page break and the first block didn't span all columns. Committed by JM. See issue [FOP-1106](https://issues.apache.org/jira/browse/FOP-1106)..
+
+*   ![Image 556: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Self-created OutputStreams in PNG Renderer were not properly closed. Committed by JM.
+
+*   ![Image 557: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Relatively positioned BlockViewports (from block-containers) caused the paint cursor not be be properly advanced when space-before or space-after were present. Committed by JM.
+
+*   ![Image 558: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix: Space resolution was incomplete for content in table-cells. Conditional elements didn't get removed. Committed by JM.
+
+*   ![Image 559: fix](https://xmlgraphics.apache.org/images/fix.jpg) The validation check for non-zero borders and padding on a region-* and for empty static-content elements is now turned off when relaxed validation is active to improve compatibility with FO documents written for other FO implementations. Committed by JM.
+
+*   ![Image 560: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix for "/ by zero" ArithmeticExceptions when an URL to a non-existing image is used and content-width and/or content-height is used. Committed by JM.
+
+*   ![Image 561: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix for a multi-threading problem: propertyListTable initialization moved from the constructor to a static block in FONode. This fixes NullPointerExceptions in PropertyList. Committed by JM.
+
+*   ![Image 562: fix](https://xmlgraphics.apache.org/images/fix.jpg) Bugfix for placement of text inside a text area when borders are present in PostScript output. Committed by JM.
+
+*   ![Image 563: update](https://xmlgraphics.apache.org/images/update.jpg) Deprecated Fop constructors that use integer constants to select the output format have been removed in favor or the constructors that use MIME types. Committed by JM.
+
+*   ![Image 564: update](https://xmlgraphics.apache.org/images/update.jpg) Changed the XMLHandler interface so it doesn't report the MIME type it supports but instead can report whether it supports a particular Renderer implementation. XMLHandlers are now configurable. Committed by JM.
+
+*   ![Image 565: update](https://xmlgraphics.apache.org/images/update.jpg) Improved log and error messages in a number of places by adding additional context information that should make it easier to find the location in the source files. Committed by JM.
+
+*   ![Image 566: update](https://xmlgraphics.apache.org/images/update.jpg) Additional checks to detect text overflows. The overflow property is now properly handled where applicable. Committed by JM.
+
+*   ![Image 567: update](https://xmlgraphics.apache.org/images/update.jpg) Source location information improved. If location information is not available, the context information is provided based on text content. Committed by JM.
+
+*   ![Image 568: update](https://xmlgraphics.apache.org/images/update.jpg) The border-collapse property on fo:table is now forced to the value "separate" until the collapsing border has been implemented. Committed by JM.
+
+*   ![Image 569: update](https://xmlgraphics.apache.org/images/update.jpg) Improvements on leader painting in PDF output. Committed by JM.
+
+### Contributors to this release
+
+We thank the following people for their contributions to this release.
+
+This is a list of all people who participated as committers:
+
+Jeremias Märki (JM), (LF, MM), Manuel Mall (MM).
+
+This is a list of other contributors:
+
+Tom Craddock.
+
+Version 0.90alpha1 (22 Nov 2005)
+--------------------------------
+
+### Changes to the Code Base
+
+*   ![Image 570: update](https://xmlgraphics.apache.org/images/update.jpg)**Complete redesign of the FOP codebase** in the period between Dec 2001 and Nov 2005. There are just too many changes to list here. If you like to know details, run `"svn log --verbose http://svn.apache.org/repos/asf/xmlgraphics/fop/trunk/"`. Committed by all.
+
+### Contributors to this release
+
+We thank the following people for their contributions to this release.
+
+This is a list of all people who participated as committers:
+
+the FOP committers (all).
+
+Version 0.20.5 (18 July 2003)
+-----------------------------
+
+### Changes to the Code Base
+
+*   ![Image 571: update](https://xmlgraphics.apache.org/images/update.jpg) For the change log for the maintenance branch (where FOP 0.20.5 came from), please see the "CHANGES" file in the distribution, or [the CHANGES file in the SVN repository](http://svn.apache.org/viewvc/xmlgraphics/fop/tags/fop-0_20_5/CHANGES?view=markup). Committed by all.
+
+### Contributors to this release
+
+We thank the following people for their contributions to this release.
+
+This is a list of all people who participated as committers:
+
+the FOP committers (all).
+
+All Committers
+--------------
+
+This is a list of all people who have ever participated as committers on this project.
+
+*   Glenn Adams (GA)
+
+*   Max Berger (MB)
+
+*   Chris Bowditch (CB)
+
+*   Jay Bryant (JB)
+
+*   Adrian Cumiskey (AC)
+
+*   Bertrand Delacrétaz (BD)
+
+*   Andreas Delmelle (AD)
+
+*   Luca Furini (LF)
+
+*   Christian Geisert (CG)
+
+*   Peter Hancock (PH)
+
+*   Vincent Hennebert (VH)
+
+*   Mehdi Houshmand (MH)
+
+*   Clay Leeds (CL)
+
+*   Manuel Mall (MM)
+
+*   Jeremias Märki (JM)
+
+*   Simon Pepping (SP)
+
+*   the FOP committers (all)
+
+*   Volunteer needed (open)
