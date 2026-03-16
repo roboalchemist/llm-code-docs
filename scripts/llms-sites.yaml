@@ -1616,3 +1616,6 @@ sites:
 - name: testim
   base_url: https://help.testim.io/
   description: testim documentation
+- name: crawlee
+  base_url: https://www.crawlee.dev/
+  description: crawlee documentation

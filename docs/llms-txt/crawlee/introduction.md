@@ -1,0 +1,47 @@
+# Source: https://crawlee.dev/js/docs/introduction.md
+
+# Introduction
+
+Copy for LLM
+
+Crawlee covers your crawling and scraping end-to-end and helps you **build reliable scrapers. Fast.**
+
+Your crawlers will appear human-like and fly under the radar of modern bot protections even with the default configuration. Crawlee gives you the tools to crawl the web for links, scrape data and persistently store it in machine-readable formats, without having to worry about the technical details. And thanks to rich configuration options, you can tweak almost any aspect of Crawlee to suit your project's needs if the default settings don't cut it.
+
+## What you will learn[​](#what-you-will-learn "Direct link to What you will learn")
+
+The goal of the introduction is to provide a step-by-step guide to the most important features of Crawlee. It will walk you through creating the simplest of crawlers that only prints text to console, all the way up to a full-featured scraper that collects links from a website and extracts data.
+
+## 🛠 Features[​](#-features "Direct link to 🛠 Features")
+
+* Single interface for **HTTP and headless browser** crawling
+* Persistent **queue** for URLs to crawl (breadth & depth first)
+* Pluggable **storage** of both tabular data and files
+* Automatic **scaling** with available system resources
+* Integrated **proxy rotation** and session management
+* Lifecycles customizable with **hooks**
+* **CLI** to bootstrap your projects
+* Configurable **routing**, **error handling** and **retries**
+* **Dockerfiles** ready to deploy
+* Written in **TypeScript** with generics
+
+### 👾 HTTP crawling[​](#-http-crawling "Direct link to 👾 HTTP crawling")
+
+* Zero config **HTTP2 support**, even for proxies
+* Automatic generation of **browser-like headers**
+* Replication of browser **TLS fingerprints**
+* Integrated fast **HTML parsers**. Cheerio and JSDOM
+* Yes, you can scrape **JSON APIs** as well
+
+### 💻 Real browser crawling[​](#-real-browser-crawling "Direct link to 💻 Real browser crawling")
+
+* JavaScript **rendering** and **screenshots**
+* **Headless** and **headful** support
+* Zero-config generation of **human-like fingerprints**
+* Automatic **browser management**
+* Use **Playwright** and **Puppeteer** with the same interface
+* **Chrome**, **Firefox**, **Webkit** and many others
+
+## Next steps[​](#next-steps "Direct link to Next steps")
+
+Next, you will install Crawlee and learn how to bootstrap projects with the Crawlee CLI.
