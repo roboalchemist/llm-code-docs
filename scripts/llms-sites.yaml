@@ -1625,3 +1625,6 @@ sites:
 - name: saleor
   base_url: https://docs.saleor.io/
   description: saleor documentation
+- name: pica
+  base_url: https://docs.picaos.com/
+  description: pica documentation
