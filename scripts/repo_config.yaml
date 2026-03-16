@@ -2401,3 +2401,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/guzzle
   branch: main
+- name: posthtml
+  description: posthtml from GitHub
+  repo_url: https://github.com/posthtml/posthtml.git
+  source_folder: docs
+  target_folder: docs/github-scraped/posthtml
+  branch: main
