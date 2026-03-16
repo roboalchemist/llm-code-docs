@@ -2395,3 +2395,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/testing-library
   branch: main
+- name: guzzle
+  description: guzzle from GitHub
+  repo_url: https://github.com/guzzle/guzzle.git
+  source_folder: docs
+  target_folder: docs/github-scraped/guzzle
+  branch: main
