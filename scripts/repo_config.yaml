@@ -2425,3 +2425,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/kontent.ai
   branch: main
+- name: sitecore
+  description: sitecore from GitHub
+  repo_url: https://github.com/Sitecore/Sitecore.Rocks.git
+  source_folder: docs
+  target_folder: docs/github-scraped/sitecore
+  branch: main
