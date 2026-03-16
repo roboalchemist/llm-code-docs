@@ -2353,3 +2353,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/checkmk
   branch: main
+- name: powermock
+  description: powermock from GitHub
+  repo_url: https://github.com/powermock/powermock.git
+  source_folder: docs
+  target_folder: docs/github-scraped/powermock
+  branch: main
