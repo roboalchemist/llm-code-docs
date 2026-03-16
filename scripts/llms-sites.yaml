@@ -1589,3 +1589,6 @@ sites:
 - name: dreamfactory
   base_url: https://www.dreamfactory.com/
   description: dreamfactory documentation
+- name: kreya
+  base_url: https://kreya.app/
+  description: kreya documentation
