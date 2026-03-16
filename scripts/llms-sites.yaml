@@ -1610,3 +1610,6 @@ sites:
 - name: bright-data
   base_url: https://docs.brightdata.com/
   description: bright-data documentation
+- name: bugbug
+  base_url: https://docs.bugbug.io/
+  description: bugbug documentation
