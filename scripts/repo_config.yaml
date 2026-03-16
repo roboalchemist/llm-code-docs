@@ -2365,3 +2365,9 @@ repositories:
   source_folder: website/docs
   target_folder: docs/github-scraped/instancio
   branch: main
+- name: mimesis
+  description: mimesis from GitHub
+  repo_url: https://github.com/lk-geimfari/mimesis.git
+  source_folder: docs
+  target_folder: docs/github-scraped/mimesis
+  branch: main
