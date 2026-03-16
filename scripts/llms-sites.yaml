@@ -1607,3 +1607,6 @@ sites:
 - name: cypress-image-diff-plugin
   base_url: https://cypress.visual-image-diff.dev/
   description: cypress-image-diff-plugin documentation
+- name: bright-data
+  base_url: https://docs.brightdata.com/
+  description: bright-data documentation
