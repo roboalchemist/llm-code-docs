@@ -2371,3 +2371,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/mimesis
   branch: main
+- name: test.check
+  description: test.check from GitHub
+  repo_url: https://github.com/clojure/test.check.git
+  source_folder: doc
+  target_folder: docs/github-scraped/test.check
+  branch: main
