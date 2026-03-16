@@ -2413,3 +2413,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/superagent
   branch: main
+- name: html-validate
+  description: html-validate from GitHub
+  repo_url: https://github.com/html-validate/html-validate.git
+  source_folder: docs
+  target_folder: docs/github-scraped/html-validate
+  branch: main
