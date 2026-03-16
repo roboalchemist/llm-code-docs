@@ -1598,3 +1598,6 @@ sites:
 - name: foundry
   base_url: https://www.getfoundry.sh/
   description: foundry documentation
+- name: lost-pixel
+  base_url: https://docs.lost-pixel.com/docs/
+  description: lost-pixel documentation
