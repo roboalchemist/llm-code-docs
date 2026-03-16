@@ -1604,3 +1604,6 @@ sites:
 - name: espresso
   base_url: https://docs.espressosys.com/
   description: espresso documentation
+- name: cypress-image-diff-plugin
+  base_url: https://cypress.visual-image-diff.dev/
+  description: cypress-image-diff-plugin documentation
