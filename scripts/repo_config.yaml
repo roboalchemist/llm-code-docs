@@ -2437,3 +2437,9 @@ repositories:
   source_folder: documentation
   target_folder: docs/github-scraped/openimaj
   branch: main
+- name: docfx
+  description: docfx from GitHub
+  repo_url: https://github.com/dotnet/docfx.git
+  source_folder: docs
+  target_folder: docs/github-scraped/docfx
+  branch: main
