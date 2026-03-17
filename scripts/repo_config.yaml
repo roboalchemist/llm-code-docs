@@ -2449,3 +2449,9 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/pandoc
   branch: main
+- name: apache-arrow
+  description: apache-arrow from GitHub
+  repo_url: https://github.com/apache/arrow.git
+  source_folder: docs
+  target_folder: docs/github-scraped/apache-arrow
+  branch: main
