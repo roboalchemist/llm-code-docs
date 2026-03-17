@@ -2461,3 +2461,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/opennmt
   branch: main
+- name: trl
+  description: trl from GitHub
+  repo_url: https://github.com/huggingface/trl.git
+  source_folder: docs
+  target_folder: docs/github-scraped/trl
+  branch: main
