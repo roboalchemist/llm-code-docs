@@ -2479,3 +2479,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/openvino
   branch: main
+- name: ultralytics
+  description: ultralytics from GitHub
+  repo_url: https://github.com/ultralytics/ultralytics.git
+  source_folder: docs
+  target_folder: docs/github-scraped/ultralytics
+  branch: main
