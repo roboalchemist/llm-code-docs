@@ -2485,3 +2485,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/ultralytics
   branch: main
+- name: metaflow
+  description: metaflow from GitHub
+  repo_url: https://github.com/Netflix/metaflow.git
+  source_folder: docs
+  target_folder: docs/github-scraped/metaflow
+  branch: main
