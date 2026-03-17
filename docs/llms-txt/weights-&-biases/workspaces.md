@@ -1,0 +1,249 @@
+# Source: https://docs.wandb.ai/models/track/workspaces.md
+
+# Source: https://docs.wandb.ai/models/ref/wandb_workspaces/workspaces.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.wandb.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Workspaces
+
+export const GitHubLink = ({url}) => <a href={url} target="_blank" rel="noopener noreferrer" className="github-source-link">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+    </svg>
+    GitHub source
+  </a>;
+
+<GitHubLink url="https://github.com/wandb/wandb-workspaces/blob/main/wandb_workspaces/workspaces/internal.py" />
+
+<Note>
+  W\&B Report and Workspace API is in Public Preview.
+</Note>
+
+Python library for programmatically working with W\&B Workspace API.
+
+```python  theme={null}
+# How to import
+import wandb_workspaces.workspaces as ws
+
+# Example of creating a workspace
+ws.Workspace(
+     name="Example W&B Workspace",
+     entity="entity", # entity that owns the workspace
+     project="project", # project that the workspace is associated with
+     sections=[
+         ws.Section(
+             name="Validation Metrics",
+             panels=[
+                 wr.LinePlot(x="Step", y=["val_loss"]),
+                 wr.BarPlot(metrics=["val_accuracy"]),
+                 wr.ScalarChart(metric="f1_score", groupby_aggfunc="mean"),
+             ],
+             is_open=True,
+         ),
+     ],
+)
+workspace.save()
+```
+
+## <kbd>class</kbd> `RunSettings`
+
+Settings for a run in a runset (left hand bar).
+
+**Attributes:**
+
+* `color` (str):  The color of the run in the UI.  Can be hex (#ff0000), css color (red), or rgb (rgb(255, 0, 0))
+* `disabled` (bool):  Whether the run is deactivated (eye closed in the UI). Default is set to `False`.
+
+***
+
+## <kbd>class</kbd> `RunsetSettings`
+
+Settings for the runset (the left bar containing runs) in a workspace.
+
+**Attributes:**
+
+* `query` (str):  A query to filter the runset (can be a regex expr, see next param).
+* `regex_query` (bool):  Controls whether the query (above) is a regex expr. Default is set to `False`.
+* `filters` (Union\[str, LList\[expr.FilterExpr]]):  A list of filters to apply to the runset or a string expression.
+  * As a list: Filters are AND'd together. See FilterExpr for more information on creating filters.
+  * As a string: Use Python-like expressions, e.g., "Config('lr') = 0.001 and State = 'finished'"
+* `Supports operators`:  `=` , `==` , `!=` , `<` , `>` , `<=` , `>=` , `in` , `not in`
+* `groupby` (LList\[expr.MetricType]):  A list of metrics to group by in the runset. Set to  `Metric`, `Summary`, `Config`, `Tags`, or `KeysInfo`.
+* `order` (LList\[expr.Ordering]):  A list of metrics and ordering to apply to the runset.
+* `run_settings` (Dict\[str, RunSettings]):  A dictionary of run settings, where the key  is the run's ID and the value is a RunSettings object.
+* `pinned_columns` (LList\[str]):  List of column names to pin.
+* `Column names use format`:  "run:displayName", "summary:metric", "config:param".
+* `run`: displayName is automatically added if not present.
+* `Example`:  \["summary:accuracy", "summary:loss"]
+
+**Example:**
+
+```python  theme={null}
+   # Using string filters (new)
+   RunsetSettings(
+       filters="Config('learning_rate') = 0.001 and State = 'finished'",
+       pinned_columns=["summary:accuracy", "summary:loss"],
+   )
+
+   # Using FilterExpr list (original way)
+   RunsetSettings(
+       filters=[expr.Config("learning_rate") == 0.001],
+       pinned_columns=["summary:accuracy", "summary:loss"],
+   )
+```
+
+***
+
+### <kbd>method</kbd> `convert_filterexpr_list_to_string`
+
+```python  theme={null}
+convert_filterexpr_list_to_string()
+```
+
+Convert FilterExpr list to string expression (unified internal format).
+
+***
+
+### <kbd>method</kbd> `validate_and_setup_columns`
+
+```python  theme={null}
+validate_and_setup_columns()
+```
+
+Ensure run:displayName is present and set up internal column fields.
+
+***
+
+## <kbd>class</kbd> `Section`
+
+Represents a section in a workspace.
+
+**Attributes:**
+
+* `name` (str):  The name/title of the section.
+* `panels` (LList\[PanelTypes]):  An ordered list of panels in the section. By default, first is top-left and last is bottom-right.
+* `is_open` (bool):  Whether the section is open or closed. Default is closed.
+* `pinned` (bool):  Whether the section is pinned. Pinned sections appear at the top of the workspace. Default is False.
+* `layout_settings` (SectionLayoutSettings):  Settings for panel layout in the section.
+* `panel_settings`:  Panel-level settings applied to all panels in the section, similar to `WorkspaceSettings` for a `Section`.
+
+***
+
+## <kbd>class</kbd> `SectionLayoutSettings`
+
+Panel layout settings for a section, typically seen at the top right of the section of the W\&B App Workspace UI.
+
+**Attributes:**
+
+* `columns` (int):  The number of columns in the layout. Default is 3.
+* `rows` (int):  The number of rows in the layout. Default is 2.
+
+***
+
+## <kbd>class</kbd> `SectionPanelSettings`
+
+Panel settings for a section, similar to `WorkspaceSettings` for a section.
+
+Settings applied here can be overrided by more granular Panel settings in this priority: Section \< Panel.
+
+**Attributes:**
+
+* `x_axis` (str):  X-axis metric name setting. By default, set to "Step".
+* `x_min Optional[float]`:  Minimum value for the x-axis.
+* `x_max Optional[float]`:  Maximum value for the x-axis.
+* `smoothing_type` (Literal\['exponentialTimeWeighted', 'exponential', 'gaussian', 'average', 'none']):  Smoothing  type applied to all panels.
+* `smoothing_weight` (int):  Smoothing weight applied to all panels.
+
+***
+
+## <kbd>class</kbd> `Workspace`
+
+Represents a W\&B workspace, including sections, settings, and config for run sets.
+
+**Attributes:**
+
+* `entity` (str):  The entity this workspace will be saved to (usually user or team name).
+* `project` (str):  The project this workspace will be saved to.
+* `name`:  The name of the workspace.
+* `sections` (LList\[Section]):  An ordered list of sections in the workspace.  The first section is at the top of the workspace.
+* `settings` (WorkspaceSettings):  Settings for the workspace, typically seen at  the top of the workspace in the UI.
+* `runset_settings` (RunsetSettings):  Settings for the runset  (the left bar containing runs) in a workspace.
+* `auto_generate_panels` (bool):  Whether to automatically generate panels for all keys logged in this project.  Recommended if you would like all available data to be visualized by default.  This can only be set during workspace creation and cannot be modified afterward.
+
+***
+
+### <kbd>property</kbd> auto\_generate\_panels
+
+***
+
+### <kbd>property</kbd> url
+
+The URL to the workspace in the W\&B app.
+
+***
+
+### <kbd>classmethod</kbd> `from_url`
+
+```python  theme={null}
+from_url(url: str)
+```
+
+Get a workspace from a URL.
+
+***
+
+### <kbd>method</kbd> `save`
+
+```python  theme={null}
+save()
+```
+
+Save the current workspace to W\&B.
+
+**Returns:**
+
+* `Workspace`:  The updated workspace with the saved internal name and ID.
+
+***
+
+### <kbd>method</kbd> `save_as_new_view`
+
+```python  theme={null}
+save_as_new_view()
+```
+
+Save the current workspace as a new view to W\&B.
+
+**Returns:**
+
+* `Workspace`:  The updated workspace with the saved internal name and ID.
+
+***
+
+## <kbd>class</kbd> `WorkspaceSettings`
+
+Settings for the workspace, typically seen at the top of the workspace in the UI.
+
+This object includes settings for the x-axis, smoothing, outliers, panels, tooltips, runs, and panel query bar.
+
+Settings applied here can be overrided by more granular Section and Panel settings in this priority: Workspace \< Section \< Panel
+
+**Attributes:**
+
+* `x_axis` (str):  X-axis metric name setting.
+* `x_min` (Optional\[float]):  Minimum value for the x-axis.
+* `x_max` (Optional\[float]):  Maximum value for the x-axis.
+* `smoothing_type` (Literal\['exponentialTimeWeighted', 'exponential', 'gaussian', 'average', 'none']):  Smoothing  type applied to all panels.
+* `smoothing_weight` (int):  Smoothing weight applied to all panels.
+* `ignore_outliers` (bool):  Ignore outliers in all panels.
+* `sort_panels_alphabetically` (bool):  Sorts panels in all sections alphabetically.
+* `group_by_prefix` (Literal\["first", "last"]):  Group panels by the first or up to last  prefix (first or last). Default is set to `last`.
+* `remove_legends_from_panels` (bool):  Remove legends from all panels.
+* `tooltip_number_of_runs` (Literal\["default", "all", "none"]):  The number of runs to show in the tooltip.
+* `tooltip_color_run_names` (bool):  Whether to color run names in the tooltip to  match the runset (True) or not (False). Default is set to `True`.
+* `max_runs` (int):  The maximum number of runs to show per panel (this will be the first 10 runs in the runset).
+* `point_visualization_method` (Literal\["line", "point", "line\_point"]):  The visualization method for points.
+* `panel_search_query` (str):  The query for the panel search bar (can be a regex expression).
+* `auto_expand_panel_search_results` (bool):  Whether to auto expand the panel search results.

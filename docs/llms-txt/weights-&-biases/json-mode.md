@@ -1,0 +1,56 @@
+# Source: https://docs.wandb.ai/inference/response-settings/json-mode.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.wandb.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Enable JSON mode
+
+> Configure JSON mode in W&B Inference to get structured JSON output from model responses for easier parsing.
+
+Enabling JSON mode instructs the model to return the response in a valid JSON format. However, the response's schema may not be consistent or adhere to a particular structure. For consistent structured JSON responses, we recommend using [structured output](/inference/response-settings/structured-output) when possible.
+
+To enable JSON mode, specify it as the "response\_format" in the request:
+
+<Tabs>
+  <Tab title="Python">
+    ```python  theme={null}
+    import json
+    import openai
+
+    client = openai.OpenAI(
+        base_url='https://api.inference.wandb.ai/v1',
+        api_key="<your-api-key>",  # Create an API key at https://wandb.ai/settings
+    )
+
+    response = client.chat.completions.create(
+        model="openai/gpt-oss-20b",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant that outputs JSON."},
+            {"role": "user", "content": "Give me a list of three fruits with their colors."},
+        ],
+        response_format={"type": "json_object"}  # This enables JSON mode
+    )
+
+    content = response.choices[0].message.content
+    parsed = json.loads(content)
+    print(parsed)
+    ```
+  </Tab>
+
+  <Tab title="Bash">
+    ```bash  theme={null}
+    curl https://api.inference.wandb.ai/v1/chat/completions \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer <your-api-key>" \
+      -d '{
+        "model": "openai/gpt-oss-20b",
+        "messages": [
+            {"role": "system", "content": "You are a helpful assistant that outputs JSON."},
+            {"role": "user", "content": "Give me a list of three fruits with their colors."},
+        ],
+        "response_format": {"type": "json_object"}
+      }'
+    ```
+  </Tab>
+</Tabs>

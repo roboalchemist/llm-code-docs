@@ -1652,3 +1652,6 @@ sites:
 - name: pycaret
   base_url: https://pycaret.gitbook.io/docs/
   description: pycaret documentation
+- name: weights-&-biases
+  base_url: https://docs.wandb.ai/
+  description: weights-&-biases documentation

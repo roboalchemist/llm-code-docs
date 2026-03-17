@@ -1,0 +1,29 @@
+# Source: https://docs.wandb.ai/weave/open-source.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.wandb.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Open Source
+
+> Explore Weave's open source resources and contribute to the project
+
+Weave is an open source toolkit for developing AI-powered applications, built by Weights & Biases. Join our community and contribute to the future of AI development.
+
+<CardGroup cols={2}>
+  <Card title="GitHub Repository" icon="github" href="https://github.com/wandb/weave">
+    Explore the source code, contribute to the project, and stay up to date with the latest developments.
+  </Card>
+
+  <Card title="Release Changelog" icon="book-open" href="https://github.com/wandb/weave/releases">
+    View the complete history of releases, new features, bug fixes, and breaking changes.
+  </Card>
+</CardGroup>
+
+## Get Involved
+
+We welcome contributions from the community. Here are some ways you can get involved:
+
+* **Report Issues**: Found a bug? [Open an issue](https://github.com/wandb/weave/issues) on GitHub
+* **Contribute Code**: Check out our [contribution guidelines](https://github.com/wandb/weave/blob/master/CONTRIBUTING.md)
+* **Join Discussions**: Connect with other developers in our [community forums](https://github.com/wandb/weave/discussions)

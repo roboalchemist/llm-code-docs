@@ -1,0 +1,58 @@
+# Source: https://docs.wandb.ai/training/api-reference.md
+
+# Source: https://docs.wandb.ai/inference/api-reference.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.wandb.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# API Overview
+
+> Explore the complete REST API reference for the W&B Inference service, including endpoints and authentication.
+
+Learn how to use the W\&B Inference API to access foundation models programmatically.
+
+## Base URL
+
+Access the Inference service at:
+
+```plaintext  theme={null}
+https://api.inference.wandb.ai/v1
+```
+
+<Note>
+  **Important**
+
+  To use this endpoint, you need:
+
+  * A W\&B account with Inference credits
+  * A valid W\&B API key
+
+  If you belong to more than one team or want to attribute your usage to a project you will also need team and project IDs. In code samples, these appear as `<your-team>/<your-project>`. Your default entity and the project name `inference` will be used if unspecified.
+</Note>
+
+## Available methods
+
+The W\&B Inference API provides OpenAI-compatible endpoints for interacting with foundation models:
+
+* **[Chat Completions](/inference/api-reference/chat-completions)** - Create chat completions using various foundation models
+* **[List Models](/inference/api-reference/list-models)** - Get all available models and their IDs
+
+## Authentication
+
+All API requests require authentication using your W\&B API key. Create an API key at [wandb.ai/settings](https://wandb.ai/settings).
+
+Include your API key in the request headers:
+
+* For OpenAI SDK: Set as `api_key` parameter
+* For direct API calls: Use `Authorization: Bearer <your-api-key>`
+
+## Error handling
+
+See [API Errors](/inference/api-reference/errors) for a complete list of error codes and how to resolve them.
+
+## Next steps
+
+* Try the [usage examples](/inference/examples) to see the API in action
+* Explore models in the [UI](/inference/ui-guide)
+* Check [usage limits](/inference/usage-limits) for your account
