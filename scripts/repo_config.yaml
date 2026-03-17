@@ -2491,3 +2491,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/metaflow
   branch: main
+- name: tensorflow-data-validation
+  description: tensorflow-data-validation from GitHub
+  repo_url: https://github.com/tensorflow/data-validation.git
+  source_folder: docs
+  target_folder: docs/github-scraped/tensorflow-data-validation
+  branch: main
