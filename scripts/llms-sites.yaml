@@ -1640,3 +1640,6 @@ sites:
 - name: albumentations
   base_url: https://albumentations.ai/
   description: albumentations documentation
+- name: roboflow
+  base_url: https://docs.roboflow.com/
+  description: roboflow documentation
