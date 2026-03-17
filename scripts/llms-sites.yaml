@@ -1643,3 +1643,6 @@ sites:
 - name: roboflow
   base_url: https://docs.roboflow.com/
   description: roboflow documentation
+- name: pytorch-image-models
+  base_url: https://huggingface.co/docs/timm/
+  description: pytorch-image-models documentation
