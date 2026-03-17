@@ -2473,3 +2473,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/caffe
   branch: main
+- name: openvino
+  description: openvino from GitHub
+  repo_url: https://github.com/openvinotoolkit/openvino.git
+  source_folder: docs
+  target_folder: docs/github-scraped/openvino
+  branch: main
