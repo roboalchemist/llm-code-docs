@@ -1634,3 +1634,6 @@ sites:
 - name: pydoc
   base_url: https://pydoc.io/
   description: pydoc documentation
+- name: amazon-comprehend
+  base_url: https://docs.aws.amazon.com/
+  description: amazon-comprehend documentation
