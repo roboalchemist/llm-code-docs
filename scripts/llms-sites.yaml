@@ -1637,3 +1637,6 @@ sites:
 - name: amazon-comprehend
   base_url: https://docs.aws.amazon.com/
   description: amazon-comprehend documentation
+- name: albumentations
+  base_url: https://albumentations.ai/
+  description: albumentations documentation
