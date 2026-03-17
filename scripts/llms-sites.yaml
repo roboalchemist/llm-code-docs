@@ -1628,3 +1628,6 @@ sites:
 - name: pica
   base_url: https://docs.picaos.com/
   description: pica documentation
+- name: itextsharp
+  base_url: https://sourceforge.net/
+  description: itextsharp documentation
