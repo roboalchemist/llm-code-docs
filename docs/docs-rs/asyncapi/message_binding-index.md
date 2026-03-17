@@ -1,0 +1,11 @@
+asyncapi
+# Module message_binding 
+Source 
+## Structs§
+AMQP1MessageBindingThis object MUST NOT contain any properties. Its name is reserved for future use.AMQPMessageBindingThis object contains information about the message representation in AMQP.AnyPointMQMessageBindingThe Anypoint MQ Message Binding Object is defined by a
+JSON Schema,
+which defines these fields.HTTPMessageBindingThis object contains information about the message representation in HTTP.IBMMQMessageBindingJMSMessageBindingThis object MUST NOT contain any properties. Its name is reserved for future use.KafkaMessageBindingThis object contains information about the message representation in Kafka.MQTT5MessageBindingThis object MUST NOT contain any properties. Its name is reserved for future use.MQTTMessageBindingThis object contains information about the message representation in MQTT.MercureMessageBindingThis object MUST NOT contain any properties. Its name is reserved for future use.MessageBindingMap describing protocol-specific definitions for a message.NATSMessageBindingThis object MUST NOT contain any properties. Its name is reserved for future use.RedisMessageBindingThis object MUST NOT contain any properties. Its name is reserved for future use.SNSMessageBindingThis object MUST NOT contain any properties. Its name is reserved for future use.SQSMessageBindingThis object MUST NOT contain any properties. Its name is reserved for future use.STOMPMessageBindingThis object MUST NOT contain any properties. Its name is reserved for future use.SolaceMessageBindingThis object MUST NOT contain any properties. Its name is reserved for future use.WebSocketMessageBindingWhen using WebSockets, the channel represents the connection.
+Unlike other protocols that support multiple virtual channels
+(topics, routing keys, etc.) per connection, WebSockets doesn’t
+support virtual channels or, put it another way, there’s only one channel
+and its characteristics are strongly related to the protocol used for the handshake, i.e., HTTP.
