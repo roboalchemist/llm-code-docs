@@ -1631,3 +1631,6 @@ sites:
 - name: itextsharp
   base_url: https://sourceforge.net/
   description: itextsharp documentation
+- name: pydoc
+  base_url: https://pydoc.io/
+  description: pydoc documentation
