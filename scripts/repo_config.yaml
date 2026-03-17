@@ -2455,3 +2455,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/apache-arrow
   branch: main
+- name: opennmt
+  description: opennmt from GitHub
+  repo_url: https://github.com/OpenNMT/OpenNMT-py.git
+  source_folder: docs
+  target_folder: docs/github-scraped/opennmt
+  branch: main
