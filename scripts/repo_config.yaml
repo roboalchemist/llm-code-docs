@@ -2443,3 +2443,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/docfx
   branch: main
+- name: pandoc
+  description: pandoc from GitHub
+  repo_url: https://github.com/jgm/pandoc.git
+  source_folder: doc
+  target_folder: docs/github-scraped/pandoc
+  branch: main
