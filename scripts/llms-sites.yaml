@@ -1649,3 +1649,6 @@ sites:
 - name: hugging-face-model-hub
   base_url: https://huggingface.co/docs/hub/
   description: hugging-face-model-hub documentation
+- name: pycaret
+  base_url: https://pycaret.gitbook.io/docs/
+  description: pycaret documentation
