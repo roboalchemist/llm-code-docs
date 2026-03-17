@@ -1646,3 +1646,6 @@ sites:
 - name: pytorch-image-models
   base_url: https://huggingface.co/docs/timm/
   description: pytorch-image-models documentation
+- name: hugging-face-model-hub
+  base_url: https://huggingface.co/docs/hub/
+  description: hugging-face-model-hub documentation
