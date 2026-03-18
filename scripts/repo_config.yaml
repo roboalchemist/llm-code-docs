@@ -2503,3 +2503,9 @@ repositories:
   source_folder: docs
   target_folder: docs/github-scraped/autofeat
   branch: main
+- name: neptune
+  description: neptune from GitHub
+  repo_url: https://github.com/neptune-ai/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/neptune
+  branch: main
