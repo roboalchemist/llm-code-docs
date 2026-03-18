@@ -1655,3 +1655,6 @@ sites:
 - name: weights-&-biases
   base_url: https://docs.wandb.ai/
   description: weights-&-biases documentation
+- name: ray-serve
+  base_url: https://rayserve.org/docs/
+  description: ray-serve documentation
