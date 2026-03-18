@@ -1658,3 +1658,6 @@ sites:
 - name: ray-serve
   base_url: https://rayserve.org/docs/
   description: ray-serve documentation
+- name: verta
+  base_url: https://vertana.org/
+  description: verta documentation
