@@ -1,9 +1,121 @@
-# Source: https://valibot.dev/api/Enum.md
+# Source: https://valibot.dev/api/enum.md
 
-# Enum
+# enum
 
-Enum interface.
+Creates an enum schema.
 
-## Definition
+```ts
+const Schema = v.enum<TEnum, TMessage>(enum, message);
+```
 
-- `Enum` <Property {...properties.Enum} />
+## Generics
+
+- `TEnum` <Property {...properties.TEnum} />
+- `TMessage` <Property {...properties.TMessage} />
+
+## Parameters
+
+- `enum` {/* prettier-ignore */}<Property {...properties.enum} />
+- `message` <Property {...properties.message} />
+
+### Explanation
+
+With `enum` you can validate that the input corresponds to an enum option. If the input is invalid, you can use `message` to customize the error message.
+
+## Returns
+
+- `Schema` <Property {...properties.Schema} />
+
+## Examples
+
+The following examples show how `enum` can be used.
+
+### Direction enum
+
+Schema to validate a direction enum option.
+
+```ts
+enum Direction {
+  Left,
+  Right,
+}
+
+const DirectionSchema = v.enum(Direction, 'Invalid direction');
+```
+
+## Related
+
+The following APIs can be combined with `enum`.
+
+### Schemas
+
+<ApiList
+  items={[
+    'array',
+    'exactOptional',
+    'intersect',
+    'lazy',
+    'looseObject',
+    'looseTuple',
+    'map',
+    'nonNullable',
+    'nonNullish',
+    'nonOptional',
+    'nullable',
+    'nullish',
+    'object',
+    'objectWithRest',
+    'optional',
+    'record',
+    'set',
+    'strictObject',
+    'strictTuple',
+    'tuple',
+    'tupleWithRest',
+    'undefinedable',
+    'union',
+  ]}
+/>
+
+### Methods
+
+<ApiList
+  items={[
+    'assert',
+    'config',
+    'fallback',
+    'getDefault',
+    'getDefaults',
+    'getFallback',
+    'getFallbacks',
+    'is',
+    'message',
+    'parse',
+    'parser',
+    'pipe',
+    'safeParse',
+    'safeParser',
+  ]}
+/>
+
+### Actions
+
+<ApiList
+  items={[
+    'check',
+    'brand',
+    'description',
+    'flavor',
+    'guard',
+    'metadata',
+    'rawCheck',
+    'rawTransform',
+    'readonly',
+    'title',
+    'transform',
+  ]}
+/>
+
+### Utils
+
+<ApiList items={['entriesFromList', 'isOfKind', 'isOfType']} />

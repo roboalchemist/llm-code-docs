@@ -1,22 +1,12 @@
-# Source: https://nx.dev/docs/reference/devkit/Migration.md
+# Source: https://nx.dev/docs/technologies/angular/migration.md
 
-Ƭ **Migration**: (`tree`: [`Tree`](/docs/reference/devkit/Tree)) => `void` \| `Promise`\<`void`\> \| `string`[] \| `Promise`\<`string`[]\>
+---
 
-Represents a migration that is executed when running `nx migrate`.
+title: Angular Migration
+sidebar:
+  hidden: true
+description: Migrating Angular applications to Nx
+pagefind: false
+---
 
-Returning a string[] from the migration function will be interpreted as
-a list of next steps to be displayed to the user.
-
-#### Type declaration
-
-▸ (`tree`): `void` \| `Promise`\<`void`\> \| `string`[] \| `Promise`\<`string`[]\>
-
-##### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `tree` | [`Tree`](/docs/reference/devkit/Tree) |
-
-##### Returns
-
-`void` \| `Promise`\<`void`\> \| `string`[] \| `Promise`\<`string`[]\>
+{% index_page_cards path="technologies/angular/migration" /%}

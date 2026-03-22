@@ -1,12 +1,12 @@
-# Source: https://vueflow.dev/typedocs/type-aliases/DefaultNodeTypes.md
+# Source: https://vueflow.dev/typedocs/variables/defaultNodeTypes.md
 
 ---
-url: /typedocs/type-aliases/DefaultNodeTypes.md
+url: /typedocs/variables/defaultNodeTypes.md
 ---
 [**@vue-flow/monorepo**](../index.md) • **Docs**
 
 ***
 
-# Type Alias: DefaultNodeTypes
+# Variable: defaultNodeTypes
 
-> **DefaultNodeTypes**: { \[key in "input" | "output" | "default"]: NodeComponent }
+> `const` **defaultNodeTypes**: [`DefaultNodeTypes`](../type-aliases/DefaultNodeTypes.md)

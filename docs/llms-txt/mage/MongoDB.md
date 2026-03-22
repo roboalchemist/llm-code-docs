@@ -1,4 +1,10 @@
-# Source: https://docs.mage.ai/integrations/databases/MongoDB.md
+# Source: https://docs.mage.ai/guides/streaming/sources/mongodb.md
+
+# Source: https://docs.mage.ai/guides/streaming/destinations/mongodb.md
+
+# Source: https://docs.mage.ai/data-integrations/sources/mongodb.md
+
+# Source: https://docs.mage.ai/data-integrations/destinations/mongodb.md
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.mage.ai/llms.txt
@@ -6,93 +12,48 @@
 
 # MongoDB
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MongoDB_Logo.svg/2560px-MongoDB_Logo.svg.png)
+> How to configure MongoDB as a destination in Mage to write data to a MongoDB database using a connection string.
 
-## Add credentials
+## Overview
 
-1. Create a new pipeline or open an existing pipeline.
-2. Expand the left side of your screen to view the file browser.
-3. Scroll down and click on a file named `io_config.yaml`.
-4. Enter the following keys and values under the key named `default` (you can
-   have multiple profiles, add it under whichever is relevant to you)
+Use **MongoDB** as a destination in Mage to export records from your pipelines directly into a MongoDB collection. This is ideal for persisting semi-structured JSON data, powering APIs, or integrating with operational data systems.
+
+Each record from your pipeline will be inserted as a document in the specified MongoDB collection. If no collection name is provided, Mage will default to using the stream name as the collection name.
+
+***
+
+## Configuration Parameters
+
+| Key                 | Description                                                                                   | Example Value                          | Required |
+| ------------------- | --------------------------------------------------------------------------------------------- | -------------------------------------- | -------- |
+| `connection_string` | MongoDB connection URI string, including hostname and port.                                   | `mongodb://mongodb0.example.com:27017` | ✅        |
+| `db_name`           | Name of the MongoDB database where documents will be stored.                                  | `admin`                                | ✅        |
+| `table_name`        | *(Optional)* Name of the MongoDB collection to write to. If omitted, the stream name is used. | `user_profiles`                        | ❌        |
+
+***
+
+## Notes
+
+* The `connection_string` should include any authentication, cluster details, or replica set info as needed (e.g., `mongodb+srv://user:pass@cluster0.mongodb.net/`).
+* If `table_name` is not set, Mage automatically uses the name of the stream that produced the data.
+* Mage inserts each record as a single MongoDB document in the target collection.
+
+***
+
+## Example Configuration
 
 ```yaml  theme={"system"}
-version: 0.1.1
-default:
-  # Specify either the connection string or the (host, password, user, port) to connect to MongoDB.
-  MONGODB_CONNECTION_STRING: "mongodb://{username}:{password}@{host}:{port}/"
-  MONGODB_HOST: host
-  MONGODB_PORT: 27017
-  MONGODB_USER: user
-  MONGODB_PASSWORD: password
-  MONGODB_DATABASE: database
-  MONGODB_COLLECTION: collection
+connection_string: mongodb://mongodb0.example.com:27017
+db_name: analytics
 ```
 
-<br />
+***
 
-## Using Python block
+## Related Resources
 
-1. Create a new pipeline or open an existing pipeline.
-2. Add a data loader, transformer, or data exporter block (the code snippet
-   below is for a data loader).
-3. Select `Generic (no template)`.
-4. Enter this code snippet (note: change the `config_profile` from `default` if
-   you have a different profile):
-
-```python  theme={"system"}
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.mongodb import MongoDB
-from os import path
-if 'data_loader' not in globals():
-    from mage_ai.data_preparation.decorators import data_loader
-if 'test' not in globals():
-    from mage_ai.data_preparation.decorators import test
-
-
-@data_loader
-def load_from_mongodb(*args, **kwargs):
-    config_path = path.join(get_repo_path(), 'io_config.yaml')
-    config_profile = 'default'
-
-    query = {}
-
-    return MongoDB.with_config(ConfigFileLoader(config_path, config_profile)).load(
-        query=query,
-        collection='collection_name',
-    )
-```
-
-5. Run the block.
-
-### Export a dataframe
-
-Here is an example code snippet to export a dataframe to MongoDB:
-
-```python  theme={"system"}
-from os import path
-
-from pandas import DataFrame
-
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.mongodb import MongoDB
-
-if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
-
-
-@data_exporter
-def export_data_to_mongodb(df: DataFrame, **kwargs) -> None:
-    config_path = path.join(get_repo_path(), 'io_config.yaml')
-    config_profile = 'default'
-
-    MongoDB.with_config(ConfigFileLoader(config_path, config_profile)).export(
-        df,
-        collection='collection_name',
-    )
-```
+* [MongoDB Connection String URI Format](https://www.mongodb.com/docs/manual/reference/connection-string/)
+* [MongoDB Python Driver (`pymongo`)](https://pymongo.readthedocs.io/en/stable/)
+* [MongoDB Collections vs Tables](https://www.mongodb.com/docs/manual/core/databases-and-collections/)
 
 
 Built with [Mintlify](https://mintlify.com).

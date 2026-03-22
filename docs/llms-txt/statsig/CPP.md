@@ -1,219 +1,141 @@
-# Source: https://docs.statsig.com/client/CPP.md
+# Source: https://docs.statsig.com/server/cpp.md
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.statsig.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# C++ Client SDK
+# C++ Server SDK
 
-> Statsig's SDK for Experimentation and Feature Flags in C++ applications.
+> Statsig's Server SDK for C++ applications
 
-<Callout icon="github">
-  Source code: <a href="https://github.com/statsig-io/cpp-client-sdk" target="_blank" rel="noreferrer">statsig-io/cpp-client-sdk</a>
-</Callout>
+<Card title="GitHub Repository" icon="github" href="https://github.com/statsig-io/cpp-server-sdk">
+  View the C++ SDK source code and releases
+</Card>
 
-## Set Up the SDK
+## Setup the SDK
 
 <Steps>
   <Step title="Install the SDK">
-    <Tabs>
-      <Tab title="Downloaded From GitHub">
-        ```cpp  theme={null}
-        add_subdirectory(path/to/downloaded/statsig_sdk)
-        target_link_libraries(${PROJECT_NAME} StatsigClientSDK)
-        ```
-      </Tab>
+    If you are using CMake, add the following to a `.cmake` file
 
-      <Tab title="FetchContent">
-        ```cpp  theme={null}
-        include(FetchContent)
+    ```cmake  theme={null}
+    FetchContent_Declare(statsig
+            GIT_REPOSITORY    https://github.com/statsig-io/cpp-server-sdk.git
+            GIT_TAG           v0.1.0
+    )
 
-        FetchContent_Declare(statsig
-          GIT_REPOSITORY    https://github.com/statsig-io/cpp-client-sdk.git
-          GIT_TAG           main
-        )
-        FetchContent_MakeAvailable(statsig)
+    FetchContent_MakeAvailable(statsig)
+    ```
 
-        target_link_libraries(${PROJECT_NAME} StatsigClientSDK)
-        ```
-      </Tab>
-    </Tabs>
+    And include the following in your `CMakeLists.txt` file
+
+    ```cmake  theme={null}
+    cmake_minimum_required(VERSION 3.11)
+
+    include(FetchContent)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/statsig.cmake)
+    ```
+
+    Check out the latest versions on [https://github.com/statsig-io/cpp-server-sdk/releases/latest](https://github.com/statsig-io/cpp-server-sdk/releases/latest)
   </Step>
 
   <Step title="Initialize the SDK">
-    Next, initialize the SDK with a client SDK key from the ["API Keys" tab on the Statsig console](https://console.statsig.com/api_keys). These keys are safe to embed in a client application.
+    After installation, you will need to initialize the SDK using a [Server Secret Key from the Statsig console](https://console.statsig.com/api_keys).
 
-    Along with the key, pass in a [User Object](#statsig-user) with the attributes you'd like to target later on in a gate or experiment.
-
-    ```cpp  theme={null}
-    #include <statsig/statsig.h>
-
-    using namespace statsig;
-
-    StatsigUser user;
-    user.user_id = "a-user";
-    user.custom_ids = {
-        {"employeeID", "an-employee"}
-    };
-
-    // Create your own instance
-    StatsigClient client;
-
-    // Initialize synchronously using cached values from the previous session
-    client.InitializeSync("client-{YOUR_CLIENT_SDK_KEY}", user);
-
-    // or, Initialize asynchronously from network
-    client.InitializeAsync(
-        "client-{YOUR_CLIENT_SDK_KEY}",
-        [](StatsigResultCode result) {
-            // completion callback
-        },
-        user
-    );
-    ```
-
-    **Synchronous** initialization will leverage cache (if available), returning immediately.
-    Data for subsequent sessions will then be fetched in the background.
-
-    **Asynchronous** initialization, on the other hand provides a callback, allowing you to wait for the most
-    current data to be fetched.
-
-    For convenience, there is also a singleton instance that can be accessed via `StatsigClient::Shared()`.
+    <Warning>
+      Do NOT embed your Server Secret Key in client-side applications, or expose it in any external-facing documents. However, if you accidentally expose it, you can create a new one in the Statsig console.
+    </Warning>
 
     ```cpp  theme={null}
-    // Initialize synchronously using cached values from the previous session
-    StatsigClient::Shared().InitializeSync("client-{YOUR_CLIENT_SDK_KEY}", user);
+    #include <statsig.h>
 
-    // or, Initialize asynchronously from network
-    StatsigClient::Shared().InitializeAsync(
-        "client-{YOUR_CLIENT_SDK_KEY}",
-        [](StatsigResultCode result) {
-            // completion callback
-        },
-        user
-    );
+    statsig::initialize('server-secret-key');
+
+    // Or, if you want to initialize with certain options
+    statsig::Options options;
+    options.localMode = true
+    statsig::initialize('server-secret-key', options)
     ```
 
-    **Optional** - Configuration via StatsigOptions
-
-    It is possible to adjust certain aspects of how the SDK works via a [StatsigOptions](#statsig-options) struct.
-    Just pass in a StatsigOptions struct during initialization.
-
-    ```cpp  theme={null}
-    StatsigOptions options;
-    options.environment = StatsigEnvironment{"staging"};
-
-    client.InitializeSync(..., options);
-
-    // or
-
-    client.InitializeAsync(..., options);
-    ```
+    `initialize` will perform a network request. After `initialize` completes, virtually all SDK operations will be synchronous (See [Evaluating Feature Gates in the Statsig SDK](https://blog.statsig.com/evaluating-feature-gates-in-the-statsig-sdk-a6f8881a1ad8)). The SDK will fetch updates from Statsig in the background, independently of your API calls.
   </Step>
 </Steps>
 
-## Use the SDK
+## Working with the SDK
 
-### Checking a Feature Flag/Gate
+## Checking a Feature Flag/Gate
 
-Now that your SDK is initialized, let's check a [**Feature Gate**](/feature-flags/overview). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
+Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-flags/overview). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
+
+From this point on, all APIs will require you to specify the user (see [Statsig user](#statsig-user)) associated with the request. For example, check a gate for a certain user like this:
 
 ```cpp  theme={null}
-if (client.CheckGate("a_gate")) {
-  // show new feature
+statsig::User user;
+user.userID = "some_user_id"
+if (statsig::checkGate(user, 'use_new_feature'))
+{
+  // Gate is on, enable new feature
 }
-
-// or, use the shared instance
-
-if (StatsigClient::Shared().CheckGate("a_gate")) {
-  // show new feature
+else {
+  // Gate is off
 }
 ```
 
-### Reading a Dynamic Config
+## Reading a Dynamic Config
 
-Feature Gates can be very useful for simple on/off switches, with optional but advanced user targeting. However, if you want to be able send a different set of values (strings, numbers, and etc.) to your clients based on specific user attributes, e.g. country, **Dynamic Configs** can help you with that. The API is very similar to Feature Gates, but you get an entire json object you can configure on the server and you can fetch typed parameters from it. For example:
+Feature Gates can be very useful for simple on/off switches, with optional but advanced user targeting. However, if you want to be able send a different set of values (strings, numbers, and etc.) to your clients based on specific user attributes, e.g. country, [**Dynamic Configs**](/dynamic-config) can help you with that. The API is very similar to Feature Gates, but you get an entire json object you can configure on the server and you can fetch typed parameters from it.
 
 ```cpp  theme={null}
-DynamicConfig config = client.GetDynamicConfig("a_config");
+statsig::DynamicConfig config = statsig::get_config(user, 'awesome_product_details')
 
-// or, use the shared instance
-
-DynamicConfig config = StatsigClient::Shared().GetDynamicConfig("a_config");
-
-// then access the params
-std::cout << config.GetValue()["a_string_param"] << std::endl;
+auto item_name = config.value['product_name'];
+auto price = config.value['price'];
+auto shouldDiscount = config.value['discount'];
 ```
 
-<Info>
-  DynamicConfig.GetValue returns JsonObj which is an unordered map of string to `nlohmann/json`. See [https://github.com/nlohmann/json](https://github.com/nlohmann/json)
-</Info>
-
-### Getting a Layer/Experiment
+## Getting a Layer/Experiment
 
 Then we have **Layers/Experiments**, which you can use to run A/B/n experiments. We offer two APIs, but we recommend the use of [layers](/layers) to enable quicker iterations with parameter reuse.
 
 ```cpp  theme={null}
 // Values via getLayer
 
-Layer layer = StatsigClient::Shared().GetLayer("name");
-std::string promoTitle = layer.GetValue("title").get<std::string>();
-double discount = layer.GetValue("discount").get<double>();
+statsig::Layer layer = statsig::getLayer(user, "user_promo_experiments")
+auto title = layer.get("title", "Welcome to Statsig!")
+auto discount = layer.get("discount")
 
 // or, via getExperiment
 
-Experiment titleExperiment = StatsigClient::Shared().GetExperiment("new_user_promo_title");
-Experiment priceExperiment = StatsigClient::Shared().GetExperiment("new_user_promo_price");
+statsig::DynamicConfig title_exp = statsig::getExperiment(user, "new_user_promo_title")
+statsig::DynamicConfig price_exp = statsig::getExperiment(user, "new_user_promo_price")
 
-std::string promoTitle = titleExperiment.GetValue()["title"].get<std::string>();
-double discount = priceExperiment.GetValue()["discount"].get<double>();
+title = title_exp.value["title"]
+discount = price_exp.value["discount"]
+
+...
+
+price = msrp * (1 - discount)
+
+
 ```
 
-<Info>
-  Layer.GetValue and Experiment.GetValue return JsonObj which are unordered maps of string to `nlohmann/json`. See [https://github.com/nlohmann/json](https://github.com/nlohmann/json)
-</Info>
+## Logging an Event
 
-### Logging an Event
-
-Now that you have a Feature Gate or an Experiment set up, you may want to track some custom events and see how your new features or different experiment groups affect these events. This is super easy with Statsig - simply call the Log Event API for the event, and you can additionally provide some value and/or an object of metadata to be logged together with the event:
+Now that you have a Feature Gate or an Experiment set up, you may want to track some custom events and see how your new features or different experiment groups affect these events. This is super easy with Statsig - simply call the Log Event API and specify the user and event name to log; you additionally provide some value and/or an object of metadata to be logged together with the event:
 
 ```cpp  theme={null}
-std::unordered_map<std::string, std::string> metadata{
-    { "price", "9.99" },
-    { "item_name", "some_great_product" }
-};
-
-StatsigEvent event("add_to_cart", "SKU_12345", metadata);
-StatsigClient::Shared().LogEvent(event);
-
-// Then, at some point later, you need to "flush" the events
-StatsigClient::Shared().Flush();
+statsig::logEvent(user, 'add_to_cart')
 ```
+
+Learn more about identifying users, group analytics, and best practices for logging events in the [logging events guide](/guides/logging-events).
 
 ## Statsig User
 
-You need to provide a StatsigUser object to check/get your configurations. You should pass as much
-information as possible in order to take advantage of advanced gate and config conditions.
+When calling APIs that require a user, you should pass as much information as possible in order to take advantage of advanced gate and config conditions (like country or OS/browser level checks), and correctly measure impact of your experiments on your metrics/events. As explained [here](/sdks/user#why-is-an-id-always-required-for-server-sdks), at least one identifier (userID or customID) is required to provide a consistent experience for a given user.
 
-Most of the time, the `userID` field is needed in order to provide a consistent experience for a given
-user (see [logged-out experiments](/guides/first-device-level-experiment) to understand how to correctly run experiments for logged-out
-users).
+Besides `userID`, we also have `email`, `ip`, `userAgent`, `country`, `locale` and `appVersion` as top-level fields on StatsigUser. In addition, you can pass any key-value pairs in an object/dictionary to the `custom` field and be able to create targeting based on them.
 
-Besides `userID`, we also have `email`, `ip`, `userAgent`, `country`, `locale` and `appVersion` as top-level fields on
-StatsigUser. In addition, you can pass any key-value pairs in an object/dictionary to the `custom` field and be able to
-create targeting based on them.
-
-Once the user logs in or has an update/changed, make sure to call `updateUser`
-with the updated `userID` and/or any other updated user attributes:
-
-```cpp  theme={null}
-StatsigUser user;
-user.user_id = "a-user";
-user.email = "developer@statsig.com";
-user.custom_ids = {
-    {"employeeID", "an-employee"}
-};
-```
+Note that while typing is lenient on the `StatsigUser` object to allow you to pass in numbers, strings, arrays, objects, and potentially even enums or classes, the evaluation operators will only be able to operate on primitive types - mostly strings and numbers. While we attempt to smartly cast custom field types to match the operator, we cannot guarantee evaluation results for other types. For example, setting an array as a custom field will only ever be compared as a string - there is no operator to match a value in that array.
 
 ### Private Attributes
 
@@ -221,67 +143,108 @@ Have sensitive user PII data that should not be logged? No problem, we have a so
 
 For example, if you have feature gates that should only pass for users with emails ending in "@statsig.com", but do not want to log your users' email addresses to Statsig, you can simply add the key-value pair `{ email: "my_user@statsig.com" }` to `privateAttributes` on the user and that's it!
 
-### Updating Users
-
-At some point, your user might need to change. To make Statsig aware of this new user, you will need to make a call to an UpdateUser function.
-
-```cpp  theme={null}
-client.UpdateUserSync(user);
-
-// or, use the shared instance
-
-StatsigClient::Shared().UpdateUserSync(user);
-```
-
-If you want to ensure you have the latest values for an update (Say you are transition from logged out to logged in). You can use the Asynchronous update function.
-
-```cpp  theme={null}
-{client or StatsigClient::Shared()}.UpdateUserAsync(
-    user,
-    [](StatsigResultCode result) {
-        if (result == StatsigResultCode::Ok) {
-          // do something now that the latest values have been fetched
-        } else {
-          // error state
-        }
-    }
-);
-```
-
-Asynchronous vs Synchronous behaviors are the same as the Initialize functions.
-
 ## Statsig Options
 
-`StatsigClient::Initialize`, in addition to `sdk_key` and `user`, takes an optional parameter `options` that you can provide to customize the StatsigClient. Here are the current options and we are always adding more to the list:
+`initialize()` takes an optional parameter `options` in addition to the secret key that you can provide to customize the Statsig client. Here are the current options and we are always adding more to the list:
 
-<ResponseField name="api" type="std::string" default="https://statsigapi.net">
-  The API to use for all SDK network requests. You should not need to override this unless you have another API that implements the Statsig API endpoints.
-</ResponseField>
+You can specify optional parameters with `options` when initializing.
 
-<ResponseField name="providers" type="EvaluationsDataProvider" default="LocalFileCache then Network">
-  Array of EvaluationsDataProvider, used to customize the initialization and update behavior.
-</ResponseField>
+* **api** string, default `"https://statsigapi.net/v1"`
+  * The base url to use for network requests from the SDK
+* **rulesetsSyncIntervalMs**: int, default `10000`
+  * The interval to poll for changes to your gate and config definition changes
+* **loggingIntervalMs**: int, default `60000`
+  * The default interval to flush logs to Statsig servers
+* **loggingMaxBufferSize**: int, default `1000`, can be set lower but anything over 1000 will be dropped on the server
+  * The maximum number of events to batch before flushing logs to the server
+* **localMode**: bool, default `false`
+  * Restricts the SDK to not issue any network requests and only respond with default values (or local overrides)
 
-## Lifecycle & Advanced Usage
+<Info>
+  ID Lists are currently not supported in the C++ server SDK
+</Info>
 
-## Shutting Statsig Down
+## Shutdown
 
-In order to save users' data and battery usage, as well as prevent logged events from being dropped, we keep event logs in client cache and flush periodically.
-Because of this, some events may not have been sent when your app shuts down.
-
-To make sure all logged events are properly flushed or saved locally, you should tell Statsig to shutdown when your app is closing:
+To gracefully shutdown the SDK and ensure all events are flushed:
 
 ```cpp  theme={null}
-client.Shutdown();
-
-// or, use the shared instance
-
-StatsigClient::Shared().Shutdown();
+statsig::shutdown()
 ```
 
-#### How do I run experiments for logged out users?​
+## Local Overrides
+
+You can override the values returned by the SDK for testing purposes. This can be useful for local development when you want to test specific scenarios.
+
+```cpp  theme={null}
+// Adding gate overrides
+statsig::overrideGate("a_gate_name", true)
+
+// Adding config overrides
+std::unordered_map<std::string, JSON::any> overrideValue = {
+    {"overridden key", "overridden field"},
+};
+statsig::overrideConfig("a_config_name", overrideValue)
+```
+
+## FAQ
+
+#### How do I run experiments for logged out users?
 
 See the guide on [device level experiments](/guides/first-device-level-experiment)
+
+## Reference
+
+### User
+
+```cpp  theme={null}
+struct User
+{
+  std::string userID;
+  std::string email;
+  std::string ipAddress;
+  std::string userAgent;
+  std::string country;
+  std::string locale;
+  std::string appVersion;
+  std::unordered_map<std::string, JSON::any> custom;
+  std::unordered_map<std::string, JSON::any> privateAttribute;
+  std::unordered_map<std::string, std::string> statsigEnvironment;
+  std::unordered_map<std::string, std::string> customIDs;
+};
+inline bool operator==(User const &a, User const &b)
+{
+  return a.userID == b.userID &&
+          a.email == b.email &&
+          a.ipAddress == b.ipAddress &&
+          a.userAgent == b.userAgent &&
+          a.country == b.country &&
+          a.locale == b.locale &&
+          a.appVersion == b.appVersion &&
+          a.custom == b.custom &&
+          a.privateAttribute == b.privateAttribute &&
+          a.statsigEnvironment == b.statsigEnvironment &&
+          a.customIDs == b.customIDs;
+};
+```
+
+### Options
+
+```cpp  theme={null}
+struct Options
+{
+  std::string api;
+  bool localMode;
+  int rulesetsSyncIntervalMs;
+  int loggingIntervalMs;
+  int loggingMaxBufferSize;
+  Options() : api("https://statsigapi.net"),
+              localMode(false),
+              rulesetsSyncIntervalMs(10 * 1000),
+              loggingIntervalMs(60 * 1000),
+              loggingMaxBufferSize(1000){};
+};
+```
 
 
 Built with [Mintlify](https://mintlify.com).

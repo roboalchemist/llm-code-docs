@@ -1,45 +1,198 @@
-# Source: https://clickhouse.ferndocs.com/reference/interfaces/formats/Values.md
+# Source: https://clickhouse.ferndocs.com/reference/sql-reference/table-functions/values.md
 
 ---
-alias: []
-description: Documentation for the Values format
-input_format: true
+description: creates a temporary storage which fills columns with values.
 keywords:
-  - Values
-output_format: true
-slug: /interfaces/formats/Values
-title: >-
-  Values <Badge intent="success">Input</Badge> <Badge
-  intent="success">Output</Badge>
-doc_type: guide
+  - values
+  - table function
+sidebar_label: values
+sidebar_position: 210
+slug: /sql-reference/table-functions/values
+title: values
+doc_type: reference
 ---
 
-## Description [#description]
+The `Values` table function allows you to create temporary storage which fills 
+columns with values. It is useful for quick testing or generating sample data.
 
-The `Values` format prints every row in brackets. 
+<Note>
+Values is a case-insensitive function. I.e. `VALUES` or `values` are both valid.
+</Note>
 
-- Rows are separated by commas without a comma after the last row. 
-- The values inside the brackets are also comma-separated. 
-- Numbers are output in a decimal format without quotes. 
-- Arrays are output in square brackets. 
-- Strings, dates, and dates with times are output in quotes. 
-- Escaping rules and parsing are similar to the [TabSeparated](/reference/interfaces/formats/TabSeparated) format.
+## Syntax [#syntax]
 
-During formatting, extra spaces aren't inserted, but during parsing, they are allowed and skipped (except for spaces inside array values, which are not allowed). 
-[`NULL`](/sql-reference/syntax.md) is represented as `NULL`.
+The basic syntax of the `VALUES` table function is:
 
-The minimum set of characters that you need to escape when passing data in the `Values` format: 
-- single quotes
-- backslashes
+```sql
+VALUES([structure,] values...)
+```
 
-This is the format that is used in `INSERT INTO t VALUES ...`, but you can also use it for formatting query results.
+It is commonly used as:
 
-## Example usage [#example-usage]
+```sql
+VALUES(
+    ['column1_name Type1, column2_name Type2, ...'],
+    (value1_row1, value2_row1, ...),
+    (value1_row2, value2_row2, ...),
+    ...
+)
+```
 
-## Format settings [#format-settings]
+## Arguments [#arguments]
 
-| Setting                                                                                                                                                     | Description                                                                                                                                                                                   | Default |
-|-------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
-| [`input_format_values_interpret_expressions`](../../operations/settings/settings-formats.md/#input_format_values_interpret_expressions)                     | if the field could not be parsed by streaming parser, run SQL parser and try to interpret it as SQL expression.                                                                               | `true`  |
-| [`input_format_values_deduce_templates_of_expressions`](../../operations/settings/settings-formats.md/#input_format_values_deduce_templates_of_expressions) | if the field could not be parsed by streaming parser, run SQL parser, deduce template of the SQL expression, try to parse all rows using template and then interpret expression for all rows. | `true`  |
-| [`input_format_values_accurate_types_of_literals`](../../operations/settings/settings-formats.md/#input_format_values_accurate_types_of_literals)           | when parsing and interpreting expressions using template, check actual type of literal to avoid possible overflow and precision issues.                                                       | `true`  |
+- `column1_name Type1, ...` (optional). [String](/sql-reference/data-types/string) 
+  specifying the column names and types. If this argument is omitted columns will
+  be named as `c1`, `c2`, etc.
+- `(value1_row1, value2_row1)`. [Tuples](/sql-reference/data-types/tuple) 
+   containing values of any type.
+
+<Note>
+Comma separated tuples can be replaced by single values as well. In this case
+each value is taken to be a new row. See the [examples](#examples) section for
+details.
+</Note>
+
+## Returned value [#returned-value]
+
+- Returns a temporary table containing the provided values.
+
+## Examples [#examples]
+
+```sql title="Query"
+SELECT *
+FROM VALUES(
+    'person String, place String',
+    ('Noah', 'Paris'),
+    ('Emma', 'Tokyo'),
+    ('Liam', 'Sydney'),
+    ('Olivia', 'Berlin'),
+    ('Ilya', 'London'),
+    ('Sophia', 'London'),
+    ('Jackson', 'Madrid'),
+    ('Alexey', 'Amsterdam'),
+    ('Mason', 'Venice'),
+    ('Isabella', 'Prague')
+)
+```
+
+```response title="Response"
+    ┌─person───┬─place─────┐
+ 1. │ Noah     │ Paris     │
+ 2. │ Emma     │ Tokyo     │
+ 3. │ Liam     │ Sydney    │
+ 4. │ Olivia   │ Berlin    │
+ 5. │ Ilya     │ London    │
+ 6. │ Sophia   │ London    │
+ 7. │ Jackson  │ Madrid    │
+ 8. │ Alexey   │ Amsterdam │
+ 9. │ Mason    │ Venice    │
+10. │ Isabella │ Prague    │
+    └──────────┴───────────┘
+```
+
+`VALUES` can also be used with single values rather than tuples. For example:
+
+```sql title="Query"
+SELECT *
+FROM VALUES(
+    'person String',
+    'Noah',
+    'Emma',
+    'Liam',
+    'Olivia',
+    'Ilya',
+    'Sophia',
+    'Jackson',
+    'Alexey',
+    'Mason',
+    'Isabella'
+)
+```
+
+```response title="Response"
+    ┌─person───┐
+ 1. │ Noah     │
+ 2. │ Emma     │
+ 3. │ Liam     │
+ 4. │ Olivia   │
+ 5. │ Ilya     │
+ 6. │ Sophia   │
+ 7. │ Jackson  │
+ 8. │ Alexey   │
+ 9. │ Mason    │
+10. │ Isabella │
+    └──────────┘
+```
+
+Or without providing a row specification (`'column1_name Type1, column2_name Type2, ...'`
+in the [syntax](#syntax)), in which case the columns are automatically named. 
+
+For example:
+
+```sql title="Query"
+-- tuples as values
+SELECT *
+FROM VALUES(
+    ('Noah', 'Paris'),
+    ('Emma', 'Tokyo'),
+    ('Liam', 'Sydney'),
+    ('Olivia', 'Berlin'),
+    ('Ilya', 'London'),
+    ('Sophia', 'London'),
+    ('Jackson', 'Madrid'),
+    ('Alexey', 'Amsterdam'),
+    ('Mason', 'Venice'),
+    ('Isabella', 'Prague')
+)
+```
+
+```response title="Response"
+    ┌─c1───────┬─c2────────┐
+ 1. │ Noah     │ Paris     │
+ 2. │ Emma     │ Tokyo     │
+ 3. │ Liam     │ Sydney    │
+ 4. │ Olivia   │ Berlin    │
+ 5. │ Ilya     │ London    │
+ 6. │ Sophia   │ London    │
+ 7. │ Jackson  │ Madrid    │
+ 8. │ Alexey   │ Amsterdam │
+ 9. │ Mason    │ Venice    │
+10. │ Isabella │ Prague    │
+    └──────────┴───────────┘
+```   
+
+```sql
+-- single values
+SELECT *
+FROM VALUES(
+    'Noah',
+    'Emma',
+    'Liam',
+    'Olivia',
+    'Ilya',
+    'Sophia',
+    'Jackson',
+    'Alexey',
+    'Mason',
+    'Isabella'
+)
+```
+
+```response title="Response"
+    ┌─c1───────┐
+ 1. │ Noah     │
+ 2. │ Emma     │
+ 3. │ Liam     │
+ 4. │ Olivia   │
+ 5. │ Ilya     │
+ 6. │ Sophia   │
+ 7. │ Jackson  │
+ 8. │ Alexey   │
+ 9. │ Mason    │
+10. │ Isabella │
+    └──────────┘
+```
+
+## See also [#see-also]
+
+- [Values format](/interfaces/formats/Values)

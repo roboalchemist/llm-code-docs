@@ -1,4 +1,8 @@
-# Source: https://docs.mage.ai/integrations/databases/BigQuery.md
+# Source: https://docs.mage.ai/guides/streaming/destinations/bigquery.md
+
+# Source: https://docs.mage.ai/data-integrations/sources/bigquery.md
+
+# Source: https://docs.mage.ai/data-integrations/destinations/bigquery.md
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.mage.ai/llms.txt
@@ -6,164 +10,86 @@
 
 # BigQuery
 
-<img alt="" src="https://www.vectorlogo.zone/logos/google_bigquery/google_bigquery-ar21.svg" height="200" />
+> How to configure BigQuery as a destination in Mage for loading data into your Google Cloud BigQuery datasets.
 
-## Add credentials
+Use **BigQuery** as a Mage destination to load structured data into Google Cloud’s fully-managed, serverless data warehouse.
 
-<Snippet file="google-auth.mdx" />
+***
 
-## Required permissions
+## Configuration Parameters
 
+When configuring BigQuery as a destination, provide the following parameters:
+
+| Key                             | Description                                                                                                                                                                   | Example Value               | Required |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- | -------- |
+| `path_to_credentials_json_file` | Absolute path to your Google Cloud service account credentials file (JSON). If Mage is running on a GCP instance, leave this as `null` to use the instance's service account. | `/path/to/credentials.json` | ✅        |
+| `project_id`                    | The GCP project ID where your BigQuery dataset exists.                                                                                                                        | `example_project`           | ✅        |
+| `dataset`                       | Name of the BigQuery dataset where data will be written.                                                                                                                      | `example_dataset`           | ✅        |
+| `location`                      | (Optional) The region of your BigQuery dataset. If not set, BigQuery may infer it automatically.                                                                              | `us-west1`                  | ❌        |
+| `disable_update_column_types`   | If `false`, Mage will alter existing BigQuery column types to match the schema when necessary. If `true`, existing types will not be modified.                                | `false` (default)           | ❌        |
+| `use_batch_load`                | Use BigQuery **load jobs** instead of the streaming API. Recommended for better performance and cost efficiency.                                                              | `true` (default)            | ❌        |
+| `credentials_info`              | Alternative to `path_to_credentials_json_file`. Directly embed your credentials JSON as a dictionary (useful for environment-based configs).                                  | See structure below         | ❌        |
+
+### `credentials_info` Structure
+
+If you're passing credentials inline instead of a path, structure it like this:
+
+```yaml  theme={"system"}
+auth_provider_x509_cert_url: str
+auth_uri: str
+client_email: str
+client_id: str
+client_x509_cert_url: str
+private_key: str
+private_key_id: str
+project_id: str
+token_uri: str
+type: str
 ```
+
+***
+
+## Optional Configuration
+
+| Key                    | Description                                                                                                                                                         | Example Value | Default |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------- |
+| `skip_schema_creation` | If `true`, Mage will **not** run a `CREATE SCHEMA` command. Useful if the schema already exists. See [issue #3416](https://github.com/mage-ai/mage-ai/issues/3416). | `true`        | `false` |
+| `lower_case`           | If `true`, column names will be automatically converted to lowercase before writing to BigQuery.                                                                    | `true`        | `true`  |
+
+## Mage Pro Features
+
+The following features are available only in [**Mage Pro**](https://cloud.mage.ai):
+
+### Advanced Configuration (Mage Pro only)
+
+| Key                                     | Description                                                                                                                        | Default |
+| --------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `truncate_table_before_full_table_sync` | If `true`, Mage will truncate (empty) the destination table before performing a full table sync. This ensures no old data remains. | `false` |
+
+***
+
+## Required Permissions
+
+Your GCP service account or user must have the following permissions to use BigQuery as a destination:
+
+```text  theme={"system"}
 bigquery.datasets.create
-bigquery.datasets.get
 bigquery.jobs.create
 bigquery.readsessions.create
 bigquery.readsessions.getData
-bigquery.tables.create
 ```
 
-If you're running queries in the existing BigQuery dataset, make sure your account also have "BigQuery Data Editor"
-role for the BigQuery dataset.
+Additionally, the account must have the **BigQuery Data Editor** role on the target dataset:
 
-## Using SQL blocks
+* Role: `roles/bigquery.dataEditor`
 
-1. Create a new pipeline or open an existing pipeline.
-2. Add a data loader, transformer, or data exporter block.
-3. Select `SQL`.
-4. Under the `Data provider` dropdown, select `BigQuery`.
-5. Under the `Profile` dropdown, select `default` (or the profile you added
-   credentials underneath).
-6. Next to the `Database` label, enter the database name you want this block to
-   save data to.
-7. Next to the `Save to schema` label, enter the schema name you want this block
-   to save data to.
-8. Under the `Write policy` dropdown, select `Replace` or `Append` (please see
-   [SQL blocks guide](/guides/blocks/sql-blocks)
-   for more information on write policies).
-9. Enter in this test query: `SELECT 1`.
-10. Run the block.
+***
 
-## Using Python blocks
+## Related Resources
 
-1. Create a new pipeline or open an existing pipeline.
-2. Add a data loader, transformer, or data exporter block (the code snippet
-   below is for a data loader).
-3. Select `Generic (no template)`.
-4. Enter this code snippet (note: change the `config_profile` from `default` if
-   you have a different profile):
-
-```python  theme={"system"}
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.bigquery import BigQuery
-from mage_ai.io.config import ConfigFileLoader
-from os import path
-from pandas import DataFrame
-
-if 'data_loader' not in globals():
-    from mage_ai.data_preparation.decorators import data_loader
-
-
-@data_loader
-def load_data_from_big_query(**kwargs) -> DataFrame:
-    query = 'SELECT 1'
-    config_path = path.join(get_repo_path(), 'io_config.yaml')
-    config_profile = 'default'
-
-    return BigQuery.with_config(ConfigFileLoader(config_path, config_profile)).load(query)
-```
-
-5. Run the block.
-
-### Export a dataframe
-
-Here is an example code snippet to export a dataframe to BigQuery:
-
-```python  theme={"system"}
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.bigquery import BigQuery
-from mage_ai.io.config import ConfigFileLoader
-from pandas import DataFrame
-from os import path
-
-if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
-
-
-@data_exporter
-def export_data_to_big_query(df: DataFrame, **kwargs) -> None:
-    """
-    Template for exporting data to a BigQuery warehouse.
-    Specify your configuration settings in 'io_config.yaml'.
-
-    Docs: https://docs.mage.ai/design/data-loading#bigquery
-    """
-    table_id = 'your-project.your_dataset.your_table_name'
-    config_path = path.join(get_repo_path(), 'io_config.yaml')
-    config_profile = 'default'
-
-    BigQuery.with_config(ConfigFileLoader(config_path, config_profile)).export(
-        df,
-        table_id,
-        if_exists='replace',  # Specify resolution policy if table name already exists
-        overwrite_types=None, # Specify the column types to overwrite in a dictionary
-    )
-```
-
-To overwrite a column type when running a python export block, simply specify the column name and type in the `overwrite_types` dict in data exporter config.
-You can find the supported types in this [doc](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#TableFieldSchema.FIELDS.type). Here is the example code:
-
-```python  theme={"system"}
-    BigQuery.with_config(ConfigFileLoader(config_path, config_profile)).export(
-        df,
-        table_id,
-        if_exists='replace',  # Specify resolution policy if table name already exists
-        overwrite_types={'col_name': 'STRING'}, # Specify the column types to overwrite
-    )
-```
-
-### Method arguments
-
-| Field name               | Description                                                                                                                                         | Example values                                 |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| if\_exists               | Specify resolution policy if table name already exists                                                                                              | "fail"/"replace"/"append" (default: "replace") |
-| overwrite\_types         | Overwrite the column types. See [BigQuery data types](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#TableFieldSchema.FIELDS.type) | `{'column1': 'STRING', 'column2': 'INTEGER'}`  |
-| unique\_conflict\_method | How to handle the conflict on unique constraints. Use 'UPDATE' for UPSERT (update existing rows, insert new ones) or 'IGNORE' to skip duplicates.   | 'UPDATE' or 'IGNORE' (default: None)           |
-| unique\_constraints      | The unique constraints of the table. Used with unique\_conflict\_method for UPSERT operations.                                                      | \['col1', 'col2'] (default: None)              |
-
-**Example: Using UPSERT (UPDATE or INSERT)**
-
-```python  theme={"system"}
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.bigquery import BigQuery
-from mage_ai.io.config import ConfigFileLoader
-from pandas import DataFrame
-from os import path
-
-if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
-
-
-@data_exporter
-def export_data_to_big_query(df: DataFrame, **kwargs) -> None:
-    """
-    Template for exporting data to BigQuery with UPSERT support.
-    Specify your configuration settings in 'io_config.yaml'.
-
-    Docs: https://docs.mage.ai/design/data-loading#bigquery
-    """
-    table_id = 'your-project.your_dataset.your_table_name'
-    config_path = path.join(get_repo_path(), 'io_config.yaml')
-    config_profile = 'default'
-
-    BigQuery.with_config(ConfigFileLoader(config_path, config_profile)).export(
-        df,
-        table_id,
-        if_exists='append',  # Use 'append' with UPSERT
-        unique_constraints=['user_id', 'email'],  # Columns that form unique constraint
-        unique_conflict_method='UPDATE',  # Update existing rows, insert new ones
-    )
-```
+* [BigQuery API Overview](https://cloud.google.com/bigquery/docs/reference/rest)
+* [Google Cloud IAM Roles](https://cloud.google.com/bigquery/docs/access-control)
+* [Mage GitHub Issue #3416](https://github.com/mage-ai/mage-ai/issues/3416)
 
 
 Built with [Mintlify](https://mintlify.com).

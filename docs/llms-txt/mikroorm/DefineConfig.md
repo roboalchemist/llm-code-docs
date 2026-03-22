@@ -1,37 +1,35 @@
-# Source: https://mikro-orm.io/api/core/namespace/DefineConfig.md
+# Source: https://mikro-orm.io/api/sqlite/function/defineConfig.md
 
-# DefineConfig<!-- -->
+# Source: https://mikro-orm.io/api/postgresql/function/defineConfig.md
 
-## Index[**](#index)
+# Source: https://mikro-orm.io/api/oracledb/function/defineConfig.md
 
-### Interfaces
+# Source: https://mikro-orm.io/api/mysql/function/defineConfig.md
 
-* [**Brand](https://mikro-orm.io/api/core/namespace/DefineConfig.md#Brand)
+# Source: https://mikro-orm.io/api/mssql/function/defineConfig.md
 
-### Variables
+# Source: https://mikro-orm.io/api/mongodb/function/defineConfig.md
 
-* [**\_\_config](https://mikro-orm.io/api/core/namespace/DefineConfig.md#__config)
+# Source: https://mikro-orm.io/api/mariadb/function/defineConfig.md
 
-## Interfaces<!-- -->[**](#interfaces)
+# Source: https://mikro-orm.io/api/libsql/function/defineConfig.md
 
-### [**](#brand)[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/typings.ts#L194)Brand
+# Source: https://mikro-orm.io/api/core/function/defineConfig.md
 
-**Brand:
+# defineConfig<!-- -->
 
-### [**](#\[___config])[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/typings.ts#L195)optional\[\_\_\_config]
+### Callable
 
-**\[\_\_\_config]?
+* ****defineConfig**\<D, EM, Entities>(options): Partial<[Options](https://mikro-orm.io/api/core/interface/Options.md)\<D, EM, Entities>>
 
-<!-- -->
+***
 
-: 1
+* Type helper to make it easier to use `mikro-orm.config.js`.
 
-## Variables<!-- -->[**](#variables)
+  ***
 
-### [**](#__config)[**](https://github.com/mikro-orm/mikro-orm/blob/2d81de2234119ed7f17968f65d36b3a7d165bb5c/packages/core/src/typings.ts#L193)const\_\_config
+  #### Parameters
 
-**\_\_config: unique
+  * ##### options: Partial<[Options](https://mikro-orm.io/api/core/interface/Options.md)\<D, EM, Entities>>
 
-<!-- -->
-
-symbol
+  #### Returns Partial<[Options](https://mikro-orm.io/api/core/interface/Options.md)\<D, EM, Entities>>

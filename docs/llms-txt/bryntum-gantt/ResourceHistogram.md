@@ -1,382 +1,69 @@
-# Source: https://bryntum.com/products/gantt/docs-llm/api/SchedulerPro/view/ResourceHistogram.md
-
-# [ResourceHistogram](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram)
-
-This view displays a read-only timeline report of the workload for the resources in a [project](https://bryntum.com/docs/gantt/api/#SchedulerPro/model/ProjectModel). The resource allocation is visualized as bars along the time axis with an optional line indicating the maximum available time for each resource. A [ScaleColumn](https://bryntum.com/docs/gantt/api/#Scheduler/column/ScaleColumn) is also added automatically.
-
-To create a standalone histogram, simply configure it with a Project instance:
-
-```
-const project = new ProjectModel({
-    autoLoad : true,
-    loadUrl  : 'examples/schedulerpro/view/data.json'
-});
-
-const histogram = new ResourceHistogram({
-    project,
-    appendTo    : 'targetDiv',
-    rowHeight   : 60,
-    minHeight   : '20em',
-    flex        : '1 1 50%',
-    showBarTip  : true,
-    columns     : [
-        {
-            width : 200,
-            field : 'name',
-            text  : 'Resource'
-        }
-    ]
-});
-```
-
-Pairing the component
----------------------
-
-You can also pair the histogram with other timeline views such as the Gantt or Scheduler, using the [partner](https://bryntum.com/docs/gantt/api/#Scheduler/view/TimelineBase#config-partner) config.
-
-You can configure (or hide completely) the built-in scale column easily:
-
-```
-const histogram = new ResourceHistogram({
-   project,
-   appendTo    : 'targetDiv',
-   columns     : [
-       {
-           width : 200,
-           field : 'name',
-           text  : 'Resource'
-       },
-       // Hide the scale column (or add any other column configs)
-       {
-           type   : 'scale',
-           hidden : true
-       }
-   ]
-});
-```
-
-Changing displayed values
--------------------------
-
-To change the histogram bar texts, supply a [getBarText](https://bryntum.com/docs/gantt/api/#SchedulerPro/view/ResourceHistogram#config-getBarText) function. Here for example the provided function displays resources time **left** instead of allocated time
-
-```
-new ResourceHistogram({
-    getBarText(datum) {
-        const resourceHistogram = this.owner;
-
-        // get default bar text
-        let result = resourceHistogram.getBarTextDefault(...arguments);
-
-        // and if some work is done in the tick
-        if (result) {
-
-            const unit = resourceHistogram.getBarTextEffortUnit();
-
-            // display the resource available time
-            result = resourceHistogram.getEffortText(datum.maxEffort - datum.effort, unit);
-        }
-
-        return result;
-    },
-    ...
-})
-```
-
-## Configs
-
-Configs are options you supply in a configuration object when creating an instance of this class
-
-[effortFormat](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#config-effortFormat)
-Effort value format string. Must be a template supported by [NumberFormat](https://bryntum.com/docs/gantt/api/#Core/helper/util/NumberFormat) class.
-
-[showEffortUnit](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#config-showEffortUnit)
-Specifies whether effort values should display units or not.
-
-[effortUnit](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#config-effortUnit)
-Default time unit to display resources effort values. The value is used as default when displaying effort in tooltips and bars text. Yet the effective time unit used might change dynamically when zooming in the histogram so its ticks unit gets smaller than the default unit. Please use [barTipEffortUnit](https://bryntum.com/docs/gantt/api/#SchedulerPro/view/ResourceHistogram#config-barTipEffortUnit) to customize default units for tooltips only and [barTextEffortUnit](https://bryntum.com/docs/gantt/api/#SchedulerPro/view/ResourceHistogram#config-barTextEffortUnit) to customize default units in bar texts.
-
-[barTextEffortUnit](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#config-barTextEffortUnit)
-Default time unit used for displaying resources effort in bars. Yet the effective time unit used might change dynamically when zooming in the histogram so its ticks unit gets smaller than the default unit. Please use [barTipEffortUnit](https://bryntum.com/docs/gantt/api/#SchedulerPro/view/ResourceHistogram#config-barTipEffortUnit) to customize default units for tooltips (or [effortUnit](https://bryntum.com/docs/gantt/api/#SchedulerPro/view/ResourceHistogram#config-effortUnit) to customize both texts and tooltips default units).
-
-[barTipEffortUnit](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#config-barTipEffortUnit)
-Default time unit used when displaying resources effort in tooltips. Yet the effective time unit used might change dynamically when zooming in the histogram so its ticks unit gets smaller than the default unit. Please use [barTextEffortUnit](https://bryntum.com/docs/gantt/api/#SchedulerPro/view/ResourceHistogram#config-barTextEffortUnit) to customize default units for bar texts (or [effortUnit](https://bryntum.com/docs/gantt/api/#SchedulerPro/view/ResourceHistogram#config-effortUnit) to customize both texts and tooltips default units).
-
-[showMaxEffort](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#config-showMaxEffort)
-Set to `true` if you want to display the maximum resource allocation line.
-
-[barTooltipTemplate](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#config-barTooltipTemplate)
-A Function which returns the tooltip text to display when hovering a bar. The following parameters are passed:
-
-[showBarText](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#config-showBarText)
-Set to `true` if you want to display resources effort values in bars (for example: `24h`, `7d`, `60min` etc.). The text contents can be changed by providing [getBarText](https://bryntum.com/docs/gantt/api/#SchedulerPro/view/ResourceHistogram#config-getBarText) function.
-
-[getBarClass](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#config-getBarClass)
-A Function which returns a CSS class name to add to a bar's rectangle element. The following parameters are passed:
-
-[getOutlineClass](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#config-getOutlineClass)
-A Function which returns a CSS class name to add to a path element built for an `outline` type series. The following parameters are passed:
-
-[getOutlineDOMConfig](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#config-getOutlineDOMConfig)
-A Function which if provided should return a DOM configuration object for a `path` element built for an `outline` type series. The function accepts a default prepared DOM configuration in an argument which then can be processed and returned.
-
-The following parameters are passed to the function:
-
-[getBarText](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#config-getBarText)
-A Function which returns the text to render inside a bar.
-
-Here for example the provided function displays resources time **left** instead of allocated time
-
-```
-new ResourceHistogram({
-    getBarText(datum) {
-        const resourceHistogram = this.owner;
-
-        const { showBarText } = resourceHistogram;
-
-        let result = '';
-
-        // respect existing API - show bar texts only when "showBarText" is true
-        // and if some work is done in the tick
-        if (showBarText && datum.effort) {
-
-            const unit = resourceHistogram.getBarTextEffortUnit();
-
-            // display the resource available time
-            result = resourceHistogram.getEffortText(datum.maxEffort - datum.effort, unit);
-        }
-
-        return result;
-    },
-})
-```
-
-**Please note** that the function will be injected into the underlying [Histogram](https://bryntum.com/docs/gantt/api/#Core/widget/graph/Histogram) component that is used under the hood to render actual charts. So `this` will refer to the [Histogram](https://bryntum.com/docs/gantt/api/#Core/widget/graph/Histogram) instance, not this class instance. To access the view please use `this.owner` in the function:
-
-```
-new ResourceHistogram({
-    getBarText(datum) {
-        // "this" in the method refers core Histogram instance
-        // get the view instance
-        const resourceHistogram = this.owner;
-
-        .....
-    },
-})
-```
-
-The following parameters are passed:
-
-[getBarTextDOMConfig](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#config-getBarTextDOMConfig)
-A Function which returns a DOM configuration object for text elements.
-
-```
-new ResourceHistogram({
-    getBarTextDOMConfig(domConfig, datum, index) {
-        // Place text at the top of the "effort" bar
-        // so calculate y-position in percents
-        domConfig.y = `${100 * (1 - datum.effort / this.topValue)}%`;
-
-        // also let's laid the text lines horizontally
-        domConfig.style = 'writing-mode: lr';
-
-        return domConfig;
-    },
-    ...
-})
-```
-
-Please note that it's important to return a DOM configuration object. If the function doesn't do that the corresponding text element won't be displayed.
-
-The function will be injected into the underlying [Histogram](https://bryntum.com/docs/gantt/api/#Core/widget/graph/Histogram) component that is used under the hood to render actual charts. So `this` will refer to the [Histogram](https://bryntum.com/docs/gantt/api/#Core/widget/graph/Histogram) instance, not this class instance. To access the view please use `this.owner` in the function:
-
-```
-new ResourceHistogram({
-    getBarTextDOMConfig(domConfig) {
-        // "this" in the method refers core Histogram instance
-        // get the view instance
-        const resourceHistogram = this.owner;
-
-        .....
-
-        return domConfig;
-    },
-    ...
-})
-```
-
-The following parameters are passed:
-
-[getBarDOMConfig](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#config-getBarDOMConfig)
-A Function which if provided returns DOM configuration object for a bar (a `RECT` element representing a single "bar"-type value). The function accepts default prepared DOM configuration in an argument which then can be processed and returned.
-
-```
-new ResourceHistogram({
-    // Let's add left & right margins to bars
-    getBarDOMConfig(series, domConfig) {
-        // margin size is 10% of the bar width
-        const xMargin = 0.1 * domConfig.width;
-
-        // adjust the bar x-coordinate
-        domConfig.x += xMargin;
-        // reduce the bar width respectively
-        domConfig.width -= 2 * xMargin;
-
-        // return the edited domConfig
-        return domConfig;
-    },
-    ...
-})
-```
-
-Please note that it's important to return a DOM configuration object. If the function doesn't do that the corresponding bar won't be displayed.
-
-The function will be injected into the underlying [Histogram](https://bryntum.com/docs/gantt/api/#Core/widget/graph/Histogram) component that is used under the hood to render charts. So `this` will refer to the [Histogram](https://bryntum.com/docs/gantt/api/#Core/widget/graph/Histogram) instance, not this class instance. To access the view please use `this.owner` in the function:
-
-```
-new ResourceHistogram({
-    getBarText(datum) {
-        // "this" in the method refers core Histogram instance
-        // get the view instance
-        const resourceHistogram = this.owner;
-
-        .....
-    },
-    ...
-})
-```
-
-The following parameters are passed:
-
-[includeInactiveEvents](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#config-includeInactiveEvents)
-Set to `true` to include inactive tasks allocation and `false` to not take such tasks into account.
-
-[costFormat](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#config-costFormat)
-Specifies a format to use for displaying cost values. Default value is:
-
-```
-costFormat : {
-    style    : 'currency',
-    currency : 'USD'
-},
-```
-
-See [NumberFormat](https://bryntum.com/docs/gantt/api/#Core/helper/util/NumberFormat) docs for details on the supported config values. Please keep in mind that `currency` value will be automatically set to the loaded project currency.
-
-[respectStoreFilters](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#config-respectStoreFilters)
-Set to `true` to take task and assignment store filters into account when collecting allocation.
-
-```
-new ResourceHistogram({
-    // skip filtered out events/assignments
-    respectStoreFilters : true
-    ...
-});
-```
-
-[assignmentFilterFn](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#config-assignmentFilterFn)
-A function that if provided decides whether an assignment should be taken into account or not when collecting allocation.
-
-The function is recommended to be a generator so it can attach to the Engine and track the involved field changes automatically. It accepts two arguments: assignment record and `ResourceAllocationInfo` class instance collecting allocation. The instance has a special `readField` method that should be yielded to read the needed field value. The method also subscribes to further changes of the field triggering automatic allocation recollecting once the field gets changed:
-
-```
-new ResourceHistogram({
-    // custom filtering function
-    * assignmentFilterFn(assignment, allocationInfo) {
-        // get the assignment event
-        const event = yield assignment.$.event;
-
-        // include only allocation of events having "type" field set to "Meeting"
-        if (event) {
-            // get "type" field value and bind to its changes
-            // to refresh the histogram automatically
-            const type = yield* allocationInfo.readField(event, 'type');
-
-            return type === 'Meeting';
-        }
-    }
-    ...
-});
-```
-
-## Properties
-
-Properties are getters/setters or publicly accessible variables on this class
-
-[isResourceHistogram](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#property-isResourceHistogram)
-Identifies an object as an instance of [ResourceHistogram](https://bryntum.com/docs/gantt/api/#SchedulerPro/view/ResourceHistogram) class, or subclass thereof.
-
-[isResourceHistogram](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#property-isResourceHistogram-static)
-Identifies an object as an instance of [ResourceHistogram](https://bryntum.com/docs/gantt/api/#SchedulerPro/view/ResourceHistogram) class, or subclass thereof.
-
-## Functions
-
-Functions are methods available for calling on the class
-
-[generateScalePoints](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#function-generateScalePoints)
-Generates points for the [scale column](https://bryntum.com/docs/gantt/api/#SchedulerPro/view/ResourceHistogram#property-scaleColumn).
-
-**Override the method to customize the scale column points.**
-
-[getEffortText](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#function-getEffortText)
-Formats effort value to display in the component bars and tooltips.
-
-[getBarTextEffortUnit](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#function-getBarTextEffortUnit)
-Returns unit to display effort values in when rendering the histogram bars. The method by default returns [barTextEffortUnit](https://bryntum.com/docs/gantt/api/#SchedulerPro/view/ResourceHistogram#config-barTextEffortUnit) value if provided and if not falls back to [effortUnit](https://bryntum.com/docs/gantt/api/#SchedulerPro/view/ResourceHistogram#config-effortUnit) value. But it also takes zooming into account and when the timeaxis ticks unit gets smaller than the default value the ticks unit is returned.
-
-[getBarTextDefault](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#function-getBarTextDefault)
-The default method that returns the text to render inside a bar if no [getBarText](https://bryntum.com/docs/gantt/api/#SchedulerPro/view/ResourceHistogram#config-getBarText) function was provided.
-
-The method can be used in a [getBarText](https://bryntum.com/docs/gantt/api/#SchedulerPro/view/ResourceHistogram#config-getBarText) function to invoke the default implementation:
-
-```
-new ResourceHistogram({
-    getBarText(datum) {
-        const resourceHistogram = this.owner;
-
-        // get default bar text
-        let result = resourceHistogram.getBarTextDefault();
-
-        // if the resource is overallocated in that tick display "Overallocated! " string
-        // before the allocation value
-        if (result && datum.maxEffort < datum.effort) {
-            result = 'Overallocated! ' + result;
-        }
-
-        return result;
-    },
-})
-```
-
-The following parameters are passed:
-
-[getRecordAllocationData](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#function-getRecordAllocationData)
-Returns the provided record's allocation data. The process of allocation collecting is asynchronous so the method returns a `Promise` that provides the data once resolved.
-
-The method used as the default value of [getRecordData](https://bryntum.com/docs/gantt/api/#SchedulerPro/view/ResourceHistogram#config-getRecordData) config.
-
-[initAggregatedAllocationEntry](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#function-initAggregatedAllocationEntry)
-The default function that initializes a target group record entry.
-
-The method is used as [initAggregatedDataEntry](https://bryntum.com/docs/gantt/api/#SchedulerPro/view/ResourceHistogram#config-initAggregatedDataEntry) default value.
-
-[aggregateAllocationEntry](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#function-aggregateAllocationEntry)
-The default function used for aggregating a child record histogram data values to its parent entry. The function sums up `effort` and `maxEffort` series values. It also propagates [isOverallocated](https://bryntum.com/docs/gantt/api/#SchedulerPro/model/ResourceModel#typedef-ResourceAllocationInterval) and [isUnderallocated](https://bryntum.com/docs/gantt/api/#SchedulerPro/model/ResourceModel#typedef-ResourceAllocationInterval) values so if there is a child having the corresponding value as `true` it will be `true` on the parent level as well.
-
-All children [assignments](https://bryntum.com/docs/gantt/api/#SchedulerPro/model/ResourceModel#typedef-ResourceAllocationInterval) are united on the parent level [assignments](https://bryntum.com/docs/gantt/api/#SchedulerPro/model/ResourceModel#typedef-ResourceAllocationInterval) property.
-
-The method is used as [aggregateDataEntry](https://bryntum.com/docs/gantt/api/#SchedulerPro/view/ResourceHistogram#config-aggregateDataEntry) default value.
-
-## Events
-
-Events are triggered for certain actions in this class and can be listened for to react to those actions in your code
-
-[generateScalePoints](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#event-generateScalePoints)
-Fires when the component generates points for the [scale column](https://bryntum.com/docs/gantt/api/#SchedulerPro/view/ResourceHistogram#property-scaleColumn).
-
-Use a listeners to override the generated scale points:
-
-```
+# Source: https://bryntum.com/products/gantt/docs-llm/guide/SchedulerPro/resourceviews/resourcehistogram.md
+
+# Resource histogram
+
+[ResourceHistogram](#SchedulerPro/view/ResourceHistogram) is a view that renders histogram charts in the time axis
+column for each resource. The charts visualize resources working time allocation based on their assignments to events
+and working time calendars.
+The component subclasses [TimelineHistogram](#Scheduler/view/TimelineHistogram) and thus automatically adds a special
+[scale column](#Scheduler/column/ScaleColumn) to match the plotted values.
+
+<div class="external-example" data-file="SchedulerPro/view/ResourceHistogram.js"></div>
+
+## The view series
+
+Out of the box the component visualizes two series, `effort` and `maxEffort`.
+The first one is charted with bars and represents the corresponding resource working time spent. The bars are colored
+according to the resource allocation level: _green_ for fully allocated, _light-green_ for underallocated and _red_
+if the resource is overallocated in the tick (see the ["Styling charts"](##styling-charts) chapter below for details on
+how it's done and how to change the colors).
+The values of the series are calculated based on the resource assignments.
+
+And the second series is displayed as a pink outline and represents maximum working time the resource has in the
+corresponding interval.
+
+## Series values and zooming
+
+The displayed values are calculated for ticks of the time axis and thus naturally depend on the view zoom level.
+So if the view ticks represent days the values are collected for the days and if it shows quarters they are collected
+for the quarters respectively.
+That means the component automatically recalculates the displayed values after zooming in/out or changing the visible
+timespan.
+
+## Data calculation under the hood
+
+The component uses <a href="engine" target="_blank">the Engine</a> to calculate resources allocation data. It creates
+[ResourceAllocationInfo](#SchedulerPro/model/ResourceModel#typedef-ResourceAllocationInfo) class (or engine docs
+[here](engine/classes/_lib_engine_quark_model_scheduler_pro_resourceallocationinfo_.resourceallocationinfo.html))
+instances for each resource.
+The class has a few input properties: `resource`, `ticks`, `includeInactiveEvents` and an output `allocation`
+property that provides the allocation calculated for the provided input values. `allocation` has a `total` property
+referencing an array of the resource allocation values and `byAssignments` which is a `Map` with the allocation
+categorized for individual assignments. **This view renders `allocation.total`values.**
+
+The class instances are added into the Engine _graph_. So they get calculated automatically as soon as
+any related value changes (like a calendar, assignment, event or any other parameter involved in the resource
+allocation calculation).
+After the change happens the component updates the involved resources histogram data which in turn causes
+the resource rows refresh.
+
+## Scale column
+
+A [scale column](#Scheduler/column/ScaleColumn) is added automatically to help reading the plotted values. The column
+automatically sets its scale points to match the view's current zoom level. So for example if the time axis ticks
+display days then the top value of the scale is set to _24 hours_ and if ticks display weeks then the scale top value
+is _7 days_.
+
+For group records the scale also depends on the current zoom level yet its calculation has a twist.
+Basically a group record scale top value is calculated as a regular record top value but multiplied by the number of
+the group members. So for example if the view time axis displays days then a group having 3 members will display a
+scale with _3 days_ top value.
+
+Every time the view adjusts the scale values it triggers
+[generateScalePoints](#SchedulerPro/view/ResourceHistogram#event-generateScalePoints) which can be used to customize
+the prepared scale points:
+
+```javascript
 new ResourceHistogram({
     ...
     listeners : {
@@ -390,9 +77,431 @@ new ResourceHistogram({
 })
 ```
 
-## Typedefs
+In case the column is not needed it can be easily disabled by providing `null` to the
+[scaleColumn](#SchedulerPro/view/ResourceHistogram#config-scaleColumn) config:
 
-Typedefs are type definitions for the class
+```javascript
+new ResourceHistogram({
+    // do not add scale column
+    scaleColumn : null,
+    ...
+});
+```
 
-[ResourceHistogramRenderData](https://bryntum.com/docs/gantt/api/SchedulerPro/view/ResourceHistogram#typedef-ResourceHistogramRenderData)
-ResourceHistogram renderer parameters.
+## Displaying text values
+
+The view can also display values as text. To enable this provide `true` to
+[showBarText](#SchedulerPro/view/ResourceHistogram#config-showBarText) config. The component will render the values in
+`TEXT` elements indicated with `b-bar-legend` CSS class.
+
+To change the histogram bar texts, supply a [getBarText](#SchedulerPro/view/ResourceHistogram#config-getBarText)
+function. Here for example the provided function displays resources time **left** instead of allocated time
+
+```javascript
+new ResourceHistogram({
+    getBarText(datum, index, series, renderData) {
+        const resourceHistogram = this.owner;
+        // get default bar text
+        let result = resourceHistogram.getBarTextDefault(...arguments);
+        // and if some work is done in the tick
+        if (result) {
+            const unit = resourceHistogram.getBarTextEffortUnit();
+            // display the resource available time
+            result = resourceHistogram.getEffortText(datum.maxEffort - datum.effort, unit);
+        }
+        return result;
+    },
+    ...
+});
+```
+
+**Please note** that the function will be injected into the underlying [Histogram](#Core/widget/graph/Histogram)
+component that is used under the hood to render actual charts.
+So `this` will refer to the [Histogram](#Core/widget/graph/Histogram) instance, not this class instance.
+That's why in the above example `this.owner` is used to the class instance.
+
+If you want to have full control of the displayed `TEXT` tag attributes you can use
+[getBarTextDOMConfig](#SchedulerPro/view/ResourceHistogram#config-getBarTextDOMConfig) function:
+
+```javascript
+new ResourceHistogram({
+
+    getBarTextDOMConfig(domConfig, datum, index, _series, renderData) {
+        // Place text at the top of the "effort" bar
+        // so calculate y-position in percents
+        domConfig.y = `${100 * (1 - datum.effort / this.topValue)}%`;
+
+        // also let's laid the text lines horizontally
+        domConfig.style = 'writing-mode: lr';
+
+        return domConfig;
+    },
+
+    ...
+});
+```
+
+The functions are called as part of a cell rendering and their `renderData` argument provides the cell render data
+which allows to get the record being rendered (and some other data like cell element, row etc):
+
+```javascript
+new ResourceHistogram({
+    getBarText(datum, index, series, renderData) {
+        // render text for all records except the one with id=321
+        if (renderData.record.id !== 321) {
+            // default bar text
+            return this.owner.getBarTextDefault(...arguments);
+        }
+
+        return '';
+    },
+    ...
+});
+```
+
+## Displaying bar tooltips
+
+The view has a couple of configs that enables displaying a tooltip when mouse hovering histogram bars:
+
+- [showBarTip](#SchedulerPro/view/ResourceHistogram#config-showBarTip) a boolean flag allowing to toggle on/off the
+  tooltip showing
+- [barTooltipTemplate](#SchedulerPro/view/ResourceHistogram#config-barTooltipTemplate) a function implementing the
+  tooltip template
+
+Here is an example of the tooltip configuration:
+
+```javascript
+new ResourceHistogram({
+    // enable bar tooltips showing
+    showBarTip : true,
+
+    barTooltipTemplate(tooltipContext) {
+        const { datum, record } = tooltipContext;
+
+        // do not display tooltip for record #321
+        if (record.id === 321) {
+            return '';
+        }
+
+        return `<div class="my-tooltip">${datum.effort}</div>`;
+    },
+    ...
+});
+```
+
+## Customizing series data at runtime
+
+The view triggers [beforeHistogramDataCacheSet](#SchedulerPro/view/ResourceHistogram#event-beforeHistogramDataCacheSet)
+and [histogramDataCacheSet](#SchedulerPro/view/ResourceHistogram#event-histogramDataCacheSet) after a resource's
+allocating gets calculated. So the events can be used for modifying the calculated data or injecting additional series
+data.
+
+```javascript
+new ResourceHistogram({
+    series : {
+        // provide an extra series
+        someValue : {
+            type : 'bar'
+        }
+    },
+    ...
+    listeners : {
+        histogramDataCacheSet({ data }) {
+            // add our extra series value for each entry
+            data.allocation.total.forEach(entry => {
+                // someValue will have a random [0 .. effort] value
+                entry.someValue = Math.floor(Math.random() * entry.effort);
+            });
+        },
+    }
+});
+```
+
+### Customizing series data and performance
+
+The approach we used in the ["Customizing series data at runtime"](##customizing-series-data-at-runtime) chapter is the
+most straightforward but it might have a major disadvantage - _performance_.
+Series data collecting code iterates all the component time span intervals which could be quite expensive.
+And if you want to change collected tick values you would have to iterate the ticks again.
+If your calculations are quite complex that could be time consuming and hit the view performance badly.
+
+If that's the case then the only way you have is overriding `ResourceAllocationInfo` class code.
+The class has `calculateAllocation` generator method that is used to calculate `allocation` property value.
+So the method code can be overridden and to avoid the above mentioned double iterating it's not enough to call
+`super.calculateAllocation` and do some changes after but instead the existing `calculateAllocation` code
+should be copied to your class and modified according to your needs.
+
+```javascript
+class MyResourceAllocationInfo extends ResourceAllocationInfo {
+
+    * calculateAllocation() {
+        const
+            total = [],
+            ticksCalendar = yield this.ticks,
+            resource = yield this.$.resource,
+            includeInactiveEvents = yield this.$.includeInactiveEvents,
+            assignments = yield resource.$.assigned,
+            calendar = yield resource.$.effectiveCalendar,
+            assignmentsByCalendar = new Map(),
+            eventRanges = [],
+            assignmentTicksData = new Map(),
+            byAssignments = new Map();
+
+        ....
+    }
+
+}
+```
+
+The overridden class then should be provided to the project
+[resourceAllocationInfoClass](#SchedulerPro/model/ProjectModel#config-resourceAllocationInfoClass) config:
+
+```javascript
+const project = new ProjectModel({
+    resourceAllocationInfoClass : MyResourceAllocationInfo,
+    ...
+});
+
+new ResourceHistogram({
+    project,
+    ....
+});
+```
+
+## Changing individual rows content dynamically
+
+Individual rows allocation rendering can be adjusted at runtime.
+There is a [beforeRenderHistogramRow](#SchedulerPro/view/ResourceHistogram#event-beforeRenderHistogramRow) event
+fired before a row is rendered.
+The event data includes a `histogramConfig` configuration object that will be applied
+to the underlying [Histogram](#Core/widget/graph/Histogram) widget used for rendering.
+So the event allows changing the config in order to make changes to the displayed data, add or hide some series:
+
+```javascript
+new ResourceHistogram({
+    ...
+    listeners : {
+        beforeRenderHistogramRow(renderData) {
+            const { record, histogramConfig } = renderData;
+
+            // hide "maxEffort" series for record #1
+            if (record.id == 1) {
+                histogramConfig.series.maxEffort = false;
+            }
+        }
+    }
+});
+```
+
+## Grouping support
+
+The component supports [TreeGroup](#Grid/feature/TreeGroup) and [Group](#Grid/feature/Group) features and implements
+automatic rendering of histograms for group records.
+It's done by summing up group members data to their parents.
+
+[TreeGroup](#Grid/feature/TreeGroup) usage example:
+
+```javascript
+const histogram = new ResourceHistogram({
+    features : {
+        treeGroup : {
+            // group resources by city field
+            levels : [
+                'city'
+            ]
+        }
+    },
+    ...
+});
+```
+
+[Group](#Grid/feature/Group) usage example:
+
+```javascript
+const histogram = new ResourceHistogram({
+    features : {
+        // group resources by city field
+        group : {
+            field : 'city'
+        }
+    },
+    ...
+});
+```
+
+### Disabling automatic aggregating
+
+That automatic aggregating can be turned off by setting the
+[aggregateHistogramDataForGroups](#SchedulerPro/view/ResourceHistogram#config-aggregateHistogramDataForGroups) config
+to `false`:
+
+```javascript
+const histogram = new ResourceHistogram({
+    // do not show histograms for groups
+    aggregateHistogramDataForGroups : false,
+    ...
+});
+```
+
+### Customizing data aggregating
+
+The component uses the following hooks to implement resource allocation data aggregating to parents:
+
+- [aggregateDataEntry](#SchedulerPro/view/ResourceHistogram#config-aggregateDataEntry) - a function called for each
+child data entry and is meant to aggregate the entry values to the corresponding parent entry. The config references
+[aggregateAllocationEntry](#SchedulerPro/view/ResourceHistogram#function-aggregateAllocationEntry) method.
+- [initAggregatedDataEntry](#SchedulerPro/view/ResourceHistogram#config-initAggregatedDataEntry) - a function that
+returns a target parent entry to put aggregated values in. The config references
+[initAggregatedAllocationEntry](#SchedulerPro/view/ResourceHistogram#function-initAggregatedAllocationEntry) method.
+
+There is also a way to use few other aggregate functions instead of summing `effort` and `maxEffort` values. It can be
+changed by providing the `aggregate` property to the corresponding series:
+
+```javascript
+new ResourceHistogram({
+    series : {
+        effort : {
+            // display average children effort
+            aggregate : 'avg'
+        }
+    },
+    ...
+});
+```
+
+Currently the `aggregate` config supports the following values/operations:
+
+- `sum` or `add` (default) - sum of group member values
+- `min` - minimum of group member values
+- `max` - maximum of group member values
+- `count` - count of group member values (effectively count of the group child records)
+- `avg` - average of group member values
+
+## Styling charts
+
+Charts are rendered with [SVG](https://developer.mozilla.org/en-US/docs/Web/SVG) tags.
+Effort bars are rendered as separate `RECT` elements and max allocation outline is rendered as a single `PATH` element.
+
+By default each bar and path element is decorated with `b-series-*` CSS-class where `*` matches the identifier of the
+series.
+Additionally the component indicated `effort` series bars with `b-underallocated` and `b-overallocated` CSS classes in
+case the resource is underallocated/overallocated in that tick respectively.
+
+Then changing the component default styling can be done with the following CSS:
+
+```css
+/* normally allocated bar color */
+.b-resourcehistogram rect.b-series-effort {
+    fill: #0f0;
+}
+/* overallocated mouse hovered bar color */
+.b-resourcehistogram rect.b-series-effort:hover {
+    fill: #9f9;
+}
+/* underallocated bar color */
+.b-resourcehistogram rect.b-series-effort.b-underallocated {
+    fill: #ff0;
+}
+/* overallocated mouse hovered bar color */
+.b-resourcehistogram rect.b-series-effort.b-underallocated:hover {
+    fill: #ff9;
+}
+/* overallocated bar color */
+.b-resourcehistogram rect.b-series-effort.b-overallocated {
+    fill: #f00;
+}
+/* overallocated mouse hovered bar color */
+.b-resourcehistogram rect.b-series-effort.b-overallocated:hover {
+    fill: #f99;
+}
+```
+
+And if those CSS classes are not enough there is a
+[getBarClass](#SchedulerPro/view/ResourceHistogram#config-getBarClass) function that can be used to return CSS
+classes for a bar.
+For example in the following snippet we decorate `effort` bars having 8 hours working time allocated
+with `eight-hours-effort` CSS class:
+
+```javascript
+new ResourceHistogram({
+    getBarClass(series, _domConfig, datum) {
+        // indicate bars entries having 8 hrs effort with "eight-hours-effort" CSS class
+        // values are expressed in milliseconds so we convert 8hrs to milliseconds here
+        if (datum.effort === 8*3600000) {
+            return 'eight-hours-effort';
+        }
+
+        return '';
+    }
+})
+```
+
+Or if you want to have full control of the displayed `RECT` element attributes you can use
+[getBarDOMConfig](#SchedulerPro/view/ResourceHistogram#config-getBarDOMConfig) function.
+Here is for example we add horizontal margins to the displayed bars by adjusting `RECT` elements `width`
+and `x` attributes:
+
+```javascript
+new ResourceHistogram({
+
+    getBarDOMConfig(series, domConfig, datum, index) {
+        // let's add a 10% of width margin to the left & right of the cell
+        const xMargin = 0.1 * domConfig.width;
+
+        // reduce bar width respectively
+        domConfig.width -= xMargin;
+
+        // adjust x-coordinate by the margin size
+        domConfig.x += xMargin;
+
+        // return the edited domConfig (it's important)
+        return domConfig;
+    },
+
+    ...
+});
+```
+
+Outline path element classes can also be configured dynamically with
+[getOutlineClass](#SchedulerPro/view/ResourceHistogram#config-getOutlineClass) function:
+
+```javascript
+new ResourceHistogram({
+    getOutlineClass(series, data) {
+        // highlight the line there is an overallocation case found
+        if (data.some(datum => datum.isOverallocated)) {
+            return 'has-overallocation';
+        }
+
+        return '';
+    }
+});
+```
+
+## Toggling series visibility
+
+The component has a special [showMaxEffort](#SchedulerPro/view/ResourceHistogram#config-showMaxEffort) config allowing
+to toggle displaying the `maxEffortSeries` series.
+
+Alternatively toggling any individual series visibility can be done with CSS help based on the fact that
+all bars have `b-series-*` CSS-class (where `*` is identifier of the series the bar represents).
+
+For `effort` series for example it's enough to add a CSS-rule like this:
+
+```css
+.b-resourcehistogram.b-hide-effort rect.b-series-effort {
+    display: none;
+}
+```
+
+Then hiding the series can be done by this code:
+
+```javascript
+histogram.element.classList.add('b-hide-effort');
+```
+
+And this code can be used to display the series back:
+
+```javascript
+histogram.element.classList.remove('b-hide-effort');
+```

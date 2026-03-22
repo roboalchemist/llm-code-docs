@@ -1,16 +1,14 @@
-# Source: https://docs.statsig.com/client/DotNet.md
+# Source: https://docs.statsig.com/server/dotnet.md
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.statsig.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# .NET Client SDK
+# Legacy .NET Server SDK
 
-> Statsig's SDK for Experimentation and Feature Flags in .NET applications.
+> Statsig's Legacy Server SDK for .NET applications
 
-<Callout icon="github">
-  Source code: <a href="https://github.com/statsig-io/dotnet-sdk" target="_blank" rel="noreferrer">statsig-io/dotnet-sdk</a>
-</Callout>
+[Github Repository](https://github.com/statsig-io/dotnet-sdk)
 
 ## Setup the SDK
 
@@ -18,123 +16,105 @@
   <Step title="Install the SDK">
     The package is hosted on [Nuget](https://www.nuget.org/packages/Statsig/). You can either install it from your Visual Studio's Nuget package manager, or through the NuGet CLI:
 
-    ```shell  theme={null}
+    ```bash  theme={null}
     nuget install Statsig
     ```
   </Step>
 
   <Step title="Initialize the SDK">
-    Next, initialize the SDK with a client SDK key from the ["API Keys" tab on the Statsig console](https://console.statsig.com/api_keys). These keys are safe to embed in a client application.
+    After installation, you will need to initialize the SDK using a [Server Secret Key from the Statsig console](https://console.statsig.com/api_keys).
 
-    Along with the key, pass in a [User Object](#statsig-user) with the attributes you'd like to target later on in a gate or experiment.
+    <Warning>
+      Do NOT embed your Server Secret Key in client-side applications, or expose it in any external-facing documents. However, if you accidentally expose it, you can create a new one in the Statsig console.
+    </Warning>
 
     ```csharp  theme={null}
     using Statsig;
-    using Statsig.Client;
+    using Statsig.Server;
 
-    await StatsigClient.Initialize(
-        "client-sdk-key",
-        new StatsigUser { UserID = "some_user_id", Email = "user@email.com" },
-        new StatsigOptions(new StatsigEnvironment(EnvironmentTier.Development)) // optional, use when needed to customize certain behaviors
+    await StatsigServer.Initialize(
+        "server-secret-key",
+        // optionally customize the SDKs configuration via StatsigOptions
+        new StatsigOptions(
+            environment: new StatsigEnvironment(EnvironmentTier.Development)
+        )
     );
     ```
+
+    `initialize` will perform a network request. After `initialize` completes, virtually all SDK operations will be synchronous (See [Evaluating Feature Gates in the Statsig SDK](https://blog.statsig.com/evaluating-feature-gates-in-the-statsig-sdk-a6f8881a1ad8)). The SDK will fetch updates from Statsig in the background, independently of your API calls.
   </Step>
 </Steps>
 
-## Use the SDK
+## Working with the SDK
 
-### Checking a Feature Flag/Gate
+## Checking a Feature Flag/Gate
 
-Now that your SDK is initialized, let's check a [**Feature Gate**](/feature-flags/overview). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
+Now that your SDK is initialized, let's fetch a [**Feature Gate**](/feature-flags/overview). Feature Gates can be used to create logic branches in code that can be rolled out to different users from the Statsig Console. Gates are always **CLOSED** or **OFF** (think `return false;`) by default.
+
+From this point on, all APIs will require you to specify the user (see [Statsig user](#statsig-user)) associated with the request. For example, check a gate for a certain user like this:
 
 ```csharp  theme={null}
-if (StatsigClient.CheckGate("new_homepage_design"))
+var user = new StatsigUser { UserID = "some_user_id", Email = "user@email.com" };
+var useNewFeature = await StatsigServer.CheckGate(user, "use_new_feature");
+if (useNewFeature)
 {
-  // Gate is on, show new home page
+  // Gate is on, enable new feature
 }
 else
 {
-  // Gate is off, show old home page
+  // Gate is off
 }
 ```
 
-### Reading a Dynamic Config
+## Reading a Dynamic Config
 
-Feature Gates can be very useful for simple on/off switches, with optional but advanced user targeting. However, if you want to be able send a different set of values (strings, numbers, and etc.) to your clients based on specific user attributes, e.g. country, **Dynamic Configs** can help you with that. The API is very similar to Feature Gates, but you get an entire json object you can configure on the server and you can fetch typed parameters from it. For example:
+Feature Gates can be very useful for simple on/off switches, with optional but advanced user targeting. However, if you want to be able send a different set of values (strings, numbers, and etc.) to your clients based on specific user attributes, e.g. country, [**Dynamic Configs**](/dynamic-config) can help you with that. The API is very similar to Feature Gates, but you get an entire json object you can configure on the server and you can fetch typed parameters from it.
 
 ```csharp  theme={null}
-DynamicConfig config = StatsigClient.GetConfig("awesome_product_details");
-
-// The 2nd parameter is the default value to be used in case the given parameter name does not exist on
-// the Dynamic Config object. This can happen when there is a typo, or when the user is offline and the
-// value has not been cached on the client.
-string itemName = config.Get<string>("product_name", "Awesome Product v1");
-double price = config.Get<double>("price", 10.0);
-bool shouldDiscount = config.Get<bool>("discount", false);
+var config = await StatsigServer.GetConfig(user, "awesome_product_details");
+var itemName = config.Get<string>("product_name", "Awesome Product v1");
+var price = config.Get<double>("price", 10.0);
 ```
 
-### Getting a Layer/Experiment
+## Getting a Layer/Experiment
 
 Then we have **Layers/Experiments**, which you can use to run A/B/n experiments. We offer two APIs, but we recommend the use of [layers](/layers) to enable quicker iterations with parameter reuse.
 
 ```csharp  theme={null}
-// Values via getLayer
+// Values via GetLayer
+var layer = await StatsigServer.GetLayer(user, "user_promo_experiments");
+var title = layer.Get<string>("title", "Welcome to Statsig!");
+var discount = layer.Get<double>("discount", 0.1);
 
-Layer layer = StatsigClient.GetLayer("user_promo_experiments");
-var promoTitle = layer.Get("title", "Welcome to Statsig!");
-var discount = layer.Get("discount", 0.1);
+// or, via GetExperiment
+var experiment = await StatsigServer.GetExperiment(user, "new_user_promo");
+var expTitle = experiment.Get<string>("title", "Welcome to Statsig!");
+var expDiscount = experiment.Get<double>("discount", 0.1);
 
-// or, via getExperiment
-
-DynamicConfig  titleExperiment = StatsigClient.GetExperiment("new_user_promo_title");
-DynamicConfig  priceExperiment = StatsigClient.GetExperiment("new_user_promo_price");
-
-var promoTitle = titleExperiment.Get("title", "Welcome to Statsig!");
-var discount = priceExperiment.Get("discount", 0.1);
-
-...
-
-double price = msrp * (1 - discount);
+var price = msrp * (1 - discount);
 ```
 
-### Logging an Event
+## Logging an Event
 
-Now that you have a Feature Gate or an Experiment set up, you may want to track some custom events and see how your new features or different experiment groups affect these events. This is super easy with Statsig - simply call the Log Event API for the event, and you can additionally provide some value and/or an object of metadata to be logged together with the event:
+Now that you have a Feature Gate or an Experiment set up, you may want to track some custom events and see how your new features or different experiment groups affect these events. This is super easy with Statsig - simply call the Log Event API and specify the user and event name to log; you additionally provide some value and/or an object of metadata to be logged together with the event:
 
 ```csharp  theme={null}
-StatsigClient.LogEvent(
-    "add_to_cart",
-    "SKU_12345",
-    new Dictionary<string, string>() {
+StatsigServer.LogEvent(user, "add_to_cart", "SKU_12345", 
+    new Dictionary<string, string> {
         { "price", "9.99" },
         { "item_name", "diet_coke_48_pack" }
-    }
-);
+    });
 ```
+
+Learn more about identifying users, group analytics, and best practices for logging events in the [logging events guide](/guides/logging-events).
 
 ## Statsig User
 
-You need to provide a StatsigUser object to check/get your configurations. You should pass as much
-information as possible in order to take advantage of advanced gate and config conditions.
+When calling APIs that require a user, you should pass as much information as possible in order to take advantage of advanced gate and config conditions (like country or OS/browser level checks), and correctly measure impact of your experiments on your metrics/events. As explained [here](/sdks/user#why-is-an-id-always-required-for-server-sdks), at least one identifier (userID or customID) is required to provide a consistent experience for a given user.
 
-Most of the time, the `userID` field is needed in order to provide a consistent experience for a given
-user (see [logged-out experiments](/guides/first-device-level-experiment) to understand how to correctly run experiments for logged-out
-users).
+Besides `userID`, we also have `email`, `ip`, `userAgent`, `country`, `locale` and `appVersion` as top-level fields on StatsigUser. In addition, you can pass any key-value pairs in an object/dictionary to the `custom` field and be able to create targeting based on them.
 
-Besides `userID`, we also have `email`, `ip`, `userAgent`, `country`, `locale` and `appVersion` as top-level fields on
-StatsigUser. In addition, you can pass any key-value pairs in an object/dictionary to the `custom` field and be able to
-create targeting based on them.
-
-Once the user logs in or has an update/changed, make sure to call `updateUser`
-with the updated `userID` and/or any other updated user attributes:
-
-```csharp  theme={null}
-// if you want to update the existing user, or change to a different user, call updateUser
-
-await StatsigClient.UpdateUser(
-    new StatsigUser { UserID = "new_user_id", Email = "new_user@email.com" },
-);
-```
+Note that while typing is lenient on the `StatsigUser` object to allow you to pass in numbers, strings, arrays, objects, and potentially even enums or classes, the evaluation operators will only be able to operate on primitive types - mostly strings and numbers. While we attempt to smartly cast custom field types to match the operator, we cannot guarantee evaluation results for other types. For example, setting an array as a custom field will only ever be compared as a string - there is no operator to match a value in that array.
 
 ### Private Attributes
 
@@ -142,39 +122,13 @@ Have sensitive user PII data that should not be logged? No problem, we have a so
 
 For example, if you have feature gates that should only pass for users with emails ending in "@statsig.com", but do not want to log your users' email addresses to Statsig, you can simply add the key-value pair `{ email: "my_user@statsig.com" }` to `privateAttributes` on the user and that's it!
 
-## Statsig Options
+## Shutdown
 
-`Initialize()` takes an optional parameter `options` in addition to `sdkKey` and `user` that you can provide to customize the Statsig client.
-
-<ResponseField name="environment" type="StatsigEnvironment" default="null">
-  Set environment variables that apply to all users in the session for targeting purposes.
-  Commonly used to set the environment tier, e.g. `new StatsigEnvironment(EnvironmentTier.Staging)`.
-</ResponseField>
-
-<ResponseField name="ClientRequestTimeoutMs" type="int" default="0">
-  Maximum milliseconds to wait for `/initialize` before proceeding with cached/default values.
-</ResponseField>
-
-<ResponseField name="PersistentStorageFolder" type="string" default="null">
-  Directory path for persistent storage of cached values and logs.
-</ResponseField>
-
-## Shutting Statsig Down
-
-In order to save users' data and battery usage, as well as prevent logged events from being dropped, we keep event logs in client cache and flush periodically.
-Because of this, some events may not have been sent when your app shuts down.
-
-To make sure all logged events are properly flushed or saved locally, you should tell Statsig to shutdown when your app is closing:
+To gracefully shutdown the SDK and ensure all events are flushed:
 
 ```csharp  theme={null}
-StatsigClient.Shutdown();
+await StatsigServer.Shutdown();
 ```
-
-## FAQs
-
-#### How do I run experiments for logged out users?
-
-See the guide on [device level experiments](/client/concepts/user#device-level-experiments)
 
 
 Built with [Mintlify](https://mintlify.com).

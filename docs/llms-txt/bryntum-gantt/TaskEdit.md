@@ -1,459 +1,161 @@
-# Source: https://bryntum.com/products/gantt/docs-llm/api/SchedulerPro/feature/TaskEdit.md
+# Source: https://bryntum.com/products/gantt/docs-llm/guide/Gantt/customization/taskedit.md
 
-# Source: https://bryntum.com/products/gantt/docs-llm/api/Gantt/feature/TaskEdit.md
+# Customizing the task editor
 
-# [TaskEdit](https://bryntum.com/docs/gantt/api/Gantt/feature/TaskEdit)
+Bryntum Gantt ships with a built-in [TaskEditor](#Gantt/widget/TaskEditor),
+double-click the task in the demo below to see it in action:
 
-Feature that allows editing tasks using a [TaskEditor](https://bryntum.com/docs/gantt/api/#Gantt/widget/TaskEditor), a popup with fields for editing task data.
+<div class="external-example" data-file="Gantt/guides/taskedit/basic.js"></div>
 
-This demo shows the task edit feature, double-click child task bar to start editing:
+The editor can be customized, turned off or replaced with your own editor.
 
-Customizing tabs and their widgets
-----------------------------------
+## Turning the editor off entirely
 
-To customize tabs you can:
+The task editor is supplied by a feature called [TaskEdit](#Gantt/feature/TaskEdit), which is enabled by default.
+To turn it off, configure the feature with `false`:
 
-* Reconfigure built-in tabs by providing override configs in the [items](https://bryntum.com/docs/gantt/api/#Gantt/feature/TaskEdit#config-items) config.
-* Remove existing tabs or add your own in the [items](https://bryntum.com/docs/gantt/api/#Gantt/feature/TaskEdit#config-items) config.
-* Advanced: Reconfigure the whole editor widget using [editorConfig](https://bryntum.com/docs/gantt/api/#Gantt/feature/TaskEdit#config-editorConfig) or replace the whole editor using [editorClass](https://bryntum.com/docs/gantt/api/#Gantt/feature/TaskEdit#config-editorClass).
+```javascript
+const gantt = new Gantt({
+    features : {
+        taskEdit : false
+    }
+});
+```
 
-This example shows a custom Task Editor configuration. The built-in "Notes" tab is hidden, a custom "Files" tab is added, the "General" tab is renamed to "Common" and "Custom" field is appended to it. Double-click on a task bar to start editing:
+## Enabling or disabling the editor
 
-To add extra items to a tab you need to specify [items](https://bryntum.com/docs/gantt/api/#Core/widget/Container#config-items) for the tab container. This example shows custom widgets added to "General" tab:
+You can also enable or disable the editor programmatically, perhaps as a response to a login:
 
-Note that object notation is used to specify all built-in items in the tabs in the editor, thus object notation has to be used to manipulate them - array notation is not supported.
+```javascript
+const gantt = new Gantt({
+    features : {
+        taskEdit : {
+            // Start disabled
+            disabled : true
+        }
+    }
+});
 
-Expand to see Default tabs and fields
--------------------------------------
+// To enable
+gantt.features.taskEdit.disabled = false;
 
-The [Task editor](https://bryntum.com/docs/gantt/api/#Gantt/widget/TaskEditor) contains tabs by default. Each tab is a container with built-in widgets: text fields, grids, etc.
+// To disable again
+gantt.features.taskEdit.disabled = true;
+```
 
-Tab ref
+Try it in the demo below:
 
-Type
+<div class="external-example" data-file="Gantt/guides/taskedit/disable.js"></div>
 
-Text
+## Customizing the tabs and the fields
 
-Weight
+The Task editor contains tabs by default. Each tab is a container with built-in widgets: text fields, grids, etc.
+Existing tabs can be changed or removed and new tabs can be added, as well as existing fields in the tabs can be changed
+or removed and new fields can be added. This is handled using the [`items`](#Gantt/feature/TaskEdit#config-items)
+config of the feature.
 
-Description
+### Default tabs and fields
 
-`generalTab`
+Here is the list of the built-in tabs
 
-[GeneralTab](https://bryntum.com/docs/gantt/api/#SchedulerPro/widget/taskeditor/GeneralTab)
-
-General
-
-100
-
-Name, start/end dates, duration, percent done, effort.
-
-`predecessorsTab`
-
-[PredecessorsTab](https://bryntum.com/docs/gantt/api/#SchedulerPro/widget/taskeditor/PredecessorsTab)
-
-Predecessors
-
-200
-
-Grid with incoming dependencies
-
-`successorsTab`
-
-[SuccessorsTab](https://bryntum.com/docs/gantt/api/#SchedulerPro/widget/taskeditor/SuccessorsTab)
-
-Successors
-
-300
-
-Grid with outgoing dependencies
-
-`resourcesTab`
-
-[ResourcesTab](https://bryntum.com/docs/gantt/api/#SchedulerPro/widget/taskeditor/ResourcesTab)
-
-Resources
-
-400
-
-Grid with assigned resources
-
-`advancedTab`
-
-[AdvancedTab](https://bryntum.com/docs/gantt/api/#SchedulerPro/widget/taskeditor/AdvancedTab)
-
-Advanced
-
-500
-
-Assigned calendar, scheduling mode, constraints, etc.
-
-`notesTab`
-
-[NotesTab](https://bryntum.com/docs/gantt/api/#SchedulerPro/widget/taskeditor/NotesTab)
-
-Notes
-
-600
-
-Text area to add notes to the selected task
+| Tab ref           | Text         | Weight | Description                                                                         |
+|-------------------|--------------|--------|-------------------------------------------------------------------------------------|
+| `generalTab`      | General      | 100    | Shows basic configuration: name, start/end dates, duration, percent done, effort.   |
+| `predecessorsTab` | Predecessors | 200    | Shows a grid with incoming dependencies                                             |
+| `successorsTab`   | Successors   | 300    | Shows a grid with outgoing dependencies                                             |
+| `resourcesTab`    | Resources    | 400    | Shows a grid with assigned resources to the selected task                           |
+| `advancedTab`     | Advanced     | 500    | Shows advanced configuration: assigned calendar, scheduling mode, constraints, etc. |
+| `notesTab`        | Notes        | 600    | Shows a text area to add notes to the selected task                                 |
 
 ### General tab
 
-General tab contains widgets for basic configurations
+General tab contains fields for basic configurations
 
-Widget ref
-
-Type
-
-Text
-
-Weight
-
-Description
-
-`name`
-
-[TextField](https://bryntum.com/docs/gantt/api/#Core/widget/TextField)
-
-Name
-
-100
-
-Task name
-
-`percentDone`
-
-[NumberField](https://bryntum.com/docs/gantt/api/#Core/widget/NumberField)
-
-% Complete
-
-200
-
-Shows what part of task is done already in percentage
-
-`effort`
-
-[EffortField](https://bryntum.com/docs/gantt/api/#SchedulerPro/widget/EffortField)
-
-Effort
-
-300
-
-Amount of working time required to complete the whole task
-
-`divider`
-
-[Widget](https://bryntum.com/docs/gantt/api/#Core/widget/Widget)
-
-400
-
-Visual splitter between 2 groups of fields
-
-`startDate`
-
-[StartDateField](https://bryntum.com/docs/gantt/api/#SchedulerPro/widget/StartDateField)
-
-Start
-
-500
-
-Shows when the task begins
-
-`endDate`
-
-[EndDateField](https://bryntum.com/docs/gantt/api/#SchedulerPro/widget/EndDateField)
-
-Finish
-
-600
-
-Shows when the task ends
-
-`duration`
-
-[DurationField](https://bryntum.com/docs/gantt/api/#Core/widget/DurationField)
-
-Duration
-
-700
-
-Shows how long the task is
-
-`colorField` ¹
-
-[EventColorField](https://bryntum.com/docs/gantt/api/#Scheduler/widget/EventColorField)
-
-Color ¹
-
-800
-
-Choose background color for the task bar
-
-**¹** Set the [showTaskColorPickers](https://bryntum.com/docs/gantt/api/#Gantt/view/GanttBase#config-showTaskColorPickers) config to `true` to enable this field
+| Field ref     | Type          | Text       | Weight | Description                                                        |
+|---------------|---------------|------------|--------|--------------------------------------------------------------------|
+| `name`        | TextField     | Name       | 100    | Task name                                                          |
+| `percentDone` | NumberField   | % Complete | 200    | Shows what part of task is done already in percentage              |
+| `effort`      | DurationField | Effort     | 300    | Shows how much working time is required to complete the whole task |
+| `divider`     | Widget        |            | 400    | Visual splitter between 2 groups of fields                         |
+| `startDate`   | DateField     | Start      | 500    | Shows when the task begins                                         |
+| `endDate`     | DateField     | Finish     | 600    | Shows when the task ends                                           |
+| `duration`    | NumberField   | Duration   | 700    | Shows how long the task is                                         |
 
 ### Predecessors tab
 
 Predecessors tab contains a grid with incoming dependencies and controls to remove/add dependencies
 
-Widget ref
+| Widget ref | Type    | Weight | Description                                                                                      |
+|------------|---------|--------|--------------------------------------------------------------------------------------------------|
+| `grid`     | Grid    | 100    | Shows predecessors task name, dependency type and lag                                            |
+| `toolbar`  | Toolbar | 200    | Shows control buttons                                                                            |
+| \>`add`    | Button  | 210    | Adds a new dummy predecessor. Then need to select a task from the list in the name column editor |
+| \>`remove` | Button  | 220    | Removes selected incoming dependency                                                             |
 
-Type
-
-Weight
-
-Description
-
-`grid`
-
-[Grid](https://bryntum.com/docs/gantt/api/#Grid/view/Grid)
-
-100
-
-Predecessors task name, dependency type and lag
-
-`toolbar`
-
-[Toolbar](https://bryntum.com/docs/gantt/api/#Core/widget/Toolbar)
-
-200
-
-Control buttons
-
-\>`add`
-
-[Button](https://bryntum.com/docs/gantt/api/#Core/widget/Button)
-
-210
-
-Adds a new predecessor, select task using the name column editor
-
-\>`remove`
-
-[Button](https://bryntum.com/docs/gantt/api/#Core/widget/Button)
-
-220
-
-Removes selected incoming dependency
-
-\>
-
-first level of submenu
+<dl class="foot-note">
+    <dt>></dt><dd>first level of submenu</dd>
+</dl>
 
 ### Successors tab
 
 Successors tab contains a grid with outgoing dependencies and controls to remove/add dependencies
 
-Widget ref
+| Widget ref | Type    | Weight | Description                                                                                    |
+|------------|---------|--------|------------------------------------------------------------------------------------------------|
+| `grid`     | Grid    | 100    | Shows successors task name, dependency type and lag                                            |
+| `toolbar`  | Toolbar | 200    | Shows control buttons                                                                          |
+| \>`add`    | Button  | 210    | Adds a new dummy successor. Then need to select a task from the list in the name column editor |
+| \>`remove` | Button  | 220    | Removes selected outgoing dependency                                                           |
 
-Type
-
-Weight
-
-Description
-
-`grid`
-
-[Grid](https://bryntum.com/docs/gantt/api/#Grid/view/Grid)
-
-100
-
-Successors task name, dependency type and lag
-
-`toolbar`
-
-[Toolbar](https://bryntum.com/docs/gantt/api/#Core/widget/Toolbar)
-
-200
-
-Control buttons
-
-\>`add`
-
-[Button](https://bryntum.com/docs/gantt/api/#Core/widget/Button)
-
-210
-
-Adds a new successor, select task using the name column editor
-
-\>`remove`
-
-[Button](https://bryntum.com/docs/gantt/api/#Core/widget/Button)
-
-220
-
-Removes selected outgoing dependency
-
-\>
-
-first level of submenu
+<dl class="foot-note">
+    <dt>></dt><dd>first level of submenu</dd>
+</dl>
 
 ### Resources tab
 
 Resources tab contains a grid with assignments
 
-Widget ref
+| Widget ref | Type    | Weight | Description                                                                                                                           |
+|------------|---------|--------|---------------------------------------------------------------------------------------------------------------------------------------|
+| `grid`     | Grid    | 100    | Shows assignments resource name and assigned units (100 means that the assigned resource spends 100% of its working time to the task) |
+| `toolbar`  | Toolbar | 200    | Shows control buttons                                                                                                                 |
+| \>`add`    | Button  | 210    | Adds a new dummy assignment. Then need to select a resource from the list in the name column editor                                   |
+| \>`remove` | Button  | 220    | Removes selected assignment                                                                                                           |
 
-Type
-
-Weight
-
-Description
-
-`grid`
-
-[Grid](https://bryntum.com/docs/gantt/api/#Grid/view/Grid)
-
-100
-
-Assignments resource name and units (100 means that the assigned resource spends 100% of its working time to the task)
-
-`toolbar`
-
-[Toolbar](https://bryntum.com/docs/gantt/api/#Core/widget/Toolbar)
-
-200
-
-Shows control buttons
-
-\>`add`
-
-[Button](https://bryntum.com/docs/gantt/api/#Core/widget/Button)
-
-210
-
-Adds a dummy assignment, select resource using the name column editor
-
-\>`remove`
-
-[Button](https://bryntum.com/docs/gantt/api/#Core/widget/Button)
-
-220
-
-Removes selected assignment
-
-\>
-
-first level of submenu
+<dl class="foot-note">
+    <dt>></dt><dd>first level of submenu</dd>
+</dl>
 
 ### Advanced tab
 
 Advanced tab contains additional task scheduling options
 
-Widget ref
-
-Type
-
-Weight
-
-Description
-
-`calendarField`
-
-[Combo](https://bryntum.com/docs/gantt/api/#Core/widget/Combo)
-
-100
-
-Shows a list of available calendars for this task
-
-`manuallyScheduledField`
-
-[Checkbox](https://bryntum.com/docs/gantt/api/#Core/widget/Checkbox)
-
-200
-
-If checked, the task is not considered in scheduling
-
-`schedulingModeField`
-
-[SchedulingModePicker](https://bryntum.com/docs/gantt/api/#SchedulerPro/widget/SchedulingModePicker)
-
-300
-
-Shows a list of available scheduling modes for this task
-
-`effortDrivenField`
-
-[Checkbox](https://bryntum.com/docs/gantt/api/#Core/widget/Checkbox)
-
-400
-
-If checked, the effort of the task is kept intact, and the duration is updated. Works when scheduling mode is "Fixed Units".
-
-`divider`
-
-[Widget](https://bryntum.com/docs/gantt/api/#Core/widget/Widget)
-
-500
-
-Visual splitter between 2 groups of fields
-
-`constraintTypeField`
-
-[ConstraintTypePicker](https://bryntum.com/docs/gantt/api/#SchedulerPro/widget/ConstraintTypePicker)
-
-600
-
-Shows a list of available constraints for this task
-
-`constraintDateField`
-
-[DateField](https://bryntum.com/docs/gantt/api/#Core/widget/DateField)
-
-700
-
-Shows a date for the selected constraint type
-
-`rollupField`
-
-[Checkbox](https://bryntum.com/docs/gantt/api/#Core/widget/Checkbox)
-
-800
-
-If checked, shows a bar below the parent task. Works when the "Rollup" feature is enabled.
-
-`inactiveField`
-
-[Checkbox](https://bryntum.com/docs/gantt/api/#Core/widget/Checkbox)
-
-900
-
-Allows to inactivate the task so it won't take part in the scheduling process.
-
-`ignoreResourceCalendarField`
-
-[Checkbox](https://bryntum.com/docs/gantt/api/#Core/widget/Checkbox)
-
-1000
-
-If checked the task ignores the assigned resource calendars when scheduling
+| Field ref                     | Type          | Weight |  Description                                                                                                                 |
+|-------------------------------|---------------|--------|------------------------------------------------------------------------------------------------------------------------------|
+| `calendarField`               | CalendarField | 100    | Shows a list of available calendars for this task                                                                            |
+| `manuallyScheduledField`      | Checkbox      | 200    | If checked, the task is not considered in scheduling                                                                         |
+| `schedulingModeField`         | Combo         | 300    | Shows a list of available scheduling modes for this task                                                                     |
+| `effortDrivenField`           | Checkbox      | 400    | If checked, the effort of the task is kept intact, and the duration is updated. Works when scheduling mode is "Fixed Units". |
+| `divider`                     | Widget        | 500    | Visual splitter between 2 groups of fields                                                                                   |
+| `constraintTypeField`         | Combo         | 600    | Shows a list of available constraints for this task                                                                          |
+| `constraintDateField`         | DateField     | 700    | Shows a date for the selected constraint type                                                                                |
+| `rollupField`                 | Checkbox      | 800    | If checked, shows a bar below the parent task. Works when the "Rollup" feature is enabled.                                   |
+| `inactiveField`               | Checkbox      | 900    | Allows to inactivate the task so it won't take part in the scheduling process.                                               |
+| `ignoreResourceCalendarField` | Checkbox      | 1000   | If checked the task ignores the assigned resource calendars when scheduling                                                  |
 
 ### Notes tab
 
 Notes tab contains a text area to show notes
 
-Field ref
+| Field ref   | Type          | Weight | Description                                     |
+|-------------|---------------|--------|-------------------------------------------------|
+| `noteField` | TextAreaField | 100    | Shows a text area to add text notes to the task |
 
-Type
+### Removing default tabs and fields
 
-Weight
+To remove a built-in tab or field, specify its `ref` as `false` in the `items` config:
 
-Description
-
-`noteField`
-
-[TextAreaField](https://bryntum.com/docs/gantt/api/#Core/widget/TextAreaField)
-
-100
-
-Shows a text area to add text notes to the task
-
-Removing a built-in item
-------------------------
-
-To remove a built-in tab or widget, specify its `ref` as `false` in the [items](https://bryntum.com/docs/gantt/api/#Gantt/feature/TaskEdit#config-items) config:
-
-```
+```javascript
 const gantt = new Gantt({
     features : {
         taskEdit : {
@@ -478,64 +180,22 @@ const gantt = new Gantt({
 })
 ```
 
-The built-in buttons are:
+This demo has "% Complete" and "Effort" fields removed in the "General" tab, as well as
+"Predecessors", "Successors", "Resources", "Advanced", and "Notes" tabs removed:
 
-Widget ref
+<div class="external-example" data-file="Gantt/guides/taskedit/remove.js"></div>
 
-Type
+### Customize default tabs and fields
 
-Weight
+To customize a built-in tab or field, use its `ref` as the key in the `items` config and specify the configs you want
+to change (they will be merged with the tabs or fields default configs correspondingly).
 
-Description
+The order of the default fields is determined by a `weight`. The higher the `weight`, the further down they are
+displayed. See the tables above for the default weights.
 
-`saveButton`
+For example to change the label of the `percentDone` and rename "General" tab:
 
-[Button](https://bryntum.com/docs/gantt/api/#Core/widget/Button)
-
-100
-
-Save event button on the bbar
-
-`deleteButton`
-
-[Button](https://bryntum.com/docs/gantt/api/#Core/widget/Button)
-
-200
-
-Delete event button on the bbar
-
-`cancelButton`
-
-[Button](https://bryntum.com/docs/gantt/api/#Core/widget/Button)
-
-300
-
-Cancel event editing button on the bbar
-
-Bottom buttons may be hidden using `bbar` config passed to `editorConfig`:
-
-```
-const gantt = new Gantt({
-    features : {
-        taskEdit : {
-            editorConfig : {
-                bbar : {
-                    items : {
-                        deleteButton : false
-                    }
-                }
-            }
-        }
-    }
-})
-```
-
-Customizing a built-in item
----------------------------
-
-To customize a built-in tab or field, use its `ref` as the key in the [items](https://bryntum.com/docs/gantt/api/#Gantt/feature/TaskEdit#config-items) config and specify the configs you want to change (they will be merged with the tabs or fields default configs correspondingly):
-
-```
+```javascript
 const gantt = new Gantt({
     features : {
         taskEdit : {
@@ -544,7 +204,7 @@ const gantt = new Gantt({
                     // Rename "General" tab
                     title : 'Main',
                     items : {
-                        // Rename "% Complete" field
+                        // Rename "% Complete" field to "Status"
                         percentDone : {
                             label : 'Status'
                         }
@@ -556,12 +216,20 @@ const gantt = new Gantt({
 })
 ```
 
-Adding a custom item
---------------------
+Try it out in this demo:
 
-To add a custom tab or field, add an entry to the [items](https://bryntum.com/docs/gantt/api/#Gantt/feature/TaskEdit#config-items) config. When you add a field, the `name` property links the input field to a field in the loaded task record:
+<div class="external-example" data-file="Gantt/guides/taskedit/label.js"></div>
 
-```
+### Add custom tabs and fields
+
+Custom fields are added in the same way as you used to customize the built-in ones, add new properties to the `items`
+config of the feature to add new tabs. Add new properties to the `items` config of the tab to add new fields.
+The key you choose to use for your tabs and fields will be used as its `ref`, through
+which it can be accessed later.
+
+Here we add a custom field to "General" tab and create a custom tab with a field that shows the task name:
+
+```javascript
 const gantt = new Gantt({
     features : {
         taskEdit : {
@@ -600,75 +268,85 @@ const gantt = new Gantt({
 })
 ```
 
-Manipulating TaskEditor items at run time
------------------------------------------
+Try the custom tab here:
 
-To change input items depending upon the task being edited, use a [beforeTaskEditShow](https://bryntum.com/docs/gantt/api/#Gantt/feature/TaskEdit#event-beforeTaskEditShow) listener to access the [editor](https://bryntum.com/docs/gantt/api/#Gantt/widget/TaskEditor) instance.
+<div class="external-example" data-file="Gantt/guides/taskedit/tab.js"></div>
 
-The available widgets are described [here](https://bryntum.com/docs/gantt/api/#Gantt/feature/TaskEdit#expand-to-see-default-tabs-and-fields).
+## Replacing the Task editor
 
-The [editor](https://bryntum.com/docs/gantt/api/#Gantt/widget/TaskEditor) exposes all its descendant widgets in its [widgetMap](https://bryntum.com/docs/gantt/api/#Core/widget/Container#property-widgetMap).
+The easiest way to show a custom editor is to leave the built-in editor enabled, listen for when it is about to open,
+prevent that and show your own instead. Using this approach, you will catch the different paths leading to the editor
+being show without having to address them one by one (double-click, enter, drag create etc.).
 
-```
+Here is a simple implementation of the Task editor using our basic Popup component with a TextField and a Button inside.
+We set the task name to the text field and write it back to the record on the button click:
+
+```javascript
 const gantt = new Gantt({
-    features : {
-        taskEdit : true
-    },
     listeners : {
-        // When editing a parent task, the user may not edit the duration.
-        // When editing a leaf level task she may edit the duration.
-        beforeTaskEditShow({ taskRecord, editor }) {
-            if (taskRecord.isParent) {
-                editor.widgetMap.duration.disabled = true;
-            }
-            else {
-                editor.widgetMap.duration.disabled = false;
-            }
+        beforeTaskEdit({ taskRecord, taskElement }) {
+            // Show custom editor here!
+            const editor = new Popup({
+                forElement  : taskElement,
+                closeAction : 'destroy',
+                items       : {
+                    name : {
+                        type  : 'textfield',
+                        label : 'Name',
+                        value : taskRecord.name
+                    },
+                    save : {
+                        type    : 'button',
+                        text    : 'Save',
+                        color   : 'b-green',
+                        onClick : () => {
+                            taskRecord.name = editor.widgetMap.name.value;
+                            editor.close();
+                        }
+                    }
+                }
+            });
+
+            // Prevent built-in editor
+            return false;
         }
-    }
-});
-```
-
-To turn off the Task Editor just simple disable the feature.
-
-```
-const gantt = new Gantt({
-    features : {
-        taskEdit : false
     }
 })
 ```
 
-For more info on customizing the Task Editor, please see Guides/Customization/Customize task editor
+This custom task editor is shown in action here:
 
-This feature is **enabled** by default.
+<div class="external-example" data-file="Gantt/guides/taskedit/replace.js"></div>
 
-## Configs
+## Update custom fields state and data
 
-Configs are options you supply in a configuration object when creating an instance of this class
+Task Editor uses `items` configuration only once during first initialization. If you need to refresh data in combobox or hide/show fields depending on your business logic on editor reopen, use [beforeTaskEditShow](#Gantt/feature/TaskEdit#event-beforeTaskEditShow) event:
 
-[triggerEvent](https://bryntum.com/docs/gantt/api/Gantt/feature/TaskEdit#config-triggerEvent)
-The event that shall trigger showing the editor. Set to \`\` or null to disable editing of existing events.
+```javascript
+const gantt = new Gantt({
+    features : {
+        taskEdit : {
+            items : {
+                equipment : {
+                    // custom field configuration
+                },
+                volume : {
+                    // custom field configuration
+                }
+            }
+        }
+    },
+    listeners : {
+        beforeTaskEditShow({ editor, taskRecord }) {
+            const
+                equipmentCombo = editor.widgetMap.equipment,
+                volumeField = editor.widgetMap.volume;
 
-[editorClass](https://bryntum.com/docs/gantt/api/Gantt/feature/TaskEdit#config-editorClass)
-Class to use as the editor. By default it uses [TaskEditor](https://bryntum.com/docs/gantt/api/#Gantt/widget/TaskEditor)
-
-## Properties
-
-Properties are getters/setters or publicly accessible variables on this class
-
-[isTaskEdit](https://bryntum.com/docs/gantt/api/Gantt/feature/TaskEdit#property-isTaskEdit)
-Identifies an object as an instance of [TaskEdit](https://bryntum.com/docs/gantt/api/#Gantt/feature/TaskEdit) class, or subclass thereof.
-
-[isTaskEdit](https://bryntum.com/docs/gantt/api/Gantt/feature/TaskEdit#property-isTaskEdit-static)
-Identifies an object as an instance of [TaskEdit](https://bryntum.com/docs/gantt/api/#Gantt/feature/TaskEdit) class, or subclass thereof.
-
-[editor](https://bryntum.com/docs/gantt/api/Gantt/feature/TaskEdit#property-editor)
-The editor widget used for editing task details. Provides an interface to modify task properties within the Gantt.
-
-## Functions
-
-Functions are methods available for calling on the class
-
-[editTask](https://bryntum.com/docs/gantt/api/Gantt/feature/TaskEdit#function-editTask)
-Shows a [TaskEditor](https://bryntum.com/docs/gantt/api/#Gantt/widget/TaskEditor) to edit the passed task. This function is exposed on the Gantt instance and can be called as `gantt.editTask()`.
+            // update data in combo list
+            equipmentCombo.items = this.equipmentStore.getRange();
+            // update field visibility state
+            volumeField.hidden = !taskRecord.hasVolume;
+        }
+    }
+});
+```

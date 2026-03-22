@@ -1,44 +1,88 @@
-# Source: https://docs.mage.ai/production/deploying-to-cloud/secrets/Azure.md
+# Source: https://docs.mage.ai/production/executors/azure.md
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.mage.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Azure Key Vault
+# Azure Container Instance executor
 
-### YAML
+> Execute block runs in separate container instances.
 
-To use secrets in YAML files (e.g. in data integration pipelines):
+export const urls = {
+  chat: 'https://www.mage.ai/chat',
+  oss: 'https://www.mage.ai/oss',
+  pro: 'https://cloud.mage.ai/sign-up'
+};
 
-1. Add the following keys and values to your environment variables so that
-   Mage can access the Azure Key Vault:
-   1. `AZURE_KEY_VAULT_URL`: The Azure Key Vault URI.
-   2. `AZURE_CLIENT_ID`: Azure Active Directory [client ID](https://learn.microsoft.com/en-us/azure/active-directory/develop/msal-client-application-configuration#client-id).
-   3. `AZURE_CLIENT_SECRET`: Azure Active Directory [client secret](https://learn.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app#add-a-client-secret).
-   4. `AZURE_TENANT_ID`: Azure Active Directory [tenant ID](https://learn.microsoft.com/en-us/azure/azure-portal/get-subscription-tenant-id#find-your-azure-ad-tenant).
-2. Store a secret in Azure Key Vault.
-3. Use the following syntax in your YAML file to interpolate secret values from Azure Key Vault:
+export const ProButton = ({href, label = 'Get started with Mage Pro for free', source = 'documentation'}) => <div style={{
+  height: 32,
+  position: 'relative'
+}}>
+    <a target="_blank" className="group px-4 py-1.5 relative inline-flex items-center text-sm font-medium rounded-full" href={href ?? `https://cloud.mage.ai/sign-up?source=${source}`}>
+      <span className="absolute inset-0 bg-primary-dark dark:bg-primary-light/10 border-primary-light/30 rounded-full dark:border group-hover:opacity-[0.9] dark:group-hover:border-primary-light/60">
+      </span>
 
-   ```yaml  theme={"system"}
-   "{{ azure_secret_var('secret_name') }}"
-   ```
+      <div className="mr-0.5 space-x-2.5 flex items-center">
+        <span class="z-10 text-white dark:text-primary-light">
+          {label}
+        </span>
 
-   For example:
+        <svg width="3" height="24" viewBox="0 -9 3 24" class="h-5 rotate-0 overflow-visible text-white/90 dark:text-primary-light">
+          <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+        </svg>
+      </div>
+    </a>
+  </div>;
 
-   ```yaml  theme={"system"}
-   api_key: "{{ azure_secret_var('API_KEY') }}"
-   access_token: "{{ azure_secret_var('ACCESS_TOKEN') }}"
-   ```
+If your Mage app is deployed on Microsoft Azure with Mage’s [Terraform](https://github.com/mage-ai/mage-ai-terraform-templates/tree/master/azure)
+scripts, you can choose to launch separate Azure container instances to execute blocks.
 
-### Python
+How to configure pipeline to use Azure Container Instance executor:
 
-Here is the example python code to get secrets from Azure Key Vault:
+1. Update Project's metadata.yaml
 
-```python  theme={"system"}
-from mage_ai.services.azure.key_vault.key_vault import get_secret
-
-get_secret('secret_name')
+```yaml  theme={"system"}
+azure_container_instance_config:
+  cpu: 1
+  memory: 2
 ```
+
+2. Update the `executor_type` of the block to `azure_container_instance` in pipeline's metadata.yaml and specify `executor_config` optionally.
+   The block level executor\_config will override the global executor\_config.
+
+```yaml  theme={"system"}
+blocks:
+- uuid: example_data_loader
+  type: data_loader
+  upstream_blocks: []
+  downstream_blocks: []
+  executor_type: azure_container_instance
+  executor_config:
+    cpu: 1
+    memory: 2
+  ...
+```
+
+***
+
+## Resource management
+
+<Card title="Get started for free" href={`${urls.pro}?source=azure-executor`}>
+  <img src="https://mage-ai.github.io/assets/pro/banner-light.png" className="hidden dark:block" noZoom />
+
+  <img src="https://mage-ai.github.io/assets/pro/banner-dark.png" className="block dark:hidden" noZoom />
+
+  <br />
+
+  A fully managed service, where we maintain the infrastructure, guarantee uptime,
+  automatically scale your workloads to handle any volume of pipeline runs,
+  automatically upgrade new versions of Mage Pro only features,
+  monitor your production pipelines, and provide enterprise level support.
+</Card>
+
+<br />
+
+<ProButton source="azure-executor" />
 
 
 Built with [Mintlify](https://mintlify.com).

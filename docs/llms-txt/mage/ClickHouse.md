@@ -1,4 +1,6 @@
-# Source: https://docs.mage.ai/integrations/databases/ClickHouse.md
+# Source: https://docs.mage.ai/guides/streaming/destinations/clickhouse.md
+
+# Source: https://docs.mage.ai/data-integrations/destinations/clickhouse.md
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.mage.ai/llms.txt
@@ -6,139 +8,68 @@
 
 # ClickHouse
 
-<img alt="ClickHouse — open source distributed column-oriented DBMS" src="https://clickhouse.com/images/ch_gh_logo_rounded.png" height="200" />
+> How to configure ClickHouse as a destination in Mage to write data to a ClickHouse database.
 
-## Add credentials
-
-1. Create a new pipeline or open an existing pipeline.
-2. Expand the left side of your screen to view the file browser.
-3. Scroll down and click on a file named `io_config.yaml`.
-4. Enter the following keys and values under the key named `default` (you can
-   have multiple profiles, add it under whichever is relevant to you)
-
-```yaml  theme={"system"}
-version: 0.1.1
-default:
-  # ClickHouse
-  CLICKHOUSE_DATABASE: ...
-  CLICKHOUSE_HOST: ...
-  CLICKHOUSE_INTERFACE: http
-  CLICKHOUSE_PASSWORD: ...
-  CLICKHOUSE_PORT: 8123
-  CLICKHOUSE_USERNAME: ...
-```
+Configure **ClickHouse** as a Mage destination to write tabular data into a ClickHouse database using the SQLAlchemy driver.
 
 ***
 
-## Using SQL block
+## Configuration Parameters
 
-1. Create a new pipeline or open an existing pipeline.
-2. Add a data loader, transformer, or data exporter block.
-3. Select `SQL`.
-4. Under the `Data provider` dropdown, select `ClickHouse`.
-5. Under the `Profile` dropdown, select `default` (or the profile you added
-   credentials underneath).
-6. Enter the optional table name of the table to write to.
-7. Under the `Write policy` dropdown, select `Replace` or `Append` (please see
-   [SQL blocks guide](/guides/blocks/sql-blocks) for more information on write policies).
-8. Enter in this test query: `SELECT 1`.
-9. Run the block.
+Provide the following parameters to use ClickHouse as a destination:
+
+| Key              | Description                                                                                            | Example Value                             | Required |
+| ---------------- | ------------------------------------------------------------------------------------------------------ | ----------------------------------------- | -------- |
+| `sqlalchemy_url` | SQLAlchemy connection string used to connect to ClickHouse. Includes host, user, password, etc.        | `clickhouse://default:@localhost/default` | ✅        |
+| `table_name`     | (Optional) Name of the destination table to write data into. If omitted, the stream name will be used. | `abc123`                                  | ❌        |
 
 ***
 
-## Using Python block
+## SQLAlchemy URL Format
 
-1. Create a new pipeline or open an existing pipeline.
-2. Add a data loader, transformer, or data exporter block (the code snippet
-   below is for a data loader).
-3. Select `Generic (no template)`.
-4. Enter this code snippet (note: change the `config_profile` from `default` if
-   you have a different profile):
+The `sqlalchemy_url` should follow this structure:
 
-```python  theme={"system"}
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.clickhouse import ClickHouse
-from mage_ai.io.config import ConfigFileLoader
-from os import path
-from pandas import DataFrame
-
-if 'data_loader' not in globals():
-    from mage_ai.data_preparation.decorators import data_loader
-
-
-@data_loader
-def load_data_from_clickhouse(**kwargs) -> DataFrame:
-    query = 'SELECT 1'
-    config_path = path.join(get_repo_path(), 'io_config.yaml')
-    config_profile = 'default'
-
-    return ClickHouse.with_config(ConfigFileLoader(config_path, config_profile)).load(query)
+```
+clickhouse://<username>:<password>@<host>:<port>/<database>
 ```
 
-5. Run the block.
+**Examples:**
+
+* Without password (using default database):\
+  `clickhouse://default:@localhost/default`
+
+* With credentials:\
+  `clickhouse://user:pass123@127.0.0.1:9000/analytics_db`
+
+Ensure the database exists in ClickHouse before running the Mage pipeline.
 
 ***
 
-## Destination table in Data Exporter
+## Requirements
 
-If the destination table does not exist and the `Write policy` is set
-to `Replace`, `data exporter` will automatically create a table in `ClickHouse`
-with `Engine = Memory` and a default schema inferred from the data.
-However, this may not be optimal for various use cases. Since [table creation](https://clickhouse.com/docs/en/sql-reference/statements/create/table)
-in `ClickHouse` can involve numerous details, it is strongly advised to
-create the destination table manually before loading data to ensure it
-meets specific requirements.
+* The ClickHouse database must be reachable from the Mage environment.
+* Mage requires the [`clickhouse-connect`](https://pypi.org/project/clickhouse-connect/) Python package to be installed.
+* The target table should match the schema or allow dynamic schema creation depending on your setup.
 
-If generating the destination table via Mage export method, one can overwrite specific column types
-by using the `overwrite_types` dict setting.
+***
 
-Example:
+## FAQs
 
-```python  theme={"system"}
-overwrite_types = {'column_name': 'VARCHAR(255)'}
-```
+### Can I use a secure connection?
 
-Here is the ClickHouse data exporter code snippet that you can use:
+Yes. To use HTTPS or TLS-secured connections, ensure your SQLAlchemy URL includes the appropriate protocol and port, and that your ClickHouse server supports it.
 
-```python  theme={"system"}
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.clickhouse import ClickHouse
-from pandas import DataFrame
-from os import path
+### What happens if `table_name` is not provided?
 
-if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
+Mage will automatically use the stream name as the destination table name.
 
+***
 
-@data_exporter
-def export_data_to_clickhouse(df: DataFrame, **kwargs) -> None:
-    """
-    Template for exporting data to a Clickhouse database.
-    Specify your configuration settings in 'io_config.yaml'.
+## Related Resources
 
-    """
-    database = 'database_name'  # Specify the name of the schema to export data to
-    table_name = 'table_name'  # Specify the name of the table to export data to
-    config_path = path.join(get_repo_path(), 'io_config.yaml')
-    config_profile = 'default'
-
-    ClickHouse.with_config(ConfigFileLoader(config_path, config_profile)).export(
-        df,
-        table_name=table_name,
-        database=database,
-        index=False,  # Specifies whether to include index in exported table
-        if_exists='replace',  # Specify resolution policy if table name already exists
-        overwrite_types={'column_name': 'VARCHAR(255)'},  # Overwrite column types
-    )
-```
-
-### Method arguments
-
-| Field name       | Description                                            | Example values                                      |
-| ---------------- | ------------------------------------------------------ | --------------------------------------------------- |
-| if\_exists       | Specify resolution policy if table name already exists | "fail"/"replace"/"append" (default: "replace")      |
-| overwrite\_types | Overwrite the column types                             | `{'column1': 'VARCHAR(255)', 'column2': 'INTEGER'}` |
+* [ClickHouse SQLAlchemy Docs](https://clickhouse.com/docs/en/integrations/sqlalchemy)
+* [ClickHouse Official Documentation](https://clickhouse.com/docs/en/)
+* [clickhouse-connect PyPI Package](https://pypi.org/project/clickhouse-connect/)
 
 
 Built with [Mintlify](https://mintlify.com).

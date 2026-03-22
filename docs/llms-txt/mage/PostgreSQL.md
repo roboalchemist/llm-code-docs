@@ -1,4 +1,6 @@
-# Source: https://docs.mage.ai/integrations/databases/PostgreSQL.md
+# Source: https://docs.mage.ai/data-integrations/sources/postgresql.md
+
+# Source: https://docs.mage.ai/data-integrations/destinations/postgresql.md
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.mage.ai/llms.txt
@@ -6,253 +8,61 @@
 
 # PostgreSQL
 
-export const ProOnly = ({button = 'Get started for free', description = 'Try our fully managed solution to access this advanced feature.', source = 'documentation', title = 'Only in Mage Pro.'}) => <a href={`https://cloud.mage.ai/sign-up?source=${source}`} className="block my-4 px-5 py-4 overflow-hidden rounded-xl flex gap-3 border border-emerald-500/20 bg-emerald-50/50 dark:border-emerald-500/30 dark:bg-emerald-500/10" target="_blank">
-    <div style={{
-  display: 'flex',
-  alignItems: 'center',
-  width: '100%'
-}}>
-      <div className="text-sm prose min-w-0 text-emerald-900 dark:text-emerald-200" style={{
-  flex: 1
-}}>
-        {title}
-        <p className="normal">{description}</p>
-      </div>
+> How to configure PostgreSQL as a destination in Mage to write pipeline data into a PostgreSQL table using direct database credentials and optional schema/table controls.
 
-      <div> </div>
+![PostgreSQL logo](https://user-images.githubusercontent.com/78053898/198754309-2ef713a7-62c8-4ea8-9ebb-8c24ed038cb3.png)
 
-      <div>
-        <ProButton label={button} href={`https://cloud.mage.ai/sign-up?source=${source}`} />
-      </div>
-    </div>
-  </a>;
+***
 
-export const ProButton = ({href, label = 'Get started with Mage Pro for free', source = 'documentation'}) => <div style={{
-  height: 32,
-  position: 'relative'
-}}>
-    <a target="_blank" className="group px-4 py-1.5 relative inline-flex items-center text-sm font-medium rounded-full" href={href ?? `https://cloud.mage.ai/sign-up?source=${source}`}>
-      <span className="absolute inset-0 bg-primary-dark dark:bg-primary-light/10 border-primary-light/30 rounded-full dark:border group-hover:opacity-[0.9] dark:group-hover:border-primary-light/60">
-      </span>
+## Overview
 
-      <div className="mr-0.5 space-x-2.5 flex items-center">
-        <span class="z-10 text-white dark:text-primary-light">
-          {label}
-        </span>
+Use **PostgreSQL** as a destination in Mage to export structured data from your pipelines directly into a PostgreSQL table. Mage supports both self-hosted and cloud-hosted PostgreSQL instances such as **bit.io**, **Supabase**, **Render**, and **AWS RDS**.
 
-        <svg width="3" height="24" viewBox="0 -9 3 24" class="h-5 rotate-0 overflow-visible text-white/90 dark:text-primary-light">
-          <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
-        </svg>
-      </div>
-    </a>
-  </div>;
+Mage will automatically create the target table and insert pipeline output rows into it, with support for schema selection, lowercase column naming, and reserved keyword handling.
 
-![](https://user-images.githubusercontent.com/78053898/198754399-3b594af0-cf84-41d3-8faf-e1f6e4c5182d.png)
+***
 
-## Add credentials
+## Configuration Parameters
 
-1. Create a new pipeline or open an existing pipeline.
-2. Expand the left side of your screen to view the file browser.
-3. Scroll down and click on a file named `io_config.yaml`.
-4. Enter the following keys and values under the key named `default` (you can
-   have multiple profiles, add it under whichever is relevant to you)
+Provide the following credentials when setting up PostgreSQL as a destination:
 
-```yaml  theme={"system"}
-version: 0.1.1
-default:
-  POSTGRES_DBNAME: ...
-  POSTGRES_HOST: ...
-  POSTGRES_PASSWORD: ...
-  POSTGRES_PORT: ...
-  POSTGRES_USER: ...
-  POSTGRES_CONNECTION_METHOD: direct
-  POSTGRES_SSH_HOST:
-  POSTGRES_SSH_PORT: 22
-  POSTGRES_SSH_USERNAME:
-  POSTGRES_SSH_PASSWORD:
-  POSTGRES_SSH_PKEY:
-```
+| Key        | Description                                                 | Example Value                  | Required |
+| ---------- | ----------------------------------------------------------- | ------------------------------ | -------- |
+| `database` | Name of the PostgreSQL database where data will be written. | `demo`                         | ✅        |
+| `host`     | Hostname or IP address of the PostgreSQL server.            | [`db.bit.io`](https://bit.io/) | ✅        |
+| `port`     | Port used by the PostgreSQL service. Default is `5432`.     | `5432`                         | ✅        |
+| `username` | Username with access to the target database and schema.     | `guest`                        | ✅        |
+| `password` | Password for the PostgreSQL user.                           | `abc123...`                    | ✅        |
+| `schema`   | Name of the schema where the table will be created.         | `public`                       | ✅        |
+| `table`    | Name of the table Mage will write records into.             | `dim_users_v1`                 | ✅        |
 
-### Pro-only fields
+***
 
-<ProOnly source="postgresql" />
+## Optional Parameters
 
-```yaml  theme={"system"}
-  POSTGRES_SSL_MODE:
-  POSTGRES_SSL_ROOTCERT:
-  POSTGRES_SSL_CERT:
-  POSTGRES_SSL_KEY:
-```
+| Key                    | Description                                                                                                                                           | Example Value     |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| `skip_schema_creation` | If `true`, Mage will skip running `CREATE SCHEMA`. Use this if the schema already exists. [See issue](https://github.com/mage-ai/mage-ai/issues/3416) | `true`            |
+| `lower_case`           | If `true`, Mage will convert all column names to lowercase. Default is `true`.                                                                        | `true`            |
+| `allow_reserved_words` | If `true`, Mage will allow column names that are PostgreSQL reserved words. Default is `false`.                                                       | `true` or `false` |
 
-**Notes:**
+***
 
-* `POSTGRES_SSL_MODE` corresponds to the `sslmode` parameter in psycopg2 (e.g., `require`, `verify-full`).
-* `POSTGRES_SSL_ROOTCERT`, `POSTGRES_SSL_CERT`, and `POSTGRES_SSL_KEY` should be absolute paths to your SSL files on disk.
+## Notes
 
-### SSH tunneling
+* PostgreSQL is a widely supported open-source relational database—ideal for analytics, app backends, and transformations.
+* Ensure the user has `CREATE TABLE`, `INSERT`, and optionally `CREATE SCHEMA` privileges.
+* Mage supports exporting data to **existing tables** or **creating new tables** based on the pipeline output schema.
+* If your database is hosted on platforms like Heroku, AWS RDS, or bit.io, make sure the network settings allow inbound connections from Mage.
 
-If you want to connect to Postgres cluster with ssh tunnel, update the value of `POSTGRES_CONNECTION_METHOD` to `ssh_tunnel`, and enter the values for keys with prefix `POSTGRES_SSH`.
+***
 
-| Key                     | Description                                                                                                                                                  | Sample value           |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- |
-| `POSTGRES_SSH_HOST`     | The host of the intermediate bastion server.                                                                                                                 | `123.45.67.89`         |
-| `POSTGRES_SSH_PORT`     | The port of the intermediate bastion server. Default value: 22                                                                                               | `22`                   |
-| `POSTGRES_SSH_USERNAME` | The username used to connect to the bastion server.                                                                                                          | `username`             |
-| `POSTGRES_SSH_PASSWORD` | (Optional) The password used to connect to the bastion server. It should be set if you authenticate with the bastion server with password.                   | `password`             |
-| `POSTGRES_SSH_PKEY`     | (Optional) The path to the private key used to connect to the bastion server. It should be set if you authenticate with the bastion server with private key. | `/path/to/private/key` |
+## Related Resources
 
-<br />
-
-## Using SQL block
-
-1. Create a new pipeline or open an existing pipeline.
-2. Add a data loader, transformer, or data exporter block.
-3. Select `SQL`.
-4. Under the `Data provider` dropdown, select `PostgreSQL`.
-5. Under the `Profile` dropdown, select `default` (or the profile you added
-   credentials underneath).
-6. Next to the `Save to schema` label, enter the schema name you want this block
-   to save data to.
-7. Under the `Write policy` dropdown, select `Replace` or `Append` (please see
-   [SQL blocks guide](/guides/blocks/sql-blocks) for more
-   information on write policies).
-8. Enter in this test query: `SELECT 1`.
-9. Run the block.
-
-<br />
-
-## Using Python block
-
-1. Create a new pipeline or open an existing pipeline.
-2. Add a data loader, transformer, or data exporter block (the code snippet
-   below is for a data loader).
-3. Select `Generic (no template)`.
-4. Enter this code snippet (note: change the `config_profile` from `default` if
-   you have a different profile):
-
-```python  theme={"system"}
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.postgres import Postgres
-from os import path
-from pandas import DataFrame
-
-if 'data_loader' not in globals():
-    from mage_ai.data_preparation.decorators import data_loader
-
-
-@data_loader
-def load_data_from_postgres(**kwargs) -> DataFrame:
-    query = 'SELECT 1'
-    config_path = path.join(get_repo_path(), 'io_config.yaml')
-    config_profile = 'default'
-
-    with Postgres.with_config(ConfigFileLoader(config_path, config_profile)) as loader:
-        return loader.load(query)
-```
-
-5. Run the block.
-
-### Export a dataframe
-
-Here is an example code snippet to export a dataframe to Postgres:
-
-```python  theme={"system"}
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.postgres import Postgres
-from pandas import DataFrame
-from os import path
-
-if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
-
-
-@data_exporter
-def export_data_to_postgres(df: DataFrame, **kwargs) -> None:
-    schema_name = 'your_schema_name'  # Specify the name of the schema to export data to
-    table_name = 'your_table_name'  # Specify the name of the table to export data to
-    config_path = path.join(get_repo_path(), 'io_config.yaml')
-    config_profile = 'default'
-
-    with Postgres.with_config(ConfigFileLoader(config_path, config_profile)) as loader:
-        loader.export(
-            df,
-            schema_name,
-            table_name,
-            index=False,  # Specifies whether to include index in exported table
-            if_exists='replace',  # Specify resolution policy if table name already exists
-            drop_table_on_replace=False,   # Whether to drop the table when "if_exists" param is set to "replace"
-            allow_reserved_words=True,
-            unique_conflict_method='UPDATE',
-            unique_constraints=['col'],
-        )
-
-```
-
-<br />
-
-6. Custom types
-
-To overwrite a column type when running a python export block, simply specify the column name and type in the `overwrite_types` dict in data exporter config
-
-Here is an example code snippet:
-
-```python  theme={"system"}
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.postgres import Postgres
-from pandas import DataFrame
-from os import path
-
-if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
-
-
-@data_exporter
-def export_data_to_postgres(df: DataFrame, **kwargs) -> None:
-    schema_name = 'your_schema_name'  # Specify the name of the schema to export data to
-    table_name = 'your_table_name'  # Specify the name of the table to export data to
-    config_path = path.join(get_repo_path(), 'io_config.yaml')
-    config_profile = 'default'
-    overwrite_types = {'column_name': 'VARCHAR(255)'}
-
-    with Postgres.with_config(ConfigFileLoader(config_path, config_profile)) as loader:
-        loader.export(
-            df,
-            schema_name,
-            table_name,
-            index=False,  # Specifies whether to include index in exported table
-            if_exists='replace',  # Specify resolution policy if table name already exists
-            allow_reserved_words=True,
-            unique_conflict_method='UPDATE',
-            unique_constraints=['col'],
-            overwrite_types=overwrite_types,
-        )
-
-```
-
-### Method arguments
-
-| Field name               | Description                                                                                                                                   | Example values                                 |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| allow\_reserved\_words   | Whether to allow using reserved words as column names.                                                                                        | True/False (default: False)                    |
-| auto\_clean\_name        | Whether to automatically clean the column name (replace the empty space with underscore, avoid using number as the prefix of the column name) | True/False (default: True)                     |
-| case\_sensitive          | Whether to support case sensitive columns                                                                                                     | True/False (default: False)                    |
-| cascade\_on\_drop        | Whether to cascade the table drop.                                                                                                            | True/False (default: False)                    |
-| drop\_table\_on\_replace | Whether to drop the table when "if\_exists" param is set to "replace".                                                                        | True/False (default: False)                    |
-| if\_exists               | Specify resolution policy if table name already exists                                                                                        | "fail"/"replace"/"append" (default: "replace") |
-| overwrite\_types         | Overwrite the column types                                                                                                                    | `{'column1': 'INTEGER', 'column2': 'VARCHAR'}` |
-| unique\_conflict\_method | How to handle the conflict on unique constraints.                                                                                             | 'UPDATE' (default: None)                       |
-| unique\_constraints      | The unique constraints of the table.                                                                                                          | \['col1', 'col2'] (default: None)              |
-
-#### Pro-only fields
-
-<ProOnly source="postgresql" />
-
-| Field name   | Description                                                       | Example values              |
-| ------------ | ----------------------------------------------------------------- | --------------------------- |
-| batch\_write | Use `COPY` command to write to PostgreSQL to improve performance. | True/False (default: False) |
+* [PostgreSQL Documentation](https://www.postgresql.org/docs/)
+* [bit.io Free PostgreSQL Hosting](https://bit.io/)
+* [PostgreSQL Reserved Keywords](https://www.postgresql.org/docs/current/sql-keywords-appendix.html)
+* [SQLAlchemy PostgreSQL Dialect](https://docs.sqlalchemy.org/en/20/dialects/postgresql.html)
 
 
 Built with [Mintlify](https://mintlify.com).

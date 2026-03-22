@@ -1,24 +1,31 @@
-# Source: https://vueflow.dev/typedocs/type-aliases/UpdateEdge.md
+# Source: https://vueflow.dev/typedocs/functions/updateEdge.md
 
 ---
-url: /typedocs/type-aliases/UpdateEdge.md
+url: /typedocs/functions/updateEdge.md
 ---
 [**@vue-flow/monorepo**](../index.md) • **Docs**
 
 ***
 
-# Type Alias: UpdateEdge()
+# Function: ~~updateEdge()~~
 
-> **UpdateEdge**: (`oldEdge`, `newConnection`, `shouldReplaceId`?) => [`GraphEdge`](GraphEdge.md) | `false`
+> **updateEdge**(`oldEdge`, `newConnection`, `elements`): [`Elements`](../type-aliases/Elements.md)
 
 ## Parameters
 
-• **oldEdge**: [`GraphEdge`](GraphEdge.md)
+• **oldEdge**: [`Edge`](../type-aliases/Edge.md)
 
 • **newConnection**: [`Connection`](../interfaces/Connection.md)
 
-• **shouldReplaceId?**: `boolean`
+• **elements**: [`Elements`](../type-aliases/Elements.md)
 
 ## Returns
 
-[`GraphEdge`](GraphEdge.md) | `false`
+[`Elements`](../type-aliases/Elements.md)
+
+## Deprecated
+
+Use store instance and call `updateEdge` with template-ref or the one received by `onPaneReady` instead
+
+Intended for options API
+In composition API you can access utilities from `useVueFlow`

@@ -1,65 +1,50 @@
-# Source: https://clickhouse.ferndocs.com/reference/interfaces/formats/Hash.md
+# Source: https://clickhouse.ferndocs.com/open-source/native-protocol/hash.md
 
 ---
-alias: []
-description: Documentation for the Hash format
-input_format: false
-keywords:
-  - hash
-  - format
-output_format: true
-slug: /interfaces/formats/Hash
-title: Hash <Badge intent="success">Output</Badge>
+slug: /native-protocol/hash
+sidebar_position: 5
+title: CityHash
+description: Native protocol hash
 doc_type: reference
+keywords:
+  - CityHash
+  - native protocol hash
+  - hash function
+  - Google CityHash
+  - protocol hashing
 ---
 
-## Description [#description]
+ClickHouse uses **one of the previous** versions of [CityHash from Google](https://github.com/google/cityhash).
 
-The `Hash` output format calculates a single hash value for all columns and rows of the result.
-This is useful for calculating a "fingerprint" of the result, for example in situations where data transfer is the bottleneck.
+<Note>
+CityHash has changed the algorithm after we have added it into ClickHouse.
 
-## Example usage [#example-usage]
+CityHash documentation specifically notes that the user should not rely on 
+specific hash values and should not save it anywhere or use it as a sharding key.
 
-### Reading data [#reading-data]
+But as we exposed this function to the user, we had to fix the version of CityHash (to 1.0.2). And now we guarantee that the behaviour of CityHash functions available in SQL will not change.
 
-Consider a table `football` with the following data:
+— Alexey Milovidov
+</Note>
 
-```text
-    ┌───────date─┬─season─┬─home_team─────────────┬─away_team───────────┬─home_team_goals─┬─away_team_goals─┐
- 1. │ 2022-04-30 │   2021 │ Sutton United         │ Bradford City       │               1 │               4 │
- 2. │ 2022-04-30 │   2021 │ Swindon Town          │ Barrow              │               2 │               1 │
- 3. │ 2022-04-30 │   2021 │ Tranmere Rovers       │ Oldham Athletic     │               2 │               0 │
- 4. │ 2022-05-02 │   2021 │ Port Vale             │ Newport County      │               1 │               2 │
- 5. │ 2022-05-02 │   2021 │ Salford City          │ Mansfield Town      │               2 │               2 │
- 6. │ 2022-05-07 │   2021 │ Barrow                │ Northampton Town    │               1 │               3 │
- 7. │ 2022-05-07 │   2021 │ Bradford City         │ Carlisle United     │               2 │               0 │
- 8. │ 2022-05-07 │   2021 │ Bristol Rovers        │ Scunthorpe United   │               7 │               0 │
- 9. │ 2022-05-07 │   2021 │ Exeter City           │ Port Vale           │               0 │               1 │
-10. │ 2022-05-07 │   2021 │ Harrogate Town A.F.C. │ Sutton United       │               0 │               2 │
-11. │ 2022-05-07 │   2021 │ Hartlepool United     │ Colchester United   │               0 │               2 │
-12. │ 2022-05-07 │   2021 │ Leyton Orient         │ Tranmere Rovers     │               0 │               1 │
-13. │ 2022-05-07 │   2021 │ Mansfield Town        │ Forest Green Rovers │               2 │               2 │
-14. │ 2022-05-07 │   2021 │ Newport County        │ Rochdale            │               0 │               2 │
-15. │ 2022-05-07 │   2021 │ Oldham Athletic       │ Crawley Town        │               3 │               3 │
-16. │ 2022-05-07 │   2021 │ Stevenage Borough     │ Salford City        │               4 │               2 │
-17. │ 2022-05-07 │   2021 │ Walsall               │ Swindon Town        │               0 │               3 │
-    └────────────┴────────┴───────────────────────┴─────────────────────┴─────────────────┴─────────────────┘
-```
+<Note title="Note">
 
-Read data using the `Hash` format:
+Current version of Google's CityHash [differs](https://github.com/ClickHouse/ClickHouse/issues/8354) from ClickHouse `cityHash64` variant.
 
-```sql
-SELECT *
-FROM football
-FORMAT Hash
-```
+Don't use `farmHash64` to get Google's CityHash value! [FarmHash](https://opensource.googleblog.com/2014/03/introducing-farmhash.html) is a successor to CityHash, but they are not fully compatible.
 
-The query will process the data, but will not output anything.
+| String                                                     | ClickHouse64         | CityHash64          | FarmHash64           |
+|------------------------------------------------------------|----------------------|---------------------|----------------------|
+| `Moscow`                                                   | 12507901496292878638 | 5992710078453357409 | 5992710078453357409  |
+| `How can you write a big system without C++?  -Paul Glick` | 6237945311650045625  | 749291162957442504  | 11716470977470720228 |
 
-```response
-df2ec2f0669b000edff6adee264e7d68
+</Note>
 
-1 rows in set. Elapsed: 0.154 sec.
-```
+Also see [Introducing CityHash](https://opensource.googleblog.com/2011/04/introducing-cityhash.html) for description and
+reasoning behind creation. TL;DR **non-cryptographic** hash that is faster than [MurmurHash](http://en.wikipedia.org/wiki/MurmurHash), but more complex.
 
-## Format settings [#format-settings]
+## Implementations [#implementations]
+
+### Go [#go]
+
+You can use [go-faster/city](https://github.com/go-faster/city) Go package that implements both variants.

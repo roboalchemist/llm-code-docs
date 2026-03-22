@@ -1,10 +1,14 @@
-# Source: https://docs.mage.ai/integrations/databases/Databricks.md
+# Source: https://docs.mage.ai/integrations/compute/databricks.md
+
+# Source: https://docs.mage.ai/data-integrations/destinations/databricks.md
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.mage.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
 # Databricks
+
+> How to configure Databricks as a destination in Mage to write pipeline data to Databricks SQL warehouses using Unity Catalog.
 
 export const ProOnly = ({button = 'Get started for free', description = 'Try our fully managed solution to access this advanced feature.', source = 'documentation', title = 'Only in Mage Pro.'}) => <a href={`https://cloud.mage.ai/sign-up?source=${source}`} className="block my-4 px-5 py-4 overflow-hidden rounded-xl flex gap-3 border border-emerald-500/20 bg-emerald-50/50 dark:border-emerald-500/30 dark:bg-emerald-500/10" target="_blank">
     <div style={{
@@ -47,148 +51,53 @@ export const ProButton = ({href, label = 'Get started with Mage Pro for free', s
     </a>
   </div>;
 
-<ProOnly source="databricks" />
+<ProOnly source="data-integration" />
 
-## Add credentials
+Use **Databricks** as a destination in Mage to load structured data into your Databricks workspace. Mage integrates with Databricks SQL warehouses and uses **Unity Catalog** for table management.
 
-1. Create a new pipeline or open an existing pipeline.
-2. Expand the left side of your screen to view the file browser.
-3. Scroll down and click on a file named `io_config.yaml`.
-4. Enter the following keys and values under the key named `default` (you can
-   have multiple profiles, add it under whichever is relevant to you)
+This destination is ideal for exporting transformed pipeline data to Databricks for analytics, ML workloads, or data lakehouse operations.
 
-```yaml  theme={"system"}
-version: 0.1.1
-default:
-  DATABRICKS_ACCESS_TOKEN: access_token
-  DATABRICKS_DATABASE: database  # Databricks Catalog
-  DATABRICKS_HOST: dbc-123456-abcd.cloud.databricks.com
-  DATABRICKS_HTTP_PATH: "/sql/1.0/warehouses/abcd1234"
-  DATABRICKS_SCHEMA: schema
-```
+***
 
-## Using SQL Block with Databricks
+## Required Configuration
 
-Follow these steps to use a **SQL block** connected to **Databricks** in your pipeline.
+Provide the following credentials when configuring Databricks as a destination:
 
-1. **Create or open a pipeline**\
-   Create a new pipeline or open an existing one.
+| Key               | Description                                           | Example Value                     | Required |
+| ----------------- | ----------------------------------------------------- | --------------------------------- | -------- |
+| `access_token`    | Personal access token to authenticate with Databricks | `dapi123abc...`                   | ✅        |
+| `server_hostname` | Hostname of your Databricks workspace                 | `dbc-123456.cloud.databricks.com` | ✅        |
+| `http_path`       | HTTP path of the Databricks SQL warehouse or cluster  | `/sql/1.0/warehouses/abc123`      | ✅        |
+| `schema`          | Name of the schema (database) within the catalog      | `analytics`                       | ✅        |
+| `table`           | Name of the table to write data into                  | `user_events`                     | ✅        |
 
-2. **Add a block**\
-   Add a **Data loader**, **Transformer**, **Data exporter**, or **Custom** block.
+***
 
-3. **Select block type**\
-   Set the block type to `SQL`.
+## Optional Configuration
 
-4. **Configure the data provider**\
-   In the `Data provider` dropdown, select `Databricks`.
+| Key                    | Description                                                                     | Example Value | Default |
+| ---------------------- | ------------------------------------------------------------------------------- | ------------- | ------- |
+| `catalog`              | Name of the Unity Catalog to use                                                | `workspace`   | -       |
+| `skip_schema_creation` | If `true`, Mage won't run `CREATE SCHEMA`. Useful if the schema already exists. | `true`        | `false` |
+| `lower_case`           | If `true`, all column names will be lowercased.                                 | `true`        | `true`  |
+| `allow_reserved_words` | If `true`, Mage will allow use of SQL reserved words as column names.           | `false`       | `false` |
 
-5. **Choose a profile**\
-   In the `Profile` dropdown, select `default` (or the profile you configured your Databricks credentials under).
+***
 
-6. **Configure output saving (optional)**\
-   By default, the SQL block saves query results to a table in your Databricks database.
+## Notes
 
-   * **Schema** (optional): Enter the schema where the block’s output should be saved, default to the schema in `io_config.yaml`.
-   * **Table** (optional): Enter the table where the block’s output should be saved, default table is generated based on block uuid.
-   * **Write policy**: Choose either `Replace` or `Append`. See the [SQL blocks guide](/guides/blocks/sql-blocks) for more details on write policies.
-   * If you **don’t want to save results** to an intermediate table, enable the **Use raw SQL** option. See the [Raw SQL documentation](/guides/blocks/sql-blocks#using-raw-sql) for more information.
+* **Unity Catalog**: Set `catalog` to your Unity Catalog name. This is an optional field for table management in Databricks.
+* **Access Token**: Generate a personal access token from your Databricks workspace settings.
+* **HTTP Path**: Find the HTTP path in your SQL warehouse or cluster connection details.
+* **Permissions**: Ensure your access token has permissions to create schemas and write to tables in the specified catalog and schema.
 
-7. **Enter a test query**\
-   Add a simple test query to confirm the connection works:
-   ```
-   SELECT 1
-   ```
+***
 
-8. **Run the block**\
-   Click **Run** to execute the query and verify the block works as expected.
+## Related Resources
 
-<br />
-
-## Using Python block
-
-1. Create a new pipeline or open an existing pipeline.
-2. Add a data loader, transformer, or data exporter block (the code snippet
-   below is for a data loader).
-3. Select the `Data lakes -> Databricks SQL` template or `Generic (no template)`.
-4. Enter this code snippet (note: change the `config_profile` from `default` if
-   you have a different profile):
-
-```python  theme={"system"}
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.databricks_sql import DatabricksSQL
-from os import path
-from pandas import DataFrame
-
-if 'data_loader' not in globals():
-    from mage_ai.data_preparation.decorators import data_loader
-
-@data_loader
-def load_data_from_databricks(*args, **kwargs):
-    """
-    Template for loading data from Databricks with SQL.
-    Specify your configuration settings in 'io_config.yaml'.
-    """
-    query = 'SELECT 1'  # Specify your SQL query here
-    config_path = path.join(get_repo_path(), 'io_config.yaml')
-    config_profile = 'default'
-
-    with DatabricksSQL.with_config(ConfigFileLoader(config_path, config_profile)) as loader:
-        return loader.load(query)
-```
-
-5. Run the block.
-
-### Export a dataframe
-
-Here is an example code snippet to export a dataframe to Databricks:
-
-```python  theme={"system"}
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.databricks_sql import DatabricksSQL
-from pandas import DataFrame
-from os import path
-
-if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
-
-
-@data_exporter
-def export_data_to_databricks(df: DataFrame, **kwargs) -> None:
-    """
-    Template for exporting data to Databricks.
-    Specify your configuration settings in 'io_config.yaml'.
-    """
-    schema_name = 'your_schema_name'  # Specify the name of the schema to export data to
-    table_name = 'your_table_name'  # Specify the name of the table to export data to
-    config_path = path.join(get_repo_path(), 'io_config.yaml')
-    config_profile = 'default'
-
-    with DatabricksSQL.with_config(ConfigFileLoader(config_path, config_profile)) as loader:
-        loader.export(
-            df,
-            schema_name=schema_name,
-            table_name=table_name,
-            index=False,  # Specifies whether to include index in exported table
-            if_exists='replace',  # Specify resolution policy if table name already exists
-        )
-```
-
-<br />
-
-### Method arguments
-
-| Field name               | Description                                                                                                                                   | Example values                                 |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| allow\_reserved\_words   | Whether to allow using reserved words as column names.                                                                                        | True/False (default: False)                    |
-| auto\_clean\_name        | Whether to automatically clean the column name (replace the empty space with underscore, avoid using number as the prefix of the column name) | True/False (default: True)                     |
-| case\_sensitive          | Whether to support case sensitive columns                                                                                                     | True/False (default: False)                    |
-| drop\_table\_on\_replace | Whether to drop the table when "if\_exists" param is set to "replace".                                                                        | True/False (default: False)                    |
-| if\_exists               | Specify resolution policy if table name already exists                                                                                        | "fail"/"replace"/"append" (default: "replace") |
-
-<br />
+* [Databricks SQL Documentation](https://docs.databricks.com/sql/)
+* [Unity Catalog Overview](https://docs.databricks.com/data-governance/unity-catalog/index.html)
+* [Databricks Personal Access Tokens](https://docs.databricks.com/dev-tools/auth/pat.html)
 
 
 Built with [Mintlify](https://mintlify.com).

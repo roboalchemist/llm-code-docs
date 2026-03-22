@@ -1,4 +1,10 @@
-# Source: https://docs.mage.ai/integrations/databases/OracleDB.md
+# Source: https://docs.mage.ai/guides/streaming/sources/oracledb.md
+
+# Source: https://docs.mage.ai/guides/streaming/destinations/oracledb.md
+
+# Source: https://docs.mage.ai/data-integrations/sources/oracledb.md
+
+# Source: https://docs.mage.ai/data-integrations/destinations/oracledb.md
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.mage.ai/llms.txt
@@ -6,100 +12,55 @@
 
 # OracleDB
 
-## Add credentials
+> How to configure Oracle Database (OracleDB) as a destination in Mage to write data to a specified schema using the thin or thick client.
 
-1. Create a new pipeline or open an existing pipeline.
-2. Expand the left side of your screen to view the file browser.
-3. Scroll down and click on a file named `io_config.yaml`.
-4. Enter the following keys and values under the key named `default` (you can
-   have multiple profiles, add it under whichever is relevant to you)
+## Overview
 
-```yaml  theme={"system"}
-version: 0.1.1
-default:
-  ORACLEDB_USER: ...
-  ORACLEDB_PASSWORD: ...
-  ORACLEDB_HOST: ...
-  ORACLEDB_PORT: 1521
-  ORACLEDB_SERVICE: ...   # Service name (e.g. ORCL, XEPDB1)
-  ORACLEDB_MODE: thin      # Optional: 'thin' (default) or 'thick'
-```
+Use **OracleDB** as a destination in Mage to write pipeline data directly into a table within an Oracle database. Mage supports both **thin** and **thick** connection modes, allowing flexibility for local clients, instant clients, or full Oracle installations.
 
-Use `ORACLEDB_MODE: thick` only if you need the Oracle thick mode (e.g. for advanced features); otherwise `thin` is recommended.
+This destination is ideal for enterprise data integration with existing Oracle systems, including Oracle XE, Oracle Cloud Infrastructure (OCI), and on-premise Oracle servers.
 
-<br />
+***
 
-## Using SQL block
+## Configuration Parameters
 
-1. Create a new pipeline or open an existing pipeline.
-2. Add a data loader, transformer, or data exporter block.
-3. Select `SQL`.
-4. Under the `Data provider` dropdown, select `Oracle`.
-5. Under the `Profile` dropdown, select `default` (or the profile you added
-   credentials underneath).
-6. Enter your query (e.g. `SELECT 1 FROM DUAL`) and run the block.
+You must provide the following credentials when configuring the OracleDB destination:
 
-<br />
+| Key        | Description                                                                                                        | Example Value          | Required |
+| ---------- | ------------------------------------------------------------------------------------------------------------------ | ---------------------- | -------- |
+| `host`     | Hostname or IP address of the Oracle database server.                                                              | `oracledb.example.com` | ✅        |
+| `port`     | Port on which the Oracle listener accepts client connections. Typically `1521`.                                    | `1521`                 | ✅        |
+| `service`  | Oracle **service name** (not SID). The listener uses this to direct connections to the correct pluggable database. | `xepdb1`               | ✅        |
+| `user`     | Username with permission to connect and write to the target schema.                                                | `oracle_user`          | ✅        |
+| `password` | Password for the Oracle user.                                                                                      | `xyz123`               | ✅        |
+| `database` | Name of the Oracle database where the table will be created or updated.                                            | `orcl`                 | ✅        |
+| `mode`     | Oracle client mode. Set to either `thin` (default) or `thick` depending on the installed driver.                   | `thin` or `thick`      | ✅        |
 
-## Using Python block
+***
 
-1. Create a new pipeline or open an existing pipeline.
-2. Add a data loader, transformer, or data exporter block (the code snippet
-   below is for a data loader).
-3. Select `Generic (no template)`.
-4. Enter this code snippet (note: change the `config_profile` from `default` if
-   you have a different profile):
+## Optional Parameters
 
-```python  theme={"system"}
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.oracledb import OracleDB
-from os import path
-from pandas import DataFrame
+| Key          | Description                                                                    | Example Value |
+| ------------ | ------------------------------------------------------------------------------ | ------------- |
+| `lower_case` | If `true`, all column names will be converted to lowercase. Default is `true`. | `true`        |
 
-if 'data_loader' not in globals():
-    from mage_ai.data_preparation.decorators import data_loader
+***
 
+## Notes
 
-@data_loader
-def load_data_from_oracledb(**kwargs) -> DataFrame:
-    query = 'SELECT 1 FROM DUAL'
-    config_path = path.join(get_repo_path(), 'io_config.yaml')
-    config_profile = 'default'
+* The `mode` parameter determines how the Oracle client connects:
+  * Use `thin` for lightweight connections (e.g., with the Oracle Instant Client).
+  * Use `thick` when a full Oracle client is installed and native libraries are required.
+* Ensure the Oracle listener is correctly configured to accept service name–based connections.
+* Use of the `service` name is preferred over SID in modern Oracle setups, especially with pluggable databases (PDBs).
 
-    with OracleDB.with_config(ConfigFileLoader(config_path, config_profile)) as loader:
-        return loader.load(query)
-```
+***
 
-5. Run the block.
+## Related Resources
 
-### Export a dataframe to OracleDB
-
-```python  theme={"system"}
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.oracledb import OracleDB
-from os import path
-from pandas import DataFrame
-
-if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
-
-
-@data_exporter
-def export_data_to_oracledb(df: DataFrame, **kwargs) -> None:
-    config_path = path.join(get_repo_path(), 'io_config.yaml')
-    config_profile = 'default'
-    table_name = 'your_table_name'
-
-    with OracleDB.with_config(ConfigFileLoader(config_path, config_profile)) as loader:
-        loader.export(df, table_name=table_name, if_exists='replace')
-```
-
-## Connection modes
-
-* **thin** (default): Pure Python driver; no Oracle Client installation required.
-* **thick**: Uses Oracle Client libraries; required for some advanced scenarios. Ensure Oracle Instant Client or full client is installed and configured when using `ORACLEDB_MODE: thick`.
+* [Oracle Net Services Overview](https://docs.oracle.com/en/database/oracle/oracle-database/19/netag/introduction-to-oracle-net-services.html)
+* [Oracle Instant Client Installation Guide](https://www.oracle.com/database/technologies/instant-client.html)
+* [Oracle Database Connection Strings](https://docs.oracle.com/en/database/oracle/oracle-database/19/jjdbc/data-sources-and-url-connection-strings.html)
 
 
 Built with [Mintlify](https://mintlify.com).

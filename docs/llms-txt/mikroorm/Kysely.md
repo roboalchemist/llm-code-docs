@@ -1,1121 +1,342 @@
-# Source: https://mikro-orm.io/api/sql/class/Kysely.md
+# Source: https://mikro-orm.io/docs/kysely.md
 
-# Kysely<!-- --> \<DB>
+# Using Kysely
 
-The main Kysely class.
+MikroORM provides first-class integration with [Kysely](https://kysely.dev/), a type-safe SQL query builder. Through this integration, you can get a configured Kysely instance directly from `EntityManager`, leveraging MikroORM's metadata to drive Kysely's query transformation and type inference.
 
-You should create one instance of `Kysely` per database using the [Kysely](https://mikro-orm.io/api/sql/class/Kysely.md) constructor. Each `Kysely` instance maintains its own connection pool.
+This allows you to write lower-level SQL queries while maintaining type safety and reusing entity relationships and hooks defined in MikroORM. The integration works with all entity definition styles — decorators, `EntitySchema`, and `defineEntity`.
 
-### Examples
+## Getting a Kysely Instance[​](#getting-a-kysely-instance "Direct link to Getting a Kysely Instance")
 
-This example assumes your database has a "person" table:
+You can get a Kysely instance through the `em.getKysely()` method:
 
 ```
-import * as Sqlite from 'better-sqlite3'
-import { type Generated, Kysely, SqliteDialect } from 'kysely'
+const kysely = orm.em.getKysely();
+```
 
-interface Database {
-  person: {
-    id: Generated<number>
-    first_name: string
-    last_name: string | null
-  }
+By default, this gives you a raw Kysely instance without the MikroORM plugin. To enable MikroORM-aware features like entity/property name mapping, hook processing, and value conversion, pass a configuration object:
+
+```
+const kysely = orm.em.getKysely({
+  tableNamingStrategy: 'entity',
+  columnNamingStrategy: 'property',
+  processOnCreateHooks: true,
+  processOnUpdateHooks: true,
+  convertValues: true,
+});
+```
+
+These options are described in detail in the [Plugin Options](#plugin-options) section below.
+
+## Using Entity and Property Names in Queries[​](#using-entity-and-property-names-in-queries "Direct link to Using Entity and Property Names in Queries")
+
+One of the most useful plugin features is the ability to write Kysely queries using your entity and property names instead of raw table and column names. This works regardless of how you define your entities — decorators, `EntitySchema`, or `defineEntity`.
+
+```
+@Entity()
+class UserProfile {
+
+  [EntityName]?: 'UserProfile';
+
+  @PrimaryKey()
+  id!: number;
+
+  @Property()
+  firstName!: string; // maps to 'first_name' column
+
+  @Property()
+  lastName!: string; // maps to 'last_name' column
+
 }
 
-const db = new Kysely<Database>({
-  dialect: new SqliteDialect({
-    database: new Sqlite(':memory:'),
-  })
-})
+const kysely = orm.em.getKysely({
+  tableNamingStrategy: 'entity',
+  columnNamingStrategy: 'property',
+});
+
+const users = await kysely
+  .selectFrom('UserProfile') // entity name, not table name
+  .select(['firstName', 'lastName']) // property names, not column names
+  .where('firstName', '=', 'John')
+  .execute();
+
+// Generated SQL: select "first_name", "last_name" from "user_profile" where "first_name" = ?
+
+// Results are automatically mapped back to property names
+console.log(users[0].firstName); // 'John'
 ```
 
-### Hierarchy
+The plugin translates entity names to table names and property names to column names at query compilation time, so you can write queries that match your TypeScript code rather than your database schema.
 
-* QueryCreator\<DB>
-  * *Kysely*
+## Type Safety[​](#type-safety "Direct link to Type Safety")
 
-### Implements
+### Automatic Inference with `defineEntity`[​](#automatic-inference-with-defineentity "Direct link to automatic-inference-with-defineentity")
 
-* QueryExecutorProvider
-* AsyncDisposable
+When you define entities using `defineEntity`, `getKysely()` automatically infers the full database type from entity metadata — table names, column types, nullability, and relations are all derived from your property definitions:
 
-## Index[**](#index)
+```
+import { MikroORM, defineEntity, p } from '@mikro-orm/core';
 
-### Constructors
+const User = defineEntity({
+  name: 'User',
+  tableName: 'users',
+  properties: {
+    name: p.string().primary(),
+    email: p.string().nullable(),
+  },
+});
 
-* [**constructor](#constructor)
+const orm = new MikroORM({
+  dbName: ':memory:',
+  entities: [User],
+});
 
-### Accessors
+// getKysely() automatically infers table structure
+const kysely = orm.em.getKysely();
+
+// Fully type-safe: TypeScript auto-completes 'users' table and its columns
+const result = await kysely
+  .selectFrom('users')
+  .selectAll()
+  .where('email', 'is not', null)
+  .execute();
+```
 
-* [**dynamic](#dynamic)
-* [**fn](#fn)
-* [**introspection](#introspection)
-* [**isTransaction](#istransaction)
-* [**schema](#schema)
+### Automatic Inference with Decorator Entities[​](#automatic-inference-with-decorator-entities "Direct link to Automatic Inference with Decorator Entities")
 
-### Methods
+For decorator-based entities, you can enable automatic type inference by adding the `[EntityName]` symbol property. This tells `getKysely()` the entity name at the type level, allowing it to infer table and column types from the class properties:
 
-* [**\[asyncDispose\]](#\[asyncDispose])
-* [**case](#case)
-* [**connection](#connection)
-* [**deleteFrom](#deleteFrom)
-* [**destroy](#destroy)
-* [**executeQuery](#executequery)
-* [**insertInto](#insertInto)
-* [**mergeInto](#mergeInto)
-* [**replaceInto](#replaceInto)
-* [**selectFrom](#selectFrom)
-* [**selectNoFrom](#selectNoFrom)
-* [**startTransaction](#starttransaction)
-* [**transaction](#transaction)
-* [**updateTable](#updateTable)
-* [**with](#with)
-* [**withoutPlugins](#withoutplugins)
-* [**withPlugin](#withplugin)
-* [**withRecursive](#withRecursive)
-* [**withSchema](#withschema)
-* [**withTables](#withtables)
+```
+import { Entity, PrimaryKey, Property } from '@mikro-orm/decorators/legacy';
+import { EntityName, MikroORM } from '@mikro-orm/sqlite';
 
-## Constructors<!-- -->[**](#constructors)
+@Entity()
+class UserProfile {
 
-### [**](#constructor)constructor
+  [EntityName]?: 'UserProfile';
 
-* ****new Kysely**\<DB>(args): [Kysely](https://mikro-orm.io/api/sql/class/Kysely.md)\<DB>
-* ****new Kysely**\<DB>(args): [Kysely](https://mikro-orm.io/api/sql/class/Kysely.md)\<DB>
+  @PrimaryKey()
+  id!: number;
+
+  @Property()
+  firstName!: string;
 
-* Overrides QueryCreator\<DB>.constructor
+  @Property()
+  lastName!: string;
+
+}
 
-  #### Parameters
+const orm = await MikroORM.init({
+  dbName: ':memory:',
+  // entity classes must be passed explicitly for type inference to work
+  entities: [UserProfile],
+});
 
-  * ##### args: KyselyConfig
+// getKysely() infers the table from the class properties
+const kysely = orm.em.getKysely({
+  columnNamingStrategy: 'property',
+});
 
-  #### Returns [Kysely](https://mikro-orm.io/api/sql/class/Kysely.md)\<DB>
+// TypeScript knows about 'user_profile' table with id, firstName, lastName columns
+const result = await kysely
+  .selectFrom('user_profile')
+  .select(['id', 'firstName', 'lastName'])
+  .execute();
+```
 
-## Accessors<!-- -->[**](#accessors)
+The `[EntityName]` symbol property is required — without it, `getKysely()` cannot infer the entity name as a string literal type from a class reference. This is similar to how `[EntityRepositoryType]` works for custom repository types.
 
-### [**](#dynamic)dynamic
+Column types are inferred directly from the class instance properties. The table name follows the configured naming strategy (underscore by default). When using `tableNamingStrategy: 'entity'`, the entity name (`'UserProfile'`) is used as-is in queries.
 
-* **get dynamic(): DynamicModule\<DB>
+> Entity classes must be passed explicitly in the `entities` array (not as folder paths) for automatic type inference. This approach uses the class property types as-is and does not support detailed column name mapping (e.g., custom `fieldName`) — for that level of control, use `defineEntity`.
 
-* Returns a the DynamicModule module.
+### Manual Type Declarations[​](#manual-type-declarations "Direct link to Manual Type Declarations")
 
-  The DynamicModule module can be used to bypass strict typing and passing in dynamic values for the queries.
+For decorator-based or `EntitySchema`-based entities, you can also provide a manual database type to `getKysely()`:
 
-  ***
+```
+// Define the database type to match your entities
+interface Database {
+  user_profile: {
+    id: number;
+    first_name: string;
+    last_name: string;
+  };
+  post: {
+    id: number;
+    title: string;
+    author_id: number;
+  };
+}
 
-  #### Returns DynamicModule\<DB>
+// Pass the type to getKysely() for full type safety
+const kysely = orm.em.getKysely<Database>();
 
-### [**](#fn)fn
+const user = await kysely
+  .selectFrom('user_profile')
+  .select(['id', 'first_name'])
+  .executeTakeFirst();
+```
 
-* **get fn(): FunctionModule\<DB, keyof
-  <!-- -->
-  DB>
+When using `columnNamingStrategy: 'property'`, define the interface with property names instead:
 
-* Returns a FunctionModule that can be used to write somewhat type-safe function calls.
+```
+interface Database {
+  user_profile: {
+    id: number;
+    firstName: string;
+    lastName: string;
+  };
+}
 
-  ```
-  const { count } = db.fn
+const kysely = orm.em.getKysely<Database>({
+  columnNamingStrategy: 'property',
+});
+```
 
-  await db.selectFrom('person')
-    .innerJoin('pet', 'pet.owner_id', 'person.id')
-    .select([
-      'id',
-      count('pet.id').as('person_count'),
-    ])
-    .groupBy('person.id')
-    .having(count('pet.id'), '>', 10)
-    .execute()
-  ```
+### Mixing Inferred and Manual Types[​](#mixing-inferred-and-manual-types "Direct link to Mixing Inferred and Manual Types")
 
-  The generated SQL (PostgreSQL):
+You can combine `InferKyselyTable` (for `defineEntity` entities) with manual type declarations (for other tables or views):
 
-  ```
-  select "person"."id", count("pet"."id") as "person_count"
-  from "person"
-  inner join "pet" on "pet"."owner_id" = "person"."id"
-  group by "person"."id"
-  having count("pet"."id") > $1
-  ```
+```
+import { InferKyselyTable } from '@mikro-orm/postgresql';
 
-  Why "somewhat" type-safe? Because the function calls are not bound to the current query context. They allow you to reference columns and tables that are not in the current query. E.g. remove the `innerJoin` from the previous query and TypeScript won't even complain.
+const pluginOptions = {
+  tableNamingStrategy: 'entity',
+  convertValues: true,
+} as const;
 
-  If you want to make the function calls fully type-safe, you can use the ExpressionBuilder.fn getter for a query context-aware, stricter FunctionModule.
+// Manual type for a database view or table without a defineEntity definition
+interface ViewStatsTable {
+  view_id: number;
+  view_count: number;
+}
 
-  ```
-  await db.selectFrom('person')
-    .innerJoin('pet', 'pet.owner_id', 'person.id')
-    .select((eb) => [
-      'person.id',
-      eb.fn.count('pet.id').as('pet_count')
-    ])
-    .groupBy('person.id')
-    .having((eb) => eb.fn.count('pet.id'), '>', 10)
-    .execute()
-  ```
+interface Database {
+  User: InferKyselyTable<typeof User, typeof pluginOptions>;
+  Post: InferKyselyTable<typeof Post, typeof pluginOptions>;
+  view_stats: ViewStatsTable;
+}
 
-  ***
+const kysely = orm.em.getKysely<Database>(pluginOptions);
 
-  #### Returns FunctionModule\<DB, keyof<!-- --> DB>
+const user = await kysely.selectFrom('User').selectAll().executeTakeFirst();
+const stats = await kysely.selectFrom('view_stats').selectAll().executeTakeFirst();
+```
 
-### [**](#introspection)introspection
+## Plugin Options[​](#plugin-options "Direct link to Plugin Options")
 
-* **get introspection(): DatabaseIntrospector
+When you pass a configuration object to `getKysely()`, the returned instance includes the `MikroKyselyPlugin`. This plugin intercepts Kysely's query compilation and result processing to support MikroORM-specific features.
 
-* Returns a database introspector.
+### `tableNamingStrategy`[​](#tablenamingstrategy "Direct link to tablenamingstrategy")
 
-  ***
+Controls how you reference tables in Kysely queries.
 
-  #### Returns DatabaseIntrospector
+* `'table'` (**default**): Use the actual table name in the database (e.g., `user_profiles`). This is Kysely's standard behavior.
+* `'entity'`: Use the entity name (e.g., `UserProfile`). The plugin converts it to the corresponding table name before generating SQL.
 
-### [**](#istransaction)isTransaction
+```
+// Assuming entity name is 'User' and database table name is 'users'
 
-* **get isTransaction(): boolean
+// Default (tableNamingStrategy: 'table')
+await kysely.selectFrom('users').selectAll().execute();
 
-* Returns true if this `Kysely` instance is a transaction.
+// Using entity name strategy (tableNamingStrategy: 'entity')
+await kysely.selectFrom('User').selectAll().execute();
+// Generated SQL: select * from "users"
+```
 
-  You can also use `db instanceof Transaction`.
+### `columnNamingStrategy`[​](#columnnamingstrategy "Direct link to columnnamingstrategy")
 
-  ***
+Controls how you reference columns in Kysely queries and how results are mapped.
 
-  #### Returns boolean
+* `'column'` (**default**): Use the actual column name in the database (e.g., `first_name`).
+* `'property'`: Use the entity property name (e.g., `firstName`). The plugin converts property names to column names when generating SQL, and maps column names back to property names in returned results.
 
-### [**](#schema)schema
+```
+const kysely = orm.em.getKysely({ columnNamingStrategy: 'property' });
 
-* **get schema(): SchemaModule
+const users = await kysely
+  .selectFrom('user')
+  .select(['firstName', 'lastName']) // property names
+  .where('firstName', '=', 'John')
+  .execute();
 
-* Returns the SchemaModule module for building database schema.
+// Generated SQL: select "first_name", "last_name" from "user" where "first_name" = ?
 
-  ***
+// Results are automatically mapped back to property names
+console.log(users[0].firstName); // 'John'
+```
 
-  #### Returns SchemaModule
+### `processOnCreateHooks`[​](#processoncreatehooks "Direct link to processoncreatehooks")
 
-## Methods<!-- -->[**](#methods)
+Boolean, defaults to `false`.
 
-### [**](#\[asyncDispose])\[asyncDispose]
+When enabled, `INSERT` queries automatically process `onCreate` hooks defined on entity properties. If your insert data is missing certain properties configured with `onCreate` (e.g., `createdAt`), the plugin will automatically generate and add them to the query.
 
-* ****\[asyncDispose]**(): Promise\<void>
+```
+// Entity property with onCreate hook:
+// @Property({ onCreate: () => new Date() })
+// createdAt!: Date;
 
-* Implementation of AsyncDisposable.\[asyncDispose]
+const kysely = orm.em.getKysely({ processOnCreateHooks: true });
 
-  #### Returns Promise\<void>
+// Insert without createdAt — it gets added automatically
+await kysely.insertInto('user').values({ name: 'John' }).execute();
 
-### [**](#case)case
+// Generated SQL automatically includes created_at
+// insert into "user" ("name", "created_at") values (?, ?)
+```
 
-* ****case**(): CaseBuilder\<DB, keyof
-  <!-- -->
-  DB, unknown, never>
-* ****case**\<V>(value): CaseBuilder\<DB, keyof
-  <!-- -->
-  DB, V, never>
+### `processOnUpdateHooks`[​](#processonupdatehooks "Direct link to processonupdatehooks")
 
-* Creates a `case` statement/operator.
+Boolean, defaults to `false`.
 
-  See ExpressionBuilder.case for more information.
+When enabled, `UPDATE` queries automatically process `onUpdate` hooks defined on entity properties. For example, automatically updating the `updatedAt` timestamp field.
 
-  ***
+```
+// Entity property with onUpdate hook:
+// @Property({ onUpdate: () => new Date() })
+// updatedAt!: Date;
 
-  #### Returns CaseBuilder\<DB, keyof<!-- --> DB, unknown, never>
+const kysely = orm.em.getKysely({ processOnUpdateHooks: true });
 
-### [**](#connection)connection
+await kysely
+  .updateTable('user')
+  .set({ name: 'Johnny' })
+  .where('id', '=', 1)
+  .execute();
 
-* ****connection**(): ConnectionBuilder\<DB>
+// Generated SQL automatically includes updated_at
+// update "user" set "name" = ?, "updated_at" = ? where "id" = ?
+```
 
-* Provides a kysely instance bound to a single database connection.
+### `convertValues`[​](#convertvalues "Direct link to convertvalues")
 
-  ### Examples
+Boolean, defaults to `false`.
 
-  ```
-  await db
-    .connection()
-    .execute(async (db) => {
-      // `db` is an instance of `Kysely` that's bound to a single
-      // database connection. All queries executed through `db` use
-      // the same connection.
-      await doStuff(db)
-    })
+When enabled, the plugin uses MikroORM's type system to convert query parameters and result values. This is important for handling driver-specific types (such as Date stored as numbers/strings in SQLite) or custom types.
 
-  async function doStuff(kysely: typeof db) {
-    // ...
-  }
-  ```
+* **Input conversion**: Converts JavaScript objects (e.g., `Date`) to database-supported formats.
+* **Output conversion**: Converts raw values returned from the database back to JavaScript objects or custom types.
 
-  ***
+```
+const kysely = orm.em.getKysely({ convertValues: true });
 
-  #### Returns ConnectionBuilder\<DB>
-
-### [**](#deleteFrom)inheriteddeleteFrom
-
-* ****deleteFrom**\<TE>(from): DeleteFrom\<DB, TE>
-
-* Inherited from QueryCreator.deleteFrom
-
-  Creates a delete query.
-
-  See the [DeleteQueryBuilder.where](https://mikro-orm.io/api/sql/interface/DeleteQueryBuilder.md#where) method for examples on how to specify a where clause for the delete operation.
-
-  The return value of the query is an instance of DeleteResult.
-
-  ### Examples
-
-  \<!-- siteExample("delete", "Single row", 10) -->
-
-  Delete a single row:
-
-  ```
-  const result = await db
-    .deleteFrom('person')
-    .where('person.id', '=', 1)
-    .executeTakeFirst()
-
-  console.log(result.numDeletedRows)
-  ```
-
-  The generated SQL (PostgreSQL):
-
-  ```
-  delete from "person" where "person"."id" = $1
-  ```
-
-  Some databases such as MySQL support deleting from multiple tables:
-
-  ```
-  const result = await db
-    .deleteFrom(['person', 'pet'])
-    .using('person')
-    .innerJoin('pet', 'pet.owner_id', 'person.id')
-    .where('person.id', '=', 1)
-    .executeTakeFirst()
-  ```
-
-  The generated SQL (MySQL):
-
-  ```
-  delete from `person`, `pet`
-  using `person`
-  inner join `pet` on `pet`.`owner_id` = `person`.`id`
-  where `person`.`id` = ?
-  ```
-
-  ***
-
-  #### Parameters
-
-  * ##### from: TE
-
-  #### Returns DeleteFrom\<DB, TE>
-
-### [**](#destroy)destroy
-
-* ****destroy**(): Promise\<void>
-
-* Releases all resources and disconnects from the database.
-
-  You need to call this when you are done using the `Kysely` instance.
-
-  ***
-
-  #### Returns Promise\<void>
-
-### [**](#executequery)executeQuery
-
-* ****executeQuery**\<R>(query, queryId): Promise\<QueryResult\<R>>
-
-* Executes a given compiled query or query builder.
-
-  See build, compile and execute code recipe for more information.
-
-  ***
-
-  #### Parameters
-
-  * ##### query: CompiledQuery\<R> | Compilable\<R>
-
-  * ##### optionalqueryId: QueryId
-
-  #### Returns Promise\<QueryResult\<R>>
-
-### [**](#insertInto)inheritedinsertInto
-
-* ****insertInto**\<T>(table): InsertQueryBuilder\<DB, T, InsertResult>
-
-* Inherited from QueryCreator.insertInto
-
-  Creates an insert query.
-
-  The return value of this query is an instance of InsertResult. InsertResult has the insertId field that holds the auto incremented id of the inserted row if the db returned one.
-
-  See the values method for more info and examples. Also see the returning method for a way to return columns on supported databases like PostgreSQL.
-
-  ### Examples
-
-  ```
-  const result = await db
-    .insertInto('person')
-    .values({
-      first_name: 'Jennifer',
-      last_name: 'Aniston'
-    })
-    .executeTakeFirst()
-
-  console.log(result.insertId)
-  ```
-
-  Some databases like PostgreSQL support the `returning` method:
-
-  ```
-  const { id } = await db
-    .insertInto('person')
-    .values({
-      first_name: 'Jennifer',
-      last_name: 'Aniston'
-    })
-    .returning('id')
-    .executeTakeFirstOrThrow()
-  ```
-
-  ***
-
-  #### Parameters
-
-  * ##### table: T
-
-  #### Returns InsertQueryBuilder\<DB, T, InsertResult>
-
-### [**](#mergeInto)inheritedmergeInto
-
-* ****mergeInto**\<TR>(targetTable): MergeInto\<DB, TR>
-
-* Inherited from QueryCreator.mergeInto
-
-  Creates a merge query.
-
-  The return value of the query is a MergeResult.
-
-  See the MergeQueryBuilder.using method for examples on how to specify the other table.
-
-  ### Examples
-
-  \<!-- siteExample("merge", "Source row existence", 10) -->
-
-  Update a target column based on the existence of a source row:
-
-  ```
-  const result = await db
-    .mergeInto('person as target')
-    .using('pet as source', 'source.owner_id', 'target.id')
-    .whenMatchedAnd('target.has_pets', '!=', 'Y')
-    .thenUpdateSet({ has_pets: 'Y' })
-    .whenNotMatchedBySourceAnd('target.has_pets', '=', 'Y')
-    .thenUpdateSet({ has_pets: 'N' })
-    .executeTakeFirstOrThrow()
-
-  console.log(result.numChangedRows)
-  ```
-
-  The generated SQL (PostgreSQL):
-
-  ```
-  merge into "person"
-  using "pet"
-  on "pet"."owner_id" = "person"."id"
-  when matched and "has_pets" != $1
-  then update set "has_pets" = $2
-  when not matched by source and "has_pets" = $3
-  then update set "has_pets" = $4
-  ```
-
-  \<!-- siteExample("merge", "Temporary changes table", 20) -->
-
-  Merge new entries from a temporary changes table:
-
-  ```
-  const result = await db
-    .mergeInto('wine as target')
-    .using(
-      'wine_stock_change as source',
-      'source.wine_name',
-      'target.name',
-    )
-    .whenNotMatchedAnd('source.stock_delta', '>', 0)
-    .thenInsertValues(({ ref }) => ({
-      name: ref('source.wine_name'),
-      stock: ref('source.stock_delta'),
-    }))
-    .whenMatchedAnd(
-      (eb) => eb('target.stock', '+', eb.ref('source.stock_delta')),
-      '>',
-      0,
-    )
-    .thenUpdateSet('stock', (eb) =>
-      eb('target.stock', '+', eb.ref('source.stock_delta')),
-    )
-    .whenMatched()
-    .thenDelete()
-    .executeTakeFirstOrThrow()
-  ```
-
-  The generated SQL (PostgreSQL):
-
-  ```
-  merge into "wine" as "target"
-  using "wine_stock_change" as "source"
-  on "source"."wine_name" = "target"."name"
-  when not matched and "source"."stock_delta" > $1
-  then insert ("name", "stock") values ("source"."wine_name", "source"."stock_delta")
-  when matched and "target"."stock" + "source"."stock_delta" > $2
-  then update set "stock" = "target"."stock" + "source"."stock_delta"
-  when matched
-  then delete
-  ```
-
-  ***
-
-  #### Parameters
-
-  * ##### targetTable: TR
-
-  #### Returns MergeInto\<DB, TR>
-
-### [**](#replaceInto)inheritedreplaceInto
-
-* ****replaceInto**\<T>(table): InsertQueryBuilder\<DB, T, InsertResult>
-
-* Inherited from QueryCreator.replaceInto
-
-  Creates a "replace into" query.
-
-  This is only supported by some dialects like MySQL or SQLite.
-
-  Similar to MySQL's InsertQueryBuilder.onDuplicateKeyUpdate that deletes and inserts values on collision instead of updating existing rows.
-
-  An alias of SQLite's InsertQueryBuilder.orReplace.
-
-  The return value of this query is an instance of InsertResult. InsertResult has the insertId field that holds the auto incremented id of the inserted row if the db returned one.
-
-  See the values method for more info and examples.
-
-  ### Examples
-
-  ```
-  const result = await db
-    .replaceInto('person')
-    .values({
-      first_name: 'Jennifer',
-      last_name: 'Aniston'
-    })
-    .executeTakeFirstOrThrow()
-
-  console.log(result.insertId)
-  ```
-
-  The generated SQL (MySQL):
-
-  ```
-  replace into `person` (`first_name`, `last_name`) values (?, ?)
-  ```
-
-  ***
-
-  #### Parameters
-
-  * ##### table: T
-
-  #### Returns InsertQueryBuilder\<DB, T, InsertResult>
-
-### [**](#selectFrom)inheritedselectFrom
-
-* ****selectFrom**\<TE>(from): SelectFrom\<DB, never, TE>
-
-* Inherited from QueryCreator.selectFrom
-
-  Creates a `select` query builder for the given table or tables.
-
-  The tables passed to this method are built as the query's `from` clause.
-
-  ### Examples
-
-  Create a select query for one table:
-
-  ```
-  db.selectFrom('person').selectAll()
-  ```
-
-  The generated SQL (PostgreSQL):
-
-  ```
-  select * from "person"
-  ```
-
-  Create a select query for one table with an alias:
-
-  ```
-  const persons = await db.selectFrom('person as p')
-    .select(['p.id', 'first_name'])
-    .execute()
-
-  console.log(persons[0].id)
-  ```
-
-  The generated SQL (PostgreSQL):
-
-  ```
-  select "p"."id", "first_name" from "person" as "p"
-  ```
-
-  Create a select query from a subquery:
-
-  ```
-  const persons = await db.selectFrom(
-      (eb) => eb.selectFrom('person').select('person.id as identifier').as('p')
-    )
-    .select('p.identifier')
-    .execute()
-
-  console.log(persons[0].identifier)
-  ```
-
-  The generated SQL (PostgreSQL):
-
-  ```
-  select "p"."identifier",
-  from (
-    select "person"."id" as "identifier" from "person"
-  ) as p
-  ```
-
-  Create a select query from raw sql:
-
-  ```
-  import { sql } from 'kysely'
-
-  const items = await db
-    .selectFrom(sql<{ one: number }>`(select 1 as one)`.as('q'))
-    .select('q.one')
-    .execute()
-
-  console.log(items[0].one)
-  ```
-
-  The generated SQL (PostgreSQL):
-
-  ```
-  select "q"."one",
-  from (
-    select 1 as one
-  ) as q
-  ```
-
-  When you use the `sql` tag you need to also provide the result type of the raw snippet / query so that Kysely can figure out what columns are available for the rest of the query.
-
-  The `selectFrom` method also accepts an array for multiple tables. All the above examples can also be used in an array.
-
-  ```
-  import { sql } from 'kysely'
-
-  const items = await db.selectFrom([
-      'person as p',
-      db.selectFrom('pet').select('pet.species').as('a'),
-      sql<{ one: number }>`(select 1 as one)`.as('q')
-    ])
-    .select(['p.id', 'a.species', 'q.one'])
-    .execute()
-  ```
-
-  The generated SQL (PostgreSQL):
-
-  ```
-  select "p".id, "a"."species", "q"."one"
-  from
-    "person" as "p",
-    (select "pet"."species" from "pet") as a,
-    (select 1 as one) as "q"
-  ```
-
-  ***
-
-  #### Parameters
-
-  * ##### from: TE
-
-  #### Returns SelectFrom\<DB, never, TE>
-
-### [**](#selectNoFrom)inheritedselectNoFrom
-
-* ****selectNoFrom**\<SE>(selections): SelectQueryBuilder\<DB, never, Selection\<DB, never, SE>>
-* ****selectNoFrom**\<CB>(callback): SelectQueryBuilder\<DB, never, CallbackSelection\<DB, never, CB>>
-* ****selectNoFrom**\<SE>(selection): SelectQueryBuilder\<DB, never, Selection\<DB, never, SE>>
-
-* Inherited from QueryCreator.selectNoFrom
-
-  Creates a `select` query builder without a `from` clause.
-
-  If you want to create a `select from` query, use the `selectFrom` method instead. This one can be used to create a plain `select` statement without a `from` clause.
-
-  This method accepts the same inputs as [SelectQueryBuilder.select](https://mikro-orm.io/api/sql/interface/SelectQueryBuilder.md#select). See its documentation for more examples.
-
-  ### Examples
-
-  ```
-  const result = await db.selectNoFrom((eb) => [
-    eb.selectFrom('person')
-      .select('id')
-      .where('first_name', '=', 'Jennifer')
-      .limit(1)
-      .as('jennifer_id'),
-    eb.selectFrom('pet')
-      .select('id')
-      .where('name', '=', 'Doggo')
-      .limit(1)
-      .as('doggo_id')
-  ])
-  .executeTakeFirstOrThrow()
-
-  console.log(result.jennifer_id)
-  console.log(result.doggo_id)
-  ```
-
-  The generated SQL (PostgreSQL):
-
-  ```
-  select (
-    select "id"
-    from "person"
-    where "first_name" = $1
-    limit $2
-  ) as "jennifer_id", (
-    select "id"
-    from "pet"
-    where "name" = $3
-    limit $4
-  ) as "doggo_id"
-  ```
-
-  ***
-
-  #### Parameters
-
-  * ##### selections: readonly<!-- --> SE\[]
-
-  #### Returns SelectQueryBuilder\<DB, never, Selection\<DB, never, SE>>
-
-### [**](#starttransaction)startTransaction
-
-* ****startTransaction**(): ControlledTransactionBuilder\<DB>
-
-* Creates a ControlledTransactionBuilder that can be used to run queries inside a controlled transaction.
-
-  The returned ControlledTransactionBuilder can be used to configure the transaction. The ControlledTransactionBuilder.execute method can then be called to start the transaction and return a ControlledTransaction.
-
-  A ControlledTransaction allows you to commit and rollback manually, execute savepoint commands. It extends [Transaction](https://mikro-orm.io/api/core.md#Transaction) which extends [Kysely](https://mikro-orm.io/api/sql/class/Kysely.md), so you can run queries inside the transaction. Once the transaction is committed, or rolled back, it can't be used anymore - all queries will throw an error. This is to prevent accidentally running queries outside the transaction - where atomicity is not guaranteed anymore.
-
-  ### Examples
-
-  \<!-- siteExample("transactions", "Controlled transaction", 11) -->
-
-  A controlled transaction allows you to commit and rollback manually, execute savepoint commands, and queries in general.
-
-  In this example we start a transaction, use it to insert two rows and then commit the transaction. If an error is thrown, we catch it and rollback the transaction.
-
-  ```
-  const trx = await db.startTransaction().execute()
-
-  try {
-    const jennifer = await trx.insertInto('person')
-      .values({
-        first_name: 'Jennifer',
-        last_name: 'Aniston',
-        age: 40,
-      })
-      .returning('id')
-      .executeTakeFirstOrThrow()
-
-    const catto = await trx.insertInto('pet')
-      .values({
-        owner_id: jennifer.id,
-        name: 'Catto',
-        species: 'cat',
-        is_favorite: false,
-      })
-      .returningAll()
-      .executeTakeFirstOrThrow()
-
-    await trx.commit().execute()
-
-    // ...
-  } catch (error) {
-    await trx.rollback().execute()
-  }
-  ```
-
-  \<!-- siteExample("transactions", "Controlled transaction /w savepoints", 12) -->
-
-  A controlled transaction allows you to commit and rollback manually, execute savepoint commands, and queries in general.
-
-  In this example we start a transaction, insert a person, create a savepoint, try inserting a toy and a pet, and if an error is thrown, we rollback to the savepoint. Eventually we release the savepoint, insert an audit record and commit the transaction. If an error is thrown, we catch it and rollback the transaction.
-
-  ```
-  const trx = await db.startTransaction().execute()
-
-  try {
-    const jennifer = await trx
-      .insertInto('person')
-      .values({
-        first_name: 'Jennifer',
-        last_name: 'Aniston',
-        age: 40,
-      })
-      .returning('id')
-      .executeTakeFirstOrThrow()
-
-    const trxAfterJennifer = await trx.savepoint('after_jennifer').execute()
-
-    try {
-      const catto = await trxAfterJennifer
-        .insertInto('pet')
-        .values({
-          owner_id: jennifer.id,
-          name: 'Catto',
-          species: 'cat',
-        })
-        .returning('id')
-        .executeTakeFirstOrThrow()
-
-      await trxAfterJennifer
-        .insertInto('toy')
-        .values({ name: 'Bone', price: 1.99, pet_id: catto.id })
-        .execute()
-    } catch (error) {
-      await trxAfterJennifer.rollbackToSavepoint('after_jennifer').execute()
-    }
-
-    await trxAfterJennifer.releaseSavepoint('after_jennifer').execute()
-
-    await trx.insertInto('audit').values({ action: 'added Jennifer' }).execute()
-
-    await trx.commit().execute()
-  } catch (error) {
-    await trx.rollback().execute()
-  }
-  ```
-
-  ***
-
-  #### Returns ControlledTransactionBuilder\<DB>
-
-### [**](#transaction)transaction
-
-* ****transaction**(): TransactionBuilder\<DB>
-
-* Creates a TransactionBuilder that can be used to run queries inside a transaction.
-
-  The returned TransactionBuilder can be used to configure the transaction. The TransactionBuilder.execute method can then be called to run the transaction. TransactionBuilder.execute takes a function that is run inside the transaction. If the function throws an exception,
-
-  1. the exception is caught,
-  2. the transaction is rolled back, and
-  3. the exception is thrown again. Otherwise the transaction is committed.
-
-  The callback function passed to the execute method gets the transaction object as its only argument. The transaction is of type [Transaction](https://mikro-orm.io/api/core.md#Transaction) which inherits [Kysely](https://mikro-orm.io/api/sql/class/Kysely.md). Any query started through the transaction object is executed inside the transaction.
-
-  To run a controlled transaction, allowing you to commit and rollback manually, use startTransaction instead.
-
-  ### Examples
-
-  \<!-- siteExample("transactions", "Simple transaction", 10) -->
-
-  This example inserts two rows in a transaction. If an exception is thrown inside the callback passed to the `execute` method,
-
-  1. the exception is caught,
-  2. the transaction is rolled back, and
-  3. the exception is thrown again. Otherwise the transaction is committed.
-
-  ```
-  const catto = await db.transaction().execute(async (trx) => {
-    const jennifer = await trx.insertInto('person')
-      .values({
-        first_name: 'Jennifer',
-        last_name: 'Aniston',
-        age: 40,
-      })
-      .returning('id')
-      .executeTakeFirstOrThrow()
-
-    return await trx.insertInto('pet')
-      .values({
-        owner_id: jennifer.id,
-        name: 'Catto',
-        species: 'cat',
-        is_favorite: false,
-      })
-      .returningAll()
-      .executeTakeFirst()
+// 1. Input conversion: Date objects are automatically handled
+await kysely
+  .insertInto('user')
+  .values({
+    name: 'John',
+    bornAt: new Date('1990-01-01') // automatically converted to database format
   })
-  ```
-
-  Setting the isolation level:
-
-  ```
-  import type { Kysely } from 'kysely'
-
-  await db
-    .transaction()
-    .setIsolationLevel('serializable')
-    .execute(async (trx) => {
-      await doStuff(trx)
-    })
-
-  async function doStuff(kysely: typeof db) {
-    // ...
-  }
-  ```
-
-  ***
-
-  #### Returns TransactionBuilder\<DB>
-
-### [**](#updateTable)inheritedupdateTable
-
-* ****updateTable**\<TE>(tables): UpdateTable\<DB, TE>
-
-* Inherited from QueryCreator.updateTable
-
-  Creates an update query.
-
-  See the [UpdateQueryBuilder.where](https://mikro-orm.io/api/sql/interface/UpdateQueryBuilder.md#where) method for examples on how to specify a where clause for the update operation.
-
-  See the UpdateQueryBuilder.set method for examples on how to specify the updates.
-
-  The return value of the query is an UpdateResult.
-
-  ### Examples
-
-  ```
-  const result = await db
-    .updateTable('person')
-    .set({ first_name: 'Jennifer' })
-    .where('person.id', '=', 1)
-    .executeTakeFirst()
-
-  console.log(result.numUpdatedRows)
-  ```
-
-  ***
-
-  #### Parameters
-
-  * ##### tables: TE
-
-  #### Returns UpdateTable\<DB, TE>
-
-### [**](#with)inheritedwith
-
-* ****with**\<N, E>(nameOrBuilder, expression): QueryCreatorWithCommonTableExpression\<DB, N, E>
-
-* Inherited from QueryCreator.with
-
-  Creates a `with` query (Common Table Expression).
-
-  ### Examples
-
-  \<!-- siteExample("cte", "Simple selects", 10) -->
-
-  Common table expressions (CTE) are a great way to modularize complex queries. Essentially they allow you to run multiple separate queries within a single roundtrip to the DB.
-
-  Since CTEs are a part of the main query, query optimizers inside DB engines are able to optimize the overall query. For example, postgres is able to inline the CTEs inside the using queries if it decides it's faster.
-
-  ```
-  const result = await db
-    // Create a CTE called `jennifers` that selects all
-    // persons named 'Jennifer'.
-    .with('jennifers', (db) => db
-      .selectFrom('person')
-      .where('first_name', '=', 'Jennifer')
-      .select(['id', 'age'])
-    )
-    // Select all rows from the `jennifers` CTE and
-    // further filter it.
-    .with('adult_jennifers', (db) => db
-      .selectFrom('jennifers')
-      .where('age', '>', 18)
-      .select(['id', 'age'])
-    )
-    // Finally select all adult jennifers that are
-    // also younger than 60.
-    .selectFrom('adult_jennifers')
-    .where('age', '<', 60)
-    .selectAll()
-    .execute()
-  ```
-
-  \<!-- siteExample("cte", "Inserts, updates and deletions", 20) -->
-
-  Some databases like postgres also allow you to run other queries than selects in CTEs. On these databases CTEs are extremely powerful:
-
-  ```
-  const result = await db
-    .with('new_person', (db) => db
-      .insertInto('person')
-      .values({
-        first_name: 'Jennifer',
-        age: 35,
-      })
-      .returning('id')
-    )
-    .with('new_pet', (db) => db
-      .insertInto('pet')
-      .values({
-        name: 'Doggo',
-        species: 'dog',
-        is_favorite: true,
-        // Use the id of the person we just inserted.
-        owner_id: db
-          .selectFrom('new_person')
-          .select('id')
-      })
-      .returning('id')
-    )
-    .selectFrom(['new_person', 'new_pet'])
-    .select([
-      'new_person.id as person_id',
-      'new_pet.id as pet_id'
-    ])
-    .execute()
-  ```
-
-  The CTE name can optionally specify column names in addition to a name. In that case Kysely requires the expression to retun rows with the same columns.
-
-  ```
-  await db
-    .with('jennifers(id, age)', (db) => db
-      .selectFrom('person')
-      .where('first_name', '=', 'Jennifer')
-      // This is ok since we return columns with the same
-      // names as specified by `jennifers(id, age)`.
-      .select(['id', 'age'])
-    )
-    .selectFrom('jennifers')
-    .selectAll()
-    .execute()
-  ```
-
-  The first argument can also be a callback. The callback is passed a `CTEBuilder` instance that can be used to configure the CTE:
-
-  ```
-  await db
-    .with(
-      (cte) => cte('jennifers').materialized(),
-      (db) => db
-        .selectFrom('person')
-        .where('first_name', '=', 'Jennifer')
-        .select(['id', 'age'])
-    )
-    .selectFrom('jennifers')
-    .selectAll()
-    .execute()
-  ```
-
-  ***
-
-  #### Parameters
-
-  * ##### nameOrBuilder: N | CTEBuilderCallback\<N>
-
-  * ##### expression: E
-
-  #### Returns QueryCreatorWithCommonTableExpression\<DB, N, E>
-
-### [**](#withoutplugins)withoutPlugins
-
-* ****withoutPlugins**(): [Kysely](https://mikro-orm.io/api/sql/class/Kysely.md)\<DB>
-
-* Overrides QueryCreator.withoutPlugins
-
-  Returns a copy of this Kysely instance without any plugins.
-
-  ***
-
-  #### Returns [Kysely](https://mikro-orm.io/api/sql/class/Kysely.md)\<DB>
-
-### [**](#withplugin)withPlugin
-
-* ****withPlugin**(plugin): [Kysely](https://mikro-orm.io/api/sql/class/Kysely.md)\<DB>
-
-* Overrides QueryCreator.withPlugin
-
-  Returns a copy of this Kysely instance with the given plugin installed.
-
-  ***
-
-  #### Parameters
-
-  * ##### plugin: KyselyPlugin
-
-  #### Returns [Kysely](https://mikro-orm.io/api/sql/class/Kysely.md)\<DB>
-
-### [**](#withRecursive)inheritedwithRecursive
-
-* ****withRecursive**\<N, E>(nameOrBuilder, expression): QueryCreatorWithCommonTableExpression\<DB, N, E>
-
-* Inherited from QueryCreator.withRecursive
-
-  Creates a recursive `with` query (Common Table Expression).
-
-  Note that recursiveness is a property of the whole `with` statement. You cannot have recursive and non-recursive CTEs in a same `with` statement. Therefore the recursiveness is determined by the **first** `with` or `withRecusive` call you make.
-
-  See the with method for examples and more documentation.
-
-  ***
-
-  #### Parameters
-
-  * ##### nameOrBuilder: N | CTEBuilderCallback\<N>
-
-  * ##### expression: E
-
-  #### Returns QueryCreatorWithCommonTableExpression\<DB, N, E>
-
-### [**](#withschema)withSchema
-
-* ****withSchema**(schema): [Kysely](https://mikro-orm.io/api/sql/class/Kysely.md)\<DB>
-
-* Overrides QueryCreator.withSchema
-
-  #### Parameters
-
-  * ##### schema: string
-
-  #### Returns [Kysely](https://mikro-orm.io/api/sql/class/Kysely.md)\<DB>
-
-### [**](#withtables)withTables
-
-* ****withTables**\<T>(): [Kysely](https://mikro-orm.io/api/sql/class/Kysely.md)\<DrainOuterGeneric\<DB & T>>
-
-* Returns a copy of this Kysely instance with tables added to its database type.
-
-  This method only modifies the types and doesn't affect any of the executed queries in any way.
-
-  ### Examples
-
-  The following example adds and uses a temporary table:
-
-  ```
-  await db.schema
-    .createTable('temp_table')
-    .temporary()
-    .addColumn('some_column', 'integer')
-    .execute()
-
-  const tempDb = db.withTables<{
-    temp_table: {
-      some_column: number
-    }
-  }>()
-
-  await tempDb
-    .insertInto('temp_table')
-    .values({ some_column: 100 })
-    .execute()
-  ```
-
-  ***
-
-  #### Returns [Kysely](https://mikro-orm.io/api/sql/class/Kysely.md)\<DrainOuterGeneric\<DB & T>>
+  .execute();
+
+// 2. Output conversion: automatically converted back to Date objects when reading
+const user = await kysely
+  .selectFrom('user')
+  .selectAll()
+  .executeTakeFirst();
+
+console.log(user.bornAt instanceof Date); // true
+```

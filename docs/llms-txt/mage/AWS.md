@@ -1,108 +1,136 @@
-# Source: https://docs.mage.ai/production/deploying-to-cloud/secrets/AWS.md
+# Source: https://docs.mage.ai/production/executors/aws.md
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.mage.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# AWS Secrets Manager
+# AWS ECS executor
 
-> Attention Magers: This classified document contains vital intel on securing sensitive data within the AWS Secrets Manager vault. Study the protocols carefully to create and operationalize confidential secrets, granting you clearance to integrate them into your Mage data pipeline projects.
+> Execute block runs in separate tasks.
 
-![It's Classified](https://mage-ai.github.io/assets/secrets_assets/Source_%20Giphy%20\(4\).gif)
+export const urls = {
+  chat: 'https://www.mage.ai/chat',
+  oss: 'https://www.mage.ai/oss',
+  pro: 'https://cloud.mage.ai/sign-up'
+};
 
-### **Creating a New Secret in AWS Secrets Manager**
+export const ProButton = ({href, label = 'Get started with Mage Pro for free', source = 'documentation'}) => <div style={{
+  height: 32,
+  position: 'relative'
+}}>
+    <a target="_blank" className="group px-4 py-1.5 relative inline-flex items-center text-sm font-medium rounded-full" href={href ?? `https://cloud.mage.ai/sign-up?source=${source}`}>
+      <span className="absolute inset-0 bg-primary-dark dark:bg-primary-light/10 border-primary-light/30 rounded-full dark:border group-hover:opacity-[0.9] dark:group-hover:border-primary-light/60">
+      </span>
 
-Before you can use AWS Secrets Manager with Mage, you need to create a new secret in the AWS Secrets Manager console. Follow these steps:
+      <div className="mr-0.5 space-x-2.5 flex items-center">
+        <span class="z-10 text-white dark:text-primary-light">
+          {label}
+        </span>
 
-1. Open the AWS Secrets Manager [console](https://console.aws.amazon.com/secretsmanager/)
-2. Click "Store a new secret."
-3. On the "Choose Secret Type" page, select the appropriate secret type for your use case, and then click "Next."
-4. On the "Configure Secret" page, provide the necessary details for your secret, such as the key-value pairs or the plaintext value, and then click "Next."
-5. (Optional) On the "Configure Rotation" page, you can enable automatic rotation for your secret. Automatic rotation periodically updates the secret value, ensuring that your sensitive data remains secure. Configure the rotation settings according to your requirements, and then click "Next."
-6. Review the secret details on the "Review" page, and if everything looks correct, click "Store."
+        <svg width="3" height="24" viewBox="0 -9 3 24" class="h-5 rotate-0 overflow-visible text-white/90 dark:text-primary-light">
+          <path d="M0 0L3 3L0 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+        </svg>
+      </div>
+    </a>
+  </div>;
 
-Your new secret is now stored in AWS Secrets Manager. Make a note of the secret's ARN (Amazon Resource Name), as you'll need it to access the secret from Mage.
+You can choose to launch separate AWS ECS tasks to executor blocks by specifying
+block executor\_type to be `ecs` in pipeline's metadata.yaml file.
 
-For more detailed information on managing and storing secrets in AWS Secrets Manager, refer to the official [AWS Documentation](https://docs.aws.amazon.com/secretsmanager/latest/userguide/managing-secrets.html)
+There're 2 ways to customize the ECS executor config,
 
-### Working with Secrets in Mage
+1. Specify the `ecs_config` in project's metadata.yaml file. Example config:
 
-Mage works with AWS secrets in two ways: directly accessing them through Python code, and referencing them in YAML configuration files using placeholders that Mage resolves at runtime.
+   ```yaml  theme={"system"}
+   ecs_config:
+     cpu: 1024
+     memory: 2048
+   ```
 
-**Python:**
+   2. Add the `executor_config` at block level in pipeline's metadata.yaml file. Example config:
 
-To use secrets in Python code, read these [**instructions**](https://docs.mage.ai/design/data-loading#aws-secret-loader).
+   ```yaml  theme={"system"}
+   blocks:
+   - uuid: example_data_loader
+     type: data_loader
+     upstream_blocks: []
+     downstream_blocks: []
+     executor_type: ecs
+     executor_config:
+       cpu: 1024
+       memory: 2048
+   ```
 
-**YAML:**
-
-<Accordion title="Add Secrets Through Mage UI">
-  Mage allows you to add your secrets directly through the UI. Here’s how:
-
-  1. You can manage secrets by clicking on the **Secrets** icon in the side navigation, or from the pipeline edit page by selecting the **Secrets** tab in the sidekick.
-  2. Enter each secret by clicking the **New** or **New secret** button:
-     * **AWS\_ACCESS\_KEY\_ID:** A unique identifier that forms part of the credentials required to authenticate with AWS services. (not needed if using IAM role to authenticate)
-     * **AWS\_SECRET\_ACCESS\_KEY:** The secret key that, combined with the access key ID, is used to cryptographically sign requests to AWS services. (not needed if using IAM role to authenticate)
-     * **AWS\_DEFAULT\_REGION:**  The default AWS region to use for service API calls when not explicitly specified.(or **AWS\_REGION\_NAME**)
-       ![Secrets UI](https://mage-ai.github.io/assets/secrets_assets/secrets_aws.png)
-  3. Make the changes as pictured below to represent your secrets in the io\_config.yml file
-     ![io\_config](https://mage-ai.github.io/assets/secrets_assets/io_config_aws.png)
-  4. Each secret is now stored and referenced for configuration to AWS
-
-  By following these steps, you can securely store and reference your AWS credentials and configuration through the Mage UI, allowing you to seamlessly integrate with AWS services like Secrets Manager throughout your data pipelines.
-</Accordion>
-
-<Accordion title="Add Secrets Through Environment Variables">
-  Add Secrets directly into your environment variables through the io\_config.yml file or your docker compose file. You can also add secrets in a .env file using a similar strategy.
-
-  To use secrets in YAML files (e.g. in data integration pipelines):
-
-  1. Add the following keys and values to your environment variables
-     1. **AWS\_ACCESS\_KEY\_ID:** A unique identifier that forms part of the credentials required to authenticate with AWS services. (not needed if using IAM role to authenticate)
-     2. **AWS\_SECRET\_ACCESS\_KEY:** The secret key that, combined with the access key ID, is used to cryptographically sign requests to AWS services. (not needed if using IAM role to authenticate)
-     3. **AWS\_DEFAULT\_REGION:**  The default AWS region to use for service API calls when not explicitly specified.(or **AWS\_REGION\_NAME**)
-  2. Store a secret in AWS Secrets Manager.
-  3. Use the following syntax in your YAML file to interpolate secret values from AWS Secrets Manager:
-
-  ```yaml  theme={"system"}
-  "{{ aws_secret_var('some_name_for_secret') }}"
-  ```
-
-  For Example
-
-  ```yaml  theme={"system"}
-  api_key: "{{ aws_secret_var('API_KEY') }}"
-  access_token: "{{ aws_secret_var('ACCESS_TOKEN') }}"
-  ```
-
-  4. Make the changes as pictured below to represent your secrets in the io\_config.yml file
-     ![io\_config](https://mage-ai.github.io/assets/secrets_assets/io_config_aws.png)
-  5. Each secret is now stored and referenced for configuration to AWS
-
-  By following these steps, you can securely store and reference your AWS credentials and configuration through the Mage UI, allowing you to seamlessly integrate with AWS services like Secrets Manager throughout your data pipelines.
-</Accordion>
-
-### **Working with AWS Secrets Manager**
-
-![Shhhh](https://mage-ai.github.io/assets/secrets_assets/Source_%20Giphy%20\(5\).gif)
-
-If you need a more secure environment for handling sensitive data, you can directly integrate your YAML files with AWS Secrets Manager. For example, to reference a secret stored in AWS Secrets Manager with the ARN, you would use the following syntax in your YAML file:
+To run the whole pipeline in one ECS executor, you can set the `executor_type` at pipeline level and set `run_pipeline_in_one_process` to true.
+`executor_config` can also be set at pipeline level. Here is the example pipeline metadata.yaml:
 
 ```yaml  theme={"system"}
-AWS_SECRET_ACCESS_KEY = arn:aws:secretsmanager:<AWS Region>:<AWS Account ID>:secret:<AWS_SECRET_ACCESS_KEY Name>
+blocks:
+- ...
+- ...
+executor_type: ecs
+run_pipeline_in_one_process: true
+name: example_pipeline
+...
 ```
 
-By integrating with AWS Secrets Manager, you can ensure that your sensitive data is securely stored and accessed throughout your Mage data pipelines.
+## Configurations
 
-1. **AWS\_SECRET\_ACCESS\_KEY:** The secret value you want get from AWS Secrets Manager
-2. **arn:** This is a prefix that identifies the resource as an ARN.
-3. **aws:** This is the partition that the resource is in. In this case, it's the AWS partition.
-4. **secretsmanager:** This is the service namespace, which identifies the AWS service. In this case, it's the AWS Secrets Manager service.
-5. **AWS Region:** This is the AWS region where the secret is stored (i.e. us-west-2).
-6. **AWS Account ID:** This is the 12-digit AWS account ID that the secret belongs to.
-7. **secret** This is the resource type, which indicates that the resource is a secret.
-8. **AWS\_SECRET\_ACCESS\_KEY Name:** This is the friendly name or ID of the specific secret you want to reference. It can include alphanumeric characters, hyphens, and underscores.
+| Field name               | Description                                                                                                                                       | Example values              |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| assign\_public\_ip       | Whether to assign public IP to the ECS task.                                                                                                      | true/false (default: true)  |
+| cpu                      | The CPU allocated to the ECS task.                                                                                                                | 1024                        |
+| enable\_execute\_command | Whether to [enable execute command for debugging](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-exec.html)                      | true/false (default: false) |
+| launch\_type             | The launch type of the ECS task.                                                                                                                  | FARGATE                     |
+| memory                   | The memory allocated to the ECS task.                                                                                                             | 2048                        |
+| tags                     | The tags of the ECS task.                                                                                                                         | \['tag1', 'tag2']           |
+| wait\_timeout            | The maximum wait time for the ECS task (in seconds). The default wait timeout for the ECS task is 10 minutes. Setting to -1 will disable waiting. | 1200 (default: 600)         |
 
-In the context of the YAML file, this ARN is being used with the syntax to reference the secret value stored in AWS Secrets Manager. The YAML file itself does not contain the actual secret value; instead, it references the secret by its ARN.
+### Example
+
+```yaml  theme={"system"}
+ecs_config:
+  cpu: 1024
+  memory: 2048
+  assign_public_ip: false
+  enable_execute_command: true
+  wait_timeout: 1200
+```
+
+## IAM permissions
+
+Required IAM permissions for using ECS executor:
+
+```json  theme={"system"}
+[
+  "ec2:DescribeNetworkInterfaces",
+  "ecs:DescribeTasks",
+  "ecs:ListTasks",
+  "ecs:RunTask",
+  "iam:PassRole"
+]
+```
+
+***
+
+## Resource management
+
+<Card title="Get started for free" href={`${urls.pro}?source=aws-executor`}>
+  <img src="https://mage-ai.github.io/assets/pro/banner-light.png" className="hidden dark:block" noZoom />
+
+  <img src="https://mage-ai.github.io/assets/pro/banner-dark.png" className="block dark:hidden" noZoom />
+
+  <br />
+
+  A fully managed service, where we maintain the infrastructure, guarantee uptime,
+  automatically scale your workloads to handle any volume of pipeline runs,
+  automatically upgrade new versions of Mage Pro only features,
+  monitor your production pipelines, and provide enterprise level support.
+</Card>
+
+<br />
+
+<ProButton source="aws-executor" />
 
 
 Built with [Mintlify](https://mintlify.com).

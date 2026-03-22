@@ -1,1050 +1,166 @@
-# Source: https://vueflow.dev/typedocs/interfaces/State.md
+# Source: https://vueflow.dev/guide/vue-flow/state.md
 
 ---
-url: /typedocs/interfaces/State.md
+url: /guide/vue-flow/state.md
 ---
-[**@vue-flow/monorepo**](../index.md) • **Docs**
+# State
 
-***
+Under the hood Vue Flow uses [Provide/Inject](https://v3.vuejs.org/guide/component-provide-inject)
+to pass around it's state between components.
+You can access the internal state through the [`useVueFlow`](/guide/composables#usevueflow/) composable.
 
-# Interface: State
+[`useVueFlow`](/guide/composables#usevueflow/) can be used to either create a new state instance and inject it into
+the current component tree or inject
+an already existing store from the current context.
+Internal state can be manipulated, for example by adding new elements to the state. The
+state is reactive and changes will be reflected on the graph.
 
-## Extends
+```vue
+<script setup>
+import { useVueFlow } from '@vue-flow/core'
 
-* `Omit`<[`FlowProps`](FlowProps.md), `"id"` | `"modelValue"`>
+const { getNodes, onPaneReady } = useVueFlow()
 
-## Properties
+// event handler
+onPaneReady((i) => i.fitView())
 
-### ~~applyDefault~~
-
-> **applyDefault**: `boolean`
-
-apply default change handlers for position, dimensions, adding/removing nodes. set this to false if you want to apply the changes manually
-
-#### Deprecated
-
-* will be removed in the next major version, changes will not be auto applied in the future
-
-#### Overrides
-
-`Omit.applyDefault`
-
-***
-
-### ariaLiveMessage
-
-> **ariaLiveMessage**: `string`
-
-***
-
-### ~~autoConnect~~
-
-> **autoConnect**: `boolean` | [`Connector`](../type-aliases/Connector.md)
-
-automatically create an edge when connection is triggered
-
-#### Deprecated
-
-* will be removed in the next major version
-
-#### Overrides
-
-`Omit.autoConnect`
-
-***
-
-### autoPanOnConnect
-
-> **autoPanOnConnect**: `boolean`
-
-#### Overrides
-
-`Omit.autoPanOnConnect`
-
-***
-
-### autoPanOnNodeDrag
-
-> **autoPanOnNodeDrag**: `boolean`
-
-#### Overrides
-
-`Omit.autoPanOnNodeDrag`
-
-***
-
-### autoPanSpeed
-
-> **autoPanSpeed**: `number`
-
-The speed at which the viewport pans while dragging a node or a selection box.
-
-#### Default
-
-```ts
-15
+// watch the stored nodes
+watch(getNodes, (nodes) => console.log('nodes changed', nodes))
+</script>
 ```
 
-#### Overrides
-
-`Omit.autoPanSpeed`
-
-***
-
-### connectionClickStartHandle
-
-> **connectionClickStartHandle**: `null` | [`ConnectingHandle`](ConnectingHandle.md)
-
-***
-
-### connectionEndHandle
-
-> **connectionEndHandle**: `null` | [`ConnectingHandle`](ConnectingHandle.md)
-
-***
-
-### connectionLineOptions
-
-> **connectionLineOptions**: [`ConnectionLineOptions`](ConnectionLineOptions.md)
-
-#### Overrides
-
-`Omit.connectionLineOptions`
-
-***
-
-### ~~connectionLineStyle~~
-
-> **connectionLineStyle**: `null` | `CSSProperties`
-
-#### Deprecated
-
-use [ConnectionLineOptions.style](ConnectionLineOptions.md#style)
-
-#### Overrides
-
-`Omit.connectionLineStyle`
-
-***
-
-### ~~connectionLineType~~
-
-> **connectionLineType**: `null` | [`ConnectionLineType`](../enumerations/ConnectionLineType.md)
-
-#### Deprecated
-
-use [ConnectionLineOptions.type](ConnectionLineOptions.md#type)
-
-#### Overrides
-
-`Omit.connectionLineType`
-
-***
-
-### connectionLookup
-
-> **connectionLookup**: [`ConnectionLookup`](../type-aliases/ConnectionLookup.md)
-
-***
-
-### connectionMode
-
-> **connectionMode**: [`ConnectionMode`](../enumerations/ConnectionMode.md)
-
-#### Overrides
-
-`Omit.connectionMode`
-
-***
-
-### connectionPosition
-
-> **connectionPosition**: [`XYPosition`](XYPosition.md)
-
-***
-
-### connectionRadius
-
-> **connectionRadius**: `number`
-
-#### Overrides
-
-`Omit.connectionRadius`
-
-***
-
-### connectionStartHandle
-
-> **connectionStartHandle**: `null` | [`ConnectingHandle`](ConnectingHandle.md)
-
-***
-
-### connectionStatus
-
-> **connectionStatus**: `null` | [`ConnectionStatus`](../type-aliases/ConnectionStatus.md)
-
-***
-
-### connectOnClick
-
-> **connectOnClick**: `boolean`
-
-allow connection with click handlers, i.e. support touch devices
-
-#### Overrides
-
-`Omit.connectOnClick`
-
-***
-
-### d3Selection
-
-> `readonly` **d3Selection**: `null` | [`D3Selection`](../type-aliases/D3Selection.md)
-
-***
-
-### d3Zoom
-
-> `readonly` **d3Zoom**: `null` | [`D3Zoom`](../type-aliases/D3Zoom.md)
-
-***
-
-### d3ZoomHandler
-
-> `readonly` **d3ZoomHandler**: `null` | [`D3ZoomHandler`](../type-aliases/D3ZoomHandler.md)
-
-***
-
-### defaultEdgeOptions
-
-> **defaultEdgeOptions**: `undefined` | [`DefaultEdgeOptions`](../type-aliases/DefaultEdgeOptions.md)
-
-does not work for the `addEdge` utility!
-
-#### Overrides
-
-`Omit.defaultEdgeOptions`
-
-***
-
-### defaultMarkerColor
-
-> **defaultMarkerColor**: `string`
-
-#### Overrides
-
-`Omit.defaultMarkerColor`
-
-***
-
-### defaultViewport
-
-> **defaultViewport**: `Partial`<[`ViewportTransform`](ViewportTransform.md)>
-
-#### Overrides
-
-`Omit.defaultViewport`
-
-***
-
-### deleteKeyCode
-
-> **deleteKeyCode**: `null` | `KeyFilter`
-
-#### Overrides
-
-`Omit.deleteKeyCode`
-
-***
-
-### dimensions
-
-> `readonly` **dimensions**: [`Dimensions`](Dimensions.md)
-
-viewport dimensions - do not change!
-
-***
-
-### disableKeyboardA11y
-
-> **disableKeyboardA11y**: `boolean`
-
-#### Overrides
-
-`Omit.disableKeyboardA11y`
-
-***
-
-### edges
-
-> **edges**: [`GraphEdge`](../type-aliases/GraphEdge.md)\[]
-
-all stored edges
-
-#### Overrides
-
-`Omit.edges`
-
-***
-
-### edgesFocusable
-
-> **edgesFocusable**: `boolean`
-
-#### Overrides
-
-`Omit.edgesFocusable`
-
-***
-
-### edgesUpdatable
-
-> **edgesUpdatable**: [`EdgeUpdatable`](../type-aliases/EdgeUpdatable.md)
-
-#### Overrides
-
-`Omit.edgesUpdatable`
-
-***
-
-### edgeTypes?
-
-> `optional` **edgeTypes**: [`EdgeTypesObject`](../type-aliases/EdgeTypesObject.md)
-
-either use the edgeTypes prop to define your edge-types or use slots (\<template #edge-mySpecialType="props">)
-
-#### Inherited from
-
-`Omit.edgeTypes`
-
-***
-
-### edgeUpdaterRadius
-
-> **edgeUpdaterRadius**: `number`
-
-#### Overrides
-
-`Omit.edgeUpdaterRadius`
-
-***
-
-### elementsSelectable
-
-> **elementsSelectable**: `boolean`
-
-#### Overrides
-
-`Omit.elementsSelectable`
-
-***
-
-### elevateEdgesOnSelect
-
-> **elevateEdgesOnSelect**: `boolean`
-
-elevates edges when selected and applies z-Index to put them above their nodes
-
-#### Overrides
-
-`Omit.elevateEdgesOnSelect`
-
-***
-
-### elevateNodesOnSelect
-
-> **elevateNodesOnSelect**: `boolean`
-
-elevates nodes when selected and applies z-Index + 1000
-
-#### Overrides
-
-`Omit.elevateNodesOnSelect`
-
-***
-
-### fitViewOnInit
-
-> **fitViewOnInit**: `boolean`
-
-will be renamed to `fitView`
-
-#### Overrides
-
-`Omit.fitViewOnInit`
-
-***
-
-### fitViewOnInitDone
-
-> **fitViewOnInitDone**: `boolean`
-
-***
-
-### hooks
-
-> `readonly` **hooks**: `Readonly`<`object`>
-
-Event hooks, you can manipulate the triggers at your own peril
-
-#### Type declaration
-
-##### clickConnectEnd
-
-> **clickConnectEnd**: `EventHookExtended`<`undefined` | `MouseEvent` | `TouchEvent`>
-
-##### clickConnectStart
-
-> **clickConnectStart**: `EventHookExtended`<`object` & [`OnConnectStartParams`](OnConnectStartParams.md)>
-
-##### connect
-
-> **connect**: `EventHookExtended`<[`Connection`](Connection.md)>
-
-##### connectEnd
-
-> **connectEnd**: `EventHookExtended`<`undefined` | `MouseEvent` | `TouchEvent`>
-
-##### connectStart
-
-> **connectStart**: `EventHookExtended`<`object` & [`OnConnectStartParams`](OnConnectStartParams.md)>
-
-##### edgeClick
-
-> **edgeClick**: `EventHookExtended`<[`EdgeMouseEvent`](EdgeMouseEvent.md)>
-
-##### edgeContextMenu
-
-> **edgeContextMenu**: `EventHookExtended`<[`EdgeMouseEvent`](EdgeMouseEvent.md)>
-
-##### edgeDoubleClick
-
-> **edgeDoubleClick**: `EventHookExtended`<[`EdgeMouseEvent`](EdgeMouseEvent.md)>
-
-##### edgeMouseEnter
-
-> **edgeMouseEnter**: `EventHookExtended`<[`EdgeMouseEvent`](EdgeMouseEvent.md)>
-
-##### edgeMouseLeave
-
-> **edgeMouseLeave**: `EventHookExtended`<[`EdgeMouseEvent`](EdgeMouseEvent.md)>
-
-##### edgeMouseMove
-
-> **edgeMouseMove**: `EventHookExtended`<[`EdgeMouseEvent`](EdgeMouseEvent.md)>
-
-##### edgesChange
-
-> **edgesChange**: `EventHookExtended`<[`EdgeChange`](../type-aliases/EdgeChange.md)\[]>
-
-##### edgeUpdate
-
-> **edgeUpdate**: `EventHookExtended`<[`EdgeUpdateEvent`](EdgeUpdateEvent.md)>
-
-##### edgeUpdateEnd
-
-> **edgeUpdateEnd**: `EventHookExtended`<[`EdgeMouseEvent`](EdgeMouseEvent.md)>
-
-##### edgeUpdateStart
-
-> **edgeUpdateStart**: `EventHookExtended`<[`EdgeMouseEvent`](EdgeMouseEvent.md)>
-
-##### error
-
-> **error**: `EventHookExtended`<[`VueFlowError`](../classes/VueFlowError.md)<[`ErrorCode`](../enumerations/ErrorCode.md), \[] | \[`string`] | \[`null` | `string`] | \[`string`, `string`] | \[`string`] | \[`string`] | \[`string`] | \[`string`, `string`] | \[`string`, `string`] | \[`string`] | \[`string`, `string`, `string`] | \[`string`, `string`, `string`] | \[`string`] | \[`string`]>>
-
-##### init
-
-> **init**: `EventHookExtended`<[`VueFlowStore`](../type-aliases/VueFlowStore.md)>
-
-##### miniMapNodeClick
-
-> **miniMapNodeClick**: `EventHookExtended`<[`NodeMouseEvent`](NodeMouseEvent.md)>
-
-##### miniMapNodeDoubleClick
-
-> **miniMapNodeDoubleClick**: `EventHookExtended`<[`NodeMouseEvent`](NodeMouseEvent.md)>
-
-##### miniMapNodeMouseEnter
-
-> **miniMapNodeMouseEnter**: `EventHookExtended`<[`NodeMouseEvent`](NodeMouseEvent.md)>
-
-##### miniMapNodeMouseLeave
-
-> **miniMapNodeMouseLeave**: `EventHookExtended`<[`NodeMouseEvent`](NodeMouseEvent.md)>
-
-##### miniMapNodeMouseMove
-
-> **miniMapNodeMouseMove**: `EventHookExtended`<[`NodeMouseEvent`](NodeMouseEvent.md)>
-
-##### move
-
-> **move**: `EventHookExtended`<`object`>
-
-###### Type declaration
-
-###### event
-
-> **event**: `WheelEvent` | `D3ZoomEvent`<`HTMLDivElement`, `any`>
-
-###### flowTransform
-
-> **flowTransform**: [`ViewportTransform`](ViewportTransform.md)
-
-##### moveEnd
-
-> **moveEnd**: `EventHookExtended`<`object`>
-
-###### Type declaration
-
-###### event
-
-> **event**: `WheelEvent` | `D3ZoomEvent`<`HTMLDivElement`, `any`>
-
-###### flowTransform
-
-> **flowTransform**: [`ViewportTransform`](ViewportTransform.md)
-
-##### moveStart
-
-> **moveStart**: `EventHookExtended`<`object`>
-
-###### Type declaration
-
-###### event
-
-> **event**: `WheelEvent` | `D3ZoomEvent`<`HTMLDivElement`, `any`>
-
-###### flowTransform
-
-> **flowTransform**: [`ViewportTransform`](ViewportTransform.md)
-
-##### nodeClick
-
-> **nodeClick**: `EventHookExtended`<[`NodeMouseEvent`](NodeMouseEvent.md)>
-
-##### nodeContextMenu
-
-> **nodeContextMenu**: `EventHookExtended`<[`NodeMouseEvent`](NodeMouseEvent.md)>
-
-##### nodeDoubleClick
-
-> **nodeDoubleClick**: `EventHookExtended`<[`NodeMouseEvent`](NodeMouseEvent.md)>
-
-##### nodeDrag
-
-> **nodeDrag**: `EventHookExtended`<[`NodeDragEvent`](NodeDragEvent.md)>
-
-##### nodeDragStart
-
-> **nodeDragStart**: `EventHookExtended`<[`NodeDragEvent`](NodeDragEvent.md)>
-
-##### nodeDragStop
-
-> **nodeDragStop**: `EventHookExtended`<[`NodeDragEvent`](NodeDragEvent.md)>
-
-##### nodeMouseEnter
-
-> **nodeMouseEnter**: `EventHookExtended`<[`NodeMouseEvent`](NodeMouseEvent.md)>
-
-##### nodeMouseLeave
-
-> **nodeMouseLeave**: `EventHookExtended`<[`NodeMouseEvent`](NodeMouseEvent.md)>
-
-##### nodeMouseMove
-
-> **nodeMouseMove**: `EventHookExtended`<[`NodeMouseEvent`](NodeMouseEvent.md)>
-
-##### nodesChange
-
-> **nodesChange**: `EventHookExtended`<[`NodeChange`](../type-aliases/NodeChange.md)\[]>
-
-##### nodesInitialized
-
-> **nodesInitialized**: `EventHookExtended`<[`GraphNode`](GraphNode.md)<`any`, `any`, `string`>\[]>
-
-##### paneClick
-
-> **paneClick**: `EventHookExtended`<`MouseEvent`>
-
-##### paneContextMenu
-
-> **paneContextMenu**: `EventHookExtended`<`MouseEvent`>
-
-##### paneMouseEnter
-
-> **paneMouseEnter**: `EventHookExtended`<`PointerEvent`>
-
-##### paneMouseLeave
-
-> **paneMouseLeave**: `EventHookExtended`<`PointerEvent`>
-
-##### paneMouseMove
-
-> **paneMouseMove**: `EventHookExtended`<`PointerEvent`>
-
-##### ~~paneReady~~
-
-> **paneReady**: `EventHookExtended`<[`VueFlowStore`](../type-aliases/VueFlowStore.md)>
-
-###### Deprecated
-
-use `init` instead
-
-##### paneScroll
-
-> **paneScroll**: `EventHookExtended`<`undefined` | `WheelEvent`>
-
-##### selectionContextMenu
-
-> **selectionContextMenu**: `EventHookExtended`<`object`>
-
-###### Type declaration
-
-###### event
-
-> **event**: `MouseEvent`
-
-###### nodes
-
-> **nodes**: [`GraphNode`](GraphNode.md)<`any`, `any`, `string`>\[]
-
-##### selectionDrag
-
-> **selectionDrag**: `EventHookExtended`<[`NodeDragEvent`](NodeDragEvent.md)>
-
-##### selectionDragStart
-
-> **selectionDragStart**: `EventHookExtended`<[`NodeDragEvent`](NodeDragEvent.md)>
-
-##### selectionDragStop
-
-> **selectionDragStop**: `EventHookExtended`<[`NodeDragEvent`](NodeDragEvent.md)>
-
-##### selectionEnd
-
-> **selectionEnd**: `EventHookExtended`<`MouseEvent`>
-
-##### selectionStart
-
-> **selectionStart**: `EventHookExtended`<`MouseEvent`>
-
-##### updateNodeInternals
-
-> **updateNodeInternals**: `EventHookExtended`<`string`\[]>
-
-##### viewportChange
-
-> **viewportChange**: `EventHookExtended`<[`ViewportTransform`](ViewportTransform.md)>
-
-##### viewportChangeEnd
-
-> **viewportChangeEnd**: `EventHookExtended`<[`ViewportTransform`](ViewportTransform.md)>
-
-##### viewportChangeStart
-
-> **viewportChangeStart**: `EventHookExtended`<[`ViewportTransform`](ViewportTransform.md)>
-
-***
-
-### initialized
-
-> **initialized**: `boolean`
-
-***
-
-### isValidConnection
-
-> **isValidConnection**: `null` | [`ValidConnectionFunc`](../type-aliases/ValidConnectionFunc.md)
-
-#### Overrides
-
-`Omit.isValidConnection`
-
-***
-
-### maxZoom
-
-> **maxZoom**: `number`
-
-use setMaxZoom action to change maxZoom
-
-#### Overrides
-
-`Omit.maxZoom`
-
-***
-
-### minZoom
-
-> **minZoom**: `number`
-
-use setMinZoom action to change minZoom
-
-#### Overrides
-
-`Omit.minZoom`
-
-***
-
-### multiSelectionActive
-
-> **multiSelectionActive**: `boolean`
-
-***
-
-### multiSelectionKeyCode
-
-> **multiSelectionKeyCode**: `null` | `KeyFilter`
-
-#### Overrides
-
-`Omit.multiSelectionKeyCode`
-
-***
-
-### nodeDragThreshold
-
-> **nodeDragThreshold**: `number`
-
-#### Overrides
-
-`Omit.nodeDragThreshold`
-
-***
-
-### nodeExtent
-
-> **nodeExtent**: [`CoordinateExtent`](../type-aliases/CoordinateExtent.md) | [`CoordinateExtentRange`](CoordinateExtentRange.md)
-
-#### Overrides
-
-`Omit.nodeExtent`
-
-***
-
-### nodes
-
-> **nodes**: [`GraphNode`](GraphNode.md)<`any`, `any`, `string`>\[]
-
-all stored nodes
-
-#### Overrides
-
-`Omit.nodes`
-
-***
-
-### nodesConnectable
-
-> **nodesConnectable**: `boolean`
-
-#### Overrides
-
-`Omit.nodesConnectable`
-
-***
-
-### nodesDraggable
-
-> **nodesDraggable**: `boolean`
-
-#### Overrides
-
-`Omit.nodesDraggable`
-
-***
-
-### nodesFocusable
-
-> **nodesFocusable**: `boolean`
-
-#### Overrides
-
-`Omit.nodesFocusable`
-
-***
-
-### nodesSelectionActive
-
-> **nodesSelectionActive**: `boolean`
-
-***
-
-### nodeTypes?
-
-> `optional` **nodeTypes**: [`NodeTypesObject`](../type-aliases/NodeTypesObject.md)
-
-either use the nodeTypes prop to define your node-types or use slots (\<template #node-mySpecialType="props">)
-
-#### Inherited from
-
-`Omit.nodeTypes`
-
-***
-
-### noDragClassName
-
-> **noDragClassName**: `string`
-
-#### Overrides
-
-`Omit.noDragClassName`
-
-***
-
-### noPanClassName
-
-> **noPanClassName**: `string`
-
-#### Overrides
-
-`Omit.noPanClassName`
-
-***
-
-### noWheelClassName
-
-> **noWheelClassName**: `string`
-
-#### Overrides
-
-`Omit.noWheelClassName`
-
-***
-
-### onlyRenderVisibleElements
-
-> **onlyRenderVisibleElements**: `boolean`
-
-if true will skip rendering any elements currently not inside viewport until they become visible
-
-#### Overrides
-
-`Omit.onlyRenderVisibleElements`
-
-***
-
-### panActivationKeyCode
-
-> **panActivationKeyCode**: `null` | `KeyFilter`
-
-#### Overrides
-
-`Omit.panActivationKeyCode`
-
-***
-
-### paneClickDistance
-
-> **paneClickDistance**: `number`
-
-Distance that the mouse can move between mousedown/up that will trigger a click
-
-#### Default
-
-```ts
-0
+## Accessing Internal State
+
+Using the composition API also allows us to pass the state around outside the current component context, thus we have a
+lot more flexibility when it comes
+to reading, writing and updating the state.
+
+Consider this example, where we want to create a Sidebar that allows us to select all nodes.
+
+```vue
+<!-- Container.vue -->
+<template>
+  <div>
+    <Sidebar />
+    <div class="wrapper">
+      <VueFlow :nodes="nodes" :edges="edges" />
+    </div>
+  </div>
+</template>
 ```
 
-#### Overrides
-
-`Omit.paneClickDistance`
-
-***
-
-### paneDragging
-
-> **paneDragging**: `boolean`
-
-***
-
-### panOnDrag
-
-> **panOnDrag**: `boolean` | `number`\[]
-
-move pane on drag, replaced prop `paneMovable`
-
-#### Overrides
-
-`Omit.panOnDrag`
-
-***
-
-### panOnScroll
-
-> **panOnScroll**: `boolean`
-
-#### Overrides
-
-`Omit.panOnScroll`
-
-***
-
-### panOnScrollMode
-
-> **panOnScrollMode**: [`PanOnScrollMode`](../enumerations/PanOnScrollMode.md)
-
-#### Overrides
-
-`Omit.panOnScrollMode`
-
-***
-
-### panOnScrollSpeed
-
-> **panOnScrollSpeed**: `number`
-
-#### Overrides
-
-`Omit.panOnScrollSpeed`
-
-***
-
-### preventScrolling
-
-> **preventScrolling**: `boolean`
-
-If set to false, scrolling inside the viewport will be disabled and instead the page scroll will be used
-
-#### Overrides
-
-`Omit.preventScrolling`
-
-***
-
-### selectionKeyCode
-
-> **selectionKeyCode**: `null` | `false` | `KeyFilter`
-
-#### Overrides
-
-`Omit.selectionKeyCode`
-
-***
-
-### selectionMode
-
-> **selectionMode**: [`SelectionMode`](../enumerations/SelectionMode.md)
-
-#### Overrides
-
-`Omit.selectionMode`
-
-***
-
-### selectNodesOnDrag
-
-> **selectNodesOnDrag**: `boolean`
-
-#### Overrides
-
-`Omit.selectNodesOnDrag`
-
-***
-
-### snapGrid
-
-> **snapGrid**: [`SnapGrid`](../type-aliases/SnapGrid.md)
-
-#### Overrides
-
-`Omit.snapGrid`
-
-***
-
-### snapToGrid
-
-> **snapToGrid**: `boolean`
-
-#### Overrides
-
-`Omit.snapToGrid`
-
-***
-
-### translateExtent
-
-> **translateExtent**: [`CoordinateExtent`](../type-aliases/CoordinateExtent.md)
-
-use setTranslateExtent action to change translateExtent
-
-#### Overrides
-
-`Omit.translateExtent`
-
-***
-
-### userSelectionActive
-
-> **userSelectionActive**: `boolean`
-
-***
-
-### userSelectionRect
-
-> **userSelectionRect**: `null` | [`SelectionRect`](SelectionRect.md)
-
-***
-
-### viewport
-
-> `readonly` **viewport**: [`ViewportTransform`](ViewportTransform.md)
-
-viewport transform x, y, z - do not change!
-
-***
-
-### viewportRef
-
-> **viewportRef**: `null` | `HTMLDivElement`
-
-Vue flow viewport element
-
-***
-
-### vueFlowRef
-
-> **vueFlowRef**: `null` | `HTMLDivElement`
-
-Vue flow element ref
-
-***
-
-### zoomActivationKeyCode
-
-> **zoomActivationKeyCode**: `null` | `KeyFilter`
-
-#### Overrides
-
-`Omit.zoomActivationKeyCode`
-
-***
-
-### zoomOnDoubleClick
-
-> **zoomOnDoubleClick**: `boolean`
-
-#### Overrides
-
-`Omit.zoomOnDoubleClick`
-
-***
-
-### zoomOnPinch
-
-> **zoomOnPinch**: `boolean`
-
-#### Overrides
-
-`Omit.zoomOnPinch`
-
-***
-
-### zoomOnScroll
-
-> **zoomOnScroll**: `boolean`
-
-#### Overrides
-
-`Omit.zoomOnScroll`
+We could pass all necessary info as props to the Sidebar, which could become either tedious or result in prop drilling,
+which we want to avoid.
+In this example it wouldn't be a big issue but if our destination was 3 components deep, it would become hard to track
+the flow of information.
+
+Instead, we can initialize a Vue Flow store instance **before** the Sidebar is initialized, thus the instance becomes
+available as an injection in the component tree.
+
+```vue{5-6}
+<script>
+// Container.vue
+import { useVueFlow  } from '@vue-flow/core'
+
+// initialize a store instance in this context, so it is available when calling inject(VueFlow)
+useVueFlow()
+</script>
+```
+
+Now we can easily access our current state instance from our Sidebar without passing them as props.
+
+```vue
+<script setup>
+import { useVueFlow } from '@vue-flow/core'
+
+const { nodesSelectionActive, addSelectedNodes, getNodes } = useVueFlow()
+
+const selectAll = () => {
+  addSelectedNodes(getNodes.value)
+  nodesSelectionActive.value = true
+}
+</script>
+<template>
+  <aside>
+    <div class="description">
+      This is an example of how you can access the internal state outside of the Vue VueFlow component.
+    </div>
+    <div class="selectall">
+      <button @click="selectAll">select all nodes</button>
+    </div>
+  </aside>
+</template>
+```
+
+::: tip
+If you have multiple store instances in the same context, make sure to give them a unique id in order to guarantee
+access to the correct instance.
+Otherwise `useVueFlow` will try to inject the first instance it can find in the current context, which would usually be
+the last one that has been injected.
+:::
+
+## State Updates
+
+State updates like removing elements or updating positions are applied by default.
+If you want to strictly control state changes you can disable this behavior by setting the `applyDefault` option/prop
+to `false`.
+
+```vue
+<template>
+    <VueFlow :nodes="nodes" :edges="edges" :apply-default="false" />
+</template>
+```
+
+State changes are emitted by the `onNodesChange` or `onEdgesChange` events, which will provide an array of changes that
+have been triggered.
+To take control of state changes you can implement your own state update handlers or use the state helper functions that
+come with the library to mix it up.
+
+::: info
+Read more about this in the [controlled flow](/guide/controlled-flow) guide.
+:::
+
+## Access State in Options API
+
+`useVueFlow` was designed to be used in the composition API, **but** it is still possible to use it in the options API.
+Though it is necessary to pass a unique id for your Vue Flow state instance, otherwise a look-up will fail and Vue Flow
+will create a new state instance
+when mounted.
+
+```vue
+<script>
+import { VueFlow, useVueFlow } from '@vue-flow/core'
+
+const { addEdges, onConnect } = useVueFlow({ id: 'options-api' })
+export default defineComponent({
+  components: { VueFlow },
+  data() {
+    return {
+      nodes: [
+        {
+          id: '1',
+          position: { x: 0, y: 0},
+          data: { label: 'Node 1' }
+        }
+      ],
+      edges: [],
+    }
+  },
+  methods: {
+    // regular event handler
+    handleConnect: (params) => {
+      addEdges([params])
+    }
+  },
+  beforeMount() {
+    // Register your event handler, can technically be called in any lifecycle phase
+    // Skip this if you're using regular event handlers
+    onConnect((params) => addEdges([params]))
+  }
+})
+</script>
+
+<template>
+  <VueFlow id="options-api" :nodes="nodes" :edges="edges" @connect="handleConnect" />
+</template>
+```

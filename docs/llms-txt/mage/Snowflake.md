@@ -1,4 +1,8 @@
-# Source: https://docs.mage.ai/integrations/databases/Snowflake.md
+# Source: https://docs.mage.ai/guides/streaming/destinations/snowflake.md
+
+# Source: https://docs.mage.ai/data-integrations/sources/snowflake.md
+
+# Source: https://docs.mage.ai/data-integrations/destinations/snowflake.md
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.mage.ai/llms.txt
@@ -6,227 +10,74 @@
 
 # Snowflake
 
-![](https://user-images.githubusercontent.com/78053898/198754469-d3c289d7-65c7-44d0-818c-a7a15b393d4c.png)
+> How to configure Snowflake as a destination in Mage to write pipeline data to Snowflake using batch loads, optional key-pair auth, and custom warehouse settings.
 
-## Add credentials
+![Snowflake logo](https://user-images.githubusercontent.com/78053898/198754338-a8aeb12e-6e23-45e5-b130-7a1979a2b31d.png)
 
-1. Create a new pipeline or open an existing pipeline.
-2. Expand the left side of your screen to view the file browser.
-3. Scroll down and click on a file named `io_config.yaml`.
-4. Enter the following keys and values under the key named `default` (you can
-   have multiple profiles, add it under whichever is relevant to you)
+***
 
-```yaml  theme={"system"}
-version: 0.1.1
-default:
-  SNOWFLAKE_USER: ...
-  SNOWFLAKE_PASSWORD: ...
-  SNOWFLAKE_ACCOUNT: ...
-  SNOWFLAKE_DEFAULT_WH: ...
-  SNOWFLAKE_DEFAULT_DB: ...
-  SNOWFLAKE_DEFAULT_SCHEMA: ...
-  SNOWFLAKE_PRIVATE_KEY_PASSPHRASE: ...
-  SNOWFLAKE_PRIVATE_KEY_PATH: ...
-  SNOWFLAKE_ROLE: ...
-  SNOWFLAKE_TIMEOUT: ...
-```
+## Overview
 
-<br />
+Use **Snowflake** as a destination in Mage to load structured data into your cloud data warehouse. Mage supports both **row-by-row insertion** and **batch upload** modes, and integrates with Snowflake using **username/password** or **key-pair authentication**.
 
-## Using SQL block
+This destination is ideal for exporting transformed pipeline data for analytics, BI tools, or data lakehouse modeling.
 
-1. Create a new pipeline or open an existing pipeline.
-2. Add a data loader, transformer, or data exporter block.
-3. Select `SQL`.
-4. Under the `Data provider` dropdown, select `Snowflake`.
-5. Under the `Profile` dropdown, select `default` (or the profile you added
-   credentials underneath).
-6. In the `Database` input in the block header, enter the database name you want this block to
-   save data to.
-7. In the `Schema` input in the block header, enter the schema name you want this block
-   to save data to.
-8. Under the `Write policy` dropdown, select `Replace` or `Append` (please see
-   [SQL blocks guide](/guides/blocks/sql-blocks)
-   for more information on write policies).
-9. Enter in this test query: `SELECT 1`.
-10. Run the block.
+***
 
-## Methods for configuring database and schema
+## Required Configuration
 
-You only need to include the database and schema config in one of these 3 places, in
-order of priority (so if all 3 are included, #1 takes priority, then #2, then #3):
+Provide the following credentials when configuring Snowflake as a destination:
 
-1. Include the db and schema directly in the query (e.g.
-   `select * from [database_name].[schema_name].[table_name];`). This is supported
-   when NOT using the "raw sql" query option.
-2. Include the db and schema in the SQL code block header inputs, as mentioned in Steps
-   6 and 7 of the "Using SQL block" section above.
-3. Include the default db and schema in the `io_config.yaml` file using these fields:
+| Key                     | Description                                                                                                           | Example Value       | Required |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------- | ------------------- | -------- |
+| `account`               | Your Snowflake [account identifier](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html).          | `abc1234.us-east-1` | ✅        |
+| `database`              | Name of the Snowflake database to write to.                                                                           | `DEMO_DB`           | ✅        |
+| `schema`                | Schema within the database where the table will be created.                                                           | `PUBLIC`            | ✅        |
+| `table`                 | Target table that Mage will create or insert into.                                                                    | `dim_users_v1`      | ✅        |
+| `username`              | Snowflake user with `INSERT` and `CREATE TABLE` permissions.                                                          | `guest`             | ✅        |
+| `warehouse`             | Virtual warehouse used to execute queries and ingest data.                                                            | `COMPUTE_WH`        | ✅        |
+| `use_batch_load`        | If `true`, enables batch loading instead of row-by-row inserts. Recommended for performance.                          | `true` *(default)*  | ✅        |
+| `disable_double_quotes` | If `true`, column and table names will not be wrapped in double quotes. Disabling may reduce case-sensitivity issues. | `false` *(default)* | ✅        |
 
-```
-SNOWFLAKE_DEFAULT_DB: YOUR_DB_NAME
-SNOWFLAKE_DEFAULT_SCHEMA: YOUR_SCHEMA_NAME
-```
+***
 
-## Using Python block
+## Optional Connection Parameters
 
-1. Create a new pipeline or open an existing pipeline.
-2. Add a data loader, transformer, or data exporter block (the code snippet
-   below is for a data loader).
-3. Select `Generic (no template)`.
-4. Enter this code snippet (note: change the `config_profile` from `default` if
-   you have a different profile):
+| Key                    | Description                                                                           | Example Value     |
+| ---------------------- | ------------------------------------------------------------------------------------- | ----------------- |
+| `password`             | Password for the Snowflake user.                                                      | `abc123...`       |
+| `private_key_file`     | Path to the private key file for key-pair authentication (requires version ≥ 0.9.76). | `/path/to/key.p8` |
+| `private_key_file_pwd` | Passphrase for the private key file.                                                  | `abc123...`       |
+| `role`                 | Snowflake role to use for the session.                                                | `ANALYST_ROLE`    |
 
-```python  theme={"system"}
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.snowflake import Snowflake
-from os import path
-from pandas import DataFrame
+🔐 [Enable key-pair authentication →](https://docs.snowflake.com/en/user-guide/key-pair-auth)
 
-if 'data_loader' not in globals():
-    from mage_ai.data_preparation.decorators import data_loader
+***
 
+## Optional Mage Settings
 
-@data_loader
-def load_data_from_snowflake(**kwargs) -> DataFrame:
-    query = 'SELECT 1'
-    config_path = path.join(get_repo_path(), 'io_config.yaml')
-    config_profile = 'default'
+| Key                    | Description                                                                                                                                                     | Example Value |
+| ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `skip_schema_creation` | If `true`, Mage will skip running the `CREATE SCHEMA` command. Useful if the schema already exists. [See issue](https://github.com/mage-ai/mage-ai/issues/3416) | `true`        |
+| `lower_case`           | If `true`, Mage will convert all column names to lowercase. Default is `true`.                                                                                  | `true`        |
 
-    with Snowflake.with_config(ConfigFileLoader(config_path, config_profile)) as loader:
-        return loader.load(query)
-```
+***
 
-5. Run the block.
+## Notes
 
-### Export a dataframe
+* Set `use_batch_load: true` for large datasets to improve performance and reduce API calls.
+* When using **key-pair authentication**, ensure the private key is generated and stored securely.
+* If `disable_double_quotes` is `false`, column names will retain their case. Otherwise, names will be treated as case-insensitive.
+* Make sure your user has permission to create tables and write to the specified schema in the selected database and warehouse.
 
-Here is an example code snippet to export a dataframe to Snowflake:
+***
 
-```python  theme={"system"}
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.snowflake import Snowflake
-from pandas import DataFrame
-from os import path
+## Related Resources
 
-if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
-
-
-@data_exporter
-def export_data_to_snowflake(df: DataFrame, **kwargs) -> None:
-    """
-    Template for exporting data to a Snowflake warehouse.
-    Specify your configuration settings in 'io_config.yaml'.
-
-    Docs: https://docs.mage.ai/design/data-loading#snowflake
-    """
-    table_name = 'your_table_name'
-    database = 'your_database'
-    schema = 'your_schema'
-    config_path = path.join(get_repo_path(), 'io_config.yaml')
-    config_profile = 'default'
-
-    with Snowflake.with_config(ConfigFileLoader(config_path, config_profile)) as loader:
-        loader.export(
-            df,
-            table_name,
-            database=database,
-            schema=schema,
-            if_exists='append',  # Specify resolution policy if table name already exists
-        )
-```
-
-### Custom types
-
-To overwrite a column type when running a python export block, simply specify the column name and type in the `overwrite_types` dict in data exporter config:
-
-```python  theme={"system"}
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.snowflake import Snowflake
-from pandas import DataFrame
-from os import path
-
-if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
-
-
-@data_exporter
-def export_data_to_snowflake(df: DataFrame, **kwargs) -> None:
-    """
-    Template for exporting data to a Snowflake warehouse.
-    Specify your configuration settings in 'io_config.yaml'.
-
-    Docs: https://docs.mage.ai/design/data-loading#snowflake
-    """
-    table_name = 'your_table_name'
-    database = 'your_database'
-    schema = 'your_schema'
-    config_path = path.join(get_repo_path(), 'io_config.yaml')
-    config_profile = 'default'
-    overwrite_types = {'column_name': 'VARCHAR(255)'}
-
-    with Snowflake.with_config(ConfigFileLoader(config_path, config_profile)) as loader:
-        loader.export(
-            df,
-            table_name,
-            database=database,
-            schema=schema,
-            if_exists='replace',
-            overwrite_types=overwrite_types,
-        )
-```
-
-### Method arguments
-
-| Field name               | Description                                                                                                                                       | Example values                                |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- |
-| if\_exists               | Specify resolution policy if table name already exists                                                                                            | "fail"/"replace"/"append" (default: "append") |
-| overwrite\_types         | Overwrite the column types                                                                                                                        | `{'column1': 'VARCHAR', 'column2': 'NUMBER'}` |
-| unique\_conflict\_method | How to handle the conflict on unique constraints. Use 'UPDATE' for UPSERT (update existing rows, insert new ones) or 'IGNORE' to skip duplicates. | 'UPDATE' or 'IGNORE' (default: None)          |
-| unique\_constraints      | The unique constraints of the table. Used with unique\_conflict\_method for UPSERT operations.                                                    | \['col1', 'col2'] (default: None)             |
-
-**Example: Using UPSERT (UPDATE or INSERT)**
-
-```python  theme={"system"}
-from mage_ai.settings.repo import get_repo_path
-from mage_ai.io.config import ConfigFileLoader
-from mage_ai.io.snowflake import Snowflake
-from pandas import DataFrame
-from os import path
-
-if 'data_exporter' not in globals():
-    from mage_ai.data_preparation.decorators import data_exporter
-
-
-@data_exporter
-def export_data_to_snowflake(df: DataFrame, **kwargs) -> None:
-    """
-    Template for exporting data to Snowflake with UPSERT support.
-    Specify your configuration settings in 'io_config.yaml'.
-
-    Docs: https://docs.mage.ai/design/data-loading#snowflake
-    """
-    table_name = 'your_table_name'
-    database = 'your_database'
-    schema = 'your_schema'
-    config_path = path.join(get_repo_path(), 'io_config.yaml')
-    config_profile = 'default'
-
-    with Snowflake.with_config(ConfigFileLoader(config_path, config_profile)) as loader:
-        loader.export(
-            df,
-            table_name,
-            database=database,
-            schema=schema,
-            if_exists='append',  # Use 'append' with UPSERT
-            unique_constraints=['user_id', 'email'],  # Columns that form unique constraint
-            unique_conflict_method='UPDATE',  # Update existing rows, insert new ones
-        )
-```
+* [Snowflake Account Identifier Format](https://docs.snowflake.com/en/user-guide/admin-account-identifier.html)
+* [Snowflake Key-Pair Authentication](https://docs.snowflake.com/en/user-guide/key-pair-auth)
+* [Snowflake Warehouses Overview](https://docs.snowflake.com/en/user-guide/warehouses.html)
+* [Snowflake SQL Reference](https://docs.snowflake.com/en/sql-reference/)
 
 
 Built with [Mintlify](https://mintlify.com).

@@ -1,184 +1,154 @@
-# Source: https://bryntum.com/products/gantt/docs-llm/api/Core/widget/mixin/KeyMap.md
+# Source: https://bryntum.com/products/gantt/docs-llm/guide/Gantt/customization/keymap.md
 
-# [KeyMap](https://bryntum.com/docs/gantt/api/Core/widget/mixin/KeyMap)
+# Customizing keyboard shortcuts
 
-Mixin for widgets that allows for standardized and customizable keyboard shortcuts functionality. Can be configured on any widget or compatible feature.
+Keyboard shortcuts are easily customized. Provide a `keyMap` config object with the keyboard key or combination as the
+property name, and the action (function name) as value. Key combinations are case-insensitive.
 
-```
-const grid = new Grid({
+```javascript
+const gantt = new Gantt({
     keyMap: {
-        // Changing keyboard navigation to respond to WASD keys.
-        w : 'navigateUp',
-        a : 'navigateLeft',
-        s : 'navigateDown',
-        d : 'navigateRight',
-
-        // Removes mappings for arrow keys.
-        ArrowUp    : null,
-        ArrowLeft  : null,
-        ArrowDown  : null,
-        ArrowRight : null
-    },
-
-    // If key was not handled by the keyMap, this function is called.
-    // Use this to process keystrokes that are not part of the keyMap *after* the keyMap has been processed.
-    defaultKeyHandler(keyEvent) {
-        if (keyEvent.target.matches('.my-element-class')) {
-            // Do something special when the key is pressed in an element with the class 'my-element-class'
-       }
+        // Changing keyboard indent/outdent
+        i : 'indent',
+        o : 'outdent',
+        
+        // Removes mappings for original keys
+        'Alt+Shift+ArrowRight' : null,
+        'Alt+Shift+ArrowLeft'  : null,
     }
 });
 ```
 
-The invoking `KeyboardEvent` is passed as the first argument into all handlers.
+Modifier keys (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, <kbd>Shift</kbd>, and <kbd>Meta</kbd>) are also supported.
 
-The owning Widget of the KeyMap is injected into the passed `KeyboardEvent` in the `widget` property.
+Note: For Mac users, the <kbd>Command (⌘)</kbd> key is equivalent to the <kbd>Ctrl</kbd> key on other platforms, however,
+this modifier key is presented as `metaKey` by the browser. For this reason, `metaKey` and `ctrlKey` are swapped to
+`Ctrl` and`Meta` modifier names (respectively) on the Mac platform.
 
-For more information on how to customize keyboard shortcuts, please see our guide (Guides/Customization/Keyboard shortcuts)
+Further, the <kbd>Alt</kbd> key is known as the <kbd>Option (⌥)</kbd> key on the Mac keyboard.
 
-## Configs
+See [the docs](https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event) for details on keyboard events.
 
-Configs are options you supply in a configuration object when creating an instance of this class
-
-[keyMap](https://bryntum.com/docs/gantt/api/Core/widget/mixin/KeyMap#config-keyMap)
-An object whose keys are the [key](https://bryntum.com/docs/gantt/api/https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) name and optional modifier prefixes: `'Ctrl+'`, `'Alt+'`, `'Meta+'`, and `'Shift+'` (case-insensitive). The values are the name of the instance method to call when the keystroke is received.
-
-For example:
-
-```
- keyMap : {
-     'Ctrl+A': 'onSelectAll',
-     'Ctrl+Z': 'onUndo',
-     't'     : 'gotoNow',
-     [/\d/]  : 'onDigit'
- }
+```javascript
+const gantt = new Gantt({
+    keyMap: {
+        'Ctrl+i' : 'indent',
+        'Ctrl+o' : 'outdent',
+    }
+});
 ```
 
-If a key is a visible character (as above), and _not_ modified by any modifier keys, and emanates from an editable element (such as an `<input>` or `<textarea>`), the keystroke is ignored. This is to allow the browser to handle typing in editable elements.
+## Multi-action combinations
 
-In addition to key names, the special key `'delegate'` can be included to specify additional objects that have their own `keyMap`. If a keystroke is not handled by this `keyMap`, the delegates are processed until one has a matching entry in its `keyMap`. The value of the `delegate` key can be a single string, an array of strings or an object whose [truthy keys](https://bryntum.com/docs/gantt/api/#Core/helper/ObjectHelper#function-getTruthyKeys-static) are [dot paths](https://bryntum.com/docs/gantt/api/#Core/helper/ObjectHelper#function-getPath-static) identifying the delegate(s) related to this instance.
+A keyboard combination can sometimes be used for multiple actions across different components and different features.
+For most of these cases only one of the action handlers will recognize the action as something it will apply its logic
+to. However, some actions do collide. And for that there is a prioritization configuration property named `weight`
+built-in to the keyMap functionality.
 
-For example:
-
-```
- keyMap : {
-     delegate : ['widgetMap.foo', 'widgetMap.bar', 'tbar']
- }
-```
-
-An widget with the above `keyMap` will delegate to the child widgets named `foo` and `bar` via the widget's [widgetMap](https://bryntum.com/docs/gantt/api/#Core/widget/Container#property-widgetMap). In addition, the `tbar` property of the widget will also be considered as a delegate.
-
-The following is equivalent to the above `delegate` but using an object. This form can be used to allow removal of entries by derived classes or an overriding instance config.
-
-```
- keyMap : {
-     delegate : {
-         'widgetMap.foo' : true,
-         'widgetMap.bar' : true,
-         tbar            : true
-     }
- }
+```javascript
+// Example of a configuration with a weight
+const gantt = new Gantt({
+    keyMap: {
+        'Space': { handler: 'myCustomAction', weight: 100 }
+    } 
+});
 ```
 
-## Properties
+Please note that customizing these keyboard shortcuts can have side effects not intended and not always easily
+recognizable. A quick way to get the complete list of active keyboard shortcuts is when the Gantt has finished its
+configuration process, log out the value of the property `keyMap` of the Gantt instance object.
 
-Properties are getters/setters or publicly accessible variables on this class
+If you know what you are doing, the `weight` configuration can be a tool to configure more actions for the same keyboard
+combination. The colliding actions will be put in an array sorted by the largest `weight` last. The actions will then be
+called from beginning to end, until one not returns `false`. Not providing a `weight` puts the action on the top of the
+queue.
 
-[isKeyMap](https://bryntum.com/docs/gantt/api/Core/widget/mixin/KeyMap#property-isKeyMap)
-Identifies an object as an instance of [KeyMap](https://bryntum.com/docs/gantt/api/#Core/widget/mixin/KeyMap) class, or subclass thereof.
-
-[isKeyMap](https://bryntum.com/docs/gantt/api/Core/widget/mixin/KeyMap#property-isKeyMap-static)
-Identifies an object as an instance of [KeyMap](https://bryntum.com/docs/gantt/api/#Core/widget/mixin/KeyMap) class, or subclass thereof.
-
-[keyMap](https://bryntum.com/docs/gantt/api/Core/widget/mixin/KeyMap#property-keyMap)
-An object whose keys are the [key](https://bryntum.com/docs/gantt/api/https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) name and optional modifier prefixes: `'Ctrl+'`, `'Alt+'`, `'Meta+'`, and `'Shift+'` (case-insensitive). The values are the name of the instance method to call when the keystroke is received.
-
-For example:
-
-```
- keyMap : {
-     'Ctrl+A': 'onSelectAll',
-     'Ctrl+Z': 'onUndo',
-     't'     : 'gotoNow',
-     [/\d/]  : 'onDigit'
- }
-```
-
-If a key is a visible character (as above), and _not_ modified by any modifier keys, and emanates from an editable element (such as an `<input>` or `<textarea>`), the keystroke is ignored. This is to allow the browser to handle typing in editable elements.
-
-In addition to key names, the special key `'delegate'` can be included to specify additional objects that have their own `keyMap`. If a keystroke is not handled by this `keyMap`, the delegates are processed until one has a matching entry in its `keyMap`. The value of the `delegate` key can be a single string, an array of strings or an object whose [truthy keys](https://bryntum.com/docs/gantt/api/#Core/helper/ObjectHelper#function-getTruthyKeys-static) are [dot paths](https://bryntum.com/docs/gantt/api/#Core/helper/ObjectHelper#function-getPath-static) identifying the delegate(s) related to this instance.
-
-For example:
-
-```
- keyMap : {
-     delegate : ['widgetMap.foo', 'widgetMap.bar', 'tbar']
- }
+```javascript
+const gantt = new Gantt({
+    feature: {
+        tree: { // Tree feature
+            keyMap : {
+                // Instead of using a string action, use an object with a
+                // handler and a weight property.
+                ' ' : { handler: 'toggleCollapseByKey', weight: 1000}
+                // This will affect the Tree feature's Space keyboard shortcut
+                // to (probably) be called last of all actions on Space.
+            }
+        }
+    }
+});
 ```
 
-An widget with the above `keyMap` will delegate to the child widgets named `foo` and `bar` via the widget's [widgetMap](https://bryntum.com/docs/gantt/api/#Core/widget/Container#property-widgetMap). In addition, the `tbar` property of the widget will also be considered as a delegate.
+Removing a weighted keyboard combination action is almost always safe to do:
 
-The following is equivalent to the above `delegate` but using an object. This form can be used to allow removal of entries by derived classes or an overriding instance config.
-
-```
- keyMap : {
-     delegate : {
-         'widgetMap.foo' : true,
-         'widgetMap.bar' : true,
-         tbar            : true
-     }
- }
-```
-
-[keyMapElement](https://bryntum.com/docs/gantt/api/Core/widget/mixin/KeyMap#property-keyMapElement)
-Override to attach the keyMap keydown event listener to something else than this.element
-
-[keyMapSubComponents](https://bryntum.com/docs/gantt/api/Core/widget/mixin/KeyMap#property-keyMapSubComponents)
-Override to make keyMap resolve subcomponent actions to something else than this.features.
-
-## Functions
-
-Functions are methods available for calling on the class
-
-[addKeyBinding](https://bryntum.com/docs/gantt/api/Core/widget/mixin/KeyMap#function-addKeyBinding)
-Add a key binding to this widget's keyMap.
-
-```
-// Add a key binding to the widget to call its own onCtrlEnter method when Ctrl+Enter is pressed.
-myWidget.addKeyBinding('Ctrl+Enter', 'onCtrlEnter');
+```javascript
+const gantt = new Gantt({
+    keyMap: {
+        // Changing keyboard navigation in the grid part to respond
+        // to WASD keys.
+        w : 'navigateUp',
+        a : 'navigateLeft',
+        s : 'navigateDown',
+        d : 'navigateRight',
+        
+        // Removes mappings for arrow keys. These all have a weight, 
+        // but removal is safe to do
+        ArrowUp    : null,
+        ArrowLeft  : null,
+        ArrowDown  : null,
+        ArrowRight : null
+    }
+});
 ```
 
-[removeKeyBinding](https://bryntum.com/docs/gantt/api/Core/widget/mixin/KeyMap#function-removeKeyBinding)
-Remove a key binding to this widget's keyMap.
+## Adding new keyboard combination actions
 
+If you want to run a function by a keyboard combination it is very easy to set up using the keyMap configuration. Either
+add a new function to your Gantt class, use an existing function from the API or just provide a function or a function
+handle in the configuration.
+
+```javascript
+const gantt = new Gantt({
+    keyMap : {
+        // This is a function from the existing Gantt API
+        'Ctrl+T'       : 'addSubTask',
+
+        // This is a function provided directly in the configuration object
+        'Ctrl+O'       : () => location.href = './logout'
+    }
+});
+
+class MyGantt extends Gantt {
+    static configurable = {
+        keyMap: {
+            // This function must be available on the Gantt subclass
+            'Ctrl+Shift+M' : 'sendReminderEmail',
+        }
+    };
+    
+    sendReminderEmail(){
+        myApi.post('./sendmail');
+    }
+}
 ```
-// Add a key binding to the widget to call its own onCtrlEnter method when Ctrl+Enter is pressed.
-myWidget.removeKeyBinding('Ctrl+Enter', 'onCtrlEnter');
+
+If the current keyboard shortcut has multiple actions, and you want actions after your action to be called, the function
+should return `false`. This will make the keyMap functionality continue calling the other actions until one not returns
+`false`.
+
+```javascript
+class myGantt extends Gantt {
+    static configurable = {
+        keyMap: {
+            'Enter': { action: 'openSomething', weight : 0 }
+        }
+    }
+    
+    openSomething(){
+        new Something(this.selectedRecords).open();
+        // Return false to continue calling other Enter actions
+        // (probably opens the Task editor)
+        return false;
+    }
+}
 ```
-
-[matchKeyMapEntry](https://bryntum.com/docs/gantt/api/Core/widget/mixin/KeyMap#function-matchKeyMapEntry)
-Returns the `keyMap` property name which matches the passed KeyboardEvent if any.
-
-[performKeyMapAction](https://bryntum.com/docs/gantt/api/Core/widget/mixin/KeyMap#function-performKeyMapAction)
-Called on keyMapElement keyDown
-
-[resolveKeyMapAction](https://bryntum.com/docs/gantt/api/Core/widget/mixin/KeyMap#function-resolveKeyMapAction)
-Resolves correct `this` and handler function. If subComponent (action includes a dot) it will resolve in keyMapSubComponents (defaults to this.features).
-
-For example, in feature configurable: `keyMap: { ArrowUp: 'navigateUp' }`
-
-Will be translated (by InstancePlugin) to: \`keyMap: { ArrowUp: 'featureName.navigateUp' }
-
-And resolved to correct function path here.
-
-Override to change action function mapping.
-
-[mergeKeyMaps](https://bryntum.com/docs/gantt/api/Core/widget/mixin/KeyMap#function-mergeKeyMaps)
-This function is used for merging two keyMaps with each other. It can be used for example by a Grid's feature to merge the fetature's keyMap into the Grid's with the use of a subPrefix.
-
-## Typedefs
-
-Typedefs are type definitions for the class
-
-[KeyMapConfig](https://bryntum.com/docs/gantt/api/Core/widget/mixin/KeyMap#typedef-KeyMapConfig)
-Mapped key configuration

@@ -1,13 +1,111 @@
-# Source: https://valibot.dev/api/Brand.md
+# Source: https://valibot.dev/api/brand.md
 
-# Brand
+# brand
 
-Brand interface.
+Creates a brand transformation action.
+
+```ts
+const Action = v.brand<TInput, TName>(name);
+```
 
 ## Generics
 
+- `TInput` <Property {...properties.TInput} />
 - `TName` <Property {...properties.TName} />
 
-## Definition
+## Parameters
 
-- `Brand` <Property {...properties.Brand} />
+- `name` <Property {...properties.name} />
+
+### Explanation
+
+`brand` allows you to brand the output type of a schema with a `name`. This ensures that data can only be considered valid if it has been validated by a particular branded schema.
+
+## Returns
+
+- `Action` <Property {...properties.Action} />
+
+## Examples
+
+The following examples show how `brand` can be used.
+
+### Branded fruit schema
+
+Schema to ensure that only a validated fruit is accepted.
+
+```ts
+// Create schema and infer output type
+const FruitSchema = v.pipe(v.object({ name: v.string() }), v.brand('Fruit'));
+type FruitOutput = v.InferOutput<typeof FruitSchema>;
+
+// This works because output is branded
+const apple: FruitOutput = v.parse(FruitSchema, { name: 'apple' });
+
+// But this will result in a type error
+const banana: FruitOutput = { name: 'banana' };
+```
+
+## Related
+
+The following APIs can be combined with `brand`.
+
+### Schemas
+
+<ApiList
+  items={[
+    'any',
+    'array',
+    'bigint',
+    'blob',
+    'boolean',
+    'custom',
+    'date',
+    'enum',
+    'exactOptional',
+    'file',
+    'function',
+    'instance',
+    'intersect',
+    'lazy',
+    'literal',
+    'looseObject',
+    'looseTuple',
+    'map',
+    'nan',
+    'never',
+    'nonNullable',
+    'nonNullish',
+    'nonOptional',
+    'null',
+    'nullable',
+    'nullish',
+    'number',
+    'object',
+    'objectWithRest',
+    'optional',
+    'picklist',
+    'promise',
+    'record',
+    'set',
+    'strictObject',
+    'strictTuple',
+    'string',
+    'symbol',
+    'tuple',
+    'tupleWithRest',
+    'undefined',
+    'undefinedable',
+    'union',
+    'unknown',
+    'variant',
+    'void',
+  ]}
+/>
+
+### Methods
+
+<ApiList items={['pipe']} />
+
+### Utils
+
+<ApiList items={['isOfKind', 'isOfType']} />

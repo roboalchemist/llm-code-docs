@@ -1,103 +1,71 @@
-# Source: https://docs.dify.ai/en/use-dify/publish/README.md
+# Source: https://docs.dify.ai/en/use-dify/workspace/readme.md
+
+# Source: https://docs.dify.ai/en/use-dify/knowledge/readme.md
+
+# Source: https://docs.dify.ai/en/use-dify/knowledge/knowledge-pipeline/readme.md
+
+# Source: https://docs.dify.ai/en/use-dify/knowledge/create-knowledge/import-text-data/readme.md
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.dify.ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Overview
+# Upload Local Files
 
-> Get your Dify applications into users' hands with web apps, APIs, embeds, and integrations
+<Note>
+  Once a knowledge base is created, its data source cannot be changed later.
+</Note>
 
-<img src="https://mintcdn.com/dify-6c0370d8/MiGqQWUuc2Ca3g05/images/publish-methods.png?fit=max&auto=format&n=MiGqQWUuc2Ca3g05&q=85&s=57a77f2af6059898e0ff39257a6d6dc8" alt="" width="1020" height="1800" data-path="images/publish-methods.png" />
-You've built something great in Dify. Now let's get it to your users. Every Dify application becomes available in multiple ways automatically—choose what works best for your situation.
+When quick-creating a knowledge base, you can upload local files as its data source:
 
-## Start with Web Apps
+1. Click **Knowledge** > **Create Knowledge**.
 
-Your fastest path to sharing is through web apps. These are generated automatically when you create any application and work immediately without setup.
+2. Select **Import from file** as the data source, then upload your files.
 
-<Steps>
-  <Step title="Hit Publish">
-    Click "Publish" in your app to activate the latest version.
-  </Step>
+   * Maximum number of files per upload: 5
 
-  <Step title="Copy the URL">
-    Find your web app link in the publish section.
-  </Step>
+     <Info>
+       On Dify Cloud, **batch uploading** (up to 50 files per upload) is only available on [paid plans](https://dify.ai/pricing).
+     </Info>
 
-  <Step title="Share immediately">
-    Send the link to users—they can start using your app right away.
-  </Step>
-</Steps>
+   * Maximum file size: 15 MB
+
+   <Tip>
+     For self-hosted deployments, you can adjust these two limits via the environment variables `UPLOAD_FILE_SIZE_LIMIT` and `UPLOAD_FILE_BATCH_LIMIT`.
+   </Tip>
+
+***
+
+**For Images in Uploaded Files**
+
+JPG, JPEG, PNG, and GIF images under 2 MB are automatically extracted as attachments to their corresponding chunks. These images can be managed independently and are returned alongside their chunks during retrieval.
+
+URLs of extracted images remain in the chunk text, but you can safely remove these URLs to keep the text clean—this won't affect the extracted images.
+
+If you select a multimodal embedding model (marked with a **Vision** icon) in index settings, the extracted images will also be embedded and indexed for retrieval.
+
+Each chunk supports up to 10 image attachments; images beyond this limit will not be extracted.
 
 <Tip>
-  Web apps work on any device and automatically adapt to screen sizes. No app store approvals or installation required.
+  For self-hosted deployments, you can adjust the following limits via environment variables:
+
+  * Maximum image size: `ATTACHMENT_IMAGE_FILE_SIZE_LIMIT`
+
+  * Maximum number of attachments per chunk: `SINGLE_CHUNK_ATTACHMENT_LIMIT`
 </Tip>
 
-## Publishing Options
+The above extraction rule applies to:
 
-<CardGroup cols={2}>
-  <Card title="Web Apps" icon="globe" href="/en/use-dify/publish/webapp/chatflow-webapp">
-    Instant, shareable applications. Perfect for testing ideas or serving end users directly.
-  </Card>
+* Images embedded in DOCX files
 
-  <Card title="API Integration" icon="code" href="/en/use-dify/publish/developing-with-apis">
-    Build AI into your existing products. Full control over user experience and data flow.
-  </Card>
+  <Tip>
+    Images embedded in other file types (e.g., PDF) can be extracted by using appropriate document extraction plugins in [knowledge pipelines](/en/use-dify/knowledge/knowledge-pipeline/readme).
+  </Tip>
 
-  <Card title="Embed on Websites" icon="window" href="/en/use-dify/publish/webapp/embedding-in-websites">
-    Deploy your web app as chat widgets or inline frames on any website.
-  </Card>
+* Images referenced via accessible URLs using the following Markdown syntax in any file type:
 
-  <Card title="MCP Server" icon="plug" href="/en/use-dify/publish/publish-mcp">
-    Connect to AI tools like Claude Desktop and Cursor. Great for development workflows.
-  </Card>
-</CardGroup>
-
-## How Publishing Works
-
-When you publish an app, Dify creates a web app and API endpoint with your latest configuration:
-
-* **Web apps** update immediately with new features and responses
-* **API endpoints** serve the latest model and workflow configurations
-* **Website embeds** (which display your web app) automatically reflect all changes
-* **MCP servers** provide access to current app capabilities
-
-<Warning>
-  Publishing replaces your live app with the current configuration. Users will immediately see changes in their next interaction.
-</Warning>
-
-## Choose Your Approach
-
-<AccordionGroup>
-  <Accordion title="I want immediate user feedback">
-    Use **Web Apps**. Share a link and start collecting feedback within minutes. Perfect for validating ideas or serving non-technical users.
-  </Accordion>
-
-  <Accordion title="I'm building a product">
-    Use **API Integration**. You control the interface, user authentication, and data handling. Your app becomes part of your product ecosystem.
-  </Accordion>
-
-  <Accordion title="I have an existing website">
-    Use **Embed on Websites**. Display your web app as a chat widget or inline frame on your current site. Works with any website technology.
-  </Accordion>
-
-  <Accordion title="I want to extend AI tools">
-    Use **MCP Server**. Make your app available to Claude Desktop, Cursor, and other AI development environments as a native tool.
-  </Accordion>
-</AccordionGroup>
-
-## Publishing Best Practices
-
-Before you share your app, ensure you've configured these settings:
-
-* **App description** - Helps users understand what your app does
-* **Icon and branding** - Makes your app recognizable and professional
-* **Access controls** - Decide if your app should be public or require authentication
-* **Rate limits** - Protect your app from overuse (especially important for API access)
-
-<Check>
-  All publishing methods use the same app configuration. Set it once, publish everywhere.
-</Check>
+  * `![alt text](image_url)`
+  * `![alt text](image_url "optional title")`
 
 
 Built with [Mintlify](https://mintlify.com).
