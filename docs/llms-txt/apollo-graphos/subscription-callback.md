@@ -1,0 +1,75 @@
+# Source: https://www.apollographql.com/docs/apollo-server/api/plugin/subscription-callback.md
+
+# API Reference: Subscription Callback Plugin
+
+This document covers the usage of the subscription callback plugin for use in Apollo Federation with GraphOS Router. For more information about the protocol itself, see the [subscription callback protocol](https://www.apollographql.com/docs/router/executing-operations/subscription-callback-protocol).
+
+## Using the plugin
+
+This article documents the options for the `ApolloServerPluginSubscriptionCallback` plugin, which you can import from `@apollo/server/plugin/subscriptionCallback`.
+
+This plugin enables your GraphQL server to respond to [subscription operations](https://www.apollographql.com/docs/apollo-server/data/subscriptions/) using the [subscription callback protocol](https://www.apollographql.com/docs/router/executing-operations/subscription-callback-protocol/#initialization).  GraphOS Router uses this protocol to execute subscription operations and receive updates at a URL specified by the router.
+
+This feature can only be enabled by providing an `ApolloServerPluginSubscriptionCallback` instance to your `ApolloServer` constructor:
+
+```ts
+import { ApolloServer } from '@apollo/server';
+import { ApolloServerPluginSubscriptionCallback } from '@apollo/server/plugin/subscriptionCallback';
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  plugins: [
+    ApolloServerPluginSubscriptionCallback(),
+  ],
+});
+```
+
+## Caveats
+
+The subscription plugin implementation inherently bypasses Apollo Server's request lifecycle. This means that certain plugin hooks (notably `executionDidStart` and `willResolveField`) will not be called when handling callback subscription requests or when sending subscription events. There is currently no metrics or tracing support for callback subscriptions.
+
+#### Options
+
+Name /Type
+Description
+
+###### `logger`
+
+[`Logger`](https://www.npmjs.com/package/@apollo/utils.logger)
+
+Optionally provide a [`Logger`](https://www.npmjs.com/package/@apollo/utils.logger) instance to capture logs from the plugin.
+
+###### `retry`
+
+`Options`
+
+This plugin uses the `async-retry` module to retry failed requests to GraphOS Router. You can optionally provide an `Options` object to configure the retry behavior. The configuration options for `async-retry` can be found in the [README](https://www.npmjs.com/package/async-retry).
+
+The default configuration provided by this plugin is:
+
+```ts
+{
+  retries: 5,
+  minTimeout: 100,
+  maxTimeout: 1000,
+}
+```
+
+These defaults can be overridden (and other options can be provided) by passing an `Options` object to the plugin:
+
+```ts
+new ApolloServer({
+  plugins: [
+    ApolloServerPluginSubscriptionCallback({
+      retry: {
+        retries: 3,
+        minTimeout: 1000,
+        maxTimeout: 5000,
+        randomize: true,
+      },
+    }),
+  ],
+  // ...
+})
+```

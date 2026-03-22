@@ -1,0 +1,55 @@
+# Source: https://docs.wandb.ai/models/tables/tables-download.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.wandb.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+> Export W&B Table data to pandas DataFrames and CSV files for offline analysis and data processing.
+
+# Export table data
+
+Like all W\&B Artifacts, Tables can be converted into pandas dataframes for easy data exporting.
+
+## Convert `table` to `artifact`
+
+First, you'll need to convert the table to an artifact. The easiest way to do this using `artifact.get(table, "table_name")`:
+
+```python  theme={null}
+# Create and log a new table.
+with wandb.init() as r:
+    artifact = wandb.Artifact("my_dataset", type="dataset")
+    table = wandb.Table(
+        columns=["a", "b", "c"], data=[(i, i * 2, 2**i) for i in range(10)]
+    )
+    artifact.add(table, "my_table")
+    wandb.log_artifact(artifact)
+
+# Retrieve the created table using the artifact you created.
+with wandb.init() as r:
+    artifact = r.use_artifact("my_dataset:latest")
+    table = artifact.get("my_table")
+```
+
+## Convert `artifact` to Dataframe
+
+Then, convert the table into a dataframe:
+
+```python  theme={null}
+# Following from the last code example:
+df = table.get_dataframe()
+```
+
+## Export data
+
+Now you can export using any method dataframe supports:
+
+```python  theme={null}
+# Converting the table data to .csv
+df.to_csv("example.csv", encoding="utf-8")
+```
+
+# Next Steps
+
+* Check out the [reference documentation](/models/artifacts/construct-an-artifact/) on `artifacts`.
+* Go through our [Tables Walkthrough](/models/tables/tables-walkthrough/) guide.
+* Check out the [Dataframe](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html) reference docs.

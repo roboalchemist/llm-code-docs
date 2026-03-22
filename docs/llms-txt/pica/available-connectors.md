@@ -1,0 +1,156 @@
+# Source: https://docs.picaos.com/api-reference/core/available-connectors.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.picaos.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Available Connectors
+
+> Get a list of available connectors
+
+## Query Parameters
+
+<ParamField query="platform" type="string">
+  The connector platform
+</ParamField>
+
+<ParamField query="authkit" type="boolean" default="false">
+  If true, filter connectors that are enabled in Authkit
+</ParamField>
+
+<ParamField query="key" type="string">
+  The connector key
+</ParamField>
+
+<ParamField query="name" type="string">
+  The connector name
+</ParamField>
+
+<ParamField query="category" type="string">
+  The connector category
+</ParamField>
+
+<ParamField query="limit" type="number" default="20">
+  The number of connectors to return
+</ParamField>
+
+<ParamField query="page" type="number" default="1">
+  The page number
+</ParamField>
+
+## Response
+
+<ResponseField name="rows" type="Connector[]">
+  Array of Connector objects
+
+  <Expandable title="Connector properties">
+    <ResponseField name="id" type="number">
+      The unique identifier for the connector
+    </ResponseField>
+
+    <ResponseField name="name" type="string">
+      The display name of the connector
+    </ResponseField>
+
+    <ResponseField name="key" type="string">
+      The unique connector key
+    </ResponseField>
+
+    <ResponseField name="platform" type="string">
+      The platform identifier (e.g. `elevenlabs`, `stripe`)
+    </ResponseField>
+
+    <ResponseField name="platformVersion" type="string">
+      The version of the platform API
+    </ResponseField>
+
+    <ResponseField name="status" type="'generally_available' | 'beta' | 'alpha' | 'not_available'">
+      The connector status
+    </ResponseField>
+
+    <ResponseField name="description" type="string">
+      A description of the connector and its capabilities
+    </ResponseField>
+
+    <ResponseField name="category" type="string">
+      The category of the connector (e.g. `AI`, `Payments`, `Email`)
+    </ResponseField>
+
+    <ResponseField name="image" type="string">
+      URL to the connector's logo image
+    </ResponseField>
+
+    <ResponseField name="tags" type="string[]">
+      Array of tags associated with the connector
+    </ResponseField>
+
+    <ResponseField name="oauth" type="boolean">
+      Whether the connector supports OAuth authentication
+    </ResponseField>
+
+    <ResponseField name="tools" type="number">
+      Number of available tools/actions for this connector
+    </ResponseField>
+
+    <ResponseField name="version" type="string">
+      The connector version
+    </ResponseField>
+
+    <ResponseField name="active" type="boolean">
+      Whether the connector is active
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="total" type="number">
+  Total number of connectors available
+</ResponseField>
+
+<ResponseField name="pages" type="number">
+  Total number of pages available
+</ResponseField>
+
+<ResponseField name="page" type="number">
+  Current page number
+</ResponseField>
+
+<RequestExample>
+  ```bash cURL theme={null}
+  curl 'https://api.picaos.com/v1/available-connectors' \
+    -H 'x-pica-secret: YOUR_API_KEY'
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json Response theme={null}
+  {
+      "rows": [
+          {
+              "id": 62,
+              "name": "ElevenLabs", 
+              "key": "api::elevenlabs::v1",
+              "platform": "elevenlabs",
+              "platformVersion": "v1",
+              "status": "generally_available",
+              "description": "ElevenLabs develops advanced text-to-speech and voice synthesis technologies. It allows users to generate natural, expressive AI voices for content creation, accessibility, and conversational AI.",
+              "category": "AI",
+              "image": "https://assets.picaos.com/connectors/elevenlabs.svg",
+              "tags": [
+                "ai"
+              ],
+              "oauth": false,
+              "tools": 104,
+              "version": "1.0.0",
+              "active": true
+          },
+          ...
+      ],
+      "total": 142,
+      "pages": 8,
+      "page": 1
+  }
+  ```
+</ResponseExample>
+
+
+Built with [Mintlify](https://mintlify.com).

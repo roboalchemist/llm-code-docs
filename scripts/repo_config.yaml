@@ -2353,3 +2353,159 @@ repositories:
   source_folder: doc
   target_folder: docs/github-scraped/checkmk
   branch: main
+- name: powermock
+  description: powermock from GitHub
+  repo_url: https://github.com/powermock/powermock.git
+  source_folder: docs
+  target_folder: docs/github-scraped/powermock
+  branch: main
+- name: instancio
+  description: instancio from GitHub
+  repo_url: https://github.com/instancio/instancio.git
+  source_folder: website/docs
+  target_folder: docs/github-scraped/instancio
+  branch: main
+- name: mimesis
+  description: mimesis from GitHub
+  repo_url: https://github.com/lk-geimfari/mimesis.git
+  source_folder: docs
+  target_folder: docs/github-scraped/mimesis
+  branch: main
+- name: test.check
+  description: test.check from GitHub
+  repo_url: https://github.com/clojure/test.check.git
+  source_folder: doc
+  target_folder: docs/github-scraped/test.check
+  branch: main
+- name: fluent-assertions
+  description: fluent-assertions from GitHub
+  repo_url: https://github.com/fluentassertions/fluentassertions.git
+  source_folder: docs
+  target_folder: docs/github-scraped/fluent-assertions
+  branch: main
+- name: saucelabs
+  description: saucelabs from GitHub
+  repo_url: https://github.com/saucelabs/sauce-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/saucelabs
+  branch: main
+- name: testing-library
+  description: testing-library from GitHub
+  repo_url: https://github.com/testing-library/testing-library-docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/testing-library
+  branch: main
+- name: guzzle
+  description: guzzle from GitHub
+  repo_url: https://github.com/guzzle/guzzle.git
+  source_folder: docs
+  target_folder: docs/github-scraped/guzzle
+  branch: main
+- name: posthtml
+  description: posthtml from GitHub
+  repo_url: https://github.com/posthtml/posthtml.git
+  source_folder: docs
+  target_folder: docs/github-scraped/posthtml
+  branch: main
+- name: superagent
+  description: superagent from GitHub
+  repo_url: https://github.com/ladjs/superagent.git
+  source_folder: docs
+  target_folder: docs/github-scraped/superagent
+  branch: main
+- name: html-validate
+  description: html-validate from GitHub
+  repo_url: https://github.com/html-validate/html-validate.git
+  source_folder: docs
+  target_folder: docs/github-scraped/html-validate
+  branch: main
+- name: kontent.ai
+  description: kontent.ai from GitHub
+  repo_url: https://github.com/kontent-ai/delivery-sdk-net.git
+  source_folder: docs
+  target_folder: docs/github-scraped/kontent.ai
+  branch: main
+- name: sitecore
+  description: sitecore from GitHub
+  repo_url: https://github.com/Sitecore/Sitecore.Rocks.git
+  source_folder: docs
+  target_folder: docs/github-scraped/sitecore
+  branch: main
+- name: openimaj
+  description: openimaj from GitHub
+  repo_url: https://github.com/openimaj/openimaj.git
+  source_folder: documentation
+  target_folder: docs/github-scraped/openimaj
+  branch: main
+- name: docfx
+  description: docfx from GitHub
+  repo_url: https://github.com/dotnet/docfx.git
+  source_folder: docs
+  target_folder: docs/github-scraped/docfx
+  branch: main
+- name: pandoc
+  description: pandoc from GitHub
+  repo_url: https://github.com/jgm/pandoc.git
+  source_folder: doc
+  target_folder: docs/github-scraped/pandoc
+  branch: main
+- name: apache-arrow
+  description: apache-arrow from GitHub
+  repo_url: https://github.com/apache/arrow.git
+  source_folder: docs
+  target_folder: docs/github-scraped/apache-arrow
+  branch: main
+- name: opennmt
+  description: opennmt from GitHub
+  repo_url: https://github.com/OpenNMT/OpenNMT-py.git
+  source_folder: docs
+  target_folder: docs/github-scraped/opennmt
+  branch: main
+- name: trl
+  description: trl from GitHub
+  repo_url: https://github.com/huggingface/trl.git
+  source_folder: docs
+  target_folder: docs/github-scraped/trl
+  branch: main
+- name: caffe
+  description: caffe from GitHub
+  repo_url: https://github.com/BVLC/caffe.git
+  source_folder: docs
+  target_folder: docs/github-scraped/caffe
+  branch: main
+- name: openvino
+  description: openvino from GitHub
+  repo_url: https://github.com/openvinotoolkit/openvino.git
+  source_folder: docs
+  target_folder: docs/github-scraped/openvino
+  branch: main
+- name: ultralytics
+  description: ultralytics from GitHub
+  repo_url: https://github.com/ultralytics/ultralytics.git
+  source_folder: docs
+  target_folder: docs/github-scraped/ultralytics
+  branch: main
+- name: metaflow
+  description: metaflow from GitHub
+  repo_url: https://github.com/Netflix/metaflow.git
+  source_folder: docs
+  target_folder: docs/github-scraped/metaflow
+  branch: main
+- name: tensorflow-data-validation
+  description: tensorflow-data-validation from GitHub
+  repo_url: https://github.com/tensorflow/data-validation.git
+  source_folder: docs
+  target_folder: docs/github-scraped/tensorflow-data-validation
+  branch: main
+- name: autofeat
+  description: autofeat from GitHub
+  repo_url: https://github.com/cod3licious/autofeat.git
+  source_folder: docs
+  target_folder: docs/github-scraped/autofeat
+  branch: main
+- name: neptune
+  description: neptune from GitHub
+  repo_url: https://github.com/neptune-ai/docs.git
+  source_folder: docs
+  target_folder: docs/github-scraped/neptune
+  branch: main

@@ -1,0 +1,221 @@
+# Source: https://www.apollographql.com/docs/apollo-server/data/fetching-data.md
+
+# Source: https://www.apollographql.com/docs/ios/fetching/fetching-data.md
+
+# Fetching Data
+
+Fetching data in a predictable, type-safe way is one of the core features of Apollo iOS. In this guide, you'll learn how to execute an operation against a GraphQL endpoint and use the result in your application.
+
+## Prerequisites
+
+This page assumes some familiarity with building GraphQL operations. For a refresher, we recommend [reading this guide](http://graphql.org/learn/queries/) and practicing [running operations in Apollo Sandbox](https://studio.apollographql.com/sandbox/explorer?endpoint=https%3A%2F%2Fswapi-graphql.netlify.app%2F.netlify%2Ffunctions%2Findex\&explorerURLState=N4IgJg9gxgrgtgUwHYBcQC4QEcYIE4CeABAOIIoBiAlgDZwDORwAOkkUQIY03V2Mtt2RAGa0GTVkKEoqKGgklCAvopVIlIADQgAbhzxUOAI3n0MIEEqA&_gl=1*1e24cus*_ga*MTk0Mjk2MDI3Mi4xNjU3NTYxOTc1*_ga_0BGG5V2W2K*MTY2NDIzNTkzMy41NS4xLjE2NjQyMzcwMDguMC4wLjA.).
+
+Because Apollo iOS uses standard GraphQL syntax, any operation you can run in Sandbox can also be put into the `.graphql` files in your project.
+
+> *Exception: Apollo iOS does requires every query to have a name (even though this isn't required by the GraphQL spec)*
+
+This page also assumes that you've already set up Apollo iOS for your application. For help with setup, see the [getting started guide](https://www.apollographql.com/docs/ios/get-started).
+
+## Defining operations
+
+In Apollo iOS, each operation you execute is represented as an instance of a generated class that implements the [`GraphQLOperation`](https://www.apollographql.com/docs/ios/docc/documentation/apolloapi/graphqloperation) protocol. Constructor arguments can be used to define operation variables if needed. You can then pass an operation object to an `ApolloClient` to send the operation to the server, execute it, and receive strongly typed results.
+
+GraphQL operations can be [queries](https://www.apollographql.com/docs/ios/fetching/queries), [mutations](https://www.apollographql.com/docs/ios/fetching/mutations), or [subscriptions](https://www.apollographql.com/docs/ios/fetching/subscriptions). For more information on using each of these operation types, see their individual usages guides.
+
+To generate these classes, we first need to define the GraphQL operations we want to execute.
+
+> For more information about how Apollo iOS generates your operation classes, see [Code Generation](https://www.apollographql.com/docs/ios/code-generation/introduction).
+
+Let's say we define a GraphQL query named `HeroName`:
+
+```graphql
+query HeroName {
+  hero {
+    id
+    name
+  }
+}
+```
+
+Apollo iOS will generate a `HeroNameQuery` class that you can construct and pass to `ApolloClient.fetch(query:)`:
+
+```swift
+Task {
+  do {
+    let response = try await apollo.fetch(query: HeroNameQuery())
+    print(response.data?.hero?.name) // Luke Skywalker
+  } catch {
+    print("Error fetching hero: \(error)")
+  }
+}
+```
+
+To learn about defining operations that take arguments, see [Operation Arguments](https://www.apollographql.com/docs/ios/fetching/operation-arguments).
+
+## Generated operation models
+
+An operation's results are returned as a hierarchy of immutable structs that match the structure of the operations's fields. These structs only include fields that are included in the operation (other schema fields are omitted).
+
+In other words, Apollo iOS generates result types based on the operations you write, not based on the schema you query against.
+
+For example, given the following schema:
+
+```graphql
+type Query {
+  hero: Character!
+}
+
+interface Character {
+  id: String!
+  name: String!
+  friends: [Character!]
+  appearsIn: [Episode]!
+ }
+
+ type Human implements Character {
+   id: String!
+   name: String!
+   friends: [Character]
+   appearsIn: [Episode]!
+   height(unit: LengthUnit = METER): Float
+ }
+
+ type Droid implements Character {
+   id: String!
+   name: String!
+   friends: [Character]
+   appearsIn: [Episode]!
+   primaryFunction: String
+}
+```
+
+And the following query:
+
+```graphql
+query HeroAndFriendsNames {
+  hero {
+    id
+    name
+    friends {
+      id
+      name
+    }
+  }
+}
+```
+
+Apollo iOS generates a type-safe model that looks something like this (details are omitted to focus on the class structure):
+
+```swift
+class HeroAndFriendsNamesQuery: GraphQLQuery {
+  struct Data: SelectionSet {
+    let hero: Hero
+
+    struct Hero: SelectionSet {
+      let id: String
+      let name: String
+      let friends: [Friend]?
+
+      struct Friend: SelectionSet {
+        let id: String
+        let name: String
+      }
+    }
+  }
+}
+```
+
+Because the `HeroAndFriendsNames` query doesn't fetch `appearsIn`, this property is not part of the returned result type and cannot be accessed here. Similarly, `id` is only accessible in `Friend`, not in `Hero`.
+
+Because GraphQL supports nullability, you have compile-time type safety. If the request is successful, all queried data (and only this data) will be accessible. There is no need to handle null fields in UI code.
+
+> For more information on how to fetch type-safe data, learn about [type conditions](https://www.apollographql.com/docs/ios/fetching/type-conditions#accessing-conditional-response-data).
+
+## Operation fetching
+
+The result of executing an operation is a `GraphQLResponse<Operation>`]\([https://www.apollographql.com/docs/ios/docc/documentation/apollo/graphqlresponse](https://www.apollographql.com/docs/ios/docc/documentation/apollo/graphqlresponse)) the response's `data` property provides the generated root `Data` struct of the `Operation` that was executed.
+
+```swift
+let response = try await apollo.fetch(query: HeroNameQuery())
+let heroName = response.data?.hero?.name
+```
+
+> For more information on executing each operation type, see the documentation on [Queries](https://www.apollographql.com/docs/ios/fetching/queries), [Mutations](https://www.apollographql.com/docs/ios/fetching/mutations), and [Subscriptions](https://www.apollographql.com/docs/ios/fetching/subscriptions).
+
+An operation can be successful, but the `GraphQLResult` may still include `GraphQLErrors`. See [Error Handling](https://www.apollographql.com/docs/ios/fetching/error-handling) for more information.
+
+### Single vs multi-response fetching
+
+Most GraphQL operations will only return a single response value. However some, like queries using `@defer` and subscription operations will return multiple results. Additionally, when using the `.cacheAndNetwork` cache policy, multiple results will be be returned.
+
+Apollo iOS can determine if an operation will return multiple results at compile-time. For operations that return a single result, `ApolloClient.fetch` will return a single `GraphQLResponse`. For those that return multiple results, it returns an `AsyncThrowingStream` of responses.
+
+```swift
+// Single response
+let response = try await client.fetch(query: query, cachePolicy: .cacheFirst)
+let response = try await client.fetch(query: query, cachePolicy: .networkFirst)
+let response = try await client.fetch(query: query, cachePolicy: .networkOnly)
+
+// Multiple responses
+let responses = try client.fetch(query: query, cachePolicy: .cacheAndNetwork)
+
+for try await response in responses {
+  // Handle response
+}
+```
+
+## Request configuration
+
+`RequestConfiguration` allows you to customize various aspects of individual requests. All `ApolloClient` request methods (`fetch`, `perform`, `upload`, `subscribe`) accept an optional `requestConfiguration` parameter.
+
+### Default request configuration
+
+When you create an `ApolloClient`, you can provide a `defaultRequestConfiguration` that will be used for all requests unless a custom configuration is provided:
+
+```swift
+let defaultConfig = RequestConfiguration(
+  requestTimeout: 30.0,
+  writeResultsToCache: true
+)
+
+let client = ApolloClient(
+  networkTransport: networkTransport,
+  store: store,
+  defaultRequestConfiguration: defaultConfig
+)
+```
+
+### Configuration options
+
+`RequestConfiguration` provides the following options:
+
+* **`requestTimeout`** (optional): The timeout interval for network requests. If not specified, the default timeout from the underlying `URLSession` is used.
+* **`writeResultsToCache`**: Whether to write operation results to the cache. Defaults to `true`.
+
+### Using custom request configurations
+
+You can override the default configuration for individual requests:
+
+```swift
+// Custom configuration for a specific request
+let customConfig = RequestConfiguration(
+  requestTimeout: 10.0,
+  writeResultsToCache: false
+)
+
+let response = try await client.fetch(
+  query: MyQuery(),
+  cachePolicy: .networkOnly,
+  requestConfiguration: customConfig
+)
+```
+
+This is useful when you need different timeout values for different operations or when you want to prevent certain operations from writing to the cache.
+
+## Using `GET` instead of `POST` for queries
+
+By default, Apollo constructs queries and sends them to your graphql endpoint using `POST` with the JSON generated.
+
+If you want Apollo to use `GET` instead, pass `true` to the optional `useGETForQueries` parameter when setting up your `RequestChainNetworkTransport`. This will set up all queries conforming to `GraphQLQuery` sent through the HTTP transport to use `GET`.
+
+This is a toggle which affects all queries sent through that client, so if you need to have certain queries go as `POST` and certain ones go as `GET`, you can use a custom interceptor to change the value on a per-request basis. See [Implementing custom interceptors](https://www.apollographql.com/docs/ios/advanced/request-chain#implementing-custom-interceptors) for more information.

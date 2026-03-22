@@ -1577,3 +1577,87 @@ sites:
 - name: firehydrant
   base_url: https://docs.firehydrant.com/
   description: firehydrant documentation
+- name: pagerduty
+  base_url: https://docs.pagerduty.com/
+  description: pagerduty documentation
+- name: rootly
+  base_url: https://docs.rootly.com/
+  description: rootly documentation
+- name: apollo-graphos
+  base_url: https://www.apollographql.com/
+  description: apollo-graphos documentation
+- name: dreamfactory
+  base_url: https://www.dreamfactory.com/
+  description: dreamfactory documentation
+- name: kreya
+  base_url: https://kreya.app/
+  description: kreya documentation
+- name: testsprite
+  base_url: https://docs.testsprite.com/
+  description: testsprite documentation
+- name: foundry
+  base_url: https://www.getfoundry.sh/
+  description: foundry documentation
+- name: lost-pixel
+  base_url: https://docs.lost-pixel.com/docs/
+  description: lost-pixel documentation
+- name: espresso
+  base_url: https://docs.espressosys.com/
+  description: espresso documentation
+- name: cypress-image-diff-plugin
+  base_url: https://cypress.visual-image-diff.dev/
+  description: cypress-image-diff-plugin documentation
+- name: bright-data
+  base_url: https://docs.brightdata.com/
+  description: bright-data documentation
+- name: bugbug
+  base_url: https://docs.bugbug.io/
+  description: bugbug documentation
+- name: testim
+  base_url: https://help.testim.io/
+  description: testim documentation
+- name: crawlee
+  base_url: https://www.crawlee.dev/
+  description: crawlee documentation
+- name: statamic
+  base_url: https://docs.statamic.com/
+  description: statamic documentation
+- name: saleor
+  base_url: https://docs.saleor.io/
+  description: saleor documentation
+- name: pica
+  base_url: https://docs.picaos.com/
+  description: pica documentation
+- name: itextsharp
+  base_url: https://sourceforge.net/
+  description: itextsharp documentation
+- name: pydoc
+  base_url: https://pydoc.io/
+  description: pydoc documentation
+- name: amazon-comprehend
+  base_url: https://docs.aws.amazon.com/
+  description: amazon-comprehend documentation
+- name: albumentations
+  base_url: https://albumentations.ai/
+  description: albumentations documentation
+- name: roboflow
+  base_url: https://docs.roboflow.com/
+  description: roboflow documentation
+- name: pytorch-image-models
+  base_url: https://huggingface.co/docs/timm/
+  description: pytorch-image-models documentation
+- name: hugging-face-model-hub
+  base_url: https://huggingface.co/docs/hub/
+  description: hugging-face-model-hub documentation
+- name: pycaret
+  base_url: https://pycaret.gitbook.io/docs/
+  description: pycaret documentation
+- name: weights-&-biases
+  base_url: https://docs.wandb.ai/
+  description: weights-&-biases documentation
+- name: ray-serve
+  base_url: https://rayserve.org/docs/
+  description: ray-serve documentation
+- name: verta
+  base_url: https://vertana.org/
+  description: verta documentation

@@ -1,0 +1,88 @@
+# Source: https://docs.testsprite.com/mcp/maintenance/security-compliance.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.testsprite.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Security & Compliance
+
+> Learn about TestSprite's security features and compliance standards.
+
+## Principles
+
+* **Least privilege**: only the minimum credentials required for tests
+* **Isolation**: sandboxed execution and ephemeral environments for runs
+* **Transparency**: human-readable reports and machine-readable logs
+
+## Data Handling
+
+**Credentials**
+
+* Configure API keys and logins in the TestSprite portal; avoid hardcoding in tests
+* Support for environment variables and secret injection
+
+**Artifacts**
+
+* Test artifacts (screens/videos/logs) stored under `testsprite_tests/`
+* Configure retention in CI to match your policy
+
+**PII/Secrets**
+
+* Mask sensitive values in logs and reports when configured
+
+## Access & Authorization
+
+* **Auth Flows**
+  * **Frontend**: gated routes, role-based visibility
+  * **Backend**: tokens, scopes, and permissions validated in tests
+* Principle of least privilege in test accounts
+* Rotate test credentials periodically
+
+## Compliance Alignment
+
+* PRD-driven and plan-based testing provides traceability from requirement to test
+* Reports include per-test outcomes for audit readiness
+* Supports segregation of duties: TestSprite analyzes, IDE applies fixes with approval
+
+## Best Practices
+
+<AccordionGroup>
+  <Accordion title="Store Secrets Securely">
+    Store secrets in your secret manager (not the repo)
+  </Accordion>
+
+  <Accordion title="Use Dedicated Test Accounts">
+    Use dedicated test tenants and accounts
+  </Accordion>
+
+  <Accordion title="Review Healing Proposals">
+    Review healing proposals before applying to production branches
+  </Accordion>
+
+  <Accordion title="Limit Artifact Exposure">
+    Limit artifact exposure in public logs; use private CI storage
+  </Accordion>
+</AccordionGroup>
+
+## Related
+
+<Columns cols={2}>
+  <Card title="Test Types & Lifecycle" href="/mcp/concepts/test-type-lifecycle">
+    Understand test types and their lifecycle
+  </Card>
+
+  <Card title="Healing & Observability" href="/mcp/concepts/healing-observability">
+    Understand automatic healing and test observability
+  </Card>
+
+  <Card title="Test Running & Monitoring" href="/mcp/core/continuous-monitoring">
+    Learn about continuous monitoring and test execution
+  </Card>
+
+  <Card title="MCP Tools Reference" href="/mcp/core/tools">
+    Reference guide for MCP tools and commands
+  </Card>
+</Columns>
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,0 +1,156 @@
+# Source: https://docs.wandb.ai/models/artifacts/download-and-use-an-artifact.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.wandb.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+> Download and use Artifacts from multiple projects.
+
+# Download and use artifacts
+
+Download and use an artifact that is already stored on the W\&B server or construct an artifact object and pass it in to for de-duplication as necessary.
+
+<Note>
+  Team members with view-only seats cannot download artifacts.
+</Note>
+
+### Download and use an artifact stored on W\&B
+
+Download and use an artifact stored in W\&B either inside or outside of a W\&B Run. Use the Public API ([`wandb.Api`](/models/ref/python/public-api/api)) to export (or update data) already saved in W\&B.
+
+<Tabs>
+  <Tab title="During a run">
+    First, import the W\&B Python SDK. Next, create a W\&B [Run](/models/ref/python/experiments/run):
+
+    ```python  theme={null}
+    import wandb
+
+    with wandb.init(project="<example>", job_type="<job-type>") as run:
+        # See next step
+    ```
+
+    Indicate the artifact you want to use with the [`wandb.Run.use_artifact()`](/models/ref/python/experiments/run#use_artifact) method. This returns a run object. In the following code snippet specifies an artifact called `'bike-dataset'` with the alias `'latest'`:
+
+    ```python  theme={null}
+    # Indicate the artifact to use. Format is "name:alias"
+    artifact = run.use_artifact("bike-dataset:latest")
+    ```
+
+    Use the object returned to download all the contents of the artifact:
+
+    ```python  theme={null}
+    # Download the entire artifact
+    datadir = artifact.download()
+    ```
+
+    You can optionally pass a path to the root parameter to download the contents of the artifact to a specific directory.
+
+    Use the [`wandb.Artifact.get_entry()`](/models/ref/python/experiments/artifact#get_entry) method to download only a subset of files:
+
+    ```python  theme={null}
+    # Download a specific file
+    entry = artifact.get_entry(name)
+    ```
+
+    Putting this together, the complete code example looks like this:
+
+    ```python  theme={null}
+    import wandb    
+
+    with wandb.init(project="<example>", job_type="<job-type>") as run:
+        # Indicate the artifact to use. Format is "name:alias"
+        artifact = run.use_artifact("bike-dataset:latest")
+
+        # Download the entire artifact
+        datadir = artifact.download()
+
+        # Download a specific file
+        entry = artifact.get_entry("bike.png")
+    ```
+
+    This fetches only the file at the path `name`. It returns an `Entry` object with the following methods:
+
+    * `Entry.download`: Downloads file from the artifact at path `name`
+    * `Entry.ref`: If `add_reference` stored the entry as a reference, returns the URI
+  </Tab>
+
+  <Tab title="Outside of a run">
+    First, import the W\&B SDK. Next, create an artifact object from the Public API Class. Provide the entity, project, artifact, and alias associated with that artifact:
+
+    ```python  theme={null}
+    import wandb
+
+    api = wandb.Api()
+    artifact = api.artifact("entity/project/artifact:alias")
+    ```
+
+    Use the object returned to download the contents of the artifact:
+
+    ```python  theme={null}
+    artifact.download()
+    ```
+
+    You can optionally pass a path the `root` parameter to download the contents of the artifact to a specific directory. For more information, see the [Python SDK Reference Guide](/models/ref/python/experiments/artifact#download).
+  </Tab>
+
+  <Tab title="W&B CLI">
+    Use the `wandb artifact get` command to download an artifact from the W\&B server.
+
+    ```
+    $ wandb artifact get project/artifact:alias --root mnist/
+    ```
+  </Tab>
+</Tabs>
+
+### Partially download an artifact
+
+You can optionally download part of an artifact based on a prefix. Use the `path_prefix=` (`wandb.Artifact.download(path_prefix=)`) parameter to download a single file or the content of a sub-folder.
+
+```python  theme={null}
+with wandb.init(project="<example>", job_type="<job-type>") as run:
+    # Indicate the artifact to use. Format is "name:alias"
+    artifact = run.use_artifact("bike-dataset:latest")
+
+    # Download a specific file or sub-folder
+    artifact.download(path_prefix="bike.png") # downloads only bike.png
+```
+
+Alternatively, you can download files from a certain directory. To do so, specify the directory within the `path_prefix=` parameter. Continuing from the previous code snippet:
+
+```python  theme={null}
+# downloads files in the images/bikes directory
+artifact.download(path_prefix="images/bikes/") 
+```
+
+### Use an artifact from a different project
+
+Specify the name of artifact along with its project name to reference an artifact. You can also reference artifacts across entities by specifying the name of the artifact with its entity name.
+
+The following code example demonstrates how to query an artifact from another project as input to the current W\&B run.
+
+```python  theme={null}
+with wandb.init(project="<example>", job_type="<job-type>") as run:
+    # Query W&B for an artifact from another project and mark it
+    # as an input to this run.
+    artifact = run.use_artifact("my-project/artifact:alias")
+
+    # Use an artifact from another entity and mark it as an input
+    # to this run.
+    artifact = run.use_artifact("my-entity/my-project/artifact:alias")
+
+```
+
+### Construct and use an artifact simultaneously
+
+Simultaneously construct and use an artifact. Create an artifact object and pass it to use\_artifact. This creates an artifact in W\&B if it does not exist yet. The [`wandb.Run.use_artifact()`](/models/ref/python/experiments/run#use_artifact) API is idempotent, so you can call it as many times as you like.
+
+```python  theme={null}
+import wandb
+
+with wandb.init(project="<example>", job_type="<job-type>") as run:
+    artifact = wandb.Artifact("reference model")
+    artifact.add_file("model.h5")
+    run.use_artifact(artifact)
+```
+
+For more information about constructing an artifact, see [Construct an artifact](/models/artifacts/construct-an-artifact/).
