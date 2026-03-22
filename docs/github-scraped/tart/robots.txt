@@ -1,0 +1,6 @@
+# Source: https://github.com/cirruslabs/tart/blob/main/docs/robots.txt
+
+User-agent: *
+Allow: *
+Disallow: 
+Sitemap: https://tart.run/sitemap.xml
