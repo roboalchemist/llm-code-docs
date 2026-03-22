@@ -996,6 +996,9 @@ sites:
 - name: vercel-rest-api
   base_url: https://vercel.com/docs/rest-api/reference/
   description: Vercel REST API reference documentation
+- name: verda
+  base_url: https://docs.verda.com/
+  description: Verda cloud GPU provider with RTX 5090, H100, H200 instances, persistent storage, and REST API
 - name: viem
   base_url: https://viem.sh/
   description: Viem documentation
