@@ -1,0 +1,54 @@
+# Source: https://posthog.com/docs/workflows/best-practices.md
+
+# Source: https://posthog.com/docs/product-analytics/best-practices.md
+
+# Source: https://posthog.com/docs/logs/best-practices.md
+
+# Source: https://posthog.com/docs/feature-flags/best-practices.md
+
+# Source: https://posthog.com/docs/experiments/best-practices.md
+
+# Source: https://posthog.com/docs/endpoints/best-practices.md
+
+# Use cases and tips - Docs
+
+## Common use cases
+
+### Customer-facing dashboards
+
+If you need to show a subset of your analytics to your own customers, endpoints provide a secure, performant way to do this.
+
+**Example**: Create an endpoint from a "Daily Active Users" insight and display it in your customer dashboard.
+
+### Predefined queries
+
+For queries you run frequently, endpoints provide a stable, optimized way to programmatically access the data without reconstructing the query each time.
+
+**Example**: Create an endpoint for "Top 10 events this week" that your team or AI agent can call regularly.
+
+## Performance tips
+
+### Use materialization
+
+For better performance, consider materializing your endpoint. Materialized queries are precomputed, which can significantly improve endpoint response times.
+
+### Cache responses
+
+Endpoints return cached data when available. You can configure the TTL of cached results based on your requirements. If the cache is older than your desired freshness, the endpoint will execute the query again (and cache those results). Endpoints should eliminate the need for you to implement your own caching layer.
+
+### Optimize your queries
+
+The performance of your endpoints depends on the underlying queries. Follow best practices for [writing performant queries](/docs/api/queries.md#writing-performant-queries):
+
+-   Use shorter time ranges.
+-   Avoid scanning the same table multiple times.
+-   Use materialized views for frequently accessed data. Your endpoint can depend on another materialized view.
+-   Include appropriate filters to limit data scanned.
+
+### Community questions
+
+Ask a question
+
+### Was this page useful?
+
+HelpfulCould be better

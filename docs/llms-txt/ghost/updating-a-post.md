@@ -1,0 +1,54 @@
+# Source: https://docs.ghost.org/admin-api/posts/updating-a-post.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ghost.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Updating a Post
+
+```js  theme={"dark"}
+PUT /admin/posts/{id}/
+```
+
+Required fields: `updated_at`
+
+All writable fields of a post can be updated via the edit endpoint. The `updated_at` field is required as it is used to handle collision detection and ensure you’re not overwriting more recent updates. It is recommended to perform a GET request to fetch the latest data before updating a post. Below is a minimal example for updating the title of a post:
+
+<RequestExample>
+  ```json  theme={"dark"}
+  // PUT admin/posts/5b7ada404f87d200b5b1f9c8/
+  {
+      "posts": [
+          {
+              "title": "My new title",
+              "updated_at": "2022-06-05T20:52:37.000Z"
+          }
+      ]
+  }
+  ```
+</RequestExample>
+
+#### Saving a new revision
+
+If you'd like a new revision of a post saved as part of the update, pass `save_revision=true` in the query string.
+
+<RequestExample>
+  ```json  theme={"dark"}
+  // PUT admin/posts/5b7ada404f87d200b5b1f9c8/?save_revision=true
+  {
+      "posts": [
+          {
+              "title": "My new title",
+              "updated_at": "2022-06-05T20:52:37.000Z"
+          }
+      ]
+  }
+  ```
+</RequestExample>
+
+#### Tags and Authors
+
+Tag and author relations will be replaced, not merged. Again, the recommendation is to always fetch the latest version of a post, make any amends to this such as adding another tag to the tags array, and then send the amended data via the edit endpoint.
+
+
+Built with [Mintlify](https://mintlify.com).

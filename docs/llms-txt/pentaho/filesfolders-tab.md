@@ -1,0 +1,17 @@
+# Source: https://docs.pentaho.com/pdia-data-integration/9.3-data-integration/pdi-job-entries-reference-overview/hadoop-copy-files/options-hadoop-copy-files-job/filesfolders-tab.md
+
+# Source: https://docs.pentaho.com/pdia-data-integration/10.2-data-integration/pdi-job-entries-reference-overview/hadoop-copy-files/options-hadoop-copy-files-job/filesfolders-tab.md
+
+# Files/Folders tab
+
+![Files/Folders tab, Hadoop Copy Files](https://2745965000-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FvZoINBz5C5WnDZQlbOJQ%2Fuploads%2Fgit-blob-ab92660f05220630494f6fca50fde2649cacb7c0%2FPDI_JobEntry_HadoopCopyFiles_Files.png?alt=media)
+
+| Option                      | Description                                                                                                                                                                                                                                                                                                                                                                   |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Source Environment**      | Specify the type of file system containing the files you want to copy.                                                                                                                                                                                                                                                                                                        |
+| **Source File/Folder**      | Specify the file or directory you want to copy. Click **Browse** to to navigate to the source file or folder through the VFS browser. See [VFS browser](https://docs.pentaho.com/pdia-data-integration/10.2-data-integration/data-integration-perspective-in-the-pdi-client/virtual-file-system-browser/vfs-browser-connecting-to-virtual-file-systems) for more information. |
+| **Wildcard (RegExp)**       | Specify the files to copy with regular expressions instead of static file names. For example, `.*\.txt` selects all files with a `.txt` extension.                                                                                                                                                                                                                            |
+| **Destination Environment** | Specify the file system where you want to put your copied files.                                                                                                                                                                                                                                                                                                              |
+| **Destination File/Folder** | Specify the file or directory where you want to place your copied file. Click **Browse** and select **Hadoop** to enter your Hadoop cluster connection details.                                                                                                                                                                                                               |
+
+**Note:** The source environment and destination environments must be the same.

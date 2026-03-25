@@ -1,0 +1,69 @@
+# Source: https://www.apollographql.com/docs/apollo-server/api/plugin/cache-control.md
+
+# API Reference: Cache Control Plugin
+
+## Using the plugin
+
+This article documents the options for the `ApolloServerPluginCacheControl` plugin, which you can import from `@apollo/server/plugin/cacheControl`.
+
+This plugin enables your GraphQL server to specify a cache policy at the field level, either statically in your schema with the `@cacheControl` directive, or dynamically in your resolvers via the `info.cacheControl` API. It also sets the `cache-control` HTTP response header by default. See [Server-side caching](https://www.apollographql.com/docs/apollo-server/performance/caching/) for more information and examples.
+
+> To use the `@cacheControl` directive, you must first [define it in your schema](https://www.apollographql.com/docs/apollo-server/performance/caching/#in-your-schema-static).
+
+Apollo Server installs this plugin by default in all servers, with its default configuration.  You typically do not have to install this plugin yourself; you only need to do so if you want to provide non-default configuration.
+
+If you want to configure the `ApolloServerPluginCacheControl` plugin, import it and pass it to your `ApolloServer` constructor's `plugins` array:
+
+```ts
+import { ApolloServer } from '@apollo/server';
+import { ApolloServerPluginCacheControl } from '@apollo/server/plugin/cacheControl';
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  plugins: [
+    ApolloServerPluginCacheControl({
+      // Cache everything for 1 second by default.
+      defaultMaxAge: 1,
+      // Don't send the `cache-control` response header.
+      calculateHttpHeaders: false,
+    }),
+  ],
+});
+```
+
+If you don't want to use cache control at all, you can explicitly disable it with the `ApolloServerPluginCacheControlDisabled` plugin:
+
+```ts
+import { ApolloServer } from '@apollo/server';
+import { ApolloServerPluginCacheControlDisabled } from '@apollo/server/plugin/disabled';
+
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  plugins: [
+    ApolloServerPluginCacheControlDisabled(),
+  ],
+});
+```
+
+The plugin doesn't affect your app much if you don't use the `@cacheControl` directive or the `info.cacheControl` API. If you don't currently use it, there might be a very slight performance improvement from disabling the plugin.
+
+## Options
+
+Name /Type
+Description
+
+###### `defaultMaxAge`
+
+`number`
+
+By default, root fields and fields that return a composite type (object, interface, or union) are considered to be uncacheable (`maxAge` 0) unless a cache hint is explicitly provided via `@cacheControl` or `info.cacheControl`. You can set this option to make the default `maxAge` for these larger than 0; this will effectively cause all requests to be cacheable.
+
+This option was popular in Apollo Server 2 as a workaround for the problem solved by the [`@cacheControl(inheritMaxAge: true)`](https://www.apollographql.com/docs/apollo-server/performance/caching/#in-your-schema-static) directive argument. See [Default `maxAge`](https://www.apollographql.com/docs/apollo-server/performance/caching/#default-maxage) for more details.
+
+###### `calculateHttpHeaders`
+
+`boolean | 'if-cacheable'`
+
+By default, the cache control plugin sets the `cache-control` HTTP response header to `max-age=MAXAGE, public` or `max-age=MAXAGE, private` if the request is cacheable, and to `no-store` if the request is not cacheable. If you specify `calculateHttpHeaders: false`, it will not set this header. If you specify `calculateHttpHeaders: 'if-cacheable'`, it will only set the header if the request is cacheable. (A response is cacheable if its overall cache policy has a non-zero `maxAge`, and the body is a single result rather than an incremental delivery response, and the body contains no errors.) Setting this option does not prevent the `requestContext.overallCachePolicy` field from being calculated, nor does it prevent the [response cache plugin](https://www.apollographql.com/docs/apollo-server/performance/caching/#caching-with-responsecacheplugin-advanced) from working.

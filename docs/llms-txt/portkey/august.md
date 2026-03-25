@@ -1,0 +1,145 @@
+# Source: https://docs.portkey.ai/docs/changelog/2025/august.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.portkey.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# August
+
+August was all about real-world impact and community.
+
+Princeton and NYU shared how they're deploying Portkey across their institutions. Seeing our platform in action at these universities was incredible.
+
+**Future of AI Platforms** brought together industry leaders from Doordash, Postman, Qure.ai and more for honest conversations about challenges and opportunities.
+
+Meanwhile, we shipped what you asked for: multiple workspace guardrails, OTel instrumentation, and day-zero support for the latest models.
+
+Here's what's new this month:
+
+## Summary
+
+| Area                    | Key Highlights                                                                                                                                     |
+| :---------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Highlights**          | • Making GenAI rollout easy with Princeton, NYU and Internet2 <br /> • Upcoming Palo Alto Networks webinar <br /> • New `/models` endpoint         |
+| **Platform**            | • Unified + Portkey batching <br /> • OTel-based auto-instrumentation <br /> • Multiple guardrails at workspace level <br /> • CRUD Guardrails API |
+| **Gateway & Providers** | • Featherless.ai integration <br /> • GPT-OSS models support <br /> • Claude Opus 4.1 support <br /> • Custom models and pricing                   |
+
+## Highlights
+
+### Making GenAI rollout easy with Ivy League institutions and Internet2
+
+Together with Internet2, we co-hosted a webinar where Ivy League institutions like NYU\*\* shared how universities are deploying GenAI across classrooms, research, and student services.
+
+The session highlighted how Portkey's AI Gateway provides secure model access, guardrails, and compliance support for educational institutions.
+
+Watch the recording [here →](https://internet2.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=36f87257-f9f5-4a18-b2db-b333011b3437\&start=561).
+
+### Protecting Your AI Platform - Palo Alto Networks x Portkey
+
+<img src="https://mintcdn.com/portkey-docs/SnsFU5cdk_U0OW7n/images/changelog/Webinar%20Dark%20(4).png?fit=max&auto=format&n=SnsFU5cdk_U0OW7n&q=85&s=05b9285a04c5c372a3f777bccd37714b" alt="Palo Alto Networks x Portkey Webinar" style={{ width: "100%", borderRadius: "8px", margin: "24px 0" }} width="1080" height="1080" data-path="images/changelog/Webinar Dark (4).png" />
+
+Join us for an upcoming webinar in partnership with Palo Alto Networks where we'll explore best practices for securing AI infrastructure at scale, implementing enterprise-grade guardrails, and maintaining compliance while enabling innovation.
+
+Click here to [register](https://luma.com/z84zjko5).
+
+## Platform
+
+### List models API
+
+<img src="https://mintcdn.com/portkey-docs/YK6UoselJqu90oDD/images/changelog/list-models-api.png?fit=max&auto=format&n=YK6UoselJqu90oDD&q=85&s=d49fe39fd8a7d9f01ec6995f9d73a78f" alt="list-models-api" style={{ width: "100%", borderRadius: "8px", margin: "24px 0" }} width="1286" height="380" data-path="images/changelog/list-models-api.png" />
+
+You can now see a list of all models available through Portkey—along with basic details for each one. This makes it easier to discover which models you can use and compare providers and options. Read more about it [here](https://portkey.ai/docs/api-reference/inference-api/models/models).
+
+### Unified + Portkey Batching
+
+<img src="https://mintcdn.com/portkey-docs/YK6UoselJqu90oDD/images/changelog/portkey-batching.png?fit=max&auto=format&n=YK6UoselJqu90oDD&q=85&s=47c5f66f43fa74f48bf635f4b27615a9" alt="Unified Batching" style={{ width: "100%", borderRadius: "8px", margin: "24px 0" }} width="1248" height="832" data-path="images/changelog/portkey-batching.png" />
+
+Optimize throughput and reduce costs with our improved batching capabilities. We've implemented unified batching across all supported providers with intelligent request grouping for optimized performance.
+
+This reduces per-request overhead while providing automatic batch size optimization and configurable parameters to suit your specific needs.
+
+See how you can get started [here](http://localhost:3000/product/ai-gateway/batches).
+
+### **OTel-based autoinstrumentation**
+
+<video src="https://cfassets.portkey.ai/WEBSITE%2FPRODUCT%20PAGES%2FOVSERVABILITY%2FObservibility_point_3.mp4" controls title="OTel-based Autoinstrumentation Demo" style={{ width: "100%", borderRadius: "8px", margin: "24px 0" }} />
+
+Portkey now works as an OTel endpoint. Send telemetry from any OTel-compatible source into Portkey and view it alongside LLM call logs. End-to-end observability for performance, cost, and compliance. Super powerful for agent workflows.
+
+See how you can implement this [here](https://portkey.ai/docs/product/observability/opentelemetry)
+
+This strengthens our observability even further!
+
+<img src="https://mintcdn.com/portkey-docs/YK6UoselJqu90oDD/images/changelog/testimonial-twitter.png?fit=max&auto=format&n=YK6UoselJqu90oDD&q=85&s=62abcad53f39c700a80c4d32d271d53b" alt="twitter-testimonial" style={{ width: "100%", borderRadius: "8px", margin: "24px 0" }} width="1594" height="704" data-path="images/changelog/testimonial-twitter.png" />
+
+### **Multiple guardrails at the workspace level**
+
+<img src="https://mintcdn.com/portkey-docs/YK6UoselJqu90oDD/images/changelog/multiple-guardrails.webp?fit=max&auto=format&n=YK6UoselJqu90oDD&q=85&s=491e5c76918d86d383f9587af4a0eaaa" alt="Multiple Guardrails" style={{ width: "100%", borderRadius: "8px", margin: "24px 0" }} width="1480" height="1184" data-path="images/changelog/multiple-guardrails.webp" />
+
+You can now define and enforce multiple guardrail policies at the workspace-level, making it easier to secure usage, filter content, and maintain compliance across your team.
+
+### CRUD Guardrails API
+
+Managing guardrails at scale just got easier. You can now create, update, retrieve, delete, and list guardrails directly via API.
+
+This makes it simple to keep policies consistent across environments, automate changes, and integrate guardrail management into your CI/CD workflows. [Learn more](https://portkey.ai/docs/api-reference/admin-api/control-plane/guardrails/create-guardrail).
+
+## New Models and Providers
+
+* **Featherless.ai**: Access 11,900+ open-source models with unlimited tokens through a single gateway. [Learn more →](https://portkey.ai/docs/integrations/llms/featherless)
+* **GPT-OSS Models**: OpenAI's new open-weight models with strong reasoning and tool use capabilities.
+* **Claude Opus 4.1**: Anthropic's latest flagship model with 74.5% performance on SWE-bench Verified.
+
+## 🌐 Community Highlights
+
+### **Future of AI Platforms**
+
+Leaders from **DoorDash, Postman, Qure.ai, and Qoala** joined us for the Future of AI Platforms. It turned into a night of sharp ideas, candid discussions, and bold visions for where AI is headed.
+
+<img src="https://mintcdn.com/portkey-docs/YK6UoselJqu90oDD/images/changelog/future-of-ai-platforms.jpg?fit=max&auto=format&n=YK6UoselJqu90oDD&q=85&s=eae2365373208368e51df1aa414a366c" alt="Future of AI Platforms Dinner" style={{ width: "100%", borderRadius: "8px", margin: "24px 0" }} width="6004" height="4003" data-path="images/changelog/future-of-ai-platforms.jpg" />
+
+Where should we host it next?
+
+👉 [Send us an email](mailto:vrushank.v@portkey.ai) if you'd be interested in attending!
+
+### Enterprise Security with Falco Vanguard
+
+<img src="https://mintcdn.com/portkey-docs/YK6UoselJqu90oDD/images/changelog/falco-vanguard.png?fit=max&auto=format&n=YK6UoselJqu90oDD&q=85&s=4469bc774e54b275691e9fffbe5eb129" alt="Falco Vanguard" style={{ width: "100%", borderRadius: "8px", margin: "24px 0" }} width="2200" height="1200" data-path="images/changelog/falco-vanguard.png" />
+
+[Falco Vanguard](https://www.linkedin.com/posts/migueladelossantos_falco-cloudnativesecurity-aiengineering-activity-7358991765049122816-YHDS) is using Portkey's AI infrastructure to build an innovative security platform that intelligently clusters security events and prioritizes critical threats.
+
+Their offline-first approach ensures data sovereignty while their integration with Portkey provides the reliability and production readiness enterprises demand. We're excited to see how this collaboration transforms security operations for organizations.
+
+Read more about this [here →](https://www.linkedin.com/posts/migueladelossantos_falco-cloudnativesecurity-aiengineering-activity-7358991765049122816-YHDS).
+
+## Resources
+
+* Blog: [Simplifying LLM batch reference](https://portkey.ai/blog/simplifying-llm-batch-inference)
+* Blog: [OTel traces with LLM logs for end-to-end observability agent workflows](https://portkey.ai/blog/otel-with-llm-observability-for-agents)
+
+## Community Contributors
+
+A special thanks to our contributor this month:
+
+* [pnkvalavala](https://github.com/pnkvalavala)
+* [indranil-kar-cloudesign](https://github.com/indranil-kar-cloudesign)
+* [horochx](https://github.com/horochx)
+
+## Coming this month!
+
+Our MCP gateway is almost here! Reach out to us on [support@portkey.ai](mailto:support@portkey.ai) for early access!
+
+## Support
+
+<CardGroup cols={2}>
+  <Card title="Need Help?" icon="bug" href="https://github.com/Portkey-AI/gateway/issues">
+    Open an issue on GitHub
+  </Card>
+
+  <Card title="Join Us" icon="discord" href="https://portkey.wiki/community">
+    Get support in our Discord
+  </Card>
+</CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,0 +1,749 @@
+# Source: https://docs.gradle.org/userguide/implementing_custom_tasks.html
+
+Title: Implementing Custom Tasks
+
+URL Source: https://docs.gradle.org/userguide/implementing_custom_tasks.html
+
+Markdown Content:
+Actionable tasks describe work in Gradle. These tasks have actions. In Gradle core, the `compileJava` task compiles the Java source code. The `Jar` and `Zip` tasks zip files into archives.
+
+![Image 1: writing tasks 3](https://docs.gradle.org/current/userguide/img/writing-tasks-3.png)
+
+Custom actionable tasks can be created by extending the `DefaultTask` class and defining inputs, outputs, and actions.
+
+[](https://docs.gradle.org/userguide/implementing_custom_tasks.html#sec:task_in_out)[Task inputs and outputs](https://docs.gradle.org/userguide/implementing_custom_tasks.html#sec:task_in_out)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Actionable tasks have inputs and outputs. Inputs and outputs can be files, directories, or variables.
+
+In actionable tasks:
+
+* **Inputs** consist of a collection of files, folders, and/or configuration data.
+
+ For instance, the `javaCompile` task takes inputs such as Java source files and build script configurations like the Java version.
+
+* **Outputs** refer to one or multiple files or folders.
+
+ For instance, the `javaCompile` produces class files as output.
+
+Then, the `jar` task takes these class files as input and produces a JAR archive.
+
+Clearly defined task inputs and outputs serve two purposes:
+
+1. They inform Gradle about task dependencies.
+
+ For example, if Gradle understands that the output of the `compileJava` task serves as the input for the `jar` task, it will prioritize running `compileJava` first.
+
+1. They facilitate incremental building.
+
+ For example, suppose Gradle recognizes that the inputs and outputs of a task remain unchanged. In that case, it can leverage results from previous build runs or the build cache, avoiding rerunning the task action altogether.
+
+When you apply a plugin like the `java-library` plugin, Gradle will automatically register some tasks and configure them with defaults.
+
+Let’s define a task that packages JARs and a start script into an archive in an imaginary sample project:
+
+`Kotlin``Groovy`
+
+```
+gradle-project
+├── app
+│   ├── build.gradle    // app build logic
+│   ├── run.sh          // script file
+│   └── ...             // some java code
+├── settings.gradle     // includes app subproject
+├── gradle
+├── gradlew
+└── gradlew.bat
+```
+
+The `run.sh` script can execute the Java app (once packaged as a JAR) from the build:
+
+app/run.sh
+
+`java -cp 'libs/*' gradle.project.app.App`
+
+Let’s register a new task called `packageApp` using [`task.register()`](https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/TaskContainer.html#register-java.lang.String-java.lang.Class-):
+
+`Kotlin``Groovy`
+
+app/build.gradle
+
+```
+tasks.register(Zip, "packageApp") {
+
+}
+```
+
+We used an existing implementation from Gradle core which is the [`Zip`](https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/bundling/Zip.html) task implementation (i.e., a subclass of [`DefaultTask`](https://docs.gradle.org/current/javadoc/org/gradle/api/DefaultTask.html)). Because we register a new task here, it’s not pre-configured. We need to configure the inputs and outputs.
+
+Defining inputs and outputs is what makes a task an actionable task.
+
+For the [`Zip`](https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/bundling/Zip.html) task type, we can use the [`from()`](https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/AbstractCopyTask.html#from-java.lang.Object%E2%80%A6%E2%80%8B-) method to add a file to the inputs. In our case, we add the run script.
+
+If the input is a file we create or edit directly, like a run file or Java source code, it’s usually located somewhere in our project directory. To ensure we use the correct location, we use [`layout.projectDirectory`](https://docs.gradle.org/current/javadoc/org/gradle/api/file/ProjectLayout.html#getProjectDirectory--) and define a relative path to the project directory root.
+
+We provide the outputs of the `jar` task as well as the JAR of all the dependencies (using [`configurations`](https://docs.gradle.org/current/javadoc/org/gradle/api/Project.html#getConfigurations--)[`.runtimeClasspath`](https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/SourceSet.html#getRuntimeClasspath--)) as additional inputs.
+
+For outputs, we need to define two properties.
+
+First, the destination directory, which should be a directory inside the build folder. We can access this through [`layout`](https://docs.gradle.org/current/javadoc/org/gradle/api/file/ProjectLayout.html).
+
+Second, we need to specify a name for the zip file, which we’ve called `myApplication.zip`
+
+Here is what the complete task looks like:
+
+`Kotlin``Groovy`
+
+app/build.gradle
+
+```
+def packageApp = tasks.register(Zip, 'packageApp') {
+    from layout.projectDirectory.file('run.sh')                 // input - run.sh file
+    from tasks.jar {                                            // input - jar task output
+        into 'libs'
+    }
+    from configurations.runtimeClasspath {                      // input - jar of dependencies
+        into 'libs'
+    }
+    destinationDirectory.set(layout.buildDirectory.dir('dist')) // output - location of the zip file
+    archiveFileName.set('myApplication.zip')                    // output - name of the zip file
+}
+```
+
+If we run our `packageApp` task, `myApplication.zip` is produced:
+
+`$ ./gradlew :app:packageApp`
+
+```
+> Task :app:compileJava
+> Task :app:processResources NO-SOURCE
+> Task :app:classes
+> Task :app:jar
+> Task :app:packageApp
+
+BUILD SUCCESSFUL in 1s
+3 actionable tasks: 3 executed
+```
+
+Gradle executed a number of tasks it required to build the JAR file, which included the compilation of the code of the `app` project and the compilation of code dependencies.
+
+Looking at the newly created ZIP file, we can see that it contains everything needed to run the Java application:
+
+`$ unzip -l ./app/build/dist/myApplication.zip`
+
+```
+Archive:  ./app/build/dist/myApplication.zip
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+       42  01-31-2024 14:16   run.sh
+        0  01-31-2024 14:22   libs/
+      847  01-31-2024 14:22   libs/app.jar
+  3041591  01-29-2024 14:20   libs/guava-32.1.2-jre.jar
+     4617  01-29-2024 14:15   libs/failureaccess-1.0.1.jar
+     2199  01-29-2024 14:15   libs/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar
+    19936  01-29-2024 14:15   libs/jsr305-3.0.2.jar
+   223979  01-31-2024 14:16   libs/checker-qual-3.33.0.jar
+    16017  01-31-2024 14:16   libs/error_prone_annotations-2.18.0.jar
+---------                     -------
+  3309228                     9 files
+```
+
+Actionable tasks should be wired to lifecycle tasks so that a developer only needs to run lifecycle tasks.
+
+So far, we called our new task directly. Let’s wire it to a lifecycle task.
+
+The following is added to the build script so that the `packageApp` actionable task is wired to the `build` lifecycle task using [`dependsOn()`](https://docs.gradle.org/current/javadoc/org/gradle/api/DefaultTask.html#dependsOn-java.lang.Object%E2%80%A6%E2%80%8B-):
+
+`Kotlin``Groovy`
+
+app/build.gradle
+
+```
+tasks.build {
+    dependsOn(packageApp)
+}
+```
+
+We see that running `:build` also runs `:packageApp`:
+
+`$ ./gradlew :app:build`
+
+```
+> Task :app:compileJava UP-TO-DATE
+> Task :app:processResources NO-SOURCE
+> Task :app:classes UP-TO-DATE
+> Task :app:jar UP-TO-DATE
+> Task :app:startScripts
+> Task :app:distTar
+> Task :app:distZip
+> Task :app:assemble
+> Task :app:compileTestJava
+> Task :app:processTestResources NO-SOURCE
+> Task :app:testClasses
+> Task :app:test
+> Task :app:check
+> Task :app:packageApp
+> Task :app:build
+
+BUILD SUCCESSFUL in 1s
+8 actionable tasks: 6 executed, 2 up-to-date
+```
+
+You could define your own lifecycle task if needed.
+
+[](https://docs.gradle.org/userguide/implementing_custom_tasks.html#task_implementation_by_extending_defaulttask)[Task implementation by extending `DefaultTask`](https://docs.gradle.org/userguide/implementing_custom_tasks.html#task_implementation_by_extending_defaulttask)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+To address more individual needs, and if no existing plugins provide the build functionality you need, you can create your own task implementation.
+
+Implementing a class means creating a custom class (i.e., _type_), which is done by subclassing [`DefaultTask`](https://docs.gradle.org/current/javadoc/org/gradle/api/DefaultTask.html)
+
+Let’s start with an example built by Gradle `init` for a simple Java application with the source code in the `app` subproject and the common build logic in `buildSrc`:
+
+`Kotlin``Groovy`
+
+```
+gradle-project
+├── app
+│   ├── build.gradle
+│   └── src             // some java code
+│       └── ...
+├── buildSrc
+│   ├── build.gradle
+│   ├── settings.gradle
+│   └── src             // common build logic
+│       └── ...
+├── settings.gradle
+├── gradle
+├── gradlew
+└── gradlew.bat
+```
+
+We create a class called `GenerateReportTask` in `./buildSrc/src/main/kotlin/GenerateReportTask.kt` or `./buildSrc/src/main/groovy/GenerateReportTask.groovy`.
+
+To let Gradle know that we are implementing a task, we extend the `DefaultTask` class that comes with Gradle. It’s also beneficial to make our task class `abstract` because Gradle will handle many things automatically:
+
+`Kotlin``Groovy`
+
+buildSrc/src/main/groovy/GenerateReportTask.groovy
+
+```
+import org.gradle.api.DefaultTask
+
+abstract class GenerateReportTask extends DefaultTask {
+
+}
+```
+
+Next, we define the inputs and outputs using properties and annotations. In this context, properties in Gradle act as references to the actual values behind them, allowing Gradle to track inputs and outputs between tasks.
+
+For the input of our task, we use a `DirectoryProperty` from Gradle. We annotate it with `@InputDirectory` to indicate that it is an input to the task:
+
+`Kotlin``Groovy`
+
+buildSrc/src/main/groovy/GenerateReportTask.groovy
+
+```
+import org.gradle.api.DefaultTask
+import org.gradle.api.file.DirectoryProperty
+import org.gradle.api.tasks.InputDirectory
+
+abstract class GenerateReportTask extends DefaultTask {
+
+    @InputDirectory
+    abstract DirectoryProperty getSourceDirectory()
+
+}
+```
+
+Similarly, for the output, we use a `RegularFileProperty` and annotate it with `@OutputFile`.
+
+`Kotlin``Groovy`
+
+buildSrc/src/main/groovy/GenerateReportTask.groovy
+
+```
+import org.gradle.api.DefaultTask
+import org.gradle.api.file.DirectoryProperty
+import org.gradle.api.file.RegularFileProperty
+import org.gradle.api.tasks.InputDirectory
+import org.gradle.api.tasks.OutputFile
+
+abstract class GenerateReportTask extends DefaultTask {
+
+    @InputDirectory
+    abstract DirectoryProperty getSourceDirectory()
+
+    @OutputFile
+    abstract RegularFileProperty getReportFile()
+
+}
+```
+
+With inputs and outputs defined, the only thing that remains is the actual task action, which is implemented in a method annotated with `@TaskAction`. Inside this method, we write code accessing inputs and outputs using Gradle-specific APIs:
+
+`Kotlin``Groovy`
+
+buildSrc/src/main/groovy/GenerateReportTask.groovy
+
+```
+import org.gradle.api.DefaultTask
+import org.gradle.api.file.DirectoryProperty
+import org.gradle.api.file.RegularFileProperty
+import org.gradle.api.tasks.InputDirectory
+import org.gradle.api.tasks.OutputFile
+import org.gradle.api.tasks.TaskAction
+
+abstract class GenerateReportTask extends DefaultTask {
+
+    @InputDirectory
+    abstract DirectoryProperty getSourceDirectory()
+
+    @OutputFile
+    abstract RegularFileProperty getReportFile()
+
+    @TaskAction
+    void generateReport() {
+        def sourceDirectory = sourceDirectory.asFile.get()
+        def reportFile = reportFile.asFile.get()
+        def fileCount = sourceDirectory.listFiles().count { it.isFile() }
+        def directoryCount = sourceDirectory.listFiles().count { it.isDirectory() }
+
+        def reportContent = """
+            Report for directory: ${sourceDirectory.absolutePath}
+            ------------------------------
+            Number of files: $fileCount
+            Number of subdirectories: $directoryCount
+        """.trim()
+
+        reportFile.text = reportContent
+        println("Report generated at: ${reportFile.absolutePath}")
+    }
+}
+```
+
+The task action generates a report of the files in the `sourceDirectory`.
+
+In the application build file, we register a task of type `GenerateReportTask` using `task.register()` and name it `generateReport`. At the same time, we configure the inputs and outputs of the task:
+
+`Kotlin``Groovy`
+
+app/build.gradle
+
+```
+tasks.register("generateReport", GenerateReportTask) {
+    sourceDirectory = layout.projectDirectory.dir("src/main")
+    reportFile = layout.buildDirectory.file("reports/directoryReport.txt")
+}
+
+tasks.build.dependsOn("generateReport")
+```
+
+The `generateReport` task is wired to the `build` task.
+
+By running the build, we observe that our start script generation task is executed, and it’s `UP-TO-DATE` in subsequent builds. Gradle’s incremental building and caching mechanisms work seamlessly with custom tasks:
+
+`$./gradlew :app:build`
+
+```
+> Task :buildSrc:checkKotlinGradlePluginConfigurationErrors
+> Task :buildSrc:compileKotlin UP-TO-DATE
+> Task :buildSrc:compileJava NO-SOURCE
+> Task :buildSrc:compileGroovy NO-SOURCE
+> Task :buildSrc:pluginDescriptors UP-TO-DATE
+> Task :buildSrc:processResources NO-SOURCE
+> Task :buildSrc:classes UP-TO-DATE
+> Task :buildSrc:jar UP-TO-DATE
+> Task :app:compileJava UP-TO-DATE
+> Task :app:processResources NO-SOURCE
+> Task :app:classes UP-TO-DATE
+> Task :app:jar UP-TO-DATE
+> Task :app:startScripts UP-TO-DATE
+> Task :app:distTar UP-TO-DATE
+> Task :app:distZip UP-TO-DATE
+> Task :app:assemble UP-TO-DATE
+> Task :app:compileTestJava UP-TO-DATE
+> Task :app:processTestResources NO-SOURCE
+> Task :app:testClasses UP-TO-DATE
+> Task :app:test UP-TO-DATE
+> Task :app:check UP-TO-DATE
+
+> Task :app:generateReport
+Report generated at: ./app/build/reports/directoryReport.txt
+
+> Task :app:packageApp
+> Task :app:build
+
+BUILD SUCCESSFUL in 1s
+13 actionable tasks: 10 executed, 3 up-to-date
+```
+
+[](https://docs.gradle.org/userguide/implementing_custom_tasks.html#task_actions)[Task actions](https://docs.gradle.org/userguide/implementing_custom_tasks.html#task_actions)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+A task action is the code that implements what a task is doing, as demonstrated in the previous section. For example, the `javaCompile` task action calls the Java compiler to transform source code into byte code.
+
+It is possible to dynamically modify task actions for tasks that are already registered. This is helpful for testing, patching, or modifying core build logic.
+
+Let’s look at an example of a simple Gradle build with one `app` subproject that makes up a Java application – containing one Java class and using Gradle’s `application` plugin. The project has common build logic in the `buildSrc` folder where `my-convention-plugin` resides:
+
+`Kotlin``Groovy`
+
+app/build.gradle
+
+```
+plugins {
+    id 'my-convention-plugin'
+}
+
+version = '1.0'
+
+application {
+    mainClass = 'org.example.app.App'
+}
+```
+
+We define a task called `printVersion` in the build file of the `app`:
+
+`Kotlin``Groovy`
+
+buildSrc/src/main/groovy/PrintVersion.groovy
+
+```
+import org.gradle.api.DefaultTask
+import org.gradle.api.provider.Property
+import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.TaskAction
+
+abstract class PrintVersion extends DefaultTask {
+
+    // Configuration code
+    @Input
+    abstract Property<String> getVersion()
+
+    // Execution code
+    @TaskAction
+    void printVersion() {
+        println("Version: ${getVersion().get()}")
+    }
+}
+```
+
+This task does one simple thing: it prints out the version of the project to the command line.
+
+The class extends `DefaultTask` and it has one `@Input`, which is of type `Property<String>`. It has one method that is annotated with `@TaskAction`, which prints out the version.
+
+Note that the task implementation clearly distinguishes between "Configuration code" and "Execution code".
+
+The configuration code is executed during Gradle’s configuration phase. It builds up a model of the project in memory so that Gradle knows what it needs to do for a certain build invocation. Everything around the task actions, like the input or output properties, is part of this configuration code.
+
+The code inside the task action method is the execution code that does the actual work. It accesses the inputs and outputs to do some work if the task is part of the task graph and if it can’t be skipped because it’s UP-TO-DATE or it’s taken FROM-CACHE.
+
+Once a task implementation is complete, it can be used in a build setup. In our convention plugin, `my-convention-plugin`, we can register a new task that uses the new task implementation:
+
+`Kotlin``Groovy`
+
+app/build.gradle
+
+```
+tasks.register(PrintVersion, "printVersion") {
+
+    // Configuration code
+    version = project.version.toString()
+}
+```
+
+Inside the configuration block for the task, we can write configuration phase code which modifies the values of input and output properties of the task. The task action is not referred to here in any way.
+
+It is possible to write simple tasks like this one in a more compact way and directly in the build script without creating a separate class for the task.
+
+Let’s register another task and call it `printVersionDynamic`.
+
+This time, we do not define a type for the task, which means the task will be of the general type `DefaultTask`. This general type does not define any task actions, meaning it does not have methods annotated with `@TaskAction`. This type is useful for defining 'lifecycle tasks':
+
+`Kotlin``Groovy`
+
+app/build.gradle
+
+```
+tasks.register("printVersionDynamic") {
+
+}
+```
+
+However, the default task type can also be used to define tasks with custom actions dynamically, without additional classes. This is done by using the `doFirst{}` or `doLast{}` construct. Similar to defining a method and annotating this `@TaskAction`, this adds an action to a task.
+
+The methods are called `doFirst{}` and `doLast{}` because the task can have multiple actions. If the task already has an action defined, you can use this distinction to decide if your additional action should run before or after the existing actions:
+
+`Kotlin``Groovy`
+
+app/build.gradle
+
+```
+tasks.register("printVersionDynamic") {
+    doFirst {
+        // Task action = Execution code
+        // Run before exiting actions
+    }
+    doLast {
+        // Task action = Execution code
+        // Run after existing actions
+    }
+}
+```
+
+If you only have one action, which is the case here because we start with an empty task, we typically use the `doLast{}` method.
+
+In the task, we first declare the version we want to print as an input dynamically. Instead of declaring a property and annotating it with `@Input`, we use the general inputs properties that all tasks have. Then, we add the action code, a `println()` statement, inside the `doLast{}` method:
+
+`Kotlin``Groovy`
+
+app/build.gradle
+
+```
+tasks.register("printVersionDynamic") {
+    inputs.property("version", project.version)
+    doLast {
+        println("Version: ${inputs.properties["version"]}")
+    }
+}
+```
+
+We saw two alternative approaches to implementing a custom task in Gradle.
+
+The dynamic setup makes it more compact. However, it’s easy to mix configuration and execution time states when writing dynamic tasks. You can also see that 'inputs' are untyped in dynamic tasks, which can lead to issues. When you implement your custom task as a class, you can clearly define the inputs as properties with a dedicated type.
+
+Dynamic modification of task actions can provide value for tasks that are already registered, but which you need to modify for some reason.
+
+Let’s take the `compileJava` task as an example.
+
+Once the task is registered, you can’t remove it. You could, instead, clear its actions:
+
+`Kotlin``Groovy`
+
+app/build.gradle
+
+```
+tasks.compileJava {
+    // Clear existing actions
+    actions.clear()
+
+    // Add a new action
+    doLast {
+        println("Custom action: Compiling Java classes...")
+    }
+}
+```
+
+It’s also difficult, and in certain cases impossible, to remove certain task dependencies that have been set up already by the plugins you are using. You could, instead, modify its behavior:
+
+`Kotlin``Groovy`
+
+app/build.gradle
+
+```
+tasks.compileJava {
+    // Modify the task behavior
+    doLast {
+        def outputDir = file("$buildDir/compiledClasses")
+        outputDir.mkdirs()
+
+        def compiledFiles = sourceSets["main"].output.files
+        compiledFiles.each { compiledFile ->
+            def destinationFile = new File(outputDir, compiledFile.name)
+            compiledFile.copyTo(destinationFile)
+        }
+
+        println("Java compilation completed. Compiled classes copied to: ${outputDir.absolutePath}")
+    }
+}
+```
+
+[](https://docs.gradle.org/userguide/implementing_custom_tasks.html#understanding_inputs_and_outputs)[Understanding inputs and outputs](https://docs.gradle.org/userguide/implementing_custom_tasks.html#understanding_inputs_and_outputs)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Task inputs and outputs are important for:
+
+1. **Up-to-date checks** - Gradle’s incremental build feature helps your build avoid doing the same work more than once by looking at changes for task inputs and outputs.
+
+2. **Linking task inputs and outputs** - When outputs of one task are linked to the inputs of another, Gradle can automatically create task dependencies.
+
+3. **Using dependency configurations** - Task outputs can be used to tell Gradle that an artifact produced by a task should be added to a specific configuration.
+
+[](https://docs.gradle.org/userguide/implementing_custom_tasks.html#declaring_inputs_and_outputs)[Declaring inputs and outputs](https://docs.gradle.org/userguide/implementing_custom_tasks.html#declaring_inputs_and_outputs)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+You can configure the inputs and outputs of a task in two main ways:
+
+1. **Static Configuration:** Define inputs and outputs directly inside the task class. These inputs and outputs will always apply to the task whenever it is executed.
+
+2. **Dynamic Configuration:** Add inputs and outputs to a task dynamically, meaning you can customize the inputs and outputs for each execution of the task based on specific conditions or requirements. This approach allows for more flexibility and fine-grained control over the task’s behavior.
+
+`Kotlin``Groovy`
+
+```
+abstract class ConfigurableTask extends DefaultTask {
+
+    @Input
+    abstract Property<String> getInputProperty()
+
+    @OutputFile
+    abstract RegularFileProperty getOutputFile()
+
+    // Static Configuration: Inputs and Outputs defined in the task class
+    ConfigurableTask() {
+        group = 'custom'
+        description = 'A configurable task example'
+    }
+
+    @TaskAction
+    void executeTask() {
+        println "Executing task with input: ${inputProperty.get()} and output: ${outputFile.asFile.get()}"
+    }
+
+}
+
+// Dynamic Configuration: Adding inputs and outputs to a task instance
+tasks.register('dynamicTask', ConfigurableTask) {
+    // Set the input property dynamically
+    inputProperty = 'dynamic input value'
+
+    // Set the output file dynamically
+    outputFile = layout.buildDirectory.file('dynamicOutput.txt')
+}
+```
+
+[](https://docs.gradle.org/userguide/implementing_custom_tasks.html#creating_lazy_inputs_and_outputs)[Creating lazy inputs and outputs](https://docs.gradle.org/userguide/implementing_custom_tasks.html#creating_lazy_inputs_and_outputs)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Gradle has the concept of lazy configuration, which allows task inputs and outputs to be referenced before they’re actually set. This is done via a `Property` class type.
+
+`Kotlin``Groovy`
+
+```
+abstract class MyTask extends DefaultTask {
+    // Avoid Java Bean properties
+    @Input
+    String myEagerProperty = "default value"
+
+    // Use Gradle managed properties instead
+    @Input
+    abstract Property<String> getMyLazyProperty()
+
+    @TaskAction
+    void myAction() {
+        println("Use ${myLazyProperty.get()} and do NOT use $myEagerProperty")
+    }
+}
+```
+
+One advantage of this mechanism is that you can link the output file of one task to the input file of another, all before the filename has even been decided. The `Property` class also knows about which task it’s linked to, so using inputs and outputs in this way enables Gradle to automatically add the required task dependency.
+
+![Image 2: writing tasks 7](https://docs.gradle.org/current/userguide/img/writing-tasks-7.png)
+
+To ensure proper lazy configuration, you should avoid using Java Bean types. Let’s explore the common options for what Gradle lazy types can be declared as task inputs and outputs:
+
+| Lazy Gradle Type | Java Bean Type | Input | Output |
+| --- | --- | --- | --- |
+| `Property<String>` | `String` | X |  |
+| `RegularFileProperty` | `File` | X | X |
+| Iterable of files (`Property<Iterable<File>` e.g. `ConfigurableFileCollection`, `ConfigurableFileTree`) | Iterable of files (`Iterable<File>` e.g. `FileTree` or `FileCollection`) | X | X |
+| Map of files (`MapProperty<String, File>`) | Map of files (`Map<String, File>`) |  | X |
+| `DirectoryProperty` | `Directory` | X | X |
+| Iterable of directories (`Property<Iterable<File>`) | Iterable of directories (`Iterable<File>`) |  | X |
+| Map of directories (`MapProperty<String, File>`) | Map of directories (`Map<String, File>`) |  | X |
+
+Notes:
+
+* Strings are only supported for task inputs, not outputs. These are normally used for configuration options e.g. `sourceCompatibility` of the `compileJava` task type.
+
+* Task outputs can only be files or directories.
+
+* Instead of `String`, `Boolean`, `String` and other standard types, use `Property<T>`.
+
+* Instead of `List<T>`, use `ListProperty<T>`.
+
+* Instead of `Set<T>`, use `SetProperty<T>`.
+
+Avoid using `FileTree` when order matters — it has no guaranteed, stable file order and may cause unpredictable behavior.
+
+[](https://docs.gradle.org/userguide/implementing_custom_tasks.html#annotating_inputs_and_outputs)[Annotating inputs and outputs](https://docs.gradle.org/userguide/implementing_custom_tasks.html#annotating_inputs_and_outputs)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+A good practice is to create a task class for your custom task. The class encapsulates the task action logic, but should also declare any inputs and outputs the task expects. To do this, we use annotations.
+
+For task inputs we can use `@Input`, `@InputFile`, `@InputDirectory`, `@InputFiles`, `@Classpath`, and `@CompileClasspath`. For task outputs we have `@OutputFile`, `@OutputDirectory`, `@OutputFiles`, `@OutputDirectories`.
+
+Here are all available annotations in detail:
+
+| Annotation | Usage |
+| --- | --- |
+| `@Input` | Property is an input value for the task |
+| `@InputFile` | Property is an input file for the task |
+| `@InputFiles` | Property is one or more input files for the task |
+| `@InputDirectory` | Property is an input directory for the task |
+| `@Classpath` | Property is a one or more input files or directories that represent a Java classpath |
+| `@CompileClasspath` | Property is a one or more input files or directories that represent a Java compile classpath |
+| `@OutputFile` | Property is an output file for the task[[1](https://docs.gradle.org/userguide/implementing_custom_tasks.html#_footnotedef_1 "View footnote.")] |
+| `@OutputFiles` | Property is one or more output files for the task |
+| `@OutputDirectory` | Property is an output directory for the task |
+| `@OutputDirectories` | Property is one or more output directories for the task |
+| `@Destroys` | Property is one or more files or directories (coming from other tasks) that the task destroys (deletes/removes)[[2](https://docs.gradle.org/userguide/implementing_custom_tasks.html#_footnotedef_2 "View footnote.")] |
+| `@LocalState` | Property is a local state for a task |
+| `@Nested` | Property is a nested bean and should be checked for other annotations |
+| `@Console` | Property is not an input or an output and should not be taken into account for up-to-date checking |
+| `@ReplacedBy` | Property is used internally and should not to be taken into account for up-to-date checking |
+| `@SkipWhenEmpty` | Property is a file or directory and the task should be skipped when the value of the property is empty |
+| `@Incremental` | Property is a file or directory and changes to it can be queried with `@InputChanges.getFileChanges()` |
+| `@Optional` | Property is any type, its value does not have to be specified and validation checks are disabled |
+| `@PathSensitive` | Property is one or more files and only the given part of the file path is important |
+| `@IgnoreEmptyDirectories` | Used with `@InputFiles` or `@InputDirectory` to instruct Gradle to track only changes to the contents of directories and not differences in the directories themselves. |
+| `@NormalizeLineEndings` | Used with `@InputFiles`, `@InputDirectory` or `@Classpath` to instruct Gradle to normalize line endings when calculating up-to-date checks or build cache keys |
+
+Note that in Kotlin the annotations are prefixed with `get:`, so `@InputFile` becomes `@get:InputFile`.
+
+`Kotlin``Groovy`
+
+build.gradle
+
+```
+abstract class AllTypes extends DefaultTask {
+
+    //inputs
+    @Input
+    abstract Property<String> getInputString()
+    @InputFile
+    abstract RegularFileProperty getInputFile()
+    @InputDirectory
+    abstract DirectoryProperty getInputDirectory()
+    @InputFiles
+    abstract ConfigurableFileCollection getInputFileCollection()
+    @Classpath
+    abstract ConfigurableFileCollection getInputClasspath()
+
+    // outputs
+    @OutputFile
+    abstract RegularFileProperty getOutputFile()
+    @OutputDirectory
+    abstract DirectoryProperty getOutputDirectory()
+    @OutputFiles
+    abstract ConfigurableFileCollection getOutputFiles()
+    @OutputDirectories
+    abstract ConfigurableFileCollection getOutputDirectories()
+}
+```
+
+[](https://docs.gradle.org/userguide/implementing_custom_tasks.html#extending_existing_tasks)[Extending existing tasks](https://docs.gradle.org/userguide/implementing_custom_tasks.html#extending_existing_tasks)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Sometimes writing tasks from scratch is not what’s needed. Maybe you need a slightly modified version of an existing task, without altering or even having access to that task’s sources. For example, a `Copy` task with some additional inputs.
+
+In those cases you can write new tasks that extend the functionality of other tasks, either via inheritance (new task type extends existing one) or delegation (composition).
+
+Take a look at [this section of the manual](https://docs.gradle.org/current/userguide/build_cache.html#sec:using_annotations_to_enable_task_caching) (dealing with the cacheability of task inputs and outputs) for further information on what option there are for using delegation in the case of Gradle’s built-in tasks.
+
+* * *
+
+[1](https://docs.gradle.org/userguide/implementing_custom_tasks.html#_footnoteref_1). This notation is used to declare that a task may produce a specific output file. This annotation is typically applied to a property in a task class that represents the output file. When a task with an @OutputFile-annotated property is executed, Gradle will check if the specified output file exists. If the file does not exist, or if the task’s inputs (as defined by @Input annotations) changed, Gradle will consider the task out-of-date and will execute it to regenerate the output file.
+
+[2](https://docs.gradle.org/userguide/implementing_custom_tasks.html#_footnoteref_2). This notation is used to specify locations/files that a task will always delete, and these locations/files typically belong to other tasks. This annotation is useful for tasks that clean up after other tasks such as `clean`.

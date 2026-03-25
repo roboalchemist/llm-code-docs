@@ -1,0 +1,53 @@
+# Source: https://docs.statsig.com/access-management/projects.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.statsig.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Project Access Management
+
+<Info>
+  This guide applies only to our on-demand customers. If you are an organization who has set up SSO, this guide will not apply to you. Please see our [SSO Guides](/access-management/sso/overview) for more information about how to manage access permissions through SSO.
+</Info>
+
+In the [Basic Settings page](https://console.statsig.com/settings) you are able to configure who has access to your project. Each person invited to a project is assigned a Role that specifies their level of access.
+
+## Roles
+
+The different Project Roles available are:
+
+| Role      | Description                                                                                                                                                                                                                                                                                                                                                                                                      |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Read-Only | Users with this role only have access to read data on the Project. This includes reading gate and dynamic config configurations, experiment data, and metrics. Any actions users with these roles take that attempt to edit the configuration for the Project will fail.                                                                                                                                         |
+| Member    | Users with this role are able read data for a Project and are able to edit configurations within the Project. This includes being able to create and modify: Feature Gates, Dynamic Configs, Holdouts, Experiments+, etc.                                                                                                                                                                                        |
+| Admin     | Users with this role have the same access as `Member` but are additionally able to modify Project Access settings. This includes inviting new users to the Project and changing Roles for existing users of the Project.                                                                                                                                                                                         |
+| Owner     | Only the user that has created a project is given the Role of `Owner`. The Owner of a Project has the same access as `Admin` but is additionally able to delete the Project and configure automatic invitations for the Project. If you need to change the Owner of a project, the current owner can change it by going to Settings -> Project Members & Invites -> select the person and edit role to be Owner. |
+
+## Custom Roles
+
+<Info>
+  Custom roles are for Enterprise contracts only. Please reach out to our support team, your sales contact, or via our [Slack channel](https://statsig.com/community) if you need to enable Enterprise features as you use Statsig.
+</Info>
+
+Enterprise customers can customize roles used to assign permissions in Statsig. You can create new roles beyond Admin, Member and Read-Only and choose what permissions these roles have. Common use cases include creating a Metrics Admin role or a Warehouse Admin role (for Statsig Warehouse Native).
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/SnkiaVI10G4C2tMJ/images/access-management/projects/1b5a0601-6311-401e-87e3-5d1055a025e7.png?fit=max&auto=format&n=SnkiaVI10G4C2tMJ&q=85&s=885b5e9c98378b6113915bdc6f0c61bc" alt="Custom roles configuration interface" width="1409" height="1066" data-path="images/access-management/projects/1b5a0601-6311-401e-87e3-5d1055a025e7.png" />
+</Frame>
+
+## Automatic Project Invitations
+
+To simplify sending invitations for a Project, you can allow users creating a new Statsig account to automatically join your project if their work email domain matches the `Owner's`. For example, a Project Owner with an `@statsig.com` email can enable all new users signing up with an `@statsig.com` email to automatically join their project.
+
+To enable this feature:
+
+1. Go to your [Project Basic Settings page](https://console.statsig.com/settings).
+2. Click on the `Edit Project Settings` button.
+3. Toggle the checkbox labeled `Anyone who signs up with the same email domain can join` and choose the role that users will be assigned to.
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/SnkiaVI10G4C2tMJ/images/access-management/projects/128581866-b5856f1d-9ac6-462d-a57e-22320a093457.png?fit=max&auto=format&n=SnkiaVI10G4C2tMJ&q=85&s=dbe89d82752cd23304eca92be4df2c6f" alt="Project settings automatic invitation configuration" width="600" height="566" data-path="images/access-management/projects/128581866-b5856f1d-9ac6-462d-a57e-22320a093457.png" />
+</Frame>
+
+
+Built with [Mintlify](https://mintlify.com).

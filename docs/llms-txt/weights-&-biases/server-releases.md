@@ -1,0 +1,903 @@
+# Source: https://docs.wandb.ai/release-notes/server-releases.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.wandb.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Supported W&B Server releases
+
+> View release notes for W&B Server including new features, improvements, bug fixes, and upgrade instructions.
+
+This page includes release notes for supported releases of W\&B Server.
+
+* For releases that are no longer supported, see [Archived Server releases](/release-notes/server-releases-archived).
+* For more information about the W\&B Server release schedule and support, see [W\&B Server release policies](/release-notes/release-policies).
+
+<Note>For details, see [Supported Server releases](https://docs.wandb.ai/release-notes/server-releases) and [Archived Server releases](https://docs.wandb.ai/release-notes/server-releases-archived). A W\&B Server release is supported for 12 months from its initial release date. As a reminder, customers using [Self-Managed](/platform/hosting/hosting-options/self-managed/) are responsible to upgrade to a supported release in time to maintain support.</Note>
+
+<Update label="v0.78.2" description="March 10, 2026">
+  ## Fixes
+
+  Fixes a regression of a previously-addressed critical security fix that allows unauthorized access to an artifact. This regression is present in v0.78.0 and v0.78.1. Do not install or upgrade to these versions. Instead, install v0.78.2, which includes the fix.
+</Update>
+
+<Update label="v0.78.1" description="March 5, 2026">
+  <Warning>
+    This release is impacted by a critical security issue that allows unauthorized access to an artifact. Do not install or upgrade to this version. Instead, install [v0.78.2](#v0-78-2), which includes the fix.
+  </Warning>
+
+  ## Fixes
+
+  * Fixed a bug where forking from a parent run that logged no data could fail.
+  * Fixed a UI bug where the user's preference for light or dark mode was not used.
+  * Performance improvements and bug fixes for history reads from Parquet.
+</Update>
+
+<Update label="v0.78.0" description="March 3, 2026">
+  W\&B Server 0.78.0 strengthens security and access defaults, adds tools to compare experiments and control costs more efficiently, and more. For example:
+
+  * In **Models**, create multi-metric plots efficiently with regular expressions, pin important runs, compare experiments against a baseline, and streamline workspaces using enhanced workspace templates.
+  * **Registry** includes enhanced search, redesigned cards, clearer and more responsive lineage graphs, and more.
+  * In **Weave**, the **Trace Analytics** dashboard helps you spot bottlenecks and budget drivers from the Project Overview page. Saved views now support customized Traces, Evaluations, and Leaderboards. Weave Playground adds support for LoRA (Low-Rank Adaptation) and new models.
+  * **Inference** includes new models.
+
+  <Warning>
+    This release is impacted by a critical security issue that allows unauthorized access to an artifact. Do not install or upgrade to this version. Instead, install [v0.78.2](#v0-78-2), which includes the fix.
+  </Warning>
+
+  ## Support and end of life
+
+  * v0.66.0 and below have reached end of life.
+
+  Refer to [Release policies and processes](/release-notes/release-policies). For assistance or questions, contact [support](mailto:support@wandb.com).
+
+  ## Security
+
+  * A W\&B organization or deployment can now have a maximum of 100 Personal API Keys, 100 organization-level API keys per user, and 100 API keys per Service Account.
+  * On the Enterprise plan, when you [invite a member](/platform/hosting/iam/access-management/manage-organization#invite-a-user) to the organization, they are assigned the **Member** role by default. On other plans, the default role is **Admin**.
+  * When inviting a new user to a team who is not currently a member of the organization, their initial role is now **Member**.
+  * The initial role for a user [invited](/platform/hosting/iam/access-management/manage-organization#invite-a-user) to an organization or team now displays in the invitation table.
+
+  ## Features
+
+  * Use [pinned and baseline runs](/models/runs/compare-runs) to keep track of important runs and efficiently evaluate model experiments.
+
+    * Pin up to 6 runs to keep them visible in the workspace and at the top of the runs list. If you have a baseline run, you can pin up to 5 runs because the baseline is implicitly pinned.
+    * Specify a baseline run as your reference point for comparisons. The baseline run is always visible in the workspace and at the top of the runs list.
+
+    In the runs table, summary metric deltas show how each run compares to the baseline.
+
+    <Frame>
+        <img src="https://mintcdn.com/wb-21fd5541/V2qP2b-6uZEGq6wT/images/release-notes/v0-78-0/baseline-deltas-runs-table.png?fit=max&auto=format&n=V2qP2b-6uZEGq6wT&q=85&s=461929bb4772284e8b42fe30c4b4b4d0" alt="Summary metric deltas in runs table comparing to baseline" width="2196" height="693" data-path="images/release-notes/v0-78-0/baseline-deltas-runs-table.png" />
+    </Frame>
+
+    In line plots, the baseline appears with visually distinct styling to help with comparison.
+
+    <Frame>
+        <img src="https://mintcdn.com/wb-21fd5541/V2qP2b-6uZEGq6wT/images/release-notes/v0-78-0/baseline-line-plot-styling.png?fit=max&auto=format&n=V2qP2b-6uZEGq6wT&q=85&s=9793cb2816272907fc29a6fc6d324726" alt="Baseline run with distinct styling in line plot" width="836" height="424" data-path="images/release-notes/v0-78-0/baseline-line-plot-styling.png" />
+    </Frame>
+
+  * [Create panels with multiple metrics](/models/app/features/panels/line-plot#multi-metric-line-plot) in bulk to quickly organize your workspace and spot patterns across large metric sets. For example, you can overlay gradient metrics across model layers or position specific layers side-by-side. [Watch a video demonstration](https://www.loom.com/embed/ebbb1ab3f858473cb24420bf3abf7166).
+
+  * [Workspace templates](/models/app/features/cascade-settings#workspace-layout-options) have new settings. You can now configure your workspace template to hide empty sections, sort panels in a section alphabetically, or adjust how automatic panel sorting in a section works. See [Workspace layout options](/models/app/features/cascade-settings#workspace-layout-options).
+
+  * The **Sweeps** table now includes a column with the **Sweep ID**.
+
+  * Admins can now customize usage and spend alerts for your organization. View usage and spending and set up email notifications for storage, tracked hours, Weave, Inference, and Training in your organization settings under the new **Usage & Alerts** tab. See [Plan usage](/platform/app/settings-page/billing-settings#plan-usage).
+
+  ### Registry
+
+  * The Registry UI is faster to navigate and easier to scan.
+
+    * Improved type-ahead search, redesigned Registry and Collection cards, and new Registry icons help visually distinguish assets using smart ranking initially, with AI ranking coming soon.
+    * Registry icons are initially auto-generated and can be customized by Registry Admins at any time.
+
+    <Frame>
+        <img src="https://mintcdn.com/wb-21fd5541/V2qP2b-6uZEGq6wT/images/release-notes/v0-78-0/registry-icons-and-cards.gif?s=b6222d9bafa6dfd6a1b8f28a717b4be2" alt="Registry icons and redesigned cards" width="640" height="280" data-path="images/release-notes/v0-78-0/registry-icons-and-cards.gif" />
+    </Frame>
+
+    * In lineage graphs, when you hover over a node, it is highlighted and other nodes are dimmed.
+    * You can now click the name of a collection to quickly view its artifact versions.
+    * For convenience, you can now star a registry from its **Settings** page.
+
+  ### Inference
+
+  * The model `Moonshot AI Kimi K2.5` is now available. See [Model Catalog](/inference/models).
+
+  ### Weave
+
+  * The **Project Overview** page now includes a **Trace Analytics** dashboard with request counts, latency percentiles (P50/P95/P99), token usage by model, and cost breakdown. Spot which models are burning through your budget, or find the slow requests dragging down your P95. Click a time bucket to jump straight to the relevant traces, to quickly identify the cause of a latency spike.
+
+    <Frame>
+        <img src="https://mintcdn.com/wb-21fd5541/V2qP2b-6uZEGq6wT/images/release-notes/v0-78-0/weave-trace-analytics-dashboard.png?fit=max&auto=format&n=V2qP2b-6uZEGq6wT&q=85&s=81467f93a7a4e8b262d4f02d05cacc64" alt="Trace Analytics dashboard on Project Overview" width="1886" height="822" data-path="images/release-notes/v0-78-0/weave-trace-analytics-dashboard.png" />
+    </Frame>
+
+  * **Weave Playground** now supports **[LoRA](/inference/lora)**, so you can test your fine-tuned LoRA adapters efficiently. Click the **Try in Playground** button on a LoRA artifact page.
+
+  * Claude Opus 4.6 is now available in **Weave Playground**.
+
+  * You can now re-order columns in **Traces** and **Evaluations** tables.
+
+    * Drag and drop leaf columns directly in the table or move entire sections around from the column management menu.
+    * Persist your changes in a [saved view](/weave/guides/tools/saved-views). View a video demonstration.
+
+    <Frame><img src="https://mintcdn.com/wb-21fd5541/V2qP2b-6uZEGq6wT/images/release-notes/v0-78-0/weave-column-reorder-demo.gif?s=e12389295956839b2da2e4cf69b4578c" alt="Video: re-ordering columns in Traces and Evaluations tables" width="640" height="498" data-path="images/release-notes/v0-78-0/weave-column-reorder-demo.gif" /></Frame>
+
+  * You can now save a customized [Leaderboard](/weave/guides/evaluation/dynamic_leaderboards) in a saved view.
+
+  * You can now evaluate audio and image content in your traces using [monitors](/weave/guides/evaluation/monitors).
+
+  * Aggregated OpenTelemetry token counts now display in the trace detail sidebar for [OpenTelemetry traces](/weave/guides/tracking/otel#send-opentelemetry-traces-to-weave).
+
+  * For models like Gemini that provide thinking tokens, they now display in **Token Usage** in the Weave UI. Thinking tokens are internal tokens used by LLMs to process complex reasoning steps, calculations, and self-reflection before generating a final answer.
+
+  ## Fixes
+
+  * Fixed a bug where a hidden team's reports could be shared.
+  * Fixed a UI bug where copying text with newlines could truncate the selection.
+  * When the Sweeps agent claims a preempted run for re-execution, the training script now has up to 60 minutes to start up and initialize the run before the run is sent to a different agent, increased from 60 seconds.
+  * Fixed a race condition that could prevent a preempted Sweeps run from being enqueued for re-execution.
+  * Fixed a bug where a Sweep could fail if its name started with a digit.
+</Update>
+
+<Update label="v0.77.1" description="January 28, 2026">
+  **January 28, 2026**
+
+  ## Changes
+
+  * In **Self-Managed**, you can now add Weave panels to a W\&B workspace and reference W\&B Artifacts in a Weave trace. This functionality was previously available in **Dedicated Cloud** only. See [Use Weave with W\&B training runs](/weave/guides/tools/weave-in-workspaces).
+
+  ## Fixes
+
+  * Fixed a bug where a registry version query can return duplicates when there is an alias filter.
+</Update>
+
+<Update label="v0.77.0" description="January 21, 2026">
+  **January 21, 2026**
+
+  W\&B 0.77 introduces security and usability improvements designed to keep your organization safe and productive.
+
+  This release includes security enhancements to API keys, streamlined navigation with shared configuration between single-run and multi-run workspaces, new line plot shading options, and general availability of media panel sync and looping, plus key quality-of-life improvements and bug fixes.
+
+  ## Support and end of life
+
+  * W\&B Server v0.65 has reached end of life.
+
+  Refer to [Release policies and processes](/release-notes/release-policies). For assistance or questions, contact [support](mailto:support@wandb.com).
+
+  ## Upcoming changes
+
+  * Coming soon, the Registry UI will be faster to navigate and easier to scan.
+
+    * Improved type-ahead search, redesigned Registry and Collection cards, and new Registry icons help visually distinguish assets using smart ranking initially, with AI ranking coming soon.
+    * Registry icons will be auto-generated initially and can be customized by Registry Admins at any time.
+
+    These updates are expected in the next release. Contact [support](mailto:support@wandb.com) or your AISE to learn more.
+
+    <Frame>
+        <img src="https://mintcdn.com/wb-21fd5541/eWUncxuZMT5MDZ7E/images/release-notes/v0-77-0/registry-ui-improvements.gif?s=20b6b5d7a9f642d2c775c8c2c975d032" alt="Animation demonstrating Registry UI improvements" width="640" height="280" data-path="images/release-notes/v0-77-0/registry-ui-improvements.gif" />
+    </Frame>
+
+  ## Security
+
+  * We've rolled out updates to API keys across W\&B to improve security and key management for both personal and service accounts. These changes align with modern security best practices while giving teams more flexibility and safer automation.
+
+    **What's important to know**
+
+    * API keys are shown only once, and you must immediately copy and save after creation.
+    * Existing keys can't be copied anymore, and you must generate new keys.
+    * Rename or delete keys anytime.
+    * Service accounts now support multiple API keys.
+
+    See [Sign up and create an API key](/models/quickstart#sign-up-and-create-an-api-key).
+
+  ## Features
+
+  * **Updated workspace navigation.** We've aligned multi-run and single-run workspace views, so when you drill into a single run, you'll see the same layout and configuration of panels as you've configured for the multi-run view, including any custom charts, layouts, and settings. This helps you stay in context and avoid re-work around configuring your views. See this [video](https://www.loom.com/share/df232057aa2d4ee78026a4f9cf400499?sid=da3661eb-e8cd-4aa5-a666-db2c4091b02b) to understand the changes, including to the location of navigation buttons.
+    <Frame>
+        <img src="https://mintcdn.com/wb-21fd5541/eWUncxuZMT5MDZ7E/images/release-notes/v0-77-0/workspace-navigation-update.png?fit=max&auto=format&n=eWUncxuZMT5MDZ7E&q=85&s=9de9b08b71dd72c5c94b77e78c734254" alt="Screenshot showing updated workspace navigation" width="1720" height="630" data-path="images/release-notes/v0-77-0/workspace-navigation-update.png" />
+    </Frame>
+  * Section-level [video playback sync and looping](/models/app/features/panels/media#sync) are generally available. By default, videos in a section play in sync.
+  * In full-fidelity line plots for grouped runs, you can now configure the shaded area to show **Min/Max**, **Standard Deviation**, **Standard Error**, or **None**. See [Sampling](/models/app/features/panels/line-plot/sampling).
+  * In a parallel coordinate plot, you can now **Cmd+Click** (macOS) or **Ctrl+Click** (Linux / Windows) on a line to open the associated run details page in a new tab for further inspection. Not yet supported for grouped plots.
+    <Frame>
+        <img src="https://mintcdn.com/wb-21fd5541/eWUncxuZMT5MDZ7E/images/release-notes/v0-77-0/pcp-click-to-run-detail.gif?s=e283587f37c95e0ef822b8c4ba0f8bbf" alt="Animation demonstrating clicking a line in a parallel coordinate plot to open run details" width="800" height="473" data-path="images/release-notes/v0-77-0/pcp-click-to-run-detail.gif" />
+    </Frame>
+  * To make setting up an automation more efficient, the app now suggests metrics on which to base it.
+
+  ### Registry
+
+  * [Artifact lineage graphs](/models/artifacts/explore-and-traverse-an-artifact-graph) in Registry now support drag-and-drop repositioning and hiding of items.
+  * When viewing an artifact version, you can now create a new registry and link the artifact version to it in a single operation.
+
+  ### Weave
+
+  * Weave onboarding pages in the empty state in the W\&B App now include TypeScript example code alongside the Python example code.
+  * Weave call logs now support continuous scrolling by default. Previously, you could view only the most recent 10,000 lines of logs.
+  * Bar charts and radar charts in the [Evaluation](/weave/guides/core-types/evaluations) comparison page now support resizing and displaying in full-screen view, and when you hover over an area of the chart, a tooltip displays details.
+  * [Weave Playground](https://wandb.ai/site/playground/) includes new models:
+    * GPT 5.2
+    * Grok 4.1
+    * Opus 4.5
+  * You can now create and save a new prompt from [Weave Playground](https://wandb.ai/site/playground/).
+
+  ## Fixes
+
+  * Fixed a bug where a run's **Notes** text field was too narrow when editing. Now, the text box uses the same width when viewing and editing.
+  * Fixed a bug where the resolution of images in a PDF export of a W\&B Report was too low.
+  * Fixed a bug that could prevent line charts in a Report from updating in sync with run selector changes.
+  * Fixed a bug where outliers in a Report appeared for line plots without an option to hide them.
+  * Fixed a bug where line plots with multiple runsets in a Report could show incorrect data for runs that shared the same name across runsets. Runs are now uniquely keyed by runset and name.
+
+  ### Weave
+
+  * Fixed a bug where the Weave UI in Dedicated Cloud showed links to W\&B Inference, which is not available in Dedicated Cloud.
+  * Fixed a bug where bar charts in the [Evaluation](/weave/guides/core-types/evaluations) comparison page could be resized too narrowly if the details drawer is open.
+  * Fixed a UI bug where the cursor could disappear from the visible portion of the screen when typing in [Weave Playground](https://wandb.ai/site/playground/).
+  * Fixed a bug where you could not edit template variables when loading a call in [Weave Playground](https://wandb.ai/site/playground/).
+  * Fixed a bug where the operation selector was not being set when navigating from the [Evaluation](/weave/guides/core-types/evaluations) overview to the detailed view of a child trace. This made it difficult to tell which trace was selected, and caused some columns to appear empty.
+  * Fixed a bug where clicking **Delete** on an [Evaluation](/weave/guides/core-types/evaluations) comparison view page did not actually delete the comparison view.
+  * Fixed a bug where [Evaluation](/weave/guides/core-types/evaluations) results with a custom type could display a blank `CellValue` field instead of the custom type.
+  * Fixed a bug where left-pinned cells could appear transparent in **runs as rows** display mode.
+</Update>
+
+<Update label="v0.76.3" description="December 17, 2025">
+  **December 17, 2025**
+
+  ## Fixes
+
+  * Fixed a display bug that could occur on macOS when scroll bars are configured to always display. If a workspace has a [Query panel](/models/app/features/panels/query-panels), zooming out in the workspace could trigger a resize loop where the query panel table size oscillates several times a second.
+  * Fixed a bug where W\&B Inference erroneously appeared in the Dedicated Cloud UI. Inference is not available in Dedicated Cloud.
+</Update>
+
+<Update label="v0.76.2" description="December 10, 2025">
+  **December 10, 2025**
+
+  ## Fixes
+
+  * Replaced inaccurate usage cards in the **Organization Dashboard** page with a link to the **Usage** page. This was a UI bug only, with no impact on billing.
+  * Fixed a bug that could lead to a situation where Parquet reads were turned off but exports were turned on.
+  * Fixed a nil pointer dereference when manually upserting a run without any run config in the pending state.
+</Update>
+
+<Update label="v0.76.1" description="December 4, 2025">
+  **December 4, 2025**
+
+  ## Fixes
+
+  * Fixed a bug where importing a line plot from a workspace to a report could get stuck if extreme outliers were hidden in the plot.
+  * Fixed a bug that could prevent a table panel from resizing correctly if its height was reduced.
+  * Fixed a bug where mask overlays could overflow an image with a caption.
+  * Fixed a bug where a run note's edit box's size was too narrow for comfortable editing. Now the edit box uses the same dimensions as the text in display mode.
+  * Fixed a bug where clicking the **Service Accounts** tab in the Organization Dashboard could cause the page to crash.
+  * Fixed a caching bug where the wrong run's logs could display when viewing run logs and switching from one run to another.
+  * When a client cancels a GraphQL operation, it is now correctly reported as a `4xx` HTTP client error rather than a `5xx` HTTP server error.
+</Update>
+
+<Update label="v0.76.0" description="November 20, 2025">
+  **November 20, 2025**
+
+  W\&B v0.76 delivers a major boost to experiment insight and productivity, introducing smarter media tools, smoother workflows, and powerful new interfaces. Multi-video sync with autoplay and looping enables quick, side-by-side evaluation, while simplified workspace navigation keeps you moving effortlessly between views. Plus, the new LEET terminal UI brings fast, real-time run insights directly to your command line.
+
+  ## Support and end of life
+
+  * W\&B Server v0.63 has reached end of life.
+
+  ## Features
+
+  * **Multi-video Sync**: Play and control multiple video panels together for qualitative evaluation and comparison of training runs, analysis of model behavior across experiments, and evaluation of multimodal model checkpoints.
+
+    With synchronized video playback, you can play, pause, scrub, and adjust the speed of multiple videos in sync, enabling true side-by-side comparison for quick visual QA to evaluate style, timing, motion, and more.
+
+    <Frame>
+        <img src="https://mintcdn.com/wb-21fd5541/I1Okh5SWDsLDnGKe/images/release-notes/v0-76-0/video_playback_sync_demo.gif?s=a1ea83a76e27b6e9a826411c9840e41b" alt="Animation demonstrating video playback sync" width="1280" height="683" data-path="images/release-notes/v0-76-0/video_playback_sync_demo.gif" />
+    </Frame>
+
+    To try it, go to **Settings** → **Media.** Currently available in Dedicated Cloud only.
+
+  * **Autoplay and loop** media in video panels in a workspace or section. Currently available in Dedicated Cloud only.
+
+  * Now in Dedicated Cloud, updates to workspace navigation simplify moving between multi-run and single-run workspaces and ensuring view changes are saved between both ([quick demo video](https://www.loom.com/share/df232057aa2d4ee78026a4f9cf400499?sid=da3661eb-e8cd-4aa5-a666-db2c4091b02b)).
+
+    * Single-run and multi-run saved views now use shared configuration details to reduce repetitive setup tasks.
+    * Existing single-run saved views are removed, and you will need to recreate the ones you still need.
+
+    <Frame><img src="https://mintcdn.com/wb-21fd5541/I1Okh5SWDsLDnGKe/images/release-notes/v0-76-0/workspace-navigation-single-run-view.png?fit=max&auto=format&n=I1Okh5SWDsLDnGKe&q=85&s=0c594cf65ec70c76c7b9c20e761622f7" alt="Screenshot showing navigation updates for single-run views" width="1571" height="1034" data-path="images/release-notes/v0-76-0/workspace-navigation-single-run-view.png" /></Frame>
+
+    These updates are expected in W\&B Self-Managed in January 2026.
+
+  * You can now copy a run’s name or path from the run selector menu. This update also fixed a bug where a copied run name would include the run name twice.
+
+    <Frame><img src="https://mintcdn.com/wb-21fd5541/I1Okh5SWDsLDnGKe/images/release-notes/v0-76-0/copy_runs.gif?s=6deaa9828623129e7550186dc49efe35" alt="Screenshot demonstrating copying a run's name or path" width="1184" height="464" data-path="images/release-notes/v0-76-0/copy_runs.gif" /></Frame>
+
+  * [W\&B Lightweight Experiment Exploration Tool (LEET)](/models/ref/cli/wandb-beta/wandb-beta-leet) (Beta) is a fast terminal UI for observing your ML training runs, including stats, metrics, and system health. It reads and visualizes live log files to provide a fast, customizable, browser-free experience in real time.
+
+    LEET presents an interactive, three-pane dashboard that updates live as your run progresses.
+
+    <Frame>
+      <iframe src="https://www.loom.com/embed/ad07286ea6ae480b8f06e931bffa5a44" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style={{width: "100%", height: "300px"}} />
+    </Frame>
+
+    To try it, install [W\&B SDK version 0.23.0](/models/ref/python) or later.
+
+  * We’ve recently released [Workspaces and Reports SDK v0.20.0](/models/ref/wandb_workspaces) v0.20.0, which includes the ability to pin sections and columns programmatically. See [Install Workspaces And Reports API](/models/ref/wandb_workspaces#installation-and-setup).
+
+  ## Fixes
+
+  * Min and max values now display on grouped line charts to help with comparisons.
+  * Reports now truncate long media panel titles for cleaner presentation.
+  * [Semantic legends](/models/runs/color-code-runs#set-a-configuration-key) now allow editing the upper bounds of buckets.
+  * Fixed a bug when switching semantic colors from discrete to continuous values.
+  * Fixed a bug that could cause flickering when resizing charts in full-screen mode.
+  * Fixed a bug that could cause rendering issues when the y axis is set to `_step.`
+  * Fixed a bug that could prevent the media step slider from updating to show the latest incoming data if it is set to the maximum value.
+  * Fixed a bug where image smoothing settings were not always applied to image panels with smoothing turned on.
+  * Fixed a bug where media panels in grid view could take up too much vertical space, causing excessive scrolling.
+  * Fixed minor display issues when rendering and refreshing automations.
+  * Fixed minor UI bugs when linking artifacts, including scrolling and count rendering issues.
+  * Fixed a bug that could prevent non-ASCII characters from displaying in HTML table media panels.
+  * Updated the **Edit run name** action to make it more clear whether you are updating the run's display name for the workspace or the underlying run name across the project.
+</Update>
+
+<Update label="v0.75.2" description="November 5, 2025">
+  * Fixed a bug where a team service account's API key was not visible to team Admin users who were also organization Admins.
+  * Fixed a bug where the (min, max) range shown in a tooltip for a plot with multiple run groups could show the same values for all groups.
+  * Fixed a bug where Parquet files for deleted runs were not completely garbage collected and the error `delete parquet history does not currently support partial deletes` was logged repeatedly.
+</Update>
+
+<Update label="v0.75.0" description="October 28, 2025">
+  W\&B v0.75 enhances Registry with a new Restricted Viewer role, the ability to star registries, and programmatic Registry access control over SCIM. The new automation execution history view helps you to understand and debug your automations. Visualize config-driven effects with semantic coloring by config properties such as hyperparameters, view full-fidelity plots for system metrics, and more.
+
+  ## Support and end of life
+
+  * W\&B Server v0.61 has reached end of life.
+
+  Refer to [Release policies and processes](/release-notes/release-policies). For assistance or questions, contact [support](mailto:support@wandb.com).
+
+  ## Upcoming changes
+
+  In the next W\&B Server release, we'll roll out an update to workspace navigation that makes moving between multi-run and single-run workspaces easier—see this [preview video](https://www.loom.com/share/df232057aa2d4ee78026a4f9cf400499?sid=da3661eb-e8cd-4aa5-a666-db2c4091b02b).
+
+  Part of this change is included in Server v0.75: the left sidebar now indicates whether you are viewing the **Project** or a single **Run**. This upcoming navigation change coincides with a unification of single-run and multi-run saved views, so that changes to plots and layouts in one carry over to the other to save repetitive configuration. As part of this change, existing single-run saved views will be lost, and you will need to recreate the ones you still need.
+
+    <img src="https://mintcdn.com/wb-21fd5541/dUoBefDHk67yF5ud/images/release-notes/v0-75-0/navigation-sidebar-upcoming-update.png?fit=max&auto=format&n=dUoBefDHk67yF5ud&q=85&s=7452106f5f38647a976d545ee4726a43" alt="Upcoming navigation sidebar update" width="1571" height="1034" data-path="images/release-notes/v0-75-0/navigation-sidebar-upcoming-update.png" />
+
+  ## Security
+
+  * You can configure the [federated identity](/platform/hosting/iam/identity_federation) audience by setting the environment variable `FEDERATED_AUTH_AUDIENCES` to a comma-separated list of audiences. The audience specifies allowable recipients for the identity token.
+
+  ## Features
+
+  * **Registry access control updates:**
+    * **Programmatic registry access control:** [Registry roles](/models/registry/configure_registry#details-about-registry-roles) are now included in the SCIM schema. While [creating](/platform/hosting/iam/scim#create-user) or updating a user, you can configure their Registry roles, and Registry roles are returned when you [retrieve a user](/platform/hosting/iam/scim#get-user).
+    * **Restrict Registry access:** Where you don't want to grant full Registry access, you can now grant a new Registry role, [Restricted Viewer](/models/registry/configure_registry). This role provides read-only access to registry artifacts without the ability to create, update, or delete collections, automations, or other registry resources. This is useful for sensitive or regulated registry content.
+    * [**Expanded Registry access:**](https://wandb.ai/wandb_fc/product-announcements-fc/reports/Registry-for-W-B-Models-viewers-Faster-discovery-cleaner-handoffs--VmlldzoxNDc4MzM5Mg) Now, any user with the Models **Viewer** role is also a full Registry **Member**, so they can browse, compare, and use models and artifacts by default. A Models **Viewer** can be assigned a different Registry role, like **Restricted Viewer**, **Viewer**, or **Admin**. This unlocks full Registry value for everyone in your organization.
+
+  * **Starred registries:** To help you navigate Registry as you scale, you can now star registries. From the Registry landing page, hover over a registry's card, then click the star outline. From an individual registry page, click the star outline at the top of the page. Starred registries appear at the top of the Registry landing page in alphabetical order.
+
+    <img src="https://mintcdn.com/wb-21fd5541/dUoBefDHk67yF5ud/images/release-notes/v0-75-0/starred-registries.png?fit=max&auto=format&n=dUoBefDHk67yF5ud&q=85&s=d191c835aa238b9b4342d3b54a9cf4c9" alt="Starred registries" width="781" height="206" data-path="images/release-notes/v0-75-0/starred-registries.png" />
+
+  * **Automation execution history:** View execution history for your project or registry [Automations](/models/automations/automation-events) from the **Automation history** tab. All automation runs display in reverse chronological order, with status and key details at a glance. To help you understand and debug automations, a detailed view shows the execution's conditions, actions, and results.
+
+  * In the **Organization dashboard**, you can now invite multiple users to your organization at once by specifying a comma-separated list of email addresses, and you can optionally add the invited users to teams at the same time.
+
+  * **Semantic legend updates:**
+    * Semantic legends for runs now support coloring plots based on config values such as hyperparameters. Visualize config-driven effects by coloring runs based on a chosen hyperparameter like learning rate, batch size, or model family to visually spot config-driven effects.
+
+      <img src="https://mintcdn.com/wb-21fd5541/dUoBefDHk67yF5ud/images/release-notes/v0-75-0/semantic-legend-config-coloring.gif?s=206484208723c44a7357f380c23dabed" alt="Semantic legend config coloring" width="500" height="363" data-path="images/release-notes/v0-75-0/semantic-legend-config-coloring.gif" />
+
+    * You can now configure semantic legends when viewing another user's workspace.
+
+  * The new full-screen image browser simplifies inspection and comparison of logged images. Previously available only in **Dedicated Cloud**, the feature is now also available in **Self-Managed**.
+    * **True full-Screen view:** Inspect image details more easily with edge-to-edge full-screen viewing. No more cramped panels.
+    * **Step slider in full-screen view:** Move through steps efficiently with an embedded slider to see how outputs evolve.
+    * **Quickly move through runs or steps:** In full-screen view, use the keyboard **left / right arrow** keys to move through runs, and use **Cmd + left / right arrow** (macOS) or **Ctrl + left / right arrow** (Windows / Linux) to move through steps of the same image.
+
+  * **Full-fidelity rendering for system metrics:** Charts for system metrics, like GPU, CPU, or memory, have a new detailed rendering mode that preserves fine-grained signal for deep inspection and analysis.
+
+  * Run history export to Parquet has been improved. Now run history export is asynchronous by default in all deployments. Also, when exporting run history, if a run has not been logged in 7 or more days and after history about the run has been completely exported, history about the run is automatically dropped from MySQL.
+
+  ## Fixes
+
+  * You can now toggle the **Show original** line plot setting for all plots in the workspace or a section.
+  * Fixed a bug in Reports where pinning all columns in the run selector could break the report's layout.
+  * Fixed a bug where a pinned column could be expanded beyond the boundaries of the run selector.
+  * Fixed a bug where changing the run name while also editing the **Notes** field could revert the run name change.
+  * Fixed a bug where incorrect values could appear when plotting grouped runs with the X axis set to **Relative Wall Time**.
+  * Fixed a bug where group pagination controls were missing.
+  * Fixed a bug where a report could not be published if BYOB storage is configured with S3-compatible storage configured with a bucket subpath. This impacts CoreWeave AI Object Storage, Amazon S3 storage, and S3-compatible storage like MinIO.
+  * Fixed a bug that could prevent a system metrics chart from loading if smoothing is turned on.
+  * Fixed a bug that could prevent a chart with multiple Y axes from loading if smoothing is turned on.
+  * In full-fidelity mode, line plot tooltips now show min and max bounds.
+  * The hover highlight interaction has been improved for grouped run plots.
+  * Fixed a bug that could prevent a grouped plot from rendering if the X-axis name is a substring of the Y axis name.
+  * Fixed a bug that could cause hidden or deselected runs to appear as gray points instead of being hidden.
+  * Fixed a bug that could prevent a media panel from opening in full screen if you would need to scroll to view it.
+  * To help you visualize spikes in line plots with dense comparisons more clearly, the min and max shading in line plots has been improved.
+  * To efficiently recover from deep tweaks or experiments, you can now revert the X axis in the line plot editor.
+  * Fixed a bug where the access type for a core registry could be set incorrectly if the registry was created during artifact linking. This bug could cause membership management issues and prevent the registry from functioning.
+</Update>
+
+<Update label="v0.74.1" description="October 2, 2025">
+  * Fixed a bug that could prevent an organization admin from accessing the Organization Dashboard.
+  * Fixed a bug introduced in 0.73.0 that allowed deletion of previously exported Parquet files.
+  * Fixed a bug that could allow deleting an artifact file in Parquet after it has successfully committed.
+  * Fixed a performance regression introduced in v0.73 when querying system metrics from MySQL.
+  * Fixed a bug that could prevent editing of a project with no owner.
+  * Historical metric histograms no longer display in summary pages by default. Instead, details about each metric display in summary pages, and histograms are available as workspace panels.
+</Update>
+
+<Update label="v0.74.0" description="October 8, 2025">
+  W\&B v0.74 delivers SCIM API improvements for enterprise identity management, including automated group sync with Okta, streamlined user role configuration, and more. In Dedicated Cloud, a powerful new full-screen image browser helps you inspect and compare images within and between runs. Weave enhancements include in-Playground LLM judge evaluations, better visibility into multi-turn Thread tool calls, DSPy improvements, and a new integration with the Verifiers library for Reinforcement Learning workflows. W\&B Inference adds support for the [Z.AI](https://z.ai/) GLM v4.5 hybrid reasoning model.
+
+  ## Support and end of life
+
+  * W\&B Server v0.60 has reached end of life.
+
+  ## Features
+
+  * The SCIM API has been enhanced:
+    * Provisioning and deprovisioning operations are now more compatible with Okta.
+    * In Multi-tenant Cloud deployments, you can now configure the organization role and teams when you [create a user](/platform/hosting/iam/scim#create-user). This aligns with the endpoint's behavior in Dedicated Cloud and Self-Managed.
+    * In Dedicated Cloud and Self-Managed deployments, you can now update a user's username or email address. See [Update user email](/platform/hosting/iam/scim#update-user-email) and [Update user display name](/platform/hosting/iam/scim#update-user-display-name). Not applicable to Multi-tenant Cloud deployments.
+    * You can now [search and retrieve a user](/platform/hosting/iam/scim#get-user) by email and username.
+    * Okta groups are now synced automatically using [ETags](/platform/hosting/iam/scim#etag-support). For details about SCIM groups, see [Group resource](/platform/hosting/iam/scim#group-resource).
+  * When [exporting the list of users](/platform/hosting/monitoring-usage/org_dashboard#export-user-details) in your organization, the CSV file now includes columns for **Models seats** and **Weave access**.
+  * In **W\&B Dedicated Cloud**, the new full-screen image browser simplifies inspection and comparison of logged images.
+    * **True full-screen view.** Inspect image details more easily with edge-to-edge full-screen viewing. No more cramped panels.
+    * **Step slider in full-screen view.** Move through steps efficiently with an embedded slider to see how outputs evolve.
+    * **Quickly toggle between runs using the keyboard.** In full-screen view, use the keyboard **left / right arrow** keys to move between runs, and use **Cmd + left / right arrow** (macOS) or **Ctrl + left / right arrow** (Windows / Linux) to move between steps of the same image.
+
+  ### Weave
+
+  * From the **Evaluations** sidebar tab, you can now update prompt values and run LLM judge evaluations to test the changes. Try it out in the [Playground](/weave/guides/tools/playground).
+  * You can now integrate Weave into your Reinforcement Learning (RL) training workflows and [view the traces and evaluations](/weave/guides/tools/weave-in-workspaces) captured during training in the W\&B Workspace, together with run metrics panels.
+  * Weave now includes an integration with [Verifiers](https://verifiers.readthedocs.io/en/latest/), a library of modular components for creating Reinforcement Learning (RL) environments and training LLM agents. Environments built with Verifiers can serve as LLM evaluations, synthetic data pipelines, agent harnesses for OpenAI-compatible endpoints, and RL training. [Learn more](/weave/guides/integrations/verifiers).
+  * From the **Threads** sidebar tab, you can now view tool calls for a multi-turn Thread together with its message history.
+  * A Team's **Project** page now shows the number of Weave traces for each project together with data about the project's runs.
+  * The [DSPy integration](/weave/guides/integrations/dspy) has been improved. For details, see [`wandb/weave` #5184](https://github.com/wandb/weave/pull/5184).
+  * If your Weave code calls `wandb.init()`, it no longer needs to explicitly call `weave.init()`.
+  * New convenience method [`delete_all_object_versions`](/weave/reference/python-sdk/trace/weave_client).
+  * The output from an OpenAI streaming endpoint call now includes a new field, `time_to_first_token`, expressed in milliseconds.
+
+  ### Inference
+
+  * [W\&B Inference](/inference) adds support for the [Z.AI GLM](https://z.ai/blog/glm-4.5) hybrid reasoning model. v4.5 is supported.
+
+  ## Fixes
+
+  * Fixed display problems in bounding boxes with captions.
+  * When grouping runs in the Runs Table, you can now expand the `null` group to see the runs with null values for the grouping key.
+  * Increased running average smoothing parameter maximum to **1000**.
+  * Fixed a bug where clicking a run name could open an invalid URL if a runset included runs from multiple projects.
+  * Fixed text display issues in dark mode.
+  * Fixed a permission bug when viewing a public report that included Query Panels.
+  * Fixed a UI bug that could prevent code from being copied from a report.
+  * Fixed a bug in the order of min and max values in a line plot tooltip.
+  * Fixed a bug that could prevent a grouped plot from rendering if the X-axis key was a substring of the Y-axis key.
+</Update>
+
+<Update label="v0.73.1" description="September 10, 2025">
+  ## Fixes
+
+  * Fixed a bug introduced in v0.73.0, where resizing or reordering workspace panels was not always reflected in saved views.
+  * Fixed a bug in the Registry UI where paging through the list of registries could fail if an organization has hundreds of registries.
+  * Fixed a bug where bounding boxes did not always display for media that was logged with bounding boxes.
+  * Fixed a bug where export tasks could get stuck in a pending state and never execute.
+  * Fixed a bug where `wandb verify` could fail when downloading files with special characters in their names.
+  * Fixed a performance regression when fetching system events, especially when plotting a large number of system events in a chart. This regression was introduced in v0.73.0.
+</Update>
+
+<Update label="v0.73.0" description="September 10, 2025">
+  W\&B v0.73 marks a significant milestone in the migration to W\&B Registry from team-level Model Registry; most organizations will be migrated automatically during the upgrade. UI improvements include colorblind-safe run color palettes, continuous color options metric-based run coloring, and smoother panel reorganization. This release also provides service principal authentication for BYOB (Bring Your Own Bucket) setups with CoreWeave AI Object Storage, along with improved console log handling and additional enhancements.
+
+  ## Upcoming changes
+
+  * In an upcoming release, we will align multi-run and single-run workspace views, so when you drill into a single run, you'll see the same layout and configuration of panels as you've configured for the multi-run view, including any custom charts, layouts, and settings. The goal is help you stay in context and avoid re-work around configuring your views. However, this will remove the ability to customize unique single-run views, isolated from the rest of the workspace. Reach out to your W\&B team or [support](mailto:support@wandb.ai) for any questions about the migration.
+  * Over the next several releases, we will continue migrating existing team-level Model Registry to W\&B Registry. For details and a reminder about the timeline, see the [W\&B Registry GA announcement](#registry_ga_announcement) below.
+
+  ## Known issues
+
+  In v0.73.0, resizing or reordering workspace panels may not be reflected in saved views. This bug is fixed in v0.73.1. If you experience this issue, upgrade to v0.73.1, which includes the fix. If you can't upgrade, contact [support](mailto:support@wandb.ai) for a workaround.
+
+  ## Features
+
+  * <a id="registry_ga_announcement" aria-label="W&B Registry GA announcement" />We're migrating existing team-level Model Registry to W\&B Registry in stages over the next several releases. **No action is needed on your end; W\&B will automatically copy Model Registry assets for each team to a corresponding automatically-created team-level private registry.** Existing references to model collections in your old team-level Model Registry will still work.
+
+    1. Server v0.73 (this release) includes an opt-out environment variable that will migrate the team's Model Registry automatically during the upgrade. Migration takes between 5 and 30 minutes for most organizations. During the migration, linking artifacts to either the old Model Registry or the new Registry will fail with an error. **Artifact logging and retrieval will not be affected**.
+    2. In Server v0.74 (end of September), we will remove the opt-out flag and migration will happen during the upgrade.
+
+    We're optimizing for a seamless upgrade to a powerful new experience. Contact your W\&B account team or [support](mailto:support@wandb.ai) if you have any questions about the migration.
+  * Added a copy button to the [Run Logs console page](/models/app/console-logs) and improved paste behavior.
+  * W\&B now offers two new colorblind-safe color palettes for runs. Set these in the **Runs** section of the [Workspace settings](/models/app/features/cascade-settings/#workspace-settings).
+  * When [coloring runs by metrics or numeric configs](/models/runs/color-code-runs), you can now choose from five new continuous color palettes.
+  * During a [W\&B run](/models/runs), [CoreWeave Mission Control](https://www.coreweave.com/mission-control) monitors your compute infrastructure. This integration is now available on Dedicated Cloud.
+  * BYOB with CoreWeave AI Object Storage now supports authentication with service principals in Multi-tenant Cloud, Dedicated Cloud, and Self-Managed deployments. This helps you to avoid using static credentials in your deployment. Learn more at [Bring your own bucket (BYOB)](/platform/hosting/data-security/secure-storage-connector).
+
+  ### Weave
+
+  * You can now group sessions or conversations across multiple traces with [Weave Threads](/weave/guides/tracking/threads).
+  * The **Trace view**'s new [Graph view](/weave/guides/tracking/trace-tree#graph-view) visualizes the call tree structure as a graph.
+  * The **Trace view** includes new specialized views for [documents](/weave/guides/core-types/media#documents) retrieved with ChromaDB and Langchain improves handling of schemas such as chats. In **Trace view**, click a document to open its detailed view in a drawer to the right. Learn more at [Navigate the trace view](/weave/guides/tracking/trace-tree).
+  * You can now attach [HTML](/weave/guides/core-types/media#html) to a trace as a media type.
+  * From the **Assets** tab, you can now create and edit prompts. Click **Assets**, then in the navigation, click **Prompts**. Click **New prompt** or click the name of an existing prompt to view its details. From there, click the pencil icon to edit and republish the prompt.
+
+  ## Fixes
+
+  * Improved the smoothness and accuracy of [dragging and dropping panels](/models/app/features/panels/#move-a-panel) within a section and between sections.
+  * In [full screen panel view](/models/app/features/panels/#view-a-panel-in-full-screen-mode), the **Esc** key now returns you to the workspace.
+  * Fixed a bug that could cause a panel in a workspace to zoom unexpectedly after returning from full screen.
+  * In [plot settings](/models/app/features/panels/line-plot/#edit-line-plot-settings), chart and legend settings have been consolidated to a single tab.
+  * Fixed a bug where panel legends were ordered incorrectly after polling updates.
+  * Improved the formatting of panels with long exponential Y-axis values and those with a large number of significant digits.
+  * [Overlays for panels](/models/app/features/panels/media/#overlays) without matching runs are now hidden.
+  * Fixed a bug where clicking on a run's tag in a workspace's **Runs** tab or **Runs** list did not filter by the tag.
+  * Fixed a bug that could allow a user to bypass the max runs limit.
+  * When you toggle runs on or off, W\&B no longer reloads the media for other runs in the panel.
+  * Fixed a bug that could cause a report to crash when expanding or collapsing a section after pressing **Tab**.
+  * Fixed a bug on mobile displays where scrolling could cause logged videos to automatically play in full screen.
+
+  ## Other changes
+
+  * The custom grid layout was removed from W\&B Workspaces with Server release v0.73.0. Previously, custom grid layout allowed you to adjust the size of individual panels within a section. Now, resizing a panel in a workspace section resizes all panels in that section, whether you configure the workspace using the [W\&B App](/models/app/features/panels/#manage-a-sections-panels) or the [Workspace API](/models/ref/wandb_workspaces/workspaces#class-sectionlayoutsettings). Custom grid layout remains available in [W\&B Reports](/models/reports) and the [Reports API](/models/ref/wandb_workspaces/reports).
+</Update>
+
+<Update label="v0.72.0" description="August 6, 2025">
+  W\&B 0.72 includes fixes for line plots and media panels, as well as improvements to Weave integrations for OpenTelemetry and Google Agent Development Kit.
+
+  ## Support and end of life
+
+  * W\&B Server v0.58 has reached end of life.
+
+  ## Upcoming changes
+
+  * We’re optimizing our rendering behavior in the workspace to provide faster loading in workspaces with many panels, as well as more responsive and accurate drag-and-drop of panels in workspaces. **As part of this, we plan to remove the “Custom grid” layout in workspace sections in the next (0.73) release.** Custom grids will remain available in Reports. Reach out to your W\&B team or [support](mailto:support@wandb.ai) for any questions or concerns.
+  * In an upcoming release, we will align multi-run and single-run workspace views, so when you drill into a single run, you’ll see the same layout and configuration of panels as you’ve configured for the multi-run view, including any custom charts, layouts, and settings. The goal is help you stay in context and avoid re-work around configuring your views. However, this will remove the ability to customize unique single-run views, isolated from the rest of the workspace. Reach out to your W\&B team or [support](mailto:support@wandb.ai) for any questions about the migration.
+  * Over the next several releases, we will continue migrating existing team-level Model Registry to W\&B Registry.
+
+  ## Fixes
+
+  * Reverted the line plot behavior change announced in 0.71.0. Line plots with only 1 point for every line will convert to bar charts even if settings are changed.
+  * Fixed a bug that could cause bounding boxes to render outside the media in a media panel instead of overlaying the media.
+  * Fixed a bug where the Google Agent Development Kit integration did not support Weave Threads.
+  * Fixed a bug where the **Attributes** column was missing from Weave traces submitted through OpenTelemetry.
+</Update>
+
+<Update label="v0.71.0" description="July 29, 2025">
+  With W\&B Server 0.71, Registry is turned on by default for all organizations. For more details about the staged Registry rollout, see the relevant note in Features. This release brings several improvements and fixes to workspaces: Keep media panels with a common step slider in sync, navigate through full-screen panels more efficiently, and find more details about a run’s total duration and time actively running in the Run Overview page. Automations have been enhanced, and you can now trigger an automation based on an artifact version’s tags. {/* more */}
+
+  ## Support and end of life
+
+  * W\&B Server v0.57 has reached end of life.
+
+  ## Upcoming changes
+
+  * We’re optimizing our rendering behavior in the workspace to provide faster loading in workspaces with many panels, as well as more responsive and accurate drag-and-drop of panels in workspaces. **As part of this, we plan to remove the “Custom grid” layout in workspace sections in the next (0.72) release.** Custom grids will remain available in Reports. Reach out to your W\&B team or [support](mailto:support@wandb.ai) for any questions or concerns.
+  * In an upcoming release, we will align multi-run and single-run workspace views, so when you drill into a single run, you’ll see the same layout and configuration of panels as you’ve configured for the multi-run view, including any custom charts, layouts, and settings. The goal is help you stay in context and avoid re-work around configuring your views. However, this will remove the ability to customize unique single-run views, isolated from the rest of the workspace. Reach out to your W\&B team or [support](mailto:support@wandb.ai) for any questions about the migration.
+  * Over the next several releases, we will continue migrating existing team-level Model Registry to W\&B Registry. For details and a reminder about the timeline, see the [W\&B Registry GA announcement](#registry_ga_announcement) below.
+
+  ## Features
+
+  * <a id="registry_ga_announcement" aria-label="W&B Registry GA announcement" /> We're migrating existing team-level Model Registry to W\&B Registry in stages over the next several releases. **No action is needed on your end; W\&B will automatically copy Model Registry assets for each team to a corresponding automatically-created team-level private registry.**  Existing references to model collections in your old team-level Model Registry will still work.
+
+    1. In Server v0.71 (this release), Registry is now turned on by default for all organizations.
+    2. Server v0.73 (August) will include an opt-out environment variable that will execute this migration automatically during the upgrade. Migration takes between 5 and 30 minutes for most organizations. During the migration, linking artifacts to either the old team’s Model Registry or the new Registry will fail with an error. **Artifact logging and retrieval will not be affected**.
+    3. In Server v0.74 (September), we will remove this flag and migration will happen during the upgrade.
+
+    We’re optimizing for a seamless, minimally-inconveniencing upgrade to a powerful new experience. Reach out to your W\&B for any questions about the migration.
+  * An automation can now be triggered by adding a tag to an artifact. See [Artifact events](/models/automations/automation-events/#artifact-events).
+  * When viewing a panel in full screen, view the next or previous panel in the section using the **Previous** and **Next** buttons or the left and right arrow keys.
+  * When viewing a media panel in full screen, move the step slider with **CMD + left or right arrow** keys (macOS) or **Ctrl + left or right arrow** keys (Windows / Linux).
+  * You can now synchronize media panels with the same step slider key so that when you advance the step slider in one media panel, the step sliders for other panels also advance. Open the workspace or section settings, go to **Media**, click the **Sync** tab, then turn on **Sync slider by key (Step)**.
+  * The Run Comparer includes a new **Meta** section with metadata about the run, such as the command, Python version, and GPU type.
+
+  ### Weave
+
+  * The **Trace plots** tool allows you to explore, visualize, and debug trace-level metrics like latency, cost, or tokens over time using custom interactive charts. [Learn more](/weave/guides/tracking/trace-plots).
+  * **Online Evaluations**: Monitor your traces in Dedicated Cloud by attaching Monitors to your incoming traces. Monitors run in the background as LLM judges and score a subset of calls that you specify. Use Monitors to track production behavior, catch regressions, collect real-world production data, and more. [Learn more](/weave/guides/tracking/trace-plots).
+  * Added [AutoGen](/weave/guides/integrations/autogen) and [LlamaIndex](/weave/guides/integrations/llamaindex) integrations. *AutoGen* is a framework from Microsoft for building AI agents and applications, with components for conversational AI, core multi-agent functionalities, and integrations with external services, and tools for no-code agent prototyping. *LlamaIndex* is a powerful framework for building LLM-driven applications like RAG systems, chatbots, and agents.
+  * Improved Integrations with OpenAI, LangChain, ChromaDB, Verdict, including:
+    * Document view for Langchain and ChromaDB.
+    * Chat view rendering for LangChain.
+    * A new export format for OpenAI.
+  * Added new hosted open weight models for [W\&B Inference](https://wandb.ai/inference):
+    * `Qwen3-235B-A22B-Thinking-2507`
+    * `Qwen/Qwen3-Coder-480B-A35B-Instruct`
+    * `Qwen/Qwen3-235B-A22B-Instruct-2507`
+    * `Kimi-K2-Instruct`
+  * Added support to the TypeScript SDK for creating and publishing prompts. [Learn more](/weave/guides/core-types/prompts).
+  * The new `Content` class allows you safely to upload data of any MIME type, with automatic Base-64 encoding, automatic metadata extraction, and more.
+
+  ## Fixes
+
+  * A run’s **Overview** page now displays the run’s uptime and tracked hours. A run’s *uptime* represents the run’s total duration from start to finish, while the run’s *tracked hours* represent the duration of time that the run was actively running experiments or computations.
+  * When you zoom into a line plot, then open it in full screen mode, the full screen plot now correctly maintains the same zoomed-in view.
+  * Fixed a bug where updating the number of groups shown in a plot did not update the plot.
+  * When **Show Original** is selected in line plots, the original unsmoothed line is now dimmer than the smoothed line.
+  * Full fidelity line plots now show the number of runs in the plot.
+  * Fixed a bug that could unexpectedly convert a plot that is explicitly set to a line plot to a bar plot when only one value is present per run.
+  * X-axis expressions now support nested config fields.
+  * The **Registry** link has been removed from the sidebar on the **Artifacts** page. To access Registry, click **Home**, then click **Registry**.
+  * Line plots in a workspace or section can optionally show the bin range in the tooltip when you hover over a point. Open the workspace or section settings, click **Line plots**, go to the **Display preferences** tab, then turn on **Show bin range in tooltip**.
+  * Fixed a bug when clicking a link in the **Registry** artifact lineage page would update the URL and parameters in the browser but not update the page contents. The UI now updates when the URL changes.
+  * Fixed a bug in **Registry** where collection tables were sorted as strings instead of floats.
+  * Fixed a bug in **Registry** where the lineage info drawer would always show the latest version for the selected artifact, even when a different version was selected.
+  * Fixed a mobile display bug where the panel search bar was missing.
+  * When you sort the run selector by any attribute with coloring by key on, the top runs in the plot are now colored correctly.
+  * When using grouped runs, parallel coordinate plots now correctly show the group name.
+  * **State** is now correctly shown by default in the Sweeps table.
+  * Sweeps now show correctly when grouping by custom display names.
+  * Fixed wrapping of long names for Sweeps and Reports.
+  * Improved the copy and paste behavior for console logs. Line numbers are no longer copied, and timestamps now appear inline instead of on a new line.
+</Update>
+
+<Update label="v0.70.1" description="July 9, 2025">
+  ## Fixes
+
+  * Fixed a bug where the status of crashed runs was not updated to **Crashed** after an upgrade.
+  * Fixed a bug where the **State** column was missing from the **Sweeps** Runs table.
+  * Fixed a Weave bug where the browser for a Registry collection could display files from an incorrect version because the cached path for an artifact manifest file depended only on the artifact's version index.
+  * Fixed a Weave bug that could prevent JSON with valid syntax from being parsed correctly.
+
+  These bugs were introduced in v0.70.0.
+</Update>
+
+<Update label="v0.70.0" description="July 7, 2025">
+  W\&B Server v0.70 includes features, enhancements, and performance improvements to help you gain and share insights more efficiently. For example:
+
+  ## Support and end of life
+
+  * W\&B Server v0.56 has reached end of life.
+
+  ## Upcoming changes
+
+  * In an upcoming release, we will align multi-run and single-run workspace views, so when you drill into a single run, you’ll see the same layout and configuration of panels as you’ve configured for the multi-run view, including any custom charts, layouts, and settings. The goal is help you stay in context and avoid re-work around configuring your views. However, this will remove the ability to customize unique single-run views, isolated from the rest of the workspace. Reach out to your W\&B team or [support](mailto:support@wandb.ai) for any questions about the migration.
+  * Over the next several releases, we will migrate existing team-level Model Registry W\&B Registry. For details and a timeline, see the [W\&B Registry GA announcement](#registry_ga_announcement) below.
+
+  ## Features
+
+  * <a id="registry_ga_announcement" aria-label="W&B Registry GA announcement" /> **W\&B Registry is now generally available**! Registry offers improved asset diversity, access management, and scalability, making it a true hub for collaborating on AI initiatives across large, diverse teams.
+    * Registry can be turned on today with the `ENABLE_REGISTRY_UI` environment variable or by contacting your W\&B support team.
+    * We’re migrating existing team-level Model Registry assets to W\&B Registry in stages over the next several releases. **No action is needed on your end. W\&B will automatically copy Model Registry assets for each team to a corresponding automatically-created team-level private registry.**  Existing references to model collections in your old team-level Model Registry will still work.
+
+      1. In Server v0.71, Registry will be on by default for all organizations.
+      2. Server v0.73 (August) will contain an opt-out environment variable that will execute this migration automatically during the upgrade. Migration takes between 5 and 30 minutes for most organizations. During the migration, linking artifacts to either the old team’s Model Registry or the new Registry will fail with an error. \*\***Artifact logging and retrieval** **will not be affected**.
+      3. In Server v0.74 (September), we will remove this flag and migration will happen during the upgrade.
+
+      We’re optimizing for a seamless, minimally-inconveniencing upgrade to a powerful new experience. Reach out to your W\&B team or [support](mailto:support@wandb.ai) for any questions about the migration.
+  * **CoreWeave infrastructure monitoring**: During a [W\&B Run](/models/runs) on CoreWeave infrastructure, [CoreWeave Mission Control](https://www.coreweave.com/mission-control) monitors your compute infrastructure, allowing for observation of infrastructure alerts such as GPU failures, thermal violations, and more. If an error occurs, CoreWeave sends that information to W\&B. W\&B populates infrastructure information onto your run's plots in your project's workspace. CoreWeave attempts to resolve some issues automatically, and W\&B surfaces that information in the run's page. W\&B provides a link to the SLURM job's Grafana dashboard for system-level details about the run. Learn more at [Visualize CoreWeave infrastructure alerts](/models/app/features/panels/line-plot).
+  * **CoreWeave external file tracking**: You can now track external files stored in CoreWeave AI Object Storage with reference artifacts. Learn more at [Track external files](/models/artifacts/track-external-files).
+  * **CoreWeave BYOB support**: Dedicated Cloud and Self-Managed now support CoreWeave AI Object Storage for Instance and Team level BYOB. CoreWeave Team level BYOB on Multi-tenant Cloud is coming soon. Learn more at [Bring your own bucket (BYOB)](/platform/hosting/data-security/secure-storage-connector).
+  * **Bulk media settings**: Just like line plots, you can now manage all your media panel settings at once—across an entire workspace or a specific section. Easily configure media panels to display by epoch or arrange them into customized grid patterns without adjusting each panel separately. Individual panel settings override the global settings.
+  * Use **Workspace templates** to quickly create workspaces using the same settings as an existing workspace. Currently, a workspace template can define custom line plot settings. Learn more at [Workspace templates](/models/track/workspaces/#workspace-templates).
+  * With **incremental table logging**, you can log batches of rows to a table during a machine learning experiment. This is ideal for monitoring long-running jobs or when working with large tables that would be inefficient to log during the run for updates. Within the UI, the table is updated with new rows as they are logged, so you can view the latest data without having to wait for the entire run to finish. You can step through the increments to view the table at different points in time. Learn more at [Log tables](/models/track/log/log-tables/#adding-data-incrementally).
+
+  ## Fixes
+
+  * Added a banner at the top of the log viewer if only a subset of lines is shown.
+  * Fixed a bug in the running average calculation at data boundaries.
+  * Clarified x-axis unit labels for relative time plots.
+  * Fixed a bug in plots with smoothing where the original line would still display when **Show Original** was unchecked.
+  * Fixed a bug that could unexpectedly convert a grouped full-fidelity line plot with expressions into a bar chart.
+  * Hovering on histograms now shows the x-axis step in a tooltip.
+  * Fixed a bug where data exported from a panel could sort incorrectly. Exported data now sorts numerically.
+  * In the run selector, you can now filter and sort on **updated at**.
+  * Added right-handed system setting option to point cloud panels.
+  * Trailing slashes are now stripped from full screen panel URLs.
+  * Fixed a bug where a deleted saved view could reappear if you refreshed immediately after deleting it.
+  * Fixed a display bug that caused a flash when reloading a page with dark mode turned on.
+  * Fixed a bug that caused incorrect slider steps when using non-monotonic values.
+  * Added a convenience checkbox and notification when moving runs between groups.
+  * Fixed a bug where using the wildcard character `*` for the metric name in `wandb.define_metric()` would fail to match metrics with `/` in the name.
+  * W\&B now no longer deletes source artifacts when collection portfolios are garbage collected.
+  * Fixed a bug that incorrectly allowed typing input in **Allowed types** and **Registry visibility** selection boxes.
+  * Collection cards now display the full artifact type name instead of truncating it.
+  * Fixed a bug where clicking **Action History** in a Registry collection would incorrectly load the **Versions** view.
+  * Registry now supports adding `job` type artifacts.
+  * Lineage tiles are now wider, displaying more text before truncating.
+  * Clarified text in project-level automation setup to refer to "artifacts" instead of the Registry terminology "collections".
+  * The artifact browser now searches all artifacts when searching the artifact browser by name, rather than the previous limit of the first 500 artifacts.
+</Update>
+
+<Update label="v0.69.1" description="June 10, 2025">
+  ## Fixes
+
+  * You can now set the initial run state when creating a run with `Run.create()` by setting the `state` parameter to `pending` or `running`.
+  * Fixed a bug where clicking **Action History** incorrectly loaded the **Version** view.
+  * Improved memory performance of the Parquet store service.
+</Update>
+
+<Update label="v0.69.0" description="May 28, 2025">
+  ## Support and end of life
+
+  * W\&B Server v0.56 has reached end of life.
+
+  ## Upgrading
+
+  To [upgrade](/platform/hosting/server-upgrade-process/#update-with-helm) to W\&B v0.69.x, you must use v0.31.4+ of the `operator-wandb` Helm chart. Otherwise, after the upgrade, the `weave-cache-clear` container can fail to start. Ensure that your deployment uses these values:
+
+  ```yaml  theme={null}
+  chart:
+    url: https://charts.wandb.ai
+    name: operator-wandb
+    version: 0.31.4
+  ```
+
+  If you have questions or are experiencing issues with an upgrade, contact [support](mailto:support@wandb.com).
+
+  ## Features
+
+  * You can now set a custom display name for a run directly in the workspace. Customized run names show up in all plots and tables but only in your workspace, with no impact on your teammates’ views. This provides a clearer and cleaner view in your workspace, with no more labels like `*...v6-final-restart...`\* in every legend and plot.
+  * When filtering or grouping runs, colors can sometimes overlap and become indistinct. The run selector’s new **Randomize Colors** option reassigns random colors from the default palette to your current run selection or groups, helping to make the colors more distinguishable.
+  * In line plots, you can now use **Cmd+Click** on a line to open a single-run view in a new tab.
+  * Video media panels now provide more playback controls to play, pause, seek, view full screen, and adjust playback speed.
+  * Settings for all types of media panels have been reorganized and improved.
+  * You can now customize the point and background colors for point cloud panels.
+  * Team-level and organization-level service accounts can now interact with Registry.
+  * Improved Exponentially-weighted Moving Average (EMA) smoothing provides more reliable [smoothed lines](/models/app/features/panels/line-plot/smoothing) when operating on complete, unbinned data. In most cases, smoothing is handled at the back end for improved performance. This feature was in private preview in v0.68.x.
+
+  ### Private preview
+
+  Private preview features are available by invitation only. To request enrollment in a private preview, contact [support](mailto:support@wandb.com) or your AISE.
+
+  * You can now color all of your runs based on a secondary metric, such as loss or custom efficiency metrics. This creates a clear gradient color scale across your runs in all plots, so you can spot patterns faster. [Watch a video demo](https://www.loom.com/share/c6ed484899324de991ef7147fd73785d).
+  * [Personal workspace templates](/models/track/workspaces/#workspace-templates){/* TODO change to a relref after workspace templates docs merge */} allow you to save core line plot settings and automatically reapply them in new views. These settings include x-axis key, smoothing algorithm, smoothing factor, max number of lines, whether to use the run selector’s grouping, and which aggregation to apply.
+
+  ### Weave
+
+  * [Saved views](/weave/guides/tools/saved-views) simplify team collaboration and allow you to persist filter and column settings.
+  * PDFs and generic files are now supported.
+  * The new [`EvaluationLogger` API](/weave/guides/evaluation/evaluation_logger) provides flexible imperative-style evaluation logging.
+  * You can now import [human annotations](/weave/guides/tracking/feedback#add-human-annotations) into Weave datasets
+  * [Playground](/weave/guides/tools/playground) now supports saved configurations and prompts.
+  * Decorators are now supported in TypeScript.
+  * Added support for [tracing generator functions](/weave/guides/tracking/tracing#trace-sync-%26-async-generator-functions).
+  * The new [`dataset.add_rows`](/weave/reference/python-sdk/#method-add-rows) helper improves the efficiency of appending to an existing dataset.
+  * To help you understand your usage, trace and object sizes are now shown through the UI.
+
+  ## Performance
+
+  * With [`wandb` SDK](/models/quickstart/#install-the-wandb-library-and-log-in) v0.19.11, artifacts now download 3-5x faster on average. For example, an artifact that previously downloaded at around 100 MB/sec may now download at 450 MB/sec or faster. Actual download speeds vary based on factors such as your network and storage infrastructure.
+  * Improved caching on [Project](/models/track/project-page) and [User Settings](/platform/app/settings-page/user-settings) pages.
+
+  ## Fixes
+
+  * Improved the startup process for the `weave-cache-clear` container to ensure compatibility with Python virtual environments.
+  * Added options for denser display of console logs.
+  * Workspace loading screens are now more informative.
+  * When adding a panel from a workspace to a report, the current project’s reports are now shown first in the destination report list.
+  * Fixed many cases where y-axes would over-round to a degree that caused duplicate values to display.
+  * Fixed confusing behavior when entering invalid smoothing parameters.
+  * Removed the **Partial Media** warning from media panels. This does not change the behavior of the media panels.
+  * When adding a [run filter based on tags](/models/runs/filter-runs/#filter-runs-with-tags), the filter is now selected by default, as when filtering by other fields.
+  * Removed the green bell icon that could appear on active runs in the run selector.
+  * Removed the System page for individual runs.
+  * The project description field now respects new lines.
+  * Fixed URLs for legacy model registry collections.
+  * Fixed a bug where the Netron viewer did not expand to fill all available space on the page.
+  * When you click **Delete** on a project, the project name now displays in the confirmation modal.
+</Update>
+
+<Update label="v0.68.2" description="May 7, 2025">
+  ## Fixes
+
+  * You can now set the initial run state when creating a run with `Run.create()` by setting the `state` parameter to `pending` or `running`.
+  * Fixed a bug where clicking **Action History** incorrectly loaded the **Version** view.
+  * Improved memory performance of the Parquet store service.
+</Update>
+
+<Update label="v0.68.1" description="May 2, 2025">
+  ## Fixes
+
+  * Fixed a bug introduced in v0.68.0 that could prevent media from loading in media panels.
+</Update>
+
+<Update label="v0.68.0" description="April 29, 2025">
+  <Note>
+    v0.68.0 introduced a bug, fixed in [v0.68.1](#0_68_1), that could prevent media from loading in media panels. To avoid this bug, install or upgrade to a patch that contains the fix. If you need assistance, contact [support](mailto:support@wandb.com).
+  </Note>
+
+  ## Features
+
+  * Registry admins can define and assign [*protected aliases*](/models/registry/model_registry/access_controls/#add-protected-aliases) to represent key stages of your development pipeline. A protected alias can be assigned only by a registry admin. W\&B blocks other users from adding or removing protected aliases from versions in a registry using the API or UI.
+  * You can now filter console logs based on a run's `x_label` value. During [distributed training](/models/track/log/distributed-training/#track-all-processes-to-a-single-run), this optional parameter tracks the node that logged the run.
+  * You can now move runs between `Groups`, one by one or in bulk. Also, you can now create new `Groups` after the initial logging time.
+  * Line plots now support **synchronized zooming** mode, where zooming to a given range on one plot automatically zooms into the same range on all other line plots with a common x-axis. Turn this on in the [workspace display settings for line plots](/models/app/features/panels/line-plot/#all-line-plots-in-a-workspace).
+  * Line plots now support formatting custom metrics as timestamps. This is useful when synchronizing or uploading runs from a different system.
+  * You can now slide through [media panels](/models/app/features/panels/media) using non-`_step` fields such as `epoch` or `train/global_step` (or anything else).
+  * In Tables and plots in [Query Panels](/models/app/features/panels/query-panels) that use `runs` or `runs.history` expressions, a step slider allows you to step through the progress on your metrics, text, or media through the course of your runs. The slider supports stepping through non-`_step` metrics.
+  * You can now customize [bar chart](/models/app/features/panels/bar-plot) labels using a font size control.
+
+  ### Private preview
+
+  Private preview features are available by invitation only. To request enrollment in a private preview, contact [support](mailto:support@wandb.com) or your AISE.
+
+  * **Personal workspace templates** allow you to save your workspace setup so it is automatically applied to your new [projects](/models/track/project-page). Initially, you can configure certain line plot settings such as the default X axis metric, smoothing algorithm, and smoothing factor.
+  * **Improved Exponentially-weighted Moving Average (EMA) smoothing** provides more reliable [smoothed lines](/models/app/features/panels/line-plot/smoothing) when operating on complete, unbinned data. In most cases, smoothing is handled at the back end for improved performance.
+
+  ### Weave
+
+  * Chat with fine-tuned models from within your W\&B instance. [Playground](/weave/guides/tools/playground) is now supported in Dedicated Cloud. Playground is a chat interface for comparing different LLMs on historical traces. Admins can add API keys to different model providers or hook up [custom hosted LLM providers](/weave/guides/tools/playground/#add-a-custom-provider) so your team can interact with them from within Weave.
+  * Open Telemetry Support. Now you can log traces via OpenTelemetry (OTel). See [OpenTelemetry tracing](/weave/guides/tracking/otel?utm_source=beamer\&utm_medium=sidebar\&utm_campaign=OpenTelemetry-support-in-Weave\&utm_content=ctalink).
+  * Weave [tracing](/weave/guides/tracking) has new framework integrations: CrewAI, OpenAI's Agent SDK, DSPy 2.x and Google's genai Python SDK.
+  * Playground supports new [OpenAI models](/weave/guides/tools/playground/#openai): GPT‑4.1, GPT‑4.1 mini, and GPT‑4.1 nano.
+  * Build labeled datasets directly from traces, with your annotations automatically converted into dataset columns. See [Dataset creation from traces](/weave/guides/core-types/datasets/#create-edit-and-delete-a-dataset-in-the-ui).
+
+  ## Security
+
+  * Registry admins can now designate a [service account](/platform/hosting/iam/service-accounts) in a registry as either a Registry Admin or a Member. Previously, the service account's role was always Registry Admin. See [Registry service account configuration](/models/registry/configure_registry).
+
+  ## Performance
+
+  * Improved the performance of many workspace interactions, particularly in large workspaces. For example, expanding sections and using the run selector are significantly more responsive.
+  * Improved Fork and Rewind Performance.
+
+    [Forking](/models/runs/forking) a run creates a new run that uses the same configuration as an existing run. Changes to the forked run do not the parent run, and vice versa. A pointer is maintained between the forked run and the parent. [Rewinding](/models/runs/rewind) a run lets you log new data from that point in time without losing the existing data.
+
+    In projects with many nested forks, forking new runs is now much more efficient due to improvements in caching.
+
+  ## Fixes
+
+  * Fixed a bug that could prevent an organization service account from being added to new teams.
+  * Fixed a bug that could cause hover marks to be missing for grouped lines.
+  * Fixed a bug that could include invalid project names in the **Import** dropdown of a Report panel.
+  * Fixed a display bug in the alignment of filters in the run selector.
+  * Fixed a page crash when adding a timestamp **Within Last** filter
+  * Fixed a bug that could prevent the X-axis from being set to **Wall Time** in global line plot settings.
+  * Fixed a bug that could prevent image captions from appearing when they are logged to a Table.
+  * Fixed a bug that could prevent sparse metrics from showing up in panels.
+  * In **Run Overview** pages, the **Description** field is now named **Notes**.
+</Update>
+
+<Update label="v0.67.0" description="March 28, 2025">
+  ## Features
+
+  * In Reports, you can now give a run a custom display name per panel grid. This allows you to replace the run’s (often long and opaque) training-time name with one that is more meaningful to your audience. The report updates the name in all panel grids, helping you to explain your hard-won experimental insights to your colleagues in a concise and readable way. The original run name remain intact in the project, so doing this won’t disrupt your collaborators.
+  * When you expand a panel in the workspace, it now opens in full screen mode with more space. In this view, line plots now render with more granular detail, using up 10,000 bins. The run selector appear next to the panel, letting you easily toggle, group, or filter runs in context.
+  * From any panel, you can now copy a unique URL that links directly to that panel's full screen view. This makes it even easier to share a link to dig into interesting or pathological patterns in your plots.
+  * Run Comparer is a powerful tool you can use to compare the configurations and key metrics of important runs alongside their loss curves. Run Comparer has been updated:
+    * Faster to add a Run Comparer panel, as an expanded option in **Add Panels**.
+    * By default, a Run Comparer panel takes up more space, so you can see the values right away.
+    * Improved readability and legibility of a Run Comparer panel. You can use new controls to quickly change row and column sizes so you can read long or nested values.
+    * You can copy any value in the panel to your clipboard with a single click.
+    * You can search keys with regular expressions to quickly find exactly the subset of metrics you want to compare across. Your search history is saved to help you iterate efficiently between views.
+  * Segmentation mask controls have been updated:
+    * You can now toggle each mask type on or off in bulk, or toggle all masks or all images on or off.
+    * You can now change each class’s assigned color, helping to avoid confusion if multiple classes use the same color.
+  * When you open a media panel in full screen mode, you can now use the left or right arrows on your keyboard to step through the images, *without* first clicking on the step slider.
+  * Media panels now color run names, matching the run selector. This makes it easier to associate a run’s media values with related metrics and plots.
+  * In the run selector, you can now filter by whether a run has certain media key or not.
+  * You can now move runs between groups in the W\&B App UI, and you can create new groups after the run is logged.
+  * Automations can now be edited in the UI
+  * An automation can now notify a Slack channel for artifact events. When creating an automation, select “Slack notification” for the Action type.
+  * Registry now supports global search by default, allowing you to search across all registries by registry name, collection name, alias, or tag.
+  * In Tables and Query panels that use the `runs` expression, you can use the new Runs History step slider and drop-down controls to view a table of metrics at each step of a run.
+  * Playground in W\&B Weave supports new models: OpenAI's `gpt-4.5-preview` and Deepseek's `deepseek-chat` and `deepseek-reasoner`.
+  * Weave tracing has two new agent framework integrations: CrewAI and OpenAI’s Agent SDK.
+  * In the Weave UI, you can now build Datasets from traces. [Learn more](/weave/guides/core-types/datasets#create-edit-and-delete-a-dataset-in-the-ui)
+  * The Weave Python SDK now provides a way to filter the inputs and outputs of your Weave data to ensure sensitive data does not leave your network perimeter. You can configure to redact sensitive data. Learn more: /weave/guides/tracking/redact-pii/
+  * To streamline your experience, the System tab in the individual run workspace view will be removed in an upcoming release. View full information about system metrics in the System section of the workspace. For questions, contact [support@wandb.com](mailto:support@wandb.com).
+
+  ## Security
+
+  * `golang crypto` has been upgraded to v0.36.0.
+  * `golang oauth2` has been upgraded to v0.28.0.
+  * In Weave, `pyarrow` is now pinned to v17.0.0.
+
+  ## Performance
+
+  * Frontend updates significantly reduce workspace reload times by storing essential data in the browser cache across visits. The update optimizes loading of saved views, metric names, the run selector, run counts, W\&B’s configuration details, and the recomputation of workspace views.
+  * Registry overview pages now load significantly faster.
+  * Improved the performance of selecting metrics for the X, Y, or Z values in a scatter plot in a workspace with thousands of runs or hundreds of metrics.
+  * Performance improvements to Weave evaluation logging.
+
+  ## Fixes
+
+  * Fixed a bug in Reports where following a link to a section in the report would not open to that section.
+  * Improved the behavior of how Gaussian smoothing handles index reflection, matching SciPy's default "reflect" mode.
+  * A Report comment link sent via email now opens directly to the comment.
+  * Fixed a bug that could crash a workspace if a sweep takes longer than 2 billion compute seconds by changing the variable type for sweep compute seconds to `int64` rather than `int32`.
+  * Fixed display bugs that could occur when a report included multiple run sets.
+  * Fixed a bug where panels Quick Added to an alphabetically sorted section were sorted incorrectly.
+  * Fixed a bug that generated malformed user invitation links.
+</Update>

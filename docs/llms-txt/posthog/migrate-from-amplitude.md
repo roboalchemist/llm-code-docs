@@ -1,0 +1,246 @@
+# Source: https://posthog.com/docs/migrate/migrate-from-amplitude.md
+
+# Migrate from Amplitude to PostHog - Docs
+
+> Prior to starting a historical data migration, ensure you do the following:
+>
+> 1.  Create a project on our [US](https://us.posthog.com/signup) or [EU](https://eu.posthog.com/signup) Cloud.
+> 2.  Sign up to a paid product analytics plan on [the billing page](https://us.posthog.com/organization/billing) (historic imports are free but this unlocks the necessary features).
+> 3.  Set the `historical_migration` option to `true` when capturing events in the migration. This is automated if you are running a [managed migration](/docs/migrate/managed-migrations.md).
+
+> **✨ Use our managed migration instead:** We recently added a new managed migration for Amplitude. It automatically exports data from Amplitude, transforms it into PostHog's event schema, and imports it into your PostHog project. Get started with it in [managed migrations in-app](https://app.posthog.com/managed_migrations) or learn more in the [managed migrations docs](/docs/migrate/managed-migrations.md).
+
+Migrating from Amplitude is a two step process:
+
+1.  Export your data from Amplitude using the organization settings export, [Amplitude Export API](https://amplitude.com/docs/apis/analytics/export), or the S3 export.
+
+2.  [Import data into PostHog](/docs/migrate.md) using PostHog's [Python SDK](/docs/libraries/python.md) or [`batch` API](/docs/api/capture.md) with the `historical_migration` option set to `true`. Other libraries don't support historical migrations yet.
+
+> Want us to take care of the migration for you? Our [forward-deployed engineers](/services.md) can get you up and running in super quick time.
+
+## Exporting data from Amplitude
+
+There are three ways to export data from Amplitude.
+
+### 1\. Organization settings export
+
+The simplest way is to go to your project in your organization settings and click the **Export Data** button.
+
+### 2\. Export API
+
+To export data using Amplitude's Export API, start by getting your API and secret key for your project from your organization settings.
+
+You can then use these in a request to get the data like this:
+
+PostHog AI
+
+### Terminal
+
+```bash
+curl --location --request GET 'https://amplitude.com/api/2/export?start=<starttime>&end=<endtime>' \
+-u '{api_key}:{secret_key}'
+```
+
+### Python
+
+```python
+import requests
+from requests.auth import HTTPBasicAuth
+amplitude_api_key = '<api_key>'
+amplitude_secret_key = '<secret_key>'
+start_time = '20240706T00'
+end_time = '20240708T23'
+url = f'https://amplitude.com/api/2/export?start={start_time}&end={end_time}'
+response = requests.get(url, auth=HTTPBasicAuth(amplitude_api_key, amplitude_secret_key))
+if response.status_code == 200:
+print(response)
+if response.headers.get('Content-Type') == 'application/zip':
+with open('data.zip', 'wb') as f:
+f.write(response.content)
+print('Data successfully downloaded and saved as data.zip')
+else:
+print('Unexpected content type:', response.headers.get('Content-Type'))
+elif response.status_code == 404:
+print('No data available for the requested time range.')
+else:
+print(f'Failed to retrieve data. Status code: {response.status_code}')
+```
+
+### 3\. S3 export
+
+If your data exceeds Amplitude's export size limitation, you can use [their S3 export](https://amplitude.com/docs/data/destination-catalog/amazon-s3).
+
+## Importing Amplitude data into PostHog
+
+Amplitude exports data in a zipped archive of JSON files. To get this data into PostHog, you need to:
+
+1.  Unzip and read the data
+2.  Convert the events from Amplitude's schema to PostHog's
+3.  Capture the events into PostHog using the `historical_migration` option
+4.  Alias device IDs to user IDs
+
+Steps 1, 3, and 4 are relatively straightforward, but step 2 requires more explanation.
+
+### Converting Amplitude events
+
+Although Amplitude events have a similar structure, you need to convert them to PostHog's schema. Many events and properties have different keys. For example, autocaptured events and properties in PostHog often start with `$`.
+
+You can see Amplitude's event structure in their [Export API documentation](https://www.docs.developers.amplitude.com/analytics/apis/export-api/#response-schema) and PostHog's autocapture event structure in our [autocapture docs](/docs/product-analytics/autocapture.md#autocaptured-events).
+
+Some conversions needed include:
+
+-   Changing event names like `[Amplitude] Page Viewed` to `$pageview`
+-   Changing event property keys like `[Amplitude] Page Location` to `$current_url`
+-   Translating `EMPTY` values in `user_properties` to `null`
+-   Changing `event_time` to an ISO 8601 formatted `timestamp`
+-   Using `$set` and `$set_once` for person properties
+
+Converting the data ensures that it matches the data PostHog captures and can be integrated in analysis.
+
+### Example Amplitude migration script
+
+Below is a script that gets Amplitude data from the export folder, unzips it, converts the data to PostHog's schema, and then captures it in PostHog. It gives you a start, but likely needs to be modified to fit your infrastructure and data structure.
+
+Python
+
+PostHog AI
+
+```python
+from posthog import Posthog
+from datetime import datetime
+import json
+import os
+import gzip
+# PostHog Python Client
+posthog = Posthog(
+<ph_project_token>,
+host='https://us.i.posthog.com',
+debug=True,
+historical_migration=True
+)
+# Convert and capture Amplitude data
+def capture_entry(entry):
+distinct_id = entry.get("user_id") or entry.get("device_id")
+event_name = entry["event_type"]
+if event_name == "session_start":
+return
+if event_name == "[Amplitude] Page Viewed":
+event_name = "$pageview"
+if event_name in ["[Amplitude] Element Clicked", "[Amplitude] Element Changed"]:
+event_name = "$autocapture"
+timestamp = datetime.strptime(entry.get("event_time"), "%Y-%m-%d %H:%M:%S.%f")
+device_type = entry.get("device_type")
+if device_type == "Windows" or device_type == "Linux":
+device_type = "Desktop"
+elif device_type == "iOS" or device_type == "Android":
+device_type = "Mobile"
+else:
+device_type = None
+payload = {
+"event": event_name,
+"distinct_id": distinct_id,
+"properties": {
+"$os": entry.get("device_type"),
+"$browser": entry.get("os_name"),
+"$browser_version": int(entry.get("os_version")),
+"$device_type": device_type,
+"$current_url": entry.get("event_properties").get("[Amplitude] Page URL"),
+"$host": entry.get("event_properties").get("[Amplitude] Page Domain"),
+"$pathname": entry.get("event_properties").get("[Amplitude] Page Path"),
+"$viewport_height": entry.get("event_properties").get("[Amplitude] Viewport Height"),
+"$viewport_width": entry.get("event_properties").get("[Amplitude] Viewport Width"),
+"$referrer": entry.get("event_properties").get("referrer"),
+"$referring_domain": entry.get("event_properties").get("referring_domain"),
+"$device_id": entry.get("device_id"),
+"$ip": entry.get("ip_address"),
+"$geoip_city_name": entry.get("city"),
+"$geoip_subdivision_1_name": entry.get("region"),
+"$geoip_country_name": entry.get("country"),
+"$set_once": {
+"$initial_referrer": None if entry.get("user_properties").get("initial_referrer") == "EMPTY" else entry.get("user_properties").get("initial_referrer"),
+"$initial_referring_domain": None if entry.get("user_properties").get("initial_referring_domain") == "EMPTY" else entry.get("user_properties").get("initial_referring_domain"),
+"$initial_utm_source": None if entry.get("user_properties").get("initial_utm_source") == "EMPTY" else entry.get("user_properties").get("initial_utm_source"),
+"$initial_utm_medium": None if entry.get("user_properties").get("initial_utm_medium") == "EMPTY" else entry.get("user_properties").get("initial_utm_medium"),
+"$initial_utm_campaign": None if entry.get("user_properties").get("initial_utm_campaign") == "EMPTY" else entry.get("user_properties").get("initial_utm_campaign"),
+"$initial_utm_content": None if entry.get("user_properties").get("initial_utm_content") == "EMPTY" else entry.get("user_properties").get("initial_utm_content"),
+},
+"$set": {
+"$os": entry.get("device_type"),
+"$browser": entry.get("os_name"),
+"$device_type": device_type,
+"$current_url": entry.get("event_properties").get("[Amplitude] Page URL"),
+"$pathname": entry.get("event_properties").get("[Amplitude] Page Path"),
+"$browser_version": entry.get("os_version"),
+"$referrer": entry.get("event_properties").get("referrer"),
+"$referring_domain": entry.get("event_properties").get("referring_domain"),
+"$geoip_city_name": entry.get("city"),
+"$geoip_subdivision_1_name": entry.get("region"),
+"$geoip_country_name": entry.get("country"),
+}
+},
+"timestamp": timestamp
+}
+posthog.capture(
+event=payload["event"],
+distinct_id=payload["distinct_id"],
+properties=payload["properties"],
+timestamp=payload["timestamp"],
+)
+# Get Amplitude data from folder, unzip it, and use the capture function
+def get_entries_from_folder_and_capture(folder_name):
+count = 0
+for filename in os.listdir(folder_name):
+if filename.endswith('.json.gz'):
+file_path = os.path.join(folder_name, filename)
+with gzip.open(file_path, 'rt', encoding='utf-8') as f:
+for line in f:
+entry = json.loads(line)
+capture_entry(entry)
+count += 1
+if count >= 6:
+break
+folder_name = '609539'
+get_entries_from_folder_and_capture(folder_name)
+```
+
+This script may need modification depending on the structure of your Amplitude data, but it gives you a start.
+
+> **Why am I seeing "analytics-python queue is full"?** The default queue size for ingesting is 10,000. If you are importing more than 10,000 events, call `posthog.flush()` every 5000 messages to block the thread until the queue empties out.
+
+> **Why are my event and DAU count lower in PostHog than Amplitude?** PostHog blocks bot traffic by default, while Amplitude doesn't. You can see a full list of the bots PostHog blocks [in our docs](/docs/product-analytics/troubleshooting.md#does-posthog-block-bots-by-default).
+
+### Aliasing device IDs to user IDs
+
+In addition to capturing the events, we want to combine anonymous and identified users. For Amplitude, events rely on the device ID before identification and the user ID after:
+
+| Event | User ID | Device ID |
+| --- | --- | --- |
+| Application installed | null | 551dc114-7604-430c-a42f-cf81a3059d2b |
+| Login | 123 | 551dc114-7604-430c-a42f-cf81a3059d2b |
+| Purchase | 123 | 551dc114-7604-430c-a42f-cf81a3059d2b |
+
+We want to attribute "Application installed" to the user with ID 123, so we need to also call [alias](/docs/product-analytics/identify.md#alias-assigning-multiple-distinct-ids-to-the-same-user) with both the device ID and user ID:
+
+Python
+
+PostHog AI
+
+```python
+posthog = Posthog(
+'<ph_project_token>',
+host='https://us.i.posthog.com',
+debug=True,
+historical_migration=True
+)
+posthog.alias(previous_id=device_id, distinct_id=user_id)
+```
+
+Since you only need to do this once per user, ideally you'd store a record (e.g. a SQL table) of which users you'd already sent to PostHog, so that you don't end up sending the same events multiple times.
+
+### Community questions
+
+Ask a question
+
+### Was this page useful?
+
+HelpfulCould be better

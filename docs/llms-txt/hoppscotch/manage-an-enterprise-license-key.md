@@ -1,0 +1,52 @@
+# Source: https://docs.hoppscotch.io/guides/articles/manage-an-enterprise-license-key.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.hoppscotch.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Managing your Enterprise License Key
+
+> Learn how to manage your Hoppscotch Enterprise Edition license key.
+
+This guide provides step-by-step instructions for managing your Hoppscotch Enterprise Edition license key. If you plan to self-host the Hoppscotch Enterprise Edition, you must obtain a License Key.
+
+## Creating an account
+
+To initiate the process, you need to create an account on the Hoppscotch Enterprise Dashboard.
+
+1. Visit [enterprise.hoppscotch.com](https://enterprise.hoppscotch.com) and provide your email.
+2. A magic link will be sent to your email address.
+3. Click on the magic link to log in, and you will be redirected to a screen to input your organization's information.
+
+Continue by clicking "Next" and enter information about the organization
+
+Continue by clicking "Next" and enter the personal information of the individual responsible for the purchase on behalf of the organization.
+
+To proceed with the purchase, review and accept the end user license agreement.
+
+## Booking a demo
+
+After agreeing to the license terms, you can schedule a demo with our team. Click the "Book a Demo" button.
+
+## Making the purchase
+
+While you can directly purchase by clicking the "Subscribe" button, we recommend scheduling a call with us for personalized assistance.
+
+1. Click the "Subscribe" button.
+2. Enter the number of seats required for the license.
+3. Click the **Create** button to proceed to checkout and complete the payment.
+
+Upon successful payment, your License Key will be available on the dashboard. Copy it and paste it into the `.env` file in your project's root directory. You can now start utilizing Hoppscotch Enterprise Edition.
+
+## Updating your license
+
+With a valid license, you can manage it to update the seat count or generate a new license under the same account through the enterprise dashboard.
+
+## Offline license verification
+
+<Note>If you require offline license verification, you can request an offline license key by contacting us at [support@hoppscotch.io](mailto:support@hoppscotch.io).</Note>
+
+For more information on self-hosting Hoppscotch Enterprise Edition, consult the guide on [Self-Hosting Hoppscotch Enterprise Edition](/documentation/self-host/enterprise-edition/getting-started).
+
+
+Built with [Mintlify](https://mintlify.com).

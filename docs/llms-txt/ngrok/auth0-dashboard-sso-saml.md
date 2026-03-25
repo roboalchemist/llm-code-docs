@@ -1,0 +1,63 @@
+# Source: https://ngrok.com/docs/integrations/dashboard-sso/auth0-dashboard-sso-saml.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Configure Auth0 Single Sign-On with SAML
+
+> Configure single sign-on (SSO) for your ngrok dashboard using Auth0 as the Identity Provider.
+
+This guide walks you through configuring the ngrok dashboard to use Auth0 as an identity provider and enable single sign-on (SSO) with SAML for your ngrok account.
+It does not cover configuring an ngrok endpoint to allow your application users to log in using Auth0.
+
+## What you'll need
+
+* Admin access to create new applications in Auth0.
+* Admin access to edit your ngrok account settings.
+* An [ngrok Enterprise account](https://ngrok.com/pricing).
+
+## 1. Create an Application in Auth0
+
+* From the **Applications** menu, click **Create Application**.
+* Name your application, select the application type of Native, and click **Create**.
+* Select your application and choose the **Addons** tab.
+* Turn SAML2 support on.
+* In the popup window on the **Usage** tab, download the Identity Provider Metadata from the provided link.
+
+## 2. Configure SSO for your ngrok account
+
+* Log into your ngrok dashboard and navigate to **Settings > Account**.
+* Click **+ New Identity Provider** to add a new SAML identity provider.
+* Add a helpful description, and then upload the `metadata.xml` file from Auth0 into the ngrok dashboard.
+* In the Options section, select whether to allow users to log into the dashboard directly from their Auth0 dashboard.
+* Click **Save**.
+  This creates the integration and generates the required URLs for your Auth0 Application.
+
+## 3. Add ngrok URLs to your Auth0 SAML application
+
+* Back in your Auth0 account, select your Application and click the **Addons** tab.
+* Select the SAML2 Web App.
+* In the popup window, select the **Settings** tab.
+* Paste in the Application Callback URL (ACS) obtained from the ngrok IdP settings (SAML Provider/Service Provider, ACS URL).
+* In the settings code block window, paste in the following and click **Save**:
+
+  ```json  theme={null}
+  {
+    "nameIdentifierFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress",
+    "nameIdentifierProbes": [
+      "email"
+    ],
+    "mappings": {
+      "email": "email"
+    }
+  }
+  ```
+
+You can now log into your ngrok account using Auth0.
+
+By default, your ngrok account allows users to log in with their existing credentials as well as through Auth0 ("Mixed Mode").
+After you verify that the integration works, enable **SSO Enforced** in the ngrok dashboard to require all new users to log in through Auth0.
+
+
+Built with [Mintlify](https://mintlify.com).

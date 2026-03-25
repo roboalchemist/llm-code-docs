@@ -1,0 +1,7 @@
+# Source: https://valibot.dev/api/InferNonNullishIssue.md
+
+# InferNonNullishIssue
+
+Infer non nullish issue type.
+
+> This type is too complex to display. Please refer to the [source code](https://github.com/open-circle/valibot/blob/main/library/src/schemas/nonNullish/types.ts).

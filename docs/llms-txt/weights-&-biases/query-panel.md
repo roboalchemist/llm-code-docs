@@ -1,0 +1,43 @@
+# Source: https://docs.wandb.ai/models/ref/query-panel.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.wandb.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Query Expression Language overview
+
+> A beta query language to select and aggregate data in W&B
+
+Use the query expressions to select and aggregate data across runs and projects.
+Learn more about [query panels](/models/app/features/panels/query-panels/).
+
+<Tip>
+  See the [Query Panel](https://wandb.ai/luis_team_test/weave_example_queries/reports/Query-Panel-Examples---Vmlldzo1NzIxOTY2?accessToken=bvzq5hwooare9zy790yfl3oitutbvno2i6c2s81gk91750m53m2hdclj0jvryhcr) W\&B Report for an interactive examples.
+</Tip>
+
+## Data Types
+
+* [artifact](./query-panel/artifact)
+* [artifactType](./query-panel/artifact-type)
+* [artifactVersion](./query-panel/artifact-version)
+* [audio-file](./query-panel/audio-file)
+* [bokeh-file](./query-panel/bokeh-file)
+* [boolean](./query-panel/boolean)
+* [entity](./query-panel/entity)
+* [file](./query-panel/file)
+* [float](./query-panel/float)
+* [html-file](./query-panel/html-file)
+* [image-file](./query-panel/image-file)
+* [int](./query-panel/int)
+* [joined-table](./query-panel/joined-table)
+* [molecule-file](./query-panel/molecule-file)
+* [number](./query-panel/number)
+* [object3D-file](./query-panel/object-3-d-file)
+* [partitioned-table](./query-panel/partitioned-table)
+* [project](./query-panel/project)
+* [pytorch-model-file](./query-panel/pytorch-model-file)
+* [run](./query-panel/run)
+* [string](./query-panel/string)
+* [table](./query-panel/table)
+* [user](./query-panel/user)
+* [video-file](./query-panel/video-file)

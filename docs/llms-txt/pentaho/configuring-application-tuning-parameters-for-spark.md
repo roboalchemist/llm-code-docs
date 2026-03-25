@@ -1,0 +1,7 @@
+# Source: https://docs.pentaho.com/install/9.3-install/pentaho-configuration/tasks-to-be-performed-by-an-it-administrator/set-up-the-adaptive-execution-layer-ael/advanced-topics/spark-tuning-landing-page-cp/configuring-application-tuning-parameters-for-spark.md
+
+# Configuring application tuning parameters for Spark
+
+Spark tuning is the customization of PDI transformation and step parameters to improve the performance of your PDI transformation executed on the Spark engine. These Spark parameters include both the AEL properties and PDI transformation parameters, which we call application tuning parameters, and the step-level parameters, which we call Spark tuning options, as described in [About Spark tuning in PDI](https://docs.pentaho.com/install/9.3-install/pentaho-configuration/tasks-to-be-performed-by-an-it-administrator/set-up-the-adaptive-execution-layer-ael/advanced-topics/spark-tuning-landing-page-cp/about-spark-tuning-in-pdi-cp).
+
+This article provides a reference for application tuning, including configuring AEL properties and PDI transformation parameters to meet your cluster size and resource requirements. For details regarding step-level Spark tuning options, see [Spark Tuning](https://docs.pentaho.com/install/9.3-install/pentaho-configuration/tasks-to-be-performed-by-an-it-administrator/set-up-the-adaptive-execution-layer-ael/advanced-topics/spark-tuning-landing-page-cp).

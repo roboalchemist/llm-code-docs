@@ -1,0 +1,268 @@
+# Source: https://docs.xano.com/api-reference/function/create-a-new-function-using-xanoscript.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.xano.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Create a new function using XanoScript
+
+> Create a new function using XanoScript
+<br /><br />
+<b>Authentication:</b> required
+
+
+
+## OpenAPI
+
+````yaml apispec_meta_instance.json post /workspace/{workspace_id}/function
+openapi: 3.0.0
+info:
+  title: Xano Metadata API
+  description: >-
+    The <a href="https://docs.xano.com/xano-features/metadata-api"
+    target="_blank">Metadata API</a> provides support
+
+    to programatically manage your Xano instance and uses Access Tokens to
+
+    control access.
+  version: 0.0.1
+servers:
+  - url: https://your-xano-instance.xano.io/api:meta
+security: []
+paths:
+  /workspace/{workspace_id}/function:
+    post:
+      tags:
+        - function
+      summary: Create a new function using XanoScript
+      description: |-
+        Create a new function using XanoScript
+        <br /><br />
+        <b>Authentication:</b> required
+      operationId: Xano Metadata API/workspace/{workspace_id}/function|POST
+      parameters:
+        - name: workspace_id
+          in: path
+          description: ''
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: branch
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: string
+            default: ''
+        - name: include_xanoscript
+          in: query
+          description: ''
+          required: false
+          schema:
+            type: boolean
+            default: false
+      requestBody:
+        content:
+          text/x-xanoscript:
+            schema:
+              type: string
+              example: |
+                function foo {
+                  input {
+                    int score
+                  }
+                  stack {
+                    var $x1 {
+                      value = $input.score + 1
+                    }
+                  }
+                  response = $x1
+                }
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                branch:
+                  type: string
+                  description: ''
+                include_xanoscript:
+                  type: boolean
+                  description: ''
+                name:
+                  type: string
+                  description: ''
+                description:
+                  type: string
+                  description: ''
+                docs:
+                  type: string
+                  description: ''
+                tag:
+                  type: array
+                  items:
+                    type: string
+                    description: ''
+                  nullable: true
+              required:
+                - name
+                - description
+          application/json:
+            schema:
+              type: object
+              properties:
+                branch:
+                  type: string
+                  description: ''
+                include_xanoscript:
+                  type: boolean
+                  description: ''
+                name:
+                  type: string
+                  description: ''
+                description:
+                  type: string
+                  description: ''
+                docs:
+                  type: string
+                  description: ''
+                tag:
+                  type: array
+                  items:
+                    type: string
+                    description: ''
+                  nullable: true
+              required:
+                - name
+                - description
+      responses:
+        '200':
+          description: Success!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    format: int64
+                    description: ''
+                    default: 1
+                  created_at:
+                    type: string
+                    format: timestamptz
+                    description: ''
+                    default: 2023-04-19 21:01:32+0000
+                  updated_at:
+                    type: string
+                    format: timestamptz
+                    description: ''
+                    default: 2023-04-19 21:01:32+0000
+                  name:
+                    type: string
+                    description: ''
+                    default: Function Test
+                  description:
+                    type: string
+                    description: ''
+                    default: My functions description
+                  docs:
+                    type: string
+                    description: ''
+                    default: Documentation
+                  guid:
+                    type: string
+                    description: ''
+                    default: YE1fwVhQ-enRlc6Sb42Gqru58-0
+                  branch:
+                    type: string
+                    description: ''
+                    default: v1
+                  cache:
+                    type: object
+                    properties:
+                      active:
+                        type: boolean
+                        description: ''
+                      ttl:
+                        type: integer
+                        format: int64
+                        description: ''
+                        default: 3600
+                      input:
+                        type: boolean
+                        description: ''
+                        default: true
+                      auth:
+                        type: boolean
+                        description: ''
+                        default: true
+                      datasource:
+                        type: boolean
+                        description: ''
+                        default: true
+                      ip:
+                        type: boolean
+                        description: ''
+                      headers:
+                        type: array
+                        items:
+                          type: string
+                          description: ''
+                        default:
+                          - ''
+                      env:
+                        type: array
+                        items:
+                          type: string
+                          description: ''
+                        default:
+                          - ''
+                  tag:
+                    type: array
+                    items:
+                      type: string
+                      description: ''
+                    default:
+                      - example tag
+                  xanoscript:
+                    type: object
+                    properties:
+                      status:
+                        type: string
+                        description: ''
+                        enum:
+                          - ok
+                          - error
+                      value:
+                        type: string
+                        description: ''
+                      message:
+                        type: string
+                        description: ''
+        '400':
+          description: Input Error. Check the request payload for issues.
+        '401':
+          description: Unauthorized
+        '403':
+          description: >-
+            Access denied. Additional privileges are needed access the requested
+            resource.
+        '404':
+          description: Not Found. The requested resource does not exist.
+        '429':
+          description: Rate Limited. Too many requests.
+        '500':
+          description: Unexpected error
+      security:
+        - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+````
+
+Built with [Mintlify](https://mintlify.com).

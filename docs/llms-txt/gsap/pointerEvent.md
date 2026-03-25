@@ -1,0 +1,11 @@
+# Source: https://gsap.com/docs/v3/Plugins/Draggable/pointerEvent.md
+
+# pointerEvent
+
+### pointerEvent : Object
+
+\[read-only] The last pointer event (either a mouse event or touch event) that affected the Draggable instance.
+
+### Details[â€‹](#details "Direct link to Details")
+
+*Object* - The last pointer event (either a mouse event or touch event) that affected the Draggable instance. This can be useful to, for example, check its `pageX`, `pageY`, `target`, `currentTarget`, etc.

@@ -1,4 +1,5 @@
 
+
 # Pulumi
 
 > Infrastructure as code using real programming languages. Build, deploy, and manage cloud infrastructure on AWS, Azure, GCP, Kubernetes, and 150+ providers with TypeScript, Python, Go, C#, Java, or YAML.
@@ -6,59 +7,57 @@
 This file provides a curated guide to Pulumi's documentation, organized by product area. Each section includes nested pages with descriptions to help you navigate topics from high-level concepts to detailed reference material. For a complete list of all pages, see sitemap.xml.
 
 ## Getting Started
-
 - [Get Started](https://www.pulumi.com/docs/get-started/): Step-by-step guides for creating, deploying, and managing infrastructure with Pulumi on the cloud using your favorite language.
   - [Download & Install Pulumi](https://www.pulumi.com/docs/get-started/download-install/): This page contains detailed instructions for downloading and installing Pulumi.
 
 ## Infrastructure as Code
-
 - [Infrastructure as Code](https://www.pulumi.com/docs/iac/): Learn how to create, deploy, and manage infrastructure on any cloud using Pulumi's open source infrastructure as code SDK.
-  - [AWS](https://www.pulumi.com/docs/iac/get-started/aws/): This page provides an overview and guide on how to get started with AWS.
-    - [Install Pulumi](https://www.pulumi.com/docs/iac/get-started/aws/begin/): This page provides an overview on how to get started with Pulumi when starting an AWS project.
-    - [Configure access](https://www.pulumi.com/docs/iac/get-started/aws/configure/): This page provides an overview on how to get started with Pulumi when starting an AWS project.
-    - [Create project](https://www.pulumi.com/docs/iac/get-started/aws/create-project/): This page provides an overview of how to create a new AWS + Pulumi project.
-    - [Deploy to AWS](https://www.pulumi.com/docs/iac/get-started/aws/deploy-stack/): Learn how to deploy your stack to an AWS project in this guide.
-    - [Make an update](https://www.pulumi.com/docs/iac/get-started/aws/modify-program/): This page provides an overview on how to update an AWS project from a Pulumi program.
-    - [Create a component](https://www.pulumi.com/docs/iac/get-started/aws/create-component/): This page provides an overview on how to create infrastructure abstractions with Pulumi.
-    - [Destroy stack](https://www.pulumi.com/docs/iac/get-started/aws/destroy-stack/): This page provides an overview of how to destroy a Pulumi stack of an AWS project.
-    - [Next steps](https://www.pulumi.com/docs/iac/get-started/aws/next-steps/): This page provides a list of tutorials that take a deeper dive into AWS cloud resources.
-  - [Azure](https://www.pulumi.com/docs/iac/get-started/azure/): This page provides an overview and guide on how to get started with Azure.
-    - [Install Pulumi](https://www.pulumi.com/docs/iac/get-started/azure/begin/): This page provides an overview on how to get started with Pulumi when starting an Azure project.
-    - [Configure access](https://www.pulumi.com/docs/iac/get-started/azure/configure/): This page provides an overview on how to get started with Pulumi when starting an Azure project.
-    - [Create project](https://www.pulumi.com/docs/iac/get-started/azure/create-project/): This page provides an overview of how to create a new Azure + Pulumi project.
-    - [Deploy to Azure](https://www.pulumi.com/docs/iac/get-started/azure/deploy-stack/): Learn how to deploy your stack to an Azure project in this guide.
-    - [Make an update](https://www.pulumi.com/docs/iac/get-started/azure/modify-program/): This page provides an overview on how to update an Azure project from a Pulumi program.
-    - [Create a component](https://www.pulumi.com/docs/iac/get-started/azure/create-component/): This page provides an overview on how to create infrastructure abstractions with Pulumi.
-    - [Destroy stack](https://www.pulumi.com/docs/iac/get-started/azure/destroy-stack/): This page provides an overview of how to destroy a Pulumi stack of an Azure project.
-    - [Next steps](https://www.pulumi.com/docs/iac/get-started/azure/next-steps/): This page provides a list of tutorials that take a deeper dive into Azure cloud resources.
-  - [Google Cloud](https://www.pulumi.com/docs/iac/get-started/gcp/): This page provides an overview and guide on how to get started with Google Cloud.
-    - [Install Pulumi](https://www.pulumi.com/docs/iac/get-started/gcp/begin/): This page provides an overview on how to get started with Pulumi when starting a Google Cloud project.
-    - [Configure access](https://www.pulumi.com/docs/iac/get-started/gcp/configure/): This page provides an overview on how to get started with Pulumi when starting a Google Cloud project.
-    - [Create project](https://www.pulumi.com/docs/iac/get-started/gcp/create-project/): This page provides an overview of how to create a new Google Cloud + Pulumi project.
-    - [Deploy to Google Cloud](https://www.pulumi.com/docs/iac/get-started/gcp/deploy-stack/): Learn how to deploy your stack to a Google Cloud project in this guide.
-    - [Make an update](https://www.pulumi.com/docs/iac/get-started/gcp/modify-program/): This page provides an overview on how to update a Google Cloud project from a Pulumi program.
-    - [Create a component](https://www.pulumi.com/docs/iac/get-started/gcp/create-component/): This page provides an overview on how to create infrastructure abstractions with Pulumi.
-    - [Destroy stack](https://www.pulumi.com/docs/iac/get-started/gcp/destroy-stack/): This page provides an overview of how to destroy a Pulumi stack of a Google Cloud project.
-    - [Next steps](https://www.pulumi.com/docs/iac/get-started/gcp/next-steps/): This page provides a list of tutorials that take a deeper dive into Google Cloud cloud resources.
-  - [Kubernetes](https://www.pulumi.com/docs/iac/get-started/kubernetes/): This page provides an overview and guide on how to get started with Kubernetes.
-    - [Install Pulumi](https://www.pulumi.com/docs/iac/get-started/kubernetes/begin/): This page provides an overview of how to get started with Pulumi when starting a Kubernetes project.
-    - [Configure access](https://www.pulumi.com/docs/iac/get-started/kubernetes/configure/): This page provides an overview on how to get started with Pulumi when starting a Kubernetes project.
-    - [Create project](https://www.pulumi.com/docs/iac/get-started/kubernetes/create-project/): This page provides an overview of how to create a new Kubernetes + Pulumi project.
-    - [Deploy to Kubernetes](https://www.pulumi.com/docs/iac/get-started/kubernetes/deploy-stack/): Learn how to deploy your stack to a Kubernetes project in this guide.
-    - [Make an update](https://www.pulumi.com/docs/iac/get-started/kubernetes/modify-program/): This page provides an overview on how to update a Kubernetes project from a Pulumi program.
-    - [Create a component](https://www.pulumi.com/docs/iac/get-started/kubernetes/create-component/): This page provides an overview on how to create infrastructure abstractions with Pulumi.
-    - [Destroy stack](https://www.pulumi.com/docs/iac/get-started/kubernetes/destroy-stack/): This page provides an overview of how to destroy a Pulumi stack of a Kubernetes project.
-    - [Next steps](https://www.pulumi.com/docs/iac/get-started/kubernetes/next-steps/): This page provides a list of tutorials that take a deeper dive into Kubernetes across all major cloud providers.
-  - [Pulumi for Terraform Users](https://www.pulumi.com/docs/iac/get-started/terraform/): A comprehensive guide for Terraform users to learn Pulumi through coexistence patterns and integration strategies.
-    - [Install and Configure](https://www.pulumi.com/docs/iac/get-started/terraform/begin/): This page provides setup instructions for Pulumi alongside existing Terraform infrastructure.
-    - [First Look - Terraform HCL vs Pulumi Programs](https://www.pulumi.com/docs/iac/get-started/terraform/first-look/): Compare Terraform HCL to Pulumi programs with a basic example showing key differences in infrastructure as code approaches.
-    - [Reference Terraform State](https://www.pulumi.com/docs/iac/get-started/terraform/reference-state/): Learn how to read from existing Terraform state files in Pulumi for seamless coexistence.
-    - [Import Terraform Modules](https://www.pulumi.com/docs/iac/get-started/terraform/terraform-modules/): Learn how to use existing Terraform modules directly in Pulumi programs, leveraging the Terraform Registry ecosystem.
-    - [Use Terraform Providers](https://www.pulumi.com/docs/iac/get-started/terraform/terraform-providers/): Learn how to use any Terraform provider in Pulumi programs for accessing the full ecosystem of 3000+ providers.
-    - [Convert HCL Code](https://www.pulumi.com/docs/iac/get-started/terraform/convert-hcl/): Learn when and how to convert existing Terraform HCL code to Pulumi programs using automated tools and manual techniques.
-    - [Orchestrate Together](https://www.pulumi.com/docs/iac/get-started/terraform/orchestrate/): Learn advanced patterns for orchestrating Terraform and Pulumi deployments together in production environments.
-    - [Store Terraform State in Pulumi Cloud](https://www.pulumi.com/docs/iac/get-started/terraform/terraform-state-backend/): Use Pulumi Cloud as your Terraform state backend for update history, state locking, RBAC, audit policies, and unified resource visibility.
-    - [Next Steps](https://www.pulumi.com/docs/iac/get-started/terraform/next-steps/): Explore advanced Pulumi features and resources for Terraform users ready to deepen their integration or consider migration.
+    - [AWS](https://www.pulumi.com/docs/iac/get-started/aws/): This page provides an overview and guide on how to get started with AWS.
+      - [Install Pulumi](https://www.pulumi.com/docs/iac/get-started/aws/begin/): This page provides an overview on how to get started with Pulumi when starting an AWS project.
+      - [Configure access](https://www.pulumi.com/docs/iac/get-started/aws/configure/): This page provides an overview on how to get started with Pulumi when starting an AWS project.
+      - [Create project](https://www.pulumi.com/docs/iac/get-started/aws/create-project/): This page provides an overview of how to create a new AWS + Pulumi project.
+      - [Deploy to AWS](https://www.pulumi.com/docs/iac/get-started/aws/deploy-stack/): Learn how to deploy your stack to an AWS project in this guide.
+      - [Make an update](https://www.pulumi.com/docs/iac/get-started/aws/modify-program/): This page provides an overview on how to update an AWS project from a Pulumi program.
+      - [Create a component](https://www.pulumi.com/docs/iac/get-started/aws/create-component/): This page provides an overview on how to create infrastructure abstractions with Pulumi.
+      - [Destroy stack](https://www.pulumi.com/docs/iac/get-started/aws/destroy-stack/): This page provides an overview of how to destroy a Pulumi stack of an AWS project.
+      - [Next steps](https://www.pulumi.com/docs/iac/get-started/aws/next-steps/): This page provides a list of tutorials that take a deeper dive into AWS cloud resources.
+    - [Azure](https://www.pulumi.com/docs/iac/get-started/azure/): This page provides an overview and guide on how to get started with Azure.
+      - [Install Pulumi](https://www.pulumi.com/docs/iac/get-started/azure/begin/): This page provides an overview on how to get started with Pulumi when starting an Azure project.
+      - [Configure access](https://www.pulumi.com/docs/iac/get-started/azure/configure/): This page provides an overview on how to get started with Pulumi when starting an Azure project.
+      - [Create project](https://www.pulumi.com/docs/iac/get-started/azure/create-project/): This page provides an overview of how to create a new Azure + Pulumi project.
+      - [Deploy to Azure](https://www.pulumi.com/docs/iac/get-started/azure/deploy-stack/): Learn how to deploy your stack to an Azure project in this guide.
+      - [Make an update](https://www.pulumi.com/docs/iac/get-started/azure/modify-program/): This page provides an overview on how to update an Azure project from a Pulumi program.
+      - [Create a component](https://www.pulumi.com/docs/iac/get-started/azure/create-component/): This page provides an overview on how to create infrastructure abstractions with Pulumi.
+      - [Destroy stack](https://www.pulumi.com/docs/iac/get-started/azure/destroy-stack/): This page provides an overview of how to destroy a Pulumi stack of an Azure project.
+      - [Next steps](https://www.pulumi.com/docs/iac/get-started/azure/next-steps/): This page provides a list of tutorials that take a deeper dive into Azure cloud resources.
+    - [Google Cloud](https://www.pulumi.com/docs/iac/get-started/gcp/): This page provides an overview and guide on how to get started with Google Cloud.
+      - [Install Pulumi](https://www.pulumi.com/docs/iac/get-started/gcp/begin/): This page provides an overview on how to get started with Pulumi when starting a Google Cloud project.
+      - [Configure access](https://www.pulumi.com/docs/iac/get-started/gcp/configure/): This page provides an overview on how to get started with Pulumi when starting a Google Cloud project.
+      - [Create project](https://www.pulumi.com/docs/iac/get-started/gcp/create-project/): This page provides an overview of how to create a new Google Cloud + Pulumi project.
+      - [Deploy to Google Cloud](https://www.pulumi.com/docs/iac/get-started/gcp/deploy-stack/): Learn how to deploy your stack to a Google Cloud project in this guide.
+      - [Make an update](https://www.pulumi.com/docs/iac/get-started/gcp/modify-program/): This page provides an overview on how to update a Google Cloud project from a Pulumi program.
+      - [Create a component](https://www.pulumi.com/docs/iac/get-started/gcp/create-component/): This page provides an overview on how to create infrastructure abstractions with Pulumi.
+      - [Destroy stack](https://www.pulumi.com/docs/iac/get-started/gcp/destroy-stack/): This page provides an overview of how to destroy a Pulumi stack of a Google Cloud project.
+      - [Next steps](https://www.pulumi.com/docs/iac/get-started/gcp/next-steps/): This page provides a list of tutorials that take a deeper dive into Google Cloud cloud resources.
+    - [Kubernetes](https://www.pulumi.com/docs/iac/get-started/kubernetes/): This page provides an overview and guide on how to get started with Kubernetes.
+      - [Install Pulumi](https://www.pulumi.com/docs/iac/get-started/kubernetes/begin/): This page provides an overview of how to get started with Pulumi when starting a Kubernetes project.
+      - [Configure access](https://www.pulumi.com/docs/iac/get-started/kubernetes/configure/): This page provides an overview on how to get started with Pulumi when starting a Kubernetes project.
+      - [Create project](https://www.pulumi.com/docs/iac/get-started/kubernetes/create-project/): This page provides an overview of how to create a new Kubernetes + Pulumi project.
+      - [Deploy to Kubernetes](https://www.pulumi.com/docs/iac/get-started/kubernetes/deploy-stack/): Learn how to deploy your stack to a Kubernetes project in this guide.
+      - [Make an update](https://www.pulumi.com/docs/iac/get-started/kubernetes/modify-program/): This page provides an overview on how to update a Kubernetes project from a Pulumi program.
+      - [Create a component](https://www.pulumi.com/docs/iac/get-started/kubernetes/create-component/): This page provides an overview on how to create infrastructure abstractions with Pulumi.
+      - [Destroy stack](https://www.pulumi.com/docs/iac/get-started/kubernetes/destroy-stack/): This page provides an overview of how to destroy a Pulumi stack of a Kubernetes project.
+      - [Next steps](https://www.pulumi.com/docs/iac/get-started/kubernetes/next-steps/): This page provides a list of tutorials that take a deeper dive into Kubernetes across all major cloud providers.
+    - [Pulumi for Terraform Users](https://www.pulumi.com/docs/iac/get-started/terraform/): A comprehensive guide for Terraform users to learn Pulumi through coexistence patterns and integration strategies.
+      - [Install and Configure](https://www.pulumi.com/docs/iac/get-started/terraform/begin/): This page provides setup instructions for Pulumi alongside existing Terraform infrastructure.
+      - [First Look - Terraform HCL vs Pulumi Programs](https://www.pulumi.com/docs/iac/get-started/terraform/first-look/): Compare Terraform HCL to Pulumi programs with a basic example showing key differences in infrastructure as code approaches.
+      - [Reference Terraform State](https://www.pulumi.com/docs/iac/get-started/terraform/reference-state/): Learn how to read from existing Terraform state files in Pulumi for seamless coexistence.
+      - [Import Terraform Modules](https://www.pulumi.com/docs/iac/get-started/terraform/terraform-modules/): Learn how to use existing Terraform modules directly in Pulumi programs, leveraging the Terraform Registry ecosystem.
+      - [Use Terraform Providers](https://www.pulumi.com/docs/iac/get-started/terraform/terraform-providers/): Learn how to use any Terraform provider in Pulumi programs for accessing the full ecosystem of 3000+ providers.
+      - [Convert HCL Code](https://www.pulumi.com/docs/iac/get-started/terraform/convert-hcl/): Learn when and how to convert existing Terraform HCL code to Pulumi programs using automated tools and manual techniques.
+      - [Orchestrate Together](https://www.pulumi.com/docs/iac/get-started/terraform/orchestrate/): Learn advanced patterns for orchestrating Terraform and Pulumi deployments together in production environments.
+      - [Store Terraform State in Pulumi Cloud](https://www.pulumi.com/docs/iac/get-started/terraform/terraform-state-backend/): Use Pulumi Cloud as your Terraform state backend for update history, state locking, RBAC, audit policies, and unified resource visibility.
+      - [Next Steps](https://www.pulumi.com/docs/iac/get-started/terraform/next-steps/): Explore advanced Pulumi features and resources for Terraform users ready to deepen their integration or consider migration.
   - [Concepts](https://www.pulumi.com/docs/iac/concepts/): Learn about what Pulumi is, how it works, and how its components work together to deliver a robust platform for creating and managing cloud infrastructure.
     - [How Pulumi works](https://www.pulumi.com/docs/iac/concepts/how-pulumi-works/): This page provides an overview of how Pulumi works and interacts with different Cloud Providers like AWS, Azure, Kubernetes, and more.
     - [Pulumi Cloud and Open Source Pulumi](https://www.pulumi.com/docs/iac/concepts/pulumi-cloud/): Learn how Pulumi Cloud relates to the open source Pulumi infrastructure as code tool.
@@ -120,22 +119,22 @@ This file provides a curated guide to Pulumi's documentation, organized by produ
       - [Organizing projects](https://www.pulumi.com/docs/iac/guides/basics/organizing-projects-stacks/): An overview of best practices when organizing and structuring cloud projects and stacks.
       - [Update plans](https://www.pulumi.com/docs/iac/guides/basics/update-plans/): Learn about Pulumi update plans and how they can be used.
     - [Building & Extending](https://www.pulumi.com/docs/iac/guides/building-extending/): Learn how to build custom components, providers, and packages to extend Pulumi's capabilities.
-      - [Build a Component](https://www.pulumi.com/docs/iac/guides/building-extending/components/build-a-component/): Learn the process for building a custom Pulumi Component.
-      - [Testing Pulumi Components](https://www.pulumi.com/docs/iac/guides/building-extending/components/testing-components/): Learn strategies and tools for testing Pulumi Components during development and in CI/CD workflows.
-      - [Packaging Components](https://www.pulumi.com/docs/iac/guides/building-extending/components/packaging-components/): Learn how to package and distribute Pulumi components using single-language, cross-language, and provider-based approaches.
-      - [Provider architecture](https://www.pulumi.com/docs/iac/guides/building-extending/providers/provider-architecture/): Understand the layered architecture of Pulumi providers and choose the right level of abstraction for your needs.
-      - [Build a Provider](https://www.pulumi.com/docs/iac/guides/building-extending/providers/build-a-provider/): Learn the process for building a Pulumi Provider that can be packaged and published in the Pulumi Registry.
-      - [Provider SDKs](https://www.pulumi.com/docs/iac/guides/building-extending/providers/sdks/): High-level SDKs for building Pulumi providers with less boilerplate.
-        - [Pulumi Go Provider SDK](https://www.pulumi.com/docs/iac/guides/building-extending/providers/sdks/pulumi-go-provider-sdk/): Learn about the Pulumi Go Provider SDK to create your own Pulumi providers.
-      - [Direct provider implementation](https://www.pulumi.com/docs/iac/guides/building-extending/providers/implementers/): Implement Pulumi providers directly using gRPC bindings, without higher-level SDKs.
-        - [Provider protocol reference](https://www.pulumi.com/docs/iac/guides/building-extending/providers/implementers/protocol-reference/): Complete reference for the Pulumi provider gRPC protocol, including all RPC methods and their semantics.
-        - [Implement a provider in Python](https://www.pulumi.com/docs/iac/guides/building-extending/providers/implementers/python/): Build a Pulumi provider in Python using the gRPC bindings directly.
-        - [Implement a provider in Go](https://www.pulumi.com/docs/iac/guides/building-extending/providers/implementers/go/): Build a Pulumi provider in Go using the gRPC bindings directly, without the higher-level SDK.
-        - [Implement a provider in TypeScript](https://www.pulumi.com/docs/iac/guides/building-extending/providers/implementers/typescript/): Build a Pulumi provider in TypeScript using the gRPC bindings directly.
-      - [Publishing packages](https://www.pulumi.com/docs/iac/guides/building-extending/packages/publishing-packages/): Learn how to create and publish a Pulumi Package to share a custom component, provider, or bridge an existing Terraform provider into the Pulumi ecosystem.
-      - [Local Packages](https://www.pulumi.com/docs/iac/guides/building-extending/packages/local-packages/): This page provides an overview of working with locally generated Pulumi packages.
-      - [Schema](https://www.pulumi.com/docs/iac/guides/building-extending/packages/schema/): This page describes the schema for a Pulumi Package, describing the resources, functions and types that define a Pulumi Package.
-      - [Use a Terraform Module in Pulumi](https://www.pulumi.com/docs/iac/guides/building-extending/using-existing-tools/use-terraform-module/): Learn how to use existing Terraform modules directly in your Pulumi programs.
+        - [Build a Component](https://www.pulumi.com/docs/iac/guides/building-extending/components/build-a-component/): Learn the process for building a custom Pulumi Component.
+        - [Testing Pulumi Components](https://www.pulumi.com/docs/iac/guides/building-extending/components/testing-components/): Learn strategies and tools for testing Pulumi Components during development and in CI/CD workflows.
+        - [Packaging Components](https://www.pulumi.com/docs/iac/guides/building-extending/components/packaging-components/): Learn how to package and distribute Pulumi components using single-language, cross-language, and provider-based approaches.
+        - [Provider architecture](https://www.pulumi.com/docs/iac/guides/building-extending/providers/provider-architecture/): Understand the layered architecture of Pulumi providers and choose the right level of abstraction for your needs.
+        - [Build a Provider](https://www.pulumi.com/docs/iac/guides/building-extending/providers/build-a-provider/): Learn the process for building a Pulumi Provider that can be packaged and published in the Pulumi Registry.
+        - [Provider SDKs](https://www.pulumi.com/docs/iac/guides/building-extending/providers/sdks/): High-level SDKs for building Pulumi providers with less boilerplate.
+          - [Pulumi Go Provider SDK](https://www.pulumi.com/docs/iac/guides/building-extending/providers/sdks/pulumi-go-provider-sdk/): Learn about the Pulumi Go Provider SDK to create your own Pulumi providers.
+        - [Direct provider implementation](https://www.pulumi.com/docs/iac/guides/building-extending/providers/implementers/): Implement Pulumi providers directly using gRPC bindings, without higher-level SDKs.
+          - [Provider protocol reference](https://www.pulumi.com/docs/iac/guides/building-extending/providers/implementers/protocol-reference/): Complete reference for the Pulumi provider gRPC protocol, including all RPC methods and their semantics.
+          - [Implement a provider in Python](https://www.pulumi.com/docs/iac/guides/building-extending/providers/implementers/python/): Build a Pulumi provider in Python using the gRPC bindings directly.
+          - [Implement a provider in Go](https://www.pulumi.com/docs/iac/guides/building-extending/providers/implementers/go/): Build a Pulumi provider in Go using the gRPC bindings directly, without the higher-level SDK.
+          - [Implement a provider in TypeScript](https://www.pulumi.com/docs/iac/guides/building-extending/providers/implementers/typescript/): Build a Pulumi provider in TypeScript using the gRPC bindings directly.
+        - [Publishing packages](https://www.pulumi.com/docs/iac/guides/building-extending/packages/publishing-packages/): Learn how to create and publish a Pulumi Package to share a custom component, provider, or bridge an existing Terraform provider into the Pulumi ecosystem.
+        - [Local Packages](https://www.pulumi.com/docs/iac/guides/building-extending/packages/local-packages/): This page provides an overview of working with locally generated Pulumi packages.
+        - [Schema](https://www.pulumi.com/docs/iac/guides/building-extending/packages/schema/): This page describes the schema for a Pulumi Package, describing the resources, functions and types that define a Pulumi Package.
+        - [Use a Terraform Module in Pulumi](https://www.pulumi.com/docs/iac/guides/building-extending/using-existing-tools/use-terraform-module/): Learn how to use existing Terraform modules directly in your Pulumi programs.
       - [Creating Templates](https://www.pulumi.com/docs/iac/guides/building-extending/creating-templates/): Learn how to create Pulumi templates that can be used with pulumi new to bootstrap new projects.
     - [Continuous Delivery](https://www.pulumi.com/docs/iac/guides/continuous-delivery/): Pulumi's approach to infrastructure as code is great for CI/CD because it uses source code to model cloud resources and integrates into any CI/CD system.
       - [AWS Code Services](https://www.pulumi.com/docs/iac/guides/continuous-delivery/aws-code-services/): This page provides an overview of how to use Pulumi with Amazon Code Services CI/CD tools.
@@ -157,13 +156,13 @@ This file provides a curated guide to Pulumi's documentation, organized by produ
       - [JetBrains TeamCity](https://www.pulumi.com/docs/iac/guides/continuous-delivery/teamcity/): This page provides an overview of how to use Pulumi with JetBrains TeamCity.
       - [Adding CI/CD support](https://www.pulumi.com/docs/iac/guides/continuous-delivery/add-support-for-cicd-systems/): This guide walks you through how you can configure your CI/CD environment manually to surface data in Pulumi Cloud.
     - [Migration](https://www.pulumi.com/docs/iac/guides/migration/): Learn how Pulumi compares to other solutions, how to migrate to Pulumi, use converters to convert your code to Pulumi, and import resources to Pulumi.
-      - [Terraform](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/from-terraform/): Migrate your existing Terraform HCL and/or coexist with existing workspaces.
-      - [AWS CDK](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/from-cdk/): Migrate your existing AWS CDK TypeScript application
-        - [Migrating existing AWS CDK applications](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/migrating-from-cdk/migrating-existing-cdk-app/): Migrate your existing AWS CDK applications to Pulumi, including converting code and importing existing resources.
-        - [Using Pulumi with AWS CDK](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/migrating-from-cdk/using-pulumi-cdk/): Use the Pulumi CDK adapter to run your existing AWS CDK applications with Pulumi.
-      - [AWS CloudFormation](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/from-cloudformation/): Migrate your existing AWS CloudFormation JSON/YAML and/or coexist with existing stacks.
-      - [Azure Resource Manager](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/from-arm/): Modernize Azure infrastructure by replacing or coexisting with ARM templates using Pulumi in C#, Python, Go, or TypeScript.
-      - [Kubernetes YAML & Helm Charts](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/from-kubernetes/): Migrate your existing Kubernetes YAML or Helm Charts and/or coexist with existing templates.
+        - [Terraform](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/from-terraform/): Migrate your existing Terraform HCL and/or coexist with existing workspaces.
+        - [AWS CDK](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/from-cdk/): Migrate your existing AWS CDK TypeScript application
+          - [Migrating existing AWS CDK applications](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/migrating-from-cdk/migrating-existing-cdk-app/): Migrate your existing AWS CDK applications to Pulumi, including converting code and importing existing resources.
+          - [Using Pulumi with AWS CDK](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/migrating-from-cdk/using-pulumi-cdk/): Use the Pulumi CDK adapter to run your existing AWS CDK applications with Pulumi.
+        - [AWS CloudFormation](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/from-cloudformation/): Migrate your existing AWS CloudFormation JSON/YAML and/or coexist with existing stacks.
+        - [Azure Resource Manager](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/from-arm/): Modernize Azure infrastructure by replacing or coexisting with ARM templates using Pulumi in C#, Python, Go, or TypeScript.
+        - [Kubernetes YAML & Helm Charts](https://www.pulumi.com/docs/iac/guides/migration/migrating-to-pulumi/from-kubernetes/): Migrate your existing Kubernetes YAML or Helm Charts and/or coexist with existing templates.
       - [Import resources](https://www.pulumi.com/docs/iac/guides/migration/import/): Learn how to import existing cloud infrastructure into Pulumi no matter how it was provisioned.
       - [Convert code](https://www.pulumi.com/docs/iac/guides/migration/converters/): Pulumi convert allows you to convert ARM, CloudFormation, Kubernetes CustomResources, Kubernetes YAML, and Terraform to Pulumi.
       - [AWS import IDs and special cases](https://www.pulumi.com/docs/iac/guides/migration/aws-import-ids/): Learn how to find AWS resource IDs and handle CloudFormation-specific edge cases when importing resources into Pulumi.
@@ -189,8 +188,8 @@ This file provides a curated guide to Pulumi's documentation, organized by produ
         - [API Gateway](https://www.pulumi.com/docs/iac/clouds/aws/guides/api-gateway/): The AWS API Gateway component for Pulumi provides an easier way to create and manage API Gateway resources.
         - [Pulumi CDK Adapter](https://www.pulumi.com/docs/iac/clouds/aws/guides/cdk/): Using CDK Constructs with Pulumi provides a significantly easier way of creating infrastructure for AWS. Here is how.
         - [ECR](https://www.pulumi.com/docs/iac/clouds/aws/guides/ecr/): The AWSx ECR components simplify provisioning ECR repositories, building and publishing container images, and managing image lifecycle policies.
-        - [ECS](https://www.pulumi.com/docs/iac/clouds/aws/guides/ecs/): Pulumi Crosswalk for AWS ECS simplifies deploying containerized applications into ECS and managing all of the associated resources.
-        - [EKS](https://www.pulumi.com/docs/iac/clouds/aws/guides/eks/): Pulumi Crosswalk for AWS simplifies the creation, configuration, and management of EKS clusters offering a single programming model and deployment workflow.
+        - [ECS](https://www.pulumi.com/docs/iac/clouds/aws/guides/ecs/): Pulumi's AWSX library simplifies deploying containerized applications into ECS and managing all of the associated resources.
+        - [EKS](https://www.pulumi.com/docs/iac/clouds/aws/guides/eks/): Pulumi simplifies the creation, configuration, and management of EKS clusters, offering a single programming model and deployment workflow.
         - [ELB](https://www.pulumi.com/docs/iac/clouds/aws/guides/elb/): Pulumi Crosswalk for AWS ELB provides easy provisioning Application and Network Load Balancers, and easily integrates with functionality of AWS other services.
         - [IAM](https://www.pulumi.com/docs/iac/clouds/aws/guides/iam/): Pulumi Crosswalk for AWS makes it easy to create, update, and otherwise manage AWS users, groups, and roles securely.
         - [Lambda](https://www.pulumi.com/docs/iac/clouds/aws/guides/lambda/): Pulumi Crosswalk for AWS brings a more natural, and easier to use, way of building serverless applications using AWS Lambda.
@@ -238,7 +237,6 @@ This file provides a curated guide to Pulumi's documentation, organized by produ
     - [Custom Solutions](https://www.pulumi.com/docs/iac/comparisons/custom/): Learn about the major differences between Pulumi and custom infrastructure as code solutions.
 
 ## Deployments & Workflows
-
 - [Deployments & Workflows](https://www.pulumi.com/docs/deployments/): Cloud-hosted deployment automation, drift detection, and workflow management for infrastructure as code.
   - [Get started with Pulumi Cloud](https://www.pulumi.com/docs/deployments/get-started/): How to set up an account and get started with Pulumi Cloud.
   - [Projects & stacks](https://www.pulumi.com/docs/deployments/projects-and-stacks/): Learn how to manage projects and stacks in the Pulumi Cloud, including creating a project and managing stack permissions.
@@ -269,14 +267,12 @@ This file provides a curated guide to Pulumi's documentation, organized by produ
   - [Deploy with Pulumi button](https://www.pulumi.com/docs/deployments/pulumi-button/): The "Deploy with Pulumi" button lets you easily create new Pulumi projects from the browser. Learn how to create this deployment button in this guide.
 
 ## Version Control
-
 - [Version Control](https://www.pulumi.com/docs/version-control/): Connect Pulumi with your version control system using Pulumi-maintained integrations for GitHub, GitLab, and Azure DevOps.
   - [Pulumi GitHub App](https://www.pulumi.com/docs/version-control/github-app/): Pulumi's GitHub app integrates the results of Pulumi stack updates. It will show you any potential infrastructure changes on Pull Requests and commit Checks.
   - [GitLab](https://www.pulumi.com/docs/version-control/gitlab/): Pulumi integrates with GitLab for merge request previews, CI/CD pipelines, OIDC authentication, template sources, and automated deployments.
   - [Azure DevOps Integration](https://www.pulumi.com/docs/version-control/azure-devops-integration/): Connect Azure DevOps repositories to Pulumi Cloud Deployments to deploy on push, preview pull requests, and post PR summaries.
 
 ## Secrets & Configuration (ESC)
-
 - [Secrets & Configuration](https://www.pulumi.com/docs/esc/): Learn how to tame secrets sprawl and configuration complexity securely across all your cloud infrastructure and applications.
   - [Get Started](https://www.pulumi.com/docs/esc/get-started/): Get started with Pulumi ESC in 5 minutes. Create an environment, store a secret, and retrieve it programmatically.
   - [Concepts](https://www.pulumi.com/docs/esc/concepts/): Learn the core concepts of Pulumi ESC including environments, providers, composition, and the evaluation model.
@@ -399,7 +395,6 @@ This file provides a curated guide to Pulumi's documentation, organized by produ
     - [Pulumi ESC vs Doppler](https://www.pulumi.com/docs/esc/vs/doppler/): Learn about the major differences between Pulumi ESC and Doppler.
 
 ## Insights & Governance
-
 - [Insights & Governance](https://www.pulumi.com/docs/insights/): Discover, secure, and govern cloud infrastructure with comprehensive visibility and policy enforcement across all your resources.
   - [Discovery](https://www.pulumi.com/docs/insights/discovery/): Discover and manage all your cloud infrastructure with Pulumi Insights Discoveryâscan accounts, explore resources, and gain complete visibility.
     - [Get Started](https://www.pulumi.com/docs/insights/discovery/get-started/): Learn how to set up and manage Pulumi Insights accounts to gain visibility into your cloud infrastructure.
@@ -428,7 +423,6 @@ This file provides a curated guide to Pulumi's documentation, organized by produ
   - [Self-hosted Insights](https://www.pulumi.com/docs/insights/self-hosted/): Run Pulumi Insights discovery scans and policy evaluations in your own environment using customer-managed workflow runners.
 
 ## Internal Developer Platform
-
 - [Internal Developer Platform](https://www.pulumi.com/docs/idp/): Build self-service infrastructure workflows with reusable components, templates, and golden pathsâfrom Day 0 to Day 2.
   - [Concepts](https://www.pulumi.com/docs/idp/concepts/): Learn about the concepts and components of Pulumi IDP.
     - [Private Registry](https://www.pulumi.com/docs/idp/concepts/private-registry/): Learn about Pulumi Private Registry for managing infrastructure components and templates.
@@ -454,7 +448,6 @@ This file provides a curated guide to Pulumi's documentation, organized by produ
     - [Publishing Components from GitHub Actions](https://www.pulumi.com/docs/idp/guides/publishing-from-github-actions/): Learn how to set up automated publishing of Pulumi components from GitHub Actions to your Pulumi Cloud private registry.
 
 ## Infrastructure AI
-
 - [Infrastructure AI](https://www.pulumi.com/docs/ai/): Pulumi Neo enables conversational infrastructure management through natural language interactions with purpose-built automation agents.
   - [Getting started with Neo](https://www.pulumi.com/docs/ai/get-started/): Learn how to set up Pulumi Neo for your organization and run your first infrastructure task through conversational AI.
   - [Tasks](https://www.pulumi.com/docs/ai/tasks/): Learn about tasks, the primary entity for interacting with Neo to perform infrastructure operations.
@@ -465,7 +458,6 @@ This file provides a curated guide to Pulumi's documentation, organized by produ
   - [MCP server](https://www.pulumi.com/docs/ai/mcp-server/): Learn how to use Pulumi's Model Context Protocol (MCP) server to integrate AI assistants like Cursor, Claude Code, and Windsurf with your Pulumi Cloud workflow.
 
 ## Administration
-
 - [Administration](https://www.pulumi.com/docs/administration/): Manage organizations, teams, access control, security, and self-hosted deployments.
   - [Organizations & Teams](https://www.pulumi.com/docs/administration/organizations-teams/): Manage organizations, teams, user accounts, and billing in Pulumi Cloud.
     - [Accounts](https://www.pulumi.com/docs/administration/organizations-teams/accounts/): Learn how to create and configure accounts in the Pulumi Cloud in this guide.
@@ -536,25 +528,24 @@ This file provides a curated guide to Pulumi's documentation, organized by produ
     - [Changelog](https://www.pulumi.com/docs/administration/self-hosting/changelog/): Changes related to the self-hosted version of Pulumi Cloud.
 
 ## Reference
-
 - [Reference](https://www.pulumi.com/docs/reference/): Complete reference documentation for Pulumi CLI, Cloud REST API, language SDKs, and configuration syntax.
-  - [Pulumi CLI](https://www.pulumi.com/docs/iac/cli/): An overview of the Pulumi CLI and common commands used to deploy cloud applications.
-  - [ESC CLI](https://www.pulumi.com/docs/esc/cli/): An overview of the Pulumi ESC (Environments, Secrets, and Configuration) CLI.
-    - [AWS](https://www.pulumi.com/docs/reference/pre-built-policy-packs/cis/aws/): Complete list of CIS 8.1 compliance policies for AWS.
-    - [Azure](https://www.pulumi.com/docs/reference/pre-built-policy-packs/cis/azure/): Complete list of CIS 8.1 compliance policies for Azure.
-    - [Google Cloud](https://www.pulumi.com/docs/reference/pre-built-policy-packs/cis/google-cloud/): Complete list of CIS 8.1 compliance policies for Google Cloud.
-    - [AWS (EKS)](https://www.pulumi.com/docs/reference/pre-built-policy-packs/cis-kubernetes/aws/): Complete list of CIS Kubernetes Benchmark compliance policies for AWS EKS.
-    - [Azure (AKS)](https://www.pulumi.com/docs/reference/pre-built-policy-packs/cis-kubernetes/azure/): Complete list of CIS Kubernetes Benchmark compliance policies for Azure AKS.
-    - [Google Cloud (GKE)](https://www.pulumi.com/docs/reference/pre-built-policy-packs/cis-kubernetes/google-cloud/): Complete list of CIS Kubernetes Benchmark compliance policies for Google Cloud GKE.
-    - [AWS](https://www.pulumi.com/docs/reference/pre-built-policy-packs/hitrust/aws/): Complete list of HITRUST CSF 11.5 compliance policies for AWS.
-    - [Azure](https://www.pulumi.com/docs/reference/pre-built-policy-packs/hitrust/azure/): Complete list of HITRUST CSF 11.5 compliance policies for Azure.
-    - [Google Cloud](https://www.pulumi.com/docs/reference/pre-built-policy-packs/hitrust/google-cloud/): Complete list of HITRUST CSF 11.5 compliance policies for Google Cloud.
-    - [AWS](https://www.pulumi.com/docs/reference/pre-built-policy-packs/nist/aws/): Complete list of NIST SP 800-53 compliance policies for AWS.
-    - [AWS](https://www.pulumi.com/docs/reference/pre-built-policy-packs/pci-dss/aws/): Complete list of PCI DSS v4.0.1 compliance policies for AWS.
-  - [AWS](https://www.pulumi.com/docs/reference/pre-built-policy-packs/aws-organizations-tag-policies/aws/): AWS Organizations Tag Policies pack enforces tag policies configured in AWS Organizations.
-    - [AWS](https://www.pulumi.com/docs/reference/pre-built-policy-packs/pulumi-best-practices/aws/): Complete list of Pulumi Best Practices compliance policies for AWS.
-    - [Azure](https://www.pulumi.com/docs/reference/pre-built-policy-packs/pulumi-best-practices/azure/): Complete list of Pulumi Best Practices compliance policies for Azure.
-    - [Google Cloud](https://www.pulumi.com/docs/reference/pre-built-policy-packs/pulumi-best-practices/google-cloud/): Complete list of Pulumi Best Practices compliance policies for Google Cloud.
+    - [Pulumi CLI](https://www.pulumi.com/docs/iac/cli/): An overview of the Pulumi CLI and common commands used to deploy cloud applications.
+    - [ESC CLI](https://www.pulumi.com/docs/esc/cli/): An overview of the Pulumi ESC (Environments, Secrets, and Configuration) CLI.
+      - [AWS](https://www.pulumi.com/docs/reference/pre-built-policy-packs/cis/aws/): Complete list of CIS 8.1 compliance policies for AWS.
+      - [Azure](https://www.pulumi.com/docs/reference/pre-built-policy-packs/cis/azure/): Complete list of CIS 8.1 compliance policies for Azure.
+      - [Google Cloud](https://www.pulumi.com/docs/reference/pre-built-policy-packs/cis/google-cloud/): Complete list of CIS 8.1 compliance policies for Google Cloud.
+      - [AWS (EKS)](https://www.pulumi.com/docs/reference/pre-built-policy-packs/cis-kubernetes/aws/): Complete list of CIS Kubernetes Benchmark compliance policies for AWS EKS.
+      - [Azure (AKS)](https://www.pulumi.com/docs/reference/pre-built-policy-packs/cis-kubernetes/azure/): Complete list of CIS Kubernetes Benchmark compliance policies for Azure AKS.
+      - [Google Cloud (GKE)](https://www.pulumi.com/docs/reference/pre-built-policy-packs/cis-kubernetes/google-cloud/): Complete list of CIS Kubernetes Benchmark compliance policies for Google Cloud GKE.
+      - [AWS](https://www.pulumi.com/docs/reference/pre-built-policy-packs/hitrust/aws/): Complete list of HITRUST CSF 11.5 compliance policies for AWS.
+      - [Azure](https://www.pulumi.com/docs/reference/pre-built-policy-packs/hitrust/azure/): Complete list of HITRUST CSF 11.5 compliance policies for Azure.
+      - [Google Cloud](https://www.pulumi.com/docs/reference/pre-built-policy-packs/hitrust/google-cloud/): Complete list of HITRUST CSF 11.5 compliance policies for Google Cloud.
+      - [AWS](https://www.pulumi.com/docs/reference/pre-built-policy-packs/nist/aws/): Complete list of NIST SP 800-53 compliance policies for AWS.
+      - [AWS](https://www.pulumi.com/docs/reference/pre-built-policy-packs/pci-dss/aws/): Complete list of PCI DSS v4.0.1 compliance policies for AWS.
+    - [AWS](https://www.pulumi.com/docs/reference/pre-built-policy-packs/aws-organizations-tag-policies/aws/): AWS Organizations Tag Policies pack enforces tag policies configured in AWS Organizations.
+      - [AWS](https://www.pulumi.com/docs/reference/pre-built-policy-packs/pulumi-best-practices/aws/): Complete list of Pulumi Best Practices compliance policies for AWS.
+      - [Azure](https://www.pulumi.com/docs/reference/pre-built-policy-packs/pulumi-best-practices/azure/): Complete list of Pulumi Best Practices compliance policies for Azure.
+      - [Google Cloud](https://www.pulumi.com/docs/reference/pre-built-policy-packs/pulumi-best-practices/google-cloud/): Complete list of Pulumi Best Practices compliance policies for Google Cloud.
   - [Pulumi Cloud REST API](https://www.pulumi.com/docs/reference/cloud-rest-api/): Learn how to interact with Pulumi Cloud programmatically using the REST API for automation and integration.
     - [API Basics](https://www.pulumi.com/docs/reference/cloud-rest-api/api-basics/): Learn about the Pulumi Cloud REST API endpoint, authentication, and required headers for making API requests.
     - [Audit Logs](https://www.pulumi.com/docs/reference/cloud-rest-api/audit-logs/): Learn about the Pulumi Cloud REST API endpoints for retrieving and exporting audit log events.
@@ -585,7 +576,6 @@ This file provides a curated guide to Pulumi's documentation, organized by produ
   - [Property Paths](https://www.pulumi.com/docs/reference/property-paths/): Property Paths are used to refer to elements in a configuration object.
 
 ## Support
-
 - [Support & Troubleshooting](https://www.pulumi.com/docs/support/): Get help with Pulumi through FAQs, troubleshooting guides, community resources, and support options.
   - [Troubleshooting](https://www.pulumi.com/docs/support/troubleshooting/): Comprehensive troubleshooting guides for common issues with Pulumi infrastructure, deployments, and configuration.
     - [CI/CD Troubleshooting](https://www.pulumi.com/docs/support/troubleshooting/ci-cd/): This page walks through the common failures encountered while running Pulumi in CI/CD, as well as tips on how to fix them.
@@ -681,7 +671,7 @@ This file provides a curated guide to Pulumi's documentation, organized by produ
 ## Resources
 
 ### Recent Blog Posts
-
+- [New: Previous Provider Version Docs in Pulumi Registry](https://www.pulumi.com/blog/previous-version-docs-are-now-available-in-the-pulumi-registry/): The Pulumi Registry now includes documentation for previous provider versions, making it easier to find the right docs for the version you're using.
 - [Pulumi Cloud Now Supports Google Sign-In](https://www.pulumi.com/blog/pulumi-cloud-now-supports-google-sign-in/): Pulumi Cloud now supports Google as an identity provider, letting you sign in, sign up, and link your Google account alongside GitHub, GitLab, and Atlassian.
 - [Treating Prompts Like Code: A Content Engineer's AI Workflow](https://www.pulumi.com/blog/treating-prompts-like-code/): How I built a modular AI workflow system to scale a solo docs practice â treating prompts like code, with reusable skills, shared context, and CI/CD.
 - [Expanded Version Control Support in Pulumi Cloud](https://www.pulumi.com/blog/expanded-version-control-support/): Deploy on every push, preview infrastructure on pull requests, and let Neo explain changes, all from Pulumi Cloud, regardless of where your code lives.
@@ -707,10 +697,8 @@ This file provides a curated guide to Pulumi's documentation, organized by produ
 - [Pulumi Agent Skills: Best practices and more for AI coding assistants](https://www.pulumi.com/blog/pulumi-agent-skills/): Introducing packaged Pulumi expertise that works across Claude Code, Cursor, GitHub Copilot, and other AI coding assistants.
 - [Manage Cloud Visibility and Governance with Infrastructure as Code](https://www.pulumi.com/blog/pulumi-service-provider-insights-resources/): Discover cloud resources and enforce governance policies with new Pulumi Service Provider resources for visibility and compliance as code.
 - [Deploy OpenClaw on AWS or Hetzner Securely with Pulumi and Tailscale](https://www.pulumi.com/blog/deploy-openclaw-aws-hetzner/): Deploy OpenClaw (formerly Moltbot/Clawdbot), an open-source AI assistant, to AWS and Hetzner using Pulumi with Tailscale for secure private access.
-- [New in Pulumi IaC: `replacementTrigger` Resource Option](https://www.pulumi.com/blog/triggering-resource-replacements/): You can now use the `replacementTrigger` resource option to control when resources are recreated
 
 ### Templates & Examples
-
 - [Container Service Templates](https://www.pulumi.com/templates/container-service/): Easily deploy container services on AWS, Azure, or Google Cloud Platform with Pulumi Container Service templates.
 - [Serverless Templates](https://www.pulumi.com/templates/serverless-application/): Easily deploy serverless applications on AWS, Azure, or Google Cloud Platform with Pulumi Serverless Application templates.
 - [Static Website Templates](https://www.pulumi.com/templates/static-website/): Easily deploy static HTML websites on AWS, Azure, or Google Cloud Platform with Pulumi Static Website templates.
@@ -737,7 +725,6 @@ This file provides a curated guide to Pulumi's documentation, organized by produ
 - [Web Application on Kubernetes](https://www.pulumi.com/templates/kubernetes-application/web-application/): Easily deploy a web application to an existing Kubernetes cluster with Pulumi using this template.
 
 ### Case Studies
-
 - [XM Cyber: Multi-Cloud Infrastructure Management with Pulumi](https://www.pulumi.com/case-studies/xm_cyber/): XM Cyber partnered with Pulumi on a modern multi-cloud infrastructure management strategy featuring AWS EKS, Python, and an internal developer platform.
 - [WhyLabs: Shifting Infrastructure to the Left](https://www.pulumi.com/case-studies/whylabs/): Learn how WhyLabs worked with Pulumi to enable engineers to continuously and reliably ship new features faster than before for improved time-to-market.
 - [Unity Technologies Modernizes Infrastructure Management](https://www.pulumi.com/case-studies/unity/): By leveraging Pulumi, the Unity Aura team successfully modernized their CI/CD & infrastructure management.

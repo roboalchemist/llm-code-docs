@@ -1,0 +1,32 @@
+---
+title: SmartContract Basics
+---
+
+# SmartContract Basics
+
+The `SmartContract` class is the foundation for building zkApps. It provides the framework for defining state, methods, and behavior of your zero-knowledge smart contracts.
+
+## Basic Structure
+
+Every zkApp extends the `SmartContract` class and follows this basic pattern:
+
+```ts file=../snippets/zkapps/basic-smart-contract/basic-smart-contract.ts start=start_basic_contract end=end_basic_contract
+```
+
+Key components include state variables declared with `@state(Type)`, an `init()` method for setup, and public methods marked with `@method`.
+
+## State Management
+
+zkApps can have multiple state variables of different types:
+
+```ts file=../snippets/zkapps/basic-smart-contract/basic-smart-contract.ts start=start_multiple_state end=end_multiple_state
+```
+
+State operations include `get()`, `getAndRequireEquals()`, `set()`, and `requireEquals()`.
+
+## API Reference
+
+For detailed information about the SmartContract class, see:
+- [SmartContract API reference](/docs/api-reference/classes/SmartContract.mdx)
+- [State](/docs/api-reference/type-aliases/State.mdx)
+- [Method decorators](/docs/api-reference/functions/method.mdx)

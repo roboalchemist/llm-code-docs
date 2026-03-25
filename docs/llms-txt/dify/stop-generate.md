@@ -1,0 +1,114 @@
+# Source: https://docs.dify.ai/api-reference/completion/stop-generate.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.dify.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Stop Generate
+
+> Stops a generation task. Only supported in streaming mode.
+
+
+
+## OpenAPI
+
+````yaml en/api-reference/openapi_completion.json post /completion-messages/{task_id}/stop
+openapi: 3.0.1
+info:
+  title: Completion App API
+  description: >-
+    The text generation application offers non-session support and is ideal for
+    translation, article writing, summarization AI, and more.
+  version: 1.0.0
+servers:
+  - url: '{api_base_url}'
+    description: >-
+      The base URL for the Completion App API. Replace {api_base_url} with the
+      actual API base URL provided for your application (e.g., from
+      props.appDetail.api_base_url).
+    variables:
+      api_base_url:
+        default: https://api.dify.ai/v1
+        description: Actual base URL of the API
+security:
+  - ApiKeyAuth: []
+tags:
+  - name: Completion
+    description: Operations related to text generation and completion.
+  - name: Files
+    description: Operations related to file management.
+  - name: End Users
+    description: Operations related to end user information.
+  - name: Feedback
+    description: Operations related to user feedback.
+  - name: TTS
+    description: Operations related to Text-to-Speech.
+  - name: Application
+    description: Operations to retrieve application settings and information.
+paths:
+  /completion-messages/{task_id}/stop:
+    post:
+      tags:
+        - Completion
+      summary: Stop Generate
+      description: Stops a generation task. Only supported in streaming mode.
+      operationId: stopGenerate
+      parameters:
+        - name: task_id
+          in: path
+          required: true
+          description: >-
+            Task ID, can be obtained from the streaming chunk return of a
+            `/completion-messages` request.
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - user
+              properties:
+                user:
+                  type: string
+                  description: >-
+                    User identifier, used to define the identity of the
+                    end-user, must be consistent with the user passed in the
+                    send message interface.
+            examples:
+              example:
+                value:
+                  user: abc-123
+      responses:
+        '200':
+          description: Stop request successful.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+                    example: success
+              examples:
+                success:
+                  value:
+                    result: success
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: API_KEY
+      description: >-
+        API Key authentication. For all API requests, include your API Key in
+        the `Authorization` HTTP Header, prefixed with 'Bearer '. Example:
+        `Authorization: Bearer {API_KEY}`. **Strongly recommend storing your API
+        Key on the server-side, not shared or stored on the client-side, to
+        avoid possible API-Key leakage that can lead to serious consequences.**
+
+````
+
+Built with [Mintlify](https://mintlify.com).

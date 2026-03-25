@@ -1,0 +1,25 @@
+# Source: https://docs.fiddler.ai/api/fiddler-python-client-sdk/constants/bin-size.md
+
+# BinSize
+
+Time bin sizes for alert rule aggregation.
+
+Defines the time window granularity for aggregating metrics when evaluating alert rules. Smaller bin sizes provide more frequent monitoring but may be more sensitive to noise.
+
+## Example
+
+```python
+alert_rule = AlertRule(
+        name="Hourly Drift Check",
+        bin_size=BinSize.HOUR,
+        # ... other parameters
+    )
+```
+
+## HOUR *= 'Hour'*
+
+## DAY *= 'Day'*
+
+## WEEK *= 'Week'*
+
+## MONTH *= 'Month'*

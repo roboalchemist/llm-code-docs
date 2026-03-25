@@ -1,8 +1,8 @@
-# Source: https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass
+# Source: https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass
 
 Title: Adopting Liquid Glass | Apple Developer Documentation
 
-URL Source: https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass
+URL Source: https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass
 
 Markdown Content:
 [Overview](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#Overview)
@@ -29,17 +29,17 @@ Interfaces across Apple platforms feature a new dynamic [material](https://devel
 
 **Reduce your use of custom backgrounds in controls and navigation elements.** Any custom backgrounds and appearances you use in these elements might overlay or interfere with Liquid Glass or other effects that the system provides, such as the scroll edge effect. Make sure to check any custom backgrounds in elements like split views, tab bars, and toolbars. Prefer to remove custom effects and let the system determine the background appearance, especially for the following elements:
 
-*   [SwiftUI](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [UIKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [AppKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
+*   [SwiftUI](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [UIKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [AppKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
 
 **Test your interface with a variety of display and accessibility settings.** Translucency and fluid morphing animations contribute to the look and feel of Liquid Glass, but can adapt to people’s needs. For example, people can choose a preferred look for Liquid Glass in their device’s settings, or turn on accessibility settings that reduce transparency or motion in the interface. These settings can remove or modify certain effects. If you use standard components from system frameworks, this experience adapts automatically. Ensure you test your app’s custom elements, colors, and animations with different configurations of these settings.
 
 **Avoid overusing Liquid Glass effects.** If you apply Liquid Glass effects to a custom control, do so sparingly. Liquid Glass seeks to bring attention to the underlying content, and overusing this material in multiple custom controls can provide a subpar user experience by distracting from that content. Limit these effects to the most important functional elements in your app. To learn more, read [Applying Liquid Glass to custom views](https://developer.apple.com/documentation/SwiftUI/Applying-Liquid-Glass-to-custom-views).
 
-*   [SwiftUI](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [UIKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [AppKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
+*   [SwiftUI](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [UIKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [AppKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
 
 * * *
 
@@ -87,9 +87,9 @@ Controls have a refreshed look across platforms, and come to life when a person 
 
 **Review updates to control appearance and dimensions.** If you use standard controls from system frameworks and don’t hard-code their layout metrics, your app adopts changes to shapes and sizes automatically when you rebuild your app with the latest version of Xcode. Review changes to the following controls and any others and make sure they continue to look at home with the rest of your interface:
 
-*   [SwiftUI](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [UIKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [AppKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
+*   [SwiftUI](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [UIKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [AppKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
 
 **Review your use of color in controls.** Be judicious with your use of [color](https://developer.apple.com/design/Human-Interface-Guidelines/color) in controls and navigation so they stay legible. If you do apply color to these elements, leverage system colors, or define a custom color with light and dark variants, and an increased contrast option for each variant.
 
@@ -97,19 +97,19 @@ Controls have a refreshed look across platforms, and come to life when a person 
 
 **Optimize for legibility when content scrolls beneath controls.** Scroll views offer a [scroll edge effect](https://developer.apple.com/documentation/SwiftUI/View/scrollEdgeEffectStyle(_:for:)) that helps maintain sufficient legibility and contrast for controls by obscuring content that scrolls beneath them. System bars like toolbars adopt this behavior by default. If you use a custom bar with elements like controls, text, or icons that have content scrolling beneath them, you can register those views to use a scroll edge effect with these APIs:
 
-*   [SwiftUI](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [UIKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
+*   [SwiftUI](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [UIKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
 
 **Consider aligning the shape of controls with other rounded elements throughout the interface.** Across Apple platforms, the shape of the hardware informs the curvature, size, and shape of nested interface elements, including controls, sheets, popovers, windows, and more. Help maintain a sense of visual continuity in your interface by using rounded shapes that are concentric to their containers using these APIs:
 
-*   [SwiftUI](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [UIKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
+*   [SwiftUI](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [UIKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
 
 **Leverage new button styles**. Instead of creating buttons with custom Liquid Glass effects, you can adopt the look and feel of the material with minimal code by using one of the following button style APIs:
 
-*   [SwiftUI](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [UIKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [AppKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
+*   [SwiftUI](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [UIKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [AppKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
 
 * * *
 
@@ -130,14 +130,14 @@ After
 
 **Consider adapting your tab bar into a sidebar automatically.** If your app uses a tab-based navigation, you can allow the tab bar to adapt into a sidebar depending on the context by using the following APIs:
 
-*   [SwiftUI](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [UIKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
+*   [SwiftUI](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [UIKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
 
 **Consider using split views to build sidebar layouts with an inspector panel.**[Split views](https://developer.apple.com/design/Human-Interface-Guidelines/split-views) are optimized to create a consistent and familiar experience for sidebar and inspector layouts across platforms. You can use the following standard system APIs for split views to build these types of layouts with minimal code:
 
-*   [SwiftUI](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [UIKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [AppKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
+*   [SwiftUI](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [UIKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [AppKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
 
 **Check content safe areas for sidebars and inspectors.** If you have these types of components in your app’s navigation structure, audit the safe area compatibility of content next to the sidebar and inspector to help make sure underlying content is peeking through appropriately.
 
@@ -151,14 +151,14 @@ Without background extension effect
 
 With background extension effect
 
-*   [SwiftUI](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [UIKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [AppKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
+*   [SwiftUI](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [UIKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [AppKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
 
 **Choose whether to automatically minimize your tab bar in iOS.** Tab bars can help elevate the underlying content by receding when a person scrolls up or down. You can opt into this behavior and configure the tab bar to minimize when a person scrolls down or up. The tab bar expands when a person scrolls in the opposite direction.
 
-*   [SwiftUI](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [UIKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
+*   [SwiftUI](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [UIKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
 
 ```
 TabView {
@@ -200,9 +200,9 @@ Correct
 
 You can create a fixed spacer to separate items that share a background using these APIs:
 
-*   [SwiftUI](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [UIKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [AppKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
+*   [SwiftUI](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [UIKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [AppKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
 
 **Find icons to represent common actions.** Consider representing common actions in toolbars with [standard icons](https://developer.apple.com/design/Human-Interface-Guidelines/icons) instead of text. This approach helps declutter the interface and increase the ease of use for common actions. For consistency, don’t mix text and icons across items that share a background.
 
@@ -212,9 +212,9 @@ You can create a fixed spacer to separate items that share a background using th
 
 **Check how you hide toolbar items.** If you see an empty toolbar item without any content, your app might be hiding the view in the toolbar item instead of the item itself. Instead, hide the entire toolbar item, using these APIs:
 
-*   [SwiftUI](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [UIKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [AppKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
+*   [SwiftUI](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [UIKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [AppKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
 
 * * *
 
@@ -227,9 +227,9 @@ You can create a fixed spacer to separate items that share a background using th
 
 **Use split views to allow fluid resizing of columns.** To support continuous window resizing, split views automatically reflow content for every size using beautiful, fluid transitions. Make sure to use standard system APIs for split views to get these animations with minimal code:
 
-*   [SwiftUI](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [UIKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [AppKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
+*   [SwiftUI](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [UIKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [AppKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
 
 **Use layout guides and safe areas.** Make sure you specify safe areas for your content so the system can automatically adjust the window controls and title bar in relation to your content.
 
@@ -243,9 +243,9 @@ An [action sheet](https://developer.apple.com/design/Human-Interface-Guidelines/
 
 **Specify the source of an action sheet.** Position an action sheet’s anchor next to the control it originates from. Make sure to set the source view or item to indicate where to originate the action sheet and create the inline appearance.
 
-*   [SwiftUI](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [UIKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [AppKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
+*   [SwiftUI](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [UIKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [AppKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
 
 * * *
 
@@ -296,8 +296,8 @@ Liquid Glass can have a distinct appearance and behavior across different platfo
 
 **In tvOS, adopt standard focus APIs.** Across apps and system experiences in tvOS, standard buttons and controls take on a Liquid Glass appearance when focus moves to them. For consistency with the system experience, consider applying these effects to custom controls in your app when they gain focus by adopting the standard focus APIs. Apple TV 4K (2nd generation) and newer models support Liquid Glass effects. On older devices, your app maintains its current appearance.
 
-*   [SwiftUI](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
-*   [UIKit](https://developer.apple.com/documentation/TechnologyOverviews/adopting-liquid-glass#)
+*   [SwiftUI](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
+*   [UIKit](https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass#)
 
 **Combine custom Liquid Glass effects to improve rendering performance.** If you apply these effects to custom elements, make sure to combine them using a [`GlassEffectContainer`](https://developer.apple.com/documentation/SwiftUI/GlassEffectContainer), which helps optimize performance while fluidly morphing Liquid Glass shapes into each other.
 

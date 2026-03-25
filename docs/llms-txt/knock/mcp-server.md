@@ -1,0 +1,130 @@
+# Source: https://docs.knock.app/developer-tools/mcp-server.md
+
+---
+title: Model Context Protocol (MCP) server
+description: Use the Knock MCP server to make Knock accessible to LLMs and AI agents via tool calling.
+section: Developer tools
+---
+
+Knock ships a remote MCP server at `mcp.knock.app/mcp` that exposes the primitives of Knock to LLMs and AI via the <a href="https://modelcontextprotocol.io/" target="_blank">Model Context Protocol (MCP)</a> so that your AI agents can discover and use Knock via tool calling.
+
+Here are some examples of how you can use the MCP server in your workflow:
+
+- **Create workflows using natural language.** "Create a welcome email workflow for my B2B SaaS app."
+- **Trigger a specific workflow to test your integration.** "Trigger the comment-created workflow for Dennis Nedry."
+- **Create a set of test user and tenant data in your account.** "Create a user called Dennis Nedry and a tenant called acme-corp."
+
+## Get started
+
+The Knock MCP server is a remote server—no local installation or Node.js setup is required. You connect to `https://mcp.knock.app/mcp` directly from your MCP client and authenticate using your Knock account via OAuth. This means your Knock credentials are managed securely through the standard sign-in flow rather than requiring a service token.
+
+We've added setup instructions below for Cursor, Claude Desktop, and Claude Code, but the same instructions apply to any other MCP client-compatible application.
+
+### Cursor
+
+1. Go to **Settings** > **Cursor Settings** and find the "Tools & Integrations" section.
+2. Click "New MCP server" under **MCP Tools**.
+3. Inside your `mcp.json` file under the `mcpServers` key, add the following:
+
+```json
+{
+  "knock": {
+    "url": "https://mcp.knock.app/mcp",
+    "name": "Knock MCP Server"
+  }
+}
+```
+
+4. When Cursor prompts you to authenticate, sign in with your Knock account.
+
+### Claude Desktop
+
+1. Open the Claude Desktop settings and find the "Developer" section.
+2. Click "Edit Config."
+3. Open your `claude_desktop_config.json` file in your preferred text editor.
+4. Add the following contents to the file (or add to the `mcpServers` section if it exists):
+
+```json
+{
+  "mcpServers": {
+    "knock": {
+      "url": "https://mcp.knock.app/mcp"
+    }
+  }
+}
+```
+
+5. Restart Claude Desktop. When you first use a Knock tool, you'll be prompted to sign in with your Knock account.
+
+### Claude Code
+
+1. Run the following command to add the Knock MCP server:
+
+```bash
+claude mcp add --transport http knock https://mcp.knock.app/mcp
+```
+
+2. Start Claude Code and run `/mcp` to authenticate with your Knock account.
+
+## Tool groups
+
+When connecting to the Knock MCP server, you can choose exactly which groups of tools to enable. Limiting the active tool groups to only what you need keeps the tool list manageable and reduces the risk of unintended changes.
+
+| Group                | Description                                                                                                     |
+| -------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Manage resources** | Create and manage notification workflows, channels, templates, email layouts, partials, and other configuration |
+| **Commits**          | Commit and promote changes across environments                                                                  |
+| **Debug**            | Inspect environments and view sent message logs                                                                 |
+| **Manage data**      | Manage users, tenants, and object data                                                                          |
+| **Documentation**    | Search Knock documentation                                                                                      |
+
+## What tools are available?
+
+The MCP server ships with tools to interact with all Knock resources. You can find the full list of available tools in the [tools reference](/developer-tools/agent-toolkit/tools-reference) of the Knock Agent Toolkit, which the MCP server is built on top of.
+
+Please note that at this time, the MCP server **does not** ship with any tools to delete resources. This is intentional to prevent the accidental deletion of resources in your Knock account.
+
+### Workflow-specific tools
+
+The Knock MCP server exposes a full suite of tools for creating and managing workflows. Using the MCP server you can:
+
+- Create a workflow with natural language: "create a workflow that sends a welcome email to new users"
+- Create a delay or batch step within your workflow: "delay for 3 days" or "batch for 10 minutes"
+- Create an email step within your workflow: "create a credit card expiring email with a link back to the dashboard"
+- Create an SMS, push, or in-app feed step within your workflow
+
+Using these tools you can create a complex prompt that describes one or more workflows that you'd like to create with natural language.
+
+## Workflows-as-tools
+
+The Knock MCP server also supports exposing your workflows as individual tools. This gives the LLM a specific and precise interface for invoking workflow triggers, including describing the data trigger requirements for your workflows.
+
+By default, the MCP server will **not** expose any workflows as tools. To opt into this behavior, contact us or refer to your MCP client's tool configuration options.
+
+## Related links
+
+- [Building with LLMs](/developer-tools/building-with-llms)
+- [Knock Agent Toolkit](/developer-tools/agent-toolkit/overview)
+
+## Frequently asked questions
+
+<AccordionGroup>
+  <Accordion title="Why do I see a warning about having too many tools?">
+    Some MCP clients will warn you about having more than 50 tools. To address
+    this, enable only the tool groups you need for the task at hand. For
+    example, if you're only managing user data, enable the **Manage data** group
+    and leave the others disabled.
+  </Accordion>
+  <Accordion title="Why do I receive an error in Cursor when I try to use one of the available MCP tools?">
+    If you see an error like _"The model returned an error. Try disabling MCP
+    servers, or switch models,"_ check which model is selected for the Cursor
+    agent. Make sure it's explicitly set to a supported model like
+    `claude-sonnet-4` rather than relying on automatic model selection.
+  </Accordion>
+  <Accordion title="Can I use a service token instead of signing in with my account?">
+    The remote MCP server at `mcp.knock.app/mcp` uses OAuth-based authentication
+    and requires signing in with your Knock account. If you need service
+    token-based authentication for a self-hosted or CI environment, please
+    contact us.
+  </Accordion>
+</AccordionGroup>

@@ -1,0 +1,35 @@
+```ts
+function listAcquiredKeyPairs(options: {
+  lightnetAccountManagerEndpoint?: string;
+}): Promise<
+  | null
+  | {
+  privateKey: PrivateKey;
+  publicKey: PublicKey;
+}[]>;
+```
+
+Defined in: [lib/mina/v1/fetch.ts:975](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/fetch.ts#L975)
+
+Gets previously acquired key pairs list.
+
+## Parameters
+
+### options
+
+#### lightnetAccountManagerEndpoint?
+
+`string`
+
+Account manager endpoint to fetch from
+
+## Returns
+
+`Promise`\<
+  \| `null`
+  \| \{
+  `privateKey`: [`PrivateKey`](../../../../classes/PrivateKey.mdx);
+  `publicKey`: [`PublicKey`](../../../../classes/PublicKey.mdx);
+\}[]\>
+
+Key pairs list or null if the request failed

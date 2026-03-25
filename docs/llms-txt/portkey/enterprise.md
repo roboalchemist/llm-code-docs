@@ -1,0 +1,2413 @@
+# Source: https://docs.portkey.ai/docs/changelog/enterprise.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.portkey.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Enterprise Gateway
+
+<Card title="Schedule Call" href="https://portkey.sh/demo-21" icon="calendar" horizontal>
+  Discuss how Portkey's AI Gateway can enhance your organization's AI infrastructure
+</Card>
+
+<Update label="2.4.0" description="2026-03-11">
+  ## v2.4.0
+
+  ***
+
+  ### DeepInfra: Tool Calling & Expanded API Support
+
+  DeepInfra now supports tool calling (function calling), including `tools`, `tool_choice`, and `parallel_tool_calls` parameters. Additionally, the **completions** and **embeddings** endpoints are now supported for DeepInfra.
+
+  [DeepInfra Documentation](/integrations/llms/deepinfra)
+
+  ### Vertex AI: Metadata to Labels
+
+  Portkey request metadata is now forwarded as Vertex AI resource labels. This enables governance and compliance for enterprises using GCP.
+
+  ### Streaming Usage for DeepSeek
+
+  DeepSeek now respects `stream_options`.
+
+  ### Fixes and Improvements
+
+  * **Together AI**: Added cost logging support for video generation requests (`/v2/videos`)
+  * **Anthropic**: Added `strict` parameter support in tool definitions
+  * **OpenAI & Azure OpenAI**: Fixed `response_format` being sent to non DALL-E image generation models (e.g., `gpt-image-1`) that don't support this parameter
+  * **AWS SageMaker**: Fixed AssumeRole authentication support
+  * **AWS Bedrock**: Fixed cost calculation for AWS GovCloud models
+  * Security dependency updates
+</Update>
+
+<Update label="2.3.0" description="2026-03-06">
+  ## v2.3.0
+
+  ***
+
+  ### New Guardrail: Akto Agentic Security
+
+  Added [Akto](/integrations/guardrails/akto) as a new guardrails partner. Akto Agentic Security provides advanced threat detection and security scanning for LLM inputs and outputs, protecting against prompt injection, sensitive data leakage, and other security threats. Supports `beforeRequestHook` and `afterRequestHook` hooks with configurable timeout (default: 5000ms).
+
+  ### DeepSeek Tool Calling and Reasoning
+
+  Added tool calling and reasoning support for the [DeepSeek](/integrations/llms/deepseek) provider:
+
+  * **Tool Calling**: `tools`, `tool_choice`, and `stream_options` parameters are now supported on `deepseek-chat`
+  * **Reasoning**: `reasoning_effort` parameter maps to DeepSeek's thinking mode for `deepseek-reasoner`. The `reasoning_content` field is returned in streaming responses
+
+  ### Azure AI Foundry Rerank
+
+  Added [rerank](/integrations/llms/azure-foundry#rerank) support for Azure AI Foundry using Cohere models (e.g., `cohere.Cohere-rerank-v4.0-pro`). The `cohere.` prefix is automatically stripped before forwarding to the provider.
+
+  ### Vertex AI Enterprise Web Search
+
+  Added support for [enterprise web search](/integrations/llms/vertex-ai#grounding-with-enterprise-web-search) grounding on Vertex AI. Pass the `enterpriseWebSearch` or `enterprise_web_search` tool in the `tools` array. Cost attribution distinguishes between standard Google Search and enterprise web search.
+
+  ### Vertex AI Cross-Cloud Workload Identity Federation
+
+  Added support for **AWS-to-GCP Workload Identity Federation** for Vertex AI, enabling cross-cloud authentication from AWS-hosted deployments. New environment variables:
+
+  * `GCP_WIF_AUDIENCE`: The WIF audience for the GCP project
+  * `GCP_WIF_SERVICE_ACCOUNT_EMAIL`: The GCP service account email to impersonate
+
+  ### Bedrock Batch Embeddings
+
+  Added batch embeddings support for Bedrock. You can now run batch inference jobs for embeddings in addition to chat completions.
+
+  ### Bedrock Guardrails Custom Host
+
+  Added `customHost` support for the [Bedrock guardrail](/integrations/guardrails/bedrock-guardrails) plugin, enabling connections to custom or private Bedrock endpoints.
+
+  ### Fixes and Improvements
+
+  * **Bedrock**: Fixed region handling for Anthropic models when using the `/messages` route
+  * **Bedrock**: Added `au` (Australia) prefix support for model config resolution
+  * **Bedrock/Vertex AI**: Improved filtering logic for unsupported `anthropic-beta` header values
+  * **Bedrock**: Updated validation checks for batch `completion_window`
+  * Updated model pricing configurations
+</Update>
+
+<Update label="2.2.6" description="2026-03-02">
+  ## v2.2.6
+
+  ***
+
+  ### Fixes and Improvements
+
+  * **Debug Logging**: Organization-level `enforce_debug_log_setting` now correctly ignores the `x-portkey-debug` request header when enforcement is enabled. Previously, the header could override the org-level setting even when enforcement was turned on
+  * **Azure AI Foundry**: Fixed token counting for Anthropic models (e.g., Claude Opus) accessed through Azure AI Foundry via the Messages API. The token counter now correctly handles Anthropic-style usage fields (`input_tokens`/`output_tokens`) in addition to OpenAI-style fields (`prompt_tokens`/`completion_tokens`)
+</Update>
+
+<Update label="2.2.5" description="2026-02-27">
+  ## v2.2.5
+
+  ***
+
+  ### Secondary Redis for BullMQ Workers
+
+  Added support for a **dedicated Redis instance** for BullMQ worker queues, separate from the primary Redis used for caching and rate limiting. This avoids Redis Cluster slot limitations that can affect BullMQ job processing.
+
+  New environment variables:
+
+  | Variable                    | Description                                              |
+  | --------------------------- | -------------------------------------------------------- |
+  | `REDIS_WORKERS_URL`         | Full Redis URL for the workers instance                  |
+  | `REDIS_WORKERS_HOST`        | Redis host (alternative to URL)                          |
+  | `REDIS_WORKERS_PORT`        | Redis port (alternative to URL)                          |
+  | `REDIS_WORKERS_USERNAME`    | Redis username                                           |
+  | `REDIS_WORKERS_PASSWORD`    | Redis password                                           |
+  | `REDIS_WORKERS_TLS_ENABLED` | Enable TLS for the workers Redis connection              |
+  | `REDIS_WORKERS_AUTH_MODE`   | Authentication mode (e.g., `EntraID`, `ManagedIdentity`) |
+
+  When not configured, workers continue to use the primary Redis connection.
+
+  ### Configurable Prometheus Metrics
+
+  Prometheus histogram buckets and metric labels are now configurable to control cardinality:
+
+  * **`PROMETHEUS_INCLUDE_MODEL_LABEL`**: Opt-in to include the `model` label in metrics (default: `false`). Enabling this can cause high cardinality
+  * **`PROMETHEUS_INCLUDE_METADATA_LABELS`**: Opt-in to include custom metadata labels (default: `false`)
+  * **`PROMETHEUS_LABELS_METADATA_ALLOWED_KEYS`**: Comma-separated list of allowed metadata keys when metadata labels are enabled
+  * Custom histogram bucket environment variables for LLM latency, HTTP duration, and GC duration metrics
+  * Default bucket counts reduced for lower cardinality while preserving observability
+
+  ### Provider Updates
+
+  * **Perplexity**: Added as a native [Responses API](/api-reference/inference-api/responses/responses) provider
+  * **OpenRouter**: Added embeddings endpoint support
+  * **ZhipuAI (Z.ai)**: Added cost attribution for chat and image generation models
+
+  ### Fixes and Improvements
+
+  * **Groq**: Fixed streaming tool calls by adopting a minimal pass-through response transform
+  * **Together AI**: Fixed streaming delta content returning `undefined` instead of `null` for missing content, which caused issues with tool call responses
+  * **OpenAI**: Fixed token config for embedding models to correctly handle units
+  * Added retries for ClickHouse queue inserts to improve analytics data reliability
+  * Updated model pricing configurations
+</Update>
+
+<Update label="2.2.4" description="2026-02-20">
+  ## v2.2.4
+
+  ***
+
+  ### Bedrock Anthropic Citations
+
+  Added support for Anthropic's citations feature on Bedrock for chat completions API.
+
+  ### Zscaler AI Guard
+
+  Added [Zscaler AI Guard](/integrations/guardrails/zscaler) as a new guardrails partner. Zscaler AI Guard enforces Detections Policies to perform security checks including Data Loss Prevention (DLP) and prompt injection protection on both inbound prompts and outbound model responses.
+
+  ### Speech SSE Streaming
+
+  OpenAI and Azure OpenAI [text-to-speech](/product/ai-gateway/multimodal-capabilities/text-to-speech#sse-streaming) requests now support Server-Sent Events (SSE) streaming. Set `stream_format: "sse"` to receive audio data as a stream of events with proper usage logging.
+
+  ### ZhipuAI Image Generation
+
+  ZhipuAI (Z.ai) now supports [image generation](/integrations/llms/zhipu#image-generation) through the CogView model family (e.g., `cogview-4-250304`). Supported parameters include `prompt`, `model`, `n`, `size`, `response_format`, and `user`.
+
+  ### Fixes and Improvements
+
+  * **OpenAI & Azure OpenAI**: Added support for the `prompt_cache_retention` parameter in chat completions and the Responses API
+  * **Vertex AI**: Added `x-portkey-vertex-auth-type` support in provider options for configuring authentication type (e.g., workload identity)
+  * **Gemini & Vertex AI**: Fixed tool message content handling when content is an array of text parts (OpenAI format)
+  * **Logging**: `user_id` is now automatically recorded in analytics from the API key's associated user.
+  * Fixed stream consumption errors when the downstream client disconnects mid-stream
+  * Updated model pricing configurations
+</Update>
+
+<Update label="2.2.3" description="2026-02-13">
+  ## v2.2.3
+
+  ***
+
+  ### New Provider: Databricks
+
+  Added support for Databricks Model Serving as a new provider with support for chat completions, completions, and embeddings.
+
+  [Databricks Documentation](/integrations/llms/databricks)
+
+  ### Together AI Reasoning Support
+
+  Together AI now supports reasoning/thinking models with `reasoning_effort` parameter and `content_blocks` in the response. When `strictOpenAiCompliance` is set to `false`, the response includes structured `content_blocks` with both thinking content and the final text response. Both streaming and non-streaming modes are supported.
+
+  [Together AI Documentation](/integrations/llms/together-ai#reasoning--thinking-support)
+
+  ### Fixes and Improvements
+
+  * **Unified Messages & Responses API**: Fixed issues when a request config had a combination of native and non-native providers (e.g., load balancing across Anthropic and OpenAI). The adapter decision is now made per-provider, ensuring correct behavior for mixed configs.
+  * **Responses API**: Groq, OpenRouter, and xAI now use the native `/responses` endpoint supported by each provider for Responses API requests
+  * **Anthropic**: Fixed `max_tokens` handling in chat completions — `max_tokens` now takes precedence over `max_completion_tokens` when both are provided
+  * Updated model pricing configurations for Bedrock
+</Update>
+
+<Update label="2.2.2" description="2026-02-11">
+  ## v2.2.2
+
+  ***
+
+  ### Claude 4.6 Support
+
+  Full support for Claude 4.6 features across Anthropic, Bedrock, and Azure AI Foundry:
+
+  * **Adaptive Thinking**: Support for `thinking: { type: "adaptive" }` with `reasoning_effort` parameter
+  * **`output_config`**: Passthrough for structured outputs (`output_config.format`) and reasoning control (`output_config.effort`)
+  * **`response_format` → `output_config` Mapping**: `response_format` with `json_schema` is automatically mapped to Anthropic's `output_config.format`
+  * **`text_editor_20250728`**: Support for the latest text editor tool version
+  * **New Stop Reasons**: `refusal` and `model_context_window_exceeded` mapped to OpenAI-compatible `finish_reason` values
+
+  ### Responses API Improvements
+
+  * **Native Provider Support**: Added x-ai (Grok), Groq, OpenRouter, and Azure AI Foundry as native Responses API providers
+  * **Schema Compliance**: Response objects now include all required fields per the OpenAI Responses API spec
+  * **Prompt Caching**: `cache_control` preserved on content items and tools in the Responses API adapter
+  * **Thinking Passthrough**: `thinking` parameter now works through the Responses API adapter
+
+  ### Fixes and Improvements
+
+  * **Gemini/Vertex AI**: Fixed structured output handling by switching to `responseJsonSchema` for proper JSON schema support
+  * **Gemini/Vertex AI**: Improved thought signature handling for tool calling in multi-turn conversations
+  * **Vertex AI**: Fixed global region handling and improved error responses for batch operations
+  * **Messages API**: Fixed override params handling when checking native provider support in fallback/retry configurations
+  * **HTTP**: Fixed timeout configuration to use separate HTTP agents, preventing interference with data service connections
+  * Updated model pricing configurations
+  * Updated depencies to patch security vulnerabilities
+</Update>
+
+<Update label="2.2.1" description="2026-02-07">
+  ## v2.2.1
+
+  ***
+
+  ### Fixes and Improvements
+
+  * **Workspace Alerts**: Fixed threshold validation for integration workspace alerts
+  * **Gemini/Vertex AI**: Fixed JSON schema handling issues for structured outputs
+  * **OpenAI**: Fixed cost attribution for image editing requests
+  * Updated model pricing configurations across multiple providers
+</Update>
+
+<Update label="2.2.0" description="2026-02-06">
+  ## v2.2.0
+
+  ***
+
+  ### Messages API Now Works with All Providers
+
+  The Anthropic Messages API (`/v1/messages`) now works with **all providers** through a universal adapter, not just Anthropic, Bedrock, and Vertex AI. Use the Messages API format with OpenAI, Google, and more providers seamlessly.
+
+  ### OpenTelemetry Enhancements
+
+  * Metadata arrays are now flattened into individual span attributes for better observability and easier querying in your tracing backend
+
+  ### Provider Updates
+
+  * **Gemini/Vertex AI**: Added support for the `media_resolution` parameter to control the resolution of media inputs when processing images and videos
+
+  ### Fixes and Improvements
+
+  * Fixed model detection for batch requests to correctly identify and attribute the model being used
+  * Updated model pricing configurations across multiple providers
+</Update>
+
+<Update label="2.1.0" description="2026-02-04">
+  ## v2.1.0
+
+  ***
+
+  ### Responses API Now Works with All Providers
+
+  The OpenAI Responses API (`/v1/responses`) now works with **all 70+ providers**, not just OpenAI and Azure OpenAI. Use the Responses API format with Anthropic, Google, Bedrock, and more.
+
+  **Note:** Responses API-only features like `previous_response_id` state management and built-in tools (`web_search`, `file_search`, `computer_use`) are only supported on OpenAI and Azure OpenAI.
+
+  [Responses API Documentation](/api-reference/inference-api/responses/responses)
+
+  ### Provider Updates
+
+  * **Vertex AI**: Added option to skip cost attribution for Provisioned Throughput (PTU) deployments. Configure via:
+    * Model Catalog Integration settings: `vertex_skip_ptu_cost_attribution: true`
+    * Virtual Key API: `vertexSkipPtuCostAttribution: true`
+  * **Bedrock**: Fixed handling of `cache_control` blocks for Anthropic models to remove unsupported `scope` parameter
+  * **Anthropic**: Improved handling of beta headers and version headers across all routes
+
+  ### Batch Pricing
+
+  * Added support for dedicated batch pricing configurations. When batch-specific pricing is not available, the system defaults to 50% of standard pricing for cost attribution on batch requests.
+    <Info> Works with `Data Service` version v1.5.0 or higher </Info>
+    <Note>Older versions of Data Service continue to work for batch pricing with the default 50% cost attribution.</Note>
+
+  ### Fixes and Improvements
+
+  * **MCP Gateway**: Fixed user identity forwarding not working correctly
+  * **JWT Plugin**: Fixed validation failures when identity providers like Microsoft Entra ID don't include the `alg` field in their JWKS keys. The plugin now correctly falls back to `RS256` when the configured algorithms list is empty.
+  * **OpenAI**: Fixed cost attribution not being reflected for embeddings requests
+  * **OpenAI Streaming**: Fixed `service_tier` and `system_fingerprint` handling in stream concatenation and cache streaming
+  * **Gemini/Vertex AI**: Improved error handling for `MALFORMED_FUNCTION_CALL` responses. Error details are now returned in `finish_message` field when `strictOpenAiCompliance` is disabled.
+  * Various error logging improvements and internal dependency updates
+</Update>
+
+<Update label="2.0.0" description="2026-01-28">
+  ## v2.0.0
+
+  ***
+
+  ### MCP Gateway is now Generally Available
+
+  Portkey's MCP Gateway is now GA, providing enterprise-grade infrastructure for the Model Context Protocol. Key features include:
+
+  * **Centralized MCP Server Management**: Add and manage internal and external MCP servers from a single registry
+  * **OAuth 2.1 & API Key Authentication**: Secure access with OAuth for interactive use or API keys for programmatic access
+  * **Workspace-Level Provisioning**: Control which teams and workspaces can access specific MCP servers and tools
+  * **Full Observability**: Monitor and debug all MCP tool calls with complete context, logs, and traces
+
+  [MCP Gateway Documentation](/product/mcp-gateway/quickstart)
+
+  ### Unified Rerank API
+
+  Introduced a unified `/rerank` endpoint that provides a consistent interface for reranking across multiple providers. This allows you to switch between reranking providers (Cohere, Jina, Voyage AI) without changing your application code.
+
+  ### Usage and Rate Limit Policy Enhancements
+
+  Added new condition keys for fine-grained budget and rate limit policies:
+
+  * `virtual_key`: Match by virtual key slug
+  * `provider`: Match by provider (e.g., `openai`, `anthropic`)
+  * `config`: Match by gateway config slug
+  * `prompt`: Match by prompt template slug
+  * `model`: Match by model with wildcard support (e.g., `@openai/gpt-4o`, `@anthropic/*`)
+
+  [Budget Policies Documentation](/product/enterprise-offering/budget-policies)
+
+  ### New Plugins
+
+  * **Inline Image URLs Plugin**: Convert external image URLs to inline base64 data for VPC-SC environments where external URLs are not accessible
+  * Updated support for multiple partner guardrails
+
+  ### Dynamic Model Pricing for Air Gapped Deployments
+
+  * Dynamically fetch model pricing without requiring image updates
+  * Set `MODEL_CONFIGS_PROXY_FETCH_ENABLED=ON` in **Gateway** to fetch pricing from the Backend service
+  * The **Backend** service resolves pricing via configurable sources (proxy service, log store, or local files) — see [Backend Changelog (v1.7.0)](/changelog/backend#private-deployment-pricing) for Backend-side environment variables
+  * See the [Air-Gapped Model Pricing guide](/self-hosting/airgapped/model-pricing) for full setup instructions
+
+  ### Infrastructure Updates
+
+  * **GCP Workload Identity**: Added support for Workload Identity IAM-based access for GCS and VertexAI, enabling keyless authentication in GKE environments
+
+  ### Provider Updates
+
+  * **Gemini/Vertex AI**: Added explicit caching support for Gemini models
+  * **Gemini/Vertex AI**: Improved thought signature handling for seamless multi-turn conversations with Gemini models
+  * **Gemini/Vertex AI**: Added support for minimal thinking mode, mapping `reasoning_effort: minimal` to `budget_tokens: 1024` for Gemini 2.5 models
+  * **Gemini/Vertex AI**: Fixed response schema mapping for structured outputs
+  * **Bedrock**: Fixed handling when documents are present by adding required text block
+  * **Bedrock**: Fixed handling of empty tool arguments in multi-turn conversations
+
+  ### Performance Improvements
+
+  * **Budget Tracking**: Implemented in-memory cache key tracking with periodic sync to Redis. Budget increments are now accumulated in memory and synced every 10 seconds, significantly reducing Redis calls on the hot path
+
+  ### Fixes and Improvements
+
+  * **Models Endpoint**: The `/v1/models` endpoint now accepts API keys with `completions:write` permission (for upstream provider routing) in addition to `virtual_keys:list` (for Portkey models endpoint)
+  * **Logging**: Response body logging is now skipped for all embeddings requests (previously only skipped for specific models), reducing log storage
+  * **OpenAI**: Fixed JSON body parsing for `/v1/vector_stores/{id}/files` endpoints which was incorrectly returning "Missing required parameter" errors
+  * Updated token counting logic for chat completions to align with OpenAI specification
+  * Fixed cost attribution: costs are no longer attributed for Anthropic's `count_tokens` endpoint
+  * Fixed cost attribution: costs are no longer attributed when usage object is not present in Responses API
+  * Fixed handling of self-referencing JSON schemas in structured outputs
+  * Fixed `prompt_tokens` returning `0` in streaming responses for Vertex AI Anthropic models
+  * Internal dependency updates
+</Update>
+
+<Update label="1.17.15" description="2026-01-23">
+  ## v1.17.15
+
+  ***
+
+  ### New Guardrails
+
+  * **CrowdStrike AIDR**: Added partner plugin integration with CrowdStrike AI Detection and Response for scanning LLM inputs and outputs. Supports blocking or redacting content based on configured rules.
+
+  ### Fixes and Improvements
+
+  * Fixed sequential guardrail checks execution
+</Update>
+
+<Update label="1.17.14" description="2026-01-23">
+  ## v1.17.14
+
+  ***
+
+  ### Fixes and Improvements
+
+  * Improved control plane sync handling for multi-organisation deployments
+  * Internal dependency updates
+</Update>
+
+<Update label="1.17.13" description="2026-01-13">
+  ## v1.17.13
+
+  ***
+
+  ### Provider Updates
+
+  * **Gemini/Vertex AI**: Fixed `reasoning_effort` parameter mapping for Gemini 2.5 models. Now correctly maps to `thinking_budget` (token-based) instead of `thinkingLevel`:
+    * `low`: 1,024 tokens
+    * `medium`: 8,192 tokens
+    * `high`: 24,576 tokens
+    * Gemini 3.0+ models continue to use `thinkingLevel` mapping
+
+  ### Fixes and Improvements
+
+  * **Bedrock**: Fixed `anthropic_beta` parameter handling to properly parse comma-separated string values into arrays (e.g., `"beta1, beta2"` now correctly converts to `["beta1", "beta2"]`)
+  * **Bedrock**: Updated `anthropic_version` parameter handling for Anthropic models
+</Update>
+
+<Update label="1.17.12" description="2026-01-08">
+  ## v1.17.12
+
+  ***
+
+  ### Responses API Hooks Support
+
+  * Hooks and guardrails now fully support the `/v1/responses` endpoint
+  * Apply input/output guardrails, custom webhooks, and other hooks to Responses API requests
+
+  ### New Azure Guardrails
+
+  * **Shield Prompt**: Detects jailbreak and prompt injection attacks using Azure AI Content Safety Prompt Shields API
+    * Analyzes system prompts and user messages for potential attacks
+    * Supports both API key and Entra ID authentication
+    * [Documentation](/integrations/guardrails/azure-guardrails#azure-shield-prompt)
+  * **Protected Material**: Detects copyrighted or protected text content in LLM outputs using Azure AI Content Safety API
+    * Identifies known protected/copyrighted material in model responses
+    * Helps ensure compliance with intellectual property requirements
+    * [Documentation](/integrations/guardrails/azure-guardrails#azure-protected-material)
+
+  ### Sequential Guardrails Execution
+
+  * Added `sequential` flag for guardrails to execute checks in order rather than in parallel
+  * Useful when guardrail results depend on previous checks or when order matters for compliance
+
+  ### Provider Updates
+
+  * **xAI**: Added support for **Realtime Voice Agent API** (Grok Voice API), enabling real-time voice interactions through WebSocket connections. The API is OpenAI Realtime API compatible, making it easy to integrate with existing voice agent workflows. Includes pricing configuration for the `grok-2-voice` realtime model with full cost attribution.
+  * **Gemini/Vertex AI**: Added support for **Google Maps grounding** with Gemini and Vertex AI models
+  * **OpenAI & Azure OpenAI**: Added support for new `gpt-image-1` parameters: `moderation`, `output_format`, `output_compression`, `background`, `partial_images`, `stream`
+  * **Azure OpenAI**: Added `x-portkey-azure-entra-scope` header to specify custom authentication scopes for Entra ID and Managed Identity auth (e.g., `https://ai.azure.com/.default` for Azure AI Foundry)
+  * **OpenAI & Azure OpenAI**: Added `output_expires_after` parameter support for batch creation. Azure OpenAI additionally supports blob-based batch inputs via `input_blob` and `output_folder` parameters.
+  * **Anthropic**: Added full support for Anthropic's citations feature in responses
+  * **Anthropic on Bedrock**: Anthropic models on Bedrock now use native Messages API format when calling `/v1/messages` route, enabling features like citations that aren't available through the Converse API
+
+  ### Pricing Updates
+
+  * **Gemini Thinking Tokens**: Updated pricing to reflect that Gemini thinking tokens are no longer charged separately
+  * **Vertex AI Embeddings**: Added cost attribution for embedding models on proxy routes
+
+  ### Fixes and Improvements
+
+  * Fixed Oracle provider configuration mapping
+  * Improved Anthropic beta header handling across Vertex AI and Bedrock
+  * Fixed minor issues with `Regex Replace` guardrail
+</Update>
+
+<Update label="1.17.11" description="2025-12-23">
+  ## v1.17.11
+
+  ***
+
+  ### Prometheus Metrics Toggle
+
+  * Added ability to **disable Prometheus metrics** via environment variable
+  * Set `ENABLE_PROMETHEUS=false` to disable the `/metrics` endpoint and metrics collection middleware
+  * Useful for deployments where Prometheus metrics are not needed or when using alternative monitoring solutions
+  * Enabled by default for backward compatibility
+</Update>
+
+<Update label="1.17.10" description="2025-12-18">
+  ## v1.17.10
+
+  ***
+
+  ### OpenAI-Compatible Response IDs
+
+  * **Google and Vertex AI**: Response IDs are now generated in OpenAI-compatible format for improved compatibility with OpenAI SDKs and tooling
+    * Chat completion IDs: `chatcmpl-{random}` (previously `portkey-{uuid}`)
+    * Tool call IDs: `call_{random}` (previously `portkey-{uuid}`)
+  * This change improves interoperability when using OpenAI-compatible clients with Google/Vertex AI models
+
+  ### Pricing Updates
+
+  * Added pricing configurations for new models across multiple providers
+</Update>
+
+<Update label="1.17.9" description="2025-12-18">
+  ## v1.17.9
+
+  ***
+
+  ### Provider Updates
+
+  * **Azure OpenAI**: Added support for the `/v1/images/edits` endpoint for image editing
+  * **Gemini/Vertex AI**: Added support for the `image_config` parameter to control image generation settings. Users can now specify `aspect_ratio` and `image_size` for Gemini's image generation capabilities.
+  * **Gemini/Vertex AI**: Fixed web search cost attribution for grounding calls to correctly detect grounding chunks in responses when strict openai compliance flag is not set or set to true
+</Update>
+
+<Update label="1.17.8" description="2025-12-18">
+  ## v1.17.8
+
+  ***
+
+  ### Pricing Updates
+
+  * **OpenAI Web Search**: Updated web search cost calculation to align with OpenAI's latest pricing model, consolidating context-based pricing (`web_search_low_context`, `web_search_medium_context`, `web_search_high_context`) into a single `web_search` metric
+
+  ### Fixes and Improvements
+
+  * **F5 Guardrails**: Fixed API endpoint and improved blocking logic. Requests are now blocked when the scan outcome is `blocked` or `flagged`, and redaction is only applied when explicitly enabled.
+  * **Streaming**: Fixed stream response log handling to correctly include annotations in responses
+</Update>
+
+<Update label="1.17.7" description="2025-12-12">
+  ## v1.17.7
+
+  ***
+
+  ### New Guardrail: Blocked Tools
+
+  * Added a new guardrail plugin to control which AI tools can be used in requests. Block specific tool types or function names using blocklists or allowlists.
+  * Supports blocking tool types: `function`, `web_search_preview`, `web_search`, `file_search`, `code_interpreter`, `computer_use`, `mcp`
+  * Supports blocking specific function names by name
+  * Can use either blocklist (block specific tools) or allowlist (only allow specific tools) approach
+
+  ### Redis Cluster Discovery
+
+  * Added support for dynamic Redis cluster endpoint discovery via an HTTPS URL
+  * Added support for static Redis cluster endpoints configuration
+  * New environment variables:
+    * `REDIS_CLUSTER_ENDPOINTS`: Comma-separated list of static Redis cluster endpoints (e.g., `10.0.1.1:6379,10.0.1.2:6379`)
+    * `REDIS_CLUSTER_DISCOVERY_URL`: HTTPS URL that returns comma-separated Redis cluster endpoints
+    * `REDIS_CLUSTER_DISCOVERY_AUTH`: Optional authorization header for the discovery endpoint
+    * `REDIS_CLUSTER_DISCOVERY_REFRESH_INTERVAL`: Cache refresh interval in milliseconds (default: 5 minutes)
+  * Supports IPv4, IPv6, and hostname formats for endpoints
+
+  ### Semantic Cache Improvements
+
+  * Added configurable embedding dimensions for semantic cache
+  * New environment variable: `SEMANTIC_CACHE_EMBEDDING_DIMENSIONS` to set custom embedding dimensions (default: 1536)
+
+  ### Provider Updates
+
+  * **Anthropic**: Fixed `anthropic-beta` header to be allowed on all routes for the Anthropic provider
+  * **Gemini/Vertex AI**: Fixed response handling to correctly concatenate multiple text parts in responses
+
+  ### Fixes and Improvements
+
+  * Excluded batch and files GET requests from budget exhausted checks
+  * Updated F5 guardrails to use `prompts` endpoint instead of `scan`
+  * Moved the rate limiter implementation to fixed window rate limiter to avoid continuous token refills.
+</Update>
+
+<Update label="1.17.6" description="2025-12-09">
+  ## v1.17.6
+
+  ***
+
+  ### New Provider
+
+  * **Oracle Cloud Infrastructure (OCI)**: Added support for Oracle OCI Generative AI service with request signing authentication. Supports Cohere and Meta Llama models via Oracle's inference API.
+    * [Documentation](/integrations/llms/oracle)
+
+  ### New Features
+
+  * **Sticky Load Balancing**: Added sticky session support for load balancing configurations. Ensures consistent routing based on configurable hash fields (e.g., user ID, session ID) with configurable TTL.
+    * [Documentation](/product/ai-gateway/load-balancing#sticky-load-balancing)
+
+  ### Provider Updates
+
+  * **Gemini/Vertex AI**: Added `reasoning_effort` parameter support for controlling thinking behavior. Maps OpenAI's `reasoning_effort` (`minimal`/`low`/`medium`/`high`) to Gemini's `thinkingLevel` (`low`/`high`).
+    * [Documentation](/integrations/llms/gemini#using-reasoning_effort-parameter)
+  * **Azure OpenAI**: Added support for v1 preview API version for Azure OpenAI endpoints
+  * **Azure OpenAI**: Added pricing support for batch `/responses` endpoint with deployment
+
+  ### Fixes and Improvements
+
+  * Fixed Vertex AI model preference handling for batch pricing requests
+  * Fixed Realtime API to update request body with model from query parameters
+  * Fixed OpenTelemetry status code conversion to HTTP status codes
+  * Fixed embedding providers to accept array format for input
+  * Removed unnecessary text check condition for afterRequestHook in HooksManager
+  * Updated Dockerfile npm version to 11.6.4 to fix glob vulnerability
+</Update>
+
+<Update label="1.17.5" description="2025-12-01">
+  ## v1.17.5
+
+  ***
+
+  ### Security
+
+  * **SSRF Protection**: Added request validation to prevent Server-Side Request Forgery (SSRF) attacks via configuration URLs
+
+  ### OpenTelemetry Improvements
+
+  * **W3C Traceparent Fix**: Fixed `traceparent` header parsing to correctly set `parent_span_id` from the incoming span and generate a new `span_id` for the gateway's span. This improves trace linking in distributed tracing tools.
+  * **Span Kind**: Added `span.kind = SERVER` attribute to exported spans
+  * **Span Name**: Automatically sets `span_name` from HTTP method and path (e.g., `POST /v1/chat/completions`) when `traceparent` is provided
+  * [Documentation](/product/observability/traces#w3c-trace-context-support)
+
+  ### Semantic Cache Improvements
+
+  * Added configurable similarity metric support for Milvus and Pinecone vector stores (COSINE, L2, IP)
+  * Fixed semantic cache logic for Milvus to use correct similarity threshold comparisons
+
+  ### Realtime API Improvements
+
+  * Added support for provider authentication via query parameters (e.g., `model=@provider/model`)
+  * Fixed model parameter sanitization in Realtime API handler
+
+  ### Fixes and Improvements
+
+  * Fixed OpenAI responses stream parsing logic for `createModelResponse` function
+  * Updated Jest version to address security vulnerabilities
+</Update>
+
+<Update label="1.17.4" description="2025-11-27">
+  ## v1.17.4
+
+  ***
+
+  ### Provider Updates
+
+  * **Azure AI Foundry**: Added support for Anthropic Claude models via Azure AI Foundry, including:
+    * Native `/messages` endpoint support for Anthropic-native features (extended thinking, prompt caching, native streaming)
+    * Support for Claude 4.5 models: `claude-opus-4-5-20251101`, `claude-sonnet-4-5-20250929`, `claude-haiku-4-5-20251001`
+    * [Documentation](/integrations/llms/azure-foundry#using-anthropic-models-on-azure-ai-foundry)
+
+  ### Fixes and Improvements
+
+  * Fixed cross-region support for Bedrock and Sagemaker - user-specified region now takes priority over credentials region
+  * Fixed Azure OpenAI to use deployment name for responses API
+  * Fixed TLS configuration in agent store to use 'connect' instead of 'tls'
+  * Improved Redis URL handling with fallback to `redis:6379` for empty URLs
+</Update>
+
+<Update label="1.17.3" description="2025-11-24">
+  ## v1.17.3
+
+  ***
+
+  ### Fixes and Improvements
+
+  * Fixed guardrails execution for unified `/messages` endpoint
+</Update>
+
+<Update label="1.17.2" description="2025-11-24">
+  ## v1.17.2
+
+  ***
+
+  ### Provider Updates
+
+  * **VertexAI and Google**:
+    * Added cost calculation support for `gemini-2.5-flash-image` and `gemini-3-pro-image-preview` models
+    * Added support for the `thought_signature` parameter. [Documentation](/integrations/llms/vertex-ai#thought-signatures-tool-calling-verification)
+  * **Bedrock**: Added support for the `x-portkey-aws-region` header to set the region for Bedrock and SageMaker integration with `serviceRole` auth type
+
+  ### Fixes and Improvements
+
+  * Added the traces URL from the incoming request to the analytics objects created from OpenTelemetry spans
+</Update>
+
+<Update label="1.17.1" description="2025-11-19">
+  ## v1.17.1
+
+  ***
+
+  ### Hook Results in Streaming Responses
+
+  * Added support for returning hook results in streaming responses for `/chat/completions`, `/completions`, `/embeddings`, and `/messages` endpoints. This enables you to stop streaming or display redacted content when a request violates guardrail policies, allowing clients to enforce content policy guidelines in real-time.
+  * [Documentation](/product/guardrails#streaming-responses)
+
+  ### New Plugins
+
+  * **F5 Guardrails**: Added partner plugin integration with content moderation and PII detection/redaction capabilities.
+
+  ### Provider Updates
+
+  * **Azure OpenAI**: Added support for `model-router`
+  * **TogetherAI**: Added support for image generation cost calculation
+  * **VertexAI**:
+    * Added support for video generation (Veo models) cost calculation
+    * Fixed MIME type mapping for opus format: Changed from `audio/ogg` to `audio/opus` for better accuracy
+    * Added MIME type mapping for aliases: 'ogg', 'pcm', 'aac', and 'm4a' alongside their existing 'x-' prefixed variants
+  * **OpenAI and Azure OpenAI**: Added support for video generation (Sora models) cost calculation
+  * **Bedrock**: Fixed `count_tokens` endpoint errors for Anthropic models
+  * **Anthropic**: Added proper header forwarding for `anthropic-beta` and `anthropic-version` headers from the original request
+
+  ### Fixes and Improvements
+
+  * Added and updated model pricing configurations across multiple providers
+  * Fixed issues in `/log/exports` endpoints
+  * Fixed an issue where the provider identifier was not being logged in the analytics store for some cases
+  * Updated internal dependencies to patch security vulnerabilities
+  * Reduced model pricing configuration cache TTL for faster pricing updates
+</Update>
+
+<Update label="1.17.0" description="2025-11-17">
+  ## v1.17.0
+
+  ***
+
+  <Note>
+    **Requires a Helm repo update (>app-1.4.0)**
+  </Note>
+
+  <Note>
+    **For air-gapped deployments, `Backend` version v1.5.0 is required as it adds new columns in the analytics store**
+  </Note>
+
+  ### Security Patch
+
+  * Removed root user from container image (BREAKING CHANGE). The container image used by this chart no longer runs as root. The image now runs processes with a non-root UID and enforces a non-root container securityContext. Requires Helm repo upgrade (>app-1.4.0) to deploy the new image and chart settings.
+
+  ### Usage and Rate Limit Policy
+
+  * Introduced usage limits and rate limit policies, which allow organizations to apply flexible budget and rate limit controls based on dynamic conditions (API keys, metadata, workspace, etc.).
+  * More details: [Documentation](/product/enterprise-offering/budget-policies) and [API Reference](/api-reference/admin-api/control-plane/policies)
+
+  ### Logging Enhancements
+
+  * Added support for OpenTelemetry W3C trace context headers (`traceparent` and `baggage`) to enable integration with distributed tracing systems.
+  * When these standard headers are present, they are automatically parsed and mapped to Portkey's internal tracing headers.
+
+  ### Finetuning Cost Tracking
+
+  * Added cost calculation logic for fine-tuning operations across multiple AI providers (OpenAI, Azure OpenAI, and Vertex AI).
+
+  ### Hourly-Based Log Object Prefix
+
+  * Introduced support for hourly-based S3 file path prefixes.
+  * Set `LOG_STORE_FILE_PATH_FORMAT` environment variable to toggle between `v1` (flat structure - existing format) and `v2` (time-hierarchical) path formats. By default, it will use the existing format (v1).
+  * `v1` (default) - The object path will follow this structure: `30/<organisation-id>/<log-id>.json`
+  * `v2` - The object path will follow this structure: `30/<organisation-id>/<workspace-slug>/<year>/<month>/<day>/<hour>/<log-id>.json`
+    <Note>Changing the `LOG_STORE_FILE_PATH_FORMAT` environment variable only affects newly written logs. Previously written logs will retain their original path format and are not migrated to the new structure.</Note>
+    <Note>The new v2 prefix structure is currently not supported for air-gapped deployments where `LOG_STORE` is set to `control_plane`. Support will be added in a future release.</Note>
+
+  ### Provider Updates
+
+  * **OpenAI and Azure OpenAI**: Fixed cached tokens cost calculation for `responses` endpoint
+  * **Bedrock**: Added handling for empty `tools` array in `messages` endpoint
+  * **Google and VertexAI**: Allow `0` and empty string values for parameters
+
+  ### Fixes and Improvements
+
+  * Added performance improvements for file uploads
+  * Added logging for Portkey-managed POST `/batches` and `/fine_tuning/jobs` requests
+  * Updated `gcs` and `s3_custom` log store implementation to use unsigned-payload for PUT operations
+</Update>
+
+<Update label="1.16.7" description="2025-11-12">
+  ## v1.16.7
+
+  ***
+
+  ### Provider Updates
+
+  * **Google VertexAI**: Added mime type mapping for multiple audio formats - `opus`, `flac`, `pcm16`, `x-aac`, `x-m4a`, `mpeg`, `mpga`, `mp4`, `webm`
+
+  ### Fixes and Improvements
+
+  * Improved cache handling for Azure Managed Identity and Entra tokens
+</Update>
+
+<Update label="1.16.6" description="2025-11-06">
+  ## v1.16.6
+
+  ***
+
+  ### Token Sum Prometheus Metric
+
+  * Added a new Prometheus metric `llm_token_sum` to track the total LLM tokens consumed
+
+  ### New Providers
+
+  * **Modal**: Added support for Modal Labs as a new LLM provider
+
+  ### JWT Plugin Enhancements
+
+  * Added token introspection endpoint validation as an alternative to JWKS
+  * Implemented flexible claim validation with multiple match types (exact, contains, containsAll, regex)
+  * Added claim extraction and injection into request context as headers
+
+  ### Provider Updates
+
+  * **Cohere**: Updated the Cohere integration to use the v2 `chat` and `embed` endpoints
+
+  ### Fixes and Improvements
+
+  * Added an environment variable (`SKIP_DATAPLANE_CONFIG_CHECK = 'true'`) to allow configs with multiple targets for unified batches file upload endpoints
+  * Implemented cost and token calculation for trace spans following the GenAI OTel semantic conventions
+  * Added and updated model pricing configs for multiple providers
+</Update>
+
+<Update label="1.16.5" description="2025-11-03">
+  ## v1.16.5
+
+  ***
+
+  ### Provider Updates
+
+  * **VertexAI**: Added support for \[[https://docs.cloud.google.com/vertex-ai/generative-ai/docs/computer-use\](Computer](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/computer-use]\(Computer) Use).
+    * link to documentation: [https://portkey.ai/docs/integrations/llms/vertex-ai#computer-use-browser-automation-preview](https://portkey.ai/docs/integrations/llms/vertex-ai#computer-use-browser-automation-preview)
+  * **VertexAI**: Added support for `anthropic-beta`. Please pass `anthropic-beta` or `x-portkey-anthropic-beta` header to enable this feature.
+  * **OpenAI**: Added support for `conversation` and `modalities` parameters.
+  * **Anthropic**: Add role to `assistant` in chat completion stream response.
+
+  ### HTTP Proxy Support for Websockets
+
+  * **HTTPS\_PROXY**: Added support for HTTP Proxy support for websockets.
+
+  ### Experimental GenAI Otel Support
+
+  * The semantic convention is defined here: [https://github.com/open-telemetry/semantic-conventions/blob/main/model/gen-ai/spans.yaml](https://github.com/open-telemetry/semantic-conventions/blob/main/model/gen-ai/spans.yaml)
+  * link to documentation: [https://portkey.ai/docs/product/observability/opentelemetry#experimental-features](https://portkey.ai/docs/product/observability/opentelemetry#experimental-features)
+
+  ### Robust Cors Support
+
+  * Added support for robust CORS configuration for the Gateway.
+  * The following environment variables will be used to configure the CORS configuration:
+    * `CORS_ALLOWED_ORIGINS`: The allowed origins for CORS requests
+    * `CORS_ALLOWED_METHODS`: The allowed methods for CORS requests
+    * `CORS_ALLOWED_HEADERS`: The allowed headers for CORS requests
+    * `CORS_ALLOWED_EXPOSE_HEADERS`: The exposed headers for CORS requests
+</Update>
+
+<Update label="1.16.4" description="2025-10-29">
+  ## v1.16.4
+
+  ***
+
+  ### Provider Updates
+
+  * **AWS Bedrock**: Added support for `bearer tokens` for authentication.
+
+  ## Infrastructure Updates
+
+  * **EKS Pod Identity**: Added support for EKS Pod Identity in conjuction with IRSA for EKS clusters.
+</Update>
+
+<Update label="1.16.3" description="2025-10-28">
+  ## v1.16.3
+
+  ***
+
+  ### Provider Updates
+
+  * **OpenAI and Azure OpenAI**: Add support for streaming audio transcription requests.
+  * **VertexAI**: Enable custom model support for batch inference.
+</Update>
+
+<Update label="1.16.2" description="2025-10-24">
+  ## v1.16.2
+
+  ***
+
+  ### Provider Updates
+
+  * **Google and VertexAI**: Fixed cost calculation for grounding requests to check `groundingChunks` array in the response. Cost attribution now occurs when at least one grounding chunk is present
+</Update>
+
+<Update label="1.16.1" description="2025-10-23">
+  ## v1.16.1
+
+  ***
+
+  ### New Guardrails
+
+  * **Add Prefix**: Add a configurable prefix to the user's input before sending to the model
+  * **Allowed Request Types**: Control which request types (endpoints) can be processed. Use either an allowlist or blocklist approach
+
+  ### Fixes and Improvements
+
+  * Handle 0 value for the Bedrock `temperature` parameter
+</Update>
+
+<Update label="1.16.0" description="2025-10-18">
+  ## v1.16.0
+
+  ***
+
+  ### Enhancements For Unified Batches
+
+  * Track provider batches automatically through data-service for cost tracking
+    <Info>Requires `Data Service` version 1.3.0 to be deployed.</Info>
+
+  ### AWS Service Role Auth
+
+  * Added support for AWS Service Role authentication for AWS Bedrock models.
+  * In this mode, the Gateway will use its own service role to invoke Bedrock models.
+
+  ### Configurable Outbound Request Timeout
+
+  * Introduced `REQUEST_TIMEOUT` environment variable to configure fetch timeouts for outbound LLM requests
+  * The value should be in milliseconds. Default is 300000 (5 minutes)
+  * NOTE: This timeout is only applicable for individual LLM requests that are made by the Gateway
+
+  ### NO\_PROXY support
+
+  * Added support for `NO_PROXY` environment variable to bypass outbound requests to the specified hosts.
+  * This is useful when you want to bypass outbound requests to certain hosts in conjuction with `HTTPS_PROXY`.
+
+  ### TLS support for Control Plane Calls for Air-gapped Deployments
+
+  * Added support for TLS configuration for control plane calls for air-gapped deployments.
+  * Use `TLS_KEY`, `TLS_CERT` , `TLS_CA` environment variables to configure the TLS certificate, key and CA certificate respectively.
+
+  ### Provider Updates
+
+  * **AWS Bedrock**:
+    * Added `global` profile support for Bedrock models
+    * Added `name` field mapping for `/messages` endpoint document object
+    * Streamlined token counting endpoint to use invoke instead of converse mode for better compatibility
+  * **Azure**:
+    * Improved Azure entra caching to improve performance
+
+  ### Fixes and Improvements
+
+  * Enhancements for token rate limiter to handle small limit values
+  * Fixed status code and timestamp handling for OTel `http/protobuf` transport protocol
+  * Fixed an issue with `multipart/form-data` requests when the data contained a `model` field
+  * Added support for multiple checks of same type under a single guardrail
+</Update>
+
+<Update label="1.15.8" description="2025-10-07">
+  ## v1.15.8
+
+  ***
+
+  ### Provider Updates
+
+  * **Anthropic**:
+    * **Fixed** `count_tokens` endpoint mapping
+  * **AWS Bedrock**:
+    * Added empty `usage` object in `message_start` event for unified messages endpoint stream response to ensure compliance with Anthropic and avoid Claude Code errors
+
+  ### Fixes and Improvements
+
+  * Added handling for empty span ID in OTel log transformation
+  * Added support for fetching base model from inference profile in unified batches output handler
+</Update>
+
+<Update label="1.15.7" description="2025-10-03">
+  ## v1.15.7
+
+  ***
+
+  ### Provider Updates
+
+  * **AWS Bedrock**:
+    * **Fixed** `cache_control` parameter mapping for tools in `/messages` endpoint.
+    * **Fixed** streaming response handling for `tool_use`, `thinking`, and `redacted_thinking` content\_block\_start events in `/messages` endpoint.
+</Update>
+
+<Update label="1.15.6" description="2025-10-02">
+  ## v1.15.6
+
+  ***
+
+  ### Features
+
+  * Support pricing for image editing models, currently supported for providers: `openai`, `azure-openai`, and `azure-foundry`
+  * Support `input_audio` parameter for vertex provider.
+  * Allow pass through parameters for bedrock batch create endpoint.
+
+  ### Fixes
+
+  * Handle batch fetch errors gracefully for batch output endpoint.
+</Update>
+
+<Update label="1.15.5" description="2025-09-30">
+  ## v1.15.5
+
+  ***
+
+  ### OTel Exporter Enhancements
+
+  * Added support for `http/protobuf` transport protocol.
+  * Set `OTEL_EXPORTER_OTLP_PROTOCOL` environment variable to `http/protobuf` to use this.
+
+  ### Fixes
+
+  * **Prisma AIRS Guardrail**: Fixed an issue with guardrail registration during initialization.
+</Update>
+
+<Update label="1.15.4" description="2025-09-25">
+  ## v1.15.4
+
+  ***
+
+  ### Provider Updates
+
+  * **OpenAI and Azure-OpenAI**:
+    * Fixed `parallel_tool_calls` parameter mapping for `/responses` API.
+    * Added support for additional parameters for `/responses` API:: `max_tool_calls`, `safety_identifier` and `top_logprobs`
+</Update>
+
+<Update label="1.15.3" description="2025-09-19">
+  ## v1.15.3
+
+  ***
+
+  ### Provider Updates
+
+  * **Vertex AI**: Handle empty responses returned by the provider
+  * **AWS Bedrock**:
+    * Added support for `APAC` cross region inference profiles
+    * Added support for `performance_config` parameter which will be passed as-is to the provider as `performanceConfig` parameter
+  * **Azure Foundry and Github**: Updated the parameter mapping to support all the latest OpenAI compatible chat completions parameters
+  * **OpenAI and Azure-OpenAI**: Updated the tokenizer to support streaming request token calculation for latest gpt-5 models
+</Update>
+
+<Update label="1.15.2" description="2025-09-16">
+  ## v1.15.2
+
+  ***
+
+  ### New Features
+
+  * KMS Support for file uploads to bedrock/AWS.
+  * Support custom scope for entra auth to use with deprecated azure serverless models.
+  * Custom Header support for OTel Export of analytics data
+
+  ### Improvements and Fixes
+
+  * Support Inference Profiles when uploading files to Bedrock for batches & finetuning.
+  * Vertex `global` region support.
+  * Cache cleanup for azure entra and managed identity authentication modes.
+  * Wait for upstream websocket to be connected for Realtime APIs.
+</Update>
+
+<Update label="1.15.1" description="2025-09-09">
+  ## v1.15.1
+
+  ***
+
+  ### Improvements and Fixes
+
+  * Fixed incorrect Portkey 429 error for token-based rate limiting when used with passthrough requests
+</Update>
+
+<Update label="1.15.0" description="2025-09-04">
+  ## v1.15.0
+
+  ***
+
+  ### Conditional Router Enhancements
+
+  * Conditional router config strategy now supports conditions on request path
+  * [Documentation Link](/product/ai-gateway/conditional-routing#more-examples-using-conditional-routing)
+
+  ### Unified finish\_reason
+
+  * Unified `finish_reason` across all providers. By default, the value is mapped to an OpenAI-compatible value. If `x-portkey-strict-openai-compliance` is set to false, the original provider-returned value is retained
+
+  ### Gemini 2.5 Flash Image Model
+
+  * Gemini 2.5 Flash Image model is now supported
+  * [Documentation Link](/integrations/llms/vertex-ai#multiple-modalities-on-chat-completions-endpoint)
+
+  ### Unified Count Tokens Endpoint
+
+  * Introduced unified endpoint for counting tokens across AWS Bedrock, Vertex AI, and Anthropic
+
+  ### Metadata-Based Model Access Guardrail
+
+  * Introduced a new guardrail to restrict model access based on metadata key-value pairs
+
+  ### New Base Providers
+
+  * **Meshy**
+  * **Tripo3D**
+
+  ### Provider Updates
+
+  * **Vertex AI**:
+    * Added support for Mistral models
+    * Added support for `task_type` and `dimensions` parameters in Vertex AI batch embeddings
+  * **AWS Bedrock**: Added `video` support in chat completions
+</Update>
+
+<Update label="1.14.4" description="2025-08-29">
+  ## v1.14.4
+
+  ***
+
+  ### Improvements and Fixes
+
+  * Resolved Authorization header conflict for passthrough requests. This issue occurred when the Portkey API key was sent in the Authorization header instead of the `x-portkey-api-key` header
+  * Minor bug fixes for the Azure Foundry provider (azure-ai) in Entra and managed auth modes. Note that this does not affect the Azure OpenAI provider (azure-openai)
+</Update>
+
+<Update label="1.14.3" description="2025-08-28">
+  ## v1.14.3
+
+  ***
+
+  ### Improvements and Fixes
+
+  * Fixed backward compatibility issue for the models endpoint when used with default configs. The new models endpoint will only be used when the incoming request does not have a provider, virtual\_key, or a config (default or explicitly sent) with any of these fields. Otherwise, the request will be proxied to the upstream provider endpoint (same as the old flow)
+</Update>
+
+<Update label="1.14.2" description="2025-08-26">
+  ## v1.14.2
+
+  ***
+
+  ### Regex Replace Guardrail
+
+  * Added a new guardrail that can replace regex patterns with a specified string
+</Update>
+
+<Update label="1.14.1" description="2025-08-19">
+  ## v1.14.1
+
+  ***
+
+  ### Provider Updates
+
+  * **Anthropic**: Handle tool index when multiple tools are returned in streaming response
+  * **OpenAI and Azure OpenAI**: Updated stream handling to log newly introduced fields of the `usage` object
+  * **AWS Bedrock**: Fixed token calculation error for Bedrock messages response when cache tokens were returned by the provider
+
+  ### Improvements and Fixes
+
+  * Updated pricing configurations for multiple providers and models
+  * Fixed an issue where metadata labels for Prometheus metrics were getting dropped
+</Update>
+
+<Update label="1.14.0" description="2025-08-15">
+  ## v1.14.0
+
+  ***
+
+  ### Performance Improvements
+
+  * Multiple performance improvements including:
+    * Removed redundant JSON operations
+    * Upgraded Hono framework for better performance
+    * Removed redundant LLM cache key creation
+
+  ### Provider Updates
+
+  * **DashScope**: Updated the supported parameters
+  * **Vertex AI**: Added `timeRangeFilter` support for Google Search tool
+  * **Fireworks**:
+    * Handle non-ASCII characters in file upload
+    * Removed unnecessary response transforms to reduce processing time
+  * **OpenAI and Azure OpenAI**: Added new parameters for GPT-5 compatibility
+  * **OpenRouter**: Return reasoning messages, if returned by the model
+
+  ### Improvements and Fixes
+
+  * Return the correct `timeout` value in webhook guardrail response
+</Update>
+
+<Update label="1.13.3" description="2025-08-13">
+  ## v1.13.3
+
+  ***
+
+  ### Improvements and Fixes
+
+  * Allow Portkey API key in `Authorization` header for the unified models endpoint
+</Update>
+
+<Update label="1.13.2" description="2025-08-12">
+  ## v1.13.2
+
+  ***
+
+  ### Unified Models Endpoint
+
+  * Released unified models API which follows OpenAI API specification to list all available models that can be used through Portkey
+  * [Documentation Link](/api-reference/inference-api/models/models)
+</Update>
+
+<Update label="1.13.1" description="2025-08-06">
+  ## v1.13.1
+
+  ***
+
+  ### Analytics Enhancements
+
+  * Added new analytics data point to capture granular processing time for requests
+
+  ### OpenAI Chat Completions Improvements
+
+  * Improvements to eliminate extra processing time for OpenAI chat completions responses
+</Update>
+
+<Update label="1.13.0" description="2025-08-04">
+  ## v1.13.0
+
+  ***
+
+  ### Unified Messages API
+
+  * Released unified messages API which follows Anthropic's messages API specification
+  * Available for AWS Bedrock, Anthropic, and Vertex AI models
+  * [Documentation Link](/product/ai-gateway/universal-api#using-the-anthropic%E2%80%99s-%2Fmessages-route)
+</Update>
+
+<Update label="1.12.0...1.12.5" description="2025-08-02">
+  ## v1.12.0...v1.12.5
+
+  ***
+
+  ### NOTE:
+
+  * All builds between v1.12.0 and v1.12.5 were part of the Model Catalog early rollout
+
+  ### Model Catalog
+
+  * Released Model Catalog support along with the latest API specification updates
+  * [Documentation Link](/product/model-catalog)
+
+  ### Workspace Budget Limits
+
+  * You can now enforce budget and rate limits at the workspace level
+  * [Documentation Link](/product/administration/enforce-workspace-budget-limts-and-rate-limits)
+
+  ### Circuit Breaker
+
+  * Introduced circuit breakers which can be added per-strategy in configurations
+  * [Documentation Link](/product/ai-gateway/circuit-breaker)
+
+  ### Automatic User Attribution
+
+  * Introduced automatic `_user` metadata attribution when User API keys are used
+
+  ### Provider Updates
+
+  * **DeepSeek**: Added support for `response_format` parameter
+
+  ### New Base Providers
+
+  * **Qdrant**
+  * **DashScope**
+
+  ### Improvements and Fixes
+
+  * Removed headers from `webhook` guardrail response to avoid returning sensitive details
+</Update>
+
+<Update label="1.11.11" description="2025-07-26">
+  ## v1.11.11
+
+  ***
+
+  ### Replication for Analytics Data
+
+  * Added support for analytics data replication
+  * This is only applicable for air-gapped deployments
+</Update>
+
+<Update label="1.11.10" description="2025-07-22">
+  ## v1.11.10
+
+  ***
+
+  ### Provider Updates
+
+  * **Fireworks**: Added support for `prompt_cache_max_len` parameter
+
+  ### Improvements and Fixes
+
+  * Enhancements for unified batch output handling
+</Update>
+
+<Update label="1.11.9" description="2025-07-10">
+  ## v1.11.9
+
+  ***
+
+  ### S3 Log Store Enhancements
+
+  * Added support for Object Lock and Retention-enabled buckets
+  * Required environment variable: `LOG_STORE_OBJECT_LOCK_RETENTION_ENABLED="true"`
+
+  ### Unified Finish Reason
+
+  * Unified `finish_reason` values across Anthropic and Bedrock models
+  * If `x-portkey-strict-openai-compliance` is set to `false`, the provider-returned value will be retained
+
+  ### Provider Updates
+
+  * **Vertex AI**: Added support for cost calculation for fine-tuned models
+  * **AWS Bedrock**:
+    * Added support for **Computer Use** tool for Anthropic models
+    * Handle backward compatibility for Titan G1 embeddings model `encoding_format` parameter
+    * Fixed token calculation for Bedrock cache read and write tokens
+  * **Cohere**: Handled null values for embeddings `encoding_format` parameter
+  * **Azure AI**: `max_completion_tokens` parameter will now be forwarded as-is instead of being mapped to `max_tokens`
+  * **OpenAI and Azure OpenAI**: Added support for `web_search_options` parameter for chat completions endpoint
+
+  ### Improvements and Fixes
+
+  * Better handling for control plane synchronization when multiple Gateways are deployed
+</Update>
+
+<Update label="1.11.8" description="2025-06-28">
+  ## v1.11.8
+
+  ***
+
+  ### Unified Batches Improvements
+
+  * Optimizations to handle large batch output files
+  * Use `usage` object returned by Anthropic during batch output processing
+
+  ### Unified Finish Reason
+
+  * Unified `finish_reason` values across Anthropic and Bedrock models
+  * If `x-portkey-strict-openai-compliance` is set to `false`, the provider-returned value will be retained
+
+  ### Provider Updates
+
+  * **AWS Bedrock**: Return `finish_reason` in error response
+
+  ### Improvements and Fixes
+
+  * Updated pricing configurations for multiple providers and models
+  * Better error logging for Gateway exceptions
+</Update>
+
+<Update label="1.11.7" description="2025-06-27">
+  ## v1.11.7
+
+  ***
+
+  ### Provider Updates
+
+  * **Azure OpenAI**: Added Azure Managed Identity support for Azure Containers
+
+  ### Improvements and Fixes
+
+  * Fixed an issue with Bedrock Signature calculation for passthrough requests
+  * Better error logging for Azure Managed Identity errors
+</Update>
+
+<Update label="1.11.6" description="2025-06-21">
+  ## v1.11.6
+
+  ***
+
+  ### Provider Updates
+
+  * **Groq**: Added support for `service_tier` parameter in the Groq provider configuration
+  * **Anthropic**: Added support for Anthropic's prompt caching for tool results and tool use
+  * **Anthropic**: Fixed multi turn tool calling when arguments to the tool call is empty
+
+  ### Improvements and Fixes
+
+  * Fixed an issue with Auth enabled Aws Redis Cache with Password and cluster mode
+  * Handled Webhook Guardrail errors and return verdict with the correct status and error
+</Update>
+
+<Update label="1.11.5" description="2025-06-18">
+  ## v1.11.5
+
+  ***
+
+  ### Guardrails
+
+  * Added support for metadata keys plugin to enforce metadata keys from the request.
+</Update>
+
+<Update label="1.11.4" description="2025-06-17">
+  ## v1.11.4
+
+  ***
+
+  ### Provider Updates
+
+  * **Bedrock**: Added support for `AssumedRole` for bedrock application inference profiles
+  * **Bedrock Multimodal Embeddings**: Added support for multimodal embeddings for providers `cohere` and `titan`.
+  * **Azure Foundry**: Added support for `createTranscription`,`createTranslation`, `imageGeneration`, `batch` and `files` endpoints.
+  * **Anthropic**: Added Support for computer use tool.
+  * **Anthropic**: Added support for `file_url` and `mime_type` for `file` content parts in Anthropic requests.
+  * **VertexAI**: Added support for Gemini/Vertex Thinking mode.
+
+  ### Cache Improvements
+
+  * Added support for Azure Redis with auth modes `EntraID` and `ManagedIdentity`
+
+  ### Fixes And Improvements
+
+  * Improvements for Redis Cache
+    * Added support for separate username and password for Redis Cache. Use `REDIS_USERNAME` and `REDIS_PASSWORD` environment variables.
+    * Added support for Azure Redis Cache. Use `CACHE_STORE` with `azure-redis` as value.
+    * Added support for Managed Identity for Azure Managed Redis.
+      * You can pass `AZURE_REDIS_AUTH_MODE` and `AZURE_REDIS_MANAGED_CLIENT_ID` for a different auth setup.
+      * Defaults to `AZURE_AUTH_MODE` and `AZURE_MANAGED_CLIENT_ID` if not provided
+    * Added support for Entra ID for Azure Redis Cache.
+      * You can pass `AZURE_REDIS_AUTH_MODE` and `AZURE_REDIS_ENTRA_CLIENT_ID`, `AZURE_REDIS_ENTRA_CLIENT_SECRET`, `AZURE_REDIS_ENTRA_TENANT_ID` for a different auth setup.
+      * Defaults to `AZURE_AUTH_MODE` and `AZURE_ENTRA_CLIENT_ID`, `AZURE_ENTRA_CLIENT_SECRET`, `AZURE_ENTRA_TENANT_ID` if not provided
+  * **HTTPS Proxy**
+    * Added HTTPS Proxy support for all the external calls.
+    * Pass `HTTPS_PROXY` environment variable to enable this feature.
+  * Added support for virtual key inclusion for custom log if passed in headers.
+  * Fixed issue with proxy calls not working with configs for some providers.
+</Update>
+
+<Update label="1.11.3" description="2025-06-06">
+  ## v1.11.3
+
+  ***
+
+  ### Observability
+
+  * Prometheus Metrics are migrated to use endpoints instead of path for all the metrics
+
+  ### Fixes And Improvements
+
+  * Added a global error handler for all the unhandled exceptions to prevent server crashes.
+  * Updated JWT Plugin to validate `iat` field
+</Update>
+
+<Update label="1.11.2" description="2025-06-03">
+  ## v1.11.2
+
+  ***
+
+  ### Fixes And Improvements
+
+  * Fixed IRSA Web Identity token handling issue for Log Store that was introduced in v1.11.1
+</Update>
+
+<Update label="1.11.1" description="2025-06-02">
+  ## v1.11.1
+
+  ***
+
+  ### Provider Updates
+
+  * **OpenAI**: Added support for `background` and `service_tier` parameters
+  * **Azure**: Added support for custom hosts and private links for Azure Plugins
+  * **Bedrock**: Added native support for `inference profiles` [Ref](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-use.html)
+
+  ### OTel Traces Collector endpoints
+
+  * Added new endpoint `/v1/otel/v1/traces` to collect any OTel traces as Portkey traces
+
+  ### Log Exports available on Data Plane
+
+  * Log exports are now available on Data Plane
+  * Export logs without them being sent to Control Plane [Docs Link](/api-reference/admin-api/data-plane/logs/log-exports-beta)
+  * Please note that, `Dataservice` is required for log exports to work via Data Plane.
+
+  ### Fixes And Improvements
+
+  * Fixed cache bug where Bedrock and Vertex requests were getting responses from the wrong models
+  * Added support for fetching environment variables from mounted paths
+</Update>
+
+<Update label="1.11.0" description="2025-05-17">
+  ## v1.11.0
+
+  ***
+
+  ### Provider Updates
+
+  * **Bedrock**: Fixed cache token calculation for streaming requests
+
+  ### Fixes And Improvements
+
+  * Added mTLS support for Gateway to internal services in air-gapped deployments
+</Update>
+
+<Update label="1.10.23" description="2025-05-15">
+  ## v1.10.23
+
+  ***
+
+  ### Provider Updates
+
+  * **Vertex**: Added support for `dimensions` parameter in multi-modal embeddings
+
+  ### Plugins
+
+  * **JWT Plugin**: Added JWT authentication for runtime validation
+
+  ### Fixes And Improvements
+
+  * Added pricing support for `gpt-image-1` model
+</Update>
+
+<Update label="1.10.22" description="2025-05-08">
+  ## v1.10.22
+
+  ***
+
+  ### Enhanced Anthropic PDF Support
+
+  * Added transformation logic to support OpenAI-spec-compatible `file` content parts in request.
+  * Introduced two new Portkey parameters for the `file` content parts: `file_url` and `mime_type`.
+  * Applicable for Anthropic, Bedrock-Anthropic and VertexAI-Anthropic models.
+  * [Docs](/integrations/llms/anthropic#processing-pdfs-with-claude)
+
+  ### OTel Configurations
+
+  * Added two new environment variables:
+    * `OTEL_SERVICE_NAME`: Sets the `service.name` resource attribute value.
+    * `OTEL_RESOURCE_ATTRIBUTES`: Comma-separated `key=value` pairs which will be sent as individual resource attributes.
+
+  ### New Providers
+
+  * **Ncompass**: Supports chat completions endpoint.
+  * **Lepton**: Supports chat completions, completions and transcriptions endpoints.
+  * **Snowflake Cortex**: Supports chat completions endpoint.
+
+  ### Provider Updates
+
+  * **Groq**: Handled an exception that occurred when `stream_options` was included in the request, because the response transformer was not handling `usage` chunk mapping as expected.
+  * **Workers AI**: Added support for `/images/generations` route.
+  * **Openrouter**: Added support for `usage` request parameter and response mapping.
+  * **Deepinfra**: Handled `ping` event returned in stream and mapped `usage` field returned in the response.
+  * **VertexAI**: Now returns 400 (instead of 500) for empty model validation errors.
+
+  ### Fixes And Improvements
+
+  * For providers except OpenAI and Azure-OpenAI, updated the value of `object` field in chat completions response from `chat_completion` to `chat.completion` for OpenAI spec compliance.
+  * **Proxy (Passthrough) Requests**: Fixed endpoint construction logic, which was affecting a few provider-route combinations.
+  * **Unified Batches**: Fixed issue where embeddings batch output was being returned as empty.
+  * **Prometheus**: Fixed issue where `model` label was set as N/A for Bedrock requests.
+</Update>
+
+<Update label="1.10.21" description="2025-04-30">
+  ## v1.10.21
+
+  ***
+
+  ### AWS Bedrock Prompt Caching
+
+  * Added support for AWS Bedrock prompt caching.
+  * [Docs Link](/integrations/llms/bedrock/prompt-caching#prompt-caching-on-bedrock)
+
+  ### VertexAI Gemini 2.5 Thinking Param Support
+
+  * Added support for the thinking settings parameters for VertexAI.
+
+  ### General Purpose File Upload For VertexAI
+
+  * Documentation coming soon.
+
+  ### Provider Updates
+
+  * **Azure-OpenAI and Azure Foundry**: Added cost calculation support for OpenAI finetuned models.
+  * **Bedrock**:
+    * Handled tool role messages with empty content to avoid validation errors.
+    * Added `response_format` support for Deepseek partner models
+  * **VertexAI**:
+    * Handled the unsupported `$schema` property in tools properties JSON Schema.
+    * Inference support for fine-tuned Gemini models.
+  * **Groq**: Added support for translations, transcriptions and speech endpoints.
+
+  ### Fixes And Improvements
+
+  * Fixed `blocklist` handling for Azure Content Safety guardrail.
+  * Fixed Fireworks dataset upload validation error.
+</Update>
+
+<Update label="1.10.20" description="2025-04-23">
+  ## v1.10.20
+
+  ***
+
+  ### OpenAI Embeddings Latency Improvements
+
+  * Improved response handling for OpenAI Embeddings resulting in significant reduction in response processing latency.
+
+  ### Strict Metadata Enforcement
+
+  * Updated the preference for metadata logging. The new order is `Workspace Default Metadata > API Key Default Metadata > Incoming Request Metadata`.
+  * This provides better control to organisation and workspace admins. Values set by admins cannot be overridden by request level metadata fields.
+
+  ### Strict Default Config Enforcement
+
+  * Added support to disable default config override for API keys. If config override is not allowed and user tries to send a new config in request as well, Gateway will throw a 400 error.
+
+  ### Provider Updates
+
+  * **VertexAI**: If a batch record failed on the provider's end, the error will be retained in the final batch output file.
+  * **AzureOpenAI**: Fixed URL path construction logic for non-completions requests like batches and files where an extra `/v1` was getting added in the final URL, causing request failures.
+
+  ### Fixes And Improvements
+
+  * Fixed an edge case where Batches, Files and Fine-tune endpoint threw an error when the passed config had `targets` field with a single virtual key in it.
+</Update>
+
+<Update label="1.10.19" description="2025-04-18">
+  ## v1.10.19
+
+  ***
+
+  ### OTel Metrics Push
+
+  * Added support for pushing Portkey Clickhouse analytics (traces and spans) to OTel collector.
+  * The following environment variables will be used to configure OTel collector:
+    * `OTEL_PUSH_ENABLED`
+    * `OTEL_ENDPOINT`
+
+  ### Milvus Vector Store for Semantic Caching
+
+  * Added support for Milvus vector store for semantic caching.
+  * The following Vector stores are now supported:
+    * `pinecone`
+    * `milvus`
+  * The following environment variables will be used to configure the Milvus vector store:
+    * `VECTOR_STORE`
+    * `VECTOR_STORE_ADDRESS`
+    * `VECTOR_STORE_API_KEY`
+    * `VECTOR_STORE_COLLECTION_NAME`
+
+  ### Azure Guardrails Support
+
+  * Added support for [Azure Content Safety](https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/harm-categories?tabs=warning) API
+  * Added support for [PII detection](https://learn.microsoft.com/en-us/azure/ai-services/language-service/personally-identifiable-information/overview?tabs=text-pii) with Azure Language Service
+
+  ### Prompts Render Endpoint
+
+  * Prompts Render endpoint is now a part of the Gateway. It is available at `/v1/prompts/:id/render`.
+
+  ### Provider Updates
+
+  * **Vertex AI**: Added support for `dimensions` for embeddings
+
+  ### Minor Enhancements
+
+  * **Prometheus Metric**: Added `portkey_processing_time_excluding_last_byte_ms` metric which provides Portkey processing time excluding the LLM last byte diff latency (`llm_last_byte_diff_duration_milliseconds`).
+</Update>
+
+<Update label="1.10.18" description="2025-04-16">
+  ## v1.10.18 (Redacted)
+
+  ***
+
+  ## Redaction notice
+
+  This release introduced a critical bug in budget enforcement.
+  We are redacting this release and will be releasing a patch with out Workspace Budget and related changes.
+
+  ### Workspace Level Usage and Rate Limits
+
+  * Organisations can now enforce usage limits for each workspace
+  * Organisations can now enforce rate limits for each workspace
+
+  ### OTel Metrics Push
+
+  * Added support for pushing Portkey Clickhouse analytics (traces and spans) to OTel collector.
+  * The following environment variables will be used to configure OTel collector:
+    * `OTEL_PUSH_ENABLED`
+    * `OTEL_ENDPOINT`
+
+  ### Milvus Vector Store for Semantic Caching
+
+  * Added support for Milvus vector store for semantic caching.
+  * The following Vector stores are now supported:
+    * `pinecone`
+    * `milvus`
+  * The following environment variables will be used to configure the Milvus vector store:
+    * `VECTOR_STORE`
+    * `VECTOR_STORE_ADDRESS`
+    * `VECTOR_STORE_API_KEY`
+    * `VECTOR_STORE_COLLECTION_NAME`
+
+  ### Azure Guardrails Support
+
+  * Added support for [Azure Content Safety](https://learn.microsoft.com/en-us/azure/ai-services/content-safety/concepts/harm-categories?tabs=warning) API
+  * Added support for [PII detection](https://learn.microsoft.com/en-us/azure/ai-services/language-service/personally-identifiable-information/overview?tabs=text-pii) with Azure Language Service
+
+  ### Provider Updates
+
+  * **Vertex AI**: Added support for `dimensions` for embeddings
+</Update>
+
+<Update label="1.10.17" description="2025-04-11">
+  ## v1.10.17
+
+  ***
+
+  ### OpenAI and Azure OpenAI Response API
+
+  * Added end-to-end support for the Response API.
+  * Implemented caching for stream requests.
+  * Introduced cost calculation for tools like `web_search`, `file_search` and `code_execution`.
+
+  ### Azure AI Foundry Enhancements
+
+  * Updated the existing Azure Inference integration to directly accept endpoints from the Azure Foundry dashboard.
+
+  ### Retry Enhancements
+
+  * Introduced a new retry setting `use_retry_after_header`. When set to `true`, if the provider returns the `x-retry-after` or `x-retry-after-ms` headers, Gateway will use these headers for retry wait times instead of applying the default exponential backoff for 429 responses.
+
+  ### Configurable Default Cache TTL
+
+  * Default max cache TTL can now be set at the organisation level.
+
+  ### Provider Updates
+
+  * **Azure OpenAI**: Added support for `logprobs` and `top_logprobs` request parameters.
+  * **Perplexity**: Added support for `response_format` and `search_recency_filter` request parameters.
+  * **AWS Bedrock**: Handled empty assistant tools messages containing only newline characters (`\n\n`).
+
+  ### Improvements
+
+  * Gateway will now populate the `model` field in responses for the `/chat/completions` API if the providers do not natively return this field, ensuring alignment with the OpenAI signature.
+</Update>
+
+<Update label="1.10.16" description="2025-04-09">
+  ## v1.10.16
+
+  ***
+
+  ### Improvements
+
+  * **File Upload**:
+    * Handle file upload failures for Bedrock in some scenarios
+  * **Unified Batch API**:
+    * Return `error_file_id` content in the batch output for failed file uploads for OpenAI and Azure OpenAI providers.
+</Update>
+
+<Update label="1.10.15" description="2025-04-02">
+  ## v1.10.15
+
+  ***
+
+  ### Improvements
+
+  * **File Upload**:
+    * Support for uploading large files to Providers and Data Service
+  * Allow users to pass custom mime-types in the request body. For example:
+
+  ```json  theme={"system"}
+      {
+      "model": "gemini-1.5-pro",
+      "messages": [
+          {
+              "role": "system",
+              "content": "You are a helpful assistant!"
+          },
+          {
+              "role": "user",
+              "content": [
+                  {
+                      "type": "text",
+                      "text": "What's in this image?"
+                  },
+                  {
+                      "type": "image_url",
+                      "image_url": {
+                          "url": "<image-url>",
+                          "mime_type": "image/jpeg"
+                      }
+                  }
+              ]
+          }
+      ]
+      }
+  ```
+</Update>
+
+<Update label="1.10.14" description="2025-03-28">
+  ## v1.10.14
+
+  ***
+
+  ### Enforce Organisation And Workspace Guardrails
+
+  * It is now possible to enforce guardrails at organisation and workspace levels, which will be applied to all requests.
+  * Documentation: [Workspace-Level Guardrails](/product/administration/enforce-workspace-level-guardials), [Organisation-Level Guardrails](/product/administration/enforce-orgnization-level-guardrails)
+
+  ### Unified Finetuning APIs for Fireworks
+
+  * Extended the existing unified finetuning APIs to support Fireworks provider.
+
+  ### Pricing Updates
+
+  * Added support for calculating **Perplexity search** cost and **Gemini grounding** cost.
+
+  ### Updated Unified API Signature For Anthropic Extended Thinking
+
+  * Updated the unified API signature for Extended thinking which was introduced in v1.10.12 to ensure that OpenAI compliant field of the response remain untouched regardless of strict\_open\_ai\_compliance flag.
+  * More Details:
+    * [Anthropic](/integrations/llms/anthropic#extended-thinking-reasoning-models)
+    * [AWS Bedrock](/integrations/llms/bedrock/aws-bedrock#extended-thinking-reasoning-models)
+    * [VertexAI](/integrations/llms/vertex-ai#extended-thinking-reasoning-models)
+
+  ### Unified Batches API Improvements
+
+  * `custom_id` will be preserved in the VertexAI batch output.
+  * Fixed some issues with batches cost calculation.
+
+  ### Logging Updates
+
+  * Non-OpenAI compliant fields like groundingMetadata (Gemini Grounding), citations (Perplexity Search) and extended thinking response will now be logged for stream responses. Previously, these fields were not logged specifically for streaming response.
+
+  ### Provider Updates
+
+  * **Fireworks**: Added support for `logprobs` and `top_logprobs` parameters.
+
+  ### Fixes and Improvements
+
+  * Added new environment variable (`AWS_ENDPOINT_DOMAIN`) which can be used to override the default value (`amazonaws.com`)
+  * Fixed an edge case where before\_request\_hook failures were not getting flagged with 246 response status code for cached and non-cached stream responses.
+</Update>
+
+<Update label="1.10.13" description="2025-03-20">
+  ## v1.10.13
+
+  ***
+
+  ### Unified Batches APIs for VertexAI Embedding
+
+  * Added support for batch processing of embeddings with Vertex AI.
+
+  ### Provider Updates
+
+  * **AWS Bedrock**
+    * Multi-Turn Conversation With Tools:
+      * Handled assistant messages where content is set as null and tool\_calls are passed.
+  * **OpenAI**
+    * Fixed an edge case (introduced in the previous version) which was causing issues in cost calculation of fine-tuned models.
+
+  ### Fixes and Improvements
+
+  * Fixed batch pricing calculation issue for VertexAI and Anthropic Bedrock models.
+  * Fixed an edge case where the `x-portkey-retry-attempt-count` response header was set to `-1` even when no retries were configured.
+  * Improved handling to skip stream mode detection for irrelevant request types. For example: stream mode detection should not happen for any GET requests as it is not supported.
+  * Removed redundant AWS credential fetch failures at boot time.
+</Update>
+
+<Update label="1.10.12" description="2025-03-18">
+  ## v1.10.12
+
+  ***
+
+  ### Real-Time Model Pricing Sync
+
+  * Model pricing configs are no longer coupled with gateway builds.
+  * For hybrid deployments, model pricing configs will be fetched from the control plane.
+
+  ### Unified API Signature For Anthropic Thinking
+
+  * Introduced a unified API signature to support single-turn and multi-turn conversations with Anthropic Extended Reasoning across Anthropic, AWS Bedrock and VertexAI.
+  * More Details:
+    * [Anthropic](/integrations/llms/anthropic#extended-thinking-reasoning-models)
+    * [AWS Bedrock](/integrations/llms/bedrock/aws-bedrock#extended-thinking-reasoning-models)
+    * [VertexAI](/integrations/llms/vertex-ai#extended-thinking-reasoning-models)
+
+  ### Prometheus Metric Updates
+
+  * Added a new metric (`llm_last_byte_diff_duration_milliseconds`) to track LLM last byte latency for chunked JSON responses.
+  * Added a new label (`stream`) for all metrics. Possible values: 0/1
+
+  ### Guardrails Updates
+
+  * **AWS Bedrock**: Added handling to flag regex patterns returned by the guardrail.
+
+  ### Provider Updates
+
+  * **Azure OpenAI**: Mapped the correct model name from multi-deployment virtual keys.
+
+  ### Fixes and Improvements
+
+  * Portkey 500s are now logged in the console for debugging.
+
+  ### Internal POD to POD HTTPS Support
+
+  * Added support for internal POD to POD HTTPS communication.
+  * This can be enabled by mounting a volume with certificate and key.
+  * `TLS_KEY_PATH` and `TLS_CERT_PATH` environment variables will be used to fetch the certificate and key from the volume.
+</Update>
+
+<Update label="1.10.11" description="2025-03-06">
+  ## v1.10.11
+
+  ***
+
+  ### Provider Updates
+
+  * **AWS Bedrock**
+    * Added support for encryption key usage when uploading files to S3.
+  * **VertexAI**:
+    * Minor updates to streamline the unified spec for batches and fine-tune APIs.
+    * Updated pricing for gemini-2.0-flash-lite models.
+    * Added support for `webm` mimeType.
+  * **Openrouter**
+    * Mapped the usage object for streaming responses.
+  * **Azure Inference**
+    * Replaced `extra-parameters: ignore` with `extra-parameters: drop` due to deprecation by Azure.
+  * **OpenAI and Azure OpenAI**
+    * Update pricing for GPT 4.5 models
+</Update>
+
+<Update label="1.10.10" description="2025-02-27">
+  ## v1.10.10
+
+  ***
+
+  ### Unified Finetuning APIs for VertexAI
+
+  * Extended the existing unified finetuning APIs to support VertexAI.
+  * The File-upload and transformations will be done according to the provider requirements.
+
+  ### Body Params Support in Conditional Router
+
+  * Added support for using `params` to specify body fields in [conditional router](/product/ai-gateway/conditional-routing) queries. Previously, only metadata-based routing was supported.
+
+  ### Streaming Cache Responses Optimization
+
+  * Increased stream chunk content size from 1 token to 125 tokens for cached responses. This reduces the number of chunks significantly (e.g., 2000 tokens now stream in \~16 chunks instead of 2000 chunks).
+  * Improved last chunk delivery time.
+  * In addition to latency improvements, this update reduces unnecessary network overhead caused by the large number of chunks.
+
+  ### AWS IRSA-based Authentication Updates
+
+  * Switched from the default global STS endpoint to regional STS endpoints (for Bedrock and S3 requests) to ensure proper token generation when the global STS is unavailable from the instance.
+
+  ### Provider Updates
+
+  * **Anthropic**:
+    * Better error handling for `error` type stream chunks returned by the provider.
+    * Pricing updates for Claude 3.7 models across Anthropic, Bedrock and VertexAI.
+</Update>
+
+<Update label="1.10.9" description="2025-02-20">
+  ## v1.10.9
+
+  ***
+
+  ### Redis Cache Optimization
+
+  * Updated cache implementation to avoid redundant Redis calls to improve overall performance.
+
+  ### VertexAI Service Account Token Caching
+
+  * Implemented caching for Vertex service account token. Previously, tokens were being regenerated on every request despite having 1-hour validity.
+  * This will reduce VertexAI request latency by 50-100ms per request.
+
+  ### Provider Updates
+
+  * **Google and VertexAI**
+    * Handled tool call response parsing when there is one part tool call and one part text.
+    * Made the default/empty usage object compliant with OpenAI for streaming response.
+</Update>
+
+<Update label="1.10.8" description="2025-02-13">
+  ## v1.10.8
+
+  ***
+
+  ### Mutator Webhooks
+
+  * The existing `webhook` plugin now has mutation capability.
+  * This can be used for use-cases like BYO-PII redaction guardrail.
+
+  ### Configurable Timeouts for Guardrails
+
+  * It is now possible to set timeout values for Guardrail execution. The current default value is 5 seconds.
+  * `timeout` parameter can be used for all the guardrails that make a fetch call internally.
+  * It is also possible to store this timeout value in control plane while creating/updating a Guardrail on UI.
+
+  ### Provider Updates
+
+  * **AzureOpenAI**: Added support for `stream_options` parameter.
+</Update>
+
+<Update label="1.10.7" description="2025-02-10">
+  ## v1.10.7
+
+  ***
+
+  ### Fixes and Enhancements
+
+  * **Fix**: Allow empty body in POST and PUT requests. Gateway was adding empty object as a default body for POST and PUT requests. This caused issues for APIs like POST assistants cancel or POST batches cancel where the upstream provider does not accept body at all.
+</Update>
+
+<Update label="1.10.6" description="2025-02-07">
+  ## v1.10.6
+
+  ***
+
+  ### Unified Batches APIs for AzureOpenAI
+
+  * Extended the unified batches APIs to support AzureOpenAI batching.
+
+  ### Provider Updates
+
+  * **Deepseek Models**: Added support for Deepseek models across multiple inference providers like Fireworks, Groq and Together.
+
+  ### Fixes and Enhancements
+
+  * **Chore**: Allow budget exhausted user API keys to view logs. Control plane uses user API keys to fetch UI logs from the Gateway. Budget exhaustion of these keys should not have blocked logs view.
+</Update>
+
+<Update label="1.10.5" description="2025-02-06">
+  ## v1.10.5
+
+  ***
+
+  ### JWT Auth
+
+  * Added support for JWT based authentication and authorization.
+  * Customers can configure their JWKS endpoint or the JWKS JSON.
+
+  ### Unified Batches APIs for VertexAI
+
+  * Extended the unified batches APIs to support VertexAI batching.
+
+  ### Provider Updates
+
+  * **Google and VertexAI**: Updated the Grounding implementation to support their new API signatures. [Docs Link](https://portkey.ai/docs/integrations/llms/vertex-ai#grounding-with-google-search)
+  * **AWS Bedrock**: Handle edge cases for AWS Bedrock file uploads.
+
+  ### Fixes and Enhancements
+
+  * **Logging**: Added exception details like `cause` and `name` in logs for provider level fetch failures.
+  * **Caching**: Enabled caching even when the `debug` flag is set to false.
+</Update>
+
+<Update label="1.10.4" description="2025-01-29">
+  ## v1.10.4
+
+  ***
+
+  ### PII Redaction Guardrails
+
+  * Added PII Redaction Guardrails through multiple guardrail providers:
+    * Portkey Managed
+    * AWS Bedrock
+    * Pangea
+    * Patronus
+    * Promptfoo
+  * If any entities were redacted from request/response, the guardrail result object in the final response will contain a flag named `transformed` set to true.
+
+  ### Request Metadata Logging Updates
+
+  * Workspace metadata will now logged on individual request level.
+
+  ### New Providers
+
+  * Replicate: Now supported for proxy (passthrough) requests.
+
+  ### Fixes and Enhancements
+
+  * **Guardrails**: Added ability to override default guardrail credentials (stored in control plane) with custom credentials at runtime.
+</Update>
+
+<Update label="1.10.3" description="2025-01-23">
+  ## v1.10.3
+
+  ***
+
+  ### AzureOpenAI Unified Finetuning Support
+
+  * Extended the unified finetuning APIs to support AzureOpenAI provider.
+
+  ### AWS Bedrock Guardrails
+
+  * AWS Bedrock Guardrails are now supported for request/response checks.
+  * [Here](https://docs.google.com/document/d/1sCeuGi5p03wh56WmHpJvMhi7XV9N68vz-wzYq1RH_OQ/edit?usp=sharing) is a short document which can be used to setup this with Portkey.
+
+  ### Virtual Keys for Custom Models/Providers
+
+  * It is now possible to configure custom host and custom headers directly in the virtual keys.
+  * If your custom model's API signature matches any of our existing providers, you can create a virtual key with your custom settings.
+  * While this functionality was already available, it has now been integrated directly into virtual keys for more streamlined configuration.
+
+  ### Prometheus Metric Updates
+
+  * Updated the units for LLM request duration histogram metrics to milliseconds. The label has been renamed from `llm_request_duration_seconds` to `llm_request_duration_milliseconds`
+  * Added a new metric named `portkey_request_duration_milliseconds` to track Portkey's processing latency.
+
+  ### New Providers
+
+  * Milvus DB: Supported as a passthrough provider.
+
+  ### Provider Updates
+
+  * **VertexAI and Google Improvements**
+    * Added `logprobs` support compatible with OpenAI format via `logprobs` and `top_logprobs` parameters
+    * Added support for experimental Gemini Thinking Models.
+    * Added tool parameters JSON schema handling to ignore/skip fields which are not compatible with these 2 providers.
+  * **Anthropic**: Added `total_tokens` in stream response to make it compliant with OpenAI spec.
+</Update>
+
+<Update label="1.10.2" description="2025-01-14">
+  ## v1.10.2
+
+  ***
+
+  ### Provider Updates
+
+  * **VertexAI**: VertexAI requests that sent the virtual key and config headers separately were failing with a provider 401 error. This was happening specifically for VertexAI requests where the virtual key was sent as a separate header along with a config header.
+</Update>
+
+<Update label="1.10.1" description="2025-01-13">
+  ## v1.10.1
+
+  ***
+
+  ## Unified Finetune APIs
+
+  * Added unified finetune APIs for OpenAI, AzureOpenAI, Bedrock and Fireworks.
+
+  ### Fixes and Enhancements
+
+  * **Code Detection Guardrail Updates**: Added checks for verbose identifiers to detect python and js markdown code blocks. Example: check for python and javascript along with py and js identifiers.
+</Update>
+
+<Update label="1.10.0" description="2025-01-03">
+  ## v1.10.0
+
+  ***
+
+  ### Unified Batches and Files API
+
+  * Added unified batching APIs for OpenAI, AWS Bedrock and Cohere
+  * [Docs Link](https://portkey.ai/docs/product/ai-gateway/batches#batches)
+
+  ### Improved Batch Management for Analytics Data Inserts
+
+  * Improved Clickhouse batch management to prevent log drops.
+  * Notable reduction in memory usage growth and spikes compared to previous builds.
+  * We also recommend changing ANALYTICS\_STORE env to `control_plane` (for hybrid deployments) so that batching/retries can managed by Portkey.
+
+  ### Gateway Docker Image Size Reduction:
+
+  * Made some updates to the image build process, reducing the size (compressed) from \~275MB to \~75MB.
+
+  ### VertexAI Self-Deployed Models (a.k.a Endpoints in Vertex):
+
+  * You can now use self-deployed models from VertexAI. This update also supports Vertex-Huggingface models.
+
+  ### Shorthand Format For Guardrails In Config:
+
+  * Added `input_guardrails` and `output_guardrails` fields in config which accept array of guardrail slugs.
+
+  ### Guardrail Output Explanation
+
+  * Guardrails responses now include an `explanation` property to clarify why checks passed or failed.
+  * This property is currently only available for default checks.
+
+  ### OpenAI `developer` Role Support Across All Providers:
+
+  * For OpenAI and AzureOpenAI, the role will be mapped as expected.
+  * For other providers, the developer role is mapped to the system role (or its equivalent).
+
+  ### New Partner Guardrails
+
+  * Mistral (mistral.moderateContent): Guard against different type of contents like `hate_and_discrimination`, `violence_and_threats`, etc.
+  * Pangea (pange.textGuard): Guard against malicious content and other undesirable data.
+
+  ### Provider Updates
+
+  * **Cohere**: Removed unsupported `stream` parameter from the Bedrock-Cohere integration.
+
+  ### Fixes and Enhancements
+
+  * **Image Cost Calculation**: Updated the image calculation logic to handle different quality, size, etc. combinations.
+  * **ValidURL Guardrail**: Updated the URL extraction logic to handle more edge cases.
+  * **Prompt Render Error Message**: Prompt render API `(/render)` is a control plane API. Added detailed message to highlight this in case a user tries to use this API on their deployed Gateway.
+</Update>
+
+<Update label="1.9.5" description="2024-12-17">
+  ## v1.9.5
+
+  ***
+
+  ### Gemini Grounding Mode Support
+
+  * Added Gemini grounding mode support in OpenAI compatible tools format.
+  * [Docs Link](https://portkey.ai/docs/integrations/llms/vertex-ai#grounding-with-google-search)
+
+  ### Provider Updates
+
+  * **Groq**: Fixed `finish_reason` mapping for streaming response.
+  * **AWS Bedrock**: fixed the index mapping for tool call streaming response.
+  * **VertexAI**: fixed final `model` param mapping for VertexAI Meta partner models.
+
+  ### Fixes and Enhancements
+
+  * **Proxy (Passthrough) Requests**: fixed audio/\* content-type passthrough request handling.
+</Update>
+
+<Update label="1.9.4" description="2024-12-11">
+  ## v1.9.4
+
+  ***
+
+  ### Enhanced Request/Response Logging
+
+  * Added comprehensive logging for all request/response phases:
+    * Original request
+    * Transformed request
+    * Original response
+    * Transformed response
+
+  ### Prometheus Metrics Standardization
+
+  * Standardized all Prometheus metric labels to use a consistent set:
+    * `method`
+    * `route`
+    * `code`
+    * `custom_labels`
+    * `provider`
+    * `model`
+    * `source`
+
+  ### Provider Updates
+
+  * **Ollama and Groq**
+    * Added support for `tools`.
+</Update>
+
+<Update label="1.9.3" description="2024-12-06">
+  ## v1.9.3
+
+  ***
+
+  ### Allow All S3-compatible Log Stores
+
+  * Added a new LOG\_STORE type named `S3_CUSTOM` which can be used to integrate any S3-compatible storage service for request logging.
+  * The custom host for the storage provider can be set in `LOG_STORE_BASEPATH`.
+
+  ### New Provider - AWS Sagemaker
+
+  * AWS Sagemaker models can now be used through Gateway as passthrough requests.
+  * Unified API signature is not yet possible because Sagemaker inherits the request body structure from the underlying model.
+  * [Docs Link](https://portkey.ai/docs/integrations/llms/aws-sagemaker)
+</Update>
+
+<Update label="1.9.2" description="2024-11-29">
+  ## v1.9.2
+
+  ***
+
+  ### Proxy (Passthrough) Request Enhancements
+
+  * Added streamlined support for virtual keys and configs in proxy (passthrough) requests.
+
+  ### Prompt Labels
+
+  * Added support for labelled prompt cache invalidation whenever an update happens on control plane side.
+  * NOTE: Prompt labels is a control plane change and has no major updates in Gateway apart from cache key invalidation for labelled prompt keys.
+  * [Docs Link](https://portkey.ai/docs/product/prompt-library/prompt-templates#prompt-labels)
+
+  ### S3 Integration Enhancements
+
+  * Allow sub-paths in bucket name for logs.
+
+  ### Provider Updates
+
+  * **Perplexity**: Allow `citations` in response if strict\_open\_ai\_compliance flag is set to false.
+  * **AWS Bedrock**
+    * Stringify the response tool arguments to make it OpenAI compliant.
+    * Merge successive user messages to avoid Bedrock errors.
+  * **Openrouter**: Handle cost calculation when input model is `openrouter/auto`.
+  * **Google**: Fix the mapping for `code` in error response.
+</Update>
+
+<Update label="1.9.1" description="2024-11-25">
+  ## v1.9.1
+
+  ***
+
+  ### Provider Updates
+
+  * **OpenAI and AzureOpenAI**
+    * For Realtime APIs, the socket close event now retains the original close reason returned by the provider.
+    * Added support for newly released `prediction`, `store`, `metadata`, `audio` and `modalities` parameters.
+  * **AWS Bedrock**: Fixed an issue where an extra newline character was being returned in the AWS Bedrock response.
+</Update>
+
+<Update label="1.9.0" description="2024-11-20">
+  ## v1.9.0
+
+  ***
+
+  ### Dynamic Budgets and Auto Expiry for API Keys and Virtual Keys
+
+  * Introduced support for setting dynamic budgets and auto-expiry for API keys and virtual keys.
+
+  ### Realtime API Integration
+
+  * Added Realtime APIs integration for OpenAI and AzureOpenAI.
+  * [Docs Link](https://portkey.ai/docs/product/ai-gateway/realtime-api)
+
+  ### Provider Updates
+
+  * **VertexAI**: Fixed structured outputs integration for VertexAI when using JS SDK. The SDK was adding extra fields in the JSON schema that were incompatible with Vertex's API requirements.
+</Update>
+
+<Update label="1.8.4" description="2024-11-13">
+  ## v1.8.4
+
+  ***
+
+  ### Provider Updates
+
+  * **Azure OpenAI**: Added `encoding_format` and `dimensions` as supported params.
+
+  ### Fixes & Enhancements
+
+  * Updated the default behaviour to use IMDS/Service account role for Bedrock and S3.
+</Update>
+
+<Update label="1.8.3" description="2024-11-12">
+  ## v1.8.3
+
+  ***
+
+  ### Fixes & Enhancements
+
+  * Fixed implementation conflicts of existing AWS AssumeRole implementation with the newly released IRSA (IAM Roles for Service Accounts) Assume Role and IMDS (Instance Metadata Service) Assume Role auth approaches.
+</Update>
+
+<Update label="1.8.2" description="2024-10-31">
+  ## v1.8.2
+
+  ***
+
+  ### Fixes and Enhancements
+
+  * Added a new Prometheus metric to track LLM-only latency. Label name: `llm_request_duration_seconds`
+</Update>
+
+<Update label="1.8.1" description="2024-10-30">
+  ## v1.8.1
+
+  ***
+
+  ### Control Plane Log Store
+
+  * Added a new log and analytics store named `control_plane`.
+  * Setting LOG\_STORE and ANALYTICS\_STORE environment variables as `control_plane` will route all logs and analytics to the control plane and will eliminate the need of having Clickhouse connection on Gateway.
+
+  ###
+</Update>
+
+<Update label="1.8.0" description="2024-10-25">
+  ## v1.8.0
+
+  ***
+
+  ### Bedrock Converse API integration
+
+  * Bedrock's /chat/completions have been updated to use Bedrock converse API.
+  * This enables features like tool calls, vision, etc. for many bedrock models.
+  * This also removes the hassle of maintaining chat templating logic for llama and mistral models.
+
+  ### VertexAI Image Generation
+
+  * Added support for Vertex Imagen models.
+
+  ### Stable Diffusion v2 Models
+
+  * StabilityAI introduced v2 models with a new API signature. Gateway now supports both v1 and v2 models, with internal transformations for different API signatures.
+  * Supported for both stability-ai and bedrock providers.
+  * New models: Stable Image Ultra, Core, 3.0 and 3.5.
+
+  ### Pydantic SDK Integration for Structured Outputs
+
+  * Done for GoogleAI and VertexAI (follows OpenAI)
+  * We previously added support for structured outputs through REST API. However, SDKs using Pydantic were not supported due to extra fields in the JSON schema.
+  * Added a dereferencing function that converts JSON schemas from the library to Google-compatible schemas.
+
+  ### OpenAI and AzureOpenAI Prompt Cache Pricing
+
+  * Added support for handling prompt caching pricing for required models.
+
+  ### New Providers
+
+  * Lambda (`lambda`): Supports chat completions and completions.
+
+  ### Provider Updates
+
+  * **Perplexity**: Added the missing \[DONE] chunk for stream calls to comply with OpenAI's spec.
+  * **VertexAI**: Fixed provider name extraction logic for meta models, so users can send it like other partner models (e.g., meta.`<model-name>`).
+  * **Google**: Added structured outputs support (similar to Vertex-ai).
+
+  ### Fixes & Enhancements:
+
+  * Exclude files, batches, threads, etc. (all passthrough) from `llm_cost_sum` prometheus metric to avoid unnecessary labels.
+</Update>
+
+
+Built with [Mintlify](https://mintlify.com).

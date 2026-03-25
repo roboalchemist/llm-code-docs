@@ -1,0 +1,50 @@
+---
+title: Splunk Integration
+description: Learn about the Embrace <> Splunk integration
+sidebar_position: 6
+---
+
+# Splunk Integration
+
+## Prerequisites
+
+- Have an active Splunk account.
+
+## Configuration
+
+### Pulling your Splunk Access Token ([Splunk documentation](https://help.splunk.com/en/splunk-observability-cloud/administer/authentication-and-security/authentication-tokens/org-access-tokens))
+
+1. Log into your Splunk account.
+2. Locate your Access Tokens:
+
+   In the left navigation bar select Settings, then select Access Tokens menu item. A page with your Access tokens appears.
+   <img src={require('@site/static/images/data-destinations/splunk_access_tokens.png').default} alt="Image showing access tokens Menu" />
+
+3. Click on **New Token** button
+   <img src={require('@site/static/images/data-destinations/splunk_add_new_token_button.png').default} alt="Image showing create Access Token button" />
+
+   At least you must enable the following permissions:
+
+   - Ingests
+
+   <img src={require('@site/static/images/data-destinations/splunk_create_token_dialog.png').default} alt="Image showing Access Token modal" />
+
+4. Click on **Create** button and the new token will appear in the table on the screen.
+5. Click on the name of an Access Token.
+6. Click on **Show token button** (located right behind the name). And **Copy** the generated token.
+   <img src={require('@site/static/images/data-destinations/splunk_token_details.png').default} alt="Image showing Access Token modal" />
+7. Share the Access Token with an Embrace onboarding specialist or use Embrace's UI to add Splunk as Data Destination.
+
+### Pulling your Splunk Realm ([Splunk documentation](https://dev.splunk.com/observability/docs/realms_in_endpoints/))
+
+1. Log into your Splunk account.
+2. Locate your Profile:
+
+   In the left navigation bar select Settings, then press **View Profile** button. A page with your profile appears.
+   <img src={require('@site/static/images/data-destinations/splunk_access_tokens.png').default} alt="Image showing view profile button" />
+
+3. Click on **Organizations** button
+4. Copy Realm
+   <img src={require('@site/static/images/data-destinations/splunk_realm.png').default} alt="Image showing Realm" />
+
+5. Share the Realm with an Embrace onboarding specialist or use Embrace's UI to add Splunk as Data Destination.

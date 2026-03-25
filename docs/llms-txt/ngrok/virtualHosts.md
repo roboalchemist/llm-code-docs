@@ -1,0 +1,24 @@
+# Source: https://ngrok.com/docs/using-ngrok-with/virtualHosts.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Using ngrok with Virtual hosts (MAMP, WAMP, etc)
+
+> Learn how to expose virtual hosts from MAMP, WAMP, and similar web servers using ngrok's host header rewriting feature.
+
+Popular web servers such as MAMP and WAMP rely on a technique popularly referred to as 'Virtual Hosting' which means that they consult the HTTP request's `Host` header to determine which of their multiple sites they should serve. To expose a site like this it is possible to ask ngrok to rewrite the `Host` header of all requests to match what your web server expects. You can do this by using the `--host-header` option (see: [Rewriting the Host header](/universal-gateway/http/#rewrite-host-header)) to pick which virtual host you want to target. For example, to route to your local site `myapp.dev`, you would run:
+
+```bash  theme={null}
+ngrok http --host-header=myapp.dev 80
+```
+
+You can also use `rewrite` to tell ngrok to use the local address hostname.
+
+```bash  theme={null}
+ngrok http --host-header=rewrite 80
+```
+
+
+Built with [Mintlify](https://mintlify.com).

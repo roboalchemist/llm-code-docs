@@ -1,0 +1,51 @@
+# Source: https://docs.luciq.ai/flutter/setup-luciq-for-flutter.md
+
+# Setup Luciq for Flutter
+
+- [Integrate Luciq on Flutter](/flutter/setup-luciq-for-flutter/integrating-luciq.md): This page covers how to install the Luciq SDK in your Flutter application.
+- [Updating The SDK](/flutter/setup-luciq-for-flutter/integrating-luciq/updating-the-sdk.md)
+- [Setup Bug Reporting](/flutter/setup-luciq-for-flutter/setup-bug-reporting.md)
+- [Showing Luciq](/flutter/setup-luciq-for-flutter/setup-bug-reporting/showing-luciq.md): This section covers how to set the user action that initializes Luciq, as well as how to customize what appears to your app users after the SDK is shown for Flutter apps.
+- [Customize Report Fields](/flutter/setup-luciq-for-flutter/setup-bug-reporting/customize-report-fields.md)
+- [Bug Reporting Callbacks](/flutter/setup-luciq-for-flutter/setup-bug-reporting/bug-reporting-callbacks.md): Covered here are callbacks that you can use to have a block of code executed when a certain action is triggered for your Flutter apps.
+- [Setup Extended Bug Report](/flutter/setup-luciq-for-flutter/setup-bug-reporting/setup-extended-bug-report.md): This section documents the APIs you can use to collect specific details in your bug reports from your QA team, internal testers, or beta testers on your Flutter apps.
+- [Setup Proactive Reporting](/flutter/setup-luciq-for-flutter/setup-bug-reporting/setup-proactive-reporting.md): This page covers how you can use Proactive Reporting to prompt users to submit feedback reports and how to configure it using APIs.
+- [Disabling/Enabling Bug Reporting](/flutter/setup-luciq-for-flutter/setup-bug-reporting/disabling-enabling-bug-reporting.md): This section covers how to disable and enable bug reporting on Flutter.
+- [Setup Crash Reporting](/flutter/setup-luciq-for-flutter/setup-crash-reporting.md)
+- [Crash-Free Sessions](/flutter/setup-luciq-for-flutter/setup-crash-reporting/crash-free-sessions.md)
+- [Reporting Crashes](/flutter/setup-luciq-for-flutter/setup-crash-reporting/reporting-crashes.md): Covered here are APIs relevant to crash reporting for your Flutter app.
+- [Symbolication/Deobfsucation](/flutter/setup-luciq-for-flutter/setup-crash-reporting/symbolication-deobfsucation.md): Explained here is how to symbolicate your crashes to get more details from the stack trace for your Flutter apps.
+- [Disabling/Enabling Crash Reporting](/flutter/setup-luciq-for-flutter/setup-crash-reporting/disabling-enabling-crash-reporting.md): This page details the API for disabling and enabling crash reporting for your Flutter apps.
+- [Setup Application Performance Monitoring](/flutter/setup-luciq-for-flutter/setup-application-performance-monitoring.md)
+- [Setup App Launch](/flutter/setup-luciq-for-flutter/setup-application-performance-monitoring/setup-app-launch.md): This page covers Luciq's app launch definition, its apdex calculation, how to set your custom target, and all the details you need to know about the app launch metric on your Flutter apps.
+- [Setup Screen Loading](/flutter/setup-luciq-for-flutter/setup-application-performance-monitoring/setup-screen-loading.md): Capture the time it takes for your Flutter widgets to load and identify slow loading widgets.
+- [Setup Screen Rendering](/flutter/setup-luciq-for-flutter/setup-application-performance-monitoring/setup-ui-hangs.md)
+- [Setup Network](/flutter/setup-luciq-for-flutter/setup-application-performance-monitoring/setup-network.md): This page helps you get started with Luciq's network performance monitoring on Flutter, understand Apdex calculation, and customize URL grouping for Flutter apps.
+- [Setup Flows](/flutter/setup-luciq-for-flutter/setup-application-performance-monitoring/setup-app-flows.md)
+- [SDK Debugging](/flutter/setup-luciq-for-flutter/setup-application-performance-monitoring/sdk-debugging.md): This page explains the different tools to debug your APM Flutter integration, bypass the 6-hour batching, and change the SDK log level for your Flutter apps.
+- [Disabling/Enabling APM](/flutter/setup-luciq-for-flutter/setup-application-performance-monitoring/disabling-enabling-apm.md): This page explains the API to disable and enable App Performance Monitoring (APM) on Flutter.
+- [Setup Session Replay](/flutter/setup-luciq-for-flutter/setup-session-replay.md)
+- [Support Tools Integration](/flutter/setup-luciq-for-flutter/setup-session-replay/support-tools-integration.md)
+- [Setup App Ratings & Reviews](/flutter/setup-luciq-for-flutter/setup-app-ratings-and-reviews.md)
+- [Setup In-App Surveys](/flutter/setup-luciq-for-flutter/setup-in-app-surveys.md)
+- [Targeting Surveys](/flutter/setup-luciq-for-flutter/setup-in-app-surveys/targeting-surveys.md): Detailed here is how you can target specific users for your In-App Surveys as well as related APIs for your Flutter apps.
+- [Customizing Survey Behavior](/flutter/setup-luciq-for-flutter/setup-in-app-surveys/customizing-survey-behavior.md): This page covers all the in-app survey behavior that you can customize as well as related APIs for your Flutter apps.
+- [In-app Surveys Callback](/flutter/setup-luciq-for-flutter/setup-in-app-surveys/in-app-surveys-callback.md): Covered here is how to set up the event handler that fires before and after every survey is shown for your Flutter apps.
+- [Disabling/Enabling In-App Surveys](/flutter/setup-luciq-for-flutter/setup-in-app-surveys/disabling-enabling-in-app-surveys.md)
+- [Setup In-App Replies](/flutter/setup-luciq-for-flutter/setup-in-app-replies.md)
+- [Show Replies List](/flutter/setup-luciq-for-flutter/setup-in-app-replies/show-replies-list.md): Learn how to manually show the replies page to the users in your Flutter apps
+- [Managing Notifications](/flutter/setup-luciq-for-flutter/setup-in-app-replies/managing-notifications.md): Detailed in this page is how you can manage in-app notifications for new in-app chat messages for your Flutter apps.
+- [In-App Replies Callbacks](/flutter/setup-luciq-for-flutter/setup-in-app-replies/in-app-replies-callbacks.md): Covered here is how to set up the event handler that fires with every new message received for your Flutter apps.
+- [Disabling/Enabling In-App Replies](/flutter/setup-luciq-for-flutter/setup-in-app-replies/disabling-enabling-in-app-replies.md)
+- [Logs & Profiling](/flutter/setup-luciq-for-flutter/logs-and-profiling.md): An overview of the different types of logs can be found in this section along with details regarding the session profiler for your Flutter apps.
+- [Auto-masking & Repro Steps](/flutter/setup-luciq-for-flutter/logs-and-profiling/auto-masking-and-repro-steps.md): Learn more about the steps your user has taken until the bug or crash was reported on your Flutter app.
+- [Report Logs](/flutter/setup-luciq-for-flutter/logs-and-profiling/report-logs.md): This section covers how Luciq automatically attaches console logs, verbose logs, and all steps made by your users before a bug report is sent for Flutter apps.
+- [Session Profiler](/flutter/setup-luciq-for-flutter/logs-and-profiling/session-profiler.md): This section covers the details contained in the Session Profiler that appears with all bug reports in your dashboard for Flutter apps.
+- [Custom Settings](/flutter/setup-luciq-for-flutter/custom-settings.md)
+- [User Identification](/flutter/setup-luciq-for-flutter/custom-settings/user-identification.md): This section covers how to bind each report to the identity of the user reporting the problem for your Flutter app. You can also add extra attributes about the device and the user. Luciq helps you bet
+- [Setting Custom Data](/flutter/setup-luciq-for-flutter/custom-settings/setting-custom-data.md): Discussed here is how to set user attributes and tags, as well as log user events, and their relevant APIs for your Flutter app.
+- [SDK Customization](/flutter/setup-luciq-for-flutter/custom-settings/sdk-customization.md): This page covers how to make your users' experience with the Luciq SDK in your Flutter app as simple and seamless as possible by customizing the invocation methods, design, popups, locale, and on-boar
+- [Welcome Message](/flutter/setup-luciq-for-flutter/custom-settings/sdk-customization/welcome-message.md): This section covers onboarding your users about how to reach you through Luciq with a mode for either beta testers or live users on Flutter apps.
+- [Prompt Options](/flutter/setup-luciq-for-flutter/custom-settings/sdk-customization/prompt-options.md): This section covers how to control the popup menu that appears when your app users invoke Luciq for Flutter apps.
+- [UI Color & Theme](/flutter/setup-luciq-for-flutter/custom-settings/sdk-customization/ui-color-and-theme.md): This section covers how to customize how Instabug appears in your app in order to match your design and brand palette for Flutter apps.
+- [SDK Locale](/flutter/setup-luciq-for-flutter/custom-settings/sdk-customization/sdk-locale.md): This section covers how to change the language of the SDK in your app as well as the content of all Luciq messages that your users see for Flutter apps.

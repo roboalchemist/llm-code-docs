@@ -1,0 +1,171 @@
+# Source: https://ngrok.com/docs/pricing-limits/free-plan-limits.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Free Plan Limits
+
+> Learn about the limits and restrictions enforced on the free ngrok for developers plan including endpoint limits and usage quotas.
+
+Learn about the limits enforced in the free ngrok for developers plan.
+
+<Note>
+  The free tier does NOT have timeouts on endpoints.
+  If you'd like to run your endpoint all the time, you can do so, on the free tier, as a [background service](/agent/#background-service).
+</Note>
+
+<Tip>
+  See [Pricing and Limits](https://ngrok.com/pricing?ref=docs) to learn how to increase or remove these limits.
+</Tip>
+
+## Limits and licensing
+
+| Resource          | Limit on Free |
+| ----------------- | ------------- |
+| Data Transfer Out | 1 GB          |
+| Online Endpoints  | Up to 3       |
+| Requests          | 20,000        |
+| TCP Connections   | 5,000         |
+| TLS Connections   | Not Available |
+
+<Note>
+  You can check your usage [in the Usage page in the dashboard](https://dashboard.ngrok.com/usage).
+</Note>
+
+## Free plan resources
+
+| Resource                            | Limit on Free          |
+| ----------------------------------- | ---------------------- |
+| Users                               | 1                      |
+| Online Endpoints                    | Up to 3                |
+| Traffic Policy Rules per Policy     | 5                      |
+| Development domain                  | 1                      |
+| Concurrent Agents                   | 3                      |
+| Bandwidth                           | 1 GB Outgoing/month    |
+| TCP Connection Rate                 | 100/min                |
+| HTTP Request Rate                   | 4,000/min              |
+| Edges                               | 1                      |
+| Logs/Events                         | Up to 10,000 per month |
+| Traffic Identities (OAuth/OIDC MAU) | Up to 3 per month      |
+| HTTP Requests                       | Up to 20,000/month     |
+| TCP Connections                     | Up to 5,000/month      |
+| TLS Connections                     | Not available          |
+| Webhook verifications               | Up to 500/month        |
+
+Features included for free on all plans:
+
+* HTTPS Tunnels
+* HTTPS Edges
+* Web Inspection Agent
+* Replay Requests
+* ngrok SDKs
+* ngrok Kubernetes Operator
+* Remote Agent Management
+* Circuit Breaking
+* Automatic Certificates and Encryption
+* Email Support
+
+## Domain limitations on free plan
+
+The free plan includes one automatically assigned **dev domain** (for example, `your-assigned-name.ngrok-free.app`) that you can use for public endpoints.
+
+**What you CAN do on the free plan:**
+
+* Use your assigned dev domain with commands like: `ngrok http 8080`
+* Create up to 3 online endpoints using your dev domain
+
+**What you CANNOT do on the free plan:**
+
+* Choose or customize your domain name (for example, `--url https://my-custom-name.ngrok.app` will not work)
+* Reserve or create custom static domains
+* Use random domain generation (for example, `--url 'https://'` will not work)
+* Use your own custom domain (for example, `app.yourdomain.com`)
+* Create wildcard domains
+
+To choose custom domain names, use random domain generation, or bring your own domain, you need to [upgrade to a paid plan](https://ngrok.com/pricing?ref=docs-domain-limits).
+
+## Increasing your limits
+
+If you run into a limit, you can [upgrade to a plan with higher limits](https://ngrok.com/pricing?ref=docs).
+If you always want your endpoints online and available, select the Pay-as-you-go plan.
+
+See the [Pricing and Limits](/pricing-limits) page for more information.
+
+## Removing the interstitial page
+
+To prevent bad actors from using ngrok to execute [phishing attacks](https://en.wikipedia.org/wiki/Phishing), ngrok [injects an interstitial page](https://ngrok.com/blog-post/fighting-abuse-on-the-ngrok-platform) in front of all HTML browser traffic on the free tier.
+
+* This page informs visitors that they're accessing a site served by ngrok.
+* Once the visitor selects the "Visit" button to continue to the site, a cookie is set which prevents the interstitial from appearing for that domain for 7 days.
+
+<Note>
+  This does not impact users serving APIs or accessing ngrok endpoints programmatically.
+</Note>
+
+You can remove the interstitial by upgrading to [any paid plan](https://ngrok.com/pricing?ref=docs-interstitial-removal) or using one of the following methods.
+
+### Using headers
+
+From the client accessing the ngrok endpoint, add a header value of `ngrok-skip-browser-warning` and set it to any value.
+These requests will bypass the interstitial.
+
+<Tabs>
+  <Tab title="Axios">
+    ```js  theme={null}
+    axios.get(url, { 'headers': { 'ngrok-skip-browser-warning': '1' } })
+      .then((response => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    ```
+  </Tab>
+
+  <Tab title="Fetch">
+    ```js  theme={null}
+    const response = await fetch(URL, {
+      headers: {
+        "ngrok-skip-browser-warning": "1",
+      },
+      // ...
+    });
+    ```
+  </Tab>
+
+  <Tab title="Super Agent">
+    ```js  theme={null}
+    request
+          .get('/endpoint')
+          .set('ngrok-skip-browser-warning', '1')
+          .then(callback);
+    ```
+  </Tab>
+
+  <Tab title="JQuery">
+    ```js  theme={null}
+    request
+          .get('/endpoint')
+          .set('ngrok-skip-browser-warning', '1')
+          .then(callback);
+    ```
+  </Tab>
+</Tabs>
+
+### Using a custom user agent
+
+Change your user agent by setting [the `User-Agent` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) to something non-standard to bypass the warning, such as `MyApp/0.0.1`.
+
+<Tip>
+  You can also use a browser extension to customize your browser's user agent value.
+  Here's an [example for Chrome](https://chromewebstore.google.com/detail/requestly-intercept-modif/mdnleldcmiljblolnjhpnblkcekpdkpa?hl=en-US).
+</Tip>
+
+## I hit a limit on my plan or ran out of credit. What are my options?
+
+[Upgrade to a plan with higher limits](https://ngrok.com/pricing).
+If you want to ensure your endpoints are always online, choose the Pay-as-you-go plan.
+
+
+Built with [Mintlify](https://mintlify.com).

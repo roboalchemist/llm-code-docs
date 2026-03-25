@@ -1,0 +1,146 @@
+---
+title: What is a ZK Constraint System?
+---
+
+import codeBlock from '@theme/CodeBlock';
+
+In order to write effective o1js, you need to understand at least the basics of ZK constraint
+systems.  If you're coming from a background in web2 or web3, you should try to get a sense
+for the fundamental differences between zk programming and programming in traditional compiled
+and interpreted programming languages before getting deep into working with o1js.  If you're 
+coming from a background writing circuits with other DSLs, then this article may be just a 
+refresher!
+
+You can think of a constraint system as an array of gates.  Each gate is a simple math problem
+that the prover knows how to verifiably compute that accepts some coefficients as input and 
+passes along some output to the next gate.  As a mental model, you can think of gates in a
+proof system like instructions on a CPU.  A constraint system, then, is like a program that
+is composed of a list of instructions to execute in order.
+
+Don't take the metaphor too far!  Most proof systems don't operate over binary data like a 
+CPU does, and they don't have an analogous gate to `JUMP` or `GOTO`, which means that
+conditional execution is not supported.
+
+```mermaid
+    graph TD
+    %% Private inputs (diamond shape, blue)
+    A[/"Private Input (x)"/] 
+    
+    %% Public inputs (diamond shape, green)
+    E[/"Public Input (expectedHash)"/]
+    
+    %% Gates (rectangular, red background)
+    B["⛩️ Gate 1: Poseidon Hash"]
+    D["⛩️ Gate 2: Assert Equality"]
+    
+    %% Wires/intermediate values (oval, yellow)
+    C(("Wire: h = Poseidon(x)"))
+    
+    %% Output (hexagon, purple)
+    F{{"Circuit Output: Valid/Invalid"}}
+    
+    %% Flow connections
+    A --> B
+    B --> C
+    C --> D
+    E --> D
+    D --> F
+
+```
+
+Currently, o1js is compatible with the Kimchi proof backend (via a circuit-writing frontend 
+called snarky), which is specified in the [Mina Book](https://o1-labs.github.io/proof-systems/specs/kimchi.html).
+
+## Implications for Developers
+
+There are two important implications that effect almost every ZK developer.  Before getting 
+into code examples, you should be thinking about how this programming paradigm will change
+the way you think about your code.
+
+### No Dynamic Programming
+
+When writing o1js, a common pattern is to "compile" a constraint system, then generate a proof
+with the compiled artifact.  We call the time while the constraint system is being built for
+the first time "compile time", and the time when the proof is being generated against that
+artifact "prover time".  This process is similar to how a compiler works in a traditional
+programming language.  The compiler takes a program, and generates an artifact in a more raw
+form.  Traditionally, the compiler converts between a high level language that is human readable
+and a low level language that is CPU readable.  In o1js, the compiler takes a high level
+language and converts it to a constraint system that is executable by a prover or verifier.
+
+At compile time, and at prover time, the constraint system needs to be identical.  So if you
+consider a common tool in programming, a dynamic loop, it won't work in ZK.  When you compile
+the circuit, a dummy value will be used for the variables, and it will follow some execution
+path.  Then all subsequent calls to the function must follow _exactly_ the same path.  That
+means different values of a variable can't result in different numbers of iterations over a
+loop.
+
+There are workarounds for this.  For instance, you can write constraint systems that execute 
+a single step, and call the prover function a dynamic number of times.  Or you can execute a
+loop a fixed number of times, but with some dummy behavior.  Consider this normal Javascript
+code:
+
+```ts
+function multiplyAll(arr: number[]) {
+    let result = 1;
+    // This loop can be unbounded - At compile time, it will iterate 0 times, assuming we use a dummy value of [] for arr
+    // At prover time, it will iterate arr.length times, resulting in a different constraint system, so the proof will not be valid
+    for (let i = 0; i < arr.length; i++) {
+        result *= arr[i];
+    }
+    return result;
+}
+```
+
+The function isn't "ZK friendly" because the number of iterations over the loop is dynamic.
+To re-imagine this function for ZK, we can fix the size of the array, and fill the rest of
+the array with ones, which will not affect the result of the multiplication:
+
+```ts
+// NOTE: This is pseudo code, not valid o1js - proper provable code wraps all data in provable types
+function multiplyAll(arr: number[]) {
+    let result = 1;
+    // This loop is fixed size - At compile time, it will iterate 10 times, regardless of the size of arr
+    // At prover time, it will iterate 10 times, therefore the same constraint system will be generated, and the proof will be valid
+    // NOTE: Again this is pseudo code, imagine that there is no index out of bounds error with arr[i]
+    for (let i = 0; i < 10; i++) {
+        result *= arr[i] || 1;
+    }
+    return result;
+}
+```
+
+This way, the function will always iterate 10 times, and for any input of less than or equal
+to ten elements, the result will be the same.  Note that for arrays larger than ten, the
+result will _not_ be the same.  You must carefully write your constraint systems to be
+compatible with your domain.
+
+### No Conditional Execution
+
+Along the same lines, a function can't execute a different code path based on the value of a
+variable.  There are ways to conditionally assign values to variables (see: 
+[Conditional Logic](/docs/writing-constraint-systems/conditional-logic.mdx)), but the
+execution path must always be identical.
+
+### Rule of Thumb: Prove the Smallest Thing
+
+A programming language with no dynamic programming and no conditional execution may sound
+useless at first, but you don't need to write your entire application in ZK.  ZK is a spice
+that you can use sparingly to supercharge your application.  When you specifically need to
+prove something for privacy, scale, or security, you can write a constraint system to 
+model the problem you want to solve.  What's amazing about o1js is that you can expose that
+constraint system system directly to users in a browser, or to a service that can access
+node.  Design apps that use constraint systems with as little scope as possible to maximize
+performance and developer experience.
+
+The tradeoffs regarding dynamic programming and conditional execution can also be worked
+around by writing small, well-scoped constraint systems.  Your JavaScript code can make
+use of dynamic programming and compose simple proofs into more complex proofs.  Imagine
+you are writing a sudoku solver.  A naïve approach would be to model the entire solver
+in o1js and make it provable.  But if you break the problem down, _solving_ the sudoku
+doesn't need to be provable, only _verifying_ the solution does.  So you can write a
+JavaScript solver that uses dynamic programming to solve the sudoku simply, and write an
+o1js constraint system to verify the solution for any given input.  You can even write a 
+constraint system that verifies the proof of a single solution, and adds the solution to 
+a list of known solutions.  By writing simple constraint systems, that do one thing well,
+you can compose more complex systems that prove interesting things.

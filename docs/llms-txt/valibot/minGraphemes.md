@@ -1,0 +1,62 @@
+# Source: https://valibot.dev/api/minGraphemes.md
+
+# minGraphemes
+
+Creates a min [graphemes](https://en.wikipedia.org/wiki/Grapheme) validation action.
+
+```ts
+const Action = v.minGraphemes<TInput, TRequirement, TMessage>(
+  requirement,
+  message
+);
+```
+
+## Generics
+
+- `TInput` <Property {...properties.TInput} />
+- `TRequirement` <Property {...properties.TRequirement} />
+- `TMessage` <Property {...properties.TMessage} />
+
+## Parameters
+
+- `requirement` <Property {...properties.requirement} />
+- `message` <Property {...properties.message} />
+
+### Explanation
+
+With `minGraphemes` you can validate the graphemes of a string. If the input does not match the `requirement`, you can use `message` to customize the error message.
+
+## Returns
+
+- `Action` <Property {...properties.Action} />
+
+## Examples
+
+The following examples show how `minGraphemes` can be used.
+
+### Min graphemes schema
+
+Schema to validate a string with a minimum of 8 graphemes.
+
+```ts
+const MinGraphemesSchema = v.pipe(
+  v.string(),
+  v.minGraphemes(8, 'The string must contain at least 8 graphemes.')
+);
+```
+
+## Related
+
+The following APIs can be combined with `minGraphemes`.
+
+### Schemas
+
+<ApiList items={['any', 'custom', 'string']} />
+
+### Methods
+
+<ApiList items={['pipe']} />
+
+### Utils
+
+<ApiList items={['isOfKind', 'isOfType']} />

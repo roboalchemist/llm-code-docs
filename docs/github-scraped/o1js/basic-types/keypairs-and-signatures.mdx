@@ -1,0 +1,21 @@
+---
+title: Keypairs and Signatures
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+### Native Signatures
+The `Signature` class in o1js refers to a Schnorr signature over the Pallas curve.  It works with the `PrivateKey` and `PublicKey` classes to 
+sign and verify messages of [Field](/docs/basic-types/field.mdx) arrays.
+
+```ts file=../snippets/keypairs-and-signatures/keypairs-and-signatures.ts start=start_native_signature end=end_native_signature
+```
+
+### ECDSA Signatures (Ethereum)
+ECDSA signatures are supported as well.  In general, elliptic curve cryptography is supported over foreign curves, but you can
+follow the snippet below for verifying signatures specifically for an Ethereum configuration.
+
+```ts file=../snippets/keypairs-and-signatures/keypairs-and-signatures.ts start=start_ethereum_signature end=end_ethereum_signature
+```
+
+Read more at the language reference: [Signature](/docs/api-reference/classes/Signature.mdx), [PrivateKey](/docs/api-reference/classes/PrivateKey.mdx), [PublicKey](/docs/api-reference/classes/PublicKey.mdx), [createEcdsa](/docs/api-reference/functions/createEcdsa.mdx).

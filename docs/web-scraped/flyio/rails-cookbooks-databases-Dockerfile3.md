@@ -1,0 +1,9 @@
+# Source: https://fly.io/docs/rails/cookbooks/databases/Dockerfile3/
+
+\# syntax = docker/dockerfile:1 FROM ruby:slim as build RUN apt-get update &&\\ apt-get install \--yes build-essential git pkg-config redis default-libmysqlclient-dev RUN gem install rails RUN rails new demo \--css tailwind \--database mysql FROM ruby:slim COPY \--from=build /demo /demo COPY \--from=build /usr/local/bundle /usr/local/bundle COPY \--from=build /usr/lib/x86_64-linux-gnu/ /usr/lib/x86_64-linux-gnu/ WORKDIR demo RUN bin/rails generate model Visitor counter:integer &&\\ bin/rails generate channel counter COPY \<\<-\"EOF\" app/controllers/visitors_controller.rb class VisitorsController \< ApplicationController def counter \@visitor = Visitor.find_or_create_by(id: 1) \@visitor.update! counter: \@visitor.counter.to_i + 1 \@visitor.broadcast_replace_later_to \'counter\', partial: \'visitors/counter\' end end EOF COPY \<\<-\"EOF\" app/views/visitors/counter.html.erb \<%= turbo_stream_from \'counter\' %\>
+
+![The monochrome white Fly.io brandmark on a navy background](https://fly.io/static/images/brand/brandmark-light.svg)
+
+\<%= render \"counter\", visitor: \@visitor %\>
+
+EOF COPY \<\<-\"EOF\" app/views/visitors/\_counter.html.erb \<%= turbo_frame_tag(dom_id visitor) do %\> \<%= visitor.counter.to_i %\> \<% end %\> EOF COPY \<\<-\"EOF\" config/routes.rb Rails.application.routes.draw  EOF RUN apt-get update -qq && \\ apt-get install \--no-install-recommends -y \\ postgresql-client \\ && rm -rf /var/lib/apt/lists /var/cache/apt/archives ENV RAILS_ENV=production RUN bin/rails assets:precompile EXPOSE 3000 ENV RAILS_LOG_TO_STDOUT=true ENV RAILS_SERVE_STATIC_FILES=true CMD bin/rails server

@@ -1,0 +1,54 @@
+# Source: https://valibot.dev/api/toBigint.md
+
+# toBigint
+
+Creates a to bigint transformation action.
+
+```ts
+const Action = v.toBigint<TInput, TMessage>(message);
+```
+
+## Generics
+
+- `TInput` <Property {...properties.TInput} />
+- `TMessage` <Property {...properties.TMessage} />
+
+## Parameters
+
+- `message` <Property {...properties.message} />
+
+### Explanation
+
+With `toBigint` you can transform the input to a bigint. If the input cannot be transformed, you can use `message` to customize the error message.
+
+## Returns
+
+- `Action` <Property {...properties.Action} />
+
+## Examples
+
+The following examples show how `toBigint` can be used.
+
+### Number schema
+
+Schema to validate a number and transform it to a bigint.
+
+```ts
+const NumberSchema = v.pipe(v.number(), v.toBigint());
+```
+
+## Related
+
+The following APIs can be combined with `toBigint`.
+
+### Schemas
+
+<ApiList items={['any', 'boolean', 'custom', 'number', 'string', 'unknown']} />
+
+### Methods
+
+<ApiList items={['pipe']} />
+
+### Utils
+
+<ApiList items={['isOfKind', 'isOfType']} />

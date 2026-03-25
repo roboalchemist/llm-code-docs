@@ -1,0 +1,146 @@
+# Source: https://ngrok.com/docs/integrations/endpoint-sso/okta-sso-oidc.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Secure your endpoints with Okta SSO (OpenID Connect)
+
+> Secure access to your ngrok endpoints with Okta single sign-on (SSO) using OpenID Connect.
+
+<Note>
+  This guide refers to using SSO to authenticate access to your **endpoints**. You cannot use these instructions to set up SSO for logging into your ngrok account in the dashboard.
+</Note>
+
+This guide explains how to configure Okta as the primary Identity Provider for ngrok tunnels using single sign-on (SSO).
+By integrating Okta SSO with ngrok, you can:
+
+* Restrict access to ngrok tunnels only to users authenticated via Okta
+* Use Okta security policies, MFA authenticators—including Okta Verify, FastPass, and FIDO2—and ThreatInsights to control access to ngrok tunnels
+* Use Okta's Dashboard to facilitate access to ngrok apps
+
+The ngrok integration with Okta supports SP-Initiated SSO.
+In this mode, users access ngrok edges and tunnels and are redirected to Okta for authentication.
+
+## What you'll need
+
+* An Okta account with administrative rights to create apps.
+* An ngrok Enterprise account with an authtoken or admin access to configure edges with OpenID Connect.
+
+## 1. Configure Okta
+
+### Add the ngrok app in Okta
+
+* Access your Okta Dashboard as an administrator and then click **Admin**.
+* Click **Application > Applications**.
+* Click **Browse App Catalog**.
+* Search for `ngrok`, and then click **Add**.
+* Enter the **Application label** (this is the app name that will be displayed in the Okta dashboard for end users) and click **Next**.
+* Select **OpenID Connect**, and then enter the following:
+  * **Sign-in redirect URI**: `https://idp.ngrok.com/oauth2/callback`
+  * **Login initiated by**: Login initiated by app
+* Click **Done**.
+* Under the **Sign On** tab of the ngrok application, copy the **Client ID** and **Client Secret**.
+  These values will be used at ngrok to complete the configuration.
+* In the ngrok configuration under Scopes, add the following OAuth Scopes: `openid,profile,email`
+
+### Grant access to Okta people and groups
+
+Okta allows administrators to restrict access to SSO apps—such as ngrok—via assignments.
+By default, apps created in Okta have no assignments; in other words, nobody can use Okta SSO to access ngrok until you assign them to the app.
+To assign Okta users and groups to the ngrok app:
+
+* Click **Application > Applications**.
+* Search for and click the **ngrok app**.
+* Click **Assignments**.
+* Use the **Assign** button to associate groups and users with the ngrok app.
+  To test the SSO with ngrok, make sure you're assigned to the app.
+
+## 2. Configure ngrok
+
+ngrok can use Okta SSO in two ways:
+
+* From the ngrok CLI (using the `--oidc` parameter)
+* From the ngrok dashboard
+
+### **Option 1**: ngrok CLI
+
+<Note>
+  This tutorial assumes you have an app running locally (for example, on `localhost:3000`) with the ngrok client installed.
+</Note>
+
+* Launch a terminal.
+
+* Enter the following command to launch an ngrok tunnel with Okta SSO.
+  Replace `<okta_url>` with your Okta org address (for example, `https://acme.okta.com`) and the `<okta_client_id>` and `<okta_client_secret>` with the respective values copied from the ngrok app registered at Okta.
+  Optionally, add the `--url <domain>` argument to get your own custom URL, replacing `<domain>` with your URL of preference:
+
+  ```bash  theme={null}
+  ngrok http 3000 --oidc <okta_url> \
+  --oidc-client-id <okta_client_id> \
+  --oidc-client-secret <okta_client_secret> \
+  --url <domain>
+  ```
+
+* Copy the URL available next to **Forwarding** (for example, `https://okta-sso-test.ngrok.app`).
+
+* Skip to **Step 3**.
+
+### **Option 2**: ngrok edge
+
+To configure an edge with Okta:
+
+* Go to your [ngrok dashboard](https://dashboard.ngrok.com).
+
+* Click **Universal Gateway > Edges**.
+
+* If you don't have an edge already set to add Okta SSO, create a test edge:
+  * Click **New Edge**.
+  * Click **HTTPS Edge**.
+  * Click the **pencil icon** next to "no description".
+    Enter `Edge with Okta SSO` as the edge name and click **Save**.
+
+* On the edge settings, click **OIDC**.
+
+* Click **Begin setup** and enter the following:
+  * **Issuer URL**: Your Okta tenant URL (for example, `https://acme.oktapreview.com`).
+  * **Client ID**: The client ID copied from Okta.
+  * **Client Secret**: The client secret copied from Okta.
+
+* Click **Save**.
+
+* Launch a tunnel connected to your Okta edge:
+
+  <Note>
+    This step assumes you have an app running locally (for example, on `localhost:3000`) with the ngrok client installed.
+  </Note>
+
+* Click **Start a tunnel**.
+
+* Click the **copy icon** next to the tunnel command.
+
+* Launch a tunnel:
+  * Launch a terminal.
+  * Paste the command.
+    Replace `http://localhost:80` with your local web app address (such as `http://localhost:3000`).
+  * Press **Enter**.
+    An ngrok tunnel associated with your edge configuration will launch.
+
+* To confirm that the tunnel is connected to your edge:
+  * Return to the ngrok dashboard.
+  * Close the **Start a tunnel** and the **Tunnel group** tabs.
+  * Refresh the test edge page.
+    Under traffic, you will see the message *You have 1 tunnel online. Start additional tunnels to begin load balancing*.
+
+* In the test edge, copy the **endpoint URL**.
+  You will use this URL to test the Okta authentication.
+
+## 3. Test the integration
+
+* In your browser, launch an incognito window.
+* Access your ngrok tunnel (for example, `https://okta-sso-test.ngrok.app` or using a copied URL).
+* You should be prompted to log in with your Okta credentials.
+* After logging in, you should be able to see your web app.
+
+
+Built with [Mintlify](https://mintlify.com).

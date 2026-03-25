@@ -1,0 +1,23 @@
+# Source: https://docs.fiddler.ai/api/fiddler-python-client-sdk/exceptions/conn-error.md
+
+# ConnError
+
+Raised when a connection error occurs during HTTP requests.
+
+This exception was used to indicate general connection problems when trying to communicate with the Fiddler platform, such as network unreachability, DNS resolution failures, or connection refused errors.
+
+## Examples
+
+```python
+Historical usage (now deprecated):
+
+    try:
+        # Network API call
+        pass
+
+    except ConnError as e:
+        print(f"Connection failed: {e.message}")
+        # Check network connectivity or URL configuration
+```
+
+## message *: str* *= 'Unable to reach the given endpoint'*

@@ -1,0 +1,3 @@
+# Source: https://fly.io/docs/rails/cookbooks/minimal/Dockerfile3/
+
+\# syntax = docker/dockerfile:1 FROM ruby:slim as build RUN apt-get update &&\\ apt-get install \--yes build-essential git RUN gem install rails RUN rails new demo \--minimal \--skip-active-record FROM ruby:slim COPY \--from=build /demo /demo COPY \--from=build /usr/local/bundle /usr/local/bundle COPY \<\<-\"EOF\" /demo/config/routes.rb Rails.application.routes.draw  EOF WORKDIR demo ENV RAILS_ENV=production EXPOSE 3000 CMD bin/rails server

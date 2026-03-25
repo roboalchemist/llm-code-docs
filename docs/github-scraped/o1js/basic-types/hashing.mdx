@@ -1,0 +1,22 @@
+---
+title: Hashing
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+### Poseidon
+[Poseidon](https://o1-labs.github.io/proof-systems/specs/poseidon.html) is the most efficient hashing algorithm for o1js, and it should be 
+used for general purpose hashing.  It operates over Field arrays, and all provable types can be converted to Field arrays.
+
+```ts file=../snippets/hashing/hashing.ts start=start_poseidon end=end_poseidon
+```
+
+### Other Hash Functions
+Other hash functions are supported, but should be reserved for cases where a specific hash function is required.  For example,
+proving verification of an ethereum hash would involve calculating a keccak hash.  In general, these other hash functions operate
+over blocks of bytes of a specific size (like 32 bytes).
+
+```ts file=../snippets/hashing/hashing.ts start=start_other_hashes end=end_other_hashes
+```
+
+Read more at the language reference: [Poseidon](/docs/api-reference/variables/Poseidon.mdx), [Hash](/docs/api-reference/variables/Hash.mdx).

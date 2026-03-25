@@ -1,0 +1,138 @@
+# Source: https://docs.knock.app/integrations/extensions/datadog.md
+
+---
+title: Connecting Knock to your Datadog account
+description: Learn more about how to connect Knock with your Datadog account.
+layout: integrations
+tags: ["datadog", "extensions"]
+section: Integrations > Extensions
+---
+
+You can use the Knock + Datadog integration to stream workflow, channel, and message metrics from your Knock account to your Datadog account. With this you can:
+
+- Set up custom Datadog monitors and dashboards to track your Knock workflows & channels
+- Get up-to-the-minute data on workflows triggered and messages delivered
+- Monitor events ingested and actions triggered from event platforms like [Segment](/integrations/sources/segment) and [RudderStack](/integrations/sources/rudderstack)
+
+<Callout
+  type="enterprise"
+  title="Enterprise plan feature."
+  style={{ alignItems: "center" }}
+  text={
+    <>
+      The Knock Datadog extension is only available on our{" "}
+      <a href="https://knock.app/pricing">Enterprise plan</a>.
+    </>
+  }
+/>
+
+## What this integration does
+
+This integration will send a stream of metrics as they happen from your Knock account to your Datadog account. Metrics are prefixed `knock.*` and include success and failure codes. Metrics are tagged (where applicable) by:
+
+- Environment
+- Workflow key
+- Workflow category
+- Workflow exec mode
+- Channel or workflow step type
+- Channel provider
+- Integration source type
+- Error reason
+
+Please refer to your Datadog pricing agreement for information on how custom metrics sent to Datadog are priced for your account.
+
+At this time there is no way to selectively enable specific metrics, however metrics will only be emitted to Datadog for features that you are actively using in Knock.
+
+A workflow can have one or more [categories](/concepts/workflows#workflow-categories). For applicable metrics, each category will have a unique tag on the emitted metrics; a workflow with categories `transactional` and `updates` will have the tags `workflow_category:transactional` and `workflow_category:updates`.
+
+## Installing the integration
+
+1. Visit the **Extensions** page under the **Integrations** section of your Knock dashboard account settings
+2. Click "Configure Datadog"
+3. Enter a Datadog API Key from Datadog's [API Keys](https://app.datadoghq.com/organization-settings/api-keys) page (we recommend creating a dedicated key just for Knock)
+4. Pick the correct site for your Datadog account (visit [Datadog's docs](https://docs.datadoghq.com/getting_started/site/) for more information)
+5. Click "Connect"
+
+## Dashboard starter kit
+
+Get started with our Datadog dashboard starter kit to start monitoring Knock metrics with just a few clicks:
+
+1. Visit [Datadog's dashboard list](https://app.datadoghq.com/dashboard/lists) and click "New Dashboard"
+2. Give it a name and click "New Dashboard"
+3. Click the gear icon in the corner of the dashboard and choose "Import dashboard JSON..."
+
+- You may need to close the "Add Widgets" tray to see the gear icon
+
+4. Click the button below to copy the dashboard JSON, and paste it into the Datadog dashboard page when prompted.
+
+<CopyableText
+  label="Copy Dashboard Starter Kit JSON"
+  content={JSON.stringify(datadogDashboardJson)}
+/>
+
+<Image
+  src="/images/integrations/extensions/datadog_dashboard.png"
+  width={1711}
+  height={903}
+  className="rounded-md mx-auto"
+  alt="The Knock Datadog Dashboard in action"
+/>
+
+## Reported metrics
+
+<Attributes>
+  <Attribute
+    name="knock.message_delivered.total"
+    type="count"
+    description="How many messages have been delivered, segmented by `channel`, `provider`, `workflow` key, and `workflow_category`."
+  />
+  <Attribute
+    name="knock.message_delivered_retryable_error.total"
+    type="count"
+    description="How many deliveries ended in a retryable failure, segmented by `channel`, `provider`, `workflow` key, and `workflow_category`."
+  />
+  <Attribute
+    name="knock.message_delivered_error.total"
+    type="count"
+    description="How many deliveries ended in failure (not retryable), segmented by `channel`, `provider`, `workflow` key, and `workflow_category`."
+  />
+  <Attribute
+    name="knock.message_bounced_error.total"
+    type="count"
+    description="How many deliveries ended in non-retryable errors from downstream providers, segmented by `channel`, `provider`, `workflow` key, and `workflow_category`."
+  />
+  <Attribute
+    name="knock.workflow_recipient_run.total"
+    type="count"
+    description="How many workflow recipient runs have been started, segmented by `workflow` key, `exec_mode`, and `workflow_category`."
+  />
+  <Attribute
+    name="knock.workflow_recipient_run_error.total"
+    type="count"
+    description="How many errors were experienced during a workflow recipient run, segmented by `workflow` key, `exec_mode`, `step_type`, `workflow_category`, and the error `reason`. A workflow recipient run can report more than one error."
+  />
+  <Attribute
+    name="knock.integration_event_received.total"
+    type="count"
+    description="The raw number of events received by Knock from an integration source, segmented by `source_type`."
+  />
+  <Attribute
+    name="knock.integration_action_run.total"
+    type="count"
+    description="How many actions were triggered by received events, segmented by `source_type` and `action`."
+  />
+  <Attribute
+    name="knock.integration_action_run_error.total"
+    type="count"
+    description="How many actions failed to run, segmented by `source_type` and `action`."
+  />
+</Attributes>
+
+- All metrics are segmented by `environment` name (e.g. `production`, `development`)
+- For each of the error cases, [the Knock dashboard](https://dashboard.knock.app) can provide more insights into specific failures (e.g. misconfigured workflow, channel, or integration action)
+
+## Uninstalling the integration
+
+1. Visit the **Extensions** page under the **Integrations** section of your Knock dashboard account settings
+2. Click the "Disconnect" button for the Datadog extension, and then click "Confirm"
+3. If you created a dedicated Datadog API key for Knock, you can now delete the key from Datadog's [API Keys](https://app.datadoghq.com/organization-settings/api-keys) page

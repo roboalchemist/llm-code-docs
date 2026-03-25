@@ -996,6 +996,9 @@ sites:
 - name: vercel-rest-api
   base_url: https://vercel.com/docs/rest-api/reference/
   description: Vercel REST API reference documentation
+- name: verda
+  base_url: https://docs.verda.com/
+  description: Verda cloud GPU provider with RTX 5090, H100, H200 instances, persistent storage, and REST API
 - name: viem
   base_url: https://viem.sh/
   description: Viem documentation
@@ -1190,81 +1193,474 @@ sites:
 - name: architect
   base_url: https://docs.architect.co/
   description: architect documentation
-- name: launchdarkly
-  base_url: https://docs.launchdarkly.com/
-  description: launchdarkly documentation
-- name: bunup
-  base_url: https://bunup.dev/
-  description: bunup documentation
-- name: open-saas
-  base_url: https://docs.opensaas.sh/
-  description: open-saas documentation
-- name: scalekit
-  base_url: https://docs.scalekit.com/
-  description: scalekit documentation
-- name: supastarter
-  base_url: https://supastarter.dev/
-  description: supastarter documentation
-- name: rolldown
-  base_url: https://rolldown.rs/
-  description: rolldown documentation
-- name: verba
-  base_url: https://docs.verba.ink/
-  description: verba documentation
-- name: cherrypy
-  base_url: https://docs.cherrypy.org/en/latest/
-  description: cherrypy documentation
-- name: adempiere
-  base_url: https://adempiere.gitbook.io/docs/
-  description: adempiere documentation
+- name: back4app
+  base_url: https://back4app.io/docs/
+  description: back4app documentation
+- name: directus
+  base_url: https://directus.io/docs/
+  description: directus documentation
+- name: xano
+  base_url: https://docs.xano.com/
+  description: xano documentation
+- name: cerbos
+  base_url: https://docs.cerbos.dev/
+  description: cerbos documentation
+- name: courier
+  base_url: https://www.courier.com/docs/
+  description: courier documentation
+- name: heroku
+  base_url: https://devcenter.heroku.com/
+  description: heroku documentation
+- name: knock
+  base_url: https://docs.knock.app/
+  description: knock documentation
+- name: mixpanel
+  base_url: https://developer.mixpanel.com/
+  description: mixpanel documentation
+- name: next.js
+  base_url: https://nextjs.org/docs/
+  description: next.js documentation
+- name: stytch
+  base_url: https://stytch.com/
+  description: stytch documentation
+- name: unleash
+  base_url: https://docs.getunleash.io/
+  description: unleash documentation
+- name: axonius
+  base_url: https://docs.axonius.com/
+  description: axonius documentation
+- name: plex-manufacturing-cloud
+  base_url: https://plex.rockwellautomation.com/
+  description: plex-manufacturing-cloud documentation
+- name: redocly
+  base_url: https://redoc.ly/
+  description: redocly documentation
+- name: stripe-node
+  base_url: https://docs.stripe.com/
+  description: stripe-node documentation
+- name: supabase-auth
+  base_url: https://docs.supabase.com/
+  description: supabase-auth documentation
+- name: aws-cognito
+  base_url: https://docs.aws.amazon.com/
+  description: aws-cognito documentation
+- name: karate-dsl
+  base_url: https://docs.karatelabs.io/
+  description: karate-dsl documentation
+- name: gatling
+  base_url: https://www.gatling.io/docs/
+  description: gatling documentation
+- name: conduktor
+  base_url: https://www.conduktor.io/
+  description: conduktor documentation
+- name: hugging-face-optimum
+  base_url: https://huggingface.co/docs/optimum/
+  description: hugging-face-optimum documentation
+- name: arize
+  base_url: https://arize.com/docs/
+  description: arize documentation
+- name: clickhouse
+  base_url: https://clickhouse.ferndocs.com/
+  description: clickhouse documentation
+- name: deep-lake
+  base_url: https://docs-v3.activeloop.ai/
+  description: deep-lake documentation
+- name: latenode
+  base_url: https://documentation.latenode.com/
+  description: latenode documentation
+- name: prefect
+  base_url: https://docs.prefect.io/
+  description: prefect documentation
+- name: lettuce
+  base_url: https://lettuce.io/
+  description: lettuce documentation
 - name: pulumi
   base_url: https://www.pulumi.com/
   description: pulumi documentation
-- name: opencart
-  base_url: https://docs.opencart.com/
-  description: opencart documentation
-- name: syspro
-  base_url: https://www.syspro.com/
-  description: syspro documentation
-- name: vueuse
-  base_url: https://vueuse.org/
-  description: vueuse documentation
-- name: threejs
-  base_url: https://threejs.org/docs/
-  description: threejs documentation
-- name: anchore-enterprise
-  base_url: https://docs.anchore.com/
-  description: anchore-enterprise documentation
-- name: enate
-  base_url: https://docs.enate.net/
-  description: enate documentation
-- name: wso2
-  base_url: https://wso2.com/
-  description: wso2 documentation
-- name: flux
-  base_url: https://docs.flux.ai/docs/
-  description: flux documentation
-- name: pega
-  base_url: https://pega.org/docs/
-  description: pega documentation
-- name: fast-check
-  base_url: https://fast-check.dev/
-  description: fast-check documentation
-- name: red-hat-openshift
-  base_url: https://docs.openshift.com/
-  description: red-hat-openshift documentation
-- name: taurus
-  base_url: https://docs.taurushq.com/
-  description: taurus documentation
-- name: testkube
-  base_url: https://testkube.io/
-  description: testkube documentation
-- name: dbt-cloud
+- name: kong
+  base_url: https://developer.konghq.com/
+  description: kong documentation
+- name: cto.ai
+  base_url: https://docs.cto.new/
+  description: cto.ai documentation
+- name: jfrog-artifactory
+  base_url: https://docs.jfrog.com/docs/
+  description: jfrog-artifactory documentation
+- name: parity
+  base_url: https://docs.rs/parity/latest/parity/
+  description: parity documentation
+- name: port.io
+  base_url: https://docs.port.io/
+  description: port.io documentation
+- name: qodo
+  base_url: https://docs.qodo.ai/
+  description: qodo documentation
+- name: middleware.io
+  base_url: https://middleware.io/
+  description: middleware.io documentation
+- name: amazon-opensearch-service
+  base_url: https://docs.aws.amazon.com/
+  description: amazon-opensearch-service documentation
+- name: searchwp
+  base_url: https://searchwp.com/
+  description: searchwp documentation
+- name: zinc
+  base_url: https://www.zinc.com/docs/
+  description: zinc documentation
+- name: timeplus
+  base_url: https://docs.timeplus.com/
+  description: timeplus documentation
+- name: apache-spark
+  base_url: https://spark.apache.org/docs/
+  description: apache-spark documentation
+- name: mongodb-atlas
+  base_url: https://www.mongodb.com/docs/
+  description: mongodb-atlas documentation
+- name: mongodb
+  base_url: https://www.mongodb.com/docs/
+  description: mongodb documentation
+- name: kedro
+  base_url: https://docs.kedro.org/
+  description: kedro documentation
+- name: pentaho
+  base_url: https://docs.pentaho.com/
+  description: pentaho documentation
+- name: atlan
+  base_url: https://docs.atlan.com/
+  description: atlan documentation
+- name: dbt
   base_url: https://docs.getdbt.com/
-  description: dbt-cloud documentation
-- name: cortex
-  base_url: https://docs.cortexlabs.com/
-  description: cortex documentation
-- name: '@nestjs/schedule'
-  base_url: https://docs.nestjs.com/
-  description: '@nestjs/schedule documentation'
+  description: dbt documentation
+- name: bull
+  base_url: https://docs.bullmq.io/
+  description: bull documentation
+- name: cloud-run
+  base_url: https://cloud.run/docs/
+  description: cloud-run documentation
+- name: aws-ecs
+  base_url: https://docs.aws.amazon.com/
+  description: aws-ecs documentation
+- name: dify
+  base_url: https://docs.dify.ai/
+  description: dify documentation
+- name: estuary
+  base_url: https://estuary.dev/
+  description: estuary documentation
+- name: fluxcd
+  base_url: https://fluxcd.control-plane.io/
+  description: fluxcd documentation
+- name: keboola
+  base_url: https://www.keboola.com/
+  description: keboola documentation
+- name: mlrun
+  base_url: https://docs.mlrun.org/
+  description: mlrun documentation
+- name: workato
+  base_url: https://workato.docs.buildwithfern.com/
+  description: workato documentation
+- name: dbt-core
+  base_url: https://docs.getdbt.com/
+  description: dbt-core documentation
+- name: dask
+  base_url: https://docs.dask.org/
+  description: dask documentation
+- name: hatchet
+  base_url: https://docs.hatchet.run/
+  description: hatchet documentation
+- name: krakend
+  base_url: https://krakend.com/
+  description: krakend documentation
+- name: ngrok
+  base_url: https://ngrok.com/docs/
+  description: ngrok documentation
+- name: apidog
+  base_url: https://docs.apidog.com/
+  description: apidog documentation
+- name: nexus
+  base_url: https://docs.nexus.xyz/
+  description: nexus documentation
+- name: sinch
+  base_url: https://docs.sinch.com/
+  description: sinch documentation
+- name: klaviyo
+  base_url: https://developers.klaviyo.com/
+  description: klaviyo documentation
+- name: mailerlite
+  base_url: https://developers-classic.mailerlite.com/
+  description: mailerlite documentation
+- name: maizzle
+  base_url: https://maizzle.com/
+  description: maizzle documentation
+- name: neverbounce
+  base_url: https://developers.neverbounce.com/
+  description: neverbounce documentation
+- name: stripo
+  base_url: https://stripo.io/
+  description: stripo documentation
+- name: zerobounce
+  base_url: https://www.zerobounce.net/
+  description: zerobounce documentation
+- name: rxdb
+  base_url: https://rxdb.info/
+  description: rxdb documentation
+- name: shadcn/ui
+  base_url: https://ui.shadcn.com/
+  description: shadcn/ui documentation
+- name: vuetify
+  base_url: https://vuetifyjs.com/
+  description: vuetify documentation
+- name: gsap
+  base_url: https://gsap.com/
+  description: gsap documentation
+- name: base-ui
+  base_url: https://base-ui.com/
+  description: base-ui documentation
+- name: pdm
+  base_url: https://pdm-project.org/
+  description: pdm documentation
+- name: stylex
+  base_url: https://www.stylexjs.com/
+  description: stylex documentation
+- name: ruff
+  base_url: https://docs.astral.sh/ruff/
+  description: ruff documentation
+- name: ghost
+  base_url: https://docs.ghost.org/
+  description: ghost documentation
+- name: vagrant
+  base_url: https://www.vagrantup.com/
+  description: vagrant documentation
+- name: appdynamics
+  base_url: https://www.appdynamics.com/
+  description: appdynamics documentation
+- name: uv
+  base_url: https://docs.astral.sh/uv/
+  description: uv documentation
+- name: openstatus
+  base_url: https://docs.openstatus.dev/
+  description: openstatus documentation
+- name: physx
+  base_url: https://embark.rs/
+  description: physx documentation
+- name: vale
+  base_url: https://docs.vale.sh/
+  description: vale documentation
+- name: moonrepo
+  base_url: https://moonrepo.dev/
+  description: moonrepo documentation
+- name: localstack
+  base_url: https://docs.localstack.cloud/
+  description: localstack documentation
+- name: task
+  base_url: https://taskfile.dev/
+  description: task documentation
+- name: aws-codeartifact
+  base_url: https://docs.aws.amazon.com/
+  description: aws-codeartifact documentation
+- name: fiddler
+  base_url: https://docs.fiddler.ai/
+  description: fiddler documentation
+- name: luzmo
+  base_url: https://developer.cumul.io/
+  description: luzmo documentation
+- name: vue-flow
+  base_url: https://vueflow.dev/
+  description: vue-flow documentation
+- name: oxlint
+  base_url: https://oxc.rs/
+  description: oxlint documentation
+- name: nimble
+  base_url: https://docs.nimbleway.io/
+  description: nimble documentation
+- name: pixi
+  base_url: https://pixijs.com/
+  description: pixi documentation
+- name: nx
+  base_url: https://nx.dev/docs/
+  description: nx documentation
+- name: wireit
+  base_url: https://wireit.dev/
+  description: wireit documentation
+- name: wiremock.net
+  base_url: https://wiremock.org/
+  description: wiremock.net documentation
+- name: clerc
+  base_url: https://clerc.so1ve.dev/
+  description: clerc documentation
+- name: yq
+  base_url: https://mikefarah.gitbook.io/
+  description: yq documentation
+- name: sanity
+  base_url: https://logo-soup.sanity.dev/docs/
+  description: sanity documentation
+- name: artifactory
+  base_url: https://docs.jfrog.com/.well-known/
+  description: artifactory documentation
+- name: google-cloud-build
+  base_url: https://cloud.google.com/python/docs/reference/cloudbuild/latest/
+  description: google-cloud-build documentation
+- name: aws-secrets-manager
+  base_url: https://docs.aws.amazon.com/
+  description: aws-secrets-manager documentation
+- name: ivy
+  base_url: https://docs.ivy.app/
+  description: ivy documentation
+- name: moon
+  base_url: https://moonrepo.dev/
+  description: moon documentation
+- name: chalk
+  base_url: https://docs.chalk.ai/
+  description: chalk documentation
+- name: art
+  base_url: https://art.openpipe.ai/
+  description: art documentation
+- name: ashen
+  base_url: https://www.ashen.sh/
+  description: ashen documentation
+- name: aws-systems-manager-parameter-store
+  base_url: https://docs.aws.amazon.com/
+  description: aws-systems-manager-parameter-store documentation
+- name: akeyless-vault-platform
+  base_url: https://docs.akeyless.io/
+  description: akeyless-vault-platform documentation
+- name: aikido
+  base_url: https://help.aikido.dev/docs/
+  description: aikido documentation
+- name: sumo-logic
+  base_url: https://www.sumologic.com/
+  description: sumo-logic documentation
+- name: sonatype
+  base_url: https://help.sonatype.com/
+  description: sonatype documentation
+- name: terrascan
+  base_url: https://runterrascan.io/
+  description: terrascan documentation
+- name: jit
+  base_url: https://docs.jit.io/
+  description: jit documentation
+- name: pycryptodome
+  base_url: https://www.pycryptodome.org/
+  description: pycryptodome documentation
+- name: logback
+  base_url: https://logbackcn.gitbook.io/
+  description: logback documentation
+- name: parseable
+  base_url: https://www.parseable.com/docs/
+  description: parseable documentation
+- name: cloudwatch
+  base_url: https://docs.aws.amazon.com/
+  description: cloudwatch documentation
+- name: kafka
+  base_url: https://docs.confluent.io/
+  description: kafka documentation
+- name: posthog
+  base_url: https://posthog.com/
+  description: posthog documentation
+- name: scout-apm
+  base_url: https://docs.scoutapm.com/
+  description: scout-apm documentation
+- name: firebase-crashlytics
+  base_url: https://firebase.google.com/docs/
+  description: firebase-crashlytics documentation
+- name: instabug
+  base_url: https://docs.instabug.com/
+  description: instabug documentation
+- name: pendo
+  base_url: https://help.pendo.io/
+  description: pendo documentation
+- name: luciq
+  base_url: https://docs.luciq.ai/
+  description: luciq documentation
+- name: visualvm
+  base_url: https://docs.oracle.com/javase/8/docs/technotes/guides/visualvm/
+  description: visualvm documentation
+- name: better-stack
+  base_url: https://www.better-stack.ai/docs/
+  description: better-stack documentation
+- name: firehydrant
+  base_url: https://docs.firehydrant.com/
+  description: firehydrant documentation
+- name: pagerduty
+  base_url: https://docs.pagerduty.com/
+  description: pagerduty documentation
+- name: rootly
+  base_url: https://docs.rootly.com/
+  description: rootly documentation
+- name: apollo-graphos
+  base_url: https://www.apollographql.com/
+  description: apollo-graphos documentation
+- name: dreamfactory
+  base_url: https://www.dreamfactory.com/
+  description: dreamfactory documentation
+- name: kreya
+  base_url: https://kreya.app/
+  description: kreya documentation
+- name: testsprite
+  base_url: https://docs.testsprite.com/
+  description: testsprite documentation
+- name: foundry
+  base_url: https://www.getfoundry.sh/
+  description: foundry documentation
+- name: lost-pixel
+  base_url: https://docs.lost-pixel.com/docs/
+  description: lost-pixel documentation
+- name: espresso
+  base_url: https://docs.espressosys.com/
+  description: espresso documentation
+- name: cypress-image-diff-plugin
+  base_url: https://cypress.visual-image-diff.dev/
+  description: cypress-image-diff-plugin documentation
+- name: bright-data
+  base_url: https://docs.brightdata.com/
+  description: bright-data documentation
+- name: bugbug
+  base_url: https://docs.bugbug.io/
+  description: bugbug documentation
+- name: testim
+  base_url: https://help.testim.io/
+  description: testim documentation
+- name: crawlee
+  base_url: https://www.crawlee.dev/
+  description: crawlee documentation
+- name: statamic
+  base_url: https://docs.statamic.com/
+  description: statamic documentation
+- name: saleor
+  base_url: https://docs.saleor.io/
+  description: saleor documentation
+- name: pica
+  base_url: https://docs.picaos.com/
+  description: pica documentation
+- name: itextsharp
+  base_url: https://sourceforge.net/
+  description: itextsharp documentation
+- name: pydoc
+  base_url: https://pydoc.io/
+  description: pydoc documentation
+- name: amazon-comprehend
+  base_url: https://docs.aws.amazon.com/
+  description: amazon-comprehend documentation
+- name: albumentations
+  base_url: https://albumentations.ai/
+  description: albumentations documentation
+- name: roboflow
+  base_url: https://docs.roboflow.com/
+  description: roboflow documentation
+- name: pytorch-image-models
+  base_url: https://huggingface.co/docs/timm/
+  description: pytorch-image-models documentation
+- name: hugging-face-model-hub
+  base_url: https://huggingface.co/docs/hub/
+  description: hugging-face-model-hub documentation
+- name: pycaret
+  base_url: https://pycaret.gitbook.io/docs/
+  description: pycaret documentation
+- name: weights-&-biases
+  base_url: https://docs.wandb.ai/
+  description: weights-&-biases documentation
+- name: ray-serve
+  base_url: https://rayserve.org/docs/
+  description: ray-serve documentation
+- name: verta
+  base_url: https://vertana.org/
+  description: verta documentation

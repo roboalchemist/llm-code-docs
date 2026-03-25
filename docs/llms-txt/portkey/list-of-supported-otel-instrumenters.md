@@ -1,0 +1,26 @@
+# Source: https://docs.portkey.ai/docs/product/observability/opentelemetry/list-of-supported-otel-instrumenters.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.portkey.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Supported OTel Libraries
+
+> Portkey works with any OpenTelemetry-compatible instrumentation. Here are some popular options.
+
+<CardGroup cols={3}>
+  <Card title="Pydantic Logfire" icon="terminal" href="/integrations/tracing-providers/logfire" />
+
+  <Card title="OpenLIT" icon="fire" href="/integrations/tracing-providers/openlit" />
+
+  <Card title="Phoenix OTel (Arize)" icon="bird" href="/integrations/tracing-providers/phoenix" />
+
+  <Card title="MLflow" icon="database" href="/integrations/tracing-providers/ml-flow" />
+
+  <Card title="OTel SDK (Python)" icon="code" href="/integrations/tracing-providers/opentelemetry-python-sdk" />
+
+  <Card title="Traceloop (OpenLLMetry)" icon="repeat" href="/integrations/tracing-providers/traceloop" />
+</CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

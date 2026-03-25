@@ -1,0 +1,25 @@
+# Source: https://docs.fiddler.ai/api/fiddler-python-client-sdk/entities/file.md
+
+# File
+
+Construct a files instance.
+
+**Return type:** None
+
+## upload()
+
+Upload file. Single or multipart upload depends on file size
+
+**Return type:** [*File*](#file)
+
+## single\_upload()
+
+Single part file upload
+
+**Return type:** [*File*](#file)
+
+## multipart\_upload()
+
+Multi part file upload
+
+**Return type:** [*File*](#file)

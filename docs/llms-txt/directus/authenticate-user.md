@@ -1,0 +1,137 @@
+# Source: https://directus.io/docs/raw/getting-started/authenticate-user.md
+
+# Authenticate a User
+
+> Get started with Directus Auth. Learn how to register, login, create users, and make authenticated requests.
+
+<video-embed video-id="04ffd615-6d1d-45de-9c1b-2ff9206fe343">
+
+
+
+</video-embed>
+
+This guide will cover registering users, logging in, and making an authenticated request.
+
+<partial content="quickstart-making-calls">
+
+
+
+</partial>
+
+## Before You Start
+
+You will need a Directus project.
+
+<cta-cloud>
+
+
+
+</cta-cloud>
+
+Create a `posts` collection with at least a `title` and `content` field. [Follow the data modeling quickstart to learn more](/getting-started/data-model). Create a single item in the collection.
+
+## Creating a Role and a Policy
+
+From your settings, navigate to User Roles and create a new role named "User". This role will later be applied to new users who register.
+
+Within the role page, create a new policy named "Read Posts". Add a permission to the policy to allow **Read** action on `posts` collection.
+
+## Allow User Registration
+
+From your settings, enable User Registration. Select the User role that was just created and disable the Verify Email setting.
+
+## Registering via the Data Studio
+
+Log out of the Data Studio. From the Sign In screen, you will see a new option to Sign Up. Once a user is signed up, they will immediately be able to log in.
+
+## Registering via API
+
+Open your terminal and run the following command to register a new user.
+
+<code-group>
+
+```bash [Terminal]
+curl \
+    --request POST \
+    --header 'Content-Type: application/json' \
+    --data '{ "email": "hello@example.com", "password": "d1r3ctu5" }' \
+    --url 'https://directus.example.com/users/register'
+```
+
+```graphql [GraphQL]
+mutation {
+    users_register(email: "hello@example.com", password: "d1r3ctu5")
+}
+```
+
+```js [SDK]
+import { createDirectus, rest, registerUser } from '@directus/sdk';
+
+const client = createDirectus('https://directus.example.com').with(rest());
+
+const result = await client.request(registerUser('hello@example.com', 'd1r3ctu5'));
+```
+
+</code-group>
+
+Go to the user directory in the module bar and you should see a new user has been created.
+
+## Logging In
+
+<code-group>
+
+```bash [Terminal]
+curl \
+    --request POST \
+    --header 'Content-Type: application/json' \
+    --data '{ "email": "hello@example.com", "password": "d1r3ctu5" }' \
+    --url 'https://directus.example.com/auth/login'
+```
+
+```graphql [GraphQL]
+mutation {
+    auth_login(email: "hello@example.com", password: "d1r3ctu5") {
+        access_token
+        refresh_token
+    }
+}
+```
+
+```js [SDK]
+import { createDirectus, authentication } from '@directus/sdk';
+
+const email = "hello@example.com";
+const password = "d1r3ctu5";
+
+const client = createDirectus('http://directus.example.com').with(authentication());
+
+const token = await client.login({ email, password });
+```
+
+</code-group>
+
+## Authenticating Requests
+
+You can use the access token while making requests. If your token has expired, you must refresh it.
+
+```bash [Terminal]
+curl \
+--header 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
+--url 'https://directus.example.com/items/posts'
+```
+
+<callout color="primary" icon="material-symbols:menu-book-outline" to="/guides/auth/email-login">
+
+Read more about refreshing tokens.
+
+</callout>
+
+## Next Steps
+
+Read more about [access tokens](/guides/auth/tokens-cookies), [access control](/guides/auth/access-control), and then refer to the Users API reference to manage user accounts.
+
+<callout color="green" icon="material-symbols:code-blocks-rounded" to="/api/users">
+
+Explore the Users API Reference.
+
+</callout>

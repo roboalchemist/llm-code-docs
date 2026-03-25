@@ -1,0 +1,9 @@
+# Source: https://docs.fiddler.ai/api/fiddler-evals-sdk/evaluators/regex-search.md
+
+# RegexSearch
+
+Regex search scans the entire string from beginning to end, looking for the first occurrence where the regex pattern matches.
+
+## *property* match\_fn *: Callable*
+
+Match function to use for the regex evaluator.

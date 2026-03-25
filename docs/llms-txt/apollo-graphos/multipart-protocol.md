@@ -1,0 +1,86 @@
+# Source: https://www.apollographql.com/docs/graphos/routing/operations/subscriptions/multipart-protocol.md
+
+# Multipart HTTP protocol for GraphQL Subscriptions
+
+To execute GraphQL subscription operations on the GraphOS Router, client apps do *not* communicate over WebSocket. Instead, they use **HTTP with multipart responses**. This multipart protocol is built on the same [Incremental Delivery over HTTP](https://github.com/graphql/graphql-over-http/blob/main/rfcs/IncrementalDelivery.md) spec that the GraphOS Router uses to support [the `@defer` directive](https://www.apollographql.com/docs/router/executing-operations/defer-support/).
+
+Use this reference if you're adding protocol support to a new GraphQL client library. [Apollo Client](https://www.apollographql.com/docs/react/data/subscriptions#http), [Apollo Kotlin](https://www.apollographql.com/docs/kotlin/essentials/subscriptions#configuring-http-subscriptions), and [Apollo iOS](https://www.apollographql.com/docs/ios/fetching/subscriptions#http) all support this protocol. Apollo Client also provides network adapters for the [Relay](https://www.apollographql.com/docs/react/data/subscriptions#relay) and [urql](https://www.apollographql.com/docs/react/data/subscriptions#urql) libraries.
+
+## Executing a subscription
+
+To execute a subscription on the GraphOS Router, a GraphQL client sends an HTTP request with *almost* the exact same format that it uses for query and mutation requests.
+
+The only difference is that the request should include the following `Accept` header:
+
+```text title=Example header
+Accept: multipart/mixed;subscriptionSpec="1.0", application/json
+```
+
+The value for `boundary` should *always* be `graphql`, and the value for `subscriptionSpec` should *always* be `1.0`.
+
+As subscription events occur, the router sends back HTTP response "parts" that conform to the definition of multipart content specified in [RFC1341](https://www.w3.org/Protocols/rfc1341/7_2_Multipart.html).
+
+An example response might look like this:
+
+```text
+--graphql
+Content-Type: application/json
+
+{}
+--graphql
+Content-Type: application/json
+
+{"payload": {"data": { "newPost": { "id": 123, "title": "Hello!"}}}}
+--graphql--
+```
+
+* **If the request uses HTTP/1**, the response includes the `Transfer-Encoding: chunked` header.
+* **If the request uses HTTP/2** (which provides built-in support for data streaming), chunked encoding is *not* used (and is in fact [disallowed](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Transfer-Encoding)).
+
+## Heartbeats
+
+While a client subscription remains active, the GraphOS Router sends periodic "heartbeat" response parts to prevent any intermediaries from closing the connection. The body of a heartbeat is an empty JSON object, which clients should ignore silently:
+
+```text title=Heartbeat response part
+--graphql
+Content-Type: application/json
+
+{}
+--graphql--
+```
+
+## Message and error format
+
+This protocol differentiates between transport-level errors and GraphQL errors in response payloads themselves. This is because the GraphQL response format is [defined in the GraphQL spec](https://spec.graphql.org/draft/#sec-Response-Format), and unexpected fields might be confusing or could even break client typing.
+
+With the exception of [heartbeats](https://www.apollographql.com/docs/graphos/routing/operations/subscriptions/multipart-protocol.md#heartbeats), every response part body includes a `payload` property, which contains standard GraphQL response properties. **The `payload` property can be null if a transport-level error occurs.**
+
+**If a GraphQL-level error occurs,** the GraphOS Router can sometimes still return partial data, and the subscription connection should remain open. These errors are provided *within* the `payload` property:
+
+```json
+{
+  "payload": {
+    "errors": [...], //highlight-line
+    "data": {...},
+    "extensions": {...}
+  }
+}
+```
+
+**If a fatal transport-level error occurs,** the router sends a message with a top-level `errors` field and null `payload` field, then closes the connection:
+
+```json
+{
+  "payload": null,
+  "errors": [...] //highlight-line
+}
+```
+
+Both types of `errors` follow the [GraphQL error format](http://spec.graphql.org/draft/#sec-Errors.Error-Result-Format), but top-level `errors` never include `locations` or `path`.
+
+## Additional resources
+
+Check out the [federated subscriptions course](https://www.apollographql.com/tutorials/federated-subscriptions-typescript) to explore an end-to-end implementation with Apollo Router, Apollo Server, and Typescript.
+You can also see the Apollo Solutions [federated subscriptions repository](https://github.com/apollosolutions/router-extensibility-load-testing) for an example of federated subscriptions via an HTTP Multipart based subscription with the router in HTTP callback mode.
+
+The code in this repository is experimental and has been provided for reference purposes only.

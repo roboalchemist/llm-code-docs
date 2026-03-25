@@ -1,0 +1,11 @@
+# Source: https://docs.pentaho.com/install/9.3-install/relational-data-modeling-in-pentaho/the-abstract-business-layer.md
+
+# Source: https://docs.pentaho.com/install/10.2-install/relational-data-modeling-in-pentaho/the-abstract-business-layer.md
+
+# The Abstract Business Layer
+
+The abstract business layer is the heavy lifter in the metadata business model. The business model encompasses the abstract business layer and the business view. In the abstract business layer, you have business tables, business columns, and business relationships.
+
+You can create business tables for any physical table you have defined in the physical layer. You can also create more than one business table to reference the same physical table. The same rules apply for business columns. This can be useful in a multitude of scenarios, filtering security or even data at this level being one example. The business table keeps a reference to the physical table that it models, and this allows a metadata inheritance relationship between physical tables and business tables. If you define metadata on a physical table, the business table will inherit that metadata, unless and until the business table itself has overridden the inherited metadata. This concept operates on a metadata property to property basis, meaning that each property can be overridden individually.
+
+The same relationship exists between physical columns and business columns. If you define metadata on a physical column, the business column will inherit that metadata, unless and until the business column itself has overridden the inherited metadata. Then there are relationships. Do not confuse the term relationships here with the relationships described in the domain diagram. The relationships described here are not represented in that diagram. These relationships are mappings that you define to describe the relational (or other) bonds between your business tables. One example may be a one to many relationship between a customer table and an orders table. The strength in metadata relationships is that you can identify relationships between columns or tables in the abstract business layer that may not be obvious in the physical layer. An example would be to compare budget, actual and sales numbers, using a formula-derived business column that is specific to your business rules.

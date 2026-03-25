@@ -1,0 +1,86 @@
+# Source: https://documentation.wazuh.com/current/user-manual/agent/index.md
+
+<!-- Copyright (C) 2015, Wazuh, Inc. -->
+
+# Wazuh agent
+
+The Wazuh agent is a multi-platform component of the Wazuh solution and runs on the endpoints you want to monitor. It communicates with the Wazuh server, sending data in near real-time through an encrypted and authenticated channel. The Wazuh agent provides capabilities such as log data collection, file integrity monitoring, threat detection, security configuration assessment, system inventory, vulnerability detection, and incident response to enhance your endpoint security.
+
+After installing the Wazuh agent on an endpoint, you need to enroll the Wazuh agent in the Wazuh manager. This guide provides instructions on how to enroll the Wazuh agent, the different enrollment methods, and the management of the Wazuh agent.
+
+The Wazuh agent enrollment section describes the stages a Wazuh agent can go through and the process of enrolling Wazuh agents in a Wazuh manager. You can also find troubleshooting steps for commonly encountered issues during enrollment.
+
+In the Wazuh agent management section, you can find instructions on how to manage the Wazuh agent. These instructions cover administrative tasks such as upgrading the Wazuh agent, verifying connection to the Wazuh manager, and querying the Wazuh agent configuration.
+
+> ##### Contents
+> 
+> * [Wazuh agent enrollment](agent-enrollment/index.md)
+>   * [Requirements](agent-enrollment/requirements.md)
+>   * [Wazuh agent life cycle](agent-enrollment/agent-life-cycle.md)
+>     * [Installation and enrollment](agent-enrollment/agent-life-cycle.md#installation-and-enrollment)
+>     * [Agent connection states](agent-enrollment/agent-life-cycle.md#agent-connection-states)
+>     * [Removal](agent-enrollment/agent-life-cycle.md#removal)
+>   * [Enrollment methods](agent-enrollment/enrollment-methods/index.md)
+>   * [Additional security options](agent-enrollment/security-options/index.md)
+>     * [Using password authentication](agent-enrollment/security-options/using-password-authentication.md)
+>     * [Wazuh manager identity verification](agent-enrollment/security-options/manager-identity-verification.md)
+>     * [Wazuh agent identity verification](agent-enrollment/security-options/agent-identity-verification.md)
+>   * [Deployment variables](agent-enrollment/deployment-variables/index.md)
+>     * [Linux](agent-enrollment/deployment-variables/deployment-variables-linux.md)
+>     * [Windows](agent-enrollment/deployment-variables/deployment-variables-windows.md)
+>     * [macOS](agent-enrollment/deployment-variables/deployment-variables-macos.md)
+>     * [AIX](agent-enrollment/deployment-variables/deployment-variables-aix.md)
+>   * [Troubleshooting](agent-enrollment/troubleshooting.md)
+>     * [Verifying communication with the Wazuh manager](agent-enrollment/troubleshooting.md#verifying-communication-with-the-wazuh-manager)
+>     * [Authentication error](agent-enrollment/troubleshooting.md#authentication-error)
+>     * [Invalid agent name for enrollment](agent-enrollment/troubleshooting.md#invalid-agent-name-for-enrollment)
+>     * [Unable to read CA certificate file](agent-enrollment/troubleshooting.md#unable-to-read-ca-certificate-file)
+>     * [Unable to read private key file](agent-enrollment/troubleshooting.md#unable-to-read-private-key-file)
+>     * [Unable to read certificate file](agent-enrollment/troubleshooting.md#unable-to-read-certificate-file)
+>     * [Invalid password](agent-enrollment/troubleshooting.md#invalid-password)
+> * [Wazuh agent connection](agent-management/agent-connection.md)
+>   * [Checking connection with the Wazuh manager](agent-management/agent-connection.md#checking-connection-with-the-wazuh-manager)
+>     * [Using the Wazuh dashboard](agent-management/agent-connection.md#using-the-wazuh-dashboard)
+>     * [Using the agent_control utility from the server](agent-management/agent-connection.md#using-the-agent-control-utility-from-the-server)
+>     * [Using the Wazuh server API](agent-management/agent-connection.md#using-the-wazuh-server-api)
+>     * [Reading the local wazuh-agentd.state file](agent-management/agent-connection.md#reading-the-local-wazuh-agentd-state-file)
+>     * [Checking network communication](agent-management/agent-connection.md#checking-network-communication)
+>   * [Checking the synchronization status of Wazuh agents group configuration](agent-management/agent-connection.md#checking-the-synchronization-status-of-wazuh-agents-group-configuration)
+>     * [Using the agent_groups tool](agent-management/agent-connection.md#using-the-agent-groups-tool)
+>     * [Using the GET /agents Wazuh server API endpoint](agent-management/agent-connection.md#using-the-get-agents-wazuh-server-api-endpoint)
+> * [Wazuh agent administration](agent-management/agent-administration.md)
+>   * [Querying the Wazuh agent configuration](agent-management/query-configuration.md)
+>   * [Grouping agents](agent-management/grouping-agents.md)
+>     * [Creating agent groups](agent-management/grouping-agents.md#creating-agent-groups)
+>     * [Assigning agents to a group](agent-management/grouping-agents.md#assigning-agents-to-a-group)
+>     * [Managing multiple groups](agent-management/grouping-agents.md#managing-multiple-groups)
+>     * [Assigning multiple groups to a Wazuh agent](agent-management/grouping-agents.md#assigning-multiple-groups-to-a-wazuh-agent)
+>     * [Listing groups and configuration](agent-management/grouping-agents.md#listing-groups-and-configuration)
+>     * [Making changes to group assignment](agent-management/grouping-agents.md#making-changes-to-group-assignment)
+>     * [Shared files behavior](agent-management/grouping-agents.md#shared-files-behavior)
+>   * [Listing agents](agent-management/listing/index.md)
+>     * [Listing agents using the CLI](agent-management/listing/using-command-line.md)
+>     * [Listing agents using the Wazuh server API](agent-management/listing/listing.md)
+>     * [Listing agents using the Wazuh dashboard](agent-management/listing/wazuh-dashboard.md)
+>   * [Anti-tampering](agent-management/anti-tampering.md)
+>     * [Enabling anti-tampering](agent-management/anti-tampering.md#enabling-anti-tampering)
+>     * [Uninstalling an agent with anti-tampering enabled](agent-management/anti-tampering.md#uninstalling-an-agent-with-anti-tampering-enabled)
+>   * [Removing agents](agent-management/remove-agents/index.md)
+>     * [Remove agents using the CLI](agent-management/remove-agents/remove.md)
+>     * [Remove agents using the Wazuh server API](agent-management/remove-agents/restful-api-remove.md)
+>   * [Remote upgrading](agent-management/remote-upgrading/index.md)
+>     * [Upgrading the Wazuh agent](agent-management/remote-upgrading/upgrading-agent.md)
+>     * [Wazuh signed package (WPK) files](agent-management/remote-upgrading/wpk-files/index.md)
+>     * [Agent upgrade module - How it works](agent-management/remote-upgrading/agent-upgrade-module.md)
+>   * [Wazuh agent queue](agent-management/antiflooding.md)
+>     * [Why a queue is needed](agent-management/antiflooding.md#why-a-queue-is-needed)
+>     * [Event congestion controls](agent-management/antiflooding.md#event-congestion-controls)
+>     * [Use case: Leaky bucket](agent-management/antiflooding.md#use-case-leaky-bucket)
+>   * [Agent labels](agent-management/labels.md)
+>     * [How it works](agent-management/labels.md#how-it-works)
+>     * [Use case](agent-management/labels.md#use-case)
+>   * [Agent key request](agent-management/key-request.md)
+>     * [How it works](agent-management/key-request.md#how-it-works)
+>     * [Input](agent-management/key-request.md#input)
+>     * [Output](agent-management/key-request.md#output)
+>     * [Example scripts](agent-management/key-request.md#example-scripts)

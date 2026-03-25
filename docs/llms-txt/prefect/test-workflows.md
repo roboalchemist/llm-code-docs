@@ -1,0 +1,138 @@
+# Source: https://docs.prefect.io/v3/how-to-guides/workflows/test-workflows.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.prefect.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# How to test workflows
+
+> Learn about writing tests for Prefect flows and tasks.
+
+### Isolate tests with an ephemeral backend
+
+Prefect provides a simple context manager for unit tests that allows you to run flows and tasks against a temporary local SQLite database.
+
+```python  theme={null}
+from prefect import flow
+from prefect.testing.utilities import prefect_test_harness
+
+@flow
+def my_favorite_flow():
+    return 42
+
+def test_my_favorite_flow():
+  with prefect_test_harness():
+      # run the flow against a temporary testing database
+      assert my_favorite_flow() == 42
+```
+
+For more extensive testing, use `prefect_test_harness` as a fixture in your unit testing framework. For example, when using `pytest`:
+
+```python  theme={null}
+from prefect import flow
+import pytest
+from prefect.testing.utilities import prefect_test_harness
+
+@pytest.fixture(autouse=True, scope="session")
+def prefect_test_fixture():
+    with prefect_test_harness():
+        yield
+
+@flow
+def my_favorite_flow():
+    return 42
+
+def test_my_favorite_flow():
+    assert my_favorite_flow() == 42
+```
+
+<Note>
+  **Session scoped fixture**
+
+  In this example, the fixture is scoped to run once for the entire test session. In most cases, you do not need a clean database for each test. Just isolate your test runs to a test database. Creating a new test database per test creates significant overhead, so we recommend scoping the fixture to the session. If you need to isolate some tests fully, use the test harness again to create a fresh database.
+</Note>
+
+### Unit testing underlying functions
+
+To test the function decorated with `@task` or `@flow`, use `.fn` to call the wrapped function directly:
+
+```python  theme={null}
+from prefect import flow, task
+
+@task
+def my_favorite_task():
+    return 42
+
+@flow
+def my_favorite_flow():
+    val = my_favorite_task()
+    return val
+
+def test_my_favorite_task():
+    assert my_favorite_task.fn() == 42
+```
+
+If your flow or task uses a logger, you can disable the logger to avoid the `RuntimeError` raised from a missing flow context.
+
+```python  theme={null}
+from prefect.logging import disable_run_logger
+
+def test_my_favorite_task():
+    with disable_run_logger():
+        assert my_favorite_task.fn() == 42
+```
+
+### Capture run logger output in tests
+
+To test log output from flows and tasks, use pytest's `caplog` fixture to capture log messages:
+
+```python  theme={null}
+import logging
+from typing import Any
+
+import pytest
+from prefect import flow, get_run_logger, task
+from prefect.testing.utilities import prefect_test_harness
+
+
+@task
+def log_message() -> None:
+    logger = get_run_logger()
+    logger.info("Logging from task")
+
+
+@flow
+def parent_flow() -> None:
+    logger = get_run_logger()
+    logger.info("Logging from flow")
+    log_message()
+
+
+@pytest.fixture(autouse=True, scope="session")
+def prefect_test_fixture():
+    with prefect_test_harness():
+        yield
+
+
+def test_flow_log_message(caplog: Any) -> None:
+    caplog.set_level(logging.INFO)
+    parent_flow()
+
+    assert "Logging from flow" in caplog.messages
+
+
+def test_task_log_message(caplog: Any) -> None:
+    caplog.set_level(logging.INFO)
+    parent_flow()
+
+    assert "Logging from task" in caplog.messages
+```
+
+<Note>
+  **Caplog requires run logger to be enabled**
+
+  The `caplog` fixture only captures logs when the run logger is active. If you disable the run logger with `disable_run_logger()`, `caplog` will not capture any log output from flows or tasks.
+</Note>
+
+
+Built with [Mintlify](https://mintlify.com).

@@ -1,0 +1,607 @@
+# Source: https://docs.jit.io/reference/workflows-2.md
+
+# Fetch workflows
+
+Retrieve workflows associated with the tenant. This endpoint supports pagination.
+
+**Requires the following permission:**
+`jit.workflows.read`
+
+This feature is exclusive to premium users. To access it, upgrade to the Premium users pricing plan.
+
+# OpenAPI definition
+
+```json
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Jit Public APIs",
+    "description": "Jit Public APIs.\n\nThe API requires that you log in first and obtain a JWT authentication bearer token:\n\nJIT Platform generates CLIENT_ID and SECRET under `Settings -> Users & Permissions -> API Tokens`\n\n For more information, refer to [Users and Permissions](https://docs.jit.io/docs/managing-users#generating-api-tokens)",
+    "version": "1",
+    "termsOfService": "https://www.jit.io/legal/terms"
+  },
+  "servers": [
+    {
+      "url": "https://api.jit.io",
+      "description": "Jit API domain"
+    }
+  ],
+  "externalDocs": {
+    "url": "https://docs.jit.io/docs",
+    "description": "Jit docs"
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "paths": {
+    "/workflows/": {
+      "get": {
+        "summary": "Fetch workflows",
+        "description": "Retrieve workflows associated with the tenant. This endpoint supports pagination.\n\n**Requires the following permission:**\n`jit.workflows.read`\n\nThis feature is exclusive to premium users. To access it, upgrade to the Premium users pricing plan.",
+        "operationId": "workflows",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "The maximum number of workflows to return. Must be a positive integer and can't be more than 100",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/Workflowslimit"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "description": "The token to start the next page of results.",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/Workflowsafter"
+            }
+          }
+        ],
+        "tags": [
+          "Workflows"
+        ],
+        "responses": {
+          "200": {
+            "description": "Workflows retrieved successfully with a paginated list of workflows.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedWorkflowsResponse"
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "description": "The Access-Control-Allow-Origin response header indicates whether the response can be shared with requesting code from the given [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin). - [MDN Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)",
+                "schema": {
+                  "$ref": "#/components/schemas/Access-Control-Allow-Origin"
+                }
+              },
+              "Access-Control-Allow-Credentials": {
+                "description": "The Access-Control-Allow-Credentials response header tells browsers whether to expose the response to the frontend JavaScript code when the request's credentials mode ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials)) is include. - [MDN Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)",
+                "schema": {
+                  "$ref": "#/components/schemas/Access-Control-Allow-Credentials"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Get Workflows Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetWorkflowsBadRequest"
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "description": "The Access-Control-Allow-Origin response header indicates whether the response can be shared with requesting code from the given [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin). - [MDN Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)",
+                "schema": {
+                  "$ref": "#/components/schemas/Access-Control-Allow-Origin"
+                }
+              },
+              "Access-Control-Allow-Credentials": {
+                "description": "The Access-Control-Allow-Credentials response header tells browsers whether to expose the response to the frontend JavaScript code when the request's credentials mode ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials)) is include. - [MDN Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)",
+                "schema": {
+                  "$ref": "#/components/schemas/Access-Control-Allow-Credentials"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnauthorizedAuthorizerError"
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "description": "The Access-Control-Allow-Origin response header indicates whether the response can be shared with requesting code from the given [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin). - [MDN Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)",
+                "schema": {
+                  "$ref": "#/components/schemas/Access-Control-Allow-Origin"
+                }
+              },
+              "Access-Control-Allow-Credentials": {
+                "description": "The Access-Control-Allow-Credentials response header tells browsers whether to expose the response to the frontend JavaScript code when the request's credentials mode ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials)) is include. - [MDN Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)",
+                "schema": {
+                  "$ref": "#/components/schemas/Access-Control-Allow-Credentials"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ForbiddenError"
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "description": "The Access-Control-Allow-Origin response header indicates whether the response can be shared with requesting code from the given [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin). - [MDN Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)",
+                "schema": {
+                  "$ref": "#/components/schemas/Access-Control-Allow-Origin"
+                }
+              },
+              "Access-Control-Allow-Credentials": {
+                "description": "The Access-Control-Allow-Credentials response header tells browsers whether to expose the response to the frontend JavaScript code when the request's credentials mode ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials)) is include. - [MDN Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)",
+                "schema": {
+                  "$ref": "#/components/schemas/Access-Control-Allow-Credentials"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            },
+            "headers": {
+              "Access-Control-Allow-Origin": {
+                "description": "The Access-Control-Allow-Origin response header indicates whether the response can be shared with requesting code from the given [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin). - [MDN Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin)",
+                "schema": {
+                  "$ref": "#/components/schemas/Access-Control-Allow-Origin"
+                }
+              },
+              "Access-Control-Allow-Credentials": {
+                "description": "The Access-Control-Allow-Credentials response header tells browsers whether to expose the response to the frontend JavaScript code when the request's credentials mode ([Request.credentials](https://developer.mozilla.org/en-US/docs/Web/API/Request/credentials)) is include. - [MDN Link](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials)",
+                "schema": {
+                  "$ref": "#/components/schemas/Access-Control-Allow-Credentials"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ForbiddenError": {
+        "title": "ForbiddenErrorResponse",
+        "type": "object",
+        "properties": {
+          "error": {
+            "title": "Error code",
+            "description": "Machine readable error code.",
+            "example": "FORBIDDEN",
+            "type": "string"
+          },
+          "message": {
+            "title": "Error message",
+            "description": "Human readable error message.",
+            "example": "Request is missing the required permissions.",
+            "type": "string"
+          },
+          "missing_permissions": {
+            "title": "Missing permissions",
+            "description": "List of missing permissions.",
+            "nullable": true,
+            "example": [
+              "jit.category.write",
+              "jit.category.read"
+            ],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "error",
+          "message"
+        ]
+      },
+      "InternalServerError": {
+        "title": "InternalErrorResponse",
+        "type": "object",
+        "properties": {
+          "error": {
+            "title": "Error code",
+            "description": "Machine readable error code.",
+            "example": "INTERNAL_SERVER_ERROR",
+            "type": "string"
+          },
+          "message": {
+            "title": "Error message",
+            "description": "Human readable error message.",
+            "example": "Some error message indicating the issue that occurred",
+            "type": "string"
+          }
+        },
+        "required": [
+          "error",
+          "message"
+        ]
+      },
+      "UnauthorizedAuthorizerError": {
+        "title": "UnauthorizedAuthorizerErrorResponse",
+        "type": "object",
+        "properties": {
+          "Message": {
+            "title": "Error message",
+            "description": "Human readable error message.\n\n**Important**: This schema does not contain `error` field.",
+            "example": "Unauthorized",
+            "type": "string"
+          }
+        },
+        "required": [
+          "Message"
+        ]
+      },
+      "Access-Control-Allow-Origin": {
+        "type": "string",
+        "default": "*",
+        "example": "https://developer.mozilla.org"
+      },
+      "Access-Control-Allow-Credentials": {
+        "type": "boolean",
+        "default": true
+      },
+      "GetWorkflowsBadRequest": {
+        "title": "GetWorkflowsBadRequestErrorResponse",
+        "type": "object",
+        "properties": {
+          "error": {
+            "title": "Error code",
+            "description": "Machine readable error code.",
+            "example": "BAD_REQUEST",
+            "type": "string"
+          },
+          "message": {
+            "title": "Error message",
+            "description": "Human readable error description.",
+            "example": "Limit must be greater than 0",
+            "type": "string"
+          }
+        },
+        "required": [
+          "error",
+          "message"
+        ]
+      },
+      "PaginatedWorkflowsResponse": {
+        "title": "PaginatedResponse[WorkflowApiResponse]",
+        "type": "object",
+        "properties": {
+          "metadata": {
+            "title": "Metadata",
+            "description": "Required fields to paginate over the response",
+            "example": {
+              "limit": 5,
+              "count": 1,
+              "after": "CURSOR"
+            },
+            "allOf": [
+              {
+                "title": "PaginatedResponseMetadata",
+                "type": "object",
+                "properties": {
+                  "limit": {
+                    "title": "Results limit",
+                    "description": "Maximum number of requested results.",
+                    "example": 5,
+                    "type": "integer"
+                  },
+                  "count": {
+                    "title": "Number of results",
+                    "description": "Number of results in the data field.",
+                    "example": 3,
+                    "type": "integer"
+                  },
+                  "after": {
+                    "title": "Cursor",
+                    "description": "Cursor for next request to get the results page. Null means no more results.",
+                    "example": "CURSOR",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "limit",
+                  "count"
+                ]
+              }
+            ]
+          },
+          "data": {
+            "title": "Data",
+            "description": "List of JSONs holding the requested data.",
+            "type": "array",
+            "items": {
+              "title": "WorkflowApiResponse",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "title": "Id",
+                  "type": "string"
+                },
+                "name": {
+                  "title": "Name",
+                  "type": "string"
+                },
+                "description": {
+                  "title": "Description",
+                  "default": "",
+                  "type": "string"
+                },
+                "tenant_id": {
+                  "title": "Tenant Id",
+                  "type": "string"
+                },
+                "created_at": {
+                  "title": "Created At",
+                  "type": "string"
+                },
+                "updated_at": {
+                  "title": "Updated At",
+                  "type": "string"
+                },
+                "creator_user_id": {
+                  "title": "Creator User Id",
+                  "type": "string"
+                },
+                "creator_user_name": {
+                  "title": "Creator User Name",
+                  "type": "string"
+                },
+                "is_enabled": {
+                  "title": "Is Enabled",
+                  "type": "boolean"
+                },
+                "trigger": {
+                  "title": "Trigger",
+                  "type": "object",
+                  "properties": {
+                    "step_type": {
+                      "title": "Step Type",
+                      "default": "trigger",
+                      "enum": [
+                        "trigger"
+                      ],
+                      "type": "string"
+                    },
+                    "id": {
+                      "title": "Id",
+                      "type": "string"
+                    },
+                    "name": {
+                      "title": "Name",
+                      "type": "string"
+                    },
+                    "next": {
+                      "title": "Next",
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "type": {
+                      "title": "Type",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "next",
+                    "type"
+                  ]
+                },
+                "steps": {
+                  "title": "Steps",
+                  "type": "array",
+                  "items": {
+                    "discriminator": {
+                      "propertyName": "step_type",
+                      "mapping": {
+                        "action": "#/definitions/ActionStep",
+                        "condition": "#/definitions/ConditionStep"
+                      }
+                    },
+                    "oneOf": [
+                      {
+                        "title": "ActionStep",
+                        "type": "object",
+                        "properties": {
+                          "step_type": {
+                            "title": "Step Type",
+                            "default": "action",
+                            "enum": [
+                              "action"
+                            ],
+                            "type": "string"
+                          },
+                          "id": {
+                            "title": "Id",
+                            "type": "string"
+                          },
+                          "name": {
+                            "title": "Name",
+                            "type": "string"
+                          },
+                          "next": {
+                            "title": "Next",
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "type": {
+                            "title": "Type",
+                            "type": "string"
+                          },
+                          "config": {
+                            "title": "Config",
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "next",
+                          "type",
+                          "config"
+                        ]
+                      },
+                      {
+                        "title": "ConditionStep",
+                        "type": "object",
+                        "properties": {
+                          "step_type": {
+                            "title": "Step Type",
+                            "default": "condition",
+                            "enum": [
+                              "condition"
+                            ],
+                            "type": "string"
+                          },
+                          "id": {
+                            "title": "Id",
+                            "type": "string"
+                          },
+                          "name": {
+                            "title": "Name",
+                            "type": "string"
+                          },
+                          "next": {
+                            "title": "Next",
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "type": {
+                            "title": "Type",
+                            "type": "string"
+                          },
+                          "config": {
+                            "title": "Config",
+                            "type": "object"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "next",
+                          "type",
+                          "config"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "version": {
+                  "title": "Version",
+                  "type": "integer"
+                },
+                "last_run_at": {
+                  "title": "Last Run At",
+                  "type": "string"
+                },
+                "last_run_status": {
+                  "title": "Last Run Status",
+                  "enum": [
+                    "running",
+                    "success",
+                    "failure"
+                  ],
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "tenant_id",
+                "created_at",
+                "updated_at",
+                "creator_user_id",
+                "creator_user_name",
+                "is_enabled",
+                "trigger",
+                "steps",
+                "version"
+              ]
+            }
+          }
+        },
+        "required": [
+          "metadata",
+          "data"
+        ]
+      },
+      "Workflowslimit": {
+        "default": 20,
+        "example": 20,
+        "title": "Limit",
+        "type": "integer"
+      },
+      "Workflowsafter": {
+        "example": "eyJ0b2tlbi",
+        "title": "After",
+        "type": "string"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "x-readme": {
+    "explorer-enabled": true,
+    "proxy-enabled": true
+  },
+  "_id": {
+    "buffer": {
+      "0": 103,
+      "1": 96,
+      "2": 119,
+      "3": 178,
+      "4": 114,
+      "5": 109,
+      "6": 158,
+      "7": 128,
+      "8": 238,
+      "9": 252,
+      "10": 241,
+      "11": 194
+    }
+  }
+}
+```

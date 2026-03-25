@@ -1,0 +1,53 @@
+# Source: https://docs.mage.ai/integrations/databases/Chroma.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.mage.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Chroma
+
+## Credentials
+
+Open the file named `io_config.yaml` at the root of your Mage project and enter chroma required fields:
+
+```yaml  theme={"system"}
+version: 0.1.1
+default:
+  CHROMA_COLLECTION: collection_name
+  CHROMA_PATH: path of the chroma persisitant storage
+```
+
+## Dependencies
+
+The dependency libraries are not installed in the docker image by default. You'll need to add the libraries to
+project `requirements.txt` file manually and install them.
+
+```
+chromadb>=0.4.17
+```
+
+## Using Python block
+
+1. Create a new pipeline or open an existing pipeline.
+2. Add a data loader or data exporter with Template. Under "Databases" category you can
+   find the "Chroma" template.
+
+* Chroma data loader arguments:
+  * n\_results: Number of results to match.
+  * collection: collection to use. Otherwise the collection defined in io\_config.yml will be used.
+  * query\_texts: the texts or documents used to query.
+  * query\_embeddings: the embeddings used to query.
+    Either `query_texts` or `query_embeddings` should be available.
+
+* Chroma data exporter arguments:
+  * df: Dataframe contains the actual data.
+  * collection: collection to use. Otherwise the collection defined in io\_config.yml will be used.
+  * document\_column: specify the column in df dataframe that contains documents to be stored in Chroma.
+  * id\_column: specify the column in df dataframe that contains the id of the document
+  * metadata\_column: specify the column in df dataframe that contains the metadata of the document (metadata should be dictionary format)
+
+3. Add your customized code into the loader, exporter or add extra transformer blocks.
+4. Run the block.
+
+
+Built with [Mintlify](https://mintlify.com).

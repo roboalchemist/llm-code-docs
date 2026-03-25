@@ -1,0 +1,188 @@
+# Source: https://www.apollographql.com/docs/apollo-server/api/standalone.md
+
+# API Reference: startStandaloneServer
+
+This API reference documents the `startStandaloneServer` function.
+
+## Overview
+
+This `startStandaloneServer` function helps you get started with Apollo Server quickly.
+This function is recommended for prototyping. For production services, we recommend integrating Apollo Server with a more fully-featured web framework such as Express, Koa, or Fastify.
+
+You can find a list of supported web frameworks in [web framework integrations](https://www.apollographql.com/docs/apollo-server/integrations/integration-index).
+For an example migration path, see [Swapping to `expressMiddleware`](https://www.apollographql.com/docs/apollo-server/api/standalone.md#swapping-to-expressmiddleware).
+
+## `startStandaloneServer`
+
+> In the examples below, we use top-level [`await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await#top_level_await) calls to start our server asynchronously. Check out our [Getting Started](https://www.apollographql.com/docs/apollo-server/getting-started#step-2-install-dependencies) guide to see how we configured our project to support this.
+
+The `startStandaloneServer` function accepts two arguments. The first **required** argument is the instance of `ApolloServer` to begin listening for incoming requests:
+
+```ts
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
+
+const server = new ApolloServer({ typeDefs, resolvers });
+
+// `startStandaloneServer` returns a `Promise` with the
+// the URL that the server is listening on.
+const { url } = await startStandaloneServer(server); //highlight-line
+```
+
+The `startStandaloneServer` function's second optional argument is an object for configuring your server's options, which can contain the following properties:
+
+### Options
+
+Name /Type
+Description
+
+##### `context`
+
+`Function`
+
+An optional asynchronous [`context` initialization function](https://www.apollographql.com/docs/apollo-server/data/context/#the-context-function).
+
+The `context` function should return an object that all your server's resolvers share during an operation's execution. This enables resolvers to share helpful context values, such as a database connection.
+
+The `context` function receives `req` and `res` options which are `http.IncomingMessage` and `http.ServerResponse` types. (In Apollo Server 4, these happen to be implemented using Express's subclasses which have some extra Express-provided functionality, though this was an undocumented fact that users should not have relied on. In Apollo Server 5, the standalone server is not built on Express; if you need to use Express-specific request/response functionality, [swap to `expressMiddleware`](https://www.apollographql.com/docs/apollo-server/api/standalone.md#swapping-to-expressmiddleware).)
+
+##### `listen`
+
+`Object`
+
+An optional `listen` configuration object. The `listen` option accepts an object with the same properties as the [`net.Server.listen` *options object*](https://nodejs.org/api/net.html#serverlistenoptions-callback).
+
+If no `port` is specified, this defaults to using `{port: 4000}`.
+
+### Example
+
+Below is a full example of setting up `startStandaloneServer`:
+
+```ts
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
+import { typeDefs, resolvers } from './schema';
+
+interface MyContext {
+  token?: String;
+}
+
+
+const server = new ApolloServer<MyContext>({ typeDefs, resolvers });
+const { url } = await startStandaloneServer(server, {
+  context: async ({ req }) => ({ token: req.headers.token }),
+  listen: { port: 4000 },
+});
+console.log(`🚀  Server ready at ${url}`);
+```
+
+## Swapping to `expressMiddleware`
+
+The `startStandaloneServer` function is not right for every use case, particularly if you need to customize your server's behavior. For example, you might want to customize your CORS behavior, run some middleware before processing GraphQL requests, or serve other endpoints from the same server.
+
+In these cases, we recommend you swap out `startStandaloneServer` for `expressMiddleware` (unless you are confident that you want to use a different Node.js framework). This change requires only a few lines and has a minimal effect on your server's existing behavior (`startStandaloneServer` uses `expressMiddleware` under the hood).
+
+> We recommend Express because it's the most popular Node.js web framework, and it integrates well with many *other* popular libraries.
+
+### Example
+
+Let's say our current `startStandaloneServer` setup uses the following code:
+
+```ts
+import { ApolloServer } from '@apollo/server';
+import { startStandaloneServer } from '@apollo/server/standalone';
+import { typeDefs, resolvers } from './schema';
+
+interface MyContext {
+  token?: String;
+}
+
+const server = new ApolloServer<MyContext>({ typeDefs, resolvers });
+const { url } = await startStandaloneServer(server, {
+  context: async ({ req }) => ({ token: req.headers.token }),
+  listen: { port: 4000 },
+});
+console.log(`🚀  Server ready at ${url}`);
+```
+
+To swap to using `expressMiddleware`, you'll first need to install the following packages: the Express library, Apollo's integration between Express and Apollo Server, and the CORS middleware for Express:
+
+```bash
+npm install @as-integrations/express5 express cors
+```
+
+Note that this should install v5 of Express.
+
+Next, we can modify our code to match the following:
+
+```ts
+import { ApolloServer } from '@apollo/server';
+import { expressMiddleware } from '@as-integrations/express5';
+import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
+import express from 'express';
+import http from 'http';
+import cors from 'cors';
+import { typeDefs, resolvers } from './schema';
+
+interface MyContext {
+  token?: String;
+}
+
+// Required logic for integrating with Express
+const app = express();
+// Our httpServer handles incoming requests to our Express app.
+// Below, we tell Apollo Server to "drain" this httpServer,
+// enabling our servers to shut down gracefully.
+const httpServer = http.createServer(app);
+
+// Same ApolloServer initialization as before, plus the drain plugin
+// for our httpServer.
+const server = new ApolloServer<MyContext>({
+  typeDefs,
+  resolvers,
+  plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+});
+// Ensure we wait for our server to start
+await server.start();
+
+// according to RFC8259, only UTF-8 is allowed in JSON text
+// (see https://datatracker.ietf.org/doc/html/rfc8259#section-8.1)
+// RFC 7159 also specifies that JSON could be UTF-16 or UTF-32,
+// so we allow for that, too
+const validCharset = /^utf-(8|((16|32)(le|be)?))$/i;
+
+// Set up our Express middleware to handle CORS, body parsing,
+// and our expressMiddleware function.
+app.use('/',
+  cors<cors.CorsRequest>(),
+  express.json({
+    verify(req) {
+      const charset = parseContentType(req).parameters.charset || 'utf-8';
+      if (!charset.match(validCharset)) {
+        throw Object.assign(
+          new Error(`unsupported charset "${charset.toUpperCase()}"`),
+          {
+            status: 415,
+            name: 'UnsupportedMediaTypeError',
+            charset,
+            type: 'charset.unsupported',
+          },
+        );
+      }
+    },
+    // 50mb is the limit that `startStandaloneServer` uses to cover all possible bases, but you may configure this to suit your needs.
+    // Generally we recommend keeping this as small as possible to still suit your use case.
+    // The `body-parser` default is '100kb'.
+    // limit: '50mb',
+  }),
+  // expressMiddleware accepts the same arguments:
+  // an Apollo Server instance and optional configuration options
+  expressMiddleware(server, {
+    context: async ({ req }) => ({ token: req.headers.token }),
+  }),
+);
+
+// Modified server startup
+await new Promise<void>(resolve => httpServer.listen({ port: 4000 }, resolve));
+console.log(`🚀 Server ready at http://localhost:4000/`);
+```

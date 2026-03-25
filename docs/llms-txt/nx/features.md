@@ -1,0 +1,14 @@
+# Source: https://nx.dev/docs/features.md
+
+---
+
+title: Features
+description: Discover all the powerful features that Nx provides to streamline your workflow
+sidebar:
+  hidden: true
+pagefind: false
+---
+
+Learn the core features of Nx with in depth guides.
+
+{% index_page_cards path="features" /%}

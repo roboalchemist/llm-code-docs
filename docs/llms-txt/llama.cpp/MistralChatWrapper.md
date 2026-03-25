@@ -1,0 +1,288 @@
+# Source: https://node-llama-cpp.withcat.ai/api/classes/MistralChatWrapper.md
+
+---
+url: /api/classes/MistralChatWrapper.md
+---
+# Class: MistralChatWrapper
+
+Defined in: [chatWrappers/MistralChatWrapper.ts:14](https://github.com/withcatai/node-llama-cpp/blob/89314022104def53c5fe5c13cb1ceca25b77a8e2/src/chatWrappers/MistralChatWrapper.ts#L14)
+
+## Extends
+
+* [`ChatWrapper`](ChatWrapper.md)
+
+## Constructors
+
+### Constructor
+
+```ts
+new MistralChatWrapper(options?: {
+  addSpaceBeforeEos?: boolean;
+}): MistralChatWrapper;
+```
+
+Defined in: [chatWrappers/MistralChatWrapper.ts:22](https://github.com/withcatai/node-llama-cpp/blob/89314022104def53c5fe5c13cb1ceca25b77a8e2/src/chatWrappers/MistralChatWrapper.ts#L22)
+
+#### Parameters
+
+| Parameter | Type | Description |
+| ------ | ------ | ------ |
+| `options` | { `addSpaceBeforeEos?`: `boolean`; } | - |
+| `options.addSpaceBeforeEos?` | `boolean` | Default to `true` |
+
+#### Returns
+
+`MistralChatWrapper`
+
+#### Overrides
+
+[`ChatWrapper`](ChatWrapper.md).[`constructor`](ChatWrapper.md#constructor)
+
+## Properties
+
+### defaultSettings
+
+```ts
+static defaultSettings: ChatWrapperSettings;
+```
+
+Defined in: [ChatWrapper.ts:14](https://github.com/withcatai/node-llama-cpp/blob/89314022104def53c5fe5c13cb1ceca25b77a8e2/src/ChatWrapper.ts#L14)
+
+#### Inherited from
+
+[`ChatWrapper`](ChatWrapper.md).[`defaultSettings`](ChatWrapper.md#defaultsettings)
+
+***
+
+### wrapperName
+
+```ts
+readonly wrapperName: string = "Mistral";
+```
+
+Defined in: [chatWrappers/MistralChatWrapper.ts:15](https://github.com/withcatai/node-llama-cpp/blob/89314022104def53c5fe5c13cb1ceca25b77a8e2/src/chatWrappers/MistralChatWrapper.ts#L15)
+
+#### Overrides
+
+[`ChatWrapper`](ChatWrapper.md).[`wrapperName`](ChatWrapper.md#wrappername)
+
+***
+
+### settings
+
+```ts
+readonly settings: ChatWrapperSettings;
+```
+
+Defined in: [chatWrappers/MistralChatWrapper.ts:17](https://github.com/withcatai/node-llama-cpp/blob/89314022104def53c5fe5c13cb1ceca25b77a8e2/src/chatWrappers/MistralChatWrapper.ts#L17)
+
+#### Overrides
+
+[`ChatWrapper`](ChatWrapper.md).[`settings`](ChatWrapper.md#settings)
+
+## Methods
+
+### generateFunctionCallsAndResults()
+
+```ts
+generateFunctionCallsAndResults(functionCalls: ChatModelFunctionCall[], useRawCall?: boolean): LlamaText;
+```
+
+Defined in: [ChatWrapper.ts:60](https://github.com/withcatai/node-llama-cpp/blob/89314022104def53c5fe5c13cb1ceca25b77a8e2/src/ChatWrapper.ts#L60)
+
+#### Parameters
+
+| Parameter | Type | Default value |
+| ------ | ------ | ------ |
+| `functionCalls` | [`ChatModelFunctionCall`](../type-aliases/ChatModelFunctionCall.md)\[] | `undefined` |
+| `useRawCall` | `boolean` | `true` |
+
+#### Returns
+
+[`LlamaText`](LlamaText.md)
+
+#### Inherited from
+
+[`ChatWrapper`](ChatWrapper.md).[`generateFunctionCallsAndResults`](ChatWrapper.md#generatefunctioncallsandresults)
+
+***
+
+### generateFunctionCall()
+
+```ts
+generateFunctionCall(name: string, params: any): LlamaText;
+```
+
+Defined in: [ChatWrapper.ts:107](https://github.com/withcatai/node-llama-cpp/blob/89314022104def53c5fe5c13cb1ceca25b77a8e2/src/ChatWrapper.ts#L107)
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `name` | `string` |
+| `params` | `any` |
+
+#### Returns
+
+[`LlamaText`](LlamaText.md)
+
+#### Inherited from
+
+[`ChatWrapper`](ChatWrapper.md).[`generateFunctionCall`](ChatWrapper.md#generatefunctioncall)
+
+***
+
+### generateModelResponseText()
+
+```ts
+generateModelResponseText(modelResponse: (
+  | string
+  | ChatModelFunctionCall
+  | ChatModelSegment)[], useRawValues?: boolean): LlamaText;
+```
+
+Defined in: [ChatWrapper.ts:155](https://github.com/withcatai/node-llama-cpp/blob/89314022104def53c5fe5c13cb1ceca25b77a8e2/src/ChatWrapper.ts#L155)
+
+#### Parameters
+
+| Parameter | Type | Default value |
+| ------ | ------ | ------ |
+| `modelResponse` | ( | `string` | [`ChatModelFunctionCall`](../type-aliases/ChatModelFunctionCall.md) | [`ChatModelSegment`](../type-aliases/ChatModelSegment.md))\[] | `undefined` |
+| `useRawValues` | `boolean` | `true` |
+
+#### Returns
+
+[`LlamaText`](LlamaText.md)
+
+#### Inherited from
+
+[`ChatWrapper`](ChatWrapper.md).[`generateModelResponseText`](ChatWrapper.md#generatemodelresponsetext)
+
+***
+
+### generateAvailableFunctionsSystemText()
+
+```ts
+generateAvailableFunctionsSystemText(availableFunctions: ChatModelFunctions, __namedParameters: {
+  documentParams?: boolean;
+}): LlamaText;
+```
+
+Defined in: [ChatWrapper.ts:238](https://github.com/withcatai/node-llama-cpp/blob/89314022104def53c5fe5c13cb1ceca25b77a8e2/src/ChatWrapper.ts#L238)
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `availableFunctions` | [`ChatModelFunctions`](../type-aliases/ChatModelFunctions.md) |
+| `__namedParameters` | { `documentParams?`: `boolean`; } |
+| `__namedParameters.documentParams?` | `boolean` |
+
+#### Returns
+
+[`LlamaText`](LlamaText.md)
+
+#### Inherited from
+
+[`ChatWrapper`](ChatWrapper.md).[`generateAvailableFunctionsSystemText`](ChatWrapper.md#generateavailablefunctionssystemtext)
+
+***
+
+### addAvailableFunctionsSystemMessageToHistory()
+
+```ts
+addAvailableFunctionsSystemMessageToHistory(history: readonly ChatHistoryItem[]): readonly ChatHistoryItem[];
+```
+
+Defined in: [chatWrappers/MistralChatWrapper.ts:70](https://github.com/withcatai/node-llama-cpp/blob/89314022104def53c5fe5c13cb1ceca25b77a8e2/src/chatWrappers/MistralChatWrapper.ts#L70)
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `history` | readonly [`ChatHistoryItem`](../type-aliases/ChatHistoryItem.md)\[] |
+
+#### Returns
+
+readonly [`ChatHistoryItem`](../type-aliases/ChatHistoryItem.md)\[]
+
+#### Overrides
+
+[`ChatWrapper`](ChatWrapper.md).[`addAvailableFunctionsSystemMessageToHistory`](ChatWrapper.md#addavailablefunctionssystemmessagetohistory)
+
+***
+
+### generateContextState()
+
+```ts
+generateContextState(__namedParameters: ChatWrapperGenerateContextStateOptions): ChatWrapperGeneratedContextState;
+```
+
+Defined in: [chatWrappers/MistralChatWrapper.ts:74](https://github.com/withcatai/node-llama-cpp/blob/89314022104def53c5fe5c13cb1ceca25b77a8e2/src/chatWrappers/MistralChatWrapper.ts#L74)
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `__namedParameters` | [`ChatWrapperGenerateContextStateOptions`](../type-aliases/ChatWrapperGenerateContextStateOptions.md) |
+
+#### Returns
+
+[`ChatWrapperGeneratedContextState`](../type-aliases/ChatWrapperGeneratedContextState.md)
+
+#### Overrides
+
+[`ChatWrapper`](ChatWrapper.md).[`generateContextState`](ChatWrapper.md#generatecontextstate)
+
+***
+
+### generateInitialChatHistory()
+
+```ts
+generateInitialChatHistory(__namedParameters?: ChatWrapperGenerateInitialHistoryOptions): ChatHistoryItem[];
+```
+
+Defined in: [chatWrappers/MistralChatWrapper.ts:149](https://github.com/withcatai/node-llama-cpp/blob/89314022104def53c5fe5c13cb1ceca25b77a8e2/src/chatWrappers/MistralChatWrapper.ts#L149)
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `__namedParameters` | [`ChatWrapperGenerateInitialHistoryOptions`](../type-aliases/ChatWrapperGenerateInitialHistoryOptions.md) |
+
+#### Returns
+
+[`ChatHistoryItem`](../type-aliases/ChatHistoryItem.md)\[]
+
+#### Overrides
+
+[`ChatWrapper`](ChatWrapper.md).[`generateInitialChatHistory`](ChatWrapper.md#generateinitialchathistory)
+
+***
+
+### generateFunctionCallResult()
+
+```ts
+generateFunctionCallResult(
+   functionName: string, 
+   functionParams: any, 
+   result: any): LlamaText;
+```
+
+Defined in: [chatWrappers/MistralChatWrapper.ts:161](https://github.com/withcatai/node-llama-cpp/blob/89314022104def53c5fe5c13cb1ceca25b77a8e2/src/chatWrappers/MistralChatWrapper.ts#L161)
+
+#### Parameters
+
+| Parameter | Type |
+| ------ | ------ |
+| `functionName` | `string` |
+| `functionParams` | `any` |
+| `result` | `any` |
+
+#### Returns
+
+[`LlamaText`](LlamaText.md)
+
+#### Overrides
+
+[`ChatWrapper`](ChatWrapper.md).[`generateFunctionCallResult`](ChatWrapper.md#generatefunctioncallresult)

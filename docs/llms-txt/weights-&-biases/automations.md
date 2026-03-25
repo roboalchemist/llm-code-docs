@@ -1,0 +1,76 @@
+# Source: https://docs.wandb.ai/models/ref/python/public-api/automations.md
+
+# Source: https://docs.wandb.ai/models/ref/python/automations.md
+
+# Source: https://docs.wandb.ai/models/automations.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.wandb.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Automations overview
+
+> Use W&B Automations for triggering workflows based on events in W&B
+
+<Info>
+  This feature requires a [Pro or Enterprise plan](https://wandb.ai/site/pricing/).
+</Info>
+
+This page describes *automations* in W\&B. [Create an automation](/models/automations/create-automations/) to trigger workflow steps, such as automated model testing and deployment, based on an event in W\&B.
+
+For example, an automation can notify a Slack channel when a new version is created, trigger an automated testing webhook when the `production` alias is added to an artifact, or start a validation job only when a run's `loss` is within acceptable bounds.
+
+<Info>
+  Looking for companion tutorials for automations?
+
+  * [Learn to automatically trigger a Github Action for model evaluation and deployment](https://wandb.ai/wandb/wandb-model-cicd/reports/Model-CI-CD-with-W-B--Vmlldzo0OTcwNDQw).
+  * [Watch a video demonstrating automatically deploying a model to a Sagemaker endpoint](https://www.youtube.com/watch?v=s5CMj_w3DaQ).
+  * [Watch a video series introducing automations](https://youtube.com/playlist?list=PLD80i8An1OEGECFPgY-HPCNjXgGu-qGO6\&feature=shared).
+</Info>
+
+## Automation events
+
+Automations can be triggered by events related to runs or artifacts in a collection, project, or registry. An automation can start:
+
+* When a run metric meets a defined absolute or relative threshold. For example, trigger when a run's `loss` is less than 0.01 or when a run's `accuracy` improves by 5%.
+* When a run's z-score (standard score) deviates from the mean by a given amount. A z-score of 0 indicates that the result aligns with the mean. A z-score of +2 means that the result is two standard deviations higher than the mean, and a z-score of -2 means that the result is two standard deviations lower than the mean.
+* When an event occurs in a project or registry. For example, trigger when a new version of a model artifact is created or when the `production` alias is added to a model artifact.
+
+For more details, see [Automation events and scopes](/models/automations/automation-events/).
+
+## Automation actions
+
+When an event triggers an automation, it can perform one of these actions:
+
+### Slack notification
+
+Send a message to a Slack channel with details about the triggering event. The message summarizes the event, with a link to view more details in W\&B.
+
+### Webhook
+
+Call a webhook URL with a JSON payload containing information about the triggering event. This enables integration with external systems like CI/CD pipelines, model deployment services, or custom workflows. The body of the webhook request may be any JSON-serializable payload.
+
+For implementation details, see:
+
+* [Create a Slack automation](/models/automations/create-automations/slack/)
+* [Create a webhook automation](/models/automations/create-automations/webhook/)
+
+## How automations work
+
+To [create an automation](/models/automations/create-automations/), you:
+
+1. If required, configure [secrets](/platform/secrets/) for sensitive strings the automation requires, such as access tokens, passwords, or sensitive configuration details. Secrets are defined in your **Team Settings**. Secrets are most commonly used in webhook automations to securely pass credentials or tokens to the webhook's external service without exposing it in plain text or hard-coding it in the webhook's payload.
+2. Configure team-level webhook or Slack integrations to authorize W\&B to post to Slack or run the webhook on your behalf. A single automation action (webhook or Slack notification) can be used by multiple automations. These actions are defined in your **Team Settings**.
+3. In the project or registry, create the automation:
+   1. Define the [event](#automation-events) to watch for, such as when a new artifact version is added.
+   2. Define the action to take when the event occurs (posting to a Slack channel or running a webhook). For a webhook, specify a secret to use for the access token and/or a secret to send with the payload, if required.
+
+## Limitations
+
+[Run metric automations](/models/automations/automation-events/#run-metrics-events) and [run metrics z-score change automations](/models/automations/automation-events/#run-metrics-z-score-change-automations) are currently supported only in [W\&B Multi-tenant Cloud](/platform/hosting/#wb-multi-tenant-cloud).
+
+## Next steps
+
+* [Create an automation](/models/automations/create-automations/).
+* Learn about [Automation events and scopes](/models/automations/automation-events/).
+* [Create a secret](/platform/secrets/).

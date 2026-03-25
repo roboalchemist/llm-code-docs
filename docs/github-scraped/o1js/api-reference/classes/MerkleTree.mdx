@@ -1,0 +1,286 @@
+Defined in: [lib/provable/merkle-tree.ts:28](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/merkle-tree.ts#L28)
+
+A [Merkle Tree](https://en.wikipedia.org/wiki/Merkle_tree) is a binary tree in which every leaf is the cryptography hash of a piece of data,
+and every node is the hash of the concatenation of its two child nodes.
+
+A Merkle Tree allows developers to easily and securely verify the integrity of large amounts of data.
+
+Take a look at our [documentation](https://docs.minaprotocol.com/en/zkapps) on how to use Merkle Trees in combination with zkApps and zero knowledge programming!
+
+Levels are indexed from leaves (level 0) to root (level N - 1).
+
+## Constructors
+
+### Constructor
+
+```ts
+new MerkleTree(height: number): MerkleTree;
+```
+
+Defined in: [lib/provable/merkle-tree.ts:37](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/merkle-tree.ts#L37)
+
+Creates a new, empty [Merkle Tree](https://en.wikipedia.org/wiki/Merkle_tree).
+
+#### Parameters
+
+##### height
+
+`number`
+
+The height of Merkle Tree.
+
+#### Returns
+
+`MerkleTree`
+
+A new MerkleTree
+
+## Properties
+
+### height
+
+```ts
+readonly height: number;
+```
+
+Defined in: [lib/provable/merkle-tree.ts:37](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/merkle-tree.ts#L37)
+
+The height of Merkle Tree.
+
+***
+
+### nodes
+
+```ts
+nodes: Record<number, Record<string, Field>> = {};
+```
+
+Defined in: [lib/provable/merkle-tree.ts:29](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/merkle-tree.ts#L29)
+
+***
+
+### zeroes
+
+```ts
+zeroes: Field[];
+```
+
+Defined in: [lib/provable/merkle-tree.ts:30](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/merkle-tree.ts#L30)
+
+## Accessors
+
+### leafCount
+
+#### Get Signature
+
+```ts
+get leafCount(): bigint;
+```
+
+Defined in: [lib/provable/merkle-tree.ts:160](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/merkle-tree.ts#L160)
+
+Returns the amount of leaf nodes.
+
+##### Returns
+
+`bigint`
+
+Amount of leaf nodes.
+
+## Methods
+
+### clone()
+
+```ts
+clone(): MerkleTree;
+```
+
+Defined in: [lib/provable/merkle-tree.ts:48](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/merkle-tree.ts#L48)
+
+Return a new MerkleTree with the same contents as this one.
+
+#### Returns
+
+`MerkleTree`
+
+***
+
+### fill()
+
+```ts
+fill(leaves: Field[]): void;
+```
+
+Defined in: [lib/provable/merkle-tree.ts:150](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/merkle-tree.ts#L150)
+
+Fills all leaves of the tree.
+
+#### Parameters
+
+##### leaves
+
+[`Field`](Field.mdx)[]
+
+Values to fill the leaves with.
+
+#### Returns
+
+`void`
+
+***
+
+### getLeaf()
+
+```ts
+getLeaf(index: bigint): Field;
+```
+
+Defined in: [lib/provable/merkle-tree.ts:71](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/merkle-tree.ts#L71)
+
+Returns a leaf at a given index.
+
+#### Parameters
+
+##### index
+
+`bigint`
+
+Index of the leaf.
+
+#### Returns
+
+[`Field`](Field.mdx)
+
+The data of the leaf.
+
+***
+
+### getNode()
+
+```ts
+getNode(level: number, index: bigint): Field;
+```
+
+Defined in: [lib/provable/merkle-tree.ts:62](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/merkle-tree.ts#L62)
+
+Returns a node which lives at a given index and level.
+
+#### Parameters
+
+##### level
+
+`number`
+
+Level of the node.
+
+##### index
+
+`bigint`
+
+Index of the node.
+
+#### Returns
+
+[`Field`](Field.mdx)
+
+The data of the node.
+
+***
+
+### getRoot()
+
+```ts
+getRoot(): Field;
+```
+
+Defined in: [lib/provable/merkle-tree.ts:79](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/merkle-tree.ts#L79)
+
+Returns the root of the [Merkle Tree](https://en.wikipedia.org/wiki/Merkle_tree).
+
+#### Returns
+
+[`Field`](Field.mdx)
+
+The root of the Merkle Tree.
+
+***
+
+### getWitness()
+
+```ts
+getWitness(index: bigint): Witness;
+```
+
+Defined in: [lib/provable/merkle-tree.ts:115](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/merkle-tree.ts#L115)
+
+Returns the witness (also known as [Merkle Proof or Merkle Witness](https://computersciencewiki.org/index.php/Merkle_proof)) for the leaf at the given index.
+
+#### Parameters
+
+##### index
+
+`bigint`
+
+Position of the leaf node.
+
+#### Returns
+
+[`Witness`](../type-aliases/Witness.mdx)
+
+The witness that belongs to the leaf.
+
+***
+
+### setLeaf()
+
+```ts
+setLeaf(index: bigint, leaf: Field): void;
+```
+
+Defined in: [lib/provable/merkle-tree.ts:94](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/merkle-tree.ts#L94)
+
+Sets the value of a leaf node at a given index to a given value.
+
+#### Parameters
+
+##### index
+
+`bigint`
+
+Position of the leaf node.
+
+##### leaf
+
+[`Field`](Field.mdx)
+
+New value.
+
+#### Returns
+
+`void`
+
+***
+
+### validate()
+
+```ts
+validate(index: bigint): boolean;
+```
+
+Defined in: [lib/provable/merkle-tree.ts:135](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/merkle-tree.ts#L135)
+
+Checks if the witness that belongs to the leaf at the given index is a valid witness.
+
+#### Parameters
+
+##### index
+
+`bigint`
+
+Position of the leaf node.
+
+#### Returns
+
+`boolean`
+
+True if the witness for the leaf node is valid.

@@ -1,0 +1,15 @@
+# Source: https://docs.nimbleway.io/nimble-platform/online-pipelines/restaurants/yelp.md
+
+# Yelp
+
+## About
+
+The Yelp pipeline provides detailed information on various restaurants across the United States. The pipeline includes details such as restaurant names, URLs, addresses, websites, price ranges, categories, ratings, review counts, hours of operation, and various attributes like delivery options, reservation availability, and more. This data is essential for market analysis, consumer behavior studies, and location-based services.
+
+## Data Dictionary
+
+<table><thead><tr><th width="256">Field Name</th><th width="199">Data Type</th><th>Explanation</th></tr></thead><tbody><tr><td>name</td><td>String</td><td>Name of the restaurant</td></tr><tr><td>url</td><td>String</td><td>URL of the restaurant's Yelp page</td></tr><tr><td>address</td><td>String</td><td>Full address of the restaurant</td></tr><tr><td>website</td><td>String</td><td>Official website of the restaurant</td></tr><tr><td>price_range</td><td>String</td><td>Price range category of the restaurant</td></tr><tr><td>categories</td><td>String</td><td>Categories/tags associated with the restaurant</td></tr><tr><td>rating</td><td>Float</td><td>Average rating of the restaurant</td></tr><tr><td>review_count</td><td>Integer</td><td>Number of reviews the restaurant has received</td></tr><tr><td>hours_mon</td><td>String</td><td>Operating hours on Monday</td></tr><tr><td>hours_tue</td><td>String</td><td>Operating hours on Tuesday</td></tr><tr><td>hours_wed</td><td>String</td><td>Operating hours on Wednesday</td></tr><tr><td>hours_thu</td><td>String</td><td>Operating hours on Thursday</td></tr><tr><td>hours_fri</td><td>String</td><td>Operating hours on Friday</td></tr><tr><td>hours_sat</td><td>String</td><td>Operating hours on Saturday</td></tr><tr><td>hours_sun</td><td>String</td><td>Operating hours on Sunday</td></tr><tr><td>private_dining</td><td>Boolean</td><td>Indicates if the restaurant offers private dining</td></tr><tr><td>proof_of_vaccination_required</td><td>Boolean</td><td>Indicates if proof of vaccination is required</td></tr><tr><td>provides_reusable_tableware</td><td>Boolean</td><td>Indicates if the restaurant provides reusable tableware</td></tr><tr><td>restaurants_attire</td><td>Boolean</td><td>Indicates the attire required at the restaurant</td></tr><tr><td>restaurants_delivery</td><td>Boolean</td><td>Indicates if the restaurant offers delivery</td></tr><tr><td>restaurants_reservations</td><td>Boolean</td><td>Indicates if the restaurant accepts reservations</td></tr><tr><td>restaurants_take_out</td><td>Boolean</td><td>Indicates if the restaurant offers takeout</td></tr><tr><td>smoking</td><td>Boolean</td><td>Indicates if smoking is allowed</td></tr><tr><td>staff_fully_vaccinated</td><td>Boolean</td><td>Indicates if the staff is fully vaccinated</td></tr><tr><td>wifi_options</td><td>Boolean</td><td>Indicates if the restaurant offers Wi-Fi</td></tr></tbody></table>
+
+### CSV Example
+
+{% embed url="<https://docs.google.com/spreadsheets/d/16W9QgOA1S0VrZFp9S6L7zmavldIVt4JIBtIl67CiuHg/edit?gid=648883443#gid=648883443>" %}

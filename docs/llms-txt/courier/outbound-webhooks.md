@@ -1,0 +1,382 @@
+# Source: https://www.courier.com/docs/platform/workspaces/outbound-webhooks.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.courier.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Outbound Webhooks
+
+> Courier’s outbound webhooks notify your app of events like message updates or audience changes, with secure HMAC verification and customizable event handling via POST endpoints.
+
+Courier uses webhooks to notify your application when events occur in your account, such as message status changes, template publications, and audience updates.
+
+## Adding a New Webhook Destination
+
+1. Visit [https://app.courier.com/settings/general](https://app.courier.com/settings/general)
+2. Click the "+ Outbound Webhook" button
+3. Enter the new webhook destination information (this should accept a `POST` request)
+
+## Handling Requests from Courier
+
+### Read the Event Data
+
+Courier sends the event data in the request body. Each event is structured as an object with a `type` property and related resource data nested under the `data` property.
+
+### Handle the Event
+
+Courier currently supports the following event types:
+
+* `message:updated`
+* `notification:submitted`
+* `notification:submission_canceled`
+* `notification:published`
+* `audiences:updated`
+* `audiences:user:matched`
+* `audiences:user:unmatched`
+* `audiences:calculated`
+
+Handle events based on the `type` property in the payload. Additional event types may be added in the future, so your handler should gracefully ignore unknown types.
+
+### Return a 200 Response
+
+Send a successful 200 response to Courier as quickly as possible. Write any long-running processes as code that can run asynchronously outside the webhook endpoint.
+
+## Verifying Signatures
+
+Verify the events that Courier sends to your webhook endpoints. Courier can optionally sign the webhook events it sends to your endpoints by including a signature in each event's `courier-signature` header. This allows you to verify that the events were sent by Courier, not by a third party.
+
+```bash  theme={null}
+t=1631816343012,signature=33777cdae0468ff0939b3609d02d14e6e80ca093c2ea233455f0767055218875
+```
+
+Courier generates signatures using a hash-based message authentication code (HMAC) with SHA-256.
+
+### Step 1: Extract the Timestamp and Signature from the Header
+
+Split the header using the `,` character as the separator to get a list of elements. Then split each element using the `=` character as the separator to get a prefix and value pair.
+
+The value for the prefix `t` corresponds to the timestamp, and `signature` corresponds to the signature.
+
+Before you can verify signatures, you need to retrieve your endpoint's secret from your [Webhooks settings](https://app.courier.com/settings/webhooks) by clicking on a webhook configuration.
+
+### Step 2: Prepare the `signed_payload` String
+
+The `signed_payload` string is created by concatenating:
+
+* The timestamp (as a string)
+* The actual JSON payload (i.e., the request body)
+
+### Step 3: Determine the Expected Signature
+
+Compute an HMAC with the SHA256 hash function. Use the Courier webhook secret as the key and the payload string as the message.
+
+```js  theme={null}
+const examplePayload = {
+  data: {
+    enqueued: 1631833955972,
+    event: 'SNKDF4GZK94M0NHXBJQDF8GAQWM1',
+    id: '1-6143cf63-4f27670f6304f465462695f2',
+    providers: [],
+    recipient: 'c156665c-a76c-4440-9676-f25c1b04ba93',
+    recipientId: 'c156665c-a76c-4440-9676-f25c1b04ba93',
+    status: 'ENQUEUED',
+  },
+  type: 'message:updated',
+};
+
+function parseHeader(header: string) {
+  if (typeof header !== 'string') {
+    return null;
+  }
+
+  return header.split(',').reduce((accum, item) => {
+    const kv = item.split('=');
+
+    if (kv[0] === 't') {
+      accum.timestamp = kv[1];
+    }
+    if (kv[0] === 'signature') {
+      accum.signature = kv[1];
+    }
+
+    return accum;
+  }, { timestamp: -1, signature: '' });
+}
+
+// headers refers to the request headers from the incoming webhook event from Courier
+const headerDetails = parseHeader(headers['courier-signature']);
+
+const unfoldedSignature = crypto
+  .createHmac('sha256', secret)
+  .update(`${headerDetails.timestamp}.${JSON.stringify(examplePayload)}`, 'utf8')
+  .digest('hex');
+
+const isValid = unfoldedSignature === headerDetails.signature;
+```
+
+### Step 4: Compare the Signatures
+
+Compare the signature (or signatures) in the header to the expected signature. For an equality match, compute the difference between the current timestamp and the received timestamp, then decide if the difference is within your tolerance.
+
+To protect against timing attacks, use constant-time string comparison to compare the expected signature to each of the received signatures.
+
+## Event Data
+
+### message:updated
+
+The `data` property in the webhook response payload for the `message:updated` event is identical to the information returned from the [GET /message/:message\_id](/api-reference/sent-messages/get-message) endpoint.
+
+For example, when an email is sent, it goes from `ENQUEUED` → `SENT` → `DELIVERED` → `OPENED`.
+
+Here's a rundown of how the payloads would look for each event:
+
+**Example Payload for an ENQUEUED Event**
+
+```json  theme={null}
+{
+  "data": {
+    "enqueued": 1630512466717,
+    "event": "SFTYJKSF0241SVH2TWY97TTFFTQG",
+    "id": "1-612fa552-15f7d6ba51bf229857c037a7",
+    "notification": "SFTYJKSF0241SVH2TWY97TTFFTQG",
+    "providers": [],
+    "recipient": "b19fb0e0-8cd6-4337-b41c-92c780c80d1a",
+    "recipientId": "b19fb0e0-8cd6-4337-b41c-92c780c80d1a",
+    "status": "ENQUEUED"
+  },
+  "type": "message:updated"
+}
+```
+
+**Example payload for SENT event**
+
+```json  theme={null}
+{
+  "data": {
+    "enqueued": 1630512466717,
+    "event": "SFTYJKSF0241SVH2TWY97TTFFTQG",
+    "id": "1-612fa552-15f7d6ba51bf229857c037a7",
+    "notification": "SFTYJKSF0241SVH2TWY97TTFFTQG",
+    "providers": [
+      // provider specific info
+    ],
+    "recipient": "b19fb0e0-8cd6-4337-b41c-92c780c80d1a",
+    "recipientId": "b19fb0e0-8cd6-4337-b41c-92c780c80d1a",
+    "sent": 1630512468691,
+    "status": "SENT"
+  },
+  "type": "message:updated"
+}
+```
+
+**Example payload for DELIVERED event**
+
+```json  theme={null}
+{
+  "data": {
+    "delivered": 1630512501708,
+    "enqueued": 1630512466717,
+    "event": "SFTYJKSF0241SVH2TWY97TTFFTQG",
+    "id": "1-612fa552-15f7d6ba51bf229857c037a7",
+    "notification": "SFTYJKSF0241SVH2TWY97TTFFTQG",
+    "providers": [
+      // provider specific info
+    ],
+    "recipient": "b19fb0e0-8cd6-4337-b41c-92c780c80d1a",
+    "recipientId": "b19fb0e0-8cd6-4337-b41c-92c780c80d1a",
+    "sent": 1630512468691,
+    "status": "DELIVERED"
+  },
+  "type": "message:updated"
+}
+```
+
+**Example payload for OPENED event**
+
+```json  theme={null}
+{
+  "data": {
+    "delivered": 1630512501708,
+    "enqueued": 1630512466717,
+    "event": "SFTYJKSF0241SVH2TWY97TTFFTQG",
+    "id": "1-612fa552-15f7d6ba51bf229857c037a7",
+    "notification": "SFTYJKSF0241SVH2TWY97TTFFTQG",
+    "opened": 1630518873072,
+    "providers": [
+      // provider specific info
+    ],
+    "recipient": "b19fb0e0-8cd6-4337-b41c-92c780c80d1a",
+    "recipientId": "b19fb0e0-8cd6-4337-b41c-92c780c80d1a",
+    "sent": 1630512468691,
+    "status": "OPENED"
+  },
+  "type": "message:updated"
+}
+```
+
+**Example payload for UNROUTABLE event**
+
+```json  theme={null}
+{
+  "data": {
+    "enqueued": 1644594639213,
+    "error": "No providers added",
+    "event": "5QDEPHNXMC49GVP83X69J1SXV7CE",
+    "id": "1-620685cf-bf64c91e464de93a283cb791",
+    "notification": "5QDEPHNXMC49GVP83X69J1SXV7CE",
+    "providers": [],
+    "reason": "NO_PROVIDERS",
+    "recipient": "ab666576-ac30-4d5f-9559-29b85e94a8a4",
+    "recipientId": "ab666576-ac30-4d5f-9559-29b85e94a8a4",
+    "status": "UNROUTABLE"
+  },
+  "type": "message:updated"
+}
+```
+
+**Example payload for UNDELIVERABLE event**
+
+```json  theme={null}
+{
+  "data": {
+    "enqueued": 1644595488228,
+    "error": "Notification opted out by user",
+    "event": "AVV5FVHYX5MJX3NT634DM3EMAYE0",
+    "id": "1-62068920-79afc13b939d3b7a4ad1e376",
+    "notification": "AVV5FVHYX5MJX3NT634DM3EMAYE0",
+    "providers": [
+      {
+        "error": "Notification opted out by user",
+        "status": "UNDELIVERABLE"
+      }
+    ],
+    "reason": "UNSUBSCRIBED",
+    "recipient": "suhas@courier.com",
+    "recipientId": "suhas_stable_issue_2",
+    "status": "UNDELIVERABLE"
+  },
+  "type": "message:updated"
+}
+```
+
+***
+
+For the notification template submission workflow, Courier emits `notification:submitted`, `notification:submission_canceled`, and `notification:published` events.
+
+### notification:submitted
+
+Example:
+
+```json  theme={null}
+{
+  "data": {
+    "id": "<NOTIFICATION_ID>",
+    "submission_id": 1620095270807 // submission ID is a timestamp of submission
+  },
+  "type": "notification:submitted"
+}
+```
+
+### notification:submission\_canceled
+
+Example:
+
+```json  theme={null}
+{
+  "data": {
+    "id": "<NOTIFICATION_ID>",
+    "canceled_at": 1620095280807,
+    "submission_id": 1620095270807
+  },
+  "type": "notification:submission_canceled"
+}
+```
+
+### notification:published
+
+Example
+
+```json  theme={null}
+{
+  "data": {
+    "id": "<NOTIFICATION_ID>",
+    "published_at": 1620095270807
+  },
+  "type": "notification:published"
+}
+```
+
+### audiences:updated
+
+This event is fired when your [audience](/api-reference/audiences/get-an-audience) is created or updated.
+
+Example:
+
+```json  theme={null}
+{
+  "data": {
+    "audience_id": "software-engineers",
+    "audience_version": 11,
+    "filter": {
+      "path": "title",
+      "value": "Software Engineer",
+      "operator": "EQ"
+    }
+  },
+  "type": "audiences:updated"
+}
+```
+
+### audiences:user:matched
+
+This event is fired when a user is matched to an audience. This usually happens when a user is created or updated. If user's [profile](/api-reference/user-profiles/replace-a-profile) matches any of the audience's filters, the user is matched to the audience.
+
+Example:
+
+```json  theme={null}
+{
+  "data": {
+    "audience_id": "software-engineers",
+    "audience_version": 11,
+    "reason": "EQ('title', 'Software Engineer') => true",
+    "user_id": "suhas"
+  },
+  "type": "audiences:user:matched"
+}
+```
+
+### audiences:user:unmatched
+
+This event is fired when a user is unmatched to an audience. This usually happens when a user is [removed](/api-reference/user-profiles/delete-a-profile) or updated in such a way that it no longer matches any of the audience's filters.
+
+Example:
+
+```json  theme={null}
+{
+  "data": {
+    "audience_id": "favorite-fooss-players",
+    "audience_version": 4,
+    "reason": "EQ('favorite_game', 'fosss') => true, EQ('gender', 'pigeon') => true, EQ('style', 'defend') => true",
+    "user_id": "suhas_with_foss"
+  },
+  "type": "audiences:user:unmatched"
+}
+```
+
+### audiences:calculated
+
+This event is fired when Courier is done calculating audiences. This is a background process that runs every time you create or update an audience. It can take variable time depending on total number of users you have created in your Courier workspace.
+
+Example:
+
+```json  theme={null}
+{
+  "data": {
+    "audience_id": "software-engineers",
+    "user_count": 1,
+    "total_users": 28,
+    "total_users_filtered": 27
+  },
+  "type": "audiences:calculated"
+}
+```

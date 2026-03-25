@@ -1,0 +1,27 @@
+# Source: https://docs.roboflow.com/roboflow/roboflow-ko/train/training-resolutions-by-model-type.md
+
+# Source: https://docs.roboflow.com/roboflow/roboflow-hi/train/training-resolutions-by-model-type.md
+
+# Source: https://docs.roboflow.com/train/training-resolutions-by-model-type.md
+
+# Training Resolutions by Model Type
+
+Training resolution affects model accuracy, inference speed, and training time. Each model architecture has a default resolution that balances these factors. By default, Roboflow suggests the default training resolution for the selected model architecture.&#x20;
+
+The table below shows the default training resolution for each model architecture and size. You can override these defaults by configuring the resize preprocessing step when creating a new [Dataset Version](https://docs.roboflow.com/datasets/dataset-versions).
+
+### Object Detection
+
+<table><thead><tr><th>Model Type</th><th width="273.3359375">Family &#x26; Size</th><th>Default Training Resolution</th></tr></thead><tbody><tr><td>Object Detection</td><td>RF-DETR Nano</td><td>384×384</td></tr><tr><td>Object Detection</td><td>RF-DETR Small</td><td>512×512</td></tr><tr><td>Object Detection</td><td>RF-DETR Medium</td><td>576×576</td></tr><tr><td>Object Detection</td><td>RF-DETR Large</td><td>704×704</td></tr><tr><td>Object Detection</td><td>RF-DETR X Large</td><td>700x700</td></tr><tr><td>Object Detection</td><td>RF-DETR 2X Large</td><td>880x880</td></tr><tr><td>Object Detection</td><td>Roboflow 3.0 - Fast</td><td>640×640</td></tr><tr><td>Object Detection</td><td>Roboflow 3.0 - Accurate</td><td>640×640</td></tr><tr><td>Object Detection</td><td>Roboflow 3.0 - Medium</td><td>640×640</td></tr><tr><td>Object Detection</td><td>Roboflow 3.0 - Large</td><td>640×640</td></tr><tr><td>Object Detection</td><td>Roboflow 3.0 - Extra Large</td><td>640×640</td></tr><tr><td>Object Detection</td><td>YOLOv26(n/s/m/l/x)</td><td>640×640</td></tr><tr><td>Object Detection</td><td>YOLOv12 (n/s/m/l/x)</td><td>640×640</td></tr><tr><td>Object Detection</td><td>YOLOv11 (n/s/m/l/x)</td><td>640×640</td></tr><tr><td>Object Detection</td><td>YOLOv10 (n/s/m/b/l/x)</td><td>640×640</td></tr><tr><td>Object Detection</td><td>YOLOv9 (s/m/c/e)</td><td>640×640</td></tr><tr><td>Object Detection</td><td>YOLOv8 (n/s/m/l/x)</td><td>640×640</td></tr><tr><td>Object Detection</td><td>YOLOv5 (n/s/m/l/x)</td><td>640×640</td></tr><tr><td>Object Detection</td><td>YOLOv7 (legacy)</td><td>640×640</td></tr><tr><td>Object Detection</td><td>YOLO‑NAS Small</td><td>640×640</td></tr><tr><td>Object Detection</td><td>YOLO‑NAS Medium</td><td>640×640</td></tr><tr><td>Object Detection</td><td>Roboflow Instant</td><td>1008x1008</td></tr></tbody></table>
+
+### Instance Segmentation
+
+<table><thead><tr><th>Model Type</th><th width="272.8203125">Family &#x26; Size</th><th>Default Training Resolution</th></tr></thead><tbody><tr><td>Instance Segmentation</td><td>RF-DETR Seg Nano</td><td>312x312</td></tr><tr><td>Instance Segmentation</td><td>RF-DETR Seg Small</td><td>384x384</td></tr><tr><td>Instance Segmentation</td><td>RF-DETR Seg Medium</td><td>432x432</td></tr><tr><td>Instance Segmentation</td><td>RF-DETR Seg Large</td><td>504x504</td></tr><tr><td>Instance Segmentation</td><td>RF-DETR Seg X Large</td><td>624x624</td></tr><tr><td>Instance Segmentation</td><td>RF-DETR Seg 2X Large</td><td>768x768</td></tr><tr><td>Instance Segmentation</td><td>Roboflow 3.0 - Fast (Seg)</td><td>640×640</td></tr><tr><td>Instance Segmentation</td><td>Roboflow 3.0 - Accurate (Seg)</td><td>640×640</td></tr><tr><td>Instance Segmentation</td><td>Roboflow 3.0 - Medium (Seg)</td><td>640×640</td></tr><tr><td>Instance Segmentation</td><td>Roboflow 3.0 - Large (Seg)</td><td>640×640</td></tr><tr><td>Instance Segmentation</td><td>Roboflow 3.0 - Extra Large (Seg)</td><td>640×640</td></tr><tr><td>Instance Segmentation</td><td>YOLO-seg (v8/10/11/12)</td><td>640×640</td></tr><tr><td>Instance Segmentation</td><td>SAM3 (Segment Anything 3)</td><td>1008x1008</td></tr><tr><td>Instance Segmentation</td><td>Semantic segmentation (DeepLabV3+)</td><td>≥ 512×512</td></tr></tbody></table>
+
+### Classification & Pose
+
+<table><thead><tr><th>Model Type</th><th width="272.66796875">Family &#x26; Size</th><th>Default Training Resolution</th></tr></thead><tbody><tr><td>Classification &#x26; Pose</td><td>Resnet-18/34/50</td><td>224x224</td></tr><tr><td>Classification &#x26; Pose</td><td>YOLO-cls (v8/11)</td><td>224x224</td></tr><tr><td>Classification &#x26; Pose</td><td>Vision Transformer (ViT)</td><td>224x224</td></tr><tr><td>Classification &#x26; Pose</td><td>YOLO-pose (keypoints)</td><td>640x640</td></tr></tbody></table>
+
+### Multimodal/VLM
+
+<table><thead><tr><th>Model Type</th><th width="272.96484375">Family &#x26; Size</th><th>Default Training Resolution</th></tr></thead><tbody><tr><td>Multimodal/VLM</td><td>PaliGemma 2 - 3 B</td><td>448x448</td></tr><tr><td>Multimodal/VLM</td><td>PaliGemma 2 - 10 B/28 B</td><td>448x448</td></tr><tr><td>Multimodal/VLM</td><td>Florence-2</td><td>448x448</td></tr><tr><td>Multimodal/VLM</td><td>QWEN 2.5 VL</td><td>448x448</td></tr><tr><td>Multimodal/VLM</td><td>SmolVLM2</td><td>384x384</td></tr></tbody></table>

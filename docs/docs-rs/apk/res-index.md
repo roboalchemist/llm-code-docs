@@ -1,0 +1,13 @@
+apk
+
+# Module res
+
+Source
+
+## Structs§
+
+ResChunkHeaderResSpanResStringPoolHeaderResTableConfigResTableEntryResTableHeaderResTableMapResTableMapEntryResTablePackageHeaderResTableRefResTableTypeHeaderResTableTypeSpecHeaderResValueResXmlAttributeResXmlEndElementResXmlNamespaceResXmlNodeHeaderResXmlStartElementScreenType
+
+## Enums§
+
+ChunkChunkTypeResAttributeTypeResTableValueResValueType

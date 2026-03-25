@@ -1,0 +1,129 @@
+---
+title: 'with JS SDK'
+order: 21
+---
+
+## Getting Started with JS SDK
+
+This guide walks you through setting up Yorkie with the JS SDK. You need an environment that can run JavaScript, such as a browser.
+
+### Setup
+
+To use the Yorkie JavaScript SDK in your project, install it using [npm](https://www.npmjs.com/package/@yorkie-js/sdk):
+
+```bash
+$ npm install @yorkie-js/sdk
+```
+After that, you can load the SDK by importing it in your JavaScript file:
+
+```js
+import yorkie from '@yorkie-js/sdk';
+```
+
+Alternatively, you can also include the following code in the `<head>` tag of your HTML:
+
+```html
+<!-- Import yorkie-js-sdk -->
+<script src="https://cdn.jsdelivr.net/npm/@yorkie-js/sdk@{{YORKIE_JS_VERSION}}/dist/yorkie-js-sdk.js"></script>
+<script>
+  // globally available as `yorkie` object
+  const doc = new yorkie.Document('my-doc');
+</script>
+```
+
+> The JS SDKs are also provided by [jsdelivr](https://www.jsdelivr.com/) to make loading library files faster and easier on websites.<br/>For more the JS SDKs: [https://www.jsdelivr.com/package/npm/@yorkie-js/sdk](https://www.jsdelivr.com/package/npm/@yorkie-js/sdk)
+
+### How to use Yorkie
+
+#### 1. Creating a Client with API key
+
+First, create a Client with API key.
+
+```js
+async function main() {
+  // 01. create a new client instance and connect to the yorkie server.
+  const client = new yorkie.Client({
+    rpcAddr: '{{API_ADDR}}',
+    apiKey: 'xxxxxxxxxxxxxxxxxxxx',
+  });
+  await client.activate();
+
+  // ...
+}
+```
+
+> The API key is used to identify the project in Yorkie. You can get the API key of the project you created in the [Dashboard]({{DASHBOARD_PATH}}).
+
+#### 2. Creating a Document
+
+Then create a Document.
+
+```js
+// 02. create a new document and attach it to the client
+const doc = new yorkie.Document('my-doc');
+await client.attach(doc, { initialPresence: {} });
+```
+
+Attach the document to the client to automatically synchronize it between users participating in the document.
+
+#### 3. Updating the Document
+
+The document is initially an empty object. You can create or update key-value properties to share with peers using `doc.update()`.
+
+```js
+doc.update((root) => {
+  root.todos = [];           // {"todos":[]}
+  root.todos.push('todo-1'); // {"todos":["todo-1"]}
+  root.obj = {               // {"todos":["todo-1"], "obj":{"name":"yorkie","age":14}}
+    name: 'yorkie',
+    age: 14,
+  };
+});
+```
+
+#### 4. Accessing Document
+
+To access document properties, use `doc.getRoot()`. With dot notation, you can access any key-value property that you or your peers have set.
+
+```js
+doc.update((root) => {
+  root.sharedMessage = 'Hello World!';
+});
+console.log(doc.getRoot().sharedMessage); // "Hello World!";
+```
+
+#### 5. Subscribing to the changes that happen in the Document
+
+Clients sharing the same document can subscribe to changes using `doc.subscribe()`.
+
+```js
+doc.subscribe((event) => {
+  console.log('A change event occurred in the Document!');
+});
+```
+
+You can execute different actions depending on the source of change. The source can be accessed from `event.type`.
+
+The value can be: `local-change`, `remote-change` or `snapshot`.
+
+```js
+doc.subscribe((event) => {
+  if (event.type === 'remote-change') {
+    console.log('A peer has changed the Document!');
+  }
+});
+```
+
+#### 6. Viewing the presence of users
+
+You can also subscribe to user presence using `doc.subscribe('presence')`. Use `doc.getPresences()` to get the list of users currently participating in the document.
+
+```js
+doc.subscribe('presence', (event) => {
+  // get all users connected to the Document.
+  const users = doc.getPresences(); // [ {clientID: string, presence: {key: value}}, ... ]
+  console.log(`There are currently ${users.length} users online`);
+});
+```
+
+Next, let's take a look at the [JS SDK](/docs/sdks/js-sdk).

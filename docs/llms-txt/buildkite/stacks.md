@@ -1,0 +1,461 @@
+# Source: https://buildkite.com/docs/apis/agent-api/stacks.md
+
+# Stacks API
+
+The stacks API provides endpoints for implementing a stack reliably.
+
+A stack is defined as a software process that has these two abilities simultaneously:
+
+- The ability to pull/receive new jobs from the Buildkite API.
+- The ability to turn those job definitions into running agents.
+
+A stack can also be broadly understood as an orchestrator or a scheduler of Buildkite jobs.
+
+The stacks API powers Buildkite's [Agent Stack for Kubernetes](/docs/agent/self-hosted/agent-stack-k8s), and is designed to give advanced enterprise users custom control over the scheduling of jobs at larger scales. You can use the stacks API to build custom stack implementations in any language that dispatch jobs to your own compute infrastructure, such as Kubernetes, cloud VMs, serverless functions, or container services.
+
+## Authentication
+
+All stacks API endpoints require an [agent token](/docs/agent/self-hosted/tokens) passed in the `Authorization` header:
+
+```
+Authorization: Token <agent-token-value>
+```
+
+Agent tokens ([prefixed with `bkct_`](/docs/platform/security/tokens#supported-buildkite-tokens-agent-tokens)) are located on your cluster's **Agent Tokens** page, and these tokens grant access to all [self-hosted queues](/docs/agent/queues) within the cluster.
+
+## Endpoint summary
+
+| Method | Path | Description |
+| --- | --- | --- |
+| POST | `/v3/stacks/register` | [Register a stack](#register-a-stack) |
+| POST | `/v3/stacks/:key/deregister` | [De-register a stack](#de-register-a-stack) |
+| GET | `/v3/stacks/:key/scheduled-jobs` | [List scheduled jobs](#list-scheduled-jobs-metadata-only) |
+| PUT | `/v3/stacks/:key/scheduled-jobs/batch-reserve` | [Reserve jobs](#reserve-jobs) |
+| GET | `/v3/stacks/:key/jobs/:id` | [Get a job](#get-a-job-env-plus-command) |
+| POST | `/v3/stacks/:key/jobs/get-states` | [Get job states](#get-job-states) |
+| POST | `/v3/stacks/:key/jobs/:id/finish` | [Finish a job](#finish-a-job) |
+| POST | `/v3/stacks/:key/notifications` | [Create stack notifications](#create-stack-notifications) |
+
+## Register a stack
+
+Register a new stack or update an existing one. You must use this API to register a stack `key` before using any of the following APIs. You can choose to register a stack key ad-hoc once, or have it as part of your stack implementation. This endpoint is idempotent.
+
+The register payload includes a mandatory `queue_key` field, which tells Buildkite which self-hosted queue the stack is intended to serve. However, such binding isn't enforced so there is a possibility that you could use a single stack implementation to power all self-hosted queues.
+
+The number of active stacks per organization is limited, and each stack is subject to independent rate limits.
+
+Request payload:
+
+| Field       | Type             | Required | Description                                         |
+| ----------- | ---------------- | -------- | --------------------------------------------------- |
+| `key`       | string           | Yes      | Unique identifier for the stack in the org. Alphanumeric characters, underscores, and dashes only. Maximum 80 bytes. |
+| `type`      | string           | Yes      | Type of stack: `kubernetes`, `elastic`, or `custom`. Third-party stacks should use `custom`. |
+| `queue_key` | string           | Yes      | Self-hosted queue key the stack plans to serve. Use `__default__` for the cluster's default queue. |
+| `metadata`  | key-value object | Yes      | Additional metadata for the stack. Must be a flat object with string keys (maximum 64 characters) and string values (maximum 256 characters). Maximum 100 keys. |
+
+Example:
+
+```bash
+curl -H "Authorization: Token $BUILDKITE_CLUSTER_TOKEN" \
+  -H "Content-Type: application/json" \
+  -X POST "https://agent.buildkite.com/v3/stacks/register" \
+  -d '{
+    "key": "my-kubernetes-stack",
+    "type": "kubernetes",
+    "queue_key": "default",
+    "metadata": {
+      "version": "1.0.0",
+      "region": "us-east-1"
+    }
+  }'
+```
+
+```json
+{
+  "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "organization_uuid": "12345678-abcd-ef01-2345-6789abcdef01",
+  "key": "my-kubernetes-stack",
+  "type": "kubernetes",
+  "cluster_queue_key": "default",
+  "metadata": {
+    "version": "1.0.0",
+    "region": "us-east-1"
+  },
+  "last_connected_on": "2025-10-01T12:00:00.000Z",
+  "state": "connected"
+}
+```
+
+Success response: `201 Created` (new stack) or `200 OK` (existing stack updated)
+
+## De-register a stack
+
+De-register a stack from the cluster.
+Ideally, when a stack stops, it should use this API to de-register its `key` from the Buildkite backend.
+This will ensure an organization doesn't exceed the stack count quota.
+
+```bash
+curl -H "Authorization: Token $BUILDKITE_CLUSTER_TOKEN" \
+  -X POST "https://agent.buildkite.com/v3/stacks/my-kubernetes-stack/deregister"
+```
+
+Success response: `204 No Content`
+
+## List scheduled jobs (Metadata only)
+
+This is the most important API of the stacks APIs, and it fetches all jobs that have been scheduled to run by Buildkite's internal state machine. When a self-hosted queue is paused, `cluster_queue.dispatch_paused` will return `true`, and a stack implementation **must** respect this flag (that is, avoid starting new jobs whenever the queue is paused).
+
+A stack often makes scheduling decisions based on returned metadata and turns this job metadata into running agents using [--acquire-jobs](https://buildkite.com/resources/changelog/129-one-shot-agents-with-the-acquire-job-flag/).
+
+Until these jobs transition into another state, the API will keep returning them. To avoid starting duplicate jobs, we offer some utility APIs below.
+
+> 📘 Queue connection status
+> Polling this endpoint keeps the associated queue's status set to **Connected** in the Buildkite Pipelines interface. If a stack stops polling for more than approximately 30 seconds, the queue's status changes to **Disconnected**. Learn more in [Queue connection status](/docs/agent/queues/managing#queue-connection-status).
+
+Query parameters:
+
+| Parameter   | Type    | Required | Description                                        |
+| ----------- | ------- | -------- | -------------------------------------------------- |
+| `queue_key` | string  | Yes      | Filter jobs by queue key                           |
+| `limit`     | integer | No       | Maximum number of jobs to return, max 1000         |
+| `after`     | string  | No       | Cursor for pagination (from previous `end_cursor`) |
+
+The API returns jobs ordered by `scheduled_at` (oldest first). Use the `page_info.end_cursor` value from the response in the `after` parameter to fetch the next page. When `page_info.has_next_page` is `false`, you've reached the end of results.
+
+> 📘 A note on paginating scheduled jobs
+> Job creation is often asynchronous and eventually consistent, and paginating across scheduled jobs _does not_ cover a snapshot of scheduled jobs at the time the pagination started. In cases of high job throughput, new jobs may be added behind the current cursor, and reaching the end of the current cursor (where `has_next_page: false`) does not imply that you've seen every scheduled job.
+> To counteract this, we generally recommend only querying for the first (or first few) pages, and then using the `reserve-jobs` endpoint to reserve them. On further queries, jobs that have been reserved will not show up in the results of the `scheduled-jobs` endpoint.
+
+Example:
+
+```bash
+curl -H "Authorization: Token $BUILDKITE_CLUSTER_TOKEN" \
+  -X GET "https://agent.buildkite.com/v3/stacks/my-kubernetes-stack/scheduled-jobs?queue_key=default&limit=10"
+```
+
+```json
+{
+  "jobs": [
+    {
+      "id": "01234567-89ab-cdef-0123-456789abcdef",
+      "priority": 1,
+      "agent_query_rules": ["test=a"],
+      "scheduled_at": "2023-10-01T12:00:00.000Z",
+      "pipeline": {
+        "slug": "my-pipeline",
+        "uuid": "pipeline-uuid"
+      },
+      "build": {
+        "number": 123,
+        "branch": "main",
+        "uuid": "build-uuid"
+      },
+      "step": {
+        "key": "test"
+      }
+    }
+  ],
+  "page_info": {
+    "has_next_page": false,
+    "end_cursor": "base64-encoded-string-or-null"
+  },
+  "cluster_queue": {
+    "id": "queue-id",
+    "dispatch_paused": false
+  }
+}
+```
+
+> 📘
+> The `pipeline`, `build`, and `step` values are nested objects of key/value pairs. All nested objects are always present in the response, even when their values are `null`. The `end_cursor` field in `page_info` can be a base64-encoded string or `null`.
+
+Success response: `200 OK`
+
+## Get a job (Env + command)
+
+In some cases, the job metadata returned from the API above isn't sufficient to make a full scheduling decision. In such cases, you can use this API to get the full payload data of a job individually. Specifically, the job payload data contains `env` and `command`. Due to the dynamic nature of Buildkite pipelines, these two fields can often grow to above 100KB.
+
+It's useful when you want to make scheduling decisions based on in-depth analysis of a job.
+
+```bash
+JOB_UUID="01234567-89ab-cdef-0123-456789abcdef"
+curl -H "Authorization: Token $BUILDKITE_CLUSTER_TOKEN" \
+  -X GET "https://agent.buildkite.com/v3/stacks/my-kubernetes-stack/jobs/$JOB_UUID"
+```
+
+```json
+{
+  "id": "01234567-89ab-cdef-0123-456789abcdef",
+  "env": {
+    "BUILDKITE_JOB_ID": "01234567-89ab-cdef-0123-456789abcdef",
+    "BUILDKITE_BUILD_NUMBER": "123"
+  },
+  "command": "echo Hello 👋"
+}
+```
+
+Success response: `200 OK`
+
+## Reserve jobs
+
+In order to prevent pulling duplicate jobs, a stack can _reserve_ jobs that it has decided to execute. If this API is called, a stack _should only_ execute jobs that are successfully reserved, as shown in the `reserved` fields in the response. Until the reservation expires, the reserved jobs will not show up in subsequent list scheduled jobs API calls. If the reservation expires, the reserved jobs will return to the `scheduled` state.
+
+You can reserve multiple jobs for execution. This API can be repeatedly called to extend the expiration of reservation states.
+
+Alternatively, a stack implementation can maintain its own persistent layer to keep track of job lifecycle, in which case, calling this API will be unnecessary.
+
+Request payload:
+
+| Field                        | Type          | Required | Description                     |
+| ---------------------------- | ------------- | -------- | ------------------------------- |
+| `job_uuids`                  | array[string] | Yes      | Array of job UUIDs to reserve (maximum 1,000) |
+| `reservation_expiry_seconds` | integer       | No       | Reservation duration in seconds. Defaults to 900 (15 minutes). Maximum 3,600 (1 hour). |
+
+Example:
+
+```bash
+curl -H "Authorization: Token $BUILDKITE_CLUSTER_TOKEN" \
+  -H "Content-Type: application/json" \
+  -X PUT "https://agent.buildkite.com/v3/stacks/my-kubernetes-stack/scheduled-jobs/batch-reserve" \
+  -d '{
+    "job_uuids": [
+      "01234567-89ab-cdef-0123-456789abcdef",
+      "fedcba98-7654-3210-fedc-ba9876543210"
+    ],
+    "reservation_expiry_seconds": 1800
+  }'
+```
+
+```json
+{
+  "reserved": [
+    "01234567-89ab-cdef-0123-456789abcdef",
+    "fedcba98-7654-3210-fedc-ba9876543210"
+  ],
+  "not_reserved": []
+}
+```
+
+Success response: `200 OK`
+
+## Get job states
+
+Retrieve the current state of multiple jobs. This is useful when a stack is provisioning infrastructure for a job and the job is cancelled before the infrastructure is ready. A stack can choose to decommission infrastructure proactively to save cost.
+
+This API is also helpful to inform a stack when a job's responsibility can be safely shifted to the running agent.
+
+This API uses `POST` method for batch data loading.
+
+Request payload:
+
+| Field       | Type          | Required | Description                          |
+| ----------- | ------------- | -------- | ------------------------------------ |
+| `job_uuids` | array[string] | Yes      | Array of job UUIDs to get states for (maximum 1,000) |
+
+Example:
+
+```bash
+curl -H "Authorization: Token $BUILDKITE_CLUSTER_TOKEN" \
+  -H "Content-Type: application/json" \
+  -X POST "https://agent.buildkite.com/v3/stacks/my-kubernetes-stack/jobs/get-states" \
+  -d '{
+    "job_uuids": [
+      "01234567-89ab-cdef-0123-456789abcdef",
+      "fedcba98-7654-3210-fedc-ba9876543210"
+    ]
+  }'
+```
+
+```json
+{
+  "states": {
+    "01234567-89ab-cdef-0123-456789abcdef": "scheduled",
+    "fedcba98-7654-3210-fedc-ba9876543210": "running"
+  }
+}
+```
+
+Success response: `200 OK`
+
+## Finish a job
+
+Mark a job as finished when the stack cannot or will not execute it, or when it has completed successfully without spawning an agent. In some situations, an agent cannot be spawned due to infrastructure or other issues. In this case, for each job, a stack can call this API at most once to finish the job with details.
+
+This is a critical API to shorten the feedback cycle to end users. For example, in the Kubernetes stack, if a pod has an image pull issue, the k8s stack uses this API to fail a job with feedback.
+
+A job that is finished with this approach will have a special notification on the Buildkite Build page.
+
+Request payload:
+
+| Field         | Type    | Required | Description                                                                                            |
+| ------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------ |
+| `exit_status` | integer | No       | Exit status code for the job. Defaults to -1 if not provided. Use 0 to indicate successful completion. |
+| `detail`      | string  | Yes      | Description of why the job finished (max 4KB)                                                          |
+
+Example:
+
+```bash
+curl -H "Authorization: Token $BUILDKITE_CLUSTER_TOKEN" \
+  -H "Content-Type: application/json" \
+  -X POST "https://agent.buildkite.com/v3/stacks/my-kubernetes-stack/jobs/$JOB_UUID/finish" \
+  -d '{
+    "exit_status": -1,
+    "detail": "Stack failed to start agent: insufficient resources"
+  }'
+```
+
+Success response: `200 OK`
+
+### Retry attributes
+
+If you have [retry attributes](/docs/pipelines/configure/step-types/command-step#retry-attributes) configured on a step, be aware that these will apply to and affect a job that finished with an `exit_status` of `-1` (for example, a failure), or if the Buildkite platform generates a `signal_reason` of `stack_error` for this job, or both.
+
+If your pipeline has numerous steps with retry attributes, and many of their jobs happen to fail, this could result in all of these jobs undergoing automatic retries.
+
+To prevent this issue from occurring, in each of these steps' [automatic retry attributes](/docs/pipelines/configure/step-types/command-step#retry-attributes-automatic-retry-attributes), set the `signal_reason` to `stack_error`, with a `limit` value of `0`, which prevents the job from being automatically retried when its associated attribute conditions are met. For example:
+
+```yaml
+steps:
+  - label: "Tests"
+    command: "tests.sh"
+    retry:
+      automatic:
+        - exit_status: -1
+          signal_reason: stack_error
+          limit: 0
+        - exit_status: "*"
+          limit: 2
+```
+
+## Create stack notifications
+
+In situations when a stack may take more than a few seconds to provision infrastructure for a job, or when the stack is waiting for some external conditions to be satisfied, a stack can give short textual notifications to the Buildkite Build page. This can help with visibility and debugging.
+A notification `detail` can be a short string. A job cannot have more than 100 stack notifications, so a stack should use this API judiciously.
+
+This endpoint supports batch creation of notifications for multiple jobs. You can send up to 1000 notifications in a single request.
+
+### Request payload
+
+| Field           | Type          | Required | Description                                          |
+| --------------- | ------------- | -------- | ---------------------------------------------------- |
+| `notifications` | array[object] | Yes      | Array of notification objects (max 1000 per request) |
+
+Each notification object:
+
+| Field       | Type   | Required | Description                                   |
+| ----------- | ------ | -------- | --------------------------------------------- |
+| `job_uuid`  | string | Yes      | UUID of the job to attach the notification to |
+| `detail`    | string | Yes      | Short notification message (max length 256)   |
+| `timestamp` | string | No       | ISO 8601 timestamp (defaults to current time) |
+
+### Constraints
+
+- Maximum 1000 notifications per request
+- Maximum 100 notifications per job
+- `detail` must not be empty and cannot exceed 256 characters
+- `timestamp` cannot be in the future or before job creation time
+- Notifications cannot be sent for jobs that finished more than 300 seconds ago
+
+```bash
+curl -H "Authorization: Token $BUILDKITE_CLUSTER_TOKEN" \
+  -H "Content-Type: application/json" \
+  -X POST "https://agent.buildkite.com/v3/stacks/my-kubernetes-stack/notifications" \
+  -d '{
+    "notifications": [
+      {
+        "job_uuid": "01234567-89ab-cdef-0123-456789abcdef",
+        "detail": "Pod is starting up"
+      },
+      {
+        "job_uuid": "fedcba98-7654-3210-fedc-ba9876543210",
+        "detail": "Waiting for resources",
+        "timestamp": "2023-10-01T12:00:00.000Z"
+      }
+    ]
+  }'
+```
+
+Response example with partial success:
+
+```json
+{
+  "errors": [
+    {
+      "error": "detail is required",
+      "indexes": [2]
+    },
+    {
+      "error": "job stack notification count exceeded",
+      "indexes": [5]
+    }
+  ]
+}
+```
+
+Success response: `200 OK`
+
+The response includes an `errors` array. Each error object contains:
+
+- `error`: Description of the validation failure
+- `indexes`: Array of notification indexes (0-based) that failed with this error
+
+Valid notifications are created even if some fail validation. An empty `errors` array indicates all notifications were created successfully.
+
+## Rate limiting
+
+Each endpoint has an independent rate limit applied per stack (scoped to the combination of organization, cluster, and stack key). Rate limits use a one-second sliding window.
+
+Every response includes these headers:
+
+| Header | Description |
+| --- | --- |
+| `RateLimit-Scope` | The rate limit scope for this endpoint |
+| `RateLimit-Limit` | Maximum requests allowed per window |
+| `RateLimit-Remaining` | Requests remaining in the current window |
+| `RateLimit-Reset` | Seconds until the rate limit window resets |
+
+Default rate limits per endpoint:
+
+| Endpoint | Scope | Default limit (requests/second) |
+| --- | --- | --- |
+| List scheduled jobs | `list-scheduled-jobs` | 10 |
+| Reserve jobs | `batch-reserve` | 10 |
+| Get a job | `show-job` | 1,000 |
+| Get job states | `batch-load-job-states` | 20 |
+| Finish a job | `finish-job` | 100 |
+| Create stack notifications | `stack-notification` | 200 |
+| De-register | `default` | 10 |
+
+When the rate limit is exceeded, the API returns `429 Too Many Requests`:
+
+```json
+{
+  "message": "You have exceeded your API rate limit. Please wait 1 seconds before making more requests.",
+  "scope": "list-scheduled-jobs",
+  "limit": 10,
+  "current": 11,
+  "reset": 1
+}
+```
+
+## Error responses
+
+All error responses return a JSON object with a `message` field:
+
+```json
+{
+  "message": "Description of the error"
+}
+```
+
+Common error codes:
+
+| Status | Meaning |
+| --- | --- |
+| `400 Bad Request` | Invalid parameters (for example, `job_uuids` is not an array or `limit` is not a positive integer) |
+| `401 Unauthorized` | Missing, invalid, or expired token |
+| `403 Forbidden` | Stack limit exceeded for the organization |
+| `404 Not Found` | Stack, job, or self-hosted queue not found |
+| `422 Unprocessable Entity` | Validation failure (for example, missing required fields during registration) |
+| `429 Too Many Requests` | Rate limit exceeded |
+| `503 Service Unavailable` | Organization is temporarily unavailable |

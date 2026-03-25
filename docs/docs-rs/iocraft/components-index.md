@@ -1,0 +1,8 @@
+iocraft
+# Module components 
+Source 
+## Structs§
+BorderCharactersThe characters used to render a custom border for a `View`.Button`Button` is a component that invokes a handler when clicked or when the Enter or Space key is pressed while it has focus.ButtonPropsThe props which can be passed to the `Button` component.ContextProvider`ContextProvider` is a component that provides a context to its children.ContextProviderPropsThe props which can be passed to the `ContextProvider` component.Fragment`Fragment` is a component which allows you to group elements without impacting the resulting
+layout.FragmentPropsThe props which can be passed to the `Fragment` component.MixedText`MixedText` is a component that renders a text string containing a mix of styles.MixedTextContentA section of text in a `MixedText` component.MixedTextPropsThe props which can be passed to the `MixedText` component.Text`Text` is a component that renders a text string.TextInput`TextInput` is a component that can receive text input from the user.TextInputHandleA handle which can be used for imperative control of a `TextInput` component.TextInputPropsThe props which can be passed to the `TextInput` component.TextPropsThe props which can be passed to the `Text` component.View`View` is your most fundamental building block for laying out and styling components.ViewPropsThe props which can be passed to the `View` component.
+## Enums§
+BorderStyleA border style which can be applied to a `View`.TextAlignThe text alignment of a `Text` component.TextDecorationThe text decoration of a `Text` component.TextWrapThe text wrapping behavior of a `Text` component.

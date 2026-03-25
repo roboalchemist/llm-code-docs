@@ -1,0 +1,94 @@
+# Source: https://docs.snowflake.com/en/sql-reference/sql/alter-database-role.md
+
+# ALTER DATABASE ROLE
+
+Modifies the properties for an existing database role.
+
+Currently, the only supported operations are renaming a database role or adding/overwriting/removing a comment for a database role.
+
+See also:
+:   [CREATE DATABASE ROLE](create-database-role.md) , [DROP DATABASE ROLE](drop-database-role.md) , [SHOW DATABASE ROLES](show-database-roles.md)
+
+## Syntax
+
+```sqlsyntax
+ALTER DATABASE ROLE [ IF EXISTS ] <name> RENAME TO <new_name>
+
+ALTER DATABASE ROLE [ IF EXISTS ] <name> SET COMMENT = '<string_literal>'
+
+ALTER DATABASE ROLE [ IF EXISTS ] <name> UNSET COMMENT
+
+ALTER DATABASE ROLE [ IF EXISTS ] <name> SET TAG <tag_name> = '<tag_value>' [ , <tag_name> = '<tag_value>' ... ]
+
+ALTER DATABASE ROLE [ IF EXISTS ] <name> UNSET TAG <tag_name> [ , <tag_name> ... ]
+```
+
+## Parameters
+
+`name`
+:   Specifies the identifier (i.e. name) for the database role; must be unique in the database in which the role is created.
+
+    The identifier must start with an alphabetic character and cannot contain spaces or special characters unless the entire identifier
+    string is enclosed in double quotes (e.g. `"My object"`). Identifiers enclosed in double quotes are also case-sensitive.
+
+    If the identifier is not fully qualified in the form of `db_name.database_role_name`, the command looks for the database role
+    in the current database for the session.
+
+`RENAME TO new_name`
+:   Specifies the new identifier for the database role; must be unique for your account.
+
+    For more details, see [Identifier requirements](../identifiers-syntax.md).
+
+    Note that when specifying the fully-qualified name of the database role, you cannot specify a different database. The name of
+    the database, `db_name`, must remain the same. Only the `database_role_name` can change during a rename operation.
+
+`SET ...`
+:   Specifies the properties to set for the database role:
+
+    `COMMENT = 'string_literal'`
+    :   Adds a comment or overwrites an existing comment for the database role.
+
+    `TAG tag_name = 'tag_value' [ , tag_name = 'tag_value' , ... ]`
+    :   Specifies the [tag](../../user-guide/object-tagging/introduction.md) name and the tag string value.
+
+        The tag value is always a string, and the maximum number of characters for the tag value is 256.
+
+        For information about specifying tags in a statement, see [Tag quotas](../../user-guide/object-tagging/introduction.md).
+
+`UNSET ...`
+:   Specifies the properties to unset for the database role, which resets them to the defaults.
+
+    * `COMMENT`
+    * `TAG tag_name [ , tag_name ... ]`
+
+## Access control privileges
+
+A [role](../../user-guide/security-access-control-overview.md) used to execute this operation must have the following
+[privileges](../../user-guide/security-access-control-overview.md) at a minimum:
+
+| Privilege | Object | Notes |
+| --- | --- | --- |
+| OWNERSHIP | Database role | Only the database role owner (i.e. the database role with the OWNERSHIP privilege on the database role), or a higher role, can execute this command.  The owner role does not inherit any permissions granted to the owned database role. To inherit permissions from a database role, that database role must be granted to another role, creating a parent-child relationship in a role hierarchy. |
+| APPLY | Tag | Enables setting a tag on a database role. |
+
+## Usage notes
+
+Regarding metadata:
+
+> > **Attention:**
+> >
+> > Customers should ensure that no personal data (other than for a User object), sensitive data, export-controlled data, or other regulated data is entered as metadata when using the Snowflake service. For more information, see [Metadata fields in Snowflake](../metadata.md).
+
+## Examples
+
+Rename database role `dr1` to `dbr2` in database `d1`:
+
+> ```sqlexample
+> ALTER DATABASE ROLE d1.dr1 RENAME TO d1.dbr2;
+> ```
+
+Add a comment for database role `d1.dbr2`:
+
+> ```sqlexample
+> ALTER DATABASE ROLE d1.dbr2 SET COMMENT = 'New comment for database role';
+> ```

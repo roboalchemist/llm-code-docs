@@ -1,0 +1,176 @@
+# Source: https://docs.wandb.ai/weave/guides/integrations/instructor.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.wandb.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Instructor
+
+> Trace structured data extraction from LLMs with Weave's Instructor integration, capturing Pydantic validation and retry logic.
+
+<a target="_blank" href="https://colab.research.google.com/github/wandb/examples/blob/master/weave/docs/quickstart_instructor.ipynb" aria-label="Open in Google Colab">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab" />
+</a>
+
+[Instructor](https://python.useinstructor.com/) is a lightweight library that makes it easy to get structured data like JSON from LLMs.
+
+## Tracing
+
+It’s important to store traces of language model applications in a central location, both during development and in production. These traces can be useful for debugging, and as a dataset that will help you improve your application.
+
+Weave will automatically capture traces for [Instructor](https://python.useinstructor.com/). To start tracking, calling `weave.init(project_name="<YOUR-WANDB-PROJECT-NAME>")` and use the library as normal.
+
+```python lines theme={null}
+import instructor
+import weave
+from pydantic import BaseModel
+from openai import OpenAI
+
+
+# Define your desired output structure
+class UserInfo(BaseModel):
+    user_name: str
+    age: int
+
+# Initialize Weave
+weave.init(project_name="instructor-test")
+
+# Patch the OpenAI client
+client = instructor.from_openai(OpenAI())
+
+# Extract structured data from natural language
+user_info = client.chat.completions.create(
+    model="gpt-3.5-turbo",
+    response_model=UserInfo,
+    messages=[{"role": "user", "content": "John Doe is 30 years old."}],
+)
+```
+
+| <img src="https://mintcdn.com/wb-21fd5541/S0cRiDzxeODX77LU/weave/guides/integrations/imgs/instructor/instructor_lm_trace.gif?s=d827147d688205eeafb140b59c2df5b2" alt="Instructor LM trace in Weave with structured output extraction workflow" width="2880" height="1512" data-path="weave/guides/integrations/imgs/instructor/instructor_lm_trace.gif" /> |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Weave will now track and log all LLM calls made using Instructor. You can view the traces in the Weave web interface.                                                                                                                                                                                                                                                                                                                   |
+
+## Track your own ops
+
+Wrapping a function with `@weave.op` starts capturing inputs, outputs and app logic so you can debug how data flows through your app. You can deeply nest ops and build a tree of functions that you want to track. This also starts automatically versioning code as you experiment to capture ad-hoc details that haven't been committed to git.
+
+Simply create a function decorated with [`@weave.op`](/weave/guides/tracking/ops).
+
+In the example below, we have the function `extract_person` which is the metric function wrapped with `@weave.op`. This helps us see how intermediate steps, such as OpenAI chat completion call.
+
+```python lines theme={null}
+import instructor
+import weave
+from openai import OpenAI
+from pydantic import BaseModel
+
+
+# Define your desired output structure
+class Person(BaseModel):
+    person_name: str
+    age: int
+
+
+# Initialize Weave
+weave.init(project_name="instructor-test")
+
+# Patch the OpenAI client
+lm_client = instructor.from_openai(OpenAI())
+
+
+# Extract structured data from natural language
+@weave.op()
+def extract_person(text: str) -> Person:
+    return lm_client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "user", "content": text},
+        ],
+        response_model=Person,
+    )
+
+
+person = extract_person("My name is John and I am 20 years old")
+```
+
+| <img src="https://mintcdn.com/wb-21fd5541/S0cRiDzxeODX77LU/weave/guides/integrations/imgs/instructor/instructor_op_trace.png?fit=max&auto=format&n=S0cRiDzxeODX77LU&q=85&s=09552c82f59e6d2276702950a8beef37" alt="Instructor op trace with structured objects, function inputs, outputs, and Pydantic model validation" width="2880" height="1514" data-path="weave/guides/integrations/imgs/instructor/instructor_op_trace.png" /> |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Decorating the `extract_person` function with `@weave.op` traces its inputs, outputs, and all internal LM calls made inside the function. Weave also automatically tracks and versions the structured objects generated by Instructor.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+
+## Create a `Model` for easier experimentation
+
+Organizing experimentation is difficult when there are many moving pieces. By using the [`Model`](../core-types/models) class, you can capture and organize the experimental details of your app like your system prompt or the model you're using. This helps organize and compare different iterations of your app.
+
+In addition to versioning code and capturing inputs/outputs, [`Model`](../core-types/models)s capture structured parameters that control your application’s behavior, making it easy to find what parameters worked best. You can also use Weave Models with `serve` (see below), and [`Evaluation`](../core-types/evaluations)s.
+
+In the example below, you can experiment with `PersonExtractor`. Every time you change one of these, you'll get a new *version* of `PersonExtractor`.
+
+```python lines theme={null}
+import asyncio
+from typing import List, Iterable
+
+import instructor
+import weave
+from openai import AsyncOpenAI
+from pydantic import BaseModel
+
+
+# Define your desired output structure
+class Person(BaseModel):
+    person_name: str
+    age: int
+
+
+# Initialize Weave
+weave.init(project_name="instructor-test")
+
+# Patch the OpenAI client
+lm_client = instructor.from_openai(AsyncOpenAI())
+
+
+class PersonExtractor(weave.Model):
+    openai_model: str
+    max_retries: int
+
+    @weave.op()
+    async def predict(self, text: str) -> List[Person]:
+        model = await lm_client.chat.completions.create(
+            model=self.openai_model,
+            response_model=Iterable[Person],
+            max_retries=self.max_retries,
+            stream=True,
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You are a perfect entity extraction system",
+                },
+                {
+                    "role": "user",
+                    "content": f"Extract `{text}`",
+                },
+            ],
+        )
+        return [m async for m in model]
+
+
+model = PersonExtractor(openai_model="gpt-4", max_retries=2)
+asyncio.run(model.predict("John is 30 years old"))
+```
+
+| <img src="https://mintcdn.com/wb-21fd5541/S0cRiDzxeODX77LU/weave/guides/integrations/imgs/instructor/instructor_weave_model.png?fit=max&auto=format&n=S0cRiDzxeODX77LU&q=85&s=3a0ef6045c7dc9796cb7cd04cc713cd7" alt="Instructor Weave Model tracing and versioning interface with model versions and trace history" width="1490" height="1422" data-path="weave/guides/integrations/imgs/instructor/instructor_weave_model.png" /> |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tracing and versioning your calls using a [`Model`](../core-types/models)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+
+## Serving a Weave Model
+
+Given a weave reference a `weave.Model` object, you can spin up a fastapi server and [`serve`](https://docs.wandb.ai/weave/guides/tools/serve) it.
+
+| [<img src="https://mintcdn.com/wb-21fd5541/S0cRiDzxeODX77LU/weave/guides/integrations/imgs/instructor/instructor_serve.png?fit=max&auto=format&n=S0cRiDzxeODX77LU&q=85&s=d41e3c4dea4f295e1a581c44a3b68167" alt="Instructor serve interface with FastAPI server configuration and model serving options" width="2880" height="1514" data-path="weave/guides/integrations/imgs/instructor/instructor_serve.png" />](https://wandb.ai/geekyrakshit/instructor-test/weave/objects/PersonExtractor/versions/xXpMsJvaiTOjKafz1TnHC8wMgH5ZAAwYOaBMvHuLArI) |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| You can find the weave reference of any `weave.Model` by navigating to the model and copying it from the UI.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+
+You can serve your model by using the following command in the terminal:
+
+```shell  theme={null}
+weave serve weave://your_entity/project-name/YourModel:<hash>
+```

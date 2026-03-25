@@ -1,0 +1,68 @@
+# Source: https://docs.snowflake.com/en/sql-reference/sql/grant-role.md
+
+# GRANT ROLE
+
+Assigns a role to a user or another role:
+
+* Granting a role to another role creates a “parent-child” relationship between the roles (also referred to as a *role hierarchy*).
+* Granting a role to a user enables the user to perform all operations allowed by the role (through the access privileges granted to the role).
+
+For more details, see [Overview of Access Control](../../user-guide/security-access-control-overview.md).
+
+See also:
+:   [REVOKE ROLE](revoke-role.md)
+
+    [GRANT DATABASE ROLE](grant-database-role.md) , [REVOKE DATABASE ROLE](revoke-database-role.md)
+
+    [GRANT <privileges> … TO ROLE](grant-privilege.md)
+
+## Syntax
+
+```sqlsyntax
+GRANT ROLE <name> TO { ROLE <parent_role_name> | USER <user_name> }
+```
+
+## Parameters
+
+`name`
+:   Specifies the identifier for the role to grant. If the identifier contains spaces or special characters, the entire string must be
+    enclosed in double quotes. Identifiers enclosed in double quotes are also case-sensitive.
+
+`ROLE parent_role_name`
+:   Grants the role to the specified role.
+
+`USER user_name`
+:   Grants the role to the specified user.
+
+## Access control requirements
+
+A [role](../../user-guide/security-access-control-overview.md) used to execute this operation must have the following
+[privileges](../../user-guide/security-access-control-overview.md) at a minimum:
+
+| Privilege | Object | Notes |
+| --- | --- | --- |
+| OWNERSHIP | Role | Role that is granted to a user or another role. |
+
+Alternatively, use a role with the global MANAGE GRANTS privilege. Only the SECURITYADMIN role, or a higher role, has this privilege by default. The privilege can be granted to additional roles as needed.
+
+Operating on an object in a schema requires at least one privilege on the parent database and at least one privilege on the parent schema.
+
+For instructions on creating a custom role with a specified set of privileges, see [Creating custom roles](../../user-guide/security-access-control-configure.md).
+
+For general information about roles and privilege grants for performing SQL actions on
+[securable objects](../../user-guide/security-access-control-overview.md), see [Overview of Access Control](../../user-guide/security-access-control-overview.md).
+
+## Usage notes
+
+* The system-defined roles, including PUBLIC, do not need to be granted to other roles because the role hierarchy for these roles is
+  defined and maintained by Snowflake.
+
+## Examples
+
+```sqlexample
+GRANT ROLE analyst TO ROLE SYSADMIN;
+```
+
+```sqlexample
+GRANT ROLE analyst TO USER user1;
+```

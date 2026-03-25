@@ -1,0 +1,115 @@
+# Module: Jekyll::Errors
+  
+    Defined in:
+    lib/jekyll/errors.rb
+  
+  
+
+  
+    
+##
+
+      Constant Summary
+      collapse
+    
+
+    
+      
+        FatalException =
+          
+        
+        
+
+```
+Class.new(::RuntimeError)
+```
+
+        InvalidThemeName =
+          
+        
+        
+
+```
+Class.new(FatalException)
+```
+
+        DropMutationException =
+          
+        
+        
+
+```
+Class.new(FatalException)
+```
+
+        InvalidPermalinkError =
+          
+        
+        
+
+```
+Class.new(FatalException)
+```
+
+        InvalidYAMLFrontMatterError =
+          
+        
+        
+
+```
+Class.new(FatalException)
+```
+
+        MissingDependencyException =
+          
+        
+        
+
+```
+Class.new(FatalException)
+```
+
+        InvalidDateError =
+          
+        
+        
+
+```
+Class.new(FatalException)
+```
+
+        InvalidPostNameError =
+          
+        
+        
+
+```
+Class.new(FatalException)
+```
+
+        PostURLError =
+          
+        
+        
+
+```
+Class.new(FatalException)
+```
+
+        InvalidURLError =
+          
+        
+        
+
+```
+Class.new(FatalException)
+```
+
+        InvalidConfigurationError =
+          
+        
+        
+
+```
+Class.new(FatalException)
+```

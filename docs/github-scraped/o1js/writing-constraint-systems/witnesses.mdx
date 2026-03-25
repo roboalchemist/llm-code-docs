@@ -1,0 +1,24 @@
+---
+title: Witnesses
+---
+
+import CodeBlock from '@theme/CodeBlock';
+
+In a constraint system, a witness is kind of like a blank space that is purposefully left to be filled in by the prover. The size
+and shape of a witness must be known at compile time, but the value does not need to be known until the 
+prover generates a proof.
+
+Witnesses are useful because they allow you to "witness in" arbitrary data into a proof.  A classic use case is to compute square
+root.  It is trivial to prove that `x * x = y`, and it is not trivial to prove that `x = sqrt(y)`.  Using a witness, we can use
+the triviality of multiplication to prove square root.
+
+:::info
+Another way to think about witnesses is to think of the math expression "there exists...such that ...".  For instance, "there 
+exists a number x such that x * x = y".  The witness is the value of x, the constraints added to the circuit are the "such that" 
+part.
+
+Fun fact: Witness is referred to as `exists` internally.
+:::
+
+```ts file=../snippets/witnesses/witnesses.ts start=start_sqrt end=end_sqrt
+```

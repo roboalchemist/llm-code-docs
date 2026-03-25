@@ -1,0 +1,88 @@
+# Source: https://docs.prefect.io/integrations/prefect-databricks/api-ref/prefect_databricks-credentials.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.prefect.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# credentials
+
+# `prefect_databricks.credentials`
+
+Credential classes used to perform authenticated interactions with Databricks
+
+## Classes
+
+### `DatabricksCredentials` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/integrations/prefect-databricks/prefect_databricks/credentials.py#L13" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+Block used to manage Databricks authentication.
+
+Supports two authentication methods:
+
+1. Personal Access Token (PAT): Provide a `token` field.
+2. Service Principal (OAuth 2.0): Provide `client_id`, `client_secret`,
+   and optionally `tenant_id` for Azure Databricks.
+
+**Attributes:**
+
+* `databricks_instance`:
+  Databricks instance used in formatting the endpoint URL.
+* `token`: The token to authenticate with Databricks (for PAT authentication).
+* `client_id`: The service principal client ID (for OAuth authentication).
+* `client_secret`: The service principal client secret (for OAuth authentication).
+* `tenant_id`: The tenant ID for Azure Databricks (optional, for OAuth authentication).
+* `client_kwargs`: Additional keyword arguments to pass to AsyncClient.
+
+**Examples:**
+
+Load stored Databricks credentials using PAT:
+
+```python  theme={null}
+from prefect_databricks import DatabricksCredentials
+
+databricks_credentials_block = DatabricksCredentials.load("BLOCK_NAME")
+```
+
+Using service principal authentication:
+
+```python  theme={null}
+from prefect_databricks import DatabricksCredentials
+
+credentials = DatabricksCredentials(
+    databricks_instance="dbc-abc123-def4.cloud.databricks.com",
+    client_id="my-client-id",
+    client_secret="my-client-secret",
+)
+client = credentials.get_client()
+```
+
+**Methods:**
+
+#### `get_client` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/integrations/prefect-databricks/prefect_databricks/credentials.py#L211" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+get_client(self) -> AsyncClient
+```
+
+Gets a Databricks REST AsyncClient.
+
+**Returns:**
+
+* A Databricks REST AsyncClient.
+
+#### `validate_auth_method` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/integrations/prefect-databricks/prefect_databricks/credentials.py#L95" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+validate_auth_method(cls, values: Dict[str, Any]) -> Dict[str, Any]
+```
+
+Validates that either PAT or service principal authentication is configured,
+but not both.
+
+Valid configurations:
+
+1. token only (PAT authentication)
+2. client\_id + client\_secret (service principal authentication)
+3. client\_id + client\_secret + tenant\_id (Azure service principal authentication)
+
+
+Built with [Mintlify](https://mintlify.com).
