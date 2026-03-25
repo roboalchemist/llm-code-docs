@@ -1,8 +1,8 @@
-# Source: https://developer.apple.com/documentation/coredata/adopting-swiftdata-for-a-core-data-app
+# Source: https://developer.apple.com/documentation/CoreData/adopting-swiftdata-for-a-core-data-app
 
 Title: Adopting SwiftData for a Core Data app | Apple Developer Documentation
 
-URL Source: https://developer.apple.com/documentation/coredata/adopting-swiftdata-for-a-core-data-app
+URL Source: https://developer.apple.com/documentation/CoreData/adopting-swiftdata-for-a-core-data-app
 
 Markdown Content:
 [Overview](https://developer.apple.com/documentation/coredata/adopting-swiftdata-for-a-core-data-app#Overview)
