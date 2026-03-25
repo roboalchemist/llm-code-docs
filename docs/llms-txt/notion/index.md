@@ -1,9 +1,3 @@
-# Source: https://developers.notion.com/index.md
-
-> ## Documentation Index
-> Fetch the complete documentation index at: https://developers.notion.com/llms.txt
-> Use this file to discover all available pages before exploring further.
-
 # Notion Docs
 
 <div className="w-full">
@@ -94,8 +88,8 @@
       </h2>
 
       <Columns cols={3}>
-        <Card title="Twitter" icon="twitter" href="http://twitter.com/notionapi" cta="Follow @NotionAPI" color="#0076d7">
-          Spend more time on Twitter than your inbox? Us, too.
+        <Card title="X" icon="x-twitter" href="https://x.com/notiondevs" cta="Follow @NotionDevs" color="#0076d7">
+          Spend more time on X than your inbox? Us, too.
         </Card>
 
         <Card title="Slack community" icon="slack" href="https://join.slack.com/t/notiondevs/shared_invite/zt-20b5996xv-DzJdLiympy6jP0GGzu3AMg" cta="Join here" color="#0076d7">
@@ -117,7 +111,7 @@
             Getting help
           </h2>
 
-          <img src="https://mintcdn.com/notion-demo/qE9HHY8GzmjU_nTE/images/getting-help.png?fit=max&auto=format&n=qE9HHY8GzmjU_nTE&q=85&s=d97acb17dfc03f63521abbb62dcd18a9" alt="Paper Airplane" className="block w-[160px] max-w-[160px] h-auto shrink-0 mr-6 mb-2 -mt-[1.2rem]" data-og-width="494" width="494" data-og-height="284" height="284" data-path="images/getting-help.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/notion-demo/qE9HHY8GzmjU_nTE/images/getting-help.png?w=280&fit=max&auto=format&n=qE9HHY8GzmjU_nTE&q=85&s=738e805f723bc484f11777a962391ddb 280w, https://mintcdn.com/notion-demo/qE9HHY8GzmjU_nTE/images/getting-help.png?w=560&fit=max&auto=format&n=qE9HHY8GzmjU_nTE&q=85&s=edbe2c44e9f1d9cae2aae13e8549f5c7 560w, https://mintcdn.com/notion-demo/qE9HHY8GzmjU_nTE/images/getting-help.png?w=840&fit=max&auto=format&n=qE9HHY8GzmjU_nTE&q=85&s=33082690972777248fa2e4b59f1295e0 840w, https://mintcdn.com/notion-demo/qE9HHY8GzmjU_nTE/images/getting-help.png?w=1100&fit=max&auto=format&n=qE9HHY8GzmjU_nTE&q=85&s=098fc05de4e3d3c228b4827c9b9adb0f 1100w, https://mintcdn.com/notion-demo/qE9HHY8GzmjU_nTE/images/getting-help.png?w=1650&fit=max&auto=format&n=qE9HHY8GzmjU_nTE&q=85&s=099e5f09e831023d30781631cad1b018 1650w, https://mintcdn.com/notion-demo/qE9HHY8GzmjU_nTE/images/getting-help.png?w=2500&fit=max&auto=format&n=qE9HHY8GzmjU_nTE&q=85&s=7aa5b60fd128060a8e96db7de1e57a35 2500w" />
+          <img src="https://mintcdn.com/notion-demo/qE9HHY8GzmjU_nTE/images/getting-help.png?fit=max&auto=format&n=qE9HHY8GzmjU_nTE&q=85&s=d97acb17dfc03f63521abbb62dcd18a9" alt="Paper Airplane" className="block w-[160px] max-w-[160px] h-auto shrink-0 mr-6 mb-2 -mt-[1.2rem]" width="494" height="284" data-path="images/getting-help.png" />
         </div>
 
         <div className="flex flex-col md:flex-row justify-start items-start w-full gap-8 mt-2">
@@ -126,7 +120,7 @@
 
             <div className="flex flex-col gap-0.5">
               <a href="/page/frequently-asked-questions" className="text-[#0076d7] hover:underline text-sm">Frequently asked questions</a>
-              <a href="https://www.postman.com/notionhq/workspace/notion-s-api-workspace" className="text-[#0076d7] hover:underline text-sm">Postman collection ↗</a>
+              <a href="https://www.postman.com/notionhq/notion-s-api-workspace/collection/52041987-03f70d8f-b6e5-4306-805c-f95f7cdf05b9" className="text-[#0076d7] hover:underline text-sm">Postman collection ↗</a>
             </div>
           </div>
 
@@ -153,12 +147,12 @@
     <div className="flex md:flex-row border-t pt-16 flex-col gap-8">
       <div className="md:w-1/2 flex flex-col gap-2">
         <div className="w-24 h-12 flex items-center justify-start">
-          <img src="https://mintcdn.com/notion-demo/HziG1tsRag-JnzSL/logo/footer-logo.svg?fit=max&auto=format&n=HziG1tsRag-JnzSL&q=85&s=8dba8587135f27d0163914714603c334" alt="Footer Logo" className="w-20 h-20 object-contain" data-og-width="87" width="87" data-og-height="30" height="30" data-path="logo/footer-logo.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/notion-demo/HziG1tsRag-JnzSL/logo/footer-logo.svg?w=280&fit=max&auto=format&n=HziG1tsRag-JnzSL&q=85&s=0acec9d967c8c18e724091675810902d 280w, https://mintcdn.com/notion-demo/HziG1tsRag-JnzSL/logo/footer-logo.svg?w=560&fit=max&auto=format&n=HziG1tsRag-JnzSL&q=85&s=9e3eff8acaef7d361aba9983fcaa4667 560w, https://mintcdn.com/notion-demo/HziG1tsRag-JnzSL/logo/footer-logo.svg?w=840&fit=max&auto=format&n=HziG1tsRag-JnzSL&q=85&s=2b6485f6c0d12de44b52bc5e72c20b3d 840w, https://mintcdn.com/notion-demo/HziG1tsRag-JnzSL/logo/footer-logo.svg?w=1100&fit=max&auto=format&n=HziG1tsRag-JnzSL&q=85&s=32498fb9c58620e77b57c6162b114364 1100w, https://mintcdn.com/notion-demo/HziG1tsRag-JnzSL/logo/footer-logo.svg?w=1650&fit=max&auto=format&n=HziG1tsRag-JnzSL&q=85&s=deb25b5fb032d39b50826ec2dfb2db0c 1650w, https://mintcdn.com/notion-demo/HziG1tsRag-JnzSL/logo/footer-logo.svg?w=2500&fit=max&auto=format&n=HziG1tsRag-JnzSL&q=85&s=be1383f1132aa2f2d585c86d36b17de3 2500w" />
+          <img src="https://mintcdn.com/notion-demo/gxhrU3D49w5WpEjL/logo/footer-logo.svg?fit=max&auto=format&n=gxhrU3D49w5WpEjL&q=85&s=79af88650ca3f5302c7f32057450c3a9" alt="Footer Logo" className="w-20 h-20 object-contain" width="87" height="30" data-path="logo/footer-logo.svg" />
         </div>
 
-        The all-in-one workspace for your notes, tasks, wikis, and databases.
+        The connected workspace where better, faster work happens.
 
-        Follow us on social media: <span className="text-[#0076d7] hover:underline">[@NotionAPI](https://x.com/notionapi)</span>
+        Follow us on social media: <span className="text-[#0076d7] hover:underline">[@NotionDevs](https://x.com/notiondevs)</span>
 
         © {new Date().getFullYear()} Notion Labs, Inc.
 
@@ -207,9 +201,11 @@
 
           [Stack Overflow](https://stackoverflow.com/questions/tagged/notion-api)
 
-          [X (formerly Twitter)](https://x.com/notionapi)
+          [X (formerly Twitter)](https://x.com/notiondevs)
         </div>
       </div>
     </div>
   </div>
 </div>
+
+Built with [Mintlify](https://mintlify.com)
