@@ -390,6 +390,13 @@ repositories:
   source_folder: docs/en
   target_folder: docs/github-scraped/mineru
   branch: master
+- name: Milkdown
+  description: Milkdown - A lightweight, customizable markdown editor with a powerful
+    plugin system, real-time collaboration support, and comprehensive API documentation
+  repo_url: https://github.com/Milkdown/milkdown.git
+  source_folder: docs
+  target_folder: docs/github-scraped/milkdown
+  branch: main
 - name: Milvus
   description: Milvus - Open source vector database for AI applications
   repo_url: https://github.com/milvus-io/milvus-docs.git
