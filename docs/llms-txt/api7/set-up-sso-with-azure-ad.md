@@ -37,9 +37,9 @@ Navigate back to the **Overview** tab and find **Directory (tenant) ID** and **A
 
 ```
 # replace with your values
-export TENANT_ID=dcbd8da3-e0b3-486c-9212-08a199dc3451
-export CLIENT_ID=e0951842-d546-4c63-9e9e-d33a527673de 
-export CLIENT_SECRET=wSY8Q~x4z2Tn6Rq5lA4NTtZ6GLBMGvZF_R2LEcPx 
+export TENANT_ID=00000000-0000-0000-0000-000000000000
+export CLIENT_ID=00000000-0000-0000-0000-example-id11 
+export CLIENT_SECRET=REDACTED-AZURE-CLIENT-SECRET-EXAMPLE 
 ```
 
 ## Configure APISIX[â](#configure-apisix "Direct link to Configure APISIX")
@@ -105,9 +105,9 @@ services:
         name: auth-with-oidc
         plugins:
           openid-connect:
-            client_id: 'e0951842-d546-4c63-9e9e-d33a527673de'
-            client_secret: 'wSY8Q~x4z2Tn6Rq5lA4NTtZ6GLBMGvZF_R2LEcPx'
-            discovery: 'https://login.microsoftonline.com/dcbd8da3-e0b3-486c-9212-08a199dc3451/v2.0/.well-known/openid-configuration'
+            client_id: '00000000-0000-0000-0000-example-id11'
+            client_secret: 'REDACTED-AZURE-CLIENT-SECRET-EXAMPLE'
+            discovery: 'https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/.well-known/openid-configuration'
             scope: 'openid'
             redirect_uri: 'http://localhost:9080/anything/callback'
             bearer_only: false
@@ -216,9 +216,9 @@ services:
         plugins:
           openid-connect:
             use_jwks: true
-            client_id: 'e0951842-d546-4c63-9e9e-d33a527673de'
-            client_secret: 'wSY8Q~x4z2Tn6Rq5lA4NTtZ6GLBMGvZF_R2LEcPx'
-            discovery: 'https://login.microsoftonline.com/dcbd8da3-e0b3-486c-9212-08a199dc3451/v2.0/.well-known/openid-configuration'
+            client_id: '00000000-0000-0000-0000-example-id11'
+            client_secret: 'REDACTED-AZURE-CLIENT-SECRET-EXAMPLE'
+            discovery: 'https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/.well-known/openid-configuration'
             scope: 'openid'
             redirect_uri: 'http://localhost:9080/anything/callback'
             bearer_only: false

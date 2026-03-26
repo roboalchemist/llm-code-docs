@@ -43,8 +43,8 @@ Configure AWS Secrets Manager to be a secret provider for `john` and specify the
 curl "http://127.0.0.1:9180/apisix/admin/secrets/aws/john" -X PUT -d '
 {
   "region": "ap-southeast-2",
-  "access_key_id": "AKIARK7HKSJVWAIKFOXR",
-  "secret_access_key": "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"
+  "access_key_id": "AKIAIOSFODNN7EXAMPLE",
+  "secret_access_key": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
 }'
 ```
 

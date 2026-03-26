@@ -29,8 +29,8 @@ You can optionally save these information to environment variables:
 export OPENAI_API_KEY=sk-REDACTED-EXAMPLE-KEY
 export ALIYUN_ENDPOINT=https://green-cip.cn-shanghai.aliyuncs.com
 export ALIYUN_REGION_ID=cn-shanghai
-export ALIYUN_ACCESS_KEY_ID=LTAI5yXKZP77gR3BQQM9WJnA
-export ALIYUN_ACCESS_KEY_SECRET=hT2YpkqLs9FIjh3dyznBw7RMux5OKv
+export ALIYUN_ACCESS_KEY_ID=LTAI5-REDACTED-EXAMPLE
+export ALIYUN_ACCESS_KEY_SECRET=REDACTED-ALIYUN-SECRET
 ```
 
 ### Moderate Request Content Toxicity[â](#moderate-request-content-toxicity "Direct link to Moderate Request Content Toxicity")
@@ -131,8 +131,8 @@ spec:
       config:
         endpoint: "https://green-cip.cn-shanghai.aliyuncs.com"
         region_id: "cn-shanghai"
-        access_key_id: "LTAI5yXKZP77gR3BQQM9WJnA"
-        access_key_secret: "hT2YpkqLs9FIjh3dyznBw7RMux5OKv"
+        access_key_id: "LTAI5-REDACTED-EXAMPLE"
+        access_key_secret: "REDACTED-ALIYUN-SECRET"
         deny_code: 400
         deny_message: "Request contains forbidden content, such as hate speech or violence."
     - name: ai-proxy
@@ -199,8 +199,8 @@ spec:
           config:
             endpoint: "https://green-cip.cn-shanghai.aliyuncs.com"
             region_id: "cn-shanghai"
-            access_key_id: "LTAI5yXKZP77gR3BQQM9WJnA"
-            access_key_secret: "hT2YpkqLs9FIjh3dyznBw7RMux5OKv"
+            access_key_id: "LTAI5-REDACTED-EXAMPLE"
+            access_key_secret: "REDACTED-ALIYUN-SECRET"
             deny_code: 400
             deny_message: "Request contains forbidden content, such as hate speech or violence."
         - name: ai-proxy
@@ -391,8 +391,8 @@ spec:
       config:
         endpoint: "https://green-cip.cn-shanghai.aliyuncs.com"
         region_id: "cn-shanghai"
-        access_key_id: "LTAI5yXKZP77gR3BQQM9WJnA"
-        access_key_secret: "hT2YpkqLs9FIjh3dyznBw7RMux5OKv"
+        access_key_id: "LTAI5-REDACTED-EXAMPLE"
+        access_key_secret: "REDACTED-ALIYUN-SECRET"
         deny_code: 400
         deny_message: "Request contains forbidden content, such as hate speech or violence."
         risk_level_bar: high
@@ -458,8 +458,8 @@ spec:
           config:
             endpoint: "https://green-cip.cn-shanghai.aliyuncs.com"
             region_id: "cn-shanghai"
-            access_key_id: "LTAI5yXKZP77gR3BQQM9WJnA"
-            access_key_secret: "hT2YpkqLs9FIjh3dyznBw7RMux5OKv"
+            access_key_id: "LTAI5-REDACTED-EXAMPLE"
+            access_key_secret: "REDACTED-ALIYUN-SECRET"
             deny_code: 400
             deny_message: "Request contains forbidden content, such as hate speech or violence."
             risk_level_bar: high

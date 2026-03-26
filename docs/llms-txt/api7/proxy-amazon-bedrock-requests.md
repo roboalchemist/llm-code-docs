@@ -156,7 +156,7 @@ curl "http://127.0.0.1:9180/apisix/admin/routes" -X PUT -d '
       "function_uri": "https://jbihqn4bfwewf4nfrz6typjmcvjh40iuamw.lambda-url.us-west-2.on.aws/",
       "authorization": {
         "iam": {
-          "accesskey": "AKIARK7HKSJVWCOIIMW6",
+          "accesskey": "AKIAIOSFODNN7EXAMPLE",
           "secretkey": "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",
           "aws_region": "us-west-2",
           "service": "lambda"
@@ -195,7 +195,7 @@ services:
             function_uri: 'https://jbihqn4bfwewf4nfrz6typjmcvjh40iuamw.lambda-url.us-west-2.on.aws/'
             authorization:
               iam:
-                accesskey: AKIARK7HKSJVWCOIIMW6
+                accesskey: AKIAIOSFODNN7EXAMPLE
                 secretkey: 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
                 aws_region: us-west-2
                 service: lambda
