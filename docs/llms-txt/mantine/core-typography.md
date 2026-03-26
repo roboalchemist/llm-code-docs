@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-typography.md
 
 # Typography
-
 Package: @mantine/core
 Import: import { Typography } from '@mantine/core';
 Description: Styles provider for html content
@@ -43,6 +42,7 @@ function Demo() {
 }
 ```
 
+
 ## All styles demo
 
 `Typography` includes styles for:
@@ -70,10 +70,13 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
+
 
 #### Styles API
 

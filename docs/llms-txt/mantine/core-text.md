@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-text.md
 
 # Text
-
 Package: @mantine/core
 Import: import { Text } from '@mantine/core';
 Description: Display text
@@ -38,12 +37,12 @@ function Demo() {
 }
 ```
 
+
 <Gradient component="Text" />
 
 ## Gradient
 
 Text supports Mantine color format in color prop. Color can be specified as:
-
 - Mantine color name (e.g., 'blue')
 - CSS color value (e.g., '#fff', 'rgba(255, 255, 255, 0.8)')
 - Gradient string (e.g., 'linear-gradient(45deg, blue, red)')
@@ -67,6 +66,7 @@ function Demo() {
 }
 ```
 
+
 ## Truncate
 
 Set `truncate` prop to add `text-overflow: ellipsis` styles:
@@ -89,6 +89,7 @@ function Demo() {
 }
 ```
 
+
 ## Line clamp
 
 Specify maximum number of lines with `lineClamp` prop. This option uses [-webkit-line-clamp](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp)
@@ -107,6 +108,7 @@ function Demo() {
   );
 }
 ```
+
 
 Line clamp can also be used with any children (not only strings), for example with [Typography](https://mantine.dev/core/typography/):
 
@@ -133,6 +135,7 @@ function Demo() {
 }
 ```
 
+
 ## Inherit styles
 
 Text always applies font-size, font-family and line-height styles,
@@ -148,6 +151,7 @@ function Demo() {
   return <Title order={3}>Title in which you want to <Text span c="blue" inherit>highlight</Text> something</Title>;
 }
 ```
+
 
 <Polymorphic defaultElement="p" changeToElement="a" component="Text" />
 
@@ -186,6 +190,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -198,6 +203,7 @@ function Demo() {
 | size | MantineSize | (string & {}) | - | Controls <code>font-size</code> and <code>line-height</code> |
 | span | boolean | - | Shorthand for <code>component="span"</code> |
 | truncate | TextTruncate | - | Side on which Text must be truncated, if <code>true</code>, text is truncated from the start |
+
 
 #### Styles API
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/charts-scatter-chart.md
 
 # ScatterChart
-
 Package: @mantine/charts
 Import: import { ScatterChart } from '@mantine/charts';
 Description: Scatter chart component
@@ -67,6 +66,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Multiple series
 
@@ -164,6 +164,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Legend
 
@@ -265,6 +266,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Legend position
 
@@ -369,6 +371,7 @@ export const data = [
 ];
 ```
 
+
 ## X and Y axis props
 
 Use `xAxisProps` and `yAxisProps` to pass props down to recharts [XAxis](https://recharts.org/en-US/api/XAxis)
@@ -435,6 +438,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Value formatter
 
@@ -505,6 +509,7 @@ export const spendingsData = [
 ];
 ```
 
+
 ## Point labels
 
 Set `pointLabels` prop to `x` or `y` to display labels on data points for the
@@ -570,6 +575,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Grid and text colors
 
@@ -651,6 +657,7 @@ export const data = [
   },
 ];
 ```
+
 
 If your application has only one color scheme, you can use `gridColor` and `textColor`
 props instead of CSS variables:
@@ -739,6 +746,7 @@ export const data = [
 ];
 ```
 
+
 ## Units
 
 Set `unit` prop to render a unit label next to the axis ticks and tooltip values:
@@ -823,6 +831,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Custom tooltip
 
@@ -911,6 +920,7 @@ export const data = [
 ];
 ```
 
+
 ## Remove tooltip
 
 To remove tooltip, set `withTooltip={false}`. It also removes the cursor line
@@ -976,6 +986,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Tooltip animation
 
@@ -1043,6 +1054,7 @@ export const data = [
 ];
 ```
 
+
 ## Customize dots
 
 You can use any shape as a dot by passing props to recharts [Scatter](https://recharts.org/en-US/api/Scatter)
@@ -1108,6 +1120,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Reference lines
 
@@ -1224,7 +1237,6 @@ export const spendingsData = [
     ],
   },
 ];
-
 ```
 
 

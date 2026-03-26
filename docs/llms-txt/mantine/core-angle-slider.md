@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-angle-slider.md
 
 # AngleSlider
-
 Package: @mantine/core
 Import: import { AngleSlider } from '@mantine/core';
 Description: Pick angle value between 0 and 360
@@ -19,6 +18,7 @@ function Demo() {
   return <AngleSlider aria-label="Angle slider" />;
 }
 ```
+
 
 ## Controlled
 
@@ -48,6 +48,7 @@ function Demo() {
   return <AngleSlider aria-label="Angle slider" formatLabel={(value) => `${value}°`} />;
 }
 ```
+
 
 ## Marks
 
@@ -100,6 +101,7 @@ function Demo() {
 }
 ```
 
+
 ## onChangeEnd
 
 The `onChangeEnd` callback fires when the user stops dragging the slider or changes its value with the keyboard.
@@ -125,6 +127,7 @@ function Demo() {
 }
 ```
 
+
 ## disabled
 
 `disabled` prop disables the component and prevents user interaction:
@@ -138,6 +141,7 @@ function Demo() {
   return <AngleSlider aria-label="Angle slider" disabled />;
 }
 ```
+
 
 ## Accessibility
 
@@ -157,6 +161,9 @@ Keyboard interactions when the component is focused:
 
 `AngleSlider` is based on the [use-radial-move](https://mantine.dev/hooks/use-radial-move) hook.
 You can build a custom radial slider using this hook if you need more control over the component's behavior.
+
+
+
 
 #### Props
 
@@ -178,6 +185,7 @@ You can build a custom radial slider using this hook if you need more control ov
 | thumbSize | number | - | Size of the thumb in px. Calculated based on the <code>size</code> value by default. |
 | value | number | - | Controlled component value |
 | withLabel | boolean | - | If set, the label is displayed inside the slider |
+
 
 #### Styles API
 

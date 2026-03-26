@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/form-values.md
 
 # formValues
-
 Package: @mantine/form
 Import: import { FormValues } from '@mantine/form';
 
@@ -73,6 +72,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## setValues partial
 
@@ -149,6 +149,7 @@ function Demo() {
   );
 }
 ```
+
 
 Example with [TanStack Query](https://tanstack.com/query/latest) (react-query):
 
@@ -232,6 +233,7 @@ function Demo() {
 }
 ```
 
+
 ## setFieldValue handler
 
 `form.setFieldValue` handler allows to set value of the field at given path:
@@ -279,6 +281,7 @@ function Demo() {
 }
 ```
 
+
 ## reset handler
 
 `form.reset` handler sets values to `initialValues` and clear all errors:
@@ -321,6 +324,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## setInitialValues handler
 
@@ -423,6 +427,7 @@ function Demo() {
 }
 ```
 
+
 ## Get transformed values
 
 You can get transformed values outside of `form.onSubmit` method by calling `form.getTransformedValues`.
@@ -496,6 +501,7 @@ function Demo() {
 }
 ```
 
+
 ## form.watch
 
 `form.watch` is an effect function that allows subscribing to changes of a
@@ -529,6 +535,7 @@ function Demo() {
   );
 }
 ```
+
 
 Note that `form.watch` uses `useEffect` under the hood – all hooks rules apply.
 For example, you cannot use `form.watch` conditionally or inside loops.
@@ -602,6 +609,7 @@ function Watcher() {
   return <Code block>{JSON.stringify({ person, name }, null, 2)}</Code>
 }
 ```
+
 
 ## Get values type
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-rating.md
 
 # Rating
-
 Package: @mantine/core
 Import: import { Rating } from '@mantine/core';
 Description: Pick and display rating
@@ -17,6 +16,7 @@ function Demo() {
   return <Rating defaultValue={2} />
 }
 ```
+
 
 ## Controlled
 
@@ -41,6 +41,7 @@ function Demo() {
   return <Rating value={3.5} fractions={2} readOnly />;
 }
 ```
+
 
 ## Fractions
 
@@ -69,6 +70,7 @@ function Demo() {
 }
 ```
 
+
 ## Custom symbol
 
 #### Example: symbol
@@ -81,6 +83,7 @@ function Demo() {
   return <Rating emptySymbol={<IconSun size={16} />} fullSymbol={<IconMoon size={16} />} />;
 }
 ```
+
 
 ## Symbols for each item
 
@@ -143,6 +146,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -161,6 +166,7 @@ function Demo() {
 | readOnly | boolean | - | If set, the user cannot interact with the component |
 | size | number | MantineSize | (string & {}) | - | Controls component size |
 | value | number | - | Controlled component value |
+
 
 #### Styles API
 

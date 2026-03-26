@@ -89,6 +89,7 @@ function Demo() {
 }
 ```
 
+
 ## rtl mixin
 
 If you have [postcss-preset-mantine](https://mantine.dev/styles/postcss-preset) installed then you can use `rtl` mixin in `.css` files:
@@ -118,3 +119,4 @@ function Demo() {
   return <div className={classes.demo}>Demo</div>;
 }
 ```
+

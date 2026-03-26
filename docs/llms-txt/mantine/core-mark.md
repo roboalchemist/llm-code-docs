@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-mark.md
 
 # Mark
-
 Package: @mantine/core
 Import: import { Mark } from '@mantine/core';
 Description: Highlight part of the text
@@ -22,11 +21,14 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | color | MantineColor | - | Key of <code>theme.colors</code> or any valid CSS color |
+
 
 #### Styles API
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-merged-ref.md
 
 # useMergedRef
-
 Package: @mantine/hooks
 Import: import { UseMergedRef } from '@mantine/hooks';
 

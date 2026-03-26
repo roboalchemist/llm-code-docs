@@ -1,13 +1,14 @@
 # Source: https://mantine.dev/llms/hooks-use-toggle.md
 
 # useToggle
-
 Package: @mantine/hooks
 Import: import { UseToggle } from '@mantine/hooks';
 
 ## Usage
 
 `use-toggle` implements a common state pattern – it switches state between given values:
+
+
 
 ## API
 

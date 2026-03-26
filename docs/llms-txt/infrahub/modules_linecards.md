@@ -1,0 +1,249 @@
+# Source: https://docs.infrahub.app/schema-library/reference/modules_linecards.md
+
+# Modules Linecards
+
+This schema extension allows you to capture Linecard related information like the version. You can insert the Linecard into a Dcim Physical Device and leverage the Linecard type model. The Linecard can accept PIC to help configure PORT information like breakout-capabilities and configurations.
+
+## Details[​](#details "Direct link to Details")
+
+* **Dependencies:**
+
+  * [base](/schema-library/reference/dcim.md)
+  * [extensions/modules](/schema-library/reference/modules.md)
+
+## Nodes[​](#nodes "Direct link to Nodes")
+
+### LinecardType[​](#linecardtype "Direct link to LinecardType")
+
+* **Label:** Linecard Type
+* **Description:** Linecard Type information, detailing specifications such as part number and manufacturer.
+* **Namespace:** Device
+* **Icon:** mdi
+  <!-- -->
+  :poll
+* **Inherit From:** DeviceGenericModuleType
+
+#### Relationships[​](#relationships "Direct link to Relationships")
+
+| name      | peer           | optional | cardinality | kind    |
+| --------- | -------------- | -------- | ----------- | ------- |
+| linecards | DeviceLinecard |          | many        | Generic |
+
+### Linecard[​](#linecard "Direct link to Linecard")
+
+* **Label:** Linecard
+* **Description:** A Linecard installed in a device, specifying slot, power status, and functionalities.
+* **Namespace:** Device
+* **Icon:** bi
+  <!-- -->
+  :pci-card
+* **Inherit From:** DeviceGenericModule
+
+#### Attributes[​](#attributes "Direct link to Attributes")
+
+| name         | description                                                       | kind    | optional | default\_value | choices |
+| ------------ | ----------------------------------------------------------------- | ------- | -------- | -------------- | ------- |
+| slot         | The slot number where the Linecard is installed within the device | Number  |          |                |         |
+| bng\_enabled | BNG activated or deactivated on the Linecard                      | Boolean | True     | False          |         |
+
+#### Relationships[​](#relationships-1 "Direct link to Relationships")
+
+| name           | peer               | optional | cardinality | kind      |
+| -------------- | ------------------ | -------- | ----------- | --------- |
+| linecard\_type | DeviceLinecardType | False    | one         | Attribute |
+| pics           | DevicePic          | True     | many        | Attribute |
+
+### Pic[​](#pic "Direct link to Pic")
+
+* **Label:** PIC
+* **Description:** Physical Interface Card (PIC) installed in the Linecard, containing multiple ports.
+* **Namespace:** Device
+* **Icon:** mdi
+  <!-- -->
+  :memory
+* **Display Labels:** serial\_number\_\_value
+* **Uniqueness Constraints:**
+  * linecard, slot\_\_value
+* **Human Friendly ID:** serial\_number\_\_value
+
+#### Attributes[​](#attributes-1 "Direct link to Attributes")
+
+| name           | description                                | kind   | optional | default\_value | choices |
+| -------------- | ------------------------------------------ | ------ | -------- | -------------- | ------- |
+| serial\_number | Unique serial number of the PIC.           | Text   |          |                |         |
+| slot           | Slot number of the PIC within the Linecard | Number |          |                |         |
+
+#### Relationships[​](#relationships-2 "Direct link to Relationships")
+
+| name     | peer           | optional | cardinality | kind      |
+| -------- | -------------- | -------- | ----------- | --------- |
+| linecard | DeviceLinecard | False    | one         | Parent    |
+| ports    | DevicePort     | True     | many        | Component |
+
+### Port[​](#port "Direct link to Port")
+
+* **Label:** Port
+* **Description:** A network port on a PIC, specifying speed and port number.
+* **Namespace:** Device
+* **Icon:** mdi
+  <!-- -->
+  :ethernet
+* **Display Labels:** port\_number\_\_value
+* **Uniqueness Constraints:**
+  * pic, port\_number\_\_value
+* **Human Friendly ID:** pic\_\_serial\_number\_\_value, port\_number\_\_value
+
+#### Attributes[​](#attributes-2 "Direct link to Attributes")
+
+| name         | description            | kind     | optional | default\_value | choices   |
+| ------------ | ---------------------- | -------- | -------- | -------------- | --------- |
+| port\_number | Port number on the PIC | Number   |          |                |           |
+| speed        | Speed of the port      | Dropdown |          |                | 10g, 100g |
+
+#### Relationships[​](#relationships-3 "Direct link to Relationships")
+
+| name | peer      | optional | cardinality | kind   |
+| ---- | --------- | -------- | ----------- | ------ |
+| pic  | DevicePic | False    | one         | Parent |
+
+## Code[​](#code "Direct link to Code")
+
+```
+version: '1.0'
+nodes:
+- name: LinecardType
+  namespace: Device
+  menu_placement: DeviceLinecard
+  description: Linecard Type information, detailing specifications such as part number
+    and manufacturer.
+  icon: mdi:poll
+  label: Linecard Type
+  inherit_from:
+  - DeviceGenericModuleType
+  relationships:
+  - name: linecards
+    peer: DeviceLinecard
+    cardinality: many
+    kind: Generic
+    description: Linecards of this type.
+- name: Linecard
+  namespace: Device
+  description: A Linecard installed in a device, specifying slot, power status, and
+    functionalities.
+  label: Linecard
+  icon: bi:pci-card
+  menu_placement: DeviceGenericModule
+  inherit_from:
+  - DeviceGenericModule
+  attributes:
+  - name: slot
+    kind: Number
+    description: The slot number where the Linecard is installed within the device
+    order_weight: 1050
+  - name: bng_enabled
+    label: BNG Enabled
+    description: BNG activated or deactivated on the Linecard
+    kind: Boolean
+    optional: true
+    default_value: false
+    order_weight: 1400
+  relationships:
+  - name: linecard_type
+    label: Linecard Type
+    peer: DeviceLinecardType
+    optional: false
+    cardinality: one
+    kind: Attribute
+    order_weight: 1150
+  - name: pics
+    label: PICs
+    peer: DevicePic
+    optional: true
+    cardinality: many
+    kind: Attribute
+    order_weight: 1500
+- name: Pic
+  namespace: Device
+  description: Physical Interface Card (PIC) installed in the Linecard, containing
+    multiple ports.
+  label: PIC
+  menu_placement: DeviceLinecard
+  icon: mdi:memory
+  uniqueness_constraints:
+  - - linecard
+    - slot__value
+  human_friendly_id:
+  - serial_number__value
+  display_labels:
+  - serial_number__value
+  order_by:
+  - linecard__serial_number__value
+  attributes:
+  - name: serial_number
+    kind: Text
+    unique: true
+    description: Unique serial number of the PIC.
+    order_weight: 1000
+  - name: slot
+    kind: Number
+    description: Slot number of the PIC within the Linecard
+    order_weight: 1200
+  relationships:
+  - name: linecard
+    label: Linecard
+    peer: DeviceLinecard
+    identifier: linecard__pics
+    optional: false
+    cardinality: one
+    kind: Parent
+    order_weight: 1000
+  - name: ports
+    label: Ports
+    peer: DevicePort
+    optional: true
+    cardinality: many
+    kind: Component
+    order_weight: 1100
+- name: Port
+  namespace: Device
+  description: A network port on a PIC, specifying speed and port number.
+  label: Port
+  menu_placement: DeviceLinecard
+  icon: mdi:ethernet
+  uniqueness_constraints:
+  - - pic
+    - port_number__value
+  human_friendly_id:
+  - pic__serial_number__value
+  - port_number__value
+  display_labels:
+  - port_number__value
+  order_by:
+  - pic__serial_number__value
+  attributes:
+  - name: port_number
+    kind: Number
+    description: Port number on the PIC
+    order_weight: 1100
+  - name: speed
+    kind: Dropdown
+    description: Speed of the port
+    choices:
+    - name: 10g
+      label: 10Gbps
+      description: 10 Gigabit per second
+      color: '#A9CCE3'
+    - name: 100g
+      label: 100Gbps
+      description: 100 Gigabit per second
+      color: '#9fbdf2'
+    order_weight: 1200
+  relationships:
+  - name: pic
+    label: PIC
+    peer: DevicePic
+    optional: false
+    cardinality: one
+    kind: Parent
+    order_weight: 1000
+```

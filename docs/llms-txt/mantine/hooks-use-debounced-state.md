@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-debounced-state.md
 
 # useDebouncedState
-
 Package: @mantine/hooks
 Import: import { UseDebouncedState } from '@mantine/hooks';
 
@@ -12,6 +11,8 @@ This can be useful in case you want to perform a heavy operation based on react 
 for example, send search request. Unlike [use-debounced-value](https://mantine.dev/hooks/use-debounced-value/) it
 is designed to work with uncontrolled components.
 
+
+
 ## Differences from use-debounce-value
 
 * You do not have direct access to the non-debounced value.
@@ -21,6 +22,8 @@ is designed to work with uncontrolled components.
 ## Leading update
 
 You can immediately update value with first call with `{ leading: true }` options:
+
+
 
 ## Definition
 

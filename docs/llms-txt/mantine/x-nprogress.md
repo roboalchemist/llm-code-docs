@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/x-nprogress.md
 
 # NavigationProgress
-
 Package: @mantine/nprogress
 Import: import { NavigationProgress } from '@mantine/nprogress';
 Description: Navigation progress bar
@@ -43,3 +42,5 @@ function Demo() {
 ```
 
 ## Usage
+
+

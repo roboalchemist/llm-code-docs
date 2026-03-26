@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-ring-progress.md
 
 # RingProgress
-
 Package: @mantine/core
 Import: import { RingProgress } from '@mantine/core';
 Description: Give user feedback for status of the task with circle diagram
@@ -36,6 +35,7 @@ function Demo() {
 }
 ```
 
+
 ## Size, thickness & rounded caps
 
 Use `size`, `thickness` & `roundCaps` props to configure RingProgress, size and thickness values:
@@ -58,6 +58,7 @@ function Demo() {
   )
 }
 ```
+
 
 ## Sections tooltips
 
@@ -88,6 +89,7 @@ function Demo() {
 }
 ```
 
+
 ## Root color
 
 Use `rootColor` property to change the root color:
@@ -101,6 +103,7 @@ function Demo() {
   return <RingProgress sections={[{ value: 40, color: 'yellow' }]} rootColor="red" />;
 }
 ```
+
 
 ## Sections props
 
@@ -131,6 +134,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Customize label
 
@@ -170,6 +174,7 @@ function Demo() {
 }
 ```
 
+
 ## Filled segment transition
 
 By default, transitions are disabled, to enable them, set `transitionDuration` prop
@@ -198,6 +203,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -209,6 +216,7 @@ function Demo() {
 | size | number | - | Width and height of the progress ring |
 | thickness | number | - | Ring thickness |
 | transitionDuration | number | - | Transition duration of filled section styles changes in ms |
+
 
 #### Styles API
 

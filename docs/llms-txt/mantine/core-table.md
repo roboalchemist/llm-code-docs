@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-table.md
 
 # Table
-
 Package: @mantine/core
 Import: import { Table } from '@mantine/core';
 Description: Render table with theme styles
@@ -51,6 +50,7 @@ function Demo() {
 }
 ```
 
+
 ## data prop
 
 You can use `data` prop to automatically generate table rows from array of React nodes.
@@ -82,6 +82,7 @@ function Demo() {
   return <Table data={tableData} />;
 }
 ```
+
 
 ## Sticky header
 
@@ -129,6 +130,7 @@ function Demo() {
 }
 ```
 
+
 ## Spacing
 
 To control spacing use `horizontalSpacing` and `verticalSpacing` props. Both props support spacing from `theme.spacing` and any valid CSS value to set cell padding:
@@ -146,6 +148,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Caption and tfoot
 
@@ -186,6 +189,7 @@ function Demo() {
 }
 ```
 
+
 ## Striped and rows hover
 
 #### Example: configurator
@@ -201,6 +205,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Scroll container
 
@@ -240,6 +245,7 @@ function Demo() {
 }
 ```
 
+
 By default, `Table.ScrollContainer` uses [ScrollArea](https://mantine.dev/core/scroll-area), you can change it
 to native scrollbars by setting `type="native"`:
 
@@ -276,6 +282,7 @@ function Demo() {
 }
 ```
 
+
 You can also set `maxHeight` prop on `Table.ScrollContainer` to limit table height:
 
 #### Example: scrollContainerMaxHeight
@@ -310,6 +317,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Vertical variant
 
@@ -354,6 +362,7 @@ export function Demo() {
 }
 ```
 
+
 ## Tabular numbers
 
 Set `tabularNums` prop to render numbers in tabular style. It sets
@@ -396,6 +405,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Example: Table with row selection
 
@@ -458,6 +468,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -478,6 +490,7 @@ function Demo() {
 | withColumnBorders | boolean | - | If set, the table has borders between columns |
 | withRowBorders | boolean | - | If set, the table has borders between rows |
 | withTableBorder | boolean | - | If set, the table has the outer border |
+
 
 #### Styles API
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-list-state.md
 
 # useListState
-
 Package: @mantine/hooks
 Import: import { UseListState } from '@mantine/hooks';
 
@@ -138,6 +137,7 @@ export function IndeterminateCheckbox() {
   );
 }
 ```
+
 
 ## UseListStateHandlers type
 

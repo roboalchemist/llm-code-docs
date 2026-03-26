@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/charts-radial-bar-chart.md
 
 # RadialBarChart
-
 Package: @mantine/charts
 Import: import { RadialBarChart } from '@mantine/charts';
 Description: Radial bar chart component
@@ -33,6 +32,7 @@ export const data = [
 ];
 ```
 
+
 ## Change color
 
 You can reference theme colors or use any valid CSS color in `color` property of `data`:
@@ -56,6 +56,7 @@ function Demo() {
   return <RadialBarChart data={data} dataKey="value" h={220} w={220} />;
 }
 ```
+
 
 ## Legend
 
@@ -84,6 +85,7 @@ export const data = [
 ];
 ```
 
+
 ## Labels
 
 To show labels, set `withLabels` prop:
@@ -110,6 +112,7 @@ export const data = [
   { name: 'unknown', value: 6.67, color: 'gray' },
 ];
 ```
+
 
 ## Hide tooltip
 
@@ -138,6 +141,8 @@ export const data = [
 ];
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -156,6 +161,7 @@ export const data = [
 | withLabels | boolean | - | Determines whether labels should be displayed |
 | withLegend | boolean | - | Determines whether the legend should be displayed |
 | withTooltip | boolean | - | Determines whether the tooltip should be displayed when one of the bars is hovered |
+
 
 #### Styles API
 

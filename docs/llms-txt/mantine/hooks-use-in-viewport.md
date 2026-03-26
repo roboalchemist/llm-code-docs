@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-in-viewport.md
 
 # useInViewport
-
 Package: @mantine/hooks
 Import: import { UseInViewport } from '@mantine/hooks';
 
@@ -9,6 +8,8 @@ Import: import { UseInViewport } from '@mantine/hooks';
 
 `use-in-viewport` is a simpler alternative to [use-intersection](https://mantine.dev/hooks/use-intersection) that only checks if the element
 is visible in the viewport:
+
+
 
 ## Definition
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-mounted.md
 
 # useMounted
-
 Package: @mantine/hooks
 Import: import { UseMounted } from '@mantine/hooks';
 

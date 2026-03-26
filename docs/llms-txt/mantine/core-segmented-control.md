@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-segmented-control.md
 
 # SegmentedControl
-
 Package: @mantine/core
 Import: import { SegmentedControl } from '@mantine/core';
 Description: A linear set of two or more segments
@@ -17,6 +16,7 @@ function Demo() {
   return <SegmentedControl data={['React', 'Angular', 'Vue']} />;
 }
 ```
+
 
 ## Controlled
 
@@ -135,6 +135,7 @@ function Demo() {
 }
 ```
 
+
 ## React node as label
 
 You can use any React node as label:
@@ -182,6 +183,7 @@ function Demo() {
 }
 ```
 
+
 ## Color
 
 By default, `SegmentedControl` uses `theme.white` with shadow in light color scheme and `var(--mantine-color-dark-6)` background color for indicator.
@@ -196,6 +198,7 @@ function Demo() {
   return <SegmentedControl data={['React', 'Angular', 'Vue', 'Svelte']} />;
 }
 ```
+
 
 ## Transitions
 
@@ -230,6 +233,7 @@ function Demo() {
 }
 ```
 
+
 ## readOnly
 
 Set `readOnly` prop to prevent value from being changed:
@@ -244,6 +248,7 @@ function Demo() {
 }
 ```
 
+
 #### Example: stylesApi
 
 ```tsx
@@ -253,6 +258,7 @@ function Demo() {
   return <SegmentedControl data={['React', 'Angular', 'Vue']} />;
 }
 ```
+
 
 ## Accessibility and usability
 
@@ -311,6 +317,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -331,6 +339,7 @@ function Demo() {
 | transitionTimingFunction | string | - | Indicator <code>transition-timing-function</code> property |
 | value | string | - | Controlled component value |
 | withItemsBorders | boolean | - | Determines whether there should be borders between items |
+
 
 #### Styles API
 

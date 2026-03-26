@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-skeleton.md
 
 # Skeleton
-
 Package: @mantine/core
 Import: import { Skeleton } from '@mantine/core';
 Description: Indicate content loading state
@@ -35,6 +34,7 @@ import { Skeleton } from '@mantine/core';
   }
 ```
 
+
 ## With content
 
 If you want to indicate the loading state of content that is already on page, wrap it with Skeleton
@@ -64,6 +64,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -74,6 +76,7 @@ function Demo() {
 | radius | MantineRadius | number | - | Key of <code>theme.radius</code> or any valid CSS value to set border-radius. Numbers are converted to rem. |
 | visible | boolean | - | Determines whether Skeleton overlay should be displayed |
 | width | React.CSSProperties["width"] | - | Skeleton <code>width</code>, numbers are converted to rem, ignored when <code>circle</code> prop is set. |
+
 
 #### Styles API
 

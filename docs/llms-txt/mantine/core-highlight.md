@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-highlight.md
 
 # Highlight
-
 Package: @mantine/core
 Import: import { Highlight } from '@mantine/core';
 Description: Highlight given part of a string with mark
@@ -28,6 +27,7 @@ function Demo() {
 }
 ```
 
+
 ## Highlight multiple substrings
 
 To highlight multiple substrings, provide an array of values:
@@ -41,6 +41,7 @@ function Demo() {
   return <Highlight highlight={['this', 'that']}>Highlight this and also that</Highlight>;
 }
 ```
+
 
 ## Change highlight styles
 
@@ -71,6 +72,7 @@ function Demo() {
 }
 ```
 
+
 ## Text props
 
 Highlight is based on [Text](https://mantine.dev/core/text/) component, all its props are available:
@@ -96,6 +98,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -111,6 +115,7 @@ function Demo() {
 | size | MantineSize | (string & {}) | - | Controls <code>font-size</code> and <code>line-height</code> |
 | span | boolean | - | Shorthand for <code>component="span"</code> |
 | truncate | TextTruncate | - | Side on which Text must be truncated, if <code>true</code>, text is truncated from the start |
+
 
 #### Styles API
 

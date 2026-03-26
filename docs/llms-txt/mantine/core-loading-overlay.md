@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-loading-overlay.md
 
 # LoadingOverlay
-
 Package: @mantine/core
 Import: import { LoadingOverlay } from '@mantine/core';
 Description: An overlay with centered loader
@@ -39,6 +38,7 @@ function Demo() {
 }
 ```
 
+
 ## Loader props
 
 You can pass props down to the [Loader](https://mantine.dev/core/loader) component with `loaderProps`:
@@ -73,6 +73,7 @@ function Demo() {
 }
 ```
 
+
 ## Custom inline loaders
 
 To replace default loader with any custom content, set `loaderProps={{ children: <div>Your content</div> }}`.
@@ -102,6 +103,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -111,6 +114,7 @@ function Demo() {
 | transitionProps | TransitionProps | - | Props passed down to <code>Transition</code> component |
 | visible | boolean | - | Determines whether the overlay should be visible |
 | zIndex | string | number | - | Controls overlay <code>z-index</code> |
+
 
 #### Styles API
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-blockquote.md
 
 # Blockquote
-
 Package: @mantine/core
 Import: import { Blockquote } from '@mantine/core';
 Description: Blockquote with optional cite
@@ -24,6 +23,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -33,6 +34,7 @@ function Demo() {
 | icon | React.ReactNode | - | Blockquote icon, displayed at the top left side |
 | iconSize | string | number | - | Controls icon <code>width</code> and <code>height</code>, numbers are converted to rem |
 | radius | MantineRadius | number | - | Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code> |
+
 
 #### Styles API
 

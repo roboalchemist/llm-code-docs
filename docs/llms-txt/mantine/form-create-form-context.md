@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/form-create-form-context.md
 
 # Form context
-
 Package: @mantine/form
 Import: import { Form context } from '@mantine/form';
 Description: Add context support to use-form with createFormContext

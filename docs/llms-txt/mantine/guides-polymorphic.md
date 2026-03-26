@@ -25,6 +25,7 @@ function Demo() {
 }
 ```
 
+
 ## renderRoot prop
 
 `renderRoot` is an alternative to the `component` prop, which accepts a function that should return
@@ -190,6 +191,7 @@ function Demo() {
 }
 ```
 
+
 Example of creating a polymorphic wrapper component for Mantine polymorphic component:
 
 #### Example: createPolymorphic
@@ -229,6 +231,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Dynamic component prop
 
@@ -289,6 +292,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Make Mantine component polymorphic
 

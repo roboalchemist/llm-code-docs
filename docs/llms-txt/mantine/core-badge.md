@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-badge.md
 
 # Badge
-
 Package: @mantine/core
 Import: import { Badge } from '@mantine/core';
 Description: Display badge, pill or tag
@@ -18,12 +17,12 @@ function Demo() {
 }
 ```
 
+
 <Gradient component="Badge" />
 
 ## Gradient
 
 Badge supports Mantine color format in color prop. Color can be specified as:
-
 - Mantine color name (e.g., 'blue')
 - CSS color value (e.g., '#fff', 'rgba(255, 255, 255, 0.8)')
 - Gradient string (e.g., 'linear-gradient(45deg, blue, red)')
@@ -45,6 +44,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Rounded
 
@@ -78,6 +78,7 @@ function Demo() {
 }
 ```
 
+
 ## Left and right sections
 
 #### Example: sections
@@ -97,6 +98,7 @@ function Demo() {
 }
 ```
 
+
 ## Full width
 
 Set `fullWidth` to make badge span full width of its parent element:
@@ -110,6 +112,7 @@ function Demo() {
   return <Badge fullWidth>Full width badge</Badge>;
 }
 ```
+
 
 ## Customize variants colors
 
@@ -191,6 +194,7 @@ function Demo() {
 }
 ```
 
+
 <AutoContrast component="Badge" />
 
 ## autoContrast
@@ -218,6 +222,7 @@ function Demo() {
 }
 ```
 
+
 #### Example: stylesApi
 
 ```tsx
@@ -234,6 +239,7 @@ function Demo() {
   );
 }
 ```
+
 
 <Polymorphic defaultElement="div" changeToElement="a" component="Badge" withNext />
 
@@ -266,6 +272,7 @@ Note that polymorphic components props types are different from regular componen
 
 If you want to create a wrapper for a polymorphic component that is not polymorphic (does not support component prop), then your component props interface should extend HTML element props.
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -280,6 +287,7 @@ If you want to create a wrapper for a polymorphic component that is not polymorp
 | radius | MantineRadius | number | - | Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code> |
 | rightSection | React.ReactNode | - | Content displayed on the right side of the badge label |
 | size | MantineSize | (string & {}) | - | Controls <code>font-size</code>, <code>height</code> and horizontal <code>padding</code> |
+
 
 #### Styles API
 

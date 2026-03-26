@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-os.md
 
 # useOs
-
 Package: @mantine/hooks
 Import: import { UseOs } from '@mantine/hooks';
 
@@ -9,6 +8,8 @@ Import: import { UseOs } from '@mantine/hooks';
 
 `use-os` returns user's os. Possible values are: `undetermined`, `macos`, `ios`, `windows`, `android`, `linux`, `chromeos`.
 If the OS cannot be identified, for example, during server side rendering `undetermined` will be returned.
+
+
 
 ## Definition
 

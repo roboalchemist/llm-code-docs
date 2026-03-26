@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-pin-input.md
 
 # PinInput
-
 Package: @mantine/core
 Import: import { PinInput } from '@mantine/core';
 Description: Capture pin code or one time password from the user
@@ -18,6 +17,7 @@ function Demo() {
 }
 ```
 
+
 ## Regex type
 
 You can use regular expression to validate user input. Characters that do not match given expression
@@ -33,6 +33,7 @@ function Demo() {
   return <PinInput type={/^[0-3]*$/} inputType="tel" inputMode="numeric" />;
 }
 ```
+
 
 ## One time code
 
@@ -60,6 +61,7 @@ function Demo() {
 }
 ```
 
+
 ## Accessibility
 
 Inputs do not have associated labels, set `aria-label` to make component visible to the screen reader:
@@ -71,6 +73,7 @@ function Accessibility() {
   return <PinInput aria-label="One time code" />;
 }
 ```
+
 
 #### Props
 
@@ -102,6 +105,7 @@ function Accessibility() {
 | size | MantineSize | - | Controls inputs <code>width</code> and <code>height</code> |
 | type | "number" | RegExp | "alphanumeric" | - | Determines which values can be entered |
 | value | string | - | Controlled component value |
+
 
 #### Styles API
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/form-use-field.md
 
 # use-field
-
 Package: @mantine/form
 Import: import { use-field } from '@mantine/form';
 Description: use-field hook – manage single field state
@@ -10,6 +9,8 @@ Description: use-field hook – manage single field state
 
 `use-field` hook is a simpler alternative to [use-form](https://mantine.dev/form/use-form), it can be used to
 manage state of a single input without the need to create a form:
+
+
 
 ## use-field API
 
@@ -100,9 +101,13 @@ export interface UseFieldReturnType<ValueType> {
 
 To validate the field on blur, set `validateOnBlur` option to `true`:
 
+
+
 ## Validate on change
 
 To validate the field on change, set `validateOnChange` option to `true`:
+
+
 
 ## Async validation
 
@@ -110,19 +115,27 @@ To validate the field on change, set `validateOnChange` option to `true`:
 must return an error message that will be displayed to the user or `null` if the value
 is valid. To keep track of async validation state, use `isValidating` property:
 
+
+
 Async validation can be used with `validateOnBlur` option, but not recommended with
 `validateOnChange` because it will trigger validation on every key press which may
 lead to race conditions:
+
+
 
 ## Touched and dirty
 
 To get information about whether the field has been focused at least once, use `isTouched` method
 and to check if the value has been changed from the initial value, use `isDirty` method:
 
+
+
 ## Clear error on change
 
 By default, the error message is cleared when the value changes, to disable this behavior
 set `clearErrorOnChange` option to `false`:
+
+
 
 ## Uncontrolled mode
 
@@ -130,3 +143,5 @@ Uncontrolled mode of `use-field` hook works similar to uncontrolled mode of [use
 In uncontrolled mode, rerenders are minimized and the input value is managed by the input itself.
 It is useful if you experience performance issues with controlled mode, but in most cases controlled
 mode is recommended as it always provides up to date field information as React state.
+
+

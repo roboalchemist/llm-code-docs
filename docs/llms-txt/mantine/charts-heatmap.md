@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/charts-heatmap.md
 
 # Heatmap
-
 Package: @mantine/charts
 Import: import { Heatmap } from '@mantine/charts';
 Description: Heatmap chart component
@@ -28,6 +27,7 @@ function Demo() {
 // data.ts
 export const data = ${JSON.stringify(data, null, 2)};
 ```
+
 
 ## Data format
 
@@ -81,6 +81,7 @@ function Demo() {
 export const data = ${JSON.stringify(data, null, 2)};
 ```
 
+
 ## Change colors
 
 `Heatmap` colors can be changed with `colors` prop. It should be an array of any
@@ -113,6 +114,7 @@ function Demo() {
 // data.ts
 export const data = ${JSON.stringify(data, null, 2)};
 ```
+
 
 ## Colors depending on color scheme
 
@@ -158,6 +160,7 @@ function Demo() {
 // data.ts
 export const data = ${JSON.stringify(data, null, 2)};
 ```
+
 
 Note that in this case, you can only use 4 colors without passing `colors` prop.
 If you need more colors, you should pass them manually to the component:
@@ -249,6 +252,7 @@ function Demo() {
 export const data = ${JSON.stringify(data, null, 2)};
 ```
 
+
 ## Change labels text
 
 To change labels, use `weekdayLabels` and `monthLabels` props.
@@ -293,6 +297,7 @@ function Demo() {
 export const data = ${JSON.stringify(data, null, 2)};
 ```
 
+
 ## Rect size, gap and radius
 
 #### Example: rectSize
@@ -318,6 +323,7 @@ function Demo() {
 // data.ts
 export const data = ${JSON.stringify(data, null, 2)};
 ```
+
 
 ## Pass props to rect
 
@@ -348,6 +354,7 @@ function Demo() {
 export const data = ${JSON.stringify(data, null, 2)};
 ```
 
+
 ## Hide outside dates
 
 #### Example: withOutsideDates
@@ -375,6 +382,7 @@ function Demo() {
 // data.ts
 export const data = ${JSON.stringify(data, null, 2)};
 ```
+
 
 ## First day of week
 
@@ -407,6 +415,7 @@ function Demo() {
 export const data = ${JSON.stringify(data, null, 2)};
 ```
 
+
 ## Split months
 
 Use `splitMonths` to separate months visually with a spacer column and show only days that belong to the current month in each column. Month labels will be shifted by one column when `splitMonths` is enabled and months with fewer than 2 weeks are not labeled.
@@ -434,6 +443,8 @@ function Demo() {
 export const data = ${JSON.stringify(data, null, 2)};
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -460,6 +471,7 @@ export const data = ${JSON.stringify(data, null, 2)};
 | withOutsideDates | boolean | - | If set, trailing dates that do not fall into the given <code>startDate</code> – <code>endDate</code> range are displayed to fill empty space. |
 | withTooltip | boolean | - | If set, tooltip is displayed on rect hover |
 | withWeekdayLabels | boolean | - | If set, weekday labels are displayed |
+
 
 #### Styles API
 

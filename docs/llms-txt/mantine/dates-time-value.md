@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/dates-time-value.md
 
 # TimeValue
-
 Package: @mantine/dates
 Import: import { TimeValue } from '@mantine/dates';
 Description: Display a formatted time value
@@ -30,6 +29,7 @@ function Demo() {
 }
 ```
 
+
 ## With seconds
 
 Use `withSeconds` prop to display seconds:
@@ -54,6 +54,7 @@ function Demo() {
 }
 ```
 
+
 ## AM/PM labels
 
 Use `amPmLabels` prop to display AM/PM labels:
@@ -75,6 +76,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Date object
 
@@ -99,6 +101,8 @@ function Demo() {
   );
 }
 ```
+
+
 
 #### Props
 

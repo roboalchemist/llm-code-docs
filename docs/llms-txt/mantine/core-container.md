@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-container.md
 
 # Container
-
 Package: @mantine/core
 Import: import { Container } from '@mantine/core';
 Description: Center content with padding and max-width
@@ -49,6 +48,7 @@ function Demo() {
 }
 ```
 
+
 ## Usage
 
 `Container` centers content and limits its `max-width` to the value specified in `size` prop.
@@ -83,6 +83,7 @@ function Demo() {
 }
 ```
 
+
 ## Fluid
 
 Set `fluid` prop to make container fluid, it will take 100% of available width,
@@ -101,6 +102,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Customize sizes
 
@@ -148,6 +150,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Responsive max-width
 
@@ -197,6 +200,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -204,6 +209,7 @@ function Demo() {
 | fluid | boolean | - | If set, the container takes 100% width of its parent and <code>size</code> prop is ignored. |
 | size | number | MantineSize | (string & {}) | - | <code>max-width</code> of the container, value is not responsive – it is the same for all screen sizes. Numbers are converted to rem. Ignored when <code>fluid</code> prop is set. |
 | strategy | "block" | "grid" | - | Centering strategy |
+
 
 #### Styles API
 

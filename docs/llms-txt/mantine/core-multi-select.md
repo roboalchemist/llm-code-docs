@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-multi-select.md
 
 # MultiSelect
-
 Package: @mantine/core
 Import: import { MultiSelect } from '@mantine/core';
 Description: Custom searchable multi select
@@ -28,6 +27,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controlled
 
@@ -71,6 +71,7 @@ function Demo() {
 }
 ```
 
+
 ## Searchable
 
 Set `searchable` prop to allow filtering options by user input:
@@ -91,6 +92,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controlled search value
 
@@ -136,6 +138,7 @@ function Demo() {
 }
 ```
 
+
 ## Checked option icon
 
 Set `checkIconPosition` prop to `left` or `right` to control position of check icon in active option.
@@ -162,6 +165,7 @@ function Demo() {
 }
 ```
 
+
 ## Max selected values
 
 You can limit the number of selected values with `maxValues` prop. This will not allow adding more values
@@ -184,6 +188,7 @@ function Demo() {
 }
 ```
 
+
 ## Hide selected options
 
 To remove selected options from the list of available options, set `hidePickedOptions` prop:
@@ -204,6 +209,7 @@ function Demo() {
   );
 }
 ```
+
 
 <ComboboxData component="MultiSelect" />
 
@@ -243,6 +249,7 @@ function Demo() {
 }
 ```
 
+
 ## Sort options
 
 By default, options are sorted by their position in the data array. You can change this behavior
@@ -275,6 +282,7 @@ function Demo() {
 }
 ```
 
+
 <ComboboxLargeData component="MultiSelect" />
 
 ## Large datasets
@@ -302,6 +310,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## renderOption
 
@@ -363,6 +372,7 @@ function Demo() {
 }
 ```
 
+
 ## Scrollable dropdown
 
 By default, the options list is wrapped with [ScrollArea.Autosize](https://mantine.dev/core/scroll-area).
@@ -403,6 +413,7 @@ function Demo() {
 }
 ```
 
+
 ## Group options
 
 #### Example: groups
@@ -423,6 +434,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Disabled options
 
@@ -450,6 +462,7 @@ function Demo() {
   );
 }
 ```
+
 
 <ComboboxProps component="MultiSelect" />
 
@@ -481,6 +494,7 @@ function Demo() {
 }
 ```
 
+
 ## Control dropdown opened state
 
 You can control dropdown opened state with `dropdownOpened` prop. Additionally,
@@ -511,6 +525,7 @@ function Demo() {
 }
 ```
 
+
 ## Dropdown position
 
 By default, the dropdown is displayed below the input if there is enough space; otherwise it is displayed above the input.
@@ -536,6 +551,7 @@ function Demo() {
 }
 ```
 
+
 ## Dropdown width
 
 To change dropdown width, set `width` prop in `comboboxProps`. By default,
@@ -557,6 +573,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Dropdown offset
 
@@ -600,6 +617,7 @@ function Demo() {
 }
 ```
 
+
 ## Dropdown animation
 
 By default, dropdown animations are disabled. To enable them, you can set `transitionProps`,
@@ -621,6 +639,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Dropdown padding
 
@@ -650,6 +669,7 @@ function Demo() {
 }
 ```
 
+
 ## Dropdown shadow
 
 #### Example: dropdownShadow
@@ -668,6 +688,7 @@ function Demo() {
   );
 }
 ```
+
 
 <InputSections component="MultiSelect" />
 
@@ -705,6 +726,7 @@ function Demo() {
 }
 ```
 
+
 ## Input props
 
 <InputFeatures component="MultiSelect" element="input" />
@@ -728,6 +750,7 @@ function Demo() {
 }
 ```
 
+
 ## Read only
 
 Set `readOnly` to make the input read only. When `readOnly` is set,
@@ -750,6 +773,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled
 
 Set `disabled` to disable the input. When `disabled` is set,
@@ -771,6 +795,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Error state
 
@@ -800,6 +825,7 @@ function Demo() {
 }
 ```
 
+
 #### Example: stylesApi
 
 ```tsx
@@ -824,6 +850,7 @@ function Demo() {
   );
 }
 ```
+
 
 <GetElementRef component="MultiSelect" refType="input" />
 
@@ -863,6 +890,7 @@ function Demo() {
   );
 }
 ```
+
 
 #### Props
 
@@ -930,6 +958,7 @@ function Demo() {
 | withErrorStyles | boolean | - | Determines whether the input should have red border and red text color when the <code>error</code> prop is set |
 | withScrollArea | boolean | - | Determines whether the options should be wrapped with <code>ScrollArea.AutoSize</code>, <code>true</code> by default |
 | wrapperProps | WrapperProps | - | Props passed down to the root element |
+
 
 #### Styles API
 

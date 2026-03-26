@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-card.md
 
 # Card
-
 Package: @mantine/core
 Import: import { Card } from '@mantine/core';
 Description: Card with sections
@@ -45,6 +44,7 @@ function Demo() {
 }
 ```
 
+
 ## Polymorphic component
 
 Card is a [polymorphic component](https://mantine.dev/guides/polymorphic/) component, you can change its root element:
@@ -82,6 +82,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Card.Section
 
@@ -174,6 +175,7 @@ function Demo() {
 }
 ```
 
+
 ## withBorder and inheritPadding props
 
 * `withBorder` prop adds top and bottom border to `Card.Section` depending on its position relative to other content and sections
@@ -245,6 +247,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -254,6 +258,7 @@ function Demo() {
 | radius | MantineRadius | number | - | Key of <code>theme.radius</code> or any valid CSS value to set border-radius, numbers are converted to rem |
 | shadow | MantineShadow | - | Key of <code>theme.shadows</code> or any valid CSS value to set <code>box-shadow</code> |
 | withBorder | boolean | - | Adds border to the card |
+
 
 #### Styles API
 

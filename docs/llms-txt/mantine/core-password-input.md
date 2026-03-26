@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-password-input.md
 
 # PasswordInput
-
 Package: @mantine/core
 Import: import { PasswordInput } from '@mantine/core';
 Description: Capture password data from user
@@ -27,6 +26,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controlled
 
@@ -77,6 +77,7 @@ function Demo() {
 }
 ```
 
+
 ## Change visibility toggle icon
 
 To change visibility toggle icon, pass a React component that accepts `reveal` prop to `visibilityToggleIcon`:
@@ -107,6 +108,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Strength meter example
 
@@ -188,6 +190,7 @@ function Demo() {
 }
 ```
 
+
 ## Usage without visibility toggle
 
 If you do not need visibility toggle button, use [TextInput](https://mantine.dev/core/text-input/) component instead:
@@ -231,6 +234,7 @@ function Demo() {
 }
 ```
 
+
 ## Error state
 
 #### Example: error
@@ -253,6 +257,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled
 
 When `disabled` prop is set, visibility toggle button is hidden:
@@ -268,6 +273,7 @@ function Demo() {
   );
 }
 ```
+
 
 #### Example: stylesApi
 
@@ -289,6 +295,7 @@ function Demo() {
   );
 }
 ```
+
 
 <GetElementRef component="PasswordInput" refType="input" />
 
@@ -327,6 +334,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -360,6 +368,7 @@ function Demo() {
 | withAsterisk | boolean | - | If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input. |
 | withErrorStyles | boolean | - | Determines whether the input should have red border and red text color when the <code>error</code> prop is set |
 | wrapperProps | WrapperProps | - | Props passed down to the root element |
+
 
 #### Styles API
 

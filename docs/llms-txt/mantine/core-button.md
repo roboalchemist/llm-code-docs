@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-button.md
 
 # Button
-
 Package: @mantine/core
 Import: import { Button } from '@mantine/core';
 Description: Button component to render button or link
@@ -18,6 +17,7 @@ function Demo() {
 }
 ```
 
+
 ## Full width
 
 If `fullWidth` prop is set `Button` will take 100% of parent width:
@@ -31,6 +31,7 @@ function Demo() {
   return <Button fullWidth>Full width button</Button>;
 }
 ```
+
 
 ## Left and right sections
 
@@ -66,6 +67,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Sections position
 
@@ -112,6 +114,7 @@ function Demo() {
 }
 ```
 
+
 ## Compact size
 
 `Button` supports `xs` – `xl` and `compact-xs` – `compact-xl` sizes. `compact` sizes have
@@ -132,12 +135,12 @@ function Demo() {
 }
 ```
 
+
 <Gradient component="Button" />
 
 ## Gradient
 
 Button supports Mantine color format in color prop. Color can be specified as:
-
 - Mantine color name (e.g., 'blue')
 - CSS color value (e.g., '#fff', 'rgba(255, 255, 255, 0.8)')
 - Gradient string (e.g., 'linear-gradient(45deg, blue, red)')
@@ -159,6 +162,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled state
 
 To make `Button` disabled, set `disabled` prop, this will prevent any interactions with the button
@@ -174,6 +178,7 @@ function Demo() {
   return <Button disabled>Disabled button</Button>;
 }
 ```
+
 
 ## Disabled state when Button is link
 
@@ -200,15 +205,16 @@ function Demo() {
 }
 ```
 
+
 ## Customize disabled styles
 
 To customize disabled styles, it is recommended to use both `&:disabled` and `&[data-disabled]`
 selectors:
 
-- `&:disabled` is used to style the button when `disabled` prop is set and
+* `&:disabled` is used to style the button when `disabled` prop is set and
   also when the button is disabled by the parent component (for example, when `disabled` prop is set on a
   `<fieldset />` element which contains `Button`).
-- `&[data-disabled]` is used to style the button when it is not actually disabled but should look like
+* `&[data-disabled]` is used to style the button when it is not actually disabled but should look like
   it is (for example, `data-disabled` should be used if you need to use [Tooltip](https://mantine.dev/core/tooltip) with disabled `Button`
   or when `Button` is used as a link)
 
@@ -237,6 +243,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled button with Tooltip
 
 `onMouseLeave` event [is not triggered](https://github.com/facebook/react/issues/18753) when `Button` is disabled, so if you need to use
@@ -260,6 +267,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Loading state
 
@@ -292,6 +300,7 @@ function Demo() {
 }
 ```
 
+
 ## Loader props
 
 You can customize [Loader](https://mantine.dev/core/loader) with `loaderProps` prop, it accepts all props that
@@ -311,6 +320,7 @@ function Demo() {
 }
 ```
 
+
 #### Example: stylesApi
 
 ```tsx
@@ -321,6 +331,7 @@ function Demo() {
   return <Button leftSection={<IconAt size={16} />}>Your email</Button>;
 }
 ```
+
 
 Example of customizing `Button` with [Styles API](https://mantine.dev/styles/styles-api) and [data-\* attributes](https://mantine.dev/styles/data-attributes):
 
@@ -403,6 +414,7 @@ function Demo() {
 }
 ```
 
+
 ## Custom variants
 
 To add new `Button` variants, use [data-variant](https://mantine.dev/styles/variants-sizes) attribute.
@@ -449,6 +461,7 @@ function Demo() {
   }
 }
 ```
+
 
 ## Customize variants colors
 
@@ -527,6 +540,7 @@ function Demo() {
 }
 ```
 
+
 <AutoContrast component="Button" />
 
 ## autoContrast
@@ -552,6 +566,7 @@ function Demo() {
 }
 ```
 
+
 ## Button.Group
 
 #### Example: group
@@ -569,6 +584,7 @@ function Demo() {
   );
 }
 ```
+
 
 Note that you must not wrap child `Button` components with any additional elements:
 
@@ -617,6 +633,7 @@ function Demo() {
 }
 ```
 
+
 <Polymorphic defaultElement="button" changeToElement="a" component="Button" withNext />
 
 ## Polymorphic component
@@ -662,6 +679,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -679,6 +697,7 @@ function Demo() {
 | radius | MantineRadius | number | - | Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code> |
 | rightSection | React.ReactNode | - | Content displayed on the right side of the button label |
 | size | MantineSize | (string & {}) | "compact-xs" | "compact-sm" | "compact-md" | "compact-lg" | "compact-xl" | - | Controls button <code>height</code>, <code>font-size</code> and horizontal <code>padding</code> |
+
 
 #### Styles API
 

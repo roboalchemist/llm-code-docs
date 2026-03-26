@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-code.md
 
 # Code
-
 Package: @mantine/core
 Import: import { Code } from '@mantine/core';
 Description: Inline and block code
@@ -19,6 +18,7 @@ function Demo() {
   return <Code>React.createElement()</Code>;
 }
 ```
+
 
 ## Block code
 
@@ -39,6 +39,7 @@ function Demo() {
   return <Code block>{codeForPreviousDemo}</Code>;
 }
 ```
+
 
 ## Custom color
 
@@ -62,12 +63,15 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | block | boolean | - | If set, code is rendered in <code>pre</code> |
 | color | MantineColor | - | Key of <code>theme.colors</code> or any valid CSS color, controls <code>background-color</code> of the code. By default, calculated based on the color scheme. |
+
 
 #### Styles API
 

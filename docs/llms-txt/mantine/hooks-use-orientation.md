@@ -1,13 +1,14 @@
 # Source: https://mantine.dev/llms/hooks-use-orientation.md
 
 # useOrientation
-
 Package: @mantine/hooks
 Import: import { UseOrientation } from '@mantine/hooks';
 
 ## Usage
 
 `useOrientation` returns an object with the current orientation of the device:
+
+
 
 ## Definition
 

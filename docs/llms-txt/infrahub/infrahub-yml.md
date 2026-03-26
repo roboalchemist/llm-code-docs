@@ -1,0 +1,158 @@
+# Source: https://docs.infrahub.app/topics/infrahub-yml.md
+
+# Understanding the `.infrahub.yml` configuration file
+
+The `.infrahub.yml` file serves as the central manifest that defines how Infrahub integrates with external Git repositories. This topic explains the role of this configuration file and the design philosophy behind its structure.
+
+## Why `.infrahub.yml` exists[​](#why-infrahubyml-exists "Direct link to why-infrahubyml-exists")
+
+Infrastructure automation requires both structured data (device inventories, network topologies) and executable code (templates, validation scripts, Generators). The `.infrahub.yml` file solves the fundamental challenge of bridging these two worlds by:
+
+* **Declaring intent**: Explicitly stating what resources from a Git repository should be imported into Infrahub
+* **Enabling selective integration**: Allowing fine-grained control over which files and resources are processed
+* **Providing metadata**: Supplying the necessary context for Infrahub to properly interpret and use repository contents
+
+## Design philosophy and structure[​](#design-philosophy-and-structure "Direct link to Design philosophy and structure")
+
+The `.infrahub.yml` file follows a declarative approach where you specify *what* should happen rather than *how* it should happen. This design choice reflects several key principles:
+
+### Explicit over implicit[​](#explicit-over-implicit "Direct link to Explicit over implicit")
+
+Rather than scanning the entire repository and making assumptions about file purposes, the configuration file requires explicit declaration of all resources. This approach:
+
+* Prevents unexpected imports of unintended files
+* Makes the integration surface clear and auditable
+* Allows for different file organizations across repositories
+
+### Resource types[​](#resource-types "Direct link to Resource types")
+
+The configuration organizes resources into distinct categories based on their purpose and processing requirements:
+
+* **Executable code**: Python transformations, Generators, and checks
+* **Templates**: Jinja2 templates for configuration generation
+* **Schema definitions**: Data models for infrastructure representation
+* **Data definitions**: Object files for storing infrastructure data
+* **Query definitions**: GraphQL queries for data retrieval
+* **Menu definitions**: UI navigation structure definitions
+
+Each category has its own processing pipeline and validation requirements, reflecting the different ways Infrahub handles these resource types.
+
+### Metadata richness[​](#metadata-richness "Direct link to Metadata richness")
+
+Beyond basic file paths, the configuration captures essential metadata about how resources should be used:
+
+* **Dependencies**: Linking Transformations to their required GraphQL queries
+* **Targeting**: Specifying which infrastructure groups a resource applies to
+* **Parameters**: Defining the inputs required for executable resources
+* **Naming**: Providing human-readable identifiers for UI and API access
+
+## Loading behavior and dependency management[​](#loading-behavior-and-dependency-management "Direct link to Loading behavior and dependency management")
+
+The `.infrahub.yml` file controls not just *what* gets loaded, but *how* and *when* resources are processed:
+
+### Processing order[​](#processing-order "Direct link to Processing order")
+
+Infrahub processes configuration sections in a specific order to handle dependencies:
+
+1. **Schemas**: Loaded first to establish the data model
+2. **GraphQL queries**: Loaded before resources that depend on them
+3. **Objects**: Loaded to populate initial data
+4. **Python files**: Check definitions, Python transformations, and Generators are loaded together
+5. **Jinja2 transformations**: Loaded after their required queries are available
+6. **Artifact definitions**: Loaded last to reference existing transformations
+
+### File vs. directory handling[​](#file-vs-directory-handling "Direct link to File vs. directory handling")
+
+When you specify a directory in any resource list:
+
+* Infrahub processes all relevant files within that directory
+* Files are processed in alphabetical order
+* Subdirectories are processed recursively
+
+This behavior enables you to organize complex repositories while maintaining predictable loading order.
+
+### Dependency resolution[​](#dependency-resolution "Direct link to Dependency resolution")
+
+The configuration enables Infrahub to resolve dependencies between resources:
+
+* Transformations reference their required GraphQL queries by name
+* Artifact definitions reference Transformations and target groups
+* Generators specify their data dependencies through query requirements
+
+This dependency management ensures that all resources have what they need when they execute.
+
+## Group targeting[​](#group-targeting "Direct link to Group targeting")
+
+Many definitions in `.infrahub.yml` use [groups](/topics/groups.md) to specify their targets:
+
+* **Artifact definitions** - The `targets` field references a group name to specify which objects should generate artifacts
+* **Generator definitions** - The `targets` field specifies the group for generated objects
+* **Check definitions** - The `targets` field indicates which group to validate
+
+Groups provide a flexible way to target operations across multiple objects without hardcoding specific object lists. This design decouples resource definitions from infrastructure changes - you can add or remove objects from groups without modifying the configuration files.
+
+Example targeting in `.infrahub.yml`:
+
+```
+artifact_definitions:
+  - name: "Router Configuration"
+    targets: "ProductionRouters"  # References a group
+    transformation: "router_config_transform"
+
+check_definitions:
+  - name: "Interface Validation"
+    targets: "NetworkDevices"     # References a different group
+    class_name: "InterfaceCheck"
+```
+
+See [organizing objects with groups](/guides/groups.md) for details on creating target groups.
+
+## Version control and branch behavior[​](#version-control-and-branch-behavior "Direct link to Version control and branch behavior")
+
+The `.infrahub.yml` file itself is version-controlled, enabling sophisticated integration patterns:
+
+### Branch-specific configuration[​](#branch-specific-configuration "Direct link to Branch-specific configuration")
+
+Different Git branches can have different `.infrahub.yml` files:
+
+* Development branches can include experimental resources
+* Production branches can exclude debug or testing resources
+* Feature branches can temporarily modify resource definitions
+
+This flexibility allows teams to maintain different configurations for different environments or development stages.
+
+### Evolution and migration[​](#evolution-and-migration "Direct link to Evolution and migration")
+
+As your infrastructure automation evolves, the configuration file supports:
+
+* Adding new resource types without affecting existing ones
+* Deprecating old resources by removing them from the configuration
+* Refactoring resource organization while maintaining functionality
+
+This approach helps teams manage the lifecycle of infrastructure automation components with minimal disruption.
+
+## Future evolution and extensibility[​](#future-evolution-and-extensibility "Direct link to Future evolution and extensibility")
+
+The `.infrahub.yml` format is designed to evolve with Infrahub's capabilities:
+
+* New resource types can be added without breaking existing configurations
+* Additional metadata fields can be introduced with backward compatibility
+* Processing behavior can be enhanced while maintaining existing semantics
+
+This future-proof design ensures that your automation investments remain valuable as Infrahub grows.
+
+## Conclusion[​](#conclusion "Direct link to Conclusion")
+
+The `.infrahub.yml` configuration file is a crucial bridge between Git repositories and Infrahub's infrastructure management capabilities. By understanding its design principles and structure, you can effectively organize your infrastructure automation resources and leverage Infrahub's full potential to manage your network infrastructure.
+
+## Further reading[​](#further-reading "Direct link to Further reading")
+
+* [Repository configuration file reference](/reference/dotinfrahub.md) - Complete syntax and options reference
+* [How to connect external Git repositories](/guides/repository.md) - Step-by-step setup guide
+* [Understanding Git repositories in Infrahub](/topics/repository.md) - Repository integration concepts
+* [Understanding groups](/topics/groups.md) - Organizational concepts for targeting operations
+* [How to organize objects with groups](/guides/groups.md) - Creating and managing groups
+* [Schema development](/topics/schema.md) - Designing infrastructure data models
+* [Transformations](/topics/transformation.md) - Data processing and template concepts
+* [Generators](/topics/generator.md) - Infrastructure provisioning automation
+* [Artifacts](/topics/artifact.md) - Output generation and delivery

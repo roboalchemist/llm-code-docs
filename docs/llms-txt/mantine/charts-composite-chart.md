@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/charts-composite-chart.md
 
 # CompositeChart
-
 Package: @mantine/charts
 Import: import { CompositeChart } from '@mantine/charts';
 Description: Composed chart with support for Area, Bar and Line charts
@@ -71,6 +70,7 @@ export const data = [
 ];
 ```
 
+
 ## Legend
 
 To display chart legend, set `withLegend` prop. When one of the items in the legend
@@ -134,6 +134,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Legend position
 
@@ -200,6 +201,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Series labels
 
@@ -271,6 +273,7 @@ export const data = [
 ];
 ```
 
+
 ## Points labels
 
 To display labels on data points, set `withPointLabels`. This feature is supported
@@ -333,6 +336,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## X and Y axis props
 
@@ -400,6 +404,7 @@ export const data = [
 ];
 ```
 
+
 ## Axis labels
 
 Use `xAxisLabel` and `yAxisLabel` props to display axis labels:
@@ -464,6 +469,7 @@ export const data = [
 ];
 ```
 
+
 ## X axis offset
 
 Use `xAxisProps` to set padding between the charts ends and the x-axis:
@@ -527,6 +533,7 @@ export const data = [
 ];
 ```
 
+
 ## Y axis scale
 
 Use `yAxisProps` to change domain of the Y axis. For example, if you know that
@@ -588,6 +595,7 @@ export const data = [
 ];
 ```
 
+
 ## Right Y axis
 
 To display additional Y axis on the right side of the chart, set `withRightYAxis` prop.
@@ -631,6 +639,7 @@ export const biaxialData = [
   { name: 'Page G', uv: 3490, pv: 4300 },
 ];
 ```
+
 
 ## Rotate x-axis labels
 
@@ -696,6 +705,7 @@ export const data = [
 ];
 ```
 
+
 ## Value formatter
 
 To format values in the tooltip and axis ticks, use `valueFormat` prop. It accepts
@@ -760,6 +770,7 @@ export const data = [
 ];
 ```
 
+
 ## Chart color
 
 You can reference colors from [theme](https://mantine.dev/theming/theme-object) the same way as in
@@ -803,6 +814,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Change chart color depending on color scheme
 
@@ -877,6 +889,7 @@ export const data = [
 ];
 ```
 
+
 ## Stroke dash array
 
 Set `strokeDasharray` prop to control the stroke dash array of the grid and cursor
@@ -941,6 +954,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Grid and text colors
 
@@ -1020,6 +1034,7 @@ export const data = [
   },
 ];
 ```
+
 
 If your application has only one color scheme, you can use `gridColor` and `textColor`
 props instead of CSS variables:
@@ -1110,6 +1125,7 @@ export const data = [
 ];
 ```
 
+
 ## Units
 
 Set `unit` prop to render a unit label next to the y-axis ticks and tooltip values:
@@ -1172,6 +1188,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Custom tooltip
 
@@ -1263,6 +1280,7 @@ export const data = [
 ];
 ```
 
+
 ## Remove tooltip
 
 To remove tooltip, set `withTooltip={false}`. It also removes the cursor line
@@ -1326,6 +1344,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Customize dots
 
@@ -1392,6 +1411,7 @@ export const data = [
 ];
 ```
 
+
 ## Stroke width
 
 Use `strokeWidth` prop to control the stroke width of all areas/lines:
@@ -1455,6 +1475,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Sync multiple charts
 
@@ -1535,6 +1556,7 @@ export const data = [
 ];
 ```
 
+
 ## Dashed lines
 
 Set `strokeDasharray` property in `series` to change line style to dashed:
@@ -1599,6 +1621,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Reference lines
 
@@ -1667,6 +1690,8 @@ export const data = [
 ];
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -1712,6 +1737,7 @@ export const data = [
 | xAxisProps | RechartsProps | - | Props passed down to the <code>XAxis</code> recharts component |
 | yAxisLabel | string | - | A label to display next to the y-axis |
 | yAxisProps | RechartsProps | - | Props passed down to the <code>YAxis</code> recharts component |
+
 
 #### Styles API
 

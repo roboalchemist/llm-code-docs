@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-divider.md
 
 # Divider
-
 Package: @mantine/core
 Import: import { Divider } from '@mantine/core';
 Description: Horizontal line with optional label or vertical divider
@@ -42,6 +41,7 @@ function Demo() {
 }
 ```
 
+
 ## Variants
 
 #### Example: variants
@@ -59,6 +59,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## With label
 
@@ -98,6 +99,7 @@ function Demo() {
 }
 ```
 
+
 ## Sizes
 
 #### Example: sizes
@@ -118,6 +120,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Vertical orientation
 
@@ -145,6 +148,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -154,6 +159,7 @@ function Demo() {
 | labelPosition | "center" | "left" | "right" | - | Controls label position |
 | orientation | "horizontal" | "vertical" | - | Controls orientation |
 | size | number | MantineSize | (string & {}) | - | Controls width/height (depends on orientation) |
+
 
 #### Styles API
 

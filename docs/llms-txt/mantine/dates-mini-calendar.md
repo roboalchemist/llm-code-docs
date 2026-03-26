@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/dates-mini-calendar.md
 
 # MiniCalendar
-
 Package: @mantine/dates
 Import: import { MiniCalendar } from '@mantine/dates';
 Description: Compact calendar to display a small number of days in a row
@@ -20,6 +19,7 @@ function Demo() {
 }
 ```
 
+
 ## Number of days
 
 Use `numberOfDays` prop to control how many days are displayed at once.
@@ -34,6 +34,7 @@ function Demo() {
   return <MiniCalendar numberOfDays={5} />;
 }
 ```
+
 
 ## getDayProps
 
@@ -58,6 +59,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Min and max dates
 
@@ -84,6 +86,7 @@ function Demo() {
 }
 ```
 
+
 ## Localization
 
 You can change localization both on component level with `locale` prop and
@@ -99,6 +102,7 @@ function Demo() {
   return <MiniCalendar defaultDate="2025-04-15" locale="ru" numberOfDays={6} />;
 }
 ```
+
 
 ## Accessibility
 
@@ -116,6 +120,7 @@ function Demo() {
   );
 }
 ```
+
 
 #### Props
 
@@ -137,6 +142,7 @@ function Demo() {
 | previousControlProps | Omit<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, "ref"> & DataAttributes | - | Props passed to previous control button |
 | size | MantineSize | - | Component size |
 | value | string | Date | null | - | Selected date, controlled value |
+
 
 #### Styles API
 

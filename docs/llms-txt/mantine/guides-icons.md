@@ -39,6 +39,7 @@ function Demo() {
 }
 ```
 
+
 > **rem units in size prop**
 >
 > Icons `size` prop is usually converted to `width` and `height` props under the hood.
@@ -90,3 +91,4 @@ function Demo() {
   return <Button leftSection={<AddressBookIcon size={18} />}>Demo</Button>;
 }
 ```
+

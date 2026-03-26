@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/form-package.md
 
 # HooksPackage
-
 Package: @mantine/form
 Import: import { HooksPackage } from '@mantine/form';
 
@@ -76,6 +75,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## License
 

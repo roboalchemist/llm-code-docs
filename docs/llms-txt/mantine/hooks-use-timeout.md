@@ -1,11 +1,12 @@
 # Source: https://mantine.dev/llms/hooks-use-timeout.md
 
 # useTimeout
-
 Package: @mantine/hooks
 Import: import { UseTimeout } from '@mantine/hooks';
 
 ## Usage
+
+
 
 ## API
 

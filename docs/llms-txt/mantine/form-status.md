@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/form-status.md
 
 # formStatus
-
 Package: @mantine/form
 Import: import { FormStatus } from '@mantine/form';
 
@@ -44,6 +43,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## isTouched and isDirty functions
 
@@ -213,6 +213,7 @@ function Demo() {
   );
 }
 ```
+
 
 You can also manually set `form.submitting` to `true` or `false`:
 

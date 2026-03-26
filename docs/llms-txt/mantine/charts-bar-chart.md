@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/charts-bar-chart.md
 
 # BarChart
-
 Package: @mantine/charts
 Import: import { BarChart } from '@mantine/charts';
 Description: Bar chart component with stacked and percent variants
@@ -47,6 +46,7 @@ export const data = [
 ];
 ```
 
+
 ## Stacked bar chart
 
 Set `type="stacked"` to render a stacked bar chart. In this type of bar chart
@@ -87,6 +87,7 @@ export const data = [
 ];
 ```
 
+
 ## Mixed stacked bar chart
 
 You can control how series are stacked by setting `stackId` property in series object:
@@ -123,6 +124,7 @@ export const data = [
   { month: 'June', Smartphones: 800, Laptops: 500, Tablets: 200 },
 ];
 ```
+
 
 ## Percent bar chart
 
@@ -163,6 +165,7 @@ export const data = [
   { month: 'June', Smartphones: 750, Laptops: 600, Tablets: 1000 },
 ];
 ```
+
 
 ## Waterfall bar chart
 
@@ -206,6 +209,7 @@ export const data =
   { item: 'ETR', 'Effective tax rate in %': 3.5, color: 'blue', standalone: true },
 ];
 ```
+
 
 ## SVG pattern as bar fill
 
@@ -283,6 +287,7 @@ export const data = [
 ];
 ```
 
+
 ## Bar color based on value
 
 Use `getBarColor` prop to assign color based on value. `getBarColor` function is
@@ -322,6 +327,7 @@ export const data = [
 ];
 ```
 
+
 ## Legend
 
 To display chart legend, set `withLegend` prop. When one of the items in the legend
@@ -360,6 +366,7 @@ export const data = [
   { month: 'June', Smartphones: 750, Laptops: 600, Tablets: 1000 },
 ];
 ```
+
 
 ## Legend position
 
@@ -402,6 +409,7 @@ export const data = [
 ];
 ```
 
+
 ## Series labels
 
 By default, series `name` is used as a label. To change it, set `label`
@@ -442,6 +450,7 @@ export const data = [
   { month: 'June', Smartphones: 750, Laptops: 600, Tablets: 1000 },
 ];
 ```
+
 
 ## X and Y axis props
 
@@ -485,6 +494,7 @@ export const data = [
 ];
 ```
 
+
 ## Axis labels
 
 Use `xAxisLabel` and `yAxisLabel` props to display axis labels:
@@ -524,6 +534,7 @@ export const data = [
 ];
 ```
 
+
 ## X axis offset
 
 Use `xAxisProps` to set padding between the charts ends and the x-axis:
@@ -561,6 +572,7 @@ export const data = [
   { month: 'June', Smartphones: 750, Laptops: 600, Tablets: 1000 },
 ];
 ```
+
 
 ## Y axis scale
 
@@ -601,6 +613,7 @@ export const data = [
 ];
 ```
 
+
 ## Value formatter
 
 To format values in the tooltip and axis ticks, use `valueFormat` prop. It accepts
@@ -640,6 +653,7 @@ export const data = [
 ];
 ```
 
+
 ## Area color
 
 You can reference colors from [theme](https://mantine.dev/theming/theme-object) the same way as in
@@ -659,6 +673,7 @@ export const data = [
   { month: 'June', Smartphones: 750, Laptops: 600, Tablets: 1000 },
 ];
 ```
+
 
 ## Bar props
 
@@ -699,6 +714,7 @@ export const data = [
 ];
 ```
 
+
 ## Minimum bar size
 
 Use `minBarSize` prop to set the minimum size of the bar in px:
@@ -736,6 +752,7 @@ export const data = [
   { month: 'June', Smartphones: 0, Laptops: 600, Tablets: 1000 },
 ];
 ```
+
 
 ## Change bar color depending on color scheme
 
@@ -786,6 +803,7 @@ export const data = [
 ];
 ```
 
+
 ## Stroke dash array
 
 Set `strokeDasharray` prop to control the stroke dash array of the grid and cursor
@@ -825,6 +843,7 @@ export const data = [
   { month: 'June', Smartphones: 750, Laptops: 600, Tablets: 1000 },
 ];
 ```
+
 
 ## Grid and text colors
 
@@ -880,6 +899,7 @@ export const data = [
   { month: 'June', Smartphones: 750, Laptops: 600, Tablets: 1000 },
 ];
 ```
+
 
 If your application has only one color scheme, you can use `gridColor` and `textColor`
 props instead of CSS variables:
@@ -946,6 +966,7 @@ export const data = [
 ];
 ```
 
+
 ## Units
 
 Set `unit` prop to render a unit label next to the y-axis ticks and tooltip values:
@@ -983,6 +1004,7 @@ export const data = [
   { month: 'June', Smartphones: 750, Laptops: 600, Tablets: 1000 },
 ];
 ```
+
 
 ## Custom tooltip
 
@@ -1049,6 +1071,7 @@ export const data = [
 ];
 ```
 
+
 ## Remove tooltip
 
 To remove tooltip, set `withTooltip={false}`. It also removes the cursor line
@@ -1087,6 +1110,7 @@ export const data = [
   { month: 'June', Smartphones: 750, Laptops: 600, Tablets: 1000 },
 ];
 ```
+
 
 ## Sync multiple BarCharts
 
@@ -1143,6 +1167,7 @@ export const data = [
 ];
 ```
 
+
 ## Vertical orientation
 
 Set `orientation="vertical"` to render a vertical bar chart:
@@ -1182,6 +1207,7 @@ export const data = [
   { month: 'June', Smartphones: 750, Laptops: 600, Tablets: 1000 },
 ];
 ```
+
 
 ## Reference lines
 
@@ -1228,6 +1254,7 @@ export const data = [
   { month: 'June', Smartphones: 750, Laptops: 600, Tablets: 1000 },
 ];
 ```
+
 
 ## Reference area
 
@@ -1286,6 +1313,7 @@ export const data = [
 ];
 ```
 
+
 ## Bar value label
 
 To display value above each bar, set `withBarValueLabel`:
@@ -1324,6 +1352,7 @@ export const data = [
   { month: 'June', Smartphones: 750, Laptops: 600, Tablets: 1000 },
 ];
 ```
+
 
 ## Bar value label props
 
@@ -1367,6 +1396,7 @@ export const data = [
   { month: 'June', Smartphones: 750, Laptops: 600, Tablets: 1000 },
 ];
 ```
+
 
 ## Bar overlays
 
@@ -1430,6 +1460,8 @@ export const data = [
 ];
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -1473,6 +1505,7 @@ export const data = [
 | xAxisProps | RechartsProps | - | Props passed down to the <code>XAxis</code> recharts component |
 | yAxisLabel | string | - | A label to display next to the y-axis |
 | yAxisProps | RechartsProps | - | Props passed down to the <code>YAxis</code> recharts component |
+
 
 #### Styles API
 

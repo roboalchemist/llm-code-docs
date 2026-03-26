@@ -203,7 +203,7 @@ It’s still possible to test self-hosted satellites locally, however, by using 
 
 ```
 # Local test for Earthly
-127.0.0.1 earthly.local
+127.0.0.1	earthly.local
 ```
 
 Starting your satellite with `SATELLITE_HOST` set to `earthly.local` should allow for a localhost connection using your Earthly CLI.

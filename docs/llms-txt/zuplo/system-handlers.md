@@ -1,0 +1,40 @@
+# Source: https://www.zuplo.com/docs/handlers/system-handlers.md
+
+# Internal Route Handlers
+
+The Zuplo Runtime automatically registers certain routes on your gateway to
+provide enhanced functionality. Requests to these routes may appear in your
+Analytics page. Below is a list of reserved routes:
+
+| Name                    | Method  | Path                              | Description                                                 |
+| ----------------------- | ------- | --------------------------------- | ----------------------------------------------------------- |
+| cors-preflight          | OPTIONS | `/(.*)`                           | Handles CORS preflight requests.                            |
+| developer-portal        | GET     | User configured, default: `/docs` | Handles serving the legacy Developer Portal.                |
+| developer-portal-legacy | GET     | `/__zuplo/dev-portal`             | Legacy path for the Developer Portal.                       |
+| ping                    | GET     | `/__zuplo/ping`                   | Used to check liveness of deployments.                      |
+| unmatched-path          | All     | `/(.*)`                           | Handles requests to endpoints that haven't been configured. |
+
+## Behavior Details
+
+### cors-preflight
+
+This handler automatically responds to CORS preflight (`OPTIONS`) requests based
+on the CORS policy configured for each route. It runs before any user-defined
+route handlers.
+
+### ping
+
+The `/__zuplo/ping` endpoint returns a simple response that indicates the
+deployment is live and accepting requests. Use this endpoint for health checks
+and uptime monitoring.
+
+### unmatched-path
+
+When a request does not match any configured route, this handler returns a
+`404 Not Found` response. It acts as a catch-all for undefined paths.
+
+:::note
+
+Internal routes are reserved by the Zuplo runtime.
+
+:::

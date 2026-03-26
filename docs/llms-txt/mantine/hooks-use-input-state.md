@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-input-state.md
 
 # useInputState
-
 Package: @mantine/hooks
 Import: import { UseInputState } from '@mantine/hooks';
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-scroll-spy.md
 
 # useScrollSpy
-
 Package: @mantine/hooks
 Import: import { UseScrollSpy } from '@mantine/hooks';
 
@@ -11,6 +10,8 @@ Import: import { UseScrollSpy } from '@mantine/hooks';
 element that is currently in the viewport. It is useful for creating
 table of contents components (like in mantine.dev sidebar on the right side)
 and similar features.
+
+
 
 ## Hook options
 
@@ -23,6 +24,8 @@ and similar features.
 * `offset` - offset from the top of the viewport to use when determining the active heading, by default `0` is used
 
 Example of using custom options to get headings with `data-heading` attribute:
+
+
 
 ## Reinitializing hook data
 

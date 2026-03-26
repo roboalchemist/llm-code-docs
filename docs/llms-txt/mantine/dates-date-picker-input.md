@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/dates-date-picker-input.md
 
 # DatePickerInput
-
 Package: @mantine/dates
 Import: import { DatePickerInput } from '@mantine/dates';
 Description: Date, multiple dates and dates range picker input
@@ -13,13 +12,19 @@ read through [DatePicker](https://mantine.dev/dates/date-picker/) documentation 
 
 ## Usage
 
+
+
 ## Multiple dates
 
 Set `type="multiple"` to allow user to pick multiple dates:
 
+
+
 ## Dates range
 
 Set `type="range"` to allow user to pick dates range:
+
+
 
 ## Presets
 
@@ -49,6 +54,7 @@ function Demo() {
   );
 }
 ```
+
 
 To use `presets` with `type="range"`, define value a tuple of two dates:
 
@@ -97,10 +103,13 @@ function Demo() {
 }
 ```
 
+
 ## Open picker in modal
 
 By default, [DatePicker](https://mantine.dev/dates/date-picker/) is rendered inside [Popover](https://mantine.dev/core/popover/).
 You can change that to [Modal](https://mantine.dev/core/modal/) by setting `dropdownType="modal"`:
+
+
 
 ## Value format
 
@@ -123,6 +132,7 @@ function Demo() {
 }
 ```
 
+
 ## Value formatter
 
 `valueFormatter` is a more powerful alternative to `valueFormat` prop.
@@ -132,10 +142,14 @@ The function is the same for all component types (`default`, `multiple` and `ran
 
 Example of using a custom formatter function with `type="multiple"`:
 
+
+
 ## Clearable
 
 Set `clearable` prop to display clear button in the right section. Note that if you set `rightSection`
 prop, clear button will not be displayed.
+
+
 
 ## Disabled state
 
@@ -157,13 +171,18 @@ function Demo() {
 }
 ```
 
+
 ## Input props
 
 <InputFeatures component="DatePickerInput" element="button" />
 
 DatePickerInput component supports [Input](https://mantine.dev/core/input) and [Input.Wrapper](https://mantine.dev/core/input) components features and all button element props. DatePickerInput documentation does not include all features supported by the component – see [Input](https://mantine.dev/core/input) documentation to learn about all available features.
 
+
+
 ## With icon
+
+
 
 <GetElementRef component="DatePickerInput" refType="button" package="@mantine/dates" />
 
@@ -184,6 +203,7 @@ function Demo() {
 ## Accessibility
 
 DatePickerInput provides better accessibility support when used in forms. Make sure to associate the input with a label for better screen reader support.
+
 
 #### Props
 
@@ -282,6 +302,7 @@ DatePickerInput provides better accessibility support when used in forms. Make s
 | wrapperProps | WrapperProps | - | Props passed down to the root element |
 | yearLabelFormat | string | ((date: string) => string) | - | dayjs label format to display year label or a function that returns year label based on year value |
 | yearsListFormat | string | - | dayjs format for years list |
+
 
 #### Styles API
 

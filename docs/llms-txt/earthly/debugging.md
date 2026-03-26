@@ -74,7 +74,7 @@ generate_phrase.py
 root@buildkitsandbox:/code# find / | grep sherlock.txt
 /sherlock.txt
 root@buildkitsandbox:/code# ls /
-bin  boot  code  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  sherlock.txt  srv sys  tmp  usr  var
+bin  boot  code  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  sherlock.txt  srv	sys  tmp  usr  var
 root@buildkitsandbox:/code# ls /sherlock.txt
 /sherlock.txt
 ```

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-stepper.md
 
 # Stepper
-
 Package: @mantine/core
 Import: import { Stepper } from '@mantine/core';
 Description: Display content divided into a steps sequence
@@ -44,6 +43,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Allow step select
 
@@ -115,6 +115,7 @@ function Demo() {
 }
 ```
 
+
 ## Disable next steps selection
 
 Another way to disable selection of upcoming steps is to use the `allowNextStepsSelect` directly on the `Stepper` component.
@@ -157,6 +158,7 @@ function Demo() {
 }
 ```
 
+
 ## Color, radius and size
 
 #### Example: configurator
@@ -173,6 +175,7 @@ function Demo() {
   );
 }
 ```
+
 
 Component size is controlled by two props: `size` and `iconSize`.
 `size` prop controls icon size, label and description font size.
@@ -192,6 +195,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## With custom icons
 
@@ -240,6 +244,7 @@ function Demo() {
 }
 ```
 
+
 You can use `Stepper` with icons only. Note that in this case, you will have to
 set `aria-label` or `title` on `Stepper.Step` component to make it accessible:
 
@@ -262,6 +267,7 @@ function Demo() {
   );
 }
 ```
+
 
 You can also change the completed icon for each step, for example, to indicate error state:
 
@@ -287,6 +293,7 @@ function Demo() {
 }
 ```
 
+
 ## Vertical orientation
 
 #### Example: orientation
@@ -307,6 +314,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Icon position
 
@@ -331,6 +339,7 @@ function Demo() {
 }
 ```
 
+
 ## Loading state
 
 To indicate loading state set `loading` prop on Step component, `Loader` will replace step icon.
@@ -351,6 +360,7 @@ function Demo() {
   );
 }
 ```
+
 
 #### Example: stylesApi
 
@@ -387,6 +397,7 @@ function Demo() {
   );
 }
 ```
+
 
 Examples of styles customization with Styles API:
 
@@ -434,6 +445,7 @@ function Demo() {
   );
 }
 ```
+
 
 <br />
 
@@ -498,6 +510,7 @@ function Demo() {
   }
 }
 ```
+
 
 ## Get step ref
 
@@ -581,6 +594,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -601,6 +615,7 @@ function Demo() {
 | radius | MantineRadius | number | - | Key of <code>theme.radius</code> or any valid CSS value to set steps border-radius |
 | size | MantineSize | - | Controls size of various Stepper elements |
 | wrap | boolean | - | Determines whether steps should wrap to the next line if no space is available |
+
 
 #### Styles API
 

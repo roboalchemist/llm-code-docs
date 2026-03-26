@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-focus-return.md
 
 # useFocusReturn
-
 Package: @mantine/hooks
 Import: import { UseFocusReturn } from '@mantine/hooks';
 
@@ -34,6 +33,7 @@ function Demo() {
   );
 }
 ```
+
 
 In most cases, you should use this hook with [use-focus-trap](https://mantine.dev/hooks/use-focus-trap/).
 

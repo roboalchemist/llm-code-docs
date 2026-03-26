@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-loader.md
 
 # Loader
-
 Package: @mantine/core
 Import: import { Loader } from '@mantine/core';
 Description: Indicate loading state
@@ -21,6 +20,7 @@ function Demo() {
 }
 ```
 
+
 ## Size prop
 
 You can pass any valid CSS values and numbers to `size` prop. Numbers are treated as px, but
@@ -36,6 +36,7 @@ function Demo() {
   return <Loader />;
 }
 ```
+
 
 ## Adding custom loaders
 
@@ -73,6 +74,7 @@ function Demo() {
   );
 }
 ```
+
 
 ### Custom SVG loader
 
@@ -112,6 +114,7 @@ function Demo() {
 }
 ```
 
+
 ## children prop
 
 `Loader` supports `children` prop. If you pass anything to `children`, it will be rendered
@@ -142,6 +145,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -151,6 +156,7 @@ function Demo() {
 | loaders | Partial<Record<(string & {}) | "bars" | "dots" | "oval", MantineLoaderComponent>> | - | Object of loaders components, can be customized via default props or inline. |
 | size | number | MantineSize | (string & {}) | - | Controls <code>width</code> and <code>height</code> of the loader. <code>Loader</code> has predefined <code>xs</code>-<code>xl</code> values. Numbers are converted to rem. |
 | type | (string & {}) | "bars" | "dots" | "oval" | - | Loader type, key of <code>loaders</code> prop |
+
 
 #### Styles API
 

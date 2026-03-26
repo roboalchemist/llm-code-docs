@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-isomorphic-effect.md
 
 # useIsomorphicEffect
-
 Package: @mantine/hooks
 Import: import { UseIsomorphicEffect } from '@mantine/hooks';
 

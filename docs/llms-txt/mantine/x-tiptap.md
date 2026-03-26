@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/x-tiptap.md
 
 # Rich text editor
-
 Package: @mantine/tiptap
 Import: import { Rich text editor } from '@mantine/tiptap';
 Description: Tiptap based rich text editor
@@ -40,10 +39,14 @@ you should look for documentation on [tiptap.dev](https://tiptap.dev/) website.
 
 ## Usage
 
+
+
 ## Subtle variant
 
 `variant="subtle"` removes borders from the controls groups, makes controls
 larger and reduces spacing of the toolbar:
+
+
 
 ## Controlled
 
@@ -154,6 +157,8 @@ yarn add @tiptap/extension-placeholder
 npm install @tiptap/extension-placeholder
 ```
 
+
+
 ## Link extension
 
 `@mantine/tiptap` provides custom `Link` extension that is required to be used instead of
@@ -198,6 +203,8 @@ You can use the following controls to change text color:
 * `RichTextEditor.Color` – allows to apply given color with one click
 * `RichTextEditor.UnsetColor` – clears color styles
 
+
+
 ## Code highlight
 
 To use code highlight you will need to install additional packages:
@@ -210,11 +217,15 @@ yarn add lowlight @tiptap/extension-code-block-lowlight
 npm install lowlight @tiptap/extension-code-block-lowlight
 ```
 
+
+
 ## Source code mode
 
 You can use the following control to see and edit source code of editor content:
 
 * `RichTextEditor.SourceCode` – allows switching on/off source code mode
+
+
 
 ## Tasks
 
@@ -227,6 +238,8 @@ yarn add @tiptap/extension-task-item @tiptap/extension-task-list
 ```bash
 npm install @tiptap/extension-task-item @tiptap/extension-task-list
 ```
+
+
 
 ## Typography styles
 
@@ -255,15 +268,21 @@ function Demo() {
 Then you will be able to add your own styles either with [global styles](https://mantine.dev/styles/global-styles/)
 or with [Styles API](https://mantine.dev/styles/styles-api/):
 
+
+
 ## Bubble menu
 
 You can use [BubbleMenu](https://tiptap.dev/api/extensions/bubble-menu) component
 with any `RichTextEditor` controls. Bubble menu will appear near a selection of text:
 
+
+
 ## Floating menu
 
 You can use [FloatingMenu](https://tiptap.dev/api/extensions/floating-menu) component
 with any `RichTextEditor` controls. Floating menu will appear in an empty line:
+
+
 
 ## Sticky toolbar
 
@@ -271,6 +290,8 @@ Set `sticky` prop on `RichTextEditor.Toolbar` component to make toolbar sticky,
 control `top` property with `stickyOffset`. For example, on mantine.dev documentation
 website there is a header with `var(--docs-header-height)` height, in this case we will need to
 set `stickyOffset="var(--docs-header-height)"` to make sticky position correctly with fixed positioned element.
+
+
 
 ## Editor context
 
@@ -300,10 +321,14 @@ Use `RichTextEditor.Control` component to create custom controls. It supports al
 props supported by `button` element and has `active` prop to indicate active state.
 Note that you will need to set `aria-label` attribute to make control visible for screen readers.
 
+
+
 ## Change icons
 
 You can change icon of control by setting `icon` prop. It accepts a component
 that must handle `size` prop:
+
+
 
 ## Labels and localization
 

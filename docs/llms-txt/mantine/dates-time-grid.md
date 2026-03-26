@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/dates-time-grid.md
 
 # TimeGrid
-
 Package: @mantine/dates
 Import: import { TimeGrid } from '@mantine/dates';
 Description: Captures time value from the user with a predefined set of options
@@ -31,6 +30,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controlled
 
@@ -85,6 +85,7 @@ function Demo() {
 }
 ```
 
+
 ## Disable specific controls
 
 You can disable specific time values by providing an array of disabled
@@ -104,6 +105,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Allow deselect
 
@@ -126,6 +128,7 @@ function Demo() {
 }
 ```
 
+
 ## Change AM/PM labels
 
 #### Example: amPmLabels
@@ -143,6 +146,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Disabled
 
@@ -162,6 +166,8 @@ function Demo() {
   );
 }
 ```
+
+
 
 #### Props
 
@@ -183,6 +189,7 @@ function Demo() {
 | size | MantineSize | - | Control <code>font-size</code> of controls, key of <code>theme.fontSizes</code> or any valid CSS value |
 | value | string | null | - | Controlled component value |
 | withSeconds | boolean | - | Determines whether the seconds part should be displayed |
+
 
 #### Styles API
 

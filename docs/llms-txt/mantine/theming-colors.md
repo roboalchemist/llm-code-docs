@@ -71,6 +71,7 @@ function Demo() {
 }
 ```
 
+
 > **10 shades per color**
 >
 > Colors override must include **at least 10 shades per color**. Otherwise, you will get a TypeScript error
@@ -129,6 +130,7 @@ export function Demo() {
   );
 }
 ```
+
 
 ## colorsTuple
 
@@ -200,6 +202,7 @@ function Demo() {
 }
 ```
 
+
 ## primaryColor
 
 `theme.primaryColor` is a key of `theme.colors`, it is used:
@@ -230,6 +233,7 @@ function Demo() {
   );
 }
 ```
+
 
 > **CSS color values at `theme.primaryColor`**
 >
@@ -273,6 +277,7 @@ function Demo() {
   );
 }
 ```
+
 
 You can also customize primary shade for dark and light color schemes separately:
 
@@ -340,6 +345,7 @@ function Demo() {
 }
 ```
 
+
 ## Colors index reference
 
 You can reference colors by index in `color` prop and [style props](https://mantine.dev/styles/style-props), for example `c` prop:
@@ -358,6 +364,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Difference between color and c props
 
@@ -389,6 +396,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Colors variant resolver
 
@@ -499,6 +507,7 @@ function Demo() {
 }
 ```
 
+
 ## Colors generation
 
 You can use [colors generator](https://mantine.dev/colors-generator) to generate 10 shades of color based on a single value
@@ -561,6 +570,7 @@ declare module '@mantine/core' {
   }
 }
 ```
+
 
 #### Styles API
 

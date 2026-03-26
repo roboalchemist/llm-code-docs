@@ -75,6 +75,7 @@ function Demo() {
 }
 ```
 
+
 > **Choosing between unstyled prop and headless components**
 >
 > `unstyled` prop is useful when you want to remove library styles from a single component,

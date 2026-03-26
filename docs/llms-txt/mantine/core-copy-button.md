@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-copy-button.md
 
 # CopyButton
-
 Package: @mantine/core
 Import: import { CopyButton } from '@mantine/core';
 Description: Copies given text to clipboard
@@ -31,6 +30,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Security
 
@@ -62,11 +62,13 @@ function Demo() {
 }
 ```
 
+
 <ServerComponentsIncompatible component="CopyButton" />
 
 ## Server components
 
 CopyButton is not compatible with React Server Components as it uses useEffect and other client-side features. You can use it in client components only.
+
 
 #### Props
 

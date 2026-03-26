@@ -1,0 +1,116 @@
+# Source: https://docs.syncfusion.com/document-processing/pdf/pdf-viewer/react/how-to/add-signature.md
+
+## Add signature in React PDF Viewer component
+
+The PDF Viewer library allows adding a signature to a signature field in a loaded PDF document programmatically by handling the `formFieldClick` event.
+
+Follow these steps
+
+1. Follow the Syncfusion [getting-started](https://help.syncfusion.com/document-processing/pdf/pdf-viewer/react/getting-started/) guide for React PDF Viewer.
+2. Add the following code snippet to handle signature field clicks and set or clear the signature value.
+
+{% tabs %}
+{% highlight js tabtitle="Standalone" %}
+{% raw %}
+
+  <PdfViewerComponent
+    id="container"
+    documentPath="https://cdn.syncfusion.com/content/pdf/form-filling-document.pdf"
+    resourceUrl="https://cdn.syncfusion.com/ej2/31.2.2/dist/ej2-pdfviewer-lib"
+    style={{ height: '640px' }}
+    formFieldClick={fieldClick}>
+    <Inject services={[ Toolbar, Magnification, Navigation, Annotation, LinkAnnotation, BookmarkView,
+                        ThumbnailView, Print, TextSelection, TextSearch, FormDesigner, FormFields ]} />
+  </PdfViewerComponent>
+
+  function fieldClick(args) {
+    var viewer = document.getElementById('container').ej2_instances[0];
+    if (viewer) {
+      args.cancel = true;
+      if (args.field.type === 'SignatureField') {
+        var forms = viewer.formFieldCollections;
+        forms.map((r) => {
+          if (r.id === args.field.id) {
+            console.log(args.field.value);
+            var el = document.getElementById(r.id);
+            if (el) {
+              if (el.style.textAlign !== 'center') {
+                el.style.textAlign = 'center';
+              }
+              if (el.style.fontStyle !== 'italic') {
+                el.style.fontStyle = 'italic';
+              }
+              if (el.style.fontWeight !== 'italic') {
+                el.style.fontWeight = 'italic';
+              }
+              if (args.field.value !== '' && args.field.value) {
+                args.field.value = '';
+                viewer.updateFormFieldsValue(args.field);
+              } else {
+                args.field.signatureType = ['Type'];
+                args.field.value = 'DA FIRMARE';
+                args.cancel = true;
+                viewer.updateFormFieldsValue(args.field);
+              }
+            }
+          }
+        });
+      }
+    }
+  }
+
+{% endraw %}
+{% endhighlight %}
+{% highlight js tabtitle="Server-Backed" %}
+{% raw %}
+
+  <PdfViewerComponent
+    id="container"
+    documentPath="https://cdn.syncfusion.com/content/pdf/form-filling-document.pdf"
+    serviceUrl="https://document.syncfusion.com/web-services/pdf-viewer/api/pdfviewer"
+    style={{ height: '640px' }}
+    formFieldClick={fieldClick}>
+    <Inject services={[ Toolbar, Magnification, Navigation, Annotation, LinkAnnotation, BookmarkView,
+                        ThumbnailView, Print, TextSelection, TextSearch, FormDesigner, FormFields ]} />
+  </PdfViewerComponent>
+
+  function fieldClick(args) {
+    var viewer = document.getElementById('container').ej2_instances[0];
+    if (viewer) {
+      args.cancel = true;
+      if (args.field.type === 'SignatureField') {
+        var forms = viewer.formFieldCollections;
+        forms.map((r) => {
+          if (r.id === args.field.id) {
+            console.log(args.field.value);
+            var el = document.getElementById(r.id);
+            if (el) {
+              if (el.style.textAlign !== 'center') {
+                el.style.textAlign = 'center';
+              }
+              if (el.style.fontStyle !== 'italic') {
+                el.style.fontStyle = 'italic';
+              }
+              if (el.style.fontWeight !== 'italic') {
+                el.style.fontWeight = 'italic';
+              }
+              if (args.field.value !== '' && args.field.value) {
+                args.field.value = '';
+                viewer.updateFormFieldsValue(args.field);
+              } else {
+                args.field.signatureType = ['Type'];
+                args.field.value = 'DA FIRMARE';
+                args.cancel = true;
+                viewer.updateFormFieldsValue(args.field);
+              }
+            }
+          }
+        });
+      }
+    }
+  }
+{% endraw %}
+{% endhighlight %}
+{% endtabs %}
+
+Find the Sample [how to add signature in signature field](https://stackblitz.com/edit/react-ce6gat?file=src%2Findex.js)

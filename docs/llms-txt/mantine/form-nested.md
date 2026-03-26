@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/form-nested.md
 
 # formNested
-
 Package: @mantine/form
 Import: import { FormNested } from '@mantine/form';
 
@@ -89,6 +88,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Set nested object value
 
@@ -211,6 +211,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## List handlers
 

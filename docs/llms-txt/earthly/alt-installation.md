@@ -68,13 +68,11 @@ Before installing Earthly, you must first set up the Earthly apt repo.
       gnupg \
       lsb-release
    ```
-
 2. Download Earthly's GPG key:
 
    ```bash
    curl -fsSL https://pkg.earthly.dev/earthly.pgp | sudo gpg --dearmor -o /usr/share/keyrings/earthly-archive-keyring.gpg
    ```
-
 3. Setup the stable repo:
 
    ```bash
@@ -82,7 +80,6 @@ Before installing Earthly, you must first set up the Earthly apt repo.
      "deb [arch=amd64 signed-by=/usr/share/keyrings/earthly-archive-keyring.gpg] https://pkg.earthly.dev/deb \
      stable main" | sudo tee /etc/apt/sources.list.d/earthly.list > /dev/null
    ```
-
 4. Install Earthly:
 
    ```bash
@@ -99,7 +96,6 @@ Fedora users can use our rpm repo to install Earthly.
    ```bash
    sudo dnf -y install dnf-plugins-core
    ```
-
 2. Add the Earthly repo to your system:
 
    ```bash
@@ -107,7 +103,6 @@ Fedora users can use our rpm repo to install Earthly.
        --add-repo \
        https://pkg.earthly.dev/earthly.repo
    ```
-
 3. Install Earthly:
 
    ```bash
@@ -123,7 +118,6 @@ CentOS users can use our rpm repo to install Earthly.
    ```bash
    sudo yum install -y yum-utils
    ```
-
 2. Add the Earthly repo to your system:
 
    ```bash
@@ -131,7 +125,6 @@ CentOS users can use our rpm repo to install Earthly.
        --add-repo \
        https://pkg.earthly.dev/earthly.repo
    ```
-
 3. Install Earthly:
 
    ```bash

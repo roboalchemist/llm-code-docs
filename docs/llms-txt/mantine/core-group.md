@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-group.md
 
 # Group
-
 Package: @mantine/core
 Import: import { Group } from '@mantine/core';
 Description: Compose elements and components in a horizontal flex container
@@ -26,6 +25,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## preventGrowOverflow
 
@@ -71,6 +71,7 @@ function Demo() {
 }
 ```
 
+
 ## Group children
 
 **!important** `Group` works correctly only with React elements.
@@ -100,6 +101,7 @@ function InvalidDemo() {
 
 Flex component uses CSS flexbox gap to add spacing between children. Flexbox gap is supported by all modern browsers, but if you need to support older browsers, use Space component instead.
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -110,6 +112,7 @@ Flex component uses CSS flexbox gap to add spacing between children. Flexbox gap
 | justify | JustifyContent | - | Controls <code>justify-content</code> CSS property |
 | preventGrowOverflow | boolean | - | Determines whether children should take only dedicated amount of space (<code>max-width</code> style is set based on the number of children) |
 | wrap | FlexWrap | - | Controls <code>flex-wrap</code> CSS property |
+
 
 #### Styles API
 

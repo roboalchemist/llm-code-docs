@@ -1,0 +1,19 @@
+# Source: https://docs.infrahub.app/infrahubctl/infrahubctl-info.md
+
+# `infrahubctl info`
+
+Display the status of the Python SDK.
+
+**Usage**:
+
+```
+$ infrahubctl info [OPTIONS]
+```
+
+**Options**:
+
+* `--detail / --no-detail`: Display detailed information. \[default: no-detail]
+* `--config-file TEXT`: \[env var: INFRAHUBCTL\_CONFIG; default: infrahubctl.toml]
+* `--install-completion`: Install completion for the current shell.
+* `--show-completion`: Show completion for the current shell, to copy it or customize the installation.
+* `--help`: Show this message and exit.

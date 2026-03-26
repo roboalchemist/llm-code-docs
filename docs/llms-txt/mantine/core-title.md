@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-title.md
 
 # Title
-
 Package: @mantine/core
 Import: import { Title } from '@mantine/core';
 Description: h1-h6 heading
@@ -33,6 +32,7 @@ function Demo() {
 }
 ```
 
+
 ## Size
 
 You can change Title `size` independent of its `order`:
@@ -59,6 +59,7 @@ function Demo() {
 }
 ```
 
+
 ## Text wrap
 
 Use `textWrap` prop to control [text-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap)
@@ -78,6 +79,7 @@ function Demo() {
   );
 }
 ```
+
 
 You can also set `textWrap` on [theme](https://mantine.dev/theming/theme-object):
 
@@ -121,6 +123,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -129,6 +133,7 @@ function Demo() {
 | order | TitleOrder | - | Heading order (1-6), controls <code>font-size</code> style if <code>size</code> prop is not set |
 | size | TitleSize | - | Changes title size, if not set, then size is controlled by <code>order</code> prop |
 | textWrap | "wrap" | "nowrap" | "balance" | "pretty" | "stable" | - | Heading <code>text-wrap</code> CSS property |
+
 
 #### Styles API
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-tabs.md
 
 # Tabs
-
 Package: @mantine/core
 Import: import { Tabs } from '@mantine/core';
 Description: Switch between different views
@@ -44,6 +43,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controlled Tabs
 
@@ -125,6 +125,7 @@ function Demo() {
 }
 ```
 
+
 ## Tabs position
 
 #### Example: position
@@ -144,6 +145,7 @@ function Demo() {
   );
 }
 ```
+
 
 To display tab on the opposite side, set `margin-left: auto` with `ml="auto"` prop or with `className`:
 
@@ -167,6 +169,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Inverted tabs
 
@@ -194,6 +197,7 @@ function Demo() {
 }
 ```
 
+
 ## Vertical tabs placement
 
 To change placement of `Tabs.List` in vertical orientation set `placement` prop:
@@ -219,6 +223,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Custom variants
 
@@ -306,6 +311,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled tabs
 
 Set `disabled` prop on `Tabs.Tab` component to disable tab.
@@ -332,6 +338,7 @@ function Demo() {
 }
 ```
 
+
 ## Activation mode
 
 By default, tabs are activated when user presses arrows keys or Home/End keys.
@@ -351,6 +358,7 @@ function Demo() {
 }
 ```
 
+
 ## Tab deactivation
 
 By default, active tab cannot be deactivated. To allow that set `allowTabDeactivation` on `Tabs` component:
@@ -368,6 +376,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Unmount inactive tabs
 
@@ -505,6 +514,7 @@ function Demo() {
 }
 ```
 
+
 Example of Styles API usage to customize tab styles:
 
 #### Example: customize
@@ -590,6 +600,7 @@ function Demo() {
 }
 ```
 
+
 ## Accessibility
 
 Tabs component follows [WAI-ARIA recommendations](https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-2/tabs.html) on accessibility.
@@ -646,6 +657,7 @@ function Demo() {
 
 ## Keyboard interactions
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -665,6 +677,7 @@ function Demo() {
 | placement | "left" | "right" | - | <code>Tabs.List</code> placement relative to <code>Tabs.Panel</code>, applicable only when <code>orientation="vertical"</code> |
 | radius | MantineRadius | number | - | Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>@default <code>theme.defaultRadius</code> |
 | value | string | null | - | Controlled component value |
+
 
 #### Styles API
 

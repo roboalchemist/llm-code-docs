@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/x-spotlight.md
 
 # Spotlight
-
 Package: @mantine/spotlight
 Import: import { Spotlight } from '@mantine/spotlight';
 Description: Command center for your application
@@ -78,6 +77,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Actions
 
@@ -217,6 +217,7 @@ function Demo() {
 }
 ```
 
+
 ## Scrollable actions list
 
 By default, `Spotlight` actions list is not scrollable. If you have a lot of actions that
@@ -270,6 +271,7 @@ function Demo() {
 }
 ```
 
+
 ## Actions groups
 
 `Spotlight` supports actions groups, you can use them to group actions by category:
@@ -319,6 +321,7 @@ function Demo() {
 }
 ```
 
+
 ## Compound components
 
 If you need more control over spotlight rendering and logic, use compound components.
@@ -362,6 +365,7 @@ function Demo() {
   );
 }
 ```
+
 
 For example, with compound components pattern you can customize actions contents:
 
@@ -445,6 +449,7 @@ function Demo() {
 }
 ```
 
+
 ## Fixed elements offset
 
 `Spotlight` component uses [react-remove-scroll](https://github.com/theKashey/react-remove-scroll)
@@ -466,6 +471,7 @@ function Demo() {
   );
 }
 ```
+
 
 #### Props
 
@@ -520,6 +526,7 @@ function Demo() {
 | xOffset | MarginLeft<string | number> | - | Left/right modal offset |
 | yOffset | MarginTop<string | number> | - | Top/bottom modal offset |
 | zIndex | string | number | - | <code>z-index</code> CSS property of the root element |
+
 
 #### Styles API
 

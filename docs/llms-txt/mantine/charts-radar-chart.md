@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/charts-radar-chart.md
 
 # RadarChart
-
 Package: @mantine/charts
 Import: import { RadarChart } from '@mantine/charts';
 Description: Radar chart component
@@ -57,6 +56,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Multiple series
 
@@ -119,6 +119,7 @@ export const data = [
 ];
 ```
 
+
 ## Change color
 
 You can reference colors from [theme](https://mantine.dev/theming/theme-object) the same way as in
@@ -156,6 +157,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Hide/show chart parts
 
@@ -216,6 +218,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## With tooltip and dots
 
@@ -278,6 +281,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Recharts props
 
@@ -356,6 +360,7 @@ export const data = [
 ];
 ```
 
+
 ## Multiple series
 
 You can display multiple series on the same radar chart:
@@ -417,6 +422,7 @@ export const data = [
 ];
 ```
 
+
 ## Change color
 
 You can reference colors from [theme](https://mantine.dev/theming/theme-object) the same way as in
@@ -454,6 +460,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Hide/show chart parts
 
@@ -514,6 +521,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## With tooltip and dots
 
@@ -577,6 +585,7 @@ export const data = [
 ];
 ```
 
+
 ## Recharts props
 
 To pass props down to the underlying recharts components, use the following props:
@@ -630,7 +639,6 @@ export const data = [
     'Sales February': 150,
   },
 ];
-
 ```
 
 
@@ -696,6 +704,8 @@ export const data = [
 ];
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -722,6 +732,7 @@ export const data = [
 | withPolarGrid | boolean | - | Determines whether PolarGrid component should be displayed |
 | withPolarRadiusAxis | boolean | - | Determines whether PolarRadiusAxisProps component should be displayed |
 | withTooltip | boolean | - | Determines whether Tooltip component should be displayed |
+
 
 #### Styles API
 

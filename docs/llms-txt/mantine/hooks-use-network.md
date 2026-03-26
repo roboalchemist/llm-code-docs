@@ -1,13 +1,14 @@
 # Source: https://mantine.dev/llms/hooks-use-network.md
 
 # useNetwork
-
 Package: @mantine/hooks
 Import: import { UseNetwork } from '@mantine/hooks';
 
 ## Usage
 
 `use-network` hook returns an object with current connection status:
+
+
 
 ## Browser support
 

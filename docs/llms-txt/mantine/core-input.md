@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-input.md
 
 # Input
-
 Package: @mantine/core
 Import: import { Input } from '@mantine/core';
 Description: Base component to create custom inputs
@@ -49,6 +48,7 @@ function Demo() {
 }
 ```
 
+
 <InputSections component="Input" />
 
 ## Input sections
@@ -86,6 +86,7 @@ function Demo() {
 }
 ```
 
+
 ## Change input element
 
 Input is a [polymorphic component](https://mantine.dev/guides/polymorphic), the default root element is `input`,
@@ -120,6 +121,7 @@ function Demo() {
 }
 ```
 
+
 Example of using [react-imask](https://github.com/uNmAnNeR/imaskjs/tree/master/packages/react-imask) with `Input`:
 
 #### Example: mask
@@ -132,6 +134,7 @@ function Demo() {
   return <Input component={IMaskInput} mask="+7 (000) 000-00-00" placeholder="Your phone" />;
 }
 ```
+
 
 ## Input.Wrapper component
 
@@ -153,6 +156,7 @@ function Wrapper() {
   );
 }
 ```
+
 
 ## inputWrapperOrder
 
@@ -188,6 +192,7 @@ function Demo() {
 }
 ```
 
+
 ## inputContainer
 
 With `inputContainer` prop, you can enhance inputs that use `Input.Wrapper` under the hood,
@@ -219,6 +224,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## required and withAsterisk props
 
@@ -284,6 +290,7 @@ function Demo() {
 }
 ```
 
+
 ## Input.Label, Input.Description and Input.Error components
 
 `Input.Label`, `Input.Error` and `Input.Description` components can be used to create custom
@@ -305,6 +312,7 @@ function Demo() {
 }
 ```
 
+
 ## Input.Placeholder component
 
 `Input.Placeholder` component can be used to add placeholder to `Input` and `InputBase` components that are based on `button` element
@@ -323,6 +331,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Input.ClearButton component
 
@@ -350,6 +359,7 @@ function Demo(){
   );
 }
 ```
+
 
 ## Default props on theme
 
@@ -397,6 +407,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Styles on theme
 
@@ -450,6 +461,7 @@ function Demo() {
 }
 ```
 
+
 ## Change focus styles
 
 Use `&:focus-within` selector to change inputs focus styles. You can apply these styles to
@@ -488,6 +500,7 @@ function Demo() {
 }
 ```
 
+
 ## InputBase component
 
 `InputBase` component combines `Input` and `Input.Wrapper` components and supports `component` prop:
@@ -518,6 +531,7 @@ function Demo() {
 }
 ```
 
+
 ## Styles API
 
 `Input` and `Input.Wrapper` components support [Styles API](https://mantine.dev/styles/styles-api) –
@@ -537,6 +551,7 @@ function Demo() {
 }
 ```
 
+
 `Input.Wrapper` Styles API selectors:
 
 #### Example: wrapperStylesApi
@@ -548,6 +563,7 @@ function Demo() {
   return <Input.Wrapper label="Input label" description="Input description" error="Input error" withAsterisk />;
 }
 ```
+
 
 <GetElementRef component="Input" refType="input" />
 
@@ -617,6 +633,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -641,6 +658,7 @@ function Demo() {
 | withAria | boolean | - | Determines whether <code>aria-</code> and other accessibility attributes should be added to the input |
 | withErrorStyles | boolean | - | Determines whether the input should have red border and red text color when the <code>error</code> prop is set |
 | wrapperProps | WrapperProps | - | Props passed down to the root element of the <code>Input</code> component |
+
 
 #### Styles API
 

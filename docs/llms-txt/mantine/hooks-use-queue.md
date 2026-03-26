@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-queue.md
 
 # useQueue
-
 Package: @mantine/hooks
 Import: import { UseQueue } from '@mantine/hooks';
 

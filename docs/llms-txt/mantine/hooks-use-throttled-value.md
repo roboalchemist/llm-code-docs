@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-throttled-value.md
 
 # useThrottledValue
-
 Package: @mantine/hooks
 Import: import { UseThrottledValue } from '@mantine/hooks';
 
@@ -9,6 +8,8 @@ Import: import { UseThrottledValue } from '@mantine/hooks';
 
 `useThrottledValue` accepts a value and a wait time in milliseconds.
 It returns a throttled value that cannot change more than once every `wait` milliseconds.
+
+
 
 ## Definition
 

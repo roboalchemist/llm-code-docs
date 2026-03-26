@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/charts-funnel-chart.md
 
 # FunnelChart
-
 Package: @mantine/charts
 Import: import { FunnelChart } from '@mantine/charts';
 Description: Funnel chart component
@@ -30,6 +29,7 @@ export const data = [
 ];
 ```
 
+
 ## Segments labels
 
 Set `withLabels` prop to display labels next to each segment.
@@ -54,6 +54,7 @@ export const data = [
   { name: 'Other', value: 200, color: 'gray.6' },
 ];
 ```
+
 
 ## Size and thickness
 
@@ -80,6 +81,7 @@ export const data = [
 ];
 ```
 
+
 ## Segment color
 
 You can reference colors from [theme](https://mantine.dev/theming/theme-object) the same way as in
@@ -102,6 +104,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Tooltip data source
 
@@ -145,6 +148,7 @@ export const data = [
 ];
 ```
 
+
 ## Without tooltip
 
 To remove the tooltip, set `withTooltip={false}`:
@@ -169,6 +173,7 @@ export const data = [
 ];
 ```
 
+
 ## Segments stroke
 
 Use `strokeWidth` prop to control the width of the stroke around each segment:
@@ -192,6 +197,7 @@ export const data = [
   { name: 'Other', value: 200, color: 'gray.6' },
 ];
 ```
+
 
 To change color of the stroke, use `strokeColor` prop. You can reference colors from [theme](https://mantine.dev/theming/theme-object) the same way as in
 other components, for example, `blue`, `red.5`, `orange.7`, etc. Any valid CSS
@@ -243,6 +249,8 @@ export const data = [
 ];
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -262,6 +270,7 @@ export const data = [
 | valueFormatter | (value: number) => string | - | A function to format values inside the tooltip and labels |
 | withLabels | boolean | - | Determines whether each segment should have associated label |
 | withTooltip | boolean | - | Determines whether the tooltip should be displayed when a section is hovered |
+
 
 #### Styles API
 

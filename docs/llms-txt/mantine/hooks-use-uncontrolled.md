@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-uncontrolled.md
 
 # useUncontrolled
-
 Package: @mantine/hooks
 Import: import { UseUncontrolled } from '@mantine/hooks';
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/x-modals.md
 
 # Modals manager
-
 Package: @mantine/modals
 Import: import { Modals manager } from '@mantine/modals';
 Description: Centralized modals manager with option to handle state of multi-step modals
@@ -63,6 +62,7 @@ function Demo() {
 }
 ```
 
+
 `openConfirmModal` function accepts one argument with following properties:
 
 * `modalId` – modal id, defaults to random id, can be used to close modal programmatically
@@ -104,6 +104,7 @@ function Demo() {
   return <Button onClick={openDeleteModal} color="red">Delete account</Button>;
 }
 ```
+
 
 To setup shared labels for confirm modals set `labels` on `ModalsProvider`:
 
@@ -179,6 +180,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Typesafe context modals
 
@@ -264,6 +266,7 @@ function Demo() {
 }
 ```
 
+
 ## Multiple opened modals
 
 You can open multiple layers of modals. Every opened modal is added as first element in modals queue.
@@ -310,6 +313,7 @@ function Demo() {
 }
 ```
 
+
 ## Modal props
 
 You can pass props down to the [Modal](https://mantine.dev/core/modal) component by adding them to the
@@ -342,6 +346,7 @@ function Demo() {
   return <Button onClick={openModal}>Open confirm modal</Button>;
 }
 ```
+
 
 ## Dynamic Content and the modals manager
 
@@ -382,6 +387,7 @@ function Demo() {
   );
 }
 ```
+
 
 Context modals can also be updated dynamically using `modals.updateContextModal`:
 
@@ -456,3 +462,4 @@ function Demo() {
   );
 }
 ```
+

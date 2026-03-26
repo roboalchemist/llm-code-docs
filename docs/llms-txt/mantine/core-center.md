@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-center.md
 
 # Center
-
 Package: @mantine/core
 Import: import { Center } from '@mantine/core';
 Description: Centers content vertically and horizontally
@@ -21,6 +20,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Inline
 
@@ -45,6 +45,7 @@ function Demo() {
 }
 ```
 
+
 <Polymorphic defaultElement="div" changeToElement="button" component="Center" />
 
 ## Polymorphic component
@@ -65,12 +66,14 @@ Note that polymorphic components props types are different from regular componen
 
 If you want to create a wrapper for a polymorphic component that is not polymorphic (does not support component prop), then your component props interface should extend HTML element props.
 
+
 #### Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | children | React.ReactNode | - | Content to center |
 | inline | boolean | - | If set, <code>inline-flex</code> is used instead of <code>flex</code> |
+
 
 #### Styles API
 

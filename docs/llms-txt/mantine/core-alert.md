@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-alert.md
 
 # Alert
-
 Package: @mantine/core
 Import: import { Alert } from '@mantine/core';
 Description: Attract user attention with important static message
@@ -24,6 +23,7 @@ function Demo() {
 }
 ```
 
+
 #### Example: stylesApi
 
 ```tsx
@@ -43,6 +43,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Accessibility
 
@@ -69,6 +70,7 @@ function AlsoValid() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -81,6 +83,7 @@ function AlsoValid() {
 | radius | MantineRadius | number | - | Key of <code>theme.radius</code> or any valid CSS value to set border-radius |
 | title | React.ReactNode | - | Alert title |
 | withCloseButton | boolean | - | Determines whether close button should be displayed |
+
 
 #### Styles API
 

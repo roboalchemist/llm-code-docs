@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-select.md
 
 # Select
-
 Package: @mantine/core
 Import: import { Select } from '@mantine/core';
 Description: Custom searchable select
@@ -28,6 +27,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controlled
 
@@ -92,6 +92,7 @@ function Demo() {
 }
 ```
 
+
 ## Clearable
 
 Set `clearable` prop to display the clear button in the right section. The button is not displayed
@@ -118,6 +119,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Allow deselect
 
@@ -154,6 +156,7 @@ function Demo() {
 }
 ```
 
+
 ## Searchable
 
 Set `searchable` prop to allow filtering options by user input:
@@ -174,6 +177,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controlled search value
 
@@ -219,6 +223,7 @@ function Demo() {
 }
 ```
 
+
 ## Checked option icon
 
 Set `checkIconPosition` prop to `left` or `right` to control position of check icon in active option.
@@ -244,6 +249,7 @@ function Demo() {
   );
 }
 ```
+
 
 <ComboboxData component="Select" />
 
@@ -283,6 +289,7 @@ function Demo() {
 }
 ```
 
+
 ## Sort options
 
 By default, options are sorted by their position in the data array. You can change this behavior
@@ -316,6 +323,7 @@ function Demo() {
 }
 ```
 
+
 <ComboboxLargeData component="Select" />
 
 ## Large datasets
@@ -343,6 +351,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## renderOption
 
@@ -400,6 +409,7 @@ function Demo() {
 }
 ```
 
+
 ## Scrollable dropdown
 
 By default, the options list is wrapped with [ScrollArea.Autosize](https://mantine.dev/core/scroll-area).
@@ -440,6 +450,7 @@ function Demo() {
 }
 ```
 
+
 ## Group options
 
 #### Example: groups
@@ -460,6 +471,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Disabled options
 
@@ -485,6 +497,7 @@ function Demo() {
   );
 }
 ```
+
 
 <ComboboxProps component="Select" />
 
@@ -516,6 +529,7 @@ function Demo() {
 }
 ```
 
+
 ## Control dropdown opened state
 
 You can control dropdown opened state with `dropdownOpened` prop. Additionally,
@@ -546,6 +560,7 @@ function Demo() {
 }
 ```
 
+
 ## Dropdown position
 
 By default, the dropdown is displayed below the input if there is enough space; otherwise it is displayed above the input.
@@ -571,6 +586,7 @@ function Demo() {
 }
 ```
 
+
 ## Dropdown width
 
 To change dropdown width, set `width` prop in `comboboxProps`. By default,
@@ -592,6 +608,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Dropdown offset
 
@@ -634,6 +651,7 @@ function Demo() {
   }
 }
 ```
+
 
 ## Prevent horizontal infinite scrolling
 
@@ -678,6 +696,7 @@ function Demo() {
 }
 ```
 
+
 ## Dropdown padding
 
 #### Example: dropdownPadding
@@ -706,6 +725,7 @@ function Demo() {
 }
 ```
 
+
 ## Dropdown shadow
 
 #### Example: dropdownShadow
@@ -724,6 +744,7 @@ function Demo() {
   );
 }
 ```
+
 
 <InputSections component="Select" />
 
@@ -761,6 +782,7 @@ function Demo() {
 }
 ```
 
+
 ## Input props
 
 <InputFeatures component="Select" element="input" />
@@ -784,6 +806,7 @@ function Demo() {
 }
 ```
 
+
 ## Read only
 
 Set `readOnly` to make the input read only. When `readOnly` is set,
@@ -806,6 +829,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled
 
 Set `disabled` to disable the input. When `disabled` is set,
@@ -827,6 +851,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Error state
 
@@ -856,6 +881,7 @@ function Demo() {
 }
 ```
 
+
 #### Example: stylesApi
 
 ```tsx
@@ -876,6 +902,7 @@ function Demo() {
   );
 }
 ```
+
 
 <GetElementRef component="Select" refType="input" />
 
@@ -915,6 +942,7 @@ function Demo() {
   );
 }
 ```
+
 
 #### Props
 
@@ -979,6 +1007,7 @@ function Demo() {
 | withErrorStyles | boolean | - | Determines whether the input should have red border and red text color when the <code>error</code> prop is set |
 | withScrollArea | boolean | - | Determines whether the options should be wrapped with <code>ScrollArea.AutoSize</code>, <code>true</code> by default |
 | wrapperProps | WrapperProps | - | Props passed down to the root element |
+
 
 #### Styles API
 

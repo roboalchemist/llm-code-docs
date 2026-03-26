@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-stack.md
 
 # Stack
-
 Package: @mantine/core
 Import: import { Stack } from '@mantine/core';
 Description: Compose elements and components in a vertical flex container
@@ -31,11 +30,13 @@ function Demo() {
 }
 ```
 
+
 <FlexboxGapSupport component="Stack" />
 
 ## Browser support
 
 Flex component uses CSS flexbox gap to add spacing between children. Flexbox gap is supported by all modern browsers, but if you need to support older browsers, use Space component instead.
+
 
 #### Props
 
@@ -44,6 +45,7 @@ Flex component uses CSS flexbox gap to add spacing between children. Flexbox gap
 | align | AlignItems | - | Controls <code>align-items</code> CSS property |
 | gap | MantineSpacing | - | Key of <code>theme.spacing</code> or any valid CSS value to set <code>gap</code> property, numbers are converted to rem |
 | justify | JustifyContent | - | Controls <code>justify-content</code> CSS property |
+
 
 #### Styles API
 

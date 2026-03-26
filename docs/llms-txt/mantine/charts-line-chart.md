@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/charts-line-chart.md
 
 # LineChart
-
 Package: @mantine/charts
 Import: import { LineChart } from '@mantine/charts';
 Description: Line chart component
@@ -67,6 +66,7 @@ export const data = [
 ];
 ```
 
+
 ## Gradient type
 
 Set `type="gradient"` to render a line chart with gradient fill. To customize
@@ -122,6 +122,7 @@ export const data = [
   { date: 'Dec', temperature: -10 },
 ];
 ```
+
 
 ## Legend
 
@@ -185,6 +186,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Legend position
 
@@ -251,6 +253,7 @@ export const data = [
 ];
 ```
 
+
 ## Series labels
 
 By default, series `name` is used as a label. To change it, set `label`
@@ -315,6 +318,7 @@ export const data = [
 ];
 ```
 
+
 ## Connect nulls
 
 Use `connectNulls` prop to specify whether to connect a data point across null
@@ -377,6 +381,7 @@ export const data = [
 ];
 ```
 
+
 ## Points labels
 
 To display labels on data points, set `withPointLabels`:
@@ -438,6 +443,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## X and Y axis props
 
@@ -505,6 +511,7 @@ export const data = [
 ];
 ```
 
+
 ## Axis labels
 
 Use `xAxisLabel` and `yAxisLabel` props to display axis labels:
@@ -568,6 +575,7 @@ export const data = [
 ];
 ```
 
+
 ## X axis offset
 
 Use `xAxisProps` to set padding between the charts ends and the x-axis:
@@ -630,6 +638,7 @@ export const data = [
 ];
 ```
 
+
 ## Y axis scale
 
 Use `yAxisProps` to change domain of the Y axis. For example, if you know that
@@ -691,6 +700,7 @@ export const data = [
 ];
 ```
 
+
 ## Right Y axis
 
 To display additional Y axis on the right side of the chart, set `withRightYAxis` prop.
@@ -734,6 +744,7 @@ export const biaxialData = [
   { name: 'Page G', uv: 3490, pv: 4300 },
 ];
 ```
+
 
 ## Value formatter
 
@@ -797,6 +808,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Set curve type per line
 
@@ -863,6 +875,7 @@ export const data = [
 ];
 ```
 
+
 ## Line color
 
 You can reference colors from [theme](https://mantine.dev/theming/theme-object) the same way as in
@@ -906,6 +919,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Change line color depending on color scheme
 
@@ -980,6 +994,7 @@ export const data = [
 ];
 ```
 
+
 ## Stroke dash array
 
 Set `strokeDasharray` prop to control the stroke dash array of the grid and cursor
@@ -1043,6 +1058,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Grid and text colors
 
@@ -1121,6 +1137,7 @@ export const data = [
   },
 ];
 ```
+
 
 If your application has only one color scheme, you can use `gridColor` and `textColor`
 props instead of CSS variables:
@@ -1210,6 +1227,7 @@ export const data = [
 ];
 ```
 
+
 ## Units
 
 Set `unit` prop to render a unit label next to the y-axis ticks and tooltip values:
@@ -1271,6 +1289,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Custom tooltip
 
@@ -1361,6 +1380,7 @@ export const data = [
 ];
 ```
 
+
 ## Remove tooltip
 
 To remove tooltip, set `withTooltip={false}`. It also removes the cursor line
@@ -1423,6 +1443,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Customize dots
 
@@ -1488,6 +1509,7 @@ export const data = [
 ];
 ```
 
+
 ## Stroke width
 
 Use `strokeWidth` prop to control the stroke width of all lines:
@@ -1550,6 +1572,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Sync multiple LineCharts
 
@@ -1630,6 +1653,7 @@ export const data = [
 ];
 ```
 
+
 ## Vertical orientation
 
 Set `orientation="vertical"` to render a vertical line chart:
@@ -1691,6 +1715,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Dashed line
 
@@ -1754,6 +1779,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Reference lines
 
@@ -1819,6 +1845,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Reference area
 
@@ -1901,6 +1928,8 @@ export const data = [
 ];
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -1945,6 +1974,7 @@ export const data = [
 | xAxisProps | RechartsProps | - | Props passed down to the <code>XAxis</code> recharts component |
 | yAxisLabel | string | - | A label to display next to the y-axis |
 | yAxisProps | RechartsProps | - | Props passed down to the <code>YAxis</code> recharts component |
+
 
 #### Styles API
 

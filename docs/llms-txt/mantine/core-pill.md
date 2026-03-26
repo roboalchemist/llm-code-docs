@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-pill.md
 
 # Pill
-
 Package: @mantine/core
 Import: import { Pill } from '@mantine/core';
 Description: Removable and non-removable tags
@@ -17,6 +16,7 @@ function Demo() {
   return <Pill>React</Pill>;
 }
 ```
+
 
 ## Inside inputs
 
@@ -45,6 +45,7 @@ function Demo() {
 }
 ```
 
+
 #### Example: stylesApi
 
 ```tsx
@@ -56,6 +57,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -66,6 +69,7 @@ function Demo() {
 | removeButtonProps | CloseButtonProps & Omit<DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>, "ref"> | - | Props passed down to the remove button |
 | size | MantineSize | - | Controls pill <code>font-size</code> and <code>padding</code> |
 | withRemoveButton | boolean | - | Controls visibility of the remove button |
+
 
 #### Styles API
 

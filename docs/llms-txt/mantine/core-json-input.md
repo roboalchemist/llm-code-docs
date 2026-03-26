@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-json-input.md
 
 # JsonInput
-
 Package: @mantine/core
 Import: import { JsonInput } from '@mantine/core';
 Description: Capture json data from user
@@ -29,6 +28,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controlled
 
@@ -64,6 +64,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled state
 
 #### Example: disabled
@@ -77,6 +78,7 @@ function Demo() {
   );
 }
 ```
+
 
 #### Example: stylesApi
 
@@ -100,6 +102,7 @@ function Demo() {
 }
 ```
 
+
 <GetElementRef component="JsonInput" refType="textarea" />
 
 ## Get element ref
@@ -119,6 +122,7 @@ function Demo() {
 ## Accessibility
 
 JsonInput provides better accessibility support when used in forms. Make sure to associate the input with a label for better screen reader support.
+
 
 #### Props
 
@@ -160,6 +164,7 @@ JsonInput provides better accessibility support when used in forms. Make sure to
 | withAsterisk | boolean | - | If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input. |
 | withErrorStyles | boolean | - | Determines whether the input should have red border and red text color when the <code>error</code> prop is set |
 | wrapperProps | WrapperProps | - | Props passed down to the root element |
+
 
 #### Styles API
 

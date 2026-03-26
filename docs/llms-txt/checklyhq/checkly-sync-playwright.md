@@ -1,0 +1,134 @@
+# Source: https://checklyhq.com/docs/cli/checkly-sync-playwright.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://checklyhq.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# checkly sync-playwright
+
+> Synchronize Playwright configuration with Checkly settings.
+
+<Note>Available since CLI v4.6.0.</Note>
+
+The `checkly sync-playwright` command synchronizes your Playwright configuration (`playwright.config`) with your Checkly project configuration (`checkly.config`).
+
+Keeping your configuration in sync ensures consistency between local testing and cloud monitoring environments.
+
+<Note>The applied [`playwrightConfig` configuration](/constructs/project#param-checks-playwright-config) is applied to all Browser and MultiStep Checks defined in your Checkly project.</Note>
+
+<Accordion title="Prerequisites">
+  Before using `checkly sync-playwright`, ensure you have:
+
+  * An initialized Checkly CLI project
+  * A `checkly.config.ts` or `checkly.config.js` configuration file
+  * A `playwright.config.ts` or `playwright.config.js`
+</Accordion>
+
+## Usage
+
+Copy supported Playwright configuration settings to your Checkly config automatically.
+
+```bash Terminal theme={null}
+npx checkly sync-playwright
+```
+
+## Supported Playwright Configuration
+
+The `sync-playwright` command parses your existing `playwright.config` file and extracts `global`, `use` and `expect` settings.
+
+```ts playwright.config.ts theme={null}
+export default defineConfig({
+  // Global Playwright config (global)
+  timeout: 10_000,
+
+  // Settings applied to all tests (use)
+  use: {
+    trace: 'on-first-retry',
+    colorScheme: 'light',
+    viewport: { width: 1280, height: 720 },
+    actionTimeout: 30000,
+    navigationTimeout: 30000,
+  },
+
+  // Custom assertion settings (expect)
+  expect: {
+    timeout: 5000,
+  },
+});
+```
+
+The following Playwright config values are supported and will be synced:
+
+<Tabs>
+  <Tab title="Global Options">
+    | Option           | Supported |
+    | ---------------- | --------- |
+    | `timeout`        | ✅         |
+    | `use`            | ✅         |
+    | `expect`         | ✅         |
+    | `testDir`        | ❌         |
+    | `fullyParallel`  | ❌         |
+    | `forbidOnly`     | ❌         |
+    | `retries`        | ❌         |
+    | `workers`        | ❌         |
+    | `reporter`       | ❌         |
+    | `testMatch`      | ❌         |
+    | `testIgnore`     | ❌         |
+    | `outputDir`      | ❌         |
+    | `globalSetup`    | ❌         |
+    | `globalTeardown` | ❌         |
+    | `projects`       | ❌         |
+    | `webServer`      | ❌         |
+  </Tab>
+
+  <Tab title="Use Options">
+    | Option               | Supported |
+    | -------------------- | --------- |
+    | `baseURL`            | ✅         |
+    | `colorScheme`        | ✅         |
+    | `geolocation`        | ✅         |
+    | `locale`             | ✅         |
+    | `permissions`        | ✅         |
+    | `timezoneId`         | ✅         |
+    | `viewport`           | ✅         |
+    | `deviceScaleFactor`  | ✅         |
+    | `hasTouch `          | ✅         |
+    | `isMobile `          | ✅         |
+    | `javaScriptEnabled ` | ✅         |
+    | `extraHTTPHeaders`   | ✅         |
+    | `httpCredentials`    | ✅         |
+    | `ignoreHTTPSErrors`  | ✅         |
+    | `offline`            | ✅         |
+    | `actionTimeout`      | ✅         |
+    | `navigationTimeout ` | ✅         |
+    | `testIdAttribute`    | ✅         |
+    | `connectOptions`     | ✅         |
+    | `contextOptions`     | ✅         |
+    | `bypassCSP`          | ✅         |
+    | `proxy`              | ✅         |
+    | `launchOptions`      | ❌         |
+    | `storageState`       | ❌         |
+    | `browserName`        | ❌         |
+    | `channel`            | ❌         |
+    | `headless`           | ❌         |
+    | `screenshot`         | ❌         |
+    | `trace`              | ❌         |
+    | `video`              | ❌         |
+  </Tab>
+
+  <Tab title="Expect Options">
+    | Option              | Supported |
+    | ------------------- | --------- |
+    | `timeout`           | ✅         |
+    | `toHaveScreenshot ` | ✅         |
+    | `toMatchSnapshot `  | ✅         |
+  </Tab>
+</Tabs>
+
+## Related Commands
+
+* [`checkly test`](/cli/checkly-test) - Test with synchronized configuration
+* [`checkly deploy`](/cli/checkly-deploy) - Deploy with updated settings
+
+
+Built with [Mintlify](https://mintlify.com).

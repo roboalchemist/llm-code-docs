@@ -38,7 +38,6 @@ If you are new to Earthly or to Earthly Cloud, you must:
   brew update
   brew upgrade earthly/earthly/earthly
   ```
-
 * Create an account by visiting the [Earthly CI website](https://ci.earthly.dev/) to log in with GitHub or by using `earthly account register --email <email>` in your terminal.
 * Either [create an Earthly organization](https://docs.earthly.dev/earthly-0.6/earthly-cloud/overview), or ask your Earthly admin to add you to an existing organization. In order to be added to an existing Earthly organization you need to first create an Earthly account as described above. To verify that you are part of an organization you can run:
 

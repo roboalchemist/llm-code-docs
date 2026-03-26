@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-media-query.md
 
 # useMediaQuery
-
 Package: @mantine/hooks
 Import: import { UseMediaQuery } from '@mantine/hooks';
 
@@ -13,6 +12,8 @@ The hook relies on `window.matchMedia()` [API](https://developer.mozilla.org/en-
 and will return `false` if the API is not available, unless an initial value is provided in the second argument.
 
 Resize browser window to trigger `window.matchMedia` event:
+
+
 
 ## Server Side Rendering
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-set-state.md
 
 # useSetState
-
 Package: @mantine/hooks
 Import: import { UseSetState } from '@mantine/hooks';
 

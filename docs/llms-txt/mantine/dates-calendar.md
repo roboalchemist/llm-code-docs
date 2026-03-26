@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/dates-calendar.md
 
 # Calendar
-
 Package: @mantine/dates
 Import: import { Calendar } from '@mantine/dates';
 Description: Base component for custom date pickers
@@ -24,6 +23,7 @@ function Demo() {
   return <Calendar />;
 }
 ```
+
 
 ## Custom date pickers
 
@@ -58,6 +58,7 @@ function Demo() {
   );
 }
 ```
+
 
 Another custom date picker example – week picker:
 
@@ -118,6 +119,7 @@ function Demo() {
 }
 ```
 
+
 ## Static prop
 
 Set `static` prop to display a calendar that user cannot interact with.
@@ -147,6 +149,8 @@ function Demo() {
   );
 }
 ```
+
+
 
 #### Props
 
@@ -203,6 +207,7 @@ function Demo() {
 | withWeekNumbers | boolean | - | Determines whether week numbers should be displayed |
 | yearLabelFormat | string | ((date: string) => string) | - | dayjs label format to display year label or a function that returns year label based on year value |
 | yearsListFormat | string | - | dayjs format for years list |
+
 
 #### Styles API
 

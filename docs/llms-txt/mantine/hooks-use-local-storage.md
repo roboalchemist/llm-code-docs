@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-local-storage.md
 
 # useLocalStorage
-
 Package: @mantine/hooks
 Import: import { UseLocalStorage } from '@mantine/hooks';
 

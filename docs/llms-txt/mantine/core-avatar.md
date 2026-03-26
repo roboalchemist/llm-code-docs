@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-avatar.md
 
 # Avatar
-
 Package: @mantine/core
 Import: import { Avatar } from '@mantine/core';
 Description: Display user profile image, initials or fallback icon
@@ -35,6 +34,7 @@ function Demo() {
 }
 ```
 
+
 ## Initials
 
 To display initials instead of the default placeholder, set `name` prop
@@ -53,6 +53,7 @@ function Demo() {
   return <Group>{avatars}</Group>;
 }
 ```
+
 
 ## Allowed initials colors
 
@@ -75,6 +76,7 @@ function Demo() {
   return <Group>{avatars}</Group>;
 }
 ```
+
 
 ## Placeholder
 
@@ -108,6 +110,7 @@ function Demo() {
 }
 ```
 
+
 ## Variants
 
 #### Example: configurator
@@ -119,6 +122,7 @@ function Demo() {
   return <Avatar />;
 }
 ```
+
 
 ## Avatar.Group
 
@@ -140,6 +144,7 @@ function Demo() {
   );
 }
 ```
+
 
 Note that you must not wrap child `Avatar` components with any additional elements,
 but you can use wrap `Avatar` with components that do not render any HTML elements
@@ -200,6 +205,7 @@ function Demo() {
 }
 ```
 
+
 <Polymorphic defaultElement="div" changeToElement="button" component="Avatar" withNext />
 
 ## Polymorphic component
@@ -251,6 +257,7 @@ function Demo() {
 }
 ```
 
+
 ## Accessibility
 
 Avatar renders `<img />` HTML element. Set `alt` prop to describe image,
@@ -280,6 +287,7 @@ function OkPlaceholder() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -295,6 +303,7 @@ function OkPlaceholder() {
 | radius | MantineRadius | number | - | Key of <code>theme.radius</code> or any valid CSS value to set border-radius |
 | size | number | MantineSize | (string & {}) | - | Width and height of the avatar, numbers are converted to rem |
 | src | string | null | - | Image url, if the image cannot be loaded or <code>src={null}</code>, then placeholder is displayed instead |
+
 
 #### Styles API
 

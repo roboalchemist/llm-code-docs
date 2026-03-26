@@ -31,6 +31,7 @@ function Demo() {
 }
 ```
 
+
 Applying styles with `classNames` (see [Styles API guide](https://mantine.dev/styles/styles-api) to learn more):
 
 #### Example: classNames
@@ -62,6 +63,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Inline styles
 
@@ -118,6 +120,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Style props
 

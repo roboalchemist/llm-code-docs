@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-color-scheme.md
 
 # useColorScheme
-
 Package: @mantine/hooks
 Import: import { UseColorScheme } from '@mantine/hooks';
 
@@ -9,6 +8,8 @@ Import: import { UseColorScheme } from '@mantine/hooks';
 
 `use-color-scheme` hook returns preferred OS color scheme value (`dark` or `light`)
 and subscribes to changes:
+
+
 
 ## Limitations
 

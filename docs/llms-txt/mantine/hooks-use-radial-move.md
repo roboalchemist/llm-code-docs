@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-radial-move.md
 
 # useRadialMove
-
 Package: @mantine/hooks
 Import: import { UseRadialMove } from '@mantine/hooks';
 
@@ -11,6 +10,8 @@ Import: import { UseRadialMove } from '@mantine/hooks';
 component is based on this hook. It works similar to [use-move](https://mantine.dev/hooks/use-move) hook.
 
 Example of creating custom radial slider:
+
+
 
 ## Definition
 

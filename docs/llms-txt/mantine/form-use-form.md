@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/form-use-form.md
 
 # use-form
-
 Package: @mantine/form
 Import: import { use-form } from '@mantine/form';
 Description: Manage form state
@@ -63,6 +62,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## API overview
 

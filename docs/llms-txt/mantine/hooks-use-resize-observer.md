@@ -1,11 +1,12 @@
 # Source: https://mantine.dev/llms/hooks-use-resize-observer.md
 
 # useResizeObserver
-
 Package: @mantine/hooks
 Import: import { UseResizeObserver } from '@mantine/hooks';
 
 ## Usage
+
+
 
 ## API
 

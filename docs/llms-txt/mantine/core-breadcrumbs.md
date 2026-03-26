@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-breadcrumbs.md
 
 # Breadcrumbs
-
 Package: @mantine/core
 Import: import { Breadcrumbs } from '@mantine/core';
 Description: Separates list of react nodes with given separator
@@ -38,6 +37,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -45,6 +46,7 @@ function Demo() {
 | children | React.ReactNode | required | React nodes that should be separated with <code>separator</code> |
 | separator | React.ReactNode | - | Separator between children |
 | separatorMargin | MantineSpacing | - | Controls spacing between separator and breadcrumb |
+
 
 #### Styles API
 

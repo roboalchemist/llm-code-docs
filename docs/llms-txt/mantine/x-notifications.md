@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/x-notifications.md
 
 # Notifications system
-
 Package: @mantine/notifications
 Import: import { Notifications system } from '@mantine/notifications';
 Description: Mantine notifications system
@@ -67,6 +66,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Do not forget to import styles
 
@@ -167,6 +167,7 @@ function Demo() {
 }
 ```
 
+
 ## Customize notification styles
 
 You can use `style`, `className` or [Styles API](https://mantine.dev/styles/styles-api/) `classNames`, `styles` props to customize notification styles.
@@ -235,6 +236,7 @@ function Demo() {
 }
 ```
 
+
 ## Notifications container position
 
 You can define notification position in `notifications.show` function. Possible `position` values:
@@ -280,6 +282,7 @@ function Demo() {
   return <Group>{buttons}</Group>;
 }
 ```
+
 
 The `position` can be defined on the `Notifications` component.
 In the following example, notifications will be displayed in the top right corner of the screen
@@ -335,6 +338,7 @@ function Demo() {
 }
 ```
 
+
 ## Remove notifications from state and queue
 
 To remove specific notification from state or queue use `notifications.hide` function:
@@ -386,6 +390,7 @@ function Demo() {
 }
 ```
 
+
 ## Update notification
 
 #### Example: update
@@ -425,6 +430,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Auto close
 
@@ -501,6 +507,7 @@ function Demo() {
 }
 ```
 
+
 ## Subscribe to notifications state
 
 You can subscribe to notifications state changes with `useNotifications` hook.
@@ -540,6 +547,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -554,6 +563,7 @@ function Demo() {
 | transitionDuration | number | - | Notification transition duration in ms |
 | withinPortal | boolean | - | Determines whether notifications container should be rendered inside <code>Portal</code> |
 | zIndex | string | number | - | Notifications container z-index |
+
 
 #### Styles API
 

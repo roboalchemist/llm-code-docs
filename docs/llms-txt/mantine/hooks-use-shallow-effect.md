@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-shallow-effect.md
 
 # useShallowEffect
-
 Package: @mantine/hooks
 Import: import { UseShallowEffect } from '@mantine/hooks';
 

@@ -37,6 +37,7 @@ function Demo() {
 }
 ```
 
+
 ## Default props with MantineThemeProvider
 
 You can also use `MantineThemeProvider` to define default props
@@ -160,6 +161,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## withProps function
 

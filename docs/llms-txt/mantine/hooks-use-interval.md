@@ -1,11 +1,12 @@
 # Source: https://mantine.dev/llms/hooks-use-interval.md
 
 # useInterval
-
 Package: @mantine/hooks
 Import: import { UseInterval } from '@mantine/hooks';
 
 ## Usage
+
+
 
 ## Auto invoke interval
 

@@ -29,6 +29,7 @@ function Demo() {
 }
 ```
 
+
 ## Configure breakpoints
 
 `theme.breakpoints` are used in all responsive Mantine components. Breakpoints are expected to be set in `em` units.
@@ -145,6 +146,7 @@ function Demo() {
 }
 ```
 
+
 ## Hidden and visible from as classes
 
 If you are building a custom component and want to use the same logic as in `hiddenFrom` and `visibleFrom` props
@@ -185,6 +187,7 @@ function Demo() {
 }
 ```
 
+
 ## use-media-query hook
 
 You can use [use-media-query hook](https://mantine.dev/hooks/use-media-query/) to change some of component props
@@ -214,6 +217,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## use-matches hook
 
@@ -249,6 +253,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Container queries
 
@@ -302,6 +307,7 @@ function Demo() {
 }
 ```
 
+
 ## Responsive style props
 
 You can use object syntax to add responsive styles with [style props](https://mantine.dev/styles/style-props).
@@ -328,6 +334,7 @@ function Demo() {
   );
 }
 ```
+
 
 Responsive values are calculated the following way:
 

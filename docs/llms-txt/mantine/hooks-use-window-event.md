@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-window-event.md
 
 # useWindowEvent
-
 Package: @mantine/hooks
 Import: import { UseWindowEvent } from '@mantine/hooks';
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-tags-input.md
 
 # TagsInput
-
 Package: @mantine/core
 Import: import { TagsInput } from '@mantine/core';
 Description: Capture a list of values from user with free input and suggestions
@@ -22,6 +21,7 @@ function Demo() {
   return <TagsInput label="Press Enter to submit a tag" placeholder="Enter tag" />;
 }
 ```
+
 
 ## Controlled
 
@@ -84,6 +84,7 @@ function Demo() {
 }
 ```
 
+
 ## Max selected values
 
 You can limit the number of selected values with `maxTags` prop. This will not allow adding more values
@@ -106,6 +107,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Accept value on blur
 
@@ -139,6 +141,7 @@ function Demo() {
 }
 ```
 
+
 ## Allow duplicates
 
 By default, `TagsInput` does not allow to add duplicate values, but you can change this behavior by
@@ -160,6 +163,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## isDuplicate
 
@@ -185,6 +189,7 @@ function Demo() {
 }
 ```
 
+
 ## Split chars
 
 By default, `TagsInput` splits values by comma (`,`), you can change this behavior by setting
@@ -209,6 +214,7 @@ function Demo() {
 }
 ```
 
+
 ## With suggestions
 
 `TagsInput` can be used with suggestions, it will render suggestions list under input and allow to select
@@ -230,6 +236,7 @@ function Demo() {
   );
 }
 ```
+
 
 <ComboboxData component="TagsInput" />
 
@@ -268,6 +275,7 @@ function Demo() {
 }
 ```
 
+
 ## Sort options
 
 By default, options are sorted by their position in the data array. You can change this behavior
@@ -299,6 +307,7 @@ function Demo() {
 }
 ```
 
+
 <ComboboxLargeData component="TagsInput" />
 
 ## Large datasets
@@ -325,6 +334,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## renderOption
 
@@ -386,6 +396,7 @@ function Demo() {
 }
 ```
 
+
 ## Scrollable dropdown
 
 By default, the options list is wrapped with [ScrollArea.Autosize](https://mantine.dev/core/scroll-area).
@@ -426,6 +437,7 @@ function Demo() {
 }
 ```
 
+
 ## Group options
 
 #### Example: groups
@@ -446,6 +458,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Disabled options
 
@@ -473,6 +486,7 @@ function Demo() {
   );
 }
 ```
+
 
 <ComboboxProps component="TagsInput" />
 
@@ -504,6 +518,7 @@ function Demo() {
 }
 ```
 
+
 ## Control dropdown opened state
 
 You can control dropdown opened state with `dropdownOpened` prop. Additionally,
@@ -534,6 +549,7 @@ function Demo() {
 }
 ```
 
+
 ## Dropdown position
 
 By default, the dropdown is displayed below the input if there is enough space; otherwise it is displayed above the input.
@@ -559,6 +575,7 @@ function Demo() {
 }
 ```
 
+
 ## Dropdown animation
 
 By default, dropdown animations are disabled. To enable them, you can set `transitionProps`,
@@ -581,6 +598,7 @@ function Demo() {
 }
 ```
 
+
 ## Dropdown width
 
 To change dropdown width, set `width` prop in `comboboxProps`. By default,
@@ -602,6 +620,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Dropdown padding
 
@@ -631,6 +650,7 @@ function Demo() {
 }
 ```
 
+
 ## Dropdown shadow
 
 #### Example: dropdownShadow
@@ -649,6 +669,7 @@ function Demo() {
   );
 }
 ```
+
 
 <InputSections component="TagsInput" />
 
@@ -686,6 +707,7 @@ function Demo() {
 }
 ```
 
+
 ## Input props
 
 <InputFeatures component="TagsInput" element="input" />
@@ -710,6 +732,7 @@ function Demo() {
 }
 ```
 
+
 ## Read only
 
 Set `readOnly` to make the input read only. When `readOnly` is set,
@@ -732,6 +755,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled
 
 Set `disabled` to disable the input. When `disabled` is set,
@@ -753,6 +777,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Error state
 
@@ -782,6 +807,7 @@ function Demo() {
 }
 ```
 
+
 #### Example: stylesApi
 
 ```tsx
@@ -803,6 +829,7 @@ function Demo() {
   );
 }
 ```
+
 
 <GetElementRef component="TagsInput" refType="input" />
 
@@ -842,6 +869,7 @@ function Demo() {
   );
 }
 ```
+
 
 #### Props
 
@@ -906,6 +934,7 @@ function Demo() {
 | withErrorStyles | boolean | - | Determines whether the input should have red border and red text color when the <code>error</code> prop is set |
 | withScrollArea | boolean | - | Determines whether the options should be wrapped with <code>ScrollArea.AutoSize</code>, <code>true</code> by default |
 | wrapperProps | WrapperProps | - | Props passed down to the root element |
+
 
 #### Styles API
 

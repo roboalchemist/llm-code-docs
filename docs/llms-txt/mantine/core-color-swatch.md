@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-color-swatch.md
 
 # ColorSwatch
-
 Package: @mantine/core
 Import: import { ColorSwatch } from '@mantine/core';
 Description: Displays color
@@ -24,6 +23,7 @@ function Demo() {
 }
 ```
 
+
 ## withShadow
 
 By default, `ColorSwatch` has an inner box-shadow to make it more visible on light backgrounds,
@@ -38,6 +38,7 @@ function Demo() {
   return <ColorSwatch color="rgba(255, 255, 255, 0.7)" />;
 }
 ```
+
 
 <Polymorphic defaultElement="div" changeToElement="button" component="ColorSwatch" />
 
@@ -81,6 +82,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -90,6 +93,7 @@ function Demo() {
 | radius | MantineRadius | number | - | Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem. |
 | size | React.CSSProperties["width"] | - | Controls <code>width</code> and <code>height</code> of the swatch, any valid CSS value, numbers are converted to rem. |
 | withShadow | boolean | - | Determines whether the swatch should have inner <code>box-shadow</code> |
+
 
 #### Styles API
 

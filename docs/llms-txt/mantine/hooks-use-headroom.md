@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-headroom.md
 
 # useHeadroom
-
 Package: @mantine/hooks
 Import: import { UseHeadroom } from '@mantine/hooks';
 
@@ -11,6 +10,8 @@ Use `use-headroom` hook to create headers that are hidden after user scrolls pas
 The hook returns a boolean value that determines whether the element should be pinned or hidden.
 Hook returns `true` when the current scroll position is less than the specified `fixedAt` value and
 after user scrolled up.
+
+
 
 ## Definition
 

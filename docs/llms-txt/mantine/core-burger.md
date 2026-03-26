@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-burger.md
 
 # Burger
-
 Package: @mantine/core
 Import: import { Burger } from '@mantine/core';
 Description: Open/close navigation button
@@ -24,6 +23,7 @@ function Demo() {
 }
 ```
 
+
 ## Change lines size
 
 #### Example: lineWidth
@@ -37,6 +37,7 @@ function Demo() {
   return <Burger size="xl" opened={opened} onClick={toggle} aria-label="Toggle navigation" />;
 }
 ```
+
 
 <GetElementRef component="Burger" refType="button" />
 
@@ -73,6 +74,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -83,6 +85,7 @@ function Demo() {
 | size | number | MantineSize | (string & {}) | - | Controls burger <code>width</code> and <code>height</code>, numbers are converted to rem |
 | transitionDuration | number | - | <code>transition-duration</code> property value in ms |
 | transitionTimingFunction | string | - | <code>transition-timing-function</code> property value |
+
 
 #### Styles API
 

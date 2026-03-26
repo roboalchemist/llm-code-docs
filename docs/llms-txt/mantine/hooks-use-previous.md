@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-previous.md
 
 # usePrevious
-
 Package: @mantine/hooks
 Import: import { UsePrevious } from '@mantine/hooks';
 
@@ -9,6 +8,8 @@ Import: import { UsePrevious } from '@mantine/hooks';
 
 `use-previous` stores the previous value of a state in a ref.
 It returns `undefined` on initial render and the previous value of a state after rerender:
+
+
 
 ## Definition
 

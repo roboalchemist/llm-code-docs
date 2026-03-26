@@ -104,6 +104,7 @@ function Demo() {
 }
 ```
 
+
 To apply styles to inner elements of Mantine components with CSS modules, you can use `classNames` prop
 (see [Styles API](https://mantine.dev/styles/styles-api) for more information):
 
@@ -136,6 +137,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Styling Mantine components without CSS modules
 

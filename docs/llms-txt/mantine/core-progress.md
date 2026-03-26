@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-progress.md
 
 # Progress
-
 Package: @mantine/core
 Import: import { Progress } from '@mantine/core';
 Description: Give user feedback for status of the task
@@ -17,6 +16,7 @@ function Demo() {
   return <Progress />;
 }
 ```
+
 
 ## Compound components
 
@@ -41,6 +41,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Vertical orientation
 
@@ -70,6 +71,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## With tooltips
 
@@ -103,6 +105,7 @@ function Demo() {
 }
 ```
 
+
 ## Section width transition
 
 Set `transitionDuration` to a number of ms to enable width transition:
@@ -125,6 +128,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Example: progress with segments
 
@@ -200,6 +204,7 @@ function Demo() {
 }
 ```
 
+
 #### Example: stylesApi
 
 ```tsx
@@ -215,6 +220,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Accessibility
 
@@ -240,6 +246,7 @@ function DemoCompound() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -253,6 +260,7 @@ function DemoCompound() {
 | striped | boolean | - | If set, the section has stripes |
 | transitionDuration | number | - | Controls sections width transition duration, value is specified in ms |
 | value | number | required | Value of the progress |
+
 
 #### Styles API
 

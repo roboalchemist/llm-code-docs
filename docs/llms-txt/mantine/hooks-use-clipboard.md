@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-clipboard.md
 
 # useClipboard
-
 Package: @mantine/hooks
 Import: import { UseClipboard } from '@mantine/hooks';
 
@@ -10,6 +9,8 @@ Import: import { UseClipboard } from '@mantine/hooks';
 `use-clipboard` hook provides a simple way to copy text to the clipboard,
 track the copied state, handle errors, and reset the state after a given timeout.
 It uses [navigator.clipboard.writeText](https://caniuse.com/mdn-api_clipboard_writetext) API under the hood.
+
+
 
 ## Limitations
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/x-carousel.md
 
 # Carousel
-
 Package: @mantine/carousel
 Import: import { Carousel } from '@mantine/carousel';
 Description: Embla based carousel component
@@ -62,6 +61,7 @@ function Demo() {
 }
 ```
 
+
 ## Options
 
 #### Example: configurator
@@ -82,6 +82,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Embla options
 
@@ -112,6 +113,7 @@ function Demo() {
 }
 ```
 
+
 ## Size and gap
 
 Set `slideSize` and `slideGap` on `Carousel` component to control size and gap of every slide:
@@ -138,6 +140,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Responsive styles
 
@@ -166,6 +169,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Container queries
 
@@ -215,6 +219,7 @@ function Demo() {
 }
 ```
 
+
 ## Drag free
 
 `dragFree` will disable slides snap points – user will be able to stop dragging at any position:
@@ -241,6 +246,7 @@ function Demo() {
 }
 ```
 
+
 ## Vertical orientation
 
 Carousel with `orientation="vertical"` requires `height` prop to be set:
@@ -261,6 +267,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controls icons
 
@@ -287,6 +294,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## 100% height
 
@@ -362,6 +370,7 @@ function Demo() {
 }
 ```
 
+
 ## Embla plugins
 
 Set `plugins` prop to enhance carousel with [embla plugins](https://www.embla-carousel.com/plugins/).
@@ -402,6 +411,7 @@ function Demo() {
 }
 ```
 
+
 #### Example: stylesApi
 
 ```tsx
@@ -416,6 +426,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Indicator styles
 
@@ -449,6 +460,7 @@ function Demo() {
 }
 ```
 
+
 ## Hide inactive controls
 
 #### Example: controlsStyles
@@ -477,6 +489,7 @@ function Demo() {
   }
 }
 ```
+
 
 ## Show controls on hover
 
@@ -513,6 +526,7 @@ function Demo() {
 }
 ```
 
+
 ## Example: Images carousel
 
 #### Example: images
@@ -543,6 +557,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Example: Cards carousel
 
@@ -673,6 +688,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -700,6 +717,7 @@ function Demo() {
 | withControls | boolean | - | Determines whether next/previous controls should be displayed |
 | withIndicators | boolean | - | Determines whether indicators should be displayed |
 | withKeyboardEvents | boolean | - | Determines whether arrow key should switch slides |
+
 
 #### Styles API
 

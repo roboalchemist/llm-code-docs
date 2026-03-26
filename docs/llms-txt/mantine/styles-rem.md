@@ -29,6 +29,7 @@ function Demo() {
 }
 ```
 
+
 ## rem units scaling
 
 If you want to change font-size of `:root`/`html` element and preserve Mantine components sizes,

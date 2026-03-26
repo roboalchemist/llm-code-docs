@@ -1,12 +1,13 @@
 # Source: https://mantine.dev/llms/dates-year-picker.md
 
 # YearPicker
-
 Package: @mantine/dates
 Import: import { YearPicker } from '@mantine/dates';
 Description: Inline year, multiple years and years range picker
 
 ## Usage
+
+
 
 ## Allow deselect
 
@@ -14,19 +15,27 @@ Set `allowDeselect` to allow user to deselect current selected date by clicking 
 `allowDeselect` is disregarded when `type` prop is `range` or `multiple`. When date is
 deselected `onChange` is called with `null`.
 
+
+
 ## Multiple dates
 
 Set `type="multiple"` to allow user to pick multiple dates:
 
+
+
 ## Dates range
 
 Set `type="range"` to allow user to pick dates range:
+
+
 
 ## Single date in range
 
 By default, it is not allowed to select single date as range – when user clicks the same date second time it is deselected.
 To change this behavior set `allowSingleDateInRange` prop. `allowSingleDateInRange` is ignored when
 `type` prop is not `range`.
+
+
 
 ## Default date
 
@@ -48,6 +57,7 @@ function Demo() {
   return <YearPicker defaultDate="2040-02-01" value={value} onChange={setValue} />;
 }
 ```
+
 
 ## Controlled date
 
@@ -86,6 +96,7 @@ function Demo() {
 }
 ```
 
+
 ## Min and max date
 
 Set `minDate` and `maxDate` props to define min and max dates. If previous/next page is not available
@@ -109,6 +120,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Add props to year control
 
@@ -146,11 +158,16 @@ function Demo() {
 }
 ```
 
+
 ## Number of columns
 
 Set `numberOfColumns` prop to define number of pickers that will be rendered side by side:
 
+
+
 ## Size
+
+
 
 ## Change year controls format
 
@@ -168,6 +185,7 @@ function Demo() {
 }
 ```
 
+
 ## Change decade label format
 
 Use `decadeLabelFormat` to change [dayjs format](https://day.js.org/docs/en/display/format) of decade label:
@@ -183,6 +201,7 @@ function Demo() {
   return <YearPicker decadeLabelFormat="YY" value={value} onChange={setValue} />;
 }
 ```
+
 
 ## Accessibility
 
@@ -227,6 +246,7 @@ function Demo() {
 
 Note that the following events will only trigger if focus is on year control.
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -256,6 +276,7 @@ Note that the following events will only trigger if focus is on year control.
 | value | DateValue | DatesRangeValue<DateValue> | DateValue[] | - | Value for controlled component |
 | withCellSpacing | boolean | - | Determines whether controls should be separated |
 | yearsListFormat | string | - | dayjs format for years list |
+
 
 #### Styles API
 

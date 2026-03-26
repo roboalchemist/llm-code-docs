@@ -307,6 +307,7 @@ function Demo() {
 }
 ```
 
+
 By default, `hideDetached` is enabled – the behavior has changed from 7.x version.
 If you prefer to keep the old behavior, you can disable `hideDetached` for all components:
 

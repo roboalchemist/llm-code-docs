@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-file-input.md
 
 # FileInput
-
 Package: @mantine/core
 Import: import { FileInput } from '@mantine/core';
 Description: Capture files from user
@@ -27,6 +26,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controlled
 
@@ -68,6 +68,7 @@ function Demo() {
 }
 ```
 
+
 ## Accept
 
 Set `accept` prop to restrict files selection to specific mime types:
@@ -84,6 +85,7 @@ function Demo() {
 }
 ```
 
+
 ## Clearable
 
 Set `clearable` prop to display clear button in the right section of the input
@@ -99,6 +101,7 @@ function Demo() {
   return <FileInput clearable label="Upload files" placeholder="Upload files" />;
 }
 ```
+
 
 ## Custom value component
 
@@ -137,6 +140,7 @@ function Demo() {
 }
 ```
 
+
 ## Error state
 
 #### Example: error
@@ -159,6 +163,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled state
 
 #### Example: disabled
@@ -170,6 +175,7 @@ function Demo() {
   return <FileInput disabled label="Disabled input" placeholder="Disabled input" />;
 }
 ```
+
 
 <InputSections component="FileInput" />
 
@@ -206,6 +212,7 @@ function Demo() {
 }
 ```
 
+
 #### Example: stylesApi
 
 ```tsx
@@ -226,6 +233,7 @@ function Demo() {
   );
 }
 ```
+
 
 <GetElementRef component="FileInput" refType="button" />
 
@@ -258,6 +266,7 @@ import type { FileInputProps } from '@mantine/core';
 type SingleInputProps = FileInputProps<false>;
 type MultipleInputProps = FileInputProps<true>;
 ```
+
 
 #### Props
 
@@ -303,6 +312,7 @@ type MultipleInputProps = FileInputProps<true>;
 | withAsterisk | boolean | - | If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input. |
 | withErrorStyles | boolean | - | Determines whether the input should have red border and red text color when the <code>error</code> prop is set |
 | wrapperProps | WrapperProps | - | Props passed down to the root element |
+
 
 #### Styles API
 

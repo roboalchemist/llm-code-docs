@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/dates-time-picker.md
 
 # TimePicker
-
 Package: @mantine/dates
 Import: import { TimePicker } from '@mantine/dates';
 Description: Captures time value from the user
@@ -21,6 +20,7 @@ function Demo() {
   return <TimePicker label="Enter time" />;
 }
 ```
+
 
 ## Controlled
 
@@ -57,6 +57,7 @@ function Demo() {
 }
 ```
 
+
 ## 12-hour format
 
 Set `format="12h"` to use 12-hour format. Note that `onChange` is called only when all inputs are filled
@@ -71,6 +72,7 @@ function Demo() {
   return <TimePicker label="Enter time" format="12h" />;
 }
 ```
+
 
 ## Change am/pm labels
 
@@ -87,6 +89,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Min and max values
 
@@ -107,6 +110,7 @@ function Demo() {
 }
 ```
 
+
 ## With dropdown
 
 Set `withDropdown` prop to display the dropdown with hours, minutes, seconds and am/pm selects.
@@ -126,6 +130,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Hours/minutes/seconds step
 
@@ -151,6 +156,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Control dropdown opened state
 
@@ -192,6 +198,7 @@ function Demo() {
 }
 ```
 
+
 ## Time presets
 
 You can define time presets with `presets` prop. Presets are displayed in the dropdown and can be selected by clicking on them.
@@ -213,6 +220,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Time presets groups
 
@@ -239,6 +247,7 @@ function Demo() {
 }
 ```
 
+
 ## Time presets range
 
 If you need to generate a range of time values, use `getTimeRange` function exported from
@@ -259,6 +268,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Dropdown position
 
@@ -287,6 +297,7 @@ function Demo() {
 }
 ```
 
+
 ## Dropdown width
 
 To change dropdown width, set `width` prop in `comboboxProps`. By default,
@@ -312,6 +323,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Paste events
 
@@ -355,6 +367,7 @@ function Demo() {
 }
 ```
 
+
 ## Clearable
 
 Set `clearable` prop to display a clear button in the right section of the input.
@@ -370,6 +383,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled
 
 #### Example: disabled
@@ -382,6 +396,7 @@ function Demo() {
 }
 ```
 
+
 ## Read only
 
 #### Example: readOnly
@@ -393,6 +408,7 @@ function Demo() {
   return <TimePicker label="Enter time" defaultValue="12:45:33" readOnly />;
 }
 ```
+
 
 ## Input props
 
@@ -415,6 +431,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Get refs of inner inputs
 
@@ -479,6 +496,7 @@ function Demo() {
 ```
 
 Keyboard interactions:
+
 
 #### Props
 
@@ -550,6 +568,7 @@ Keyboard interactions:
 | withErrorStyles | boolean | - | Determines whether the input should have red border and red text color when the <code>error</code> prop is set |
 | withSeconds | boolean | - | Determines whether the seconds input should be displayed |
 | wrapperProps | WrapperProps | - | Props passed down to the root element |
+
 
 #### Styles API
 

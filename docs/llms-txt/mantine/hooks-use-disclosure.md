@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-disclosure.md
 
 # useDisclosure
-
 Package: @mantine/hooks
 Import: import { UseDisclosure } from '@mantine/hooks';
 

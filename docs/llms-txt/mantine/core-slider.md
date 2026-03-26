@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-slider.md
 
 # Slider
-
 Package: @mantine/core
 Import: import { Slider } from '@mantine/core';
 Description: Slider component
@@ -29,6 +28,7 @@ function Demo() {
 }
 ```
 
+
 ## Controlled
 
 ```tsx
@@ -52,6 +52,7 @@ function Demo() {
   return <Slider defaultValue={60} disabled />;
 }
 ```
+
 
 ## onChangeEnd
 
@@ -82,6 +83,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Control label
 
@@ -121,6 +123,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Min, max and step
 
@@ -163,6 +166,7 @@ function Demo() {
 }
 ```
 
+
 ## Domain
 
 By default, `min` and `max` values define the possible range of values.
@@ -190,6 +194,7 @@ function Demo() {
 }
 ```
 
+
 ## Decimal values
 
 To use `Slider` with decimal values, set `min`, `max` and `step` props:
@@ -203,6 +208,7 @@ function Demo() {
   return <Slider min={0} max={1} step={0.0005} defaultValue={0.5535} />;
 }
 ```
+
 
 ## Marks
 
@@ -239,6 +245,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Restrict selection to marks
 
@@ -277,6 +284,7 @@ function Demo() {
 }
 ```
 
+
 ## Thumb size
 
 #### Example: thumbSize
@@ -288,6 +296,7 @@ function Demo() {
   return <Slider defaultValue={20} />;
 }
 ```
+
 
 ## Thumb children
 
@@ -322,6 +331,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Scale
 
@@ -377,6 +387,7 @@ function Demo() {
 }
 ```
 
+
 ## Inverted
 
 You can invert the track with the `inverted` prop:
@@ -391,6 +402,7 @@ function Demo() {
 }
 ```
 
+
 #### Example: stylesApi
 
 ```tsx
@@ -400,6 +412,7 @@ function Demo() {
   return <Slider marks={[{ value: 20, label: '20%' }, { value: 80, label: '80%' }]} labelAlwaysOn />;
 }
 ```
+
 
 Example of using [Styles API](https://mantine.dev/styles/styles-api/) to change `Slider` styles:
 
@@ -458,6 +471,7 @@ function Demo() {
   box-shadow: var(--mantine-shadow-sm);
 }
 ```
+
 
 ## Vertical slider
 
@@ -603,6 +617,7 @@ function Demo() {
 }
 ```
 
+
 ## Accessibility
 
 `Slider` component is accessible by default:
@@ -622,6 +637,7 @@ function Demo() {
 ```
 
 ## Keyboard interactions
+
 
 #### Props
 
@@ -654,6 +670,7 @@ function Demo() {
 | thumbProps | React.ComponentPropsWithoutRef<"div"> | - | Props passed down to thumb element |
 | thumbSize | string | number | - | Thumb <code>width</code> and <code>height</code>, by default value is computed based on <code>size</code> prop |
 | value | number | - | Controlled component value |
+
 
 #### Styles API
 

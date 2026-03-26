@@ -1,0 +1,38 @@
+# Source: https://docs.syncfusion.com/document-processing/excel/excel-library/net/faqs/how-to-open-an-excel-document-that-is-already-open-in-msexcel.md
+
+# How to open an Excel document that is already open in MS-Excel?
+
+Syncfusion&reg; XlsIO do support opening an Excel document that is already open in Microsoft Excel. But the approaches are different in .NET Framework and .NET Standard.
+
+[OpenReadOnly](https://help.syncfusion.com/cr/file-formats/Syncfusion.XlsIO.IWorkbooks.html#Syncfusion_XlsIO_IWorkbooks_OpenReadOnly_System_String_) method can be used in .NET Framework whereas **FileShare.ReadWrite** overload should be used while loading the file into file stream in .NET Standard. The following code snippet explains this.
+
+{% tabs %}
+{% highlight c# tabtitle="C# [Cross-platform]" %}
+using (ExcelEngine excelEngine = new ExcelEngine())
+{
+  IApplication application = excelEngine.Excel;
+  application.DefaultVersion = ExcelVersion.Excel2016;	
+  IWorkbook workbook = application.Workbooks.Open("Template.xlsx");	
+  workbook.SaveAs("Output.xlsx");
+}
+{% endhighlight %}
+
+{% highlight c# tabtitle="C# [Windows-specific]" %}
+using (ExcelEngine excelEngine = new ExcelEngine())
+{
+  IApplication application = excelEngine.Excel;
+  application.DefaultVersion = ExcelVersion.Excel2016;
+  IWorkbook workbook = application.Workbooks.OpenReadOnly("Template.xlsx");
+  workbook.SaveAs("Output.xlsx");
+}
+{% endhighlight %}
+
+{% highlight vb.net tabtitle="VB.NET [Windows-specific]" %}
+Using excelEngine As ExcelEngine = New ExcelEngine
+  Dim application As IApplication = excelEngine.Excel
+  application.DefaultVersion = ExcelVersion.Excel2016
+  Dim workbook As IWorkbook = application.Workbooks.OpenReadOnly("Template.xlsx")
+  workbook.SaveAs("Output.xlsx")
+End Using
+{% endhighlight %}
+{% endtabs %}

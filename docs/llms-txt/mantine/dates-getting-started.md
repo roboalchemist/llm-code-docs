@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/dates-getting-started.md
 
 # GettingStartedDates
-
 Package: @mantine/dates
 Import: import { GettingStartedDates } from '@mantine/dates';
 
@@ -38,6 +37,8 @@ import '@mantine/dates/styles.css';
 
 After installing `@mantine/dates` package and importing styles, you can use all components from it:
 
+
+
 ## dayjs
 
 `@mantine/dates` components use [dayjs](https://day.js.org/) under the hood for date manipulations and formatting.
@@ -70,6 +71,7 @@ function Demo() {
 }
 ```
 
+
 ## Consistent weeks
 
 If you want to avoid layout shifts, set `consistentWeeks: true` in `DatesProvider` settings.
@@ -88,6 +90,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Custom parse format
 

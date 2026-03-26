@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-theme-icon.md
 
 # ThemeIcon
-
 Package: @mantine/core
 Import: import { ThemeIcon } from '@mantine/core';
 Description: Render icon inside element with theme colors
@@ -23,12 +22,12 @@ function Demo() {
 }
 ```
 
+
 <Gradient component="ThemeIcon" />
 
 ## Gradient
 
 ThemeIcon supports Mantine color format in color prop. Color can be specified as:
-
 - Mantine color name (e.g., 'blue')
 - CSS color value (e.g., '#fff', 'rgba(255, 255, 255, 0.8)')
 - Gradient string (e.g., 'linear-gradient(45deg, blue, red)')
@@ -52,6 +51,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Customize variants colors
 
@@ -133,6 +133,7 @@ function Demo() {
 }
 ```
 
+
 <AutoContrast component="ThemeIcon" />
 
 ## autoContrast
@@ -161,6 +162,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -171,6 +174,7 @@ function Demo() {
 | gradient | MantineGradient | - | Gradient data used when <code>variant="gradient"</code> |
 | radius | MantineRadius | number | - | Key of <code>theme.radius</code> or any valid CSS value to set border-radius. Numbers are converted to rem. |
 | size | number | MantineSize | (string & {}) | - | Controls width and height of the button. Numbers are converted to rem. |
+
 
 #### Styles API
 

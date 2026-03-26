@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/x-code-highlight.md
 
 # CodeHighlight
-
 Package: @mantine/code-highlight
 Import: import { CodeHighlight } from '@mantine/code-highlight';
 Description: Highlight code with shiki or highlight.js
@@ -31,6 +30,7 @@ It provides a flexible adapter system that allows using any code highlighting li
 of your choice.
 
 Example of code highlighting with [shiki](https://shiki.matsu.io/):
+
 
 ```tsx
 type FilterPropsRes<T extends Record<string, any>> = {
@@ -71,6 +71,7 @@ function Demo() {
   return <CodeHighlight code={exampleCode} language="tsx" radius="md" />;
 }
 ```
+
 
 ## Adapters
 
@@ -133,6 +134,7 @@ function App() {
 
 After that, you can use `CodeHighlight` component in your application:
 
+
 ```tsx
 type FilterPropsRes<T extends Record<string, any>> = {
   [Key in keyof T]-?: T[Key] extends undefined ? never : T[Key];
@@ -172,6 +174,7 @@ function Demo() {
   return <CodeHighlight code={exampleCode} language="tsx" radius="md" />;
 }
 ```
+
 
 All further code highlighting examples on this page are using shiki adapter.
 
@@ -288,6 +291,7 @@ export const customShikiAdapter: CodeHighlightAdapter = {
 You can customize copy button labels with `copyLabel` and `copiedLabel` props.
 In case you need to remove the copy button, set `withCopyButton={false}`.
 
+
 ```tsx
 function Button() {
   return <button>Click me</button>;
@@ -334,6 +338,7 @@ function Button() {
   );
 }
 ```
+
 
 ## With tabs
 
@@ -398,6 +403,7 @@ export const cssCode = `
 `;
 ```
 
+
 ## Tabs with icons
 
 You can use any React node as tab icon. The example below uses TypeScript and CSS
@@ -448,6 +454,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Tabs icons based on file name
 
@@ -507,6 +514,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Expandable code
 
@@ -576,10 +584,12 @@ export const cssCode = `
 `;
 ```
 
+
 ## Custom controls
 
 Use `controls` prop with `CodeHighlightControl` component to add custom controls
 to the code block:
+
 
 ```tsx
 function greet() {
@@ -624,6 +634,7 @@ function Demo() {
 }
 ```
 
+
 ## Inline code
 
 `InlineCodeHighlight` component allows highlighting inline code snippets:
@@ -649,6 +660,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -670,6 +683,7 @@ function Demo() {
 | withBorder | boolean | - | Adds border to the root element |
 | withCopyButton | boolean | - | Determines whether the copy button should be displayed |
 | withExpandButton | boolean | - | Determines whether the expand/collapse button should be displayed |
+
 
 #### Styles API
 

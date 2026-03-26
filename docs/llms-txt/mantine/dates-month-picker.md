@@ -1,12 +1,13 @@
 # Source: https://mantine.dev/llms/dates-month-picker.md
 
 # MonthPicker
-
 Package: @mantine/dates
 Import: import { MonthPicker } from '@mantine/dates';
 Description: Inline month, multiple months and months range picker
 
 ## Usage
+
+
 
 ## Allow deselect
 
@@ -14,19 +15,27 @@ Set `allowDeselect` to allow user to deselect current selected date by clicking 
 `allowDeselect` is disregarded when `type` prop is `range` or `multiple`. When date is
 deselected `onChange` is called with `null`.
 
+
+
 ## Multiple dates
 
 Set `type="multiple"` to allow user to pick multiple dates:
 
+
+
 ## Dates range
 
 Set `type="range"` to allow user to pick dates range:
+
+
 
 ## Single date in range
 
 By default, it is not allowed to select single date as range – when user clicks the same date second time it is deselected.
 To change this behavior set `allowSingleDateInRange` prop. `allowSingleDateInRange` is ignored when
 `type` prop is not `range`.
+
+
 
 ## Default date
 
@@ -48,6 +57,7 @@ function Demo() {
   return <MonthPicker defaultDate="2015-02-01" value={value} onChange={setValue} />;
 }
 ```
+
 
 ## Controlled date
 
@@ -86,6 +96,7 @@ function Demo() {
 }
 ```
 
+
 ## Min and max date
 
 Set `minDate` and `maxDate` props to define min and max dates. If previous/next page is not available
@@ -110,6 +121,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Add props to year and month control
 
@@ -171,9 +183,12 @@ function Demo() {
 }
 ```
 
+
 ## Number of columns
 
 Set `numberOfColumns` prop to define number of pickers that will be rendered side by side:
+
+
 
 ## Max level
 
@@ -189,7 +204,10 @@ function Demo() {
 }
 ```
 
+
 ## Size
+
+
 
 ## Change year and months controls format
 
@@ -204,6 +222,7 @@ function Demo() {
   return <MonthPicker monthsListFormat="MM" yearsListFormat="YY" />;
 }
 ```
+
 
 ## Change label format
 
@@ -228,6 +247,7 @@ function Demo() {
 }
 ```
 
+
 ## Localization
 
 Usually it is better to specify `@mantine/dates` package locale in [DatesProvider](https://mantine.dev/dates/getting-started/),
@@ -243,6 +263,7 @@ function Demo() {
   return <MonthPicker locale="ru" />;
 }
 ```
+
 
 ## Accessibility
 
@@ -293,6 +314,7 @@ function Demo() {
 
 Note that the following events will only trigger if focus is on month control.
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -331,6 +353,7 @@ Note that the following events will only trigger if focus is on month control.
 | withCellSpacing | boolean | - | Determines whether controls should be separated |
 | yearLabelFormat | string | ((date: string) => string) | - | dayjs label format to display year label or a function that returns year label based on year value |
 | yearsListFormat | string | - | dayjs format for years list |
+
 
 #### Styles API
 

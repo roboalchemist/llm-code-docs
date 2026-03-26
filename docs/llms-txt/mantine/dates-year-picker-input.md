@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/dates-year-picker-input.md
 
 # YearPickerInput
-
 Package: @mantine/dates
 Import: import { YearPickerInput } from '@mantine/dates';
 Description: Inline year, multiple years and years range picker
@@ -13,18 +12,26 @@ read through [YearPicker](https://mantine.dev/dates/year-picker/) documentation 
 
 ## Usage
 
+
+
 ## Multiple dates
 
 Set `type="multiple"` to allow user to pick multiple dates:
+
+
 
 ## Dates range
 
 Set `type="range"` to allow user to pick dates range:
 
+
+
 ## Open picker in modal
 
 By default, [YearPicker](https://mantine.dev/dates/year-picker/) is rendered inside [Popover](https://mantine.dev/core/popover/).
 You can change that to [Modal](https://mantine.dev/core/modal/) by setting `dropdownType="modal"`:
+
+
 
 ## Value format
 
@@ -42,6 +49,7 @@ function Demo() {
 }
 ```
 
+
 ## Value formatter
 
 `valueFormatter` is a more powerful alternative to `valueFormat` prop.
@@ -51,10 +59,14 @@ The function is the same for all component types (`default`, `multiple` and `ran
 
 Example of using a custom formatter function with `type="multiple"`:
 
+
+
 ## Clearable
 
 Set `clearable` prop to display clear button in the right section. Note that if you set `rightSection`
 prop, clear button will not be displayed.
+
+
 
 ## Disabled state
 
@@ -76,13 +88,18 @@ function Demo() {
 }
 ```
 
+
 ## Input props
 
 <InputFeatures component="MonthPickerInput" element="button" />
 
 MonthPickerInput component supports [Input](https://mantine.dev/core/input) and [Input.Wrapper](https://mantine.dev/core/input) components features and all button element props. MonthPickerInput documentation does not include all features supported by the component – see [Input](https://mantine.dev/core/input) documentation to learn about all available features.
 
+
+
 ## With icon
+
+
 
 <GetElementRef component="YearPickerInput" refType="button" package="@mantine/dates" />
 
@@ -103,6 +120,7 @@ function Demo() {
 ## Accessibility
 
 YearPickerInput provides better accessibility support when used in forms. Make sure to associate the input with a label for better screen reader support.
+
 
 #### Props
 
@@ -169,6 +187,7 @@ YearPickerInput provides better accessibility support when used in forms. Make s
 | withErrorStyles | boolean | - | Determines whether the input should have red border and red text color when the <code>error</code> prop is set |
 | wrapperProps | WrapperProps | - | Props passed down to the root element |
 | yearsListFormat | string | - | dayjs format for years list |
+
 
 #### Styles API
 

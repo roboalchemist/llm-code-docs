@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/charts-pie-chart.md
 
 # PieChart
-
 Package: @mantine/charts
 Import: import { PieChart } from '@mantine/charts';
 Description: Pie chart component
@@ -30,6 +29,7 @@ export const data = [
 ];
 ```
 
+
 ## Segments labels
 
 Set `withLabels` prop to display labels next to each segment. Use `labelPosition` prop
@@ -57,6 +57,7 @@ export const data = [
 ];
 ```
 
+
 ## Size
 
 Set `size` prop to control width and height of the chart. Note that if `withLabels` and `labelPosition="outside"` prop are set,
@@ -83,6 +84,7 @@ export const data = [
 ];
 ```
 
+
 ## Segment color
 
 You can reference colors from [theme](https://mantine.dev/theming/theme-object) the same way as in
@@ -105,6 +107,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Enable tooltip
 
@@ -129,6 +132,7 @@ export const data = [
   { name: 'Other', value: 200, color: 'gray.6' },
 ];
 ```
+
 
 ## Tooltip data source
 
@@ -172,6 +176,7 @@ export const data = [
 ];
 ```
 
+
 ## Start and end angle
 
 Use `startAngle` and `endAngle` props to control the start and end angle of the chart.
@@ -196,6 +201,7 @@ export const data = [
   { name: 'Other', value: 200, color: 'gray.6' },
 ];
 ```
+
 
 Note that even when `startAngle` and `endAngle` props are set, the chart still takes
 the same amount of space as if it was a full circle.
@@ -223,6 +229,7 @@ export const data = [
   { name: 'Other', value: 200, color: 'gray.6' },
 ];
 ```
+
 
 To change color of the stroke, use `strokeColor` prop. You can reference colors from [theme](https://mantine.dev/theming/theme-object) the same way as in
 other components, for example, `blue`, `red.5`, `orange.7`, etc. Any valid CSS
@@ -274,6 +281,8 @@ export const data = [
 ];
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -299,6 +308,7 @@ export const data = [
 | withLabels | boolean | - | Determines whether each segment should have associated label |
 | withLabelsLine | boolean | - | Determines whether segments labels should have lines that connect the segment with the label |
 | withTooltip | boolean | - | Determines whether the tooltip should be displayed when one of the section is hovered |
+
 
 #### Styles API
 

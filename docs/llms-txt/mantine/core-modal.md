@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-modal.md
 
 # Modal
-
 Package: @mantine/core
 Import: import { Modal } from '@mantine/core';
 Description: An accessible overlay dialog
@@ -31,6 +30,7 @@ function Demo() {
 }
 ```
 
+
 ## Center modal vertically
 
 #### Example: centered
@@ -55,6 +55,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Remove header
 
@@ -82,6 +83,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Change size
 
@@ -125,6 +127,7 @@ function Demo() {
 }
 ```
 
+
 ## Size auto
 
 `Modal` with `size="auto"` will have width to fit its content:
@@ -166,6 +169,7 @@ function Demo() {
 }
 ```
 
+
 ## Fullscreen
 
 Fullscreen modal will take the entire screen, it is usually better to change transition to `fade`
@@ -201,6 +205,7 @@ function Demo() {
 }
 ```
 
+
 To switch Modal to fullscreen on devices with small screens only use [use-media-query](https://mantine.dev/hooks/use-media-query/) hook.
 `size` prop is ignored if `fullScreen` prop is set:
 
@@ -233,6 +238,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Customize overlay
 
@@ -270,6 +276,7 @@ function Demo() {
 }
 ```
 
+
 ## Modal with scroll
 
 #### Example: overflow
@@ -298,6 +305,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Usage with ScrollArea
 
@@ -333,6 +341,7 @@ function Demo() {
 }
 ```
 
+
 ## Change offsets
 
 Use `xOffset`/`yOffset` to configure horizontal/vertical content offsets:
@@ -359,6 +368,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Change transitions
 
@@ -407,6 +417,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## onExitTransitionEnd and onEnterTransitionEnd
 
@@ -474,6 +485,7 @@ function Demo() {
 }
 ```
 
+
 ## Initial focus
 
 Modal uses [FocusTrap](https://mantine.dev/core/focus-trap/) to trap focus. Add `data-autofocus`
@@ -508,6 +520,7 @@ function Demo() {
 }
 ```
 
+
 If you do not want to focus any elements when the modal is opened, use `FocusTrap.InitialFocus`
 component to create a visually hidden element that will receive initial focus:
 
@@ -540,6 +553,7 @@ function Demo() {
   );
 }
 ```
+
 
 If you do not add `data-autofocus` attribute and do not use `FocusTrap.InitialFocus`,
 modal will focus the first focusable element inside it which is usually the close button.
@@ -610,6 +624,7 @@ function Demo() {
 }
 ```
 
+
 ## Compound components
 
 You can use the following compound components to have full control over the `Modal` rendering:
@@ -651,6 +666,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Modal.Stack
 
@@ -723,6 +739,7 @@ function Demo() {
   );
 }
 ```
+
 
 Note that `Modal.Stack` can only be used with `Modal` component. Components built with `Modal.Root`
 and other compound components are not compatible with `Modal.Stack`.
@@ -828,6 +845,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -864,6 +882,7 @@ function Demo() {
 | xOffset | MarginLeft<string | number> | - | Left/right modal offset |
 | yOffset | MarginTop<string | number> | - | Top/bottom modal offset |
 | zIndex | string | number | - | <code>z-index</code> CSS property of the root element |
+
 
 #### Styles API
 

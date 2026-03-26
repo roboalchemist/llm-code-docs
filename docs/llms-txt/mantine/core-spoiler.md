@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-spoiler.md
 
 # Spoiler
-
 Package: @mantine/core
 Import: import { Spoiler } from '@mantine/core';
 Description: Hide long sections of content under a spoiler
@@ -27,6 +26,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Control expanded state
 
@@ -93,6 +93,7 @@ function Demo() {
 }
 ```
 
+
 ## Get control ref
 
 ```tsx
@@ -111,6 +112,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -123,6 +125,7 @@ function Demo() {
 | onExpandedChange | (expanded: boolean) => void | - | Called when expanded state changes (when spoiler visibility is toggled by the user) |
 | showLabel | React.ReactNode | required | Label for open spoiler action |
 | transitionDuration | number | - | Spoiler reveal transition duration in ms, set 0 or null to turn off animation |
+
 
 #### Styles API
 

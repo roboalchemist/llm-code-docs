@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-hotkeys.md
 
 # useHotkeys
-
 Package: @mantine/hooks
 Import: import { UseHotkeys } from '@mantine/hooks';
 
@@ -12,6 +11,8 @@ Import: import { UseHotkeys } from '@mantine/hooks';
 * `hotkey` - hotkey string, for example `ctrl+E`, `shift+alt+L`, `mod+S`
 * `handler` - event handler called when a given combination was pressed
 * `options` - object with extra options for hotkey handler
+
+
 
 The second argument is a list of HTML tags on which hotkeys should be ignored.
 By default, hotkeys events are ignored if the focus is in `input`, `textarea` and `select` elements.
@@ -36,6 +37,8 @@ function Demo() {
 `use-hotkeys` hook can work only with document element, you will need to create your own event listener
 if you need to support other elements. For this purpose, `@mantine/hooks` package exports `getHotkeyHandler` function
 which should be used with `onKeyDown`:
+
+
 
 With `getHotkeyHandler` you can also add events to any dom node using `.addEventListener`:
 

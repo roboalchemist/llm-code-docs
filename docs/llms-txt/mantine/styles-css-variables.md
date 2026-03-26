@@ -414,6 +414,7 @@ function Demo() {
 }
 ```
 
+
 You can reference heading variables in your CSS:
 
 ```scss

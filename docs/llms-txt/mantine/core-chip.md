@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-chip.md
 
 # Chip
-
 Package: @mantine/core
 Import: import { Chip } from '@mantine/core';
 Description: Pick one or multiple values with inline controls
@@ -17,6 +16,7 @@ function Demo() {
   return <Chip defaultChecked>Awesome chip</Chip>
 }
 ```
+
 
 ## Controlled
 
@@ -56,6 +56,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## States
 
@@ -111,6 +112,7 @@ function Demo() {
 }
 ```
 
+
 ## Chip with tooltip
 
 To use `Chip` with [Tooltip](https://mantine.dev/core/tooltip/) and other similar components, set `refProp="rootRef"`
@@ -129,6 +131,7 @@ function Demo() {
   );
 }
 ```
+
 
 <WrapperProps component="Chip" />
 
@@ -168,6 +171,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controlled Chip.Group
 
@@ -238,10 +242,12 @@ function Demo() {
 }
 ```
 
+
 ## Accessibility
 
 `Chip` and `Chip.Group` components are accessible by default – they are built with native radio/checkbox inputs,
 all keyboard events work the same as with native controls.
+
 
 #### Props
 
@@ -260,6 +266,7 @@ all keyboard events work the same as with native controls.
 | size | MantineSize | - | Controls various properties related to component size |
 | type | "checkbox" | "radio" | - | Chip input type |
 | wrapperProps | Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "ref"> & DataAttributes | - | Props passed down to the root element |
+
 
 #### Styles API
 

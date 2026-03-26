@@ -636,6 +636,7 @@ function Demo() {
 }
 ```
 
+
 ### Pseudo-classes
 
 You can add pseudo-classes the same way as in any css-preprocessor like Sass:
@@ -689,6 +690,7 @@ function Demo() {
 }
 ```
 
+
 ### Styles parameters
 
 You can receive any amount of parameters as second argument of `createStyles` function,
@@ -734,6 +736,7 @@ function Demo() {
   );
 }
 ```
+
 
 ### Composition and nested selectors
 
@@ -791,6 +794,7 @@ function Demo() {
   );
 }
 ```
+
 
 ### Classes merging (cx function)
 
@@ -861,6 +865,7 @@ function Demo() {
 }
 ```
 
+
 ### Media queries
 
 You can use nested media queries like in Sass. Within query body you can use `theme.breakpoints`
@@ -900,6 +905,7 @@ function Demo() {
 }
 ```
 
+
 ### Keyframes
 
 #### Example: keyframes
@@ -928,6 +934,7 @@ function Demo() {
   return <div className={classes.container}>Keyframes demo</div>;
 }
 ```
+
 
 ## Utilities
 

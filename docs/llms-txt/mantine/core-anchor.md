@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-anchor.md
 
 # Anchor
-
 Package: @mantine/core
 Import: import { Anchor } from '@mantine/core';
 Description: Display link with theme styles
@@ -21,6 +20,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Underline
 
@@ -55,6 +55,7 @@ function Demo() {
   );
 }
 ```
+
 
 You can also configure `underline` prop for all `Anchor` components with [default props](https://mantine.dev/theming/default-props):
 
@@ -105,6 +106,7 @@ function Demo() {
 }
 ```
 
+
 <Polymorphic defaultElement="a" changeToElement="button" component="Anchor" withNext />
 
 ## Polymorphic component
@@ -149,6 +151,7 @@ function Demo() {
   return <Anchor ref={ref} />;
 }
 ```
+
 
 #### Props
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-unstyled-button.md
 
 # UnstyledButton
-
 Package: @mantine/core
 Import: import { UnstyledButton } from '@mantine/core';
 Description: Unstyled polymorphic button
@@ -21,6 +20,7 @@ function Demo() {
   return <UnstyledButton>Button without styles</UnstyledButton>;
 }
 ```
+
 
 <Polymorphic defaultElement="button" changeToElement="a" component="UnstyledButton" />
 
@@ -56,11 +56,13 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | size | string | number | - | Size passed from parent component, sets <code>data-size</code> if value is not number like |
+
 
 #### Styles API
 

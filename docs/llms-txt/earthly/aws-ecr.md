@@ -136,9 +136,9 @@ If you get a message saying `basic credentials not found`; your distribution may
 
 ### 401 Unauthorized
 
-Double-check your AWS credentials, to ensure you have the correct ones set up. `aws configure` can help you do this. Also, check IAM to ensure you have the correct permissions (see the [IAM](#iam) section above). Finally, if you use IAM assumed roles, ensure that you have assumed the correct role in your terminal session.
+Double-check your AWS credentials, to ensure you have the correct ones set up. `aws configure` can help you do this. Also, check IAM to ensure you have the correct permissions (see the [IAM](#IAM) section above). Finally, if you use IAM assumed roles, ensure that you have assumed the correct role in your terminal session.
 
-If these are in order, the same fix from [Basic Credentials Not Found](#basic-credentials-not-found) may help.
+If these are in order, the same fix from [Basic Credentials Not Found](#Basic-Credentials-Not-Found) may help.
 
 If you are using a [pull-through-cache](https://docs.earthly.dev/earthly-0.6/ci-integration/pull-through-cache), the ECR credential helper may cause 401 failures when fetching metadata from the mirrored registry. You can solve this by manually logging in, instead of using the credential helper. Here is an example of logging in manually:
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-viewport-size.md
 
 # useViewportSize
-
 Package: @mantine/hooks
 Import: import { UseViewportSize } from '@mantine/hooks';
 
@@ -9,6 +8,8 @@ Import: import { UseViewportSize } from '@mantine/hooks';
 
 `use-viewport-size` returns current viewport's `width` and `height`, it subscribes to `resize` and `orientationchange` events,
 during ssr hook will return `{ width: 0, height: 0 }`:
+
+
 
 ## Definition
 

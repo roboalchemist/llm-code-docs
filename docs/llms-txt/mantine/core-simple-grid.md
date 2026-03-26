@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-simple-grid.md
 
 # SimpleGrid
-
 Package: @mantine/core
 Import: import { SimpleGrid } from '@mantine/core';
 Description: Responsive grid in which each item takes equal amount of space
@@ -29,6 +28,7 @@ function Demo() {
   )
 }
 ```
+
 
 ## spacing and verticalSpacing props
 
@@ -83,6 +83,7 @@ function Demo() {
 }
 ```
 
+
 ## Container queries
 
 To use [container queries](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_containment/Container_queries)
@@ -121,6 +122,7 @@ function Demo() {
 }
 ```
 
+
 ## Browser support
 
 `SimpleGrid` uses [CSS Grid Layout](https://caniuse.com/css-grid), it is supported in all modern browsers.
@@ -130,6 +132,7 @@ When `type="container"` is set, `SimpleGrid` uses [container queries](https://ca
 Since February 2023, container queries are supported in all modern browsers. If you need to support older browsers,
 do not use container queries option.
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -138,6 +141,7 @@ do not use container queries option.
 | spacing | StyleProp<MantineSpacing> | - | Spacing between columns |
 | type | "media" | "container" | - | Determines typeof of queries that are used for responsive styles |
 | verticalSpacing | StyleProp<MantineSpacing> | - | Spacing between rows |
+
 
 #### Styles API
 

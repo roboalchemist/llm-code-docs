@@ -62,6 +62,7 @@ function Demo() {
 }
 ```
 
+
 Note that you can add custom variants to every Mantine component that supports [Styles API](https://mantine.dev/styles/styles-api)
 even if there are no variants defined on the library side.
 
@@ -168,6 +169,7 @@ function Demo() {
 }
 ```
 
+
 ## Sizes with components CSS variables
 
 You can add custom sizes to any component that supports `size` prop by providing a custom
@@ -261,6 +263,7 @@ function Demo() {
 }
 ```
 
+
 ## Sizes with data-size attribute
 
 Every component that supports `size` prop exposes it as `data-size="{value}"` attribute on the root element.
@@ -309,6 +312,7 @@ function Demo() {
   }
 }
 ```
+
 
 ## Sizes with static CSS variables
 
@@ -365,6 +369,7 @@ function Demo() {
   --ai-size-xxl: 50px;
 }
 ```
+
 
 Note that some components have more than one CSS variable for size, for example,
 the [Button](https://mantine.dev/core/button) component has the following CSS variables:

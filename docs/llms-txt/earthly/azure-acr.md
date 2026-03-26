@@ -38,13 +38,13 @@ After logging in, the [ACR Credential Helper](https://github.com/Azure/acr-docke
 
 ```
 {
- "auths": {
-  "helloearthly.azurecr.io": {
-   "auth": "...",
-   "identitytoken": "..."
-  }
- },
- "credsStore": "acr-linux"
+	"auths": {
+		"helloearthly.azurecr.io": {
+			"auth": "...",
+			"identitytoken": "..."
+		}
+	},
+	"credsStore": "acr-linux"
 }
 ```
 

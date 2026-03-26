@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-menu.md
 
 # Menu
-
 Package: @mantine/core
 Import: import { Menu } from '@mantine/core';
 Description: Combine a list of secondary actions into single interactive area
@@ -70,6 +69,7 @@ function Demo() {
 }
 ```
 
+
 ## Submenus
 
 #### Example: sub
@@ -130,6 +130,7 @@ function Demo() {
 }
 ```
 
+
 ## Controlled
 
 Dropdown opened state can be controlled with `opened` and `onChange` props:
@@ -171,6 +172,7 @@ function Demo() {
 }
 ```
 
+
 To make `Menu` that is revealed on hover accessible on all devices, use `trigger="click-hover"` instead.
 The dropdown will be revealed on hover on desktop and on click on mobile devices.
 
@@ -187,6 +189,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Disabled items
 
@@ -218,6 +221,7 @@ function Demo() {
 }
 ```
 
+
 ## Dropdown position
 
 #### Example: positionConfigurator
@@ -233,6 +237,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Transitions
 
@@ -251,6 +256,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Custom component as Menu.Item
 
@@ -286,6 +292,7 @@ function Demo() {
   );
 }
 ```
+
 
 Note that the component you pass to `component` prop should allow spreading props to its root element:
 
@@ -378,6 +385,7 @@ function Demo() {
 }
 ```
 
+
 #### Example: stylesApi
 
 ```tsx
@@ -391,6 +399,7 @@ function Demo() {
   );
 }
 ```
+
 
 <TargetComponent component="Menu" />
 
@@ -445,9 +454,11 @@ function Demo() {
 }
 ```
 
+
 ### Keyboard interactions
 
 If you also need to support `Tab` and `Shift + Tab` then set `menuItemTabIndex={0}`.
+
 
 #### Props
 
@@ -499,6 +510,7 @@ If you also need to support `Tab` and `Shift + Tab` then set `menuItemTabIndex={
 | withOverlay | boolean | - | Determines whether the overlay should be displayed when the dropdown is opened |
 | withinPortal | boolean | - | Determines whether dropdown should be rendered within the <code>Portal</code> |
 | zIndex | string | number | - | Dropdown <code>z-index</code> |
+
 
 #### Styles API
 

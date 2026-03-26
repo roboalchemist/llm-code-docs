@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-package.md
 
 # CorePackage
-
 Package: @mantine/core
 Import: import { CorePackage } from '@mantine/core';
 
@@ -71,6 +70,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## License
 

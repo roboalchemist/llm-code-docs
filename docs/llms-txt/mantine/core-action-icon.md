@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-action-icon.md
 
 # ActionIcon
-
 Package: @mantine/core
 Import: import { ActionIcon } from '@mantine/core';
 Description: Icon button
@@ -23,12 +22,12 @@ function Demo() {
 }
 ```
 
+
 <Gradient component="ActionIcon" />
 
 ## Gradient
 
 ActionIcon supports Mantine color format in color prop. Color can be specified as:
-
 - Mantine color name (e.g., 'blue')
 - CSS color value (e.g., '#fff', 'rgba(255, 255, 255, 0.8)')
 - Gradient string (e.g., 'linear-gradient(45deg, blue, red)')
@@ -53,6 +52,7 @@ function Demo() {
 }
 ```
 
+
 ## Size
 
 You can use any valid CSS value in `size` prop, it is used to set `width`, `min-width`, `min-height` and `height`
@@ -75,6 +75,7 @@ function Demo() {
 }
 ```
 
+
 If you want `ActionIcon` to have the same size as Mantine inputs, use `size="input-sm"` prop:
 
 #### Example: inputSize
@@ -93,6 +94,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Disabled state
 
@@ -120,6 +122,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Disabled state when ActionIcon is link
 
@@ -149,15 +152,16 @@ function Demo() {
 }
 ```
 
+
 ## Customize disabled styles
 
 To customize disabled styles, it is recommended to use both `&:disabled` and `&[data-disabled]`
 selectors:
 
-- `&:disabled` is used to style the button when `disabled` prop is set and
+* `&:disabled` is used to style the button when `disabled` prop is set and
   also when the button is disabled by the parent component (for example, when `disabled` prop is set on a
   `<fieldset />` element which contains `ActionIcon`).
-- `&[data-disabled]` is used to style the button when it is not actually disabled but should look like
+* `&[data-disabled]` is used to style the button when it is not actually disabled but should look like
   it is (for example, `data-disabled` should be used if you need to use [Tooltip](https://mantine.dev/core/tooltip) with disabled `ActionIcon`
   or when `ActionIcon` is used as a link)
 
@@ -187,6 +191,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled button with Tooltip
 
 `onMouseLeave` event [is not triggered](https://github.com/facebook/react/issues/18753) when `ActionIcon` is disabled, so if you need to use
@@ -211,6 +216,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Loading state
 
@@ -246,6 +252,7 @@ function Demo() {
 }
 ```
 
+
 ## Loader props
 
 You can customize [Loader](https://mantine.dev/core/loader) with `loaderProps` prop, it accepts all props that
@@ -260,6 +267,7 @@ function Demo() {
   return <ActionIcon size="xl" loading loaderProps={{ type: 'dots' }} />;
 }
 ```
+
 
 ## Add custom variants
 
@@ -311,6 +319,7 @@ function Demo() {
   }
 }
 ```
+
 
 ## Customize variants colors
 
@@ -392,6 +401,7 @@ function Demo() {
 }
 ```
 
+
 <AutoContrast component="ActionIcon" />
 
 ## autoContrast
@@ -419,6 +429,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Add custom sizes
 
@@ -464,6 +475,7 @@ function Demo() {
 }
 ```
 
+
 ## ActionIcon.Group
 
 #### Example: group
@@ -490,6 +502,7 @@ function Demo() {
   );
 }
 ```
+
 
 Note that you must not wrap child `ActionIcon` components with any additional elements:
 
@@ -538,6 +551,7 @@ function Demo() {
   );
 }
 ```
+
 
 <Polymorphic defaultElement="button" changeToElement="a" component="ActionIcon" withNext />
 
@@ -609,6 +623,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -622,6 +637,7 @@ function Demo() {
 | loading | boolean | - | If set, <code>Loader</code> component is displayed instead of the <code>children</code> |
 | radius | MantineRadius | number | - | Key of <code>theme.radius</code> or any valid CSS value to set border-radius. Numbers are converted to rem. |
 | size | number | MantineSize | (string & {}) | "input-xs" | "input-sm" | "input-md" | "input-lg" | "input-xl" | - | Controls width and height of the button. Numbers are converted to rem. |
+
 
 #### Styles API
 

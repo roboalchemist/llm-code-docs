@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-floating-indicator.md
 
 # FloatingIndicator
-
 Package: @mantine/core
 Import: import { FloatingIndicator } from '@mantine/core';
 Description: Display a floating indicator over a group of elements
@@ -61,6 +60,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Multiple rows
 
@@ -185,6 +185,7 @@ function Demo() {
 }
 ```
 
+
 ## Example: Tabs
 
 #### Example: tabs
@@ -269,6 +270,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -278,6 +281,7 @@ Should be set if the component is used inside a container that has <code>transfo
 | parent | HTMLElement | null | required | Parent element with relative position based on which indicator position is calculated |
 | target | HTMLElement | null | required | Target element over which indicator is displayed |
 | transitionDuration | string | number | - | Transition duration in ms |
+
 
 #### Styles API
 

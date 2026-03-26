@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-native-select.md
 
 # NativeSelect
-
 Package: @mantine/core
 Import: import { NativeSelect } from '@mantine/core';
 Description: Native select element based on Input
@@ -21,6 +20,7 @@ function Demo() {
   return <NativeSelect data={['React', 'Angular', 'Vue']} />;
 }
 ```
+
 
 ## Controlled
 
@@ -66,7 +66,7 @@ function Demo() {
 }
 ```
 
-1. Array of objects with `label`, `value` and `disabled` keys:
+2. Array of objects with `label`, `value` and `disabled` keys:
 
 ```tsx
 import { NativeSelect } from '@mantine/core';
@@ -85,7 +85,7 @@ function Demo() {
 }
 ```
 
-1. Array of grouped options (string format):
+3. Array of grouped options (string format):
 
 ```tsx
 import { NativeSelect } from '@mantine/core';
@@ -108,7 +108,7 @@ function Demo() {
 }
 ```
 
-1. Array of grouped options (object format):
+4. Array of grouped options (object format):
 
 ```tsx
 import { NativeSelect } from '@mantine/core';
@@ -172,6 +172,7 @@ function Demo() {
 }
 ```
 
+
 ### children options
 
 To add options with `children` prop, use `option` elements to add options and `optgroup`
@@ -202,6 +203,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## With dividers
 
@@ -237,6 +239,7 @@ function Demo() {
 }
 ```
 
+
 <InputSections component="NativeSelect" />
 
 ## Input sections
@@ -270,6 +273,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled state
 
 #### Example: disabled
@@ -281,6 +285,7 @@ function Demo() {
   return <NativeSelect disabled data={['React', 'Angular']} label="Disabled NativeSelect" />;
 }
 ```
+
 
 ## Error state
 
@@ -304,6 +309,7 @@ function Demo() {
 }
 ```
 
+
 #### Example: stylesApi
 
 ```tsx
@@ -314,11 +320,13 @@ function Demo() {
 }
 ```
 
+
 <InputAccessibility component="NativeSelect" />
 
 ## Accessibility
 
 NativeSelect provides better accessibility support when used in forms. Make sure to associate the input with a label for better screen reader support.
+
 
 #### Props
 
@@ -349,6 +357,7 @@ NativeSelect provides better accessibility support when used in forms. Make sure
 | withAsterisk | boolean | - | If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input. |
 | withErrorStyles | boolean | - | Determines whether the input should have red border and red text color when the <code>error</code> prop is set |
 | wrapperProps | WrapperProps | - | Props passed down to the root element |
+
 
 #### Styles API
 

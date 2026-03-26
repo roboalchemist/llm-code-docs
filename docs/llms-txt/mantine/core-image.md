@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-image.md
 
 # Image
-
 Package: @mantine/core
 Import: import { Image } from '@mantine/core';
 Description: Image with optional fallback
@@ -27,6 +26,7 @@ function Demo() {
 }
 ```
 
+
 ## Image height
 
 In most case, you will need to set image height to prevent layout jumps when
@@ -47,6 +47,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Image fit
 
@@ -71,6 +72,7 @@ function Demo() {
 }
 ```
 
+
 ## Fallback image
 
 Set `fallbackSrc` prop to display fallback image when image fails to load:
@@ -92,6 +94,7 @@ function Demo() {
 }
 ```
 
+
 ## Usage with Next.js Image
 
 `Image` component is a [polymorphic component](https://mantine.dev/guides/polymorphic), its root element can be changed with `component` prop.
@@ -107,6 +110,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -116,6 +120,7 @@ function Demo() {
 | onError | (event: SyntheticEvent<HTMLImageElement, Event>) => void | - | Called when image fails to load |
 | radius | MantineRadius | number | - | Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code> |
 | src | any | - | Image url |
+
 
 #### Styles API
 

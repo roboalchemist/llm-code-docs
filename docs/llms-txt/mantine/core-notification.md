@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-notification.md
 
 # Notification
-
 Package: @mantine/core
 Import: import { Notification } from '@mantine/core';
 Description: Show dynamic notifications and alerts to user, part of notifications system
@@ -24,6 +23,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## With icon
 
@@ -50,6 +50,7 @@ function Demo() {
 }
 ```
 
+
 #### Example: stylesApi
 
 ```tsx
@@ -63,6 +64,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Accessibility
 
@@ -80,6 +82,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -95,6 +98,7 @@ function Demo() {
 | title | React.ReactNode | - | Notification title, displayed above the message body |
 | withBorder | boolean | - | Adds border to the root element |
 | withCloseButton | boolean | - | If set, the close button is visible |
+
 
 #### Styles API
 

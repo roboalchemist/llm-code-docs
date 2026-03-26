@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-aspect-ratio.md
 
 # AspectRatio
-
 Package: @mantine/core
 Import: import { AspectRatio } from '@mantine/core';
 Description: Maintain responsive consistent width/height ratio
@@ -28,6 +27,7 @@ function Demo() {
 }
 ```
 
+
 ## Map embed
 
 #### Example: map
@@ -47,6 +47,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Video embed
 
@@ -69,6 +70,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Inside flex container
 
@@ -95,11 +97,14 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | ratio | number | - | Aspect ratio, for example, <code>16 / 9</code>, <code>4 / 3</code>, <code>1920 / 1080</code> |
+
 
 #### Styles API
 

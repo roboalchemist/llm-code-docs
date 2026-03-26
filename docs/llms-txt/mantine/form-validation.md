@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/form-validation.md
 
 # formValidation
-
 Package: @mantine/form
 Import: import { FormValidation } from '@mantine/form';
 
@@ -60,6 +59,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Rule function arguments
 
@@ -177,6 +177,7 @@ function Demo() {
 }
 ```
 
+
 Another example is to validate an object fields combination:
 
 #### Example: rootRuleObject
@@ -233,6 +234,7 @@ function Demo() {
 }
 ```
 
+
 ## Validation based on other form values
 
 You can get all form values as a second rule function argument to perform field validation based on other
@@ -284,6 +286,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Function based validation
 
@@ -338,6 +341,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Validate fields on change
 
@@ -403,6 +407,7 @@ function Demo() {
   );
 }
 ```
+
 
 You can also provide an array of fields paths to validate only those values:
 
@@ -493,6 +498,7 @@ function Demo() {
 }
 ```
 
+
 ## Validate fields on blur
 
 To validate all fields on blur set `validateInputOnBlur` option to `true`:
@@ -557,6 +563,7 @@ function Demo() {
   );
 }
 ```
+
 
 You can also provide an array of fields paths to validate only those values:
 
@@ -643,6 +650,7 @@ function Demo() {
 }
 ```
 
+
 ## Clear field error on change
 
 By default, field error is cleared when value changes. To change this, set `clearInputErrorOnChange` to `false`:
@@ -701,6 +709,7 @@ function Demo() {
 }
 ```
 
+
 ## Validation in onSubmit handler
 
 `form.onSubmit` accepts two arguments: first argument is `handleSubmit` function that will be called with form values, when validation
@@ -756,6 +765,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## isValid handler
 
@@ -846,3 +856,4 @@ function Demo() {
   );
 }
 ```
+

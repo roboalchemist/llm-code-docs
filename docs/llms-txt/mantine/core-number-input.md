@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-number-input.md
 
 # NumberInput
-
 Package: @mantine/core
 Import: import { NumberInput } from '@mantine/core';
 Description: Capture number from user
@@ -30,6 +29,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controlled
 
@@ -75,6 +75,7 @@ function Demo() {
 }
 ```
 
+
 ## Clamp behavior
 
 By default, the value is clamped when the input is blurred. If you set `clampBehavior="strict"`,
@@ -99,6 +100,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Prefix and suffix
 
@@ -131,6 +133,7 @@ function Demo() {
 }
 ```
 
+
 ## Negative numbers
 
 By default, negative numbers are allowed. Set `allowNegative={false}` to allow only positive numbers.
@@ -150,6 +153,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Decimal numbers
 
@@ -171,6 +175,7 @@ function Demo() {
 }
 ```
 
+
 ## Decimal scale
 
 `decimalScale` controls how many decimal places are allowed:
@@ -190,6 +195,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Fixed decimal scale
 
@@ -213,6 +219,7 @@ function Demo() {
 }
 ```
 
+
 ## Decimal separator
 
 Set `decimalSeparator` to change decimal separator character:
@@ -233,6 +240,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Thousand separator
 
@@ -266,6 +274,7 @@ function Demo() {
 }
 ```
 
+
 <InputSections component="NumberInput" />
 
 ## Input sections
@@ -294,6 +303,7 @@ function Demo() {
 }
 ```
 
+
 ## Increment/decrement controls
 
 By default, the right section is occupied by increment and decrement buttons.
@@ -321,6 +331,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Increment/decrement on hold
 
@@ -351,6 +362,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Custom increment and decrement controls
 
@@ -390,6 +402,7 @@ function Demo() {
 }
 ```
 
+
 ## Error state
 
 #### Example: error
@@ -412,6 +425,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled state
 
 #### Example: disabled
@@ -423,6 +437,7 @@ function Demo() {
   return <NumberInput disabled label="Disabled input" placeholder="Disabled input" />;
 }
 ```
+
 
 #### Example: stylesApi
 
@@ -445,6 +460,7 @@ function Demo() {
 }
 ```
 
+
 <GetElementRef component="NumberInput" refType="input" />
 
 ## Get element ref
@@ -464,6 +480,7 @@ function Demo() {
 ## Accessibility
 
 NumberInput provides better accessibility support when used in forms. Make sure to associate the input with a label for better screen reader support.
+
 
 #### Props
 
@@ -522,6 +539,7 @@ NumberInput provides better accessibility support when used in forms. Make sure 
 | withErrorStyles | boolean | - | Determines whether the input should have red border and red text color when the <code>error</code> prop is set |
 | withKeyboardEvents | boolean | - | If set, up/down keyboard events increment/decrement value |
 | wrapperProps | WrapperProps | - | Props passed down to the root element |
+
 
 #### Styles API
 

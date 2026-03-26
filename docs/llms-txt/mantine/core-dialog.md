@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-dialog.md
 
 # Dialog
-
 Package: @mantine/core
 Import: import { Dialog } from '@mantine/core';
 Description: Display a fixed overlay dialog at any side of the screen
@@ -48,6 +47,7 @@ function Demo() {
 }
 ```
 
+
 ## Change position
 
 `Dialog` is rendered in [Portal](https://mantine.dev/core/portal/) and has fixed position, set `position` prop to control dialog's position:
@@ -75,6 +75,7 @@ function Demo() {
 make sure you do not put any important information. In most cases it would be better
 to select [Modal](https://mantine.dev/core/modal/), [Drawer](https://mantine.dev/core/drawer/) or [Notifications](https://mantine.dev/x/notifications/).
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -93,6 +94,7 @@ to select [Modal](https://mantine.dev/core/modal/), [Drawer](https://mantine.dev
 | withCloseButton | boolean | - | If set, the close button is displayed |
 | withinPortal | boolean | - | Determines whether the component is rendered within <code>Portal</code> |
 | zIndex | React.CSSProperties["zIndex"] | - | Root element <code>z-index</code> property |
+
 
 #### Styles API
 

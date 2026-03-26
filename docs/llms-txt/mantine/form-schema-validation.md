@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/form-schema-validation.md
 
 # formSchemaValidation
-
 Package: @mantine/form
 Import: import { FormSchemaValidation } from '@mantine/form';
 

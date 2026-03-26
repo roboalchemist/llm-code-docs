@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-popover.md
 
 # Popover
-
 Package: @mantine/core
 Import: import { Popover } from '@mantine/core';
 Description: Display popover section relative to given target element
@@ -26,6 +25,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controlled
 
@@ -76,6 +76,7 @@ function Demo() {
 }
 ```
 
+
 ## Focus trap
 
 If you need to use interactive elements (inputs, buttons, etc.) inside `Popover.Dropdown`, set `trapFocus` prop:
@@ -99,6 +100,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Inline elements
 
@@ -129,6 +131,7 @@ function Demo() {
 }
 ```
 
+
 ## Same width
 
 Set `width="target"` prop to make Popover dropdown take the same width as target element:
@@ -153,6 +156,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## offset
 
@@ -185,6 +189,7 @@ function Demo() {
 }
 ```
 
+
 To control offset on both axis, pass object with `mainAxis` and `crossAxis` properties:
 
 #### Example: offsetAxis
@@ -212,6 +217,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Middlewares
 
@@ -291,6 +297,7 @@ function Demo() {
 }
 ```
 
+
 ## With overlay
 
 Set `withOverlay` prop to add overlay behind the dropdown. You can pass additional
@@ -348,6 +355,7 @@ function Demo() {
 }
 ```
 
+
 ## Hide detached
 
 Use `hideDetached` prop to configure how the dropdown behaves when the target
@@ -394,6 +402,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled
 
 Set `disabled` prop to prevent `Popover.Dropdown` from rendering:
@@ -416,6 +425,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Click outside
 
@@ -443,6 +453,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## onDismiss
 
@@ -544,6 +555,7 @@ function Demo() {
 }
 ```
 
+
 ## Accessibility
 
 Popover follows [WAI-ARIA recommendations](https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal):
@@ -557,6 +569,7 @@ Uncontrolled Popover will be accessible only when used with `button` element or 
 Other elements will not support `Space` and `Enter` key presses.
 
 ## Keyboard interactions
+
 
 #### Props
 
@@ -602,6 +615,7 @@ Other elements will not support `Space` and `Enter` key presses.
 | withRoles | boolean | - | Determines whether dropdown and target elements should have accessible roles |
 | withinPortal | boolean | - | Determines whether dropdown should be rendered within the <code>Portal</code> |
 | zIndex | string | number | - | Dropdown <code>z-index</code> |
+
 
 #### Styles API
 

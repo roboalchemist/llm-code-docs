@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-accordion.md
 
 # Accordion
-
 Package: @mantine/core
 Import: import { Accordion } from '@mantine/core';
 Description: Divide content into collapsible sections
@@ -63,6 +62,7 @@ export const data = [
 ];
 ```
 
+
 ## Change chevron
 
 Use the `chevron` prop to change the chevron icon. When `chevron` is set,
@@ -111,6 +111,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Custom control label
 
@@ -189,6 +190,7 @@ function Demo() {
 }
 ```
 
+
 ## With icons
 
 Use `icon` prop to display any element on the left section of the `Accordion.Control`:
@@ -233,11 +235,16 @@ function Demo() {
 }
 ```
 
+
 ## Change transition
 
 To change transition duration, set `transitionDuration` prop:
 
+
+
 To disable transitions, set `transitionDuration` to 0:
+
+
 
 ## Default opened items
 
@@ -381,6 +388,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled items
 
 Set the `disabled` prop on the `Accordion.Control` component to disable it.
@@ -434,6 +442,7 @@ export const data = [
 ];
 ```
 
+
 ## Unstyled Accordion
 
 Set the `unstyled` prop on the Accordion component to remove all non-essential
@@ -453,6 +462,7 @@ function Demo() {
   );
 }
 ```
+
 
 #### Example: stylesApi
 
@@ -475,6 +485,7 @@ function Demo() {
   );
 }
 ```
+
 
 Example of using [Styles API](https://mantine.dev/styles/styles-api/) to customize Accordion styles:
 
@@ -533,6 +544,7 @@ export const data = [
 ];
 ```
 
+
 ## TypeScript
 
 `AccordionProps` type exported from `@mantine/core` is a generic, it accepts boolean type that
@@ -562,6 +574,7 @@ function Demo() {
 
 Keyboard interactions:
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -579,6 +592,7 @@ Keyboard interactions:
 | radius | MantineRadius | number | - | Key of <code>theme.radius</code> or any valid CSS value to set border-radius. Numbers are converted to rem. |
 | transitionDuration | number | - | Transition duration in ms |
 | value | string | string[] | null | - | Controlled component value |
+
 
 #### Styles API
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-tooltip.md
 
 # Tooltip
-
 Package: @mantine/core
 Import: import { Tooltip } from '@mantine/core';
 Description: Renders tooltip at given element on mouse over or other event
@@ -21,6 +20,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Tooltip children
 
@@ -86,6 +86,7 @@ function Demo() {
 }
 ```
 
+
 ## Required ref prop
 
 Custom components that are rendered inside `Tooltip` are required to support `ref` prop:
@@ -147,6 +148,7 @@ function Demo() {
 }
 ```
 
+
 ## Offset
 
 Set `offset` prop to a number to change tooltip position relative to the target element.
@@ -165,6 +167,7 @@ function Demo() {
   );
 }
 ```
+
 
 To control offset on both axis, pass object with `mainAxis` and `crossAxis` properties:
 
@@ -186,6 +189,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Arrow
 
@@ -212,6 +216,7 @@ function Demo() {
 }
 ```
 
+
 ## Controlled
 
 #### Example: controlled
@@ -232,6 +237,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Change events
 
@@ -281,6 +287,7 @@ function Demo() {
 }
 ```
 
+
 ## Inline
 
 Set `inline` prop to use `Tooltip` with inline elements:
@@ -306,6 +313,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Change transition
 
@@ -346,6 +354,7 @@ function Demo() {
 }
 ```
 
+
 ## Close and open delay
 
 You can delay tooltip open/close events by setting `openDelay` and `closeDelay` props in ms:
@@ -368,6 +377,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Tooltip delay group
 
@@ -397,6 +407,7 @@ function Demo() {
 }
 ```
 
+
 ## Floating tooltip
 
 `Tooltip.Floating` component has the same API as Tooltip component but tooltip will follow mouse:
@@ -416,6 +427,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Custom components with Tooltip
 
@@ -494,6 +506,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -529,6 +542,7 @@ function Demo() {
 | withArrow | boolean | - | If set, the tooltip has an arrow |
 | withinPortal | boolean | - | Determines whether tooltip should be rendered within <code>Portal</code>, <code>true</code> by default |
 | zIndex | string | number | - | Tooltip z-index, <code>300</code> by default |
+
 
 #### Styles API
 

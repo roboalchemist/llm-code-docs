@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-background-image.md
 
 # BackgroundImage
-
 Package: @mantine/core
 Import: import { BackgroundImage } from '@mantine/core';
 Description: Displays image as background
@@ -33,6 +32,7 @@ function Demo() {
 }
 ```
 
+
 <Polymorphic defaultElement="div" changeToElement="button" component="BackgroundImage" />
 
 ## Polymorphic component
@@ -53,12 +53,14 @@ Note that polymorphic components props types are different from regular componen
 
 If you want to create a wrapper for a polymorphic component that is not polymorphic (does not support component prop), then your component props interface should extend HTML element props.
 
+
 #### Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | radius | MantineRadius | number | - | Key of <code>theme.radius</code> or any valid CSS value to set border-radius, numbers are converted to rem |
 | src | string | required | Image url |
+
 
 #### Styles API
 

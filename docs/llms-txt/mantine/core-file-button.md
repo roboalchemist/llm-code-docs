@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-file-button.md
 
 # FileButton
-
 Package: @mantine/core
 Import: import { FileButton } from '@mantine/core';
 Description: Open file picker with a button click
@@ -33,6 +32,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Multiple files
 
@@ -69,6 +69,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Reset file
 
@@ -111,11 +112,13 @@ function Demo() {
 }
 ```
 
+
 <ServerComponentsIncompatible component="FileButton" />
 
 ## Server components
 
 FileButton is not compatible with React Server Components as it uses useEffect and other client-side features. You can use it in client components only.
+
 
 #### Props
 

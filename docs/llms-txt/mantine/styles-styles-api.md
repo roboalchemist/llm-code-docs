@@ -115,6 +115,7 @@ function Demo() {
 }
 ```
 
+
 ## classNames in theme.components
 
 You can also define `classNames` in [`theme.components`](https://mantine.dev/theming/theme-object) to apply them to all
@@ -252,6 +253,7 @@ function Demo() {
 }
 ```
 
+
 ## styles prop
 
 The `styles` prop works the same way as `classNames`, but applies inline styles. Note that inline
@@ -298,6 +300,7 @@ function Demo() {
   );
 }
 ```
+
 
 > **styles prop usage**
 >
@@ -352,6 +355,7 @@ function Demo() {
   background-color: var(--mantine-color-red-light);
 }
 ```
+
 
 ## Static classes
 

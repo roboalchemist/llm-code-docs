@@ -1,0 +1,154 @@
+# Source: https://docs.infrahub.app/release-notes/infrahub/release-0_13.md
+
+| Release Number   | 0.13.0                                                                                |
+| ---------------- | ------------------------------------------------------------------------------------- |
+| Release Date     | May 7, 2024                                                                           |
+| Release Codename | Beta #2                                                                               |
+| Tag              | [infrahub-v0.13.0](https://github.com/opsmill/infrahub/releases/tag/infrahub-v0.13.0) |
+
+# Release 0.13.0
+
+## Main changes[​](#main-changes "Direct link to Main changes")
+
+### Unified storage[​](#unified-storage "Direct link to Unified storage")
+
+#### IP address management[​](#ip-address-management "Direct link to IP address management")
+
+Infrahub now includes builtin support for IP Prefixes and IP Addresses, both for IPv4 and IPv6.
+
+To keep things extensible, Infrahub provides a minimal schema to capture the relationships between IP Prefix, IP address and IP Namespace. Infrahub will automatically maintain trees of IP prefixes and IP addresses being built based on the IP Namespace. Building these hierarchies/trees allows Infrahub to determine how IP prefixes and IP addresses are nested as well as computing utilization of the recorded IP spaces.
+
+The following `Generic` models are provided by default and can be extended as needed to add your own attributes/relationships or constraints:
+
+* `BuiltinIPNamespace`: used to model a namespace to manage IP resources, this is a generic representation of what could be, for examples, a routing table, a routing instance or a VRF
+* `BuiltinIPPrefix`: used to model a network, sometimes referred as supernet/subnet
+* `BuiltinIPAddress`: used to model a single IP address
+
+More information about IPAM is available in the [Documentation](/topics/ipam.md).
+
+![prefix View](/assets/images/ipam_01-8f60a7915fed11360ad758d92b31173b.png)
+
+![Prefix List](/assets/images/ipam_02-e409d3405f53dcd129e0b49e51498fde.png)
+
+#### Profiles[​](#profiles "Direct link to Profiles")
+
+A Profile in Infrahub allows you to define a common set of attributes that should be applied to nodes.
+
+A node that has a Profile assigned, will get the values of its attributes inherited from the assigned Profile, if no value is defined for the attribute at the node, or if the default value is used. The attribute values of a node that were inherited from a Profile can be overridden, by defining them at the node.
+
+More information about Profiles is available in the [Documentation](/topics/profiles.md).
+
+#### Leverage database indexes to improve performance[​](#leverage-database-indexes-to-improve-performance "Direct link to Leverage database indexes to improve performance")
+
+Infrahub is now leveraging database indexes to improve the overall performance of the database. Indexes will be automatically applied during startup.
+
+A new command `infrahub db index` has been introduced to manage the indexes.
+
+```
+infrahub db index --help
+
+ Usage: infrahub db index [OPTIONS] [ACTION]:[show|add|drop] [CONFIG_FILE]
+
+ Manage Database Indexes
+
+╭─ Arguments ─────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│   action           [ACTION]:[show|add|drop]  [default: IndexAction.SHOW]                                            │
+│   config_file      [CONFIG_FILE]             [env var: INFRAHUB_CONFIG] [default: infrahub.toml]                    │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ───────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --help          Show this message and exit.                                                                         │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
+
+### CI pipeline[​](#ci-pipeline "Direct link to CI pipeline")
+
+#### Generators[​](#generators "Direct link to Generators")
+
+A Generator is a generic plugin that can be used apply your own logic to create new nodes and relationships. Generator are expected to be idempotent and should be able to run multiple times and always produce the same result.
+
+One use case for the Generators is to be able to manage technical objects derived from a higher level definition of a service.
+
+Generators are associated with some input data identified by a GraphQL query. Similar to the Transformations & artifacts, Generator will be automatically executed as part of the CI Pipeline if the data associated with a given Generator has changed.
+
+The Generator itself is a Python class that is based on the `InfrahubGenerator` class from the SDK. Just like Transformations and checks, the Generators are user defined.
+
+More information about Generators is available in the [Documentation](/topics/generator.md).
+
+#### Redesigned proposed change creation form[​](#redesigned-proposed-change-creation-form "Direct link to Redesigned proposed change creation form")
+
+The form to create a proposed change has been redesigned to expand the description field.
+
+![Proposed Change Form](/assets/images/proposed_change_form-bd59b8802bea7905b3b3247cc4148eec.png)
+
+### Schema[​](#schema "Direct link to Schema")
+
+#### Relationship of type parent can't be optional[​](#relationship-of-type-parent-cant-be-optional "Direct link to Relationship of type parent can't be optional")
+
+The constraints around the relationships of kind `Parent` have been tightened and these relationships can't be optional anymore. All existing relationships will be automatically migrated when upgrading to this release and your schema will need to be updated.
+
+#### Improvement and modularization of demo schema[​](#improvement-and-modularization-of-demo-schema "Direct link to Improvement and modularization of demo schema")
+
+The demo schemas located in the `models` directory have been updated to cover more use cases and to simplify how to use them.
+
+The main schema, previously stored in the file `infrastructure_base.yml` has been broken down in multiple schemas now located in the `base` directory. The other schemas have been moved to the `examples` directory
+
+#### Cascade node deletion[​](#cascade-node-deletion "Direct link to Cascade node deletion")
+
+It's now possible to define how related nodes should be handled when a node is being deleted. This feature is usually referred as CASCADE DELETE. On each relationship, it's now possible to defined `on_delete: CASCADE` to indicate that if this node is deleted, all nodes on the other side of this relationship must be deleted too.
+
+#### New options available in the schema[​](#new-options-available-in-the-schema "Direct link to New options available in the schema")
+
+The attribute `read_only` is now available on all relationships. If True, users won't be able to add or remove peers to this relationship (not present in GraphQL mutations and forms)
+
+The attribute `allow_override` is now available on all attributes and relationships. This new flag is meant to be used on a Generic node to protect the attribute / relationship that can't be overwritten by a node inheriting from this generic.
+
+The attribute `documentation` is now available on all Node and Generic. This field is meant to store an URL where the documentation for this model is available. The link will be displayed in the help popup in the frontend.
+
+The attribute `on_delete` is now available on all relationships. See section above.
+
+More information about the schema is available in the [Documentation](/reference/schema.md).
+
+### API / GraphQL[​](#api--graphql "Direct link to API / GraphQL")
+
+#### `is_from_profile` and `is_default` properties on all attributes[​](#is_from_profile-and-is_default-properties-on-all-attributes "Direct link to is_from_profile-and-is_default-properties-on-all-attributes")
+
+In GraphQL, it's now possible to query 2 new properties on all attributes to gather more information about the origin of the value:
+
+* `is_from_profile`: True if the value was inherited from a Profile, the name of the Profile will be available in under `source`
+* `is_default`: True if the value was set by the default value defined in the schema
+
+### Other[​](#other "Direct link to Other")
+
+#### Schema information included in the search anywhere bar[​](#schema-information-included-in-the-search-anywhere-bar "Direct link to Schema information included in the search anywhere bar")
+
+The main search anywhere bar now includes information from the schema and it can include return existing schema page as a potential result for the search.
+
+![Search in Schema](/assets/images/search_in_list-f79003243f3511d6b48070b61f8e25d4.png)
+
+![Search in Schema](/assets/images/filter_in_list-ccf6891b9485866b5fb90bb8861d81bd.png)
+
+#### Search and filter on object list view[​](#search-and-filter-on-object-list-view "Direct link to Search and filter on object list view")
+
+The object list view has been updated to include a new search bar and a new panel to filter the element of the list.
+
+![Search in Schema](/assets/images/search_schema-d5c37048771016a20b6f539450b51e9b.png)
+
+#### Cleanup of invoke tasks and introduction of the `dev` namespace[​](#cleanup-of-invoke-tasks-and-introduction-of-the-dev-namespace "Direct link to cleanup-of-invoke-tasks-and-introduction-of-the-dev-namespace")
+
+The invoke tasks have been cleaned up to clearly separate the tasks related to the demo environment and the one for internal development. A new namespace `dev` has been introduced and some commands have been renamed including `demo.dev-start` that has been renamed to `dev.deps`.
+
+A new `demo.migrate` command has been introduced to apply the database & schema migrations.
+
+#### Update GraphQL application[​](#update-graphql-application "Direct link to Update GraphQL application")
+
+The Graph sandbox (GraphiQL) has been integrated into Infrahub directly to provide a better experience and remove the dependencies to an external CDN.
+
+The standard menu is now available on the left of the GraphiQL application and its possible to directly select the active branch with the standard dropdown.
+
+![Search in Schema](/assets/images/graphiql-a3f9ab2a3b88ce12a0e512a709f01f8a.png)
+
+#### Help panel in the list view[​](#help-panel-in-the-list-view "Direct link to Help panel in the list view")
+
+A new help popup is now available in the top right corner of a list view for all objects. The help popup will include a link to the schema for this object and if defined in the schema, a link to the external documentation.
+
+![help Panel](/assets/images/help_panel-a8fca0da94ea9e9bc40b4714de756d8d.png)

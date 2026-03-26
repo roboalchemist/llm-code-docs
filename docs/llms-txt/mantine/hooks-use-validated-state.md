@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-validated-state.md
 
 # useValidatedState
-
 Package: @mantine/hooks
 Import: import { UseValidatedState } from '@mantine/hooks';
 
@@ -28,6 +27,8 @@ valid; // -> false
 ```
 
 ## Example
+
+
 
 ## Definition
 

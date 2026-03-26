@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-favicon.md
 
 # useFavicon
-
 Package: @mantine/hooks
 Import: import { UseFavicon } from '@mantine/hooks';
 
@@ -12,6 +11,8 @@ The hook is not called during server side rendering.
 
 Call hook with a favicon URL (supported formats: `.ico`, `.png`, `.svg` and `.gif`) that should be set as favicon.
 The hook is triggered every time the URL changes and the value is not an empty string (trailing whitespace is trimmed) or `null`.
+
+
 
 ## Definition
 

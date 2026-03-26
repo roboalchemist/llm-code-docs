@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-checkbox.md
 
 # Checkbox
-
 Package: @mantine/core
 Import: import { Checkbox } from '@mantine/core';
 Description: Capture boolean input from user
@@ -23,6 +22,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controlled
 
@@ -69,6 +69,7 @@ function Demo() {
 }
 ```
 
+
 ## Change icons
 
 #### Example: icon
@@ -89,6 +90,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Change icon color
 
@@ -111,6 +113,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Indeterminate state
 
@@ -164,6 +167,7 @@ export function IndeterminateCheckbox() {
 }
 ```
 
+
 ## Label with link
 
 #### Example: anchor
@@ -186,6 +190,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Checkbox with tooltip
 
@@ -214,6 +219,7 @@ function Demo() {
 }
 ```
 
+
 ## Pointer cursor
 
 By default, checkbox input and label have `cursor: default` (same as native `input[type="checkbox"]`).
@@ -240,6 +246,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Add custom sizes
 
@@ -288,6 +295,7 @@ function Demo() {
 }
 ```
 
+
 <WrapperProps component="Checkbox" />
 
 ## Wrapper props
@@ -319,7 +327,10 @@ function Demo() {
 }
 ```
 
+
 ## Checkbox.Group disabled
+
+
 
 ## Controlled Checkbox.Group
 
@@ -368,6 +379,7 @@ function Demo() {
 }
 ```
 
+
 ## Checkbox.Card component
 
 `Checkbox.Card` component can be used as a replacement for `Checkbox` to build custom
@@ -405,6 +417,7 @@ function Demo() {
   );
 }
 ```
+
 
 You can use `Checkbox.Card` with `Checkbox.Group` the same way as `Checkbox` component:
 
@@ -460,6 +473,7 @@ function Demo() {
 }
 ```
 
+
 <GetElementRef component="Checkbox" refType="input" />
 
 ## Get element ref
@@ -491,6 +505,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Example: Table with row selection
 
@@ -553,6 +568,7 @@ function Demo() {
 }
 ```
 
+
 ## Example: Customize with Styles API
 
 #### Example: customize
@@ -604,6 +620,7 @@ function Demo() {
 }
 ```
 
+
 ## Accessibility
 
 Set `aria-label` or `label` prop to make the checkbox accessible:
@@ -627,6 +644,7 @@ function GoodLabel() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -645,6 +663,7 @@ function GoodLabel() {
 | rootRef | ForwardedRef<HTMLDivElement> | - | Root element ref |
 | size | MantineSize | (string & {}) | - | Controls size of the component |
 | wrapperProps | Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "ref"> & DataAttributes | - | Props passed down to the root element |
+
 
 #### Styles API
 

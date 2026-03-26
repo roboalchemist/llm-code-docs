@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-range-slider.md
 
 # RangeSlider
-
 Package: @mantine/core
 Import: import { RangeSlider } from '@mantine/core';
 Description: RangeSlider component
@@ -29,6 +28,7 @@ function Demo() {
 }
 ```
 
+
 ## Controlled
 
 ```tsx
@@ -52,6 +52,7 @@ function Demo() {
   return <RangeSlider defaultValue={[20, 60]} disabled />;
 }
 ```
+
 
 ## Control label
 
@@ -92,6 +93,7 @@ function Demo() {
 }
 ```
 
+
 ## Min, max and step
 
 #### Example: step
@@ -113,6 +115,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Domain
 
@@ -141,6 +144,7 @@ function Demo() {
 }
 ```
 
+
 ## Decimal values
 
 To use `RangeSlider` with decimal values, set `min`, `max` and `step` props:
@@ -154,6 +158,7 @@ function Demo() {
   return <RangeSlider min={0} max={1} minRange={0.2} step={0.0005} defaultValue={[0.2, 0.8]} />;
 }
 ```
+
 
 ## minRange
 
@@ -171,6 +176,7 @@ function Demo() {
 }
 ```
 
+
 ## pushOnOverlap
 
 `pushOnOverlap` prop controls whether the thumbs should push each other when they overlap.
@@ -187,6 +193,7 @@ function Demo() {
   return <RangeSlider pushOnOverlap={false} defaultValue={[25, 65]} minRange={20} />;
 }
 ```
+
 
 ## Marks
 
@@ -229,6 +236,7 @@ function Demo() {
 }
 ```
 
+
 ## Restrict selection to marks
 
 Set `restrictToMarks` prop to restrict slider value to marks only. Note that in
@@ -258,6 +266,7 @@ function Demo() {
 }
 ```
 
+
 ## Inverted
 
 You can invert the track with the `inverted` prop:
@@ -271,6 +280,7 @@ function Demo() {
   return <RangeSlider inverted defaultValue={[20, 60]} />;
 }
 ```
+
 
 ## Accessibility
 
@@ -296,6 +306,7 @@ function Demo() {
 ```
 
 ## Keyboard interactions
+
 
 #### Props
 

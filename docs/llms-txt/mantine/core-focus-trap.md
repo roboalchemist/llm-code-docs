@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-focus-trap.md
 
 # FocusTrap
-
 Package: @mantine/core
 Import: import { FocusTrap } from '@mantine/core';
 Description: Trap focus at child node
@@ -36,6 +35,7 @@ function Demo() {
 }
 ```
 
+
 ## Initial focus
 
 To define the element that will receive initial focus set `data-autofocus` attribute:
@@ -64,6 +64,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## FocusTrap.InitialFocus
 
@@ -103,6 +104,7 @@ function Demo() {
 }
 ```
 
+
 ## Focus trapping logic
 
 * Focus is trapped within child node if `active` prop is `true`
@@ -110,6 +112,7 @@ function Demo() {
 * If there are no elements with `data-autofocus` attribute, then the first element that supports keyboard interaction is focused
 * If the target element does not have focusable elements or does not support `ref`, then the focus trap will not work
 * Trap stops working when element outside of the `FocusTrap` child is focused
+
 
 #### Props
 

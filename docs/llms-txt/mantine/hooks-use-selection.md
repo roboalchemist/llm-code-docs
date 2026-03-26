@@ -1,11 +1,12 @@
 # Source: https://mantine.dev/llms/hooks-use-selection.md
 
 # useSelection
-
 Package: @mantine/hooks
 Import: import { UseSelection } from '@mantine/hooks';
 
 ## Usage
+
+
 
 ## Definition
 

@@ -118,6 +118,7 @@ function Demo() {
 }
 ```
 
+
 Responsive values are calculated the following way:
 
 * `base` value is used when none of breakpoint values are applied

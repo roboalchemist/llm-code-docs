@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-pagination.md
 
 # Pagination
-
 Package: @mantine/core
 Import: import { Pagination } from '@mantine/core';
 Description: Display active page and navigate between multiple pages
@@ -17,6 +16,7 @@ function Demo() {
   return <Pagination total={10} />;
 }
 ```
+
 
 ## Example with chunked content
 
@@ -60,6 +60,7 @@ function Demo() {
 }
 ```
 
+
 ## Controlled
 
 To control component state provide `value` and `onChange` props:
@@ -101,6 +102,7 @@ function Demo() {
 }
 ```
 
+
 ## Boundaries
 
 Control number of items displayed after previous and before next buttons with `boundaries` prop:
@@ -125,6 +127,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Hide pages controls
 
@@ -153,6 +156,7 @@ function Demo() {
 }
 ```
 
+
 #### Example: stylesApi
 
 ```tsx
@@ -162,6 +166,7 @@ function Demo() {
   return <Pagination total={10} />;
 }
 ```
+
 
 ## Compound components
 
@@ -193,6 +198,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controls as links
 
@@ -254,6 +260,7 @@ function Demo() {
 }
 ```
 
+
 ## Change icons
 
 #### Example: icons
@@ -297,6 +304,7 @@ function Demo() {
 }
 ```
 
+
 <AutoContrast component="Pagination" withVariant="[object Object]" />
 
 ## autoContrast
@@ -323,10 +331,12 @@ function Demo() {
 }
 ```
 
+
 ## use-pagination hook
 
 If you need more flexibility `@mantine/hooks` package exports [use-pagination](https://mantine.dev/hooks/use-pagination/) hook,
 you can use it to create custom pagination components.
+
 
 #### Props
 
@@ -359,6 +369,7 @@ you can use it to create custom pagination components.
 | withControls | boolean | - | If set, next/previous controls are displayed |
 | withEdges | boolean | - | If set, first/last controls are displayed |
 | withPages | boolean | - | If set to <code>false</code>, pages controls are hidden |
+
 
 #### Styles API
 

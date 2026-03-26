@@ -22,6 +22,7 @@ function Demo() {
 }
 ```
 
+
 These props usually control multiple CSS properties, for example `color` and variant props control `color`,
 `background-color` and `border` properties. In most cases, changing components props is the most optimal way to customize Mantine components.
 

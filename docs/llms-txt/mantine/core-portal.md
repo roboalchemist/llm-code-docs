@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-portal.md
 
 # Portal
-
 Package: @mantine/core
 Import: import { Portal } from '@mantine/core';
 Description: Renders component outside of parent element tree
@@ -123,6 +122,7 @@ function Demo() {
   );
 }
 ```
+
 
 #### Props
 

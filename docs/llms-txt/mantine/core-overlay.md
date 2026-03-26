@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-overlay.md
 
 # Overlay
-
 Package: @mantine/core
 Import: import { Overlay } from '@mantine/core';
 Description: Overlays parent element with div element with any color and opacity
@@ -38,6 +37,7 @@ function Demo() {
 }
 ```
 
+
 ## Gradient
 
 Set `gradient` prop to use background-image instead of background-color. When `gradient` prop is set,
@@ -73,6 +73,7 @@ function Demo() {
 }
 ```
 
+
 ## Blur
 
 Set `blur` prop to add `backdrop-filter: blur({value})` styles.
@@ -95,6 +96,7 @@ function Demo() {
   );
 }
 ```
+
 
 <Polymorphic defaultElement="div" changeToElement="a" component="Overlay" withNext />
 
@@ -127,6 +129,7 @@ Note that polymorphic components props types are different from regular componen
 
 If you want to create a wrapper for a polymorphic component that is not polymorphic (does not support component prop), then your component props interface should extend HTML element props.
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -140,6 +143,7 @@ If you want to create a wrapper for a polymorphic component that is not polymorp
 | gradient | string | - | Changes overlay to gradient. If set, <code>color</code> prop is ignored. |
 | radius | MantineRadius | number | - | Key of <code>theme.radius</code> or any valid CSS value to set border-radius |
 | zIndex | string | number | - | Overlay z-index |
+
 
 #### Styles API
 

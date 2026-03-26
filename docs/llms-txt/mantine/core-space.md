@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-space.md
 
 # Space
-
 Package: @mantine/core
 Import: import { Space } from '@mantine/core';
 Description: Add horizontal or vertical spacing from theme
@@ -26,6 +25,7 @@ function Demo() {
 }
 ```
 
+
 <br />
 
 #### Example: vertical
@@ -43,6 +43,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Where to use
 
@@ -80,6 +81,7 @@ function Demo() {
   );
 }
 ```
+
 
 #### Props
 

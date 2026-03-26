@@ -111,6 +111,7 @@ function Demo() {
 }
 ```
 
+
 ## Add global styles in your application
 
 It is recommended to use [CSS modules](https://mantine.dev/styles/css-modules) to apply styles to Mantine components

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-indicator.md
 
 # Indicator
-
 Package: @mantine/core
 Import: import { Indicator } from '@mantine/core';
 Description: Display element at the corner of another element
@@ -25,6 +24,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Inline
 
@@ -50,6 +50,7 @@ function Demo() {
 }
 ```
 
+
 ## Offset
 
 Set `offset` to change indicator position. It is useful when Indicator component is
@@ -73,6 +74,7 @@ function Demo() {
 }
 ```
 
+
 ## Processing animation
 
 #### Example: processing
@@ -92,6 +94,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Disabled
 
@@ -121,6 +124,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -137,6 +142,7 @@ function Demo() {
 | size | string | number | - | Indicator width and height |
 | withBorder | boolean | - | Adds border to the root element |
 | zIndex | string | number | - | Indicator z-index |
+
 
 #### Styles API
 

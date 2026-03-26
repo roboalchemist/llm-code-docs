@@ -1,0 +1,35 @@
+# Source: https://www.zuplo.com/docs/articles/ci-cd-azure/basic-deployment.md
+
+# Source: https://www.zuplo.com/docs/articles/ci-cd-bitbucket/basic-deployment.md
+
+# Source: https://www.zuplo.com/docs/articles/ci-cd-circleci/basic-deployment.md
+
+# Source: https://www.zuplo.com/docs/articles/ci-cd-github/basic-deployment.md
+
+# Source: https://www.zuplo.com/docs/articles/ci-cd-gitlab/basic-deployment.md
+
+# GitLab CI/CD: Basic Deployment
+
+The simplest pipeline deploys your API to Zuplo on every push to main.
+
+```yaml title=".gitlab-ci.yml"
+image: node:20
+
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  script:
+    - npm install
+    - npx zuplo deploy --api-key "$ZUPLO_API_KEY"
+  only:
+    - main
+```
+
+Store `ZUPLO_API_KEY` in **Settings** > **CI/CD** > **Variables**.
+
+## Next Steps
+
+- Add [automated testing](./deploy-and-test.mdx) after deployment
+- Set up [MR preview environments](./mr-preview-environments.mdx)

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-list.md
 
 # List
-
 Package: @mantine/core
 Import: import { List } from '@mantine/core';
 Description: Display ordered or unordered list
@@ -25,6 +24,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## With icons
 
@@ -72,6 +72,7 @@ function Demo() {
 }
 ```
 
+
 ## Nested lists
 
 Set `withPadding` prop to offset nested lists and `listStyleType` to control bullet type:
@@ -107,6 +108,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -119,6 +122,7 @@ function Demo() {
 | spacing | MantineSpacing | - | Key of <code>theme.spacing</code> or any valid CSS value to set spacing between items |
 | type | "ordered" | "unordered" | - | List type |
 | withPadding | boolean | - | Determines whether list items should be offset with padding |
+
 
 #### Styles API
 

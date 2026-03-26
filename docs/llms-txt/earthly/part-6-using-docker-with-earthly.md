@@ -86,13 +86,13 @@ networks:
 package main
 
 import (
- "github.com/sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 )
 
 var howCoolIsEarthly = "IceCool"
 
 func main() {
- logrus.Info("hello world")
+	logrus.Info("hello world")
 }
 ```
 
@@ -102,31 +102,31 @@ func main() {
 package main
 
 import (
- "context"
- "testing"
+	"context"
+	"testing"
 
- "github.com/go-redis/redis/v8"
- "github.com/stretchr/testify/require"
+	"github.com/go-redis/redis/v8"
+	"github.com/stretchr/testify/require"
 )
 
 func TestIntegration(t *testing.T) {
- ctx := context.Background()
- rdb := redis.NewClient(&redis.Options{
-  Addr:     "redis:6379",
-  Password: "", // no password set
-  DB:       0,  // use default DB
- })
+	ctx := context.Background()
+	rdb := redis.NewClient(&redis.Options{
+		Addr:     "redis:6379",
+		Password: "", // no password set
+		DB:       0,  // use default DB
+	})
 
- err := rdb.Set(ctx, "howCoolIsEarthly", howCoolIsEarthly, 0).Err()
- if err != nil {
-  panic(err)
- }
+	err := rdb.Set(ctx, "howCoolIsEarthly", howCoolIsEarthly, 0).Err()
+	if err != nil {
+		panic(err)
+	}
 
- resultFromDB, err := rdb.Get(ctx, "howCoolIsEarthly").Result()
- if err != nil {
-  panic(err)
- }
- require.Equal(t, howCoolIsEarthly, resultFromDB)
+	resultFromDB, err := rdb.Get(ctx, "howCoolIsEarthly").Result()
+	if err != nil {
+		panic(err)
+	}
+	require.Equal(t, howCoolIsEarthly, resultFromDB)
 }
 ```
 
@@ -228,7 +228,7 @@ function component() {
       element.innerHTML = `hello world <b>${users[0].first_name} ${users[0].last_name}</b>`
     })
 
- return element;
+	return element;
 }
 
 document.body.appendChild(component());
@@ -423,13 +423,13 @@ docker:
 
 with-postgresql:
     FROM earthly/dind:alpine
-   COPY ./docker-compose.yml .
-   RUN apk update
-   RUN apk add postgresql-client
-   WITH DOCKER --compose docker-compose.yml --load app:latest=+docker
-      RUN while ! pg_isready --host=localhost --port=5432; do sleep 1; done ;\
-       docker run --network=default_java/part6_default app
-   END
+	  COPY ./docker-compose.yml .
+	  RUN apk update
+	  RUN apk add postgresql-client
+	  WITH DOCKER --compose docker-compose.yml --load app:latest=+docker
+		    RUN while ! pg_isready --host=localhost --port=5432; do sleep 1; done ;\
+			    docker run --network=default_java/part6_default app
+	  END
 
 ```
 

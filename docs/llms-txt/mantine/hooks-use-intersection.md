@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-intersection.md
 
 # useIntersection
-
 Package: @mantine/hooks
 Import: import { UseIntersection } from '@mantine/hooks';
 
@@ -9,6 +8,8 @@ Import: import { UseIntersection } from '@mantine/hooks';
 
 `use-intersection` returns information about the intersection
 of a given element with its scroll container or body element with [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API):
+
+
 
 ## API
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/x-extensions.md
 
 # ExtensionsPackage
-
 Package: @mantine/x
 Import: import { ExtensionsPackage } from '@mantine/x';
 

@@ -264,6 +264,7 @@ function Demo() {
 }
 ```
 
+
 ### luminanceThreshold
 
 `luminanceThreshold` controls which luminance value is used to determine if text color should be light or dark.
@@ -289,6 +290,7 @@ function Wrapper(props: any) {
           parseThemeColor({ theme: DEFAULT_THEME, color: props.color }).isThemeColor
             ?
 ```
+
 
 ### focusRing
 
@@ -339,10 +341,13 @@ function Demo() {
 }
 ```
 
+
 ### focusClassName
 
 `theme.focusClassName` is a CSS class that is added to elements that have focus styles, for example, [Button](https://mantine.dev/core/button) or [ActionIcon](https://mantine.dev/core/action-icon/).
 It can be used to customize focus ring styles of all interactive components except inputs. Note that when `theme.focusClassName` is set, `theme.focusRing` is ignored.
+
+
 
 > **:focus-visible selector**
 >
@@ -354,6 +359,8 @@ It can be used to customize focus ring styles of all interactive components exce
 
 `theme.activeClassName` is a CSS class that is added to elements that have active styles, for example, [Button](https://mantine.dev/core/button) or [ActionIcon](https://mantine.dev/core/action-icon/).
 It can be used to customize active styles of all interactive components.
+
+
 
 To disable active styles for all components, set `theme.activeClassName` to an empty string:
 
@@ -370,6 +377,7 @@ function Demo() {
   );
 }
 ```
+
 
 ### defaultRadius
 
@@ -392,6 +400,7 @@ function Demo() {
   );
 }
 ```
+
 
 ### cursorType
 
@@ -420,6 +429,7 @@ function Demo() {
 }
 ```
 
+
 ### defaultGradient
 
 `theme.defaultGradient` controls the default gradient configuration for components that support `variant="gradient"`
@@ -446,6 +456,7 @@ function Demo() {
   );
 }
 ```
+
 
 ### components
 

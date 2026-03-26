@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-fieldset.md
 
 # Fieldset
-
 Package: @mantine/core
 Import: import { Fieldset } from '@mantine/core';
 Description: Group related elements in a form
@@ -22,6 +21,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Disabled
 
@@ -46,12 +46,15 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | legend | React.ReactNode | - | Fieldset legend |
 | radius | MantineRadius | number | - | Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code> |
+
 
 #### Styles API
 

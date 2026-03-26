@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/charts-sparkline.md
 
 # Sparkline
-
 Package: @mantine/charts
 Import: import { Sparkline } from '@mantine/charts';
 Description: Simplified area chart to show trends
@@ -28,6 +27,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Change area color depending on color scheme
 
@@ -58,6 +58,7 @@ function Demo() {
   return <Sparkline w={200} h={80} data={[10, 20, 40, 20, 40, 10, 50]} className={classes.root} />;
 }
 ```
+
 
 ## Trend colors
 
@@ -114,6 +115,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -127,6 +130,7 @@ function Demo() {
 | strokeWidth | number | - | Area stroke width |
 | trendColors | SparklineTrendColors | - | If set, <code>color</code> prop is ignored and chart color is determined by the difference between first and last value. |
 | withGradient | boolean | - | Determines whether the chart fill should be a gradient |
+
 
 #### Styles API
 

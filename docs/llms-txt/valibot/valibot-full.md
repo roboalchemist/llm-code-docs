@@ -1,6 +1,6 @@
 # Valibot Documentation
 
-Source: https://valibot.dev/llms-full.txt
+Source: https://www.valibot.dev/llms-full.txt
 
 ---
 
@@ -63,6 +63,8 @@ Instead of relying on a few large functions with many methods, my API design and
 For example, this allows a bundler to use the import statements to remove code that is not needed. This way, only the code that is actually used gets into your production build. This can reduce the bundle size by up to 95 % compared to [Zod](https://zod.dev/).
 
 In addition, it allows you to easily extend my functionality with external code and makes my source code more robust and secure because the functionality of the individual functions can be tested much more easily through unit tests.
+
+> Coming from [Zod](https://zod.dev/)? Read our <Link href="/blog/why-migrate-to-valibot/">migration article</Link> to see the benefits of Valibot, and use our <Link href="/guides/migrate-from-zod/">migration guide</Link> to migrate your schemas with confidence.
 
 #### Credits
 
@@ -353,7 +355,7 @@ const LoginSchema = z.object({
 });
 ```
 
-> You can migrate from Zod to Valibot using our [migration guide](/guides/migrate-from-zod/). It provides a codemod and a detailed overview of the differences between the two libraries.
+> Coming from [Zod](https://zod.dev/)? Read our [migration article](/blog/why-migrate-to-valibot/) to see the benefits of Valibot, and use our [migration guide](/guides/migrate-from-zod/) to migrate your schemas with confidence.
 
 #### Performance
 
@@ -508,7 +510,7 @@ const BookSchema = v.object({
 });
 ```
 
-Every schema function returns an accesible object that contains all its properties. However, in most cases you don't need to access them directly. Instead, you use methods that help you modify or use a schema.
+Every schema function returns an accessible object that contains all its properties. However, in most cases you don't need to access them directly. Instead, you use methods that help you modify or use a schema.
 
 #### Methods
 
@@ -2065,25 +2067,30 @@ v.parse(Schema, input, { lang: 'de' });
 
 #### Custom translations
 
-You can use the same APIs as [`@valibot/i18n`](https://github.com/open-circle/valibot/tree/main/packages/i18n) to add your own translations to the global storage. Alternatively, you can also pass them directly to a specific schema or validation function as the first optional argument.
+You can use the same APIs as [`@valibot/i18n`](https://github.com/open-circle/valibot/tree/main/packages/i18n) to add your own translations to the global storage. Alternatively, you can also pass them directly to a specific schema or validation function as the first optional argument. This can be useful if you want to customize an existing language or define a completely custom language yourself.
 
 > You can either enter the translations manually or use an i18n library like [Paraglide JS](https://inlang.com/m/gerre34r/library-inlang-paraglideJs).
 
 ##### Set translations globally
 
-You can add translations with <Link href="/api/setGlobalMessage/">`setGlobalMessage`</Link>, <Link href="/api/setSchemaMessage/">`setSchemaMessage`</Link> and <Link href="/api/setSpecificMessage/">`setSpecificMessage`</Link> in three different hierarchy levels. When creating an issue, I first check if a specific translation is available, then the translation for schema functions, and finally the global translation.
+You can add translations with <Link href="/api/setGlobalMessage/">`setGlobalMessage`</Link>, <Link href="/api/setSchemaMessage/">`setSchemaMessage`</Link> and <Link href="/api/setSpecificMessage/">`setSpecificMessage`</Link> in three different hierarchy levels. When creating an issue, Valibot first checks if a specific translation is available, then the translation for schema functions, and finally the global translation.
+
+Unlike the official translations, you do not need to import an `@valibot/i18n` submodule for this. The `lang` value is just a key that Valibot uses to look up the registered translations. Therefore, it can be any string you want.
 
 ```ts
 import * as v from 'valibot';
 
 // Set the translation globally (can be used as a fallback)
-v.setGlobalMessage((issue) => `Invalid input: ...`, 'en');
+v.setGlobalMessage((issue) => `Invalid input: ...`, 'custom');
 
 // Set the translation globally for every schema functions
-v.setSchemaMessage((issue) => `Invalid type: ...`, 'en');
+v.setSchemaMessage((issue) => `Invalid type: ...`, 'custom');
 
 // Set the translation globally for a specific function
-v.setSpecificMessage(v.minLength, (issue) => `Invalid length: ...`, 'en');
+v.setSpecificMessage(v.minLength, (issue) => `Invalid length: ...`, 'custom');
+
+// Use the registered translations
+v.setGlobalConfig({ lang: 'custom' });
 ```
 
 ##### Set translations locally
@@ -10373,6 +10380,127 @@ The following APIs can be combined with `assert`.
   ]}
 />
 
+### cache
+
+Creates a version of a schema that caches its output.
+
+```ts
+const Schema = v.cache<TSchema, TCacheConfig>(schema, config);
+```
+
+#### Generics
+
+- `TSchema` <Property {...properties.TSchema} />
+- `TCacheConfig` <Property {...properties.TCacheConfig} />
+
+#### Parameters
+
+- `schema` <Property {...properties.schema} />
+- `config` <Property {...properties.config} />
+
+##### Explanation
+
+The `cache` method creates a version of the given `schema` that caches its output. This can be useful for performance optimization, for example when validation performs an expensive computation or complex parsing that you want to avoid repeating for the same input.
+
+> Hint: Primitive inputs are cached by value. Object and function inputs are cached by reference identity, so mutating input objects and reusing the same reference can return a stale cached dataset. Returned objects are also reused by reference, so mutating cached output can affect later cache hits. For best results, use `cache` with immutable inputs and avoid mutating returned cached objects.
+
+#### Returns
+
+- `Schema` <Property {...properties.Schema} />
+
+#### Examples
+
+The following examples show how `cache` can be used.
+
+##### Cache schema
+
+Schema that caches its output.
+
+```ts
+const CacheSchema = v.cache(v.string());
+```
+
+##### Max size schema
+
+Schema that caches its output for a maximum of 100 items.
+
+```ts
+const MaxSizeSchema = v.cache(v.string(), { maxSize: 100 });
+```
+
+##### Max age schema
+
+Schema that caches its output for a maximum of 10 seconds.
+
+```ts
+const MaxAgeSchema = v.cache(v.string(), { maxAge: 10_000 });
+```
+
+#### Related
+
+The following APIs can be combined with `cache`.
+
+##### Schemas
+
+<ApiList
+  items={[
+    'any',
+    'array',
+    'bigint',
+    'blob',
+    'boolean',
+    'custom',
+    'date',
+    'enum',
+    'exactOptional',
+    'file',
+    'function',
+    'instance',
+    'intersect',
+    'lazy',
+    'literal',
+    'looseObject',
+    'looseTuple',
+    'map',
+    'nan',
+    'never',
+    'nonNullable',
+    'nonNullish',
+    'nonOptional',
+    'null',
+    'nullable',
+    'nullish',
+    'number',
+    'object',
+    'objectWithRest',
+    'optional',
+    'picklist',
+    'promise',
+    'record',
+    'set',
+    'strictObject',
+    'strictTuple',
+    'string',
+    'symbol',
+    'tuple',
+    'tupleWithRest',
+    'undefined',
+    'undefinedable',
+    'union',
+    'unknown',
+    'variant',
+    'void',
+  ]}
+/>
+
+##### Methods
+
+<ApiList items={['config', 'getDefault', 'getFallback']} />
+
+##### Actions
+
+<ApiList items={['message', 'unwrap']} />
+
 ### config
 
 Changes the local configuration of a schema.
@@ -16941,6 +17069,8 @@ Formats: `yyyy-mm-ddThh:mm:ss.sssZ`, `yyyy-mm-ddThh:mm:ss.sss±hh:mm`, `yyyy-mm-
 
 > The regex also allows a space as a separator between the date and time parts instead of the "T" character.
 
+> The regex also allows a space before the UTC offset (e.g., " +00:00") to support PostgreSQL's `timestamptz` output format.
+
 ```ts
 const Action = v.isoTimestamp<TInput, TMessage>(message);
 ```
@@ -17040,6 +17170,65 @@ const IsoWeekSchema = v.pipe(
 #### Related
 
 The following APIs can be combined with `isoWeek`.
+
+##### Schemas
+
+<ApiList items={['any', 'custom', 'string']} />
+
+##### Methods
+
+<ApiList items={['pipe']} />
+
+##### Utils
+
+<ApiList items={['isOfKind', 'isOfType']} />
+
+### jwsCompact
+
+Creates a [JWS compact serialization](https://datatracker.ietf.org/doc/html/rfc7515#section-3.1) validation action.
+
+```ts
+const Action = v.jwsCompact<TInput, TMessage>(message);
+```
+
+#### Generics
+
+- `TInput` <Property {...properties.TInput} />
+- `TMessage` <Property {...properties.TMessage} />
+
+#### Parameters
+
+- `message` <Property {...properties.message} />
+
+##### Explanation
+
+With `jwsCompact` you can validate that a string matches the three-part compact string shape used by JWS compact serialization with unpadded Base64URL-like segments. If the input does not match this JWS compact string shape, you can use `message` to customize the error message.
+
+> Hint: This validation action only checks the three-part compact string shape. It does not decode the segments, verify the signature, or validate claims. Empty payload and signature segments are accepted when they appear as valid compact-serialization segments. If you need full JWT validation, signature verification, or claim checks, use a dedicated library such as one from [jwt.io/libraries](https://www.jwt.io/libraries).
+
+#### Returns
+
+- `Action` <Property {...properties.Action} />
+
+#### Examples
+
+The following examples show how `jwsCompact` can be used.
+
+##### Access token schema
+
+Schema to validate that an access token string matches the JWS compact string shape.
+
+```ts
+const AccessTokenSchema = v.pipe(
+  v.string(),
+  v.nonEmpty('Provide an access token.'),
+  v.jwsCompact('The token must be a valid JWS compact string.')
+);
+```
+
+#### Related
+
+The following APIs can be combined with `jwsCompact`.
 
 ##### Schemas
 
@@ -22789,6 +22978,131 @@ The following APIs can be combined with `awaitAsync`.
     'variantAsync',
   ]}
 />
+
+### cacheAsync
+
+Creates a version of a schema that caches its output.
+
+```ts
+const Schema = v.cacheAsync<TSchema, TCacheConfig>(schema, config);
+```
+
+#### Generics
+
+- `TSchema` <Property {...properties.TSchema} />
+- `TCacheConfig` <Property {...properties.TCacheConfig} />
+
+#### Parameters
+
+- `schema` <Property {...properties.schema} />
+- `config` <Property {...properties.config} />
+
+##### Explanation
+
+The `cacheAsync` method creates a version of the given `schema` that caches its output. This can be useful for performance optimization, for example when validation involves a network request.
+
+> Hint: Primitive inputs are cached by value. Object and function inputs are cached by reference identity, so mutating input objects and reusing the same reference can return a stale cached dataset. Returned objects are also reused by reference, so mutating cached output can affect later cache hits. For best results, use `cacheAsync` with immutable inputs and avoid mutating returned cached objects.
+
+#### Returns
+
+- `Schema` <Property {...properties.Schema} />
+
+#### Examples
+
+The following examples show how `cacheAsync` can be used.
+
+##### Cache schema
+
+Schema that caches its output.
+
+```ts
+const CacheSchema = v.cacheAsync(v.string());
+```
+
+##### Max size schema
+
+Schema that caches its output for a maximum of 100 items.
+
+```ts
+const MaxSizeSchema = v.cacheAsync(v.string(), { maxSize: 100 });
+```
+
+##### Max age schema
+
+Schema that caches its output for a maximum of 10 seconds.
+
+```ts
+const MaxAgeSchema = v.cacheAsync(v.string(), { maxAge: 10_000 });
+```
+
+#### Related
+
+The following APIs can be combined with `cacheAsync`.
+
+##### Schemas
+
+<ApiList
+  items={[
+    'any',
+    'array',
+    'bigint',
+    'blob',
+    'boolean',
+    'custom',
+    'date',
+    'enum',
+    'exactOptional',
+    'file',
+    'function',
+    'instance',
+    'intersect',
+    'lazy',
+    'literal',
+    'looseObject',
+    'looseTuple',
+    'map',
+    'nan',
+    'never',
+    'nonNullable',
+    'nonNullish',
+    'nonOptional',
+    'null',
+    'nullable',
+    'nullish',
+    'number',
+    'object',
+    'objectWithRest',
+    'optional',
+    'picklist',
+    'promise',
+    'record',
+    'set',
+    'strictObject',
+    'strictTuple',
+    'string',
+    'symbol',
+    'tuple',
+    'tupleWithRest',
+    'undefined',
+    'undefinedable',
+    'union',
+    'unknown',
+    'variant',
+    'void',
+  ]}
+/>
+
+##### Methods
+
+<ApiList items={['config', 'getDefault', 'getFallback']} />
+
+##### Actions
+
+<ApiList items={['message', 'unwrap']} />
+
+##### Async
+
+<ApiList items={['parseAsync', 'safeParseAsync']} />
 
 ### checkAsync
 
@@ -31426,6 +31740,34 @@ Bytes issue interface.
   - `received` <Property {...properties.received} />
   - `requirement` <Property {...properties.requirement} />
 
+### Cache
+
+Cache interface type.
+
+> Hint: The `key` method uses value-based keys for primitive inputs and reference-identity keys for object and function inputs.
+
+#### Generics
+
+- `TValue` <Property {...properties.TValue} />
+
+#### Definition
+
+- `Cache`
+  - `key` <Property {...properties.key} />
+  - `get` <Property {...properties.get} />
+  - `set` <Property {...properties.set} />
+  - `clear` <Property {...properties.clear} />
+
+### CacheConfig
+
+Cache config interface.
+
+#### Definition
+
+- `CacheConfig`
+  - `maxSize?` <Property {...properties.maxSize} />
+  - `maxAge?` <Property {...properties.maxAge} />
+
 ### CheckAction
 
 Check action interface.
@@ -34011,6 +34353,41 @@ Path item type.
 #### Definition
 
 - `IssuePathItem` <Property {...properties.IssuePathItem} />
+
+### JwsCompactAction
+
+JWS compact action interface.
+
+#### Generics
+
+- `TInput` <Property {...properties.TInput} />
+- `TMessage` <Property {...properties.TMessage} />
+
+#### Definition
+
+- `JwsCompactAction` <Property {...properties.BaseValidation} />
+  - `type` <Property {...properties.type} />
+  - `reference` <Property {...properties.reference} />
+  - `expects` <Property {...properties.expects} />
+  - `requirement` <Property {...properties.requirement} />
+  - `message` <Property {...properties.message} />
+
+### JwsCompactIssue
+
+JWS compact issue interface.
+
+#### Generics
+
+- `TInput` <Property {...properties.TInput} />
+
+#### Definition
+
+- `JwsCompactIssue` <Property {...properties.BaseIssue} />
+  - `kind` <Property {...properties.kind} />
+  - `type` <Property {...properties.type} />
+  - `expected` <Property {...properties.expected} />
+  - `received` <Property {...properties.received} />
+  - `requirement` <Property {...properties.requirement} />
 
 ### LazySchema
 
@@ -36798,6 +37175,37 @@ Safe parse result type.
   - `success` <Property {...properties.success} />
   - `output` <Property {...properties.output} />
   - `issues` <Property {...properties.issues} />
+
+### SchemaWithCache
+
+Schema with cache type.
+
+#### Generics
+
+- `TSchema` <Property {...properties.TSchema} />
+- `TCacheConfig` <Property {...properties.TCacheConfig} />
+
+#### Definition
+
+- `SchemaWithCache` <Property {...properties.SchemaWithCache} />
+  - `cacheConfig` <Property {...properties.cacheConfig} />
+  - `cache` <Property {...properties.cache} />
+
+### SchemaWithCacheAsync
+
+Schema with cache async type.
+
+#### Generics
+
+- `TSchema` <Property {...properties.TSchema} />
+- `TCacheConfig` <Property {...properties.TCacheConfig} />
+
+#### Definition
+
+- `SchemaWithCacheAsync` <Property {...properties.SchemaWithCacheAsync} />
+  - `async` <Property {...properties.async} />
+  - `cacheConfig` <Property {...properties.cacheConfig} />
+  - `cache` <Property {...properties.cache} />
 
 ### SchemaWithFallback
 

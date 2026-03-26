@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-fetch.md
 
 # useFetch
-
 Package: @mantine/hooks
 Import: import { UseFetch } from '@mantine/hooks';
 
@@ -9,6 +8,8 @@ Import: import { UseFetch } from '@mantine/hooks';
 
 `useFetch` hook sends a fetch request to the specified URL and returns the response data, loading state, error,
 `refetch` and `abort` functions. You can pass other parameters that fetch takes like method, headers etc.
+
+
 
 ## Definition
 

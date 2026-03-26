@@ -1,13 +1,14 @@
 # Source: https://mantine.dev/llms/hooks-use-file-dialog.md
 
 # useFileDialog
-
 Package: @mantine/hooks
 Import: import { UseFileDialog } from '@mantine/hooks';
 
 ## Usage
 
 `use-file-dialog` allows capturing one or more files from the user without file input element:
+
+
 
 ## Definition
 

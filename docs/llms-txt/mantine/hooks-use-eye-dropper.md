@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-eye-dropper.md
 
 # useEyeDropper
-
 Package: @mantine/hooks
 Import: import { UseEyeDropper } from '@mantine/hooks';
 
@@ -9,6 +8,8 @@ Import: import { UseEyeDropper } from '@mantine/hooks';
 
 `use-eye-dropper` hook provides an interface to work with [EyeDropper API](https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper_API).
 Check [browser support](https://caniuse.com/mdn-api_eyedropper) to learn which browsers support the API.
+
+
 
 ## Definition
 

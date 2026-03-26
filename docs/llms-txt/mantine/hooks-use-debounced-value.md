@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-debounced-value.md
 
 # useDebouncedValue
-
 Package: @mantine/hooks
 Import: import { UseDebouncedValue } from '@mantine/hooks';
 
@@ -11,6 +10,8 @@ Import: import { UseDebouncedValue } from '@mantine/hooks';
 This can be useful in case you want to perform a heavy operation based on react state,
 for example, send search request. Unlike [use-debounced-state](https://mantine.dev/hooks/use-debounced-state/) it
 is designed to work with controlled components.
+
+
 
 ## Differences from use-debounced-state
 
@@ -22,6 +23,8 @@ is designed to work with controlled components.
 
 You can immediately update value with first call with `{ leading: true }` options:
 
+
+
 ## Cancel update
 
 Hook provides `cancel` callback, you can use it to cancel update.
@@ -29,6 +32,8 @@ Update cancels automatically on component unmount.
 
 In this example, type in some text and click the cancel button
 within a second to cancel debounced value change:
+
+
 
 ## Definition
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-hash.md
 
 # useHash
-
 Package: @mantine/hooks
 Import: import { UseHash } from '@mantine/hooks';
 
@@ -9,6 +8,8 @@ Import: import { UseHash } from '@mantine/hooks';
 
 `use-hash` returns hash from URL, subscribes to its changes with [hashchange event](https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event)
 and allows changing it with `setHash` function:
+
+
 
 ## Initial state value
 

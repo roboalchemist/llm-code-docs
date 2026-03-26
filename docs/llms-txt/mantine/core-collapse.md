@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-collapse.md
 
 # Collapse
-
 Package: @mantine/core
 Import: import { Collapse } from '@mantine/core';
 Description: Animate presence with slide down/up transition
@@ -30,6 +29,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Change transition
 
@@ -62,6 +62,7 @@ function Demo() {
 }
 ```
 
+
 ## Nested Collapse components
 
 #### Example: nested
@@ -84,6 +85,8 @@ function Demo() {
   );
 }
 ```
+
+
 
 #### Props
 

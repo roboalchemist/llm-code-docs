@@ -88,7 +88,6 @@ Argument values can be set multiple ways:
    ```
    earthly +hello --HELLO=world --FOO=bar
    ```
-
 2. From environment variables
 
    Similar to above, except that the value is an environment variable:
@@ -98,7 +97,6 @@ Argument values can be set multiple ways:
    export FOO="bar"
    earthly +hello --HELLO="$HELLO" --FOO="$FOO"
    ```
-
 3. Via the `EARTHLY_BUILD_ARGS` environment variable
 
    The value can also be set via the `EARTHLY_BUILD_ARGS` environment variable.
@@ -214,7 +212,6 @@ This is possible in a few ways:
    ```bash
    earthly --secret passwd=itsasecret +hush
    ```
-
 2. Via an environment variable:
 
    ```bash
@@ -244,7 +241,6 @@ This is possible in a few ways:
    ```bash
    earthly +hello
    ```
-
 5. Via cloud-based secrets. This option helps share secrets within a wider team. To read more about this see the [cloud-based secrets guide](https://docs.earthly.dev/earthly-0.6/earthly-cloud/cloud-secrets).
 
 Regardless of the approach chosen from above, once earthly is invoked, in our example, it will output:

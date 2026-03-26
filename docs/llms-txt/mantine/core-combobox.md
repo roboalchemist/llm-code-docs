@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-combobox.md
 
 # Combobox
-
 Package: @mantine/core
 Import: import { Combobox } from '@mantine/core';
 Description: Create custom select, autocomplete or multiselect inputs
@@ -67,6 +66,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## useCombobox hook
 
@@ -318,6 +318,7 @@ function Demo() {
 }
 ```
 
+
 Example of using `Combobox.Target` with [Button](https://mantine.dev/core/button) component:
 
 #### Example: button
@@ -374,6 +375,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Split events and dropdown targets
 
@@ -468,6 +470,7 @@ function Demo() {
 }
 ```
 
+
 ## Update selected option index
 
 `updateSelectedOptionIndex` handler is required to be called when options list changes.
@@ -540,6 +543,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Search input
 
@@ -621,6 +625,7 @@ function Demo() {
 }
 ```
 
+
 ## Select first option
 
 Use `combobox.selectFirstOption` function to select the first option. It is useful
@@ -689,6 +694,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Active option
 
@@ -760,6 +766,7 @@ function Demo() {
 }
 ```
 
+
 ## Options groups
 
 Render `Combobox.Option` components inside `Combobox.Group` to create options group.
@@ -819,6 +826,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Scrollable list
 
@@ -907,6 +915,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Scrollable list with ScrollArea
 
@@ -997,6 +1006,7 @@ function Demo() {
 }
 ```
 
+
 ## Hide dropdown
 
 Set `hidden` prop on `Combobox.Dropdown` to hide the dropdown. For example,
@@ -1056,6 +1066,7 @@ function Demo() {
 }
 ```
 
+
 ## Control dropdown opened state
 
 To control the dropdown opened state, pass `opened` to `useCombobox` hook:
@@ -1101,6 +1112,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Popover props
 
@@ -1160,6 +1172,7 @@ function Demo() {
 }
 ```
 
+
 ## Without dropdown
 
 You can use `Combobox` without dropdown. To do so, use `Combobox.EventsTarget` instead
@@ -1193,6 +1206,7 @@ function Demo() {
   );
 }
 ```
+
 
 #### Example: stylesApi
 
@@ -1235,6 +1249,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -1276,6 +1292,7 @@ function Demo() {
 | withOverlay | boolean | - | Determines whether the overlay should be displayed when the dropdown is opened |
 | withinPortal | boolean | - | Determines whether dropdown should be rendered within the <code>Portal</code> |
 | zIndex | string | number | - | Dropdown <code>z-index</code> |
+
 
 #### Styles API
 

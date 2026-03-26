@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-event-listener.md
 
 # useEventListener
-
 Package: @mantine/hooks
 Import: import { UseEventListener } from '@mantine/hooks';
 
@@ -10,6 +9,8 @@ Import: import { UseEventListener } from '@mantine/hooks';
 `use-event-listener` adds a given event listener to an element to which `ref` is assigned.
 Hook supports the same options as `addEventListener` method.
 After the component is unmounted, the listener is automatically removed.
+
+
 
 ## Definition
 

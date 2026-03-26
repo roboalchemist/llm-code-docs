@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-debounced-callback.md
 
 # useDebouncedCallback
-
 Package: @mantine/hooks
 Import: import { UseDebouncedCallback } from '@mantine/hooks';
 
@@ -9,6 +8,8 @@ Import: import { UseDebouncedCallback } from '@mantine/hooks';
 
 `use-debounced-callback` creates a debounced version of the given function,
 delaying its execution until a specified time has elapsed since the last invocation.
+
+
 
 ## flushOnUnmount option
 

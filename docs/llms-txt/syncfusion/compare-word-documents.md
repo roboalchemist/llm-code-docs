@@ -1,0 +1,250 @@
+# Source: https://docs.syncfusion.com/java-file-formats/word-library/word-document/compare-word-documents.md
+
+# Source: https://docs.syncfusion.com/document-processing/word/word-library/net/word-document/compare-word-documents.md
+
+# Compare Word documents in C#
+
+Comparing two Word documents allows you to identify the changes between two versions of a document. The .NET Word library (DocIO) enables you to compare two Word documents and highlight the following changes as tracked changes.
+*	Insertions
+*	Deletions
+*	Formatting
+
+N> 1. DocIO performs word level comparison while comparing two Word documents. In this scenario, if a single character in a word is changed, the entire word will be highlighted as changed.
+N> 2. Comparing two Word documents supported in DOCX format only.
+
+To quickly start comparing two Word documents, please check out this video:
+{% youtube "https://www.youtube.com/watch?v=5Q3884kPWOw" %}
+
+## Assemblies and NuGet packages required
+
+Refer to the following links for assemblies and NuGet packages required based on platforms for comparing Word documents using the .NET Word Library (DocIO).
+
+* [Compare Word documents assemblies](https://help.syncfusion.com/document-processing/word/word-library/net/assemblies-required)
+* [Compare Word documents NuGet packages](https://help.syncfusion.com/document-processing/word/word-library/net/nuget-packages-required)
+
+## Compare two Word documents 
+
+Compare the existing Word documents or documents created from scratch using the Compare method in the .NET Word library (DocIO).
+
+The following code example illustrates how to compare two Word documents.
+
+N> Refer to the appropriate tabs in the code snippets section: ***C# [Cross-platform]*** for ASP.NET Core, Blazor, Xamarin, UWP, .NET MAUI, and WinUI; ***C# [Windows-specific]*** for WinForms and WPF; ***VB.NET [Windows-specific]*** for VB.NET applications.
+
+{% tabs %}
+{% highlight c# tabtitle="C# [Cross-platform]" playgroundButtonLink="https://raw.githubusercontent.com/SyncfusionExamples/DocIO-Examples/main/Compare-Word-documents/Compare-two-Word-documents/.NET/Compare-Word-documents/Program.cs" %}
+
+//Load the original document.
+using (FileStream originalDocumentStreamPath = new FileStream("Data/OriginalDocument.docx", FileMode.Open, FileAccess.Read))
+{
+    using (WordDocument originalDocument = new WordDocument(originalDocumentStreamPath, FormatType.Docx))
+    {
+        //Load the revised document.
+        using (FileStream revisedDocumentStreamPath = new FileStream("Data/RevisedDocument.docx", FileMode.Open, FileAccess.Read))
+        {
+            using (WordDocument revisedDocument = new WordDocument(revisedDocumentStreamPath, FormatType.Docx))
+            {
+                // Compare the original and revised Word documents.
+                originalDocument.Compare(revisedDocument);
+
+                //Save the Word document to MemoryStream
+                MemoryStream stream = new MemoryStream();
+                originalDocument.Save(stream, FormatType.Docx);
+            }
+        }                 
+    }                           
+}
+
+{% endhighlight %}
+{% highlight c# tabtitle="C# [Windows-specific]" %}
+
+//Load the original document.
+using (WordDocument originalDocument = new WordDocument("Data/OriginalDocument.docx", FormatType.Docx))
+{
+    //Load the revised document.
+    using (WordDocument revisedDocument = new WordDocument("Data/RevisedDocument.docx", FormatType.Docx))
+   {
+        // Compare the original and revised Word documents.
+        originalDocument.Compare(revisedDocument);
+        //Save the Word document.
+        originalDocument.Save("Result.docx");          
+    }
+}
+
+{% endhighlight %}
+{% highlight vb.net tabtitle="VB.NET [Windows-specific]" %}
+
+' Load the original document.
+Using originalDocument As New WordDocument("Data/OriginalDocument.docx", FormatType.Docx)
+    ' Load the revised document.
+    Using revisedDocument As New WordDocument("Data/RevisedDocument.docx", FormatType.Docx)
+        ' Compare the original document and revised documents.
+        originalDocument.Compare(revisedDocument)
+        ' Save the Word document.
+        originalDocument.Save("Result.docx")
+    End Using
+End Using
+
+{% endhighlight %}
+{% endtabs %}
+
+![Compare Word documents](../WorkingwithWordDocument_images/Compare-Word-documents-without-author.png)
+
+You can download a complete working sample from [GitHub](https://github.com/SyncfusionExamples/DocIO-Examples/tree/main/Compare-Word-documents/Compare-two-Word-documents/.NET).
+
+## Set Author and Date 
+
+Compare the two Word documents by setting the author and date for revisions to identify the changes. In DocIO, the default setting for the "author" field is "Author", and the default setting for the "dateTime" field is the current time.
+
+The following code example shows how to set the author and date for revision while comparing two Word documents.
+
+{% tabs %}
+{% highlight c# tabtitle="C# [Cross-platform]" playgroundButtonLink="https://raw.githubusercontent.com/SyncfusionExamples/DocIO-Examples/main/Compare-Word-documents/Set-author-and-date/.NET/Program.cs" %}
+
+//Load the original document.
+using (FileStream originalDocumentStreamPath = new FileStream("Data/OriginalDocument.docx", FileMode.Open, FileAccess.Read))
+{
+    using (WordDocument originalDocument = new WordDocument(originalDocumentStreamPath, FormatType.Docx))
+    {
+        //Load the revised document.
+        using (FileStream revisedDocumentStreamPath = new FileStream("Data/RevisedDocument.docx", FileMode.Open, FileAccess.Read))
+        {
+            using (WordDocument revisedDocument = new WordDocument(revisedDocumentStreamPath, FormatType.Docx))
+            {
+                // Compare the original and revised Word documents.
+                originalDocument.Compare(revisedDocument,"Nancy Davolio", DateTime.Now.AddDays(-1));
+
+                //Save the Word document to MemoryStream
+                MemoryStream stream = new MemoryStream();
+                originalDocument.Save(stream, FormatType.Docx);
+            }
+        }                 
+    }                           
+}
+
+{% endhighlight %}
+{% highlight c# tabtitle="C# [Windows-specific]" %}
+
+//Load the original document.
+using (WordDocument originalDocument = new WordDocument("Data/OriginalDocument.docx", FormatType.Docx))
+{
+    //Load the revised document.
+    using (WordDocument revisedDocument = new WordDocument("Data/RevisedDocument.docx", FormatType.Docx))
+   {
+        // Compare the original document and revised documents.
+        originalDocument.Compare(revisedDocument,"Nancy Davolio", DateTime.Now.AddDays(-1));
+        //Save the Word document.
+        originalDocument.Save("Result.docx");          
+    }
+}
+
+{% endhighlight %}
+{% highlight vb.net tabtitle="VB.NET [Windows-specific]" %}
+
+' Open the original Word document.
+Using originalDocument As New WordDocument(originalFilePath, FormatType.Docx)
+    ' Open the revised Word document.
+    Using revisedDocument As New WordDocument(revisedFilePath, FormatType.Docx)
+        ' Compare the original document with the revised document.
+        originalDocument.Compare(revisedDocument, "Nancy Davolio", DateTime.Now.AddDays(-1))
+        ' Save the Word document.
+        originalDocument.Save(resultFilePath)
+    End Using
+End Using
+
+{% endhighlight %}
+{% endtabs %}
+
+![Compare Word documents](../WorkingwithWordDocument_images/Compare-Word-documents.png)
+
+You can download a complete working sample from [GitHub](https://github.com/SyncfusionExamples/DocIO-Examples/tree/main/Compare-Word-documents/Set-author-and-date/.NET).
+
+## Comparison options
+
+You can customize the Word comparison using our [ComparisonOptions](https://help.syncfusion.com/cr/document-processing/Syncfusion.DocIO.DLS.ComparisonOptions.html) in the DocIO.
+
+### Ignore format changes
+
+In the .NET Word library (DocIO), document comparison includes formatting changes by default. However, you can configure DocIO to ignore formatting differences using the [DetectFormatChanges](https://help.syncfusion.com/cr/document-processing/Syncfusion.DocIO.DLS.ComparisonOptions.html#Syncfusion_DocIO_DLS_ComparisonOptions_DetectFormatChanges) API to concentrate solely on content modifications.
+
+The following code example illustrates how to compare two Word documents by ignoring the format changes.
+
+
+{% tabs %}
+{% highlight c# tabtitle="C# [Cross-platform]" playgroundButtonLink="https://raw.githubusercontent.com/SyncfusionExamples/DocIO-Examples/main/Compare-Word-documents/Ignore-format-changes/.NET/Ignore-format-changes/Program.cs" %}
+
+//Load the original document
+using (FileStream originalDocumentStreamPath = new FileStream("OriginalDocument.docx", FileMode.Open, FileAccess.Read))
+{
+    using (WordDocument originalDocument = new WordDocument(originalDocumentStreamPath, FormatType.Docx))
+    {
+        //Load the revised document
+        using (FileStream revisedDocumentStreamPath = new FileStream("RevisedDocument.docx", FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+        {
+            using (WordDocument revisedDocument = new WordDocument(revisedDocumentStreamPath, FormatType.Automatic))
+            {
+                //Set the Comparison option to detect format changes, whether to detect format changes while comparing two Word documents.
+                ComparisonOptions compareOptions = new ComparisonOptions();
+                compareOptions.DetectFormatChanges = false;
+                //Compare the original document with the revised document
+                originalDocument.Compare(revisedDocument, "Syncfusion", DateTime.Now, compareOptions);
+                //Save the Word document to MemoryStream
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    originalDocument.Save(stream, FormatType.Docx);
+                }
+            }
+        }
+    }
+}
+
+{% endhighlight %}
+{% highlight c# tabtitle="C# [Windows-specific]" %}
+
+//Load the original document 
+using (WordDocument originalDocument = new WordDocument("OriginalDocument.docx"))
+{
+    //Load the revised document
+    using (WordDocument revisedDocument = new WordDocument("RevisedDocument.docx"))
+    {
+        //Set the Comparison option detect format changes, whether to detect format changes while comparing two Word documents.
+        ComparisonOptions compareOptions = new ComparisonOptions();
+        compareOptions.DetectFormatChanges = false;
+        //Compare the original document with the revised document
+        originalDocument.Compare(revisedDocument, "Syncfusion", DateTime.Now, compareOptions);
+        //Save the Word document.
+        originalDocument.Save(output);
+    }                 
+} 
+
+{% endhighlight %}
+{% highlight vb.net tabtitle="VB.NET [Windows-specific]" %}
+
+'Load the original document
+Using originalDocument As New WordDocument("OriginalDocument.docx")
+    'Load the revised document
+    Using revisedDocument As New WordDocument("RevisedDocument.docx")
+        'Set the Comparison option to detect format changes
+        Dim compareOptions As New ComparisonOptions()
+        compareOptions.DetectFormatChanges = False
+        'Compare the original document with the revised document
+        originalDocument.Compare(revisedDocument, "Syncfusion", DateTime.Now, compareOptions)
+        'Save the Word document
+        originalDocument.Save(output)
+    End Using
+End Using
+
+{% endhighlight %}
+{% endtabs %}
+
+![Compare Word documents by ignoring format changes](../WorkingwithWordDocument_images/Ignore-format-changes.png)
+
+You can download a complete working sample from [GitHub](https://github.com/SyncfusionExamples/DocIO-Examples/tree/main/Compare-Word-documents/Ignore-format-changes/.NET).
+
+## Online Demo
+
+* Explore how to compare Word documents using the .NET Word Library (DocIO) in a live demo [here](https://document.syncfusion.com/demos/word/comparedocuments#/tailwind).
+
+## See Also
+
+* [What happens when Word documents with track changes are used for comparing?](https://help.syncfusion.com/document-processing/word/word-library/net/faq#what-happens-when-word-documents-with-track-changes-are-used-for-comparing)
+

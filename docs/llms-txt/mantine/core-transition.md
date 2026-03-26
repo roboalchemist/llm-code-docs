@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-transition.md
 
 # Transition
-
 Package: @mantine/core
 Import: import { Transition } from '@mantine/core';
 Description: Animate presence of component with pre-made animations
@@ -27,6 +26,7 @@ function Demo() {
   );
 }
 ```
+
 
 To use one of them set `transition` property to one of these values:
 
@@ -109,6 +109,7 @@ function Demo() {
 }
 ```
 
+
 ## Enter and exit delay
 
 Use `enterDelay` and `exitDelay` props to delay transition start. Values are in milliseconds:
@@ -146,6 +147,8 @@ export function Demo() {
   );
 }
 ```
+
+
 
 #### Props
 

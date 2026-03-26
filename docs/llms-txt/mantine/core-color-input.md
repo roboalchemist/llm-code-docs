@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-color-input.md
 
 # ColorInput
-
 Package: @mantine/core
 Import: import { ColorInput } from '@mantine/core';
 Description: Capture color from user
@@ -27,6 +26,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controlled
 
@@ -55,6 +55,7 @@ function Demo() {
 }
 ```
 
+
 ## Preserve invalid input
 
 By default, `ColorInput` will revert the value on blur to the last known valid value.
@@ -69,6 +70,7 @@ function Demo() {
   return <ColorInput fixOnBlur={false} label="Value is not fixed on blur" placeholder="May contain invalid value" />;
 }
 ```
+
 
 ## onChangeEnd
 
@@ -101,6 +103,7 @@ function Demo() {
 }
 ```
 
+
 ## Disable free input
 
 To disable free input set `disallowInput` prop:
@@ -114,6 +117,7 @@ function Demo() {
   return <ColorInput disallowInput />;
 }
 ```
+
 
 ## With swatches
 
@@ -136,6 +140,7 @@ function Demo() {
 }
 ```
 
+
 By default, there will be 7 swatches per row, you can change this with `swatchesPerRow` prop,
 like in [ColorPicker](https://mantine.dev/core/color-picker/) component:
 
@@ -152,6 +157,7 @@ function Demo() {
   );
 }
 ```
+
 
 If you need to restrict color picking to certain colors – disable color picker and disallow free input:
 
@@ -176,6 +182,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Close dropdown on color swatch click
 
@@ -202,6 +209,7 @@ function Demo() {
 }
 ```
 
+
 ## Hide dropdown
 
 To hide dropdown, set `withPicker={false}`:
@@ -218,6 +226,7 @@ function Demo() {
 }
 ```
 
+
 ## Eye dropper
 
 By default, if [EyeDropper API](https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper_API)
@@ -233,6 +242,7 @@ function Demo() {
   return <ColorInput withEyeDropper={false} label="Without eye dropper" placeholder="Not fun" />;
 }
 ```
+
 
 ## Change eye dropper icon
 
@@ -254,6 +264,7 @@ function Demo() {
   );
 }
 ```
+
 
 <InputSections component="ColorInput" />
 
@@ -293,6 +304,7 @@ function Demo() {
 }
 ```
 
+
 ## Error state
 
 #### Example: error
@@ -315,6 +327,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled state
 
 #### Example: disabled
@@ -327,6 +340,7 @@ function Demo() {
 }
 ```
 
+
 ## Read only
 
 #### Example: readOnly
@@ -338,6 +352,7 @@ function Demo() {
   return <ColorInput readOnly label="Cannot modify value" defaultValue="#F0FCFE" />;
 }
 ```
+
 
 #### Example: stylesApi
 
@@ -360,6 +375,7 @@ function Demo() {
 }
 ```
 
+
 <GetElementRef component="ColorInput" refType="input" />
 
 ## Get element ref
@@ -379,6 +395,7 @@ function Demo() {
 ## Accessibility
 
 ColorInput provides better accessibility support when used in forms. Make sure to associate the input with a label for better screen reader support.
+
 
 #### Props
 
@@ -425,6 +442,7 @@ ColorInput provides better accessibility support when used in forms. Make sure t
 | withPicker | boolean | - | Determines whether the color picker should be displayed |
 | withPreview | boolean | - | If set, the preview color swatch is displayed in the left section of the input |
 | wrapperProps | WrapperProps | - | Props passed down to the root element |
+
 
 #### Styles API
 

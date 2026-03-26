@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-drawer.md
 
 # Drawer
-
 Package: @mantine/core
 Import: import { Drawer } from '@mantine/core';
 Description: Display overlay area at any side of the screen
@@ -30,6 +29,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Position
 
@@ -78,6 +78,7 @@ function Demo() {
 }
 ```
 
+
 ## Offset
 
 Set `offset` prop to change drawer offset from the edge of the viewport:
@@ -104,6 +105,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Customize overlay
 
@@ -137,6 +139,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Sizes
 
@@ -190,6 +193,7 @@ function Demo() {
 }
 ```
 
+
 ## Remove header
 
 To remove header set `withCloseButton={false}`
@@ -216,6 +220,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Drawer with scroll
 
@@ -245,6 +250,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Usage with ScrollArea
 
@@ -280,6 +286,7 @@ function Demo() {
 }
 ```
 
+
 ## Change transition
 
 `Drawer` is built with [Transition](https://mantine.dev/core/transition/) component. Use `transitionProps`
@@ -312,6 +319,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## onExitTransitionEnd and onEnterTransitionEnd
 
@@ -379,6 +387,7 @@ function Demo() {
 }
 ```
 
+
 ## Initial focus
 
 `Drawer` uses [FocusTrap](https://mantine.dev/core/focus-trap/) to trap focus. Add `data-autofocus`
@@ -413,6 +422,7 @@ function Demo() {
 }
 ```
 
+
 If you do not want to focus any elements when the drawer is opened, use `FocusTrap.InitialFocus`
 component to create a visually hidden element that will receive initial focus:
 
@@ -445,6 +455,7 @@ function Demo() {
   );
 }
 ```
+
 
 If you do not add `data-autofocus` attribute and do not use `FocusTrap.InitialFocus`,
 drawer will focus the first focusable element inside it which is usually the close button.
@@ -517,6 +528,7 @@ function Demo() {
 }
 ```
 
+
 ## Compound components
 
 You can use the following compound components to have full control over the `Drawer` rendering:
@@ -558,6 +570,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Drawer.Stack
 
@@ -630,6 +643,7 @@ function Demo() {
   );
 }
 ```
+
 
 Note that `Drawer.Stack` can only be used with `Drawer` component. Components built with `Drawer.Root`
 and other compound components are not compatible with `Drawer.Stack`.
@@ -735,6 +749,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -769,6 +784,7 @@ function Demo() {
 | withOverlay | boolean | - | If set, the overlay is displayed |
 | withinPortal | boolean | - | If set, the component is rendered inside <code>Portal</code> |
 | zIndex | string | number | - | <code>z-index</code> CSS property of the root element |
+
 
 #### Styles API
 

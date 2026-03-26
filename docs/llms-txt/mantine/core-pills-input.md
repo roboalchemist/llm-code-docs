@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-pills-input.md
 
 # PillsInput
-
 Package: @mantine/core
 Import: import { PillsInput } from '@mantine/core';
 Description: Base component for custom tags inputs and multi selects
@@ -31,6 +30,7 @@ function Demo() {
 }
 ```
 
+
 ## Input props
 
 <InputFeatures component="PillsInput" element="div" />
@@ -58,6 +58,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Searchable select example
 
@@ -144,6 +145,7 @@ function Demo() {
 }
 ```
 
+
 ## Accessibility
 
 If `PillsInput` is used without label prop, it will not be announced properly by screen reader:
@@ -192,6 +194,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -221,6 +224,7 @@ function Demo() {
 | withAsterisk | boolean | - | If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input. |
 | withErrorStyles | boolean | - | Determines whether the input should have red border and red text color when the <code>error</code> prop is set |
 | wrapperProps | WrapperProps | - | Props passed down to the root element |
+
 
 #### Styles API
 

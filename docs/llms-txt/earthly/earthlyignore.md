@@ -16,19 +16,19 @@ Patterns of files to exclude from the build context are specified as one pattern
 
 ```
 pattern:
- { term }
+	{ term }
 term:
- '*'         matches any sequence of non-Separator characters
- '?'         matches any single non-Separator character
- '[' [ '^' ] { character-range } ']'
-             character class (must be non-empty)
- c           matches character c (c != '*', '?', '\\', '[')
- '\\' c      matches character c
+	'*'         matches any sequence of non-Separator characters
+	'?'         matches any single non-Separator character
+	'[' [ '^' ] { character-range } ']'
+	            character class (must be non-empty)
+	c           matches character c (c != '*', '?', '\\', '[')
+	'\\' c      matches character c
 
 character-range:
- c           matches character c (c != '\\', '-', ']')
- '\\' c      matches character c
- lo '-' hi   matches character c for lo <= c <= hi
+	c           matches character c (c != '\\', '-', ']')
+	'\\' c      matches character c
+	lo '-' hi   matches character c for lo <= c <= hi
 ```
 
 {% hint style="info" %}

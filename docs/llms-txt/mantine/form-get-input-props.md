@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/form-get-input-props.md
 
 # formGetInputProps
-
 Package: @mantine/form
 Import: import { FormGetInputProps } from '@mantine/form';
 
@@ -100,6 +99,7 @@ function Demo() {
 }
 ```
 
+
 Example of using `enhanceGetInputProps` to add additional props to the input based on option passed to `form.getInputProps`:
 
 #### Example: enhanceGetInputPropsOptions
@@ -145,6 +145,7 @@ function Demo() {
   );
 }
 ```
+
 
 Example of using `enhanceGetInputProps` to add `disabled` prop to all inputs if the form
 has not been initialized yet:
@@ -195,6 +196,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Initialize form
 
@@ -255,6 +257,7 @@ function Demo() {
   );
 }
 ```
+
 
 Example with [TanStack Query](https://tanstack.com/query/latest) (react-query):
 

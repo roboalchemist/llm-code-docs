@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-scroll-area.md
 
 # ScrollArea
-
 Package: @mantine/core
 Import: import { ScrollArea } from '@mantine/core';
 Description: Area with custom scrollbars
@@ -39,6 +38,7 @@ function Demo() {
 }
 ```
 
+
 ## Horizontal scrollbars
 
 #### Example: horizontal
@@ -56,6 +56,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Disable horizontal scrollbars
 
@@ -76,6 +77,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Subscribe to scroll position changes
 
@@ -110,6 +112,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Scroll to position
 
@@ -148,6 +151,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Styles API
 
@@ -189,6 +193,7 @@ function Demo() {
   opacity: 1;
 }
 ```
+
 
 ## Scroll element into view
 
@@ -290,6 +295,7 @@ function Demo() {
 }
 ```
 
+
 ## ScrollArea.Autosize
 
 `ScrollArea.Autosize` component allows to create scrollable containers when given max-height is reached.
@@ -330,6 +336,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## ScrollArea.Autosize with Popover
 
@@ -440,6 +447,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -453,13 +462,14 @@ function Demo() {
 | scrollbarSize | string | number | - | Scrollbar size, any valid CSS value for width/height, numbers are converted to rem, default value is 0.75rem |
 | scrollbars | false | "x" | "y" | "xy" | - | Axis at which scrollbars must be rendered |
 | type | "auto" | "scroll" | "always" | "hover" | "never" | - | Defines scrollbars behavior, <code>hover</code> by default
-* <code>hover</code> – scrollbars are visible when mouse is over the scroll area
-* <code>scroll</code> – scrollbars are visible when the scroll area is scrolled
-* <code>always</code> – scrollbars are always visible
-* <code>never</code> – scrollbars are always hidden
-* <code>auto</code> – similar to <code>overflow: auto</code> – scrollbars are always visible when the content is overflowing |
+- <code>hover</code> – scrollbars are visible when mouse is over the scroll area
+- <code>scroll</code> – scrollbars are visible when the scroll area is scrolled
+- <code>always</code> – scrollbars are always visible
+- <code>never</code> – scrollbars are always hidden
+- <code>auto</code> – similar to <code>overflow: auto</code> – scrollbars are always visible when the content is overflowing |
 | viewportProps | DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> | - | Props passed down to the viewport element |
 | viewportRef | ForwardedRef<HTMLDivElement> | - | Assigns viewport element (scrollable container) ref |
+
 
 #### Styles API
 

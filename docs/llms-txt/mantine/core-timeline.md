@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-timeline.md
 
 # Timeline
-
 Package: @mantine/core
 Import: import { Timeline } from '@mantine/core';
 Description: Display list of events in chronological order
@@ -41,6 +40,7 @@ function Demo() {
 }
 ```
 
+
 ## Line and bullet props
 
 Control timeline appearance with the following props:
@@ -64,6 +64,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Bullet as React node
 
@@ -122,6 +123,7 @@ function Demo() {
 }
 ```
 
+
 ## Wrap Timeline.Item
 
 `Timeline` component relies on `Timeline.Item` order. Wrapping `Timeline.Item` is not supported,
@@ -154,6 +156,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -167,6 +170,7 @@ function Demo() {
 | lineWidth | string | number | - | Control width of the line |
 | radius | MantineRadius | number | - | Key of <code>theme.radius</code> or any valid CSS value to set <code>border-radius</code>, numbers are converted to rem |
 | reverseActive | boolean | - | If set, the active items direction is reversed without reversing items order |
+
 
 #### Styles API
 

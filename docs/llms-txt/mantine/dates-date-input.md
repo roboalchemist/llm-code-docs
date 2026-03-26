@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/dates-date-input.md
 
 # DateInput
-
 Package: @mantine/dates
 Import: import { DateInput } from '@mantine/dates';
 Description: Free form date input
@@ -32,6 +31,7 @@ function Demo() {
 }
 ```
 
+
 ## Value format
 
 Use `valueFormat` prop to change [dayjs format](https://day.js.org/docs/en/display/format) of value label.
@@ -56,6 +56,7 @@ function Demo() {
   return <DateInput valueFormat="YYYY MMM DD" label="Date input" placeholder="Date input" />;
 }
 ```
+
 
 ## Date parser
 
@@ -88,6 +89,7 @@ function Demo() {
 }
 ```
 
+
 ## Allow clear
 
 Set `clearable` prop to allow removing value from the input. Input will be cleared if
@@ -110,6 +112,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Min and max date
 
@@ -135,6 +138,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled state
 
 #### Example: disabled
@@ -146,6 +150,7 @@ function Demo() {
   return <DateInput label="Disabled" placeholder="Date input" disabled />;
 }
 ```
+
 
 ## Input props
 
@@ -169,6 +174,7 @@ function Demo() {
 }
 ```
 
+
 <GetElementRef component="DateInput" refType="input" package="@mantine/dates" />
 
 ## Get element ref
@@ -188,6 +194,7 @@ function Demo() {
 ## Accessibility
 
 DateInput provides better accessibility support when used in forms. Make sure to associate the input with a label for better screen reader support.
+
 
 #### Props
 
@@ -279,6 +286,7 @@ DateInput provides better accessibility support when used in forms. Make sure to
 | wrapperProps | WrapperProps | - | Props passed down to the root element |
 | yearLabelFormat | string | ((date: string) => string) | - | dayjs label format to display year label or a function that returns year label based on year value |
 | yearsListFormat | string | - | dayjs format for years list |
+
 
 #### Styles API
 

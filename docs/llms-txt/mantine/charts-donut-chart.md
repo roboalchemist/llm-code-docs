@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/charts-donut-chart.md
 
 # DonutChart
-
 Package: @mantine/charts
 Import: import { DonutChart } from '@mantine/charts';
 Description: Donut chart component
@@ -30,6 +29,7 @@ export const data = [
 ];
 ```
 
+
 ## Segments labels
 
 Set `withLabels` prop to display labels next to each segment:
@@ -53,6 +53,7 @@ export const data = [
   { name: 'Other', value: 200, color: 'gray.6' },
 ];
 ```
+
 
 ## Size and thickness
 
@@ -80,6 +81,7 @@ export const data = [
 ];
 ```
 
+
 ## Padding angle
 
 Use `paddingAngle` prop to control the space between segments:
@@ -104,6 +106,7 @@ export const data = [
 ];
 ```
 
+
 ## Segment color
 
 You can reference colors from [theme](https://mantine.dev/theming/theme-object) the same way as in
@@ -126,6 +129,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Tooltip data source
 
@@ -169,6 +173,7 @@ export const data = [
 ];
 ```
 
+
 ## Without tooltip
 
 To remove the tooltip, set `withTooltip={false}`:
@@ -192,6 +197,7 @@ export const data = [
   { name: 'Other', value: 200, color: 'gray.6' },
 ];
 ```
+
 
 ## Chart label
 
@@ -218,6 +224,7 @@ export const data = [
 ];
 ```
 
+
 ## Start and end angle
 
 Use `startAngle` and `endAngle` props to control the start and end angle of the chart.
@@ -242,6 +249,7 @@ export const data = [
   { name: 'Other', value: 200, color: 'gray.6' },
 ];
 ```
+
 
 Note that even when `startAngle` and `endAngle` props are set, the chart still takes
 the same amount of space as if it was a full circle.
@@ -269,6 +277,7 @@ export const data = [
   { name: 'Other', value: 200, color: 'gray.6' },
 ];
 ```
+
 
 To change color of the stroke, use `strokeColor` prop. You can reference colors from [theme](https://mantine.dev/theming/theme-object) the same way as in
 other components, for example, `blue`, `red.5`, `orange.7`, etc. Any valid CSS
@@ -320,6 +329,8 @@ export const data = [
 ];
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -346,6 +357,7 @@ export const data = [
 | withLabels | boolean | - | Determines whether each segment should have associated label |
 | withLabelsLine | boolean | - | Determines whether segments labels should have lines that connect the segment with the label |
 | withTooltip | boolean | - | Determines whether the tooltip should be displayed when one of the section is hovered |
+
 
 #### Styles API
 

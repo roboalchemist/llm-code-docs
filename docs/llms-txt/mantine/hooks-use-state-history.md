@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-state-history.md
 
 # useStateHistory
-
 Package: @mantine/hooks
 Import: import { UseStateHistory } from '@mantine/hooks';
 
@@ -9,6 +8,8 @@ Import: import { UseStateHistory } from '@mantine/hooks';
 
 `useStateHistory` hook is used to create a state with history, it returns current value, handlers to
 go back/forward and a history object with all previous values and current index.
+
+
 
 ## Definition
 

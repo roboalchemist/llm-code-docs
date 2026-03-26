@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-package.md
 
 # HooksPackage
-
 Package: @mantine/hooks
 Import: import { HooksPackage } from '@mantine/hooks';
 
@@ -168,6 +167,7 @@ function Demo() {
   }
 }
 ```
+
 
 ## License
 

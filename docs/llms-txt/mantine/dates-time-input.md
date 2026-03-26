@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/dates-time-input.md
 
 # TimeInput
-
 Package: @mantine/dates
 Import: import { TimeInput } from '@mantine/dates';
 Description: Capture time from the user
@@ -26,6 +25,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## TimePicker component
 
@@ -87,6 +87,7 @@ function Demo() {
 }
 ```
 
+
 ## With seconds
 
 #### Example: withSeconds
@@ -98,6 +99,7 @@ function Demo() {
   return <TimeInput withSeconds />;
 }
 ```
+
 
 ## With icon
 
@@ -112,6 +114,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled state
 
 #### Example: disabled
@@ -123,6 +126,7 @@ function Demo() {
   return <TimeInput disabled />;
 }
 ```
+
 
 <GetElementRef component="TimeInput" refType="input" package="@mantine/dates" />
 
@@ -143,6 +147,7 @@ function Demo() {
 ## Accessibility
 
 TimeInput provides better accessibility support when used in forms. Make sure to associate the input with a label for better screen reader support.
+
 
 #### Props
 

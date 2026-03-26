@@ -1,12 +1,13 @@
 # Source: https://mantine.dev/llms/core-kbd.md
 
 # Kbd
-
 Package: @mantine/core
 Import: import { Kbd } from '@mantine/core';
 Description: Display keyboard key
 
 ## Usage
+
+
 
 ## Size
 
@@ -20,11 +21,14 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | size | number | MantineSize | (string & {}) | - | Controls <code>font-size</code> and <code>padding</code> |
+
 
 #### Styles API
 

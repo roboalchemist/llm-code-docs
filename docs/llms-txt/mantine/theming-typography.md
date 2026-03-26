@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/theming-typography.md
 
 # Typography
-
 Package: @mantine/core
 Import: import { Typography } from '@mantine/core';
 Description: Styles provider for html content
@@ -38,6 +37,7 @@ function Demo() {
 }
 ```
 
+
 ## System fonts
 
 By default, Mantine uses system fonts. It means that different devices will display components based on available font,
@@ -71,6 +71,7 @@ function Demo() {
   );
 }
 ```
+
 
 `theme.fontSizes` property defines font-size values for all Mantine components:
 
@@ -198,10 +199,13 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
+
 
 #### Styles API
 

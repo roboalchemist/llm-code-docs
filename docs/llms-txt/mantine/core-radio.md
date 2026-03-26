@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-radio.md
 
 # Radio
-
 Package: @mantine/core
 Import: import { Radio } from '@mantine/core';
 Description: Wrapper for input type radio
@@ -22,6 +21,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controlled
 
@@ -60,6 +60,7 @@ function Demo() {
 }
 ```
 
+
 ## Change icon
 
 #### Example: icon
@@ -73,6 +74,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Change icon color
 
@@ -95,6 +97,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled state
 
 #### Example: disabled
@@ -112,6 +115,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Pointer cursor
 
@@ -161,6 +165,7 @@ function Demo() {
 }
 ```
 
+
 <WrapperProps component="Radio" />
 
 ## Wrapper props
@@ -192,7 +197,10 @@ function Demo() {
 }
 ```
 
+
 ## Radio.Group disabled state
+
+
 
 ## Controlled Radio.Group
 
@@ -248,6 +256,7 @@ function Demo() {
 }
 ```
 
+
 ## Radio.Card component
 
 `Radio.Card` component can be used as a replacement for `Radio` to build custom
@@ -285,6 +294,7 @@ function Demo() {
   );
 }
 ```
+
 
 You can use `Radio.Card` with `Radio.Group` the same way as `Radio` component:
 
@@ -340,6 +350,7 @@ function Demo() {
 }
 ```
 
+
 <GetElementRef component="Radio" refType="input" />
 
 ## Get element ref
@@ -372,6 +383,7 @@ function Demo() {
 }
 ```
 
+
 ## Accessibility
 
 Set `aria-label` or `label` prop to make the radio accessible:
@@ -395,6 +407,7 @@ function GoodLabel() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -411,6 +424,7 @@ function GoodLabel() {
 | rootRef | ForwardedRef<HTMLDivElement> | - | Assigns ref of the root element |
 | size | MantineSize | (string & {}) | - | Controls size of the component |
 | wrapperProps | Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "ref"> & DataAttributes | - | Props passed down to the root element |
+
 
 #### Styles API
 

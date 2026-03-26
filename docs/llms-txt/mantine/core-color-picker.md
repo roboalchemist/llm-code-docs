@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-color-picker.md
 
 # ColorPicker
-
 Package: @mantine/core
 Import: import { ColorPicker } from '@mantine/core';
 Description: Pick colors in hex(a), rgb(a), hsl(a) and hsv(a) formats
@@ -26,6 +25,7 @@ function Demo() {
 }
 ```
 
+
 ## Color format
 
 `ColorPicker` supports hex, hexa, rgb, rgba, hsl and hsla color formats.
@@ -40,6 +40,7 @@ function Demo() {
   return <ColorPicker />;
 }
 ```
+
 
 ## With swatches
 
@@ -62,6 +63,7 @@ function Demo() {
 }
 ```
 
+
 By default, `ColorPicker` will display 7 swatches per row, you can configure it with `swatchesPerRow` prop:
 
 #### Example: swatchesConfigurator
@@ -77,6 +79,7 @@ function Demo() {
   );
 }
 ```
+
 
 To display swatches without picker set `withPicker={false}` and `fullWidth` props:
 
@@ -110,6 +113,7 @@ function Demo() {
 }
 ```
 
+
 ## Size
 
 `ColorPicker` has 5 predefined sizes: `xs`, `sm`, `md`, `lg` and `xl`:
@@ -123,6 +127,7 @@ function Demo() {
   return <ColorPicker />;
 }
 ```
+
 
 ## fullWidth
 
@@ -139,6 +144,7 @@ function Demo() {
 }
 ```
 
+
 #### Example: stylesApi
 
 ```tsx
@@ -150,6 +156,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## HueSlider component
 
@@ -171,6 +178,7 @@ function Demo() {
 }
 ```
 
+
 ## AlphaSlider component
 
 #### Example: alphaSlider
@@ -190,6 +198,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Accessibility
 
@@ -215,6 +224,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -234,6 +244,7 @@ function Demo() {
 | swatchesPerRow | number | - | Number of swatches per row |
 | value | string | - | Controlled component value |
 | withPicker | boolean | - | Determines whether the color picker should be displayed |
+
 
 #### Styles API
 

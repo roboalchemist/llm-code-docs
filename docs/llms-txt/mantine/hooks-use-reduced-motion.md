@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-reduced-motion.md
 
 # useReducedMotion
-
 Package: @mantine/hooks
 Import: import { UseReducedMotion } from '@mantine/hooks';
 
@@ -13,6 +12,8 @@ Hook relies on `window.matchMedia()` [API](https://developer.mozilla.org/en-US/d
 and will always return `false` if api is not available (for example, during server side rendering), unless the initial value is provided in the first argument.
 
 Use hook to detect if user prefers to reduce motion (`(prefers-reduced-motion: reduce)` media query) and set animations duration based on this value.
+
+
 
 ## Definition
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/charts-area-chart.md
 
 # AreaChart
-
 Package: @mantine/charts
 Import: import { AreaChart } from '@mantine/charts';
 Description: Area chart component with stacked, percent and split variants
@@ -71,6 +70,7 @@ export const data = [
 ];
 ```
 
+
 ## Stacked area chart
 
 Set `type="stacked"` to render a stacked area chart. In this type of area chart
@@ -134,6 +134,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Percent area chart
 
@@ -199,6 +200,7 @@ export const data = [
 ];
 ```
 
+
 ## Split area chart
 
 Set `type="split"` to render a split area chart. In this type of area chart
@@ -255,6 +257,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Split colors
 
@@ -313,6 +316,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Legend
 
@@ -377,6 +381,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Legend position
 
@@ -444,6 +449,7 @@ export const data = [
 ];
 ```
 
+
 ## Series labels
 
 By default, series `name` is used as a label. To change it, set `label`
@@ -509,6 +515,7 @@ export const data = [
 ];
 ```
 
+
 ## Set curve type per line
 
 You can set individual curve types for each line in the `series` array. If you
@@ -572,6 +579,7 @@ export const data = [
 ];
 ```
 
+
 ## Connect nulls
 
 Use `connectNulls` prop to specify whether to connect a data point across null
@@ -634,6 +642,7 @@ export const data = [
 ];
 ```
 
+
 ## Points labels
 
 To display labels on data points, set `withPointLabels`:
@@ -695,6 +704,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## X and Y axis props
 
@@ -763,6 +773,7 @@ export const data = [
 ];
 ```
 
+
 ## Axis labels
 
 Use `xAxisLabel` and `yAxisLabel` props to display axis labels:
@@ -827,6 +838,7 @@ export const data = [
 ];
 ```
 
+
 ## X axis offset
 
 Use `xAxisProps` to set padding between the charts ends and the x-axis:
@@ -890,6 +902,7 @@ export const data = [
 ];
 ```
 
+
 ## Y axis scale
 
 Use `yAxisProps` to change domain of the Y axis. For example, if you know that
@@ -951,6 +964,7 @@ export const data = [
 ];
 ```
 
+
 ## Right Y axis
 
 To display additional Y axis on the right side of the chart, set `withRightYAxis` prop.
@@ -994,6 +1008,7 @@ export const biaxialData = [
   { name: 'Page G', uv: 3490, pv: 4300 },
 ];
 ```
+
 
 ## Rotate x-axis labels
 
@@ -1059,6 +1074,7 @@ export const data = [
 ];
 ```
 
+
 ## Value formatter
 
 To format values in the tooltip and axis ticks, use `valueFormat` prop. It accepts
@@ -1123,6 +1139,7 @@ export const data = [
 ];
 ```
 
+
 ## Area color
 
 You can reference colors from [theme](https://mantine.dev/theming/theme-object) the same way as in
@@ -1166,6 +1183,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Change area color depending on color scheme
 
@@ -1240,6 +1258,7 @@ export const data = [
 ];
 ```
 
+
 ## Stroke dash array
 
 Set `strokeDasharray` prop to control the stroke dash array of the grid and cursor
@@ -1304,6 +1323,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Grid and text colors
 
@@ -1383,6 +1403,7 @@ export const data = [
   },
 ];
 ```
+
 
 If your application has only one color scheme, you can use `gridColor` and `textColor`
 props instead of CSS variables:
@@ -1474,6 +1495,7 @@ export const data = [
 ];
 ```
 
+
 ## Units
 
 Set `unit` prop to render a unit label next to the y-axis ticks and tooltip values:
@@ -1536,6 +1558,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Custom tooltip
 
@@ -1627,6 +1650,7 @@ export const data = [
 ];
 ```
 
+
 ## Remove tooltip
 
 To remove tooltip, set `withTooltip={false}`. It also removes the cursor line
@@ -1690,6 +1714,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Customize dots
 
@@ -1756,6 +1781,7 @@ export const data = [
 ];
 ```
 
+
 ## Stroke width
 
 Use `strokeWidth` prop to control the stroke width of all areas:
@@ -1819,6 +1845,7 @@ export const data = [
 ];
 ```
 
+
 ## Fill opacity
 
 Use `fillOpacity` prop to control the fill opacity of all areas:
@@ -1881,6 +1908,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Sync multiple AreaCharts
 
@@ -1961,6 +1989,7 @@ export const data = [
 ];
 ```
 
+
 ## Vertical orientation
 
 Set `orientation="vertical"` to render a vertical area chart:
@@ -2023,6 +2052,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Dashed area line
 
@@ -2089,6 +2119,7 @@ export const data = [
 ];
 ```
 
+
 ## Reference lines
 
 Use `referenceLines` prop to render reference lines. Reference lines are always
@@ -2153,6 +2184,7 @@ export const data = [
   },
 ];
 ```
+
 
 ## Reference area
 
@@ -2236,6 +2268,8 @@ export const data = [
 ];
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -2282,6 +2316,7 @@ export const data = [
 | xAxisProps | RechartsProps | - | Props passed down to the <code>XAxis</code> recharts component |
 | yAxisLabel | string | - | A label to display next to the y-axis |
 | yAxisProps | RechartsProps | - | Props passed down to the <code>YAxis</code> recharts component |
+
 
 #### Styles API
 

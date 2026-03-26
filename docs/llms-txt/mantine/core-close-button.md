@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-close-button.md
 
 # CloseButton
-
 Package: @mantine/core
 Import: import { CloseButton } from '@mantine/core';
 Description: Button with close icon
@@ -19,6 +18,7 @@ function Demo() {
   return <CloseButton />;
 }
 ```
+
 
 ## Change icon
 
@@ -38,6 +38,7 @@ function Demo() {
   return <CloseButton icon={<IconXboxX size={18} stroke={1.5} />} />;
 }
 ```
+
 
 ## Accessibility
 
@@ -60,6 +61,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -70,6 +72,7 @@ function Demo() {
 | iconSize | string | number | - | <code>X</code> icon <code>width</code> and <code>height</code> |
 | radius | MantineRadius | number | - | Key of <code>theme.radius</code> or any valid CSS value to set border-radius. Numbers are converted to rem. |
 | size | number | MantineSize | (string & {}) | - | Controls width and height of the button. Numbers are converted to rem. |
+
 
 #### Styles API
 

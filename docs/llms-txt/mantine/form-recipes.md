@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/form-recipes.md
 
 # formRecipes
-
 Package: @mantine/form
 Import: import { FormRecipes } from '@mantine/form';
 
@@ -57,6 +56,7 @@ function Demo() {
 }
 ```
 
+
 ## Save form values to local storage
 
 #### Example: localStorage
@@ -105,6 +105,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## List items reordering
 
@@ -194,6 +195,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Form with multiple steps
 
@@ -321,3 +323,4 @@ function Demo() {
   );
 }
 ```
+

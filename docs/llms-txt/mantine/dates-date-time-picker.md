@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/dates-date-time-picker.md
 
 # DateTimePicker
-
 Package: @mantine/dates
 Import: import { DateTimePicker } from '@mantine/dates';
 Description: Capture datetime from the user
@@ -23,6 +22,7 @@ function Demo() {
 }
 ```
 
+
 ## With seconds
 
 #### Example: withSeconds
@@ -34,6 +34,7 @@ function Demo() {
   return <DateTimePicker withSeconds label="Pick date and time" placeholder="Pick date and time" />;
 }
 ```
+
 
 ## Presets
 
@@ -67,6 +68,7 @@ function Demo() {
 }
 ```
 
+
 ## TimePicker props
 
 You can pass props down to the underlying [TimePicker](https://mantine.dev/dates/time-picker/) component
@@ -93,6 +95,7 @@ function Demo() {
 }
 ```
 
+
 ## Value format
 
 Use `valueFormat` prop to change [dayjs format](https://day.js.org/docs/en/display/format) of value label:
@@ -113,6 +116,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled state
 
 #### Example: disabled
@@ -124,6 +128,7 @@ function Demo() {
   return <DateTimePicker label="Disabled" placeholder="Pick date and time" disabled />;
 }
 ```
+
 
 ## Input props
 
@@ -146,6 +151,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Clearable
 
@@ -170,6 +176,7 @@ function Demo() {
 }
 ```
 
+
 ## Open picker in modal
 
 By default, picker is rendered inside [Popover](https://mantine.dev/core/popover/).
@@ -191,6 +198,7 @@ function Demo() {
 }
 ```
 
+
 <GetElementRef component="DateTimePicker" refType="button" package="@mantine/dates" />
 
 ## Get element ref
@@ -210,6 +218,7 @@ function Demo() {
 ## Accessibility
 
 DateTimePicker provides better accessibility support when used in forms. Make sure to associate the input with a label for better screen reader support.
+
 
 #### Props
 
@@ -304,6 +313,7 @@ DateTimePicker provides better accessibility support when used in forms. Make su
 | wrapperProps | WrapperProps | - | Props passed down to the root element |
 | yearLabelFormat | string | ((date: string) => string) | - | dayjs label format to display year label or a function that returns year label based on year value |
 | yearsListFormat | string | - | dayjs format for years list |
+
 
 #### Styles API
 

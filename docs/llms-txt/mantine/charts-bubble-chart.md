@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/charts-bubble-chart.md
 
 # BubbleChart
-
 Package: @mantine/charts
 Import: import { BubbleChart } from '@mantine/charts';
 Description: Bubble chart component
@@ -41,6 +40,7 @@ export const data = [
 ];
 ```
 
+
 ## Change color
 
 You can reference colors from [theme](https://mantine.dev/theming/theme-object) the same way as in
@@ -79,6 +79,7 @@ export const data = [
   { hour: '22:00', index: 1, value: 160 },
 ];
 ```
+
 
 ## Change area color depending on color scheme
 
@@ -133,6 +134,7 @@ export const data = [
 ];
 ```
 
+
 ## Remove tooltip
 
 To remove tooltip, set `withTooltip={false}`. It also removes the cursor line
@@ -169,6 +171,7 @@ export const data = [
   { hour: '22:00', index: 1, value: 160 },
 ];
 ```
+
 
 ## Value formatter
 
@@ -208,6 +211,7 @@ export const data = [
   { hour: '22:00', index: 1, value: 160 },
 ];
 ```
+
 
 ## Grid and text colors
 
@@ -263,6 +267,7 @@ export const data = [
 ];
 ```
 
+
 If your application has only one color scheme, you can use `gridColor` and `textColor`
 props instead of CSS variables:
 
@@ -286,6 +291,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -304,6 +310,7 @@ function Demo() {
 | xAxisProps | RechartsProps | - | Props passed down to the <code>XAxis</code> recharts component |
 | yAxisProps | RechartsProps | - | Props passed down to the <code>YAxis</code> recharts component |
 | zAxisProps | RechartsProps | - | Props passed down to the <code>ZAxis</code> recharts component |
+
 
 #### Styles API
 

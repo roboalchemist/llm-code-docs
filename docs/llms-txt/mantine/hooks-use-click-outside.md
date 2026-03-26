@@ -1,11 +1,12 @@
 # Source: https://mantine.dev/llms/hooks-use-click-outside.md
 
 # useClickOutside
-
 Package: @mantine/hooks
 Import: import { UseClickOutside } from '@mantine/hooks';
 
 ## Usage
+
+
 
 ## API
 
@@ -33,6 +34,8 @@ function Example() {
 
 By default, `use-click-outside` listens to `mousedown` and `touchstart` events,
 you can change these events by passing an array of events as second argument:
+
+
 
 ## Multiple nodes
 

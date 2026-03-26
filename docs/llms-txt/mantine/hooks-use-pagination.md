@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-pagination.md
 
 # usePagination
-
 Package: @mantine/hooks
 Import: import { UsePagination } from '@mantine/hooks';
 
@@ -17,6 +16,7 @@ function Demo() {
   return <Pagination total={10} />;
 }
 ```
+
 
 ```tsx
 import { usePagination } from '@mantine/hooks';
@@ -90,6 +90,7 @@ function Demo() {
 }
 ```
 
+
 ## Boundaries
 
 Control number of items on each boundary with `boundaries`:
@@ -120,6 +121,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Definition
 

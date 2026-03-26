@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-autocomplete.md
 
 # Autocomplete
-
 Package: @mantine/core
 Import: import { Autocomplete } from '@mantine/core';
 Description: Autocomplete user input with any list of options
@@ -36,6 +35,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controlled
 
@@ -75,6 +75,7 @@ function Demo() {
 }
 ```
 
+
 ## autoSelectOnBlur
 
 Set `autoSelectOnBlur` prop to automatically select the highlighted option when the input loses focus.
@@ -96,6 +97,7 @@ function Demo() {
   );
 }
 ```
+
 
 <ComboboxData component="Autocomplete" />
 
@@ -134,6 +136,7 @@ function Demo() {
 }
 ```
 
+
 ## Sort options
 
 By default, options are sorted by their position in the data array. You can change this behavior
@@ -165,6 +168,7 @@ function Demo() {
 }
 ```
 
+
 <ComboboxLargeData component="Autocomplete" />
 
 ## Large datasets
@@ -191,6 +195,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## renderOption
 
@@ -250,6 +255,7 @@ function Demo() {
 }
 ```
 
+
 ## Nothing found message
 
 `Autocomplete` component does not support nothing found message. It is designed to
@@ -298,6 +304,7 @@ function Demo() {
 }
 ```
 
+
 ## Group options
 
 #### Example: groups
@@ -318,6 +325,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Disabled options
 
@@ -343,6 +351,7 @@ function Demo() {
   );
 }
 ```
+
 
 <ComboboxProps component="Autocomplete" />
 
@@ -374,6 +383,7 @@ function Demo() {
 }
 ```
 
+
 ## Clearable
 
 Set `clearable` prop to display the clear button in the right section. The button is not displayed
@@ -400,6 +410,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Control dropdown opened state
 
@@ -431,6 +442,7 @@ function Demo() {
 }
 ```
 
+
 ## Dropdown position
 
 By default, the dropdown is displayed below the input if there is enough space; otherwise it is displayed above the input.
@@ -456,6 +468,7 @@ function Demo() {
 }
 ```
 
+
 ## Dropdown animation
 
 By default, dropdown animations are disabled. To enable them, you can set `transitionProps`,
@@ -477,6 +490,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Dropdown padding
 
@@ -506,6 +520,7 @@ function Demo() {
 }
 ```
 
+
 ## Dropdown shadow
 
 #### Example: dropdownShadow
@@ -524,6 +539,7 @@ function Demo() {
   );
 }
 ```
+
 
 <InputSections component="Autocomplete" />
 
@@ -561,6 +577,7 @@ function Demo() {
 }
 ```
 
+
 ## Input props
 
 <InputFeatures component="Autocomplete" element="input" />
@@ -584,6 +601,7 @@ function Demo() {
 }
 ```
 
+
 ## Read only
 
 Set `readOnly` to make the input read only. When `readOnly` is set,
@@ -606,6 +624,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled
 
 Set `disabled` to disable the input. When `disabled` is set,
@@ -627,6 +646,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Error state
 
@@ -656,6 +676,7 @@ function Demo() {
 }
 ```
 
+
 #### Example: stylesApi
 
 ```tsx
@@ -677,6 +698,7 @@ function Demo() {
 }
 ```
 
+
 <GetElementRef component="Autocomplete" refType="input" />
 
 ## Get element ref
@@ -696,6 +718,7 @@ function Demo() {
 ## Accessibility
 
 Autocomplete provides better accessibility support when used in forms. Make sure to associate the input with a label for better screen reader support.
+
 
 #### Props
 
@@ -748,6 +771,7 @@ Autocomplete provides better accessibility support when used in forms. Make sure
 | withErrorStyles | boolean | - | Determines whether the input should have red border and red text color when the <code>error</code> prop is set |
 | withScrollArea | boolean | - | Determines whether the options should be wrapped with <code>ScrollArea.AutoSize</code>, <code>true</code> by default |
 | wrapperProps | WrapperProps | - | Props passed down to the root element |
+
 
 #### Styles API
 

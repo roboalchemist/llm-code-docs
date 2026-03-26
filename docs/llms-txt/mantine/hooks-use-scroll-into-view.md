@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-scroll-into-view.md
 
 # useScrollIntoView
-
 Package: @mantine/hooks
 Import: import { UseScrollIntoView } from '@mantine/hooks';
 
@@ -9,6 +8,8 @@ Import: import { UseScrollIntoView } from '@mantine/hooks';
 
 `use-scroll-into-view` handles scroll behavior for any scrollable element. Basic usage works the same way as `element.scrollIntoView()`.
 Hook adjusts scrolling animation with respect to the `reduced-motion` user preference.
+
+
 
 ## API
 
@@ -57,7 +58,11 @@ useScrollIntoView({
 
 ## Parent node
 
+
+
 ## Scroll X axis
+
+
 
 ## Definition
 

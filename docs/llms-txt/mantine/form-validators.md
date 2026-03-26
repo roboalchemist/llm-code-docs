@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/form-validators.md
 
 # formValidators
-
 Package: @mantine/form
 Import: import { FormValidators } from '@mantine/form';
 
@@ -86,6 +85,7 @@ function Demo() {
 }
 ```
 
+
 ## Optional error
 
 Last argument of all validator functions below is optional. If error is not set, then fields with failed validation will
@@ -166,6 +166,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## isNotEmpty
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-tree.md
 
 # Tree
-
 Package: @mantine/core
 Import: import { Tree } from '@mantine/core';
 Description: Display a Tree structure
@@ -21,6 +20,7 @@ function Demo() {
   return <Tree data={data} />;
 }
 ```
+
 
 ## Data prop
 
@@ -149,6 +149,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## useTree hook
 
@@ -293,6 +294,7 @@ function Demo() {
 }
 ```
 
+
 ## Checked state
 
 `Tree` can be used to display checked state with checkboxes.
@@ -341,6 +343,7 @@ function Demo() {
   return <Tree data={data} levelOffset={23} expandOnClick={false} renderNode={renderTreeNode} />;
 }
 ```
+
 
 To check/uncheck nodes, use `checkAllNodes` and `uncheckAllNodes` functions:
 
@@ -420,6 +423,7 @@ function Demo() {
 }
 ```
 
+
 ## Initial expanded state
 
 Expanded state is an object of `node.value` and boolean values that represent nodes expanded state.
@@ -453,6 +457,7 @@ function Demo() {
   return <Tree data={data} tree={tree} />;
 }
 ```
+
 
 ## Example: files tree
 
@@ -517,6 +522,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -531,6 +538,7 @@ function Demo() {
 | renderNode | RenderNode | - | A function to render tree node label |
 | selectOnClick | boolean | - | If set, tree node is selected on click |
 | tree | UseTreeReturnType | - | Use-tree hook instance that can be used to manipulate component state |
+
 
 #### Styles API
 

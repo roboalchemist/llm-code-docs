@@ -1,11 +1,12 @@
 # Source: https://mantine.dev/llms/hooks-use-counter.md
 
 # useCounter
-
 Package: @mantine/hooks
 Import: import { UseCounter } from '@mantine/hooks';
 
 ## Usage
+
+
 
 ## Definition
 

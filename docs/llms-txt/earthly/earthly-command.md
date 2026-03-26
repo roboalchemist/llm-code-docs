@@ -15,14 +15,12 @@
   ```
   earthly [options...] <target-ref> [build-args...]
   ```
-
 * Artifact form
 
   ```
   earthly [options...] --artifact|-a <target-ref>/<artifact-path> [<dest-path>]
   earthly [options...] --artifact|-a (<target-ref>/<artifact-path> [build-args...]) [<dest-path>]
   ```
-
 * Image form
 
   ```
@@ -334,7 +332,6 @@ These options can only be set via environment variables, and have no command lin
   ```
   earthly [options] prune [--all|-a]
   ```
-
 * Reset form
 
   ```
@@ -686,7 +683,6 @@ Installs shell autocompletions during bootstrap. Requires `sudo` to install them
 * ```
   earthly --help
   ```
-
 * ```
   earthly <command> --help
   ```

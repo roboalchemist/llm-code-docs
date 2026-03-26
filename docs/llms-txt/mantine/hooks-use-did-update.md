@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-did-update.md
 
 # useDidUpdate
-
 Package: @mantine/hooks
 Import: import { UseDidUpdate } from '@mantine/hooks';
 

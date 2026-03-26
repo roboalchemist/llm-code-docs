@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-switch.md
 
 # Switch
-
 Package: @mantine/core
 Import: import { Switch } from '@mantine/core';
 Description: Capture boolean input from user
@@ -23,6 +22,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controlled
 
@@ -60,6 +60,7 @@ function Demo() {
 }
 ```
 
+
 ## Inner Labels
 
 #### Example: labels
@@ -80,6 +81,7 @@ function Demo() {
 }
 ```
 
+
 ## Icon labels
 
 #### Example: iconLabels
@@ -99,6 +101,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Thumb icon
 
@@ -131,6 +134,7 @@ function Demo() {
 }
 ```
 
+
 ## With tooltip
 
 Set `refProp="rootRef"` on [Tooltip](https://mantine.dev/core/tooltip/) and other similar components to make them work with `Switch`:
@@ -148,6 +152,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Pointer cursor
 
@@ -200,7 +205,10 @@ function Demo() {
 }
 ```
 
+
 ## Switch.Group disabled
+
+
 
 ## Controlled Switch.Group
 
@@ -254,6 +262,7 @@ function Demo() {
 }
 ```
 
+
 #### Example: stylesApi
 
 ```tsx
@@ -263,6 +272,7 @@ function Demo() {
   return <Switch label="Switch component" description="Switch description" error="Switch error />;
 }
 ```
+
 
 ## Get input ref
 
@@ -299,6 +309,7 @@ function AlsoGood() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -317,6 +328,7 @@ function AlsoGood() {
 | thumbIcon | React.ReactNode | - | Icon inside the thumb of the switch |
 | withThumbIndicator | boolean | - | If set, the indicator will be displayed inside thumb |
 | wrapperProps | Omit<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "ref"> & DataAttributes | - | Props passed down to the root element |
+
 
 #### Styles API
 

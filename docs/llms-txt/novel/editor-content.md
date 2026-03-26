@@ -1,0 +1,58 @@
+# Source: https://novel.mintlify.dev/docs/components/editor-content.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://novel.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Editor Content
+
+> Wrapper for Tiptap Provider 
+
+For all the available props, see [Tiptap Settings](https://tiptap.dev/docs/editor/api/editor#settings).
+
+```tsx
+<EditorRoot>
+  <EditorContent>{children}</EditorContent>
+</EditorRoot>
+```
+
+## Props
+
+<ParamField required path="children" type="ReactNode">
+  A ReactNode that represents the content of the editor.
+</ParamField>
+
+<ParamField path="extensions" type="Extension[]" required>
+  An array of Tiptap extensions to be used in the editor.
+</ParamField>
+
+<ParamField path="initialContent" type="JSONContent">
+  Initial editor content in JSON format. [Tiptap
+  Output](https://tiptap.dev/docs/editor/guide/output)
+</ParamField>
+
+<ParamField
+  path="onUpdate"
+  type="(props: {
+  editor: Editor;
+  transaction: Transaction;
+  }) => void"
+>
+  Function that is called when the editor content is updated.
+</ParamField>
+
+<ParamField
+  path="onCreate"
+  type="onCreate?: (props: {
+  editor: Editor;
+  }) => void"
+>
+  Function that is called when the editor is created.
+</ParamField>
+
+<ParamField path="className" type="string">
+  Classname for the parent container.
+</ParamField>
+
+
+Built with [Mintlify](https://mintlify.com).

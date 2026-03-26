@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-visually-hidden.md
 
 # VisuallyHidden
-
 Package: @mantine/core
 Import: import { VisuallyHidden } from '@mantine/core';
 Description: Hide element visually but keep it accessible for screen readers
@@ -25,6 +24,7 @@ function Demo() {
   );
 }
 ```
+
 
 #### Props
 

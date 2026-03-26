@@ -1,0 +1,7 @@
+# Source: https://docs.debricked.com/tips-and-tricks/workarounds.md
+
+# Workarounds
+
+Following is the list of community-sourced guides that make your use of OpenText Core SCA easier. Note that some of them include community-contributed projects, not officially supported by OpenText Core SCA.
+
+<table data-view="cards"><thead><tr><th></th><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td></td><td></td><td><a href="workarounds/scanning-conan-c++-projects">Scanning Conan (C++) projects</a></td><td><a href="workarounds/scanning-conan-c++-projects">scanning-conan-c++-projects</a></td></tr><tr><td></td><td></td><td><a href="workarounds/scanning-a-repository-with-different-services">Scanning a repository with different services</a></td><td><a href="workarounds/scanning-a-repository-with-different-services">scanning-a-repository-with-different-services</a></td></tr><tr><td></td><td></td><td><a href="workarounds/scanning-docker-images">Scanning Docker images</a></td><td><a href="workarounds/scanning-docker-images">scanning-docker-images</a></td></tr><tr><td></td><td></td><td><a href="workarounds/automations-do-not-fail-on-found-cve-lacking-a-fix">Automations: Do not fail on found CVE lacking a fix</a></td><td></td></tr><tr><td></td><td></td><td><a href="workarounds/configuring-user-access-using-api">Configuring user access using API</a></td><td></td></tr></tbody></table>

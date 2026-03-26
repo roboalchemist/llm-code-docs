@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-id.md
 
 # useId
-
 Package: @mantine/hooks
 Import: import { UseId } from '@mantine/hooks';
 

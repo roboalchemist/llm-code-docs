@@ -39,6 +39,7 @@ A high-level overview is available on [the Earthly GitHub page](https://github.c
 * [Earthfile examples](https://docs.earthly.dev/docs/examples)
 * [Best practices](https://docs.earthly.dev/best-practices)
 
+
 # Learn the basics
 
 Earthly is a build automation tool that uses docker containers to enforce build repeatability. Earthly is meant to be run on your local system and in your CI. Earthly's implicit caching and parallelism will make your builds repeatable and fast.
@@ -67,6 +68,7 @@ If you have any questions, feedback or suggestions for Earthly or this tutorial 
 We will start the first lesson with a simple Earthfile.
 
 👉 [Part 1: A simple Earthfile](https://docs.earthly.dev/basics/part-1-a-simple-earthfile)
+
 
 # Part 1: A simple Earthfile
 
@@ -120,7 +122,7 @@ package main
 import "fmt"
 
 func main() {
- fmt.Println("hello world")
+	fmt.Println("hello world")
 }
 ```
 
@@ -374,6 +376,7 @@ print("hello world")
 ```
 
 </details>
+
 
 # Part 2: Outputs
 
@@ -694,6 +697,7 @@ print("hello world")
 
 </details>
 
+
 # Part 3: Adding dependencies With Caching
 
 To copy the files for [this example ( Part 3 )](https://github.com/earthly/earthly/tree/main/examples/tutorial/go/part3) run
@@ -733,7 +737,7 @@ package main
 import "github.com/sirupsen/logrus"
 
 func main() {
- logrus.Info("hello world")
+	logrus.Info("hello world")
 }
 ```
 
@@ -941,6 +945,7 @@ docker:
 ```
 
 </details>
+
 
 # Part 4: Args
 
@@ -1151,6 +1156,7 @@ docker:
 ```
 
 </details>
+
 
 # Part 5: Importing
 
@@ -1368,6 +1374,7 @@ docker:
 
 </details>
 
+
 # Part 6: Using Docker In Earthly
 
 To copy the files for [this example ( Part 6 )](https://github.com/earthly/earthly/tree/main/examples/tutorial/go/part6) run
@@ -1450,13 +1457,13 @@ networks:
 package main
 
 import (
- "github.com/sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 )
 
 var howCoolIsEarthly = "IceCool"
 
 func main() {
- logrus.Info("hello world")
+	logrus.Info("hello world")
 }
 ```
 
@@ -1466,31 +1473,31 @@ func main() {
 package main
 
 import (
- "context"
- "testing"
+	"context"
+	"testing"
 
- "github.com/go-redis/redis/v8"
- "github.com/stretchr/testify/require"
+	"github.com/go-redis/redis/v8"
+	"github.com/stretchr/testify/require"
 )
 
 func TestIntegration(t *testing.T) {
- ctx := context.Background()
- rdb := redis.NewClient(&redis.Options{
-  Addr:     "redis:6379",
-  Password: "", // no password set
-  DB:       0,  // use default DB
- })
+	ctx := context.Background()
+	rdb := redis.NewClient(&redis.Options{
+		Addr:     "redis:6379",
+		Password: "", // no password set
+		DB:       0,  // use default DB
+	})
 
- err := rdb.Set(ctx, "howCoolIsEarthly", howCoolIsEarthly, 0).Err()
- if err != nil {
-  panic(err)
- }
+	err := rdb.Set(ctx, "howCoolIsEarthly", howCoolIsEarthly, 0).Err()
+	if err != nil {
+		panic(err)
+	}
 
- resultFromDB, err := rdb.Get(ctx, "howCoolIsEarthly").Result()
- if err != nil {
-  panic(err)
- }
- require.Equal(t, howCoolIsEarthly, resultFromDB)
+	resultFromDB, err := rdb.Get(ctx, "howCoolIsEarthly").Result()
+	if err != nil {
+		panic(err)
+	}
+	require.Equal(t, howCoolIsEarthly, resultFromDB)
 }
 ```
 
@@ -1592,7 +1599,7 @@ function component() {
       element.innerHTML = `hello world <b>${users[0].first_name} ${users[0].last_name}</b>`
     })
 
- return element;
+	return element;
 }
 
 document.body.appendChild(component());
@@ -1787,13 +1794,13 @@ docker:
 
 with-postgresql:
     FROM earthly/dind:alpine
-   COPY ./docker-compose.yml .
-   RUN apk update
-   RUN apk add postgresql-client
-   WITH DOCKER --compose docker-compose.yml --load app:latest=+docker
-      RUN while ! pg_isready --host=localhost --port=5432; do sleep 1; done ;\
-       docker run --network=default_java/part6_default app
-   END
+	  COPY ./docker-compose.yml .
+	  RUN apk update
+	  RUN apk add postgresql-client
+	  WITH DOCKER --compose docker-compose.yml --load app:latest=+docker
+		    RUN while ! pg_isready --host=localhost --port=5432; do sleep 1; done ;\
+			    docker run --network=default_java/part6_default app
+	  END
 
 ```
 
@@ -1961,6 +1968,7 @@ run-tests:
 
 </details>
 
+
 # Final words
 
 Congratulations, you completed the Earthly tutorial!
@@ -1997,6 +2005,7 @@ If you have any questions, feedback or suggestions for Earthly or this tutorial 
 * [Part 5: Importing](https://docs.earthly.dev/basics/part-5-importing)
 * [Part 6: Using Docker In Earthly](https://docs.earthly.dev/basics/part-6-using-docker-with-earthly)
 * **Final words** <-- You are here.
+
 
 # Best practices
 
@@ -3161,7 +3170,9 @@ We are aware of the lack of capability here. Please follow GitHub issues [#988](
 
 There are currently workarounds for this (see [this comment](https://github.com/earthly/earthly/issues/988#issuecomment-870504677) and [this comment](https://github.com/earthly/earthly/issues/988#issuecomment-981088796)), however they have significant limitations.
 
+
 # Guides
+
 
 # Authenticating Git and image registries
 
@@ -3306,6 +3317,7 @@ You can see examples of configuring Docker to use these, and working with Earthl
 
 * The [earthly command reference](https://docs.earthly.dev/docs/earthly-command)
 
+
 # Target, artifact and command referencing
 
 This page describes the different types of references used in Earthly:
@@ -3449,6 +3461,7 @@ For example, depending on where the files are stored, the `+build` target could 
 
 If no Git context is detected by Earthly, then the target does not have a canonical form.
 
+
 # Build arguments and secrets
 
 ## Introduction
@@ -3533,7 +3546,6 @@ Argument values can be set multiple ways:
    ```
    earthly +hello --HELLO=world --FOO=bar
    ```
-
 2. From environment variables
 
    Similar to above, except that the value is an environment variable:
@@ -3543,7 +3555,6 @@ Argument values can be set multiple ways:
    export FOO="bar"
    earthly +hello --HELLO="$HELLO" --FOO="$FOO"
    ```
-
 3. Via the `EARTHLY_BUILD_ARGS` environment variable
 
    The value can also be set via the `EARTHLY_BUILD_ARGS` environment variable.
@@ -3659,7 +3670,6 @@ This is possible in a few ways:
    ```bash
    earthly --secret passwd=itsasecret +hush
    ```
-
 2. Via an environment variable:
 
    ```bash
@@ -3689,7 +3699,6 @@ This is possible in a few ways:
    ```bash
    earthly +hello
    ```
-
 5. Via cloud-based secrets. This option helps share secrets within a wider team. To read more about this see the [cloud-based secrets guide](https://docs.earthly.dev/earthly-cloud/cloud-secrets).
 
 Regardless of the approach chosen from above, once earthly is invoked, in our example, it will output:
@@ -3713,6 +3722,7 @@ However, in the case of secrets, the contents of the secret *is not* included in
 Earthly stores the contents of command-line-supplied secrets in memory on the localhost. When a `RUN` command that requires a secret is evaluated by BuildKit, the BuildKit daemon will request the secret from the earthly command-line process and will temporarily mount the secret inside the runc container that is evaluating the `RUN` command. Once the command finishes the secret is unmounted. It will not persist as an environment variable within the saved container snapshot. Secrets will be kept in-memory until the earthly command exits.
 
 Earthly also supports cloud-based shared secrets which can be stored in the cloud. Secrets are never stored in the cloud unless a user creates an earthly account and explicitly calls the `earthly secrets set ...` command to transmit the secret to the earthly cloud-based secrets server. For more information about cloud-based secrets, check out our [cloud-based secrets management guide](https://docs.earthly.dev/earthly-cloud/cloud-secrets).
+
 
 # User-defined commands (UDCs)
 
@@ -3816,6 +3826,7 @@ Here is a comparison of the two primitives:
 | Can be used via in conjunction with an `IMPORT` (`IMPORT github.com/my-co/my-proj/some-import`) | ✅ - `FROM some-import+my-target`                                 | ✅ - `DO some-import+MY_UDC`                                                 |
 | Commands that can reference it                                                                  | `FROM`, `BUILD`, `COPY`, `WITH DOCKER --load`, `FROM DOCKERFILE` | `DO`                                                                        |
 
+
 # Managing cache
 
 Earthly cache works similarly to Dockerfile layer-based caching. In fact, the same [technology](https://github.com/moby/buildkit) is used underneath.
@@ -3878,6 +3889,7 @@ which restarts the daemon and resets the contents of the cache volume.
 
 * [Advanced local caching techniques](https://docs.earthly.dev/docs/guides/advanced-local-caching)
 * [Remote caching](https://docs.earthly.dev/docs/remote-caching)
+
 
 # Advanced local caching
 
@@ -3963,6 +3975,7 @@ To manage these situations you can elect to reset the cache of a build, by simpl
 Cache mounts are a leaky abstraction on top of the Earthly base principles by which nothing is shared. Although they are necessary to help optimize builds in some situations, care must be taken of possible edge cases whereby a build behaves differently because of the cache mount alone.
 
 To help minimize such edge cases, Earthly only shares cache mounts between repeated builds of the *same target*, **and** only if *the build args are the same between invocations*. For more information see the [`RUN --mount` option reference](https://docs.earthly.dev/earthfile#run).
+
 
 # Using Docker in Earthly
 
@@ -4051,7 +4064,6 @@ The current implementation of Docker in Earthly has a number of limitations:
           ...
   END
   ```
-
 * It is recommended that the target containing the `WITH DOCKER` clause inherits from a supported Docker-in-Docker (dind) image such as `earthly/dind:alpine` or `earthly/dind:ubuntu`. If your build requires the use of an alternative environment as part of a test (e.g. to run commands like `sbt test` or `go test` together with a docker-compose stack), consider placing the test itself in a Docker image, then loading that image via `--load` and running the test as a Docker container.
 * If you do not use an officially supported Docker-in-Docker image, Earthly will attempt to install Docker in whatever image you have chosen. This has the drawback of not being able to use cache efficiently and is not recommended for performance reasons.
 * To maximize the use of cache, all external images used should be declared via the options `--pull` or `--compose`. Even though commands such as `docker run` automatically pull an image if it is not found locally, it will do so every single time the `WITH DOCKER` clause is executed, due to Docker caching not being preserved between runs. Pre-declaring the images ensures that they are properly cached by Earthly to minimize unnecessary redownloads.
@@ -4102,6 +4114,7 @@ SAVE IMAGE my-image:latest
 * Reference for [`WITH DOCKER`](https://docs.earthly.dev/earthfile#with-docker)
 * [Debugging techniques](https://docs.earthly.dev/docs/guides/debugging)
 * [Tutorial on integration testing in Earthly](https://docs.earthly.dev/docs/guides/integration)
+
 
 # Integration Testing
 
@@ -4222,6 +4235,7 @@ There we have it, a reproducible integration process. If you have questions abou
 * [Source code for example](https://github.com/earthly/earthly/tree/main/examples/integration-test)
 * [Integration Testing vs Unit Testing](https://blog.earthly.dev/unit-vs-integration/)
 
+
 # Debugging techniques
 
 Traditional debugging of errors during image builds often require a developer to place various print commands through out the build commands to help reason about the state of the system before the failure occurs. This can be slow and cumbersome.
@@ -4292,7 +4306,7 @@ generate_phrase.py
 root@buildkitsandbox:/code# find / | grep sherlock.txt
 /sherlock.txt
 root@buildkitsandbox:/code# ls /
-bin  boot  code  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  sherlock.txt  srv sys  tmp  usr  var
+bin  boot  code  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  sherlock.txt  srv	sys  tmp  usr  var
 root@buildkitsandbox:/code# ls /sherlock.txt
 /sherlock.txt
 ```
@@ -4450,6 +4464,7 @@ If you ever want to jump into an interactive debugging session at any point in y
 and run earthly with the `--interactive` (or `-i`) flag.
 
 Hopefully you won't run into failures, but if you do the interactive debugger may help you discover the root cause more easily. Happy coding.
+
 
 # Multi-platform builds
 
@@ -4705,6 +4720,7 @@ build:
 
 The reason for this is that behind the scenes `WITH DOCKER` starts up an isolated Docker daemon running within a container, and docker-in-docker is not yet supported in a QEMU environment.
 
+
 # Podman
 
 [Podman](https://podman.io/) is an alternative to docker; it's a daemonless container engine for developing, managing and running OCI containers on a Linux system. Podman also works on Mac using a [podman machine](https://docs.podman.io/en/latest/markdown/podman-machine.1.html).
@@ -4878,7 +4894,9 @@ We've found installing [qemu-user-static](https://github.com/multiarch/qemu-user
 
 This can happen if you attempt to run (or the `ENTRYPOINT` references) a binary without the execution permission. <https://github.com/containers/podman/issues/9377> <https://github.com/signalwire/freeswitch/pull/1748>
 
+
 # Configuring registries
+
 
 # AWS ECR
 
@@ -5012,15 +5030,16 @@ If you get a message saying `basic credentials not found`; your distribution may
 
 ### 401 Unauthorized
 
-Double-check your AWS credentials, to ensure you have the correct ones set up. `aws configure` can help you do this. Also, check IAM to ensure you have the correct permissions (see the [IAM](#iam) section above). Finally, if you use IAM assumed roles, ensure that you have assumed the correct role in your terminal session.
+Double-check your AWS credentials, to ensure you have the correct ones set up. `aws configure` can help you do this. Also, check IAM to ensure you have the correct permissions (see the [IAM](#IAM) section above). Finally, if you use IAM assumed roles, ensure that you have assumed the correct role in your terminal session.
 
-If these are in order, the same fix from [Basic Credentials Not Found](#basic-credentials-not-found) may help.
+If these are in order, the same fix from [Basic Credentials Not Found](#Basic-Credentials-Not-Found) may help.
 
 If you are using a [pull-through-cache](https://docs.earthly.dev/ci-integration/pull-through-cache), the ECR credential helper may cause 401 failures when fetching metadata from the mirrored registry. You can solve this by manually logging in, instead of using the credential helper. Here is an example of logging in manually:
 
 ```
 aws ecr get-login-password | docker login --username AWS --password-stdin <aws_account_id>.dkr.ecr.<region>.amazonaws.com
 ```
+
 
 # GCP Artifact Registry
 
@@ -5128,6 +5147,7 @@ u/e/h/hello-earthly:with-love | [          ] resolve <region>-docker.pkg.dev/<pr
 
 ```
 
+
 # Azure ACR
 
 ## Introduction
@@ -5162,13 +5182,13 @@ After logging in, the [ACR Credential Helper](https://github.com/Azure/acr-docke
 
 ```
 {
- "auths": {
-  "helloearthly.azurecr.io": {
-   "auth": "...",
-   "identitytoken": "..."
-  }
- },
- "credsStore": "acr-linux"
+	"auths": {
+		"helloearthly.azurecr.io": {
+			"auth": "...",
+			"identitytoken": "..."
+		}
+	},
+	"credsStore": "acr-linux"
 }
 ```
 
@@ -5251,6 +5271,7 @@ h/hello-earthly:with-love | [██████████] resolve helloearthl
 
 Re-run `az acr login --name` to log in again and refresh your credentials. Azure recommends that you run this at the beginning o each automated script; keep this in mind for your CI runs.
 
+
 # Self-signed certificates
 
 This guide will demonstrate the use of a private registry using self-signed certificates in conjunction with Earthly.
@@ -5331,7 +5352,9 @@ global:
         cert="<cert-path-pem>"
 ```
 
+
 # Using the Earthly Docker Images
+
 
 # earthly/earthly
 
@@ -5461,6 +5484,7 @@ This is the easiest way to ensure you get the nice, colorized output from `earth
 | GIT\_URL\_INSTEAD\_OF                 |                                | Configure `git config --global url.<url>.insteadOf` rules to be used by `buildkitd`.                                                                                                                          |
 | IP\_TABLES                            |                                | Override which binary (`iptables_nft` or `iptables_legacy`) is used for configuring `ip_tables`. Only set this if autodetection fails for your platform.                                                      |
 
+
 # earthly/buildkitd
 
 This image contains `buildkit` with some Earthly-specific setup. This is what Earthly will start when using a local daemon. You can also start it up yourself and use it as a remote/shared BuildKit daemon.
@@ -5544,6 +5568,7 @@ When using this container locally with `earthly`, please note that setting `EART
 | GIT\_URL\_INSTEAD\_OF                 |                                | Configure `git config --global url.<url>.insteadOf` rules used by `buildkitd`                                                                                                |
 | IP\_TABLES                            |                                | Override which binary (`iptables_nft` or `iptables_legacy`) is used for configuring `ip_tables`. Only set this if autodetection fails for your platform.                     |
 
+
 # Remote runners
 
 Earthly supports running builds remotely via remote runners. Remote runners allow you to benefit from sharing the cache with other users of that remote runner. This is especially useful in CI environments where you want to share the cache between runs.
@@ -5576,6 +5601,7 @@ To get started with self-managed remote runners, see
 
 * The [remote buildkit page](https://docs.earthly.dev/ci-integration/remote-buildkit)
 * The [Kubernetes setup page](https://docs.earthly.dev/ci-integration/vendor-specific-guides/kubernetes)
+
 
 # Remote caching
 
@@ -5815,6 +5841,7 @@ Note however that there is small performance penalty for regularly checking the 
 ## Alternatives
 
 An alternative to using remote caching is to use [Earthly Remote Runners](https://docs.earthly.dev/docs/remote-runners) (a commercial version of remote runners is [Earthly Satellites](https://github.com/earthly/earthly/blob/docs-0.6/docs/cloud/satelllites.md)). Remote runners execute the build remotely, and this allows the cache to be located in close proximity to the execution, which is very efficient. Satellites are also significantly easier to set up, as the caching just works and there is no need for additional experimentation.
+
 
 # Earthfile reference
 
@@ -6815,7 +6842,6 @@ This option is deprecated. Please use `--load <image-name>=(<target-ref> --<buil
     <if-block>
   END
   ```
-
 * ```
   IF [<condition-options>...] <condition>
     <if-block>
@@ -6823,7 +6849,6 @@ This option is deprecated. Please use `--load <image-name>=(<target-ref> --<buil
     <else-block>
   END
   ```
-
 * ```
   IF [<condition-options>...] <condition>
     <if-block>
@@ -7376,6 +7401,7 @@ The classical [`ONBUILD` Dockerfile command](https://docs.docker.com/engine/refe
 
 The classical [`STOPSIGNAL` Dockerfile command](https://docs.docker.com/engine/reference/builder/#stopsignal) is not yet supported.
 
+
 # Builtin args
 
 Builtin args are variables with values automatically filled-in by Earthly.
@@ -7436,6 +7462,7 @@ The following builtin args are available
 The classical Dockerfile predefined args are currently not available in Earthly.
 {% endhint %}
 
+
 # Excluding patterns
 
 When a build takes place, the `earthly` command sends any necessary local build contexts to the BuildKit daemon. In order to avoid sending unwanted files, you may exclude certain patterns by specifying an `.earthlyignore` file.
@@ -7448,19 +7475,19 @@ Patterns of files to exclude from the build context are specified as one pattern
 
 ```
 pattern:
- { term }
+	{ term }
 term:
- '*'         matches any sequence of non-Separator characters
- '?'         matches any single non-Separator character
- '[' [ '^' ] { character-range } ']'
-             character class (must be non-empty)
- c           matches character c (c != '*', '?', '\\', '[')
- '\\' c      matches character c
+	'*'         matches any sequence of non-Separator characters
+	'?'         matches any single non-Separator character
+	'[' [ '^' ] { character-range } ']'
+	            character class (must be non-empty)
+	c           matches character c (c != '*', '?', '\\', '[')
+	'\\' c      matches character c
 
 character-range:
- c           matches character c (c != '\\', '-', ']')
- '\\' c      matches character c
- lo '-' hi   matches character c for lo <= c <= hi
+	c           matches character c (c != '\\', '-', ']')
+	'\\' c      matches character c
+	lo '-' hi   matches character c for lo <= c <= hi
 ```
 
 {% hint style="info" %}
@@ -7468,6 +7495,7 @@ character-range:
 
 Currently `.earthlyignore` is only applied to local targets. If an `.earthlyignore` file is specified within the context of a remote target, it will be silently ignored and exclusions would not take place.
 {% endhint %}
+
 
 # Version-specific features
 
@@ -7552,6 +7580,7 @@ When this feature is **disabled**, Earthly will output artifacts and images rega
 
 When enabled, Earthly will allow the use of `FOR ... IN ...` commands.
 
+
 # The earthly command
 
 ## earthly
@@ -7563,14 +7592,12 @@ When enabled, Earthly will allow the use of `FOR ... IN ...` commands.
   ```
   earthly [options...] <target-ref> [build-args...]
   ```
-
 * Artifact form
 
   ```
   earthly [options...] --artifact|-a <target-ref>/<artifact-path> [<dest-path>]
   earthly [options...] --artifact|-a (<target-ref>/<artifact-path> [build-args...]) [<dest-path>]
   ```
-
 * Image form
 
   ```
@@ -7882,7 +7909,6 @@ These options can only be set via environment variables, and have no command lin
   ```
   earthly [options] prune [--all|-a]
   ```
-
 * Reset form
 
   ```
@@ -8234,7 +8260,6 @@ Installs shell autocompletions during bootstrap. Requires `sudo` to install them
 * ```
   earthly --help
   ```
-
 * ```
   earthly <command> --help
   ```
@@ -8254,6 +8279,7 @@ Prints help information about earthly.
 #### Description
 
 Prints version information about earthly.
+
 
 # Configuration reference
 
@@ -8511,6 +8537,7 @@ If specified, a regular expression substitution will be performed to determine w
 
 See the [Authentication guide](https://docs.earthly.dev/docs/guides/auth) for a guide on setting up authentication with self-hosted git repositories.
 
+
 # Examples
 
 ## Examples of CI integration
@@ -8601,7 +8628,9 @@ earthly +all
 
 [![asciicast](https://asciinema.org/a/313845.svg)](https://asciinema.org/a/313845)
 
+
 # Misc
+
 
 # Alternative installation
 
@@ -8667,13 +8696,11 @@ Before installing Earthly, you must first set up the Earthly apt repo.
       gnupg \
       lsb-release
    ```
-
 2. Download Earthly's GPG key:
 
    ```bash
    curl -fsSL https://pkg.earthly.dev/earthly.pgp | sudo gpg --dearmor -o /usr/share/keyrings/earthly-archive-keyring.gpg
    ```
-
 3. Setup the stable repo:
 
    ```bash
@@ -8681,7 +8708,6 @@ Before installing Earthly, you must first set up the Earthly apt repo.
      "deb [arch=amd64 signed-by=/usr/share/keyrings/earthly-archive-keyring.gpg] https://pkg.earthly.dev/deb \
      stable main" | sudo tee /etc/apt/sources.list.d/earthly.list > /dev/null
    ```
-
 4. Install Earthly:
 
    ```bash
@@ -8698,7 +8724,6 @@ Fedora users can use our rpm repo to install Earthly.
    ```bash
    sudo dnf -y install dnf-plugins-core
    ```
-
 2. Add the Earthly repo to your system:
 
    ```bash
@@ -8706,7 +8731,6 @@ Fedora users can use our rpm repo to install Earthly.
        --add-repo \
        https://pkg.earthly.dev/earthly.repo
    ```
-
 3. Install Earthly:
 
    ```bash
@@ -8722,7 +8746,6 @@ CentOS users can use our rpm repo to install Earthly.
    ```bash
    sudo yum install -y yum-utils
    ```
-
 2. Add the Earthly repo to your system:
 
    ```bash
@@ -8730,7 +8753,6 @@ CentOS users can use our rpm repo to install Earthly.
        --add-repo \
        https://pkg.earthly.dev/earthly.repo
    ```
-
 3. Install Earthly:
 
    ```bash
@@ -8822,6 +8844,7 @@ docker rm --force earthly-buildkitd
 docker volume rm --force earthly-cache
 ```
 
+
 # Data collection
 
 By default, Earthly collects anonymized data which we use for measuring performance of the earthly command.
@@ -8855,6 +8878,7 @@ global:
 
 This option is documented in the [Earthly configuration file page](https://docs.earthly.dev/docs/earthly-config).
 
+
 # Definitions
 
 This page presents some common terms used throughout the earthly documentation. Understanding these terms with help you understand how to use earthly.
@@ -8873,6 +8897,7 @@ This page presents some common terms used throughout the earthly documentation. 
 
 * The [Earthfile reference](https://docs.earthly.dev/docs/earthfile)
 * The [earthly command reference](https://docs.earthly.dev/docs/earthly-command)
+
 
 # Public key authentication
 
@@ -8895,6 +8920,7 @@ Earthly accounts can be associated with any number of public keys (both `ssh-rsa
 The client first connects to the earthly server over a https connection; the client responds with a [cryptographically-secure random](https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator) blob of data. The client then passes that blob of data to the [ssh-agent](https://en.wikipedia.org/wiki/Ssh-agent) process, which must be running on your local host. This connection occurs by using the local unix-socket as set by the `SSH_AUTH_SOCK` environment variable. The ssh-agent signs the blob of data, and returns the signature -- **earthly will never read your private keys directly**.
 
 This signature is sent to the earthly server; if the signature can be verified using a registered public key, then the server responds with a [JSON Web Token (JWT)](https://en.wikipedia.org/wiki/JSON_Web_Token) which is used for the duration of your session.
+
 
 # Overview
 
@@ -9004,6 +9030,7 @@ Below are links to CI systems that we have more specific information for. If you
 * [GitLab CI/CD](https://docs.earthly.dev/ci-integration/vendor-specific-guides/gitlab-integration)
 * [Woodpecker CI](https://docs.earthly.dev/ci-integration/vendor-specific-guides/woodpecker-integration)
 
+
 # Use the Earthly CI Image
 
 ## Introduction
@@ -9081,6 +9108,7 @@ rm: can't remove '/var/earthly/dind/...': Resource busy
 ```
 
 For more information, see the [documentation for `earthly/earthly` on DockerHub](https://hub.docker.com/r/earthly/earthly).
+
 
 # Build your own Earthly CI Image
 
@@ -9192,6 +9220,7 @@ In EKS, users reported that mounting an EBS volume, instead of a Kubernetes `emp
 This part of our documentation needs improvement. If you have a Kubernetes-based setup, please [let us know](https://earthly.dev/slack) how you have mounted `/tmp/earthly` and whether `WITH DOCKER` worked well for you.
 
 For more information, see the [documentation for `earthly/earthly` on DockerHub](https://hub.docker.com/r/earthly/earthly).
+
 
 # Pull-Through Cache
 
@@ -9376,6 +9405,7 @@ You can force these settings to be applied, and verify the mirror appears in the
 earthly bootstrap && docker exec earthly-buildkitd cat /etc/buildkitd.toml
 ```
 
+
 # Remote BuildKit
 
 ## Introduction
@@ -9466,7 +9496,9 @@ It is also possible to use the remote protocols (TCP and mTLS) locally, while st
 
 By doing this, Earthly will (optionally) generate its own certificates, and connect to the daemon using `tcp://127.0.0.1:8372`. This is a great way to test some of the remote capabilities without having to generate certificates or manage a separate machine.
 
+
 # Vendor-Specific Guides
+
 
 # Jenkins
 
@@ -9585,6 +9617,7 @@ Also, ensure that you are using the correct port for TLS. In this image of our e
 
 If you are using an external `earthly-buildkitd` with Jenkins, [you should be using mTLS](https://docs.earthly.dev/ci-integration/remote-buildkit). You will need to add the keys and certificates used there as credentials too.
 
+
 # Circle CI
 
 Here is an example of a Circle CI build, where we build the Earthly target `+build`.
@@ -9606,6 +9639,7 @@ jobs:
 ```
 
 For a complete guide on CI integration see the [CI integration guide](https://docs.earthly.dev/ci-integration/overview).
+
 
 # GitHub Actions
 
@@ -9659,6 +9693,7 @@ For a complete guide on CI integration see the [CI integration guide](https://do
 The example deliberately does not use the [`ref`](https://github.com/actions/checkout#checkout-a-different-branch) `actions/checkout@v3` option, as it can lead to inconsistent builds where a user chooses to re-run an older commit which is no longer at the head of the branch.
 {% endhint %}
 
+
 # AWS CodeBuild
 
 Here is an example of an AWS CodeBuild build, where we build the Earthly target `+build`.
@@ -9688,6 +9723,7 @@ phases:
 ```
 
 For a complete guide on CI integration see the [CI integration guide](https://docs.earthly.dev/ci-integration/overview).
+
 
 # Kubernetes
 
@@ -9806,6 +9842,7 @@ When the example is complete, the cluster is left up and intact for exploration 
 ```go
 earthly ./kubernetes+clean
 ```
+
 
 # Google Cloud Build
 
@@ -9938,6 +9975,7 @@ availableSecrets:
     env: 'EARTHLY_TOKEN'
 ```
 
+
 # GitLab CI/CD
 
 This example uses [GitLab CI/CD](https://docs.gitlab.com/ee/ci/) to build the Earthly target `+build`.
@@ -9969,6 +10007,7 @@ A full example is available [on GitLab](https://gitlab.com/earthly-technologies/
 
 For a complete guide on CI integration see the [CI integration guide](https://docs.earthly.dev/ci-integration/overview).
 
+
 # Woodpecker CI
 
 This example uses [Woodpecker CI](https://woodpecker-ci.org/) to build the Earthly target `+build`.
@@ -9995,6 +10034,7 @@ pipeline:
 ```
 
 For a complete guide on CI integration see the [CI integration guide](https://docs.earthly.dev/ci-integration/overview).
+
 
 # Overview
 
@@ -10039,6 +10079,7 @@ earthly org invite /<org-name>/ <email>
 Note the slashes around the org name. Also, please note that **the user must have an account on Earthly before they can be invited**. (This is a temporary limitation which will be addressed in the future.)
 
 You can join an Earthly org by following the steps outlined in the invitation email sent to you by an Earthly admin.
+
 
 # Cloud secrets
 
@@ -10205,6 +10246,7 @@ Secrets are presented to BuildKit in a similar fashion as [locally-supplied secr
 ## Feedback
 
 The secrets store is still an experimental feature, we would love to hear feedback in our [Slack](https://earthly.dev/slack) community.
+
 
 # Satellites
 
@@ -10411,12 +10453,12 @@ before running your Earthly targets.
   earthly sat rm <satellite-name>
   earthly sat launch <satellite-name>
   ```
-
 * The output phase (the phase in which a satellite outputs build results back to the local machine) is slower than it could be. To work around this issue, you can make use of the `--no-output` flag (assuming that local outputs are not needed). You can even use `--no-output` in conjunction with `--push`. We are working on ways in which local outputs can be synchronized more intelligently such that only a diff is transferred over the network.
 * A user can only be invited into an Earthly org if they already have a user account. This is a temporary limitation which will be addressed in the future.
 * Satellites in conjunction with `--save-inline-cache` or `--use-inline-cache` is currently unsupported. When using `--ci`, the options `--save-inline-cache` and `--use-inline-cache` will not be implicitly enabled when using Satellites.
 
 If you run into any issues please let us know either via [Slack](https://earthly.dev/slack), [GitHub issues](https://github.com/earthly/earthly/issues) or by [emailing support](mailto:support+satellite@earthly.dev).
+
 
 # Managing Satellites
 
@@ -10571,6 +10613,7 @@ Once a user has been invited, you can forward them a link to the page [Using Sat
 
 The source IP address of the satellite for all internet traffic is `35.160.176.56`. This can be used for granting access to private resources or to production environments.
 
+
 # Using Satellites
 
 This feature is part of the Earthly Satellites paid plan.
@@ -10605,7 +10648,6 @@ If you are new to Earthly or to Earthly Cloud, you must:
   brew update
   brew upgrade earthly/earthly/earthly
   ```
-
 * Create an account by visiting the [Earthly CI website](https://ci.earthly.dev/) to log in with GitHub or by using `earthly account register --email <email>` in your terminal.
 * Either [create an Earthly organization](https://docs.earthly.dev/earthly-cloud/overview), or ask your Earthly admin to add you to an existing organization. In order to be added to an existing Earthly organization you need to first create an Earthly account as described above. To verify that you are part of an organization you can run:
 
@@ -10701,6 +10743,7 @@ Oftentimes, you will find that running a build with the flag `--no-output` execu
 
 The `--no-output` flag can still be combined with `--push`, thus allowing Earthly Satellites to be used as a highly performant deployment tool.
 
+
 # Introduction
 
 Earthly is a super simple CI/CD framework that gives you repeatable builds that you write once and run anywhere; has a simple, instantly recognizable syntax; and works with every language, framework, and build tool. With Earthly, you can create Docker images and build artifacts (e.g. binaries, packages, and arbitrary files).
@@ -10768,6 +10811,7 @@ A high-level overview is available on [the Earthly GitHub page](https://github.c
 * [Best practices](https://docs.earthly.dev/docs/guides/best-practices)
 * [Earthly Cloud documentation](https://docs.earthly.dev/earthly-cloud/overview)
 
+
 # Install Earthly
 
 ## Log In and Install
@@ -10783,6 +10827,7 @@ The logged-in experience gives you access to the following additional features:
 ## Install without Logging In
 
 If you prefer to install Earthly without logging in, head over to the [Get Earthly page](https://earthly.dev/get-earthly).
+
 
 # Learn the basics
 
@@ -10820,6 +10865,7 @@ If you have any questions, feedback or suggestions for Earthly or this tutorial 
 We will start the first lesson with a simple Earthfile.
 
 👉 [Part 1: A simple Earthfile](https://docs.earthly.dev/basics/part-1-a-simple-earthfile)
+
 
 # Part 1: A simple Earthfile
 
@@ -10873,7 +10919,7 @@ package main
 import "fmt"
 
 func main() {
- fmt.Println("hello world")
+	fmt.Println("hello world")
 }
 ```
 
@@ -11127,6 +11173,7 @@ print("hello world")
 ```
 
 </details>
+
 
 # Part 2: Outputs
 
@@ -11447,6 +11494,7 @@ print("hello world")
 
 </details>
 
+
 # Part 3: Adding dependencies With Caching
 
 To copy the files for [this example ( Part 3 )](https://github.com/earthly/earthly/tree/main/examples/tutorial/go/part3) run
@@ -11486,7 +11534,7 @@ package main
 import "github.com/sirupsen/logrus"
 
 func main() {
- logrus.Info("hello world")
+	logrus.Info("hello world")
 }
 ```
 
@@ -11694,6 +11742,7 @@ docker:
 ```
 
 </details>
+
 
 # Part 4: Args
 
@@ -11904,6 +11953,7 @@ docker:
 ```
 
 </details>
+
 
 # Part 5: Importing
 
@@ -12121,6 +12171,7 @@ docker:
 
 </details>
 
+
 # Part 6: Using Docker In Earthly
 
 To copy the files for [this example ( Part 6 )](https://github.com/earthly/earthly/tree/main/examples/tutorial/go/part6) run
@@ -12203,13 +12254,13 @@ networks:
 package main
 
 import (
- "github.com/sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 )
 
 var howCoolIsEarthly = "IceCool"
 
 func main() {
- logrus.Info("hello world")
+	logrus.Info("hello world")
 }
 ```
 
@@ -12219,31 +12270,31 @@ func main() {
 package main
 
 import (
- "context"
- "testing"
+	"context"
+	"testing"
 
- "github.com/go-redis/redis/v8"
- "github.com/stretchr/testify/require"
+	"github.com/go-redis/redis/v8"
+	"github.com/stretchr/testify/require"
 )
 
 func TestIntegration(t *testing.T) {
- ctx := context.Background()
- rdb := redis.NewClient(&redis.Options{
-  Addr:     "redis:6379",
-  Password: "", // no password set
-  DB:       0,  // use default DB
- })
+	ctx := context.Background()
+	rdb := redis.NewClient(&redis.Options{
+		Addr:     "redis:6379",
+		Password: "", // no password set
+		DB:       0,  // use default DB
+	})
 
- err := rdb.Set(ctx, "howCoolIsEarthly", howCoolIsEarthly, 0).Err()
- if err != nil {
-  panic(err)
- }
+	err := rdb.Set(ctx, "howCoolIsEarthly", howCoolIsEarthly, 0).Err()
+	if err != nil {
+		panic(err)
+	}
 
- resultFromDB, err := rdb.Get(ctx, "howCoolIsEarthly").Result()
- if err != nil {
-  panic(err)
- }
- require.Equal(t, howCoolIsEarthly, resultFromDB)
+	resultFromDB, err := rdb.Get(ctx, "howCoolIsEarthly").Result()
+	if err != nil {
+		panic(err)
+	}
+	require.Equal(t, howCoolIsEarthly, resultFromDB)
 }
 ```
 
@@ -12345,7 +12396,7 @@ function component() {
       element.innerHTML = `hello world <b>${users[0].first_name} ${users[0].last_name}</b>`
     })
 
- return element;
+	return element;
 }
 
 document.body.appendChild(component());
@@ -12714,6 +12765,7 @@ run-tests:
 
 </details>
 
+
 # Part 7: Using remote runners
 
 Earthly has the ability to run builds both locally and remotely. In this section, we will explore how to use remote runners to perform builds on remote machines.
@@ -12786,6 +12838,7 @@ Any secret that is available locally, including Docker/Podman credentials, will 
 
 For more information about secrets, see the [Args and secrets page](https://docs.earthly.dev/docs/guides/build-args) and the [authenticating Git and image registries page](https://docs.earthly.dev/docs/guides/auth).
 
+
 # Part 8a: Using Earthly in your current CI
 
 In this section, we will explore how to use Earthly in a CI system, such as GitHub Actions.
@@ -12847,6 +12900,7 @@ Here is an explanation of the steps above:
 
 For more information about integrating Earthly with other CI systems, you can check out the [CI Integration page](https://docs.earthly.dev/ci-integration/overview).
 
+
 # Final words
 
 Congratulations, you completed the Earthly tutorial!
@@ -12887,11 +12941,13 @@ If you have any questions, feedback or suggestions for Earthly or this tutorial 
 * [Part 8: Using Earthly in CI](https://docs.earthly.dev/basics/part-8a-using-earthly-in-your-current-ci)
 * **Final words** <-- You are here.
 
+
 # Featured guides
 
 Earthly works with any programming language, as shown in our extensive collection of [examples](https://docs.earthly.dev/docs/examples). However, we are now working on a series of [language-specific libraries](https://docs.earthly.dev/docs/earthly-lib) that make Earthly that much easier to use with various languages and frameworks. To that end, we are starting with [Rust](https://docs.earthly.dev/featured-guides/rust).
 
 If you are just starting out, the [onboarding tutorial in Earthly Cloud](https://cloud.earthly.dev/login) is a great way to get introduced to Earthly.
+
 
 # Rust
 
@@ -12949,7 +13005,9 @@ For a complete Earthfile example on how to use Rust in Earthly, visit the [rust 
 
 See also the reference documentation for [lib/rust](https://github.com/earthly/lib/tree/main/rust), to understand the different parameters used with `rust+INIT` and `rust+CARGO`.
 
+
 # Guides
+
 
 # Importing
 
@@ -13171,6 +13229,7 @@ For example, depending on where the files are stored, the `+build` target could 
 
 If no Git context is detected by Earthly, then the target does not have a canonical form.
 
+
 # Build arguments and secrets
 
 ## Introduction
@@ -13255,7 +13314,6 @@ Argument values can be set multiple ways:
    ```
    earthly +hello --HELLO=world --FOO=bar
    ```
-
 2. From environment variables
 
    Similar to above, except that the value is an environment variable:
@@ -13265,7 +13323,6 @@ Argument values can be set multiple ways:
    export FOO="bar"
    earthly +hello --HELLO="$HELLO" --FOO="$FOO"
    ```
-
 3. Via the `EARTHLY_BUILD_ARGS` environment variable
 
    The value can also be set via the `EARTHLY_BUILD_ARGS` environment variable.
@@ -13381,7 +13438,6 @@ This is possible in a few ways:
    ```bash
    earthly --secret passwd=itsasecret +hush
    ```
-
 2. Via an environment variable:
 
    ```bash
@@ -13411,7 +13467,6 @@ This is possible in a few ways:
    ```bash
    earthly +hello
    ```
-
 5. Via cloud-based secrets. This option helps share secrets within a wider team. To read more about this see the [cloud-based secrets guide](https://docs.earthly.dev/earthly-cloud/cloud-secrets).
 
 Regardless of the approach chosen from above, once earthly is invoked, in our example, it will output:
@@ -13435,6 +13490,7 @@ However, in the case of secrets, the contents of the secret *is not* included in
 Earthly stores the contents of command-line-supplied secrets in memory on the localhost. When a `RUN` command that requires a secret is evaluated by BuildKit, the BuildKit daemon will request the secret from the earthly command-line process and will temporarily mount the secret inside the runc container that is evaluating the `RUN` command. Once the command finishes the secret is unmounted. It will not persist as an environment variable within the saved container snapshot. Secrets will be kept in-memory until the earthly command exits.
 
 Earthly also supports cloud-based shared secrets which can be stored in the cloud. Secrets are never stored in the cloud unless a user creates an earthly account and explicitly calls the `earthly secrets set ...` command to transmit the secret to the earthly cloud-based secrets server. For more information about cloud-based secrets, check out our [cloud-based secrets management guide](https://docs.earthly.dev/earthly-cloud/cloud-secrets).
+
 
 # Functions
 
@@ -13542,6 +13598,7 @@ Here is a comparison of the two primitives:
 | Can be used in conjunction with an `IMPORT`    | ✅ - `FROM some-import+my-target`                                 | ✅ - `DO some-import+MY_FUNCTION`                                            |
 | Commands that can reference it                 | `FROM`, `BUILD`, `COPY`, `WITH DOCKER --load`, `FROM DOCKERFILE` | `DO`                                                                        |
 
+
 # Using Docker in Earthly
 
 This guide walks through using Docker commands in Earthly.
@@ -13646,7 +13703,6 @@ The current implementation of Docker in Earthly has a number of limitations:
           ...
   END
   ```
-
 * It is recommended that the target containing the `WITH DOCKER` clause inherits from a supported Docker-in-Docker (dind) image such as `earthly/dind:alpine-3.18-docker-23.0.6-r4` or `earthly/dind:ubuntu-23.04-docker-24.0.5-1`. If your build requires the use of an alternative environment as part of a test (e.g. to run commands like `sbt test` or `go test` together with a docker-compose stack), consider placing the test itself in a Docker image, then loading that image via `--load` and running the test as a Docker container.
 * If you do not use an officially supported Docker-in-Docker image, Earthly will attempt to install Docker in whatever image you have chosen. This has the drawback of not being able to use cache efficiently and is not recommended for performance reasons.
 * To maximize the use of cache, all external images used should be declared via the options `--pull` or `--compose`. Even though commands such as `docker run` automatically pull an image if it is not found locally, it will do so every single time the `WITH DOCKER` clause is executed, due to Docker caching not being preserved between runs. Pre-declaring the images ensures that they are properly cached by Earthly to minimize unnecessary redownloads.
@@ -13698,6 +13754,7 @@ SAVE IMAGE my-image:latest
 * Reference for [`WITH DOCKER`](https://docs.earthly.dev/earthfile#with-docker)
 * [Debugging techniques](https://docs.earthly.dev/docs/guides/debugging)
 * [Tutorial on integration testing in Earthly](https://docs.earthly.dev/docs/guides/integration)
+
 
 # Multi-platform builds
 
@@ -13959,6 +14016,7 @@ build:
 
 The reason for this is that behind the scenes `WITH DOCKER` starts up an isolated Docker daemon running within a container, and docker-in-docker is not yet supported in a QEMU environment.
 
+
 # Authenticating Git and image registries
 
 This page guides you through passing Git and Docker authentication to Earthly builds, to empower related Earthly features, like `GIT CLONE` or `FROM`.
@@ -14148,6 +14206,7 @@ You can see examples of configuring Docker to use these, and working with Earthl
 
 * The [earthly command reference](https://docs.earthly.dev/docs/earthly-command)
 
+
 # Integration Testing
 
 Running unit tests in a build pipeline is relatively simple. By definition, unit tests have no external dependencies. Things get more interesting when we want to test how our service integrates with other services and external systems. A service may have dependencies on external file systems, on databases, on external message queues, or other services. An ergonomic and effective development environment should have simple ways to construct and run integration tests. It should be easy to run these tests locally on the developer machine and in the build pipeline.
@@ -14267,6 +14326,7 @@ There we have it, a reproducible integration process. If you have questions abou
 * [Source code for example](https://github.com/earthly/earthly/tree/main/examples/integration-test)
 * [Integration Testing vs Unit Testing](https://blog.earthly.dev/unit-vs-integration/)
 
+
 # Debugging techniques
 
 Traditional debugging of errors during image builds often require a developer to place various print commands through out the build commands to help reason about the state of the system before the failure occurs. This can be slow and cumbersome.
@@ -14337,7 +14397,7 @@ generate_phrase.py
 root@buildkitsandbox:/code# find / | grep sherlock.txt
 /sherlock.txt
 root@buildkitsandbox:/code# ls /
-bin  boot  code  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  sherlock.txt  srv sys  tmp  usr  var
+bin  boot  code  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  sherlock.txt  srv	sys  tmp  usr  var
 root@buildkitsandbox:/code# ls /sherlock.txt
 /sherlock.txt
 ```
@@ -14495,6 +14555,7 @@ If you ever want to jump into an interactive debugging session at any point in y
 and run earthly with the `--interactive` (or `-i`) flag.
 
 Hopefully you won't run into failures, but if you do the interactive debugger may help you discover the root cause more easily. Happy coding.
+
 
 # Podman
 
@@ -14669,7 +14730,9 @@ We've found installing [qemu-user-static](https://github.com/multiarch/qemu-user
 
 This can happen if you attempt to run (or the `ENTRYPOINT` references) a binary without the execution permission. <https://github.com/containers/podman/issues/9377> <https://github.com/signalwire/freeswitch/pull/1748>
 
+
 # Configuring registries
+
 
 # AWS ECR
 
@@ -14803,15 +14866,16 @@ If you get a message saying `basic credentials not found`; your distribution may
 
 ### 401 Unauthorized
 
-Double-check your AWS credentials, to ensure you have the correct ones set up. `aws configure` can help you do this. Also, check IAM to ensure you have the correct permissions (see the [IAM](#iam) section above). Finally, if you use IAM assumed roles, ensure that you have assumed the correct role in your terminal session.
+Double-check your AWS credentials, to ensure you have the correct ones set up. `aws configure` can help you do this. Also, check IAM to ensure you have the correct permissions (see the [IAM](#IAM) section above). Finally, if you use IAM assumed roles, ensure that you have assumed the correct role in your terminal session.
 
-If these are in order, the same fix from [Basic Credentials Not Found](#basic-credentials-not-found) may help.
+If these are in order, the same fix from [Basic Credentials Not Found](#Basic-Credentials-Not-Found) may help.
 
 If you are using a [pull-through-cache](https://docs.earthly.dev/ci-integration/pull-through-cache), the ECR credential helper may cause 401 failures when fetching metadata from the mirrored registry. You can solve this by manually logging in, instead of using the credential helper. Here is an example of logging in manually:
 
 ```
 aws ecr get-login-password | docker login --username AWS --password-stdin <aws_account_id>.dkr.ecr.<region>.amazonaws.com
 ```
+
 
 # GCP Artifact Registry
 
@@ -14919,6 +14983,7 @@ u/e/h/hello-earthly:with-love | [          ] resolve <region>-docker.pkg.dev/<pr
 
 ```
 
+
 # Azure ACR
 
 ## Introduction
@@ -14953,13 +15018,13 @@ After logging in, the [ACR Credential Helper](https://github.com/Azure/acr-docke
 
 ```
 {
- "auths": {
-  "helloearthly.azurecr.io": {
-   "auth": "...",
-   "identitytoken": "..."
-  }
- },
- "credsStore": "acr-linux"
+	"auths": {
+		"helloearthly.azurecr.io": {
+			"auth": "...",
+			"identitytoken": "..."
+		}
+	},
+	"credsStore": "acr-linux"
 }
 ```
 
@@ -15042,6 +15107,7 @@ h/hello-earthly:with-love | [██████████] resolve helloearthl
 
 Re-run `az acr login --name` to log in again and refresh your credentials. Azure recommends that you run this at the beginning o each automated script; keep this in mind for your CI runs.
 
+
 # Self-signed certificates
 
 This guide will demonstrate the use of a private registry using self-signed certificates in conjunction with Earthly.
@@ -15122,7 +15188,9 @@ global:
         cert="<cert-path-pem>"
 ```
 
+
 # Using the Earthly Docker Images
+
 
 # earthly/earthly
 
@@ -15251,6 +15319,7 @@ This is the easiest way to ensure you get the nice, colorized output from `earth
 | GIT\_URL\_INSTEAD\_OF                 |                                | Configure `git config --global url.<url>.insteadOf` rules to be used by `buildkitd`.                                                                                                                          |
 | IP\_TABLES                            |                                | Override which binary (`iptables_nft` or `iptables_legacy`) is used for configuring `ip_tables`. Only set this if autodetection fails for your platform.                                                      |
 
+
 # earthly/buildkitd
 
 This image contains `buildkit` with some Earthly-specific setup. This is what Earthly will start when using a local daemon. You can also start it up yourself and use it as a remote/shared BuildKit daemon.
@@ -15332,6 +15401,7 @@ When using this container locally with `earthly`, please note that setting `EART
 | CACHE\_SIZE\_MB                       | `0`                            | How big should the `buildkitd` cache be allowed to get, in MiB? 0 is unbounded.                                                                                              |
 | GIT\_URL\_INSTEAD\_OF                 |                                | Configure `git config --global url.<url>.insteadOf` rules used by `buildkitd`                                                                                                |
 | IP\_TABLES                            |                                | Override which binary (`iptables_nft` or `iptables_legacy`) is used for configuring `ip_tables`. Only set this if autodetection fails for your platform.                     |
+
 
 # Best practices
 
@@ -16555,6 +16625,7 @@ We are aware of the lack of capability here. Please follow GitHub issues [#988](
 
 There are currently workarounds for this (see [this comment](https://github.com/earthly/earthly/issues/988#issuecomment-870504677) and [this comment](https://github.com/earthly/earthly/issues/988#issuecomment-981088796)), however they have significant limitations.
 
+
 # Caching
 
 Caching is at the heart of how Earthly works. It is what makes Earthly builds fast. This page provides a high-level understanding of the main concepts.
@@ -16629,6 +16700,7 @@ To read more, check out the [remote runners page](https://docs.earthly.dev/docs/
 ## Managing Cache
 
 For information on how to manage cache either locally, or on a remote runner, like a satellite, see the [Managing Cache guide](https://docs.earthly.dev/docs/caching/managing-cache).
+
 
 # Caching in Earthfiles
 
@@ -16849,6 +16921,7 @@ If you have already optimized your cache by maximizing its size, declaring argum
 
 If you are experiencing caching issues and have ruled out the above common situations, we would love to hear from you. Please open an issue in the [Earthly GitHub repository](https://github.com/earthly/earthly).
 
+
 # Managing cache
 
 This page describes how to manage the Earthly cache locally or on a remote runner, such as an Earthly Satellite.
@@ -16928,6 +17001,7 @@ To clear the auto-skip cache for an entire repository, you can use the command `
 
 To clear the auto-skip cache for a specific target, you can use the command `earthly prune-auto-skip --path github.com/foo/bar --target +my-target`.
 
+
 # Caching via remote runners
 
 Caching via remote runners (such as Earthly Satellites) works by simply reusing the same runner for multiple builds. The runner retains the cache between executions, and thus is able to perform significantly better than any caching mechanism that relies on upload and download. There is nothing special that needs to be configured for this to work. All of the features of caching in Earthly work as expected, including layer caching and cache mounts.
@@ -16936,6 +17010,10 @@ Remote runners can be either self-hosted, or managed by Earthly - see [Earthly S
 
 The [managing cache page](https://docs.earthly.dev/docs/caching/managing-cache) contains information about how to reset the cache remotely, if needed.
 
+
+
+
 ---
 
 [Next Page](/llms-full.txt/1)
+

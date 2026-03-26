@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-focus-within.md
 
 # useFocusWithin
-
 Package: @mantine/hooks
 Import: import { UseFocusWithin } from '@mantine/hooks';
 
@@ -9,6 +8,8 @@ Import: import { UseFocusWithin } from '@mantine/hooks';
 
 `use-focus-within` hook detects if any element within the other element has focus.
 It works the same way as `:focus-within` CSS selector:
+
+
 
 ## Definition
 

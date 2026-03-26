@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/form-uncontrolled.md
 
 # formUncontrolled
-
 Package: @mantine/form
 Import: import { FormUncontrolled } from '@mantine/form';
 
@@ -49,6 +48,7 @@ function Demo() {
   );
 }
 ```
+
 
 As you can see in the example above, `form.values` update on every change. This
 means that every component that uses `form.values` will rerender on every change.
@@ -111,6 +111,7 @@ function Demo() {
   );
 }
 ```
+
 
 As you can see in the example above, `form.values` do not update at all.
 

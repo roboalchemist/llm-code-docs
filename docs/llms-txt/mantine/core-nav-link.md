@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-nav-link.md
 
 # NavLink
-
 Package: @mantine/core
 Import: import { NavLink } from '@mantine/core';
 Description: Navigation link
@@ -80,6 +79,7 @@ function Demo() {
 }
 ```
 
+
 ## Active
 
 Set `active` prop to add active styles to `NavLink`.
@@ -128,6 +128,7 @@ function Demo() {
 }
 ```
 
+
 <AutoContrast component="NavLink" />
 
 ## autoContrast
@@ -150,6 +151,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Nested NavLinks
 
@@ -194,6 +196,7 @@ function Demo() {
   );
 }
 ```
+
 
 <Polymorphic defaultElement="a" changeToElement="button" component="NavLink" withNext />
 
@@ -240,6 +243,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -261,6 +265,7 @@ function Demo() {
 | onKeyDown | KeyboardEventHandler<HTMLElement> | - | Called on keydown of the root element |
 | opened | boolean | - | Controlled nested items collapse state |
 | rightSection | React.ReactNode | - | Section displayed on the right side of the label |
+
 
 #### Styles API
 

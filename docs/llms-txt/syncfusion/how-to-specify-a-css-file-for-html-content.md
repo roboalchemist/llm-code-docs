@@ -1,0 +1,43 @@
+# Source: https://docs.syncfusion.com/windowsforms/html-viewer/faq/how-to-specify-a-css-file-for-html-content.md
+
+# How to specify a CSS file for HTML content?
+
+Style sheets contain the styles to be applied for the elements in the HTML document. HTMLUI supports the use of styles in three modes:
+
+
+
+* Inline style sheet (inside an HTML element).
+* Internal style sheet (inside the tag).
+* External style sheet (as a separate file).
+
+
+
+The HTMLUI control supports formatting the HTML document with style sheets at run time. The [LoadCSS](https://help.syncfusion.com/cr/windowsforms/Syncfusion.Windows.Forms.HTMLUI.HTMLUIControl.html#Syncfusion_Windows_Forms_HTMLUI_HTMLUIControl_LoadCSS_System_IO_Stream_) method of the HTMLUI control loads the styles from the specified CSS and refreshes the current document on the HTMLUI control with the applied styles.
+
+{% tabs %}
+
+{% highlight C# %}
+
+
+
+// Loads styles from the specified CSS document from a System.IO.Stream and refresh the current
+
+// document using the styles
+
+this.htmluiControl1.LoadCSS(@"C:\MyProjects\LoadCSS\style.css");
+
+{% endhighlight %}
+
+{% highlight VB %}
+
+
+
+'  Loads styles from the specified CSS document from a System.IO.Stream and refresh the current
+
+' document using the stylesÂ 
+
+Me.HtmluiControl1.LoadCSS("C:\MyProjects\LoadCSS\style.css")
+
+{% endhighlight %}
+
+{% endtabs %}

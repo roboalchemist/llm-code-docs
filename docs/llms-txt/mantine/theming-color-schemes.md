@@ -65,6 +65,7 @@ function Demo() {
 }
 ```
 
+
 ## use-computed-color-scheme hook
 
 `useComputedColorScheme` returns a computed color scheme value, it returns either `light` or `dark`.
@@ -152,6 +153,7 @@ function Demo() {
   );
 }
 ```
+
 
 > **colorScheme for client only applications**
 >
@@ -389,6 +391,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## With disabled JavaScript
 

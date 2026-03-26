@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-textarea.md
 
 # Textarea
-
 Package: @mantine/core
 Import: import { Textarea } from '@mantine/core';
 Description: Autosize or regular textarea
@@ -27,6 +26,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Controlled
 
@@ -77,6 +77,7 @@ function Demo() {
 }
 ```
 
+
 ## Enable resize
 
 By default, [resize](https://developer.mozilla.org/en-US/docs/Web/CSS/resize) is `none`,
@@ -91,6 +92,7 @@ function Demo() {
   return <Textarea resize="vertical" label="Disabled" placeholder="Your comment" />;
 }
 ```
+
 
 ## Error state
 
@@ -114,6 +116,7 @@ function Demo() {
 }
 ```
 
+
 ## Disabled state
 
 #### Example: disabled
@@ -125,6 +128,7 @@ function Demo() {
   return <Textarea label="Disabled" placeholder="Your comment" disabled />;
 }
 ```
+
 
 #### Example: stylesApi
 
@@ -148,6 +152,7 @@ function Demo() {
 }
 ```
 
+
 <GetElementRef component="Textarea" refType="textarea" />
 
 ## Get element ref
@@ -167,6 +172,7 @@ function Demo() {
 ## Accessibility
 
 Textarea provides better accessibility support when used in forms. Make sure to associate the input with a label for better screen reader support.
+
 
 #### Props
 
@@ -201,6 +207,7 @@ Textarea provides better accessibility support when used in forms. Make sure to 
 | withAsterisk | boolean | - | If set, the required asterisk is displayed next to the label. Overrides <code>required</code> prop. Does not add required attribute to the input. |
 | withErrorStyles | boolean | - | Determines whether the input should have red border and red text color when the <code>error</code> prop is set |
 | wrapperProps | WrapperProps | - | Props passed down to the root element |
+
 
 #### Styles API
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-table-of-contents.md
 
 # TableOfContents
-
 Package: @mantine/core
 Import: import { TableOfContents } from '@mantine/core';
 Description: Renders a list of headings on the page and tracks current heading visible in the viewport
@@ -33,6 +32,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## use-scroll-spy options
 
@@ -136,6 +136,7 @@ function Demo() {
 }
 ```
 
+
 <AutoContrast component="TableOfContents" />
 
 ## autoContrast
@@ -166,6 +167,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Styles API
 
@@ -209,6 +211,7 @@ function Demo() {
 }
 ```
 
+
 ## Reinitialize
 
 By default, `TableOfContents` does not track changes in the DOM. If you want
@@ -230,6 +233,7 @@ function Demo({ dependency }) {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -244,6 +248,7 @@ function Demo({ dependency }) {
 | reinitializeRef | RefObject<() => void> | - | A function to reinitialize headings from <code>use-scroll-spy</code> hook |
 | scrollSpyOptions | UseScrollSpyOptions | - | Options passed down to <code>use-scroll-spy</code> hook |
 | size | number | MantineSize | (string & {}) | - | Controls font-size and padding of all elements |
+
 
 #### Styles API
 

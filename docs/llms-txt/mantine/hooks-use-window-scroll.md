@@ -1,13 +1,14 @@
 # Source: https://mantine.dev/llms/hooks-use-window-scroll.md
 
 # useWindowScroll
-
 Package: @mantine/hooks
 Import: import { UseWindowScroll } from '@mantine/hooks';
 
 ## Usage
 
 `use-window-scroll` returns current scroll position and a function to scroll smoothly to given position:
+
+
 
 ## Definition
 

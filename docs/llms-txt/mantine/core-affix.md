@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-affix.md
 
 # Affix
-
 Package: @mantine/core
 Import: import { Affix } from '@mantine/core';
 Description: Renders children inside portal at fixed position
@@ -42,6 +41,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -50,6 +51,7 @@ function Demo() {
 | position | AffixPosition | - | Affix position on screen |
 | withinPortal | boolean | - | Determines whether the component is rendered within <code>Portal</code> |
 | zIndex | React.CSSProperties["zIndex"] | - | Root element <code>z-index</code> property |
+
 
 #### Styles API
 

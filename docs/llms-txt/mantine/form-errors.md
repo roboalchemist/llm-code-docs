@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/form-errors.md
 
 # formErrors
-
 Package: @mantine/form
 Import: import { FormErrors } from '@mantine/form';
 

@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/charts-getting-started.md
 
 # GettingStartedCharts
-
 Package: @mantine/charts
 Import: import { GettingStartedCharts } from '@mantine/charts';
 

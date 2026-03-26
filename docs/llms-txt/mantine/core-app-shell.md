@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-app-shell.md
 
 # AppShell
-
 Package: @mantine/core
 Import: import { AppShell } from '@mantine/core';
 Description: Responsive shell for your application with header, navbar, aside and footer
@@ -467,6 +466,7 @@ Example of using CSS variables in styles:
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -484,6 +484,7 @@ Example of using CSS variables in styles:
 | transitionTimingFunction | TransitionTimingFunction | - | Timing function of all transitions |
 | withBorder | boolean | - | If set, the associated components have a border |
 | zIndex | string | number | - | <code>z-index</code> of all associated elements |
+
 
 #### Styles API
 

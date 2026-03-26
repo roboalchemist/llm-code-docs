@@ -1,13 +1,16 @@
 # Source: https://mantine.dev/llms/hooks-use-mouse.md
 
 # useMouse
-
 Package: @mantine/hooks
 Import: import { UseMouse } from '@mantine/hooks';
 
 ## Usage
 
+
+
 If you do not provide `ref`, mouse position is tracked relative to the document element:
+
+
 
 ## API
 

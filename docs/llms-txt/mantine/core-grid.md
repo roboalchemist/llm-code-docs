@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-grid.md
 
 # Grid
-
 Package: @mantine/core
 Import: import { Grid } from '@mantine/core';
 Description: Responsive 12 columns grid system
@@ -23,6 +22,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Columns span
 
@@ -63,6 +63,7 @@ function Demo() {
 }
 ```
 
+
 ## Gutter
 
 Set `gutter` prop to control spacing between columns. The prop works the same
@@ -86,6 +87,7 @@ function Demo() {
 }
 ```
 
+
 ## Grow
 
 If `grow` prop is set, column will grow to fill the remaining space in the row:
@@ -108,6 +110,7 @@ function Demo() {
 }
 ```
 
+
 ## Column offset
 
 Set `offset` prop on `Grid.Col` component to add gaps to the grid. `offset` prop
@@ -129,6 +132,7 @@ function Demo() {
 }
 ```
 
+
 ## Order
 
 Set the `order` prop on `Grid.Col` component to change the order of columns. `order` prop
@@ -149,6 +153,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Multiple rows
 
@@ -172,6 +177,7 @@ function Demo() {
 }
 ```
 
+
 ## Justify and align
 
 You can control `justify-content` and `align-items` CSS properties with `justify` and `align` props on `Grid` component:
@@ -191,6 +197,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Auto sized columns
 
@@ -213,6 +220,7 @@ function Demo() {
 }
 ```
 
+
 ## Fit column content
 
 If you set `span="content"`, the column's size will automatically adjust to match the width of its content:
@@ -231,6 +239,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Change columns count
 
@@ -254,6 +263,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Container queries
 
@@ -291,6 +301,7 @@ function Demo() {
 }
 ```
 
+
 ## overflow: hidden
 
 By default, `Grid` has `overflow: visible` style on the root element. In some cases
@@ -311,6 +322,7 @@ function Demo() {
 }
 ```
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -323,6 +335,7 @@ function Demo() {
 | justify | JustifyContent | - | Sets <code>justify-content</code> |
 | overflow | Overflow | - | Sets <code>overflow</code> CSS property on the root element |
 | type | "media" | "container" | - | Type of queries used for responsive styles |
+
 
 #### Styles API
 

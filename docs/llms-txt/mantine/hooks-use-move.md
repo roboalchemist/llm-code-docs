@@ -1,13 +1,14 @@
 # Source: https://mantine.dev/llms/hooks-use-move.md
 
 # useMove
-
 Package: @mantine/hooks
 Import: import { UseMove } from '@mantine/hooks';
 
 ## Usage
 
 `use-move` handles move behavior over any element:
+
+
 
 ## API
 
@@ -28,6 +29,8 @@ const {
 ## Horizontal slider
 
 You can ignore changes for one of the axis:
+
+
 
 ## Horizontal slider with styles
 
@@ -166,11 +169,16 @@ function Demo() {
 }
 ```
 
+
 ## Vertical slider
 
 Moving the slider down increases the value, to reverse that set value to `1 - y` in your `setValue` function:
 
+
+
 ## Color picker
+
+
 
 ## clampUseMovePosition
 

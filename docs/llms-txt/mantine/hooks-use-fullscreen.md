@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-fullscreen.md
 
 # useFullscreen
-
 Package: @mantine/hooks
 Import: import { UseFullscreen } from '@mantine/hooks';
 
@@ -10,10 +9,14 @@ Import: import { UseFullscreen } from '@mantine/hooks';
 `use-fullscreen` allows to enter/exit fullscreen for given element using the [Fullscreen API](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API).
 By default, if you don't provide `ref`, the hook will target `document.documentElement`:
 
+
+
 ## Custom target element
 
 The hook returns an optional `ref` function that can be passed to an element to act as root.
 Be sure to follow best practices to not [confuse or trap the end user](https://developer.mozilla.org/en-US/docs/Web/API/Fullscreen_API/Guide#things_your_users_want_to_know):
+
+
 
 ## Mobile Safari limitations
 

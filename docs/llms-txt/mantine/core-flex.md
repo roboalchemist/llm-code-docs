@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-flex.md
 
 # Flex
-
 Package: @mantine/core
 Import: import { Flex } from '@mantine/core';
 Description: Compose elements in a flex container
@@ -28,6 +27,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Supported props
 
@@ -57,6 +57,7 @@ function Demo() {
 }
 ```
 
+
 ## Difference from Group and Stack
 
 `Flex` component is an alternative to [Group](https://mantine.dev/core/group/) and [Stack](https://mantine.dev/core/stack/).
@@ -69,6 +70,7 @@ Unlike [Group](https://mantine.dev/core/group/) and [Stack](https://mantine.dev/
 
 Flex component uses CSS flexbox gap to add spacing between children. Flexbox gap is supported by all modern browsers, but if you need to support older browsers, use Space component instead.
 
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -80,6 +82,7 @@ Flex component uses CSS flexbox gap to add spacing between children. Flexbox gap
 | justify | StyleProp<JustifyContent> | - | <code>justify-content</code> CSS property |
 | rowGap | StyleProp<MantineSpacing> | - | <code>row-gap</code> CSS property |
 | wrap | StyleProp<FlexWrap> | - | <code>flex-wrap</code> CSS property |
+
 
 #### Styles API
 

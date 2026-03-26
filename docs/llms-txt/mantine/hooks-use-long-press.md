@@ -1,11 +1,12 @@
 # Source: https://mantine.dev/llms/hooks-use-long-press.md
 
 # useLongPress
-
 Package: @mantine/hooks
 Import: import { UseLongPress } from '@mantine/hooks';
 
 ## Usage
+
+
 
 ## Definition
 

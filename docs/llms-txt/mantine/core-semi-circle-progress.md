@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-semi-circle-progress.md
 
 # SemiCircleProgress
-
 Package: @mantine/core
 Import: import { SemiCircleProgress } from '@mantine/core';
 Description: Represent progress with semi circle diagram
@@ -24,6 +23,7 @@ function Demo() {
 }
 ```
 
+
 ## Change empty segment color
 
 Use `emptySegmentColor` prop to change color of empty segment,
@@ -38,6 +38,7 @@ function Demo() {
   return <SemiCircleProgress value={30} emptySegmentColor="var(--mantine-color-dimmed)" />;
 }
 ```
+
 
 ## Change label position
 
@@ -58,6 +59,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Filled segment transition
 
@@ -85,6 +87,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -99,6 +103,7 @@ function Demo() {
 | thickness | number | - | Circle thickness in px |
 | transitionDuration | number | - | Transition duration of filled section styles changes in ms |
 | value | number | required | Progress value from <code>0</code> to <code>100</code> |
+
 
 #### Styles API
 

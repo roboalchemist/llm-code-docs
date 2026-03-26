@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-focus-trap.md
 
 # useFocusTrap
-
 Package: @mantine/hooks
 Import: import { UseFocusTrap } from '@mantine/hooks';
 

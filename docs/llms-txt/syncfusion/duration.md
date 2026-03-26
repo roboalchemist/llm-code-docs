@@ -1,0 +1,37 @@
+# Source: https://docs.syncfusion.com/maui/navigationdrawer/duration.md
+
+# Source: https://docs.syncfusion.com/maui/busy-indicator/duration.md
+
+# Animation Duration in .NET MAUI Busy Indicator (SfBusyIndicator)
+
+The [DurationFactor](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Core.SfBusyIndicator.html#Syncfusion_Maui_Core_SfBusyIndicator_DurationFactor) property of the [.NET MAUI Busy Indicator](https://help.syncfusion.com/cr/maui/Syncfusion.Maui.Core.SfBusyIndicator.html?tabs=tabid-1) is used to set the animation speed depending on a given value. A smaller duration value accelerates the animation speed. The default value is 0.5, and it ranges from 0 to 1.
+
+{% tabs %}
+
+{% highlight xaml %}
+
+<core:SfBusyIndicator x:Name="busyIndicator"
+                      IsRunning="True"
+                      AnimationType="CircularMaterial"
+                      DurationFactor="0.2" />
+
+
+{% endhighlight %}
+
+{% highlight C# %}
+
+SfBusyIndicator busyIndicator = new SfBusyIndicator()
+{
+    IsRunning = true,
+    AnimationType = AnimationType.CircularMaterial;
+    DurationFactor= 0.2
+};
+
+
+{% endhighlight %}
+
+{% endtabs %}
+
+The following screenshot illustrates the result of the above code.
+
+![Animation duration](Images/Duration/Duration.gif)

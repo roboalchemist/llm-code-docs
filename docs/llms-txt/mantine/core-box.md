@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-box.md
 
 # Box
-
 Package: @mantine/core
 Import: import { Box } from '@mantine/core';
 Description: Base component for all Mantine components

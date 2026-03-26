@@ -1003,7 +1003,6 @@ This option is deprecated. Please use `--load <image-name>=(<target-ref> --<buil
     <if-block>
   END
   ```
-
 * ```
   IF [<condition-options>...] <condition>
     <if-block>
@@ -1011,7 +1010,6 @@ This option is deprecated. Please use `--load <image-name>=(<target-ref> --<buil
     <else-block>
   END
   ```
-
 * ```
   IF [<condition-options>...] <condition>
     <if-block>

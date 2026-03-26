@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/form-actions.md
 
 # formActions
-
 Package: @mantine/form
 Import: import { FormActions } from '@mantine/form';
 

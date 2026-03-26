@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/hooks-use-throttled-callback.md
 
 # useThrottledCallback
-
 Package: @mantine/hooks
 Import: import { UseThrottledCallback } from '@mantine/hooks';
 
@@ -9,6 +8,8 @@ Import: import { UseThrottledCallback } from '@mantine/hooks';
 
 `useThrottledCallback` accepts a function and a wait time in milliseconds.
 It returns a throttled version of the function that will only be called at most once every `wait` milliseconds.
+
+
 
 ## Definition
 

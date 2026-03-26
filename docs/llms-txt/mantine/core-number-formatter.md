@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-number-formatter.md
 
 # NumberFormatter
-
 Package: @mantine/core
 Import: import { NumberFormatter } from '@mantine/core';
 Description: Format number with thousands/decimal separators and suffix/prefix
@@ -20,6 +19,7 @@ function Demo() {
   return <NumberFormatter prefix="$ " value={1000000} thousandSeparator />;
 }
 ```
+
 
 ## Prefix and suffix
 
@@ -43,6 +43,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Thousands separator
 
@@ -69,6 +70,7 @@ function Demo() {
 }
 ```
 
+
 ## Decimal scale
 
 `decimalScale` prop controls the number of allowed decimal places:
@@ -82,6 +84,8 @@ function Demo() {
   return <NumberFormatter value={5 / 3} decimalScale={2} />;
 }
 ```
+
+
 
 #### Props
 

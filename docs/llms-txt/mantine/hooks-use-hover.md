@@ -1,11 +1,12 @@
 # Source: https://mantine.dev/llms/hooks-use-hover.md
 
 # useHover
-
 Package: @mantine/hooks
 Import: import { UseHover } from '@mantine/hooks';
 
 ## Usage
+
+
 
 ## Definition
 

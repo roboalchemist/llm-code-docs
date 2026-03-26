@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/core-hover-card.md
 
 # HoverCard
-
 Package: @mantine/core
 Import: import { HoverCard } from '@mantine/core';
 Description: Display popover section when target element is hovered
@@ -31,6 +30,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Delays
 
@@ -65,6 +65,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## HoverCard delay group
 
@@ -110,6 +111,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## With interactive elements
 
@@ -166,6 +168,7 @@ function Demo() {
 }
 ```
 
+
 <TargetComponent component="HoverCard" />
 
 ## Target component
@@ -176,6 +179,7 @@ The target element determines where the HoverCard will be positioned relative to
 
 `HoverCard` is ignored by screen readers and cannot be activated with keyboard, use it to display only additional information
 that is not required to understand the context.
+
 
 #### Props
 

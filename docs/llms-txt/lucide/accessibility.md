@@ -1,0 +1,72 @@
+# Source: https://www.lucide.dev/guide/accessibility.md
+
+# Source: https://www.lucide.dev/guide/angular/advanced/accessibility.md
+
+# Source: https://www.lucide.dev/guide/accessibility.md
+
+# Source: https://www.lucide.dev/guide/preact/advanced/accessibility.md
+
+# Source: https://www.lucide.dev/guide/accessibility.md
+
+# Source: https://www.lucide.dev/guide/astro/advanced/accessibility.md
+
+# Source: https://www.lucide.dev/guide/accessibility.md
+
+# Source: https://www.lucide.dev/guide/solid/advanced/accessibility.md
+
+# Source: https://www.lucide.dev/guide/accessibility.md
+
+# Source: https://www.lucide.dev/guide/svelte/advanced/accessibility.md
+
+# Source: https://www.lucide.dev/guide/accessibility.md
+
+# Source: https://www.lucide.dev/guide/vue/advanced/accessibility.md
+
+# Source: https://www.lucide.dev/guide/accessibility.md
+
+# Source: https://www.lucide.dev/guide/react/advanced/accessibility.md
+
+# Source: https://www.lucide.dev/guide/accessibility.md
+
+# Source: https://www.lucide.dev/guide/lucide/advanced/accessibility.md
+
+---
+url: /guide/lucide/advanced/accessibility.md
+description: Best practices for accessible icons in your application.
+---
+
+# Accessibility
+
+Lucide icons ship with `aria-hidden="true"` by default. In almost all cases this is exactly what you want.
+
+## Should icons be accessible?
+
+Most of the time, icons are used purely for decoration or visual reinforcement. Exposing decorative icons to assistive technologies can create unnecessary noise for screen reader users.
+
+For a broader explanation of this, and other best practices on how to use icons accessibly in your application, please refer to our detailed guide on accessibility:
+
+Only if an icon **conveys essential meaning on its own** should it be made accessible. The sections below explain how to do that in your app.
+
+## Making an icon accessible
+
+To expose an icon to assistive technologies, provide an accessible name by passing a `aria-label` prop to the icon component.
+
+This removes the `aria-hidden` attribute and makes the icon visible to screen readers.
+
+```tsx
+<i data-lucide="house" aria-label="This is my house"></i>
+```
+
+Choose a label that clearly describes the meaning of the icon or the action it represents in the context of your application.
+
+## Accessible icon buttons
+
+When an icon is used inside a button, the accessible label should usually be applied to the button itself, and not the icon.
+
+```html
+<button aria-label="Go to home">
+  <i data-lucide="house"></i>
+</button>
+```
+
+This ensures assistive technologies describe the interactive element, rather than the decorative graphic inside it.

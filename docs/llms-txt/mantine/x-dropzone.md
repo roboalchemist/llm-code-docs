@@ -1,7 +1,6 @@
 # Source: https://mantine.dev/llms/x-dropzone.md
 
 # Dropzone
-
 Package: @mantine/dropzone
 Import: import { Dropzone } from '@mantine/dropzone';
 Description: Capture files from user with drag and drop
@@ -74,6 +73,7 @@ export function BaseDemo(props: Partial<DropzoneProps>) {
 }
 ```
 
+
 ## Dropzone.Accept, Dropzone.Reject and Dropzone.Idle
 
 `Dropzone.Accept`, `Dropzone.Reject` and `Dropzone.Idle` components are visible only when the user performs certain action:
@@ -100,6 +100,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Disabled state
 
@@ -133,6 +134,7 @@ function Demo() {
 }
 ```
 
+
 ## Open file browser manually
 
 To open files browser from outside of component use `openRef` prop to get function that will trigger file browser:
@@ -160,6 +162,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Enable child pointer event
 
@@ -189,6 +192,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Mime types
 
@@ -320,6 +324,7 @@ function Demo() {
 }
 ```
 
+
 ## Images previews
 
 #### Example: preview
@@ -350,6 +355,7 @@ function Demo() {
   );
 }
 ```
+
 
 ## Get ref
 
@@ -432,6 +438,8 @@ function Demo() {
 }
 ```
 
+
+
 #### Props
 
 | Prop | Type | Default | Description |
@@ -467,6 +475,7 @@ function Demo() {
 | rejectColor | MantineColor | - | Key of <code>theme.colors</code> or any valid CSS color to set colors of <code>Dropzone.Reject</code> |
 | useFsAccessApi | boolean | - | Set to true to use the File System Access API to open the file picker instead of using an <code>input type="file"</code> click event |
 | validator | <T extends File>(file: T) => FileError | FileError[] | null | - | Custom validation function. It must return null if there's no errors. |
+
 
 #### Styles API
 
