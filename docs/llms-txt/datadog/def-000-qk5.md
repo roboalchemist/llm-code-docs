@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # IAM roles should not allow untrusted GitLab runners to assume them
- 
+
 ## Description{% #description %}
 
 When using GitLab CI/CD to assume an IAM role, it is recommended to use [identity federation](https://docs.gitlab.com/ee/ci/cloud_services/aws/) to avoid using hardcoded, long-lived credentials.

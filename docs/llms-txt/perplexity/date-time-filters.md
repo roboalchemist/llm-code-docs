@@ -91,7 +91,7 @@ This example limits search results to content published between March 1, 2025, a
 
   client = Perplexity()
 
-  response = client.search(
+  response = client.search.create(
       query="latest AI developments",
       max_results=10,
       search_after_date_filter="3/1/2025",
@@ -101,12 +101,12 @@ This example limits search results to content published between March 1, 2025, a
   print(response)
   ```
 
-  ```typescript TypeScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity();
 
-  const response = await client.search({
+  const response = await client.search.create({
     query: "latest AI developments",
     max_results: 10,
     search_after_date_filter: "3/1/2025",
@@ -139,7 +139,7 @@ If you only wish to restrict the results to those published on or after a specif
 
   client = Perplexity()
 
-  response = client.search(
+  response = client.search.create(
       query="tech news published after March 1, 2025",
       max_results=10,
       search_after_date_filter="3/1/2025"
@@ -148,12 +148,12 @@ If you only wish to restrict the results to those published on or after a specif
   print(response)
   ```
 
-  ```typescript TypeScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity();
 
-  const response = await client.search({
+  const response = await client.search.create({
     query: "tech news published after March 1, 2025",
     max_results: 10,
     search_after_date_filter: "3/1/2025"
@@ -186,7 +186,7 @@ This example limits search results to content that was last updated between July
 
   client = Perplexity()
 
-  response = client.search(
+  response = client.search.create(
       query="recently updated tech articles",
       max_results=10,
       last_updated_after_filter="07/01/2025",
@@ -196,12 +196,12 @@ This example limits search results to content that was last updated between July
   print(response)
   ```
 
-  ```typescript TypeScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity();
 
-  const response = await client.search({
+  const response = await client.search.create({
     query: "recently updated tech articles",
     max_results: 10,
     last_updated_after_filter: "07/01/2025",
@@ -234,7 +234,7 @@ The `search_recency_filter` provides a convenient way to filter results by prede
 
   client = Perplexity()
 
-  response = client.search(
+  response = client.search.create(
       query="latest AI developments",
       max_results=10,
       search_recency_filter="week"
@@ -243,12 +243,12 @@ The `search_recency_filter` provides a convenient way to filter results by prede
   print(response)
   ```
 
-  ```typescript TypeScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity();
 
-  const response = await client.search({
+  const response = await client.search.create({
     query: "latest AI developments",
     max_results: 10,
     search_recency_filter: "week"
@@ -280,48 +280,48 @@ This example will return only content from the past 7 days, automatically calcul
   client = Perplexity()
 
   # Get content from the past day
-  day_response = client.search(
+  day_response = client.search.create(
       query="breaking tech news",
       max_results=5,
       search_recency_filter="day"
   )
 
   # Get content from the past month
-  month_response = client.search(
+  month_response = client.search.create(
       query="AI research developments",
       max_results=10,
       search_recency_filter="month"
   )
 
   # Get content from the past year
-  year_response = client.search(
+  year_response = client.search.create(
       query="major tech trends",
       max_results=15,
       search_recency_filter="year"
   )
   ```
 
-  ```typescript TypeScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity();
 
   // Get content from the past day
-  const dayResponse = await client.search({
+  const dayResponse = await client.search.create({
     query: "breaking tech news",
     max_results: 5,
     search_recency_filter: "day"
   });
 
   // Get content from the past month
-  const monthResponse = await client.search({
+  const monthResponse = await client.search.create({
     query: "AI research developments",
     max_results: 10,
     search_recency_filter: "month"
   });
 
   // Get content from the past year
-  const yearResponse = await client.search({
+  const yearResponse = await client.search.create({
     query: "major tech trends",
     max_results: 15,
     search_recency_filter: "year"
@@ -519,7 +519,7 @@ When using date filters, ensure proper error handling for invalid date formats:
           return None
   ```
 
-  ```typescript TypeScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   function validateDateFormat(dateString: string): boolean {
@@ -543,7 +543,7 @@ When using date filters, ensure proper error handling for invalid date formats:
     }
     
     try {
-      const response = await client.search({
+      const response = await client.search.create({
         query,
         search_after_date_filter: afterDate,
         search_before_date_filter: beforeDate
@@ -556,3 +556,6 @@ When using date filters, ensure proper error handling for invalid date formats:
   }
   ```
 </CodeGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

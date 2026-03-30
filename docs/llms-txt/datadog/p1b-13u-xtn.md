@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Runc binary modified
 ---
 
 # Runc binary modified
-Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1611-escape-to-host](https://attack.mitre.org/techniques/T1611) 
+Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1611-escape-to-host](https://attack.mitre.org/techniques/T1611)
 ## What happened{% #what-happened %}
 
 The `runc` binary `{{ @file.path }}` was modified by `{{ @process.comm }}`, which could be an attempt to exploit the container escape vulnerability `CVE-2019-5736`.

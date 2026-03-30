@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > AWS EBS default encryption d
 ---
 
 # AWS EBS default encryption disabled
-Classification:complianceTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562)Framework:cis-awsControl:2.2.1 
+Classification:complianceTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562)Framework:cis-awsControl:2.2.1
 ## Goal{% #goal %}
 
 Detect when an EBS encryption is disabled by default.

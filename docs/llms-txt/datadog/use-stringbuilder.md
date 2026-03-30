@@ -71,7 +71,7 @@ public class Stuff
 
 ```csharp
 public class MyController {
-    
+
     public void DoSomething(Iterable listOfStuff) {
         foreach (var stuff in listOfStuff)
         {
@@ -151,6 +151,5 @@ public class Stuff
     public decimal Price { get; set; }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

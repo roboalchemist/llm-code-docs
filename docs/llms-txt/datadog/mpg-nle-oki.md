@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Certificate managed by ACM should be renewed within 30 days of expiration
- 
+
 ## Description{% #description %}
 
 Renew your SSL/TLS certificate managed by AWS Certificate Manager (ACM) as there are 30 days left to renew.
@@ -36,5 +36,5 @@ In the `import-certificate.sh` file:
       --certificate <value>
       --private-key <value>
       --certificate-chain <value>
-  
+
 ```

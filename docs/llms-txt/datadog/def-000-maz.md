@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # DocumentDB clusters should have deletion protection enabled
- 
+
 ## Description{% #description %}
 
 This feature verifies if deletion protection is active on an Amazon DocumentDB cluster. The feature will not pass if deletion protection is not enabled.

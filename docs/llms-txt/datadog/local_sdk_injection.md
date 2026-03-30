@@ -89,7 +89,7 @@ spec:
   template:
     metadata:
       labels:
-        admission.datadoghq.com/enabled: "true" 
+        admission.datadoghq.com/enabled: "true"
       annotations:
         admission.datadoghq.com/java-lib.version: "v1.12.0"
     spec:

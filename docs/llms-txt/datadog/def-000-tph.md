@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0011-command-and-control](https://attack.mitre.org/tactics/TA0011)Technique:[T1105-ingress-tool-transfer](https://attack.mitre.org/techniques/T1105) 
+Classification:attackTactic:[TA0011-command-and-control](https://attack.mitre.org/tactics/TA0011)Technique:[T1105-ingress-tool-transfer](https://attack.mitre.org/techniques/T1105)
 ## Goal{% #goal %}
 
 Detects file transfer operations through ScreenConnect remote access software that may indicate unauthorized data movement.

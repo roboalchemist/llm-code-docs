@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Remote administration port access should be restricted to trusted networks
- 
+
 ## Description{% #description %}
 
 The Network Access Control List (NACL) provides stateless filtering of ingress and egress network traffic to AWS resources. Allowing unrestricted ingress access to remote server administration ports, such as SSH (port 22) and RDP (port 3389), can significantly increase the risk of unauthorized access and potential compromise of resources. It is recommended to restrict access to these ports to minimize the attack surface and enhance security.

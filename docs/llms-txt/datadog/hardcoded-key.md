@@ -42,9 +42,9 @@ To comply with this rule, developers should generate encryption keys and IVs dyn
 ```
 class NotCompliant {
 
-	public void notCompliant() {
-		Blob data = Blob.valueOf('some data');
-		Blob encrypted = Crypto.encrypt('AES128', '0000000000000000', 'Hardcoded IV 123', data);
+    public void notCompliant() {
+        Blob data = Blob.valueOf('some data');
+        Blob encrypted = Crypto.encrypt('AES128', '0000000000000000', 'Hardcoded IV 123', data);
     }
 }
 ```
@@ -52,71 +52,71 @@ class NotCompliant {
 ```
 class NotCompliant {
 
-	public void notCompliant() {
-		Blob encryptedText = Blob.valueOf('Some encrypted cipher text');
-		Blob IV = Blob.valueOf(generateEncryptionIV());
-		Blob key = Blob.valueOf('0000000000000000');
-		Blob encrypted = Crypto.encrypt('AES128', key, IV, data);
-	}
+    public void notCompliant() {
+        Blob encryptedText = Blob.valueOf('Some encrypted cipher text');
+        Blob IV = Blob.valueOf(generateEncryptionIV());
+        Blob key = Blob.valueOf('0000000000000000');
+        Blob encrypted = Crypto.encrypt('AES128', key, IV, data);
+    }
 }
 ```
 
 ```
 class NotCompliant {
 
-	public void compliant() {
-		Blob encryptedCipherText = Blob.valueOf('some encrypted text');
-		Blob hardCodedIV = Blob.valueOf('my IV');
-		Blob key = Blob.valueOf(generateEncryptionKey());
-		Blob encrypted = Crypto.encrypt('AES128', key, hardCodedIV, data);
-	}
+    public void compliant() {
+        Blob encryptedCipherText = Blob.valueOf('some encrypted text');
+        Blob hardCodedIV = Blob.valueOf('my IV');
+        Blob key = Blob.valueOf(generateEncryptionKey());
+        Blob encrypted = Crypto.encrypt('AES128', key, hardCodedIV, data);
+    }
 }
 ```
 
 ```
 class NotCompliant {
 
-	public void badCryptoDecryption() {
-		Blob encryptedCipherText = Blob.valueOf('some text');
-		Blob hardCodedIV = Blob.valueOf('hardcoded iv');
-		Blob hardCodedKey = Blob.valueOf('0000000000000000');
-		Blob decryptedCipherText = Crypto.decrypt('AES128', hardCodedKey, hardCodedIV, encryptedCipherText);
-	}
+    public void badCryptoDecryption() {
+        Blob encryptedCipherText = Blob.valueOf('some text');
+        Blob hardCodedIV = Blob.valueOf('hardcoded iv');
+        Blob hardCodedKey = Blob.valueOf('0000000000000000');
+        Blob decryptedCipherText = Crypto.decrypt('AES128', hardCodedKey, hardCodedIV, encryptedCipherText);
+    }
 }
 ```
 
 ```
 class NotCompliant {
 
-	public void notCompliant() {
-		Blob IV = Blob.valueOf(generateEncryptionIV());
-		Blob hardCodedKey = Blob.valueOf('0000000000000000');
-		Blob data = Blob.valueOf('Data to be encrypted');
-		Blob encrypted = Crypto.encrypt('AES128', hardCodedKey, IV, data);
-	}
+    public void notCompliant() {
+        Blob IV = Blob.valueOf(generateEncryptionIV());
+        Blob hardCodedKey = Blob.valueOf('0000000000000000');
+        Blob data = Blob.valueOf('Data to be encrypted');
+        Blob encrypted = Crypto.encrypt('AES128', hardCodedKey, IV, data);
+    }
 }
 ```
 
 ```
 class NotCompliant {
 
-	public void notCompliant() {
-		Blob hardCodedIV = Blob.valueOf('Hardcoded IV 123');
-		Blob key = Blob.valueOf(generateEncryptionKey());
-		Blob data = Blob.valueOf('Data to be encrypted');
-		Blob encrypted = Crypto.encrypt('AES128', key, hardCodedIV, data);
-	}
+    public void notCompliant() {
+        Blob hardCodedIV = Blob.valueOf('Hardcoded IV 123');
+        Blob key = Blob.valueOf(generateEncryptionKey());
+        Blob data = Blob.valueOf('Data to be encrypted');
+        Blob encrypted = Crypto.encrypt('AES128', key, hardCodedIV, data);
+    }
 }
 ```
 
 ```
 class NotCompliant {
 
-	public void notCompliant() {
-		Blob hardCodedIV = Blob.valueOf('Hardcoded IV 123');
-		Blob hardCodedKey = Blob.valueOf('0000000000000000');
-		Blob data = Blob.valueOf('Data to be encrypted');
-		Blob encrypted = Crypto.encrypt('AES128', hardCodedKey, hardCodedIV, data);
+    public void notCompliant() {
+        Blob hardCodedIV = Blob.valueOf('Hardcoded IV 123');
+        Blob hardCodedKey = Blob.valueOf('0000000000000000');
+        Blob data = Blob.valueOf('Data to be encrypted');
+        Blob encrypted = Crypto.encrypt('AES128', hardCodedKey, hardCodedIV, data);
     }
 }
 ```
@@ -125,26 +125,25 @@ class NotCompliant {
 
 ```
 class Compliant {
-	public void compliantExample() {
-		Blob encryptedText = Blob.valueOf('foobar');
-		Blob IV = Blob.valueOf(generateEncryptionIV());
-		Blob key = Blob.valueOf(getRandomValue());
-		Blob encrypted = Crypto.encrypt('AES128', key, IV, data);
-	}
+    public void compliantExample() {
+        Blob encryptedText = Blob.valueOf('foobar');
+        Blob IV = Blob.valueOf(generateEncryptionIV());
+        Blob key = Blob.valueOf(getRandomValue());
+        Blob encrypted = Crypto.encrypt('AES128', key, IV, data);
+    }
 }
 ```
 
 ```
 class NotCompliant {
 
-	public void goodCryptoEncryption() {
-		Blob IV = Blob.valueOf(getRandomValue());
-		Blob key = Blob.valueOf(getRandomValue());
-		Blob data = Blob.valueOf('Data to be encrypted');
-		Blob encrypted = Crypto.encrypt('AES128', key, IV, data);
-	}
+    public void goodCryptoEncryption() {
+        Blob IV = Blob.valueOf(getRandomValue());
+        Blob key = Blob.valueOf(getRandomValue());
+        Blob data = Blob.valueOf('Data to be encrypted');
+        Blob encrypted = Crypto.encrypt('AES128', key, IV, data);
+    }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -54,6 +54,5 @@ OpenSSL::PKey::RSA.new 512
 ```ruby
 OpenSSL::PKey::RSA.new 2048
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

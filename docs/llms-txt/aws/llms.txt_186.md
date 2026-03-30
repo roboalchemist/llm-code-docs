@@ -1,0 +1,150 @@
+# Source: https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/llms.txt
+
+# AWS Clean Rooms ML API Reference
+
+> Welcome to the AWS Clean Rooms ML API Reference.
+
+- [Welcome](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_Operations.html)
+
+- [CancelTrainedModel](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_CancelTrainedModel.html): Submits a request to cancel the trained model job.
+- [CancelTrainedModelInferenceJob](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_CancelTrainedModelInferenceJob.html): Submits a request to cancel a trained model inference job.
+- [CreateAudienceModel](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_CreateAudienceModel.html): Defines the information necessary to create an audience model.
+- [CreateConfiguredAudienceModel](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_CreateConfiguredAudienceModel.html): Defines the information necessary to create a configured audience model.
+- [CreateConfiguredModelAlgorithm](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_CreateConfiguredModelAlgorithm.html): Creates a configured model algorithm using a container image stored in an ECR repository.
+- [CreateConfiguredModelAlgorithmAssociation](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_CreateConfiguredModelAlgorithmAssociation.html): Associates a configured model algorithm to a collaboration for use by any member of the collaboration.
+- [CreateMLInputChannel](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_CreateMLInputChannel.html): Provides the information to create an ML input channel.
+- [CreateTrainedModel](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_CreateTrainedModel.html): Creates a trained model from an associated configured model algorithm using data from any member of the collaboration.
+- [CreateTrainingDataset](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_CreateTrainingDataset.html): Defines the information necessary to create a training dataset.
+- [DeleteAudienceGenerationJob](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_DeleteAudienceGenerationJob.html): Deletes the specified audience generation job, and removes all data associated with the job.
+- [DeleteAudienceModel](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_DeleteAudienceModel.html): Specifies an audience model that you want to delete.
+- [DeleteConfiguredAudienceModel](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_DeleteConfiguredAudienceModel.html): Deletes the specified configured audience model.
+- [DeleteConfiguredAudienceModelPolicy](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_DeleteConfiguredAudienceModelPolicy.html): Deletes the specified configured audience model policy.
+- [DeleteConfiguredModelAlgorithm](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_DeleteConfiguredModelAlgorithm.html): Deletes a configured model algorithm.
+- [DeleteConfiguredModelAlgorithmAssociation](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_DeleteConfiguredModelAlgorithmAssociation.html): Deletes a configured model algorithm association.
+- [DeleteMLConfiguration](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_DeleteMLConfiguration.html): Deletes a ML modeling configuration.
+- [DeleteMLInputChannelData](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_DeleteMLInputChannelData.html): Provides the information necessary to delete an ML input channel.
+- [DeleteTrainedModelOutput](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_DeleteTrainedModelOutput.html): Deletes the model artifacts stored by the service.
+- [DeleteTrainingDataset](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_DeleteTrainingDataset.html): Specifies a training dataset that you want to delete.
+- [GetAudienceGenerationJob](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_GetAudienceGenerationJob.html): Returns information about an audience generation job.
+- [GetAudienceModel](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_GetAudienceModel.html): Returns information about an audience model
+- [GetCollaborationConfiguredModelAlgorithmAssociation](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_GetCollaborationConfiguredModelAlgorithmAssociation.html): Returns information about the configured model algorithm association in a collaboration.
+- [GetCollaborationMLInputChannel](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_GetCollaborationMLInputChannel.html): Returns information about a specific ML input channel in a collaboration.
+- [GetCollaborationTrainedModel](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_GetCollaborationTrainedModel.html): Returns information about a trained model in a collaboration.
+- [GetConfiguredAudienceModel](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_GetConfiguredAudienceModel.html): Returns information about a specified configured audience model.
+- [GetConfiguredAudienceModelPolicy](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_GetConfiguredAudienceModelPolicy.html): Returns information about a configured audience model policy.
+- [GetConfiguredModelAlgorithm](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_GetConfiguredModelAlgorithm.html): Returns information about a configured model algorithm.
+- [GetConfiguredModelAlgorithmAssociation](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_GetConfiguredModelAlgorithmAssociation.html): Returns information about a configured model algorithm association.
+- [GetMLConfiguration](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_GetMLConfiguration.html): Returns information about a specific ML configuration.
+- [GetMLInputChannel](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_GetMLInputChannel.html): Returns information about an ML input channel.
+- [GetTrainedModel](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_GetTrainedModel.html): Returns information about a trained model.
+- [GetTrainedModelInferenceJob](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_GetTrainedModelInferenceJob.html): Returns information about a trained model inference job.
+- [GetTrainingDataset](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_GetTrainingDataset.html): Returns information about a training dataset.
+- [ListAudienceExportJobs](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ListAudienceExportJobs.html): Returns a list of the audience export jobs.
+- [ListAudienceGenerationJobs](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ListAudienceGenerationJobs.html): Returns a list of audience generation jobs.
+- [ListAudienceModels](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ListAudienceModels.html): Returns a list of audience models.
+- [ListCollaborationConfiguredModelAlgorithmAssociations](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ListCollaborationConfiguredModelAlgorithmAssociations.html): Returns a list of the configured model algorithm associations in a collaboration.
+- [ListCollaborationMLInputChannels](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ListCollaborationMLInputChannels.html): Returns a list of the ML input channels in a collaboration.
+- [ListCollaborationTrainedModelExportJobs](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ListCollaborationTrainedModelExportJobs.html): Returns a list of the export jobs for a trained model in a collaboration.
+- [ListCollaborationTrainedModelInferenceJobs](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ListCollaborationTrainedModelInferenceJobs.html): Returns a list of trained model inference jobs in a specified collaboration.
+- [ListCollaborationTrainedModels](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ListCollaborationTrainedModels.html): Returns a list of the trained models in a collaboration.
+- [ListConfiguredAudienceModels](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ListConfiguredAudienceModels.html): Returns a list of the configured audience models.
+- [ListConfiguredModelAlgorithmAssociations](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ListConfiguredModelAlgorithmAssociations.html): Returns a list of configured model algorithm associations.
+- [ListConfiguredModelAlgorithms](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ListConfiguredModelAlgorithms.html): Returns a list of configured model algorithms.
+- [ListMLInputChannels](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ListMLInputChannels.html): Returns a list of ML input channels.
+- [ListTagsForResource](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ListTagsForResource.html): Returns a list of tags for a provided resource.
+- [ListTrainedModelInferenceJobs](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ListTrainedModelInferenceJobs.html): Returns a list of trained model inference jobs that match the request parameters.
+- [ListTrainedModels](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ListTrainedModels.html): Returns a list of trained models.
+- [ListTrainedModelVersions](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ListTrainedModelVersions.html): Returns a list of trained model versions for a specified trained model.
+- [ListTrainingDatasets](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ListTrainingDatasets.html): Returns a list of training datasets.
+- [PutConfiguredAudienceModelPolicy](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_PutConfiguredAudienceModelPolicy.html): Create or update the resource policy for a configured audience model.
+- [PutMLConfiguration](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_PutMLConfiguration.html): Assigns information about an ML configuration.
+- [StartAudienceExportJob](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_StartAudienceExportJob.html): Export an audience of a specified size after you have generated an audience.
+- [StartAudienceGenerationJob](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_StartAudienceGenerationJob.html): Information necessary to start the audience generation job.
+- [StartTrainedModelExportJob](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_StartTrainedModelExportJob.html): Provides the information necessary to start a trained model export job.
+- [StartTrainedModelInferenceJob](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_StartTrainedModelInferenceJob.html): Defines the information necessary to begin a trained model inference job.
+- [TagResource](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_TagResource.html): Adds metadata tags to a specified resource.
+- [UntagResource](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_UntagResource.html): Removes metadata tags from a specified resource.
+- [UpdateConfiguredAudienceModel](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_UpdateConfiguredAudienceModel.html): Provides the information necessary to update a configured audience model.
+
+
+## [Data Types](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_Types.html)
+
+- [AccessBudget](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_AccessBudget.html): An access budget that defines consumption limits for a specific resource within defined time periods.
+- [AccessBudgetDetails](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_AccessBudgetDetails.html): The detailed information for a specific budget period, including time boundaries and budget amounts.
+- [AudienceDestination](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_AudienceDestination.html): Defines the Amazon S3 bucket where the configured audience is stored.
+- [AudienceExportJobSummary](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_AudienceExportJobSummary.html): Provides information about the audience export job.
+- [AudienceGenerationJobDataSource](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_AudienceGenerationJobDataSource.html): Defines the Amazon S3 bucket where the seed audience for the generating audience is stored.
+- [AudienceGenerationJobSummary](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_AudienceGenerationJobSummary.html): Provides information about the configured audience generation job.
+- [AudienceModelSummary](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_AudienceModelSummary.html): Information about the audience model.
+- [AudienceQualityMetrics](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_AudienceQualityMetrics.html): Metrics that describe the quality of the generated audience.
+- [AudienceSize](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_AudienceSize.html): The size of the generated audience.
+- [AudienceSizeConfig](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_AudienceSizeConfig.html): Returns the relevance scores at these audience sizes when used in the for a specified audience generation job and configured audience model.
+- [CollaborationConfiguredModelAlgorithmAssociationSummary](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_CollaborationConfiguredModelAlgorithmAssociationSummary.html): Provides summary information about a configured model algorithm in a collaboration.
+- [CollaborationMLInputChannelSummary](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_CollaborationMLInputChannelSummary.html): Provides summary information about an ML input channel in a collaboration.
+- [CollaborationTrainedModelExportJobSummary](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_CollaborationTrainedModelExportJobSummary.html): Provides summary information about a trained model export job in a collaboration.
+- [CollaborationTrainedModelInferenceJobSummary](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_CollaborationTrainedModelInferenceJobSummary.html): Provides summary information about a trained model inference job in a collaboration.
+- [CollaborationTrainedModelSummary](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_CollaborationTrainedModelSummary.html): Provides summary information about a trained model in a collaboration.
+- [ColumnClassificationDetails](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ColumnClassificationDetails.html): Contains classification information for data columns, including mappings that specify how columns should be handled during synthetic data generation and privacy analysis.
+- [ColumnSchema](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ColumnSchema.html): Metadata for a column.
+- [ComputeConfiguration](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ComputeConfiguration.html): Provides configuration information for the instances that will perform the compute work.
+- [ConfiguredAudienceModelOutputConfig](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ConfiguredAudienceModelOutputConfig.html): Configuration information necessary for the configure audience model output.
+- [ConfiguredAudienceModelSummary](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ConfiguredAudienceModelSummary.html): Information about the configured audience model.
+- [ConfiguredModelAlgorithmAssociationSummary](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ConfiguredModelAlgorithmAssociationSummary.html): Provides summary information about the configured model algorithm association.
+- [ConfiguredModelAlgorithmSummary](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ConfiguredModelAlgorithmSummary.html): Provides summary information about a configured model algorithm.
+- [ContainerConfig](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ContainerConfig.html): Provides configuration information for the dockerized container where the model algorithm is stored.
+- [CustomEntityConfig](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_CustomEntityConfig.html): The configuration for defining custom patterns to be redacted from logs and error messages.
+- [DataPrivacyScores](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_DataPrivacyScores.html): Privacy evaluation scores that measure the privacy characteristics of the generated synthetic data, including assessments of potential privacy risks such as membership inference attacks.
+- [Dataset](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_Dataset.html): Defines where the training dataset is located, what type of data it contains, and how to access the data.
+- [DatasetInputConfig](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_DatasetInputConfig.html): Defines the Glue data source and schema mapping information.
+- [DataSource](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_DataSource.html): Defines information about the Glue data source that contains the training data.
+- [Destination](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_Destination.html): The Amazon S3 location where the exported model artifacts are stored.
+- [GlueDataSource](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_GlueDataSource.html): Defines the Glue data source that contains the training data.
+- [IncrementalTrainingDataChannel](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_IncrementalTrainingDataChannel.html): Defines an incremental training data channel that references a previously trained model.
+- [IncrementalTrainingDataChannelOutput](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_IncrementalTrainingDataChannelOutput.html): Contains information about an incremental training data channel that was used to create a trained model.
+- [InferenceContainerConfig](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_InferenceContainerConfig.html): Provides configuration information for the inference container.
+- [InferenceContainerExecutionParameters](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_InferenceContainerExecutionParameters.html): Provides execution parameters for the inference container.
+- [InferenceOutputConfiguration](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_InferenceOutputConfiguration.html): Configuration information about how the inference output is stored.
+- [InferenceReceiverMember](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_InferenceReceiverMember.html): Defines who will receive inference results.
+- [InferenceResourceConfig](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_InferenceResourceConfig.html): Defines the resources used to perform model inference.
+- [InputChannel](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_InputChannel.html): Provides information about the data source that is used to create an ML input channel.
+- [InputChannelDataSource](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_InputChannelDataSource.html): Provides the data source that is used to define an input channel.
+- [LogRedactionConfiguration](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_LogRedactionConfiguration.html): The configuration for log redaction.
+- [LogsConfigurationPolicy](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_LogsConfigurationPolicy.html): Provides the information necessary for a user to access the logs.
+- [MembershipInferenceAttackScore](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_MembershipInferenceAttackScore.html): A score that measures the vulnerability of synthetic data to membership inference attacks and provides both the numerical score and the version of the attack methodology used for evaluation.
+- [MetricDefinition](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_MetricDefinition.html): Information about the model metric that is reported for a trained model.
+- [MetricsConfigurationPolicy](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_MetricsConfigurationPolicy.html): Provides the configuration policy for metrics generation.
+- [MLInputChannelSummary](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_MLInputChannelSummary.html): Provides summary information about the ML input channel.
+- [MLOutputConfiguration](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_MLOutputConfiguration.html): Configuration information about how the exported model artifacts are stored.
+- [MLSyntheticDataParameters](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_MLSyntheticDataParameters.html): Parameters that control the generation of synthetic data for custom model training, including privacy settings and column classification details.
+- [ModelInferenceDataSource](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ModelInferenceDataSource.html): Defines information about the data source used for model inference.
+- [ModelTrainingDataChannel](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ModelTrainingDataChannel.html): Information about the model training data channel.
+- [PrivacyBudgets](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_PrivacyBudgets.html): The privacy budget information that controls access to Clean Rooms ML input channels.
+- [PrivacyConfiguration](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_PrivacyConfiguration.html): Information about the privacy configuration for a configured model algorithm association.
+- [PrivacyConfigurationPolicies](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_PrivacyConfigurationPolicies.html): Information about the privacy configuration policies for a configured model algorithm association.
+- [ProtectedQueryInputParameters](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ProtectedQueryInputParameters.html): Provides information necessary to perform the protected query.
+- [ProtectedQuerySQLParameters](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ProtectedQuerySQLParameters.html): The parameters for the SQL type Protected Query.
+- [RelevanceMetric](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_RelevanceMetric.html): The relevance score of a generated audience.
+- [ResourceConfig](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_ResourceConfig.html): Information about the EC2 resources that are used to train the model.
+- [S3ConfigMap](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_S3ConfigMap.html): Provides information about an Amazon S3 bucket and path.
+- [StatusDetails](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_StatusDetails.html): Details about the status of a resource.
+- [StoppingCondition](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_StoppingCondition.html): The criteria used to stop model training.
+- [SyntheticDataColumnProperties](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_SyntheticDataColumnProperties.html): Properties that define how a specific data column should be handled during synthetic data generation, including its name, type, and role in predictive modeling.
+- [SyntheticDataConfiguration](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_SyntheticDataConfiguration.html): Configuration settings for synthetic data generation, including the parameters that control data synthesis and the evaluation scores that measure the quality and privacy characteristics of the generated synthetic data.
+- [SyntheticDataEvaluationScores](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_SyntheticDataEvaluationScores.html): Comprehensive evaluation metrics for synthetic data that assess both the utility of the generated data for machine learning tasks and its privacy preservation characteristics.
+- [TrainedModelArtifactMaxSize](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_TrainedModelArtifactMaxSize.html): Specifies the maximum size limit for trained model artifacts.
+- [TrainedModelExportOutputConfiguration](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_TrainedModelExportOutputConfiguration.html): Information about the output of the trained model export job.
+- [TrainedModelExportReceiverMember](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_TrainedModelExportReceiverMember.html): Provides information about the member who will receive trained model exports.
+- [TrainedModelExportsConfigurationPolicy](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_TrainedModelExportsConfigurationPolicy.html): Information about how the trained model exports are configured.
+- [TrainedModelExportsMaxSize](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_TrainedModelExportsMaxSize.html): The maximum size of the trained model metrics that can be exported.
+- [TrainedModelInferenceJobsConfigurationPolicy](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_TrainedModelInferenceJobsConfigurationPolicy.html): Provides configuration information for the trained model inference job.
+- [TrainedModelInferenceJobSummary](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_TrainedModelInferenceJobSummary.html): Provides information about the trained model inference job.
+- [TrainedModelInferenceMaxOutputSize](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_TrainedModelInferenceMaxOutputSize.html): Information about the maximum output size for a trained model inference job.
+- [TrainedModelsConfigurationPolicy](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_TrainedModelsConfigurationPolicy.html): The configuration policy for the trained models.
+- [TrainedModelSummary](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_TrainedModelSummary.html): Summary information about the trained model.
+- [TrainingDatasetSummary](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_TrainingDatasetSummary.html): Provides information about the training dataset.
+- [WorkerComputeConfiguration](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_WorkerComputeConfiguration.html): Configuration information about the compute workers that perform the transform job.
+- [WorkerComputeConfigurationProperties](https://docs.aws.amazon.com/cleanrooms-ml/latest/APIReference/API_WorkerComputeConfigurationProperties.html): The configuration properties for the worker compute environment.

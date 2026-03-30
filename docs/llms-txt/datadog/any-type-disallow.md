@@ -68,6 +68,5 @@ def my_function2(*args: Any) -> str:
 def my_function3(**_: Any) -> str:
     pass
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

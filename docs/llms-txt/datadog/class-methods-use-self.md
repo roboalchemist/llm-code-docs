@@ -42,29 +42,28 @@ In a class method (that is not a class method nor a static method), the first ar
 
 ```python
 class Foo:
-	def bar(bar):  # use def bar(self) instead
-		pass
+    def bar(bar):  # use def bar(self) instead
+        pass
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}
 
 ```python
 class Foo:
-	@staticmethod
-	def static_method(bar):
-		pass
+    @staticmethod
+    def static_method(bar):
+        pass
 
-	@classmethod
-	def class_method(bar):
-		pass
+    @classmethod
+    def class_method(bar):
+        pass
 
-	def __call__(cls, *args, **kwargs):
-		pass
-	
+    def __call__(cls, *args, **kwargs):
+        pass
+
 class IFoo(Interface): # zope interfaces won't get flagged
-	def method(i):
-		pass
+    def method(i):
+        pass
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

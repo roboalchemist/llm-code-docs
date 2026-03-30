@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > New Kubernetes privileged po
 ---
 
 # New Kubernetes privileged pod created
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1578-modify-cloud-compute-infrastructure](https://attack.mitre.org/techniques/T1578) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1578-modify-cloud-compute-infrastructure](https://attack.mitre.org/techniques/T1578)
 ## Goal{% #goal %}
 
 Detect when a privileged pod is created. Privileged pods remove container isolation which allows privileged actions on the host.

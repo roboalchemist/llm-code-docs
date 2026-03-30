@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > AWS S3 Object encryption wit
 ---
 
 # AWS S3 Object encryption with SSE-C
-Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1486-data-encrypted-for-impact](https://attack.mitre.org/techniques/T1486) 
+Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1486-data-encrypted-for-impact](https://attack.mitre.org/techniques/T1486)
 ## WARNING: This rule is being deprecated on 6 April 2026.{% #warning-this-rule-is-being-deprecated-on-6-april-2026 %}
 
 - See the [Advanced Notice](https://aws.amazon.com/blogs/storage/advanced-notice-amazon-s3-to-disable-the-use-of-sse-c-encryption-by-default-for-all-new-buckets-and-select-existing-buckets-in-april-2026/) article from AWS.

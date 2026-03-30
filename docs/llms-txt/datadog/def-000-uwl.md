@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure PAM Enforces Password Requirements - Minimum Special Characters
- 
+
 ## Description{% #description %}
 
 The pam_pwquality module's `ocredit=` parameter controls requirements for usage of special (or "other") characters in a password. When set to a negative number, any password will be required to contain that many special characters. When set to a positive number, pam_pwquality will grant +1 additional length credit for each special character. Modify the `ocredit` setting in `/etc/security/pwquality.conf` to equal -1 to require use of a special character in passwords.

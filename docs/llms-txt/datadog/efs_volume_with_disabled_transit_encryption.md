@@ -241,7 +241,7 @@ MyTaskDefinition:
       "taskdefinition": {
         "Type": "AWS::ECS::TaskDefinition",
         "Properties": {
-            
+
             "ContainerDefinitions": [
                 {
                     "Name": "container-using-efs",

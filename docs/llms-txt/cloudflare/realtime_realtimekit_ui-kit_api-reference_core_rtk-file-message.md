@@ -1,0 +1,49 @@
+# Source: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/core/rtk-file-message/index.md
+
+---
+
+title: rtk-file-message · Cloudflare Realtime docs
+description: API reference for rtk-file-message component (Web Components (HTML) Library)
+lastUpdated: 2026-02-10T17:40:43.000Z
+chatbotDeprioritize: false
+source_url:
+  html: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/core/rtk-file-message/
+  md: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/core/rtk-file-message/index.md
+---
+
+@deprecated `rtk-file-message` is deprecated and will be removed soon. Use `rtk-file-message-view` instead. A component which renders a file message from chat.
+
+## Properties
+
+| Property | Type | Required | Default | Description |
+| - | - | - | - | - |
+| `iconPack` | `IconPack` | ❌ | `defaultIconPack` | Icon pack |
+| `isContinued` | `boolean` | ✅ | - | Whether the message is continued by same user |
+| `message` | `FileMessage` | ✅ | - | Text message object |
+| `now` | `Date` | ✅ | - | Date object of now, to calculate distance between dates |
+| `showBubble` | `boolean` | ✅ | - | show message in bubble |
+| `t` | `RtkI18n` | ❌ | `useLanguage()` | Language |
+
+## Usage Examples
+
+### Basic Usage
+
+```html
+<rtk-file-message></rtk-file-message>
+```
+
+### With Properties
+
+```html
+<rtk-file-message>
+</rtk-file-message>
+```
+
+```html
+<script>
+  const el = document.querySelector("rtk-file-message");
+
+
+  el.isContinued= true;
+</script>
+```

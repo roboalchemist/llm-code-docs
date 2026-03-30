@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Unused Network Access Control Lists should be removed
- 
+
 ## Description{% #description %}
 
 This check verifies if there are any unused network access control lists (ACLs).

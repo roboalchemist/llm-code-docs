@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # RDS instance snapshots should not be shared with external accounts
- 
+
 ## Description{% #description %}
 
 This rule evaluates whether Amazon RDS instance snapshots are shared with external AWS accounts that are not onboarded to Datadog. RDS instance snapshots contain complete copies of database instances, including all data, configurations, and potentially sensitive information. Sharing instance snapshots with unauthorized external accounts can lead to data exposure and security risks.

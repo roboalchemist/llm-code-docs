@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-duplicate-type-constituents.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-duplicate-type-constituents.md
----
-
-### What it does
+## What it does
 
 This rule disallows duplicate constituents of union or intersection types.
 
-### Why is this bad?
+## Why is this bad?
 
 Duplicate constituents in union and intersection types serve no purpose and can make code harder to read. They are likely a mistake.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -46,7 +42,7 @@ type T5 = "foo" | "bar" | "baz";
 
 This rule accepts a configuration object with the following properties:
 
-### ignoreIntersections
+## ignoreIntersections
 
 type: `boolean`
 
@@ -55,7 +51,7 @@ default: `false`
 Whether to ignore duplicate types in intersection types.
 When true, allows `type T = A & A`.
 
-### ignoreUnions
+## ignoreUnions
 
 type: `boolean`
 

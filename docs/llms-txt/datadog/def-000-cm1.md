@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Server parameter 'log_retention_days' should be greater than 3 days for PostgreSQL Database Server
- 
+
 ## Description{% #description %}
 
 Enabling `log_retention_days` helps PostgreSQL Database to set the number of days a log file is retained, which in turn generates query and error logs. Query and error logs can be used to identify, troubleshoot, and repair configuration errors and sub-optimal performance.

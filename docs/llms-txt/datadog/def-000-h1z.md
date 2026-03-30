@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # User has used a disposable email address
- 
+
 ## Goal{% #goal %}
 
 Detect when a user is using a disposable email address.

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Route table changes should b
 ---
 
 # Route table changes should be monitored
- 
+
 ## Description{% #description %}
 
 Real-time monitoring of API calls can be achieved by directing CloudTrail logs to CloudWatch logs and establishing corresponding metric filters and alarms. Routing tables are used to route network traffic between subnets and to network gateways. It is recommended that a metric filter and alarm be established for changes to route tables.

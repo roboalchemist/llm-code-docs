@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # The controller manager pod specification file should have permissions of 600 or more restrictive
- 
+
 ## Description{% #description %}
 
 The controller manager pod specification file should have permissions of 600 or more restrictive. The controller manager pod specification file controls various parameters that set the behavior of the controller manager on the master node. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system.

@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/security/cloud_security_management/review_remediate/workflows.md
-
 # Source: https://docs.datadoghq.com/actions/workflows.md
 
 ---
@@ -9,8 +7,6 @@ description: >-
   actions across your infrastructure and tools.
 breadcrumbs: Docs > Workflow Automation
 ---
-
-# Workflow Automation
 
 {% callout %}
 # Important note for users on the following Datadog sites: app.ddog-gov.com

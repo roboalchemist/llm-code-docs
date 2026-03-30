@@ -97,6 +97,5 @@ for(var i = 0; i === 10; i+=1){}
 for(var i = 0; i == 10; i+=1){}
 for(var i = 0; i != 10; i+=1){}
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

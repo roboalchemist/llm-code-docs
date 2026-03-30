@@ -55,13 +55,13 @@ durations.filter { d > 0 }.forEach { total += d
 ## Compliant Code Examples{% #compliant-code-examples %}
 
 ```kotlin
-fun doTask() { 
+fun doTask() {
     if (enabled) {
         spawn()
     }
 }
 
-val stringified = when (num) { 
+val stringified = when (num) {
     10 -> "Ten"
     20 -> "Twenty"
     else -> "Other"
@@ -85,6 +85,5 @@ val add: (Int, Int) -> Int = { a, b ->
     a + b
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

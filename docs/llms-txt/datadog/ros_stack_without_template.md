@@ -67,7 +67,7 @@ resource "alicloud_ros_stack" "example1" {
 ```terraform
 resource "alicloud_ros_stack" "example" {
   stack_name        = "tf-testaccstack"
-  
+
   stack_policy_body = <<EOF
     {
         "Statement": [{

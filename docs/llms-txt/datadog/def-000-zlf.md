@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall bind Package
 ---
 
 # Uninstall bind Package
- 
+
 ## Description{% #description %}
 
 The `named` service is provided by the `bind` package. The `bind` package can be removed with the following command:

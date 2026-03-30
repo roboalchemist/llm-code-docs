@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The UTS namespace should not be shared with the host
-Classification:complianceFramework:cis-dockerControl:5.20 
+Classification:complianceFramework:cis-dockerControl:5.20
 ## Description{% #description %}
 
 UTS namespaces provide isolation between two system identifiers: the hostname and the NIS domain name. It is used to set the hostname and the domain which are visible to running processes in that namespace. Processes running within containers do not typically require to know either the hostname or the domain name. The UTS namespace should therefore not be shared with the host.

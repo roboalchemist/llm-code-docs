@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Lock Accounts After Failed Password Attempts
- 
+
 ## Description{% #description %}
 
 This rule configures the system to lock out accounts after a number of incorrect login attempts using `pam_faillock.so`. pam_faillock.so module requires multiple entries in pam files. These entries must be carefully defined to work as expected. Ensure that the file `/etc/security/faillock.conf` contains the following entry: `deny = <count>` Where count should be less than or equal to 3 and greater than 0.
@@ -46,7 +46,7 @@ authselect enable-feature with-faillock
 
 authselect apply-changes -b
 else
-    
+
 conf_name=cac_faillock
 
 if [ ! -f /usr/share/pam-configs/"$conf_name" ]; then
@@ -93,7 +93,7 @@ if [ -f $FAILLOCK_CONF ] || [ "$SKIP_FAILLOCK_CHECK" = "true" ]; then
     else
         sed -i --follow-symlinks 's|^\s*\(deny\s*=\s*\)\(\S\+\)|\1'"$var_accounts_passwords_pam_faillock_deny"'|g' $FAILLOCK_CONF
     fi
-    
+
 else
     for pam_file in "${AUTH_FILES[@]}"
     do

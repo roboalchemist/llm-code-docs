@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Brute forced ConsoleLogin event correlates with an assumed role event
-Classification:attack 
+Classification:attack
 ## Goal{% #goal %}
 
 Correlate a bruteforce login with a user attempting to assume an anomalous number of roles.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # DMS replication tasks for the target database should have logging enabled
- 
+
 ## Description{% #description %}
 
 This control verifies whether logging is enabled with at least the default severity level (`LOGGER_SEVERITY_DEFAULT`) for DMS replication tasks of the types `TARGET_APPLY` and `TARGET_LOAD`. If logging is disabled for these tasks or the severity level is below `LOGGER_SEVERITY_DEFAULT`, the control fails. Acceptable logging levels are `LOGGER_SEVERITY_DEFAULT`, `LOGGER_SEVERITY_DEBUG` or `LOGGER_SEVERITY_DETAILED_DEBUG`.

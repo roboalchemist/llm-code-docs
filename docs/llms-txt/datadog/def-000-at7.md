@@ -7,13 +7,13 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Owner on SSH Server c
 ---
 
 # Verify Owner on SSH Server config file
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/etc/ssh/sshd_config`, run the command:
 
 ```
-$ sudo chown root /etc/ssh/sshd_config 
+$ sudo chown root /etc/ssh/sshd_config
 ```
 
 ## Rationale{% #rationale %}

@@ -64,7 +64,7 @@ Unless otherwise specified, all code examples are in TypeScript.
        });
      },
    };
-       
+
    ```
 
 1. Initialize the SDK in your code. For instructions for your language, see [SDK guides](https://docs.geteppo.com/sdks/).
@@ -74,7 +74,7 @@ Unless otherwise specified, all code examples are in TypeScript.
      apiKey: EPPO_SDK_KEY,
      assignmentLogger,
    });
-      
+
    ```
 
 ### 2. Set up and verify a new flag{% #set-up-flag %}
@@ -95,7 +95,7 @@ Unless otherwise specified, all code examples are in TypeScript.
      },
      false
    );
-       
+
    ```
 
 1. Deploy the application to your staging or testing environments and verify the flag's functionality.
@@ -124,7 +124,7 @@ Unless otherwise specified, all code examples are in TypeScript.
    ```typescript
    // After initialization, turn off graceful failure so exceptions are rethrown
    getInstance().setIsGracefulFailureMode(false);
-   
+
    // Drop-in wrapper replacement for getting a boolean Statsig gate.
    // Replace boolean calls to checkGate() with getBoolVariationWrapper() in the code.
    export function getBoolVariationWrapper(
@@ -133,7 +133,7 @@ Unless otherwise specified, all code examples are in TypeScript.
      attributes?: Record<string, string | number | boolean | null>
    ) {
      let assignment = false;
-         
+
      try {
        assignment = getInstance().getBooleanAssignment(
          gateKey,
@@ -146,13 +146,13 @@ Unless otherwise specified, all code examples are in TypeScript.
          'Error encountered evaluating boolean assignment from Eppo SDK; falling back to Statsig',
          { gateKey, user, attributes }
        );
-           
+
        // Fallback to Statsig gate check
        assignment = statsig.checkGate(user, gateKey);
      }
      return assignment;
    }
-   
+
    // Drop-in wrapper replacement for getting a string Statsig config.
    // Replace string calls to getConfig() with getStringVariationWrapper() in the code.
    export function getStringVariationWrapper(
@@ -162,7 +162,7 @@ Unless otherwise specified, all code examples are in TypeScript.
      attributes?: Record<string, string | number | boolean | null>
    ) {
      let assignment = 'default';
-         
+
      try {
        assignment = getInstance().getStringAssignment(
          user.userID,
@@ -175,14 +175,14 @@ Unless otherwise specified, all code examples are in TypeScript.
          'Error encountered evaluating string assignment from Eppo SDK; falling back to Statsig',
          { configKey, parameterName, user, attributes }
        );
-           
+
        // Fallback to Statsig config parameter
        const config = statsig.getConfig(user, configKey);
        assignment = config.get(parameterName, 'default');
      }
      return assignment;
    }
-   
+
    // Drop-in wrapper replacement for getting a numeric Statsig config parameter.
    // Replace numeric calls to getConfig() with getNumericVariationWrapper() in the code.
    export function getNumericVariationWrapper(
@@ -192,7 +192,7 @@ Unless otherwise specified, all code examples are in TypeScript.
      attributes?: Record<string, string | number | boolean | null>
    ) {
      let assignment = 0;
-         
+
      try {
        assignment = getInstance().getNumericAssignment(
          user.userID,
@@ -205,14 +205,14 @@ Unless otherwise specified, all code examples are in TypeScript.
          'Error encountered evaluating numeric assignment from Eppo SDK; falling back to Statsig',
          { configKey, parameterName, user, attributes }
        );
-           
+
        // Fallback to Statsig config parameter
        const config = statsig.getConfig(user, configKey);
        assignment = config.get(parameterName, 0);
      }
      return assignment;
    }
-   
+
    // Drop-in wrapper replacement for getting experiment assignments.
    // Replace calls to getExperiment() with getExperimentVariationWrapper() in the code.
    export function getJSONVariationWrapper(
@@ -222,7 +222,7 @@ Unless otherwise specified, all code examples are in TypeScript.
      attributes?: Record<string, string | number | boolean | null>
    ) {
      let assignment: any = null;
-         
+
      try {
        // For experiments with multiple parameters, use JSON assignment
        const experimentResult = getInstance().getJSONAssignment(
@@ -237,14 +237,14 @@ Unless otherwise specified, all code examples are in TypeScript.
          'Error encountered evaluating experiment assignment from Eppo SDK; falling back to Statsig',
          { experimentKey, parameterName, user, attributes }
        );
-           
+
        // Fallback to Statsig experiment
        const experiment = statsig.getExperiment(user, experimentKey);
        assignment = experiment.get(parameterName, null);
      }
      return assignment;
    }
-       
+
    ```
 
 ### 6. Recreate critical flags in Eppo{% #recreate-critical-flags %}
@@ -324,7 +324,7 @@ await init({
 Statsig docs: [Logging an Event](https://docs.statsig.com/client/javascript-sdk/#event-logging)
 
 ```typescript
-// Statsig automatically logs assignments, but you can add custom logging by 
+// Statsig automatically logs assignments, but you can add custom logging by
 // subscribing to client events like gate_evaluation or experiment_evaluation.
 
 statsig.on('gate_evaluation', (event) => {
@@ -398,7 +398,7 @@ Eppo docs: [Assignments](https://docs.geteppo.com/sdks/server-sdks/node/assignme
 
 ```typescript
 // If it's part of a multi-valued configuration (how Statsig organizes values),
-// you will have to figure out the type of each parameter, as Eppo uses different 
+// you will have to figure out the type of each parameter, as Eppo uses different
 // calls for each variant type.
 
 // For a JSON configuration with multiple parameters:

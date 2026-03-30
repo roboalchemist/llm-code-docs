@@ -1,16 +1,12 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/prefer-promise-reject-errors.md
 
-# Source: https://oxc.rs/docs/guide/usage/linter/rules/eslint/prefer-promise-reject-errors.md
+## Source: https://oxc.rs/docs/guide/usage/linter/rules/eslint/prefer-promise-reject-errors.md
 
----
-url: /docs/guide/usage/linter/rules/eslint/prefer-promise-reject-errors.md
----
-
-### What it does
+## What it does
 
 Require using Error objects as Promise rejection reasons.
 
-### Why is this bad?
+## Why is this bad?
 
 It is considered good practice to only pass instances of the built-in `Error` object to the
 `reject()` function for user-defined errors in Promises. `Error` objects automatically
@@ -18,7 +14,7 @@ store a stack trace, which can be used to debug an error by determining where it
 from. If a Promise is rejected with a non-`Error` value, it can be difficult to
 determine where the rejection occurred.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -57,7 +53,7 @@ Promise.reject(foo);
 
 This rule accepts a configuration object with the following properties:
 
-### allowEmptyReject
+## allowEmptyReject
 
 type: `boolean`
 

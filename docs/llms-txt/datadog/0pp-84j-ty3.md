@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Account should have a activity log alert configured for 'Delete Load Balancer'
- 
+
 ## Description{% #description %}
 
 Create an activity log alert for the Delete Load Balancer event.

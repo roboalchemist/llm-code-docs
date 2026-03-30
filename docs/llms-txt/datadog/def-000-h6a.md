@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > AWS CreateIndex by long term
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1580-cloud-infrastructure-discovery](https://attack.mitre.org/techniques/T1580) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1580-cloud-infrastructure-discovery](https://attack.mitre.org/techniques/T1580)
 ## Goal{% #goal %}
 
 Detects usage of long-term AWS access keys to execute `CreateIndex` operations in AWS Resource Explorer. Identifies potential unauthorized discovery activity using compromised or misused long-term credentials.

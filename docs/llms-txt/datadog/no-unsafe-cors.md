@@ -49,7 +49,7 @@ fun Application.configureUnsafeCORS() {
 
         // WARNING: Using wildcards in allowHost
         allowHost("*")
-        
+
         // WARNING: Overly permissive origin checking
         allowOrigins { true }  // Accepts any origin
     }
@@ -76,7 +76,7 @@ fun Application.configureSafeKtorCORS() {
         host("https://trusted-domain.com")
         host("https://api.trusted-domain.com")
         allowCredentials = true
-        
+
         // Optional: Configure other CORS settings
         allowNonSimpleContentTypes = true
         allowHeaders { headerName ->
@@ -95,7 +95,7 @@ class SafeServlet : HttpServlet() {
 
     override fun doGet(req: HttpServletRequest, res: HttpServletResponse) {
         val origin = req.getHeader("Origin")
-        
+
         // Safe: Validate origin against whitelist
         if (origin in allowedOrigins) {
             res.setHeader("Access-Control-Allow-Origin", origin)
@@ -107,6 +107,5 @@ class SafeServlet : HttpServlet() {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

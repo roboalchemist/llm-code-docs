@@ -1,0 +1,33 @@
+# Source: https://docs.snowflake.com/en/user-guide/data-integration/openflow/controllers/simpleredisdistributedmapcacheclientservice.md
+
+# SimpleRedisDistributedMapCacheClientService
+
+## Description
+
+An implementation of DistributedMapCacheClient that uses Redis as the backing cache. This service is intended to be used when a non-atomic DistributedMapCacheClient is required.
+
+## Tags
+
+cache, distributed, map, redis
+
+## Properties
+
+In the list below required Properties are shown with an asterisk (\*).
+Other properties are considered optional. The table also indicates any default values, and whether a property supports the NiFi Expression Language.
+
+| Display Name | API Name | Default Value | Allowable Values | Description |
+| --- | --- | --- | --- | --- |
+| TTL \* | redis-cache-ttl | 0 secs |  | Indicates how long the data should exist in Redis. Setting ‘0 secs’ would mean the data would exist forever |
+| Redis Connection Pool \* | redis-connection-pool |  |  |  |
+
+## State management
+
+This component does not store state.
+
+## Restricted
+
+This component is not restricted.
+
+## System Resource Considerations
+
+This component does not specify system resource considerations.

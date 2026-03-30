@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Multiple Microsoft Teams del
 ---
 
 # Multiple Microsoft Teams deleted
-Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1531-account-access-removal](https://attack.mitre.org/techniques/T1531) 
+Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1531-account-access-removal](https://attack.mitre.org/techniques/T1531)
 ## Goal{% #goal %}
 
 Detect when multiple Microsoft Teams are deleted. Threat actors may want to cause disruptions in work and jeopardize relevant conversation data by deleting multiple teams.

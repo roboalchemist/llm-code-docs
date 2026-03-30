@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Private Endpoints should be used to access Storage Accounts
- 
+
 ## Description{% #description %}
 
 Private endpoints for your Azure Storage accounts allow clients and services to securely access data located over a network through an encrypted Private Link. Securing traffic between services through encryption protects the data from easy interception and reading.

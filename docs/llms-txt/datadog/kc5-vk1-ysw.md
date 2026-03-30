@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # A new Microsoft 365 application was installed
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1136-create-account](https://attack.mitre.org/techniques/T1136) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1136-create-account](https://attack.mitre.org/techniques/T1136)
 ## Goal{% #goal %}
 
 Detect when a new Microsoft 365 app is installed as a means of establishing persistence.

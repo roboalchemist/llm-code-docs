@@ -1,19 +1,15 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/jsx-boolean-value.md
 
----
-url: /docs/guide/usage/linter/rules/react/jsx-boolean-value.md
----
-
-### What it does
+## What it does
 
 Enforce a consistent boolean attribute style in your code.
 
-### Why is this bad?
+## Why is this bad?
 
 In JSX, you can set a boolean attribute to `true` or omit it.
 This rule will enforce a consistent style for boolean attributes.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule with default `"never"` mode:
 
@@ -43,23 +39,23 @@ const Hello = <Hello personal={true} />;
 
 ## Configuration
 
-### The 1st option
+## The 1st option
 
 type: `"always" | "never"`
 
-#### `"always"`
+### `"always"`
 
 All boolean attributes must have explicit values.
 
-#### `"never"`
+### `"never"`
 
 All boolean attributes must omit values that are set to `true`.
 
-### The 2nd option
+## The 2nd option
 
 This option is an object with the following properties:
 
-#### always
+### always
 
 type: `string[]`
 
@@ -68,7 +64,7 @@ default: `[]`
 List of attribute names that should always have explicit boolean values.
 Only necessary when main mode is `"never"`.
 
-#### assumeUndefinedIsFalse
+### assumeUndefinedIsFalse
 
 type: `boolean`
 
@@ -85,7 +81,7 @@ When combined with `"never"` mode, this will enforce that the attribute is omitt
 
 This option does nothing in `"always"` mode.
 
-#### never
+### never
 
 type: `string[]`
 

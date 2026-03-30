@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The secure port should not be disabled for the API server
-Classification:complianceFramework:cis-kubernetesControl:1.2.20 
+Classification:complianceFramework:cis-kubernetesControl:1.2.20
 ## Description{% #description %}
 
 Do not disable the secure port.

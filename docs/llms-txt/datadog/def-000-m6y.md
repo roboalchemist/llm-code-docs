@@ -9,13 +9,13 @@ breadcrumbs: >-
 ---
 
 # Verify User Who Owns /var/log/*.journal(~) Files
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/var/log/*.journal(~)`, run the command:
 
 ```gdscript3
-$ sudo chown root /var/log/*.journal(~) 
+$ sudo chown root /var/log/*.journal(~)
 ```
 
 ## Rationale{% #rationale %}

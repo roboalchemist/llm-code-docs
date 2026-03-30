@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Permissions on /var/log/secure File
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/var/log/secure`, run the command:

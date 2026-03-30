@@ -75,7 +75,7 @@ If your repository is stored outside `$HOME/dd/`, specify the path before settin
 
    ```shell
    ddev config set repos.extras "/path/to/integrations-extras"
-   ddev config set repo extras 
+   ddev config set repo extras
    ```
 
 {% /tab %}

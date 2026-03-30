@@ -11,7 +11,7 @@ breadcrumbs: 'Docs > Datadog Security > OOTB Rules > Sophos Alert: Core clean up
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1059-command-and-scripting-interpreter](https://attack.mitre.org/techniques/T1059) 
+Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1059-command-and-scripting-interpreter](https://attack.mitre.org/techniques/T1059)
 ## Goal{% #goal %}
 
 Identify and act on 'Core Clean Failed' events from the same endpoint to address potential security concerns.

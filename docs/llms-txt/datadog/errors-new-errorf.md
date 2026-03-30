@@ -43,8 +43,8 @@ Here are a few reasons why:
 
 ```go
 func myFunc() error {
-	foo := "foo"
-	return errors.New(fmt.Sprintf("error: %s", foo))
+    foo := "foo"
+    return errors.New(fmt.Sprintf("error: %s", foo))
 }
 ```
 
@@ -52,10 +52,9 @@ func myFunc() error {
 
 ```go
 func myFunc() error {
-	foo := "foo"
-	return fmt.Errorf("error: %w", foo)
+    foo := "foo"
+    return fmt.Errorf("error: %w", foo)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

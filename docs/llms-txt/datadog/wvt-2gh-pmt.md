@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Docker-related files should be audited in /etc/docker
-Classification:complianceFramework:cis-dockerControl:1.2.5 
+Classification:complianceFramework:cis-dockerControl:1.2.5
 ## Description{% #description %}
 
 Audit `/etc/docker`.

@@ -85,6 +85,5 @@ case type
 when 'foo' then do_action(action_params)
 end
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

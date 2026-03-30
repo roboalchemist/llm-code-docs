@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Kubelet default kernel parameter values should be protected from overriding.
-Classification:complianceFramework:cis-kubernetesControl:4.2.6 
+Classification:complianceFramework:cis-kubernetesControl:4.2.6
 ## Description{% #description %}
 
 Protect tuned kernel parameters from overriding kubelet default kernel parameter values.

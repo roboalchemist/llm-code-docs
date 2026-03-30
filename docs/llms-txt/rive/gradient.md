@@ -1,0 +1,37 @@
+# Source: https://uat.rive.app/docs/scripting/api-reference/gradient/gradient.md
+
+> ## Documentation Index
+>
+> Fetch the complete documentation index at: https://uat.rive.app/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Gradient
+
+Represents a gradient used for filling or stroking a shape. A gradient is
+defined by a set of color stops ([GradientStop](/scripting/api-reference/gradient/gradient-stop)) and either a linear or radial configuration.
+
+## Constructors
+
+### `linear`
+
+Creates a linear gradient that transitions between the specified color
+stops along the line from 'from' to 'to'.
+
+```lua  theme={null}
+local g = Gradient.linear(Vector.xy(0, 0), Vector.xy(100, 0), {
+  { position = 0, color = Color.rgb(255, 0, 0) },
+  { position = 1, color = Color.rgb(0, 0, 255) },
+})
+```
+
+### `radial`
+
+Creates a radial gradient centered at 'from', extending outward to the
+given radius, using the specified color stops.
+
+```lua  theme={null}
+local g = Gradient.radial(Vector.xy(50, 50), 40, {
+  { position = 0, color = Color.rgb(255, 0, 0) },
+  { position = 1, color = Color.rgb(0, 0, 255) },
+})
+```

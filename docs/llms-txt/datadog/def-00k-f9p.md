@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Etcd key-value store should be encrypted at rest
- 
+
 ## Description{% #description %}
 
 The etcd key-value store should be encrypted at rest. Etcd is a highly available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be encrypted at rest to avoid any disclosures.

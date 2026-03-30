@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Permissions on cron.h
 ---
 
 # Verify Permissions on cron.hourly
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/etc/cron.hourly`, run the command:

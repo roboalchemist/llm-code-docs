@@ -1,10 +1,12 @@
 # Source: https://exa.ai/docs/examples/live-demo-hacker-news-clone.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Hacker News Clone
+
+## # Hacker News Clone
 
 > Make your very own Hacker News powered by Exa
 
@@ -52,9 +54,9 @@ After a few seconds, a Webview window will pop up with your website. You'll see 
 
 ## How Exa works
 
-In the index.js file (should be open by default), scroll to **line 19**. This is the brains of the site. It's where we call the Exa API with a custom prompt to get back Hacker News-style content.
+In the index.js file (should be open by default), scroll to __line 19__. This is the brains of the site. It's where we call the Exa API with a custom prompt to get back Hacker News-style content.
 
-```
+```text
 const response = await fetch('https://api.exa.ai/search', {
   method: 'POST',
   headers: {
@@ -73,7 +75,7 @@ const response = await fetch('https://api.exa.ai/search', {
     endPublishedDate: endPublishedDate,
   }),
 });
-```
+```text
 
 The prompt is set to "here is a really interesting tech article:". This is because of how Exa works behind the scenes. Exa uses embeddings to help predict which links would naturally follow a query. For example, on the Internet, you'll frequently see people recommend great content like this: "this tutorial really helped me understand linked lists: linkedlisttutorial.com". When you prompt Exa, you pretend to be someone recommending what you're looking for. In this case, our prompt nudges Exa to find links that someone would share when discussing a "really interesting tech article".
 

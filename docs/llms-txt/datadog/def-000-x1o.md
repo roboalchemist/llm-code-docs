@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Set nftables Configuration for Loopback Traffic
- 
+
 ## Description{% #description %}
 
 Configure the loopback interface to accept traffic. Configure all other interfaces to deny traffic to the loopback network.

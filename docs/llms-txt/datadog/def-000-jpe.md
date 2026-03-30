@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify pam_pwhistory module is activated
- 
+
 ## Description{% #description %}
 
 The `pam_pwhistory.so` module is part of the Pluggable Authentication Modules (PAM) framework designed to increase password security. It works by storing a history of previously used passwords for each user, ensuring users cannot alternate between the same passwords too frequently.
@@ -46,7 +46,7 @@ if [ -f /usr/bin/authselect ]; then
 
         authselect apply-changes -b
     else
-        
+
         if ! authselect check; then
         echo "
         authselect integrity check failed. Remediation aborted!
@@ -67,20 +67,20 @@ if [ -f /usr/bin/authselect ]; then
             fi
             authselect create-profile hardening -b $CURRENT_PROFILE
             CURRENT_PROFILE="custom/hardening"
-            
+
             authselect apply-changes -b --backup=before-hardening-custom-profile
             authselect select $CURRENT_PROFILE
             for feature in $ENABLED_FEATURES; do
                 authselect enable-feature $feature;
             done
-            
+
             authselect apply-changes -b --backup=after-hardening-custom-profile
         fi
         PAM_FILE_NAME=$(basename "cac_pwhistory")
         PAM_FILE_PATH="/etc/authselect/$CURRENT_PROFILE/$PAM_FILE_NAME"
 
         authselect apply-changes -b
-        
+
         if ! grep -qP "^\s*password\s+requisite\s+pam_pwhistory.so\s*.*" "$PAM_FILE_PATH"; then
             # Line matching group + control + module was not found. Check group + module.
             if [ "$(grep -cP '^\s*password\s+.*\s+pam_pwhistory.so\s*' "$PAM_FILE_PATH")" -eq 1 ]; then

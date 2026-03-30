@@ -1,0 +1,57 @@
+# Source: https://nx.dev/docs/getting-started/start-with-existing-project.md
+
+---
+
+title: Add to an Existing Project
+description: Add Nx to any existing project with a single command. Start with task running and caching, then gradually adopt more capabilities.
+sidebar:
+  order: 4
+  label: Add to Existing Project
+filter: 'type:Guides'
+---
+
+{% course_video src="https://youtu.be/3hW53b1IJ84" courseTitle="From PNPM Workspaces to Distributed CI" courseUrl="https://nx.dev/courses/pnpm-nx-next/lessons-01-nx-init" /%}
+
+Nx is designed for incremental adoption. Start with task running and [caching](/docs/features/cache-task-results), then add [plugins](/docs/technologies), [CI integrations](/docs/guides/nx-cloud/setup-ci), or other capabilities as your needs grow.
+
+Add Nx to any existing project with a single command:
+
+```shell
+npx nx@latest init
+```
+
+Whether a monorepo, single project, or something in between, `nx init` walks you through adding and configuring Nx. At the end you'll have an Nx workspace ready for anything.
+
+## Next Steps
+
+After initializing Nx, try these commands:
+
+```shell
+nx build <project-name>      # Run a task
+nx build <project-name>      # Run again - instant cache hit
+nx run-many -t build test    # Run tasks across all projects
+nx graph                     # Visualize project dependencies
+```
+
+From here you can:
+
+- [Configure task caching](/docs/features/cache-task-results) to speed up repeated builds
+- [Add Nx plugins](/docs/technologies) for your tech stack (React, Angular, Node, etc.)
+- [Set up CI](/docs/guides/nx-cloud/setup-ci) with remote caching and affected commands
+- Enable [remote caching](/docs/features/ci-features/remote-cache) with `nx connect`
+
+## In-Depth Guides
+
+{% cardgrid %}
+
+{% linkcard title="Add to Existing Monorepo" href="/docs/guides/adopting-nx/adding-to-monorepo" /%}
+
+{% linkcard title="Add to Any Project" href="/docs/guides/adopting-nx/adding-to-existing-project" /%}
+
+{% linkcard title="Migrate from Angular CLI" href="/docs/technologies/angular/migration/angular" /%}
+
+{% linkcard title="Import Projects into Your Nx Workspace" href="/docs/guides/adopting-nx/import-project" /%}
+
+{% /cardgrid %}
+
+{% linkcard title="See more options" href="/docs/guides/adopting-nx" /%}

@@ -100,6 +100,5 @@ for i in range(len(lst)):
 for i in tab:
   bla(i)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -1,0 +1,91 @@
+# Source: https://docs.snowflake.com/en/sql-reference/sql/alter-iceberg-table-convert-to-managed.md
+
+# ALTER ICEBERG TABLE … CONVERT TO MANAGED
+
+Converts an [Apache Iceberg™ table](../../user-guide/tables-iceberg.md) that uses
+an external Iceberg catalog into a table that uses Snowflake as the catalog (a Snowflake-managed Iceberg table).
+
+The converted table supports both read and write operations,
+and Snowflake handles all life-cycle maintenance, such as compaction, for the table.
+For more information, see [Before and after table conversion](../../user-guide/tables-iceberg-conversion.md).
+
+See also:
+:   [CREATE ICEBERG TABLE](create-iceberg-table.md) , [DROP ICEBERG TABLE](drop-iceberg-table.md) , [SHOW ICEBERG TABLES](show-iceberg-tables.md) , [DESCRIBE ICEBERG TABLE](desc-iceberg-table.md)
+
+## Syntax
+
+```sqlsyntax
+ALTER ICEBERG TABLE [ IF EXISTS ] <table_name> CONVERT TO MANAGED
+  [ BASE_LOCATION = '<directory_for_table_files>' ]
+  [ STORAGE_SERIALIZATION_POLICY = { COMPATIBLE | OPTIMIZED } ]
+```
+
+## Parameters
+
+`table_name`
+:   Identifier for the table to convert.
+
+    If the identifier contains spaces or special characters, the entire string must be enclosed in double quotes.
+    Identifiers enclosed in double quotes are also case-sensitive.
+
+    For more information, see [Identifier requirements](../identifiers-syntax.md).
+
+`[ BASE_LOCATION = 'directory_for_table_files' ]`
+:   The path to a directory where Snowflake can write data and metadata files for the table.
+    Specify a relative path from the table’s `EXTERNAL_VOLUME` location.
+    For more information, see [Data and metadata directories](../../user-guide/tables-iceberg-storage.md).
+
+    You must specify a value for this property if the original CREATE ICEBERG TABLE statement did not allow or include a
+    `BASE_LOCATION`.
+
+    This directory can’t be changed after you convert a table.
+
+`STORAGE_SERIALIZATION_POLICY = { COMPATIBLE | OPTIMIZED }`
+:   Specifies the storage serialization policy for the table.
+    If not specified during conversion, the table inherits the value set at the schema, database, or account level. If the value isn’t
+    specified at any level, the table uses the default value.
+
+    You can’t change the value of this parameter after you convert a table.
+
+    * `COMPATIBLE`: Snowflake performs encoding and compression that ensures interoperability with third-party compute engines.
+    * `OPTIMIZED`: Snowflake performs encoding and compression that ensures the best table performance within Snowflake.
+
+    Default: `OPTIMIZED`
+
+## Access control requirements
+
+A [role](../../user-guide/security-access-control-overview.md) used to execute this operation must have the following
+[privileges](../../user-guide/security-access-control-overview.md) at a minimum:
+
+| Privilege | Object | Notes |
+| --- | --- | --- |
+| OWNERSHIP | Iceberg table | OWNERSHIP is a special privilege on an object that is automatically granted to the role that created the object, but can also be transferred using the [GRANT OWNERSHIP](grant-ownership.md) command to a different role by the owning role (or any role with the MANAGE GRANTS privilege). |
+| USAGE | External volume |  |
+| USAGE | Catalog integration |  |
+
+Operating on an object in a schema requires at least one privilege on the parent database and at least one privilege on the parent schema.
+
+For instructions on creating a custom role with a specified set of privileges, see [Creating custom roles](../../user-guide/security-access-control-configure.md).
+
+For general information about roles and privilege grants for performing SQL actions on
+[securable objects](../../user-guide/security-access-control-overview.md), see [Overview of Access Control](../../user-guide/security-access-control-overview.md).
+
+## Usage notes
+
+* Only the table owner (that is, the role with the OWNERSHIP privilege on the table) or higher can execute this command.
+* Converting a table in a catalog-linked database isn’t supported.
+* Regarding metadata:
+
+  > **Attention:**
+  >
+  > Customers should ensure that no personal data (other than for a User object), sensitive data, export-controlled data, or other regulated data is entered as metadata when using the Snowflake service. For more information, see [Metadata fields in Snowflake](../metadata.md).
+
+## Examples
+
+The following example uses the ALTER ICEBERG TABLE … CONVERT TO MANAGED statement to
+convert a table that Snowflake doesn’t manage into a table that uses Snowflake as the Iceberg catalog.
+
+```sqlexample
+ALTER ICEBERG TABLE myTable CONVERT TO MANAGED
+  BASE_LOCATION = 'my/relative/path/from/external_volume';
+```

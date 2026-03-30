@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure users' .netrc Files are not group or world accessible
- 
+
 ## Description{% #description %}
 
 While the system administrator can establish secure permissions for users' .netrc files, the users can easily override these. This rule ensures every .netrc file or directory under the home directory related to an interactive user is not group or world accessible

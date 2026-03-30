@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Kubernetes PKI directories should be owned by root
- 
+
 ## Description{% #description %}
 
 Ensure that the Kubernetes PKI directories and subsequent certificate files are owned by `root:root`. Kubernetes makes use of a number of certificates as part of its operation. You should set the ownership of the directory containing the PKI information and all files in that directory to maintain their integrity.

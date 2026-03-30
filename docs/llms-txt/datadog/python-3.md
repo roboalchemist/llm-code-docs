@@ -58,7 +58,7 @@ After addressing the incompatibilities, the same command returns nothing:
 
 ```bash
 $ python2 -m pylint -sn --py3k ~/dev/my-check.py
-$ 
+$
 ```
 
 While `pylint` catches any issue that could prevent the Python 3 interpreter from running code at all, it cannot check for logical validity. After code changes are made, make sure to run the check and validate the output.
@@ -225,9 +225,9 @@ Suppose your package is structured like this:
 
 ```text
 mypackage/
-	__init__.py
-	math.py
-	foo.py
+    __init__.py
+    math.py
+    foo.py
 ```
 
 Suppose also that `math.py` contains a function called `gcd`âwhich contains subtleties distinct from the standard library `math` module's `gcd` functionâand you want to use the `gcd` function from your local package, not the one from the standard library.

@@ -40,7 +40,7 @@ Do not make any check using `hasattr` to check if a function is callable since t
 ## Non-Compliant Code Examples{% #non-compliant-code-examples %}
 
 ```python
-hasattr(x, '__call__')  # use callable 
+hasattr(x, '__call__')  # use callable
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}
@@ -48,6 +48,5 @@ hasattr(x, '__call__')  # use callable
 ```python
 callable(x)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

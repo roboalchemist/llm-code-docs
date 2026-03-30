@@ -1,19 +1,15 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/prefer-literal-enum-member.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/prefer-literal-enum-member.md
----
-
-### What it does
+## What it does
 
 Explicit enum value must only be a literal value (string, number, boolean, etc).
 
-### Why is this bad?
+## Why is this bad?
 
 TypeScript allows the value of an enum member to be many different kinds of valid JavaScript expressions.
 However, because enums create their own scope whereby each enum member becomes a variable in that scope, developers are often surprised at the resultant values.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -32,7 +28,7 @@ enum Foo {
 
 This rule accepts a configuration object with the following properties:
 
-### allowBitwiseExpressions
+## allowBitwiseExpressions
 
 type: `boolean`
 

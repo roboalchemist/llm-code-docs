@@ -7,14 +7,14 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Set Password Maximum Age
 ---
 
 # Set Password Maximum Age
- 
+
 ## Description{% #description %}
 
 To specify password maximum age for new accounts, edit the file `/etc/login.defs` and add or correct the following line:
 
 ```
 PASS_MAX_DAYS 365
-         
+
 ```
 
 A value of 180 days is sufficient for many environments. The DoD requirement is 60. The profile requirement is `365`.

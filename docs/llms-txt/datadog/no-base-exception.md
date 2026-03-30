@@ -41,32 +41,31 @@ Do not raise `Exception` and `BaseException`. These are too generic. Having gene
 
 ```python
 if foo:
-	raise Exception("bla")
+    raise Exception("bla")
 elif bar:
-	raise Exception
+    raise Exception
 else:
-	raise Exception
+    raise Exception
 ```
 
 ```python
 def use_base_exception():
-	raise Exception
-	raise Exception("awesome")
+    raise Exception
+    raise Exception("awesome")
 ```
 
 ```python
 for v in list:
-	raise BaseException
+    raise BaseException
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}
 
 ```python
 if foo:
-	print("bar")
+    print("bar")
 else:
-	raise ValueError
+    raise ValueError
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -1,10 +1,6 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/state-in-constructor.md
 
----
-url: /docs/guide/usage/linter/rules/react/state-in-constructor.md
----
-
-### What it does
+## What it does
 
 Enforces the state initialization style to be either in a
 constructor or with a class property.
@@ -12,12 +8,12 @@ constructor or with a class property.
 This rule is not relevant for function components, and so can potentially be
 disabled for modern React codebases.
 
-### Why is this bad?
+## Why is this bad?
 
 Inconsistent state initialization styles can make the codebase harder to maintain and understand.
 This rule enforces a consistent pattern across React class components.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule by default, with `"always"` mode:
 
@@ -44,7 +40,7 @@ class Foo extends React.Component {
 }
 ```
 
-#### `"never"` mode
+### `"never"` mode
 
 Will enforce the state initialization style to be with a class property.
 
@@ -77,12 +73,12 @@ class Foo extends React.Component {
 
 This rule accepts one of the following string values:
 
-### `"always"`
+## `"always"`
 
 Enforce state initialization in the constructor.
 This is the default mode.
 
-### `"never"`
+## `"never"`
 
 Enforce state initialization with a class property.
 

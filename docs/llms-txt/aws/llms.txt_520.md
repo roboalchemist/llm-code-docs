@@ -1,0 +1,443 @@
+# Source: https://docs.aws.amazon.com/lexv2/latest/APIReference/llms.txt
+
+# Amazon Lex API Reference 
+
+> Details about operations and parameters in the Amazon Lex API Reference
+
+## [Amazon Lex V2 API Reference](https://docs.aws.amazon.com/lexv2/latest/APIReference/welcome.html)
+
+### [Actions](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_Operations.html)
+
+The following actions are supported by Amazon Lex Model Building V2:
+
+### [Amazon Lex Model Building V2](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_Operations_Amazon_Lex_Model_Building_V2.html)
+
+The following actions are supported by Amazon Lex Model Building V2:
+
+- [BatchCreateCustomVocabularyItem](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BatchCreateCustomVocabularyItem.html): Create a batch of custom vocabulary items for a given bot locale's custom vocabulary.
+- [BatchDeleteCustomVocabularyItem](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BatchDeleteCustomVocabularyItem.html): Delete a batch of custom vocabulary items for a given bot locale's custom vocabulary.
+- [BatchUpdateCustomVocabularyItem](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BatchUpdateCustomVocabularyItem.html): Update a batch of custom vocabulary items for a given bot locale's custom vocabulary.
+- [BuildBotLocale](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BuildBotLocale.html): Builds a bot, its intents, and its slot types into a specific locale.
+- [CreateBot](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CreateBot.html): Creates an Amazon Lex conversational bot.
+- [CreateBotAlias](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CreateBotAlias.html): Creates an alias for the specified version of a bot.
+- [CreateBotLocale](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CreateBotLocale.html): Creates a locale in the bot.
+- [CreateBotReplica](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CreateBotReplica.html): Action to create a replication of the source bot in the secondary region.
+- [CreateBotVersion](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CreateBotVersion.html): Creates an immutable version of the bot.
+- [CreateExport](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CreateExport.html): Creates a zip archive containing the contents of a bot or a bot locale.
+- [CreateIntent](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CreateIntent.html): Creates an intent.
+- [CreateResourcePolicy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CreateResourcePolicy.html): Creates a new resource policy with the specified policy statements.
+- [CreateResourcePolicyStatement](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CreateResourcePolicyStatement.html): Adds a new resource policy statement to a bot or bot alias.
+- [CreateSlot](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CreateSlot.html): Creates a slot in an intent.
+- [CreateSlotType](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CreateSlotType.html): Creates a custom slot type
+- [CreateTestSetDiscrepancyReport](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CreateTestSetDiscrepancyReport.html): Create a report that describes the differences between the bot and the test set.
+- [CreateUploadUrl](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CreateUploadUrl.html): Gets a pre-signed S3 write URL that you use to upload the zip archive when importing a bot or a bot locale.
+- [DeleteBot](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DeleteBot.html): Deletes all versions of a bot, including the Draft version.
+- [DeleteBotAlias](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DeleteBotAlias.html): Deletes the specified bot alias.
+- [DeleteBotLocale](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DeleteBotLocale.html): Removes a locale from a bot.
+- [DeleteBotReplica](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DeleteBotReplica.html): The action to delete the replicated bot in the secondary region.
+- [DeleteBotVersion](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DeleteBotVersion.html): Deletes a specific version of a bot.
+- [DeleteCustomVocabulary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DeleteCustomVocabulary.html): Removes a custom vocabulary from the specified locale in the specified bot.
+- [DeleteExport](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DeleteExport.html): Removes a previous export and the associated files stored in an S3 bucket.
+- [DeleteImport](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DeleteImport.html): Removes a previous import and the associated file stored in an S3 bucket.
+- [DeleteIntent](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DeleteIntent.html): Removes the specified intent.
+- [DeleteResourcePolicy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DeleteResourcePolicy.html): Removes an existing policy from a bot or bot alias.
+- [DeleteResourcePolicyStatement](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DeleteResourcePolicyStatement.html): Deletes a policy statement from a resource policy.
+- [DeleteSlot](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DeleteSlot.html): Deletes the specified slot from an intent.
+- [DeleteSlotType](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DeleteSlotType.html): Deletes a slot type from a bot locale.
+- [DeleteTestSet](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DeleteTestSet.html): The action to delete the selected test set.
+- [DeleteUtterances](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DeleteUtterances.html): Deletes stored utterances.
+- [DescribeBot](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeBot.html): Provides metadata information about a bot.
+- [DescribeBotAlias](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeBotAlias.html): Get information about a specific bot alias.
+- [DescribeBotLocale](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeBotLocale.html): Describes the settings that a bot has for a specific locale.
+- [DescribeBotRecommendation](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeBotRecommendation.html): Provides metadata information about a bot recommendation.
+- [DescribeBotReplica](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeBotReplica.html): Monitors the bot replication status through the UI console.
+- [DescribeBotResourceGeneration](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeBotResourceGeneration.html): Returns information about a request to generate a bot through natural language description, made through the StartBotResource API.
+- [DescribeBotVersion](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeBotVersion.html): Provides metadata about a version of a bot.
+- [DescribeCustomVocabularyMetadata](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeCustomVocabularyMetadata.html): Provides metadata information about a custom vocabulary.
+- [DescribeExport](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeExport.html): Gets information about a specific export.
+- [DescribeImport](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeImport.html): Gets information about a specific import.
+- [DescribeIntent](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeIntent.html): Returns metadata about an intent.
+- [DescribeResourcePolicy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeResourcePolicy.html): Gets the resource policy and policy revision for a bot or bot alias.
+- [DescribeSlot](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeSlot.html): Gets metadata information about a slot.
+- [DescribeSlotType](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeSlotType.html): Gets metadata information about a slot type.
+- [DescribeTestExecution](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeTestExecution.html): Gets metadata information about the test execution.
+- [DescribeTestSet](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeTestSet.html): Gets metadata information about the test set.
+- [DescribeTestSetDiscrepancyReport](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeTestSetDiscrepancyReport.html): Gets metadata information about the test set discrepancy report.
+- [DescribeTestSetGeneration](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescribeTestSetGeneration.html): Gets metadata information about the test set generation.
+- [GenerateBotElement](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_GenerateBotElement.html): Generates sample utterances for an intent.
+- [GetTestExecutionArtifactsUrl](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_GetTestExecutionArtifactsUrl.html): The pre-signed Amazon S3 URL to download the test execution result artifacts.
+- [ListAggregatedUtterances](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListAggregatedUtterances.html): Provides a list of utterances that users have sent to the bot.
+- [ListBotAliases](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListBotAliases.html): Gets a list of aliases for the specified bot.
+- [ListBotAliasReplicas](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListBotAliasReplicas.html): The action to list the replicated bots created from the source bot alias.
+- [ListBotLocales](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListBotLocales.html): Gets a list of locales for the specified bot.
+- [ListBotRecommendations](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListBotRecommendations.html): Get a list of bot recommendations that meet the specified criteria.
+- [ListBotReplicas](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListBotReplicas.html): The action to list the replicated bots.
+- [ListBotResourceGenerations](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListBotResourceGenerations.html): Lists the generation requests made for a bot locale.
+- [ListBots](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListBots.html): Gets a list of available bots.
+- [ListBotVersionReplicas](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListBotVersionReplicas.html): Contains information about all the versions replication statuses applicable for Global Resiliency.
+- [ListBotVersions](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListBotVersions.html): Gets information about all of the versions of a bot.
+- [ListBuiltInIntents](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListBuiltInIntents.html): Gets a list of built-in intents provided by Amazon Lex that you can use in your bot.
+- [ListBuiltInSlotTypes](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListBuiltInSlotTypes.html): Gets a list of built-in slot types that meet the specified criteria.
+- [ListCustomVocabularyItems](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListCustomVocabularyItems.html): Paginated list of custom vocabulary items for a given bot locale's custom vocabulary.
+- [ListExports](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListExports.html): Lists the exports for a bot, bot locale, or custom vocabulary.
+- [ListImports](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListImports.html): Lists the imports for a bot, bot locale, or custom vocabulary.
+- [ListIntentMetrics](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListIntentMetrics.html): Retrieves summary metrics for the intents in your bot.
+- [ListIntentPaths](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListIntentPaths.html): Retrieves summary statistics for a path of intents that users take over sessions with your bot.
+- [ListIntents](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListIntents.html): Get a list of intents that meet the specified criteria.
+- [ListIntentStageMetrics](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListIntentStageMetrics.html): Retrieves summary metrics for the stages within intents in your bot.
+- [ListRecommendedIntents](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListRecommendedIntents.html): Gets a list of recommended intents provided by the bot recommendation that you can use in your bot.
+- [ListSessionAnalyticsData](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListSessionAnalyticsData.html): Retrieves a list of metadata for individual user sessions with your bot.
+- [ListSessionMetrics](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListSessionMetrics.html): Retrieves summary metrics for the user sessions with your bot.
+- [ListSlots](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListSlots.html): Gets a list of slots that match the specified criteria.
+- [ListSlotTypes](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListSlotTypes.html): Gets a list of slot types that match the specified criteria.
+- [ListTagsForResource](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListTagsForResource.html): Gets a list of tags associated with a resource.
+- [ListTestExecutionResultItems](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListTestExecutionResultItems.html): Gets a list of test execution result items.
+- [ListTestExecutions](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListTestExecutions.html): The list of test set executions.
+- [ListTestSetRecords](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListTestSetRecords.html): The list of test set records.
+- [ListTestSets](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListTestSets.html): The list of the test sets
+- [ListUtteranceAnalyticsData](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListUtteranceAnalyticsData.html)
+- [ListUtteranceMetrics](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ListUtteranceMetrics.html)
+- [SearchAssociatedTranscripts](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SearchAssociatedTranscripts.html): Search for associated transcripts that meet the specified criteria.
+- [StartBotRecommendation](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_StartBotRecommendation.html): Use this to provide your transcript data, and to start the bot recommendation process.
+- [StartBotResourceGeneration](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_StartBotResourceGeneration.html): Starts a request for the descriptive bot builder to generate a bot locale configuration based on the prompt you provide it.
+- [StartImport](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_StartImport.html): Starts importing a bot, bot locale, or custom vocabulary from a zip archive that you uploaded to an S3 bucket.
+- [StartTestExecution](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_StartTestExecution.html): The action to start test set execution.
+- [StartTestSetGeneration](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_StartTestSetGeneration.html): The action to start the generation of test set.
+- [StopBotRecommendation](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_StopBotRecommendation.html): Stop an already running Bot Recommendation request.
+- [TagResource](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TagResource.html): Adds the specified tags to the specified resource.
+- [UntagResource](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UntagResource.html): Removes tags from a bot, bot alias, or bot channel.
+- [UpdateBot](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UpdateBot.html): Updates the configuration of an existing bot.
+- [UpdateBotAlias](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UpdateBotAlias.html): Updates the configuration of an existing bot alias.
+- [UpdateBotLocale](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UpdateBotLocale.html): Updates the settings that a bot has for a specific locale.
+- [UpdateBotRecommendation](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UpdateBotRecommendation.html): Updates an existing bot recommendation request.
+- [UpdateExport](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UpdateExport.html): Updates the password used to protect an export zip archive.
+- [UpdateIntent](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UpdateIntent.html): Updates the settings for an intent.
+- [UpdateResourcePolicy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UpdateResourcePolicy.html): Replaces the existing resource policy for a bot or bot alias with a new one.
+- [UpdateSlot](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UpdateSlot.html): Updates the settings for a slot.
+- [UpdateSlotType](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UpdateSlotType.html): Updates the configuration of an existing slot type.
+- [UpdateTestSet](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UpdateTestSet.html): The action to update the test set.
+
+### [Amazon Lex Runtime V2](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_Operations_Amazon_Lex_Runtime_V2.html)
+
+The following actions are supported by Amazon Lex Runtime V2:
+
+- [DeleteSession](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_DeleteSession.html): Removes session information for a specified bot, alias, and user ID.
+- [GetSession](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_GetSession.html): Returns session information for a specified bot, alias, and user.
+- [PutSession](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_PutSession.html): Creates a new session or modifies an existing session with an Amazon Lex V2 bot.
+- [RecognizeText](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_RecognizeText.html): Sends user input to Amazon Lex V2.
+- [RecognizeUtterance](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_RecognizeUtterance.html): Sends user input to Amazon Lex V2.
+- [StartConversation](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_StartConversation.html): Starts an HTTP/2 bidirectional event stream that enables you to send audio, text, or DTMF input in real time.
+
+### [Data Types](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_Types.html)
+
+The following data types are supported by Amazon Lex Model Building V2:
+
+### [Amazon Lex Model Building V2](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_Types_Amazon_Lex_Model_Building_V2.html)
+
+The following data types are supported by Amazon Lex Model Building V2:
+
+- [ActiveContext](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ActiveContext.html): The active context used in the test execution.
+- [AdvancedRecognitionSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AdvancedRecognitionSetting.html): Provides settings that enable advanced recognition settings for slot values.
+- [AgentTurnResult](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AgentTurnResult.html): The information about the agent turn in a test set execution.
+- [AgentTurnSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AgentTurnSpecification.html): The specification of an agent turn.
+- [AggregatedUtterancesFilter](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AggregatedUtterancesFilter.html): Filters responses returned by the ListAggregatedUtterances operation.
+- [AggregatedUtterancesSortBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AggregatedUtterancesSortBy.html): Specifies attributes for sorting a list of utterances.
+- [AggregatedUtterancesSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AggregatedUtterancesSummary.html): Provides summary information for aggregated utterances.
+- [AllowedInputTypes](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AllowedInputTypes.html): Specifies the allowed input types.
+- [AnalyticsBinBySpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsBinBySpecification.html): Contains the time metric, interval, and method by which to bin the analytics data.
+- [AnalyticsBinKey](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsBinKey.html): An object containing the criterion by which to bin the results and the value that defines that bin.
+- [AnalyticsIntentFilter](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsIntentFilter.html): Contains fields describing a condition by which to filter the intents.
+- [AnalyticsIntentGroupByKey](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsIntentGroupByKey.html): Contains the category by which the intent analytics were grouped and a member of that category.
+- [AnalyticsIntentGroupBySpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsIntentGroupBySpecification.html): Contains the category by which to group the intents.
+- [AnalyticsIntentMetric](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsIntentMetric.html): Contains the metric and the summary statistic you want to calculate, and the order in which to sort the results, for the intents in the bot.
+- [AnalyticsIntentMetricResult](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsIntentMetricResult.html): An object containing the results for the intent metric you requested.
+- [AnalyticsIntentNodeSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsIntentNodeSummary.html): An object containing information about the requested path.
+- [AnalyticsIntentResult](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsIntentResult.html): An object containing the results for the intent metrics you requested and the bin and/or group(s) they refer to, if applicable.
+- [AnalyticsIntentStageFilter](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsIntentStageFilter.html): Contains fields describing a condition by which to filter the intent stages.
+- [AnalyticsIntentStageGroupByKey](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsIntentStageGroupByKey.html): Contains the category by which the intent stage analytics and the values for that category were grouped.
+- [AnalyticsIntentStageGroupBySpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsIntentStageGroupBySpecification.html): Contains the category by which to group the intent stages.
+- [AnalyticsIntentStageMetric](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsIntentStageMetric.html): Contains the metric and the summary statistic you want to calculate, and the order in which to sort the results, for the intent stages across the user sessions with the bot.
+- [AnalyticsIntentStageMetricResult](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsIntentStageMetricResult.html): An object containing the results for an intent stage metric you requested.
+- [AnalyticsIntentStageResult](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsIntentStageResult.html): An object containing the results for the intent stage metrics you requested and the bin and/or group they refer to, if applicable.
+- [AnalyticsPathFilter](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsPathFilter.html): Contains fields describing a condition by which to filter the paths.
+- [AnalyticsSessionFilter](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsSessionFilter.html): Contains fields describing a condition by which to filter the sessions.
+- [AnalyticsSessionGroupByKey](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsSessionGroupByKey.html): Contains the category by which the session analytics were grouped and a member of that category.
+- [AnalyticsSessionGroupBySpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsSessionGroupBySpecification.html): Contains the category by which to group the sessions.
+- [AnalyticsSessionMetric](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsSessionMetric.html): Contains the metric and the summary statistic you want to calculate, and the order in which to sort the results, for the user sessions with the bot.
+- [AnalyticsSessionMetricResult](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsSessionMetricResult.html): An object containing the results for a session metric you requested.
+- [AnalyticsSessionResult](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsSessionResult.html): An object containing the results for the session metrics you requested and the bin and/or group(s) they refer to, if applicable.
+- [AnalyticsUtteranceAttribute](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsUtteranceAttribute.html): An object that specifies the last used intent at the time of the utterance as an attribute to return.
+- [AnalyticsUtteranceAttributeResult](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsUtteranceAttributeResult.html): An object containing the intent that the bot mapped the utterance to.
+- [AnalyticsUtteranceFilter](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsUtteranceFilter.html): Contains fields describing a condition by which to filter the utterances.
+- [AnalyticsUtteranceGroupByKey](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsUtteranceGroupByKey.html): Contains the category by which the utterance analytics were grouped and the values for that category.
+- [AnalyticsUtteranceGroupBySpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsUtteranceGroupBySpecification.html): Contains the category by which to group the utterances.
+- [AnalyticsUtteranceMetric](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsUtteranceMetric.html): Contains the metric and the summary statistic you want to calculate, and the order in which to sort the results, for the utterances across the user sessions with the bot.
+- [AnalyticsUtteranceMetricResult](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsUtteranceMetricResult.html): An object containing the results for the utterance metric you requested.
+- [AnalyticsUtteranceResult](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AnalyticsUtteranceResult.html): An object containing the results for the utterance metrics you requested and the bin and/or group(s) they refer to, if applicable.
+- [AssociatedTranscript](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AssociatedTranscript.html): The object containing information that associates the recommended intent/slot type with a conversation.
+- [AssociatedTranscriptFilter](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AssociatedTranscriptFilter.html): Filters to search for the associated transcript.
+- [AudioAndDTMFInputSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AudioAndDTMFInputSpecification.html): Specifies the audio and DTMF input specification.
+- [AudioLogDestination](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AudioLogDestination.html): The location of audio log files collected when conversation logging is enabled for a bot.
+- [AudioLogSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AudioLogSetting.html): Settings for logging audio of conversations between Amazon Lex and a user.
+- [AudioSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_AudioSpecification.html): Specifies the audio input specifications.
+- [BedrockGuardrailConfiguration](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BedrockGuardrailConfiguration.html): The details on the Bedrock guardrail configuration.
+- [BedrockKnowledgeStoreConfiguration](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BedrockKnowledgeStoreConfiguration.html): Contains details about the configuration of a Amazon Bedrock knowledge base.
+- [BedrockKnowledgeStoreExactResponseFields](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BedrockKnowledgeStoreExactResponseFields.html): The exact response fields given by the Bedrock knowledge store.
+- [BedrockModelSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BedrockModelSpecification.html): Contains information about the Amazon Bedrock model used to interpret the prompt used in descriptive bot building.
+- [BotAliasHistoryEvent](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotAliasHistoryEvent.html): Provides a record of an event that affects a bot alias.
+- [BotAliasLocaleSettings](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotAliasLocaleSettings.html): Specifies settings that are unique to a locale.
+- [BotAliasReplicaSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotAliasReplicaSummary.html): Contains information about all the aliases replication statuses applicable for global resiliency.
+- [BotAliasSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotAliasSummary.html): Summary information about bot aliases returned from the ListBotAliases operation.
+- [BotAliasTestExecutionTarget](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotAliasTestExecutionTarget.html): The target Amazon S3 location for the test set execution using a bot alias.
+- [BotExportSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotExportSpecification.html): Provides the identity of a the bot that was exported.
+- [BotFilter](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotFilter.html): Filters the responses returned by the ListBots operation.
+- [BotImportSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotImportSpecification.html): Provides the bot parameters required for importing a bot.
+- [BotLocaleExportSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotLocaleExportSpecification.html): Provides the bot locale parameters required for exporting a bot locale.
+- [BotLocaleFilter](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotLocaleFilter.html): Filters responses returned by the ListBotLocales operation.
+- [BotLocaleHistoryEvent](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotLocaleHistoryEvent.html): Provides information about an event that occurred affecting the bot locale.
+- [BotLocaleImportSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotLocaleImportSpecification.html): Provides the bot locale parameters required for importing a bot locale.
+- [BotLocaleSortBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotLocaleSortBy.html): Specifies attributes for sorting a list of bot locales.
+- [BotLocaleSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotLocaleSummary.html): Summary information about bot locales returned by the ListBotLocales operation.
+- [BotMember](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotMember.html): A bot that is a member of a network of bots.
+- [BotRecommendationResults](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotRecommendationResults.html): The object representing the URL of the bot definition, the URL of the associated transcript, and a statistical summary of the bot recommendation results.
+- [BotRecommendationResultStatistics](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotRecommendationResultStatistics.html): A statistical summary of the bot recommendation results.
+- [BotRecommendationSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotRecommendationSummary.html): A summary of the bot recommendation.
+- [BotReplicaSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotReplicaSummary.html): Contains summary information about all the replication statuses applicable for global resiliency.
+- [BotSortBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotSortBy.html): Specifies attributes for sorting a list of bots.
+- [BotSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotSummary.html): Summary information about a bot returned by the ListBots operation.
+- [BotVersionLocaleDetails](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotVersionLocaleDetails.html): The version of a bot used for a bot locale.
+- [BotVersionReplicaSortBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotVersionReplicaSortBy.html): The sort category for the version replicated bots.
+- [BotVersionReplicaSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotVersionReplicaSummary.html): Contains summary information for all the version replication statuses applicable for Global resiliency.
+- [BotVersionSortBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotVersionSortBy.html): Specifies attributes for sorting a list of bot versions.
+- [BotVersionSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BotVersionSummary.html): Summary information about a bot version returned by the ListBotVersions operation.
+- [BuildtimeSettings](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BuildtimeSettings.html): Contains specifications about the Amazon Lex build time generative AI capabilities from Amazon Bedrock that you can turn on for your bot.
+- [BuiltInIntentSortBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BuiltInIntentSortBy.html): Specifies attributes for sorting a list of built-in intents.
+- [BuiltInIntentSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BuiltInIntentSummary.html): Provides summary information about a built-in intent for the ListBuiltInIntents operation.
+- [BuiltInSlotTypeSortBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BuiltInSlotTypeSortBy.html): Specifies attributes for sorting a list of built-in slot types.
+- [BuiltInSlotTypeSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_BuiltInSlotTypeSummary.html): Provides summary information about a built-in slot type for the ListBuiltInSlotTypes operation.
+- [Button](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_Button.html): Describes a button to use on a response card used to gather slot values from a user.
+- [CloudWatchLogGroupLogDestination](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CloudWatchLogGroupLogDestination.html): The Amazon CloudWatch Logs log group where the text and metadata logs are delivered.
+- [CodeHookSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CodeHookSpecification.html): Contains information about code hooks that Amazon Lex calls during a conversation.
+- [CompositeSlotTypeSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CompositeSlotTypeSetting.html): A composite slot is a combination of two or more slots that capture multiple pieces of information in a single user input.
+- [Condition](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_Condition.html): Provides an expression that evaluates to true or false.
+- [ConditionalBranch](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ConditionalBranch.html): A set of actions that Amazon Lex should run if the condition is matched.
+- [ConditionalSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ConditionalSpecification.html): Provides a list of conditional branches.
+- [ConversationLevelIntentClassificationResultItem](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ConversationLevelIntentClassificationResultItem.html): The item listing the evaluation of intent level success or failure.
+- [ConversationLevelResultDetail](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ConversationLevelResultDetail.html): The conversation level details of the conversation used in the test set.
+- [ConversationLevelSlotResolutionResultItem](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ConversationLevelSlotResolutionResultItem.html): The slots used for the slot resolution in the conversation.
+- [ConversationLevelTestResultItem](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ConversationLevelTestResultItem.html): The test result evaluation item at the conversation level.
+- [ConversationLevelTestResults](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ConversationLevelTestResults.html): The test set results data at the conversation level.
+- [ConversationLevelTestResultsFilterBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ConversationLevelTestResultsFilterBy.html): The selection to filter the test set results data at the conversation level.
+- [ConversationLogsDataSource](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ConversationLogsDataSource.html): The data source that uses conversation logs.
+- [ConversationLogsDataSourceFilterBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ConversationLogsDataSourceFilterBy.html): The selected data source to filter the conversation log.
+- [ConversationLogSettings](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ConversationLogSettings.html): Configures conversation logging that saves audio, text, and metadata for the conversations with your users.
+- [CustomPayload](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CustomPayload.html): A custom response string that Amazon Lex sends to your application.
+- [CustomVocabularyEntryId](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CustomVocabularyEntryId.html): The unique entry identifier for the custom vocabulary items.
+- [CustomVocabularyExportSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CustomVocabularyExportSpecification.html): Provides the parameters required for exporting a custom vocabulary.
+- [CustomVocabularyImportSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CustomVocabularyImportSpecification.html): Provides the parameters required for importing a custom vocabulary.
+- [CustomVocabularyItem](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_CustomVocabularyItem.html): The unique custom vocabulary item from the custom vocabulary list.
+- [DataPrivacy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DataPrivacy.html): By default, data stored by Amazon Lex is encrypted.
+- [DataSourceConfiguration](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DataSourceConfiguration.html): Contains details about the configuration of the knowledge store used for the AMAZON.QnAIntent.
+- [DateRangeFilter](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DateRangeFilter.html): The object used for specifying the data range that the customer wants Amazon Lex to read through in the input transcripts.
+- [DeepgramSpeechModelConfig](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DeepgramSpeechModelConfig.html): Configuration settings for integrating Deepgram speech-to-text models with Amazon Lex.
+- [DefaultConditionalBranch](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DefaultConditionalBranch.html): A set of actions that Amazon Lex should run if none of the other conditions are met.
+- [DescriptiveBotBuilderSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DescriptiveBotBuilderSpecification.html): Contains specifications for the descriptive bot building feature.
+- [DialogAction](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DialogAction.html): Defines the action that the bot executes at runtime when the conversation reaches this step.
+- [DialogCodeHookInvocationSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DialogCodeHookInvocationSetting.html): Settings that specify the dialog code hook that is called by Amazon Lex at a step of the conversation.
+- [DialogCodeHookSettings](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DialogCodeHookSettings.html): Settings that determine the Lambda function that Amazon Lex uses for processing user responses.
+- [DialogState](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DialogState.html): The current state of the conversation with the user.
+- [DTMFSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_DTMFSpecification.html): Specifies the DTMF input specifications.
+- [ElicitationCodeHookInvocationSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ElicitationCodeHookInvocationSetting.html): Settings that specify the dialog code hook that is called by Amazon Lex between eliciting slot values.
+- [EncryptionSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_EncryptionSetting.html): The object representing the passwords that were used to encrypt the data related to the bot recommendation, as well as the AWS KMS key ARN used to encrypt the associated metadata.
+- [ErrorLogSettings](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ErrorLogSettings.html): Settings parameters for the error logs, whether it is enabled or disabled.
+- [ExactResponseFields](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ExactResponseFields.html): Contains the names of the fields used for an exact response to the user.
+- [ExecutionErrorDetails](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ExecutionErrorDetails.html): Details about an error in an execution of a test set.
+- [ExportFilter](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ExportFilter.html): Filters the response form the ListExports operation
+- [ExportResourceSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ExportResourceSpecification.html): Provides information about the bot or bot locale that you want to export.
+- [ExportSortBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ExportSortBy.html): Provides information about sorting a list of exports.
+- [ExportSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ExportSummary.html): Provides summary information about an export in an export list.
+- [ExternalSourceSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ExternalSourceSetting.html): Provides information about the external source of the slot type's definition.
+- [FailedCustomVocabularyItem](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_FailedCustomVocabularyItem.html): The unique failed custom vocabulary item from the custom vocabulary list.
+- [FulfillmentCodeHookSettings](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_FulfillmentCodeHookSettings.html): Determines if a Lambda function should be invoked for a specific intent.
+- [FulfillmentStartResponseSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_FulfillmentStartResponseSpecification.html): Provides settings for a message that is sent to the user when a fulfillment Lambda function starts running.
+- [FulfillmentUpdateResponseSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_FulfillmentUpdateResponseSpecification.html): Provides settings for a message that is sent periodically to the user while a fulfillment Lambda function is running.
+- [FulfillmentUpdatesSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_FulfillmentUpdatesSpecification.html): Provides information for updating the user on the progress of fulfilling an intent.
+- [GenerationSortBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_GenerationSortBy.html): Specifies the attribute and method by which to sort the generation request information.
+- [GenerationSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_GenerationSummary.html): Contains information about a generation request made for the bot locale.
+- [GenerativeAISettings](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_GenerativeAISettings.html): Contains specifications about the generative AI capabilities from Amazon Bedrock that you can turn on for your bot.
+- [GrammarSlotTypeSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_GrammarSlotTypeSetting.html): Settings requried for a slot type based on a grammar that you provide.
+- [GrammarSlotTypeSource](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_GrammarSlotTypeSource.html): Describes the Amazon S3 bucket name and location for the grammar that is the source for the slot type.
+- [ImageResponseCard](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ImageResponseCard.html): A card that is shown to the user by a messaging platform.
+- [ImportFilter](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ImportFilter.html): Filters the response from the ListImports operation.
+- [ImportResourceSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ImportResourceSpecification.html): Provides information about the bot or bot locale that you want to import.
+- [ImportSortBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ImportSortBy.html): Provides information for sorting a list of imports.
+- [ImportSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ImportSummary.html): Provides summary information about an import in an import list.
+- [InitialResponseSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_InitialResponseSetting.html): Configuration setting for a response sent to the user before Amazon Lex starts eliciting slots.
+- [InputContext](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_InputContext.html): A context that must be active for an intent to be selected by Amazon Lex.
+- [InputSessionStateSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_InputSessionStateSpecification.html): Specifications for the current state of the dialog between the user and the bot in the test set.
+- [IntentClassificationTestResultItem](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_IntentClassificationTestResultItem.html): Information for an intent that is classified by the test workbench.
+- [IntentClassificationTestResultItemCounts](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_IntentClassificationTestResultItemCounts.html): The number of items in the intent classification test.
+- [IntentClassificationTestResults](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_IntentClassificationTestResults.html): Information for the results of the intent classification test.
+- [IntentClosingSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_IntentClosingSetting.html): Provides a statement the Amazon Lex conveys to the user when the intent is successfully fulfilled.
+- [IntentConfirmationSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_IntentConfirmationSetting.html): Provides a prompt for making sure that the user is ready for the intent to be fulfilled.
+- [IntentDisambiguationSettings](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_IntentDisambiguationSettings.html): Configures the Intent Disambiguation feature that helps resolve ambiguous user inputs when multiple intents could match.
+- [IntentFilter](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_IntentFilter.html): Filters the response from the ListIntents operation.
+- [IntentLevelSlotResolutionTestResultItem](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_IntentLevelSlotResolutionTestResultItem.html): Information about intent-level slot resolution in a test result.
+- [IntentLevelSlotResolutionTestResults](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_IntentLevelSlotResolutionTestResults.html): Indicates the success or failure of slots at the intent level.
+- [IntentOverride](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_IntentOverride.html): Override settings to configure the intent state.
+- [IntentSortBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_IntentSortBy.html): Specifies attributes for sorting a list of intents.
+- [IntentStatistics](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_IntentStatistics.html): The object that contains the statistical summary of recommended intents associated with the bot recommendation.
+- [IntentSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_IntentSummary.html): Summary information about an intent returned by the ListIntents operation.
+- [InvokedIntentSample](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_InvokedIntentSample.html): An object containing the name of an intent that was invoked.
+- [KendraConfiguration](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_KendraConfiguration.html): Provides configuration information for the AMAZON.KendraSearchIntent intent.
+- [LambdaCodeHook](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_LambdaCodeHook.html): Specifies a Lambda function that verifies requests to a bot or fulfills the user's request to a bot.
+- [LexTranscriptFilter](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_LexTranscriptFilter.html): The object that contains transcript filter details that are associated with a bot recommendation.
+- [Message](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_Message.html): The object that provides message text and its type.
+- [MessageGroup](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_MessageGroup.html): Provides one or more messages that Amazon Lex should send to the user.
+- [MultipleValuesSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_MultipleValuesSetting.html): Indicates whether a slot can return multiple values.
+- [NewCustomVocabularyItem](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_NewCustomVocabularyItem.html): The new custom vocabulary item from the custom vocabulary list.
+- [NluImprovementSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_NluImprovementSpecification.html): Configures the Assisted Natural Language Understanding (NLU) feature for your bot.
+- [ObfuscationSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ObfuscationSetting.html): Determines whether Amazon Lex obscures slot values in conversation logs.
+- [OpensearchConfiguration](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_OpensearchConfiguration.html): Contains details about the configuration of the Amazon OpenSearch Service database used for the AMAZON.QnAIntent.
+- [OutputContext](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_OutputContext.html): Describes a session context that is activated when an intent is fulfilled.
+- [OverallTestResultItem](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_OverallTestResultItem.html): Information about the overall results for a test execution result.
+- [OverallTestResults](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_OverallTestResults.html): Information about the overall test results.
+- [ParentBotNetwork](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ParentBotNetwork.html): A network of bots.
+- [PathFormat](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_PathFormat.html): The object that contains a path format that will be applied when Amazon Lex reads the transcript file in the bucket you provide.
+- [PlainTextMessage](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_PlainTextMessage.html): Defines an ASCII text message to send to the user.
+- [PostDialogCodeHookInvocationSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_PostDialogCodeHookInvocationSpecification.html): Specifies next steps to run after the dialog code hook finishes.
+- [PostFulfillmentStatusSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_PostFulfillmentStatusSpecification.html): Provides a setting that determines whether the post-fulfillment response is sent to the user.
+- [Principal](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_Principal.html): The IAM principal that you allowing or denying access to an Amazon Lex action.
+- [PromptAttemptSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_PromptAttemptSpecification.html): Specifies the settings on a prompt attempt.
+- [PromptSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_PromptSpecification.html): Specifies a list of message groups that Amazon Lex sends to a user to elicit a response.
+- [QInConnectAssistantConfiguration](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_QInConnectAssistantConfiguration.html): The configuration details of the Qinconnect assistant.
+- [QInConnectIntentConfiguration](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_QInConnectIntentConfiguration.html): The configuration details of the Qinconnect intent.
+- [QnAIntentConfiguration](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_QnAIntentConfiguration.html): Details about the the configuration of the built-in Amazon.QnAIntent.
+- [QnAKendraConfiguration](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_QnAKendraConfiguration.html): Contains details about the configuration of the Amazon Kendra index used for the AMAZON.QnAIntent.
+- [RecommendedIntentSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_RecommendedIntentSummary.html): An object that contains a summary of a recommended intent.
+- [RelativeAggregationDuration](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_RelativeAggregationDuration.html): Specifies the time window that utterance statistics are returned for.
+- [ResponseSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_ResponseSpecification.html): Specifies a list of message groups that Amazon Lex uses to respond the user input.
+- [RuntimeHintDetails](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_RuntimeHintDetails.html): Provides an array of phrases that should be given preference when resolving values for a slot.
+- [RuntimeHints](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_RuntimeHints.html): You can provide Amazon Lex with hints to the phrases that a customer is likely to use for a slot.
+- [RuntimeHintValue](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_RuntimeHintValue.html): Provides the phrase that Amazon Lex should look for in the user's input to the bot.
+- [RuntimeSettings](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_RuntimeSettings.html): Contains specifications about the Amazon Lex runtime generative AI capabilities from Amazon Bedrock that you can turn on for your bot.
+- [S3BucketLogDestination](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_S3BucketLogDestination.html): Specifies an Amazon S3 bucket for logging audio conversations
+- [S3BucketTranscriptSource](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_S3BucketTranscriptSource.html): The object representing the Amazon S3 bucket containing the transcript, as well as the associated metadata.
+- [SampleUtterance](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SampleUtterance.html): A sample utterance that invokes an intent or respond to a slot elicitation prompt.
+- [SampleUtteranceGenerationSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SampleUtteranceGenerationSpecification.html): Contains specifications for the sample utterance generation feature.
+- [SampleValue](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SampleValue.html): Defines one of the values for a slot type.
+- [SentimentAnalysisSettings](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SentimentAnalysisSettings.html): Determines whether Amazon Lex will use Amazon Comprehend to detect the sentiment of user utterances.
+- [SessionDataSortBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SessionDataSortBy.html): An object specifying the measure and method by which to sort the session analytics data.
+- [SessionSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SessionSpecification.html): An object containing information about a specific session.
+- [SlotCaptureSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotCaptureSetting.html): Settings used when Amazon Lex successfully captures a slot value from a user.
+- [SlotDefaultValue](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotDefaultValue.html): Specifies the default value to use when a user doesn't provide a value for a slot.
+- [SlotDefaultValueSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotDefaultValueSpecification.html): Defines a list of values that Amazon Lex should use as the default value for a slot.
+- [SlotFilter](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotFilter.html): Filters the response from the ListSlots operation.
+- [SlotPriority](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotPriority.html): Sets the priority that Amazon Lex should use when eliciting slot values from a user.
+- [SlotResolutionImprovementSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotResolutionImprovementSpecification.html): Contains specifications for the assisted slot resolution feature.
+- [SlotResolutionSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotResolutionSetting.html): Contains information about whether assisted slot resolution is turned on for the slot or not.
+- [SlotResolutionTestResultItem](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotResolutionTestResultItem.html): Information about the success and failure rate of slot resolution in the results of a test execution.
+- [SlotResolutionTestResultItemCounts](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotResolutionTestResultItemCounts.html): Information about the counts for a slot resolution in the results of a test execution.
+- [SlotSortBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotSortBy.html): Specifies attributes for sorting a list of bots.
+- [SlotSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotSummary.html): Summary information about a slot, a value that the bot elicits from the user.
+- [SlotTypeFilter](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotTypeFilter.html): Filters the response from the ListSlotTypes operation.
+- [SlotTypeSortBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotTypeSortBy.html): Specifies attributes for sorting a list of slot types.
+- [SlotTypeStatistics](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotTypeStatistics.html): The object that contains the statistical summary of the recommended slot type associated with the bot recommendation.
+- [SlotTypeSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotTypeSummary.html): Provides summary information about a slot type.
+- [SlotTypeValue](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotTypeValue.html): Each slot type can have a set of values.
+- [SlotValue](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotValue.html): The value to set in a slot.
+- [SlotValueElicitationSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotValueElicitationSetting.html): Specifies the elicitation setting details eliciting a slot.
+- [SlotValueOverride](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotValueOverride.html): The slot values that Amazon Lex uses when it sets slot values in a dialog step.
+- [SlotValueRegexFilter](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotValueRegexFilter.html): Provides a regular expression used to validate the value of a slot.
+- [SlotValueSelectionSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SlotValueSelectionSetting.html): Contains settings used by Amazon Lex to select a slot value.
+- [Specifications](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_Specifications.html): Subslot specifications.
+- [SpeechFoundationModel](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SpeechFoundationModel.html): Configuration for a foundation model used for speech synthesis and recognition capabilities.
+- [SpeechModelConfig](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SpeechModelConfig.html): Configuration settings that define which speech-to-text model to use for processing speech input.
+- [SpeechRecognitionSettings](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SpeechRecognitionSettings.html): Settings that control how Amazon Lex processes and recognizes speech input from users.
+- [SSMLMessage](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SSMLMessage.html): Defines a Speech Synthesis Markup Language (SSML) prompt.
+- [StillWaitingResponseSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_StillWaitingResponseSpecification.html): Defines the messages that Amazon Lex sends to a user to remind them that the bot is waiting for a response.
+- [SubSlotSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SubSlotSetting.html): Specifications for the constituent sub slots and the expression for the composite slot.
+- [SubSlotTypeComposition](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SubSlotTypeComposition.html): Subslot type composition.
+- [SubSlotValueElicitationSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_SubSlotValueElicitationSetting.html): Subslot elicitation settings.
+- [TestExecutionResultFilterBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TestExecutionResultFilterBy.html): Contains information about the method by which to filter the results of the test execution.
+- [TestExecutionResultItems](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TestExecutionResultItems.html): Contains the results of the test execution, grouped by type of results.
+- [TestExecutionSortBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TestExecutionSortBy.html): Contains information about the method by which to sort the instances of test executions you have carried out.
+- [TestExecutionSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TestExecutionSummary.html): Summarizes metadata about the test execution.
+- [TestExecutionTarget](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TestExecutionTarget.html): Contains information about the bot used for the test execution.
+- [TestSetDiscrepancyErrors](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TestSetDiscrepancyErrors.html): Contains details about the errors in the test set discrepancy report
+- [TestSetDiscrepancyReportBotAliasTarget](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TestSetDiscrepancyReportBotAliasTarget.html): Contains information about the bot alias used for the test set discrepancy report.
+- [TestSetDiscrepancyReportResourceTarget](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TestSetDiscrepancyReportResourceTarget.html): Contains information about the resource used for the test set discrepancy report.
+- [TestSetExportSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TestSetExportSpecification.html): Contains information about the test set that is exported.
+- [TestSetGenerationDataSource](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TestSetGenerationDataSource.html): Contains information about the data source from which the test set is generated.
+- [TestSetImportInputLocation](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TestSetImportInputLocation.html): Contains information about the Amazon S3 location from which the test set is imported.
+- [TestSetImportResourceSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TestSetImportResourceSpecification.html): Contains information about the test set that is imported.
+- [TestSetIntentDiscrepancyItem](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TestSetIntentDiscrepancyItem.html): Contains information about discrepancy in an intent information between the test set and the bot.
+- [TestSetSlotDiscrepancyItem](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TestSetSlotDiscrepancyItem.html): Contains information about discrepancy in a slot information between the test set and the bot.
+- [TestSetSortBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TestSetSortBy.html): Contains information about the methods by which to sort the test set.
+- [TestSetStorageLocation](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TestSetStorageLocation.html): Contains information about the location in which the test set is stored.
+- [TestSetSummary](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TestSetSummary.html): Contains summary information about the test set.
+- [TestSetTurnRecord](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TestSetTurnRecord.html): Contains information about a turn in a test set.
+- [TestSetTurnResult](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TestSetTurnResult.html): Contains information about the results of the analysis of a turn in the test set.
+- [TextInputSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TextInputSpecification.html): Specifies the text input specifications.
+- [TextLogDestination](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TextLogDestination.html): Defines the Amazon CloudWatch Logs destination log group for conversation text logs.
+- [TextLogSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TextLogSetting.html): Defines settings to enable text conversation logs.
+- [TranscriptFilter](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TranscriptFilter.html): The object representing the filter that Amazon Lex will use to select the appropriate transcript.
+- [TranscriptSourceSetting](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TranscriptSourceSetting.html): Indicates the setting of the location where the transcript is stored.
+- [TurnSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_TurnSpecification.html): Contains information about the messages in the turn.
+- [UnifiedSpeechSettings](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UnifiedSpeechSettings.html): Unified configuration settings that combine speech recognition and synthesis capabilities.
+- [UserTurnInputSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UserTurnInputSpecification.html): Contains information about the user messages in the turn in the input.
+- [UserTurnIntentOutput](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UserTurnIntentOutput.html): Contains information about the intent that is output for the turn by the test execution.
+- [UserTurnOutputSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UserTurnOutputSpecification.html): Contains results that are output for the user turn by the test execution.
+- [UserTurnResult](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UserTurnResult.html): Contains the results for the user turn by the test execution.
+- [UserTurnSlotOutput](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UserTurnSlotOutput.html): Contains information about a slot output by the test set execution.
+- [UserTurnSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UserTurnSpecification.html): Contains information about the expected and input values for the user turn.
+- [UtteranceAggregationDuration](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UtteranceAggregationDuration.html): Provides parameters for setting the time window and duration for aggregating utterance data.
+- [UtteranceAudioInputSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UtteranceAudioInputSpecification.html): Contains information about the audio for an utterance.
+- [UtteranceBotResponse](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UtteranceBotResponse.html): An object that contains a response to the utterance from the bot.
+- [UtteranceDataSortBy](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UtteranceDataSortBy.html): An object specifying the measure and method by which to sort the utterance data.
+- [UtteranceInputSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UtteranceInputSpecification.html): Contains information about input of an utterance.
+- [UtteranceLevelTestResultItem](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UtteranceLevelTestResultItem.html): Contains information about multiple utterances in the results of a test set execution.
+- [UtteranceLevelTestResults](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UtteranceLevelTestResults.html): Contains information about the utterances in the results of the test set execution.
+- [UtteranceSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_UtteranceSpecification.html): An object containing information about a specific utterance.
+- [VoiceSettings](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_VoiceSettings.html): Defines settings for using an Amazon Polly voice to communicate with a user.
+- [WaitAndContinueSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_WaitAndContinueSpecification.html): Specifies the prompts that Amazon Lex uses while a bot is waiting for customer input.
+
+### [Amazon Lex Runtime V2](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_Types_Amazon_Lex_Runtime_V2.html)
+
+The following data types are supported by Amazon Lex Runtime V2:
+
+- [ActiveContext](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_ActiveContext.html): Contains information about the contexts that a user is using in a session.
+- [ActiveContextTimeToLive](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_ActiveContextTimeToLive.html): The time that a context is active.
+- [AudioInputEvent](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_AudioInputEvent.html): Represents a chunk of audio sent from the client application to Amazon Lex V2.
+- [AudioResponseEvent](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_AudioResponseEvent.html): An event sent from Amazon Lex V2 to your client application containing audio to play to the user.
+- [Button](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_Button.html): A button that appears on a response card show to the user.
+- [ConfidenceScore](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_ConfidenceScore.html): Provides a score that indicates the confidence that Amazon Lex V2 has that an intent is the one that satisfies the user's intent.
+- [ConfigurationEvent](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_ConfigurationEvent.html): The initial event sent from the application to Amazon Lex V2 to configure the conversation, including session and request attributes and the response content type.
+- [DialogAction](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_DialogAction.html): The next action that Amazon Lex V2 should take.
+- [DisconnectionEvent](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_DisconnectionEvent.html): A notification from the client that it is disconnecting from Amazon Lex V2.
+- [DTMFInputEvent](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_DTMFInputEvent.html): A DTMF character sent from the client application.
+- [ElicitSubSlot](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_ElicitSubSlot.html): The specific constituent sub slot of the composite slot to elicit in dialog action.
+- [HeartbeatEvent](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_HeartbeatEvent.html): Event that Amazon Lex V2 sends to indicate that the stream is still open between the client application and Amazon Lex V2
+- [ImageResponseCard](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_ImageResponseCard.html): A card that is shown to the user by a messaging platform.
+- [Intent](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_Intent.html): The current intent that Amazon Lex V2 is attempting to fulfill.
+- [IntentResultEvent](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_IntentResultEvent.html): Contains the current state of the conversation between the client application and Amazon Lex V2.
+- [Interpretation](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_Interpretation.html): An object containing information about an intent that Amazon Lex V2 determined might satisfy the user's utterance.
+- [Message](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_Message.html): Container for text that is returned to the customer..
+- [PlaybackCompletionEvent](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_PlaybackCompletionEvent.html): Event sent from the client application to Amazon Lex V2 to indicate that playback of audio is complete and that Amazon Lex V2 should start processing the user's input.
+- [PlaybackInterruptionEvent](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_PlaybackInterruptionEvent.html): Event sent from Amazon Lex V2 to indicate to the client application should stop playback of audio.
+- [RecognizedBotMember](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_RecognizedBotMember.html): The bot member that processes the request.
+- [RuntimeHintDetails](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_RuntimeHintDetails.html): Provides an array of phrases that should be given preference when resolving values for a slot.
+- [RuntimeHints](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_RuntimeHints.html): You can provide Amazon Lex V2 with hints to the phrases that a customer is likely to use for a slot.
+- [RuntimeHintValue](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_RuntimeHintValue.html): Provides the phrase that Amazon Lex V2 should look for in the user's input to the bot.
+- [SentimentResponse](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_SentimentResponse.html): Provides information about the sentiment expressed in a user's response in a conversation.
+- [SentimentScore](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_SentimentScore.html): The individual sentiment responses for the utterance.
+- [SessionState](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_SessionState.html): The state of the user's session with Amazon Lex V2.
+- [Slot](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_Slot.html): A value that Amazon Lex V2 uses to fulfill an intent.
+- [StartConversationRequestEventStream](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_StartConversationRequestEventStream.html): Represents a stream of events between your application and Amazon Lex V2.
+- [StartConversationResponseEventStream](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_StartConversationResponseEventStream.html): Represents a stream of events between Amazon Lex V2 and your application.
+- [TextInputEvent](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_TextInputEvent.html): The event sent from your client application to Amazon Lex V2 with text input from the user.
+- [TextResponseEvent](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_TextResponseEvent.html): The event sent from Amazon Lex V2 to your application with text to present to the user.
+- [TranscriptEvent](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_TranscriptEvent.html): Event sent from Amazon Lex V2 to your client application that contains a transcript of voice audio.
+- [Value](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_runtime_Value.html): Information about the value provided for a slot and Amazon Lex V2's interpretation.
+- [Common Parameters](https://docs.aws.amazon.com/lexv2/latest/APIReference/CommonParameters.html): The following list contains the parameters that all actions use for signing Signature Version 4 requests with a query string.
+- [Common Errors](https://docs.aws.amazon.com/lexv2/latest/APIReference/CommonErrors.html): This section lists the errors common to the API actions of all AWS services.

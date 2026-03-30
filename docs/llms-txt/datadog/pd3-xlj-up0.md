@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Log4shell RCE attempts - CVE
 ---
 
 # Log4shell RCE attempts - CVE-2021-44228
-Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190) 
+Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190)
 ### Goal{% #goal %}
 
 Detect attempts to exploit the log4j vulnerability (CVE-2021-44228).

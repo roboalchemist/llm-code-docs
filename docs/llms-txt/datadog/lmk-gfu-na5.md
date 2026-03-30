@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Microsoft 365 Anomalous Amount of Downloaded files
-Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1213-data-from-information-repositories](https://attack.mitre.org/techniques/T1213) 
+Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1213-data-from-information-repositories](https://attack.mitre.org/techniques/T1213)
 ## Goal{% #goal %}
 
 Detect when a Microsoft 365 user downloads an anomalous amount of files. This could be an indicator of data exfilteration.

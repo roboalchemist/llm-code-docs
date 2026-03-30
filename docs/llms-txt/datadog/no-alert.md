@@ -75,7 +75,7 @@ a[o.k](1)
 foo.alert(foo)
 foo.confirm(foo)
 foo.prompt(foo)
-// global overrides are not recommened 
+// global overrides are not recommened
 // and wont be supported by this rule
 // function alert() {} alert();
 // var alert = function() {}; alert();
@@ -94,6 +94,5 @@ window[alert]();
 // var globalThis = foo; globalThis.alert();
 // function foo() { var globalThis = foo; globalThis.alert(); }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

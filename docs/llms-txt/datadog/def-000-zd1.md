@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Require Authentication for Single User Mode
- 
+
 ## Description{% #description %}
 
 Single-user mode is intended as a system recovery method, providing a single user root access to the system by providing a boot option at startup.

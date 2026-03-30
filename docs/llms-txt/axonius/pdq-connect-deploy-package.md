@@ -1,0 +1,80 @@
+# Source: https://docs.axonius.com/docs/pdq-connect-deploy-package.md
+
+# PDQ Connect - Deploy Package
+
+**PDQ Connect - Deploy Package** deploys missing software/packages to devices in PDQ Connect for:
+
+* Devices that match the results of the selected saved query, and match the Enforcement Action Dynamic Value statement, if defined, or devices selected on the Devices page.
+
+See [Creating Enforcement Sets](/docs/create-ec-set) to learn more about adding Enforcement Actions to Enforcement Sets.
+
+<Callout icon="📘" theme="info">
+  Note
+
+  * Not all asset types are supported for all Enforcement Actions.
+  * See Actions supported for [Activity Logs, Adapters Fetch History, and Asset Investigation modules](/docs/creating-queries-filters#using-activity-log-adapter-fetch-history-asset-investigation-and-findings-queries-in-enforcement-actions).
+  * See Actions supported for [Aggregated Security Findings](https://docs.axonius.com/docs/vulnerabilities#using-aggregated-security-findings-queries-in-enforcement-actions).
+  * See Actions supported for [Software](software#using-software-queries-in-enforcement-actions).
+</Callout>
+
+<br />
+
+## General Settings
+
+* **Action name** - The name of this Enforcement Action. The system sets a default name. You can change the name.
+* **Configure Dynamic Values** *(optional)* - Toggle on to enter a Dynamic Value statement. See [Creating Enforcement Action Dynamic Value Statements](https://docs.axonius.com/docs/config-ec-conditions) to learn more about Dynamic Value statement syntax.
+
+<Callout icon="📘" theme="info">
+  Note
+
+  This enforcement action runs on Device assets.
+</Callout>
+
+* **Use stored credentials from  PDQ Connect Adapter** - Select this option to use the [PDQ Connect](/docs/pdq-connect) connected adapter credentials.
+
+  * When you select this option, the **Select Adapter Connection** drop-down is available, and you can choose which adapter connection to use for this Enforcement Action.
+
+  * When not enabled, see [Connection Parameters](/docs/XXX-topic#connection-parameters)
+
+## Required Fields
+
+These fields must be configured to run the Enforcement Set.
+
+* **Package ID/Package Version ID** - The IDs of the software packages to deploy to the devices. Add a package ID, and then click **Enter** for each additional package ID.
+
+* **Compute Node**  - The Axonius node to use when connecting to the specified host. For more details, see [Working with Axonius Compute Nodes](https://docs.axonius.com/docs/connecting-additional-axonius-nodes).
+
+## Additional Fields
+
+These fields are optional.
+
+<Callout icon="💡" theme="warn">
+  ## Connection and Credentials
+
+  When **Use stored credentials from the adapter** is toggled off, some of the connection fields below are required to create the connection, while other fields are optional.
+
+  * **Host Name or IP Address** - The hostname or IP address of the \[PDQ Connect] server.
+
+  * **API Key** - An API Key associated with a user account that has permissions to perform this action. For information on how to obtain an API Key, see the [PDQ Connect API](https://connect.pdq.com/hc/en-us/articles/22929727991451-PDQ-Connect-API).
+
+  * **Verify SSL** *(optional)* - Select whether to verify the SSL certificate of the server against the CA database inside of Axonius. For more details, see [SSL Trust & CA Settings](https://docs.axonius.com/docs/certificate-settings#ssl-trust-ca-settings).
+
+  * **HTTPS Proxy** *(optional)* - Connect the adapter to a proxy instead of directly connecting it to the domain.
+
+  * **HTTPS Proxy User Name** *(optional)* - The user name to use when connecting to the server using the  **HTTPS Proxy**.
+
+  * **HTTPS Proxy Password** *(optional)* - The password to use when connecting to the server using the **HTTPS Proxy**.
+</Callout>
+
+* **Gateway Name** -  Select the Gateway through which to connect to perform the action.
+
+## APIs
+
+Axonius uses the [PDQ Connect API](https://connect.pdq.com/hc/en-us/articles/22929727991451-PDQ-Connect-API).<br />
+Endpoint: [Swagger UI](https://app.pdq.com/v1/docs#/default/HoustonWeb.DeploymentsApiController.create)
+
+* *POST /v1/api/deployments* - Deploys a package version to the target devices or groups.
+
+***
+
+For more details about other enforcement actions available, see [Action Library](/docs/action-library).

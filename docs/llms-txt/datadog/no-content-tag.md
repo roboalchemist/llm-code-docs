@@ -45,6 +45,5 @@ By avoiding the use of `content_tag`, you can protect your application from pote
 content_tag(:p, "Unsafe Code!")
 content_tag(:div, content_tag(:p, "Hello!"), class: "strong")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

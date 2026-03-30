@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Unauthenticated route use predictable IDs
- 
+
 ## Description{% #description %}
 
 The API allows unauthenticated users to request resources with predictable identifiers (IDs). Attackers can leverage this by guessing valid identifiers and then stealing sensitive information or performing unauthorized actions.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Group Ownership of System Login Banner for Remote Connections
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/etc/issue.net`, run the command:

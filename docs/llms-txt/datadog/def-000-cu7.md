@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable dnsmasq Service
 ---
 
 # Disable dnsmasq Service
- 
+
 ## Description{% #description %}
 
 The `dnsmasq` service can be disabled with the following command:

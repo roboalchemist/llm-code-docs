@@ -272,7 +272,7 @@ For example, to send 50% of the traces for the service named `my-service` and 10
 $env:DD_TRACE_SAMPLE_RATE=0.1
 $env:DD_TRACE_SAMPLING_RULES='[{"service": "my-service", "sample_rate": 0.5}]'
 
-#using JSON file   
+#using JSON file
 {
     "DD_TRACE_SAMPLE_RATE": "0.1",
     "DD_TRACE_SAMPLING_RULES": "[{\"service\": \"my-service\", \"resource\": \"GET /checkout\", \"sample_rate\": 0.5}]"
@@ -490,7 +490,7 @@ package main
 import (
     "log"
     "net/http"
-    "github.com/DataDog/dd-trace-go/v2/ddtrace/ext" 
+    "github.com/DataDog/dd-trace-go/v2/ddtrace/ext"
     "github.com/DataDog/dd-trace-go/v2/ddtrace/tracer"
 )
 
@@ -780,7 +780,7 @@ For example, to collect `100%` of the spans from the service named `my-service`,
 #using powershell
 $env:DD_SPAN_SAMPLING_RULES='[{"service": "my-service", "name": "http.request", "sample_rate":1.0, "max_per_second": 50}]'
 
-#using JSON file   
+#using JSON file
 {
     "DD_SPAN_SAMPLING_RULES": "[{\"service\": \"my-service\", \"name\": \"http.request\", \"sample_rate\": 1.0, \"max_per_second\": 50}]"
 }

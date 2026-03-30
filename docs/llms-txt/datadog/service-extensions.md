@@ -82,7 +82,7 @@ Specify `http:80` and `grpc:443` (or your configured values) for the port mappin
    1. Select the backend service you created in the previous step.
    1. In **Events**, select **only** `Request Headers` and `Response Headers`. These are required. Do not select the bodies events. These are supported out-of-the-box by configuring the Service Extension callout with the body processing size limit.
    1. Optionally, enable the `fail_open` to still allow the traffic to pass through if the service extension fails or times out.
-Important alert (level: danger): **Note:** By default, if the service extension fails or times out, the proxy will return a 5xx error. To prevent this, enable the `fail_open` setting. When enabled, request or response processing continues without error even if the extension fails, ensuring your application remains available.Important alert (level: info): 
+Important alert (level: danger): **Note:** By default, if the service extension fails or times out, the proxy will return a 5xx error. To prevent this, enable the `fail_open` setting. When enabled, request or response processing continues without error even if the extension fails, ensuring your application remains available.Important alert (level: info):
 **Note:** When body processing is enabled, the service extension decides based on its configuration whether to receive the request body, the response body, or both, along with the headers which are always included. This decision is made separately for requests and responses. Receiving body content can increase processing time, especially for large payloads. If you enable body processing, make sure to **adjust your timeout settings** to allow for the additional processing time required for body inspection and transfer.
 
 After this configuration is complete, the library collects security data from your application and sends it to the Agent. The Agent sends the data to Datadog, where [out-of-the-box detection rules](https://docs.datadoghq.com/security/default_rules/#cat-application-security) flag attacker techniques and potential misconfigurations so you can take steps to remediate.
@@ -138,33 +138,33 @@ The App and API Protection Service Extension deployment requires several compone
 
    ```hcl
    # main.tf
-   
+
    #----------------------------------------------------------
    # Network Configuration
    #----------------------------------------------------------
-   
+
    # Firewall rule to allow the Service Extension to communicate with the Datadog Agent
    resource "google_compute_firewall" "aap_se_firewall" {
      name    = "${var.project_prefix}-dd-agent-firewall"
      network = "default"
-   
+
      allow {
        protocol = "tcp"
        ports    = ["8126"]
      }
-   
+
      source_tags = ["http-server"]
      target_tags = ["datadog-agent"]
    }
-   
+
    #----------------------------------------------------------
    # Datadog Agent Configuration
    #----------------------------------------------------------
-   
+
    # Datadog Agent container configuration
    module "gce-container-datadog-agent" {
      source = "terraform-google-modules/container-vm/google"
-   
+
      container = {
        image = "public.ecr.aws/datadog/agent:latest"
        env = [
@@ -179,47 +179,47 @@ The App and API Protection Service Extension deployment requires several compone
        ]
      }
    }
-   
+
    # Datadog Agent VM instance that collects traces from the Service Extension
    resource "google_compute_instance" "datadog_agent" {
      name         = "${var.project_prefix}-datadog-agent"
      machine_type = "e2-medium"
      zone         = var.zone
-   
+
      boot_disk {
        auto_delete = true
-   
+
        initialize_params {
          image = module.gce-container-datadog-agent.source_image
        }
-   
+
      }
-   
+
      network_interface {
        network    = "default"
        subnetwork = var.application_vpc_subnetwork
      }
-   
+
      metadata = {
        gce-container-declaration = module.gce-container-datadog-agent.metadata_value
        google-logging-enabled    = "true"
      }
-   
+
      lifecycle {
        create_before_destroy = true
      }
-   
+
      tags = ["datadog-agent"]
    }
-   
+
    #----------------------------------------------------------
    # Service Extension Callout Container Configuration
    #----------------------------------------------------------
-   
+
    # Datadog App and API Protection GCP Service Extension container configuration
    module "gce-container-aap-service-extension" {
      source = "terraform-google-modules/container-vm/google"
-   
+
      container = {
        image = "ghcr.io/datadog/dd-trace-go/service-extensions-callout:v2.2.2" # Replace with the latest version
        env = [
@@ -235,66 +235,66 @@ The App and API Protection Service Extension deployment requires several compone
        ]
      }
    }
-   
+
    # Service Extension VM instance (callout instance)
    resource "google_compute_instance" "default" {
      name         = "${var.project_prefix}-instance"
      machine_type = "e2-medium"
      zone         = var.zone
-   
+
      boot_disk {
        auto_delete = true
-   
+
        initialize_params {
          image = module.gce-container-aap-service-extension.source_image
        }
-   
+
      }
-   
+
      network_interface {
        network    = var.application_vpc_network
        subnetwork = var.application_vpc_subnetwork
      }
-   
+
      metadata = {
        gce-container-declaration = module.gce-container-aap-service-extension.metadata_value
        google-logging-enabled    = "true"
      }
-   
+
      lifecycle {
        create_before_destroy = true
      }
-   
+
      # http-server: Allow access on the http server for health checks
      # https-server: Allow access on the 443 port for the AAP Service Extension
      tags = ["http-server", "https-server", "lb-health-check"]
    }
-   
+
    #----------------------------------------------------------
    # Load Balancer Integration
    #----------------------------------------------------------
-   
+
    # Unmanaged Instance Group including the App and API Protection Service Extension instance
    resource "google_compute_instance_group" "aap_se_instance_group" {
      name        = "${var.project_prefix}-instance-group"
      description = "Unmanaged instance group for the App and API Protection Service Extension"
      zone        = var.zone
-   
+
      named_port {
        name = "http"
        port = 80
      }
-   
+
      named_port {
        name = "grpc"
        port = "443"
      }
-   
+
      instances = [
        google_compute_instance.default.self_link
      ]
    }
-   
+
    # Health Check for the Backend Service
    resource "google_compute_health_check" "aap_se_health_check" {
      name                = "${var.project_prefix}-health-check"
@@ -302,13 +302,13 @@ The App and API Protection Service Extension deployment requires several compone
      timeout_sec         = 5
      healthy_threshold   = 2
      unhealthy_threshold = 2
-   
+
      http_health_check {
        port         = 80
        request_path = "/"
      }
    }
-   
+
    # Backend Service that points to the Service Extension instance group
    resource "google_compute_backend_service" "se_backend_service" {
      name                  = "${var.project_prefix}-backend-service"
@@ -317,49 +317,49 @@ The App and API Protection Service Extension deployment requires several compone
      timeout_sec           = 10
      health_checks         = [google_compute_health_check.aap_se_health_check.self_link]
      load_balancing_scheme = "EXTERNAL_MANAGED"
-   
+
      backend {
        group = google_compute_instance_group.aap_se_instance_group.self_link
      }
    }
-   
+
    #----------------------------------------------------------
    # GCP Service Extension
    #----------------------------------------------------------
-   
+
    # GCP Service Extension configuration for traffic interception
    resource "google_network_services_lb_traffic_extension" "default" {
      name        = "${var.project_prefix}-service-extension"
      description = "Datadog App and API Protection Service Extension"
      location    = "global"
-   
+
      load_balancing_scheme = "EXTERNAL_MANAGED"
      forwarding_rules      = [var.load_balancer_forwarding_rule]
-   
+
      extension_chains {
        name = "${var.project_prefix}-service-extension-chain"
-   
+
        match_condition {
          cel_expression = "true" # Match all traffic
        }
-   
+
        extensions {
          name      = "${var.project_prefix}-service-extension-chain-ext"
          service   = google_compute_backend_service.se_backend_service.self_link
-   
+
          # Required: Please set your application hostname.
          authority = "datadoghq.com"
-   
+
          # By default, if the service extension fails or times out, the proxy will return a 500 error.
          # To prevent this, enable the fail_open setting.
          # When enabled, the request processing is stopped when an error occurs but the request is not dropped, ensuring the availability of the application.
          fail_open = true
-   
+
          # Mandatory, do not touch: Only set the Request and Response Headers events.
          # If bodies events are selected, the service extension will transfer and analyze the bodies for every request without applying relevant selection rules.
          # Please use the DD_APPSEC_BODY_PARSING_SIZE_LIMIT environment variable on the callout container to enable body processing.
          supported_events = ["REQUEST_HEADERS", "RESPONSE_HEADERS"]
-   
+
          # Adjust your timeout settings depending of your processing needs (e.g. with body processing)
          # Note: This is the same option as the "message_timeout" for an Envoy ext_proc configuration.
          timeout   = "0.5s"
@@ -372,7 +372,7 @@ The App and API Protection Service Extension deployment requires several compone
 
    ```hcl
    # variables.tf
-   
+
    variable "region" {
      description = "The GCP region where resources will be created (e.g., us-central1)"
      type        = string
@@ -381,7 +381,7 @@ The App and API Protection Service Extension deployment requires several compone
        error_message = "Region cannot be empty."
      }
    }
-   
+
    variable "zone" {
      description = "The GCP zone where zonal resources will be created (e.g., us-central1-a)"
      type        = string
@@ -390,7 +390,7 @@ The App and API Protection Service Extension deployment requires several compone
        error_message = "Zone cannot be empty."
      }
    }
-   
+
    # Project configuration
    variable "project_prefix" {
      description = "Prefix for the project. All resource names will be prefixed with this value"
@@ -400,10 +400,10 @@ The App and API Protection Service Extension deployment requires several compone
        error_message = "Project prefix cannot be empty."
      }
    }
-   
+
    # Network configuration
    variable "application_vpc_network" {
-   
+
      description = "Name of the VPC network for the application"
      type        = string
      validation {
@@ -411,9 +411,9 @@ The App and API Protection Service Extension deployment requires several compone
        error_message = "VPC network name cannot be empty."
      }
    }
-   
+
    variable "application_vpc_subnetwork" {
-   
+
      description = "Name of the VPC subnetwork for the application"
      type        = string
      validation {
@@ -421,7 +421,7 @@ The App and API Protection Service Extension deployment requires several compone
        error_message = "VPC subnetwork name cannot be empty."
      }
    }
-   
+
    # Authentication and API keys
    variable "datadog_agent_api_key" {
      description = "Datadog API key"
@@ -432,7 +432,7 @@ The App and API Protection Service Extension deployment requires several compone
        error_message = "Datadog API key cannot be empty."
      }
    }
-   
+
    # Load balancer configuration
    variable "load_balancer_forwarding_rule" {
      description = "Self link to the forwarding rule for the load balancer"
@@ -443,7 +443,7 @@ The App and API Protection Service Extension deployment requires several compone
 
    ```hcl
    # main.tf
-   
+
    module "service_extension" {
      source                        = "./gcp-aap-service-extension"
      zone                          = "us-central1-a"

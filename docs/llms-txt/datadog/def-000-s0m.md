@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS Organizations root sessions feature should be enabled
- 
+
 ## Description{% #description %}
 
 Enabling the AWS Organizations Root Sessions feature increases security by centralizing control and minimizing the attack surface associated with highly privileged root user credentials. This feature allows you to remove long-term root access keys for member accounts and instead grant temporary, time-bound, and task-scoped permissions for essential administrative actions. By doing so, you eliminate the risks of compromised root credentials and ensure that powerful permissions are only used when absolutely necessary and in a monitored, auditable manner.

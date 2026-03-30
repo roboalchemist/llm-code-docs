@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Containers should not mount the Docker socket docker.sock inside them
-Classification:complianceFramework:cis-dockerControl:5.31 
+Classification:complianceFramework:cis-dockerControl:5.31
 ## Description{% #description %}
 
 The Docker socket docker.sock should not be mounted inside a container.

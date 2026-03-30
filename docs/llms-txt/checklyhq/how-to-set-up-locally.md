@@ -1,0 +1,53 @@
+# Source: https://checklyhq.com/docs/learn/playwright/how-to-set-up-locally.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://checklyhq.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# How to Set Up Playwright Locally
+
+<Tip>
+  If you're using Playwright for end-to-end testing, you should check out [Playwright Check Suites](/detect/synthetic-monitoring/playwright-checks/overview) and start testing in production.
+</Tip>
+
+Let's start by creating a new directory and navigating to it. Assuming you already have [Node.js](https://nodejs.org/) available in your local environment, installing Playwright is achieved with just one instruction:
+
+```sh install-playwright theme={null}
+npm init @playwright/test
+```
+
+Playwright comes bundled with a connected browser, so we now have all we need to run our first script. Let's create a script to navigate to our [test website](https://danube-web.shop/):
+
+```ts basic-navigation.spec.ts theme={null}
+import { test } from '@playwright/test'
+
+test('basic navigation', async ({ page }) => {
+  await page.goto('https://danube-web.shop/')
+})
+
+```
+
+Run this example as follows:
+
+```sh run-test theme={null}
+npx playwright test basic-navigation.spec.ts
+```
+
+Nothing much has happened, right? Remember: by default, Playwright will run in headless mode! That means we won't see anything of what is happening in the browser when our script runs.
+
+> Playwright creates its own browser user profile, which it cleans up on every run. In other words: all runs will be sandboxed and not interfere with one another, as state is always fully reset at the end of a session.
+
+When you are first writing and debugging your scripts, it is a good idea to enable "headed" mode, so you can have a look at what your script is doing:
+
+```bash run-test-headed theme={null}
+npx playwright test basic-navigation.spec.ts --headed
+```
+
+After executing the updated file, you will see Chromium starting up, only to shut down after an instant. Everything is working as expected! Our script is just so short, it runs almost instantaneously.
+
+## Further reading
+
+1. Getting started guides for [Playwright](https://playwright.dev/docs/intro#installation)
+
+
+Built with [Mintlify](https://mintlify.com).

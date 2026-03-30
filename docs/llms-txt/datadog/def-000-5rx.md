@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > GitLab new administrator add
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098) 
+Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098)
 ## Goal{% #goal %}
 
 Detects when a new administrator is added to a GitLab organization.

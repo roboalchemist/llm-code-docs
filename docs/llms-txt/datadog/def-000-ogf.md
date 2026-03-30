@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Snowflake UI login via password from proxy or vpn
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detect a user account login using a password for authentication directly into the Snowflake UI from a proxy or VPN service.

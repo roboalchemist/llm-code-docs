@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unnecessary-type-arguments.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-unnecessary-type-arguments.md
----
-
-### What it does
+## What it does
 
 This rule disallows type arguments that are identical to the default type parameter.
 
-### Why is this bad?
+## Why is this bad?
 
 Explicit type arguments that are the same as their default values are unnecessary and add visual noise to the code. TypeScript will infer these types automatically.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

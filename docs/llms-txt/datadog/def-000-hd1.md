@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Use Only FIPS 140-2 Validate
 ---
 
 # Use Only FIPS 140-2 Validated MACs
- 
+
 ## Description{% #description %}
 
 Limit the MACs to those hash algorithms which are FIPS-approved. The following line in `/etc/ssh/sshd_config` demonstrates use of FIPS-approved MACs:

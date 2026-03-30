@@ -47,6 +47,5 @@ var foo = Symbol('foo');
 new foo(Symbol);
 new foo(bar, Symbol)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

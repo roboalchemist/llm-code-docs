@@ -135,13 +135,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/dashboard/lists/manual" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -163,7 +163,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all dashboard lists returns "OK" response
@@ -177,7 +177,7 @@ p api_instance.list_dashboard_lists()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'rubygems'
@@ -195,7 +195,7 @@ result = dog.get_all_dashboard_lists()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all dashboard lists returns "OK" response
@@ -203,29 +203,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewDashboardListsApi(apiClient)
-	resp, r, err := api.ListDashboardLists(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewDashboardListsApi(apiClient)
+    resp, r, err := api.ListDashboardLists(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.ListDashboardLists`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.ListDashboardLists`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.ListDashboardLists`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.ListDashboardLists`:\n%s\n", responseContent)
 }
 ```
 
@@ -233,7 +233,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all dashboard lists returns "OK" response
@@ -266,7 +266,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -285,7 +285,7 @@ api.DashboardList.get_all()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Get all dashboard lists returns "OK" response
@@ -309,7 +309,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -509,13 +509,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport dashboard_list_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/dashboard/lists/manual/${dashboard_list_id}/dashboards" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -543,7 +543,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get items of a Dashboard List returns "OK" response
@@ -560,7 +560,7 @@ p api_instance.get_dashboard_list_items(DASHBOARD_LIST_ID.to_i)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'rubygems'
@@ -578,7 +578,7 @@ result = dog.v2.get_items_of_dashboard_list(4741)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get items of a Dashboard List returns "OK" response
@@ -586,33 +586,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"strconv"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "strconv"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dashboard_list" in the system
-	DashboardListID, _ := strconv.ParseInt(os.Getenv("DASHBOARD_LIST_ID"), 10, 64)
+    // there is a valid "dashboard_list" in the system
+    DashboardListID, _ := strconv.ParseInt(os.Getenv("DASHBOARD_LIST_ID"), 10, 64)
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDashboardListsApi(apiClient)
-	resp, r, err := api.GetDashboardListItems(ctx, DashboardListID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDashboardListsApi(apiClient)
+    resp, r, err := api.GetDashboardListItems(ctx, DashboardListID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.GetDashboardListItems`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.GetDashboardListItems`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.GetDashboardListItems`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.GetDashboardListItems`:\n%s\n", responseContent)
 }
 ```
 
@@ -620,7 +620,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get items of a Dashboard List returns "OK" response
@@ -656,7 +656,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -675,7 +675,7 @@ api.DashboardList.v2.get_items(4741)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Get items of a Dashboard List returns "OK" response
@@ -703,7 +703,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -781,7 +781,7 @@ Dashboards to add to the dashboard list.
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -794,7 +794,7 @@ Dashboards to add to the dashboard list.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -943,7 +943,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport dashboard_list_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/dashboard/lists/manual/${dashboard_list_id}/dashboards" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -959,8 +959,8 @@ API error response.
   ]
 }
 EOF
-                        
-##### 
+
+#####
                           \# Path parametersexport dashboard_list_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/dashboard/lists/manual/${dashboard_list_id}/dashboards" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -976,8 +976,8 @@ EOF
   ]
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Add custom screenboard dashboard to an existing dashboard list returns "OK" response
@@ -985,48 +985,48 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"strconv"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "strconv"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dashboard_list" in the system
-	DashboardListID, _ := strconv.ParseInt(os.Getenv("DASHBOARD_LIST_ID"), 10, 64)
+    // there is a valid "dashboard_list" in the system
+    DashboardListID, _ := strconv.ParseInt(os.Getenv("DASHBOARD_LIST_ID"), 10, 64)
 
-	// there is a valid "screenboard_dashboard" in the system
-	ScreenboardDashboardID := os.Getenv("SCREENBOARD_DASHBOARD_ID")
+    // there is a valid "screenboard_dashboard" in the system
+    ScreenboardDashboardID := os.Getenv("SCREENBOARD_DASHBOARD_ID")
 
-	body := datadogV2.DashboardListAddItemsRequest{
-		Dashboards: []datadogV2.DashboardListItemRequest{
-			{
-				Id:   ScreenboardDashboardID,
-				Type: datadogV2.DASHBOARDTYPE_CUSTOM_SCREENBOARD,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDashboardListsApi(apiClient)
-	resp, r, err := api.CreateDashboardListItems(ctx, DashboardListID, body)
+    body := datadogV2.DashboardListAddItemsRequest{
+        Dashboards: []datadogV2.DashboardListItemRequest{
+            {
+                Id:   ScreenboardDashboardID,
+                Type: datadogV2.DASHBOARDTYPE_CUSTOM_SCREENBOARD,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDashboardListsApi(apiClient)
+    resp, r, err := api.CreateDashboardListItems(ctx, DashboardListID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.CreateDashboardListItems`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.CreateDashboardListItems`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.CreateDashboardListItems`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.CreateDashboardListItems`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Add custom timeboard dashboard to an existing dashboard list returns "OK" response
@@ -1034,44 +1034,44 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"strconv"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "strconv"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dashboard_list" in the system
-	DashboardListID, _ := strconv.ParseInt(os.Getenv("DASHBOARD_LIST_ID"), 10, 64)
+    // there is a valid "dashboard_list" in the system
+    DashboardListID, _ := strconv.ParseInt(os.Getenv("DASHBOARD_LIST_ID"), 10, 64)
 
-	// there is a valid "dashboard" in the system
-	DashboardID := os.Getenv("DASHBOARD_ID")
+    // there is a valid "dashboard" in the system
+    DashboardID := os.Getenv("DASHBOARD_ID")
 
-	body := datadogV2.DashboardListAddItemsRequest{
-		Dashboards: []datadogV2.DashboardListItemRequest{
-			{
-				Id:   DashboardID,
-				Type: datadogV2.DASHBOARDTYPE_CUSTOM_TIMEBOARD,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDashboardListsApi(apiClient)
-	resp, r, err := api.CreateDashboardListItems(ctx, DashboardListID, body)
+    body := datadogV2.DashboardListAddItemsRequest{
+        Dashboards: []datadogV2.DashboardListItemRequest{
+            {
+                Id:   DashboardID,
+                Type: datadogV2.DASHBOARDTYPE_CUSTOM_TIMEBOARD,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDashboardListsApi(apiClient)
+    resp, r, err := api.CreateDashboardListItems(ctx, DashboardListID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.CreateDashboardListItems`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.CreateDashboardListItems`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.CreateDashboardListItems`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.CreateDashboardListItems`:\n%s\n", responseContent)
 }
 ```
 
@@ -1079,7 +1079,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Add custom screenboard dashboard to an existing dashboard list returns "OK" response
@@ -1127,7 +1127,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Add custom timeboard dashboard to an existing dashboard list returns "OK" response
@@ -1179,7 +1179,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1216,7 +1216,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -1257,7 +1257,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Add custom screenboard dashboard to an existing dashboard list returns "OK" response
@@ -1282,7 +1282,7 @@ body = DatadogAPIClient::V2::DashboardListAddItemsRequest.new({
 p api_instance.create_dashboard_list_items(DASHBOARD_LIST_ID.to_i, body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Add custom timeboard dashboard to an existing dashboard list returns "OK" response
@@ -1311,7 +1311,7 @@ p api_instance.create_dashboard_list_items(DASHBOARD_LIST_ID.to_i, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Add custom screenboard dashboard to an existing dashboard list returns "OK"
@@ -1346,7 +1346,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Add custom timeboard dashboard to an existing dashboard list returns "OK"
@@ -1385,7 +1385,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1425,7 +1425,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -1650,7 +1650,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/dashboard/lists/manual" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1661,8 +1661,8 @@ Error response object.
   "name": "Example-Dashboard-List"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a dashboard list returns "OK" response
@@ -1670,32 +1670,32 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.DashboardList{
-		Name: "Example-Dashboard-List",
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewDashboardListsApi(apiClient)
-	resp, r, err := api.CreateDashboardList(ctx, body)
+    body := datadogV1.DashboardList{
+        Name: "Example-Dashboard-List",
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewDashboardListsApi(apiClient)
+    resp, r, err := api.CreateDashboardList(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.CreateDashboardList`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.CreateDashboardList`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.CreateDashboardList`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.CreateDashboardList`:\n%s\n", responseContent)
 }
 ```
 
@@ -1703,7 +1703,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a dashboard list returns "OK" response
@@ -1738,7 +1738,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -1759,7 +1759,7 @@ api.DashboardList.create(name=name)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```python
 """
@@ -1786,7 +1786,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 require 'rubygems'
@@ -1806,7 +1806,7 @@ result = dog.create_dashboard_list(name)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 # Create a dashboard list returns "OK" response
@@ -1824,7 +1824,7 @@ p api_instance.create_dashboard_list(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a dashboard list returns "OK" response
@@ -1850,7 +1850,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2037,13 +2037,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport list_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/dashboard/lists/manual/${list_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2071,7 +2071,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a dashboard list returns "OK" response
@@ -2088,7 +2088,7 @@ p api_instance.get_dashboard_list(DASHBOARD_LIST_ID.to_i)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'rubygems'
@@ -2106,7 +2106,7 @@ result = dog.get_dashboard_list(4741)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a dashboard list returns "OK" response
@@ -2114,33 +2114,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"strconv"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "strconv"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "dashboard_list" in the system
-	DashboardListID, _ := strconv.ParseInt(os.Getenv("DASHBOARD_LIST_ID"), 10, 64)
+    // there is a valid "dashboard_list" in the system
+    DashboardListID, _ := strconv.ParseInt(os.Getenv("DASHBOARD_LIST_ID"), 10, 64)
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewDashboardListsApi(apiClient)
-	resp, r, err := api.GetDashboardList(ctx, DashboardListID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewDashboardListsApi(apiClient)
+    resp, r, err := api.GetDashboardList(ctx, DashboardListID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.GetDashboardList`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.GetDashboardList`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.GetDashboardList`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.GetDashboardList`:\n%s\n", responseContent)
 }
 ```
 
@@ -2148,7 +2148,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a dashboard list returns "OK" response
@@ -2184,7 +2184,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -2203,7 +2203,7 @@ api.DashboardList.get(4741)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Get a dashboard list returns "OK" response
@@ -2229,7 +2229,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2455,7 +2455,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport dashboard_list_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/dashboard/lists/manual/${dashboard_list_id}/dashboards" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2471,8 +2471,8 @@ API error response.
   ]
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update items of a dashboard list returns "OK" response
@@ -2480,44 +2480,44 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"strconv"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "strconv"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dashboard_list" in the system
-	DashboardListID, _ := strconv.ParseInt(os.Getenv("DASHBOARD_LIST_ID"), 10, 64)
+    // there is a valid "dashboard_list" in the system
+    DashboardListID, _ := strconv.ParseInt(os.Getenv("DASHBOARD_LIST_ID"), 10, 64)
 
-	// there is a valid "screenboard_dashboard" in the system
-	ScreenboardDashboardID := os.Getenv("SCREENBOARD_DASHBOARD_ID")
+    // there is a valid "screenboard_dashboard" in the system
+    ScreenboardDashboardID := os.Getenv("SCREENBOARD_DASHBOARD_ID")
 
-	body := datadogV2.DashboardListUpdateItemsRequest{
-		Dashboards: []datadogV2.DashboardListItemRequest{
-			{
-				Id:   ScreenboardDashboardID,
-				Type: datadogV2.DASHBOARDTYPE_CUSTOM_SCREENBOARD,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDashboardListsApi(apiClient)
-	resp, r, err := api.UpdateDashboardListItems(ctx, DashboardListID, body)
+    body := datadogV2.DashboardListUpdateItemsRequest{
+        Dashboards: []datadogV2.DashboardListItemRequest{
+            {
+                Id:   ScreenboardDashboardID,
+                Type: datadogV2.DASHBOARDTYPE_CUSTOM_SCREENBOARD,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDashboardListsApi(apiClient)
+    resp, r, err := api.UpdateDashboardListItems(ctx, DashboardListID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.UpdateDashboardListItems`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.UpdateDashboardListItems`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.UpdateDashboardListItems`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.UpdateDashboardListItems`:\n%s\n", responseContent)
 }
 ```
 
@@ -2525,7 +2525,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update items of a dashboard list returns "OK" response
@@ -2577,7 +2577,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2618,7 +2618,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update items of a dashboard list returns "OK" response
@@ -2647,7 +2647,7 @@ p api_instance.update_dashboard_list_items(DASHBOARD_LIST_ID.to_i, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update items of a dashboard list returns "OK" response
@@ -2686,7 +2686,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2775,7 +2775,7 @@ Dashboards to delete from the dashboard list.
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -2788,7 +2788,7 @@ Dashboards to delete from the dashboard list.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -2937,7 +2937,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport dashboard_list_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/dashboard/lists/manual/${dashboard_list_id}/dashboards" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2953,8 +2953,8 @@ API error response.
   ]
 }
 EOF
-                        
-##### 
+
+#####
                           \# Path parametersexport dashboard_list_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/dashboard/lists/manual/${dashboard_list_id}/dashboards" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2970,8 +2970,8 @@ EOF
   ]
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Delete custom screenboard dashboard from an existing dashboard list returns "OK" response
@@ -2979,48 +2979,48 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"strconv"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "strconv"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dashboard_list" in the system
-	DashboardListID, _ := strconv.ParseInt(os.Getenv("DASHBOARD_LIST_ID"), 10, 64)
+    // there is a valid "dashboard_list" in the system
+    DashboardListID, _ := strconv.ParseInt(os.Getenv("DASHBOARD_LIST_ID"), 10, 64)
 
-	// there is a valid "screenboard_dashboard" in the system
-	ScreenboardDashboardID := os.Getenv("SCREENBOARD_DASHBOARD_ID")
+    // there is a valid "screenboard_dashboard" in the system
+    ScreenboardDashboardID := os.Getenv("SCREENBOARD_DASHBOARD_ID")
 
-	body := datadogV2.DashboardListDeleteItemsRequest{
-		Dashboards: []datadogV2.DashboardListItemRequest{
-			{
-				Id:   ScreenboardDashboardID,
-				Type: datadogV2.DASHBOARDTYPE_CUSTOM_SCREENBOARD,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDashboardListsApi(apiClient)
-	resp, r, err := api.DeleteDashboardListItems(ctx, DashboardListID, body)
+    body := datadogV2.DashboardListDeleteItemsRequest{
+        Dashboards: []datadogV2.DashboardListItemRequest{
+            {
+                Id:   ScreenboardDashboardID,
+                Type: datadogV2.DASHBOARDTYPE_CUSTOM_SCREENBOARD,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDashboardListsApi(apiClient)
+    resp, r, err := api.DeleteDashboardListItems(ctx, DashboardListID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.DeleteDashboardListItems`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.DeleteDashboardListItems`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.DeleteDashboardListItems`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.DeleteDashboardListItems`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Delete custom timeboard dashboard from an existing dashboard list returns "OK" response
@@ -3028,44 +3028,44 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"strconv"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "strconv"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "dashboard_list" in the system
-	DashboardListID, _ := strconv.ParseInt(os.Getenv("DASHBOARD_LIST_ID"), 10, 64)
+    // there is a valid "dashboard_list" in the system
+    DashboardListID, _ := strconv.ParseInt(os.Getenv("DASHBOARD_LIST_ID"), 10, 64)
 
-	// there is a valid "dashboard" in the system
-	DashboardID := os.Getenv("DASHBOARD_ID")
+    // there is a valid "dashboard" in the system
+    DashboardID := os.Getenv("DASHBOARD_ID")
 
-	body := datadogV2.DashboardListDeleteItemsRequest{
-		Dashboards: []datadogV2.DashboardListItemRequest{
-			{
-				Id:   DashboardID,
-				Type: datadogV2.DASHBOARDTYPE_CUSTOM_TIMEBOARD,
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewDashboardListsApi(apiClient)
-	resp, r, err := api.DeleteDashboardListItems(ctx, DashboardListID, body)
+    body := datadogV2.DashboardListDeleteItemsRequest{
+        Dashboards: []datadogV2.DashboardListItemRequest{
+            {
+                Id:   DashboardID,
+                Type: datadogV2.DASHBOARDTYPE_CUSTOM_TIMEBOARD,
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewDashboardListsApi(apiClient)
+    resp, r, err := api.DeleteDashboardListItems(ctx, DashboardListID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.DeleteDashboardListItems`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.DeleteDashboardListItems`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.DeleteDashboardListItems`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.DeleteDashboardListItems`:\n%s\n", responseContent)
 }
 ```
 
@@ -3073,7 +3073,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete custom screenboard dashboard from an existing dashboard list returns "OK" response
@@ -3121,7 +3121,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Delete custom timeboard dashboard from an existing dashboard list returns "OK" response
@@ -3173,7 +3173,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -3210,7 +3210,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -3251,7 +3251,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete custom screenboard dashboard from an existing dashboard list returns "OK" response
@@ -3276,7 +3276,7 @@ body = DatadogAPIClient::V2::DashboardListDeleteItemsRequest.new({
 p api_instance.delete_dashboard_list_items(DASHBOARD_LIST_ID.to_i, body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Delete custom timeboard dashboard from an existing dashboard list returns "OK" response
@@ -3305,7 +3305,7 @@ p api_instance.delete_dashboard_list_items(DASHBOARD_LIST_ID.to_i, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Delete custom screenboard dashboard from an existing dashboard list returns
@@ -3341,7 +3341,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Delete custom timeboard dashboard from an existing dashboard list returns "OK"
@@ -3381,7 +3381,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3421,7 +3421,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -3679,7 +3679,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport list_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/dashboard/lists/manual/${list_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3690,8 +3690,8 @@ Error response object.
   "name": "updated Example-Dashboard-List"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a dashboard list returns "OK" response
@@ -3699,36 +3699,36 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"strconv"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "strconv"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "dashboard_list" in the system
-	DashboardListID, _ := strconv.ParseInt(os.Getenv("DASHBOARD_LIST_ID"), 10, 64)
+    // there is a valid "dashboard_list" in the system
+    DashboardListID, _ := strconv.ParseInt(os.Getenv("DASHBOARD_LIST_ID"), 10, 64)
 
-	body := datadogV1.DashboardList{
-		Name: "updated Example-Dashboard-List",
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewDashboardListsApi(apiClient)
-	resp, r, err := api.UpdateDashboardList(ctx, DashboardListID, body)
+    body := datadogV1.DashboardList{
+        Name: "updated Example-Dashboard-List",
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewDashboardListsApi(apiClient)
+    resp, r, err := api.UpdateDashboardList(ctx, DashboardListID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.UpdateDashboardList`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.UpdateDashboardList`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.UpdateDashboardList`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.UpdateDashboardList`:\n%s\n", responseContent)
 }
 ```
 
@@ -3736,7 +3736,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a dashboard list returns "OK" response
@@ -3774,7 +3774,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -3805,7 +3805,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a dashboard list returns "OK" response
@@ -3826,7 +3826,7 @@ p api_instance.update_dashboard_list(DASHBOARD_LIST_ID.to_i, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a dashboard list returns "OK" response
@@ -3856,7 +3856,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4026,13 +4026,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport list_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/dashboard/lists/manual/${list_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4060,7 +4060,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a dashboard list returns "OK" response
@@ -4077,7 +4077,7 @@ p api_instance.delete_dashboard_list(DASHBOARD_LIST_ID.to_i)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'rubygems'
@@ -4095,7 +4095,7 @@ result = dog.delete_dashboard_list(4741)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a dashboard list returns "OK" response
@@ -4103,33 +4103,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"strconv"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "strconv"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "dashboard_list" in the system
-	DashboardListID, _ := strconv.ParseInt(os.Getenv("DASHBOARD_LIST_ID"), 10, 64)
+    // there is a valid "dashboard_list" in the system
+    DashboardListID, _ := strconv.ParseInt(os.Getenv("DASHBOARD_LIST_ID"), 10, 64)
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewDashboardListsApi(apiClient)
-	resp, r, err := api.DeleteDashboardList(ctx, DashboardListID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewDashboardListsApi(apiClient)
+    resp, r, err := api.DeleteDashboardList(ctx, DashboardListID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.DeleteDashboardList`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DashboardListsApi.DeleteDashboardList`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.DeleteDashboardList`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `DashboardListsApi.DeleteDashboardList`:\n%s\n", responseContent)
 }
 ```
 
@@ -4137,7 +4137,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a dashboard list returns "OK" response
@@ -4173,7 +4173,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -4192,7 +4192,7 @@ api.DashboardList.delete(4741)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // Delete a dashboard list returns "OK" response
@@ -4218,7 +4218,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

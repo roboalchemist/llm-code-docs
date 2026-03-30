@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The client certificate authorities file should be owned by root
- 
+
 ## Description{% #description %}
 
 The certificate authorities file ownership should be set to `root:root`. The certificate authorities file controls the authorities used to validate API requests. You should set its file ownership to maintain the integrity of the file.

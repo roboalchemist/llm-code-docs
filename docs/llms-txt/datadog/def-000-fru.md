@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Jamf Protect threat events
 ---
 
 # Jamf Protect threat events
-Classification:attack 
+Classification:attack
 ## Goal{% #goal %}
 
 Detect when a [Jamf Protect threat event](https://developer.jamf.com/developer-guide/docs/data-streams#:~:text=The%20Threat%20Event%20Stream%20is,vulnerabilities%2C%20malware%20and%20risky%20apps.) has been raised.

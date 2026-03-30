@@ -7,13 +7,13 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify User Who Owns group F
 ---
 
 # Verify User Who Owns group File
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/etc/group`, run the command:
 
 ```
-$ sudo chown root /etc/group 
+$ sudo chown root /etc/group
 ```
 
 ## Rationale{% #rationale %}

@@ -11,11 +11,11 @@ breadcrumbs: Docs > Datadog Security > Suppressions
 # Suppressions
 Available for:
 {% icon name="icon-siem" /%}
- Cloud SIEM | 
+ Cloud SIEM |
 {% icon name="icon-cloud-security-management" /%}
- Workload Protection | 
+ Workload Protection |
 {% icon name="icon-app-sec" /%}
- App and API Protection 
+ App and API Protection
 ## Overview{% #overview %}
 
 Suppressions are specific conditions for when a signal should not be generated, which can improve the accuracy and relevance of the signals that are generated.

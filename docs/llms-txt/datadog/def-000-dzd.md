@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Require Authentication for Emergency Systemd Target
- 
+
 ## Description{% #description %}
 
 Emergency mode is intended as a system recovery method, providing a single user root access to the system during a failed boot sequence.

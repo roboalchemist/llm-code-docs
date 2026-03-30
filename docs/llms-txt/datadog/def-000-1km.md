@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Route uses HTTP to connect to external APIs
- 
+
 ## Description{% #description %}
 
 The service communicates with third-party APIs using HTTP. The request or its response may be tampered with between your server and that of the third party. Moreover, the content of the request or response may be inspected.

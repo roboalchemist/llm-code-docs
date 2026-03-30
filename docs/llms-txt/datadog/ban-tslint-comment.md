@@ -52,6 +52,5 @@ someCode(); // tslint:disable-line
 /* This is a multiline comment that just happens to mention tslint */
 someCode(); // This is a comment that just happens to mention tslint
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

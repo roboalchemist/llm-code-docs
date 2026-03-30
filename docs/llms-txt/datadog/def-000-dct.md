@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure the Group Used by pam_wheel.so Module Exists on System and is Empty
- 
+
 ## Description{% #description %}
 
 Ensure that the group `sugroup` referenced by `var_pam_wheel_group_for_su` variable and used as value for the `pam_wheel.so` `group` option exists and has no members. This empty group used by `pam_wheel.so` in `/etc/pam.d/su` ensures that no user can run commands with altered privileges through the `su` command.

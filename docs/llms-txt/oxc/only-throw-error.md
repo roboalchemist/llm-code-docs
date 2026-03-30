@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/only-throw-error.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/only-throw-error.md
----
-
-### What it does
+## What it does
 
 This rule disallows throwing non-Error values.
 
-### Why is this bad?
+## Why is this bad?
 
 It's considered good practice to only throw Error objects (or subclasses of Error). This is because Error objects automatically capture a stack trace, which is useful for debugging. Additionally, some tools and environments expect thrown values to be Error objects.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -60,7 +56,7 @@ throw error;
 
 This rule accepts a configuration object with the following properties:
 
-### allow
+## allow
 
 type: `array`
 
@@ -69,7 +65,7 @@ default: `[]`
 An array of type or value specifiers for additional types that are allowed to be thrown.
 Use this to allow throwing custom error types.
 
-#### allow\[n]
+### allow\[n]
 
 type: `string`
 
@@ -83,7 +79,7 @@ Supports four types of specifiers:
 "Promise"
 ```
 
-2. **File specifier**: Match types/values declared in local files
+1. **File specifier**: Match types/values declared in local files
 
 ```json
 { "from": "file", "name": "MyType" }
@@ -91,21 +87,21 @@ Supports four types of specifiers:
 { "from": "file", "name": "MyType", "path": "./types.ts" }
 ```
 
-3. **Lib specifier**: Match TypeScript built-in lib types
+1. **Lib specifier**: Match TypeScript built-in lib types
 
 ```json
 { "from": "lib", "name": "Promise" }
 { "from": "lib", "name": ["Promise", "PromiseLike"] }
 ```
 
-4. **Package specifier**: Match types/values from npm packages
+1. **Package specifier**: Match types/values from npm packages
 
 ```json
 { "from": "package", "name": "Observable", "package": "rxjs" }
 { "from": "package", "name": ["Observable", "Subject"], "package": "rxjs" }
 ```
 
-### allowRethrowing
+## allowRethrowing
 
 type: `boolean`
 
@@ -113,7 +109,7 @@ default: `true`
 
 Whether to allow rethrowing caught values that are not Error objects.
 
-### allowThrowingAny
+## allowThrowingAny
 
 type: `boolean`
 
@@ -121,7 +117,7 @@ default: `true`
 
 Whether to allow throwing values typed as `any`.
 
-### allowThrowingUnknown
+## allowThrowingUnknown
 
 type: `boolean`
 

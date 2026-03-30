@@ -99,6 +99,5 @@ typeof foo === `string`;
 // not supported by this rule, we cannot pretend that somethingElse will complete 'string'
 // typeof foo === `str${somethingElse}`;
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

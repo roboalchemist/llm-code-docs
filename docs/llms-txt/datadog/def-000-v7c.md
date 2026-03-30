@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Permissions on cron.w
 ---
 
 # Verify Permissions on cron.weekly
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/etc/cron.weekly`, run the command:

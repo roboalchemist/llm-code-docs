@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Set Default ip6tables Policy for Incoming Packets
- 
+
 ## Description{% #description %}
 
 To set the default policy to DROP (instead of ACCEPT) for the built-in INPUT chain which processes incoming packets, add or correct the following line in `/etc/iptables/rules.v6`:

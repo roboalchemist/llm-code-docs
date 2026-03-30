@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Cisco Duo user marked authentication request as fraudulent
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detect when a user has marked a Duo push as fraudulent.

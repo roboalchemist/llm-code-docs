@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # A log metric filter and alert should exist for VPC network changes
- 
+
 ## Description{% #description %}
 
 It is recommended that a metric filter and alarm be set up for Virtual Private Cloud (VPC) network changes.

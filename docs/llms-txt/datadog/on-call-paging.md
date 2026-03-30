@@ -130,7 +130,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://saffron.oncall.datadoghq.com"https://lava.oncall.datadoghq.com"https://beige.oncall.datadoghq.eu"https://navy.oncall.datadoghq.com"https://navy.oncall.datadoghq.com"https://teal.oncall.datadoghq.com"https://coral.oncall.datadoghq.com/api/v2/on-call/pages" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -148,8 +148,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -196,7 +196,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create On-Call Page returns "OK." response
@@ -228,7 +228,7 @@ p api_instance.create_on_call_page(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create On-Call Page returns "OK." response
@@ -236,46 +236,46 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreatePageRequest{
-		Data: &datadogV2.CreatePageRequestData{
-			Attributes: &datadogV2.CreatePageRequestDataAttributes{
-				Description: datadog.PtrString("Page details."),
-				Tags: []string{
-					"service:test",
-				},
-				Target: datadogV2.CreatePageRequestDataAttributesTarget{
-					Identifier: datadog.PtrString("my-team"),
-					Type:       datadogV2.ONCALLPAGETARGETTYPE_TEAM_HANDLE.Ptr(),
-				},
-				Title:   "Page title",
-				Urgency: datadogV2.PAGEURGENCY_LOW,
-			},
-			Type: datadogV2.CREATEPAGEREQUESTDATATYPE_PAGES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallPagingApi(apiClient)
-	resp, r, err := api.CreateOnCallPage(ctx, body)
+    body := datadogV2.CreatePageRequest{
+        Data: &datadogV2.CreatePageRequestData{
+            Attributes: &datadogV2.CreatePageRequestDataAttributes{
+                Description: datadog.PtrString("Page details."),
+                Tags: []string{
+                    "service:test",
+                },
+                Target: datadogV2.CreatePageRequestDataAttributesTarget{
+                    Identifier: datadog.PtrString("my-team"),
+                    Type:       datadogV2.ONCALLPAGETARGETTYPE_TEAM_HANDLE.Ptr(),
+                },
+                Title:   "Page title",
+                Urgency: datadogV2.PAGEURGENCY_LOW,
+            },
+            Type: datadogV2.CREATEPAGEREQUESTDATATYPE_PAGES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallPagingApi(apiClient)
+    resp, r, err := api.CreateOnCallPage(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallPagingApi.CreateOnCallPage`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallPagingApi.CreateOnCallPage`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OnCallPagingApi.CreateOnCallPage`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OnCallPagingApi.CreateOnCallPage`:\n%s\n", responseContent)
 }
 ```
 
@@ -283,7 +283,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create On-Call Page returns "OK." response
@@ -340,7 +340,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create On-Call Page returns "OK." response
@@ -384,7 +384,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -489,13 +489,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport page_id="15e74b8b-f865-48d0-bcc5-453323ed2c8f"\# Curl commandcurl -X POST "https://saffron.oncall.datadoghq.com"https://lava.oncall.datadoghq.com"https://beige.oncall.datadoghq.eu"https://navy.oncall.datadoghq.com"https://navy.oncall.datadoghq.com"https://teal.oncall.datadoghq.com"https://coral.oncall.datadoghq.com/api/v2/on-call/pages/${page_id}/acknowledge" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -518,7 +518,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Acknowledge On-Call Page returns "Accepted." response
@@ -532,7 +532,7 @@ p api_instance.acknowledge_on_call_page("15e74b8b-f865-48d0-bcc5-453323ed2c8f")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Acknowledge On-Call Page returns "Accepted." response
@@ -540,26 +540,26 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallPagingApi(apiClient)
-	r, err := api.AcknowledgeOnCallPage(ctx, uuid.MustParse("15e74b8b-f865-48d0-bcc5-453323ed2c8f"))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallPagingApi(apiClient)
+    r, err := api.AcknowledgeOnCallPage(ctx, uuid.MustParse("15e74b8b-f865-48d0-bcc5-453323ed2c8f"))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallPagingApi.AcknowledgeOnCallPage`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallPagingApi.AcknowledgeOnCallPage`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -567,7 +567,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Acknowledge On-Call Page returns "Accepted." response
@@ -599,7 +599,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Acknowledge On-Call Page returns "Accepted." response
@@ -628,7 +628,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -719,13 +719,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport page_id="15e74b8b-f865-48d0-bcc5-453323ed2c8f"\# Curl commandcurl -X POST "https://saffron.oncall.datadoghq.com"https://lava.oncall.datadoghq.com"https://beige.oncall.datadoghq.eu"https://navy.oncall.datadoghq.com"https://navy.oncall.datadoghq.com"https://teal.oncall.datadoghq.com"https://coral.oncall.datadoghq.com/api/v2/on-call/pages/${page_id}/escalate" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -748,7 +748,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Escalate On-Call Page returns "Accepted." response
@@ -762,7 +762,7 @@ p api_instance.escalate_on_call_page("15e74b8b-f865-48d0-bcc5-453323ed2c8f")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Escalate On-Call Page returns "Accepted." response
@@ -770,26 +770,26 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallPagingApi(apiClient)
-	r, err := api.EscalateOnCallPage(ctx, uuid.MustParse("15e74b8b-f865-48d0-bcc5-453323ed2c8f"))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallPagingApi(apiClient)
+    r, err := api.EscalateOnCallPage(ctx, uuid.MustParse("15e74b8b-f865-48d0-bcc5-453323ed2c8f"))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallPagingApi.EscalateOnCallPage`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallPagingApi.EscalateOnCallPage`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -797,7 +797,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Escalate On-Call Page returns "Accepted." response
@@ -829,7 +829,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Escalate On-Call Page returns "Accepted." response
@@ -858,7 +858,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -949,13 +949,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport page_id="15e74b8b-f865-48d0-bcc5-453323ed2c8f"\# Curl commandcurl -X POST "https://saffron.oncall.datadoghq.com"https://lava.oncall.datadoghq.com"https://beige.oncall.datadoghq.eu"https://navy.oncall.datadoghq.com"https://navy.oncall.datadoghq.com"https://teal.oncall.datadoghq.com"https://coral.oncall.datadoghq.com/api/v2/on-call/pages/${page_id}/resolve" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -978,7 +978,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Resolve On-Call Page returns "Accepted." response
@@ -992,7 +992,7 @@ p api_instance.resolve_on_call_page("15e74b8b-f865-48d0-bcc5-453323ed2c8f")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Resolve On-Call Page returns "Accepted." response
@@ -1000,26 +1000,26 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOnCallPagingApi(apiClient)
-	r, err := api.ResolveOnCallPage(ctx, uuid.MustParse("15e74b8b-f865-48d0-bcc5-453323ed2c8f"))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOnCallPagingApi(apiClient)
+    r, err := api.ResolveOnCallPage(ctx, uuid.MustParse("15e74b8b-f865-48d0-bcc5-453323ed2c8f"))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OnCallPagingApi.ResolveOnCallPage`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OnCallPagingApi.ResolveOnCallPage`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -1027,7 +1027,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Resolve On-Call Page returns "Accepted." response
@@ -1059,7 +1059,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Resolve On-Call Page returns "Accepted." response
@@ -1088,7 +1088,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

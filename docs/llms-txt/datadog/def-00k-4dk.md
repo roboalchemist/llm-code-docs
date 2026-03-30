@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Kubernetes API server request timeout should not exceed 60 seconds
- 
+
 ## Description{% #description %}
 
 The global request timeout for API server requests should not exceed 60 seconds. Setting the timeout limit above 60 seconds can exhaust the API server resources making it prone to Denial-of-Service attacks. It is recommended to only change the default limit of 60 seconds when necessary.

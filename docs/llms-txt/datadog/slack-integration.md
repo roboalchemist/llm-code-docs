@@ -84,13 +84,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/slack" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```ruby
 require 'rubygems'
@@ -286,13 +286,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport account_name="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/slack/configuration/accounts/${account_name}/channels" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -316,7 +316,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all channels in a Slack integration returns "OK" response
@@ -330,7 +330,7 @@ p api_instance.get_slack_integration_channels("account_name")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all channels in a Slack integration returns "OK" response
@@ -338,29 +338,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSlackIntegrationApi(apiClient)
-	resp, r, err := api.GetSlackIntegrationChannels(ctx, "account_name")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSlackIntegrationApi(apiClient)
+    resp, r, err := api.GetSlackIntegrationChannels(ctx, "account_name")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SlackIntegrationApi.GetSlackIntegrationChannels`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SlackIntegrationApi.GetSlackIntegrationChannels`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SlackIntegrationApi.GetSlackIntegrationChannels`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SlackIntegrationApi.GetSlackIntegrationChannels`:\n%s\n", responseContent)
 }
 ```
 
@@ -368,7 +368,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all channels in a Slack integration returns "OK" response
@@ -403,7 +403,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all channels in a Slack integration returns "OK" response
@@ -429,7 +429,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -599,7 +599,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/slack" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -614,7 +614,7 @@ Error response object.
   ]
 }
 EOF
-                
+
 ## Create a Slack integration channel{% #create-a-slack-integration-channel %}
 
 {% tab title="v1" %}
@@ -818,7 +818,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport account_name="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/slack/configuration/accounts/${account_name}/channels" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -827,8 +827,8 @@ Error response object.
 -d @- << EOF
 {}
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -863,7 +863,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a Slack integration channel returns "OK" response
@@ -888,7 +888,7 @@ p api_instance.create_slack_integration_channel("account_name", body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create a Slack integration channel returns "OK" response
@@ -896,39 +896,39 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.SlackIntegrationChannel{
-		Display: &datadogV1.SlackIntegrationChannelDisplay{
-			Message:     datadog.PtrBool(true),
-			MuteButtons: datadog.PtrBool(false),
-			Notified:    datadog.PtrBool(true),
-			Snapshot:    datadog.PtrBool(true),
-			Tags:        datadog.PtrBool(true),
-		},
-		Name: datadog.PtrString("#general"),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSlackIntegrationApi(apiClient)
-	resp, r, err := api.CreateSlackIntegrationChannel(ctx, "account_name", body)
+    body := datadogV1.SlackIntegrationChannel{
+        Display: &datadogV1.SlackIntegrationChannelDisplay{
+            Message:     datadog.PtrBool(true),
+            MuteButtons: datadog.PtrBool(false),
+            Notified:    datadog.PtrBool(true),
+            Snapshot:    datadog.PtrBool(true),
+            Tags:        datadog.PtrBool(true),
+        },
+        Name: datadog.PtrString("#general"),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSlackIntegrationApi(apiClient)
+    resp, r, err := api.CreateSlackIntegrationChannel(ctx, "account_name", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SlackIntegrationApi.CreateSlackIntegrationChannel`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SlackIntegrationApi.CreateSlackIntegrationChannel`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SlackIntegrationApi.CreateSlackIntegrationChannel`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SlackIntegrationApi.CreateSlackIntegrationChannel`:\n%s\n", responseContent)
 }
 ```
 
@@ -936,7 +936,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a Slack integration channel returns "OK" response
@@ -983,7 +983,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create a Slack integration channel returns "OK" response
@@ -1021,7 +1021,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1199,7 +1199,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/slack" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -1214,8 +1214,8 @@ Error response object.
   ]
 }
 EOF
-                
-##### 
+
+#####
 
 ```ruby
 require 'rubygems'
@@ -1413,13 +1413,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport account_name="CHANGE_ME"export channel_name="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/slack/configuration/accounts/${account_name}/channels/${channel_name}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1444,7 +1444,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a Slack integration channel returns "OK" response
@@ -1458,7 +1458,7 @@ p api_instance.get_slack_integration_channel("account_name", "channel_name")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a Slack integration channel returns "OK" response
@@ -1466,29 +1466,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSlackIntegrationApi(apiClient)
-	resp, r, err := api.GetSlackIntegrationChannel(ctx, "account_name", "channel_name")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSlackIntegrationApi(apiClient)
+    resp, r, err := api.GetSlackIntegrationChannel(ctx, "account_name", "channel_name")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SlackIntegrationApi.GetSlackIntegrationChannel`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SlackIntegrationApi.GetSlackIntegrationChannel`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SlackIntegrationApi.GetSlackIntegrationChannel`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SlackIntegrationApi.GetSlackIntegrationChannel`:\n%s\n", responseContent)
 }
 ```
 
@@ -1496,7 +1496,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a Slack integration channel returns "OK" response
@@ -1530,7 +1530,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a Slack integration channel returns "OK" response
@@ -1556,7 +1556,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1728,13 +1728,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/slack" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```ruby
 require 'rubygems'
@@ -1956,7 +1956,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport account_name="CHANGE_ME"export channel_name="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/slack/configuration/accounts/${account_name}/channels/${channel_name}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1965,8 +1965,8 @@ Error response object.
 -d @- << EOF
 {}
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2003,7 +2003,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a Slack integration channel returns "OK" response
@@ -2028,7 +2028,7 @@ p api_instance.update_slack_integration_channel("account_name", "channel_name", 
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Update a Slack integration channel returns "OK" response
@@ -2036,39 +2036,39 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.SlackIntegrationChannel{
-		Display: &datadogV1.SlackIntegrationChannelDisplay{
-			Message:     datadog.PtrBool(true),
-			MuteButtons: datadog.PtrBool(false),
-			Notified:    datadog.PtrBool(true),
-			Snapshot:    datadog.PtrBool(true),
-			Tags:        datadog.PtrBool(true),
-		},
-		Name: datadog.PtrString("#general"),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSlackIntegrationApi(apiClient)
-	resp, r, err := api.UpdateSlackIntegrationChannel(ctx, "account_name", "channel_name", body)
+    body := datadogV1.SlackIntegrationChannel{
+        Display: &datadogV1.SlackIntegrationChannelDisplay{
+            Message:     datadog.PtrBool(true),
+            MuteButtons: datadog.PtrBool(false),
+            Notified:    datadog.PtrBool(true),
+            Snapshot:    datadog.PtrBool(true),
+            Tags:        datadog.PtrBool(true),
+        },
+        Name: datadog.PtrString("#general"),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSlackIntegrationApi(apiClient)
+    resp, r, err := api.UpdateSlackIntegrationChannel(ctx, "account_name", "channel_name", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SlackIntegrationApi.UpdateSlackIntegrationChannel`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SlackIntegrationApi.UpdateSlackIntegrationChannel`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `SlackIntegrationApi.UpdateSlackIntegrationChannel`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `SlackIntegrationApi.UpdateSlackIntegrationChannel`:\n%s\n", responseContent)
 }
 ```
 
@@ -2076,7 +2076,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a Slack integration channel returns "OK" response
@@ -2123,7 +2123,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Update a Slack integration channel returns "OK" response
@@ -2165,7 +2165,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2343,12 +2343,12 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport account_name="CHANGE_ME"export channel_name="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/slack/configuration/accounts/${account_name}/channels/${channel_name}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2371,7 +2371,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Remove a Slack integration channel returns "The channel was removed successfully." response
@@ -2385,7 +2385,7 @@ api_instance.remove_slack_integration_channel("account_name", "channel_name")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Remove a Slack integration channel returns "The channel was removed successfully." response
@@ -2393,25 +2393,25 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewSlackIntegrationApi(apiClient)
-	r, err := api.RemoveSlackIntegrationChannel(ctx, "account_name", "channel_name")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewSlackIntegrationApi(apiClient)
+    r, err := api.RemoveSlackIntegrationChannel(ctx, "account_name", "channel_name")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SlackIntegrationApi.RemoveSlackIntegrationChannel`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SlackIntegrationApi.RemoveSlackIntegrationChannel`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -2419,7 +2419,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Remove a Slack integration channel returns "The channel was removed successfully." response
@@ -2451,7 +2451,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Remove a Slack integration channel returns "The channel was removed
@@ -2478,7 +2478,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

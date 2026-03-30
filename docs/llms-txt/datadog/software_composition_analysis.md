@@ -42,10 +42,10 @@ Software Composition Analysis (SCA) supports the following languages:
 - [php](#set-up-sca)
 - [php](#set-up-sca)
 - [go](#set-up-sca)
--  
--  
--  
- 
+-
+-
+-
+
 For steps on setting up SCA for your language, see [Set up SCA](https://docs.datadoghq.com/security/code_security/software_composition_analysis/#set-up-sca).
 
 ## Set up SCA{% #set-up-sca %}

@@ -52,9 +52,8 @@ public class Person {
 public class Person {
     // separate declarations - no violation
     String firstName;
-    String lastName;     
+    String lastName;
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

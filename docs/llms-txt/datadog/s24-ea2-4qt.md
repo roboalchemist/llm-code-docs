@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The docker.service file permissions should be set to 644
-Classification:complianceFramework:cis-dockerControl:3.2 
+Classification:complianceFramework:cis-dockerControl:3.2
 ## Description{% #description %}
 
 You should verify that the docker.service file permissions are either set to 644 or to a more restrictive value.

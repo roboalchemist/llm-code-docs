@@ -50,9 +50,9 @@ class keychainController: keychainViewController {
         let attributes: [NSString: Any] = [
             kSecValueData: data,
             kSecAttrAccessible: kSecAttrAccessibleAfterFirstUnlock
-        ] 
-    }  
-    
+        ]
+    }
+
 }
 ```
 
@@ -99,8 +99,8 @@ class keychainController: keychainViewController {
         query[kSecAttrAccessible as String] = kSecAttrAccessibleAlways
         SecItemAdd(query as CFDictionary, nil)
     }
-    
-    
+
+
 }
 ```
 
@@ -128,8 +128,8 @@ class keychainController: keychainViewController {
         let attributes: [NSString: Any] = [
             kSecValueData: data,
             kSecAttrAccessible: kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
-        ] 
-    } 
+        ]
+    }
 }
 ```
 
@@ -139,9 +139,8 @@ class keychainController: keychainViewController {
         var query = [String : AnyObject]()
         query[kSecAttrAccessible as String] = kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly
         SecItemAdd(query as CFDictionary, nil)
-    }  
+    }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

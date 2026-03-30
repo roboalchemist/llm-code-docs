@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # 'OS and Data' disks should be encrypted with Customer Managed Key (CMK)
- 
+
 ## Description{% #description %}
 
 To enhance data security, it is important to ensure that both OS disks (boot volumes) and data disks (non-boot volumes) of IaaS VMs are encrypted using Customer Managed Keys (CMK). CMKs can be achieved through either Azure Disk Encryption (ADE) or Server Side Encryption (SSE).

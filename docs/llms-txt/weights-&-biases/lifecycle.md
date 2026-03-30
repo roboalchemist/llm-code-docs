@@ -1,0 +1,50 @@
+# Source: https://docs.wandb.ai/inference/lifecycle.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.wandb.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Model Lifecycle
+
+> Learn about W&B Inference model lifecycle and retirement
+
+
+New models are frequently evaluated and released as part of the W\&B Inference catalog.
+
+Older models are regularly reviewed and may be retired to prioritize the most in-demand and highest-quality offerings.
+
+## Model lifecycle stages
+
+Models in W\&B Inference use the following terminology for the stages of their lifecycle:
+
+* **Generally Available**: The model is fully supported and is recommended for use.
+* **Deprecated**: The model is scheduled for removal. Customers should update to a recommended replacement as soon as possible.
+* **Retired**: The model is no longer available. Any requests to retired models fail and return an `HTTP 404` status code for all requests.
+
+## Deprecation process
+
+When deprecating a model, W\&B will provide at least two weeks of notice on this page before the model is retired.
+
+We additionally attempt to notify recent users of a deprecated model via email
+and provide recommendations for replacement models.
+
+Models that are in the **deprecated** stage continue to serve requests.
+
+## Deprecated models
+
+The following W\&B Inference models are **deprecated**:
+
+*None currently*
+
+## Retired models
+
+The following W\&B Inference models are **retired**:
+
+| Retirement date | Model ID                           | Recommended replacement       |
+| --------------- | ---------------------------------- | ----------------------------- |
+| 2026-03-04      | `deepseek-ai/DeepSeek-R1-0528`     |                               |
+| 2026-03-04      | `deepseek-ai/DeepSeek-V3-0324`     |                               |
+| 2026-03-04      | `moonshotai/Kimi-K2-Instruct`      | `moonshotai/Kimi-K2.5`        |
+| 2026-03-04      | `moonshotai/Kimi-K2-Instruct-0905` | `moonshotai/Kimi-K2.5`        |
+| 2026-03-04      | `Qwen/Qwen2.5-14B-Instruct`        | `OpenPipe/Qwen3-14B-Instruct` |
+| 2026-03-04      | `zai-org/GLM-4.5`                  | `zai-org/GLM-5-FP8`           |

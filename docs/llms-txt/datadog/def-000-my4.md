@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Windows shadow copies delete
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1490-inhibit-system-recovery](https://attack.mitre.org/techniques/T1490) 
+Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1490-inhibit-system-recovery](https://attack.mitre.org/techniques/T1490)
 ## Goal{% #goal %}
 
 Detect when vssadmin is used to delete shadow copies.

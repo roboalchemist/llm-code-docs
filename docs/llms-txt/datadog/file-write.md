@@ -64,6 +64,5 @@ File.binwrite(filename, content)
 ```ruby
 File.write(filename, content)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

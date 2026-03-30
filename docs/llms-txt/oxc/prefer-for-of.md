@@ -1,20 +1,16 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/prefer-for-of.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/prefer-for-of.md
----
-
-### What it does
+## What it does
 
 Enforces the use of for-of loop instead of a for loop with a simple iteration.
 
-### Why is this bad?
+## Why is this bad?
 
 Using a for loop with a simple iteration over an array can be replaced with a more concise
 and readable for-of loop. For-of loops are easier to read and less error-prone, as they
 eliminate the need for an index variable and manual array access.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

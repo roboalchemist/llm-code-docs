@@ -55,6 +55,5 @@ curl_setopt($handler, CURLOPT_SSL_VERIFYHOST, true);
 curl_setopt($handler, CURLOPT_SSL_VERIFYHOST, 1);
 ?>
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

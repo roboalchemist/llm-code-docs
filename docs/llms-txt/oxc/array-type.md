@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/array-type.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/array-type.md
----
-
-### What it does
+## What it does
 
 Require consistently using either `T[]` or `Array<T>` for arrays.
 
-### Why is this bad?
+## Why is this bad?
 
 Using the `Array` type directly is not idiomatic. Instead, use the array type `T[]` or `Array<T>`.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -58,7 +54,7 @@ const d: MyType[] = ["a", "b"];
 
 This rule accepts a configuration object with the following properties:
 
-### default
+## default
 
 type: `"array" | "array-simple" | "generic"`
 
@@ -66,7 +62,7 @@ default: `"array"`
 
 The array type expected for mutable cases.
 
-### readonly
+## readonly
 
 type: `"array" | "array-simple" | "generic"`
 

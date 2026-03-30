@@ -102,6 +102,5 @@ def resource2():
     ret = "<a href='/path/to/{0}'>Click me!</a>".format(resource_id)
     return ret
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

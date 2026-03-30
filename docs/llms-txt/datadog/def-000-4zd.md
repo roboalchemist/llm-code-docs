@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Use Only FIPS 140-2 Validate
 ---
 
 # Use Only FIPS 140-2 Validated Ciphers
- 
+
 ## Description{% #description %}
 
 Limit the ciphers to those algorithms which are FIPS-approved. Counter (CTR) mode is also preferred over cipher-block chaining (CBC) mode. The following line in `/etc/ssh/sshd_config` demonstrates use of FIPS-approved ciphers:

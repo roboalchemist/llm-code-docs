@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Clusters should use binary authorization
- 
+
 ## Description{% #description %}
 
 Enable Binary Authorization on the cluster. This ensures that only signed images are allowed inside the cluster, increasing the supply-chain security of your clusters.

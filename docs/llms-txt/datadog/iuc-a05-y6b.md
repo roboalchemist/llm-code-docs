@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Interactive shell spawned in
 ---
 
 # Interactive shell spawned in container
-Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1609-container-administration-command](https://attack.mitre.org/techniques/T1609) 
+Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1609-container-administration-command](https://attack.mitre.org/techniques/T1609)
 ## What happened{% #what-happened %}
 
 The process `{{ @process.comm }}` was executed with the interactive (`-i`) flag in a container

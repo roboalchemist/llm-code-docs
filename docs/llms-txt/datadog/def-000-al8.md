@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Google Cloud exposed service account key
-Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1552-unsecured-credentials](https://attack.mitre.org/techniques/T1552) 
+Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1552-unsecured-credentials](https://attack.mitre.org/techniques/T1552)
 ## Goal{% #goal %}
 
 Detect when Google Cloud disables a key for being exposed.

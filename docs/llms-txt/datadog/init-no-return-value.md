@@ -41,21 +41,20 @@ The `__init__` method (and the `__new__` method) should never return a non-`None
 
 ```python
 class Foo:
-	def __init__(self):
-		#  __init__ should not return a value
-		return 3
+    def __init__(self):
+        #  __init__ should not return a value
+        return 3
 
-	def my_method():
-		return 10
+    def my_method():
+        return 10
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}
 
 ```python
 class Foo:
-	def __init__(self):
-		pass
+    def __init__(self):
+        pass
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

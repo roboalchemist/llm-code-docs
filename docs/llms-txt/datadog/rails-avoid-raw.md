@@ -49,6 +49,5 @@ To avoid this, instead of using `raw`, consider using the `html_safe` method on 
 raw(my_variable)
 anotherraw(my_variable)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

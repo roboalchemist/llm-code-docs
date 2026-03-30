@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Route returns PCI regulated data without setting Cache-Control HTTP header
- 
+
 ## Description{% #description %}
 
 This publicly exposed API endpoint returns PCI regulated data without implementing the Cache-Control header. This header instructs browsers how to cache HTTP responses. Without this header, sensitive API responses might be cached inappropriately, potentially exposing regulated data to unintended users through shared browsers.

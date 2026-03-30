@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Pods should verify the API server's serving certificate before connecting
-Classification:complianceFramework:cis-kubernetesControl:1.3.5 
+Classification:complianceFramework:cis-kubernetesControl:1.3.5
 ## Description{% #description %}
 
 Allow pods to verify the API server's serving certificate before establishing connections.

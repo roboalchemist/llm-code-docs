@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Microsoft graph security ale
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attack 
+Classification:attack
 ## Goal{% #goal %}
 
 Detect when a Microsoft security product sends an alert to the Microsoft Graph security API.

@@ -1,0 +1,79 @@
+# Source: https://docs.vast.ai/tts-with-nari-labs-dia.md
+
+> ## Documentation Index
+>
+> Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# TTS with Nari Labs Dia
+
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+__html: JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Use Nari Labs Dia TTS on Vast.ai",
+  "description": "A step-by-step guide to configuring and running the Nari Labs Dia 1.6b model for text-to-speech generation on Vast.ai with an easy-to-use web interface.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Setup Account and Select Template",
+      "text": "Setup your Vast account and add credit by reviewing the quickstart guide. Click on Templates and select the recommended 'Dia 1.6b TTS' template. Click the play icon to select the template and go to the search menu to find a GPU. You will need approximately 8GB VRAM for this model."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Rent GPU and Access Instance",
+      "text": "Select a GPU that meets the VRAM requirement (8GB+) and click Rent. After the instance loads, click the 'Open' button to initiate the Instance Portal with links to all services running on the instance."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Monitor Installation Progress",
+      "text": "The TTS application and model will be installed on first launch. From the Instance Portal, view the progress by clicking the 'Instance Logs' tab to monitor the installation status."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Launch the TTS Interface",
+      "text": "When the installation is complete, click the 'Dia TTS Interface' launch button from the Instance Portal to start the Gradio-based web interface."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Generate Audio",
+      "text": "Once the interface has loaded, modify the input text, ensuring each line is prefixed with the speaker ID. Click the 'Generate Audio' button. It will take a few seconds to generate. Once finished, click the play button in the upper right to hear the results. For CLI usage, access files in /workspace/dia directory via SSH or Jupyter terminal."
+    }
+  ]
+})
+}}
+/>
+
+Below is a step-by-step guide on how to configure and run Nari Labs Dia 1.6b model for text to speech. Our template will automatically setup an easy to access web based interface to help you get started.
+
+## Find and rent your GPU
+
+1. **Setup your Vast account and add credit:** Review the [quickstart guide](/documentation/get-started/quickstart) to get familar with the service if you do not have an account with credits loaded.
+2. **Select the Dia TTS template:** click on [temp](https://cloud.vast.ai/templates/) and select the recomended TTS template [**Dia 1.6b TTS**](https://cloud.vast.ai/?ref_id=62897\&creator_id=62897\&name=Dia%201.6b%20TTS)**.&#x20;**&#x43;lick on the play icon to select the template. You will then go to the search menu to find a GPU.&#x20;
+   * Click on the Readme link at any time for a detailed guide on how to use the template.
+3. **VRAM Requirements**: Check that your **GPU VRAM** is sufficient for the model. You will need approximately 8Gb VRAM
+
+## Steps to Open the TTS Interface
+
+1. **After the instance loads, click the "Open" Button**
+   * This will initiate the Instance Portal with links to all the services running on the instance.&#x20;
+2. **Check the installation progress**
+   * The TTS application and model will be installed on first launch.  From the Instance Portal you can view the progress by clicking the 'Instance Logs' tab.&#x20;
+3. **Launch the Application**
+   * When the installation is complete, You can click the "Dia TTS Interface" launch button to start the interface.
+
+## Generate some audio
+
+Once the interface has loaded, you can begin generating speech.  Simply modify the input text, ensuring that each line is prefixed with the speaker ID and then click the 'Generate Audio' button.
+
+It will take a few seconds to generate, but once it has finished you can click the play button in the upper right to hear the results.
+
+<Frame caption="Dia TTS Interface">
+    <img src="https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-audio-generation.webp?fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=cbc857cb2820dc9fe97233f2ae472f04" alt="Gradio application for speech generation with Dia TTS model" data-og-width="1280" width="1280" data-og-height="464" height="464" data-path="images/use-cases-ai-audio-generation.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-audio-generation.webp?w=280&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=ab310b28a7eea6fa907e95acc787b8c8 280w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-audio-generation.webp?w=560&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=9dc251fd6ff71f63c4b9a1067066d46e 560w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-audio-generation.webp?w=840&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=474e6f25d3b48de00d05f192f26b69cf 840w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-audio-generation.webp?w=1100&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=d45f3072cf4f71a1e48eba4bc7552ff9 1100w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-audio-generation.webp?w=1650&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=4d0306fb2689a252c5a5bf89f0aaab6d 1650w, https://mintcdn.com/vastai-80aa3a82/LEwury95WvhzGW2f/images/use-cases-ai-audio-generation.webp?w=2500&fit=max&auto=format&n=LEwury95WvhzGW2f&q=85&s=da1dc8cb715428420c784ae43d43726b 2500w" />
+</Frame>
+
+If you prefer to use the CLI, you can find all of the files you need in the `/workspace/dia` directory which you can access either via SSH or in a Jupyter terminal.
+
+Full instructions for Nari Labs Dia can be found in their [GitHub Repository](https://github.com/nari-labs/dia).

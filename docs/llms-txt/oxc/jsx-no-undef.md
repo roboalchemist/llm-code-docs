@@ -1,21 +1,17 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/jsx-no-undef.md
 
----
-url: /docs/guide/usage/linter/rules/react/jsx-no-undef.md
----
-
-### What it does
+## What it does
 
 Disallow undeclared variables in JSX.
 
 Note that this rule is generally unnecessary if you are using TypeScript, as
 TypeScript will catch undeclared variables for you.
 
-### Why is this bad?
+## Why is this bad?
 
 It is most likely a potential ReferenceError caused by a misspelling of a variable or parameter name.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

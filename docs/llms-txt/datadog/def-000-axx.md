@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Alpha clusters should not be used for production workloads
- 
+
 ## Description{% #description %}
 
 Alpha clusters are not suitable for production workloads. They are intended for early adopters to test new features before they become production-ready. Although they enable all Kubernetes API features, alpha clusters are not covered by the GKE SLA, do not receive security updates, have node auto-upgrade and node auto-repair disabled, cannot be upgraded, and are automatically deleted after 30 days.

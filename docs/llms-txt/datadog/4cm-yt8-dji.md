@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The registry certificate files should have read-only or stricter permissions
-Classification:complianceFramework:cis-dockerControl:3.8 
+Classification:complianceFramework:cis-dockerControl:3.8
 ## Description{% #description %}
 
 You should verify that all the registry certificate files, usually found under `/etc/docker/certs.d/<registry-name> directory`, have permissions of 444 or are set more restrictively.

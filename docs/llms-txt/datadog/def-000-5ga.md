@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Authentication route use Bas
 ---
 
 # Authentication route use Basic Auth
- 
+
 ## Description{% #description %}
 
 The API endpoint uses an authentication protocol that is not considered secure. The "HTTP/1.0" protocol includes the specification for a [Basic Access Authentication scheme](https://datatracker.ietf.org/doc/html/rfc7617). That scheme is not a secure method of user authentication, as the user name and password are passed over the network in an unencrypted form.

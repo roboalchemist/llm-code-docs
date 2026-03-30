@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure should use the latest Python version available
- 
+
 ## Description{% #description %}
 
 Newer versions of Python software are periodically released to address security vulnerabilities and introduce additional functionalities. It is recommended to use the latest version for web apps to maximize security and take advantage of new features. Organizations should evaluate each update for compatibility and ensure it supports their software ecosystem effectively.

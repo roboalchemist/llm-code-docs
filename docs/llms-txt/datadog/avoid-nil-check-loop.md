@@ -39,7 +39,7 @@ Consider the following code snippets:Consider the following code snippets:
 func main () {
     if s != nil {
         for _, x := range s {
-        
+
         }
     }
 }
@@ -55,7 +55,7 @@ Removing the `if` condition and directly using the `for range` loop will not imp
 func main () {
     if s != nil {
         for _, x := range s {
-        
+
         }
     }
 }
@@ -66,10 +66,9 @@ func main () {
 ```go
 func main () {
     for _, x := range s {
-    
+
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

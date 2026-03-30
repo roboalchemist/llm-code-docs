@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-confusing-non-null-assertion.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-confusing-non-null-assertion.md
----
-
-### What it does
+## What it does
 
 Disallow non-null assertion in locations that may be confusing.
 
-### Why is this bad?
+## Why is this bad?
 
 Using a non-null assertion (!) next to an assign or equals check (= or == or ===) creates code that is confusing as it looks similar to a not equals check (!= !==).
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

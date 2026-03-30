@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Azure PostgreSQL database server should use geo-redundant backups
- 
+
 ## Description{% #description %}
 
 PostgreSQL uses geo-redundant backups.
@@ -31,19 +31,19 @@ Using geo-redundancy with PostgreSQL creates geographically distributed replicas
 1. When configuring the [`az postgres server create` Microsoft Azure Module](https://docs.microsoft.com/en-us/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) ensure that `geoRedundantBackup` is set to `Enabled`, as shown in the example below.
 
    ```
-    az postgres server create 
-        -l northeurope 
-        -g mygroup 
-        -n mysvr 
-        -u username 
-        -p password 
+    az postgres server create
+        -l northeurope
+        -g mygroup
+        -n mysvr
+        -u username
+        -p password
         --sku-name my_sku
-        --ssl-enforcement Enabled 
-        --minimal-tls-version TLS1_0 
-        --public-network-access Disabled 
-        --backup-retention 10 
-        --geo-redundant-backup Enabled 
-        --storage-size 51200 
-        --tags "key=value" 
+        --ssl-enforcement Enabled
+        --minimal-tls-version TLS1_0
+        --public-network-access Disabled
+        --backup-retention 10
+        --geo-redundant-backup Enabled
+        --storage-size 51200
+        --tags "key=value"
         --version 11
    ```

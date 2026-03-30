@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # DMS replication instances should be configured to use multiple Availability Zones
- 
+
 ## Description{% #description %}
 
 AWS Database Migration Service (DMS) replication instances should be configured to use multiple Availability Zones (Multi-AZ deployment) for high availability and resilience. In a Multi-AZ deployment, AWS DMS automatically provisions and maintains a standby replica of a replication instance in a different Availability Zone. The primary replication instance is synchronously replicated to the standby replica, ensuring minimal interruption if the primary instance fails or becomes unresponsive.

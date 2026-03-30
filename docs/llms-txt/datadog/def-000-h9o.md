@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # OpenSearch domains should encrypt data sent between nodes
- 
+
 ## Description{% #description %}
 
 This check determines if node-to-node encryption is activated for OpenSearch domains. Using HTTPS (TLS) can help prevent potential attackers from intercepting or altering network traffic through man-in-the-middle or similar attacks. Only secure connections via HTTPS (TLS) should be permitted. Activating node-to-node encryption for OpenSearch domains ensures that intra-cluster communications are securely encrypted while in transit.

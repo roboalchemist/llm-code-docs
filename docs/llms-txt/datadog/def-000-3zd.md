@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > JWT authentication bypass at
 ---
 
 # JWT authentication bypass attempt
-Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190) 
+Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190)
 ### Goal{% #goal %}
 
 Detect when a web service is subject to processing insecure, unsigned JWT tokens. Such security activity generally indicates an attacker is tampering tokens to gain unauthorized access to protected resources or impersonate another user.

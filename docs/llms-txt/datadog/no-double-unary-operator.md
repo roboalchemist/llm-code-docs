@@ -46,6 +46,5 @@ Operator `--` and `++` do not exists in Python. Increment or decrement the varia
 n = n + 1
 n = n - 1
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

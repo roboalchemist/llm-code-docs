@@ -52,6 +52,5 @@ s = df.ix[[0, 2], 'A']
 ```python
 new_df = df.iloc[]
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

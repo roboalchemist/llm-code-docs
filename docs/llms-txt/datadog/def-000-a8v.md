@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Group Who Owns /var/log/waagent.log File
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/var/log/waagent.log`, run the command:

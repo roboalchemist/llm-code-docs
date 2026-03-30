@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The network security group should allow specific port rules
- 
+
 ## Description{% #description %}
 
 Azure Network Security Group (NSG) is configured to allow specific ports rather than all ports or port ranges.

@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Classic Load Balancers should be configured to use defensive or strictest desync mitigation mode
- 
+
 ## Description{% #description %}
 
 This check verifies Classic Load Balancers are set to use either the defensive or strictest desync mitigation mode. HTTP desynchronization issues can lead to request smuggling, making applications vulnerable to request queue or cache poisoning. These vulnerabilities can, in turn, result in credential hijacking or the execution of unauthorized commands. Classic Load Balancers configured with the defensive or strictest desync mitigation mode help protect your application from security risks associated with HTTP desynchronization.

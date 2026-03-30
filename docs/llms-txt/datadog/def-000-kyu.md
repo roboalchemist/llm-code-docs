@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Azure user has a large permi
 ---
 
 # Azure user has a large permissions gap
- 
+
 ## Description{% #description %}
 
 To mitigate the impact of credential exposure or compromise, role assignments should be scoped down to the least level of privilege needed to perform their responsibilities. This rule identifies when a user is assigned a role that has permissions that are more broad than what is regularly used. Datadog considers a permissions gap to be large when the number of unused permissions is greater than 40% of the total permissions count.

@@ -1,20 +1,16 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-array-callback-reference.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-array-callback-reference.md
----
-
-### What it does
+## What it does
 
 Prevents passing a function reference directly to iterator methods
 
-### Why is this bad?
+## Why is this bad?
 
 Passing functions to iterator methods can cause issues when the function is changed
 without realizing that the iterator passes 2 more parameters to it (index and array).
 This can lead to unexpected behavior when the function signature changes.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

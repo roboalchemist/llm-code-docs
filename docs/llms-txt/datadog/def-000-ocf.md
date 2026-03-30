@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Commercial vulnerability sca
 ---
 
 # Commercial vulnerability scanner
-Tactic:[TA0043-reconnaissance](https://attack.mitre.org/tactics/TA0043)Technique:[T1595-active-scanning](https://attack.mitre.org/techniques/T1595) 
+Tactic:[TA0043-reconnaissance](https://attack.mitre.org/tactics/TA0043)Technique:[T1595-active-scanning](https://attack.mitre.org/techniques/T1595)
 ### Goal{% #goal %}
 
 Detects when a commercial vulnerability scanner is performing a scan against your services.

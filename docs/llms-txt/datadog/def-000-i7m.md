@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1218-system-binary-proxy-execution](https://attack.mitre.org/techniques/T1218) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1218-system-binary-proxy-execution](https://attack.mitre.org/techniques/T1218)
 ## Goal{% #goal %}
 
 Detects creation or access of Self Extraction Directive files that may be used for defense evasion through system binary proxy execution.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Amazon Bedrock activity InvokeModel multiple regions
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1526-cloud-service-discovery](https://attack.mitre.org/techniques/T1526) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1526-cloud-service-discovery](https://attack.mitre.org/techniques/T1526)
 ## Goal{% #goal %}
 
 Detect when there is an attempt to use InvokeModel in multiple regions.

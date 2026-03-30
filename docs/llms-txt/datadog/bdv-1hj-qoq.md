@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # New Public Repository Container Image detected in AWS ECR
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1525-implant-internal-image](https://attack.mitre.org/techniques/T1525) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1525-implant-internal-image](https://attack.mitre.org/techniques/T1525)
 ## Goal{% #goal %}
 
 Detect when a new image is uploaded to the public ECR. This could be a potential exfil route of data from the cloud. Could be a supply chain effect as well if a company hosts their containers here for consumers.

@@ -72,7 +72,7 @@ from urllib.parse import urlparse
 @app.route("/cmd", methods=['POST'])
 def cmd():
     filename = request.form.get('filename')
-    
+
     try:
         if not filename or len(filename) > 255:
             raise ValueError("Invalid filename")
@@ -88,11 +88,10 @@ def cmd():
         response = requests.get(filename)
         response.raise_for_status()
         result = response.text
-        
+
         return render_template("index.html", result=result)
     except Exception as e:
         return render_template("index.html", result="Unexpected error during the execution of the predefined command.")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # SSRF attempts on routes executing network queries
-Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190) 
+Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190)
 ### Goal{% #goal %}
 
 Detect Server-Side Request Forgery (SSRF) attempts on web services performing external HTTP requests. Such security activity generally indicates that an attacker is trying to discover and exploit a potential SSRF vulnerability.

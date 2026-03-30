@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure All Files Are Owned b
 ---
 
 # Ensure All Files Are Owned by a User
- 
+
 ## Description{% #description %}
 
 If any files are not owned by a user, then the cause of their lack of ownership should be investigated. Following this, the files should be deleted or assigned to an appropriate user. Locate the mount points related to local devices by the following command:

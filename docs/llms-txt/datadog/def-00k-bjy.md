@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Etcd should have peer authentication configured
- 
+
 ## Description{% #description %}
 
 Etcd should be configured for peer authentication. Etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of REST API objects. These objects are sensitive in nature and should be accessible only by authenticated etcd peers in the etcd cluster.

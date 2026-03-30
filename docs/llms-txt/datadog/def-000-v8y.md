@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Set SSH Client Alive Interva
 ---
 
 # Set SSH Client Alive Interval
- 
+
 ## Description{% #description %}
 
 SSH allows administrators to set a network responsiveness timeout interval. After this interval has passed, the unresponsive client will be automatically logged out.
@@ -16,7 +16,7 @@ To set this timeout interval, edit the following line in `/etc/ssh/sshd_config` 
 
 ```
 ClientAliveInterval 300
-        
+
 ```
 
 The timeout **interval** is given in seconds. For example, have a timeout of 10 minutes, set **interval** to 600.
@@ -49,7 +49,7 @@ chmod 0600 /etc/ssh/sshd_config.d/00-complianceascode-hardening.conf
 LC_ALL=C sed -i "/^\s*ClientAliveInterval\s\+/Id" "/etc/ssh/sshd_config"
 LC_ALL=C sed -i "/^\s*ClientAliveInterval\s\+/Id" "/etc/ssh/sshd_config.d"/*.conf
 if [ -e "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*ClientAliveInterval\s\+/Id" "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf"
 else
     touch "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf"

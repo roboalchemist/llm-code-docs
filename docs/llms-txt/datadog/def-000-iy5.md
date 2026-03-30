@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # ECS task definitions should have a logging configuration
- 
+
 ## Description{% #description %}
 
 This assessment examines whether the most recent active Amazon ECS task definition includes a specified logging configuration. The assessment will not pass if the task definition does not have the logConfiguration property defined or if the logDriver value is null in at least one container definition.

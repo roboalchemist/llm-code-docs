@@ -78,6 +78,5 @@ import xml.etree import ElementTree
 tree = ElementTree.parse('myfile.xml')
 tree = ElementTree.parse("myfile.xml")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

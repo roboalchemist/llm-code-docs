@@ -12,6 +12,8 @@ The Roles API is used to create and manage Datadog roles, what [global permissio
 
 Permissions related to specific account assets can be granted to roles in the Datadog application without using this API. For example, granting read access on a specific log index to a role can be done in Datadog from the [Pipelines page](https://app.datadoghq.com/logs/pipelines).
 
+Roles can also be managed in bulk through the Datadog UI, which provides the capability to assign a single permission to multiple roles simultaneously.
+
 ## List permissions{% #list-permissions %}
 
 {% tab title="v2" %}
@@ -77,7 +79,7 @@ Payload with API-returned permissions.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -102,7 +104,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -127,7 +129,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -152,7 +154,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -160,13 +162,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/permissions" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -182,13 +184,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_permissions()
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List permissions returns "OK" response
@@ -196,13 +198,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::RolesAPI.new
 p api_instance.list_permissions()
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List permissions returns "OK" response
@@ -210,37 +212,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRolesApi(apiClient)
-	resp, r, err := api.ListPermissions(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRolesApi(apiClient)
+    resp, r, err := api.ListPermissions(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.ListPermissions`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.ListPermissions`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RolesApi.ListPermissions`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RolesApi.ListPermissions`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List permissions returns "OK" response
@@ -267,13 +269,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List permissions returns "OK" response
@@ -291,13 +293,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -317,7 +319,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -366,25 +368,26 @@ OK
 {% tab title="Model" %}
 Response containing information about multiple roles.
 
-| Parent field  | Field                  | Type      | Description                                                                           |
-| ------------- | ---------------------- | --------- | ------------------------------------------------------------------------------------- |
-|               | data                   | [object]  | Array of returned roles.                                                              |
-| data          | attributes             | object    | Attributes of the role.                                                               |
-| attributes    | created_at             | date-time | Creation time of the role.                                                            |
-| attributes    | modified_at            | date-time | Time of last role modification.                                                       |
-| attributes    | name                   | string    | The name of the role. The name is neither unique nor a stable identifier of the role. |
-| attributes    | user_count             | int64     | Number of users with that role.                                                       |
-| data          | id                     | string    | The unique identifier of the role.                                                    |
-| data          | relationships          | object    | Relationships of the role object returned by the API.                                 |
-| relationships | permissions            | object    | Relationship to multiple permissions objects.                                         |
-| permissions   | data                   | [object]  | Relationships to permission objects.                                                  |
-| data          | id                     | string    | ID of the permission.                                                                 |
-| data          | type                   | enum      | Permissions resource type. Allowed enum values: `permissions`                         |
-| data          | type [*required*] | enum      | Roles type. Allowed enum values: `roles`                                              |
-|               | meta                   | object    | Object describing meta attributes of response.                                        |
-| meta          | page                   | object    | Pagination object.                                                                    |
-| page          | total_count            | int64     | Total count.                                                                          |
-| page          | total_filtered_count   | int64     | Total count of elements matched by the filter.                                        |
+| Parent field  | Field                     | Type      | Description                                                                                                                                                                                                                                                                                   |
+| ------------- | ------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|               | data                      | [object]  | Array of returned roles.                                                                                                                                                                                                                                                                      |
+| data          | attributes                | object    | Attributes of the role.                                                                                                                                                                                                                                                                       |
+| attributes    | created_at                | date-time | Creation time of the role.                                                                                                                                                                                                                                                                    |
+| attributes    | modified_at               | date-time | Time of last role modification.                                                                                                                                                                                                                                                               |
+| attributes    | name                      | string    | The name of the role. The name is neither unique nor a stable identifier of the role.                                                                                                                                                                                                         |
+| attributes    | receives_permissions_from | [string]  | The managed role from which this role automatically inherits new permissions. Specify one of the following: "Datadog Admin Role", "Datadog Standard Role", or "Datadog Read Only Role". If empty or not specified, the role does not automatically inherit permissions from any managed role. |
+| attributes    | user_count                | int64     | Number of users with that role.                                                                                                                                                                                                                                                               |
+| data          | id                        | string    | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| data          | relationships             | object    | Relationships of the role object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | permissions               | object    | Relationship to multiple permissions objects.                                                                                                                                                                                                                                                 |
+| permissions   | data                      | [object]  | Relationships to permission objects.                                                                                                                                                                                                                                                          |
+| data          | id                        | string    | ID of the permission.                                                                                                                                                                                                                                                                         |
+| data          | type                      | enum      | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| data          | type [*required*]    | enum      | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
+|               | meta                      | object    | Object describing meta attributes of response.                                                                                                                                                                                                                                                |
+| meta          | page                      | object    | Pagination object.                                                                                                                                                                                                                                                                            |
+| page          | total_count               | int64     | Total count.                                                                                                                                                                                                                                                                                  |
+| page          | total_filtered_count      | int64     | Total count of elements matched by the filter.                                                                                                                                                                                                                                                |
 
 {% /tab %}
 
@@ -398,6 +401,7 @@ Response containing information about multiple roles.
         "created_at": "2019-09-19T10:00:00.000Z",
         "modified_at": "2019-09-19T10:00:00.000Z",
         "name": "string",
+        "receives_permissions_from": [],
         "user_count": "integer"
       },
       "id": "string",
@@ -421,7 +425,7 @@ Response containing information about multiple roles.
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -446,7 +450,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -471,7 +475,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -479,13 +483,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/roles" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -507,13 +511,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List roles returns "OK" response
@@ -527,13 +531,13 @@ opts = {
   filter: ROLE_DATA_ATTRIBUTES_NAME,
 }
 p api_instance.list_roles(opts)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List roles returns "OK" response
@@ -541,40 +545,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "role" in the system
-	RoleDataAttributesName := os.Getenv("ROLE_DATA_ATTRIBUTES_NAME")
+    // there is a valid "role" in the system
+    RoleDataAttributesName := os.Getenv("ROLE_DATA_ATTRIBUTES_NAME")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRolesApi(apiClient)
-	resp, r, err := api.ListRoles(ctx, *datadogV2.NewListRolesOptionalParameters().WithFilter(RoleDataAttributesName))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRolesApi(apiClient)
+    resp, r, err := api.ListRoles(ctx, *datadogV2.NewListRolesOptionalParameters().WithFilter(RoleDataAttributesName))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.ListRoles`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.ListRoles`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RolesApi.ListRoles`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RolesApi.ListRoles`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List roles returns "OK" response
@@ -607,13 +611,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List roles returns "OK" response
@@ -636,13 +640,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -670,7 +674,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -708,19 +712,20 @@ OAuth apps require the `user_access_manage` authorization [scope](https://docs.d
 
 {% tab title="Model" %}
 
-| Parent field  | Field                        | Type      | Description                                                   |
-| ------------- | ---------------------------- | --------- | ------------------------------------------------------------- |
-|               | data [*required*]       | object    | Data related to the creation of a role.                       |
-| data          | attributes [*required*] | object    | Attributes of the created role.                               |
-| attributes    | created_at                   | date-time | Creation time of the role.                                    |
-| attributes    | modified_at                  | date-time | Time of last role modification.                               |
-| attributes    | name [*required*]       | string    | Name of the role.                                             |
-| data          | relationships                | object    | Relationships of the role object.                             |
-| relationships | permissions                  | object    | Relationship to multiple permissions objects.                 |
-| permissions   | data                         | [object]  | Relationships to permission objects.                          |
-| data          | id                           | string    | ID of the permission.                                         |
-| data          | type                         | enum      | Permissions resource type. Allowed enum values: `permissions` |
-| data          | type                         | enum      | Roles type. Allowed enum values: `roles`                      |
+| Parent field  | Field                        | Type      | Description                                                                                                                                                                                                                                                                                   |
+| ------------- | ---------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|               | data [*required*]       | object    | Data related to the creation of a role.                                                                                                                                                                                                                                                       |
+| data          | attributes [*required*] | object    | Attributes of the created role.                                                                                                                                                                                                                                                               |
+| attributes    | created_at                   | date-time | Creation time of the role.                                                                                                                                                                                                                                                                    |
+| attributes    | modified_at                  | date-time | Time of last role modification.                                                                                                                                                                                                                                                               |
+| attributes    | name [*required*]       | string    | Name of the role.                                                                                                                                                                                                                                                                             |
+| attributes    | receives_permissions_from    | [string]  | The managed role from which this role automatically inherits new permissions. Specify one of the following: "Datadog Admin Role", "Datadog Standard Role", or "Datadog Read Only Role". If empty or not specified, the role does not automatically inherit permissions from any managed role. |
+| data          | relationships                | object    | Relationships of the role object.                                                                                                                                                                                                                                                             |
+| relationships | permissions                  | object    | Relationship to multiple permissions objects.                                                                                                                                                                                                                                                 |
+| permissions   | data                         | [object]  | Relationships to permission objects.                                                                                                                                                                                                                                                          |
+| data          | id                           | string    | ID of the permission.                                                                                                                                                                                                                                                                         |
+| data          | type                         | enum      | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| data          | type                         | enum      | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
 
 {% /tab %}
 
@@ -745,7 +750,7 @@ OAuth apps require the `user_access_manage` authorization [scope](https://docs.d
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -756,20 +761,21 @@ OK
 {% tab title="Model" %}
 Response containing information about a created role.
 
-| Parent field  | Field                  | Type      | Description                                                   |
-| ------------- | ---------------------- | --------- | ------------------------------------------------------------- |
-|               | data                   | object    | Role object returned by the API.                              |
-| data          | attributes             | object    | Attributes of the created role.                               |
-| attributes    | created_at             | date-time | Creation time of the role.                                    |
-| attributes    | modified_at            | date-time | Time of last role modification.                               |
-| attributes    | name [*required*] | string    | Name of the role.                                             |
-| data          | id                     | string    | The unique identifier of the role.                            |
-| data          | relationships          | object    | Relationships of the role object returned by the API.         |
-| relationships | permissions            | object    | Relationship to multiple permissions objects.                 |
-| permissions   | data                   | [object]  | Relationships to permission objects.                          |
-| data          | id                     | string    | ID of the permission.                                         |
-| data          | type                   | enum      | Permissions resource type. Allowed enum values: `permissions` |
-| data          | type [*required*] | enum      | Roles type. Allowed enum values: `roles`                      |
+| Parent field  | Field                     | Type      | Description                                                                                                                                                                                                                                                                                   |
+| ------------- | ------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|               | data                      | object    | Role object returned by the API.                                                                                                                                                                                                                                                              |
+| data          | attributes                | object    | Attributes of the created role.                                                                                                                                                                                                                                                               |
+| attributes    | created_at                | date-time | Creation time of the role.                                                                                                                                                                                                                                                                    |
+| attributes    | modified_at               | date-time | Time of last role modification.                                                                                                                                                                                                                                                               |
+| attributes    | name [*required*]    | string    | Name of the role.                                                                                                                                                                                                                                                                             |
+| attributes    | receives_permissions_from | [string]  | The managed role from which this role automatically inherits new permissions. Specify one of the following: "Datadog Admin Role", "Datadog Standard Role", or "Datadog Read Only Role". If empty or not specified, the role does not automatically inherit permissions from any managed role. |
+| data          | id                        | string    | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| data          | relationships             | object    | Relationships of the role object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | permissions               | object    | Relationship to multiple permissions objects.                                                                                                                                                                                                                                                 |
+| permissions   | data                      | [object]  | Relationships to permission objects.                                                                                                                                                                                                                                                          |
+| data          | id                        | string    | ID of the permission.                                                                                                                                                                                                                                                                         |
+| data          | type                      | enum      | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| data          | type [*required*]    | enum      | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
 
 {% /tab %}
 
@@ -781,7 +787,8 @@ Response containing information about a created role.
     "attributes": {
       "created_at": "2019-09-19T10:00:00.000Z",
       "modified_at": "2019-09-19T10:00:00.000Z",
-      "name": "developers"
+      "name": "developers",
+      "receives_permissions_from": []
     },
     "id": "string",
     "relationships": {
@@ -797,7 +804,7 @@ Response containing information about a created role.
     "type": "roles"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -822,7 +829,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -847,7 +854,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -872,7 +879,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -880,7 +887,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/roles" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -906,8 +913,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create role with a permission returns "OK" response
@@ -915,58 +922,58 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "permission" in the system
-	PermissionID := os.Getenv("PERMISSION_ID")
+    // there is a valid "permission" in the system
+    PermissionID := os.Getenv("PERMISSION_ID")
 
-	body := datadogV2.RoleCreateRequest{
-		Data: datadogV2.RoleCreateData{
-			Type: datadogV2.ROLESTYPE_ROLES.Ptr(),
-			Attributes: datadogV2.RoleCreateAttributes{
-				Name: "Example-Role",
-			},
-			Relationships: &datadogV2.RoleRelationships{
-				Permissions: &datadogV2.RelationshipToPermissions{
-					Data: []datadogV2.RelationshipToPermissionData{
-						{
-							Id:   datadog.PtrString(PermissionID),
-							Type: datadogV2.PERMISSIONSTYPE_PERMISSIONS.Ptr(),
-						},
-					},
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRolesApi(apiClient)
-	resp, r, err := api.CreateRole(ctx, body)
+    body := datadogV2.RoleCreateRequest{
+        Data: datadogV2.RoleCreateData{
+            Type: datadogV2.ROLESTYPE_ROLES.Ptr(),
+            Attributes: datadogV2.RoleCreateAttributes{
+                Name: "Example-Role",
+            },
+            Relationships: &datadogV2.RoleRelationships{
+                Permissions: &datadogV2.RelationshipToPermissions{
+                    Data: []datadogV2.RelationshipToPermissionData{
+                        {
+                            Id:   datadog.PtrString(PermissionID),
+                            Type: datadogV2.PERMISSIONSTYPE_PERMISSIONS.Ptr(),
+                        },
+                    },
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRolesApi(apiClient)
+    resp, r, err := api.CreateRole(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.CreateRole`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.CreateRole`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RolesApi.CreateRole`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RolesApi.CreateRole`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create role with a permission returns "OK" response
@@ -1021,13 +1028,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1074,13 +1081,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_role(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create role with a permission returns "OK" response
@@ -1110,13 +1117,13 @@ body = DatadogAPIClient::V2::RoleCreateRequest.new({
   }),
 })
 p api_instance.create_role(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create role with a permission returns "OK" response
@@ -1155,13 +1162,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1205,7 +1212,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -1250,21 +1257,22 @@ OK
 {% tab title="Model" %}
 Response containing information about a single role.
 
-| Parent field  | Field                  | Type      | Description                                                                           |
-| ------------- | ---------------------- | --------- | ------------------------------------------------------------------------------------- |
-|               | data                   | object    | Role object returned by the API.                                                      |
-| data          | attributes             | object    | Attributes of the role.                                                               |
-| attributes    | created_at             | date-time | Creation time of the role.                                                            |
-| attributes    | modified_at            | date-time | Time of last role modification.                                                       |
-| attributes    | name                   | string    | The name of the role. The name is neither unique nor a stable identifier of the role. |
-| attributes    | user_count             | int64     | Number of users with that role.                                                       |
-| data          | id                     | string    | The unique identifier of the role.                                                    |
-| data          | relationships          | object    | Relationships of the role object returned by the API.                                 |
-| relationships | permissions            | object    | Relationship to multiple permissions objects.                                         |
-| permissions   | data                   | [object]  | Relationships to permission objects.                                                  |
-| data          | id                     | string    | ID of the permission.                                                                 |
-| data          | type                   | enum      | Permissions resource type. Allowed enum values: `permissions`                         |
-| data          | type [*required*] | enum      | Roles type. Allowed enum values: `roles`                                              |
+| Parent field  | Field                     | Type      | Description                                                                                                                                                                                                                                                                                   |
+| ------------- | ------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|               | data                      | object    | Role object returned by the API.                                                                                                                                                                                                                                                              |
+| data          | attributes                | object    | Attributes of the role.                                                                                                                                                                                                                                                                       |
+| attributes    | created_at                | date-time | Creation time of the role.                                                                                                                                                                                                                                                                    |
+| attributes    | modified_at               | date-time | Time of last role modification.                                                                                                                                                                                                                                                               |
+| attributes    | name                      | string    | The name of the role. The name is neither unique nor a stable identifier of the role.                                                                                                                                                                                                         |
+| attributes    | receives_permissions_from | [string]  | The managed role from which this role automatically inherits new permissions. Specify one of the following: "Datadog Admin Role", "Datadog Standard Role", or "Datadog Read Only Role". If empty or not specified, the role does not automatically inherit permissions from any managed role. |
+| attributes    | user_count                | int64     | Number of users with that role.                                                                                                                                                                                                                                                               |
+| data          | id                        | string    | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| data          | relationships             | object    | Relationships of the role object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | permissions               | object    | Relationship to multiple permissions objects.                                                                                                                                                                                                                                                 |
+| permissions   | data                      | [object]  | Relationships to permission objects.                                                                                                                                                                                                                                                          |
+| data          | id                        | string    | ID of the permission.                                                                                                                                                                                                                                                                         |
+| data          | type                      | enum      | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| data          | type [*required*]    | enum      | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
 
 {% /tab %}
 
@@ -1277,6 +1285,7 @@ Response containing information about a single role.
       "created_at": "2019-09-19T10:00:00.000Z",
       "modified_at": "2019-09-19T10:00:00.000Z",
       "name": "string",
+      "receives_permissions_from": [],
       "user_count": "integer"
     },
     "id": "string",
@@ -1293,7 +1302,7 @@ Response containing information about a single role.
     "type": "roles"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -1318,7 +1327,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1343,7 +1352,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1368,7 +1377,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1376,13 +1385,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport role_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/roles/${role_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1404,13 +1413,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a role returns "OK" response
@@ -1421,13 +1430,13 @@ api_instance = DatadogAPIClient::V2::RolesAPI.new
 # there is a valid "role" in the system
 ROLE_DATA_ID = ENV["ROLE_DATA_ID"]
 p api_instance.get_role(ROLE_DATA_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a role returns "OK" response
@@ -1435,40 +1444,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "role" in the system
-	RoleDataID := os.Getenv("ROLE_DATA_ID")
+    // there is a valid "role" in the system
+    RoleDataID := os.Getenv("ROLE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRolesApi(apiClient)
-	resp, r, err := api.GetRole(ctx, RoleDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRolesApi(apiClient)
+    resp, r, err := api.GetRole(ctx, RoleDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.GetRole`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.GetRole`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RolesApi.GetRole`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RolesApi.GetRole`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a role returns "OK" response
@@ -1498,13 +1507,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a role returns "OK" response
@@ -1524,13 +1533,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1557,7 +1566,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -1603,21 +1612,22 @@ OAuth apps require the `user_access_manage` authorization [scope](https://docs.d
 
 {% tab title="Model" %}
 
-| Parent field  | Field                        | Type      | Description                                                   |
-| ------------- | ---------------------------- | --------- | ------------------------------------------------------------- |
-|               | data [*required*]       | object    | Data related to the update of a role.                         |
-| data          | attributes [*required*] | object    | Attributes of the role.                                       |
-| attributes    | created_at                   | date-time | Creation time of the role.                                    |
-| attributes    | modified_at                  | date-time | Time of last role modification.                               |
-| attributes    | name                         | string    | Name of the role.                                             |
-| attributes    | user_count                   | int32     | The user count.                                               |
-| data          | id [*required*]         | string    | The unique identifier of the role.                            |
-| data          | relationships                | object    | Relationships of the role object.                             |
-| relationships | permissions                  | object    | Relationship to multiple permissions objects.                 |
-| permissions   | data                         | [object]  | Relationships to permission objects.                          |
-| data          | id                           | string    | ID of the permission.                                         |
-| data          | type                         | enum      | Permissions resource type. Allowed enum values: `permissions` |
-| data          | type [*required*]       | enum      | Roles type. Allowed enum values: `roles`                      |
+| Parent field  | Field                        | Type      | Description                                                                                                                                                                                                                                                                                   |
+| ------------- | ---------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|               | data [*required*]       | object    | Data related to the update of a role.                                                                                                                                                                                                                                                         |
+| data          | attributes [*required*] | object    | Attributes of the role.                                                                                                                                                                                                                                                                       |
+| attributes    | created_at                   | date-time | Creation time of the role.                                                                                                                                                                                                                                                                    |
+| attributes    | modified_at                  | date-time | Time of last role modification.                                                                                                                                                                                                                                                               |
+| attributes    | name                         | string    | Name of the role.                                                                                                                                                                                                                                                                             |
+| attributes    | receives_permissions_from    | [string]  | The managed role from which this role automatically inherits new permissions. Specify one of the following: "Datadog Admin Role", "Datadog Standard Role", or "Datadog Read Only Role". If empty or not specified, the role does not automatically inherit permissions from any managed role. |
+| attributes    | user_count                   | int32     | The user count.                                                                                                                                                                                                                                                                               |
+| data          | id [*required*]         | string    | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| data          | relationships                | object    | Relationships of the role object.                                                                                                                                                                                                                                                             |
+| relationships | permissions                  | object    | Relationship to multiple permissions objects.                                                                                                                                                                                                                                                 |
+| permissions   | data                         | [object]  | Relationships to permission objects.                                                                                                                                                                                                                                                          |
+| data          | id                           | string    | ID of the permission.                                                                                                                                                                                                                                                                         |
+| data          | type                         | enum      | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| data          | type [*required*]       | enum      | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
 
 {% /tab %}
 
@@ -1643,7 +1653,7 @@ OAuth apps require the `user_access_manage` authorization [scope](https://docs.d
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -1654,21 +1664,22 @@ OK
 {% tab title="Model" %}
 Response containing information about an updated role.
 
-| Parent field  | Field                  | Type      | Description                                                   |
-| ------------- | ---------------------- | --------- | ------------------------------------------------------------- |
-|               | data                   | object    | Role object returned by the API.                              |
-| data          | attributes             | object    | Attributes of the role.                                       |
-| attributes    | created_at             | date-time | Creation time of the role.                                    |
-| attributes    | modified_at            | date-time | Time of last role modification.                               |
-| attributes    | name                   | string    | Name of the role.                                             |
-| attributes    | user_count             | int32     | The user count.                                               |
-| data          | id                     | string    | The unique identifier of the role.                            |
-| data          | relationships          | object    | Relationships of the role object returned by the API.         |
-| relationships | permissions            | object    | Relationship to multiple permissions objects.                 |
-| permissions   | data                   | [object]  | Relationships to permission objects.                          |
-| data          | id                     | string    | ID of the permission.                                         |
-| data          | type                   | enum      | Permissions resource type. Allowed enum values: `permissions` |
-| data          | type [*required*] | enum      | Roles type. Allowed enum values: `roles`                      |
+| Parent field  | Field                     | Type      | Description                                                                                                                                                                                                                                                                                   |
+| ------------- | ------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|               | data                      | object    | Role object returned by the API.                                                                                                                                                                                                                                                              |
+| data          | attributes                | object    | Attributes of the role.                                                                                                                                                                                                                                                                       |
+| attributes    | created_at                | date-time | Creation time of the role.                                                                                                                                                                                                                                                                    |
+| attributes    | modified_at               | date-time | Time of last role modification.                                                                                                                                                                                                                                                               |
+| attributes    | name                      | string    | Name of the role.                                                                                                                                                                                                                                                                             |
+| attributes    | receives_permissions_from | [string]  | The managed role from which this role automatically inherits new permissions. Specify one of the following: "Datadog Admin Role", "Datadog Standard Role", or "Datadog Read Only Role". If empty or not specified, the role does not automatically inherit permissions from any managed role. |
+| attributes    | user_count                | int32     | The user count.                                                                                                                                                                                                                                                                               |
+| data          | id                        | string    | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| data          | relationships             | object    | Relationships of the role object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | permissions               | object    | Relationship to multiple permissions objects.                                                                                                                                                                                                                                                 |
+| permissions   | data                      | [object]  | Relationships to permission objects.                                                                                                                                                                                                                                                          |
+| data          | id                        | string    | ID of the permission.                                                                                                                                                                                                                                                                         |
+| data          | type                      | enum      | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| data          | type [*required*]    | enum      | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
 
 {% /tab %}
 
@@ -1681,6 +1692,7 @@ Response containing information about an updated role.
       "created_at": "2019-09-19T10:00:00.000Z",
       "modified_at": "2019-09-19T10:00:00.000Z",
       "name": "string",
+      "receives_permissions_from": [],
       "user_count": "integer"
     },
     "id": "string",
@@ -1697,7 +1709,7 @@ Response containing information about an updated role.
     "type": "roles"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -1722,7 +1734,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1747,7 +1759,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1772,7 +1784,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1797,7 +1809,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1822,7 +1834,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1830,7 +1842,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport role_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/roles/${role_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1845,8 +1857,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1898,13 +1910,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_role(role_id=ROLE_DATA_ID, body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a role returns "OK" response
@@ -1939,13 +1951,13 @@ body = DatadogAPIClient::V2::RoleUpdateRequest.new({
   }),
 })
 p api_instance.update_role(ROLE_DATA_ID, body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Update a role returns "OK" response
@@ -1953,62 +1965,62 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "role" in the system
-	RoleDataID := os.Getenv("ROLE_DATA_ID")
+    // there is a valid "role" in the system
+    RoleDataID := os.Getenv("ROLE_DATA_ID")
 
-	// there is a valid "permission" in the system
-	PermissionID := os.Getenv("PERMISSION_ID")
+    // there is a valid "permission" in the system
+    PermissionID := os.Getenv("PERMISSION_ID")
 
-	body := datadogV2.RoleUpdateRequest{
-		Data: datadogV2.RoleUpdateData{
-			Id:   RoleDataID,
-			Type: datadogV2.ROLESTYPE_ROLES,
-			Attributes: datadogV2.RoleUpdateAttributes{
-				Name: datadog.PtrString("developers-updated"),
-			},
-			Relationships: &datadogV2.RoleRelationships{
-				Permissions: &datadogV2.RelationshipToPermissions{
-					Data: []datadogV2.RelationshipToPermissionData{
-						{
-							Id:   datadog.PtrString(PermissionID),
-							Type: datadogV2.PERMISSIONSTYPE_PERMISSIONS.Ptr(),
-						},
-					},
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRolesApi(apiClient)
-	resp, r, err := api.UpdateRole(ctx, RoleDataID, body)
+    body := datadogV2.RoleUpdateRequest{
+        Data: datadogV2.RoleUpdateData{
+            Id:   RoleDataID,
+            Type: datadogV2.ROLESTYPE_ROLES,
+            Attributes: datadogV2.RoleUpdateAttributes{
+                Name: datadog.PtrString("developers-updated"),
+            },
+            Relationships: &datadogV2.RoleRelationships{
+                Permissions: &datadogV2.RelationshipToPermissions{
+                    Data: []datadogV2.RelationshipToPermissionData{
+                        {
+                            Id:   datadog.PtrString(PermissionID),
+                            Type: datadogV2.PERMISSIONSTYPE_PERMISSIONS.Ptr(),
+                        },
+                    },
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRolesApi(apiClient)
+    resp, r, err := api.UpdateRole(ctx, RoleDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.UpdateRole`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.UpdateRole`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RolesApi.UpdateRole`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RolesApi.UpdateRole`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a role returns "OK" response
@@ -2068,13 +2080,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Update a role returns "OK" response
@@ -2119,13 +2131,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2174,7 +2186,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -2237,7 +2249,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2262,7 +2274,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2287,7 +2299,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2295,12 +2307,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport role_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/roles/${role_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2320,13 +2332,13 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_role(
         role_id=ROLE_DATA_ID,
     )
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete role returns "OK" response
@@ -2337,13 +2349,13 @@ api_instance = DatadogAPIClient::V2::RolesAPI.new
 # there is a valid "role" in the system
 ROLE_DATA_ID = ENV["ROLE_DATA_ID"]
 api_instance.delete_role(ROLE_DATA_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete role returns "OK" response
@@ -2351,36 +2363,36 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "role" in the system
-	RoleDataID := os.Getenv("ROLE_DATA_ID")
+    // there is a valid "role" in the system
+    RoleDataID := os.Getenv("ROLE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRolesApi(apiClient)
-	r, err := api.DeleteRole(ctx, RoleDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRolesApi(apiClient)
+    r, err := api.DeleteRole(ctx, RoleDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.DeleteRole`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.DeleteRole`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete role returns "OK" response
@@ -2408,13 +2420,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete role returns "OK" response
@@ -2434,13 +2446,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2467,7 +2479,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -2548,7 +2560,7 @@ Payload with API-returned permissions.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2573,7 +2585,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2598,7 +2610,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2623,7 +2635,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2631,13 +2643,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport role_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/roles/${role_id}/permissions" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2659,13 +2671,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List permissions for a role returns "OK" response
@@ -2676,13 +2688,13 @@ api_instance = DatadogAPIClient::V2::RolesAPI.new
 # there is a valid "role" in the system
 ROLE_DATA_ID = ENV["ROLE_DATA_ID"]
 p api_instance.list_role_permissions(ROLE_DATA_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List permissions for a role returns "OK" response
@@ -2690,40 +2702,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "role" in the system
-	RoleDataID := os.Getenv("ROLE_DATA_ID")
+    // there is a valid "role" in the system
+    RoleDataID := os.Getenv("ROLE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRolesApi(apiClient)
-	resp, r, err := api.ListRolePermissions(ctx, RoleDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRolesApi(apiClient)
+    resp, r, err := api.ListRolePermissions(ctx, RoleDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.ListRolePermissions`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.ListRolePermissions`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RolesApi.ListRolePermissions`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RolesApi.ListRolePermissions`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List permissions for a role returns "OK" response
@@ -2753,13 +2765,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List permissions for a role returns "OK" response
@@ -2779,13 +2791,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2812,7 +2824,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -2875,7 +2887,7 @@ OAuth apps require the `user_access_manage` authorization [scope](https://docs.d
     "type": "permissions"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -2922,7 +2934,7 @@ Payload with API-returned permissions.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2947,7 +2959,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2972,7 +2984,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2997,7 +3009,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3022,7 +3034,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3030,7 +3042,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport role_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/roles/${role_id}/permissions" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3044,8 +3056,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Grant permission to a role returns "OK" response
@@ -3053,49 +3065,49 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "role" in the system
-	RoleDataID := os.Getenv("ROLE_DATA_ID")
+    // there is a valid "role" in the system
+    RoleDataID := os.Getenv("ROLE_DATA_ID")
 
-	// there is a valid "permission" in the system
-	PermissionID := os.Getenv("PERMISSION_ID")
+    // there is a valid "permission" in the system
+    PermissionID := os.Getenv("PERMISSION_ID")
 
-	body := datadogV2.RelationshipToPermission{
-		Data: &datadogV2.RelationshipToPermissionData{
-			Id:   datadog.PtrString(PermissionID),
-			Type: datadogV2.PERMISSIONSTYPE_PERMISSIONS.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRolesApi(apiClient)
-	resp, r, err := api.AddPermissionToRole(ctx, RoleDataID, body)
+    body := datadogV2.RelationshipToPermission{
+        Data: &datadogV2.RelationshipToPermissionData{
+            Id:   datadog.PtrString(PermissionID),
+            Type: datadogV2.PERMISSIONSTYPE_PERMISSIONS.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRolesApi(apiClient)
+    resp, r, err := api.AddPermissionToRole(ctx, RoleDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.AddPermissionToRole`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.AddPermissionToRole`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RolesApi.AddPermissionToRole`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RolesApi.AddPermissionToRole`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Grant permission to a role returns "OK" response
@@ -3138,13 +3150,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -3177,13 +3189,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.add_permission_to_role(role_id=ROLE_DATA_ID, body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Grant permission to a role returns "OK" response
@@ -3204,13 +3216,13 @@ body = DatadogAPIClient::V2::RelationshipToPermission.new({
   }),
 })
 p api_instance.add_permission_to_role(ROLE_DATA_ID, body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Grant permission to a role returns "OK" response
@@ -3241,13 +3253,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3283,7 +3295,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -3346,7 +3358,7 @@ OAuth apps require the `user_access_manage` authorization [scope](https://docs.d
     "type": "permissions"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -3393,7 +3405,7 @@ Payload with API-returned permissions.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3418,7 +3430,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3443,7 +3455,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3468,7 +3480,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3493,7 +3505,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -3501,7 +3513,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport role_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/roles/${role_id}/permissions" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3515,8 +3527,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Revoke permission returns "OK" response
@@ -3524,49 +3536,49 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "role" in the system
-	RoleDataID := os.Getenv("ROLE_DATA_ID")
+    // there is a valid "role" in the system
+    RoleDataID := os.Getenv("ROLE_DATA_ID")
 
-	// there is a valid "permission" in the system
-	PermissionID := os.Getenv("PERMISSION_ID")
+    // there is a valid "permission" in the system
+    PermissionID := os.Getenv("PERMISSION_ID")
 
-	body := datadogV2.RelationshipToPermission{
-		Data: &datadogV2.RelationshipToPermissionData{
-			Id:   datadog.PtrString(PermissionID),
-			Type: datadogV2.PERMISSIONSTYPE_PERMISSIONS.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRolesApi(apiClient)
-	resp, r, err := api.RemovePermissionFromRole(ctx, RoleDataID, body)
+    body := datadogV2.RelationshipToPermission{
+        Data: &datadogV2.RelationshipToPermissionData{
+            Id:   datadog.PtrString(PermissionID),
+            Type: datadogV2.PERMISSIONSTYPE_PERMISSIONS.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRolesApi(apiClient)
+    resp, r, err := api.RemovePermissionFromRole(ctx, RoleDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.RemovePermissionFromRole`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.RemovePermissionFromRole`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RolesApi.RemovePermissionFromRole`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RolesApi.RemovePermissionFromRole`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Revoke permission returns "OK" response
@@ -3609,13 +3621,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -3648,13 +3660,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.remove_permission_from_role(role_id=ROLE_DATA_ID, body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Revoke permission returns "OK" response
@@ -3675,13 +3687,13 @@ body = DatadogAPIClient::V2::RelationshipToPermission.new({
   }),
 })
 p api_instance.remove_permission_from_role(ROLE_DATA_ID, body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Revoke permission returns "OK" response
@@ -3714,13 +3726,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3756,7 +3768,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -3810,83 +3822,84 @@ OK
 {% tab title="Model" %}
 Response containing information about multiple users.
 
-| Parent field  | Field                  | Type            | Description                                                                           |
-| ------------- | ---------------------- | --------------- | ------------------------------------------------------------------------------------- |
-|               | data                   | [object]        | Array of returned users.                                                              |
-| data          | attributes             | object          | Attributes of user object returned by the API.                                        |
-| attributes    | created_at             | date-time       | Creation time of the user.                                                            |
-| attributes    | disabled               | boolean         | Whether the user is disabled.                                                         |
-| attributes    | email                  | string          | Email of the user.                                                                    |
-| attributes    | handle                 | string          | Handle of the user.                                                                   |
-| attributes    | icon                   | string          | URL of the user's icon.                                                               |
-| attributes    | last_login_time        | date-time       | The last time the user logged in.                                                     |
-| attributes    | mfa_enabled            | boolean         | If user has MFA enabled.                                                              |
-| attributes    | modified_at            | date-time       | Time that the user was last modified.                                                 |
-| attributes    | name                   | string          | Name of the user.                                                                     |
-| attributes    | service_account        | boolean         | Whether the user is a service account.                                                |
-| attributes    | status                 | string          | Status of the user.                                                                   |
-| attributes    | title                  | string          | Title of the user.                                                                    |
-| attributes    | verified               | boolean         | Whether the user is verified.                                                         |
-| data          | id                     | string          | ID of the user.                                                                       |
-| data          | relationships          | object          | Relationships of the user object returned by the API.                                 |
-| relationships | org                    | object          | Relationship to an organization.                                                      |
-| org           | data [*required*] | object          | Relationship to organization object.                                                  |
-| data          | id [*required*]   | string          | ID of the organization.                                                               |
-| data          | type [*required*] | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| relationships | other_orgs             | object          | Relationship to organizations.                                                        |
-| other_orgs    | data [*required*] | [object]        | Relationships to organization objects.                                                |
-| data          | id [*required*]   | string          | ID of the organization.                                                               |
-| data          | type [*required*] | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| relationships | other_users            | object          | Relationship to users.                                                                |
-| other_users   | data [*required*] | [object]        | Relationships to user objects.                                                        |
-| data          | id [*required*]   | string          | A unique identifier that represents the user.                                         |
-| data          | type [*required*] | enum            | Users resource type. Allowed enum values: `users`                                     |
-| relationships | roles                  | object          | Relationship to roles.                                                                |
-| roles         | data                   | [object]        | An array containing type and the unique identifier of a role.                         |
-| data          | id                     | string          | The unique identifier of the role.                                                    |
-| data          | type                   | enum            | Roles type. Allowed enum values: `roles`                                              |
-| data          | type                   | enum            | Users resource type. Allowed enum values: `users`                                     |
-|               | included               | [ <oneOf>] | Array of objects related to the users.                                                |
-| included      | Option 1               | object          | Organization object.                                                                  |
-| Option 1      | attributes             | object          | Attributes of the organization.                                                       |
-| attributes    | created_at             | date-time       | Creation time of the organization.                                                    |
-| attributes    | description            | string          | Description of the organization.                                                      |
-| attributes    | disabled               | boolean         | Whether or not the organization is disabled.                                          |
-| attributes    | modified_at            | date-time       | Time of last organization modification.                                               |
-| attributes    | name                   | string          | Name of the organization.                                                             |
-| attributes    | public_id              | string          | Public ID of the organization.                                                        |
-| attributes    | sharing                | string          | Sharing type of the organization.                                                     |
-| attributes    | url                    | string          | URL of the site that this organization exists at.                                     |
-| Option 1      | id                     | string          | ID of the organization.                                                               |
-| Option 1      | type [*required*] | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| included      | Option 2               | object          | Permission object.                                                                    |
-| Option 2      | attributes             | object          | Attributes of a permission.                                                           |
-| attributes    | created                | date-time       | Creation time of the permission.                                                      |
-| attributes    | description            | string          | Description of the permission.                                                        |
-| attributes    | display_name           | string          | Displayed name for the permission.                                                    |
-| attributes    | display_type           | string          | Display type.                                                                         |
-| attributes    | group_name             | string          | Name of the permission group.                                                         |
-| attributes    | name                   | string          | Name of the permission.                                                               |
-| attributes    | restricted             | boolean         | Whether or not the permission is restricted.                                          |
-| Option 2      | id                     | string          | ID of the permission.                                                                 |
-| Option 2      | type [*required*] | enum            | Permissions resource type. Allowed enum values: `permissions`                         |
-| included      | Option 3               | object          | Role object returned by the API.                                                      |
-| Option 3      | attributes             | object          | Attributes of the role.                                                               |
-| attributes    | created_at             | date-time       | Creation time of the role.                                                            |
-| attributes    | modified_at            | date-time       | Time of last role modification.                                                       |
-| attributes    | name                   | string          | The name of the role. The name is neither unique nor a stable identifier of the role. |
-| attributes    | user_count             | int64           | Number of users with that role.                                                       |
-| Option 3      | id                     | string          | The unique identifier of the role.                                                    |
-| Option 3      | relationships          | object          | Relationships of the role object returned by the API.                                 |
-| relationships | permissions            | object          | Relationship to multiple permissions objects.                                         |
-| permissions   | data                   | [object]        | Relationships to permission objects.                                                  |
-| data          | id                     | string          | ID of the permission.                                                                 |
-| data          | type                   | enum            | Permissions resource type. Allowed enum values: `permissions`                         |
-| Option 3      | type [*required*] | enum            | Roles type. Allowed enum values: `roles`                                              |
-|               | meta                   | object          | Object describing meta attributes of response.                                        |
-| meta          | page                   | object          | Pagination object.                                                                    |
-| page          | total_count            | int64           | Total count.                                                                          |
-| page          | total_filtered_count   | int64           | Total count of elements matched by the filter.                                        |
+| Parent field  | Field                     | Type            | Description                                                                                                                                                                                                                                                                                   |
+| ------------- | ------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|               | data                      | [object]        | Array of returned users.                                                                                                                                                                                                                                                                      |
+| data          | attributes                | object          | Attributes of user object returned by the API.                                                                                                                                                                                                                                                |
+| attributes    | created_at                | date-time       | Creation time of the user.                                                                                                                                                                                                                                                                    |
+| attributes    | disabled                  | boolean         | Whether the user is disabled.                                                                                                                                                                                                                                                                 |
+| attributes    | email                     | string          | Email of the user.                                                                                                                                                                                                                                                                            |
+| attributes    | handle                    | string          | Handle of the user.                                                                                                                                                                                                                                                                           |
+| attributes    | icon                      | string          | URL of the user's icon.                                                                                                                                                                                                                                                                       |
+| attributes    | last_login_time           | date-time       | The last time the user logged in.                                                                                                                                                                                                                                                             |
+| attributes    | mfa_enabled               | boolean         | If user has MFA enabled.                                                                                                                                                                                                                                                                      |
+| attributes    | modified_at               | date-time       | Time that the user was last modified.                                                                                                                                                                                                                                                         |
+| attributes    | name                      | string          | Name of the user.                                                                                                                                                                                                                                                                             |
+| attributes    | service_account           | boolean         | Whether the user is a service account.                                                                                                                                                                                                                                                        |
+| attributes    | status                    | string          | Status of the user.                                                                                                                                                                                                                                                                           |
+| attributes    | title                     | string          | Title of the user.                                                                                                                                                                                                                                                                            |
+| attributes    | verified                  | boolean         | Whether the user is verified.                                                                                                                                                                                                                                                                 |
+| data          | id                        | string          | ID of the user.                                                                                                                                                                                                                                                                               |
+| data          | relationships             | object          | Relationships of the user object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | org                       | object          | Relationship to an organization.                                                                                                                                                                                                                                                              |
+| org           | data [*required*]    | object          | Relationship to organization object.                                                                                                                                                                                                                                                          |
+| data          | id [*required*]      | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| data          | type [*required*]    | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| relationships | other_orgs                | object          | Relationship to organizations.                                                                                                                                                                                                                                                                |
+| other_orgs    | data [*required*]    | [object]        | Relationships to organization objects.                                                                                                                                                                                                                                                        |
+| data          | id [*required*]      | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| data          | type [*required*]    | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| relationships | other_users               | object          | Relationship to users.                                                                                                                                                                                                                                                                        |
+| other_users   | data [*required*]    | [object]        | Relationships to user objects.                                                                                                                                                                                                                                                                |
+| data          | id [*required*]      | string          | A unique identifier that represents the user.                                                                                                                                                                                                                                                 |
+| data          | type [*required*]    | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+| relationships | roles                     | object          | Relationship to roles.                                                                                                                                                                                                                                                                        |
+| roles         | data                      | [object]        | An array containing type and the unique identifier of a role.                                                                                                                                                                                                                                 |
+| data          | id                        | string          | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| data          | type                      | enum            | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
+| data          | type                      | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+|               | included                  | [ <oneOf>] | Array of objects related to the users.                                                                                                                                                                                                                                                        |
+| included      | Option 1                  | object          | Organization object.                                                                                                                                                                                                                                                                          |
+| Option 1      | attributes                | object          | Attributes of the organization.                                                                                                                                                                                                                                                               |
+| attributes    | created_at                | date-time       | Creation time of the organization.                                                                                                                                                                                                                                                            |
+| attributes    | description               | string          | Description of the organization.                                                                                                                                                                                                                                                              |
+| attributes    | disabled                  | boolean         | Whether or not the organization is disabled.                                                                                                                                                                                                                                                  |
+| attributes    | modified_at               | date-time       | Time of last organization modification.                                                                                                                                                                                                                                                       |
+| attributes    | name                      | string          | Name of the organization.                                                                                                                                                                                                                                                                     |
+| attributes    | public_id                 | string          | Public ID of the organization.                                                                                                                                                                                                                                                                |
+| attributes    | sharing                   | string          | Sharing type of the organization.                                                                                                                                                                                                                                                             |
+| attributes    | url                       | string          | URL of the site that this organization exists at.                                                                                                                                                                                                                                             |
+| Option 1      | id                        | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| Option 1      | type [*required*]    | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| included      | Option 2                  | object          | Permission object.                                                                                                                                                                                                                                                                            |
+| Option 2      | attributes                | object          | Attributes of a permission.                                                                                                                                                                                                                                                                   |
+| attributes    | created                   | date-time       | Creation time of the permission.                                                                                                                                                                                                                                                              |
+| attributes    | description               | string          | Description of the permission.                                                                                                                                                                                                                                                                |
+| attributes    | display_name              | string          | Displayed name for the permission.                                                                                                                                                                                                                                                            |
+| attributes    | display_type              | string          | Display type.                                                                                                                                                                                                                                                                                 |
+| attributes    | group_name                | string          | Name of the permission group.                                                                                                                                                                                                                                                                 |
+| attributes    | name                      | string          | Name of the permission.                                                                                                                                                                                                                                                                       |
+| attributes    | restricted                | boolean         | Whether or not the permission is restricted.                                                                                                                                                                                                                                                  |
+| Option 2      | id                        | string          | ID of the permission.                                                                                                                                                                                                                                                                         |
+| Option 2      | type [*required*]    | enum            | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| included      | Option 3                  | object          | Role object returned by the API.                                                                                                                                                                                                                                                              |
+| Option 3      | attributes                | object          | Attributes of the role.                                                                                                                                                                                                                                                                       |
+| attributes    | created_at                | date-time       | Creation time of the role.                                                                                                                                                                                                                                                                    |
+| attributes    | modified_at               | date-time       | Time of last role modification.                                                                                                                                                                                                                                                               |
+| attributes    | name                      | string          | The name of the role. The name is neither unique nor a stable identifier of the role.                                                                                                                                                                                                         |
+| attributes    | receives_permissions_from | [string]        | The managed role from which this role automatically inherits new permissions. Specify one of the following: "Datadog Admin Role", "Datadog Standard Role", or "Datadog Read Only Role". If empty or not specified, the role does not automatically inherit permissions from any managed role. |
+| attributes    | user_count                | int64           | Number of users with that role.                                                                                                                                                                                                                                                               |
+| Option 3      | id                        | string          | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| Option 3      | relationships             | object          | Relationships of the role object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | permissions               | object          | Relationship to multiple permissions objects.                                                                                                                                                                                                                                                 |
+| permissions   | data                      | [object]        | Relationships to permission objects.                                                                                                                                                                                                                                                          |
+| data          | id                        | string          | ID of the permission.                                                                                                                                                                                                                                                                         |
+| data          | type                      | enum            | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| Option 3      | type [*required*]    | enum            | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
+|               | meta                      | object          | Object describing meta attributes of response.                                                                                                                                                                                                                                                |
+| meta          | page                      | object          | Pagination object.                                                                                                                                                                                                                                                                            |
+| page          | total_count               | int64           | Total count.                                                                                                                                                                                                                                                                                  |
+| page          | total_filtered_count      | int64           | Total count of elements matched by the filter.                                                                                                                                                                                                                                                |
 
 {% /tab %}
 
@@ -3970,7 +3983,7 @@ Response containing information about multiple users.
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -3995,7 +4008,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4020,7 +4033,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4045,7 +4058,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4053,13 +4066,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport role_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/roles/${role_id}/users" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4081,13 +4094,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all users of a role returns "OK" response
@@ -4098,13 +4111,13 @@ api_instance = DatadogAPIClient::V2::RolesAPI.new
 # there is a valid "role" in the system
 ROLE_DATA_ID = ENV["ROLE_DATA_ID"]
 p api_instance.list_role_users(ROLE_DATA_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all users of a role returns "OK" response
@@ -4112,40 +4125,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "role" in the system
-	RoleDataID := os.Getenv("ROLE_DATA_ID")
+    // there is a valid "role" in the system
+    RoleDataID := os.Getenv("ROLE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRolesApi(apiClient)
-	resp, r, err := api.ListRoleUsers(ctx, RoleDataID, *datadogV2.NewListRoleUsersOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRolesApi(apiClient)
+    resp, r, err := api.ListRoleUsers(ctx, RoleDataID, *datadogV2.NewListRoleUsersOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.ListRoleUsers`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.ListRoleUsers`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RolesApi.ListRoleUsers`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RolesApi.ListRoleUsers`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all users of a role returns "OK" response
@@ -4175,13 +4188,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all users of a role returns "OK" response
@@ -4204,13 +4217,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4237,7 +4250,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -4300,7 +4313,7 @@ OAuth apps require the `user_access_manage` authorization [scope](https://docs.d
     "type": "users"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -4311,83 +4324,84 @@ OK
 {% tab title="Model" %}
 Response containing information about multiple users.
 
-| Parent field  | Field                  | Type            | Description                                                                           |
-| ------------- | ---------------------- | --------------- | ------------------------------------------------------------------------------------- |
-|               | data                   | [object]        | Array of returned users.                                                              |
-| data          | attributes             | object          | Attributes of user object returned by the API.                                        |
-| attributes    | created_at             | date-time       | Creation time of the user.                                                            |
-| attributes    | disabled               | boolean         | Whether the user is disabled.                                                         |
-| attributes    | email                  | string          | Email of the user.                                                                    |
-| attributes    | handle                 | string          | Handle of the user.                                                                   |
-| attributes    | icon                   | string          | URL of the user's icon.                                                               |
-| attributes    | last_login_time        | date-time       | The last time the user logged in.                                                     |
-| attributes    | mfa_enabled            | boolean         | If user has MFA enabled.                                                              |
-| attributes    | modified_at            | date-time       | Time that the user was last modified.                                                 |
-| attributes    | name                   | string          | Name of the user.                                                                     |
-| attributes    | service_account        | boolean         | Whether the user is a service account.                                                |
-| attributes    | status                 | string          | Status of the user.                                                                   |
-| attributes    | title                  | string          | Title of the user.                                                                    |
-| attributes    | verified               | boolean         | Whether the user is verified.                                                         |
-| data          | id                     | string          | ID of the user.                                                                       |
-| data          | relationships          | object          | Relationships of the user object returned by the API.                                 |
-| relationships | org                    | object          | Relationship to an organization.                                                      |
-| org           | data [*required*] | object          | Relationship to organization object.                                                  |
-| data          | id [*required*]   | string          | ID of the organization.                                                               |
-| data          | type [*required*] | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| relationships | other_orgs             | object          | Relationship to organizations.                                                        |
-| other_orgs    | data [*required*] | [object]        | Relationships to organization objects.                                                |
-| data          | id [*required*]   | string          | ID of the organization.                                                               |
-| data          | type [*required*] | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| relationships | other_users            | object          | Relationship to users.                                                                |
-| other_users   | data [*required*] | [object]        | Relationships to user objects.                                                        |
-| data          | id [*required*]   | string          | A unique identifier that represents the user.                                         |
-| data          | type [*required*] | enum            | Users resource type. Allowed enum values: `users`                                     |
-| relationships | roles                  | object          | Relationship to roles.                                                                |
-| roles         | data                   | [object]        | An array containing type and the unique identifier of a role.                         |
-| data          | id                     | string          | The unique identifier of the role.                                                    |
-| data          | type                   | enum            | Roles type. Allowed enum values: `roles`                                              |
-| data          | type                   | enum            | Users resource type. Allowed enum values: `users`                                     |
-|               | included               | [ <oneOf>] | Array of objects related to the users.                                                |
-| included      | Option 1               | object          | Organization object.                                                                  |
-| Option 1      | attributes             | object          | Attributes of the organization.                                                       |
-| attributes    | created_at             | date-time       | Creation time of the organization.                                                    |
-| attributes    | description            | string          | Description of the organization.                                                      |
-| attributes    | disabled               | boolean         | Whether or not the organization is disabled.                                          |
-| attributes    | modified_at            | date-time       | Time of last organization modification.                                               |
-| attributes    | name                   | string          | Name of the organization.                                                             |
-| attributes    | public_id              | string          | Public ID of the organization.                                                        |
-| attributes    | sharing                | string          | Sharing type of the organization.                                                     |
-| attributes    | url                    | string          | URL of the site that this organization exists at.                                     |
-| Option 1      | id                     | string          | ID of the organization.                                                               |
-| Option 1      | type [*required*] | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| included      | Option 2               | object          | Permission object.                                                                    |
-| Option 2      | attributes             | object          | Attributes of a permission.                                                           |
-| attributes    | created                | date-time       | Creation time of the permission.                                                      |
-| attributes    | description            | string          | Description of the permission.                                                        |
-| attributes    | display_name           | string          | Displayed name for the permission.                                                    |
-| attributes    | display_type           | string          | Display type.                                                                         |
-| attributes    | group_name             | string          | Name of the permission group.                                                         |
-| attributes    | name                   | string          | Name of the permission.                                                               |
-| attributes    | restricted             | boolean         | Whether or not the permission is restricted.                                          |
-| Option 2      | id                     | string          | ID of the permission.                                                                 |
-| Option 2      | type [*required*] | enum            | Permissions resource type. Allowed enum values: `permissions`                         |
-| included      | Option 3               | object          | Role object returned by the API.                                                      |
-| Option 3      | attributes             | object          | Attributes of the role.                                                               |
-| attributes    | created_at             | date-time       | Creation time of the role.                                                            |
-| attributes    | modified_at            | date-time       | Time of last role modification.                                                       |
-| attributes    | name                   | string          | The name of the role. The name is neither unique nor a stable identifier of the role. |
-| attributes    | user_count             | int64           | Number of users with that role.                                                       |
-| Option 3      | id                     | string          | The unique identifier of the role.                                                    |
-| Option 3      | relationships          | object          | Relationships of the role object returned by the API.                                 |
-| relationships | permissions            | object          | Relationship to multiple permissions objects.                                         |
-| permissions   | data                   | [object]        | Relationships to permission objects.                                                  |
-| data          | id                     | string          | ID of the permission.                                                                 |
-| data          | type                   | enum            | Permissions resource type. Allowed enum values: `permissions`                         |
-| Option 3      | type [*required*] | enum            | Roles type. Allowed enum values: `roles`                                              |
-|               | meta                   | object          | Object describing meta attributes of response.                                        |
-| meta          | page                   | object          | Pagination object.                                                                    |
-| page          | total_count            | int64           | Total count.                                                                          |
-| page          | total_filtered_count   | int64           | Total count of elements matched by the filter.                                        |
+| Parent field  | Field                     | Type            | Description                                                                                                                                                                                                                                                                                   |
+| ------------- | ------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|               | data                      | [object]        | Array of returned users.                                                                                                                                                                                                                                                                      |
+| data          | attributes                | object          | Attributes of user object returned by the API.                                                                                                                                                                                                                                                |
+| attributes    | created_at                | date-time       | Creation time of the user.                                                                                                                                                                                                                                                                    |
+| attributes    | disabled                  | boolean         | Whether the user is disabled.                                                                                                                                                                                                                                                                 |
+| attributes    | email                     | string          | Email of the user.                                                                                                                                                                                                                                                                            |
+| attributes    | handle                    | string          | Handle of the user.                                                                                                                                                                                                                                                                           |
+| attributes    | icon                      | string          | URL of the user's icon.                                                                                                                                                                                                                                                                       |
+| attributes    | last_login_time           | date-time       | The last time the user logged in.                                                                                                                                                                                                                                                             |
+| attributes    | mfa_enabled               | boolean         | If user has MFA enabled.                                                                                                                                                                                                                                                                      |
+| attributes    | modified_at               | date-time       | Time that the user was last modified.                                                                                                                                                                                                                                                         |
+| attributes    | name                      | string          | Name of the user.                                                                                                                                                                                                                                                                             |
+| attributes    | service_account           | boolean         | Whether the user is a service account.                                                                                                                                                                                                                                                        |
+| attributes    | status                    | string          | Status of the user.                                                                                                                                                                                                                                                                           |
+| attributes    | title                     | string          | Title of the user.                                                                                                                                                                                                                                                                            |
+| attributes    | verified                  | boolean         | Whether the user is verified.                                                                                                                                                                                                                                                                 |
+| data          | id                        | string          | ID of the user.                                                                                                                                                                                                                                                                               |
+| data          | relationships             | object          | Relationships of the user object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | org                       | object          | Relationship to an organization.                                                                                                                                                                                                                                                              |
+| org           | data [*required*]    | object          | Relationship to organization object.                                                                                                                                                                                                                                                          |
+| data          | id [*required*]      | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| data          | type [*required*]    | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| relationships | other_orgs                | object          | Relationship to organizations.                                                                                                                                                                                                                                                                |
+| other_orgs    | data [*required*]    | [object]        | Relationships to organization objects.                                                                                                                                                                                                                                                        |
+| data          | id [*required*]      | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| data          | type [*required*]    | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| relationships | other_users               | object          | Relationship to users.                                                                                                                                                                                                                                                                        |
+| other_users   | data [*required*]    | [object]        | Relationships to user objects.                                                                                                                                                                                                                                                                |
+| data          | id [*required*]      | string          | A unique identifier that represents the user.                                                                                                                                                                                                                                                 |
+| data          | type [*required*]    | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+| relationships | roles                     | object          | Relationship to roles.                                                                                                                                                                                                                                                                        |
+| roles         | data                      | [object]        | An array containing type and the unique identifier of a role.                                                                                                                                                                                                                                 |
+| data          | id                        | string          | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| data          | type                      | enum            | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
+| data          | type                      | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+|               | included                  | [ <oneOf>] | Array of objects related to the users.                                                                                                                                                                                                                                                        |
+| included      | Option 1                  | object          | Organization object.                                                                                                                                                                                                                                                                          |
+| Option 1      | attributes                | object          | Attributes of the organization.                                                                                                                                                                                                                                                               |
+| attributes    | created_at                | date-time       | Creation time of the organization.                                                                                                                                                                                                                                                            |
+| attributes    | description               | string          | Description of the organization.                                                                                                                                                                                                                                                              |
+| attributes    | disabled                  | boolean         | Whether or not the organization is disabled.                                                                                                                                                                                                                                                  |
+| attributes    | modified_at               | date-time       | Time of last organization modification.                                                                                                                                                                                                                                                       |
+| attributes    | name                      | string          | Name of the organization.                                                                                                                                                                                                                                                                     |
+| attributes    | public_id                 | string          | Public ID of the organization.                                                                                                                                                                                                                                                                |
+| attributes    | sharing                   | string          | Sharing type of the organization.                                                                                                                                                                                                                                                             |
+| attributes    | url                       | string          | URL of the site that this organization exists at.                                                                                                                                                                                                                                             |
+| Option 1      | id                        | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| Option 1      | type [*required*]    | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| included      | Option 2                  | object          | Permission object.                                                                                                                                                                                                                                                                            |
+| Option 2      | attributes                | object          | Attributes of a permission.                                                                                                                                                                                                                                                                   |
+| attributes    | created                   | date-time       | Creation time of the permission.                                                                                                                                                                                                                                                              |
+| attributes    | description               | string          | Description of the permission.                                                                                                                                                                                                                                                                |
+| attributes    | display_name              | string          | Displayed name for the permission.                                                                                                                                                                                                                                                            |
+| attributes    | display_type              | string          | Display type.                                                                                                                                                                                                                                                                                 |
+| attributes    | group_name                | string          | Name of the permission group.                                                                                                                                                                                                                                                                 |
+| attributes    | name                      | string          | Name of the permission.                                                                                                                                                                                                                                                                       |
+| attributes    | restricted                | boolean         | Whether or not the permission is restricted.                                                                                                                                                                                                                                                  |
+| Option 2      | id                        | string          | ID of the permission.                                                                                                                                                                                                                                                                         |
+| Option 2      | type [*required*]    | enum            | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| included      | Option 3                  | object          | Role object returned by the API.                                                                                                                                                                                                                                                              |
+| Option 3      | attributes                | object          | Attributes of the role.                                                                                                                                                                                                                                                                       |
+| attributes    | created_at                | date-time       | Creation time of the role.                                                                                                                                                                                                                                                                    |
+| attributes    | modified_at               | date-time       | Time of last role modification.                                                                                                                                                                                                                                                               |
+| attributes    | name                      | string          | The name of the role. The name is neither unique nor a stable identifier of the role.                                                                                                                                                                                                         |
+| attributes    | receives_permissions_from | [string]        | The managed role from which this role automatically inherits new permissions. Specify one of the following: "Datadog Admin Role", "Datadog Standard Role", or "Datadog Read Only Role". If empty or not specified, the role does not automatically inherit permissions from any managed role. |
+| attributes    | user_count                | int64           | Number of users with that role.                                                                                                                                                                                                                                                               |
+| Option 3      | id                        | string          | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| Option 3      | relationships             | object          | Relationships of the role object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | permissions               | object          | Relationship to multiple permissions objects.                                                                                                                                                                                                                                                 |
+| permissions   | data                      | [object]        | Relationships to permission objects.                                                                                                                                                                                                                                                          |
+| data          | id                        | string          | ID of the permission.                                                                                                                                                                                                                                                                         |
+| data          | type                      | enum            | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| Option 3      | type [*required*]    | enum            | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
+|               | meta                      | object          | Object describing meta attributes of response.                                                                                                                                                                                                                                                |
+| meta          | page                      | object          | Pagination object.                                                                                                                                                                                                                                                                            |
+| page          | total_count               | int64           | Total count.                                                                                                                                                                                                                                                                                  |
+| page          | total_filtered_count      | int64           | Total count of elements matched by the filter.                                                                                                                                                                                                                                                |
 
 {% /tab %}
 
@@ -4471,7 +4485,7 @@ Response containing information about multiple users.
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -4496,7 +4510,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4521,7 +4535,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4546,7 +4560,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4571,7 +4585,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -4579,7 +4593,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport role_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/roles/${role_id}/users" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4593,8 +4607,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Add a user to a role returns "OK" response
@@ -4602,49 +4616,49 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "role" in the system
-	RoleDataID := os.Getenv("ROLE_DATA_ID")
+    // there is a valid "role" in the system
+    RoleDataID := os.Getenv("ROLE_DATA_ID")
 
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	body := datadogV2.RelationshipToUser{
-		Data: datadogV2.RelationshipToUserData{
-			Id:   UserDataID,
-			Type: datadogV2.USERSTYPE_USERS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRolesApi(apiClient)
-	resp, r, err := api.AddUserToRole(ctx, RoleDataID, body)
+    body := datadogV2.RelationshipToUser{
+        Data: datadogV2.RelationshipToUserData{
+            Id:   UserDataID,
+            Type: datadogV2.USERSTYPE_USERS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRolesApi(apiClient)
+    resp, r, err := api.AddUserToRole(ctx, RoleDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.AddUserToRole`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.AddUserToRole`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RolesApi.AddUserToRole`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RolesApi.AddUserToRole`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Add a user to a role returns "OK" response
@@ -4684,13 +4698,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -4723,13 +4737,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.add_user_to_role(role_id=ROLE_DATA_ID, body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Add a user to a role returns "OK" response
@@ -4750,13 +4764,13 @@ body = DatadogAPIClient::V2::RelationshipToUser.new({
   }),
 })
 p api_instance.add_user_to_role(ROLE_DATA_ID, body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Add a user to a role returns "OK" response
@@ -4786,13 +4800,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4828,7 +4842,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -4891,7 +4905,7 @@ OAuth apps require the `user_access_manage` authorization [scope](https://docs.d
     "type": "users"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -4902,83 +4916,84 @@ OK
 {% tab title="Model" %}
 Response containing information about multiple users.
 
-| Parent field  | Field                  | Type            | Description                                                                           |
-| ------------- | ---------------------- | --------------- | ------------------------------------------------------------------------------------- |
-|               | data                   | [object]        | Array of returned users.                                                              |
-| data          | attributes             | object          | Attributes of user object returned by the API.                                        |
-| attributes    | created_at             | date-time       | Creation time of the user.                                                            |
-| attributes    | disabled               | boolean         | Whether the user is disabled.                                                         |
-| attributes    | email                  | string          | Email of the user.                                                                    |
-| attributes    | handle                 | string          | Handle of the user.                                                                   |
-| attributes    | icon                   | string          | URL of the user's icon.                                                               |
-| attributes    | last_login_time        | date-time       | The last time the user logged in.                                                     |
-| attributes    | mfa_enabled            | boolean         | If user has MFA enabled.                                                              |
-| attributes    | modified_at            | date-time       | Time that the user was last modified.                                                 |
-| attributes    | name                   | string          | Name of the user.                                                                     |
-| attributes    | service_account        | boolean         | Whether the user is a service account.                                                |
-| attributes    | status                 | string          | Status of the user.                                                                   |
-| attributes    | title                  | string          | Title of the user.                                                                    |
-| attributes    | verified               | boolean         | Whether the user is verified.                                                         |
-| data          | id                     | string          | ID of the user.                                                                       |
-| data          | relationships          | object          | Relationships of the user object returned by the API.                                 |
-| relationships | org                    | object          | Relationship to an organization.                                                      |
-| org           | data [*required*] | object          | Relationship to organization object.                                                  |
-| data          | id [*required*]   | string          | ID of the organization.                                                               |
-| data          | type [*required*] | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| relationships | other_orgs             | object          | Relationship to organizations.                                                        |
-| other_orgs    | data [*required*] | [object]        | Relationships to organization objects.                                                |
-| data          | id [*required*]   | string          | ID of the organization.                                                               |
-| data          | type [*required*] | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| relationships | other_users            | object          | Relationship to users.                                                                |
-| other_users   | data [*required*] | [object]        | Relationships to user objects.                                                        |
-| data          | id [*required*]   | string          | A unique identifier that represents the user.                                         |
-| data          | type [*required*] | enum            | Users resource type. Allowed enum values: `users`                                     |
-| relationships | roles                  | object          | Relationship to roles.                                                                |
-| roles         | data                   | [object]        | An array containing type and the unique identifier of a role.                         |
-| data          | id                     | string          | The unique identifier of the role.                                                    |
-| data          | type                   | enum            | Roles type. Allowed enum values: `roles`                                              |
-| data          | type                   | enum            | Users resource type. Allowed enum values: `users`                                     |
-|               | included               | [ <oneOf>] | Array of objects related to the users.                                                |
-| included      | Option 1               | object          | Organization object.                                                                  |
-| Option 1      | attributes             | object          | Attributes of the organization.                                                       |
-| attributes    | created_at             | date-time       | Creation time of the organization.                                                    |
-| attributes    | description            | string          | Description of the organization.                                                      |
-| attributes    | disabled               | boolean         | Whether or not the organization is disabled.                                          |
-| attributes    | modified_at            | date-time       | Time of last organization modification.                                               |
-| attributes    | name                   | string          | Name of the organization.                                                             |
-| attributes    | public_id              | string          | Public ID of the organization.                                                        |
-| attributes    | sharing                | string          | Sharing type of the organization.                                                     |
-| attributes    | url                    | string          | URL of the site that this organization exists at.                                     |
-| Option 1      | id                     | string          | ID of the organization.                                                               |
-| Option 1      | type [*required*] | enum            | Organizations resource type. Allowed enum values: `orgs`                              |
-| included      | Option 2               | object          | Permission object.                                                                    |
-| Option 2      | attributes             | object          | Attributes of a permission.                                                           |
-| attributes    | created                | date-time       | Creation time of the permission.                                                      |
-| attributes    | description            | string          | Description of the permission.                                                        |
-| attributes    | display_name           | string          | Displayed name for the permission.                                                    |
-| attributes    | display_type           | string          | Display type.                                                                         |
-| attributes    | group_name             | string          | Name of the permission group.                                                         |
-| attributes    | name                   | string          | Name of the permission.                                                               |
-| attributes    | restricted             | boolean         | Whether or not the permission is restricted.                                          |
-| Option 2      | id                     | string          | ID of the permission.                                                                 |
-| Option 2      | type [*required*] | enum            | Permissions resource type. Allowed enum values: `permissions`                         |
-| included      | Option 3               | object          | Role object returned by the API.                                                      |
-| Option 3      | attributes             | object          | Attributes of the role.                                                               |
-| attributes    | created_at             | date-time       | Creation time of the role.                                                            |
-| attributes    | modified_at            | date-time       | Time of last role modification.                                                       |
-| attributes    | name                   | string          | The name of the role. The name is neither unique nor a stable identifier of the role. |
-| attributes    | user_count             | int64           | Number of users with that role.                                                       |
-| Option 3      | id                     | string          | The unique identifier of the role.                                                    |
-| Option 3      | relationships          | object          | Relationships of the role object returned by the API.                                 |
-| relationships | permissions            | object          | Relationship to multiple permissions objects.                                         |
-| permissions   | data                   | [object]        | Relationships to permission objects.                                                  |
-| data          | id                     | string          | ID of the permission.                                                                 |
-| data          | type                   | enum            | Permissions resource type. Allowed enum values: `permissions`                         |
-| Option 3      | type [*required*] | enum            | Roles type. Allowed enum values: `roles`                                              |
-|               | meta                   | object          | Object describing meta attributes of response.                                        |
-| meta          | page                   | object          | Pagination object.                                                                    |
-| page          | total_count            | int64           | Total count.                                                                          |
-| page          | total_filtered_count   | int64           | Total count of elements matched by the filter.                                        |
+| Parent field  | Field                     | Type            | Description                                                                                                                                                                                                                                                                                   |
+| ------------- | ------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|               | data                      | [object]        | Array of returned users.                                                                                                                                                                                                                                                                      |
+| data          | attributes                | object          | Attributes of user object returned by the API.                                                                                                                                                                                                                                                |
+| attributes    | created_at                | date-time       | Creation time of the user.                                                                                                                                                                                                                                                                    |
+| attributes    | disabled                  | boolean         | Whether the user is disabled.                                                                                                                                                                                                                                                                 |
+| attributes    | email                     | string          | Email of the user.                                                                                                                                                                                                                                                                            |
+| attributes    | handle                    | string          | Handle of the user.                                                                                                                                                                                                                                                                           |
+| attributes    | icon                      | string          | URL of the user's icon.                                                                                                                                                                                                                                                                       |
+| attributes    | last_login_time           | date-time       | The last time the user logged in.                                                                                                                                                                                                                                                             |
+| attributes    | mfa_enabled               | boolean         | If user has MFA enabled.                                                                                                                                                                                                                                                                      |
+| attributes    | modified_at               | date-time       | Time that the user was last modified.                                                                                                                                                                                                                                                         |
+| attributes    | name                      | string          | Name of the user.                                                                                                                                                                                                                                                                             |
+| attributes    | service_account           | boolean         | Whether the user is a service account.                                                                                                                                                                                                                                                        |
+| attributes    | status                    | string          | Status of the user.                                                                                                                                                                                                                                                                           |
+| attributes    | title                     | string          | Title of the user.                                                                                                                                                                                                                                                                            |
+| attributes    | verified                  | boolean         | Whether the user is verified.                                                                                                                                                                                                                                                                 |
+| data          | id                        | string          | ID of the user.                                                                                                                                                                                                                                                                               |
+| data          | relationships             | object          | Relationships of the user object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | org                       | object          | Relationship to an organization.                                                                                                                                                                                                                                                              |
+| org           | data [*required*]    | object          | Relationship to organization object.                                                                                                                                                                                                                                                          |
+| data          | id [*required*]      | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| data          | type [*required*]    | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| relationships | other_orgs                | object          | Relationship to organizations.                                                                                                                                                                                                                                                                |
+| other_orgs    | data [*required*]    | [object]        | Relationships to organization objects.                                                                                                                                                                                                                                                        |
+| data          | id [*required*]      | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| data          | type [*required*]    | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| relationships | other_users               | object          | Relationship to users.                                                                                                                                                                                                                                                                        |
+| other_users   | data [*required*]    | [object]        | Relationships to user objects.                                                                                                                                                                                                                                                                |
+| data          | id [*required*]      | string          | A unique identifier that represents the user.                                                                                                                                                                                                                                                 |
+| data          | type [*required*]    | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+| relationships | roles                     | object          | Relationship to roles.                                                                                                                                                                                                                                                                        |
+| roles         | data                      | [object]        | An array containing type and the unique identifier of a role.                                                                                                                                                                                                                                 |
+| data          | id                        | string          | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| data          | type                      | enum            | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
+| data          | type                      | enum            | Users resource type. Allowed enum values: `users`                                                                                                                                                                                                                                             |
+|               | included                  | [ <oneOf>] | Array of objects related to the users.                                                                                                                                                                                                                                                        |
+| included      | Option 1                  | object          | Organization object.                                                                                                                                                                                                                                                                          |
+| Option 1      | attributes                | object          | Attributes of the organization.                                                                                                                                                                                                                                                               |
+| attributes    | created_at                | date-time       | Creation time of the organization.                                                                                                                                                                                                                                                            |
+| attributes    | description               | string          | Description of the organization.                                                                                                                                                                                                                                                              |
+| attributes    | disabled                  | boolean         | Whether or not the organization is disabled.                                                                                                                                                                                                                                                  |
+| attributes    | modified_at               | date-time       | Time of last organization modification.                                                                                                                                                                                                                                                       |
+| attributes    | name                      | string          | Name of the organization.                                                                                                                                                                                                                                                                     |
+| attributes    | public_id                 | string          | Public ID of the organization.                                                                                                                                                                                                                                                                |
+| attributes    | sharing                   | string          | Sharing type of the organization.                                                                                                                                                                                                                                                             |
+| attributes    | url                       | string          | URL of the site that this organization exists at.                                                                                                                                                                                                                                             |
+| Option 1      | id                        | string          | ID of the organization.                                                                                                                                                                                                                                                                       |
+| Option 1      | type [*required*]    | enum            | Organizations resource type. Allowed enum values: `orgs`                                                                                                                                                                                                                                      |
+| included      | Option 2                  | object          | Permission object.                                                                                                                                                                                                                                                                            |
+| Option 2      | attributes                | object          | Attributes of a permission.                                                                                                                                                                                                                                                                   |
+| attributes    | created                   | date-time       | Creation time of the permission.                                                                                                                                                                                                                                                              |
+| attributes    | description               | string          | Description of the permission.                                                                                                                                                                                                                                                                |
+| attributes    | display_name              | string          | Displayed name for the permission.                                                                                                                                                                                                                                                            |
+| attributes    | display_type              | string          | Display type.                                                                                                                                                                                                                                                                                 |
+| attributes    | group_name                | string          | Name of the permission group.                                                                                                                                                                                                                                                                 |
+| attributes    | name                      | string          | Name of the permission.                                                                                                                                                                                                                                                                       |
+| attributes    | restricted                | boolean         | Whether or not the permission is restricted.                                                                                                                                                                                                                                                  |
+| Option 2      | id                        | string          | ID of the permission.                                                                                                                                                                                                                                                                         |
+| Option 2      | type [*required*]    | enum            | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| included      | Option 3                  | object          | Role object returned by the API.                                                                                                                                                                                                                                                              |
+| Option 3      | attributes                | object          | Attributes of the role.                                                                                                                                                                                                                                                                       |
+| attributes    | created_at                | date-time       | Creation time of the role.                                                                                                                                                                                                                                                                    |
+| attributes    | modified_at               | date-time       | Time of last role modification.                                                                                                                                                                                                                                                               |
+| attributes    | name                      | string          | The name of the role. The name is neither unique nor a stable identifier of the role.                                                                                                                                                                                                         |
+| attributes    | receives_permissions_from | [string]        | The managed role from which this role automatically inherits new permissions. Specify one of the following: "Datadog Admin Role", "Datadog Standard Role", or "Datadog Read Only Role". If empty or not specified, the role does not automatically inherit permissions from any managed role. |
+| attributes    | user_count                | int64           | Number of users with that role.                                                                                                                                                                                                                                                               |
+| Option 3      | id                        | string          | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| Option 3      | relationships             | object          | Relationships of the role object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | permissions               | object          | Relationship to multiple permissions objects.                                                                                                                                                                                                                                                 |
+| permissions   | data                      | [object]        | Relationships to permission objects.                                                                                                                                                                                                                                                          |
+| data          | id                        | string          | ID of the permission.                                                                                                                                                                                                                                                                         |
+| data          | type                      | enum            | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| Option 3      | type [*required*]    | enum            | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
+|               | meta                      | object          | Object describing meta attributes of response.                                                                                                                                                                                                                                                |
+| meta          | page                      | object          | Pagination object.                                                                                                                                                                                                                                                                            |
+| page          | total_count               | int64           | Total count.                                                                                                                                                                                                                                                                                  |
+| page          | total_filtered_count      | int64           | Total count of elements matched by the filter.                                                                                                                                                                                                                                                |
 
 {% /tab %}
 
@@ -5062,7 +5077,7 @@ Response containing information about multiple users.
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -5087,7 +5102,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -5112,7 +5127,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -5137,7 +5152,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -5162,7 +5177,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -5170,7 +5185,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport role_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/roles/${role_id}/users" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -5184,8 +5199,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Remove a user from a role returns "OK" response
@@ -5193,49 +5208,49 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "role" in the system
-	RoleDataID := os.Getenv("ROLE_DATA_ID")
+    // there is a valid "role" in the system
+    RoleDataID := os.Getenv("ROLE_DATA_ID")
 
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	body := datadogV2.RelationshipToUser{
-		Data: datadogV2.RelationshipToUserData{
-			Id:   UserDataID,
-			Type: datadogV2.USERSTYPE_USERS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRolesApi(apiClient)
-	resp, r, err := api.RemoveUserFromRole(ctx, RoleDataID, body)
+    body := datadogV2.RelationshipToUser{
+        Data: datadogV2.RelationshipToUserData{
+            Id:   UserDataID,
+            Type: datadogV2.USERSTYPE_USERS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRolesApi(apiClient)
+    resp, r, err := api.RemoveUserFromRole(ctx, RoleDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.RemoveUserFromRole`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.RemoveUserFromRole`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RolesApi.RemoveUserFromRole`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RolesApi.RemoveUserFromRole`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Remove a user from a role returns "OK" response
@@ -5275,13 +5290,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -5314,13 +5329,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.remove_user_from_role(role_id=ROLE_DATA_ID, body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Remove a user from a role returns "OK" response
@@ -5341,13 +5356,13 @@ body = DatadogAPIClient::V2::RelationshipToUser.new({
   }),
 })
 p api_instance.remove_user_from_role(ROLE_DATA_ID, body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Remove a user from a role returns "OK" response
@@ -5377,13 +5392,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5419,7 +5434,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -5465,12 +5480,13 @@ OAuth apps require the `user_access_manage` authorization [scope](https://docs.d
 
 {% tab title="Model" %}
 
-| Parent field | Field                        | Type   | Description                                                          |
-| ------------ | ---------------------------- | ------ | -------------------------------------------------------------------- |
-|              | data [*required*]       | object | Data for the clone role request.                                     |
-| data         | attributes [*required*] | object | Attributes required to create a new role by cloning an existing one. |
-| attributes   | name [*required*]       | string | Name of the new role that is cloned.                                 |
-| data         | type [*required*]       | enum   | Roles type. Allowed enum values: `roles`                             |
+| Parent field | Field                        | Type     | Description                                                                                                                                                                                                                                                                                   |
+| ------------ | ---------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|              | data [*required*]       | object   | Data for the clone role request.                                                                                                                                                                                                                                                              |
+| data         | attributes [*required*] | object   | Attributes required to create a new role by cloning an existing one.                                                                                                                                                                                                                          |
+| attributes   | name [*required*]       | string   | Name of the new role that is cloned.                                                                                                                                                                                                                                                          |
+| attributes   | receives_permissions_from    | [string] | The managed role from which this role automatically inherits new permissions. Specify one of the following: "Datadog Admin Role", "Datadog Standard Role", or "Datadog Read Only Role". If empty or not specified, the role does not automatically inherit permissions from any managed role. |
+| data         | type [*required*]       | enum     | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
 
 {% /tab %}
 
@@ -5485,7 +5501,7 @@ OAuth apps require the `user_access_manage` authorization [scope](https://docs.d
     "type": "roles"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -5496,21 +5512,22 @@ OK
 {% tab title="Model" %}
 Response containing information about a single role.
 
-| Parent field  | Field                  | Type      | Description                                                                           |
-| ------------- | ---------------------- | --------- | ------------------------------------------------------------------------------------- |
-|               | data                   | object    | Role object returned by the API.                                                      |
-| data          | attributes             | object    | Attributes of the role.                                                               |
-| attributes    | created_at             | date-time | Creation time of the role.                                                            |
-| attributes    | modified_at            | date-time | Time of last role modification.                                                       |
-| attributes    | name                   | string    | The name of the role. The name is neither unique nor a stable identifier of the role. |
-| attributes    | user_count             | int64     | Number of users with that role.                                                       |
-| data          | id                     | string    | The unique identifier of the role.                                                    |
-| data          | relationships          | object    | Relationships of the role object returned by the API.                                 |
-| relationships | permissions            | object    | Relationship to multiple permissions objects.                                         |
-| permissions   | data                   | [object]  | Relationships to permission objects.                                                  |
-| data          | id                     | string    | ID of the permission.                                                                 |
-| data          | type                   | enum      | Permissions resource type. Allowed enum values: `permissions`                         |
-| data          | type [*required*] | enum      | Roles type. Allowed enum values: `roles`                                              |
+| Parent field  | Field                     | Type      | Description                                                                                                                                                                                                                                                                                   |
+| ------------- | ------------------------- | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|               | data                      | object    | Role object returned by the API.                                                                                                                                                                                                                                                              |
+| data          | attributes                | object    | Attributes of the role.                                                                                                                                                                                                                                                                       |
+| attributes    | created_at                | date-time | Creation time of the role.                                                                                                                                                                                                                                                                    |
+| attributes    | modified_at               | date-time | Time of last role modification.                                                                                                                                                                                                                                                               |
+| attributes    | name                      | string    | The name of the role. The name is neither unique nor a stable identifier of the role.                                                                                                                                                                                                         |
+| attributes    | receives_permissions_from | [string]  | The managed role from which this role automatically inherits new permissions. Specify one of the following: "Datadog Admin Role", "Datadog Standard Role", or "Datadog Read Only Role". If empty or not specified, the role does not automatically inherit permissions from any managed role. |
+| attributes    | user_count                | int64     | Number of users with that role.                                                                                                                                                                                                                                                               |
+| data          | id                        | string    | The unique identifier of the role.                                                                                                                                                                                                                                                            |
+| data          | relationships             | object    | Relationships of the role object returned by the API.                                                                                                                                                                                                                                         |
+| relationships | permissions               | object    | Relationship to multiple permissions objects.                                                                                                                                                                                                                                                 |
+| permissions   | data                      | [object]  | Relationships to permission objects.                                                                                                                                                                                                                                                          |
+| data          | id                        | string    | ID of the permission.                                                                                                                                                                                                                                                                         |
+| data          | type                      | enum      | Permissions resource type. Allowed enum values: `permissions`                                                                                                                                                                                                                                 |
+| data          | type [*required*]    | enum      | Roles type. Allowed enum values: `roles`                                                                                                                                                                                                                                                      |
 
 {% /tab %}
 
@@ -5523,6 +5540,7 @@ Response containing information about a single role.
       "created_at": "2019-09-19T10:00:00.000Z",
       "modified_at": "2019-09-19T10:00:00.000Z",
       "name": "string",
+      "receives_permissions_from": [],
       "user_count": "integer"
     },
     "id": "string",
@@ -5539,7 +5557,7 @@ Response containing information about a single role.
     "type": "roles"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -5564,7 +5582,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -5589,7 +5607,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -5614,7 +5632,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -5639,7 +5657,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -5664,7 +5682,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -5672,7 +5690,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport role_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/roles/${role_id}/clone" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -5688,8 +5706,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a new role by cloning an existing role returns "OK" response
@@ -5697,48 +5715,48 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "role" in the system
-	RoleDataID := os.Getenv("ROLE_DATA_ID")
+    // there is a valid "role" in the system
+    RoleDataID := os.Getenv("ROLE_DATA_ID")
 
-	body := datadogV2.RoleCloneRequest{
-		Data: datadogV2.RoleClone{
-			Attributes: datadogV2.RoleCloneAttributes{
-				Name: "Example-Role clone",
-			},
-			Type: datadogV2.ROLESTYPE_ROLES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRolesApi(apiClient)
-	resp, r, err := api.CloneRole(ctx, RoleDataID, body)
+    body := datadogV2.RoleCloneRequest{
+        Data: datadogV2.RoleClone{
+            Attributes: datadogV2.RoleCloneAttributes{
+                Name: "Example-Role clone",
+            },
+            Type: datadogV2.ROLESTYPE_ROLES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRolesApi(apiClient)
+    resp, r, err := api.CloneRole(ctx, RoleDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.CloneRole`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.CloneRole`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RolesApi.CloneRole`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RolesApi.CloneRole`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a new role by cloning an existing role returns "OK" response
@@ -5779,13 +5797,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -5818,13 +5836,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.clone_role(role_id=ROLE_DATA_ID, body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a new role by cloning an existing role returns "OK" response
@@ -5844,13 +5862,13 @@ body = DatadogAPIClient::V2::RoleCloneRequest.new({
   }),
 })
 p api_instance.clone_role(ROLE_DATA_ID, body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a new role by cloning an existing role returns "OK" response
@@ -5878,13 +5896,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5919,7 +5937,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -5982,7 +6000,7 @@ The definition of `RoleTemplateArray` object.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -6007,7 +6025,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -6015,13 +6033,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/roles/templates" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -6038,13 +6056,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_role_templates()
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List role templates returns "OK" response
@@ -6055,13 +6073,13 @@ DatadogAPIClient.configure do |config|
 end
 api_instance = DatadogAPIClient::V2::RolesAPI.new
 p api_instance.list_role_templates()
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List role templates returns "OK" response
@@ -6069,38 +6087,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListRoleTemplates", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRolesApi(apiClient)
-	resp, r, err := api.ListRoleTemplates(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListRoleTemplates", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRolesApi(apiClient)
+    resp, r, err := api.ListRoleTemplates(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.ListRoleTemplates`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RolesApi.ListRoleTemplates`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RolesApi.ListRoleTemplates`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RolesApi.ListRoleTemplates`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List role templates returns "OK" response
@@ -6128,13 +6146,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List role templates returns "OK" response
@@ -6153,13 +6171,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6180,7 +6198,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 

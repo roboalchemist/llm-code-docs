@@ -15,9 +15,9 @@ breadcrumbs: >-
 # Create Jira Issues for Cloud Security Issues
 Available for:
 {% icon name="icon-cloud-security-management" /%}
- Cloud Security Misconfigurations | 
+ Cloud Security Misconfigurations |
 {% icon name="icon-cloud-security-management" /%}
- Cloud Security Identity Risks 
+ Cloud Security Identity Risks
 Use the [Jira integration](https://docs.datadoghq.com/integrations/jira/) to create Jira issues for resources that are impacted by a Cloud Security security issue. Jira for Cloud Security is available for [Cloud Security Misconfigurations](https://docs.datadoghq.com/security/cloud_security_management/misconfigurations/) and [Cloud Security Identity Risks](https://docs.datadoghq.com/security/cloud_security_management/identity_risks/).
 
 **Notes**:

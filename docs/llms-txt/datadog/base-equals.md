@@ -46,7 +46,7 @@ class NonCompliant : Compliant
         eq1 = base.Equals(other);
         var eq2 = base.Equals(other);
         if (base.Equals(other))
-		{
+        {
             return true;
         }
         return this.bar == ((NonCompliant)other).bar;
@@ -60,7 +60,7 @@ class Compliant
     public override bool Equals(object other)
     {
         if (base.Equals(other))
-		{
+        {
             return true;
         }
         return this.foo == ((Compliant)other).foo;
@@ -78,13 +78,12 @@ class Compliant
     public override bool Equals(object other)
     {
         if (base.Equals(other))
-		{
+        {
             return true;
         }
         return this.foo == ((Compliant)other).foo;
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

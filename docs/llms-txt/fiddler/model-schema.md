@@ -1,0 +1,67 @@
+# Source: https://docs.fiddler.ai/api/fiddler-python-client-sdk/schemas/model-schema.md
+
+# ModelSchema
+
+Defines the complete schema structure for a model's input data.
+
+ModelSchema contains the specification of all columns that a model expects to receive, including their data types, constraints, and metadata. This schema is used by Fiddler for data validation, monitoring, and analysis purposes.
+
+The schema acts as a contract between your model and Fiddler, ensuring that incoming data conforms to expected formats and enabling proper drift detection, data quality monitoring, and other features.
+
+## Examples
+
+Creating a model schema:
+
+```python
+schema = ModelSchema(
+    columns=[
+        Column(name="age", data_type=DataType.INTEGER, min=0, max=120),
+        Column(name="income", data_type=DataType.FLOAT, min=0),
+        Column(name="category", data_type=DataType.CATEGORY,
+
+        categories=["A", "B", "C"])
+    ]
+)
+```
+
+Accessing columns by name:
+
+```python
+age_column = schema["age"]
+print(age_column.data_type)
+```
+
+Adding a new column:
+
+```python
+new_column = Column(name="score", data_type=DataType.FLOAT)
+schema["score"] = new_column
+```
+
+Removing a column:
+
+```python
+del schema["age"]
+```
+
+Schema version
+
+List of columns
+
+## **getitem**(item)
+
+Get column by name
+
+**Return type:** *Column*
+
+## **setitem**(key, value)
+
+Set column by name
+
+**Return type:** None
+
+## **delitem**(key)
+
+Delete column by name
+
+**Return type:** None

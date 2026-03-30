@@ -86,6 +86,5 @@ const x: { y: number } = { y: 1 };
 const x = [...[1, 2, 3]];
 const [{ [`x${1}`]: x }] = [{ [`x`]: 1 }] as [{ [`x`]: any }];
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

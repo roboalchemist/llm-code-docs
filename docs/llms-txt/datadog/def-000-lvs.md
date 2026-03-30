@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Salesforce discovery of populated tables from unseen network and device
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1087-account-discovery](https://attack.mitre.org/techniques/T1087) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1087-account-discovery](https://attack.mitre.org/techniques/T1087)
 ## Goal{% #goal %}
 
 Detects Salesforce users performing database discovery queries to identify populated tables from previously unseen network locations and devices.

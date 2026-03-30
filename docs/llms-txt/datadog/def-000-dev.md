@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # User Initialization Files Must Be Owned By the Primary User
- 
+
 ## Description{% #description %}
 
 Set the owner of the user initialization files for interactive users to the primary owner with the following command:

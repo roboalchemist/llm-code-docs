@@ -47,6 +47,5 @@ var f = function() { return /=foo/; };
 var f = function() { return /foo/ig.test('bar'); };
 var f = function() { return /\\=foo/; };
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

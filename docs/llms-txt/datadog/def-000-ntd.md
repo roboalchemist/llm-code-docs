@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Slack anomaly event
 ---
 
 # Slack anomaly event
-Classification:attack 
+Classification:attack
 ## Goal{% #goal %}
 
 Detect when a Slack audit [anomaly event](https://api.slack.com/admins/audit-logs-anomaly) is raised.

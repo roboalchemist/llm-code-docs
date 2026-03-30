@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable SSH Root Login
 ---
 
 # Disable SSH Root Login
- 
+
 ## Description{% #description %}
 
 The root user should never be allowed to login to a system directly over a network. To disable root login via SSH, add or correct the following line in `/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf`:
@@ -39,7 +39,7 @@ chmod 0600 /etc/ssh/sshd_config.d/00-complianceascode-hardening.conf
 LC_ALL=C sed -i "/^\s*PermitRootLogin\s\+/Id" "/etc/ssh/sshd_config"
 LC_ALL=C sed -i "/^\s*PermitRootLogin\s\+/Id" "/etc/ssh/sshd_config.d"/*.conf
 if [ -e "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*PermitRootLogin\s\+/Id" "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf"
 else
     touch "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf"

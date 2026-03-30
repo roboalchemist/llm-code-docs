@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Secrets Manager secrets configured with automatic rotation should rotate successfully
- 
+
 ## Description{% #description %}
 
 This check verifies if a secret managed by AWS Secrets Manager has been rotated according to its defined schedule. The check applies only to secrets with rotation enabled.

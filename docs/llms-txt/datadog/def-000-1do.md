@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # RDS instances should have IAM authentication enabled
- 
+
 ## Description{% #description %}
 
 This control checks if an RDS instance has IAM database authentication enabled. The control specifically evaluates RDS instances using the following engine types: `mysql`, `postgres`, `aurora`, `aurora-mysql`, `aurora-postgresql`, and `mariadb`. Additionally, an RDS instance must be in one of these states for a finding to be generated: `available`, `backing-up`, `storage-optimization`, or `storage-full`.

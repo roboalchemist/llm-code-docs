@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # S3 bucket access logging should be enabled on the CloudTrail S3 bucket
- 
+
 ## Description{% #description %}
 
 S3 Bucket Access Logging generates a log with access records for each request made to your S3 bucket. These logs include details such as request type, specified resources, and the request's processing time and date. Enabling bucket access logging, particularly on the CloudTrail S3 bucket, is recommended to enhance security and support incident response activities by capturing all events affecting bucket objects.

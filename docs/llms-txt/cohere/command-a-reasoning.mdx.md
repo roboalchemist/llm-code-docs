@@ -1,0 +1,58 @@
+# Source: https://docs.cohere.com/docs/command-a-reasoning.mdx
+
+***
+
+title: Cohere's Command A Reasoning Model
+slug: docs/command-a-reasoning
+hidden: false
+description: >-
+Command A Reasoning excels in tool use, agentic workflows, and complex
+problem-solving. It has 111 billion parameters and a 256k context length.
+image:
+type: fileId
+value: 'https://files.buildwithfern.com/cohere.docs.buildwithfern.com/8ba30b46486ea7bfab24f3e8856d7411d1b745b26e9026abff3ee62af52ce268/assets/images/edb3e49-cohere_meta_image.jpg'
+keywords: 'generative AI, Cohere, reasoning, large language models'
+createdAt: Thu Aug 7th 2025
+updatedAt: ''
+layout: overview
+----------------
+
+<ModelShowcase
+  model={{
+  name: 'Command A Reasoning',
+  id: 'command-a-reasoning-08-2025',
+  capabilities: [
+    Capability.Reasoning,
+    Capability.SafetyModes,
+    Capability.Citations,
+    Capability.ToolUse,
+    Capability.StructuredOutputs,
+    Capability.Multilingual,
+  ],
+  specs: {
+    contextWindow: '256,000',
+    maxOutputTokens: '32,000',
+    knowledgeCutoff: 'June 1, 2024',
+    
+  },
+  endpoints: [
+    Endpoint.ChatV2,
+    Endpoint.ChatCompletions,
+  ],
+  usageMessage: <p>Command A Reasoning can be used in production through Cohere's <a href="https://docs.cohere.com/docs/model-vault" target="_blank" rel="noopener noreferrer">Model Vault</a>.</p>
+}}
+/>
+
+## Description
+
+Command A Reasoning is Cohere's first reasoning model to date, excelling at real world enterprise tasks including tool use, retrieval augmented generation (RAG), agents, and multilingual use cases. At 111B parameters, Command A has a context length of 256K. Command-a-Reasoning (CAR) is optimized to run on 4x H100 GPUs for production workloads. For non-production tasks such as tryouts and evaluations, it can also run on 4x A100 GPUs.
+
+## What Can Command A Reasoning Be Used For?
+
+Command A is excellent for:
+
+* **Agentic Use Cases**: Taking autonomous actions and interacting with the environment to solve problems.
+* **Tool Use**: Able to leverage a variety of tools, such as search engines and APIs.
+* **Multilingual**: Able to reason over multilingual inputs, providing support to user queries in 23 different languages.
+
+There's more to be said about token budgets, enabling and disabling the `thinking` operation, etc., which can be found in our dedicated [Reasoning guide](/docs/reasoning).

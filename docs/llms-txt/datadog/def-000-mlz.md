@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure AppArmor Utils is ins
 ---
 
 # Ensure AppArmor Utils is installed
- 
+
 ## Description{% #description %}
 
 AppArmor provide Mandatory Access Controls.

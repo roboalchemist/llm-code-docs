@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Kubernetes PKI certificate files should have permissions of 600 or more restrictive
- 
+
 ## Description{% #description %}
 
 Ensure that Kubernetes PKI certificate files have permissions of `600` or more restrictive. Kubernetes makes use of a number of certificate files as part of the operation of its components. The permissions on these files should be set to 600 or more restrictive to protect their integrity.

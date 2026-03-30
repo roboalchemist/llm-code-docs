@@ -1,0 +1,110 @@
+# Source: https://docs.wandb.ai/weave/reference/typescript-sdk/classes/weaveobject.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.wandb.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Class: WeaveObject
+
+> TypeScript SDK reference
+
+[weave](../) / WeaveObject
+
+## Hierarchy
+
+* `WeaveObject`
+
+  ↳ [`Dataset`](./dataset)
+
+  ↳ [`Evaluation`](./evaluation)
+
+## Table of contents
+
+### Constructors
+
+* [constructor](./weaveobject#constructor)
+
+### Properties
+
+* [\_\_savedRef](./weaveobject#__savedref)
+
+### Accessors
+
+* [description](./weaveobject#description)
+* [name](./weaveobject#name)
+
+### Methods
+
+* [saveAttrs](./weaveobject#saveattrs)
+
+## Constructors
+
+### constructor
+
+• **new WeaveObject**(`_baseParameters`): [`WeaveObject`](./weaveobject)
+
+#### Parameters
+
+| Name              | Type                    |
+| :---------------- | :---------------------- |
+| `_baseParameters` | `WeaveObjectParameters` |
+
+#### Returns
+
+[`WeaveObject`](./weaveobject)
+
+#### Defined in
+
+[weaveObject.ts:75](https://github.com/wandb/weave/blob/1aee4006a95d913addb45881dfc950de7ce7b0bd/sdks/node/src/weaveObject.ts#L75)
+
+## Properties
+
+### \_\_savedRef
+
+• `Optional` **\_\_savedRef**: [`ObjectRef`](./objectref) | `Promise`\<[`ObjectRef`](./objectref)>
+
+#### Defined in
+
+[weaveObject.ts:73](https://github.com/wandb/weave/blob/1aee4006a95d913addb45881dfc950de7ce7b0bd/sdks/node/src/weaveObject.ts#L73)
+
+## Accessors
+
+### description
+
+• `get` **description**(): `undefined` | `string`
+
+#### Returns
+
+`undefined` | `string`
+
+#### Defined in
+
+[weaveObject.ts:100](https://github.com/wandb/weave/blob/1aee4006a95d913addb45881dfc950de7ce7b0bd/sdks/node/src/weaveObject.ts#L100)
+
+***
+
+### name
+
+• `get` **name**(): `string`
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+[weaveObject.ts:96](https://github.com/wandb/weave/blob/1aee4006a95d913addb45881dfc950de7ce7b0bd/sdks/node/src/weaveObject.ts#L96)
+
+## Methods
+
+### saveAttrs
+
+▸ **saveAttrs**(): `Object`
+
+#### Returns
+
+`Object`
+
+#### Defined in
+
+[weaveObject.ts:77](https://github.com/wandb/weave/blob/1aee4006a95d913addb45881dfc950de7ce7b0bd/sdks/node/src/weaveObject.ts#L77)

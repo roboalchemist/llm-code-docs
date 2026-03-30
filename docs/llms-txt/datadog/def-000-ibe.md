@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Install pam-modules Package
 ---
 
 # Install pam-modules Package
- 
+
 ## Description{% #description %}
 
 The `libpam-modules` package can be installed with the following command:

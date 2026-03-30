@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1543-create-or-modify-system-process](https://attack.mitre.org/techniques/T1543) 
+Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1543-create-or-modify-system-process](https://attack.mitre.org/techniques/T1543)
 ## Goal{% #goal %}
 
 Detects the installation of Windows services by suspicious or unusual client processes.

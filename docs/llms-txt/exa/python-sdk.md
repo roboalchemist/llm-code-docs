@@ -1,10 +1,12 @@
 # Source: https://exa.ai/docs/sdks/python-sdk.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Python SDK
+
+## # Python SDK
 
 > Install and use the Exa Python SDK
 
@@ -38,7 +40,7 @@ Requires Python 3.9+
 from exa_py import Exa
 
 exa = Exa()  # reads EXA_API_KEY from environment
-```
+```text
 
 ## Search
 
@@ -49,7 +51,7 @@ results = exa.search(
     "blog post about artificial intelligence",
     contents={"text": True}
 )
-```
+```text
 
 ```python  theme={null}
 results = exa.search(
@@ -59,7 +61,7 @@ results = exa.search(
     include_domains=["techcrunch.com", "wired.com"],
     contents={"text": True}
 )
-```
+```text
 
 ## Get Contents
 
@@ -70,21 +72,21 @@ results = exa.get_contents(
     ["https://openai.com/research"],
     text=True
 )
-```
+```text
 
 ```python  theme={null}
 results = exa.get_contents(
     ["https://stripe.com/docs/api"],
     summary=True
 )
-```
+```text
 
 ```python  theme={null}
 results = exa.get_contents(
     ["https://arxiv.org/abs/2303.08774"],
     highlights={"max_characters": 2000}
 )
-```
+```text
 
 ## Find Similar
 
@@ -95,7 +97,7 @@ results = exa.find_similar(
     "https://paulgraham.com/greatwork.html",
     contents={"text": True}
 )
-```
+```text
 
 ```python  theme={null}
 results = exa.find_similar(
@@ -103,7 +105,7 @@ results = exa.find_similar(
     exclude_source_domain=True,
     contents={"text": True}
 )
-```
+```text
 
 ## Answer
 
@@ -112,12 +114,12 @@ Get answers to questions with citations.
 ```python  theme={null}
 response = exa.answer("What caused the 2008 financial crisis?")
 print(response.answer)
-```
+```text
 
 ```python  theme={null}
 for chunk in exa.stream_answer("Explain quantum computing"):
     print(chunk, end="", flush=True)
-```
+```text
 
 ## Async
 
@@ -132,7 +134,7 @@ results = await exa.search(
     "machine learning startups",
     contents={"text": True}
 )
-```
+```text
 
 ## Research
 
@@ -151,7 +153,7 @@ task = exa.research.create(
 )
 
 result = exa.research.poll_until_finished(task.research_id)
-```
+```text
 
 <CardGroup cols={2}>
   <Card title="GitHub" icon="github" iconType="brands" color="#000000" href="https://github.com/exa-labs/exa-py">

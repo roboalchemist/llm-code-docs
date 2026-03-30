@@ -71,6 +71,5 @@ subprocess.Popen('/bin/ls %s' % ('something',), shell=True)
 ```python
 subprocess.Popen('/bin/ls %s' % ('something',), shell=False)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

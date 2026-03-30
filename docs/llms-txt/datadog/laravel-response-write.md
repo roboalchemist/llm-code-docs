@@ -97,6 +97,5 @@ Route::get('/endpoint/{data}', function ($data) {
     ]);
 });
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

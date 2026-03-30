@@ -87,6 +87,5 @@ root.unmount();
 import { hydrateRoot } from 'react-dom/client';
 const root = hydrateRoot(container, <App/>);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

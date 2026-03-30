@@ -67,7 +67,7 @@ func main() {
 
 
     if 0.0 < myValue {
-        
+
     }
 }
 ```
@@ -90,10 +90,9 @@ func main() {
 
 
     if 0.0 < myValue {
-        
+
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

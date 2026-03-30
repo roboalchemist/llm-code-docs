@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Okta blocked numerous requests from a malicious IP
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detect when a request is blocked due to a block list rule (such as an IP network zone or location rule).

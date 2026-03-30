@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Instances should be configured to use a non-default service account with restricted API access
- 
+
 ## Description{% #description %}
 
 To follow the principle of least privilege and to prevent potential privilege escalation, assign instances to a service account other than the default Compute Engine service account. These accounts have a scope option of `Allow full access to all Cloud APIs`, which grants Editor rights on the project.

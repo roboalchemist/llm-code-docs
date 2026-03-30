@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Controller Manager API service should only bind to localhost
-Classification:complianceFramework:cis-kubernetesControl:1.3.7 
+Classification:complianceFramework:cis-kubernetesControl:1.3.7
 ## Description{% #description %}
 
 Do not bind the Controller Manager service to non-loopback insecure addresses.

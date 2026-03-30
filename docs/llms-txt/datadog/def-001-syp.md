@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:threat-intelTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1090-proxy](https://attack.mitre.org/techniques/T1090) 
+Classification:threat-intelTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1090-proxy](https://attack.mitre.org/techniques/T1090)
 ## Goal{% #goal %}
 
 Detect activity observed from a Tor exit node.

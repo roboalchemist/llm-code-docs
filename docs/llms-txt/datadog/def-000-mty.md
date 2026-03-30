@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify ufw Active
 ---
 
 # Verify ufw Active
- 
+
 ## Description{% #description %}
 
 Verify the ufw is enabled on the system with the following command:

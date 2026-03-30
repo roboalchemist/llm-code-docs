@@ -60,6 +60,5 @@ str2 = "world!"
 resultA = "#{str1} <#{str2}>"
 resultB = format('%s <%s>', str1, str2)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

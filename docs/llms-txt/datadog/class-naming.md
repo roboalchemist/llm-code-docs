@@ -53,6 +53,5 @@ class FooBar {}
  // Any keyword is allowed when wrapped between backticks
 class `class`
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

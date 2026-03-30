@@ -1,10 +1,6 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/prefer-es6-class.md
 
----
-url: /docs/guide/usage/linter/rules/react/prefer-es6-class.md
----
-
-### What it does
+## What it does
 
 React offers you two ways to create traditional components: using the
 `create-react-class` package or the newer ES2015 class system.
@@ -12,11 +8,11 @@ React offers you two ways to create traditional components: using the
 Note that function components are preferred over class components in modern React,
 and it is *especially* discouraged to use `createReactClass` in modern React.
 
-### Why is this bad?
+## Why is this bad?
 
 This rule enforces a consistent React class style.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule by default:
 
@@ -32,11 +28,11 @@ var Hello = createReactClass({
 
 This rule accepts one of the following string values:
 
-### `"always"`
+## `"always"`
 
 Always prefer ES2015 class-style components.
 
-### `"never"`
+## `"never"`
 
 Do not allow ES2015 class-style, prefer `createReactClass`.
 

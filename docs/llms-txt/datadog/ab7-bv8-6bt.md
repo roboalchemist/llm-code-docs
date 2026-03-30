@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The user should configure an activity log alert for SQL Database deletion
- 
+
 ## Description{% #description %}
 
 Create an activity log alert for the Delete Azure SQL Database event.

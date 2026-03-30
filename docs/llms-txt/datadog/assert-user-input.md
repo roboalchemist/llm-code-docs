@@ -53,6 +53,5 @@ $data = $_GET['input'];
 $data = sanitize_input($data);
 assert($data);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

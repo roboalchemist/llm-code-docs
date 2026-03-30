@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable Network File System 
 ---
 
 # Disable Network File System (nfs)
- 
+
 ## Description{% #description %}
 
 The Network File System (NFS) service allows remote hosts to mount and interact with shared filesystems on the local system. If the local system is not designated as a NFS server then this service should be disabled. The `nfs-server` service can be disabled with the following command:

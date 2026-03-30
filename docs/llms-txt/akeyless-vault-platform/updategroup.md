@@ -1,0 +1,162 @@
+# Source: https://docs.akeyless.io/reference/updategroup.md
+
+# /update-group
+
+# OpenAPI definition
+
+```json
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "The purpose of this application is to provide access to Akeyless API.",
+    "title": "Akeyless API",
+    "contact": {
+      "name": "Akeyless",
+      "url": "http://akeyless.io",
+      "email": "support@akeyless.io"
+    },
+    "version": "3.0"
+  },
+  "paths": {
+    "/update-group": {
+      "post": {
+        "tags": [
+          "v2"
+        ],
+        "operationId": "updateGroup",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/updateGroup"
+              }
+            }
+          },
+          "required": true,
+          "x-go-name": "Body"
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/updateGroupResponse"
+          },
+          "default": {
+            "$ref": "#/components/responses/errorResponse"
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.akeyless.io"
+    }
+  ],
+  "components": {
+    "responses": {
+      "errorResponse": {
+        "description": "errorResponse wraps any error to return it as a JSON object with one \"error\"\nfield.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/JSONError"
+            }
+          }
+        }
+      },
+      "updateGroupResponse": {
+        "description": "updateGroupResponse wraps response body.",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/UpdateGroupOutput"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "JSONError": {
+        "type": "object",
+        "title": "JSONError wraps an error with JSON object.",
+        "properties": {
+          "error": {
+            "type": "string",
+            "x-go-name": "Err"
+          }
+        },
+        "x-go-package": "akeyless.io/akeyless-main-repo/go/src/client"
+      },
+      "UpdateGroupOutput": {
+        "type": "object",
+        "properties": {
+          "group_name": {
+            "type": "string",
+            "x-go-name": "GroupName"
+          },
+          "id": {
+            "type": "string",
+            "x-go-name": "Id"
+          },
+          "name": {
+            "type": "string",
+            "x-go-name": "Name"
+          }
+        },
+        "x-go-package": "akeyless.io/akeyless-main-repo/go/src/client/commands"
+      },
+      "updateGroup": {
+        "type": "object",
+        "title": "updateGroup is a command that updates a group.",
+        "required": [
+          "group-alias",
+          "name"
+        ],
+        "properties": {
+          "description": {
+            "description": "Description of the object",
+            "type": "string",
+            "x-go-name": "Description"
+          },
+          "group-alias": {
+            "description": "A short group alias",
+            "type": "string",
+            "x-go-name": "GroupAlias"
+          },
+          "json": {
+            "description": "Set output format to JSON",
+            "type": "boolean",
+            "default": false,
+            "x-go-name": "Json"
+          },
+          "name": {
+            "description": "Group name",
+            "type": "string",
+            "x-go-name": "NName"
+          },
+          "new-name": {
+            "description": "Group new name",
+            "type": "string",
+            "x-go-name": "NewName"
+          },
+          "token": {
+            "description": "Authentication token (see `/auth` and `/configure`)",
+            "type": "string",
+            "x-go-name": "Profile"
+          },
+          "uid-token": {
+            "description": "The universal identity token, Required only for universal_identity authentication",
+            "type": "string",
+            "x-go-name": "UIDToken"
+          },
+          "user-assignment": {
+            "description": "A json string defining the access permission assignment for this client",
+            "type": "string",
+            "x-go-name": "UserAssignment"
+          }
+        },
+        "x-go-package": "akeyless.io/akeyless-main-repo/go/src/client/commands"
+      }
+    }
+  }
+}
+```

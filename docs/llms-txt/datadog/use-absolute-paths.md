@@ -44,7 +44,7 @@ RUN cd /usr/src/app && cp somedir/somefile ./someDirInUsrSrcApp/
 
 ```docker
 FROM busybox
-RUN cd /usr/src/app && git clone git@github.com:lukasmartinelli/hadolint.git 
+RUN cd /usr/src/app && git clone git@github.com:lukasmartinelli/hadolint.git
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}
@@ -59,6 +59,5 @@ FROM busybox
 WORKDIR /usr/src/app
 RUN git clone git@github.com:lukasmartinelli/hadolint.git
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

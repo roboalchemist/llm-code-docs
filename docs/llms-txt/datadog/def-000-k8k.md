@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Azure Key Vault should use R
 ---
 
 # Azure Key Vault should use RBAC
- 
+
 ## Rationale:{% #rationale %}
 
 This detection identifies Azure Key Vaults with `enable_rbac_authorization` not set to `true`. This identifies Key Vaults where RBAC authentication is not implemented.

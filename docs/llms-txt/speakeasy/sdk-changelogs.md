@@ -1,0 +1,85 @@
+# Source: https://www.speakeasy.com/md/docs/sdks/manage/sdk-changelogs.md
+
+# SDK changelogs
+
+## Overview
+
+SDK changes should be transparent and easy to validate. Comprehensive SDK release notes serve two critical purposes:
+
+- Providing SDK maintainers with detailed summaries of every pull request helps them validate changes.
+- Providing end users with clear documentation allows them to track SDK evolution over time.
+
+Speakeasy automatically detects SDK changes and generates enhanced release notes. SDK maintainers can view these notes in commit messages and pull request (PR) descriptions. SDK users can view them in the public release notes and the commit history.
+
+## Prerequisites
+
+You don't need to make configuration changes to enable the release notes feature. It works automatically with existing Speakeasy workflows when the following requirements are met:
+
+- The [sdk-generation-action](https://github.com/speakeasy-api/sdk-generation-action) v15.49.1 or above is enabled in GitHub Actions.
+- The [Speakeasy CLI](https://github.com/speakeasy-api/speakeasy) v1.605.5 or above is installed on your machine.
+
+## PR summaries and commit messages for SDK maintainers
+
+Every SDK generation results in a commit message that includes a comprehensive summary of changes. These commit messages are bundled into a PR summary that allows SDK maintainers to validate SDK changes easily before merging them.
+
+The commit message includes a line for each change made to the SDK, including:
+
+- **Added methods:** New functionality being introduced
+- **Removed methods:** Deprecated functionality being removed (flagged as breaking)
+- **Modified methods:** Changed signatures, parameters, or behaviors
+- **Breaking change indicators:** Clear warnings for any backward-incompatible changes
+
+The following screenshot shows an example of how the commit messages and PR summaries appear in GitHub, with detailed information about method changes and breaking change indicators:
+
+<Screenshot
+  variant="web"
+  image={{
+    src: "/assets/docs/new-changelog.png",
+    alt: "PR Summary Example",
+  }}
+/>
+
+This improvement helps SDK maintainers with code review and maintaining Git history hygiene.
+
+## Detailed release notes for SDK users
+
+SDK users can check changes from two sources:
+
+- **The SDK commit history** shows when certain capabilities were added or modified.
+- **The public release notes** published with each version of the SDK show the changes made in that version.
+
+Once changes have been validated and merged by the maintainers, the following detailed information becomes part of the SDK's public release notes:
+
+- **Method-level change tracking:** A record of the methods that were added, modified, or removed
+- **Breaking change visibility:** Clear indicators for any changes that could impact existing integrations
+- **Version comparison:** Easy-to-scan summaries that help uses assess upgrade impact
+
+### Modifying release notes
+
+As an SDK maintainer, you can add custom messaging to SDK release notes as follows:
+
+- Open the **PR** that requires the release notes changes.
+- Edit the `releaseNotes` section in the `gen.lock` file to add or remove information, as shown in the following screenshot:
+
+<Screenshot
+  variant="web"
+  image={{
+    src: "/assets/docs/updating_release_notes.png",
+    alt: "updating release notes",
+  }}
+/>
+
+- **Commit** the change.
+
+Once you've merged the **PR** and a **GitHub release** has been generated, the entire text in the `ReleaseNotes` field in `gen.lock` is added to the **release notes body**, as shown in the following screenshot:
+
+<Screenshot
+  variant="web"
+  image={{
+    src: "/assets/docs/custom_message_in_release.png",
+    alt: "Release Page",
+  }}
+/>
+---
+
+Are you an AI agent evaluating Speakeasy? We put together a helpful guide: https://www.speakeasy.com/eval.md

@@ -1,0 +1,204 @@
+# 📎 Integrate Dappier MCP Server with 5ire for Real-Time AI-Powered Insights
+Source: https://docs.dappier.com/cookbook/recipes/dappier-mcp-5ire-integration
+
+
+
+[**5ire**](https://5ire.app/) is a **cross-platform desktop AI assistant** and **Model Context Protocol (MCP) client**. It allows users to **integrate external AI models** and **fetch real-time data** from various sources.
+
+[**Dappier**](https://dappier.com/developers/) is a platform that connects LLMs and AI-driven applications to **real-time, verified data** from **trusted sources**, including **web search, finance, sports, and news**. By offering structured and **rights-cleared** data, Dappier enhances AI models with **accurate and up-to-date** information for diverse applications.
+
+This guide provides a step-by-step walkthrough for **integrating Dappier MCP Server** into the **5ire ecosystem**. By following these instructions, you will be able to configure **5ire** to fetch **real-time data** from Dappier, enabling advanced AI-powered **search, recommendations, and insights** directly within the platform.
+
+***
+
+## Prerequisites
+
+Before starting the setup process, ensure you have the following:
+
+* **Download 5ire** - Get the latest version of **5ire** from [5ire Official Website](https://5ire.app/).
+* **Dappier API Key** - Get it from [Dappier API Keys](https://platform.dappier.com/profile/api-keys).
+
+***
+
+## Watch the Video Guide
+
+If you prefer a visual walkthrough, check out the accompanying video guide below:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IaHl5W9-Z6c?si=NZo53GG_fwXDUjr3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+
+***
+
+## Step 1: Install UV Package Manager
+
+To use Dappier MCP within 5ire, **UV** must be installed first.
+
+For **MacOS/Linux**, run:
+
+```json  theme={null}
+
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+```
+
+For **Windows**, run:
+
+```json  theme={null}
+
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+```
+
+**Verify installation:**
+
+```json  theme={null}
+
+uv --version
+
+```
+
+## Step 2: Locate UVX Path
+
+To ensure **5ire** can access the **Dappier MCP Server**, you need to find the **UVX** path.
+
+### For MacOS/Linux:
+
+Run the following command to locate the **UVX** path:
+
+```json  theme={null}
+
+which uvx
+
+```
+
+### For windows:
+
+```json  theme={null}
+
+where uvx
+
+```
+
+***
+
+## Step 3: Install 5ire
+
+To integrate **Dappier MCP** with **5ire**, you must first install **5ire**.
+
+### Download and Install 5ire
+
+Download the **5ire SDK** from the official source:
+
+👉 **[Download 5ire SDK](https://5ire.app/)**
+
+Follow the installation steps based on your **operating system**.
+
+***
+
+## Step 4: Configure Dappier MCP in 5ire
+
+### 1️.Open 5ire Developer Dashboard
+
+* Navigate to **Tools** in the **5ire Developer Dashboard**.
+* Click **New Tool** to create a custom tool.
+
+### 2️. Enter the Command for Dappier MCP
+
+* In the **Command** field, enter the path where **Dappier MCP's UVX** is installed.
+
+* Example command:
+
+```json  theme={null}
+
+/Users/yourusername/.local/bin/uvx dappier-mcp.
+
+```
+
+### 5. Set Environment Variables
+
+* Add a new **Environment Variable**:
+* **Name**: `DAPPIER_API_KEY`
+* **Value**: *(Your API Key from Dappier)*
+* Retrieve your API key from **[Dappier API Keys](https://platform.dappier.com/profile/api-keys)**.
+
+### 6. Save the Configuration
+
+* Click **Save** to apply the changes.
+* This ensures **5ire** can access **Dappier MCP** with the correct authentication.
+
+***
+
+## Step 7: Activate Dappier MCP in 5ire
+
+### 1️. Enable the Integration
+
+* Open **5ire Developer Dashboard**.
+* Navigate to the **Tools** section.
+
+### 2️. Turn ON Dappier MCP
+
+* Locate the **Dappier MCP Tool** in the tools list.
+* **Toggle it ON** to activate the integration.
+* Ensure the tool is in an **active state** before proceeding.
+
+### 3️. Confirmation
+
+* Once enabled, **Dappier MCP** is successfully integrated into **5ire**.
+* You can now access **real-time search and AI-powered recommendations** directly within the platform.
+* Start leveraging **live financial updates, global news, weather reports, stock market insights, and curated AI-driven content** for smarter, more informed decision-making.
+
+***
+
+## Step 8: Test Prompts with Dappier MCP in 5ire
+
+Now that the integration is complete, you can test **real-time AI-powered queries** in **5ire** using Dappier MCP.
+
+### Sample Queries & Expected Outputs
+
+#### 1️⃣ **User Query:**(dappier\_real\_time\_search)
+
+"Give me the latest updates on the tech layoffs in 2025."
+
+#### 🔹 **Expected AI Response:**
+
+* Retrieves **real-time news articles** about layoffs in major tech companies.
+* Provides **AI-driven analysis** on trends affecting the industry.
+
+#### 2️⃣ **User Query:**((dappier\_real\_time\_search))
+
+"Analyze today's stock market performance for AAPL, TSLA, and NVDA?"
+
+#### 🔹 **Expected AI Response:**
+
+* Fetches **real-time stock market data** for Apple, Tesla, and Nvidia.
+* Summarizes **price changes, trading volume, and market trends**.
+
+#### 3️⃣ **User Query:**(dappier\_ai\_recommendations)
+
+"Show me the most popular articles on mindfulness and mental well-being from AI recommendations?"
+
+#### 🔹 **Expected AI Response:**
+
+* Retrieves **curated content** on mindfulness and mental health.
+* Suggests **top articles from trusted sources** using AI-powered recommendations.
+
+#### 4️⃣ **User Query:** (dappier\_real\_time\_search)
+
+"Show me travel advisories for Paris and visa requirements?"
+
+#### 🔹 **Expected AI Response:**
+
+* Provides **real-time travel advisory updates** for Paris.
+* Lists **visa requirements, COVID-19 restrictions, and safety alerts**.
+
+#### 5️⃣ **User Query:** (dappier\_ai\_recommendations)
+
+"Find me articles on highlights of the latest Super Bowl game?"
+
+#### 🔹 **Expected AI Response:**
+
+* Summarizes **game highlights, key moments, and final scores**.
+* Fetches **AI-recommended sports articles** from top sources.
+
+***
+
+🚀 **Experience the power of real-time AI-driven insights with Dappier MCP in 5ire! Stay ahead with live data, AI-driven recommendations, and seamless intelligent assistance—empowering you to make informed decisions faster than ever.**

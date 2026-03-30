@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > FTP deployments should be di
 ---
 
 # FTP deployments should be disabled
- 
+
 ## Description{% #description %}
 
 By default, Azure Functions, App Service applications, and API Apps can be deployed over FTP. If an essential deployment workflow requires FTP, your system should enforce FTPS for FTP login for all App Service applications and functions.

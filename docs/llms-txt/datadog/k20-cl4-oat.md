@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # S3 buckets should have 'MFA Delete' enabled
- 
+
 ## Description{% #description %}
 
 Enabling `MFA Delete` on S3 buckets requires two forms of authentication whenever there is an attempt to change the versioning state or delete an object version. This additional layer of security is crucial in protecting against unauthorized or accidental deletions.

@@ -1,0 +1,28 @@
+# Source: https://docs.ox.security/api-documentation/api-reference/api--workflow-policy.md
+
+# Workflow Policy
+
+- [Queries](/api-documentation/api-reference/api--workflow-policy/queries.md)
+- [getPipelineApplications](/api-documentation/api-reference/api--workflow-policy/queries/get-pipeline-applications.md)
+- [getPipelineWorkflowApplications](/api-documentation/api-reference/api--workflow-policy/queries/get-pipeline-workflow-applications.md)
+- [Mutations](/api-documentation/api-reference/api--workflow-policy/mutations.md)
+- [updateWorkflow](/api-documentation/api-reference/api--workflow-policy/mutations/update-workflow.md)
+- [Types](/api-documentation/api-reference/api--workflow-policy/types.md)
+- [Objects](/api-documentation/api-reference/api--workflow-policy/types/objects.md)
+- [action](/api-documentation/api-reference/api--workflow-policy/types/objects/action.md)
+- [getPipelineApplicationsResponse](/api-documentation/api-reference/api--workflow-policy/types/objects/get-pipeline-applications-response.md)
+- [getPipelineWorkflowApplicationsResponse](/api-documentation/api-reference/api--workflow-policy/types/objects/get-pipeline-workflow-applications-response.md)
+- [pipelineWorkflowApplication](/api-documentation/api-reference/api--workflow-policy/types/objects/pipeline-workflow-application.md)
+- [trigger](/api-documentation/api-reference/api--workflow-policy/types/objects/trigger.md)
+- [wfApp](/api-documentation/api-reference/api--workflow-policy/types/objects/wf-app.md)
+- [wfPipelineSettings](/api-documentation/api-reference/api--workflow-policy/types/objects/wf-pipeline-settings.md)
+- [workflowPolicy](/api-documentation/api-reference/api--workflow-policy/types/objects/workflow-policy.md)
+- [Inputs](/api-documentation/api-reference/api--workflow-policy/types/inputs.md)
+- [appInput](/api-documentation/api-reference/api--workflow-policy/types/inputs/app-input.md)
+- [getPipelineApplicationsInput](/api-documentation/api-reference/api--workflow-policy/types/inputs/get-pipeline-applications-input.md)
+- [getPipelineWorkflowApplicationsInput](/api-documentation/api-reference/api--workflow-policy/types/inputs/get-pipeline-workflow-applications-input.md)
+- [pipelineSettingsInput](/api-documentation/api-reference/api--workflow-policy/types/inputs/pipeline-settings-input.md)
+- [updateWorkflowPolicyInput](/api-documentation/api-reference/api--workflow-policy/types/inputs/update-workflow-policy-input.md)
+- [Enums](/api-documentation/api-reference/api--workflow-policy/types/enums.md)
+- [monitorRepositories](/api-documentation/api-reference/api--workflow-policy/types/enums/monitor-repositories.md)
+- [workflowType](/api-documentation/api-reference/api--workflow-policy/types/enums/workflow-type.md)

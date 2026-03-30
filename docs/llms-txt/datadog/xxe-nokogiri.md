@@ -55,6 +55,5 @@ end
 doc.remove_external_subset
 doc.xpath("//token").text
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

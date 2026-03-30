@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Missing Referrer-Policy Security HTTP header
- 
+
 ## Description{% #description %}
 
 This publicly exposed API endpoint was found responding with HTML or browser-rendered content and lacks the Referrer-Policy header. Setting this header prevents leaking sensitive URL data (tokens, IDs, parameters) if requests go to external domains.

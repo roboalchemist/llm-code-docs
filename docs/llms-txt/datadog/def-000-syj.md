@@ -9,14 +9,14 @@ breadcrumbs: >-
 ---
 
 # Ensure the Default C Shell Umask is Set Correctly
- 
+
 ## Description{% #description %}
 
 To ensure the default umask for users of the C shell is set properly, add or correct the `umask` setting in `/etc/csh.cshrc` to read as follows:
 
 ```
 umask 027
-         
+
 ```
 
 ## Rationale{% #rationale %}

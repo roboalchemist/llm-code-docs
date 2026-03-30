@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Controller Manager API service should be bound to localhost
- 
+
 ## Description{% #description %}
 
 The Controller Manager service should not be bound to a non-loopback address. The Controller Manager API service which runs on port 10252/TCP by default is used for health and metrics information and is available without authentication or encryption.

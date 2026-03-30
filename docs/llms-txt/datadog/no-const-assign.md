@@ -56,6 +56,5 @@ for (const a in [1, 2, 3]) { // `a` is re-defined (not modified) on each loop st
     console.log(a);
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

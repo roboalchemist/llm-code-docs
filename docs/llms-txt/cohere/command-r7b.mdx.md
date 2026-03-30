@@ -1,0 +1,61 @@
+# Source: https://docs.cohere.com/docs/command-r7b.mdx
+
+***
+
+title: Cohere's Command R7B Model
+subtitle: Command R7B model details and specifications
+slug: docs/command-r7b
+hidden: false
+description: >-
+Command R7B is the smallest, fastest, and final model in our R family of
+enterprise-focused large language models. It excels at RAG, tool use, and
+agents.
+image:
+type: fileId
+value: 'https://files.buildwithfern.com/cohere.docs.buildwithfern.com/8ba30b46486ea7bfab24f3e8856d7411d1b745b26e9026abff3ee62af52ce268/assets/images/edb3e49-cohere_meta_image.jpg'
+keywords: 'generative AI, Cohere, large language models'
+createdAt: 'Wed Dec 18 2024 14:16:00 GMT+0000 (Coordinated Universal Time)'
+updatedAt: ''
+layout: overview
+----------------
+
+<ModelShowcase
+  model={{
+  name: 'Command R7B',
+  id: 'command-r7b-12-2024',
+  capabilities: [
+    Capability.Multilingual,
+    Capability.ToolUse,
+    Capability.Citation,
+    Capability.SafetyModes,
+    Capability.Citations,
+    Capability.StructuredOutputs,
+
+  ],
+  pricing: { input: 0.0375, output: 0.15 },
+  specs: {
+    contextWindow: '128,000',
+    maxOutputTokens: '4,000',
+    knowledgeCutoff: 'June 1, 2024',
+  },
+  endpoints: [
+    Endpoint.ChatV2,
+    Endpoint.ChatV1,
+    Endpoint.ChatCompletions,
+  ],
+}}
+/>
+
+## Description
+
+Command R7B is the smallest and fastest model in our R family of enterprise-focused [large language models](https://docs.cohere.com/v1/docs/the-cohere-platform#large-language-models-llms) (LLMs). With a context window of 128K and a compact architecture, Command R7B offers state-of-the-art performance across a variety of real-world tasks, and it is especially good at high throughput, latency-sensitive applications like chatbots and code assistants. What's more, it's small size also unlocks dramatically cheaper deployment infrastructure--such as consumer GPUs and CPUs--which means it can be used for on-device inference.
+
+Command R7B is available today on the Cohere Platform as well as accessible on [HuggingFace](https://huggingface.co/CohereForAI/c4ai-command-r7b-12-2024), or you can access it in the SDK with `command-r7b-12-2024`. For more information, check out our [dedicated blog post](https://cohere.com/blog/command-r7b).
+
+## What Can Command R7B Be Used For?
+
+Command R7B is excellent for:
+
+* RAG - [Retrieval Augmented Generation](https://docs.cohere.com/docs/retrieval-augmented-generation-rag) (RAG) refers to the practice of ‘grounding’ model outputs in external data sources, which can increase accuracy. Command R7B is exceptionally good at generating responses in conversational tasks, attending over long inputs, and extracting and manipulating numerical information in financial settings.
+* Tool-use - With [tool use](https://docs.cohere.com/docs/tool-use), Command models can be given tools such as search engines, APIs, vector databases, etc., which can expand their baseline functionality. Command R7B excels at tool use, exhibiting particular strength in using tools in real-world, diverse, and dynamic environments. In addition, Command R7B is good at avoiding unnecessarily calling tools, which is an important aspect of tool-use in practical applications.
+* Agents - As this is being written, [agents](https://docs.cohere.com/docs/multi-step-tool-use) are among the most exciting frontiers for large language models. Command R7B’s multistep tool use capabilities allow it to power fast and capable REACT agents. When set up as an internet-augmented research agent, for example, Command R7B ably completes tasks that require breaking down complex questions into subgoals, and also performs favorably in domains that utilize complex reasoning and active information seeking.

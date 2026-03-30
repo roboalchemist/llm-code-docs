@@ -40,11 +40,11 @@ The Datadog Tracer implements the [OpenTelemetry](https://docs.datadoghq.com/tra
    dependencies {
        implementation "com.datadoghq:dd-sdk-android-trace:x.x.x"
    }
+
    ```
 
 1. Initialize Datadog SDK with your application context, tracking consent, and the [Datadog client token](https://docs.datadoghq.com/account_management/api-app-keys/#client-tokens). For security reasons, you must use a client token: you cannot use [Datadog API keys](https://docs.datadoghq.com/account_management/api-app-keys/#api-keys) to configure Datadog SDK as they would be exposed client-side in the Android application APK byte code. For more information about setting up a client token, see the [client token documentation](https://docs.datadoghq.com/account_management/api-app-keys/#client-tokens):
-Important note for users on the following Datadog sites: app.datadoghq.com: 
-
+Important note for users on the following Datadog sites: app.datadoghq.com:
 
    {% tab title="Kotlin" %}
 
@@ -57,10 +57,11 @@ Important note for users on the following Datadog sites: app.datadoghq.com:
             env = "<ENV_NAME>",
             variant = "<APP_VARIANT_NAME>"
        ).build()
-   
+
        Datadog.initialize(this, configuration, trackingConsent)
      }
    }
+
    ```
 
    {% /tab %}
@@ -74,19 +75,16 @@ Important note for users on the following Datadog sites: app.datadoghq.com:
        super.onCreate();
        Configuration configuration = new Configuration.Builder("<CLIENT_TOKEN>", "<ENV_NAME>", "<APP_VARIANT_NAME>")
          .build();
-   
+
        Datadog.initialize(this, configuration, trackingConsent);
      }
    }
+
    ```
 
    {% /tab %}
 
-
-
-
-Important note for users on the following Datadog sites: app.datadoghq.eu: 
-
+Important note for users on the following Datadog sites: app.datadoghq.eu:
 
    {% tab title="Kotlin" %}
 
@@ -101,10 +99,11 @@ Important note for users on the following Datadog sites: app.datadoghq.eu:
        )
          .useSite(DatadogSite.EU1)
          .build()
-   
+
        Datadog.initialize(this, configuration, trackingConsent)
      }
    }
+
    ```
 
    {% /tab %}
@@ -119,17 +118,16 @@ Important note for users on the following Datadog sites: app.datadoghq.eu:
        Configuration configuration = new Configuration.Builder("<CLIENT_TOKEN>", "<ENV_NAME>", "<APP_VARIANT_NAME>")
            .useSite(DatadogSite.EU1)
            .build();
-   
+
        Datadog.initialize(this, configuration, trackingConsent);
      }
    }
+
    ```
 
    {% /tab %}
 
-
-Important note for users on the following Datadog sites: us3.datadoghq.com: 
-
+Important note for users on the following Datadog sites: us3.datadoghq.com:
 
    {% tab title="Kotlin" %}
 
@@ -144,10 +142,11 @@ Important note for users on the following Datadog sites: us3.datadoghq.com:
        )
          .useSite(DatadogSite.US3)
          .build()
-   
+
        Datadog.initialize(this, configuration, trackingConsent)
      }
    }
+
    ```
 
    {% /tab %}
@@ -162,17 +161,16 @@ Important note for users on the following Datadog sites: us3.datadoghq.com:
        Configuration configuration = new Configuration.Builder("<CLIENT_TOKEN>", "<ENV_NAME>", "<APP_VARIANT_NAME>")
            .useSite(DatadogSite.US3)
            .build();
-   
+
        Datadog.initialize(this, configuration, trackingConsent);
      }
    }
+
    ```
 
    {% /tab %}
 
-
-Important note for users on the following Datadog sites: us5.datadoghq.com: 
-
+Important note for users on the following Datadog sites: us5.datadoghq.com:
 
    {% tab title="Kotlin" %}
 
@@ -187,10 +185,11 @@ Important note for users on the following Datadog sites: us5.datadoghq.com:
        )
          .useSite(DatadogSite.US5)
          .build()
-   
+
        Datadog.initialize(this, configuration, trackingConsent)
      }
    }
+
    ```
 
    {% /tab %}
@@ -205,17 +204,16 @@ Important note for users on the following Datadog sites: us5.datadoghq.com:
        Configuration configuration = new Configuration.Builder("<CLIENT_TOKEN>", "<ENV_NAME>", "<APP_VARIANT_NAME>")
          .useSite(DatadogSite.US5)
          .build();
-   
+
        Datadog.initialize(this, configuration, trackingConsent);
      }
    }
+
    ```
 
    {% /tab %}
 
-
-Important note for users on the following Datadog sites: app.ddog-gov.com: 
-
+Important note for users on the following Datadog sites: app.ddog-gov.com:
 
    {% tab title="Kotlin" %}
 
@@ -230,10 +228,11 @@ Important note for users on the following Datadog sites: app.ddog-gov.com:
        )
          .useSite(DatadogSite.US1_FED)
          .build()
-   
+
        Datadog.initialize(this, configuration, trackingConsent)
      }
    }
+
    ```
 
    {% /tab %}
@@ -248,17 +247,16 @@ Important note for users on the following Datadog sites: app.ddog-gov.com:
        Configuration configuration = new Configuration.Builder("<CLIENT_TOKEN>", "<ENV_NAME>", "<APP_VARIANT_NAME>")
          .useSite(DatadogSite.US1_FED)
          .build();
-   
+
        Datadog.initialize(this, configuration, trackingConsent);
      }
    }
+
    ```
 
    {% /tab %}
 
-
-Important note for users on the following Datadog sites: ap1.datadoghq.com: 
-
+Important note for users on the following Datadog sites: ap1.datadoghq.com:
 
    {% tab title="Kotlin" %}
 
@@ -273,10 +271,11 @@ Important note for users on the following Datadog sites: ap1.datadoghq.com:
        )
          .useSite(DatadogSite.AP1)
          .build()
-   
+
        Datadog.initialize(this, configuration, trackingConsent)
      }
    }
+
    ```
 
    {% /tab %}
@@ -291,17 +290,16 @@ Important note for users on the following Datadog sites: ap1.datadoghq.com:
        Configuration configuration = new Configuration.Builder("<CLIENT_TOKEN>", "<ENV_NAME>", "<APP_VARIANT_NAME>")
          .useSite(DatadogSite.AP1)
          .build();
-   
+
        Datadog.initialize(this, configuration, trackingConsent);
      }
    }
+
    ```
 
    {% /tab %}
 
-
-Important note for users on the following Datadog sites: ap2.datadoghq.com: 
-
+Important note for users on the following Datadog sites: ap2.datadoghq.com:
 
    {% tab title="Kotlin" %}
 
@@ -316,10 +314,11 @@ Important note for users on the following Datadog sites: ap2.datadoghq.com:
        )
          .useSite(DatadogSite.AP2)
          .build()
-   
+
        Datadog.initialize(this, configuration, trackingConsent)
      }
    }
+
    ```
 
    {% /tab %}
@@ -334,26 +333,25 @@ Important note for users on the following Datadog sites: ap2.datadoghq.com:
        Configuration configuration = new Configuration.Builder("<CLIENT_TOKEN>", "<ENV_NAME>", "<APP_VARIANT_NAME>")
          .useSite(DatadogSite.AP2)
          .build();
-   
+
        Datadog.initialize(this, configuration, trackingConsent);
      }
    }
+
    ```
 
    {% /tab %}
-
-
 
 To be compliant with the GDPR regulation, the SDK requires the tracking consent value at initialization. The tracking consent can be one of the following values:
 
-   - `TrackingConsent.PENDING`: The SDK starts collecting and batching the data but does not send it to the data collection endpoint. The SDK waits for the new tracking consent value to decide what to do with the batched data.
-   - `TrackingConsent.GRANTED`: The SDK starts collecting the data and sends it to the data collection endpoint.
-   - `TrackingConsent.NOT_GRANTED`: The SDK does not collect any data. You will not be able to manually send any logs, traces, or RUM events.
+- `TrackingConsent.PENDING`: The SDK starts collecting and batching the data but does not send it to the data collection endpoint. The SDK waits for the new tracking consent value to decide what to do with the batched data.
+- `TrackingConsent.GRANTED`: The SDK starts collecting the data and sends it to the data collection endpoint.
+- `TrackingConsent.NOT_GRANTED`: The SDK does not collect any data. You will not be able to manually send any logs, traces, or RUM events.
 
 To update the tracking consent after the SDK is initialized, call: `Datadog.setTrackingConsent(<NEW CONSENT>)`. The SDK changes its behavior according to the new consent. For example, if the current tracking consent is `TrackingConsent.PENDING` and you update it to:
 
-   - `TrackingConsent.GRANTED`: The SDK sends all current batched data and future data directly to the data collection endpoint.
-   - `TrackingConsent.NOT_GRANTED`: The SDK wipes all batched data and does not collect any future data.
+- `TrackingConsent.GRANTED`: The SDK sends all current batched data and future data directly to the data collection endpoint.
+- `TrackingConsent.NOT_GRANTED`: The SDK wipes all batched data and does not collect any future data.
 
 **Note**: In the credentials required for initialization, your application variant name is also required, and should use your `BuildConfig.FLAVOR` value (or an empty string if you don't have variants). This is important because it enables the right ProGuard `mapping.txt` file to be automatically uploaded at build time to be able to view de-obfuscated RUM error stack traces. For more information see the [guide to uploading Android source mapping files](https://docs.datadoghq.com/real_user_monitoring/error_tracking/mobile/android/?tab=us#upload-your-mapping-file).
 
@@ -363,12 +361,14 @@ Use the utility method `isInitialized` to check if the SDK is properly initializ
    if (Datadog.isInitialized()) {
      // your code here
    }
+
    ```
 
 When writing your application, you can enable development logs by calling the `setVerbosity` method. All internal messages in the library with a priority equal to or higher than the provided level are then logged to Android's Logcat:
 
    ```kotlin
    Datadog.setVerbosity(Log.INFO)
+
    ```
 
 1. Configure and enable Trace feature:
@@ -378,6 +378,7 @@ When writing your application, you can enable development logs by calling the `s
    ```kotlin
    val traceConfig = TraceConfiguration.Builder().build()
    Trace.enable(traceConfig)
+
    ```
 
    {% /tab %}
@@ -387,11 +388,10 @@ When writing your application, you can enable development logs by calling the `s
    ```java
    TraceConfiguration traceConfig = new TraceConfiguration.Builder().build();
    Trace.enable(traceConfig);
+
    ```
 
    {% /tab %}
-
-
 
 1. Configure and register the `DatadogTracer`. You only need to do it once, usually in your application's `onCreate()` method:
 
@@ -400,11 +400,12 @@ When writing your application, you can enable development logs by calling the `s
    ```kotlin
    import com.datadog.android.trace.GlobalDatadogTracer
    import com.datadog.android.trace.DatadogTracing
-   
+
    GlobalDatadogTracer.registerIfAbsent(
        DatadogTracing.newTracerBuilder()
            .build()
    )
+
    ```
 
    {% /tab %}
@@ -414,16 +415,15 @@ When writing your application, you can enable development logs by calling the `s
    ```java
    import com.datadog.android.trace.GlobalDatadogTracer;
    import com.datadog.android.trace.DatadogTracing;
-   
+
    GlobalDatadogTracer.registerIfAbsent(
        DatadogTracing.newTracerBuilder(Datadog.getInstance())
            .build()
    );
+
    ```
 
    {% /tab %}
-
-
 
 1. (Optional) - Set the partial flush threshold to optimize the SDK's workload based on the number of spans your application generates. The library waits until the number of finished spans exceeds the threshold before writing them to disk. Setting this value to `1` writes each span as soon as it finishes.
 
@@ -433,6 +433,7 @@ When writing your application, you can enable development logs by calling the `s
    val tracer = DatadogTracing.newTracerBuilder()
        .withPartialFlushMinSpans(10)
        .build()
+
    ```
 
    {% /tab %}
@@ -443,11 +444,10 @@ When writing your application, you can enable development logs by calling the `s
    DatadogTracer tracer = DatadogTracing.newTracerBuilder(Datadog.getInstance())
        .withPartialFlushMinSpans(10)
        .build();
+
    ```
 
    {% /tab %}
-
-
 
 1. Start a custom span using the following method:
 
@@ -460,6 +460,7 @@ When writing your application, you can enable development logs by calling the `s
    // ...
    // Then when the span should be closed
    span.finish()
+
    ```
 
    {% /tab %}
@@ -473,11 +474,10 @@ When writing your application, you can enable development logs by calling the `s
    // ...
    // Then when the span should be closed
    span.finish();
+
    ```
 
    {% /tab %}
-
-
 
 1. To use scopes in synchronous calls:
 
@@ -494,7 +494,7 @@ When writing your application, you can enable development logs by calling the `s
            val childSpan = tracer.buildSpan("<SPAN_NAME2>").start()
            try {
                val innerScope = tracer.activateSpan(childSpan).use { innerScope ->
-   
+
                }
            } catch (e: Throwable) {
                childSpan.logThrowable(e)
@@ -504,6 +504,7 @@ When writing your application, you can enable development logs by calling the `s
        }
    } catch (e: Throwable) {
    }
+
    ```
 
    {% /tab %}
@@ -536,11 +537,10 @@ When writing your application, you can enable development logs by calling the `s
        }
    } catch (Throwable e) {
    }
+
    ```
 
    {% /tab %}
-
-
 
 1. To use scopes in asynchronous calls:
 
@@ -564,6 +564,7 @@ When writing your application, you can enable development logs by calling the `s
    } finally {
        span.finish()
    }
+
    ```
 
    {% /tab %}
@@ -593,11 +594,10 @@ When writing your application, you can enable development logs by calling the `s
    } finally {
        span.finish();
    }
+
    ```
 
    {% /tab %}
-
-
 
 1. (Optional) To manually distribute traces between your environments, for example, frontend to backend:
 
@@ -616,6 +616,7 @@ When writing your application, you can enable development logs by calling the `s
       }
       val request = tracedRequestBuilder.build()
       // Dispatch the request and finish the span after.
+
       ```
 
       {% /tab %}
@@ -639,6 +640,7 @@ When writing your application, you can enable development logs by calling the `s
       );
       Request request = tracedRequestBuilder.build();
       // Dispatch the request and finish the span after.
+
       ```
 
       {% /tab %}
@@ -652,11 +654,12 @@ When writing your application, you can enable development logs by calling the `s
               val headers = carrier.headers.toMultimap()
                   .map { it.key to it.value.joinToString(";") }
                   .toMap()
-      
+
               for ((key, value) in headers) classifier(key, value)
           }
-      
+
       val serverSpan = tracer.buildSpan("<SERVER_SPAN_NAME>").withParentContext(extractedContext).start()
+
       ```
 
       {% /tab %}
@@ -676,14 +679,15 @@ When writing your application, you can enable development logs by calling the `s
               request.headers().forEach(pair -> {
                 String key = pair.component1();
                 String value = pair.component2();
-      
+
                 classifier.invoke(key, value);
               });
-      
+
               return Unit.INSTANCE;
             }
           });
       DatadogSpan serverSpan = tracer.buildSpan("<SERVER_SPAN_NAME>").withParentContext(extractedContext).start();
+
       ```
 
       {% /tab %}
@@ -694,16 +698,19 @@ When writing your application, you can enable development logs by calling the `s
 
    ```kotlin
    span.setTag("http.url", url)
+
    ```
 
 1. (Optional) To mark a span as having an error, log it using corresponding methods:
 
    ```kotlin
    span.logThrowable(throwable)
+
    ```
 
    ```kotlin
    span.logErrorMessage(message)
+
    ```
 
 1. If you need to modify some attributes in your Span events before batching you can do so by providing an implementation of `SpanEventMapper` when enabling Trace feature:
@@ -715,6 +722,7 @@ When writing your application, you can enable development logs by calling the `s
      // ...
      .setEventMapper(spanEventMapper)
      .build()
+
    ```
 
    {% /tab %}
@@ -726,6 +734,7 @@ When writing your application, you can enable development logs by calling the `s
      // ...
      .setEventMapper(spanEventMapper)
      .build();
+
    ```
 
    {% /tab %}
@@ -743,6 +752,7 @@ import com.datadog.android.trace.api.span.DatadogSpan
 withinSpan("<SPAN_NAME>", parentSpan, activate) {
    // Your code here
 }
+
 ```
 
 ### Tracing SQLite transaction{% #tracing-sqlite-transaction %}
@@ -760,6 +770,7 @@ sqliteDatabase.transactionTraced("<SPAN_NAME>", isExclusive) { database ->
   // Decorate the Span
   setTag("<TAG_KEY>", "<TAG_VALUE>")
 }
+
 ```
 
 It behaves like the `SQLiteDatabase.transaction` method provided in the `core-ktx` AndroidX package and only requires a span operation name.
@@ -773,11 +784,14 @@ In addition to manual tracing, the Datadog SDK provides the following integratio
 If you want to trace your OkHttp requests, you can add the provided [Interceptor](https://square.github.io/okhttp/interceptors/) (which can be found in the `dd-sdk-android-okhttp` library) as follows:
 
 1. Add the Gradle dependency to the `dd-sdk-android-okhttp` library in the module-level `build.gradle` file:
+
    ```groovy
    dependencies {
      implementation "com.datadoghq:dd-sdk-android-okhttp:x.x.x"
    }
+
    ```
+
 1. Add `DatadogInterceptor` to your `OkHttpClient`:
    {% tab title="Kotlin" %}
 
@@ -790,6 +804,7 @@ If you want to trace your OkHttp requests, you can add the provided [Interceptor
          .build()
      )
      .build()
+
    ```
 
    {% /tab %}
@@ -805,6 +820,7 @@ If you want to trace your OkHttp requests, you can add the provided [Interceptor
          .build()
      )
      .build();
+
    ```
 
    {% /tab %}
@@ -831,6 +847,7 @@ val okHttpClient =  OkHttpClient.Builder()
       .build()
   )
   .build()
+
 ```
 
 {% /tab %}
@@ -851,6 +868,7 @@ OkHttpClient okHttpClient = new OkHttpClient.Builder()
       .build()
   )
   .build();
+
 ```
 
 {% /tab %}
@@ -866,6 +884,7 @@ val request = Request.Builder()
   .url(requestUrl)
   .parentSpan(parentSpan)
   .build()
+
 ```
 
 {% /tab %}
@@ -879,6 +898,7 @@ Request.Builder requestBuilder = new Request.Builder()
 Request request = OkHttpRequestExtKt
   .parentSpan(requestBuilder, parentSpan)
   .build();
+
 ```
 
 {% /tab %}

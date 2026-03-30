@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Post compromise shell detect
 ---
 
 # Post compromise shell detected
-Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190) 
+Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190)
 ## What happened{% #what-happened %}
 
 The process `{{ @process.comm }}` was executed with arguments indicating a post compromise shell being created for remote access.

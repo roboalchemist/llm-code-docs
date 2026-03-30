@@ -44,6 +44,5 @@ from django.views.generic.base import View  # use django.views
 ```python
 from django.views import View
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

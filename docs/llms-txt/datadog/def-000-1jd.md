@@ -12,7 +12,7 @@ breadcrumbs: >-
 ---
 
 # Users should be assigned the 'Service Account User' or 'Service Account Token Creator' roles at the Service Account level
- 
+
 ## Description{% #description %}
 
 Verify that users have the Service Account User (`iam.serviceAccountUser`) and Service Account Token Creator (`iam.serviceAccountTokenCreator`) roles for a specific service account rather than at the project level.

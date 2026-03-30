@@ -50,6 +50,5 @@ RUN apt-get install -y --no-install-recommends gcc
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install --no-install-recommends git
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install --no-install-recommends git
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

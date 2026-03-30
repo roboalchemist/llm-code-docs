@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # AWS Cloudtrail possible secret enumeration in multiple regions and secret retrieval
-Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1555-credentials-from-password-stores](https://attack.mitre.org/techniques/T1555) 
+Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1555-credentials-from-password-stores](https://attack.mitre.org/techniques/T1555)
 ## Goal{% #goal %}
 
 Detects when a user enumerates AWS Secrets Manager secrets across multiple regions and then retrieves secret values.

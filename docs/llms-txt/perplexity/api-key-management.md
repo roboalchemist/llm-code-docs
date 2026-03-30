@@ -1,12 +1,9 @@
-# Source: https://docs.perplexity.ai/docs/admin/api-key-management.md
-
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
-> Use this file to discover all available pages before exploring further.
 
 # API Key Management
 
-> Learn how to generate, revoke, and rotate API keys for secure access
+Source: https://docs.perplexity.ai/docs/admin/api-key-management
+
+Learn how to generate, revoke, and rotate API keys for secure access
 
 ## Overview
 
@@ -74,8 +71,8 @@ Create new API keys programmatically with optional naming for better organizatio
     --data '{
       "token_name": "Production API Key"
     }'
-  ```
 
+```
   ```python Python theme={null}
   import requests
 
@@ -92,9 +89,9 @@ Create new API keys programmatically with optional naming for better organizatio
   data = response.json()
   print(f"New API Key: {data['auth_token']}")
   print(f"Created at: {data['created_at_epoch_seconds']}")
-  ```
 
-  ```typescript TypeScript theme={null}
+```
+  ```typescript Typescript theme={null}
   const response = await fetch("https://api.perplexity.ai/generate_auth_token", {
     method: "POST",
     headers: {
@@ -109,19 +106,20 @@ Create new API keys programmatically with optional naming for better organizatio
   const data = await response.json();
   console.log(`New API Key: ${data.auth_token}`);
   console.log(`Created at: ${data.created_at_epoch_seconds}`);
-  ```
+
+```
 </CodeGroup>
 
 ### Response
 
-```json  theme={null}
+```json
 {
   "auth_token": "pplx-1234567890abcdef",
   "created_at_epoch_seconds": 1735689600,
   "token_name": "Production API Key"
 }
-```
 
+```
 <Note>
   Store the `auth_token` immediately and securely. This is the only time you'll be able to see the full token value.
 </Note>
@@ -141,8 +139,8 @@ Revoke API keys that are no longer needed or may have been compromised.
     --data '{
       "auth_token": "pplx-1234567890abcdef"
     }'
-  ```
 
+```
   ```python Python theme={null}
   import requests
 
@@ -158,9 +156,9 @@ Revoke API keys that are no longer needed or may have been compromised.
   response = requests.post(url, headers=headers, json=payload)
   if response.status_code == 200:
       print("API key successfully revoked")
-  ```
 
-  ```typescript TypeScript theme={null}
+```
+  ```typescript Typescript theme={null}
   const response = await fetch("https://api.perplexity.ai/revoke_auth_token", {
     method: "POST",
     headers: {
@@ -175,7 +173,8 @@ Revoke API keys that are no longer needed or may have been compromised.
   if (response.status === 200) {
     console.log("API key successfully revoked");
   }
-  ```
+
+```
 </CodeGroup>
 
 ### Response
@@ -192,7 +191,7 @@ Regular key rotation is a security best practice that minimizes the impact of po
   <Step title="Generate New Key">
     Create a new API key while your current key is still active:
 
-    ```python  theme={null}
+    ```python theme={null}
     # Generate new key
     new_key_response = requests.post(
         "https://api.perplexity.ai/generate_auth_token",
@@ -200,13 +199,14 @@ Regular key rotation is a security best practice that minimizes the impact of po
         json={"token_name": f"Rotated Key - {datetime.now().isoformat()}"}
     )
     new_key = new_key_response.json()["auth_token"]
-    ```
+
+```
   </Step>
 
   <Step title="Update Applications">
     Deploy the new key to your applications:
 
-    ```python  theme={null}
+    ```python theme={null}
     # Update environment variables or secrets management
     os.environ["PERPLEXITY_API_KEY"] = new_key
 
@@ -220,23 +220,25 @@ Regular key rotation is a security best practice that minimizes the impact of po
         }
     )
     assert test_response.status_code == 200
-    ```
+
+```
   </Step>
 
   <Step title="Monitor Transition">
     Ensure all services are using the new key before proceeding:
 
-    ```python  theme={null}
+    ```python theme={null}
     # Monitor your application logs to confirm
     # all instances are using the new key
     time.sleep(300)  # Wait for propagation
-    ```
+
+```
   </Step>
 
   <Step title="Revoke Old Key">
     Once confirmed, revoke the old key:
 
-    ```python  theme={null}
+    ```python theme={null}
     # Revoke old key
     revoke_response = requests.post(
         "https://api.perplexity.ai/revoke_auth_token",
@@ -245,7 +247,8 @@ Regular key rotation is a security best practice that minimizes the impact of po
     )
     assert revoke_response.status_code == 200
     print("Key rotation completed successfully")
-    ```
+
+```
   </Step>
 </Steps>
 
@@ -262,10 +265,10 @@ Here's a complete example of an automated key rotation script:
   import logging
 
   logging.basicConfig(level=logging.INFO)
-  logger = logging.getLogger(__name__)
+  logger = logging.getLogger(**name**)
 
   class PerplexityKeyRotator:
-      def __init__(self, current_key):
+      def **init**(self, current_key):
           self.base_url = "https://api.perplexity.ai"
           self.current_key = current_key
 
@@ -355,9 +358,9 @@ Here's a complete example of an automated key rotation script:
   rotator = PerplexityKeyRotator(os.environ["PERPLEXITY_API_KEY"])
   new_key = rotator.rotate_key(update_callback=update_environment)
   print(f"Rotation complete. New key: {new_key[:10]}...")
-  ```
 
-  ```typescript TypeScript theme={null}
+```
+  ```typescript Typescript theme={null}
   import fetch from 'node-fetch';
 
   class PerplexityKeyRotator {
@@ -475,12 +478,13 @@ Here's a complete example of an automated key rotation script:
   const rotator = new PerplexityKeyRotator(process.env.PERPLEXITY_API_KEY!);
   const newKey = await rotator.rotateKey(updateEnvironment);
   console.log(`Rotation complete. New key: ${newKey.substring(0, 10)}...`);
-  ```
+
+```
 </CodeGroup>
 
 ## Best Practices
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Use Environment Variables">
     Never hardcode API keys in your source code. Store them in environment variables or secure secret management systems.
 
@@ -513,11 +517,11 @@ Here's a complete example of an automated key rotation script:
 <Warning>
   **Never expose API keys in:**
 
-  * Client-side JavaScript code
-  * Mobile applications
-  * Public repositories
-  * Log files or error messages
-  * URLs or query parameters
+* Client-side JavaScript code
+* Mobile applications
+* Public repositories
+* Log files or error messages
+* URLs or query parameters
 </Warning>
 
 ### If a Key is Compromised

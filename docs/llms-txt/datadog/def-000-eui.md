@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS IAM user has administrative privileges
- 
+
 ## Description{% #description %}
 
 This rule ensures that none of your IAM users have highly privileged policies or administrative policies attached to them.

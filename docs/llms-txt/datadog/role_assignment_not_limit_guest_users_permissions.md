@@ -61,7 +61,7 @@ resource "azurerm_role_definition" "example2" {
   }
 
   assignable_scopes = [
-    data.azurerm_subscription.primary.id, 
+    data.azurerm_subscription.primary.id,
   ]
 }
 
@@ -88,7 +88,7 @@ resource "azurerm_role_definition" "example" {
   }
 
   assignable_scopes = [
-    data.azurerm_subscription.primary.id, 
+    data.azurerm_subscription.primary.id,
   ]
 }
 

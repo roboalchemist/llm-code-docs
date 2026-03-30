@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # AWS IAM group can update a login profile for an IAM user with administrative privileges
- 
+
 ## Description{% #description %}
 
 In AWS environments, some IAM permissions can lead to privilege escalation, where an identity can gain access to another more privileged identity. This rule identifies when a given group can use `iam:UpdateLoginProfile` to modify an existing login profile for an IAM user with administrative privileges. By creating a new login profile for another user, an adversary could log in as that user and leverage their privileges.

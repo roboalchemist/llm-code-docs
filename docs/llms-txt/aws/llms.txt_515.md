@@ -1,0 +1,220 @@
+# Source: https://docs.aws.amazon.com/lambda/latest/api/llms.txt
+
+# AWS Lambda API Reference
+
+> Overview
+
+- [Welcome](https://docs.aws.amazon.com/lambda/latest/api/welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/lambda/latest/api/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/lambda/latest/api/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/lambda/latest/api/API_Operations.html)
+
+- [AddLayerVersionPermission](https://docs.aws.amazon.com/lambda/latest/api/API_AddLayerVersionPermission.html): Adds permissions to the resource-based policy of a version of an AWS Lambda layer.
+- [AddPermission](https://docs.aws.amazon.com/lambda/latest/api/API_AddPermission.html): Grants a principal permission to use a function.
+- [CheckpointDurableExecution](https://docs.aws.amazon.com/lambda/latest/api/API_CheckpointDurableExecution.html): Saves the progress of a durable function execution during runtime.
+- [CreateAlias](https://docs.aws.amazon.com/lambda/latest/api/API_CreateAlias.html): Creates an alias for a Lambda function version.
+- [CreateCapacityProvider](https://docs.aws.amazon.com/lambda/latest/api/API_CreateCapacityProvider.html): Creates a capacity provider that manages compute resources for Lambda functions
+- [CreateCodeSigningConfig](https://docs.aws.amazon.com/lambda/latest/api/API_CreateCodeSigningConfig.html): Creates a code signing configuration.
+- [CreateEventSourceMapping](https://docs.aws.amazon.com/lambda/latest/api/API_CreateEventSourceMapping.html): Creates a mapping between an event source and an AWS Lambda function.
+- [CreateFunction](https://docs.aws.amazon.com/lambda/latest/api/API_CreateFunction.html): Creates a Lambda function.
+- [CreateFunctionUrlConfig](https://docs.aws.amazon.com/lambda/latest/api/API_CreateFunctionUrlConfig.html): Creates a Lambda function URL with the specified configuration parameters.
+- [DeleteAlias](https://docs.aws.amazon.com/lambda/latest/api/API_DeleteAlias.html): Deletes a Lambda function alias.
+- [DeleteCapacityProvider](https://docs.aws.amazon.com/lambda/latest/api/API_DeleteCapacityProvider.html): Deletes a capacity provider.
+- [DeleteCodeSigningConfig](https://docs.aws.amazon.com/lambda/latest/api/API_DeleteCodeSigningConfig.html): Deletes the code signing configuration.
+- [DeleteEventSourceMapping](https://docs.aws.amazon.com/lambda/latest/api/API_DeleteEventSourceMapping.html): Deletes an event source mapping.
+- [DeleteFunction](https://docs.aws.amazon.com/lambda/latest/api/API_DeleteFunction.html): Deletes a Lambda function.
+- [DeleteFunctionCodeSigningConfig](https://docs.aws.amazon.com/lambda/latest/api/API_DeleteFunctionCodeSigningConfig.html): Removes the code signing configuration from the function.
+- [DeleteFunctionConcurrency](https://docs.aws.amazon.com/lambda/latest/api/API_DeleteFunctionConcurrency.html): Removes a concurrent execution limit from a function.
+- [DeleteFunctionEventInvokeConfig](https://docs.aws.amazon.com/lambda/latest/api/API_DeleteFunctionEventInvokeConfig.html): Deletes the configuration for asynchronous invocation for a function, version, or alias.
+- [DeleteFunctionUrlConfig](https://docs.aws.amazon.com/lambda/latest/api/API_DeleteFunctionUrlConfig.html): Deletes a Lambda function URL.
+- [DeleteLayerVersion](https://docs.aws.amazon.com/lambda/latest/api/API_DeleteLayerVersion.html): Deletes a version of an AWS Lambda layer.
+- [DeleteProvisionedConcurrencyConfig](https://docs.aws.amazon.com/lambda/latest/api/API_DeleteProvisionedConcurrencyConfig.html): Deletes the provisioned concurrency configuration for a function.
+- [GetAccountSettings](https://docs.aws.amazon.com/lambda/latest/api/API_GetAccountSettings.html): Retrieves details about your account's limits and usage in an AWS Region.
+- [GetAlias](https://docs.aws.amazon.com/lambda/latest/api/API_GetAlias.html): Returns details about a Lambda function alias.
+- [GetCapacityProvider](https://docs.aws.amazon.com/lambda/latest/api/API_GetCapacityProvider.html): Retrieves information about a specific capacity provider, including its configuration, state, and associated resources.
+- [GetCodeSigningConfig](https://docs.aws.amazon.com/lambda/latest/api/API_GetCodeSigningConfig.html): Returns information about the specified code signing configuration.
+- [GetDurableExecution](https://docs.aws.amazon.com/lambda/latest/api/API_GetDurableExecution.html): Retrieves detailed information about a specific durable execution, including its current status, input payload, result or error information, and execution metadata such as start time and usage statistics.
+- [GetDurableExecutionHistory](https://docs.aws.amazon.com/lambda/latest/api/API_GetDurableExecutionHistory.html): Retrieves the execution history for a durable execution, showing all the steps, callbacks, and events that occurred during the execution.
+- [GetDurableExecutionState](https://docs.aws.amazon.com/lambda/latest/api/API_GetDurableExecutionState.html): Retrieves the current execution state required for the replay process during durable function execution.
+- [GetEventSourceMapping](https://docs.aws.amazon.com/lambda/latest/api/API_GetEventSourceMapping.html): Returns details about an event source mapping.
+- [GetFunction](https://docs.aws.amazon.com/lambda/latest/api/API_GetFunction.html): Returns information about the function or function version, with a link to download the deployment package that's valid for 10 minutes.
+- [GetFunctionCodeSigningConfig](https://docs.aws.amazon.com/lambda/latest/api/API_GetFunctionCodeSigningConfig.html): Returns the code signing configuration for the specified function.
+- [GetFunctionConcurrency](https://docs.aws.amazon.com/lambda/latest/api/API_GetFunctionConcurrency.html): Returns details about the reserved concurrency configuration for a function.
+- [GetFunctionConfiguration](https://docs.aws.amazon.com/lambda/latest/api/API_GetFunctionConfiguration.html): Returns the version-specific settings of a Lambda function or version.
+- [GetFunctionEventInvokeConfig](https://docs.aws.amazon.com/lambda/latest/api/API_GetFunctionEventInvokeConfig.html): Retrieves the configuration for asynchronous invocation for a function, version, or alias.
+- [GetFunctionRecursionConfig](https://docs.aws.amazon.com/lambda/latest/api/API_GetFunctionRecursionConfig.html): Returns your function's recursive loop detection configuration.
+- [GetFunctionScalingConfig](https://docs.aws.amazon.com/lambda/latest/api/API_GetFunctionScalingConfig.html): Retrieves the scaling configuration for a Lambda Managed Instances function.
+- [GetFunctionUrlConfig](https://docs.aws.amazon.com/lambda/latest/api/API_GetFunctionUrlConfig.html): Returns details about a Lambda function URL.
+- [GetLayerVersion](https://docs.aws.amazon.com/lambda/latest/api/API_GetLayerVersion.html): Returns information about a version of an AWS Lambda layer, with a link to download the layer archive that's valid for 10 minutes.
+- [GetLayerVersionByArn](https://docs.aws.amazon.com/lambda/latest/api/API_GetLayerVersionByArn.html): Returns information about a version of an AWS Lambda layer, with a link to download the layer archive that's valid for 10 minutes.
+- [GetLayerVersionPolicy](https://docs.aws.amazon.com/lambda/latest/api/API_GetLayerVersionPolicy.html): Returns the permission policy for a version of an AWS Lambda layer.
+- [GetPolicy](https://docs.aws.amazon.com/lambda/latest/api/API_GetPolicy.html): Returns the resource-based IAM policy for a function, version, or alias.
+- [GetProvisionedConcurrencyConfig](https://docs.aws.amazon.com/lambda/latest/api/API_GetProvisionedConcurrencyConfig.html): Retrieves the provisioned concurrency configuration for a function's alias or version.
+- [GetRuntimeManagementConfig](https://docs.aws.amazon.com/lambda/latest/api/API_GetRuntimeManagementConfig.html): Retrieves the runtime management configuration for a function's version.
+- [Invoke](https://docs.aws.amazon.com/lambda/latest/api/API_Invoke.html): Invokes a Lambda function.
+- [InvokeAsync](https://docs.aws.amazon.com/lambda/latest/api/API_InvokeAsync.html): This action has been deprecated.
+- [InvokeWithResponseStream](https://docs.aws.amazon.com/lambda/latest/api/API_InvokeWithResponseStream.html): Configure your Lambda functions to stream response payloads back to clients.
+- [ListAliases](https://docs.aws.amazon.com/lambda/latest/api/API_ListAliases.html): Returns a list of aliases for a Lambda function.
+- [ListCapacityProviders](https://docs.aws.amazon.com/lambda/latest/api/API_ListCapacityProviders.html): Returns a list of capacity providers in your account.
+- [ListCodeSigningConfigs](https://docs.aws.amazon.com/lambda/latest/api/API_ListCodeSigningConfigs.html): Returns a list of code signing configurations.
+- [ListDurableExecutionsByFunction](https://docs.aws.amazon.com/lambda/latest/api/API_ListDurableExecutionsByFunction.html): Returns a list of durable executions for a specified Lambda function.
+- [ListEventSourceMappings](https://docs.aws.amazon.com/lambda/latest/api/API_ListEventSourceMappings.html): Lists event source mappings.
+- [ListFunctionEventInvokeConfigs](https://docs.aws.amazon.com/lambda/latest/api/API_ListFunctionEventInvokeConfigs.html): Retrieves a list of configurations for asynchronous invocation for a function.
+- [ListFunctions](https://docs.aws.amazon.com/lambda/latest/api/API_ListFunctions.html): Returns a list of Lambda functions, with the version-specific configuration of each.
+- [ListFunctionsByCodeSigningConfig](https://docs.aws.amazon.com/lambda/latest/api/API_ListFunctionsByCodeSigningConfig.html): List the functions that use the specified code signing configuration.
+- [ListFunctionUrlConfigs](https://docs.aws.amazon.com/lambda/latest/api/API_ListFunctionUrlConfigs.html): Returns a list of Lambda function URLs for the specified function.
+- [ListFunctionVersionsByCapacityProvider](https://docs.aws.amazon.com/lambda/latest/api/API_ListFunctionVersionsByCapacityProvider.html): Returns a list of function versions that are configured to use a specific capacity provider.
+- [ListLayers](https://docs.aws.amazon.com/lambda/latest/api/API_ListLayers.html): Lists AWS Lambda layers and shows information about the latest version of each.
+- [ListLayerVersions](https://docs.aws.amazon.com/lambda/latest/api/API_ListLayerVersions.html): Lists the versions of an AWS Lambda layer.
+- [ListProvisionedConcurrencyConfigs](https://docs.aws.amazon.com/lambda/latest/api/API_ListProvisionedConcurrencyConfigs.html): Retrieves a list of provisioned concurrency configurations for a function.
+- [ListTags](https://docs.aws.amazon.com/lambda/latest/api/API_ListTags.html): Returns a function, event source mapping, or code signing configuration's tags.
+- [ListVersionsByFunction](https://docs.aws.amazon.com/lambda/latest/api/API_ListVersionsByFunction.html): Returns a list of versions, with the version-specific configuration of each.
+- [PublishLayerVersion](https://docs.aws.amazon.com/lambda/latest/api/API_PublishLayerVersion.html): Creates an AWS Lambda layer from a ZIP archive.
+- [PublishVersion](https://docs.aws.amazon.com/lambda/latest/api/API_PublishVersion.html): Creates a version from the current code and configuration of a function.
+- [PutFunctionCodeSigningConfig](https://docs.aws.amazon.com/lambda/latest/api/API_PutFunctionCodeSigningConfig.html): Update the code signing configuration for the function.
+- [PutFunctionConcurrency](https://docs.aws.amazon.com/lambda/latest/api/API_PutFunctionConcurrency.html): Sets the maximum number of simultaneous executions for a function, and reserves capacity for that concurrency level.
+- [PutFunctionEventInvokeConfig](https://docs.aws.amazon.com/lambda/latest/api/API_PutFunctionEventInvokeConfig.html): Configures options for asynchronous invocation on a function, version, or alias.
+- [PutFunctionRecursionConfig](https://docs.aws.amazon.com/lambda/latest/api/API_PutFunctionRecursionConfig.html): Sets your function's recursive loop detection configuration.
+- [PutFunctionScalingConfig](https://docs.aws.amazon.com/lambda/latest/api/API_PutFunctionScalingConfig.html): Sets the scaling configuration for a Lambda Managed Instances function.
+- [PutProvisionedConcurrencyConfig](https://docs.aws.amazon.com/lambda/latest/api/API_PutProvisionedConcurrencyConfig.html): Adds a provisioned concurrency configuration to a function's alias or version.
+- [PutRuntimeManagementConfig](https://docs.aws.amazon.com/lambda/latest/api/API_PutRuntimeManagementConfig.html): Sets the runtime management configuration for a function's version.
+- [RemoveLayerVersionPermission](https://docs.aws.amazon.com/lambda/latest/api/API_RemoveLayerVersionPermission.html): Removes a statement from the permissions policy for a version of an AWS Lambda layer.
+- [RemovePermission](https://docs.aws.amazon.com/lambda/latest/api/API_RemovePermission.html): Revokes function-use permission from an AWS service or another AWS account.
+- [SendDurableExecutionCallbackFailure](https://docs.aws.amazon.com/lambda/latest/api/API_SendDurableExecutionCallbackFailure.html): Sends a failure response for a callback operation in a durable execution.
+- [SendDurableExecutionCallbackHeartbeat](https://docs.aws.amazon.com/lambda/latest/api/API_SendDurableExecutionCallbackHeartbeat.html): Sends a heartbeat signal for a long-running callback operation to prevent timeout.
+- [SendDurableExecutionCallbackSuccess](https://docs.aws.amazon.com/lambda/latest/api/API_SendDurableExecutionCallbackSuccess.html): Sends a successful completion response for a callback operation in a durable execution.
+- [StopDurableExecution](https://docs.aws.amazon.com/lambda/latest/api/API_StopDurableExecution.html): Stops a running durable execution.
+- [TagResource](https://docs.aws.amazon.com/lambda/latest/api/API_TagResource.html): Adds tags to a function, event source mapping, or code signing configuration.
+- [UntagResource](https://docs.aws.amazon.com/lambda/latest/api/API_UntagResource.html): Removes tags from a function, event source mapping, or code signing configuration.
+- [UpdateAlias](https://docs.aws.amazon.com/lambda/latest/api/API_UpdateAlias.html): Updates the configuration of a Lambda function alias.
+- [UpdateCapacityProvider](https://docs.aws.amazon.com/lambda/latest/api/API_UpdateCapacityProvider.html): Updates the configuration of an existing capacity provider.
+- [UpdateCodeSigningConfig](https://docs.aws.amazon.com/lambda/latest/api/API_UpdateCodeSigningConfig.html): Update the code signing configuration.
+- [UpdateEventSourceMapping](https://docs.aws.amazon.com/lambda/latest/api/API_UpdateEventSourceMapping.html): Updates an event source mapping.
+- [UpdateFunctionCode](https://docs.aws.amazon.com/lambda/latest/api/API_UpdateFunctionCode.html): Updates a Lambda function's code.
+- [UpdateFunctionConfiguration](https://docs.aws.amazon.com/lambda/latest/api/API_UpdateFunctionConfiguration.html): Modify the version-specific settings of a Lambda function.
+- [UpdateFunctionEventInvokeConfig](https://docs.aws.amazon.com/lambda/latest/api/API_UpdateFunctionEventInvokeConfig.html): Updates the configuration for asynchronous invocation for a function, version, or alias.
+- [UpdateFunctionUrlConfig](https://docs.aws.amazon.com/lambda/latest/api/API_UpdateFunctionUrlConfig.html): Updates the configuration for a Lambda function URL.
+
+
+## [Data Types](https://docs.aws.amazon.com/lambda/latest/api/API_Types.html)
+
+- [AccountLimit](https://docs.aws.amazon.com/lambda/latest/api/API_AccountLimit.html): Limits that are related to concurrency and storage.
+- [AccountUsage](https://docs.aws.amazon.com/lambda/latest/api/API_AccountUsage.html): The number of functions and amount of storage in use.
+- [AliasConfiguration](https://docs.aws.amazon.com/lambda/latest/api/API_AliasConfiguration.html): Provides configuration information about a Lambda function alias.
+- [AliasRoutingConfiguration](https://docs.aws.amazon.com/lambda/latest/api/API_AliasRoutingConfiguration.html): The traffic-shifting configuration of a Lambda function alias.
+- [AllowedPublishers](https://docs.aws.amazon.com/lambda/latest/api/API_AllowedPublishers.html): List of signing profiles that can sign a code package.
+- [AmazonManagedKafkaEventSourceConfig](https://docs.aws.amazon.com/lambda/latest/api/API_AmazonManagedKafkaEventSourceConfig.html): Specific configuration settings for an Amazon Managed Streaming for Apache Kafka (Amazon MSK) event source.
+- [CallbackDetails](https://docs.aws.amazon.com/lambda/latest/api/API_CallbackDetails.html): Contains details about a callback operation in a durable execution, including the callback token and timeout configuration.
+- [CallbackFailedDetails](https://docs.aws.amazon.com/lambda/latest/api/API_CallbackFailedDetails.html): Contains details about a failed callback operation, including error information and the reason for failure.
+- [CallbackOptions](https://docs.aws.amazon.com/lambda/latest/api/API_CallbackOptions.html): Configuration options for callback operations in durable executions, including timeout settings and retry behavior.
+- [CallbackStartedDetails](https://docs.aws.amazon.com/lambda/latest/api/API_CallbackStartedDetails.html): Contains details about a callback operation that has started, including timing information and callback metadata.
+- [CallbackSucceededDetails](https://docs.aws.amazon.com/lambda/latest/api/API_CallbackSucceededDetails.html): Contains details about a successfully completed callback operation, including the result data and completion timestamp.
+- [CallbackTimedOutDetails](https://docs.aws.amazon.com/lambda/latest/api/API_CallbackTimedOutDetails.html): Contains details about a callback operation that timed out, including timeout duration and any partial results.
+- [CapacityProvider](https://docs.aws.amazon.com/lambda/latest/api/API_CapacityProvider.html): A capacity provider manages compute resources for Lambda functions.
+- [CapacityProviderConfig](https://docs.aws.amazon.com/lambda/latest/api/API_CapacityProviderConfig.html): Configuration for the capacity provider that manages compute resources for Lambda functions.
+- [CapacityProviderPermissionsConfig](https://docs.aws.amazon.com/lambda/latest/api/API_CapacityProviderPermissionsConfig.html): Configuration that specifies the permissions required for the capacity provider to manage compute resources.
+- [CapacityProviderScalingConfig](https://docs.aws.amazon.com/lambda/latest/api/API_CapacityProviderScalingConfig.html): Configuration that defines how the capacity provider scales compute instances based on demand and policies.
+- [CapacityProviderVpcConfig](https://docs.aws.amazon.com/lambda/latest/api/API_CapacityProviderVpcConfig.html): VPC configuration that specifies the network settings for compute instances managed by the capacity provider.
+- [ChainedInvokeDetails](https://docs.aws.amazon.com/lambda/latest/api/API_ChainedInvokeDetails.html): Contains details about a chained function invocation in a durable execution, including the target function and invocation parameters.
+- [ChainedInvokeFailedDetails](https://docs.aws.amazon.com/lambda/latest/api/API_ChainedInvokeFailedDetails.html): Contains details about a failed chained function invocation, including error information and failure reason.
+- [ChainedInvokeOptions](https://docs.aws.amazon.com/lambda/latest/api/API_ChainedInvokeOptions.html): Configuration options for chained function invocations in durable executions, including retry settings and timeout configuration.
+- [ChainedInvokeStartedDetails](https://docs.aws.amazon.com/lambda/latest/api/API_ChainedInvokeStartedDetails.html): Contains details about a chained function invocation that has started execution, including start time and execution context.
+- [ChainedInvokeStoppedDetails](https://docs.aws.amazon.com/lambda/latest/api/API_ChainedInvokeStoppedDetails.html): Details about a chained invocation that was stopped.
+- [ChainedInvokeSucceededDetails](https://docs.aws.amazon.com/lambda/latest/api/API_ChainedInvokeSucceededDetails.html): Details about a chained invocation that succeeded.
+- [ChainedInvokeTimedOutDetails](https://docs.aws.amazon.com/lambda/latest/api/API_ChainedInvokeTimedOutDetails.html): Details about a chained invocation that timed out.
+- [CheckpointUpdatedExecutionState](https://docs.aws.amazon.com/lambda/latest/api/API_CheckpointUpdatedExecutionState.html): Contains operations that have been updated since the last checkpoint, such as completed asynchronous work like timers or callbacks.
+- [CodeSigningConfig](https://docs.aws.amazon.com/lambda/latest/api/API_CodeSigningConfig.html): Details about a Code signing configuration.
+- [CodeSigningPolicies](https://docs.aws.amazon.com/lambda/latest/api/API_CodeSigningPolicies.html): Code signing configuration policies specify the validation failure action for signature mismatch or expiry.
+- [Concurrency](https://docs.aws.amazon.com/lambda/latest/api/API_Concurrency.html)
+- [ContextDetails](https://docs.aws.amazon.com/lambda/latest/api/API_ContextDetails.html): Details about a durable execution context.
+- [ContextFailedDetails](https://docs.aws.amazon.com/lambda/latest/api/API_ContextFailedDetails.html): Details about a context that failed.
+- [ContextOptions](https://docs.aws.amazon.com/lambda/latest/api/API_ContextOptions.html): Configuration options for a durable execution context.
+- [ContextStartedDetails](https://docs.aws.amazon.com/lambda/latest/api/API_ContextStartedDetails.html): Details about a context that has started.
+- [ContextSucceededDetails](https://docs.aws.amazon.com/lambda/latest/api/API_ContextSucceededDetails.html): Details about a context that succeeded.
+- [Cors](https://docs.aws.amazon.com/lambda/latest/api/API_Cors.html): The cross-origin resource sharing (CORS) settings for your Lambda function URL.
+- [DeadLetterConfig](https://docs.aws.amazon.com/lambda/latest/api/API_DeadLetterConfig.html): The dead-letter queue for failed asynchronous invocations.
+- [DestinationConfig](https://docs.aws.amazon.com/lambda/latest/api/API_DestinationConfig.html): A configuration object that specifies the destination of an event after Lambda processes it.
+- [DocumentDBEventSourceConfig](https://docs.aws.amazon.com/lambda/latest/api/API_DocumentDBEventSourceConfig.html): Specific configuration settings for a DocumentDB event source.
+- [DurableConfig](https://docs.aws.amazon.com/lambda/latest/api/API_DurableConfig.html): Configuration settings for durable functions, including execution timeout and retention period for execution history.
+- [Environment](https://docs.aws.amazon.com/lambda/latest/api/API_Environment.html): A function's environment variable settings.
+- [EnvironmentError](https://docs.aws.amazon.com/lambda/latest/api/API_EnvironmentError.html): Error messages for environment variables that couldn't be applied.
+- [EnvironmentResponse](https://docs.aws.amazon.com/lambda/latest/api/API_EnvironmentResponse.html): The results of an operation to update or read environment variables.
+- [EphemeralStorage](https://docs.aws.amazon.com/lambda/latest/api/API_EphemeralStorage.html): The size of the function's /tmp directory in MB.
+- [ErrorObject](https://docs.aws.amazon.com/lambda/latest/api/API_ErrorObject.html): An object that contains error information.
+- [Event](https://docs.aws.amazon.com/lambda/latest/api/API_Event.html): An event that occurred during the execution of a durable function.
+- [EventError](https://docs.aws.amazon.com/lambda/latest/api/API_EventError.html): Error information for an event.
+- [EventInput](https://docs.aws.amazon.com/lambda/latest/api/API_EventInput.html): Input information for an event.
+- [EventResult](https://docs.aws.amazon.com/lambda/latest/api/API_EventResult.html): Result information for an event.
+- [EventSourceMappingConfiguration](https://docs.aws.amazon.com/lambda/latest/api/API_EventSourceMappingConfiguration.html): A mapping between an AWS resource and a Lambda function.
+- [EventSourceMappingLoggingConfig](https://docs.aws.amazon.com/lambda/latest/api/API_EventSourceMappingLoggingConfig.html): (Amazon MSK, and self-managed Apache Kafka only) The logging configuration for your event source.
+- [EventSourceMappingMetricsConfig](https://docs.aws.amazon.com/lambda/latest/api/API_EventSourceMappingMetricsConfig.html): The metrics configuration for your event source.
+- [Execution](https://docs.aws.amazon.com/lambda/latest/api/API_Execution.html): Information about a durable execution.
+- [ExecutionDetails](https://docs.aws.amazon.com/lambda/latest/api/API_ExecutionDetails.html): Details about a durable execution.
+- [ExecutionFailedDetails](https://docs.aws.amazon.com/lambda/latest/api/API_ExecutionFailedDetails.html): Details about a failed durable execution.
+- [ExecutionStartedDetails](https://docs.aws.amazon.com/lambda/latest/api/API_ExecutionStartedDetails.html): Details about a durable execution that started.
+- [ExecutionStoppedDetails](https://docs.aws.amazon.com/lambda/latest/api/API_ExecutionStoppedDetails.html): Details about a durable execution that stopped.
+- [ExecutionSucceededDetails](https://docs.aws.amazon.com/lambda/latest/api/API_ExecutionSucceededDetails.html): Details about a durable execution that succeeded.
+- [ExecutionTimedOutDetails](https://docs.aws.amazon.com/lambda/latest/api/API_ExecutionTimedOutDetails.html): Details about a durable execution that timed out.
+- [FileSystemConfig](https://docs.aws.amazon.com/lambda/latest/api/API_FileSystemConfig.html): Details about the connection between a Lambda function and an Amazon EFS file system.
+- [Filter](https://docs.aws.amazon.com/lambda/latest/api/API_Filter.html): A structure within a FilterCriteria object that defines an event filtering pattern.
+- [FilterCriteria](https://docs.aws.amazon.com/lambda/latest/api/API_FilterCriteria.html): An object that contains the filters for an event source.
+- [FilterCriteriaError](https://docs.aws.amazon.com/lambda/latest/api/API_FilterCriteriaError.html): An object that contains details about an error related to filter criteria encryption.
+- [FunctionCode](https://docs.aws.amazon.com/lambda/latest/api/API_FunctionCode.html): The code for the Lambda function.
+- [FunctionCodeLocation](https://docs.aws.amazon.com/lambda/latest/api/API_FunctionCodeLocation.html): Details about a function's deployment package.
+- [FunctionConfiguration](https://docs.aws.amazon.com/lambda/latest/api/API_FunctionConfiguration.html): Details about a function's configuration.
+- [FunctionEventInvokeConfig](https://docs.aws.amazon.com/lambda/latest/api/API_FunctionEventInvokeConfig.html)
+- [FunctionScalingConfig](https://docs.aws.amazon.com/lambda/latest/api/API_FunctionScalingConfig.html): Configuration that defines the scaling behavior for a Lambda Managed Instances function, including the minimum and maximum number of execution environments that can be provisioned.
+- [FunctionUrlConfig](https://docs.aws.amazon.com/lambda/latest/api/API_FunctionUrlConfig.html): Details about a Lambda function URL.
+- [FunctionVersionsByCapacityProviderListItem](https://docs.aws.amazon.com/lambda/latest/api/API_FunctionVersionsByCapacityProviderListItem.html): Information about a function version that uses a specific capacity provider, including its ARN and current state.
+- [ImageConfig](https://docs.aws.amazon.com/lambda/latest/api/API_ImageConfig.html): Configuration values that override the container image Dockerfile settings.
+- [ImageConfigError](https://docs.aws.amazon.com/lambda/latest/api/API_ImageConfigError.html): Error response to GetFunctionConfiguration.
+- [ImageConfigResponse](https://docs.aws.amazon.com/lambda/latest/api/API_ImageConfigResponse.html): Response to a GetFunctionConfiguration request.
+- [InstanceRequirements](https://docs.aws.amazon.com/lambda/latest/api/API_InstanceRequirements.html): Specifications that define the characteristics and constraints for compute instances used by the capacity provider.
+- [InvocationCompletedDetails](https://docs.aws.amazon.com/lambda/latest/api/API_InvocationCompletedDetails.html): Details about a function invocation that completed.
+- [InvokeResponseStreamUpdate](https://docs.aws.amazon.com/lambda/latest/api/API_InvokeResponseStreamUpdate.html): A chunk of the streamed response payload.
+- [InvokeWithResponseStreamCompleteEvent](https://docs.aws.amazon.com/lambda/latest/api/API_InvokeWithResponseStreamCompleteEvent.html): A response confirming that the event stream is complete.
+- [InvokeWithResponseStreamResponseEvent](https://docs.aws.amazon.com/lambda/latest/api/API_InvokeWithResponseStreamResponseEvent.html): An object that includes a chunk of the response payload.
+- [KafkaSchemaRegistryAccessConfig](https://docs.aws.amazon.com/lambda/latest/api/API_KafkaSchemaRegistryAccessConfig.html): Specific access configuration settings that tell Lambda how to authenticate with your schema registry.
+- [KafkaSchemaRegistryConfig](https://docs.aws.amazon.com/lambda/latest/api/API_KafkaSchemaRegistryConfig.html): Specific configuration settings for a Kafka schema registry.
+- [KafkaSchemaValidationConfig](https://docs.aws.amazon.com/lambda/latest/api/API_KafkaSchemaValidationConfig.html): Specific schema validation configuration settings that tell Lambda the message attributes you want to validate and filter using your schema registry.
+- [LambdaManagedInstancesCapacityProviderConfig](https://docs.aws.amazon.com/lambda/latest/api/API_LambdaManagedInstancesCapacityProviderConfig.html): Configuration for Lambda-managed instances used by the capacity provider.
+- [Layer](https://docs.aws.amazon.com/lambda/latest/api/API_Layer.html): An AWS Lambda layer.
+- [LayersListItem](https://docs.aws.amazon.com/lambda/latest/api/API_LayersListItem.html): Details about an AWS Lambda layer.
+- [LayerVersionContentInput](https://docs.aws.amazon.com/lambda/latest/api/API_LayerVersionContentInput.html): A ZIP archive that contains the contents of an AWS Lambda layer.
+- [LayerVersionContentOutput](https://docs.aws.amazon.com/lambda/latest/api/API_LayerVersionContentOutput.html): Details about a version of an AWS Lambda layer.
+- [LayerVersionsListItem](https://docs.aws.amazon.com/lambda/latest/api/API_LayerVersionsListItem.html): Details about a version of an AWS Lambda layer.
+- [LoggingConfig](https://docs.aws.amazon.com/lambda/latest/api/API_LoggingConfig.html): The function's Amazon CloudWatch Logs configuration settings.
+- [OnFailure](https://docs.aws.amazon.com/lambda/latest/api/API_OnFailure.html): A destination for events that failed processing.
+- [OnSuccess](https://docs.aws.amazon.com/lambda/latest/api/API_OnSuccess.html): A destination for events that were processed successfully.
+- [Operation](https://docs.aws.amazon.com/lambda/latest/api/API_Operation.html): Information about an operation within a durable execution.
+- [OperationUpdate](https://docs.aws.amazon.com/lambda/latest/api/API_OperationUpdate.html): An update to be applied to an operation during checkpointing.
+- [ProvisionedConcurrencyConfigListItem](https://docs.aws.amazon.com/lambda/latest/api/API_ProvisionedConcurrencyConfigListItem.html): Details about the provisioned concurrency configuration for a function alias or version.
+- [ProvisionedPollerConfig](https://docs.aws.amazon.com/lambda/latest/api/API_ProvisionedPollerConfig.html): The provisioned mode configuration for the event source.
+- [RetryDetails](https://docs.aws.amazon.com/lambda/latest/api/API_RetryDetails.html): Information about retry attempts for an operation.
+- [RuntimeVersionConfig](https://docs.aws.amazon.com/lambda/latest/api/API_RuntimeVersionConfig.html): The ARN of the runtime and any errors that occured.
+- [RuntimeVersionError](https://docs.aws.amazon.com/lambda/latest/api/API_RuntimeVersionError.html): Any error returned when the runtime version information for the function could not be retrieved.
+- [ScalingConfig](https://docs.aws.amazon.com/lambda/latest/api/API_ScalingConfig.html): (Amazon SQS only) The scaling configuration for the event source.
+- [SelfManagedEventSource](https://docs.aws.amazon.com/lambda/latest/api/API_SelfManagedEventSource.html): The self-managed Apache Kafka cluster for your event source.
+- [SelfManagedKafkaEventSourceConfig](https://docs.aws.amazon.com/lambda/latest/api/API_SelfManagedKafkaEventSourceConfig.html): Specific configuration settings for a self-managed Apache Kafka event source.
+- [SnapStart](https://docs.aws.amazon.com/lambda/latest/api/API_SnapStart.html): The function's Lambda SnapStart setting.
+- [SnapStartResponse](https://docs.aws.amazon.com/lambda/latest/api/API_SnapStartResponse.html): The function's SnapStart setting.
+- [SourceAccessConfiguration](https://docs.aws.amazon.com/lambda/latest/api/API_SourceAccessConfiguration.html): To secure and define access to your event source, you can specify the authentication protocol, VPC components, or virtual host.
+- [StepDetails](https://docs.aws.amazon.com/lambda/latest/api/API_StepDetails.html): Details about a step operation.
+- [StepFailedDetails](https://docs.aws.amazon.com/lambda/latest/api/API_StepFailedDetails.html): Details about a step that failed.
+- [StepOptions](https://docs.aws.amazon.com/lambda/latest/api/API_StepOptions.html): Configuration options for a step operation.
+- [StepStartedDetails](https://docs.aws.amazon.com/lambda/latest/api/API_StepStartedDetails.html): Details about a step that has started.
+- [StepSucceededDetails](https://docs.aws.amazon.com/lambda/latest/api/API_StepSucceededDetails.html): Details about a step that succeeded.
+- [TagsError](https://docs.aws.amazon.com/lambda/latest/api/API_TagsError.html): An object that contains details about an error related to retrieving tags.
+- [TargetTrackingScalingPolicy](https://docs.aws.amazon.com/lambda/latest/api/API_TargetTrackingScalingPolicy.html): A scaling policy for the capacity provider that automatically adjusts capacity to maintain a target value for a specific metric.
+- [TenancyConfig](https://docs.aws.amazon.com/lambda/latest/api/API_TenancyConfig.html): Specifies the tenant isolation mode configuration for a Lambda function.
+- [TraceHeader](https://docs.aws.amazon.com/lambda/latest/api/API_TraceHeader.html): Contains trace headers for the Lambda durable execution.
+- [TracingConfig](https://docs.aws.amazon.com/lambda/latest/api/API_TracingConfig.html): The function's AWS X-Ray tracing configuration.
+- [TracingConfigResponse](https://docs.aws.amazon.com/lambda/latest/api/API_TracingConfigResponse.html): The function's AWS X-Ray tracing configuration.
+- [VpcConfig](https://docs.aws.amazon.com/lambda/latest/api/API_VpcConfig.html): The VPC security groups and subnets that are attached to a Lambda function.
+- [VpcConfigResponse](https://docs.aws.amazon.com/lambda/latest/api/API_VpcConfigResponse.html): The VPC security groups and subnets that are attached to a Lambda function.
+- [WaitCancelledDetails](https://docs.aws.amazon.com/lambda/latest/api/API_WaitCancelledDetails.html): Details about a wait operation that was cancelled.
+- [WaitDetails](https://docs.aws.amazon.com/lambda/latest/api/API_WaitDetails.html): Details about a wait operation.
+- [WaitOptions](https://docs.aws.amazon.com/lambda/latest/api/API_WaitOptions.html): Specifies how long to pause the durable execution.
+- [WaitStartedDetails](https://docs.aws.amazon.com/lambda/latest/api/API_WaitStartedDetails.html): Details about a wait operation that has started.
+- [WaitSucceededDetails](https://docs.aws.amazon.com/lambda/latest/api/API_WaitSucceededDetails.html): Details about a wait operation that succeeded.

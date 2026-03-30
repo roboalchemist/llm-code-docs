@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Set Interval For Counting Failed Password Attempts
- 
+
 ## Description{% #description %}
 
 Utilizing `pam_faillock.so`, the `fail_interval` directive configures the system to lock out an account after a number of incorrect login attempts within a specified time period. Ensure that the file `/etc/security/faillock.conf` contains the following entry: `fail_interval = <interval-in-seconds>` where `interval-in-seconds` is `900` or greater.
@@ -46,7 +46,7 @@ authselect enable-feature with-faillock
 
 authselect apply-changes -b
 else
-    
+
 conf_name=cac_faillock
 
 if [ ! -f /usr/share/pam-configs/"$conf_name" ]; then
@@ -93,7 +93,7 @@ if [ -f $FAILLOCK_CONF ] || [ "$SKIP_FAILLOCK_CHECK" = "true" ]; then
     else
         sed -i --follow-symlinks 's|^\s*\(fail_interval\s*=\s*\)\(\S\+\)|\1'"$var_accounts_passwords_pam_faillock_fail_interval"'|g' $FAILLOCK_CONF
     fi
-    
+
 else
     for pam_file in "${AUTH_FILES[@]}"
     do

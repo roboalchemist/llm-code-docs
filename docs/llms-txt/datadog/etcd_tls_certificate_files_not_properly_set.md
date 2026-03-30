@@ -65,7 +65,7 @@ spec:
         command: ["etcd"]
         args: ["--cert-file=/etc/env/file.crt", "--key-file=/etc/env/file2.key"]
       nodeSelector:
-        kubernetes.io/hostname: worker02  
+        kubernetes.io/hostname: worker02
     restartPolicy: OnFailure
 ```
 
@@ -93,7 +93,7 @@ spec:
         command: ["etcd", "--cert-file=/etc/env/file.crt", "--key-file=/etc/env/file2.key"]
         args: []
       nodeSelector:
-        kubernetes.io/hostname: worker02  
+        kubernetes.io/hostname: worker02
     restartPolicy: OnFailure
 ```
 
@@ -123,7 +123,7 @@ spec:
         command: ["etcd"]
         args: ["--key-file=/etc/env/file2.key"]
       nodeSelector:
-        kubernetes.io/hostname: worker02  
+        kubernetes.io/hostname: worker02
     restartPolicy: OnFailure
 ```
 
@@ -151,6 +151,6 @@ spec:
         command: ["etcd"]
         args: ["--cert-file=/etc/env/file.crt"]
       nodeSelector:
-        kubernetes.io/hostname: worker02  
+        kubernetes.io/hostname: worker02
     restartPolicy: OnFailure
 ```

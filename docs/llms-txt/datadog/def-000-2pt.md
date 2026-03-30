@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EC2 Auto Scaling group should use multiple Availability Zones
- 
+
 ## Description{% #description %}
 
 This check verifies if an Amazon EC2 Auto Scaling group extends across a minimum of two Availability Zones (AZs). Allowed values range from 2 to 6 AZs.

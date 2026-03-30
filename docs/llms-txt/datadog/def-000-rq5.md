@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # 'Allow storage account key access' setting for Azure Storage Accounts should be disabled
- 
+
 ## Description{% #description %}
 
 Disable shared key access for Azure Storage Accounts.

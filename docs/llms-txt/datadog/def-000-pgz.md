@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Auto Scaling group launch configuration should configure EC2 instances to require IMDSv2
- 
+
 ## Description{% #description %}
 
 This control verifies if an Amazon EC2 Auto Scaling launch configuration has version 2 of the Instance Metadata Service (IMDS) enforced. The control fails if the `http_tokens` field in the `metadata_options` settings is not set to `required`.

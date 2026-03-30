@@ -1,15 +1,11 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react_perf/jsx-no-new-array-as-prop.md
 
----
-url: /docs/guide/usage/linter/rules/react_perf/jsx-no-new-array-as-prop.md
----
-
-### What it does
+## What it does
 
 Prevent Arrays that are local to the current method from being used
 as values of JSX props.
 
-### Why is this bad?
+## Why is this bad?
 
 Using locally defined Arrays as values for props can lead to unintentional
 re-renders and performance issues. Every time the parent component renders,
@@ -17,7 +13,7 @@ a new instance of the Array is created, causing unnecessary re-renders of
 child components. This also leads to harder-to-maintain code as the
 component's props are not passed consistently.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

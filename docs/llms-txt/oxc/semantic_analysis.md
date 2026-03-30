@@ -1,10 +1,6 @@
 # Source: https://oxc.rs/docs/learn/parser_in_rust/semantic_analysis.md
 
----
-url: /docs/learn/parser_in_rust/semantic_analysis.md
----
-
-# Semantic Analysis
+## Semantic Analysis
 
 Semantic analysis is the process of checking whether our source code is correct or not.
 We need to check against all the "Early Error" rules in the ECMAScript specification.
@@ -13,7 +9,7 @@ We need to check against all the "Early Error" rules in the ECMAScript specifica
 
 For grammar contexts such as `[Yield]` or `[Await]`, an error need to be raised when the grammar forbids them, for example:
 
-```
+```text
 BindingIdentifier[Yield, Await] :
   Identifier
   yield
@@ -38,7 +34,7 @@ async function* foo() {
 
 because `AsyncGeneratorDeclaration` has `[+Yield]` and `[+Await]` for `AsyncGeneratorBody`:
 
-```
+```text
 AsyncGeneratorBody :
   FunctionBody[+Yield, +Await]
 ```
@@ -64,7 +60,7 @@ pub(super) fn parse_identifier(p: &mut Parser, kind: JsSyntaxKind) -> ParsedSynt
 
 For declaration errors:
 
-```
+```text
 14.2.1 Static Semantics: Early Errors
 
 Block : { StatementList }
@@ -111,7 +107,7 @@ pub struct Scope {
     /// Function Declarations
     pub function: IndexMap<Atom, SymbolId, FxBuildHasher>,
 }
-```
+```text
 
 The scope tree can either be built inside the parser for performance reasons, or built-in a separate AST pass.
 
@@ -165,7 +161,7 @@ we may need to create a temporary scope and then drop it afterwards if it is not
 This is detailed in [cover grammar](/docs/learn/ecmascript/grammar.html#cover-grammar).
 :::
 
-### The Visitor Pattern
+## The Visitor Pattern
 
 If we decide to build the scope tree in another pass for simplicity,
 then every node in the AST need to be visited in depth-first preorder and build the scope tree.

@@ -359,7 +359,7 @@ The following steps walk you through adding annotations to the code to trace som
 
    ```python
    class NotesHelper:
-   
+
        @tracer.wrap(service="notes_helper")
        def long_running_process(self):
            time.sleep(.3)

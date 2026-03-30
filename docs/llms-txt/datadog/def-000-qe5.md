@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > RC scripts modified
 ---
 
 # RC scripts modified
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1037-boot-or-logon-initialization-scripts](https://attack.mitre.org/techniques/T1037) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1037-boot-or-logon-initialization-scripts](https://attack.mitre.org/techniques/T1037)
 ## What happened{% #what-happened %}
 
 The file `{{ @file.path }}` was modified by the process `{{ @process.comm }}`, potentially to establish persistence.

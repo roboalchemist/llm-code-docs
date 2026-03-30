@@ -70,6 +70,5 @@ foo = pd.DataFrame({'angles': [0, 3, 4],
                   index=['circle', 'triangle', 'rectangle'])
 baz = foo + 1
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

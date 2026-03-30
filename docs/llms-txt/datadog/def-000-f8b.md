@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable ypserv Service
 ---
 
 # Disable ypserv Service
- 
+
 ## Description{% #description %}
 
 The `ypserv` service, which allows the system to act as a client in a NIS or NIS+ domain, should be disabled. The `ypserv` service can be disabled with the following command:

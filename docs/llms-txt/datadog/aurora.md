@@ -306,17 +306,17 @@ Using the [Operator instructions in Kubernetes and Integrations](https://docs.da
          apiSecret:
            secretName: datadog-agent-secret
            keyName: api-key
-   
+
      features:
        clusterChecks:
          enabled: true
-   
+
      override:
        nodeAgent:
          image:
            name: agent
            tag: <AGENT_VERSION>
-   
+
        clusterAgent:
          extraConfd:
            configDataMap:
@@ -361,7 +361,7 @@ Using the [Operator instructions in Kubernetes and Integrations](https://docs.da
              aws:
                instance_endpoint: <AWS_INSTANCE_ENDPOINT>
                region: <AWS_REGION>
-   
+
    clusterChecksRunner:
      enabled: true
    ```

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Permissions on gshado
 ---
 
 # Verify Permissions on gshadow File
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/etc/gshadow`, run the command:

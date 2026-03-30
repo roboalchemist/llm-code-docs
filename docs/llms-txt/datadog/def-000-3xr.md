@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Amazon SES modification atte
 ---
 
 # Amazon SES modification attempt
-Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1496-resource-hijacking](https://attack.mitre.org/techniques/T1496) 
+Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1496-resource-hijacking](https://attack.mitre.org/techniques/T1496)
 ## Goal{% #goal %}
 
 Detect when the Amazon Simple Email Service (SES) has been modified. An attacker could modify the AWS Simple Email Service to propagate large scale phishing email campaigns.

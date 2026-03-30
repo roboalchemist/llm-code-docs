@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS Verified Access anomalous failed authentication attempts by IP
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1199-trusted-relationship](https://attack.mitre.org/techniques/T1199) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1199-trusted-relationship](https://attack.mitre.org/techniques/T1199)
 ## Goal{% #goal %}
 
 Detect when access is denied to an IP authenticating using AWS Verified Access.

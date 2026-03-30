@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-negation-in-equality-check.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-negation-in-equality-check.md
----
-
-### What it does
+## What it does
 
 Disallow negated expressions on the left of (in)equality checks.
 
-### Why is this bad?
+## Why is this bad?
 
 A negated expression on the left of an (in)equality check is likely a mistake from trying to negate the whole condition.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

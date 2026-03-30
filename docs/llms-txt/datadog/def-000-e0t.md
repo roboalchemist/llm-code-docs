@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # API Gateway stage REST API should have AWS X-Ray tracing enabled
- 
+
 ## Description{% #description %}
 
 This check verifies if active tracing is enabled for AWS X-Ray on your Amazon API Gateway REST API stages. Active tracing allows for quicker identification of performance issues in your infrastructure, which could potentially impact API availability. It also provides real-time metrics on user requests flowing through your API Gateway operations and connected services.

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Google Cloud SQL database mo
 ---
 
 # Google Cloud SQL database modified
-Classification:complianceTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1565-data-manipulation](https://attack.mitre.org/techniques/T1565) 
+Classification:complianceTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1565-data-manipulation](https://attack.mitre.org/techniques/T1565)
 ## Goal{% #goal %}
 
 Detect when a Google Cloud SQL database has been modified.

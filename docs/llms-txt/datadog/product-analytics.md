@@ -383,7 +383,7 @@ Error response.
 
 ### Code Example
 
-##### 
+#####
                   \## Event with account ID
 # Send a server-side event linked to an account.
 \# Curl commandcurl -X POST "https://browser-intake.ap1.datadoghq.com"https://browser-intake.ap2.datadoghq.com"https://browser-intake.datadoghq.eu"https://browser-intake.datadoghq.com"https://browser-intake.us3.datadoghq.com"https://browser-intake.us5.datadoghq.com/api/v2/prodlytics" \
@@ -464,8 +464,8 @@ EOF\## Simple event with user ID
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -525,7 +525,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comNot supported in the US1-FED region" DD_API_KEY="<DD_API_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Send server-side events returns "Request accepted for processing (always 202 empty JSON)." response
@@ -558,7 +558,7 @@ p api_instance.submit_product_analytics_event(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comNot supported in the US1-FED region" DD_API_KEY="<DD_API_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Send server-side events returns "Request accepted for processing (always 202 empty JSON)." response
@@ -566,47 +566,47 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.ProductAnalyticsServerSideEventItem{
-		Account: &datadogV2.ProductAnalyticsServerSideEventItemAccount{
-			Id: "account-67890",
-		},
-		Application: datadogV2.ProductAnalyticsServerSideEventItemApplication{
-			Id: "123abcde-123a-123b-1234-123456789abc",
-		},
-		Event: datadogV2.ProductAnalyticsServerSideEventItemEvent{
-			Name: "payment.processed",
-		},
-		Session: &datadogV2.ProductAnalyticsServerSideEventItemSession{
-			Id: "session-abcdef",
-		},
-		Type: datadogV2.PRODUCTANALYTICSSERVERSIDEEVENTITEMTYPE_SERVER,
-		Usr: &datadogV2.ProductAnalyticsServerSideEventItemUsr{
-			Id: "user-12345",
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewProductAnalyticsApi(apiClient)
-	resp, r, err := api.SubmitProductAnalyticsEvent(ctx, body)
+    body := datadogV2.ProductAnalyticsServerSideEventItem{
+        Account: &datadogV2.ProductAnalyticsServerSideEventItemAccount{
+            Id: "account-67890",
+        },
+        Application: datadogV2.ProductAnalyticsServerSideEventItemApplication{
+            Id: "123abcde-123a-123b-1234-123456789abc",
+        },
+        Event: datadogV2.ProductAnalyticsServerSideEventItemEvent{
+            Name: "payment.processed",
+        },
+        Session: &datadogV2.ProductAnalyticsServerSideEventItemSession{
+            Id: "session-abcdef",
+        },
+        Type: datadogV2.PRODUCTANALYTICSSERVERSIDEEVENTITEMTYPE_SERVER,
+        Usr: &datadogV2.ProductAnalyticsServerSideEventItemUsr{
+            Id: "user-12345",
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewProductAnalyticsApi(apiClient)
+    resp, r, err := api.SubmitProductAnalyticsEvent(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProductAnalyticsApi.SubmitProductAnalyticsEvent`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProductAnalyticsApi.SubmitProductAnalyticsEvent`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ProductAnalyticsApi.SubmitProductAnalyticsEvent`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ProductAnalyticsApi.SubmitProductAnalyticsEvent`:\n%s\n", responseContent)
 }
 ```
 
@@ -614,7 +614,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comNot supported in the US1-FED region" DD_API_KEY="<DD_API_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Send server-side events returns "Request accepted for processing (always 202 empty JSON)."
@@ -664,7 +664,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comNot supported in the US1-FED region" DD_API_KEY="<DD_API_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Send server-side events returns "Request accepted for processing (always 202
@@ -712,7 +712,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comNot supported in the US1-FED region" DD_API_KEY="<DD_API_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

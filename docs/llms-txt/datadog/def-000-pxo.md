@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Server parameter 'log_checkpoints' should be enabled for PostgreSQL Database Server
- 
+
 ## Description{% #description %}
 
 Enable `log_checkpoints` on PostgreSQL Servers. Enabling `log_checkpoints` helps the PostgreSQL Database to log each checkpoint and generate query and error logs. Access to transaction logs is not supported. Query and error logs can be used to identify, troubleshoot, and repair configuration errors and sub-optimal performance.

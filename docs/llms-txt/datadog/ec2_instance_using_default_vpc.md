@@ -65,7 +65,7 @@ MyInstance:
 Resources:
   DefaultVPC:
     Type: AWS::EC2::Instance
-    Properties: 
+    Properties:
       ImageId: "ami-79fd7eee"
       KeyName: "testkey"
       SubnetId: !Ref PublicSubnetA22
@@ -150,7 +150,7 @@ Resources:
 Resources:
   DefaultVPC:
     Type: AWS::EC2::Instance
-    Properties: 
+    Properties:
       ImageId: "ami-79fd7eee"
       KeyName: "testkey"
       SubnetId: !Ref PublicSubnetA2

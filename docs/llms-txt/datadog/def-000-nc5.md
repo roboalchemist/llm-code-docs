@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Neptune DB clusters should have automated backups enabled
- 
+
 ## Description{% #description %}
 
 This control verifies whether automated backups are enabled for a Neptune DB cluster.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Logging and Audits should be configured for Load Balancers
- 
+
 ## Description{% #description %}
 
 Set up logging for your AWS Elastic Load Balancers (ELBs) to identify security issues.

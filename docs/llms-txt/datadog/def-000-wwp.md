@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Athena workgroups should have logging enabled
- 
+
 ## Description{% #description %}
 
 Amazon Athena workgroups should have logging enabled to track and monitor query activities. Logging provides audit records that help detect security breaches, investigate incidents, and comply with regulations. When enabled, Athena publishes query metrics to Amazon CloudWatch, enhancing accountability and transparency of query operations within the workgroup.

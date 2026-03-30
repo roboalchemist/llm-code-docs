@@ -44,7 +44,7 @@ class MyClass {
         }
 
         if(double.NaN == d) {
-            
+
         }
     }
 }
@@ -59,7 +59,7 @@ class MyClass {
         }
 
         if(d == double.NaN) {
-            
+
         }
     }
 }
@@ -76,11 +76,10 @@ class MyClass {
         }
 
         if(double.isNan(f)) {
-            
+
         }
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

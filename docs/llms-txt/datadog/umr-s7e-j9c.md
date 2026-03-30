@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # The container should restrict acquiring additional privileges via suid or sgid bits
-Classification:complianceFramework:cis-dockerControl:5.25 
+Classification:complianceFramework:cis-dockerControl:5.25
 ## Description{% #description %}
 
 You should restrict the container from acquiring additional privileges via SUID or SGID bits.

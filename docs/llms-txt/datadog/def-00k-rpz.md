@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Kubernetes API server secure port should be enabled
- 
+
 ## Description{% #description %}
 
 The secure port should not be disabled. The secure port is used to serve https with authentication and authorization. If you disable it, no https traffic is served and all traffic is served unencrypted.

@@ -1,17 +1,13 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-extraneous-class.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-extraneous-class.md
----
-
-### What it does
+## What it does
 
 This rule reports when a class has no non-static members, such as for a
 class used exclusively as a static namespace. This rule also reports
 classes that have only a constructor and no fields. Those classes can
 generally be replaced with a standalone function.
 
-### Why is this bad?
+## Why is this bad?
 
 Users who come from a OOP paradigm may wrap their utility functions in
 an extra class, instead of putting them at the top level of an
@@ -34,7 +30,7 @@ This rule also reports classes that have only a constructor and no
 fields. Those classes can generally be replaced with a standalone
 function.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -67,7 +63,7 @@ const isProduction = () => process.env.NODE_ENV === "production";
 
 This rule accepts a configuration object with the following properties:
 
-### allowConstructorOnly
+## allowConstructorOnly
 
 type: `boolean`
 
@@ -75,7 +71,7 @@ default: `false`
 
 Allow classes that only have a constructor.
 
-### allowEmpty
+## allowEmpty
 
 type: `boolean`
 
@@ -83,7 +79,7 @@ default: `false`
 
 Allow empty classes.
 
-### allowStaticOnly
+## allowStaticOnly
 
 type: `boolean`
 
@@ -91,7 +87,7 @@ default: `false`
 
 Allow classes with only static members.
 
-### allowWithDecorator
+## allowWithDecorator
 
 type: `boolean`
 

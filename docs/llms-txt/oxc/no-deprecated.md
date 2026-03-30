@@ -1,14 +1,10 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-deprecated.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-deprecated.md
----
-
-### What it does
+## What it does
 
 Disallow using code marked as `@deprecated`.
 
-### Why is this bad?
+## Why is this bad?
 
 The JSDoc `@deprecated` tag can be used to document some piece of code
 being deprecated. It's best to avoid using code marked as deprecated.
@@ -18,7 +14,7 @@ TypeScript recognizes the `@deprecated` tag, allowing editors to visually
 indicate deprecated code — usually with a strikethrough. However, TypeScript
 doesn't report type errors for deprecated code on its own.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -51,7 +47,7 @@ const url2 = new URL("/foo", "http://www.example.com");
 
 This rule accepts a configuration object with the following properties:
 
-### allow
+## allow
 
 type: `array`
 
@@ -60,7 +56,7 @@ default: `[]`
 An array of type or value specifiers that are allowed to be used even if deprecated.
 Use this to allow specific deprecated APIs that you intentionally want to continue using.
 
-#### allow\[n]
+### allow\[n]
 
 type: `string`
 
@@ -74,7 +70,7 @@ Supports four types of specifiers:
 "Promise"
 ```
 
-2. **File specifier**: Match types/values declared in local files
+1. **File specifier**: Match types/values declared in local files
 
 ```json
 { "from": "file", "name": "MyType" }
@@ -82,14 +78,14 @@ Supports four types of specifiers:
 { "from": "file", "name": "MyType", "path": "./types.ts" }
 ```
 
-3. **Lib specifier**: Match TypeScript built-in lib types
+1. **Lib specifier**: Match TypeScript built-in lib types
 
 ```json
 { "from": "lib", "name": "Promise" }
 { "from": "lib", "name": ["Promise", "PromiseLike"] }
 ```
 
-4. **Package specifier**: Match types/values from npm packages
+1. **Package specifier**: Match types/values from npm packages
 
 ```json
 { "from": "package", "name": "Observable", "package": "rxjs" }

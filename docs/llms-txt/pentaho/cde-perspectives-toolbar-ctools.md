@@ -1,0 +1,20 @@
+# Source: https://docs.pentaho.com/pba-ctools/cde-dashboard-overview/cde-perspectives-toolbar-ctools.md
+
+# Source: https://docs.pentaho.com/pba-ctools/9.3-ctools/cde-dashboard-overview/cde-perspectives-toolbar-ctools.md
+
+# Source: https://docs.pentaho.com/pba-ctools/10.2-ctools/cde-dashboard-overview/cde-perspectives-toolbar-ctools.md
+
+# CDE Perspectives toolbar
+
+The CDE **Perspectives** toolbar displays in the top-right of the window. Use this toolbar to switch between the Layout, Components, and Data Source perspectives, and to preview your dashboard.
+
+![CDE Perspectives toolbar](https://3599713356-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtirsJUGxXys7JEgE1Uzf%2Fuploads%2Fgit-blob-a8c26ba17fe4acedcac0c1b63a60075ff18a3615%2FcdePerspectivesBar.png?alt=media)
+
+Toolbar options include:
+
+| **Icon**                                                                                                                                                                                                                                                              | **Name**     | **Function**                                                                                                                                                                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><img src="https://3599713356-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtirsJUGxXys7JEgE1Uzf%2Fuploads%2Fgit-blob-8c61974e3a88403af128cd49ebee845cd37f7c47%2FlayoutPanelIcon.png?alt=media" alt="Layout perspective icon"></p>            | Layout       | Select to view the [Layout Perspective](https://docs.pentaho.com/pba-ctools/10.2-ctools/cde-dashboard-overview/community-dashboard-editor-cde-perspectives-ctools/layout-perspective) in the editor. Here you can define the layout of your dashboard.                       |
+| <p><img src="https://3599713356-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtirsJUGxXys7JEgE1Uzf%2Fuploads%2Fgit-blob-33acb4de756a25bc9cfea2ee9b6b218675289666%2FcomponentsPanelIcon.png?alt=media" alt="Components perspective icon"></p>    | Components   | Select to view the [Components Perspective](https://docs.pentaho.com/pba-ctools/10.2-ctools/cde-dashboard-overview/community-dashboard-editor-cde-perspectives-ctools/components-perspective-ctools-cde) in the editor. Here you can add components to your dashboard.       |
+| <p><img src="https://3599713356-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtirsJUGxXys7JEgE1Uzf%2Fuploads%2Fgit-blob-0ce24ff3c8cb0ee3afb4adfb67eea0eb6364f8af%2FdatasourcesPanelIcon.png?alt=media" alt="Data Sources perspective icon"></p> | Data Sources | Select to view the [Data Sources Perspective](https://docs.pentaho.com/pba-ctools/10.2-ctools/cde-dashboard-overview/community-dashboard-editor-cde-perspectives-ctools/data-sources-perspective-ctools-cde) in the editor. Here you can add data sources to your dashboard. |
+| <p><img src="https://3599713356-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtirsJUGxXys7JEgE1Uzf%2Fuploads%2Fgit-blob-f70a63afa2ebc6a6ad2677e5f2ffe97958d2cd85%2FpreviewDashboardIcon.png?alt=media" alt="Preview perspective icon"></p>      | Preview      | Select to test the look and feel as well as the behavior of your dashboard as you are working. When selected, your dashboard opens in the Preview window.                                                                                                                    |

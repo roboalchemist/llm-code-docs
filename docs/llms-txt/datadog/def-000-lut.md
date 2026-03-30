@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS IAM role has a trust relationship with a wildcard principal
- 
+
 ## Description{% #description %}
 
 This rule ensures that none of your IAM roles have a trust policy which includes a [wildcard](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#principal-anonymous) as a `Principal`. It is possible to specify a wildcard principal which permits any principal, including those outside your AWS organization, the ability to assume the role. It is strongly discouraged to use the wildcard principal in a trust policy unless there is a [Condition](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html) element to restrict access.

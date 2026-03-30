@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Modify the System Login Bann
 ---
 
 # Modify the System Login Banner
- 
+
 ## Description{% #description %}
 
 To configure the system login banner edit `/etc/issue`. Replace the default text with a message compliant with the local site policy or a legal disclaimer. The DoD required text is either:

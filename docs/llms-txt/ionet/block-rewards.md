@@ -1,0 +1,80 @@
+# Source: https://io.net/docs/guides/block-rewards/block-rewards.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://io.net/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Overview
+
+## Table of Contents
+
+* [What Are Block Rewards](/guides/block-rewards/block-rewards#what-are-block-rewards)
+* [Block Rewards Allocation](/guides/block-rewards/block-rewards#block-rewards-allocation)
+* [Block Reward Nomination Requirements](/guides/block-rewards/block-rewards#block-reward-nomination-requirements)
+* [Block Rewards Nomination Checklist](/guides/block-rewards/block-rewards#block-rewards-nomination-checklist)
+* [Wallets](/guides/block-rewards/block-rewards#wallets)
+
+### What Are Block Rewards?
+
+Block rewards are payments made to suppliers who provide their GPUs or CPUs to our network. This incentivizes supply-side network growth. These rewards are accrued hourly in ***\$IO***, following a predefined emission schedule. Rewards are potentially subject to slashing before distribution.
+
+### Block Rewards Allocation
+
+Block Rewards are credited to Suppliers on an hourly basis for making their GPU or CPU available on the *IOG Network*, thereby incentivizing supply-side network growth. This payout is in **IO Coin** and follows a predetermined emission schedule. The current allocation of block rewards from each hourly emission is:
+
+* 95% to GPUs
+* 5% to CPUs
+
+The ratio of rewards may be adjusted in the future to manage network growth.
+
+To learn more, see [IO Coin](https://internet-of-gpus.readme.io/docs/what-is-io-coin).
+
+### Initial Block Reward
+
+**The first Block Reward was created on June 25th 2024 12:00 UTC.**
+
+We will calculate and publish the initial block rewards, and block rewards use a claim mechanism that is similar to the *Ignition Program*. The first 7 days of block rewards were claimable together with *Ignition Reward Season 3*. Block Rewards for June 25th - June 30th will also be claimable.
+
+<Info>
+  IO Device Level staking/Minimum staking is now required for Block Rewards. To learn more about staking, see [IO Staking](/docs/io-staking).
+</Info>
+
+*IOG Foundation* provides emission rewards to incentivize the correct growth of the IO ecosystem. To better align with *Ignition Reward Season 3*, the *IOG Foundation* has not requested io.net to cap the amount of devices eligible for block rewards. In the future, the *IOG Foundation* will monitor the reward distribution and may potentially cap the amount of devices eligible for the top percentage of nodes. A device cap is used to increase the alignment of the network's structure.
+
+### Block Reward Nomination Requirements
+
+The requirements below must be met to be nominated for a Block Reward:
+
+* Device *Uptime* must be green for the past **5 hours**.
+* The minimum stake for the device must be met. To learn more about staking, see [IO Staking](/guides/staking/io-staking).
+* The account holder for the device must have a valid Solana wallet.
+* The device’s status is **NOT** terminated or unsupported.
+* The device’s hardware multiplier is greater than **0**.
+* The device’s connectivity tier is greater than **0**.
+
+<Info>
+  When a block is about to close, we test your device for *Uptime* and *PoW* again.
+</Info>
+
+### Block Rewards Nomination Checklist
+
+Click the caret on the right side of the status row (**Eligible** in the example) to open the **Block Rewards Nomination Checklist**. Each step of the verification status is displayed, with a green or red check that indicates success or failure. The checklist displays the **current status** of the device's eligibility for a block reward. In the example case below, if a new block was opening, this device would be eligible.
+
+The **Block Rewards Nomination Checklist** is designed to offer total transparency into the Block Reward nomination process.
+
+<Frame>
+    <img src="https://mintcdn.com/ionet-cca8037f/TfxJXBgQCsMMTJrc/images/docs/060293cb709817bcee7999d0fd8baa661fbe02fccd791f73b1b1a75a94ee2015-image.png?fit=max&auto=format&n=TfxJXBgQCsMMTJrc&q=85&s=a048f4e939603676978a7f3ac4720779" alt="" data-og-width="1850" width="1850" data-og-height="1236" height="1236" data-path="images/docs/060293cb709817bcee7999d0fd8baa661fbe02fccd791f73b1b1a75a94ee2015-image.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ionet-cca8037f/TfxJXBgQCsMMTJrc/images/docs/060293cb709817bcee7999d0fd8baa661fbe02fccd791f73b1b1a75a94ee2015-image.png?w=280&fit=max&auto=format&n=TfxJXBgQCsMMTJrc&q=85&s=da432ddc871abe9c8714473ee5f06851 280w, https://mintcdn.com/ionet-cca8037f/TfxJXBgQCsMMTJrc/images/docs/060293cb709817bcee7999d0fd8baa661fbe02fccd791f73b1b1a75a94ee2015-image.png?w=560&fit=max&auto=format&n=TfxJXBgQCsMMTJrc&q=85&s=dc6ea0a3115a6931e2af7f83bb387da5 560w, https://mintcdn.com/ionet-cca8037f/TfxJXBgQCsMMTJrc/images/docs/060293cb709817bcee7999d0fd8baa661fbe02fccd791f73b1b1a75a94ee2015-image.png?w=840&fit=max&auto=format&n=TfxJXBgQCsMMTJrc&q=85&s=4147fc5012eff0c2d9b766d7e136f85f 840w, https://mintcdn.com/ionet-cca8037f/TfxJXBgQCsMMTJrc/images/docs/060293cb709817bcee7999d0fd8baa661fbe02fccd791f73b1b1a75a94ee2015-image.png?w=1100&fit=max&auto=format&n=TfxJXBgQCsMMTJrc&q=85&s=eb45566b243f1a683c8d882abd15e7dc 1100w, https://mintcdn.com/ionet-cca8037f/TfxJXBgQCsMMTJrc/images/docs/060293cb709817bcee7999d0fd8baa661fbe02fccd791f73b1b1a75a94ee2015-image.png?w=1650&fit=max&auto=format&n=TfxJXBgQCsMMTJrc&q=85&s=a764110bfb8c9a1cd05a5ec4492bbdaa 1650w, https://mintcdn.com/ionet-cca8037f/TfxJXBgQCsMMTJrc/images/docs/060293cb709817bcee7999d0fd8baa661fbe02fccd791f73b1b1a75a94ee2015-image.png?w=2500&fit=max&auto=format&n=TfxJXBgQCsMMTJrc&q=85&s=0a0041b980e6e6f5f5b4f9c42c25e15f 2500w" />
+</Frame>
+
+**Device Limitations**
+
+* M3 devices with 8GB memory can be configured by users for higher memory. The minimum configuration should be 16GB of memory.
+* As of July, 5th, we removed Block Reward eligibility for Threadrippers. This is due to reports that malicious actors tried to inject Ryzen Threadripper devices into Block Rewards. We will reevaluate this and restore this option in the future.
+
+### Wallets
+
+Wallets with *Exchange Deposit Addresses* (Custodial wallets) are not supported. To collect Block Rewards, worker earnings, or seasonal events, connect a *Web3 wallet* (Self-Custodial wallet) in your ***Account Settings***. Exchange Deposit Addresses are not supported because airdrop claims require a smart contract interaction.
+
+<Warning>
+  We do not support Exchange Deposit Addresses (Custodial wallets) for Block Rewards. If you connect a wallet with an Exchange Deposit Address to your account in ***Account Settings***, you will not be able to claim Block Rewards, seasonal events, nor worker earnings. If this is the case, please change it to a Self-Custodial wallet as soon as possible.
+</Warning>

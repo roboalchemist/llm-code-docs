@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify No netrc Files Exist
 ---
 
 # Verify No netrc Files Exist
- 
+
 ## Description{% #description %}
 
 The `.netrc` files contain login information used to auto-login into FTP servers and reside in the user's home directory. These files may contain unencrypted passwords to remote FTP servers making them susceptible to access by unauthorized users and should not be used. Any `.netrc` files should be removed.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The admin.conf file should have permissions of 644 or more restrictive
-Classification:complianceFramework:cis-kubernetesControl:1.1.13 
+Classification:complianceFramework:cis-kubernetesControl:1.1.13
 ## Description{% #description %}
 
 Ensure that the `admin.conf` file has permissions of 644 or more restrictive.

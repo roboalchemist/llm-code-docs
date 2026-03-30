@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # A Kubernetes user attempted to perform a high number of actions that were denied
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1613-container-and-resource-discovery](https://attack.mitre.org/techniques/T1613) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1613-container-and-resource-discovery](https://attack.mitre.org/techniques/T1613)
 ## Goal{% #goal %}
 
 Identify when a Kubernetes user attempts to perform a high number of actions that are denied in a short amount of time.

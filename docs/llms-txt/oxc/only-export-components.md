@@ -1,10 +1,6 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/only-export-components.md
 
----
-url: /docs/guide/usage/linter/rules/react/only-export-components.md
----
-
-### What it does
+## What it does
 
 Ensures that modules only **export React components (and related HMR-safe items)** so
 that Fast Refresh (a.k.a. hot reloading) can safely preserve component state.
@@ -14,7 +10,7 @@ Concretely, it validates the shape of your module’s exports and common entrypo
 
 This rule is based on the rule from `eslint-plugin-react-refresh`.
 
-### Why is this bad?
+## Why is this bad?
 
 Fast Refresh can only reliably retain state if a module exports components and
 avoids patterns that confuse the refresh runtime. Problematic patterns (like
@@ -27,7 +23,7 @@ non-component exports in unsupported ways) can cause:
 
 By enforcing predictable exports, edits stay fast and stateful during development.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -84,7 +80,7 @@ createRoot(document.getElementById("root")).render(<App />);
 
 This rule accepts a configuration object with the following properties:
 
-### allowConstantExport
+## allowConstantExport
 
 type: `boolean`
 
@@ -101,7 +97,7 @@ export const VERSION = "3";
 export const Foo = () => null;
 ```
 
-### allowExportNames
+## allowExportNames
 
 type: `string[]`
 
@@ -111,7 +107,7 @@ Treat specific named exports as HMR-safe (useful for frameworks that hot-replace
 certain exports). For example, in Remix:
 `{ "allowExportNames": ["meta", "links", "headers", "loader", "action"] }`
 
-### checkJS
+## checkJS
 
 type: `boolean`
 
@@ -120,7 +116,7 @@ default: `false`
 Check `.js` files that contain JSX (in addition to `.tsx`/`.jsx`). To reduce
 false positives, only files that import React are checked when this is enabled.
 
-### customHOCs
+## customHOCs
 
 type: `string[]`
 

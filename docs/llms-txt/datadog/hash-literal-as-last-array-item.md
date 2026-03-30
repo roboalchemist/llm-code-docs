@@ -48,6 +48,5 @@ To adhere to this rule and ensure good coding practices, always wrap hash litera
 ```ruby
 [1, 42, { foo: 99, bar: 96 }]
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

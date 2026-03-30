@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Route returns sensitive PII data without HTTPS
- 
+
 ## Description{% #description %}
 
 The API transmits sensitive personally identifiable information (PII) over a non encrypted channel.

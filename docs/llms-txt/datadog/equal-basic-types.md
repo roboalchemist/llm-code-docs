@@ -48,6 +48,5 @@ When comparing basic types (string, integer, float), we should always values of 
 a == 1
 a == b
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

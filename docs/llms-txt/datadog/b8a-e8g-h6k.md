@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The etcd service should be configured with TLS encryption
-Classification:complianceFramework:cis-kubernetesControl:2.1 
+Classification:complianceFramework:cis-kubernetesControl:2.1
 ## Description{% #description %}
 
 Configure TLS encryption for the etcd service.
@@ -33,7 +33,7 @@ Verify that the `--cert-file` and the `--key-file` arguments are set as appropri
 Follow the etcd service documentation and configure TLS encryption. Then, edit the etcd pod specification file `/etc/kubernetes/manifests/etcd.yaml` on the master node and set the below parameters:
 
 ```
---cert-file=</path/to/ca-file> 
+--cert-file=</path/to/ca-file>
 --key-file=</path/to/key-file>
 ```
 

@@ -51,7 +51,7 @@ By following these practices, you can enhance the clarity and maintainability of
 ```go
 func main () {
     functionTakesPointer(&*pt1)
-	functionTakesValue(*&pt1)
+    functionTakesValue(*&pt1)
 }
 ```
 
@@ -60,9 +60,8 @@ func main () {
 ```go
 func main () {
     functionTakesPointer(pt1)
-	functionTakesValue(pt1)
+    functionTakesValue(pt1)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

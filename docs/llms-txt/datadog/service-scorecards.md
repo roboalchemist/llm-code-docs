@@ -220,7 +220,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/scorecard/rules" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -238,8 +238,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a new rule returns "Created" response
@@ -247,40 +247,40 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreateRuleRequest{
-		Data: &datadogV2.CreateRuleRequestData{
-			Attributes: &datadogV2.RuleAttributes{
-				Enabled:       datadog.PtrBool(true),
-				Name:          datadog.PtrString("Example-Service-Scorecard"),
-				ScorecardName: datadog.PtrString("Observability Best Practices"),
-			},
-			Type: datadogV2.RULETYPE_RULE.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateScorecardRule", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceScorecardsApi(apiClient)
-	resp, r, err := api.CreateScorecardRule(ctx, body)
+    body := datadogV2.CreateRuleRequest{
+        Data: &datadogV2.CreateRuleRequestData{
+            Attributes: &datadogV2.RuleAttributes{
+                Enabled:       datadog.PtrBool(true),
+                Name:          datadog.PtrString("Example-Service-Scorecard"),
+                ScorecardName: datadog.PtrString("Observability Best Practices"),
+            },
+            Type: datadogV2.RULETYPE_RULE.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateScorecardRule", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceScorecardsApi(apiClient)
+    resp, r, err := api.CreateScorecardRule(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceScorecardsApi.CreateScorecardRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceScorecardsApi.CreateScorecardRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceScorecardsApi.CreateScorecardRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceScorecardsApi.CreateScorecardRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -288,7 +288,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a new rule returns "Created" response
@@ -337,7 +337,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -375,7 +375,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a new rule returns "Created" response
@@ -403,7 +403,7 @@ p api_instance.create_scorecard_rule(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a new rule returns "Created" response
@@ -442,7 +442,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -691,7 +691,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/scorecard/outcomes/batch" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -714,8 +714,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create outcomes batch returns "OK" response
@@ -723,48 +723,48 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "create_scorecard_rule" in the system
-	CreateScorecardRuleDataID := os.Getenv("CREATE_SCORECARD_RULE_DATA_ID")
+    // there is a valid "create_scorecard_rule" in the system
+    CreateScorecardRuleDataID := os.Getenv("CREATE_SCORECARD_RULE_DATA_ID")
 
-	body := datadogV2.OutcomesBatchRequest{
-		Data: &datadogV2.OutcomesBatchRequestData{
-			Attributes: &datadogV2.OutcomesBatchAttributes{
-				Results: []datadogV2.OutcomesBatchRequestItem{
-					{
-						Remarks:     datadog.PtrString(`See: <a href="https://app.datadoghq.com/services">Services</a>`),
-						RuleId:      CreateScorecardRuleDataID,
-						ServiceName: "my-service",
-						State:       datadogV2.STATE_PASS,
-					},
-				},
-			},
-			Type: datadogV2.OUTCOMESBATCHTYPE_BATCHED_OUTCOME.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateScorecardOutcomesBatch", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceScorecardsApi(apiClient)
-	resp, r, err := api.CreateScorecardOutcomesBatch(ctx, body)
+    body := datadogV2.OutcomesBatchRequest{
+        Data: &datadogV2.OutcomesBatchRequestData{
+            Attributes: &datadogV2.OutcomesBatchAttributes{
+                Results: []datadogV2.OutcomesBatchRequestItem{
+                    {
+                        Remarks:     datadog.PtrString(`See: <a href="https://app.datadoghq.com/services">Services</a>`),
+                        RuleId:      CreateScorecardRuleDataID,
+                        ServiceName: "my-service",
+                        State:       datadogV2.STATE_PASS,
+                    },
+                },
+            },
+            Type: datadogV2.OUTCOMESBATCHTYPE_BATCHED_OUTCOME.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateScorecardOutcomesBatch", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceScorecardsApi(apiClient)
+    resp, r, err := api.CreateScorecardOutcomesBatch(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceScorecardsApi.CreateScorecardOutcomesBatch`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceScorecardsApi.CreateScorecardOutcomesBatch`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceScorecardsApi.CreateScorecardOutcomesBatch`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceScorecardsApi.CreateScorecardOutcomesBatch`:\n%s\n", responseContent)
 }
 ```
 
@@ -772,7 +772,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create outcomes batch returns "OK" response
@@ -835,7 +835,7 @@ See: <a href="https://app.datadoghq.com/services">Services</a>
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -884,7 +884,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create outcomes batch returns "OK" response
@@ -920,7 +920,7 @@ p api_instance.create_scorecard_outcomes_batch(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create outcomes batch returns "OK" response
@@ -967,7 +967,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1191,7 +1191,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/scorecard/outcomes" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1214,8 +1214,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update Scorecard outcomes asynchronously returns "Accepted" response
@@ -1223,44 +1223,44 @@ EOF
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "create_scorecard_rule" in the system
-	CreateScorecardRuleDataID := os.Getenv("CREATE_SCORECARD_RULE_DATA_ID")
+    // there is a valid "create_scorecard_rule" in the system
+    CreateScorecardRuleDataID := os.Getenv("CREATE_SCORECARD_RULE_DATA_ID")
 
-	body := datadogV2.UpdateOutcomesAsyncRequest{
-		Data: &datadogV2.UpdateOutcomesAsyncRequestData{
-			Attributes: &datadogV2.UpdateOutcomesAsyncAttributes{
-				Results: []datadogV2.UpdateOutcomesAsyncRequestItem{
-					{
-						RuleId:          CreateScorecardRuleDataID,
-						EntityReference: "service:my-service",
-						Remarks:         datadog.PtrString(`See: <a href="https://app.datadoghq.com/services">Services</a>`),
-						State:           datadogV2.STATE_PASS,
-					},
-				},
-			},
-			Type: datadogV2.UPDATEOUTCOMESASYNCTYPE_BATCHED_OUTCOME.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateScorecardOutcomesAsync", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceScorecardsApi(apiClient)
-	r, err := api.UpdateScorecardOutcomesAsync(ctx, body)
+    body := datadogV2.UpdateOutcomesAsyncRequest{
+        Data: &datadogV2.UpdateOutcomesAsyncRequestData{
+            Attributes: &datadogV2.UpdateOutcomesAsyncAttributes{
+                Results: []datadogV2.UpdateOutcomesAsyncRequestItem{
+                    {
+                        RuleId:          CreateScorecardRuleDataID,
+                        EntityReference: "service:my-service",
+                        Remarks:         datadog.PtrString(`See: <a href="https://app.datadoghq.com/services">Services</a>`),
+                        State:           datadogV2.STATE_PASS,
+                    },
+                },
+            },
+            Type: datadogV2.UPDATEOUTCOMESASYNCTYPE_BATCHED_OUTCOME.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateScorecardOutcomesAsync", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceScorecardsApi(apiClient)
+    r, err := api.UpdateScorecardOutcomesAsync(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceScorecardsApi.UpdateScorecardOutcomesAsync`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceScorecardsApi.UpdateScorecardOutcomesAsync`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -1268,7 +1268,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update Scorecard outcomes asynchronously returns "Accepted" response
@@ -1329,7 +1329,7 @@ See: <a href="https://app.datadoghq.com/services">Services</a>
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1376,7 +1376,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update Scorecard outcomes asynchronously returns "Accepted" response
@@ -1412,7 +1412,7 @@ p api_instance.update_scorecard_outcomes_async(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update Scorecard outcomes asynchronously returns "Accepted" response
@@ -1460,7 +1460,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1706,13 +1706,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/scorecard/outcomes" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1735,7 +1735,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List all rule outcomes returns "OK" response
@@ -1752,7 +1752,7 @@ p api_instance.list_scorecard_outcomes()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List all rule outcomes returns "OK" response
@@ -1760,30 +1760,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListScorecardOutcomes", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceScorecardsApi(apiClient)
-	resp, r, err := api.ListScorecardOutcomes(ctx, *datadogV2.NewListScorecardOutcomesOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListScorecardOutcomes", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceScorecardsApi(apiClient)
+    resp, r, err := api.ListScorecardOutcomes(ctx, *datadogV2.NewListScorecardOutcomesOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceScorecardsApi.ListScorecardOutcomes`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceScorecardsApi.ListScorecardOutcomes`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceScorecardsApi.ListScorecardOutcomes`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceScorecardsApi.ListScorecardOutcomes`:\n%s\n", responseContent)
 }
 ```
 
@@ -1791,7 +1791,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List all rule outcomes returns "OK" response
@@ -1825,7 +1825,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List all rule outcomes returns "OK" response
@@ -1853,7 +1853,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2071,13 +2071,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/scorecard/rules" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2100,7 +2100,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List all rules returns "OK" response
@@ -2117,7 +2117,7 @@ p api_instance.list_scorecard_rules()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List all rules returns "OK" response
@@ -2125,30 +2125,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListScorecardRules", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceScorecardsApi(apiClient)
-	resp, r, err := api.ListScorecardRules(ctx, *datadogV2.NewListScorecardRulesOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListScorecardRules", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceScorecardsApi(apiClient)
+    resp, r, err := api.ListScorecardRules(ctx, *datadogV2.NewListScorecardRulesOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceScorecardsApi.ListScorecardRules`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceScorecardsApi.ListScorecardRules`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceScorecardsApi.ListScorecardRules`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceScorecardsApi.ListScorecardRules`:\n%s\n", responseContent)
 }
 ```
 
@@ -2156,7 +2156,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List all rules returns "OK" response
@@ -2190,7 +2190,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List all rules returns "OK" response
@@ -2218,7 +2218,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2385,12 +2385,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/scorecard/rules/${rule_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2417,7 +2417,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a rule returns "OK" response
@@ -2437,7 +2437,7 @@ api_instance.delete_scorecard_rule(CREATE_SCORECARD_RULE_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a rule returns "OK" response
@@ -2445,29 +2445,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "create_scorecard_rule" in the system
-	CreateScorecardRuleDataID := os.Getenv("CREATE_SCORECARD_RULE_DATA_ID")
+    // there is a valid "create_scorecard_rule" in the system
+    CreateScorecardRuleDataID := os.Getenv("CREATE_SCORECARD_RULE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteScorecardRule", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceScorecardsApi(apiClient)
-	r, err := api.DeleteScorecardRule(ctx, CreateScorecardRuleDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteScorecardRule", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceScorecardsApi(apiClient)
+    r, err := api.DeleteScorecardRule(ctx, CreateScorecardRuleDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceScorecardsApi.DeleteScorecardRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceScorecardsApi.DeleteScorecardRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -2475,7 +2475,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a rule returns "OK" response
@@ -2510,7 +2510,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a rule returns "OK" response
@@ -2539,7 +2539,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2792,7 +2792,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport rule_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/scorecard/rules/${rule_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2810,8 +2810,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update an existing rule returns "Rule updated successfully" response
@@ -2819,45 +2819,45 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "create_scorecard_rule" in the system
-	CreateScorecardRuleDataAttributesName := os.Getenv("CREATE_SCORECARD_RULE_DATA_ATTRIBUTES_NAME")
-	CreateScorecardRuleDataAttributesScorecardName := os.Getenv("CREATE_SCORECARD_RULE_DATA_ATTRIBUTES_SCORECARD_NAME")
-	CreateScorecardRuleDataID := os.Getenv("CREATE_SCORECARD_RULE_DATA_ID")
+    // there is a valid "create_scorecard_rule" in the system
+    CreateScorecardRuleDataAttributesName := os.Getenv("CREATE_SCORECARD_RULE_DATA_ATTRIBUTES_NAME")
+    CreateScorecardRuleDataAttributesScorecardName := os.Getenv("CREATE_SCORECARD_RULE_DATA_ATTRIBUTES_SCORECARD_NAME")
+    CreateScorecardRuleDataID := os.Getenv("CREATE_SCORECARD_RULE_DATA_ID")
 
-	body := datadogV2.UpdateRuleRequest{
-		Data: &datadogV2.UpdateRuleRequestData{
-			Attributes: &datadogV2.RuleAttributes{
-				Enabled:       datadog.PtrBool(true),
-				Name:          datadog.PtrString(CreateScorecardRuleDataAttributesName),
-				ScorecardName: datadog.PtrString(CreateScorecardRuleDataAttributesScorecardName),
-				Description:   datadog.PtrString("Updated description via test"),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateScorecardRule", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceScorecardsApi(apiClient)
-	resp, r, err := api.UpdateScorecardRule(ctx, CreateScorecardRuleDataID, body)
+    body := datadogV2.UpdateRuleRequest{
+        Data: &datadogV2.UpdateRuleRequestData{
+            Attributes: &datadogV2.RuleAttributes{
+                Enabled:       datadog.PtrBool(true),
+                Name:          datadog.PtrString(CreateScorecardRuleDataAttributesName),
+                ScorecardName: datadog.PtrString(CreateScorecardRuleDataAttributesScorecardName),
+                Description:   datadog.PtrString("Updated description via test"),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateScorecardRule", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceScorecardsApi(apiClient)
+    resp, r, err := api.UpdateScorecardRule(ctx, CreateScorecardRuleDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceScorecardsApi.UpdateScorecardRule`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceScorecardsApi.UpdateScorecardRule`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceScorecardsApi.UpdateScorecardRule`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceScorecardsApi.UpdateScorecardRule`:\n%s\n", responseContent)
 }
 ```
 
@@ -2865,7 +2865,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update an existing rule returns "Rule updated successfully" response
@@ -2921,7 +2921,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2964,7 +2964,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update an existing rule returns "Rule updated successfully" response
@@ -2997,7 +2997,7 @@ p api_instance.update_scorecard_rule(CREATE_SCORECARD_RULE_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update an existing rule returns "Rule updated successfully" response
@@ -3042,7 +3042,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

@@ -71,7 +71,7 @@ MyCacheCluster:
 Resources:
   ElasticacheCluster:
     Type: 'AWS::ElastiCache::CacheCluster'
-    Properties:    
+    Properties:
       Engine: memcached
       CacheNodeType: cache.t2.micro
       NumCacheNodes: '1'
@@ -115,7 +115,7 @@ Resources:
 Resources:
   ElasticacheCluster:
     Type: 'AWS::ElastiCache::CacheCluster'
-    Properties:    
+    Properties:
       Engine: memcached
       CacheNodeType: cache.t2.micro
       NumCacheNodes: '1'

@@ -1,0 +1,74 @@
+# Source: https://checklyhq.com/docs/platform/network-diagnostic-tools.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://checklyhq.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Network diagnostic tools
+
+When troubleshooting network issues like dropped packets or broken TCP handshakes you often require low-level visibility into what's happening on the network.
+
+That's where network diagnostic tools come in. They help you understand how data moves through a network and where things might be breaking down.
+
+Checkly provides:
+
+* **TCP dumps:** capture network traffic to inspect packet-level behavior
+* **Traceroute report:** trace the path your request takes across the internet
+* **ICMP monitors:** continuously monitor host reachability, latency, and packet loss
+
+Whether you're debugging a slow response or tracing a connection failure, these tools can help you get to the root of the problem.
+
+## TCP dumps
+
+TCP dumps give you a detailed look at what's happening at the packet level when a request fails. They capture the packets exchanged between Checkly and your target, letting you analyze things like:
+
+* Did the TCP handshake complete?
+* Was the TLS handshake successful?
+* Were packets dropped, delayed, or malformed?
+
+This level of visibility is especially helpful for diagnosing flaky networking behavior.
+
+### How to access
+
+<Note>
+  TCP dumps are currently only available for API checks.
+</Note>
+
+For checks that fail due to network errors (e.g. DNS resolution issues, TCP handshake failures, connection timeouts), you'll find a *Download PCAP* button in the **Network Diagnostics** section of the check results page. This gives you a `.pcap` file with the raw packet data from that request.
+
+You can open this file using tools like Wireshark to inspect each packet in detail.
+
+## Traceroute report
+
+Traceroute shows the path your request takes across the network and how each hop behaves. A report typically includes:
+
+* The sequence of network hops between Checkly and your target
+* Packet loss percentage per hop
+* Latency statistics (last, average, best, worst, standard deviation)
+
+This makes it especially useful for diagnosing:
+
+* Where along the route packets are being dropped
+* Which hops introduce unusual latency or instability
+
+### How to access
+
+<Note>
+  Traceroute is currently only available for API checks.
+</Note>
+
+On checks that fail due to network errors (e.g. DNS resolution issues, TCP handshake failures, connection timeouts), a traceroute report is displayed in the **Network Diagnostics** section of the check results page.
+The table shows each hop, its IP or hostname, along with metrics such as packet loss, latency, and jitter.
+
+## ICMP monitors
+
+[ICMP monitors](/detect/uptime-monitoring/icmp-monitors/overview) let you proactively detect network issues by continuously pinging a host. They measure round-trip latency and packet loss over time, making them useful for:
+
+* Verifying reachability of hosts that don't expose HTTP endpoints
+* Detecting network-level outages before they affect application-layer checks
+* Tracking latency and packet loss trends across regions
+
+Learn more about setting up ICMP monitors in the [ICMP monitor overview](/detect/uptime-monitoring/icmp-monitors/overview) and [configuration](/detect/uptime-monitoring/icmp-monitors/configuration) docs.
+
+
+Built with [Mintlify](https://mintlify.com).

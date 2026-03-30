@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Sudoers policy file modified
 ---
 
 # Sudoers policy file modified
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1548-abuse-elevation-control-mechanism](https://attack.mitre.org/techniques/T1548) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1548-abuse-elevation-control-mechanism](https://attack.mitre.org/techniques/T1548)
 ## What happened{% #what-happened %}
 
 The `sudoers` policy `{{ @file.path }}` was modified by `{{ @process.comm }}`, potentially to escalate privileges.

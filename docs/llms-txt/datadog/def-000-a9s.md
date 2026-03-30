@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Temporary AWS security credentials generated for user
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098)
 ## Goal{% #goal %}
 
 Detect when a set of temporary security credentials consisting of an access key ID, a secret access key, and a security token, are generated for a user.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS IAM role has a large permissions gap
- 
+
 ## Description{% #description %}
 
 To mitigate the impact of credential exposure or compromise, IAM policies should be scoped down to the least level of privilege needed to perform their responsibilities. This rule identifies when a role's policy's permissions are more broad than what is regularly used. Datadog considers a permissions gap to be large when the number of unused permissions is greater than 40% of the total permissions count.

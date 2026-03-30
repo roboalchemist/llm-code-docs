@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # VPCs should have interface endpoint for SSM Contacts
- 
+
 ## Description{% #description %}
 
 Virtual private clouds (VPCs) should have interface VPC endpoints configured for SSM Contacts to enable private access to SSM Contacts services. AWS PrivateLink enables customers to access services hosted on AWS while keeping all network traffic within the AWS network, which prevents traffic from service users from traversing the internet.

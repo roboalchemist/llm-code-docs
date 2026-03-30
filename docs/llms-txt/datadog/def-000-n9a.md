@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Modify the System Login Banner for Remote Connections
- 
+
 ## Description{% #description %}
 
 To configure the system login banner edit `/etc/issue.net`. Replace the default text with a message compliant with the local site policy or a legal disclaimer. The DoD required text is either:

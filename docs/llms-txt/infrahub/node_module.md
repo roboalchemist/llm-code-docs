@@ -1,0 +1,49 @@
+# Source: https://docs.infrahub.app/ansible/references/plugins/node_module.md
+
+# Modules modules
+
+Creates, Updates or Deletes a node of a given Kind in Infrahub through Infrahub SDK
+
+## Parameters[​](#parameters "Direct link to Parameters")
+
+| Parameter        | Type   | Required | Default | Description                                                               |
+| ---------------- | ------ | -------- | ------- | ------------------------------------------------------------------------- |
+| `api_endpoint`   | `str`  | No       |         | Endpoint of the Infrahub API, optional env=INFRAHUB\_ADDRESS              |
+| `token`          | `str`  | No       |         | The API token created through Infrahub, optional env=INFRAHUB\_API\_TOKEN |
+| `timeout`        | `int`  | No       | 10      | Timeout for Infrahub requests in seconds                                  |
+| `kind`           | `str`  | Yes      |         | Kind of node to create                                                    |
+| `data`           | `raw`  | Yes      |         | Dictionary of node attributes                                             |
+| `branch`         | `str`  | No       | main    | Branch in which the request is made                                       |
+| `validate_certs` | `bool` | No       | True    | Whether or not to validate SSL of the Infrahub instance                   |
+| `state`          | `str`  | No       | present | Use C(present) or C(absent) for adding or removing.                       |
+
+## Examples[​](#examples "Direct link to Examples")
+
+```
+---
+- name: Infrahub playbook for opsmill.infrahub.node
+  gather_facts: false
+  hosts: localhost
+
+  tasks:
+    - name: Create tag1
+      opsmill.infrahub.node:
+        kind: "BuiltinTag"
+        data:
+          name: "tag1"
+        state: present
+
+    - name: Delete tag1
+      opsmill.infrahub.node:
+        kind: "BuiltinTag"
+        data:
+          name: "tag1"
+        state: absent
+```
+
+## Return values[​](#return-values "Direct link to Return values")
+
+| Key      | Type   | Description                                                      |
+| -------- | ------ | ---------------------------------------------------------------- |
+| `object` | `dict` | Serialized object as created or already existent within Infrahub |
+| `msg`    | `str`  | Message indicating failure or info about what has been achieved  |

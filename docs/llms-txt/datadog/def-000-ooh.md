@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure Logs Sent To Remote H
 ---
 
 # Ensure Logs Sent To Remote Host
- 
+
 ## Description{% #description %}
 
 To configure rsyslog to send logs to a remote log server, open `/etc/rsyslog.conf` and read and understand the last section of the file, which describes the multiple directives necessary to activate remote logging. Along with these other directives, the system can be configured to forward its logs to a particular log server by adding or correcting one of the following lines, substituting `logcollector` appropriately. The choice of protocol depends on the environment of the system; although TCP and RELP provide more reliable message delivery, they may not be supported in all environments.
@@ -16,7 +16,7 @@ To use UDP for log message delivery:
 
 ```
 *.* @logcollector
-        
+
 ```
 
 Or in RainerScript:
@@ -29,7 +29,7 @@ To use TCP for log message delivery:
 
 ```
 *.* @@logcollector
-        
+
 ```
 
 Or in RainerScript:
@@ -42,7 +42,7 @@ To use RELP for log message delivery:
 
 ```
 *.* :omrelp:logcollector
-        
+
 ```
 
 Or in RainerScript:

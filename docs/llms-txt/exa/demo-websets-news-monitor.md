@@ -1,6 +1,6 @@
 # Source: https://exa.ai/docs/examples/demo-websets-news-monitor.md
 
-> ## Documentation Index
+> **Documentation Index**
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -160,7 +160,7 @@ We want our feeds to contain high-quality links and avoid SEO spam. This would n
 
 You can create criteria that function as a *semantic whitelist*, telling the LLM what kinds of articles to allow. Here's an example:
 
-```
+```text
 Article published in a top 20 tech publication (TechCrunch, The Verge, Wired, etc.)
 ```
 

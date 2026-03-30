@@ -1,0 +1,56 @@
+tap::pipe
+
+# Trait Pipe
+
+Source
+
+```
+pub trait Pipe {
+    // Provided methods
+    fn pipe<R>(self, func: impl FnOnce(Self) -> R) -> R
+       where Self: Sized,
+             R: Sized { ... }
+    fn pipe_ref<'a, R>(&'a self, func: impl FnOnce(&'a Self) -> R) -> R
+       where R: 'a + Sized { ... }
+    fn pipe_ref_mut<'a, R>(
+        &'a mut self,
+        func: impl FnOnce(&'a mut Self) -> R,
+    ) -> R
+       where R: 'a + Sized { ... }
+    fn pipe_borrow<'a, B, R>(&'a self, func: impl FnOnce(&'a B) -> R) -> R
+       where Self: Borrow<B>,
+             B: 'a + ?Sized,
+             R: 'a + Sized { ... }
+    fn pipe_borrow_mut<'a, B, R>(
+        &'a mut self,
+        func: impl FnOnce(&'a mut B) -> R,
+    ) -> R
+       where Self: BorrowMut<B>,
+             B: 'a + ?Sized,
+             R: 'a + Sized { ... }
+    fn pipe_as_ref<'a, U, R>(&'a self, func: impl FnOnce(&'a U) -> R) -> R
+       where Self: AsRef<U>,
+             U: 'a + ?Sized,
+             R: 'a + Sized { ... }
+    fn pipe_as_mut<'a, U, R>(
+        &'a mut self,
+        func: impl FnOnce(&'a mut U) -> R,
+    ) -> R
+       where Self: AsMut<U>,
+             U: 'a + ?Sized,
+             R: 'a + Sized { ... }
+    fn pipe_deref<'a, T, R>(&'a self, func: impl FnOnce(&'a T) -> R) -> R
+       where Self: Deref<Target = T>,
+             T: 'a + ?Sized,
+             R: 'a + Sized { ... }
+    fn pipe_deref_mut<'a, T, R>(
+        &'a mut self,
+        func: impl FnOnce(&'a mut T) -> R,
+    ) -> R
+       where Self: DerefMut + Deref<Target = T>,
+             T: 'a + ?Sized,
+             R: 'a + Sized { ... }
+}
+```
+
+## Provided Methods§

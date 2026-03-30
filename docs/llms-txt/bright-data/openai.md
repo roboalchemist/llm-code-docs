@@ -1,0 +1,56 @@
+# Source: https://docs.brightdata.com/ai/mcp-server/integrations/openai.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.brightdata.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# OpenAI SDK Integration
+
+> How to integrate OpenAI with Bright Data's MCP server for enhanced AI capabilities.
+
+<Card title="Building an AI startup?" cta="Learn more" href="https://brightdata.com/ai/ai-startups-program" icon="rocket-launch" iconType="duotone" arrow="true">
+  You might be eligible for our Startup Program. Get fully funded access to the infrastructure you're reading about right now (up to \$20K value).
+</Card>
+
+## Hosted MCP
+
+<Steps>
+  <Step title="Get your API token">
+    1. Go to [Bright Data user settings](https://brightdata.com/cp/setting/users)
+    2. Copy your API token (it looks like: `2dceb1aa0***************************`)
+  </Step>
+
+  <Step title="Configure your MCP server">
+    ```python expandable theme={null}
+    from openai import OpenAI
+
+    client = OpenAI()
+
+    resp = client.responses.create(
+      model="gpt-4o",
+      tools=[
+        {
+          "type": "mcp",
+          "server_label": "BrightData",
+          "server_url": "https://mcp.brightdata.com/sse?token=API_TOKEN",
+          "require_approval": "never",
+        },
+      ],
+      input="What is the weather in Paris ?",
+    )
+
+    print(resp.output_text)
+    ```
+  </Step>
+
+  <Step title="Test it works">
+    1. Ask your AI: "Can you search Google for 'weather today'?"
+    2. Claude will ask for permission - click "Allow"
+    3. You should see results!
+  </Step>
+
+  <Step title="Monitor usage">
+    1. View your API usage at [My Zones](https://brightdata.com/cp/zones) in your Bright Data dashboard
+    2. Your free tier includes 5,000 requests per month
+  </Step>
+</Steps>

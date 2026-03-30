@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Kubernetes API Server should enable audit logs on its server
-Classification:complianceFramework:cis-kubernetesControl:1.2.22 
+Classification:complianceFramework:cis-kubernetesControl:1.2.22
 ## Description{% #description %}
 
 Enable auditing on the Kubernetes API Server and set the desired audit log path.

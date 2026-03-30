@@ -38,7 +38,7 @@ This rule ensures that Kotlin modifier keywords are used in the correct order as
 ```kotlin
 abstract class Foo {
     final public val foo = "foo"
-    
+
     open protected val bar = "bar"
 
     open suspend internal fun baz(v: Any): Any = ""
@@ -64,6 +64,5 @@ abstract class Foo {
     internal open suspend fun baz(v: Any): Any = ""
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

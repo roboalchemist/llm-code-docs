@@ -7,14 +7,14 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Set Interactive Session Time
 ---
 
 # Set Interactive Session Timeout
- 
+
 ## Description{% #description %}
 
 Setting the `TMOUT` option in `/etc/profile` ensures that all user sessions will terminate based on inactivity. The value of TMOUT should be exported and read only. The `TMOUT` setting in a file loaded by `/etc/profile`, e.g. `/etc/profile.d/tmout.sh` should read as follows:
 
 ```
 TMOUT=900
-        
+
 ```
 
 readonly TMOUT export TMOUT

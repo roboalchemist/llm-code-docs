@@ -83,8 +83,7 @@ var a = 1, f = function(s) { return { p1: s } }; switch (a) {case f(a == 1 ? 2 :
 var a = 1, f1 = function() { return { p1: 1 } }, f2 = function() { return { p1: 2 } }; switch (a) {case f1().p1: break; case f2().p1: break; default: break;}
 var a = [1,2]; switch(a.toString()){case ([1,2]).toString():break; case ([1]).toString():break; default:break;}
 switch(a) { case a: break; } switch(a) { case a: break; }
-switch(a) { case toString: break; 
+switch(a) { case toString: break;
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

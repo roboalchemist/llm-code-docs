@@ -1,0 +1,279 @@
+[
+  {
+    "version": "1.0.0",
+    "change": "Config accessor methods are now internal and require feature flags to access",
+    "before": "let mut c = zenoh::Config::default(); c.set_mode(zenoh::config::WhatAmI::Client);",
+    "after": "Requires zenoh = { version = \"1.0.0\", features = [\"internal\", \"internal_config\"] } to access config internals",
+    "affected": [
+      "rust"
+    ],
+    "source": "the access to `Config` elements is internal now, add this to migration guide"
+  },
+  {
+    "version": "1.0.0",
+    "change": "Storage backend serialization format changed for filesystem and rocksdb backends; existing stored data is incompatible",
+    "before": "Old serialization format used by zenoh-backend-filesystem and zenoh-backend-rocksdb",
+    "after": "New serialization format; migration tool required to read old data",
+    "affected": [
+      "rust"
+    ],
+    "source": "migration from old to new serialization format for storage backends"
+  },
+  {
+    "version": "1.0.0",
+    "change": "Default listen endpoints changed; peer-mode sessions now always listen on tcp/[::]:0 by default",
+    "before": "Peer-mode sessions did not need to specify listen endpoints",
+    "after": "endpoints: { router: [\"tcp/[::]:7447\"], peer: [\"tcp/[::]:0\"] } is forced by default; users without TCP must explicitly override",
+    "affected": [
+      "all"
+    ],
+    "source": "The default endpoints to listen on"
+  },
+  {
+    "version": "1.0.0",
+    "change": "SourceInfo changed from a pair of optional id and sn to an Option type",
+    "before": "SourceInfo represented as a pair of optional id and optional sequence number",
+    "after": "SourceInfo is an Option instead of a pair of optionals",
+    "affected": [
+      "rust"
+    ],
+    "source": "Turn source info into option instead of a pair of optional id and sn"
+  },
+  {
+    "version": "1.0.0",
+    "change": "Congestion control config value renamed from 'blockfirst' to 'block_first' (snake_case consistency fix)",
+    "before": "congestion_control: \"blockfirst\"",
+    "after": "congestion_control: \"block_first\"",
+    "affected": [
+      "all"
+    ],
+    "source": "fix: consistently use the snake case"
+  },
+  {
+    "version": "1.0.0",
+    "change": "Reply::replier_id() now returns EntityGlobalId instead of ZenohId",
+    "before": "Reply::replier_id() -> ZenohId",
+    "after": "Reply::replier_id() -> EntityGlobalId",
+    "affected": [
+      "rust",
+      "c",
+      "python"
+    ],
+    "source": "[ZEN-587] Make `Reply::replier_id()` return an `EntityGlobalId`"
+  },
+  {
+    "version": "1.0.0",
+    "change": "Downsampling interceptor config format changed; now accepts a list of flows and supports 'query', 'reply', 'push' message type filters",
+    "before": "Downsampling config accepted a single flow; only supported publication (push) message type",
+    "after": "Downsampling config accepts a list of flows; message types are 'push', 'query', 'reply'",
+    "affected": [
+      "all"
+    ],
+    "source": "[ZEN-520] Add support for query/reply messages to Downsampling"
+  },
+  {
+    "version": "1.0.0",
+    "change": "SHM metadata format changed; SHM backward compatibility broken",
+    "before": "SHM metadata stored in separate fields identified by multiple descriptors",
+    "after": "Combined SHM metadata in single storage identified by single descriptor; incompatible with previous SHM format",
+    "affected": [
+      "rust",
+      "c"
+    ],
+    "source": "SHM: optimize metadata"
+  },
+  {
+    "version": "1.0.0",
+    "change": "REST plugin no longer enabled by default for zenohd; must be explicitly configured",
+    "before": "REST plugin enabled by default when running zenohd",
+    "after": "REST plugin only enabled if --rest-http-port flag is passed or configured in config file",
+    "affected": [
+      "all"
+    ],
+    "source": "chore: enable rest plugin only if in config or if --rest-http-port is set"
+  },
+  {
+    "version": "1.0.0",
+    "change": "Link selection metadata field names abbreviated in wire format",
+    "before": "Full names 'priorities' and 'reliability' used in link selection metadata",
+    "after": "Abbreviated names 'prio' and 'rel' used; values '0'/'1' used for best_effort/reliable reliability",
+    "affected": [
+      "all"
+    ],
+    "source": "Optimize link selection metadata"
+  },
+  {
+    "version": "1.0.0",
+    "change": "FifoChannel recv methods now return ZResult<Option<T>> instead of ZResult<T>",
+    "before": "FifoChannel (try)recv{,_deadline,_timeout} returned ZResult<T>; disconnect/empty errors via error type",
+    "after": "FifoChannel (try)recv{,_deadline,_timeout} return ZResult<Option<T>>; None indicates disconnected/empty/timeout",
+    "affected": [
+      "rust"
+    ],
+    "source": "Make FIFO `(try)recv{,_deadline,_timeout}` return `ZResult<Option<T>>`"
+  },
+  {
+    "version": "1.0.0",
+    "change": "Encoding and timestamp serialization removed from zenoh-ext",
+    "before": "Encoding and timestamp serialization available in zenoh-ext",
+    "after": "Encoding and timestamp serialization moved out of zenoh-ext",
+    "affected": [
+      "rust"
+    ],
+    "source": "Encoding and timestamp serialization remove from zenoh-ext"
+  },
+  {
+    "version": "1.0.0",
+    "change": "flume::Receiver no longer exposed in public API; replaced with opaque handler type",
+    "before": "FifoChannel handler exposed full flume::Receiver API",
+    "after": "flume::Receiver encapsulated; only zenoh-defined API surface exposed",
+    "affected": [
+      "rust"
+    ],
+    "source": "Encapsulate `flume::Receiver`"
+  },
+  {
+    "version": "1.0.0",
+    "change": "TLS configuration parameter names renamed",
+    "before": "server_certificate, server_private_key, client_certificate, client_private_key, server_name_verification, client_auth",
+    "after": "listen_certificate, listen_private_key, connect_certificate, connect_private_key, verify_name_on_connect, enable_mtls",
+    "affected": [
+      "all"
+    ],
+    "source": "feat!: renaming of TLS configuration parameters"
+  },
+  {
+    "version": "1.0.0",
+    "change": "Serialization API moved from zenoh core into zenoh-ext",
+    "before": "Serialization helpers available in core zenoh crate",
+    "after": "Serialization moved into zenoh-ext; code using old location must be updated to use zenoh-ext",
+    "affected": [
+      "rust"
+    ],
+    "source": "feat!: move serialization into zenoh-ext"
+  },
+  {
+    "version": "1.0.0",
+    "change": "TimeRange struct fields aligned to std::ops::Range format",
+    "before": "TimeRange struct used custom field format",
+    "after": "TimeRange struct fields match std::ops::Range<T> format",
+    "affected": [
+      "rust"
+    ],
+    "source": "Align TimeRange struct to std::ops::Range"
+  },
+  {
+    "version": "1.0.0",
+    "change": "zenoh::session::EntityId made unstable",
+    "before": "EntityId was a stable public API in zenoh::session",
+    "after": "EntityId is unstable; ZenohId is stable",
+    "affected": [
+      "rust"
+    ],
+    "source": "Make `zenoh::session::ZenohId` stable"
+  },
+  {
+    "version": "1.0.0",
+    "change": "SourceInfo now uses accessor pattern instead of direct field access",
+    "before": "SourceInfo fields accessed directly",
+    "after": "SourceInfo fields accessed via accessor methods",
+    "affected": [
+      "rust"
+    ],
+    "source": "Adopt accessors pattern for SourceInfo"
+  },
+  {
+    "version": "1.0.0",
+    "change": "Selector now uses accessor pattern instead of direct field access",
+    "before": "Selector fields accessed directly",
+    "after": "Selector fields accessed via accessor methods",
+    "affected": [
+      "rust"
+    ],
+    "source": "Adopt accessor pattern for Selector"
+  },
+  {
+    "version": "1.0.0",
+    "change": "zenoh_config internals hidden; zenoh::config public surface reduced significantly",
+    "before": "zenoh::config exposed many internal types including ModeDependentValue and full zenoh_config API",
+    "after": "zenoh::config only exposes Config, InsertionError, LookupError, LookupGuard, WhatAmI, WhatAmIMatcher, Notifier, Notification; zenoh::Config replaced by zenoh::config::Config",
+    "affected": [
+      "rust"
+    ],
+    "source": "Hide `zenoh_config` internals"
+  },
+  {
+    "version": "1.0.0",
+    "change": "Replication feature removed from storage-manager plugin",
+    "before": "Storage manager included a replication implementation",
+    "after": "Replication implementation removed; feature unavailable until rewrite",
+    "affected": [
+      "rust"
+    ],
+    "source": "refactor!(storage-manager): remove replication to start-over"
+  },
+  {
+    "version": "1.0.0",
+    "change": "Callback type changed to opaque type; no longer directly constructible from closures in the same way",
+    "before": "Callback was a transparent/concrete type wrapping a closure",
+    "after": "Callback is an opaque type",
+    "affected": [
+      "rust"
+    ],
+    "source": "feat!: make callback an opaque type"
+  },
+  {
+    "version": "1.0.0",
+    "change": "Builder traits (QoSBuilderTrait, SampleBuilderTrait, etc.) made internal; no longer importable by users",
+    "before": "Builder traits like QoSBuilderTrait and SampleBuilderTrait were public and required explicit imports",
+    "after": "Builder traits are internal; corresponding methods generated directly on builder structs via macro",
+    "affected": [
+      "rust"
+    ],
+    "source": "made builder traits internal"
+  },
+  {
+    "version": "1.0.0",
+    "change": "SHM buffer traits now have a generic parameter for the underlying type; Typed wrapper added",
+    "before": "SHM buffer traits had no generic type parameter",
+    "after": "SHM buffer traits are generic over underlying type; Typed<T> wrapper provides safe typed access",
+    "affected": [
+      "rust",
+      "c"
+    ],
+    "source": "SHM typed API"
+  },
+  {
+    "version": "1.0.0",
+    "change": "SHM ProtocolID hidden from public API; ShmProvider builder APIs simplified",
+    "before": "ProtocolID was a public type in the SHM API; ShmProvider builder was more complex",
+    "after": "ProtocolID is hidden; ShmProvider builder APIs simplified",
+    "affected": [
+      "rust",
+      "c"
+    ],
+    "source": "SHM API improvement: ProtocolID and others..."
+  },
+  {
+    "version": "1.0.0",
+    "change": "Namespace prefix support added, causing API changes across bindings",
+    "before": "No namespace prefix concept in session/key expression APIs",
+    "after": "Namespace prefix supported; API changes required in zenoh-c, zenoh-cpp, zenoh-plugin-dds, zenoh-plugin-ros2dds",
+    "affected": [
+      "rust",
+      "c",
+      "python"
+    ],
+    "source": "Namespace prefix support"
+  },
+  {
+    "version": "1.0.0",
+    "change": "Minimum required Rust toolchain bumped to 1.85",
+    "before": "Rust toolchain < 1.85 supported",
+    "after": "Rust toolchain 1.85 or newer required",
+    "affected": [
+      "rust"
+    ],
+    "source": "Bump Rust toolchain to 1.85"
+  }
+]

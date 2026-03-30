@@ -1,0 +1,163 @@
+# Source: https://learn.microsoft.com/en-us/powershell/scripting/whats-new/what-s-new-in-powershell-74
+
+Title: What's New in PowerShell 7.4 - PowerShell
+
+URL Source: https://learn.microsoft.com/en-us/powershell/scripting/whats-new/what-s-new-in-powershell-74
+
+Markdown Content:
+PowerShell 7.4.13 includes the following features, updates, and breaking changes. PowerShell 7.4.13 is built on .NET 8.0.415.
+
+For a complete list of changes, see the [CHANGELOG](https://github.com/PowerShell/PowerShell/blob/master/CHANGELOG/7.4.md) in the GitHub repository.
+
+*   Nano server docker images aren't available for this release
+*   Added the **ProgressAction** parameter to the Common Parameters
+*   Update some PowerShell APIs to throw **ArgumentException** instead of **ArgumentNullException** when the argument is an empty string ([#19215](https://github.com/PowerShell/PowerShell/pull/19215)) (Thanks @xtqqczze!)
+*   Remove code related to `#Requires -PSSnapin` ([#19320](https://github.com/PowerShell/PowerShell/pull/19320))
+*   `Test-Json` now uses JsonSchema.NET instead of Newtonsoft.Json.Schema. 
+    *   With this change, `Test-Json` no longer supports the older Draft 4 schemas. ([#18141](https://github.com/PowerShell/PowerShell/pull/18141)) (Thanks @gregsdennis!). For more information about JSON schemas, see [JSON Schema](https://json-schema.org/understanding-json-schema/reference/schema) documentation. This also breaks `Test-Json` for JSON and JSONC files with comments.
+    *   `ConvertFrom-Json` support still uses Newtonsoft.Json.Schema so it can convert JSON files with comments.
+
+*   Output from `Test-Connection` now includes more detailed information about TCP connection tests
+*   .NET introduced changes that affected `Test-Connection`. The cmdlet now returns an error about the need to use `sudo` on Linux platforms when using a custom buffer size ([#20369](https://github.com/PowerShell/PowerShell/pull/20369))
+*   Experimental feature [PSNativeCommandPreserveBytePipe](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_pipelines#using-native-commands-in-the-pipeline) is now mainstream. PowerShell now preserves the byte-stream data when redirecting the **stdout** stream of a native command to a file or when piping byte-stream data to the stdin stream of a native command.
+*   Change how relative paths in `Resolve-Path` are handled when using the **RelativeBasePath** parameter ([#19755](https://github.com/PowerShell/PowerShell/pull/19755)) (Thanks @MartinGC94!)
+*   Remove unused PSv2 code - removes TabExpansion function ([#18337](https://github.com/PowerShell/PowerShell/pull/18337))
+
+The Windows MSI package now provides an option to disable PowerShell telemetry during installation. For more information, see [Install the msi package from the command line](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5).
+
+PowerShell 7.4 includes **Microsoft.PowerShell.PSResourceGet** v1.1.1. This module is installed side-by-side with **PowerShellGet** v2.2.5 and **PackageManagement** v1.4.8.1. For more information, see the documentation for [Microsoft.PowerShell.PSResourceGet](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.psresourceget).
+
+PowerShell 7.4 now includes **PSReadLine** v2.3.6. For more information, see the documentation for [PSReadLine](https://learn.microsoft.com/en-us/powershell/module/psreadline).
+
+Many thanks to **@MartinGC94** and others for all their work to improve tab completion.
+
+*   Fix issue when completing the first command in a script with an empty array expression ([#18355](https://github.com/PowerShell/PowerShell/pull/18355))
+*   Fix positional argument completion ([#17796](https://github.com/PowerShell/PowerShell/pull/17796))
+*   Prioritize the default parameter set when completing positional arguments ([#18755](https://github.com/PowerShell/PowerShell/pull/18755))
+*   Improve pseudo binding for dynamic parameters ([#18030](https://github.com/PowerShell/PowerShell/pull/18030))
+*   Improve type inference of hashtable keys ([#17907](https://github.com/PowerShell/PowerShell/pull/17907))
+*   Fix type inference error for empty return statements ([#18351](https://github.com/PowerShell/PowerShell/pull/18351))
+*   Improve type inference for Get-Random ([#18972](https://github.com/PowerShell/PowerShell/pull/18972))
+*   Fix type inference for all scope variables ([#18758](https://github.com/PowerShell/PowerShell/pull/18758))
+*   Improve enumeration of inferred types in pipeline ([#17799](https://github.com/PowerShell/PowerShell/pull/17799))
+*   Add completion for values in comparisons when comparing Enums ([#17654](https://github.com/PowerShell/PowerShell/pull/17654))
+*   Add property assignment completion for enums ([#19178](https://github.com/PowerShell/PowerShell/pull/19178))
+*   Fix completion for PSCustomObject variable properties ([#18682](https://github.com/PowerShell/PowerShell/pull/18682))
+*   Fix member completion in attribute argument ([#17902](https://github.com/PowerShell/PowerShell/pull/17902))
+*   Exclude redundant parameter aliases from completion results ([#19382](https://github.com/PowerShell/PowerShell/pull/19382))
+*   Fix class member completion for classes with base types ([#19179](https://github.com/PowerShell/PowerShell/pull/19179))
+*   Add completion for the `using` keyword ([#16514](https://github.com/PowerShell/PowerShell/pull/18758))
+*   Fix TabExpansion2 variable leak when completing variables ([#18763](https://github.com/PowerShell/PowerShell/pull/18763))
+*   Enable completion of variables across ScriptBlock scopes ([#19819](https://github.com/PowerShell/PowerShell/pull/19819))
+*   Fix completion of the foreach statement variable ([#19814](https://github.com/PowerShell/PowerShell/pull/19814))
+*   Fix variable type inference precedence ([#18691](https://github.com/PowerShell/PowerShell/pull/18691))
+*   Fix member completion for PowerShell Enum class ([#19740](https://github.com/PowerShell/PowerShell/pull/19740))
+*   Fix parsing for array literals in index expressions in method calls ([#19224](https://github.com/PowerShell/PowerShell/pull/19224))
+*   Improve path completion ([#19489](https://github.com/PowerShell/PowerShell/pull/19489))
+*   Fix an indexing out of bound error in CompleteInput for empty script input ([#19501](https://github.com/PowerShell/PowerShell/pull/19501))
+*   Improve variable completion performance ([#19595](https://github.com/PowerShell/PowerShell/pull/19595))
+*   Improve Hashtable key completion for type constrained variable assignments, nested Hashtables and more ([#17660](https://github.com/PowerShell/PowerShell/pull/17660))
+*   Infer external application output as strings ([#19193](https://github.com/PowerShell/PowerShell/pull/19193))
+*   Update parameter completion for enums to exclude values not allowed by `ValidateRange` attributes ([#17750](https://github.com/PowerShell/PowerShell/pull/17750)) (Thanks @fflaten!).
+*   Fix dynamic parameter completion ([#19510](https://github.com/PowerShell/PowerShell/pull/19510))
+*   Add completion for variables assigned by the `data` statement ([#19831](https://github.com/PowerShell/PowerShell/pull/19831))
+*   Fix expanding tilde (`~`) on Windows systems to `$HOME` to prevent breaking use cases with native commands ([#21529](https://github.com/PowerShell/PowerShell/pull/21529))
+
+Many thanks to **@CarloToso** and others for all the work on improving web cmdlets.
+
+*   Fix decompression in web cmdlets to include Brotli ([#17955](https://github.com/PowerShell/PowerShell/pull/17955)) (Thanks @iSazonov!)
+*   Webcmdlets add 308 to redirect codes and small cleanup ([#18536](https://github.com/PowerShell/PowerShell/pull/18536))
+*   Complete the progress bar rendering in Invoke-WebRequest when downloading is complete or cancelled ([#18130](https://github.com/PowerShell/PowerShell/pull/18130))
+*   Web cmdlets get **Retry-After** interval from response headers if the status code is 429 ([#18717](https://github.com/PowerShell/PowerShell/pull/18717))
+*   Web cmdlets set default charset encoding to UTF8 ([#18219](https://github.com/PowerShell/PowerShell/pull/18219))
+*   Preserve WebSession.MaximumRedirection from changes ([#19190](https://github.com/PowerShell/PowerShell/pull/19190))
+*   WebCmdlets parse XML declaration to get encoding value, if present. ([#18748](https://github.com/PowerShell/PowerShell/pull/18748))
+*   Fix using xml -Body in webcmdlets without an encoding ([#19281](https://github.com/PowerShell/PowerShell/pull/19281))
+*   Adjust PUT method behavior to POST one for default content type in WebCmdlets ([#19152](https://github.com/PowerShell/PowerShell/pull/19152))
+*   Take into account ContentType from Headers in WebCmdlets ([#19227](https://github.com/PowerShell/PowerShell/pull/19227))
+*   Allow to preserve the original HTTP method by adding **-PreserveHttpMethodOnRedirect** to Web cmdlets ([#18894](https://github.com/PowerShell/PowerShell/pull/18894))
+*   Webcmdlets display an error on https to http redirect ([#18595](https://github.com/PowerShell/PowerShell/pull/18595))
+*   Add **AllowInsecureRedirect** switch to Web cmdlets ([#18546](https://github.com/PowerShell/PowerShell/pull/18546))
+*   Improve verbose message in web cmdlets when content length is unknown ([#19252](https://github.com/PowerShell/PowerShell/pull/19252))
+*   Build the relative URI for links from the response in `Invoke-WebRequest` ([#19092](https://github.com/PowerShell/PowerShell/pull/19092))
+*   Fix redirection for `-CustomMethod POST` in WebCmdlets ([#19111](https://github.com/PowerShell/PowerShell/pull/19111))
+*   Dispose previous response in Webcmdlets ([#19117](https://github.com/PowerShell/PowerShell/pull/19117))
+*   Improve `Invoke-WebRequest` xml and json errors format ([#18837](https://github.com/PowerShell/PowerShell/pull/18837))
+*   Add ValidateNotNullOrEmpty to **OutFile** and **InFile** parameters of WebCmdlets ([#19044](https://github.com/PowerShell/PowerShell/pull/19044))
+*   HttpKnownHeaderNames update headers list ([#18947](https://github.com/PowerShell/PowerShell/pull/18947))
+*   `Invoke-RestMethod -FollowRelLink` fix links containing commas ([#18829](https://github.com/PowerShell/PowerShell/pull/18829))
+*   Fix bug with managing redirection and KeepAuthorization in Web cmdlets ([#18902](https://github.com/PowerShell/PowerShell/pull/18902))
+*   Add **StatusCode** to **HttpResponseException** ([#18842](https://github.com/PowerShell/PowerShell/pull/18842))
+*   Support HTTP persistent connections in Web Cmdlets ([#19249](https://github.com/PowerShell/PowerShell/pull/19249)) (Thanks @stevenebutler!)
+*   Small cleanup `Invoke-RestMethod` ([#19490](https://github.com/PowerShell/PowerShell/pull/19490))
+*   Improve the verbose message of WebCmdlets to show correct HTTP version ([#19616](https://github.com/PowerShell/PowerShell/pull/19616))
+*   Add **FileNameStar** to **MultipartFileContent** in WebCmdlets ([#19467](https://github.com/PowerShell/PowerShell/pull/19467))
+*   Fix HTTP status from 409 to 429 for WebCmdlets to get retry interval from Retry-After header. ([#19622](https://github.com/PowerShell/PowerShell/pull/19622)) (Thanks @mkht!)
+*   Change `-TimeoutSec` to `-ConnectionTimeoutSeconds` and add `-OperationTimeoutSeconds` to web cmdlets ([#19558](https://github.com/PowerShell/PowerShell/pull/19558)) (Thanks @stevenebutler!) Other cmdlets
+*   Support Ctrl+c when connection hangs while reading data in WebCmdlets ([#19330](https://github.com/PowerShell/PowerShell/pull/19330)) (Thanks @stevenebutler!)
+*   Support Unix domain socket in WebCmdlets ([#19343](https://github.com/PowerShell/PowerShell/pull/19343))
+
+*   `Test-Connection` now returns error about the need to use `sudo` on Linux platforms when using a custom buffer size ([#20369](https://github.com/PowerShell/PowerShell/pull/20369))
+*   Add output types to Format commands ([#18746](https://github.com/PowerShell/PowerShell/pull/18746)) (Thanks @MartinGC94!)
+*   Add output type attributes for `Get-WinEvent` ([#17948](https://github.com/PowerShell/PowerShell/pull/17948)) (Thanks @MartinGC94!)
+*   Add **Path** and **LiteralPath** parameters to `Test-Json` cmdlet ([#19042](https://github.com/PowerShell/PowerShell/pull/19042)) (Thanks @ArmaanMcleod!)
+*   Add **NoHeader** parameter to `ConvertTo-Csv` and `Export-Csv` cmdlets ([#19108](https://github.com/PowerShell/PowerShell/pull/19108)) (Thanks @ArmaanMcleod!)
+*   Add **Confirm** and **WhatIf** parameters to `Stop-Transcript`([#18731](https://github.com/PowerShell/PowerShell/pull/18731)) (Thanks @JohnLBevan!)
+*   Add **FuzzyMinimumDistance** parameter to `Get-Command` ([#18261](https://github.com/PowerShell/PowerShell/pull/18261))
+*   Make **Encoding** parameter able to take `ANSI` encoding in PowerShell ([#19298](https://github.com/PowerShell/PowerShell/pull/19298)) (Thanks @CarloToso!)
+*   Add progress to `Copy-Item` ([#18735](https://github.com/PowerShell/PowerShell/pull/18735))
+*   `Update-Help` now reports an error when using implicit culture on non-US systems. ([#17780](https://github.com/PowerShell/PowerShell/pull/17780)) (Thanks @dkaszews!)
+*   Don't require activity when creating a completed progress record ([#18474](https://github.com/PowerShell/PowerShell/pull/18474)) (Thanks @MartinGC94!)
+*   Disallow negative values for `Get-Content` cmdlet parameters `-Head` and `-Tail` ([#19715](https://github.com/PowerShell/PowerShell/pull/19715)) (Thanks @CarloToso!)
+*   Make `Update-Help` throw proper error when current culture isn't associated with a language ([#19765](https://github.com/PowerShell/PowerShell/pull/19765)) (Thanks @josea!)
+*   Allow combining of `-Skip` and `-SkipLast` parameters in `Select-Object` cmdlet. ([#18849](https://github.com/PowerShell/PowerShell/pull/18849)) (Thanks @ArmaanMcleod!)
+*   Add `Get-SecureRandom` cmdlet ([#19587](https://github.com/PowerShell/PowerShell/pull/19587))
+*   `Set-Clipboard -AsOSC52` for remote usage ([#18222](https://github.com/PowerShell/PowerShell/pull/18222)) (Thanks @dkaszews!)
+*   Speed up `Resolve-Path` relative path resolution ([#19171](https://github.com/PowerShell/PowerShell/pull/19171)) (Thanks @MartinGC94!)
+*   Added the switch parameter `-CaseInsensitive` to `Select-Object` and `Get-Unique` cmdlets ([#19683](https://github.com/PowerShell/PowerShell/pull/19683)) (Thanks @ArmaanMcleod!)
+*   `Restart-Computer` and `Stop-Computer` should fail with error when not running via sudo on Unix ([#19824](https://github.com/PowerShell/PowerShell/pull/19824))
+
+Updates to `$PSStyle`
+
+*   Adds **Dim** and **DimOff** properties ([#18653](https://github.com/PowerShell/PowerShell/pull/18653))
+*   Added static methods to the **PSStyle** class that map foreground and background **ConsoleColor** values to ANSI escape sequences ([#17938](https://github.com/PowerShell/PowerShell/pull/17938))
+*   Table headers for calculated fields are formatted in italics by default
+*   Add support of respecting `$PSStyle.OutputRendering` on the remote host ([#19601](https://github.com/PowerShell/PowerShell/pull/19601))
+*   Updated telemetry data to include use of `CrescendoBuilt` modules ([#20371](https://github.com/PowerShell/PowerShell/pull/20371))
+
+Other Engine updates
+
+*   Move .NET method invocation logging to after the needed type conversion is done for method arguments ([#25568](https://github.com/PowerShell/PowerShell/pull/25568))
+*   Fallback to AppLocker after WldpCanExecuteFile ([#25229](https://github.com/PowerShell/PowerShell/pull/25229))
+*   Make PowerShell class not affiliate with Runspace when declaring the `NoRunspaceAffinity` attribute ([#18138](https://github.com/PowerShell/PowerShell/pull/18138))
+*   Add the `ValidateNotNullOrWhiteSpace` attribute ([#17191](https://github.com/PowerShell/PowerShell/pull/17191)) (Thanks @wmentha!)
+*   Add `sqlcmd` to the list for legacy argument passing ([#18559](https://github.com/PowerShell/PowerShell/pull/18559))
+*   Add the function `cd~` ([#18308](https://github.com/PowerShell/PowerShell/pull/18308)) (Thanks @GigaScratch!)
+*   Fix array type parsing in generic types ([#19205](https://github.com/PowerShell/PowerShell/pull/19205)) (Thanks @MartinGC94!)
+*   Fix wildcard globbing in root of device paths ([#19442](https://github.com/PowerShell/PowerShell/pull/19442)) (Thanks @MartinGC94!)
+*   Add a public API for getting locations of PSModulePath elements ([#19422](https://github.com/PowerShell/PowerShell/pull/19422))
+*   Fix incorrect string to type conversion ([#19560](https://github.com/PowerShell/PowerShell/pull/19560)) (Thanks @MartinGC94!)
+*   Fix slow execution when many breakpoints are used ([#14953](https://github.com/PowerShell/PowerShell/pull/14953)) (Thanks @nohwnd!)
+*   Remove code related to `#Requires -PSSnapin` ([#19320](https://github.com/PowerShell/PowerShell/pull/19320))
+
+PowerShell 7.4 introduces the following experimental features:
+
+*   [PSFeedbackProvider](https://learn.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.5#psfeedbackprovider) - Replaces the hard-coded suggestion framework with an extensible feedback provider. 
+    *   This feature also adds the **FeedbackName**, **FeedbackText**, and **FeedbackAction** properties to `$PSStyle.Formatting` that allow you to change the formatting of feedback messages.
+
+*   [PSModuleAutoLoadSkipOfflineFiles](https://learn.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.5#psmoduleautoloadskipofflinefiles) - Module discovery now skips over files that are marked by cloud providers as not fully on disk.
+*   [PSCommandWithArgs](https://learn.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.5#pscommandwithargs) - Add support for passing arguments to commands as a single string
+
+The following experimental features became mainstream:
+
+*   [PSConstrainedAuditLogging](https://learn.microsoft.com/en-us/powershell/scripting/security/application-control?view=powershell-7.5#wdac-policy-auditing)
+*   [PSCustomTableHeaderLabelDecoration](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_ansi_terminals)
+*   [PSNativeCommandErrorActionPreference](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables#psnativecommanduseerroractionpreference)
+*   [PSNativeCommandPreserveBytePipe](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_pipelines#using-native-commands-in-the-pipeline)
+*   [PSWindowsNativeCommandArgPassing](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_preference_variables#psnativecommandargumentpassing)
+
+PowerShell 7.4 changed the following experimental features:
+
+*   [PSCommandNotFoundSuggestion](https://learn.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.5#pscommandnotfoundsuggestion) - This feature now uses an extensible feedback provider rather than hard-coded suggestions ([#18726](https://github.com/PowerShell/PowerShell/pull/18726))
+
+For more information about the Experimental Features, see [Using Experimental Features](https://learn.microsoft.com/en-us/powershell/scripting/learn/experimental-features?view=powershell-7.5).

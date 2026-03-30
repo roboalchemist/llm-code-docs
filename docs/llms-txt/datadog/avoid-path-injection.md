@@ -54,6 +54,5 @@ if (is_allowed($fileName)) {
     file_get_contents($fileName);
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

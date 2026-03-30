@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure Function has administrative privileges over resources
- 
+
 ## Description{% #description %}
 
 This rule ensures that none of your Azure functions have administrative roles with root management group scope attached to them.

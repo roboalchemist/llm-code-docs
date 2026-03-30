@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Anomalous number of AWS Lambda functions deleted
-Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1485-data-destruction](https://attack.mitre.org/techniques/T1485) 
+Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1485-data-destruction](https://attack.mitre.org/techniques/T1485)
 ## Goal{% #goal %}
 
 Detects anomalous deletion of AWS Lambda functions. This rule identifies when a user or role deletes an unusual number of Lambda functions within a short time period.

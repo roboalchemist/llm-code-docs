@@ -1,6 +1,8 @@
 # Source: https://exa.ai/docs/sdks/javascript-sdk.md
 
+
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -18,21 +20,27 @@ The official JavaScript SDK for Exa. Search the web, get page contents, find sim
 
 <Tabs>
   <Tab title="npm">
+
     ```bash  theme={null}
     npm install exa-js
     ```
+
   </Tab>
 
   <Tab title="yarn">
+
     ```bash  theme={null}
     yarn add exa-js
     ```
+
   </Tab>
 
   <Tab title="pnpm">
+
     ```bash  theme={null}
     pnpm add exa-js
     ```
+
   </Tab>
 </Tabs>
 

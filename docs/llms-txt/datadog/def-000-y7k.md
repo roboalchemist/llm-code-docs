@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Cloud Storage Bucket should not be anonymously or publicly accessible
- 
+
 ## Description{% #description %}
 
 It is recommended that IAM policies on Cloud Storage buckets do not allow anonymous or public access.

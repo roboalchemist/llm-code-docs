@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Etcd should be configured for peer authentication
-Classification:complianceFramework:cis-kubernetesControl:2.5 
+Classification:complianceFramework:cis-kubernetesControl:2.5
 ## Description{% #description %}
 
 Etcd should be configured for peer authentication.

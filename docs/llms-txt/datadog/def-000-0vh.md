@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Permissions on /var/log/wtmp(.*) Files
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/var/log/(b|w)tmp(.*|-*)`, run the command:

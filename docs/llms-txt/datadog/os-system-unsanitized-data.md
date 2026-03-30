@@ -84,6 +84,5 @@ def resource2(resource_id):
     file1 = subprocess.call(sanitize(resource_id))
     file2 = subprocess.capture_output(f"/path/to/{sanitize(resource_id)}")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Load Balancers should span multiple Availability Zones
- 
+
 ## Description{% #description %}
 
 This check assesses whether load balancers (Application, Network, or Gateway) are configured to operate across at least two Availability Zones (AZs). Load balancers can be set up to distribute traffic across Amazon EC2 instances within either a single Availability Zone or multiple Availability Zones. If a load balancer is not configured to span multiple Availability Zones, it cannot redirect traffic to targets in a different Availability Zone if the sole configured AZ becomes unavailable.

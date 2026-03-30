@@ -1,0 +1,121 @@
+# Bolt
+Source: https://docs.dappier.com/integrations/bolt-integration
+
+
+
+[**Bolt.new**](https://bolt.new) is an AI-first platform for building full-stack web applications directly in the browser. Created by StackBlitz, it combines WebContainers and Anthropic’s Claude model to provide a zero-setup coding experience. Developers can use natural language to scaffold, run, and deploy complete apps—including frontend frameworks, Node.js servers, and full npm ecosystems.
+
+[**Dappier**](https://dappier.com/developers/) provides AI agents and applications with verified, real-time data from trusted sources like web search, stock market APIs, local news, and lifestyle content providers. By connecting Dappier’s tools with bolt.new, developers can instantly prototype and ship apps that reason over live data.
+
+## ⚡ Quickstart: Enable a Smart AskAI Agent
+
+Want to add a conversational AI assistant to your bolt.new app? This setup gives you a modal-style AskAI widget powered by Dappier, docked in the bottom-right corner of your screen. It responds to user questions using real-time data—perfect for search, support, and intelligent content discovery.
+
+Copy and paste the following into your project to get started:
+
+````markdown  theme={null}
+I'd like to enable a smart AskAI search agent on my project, docked in the bottom-right corner of the screen. When clicked, it should open a modal-style conversational experience powered by Dappier.
+
+Here's the widget I want to embed:
+
+1. Add this to the <head> section:
+
+```
+<script
+  src="https://assets.dappier.com/widget/dappier-loader.min.js"
+  widget-id="wd_01jw8xz7ztf4zr22e2whnsxp7s"
+  style-icon="chat"
+  theme="light"
+/>
+```
+
+2. And place this where the widget should mount:
+
+```
+<div id="dappier-ask-ai-widget">
+  <dappier-ask-ai-widget widgetId="wd_01jw8xz7ztf4zr22e2whnsxp7s" />
+</div>
+```
+
+It should support modal open/close behavior and work well across desktop and mobile.
+
+3. Customize the button design:
+
+Please make the button match the site's style. Some ideas:
+
+Rounded corners
+
+Chat icon next to text
+
+Sticky in the corner or part of nav
+
+Use tailwind classes like bg-indigo-600 text-white px-4 py-2 rounded-lg shadow
+````
+
+> ✅ Drop it into your Bolt app to activate a fully working, real-time AskAI assistant with no backend setup required.
+
+## Real-Time Use Cases
+
+The following real-time cookbooks demonstrate how to use Dappier tools inside bolt.new to build AI-powered applications and revenue-generating websites. Each example includes setup, integration steps, and one-click deployment—all inside the browser.
+
+* [**Build a Real-Time Stock Market Explorer App**](https://docs.dappier.com/cookbook/recipes/bolt-stock-market-search)\
+  Use bolt.new to create and deploy a real-time stock market search application that responds with live financial data from Dappier’s APIs.
+
+* [**Add Dappier AskAI Widget to Your Website**](https://docs.dappier.com/cookbook/recipes/bolt-askai-widget-integration)\
+  Learn how to embed the Dappier AskAI widget into any bolt.new project. This interactive chatbot allows users to query your content using natural language, while you monetize traffic through AI-powered ad units. Ideal for publishers, creators, and educators looking to activate intelligent, revenue-generating experiences with zero backend.
+
+## Overview
+
+The bolt.new integration with [Dappier](https://dappier.com/) empowers developers to build intelligent, real-time web applications entirely in the browser. By combining Bolt’s instant, zero-setup development environment with Dappier’s live, rights-cleared data tools and monetization APIs, creators can build and deploy full-stack apps that are both context-aware and revenue-ready.
+
+This integration supports the following key capabilities:
+
+* **Dappier AskAI Widget**: Easily embed an interactive chatbot on your bolt.new website. Let visitors ask natural language questions and receive AI-powered answers—while you earn revenue through Dappier's monetized agent infrastructure.
+* **AI Agents with Real-Time Data**: Bolt users can create Claude- or GPT-powered bots that invoke Dappier tools for real-time search, financial data, or news—without managing any infrastructure or backend APIs.
+* **Domain-Specific Data Models**: Integrate Dappier’s structured APIs for verticals like sports, lifestyle, pets, and sustainability to enrich your app experiences with curated, trustworthy data.
+
+Whether you're a developer building tools, a publisher activating content, or a designer prototyping AI features—bolt.new and Dappier together offer a seamless path to smart, real-time applications that monetize and scale from day one.
+
+## Available Models
+
+Dappier offers two categories of models that can be used within bolt.new applications:
+
+* **Real-Time Search (AI Models)**: Perform live web and financial queries using natural language.
+* **AI Recommendations (Data Models)**: Retrieve curated, vertical-specific content for domains like pets, lifestyle, and news.
+
+All models are rights-cleared, production-ready, and accessible via the Dappier API.
+
+***
+
+### 🔎 Real-Time Search (AI Models)
+
+| Model Name            | Description                                                                                | ai\_model\_id                   | Pricing         |
+| --------------------- | ------------------------------------------------------------------------------------------ | ------------------------------- | --------------- |
+| **Dappier Search**    | Real-time web search across the latest news, weather, travel, events, and more.            | `am_01j06ytn18ejftedz6dyhz2b15` | **Free**        |
+| **Stock Market Data** | Live stock prices, earnings reports, financial news, and sentiment-tagged market insights. | `am_01j749h8pbf7ns8r1bq9s2evrh` | \$0.007 / query |
+
+***
+
+### 🤖 AI Recommendations (Data Models)
+
+| Model Name         | Description                                                                                   | data\_model\_id                 | Pricing        |
+| ------------------ | --------------------------------------------------------------------------------------------- | ------------------------------- | -------------- |
+| **Sports News**    | Real-time sports headlines from Sportsnaut, LAFB Network, Ringside Intel, and more.           | `dm_01j0pb465keqmatq9k83dthx34` | \$0.50 / query |
+| **Lifestyle News** | Pop culture, wellness, and trend articles from The Mix, Snipdaily, Nerdable, and Familyproof. | `dm_01j0q82s4bfjmsqkhs3ywm3x6y` | \$0.50 / query |
+| **iHeartDogs AI**  | Dog training, grooming, health, and lifestyle content from iHeartDogs.                        | `dm_01j1sz8t3qe6v9g8ad102kvmqn` | \$0.01 / query |
+| **iHeartCats AI**  | Cat care articles on behavior, health, and daily enrichment from iHeartCats.                  | `dm_01j1sza0h7ekhaecys2p3y0vmj` | \$0.01 / query |
+| **GreenMonster**   | Sustainable living tips and eco-conscious guides from One Green Planet.                       | `dm_01j5xy9w5sf49bm6b1prm80m27` | \$0.01 / query |
+| **WISH-TV AI**     | Local news, politics, multicultural content, and entertainment from the WISH-TV newsroom.     | `dm_01jagy9nqaeer9hxx8z1sk1jx6` | \$0.01 / query |
+
+***
+
+👉 To learn more about how these models work and how to query them, visit the official API reference:\
+[https://docs.dappier.com/api-reference](https://docs.dappier.com/api-reference)
+
+## Conclusion
+
+Integrating Dappier with bolt.new unlocks the ability to build real-time, AI-powered applications directly from your browser—with zero backend setup.
+
+Whether you're embedding the Dappier AskAI widget to monetize traffic, using Claude or GPT agents to fetch real-time search results, or enriching your site with domain-specific recommendations from trusted publishers—Dappier provides the structured, verified data your applications need to stay current and context-aware.
+
+With bolt.new’s instant development and deployment environment, and Dappier’s suite of live tools and monetized agents, developers can go from prompt to product in minutes—building smart, responsive, and revenue-ready web experiences at scale.

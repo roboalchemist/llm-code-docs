@@ -73,7 +73,7 @@ breadcrumbs: Docs > Infrastructure > Datadog Resource Catalog
 - `source`**Type**: `STRING`**Provider name**: `source`**Description**: The source pattern for a URL rewrite or redirect rule.
 - `status`**Type**: `STRING`**Provider name**: `status`**Description**: The status code for a URL rewrite or redirect rule.
   {% dl %}
-  
+
   {% dt %}
 200
   {% /dt %}

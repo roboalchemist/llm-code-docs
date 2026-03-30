@@ -48,6 +48,5 @@ ReactDOM.render(<App ref={doSomethingWithInst} />, document.body);
 
 ReactDOM.render(<App />, document.body, doSomethingWithInst);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

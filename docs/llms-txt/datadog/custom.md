@@ -92,7 +92,7 @@ For example, this payload sends a CI pipeline event to Datadog:
         }
       }
       EOF
-      
+
 ```
 
 1. After sending your pipeline event to Datadog, you can integrate additional event types such as `stage`, `job`, and `step`. For more information, see the [Send Pipeline Event endpoint](https://docs.datadoghq.com/api/latest/ci-visibility-pipelines/#send-pipeline-event).

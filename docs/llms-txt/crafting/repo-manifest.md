@@ -1,8 +1,8 @@
 # Source: https://docs.sandboxes.cloud/docs/repo-manifest.md
 
-# Repo Manifest
+## Repo Manifest
 
-## Overview
+### Overview
 
 `Repo Manifest` defines how Crafting system automates the setup for a git repository in the workspace after checking out the code. It is in YAML format including the following information:
 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure There Are No Accounts With Blank or Null Passwords
- 
+
 ## Description{% #description %}
 
 Check the "/etc/shadow" file for blank passwords with the following command:

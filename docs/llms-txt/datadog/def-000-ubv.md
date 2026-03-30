@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Unauthenticated route returns sensitive PII
- 
+
 ## Description{% #description %}
 
 The API allows unauthenticated users to access sensitive personally identifiable information (PII), which may not be intended.

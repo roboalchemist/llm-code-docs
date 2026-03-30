@@ -1,0 +1,27 @@
+# Source: https://mastra.ai/reference/datasets/delete
+
+# DatasetsManager.delete()
+
+**Added in:** `@mastra/core@1.4.0`
+
+Deletes a dataset by ID, including all items, versions, and experiments.
+
+## Usage example
+
+```typescript
+import { Mastra } from '@mastra/core'
+
+const mastra = new Mastra({
+  /* storage config */
+})
+
+await mastra.datasets.delete({ id: 'dataset-id' })
+```
+
+## Parameters
+
+**id** (`string`): ID of the dataset to delete.
+
+## Returns
+
+**result** (`Promise<void>`): Resolves when the dataset is deleted.

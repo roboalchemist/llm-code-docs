@@ -1,0 +1,55 @@
+---
+title: sun-streams() source options
+driver: 'sun-stream'
+id: adm-src-sun-opt
+description: >-
+    This section describes the options of the sun-streams() source in {{ site.product.short_name }}.
+---
+
+The sun-streams() driver has the following options.
+
+## door()
+
+|  Type:|      string|
+|Default: |  none|
+
+*Description:* Specifies the filename of a door to open, needed on Solaris
+above 2.5.1.
+
+{% include doc/admin-guide/options/chain-hostnames.md %}
+
+{% include doc/admin-guide/options/source-flags.md %}
+
+{% include doc/admin-guide/options/follow-freq.md %}
+
+{% include doc/admin-guide/options/format.md %}
+
+{% include doc/admin-guide/options/hook.md %}
+
+{% include doc/admin-guide/options/internal.md %}
+
+{% include doc/admin-guide/options/keep-timestamp.md %}
+
+{% include doc/admin-guide/options/log-fetch-limit.md %}
+
+{% include doc/admin-guide/options/log-iw-size.md %}
+
+{% include doc/admin-guide/options/log-msg-size.md %}
+
+{% include doc/admin-guide/options/log-prefix.md %}
+
+{% include doc/admin-guide/options/normalize-hostnames.md %}
+
+{% include doc/admin-guide/options/optional.md %}
+
+{% include doc/admin-guide/options/pad-size.md %}
+
+{% include doc/admin-guide/options/program-override.md %}
+
+{% include doc/admin-guide/options/sdata-prefix.md %}
+
+{% include doc/admin-guide/options/tags.md %}
+
+{% include doc/admin-guide/options/time-zone.md %}
+
+{% include doc/admin-guide/options/use-syslogng-pid.md %}

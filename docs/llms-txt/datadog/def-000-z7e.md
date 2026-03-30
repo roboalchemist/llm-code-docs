@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Possible AWS backup resource enumeration by long term access key
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1580-cloud-infrastructure-discovery](https://attack.mitre.org/techniques/T1580) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1580-cloud-infrastructure-discovery](https://attack.mitre.org/techniques/T1580)
 ## Goal{% #goal %}
 
 Detects AWS backup service enumeration activities performed across multiple regions using long-term access keys.

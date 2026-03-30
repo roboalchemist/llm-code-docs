@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Impossible travel GitLab eve
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detect an Impossible Travel event when two successful events occur in a short time frame from geographically far locations.

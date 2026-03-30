@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Cloud DNS DNSSEC should use a secure algorithm other than RSASHA1
- 
+
 ## Description{% #description %}
 
 Certificate resource records may use the domain name system security extensions (DNSSEC) algorithm numbers in this registry. DNSSEC zone signing and transaction security mechanisms (SIG(0) and TSIG) make use of subsets of these algorithms. Use the Google recommended algorithms for key signing.

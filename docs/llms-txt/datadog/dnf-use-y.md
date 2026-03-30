@@ -44,6 +44,5 @@ RUN dnf install httpd-2.4.46
 ```docker
 RUN dnf install -y httpd-2.4.46
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

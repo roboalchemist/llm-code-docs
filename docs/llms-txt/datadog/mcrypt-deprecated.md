@@ -75,6 +75,5 @@ $key = "key";
 $data = "Sensitive Data";
 openssl_encrypt($data, "aes-256-gcm", $key, $options=OPENSSL_RAW_DATA, $iv);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

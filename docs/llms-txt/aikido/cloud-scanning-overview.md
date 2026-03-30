@@ -1,0 +1,5 @@
+# Source: https://help.aikido.dev/cloud-scanning/cloud-scanning-overview.md
+
+# Cloud Scanning Overview
+
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><a href="connect-your-cloud"><strong>Connect Your Cloud</strong></a></td><td>Connect your cloud to scan for misconfigurations and security risks</td><td><a href="connect-your-cloud">connect-your-cloud</a></td></tr><tr><td><a href="cloud-search-querying-the-asset-graph"><strong>Cloud Search</strong></a></td><td>Learn how to search your cloud resources to find resources, risks and misconfigurations across different accounts</td><td><a href="cloud-search-querying-the-asset-graph">cloud-search-querying-the-asset-graph</a></td></tr><tr><td><a href="custom-cspm-rules"><strong>Custom CSPM Rules</strong></a></td><td>Set up custom alerts to flag risky cloud configurations</td><td><a href="custom-cspm-rules">custom-cspm-rules</a></td></tr></tbody></table>

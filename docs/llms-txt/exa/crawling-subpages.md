@@ -15,34 +15,36 @@ When searching websites, you often need to explore beyond the main page to find 
 Here's how to use Exa's subpage crawling feature:
 
 <CodeGroup>
-  ```bash cURL theme={null}
-  curl -X POST 'https://api.exa.ai/contents' \
-    -H 'x-api-key: YOUR-EXA-API-KEY' \
-    -H 'Content-Type: application/json' \
-    -d '{
-      "ids": ["https://example.com"],
-      "subpages": 5,
-      "subpageTarget": ["about", "products"]
-    }'
-  ```
 
-  ```python Python theme={null}
-  results = exa.get_contents(
-      ["https://example.com"], 
-      subpages=5, 
-      subpage_target=["about", "products"]
-  )
-  ```
+```bash cURL theme={null}
+curl -X POST 'https://api.exa.ai/contents' \
+  -H 'x-api-key: YOUR-EXA-API-KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "ids": ["https://example.com"],
+    "subpages": 5,
+    "subpageTarget": ["about", "products"]
+  }'
+```
 
-  ```typescript TypeScript theme={null}
-  const results = await exa.getContents(
-      ["https://example.com"], 
-      {
-          subpages: 5,
-          subpageTarget: ["about", "products"]
-      }
-  );
-  ```
+```python Python theme={null}
+results = exa.get_contents(
+    ["https://example.com"], 
+    subpages=5, 
+    subpage_target=["about", "products"]
+)
+```
+
+```typescript TypeScript theme={null}
+const results = await exa.getContents(
+    ["https://example.com"], 
+    {
+        subpages: 5,
+        subpageTarget: ["about", "products"]
+    }
+);
+```
+
 </CodeGroup>
 
 This will search through up to 5 subpages of the given website, and prioritize pages that contain the terms "about" or "products" in their contents.
@@ -63,40 +65,42 @@ This will search through up to 5 subpages of the given website, and prioritize p
 For the most up-to-date and comprehensive results, combine subpage crawling with livecrawl:
 
 <CodeGroup>
-  ```bash cURL theme={null}
-  curl -X POST 'https://api.exa.ai/contents' \
-    -H 'x-api-key: YOUR-EXA-API-KEY' \
-    -H 'Content-Type: application/json' \
-    -d '{
-      "ids": ["https://www.apple.com/"],
-      "livecrawl": "preferred",
-      "livecrawlTimeout": 12000,
-      "subpageTarget": ["news", "product"],
-      "subpages": 10
-    }'
-  ```
 
-  ```python Python theme={null}
-  result = exa.get_contents(
-      ["https://www.apple.com/"],
-      livecrawl="preferred",
-      livecrawl_timeout=12000,
-      subpage_target=["news", "product"],
-      subpages=10
-  )
-  ```
+```bash cURL theme={null}
+curl -X POST 'https://api.exa.ai/contents' \
+  -H 'x-api-key: YOUR-EXA-API-KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "ids": ["https://www.apple.com/"],
+    "livecrawl": "preferred",
+    "livecrawlTimeout": 12000,
+    "subpageTarget": ["news", "product"],
+    "subpages": 10
+  }'
+```
 
-  ```typescript TypeScript theme={null}
-  const result = await exa.getContents(
-      ["https://www.apple.com/"],
-      {
-          livecrawl: "preferred",
-          livecrawlTimeout: 12000,
-          subpageTarget: ["news", "product"],
-          subpages: 10
-      }
-  );
-  ```
+```python Python theme={null}
+result = exa.get_contents(
+    ["https://www.apple.com/"],
+    livecrawl="preferred",
+    livecrawl_timeout=12000,
+    subpage_target=["news", "product"],
+    subpages=10
+)
+```
+
+```typescript TypeScript theme={null}
+const result = await exa.getContents(
+    ["https://www.apple.com/"],
+    {
+        livecrawl: "preferred",
+        livecrawlTimeout: 12000,
+        subpageTarget: ["news", "product"],
+        subpages: 10
+    }
+);
+```
+
 </CodeGroup>
 
 This ensures you get fresh content from all discovered subpages.
@@ -110,34 +114,36 @@ Note that regarding usage, additional subpages count as an additional piece of c
 Search through documentation pages:
 
 <CodeGroup>
-  ```bash cURL theme={null}
-  curl -X POST 'https://api.exa.ai/contents' \
-    -H 'x-api-key: YOUR-EXA-API-KEY' \
-    -H 'Content-Type: application/json' \
-    -d '{
-      "ids": ["https://exa.ai"],
-      "subpages": 9,
-      "subpageTarget": ["docs", "tutorial"]
-    }'
-  ```
 
-  ```python Python theme={null}
-  result = exa.get_contents(
-      ["https://exa.ai"],
-      subpages=9,
-      subpage_target=["docs", "tutorial"]
-  )
-  ```
+```bash cURL theme={null}
+curl -X POST 'https://api.exa.ai/contents' \
+  -H 'x-api-key: YOUR-EXA-API-KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "ids": ["https://exa.ai"],
+    "subpages": 9,
+    "subpageTarget": ["docs", "tutorial"]
+  }'
+```
 
-  ```typescript TypeScript theme={null}
-  const result = await exa.getContents(
-      ["https://exa.ai"],
-      {
-          subpages: 9,
-          subpageTarget: ["docs", "tutorial"]
-      }
-  );
-  ```
+```python Python theme={null}
+result = exa.get_contents(
+    ["https://exa.ai"],
+    subpages=9,
+    subpage_target=["docs", "tutorial"]
+)
+```
+
+```typescript TypeScript theme={null}
+const result = await exa.getContents(
+    ["https://exa.ai"],
+    {
+        subpages: 9,
+        subpageTarget: ["docs", "tutorial"]
+    }
+);
+```
+
 </CodeGroup>
 
 This example crawls up to 9 subpages from the main site, prioritizing pages that contain "docs" or "tutorial" in their content.
@@ -227,40 +233,42 @@ This example crawls up to 9 subpages from the main site, prioritizing pages that
 Crawl through a company's news section:
 
 <CodeGroup>
-  ```bash cURL theme={null}
-  curl -X POST 'https://api.exa.ai/contents' \
-    -H 'x-api-key: YOUR-EXA-API-KEY' \
-    -H 'Content-Type: application/json' \
-    -d '{
-      "ids": ["https://www.apple.com/"],
-      "livecrawl": "preferred",
-      "livecrawlTimeout": 12000,
-      "subpageTarget": ["news", "product"],
-      "subpages": 10
-    }'
-  ```
 
-  ```python Python theme={null}
-  result = exa.get_contents(
-      ["https://www.apple.com/"],
-      livecrawl="preferred",
-      livecrawl_timeout=12000,
-      subpage_target=["news", "product"],
-      subpages=10
-  )
-  ```
+```bash cURL theme={null}
+curl -X POST 'https://api.exa.ai/contents' \
+  -H 'x-api-key: YOUR-EXA-API-KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "ids": ["https://www.apple.com/"],
+    "livecrawl": "preferred",
+    "livecrawlTimeout": 12000,
+    "subpageTarget": ["news", "product"],
+    "subpages": 10
+  }'
+```
 
-  ```typescript TypeScript theme={null}
-  const result = await exa.getContents(
-      ["https://www.apple.com/"],
-      {
-          livecrawl: "preferred",
-          livecrawlTimeout: 12000,
-          subpageTarget: ["news", "product"],
-          subpages: 10
-      }
-  );
-  ```
+```python Python theme={null}
+result = exa.get_contents(
+    ["https://www.apple.com/"],
+    livecrawl="preferred",
+    livecrawl_timeout=12000,
+    subpage_target=["news", "product"],
+    subpages=10
+)
+```
+
+```typescript TypeScript theme={null}
+const result = await exa.getContents(
+    ["https://www.apple.com/"],
+    {
+        livecrawl: "preferred",
+        livecrawlTimeout: 12000,
+        subpageTarget: ["news", "product"],
+        subpages: 10
+    }
+);
+```
+
 </CodeGroup>
 
 Output:
@@ -370,100 +378,102 @@ Output:
 Gather recent blog posts:
 
 <CodeGroup>
-  ```bash cURL theme={null}
-  curl -X POST 'https://api.exa.ai/contents' \
-    -H 'x-api-key: YOUR-EXA-API-KEY' \
-    -H 'Content-Type: application/json' \
-    -d '{
-      "ids": ["https://medium.com"],
-      "subpages": 5,
-      "subpageTarget": ["blog", "articles"],
-      "livecrawl": "preferred",
-      "livecrawlTimeout": 12000
-    }'
-  ```
 
-  ```python Python theme={null}
-  results = exa.get_contents(
-      ["https://medium.com"],
-      subpages=5,
-      subpage_target=["blog", "articles"],
-      livecrawl="preferred",
-      livecrawl_timeout=12000
-  )
-  ```
+```bash cURL theme={null}
+curl -X POST 'https://api.exa.ai/contents' \
+  -H 'x-api-key: YOUR-EXA-API-KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "ids": ["https://medium.com"],
+    "subpages": 5,
+    "subpageTarget": ["blog", "articles"],
+    "livecrawl": "preferred",
+    "livecrawlTimeout": 12000
+  }'
+```
 
-  ```typescript TypeScript theme={null}
-  const results = await exa.getContents(
-      ["https://medium.com"],
-      {
-          subpages: 5,
-          subpageTarget: ["blog", "articles"],
-          livecrawl: "preferred",
-          livecrawlTimeout: 12000
-      }
-  );
-  ```
+```python Python theme={null}
+results = exa.get_contents(
+    ["https://medium.com"],
+    subpages=5,
+    subpage_target=["blog", "articles"],
+    livecrawl="preferred",
+    livecrawl_timeout=12000
+)
+```
+
+```typescript TypeScript theme={null}
+const results = await exa.getContents(
+    ["https://medium.com"],
+    {
+        subpages: 5,
+        subpageTarget: ["blog", "articles"],
+        livecrawl: "preferred",
+        livecrawlTimeout: 12000
+    }
+);
+```
+
 </CodeGroup>
 
 Output:
 
 ```Shell Shell theme={null}
 {
-	"results": [
-		{
-			"id": "https://medium.com",
-			"title": "Medium: Read and write stories.",
-			"url": "https://medium.com",
-			"publishedDate": "2025-08-12T20:25:00.000Z",
-			"author": "",
-			"text": "[Sitemap](https://medium.com/sitemap/sitemap.xml)\n\n[Medium Logo](https://medium.com/)...",
-			"image": "https://miro.medium.com/v2/da:true/167cff2a3d17ac1e64d0762539978f2d54c0058886e8b3c8a03a725a83012ec0",
-			"favicon": "https://miro.medium.com/v2/5d8de952517e8160e40ef9841c781cdc14a5db313057fa3c3de41c6f5b494b19",
-			"subpages": [
-				{
-					"id": "https://blog.medium.com",
-					"title": "The Medium Blog",
-					"url": "https://blog.medium.com",
-					"publishedDate": "2025-08-12T20:25:00.000Z",
-					"author": "",
-					"text": "[Sitemap](https://blog.medium.com/sitemap/sitemap.xml)...",
-					"image": "https://miro.medium.com/v2/resize:fit:1024/1*7eq6Xl7nRYU77U7IPYvoDg.jpeg",
-					"favicon": "https://miro.medium.com/v2/5d8de952517e8160e40ef9841c781cdc14a5db313057fa3c3de41c6f5b494b19"
-				},
-				{
-					"id": "https://medium.com/",
-					"title": "Medium: Read and write stories.",
-					"url": "https://medium.com/",
-					"publishedDate": "2025-08-12T20:25:00.000Z",
-					"author": "",
-					"text": "[Sitemap](https://medium.com/sitemap/sitemap.xml)...",
-					"image": "https://miro.medium.com/v2/da:true/167cff2a3d17ac1e64d0762539978f2d54c0058886e8b3c8a03a725a83012ec0",
-					"favicon": "https://miro.medium.com/v2/5d8de952517e8160e40ef9841c781cdc14a5db313057fa3c3de41c6f5b494b19"
-				},
-				{
-					"id": "https://medium.com/about?autoplay=1",
-					"title": "About Medium",
-					"url": "https://medium.com/about?autoplay=1",
-					"publishedDate": "2025-08-12T20:25:00.000Z",
-					"author": "",
-					"text": "[Sitemap](https://medium.com/sitemap/sitemap.xml)...",
-					"image": "https://miro.medium.com/v2/da:true/167cff2a3d17ac1e64d0762539978f2d54c0058886e8b3c8a03a725a83012ec0",
-					"favicon": "https://miro.medium.com/v2/5d8de952517e8160e40ef9841c781cdc14a5db313057fa3c3de41c6f5b494b19"
-				},
-				{
-					"id": "https://medium.com/membership",
-					"title": "Medium Membership",
-					"url": "https://medium.com/membership",
-					"publishedDate": "2025-08-12T20:25:00.000Z",
-					"author": "",
-					"text": "[Sitemap](https://medium.com/sitemap/sitemap.xml)...",
-					"image": "https://miro.medium.com/v2/da:true/167cff2a3d17ac1e64d0762539978f2d54c0058886e8b3c8a03a725a83012ec0",
-					"favicon": "https://miro.medium.com/v2/5d8de952517e8160e40ef9841c781cdc14a5db313057fa3c3de41c6f5b494b19"
-				}
-			]
-		}
-	],
+    "results": [
+        {
+            "id": "https://medium.com",
+            "title": "Medium: Read and write stories.",
+            "url": "https://medium.com",
+            "publishedDate": "2025-08-12T20:25:00.000Z",
+            "author": "",
+            "text": "[Sitemap](https://medium.com/sitemap/sitemap.xml)\n\n[Medium Logo](https://medium.com/)...",
+            "image": "https://miro.medium.com/v2/da:true/167cff2a3d17ac1e64d0762539978f2d54c0058886e8b3c8a03a725a83012ec0",
+            "favicon": "https://miro.medium.com/v2/5d8de952517e8160e40ef9841c781cdc14a5db313057fa3c3de41c6f5b494b19",
+            "subpages": [
+                {
+                    "id": "https://blog.medium.com",
+                    "title": "The Medium Blog",
+                    "url": "https://blog.medium.com",
+                    "publishedDate": "2025-08-12T20:25:00.000Z",
+                    "author": "",
+                    "text": "[Sitemap](https://blog.medium.com/sitemap/sitemap.xml)...",
+                    "image": "https://miro.medium.com/v2/resize:fit:1024/1*7eq6Xl7nRYU77U7IPYvoDg.jpeg",
+                    "favicon": "https://miro.medium.com/v2/5d8de952517e8160e40ef9841c781cdc14a5db313057fa3c3de41c6f5b494b19"
+                },
+                {
+                    "id": "https://medium.com/",
+                    "title": "Medium: Read and write stories.",
+                    "url": "https://medium.com/",
+                    "publishedDate": "2025-08-12T20:25:00.000Z",
+                    "author": "",
+                    "text": "[Sitemap](https://medium.com/sitemap/sitemap.xml)...",
+                    "image": "https://miro.medium.com/v2/da:true/167cff2a3d17ac1e64d0762539978f2d54c0058886e8b3c8a03a725a83012ec0",
+                    "favicon": "https://miro.medium.com/v2/5d8de952517e8160e40ef9841c781cdc14a5db313057fa3c3de41c6f5b494b19"
+                },
+                {
+                    "id": "https://medium.com/about?autoplay=1",
+                    "title": "About Medium",
+                    "url": "https://medium.com/about?autoplay=1",
+                    "publishedDate": "2025-08-12T20:25:00.000Z",
+                    "author": "",
+                    "text": "[Sitemap](https://medium.com/sitemap/sitemap.xml)...",
+                    "image": "https://miro.medium.com/v2/da:true/167cff2a3d17ac1e64d0762539978f2d54c0058886e8b3c8a03a725a83012ec0",
+                    "favicon": "https://miro.medium.com/v2/5d8de952517e8160e40ef9841c781cdc14a5db313057fa3c3de41c6f5b494b19"
+                },
+                {
+                    "id": "https://medium.com/membership",
+                    "title": "Medium Membership",
+                    "url": "https://medium.com/membership",
+                    "publishedDate": "2025-08-12T20:25:00.000Z",
+                    "author": "",
+                    "text": "[Sitemap](https://medium.com/sitemap/sitemap.xml)...",
+                    "image": "https://miro.medium.com/v2/da:true/167cff2a3d17ac1e64d0762539978f2d54c0058886e8b3c8a03a725a83012ec0",
+                    "favicon": "https://miro.medium.com/v2/5d8de952517e8160e40ef9841c781cdc14a5db313057fa3c3de41c6f5b494b19"
+                }
+            ]
+        }
+    ],
   "requestId": "20163fc78142a5ff69c6959167417f1f"
 }
 ```

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Group Who Owns /etc/s
 ---
 
 # Verify Group Who Owns /etc/shells File
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/etc/shells`, run the command:

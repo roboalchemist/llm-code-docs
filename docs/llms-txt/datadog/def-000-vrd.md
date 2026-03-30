@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall CUPS Package
 ---
 
 # Uninstall CUPS Package
- 
+
 ## Description{% #description %}
 
 The `cups` package can be removed with the following command:

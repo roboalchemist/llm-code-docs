@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Enable Kernel Parameter to Log Martian Packets on all IPv4 Interfaces
- 
+
 ## Description{% #description %}
 
 To set the runtime status of the `net.ipv4.conf.all.log_martians` kernel parameter, run the following command:
@@ -76,7 +76,7 @@ fi
 
 #
 # If net.ipv4.conf.all.log_martians present in /etc/sysctl.conf, change value to appropriate value
-#	else, add "net.ipv4.conf.all.log_martians = value" to /etc/sysctl.conf
+#   else, add "net.ipv4.conf.all.log_martians = value" to /etc/sysctl.conf
 #
 
 # Strip any search characters in the key arg so that the key can be replaced without

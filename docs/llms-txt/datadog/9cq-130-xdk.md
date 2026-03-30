@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # ElastiCache clusters should use the latest engine version available
- 
+
 ## Description{% #description %}
 
 Ensure that your Amazon ElastiCache cluster is running the latest stable version of the Redis, Memcached, or Valkey cache engine. Upgrading to the latest version provides access to essential security patches, bug fixes, enhanced performance, and improved memory management, helping to maintain the reliability and security of your caching infrastructure.

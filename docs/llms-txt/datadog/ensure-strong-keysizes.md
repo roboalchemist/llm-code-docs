@@ -72,6 +72,5 @@ val ecGen = KeyPairGenerator.getInstance("EC")
 val params = ECGenParameterSpec("secp256r1")  // NIST approved
 ecGen.initialize(params)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -1,0 +1,255 @@
+# Source: https://docs.aws.amazon.com/redshift/latest/APIReference/llms.txt
+
+# Amazon Redshift API Reference
+
+> Overview
+
+- [Welcome](https://docs.aws.amazon.com/redshift/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/redshift/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/redshift/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/redshift/latest/APIReference/API_Operations.html)
+
+- [AcceptReservedNodeExchange](https://docs.aws.amazon.com/redshift/latest/APIReference/API_AcceptReservedNodeExchange.html): Exchanges a DC1 Reserved Node for a DC2 Reserved Node with no changes to the configuration (term, payment type, or number of nodes) and no additional costs.
+- [AddPartner](https://docs.aws.amazon.com/redshift/latest/APIReference/API_AddPartner.html): Adds a partner integration to a cluster.
+- [AssociateDataShareConsumer](https://docs.aws.amazon.com/redshift/latest/APIReference/API_AssociateDataShareConsumer.html): From a datashare consumer account, associates a datashare with the account (AssociateEntireAccount) or the specified namespace (ConsumerArn).
+- [AuthorizeClusterSecurityGroupIngress](https://docs.aws.amazon.com/redshift/latest/APIReference/API_AuthorizeClusterSecurityGroupIngress.html): Adds an inbound (ingress) rule to an Amazon Redshift security group.
+- [AuthorizeDataShare](https://docs.aws.amazon.com/redshift/latest/APIReference/API_AuthorizeDataShare.html): From a data producer account, authorizes the sharing of a datashare with one or more consumer accounts or managing entities.
+- [AuthorizeEndpointAccess](https://docs.aws.amazon.com/redshift/latest/APIReference/API_AuthorizeEndpointAccess.html): Grants access to a cluster.
+- [AuthorizeSnapshotAccess](https://docs.aws.amazon.com/redshift/latest/APIReference/API_AuthorizeSnapshotAccess.html): Authorizes the specified AWS account to restore the specified snapshot.
+- [BatchDeleteClusterSnapshots](https://docs.aws.amazon.com/redshift/latest/APIReference/API_BatchDeleteClusterSnapshots.html): Deletes a set of cluster snapshots.
+- [BatchModifyClusterSnapshots](https://docs.aws.amazon.com/redshift/latest/APIReference/API_BatchModifyClusterSnapshots.html): Modifies the settings for a set of cluster snapshots.
+- [CancelResize](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CancelResize.html): Cancels a resize operation for a cluster.
+- [CopyClusterSnapshot](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CopyClusterSnapshot.html): Copies the specified automated cluster snapshot to a new manual cluster snapshot.
+- [CreateAuthenticationProfile](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CreateAuthenticationProfile.html): Creates an authentication profile with the specified parameters.
+- [CreateCluster](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CreateCluster.html): Creates a new cluster with the specified parameters.
+- [CreateClusterParameterGroup](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CreateClusterParameterGroup.html): Creates an Amazon Redshift parameter group.
+- [CreateClusterSecurityGroup](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CreateClusterSecurityGroup.html): Creates a new Amazon Redshift security group.
+- [CreateClusterSnapshot](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CreateClusterSnapshot.html): Creates a manual snapshot of the specified cluster.
+- [CreateClusterSubnetGroup](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CreateClusterSubnetGroup.html): Creates a new Amazon Redshift subnet group.
+- [CreateCustomDomainAssociation](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CreateCustomDomainAssociation.html): Used to create a custom domain name for a cluster.
+- [CreateEndpointAccess](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CreateEndpointAccess.html): Creates a Redshift-managed VPC endpoint.
+- [CreateEventSubscription](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CreateEventSubscription.html): Creates an Amazon Redshift event notification subscription.
+- [CreateHsmClientCertificate](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CreateHsmClientCertificate.html): Creates an HSM client certificate that an Amazon Redshift cluster will use to connect to the client's HSM in order to store and retrieve the keys used to encrypt the cluster databases.
+- [CreateHsmConfiguration](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CreateHsmConfiguration.html): Creates an HSM configuration that contains the information required by an Amazon Redshift cluster to store and use database encryption keys in a Hardware Security Module (HSM).
+- [CreateIntegration](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CreateIntegration.html): Creates a zero-ETL integration or S3 event integration with Amazon Redshift.
+- [CreateRedshiftIdcApplication](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CreateRedshiftIdcApplication.html): Creates an Amazon Redshift application for use with IAM Identity Center.
+- [CreateScheduledAction](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CreateScheduledAction.html): Creates a scheduled action.
+- [CreateSnapshotCopyGrant](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CreateSnapshotCopyGrant.html): Creates a snapshot copy grant that permits Amazon Redshift to use an encrypted symmetric key from AWS Key Management Service (KMS) to encrypt copied snapshots in a destination region.
+- [CreateSnapshotSchedule](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CreateSnapshotSchedule.html): Create a snapshot schedule that can be associated to a cluster and which overrides the default system backup schedule.
+- [CreateTags](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CreateTags.html): Adds tags to a cluster.
+- [CreateUsageLimit](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CreateUsageLimit.html): Creates a usage limit for a specified Amazon Redshift feature on a cluster.
+- [DeauthorizeDataShare](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeauthorizeDataShare.html): From a datashare producer account, removes authorization from the specified datashare.
+- [DeleteAuthenticationProfile](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteAuthenticationProfile.html): Deletes an authentication profile.
+- [DeleteCluster](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteCluster.html): Deletes a previously provisioned cluster without its final snapshot being created.
+- [DeleteClusterParameterGroup](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteClusterParameterGroup.html): Deletes a specified Amazon Redshift parameter group.
+- [DeleteClusterSecurityGroup](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteClusterSecurityGroup.html): Deletes an Amazon Redshift security group.
+- [DeleteClusterSnapshot](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteClusterSnapshot.html): Deletes the specified manual snapshot.
+- [DeleteClusterSubnetGroup](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteClusterSubnetGroup.html): Deletes the specified cluster subnet group.
+- [DeleteCustomDomainAssociation](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteCustomDomainAssociation.html): Contains information about deleting a custom domain association for a cluster.
+- [DeleteEndpointAccess](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteEndpointAccess.html): Deletes a Redshift-managed VPC endpoint.
+- [DeleteEventSubscription](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteEventSubscription.html): Deletes an Amazon Redshift event notification subscription.
+- [DeleteHsmClientCertificate](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteHsmClientCertificate.html): Deletes the specified HSM client certificate.
+- [DeleteHsmConfiguration](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteHsmConfiguration.html): Deletes the specified Amazon Redshift HSM configuration.
+- [DeleteIntegration](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteIntegration.html): Deletes a zero-ETL integration or S3 event integration with Amazon Redshift.
+- [DeletePartner](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeletePartner.html): Deletes a partner integration from a cluster.
+- [DeleteRedshiftIdcApplication](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteRedshiftIdcApplication.html): Deletes an Amazon Redshift IAM Identity Center application.
+- [DeleteResourcePolicy](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteResourcePolicy.html): Deletes the resource policy for a specified resource.
+- [DeleteScheduledAction](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteScheduledAction.html): Deletes a scheduled action.
+- [DeleteSnapshotCopyGrant](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteSnapshotCopyGrant.html): Deletes the specified snapshot copy grant.
+- [DeleteSnapshotSchedule](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteSnapshotSchedule.html): Deletes a snapshot schedule.
+- [DeleteTags](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteTags.html): Deletes tags from a resource.
+- [DeleteUsageLimit](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteUsageLimit.html): Deletes a usage limit from a cluster.
+- [DeregisterNamespace](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeregisterNamespace.html): Deregisters a cluster or serverless namespace from the AWS Glue Data Catalog.
+- [DescribeAccountAttributes](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeAccountAttributes.html): Returns a list of attributes attached to an account
+- [DescribeAuthenticationProfiles](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeAuthenticationProfiles.html): Describes an authentication profile.
+- [DescribeClusterDbRevisions](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeClusterDbRevisions.html): Returns an array of ClusterDbRevision objects.
+- [DescribeClusterParameterGroups](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeClusterParameterGroups.html): Returns a list of Amazon Redshift parameter groups, including parameter groups you created and the default parameter group.
+- [DescribeClusterParameters](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeClusterParameters.html): Returns a detailed list of parameters contained within the specified Amazon Redshift parameter group.
+- [DescribeClusters](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeClusters.html): Returns properties of provisioned clusters including general cluster properties, cluster database properties, maintenance and backup properties, and security and access properties.
+- [DescribeClusterSecurityGroups](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeClusterSecurityGroups.html): Returns information about Amazon Redshift security groups.
+- [DescribeClusterSnapshots](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeClusterSnapshots.html): Returns one or more snapshot objects, which contain metadata about your cluster snapshots.
+- [DescribeClusterSubnetGroups](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeClusterSubnetGroups.html): Returns one or more cluster subnet group objects, which contain metadata about your cluster subnet groups.
+- [DescribeClusterTracks](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeClusterTracks.html): Returns a list of all the available maintenance tracks.
+- [DescribeClusterVersions](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeClusterVersions.html): Returns descriptions of the available Amazon Redshift cluster versions.
+- [DescribeCustomDomainAssociations](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeCustomDomainAssociations.html): Contains information about custom domain associations for a cluster.
+- [DescribeDataShares](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeDataShares.html): Shows the status of any inbound or outbound datashares available in the specified account.
+- [DescribeDataSharesForConsumer](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeDataSharesForConsumer.html): Returns a list of datashares where the account identifier being called is a consumer account identifier.
+- [DescribeDataSharesForProducer](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeDataSharesForProducer.html): Returns a list of datashares when the account identifier being called is a producer account identifier.
+- [DescribeDefaultClusterParameters](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeDefaultClusterParameters.html): Returns a list of parameter settings for the specified parameter group family.
+- [DescribeEndpointAccess](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeEndpointAccess.html): Describes a Redshift-managed VPC endpoint.
+- [DescribeEndpointAuthorization](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeEndpointAuthorization.html): Describes an endpoint authorization.
+- [DescribeEventCategories](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeEventCategories.html): Displays a list of event categories for all event source types, or for a specified source type.
+- [DescribeEvents](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeEvents.html): Returns events related to clusters, security groups, snapshots, and parameter groups for the past 14 days.
+- [DescribeEventSubscriptions](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeEventSubscriptions.html): Lists descriptions of all the Amazon Redshift event notification subscriptions for a customer account.
+- [DescribeHsmClientCertificates](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeHsmClientCertificates.html): Returns information about the specified HSM client certificate.
+- [DescribeHsmConfigurations](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeHsmConfigurations.html): Returns information about the specified Amazon Redshift HSM configuration.
+- [DescribeInboundIntegrations](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeInboundIntegrations.html): Returns a list of inbound integrations.
+- [DescribeIntegrations](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeIntegrations.html): Describes one or more zero-ETL or S3 event integrations with Amazon Redshift.
+- [DescribeLoggingStatus](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeLoggingStatus.html): Describes whether information, such as queries and connection attempts, is being logged for the specified Amazon Redshift cluster.
+- [DescribeNodeConfigurationOptions](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeNodeConfigurationOptions.html): Returns properties of possible node configurations such as node type, number of nodes, and disk usage for the specified action type.
+- [DescribeOrderableClusterOptions](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeOrderableClusterOptions.html): Returns a list of orderable cluster options.
+- [DescribePartners](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribePartners.html): Returns information about the partner integrations defined for a cluster.
+- [DescribeRedshiftIdcApplications](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeRedshiftIdcApplications.html): Lists the Amazon Redshift IAM Identity Center applications.
+- [DescribeReservedNodeExchangeStatus](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeReservedNodeExchangeStatus.html): Returns exchange status details and associated metadata for a reserved-node exchange.
+- [DescribeReservedNodeOfferings](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeReservedNodeOfferings.html): Returns a list of the available reserved node offerings by Amazon Redshift with their descriptions including the node type, the fixed and recurring costs of reserving the node and duration the node will be reserved for you.
+- [DescribeReservedNodes](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeReservedNodes.html): Returns the descriptions of the reserved nodes.
+- [DescribeResize](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeResize.html): Returns information about the last resize operation for the specified cluster.
+- [DescribeScheduledActions](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeScheduledActions.html): Describes properties of scheduled actions.
+- [DescribeSnapshotCopyGrants](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeSnapshotCopyGrants.html): Returns a list of snapshot copy grants owned by the AWS account in the destination region.
+- [DescribeSnapshotSchedules](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeSnapshotSchedules.html): Returns a list of snapshot schedules.
+- [DescribeStorage](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeStorage.html): Returns account level backups storage size and provisional storage.
+- [DescribeTableRestoreStatus](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeTableRestoreStatus.html): Lists the status of one or more table restore requests made using the API action.
+- [DescribeTags](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeTags.html): Returns a list of tags.
+- [DescribeUsageLimits](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeUsageLimits.html): Shows usage limits on a cluster.
+- [DisableLogging](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DisableLogging.html): Stops logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster.
+- [DisableSnapshotCopy](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DisableSnapshotCopy.html): Disables the automatic copying of snapshots from one region to another region for a specified cluster.
+- [DisassociateDataShareConsumer](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DisassociateDataShareConsumer.html): From a datashare consumer account, remove association for the specified datashare.
+- [EnableLogging](https://docs.aws.amazon.com/redshift/latest/APIReference/API_EnableLogging.html): Starts logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster.
+- [EnableSnapshotCopy](https://docs.aws.amazon.com/redshift/latest/APIReference/API_EnableSnapshotCopy.html): Enables the automatic copy of snapshots from one region to another region for a specified cluster.
+- [FailoverPrimaryCompute](https://docs.aws.amazon.com/redshift/latest/APIReference/API_FailoverPrimaryCompute.html): Fails over the primary compute unit of the specified Multi-AZ cluster to another Availability Zone.
+- [GetClusterCredentials](https://docs.aws.amazon.com/redshift/latest/APIReference/API_GetClusterCredentials.html): Returns a database user name and temporary password with temporary authorization to log on to an Amazon Redshift database.
+- [GetClusterCredentialsWithIAM](https://docs.aws.amazon.com/redshift/latest/APIReference/API_GetClusterCredentialsWithIAM.html): Returns a database user name and temporary password with temporary authorization to log in to an Amazon Redshift database.
+- [GetIdentityCenterAuthToken](https://docs.aws.amazon.com/redshift/latest/APIReference/API_GetIdentityCenterAuthToken.html): Generates an encrypted authentication token that propagates the caller's AWS IAM Identity Center identity to Amazon Redshift clusters.
+- [GetReservedNodeExchangeConfigurationOptions](https://docs.aws.amazon.com/redshift/latest/APIReference/API_GetReservedNodeExchangeConfigurationOptions.html): Gets the configuration options for the reserved-node exchange.
+- [GetReservedNodeExchangeOfferings](https://docs.aws.amazon.com/redshift/latest/APIReference/API_GetReservedNodeExchangeOfferings.html): Returns an array of DC2 ReservedNodeOfferings that matches the payment type, term, and usage price of the given DC1 reserved node.
+- [GetResourcePolicy](https://docs.aws.amazon.com/redshift/latest/APIReference/API_GetResourcePolicy.html): Get the resource policy for a specified resource.
+- [ListRecommendations](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ListRecommendations.html): List the Amazon Redshift Advisor recommendations for one or multiple Amazon Redshift clusters in an AWS account.
+- [ModifyAquaConfiguration](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifyAquaConfiguration.html): This operation is retired.
+- [ModifyAuthenticationProfile](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifyAuthenticationProfile.html): Modifies an authentication profile.
+- [ModifyCluster](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifyCluster.html): Modifies the settings for a cluster.
+- [ModifyClusterDbRevision](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifyClusterDbRevision.html): Modifies the database revision of a cluster.
+- [ModifyClusterIamRoles](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifyClusterIamRoles.html): Modifies the list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS services.
+- [ModifyClusterMaintenance](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifyClusterMaintenance.html): Modifies the maintenance settings of a cluster.
+- [ModifyClusterParameterGroup](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifyClusterParameterGroup.html): Modifies the parameters of a parameter group.
+- [ModifyClusterSnapshot](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifyClusterSnapshot.html): Modifies the settings for a snapshot.
+- [ModifyClusterSnapshotSchedule](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifyClusterSnapshotSchedule.html): Modifies a snapshot schedule for a cluster.
+- [ModifyClusterSubnetGroup](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifyClusterSubnetGroup.html): Modifies a cluster subnet group to include the specified list of VPC subnets.
+- [ModifyCustomDomainAssociation](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifyCustomDomainAssociation.html): Contains information for changing a custom domain association.
+- [ModifyEndpointAccess](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifyEndpointAccess.html): Modifies a Redshift-managed VPC endpoint.
+- [ModifyEventSubscription](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifyEventSubscription.html): Modifies an existing Amazon Redshift event notification subscription.
+- [ModifyIntegration](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifyIntegration.html): Modifies a zero-ETL integration or S3 event integration with Amazon Redshift.
+- [ModifyLakehouseConfiguration](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifyLakehouseConfiguration.html): Modifies the lakehouse configuration for a cluster.
+- [ModifyRedshiftIdcApplication](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifyRedshiftIdcApplication.html): Changes an existing Amazon Redshift IAM Identity Center application.
+- [ModifyScheduledAction](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifyScheduledAction.html): Modifies a scheduled action.
+- [ModifySnapshotCopyRetentionPeriod](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifySnapshotCopyRetentionPeriod.html): Modifies the number of days to retain snapshots in the destination AWS Region after they are copied from the source AWS Region.
+- [ModifySnapshotSchedule](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifySnapshotSchedule.html): Modifies a snapshot schedule.
+- [ModifyUsageLimit](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ModifyUsageLimit.html): Modifies a usage limit in a cluster.
+- [PauseCluster](https://docs.aws.amazon.com/redshift/latest/APIReference/API_PauseCluster.html): Pauses a cluster.
+- [PurchaseReservedNodeOffering](https://docs.aws.amazon.com/redshift/latest/APIReference/API_PurchaseReservedNodeOffering.html): Allows you to purchase reserved nodes.
+- [PutResourcePolicy](https://docs.aws.amazon.com/redshift/latest/APIReference/API_PutResourcePolicy.html): Updates the resource policy for a specified resource.
+- [RebootCluster](https://docs.aws.amazon.com/redshift/latest/APIReference/API_RebootCluster.html): Reboots a cluster.
+- [RegisterNamespace](https://docs.aws.amazon.com/redshift/latest/APIReference/API_RegisterNamespace.html): Registers a cluster or serverless namespace to the AWS Glue Data Catalog.
+- [RejectDataShare](https://docs.aws.amazon.com/redshift/latest/APIReference/API_RejectDataShare.html): From a datashare consumer account, rejects the specified datashare.
+- [ResetClusterParameterGroup](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ResetClusterParameterGroup.html): Sets one or more parameters of the specified parameter group to their default values and sets the source values of the parameters to "engine-default".
+- [ResizeCluster](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ResizeCluster.html): Changes the size of the cluster.
+- [RestoreFromClusterSnapshot](https://docs.aws.amazon.com/redshift/latest/APIReference/API_RestoreFromClusterSnapshot.html): Creates a new cluster from a snapshot.
+- [RestoreTableFromClusterSnapshot](https://docs.aws.amazon.com/redshift/latest/APIReference/API_RestoreTableFromClusterSnapshot.html): Creates a new table from a table in an Amazon Redshift cluster snapshot.
+- [ResumeCluster](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ResumeCluster.html): Resumes a paused cluster.
+- [RevokeClusterSecurityGroupIngress](https://docs.aws.amazon.com/redshift/latest/APIReference/API_RevokeClusterSecurityGroupIngress.html): Revokes an ingress rule in an Amazon Redshift security group for a previously authorized IP range or Amazon EC2 security group.
+- [RevokeEndpointAccess](https://docs.aws.amazon.com/redshift/latest/APIReference/API_RevokeEndpointAccess.html): Revokes access to a cluster.
+- [RevokeSnapshotAccess](https://docs.aws.amazon.com/redshift/latest/APIReference/API_RevokeSnapshotAccess.html): Removes the ability of the specified AWS account to restore the specified snapshot.
+- [RotateEncryptionKey](https://docs.aws.amazon.com/redshift/latest/APIReference/API_RotateEncryptionKey.html): Rotates the encryption keys for a cluster.
+- [UpdatePartnerStatus](https://docs.aws.amazon.com/redshift/latest/APIReference/API_UpdatePartnerStatus.html): Updates the status of a partner integration.
+
+
+## [Data Types](https://docs.aws.amazon.com/redshift/latest/APIReference/API_Types.html)
+
+- [AccountAttribute](https://docs.aws.amazon.com/redshift/latest/APIReference/API_AccountAttribute.html): A name value pair that describes an aspect of an account.
+- [AccountWithRestoreAccess](https://docs.aws.amazon.com/redshift/latest/APIReference/API_AccountWithRestoreAccess.html): Describes an AWS account authorized to restore a snapshot.
+- [AquaConfiguration](https://docs.aws.amazon.com/redshift/latest/APIReference/API_AquaConfiguration.html): The operation that uses this structure is retired.
+- [Association](https://docs.aws.amazon.com/redshift/latest/APIReference/API_Association.html): Contains information about the custom domain name association.
+- [AttributeValueTarget](https://docs.aws.amazon.com/redshift/latest/APIReference/API_AttributeValueTarget.html): Describes an attribute value.
+- [AuthenticationProfile](https://docs.aws.amazon.com/redshift/latest/APIReference/API_AuthenticationProfile.html): Describes an authentication profile.
+- [AuthorizedTokenIssuer](https://docs.aws.amazon.com/redshift/latest/APIReference/API_AuthorizedTokenIssuer.html): The authorized token issuer for the Amazon Redshift IAM Identity Center application.
+- [AvailabilityZone](https://docs.aws.amazon.com/redshift/latest/APIReference/API_AvailabilityZone.html): Describes an availability zone.
+- [CertificateAssociation](https://docs.aws.amazon.com/redshift/latest/APIReference/API_CertificateAssociation.html): A cluster ID and custom domain name tied to a specific certificate.
+- [Cluster](https://docs.aws.amazon.com/redshift/latest/APIReference/API_Cluster.html): Describes a cluster.
+- [ClusterAssociatedToSchedule](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ClusterAssociatedToSchedule.html)
+- [ClusterDbRevision](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ClusterDbRevision.html): Describes a ClusterDbRevision.
+- [ClusterIamRole](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ClusterIamRole.html): An AWS Identity and Access Management (IAM) role that can be used by the associated Amazon Redshift cluster to access other AWS services.
+- [ClusterNode](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ClusterNode.html): The identifier of a node in a cluster.
+- [ClusterParameterGroup](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ClusterParameterGroup.html): Describes a parameter group.
+- [ClusterParameterGroupStatus](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ClusterParameterGroupStatus.html): Describes the status of a parameter group.
+- [ClusterParameterStatus](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ClusterParameterStatus.html): Describes the status of a parameter group.
+- [ClusterSecurityGroup](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ClusterSecurityGroup.html): Describes a security group.
+- [ClusterSecurityGroupMembership](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ClusterSecurityGroupMembership.html): Describes a cluster security group.
+- [ClusterSnapshotCopyStatus](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ClusterSnapshotCopyStatus.html): Returns the destination region and retention period that are configured for cross-region snapshot copy.
+- [ClusterSubnetGroup](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ClusterSubnetGroup.html): Describes a subnet group.
+- [ClusterVersion](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ClusterVersion.html): Describes a cluster version, including the parameter group family and description of the version.
+- [Connect](https://docs.aws.amazon.com/redshift/latest/APIReference/API_Connect.html): A structure that defines the Amazon Redshift connect service integration scope.
+- [DataShare](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DataShare.html)
+- [DataShareAssociation](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DataShareAssociation.html): The association of a datashare from a producer account with a data consumer.
+- [DataTransferProgress](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DataTransferProgress.html): Describes the status of a cluster while it is in the process of resizing with an incremental resize.
+- [DefaultClusterParameters](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DefaultClusterParameters.html): Describes the default cluster parameters for a parameter group family.
+- [DeferredMaintenanceWindow](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeferredMaintenanceWindow.html): Describes a deferred maintenance window
+- [DeleteClusterSnapshotMessage](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DeleteClusterSnapshotMessage.html)
+- [DescribeIntegrationsFilter](https://docs.aws.amazon.com/redshift/latest/APIReference/API_DescribeIntegrationsFilter.html): A set of elements to filter the returned integrations.
+- [EC2SecurityGroup](https://docs.aws.amazon.com/redshift/latest/APIReference/API_EC2SecurityGroup.html): Describes an Amazon EC2 security group.
+- [ElasticIpStatus](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ElasticIpStatus.html): Describes the status of the elastic IP (EIP) address.
+- [Endpoint](https://docs.aws.amazon.com/redshift/latest/APIReference/API_Endpoint.html): Describes a connection endpoint.
+- [EndpointAccess](https://docs.aws.amazon.com/redshift/latest/APIReference/API_EndpointAccess.html): Describes a Redshift-managed VPC endpoint.
+- [EndpointAuthorization](https://docs.aws.amazon.com/redshift/latest/APIReference/API_EndpointAuthorization.html): Describes an endpoint authorization for authorizing Redshift-managed VPC endpoint access to a cluster across AWS accounts.
+- [Event](https://docs.aws.amazon.com/redshift/latest/APIReference/API_Event.html): Describes an event.
+- [EventCategoriesMap](https://docs.aws.amazon.com/redshift/latest/APIReference/API_EventCategoriesMap.html): Describes event categories.
+- [EventInfoMap](https://docs.aws.amazon.com/redshift/latest/APIReference/API_EventInfoMap.html): Describes event information.
+- [EventSubscription](https://docs.aws.amazon.com/redshift/latest/APIReference/API_EventSubscription.html): Describes event subscriptions.
+- [HsmClientCertificate](https://docs.aws.amazon.com/redshift/latest/APIReference/API_HsmClientCertificate.html): Returns information about an HSM client certificate.
+- [HsmConfiguration](https://docs.aws.amazon.com/redshift/latest/APIReference/API_HsmConfiguration.html): Returns information about an HSM configuration, which is an object that describes to Amazon Redshift clusters the information they require to connect to an HSM where they can store database encryption keys.
+- [HsmStatus](https://docs.aws.amazon.com/redshift/latest/APIReference/API_HsmStatus.html): Describes the status of changes to HSM settings.
+- [InboundIntegration](https://docs.aws.amazon.com/redshift/latest/APIReference/API_InboundIntegration.html): The content of an inbound integration.
+- [Integration](https://docs.aws.amazon.com/redshift/latest/APIReference/API_Integration.html)
+- [IntegrationError](https://docs.aws.amazon.com/redshift/latest/APIReference/API_IntegrationError.html): The error of an inbound integration.
+- [IPRange](https://docs.aws.amazon.com/redshift/latest/APIReference/API_IPRange.html): Describes an IP range used in a security group.
+- [LakeFormationQuery](https://docs.aws.amazon.com/redshift/latest/APIReference/API_LakeFormationQuery.html): The Lake Formation scope.
+- [LakeFormationScopeUnion](https://docs.aws.amazon.com/redshift/latest/APIReference/API_LakeFormationScopeUnion.html): A list of scopes set up for Lake Formation integration.
+- [MaintenanceTrack](https://docs.aws.amazon.com/redshift/latest/APIReference/API_MaintenanceTrack.html): Defines a maintenance track that determines which Amazon Redshift version to apply during a maintenance window.
+- [NamespaceIdentifierUnion](https://docs.aws.amazon.com/redshift/latest/APIReference/API_NamespaceIdentifierUnion.html): Object to store union of values for a provisioned cluster or serverless namespaceâs identifier.
+- [NetworkInterface](https://docs.aws.amazon.com/redshift/latest/APIReference/API_NetworkInterface.html): Describes a network interface.
+- [NodeConfigurationOption](https://docs.aws.amazon.com/redshift/latest/APIReference/API_NodeConfigurationOption.html): A list of node configurations.
+- [NodeConfigurationOptionsFilter](https://docs.aws.amazon.com/redshift/latest/APIReference/API_NodeConfigurationOptionsFilter.html): A set of elements to filter the returned node configurations.
+- [OrderableClusterOption](https://docs.aws.amazon.com/redshift/latest/APIReference/API_OrderableClusterOption.html): Describes an orderable cluster option.
+- [Parameter](https://docs.aws.amazon.com/redshift/latest/APIReference/API_Parameter.html): Describes a parameter in a cluster parameter group.
+- [PartnerIntegrationInfo](https://docs.aws.amazon.com/redshift/latest/APIReference/API_PartnerIntegrationInfo.html): Describes a partner integration.
+- [PauseClusterMessage](https://docs.aws.amazon.com/redshift/latest/APIReference/API_PauseClusterMessage.html): Describes a pause cluster operation.
+- [PendingModifiedValues](https://docs.aws.amazon.com/redshift/latest/APIReference/API_PendingModifiedValues.html): Describes cluster attributes that are in a pending state.
+- [ProvisionedIdentifier](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ProvisionedIdentifier.html): The identifier for a provisioned cluster.
+- [ReadWriteAccess](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ReadWriteAccess.html): The S3 Access Grants scope.
+- [Recommendation](https://docs.aws.amazon.com/redshift/latest/APIReference/API_Recommendation.html): An Amazon Redshift Advisor recommended action on the Amazon Redshift cluster.
+- [RecommendedAction](https://docs.aws.amazon.com/redshift/latest/APIReference/API_RecommendedAction.html): The recommended action from the Amazon Redshift Advisor recommendation.
+- [RecurringCharge](https://docs.aws.amazon.com/redshift/latest/APIReference/API_RecurringCharge.html): Describes a recurring charge.
+- [RedshiftIdcApplication](https://docs.aws.amazon.com/redshift/latest/APIReference/API_RedshiftIdcApplication.html): Contains properties for the Redshift IDC application.
+- [RedshiftScopeUnion](https://docs.aws.amazon.com/redshift/latest/APIReference/API_RedshiftScopeUnion.html): A union structure that defines the scope of Amazon Redshift service integrations.
+- [ReferenceLink](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ReferenceLink.html): A link to an Amazon Redshift Advisor reference for more information about a recommendation.
+- [ReservedNode](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ReservedNode.html): Describes a reserved node.
+- [ReservedNodeConfigurationOption](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ReservedNodeConfigurationOption.html): Details for a reserved-node exchange.
+- [ReservedNodeExchangeStatus](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ReservedNodeExchangeStatus.html): Reserved-node status details, such as the source reserved-node identifier, the target reserved-node identifier, the node type, the node count, and other details.
+- [ReservedNodeOffering](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ReservedNodeOffering.html): Describes a reserved node offering.
+- [ResizeClusterMessage](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ResizeClusterMessage.html): Describes a resize cluster operation.
+- [ResizeInfo](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ResizeInfo.html): Describes a resize operation.
+- [ResourcePolicy](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ResourcePolicy.html): The policy that is attached to a resource.
+- [RestoreStatus](https://docs.aws.amazon.com/redshift/latest/APIReference/API_RestoreStatus.html): Describes the status of a cluster restore action.
+- [ResumeClusterMessage](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ResumeClusterMessage.html): Describes a resume cluster operation.
+- [RevisionTarget](https://docs.aws.amazon.com/redshift/latest/APIReference/API_RevisionTarget.html): Describes a RevisionTarget.
+- [S3AccessGrantsScopeUnion](https://docs.aws.amazon.com/redshift/latest/APIReference/API_S3AccessGrantsScopeUnion.html): A list of scopes set up for S3 Access Grants integration.
+- [ScheduledAction](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ScheduledAction.html): Describes a scheduled action.
+- [ScheduledActionFilter](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ScheduledActionFilter.html): A set of elements to filter the returned scheduled actions.
+- [ScheduledActionType](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ScheduledActionType.html): The action type that specifies an Amazon Redshift API operation that is supported by the Amazon Redshift scheduler.
+- [SecondaryClusterInfo](https://docs.aws.amazon.com/redshift/latest/APIReference/API_SecondaryClusterInfo.html): The AvailabilityZone and ClusterNodes information of the secondary compute unit.
+- [ServerlessIdentifier](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ServerlessIdentifier.html): The identifier for a serverless namespace.
+- [ServiceIntegrationsUnion](https://docs.aws.amazon.com/redshift/latest/APIReference/API_ServiceIntegrationsUnion.html): A list of service integrations.
+- [Snapshot](https://docs.aws.amazon.com/redshift/latest/APIReference/API_Snapshot.html): Describes a snapshot.
+- [SnapshotCopyGrant](https://docs.aws.amazon.com/redshift/latest/APIReference/API_SnapshotCopyGrant.html): The snapshot copy grant that grants Amazon Redshift permission to encrypt copied snapshots with the specified encrypted symmetric key from AWS KMS in the destination region.
+- [SnapshotErrorMessage](https://docs.aws.amazon.com/redshift/latest/APIReference/API_SnapshotErrorMessage.html): Describes the errors returned by a snapshot.
+- [SnapshotSchedule](https://docs.aws.amazon.com/redshift/latest/APIReference/API_SnapshotSchedule.html): Describes a snapshot schedule.
+- [SnapshotSortingEntity](https://docs.aws.amazon.com/redshift/latest/APIReference/API_SnapshotSortingEntity.html): Describes a sorting entity
+- [Subnet](https://docs.aws.amazon.com/redshift/latest/APIReference/API_Subnet.html): Describes a subnet.
+- [SupportedOperation](https://docs.aws.amazon.com/redshift/latest/APIReference/API_SupportedOperation.html): Describes the operations that are allowed on a maintenance track.
+- [SupportedPlatform](https://docs.aws.amazon.com/redshift/latest/APIReference/API_SupportedPlatform.html): A list of supported platforms for orderable clusters.
+- [TableRestoreStatus](https://docs.aws.amazon.com/redshift/latest/APIReference/API_TableRestoreStatus.html): Describes the status of a operation.
+- [Tag](https://docs.aws.amazon.com/redshift/latest/APIReference/API_Tag.html): A tag consisting of a name/value pair for a resource.
+- [TaggedResource](https://docs.aws.amazon.com/redshift/latest/APIReference/API_TaggedResource.html): A tag and its associated resource.
+- [UpdateTarget](https://docs.aws.amazon.com/redshift/latest/APIReference/API_UpdateTarget.html): A maintenance track that you can switch the current track to.
+- [UsageLimit](https://docs.aws.amazon.com/redshift/latest/APIReference/API_UsageLimit.html): Describes a usage limit object for a cluster.
+- [VpcEndpoint](https://docs.aws.amazon.com/redshift/latest/APIReference/API_VpcEndpoint.html): The connection endpoint for connecting to an Amazon Redshift cluster through the proxy.
+- [VpcSecurityGroupMembership](https://docs.aws.amazon.com/redshift/latest/APIReference/API_VpcSecurityGroupMembership.html): Describes the members of a VPC security group.

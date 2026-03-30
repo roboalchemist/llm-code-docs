@@ -1,10 +1,6 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-floating-promises.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-floating-promises.md
----
-
-### What it does
+## What it does
 
 This rule disallows "floating" Promises in TypeScript code, which is a Promise that is created without any code to handle its resolution or rejection.
 
@@ -23,11 +19,11 @@ This rule also reports when an Array containing Promises is created and not prop
 * `Promise.any()`
 * `Promise.race()`
 
-### Why is this bad?
+## Why is this bad?
 
 Floating Promises can cause several issues, such as improperly sequenced operations, ignored Promise rejections, and more.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -75,7 +71,7 @@ await Promise.all([1, 2, 3].map(async (x) => x + 1));
 
 This rule accepts a configuration object with the following properties:
 
-### allowForKnownSafeCalls
+## allowForKnownSafeCalls
 
 type: `array`
 
@@ -83,7 +79,7 @@ default: `[]`
 
 Allows specific calls to be ignored, specified as type or value specifiers.
 
-#### allowForKnownSafeCalls\[n]
+### allowForKnownSafeCalls\[n]
 
 type: `string`
 
@@ -97,7 +93,7 @@ Supports four types of specifiers:
 "Promise"
 ```
 
-2. **File specifier**: Match types/values declared in local files
+1. **File specifier**: Match types/values declared in local files
 
 ```json
 { "from": "file", "name": "MyType" }
@@ -105,21 +101,21 @@ Supports four types of specifiers:
 { "from": "file", "name": "MyType", "path": "./types.ts" }
 ```
 
-3. **Lib specifier**: Match TypeScript built-in lib types
+1. **Lib specifier**: Match TypeScript built-in lib types
 
 ```json
 { "from": "lib", "name": "Promise" }
 { "from": "lib", "name": ["Promise", "PromiseLike"] }
 ```
 
-4. **Package specifier**: Match types/values from npm packages
+1. **Package specifier**: Match types/values from npm packages
 
 ```json
 { "from": "package", "name": "Observable", "package": "rxjs" }
 { "from": "package", "name": ["Observable", "Subject"], "package": "rxjs" }
 ```
 
-### allowForKnownSafePromises
+## allowForKnownSafePromises
 
 type: `array`
 
@@ -127,7 +123,7 @@ default: `[]`
 
 Allows specific Promise types to be ignored, specified as type or value specifiers.
 
-#### allowForKnownSafePromises\[n]
+### allowForKnownSafePromises\[n]
 
 type: `string`
 
@@ -141,7 +137,7 @@ Supports four types of specifiers:
 "Promise"
 ```
 
-2. **File specifier**: Match types/values declared in local files
+1. **File specifier**: Match types/values declared in local files
 
 ```json
 { "from": "file", "name": "MyType" }
@@ -149,21 +145,21 @@ Supports four types of specifiers:
 { "from": "file", "name": "MyType", "path": "./types.ts" }
 ```
 
-3. **Lib specifier**: Match TypeScript built-in lib types
+1. **Lib specifier**: Match TypeScript built-in lib types
 
 ```json
 { "from": "lib", "name": "Promise" }
 { "from": "lib", "name": ["Promise", "PromiseLike"] }
 ```
 
-4. **Package specifier**: Match types/values from npm packages
+1. **Package specifier**: Match types/values from npm packages
 
 ```json
 { "from": "package", "name": "Observable", "package": "rxjs" }
 { "from": "package", "name": ["Observable", "Subject"], "package": "rxjs" }
 ```
 
-### checkThenables
+## checkThenables
 
 type: `boolean`
 
@@ -171,7 +167,7 @@ default: `false`
 
 Check for thenable objects that are not necessarily Promises.
 
-### ignoreIIFE
+## ignoreIIFE
 
 type: `boolean`
 
@@ -179,7 +175,7 @@ default: `false`
 
 Ignore immediately invoked function expressions (IIFEs).
 
-### ignoreVoid
+## ignoreVoid
 
 type: `boolean`
 

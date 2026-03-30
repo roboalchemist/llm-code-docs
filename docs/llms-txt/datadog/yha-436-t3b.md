@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Incoming system calls should be filtered using enabled Seccomp profiles
-Classification:complianceFramework:cis-dockerControl:5.21 
+Classification:complianceFramework:cis-dockerControl:5.21
 ## Description{% #description %}
 
 Seccomp filtering provides a means for a process to specify a filter for incoming system calls. The default Docker seccomp profile works on an allowlist basis and allows for a large number of common system calls, whilst blocking all others. This filtering should not be disabled unless it causes a problem with your container application usage.

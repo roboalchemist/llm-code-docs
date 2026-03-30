@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Windows PurpleSharp executio
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0042-resource-development](https://attack.mitre.org/tactics/TA0042)Technique:[T1587-develop-capabilities](https://attack.mitre.org/techniques/T1587) 
+Classification:attackTactic:[TA0042-resource-development](https://attack.mitre.org/tactics/TA0042)Technique:[T1587-develop-capabilities](https://attack.mitre.org/techniques/T1587)
 ## Goal{% #goal %}
 
 Detects execution of PurpleSharp, an adversary simulation tool designed to help security teams test detection capabilities.

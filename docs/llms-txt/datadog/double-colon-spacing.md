@@ -56,6 +56,5 @@ val filter = List::filter
 val clz = Foo::class
 val constr = ::Regex
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

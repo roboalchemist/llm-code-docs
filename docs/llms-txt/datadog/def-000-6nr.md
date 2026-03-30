@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Ownership on SSH Server Private *_key Key Files
- 
+
 ## Description{% #description %}
 
 SSH server private keys, files that match the `/etc/ssh/*_key` glob, must be owned by `root` user.

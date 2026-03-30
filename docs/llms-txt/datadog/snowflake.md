@@ -40,11 +40,11 @@ To set up your account in Snowflake:
 
    ```sql
    USE ROLE ACCOUNTADMIN;
-   
+
    -- Create monitoring role
    CREATE ROLE IF NOT EXISTS IDENTIFIER($role_name);
    GRANT ROLE IDENTIFIER($role_name) TO ROLE SYSADMIN;
-   
+
    -- Create an X-SMALL warehouse (auto-suspend after 30s)
    CREATE WAREHOUSE IF NOT EXISTS IDENTIFIER($warehouse_name)
    WAREHOUSE_SIZE       = XSMALL
@@ -52,7 +52,7 @@ To set up your account in Snowflake:
    AUTO_SUSPEND         = 30
    AUTO_RESUME          = TRUE
    INITIALLY_SUSPENDED  = TRUE;
-   
+
    -- Create Datadog userâkey-pair only (no password)
    -- Replace <PUBLIC_KEY> with your RSA public key (PEM, no headers/newlines)
    CREATE USER IF NOT EXISTS IDENTIFIER($user_name)
@@ -60,7 +60,7 @@ To set up your account in Snowflake:
    DEFAULT_ROLE      = $role_name
    DEFAULT_WAREHOUSE = $warehouse_name
    RSA_PUBLIC_KEY    = '<PUBLIC_KEY>';
-   
+
    GRANT ROLE IDENTIFIER($role_name) TO USER IDENTIFIER($user_name);
    ```
 
@@ -69,25 +69,25 @@ To set up your account in Snowflake:
    ```sql
    -- Warehouse usage
    GRANT USAGE ON WAREHOUSE IDENTIFIER($warehouse_name) TO ROLE IDENTIFIER($role_name);
-   
+
    -- Accountâlevel monitoring (tasks, pipes, query history)
    GRANT MONITOR EXECUTION ON ACCOUNT TO ROLE IDENTIFIER($role_name);
-   
+
    -- Imported privileges on Snowflake's ACCOUNT_USAGE
    GRANT IMPORTED PRIVILEGES ON DATABASE SNOWFLAKE TO ROLE IDENTIFIER($role_name);
-   
+
    -- Imported privileges on any external data shares
    -- GRANT IMPORTED PRIVILEGES ON DATABASE IDENTIFIER($database_name) TO ROLE IDENTIFIER($role_name);
-   
+
    -- Grant the following ACCOUNT_USAGE views to the new role. Do this if you wish to collect Snowflake account usage logs and metrics.
    GRANT DATABASE ROLE SNOWFLAKE.OBJECT_VIEWER TO ROLE IDENTIFIER($role_name);
    GRANT DATABASE ROLE SNOWFLAKE.USAGE_VIEWER TO ROLE IDENTIFIER($role_name);
    GRANT DATABASE ROLE SNOWFLAKE.GOVERNANCE_VIEWER TO ROLE IDENTIFIER($role_name);
    GRANT DATABASE ROLE SNOWFLAKE.SECURITY_VIEWER TO ROLE IDENTIFIER($role_name);
-   
+
    -- Grant ORGANIZATION_USAGE_VIEWER to the new role. Do this if you wish to collect Snowflake organization usage metrics.
    GRANT DATABASE ROLE SNOWFLAKE.ORGANIZATION_USAGE_VIEWER TO ROLE IDENTIFIER($role_name);
-   
+
    -- Grant ORGANIZATION_BILLING_VIEWER to the new role. Do this if you wish to collect Snowflake cost data.
    GRANT DATABASE ROLE SNOWFLAKE.ORGANIZATION_BILLING_VIEWER TO ROLE IDENTIFIER($role_name);
    ```
@@ -96,21 +96,21 @@ Important alert (level: info): To avoid missing new tables, use schema-level fut
 
    ```sql
    USE DATABASE IDENTIFIER($database_name);
-   
+
    CREATE OR REPLACE PROCEDURE grantFutureAccess(databaseName string, roleName string)
    returns string not null
    language javascript
    as
    $$
    var schemaResultSet = snowflake.execute({ sqlText: 'SELECT SCHEMA_NAME FROM ' + '"' + DATABASENAME + '"' + ".INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME != 'INFORMATION_SCHEMA';"});
-   
+
    var numberOfSchemasGranted = 0;
    while (schemaResultSet.next()) {
        numberOfSchemasGranted += 1;
-       var schemaAndRoleSuffix = ' in schema "' + DATABASENAME + '"."' + 
+       var schemaAndRoleSuffix = ' in schema "' + DATABASENAME + '"."' +
        schemaResultSet.getColumnValue('SCHEMA_NAME') + '" to role ' + ROLENAME + ';'
-   
-       snowflake.execute({ sqlText: 'grant USAGE on schema "' + DATABASENAME + '"."' +  
+
+       snowflake.execute({ sqlText: 'grant USAGE on schema "' + DATABASENAME + '"."' +
        schemaResultSet.getColumnValue('SCHEMA_NAME') + '" to role ' + ROLENAME + ';'});
        snowflake.execute({ sqlText: 'grant SELECT on all tables' + schemaAndRoleSuffix});
        snowflake.execute({ sqlText: 'grant SELECT on all views' + schemaAndRoleSuffix});
@@ -123,11 +123,11 @@ Important alert (level: info): To avoid missing new tables, use schema-level fut
        snowflake.execute({ sqlText: 'grant SELECT on future external tables' + schemaAndRoleSuffix});
        snowflake.execute({ sqlText: 'grant SELECT on future dynamic tables' + schemaAndRoleSuffix});
    }
-   
+
    return 'Granted access to ' + numberOfSchemasGranted + ' schemas';
    $$
    ;
-   
+
    GRANT USAGE ON DATABASE IDENTIFIER($database_name) TO ROLE IDENTIFIER($role_name);
    CALL grantFutureAccess('<DATABASE_NAME>', '<ROLE_NAME>');
    ```
@@ -139,7 +139,7 @@ Important alert (level: info): To avoid missing new tables, use schema-level fut
    GRANT USAGE ON DATABASE <EVENT_TABLE_DATABASE> TO ROLE IDENTIFIER($role_name);
    GRANT USAGE ON SCHEMA <EVENT_TABLE_DATABASE>.<EVENT_TABLE_SCHEMA> TO ROLE IDENTIFIER($role_name);
    GRANT SELECT ON TABLE <EVENT_TABLE_DATABASE>.<EVENT_TABLE_SCHEMA>.<EVENT_TABLE_NAME> TO ROLE IDENTIFIER($role_name);
-   
+
    -- Snowflake-provided application roles for event logs
    GRANT APPLICATION ROLE SNOWFLAKE.EVENTS_VIEWER TO ROLE IDENTIFIER($role_name);
    GRANT APPLICATION ROLE SNOWFLAKE.EVENTS_ADMIN TO ROLE IDENTIFIER($role_name);

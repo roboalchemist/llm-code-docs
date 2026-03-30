@@ -46,11 +46,11 @@ resource "alicloud_oss_bucket" "bucket-securetransport2"{
         policy = <<POLICY
 {
         "Version": "1",
-        "Statement": 
+        "Statement":
         [
             {
                 "Effect": "Deny",
-                "Action": 
+                "Action":
                 [
                     "oss:RestoreObject",
                     "oss:ListObjects",
@@ -69,17 +69,17 @@ resource "alicloud_oss_bucket" "bucket-securetransport2"{
                     "oss:GetObjectVersionAcl",
                     "oss:RestoreObjectVersion"
                 ],
-                "Principal": 
+                "Principal":
                 [
                     "*"
                 ],
-                "Resource": 
+                "Resource":
                 [
                     "acs:oss:*:0000111122223334:af/*"
                 ],
-                "Condition": 
+                "Condition":
                 {
-                    "NotIpAdress": 
+                    "NotIpAdress":
                     {
                         "acs:SourceIp": "10.0.0.0"
                     }
@@ -97,11 +97,11 @@ resource "alicloud_oss_bucket" "bucket-securetransport2"{
         policy = <<POLICY
 {
         "Version": "1",
-        "Statement": 
+        "Statement":
         [
             {
                 "Effect": "Deny",
-                "Action": 
+                "Action":
                 [
                     "oss:RestoreObject",
                     "oss:ListObjects",
@@ -120,17 +120,17 @@ resource "alicloud_oss_bucket" "bucket-securetransport2"{
                     "oss:GetObjectVersionAcl",
                     "oss:RestoreObjectVersion"
                 ],
-                "Principal": 
+                "Principal":
                 [
                     "*"
                 ],
-                "Resource": 
+                "Resource":
                 [
                     "acs:oss:*:0000111122223334:af/*"
                 ],
-                "Condition": 
+                "Condition":
                 {
-                    "IpAdress": 
+                    "IpAdress":
                     {
                         "acs:SourceIp": "10.0.0.0"
                     }

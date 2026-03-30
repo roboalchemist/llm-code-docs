@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Account should have a configured activity log alert for deleting policy assignments
- 
+
 ## Warning: This rule will be deprecated 18 December 2023 as part of the update to Azure CIS version 2.0.0{% #warning-this-rule-will-be-deprecated-18-december-2023-as-part-of-the-update-to-azure-cis-version-200 %}
 
 ## Description{% #description %}
@@ -56,33 +56,33 @@ Where `input.json` contains the request body JSON data below:
 
 ```json
 {
-	"location": "Global",
-	"tags": {},
-	"properties": {
-		"scopes": [
-			"/subscriptions/<Subscription_ID>"
-		],
-		"enabled": true,
-		"condition": {
-			"allOf": [{
-					"containsAny": null,
-					"equals": "Administrative",
-					"field": "category"
-				},
-				{
-					"containsAny": null,
-					"equals": "Microsoft.Authorization/policyAssignments/delete",
-					"field": "operationName"
-				}
-			]
-		},
-		"actions": {
-			"actionGroups": [{
-				"actionGroupId": "/subscriptions/<Subscription_ID>/resourceGroups/<Resource_Group_For_Alert_Group>/providers/microsoft.insights/actionGroups/<Alert_Group>",
-				"webhookProperties": null
-			}]
-		}
-	}
+    "location": "Global",
+    "tags": {},
+    "properties": {
+        "scopes": [
+            "/subscriptions/<Subscription_ID>"
+        ],
+        "enabled": true,
+        "condition": {
+            "allOf": [{
+                    "containsAny": null,
+                    "equals": "Administrative",
+                    "field": "category"
+                },
+                {
+                    "containsAny": null,
+                    "equals": "Microsoft.Authorization/policyAssignments/delete",
+                    "field": "operationName"
+                }
+            ]
+        },
+        "actions": {
+            "actionGroups": [{
+                "actionGroupId": "/subscriptions/<Subscription_ID>/resourceGroups/<Resource_Group_For_Alert_Group>/providers/microsoft.insights/actionGroups/<Alert_Group>",
+                "webhookProperties": null
+            }]
+        }
+    }
 }
 ```
 

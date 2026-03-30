@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EC2 instance should not have a highly-privileged IAM role attached to it
- 
+
 ## Description{% #description %}
 
 This rule ensures that none of your EC2 instances is attached to a highly-privileged [instance role](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html).

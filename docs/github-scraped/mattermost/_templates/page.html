@@ -1,0 +1,20 @@
+{% extends "furo/page.html" %}
+{% block title -%}
+    {% if page_title_override %}{{ page_title_override }}{% else %}{{ super() }}{% endif %}
+{%- endblock title %}
+{% block extrahead -%}
+    {% include "google-tag-manager.html" %}
+    {% include "zendesk-crawler.html" %}
+    {{ super() }}
+{% endblock extrahead %}
+{% block footer -%}
+    <div class="docs-feedback-block">
+        {% include "feedback.html" %}
+    </div>
+    {{ super() }}
+{% endblock footer %}
+{% block body -%}
+    {% include "google-tag-manager-noscript.html" %}
+    {% include "custom-nav.html" %}
+    {{ super() }}
+{% endblock body %}

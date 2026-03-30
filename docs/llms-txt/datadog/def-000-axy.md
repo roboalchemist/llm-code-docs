@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The GKE cluster should be encrypted using customer-managed keys in KMS
- 
+
 ## Description{% #description %}
 
 Kubernetes secrets, stored in etcd, at the application layer should be encrypted using a customer-managed key in Cloud KMS. Encrypting the application layer this way ensures that sensitive data is safeguarded properly if etcd becomes compromised by an attacker.

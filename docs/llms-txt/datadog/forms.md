@@ -87,7 +87,7 @@ After creating a form, you can add an [action](https://app.datadoghq.com/actions
 By default, only the creator of a form can access it. To change the permissions on a form:
 
 1. From the [Forms](https://app.datadoghq.com/actions/forms) page, click a form.
-1. Click the gear 
+1. Click the gear
    {% icon name="icon-cog-2" /%}
  icon.
 1. To change who can see the form and submit answers, click **Edit Form Permissions**.

@@ -9,13 +9,13 @@ breadcrumbs: >-
 ---
 
 # Verify User Who Owns Backup gshadow File
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/etc/gshadow-`, run the command:
 
 ```
-$ sudo chown root /etc/gshadow- 
+$ sudo chown root /etc/gshadow-
 ```
 
 ## Rationale{% #rationale %}

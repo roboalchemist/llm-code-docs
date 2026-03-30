@@ -1,21 +1,16 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unnecessary-parameter-property-assignment.md
 
----
-url: >-
-  /docs/guide/usage/linter/rules/typescript/no-unnecessary-parameter-property-assignment.md
----
-
-### What it does
+## What it does
 
 Prevents unnecessary assignment of parameter properties.
 
-### Why is this bad?
+## Why is this bad?
 
 Constructor parameters marked with one of the visibility modifiers
 public, private, protected, or readonly are automatically initialized.
 Providing an explicit assignment is unnecessary and can be removed.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

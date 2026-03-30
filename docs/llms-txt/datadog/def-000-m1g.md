@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # CloudFormation stacks should have associated service roles
- 
+
 ## Description{% #description %}
 
 CloudFormation stacks should use service roles (IAM roles) instead of user credentials. Using a service role allows you to specify which actions CloudFormation can perform, following the principle of least privilege. This provides better security control and auditability for stack operations.

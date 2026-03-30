@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The kubelet service file should be owned by root:root
-Classification:complianceFramework:cis-kubernetesControl:4.1.2 
+Classification:complianceFramework:cis-kubernetesControl:4.1.2
 ## Description{% #description %}
 
 Ensure that the kubelet service file ownership is set to root:root.

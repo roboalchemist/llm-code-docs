@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-instanceof-array.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-instanceof-array.md
----
-
-### What it does
+## What it does
 
 Require `Array.isArray()` instead of `instanceof Array`.
 
-### Why is this bad?
+## Why is this bad?
 
 The instanceof Array check doesn't work across realms/contexts, for example, frames/windows in browsers or the vm module in Node.js.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

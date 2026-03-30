@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # SQL Server instances should have the 'cross db ownership chaining' database flag set to 'off'
- 
+
 ## Description{% #description %}
 
 It is recommended that you set the `cross db ownership chaining` database flag for SQL Server instance to `off`.

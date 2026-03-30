@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Group Who Owns group 
 ---
 
 # Verify Group Who Owns group File
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/etc/group`, run the command:

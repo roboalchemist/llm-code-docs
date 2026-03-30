@@ -48,6 +48,5 @@ if (foo) debugger
 ```javascript
 var test = { debugger: 1 }; test.debugger;
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

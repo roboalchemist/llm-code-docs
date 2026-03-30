@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Enable Randomized Layout of Virtual Address Space
- 
+
 ## Description{% #description %}
 
 To set the runtime status of the `kernel.randomize_va_space` kernel parameter, run the following command:
@@ -74,7 +74,7 @@ fi
 
 #
 # If kernel.randomize_va_space present in /etc/sysctl.conf, change value to "2"
-#	else, add "kernel.randomize_va_space = 2" to /etc/sysctl.conf
+#   else, add "kernel.randomize_va_space = 2" to /etc/sysctl.conf
 #
 
 # Strip any search characters in the key arg so that the key can be replaced without

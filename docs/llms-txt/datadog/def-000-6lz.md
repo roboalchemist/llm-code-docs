@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Permissions on Backup gshadow File
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/etc/gshadow-`, run the command:

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Service Accounts should only use GCP managed keys
- 
+
 ## Description{% #description %}
 
 User managed service accounts should not have user-managed keys.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Cognito user pools should have deletion protection enabled
- 
+
 ## Description{% #description %}
 
 Amazon Cognito user pools should have deletion protection enabled. Deletion protection prevents accidental deletion of user pools containing user data, providing an additional layer of protection for identity management infrastructure.

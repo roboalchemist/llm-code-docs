@@ -42,6 +42,5 @@ static void Main(string[] args)
   GC.Collect(42, GCCollectionMode.Optimized);
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

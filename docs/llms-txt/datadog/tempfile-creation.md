@@ -59,18 +59,18 @@ The practice of creating temporary files in a more flexible and secure manner is
 package static_analyzer
 
 import (
-	"fmt"
-	"io/ioutil"
-	"os"
-	"path"
-	"path/filepath"
+    "fmt"
+    "io/ioutil"
+    "os"
+    "path"
+    "path/filepath"
 )
 
 func main() {
-	err := ioutil.WriteFile("/tmp/myfile", []byte("something"), 0644)
-	if err != nil {
-		fmt.Println("Error while writing!")
-	}
+    err := ioutil.WriteFile("/tmp/myfile", []byte("something"), 0644)
+    if err != nil {
+        fmt.Println("Error while writing!")
+    }
 }
 ```
 
@@ -78,11 +78,11 @@ func main() {
 package static_analyzer
 
 import (
-	"os"
+    "os"
 )
 
 func main() {
-	file, err := os.Create("/tmp/tempfile")
+    file, err := os.Create("/tmp/tempfile")
 }
 ```
 
@@ -93,19 +93,18 @@ package static_analyzer
 
 import (
 
-	"os"
+    "os"
 
 )
 
 func main() {
-	tmpFile, err := ioutil.TempFile("/tmp", "foobar")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer os.Remove(file.Name())
+    tmpFile, err := ioutil.TempFile("/tmp", "foobar")
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer os.Remove(file.Name())
 
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

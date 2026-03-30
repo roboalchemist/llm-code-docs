@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # S3 bucket policies should restrict access from other AWS accounts
- 
+
 ## Description{% #description %}
 
 This check verifies whether an Amazon S3 general-purpose bucket policy restricts principals in other AWS accounts from executing unauthorized actions on resources within the S3 bucket. The check will not pass if the bucket policy permits any of the aforementioned actions for a principal in a different AWS account.

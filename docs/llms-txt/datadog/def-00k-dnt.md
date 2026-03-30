@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Pods should use `root-ca-file` to pass serving certificates to the API server
- 
+
 ## Description{% #description %}
 
 Pods should be allowed to verify the API server's serving certificate before establishing connections. Processes running in pods that need to contact the API server must verify the API server's serving certificate. Failure to do so could result in the pod being subject to man-in-the-middle attacks.

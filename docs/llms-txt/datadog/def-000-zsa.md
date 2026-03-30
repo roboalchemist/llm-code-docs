@@ -7,13 +7,13 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Owner on cron.monthly
 ---
 
 # Verify Owner on cron.monthly
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/etc/cron.monthly`, run the command:
 
 ```
-$ sudo chown root /etc/cron.monthly 
+$ sudo chown root /etc/cron.monthly
 ```
 
 ## Rationale{% #rationale %}

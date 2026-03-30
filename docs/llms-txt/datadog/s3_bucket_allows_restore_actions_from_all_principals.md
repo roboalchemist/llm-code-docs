@@ -57,7 +57,7 @@ MyBucketPolicy:
             AWS: arn:aws:iam::123456789012:role/RestoreRole
           Action:
             - s3:RestoreObject
-          Resource: arn:aws:s3:::my-bucket/* 
+          Resource: arn:aws:s3:::my-bucket/*
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}

@@ -1,14 +1,10 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/explicit-module-boundary-types.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/explicit-module-boundary-types.md
----
-
-### What it does
+## What it does
 
 Require explicit return and argument types on exported functions' and classes' public class methods.
 
-### Why is this bad?
+## Why is this bad?
 
 Explicit types for function return values and arguments makes it clear
 to any calling code what is the module boundary's input and output.
@@ -16,7 +12,7 @@ Adding explicit type annotations for those types can help improve code
 readability. It can also improve TypeScript type checking performance on
 larger codebases.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -73,7 +69,7 @@ function test() {
 
 This rule accepts a configuration object with the following properties:
 
-### allowArgumentsExplicitlyTypedAsAny
+## allowArgumentsExplicitlyTypedAsAny
 
 type: `boolean`
 
@@ -81,7 +77,7 @@ default: `false`
 
 Whether to ignore arguments that are explicitly typed as `any`.
 
-### allowDirectConstAssertionInArrowFunctions
+## allowDirectConstAssertionInArrowFunctions
 
 type: `boolean`
 
@@ -91,7 +87,7 @@ Whether to ignore return type annotations on body-less arrow functions
 that return an `as const` type assertion. You must still type the
 parameters of the function.
 
-### allowHigherOrderFunctions
+## allowHigherOrderFunctions
 
 type: `boolean`
 
@@ -101,7 +97,7 @@ Whether to ignore return type annotations on functions immediately
 returning another function expression. You must still type the
 parameters of the function.
 
-### allowOverloadFunctions
+## allowOverloadFunctions
 
 type: `boolean`
 
@@ -110,7 +106,7 @@ default: `false`
 Whether to ignore return type annotations on functions with overload
 signatures.
 
-### allowTypedFunctionExpressions
+## allowTypedFunctionExpressions
 
 type: `boolean`
 
@@ -119,7 +115,7 @@ default: `true`
 Whether to ignore type annotations on the variable of a function
 expression.
 
-### allowedNames
+## allowedNames
 
 type: `string[]`
 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The file permissions on docker.socket should be set to 644 or stricter
-Classification:complianceFramework:cis-dockerControl:3.4 
+Classification:complianceFramework:cis-dockerControl:3.4
 ## Description{% #description %}
 
 You should verify that the file permissions on the docker.socket file are correctly set to 644 or more restrictively.
@@ -22,7 +22,7 @@ The docker.socket file contains sensitive parameters that may alter the behavior
 
 1. Locate the `docker.socket` file by running:
    ```
-   systemctl show -p FragmentPath docker.socket 
+   systemctl show -p FragmentPath docker.socket
    ```
 1. If the file does not exist, this recommendation is not applicable. If the file exists, verify that the file permissions are set to `644` or more restrictively, by running the following command with the correct filepath:
    ```

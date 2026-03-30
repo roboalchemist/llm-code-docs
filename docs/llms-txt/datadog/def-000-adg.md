@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Asana impossible travel dete
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Identify instances where users are accessing Asana from two distant geographical locations within an improbable timeframe, potentially indicating credential theft or account compromise.

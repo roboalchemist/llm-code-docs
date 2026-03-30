@@ -59,6 +59,5 @@ func main() {
     h := hmac.New(func() hash.Hash { return sha256.New() }, hmacKey)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

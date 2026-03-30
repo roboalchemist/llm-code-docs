@@ -1,0 +1,472 @@
+# Source: https://developers.cash.app/cash-app-pay-partner-api/api-reference/network-api/list-fee-plans.mdx
+
+# List fee plans
+
+GET https://api.cash.app/network/v1/fee-plans
+
+Returns a list of all fee plans (matching the given query parameters) associated with this client.
+
+**This endpoint is rate limited to 50 QPS.**
+
+Scopes: `FEE_PLANS_READ`
+
+Reference: https://developers.cash.app/cash-app-pay-partner-api/api-reference/network-api/list-fee-plans
+
+## OpenAPI Specification
+
+```yaml
+openapi: 3.1.0
+info:
+  title: API
+  version: 1.0.0
+paths:
+  /fee-plans:
+    get:
+      operationId: list-fee-plans
+      summary: List fee plans
+      description: >-
+        Returns a list of all fee plans (matching the given query parameters)
+        associated with this client.
+
+
+        **This endpoint is rate limited to 50 QPS.**
+
+
+        Scopes: `FEE_PLANS_READ`
+      tags:
+        - subpackage_feePlans
+      parameters:
+        - name: cursor
+          in: query
+          description: >-
+            A pagination cursor returned by a previous call to this endpoint.
+            Provide this cursor to retrieve the next set of results for the
+            original query.
+          required: false
+          schema:
+            type: string
+        - name: limit
+          in: query
+          description: Maximum number of fee plans to return.
+          required: false
+          schema:
+            type: integer
+            default: 50
+        - name: currency
+          in: query
+          description: >-
+            Filters results to only include fee plans that matches the the given
+            currency.
+          required: false
+          schema:
+            $ref: '#/components/schemas/Currency'
+        - name: status
+          in: query
+          description: >-
+            Filters results to only include fee plans that matches the the given
+            status.
+          required: false
+          schema:
+            $ref: '#/components/schemas/FeePlansGetParametersStatus'
+        - name: reference_id
+          in: query
+          description: >-
+            Filters results to only include the fee plans that match the given
+            reference ID.
+          required: false
+          schema:
+            type: string
+        - name: Accept
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: X-Region
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: X-Signature
+          in: header
+          required: true
+          schema:
+            type: string
+        - name: User-Agent
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fee Plans_list-fee-plans_Response_200'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+servers:
+  - url: https://api.cash.app/network/v1
+  - url: https://sandbox.api.cash.app/network/v1
+components:
+  schemas:
+    Currency:
+      type: string
+      enum:
+        - USD
+      description: >-
+        Indicates the country associated with an entity. Values are from the
+        [ISO-4217 Alpha-3](https://www.iso.org/iso-4217-currency-codes.html)
+        specification.
+
+
+        Current values:
+
+
+        - `USD`: United States Dollar
+      title: Currency
+    FeePlansGetParametersStatus:
+      type: string
+      enum:
+        - ACTIVE
+        - DISABLED
+      default: ACTIVE
+      title: FeePlansGetParametersStatus
+    FeeRate:
+      type: object
+      properties:
+        basis_points:
+          type: integer
+          description: >-
+            The variable fee charged for processing the payment expressed as
+            1/100th of a percentage.
+        fixed_amount:
+          type: integer
+          description: >-
+            The amount charged for processing the payment, in the lowest
+            denomination of currency on the payment.
+             **Note: The currency for the fee is found on the fee plan.**
+      description: >-
+        A fee rate contains the components of a fee charged by Cash App to
+        partners for a given payment.
+      title: FeeRate
+    Metadata:
+      type: object
+      additionalProperties:
+        type: string
+      description: >-
+        Freeform key-value pairs of arbitrary data associated with this
+        resource.
+
+
+        Keys and values must be passed as strings and not contain any personally
+        identifiable information (PII).
+
+
+        Min keys: `0`
+
+        Max keys: `50`
+
+
+
+        > Note: Nested keys are not supported.
+      title: Metadata
+    FeePlan:
+      type: object
+      properties:
+        id:
+          type: string
+          description: A unique identifier for the fee plan issued by Cash App.
+        rate:
+          $ref: '#/components/schemas/FeeRate'
+        currency:
+          $ref: '#/components/schemas/Currency'
+        status:
+          type: string
+          description: >-
+            The state is used to determine whether or not this fee plan is
+            currently in use.
+
+            - `ACTIVE`
+
+            - `DISABLED`
+        reference_id:
+          type: string
+        metadata:
+          $ref: '#/components/schemas/Metadata'
+        description:
+          type: string
+          description: >-
+            A free-form text field that stores information associated with the
+            fee plan.
+        created_at:
+          type: string
+          format: date-time
+          description: >-
+            When this fee plan was created, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
+        updated_at:
+          type: string
+          format: date-time
+          description: >-
+            When this fee plan was last updated, in [RFC
+            3339](https://datatracker.ietf.org/doc/html/rfc3339) format (UTC).
+      required:
+        - id
+        - rate
+        - currency
+        - status
+        - created_at
+        - updated_at
+      description: >-
+        The full fee plan that PSPs can use to set the buy rates for specific
+        merchants.
+      title: FeePlan
+    Fee Plans_list-fee-plans_Response_200:
+      type: object
+      properties:
+        fee_plans:
+          type: array
+          items:
+            $ref: '#/components/schemas/FeePlan'
+          description: List of fee plans matching the given query parameters.
+        cursor:
+          type: string
+          description: >-
+            The pagination cursor to be used in a subsequent request. If empty,
+            this is the final response.
+      title: Fee Plans_list-fee-plans_Response_200
+    ErrorCategory:
+      type: string
+      enum:
+        - API_ERROR
+        - AUTHENTICATION_ERROR
+        - BRAND_ERROR
+        - DISPUTE_ERROR
+        - MERCHANT_ERROR
+        - INVALID_REQUEST_ERROR
+        - PAYMENT_PROCESSING_ERROR
+        - RATE_LIMIT_ERROR
+        - WEBHOOK_ERROR
+        - API_KEY_ERROR
+        - GRANT_ERROR
+      description: The high-level reason the error occurred
+      title: ErrorCategory
+    Error:
+      type: object
+      properties:
+        category:
+          $ref: '#/components/schemas/ErrorCategory'
+          description: The high-level reason the error occurred
+        code:
+          type: string
+          description: >-
+            A unique identifier for the specific type of error that occurred.
+            See the Error Code Reference for more information.
+
+
+            Min length: `1`
+        detail:
+          type: string
+          description: >-
+            Human-readable description of why the error occurred and how to
+            resolve it.
+
+
+            Min length: `1`
+        field:
+          type: string
+          description: >-
+            The field in the request that caused the error, using array and
+            object dot notation.
+
+
+            Min length: `1`
+      required:
+        - category
+        - code
+      description: Represents an error encountered during a request to the API.
+      title: Error
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/Error'
+          description: |-
+            A list of errors that occurred while processing the request.
+
+            Min number of items: `1`
+      required:
+        - errors
+      title: ErrorResponse
+
+```
+
+## SDK Code Examples
+
+```python
+import requests
+
+url = "https://api.cash.app/network/v1/fee-plans"
+
+querystring = {"cursor":"string"}
+
+headers = {
+    "Accept": "Accept",
+    "X-Region": "X-Region",
+    "X-Signature": "X-Signature",
+    "User-Agent": "User-Agent"
+}
+
+response = requests.get(url, headers=headers, params=querystring)
+
+print(response.json())
+```
+
+```javascript
+const url = 'https://api.cash.app/network/v1/fee-plans?cursor=string';
+const options = {
+  method: 'GET',
+  headers: {
+    Accept: 'Accept',
+    'X-Region': 'X-Region',
+    'X-Signature': 'X-Signature',
+    'User-Agent': 'User-Agent'
+  }
+};
+
+try {
+  const response = await fetch(url, options);
+  const data = await response.json();
+  console.log(data);
+} catch (error) {
+  console.error(error);
+}
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"io"
+)
+
+func main() {
+
+	url := "https://api.cash.app/network/v1/fee-plans?cursor=string"
+
+	req, _ := http.NewRequest("GET", url, nil)
+
+	req.Header.Add("Accept", "Accept")
+	req.Header.Add("X-Region", "X-Region")
+	req.Header.Add("X-Signature", "X-Signature")
+	req.Header.Add("User-Agent", "User-Agent")
+
+	res, _ := http.DefaultClient.Do(req)
+
+	defer res.Body.Close()
+	body, _ := io.ReadAll(res.Body)
+
+	fmt.Println(res)
+	fmt.Println(string(body))
+
+}
+```
+
+```ruby
+require 'uri'
+require 'net/http'
+
+url = URI("https://api.cash.app/network/v1/fee-plans?cursor=string")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+
+request = Net::HTTP::Get.new(url)
+request["Accept"] = 'Accept'
+request["X-Region"] = 'X-Region'
+request["X-Signature"] = 'X-Signature'
+request["User-Agent"] = 'User-Agent'
+
+response = http.request(request)
+puts response.read_body
+```
+
+```java
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
+
+HttpResponse<String> response = Unirest.get("https://api.cash.app/network/v1/fee-plans?cursor=string")
+  .header("Accept", "Accept")
+  .header("X-Region", "X-Region")
+  .header("X-Signature", "X-Signature")
+  .header("User-Agent", "User-Agent")
+  .asString();
+```
+
+```php
+<?php
+require_once('vendor/autoload.php');
+
+$client = new \GuzzleHttp\Client();
+
+$response = $client->request('GET', 'https://api.cash.app/network/v1/fee-plans?cursor=string', [
+  'headers' => [
+    'Accept' => 'Accept',
+    'User-Agent' => 'User-Agent',
+    'X-Region' => 'X-Region',
+    'X-Signature' => 'X-Signature',
+  ],
+]);
+
+echo $response->getBody();
+```
+
+```csharp
+using RestSharp;
+
+var client = new RestClient("https://api.cash.app/network/v1/fee-plans?cursor=string");
+var request = new RestRequest(Method.GET);
+request.AddHeader("Accept", "Accept");
+request.AddHeader("X-Region", "X-Region");
+request.AddHeader("X-Signature", "X-Signature");
+request.AddHeader("User-Agent", "User-Agent");
+IRestResponse response = client.Execute(request);
+```
+
+```swift
+import Foundation
+
+let headers = [
+  "Accept": "Accept",
+  "X-Region": "X-Region",
+  "X-Signature": "X-Signature",
+  "User-Agent": "User-Agent"
+]
+
+let request = NSMutableURLRequest(url: NSURL(string: "https://api.cash.app/network/v1/fee-plans?cursor=string")! as URL,
+                                        cachePolicy: .useProtocolCachePolicy,
+                                    timeoutInterval: 10.0)
+request.httpMethod = "GET"
+request.allHTTPHeaderFields = headers
+
+let session = URLSession.shared
+let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+  if (error != nil) {
+    print(error as Any)
+  } else {
+    let httpResponse = response as? HTTPURLResponse
+    print(httpResponse)
+  }
+})
+
+dataTask.resume()
+```

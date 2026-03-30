@@ -97,6 +97,5 @@ val foo = "foo" + "ooooooooooooooooooooooooooo"
 val foooooooooooooo = "foooooooooooooooooooo" // some comment
 foo(bar)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

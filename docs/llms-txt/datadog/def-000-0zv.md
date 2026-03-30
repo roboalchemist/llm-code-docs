@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EKS clusters should have audit logs enabled
- 
+
 ## Description{% #description %}
 
 This control checks if an Amazon EKS cluster has audit logging enabled. It fails if the audit logging is not activated for the cluster. EKS control plane logging sends audit and diagnostic logs directly from the EKS control plane to Amazon CloudWatch Logs in your account. You can choose specific log types, and logs will be sent as log streams to a group for each EKS cluster within CloudWatch. Logging offers insight into the access and performance of EKS clusters. By routing EKS control plane logs for your clusters to CloudWatch Logs, you can centrally record operations for auditing and diagnostic purposes.

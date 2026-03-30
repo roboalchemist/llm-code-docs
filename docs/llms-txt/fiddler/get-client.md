@@ -1,0 +1,15 @@
+# Source: https://docs.fiddler.ai/api/fiddler-langgraph-sdk/core/get-client.md
+
+# get\_client
+
+Return the global FiddlerClient singleton (first created in this process).
+
+## Returns
+
+The global client instance.
+
+**Return type:** FiddlerClient
+
+## Raises
+
+**RuntimeError** -- If no FiddlerClient has been initialized.

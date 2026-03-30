@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Non-Interactive Accounts Are Locked
- 
+
 ## Description{% #description %}
 
 Accounts meant for non-interactive purposes should be locked to prevent unauthorized access. Accounts with non-standard shells (those not defined in `/etc/shells`) should be locked using `usermod -L`.

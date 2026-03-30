@@ -37,20 +37,20 @@ For all special methods for a class (`__add__`, `__sub__`, and more) make sure t
 
 ```python
 class GFG:
-  
+
     def __init__(self, val):
         self.val = val
-          
+
     def __next__(self, val2, val3): # invalid, we should have only one argument.
         return GFG(self.val + val2.val)
 ```
 
 ```python
 class GFG:
-  
+
     def __init__(self, val):
         self.val = val
-          
+
     def __add__(self, val2, val3): # we should have only two arguments.
         return GFG(self.val + val2.val)
 ```
@@ -59,13 +59,12 @@ class GFG:
 
 ```python
 class GFG:
-  
+
     def __init__(self, val):
         self.val = val
-          
+
     def __add__(self, val2):
         return GFG(self.val + val2.val)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

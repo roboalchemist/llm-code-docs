@@ -1,7 +1,9 @@
 # Source: https://exa.ai/docs/sdks/typescript-sdk-specification.md
 
 > ## Documentation Index
+
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+
 > Use this file to discover all available pages before exploring further.
 
 # TypeScript SDK Specification
@@ -16,21 +18,13 @@ Install the [exa-js](https://github.com/exa-labs/exa-js) SDK
   <Tab title="npm">
     ```bash  theme={null}
     npm install exa-js
-    ```
-  </Tab>
-
-  <Tab title="yarn">
+    ```text
     ```bash  theme={null}
     yarn add exa-js
-    ```
-  </Tab>
-
-  <Tab title="pnpm">
+    ```text
     ```bash  theme={null}
     pnpm add exa-js
-    ```
-  </Tab>
-</Tabs>
+    ```text
 
 and then instantiate an Exa client
 
@@ -39,32 +33,27 @@ import Exa from "exa-js";
 
 const exa = new Exa();  // Reads EXA_API_KEY from environment
 // or explicitly: const exa = new Exa("your-api-key");
-```
 
-<Card title="Get API Key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
-  Follow this link to get your API key
+```text
 </Card>
 
 ## `search` Method
 
-<Note>The `options.type` parameter accepts: `"auto"` (default), `"fast"`, `"deep"`, or `"neural"`. See [RegularSearchOptions](#regularsearchoptions) for all available options.</Note>
+<Note>The `options.type` parameter accepts: `"auto"` (default), `"fast"`, `"deep"`, or `"instant"`. See [RegularSearchOptions](#regularsearchoptions) for all available options.</Note>
 
-### Input Example
+### search - Input Example
 
 ```typescript  theme={null}
 const result = await exa.search("hottest AI startups", {
   numResults: 10
 });
-```
 
-### Input Parameters
-
-| Parameter | Type                                                                    | Description | Default  |
+```text
 | --------- | ----------------------------------------------------------------------- | ----------- | -------- |
 | query     | `string`                                                                | -           | Required |
 | options   | `RegularSearchOptions & { contents?: T \| false \| null \| undefined }` | -           | Required |
 
-### Return Example
+### search - Return Example
 
 ```json  theme={null}
 {
@@ -81,24 +70,21 @@ const result = await exa.search("hottest AI startups", {
   ],
   "requestId": "a78ebce717f4d712b6f8fe0d5d7753f8"
 }
-```
 
-### Result Object
-
-| Field       | Type                      | Description                                   |
-| ----------- | ------------------------- | --------------------------------------------- |
-| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                   |
-| requestId   | `string`                  | The request ID for the search.                |
-| context     | `string`                  | The context for the search (for deep search). |
-| autoDate    | `string`                  | The autoprompt date, if applicable.           |
-| statuses    | `Status[]`                | Status information for each result.           |
-| costDollars | `CostDollars`             | The cost breakdown for this request.          |
+```text
+| ----------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
+| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                                                                        |
+| requestId   | `string`                  | The request ID for the search.                                                                     |
+| context     | `string`                  | Deprecated. The combined context string. Use `highlights` or `text` on individual results instead. |
+| autoDate    | `string`                  | The autoprompt date, if applicable.                                                                |
+| statuses    | `Status[]`                | Status information for each result.                                                                |
+| costDollars | `CostDollars`             | The cost breakdown for this request.                                                               |
 
 ## `searchAndContents` Method
 
-<Note>The `options.type` parameter accepts: `"auto"` (default), `"fast"`, `"deep"`, or `"neural"`. See [RegularSearchOptions](#regularsearchoptions) for all available options.</Note>
+<Note>The `options.type` parameter accepts: `"auto"` (default), `"fast"`, `"deep"`, or `"instant"`. See [RegularSearchOptions](#regularsearchoptions) for all available options.</Note>
 
-### Input Example
+### searchAndContents - Input Example
 
 ```typescript  theme={null}
 const result = await exa.searchAndContents("AI in healthcare", {
@@ -106,16 +92,13 @@ const result = await exa.searchAndContents("AI in healthcare", {
   highlights: true,
   numResults: 5
 });
-```
 
-### Input Parameters
-
-| Parameter | Type                       | Description          | Default  |
+```text
 | --------- | -------------------------- | -------------------- | -------- |
 | query     | `string`                   | The query string. \* | Required |
 | options   | `RegularSearchOptions & T` | -                    | Required |
 
-### Return Example
+### searchAndContents - Return Example
 
 ```json  theme={null}
 {
@@ -137,40 +120,34 @@ const result = await exa.searchAndContents("AI in healthcare", {
   ],
   "requestId": "b89fcd823e4f5a91c7d0fe1e6e8864f9"
 }
-```
 
-### Result Object
-
-| Field       | Type                      | Description                                   |
-| ----------- | ------------------------- | --------------------------------------------- |
-| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                   |
-| requestId   | `string`                  | The request ID for the search.                |
-| context     | `string`                  | The context for the search (for deep search). |
-| autoDate    | `string`                  | The autoprompt date, if applicable.           |
-| statuses    | `Status[]`                | Status information for each result.           |
-| costDollars | `CostDollars`             | The cost breakdown for this request.          |
+```text
+| ----------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
+| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                                                                        |
+| requestId   | `string`                  | The request ID for the search.                                                                     |
+| context     | `string`                  | Deprecated. The combined context string. Use `highlights` or `text` on individual results instead. |
+| autoDate    | `string`                  | The autoprompt date, if applicable.                                                                |
+| statuses    | `Status[]`                | Status information for each result.                                                                |
+| costDollars | `CostDollars`             | The cost breakdown for this request.                                                               |
 
 ## `findSimilar` Method
 
 <Note>See [FindSimilarOptions](#findsimilaroptions) for all available options including `excludeSourceDomain`.</Note>
 
-### Input Example
+### findSimilar - Input Example
 
 ```typescript  theme={null}
 const result = await exa.findSimilar("https://www.example.com/article", {
   numResults: 10,
   excludeSourceDomain: true
 });
-```
 
-### Input Parameters
-
-| Parameter | Type                                                                  | Description | Default  |
+```text
 | --------- | --------------------------------------------------------------------- | ----------- | -------- |
 | url       | `string`                                                              | -           | Required |
 | options   | `FindSimilarOptions & { contents?: T \| false \| null \| undefined }` | -           | Required |
 
-### Return Example
+### findSimilar - Return Example
 
 ```json  theme={null}
 {
@@ -186,24 +163,21 @@ const result = await exa.findSimilar("https://www.example.com/article", {
   ],
   "requestId": "08fdc6f20e9f3ea87f860af3f6ccc30f"
 }
-```
 
-### Result Object
-
-| Field       | Type                      | Description                                   |
-| ----------- | ------------------------- | --------------------------------------------- |
-| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                   |
-| requestId   | `string`                  | The request ID for the search.                |
-| context     | `string`                  | The context for the search (for deep search). |
-| autoDate    | `string`                  | The autoprompt date, if applicable.           |
-| statuses    | `Status[]`                | Status information for each result.           |
-| costDollars | `CostDollars`             | The cost breakdown for this request.          |
+```text
+| ----------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
+| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                                                                        |
+| requestId   | `string`                  | The request ID for the search.                                                                     |
+| context     | `string`                  | Deprecated. The combined context string. Use `highlights` or `text` on individual results instead. |
+| autoDate    | `string`                  | The autoprompt date, if applicable.                                                                |
+| statuses    | `Status[]`                | Status information for each result.                                                                |
+| costDollars | `CostDollars`             | The cost breakdown for this request.                                                               |
 
 ## `findSimilarAndContents` Method
 
 <Note>See [FindSimilarOptions](#findsimilaroptions) for all available options including `excludeSourceDomain`.</Note>
 
-### Input Example
+### findSimilarAndContents - Input Example
 
 ```typescript  theme={null}
 const result = await exa.findSimilarAndContents("https://www.example.com/article", {
@@ -211,16 +185,13 @@ const result = await exa.findSimilarAndContents("https://www.example.com/article
   highlights: true,
   numResults: 5
 });
-```
 
-### Input Parameters
-
-| Parameter | Type                     | Description                                 | Default  |
+```text
 | --------- | ------------------------ | ------------------------------------------- | -------- |
 | url       | `string`                 | The URL for which to find similar links. \* | Required |
 | options   | `FindSimilarOptions & T` | -                                           | Required |
 
-### Return Example
+### findSimilarAndContents - Return Example
 
 ```json  theme={null}
 {
@@ -242,24 +213,21 @@ const result = await exa.findSimilarAndContents("https://www.example.com/article
   ],
   "requestId": "c90gde934f5g6b02d8e1gf2f7f9975g0"
 }
-```
 
-### Result Object
-
-| Field       | Type                      | Description                                   |
-| ----------- | ------------------------- | --------------------------------------------- |
-| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                   |
-| requestId   | `string`                  | The request ID for the search.                |
-| context     | `string`                  | The context for the search (for deep search). |
-| autoDate    | `string`                  | The autoprompt date, if applicable.           |
-| statuses    | `Status[]`                | Status information for each result.           |
-| costDollars | `CostDollars`             | The cost breakdown for this request.          |
+```text
+| ----------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
+| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                                                                        |
+| requestId   | `string`                  | The request ID for the search.                                                                     |
+| context     | `string`                  | Deprecated. The combined context string. Use `highlights` or `text` on individual results instead. |
+| autoDate    | `string`                  | The autoprompt date, if applicable.                                                                |
+| statuses    | `Status[]`                | Status information for each result.                                                                |
+| costDollars | `CostDollars`             | The cost breakdown for this request.                                                               |
 
 ## `getContents` Method
 
 Retrieves contents of documents based on URLs.
 
-### Input Example
+### getContents - Input Example
 
 ```typescript  theme={null}
 const result = await exa.getContents([
@@ -267,18 +235,15 @@ const result = await exa.getContents([
   "https://www.example.com/article2"
 ], {
   text: { maxCharacters: 1000 },
-  highlights: { query: "AI", maxCharacters: 2000 }
+  highlights: { query: "AI", maxCharacters: 200 }
 });
-```
 
-### Input Parameters
-
-| Parameter | Type                                            | Description                                                     | Default  |
+```text
 | --------- | ----------------------------------------------- | --------------------------------------------------------------- | -------- |
 | urls      | `string \| string[] \| SearchResult&lt;T&gt;[]` | A URL or array of URLs, or an array of SearchResult objects. \* | Required |
 | options   | `T`                                             | -                                                               | Required |
 
-### Return Example
+### getContents - Return Example
 
 ```json  theme={null}
 {
@@ -291,38 +256,32 @@ const result = await exa.getContents([
     }
   ]
 }
-```
 
-### Result Object
-
-| Field       | Type                      | Description                                   |
-| ----------- | ------------------------- | --------------------------------------------- |
-| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                   |
-| requestId   | `string`                  | The request ID for the search.                |
-| context     | `string`                  | The context for the search (for deep search). |
-| autoDate    | `string`                  | The autoprompt date, if applicable.           |
-| statuses    | `Status[]`                | Status information for each result.           |
-| costDollars | `CostDollars`             | The cost breakdown for this request.          |
+```text
+| ----------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
+| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                                                                        |
+| requestId   | `string`                  | The request ID for the search.                                                                     |
+| context     | `string`                  | Deprecated. The combined context string. Use `highlights` or `text` on individual results instead. |
+| autoDate    | `string`                  | The autoprompt date, if applicable.                                                                |
+| statuses    | `Status[]`                | Status information for each result.                                                                |
+| costDollars | `CostDollars`             | The cost breakdown for this request.                                                               |
 
 ## `answer` Method
 
-### Input Example
+### answer - Input Example
 
 ```typescript  theme={null}
 const result = await exa.answer("What is the capital of France?", {
   text: true,
   model: "exa"
 });
-```
 
-### Input Parameters
-
-| Parameter | Type                                                      | Description | Default  |
+```text
 | --------- | --------------------------------------------------------- | ----------- | -------- |
 | query     | `string`                                                  | -           | Required |
 | options   | `AnswerOptions \| AnswerOptionsTyped&lt;ZodSchema<T&gt;>` | -           | Required |
 
-### Return Example
+### answer - Return Example
 
 ```json  theme={null}
 {
@@ -339,11 +298,8 @@ const result = await exa.answer("What is the capital of France?", {
   ],
   "requestId": "abc123"
 }
-```
 
-### Result Object
-
-| Field       | Type                                      | Description                                                              |
+```text
 | ----------- | ----------------------------------------- | ------------------------------------------------------------------------ |
 | answer      | `string \| Record&lt;string, unknown&gt;` | The generated answer text (or object matching outputSchema if provided). |
 | citations   | `SearchResult&lt;{}&gt;[]`                | The sources used to generate the answer.                                 |
@@ -352,7 +308,7 @@ const result = await exa.answer("What is the capital of France?", {
 
 ## `streamAnswer` Method
 
-### Input Example
+### streamAnswer - Input Example
 
 ```typescript  theme={null}
 for await (const chunk of exa.streamAnswer("What is quantum computing?", {
@@ -362,16 +318,13 @@ for await (const chunk of exa.streamAnswer("What is quantum computing?", {
   if (chunk.content) process.stdout.write(chunk.content);
   if (chunk.citations) console.log("Citations:", chunk.citations);
 }
-```
 
-### Input Parameters
+```text
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | -------- |
+| query     | `string`                                                                                                                                                            | -           | Required |
+| options   | `{ text?: boolean; model?: "exa" \| "exa-pro"; systemPrompt?: string; outputSchema?: Record&lt;string, unknown&gt; \| ZodSchema&lt;T&gt;; userLocation?: string; }` | -           | Required |
 
-| Parameter | Type                                                                                                                                         | Description | Default  |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | -------- |
-| query     | `string`                                                                                                                                     | -           | Required |
-| options   | `{ text?: boolean; model?: "exa" \| "exa-pro"; systemPrompt?: string; outputSchema?: Record&lt;string, unknown&gt; \| ZodSchema&lt;T&gt;; }` | -           | Required |
-
-### Return Example
+### streamAnswer - Return Example
 
 ```json  theme={null}
 {
@@ -384,59 +337,49 @@ for await (const chunk of exa.streamAnswer("What is quantum computing?", {
     }
   ]
 }
-```
 
-### Result Object
-
-| Field     | Type                                                             | Description                                                        |
+```text
 | --------- | ---------------------------------------------------------------- | ------------------------------------------------------------------ |
 | content   | `string`                                                         | The partial text content of the answer (if present in this chunk). |
 | citations | `Array&lt;{id, url, title?, publishedDate?, author?, text?}&gt;` | Citations associated with the current chunk of text (if present).  |
 
 ## `research.create` Method
 
-### Input Example
+### research.create - Input Example
 
 ```typescript  theme={null}
 const task = await exa.research.create({
   instructions: "Research the latest AI developments",
   model: "exa-research-fast"
 });
-```
 
-### Input Parameters
-
-| Parameter | Type                                                                                                                                    | Description | Default  |
+```text
 | --------- | --------------------------------------------------------------------------------------------------------------------------------------- | ----------- | -------- |
 | params    | `{ instructions: string; model?: ResearchCreateRequest["model"]; outputSchema?: Record&lt;string, unknown&gt; \| ZodSchema&lt;T&gt;; }` | -           | Required |
 
-### Return Example
+### research.create - Return Example
 
 ```json  theme={null}
 {
   "researchId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
   "status": "pending"
 }
-```
 
-## `research.get` Method
+````research.get` Method
 
 <Note>When called with `stream: true`, returns an `AsyncGenerator<ResearchStreamEvent>` for real-time SSE updates instead of a `Promise<Research>`.</Note>
 
-### Input Example
+### research.create - Input Example
 
 ```typescript  theme={null}
 const result = await exa.research.get("a1b2c3d4-e5f6-7890-abcd-ef1234567890");
-```
 
-### Input Parameters
-
-| Parameter  | Type                                                                         | Description | Default  |
+```text
 | ---------- | ---------------------------------------------------------------------------- | ----------- | -------- |
 | researchId | `string`                                                                     | -           | Required |
 | options    | `{ stream?: boolean; events?: boolean; outputSchema?: ZodSchema&lt;T&gt;; }` | -           | Required |
 
-### Return Example
+### research.create - Return Example
 
 ```json  theme={null}
 {
@@ -451,43 +394,36 @@ const result = await exa.research.get("a1b2c3d4-e5f6-7890-abcd-ef1234567890");
     }
   }
 }
-```
 
-## `research.pollUntilFinished` Method
+````research.pollUntilFinished` Method
 
 <Note>Options include `pollInterval` (default 1000ms), `timeoutMs` (default 10 minutes), and `events` (boolean to include event log).</Note>
 
-### Input Example
+### research.create - Input Example
 
 ```typescript  theme={null}
 const result = await exa.research.pollUntilFinished("a1b2c3d4-e5f6-7890-abcd-ef1234567890", {
   pollInterval: 1000,
   timeoutMs: 600000
 });
-```
 
-### Input Parameters
-
-| Parameter  | Type                                                                                                  | Description | Default  |
+```text
 | ---------- | ----------------------------------------------------------------------------------------------------- | ----------- | -------- |
 | researchId | `string`                                                                                              | -           | Required |
 | options    | `{ pollInterval?: number; timeoutMs?: number; events?: boolean; outputSchema?: ZodSchema&lt;T&gt;; }` | -           | Required |
 
 ## `research.list` Method
 
-### Input Example
+### research.list - Input Example
 
 ```typescript  theme={null}
 const tasks = await exa.research.list({ limit: 10 });
-```
 
-### Input Parameters
-
-| Parameter | Type                  | Description | Default  |
+```text
 | --------- | --------------------- | ----------- | -------- |
 | options   | `ListResearchRequest` | -           | Required |
 
-### Return Example
+### research.list - Return Example
 
 ```json  theme={null}
 {
@@ -501,11 +437,8 @@ const tasks = await exa.research.list({ limit: 10 });
   "hasMore": true,
   "nextCursor": "eyJjcmVhdGVkQXQiOiIyMDI0LTAxLTE1VDE4OjMwOjAwWiIsImlkIjoidGFzay0yIn0="
 }
-```
 
-***
-
-## Types Reference
+```text
 
 This section documents the types used throughout the SDK.
 
@@ -527,7 +460,7 @@ Options for retrieving page contents
 | subpages           | `number`                            | Number of subpages to return for each result.                                                                                                                                                                                       |
 | subpageTarget      | `string \| string[]`                | Text used to match/rank subpages in the returned list.                                                                                                                                                                              |
 | extras             | `ExtrasOptions`                     | Miscellaneous data derived from results.                                                                                                                                                                                            |
-| context            | `ContextOptions \| true`            | Options for retrieving context.                                                                                                                                                                                                     |
+| context            | `ContextOptions \| true`            | Deprecated. Use `highlights` or `text` instead. Will be removed in a future version.                                                                                                                                                |
 
 #### `BaseSearchOptions`
 
@@ -554,24 +487,24 @@ Options for performing a search query
 Search options for performing a search query.
 Uses a discriminated union to ensure additionalQueries is only allowed when type is "deep".
 
-| Field              | Type                                                                                                               | Description                                                                              |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
-| type               | `"auto" \| "fast" \| "deep" \| "neural"`                                                                           | The type of search to perform. Default is "auto".                                        |
-| numResults         | `number`                                                                                                           | Number of search results to return. Default 10. Max 10 for basic plans.                  |
-| includeDomains     | `string[]`                                                                                                         | List of domains to include in the search.                                                |
-| excludeDomains     | `string[]`                                                                                                         | List of domains to exclude in the search.                                                |
-| startCrawlDate     | `string`                                                                                                           | Start date for results based on crawl date (ISO format).                                 |
-| endCrawlDate       | `string`                                                                                                           | End date for results based on crawl date (ISO format).                                   |
-| startPublishedDate | `string`                                                                                                           | Start date for results based on published date (ISO format).                             |
-| endPublishedDate   | `string`                                                                                                           | End date for results based on published date (ISO format).                               |
-| category           | `"company" \| "research paper" \| "news" \| "pdf" \| "tweet" \| "personal site" \| "financial report" \| "people"` | A data category to focus on.                                                             |
-| includeText        | `string[]`                                                                                                         | List of strings that must be present in webpage text. Max 1 string of up to 5 words.     |
-| excludeText        | `string[]`                                                                                                         | List of strings that must not be present in webpage text. Max 1 string of up to 5 words. |
-| contents           | `ContentsOptions`                                                                                                  | Options for retrieving page contents for each result.                                    |
-| moderation         | `boolean`                                                                                                          | If true, the search results are moderated for safety.                                    |
-| useAutoprompt      | `boolean`                                                                                                          | If true, uses autoprompt to enhance the query.                                           |
-| userLocation       | `string`                                                                                                           | The two-letter ISO country code of the user, e.g. US.                                    |
-| additionalQueries  | `string[]`                                                                                                         | Alternative query formulations for deep search. Max 5 queries. Only for type: "deep".    |
+| Field              | Type                                                                                                               | Description                                                                                                                   |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
+| type               | `"auto" \| "fast" \| "deep" \| "instant"`                                                                          | The type of search to perform. Default is "auto". "instant" provides the lowest latency optimized for real-time applications. |
+| numResults         | `number`                                                                                                           | Number of search results to return. Default 10. Max 10 for basic plans.                                                       |
+| includeDomains     | `string[]`                                                                                                         | List of domains to include in the search.                                                                                     |
+| excludeDomains     | `string[]`                                                                                                         | List of domains to exclude in the search.                                                                                     |
+| startCrawlDate     | `string`                                                                                                           | Start date for results based on crawl date (ISO format).                                                                      |
+| endCrawlDate       | `string`                                                                                                           | End date for results based on crawl date (ISO format).                                                                        |
+| startPublishedDate | `string`                                                                                                           | Start date for results based on published date (ISO format).                                                                  |
+| endPublishedDate   | `string`                                                                                                           | End date for results based on published date (ISO format).                                                                    |
+| category           | `"company" \| "research paper" \| "news" \| "pdf" \| "tweet" \| "personal site" \| "financial report" \| "people"` | A data category to focus on.                                                                                                  |
+| includeText        | `string[]`                                                                                                         | List of strings that must be present in webpage text. Max 1 string of up to 5 words.                                          |
+| excludeText        | `string[]`                                                                                                         | List of strings that must not be present in webpage text. Max 1 string of up to 5 words.                                      |
+| contents           | `ContentsOptions`                                                                                                  | Options for retrieving page contents for each result.                                                                         |
+| moderation         | `boolean`                                                                                                          | If true, the search results are moderated for safety.                                                                         |
+| useAutoprompt      | `boolean`                                                                                                          | If true, uses autoprompt to enhance the query.                                                                                |
+| userLocation       | `string`                                                                                                           | The two-letter ISO country code of the user, e.g. US.                                                                         |
+| additionalQueries  | `string[]`                                                                                                         | Alternative query formulations for deep search. Max 5 queries. Only for type: "deep".                                         |
 
 #### `FindSimilarOptions`
 
@@ -604,10 +537,12 @@ Options for retrieving highlights from page.
 NOTE: For search type "deep", these options will not be respected. Highlights will be generated with respect
 to your initial query, and may vary in quantity and length.
 
-| Field         | Type     | Description                        |
-| ------------- | -------- | ---------------------------------- |
-| query         | `string` | -                                  |
-| maxCharacters | `number` | Maximum characters for highlights. |
+| Field            | Type     | Description |
+| ---------------- | -------- | ----------- |
+| query            | `string` | -           |
+| maxCharacters    | `number` | -           |
+| numSentences     | `number` | -           |
+| highlightsPerUrl | `number` | -           |
 
 #### `SummaryContentsOptions`
 
@@ -619,9 +554,6 @@ Options for retrieving summary from page.
 | schema | `Record&lt;string, unknown&gt; \| ZodSchema` | -           |
 
 #### `ContextOptions`
-
-Options for retrieving the context from a list of search results. The context is a string
-representation of all the search results.
 
 | Field         | Type     | Description |
 | ------------- | -------- | ----------- |
@@ -678,14 +610,14 @@ Represents a search result object.
 
 Represents a search response object.
 
-| Field       | Type                      | Description                                   |
-| ----------- | ------------------------- | --------------------------------------------- |
-| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                   |
-| requestId   | `string`                  | The request ID for the search.                |
-| context     | `string`                  | The context for the search (for deep search). |
-| autoDate    | `string`                  | The autoprompt date, if applicable.           |
-| statuses    | `Status[]`                | Status information for each result.           |
-| costDollars | `CostDollars`             | The cost breakdown for this request.          |
+| Field       | Type                      | Description                                                                                        |
+| ----------- | ------------------------- | -------------------------------------------------------------------------------------------------- |
+| results     | `SearchResult&lt;T&gt;[]` | The list of search results.                                                                        |
+| requestId   | `string`                  | The request ID for the search.                                                                     |
+| context     | `string`                  | Deprecated. The combined context string. Use `highlights` or `text` on individual results instead. |
+| autoDate    | `string`                  | The autoprompt date, if applicable.                                                                |
+| statuses    | `Status[]`                | Status information for each result.                                                                |
+| costDollars | `CostDollars`             | The cost breakdown for this request.                                                               |
 
 #### `Status`
 

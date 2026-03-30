@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # SageMaker notebook instances should not grant users root access
- 
+
 ## Description{% #description %}
 
 This control evaluates if root access is enabled for an Amazon SageMaker notebook instance.

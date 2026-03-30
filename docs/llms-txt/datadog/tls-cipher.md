@@ -47,18 +47,18 @@ To ensure secure communication in your Go applications, you should use modern an
 
 ```go
 import (
-	"crypto/tls"
-	"fmt"
-	"net/http"
+    "crypto/tls"
+    "fmt"
+    "net/http"
 )
 
 func main() {
-	http := &http.Transport{
-		TLSClientConfig: &tls.Config{CipherSuites: []uint16{
-			tls.TLS_RSA_WITH_RC4_128_SHA,
-			tls.TLS_RSA_WITH_AES_128_CBC_SHA256,
-		}},
-	}
+    http := &http.Transport{
+        TLSClientConfig: &tls.Config{CipherSuites: []uint16{
+            tls.TLS_RSA_WITH_RC4_128_SHA,
+            tls.TLS_RSA_WITH_AES_128_CBC_SHA256,
+        }},
+    }
 }
 ```
 
@@ -66,20 +66,19 @@ func main() {
 
 ```go
 import (
-	"crypto/tls"
-	"fmt"
-	"net/http"
+    "crypto/tls"
+    "fmt"
+    "net/http"
 )
 
 func main() {
-	http := &http.Transport{
-		TLSClientConfig: &tls.Config{CipherSuites: []uint16{
-			tls.TLS_AES_128_GCM_SHA256,
-			tls.TLS_AES_256_GCM_SHA384,
-		}},
-	}
+    http := &http.Transport{
+        TLSClientConfig: &tls.Config{CipherSuites: []uint16{
+            tls.TLS_AES_128_GCM_SHA256,
+            tls.TLS_AES_256_GCM_SHA384,
+        }},
+    }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The scheduler pod specification file ownership should be assigned to root
- 
+
 ## Description{% #description %}
 
 The scheduler pod specification file ownership should be set to `root:root`. The scheduler pod specification file controls various parameters that set the behavior of the kube-scheduler service in the master node. You should set its file ownership to maintain the integrity of the file.

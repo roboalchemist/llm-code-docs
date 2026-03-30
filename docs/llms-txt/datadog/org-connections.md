@@ -211,13 +211,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/org_connections" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -239,7 +239,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List Org Connections returns "OK" response
@@ -253,7 +253,7 @@ p api_instance.list_org_connections()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List Org Connections returns "OK" response
@@ -261,29 +261,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOrgConnectionsApi(apiClient)
-	resp, r, err := api.ListOrgConnections(ctx, *datadogV2.NewListOrgConnectionsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOrgConnectionsApi(apiClient)
+    resp, r, err := api.ListOrgConnections(ctx, *datadogV2.NewListOrgConnectionsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrgConnectionsApi.ListOrgConnections`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgConnectionsApi.ListOrgConnections`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OrgConnectionsApi.ListOrgConnections`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OrgConnectionsApi.ListOrgConnections`:\n%s\n", responseContent)
 }
 ```
 
@@ -291,7 +291,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List Org Connections returns "OK" response
@@ -324,7 +324,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List Org Connections returns "OK" response
@@ -351,7 +351,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -680,7 +680,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/org_connections" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -706,8 +706,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create Org Connection returns "OK" response
@@ -715,47 +715,47 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.OrgConnectionCreateRequest{
-		Data: datadogV2.OrgConnectionCreate{
-			Type: datadogV2.ORGCONNECTIONTYPE_ORG_CONNECTION,
-			Relationships: datadogV2.OrgConnectionCreateRelationships{
-				SinkOrg: datadogV2.OrgConnectionOrgRelationship{
-					Data: &datadogV2.OrgConnectionOrgRelationshipData{
-						Type: datadogV2.ORGCONNECTIONORGRELATIONSHIPDATATYPE_ORGS.Ptr(),
-						Id:   datadog.PtrString("83999dcd-7f97-11f0-8de1-1ecf66f1aa85"),
-					},
-				},
-			},
-			Attributes: datadogV2.OrgConnectionCreateAttributes{
-				ConnectionTypes: []datadogV2.OrgConnectionTypeEnum{
-					datadogV2.ORGCONNECTIONTYPEENUM_LOGS,
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOrgConnectionsApi(apiClient)
-	resp, r, err := api.CreateOrgConnections(ctx, body)
+    body := datadogV2.OrgConnectionCreateRequest{
+        Data: datadogV2.OrgConnectionCreate{
+            Type: datadogV2.ORGCONNECTIONTYPE_ORG_CONNECTION,
+            Relationships: datadogV2.OrgConnectionCreateRelationships{
+                SinkOrg: datadogV2.OrgConnectionOrgRelationship{
+                    Data: &datadogV2.OrgConnectionOrgRelationshipData{
+                        Type: datadogV2.ORGCONNECTIONORGRELATIONSHIPDATATYPE_ORGS.Ptr(),
+                        Id:   datadog.PtrString("83999dcd-7f97-11f0-8de1-1ecf66f1aa85"),
+                    },
+                },
+            },
+            Attributes: datadogV2.OrgConnectionCreateAttributes{
+                ConnectionTypes: []datadogV2.OrgConnectionTypeEnum{
+                    datadogV2.ORGCONNECTIONTYPEENUM_LOGS,
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOrgConnectionsApi(apiClient)
+    resp, r, err := api.CreateOrgConnections(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrgConnectionsApi.CreateOrgConnections`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgConnectionsApi.CreateOrgConnections`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OrgConnectionsApi.CreateOrgConnections`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OrgConnectionsApi.CreateOrgConnections`:\n%s\n", responseContent)
 }
 ```
 
@@ -763,7 +763,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create Org Connection returns "OK" response
@@ -824,7 +824,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -874,7 +874,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create Org Connection returns "OK" response
@@ -907,7 +907,7 @@ p api_instance.create_org_connections(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create Org Connection returns "OK" response
@@ -951,7 +951,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1271,7 +1271,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport connection_id="f9ec96b0-8c8a-4b0a-9b0a-1b2c3d4e5f6a"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/org_connections/${connection_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1291,8 +1291,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update Org Connection returns "OK" response
@@ -1300,45 +1300,45 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	// there is a valid "org_connection" in the system
-	OrgConnectionDataID := uuid.MustParse(os.Getenv("ORG_CONNECTION_DATA_ID"))
+    // there is a valid "org_connection" in the system
+    OrgConnectionDataID := uuid.MustParse(os.Getenv("ORG_CONNECTION_DATA_ID"))
 
-	body := datadogV2.OrgConnectionUpdateRequest{
-		Data: datadogV2.OrgConnectionUpdate{
-			Type: datadogV2.ORGCONNECTIONTYPE_ORG_CONNECTION,
-			Id:   OrgConnectionDataID,
-			Attributes: datadogV2.OrgConnectionUpdateAttributes{
-				ConnectionTypes: []datadogV2.OrgConnectionTypeEnum{
-					datadogV2.ORGCONNECTIONTYPEENUM_LOGS,
-					datadogV2.ORGCONNECTIONTYPEENUM_METRICS,
-				},
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOrgConnectionsApi(apiClient)
-	resp, r, err := api.UpdateOrgConnections(ctx, OrgConnectionDataID, body)
+    body := datadogV2.OrgConnectionUpdateRequest{
+        Data: datadogV2.OrgConnectionUpdate{
+            Type: datadogV2.ORGCONNECTIONTYPE_ORG_CONNECTION,
+            Id:   OrgConnectionDataID,
+            Attributes: datadogV2.OrgConnectionUpdateAttributes{
+                ConnectionTypes: []datadogV2.OrgConnectionTypeEnum{
+                    datadogV2.ORGCONNECTIONTYPEENUM_LOGS,
+                    datadogV2.ORGCONNECTIONTYPEENUM_METRICS,
+                },
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOrgConnectionsApi(apiClient)
+    resp, r, err := api.UpdateOrgConnections(ctx, OrgConnectionDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrgConnectionsApi.UpdateOrgConnections`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgConnectionsApi.UpdateOrgConnections`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `OrgConnectionsApi.UpdateOrgConnections`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `OrgConnectionsApi.UpdateOrgConnections`:\n%s\n", responseContent)
 }
 ```
 
@@ -1346,7 +1346,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update Org Connection returns "OK" response
@@ -1406,7 +1406,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1450,7 +1450,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update Org Connection returns "OK" response
@@ -1480,7 +1480,7 @@ p api_instance.update_org_connections(ORG_CONNECTION_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update Org Connection returns "OK" response
@@ -1523,7 +1523,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1730,13 +1730,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport connection_id="f9ec96b0-8c8a-4b0a-9b0a-1b2c3d4e5f6a"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/org_connections/${connection_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1762,7 +1762,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete Org Connection returns "OK" response
@@ -1779,7 +1779,7 @@ p api_instance.delete_org_connections(ORG_CONNECTION_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete Org Connection returns "OK" response
@@ -1787,29 +1787,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
-	"github.com/google/uuid"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/google/uuid"
 )
 
 func main() {
-	// there is a valid "org_connection" in the system
-	OrgConnectionDataID := uuid.MustParse(os.Getenv("ORG_CONNECTION_DATA_ID"))
+    // there is a valid "org_connection" in the system
+    OrgConnectionDataID := uuid.MustParse(os.Getenv("ORG_CONNECTION_DATA_ID"))
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewOrgConnectionsApi(apiClient)
-	r, err := api.DeleteOrgConnections(ctx, OrgConnectionDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewOrgConnectionsApi(apiClient)
+    r, err := api.DeleteOrgConnections(ctx, OrgConnectionDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrgConnectionsApi.DeleteOrgConnections`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrgConnectionsApi.DeleteOrgConnections`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -1817,7 +1817,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete Org Connection returns "OK" response
@@ -1857,7 +1857,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete Org Connection returns "OK" response
@@ -1887,7 +1887,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

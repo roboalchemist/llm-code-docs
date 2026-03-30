@@ -1,0 +1,475 @@
+# Source: https://docs.prefect.io/v3/api-ref/python/prefect-results.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.prefect.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# results
+
+# `prefect.results`
+
+## Functions
+
+### `DEFAULT_STORAGE_KEY_FN` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L71" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+DEFAULT_STORAGE_KEY_FN() -> str
+```
+
+### `aget_default_result_storage` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L81" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+aget_default_result_storage() -> WritableFileSystem
+```
+
+Generate a default file system for result storage.
+
+### `get_default_result_storage` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L105" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+get_default_result_storage() -> WritableFileSystem
+```
+
+Generate a default file system for result storage.
+
+### `aresolve_result_storage` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L130" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+aresolve_result_storage(result_storage: ResultStorage | UUID | Path) -> WritableFileSystem
+```
+
+Resolve one of the valid `ResultStorage` input types into a saved block
+document id and an instance of the block.
+
+### `resolve_result_storage` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L167" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+resolve_result_storage(result_storage: ResultStorage | UUID | Path) -> WritableFileSystem
+```
+
+Resolve one of the valid `ResultStorage` input types into a saved block
+document id and an instance of the block.
+
+### `resolve_serializer` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L202" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+resolve_serializer(serializer: ResultSerializer) -> Serializer
+```
+
+Resolve one of the valid `ResultSerializer` input types into a serializer
+instance.
+
+### `get_or_create_default_task_scheduling_storage` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L218" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+get_or_create_default_task_scheduling_storage() -> ResultStorage
+```
+
+Generate a default file system for background task parameter/result storage.
+
+### `get_default_result_serializer` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L236" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+get_default_result_serializer() -> Serializer
+```
+
+Generate a default file system for result storage.
+
+### `get_default_persist_setting` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L244" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+get_default_persist_setting() -> bool
+```
+
+Return the default option for result persistence.
+
+### `get_default_persist_setting_for_tasks` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L252" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+get_default_persist_setting_for_tasks() -> bool
+```
+
+Return the default option for result persistence for tasks.
+
+### `should_persist_result` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L264" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+should_persist_result() -> bool
+```
+
+Return the default option for result persistence determined by the current run context.
+
+If there is no current run context, the value of `results.persist_by_default` on the
+current settings will be returned.
+
+### `default_cache` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L293" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+default_cache() -> LRUCache[str, 'ResultRecord[Any]']
+```
+
+### `result_storage_discriminator` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L297" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+result_storage_discriminator(x: Any) -> str
+```
+
+### `get_result_store` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L1208" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+get_result_store() -> ResultStore
+```
+
+Get the current result store.
+
+## Classes
+
+### `ResultStore` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L310" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+Manages the storage and retrieval of results.
+
+**Attributes:**
+
+* `result_storage`: The storage for result records. If not provided, the default
+  result storage will be used.
+* `metadata_storage`: The storage for result record metadata. If not provided,
+  the metadata will be stored alongside the results.
+* `lock_manager`: The lock manager to use for locking result records. If not provided,
+  the store cannot be used in transactions with the SERIALIZABLE isolation level.
+* `cache_result_in_memory`: Whether to cache results in memory.
+* `serializer`: The serializer to use for results.
+* `storage_key_fn`: The function to generate storage keys.
+
+**Methods:**
+
+#### `aacquire_lock` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L1112" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+aacquire_lock(self, key: str, holder: str | None = None, timeout: float | None = None) -> bool
+```
+
+Acquire a lock for a result record.
+
+**Args:**
+
+* `key`: The key to acquire the lock for.
+* `holder`: The holder of the lock. If not provided, a default holder based on the
+  current host, process, and thread will be used.
+* `timeout`: The timeout for the lock.
+
+**Returns:**
+
+* True if the lock was successfully acquired; False otherwise.
+
+#### `acquire_lock` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L1089" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+acquire_lock(self, key: str, holder: str | None = None, timeout: float | None = None) -> bool
+```
+
+Acquire a lock for a result record.
+
+**Args:**
+
+* `key`: The key to acquire the lock for.
+* `holder`: The holder of the lock. If not provided, a default holder based on the
+  current host, process, and thread will be used.
+* `timeout`: The timeout for the lock.
+
+**Returns:**
+
+* True if the lock was successfully acquired; False otherwise.
+
+#### `aexists` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L645" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+aexists(self, key: str) -> bool
+```
+
+Check if a result record exists in storage.
+
+**Args:**
+
+* `key`: The key to check for the existence of a result record.
+
+**Returns:**
+
+* True if the result record exists, False otherwise.
+
+#### `apersist_result_record` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L1056" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+apersist_result_record(self, result_record: 'ResultRecord[Any]', holder: str | None = None) -> None
+```
+
+Persist a result record to storage.
+
+**Args:**
+
+* `result_record`: The result record to persist.
+
+#### `aread` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L812" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+aread(self, key: str, holder: str | None = None) -> 'ResultRecord[Any]'
+```
+
+Read a result record from storage.
+
+**Args:**
+
+* `key`: The key to read the result record from.
+* `holder`: The holder of the lock if a lock was set on the record.
+
+**Returns:**
+
+* A result record.
+
+#### `aupdate_for_flow` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L374" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+aupdate_for_flow(self, flow: 'Flow[..., Any]') -> Self
+```
+
+Create a new result store for a flow with updated settings.
+
+**Args:**
+
+* `flow`: The flow to update the result store for.
+
+**Returns:**
+
+* An updated result store.
+
+#### `aupdate_for_task` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L421" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+aupdate_for_task(self: Self, task: 'Task[P, R]') -> Self
+```
+
+Create a new result store for a task.
+
+**Args:**
+
+* `task`: The task to update the result store for.
+
+**Returns:**
+
+* An updated result store.
+
+#### `await_for_lock` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L1196" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+await_for_lock(self, key: str, timeout: float | None = None) -> bool
+```
+
+Wait for the corresponding transaction record to become free.
+
+#### `awrite` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L894" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+awrite(self, obj: Any, key: str | None = None, expiration: DateTime | None = None, holder: str | None = None) -> None
+```
+
+Write a result to storage.
+
+**Args:**
+
+* `key`: The key to write the result record to.
+* `obj`: The object to write to storage.
+* `expiration`: The expiration time for the result record.
+* `holder`: The holder of the lock if a lock was set on the record.
+
+#### `create_result_record` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L830" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+create_result_record(self, obj: Any, key: str | None = None, expiration: DateTime | None = None) -> 'ResultRecord[Any]'
+```
+
+Create a result record.
+
+**Args:**
+
+* `key`: The key to create the result record for.
+* `obj`: The object to create the result record for.
+* `expiration`: The expiration time for the result record.
+
+#### `exists` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L633" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+exists(self, key: str) -> bool
+```
+
+Check if a result record exists in storage.
+
+**Args:**
+
+* `key`: The key to check for the existence of a result record.
+
+**Returns:**
+
+* True if the result record exists, False otherwise.
+
+#### `generate_default_holder` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L527" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+generate_default_holder() -> str
+```
+
+Generate a default holder string using hostname, PID, and thread ID.
+
+**Returns:**
+
+* A unique identifier string.
+
+#### `is_lock_holder` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L1165" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+is_lock_holder(self, key: str, holder: str | None = None) -> bool
+```
+
+Check if the current holder is the lock holder for the result record.
+
+**Args:**
+
+* `key`: The key to check the lock for.
+* `holder`: The holder of the lock. If not provided, a default holder based on the
+  current host, process, and thread will be used.
+
+**Returns:**
+
+* True if the current holder is the lock holder; False otherwise.
+
+#### `is_locked` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L1154" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+is_locked(self, key: str) -> bool
+```
+
+Check if a result record is locked.
+
+#### `persist_result_record` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L1044" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+persist_result_record(self, result_record: 'ResultRecord[Any]', holder: str | None = None) -> None
+```
+
+Persist a result record to storage.
+
+**Args:**
+
+* `result_record`: The result record to persist.
+
+#### `read` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L794" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+read(self, key: str, holder: str | None = None) -> 'ResultRecord[Any]'
+```
+
+Read a result record from storage.
+
+**Args:**
+
+* `key`: The key to read the result record from.
+* `holder`: The holder of the lock if a lock was set on the record.
+
+**Returns:**
+
+* A result record.
+
+#### `release_lock` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L1136" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+release_lock(self, key: str, holder: str | None = None) -> None
+```
+
+Release a lock for a result record.
+
+**Args:**
+
+* `key`: The key to release the lock for.
+* `holder`: The holder of the lock. Must match the holder that acquired the lock.
+  If not provided, a default holder based on the current host, process, and
+  thread will be used.
+
+#### `result_storage_block_id` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L344" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+result_storage_block_id(self) -> UUID | None
+```
+
+#### `supports_isolation_level` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L1070" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+supports_isolation_level(self, level: 'IsolationLevel') -> bool
+```
+
+Check if the result store supports a given isolation level.
+
+**Args:**
+
+* `level`: The isolation level to check.
+
+**Returns:**
+
+* True if the isolation level is supported, False otherwise.
+
+#### `update_for_flow` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L398" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+update_for_flow(self, flow: 'Flow[..., Any]') -> Self
+```
+
+Create a new result store for a flow with updated settings.
+
+**Args:**
+
+* `flow`: The flow to update the result store for.
+
+**Returns:**
+
+* An updated result store.
+
+#### `update_for_task` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L474" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+update_for_task(self: Self, task: 'Task[P, R]') -> Self
+```
+
+Create a new result store for a task.
+
+**Args:**
+
+* `task`: The task to update the result store for.
+
+**Returns:**
+
+* An updated result store.
+
+#### `wait_for_lock` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L1185" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+wait_for_lock(self, key: str, timeout: float | None = None) -> bool
+```
+
+Wait for the corresponding transaction record to become free.
+
+#### `write` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/results.py#L867" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+write(self, obj: Any, key: str | None = None, expiration: DateTime | None = None, holder: str | None = None) -> None
+```
+
+Write a result to storage.
+
+Handles the creation of a `ResultRecord` and its serialization to storage.
+
+**Args:**
+
+* `key`: The key to write the result record to.
+* `obj`: The object to write to storage.
+* `expiration`: The expiration time for the result record.
+* `holder`: The holder of the lock if a lock was set on the record.
+
+
+Built with [Mintlify](https://mintlify.com).

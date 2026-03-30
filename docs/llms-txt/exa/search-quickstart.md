@@ -1,7 +1,9 @@
 # Source: https://exa.ai/docs/reference/search-quickstart.md
 
 > ## Documentation Index
+
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+
 > Use this file to discover all available pages before exploring further.
 
 # Get started with Exa
@@ -23,9 +25,7 @@
 
           ```bash  theme={null}
           pip install exa-py
-          ```
-        </div>
-      </li>
+          ```text
 
       <li>
         <div className="step-number">2</div>
@@ -49,9 +49,7 @@
               "text": True
             }
           )
-          ```
-        </div>
-      </li>
+          ```text
     </ol>
   </Tab>
 
@@ -69,9 +67,7 @@
 
           ```bash  theme={null}
           npm install exa-js
-          ```
-        </div>
-      </li>
+          ```text
 
       <li>
         <div className="step-number">2</div>
@@ -97,9 +93,7 @@
               }
             }
           );
-          ```
-        </div>
-      </li>
+          ```text
     </ol>
   </Tab>
 
@@ -129,9 +123,7 @@
               "text": true
             }
           }'
-          ```
-        </div>
-      </li>
+          ```text
     </ol>
   </Tab>
 </Tabs>

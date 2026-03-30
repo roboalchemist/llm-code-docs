@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Backup recovery points should be encrypted at rest
- 
+
 ## Description{% #description %}
 
 This control ensures that AWS Backup recovery points are encrypted at rest, passing only if encryption is enabled.

@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # API Gateway REST API stages should be configured to use SSL certificates for backend authentication
- 
+
 ## Description{% #description %}
 
 This control verifies whether SSL certificates are configured for Amazon API Gateway REST API stages. These certificates are used by backend systems to confirm that incoming requests originate from API Gateway.

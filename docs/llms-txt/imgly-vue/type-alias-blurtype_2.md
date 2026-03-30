@@ -1,0 +1,13 @@
+# Type Alias: BlurType
+
+```
+type BlurType =  | BlurTypeShorthand  | BlurTypeLonghand;
+```
+
+The block type IDs for the blur blocks. These are the IDs used to create new blurs using `cesdk.engine.block.createBlur(id)`. Refer to [BlurTypeShorthand](https://img.ly/docs/cesdk/vue/api/cesdk-js/type-aliases/blurtypeshorthand/) and [BlurTypeLonghand](https://img.ly/docs/cesdk/vue/api/cesdk-js/type-aliases/blurtypelonghand/) for more details.
+
+---
+
+
+
+[Source](https:/img.ly/docs/cesdk/vue/api/cesdk-js/type-aliases/blockstate)

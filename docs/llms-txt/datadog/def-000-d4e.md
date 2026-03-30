@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Add nosuid Option to /var/lo
 ---
 
 # Add nosuid Option to /var/log/audit
- 
+
 ## Description{% #description %}
 
 The `nosuid` mount option can be used to prevent execution of setuid programs in `/var/log/audit`. The SUID and SGID permissions should not be required in directories containing audit log files. Add the `nosuid` option to the fourth column of `/etc/fstab` for the line which controls mounting of `/var/log/audit`.
@@ -29,7 +29,7 @@ The following script can be run on the host to remediate the issue.
 if ! ( [ -f /.dockerenv ] || [ -f /run/.containerenv ] ) && { findmnt --kernel "/var/log/audit" > /dev/null || findmnt --fstab "/var/log/audit" > /dev/null; }; then
 
 function perform_remediation {
-    
+
         # the mount point /var/log/audit has to be defined in /etc/fstab
         # before this remediation can be executed. In case it is not defined, the
         # remediation aborts and no changes regarding the mount point are done.
@@ -38,7 +38,7 @@ function perform_remediation {
     grep "$mount_point_match_regexp" -q /etc/fstab \
         || { echo "The mount point '/var/log/audit' is not even in /etc/fstab, so we can't set up mount options" >&2;
                 echo "Not remediating, because there is no record of /var/log/audit in /etc/fstab" >&2; return 1; }
-    
+
 
 
     mount_point_match_regexp="$(printf "^[[:space:]]*[^#].*[[:space:]]%s[[:space:]]" /var/log/audit)"

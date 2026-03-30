@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Password policy should require at least 14 characters
- 
+
 ## Description{% #description %}
 
 Password policies are employed to enforce password complexity requirements, ensuring passwords have a minimum length. Datadog recommends that the password policy requires a minimum password length of 14 characters to enhance security.

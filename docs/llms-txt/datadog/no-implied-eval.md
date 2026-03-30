@@ -194,6 +194,5 @@ foo.global.setTimeout('foo', 100);
 foo('', window.setTimeout);
 foo('', global.setTimeout);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

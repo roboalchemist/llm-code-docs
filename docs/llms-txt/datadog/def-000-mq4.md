@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS Config configuration changes should be monitored
- 
+
 ## Description{% #description %}
 
 Real-time monitoring of API calls can be achieved by directing CloudTrail logs to CloudWatch logs and establishing corresponding metric filters and alarms. It is recommended to set up a metric filter and alarm for detecting changes to AWS Config to ensure sustained visibility of configuration items within the AWS account.

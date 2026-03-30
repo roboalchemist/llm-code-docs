@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # API Gateway routes should specify an authorization type
- 
+
 ## Description{% #description %}
 
 This control verifies whether Amazon API Gateway routes are configured with an authorization mechanism. The control fails if an API Gateway route lacks any form of authorization.

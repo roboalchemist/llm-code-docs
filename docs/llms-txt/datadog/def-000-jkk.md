@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable Bluetooth Service
 ---
 
 # Disable Bluetooth Service
- 
+
 ## Description{% #description %}
 
 The `bluetooth` service can be disabled with the following command:

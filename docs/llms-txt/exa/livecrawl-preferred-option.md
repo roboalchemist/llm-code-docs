@@ -1,16 +1,18 @@
 # Source: https://exa.ai/docs/changelog/livecrawl-preferred-option.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# New Livecrawl Option: Preferred
+
+## # New Livecrawl Option: Preferred
 
 > Introducing the 'preferred' livecrawl option that tries to fetch fresh content but gracefully falls back to cached results when crawling fails, providing the best of both worlds.
 
-***
+*__
 
-**Date: 7 June 2025**
+__Date: 7 June 2025**
 
 We've added a new `livecrawl` option called `"preferred"` that provides a more resilient approach to content fetching. This option attempts to crawl fresh content but gracefully falls back to cached results when live crawling fails.
 
@@ -22,10 +24,10 @@ We've added a new `livecrawl` option called `"preferred"` that provides a more r
 
 The new `livecrawl: "preferred"` option provides intelligent fallback behavior:
 
-* **First**: Attempts to crawl fresh content from the live webpage
-* **If crawling succeeds**: Returns the fresh, up-to-date content
-* **If crawling fails but cached content exists**: Returns cached content instead of failing
-* **If crawling fails and no cached content exists**: Returns the crawl error
+* __First__: Attempts to crawl fresh content from the live webpage
+* __If crawling succeeds__: Returns the fresh, up-to-date content
+* __If crawling fails but cached content exists__: Returns cached content instead of failing
+* __If crawling fails and no cached content exists__: Returns the crawl error
 
 ## How It Differs from "Always"
 
@@ -70,6 +72,6 @@ result = exa.get_contents(urls, livecrawl="always")
 
 # After - more resilient with cache fallback
 result = exa.get_contents(urls, livecrawl="preferred")
-```
+```text
 
 This change maintains your preference for fresh content while improving reliability.

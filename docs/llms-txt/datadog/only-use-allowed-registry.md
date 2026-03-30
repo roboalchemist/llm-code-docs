@@ -83,6 +83,5 @@ FROM docker.io/python:3.6
 FROM scratch
 RUN acommand
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

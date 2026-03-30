@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # KMS key policy should not allow everyone to use it
- 
+
 ## Description{% #description %}
 
 KMS keys are assigned a resource-based policy that controls who can use and manage the key.

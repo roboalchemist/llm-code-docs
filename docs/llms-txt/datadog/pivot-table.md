@@ -61,6 +61,5 @@ table = df.pivot_table(
         aggfunc=np.sum,
         fill_value=0
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

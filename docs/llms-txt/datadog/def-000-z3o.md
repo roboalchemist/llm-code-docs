@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Disable Modprobe Loading of USB Storage Driver
- 
+
 ## Description{% #description %}
 
 To prevent USB storage devices from being used, configure the kernel module loading system to prevent automatic loading of the USB storage driver. To configure the system to prevent the `usb-storage` kernel module from being loaded, add the following line to the file `/etc/modprobe.d/usb-storage.conf`:
@@ -37,15 +37,15 @@ The following script can be run on the host to remediate the issue.
 if dpkg-query --show --showformat='${db:Status-Status}' 'linux-base' 2>/dev/null | grep -q '^installed$'; then
 
 if LC_ALL=C grep -q -m 1 "^install usb-storage" /etc/modprobe.d/usb-storage.conf ; then
-	
-	sed -i 's#^install usb-storage.*#install usb-storage /bin/false#g' /etc/modprobe.d/usb-storage.conf
+
+    sed -i 's#^install usb-storage.*#install usb-storage /bin/false#g' /etc/modprobe.d/usb-storage.conf
 else
-	echo -e "\n# Disable per security requirements" >> /etc/modprobe.d/usb-storage.conf
-	echo "install usb-storage /bin/false" >> /etc/modprobe.d/usb-storage.conf
+    echo -e "\n# Disable per security requirements" >> /etc/modprobe.d/usb-storage.conf
+    echo "install usb-storage /bin/false" >> /etc/modprobe.d/usb-storage.conf
 fi
 
 if ! LC_ALL=C grep -q -m 1 "^blacklist usb-storage$" /etc/modprobe.d/usb-storage.conf ; then
-	echo "blacklist usb-storage" >> /etc/modprobe.d/usb-storage.conf
+    echo "blacklist usb-storage" >> /etc/modprobe.d/usb-storage.conf
 fi
 
 else

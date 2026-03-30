@@ -43,7 +43,7 @@ In conclusion, always setting `Secure` to true in the `sessions.Options` structu
 
 ```go
 import (
-	"github.com/gorilla/sessions"
+    "github.com/gorilla/sessions"
 )
 
 func main () {
@@ -59,7 +59,7 @@ func main () {
 
 ```go
 import (
-	"github.com/gorilla/sessions"
+    "github.com/gorilla/sessions"
 )
 
 func main () {
@@ -75,7 +75,7 @@ func main () {
 
 ```go
 import (
-	"github.com/gorilla/sessions"
+    "github.com/gorilla/sessions"
 )
 
 func main () {
@@ -85,10 +85,9 @@ func main () {
         HttpOnly: true,
         Secure: true,
     }
-    
+
     foo.bar = sub.String("w", "something-something", &argparse.Options{Required: true})
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

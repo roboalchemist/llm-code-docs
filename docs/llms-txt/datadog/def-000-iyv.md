@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Package "prelink" Must not b
 ---
 
 # Package "prelink" Must not be Installed
- 
+
 ## Description{% #description %}
 
 The `prelink` package can be removed with the following command:

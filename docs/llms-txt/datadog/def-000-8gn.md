@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Azure AppService HTTP Logs E
 ---
 
 # Azure AppService HTTP Logs Enabled
- 
+
 ## Description{% #description %}
 
 This rule ensures that HTTP logs are enabled for Azure App Service resources. HTTP logs are crucial for monitoring and troubleshooting web application performance and security.

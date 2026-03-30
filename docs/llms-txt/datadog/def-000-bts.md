@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1087-account-discovery](https://attack.mitre.org/techniques/T1087) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1087-account-discovery](https://attack.mitre.org/techniques/T1087)
 ## Goal{% #goal %}
 
 Detects reconnaissance activity targeting privileged Active Directory user accounts and groups. Alerts when multiple distinct privileged objects are accessed by a single user.

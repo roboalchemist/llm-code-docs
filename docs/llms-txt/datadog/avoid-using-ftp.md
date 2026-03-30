@@ -54,6 +54,5 @@ $login = ftp_login($conn, $username, $password);
 $conn = ftp_ssl_connect($host);
 assertType('Illuminate\Database\Eloquent\Collection<int, Illuminate\Types\Relations\Address>', $user->address()->get());
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -46,6 +46,5 @@ import foo
 import foobar.Bar
 import foobar.Foo
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

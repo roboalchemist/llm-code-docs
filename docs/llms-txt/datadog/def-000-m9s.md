@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Unauthorized API calls should be monitored
- 
+
 ## Description{% #description %}
 
 Real-time monitoring of API calls can be achieved by sending CloudTrail logs to CloudWatch Logs and establishing metric filters and alarms. It is recommended to set up a metric filter and alarm for detecting unauthorized API calls to enhance security awareness and reduce time in identifying potential malicious activity.

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Permissions on cronta
 ---
 
 # Verify Permissions on crontab
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/etc/crontab`, run the command:

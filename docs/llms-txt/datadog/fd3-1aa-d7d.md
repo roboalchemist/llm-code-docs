@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > AWS Route Table created or m
 ---
 
 # AWS Route Table created or modified
-Classification:complianceTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562)Framework:cis-awsControl:4.13 
+Classification:complianceTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562)Framework:cis-awsControl:4.13
 ## Goal{% #goal %}
 
 Detect when an AWS Route Table has been created or modified.

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Install sudo Package
 ---
 
 # Install sudo Package
- 
+
 ## Description{% #description %}
 
 The `sudo` package can be installed with the following command:

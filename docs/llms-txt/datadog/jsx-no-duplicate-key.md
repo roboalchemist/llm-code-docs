@@ -53,6 +53,5 @@ Array.from([1, 2, 3], (x) => <Hello key={{}}>{x}</Hello>);
 [<Hello key="first" />, <Hello key="second">foo</Hello>, <Hello key="third" />];
 data.map(x => { return <Hello key={`prefix-${x}`}>{x}</Hello>});
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/error_tracking/frontend/mobile.md
-
 # Source: https://docs.datadoghq.com/mobile.md
 
 ---

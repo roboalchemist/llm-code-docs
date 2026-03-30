@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Groupownership of Files in /var/log/apt
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/var/log/apt/*`, run the command:

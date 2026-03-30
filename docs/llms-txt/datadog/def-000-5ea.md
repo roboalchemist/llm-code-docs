@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AppSync GraphQL APIs should have field-level logging enabled
- 
+
 ## Description{% #description %}
 
 Enable field-level logging for your AWS AppSync GraphQL APIs

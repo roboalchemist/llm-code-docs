@@ -86,7 +86,7 @@ namespace Controllers
 
             // Vulnerable: User input directly in Path.Combine
             string fileName = Path.Combine(_rootPath, "files", param);
-            
+
             // Use the unsafe value
             FileStream fs = null;
             try
@@ -171,6 +171,5 @@ namespace Controllers
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

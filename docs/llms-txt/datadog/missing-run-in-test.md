@@ -68,10 +68,9 @@ func TestMain(m *testing.M) {
 
     // Run the tests
     code := m.Run()
-	
-	os.Exit(code)
+
+    os.Exit(code)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

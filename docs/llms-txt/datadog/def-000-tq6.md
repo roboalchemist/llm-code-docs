@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Microsoft 365 Full Access delegate permissions added
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098)
 ## Goal{% #goal %}
 
 Detect when a user adds FullAccess permissions.

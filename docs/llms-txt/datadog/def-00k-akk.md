@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Kube-proxy configuration file should have permissions of 600 or more restrictive
- 
+
 ## Description{% #description %}
 
 If kube-proxy is running, ensure that the file permissions of the kubeconfig file is set to `600`. The kube-proxy's kubeconfig file controls various parameters for the the service in the worker node. You should set its file permissions to maintain the integrity of the file.

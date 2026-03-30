@@ -1,0 +1,396 @@
+# Source: https://www.speakeasy.com/md/mcp/using-mcp/use-cases.md
+
+# Popular MCP use cases
+
+MCP enables AI agents to interact with virtually any system or service. Here are some popular ways you can use MCP today.
+
+## MCP for software development
+
+You know how, some days, you spend more time switching between GitHub issues, pull requests, and documentation than actually writing code? The [GitHub MCP Server](https://github.com/github/github-mcp-server) can help you delegate these tasks to your AI coding assistant.
+
+### Managing pull requests using the GitHub MCP Server
+
+For example, here we use the GitHub MCP Server to check the status of a recent pull request:
+
+> Get the status of my Context7 PR.
+
+<video
+  controls={false}
+  loop={true}
+  autoPlay={true}
+  muted={true}
+  width="100%"
+  className="mx-auto my-10 max-w-6xl"
+>
+  
+
+Here, we see Claude searching for the pull request and responding with the status.
+
+### Deleting a local branch using Desktop Commander
+
+Next, let's use the [Desktop Commander](https://desktopcommander.app/) MCP server to delete the local branch associated with that pull request and do some housekeeping:
+
+> Delete the local branch for this PR in ~/projects/personal/mcp-servers/context7 and rename local master to main.
+
+<video
+  controls={false}
+  loop={true}
+  autoPlay={true}
+  muted={true}
+  width="100%"
+  className="mx-auto my-10 max-w-6xl"
+>
+  
+
+Here, we see Claude deleting the local branch and renaming the `master` branch `main`. How's that for convenience?
+
+Sure, you could have done `gh pr status` and `git branch -d context7` yourself, but with MCP, your AI assistant could decide to do this for you, or even suggest it proactively based on your recent activity. This is just one example of how MCP can streamline your software development workflow.
+
+### Finding documentation using Context7
+
+Context7 is one of the most popular MCP servers for software development. It can help your AI coding assistant find the most recent documentation and code examples for more than 21,000 libraries and frameworks. This helps fill in the knowledge gaps that LLMs have due to training cutoffs. Context7 can even help your assistant find code snippets for specific, older versions of libraries. This greatly reduces hallucinations.
+
+Let's see how it works in practice. We'll ask Claude for help developing an MCP server:
+
+> Show me how to elicit user input using the MCP TypeScript SDK. Use Context7.
+
+<video
+  controls={false}
+  loop={true}
+  autoPlay={true}
+  muted={true}
+  width="100%"
+  className="mx-auto my-10 max-w-6xl"
+>
+  
+
+Claude uses the Context7 MCP server to find the latest documentation and code samples for the MCP Specification. It then generates TypeScript code samples for an MCP server and an MCP client.
+
+## MCP for number crunching
+
+Despite recent advances, we all know LLMs still struggle with math and calculations. Especially when working with large numbers, the results can be wildly inaccurate.
+
+### Using MCP Run Python for accurate calculations
+
+With [MCP Run Python](https://github.com/pydantic/mcp-run-python), we can offload any calculations to a Python environment.
+
+Let's ask Claude to help us with a tricky math problem:
+
+> I want to see the first moon landing live on TV. If I leave tomorrow at 6am PST, calculate the exact number of seconds I need to go back to see the touchdown three minutes after I arrive. (I need this for my time machine, obviously.) Calculate the number manually, then do the calculation again using Python. Compare the results.
+
+<video
+  controls={false}
+  loop={true}
+  autoPlay={true}
+  muted={true}
+  width="100%"
+  className="mx-auto my-10 max-w-6xl"
+>
+  
+
+Claude first tries the calculation manually, then uses the MCP Run Python server to do the calculation again. The results show that **the manual calculation was off by about 53.2 days**! Imagine traveling 56 years back in time, only to find out you need to wait two months to see the moon landing.
+
+To avoid such mistakes, we recommend adding a Python server to your MCP setup, then adding the following to your system prompt or rules:
+
+> If you need to do any calculations, always use the `run_python_code` tool to ensure accuracy.
+
+## MCP for browser automation
+
+Giving an LLM access to a web browser is something to behold. It can search, navigate, take screenshots, and even fill out forms.
+
+### Browser automation using Playwright MCP
+
+We'll use the [Playwright MCP server](https://github.com/microsoft/playwright-mcp) to automate browser tasks. This is particularly useful for testing web applications, scraping data, or even just finding information online. So let's ask Claude to open a browser and help us with comparative shopping:
+
+> Find three cheap aluminium 60% mechanical keyboards in beige or grey on AliExpress.
+
+<video
+  controls={false}
+  loop={true}
+  autoPlay={true}
+  muted={true}
+  width="100%"
+  className="mx-auto my-10 max-w-6xl"
+>
+  
+
+Claude opens the browser, searches for the keyboards, and finds three options.
+
+Your AI coding assistant can use the Playwright MCP server to automate testing or take screenshots of your site while it tries to fix CSS issues. The Playwright server can also be used to automate any web-based tasks, like filling out forms or scraping data.
+
+## Getting started with these use cases
+
+You can use these examples in Claude Desktop by adding the MCP servers to your `claude_desktop_config.json` file:
+
+```json
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote@latest", "https://mcp.context7.com/sse"]
+    },
+    "run-python": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "denoland/deno",
+        "run",
+        "-N",
+        "-R=node_modules",
+        "-W=node_modules",
+        "--node-modules-dir=auto",
+        "jsr:@pydantic/mcp-run-python",
+        "stdio"
+      ]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    },
+    "desktop-commander": {
+      "command": "npx",
+      "args": ["-y", "@wonderwhy-er/desktop-commander@0.2.3"]
+    },
+    "githublocal": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "GITHUB_PERSONAL_ACCESS_TOKEN",
+        "-e",
+        "GITHUB_TOOLSETS=all",
+        "ghcr.io/github/github-mcp-server"
+      ],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "ghp_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+      }
+    }
+  }
+}
+```
+
+## Using MCP with different AI agents
+
+In this guide, we focused on using MCP with Claude, but you can use MCP with any AI agent that supports MCP.
+
+You can find a list of MCP clients and agents on the [MCP website](https://modelcontextprotocol.io/clients).
+
+## Real-world MCP: How companies are using MCP in production today
+
+When Anthropic released the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/introduction) in November 2024, the usual suspects wasted no time experimenting. But here's the thing: Instead of being stuck as a demo on GitHub, MCP quietly started showing up in real-world production systems.
+
+To understand the real impact of MCP, we investigated how companies are implementing it in production, from [Zed](https://zed.dev/) building its Agent Panel around MCP from day one, to [Solana](https://solana.com/) developers using MCP to manage DeFi protocols through conversational interfaces, [Stripe](https://stripe.com/) using MCP to monetize AI tools, and more.
+
+Here's what we learned.
+
+### Block's MCP implementation
+
+Between [Cash App](https://cash.app/) and [Square](https://squareup.com/), [Block](https://block.xyz/) handles [billions of dollars in payments](https://www.businessofapps.com/data/cash-app-statistics/) and processes transactions for [over four million merchants](https://squareup.com/us/en/about#:~:text=More%20than%20four%20million%20sellers,and%20the%20largest%20international%20chains.).
+
+Block's AI agent [goose](https://github.com/block/goose) (which uses [Claude in Databricks](https://www.anthropic.com/customers/block) as its default model) started out as a coding assistant. Now that goose can use MCP to connect to Block's internal systems, the tool powers work across the entire company. About 4,000 of Block's 10,000 employees actively use goose across 15 different job roles, from sales and design to customer success and operations.
+
+The MCP-enabled system democratizes data access at Block: Employees who don't know SQL can solve their own data problems by describing what they need in plain English. Security analysts create detection rules by describing threats naturally instead of wrestling with complex query syntax.
+
+Block developers can build an MCP server for any tool and instantly make it available to AI agents. As the setup uses OAuth with short-lived credentials, employees don't need to manage API keys.
+
+Three-quarters of Block's engineers report saving 8-10 hours per week using goose. The tool has become so effective that [one engineer says](https://www.anthropic.com/customers/block#:~:text=Axen%20said%2C%20%22goose,become%20that%20effective.%22), "90% of my lines of code are now written by goose."
+
+### Zed makes MCP feel native
+
+The team behind performance-focused code editor [Zed](https://zed.dev/) built its Agent Panel around MCP from the start, rather than adding AI features to an existing architecture.
+
+Take Zed's database integration. You can type `/pg-schema users` and get the schema for your users table instantly.
+
+![Zed Postgres](/assets/mcp/real-world-mcp-usage/zed-postgres.png)
+
+But it gets more interesting with Zed's Neon integration, which lets you safely modify production databases:
+
+```
+User: "Can you add a created_at column to the table?"
+→ Agent runs prepare_database_migration
+→ Creates temporary branch for safe schema changes
+→ User confirms with "yes, do it"
+→ Agent runs complete_database_migration
+→ Production schema updated safely
+```
+
+That's the kind of workflow that would be nerve-wracking without proper guardrails, but MCP's stateful sessions make it possible to build safely.
+
+The technical implementation is clean: MCP servers run as separate processes that communicate with Zed's Agent Panel via `stdio`, with support for HTTP and server-sent events coming soon. Extension developers can register servers in their `extension.toml` and implement a simple `context_server_command` method.
+
+### Replit's MCP playground
+
+[Replit](https://replit.com/) is a cloud-based development environment platform that handles setup and hosting for coding projects. It supports multiple programming languages and lets you run code directly in the browser without any local installations.
+
+Recently, Replit pivoted to agent-powered coding, positioning itself as an AI-first development platform for vibe coding entire applications with zero setup.
+
+Replit's MCP templates come with pre-configured servers, so you can start a new environment and have working AI integrations without installing or configuring anything yourself.
+
+The Learn About MCP template includes YouTube processing, filesystem access, and external API integration out of the box. The configuration lives in a simple JSON file:
+
+```json
+{
+  "systemPrompt": "You are an AI assistant helping a software engineer",
+  "llm": {
+    "provider": "openai",
+    "model": "gpt-4o-mini",
+    "temperature": 0.2
+  },
+  "mcpServers": {
+    "fetch": {
+      "command": "uvx",
+      "args": ["mcp-server-fetch"],
+      "requires_confirmation": ["fetch"]
+    },
+    "youtube": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/adhikasp/mcp-youtube",
+        "mcp-youtube"
+      ]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "./"]
+    }
+  }
+}
+```
+
+What makes this compelling is that you can type something like "Summarize this video https://youtu.be/1qxOcsj1TAg and write the summary to summary.txt" and watch it happen automatically. The AI coordinates between multiple services, fetching the video transcript, processing it, and saving the output – all through standardized MCP interfaces.
+
+Replit Agent takes this multi-service coordination further by automatically integrating services like EmailJS and Mailtrap when you describe what you want to build. Ask for a React app with email functionality, and the agent configures the MCP servers, sets up the integrations, and builds the app. It's the kind of seamless experience that makes MCP's complexity worthwhile.
+
+### Code intelligence platforms embrace MCP
+
+[Sourcegraph](https://sourcegraph.com/) and [Codeium](https://codeium.com/) both see MCP as a way to differentiate their code intelligence platforms. The implementations are telling, showing how established companies are using MCP not just for novelty, but for genuine competitive advantage.
+
+![Code intelligence diagram](/assets/mcp/real-world-mcp-usage/code-intelligence-diagram.png)
+
+Sourcegraph implements MCP through [OpenCtx](https://openctx.org/) (Sourcegraph's own standard for external context), with [Cody](https://sourcegraph.com/cody) acting as the MCP client. Sourcegraph also has a [batch changes MCP server](https://github.com/sourcegraph/test-mcp) that automates large-scale modifications across repositories, and a React Props server that helps developers understand component usage patterns across entire codebases.
+
+The workflow feels natural: Cody can analyze your database schema to suggest query optimizations, pull GitHub issues directly into your editor context, or search across multiple repositories with semantic understanding. It's code intelligence that actually understands the broader context of your work.
+
+Codeium took a different approach with the [Windsurf](https://codeium.com/windsurf) IDE. Windsurf Wave 3 includes MCP support, allowing [Cascade](https://codeium.com/blog/introducing-cascade) to connect to multiple servers simultaneously. The configuration is straightforward:
+
+```json
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "your_token_here"
+      }
+    },
+    "postgres": {
+      "command": "docker",
+      "args": ["run", "--rm", "-i", "--env-file", ".env", "mcp-postgres"]
+    }
+  }
+}
+```
+
+Windsurf also features UI panels for managing MCP servers, one-click setup for popular servers, and proper sandboxing. It's the kind of polish that suggests MCP integration is becoming table stakes for development tools.
+
+### Solana blockchain data access
+
+Several developers have built MCP servers that make Solana blockchain data accessible to AI assistants. While you can't execute transactions, these tools turn complex blockchain queries into simple conversations.
+
+The most documented implementation comes from [QuickNode's comprehensive tutorial](https://www.quicknode.com/guides/ai/solana-mcp-server). This MCP server handles some typical blockchain analysis tasks: checking wallet balances, retrieving token accounts, examining transaction details, and querying account information. What makes it practical is the integration with [Solana Agent Kit](https://github.com/sendaifun/solana-agent-kit), which handles all the RPC complexity behind a clean interface.
+
+The [Solscan MCP](https://mcp.so/server/solscan-mcp/Valennmg) server takes a different approach. It's built on [Solscan's](https://solscan.io/) API infrastructure, giving you access to richer data analysis capabilities, like token metadata (names, symbols, logos), market data from various exchanges, holder distribution analytics, and detailed DeFi activity tracking. The server can tell what tokens a wallet holds, how those holdings have changed over time, and which DeFi protocols the wallet has interacted with.
+
+<video
+  controls={true}
+  autoPlay={true}
+  muted={true}
+  loop={true}
+  width="100%"
+  className="mt-4 mb-4"
+>
+  
+
+Both Solana MCP implementations focus on data access rather than transaction creation. You can ask an AI assistant to "analyze this wallet's DeFi activity" or "explain what happened in this transaction" and get useful answers without any security risks. The read-only design means you get the benefits of natural language blockchain analysis without worrying about accidental transactions or compromised keys. For most blockchain analysis use cases, this is exactly what you want: insight without risk.
+
+### Stripe introduces paid MCP servers
+
+The [Stripe Agent Toolkit](https://github.com/stripe/agent-toolkit/) lets developers create MCP servers that charge for tool usage. The toolkit runs on Cloudflare Workers and handles OAuth authentication.
+
+When an AI agent calls a paid tool, the MCP server checks if the user has already paid. If not, it creates a Stripe checkout session and returns a payment URL. After payment, the tool becomes available.
+
+![Stripe MCP monetization](/assets/mcp/real-world-mcp-usage/stripe-mcp-monetization.png)
+
+The system supports one-time payments, subscriptions, and usage-based billing through Stripe's metering API. Developers can charge per API call, search query, or processing job.
+
+### The growing MCP ecosystem
+
+The MCP ecosystem has grown to over 15,000 community-built servers, creating powerful network effects.
+
+#### AWS ecosystem integration
+
+The hundreds of services available from AWS are notoriously complex to navigate. MCP servers simplify this by letting AI assistants work directly with AWS through standard interfaces.
+
+[Amazon Bedrock Samples](https://github.com/aws-samples/amazon-bedrock-samples) enables natural language queries to knowledge bases with vector database searches, RAG pipeline integration with automatic document chunking, and multi-modal retrieval for text, images, and structured data.
+
+The [AWS Cloud Development Kit (CDK)](https://github.com/aws/aws-cdk) generates infrastructure code from natural language descriptions, creating CloudFormation templates with validation and resource dependency mapping that includes cost estimation.
+
+**Cost Analysis** tools decode AWS billing complexity through usage analysis for optimization recommendations, CloudWatch-based rightsizing suggestions, and cost forecasting with budget alerts.
+
+#### Database platform innovations
+
+MCP bridges conversational AI with complex data operations, letting developers work with sophisticated databases using natural language instead of learning new APIs.
+
+[DataStax Astra DB](https://www.datastax.com/products/datastax-astra) combines NoSQL with vector search for AI applications, handling vector search for knowledge bases, document CRUD operations with schema validation, collection management with automatic scaling, and real-time analytics with aggregation pipelines.
+
+The [ClickHouse MCP Server](https://github.com/ClickHouse/mcp-clickhouse) makes high-performance analytics accessible to non-specialists through time-series analysis for metrics and events, columnar storage optimization for analytical workloads, distributed query execution across cluster nodes, and real-time data ingestion with exactly-once processing.
+
+The server handles query optimization automatically, turning natural language questions into optimized SQL that processes billions of events in seconds.
+
+#### Creative tool integration
+
+Creative MCP implementations solve real workflow problems for artists, game developers, and content creators working with complex tools.
+
+[BlenderMCP](https://github.com/ahujasid/blender-mcp) by Siddharth Ahuja removes barriers between creative vision and technical execution. Instead of memorizing hundreds of keyboard shortcuts, users can focus on creativity through 3D scene generation from natural language descriptions, object manipulation with physics simulation, animation creation with keyframe interpolation, and rendering pipeline control with material and lighting setup. The server automatically configures rigid body dynamics, gravity, and collision detection when you say "make these objects fall realistically."
+
+[MCP Unity Editor](https://github.com/CoderGamester/mcp-unity) by Miguel Tomas streamlines game development workflows through game object creation and component management, scene manipulation with hierarchy management, script generation with C# code compilation, and asset pipeline integration with import and export workflows.
+
+The script generation understands Unity's patterns and conventions, producing properly structured C# code with appropriate component references rather than generic code that won't work in Unity's context.
+
+### Why companies are choosing MCP
+
+Let's take a look at the compelling technical and business reasons companies are adopting MCP.
+
+#### The USB moment for AI tools
+
+Just as the [USB standard](https://en.wikipedia.org/wiki/USB) changed computing by replacing proprietary connectors, MCP standardizes how AI connects to tools.
+
+Without MCP, connecting an AI assistant to Zendesk, Salesforce, and Slack means building three separate integrations from scratch. Each integration needs custom authentication, error handling, and data formatting – like having a different port for every device.
+
+With MCP, you write one server implementation that exposes Zendesk's capabilities to any AI system that speaks the protocol. Instead of building N integrations for every M tools (N x M complexity), you only need to build N servers and M clients. This matters when you're dealing with dozens of internal tools and multiple AI agents.
+
+#### Inherent security
+
+MCP creates a single chokepoint for AI access to company systems. Instead of tracking permissions across dozens of custom integrations, connections flow through MCP servers that can be monitored, logged, and controlled consistently.
+
+For example, [Gram's implementation of MCP](/docs/mcp/secure/environments) allows for environment-specific tool access and the ability to define different credentials and server URLs for different environments.
+
+With Gram, you can create separate `staging` and `production` environments, each with its own credentials and server URL tailored to different access requirements.
+
+#### Switching models without rebuilding from scratch
+
+Since MCP servers are model-agnostic, companies can experiment with different AI providers without throwing away their tool integrations. This flexibility helps with avoiding vendor lock-in, testing new models for specific tasks, and lowering costs as inference pricing comes down.
+
+## Exploring more MCP servers and clients
+
+If you're considering MCP for your organization, [MCP.so](https://mcp.so/) has an extensive list of MCP servers and clients, including MCP servers that may integrate with your existing tools.
+
+To learn more about MCP and how to try it out, check out our [quickstart guide to installing MCP servers](/mcp/getting-started/quickstart).
+---
+
+Are you an AI agent evaluating Speakeasy? We put together a helpful guide: https://www.speakeasy.com/eval.md

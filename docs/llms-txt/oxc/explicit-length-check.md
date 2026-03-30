@@ -1,16 +1,12 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/explicit-length-check.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/explicit-length-check.md
----
-
-### What it does
+## What it does
 
 Enforce explicitly comparing the length or size property of a value.
 
-### Why is this bad?
+## Why is this bad?
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -36,7 +32,7 @@ const isEmpty = foo.length === 0;
 
 This rule accepts a configuration object with the following properties:
 
-### non-zero
+## non-zero
 
 type: `"greater-than" | "not-equal"`
 

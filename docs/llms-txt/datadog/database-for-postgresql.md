@@ -37,26 +37,26 @@ Use [the Cloudcraft API](https://developers.cloudcraft.co/) to programmatically 
 
 ```json
 {
-	"type": "azurepostgresql",
-	"id": "db7da7f6-9d1a-46df-808c-6979e02d5182",
-	"region": "northcentralus",
-	"mapPos": [5,0],
-	"deploymentOption": "Single",
-	"tier": "GeneralPurpose",
-	"instance": "GP_Gen5_2",
-	"storageMB": 20480,
-	"haEnabled": false,
-	"backupRetention": 7,
-	"color": {
-		"isometric": null,
-		"2d": null
-	},
-	"accentColor": {
-		"isometric": null,
-		"2d": null
-	},
-	"link": "https://azure.microsoft.com/products/postgresql",
-	"locked": true
+    "type": "azurepostgresql",
+    "id": "db7da7f6-9d1a-46df-808c-6979e02d5182",
+    "region": "northcentralus",
+    "mapPos": [5,0],
+    "deploymentOption": "Single",
+    "tier": "GeneralPurpose",
+    "instance": "GP_Gen5_2",
+    "storageMB": 20480,
+    "haEnabled": false,
+    "backupRetention": 7,
+    "color": {
+        "isometric": null,
+        "2d": null
+    },
+    "accentColor": {
+        "isometric": null,
+        "2d": null
+    },
+    "link": "https://azure.microsoft.com/products/postgresql",
+    "locked": true
 }
 ```
 

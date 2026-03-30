@@ -23,9 +23,9 @@ For applications that need to handle multiple requests concurrently:
   pip install perplexityai[aiohttp]
   ```
 
-  ```bash TypeScript/JavaScript Installation theme={null}
+  ```bash TypeScript Installation theme={null}
   npm install @perplexity-ai/perplexity_ai
-  # Async support is built-in with TypeScript/JavaScript
+  # Async support is built-in with TypeScript
   ```
 </CodeGroup>
 
@@ -45,13 +45,13 @@ For applications that need to handle multiple requests concurrently:
   asyncio.run(main())
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript TypeScript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   async function main() {
       const client = new Perplexity();
       
-      // Async is built-in for TypeScript/JavaScript
+      // Async is built-in for TypeScript
       const search = await client.search.create({ query: "machine learning" });
       console.log(search.results);
   }
@@ -88,7 +88,7 @@ Process multiple requests simultaneously for better throughput:
   asyncio.run(concurrent_searches())
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript TypeScript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   async function concurrentSearches() {
@@ -149,7 +149,7 @@ Process large numbers of requests while respecting rate limits:
   results = asyncio.run(batch_process_with_limit(queries))
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript TypeScript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   async function batchProcessWithLimit(
@@ -211,13 +211,13 @@ Access headers, status codes, and raw response data for advanced use cases:
   print(f"Found {len(search.results)} results")
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript TypeScript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity();
 
   // Get raw response with headers
-  const response = await client.search.withRawResponse.create({
+  const response = await (client.search as any).withRawResponse.create({
       query: "machine learning"
   });
 
@@ -244,7 +244,7 @@ For chat completions, use streaming to get partial results as they arrive:
 
   # Stream chat completion responses
   stream = client.chat.completions.create(
-      model="llama-3.1-sonar-large-128k-online",
+      model="sonar",
       messages=[{"role": "user", "content": "Explain quantum computing"}],
       stream=True
   )
@@ -254,21 +254,21 @@ For chat completions, use streaming to get partial results as they arrive:
           print(chunk.choices[0].delta.content, end="", flush=True)
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript TypeScript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity();
 
   // Stream chat completion responses
   const stream = await client.chat.completions.create({
-      model: "llama-3.1-sonar-large-128k-online",
+      model: "sonar-pro",
       messages: [{ role: "user", content: "Explain quantum computing" }],
-      stream: true
+      stream: true as const
   });
 
   for await (const chunk of stream) {
       if (chunk.choices[0]?.delta?.content) {
-          process.stdout.write(chunk.choices[0].delta.content);
+          process.stdout.write((chunk.choices[0]?.delta?.content ?? '') as string);
       }
   }
   ```
@@ -309,7 +309,7 @@ Configure connection pooling for better performance:
       )
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript TypeScript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
   import https from 'https';
 
@@ -324,7 +324,7 @@ Configure connection pooling for better performance:
 
   const client = new Perplexity({
       httpAgent: optimizedAgent
-  });
+  } as any);
 
   // For high-throughput applications
   const highThroughputAgent = new https.Agent({
@@ -337,7 +337,7 @@ Configure connection pooling for better performance:
 
   const clientHighThroughput = new Perplexity({
       httpAgent: highThroughputAgent
-  });
+  } as any);
   ```
 </CodeGroup>
 
@@ -401,7 +401,7 @@ Monitor performance metrics to identify bottlenecks:
   asyncio.run(run_performance_test())
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript TypeScript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   class PerformanceMonitor {
@@ -518,7 +518,7 @@ Process large datasets efficiently with streaming and pagination:
   asyncio.run(main())
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript TypeScript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   async function* processLargeDataset<T>(
@@ -602,7 +602,7 @@ Process large datasets efficiently with streaming and pagination:
       )
       ```
 
-      ```typescript TypeScript/JavaScript theme={null}
+      ```typescript TypeScript theme={null}
       // Good: Optimized for your use case
       const agent = new https.Agent({
           keepAlive: true,
@@ -634,7 +634,7 @@ Process large datasets efficiently with streaming and pagination:
               return await client.search.create(query=query)
       ```
 
-      ```typescript TypeScript/JavaScript theme={null}
+      ```typescript TypeScript theme={null}
       // Use a queue or throttling library
       import pLimit from 'p-limit';
 
@@ -650,11 +650,14 @@ Process large datasets efficiently with streaming and pagination:
 ## Related Resources
 
 <CardGroup cols={2}>
-  <Card title="Configuration" icon="gear" href="/docs/sdk/configuration">
+  <Card title="Configuration" icon="settings" href="/docs/sdk/configuration">
     Optimize connection pooling and timeouts
   </Card>
 
-  <Card title="Error Handling" icon="triangle-exclamation" href="/docs/sdk/error-handling">
+  <Card title="Error Handling" icon="alert-triangle" href="/docs/sdk/error-handling">
     Handle errors in async operations
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

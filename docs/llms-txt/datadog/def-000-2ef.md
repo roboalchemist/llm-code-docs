@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable the GNOME3 Login Use
 ---
 
 # Disable the GNOME3 Login User List
- 
+
 ## Description{% #description %}
 
 In the default graphical environment, users logging directly into the system are greeted with a login screen that displays all known users. This functionality should be disabled by setting `disable-user-list` to `true`.
@@ -92,7 +92,7 @@ if [ "${#SETTINGSFILES[@]}" -ne 0 ]
 then
     if grep -q "^\\s*disable-user-list\\s*=" "${SETTINGSFILES[@]}"
     then
-        
+
         sed -Ei "s/(^\s*)disable-user-list(\s*=)/#\1disable-user-list\2/g" "${SETTINGSFILES[@]}"
     fi
 fi

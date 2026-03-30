@@ -65,7 +65,7 @@ spec:
     "authorization": {
       "mode": "webhook"
     }
-} 
+}
 ```
 
 ```yaml

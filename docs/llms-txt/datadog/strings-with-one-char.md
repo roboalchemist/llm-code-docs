@@ -65,10 +65,9 @@ class MyClass {
         bool r1 = s.StartsWith('/');
         bool r2 = s.EndsWith('/');
         bool r3 = s.EndsWith("/", StringComparison.InvariantCulture);
-        
+
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

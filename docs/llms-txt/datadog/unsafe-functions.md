@@ -62,15 +62,15 @@ shellcmd = System.shell(command)
 ## Compliant Code Examples{% #compliant-code-examples %}
 
 ```elixir
-# Instead of letting the user eval commands/files, you can specify allowed functions using 
+# Instead of letting the user eval commands/files, you can specify allowed functions using
 # a predefined set of functions with their own error handling.
 defmodule SafeREPL do
   @allowed_functions %{
     "add" => fn [a, b] -> a + b end,
     "subtract" => fn [a, b] -> a - b end,
     "multiply" => fn [a, b] -> a * b end,
-    "divide" => fn [a, b] -> 
-      if b == 0, do: "Cannot divide by zero", else: a / b 
+    "divide" => fn [a, b] ->
+      if b == 0, do: "Cannot divide by zero", else: a / b
     end
   }
 end
@@ -78,6 +78,5 @@ end
 # You can also opt to hard-code in your own values, as long as variables are not passed in.
 Code.eval_string("1 + 2")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

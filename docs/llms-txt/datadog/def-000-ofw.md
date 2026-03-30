@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Set Password Hashing Algorithm in /etc/libuser.conf
- 
+
 ## Description{% #description %}
 
 In `/etc/libuser.conf`, add or correct the following line in its `[defaults]` section to ensure the system will use the SHA-512 algorithm for password hashing:

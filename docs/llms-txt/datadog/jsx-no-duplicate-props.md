@@ -45,6 +45,5 @@ Providing duplicate properties to JSX elements can produce unexpected results in
 ```jsx
 <Hello firstname="John" lastname="Doe" />;
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

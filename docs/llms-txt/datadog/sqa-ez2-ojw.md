@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure AD member assigned built-in Administrator role
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098)
 ## Goal{% #goal %}
 
 Detect an Azure Active Directory (Azure AD) member being added to a [built-in Administrative role](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference).

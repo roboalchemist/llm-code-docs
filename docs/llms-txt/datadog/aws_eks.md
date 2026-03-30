@@ -192,19 +192,19 @@ Here is an example of a `datadog-values.yaml` file with such overrides:
    ```yaml
    aws:
      accountId: "123456789012"
-   
+
    # Environment variables
    # Any environment variables defined here are available to all pods in the deployment
    environment:
      AWS_REGION: us-east-1
-   
+
    # Datadog configuration
    datadog:
       # The Datadog [site](https://docs.datadoghq.com/getting_started/site/) to connect to. Defaults to `datadoghq.com`.
       # site: datadoghq.com
       # The name of the existing Secret containing the Datadog API key. The secret key name must be `api-key`.
       apiKeyExistingSecret: datadog-secret
-   
+
    # Service account configuration
    # If `serviceAccount.create` is set to `true`, a service account is created with the specified name.
    # The service account will be annotated with the IAM role ARN if `aws.accountId` and serviceAccount.eksRoleName` are set.
@@ -217,13 +217,13 @@ Here is an example of a `datadog-values.yaml` file with such overrides:
      # - eks.amazonaws.com/sts-regional-endpoints: "true"
      eksRoleName: cloudprem
      extraAnnotations: {}
-   
+
    # CloudPrem node configuration
    config:
      # The root URI where index data is stored. This should be an S3 path.
      # All indexes created in CloudPrem are stored under this location.
      default_index_root_uri: s3://<BUCKET_NAME>/indexes
-   
+
    # Internal ingress configuration for access within the VPC
    # The ingress provisions an Application Load Balancers (ALBs) in AWS which is created in private subnets.
    #
@@ -235,7 +235,7 @@ Here is an example of a `datadog-values.yaml` file with such overrides:
        host: cloudprem.acme.internal
        extraAnnotations:
          alb.ingress.kubernetes.io/load-balancer-name: cloudprem-internal
-   
+
    # Metastore configuration
    # The metastore is responsible for storing and managing index metadata.
    # It requires a PostgreSQL database connection string to be provided by a Kubernetes secret.
@@ -247,7 +247,7 @@ Here is an example of a `datadog-values.yaml` file with such overrides:
      extraEnvFrom:
        - secretRef:
            name: cloudprem-metastore-uri
-   
+
    # Indexer configuration
    # The indexer is responsible for processing and indexing incoming data it receives data from various sources (for example, Datadog Agents, log collectors)
    # and transforms it into searchable files called "splits" stored in S3.
@@ -258,7 +258,7 @@ Here is an example of a `datadog-values.yaml` file with such overrides:
    # The default values are suitable for moderate indexing loads of up to 20 MB/s per indexer pod.
    indexer:
      replicaCount: 2
-   
+
      resources:
        requests:
          cpu: "4"
@@ -266,7 +266,7 @@ Here is an example of a `datadog-values.yaml` file with such overrides:
        limits:
          cpu: "4"
          memory: "8Gi"
-   
+
    # Searcher configuration
    # The searcher is responsible for executing search queries against the indexed data stored in S3.
    # It handles search requests from Datadog's query service and returns matching results.
@@ -282,7 +282,7 @@ Here is an example of a `datadog-values.yaml` file with such overrides:
    # Memory is particularly important for searchers as they cache frequently accessed index data in memory.
    searcher:
      replicaCount: 2
-   
+
      resources:
        requests:
          cpu: "4"

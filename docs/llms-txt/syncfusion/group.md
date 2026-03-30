@@ -1,0 +1,72 @@
+# Source: https://docs.syncfusion.com/uwp/diagram/group.md
+
+# Source: https://docs.syncfusion.com/wpf/diagram/group.md
+
+# Group in WPF Diagram (SfDiagram)
+
+Group is used to cluster multiple Nodes and Connectors into a single element. It acts like a container for its children (Nodes, Groups, and Connectors). Every change made to the Group also affects the children. Child elements can be edited individually.
+
+## Create Group
+
+### Add Group
+
+The following code illustrates how to create a Group Node.
+
+{% highlight C# %}
+
+ObservableCollection<NodeViewModel> nodes = new ObservableCollection<NodeViewModel>();
+NodeViewModel node = new NodeViewModel()
+{
+	UnitWidth = 100,
+	UnitHeight = 100,
+	OffsetX = 100,
+	OffsetY = 100,
+	Shape = new RectangleGeometry() { Rect = new Rect(0, 0, 10, 10) },
+	ShapeStyle = App.Current.Resources["shapestyle"] as Style
+};
+NodeViewModel node1 = new NodeViewModel()
+{
+	UnitWidth = 100,
+	UnitHeight = 100,
+	OffsetX = 200,
+	OffsetY = 200,
+	Shape = new RectangleGeometry() { Rect = new Rect(0, 0, 10, 10) },
+	ShapeStyle = App.Current.Resources["shapestyle"] as Style
+};
+
+ObservableCollection<GroupViewModel> groups = new ObservableCollection<GroupViewModel>();
+GroupViewModel group = new GroupViewModel()
+{
+	Nodes = new ObservableCollection<NodeViewModel>()
+	{
+		node,
+		node1
+	},
+};
+
+groups.Add(group);
+diagram.Groups = groups;
+
+{% endhighlight %}
+
+### Group from Stencil
+
+Group Nodes can be predefined and added to stencil. You can drop those Groups into Diagram, when required. 
+
+To explore how to add Groups from stencil, refer to [Stencil](https://help.syncfusion.com/wpf/diagram/stencil/stencil).
+
+## Interaction
+
+You can edit the Group and its children at runtime. For more information about how to interact with a Group, refer to [Interaction](/wpf/diagram/interaction "Interaction").
+
+## See Also
+ 
+[How to restrict the child node dragging whereas allow group dragging?](https://www.syncfusion.com/kb/11462/how-to-restrict-the-child-node-dragging-whereas-allow-group-dragging-in-wpf)
+
+[How to Notify when diagramming object is duplicated with source?](https://support.syncfusion.com/kb/article/6268/how-to-notify-when-diagramming-object-is-duplicated-with-source-in-wpf-diagram-sfdiagram)
+
+[How to Obtain InConnectors and OutConnectors of Node in WPF Diagram?](https://support.syncfusion.com/kb/article/18250/how-to-obtain-inconnectors-and-outconnectors-of-node-in-wpf-diagram)
+
+[How to prevent the node from moving outside the group in WPF Diagram (SfDiagram)?](https://support.syncfusion.com/kb/article/18852/how-to-prevent-the-node-from-moving-outside-the-group-in-wpf-diagram-sfdiagram)
+
+[How to switch the visibility of an icon in the ContentTemplate in WPF Diagram (SfDiagram) ?](https://support.syncfusion.com/kb/article/17725/how-to-switch-the-visibility-of-an-icon-in-the-contenttemplate-in-wpf-diagram-sfdiagram-)

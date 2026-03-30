@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # SNS Topic should have server-side encryption enabled
- 
+
 ## Description{% #description %}
 
 Enable Server-Side Encryption for your AWS Simple Notification Service (SNS) topics.

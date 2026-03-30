@@ -1,20 +1,16 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/no-children-prop.md
 
----
-url: /docs/guide/usage/linter/rules/react/no-children-prop.md
----
-
-### What it does
+## What it does
 
 Checks that children are not passed using a prop.
 
-### Why is this bad?
+## Why is this bad?
 
 Children should always be actual children, not passed in as a prop.
 When using JSX, the children should be nested between the opening and closing tags.
 When not using JSX, the children should be passed as additional arguments to `React.createElement`.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

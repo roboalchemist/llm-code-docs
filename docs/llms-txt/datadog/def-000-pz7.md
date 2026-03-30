@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Group Who Owns /etc/security/opasswd File
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/etc/security/opasswd`, run the command:

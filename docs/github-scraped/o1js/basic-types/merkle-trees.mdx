@@ -1,0 +1,47 @@
+---
+title: Merkle Trees
+---
+
+Merkle trees are a fundamental data structure for collections in o1js, as they allow for efficient proofs of data inclusion.
+There are several classes of Merkle tree exported by o1js, with various properties.
+
+## IndexedMerkleMap
+
+The `IndexedMerkleMap` is a wrapper around a basic [Merkle tree](/docs/basic-types/merkle-trees.mdx#MerkleTree) that offers a convenient
+interface, with a key-value like API for getting and setting values.
+
+Both the key and the value in of the map can be typed as `Field` or `BigInt`.  
+
+:::note
+`IndexedMerkleMap` has a maximum height of 52, which means it can store up to 2^52 (roughly four quadrillion) elements.  Therefore, it is not suitable for
+use cases requiring collision resistance over a larger domain, but it is suitable for most applications.  For instance, an app with billions of users
+could have a leaf for each user stored in an `IndexedMerkleMap`.
+:::
+
+```ts file=../snippets/merkle-trees/merkle-trees.ts start=start_indexed_merkle_map end=end_indexed_merkle_map
+```
+
+## MerkleTree
+
+The `MerkleTree` class is a general sparse Merkle tree implementation in JavaScript (not provable).  It is used to build and store
+data in a tree structure, and exposes methods for generating witnesses and roots to use within provable code.
+
+### MerkleWitness
+
+The `MerkleWitness` class is a proof of inclusion for a specific leaf in a `MerkleTree`.  The `MerkleWitness` class _is_ provable, so
+it can be used as an input into a provable function.  The witness consists of the leaf index and the hashes of sibling nodes, needed
+to generate the root hash of the tree.
+
+```ts file=../snippets/merkle-trees/merkle-trees.ts start=start_merkle_tree end=end_merkle_tree
+```
+
+## MerkleList
+
+The `MerkleList` is a class which represents a dynamic list of elements that can be committed to a single hash.  This is a useful
+data structure when editing a list is required within a proof.  To pass a list into a proof as an argument, a 
+[provable array](/docs/basic-types/arrays.mdx) may be simpler.
+
+```ts file=../snippets/merkle-trees/merkle-trees.ts start=start_merkle_list end=end_merkle_list
+```
+
+Read more at the language reference: [IndexedMerkleMap](/docs/api-reference/variables/IndexedMerkleMap.mdx), [MerkleTree](/docs/api-reference/classes/MerkleTree.mdx), [MerkleWitness](/docs/api-reference/classes/BaseMerkleWitness.mdx), [MerkleList](/docs/api-reference/classes/MerkleList.mdx).

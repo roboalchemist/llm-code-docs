@@ -7,14 +7,14 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Set SSH authentication attem
 ---
 
 # Set SSH authentication attempt limit
- 
+
 ## Description{% #description %}
 
 The `MaxAuthTries` parameter specifies the maximum number of authentication attempts permitted per connection. Once the number of failures reaches half this value, additional failures are logged. to set MaxAUthTries edit `/etc/ssh/sshd_config` as follows:
 
 ```
 MaxAuthTries 4
-        
+
 ```
 
 ## Rationale{% #rationale %}
@@ -43,7 +43,7 @@ chmod 0600 /etc/ssh/sshd_config.d/00-complianceascode-hardening.conf
 LC_ALL=C sed -i "/^\s*MaxAuthTries\s\+/Id" "/etc/ssh/sshd_config"
 LC_ALL=C sed -i "/^\s*MaxAuthTries\s\+/Id" "/etc/ssh/sshd_config.d"/*.conf
 if [ -e "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*MaxAuthTries\s\+/Id" "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf"
 else
     touch "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf"

@@ -1,14 +1,10 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unsafe-type-assertion.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-unsafe-type-assertion.md
----
-
-### What it does
+## What it does
 
 Disallows unsafe type assertions that narrow a type.
 
-### Why is this bad?
+## Why is this bad?
 
 Type assertions that narrow a type bypass TypeScript's type-checking and can lead to
 runtime errors. Type assertions that broaden a type are safe because TypeScript
@@ -16,7 +12,7 @@ essentially knows *less* about a type. Instead of using type assertions to narro
 type, it's better to rely on type guards, which help avoid potential runtime errors
 caused by unsafe type assertions.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

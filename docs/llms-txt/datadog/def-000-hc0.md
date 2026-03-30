@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Group has admin level privileges at the subscription scope
- 
+
 ## Description{% #description %}
 
 This rule identifies when an Azure AD Group has administrative-level permissions at the subscription scope.

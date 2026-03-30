@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure rsyslog is Installed
 ---
 
 # Ensure rsyslog is Installed
- 
+
 ## Description{% #description %}
 
 Rsyslog is installed by default. The `rsyslog` package can be installed with the following command:

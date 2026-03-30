@@ -62,7 +62,7 @@ From the [correlation configuration page](https://app.datadoghq.com/event/correl
 1. You can add grouping tags to correlate events and customize case title.
 
    {% dl %}
-   
+
    {% dt %}
 Add grouping tags
    {% /dt %}

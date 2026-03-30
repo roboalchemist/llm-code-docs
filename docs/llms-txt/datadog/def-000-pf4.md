@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EBS default encryption should be enabled
- 
+
 ## Description{% #description %}
 
 This rule evaluates whether encryption at the region level is enabled by default for Amazon Elastic Block Store (Amazon EBS).

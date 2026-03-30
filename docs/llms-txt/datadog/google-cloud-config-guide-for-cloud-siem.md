@@ -91,7 +91,7 @@ The default behavior for Dataflow pipeline workers is to use your project's [Com
 1. Click **Create Service Account**.
 1. Enter a descriptive name for the service account.
 1. Click **Create and Continue**.
-1. Add the following roles:Required permissions: 
+1. Add the following roles:Required permissions:
 | Role                                                                                                                       | Path                                 | Description                                                                                                                       |
 | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- |
 | [Dataflow Admin](https://cloud.google.com/dataflow/docs/concepts/access-control#dataflow.admin)                            | `roles/dataflow.admin`               | Allow this service account to perform Dataflow administrative tasks                                                               |

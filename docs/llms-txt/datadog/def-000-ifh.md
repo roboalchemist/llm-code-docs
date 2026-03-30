@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Resource provisioned using kubectl in container
-Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1610-deploy-container](https://attack.mitre.org/techniques/T1610) 
+Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1610-deploy-container](https://attack.mitre.org/techniques/T1610)
 ## What happened{% #what-happened %}
 
 A `kubectl` command was used to provision new resources, potentially to establish persistence or create unauthorized workloads.

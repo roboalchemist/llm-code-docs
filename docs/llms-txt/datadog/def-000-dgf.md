@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Snowflake known malicious client application session
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1199-trusted-relationship](https://attack.mitre.org/techniques/T1199) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1199-trusted-relationship](https://attack.mitre.org/techniques/T1199)
 ## Goal{% #goal %}
 
 Detect known malicious client applications interacting in your Snowflake environment.

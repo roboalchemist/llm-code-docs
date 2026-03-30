@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Name Service Switch configuration modified
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556)
 ## What happened{% #what-happened %}
 
 The process `{{ @process.comm }}` modified the nsswitch configuration file `{{ @file.path }}`, potentially to manipulate authentication or inject malicious name service information.

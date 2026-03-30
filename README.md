@@ -1,15 +1,15 @@
 # LLM Code Documentation Repository
 
-Centralized, AI-readable documentation extracted from 598+ frameworks, libraries, and developer tools. Automated extraction tools keep documentation current with upstream sources.
+Centralized, AI-readable documentation extracted from 809+ frameworks, libraries, and developer tools. Automated extraction tools keep documentation current with upstream sources.
 
 ## Repository Structure
 
 ```
 llm-code-docs/
 ├── docs/
-│   ├── llms-txt/           # 339 sites following llms.txt standard (HIGHEST PRIORITY)
-│   ├── github-scraped/     # 136 Git repository extractions
-│   ├── web-scraped/        # 122 web-scraped documentation sources
+│   ├── llms-txt/           # 399 sites following llms.txt standard (HIGHEST PRIORITY)
+│   ├── github-scraped/     # 201 Git repository extractions
+│   ├── web-scraped/        # 209 web-scraped documentation sources
 │   └── github-repos/       # Individual GitHub repo docs
 ├── scripts/                # All extraction and update tools
 ├── AGENTS.md               # Guide for AI agents using these docs
@@ -26,7 +26,7 @@ See [AGENTS.md](./AGENTS.md) for detailed guidance on finding and using document
 
 ### llms.txt Standard Sites (`docs/llms-txt/`)
 
-**339 sites** following the [llms.txt standard](https://llmstxt.org/) - optimized for LLM consumption.
+**399 sites** following the [llms.txt standard](https://llmstxt.org/) - optimized for LLM consumption.
 
 Notable sources include:
 - **AI/LLM**: Anthropic, OpenAI, Vercel AI SDK, LangChain, Ollama
@@ -38,7 +38,7 @@ Notable sources include:
 
 ### Git Repository Extractions (`docs/github-scraped/`)
 
-**136 repositories** cloned and extracted for comprehensive documentation, including:
+**201 repositories** cloned and extracted for comprehensive documentation, including:
 
 | Category | Examples |
 |----------|----------|
@@ -51,7 +51,7 @@ Notable sources include:
 
 ### Web-Scraped Documentation (`docs/web-scraped/`)
 
-**122 sources** scraped from documentation sites without llms.txt support, including:
+**209 sources** scraped from documentation sites without llms.txt support, including:
 - **Cloud APIs**: AWS SDK, Google Cloud, Azure IoT, Datadog, Sentry
 - **UI Libraries**: Emotion, Formik, Storybook, React Flow, Excalidraw
 - **Dev Tools**: DBeaver, Dependabot, Semgrep, Percy, Chromatic
@@ -68,7 +68,7 @@ Notable sources include:
 ### Update Specific Sources
 
 ```bash
-# Update all llms.txt sites (339 sites in parallel)
+# Update all llms.txt sites (399 sites in parallel)
 python3 scripts/llms-txt-scraper.py
 
 # Update single site
@@ -122,11 +122,11 @@ Configuration for Git-based documentation extraction:
 
 ## Statistics
 
-- **339** llms.txt documentation sites
-- **136** Git repository extractions
-- **122** web-scraped documentation sources
-- **43,000+** markdown/RST files
-- **5.4GB** total documentation
+- **399** llms.txt documentation sites
+- **201** Git repository extractions
+- **209** web-scraped documentation sources
+- **88,000+** markdown/RST files
+- **7.8GB** total documentation
 
 ## Contributing
 

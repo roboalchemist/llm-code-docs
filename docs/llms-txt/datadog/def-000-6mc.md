@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # GitHub anomalous number of repositories cloned by user
-Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1213-data-from-information-repositories](https://attack.mitre.org/techniques/T1213) 
+Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1213-data-from-information-repositories](https://attack.mitre.org/techniques/T1213)
 ## Goal{% #goal %}
 
 Detect when a GitHub member has cloned an anomalous number of repositories.

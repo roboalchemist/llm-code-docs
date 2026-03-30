@@ -1,22 +1,18 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/checked-requires-onchange-or-readonly.md
 
----
-url: /docs/guide/usage/linter/rules/react/checked-requires-onchange-or-readonly.md
----
-
-### What it does
+## What it does
 
 This rule enforces `onChange` or `readOnly` attribute for checked property of input elements.
 It also warns when `checked` and `defaultChecked` properties are used together.
 
-### Why is this bad?
+## Why is this bad?
 
 `checked` should generally always be used with one of `onChange` or `readOnly`.
 
 And using `checked` and `defaultChecked` together is likely an error as they are mutually
 exclusive ways to control the checked state of an input element.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -48,7 +44,7 @@ React.createElement('input', { type: 'checkbox', defaultChecked: true });
 
 This rule accepts a configuration object with the following properties:
 
-### ignoreExclusiveCheckedAttribute
+## ignoreExclusiveCheckedAttribute
 
 type: `boolean`
 
@@ -56,7 +52,7 @@ default: `false`
 
 Ignore the restriction that `checked` and `defaultChecked` should not be used together.
 
-### ignoreMissingProperties
+## ignoreMissingProperties
 
 type: `boolean`
 

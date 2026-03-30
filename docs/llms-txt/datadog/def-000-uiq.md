@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # S3 bucket ACLs should be restricted from public view
- 
+
 ## Description{% #description %}
 
 Modify your bucket ACL to remove public `READ_ACP` access.

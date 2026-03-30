@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/prefer-reduce-type-parameter.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/prefer-reduce-type-parameter.md
----
-
-### What it does
+## What it does
 
 This rule prefers using a type parameter for the accumulator in Array.reduce instead of casting.
 
-### Why is this bad?
+## Why is this bad?
 
 Array.reduce can be called with a generic type parameter to specify the type of the accumulator. This is preferred over casting the result because it provides better type safety and is more explicit about the intended type.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

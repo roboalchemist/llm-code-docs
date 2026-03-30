@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # SQL Database instances should only allow ingress traffic from specific IP addresses
- 
+
 ## Description{% #description %}
 
 A database server should accept connections only from trusted networks and IPs and restrict access from public IP addresses.

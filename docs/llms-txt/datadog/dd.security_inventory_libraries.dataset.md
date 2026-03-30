@@ -13,11 +13,11 @@ Dataset representing **libraries** registered in the Datadog Security Inventory.
 ```
 dd.security_inventory_libraries
 ```
-Cloud Security Infrastructure Packages UI 
+Cloud Security Infrastructure Packages UI
 {% icon name="icon-external-link" /%}
- Code Security Libraries Inventory UI 
+ Code Security Libraries Inventory UI
 {% icon name="icon-external-link" /%}
- 
+
 ## Fields
 
 | Title                       | ID                          | Type | Data Type     | Description                                                                                                                                                                           |

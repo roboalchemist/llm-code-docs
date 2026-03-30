@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EC2 Transit Gateways should not automatically accept VPC attachment requests
- 
+
 ## Description{% #description %}
 
 This check verifies whether EC2 transit gateways are set to automatically accept shared VPC attachments. The check will not pass if a transit gateway is configured to automatically accept attachment requests for shared VPCs.

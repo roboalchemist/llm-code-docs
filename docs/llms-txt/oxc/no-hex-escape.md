@@ -1,16 +1,12 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-hex-escape.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-hex-escape.md
----
-
-### What it does
+## What it does
 
 Enforces a convention of using [Unicode escapes](https://mathiasbynens.be/notes/javascript-escapes#unicode) instead of [hexadecimal escapes](https://mathiasbynens.be/notes/javascript-escapes#hexadecimal) for consistency and clarity.
 
-### Why is this bad?
+## Why is this bad?
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

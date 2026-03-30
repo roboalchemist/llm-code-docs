@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The container should have a restart policy limited to 5 attempts
-Classification:complianceFramework:cis-dockerControl:5.14 
+Classification:complianceFramework:cis-dockerControl:5.14
 ## Description{% #description %}
 
 By using the `--restart` flag in the docker run command you can specify a restart policy for how a container should or should not be restarted on exit. You should choose the on-failure restart policy and limit the restart attempts to 5.

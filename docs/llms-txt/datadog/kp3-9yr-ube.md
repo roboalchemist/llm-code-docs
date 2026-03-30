@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # IAM policies should be attached and managed at the group level
- 
+
 ## Description{% #description %}
 
 By default, IAM users, groups, and roles have no access to AWS resources. IAM policies are the mechanism through which privileges are granted. Datadog recommends that you apply IAM policies directly to groups, not to individual users or roles.

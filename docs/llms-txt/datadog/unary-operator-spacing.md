@@ -53,6 +53,5 @@ fun foo2(i: Int) = ++i
 
 fun foo3(i: Int) = ++i
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -9,15 +9,15 @@ breadcrumbs: Docs > Datadog Security > Ticketing Integrations
 # Ticketing Integrations
 Available for:
 {% icon name="icon-siem" /%}
- Cloud SIEM | 
+ Cloud SIEM |
 {% icon name="icon-cloud-security-management" /%}
- Workload Protection | 
+ Workload Protection |
 {% icon name="icon-app-sec" /%}
- App and API Protection | 
+ App and API Protection |
 {% icon name="icon-security-code-security" /%}
- Code Security | 
+ Code Security |
 {% icon name="icon-cloud-security-management" /%}
- Cloud Security 
+ Cloud Security
 You can use [Datadog Case Management](https://docs.datadoghq.com/incident_response/case_management/) to manage tickets in third-party tools like [Jira](https://docs.datadoghq.com/integrations/jira/). For details, see [Case Management integration with third-party ticketing tools](https://docs.datadoghq.com/incident_response//case_management/notifications_integrations/#third-party-tickets).
 
 This page discusses using Datadog Security with Datadog Case Management for ticketing management.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Twilio bulk export from unusual location
-Classification:attackTactic:[TA0010-exfiltration](https://attack.mitre.org/tactics/TA0010)Technique:[T1537-transfer-data-to-cloud-account](https://attack.mitre.org/techniques/T1537) 
+Classification:attackTactic:[TA0010-exfiltration](https://attack.mitre.org/tactics/TA0010)Technique:[T1537-transfer-data-to-cloud-account](https://attack.mitre.org/techniques/T1537)
 ## Goal{% #goal %}
 
 Detect when a BulkExport operation was detected from unsual location.

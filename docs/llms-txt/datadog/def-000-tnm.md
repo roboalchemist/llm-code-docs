@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Neptune DB clusters should be configured to copy tags to snapshots
- 
+
 ## Description{% #description %}
 
 This control verifies whether a Neptune DB cluster is set to automatically copy all tags to its snapshots when they are created.

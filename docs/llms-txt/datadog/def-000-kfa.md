@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Anomalous amount of failed sign-in attempts by 1Password user
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detect failed sign-in attempts from a 1Password user.

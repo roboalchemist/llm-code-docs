@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Object-level logging should be enabled for S3 bucket read events
- 
+
 ## Description{% #description %}
 
 S3 object-level API read event operations, such as `GetObject`, `DeleteObject`, and `PutObject`, are classified as data events, which are not logged by default in CloudTrail. Enabling object-level logging for S3 buckets is recommended to meet data compliance requirements, perform comprehensive security analysis, and monitor user behavior patterns, allowing for immediate actions on object-level API activity using Amazon CloudWatch Events.

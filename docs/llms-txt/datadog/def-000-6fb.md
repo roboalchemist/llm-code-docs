@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > GitHub SSH key added by susp
 ---
 
 # GitHub SSH key added by suspicious IP
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098)
 ## Goal{% #goal %}
 
 Detect when a SSH key has been added from a suspicious IP.

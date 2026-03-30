@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Route 53 public hosted zones should log DNS queries
- 
+
 ## Description{% #description %}
 
 This control verifies whether DNS query logging is activated for an Amazon Route 53 public hosted zone.

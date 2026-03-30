@@ -198,7 +198,7 @@ Datadog automatically installs and configures autoscaling for this workload on y
 Use your existing deploy process to target and configure Autoscaling for your workload.
 
   {% collapsible-section #id-for-anchoring %}
-  Example DatadogPodAutoscaler CRD: 
+  Example DatadogPodAutoscaler CRD:
   ```yaml
   apiVersion: datadoghq.com/v1alpha2
   kind: DatadogPodAutoscaler

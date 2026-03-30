@@ -88,6 +88,5 @@ switch (foo) { case a = b: bar(); }
 switch (foo) { case a = b: bar(); }
 switch (foo) { case baz + (a = b): bar(); }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

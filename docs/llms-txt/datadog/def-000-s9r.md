@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable systemd-journal-remo
 ---
 
 # Disable systemd-journal-remote Socket
- 
+
 ## Description{% #description %}
 
 Journald supports the ability to receive messages from remote hosts, thus acting as a log server. Clients should not receive data from other hosts. NOTE: The same package, systemd-journal-remote , is used for both sending logs to remote hosts and receiving incoming logs. With regards to receiving logs, there are two Systemd unit files; systemd-journal-remote.socket and systemd-journal-remote.service.

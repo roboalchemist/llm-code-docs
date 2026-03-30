@@ -1,0 +1,54 @@
+# Source: https://www.apollographql.com/docs/graphos/platform/access-management/sso/multi-organization.md
+
+# Multi-organization SSO
+
+Different GraphOS organizations can share the same identity provider (IdP) and SSO so members can switch between organizations in GraphOS Studio without needing to reauthenticate.
+
+## Prerequisites
+
+For multi-organization SSO, each organization needs to individually configure SSO according to the latest instructions (as of April 2024) for their particular IdP:
+
+### SAML-based setup
+
+* [Okta](https://www.apollographql.com/docs/graphos/platform/access-management/sso/saml-okta)
+* [Microsoft Entra ID](https://www.apollographql.com/docs/graphos/platform/access-management/sso/saml-microsoft-entra-id) (formerly known as Azure Active Directory)
+* [Generic SAML](https://www.apollographql.com/docs/graphos/platform/access-management/sso/saml-integration-guide)
+
+### OIDC-based setup
+
+* [Okta](https://www.apollographql.com/docs/graphos/platform/access-management/sso/oidc-okta)
+* [Microsoft Entra ID](https://www.apollographql.com/docs/graphos/platform/access-management/sso/oidc-microsoft-entra-id) (formerly known as Azure Active Directory)
+* [Generic OIDC](https://www.apollographql.com/docs/graphos/platform/access-management/sso/oidc-integration-guide/)
+
+## Switching between organizations
+
+You can switch between any organizations you have access to by clicking the organization name in the top left of GraphOS Studio.
+For an organization to appear in your organization list, you must first log into that organization.
+
+## Logging in to a multi-org SSO organization
+
+To authenticate access to an organization with a shared SSO configuration, you must first log in to it using one of these identity provider (IdP) initiated methods:
+
+* Via IdP application portal (recommended)
+* Via IdP-generated link
+* Via Apollo-generated link
+
+### Log in via IdP application portal
+
+Apollo recommends application portals as the most direct way for organization members to authenticate access.
+
+Many IdPs provide a user-facing page where you can see which applications you are assigned to. Different GraphOS organizations appear as separate applications, and you can log in to each one by clicking the organization tile.
+
+For example, the screenshot above shows separate application tiles for **Apollo GraphOS (Organization 1)** and **Apollo GraphOS (Organization 2)**.
+
+### Log in via an IdP-generated link
+
+Many IdPs provide a method to generate login links. These can be provided directly to team members or stored in an internal wiki or document for easy access. Login link creation often requires admin permissions in an IdP. Consult your IdP's documentation for instructions.
+
+### Log in via an Apollo-generated link
+
+Apollo can also generate login links on request. Get in touch with your Apollo contact to request an Apollo-generated link. Be sure to include the organization(s) you want the link(s) for.
+
+## Preview limitations
+
+While this feature is in [preview](https://www.apollographql.com/docs/graphos/reference/feature-launch-stages#preview), members can only log in with IdP-initiated SSO. Therefore, during preview, all members of an organization with multi-organization SSO must log in from their IdP. If they try to log in on `studio.apollographql.com/login`, they will receive an error message directing them to log in via IdP.

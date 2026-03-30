@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The /etc/sysconfig/docker file should be owned by the root account and group
-Classification:complianceFramework:cis-dockerControl:3.20 
+Classification:complianceFramework:cis-dockerControl:3.20
 ## Description{% #description %}
 
 You should verify that the `/etc/sysconfig/docker` file individual ownership and group ownership is correctly set to root.

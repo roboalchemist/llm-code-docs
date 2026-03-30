@@ -42,11 +42,11 @@ public class Foo {
         for(;true;) true;
 
         for(; true ;){
-        	System.out.println("bar");
+            System.out.println("bar");
         }
-        
+
         for(; i < 42 ;) true;
-        
+
         for(;;);
     }
 }
@@ -61,6 +61,5 @@ public class Foo {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

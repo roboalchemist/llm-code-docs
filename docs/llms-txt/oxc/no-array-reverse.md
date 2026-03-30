@@ -1,19 +1,15 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-array-reverse.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-array-reverse.md
----
-
-### What it does
+## What it does
 
 Prefer using `Array#toReversed()` over `Array#reverse()`.
 
-### Why is this bad?
+## Why is this bad?
 
 `Array#reverse()` modifies the original array in place, which can lead to unintended side effects—especially
 when the original array is used elsewhere in the code.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -31,7 +27,7 @@ const reversed = [...array].toReversed();
 
 This rule accepts a configuration object with the following properties:
 
-### allowExpressionStatement
+## allowExpressionStatement
 
 type: `boolean`
 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Okta Active Directory environment linked
-Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556) 
+Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556)
 ## Goal{% #goal %}
 
 Detect the creation and linking of an on-premises Active Directory environment to Okta via an authorized agent.

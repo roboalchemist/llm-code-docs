@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # RBAC should be enabled for the API server
-Classification:complianceFramework:cis-kubernetesControl:1.2.9 
+Classification:complianceFramework:cis-kubernetesControl:1.2.9
 ## Description{% #description %}
 
 Turn on Role Based Access Control.

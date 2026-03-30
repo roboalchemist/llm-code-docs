@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # OpenSearch domains should have Audit Logging enabled
- 
+
 ## Description{% #description %}
 
 This check determines if `audit` logging is enabled for Amazon OpenSearch Service domains, and is configured to send logs to Amazon CloudWatch Logs. Audit logs are crucial for recording detailed information about access and changes to OpenSearch resources, enabling you to track user activities, detect suspicious behavior, and ensure compliance with security policies and regulatory requirements.

@@ -65,7 +65,7 @@ r = requests.get(w, verify=False, timeout=10)
 
 def foo():
     r = requests.get(w, verify=False) # missing a timeout
-    
+
     if bar:
         r = requests.get(w, verify=False)
 ```
@@ -81,6 +81,5 @@ import requests
 r = requests.get(w, verify=False, timeout=5)
 r = requests.get(w, verify=False, timeout=10)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

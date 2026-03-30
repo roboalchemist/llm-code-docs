@@ -58,6 +58,5 @@ a instanceof b === false;
 !(a instanceof b);
 (!a) instanceof b;
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

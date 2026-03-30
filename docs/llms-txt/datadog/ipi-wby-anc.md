@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The scheduler pod specification file ownership should be set to root
-Classification:complianceFramework:cis-kubernetesControl:1.1.6 
+Classification:complianceFramework:cis-kubernetesControl:1.1.6
 ## Description{% #description %}
 
 Ensure that the scheduler pod specification file ownership is set to root:root.

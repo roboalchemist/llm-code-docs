@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # ElastiCache Redis replication groups should have automatic failover enabled
- 
+
 ## Description{% #description %}
 
 Enable automatic failover for your ElastiCache for Redis replication groups

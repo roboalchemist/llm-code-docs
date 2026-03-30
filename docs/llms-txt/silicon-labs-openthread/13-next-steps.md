@@ -1,0 +1,7 @@
+# Source: https://docs.silabs.com/openthread/3.0.0/thread-fundamentals/13-next-steps.md
+
+# Next Steps
+
+The Silicon Labs OpenThread SDK includes a certified OpenThread networking stack and sample applications that demonstrate basic network and application behavior. Customers are encouraged to use the included sample applications to gain familiarity with Thread in general and the Silicon Labs offering in particular. Each of the applications demonstrates how devices form and join networks, as well as how messages are sent and received. The applications are available for use after loading Simplicity Studio  and the Silicon Labs OpenThread SDK. Simplicity Studio includes support for creating applications (Project Configurator) and decoding the network and application-layer messages (Network Analyzer) in Thread that provide additional insight into the operation of Thread networks. For more information, see the [OpenThread Quick-Start Guide](/openthread/3.0.0/openthread-quick-start-guide).
+
+For more information about OpenThread Border Routers see [Using the Silicon Labs Co-processors with the OpenThread Border Router](/openthread/3.0.0/using-sl-coprocessors-with-openthread-border-router). For more information on developing Thread 1.4 sample applications see [Configuring OpenThread Applications for Thread 1.4](/openthread/3.0.0/configuring-openthread-apps-for-thread-1-4). Similarly, for developing Thread 1.3 sample applications see [Configuring OpenThread Applications for Thread 1.3](/openthread/3.0.0/configuring-openthread-apps-for-thread-1-3).

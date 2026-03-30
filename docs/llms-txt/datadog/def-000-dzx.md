@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS principal added to multiple EKS clusters
-Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098) 
+Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098)
 ## Goal{% #goal %}
 
 Detect when an AWS principal is assigned permissions on multiple Amazon EKS clusters in a short amount of time. This can be indicative of an attacker compromising your AWS environment and laterally moving to your EKS clusters.

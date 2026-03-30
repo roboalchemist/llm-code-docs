@@ -53,6 +53,5 @@ CMD run_server
 HEALTHCHECK --interval=30s --timeout=3s \
   CMD curl -f http://localhost/ || exit 1
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

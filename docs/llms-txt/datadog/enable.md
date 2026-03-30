@@ -35,7 +35,7 @@ Before setting up Agentless Scanning, ensure the following prerequisites are met
 - **Cloud permissions**: The Agentless Scanning instance requires specific permissions to scan hosts, host images, container registries, and functions. These permissions are automatically applied as part of the installation process and are strictly limited to the minimum permissions required to perform the necessary scans, following the principle of least privilege.
 
   {% collapsible-section %}
-  AWS scanning permissions: 
+  AWS scanning permissions:
 Scanning permissions:
 
   - `ebs:GetSnapshotBlock`
@@ -69,7 +69,7 @@ Only when Sensitive Data Scanning (DSPM) is enabled:
 
 
   {% collapsible-section %}
-  Azure scanning permissions: 
+  Azure scanning permissions:
   - `Microsoft.Compute/virtualMachines/read`
   - `Microsoft.Compute/virtualMachines/instanceView/read`
   - `Microsoft.Compute/virtualMachineScaleSets/read`
@@ -83,7 +83,7 @@ Only when Sensitive Data Scanning (DSPM) is enabled:
     {% /collapsible-section %}
 
   {% collapsible-section %}
-  GCP scanning permissions: 
+  GCP scanning permissions:
   - `compute.disks.create`
   - `compute.disks.createSnapshot`
   - `compute.disks.delete`

@@ -65,7 +65,7 @@ If you want to apply different configuration templates to containers running the
 **Example**: Apply a Docker label or Kubernetes annotation to identify your container as `foo`:
 
    {% tab title="Docker label" %}
-   
+
    ```yaml
    LABEL com.datadoghq.ad.check.id="foo"
    ```
@@ -74,7 +74,7 @@ If you want to apply different configuration templates to containers running the
    {% /tab %}
 
    {% tab title="Kubernetes annotation" %}
-   
+
    ```text
    ad.datadoghq.com/<CONTAINER_NAME>.check.id: 'foo'
    ```

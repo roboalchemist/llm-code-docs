@@ -56,6 +56,5 @@ crypto.createHash("sha1")
 ```javascript
 crypto.createHash("sha256")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

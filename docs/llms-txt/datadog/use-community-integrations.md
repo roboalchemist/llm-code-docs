@@ -82,7 +82,7 @@ metadata:
 spec:
   global:
     registry: <Registry>/<RepoName>
-    #(...)  
+    #(...)
   override:
     nodeAgent:
       image:

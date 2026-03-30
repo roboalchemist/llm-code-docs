@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The daemon.json file should have user and group ownership set to root
-Classification:complianceFramework:cis-dockerControl:3.17 
+Classification:complianceFramework:cis-dockerControl:3.17
 ## Description{% #description %}
 
 You should verify that the daemon.json file individual ownership and group ownership is correctly set to root.
@@ -23,7 +23,7 @@ The daemon.json file contains sensitive parameters that could alter the behavior
 Verify that the `daemon.json` file is owned and group-owned by root by running:
 
 ```
-stat -c %U:%G /etc/docker/daemon.json | grep -v root:root 
+stat -c %U:%G /etc/docker/daemon.json | grep -v root:root
 ```
 
 The command should return no results.

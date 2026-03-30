@@ -86,6 +86,5 @@ fun encryptAndSavePassword(context:Context, strToEncrypt: String): ByteArray {
     val key = keygen.generateKey()
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

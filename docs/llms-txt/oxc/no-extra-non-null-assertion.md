@@ -1,20 +1,16 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-extra-non-null-assertion.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-extra-non-null-assertion.md
----
-
-### What it does
+## What it does
 
 Disallow extra non-null assertions.
 
-### Why is this bad?
+## Why is this bad?
 
 The `!` non-null assertion operator in TypeScript is used to assert that a value's type
 does not include null or undefined. Using the operator any more than once on a single value
 does nothing.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

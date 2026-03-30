@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Aurora MySQL clusters should publish audit logs to CloudWatch Logs
- 
+
 ## Description{% #description %}
 
 This check verifies the Aurora MySQL DB cluster is configured to send audit logs to CloudWatch Logs. This check does not apply to Aurora Serverless v1 DB clusters.

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable Core Dumps for All U
 ---
 
 # Disable Core Dumps for All Users
- 
+
 ## Description{% #description %}
 
 To disable core dumps for all users, add the following line to `/etc/security/limits.conf`, or to a file within the `/etc/security/limits.d/` directory:

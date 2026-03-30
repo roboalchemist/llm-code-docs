@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # New AWS account seen assuming a role into AWS account
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1199-trusted-relationship](https://attack.mitre.org/techniques/T1199) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1199-trusted-relationship](https://attack.mitre.org/techniques/T1199)
 ## Goal{% #goal %}
 
 Detect when an attacker accesses your AWS account from their AWS Account.

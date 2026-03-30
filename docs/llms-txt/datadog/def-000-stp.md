@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Private endpoint connections on Azure SQL Database should be enabled
- 
+
 ## Description{% #description %}
 
 This rule checks if private endpoint connections are enabled on Azure SQL Database. Private endpoint connections help secure communication between resources within a virtual network and the Azure SQL Database, reducing exposure to the public internet.

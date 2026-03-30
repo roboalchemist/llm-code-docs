@@ -56,6 +56,5 @@ UserDefaults.standard.set(passphrase, forKey: "pass_phrase")
 UserDefaults.standard.set(username, forKey: "userName")
 UserDefaults.standard.set("value", forKey: "key")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # 'Regular' or 'Stable' release channels should be used for GKE clusters
- 
+
 ## Description{% #description %}
 
 Release channels should be used to automate version upgrades and reduce potential difficulties associated with version management. To prevent outages, a [maintenance window](https://cloud.google.com/kubernetes-engine/docs/how-to/maintenance-windows-and-exclusions) should be set up as well.

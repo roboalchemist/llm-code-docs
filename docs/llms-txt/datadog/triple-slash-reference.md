@@ -48,6 +48,5 @@ import * as foo from 'foo';
 import * as bar from 'bar';
 import * as baz from 'baz';
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

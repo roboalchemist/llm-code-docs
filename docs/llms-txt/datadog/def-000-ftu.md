@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Snowflake stage set to anomalous external cloud location
-Classification:attackTactic:[TA0010-exfiltration](https://attack.mitre.org/tactics/TA0010)Technique:[T1537-transfer-data-to-cloud-account](https://attack.mitre.org/techniques/T1537) 
+Classification:attackTactic:[TA0010-exfiltration](https://attack.mitre.org/tactics/TA0010)Technique:[T1537-transfer-data-to-cloud-account](https://attack.mitre.org/techniques/T1537)
 ## Goal{% #goal %}
 
 Detect an anomalous stage transfer to an external cloud provider in your Snowflake environment.

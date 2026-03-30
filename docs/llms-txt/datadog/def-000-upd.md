@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify User Who Owns Backup 
 ---
 
 # Verify User Who Owns Backup shadow File
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/etc/shadow-`, run the command:

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Email with malicious attachment opened by user
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1566-phishing](https://attack.mitre.org/techniques/T1566) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1566-phishing](https://attack.mitre.org/techniques/T1566)
 ## Goal{% #goal %}
 
 Detect when an email with a malicious attachment is opened.

@@ -43,7 +43,7 @@ AWS Kinesis Streams contain potentially sensitive data that should be encrypted 
 resource "aws_kinesis_stream" "secure_example" {
   name             = "terraform-kinesis-test"
   // ... other configurations ...
-  
+
   encryption_type = "KMS"
   kms_key_id = "alias/aws/kinesis"
 }

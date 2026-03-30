@@ -108,13 +108,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -136,7 +136,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List datastores returns "OK" response
@@ -150,7 +150,7 @@ p api_instance.list_datastores()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List datastores returns "OK" response
@@ -158,29 +158,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewActionsDatastoresApi(apiClient)
-	resp, r, err := api.ListDatastores(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewActionsDatastoresApi(apiClient)
+    resp, r, err := api.ListDatastores(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.ListDatastores`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.ListDatastores`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.ListDatastores`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.ListDatastores`:\n%s\n", responseContent)
 }
 ```
 
@@ -188,7 +188,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List datastores returns "OK" response
@@ -221,7 +221,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List datastores returns "OK" response
@@ -245,7 +245,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -429,7 +429,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -446,8 +446,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create datastore returns "OK" response
@@ -455,38 +455,38 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreateAppsDatastoreRequest{
-		Data: &datadogV2.CreateAppsDatastoreRequestData{
-			Attributes: &datadogV2.CreateAppsDatastoreRequestDataAttributes{
-				Name:              "datastore-name",
-				PrimaryColumnName: "primaryKey",
-			},
-			Type: datadogV2.DATASTOREDATATYPE_DATASTORES,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewActionsDatastoresApi(apiClient)
-	resp, r, err := api.CreateDatastore(ctx, body)
+    body := datadogV2.CreateAppsDatastoreRequest{
+        Data: &datadogV2.CreateAppsDatastoreRequestData{
+            Attributes: &datadogV2.CreateAppsDatastoreRequestDataAttributes{
+                Name:              "datastore-name",
+                PrimaryColumnName: "primaryKey",
+            },
+            Type: datadogV2.DATASTOREDATATYPE_DATASTORES,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewActionsDatastoresApi(apiClient)
+    resp, r, err := api.CreateDatastore(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.CreateDatastore`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.CreateDatastore`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.CreateDatastore`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.CreateDatastore`:\n%s\n", responseContent)
 }
 ```
 
@@ -494,7 +494,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create datastore returns "OK" response
@@ -541,7 +541,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -579,7 +579,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create datastore returns "OK" response
@@ -603,7 +603,7 @@ p api_instance.create_datastore(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create datastore returns "OK" response
@@ -639,7 +639,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -869,13 +869,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport datastore_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -903,7 +903,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get datastore returns "OK" response
@@ -920,7 +920,7 @@ p api_instance.get_datastore(DATASTORE_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get datastore returns "OK" response
@@ -928,32 +928,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "datastore" in the system
-	DatastoreDataID := os.Getenv("DATASTORE_DATA_ID")
+    // there is a valid "datastore" in the system
+    DatastoreDataID := os.Getenv("DATASTORE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewActionsDatastoresApi(apiClient)
-	resp, r, err := api.GetDatastore(ctx, DatastoreDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewActionsDatastoresApi(apiClient)
+    resp, r, err := api.GetDatastore(ctx, DatastoreDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.GetDatastore`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.GetDatastore`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.GetDatastore`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.GetDatastore`:\n%s\n", responseContent)
 }
 ```
 
@@ -961,7 +961,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get datastore returns "OK" response
@@ -997,7 +997,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get datastore returns "OK" response
@@ -1023,7 +1023,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1283,7 +1283,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport datastore_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1300,8 +1300,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update datastore returns "OK" response
@@ -1309,41 +1309,41 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "datastore" in the system
-	DatastoreDataID := os.Getenv("DATASTORE_DATA_ID")
+    // there is a valid "datastore" in the system
+    DatastoreDataID := os.Getenv("DATASTORE_DATA_ID")
 
-	body := datadogV2.UpdateAppsDatastoreRequest{
-		Data: &datadogV2.UpdateAppsDatastoreRequestData{
-			Attributes: &datadogV2.UpdateAppsDatastoreRequestDataAttributes{
-				Name: datadog.PtrString("updated name"),
-			},
-			Type: datadogV2.DATASTOREDATATYPE_DATASTORES,
-			Id:   datadog.PtrString(DatastoreDataID),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewActionsDatastoresApi(apiClient)
-	resp, r, err := api.UpdateDatastore(ctx, DatastoreDataID, body)
+    body := datadogV2.UpdateAppsDatastoreRequest{
+        Data: &datadogV2.UpdateAppsDatastoreRequestData{
+            Attributes: &datadogV2.UpdateAppsDatastoreRequestDataAttributes{
+                Name: datadog.PtrString("updated name"),
+            },
+            Type: datadogV2.DATASTOREDATATYPE_DATASTORES,
+            Id:   datadog.PtrString(DatastoreDataID),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewActionsDatastoresApi(apiClient)
+    resp, r, err := api.UpdateDatastore(ctx, DatastoreDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.UpdateDatastore`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.UpdateDatastore`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.UpdateDatastore`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.UpdateDatastore`:\n%s\n", responseContent)
 }
 ```
 
@@ -1351,7 +1351,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update datastore returns "OK" response
@@ -1399,7 +1399,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1441,7 +1441,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update datastore returns "OK" response
@@ -1468,7 +1468,7 @@ p api_instance.update_datastore(DATASTORE_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update datastore returns "OK" response
@@ -1505,7 +1505,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1651,13 +1651,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport datastore_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1683,7 +1683,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete datastore returns "OK" response
@@ -1700,7 +1700,7 @@ p api_instance.delete_datastore(DATASTORE_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete datastore returns "OK" response
@@ -1708,28 +1708,28 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "datastore" in the system
-	DatastoreDataID := os.Getenv("DATASTORE_DATA_ID")
+    // there is a valid "datastore" in the system
+    DatastoreDataID := os.Getenv("DATASTORE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewActionsDatastoresApi(apiClient)
-	r, err := api.DeleteDatastore(ctx, DatastoreDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewActionsDatastoresApi(apiClient)
+    r, err := api.DeleteDatastore(ctx, DatastoreDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.DeleteDatastore`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.DeleteDatastore`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -1737,7 +1737,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete datastore returns "OK" response
@@ -1771,7 +1771,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete datastore returns "OK" response
@@ -1797,7 +1797,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2056,13 +2056,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport datastore_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}/items" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2090,7 +2090,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List datastore items returns "OK" response
@@ -2107,7 +2107,7 @@ p api_instance.list_datastore_items(DATASTORE_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List datastore items returns "OK" response
@@ -2115,32 +2115,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "datastore" in the system
-	DatastoreDataID := os.Getenv("DATASTORE_DATA_ID")
+    // there is a valid "datastore" in the system
+    DatastoreDataID := os.Getenv("DATASTORE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewActionsDatastoresApi(apiClient)
-	resp, r, err := api.ListDatastoreItems(ctx, DatastoreDataID, *datadogV2.NewListDatastoreItemsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewActionsDatastoresApi(apiClient)
+    resp, r, err := api.ListDatastoreItems(ctx, DatastoreDataID, *datadogV2.NewListDatastoreItemsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.ListDatastoreItems`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.ListDatastoreItems`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.ListDatastoreItems`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.ListDatastoreItems`:\n%s\n", responseContent)
 }
 ```
 
@@ -2148,7 +2148,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List datastore items returns "OK" response
@@ -2184,7 +2184,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List datastore items returns "OK" response
@@ -2216,7 +2216,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2453,7 +2453,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport datastore_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}/items" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2469,8 +2469,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Delete datastore item returns "OK" response
@@ -2478,40 +2478,40 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "datastore" in the system
-	DatastoreDataID := os.Getenv("DATASTORE_DATA_ID")
+    // there is a valid "datastore" in the system
+    DatastoreDataID := os.Getenv("DATASTORE_DATA_ID")
 
-	body := datadogV2.DeleteAppsDatastoreItemRequest{
-		Data: &datadogV2.DeleteAppsDatastoreItemRequestData{
-			Attributes: &datadogV2.DeleteAppsDatastoreItemRequestDataAttributes{
-				ItemKey: "test-key",
-			},
-			Type: datadogV2.DATASTOREITEMSDATATYPE_ITEMS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewActionsDatastoresApi(apiClient)
-	resp, r, err := api.DeleteDatastoreItem(ctx, DatastoreDataID, body)
+    body := datadogV2.DeleteAppsDatastoreItemRequest{
+        Data: &datadogV2.DeleteAppsDatastoreItemRequestData{
+            Attributes: &datadogV2.DeleteAppsDatastoreItemRequestDataAttributes{
+                ItemKey: "test-key",
+            },
+            Type: datadogV2.DATASTOREITEMSDATATYPE_ITEMS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewActionsDatastoresApi(apiClient)
+    resp, r, err := api.DeleteDatastoreItem(ctx, DatastoreDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.DeleteDatastoreItem`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.DeleteDatastoreItem`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.DeleteDatastoreItem`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.DeleteDatastoreItem`:\n%s\n", responseContent)
 }
 ```
 
@@ -2519,7 +2519,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete datastore item returns "OK" response
@@ -2568,7 +2568,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2609,7 +2609,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete datastore item returns "OK" response
@@ -2635,7 +2635,7 @@ p api_instance.delete_datastore_item(DATASTORE_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Delete datastore item returns "OK" response
@@ -2672,7 +2672,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2938,7 +2938,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport datastore_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}/items" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2955,8 +2955,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update datastore item returns "OK" response
@@ -2964,41 +2964,41 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "datastore" in the system
-	DatastoreDataID := os.Getenv("DATASTORE_DATA_ID")
+    // there is a valid "datastore" in the system
+    DatastoreDataID := os.Getenv("DATASTORE_DATA_ID")
 
-	body := datadogV2.UpdateAppsDatastoreItemRequest{
-		Data: &datadogV2.UpdateAppsDatastoreItemRequestData{
-			Attributes: &datadogV2.UpdateAppsDatastoreItemRequestDataAttributes{
-				ItemChanges: datadogV2.UpdateAppsDatastoreItemRequestDataAttributesItemChanges{},
-				ItemKey:     "test-key",
-			},
-			Type: datadogV2.UPDATEAPPSDATASTOREITEMREQUESTDATATYPE_ITEMS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewActionsDatastoresApi(apiClient)
-	resp, r, err := api.UpdateDatastoreItem(ctx, DatastoreDataID, body)
+    body := datadogV2.UpdateAppsDatastoreItemRequest{
+        Data: &datadogV2.UpdateAppsDatastoreItemRequestData{
+            Attributes: &datadogV2.UpdateAppsDatastoreItemRequestDataAttributes{
+                ItemChanges: datadogV2.UpdateAppsDatastoreItemRequestDataAttributesItemChanges{},
+                ItemKey:     "test-key",
+            },
+            Type: datadogV2.UPDATEAPPSDATASTOREITEMREQUESTDATATYPE_ITEMS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewActionsDatastoresApi(apiClient)
+    resp, r, err := api.UpdateDatastoreItem(ctx, DatastoreDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.UpdateDatastoreItem`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.UpdateDatastoreItem`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.UpdateDatastoreItem`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.UpdateDatastoreItem`:\n%s\n", responseContent)
 }
 ```
 
@@ -3006,7 +3006,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update datastore item returns "OK" response
@@ -3058,7 +3058,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -3105,7 +3105,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update datastore item returns "OK" response
@@ -3132,7 +3132,7 @@ p api_instance.update_datastore_item(DATASTORE_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update datastore item returns "OK" response
@@ -3172,7 +3172,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3429,7 +3429,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport datastore_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}/items/bulk" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3454,8 +3454,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Bulk write datastore items returns "OK" response
@@ -3463,49 +3463,49 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "datastore" in the system
-	DatastoreDataID := os.Getenv("DATASTORE_DATA_ID")
+    // there is a valid "datastore" in the system
+    DatastoreDataID := os.Getenv("DATASTORE_DATA_ID")
 
-	body := datadogV2.BulkPutAppsDatastoreItemsRequest{
-		Data: &datadogV2.BulkPutAppsDatastoreItemsRequestData{
-			Attributes: &datadogV2.BulkPutAppsDatastoreItemsRequestDataAttributes{
-				Values: []map[string]interface{}{
-					{
-						"id":   "cust_3141",
-						"name": "Johnathan",
-					},
-					{
-						"id":   "cust_3142",
-						"name": "Mary",
-					},
-				},
-			},
-			Type: datadogV2.DATASTOREITEMSDATATYPE_ITEMS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewActionsDatastoresApi(apiClient)
-	resp, r, err := api.BulkWriteDatastoreItems(ctx, DatastoreDataID, body)
+    body := datadogV2.BulkPutAppsDatastoreItemsRequest{
+        Data: &datadogV2.BulkPutAppsDatastoreItemsRequestData{
+            Attributes: &datadogV2.BulkPutAppsDatastoreItemsRequestDataAttributes{
+                Values: []map[string]interface{}{
+                    {
+                        "id":   "cust_3141",
+                        "name": "Johnathan",
+                    },
+                    {
+                        "id":   "cust_3142",
+                        "name": "Mary",
+                    },
+                },
+            },
+            Type: datadogV2.DATASTOREITEMSDATATYPE_ITEMS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewActionsDatastoresApi(apiClient)
+    resp, r, err := api.BulkWriteDatastoreItems(ctx, DatastoreDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.BulkWriteDatastoreItems`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.BulkWriteDatastoreItems`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.BulkWriteDatastoreItems`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.BulkWriteDatastoreItems`:\n%s\n", responseContent)
 }
 ```
 
@@ -3513,7 +3513,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Bulk write datastore items returns "OK" response
@@ -3571,7 +3571,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -3615,7 +3615,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Bulk write datastore items returns "OK" response
@@ -3648,7 +3648,7 @@ p api_instance.bulk_write_datastore_items(DATASTORE_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Bulk write datastore items returns "OK" response
@@ -3696,7 +3696,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3997,7 +3997,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport datastore_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/actions-datastores/${datastore_id}/items/bulk" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4015,8 +4015,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Bulk delete datastore items returns "OK" response
@@ -4024,42 +4024,42 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "datastore" in the system
-	DatastoreDataID := os.Getenv("DATASTORE_DATA_ID")
+    // there is a valid "datastore" in the system
+    DatastoreDataID := os.Getenv("DATASTORE_DATA_ID")
 
-	body := datadogV2.BulkDeleteAppsDatastoreItemsRequest{
-		Data: &datadogV2.BulkDeleteAppsDatastoreItemsRequestData{
-			Attributes: &datadogV2.BulkDeleteAppsDatastoreItemsRequestDataAttributes{
-				ItemKeys: []string{
-					"test-key",
-				},
-			},
-			Type: datadogV2.BULKDELETEAPPSDATASTOREITEMSREQUESTDATATYPE_ITEMS,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewActionsDatastoresApi(apiClient)
-	resp, r, err := api.BulkDeleteDatastoreItems(ctx, DatastoreDataID, body)
+    body := datadogV2.BulkDeleteAppsDatastoreItemsRequest{
+        Data: &datadogV2.BulkDeleteAppsDatastoreItemsRequestData{
+            Attributes: &datadogV2.BulkDeleteAppsDatastoreItemsRequestDataAttributes{
+                ItemKeys: []string{
+                    "test-key",
+                },
+            },
+            Type: datadogV2.BULKDELETEAPPSDATASTOREITEMSREQUESTDATATYPE_ITEMS,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewActionsDatastoresApi(apiClient)
+    resp, r, err := api.BulkDeleteDatastoreItems(ctx, DatastoreDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.BulkDeleteDatastoreItems`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ActionsDatastoresApi.BulkDeleteDatastoreItems`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.BulkDeleteDatastoreItems`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ActionsDatastoresApi.BulkDeleteDatastoreItems`:\n%s\n", responseContent)
 }
 ```
 
@@ -4067,7 +4067,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Bulk delete datastore items returns "OK" response
@@ -4118,7 +4118,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -4165,7 +4165,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Bulk delete datastore items returns "OK" response
@@ -4193,7 +4193,7 @@ p api_instance.bulk_delete_datastore_items(DATASTORE_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Bulk delete datastore items returns "OK" response
@@ -4234,7 +4234,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Spring RCE post-exploitation activity attempted
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190)
 ## Goal{% #goal %}
 
 This rule detects attempted post-exploitation activity of [CVE-2022-22965](https://tanzu.vmware.com/security/cve-2022-22965) with an HTTP GET parameter.

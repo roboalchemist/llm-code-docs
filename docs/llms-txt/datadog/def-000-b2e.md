@@ -7,13 +7,13 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify User Who Owns /etc/at
 ---
 
 # Verify User Who Owns /etc/at.deny file
- 
+
 ## Description{% #description %}
 
 If `/etc/at.deny` exists, it must be owned by `root`. To properly set the owner of `/etc/at.deny`, run the command:
 
 ```
-$ sudo chown root /etc/at.deny 
+$ sudo chown root /etc/at.deny
 ```
 
 ## Rationale{% #rationale %}

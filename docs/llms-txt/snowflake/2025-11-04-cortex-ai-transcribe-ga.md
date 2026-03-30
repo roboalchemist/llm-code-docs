@@ -1,0 +1,17 @@
+# Source: https://docs.snowflake.com/en/release-notes/2025/other/2025-11-04-cortex-ai-transcribe-ga.md
+
+# Nov 04, 2025: Cortex AI_TRANSCRIBE function (*General availability*)
+
+The [AI_TRANSCRIBE](../../../sql-reference/functions/ai_transcribe.md) function is now generally available in all
+Cortex-supported regions. This launch brings production-ready, SQL-native transcription for both audio and video content
+within Snowflake, making it easier to extract and analyze spoken information at scale.
+
+The general availability release includes several improvements over the preview release:
+
+* Automatic language detection improvements for higher accuracy across multilingual and mixed-language recordings.
+* Support for MP4 and other video files, enabling transcription and analysis of media content for advertising and
+  sponsorship analytics.
+* Support for Norwegian and Hebrew, expanding language coverage to 31 languages.
+* Overall transcription quality improvements across diverse environments and acoustic conditions.
+
+For more information, see [Cortex AI Functions: Audio](../../../user-guide/snowflake-cortex/ai-audio.md).

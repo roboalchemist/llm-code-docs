@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure a Table Exists for Nf
 ---
 
 # Ensure a Table Exists for Nftables
- 
+
 ## Description{% #description %}
 
 Tables in nftables hold chains. Each table only has one address family and only applies to packets of this family. Tables can have one of six families.

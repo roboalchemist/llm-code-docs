@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Slack enterprise organization created or deleted
-Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1531-account-access-removal](https://attack.mitre.org/techniques/T1531) 
+Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1531-account-access-removal](https://attack.mitre.org/techniques/T1531)
 ## Goal{% #goal %}
 
 Detect when an organization has been created or deleted in Slack.

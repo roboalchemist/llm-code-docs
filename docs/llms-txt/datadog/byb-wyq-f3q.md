@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The container's root filesystem should be set to read-only
-Classification:complianceFramework:cis-dockerControl:5.12 
+Classification:complianceFramework:cis-dockerControl:5.12
 ## Description{% #description %}
 
 The container's root filesystem should be treated as a 'golden image' by using Docker run's `--read-only` option. This prevents any writes to the container's root filesystem at container runtime and enforces the principle of immutable infrastructure.

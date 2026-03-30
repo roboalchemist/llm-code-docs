@@ -86,7 +86,7 @@ spec:
     matchLabels:
       app: redis
   template:
-    metadata:      
+    metadata:
       labels:
         app: redis
     spec:
@@ -116,7 +116,7 @@ spec:
     matchLabels:
       app: redis
   template:
-    metadata:      
+    metadata:
       labels:
         app: redis
     spec:
@@ -196,5 +196,5 @@ spec:
             - name: sec-ctx-vol
               mountPath: /data/demo
           securityContext:
-            allowPrivilegeEscalation: false        
+            allowPrivilegeEscalation: false
 ```

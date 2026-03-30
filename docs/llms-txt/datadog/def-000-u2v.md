@@ -9,14 +9,14 @@ breadcrumbs: >-
 ---
 
 # Ensure the Default Umask is Set Correctly in login.defs
- 
+
 ## Description{% #description %}
 
 To ensure the default umask controlled by `/etc/login.defs` is set properly, add or correct the `UMASK` setting in `/etc/login.defs` to read as follows:
 
 ```
 UMASK 027
-         
+
 ```
 
 ## Rationale{% #rationale %}

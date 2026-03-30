@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Cluster VPC flow logs and intranode visibility should be enabled
- 
+
 ## Description{% #description %}
 
 VPC Flow Logs and intranode visibility should be enabled. This allows monitoring and analysis of network traffic within your GKE cluster.

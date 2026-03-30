@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall rsync Package
 ---
 
 # Uninstall rsync Package
- 
+
 ## Description{% #description %}
 
 The rsyncd service can be used to synchronize files between systems over network links. The `rsync` package can be removed with the following command:

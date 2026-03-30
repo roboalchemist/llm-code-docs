@@ -1,0 +1,171 @@
+# Source: https://docs.aws.amazon.com/autoscaling/ec2/APIReference/llms.txt
+
+# Amazon EC2 Auto Scaling API Reference
+
+> This is the Amazon EC2 Auto Scaling API Reference. Amazon EC2 Auto Scaling is designed to automatically launch and terminate EC2 instances based on user-defined scaling policies, scheduled actions, and health checks. This guide describes the Amazon EC2 Auto Scaling operations that you can call programmatically. For more information about Amazon EC2 Auto Scaling, see the Amazon EC2 Auto Scaling User Guide.
+
+- [Welcome](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/Welcome.html)
+- [List of Actions by Function](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_Operations_List.html)
+- [Common Parameters](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/CommonErrors.html)
+- [Permissions](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/ec2-auto-scaling-api-permissions.html)
+
+## [Actions](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_Operations.html)
+
+- [AttachInstances](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AttachInstances.html): Attaches one or more EC2 instances to the specified Auto Scaling group.
+- [AttachLoadBalancers](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AttachLoadBalancers.html)
+- [AttachLoadBalancerTargetGroups](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AttachLoadBalancerTargetGroups.html)
+- [AttachTrafficSources](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AttachTrafficSources.html): Attaches one or more traffic sources to the specified Auto Scaling group.
+- [BatchDeleteScheduledAction](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_BatchDeleteScheduledAction.html): Deletes one or more scheduled actions for the specified Auto Scaling group.
+- [BatchPutScheduledUpdateGroupAction](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_BatchPutScheduledUpdateGroupAction.html): Creates or updates one or more scheduled scaling actions for an Auto Scaling group.
+- [CancelInstanceRefresh](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CancelInstanceRefresh.html): Cancels an instance refresh or rollback that is in progress.
+- [CompleteLifecycleAction](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CompleteLifecycleAction.html): Completes the lifecycle action for the specified token or instance with the specified result.
+- [CreateAutoScalingGroup](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CreateAutoScalingGroup.html): We strongly recommend using a launch template when calling this operation to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2.
+- [CreateLaunchConfiguration](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CreateLaunchConfiguration.html): Creates a launch configuration.
+- [CreateOrUpdateTags](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CreateOrUpdateTags.html): Creates or updates tags for the specified Auto Scaling group.
+- [DeleteAutoScalingGroup](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DeleteAutoScalingGroup.html): Deletes the specified Auto Scaling group.
+- [DeleteLaunchConfiguration](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DeleteLaunchConfiguration.html): Deletes the specified launch configuration.
+- [DeleteLifecycleHook](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DeleteLifecycleHook.html): Deletes the specified lifecycle hook.
+- [DeleteNotificationConfiguration](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DeleteNotificationConfiguration.html): Deletes the specified notification.
+- [DeletePolicy](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DeletePolicy.html): Deletes the specified scaling policy.
+- [DeleteScheduledAction](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DeleteScheduledAction.html): Deletes the specified scheduled action.
+- [DeleteTags](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DeleteTags.html): Deletes the specified tags.
+- [DeleteWarmPool](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DeleteWarmPool.html): Deletes the warm pool for the specified Auto Scaling group.
+- [DescribeAccountLimits](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeAccountLimits.html): Describes the current Amazon EC2 Auto Scaling resource quotas for your account.
+- [DescribeAdjustmentTypes](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeAdjustmentTypes.html): Describes the available adjustment types for step scaling and simple scaling policies.
+- [DescribeAutoScalingGroups](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeAutoScalingGroups.html): Gets information about the Auto Scaling groups in the account and Region.
+- [DescribeAutoScalingInstances](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeAutoScalingInstances.html): Gets information about the Auto Scaling instances in the account and Region.
+- [DescribeAutoScalingNotificationTypes](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeAutoScalingNotificationTypes.html): Describes the notification types that are supported by Amazon EC2 Auto Scaling.
+- [DescribeInstanceRefreshes](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeInstanceRefreshes.html): Gets information about the instance refreshes for the specified Auto Scaling group from the previous six weeks.
+- [DescribeLaunchConfigurations](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeLaunchConfigurations.html): Gets information about the launch configurations in the account and Region.
+- [DescribeLifecycleHooks](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeLifecycleHooks.html): Gets information about the lifecycle hooks for the specified Auto Scaling group.
+- [DescribeLifecycleHookTypes](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeLifecycleHookTypes.html): Describes the available types of lifecycle hooks.
+- [DescribeLoadBalancers](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeLoadBalancers.html)
+- [DescribeLoadBalancerTargetGroups](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeLoadBalancerTargetGroups.html)
+- [DescribeMetricCollectionTypes](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeMetricCollectionTypes.html): Describes the available CloudWatch metrics for Amazon EC2 Auto Scaling.
+- [DescribeNotificationConfigurations](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeNotificationConfigurations.html): Gets information about the Amazon SNS notifications that are configured for one or more Auto Scaling groups.
+- [DescribePolicies](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribePolicies.html): Gets information about the scaling policies in the account and Region.
+- [DescribeScalingActivities](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeScalingActivities.html): Gets information about the scaling activities in the account and Region.
+- [DescribeScalingProcessTypes](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeScalingProcessTypes.html): Describes the scaling process types for use with the ResumeProcesses and SuspendProcesses APIs.
+- [DescribeScheduledActions](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeScheduledActions.html): Gets information about the scheduled actions that haven't run or that have not reached their end time.
+- [DescribeTags](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeTags.html): Describes the specified tags.
+- [DescribeTerminationPolicyTypes](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeTerminationPolicyTypes.html): Describes the termination policies supported by Amazon EC2 Auto Scaling.
+- [DescribeTrafficSources](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeTrafficSources.html): Gets information about the traffic sources for the specified Auto Scaling group.
+- [DescribeWarmPool](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DescribeWarmPool.html): Gets information about a warm pool and its instances.
+- [DetachInstances](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DetachInstances.html): Removes one or more instances from the specified Auto Scaling group.
+- [DetachLoadBalancers](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DetachLoadBalancers.html)
+- [DetachLoadBalancerTargetGroups](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DetachLoadBalancerTargetGroups.html)
+- [DetachTrafficSources](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DetachTrafficSources.html): Detaches one or more traffic sources from the specified Auto Scaling group.
+- [DisableMetricsCollection](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DisableMetricsCollection.html): Disables group metrics collection for the specified Auto Scaling group.
+- [EnableMetricsCollection](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnableMetricsCollection.html): Enables group metrics collection for the specified Auto Scaling group.
+- [EnterStandby](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnterStandby.html): Moves the specified instances into the standby state.
+- [ExecutePolicy](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_ExecutePolicy.html): Executes the specified policy.
+- [ExitStandby](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_ExitStandby.html): Moves the specified instances out of the standby state.
+- [GetPredictiveScalingForecast](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_GetPredictiveScalingForecast.html): Retrieves the forecast data for a predictive scaling policy.
+- [LaunchInstances](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_LaunchInstances.html): Launches a specified number of instances in an Auto Scaling group.
+- [PutLifecycleHook](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PutLifecycleHook.html): Creates or updates a lifecycle hook for the specified Auto Scaling group.
+- [PutNotificationConfiguration](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PutNotificationConfiguration.html): Configures an Auto Scaling group to send notifications when specified events take place.
+- [PutScalingPolicy](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PutScalingPolicy.html): Creates or updates a scaling policy for an Auto Scaling group.
+- [PutScheduledUpdateGroupAction](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PutScheduledUpdateGroupAction.html): Creates or updates a scheduled scaling action for an Auto Scaling group.
+- [PutWarmPool](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PutWarmPool.html): Creates or updates a warm pool for the specified Auto Scaling group.
+- [RecordLifecycleActionHeartbeat](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_RecordLifecycleActionHeartbeat.html): Records a heartbeat for the lifecycle action associated with the specified token or instance.
+- [ResumeProcesses](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_ResumeProcesses.html): Resumes the specified suspended auto scaling processes, or all suspended process, for the specified Auto Scaling group.
+- [RollbackInstanceRefresh](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_RollbackInstanceRefresh.html): Cancels an instance refresh that is in progress and rolls back any changes that it made.
+- [SetDesiredCapacity](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_SetDesiredCapacity.html): Sets the size of the specified Auto Scaling group.
+- [SetInstanceHealth](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_SetInstanceHealth.html): Sets the health status of the specified instance.
+- [SetInstanceProtection](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_SetInstanceProtection.html): Updates the instance protection settings of the specified instances.
+- [StartInstanceRefresh](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_StartInstanceRefresh.html): Starts an instance refresh.
+- [SuspendProcesses](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_SuspendProcesses.html): Suspends the specified auto scaling processes, or all processes, for the specified Auto Scaling group.
+- [TerminateInstanceInAutoScalingGroup](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_TerminateInstanceInAutoScalingGroup.html): Terminates the specified instance and optionally adjusts the desired group size.
+- [UpdateAutoScalingGroup](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_UpdateAutoScalingGroup.html): We strongly recommend that all Auto Scaling groups use launch templates to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2.
+
+
+## [Data Types](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_Types.html)
+
+- [AcceleratorCountRequest](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AcceleratorCountRequest.html): Specifies the minimum and maximum for the AcceleratorCount object when you specify InstanceRequirements for an Auto Scaling group.
+- [AcceleratorTotalMemoryMiBRequest](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AcceleratorTotalMemoryMiBRequest.html): Specifies the minimum and maximum for the AcceleratorTotalMemoryMiB object when you specify InstanceRequirements for an Auto Scaling group.
+- [Activity](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_Activity.html): Describes scaling activity, which is a long-running process that represents a change to your Auto Scaling group, such as changing its size or replacing an instance.
+- [AdjustmentType](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AdjustmentType.html): Describes a policy adjustment type.
+- [Alarm](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_Alarm.html): Describes an alarm.
+- [AlarmSpecification](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AlarmSpecification.html): Specifies the CloudWatch alarm specification to use in an instance refresh.
+- [AutoScalingGroup](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AutoScalingGroup.html): Describes an Auto Scaling group.
+- [AutoScalingInstanceDetails](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AutoScalingInstanceDetails.html): Describes an EC2 instance associated with an Auto Scaling group.
+- [AvailabilityZoneDistribution](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AvailabilityZoneDistribution.html): Describes an Availability Zone distribution.
+- [AvailabilityZoneImpairmentPolicy](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_AvailabilityZoneImpairmentPolicy.html): Describes an Availability Zone impairment policy.
+- [BaselineEbsBandwidthMbpsRequest](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_BaselineEbsBandwidthMbpsRequest.html): Specifies the minimum and maximum for the BaselineEbsBandwidthMbps object when you specify InstanceRequirements for an Auto Scaling group.
+- [BaselinePerformanceFactorsRequest](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_BaselinePerformanceFactorsRequest.html): The baseline performance to consider, using an instance family as a baseline reference.
+- [BlockDeviceMapping](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_BlockDeviceMapping.html): Describes a block device mapping.
+- [CapacityForecast](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CapacityForecast.html): A GetPredictiveScalingForecast call returns the capacity forecast for a predictive scaling policy.
+- [CapacityReservationSpecification](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CapacityReservationSpecification.html): Describes the Capacity Reservation preference and targeting options.
+- [CapacityReservationTarget](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CapacityReservationTarget.html): The target for the Capacity Reservation.
+- [CpuPerformanceFactorRequest](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CpuPerformanceFactorRequest.html): The CPU performance to consider, using an instance family as the baseline reference.
+- [CustomizedMetricSpecification](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CustomizedMetricSpecification.html): Represents a CloudWatch metric of your choosing for a target tracking scaling policy to use with Amazon EC2 Auto Scaling.
+- [DesiredConfiguration](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_DesiredConfiguration.html): Describes the desired configuration for an instance refresh.
+- [Ebs](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_Ebs.html): Describes information used to set up an Amazon EBS volume specified in a block device mapping.
+- [EnabledMetric](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_EnabledMetric.html): Describes an enabled Auto Scaling group metric.
+- [FailedScheduledUpdateGroupActionRequest](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_FailedScheduledUpdateGroupActionRequest.html): Describes a scheduled action that could not be created, updated, or deleted.
+- [Filter](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_Filter.html): Describes a filter that is used to return a more specific list of results from a describe operation.
+- [Instance](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_Instance.html): Describes an EC2 instance.
+- [InstanceCollection](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_InstanceCollection.html): Contains details about a collection of instances launched in the Auto Scaling group.
+- [InstanceLifecyclePolicy](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_InstanceLifecyclePolicy.html): The instance lifecycle policy for the Auto Scaling group.
+- [InstanceMaintenancePolicy](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_InstanceMaintenancePolicy.html): Describes an instance maintenance policy.
+- [InstanceMetadataOptions](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_InstanceMetadataOptions.html): The metadata options for the instances.
+- [InstanceMonitoring](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_InstanceMonitoring.html): Describes whether detailed monitoring is enabled for the Auto Scaling instances.
+- [InstanceRefresh](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_InstanceRefresh.html): Describes an instance refresh for an Auto Scaling group.
+- [InstanceRefreshLivePoolProgress](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_InstanceRefreshLivePoolProgress.html): Reports progress on replacing instances that are in the Auto Scaling group.
+- [InstanceRefreshProgressDetails](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_InstanceRefreshProgressDetails.html): Reports progress on replacing instances in an Auto Scaling group that has a warm pool.
+- [InstanceRefreshWarmPoolProgress](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_InstanceRefreshWarmPoolProgress.html): Reports progress on replacing instances that are in the warm pool.
+- [InstanceRequirements](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_InstanceRequirements.html): The attributes for the instance types for a mixed instances policy.
+- [InstanceReusePolicy](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_InstanceReusePolicy.html): Describes an instance reuse policy for a warm pool.
+- [InstancesDistribution](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_InstancesDistribution.html): Use this structure to specify the distribution of On-Demand Instances and Spot Instances and the allocation strategies used to fulfill On-Demand and Spot capacities for a mixed instances policy.
+- [LaunchConfiguration](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_LaunchConfiguration.html): Describes a launch configuration.
+- [LaunchInstancesError](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_LaunchInstancesError.html): Contains details about errors encountered during instance launch attempts.
+- [LaunchTemplate](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_LaunchTemplate.html): Use this structure to specify the launch templates and instance types (overrides) for a mixed instances policy.
+- [LaunchTemplateOverrides](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_LaunchTemplateOverrides.html): Use this structure to let Amazon EC2 Auto Scaling do the following when the Auto Scaling group has a mixed instances policy:
+- [LaunchTemplateSpecification](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_LaunchTemplateSpecification.html): Describes the launch template and the version of the launch template that Amazon EC2 Auto Scaling uses to launch Amazon EC2 instances.
+- [LifecycleHook](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_LifecycleHook.html): Describes a lifecycle hook.
+- [LifecycleHookSpecification](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_LifecycleHookSpecification.html): Describes information used to specify a lifecycle hook for an Auto Scaling group.
+- [LoadBalancerState](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_LoadBalancerState.html): Describes the state of a Classic Load Balancer.
+- [LoadBalancerTargetGroupState](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_LoadBalancerTargetGroupState.html): Describes the state of a target group.
+- [LoadForecast](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_LoadForecast.html): A GetPredictiveScalingForecast call returns the load forecast for a predictive scaling policy.
+- [MemoryGiBPerVCpuRequest](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_MemoryGiBPerVCpuRequest.html): Specifies the minimum and maximum for the MemoryGiBPerVCpu object when you specify InstanceRequirements for an Auto Scaling group.
+- [MemoryMiBRequest](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_MemoryMiBRequest.html): Specifies the minimum and maximum for the MemoryMiB object when you specify InstanceRequirements for an Auto Scaling group.
+- [Metric](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_Metric.html): Represents a specific metric.
+- [MetricCollectionType](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_MetricCollectionType.html): Describes a metric.
+- [MetricDataQuery](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_MetricDataQuery.html): The metric data to return.
+- [MetricDimension](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_MetricDimension.html): Describes the dimension of a metric.
+- [MetricGranularityType](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_MetricGranularityType.html): Describes a granularity of a metric.
+- [MetricStat](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_MetricStat.html): This structure defines the CloudWatch metric to return, along with the statistic and unit.
+- [MixedInstancesPolicy](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_MixedInstancesPolicy.html): Use this structure to launch multiple instance types and On-Demand Instances and Spot Instances within a single Auto Scaling group.
+- [NetworkBandwidthGbpsRequest](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_NetworkBandwidthGbpsRequest.html): Specifies the minimum and maximum for the NetworkBandwidthGbps object when you specify InstanceRequirements for an Auto Scaling group.
+- [NetworkInterfaceCountRequest](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_NetworkInterfaceCountRequest.html): Specifies the minimum and maximum for the NetworkInterfaceCount object when you specify InstanceRequirements for an Auto Scaling group.
+- [NotificationConfiguration](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_NotificationConfiguration.html): Describes a notification.
+- [PerformanceFactorReferenceRequest](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PerformanceFactorReferenceRequest.html): Specify an instance family to use as the baseline reference for CPU performance.
+- [PredefinedMetricSpecification](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PredefinedMetricSpecification.html): Represents a predefined metric for a target tracking scaling policy to use with Amazon EC2 Auto Scaling.
+- [PredictiveScalingConfiguration](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PredictiveScalingConfiguration.html): Represents a predictive scaling policy configuration to use with Amazon EC2 Auto Scaling.
+- [PredictiveScalingCustomizedCapacityMetric](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PredictiveScalingCustomizedCapacityMetric.html): Describes a customized capacity metric for a predictive scaling policy.
+- [PredictiveScalingCustomizedLoadMetric](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PredictiveScalingCustomizedLoadMetric.html): Describes a custom load metric for a predictive scaling policy.
+- [PredictiveScalingCustomizedScalingMetric](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PredictiveScalingCustomizedScalingMetric.html): Describes a custom scaling metric for a predictive scaling policy.
+- [PredictiveScalingMetricSpecification](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PredictiveScalingMetricSpecification.html): This structure specifies the metrics and target utilization settings for a predictive scaling policy.
+- [PredictiveScalingPredefinedLoadMetric](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PredictiveScalingPredefinedLoadMetric.html): Describes a load metric for a predictive scaling policy.
+- [PredictiveScalingPredefinedMetricPair](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PredictiveScalingPredefinedMetricPair.html): Represents a metric pair for a predictive scaling policy.
+- [PredictiveScalingPredefinedScalingMetric](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_PredictiveScalingPredefinedScalingMetric.html): Describes a scaling metric for a predictive scaling policy.
+- [ProcessType](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_ProcessType.html): Describes a process type.
+- [RefreshPreferences](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_RefreshPreferences.html): Describes the preferences for an instance refresh.
+- [RetentionTriggers](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_RetentionTriggers.html): Defines the specific triggers that cause instances to be retained in a Retained state rather than terminated.
+- [RollbackDetails](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_RollbackDetails.html): Details about an instance refresh rollback.
+- [ScalingPolicy](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_ScalingPolicy.html): Describes a scaling policy.
+- [ScheduledUpdateGroupAction](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_ScheduledUpdateGroupAction.html): Describes a scheduled scaling action.
+- [ScheduledUpdateGroupActionRequest](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_ScheduledUpdateGroupActionRequest.html): Describes information used for one or more scheduled scaling action updates in a BatchPutScheduledUpdateGroupAction operation.
+- [StepAdjustment](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_StepAdjustment.html): Describes information used to create a step adjustment for a step scaling policy.
+- [SuspendedProcess](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_SuspendedProcess.html): Describes an auto scaling process that has been suspended.
+- [Tag](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_Tag.html): Describes a tag for an Auto Scaling group.
+- [TagDescription](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_TagDescription.html): Describes a tag for an Auto Scaling group.
+- [TargetTrackingConfiguration](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_TargetTrackingConfiguration.html): Represents a target tracking scaling policy configuration to use with Amazon EC2 Auto Scaling.
+- [TargetTrackingMetricDataQuery](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_TargetTrackingMetricDataQuery.html): The metric data to return.
+- [TargetTrackingMetricStat](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_TargetTrackingMetricStat.html): This structure defines the CloudWatch metric to return, along with the statistic and unit.
+- [TotalLocalStorageGBRequest](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_TotalLocalStorageGBRequest.html): Specifies the minimum and maximum for the TotalLocalStorageGB object when you specify InstanceRequirements for an Auto Scaling group.
+- [TrafficSourceIdentifier](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_TrafficSourceIdentifier.html): Identifying information for a traffic source.
+- [TrafficSourceState](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_TrafficSourceState.html): Describes the state of a traffic source.
+- [VCpuCountRequest](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_VCpuCountRequest.html): Specifies the minimum and maximum for the VCpuCount object when you specify InstanceRequirements for an Auto Scaling group.
+- [WarmPoolConfiguration](https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_WarmPoolConfiguration.html): Describes a warm pool configuration.

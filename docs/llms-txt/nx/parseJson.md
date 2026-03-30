@@ -1,0 +1,25 @@
+# Source: https://nx.dev/docs/reference/devkit/parseJson.md
+
+▸ **parseJson**\<`T`\>(`input`, `options?`): `T`
+
+Parses the given JSON string and returns the object the JSON content represents.
+By default javascript-style comments and trailing commas are allowed.
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends `object` = `any` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `input` | `string` | JSON content as string |
+| `options?` | [`JsonParseOptions`](/docs/reference/devkit/JsonParseOptions) | JSON parse options |
+
+#### Returns
+
+`T`
+
+Object the JSON content represents

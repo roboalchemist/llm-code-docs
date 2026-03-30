@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Enable SSH Warning Banner
 ---
 
 # Enable SSH Warning Banner
- 
+
 ## Description{% #description %}
 
 To enable the warning banner and ensure it is consistent across the system, add or correct the following line in `/etc/ssh/sshd_config`:
@@ -41,7 +41,7 @@ chmod 0600 /etc/ssh/sshd_config.d/00-complianceascode-hardening.conf
 LC_ALL=C sed -i "/^\s*Banner\s\+/Id" "/etc/ssh/sshd_config"
 LC_ALL=C sed -i "/^\s*Banner\s\+/Id" "/etc/ssh/sshd_config.d"/*.conf
 if [ -e "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*Banner\s\+/Id" "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf"
 else
     touch "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf"

@@ -1,0 +1,54 @@
+# Source: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkavatar/index.md
+
+---
+
+title: RtkAvatar · Cloudflare Realtime docs
+description: API reference for RtkAvatar component (React Library)
+lastUpdated: 2026-02-10T17:40:43.000Z
+chatbotDeprioritize: false
+source_url:
+  html: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkavatar/
+  md: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkavatar/index.md
+---
+
+Avatar component which renders a participant's image or their initials.
+
+## Properties
+
+| Property | Type | Required | Default | Description |
+| - | - | - | - | - |
+| `iconPack` | `IconPack` | ❌ | `defaultIconPack` | Icon pack |
+| `participant` | `Peer \| WaitlistedParticipant \| { name: string; picture: string }` | ✅ | - | Participant object |
+| `size` | `Size` | ✅ | - | Size |
+| `t` | `RtkI18n` | ❌ | `useLanguage()` | Language |
+| `variant` | `AvatarVariant` | ✅ | - | Avatar type |
+
+## Usage Examples
+
+### Basic Usage
+
+```tsx
+import { RtkAvatar } from '@cloudflare/realtimekit-react-ui';
+
+
+function MyComponent() {
+  return <RtkAvatar />;
+}
+```
+
+### With Properties
+
+```tsx
+import { RtkAvatar } from '@cloudflare/realtimekit-react-ui';
+
+
+function MyComponent() {
+  return (
+    <RtkAvatar
+      participant="example"
+      size="md"
+      variant="circular"
+    />
+  );
+}
+```

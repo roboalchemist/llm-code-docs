@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Windows syskey registry keys
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1012-query-registry](https://attack.mitre.org/techniques/T1012) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1012-query-registry](https://attack.mitre.org/techniques/T1012)
 ## Goal{% #goal %}
 
 Detects access to Windows syskey registry keys, which could indicate attempts to extract system credentials or boot keys for offline credential theft.

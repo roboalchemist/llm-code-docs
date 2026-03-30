@@ -1,0 +1,75 @@
+# Source: https://docs.snowflake.com/en/sql-reference/functions/regr_intercept.md
+
+Categories:
+:   [Aggregate functions](../functions-aggregation.md) (Linear Regression) , [Window function syntax and usage](../functions-window-syntax.md)
+
+# REGR_INTERCEPT
+
+Returns the intercept of the univariate linear regression line for non-null pairs in a group. It is computed for non-null pairs using the following
+formula:
+
+> `AVG(y)-REGR_SLOPE(y,x)*AVG(x)`
+
+Where `x` is the independent variable and `y` is the dependent variable.
+
+## Syntax
+
+**Aggregation function**
+
+```sqlsyntax
+REGR_INTERCEPT(y, x)
+```
+
+**Window function**
+
+```sqlsyntax
+REGR_INTERCEPT(y, x) OVER ( [ PARTITION BY <expr3> ] )
+```
+
+## Arguments
+
+`y`
+:   The dependent variable. This must be an expression that can be evaluated to a numeric type.
+
+`x`
+:   The independent variable. This must be an expression that can be evaluated to a numeric type.
+
+`expr3`
+:   This is the optional expression used to group rows into partitions.
+
+> **Important:**
+>
+> Note the order of the arguments; the dependent variable is first.
+
+## Returns
+
+If any of the input expressions is of type DECFLOAT, the returned type is DECFLOAT. Otherwise, the
+returned type is FLOAT.
+
+## Usage notes
+
+* DISTINCT is not supported for this function.
+
+* When this function is called as a window function, it does not support:
+
+  * An ORDER BY clause within the OVER clause.
+  * Explicit window frames.
+
+## Examples
+
+```sqlexample
+CREATE OR REPLACE TABLE aggr(k INT, v DECIMAL(10,2), v2 DECIMAL(10, 2));
+INSERT INTO aggr VALUES(1, 10, null);
+INSERT INTO aggr VALUES(2, 10, 11), (2, 20, 22), (2, 25, null), (2, 30, 35);
+
+SELECT k, REGR_INTERCEPT(v, v2) FROM aggr GROUP BY k;
+```
+
+```output
++---+-----------------------+
+| k | regr_intercept(v, v2) |
+|---+-----------------------|
+| 1 | [NULL]                |
+| 2 | 1.154734411           |
++---+-----------------------+
+```

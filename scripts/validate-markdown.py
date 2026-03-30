@@ -248,7 +248,7 @@ def main():
                         help='Limit output to N files per category')
     args = parser.parse_args()
 
-    docs_root = Path('/Users/joe/github/llm-code-docs/docs')
+    docs_root = Path(__file__).resolve().parent.parent / 'docs'
 
     # Find all markdown files
     if args.source:

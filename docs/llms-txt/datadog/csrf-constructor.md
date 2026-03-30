@@ -42,7 +42,7 @@ public class AccountHandler {
     public AccountHandler() {
         // Dangerous: Just initializing this class will insert a record
         Account acc = new Account(Name = 'Auto Created');
-        insert acc; 
+        insert acc;
     }
 }
 ```
@@ -66,6 +66,5 @@ public class MyClass {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

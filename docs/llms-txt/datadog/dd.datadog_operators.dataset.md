@@ -13,9 +13,9 @@ This dataset stores metadata information about Datadog Operator usage. The Datad
 ```
 dd.datadog_operators
 ```
-Datadog Operator Repository 
+Datadog Operator Repository
 {% icon name="icon-external-link" /%}
- 
+
 ## Fields
 
 | Title                       | ID                          | Type | Data Type | Description                                                           |

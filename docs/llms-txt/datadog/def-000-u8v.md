@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure network interfaces are assigned to appropriate zone
- 
+
 ## Description{% #description %}
 
 Firewall zones define the trust level of network connections or interfaces. Note: Changing firewall settings while connected over network can result in being locked out of the system.

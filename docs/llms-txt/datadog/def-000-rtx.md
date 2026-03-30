@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Malicious authentication attempt detected by Okta ThreatInsight
-Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1110-brute-force](https://attack.mitre.org/techniques/T1110) 
+Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1110-brute-force](https://attack.mitre.org/techniques/T1110)
 ## Goal{% #goal %}
 
 Detect malicious Okta authentication attempts based on Okta ThreatInsight.

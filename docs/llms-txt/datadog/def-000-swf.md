@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Configure SSH to use System Crypto Policy
- 
+
 ## Description{% #description %}
 
 Crypto Policies provide a centralized control over crypto algorithms usage of many packages. SSH is supported by crypto policy, but the SSH configuration may be set up to ignore it. To check that Crypto Policies settings are configured correctly, ensure that the `CRYPTO_POLICY` variable is either commented or not set at all in the `/etc/sysconfig/sshd`.

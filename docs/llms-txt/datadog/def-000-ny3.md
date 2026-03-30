@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Known compromised IAM users should not be present in the account
- 
+
 ## Description{% #description %}
 
 Ensure that no known compromised IAM users are present in your AWS account. When AWS identifies compromised AWS IAM user credentials, it attaches the managed policy [AWSCompromisedKeyQuarantineV2](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AWSCompromisedKeyQuarantineV2.html) that blocks commonly abused actions, and typically opens a support case. When this happens, it's important to make sure that the user is removed, or its credentials are disabled.

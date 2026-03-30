@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Bedrock model invocation logging should be enabled and stored in restricted-access S3 buckets
- 
+
 ## Description{% #description %}
 
 Enable Amazon Bedrock model invocation logging to monitor and audit model usage for security, compliance, and operational purposes. Ensure that logs are not stored in publicly accessible S3 buckets to prevent unauthorized access to sensitive model invocation data.

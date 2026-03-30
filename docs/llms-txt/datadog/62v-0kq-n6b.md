@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Elasticsearch domain should enable encryption
- 
+
 ## Description{% #description %}
 
 Implement encryption at rest for your Amazon Elasticsearch (ES) domain with the AWS KMS service.

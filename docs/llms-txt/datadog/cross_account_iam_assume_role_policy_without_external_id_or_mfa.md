@@ -126,9 +126,9 @@ Resources:
               "Effect": "Allow",
               "Resource": "*",
               "Sid": "",
-              "Condition": { 
-                "Bool": { 
-                    "aws:MultiFactorAuthPresent": "true" 
+              "Condition": {
+                "Bool": {
+                    "aws:MultiFactorAuthPresent": "true"
                   }
               }
             }
@@ -159,9 +159,9 @@ Resources:
                 "Effect": "Allow",
                 "Resource": "*",
                 "Sid": "",
-                "Condition": { 
-                  "Bool": { 
-                      "aws:MultiFactorAuthPresent": "true" 
+                "Condition": {
+                  "Bool": {
+                      "aws:MultiFactorAuthPresent": "true"
                     }
                 }
               }
@@ -216,9 +216,9 @@ Resources:
                 "Effect": "Allow",
                 "Resource": "*",
                 "Sid": "",
-                "Condition": { 
-                  "Bool": { 
-                      "aws:MultiFactorAuthPresent": "false" 
+                "Condition": {
+                  "Bool": {
+                      "aws:MultiFactorAuthPresent": "false"
                     }
                 }
           }

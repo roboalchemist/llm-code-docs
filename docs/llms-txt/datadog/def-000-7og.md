@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Network Firewall logging should be enabled
- 
+
 ## Description{% #description %}
 
 This control verifies whether at least one type of logging is enabled for an AWS Network Firewall.

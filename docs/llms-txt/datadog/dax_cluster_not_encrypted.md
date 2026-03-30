@@ -45,7 +45,7 @@ To secure a DAX cluster, you must include a `server_side_encryption` block with 
 resource "aws_dax_cluster" "secure_example" {
   cluster_name       = "cluster-example"
   // other configuration...
-  
+
   server_side_encryption {
     enabled = true
   }

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Compute instances should have confidential computing enabled
- 
+
 ## Description{% #description %}
 
 Google Cloud encrypts both stored and in-transit data, but customer data needs to be decrypted while it is processed. Confidential Computing is a Google technology that protects data by encrypting it while it is in use. Confidential Computing environments keep data encrypted in memory and elsewhere outside the central processing unit (CPU).

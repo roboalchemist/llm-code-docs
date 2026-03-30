@@ -50,6 +50,5 @@ foo.yield_self { |x| x.do_something }
 foo.then { |x| x.do_something }
 "FOO".then { |x| x.downcase }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

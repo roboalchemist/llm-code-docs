@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > AWS EC2 new event for EKS No
 ---
 
 # AWS EC2 new event for EKS Node Group
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detect when an AWS EKS node group makes a new API call.

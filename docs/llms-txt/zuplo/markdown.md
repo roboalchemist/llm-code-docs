@@ -1,0 +1,150 @@
+# Source: https://www.zuplo.com/docs/dev-portal/zudoku/components/markdown.md
+
+# Markdown
+
+A component for rendering markdown content with syntax highlighting and custom components.
+
+## Import
+
+```tsx
+import { Markdown } from "zudoku/components";
+```
+
+## Props
+
+```ts
+type MarkdownProps = {
+  content: string;
+  className?: string;
+  components?: Components;
+};
+```
+
+## Usage
+
+### Basic Markdown
+
+```tsx
+<Markdown content="# Hello World\n\nThis is **bold** text." />
+```
+
+### With Custom Styling
+
+```tsx
+<Markdown content="# Styled Content" className="max-w-2xl mx-auto" />
+```
+
+### With Custom Components
+
+```tsx
+const customComponents = {
+  h1: ({ children }) => <h1 className="text-4xl font-bold text-blue-600">{children}</h1>,
+  p: ({ children }) => <p className="text-gray-700 leading-relaxed">{children}</p>,
+};
+
+<Markdown content="# Custom Heading\n\nCustom paragraph styling." components={customComponents} />;
+```
+
+:::info
+
+Custom components provided via the `components` prop will merge with default MDX components,
+allowing you to override specific elements while keeping others intact.
+
+:::
+
+## Features
+
+- **GitHub Flavored Markdown**: Full GFM support including tables, strikethrough, and task lists
+- **Syntax Highlighting**: Code blocks with configurable Shiki themes
+- **Raw HTML Support**: Safely renders HTML mixed with markdown
+- **Custom Components**: Override default markdown elements with custom React components
+- **Prose Styling**: Built-in typography styles with dark mode support
+
+## Supported Markdown
+
+### Headers
+
+```markdown
+# H1 Header
+
+## H2 Header
+
+### H3 Header
+```
+
+### Emphasis
+
+<!-- prettier-ignore -->
+```markdown
+_italic_ or *italic*
+**bold** or __bold__
+**_bold italic_**
+~~strikethrough~~
+```
+
+### Lists
+
+```markdown
+- Unordered list item
+- Another item
+  - Nested item
+
+1. Ordered list item
+2. Another numbered item
+```
+
+### Code
+
+The Markdown component supports both inline code and code blocks with syntax highlighting.
+
+**Inline code** with backticks:
+
+```markdown
+Inline `code` with backticks
+```
+
+**Code blocks** with syntax highlighting:
+
+````markdown
+```javascript
+// Code block with syntax highlighting
+function hello() {
+  console.log("Hello, world!");
+}
+```
+````
+
+For advanced syntax highlighting features like line numbers, titles, and line highlighting, see:
+
+- [Code Blocks](/dev-portal/zudoku/markdown/code-blocks) - Markdown code block syntax and features
+- [Syntax Highlight](/dev-portal/zudoku/components/syntax-highlight) - React component for syntax highlighting
+
+### Links and Images
+
+```markdown
+[Link text](https://example.com) ![Alt text](image.jpg)
+```
+
+### Tables
+
+```markdown
+| Column 1 | Column 2 |
+| -------- | -------- |
+| Cell 1   | Cell 2   |
+| Cell 3   | Cell 4   |
+```
+
+## Configuration
+
+The Markdown component automatically uses:
+
+- **Remark GFM**: For GitHub Flavored Markdown features
+- **Rehype Raw**: For HTML support
+- **Shiki**: For syntax highlighting with your configured themes
+
+:::tip
+
+The Markdown component integrates with Zudoku's syntax highlighting configuration and will use the
+same themes as configured in your Dev Portal options.
+
+:::

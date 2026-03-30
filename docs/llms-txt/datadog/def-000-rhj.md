@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # 'Delete Network Security Group' activity log alert should be configured
- 
+
 ## Description{% #description %}
 
 To enhance the detection of suspicious activity and gain insights into network access changes, it is recommended to create an activity log alert specifically for the "Delete Network Security Group" event. Monitoring these events allows for quick detection and response to any unauthorized deletion of network security groups, reducing the time it takes to identify and address potential security threats.

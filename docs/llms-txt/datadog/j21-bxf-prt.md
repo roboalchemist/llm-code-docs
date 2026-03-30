@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Exfiltration attempt via network utility
-Classification:attackTactic:[TA0010-exfiltration](https://attack.mitre.org/tactics/TA0010)Technique:[T1048-exfiltration-over-alternative-protocol](https://attack.mitre.org/techniques/T1048) 
+Classification:attackTactic:[TA0010-exfiltration](https://attack.mitre.org/tactics/TA0010)Technique:[T1048-exfiltration-over-alternative-protocol](https://attack.mitre.org/techniques/T1048)
 ## What happened{% #what-happened %}
 
 `{{ @process.comm }}` was executed with arguments indicating data exfiltration.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The registry certificate files should be individually and group owned by root
-Classification:complianceFramework:cis-dockerControl:3.7 
+Classification:complianceFramework:cis-dockerControl:3.7
 ## Description{% #description %}
 
 You should verify that all the registry certificate files, usually found under the `/etc/docker/certs.d/<registry-name>` directory, are individually owned and group owned by root.
@@ -23,7 +23,7 @@ The `/etc/docker/certs.d/<registry-name>` directory contains Docker registry cer
 You should execute the command below to verify that the registry certificate files are individually owned and group owned by root:
 
 ```
-stat -c %U:%G /etc/docker/certs.d/* | grep -v root:root 
+stat -c %U:%G /etc/docker/certs.d/* | grep -v root:root
 ```
 
 This command does not return any data.

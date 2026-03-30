@@ -54,6 +54,5 @@ FROM debian:jesse
 
 COPY --from=build some stuff ./
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

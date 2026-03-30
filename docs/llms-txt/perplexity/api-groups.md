@@ -34,7 +34,7 @@ Before getting started, make sure you have:
 Once signed in, navigate to the left-hand sidebar and expand the **API** section to access your API group and related settings.
 
 <Frame>
-  <img src="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_group_location.png?fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=2f973650a8668a7ca088b6292875361c" alt="API Group Location" data-og-width="202" width="202" data-og-height="180" height="180" data-path="docs/assets/images/api_portal/api_group_location.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_group_location.png?w=280&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=f5be204cff10d93fba140c6fbd7ece8e 280w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_group_location.png?w=560&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=94970ac6773ac872f4cffa3b16e20a7e 560w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_group_location.png?w=840&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=dedffe27a08375b82455b39fa993b1a4 840w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_group_location.png?w=1100&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=70826f8ea6eb38288f925a435a5368a2 1100w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_group_location.png?w=1650&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=54a6f4972ffc44738547cb775b4fbd55 1650w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_group_location.png?w=2500&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=5d16da31ac9d77c19615cb6d3977a131 2500w" />
+  <img src="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_group_location.png?fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=2f973650a8668a7ca088b6292875361c" alt="API Group Location" width="202" height="180" data-path="docs/assets/images/api_portal/api_group_location.png" />
 </Frame>
 
 ***
@@ -62,7 +62,7 @@ To set up your organization:
     * Tax ID
 
     <Frame>
-      <img src="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_group_details.png?fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=13ffb9e9b89d4a491ec2ebce628531cc" alt="API Group Details" data-og-width="821" width="821" data-og-height="842" height="842" data-path="docs/assets/images/api_portal/api_group_details.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_group_details.png?w=280&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=fce4da0a840de2f2f64c67cd7c59b97f 280w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_group_details.png?w=560&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=a6b6faab83320d973cfcaf2635c26948 560w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_group_details.png?w=840&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=16373f18d90969cc3ddad2bc22a04165 840w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_group_details.png?w=1100&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=4f83089009d9020d7c514bcb6b903ead 1100w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_group_details.png?w=1650&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=a6719529574bbe9aea336d792cf97537 1650w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_group_details.png?w=2500&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=beaa4ce3031f670bf3bb7abaa1abeb92 2500w" />
+      <img src="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_group_details.png?fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=13ffb9e9b89d4a491ec2ebce628531cc" alt="API Group Details" width="821" height="842" data-path="docs/assets/images/api_portal/api_group_details.png" />
     </Frame>
   </Step>
 </Steps>
@@ -86,7 +86,7 @@ The Perplexity API uses a **credit-based billing system**:
 
 ### Setting Up Payment
 
-<Card title="Access Billing Dashboard" icon="credit-card" arrow="True" horizontal="True" iconType="solid" cta="Go to Billing" href="https://www.perplexity.ai/account/api/billing">
+<Card title="Access Billing Dashboard" icon="credit-card" arrow="True" horizontal="True" iconType="solid" cta="Go to Billing" href="https://console.perplexity.ai">
   Navigate directly to your API billing dashboard to manage payment methods, view usage, and configure billing settings.
 </Card>
 
@@ -95,7 +95,7 @@ The Perplexity API uses a **credit-based billing system**:
     Go to the **API Billing** tab in your API Portal.
 
     <Frame>
-      <img src="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_billing.png?fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=1097738622cc99e6118401234d2336e2" alt="API Billing" data-og-width="731" width="731" data-og-height="288" height="288" data-path="docs/assets/images/api_portal/api_billing.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_billing.png?w=280&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=bb63d5b9fcac599271b79482d759e3aa 280w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_billing.png?w=560&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=d1a09aaf698b8408b98da138cfa01a6b 560w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_billing.png?w=840&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=8f3ab18531fda72bbdb6922fd5b6ad36 840w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_billing.png?w=1100&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=eef08afac98afcc0046b9faa6cff7248 1100w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_billing.png?w=1650&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=0387f3b0c79b56533b3a1812bb9e3ee5 1650w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_billing.png?w=2500&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=353a3786a9c7e2f1bb1b034bf7c17f06 2500w" />
+      <img src="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/api_billing.png?fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=1097738622cc99e6118401234d2336e2" alt="API Billing" width="731" height="288" data-path="docs/assets/images/api_portal/api_billing.png" />
     </Frame>
   </Step>
 
@@ -111,7 +111,7 @@ The Perplexity API uses a **credit-based billing system**:
     Enable automatic credit top-up to avoid service interruptions.
 
     <Frame>
-      <img src="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/auto_reload.png?fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=8098883c0cee70e2aad31ec6098c8a23" alt="Auto Reload" data-og-width="708" width="708" data-og-height="227" height="227" data-path="docs/assets/images/api_portal/auto_reload.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/auto_reload.png?w=280&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=f43c7930bc417b993d087d763b1117f4 280w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/auto_reload.png?w=560&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=705ec834f1c85c3e317f82594f336600 560w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/auto_reload.png?w=840&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=55c431281d45b612a5d41b9ce7799459 840w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/auto_reload.png?w=1100&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=fd945476bf8dbf7832882319e408a39b 1100w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/auto_reload.png?w=1650&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=be7b717cb7cc332e022665d39ded42fc 1650w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/auto_reload.png?w=2500&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=24d52402614936988e8f8f1a18e55068 2500w" />
+      <img src="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/auto_reload.png?fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=8098883c0cee70e2aad31ec6098c8a23" alt="Auto Reload" width="708" height="227" data-path="docs/assets/images/api_portal/auto_reload.png" />
     </Frame>
 
     <Warning>
@@ -134,7 +134,7 @@ API keys are your credentials for accessing the Perplexity API. Each key:
 * **Should be kept secure** and never shared publicly
 
 <Info>
-  You'll need to include your API key in the Authorization header of every API request: `Authorization: Bearer YOUR_API_KEY`
+  You'll need to include your API key in the Authorization header of every API request: `Authorization: Bearer $PERPLEXITY_API_KEY`
 </Info>
 
 ### Creating an API Key
@@ -148,7 +148,7 @@ API keys are your credentials for accessing the Perplexity API. Each key:
     Click **+ Create Key** to generate a new API key.
 
     <Frame>
-      <img src="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/generate_api_keys.png?fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=0897ceb61302037b3630d6fabaa080a9" alt="Generate API Keys" data-og-width="737" width="737" data-og-height="158" height="158" data-path="docs/assets/images/api_portal/generate_api_keys.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/generate_api_keys.png?w=280&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=2f3b84f9032536451c24c516cbb5df03 280w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/generate_api_keys.png?w=560&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=11ef51e27c539a0dcadc22833bf41fd6 560w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/generate_api_keys.png?w=840&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=c86da88e0b966a6ece8d277c2a763be8 840w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/generate_api_keys.png?w=1100&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=c84411adb640b92abad76d4542f07b8d 1100w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/generate_api_keys.png?w=1650&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=ffea12fe75485804dc48a2bd00046617 1650w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/generate_api_keys.png?w=2500&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=0839dc4d344e91653602e87c986c172d 2500w" />
+      <img src="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/generate_api_keys.png?fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=0897ceb61302037b3630d6fabaa080a9" alt="Generate API Keys" width="737" height="158" data-path="docs/assets/images/api_portal/generate_api_keys.png" />
     </Frame>
   </Step>
 
@@ -174,7 +174,7 @@ Admins can invite team members to the organization with specific roles: **Admin*
     Click **+ Add Member**.
 
     <Frame>
-      <img src="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/click_on_add_member.png?fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=b747a3ffd121f74eeb36621bd605449e" alt="Click on Add Member" data-og-width="746" width="746" data-og-height="154" height="154" data-path="docs/assets/images/api_portal/click_on_add_member.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/click_on_add_member.png?w=280&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=5729b4821c95115276336ea5122e76d1 280w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/click_on_add_member.png?w=560&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=df51113b91b5b3f45f67dddd63683b8a 560w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/click_on_add_member.png?w=840&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=dd4046d5c51e229e74df213279302174 840w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/click_on_add_member.png?w=1100&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=efce0acd601042d770b121dc8b6ed809 1100w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/click_on_add_member.png?w=1650&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=f168d3a41f00dd51bca79c338a2bd743 1650w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/click_on_add_member.png?w=2500&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=fbcf348ebe93198a42afc71475a60656 2500w" />
+      <img src="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/click_on_add_member.png?fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=b747a3ffd121f74eeb36621bd605449e" alt="Click on Add Member" width="746" height="154" data-path="docs/assets/images/api_portal/click_on_add_member.png" />
     </Frame>
   </Step>
 
@@ -182,7 +182,7 @@ Admins can invite team members to the organization with specific roles: **Admin*
     Enter the user's email address and click **Invite**.
 
     <Frame>
-      <img src="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/enter_new_member_email.png?fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=fa913ab5e5c00e5180a76fa2bc39dfb1" alt="Enter New Member Email" data-og-width="549" width="549" data-og-height="258" height="258" data-path="docs/assets/images/api_portal/enter_new_member_email.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/enter_new_member_email.png?w=280&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=c9a598e2ffed96e81b6f9be8e511f907 280w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/enter_new_member_email.png?w=560&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=829d23a52cb20fff8e44313cabf7f700 560w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/enter_new_member_email.png?w=840&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=d31dcab570671e2e0822de3bba7030a8 840w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/enter_new_member_email.png?w=1100&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=fd77be40463afce8695edfb1a4824e6f 1100w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/enter_new_member_email.png?w=1650&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=cd24f1ad534d66024a22f67cfa43e200 1650w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/enter_new_member_email.png?w=2500&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=6731b844f7e94da1ae71c09f291c0c54 2500w" />
+      <img src="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/enter_new_member_email.png?fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=fa913ab5e5c00e5180a76fa2bc39dfb1" alt="Enter New Member Email" width="549" height="258" data-path="docs/assets/images/api_portal/enter_new_member_email.png" />
     </Frame>
   </Step>
 
@@ -200,7 +200,7 @@ Admins can invite team members to the organization with specific roles: **Admin*
 Use the dropdown to filter your list of team members by role.
 
 <Frame>
-  <img src="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/filter_members_by_role.png?fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=b2b794439ae3486730727655433a3517" alt="Filter Members by Role" data-og-width="379" width="379" data-og-height="236" height="236" data-path="docs/assets/images/api_portal/filter_members_by_role.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/filter_members_by_role.png?w=280&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=2218a7ab464979a8b0b37cf381f88a3a 280w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/filter_members_by_role.png?w=560&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=90e1a1f77d0bb3b3379c26eed5a6fd7e 560w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/filter_members_by_role.png?w=840&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=572ad5fcdcd3a83ad5de2345faa6e9b1 840w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/filter_members_by_role.png?w=1100&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=7afcc219cc7f2d2aee8a8ac09c6e024c 1100w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/filter_members_by_role.png?w=1650&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=0ec5bdccbea212eb2b7cf487743cb4af 1650w, https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/filter_members_by_role.png?w=2500&fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=fb066f54d1b56626b1e06f865a457674 2500w" />
+  <img src="https://mintcdn.com/perplexity/qLnd99sJyTqU60Ni/docs/assets/images/api_portal/filter_members_by_role.png?fit=max&auto=format&n=qLnd99sJyTqU60Ni&q=85&s=b2b794439ae3486730727655433a3517" alt="Filter Members by Role" width="379" height="236" data-path="docs/assets/images/api_portal/filter_members_by_role.png" />
 </Frame>
 
 ### Roles
@@ -234,10 +234,10 @@ You can track billing for each of your API keys by following these steps:
 
 <Steps>
   <Step title="Navigate to Usage Metrics">
-    Navigate to the [API section](https://www.perplexity.ai/account/api) of your **Settings** and click on **Usage Metrics**
+    Navigate to the [API Platform console](https://console.perplexity.ai) and open the **Billing** page to view usage metrics
 
     <Frame>
-      <img src="https://mintlify.s3.us-west-1.amazonaws.com/perplexity/guides/assets/pricing/view_dashboard.png" alt="Navigate to dashboard" />
+      <img src="https://mintcdn.com/perplexity/cUI4ejkq6KwLBQXj/docs/assets/images/pricing/view_dashboard.png?fit=max&auto=format&n=cUI4ejkq6KwLBQXj&q=85&s=e6096b7db13381aacfe15983732cc1b5" alt="Navigate to dashboard" width="206" height="191" data-path="docs/assets/images/pricing/view_dashboard.png" />
     </Frame>
   </Step>
 
@@ -245,7 +245,7 @@ You can track billing for each of your API keys by following these steps:
     Select **Invoice history** > **Invoices**
 
     <Frame>
-      <img src="https://mintlify.s3.us-west-1.amazonaws.com/perplexity/guides/assets/pricing/view_invoice_history.png" alt="View invoice history" />
+      <img src="https://mintcdn.com/perplexity/cUI4ejkq6KwLBQXj/docs/assets/images/pricing/view_invoice_history.png?fit=max&auto=format&n=cUI4ejkq6KwLBQXj&q=85&s=1d49d5dee2dc0fa6d743723ffb4c97d1" alt="View invoice history" width="1344" height="381" data-path="docs/assets/images/pricing/view_invoice_history.png" />
     </Frame>
   </Step>
 
@@ -253,7 +253,7 @@ You can track billing for each of your API keys by following these steps:
     Click on any invoice to view details
 
     <Frame>
-      <img src="https://mintlify.s3.us-west-1.amazonaws.com/perplexity/guides/assets/pricing/view_spend_per_api_key.png" alt="View spend per API key" />
+      <img src="https://mintcdn.com/perplexity/cUI4ejkq6KwLBQXj/docs/assets/images/pricing/view_spend_per_api_key.png?fit=max&auto=format&n=cUI4ejkq6KwLBQXj&q=85&s=8c64a3a152d6de8db8c1c7d45b44b4e2" alt="View spend per API key" width="1274" height="575" data-path="docs/assets/images/pricing/view_spend_per_api_key.png" />
     </Frame>
   </Step>
 
@@ -263,3 +263,6 @@ You can track billing for each of your API keys by following these steps:
     * The 4 characters in parentheses are the last 4 characters of your API key
   </Step>
 </Steps>
+
+
+Built with [Mintlify](https://mintlify.com).

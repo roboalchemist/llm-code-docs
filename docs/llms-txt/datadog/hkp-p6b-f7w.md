@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # S3 buckets should have 'Block Public Access' enabled
- 
+
 ## Description{% #description %}
 
 Amazon S3 provides the `Block public access` bucket setting and the `Block public access` account setting to help restrict unintended public access to resources. By default, S3 buckets and objects are created without public access, but someone with sufficient permissions can enable public access at the bucket or object level, often unexpectedly. When you enable these settings, they prevent buckets, objects, or entire accounts from becoming publicly accessible, reducing the risk of accidental or malicious data exposure. Blocking public access should be an organizational decision based on data sensitivity, least privilege, and use case. Note that if a bucket is configured to host a static website, the **Block public access** setting must be disabled to serve the site.

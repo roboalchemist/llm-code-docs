@@ -1,196 +1,197 @@
 # Source: https://developer.zendesk.com/documentation/integration-services/
 
-Zendesk Integration Services | Zendesk Developer Docs zendev_horizontal zendev_horizontal Documentation API Reference Search / Integration Services Home 
-- 
-- 
-## Integration Services 
+# Zendesk Integration Services | Zendesk Developer Docs zendev_horizontal zendev_horizontal Documentation API Reference Search / Integration Services Home
 
-- Introduction 
+-
+-
 
-- 
-- 
-### Getting Started 
+## Integration Services
 
-- Understanding Zendesk Integration Services 
+- Introduction
 
-- Anatomy of a ZIS bundle 
+-
+-
 
-- Understanding ZIS capabilities for building an integration 
+### Getting Started
 
-- ZIS Frequently Asked Questions (FAQs) 
+- Understanding Zendesk Integration Services
 
-- 
-- 
-### Developer Guide 
+- Anatomy of a ZIS bundle
 
-- Developing private ZIS integrations 
+- Understanding ZIS capabilities for building an integration
 
-- ZIS flow states 
-- Understanding flow states 
+- ZIS Frequently Asked Questions (FAQs)
 
-- Action state 
+-
+-
 
-- ZIS built-in actions 
+### Developer Guide
 
-- ZIS custom actions 
+- Developing private ZIS integrations
 
-- Choice state 
+- ZIS flow states
+- Understanding flow states
 
-- Fail state 
+- Action state
 
-- Map state 
+- ZIS built-in actions
 
-- Pass state 
+- ZIS custom actions
 
-- Succeed state 
+- Choice state
 
-- Wait state 
+- Fail state
 
-- Flow states retry and error handling 
+- Map state
 
-- Encoding URL Parameters 
+- Pass state
 
-- jq cheat sheet 
+- Succeed state
 
-- ZIS configs 
+- Wait state
 
-- Connections 
-- Understanding connections 
+- Flow states retry and error handling
 
-- Creating and managing OAuth connections 
+- Encoding URL Parameters
 
-- ZIS links 
+- jq cheat sheet
 
-- Security best practices for ZIS integrations 
+- ZIS configs
 
-- Fixing common ZIS errors 
+- Connections
+- Understanding connections
 
-- Glossary 
+- Creating and managing OAuth connections
 
-- 
-- 
-### Integration design guidelines 
+- ZIS links
 
-- Introduction 
+- Security best practices for ZIS integrations
 
-- Understanding the admin user journey 
+- Fixing common ZIS errors
 
-- Designing your installation and OAuth flow for a private integration 
+- Glossary
 
-- Designing configuration pages 
+-
+-
 
-- Designing an uninstall flow 
+### Integration design guidelines
 
-- 
-- 
-### Zendesk Integration Services examples 
+- Introduction
 
-- ZIS action: Converting a number to a string 
+- Understanding the admin user journey
 
-- ZIS action: Getting the current date 
+- Designing your installation and OAuth flow for a private integration
 
-- ZIS bundle: Adding a Choice state 
+- Designing configuration pages
 
-- ZIS bundle: Creating an HTTP request body using jq 
+- Designing an uninstall flow
 
-- ZIS bundle: Parsing and sending an event to an external API 
+-
+-
 
-- ZIS bundle: Posting a message in Slack when the ticket status changes 
+### Zendesk Integration Services examples
 
-- 
-- 
-### Zendesk Integration Services tutorials 
+- ZIS action: Converting a number to a string
 
-- Getting started 
-- Building your first ZIS integration 
+- ZIS action: Getting the current date
 
-- Using a ZIS action to make authenticated API requests 
+- ZIS bundle: Adding a Choice state
 
-- Using conditional branching in a ZIS flow 
+- ZIS bundle: Creating an HTTP request body using jq
 
-- Transforming data in a ZIS flow 
+- ZIS bundle: Parsing and sending an event to an external API
 
-- Iterating over a collection in a ZIS flow 
+- ZIS bundle: Posting a message in Slack when the ticket status changes
 
-- Using ZIS Links 
+-
+-
 
-- Using ZIS inbound webhooks 
+### Zendesk Integration Services tutorials
 
-- Kicking off a ZIS flow with user activity events 
+- Getting started
+- Building your first ZIS integration
 
-- Using JWTs to verify requests from ZIS 
+- Using a ZIS action to make authenticated API requests
 
-- Zendesk app as an admin interface 
-- Part 1: Build a Zendesk app with OAuth 
+- Using conditional branching in a ZIS flow
 
-- Part 2: Connect to Slack 
+- Transforming data in a ZIS flow
 
-- Part 3: Add a configuration UI 
+- Iterating over a collection in a ZIS flow
 
-- Part 4: Install the integration 
+- Using ZIS Links
 
-## On this page 
+- Using ZIS inbound webhooks
 
-- What is Zendesk Integration Services (ZIS)? 
+- Kicking off a ZIS flow with user activity events
 
-- Getting started 
+- Using JWTs to verify requests from ZIS
 
-- Reference information 
+- Zendesk app as an admin interface
+- Part 1: Build a Zendesk app with OAuth
 
-# Zendesk Integration Services 
-Build and run an integration 
-## On this page 
+- Part 2: Connect to Slack
 
-- What is Zendesk Integration Services (ZIS)? 
+- Part 3: Add a configuration UI
 
-- Getting started 
+- Part 4: Install the integration
 
-- Reference information 
+## On this page
 
-## What is Zendesk Integration Services (ZIS)? 
+- What is Zendesk Integration Services (ZIS)?
 
-ZIS is a set of Zendesk-hosted web services that let you integrate Zendesk with other systems and applications. ZIS powers Conversational Data Orchestration, a feature set for automating workflows based on events. 
+- Getting started
 
-ZIS reduces or eliminates the need to build and host middleware for integration features such as: 
+- Reference information
 
-- Ingesting webhooks from an external system 
+# Zendesk Integration Services
 
-- Executing business logic in response to events 
+Build and run an integration
 
-- Making API calls into Zendesk and the external system 
+## What is Zendesk Integration Services (ZIS)?
 
-- Obtaining and managing authentication tokens 
+ZIS is a set of Zendesk-hosted web services that let you integrate Zendesk with other systems and applications. ZIS powers Conversational Data Orchestration, a feature set for automating workflows based on events.
 
-- Storing configuration settings 
+ZIS reduces or eliminates the need to build and host middleware for integration features such as:
 
-- Storing metadata about related objects in Zendesk and the external system 
+- Ingesting webhooks from an external system
 
-ZIS simplifies the process to build and run private integrations. 
+- Executing business logic in response to events
 
-## Getting started 
+- Making API calls into Zendesk and the external system
 
-Understanding Zendesk Integration Services 
-Learn about ZIS services and the resources used to build an integration. 
+- Obtaining and managing authentication tokens
 
-Anatomy of a ZIS bundle 
-Learn how a ZIS bundle is a declaration of your resources in an integration. 
+- Storing configuration settings
 
-Building your first ZIS integration 
-Get hands-on. This tutorial shows you how to build your first ZIS integration from scratch and run it. 
+- Storing metadata about related objects in Zendesk and the external system
 
-Designing an integration 
-Learn about designing your installation and OAuth flow for your integration. 
+ZIS simplifies the process to build and run private integrations.
 
-ZIS Frequently Asked Questions 
-Find answers to common questions about ZIS. 
+## Getting started
 
-Introduction to ZIS 
-Learn the key features of ZIS in this free, on-demand training course. 
+Understanding Zendesk Integration Services
+Learn about ZIS services and the resources used to build an integration.
 
-## Reference information 
+Anatomy of a ZIS bundle
+Learn how a ZIS bundle is a declaration of your resources in an integration.
 
-Refer to the ZIS APIs to build your integration and the Trigger events schema when designing an integration to respond to Zendesk events. 
+Building your first ZIS integration
+Get hands-on. This tutorial shows you how to build your first ZIS integration from scratch and run it.
 
-ZIS APIs 
-Trigger events reference 
+Designing an integration
+Learn about designing your installation and OAuth flow for your integration.
+
+ZIS Frequently Asked Questions
+Find answers to common questions about ZIS.
+
+Introduction to ZIS
+Learn the key features of ZIS in this free, on-demand training course.
+
+## Reference information
+
+Refer to the ZIS APIs to build your integration and the Trigger events schema when designing an integration to respond to Zendesk events.
+
+ZIS APIs
+Trigger events reference
 Join our developer community Forum Blog Slack Zendesk 181 Fremont Street, 17th Floor, San Francisco, California 94105 Privacy Notice Zendesk Developer Terms System Status

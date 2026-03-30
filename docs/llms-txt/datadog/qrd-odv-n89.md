@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # IAM server certificate should be renewed 30 days before expiration
- 
+
 ## Description{% #description %}
 
 Ensure that your IAM service SSL/TLS certificates are renewed 30 days prior to their validity period ending.

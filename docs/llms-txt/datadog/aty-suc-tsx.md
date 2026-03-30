@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Docker daemon configuration file should be audited if applicable
-Classification:complianceFramework:cis-dockerControl:1.2.10 
+Classification:complianceFramework:cis-dockerControl:1.2.10
 ## Description{% #description %}
 
 Audit `/etc/docker/daemon.json`, if applicable.

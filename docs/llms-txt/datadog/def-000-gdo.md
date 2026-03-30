@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable Mounting of cramfs
 ---
 
 # Disable Mounting of cramfs
- 
+
 ## Description{% #description %}
 
 To configure the system to prevent the `cramfs` kernel module from being loaded, add the following line to the file `/etc/modprobe.d/cramfs.conf`:
@@ -35,15 +35,15 @@ The following script can be run on the host to remediate the issue.
 if dpkg-query --show --showformat='${db:Status-Status}' 'linux-base' 2>/dev/null | grep -q '^installed$'; then
 
 if LC_ALL=C grep -q -m 1 "^install cramfs" /etc/modprobe.d/cramfs.conf ; then
-	
-	sed -i 's#^install cramfs.*#install cramfs /bin/false#g' /etc/modprobe.d/cramfs.conf
+
+    sed -i 's#^install cramfs.*#install cramfs /bin/false#g' /etc/modprobe.d/cramfs.conf
 else
-	echo -e "\n# Disable per security requirements" >> /etc/modprobe.d/cramfs.conf
-	echo "install cramfs /bin/false" >> /etc/modprobe.d/cramfs.conf
+    echo -e "\n# Disable per security requirements" >> /etc/modprobe.d/cramfs.conf
+    echo "install cramfs /bin/false" >> /etc/modprobe.d/cramfs.conf
 fi
 
 if ! LC_ALL=C grep -q -m 1 "^blacklist cramfs$" /etc/modprobe.d/cramfs.conf ; then
-	echo "blacklist cramfs" >> /etc/modprobe.d/cramfs.conf
+    echo "blacklist cramfs" >> /etc/modprobe.d/cramfs.conf
 fi
 
 else

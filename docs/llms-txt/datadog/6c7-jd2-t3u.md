@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Log files for the API server should be rotated at 100 MB
-Classification:complianceFramework:cis-kubernetesControl:1.2.25 
+Classification:complianceFramework:cis-kubernetesControl:1.2.25
 ## Description{% #description %}
 
 Rotate log files on reaching 100 MB or as appropriate.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure user has access to a large number of resources
- 
+
 ## Description{% #description %}
 
 To mitigate the impact of credential exposure or compromise, role assignments should be scoped down to the least scope of access needed to perform their responsibilities. This rule identifies when a user is assigned a role that has overly broad access to resources within a tenant. Datadog considers access large when the number of resources a user has access to is greater that 40% of the total resource count of the tenant.

@@ -1,15 +1,11 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/promise/prefer-catch.md
 
----
-url: /docs/guide/usage/linter/rules/promise/prefer-catch.md
----
-
-### What it does
+## What it does
 
 Prefer `catch` to `then(a, b)` and `then(null, b)`. This rule disallows the passing of an
 argument into the second parameter of `then` calls for handling promise errors.
 
-### Why is this bad?
+## Why is this bad?
 
 A `then` call with two arguments can make it more difficult to recognize that a catch error
 handler is present. Another issue with using the second argument in `then` calls is that
@@ -21,7 +17,7 @@ For example on first glance it may appear that `prom.then(fn1, fn2)` is equivale
 preferring explicit `catch` calls over passing an argument to the second parameter of
 `then` calls.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

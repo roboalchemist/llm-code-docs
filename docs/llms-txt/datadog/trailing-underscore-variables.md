@@ -67,6 +67,5 @@ one, _two = [1, 2, 3, 4, 5]
 one, _two, = [1, 2, 3, 4, 5]
 one, *_rest = [1, 2, 3, 4, 5]
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Etcd should be configured with TLS encryption
- 
+
 ## Description{% #description %}
 
 TLS encryption for the etcd service should be configured.
@@ -23,6 +23,6 @@ Etcd is a highly-available key value store used by Kubernetes deployments for pe
 Follow the [etcd service documentation](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/) and configure TLS encryption. Then, edit the etcd pod specification file `/etc/kubernetes/manifests/etcd.yaml` on the master node and set the following parameters:
 
 ```
---cert-file=</path/to/ca-file> 
+--cert-file=</path/to/ca-file>
 --key-file=</path/to/key-file>
 ```

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # OpenSearch domains should have the latest software update installed
- 
+
 ## Description{% #description %}
 
 This control checks whether an Amazon OpenSearch Service domain has the latest software update installed.

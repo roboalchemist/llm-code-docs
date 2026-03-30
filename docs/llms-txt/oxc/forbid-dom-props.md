@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/forbid-dom-props.md
 
----
-url: /docs/guide/usage/linter/rules/react/forbid-dom-props.md
----
-
-### What it does
+## What it does
 
 This rule prevents passing of props to elements. This rule only applies to DOM Nodes (e.g. ) and not Components (e.g. ). The list of forbidden props can be customized with the forbid option.
 
-### Why is this bad?
+## Why is this bad?
 
 This rule checks all JSX elements and verifies that no forbidden props are used on DOM Nodes. This rule is off by default.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -34,9 +30,9 @@ Examples of **correct** code for this rule:
 <Hello id={{color: 'red'}} />
 ```
 
-### Options
+## Options
 
-#### forbid
+### forbid
 
 An array of strings, with the names of props that are forbidden. The default value of this option \[].
 Each array element can either be a string with the property name or object specifying the property name, an optional custom message, and a DOM nodes disallowed list (e.g. )

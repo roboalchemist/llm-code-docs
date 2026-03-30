@@ -46,6 +46,7 @@ The `numSentences` parameter for highlights has been replaced with `maxCharacter
       }
     }'
   ```
+
 </CodeGroup>
 
 ## Content Freshness: maxAgeHours
@@ -59,7 +60,7 @@ The new `maxAgeHours` parameter in `/contents` gives you fine-grained control ov
 This replaces the boolean `livecrawl` options with more precise age-based control.
 
 <CodeGroup>
-  ```python Python theme={null}
+  ```python
   # Get content no older than 6 hours
   result = exa.get_contents(
     urls = ["tesla.com"],
@@ -68,7 +69,7 @@ This replaces the boolean `livecrawl` options with more precise age-based contro
   )
   ```
 
-  ```javascript JavaScript theme={null}
+  ```javascript
   // Get content no older than 6 hours
   const result = await exa.getContents(
       urls,
@@ -76,7 +77,7 @@ This replaces the boolean `livecrawl` options with more precise age-based contro
   );
   ```
 
-  ```bash cURL theme={null}
+  ```bash
   curl -X POST https://api.exa.ai/contents \
     -H "x-api-key: YOUR_API_KEY" \
     -H "Content-Type: application/json" \
@@ -85,6 +86,7 @@ This replaces the boolean `livecrawl` options with more precise age-based contro
       "maxAgeHours": 6
     }'
   ```
+
 </CodeGroup>
 
 ## Exa MCP Free Tier Limits

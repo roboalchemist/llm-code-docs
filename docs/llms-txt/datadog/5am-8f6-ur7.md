@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Security scanner detected
 ---
 
 # Security scanner detected
-Tactic:[TA0043-reconnaissance](https://attack.mitre.org/tactics/TA0043)Technique:[T1595-active-scanning](https://attack.mitre.org/techniques/T1595) 
+Tactic:[TA0043-reconnaissance](https://attack.mitre.org/tactics/TA0043)Technique:[T1595-active-scanning](https://attack.mitre.org/techniques/T1595)
 ### Goal{% #goal %}
 
 Detect when a security scanner is performed on your organization's services.

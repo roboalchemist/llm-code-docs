@@ -87,6 +87,5 @@ def create_successful_logged_in_response(request):
     )
     return response
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

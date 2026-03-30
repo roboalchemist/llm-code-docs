@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > User ran a command on Azure 
 ---
 
 # User ran a command on Azure Compute
-Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1651-cloud-administration-command](https://attack.mitre.org/techniques/T1651) 
+Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1651-cloud-administration-command](https://attack.mitre.org/techniques/T1651)
 ## Goal{% #goal %}
 
 Detect when a user runs a command on an Azure Virtual Machine through the Azure CLI or Portal.

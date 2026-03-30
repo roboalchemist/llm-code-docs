@@ -7,13 +7,13 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify ownership of System L
 ---
 
 # Verify ownership of System Login Banner
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/etc/issue`, run the command:
 
 ```
-$ sudo chown root /etc/issue 
+$ sudo chown root /etc/issue
 ```
 
 ## Rationale{% #rationale %}

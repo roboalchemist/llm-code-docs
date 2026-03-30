@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Azure Bastion host should ex
 ---
 
 # Azure Bastion host should exist
- 
+
 ## Description{% #description %}
 
 Azure Bastion provides secure and seamless RDP/SSH connectivity to your virtual machines directly in the Azure portal over SSL. When you connect through Azure Bastion, your virtual machines do not need a public IP address, agent, or special client software.

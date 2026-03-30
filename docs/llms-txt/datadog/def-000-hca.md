@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall kea Package
 ---
 
 # Uninstall kea Package
- 
+
 ## Description{% #description %}
 
 If the system does not need to act as a DHCP server, the kea package can be uninstalled.

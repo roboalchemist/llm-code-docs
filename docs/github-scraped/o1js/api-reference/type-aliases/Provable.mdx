@@ -1,0 +1,26 @@
+```ts
+type Provable<T, TValue> = Provable<T, TValue>;
+```
+
+Defined in: [lib/provable/provable.ts:46](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/provable.ts#L46)
+
+`Provable<T>` is the general interface for provable types in o1js.
+
+`Provable<T>` describes how a type `T` is made up of [Field](../classes/Field.mdx) elements and "auxiliary" (non-provable) data.
+
+`Provable<T>` is the required input type in several methods in o1js.
+One convenient way to create a `Provable<T>` is using `Struct`.
+
+All built-in provable types in o1js ([Field](../classes/Field.mdx), [Bool](../classes/Bool.mdx), etc.) are instances of `Provable<T>` as well.
+
+Note: These methods are meant to be used by the library internally and are not directly when writing provable code.
+
+## Type Parameters
+
+### T
+
+`T`
+
+### TValue
+
+`TValue` = `any`

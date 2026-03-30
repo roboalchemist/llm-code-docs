@@ -7,13 +7,13 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Owner on crontab
 ---
 
 # Verify Owner on crontab
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/etc/crontab`, run the command:
 
 ```
-$ sudo chown root /etc/crontab 
+$ sudo chown root /etc/crontab
 ```
 
 ## Rationale{% #rationale %}

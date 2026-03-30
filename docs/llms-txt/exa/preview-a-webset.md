@@ -1,10 +1,12 @@
 # Source: https://exa.ai/docs/websets/api/websets/preview-a-webset.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Preview a webset
+
+## # Preview a webset
 
 > Preview how a search query will be decomposed before creating a webset. This endpoint performs the same query analysis that happens during webset creation, allowing you to see the detected entity type, generated search criteria, and available enrichment columns in advance.
 

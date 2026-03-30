@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EventBridge custom event buses should have a resource-based policy attached
- 
+
 ## Description{% #description %}
 
 This control verifies whether a resource-based policy is attached to an Amazon EventBridge custom event bus. The control fails if the event bus lacks a resource-based policy.

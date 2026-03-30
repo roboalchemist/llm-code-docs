@@ -447,5 +447,5 @@ spec:
       volumes:
         - name: rootdir
           hostPath:
-            path: /    
+            path: /
 ```

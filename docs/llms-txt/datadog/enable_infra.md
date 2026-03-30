@@ -30,7 +30,7 @@ For a Datadog agent installed using the one-line installation command:
    -   events: false
    -   service_checks: false
    -   sketches: false
-   
+
      apm_config:
        enabled: true
        error_tracking_standalone:

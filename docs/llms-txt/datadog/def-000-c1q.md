@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Require Re-Authentication When Using the sudo Command
- 
+
 ## Description{% #description %}
 
 The sudo `timestamp_timeout` tag sets the amount of time sudo password prompt waits. The default `timestamp_timeout` value is 5 minutes. The timestamp_timeout should be configured by making sure that the `timestamp_timeout` tag exists in `/etc/sudoers` configuration file or any sudo configuration snippets in `/etc/sudoers.d/`. If the value is set to an integer less than 0, the user's time stamp will not expire and the user will not have to re-authenticate for privileged actions until the user's session is terminated.
@@ -50,7 +50,7 @@ if /usr/sbin/visudo -qcf /etc/sudoers; then
             sed -Ei "s/(^[[:blank:]]*Defaults.*timestamp_timeout[[:blank:]]*=)[[:blank:]]*[-]?\w+(.*$)/\1${var_sudo_timestamp_timeout}\2/" /etc/sudoers
         fi
     fi
-    
+
     # Check validity of sudoers and cleanup bak
     if /usr/sbin/visudo -qcf /etc/sudoers; then
         rm -f /etc/sudoers.bak

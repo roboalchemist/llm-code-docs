@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Command injection attempt de
 ---
 
 # Command injection attempt detected
-Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190) 
+Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190)
 ### Goal{% #goal %}
 
 Detect Command Injection attempts on web services executing shell commands. Such security activity generally indicates that an attacker is trying to exploit a potential command injection vulnerability and execute malicious code on your server.

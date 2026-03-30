@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Group Who Owns /etc/at.allow file
- 
+
 ## Description{% #description %}
 
 If `/etc/at.allow` exists, it must be group-owned by `root`. To properly set the group owner of `/etc/at.allow`, run the command:

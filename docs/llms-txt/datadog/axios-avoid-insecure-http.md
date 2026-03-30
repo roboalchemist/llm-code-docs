@@ -51,6 +51,5 @@ const dataFromLocalhost = axios.get('http://localhost:8080')
 const dataFromLocalhostIpv4 = axios.get('http://127.0.0.1/foo')
 const dataFromLocalhostIpv6 = axios.get('http://[::1]:1234/')
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

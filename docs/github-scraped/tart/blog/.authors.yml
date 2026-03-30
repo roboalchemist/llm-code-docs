@@ -1,0 +1,11 @@
+# Source: https://github.com/cirruslabs/tart/blob/main/docs/blog/.authors.yml
+
+authors:
+  edigaryev:
+    name: Nikolay Edigaryev
+    description: Creator
+    avatar: https://github.com/edigaryev.png
+  fkorotkov:
+    name: Fedor Korotkov
+    description: Creator
+    avatar: https://github.com/fkorotkov.png

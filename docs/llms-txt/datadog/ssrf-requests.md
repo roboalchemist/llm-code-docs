@@ -110,6 +110,5 @@ def resource(resource_id):
     foo = requests.get(f"https://api.service.ext/get/by/id/{sanitized_resource_id}")
     return foo
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

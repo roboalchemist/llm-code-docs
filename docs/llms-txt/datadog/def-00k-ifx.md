@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Kubelet should use TLS certificate client authentication
- 
+
 ## Description{% #description %}
 
 Kubelet authentication should use certificates. The connections from the API server to the kubelet are used for fetching logs for pods, attaching (through kubectl) to running pods, and using the kubelet's port-forwarding functionality. These connections terminate at the kubelet's HTTPS endpoint.

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Okta user reported suspiciou
 ---
 
 # Okta user reported suspicious activity
-Classification:attack 
+Classification:attack
 ## Goal{% #goal %}
 
 Detect when an Okta user reports suspicious activity in response to an end user security notification.

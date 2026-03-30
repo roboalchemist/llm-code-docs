@@ -108,6 +108,5 @@ fun connectLDAPSecurely(username: String, password: String) {
     val context = InitialDirContext(env)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

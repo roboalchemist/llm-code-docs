@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Anomalous number of Google Cloud Compute GPU virtual machines created
-Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1496-resource-hijacking](https://attack.mitre.org/techniques/T1496) 
+Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1496-resource-hijacking](https://attack.mitre.org/techniques/T1496)
 ## Goal{% #goal %}
 
 Detect when an attempt to create a GPU-based virtual machine (VM) instance in Google Compute Engine occurs.

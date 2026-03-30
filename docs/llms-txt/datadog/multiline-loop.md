@@ -40,13 +40,13 @@ for (i in 1..10)
     println(i)
 
 var i = 0
-while (i < 5) 
+while (i < 5)
   println(i)
   i++
 
-do 
+do
     val foo = bar()
-while (foo != null) 
+while (foo != null)
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}
@@ -60,12 +60,11 @@ var i = 0
 while (i < 5) {
   println(i)
   i++
-} 
+}
 
 do {
     val foo = bar()
-} while (foo != null) 
+} while (foo != null)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

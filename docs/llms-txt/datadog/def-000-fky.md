@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Tor client IP address identified within Azure environment
-Classification:attackTactic:[TA0011-command-and-control](https://attack.mitre.org/tactics/TA0011)Technique:[T1573-encrypted-channel](https://attack.mitre.org/techniques/T1573) 
+Classification:attackTactic:[TA0011-command-and-control](https://attack.mitre.org/tactics/TA0011)Technique:[T1573-encrypted-channel](https://attack.mitre.org/techniques/T1573)
 ## Goal{% #goal %}
 
 Detect when Tor client activity is seen in Azure logs.

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Set Deny For Failed Password
 ---
 
 # Set Deny For Failed Password Attempts
- 
+
 ## Description{% #description %}
 
 The Ubuntu 20.04 operating system must lock an account after - at most - 5 consecutive invalid access attempts.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS Management Console authentication failures should be monitored
- 
+
 ## Description{% #description %}
 
 Real-time monitoring of API calls can be achieved by directing CloudTrail logs to CloudWatch logs and establishing corresponding metric filters and alarms. It is recommended to set up a metric filter and alarm for failed console authentication attempts to decrease the lead time in detecting brute force attempts and identify source IPs for event correlation.

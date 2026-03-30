@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-object-as-default-parameter.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-object-as-default-parameter.md
----
-
-### What it does
+## What it does
 
 Disallow the use of an object literal as a default value for a parameter.
 
-### Why is this bad?
+## Why is this bad?
 
 Default parameters should not be passed to a function through an object literal. The `foo = {a: false}` parameter works fine if only used with one option. As soon as additional options are added, you risk replacing the whole `foo = {a: false, b: true}` object when passing only one option: `{a: true}`. For this reason, object destructuring should be used instead.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

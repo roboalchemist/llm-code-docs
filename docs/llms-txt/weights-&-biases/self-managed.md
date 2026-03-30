@@ -1,0 +1,61 @@
+# Source: https://docs.wandb.ai/platform/hosting/hosting-options/self-managed.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.wandb.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+> Deploy W&B Self-Managed on cloud or on-premises infrastructure
+
+# W&B Self-Managed deployment overview
+
+<Tip>
+  W\&B recommends fully managed deployment options such as [W\&B Multi-tenant Cloud](/platform/hosting/hosting-options/multi_tenant_cloud) or [W\&B Dedicated Cloud](/platform/hosting/hosting-options/dedicated-cloud) deployment types. W\&B fully managed services are simple and secure to use, with minimum to no configuration required.
+</Tip>
+
+Deploy W\&B Server on your [AWS, Google Cloud, or Azure cloud account](#deploy-wb-server-within-Self-Managed-cloud-accounts) or within your [on-premises infrastructure](#deploy-wb-server-in-on-prem-infrastructure).
+
+Your IT/DevOps/MLOps team is responsible for:
+
+* Provisioning your deployment.
+* Securing your infrastructure in accordance with your organization's policies, [Security Technical Implementation Guidelines (STIG)](https://en.wikipedia.org/wiki/Security_Technical_Implementation_Guide), if applicable.
+* Maintaining compliance with your organization's regulatory requirements, such as [Service and Organization Controls (SOC) 2 Type 2](https://www.aicpa-cima.com/topic/audit-assurance/audit-and-assurance-greater-than-soc-2) and [Health Insurance Portability and Accountability Act of 1996 (HIPAA)](https://www.hhs.gov/hipaa/for-professionals/index.html).
+* Managing upgrades and applying patches.
+* Continuously maintaining your W\&B Self-Managed W\&B deployment.
+
+<Info>
+  If your organization is subject to regulatory requirements, consider deploying on [W\&B Dedicated Cloud](/platform/hosting/hosting-options/dedicated-cloud), which is maintained by W\&B.
+
+  * W\&B Dedicated Cloud's hosting platform meets the requirements of SOC 2 Type 2.
+  * When configured appropriately, a W\&B Dedicated Cloud deployment complies with HIPAA.
+
+  Refer to the [W\&B Security Portal](https://security.wandb.ai/) to request more information.
+</Info>
+
+## About the W\&B Kubernetes Operator
+
+Use the **W\&B Kubernetes Operator** to deploy W\&B Self-Managed. The operator simplifies deploying, administering, troubleshooting, and scaling W\&B.
+
+The operator connects to a central [deploy.wandb.ai](https://deploy.wandb.ai) server to request the latest specification changes for a given release channel and apply them. Updates are received as long as the license is valid. [Helm](https://helm.sh/) is used both to install the operator and for the operator to manage the W\&B Kubernetes stack. The deployment consists of multiple pods, one per service; each pod name is prefixed with `wandb-`.
+
+Configuration follows a hierarchy: **Release Channel Values** (defaults from W\&B), **User Input Values** (overrides via the System Console), and **Custom Resource Values** (your spec overrides both). For details, see [Deploy W\&B with Kubernetes Operator](/platform/hosting/self-managed/operator).
+
+* To deploy W\&B Self-Managed in public cloud or on-premises infrastructure, see [Deploy W\&B with Kubernetes Operator](/platform/hosting/self-managed/operator).
+* To deploy W\&B Self-Managed to a custom cloud platform that is not AWS, the requirements are similar to the requirements for deploying in [on-prem infrastructure](#deploy-wb-server-in-on-prem-infrastructure).
+* To deploy W\&B Self-Managed in air-gapped environments, see [Deploy on Air-Gapped Kubernetes](/platform/hosting/self-managed/on-premises-deployments/kubernetes-airgapped).
+
+You can optionally [configure rate limits](/platform/hosting/self-managed/rate-limits) on your instance to maintain stability. See [Rate limits](/platform/hosting/self-managed/rate-limits) for default values and notification behavior.
+
+## Required infrastructure
+
+All deployment options depend on the following infrastructure:
+
+* Kubernetes
+* MySQL 8 database
+* Amazon S3-compatible object storage
+* Redis cache
+
+See [Requirements](/platform/hosting/self-managed/requirements) for details. W\&B can provide recommendations for the different components and provide guidance through the installation process.
+
+## Obtain your W\&B Server license
+
+You need a W\&B Server license before deploying. For step-by-step instructions, see [License](/platform/hosting/self-managed/requirements#license) on the Requirements page.

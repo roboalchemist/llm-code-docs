@@ -15,7 +15,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1036-masquerading](https://attack.mitre.org/techniques/T1036) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1036-masquerading](https://attack.mitre.org/techniques/T1036)
 ## Goal{% #goal %}
 
 Detects outgoing emails that violate Data Loss Prevention (DLP) policies, indicating potential accidental data exposure, policy misconfiguration, or intentional data exfiltration.

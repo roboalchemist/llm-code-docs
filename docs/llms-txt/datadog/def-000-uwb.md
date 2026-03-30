@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # An EKS Cluster's Kubelet should rotate server certificates automatically
- 
+
 ## Description{% #description %}
 
 Server certificates should be rotated. This ensures there is no downtime due to expired certificates.

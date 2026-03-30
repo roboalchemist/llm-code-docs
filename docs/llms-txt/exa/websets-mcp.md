@@ -1,7 +1,9 @@
 # Source: https://exa.ai/docs/reference/websets-mcp.md
 
 > ## Documentation Index
+
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+
 > Use this file to discover all available pages before exploring further.
 
 # Websets MCP
@@ -21,11 +23,7 @@ Websets MCP connects AI assistants to Exa's Websets API for building and enrichi
 
 Connect to Websets MCP:
 
-```
-https://websetsmcp.exa.ai/mcp?exaApiKey=YOUR_EXA_API_KEY
-```
-
-<Tabs>
+```text
   <Tab title="Cursor">
     [![Install with one click](https://img.shields.io/badge/Install_with_one_click-Cursor-000000?style=flat-square\&logoColor=white)](https://cursor.com/en/install-mcp?name=websets\&config=eyJuYW1lIjoid2Vic2V0cyIsInR5cGUiOiJodHRwIiwidXJsIjoiaHR0cHM6Ly93ZWJzZXRzbWNwLmV4YS5haS9tY3AifQ==)
 
@@ -39,10 +37,7 @@ https://websetsmcp.exa.ai/mcp?exaApiKey=YOUR_EXA_API_KEY
         }
       }
     }
-    ```
-  </Tab>
-
-  <Tab title="VS Code">
+    ```text
     [![Install with one click](https://img.shields.io/badge/Install_with_one_click-VS_Code-0098FF?style=flat-square\&logo=visualstudiocode\&logoColor=white)](https://vscode.dev/redirect/mcp/install?name=websets\&config=%7B%22type%22%3A%22http%22%2C%22url%22%3A%22https%3A%2F%2Fwebsetsmcp.exa.ai%2Fmcp%22%7D)
 
     Or add to `.vscode/mcp.json`:
@@ -56,18 +51,12 @@ https://websetsmcp.exa.ai/mcp?exaApiKey=YOUR_EXA_API_KEY
         }
       }
     }
-    ```
-  </Tab>
-
-  <Tab title="Claude Code">
+    ```text
     Run in terminal:
 
     ```bash  theme={null}
     claude mcp add --transport http websets "https://websetsmcp.exa.ai/mcp?exaApiKey=YOUR_EXA_API_KEY"
-    ```
-  </Tab>
-
-  <Tab title="Claude Desktop">
+    ```text
     Add to your Claude Desktop config file:
 
     **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
@@ -83,10 +72,7 @@ https://websetsmcp.exa.ai/mcp?exaApiKey=YOUR_EXA_API_KEY
         }
       }
     }
-    ```
-  </Tab>
-
-  <Tab title="Windsurf">
+    ```text
     Add to `~/.codeium/windsurf/mcp_config.json`:
 
     ```json  theme={null}
@@ -97,10 +83,7 @@ https://websetsmcp.exa.ai/mcp?exaApiKey=YOUR_EXA_API_KEY
         }
       }
     }
-    ```
-  </Tab>
-
-  <Tab title="Other">
+    ```text
     For other MCP clients that support remote MCP:
 
     ```json  theme={null}
@@ -111,11 +94,7 @@ https://websetsmcp.exa.ai/mcp?exaApiKey=YOUR_EXA_API_KEY
         }
       }
     }
-    ```
-
-    If your client doesn't support remote MCP servers directly:
-
-    ```json  theme={null}
+    ```json
     {
       "mcpServers": {
         "websets": {
@@ -124,9 +103,7 @@ https://websetsmcp.exa.ai/mcp?exaApiKey=YOUR_EXA_API_KEY
         }
       }
     }
-    ```
-  </Tab>
-</Tabs>
+    ```text
 
 <br />
 
@@ -201,25 +178,10 @@ https://websetsmcp.exa.ai/mcp?exaApiKey=YOUR_EXA_API_KEY
 <Accordion title="Usage Examples" icon="magnifying-glass">
   **Create a Webset**
 
-  ```
-  Create a webset of AI startups in San Francisco founded after 2020. Find 10 companies and enrich with CEO name and funding amount.
-  ```
+  ```text
 
-  **Add More Entities**
+  ```text
 
-  ```
-  Search for 5 more AI companies that have raised Series A funding.
-  ```
+  ```text
 
-  **Extract Data**
-
-  ```
-  Add an enrichment to extract employee count for each company.
-  ```
-
-  **Set Up Monitoring**
-
-  ```
-  Create a monitor to check for new AI startups every Monday at 9am.
-  ```
-</Accordion>
+  ```text

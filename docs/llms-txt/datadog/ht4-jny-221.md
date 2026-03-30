@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Local File Inclusion (LFI) attack attempts
-Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190) 
+Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190)
 ### Goal{% #goal %}
 
 Detect serious local file inclusion (LFI) attempts on routes with errors related to file inclusion. Such security activity generally indicates that an attacker is trying to exploit a potential LFI vulnerability.

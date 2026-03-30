@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Infrastructure double encryption for PostgreSQL Database Server should be enabled
- 
+
 ## Description{% #description %}
 
 It is recommended to enable 'infrastructure encryption' when creating Azure Database for PostgreSQL servers. This additional layer of encryption occurs at the hardware level, ensuring that data is encrypted even before it is accessed. This prevents interception of data in motion and protects data at rest in system resources. Enabling 'infrastructure encryption' also secures database backups. To achieve the highest level of security, it is advised to use a Customer Managed asymmetric RSA 2048 bit key stored in Azure Key Vault for key-based encryption.

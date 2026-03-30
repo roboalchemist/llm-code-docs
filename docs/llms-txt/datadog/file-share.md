@@ -35,25 +35,25 @@ Use [the Cloudcraft API](https://developers.cloudcraft.co/) to programmatically 
 
 ```json
 {
-	"type": "azurefiles",
-	"id": "70cc1d82-30e1-4c62-bd29-634f72cd21cf",
-	"region": "eastus",
-	"mapPos": [2,6],
-	"tier": "Standard",
-	"redundancy": "LRS",
-	"dataGb": 0,
-	"snapshotsGb": 0,
-	"metadataGb": 0,
-	"color": {
-		"isometric": null,
-		"2d": null
-	},
-	"accentColor": {
-		"isometric": null,
-		"2d": null
-	},
-	"link": "https://azure.microsoft.com/products/storage/files/",
-	"locked": true
+    "type": "azurefiles",
+    "id": "70cc1d82-30e1-4c62-bd29-634f72cd21cf",
+    "region": "eastus",
+    "mapPos": [2,6],
+    "tier": "Standard",
+    "redundancy": "LRS",
+    "dataGb": 0,
+    "snapshotsGb": 0,
+    "metadataGb": 0,
+    "color": {
+        "isometric": null,
+        "2d": null
+    },
+    "accentColor": {
+        "isometric": null,
+        "2d": null
+    },
+    "link": "https://azure.microsoft.com/products/storage/files/",
+    "locked": true
 }
 ```
 

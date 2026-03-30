@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1554-compromise-host-software-binary](https://attack.mitre.org/techniques/T1554) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1554-compromise-host-software-binary](https://attack.mitre.org/techniques/T1554)
 ## Goal{% #goal %}
 
 Detects the presence of Azure Hybrid Connection Manager service running on a Windows system, which could indicate an attacker establishing covert remote connectivity.

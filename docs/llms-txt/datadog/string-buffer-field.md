@@ -37,7 +37,7 @@ StringBuffers and StringBuilders have the potential to grow significantly, which
 
 ```java
 public class Foo {
-    
+
     private StringBuffer buffer1;    // potential memory leak as an instance variable;
     private String buffer2;
     private StringBuilder buffer3;    // potential memory leak as an instance variable;
@@ -49,13 +49,12 @@ public class Foo {
 
 ```java
 public class Foo {
-    
+
     public void method() {
         StringBuffer buffer;
     }
-    
+
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

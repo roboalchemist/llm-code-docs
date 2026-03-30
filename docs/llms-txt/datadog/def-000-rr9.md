@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # GitHub PAT impossible travel event correlated with new user agent observed
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detects GitHub Personal Access Token (PAT) abuse through correlation of impossible travel patterns with new user agent activity. Identifies potential credential compromise when a PAT is used from geographically impossible locations within a short timeframe alongside previously unseen user agents.

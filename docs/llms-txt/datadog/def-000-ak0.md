@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Fortinet Fortimanager alert
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attack 
+Classification:attack
 ## Goal{% #goal %}
 
 Detects security threats identified by Fortinet FortiManager UTM security products including malware infections, intrusion attempts, network anomalies, and data loss prevention violations.

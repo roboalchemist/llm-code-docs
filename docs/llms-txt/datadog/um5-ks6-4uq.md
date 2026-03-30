@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Mongo injections attempts
 ---
 
 # Mongo injections attempts
-Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190) 
+Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190)
 ### Goal{% #goal %}
 
 Detect MongoDB injection attempts on web services accessing data from Mongo databases. Such security activity generally indicates that an attacker is trying to exploit a potential MongoDB injection vulnerability or steal sensitive data.

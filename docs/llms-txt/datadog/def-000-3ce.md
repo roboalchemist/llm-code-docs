@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Install libselinux Package
 ---
 
 # Install libselinux Package
- 
+
 ## Description{% #description %}
 
 The `libselinux` package can be installed with the following command:

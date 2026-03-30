@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure AD sign in from AADinternals default user agent
-Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1059-command-and-scripting-interpreter](https://attack.mitre.org/techniques/T1059) 
+Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1059-command-and-scripting-interpreter](https://attack.mitre.org/techniques/T1059)
 ## Goal{% #goal %}
 
 Detect when the [AADInternals](https://aadinternals.com/aadinternals/#introduction) default user agent is seen in Azure AD sign-in logs.

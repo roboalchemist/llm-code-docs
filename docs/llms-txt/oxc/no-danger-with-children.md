@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/no-danger-with-children.md
 
----
-url: /docs/guide/usage/linter/rules/react/no-danger-with-children.md
----
-
-### What it does
+## What it does
 
 Disallows when a DOM element is using both `children` and `dangerouslySetInnerHTML` properties.
 
-### Why is this bad?
+## Why is this bad?
 
 React will throw a warning if this rule is ignored and both `children` and `dangerouslySetInnerHTML` are used.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

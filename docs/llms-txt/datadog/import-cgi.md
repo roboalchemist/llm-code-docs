@@ -46,14 +46,13 @@ While the `cgi` package can still be suitable for specific scenarios where compa
 package main
 
 import (
-	"net/http/cgi"
-	"net/http"
+    "net/http/cgi"
+    "net/http"
  )
 
 func main() {
-	cgi.Serve(http.NotFoundHandler())
+    cgi.Serve(http.NotFoundHandler())
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Remove Rsh Trust Files
 ---
 
 # Remove Rsh Trust Files
- 
+
 ## Description{% #description %}
 
 The files `/etc/hosts.equiv` and `~/.rhosts` (in each user's home directory) list remote hosts and users that are trusted by the local system when using the rshd daemon. To remove these files, run the following command to delete them from any location:

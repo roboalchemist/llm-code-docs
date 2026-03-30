@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The docker.service file should have auditing configured if applicable
-Classification:complianceFramework:cis-dockerControl:1.2.6 
+Classification:complianceFramework:cis-dockerControl:1.2.6
 ## Description{% #description %}
 
 Audit the `docker.service` if applicable.

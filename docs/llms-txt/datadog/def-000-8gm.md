@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify nftables Service is E
 ---
 
 # Verify nftables Service is Enabled
- 
+
 ## Description{% #description %}
 
 The nftables service allows for the loading of nftables rulesets during boot, or starting on the nftables service The `nftables` service can be enabled with the following command:

@@ -40,29 +40,29 @@ Use [the Cloudcraft API](https://developers.cloudcraft.co/) to programmatically 
 
 ```json
 {
-	"type": "azureappgw",
-	"id": "900c9832-31d6-460a-9065-762fe63ec83c",
-	"resourceId": "/subscriptions/c74c5de5-0170-405b-954a-e6491cf0c838/resourceGroups/CLOUDCRAFT/providers/Microsoft.Network/applicationGateways/DocTeamGateway",
-	"region": "eastus",
-	"mapPos": [1, 8],
-	"tier": "Standard",
-	"size": "Small",
-	"instances": 2,
-	"computeUnits": 0,
-	"persistentConnections": 0,
-	"throughput": 0,
-	"dataProcessed": 0,
-	"outboundDataTransfer": 0,
-	"color": {
-		"isometric": "#CEE0F5",
-		"2d": null
-	},
-	"accentColor": {
-		"isometric": "#0078D4",
-		"2d": null
-	},
-	"link": "https://azure.microsoft.com/products/application-gateway",
-	"locked": true
+    "type": "azureappgw",
+    "id": "900c9832-31d6-460a-9065-762fe63ec83c",
+    "resourceId": "/subscriptions/c74c5de5-0170-405b-954a-e6491cf0c838/resourceGroups/CLOUDCRAFT/providers/Microsoft.Network/applicationGateways/DocTeamGateway",
+    "region": "eastus",
+    "mapPos": [1, 8],
+    "tier": "Standard",
+    "size": "Small",
+    "instances": 2,
+    "computeUnits": 0,
+    "persistentConnections": 0,
+    "throughput": 0,
+    "dataProcessed": 0,
+    "outboundDataTransfer": 0,
+    "color": {
+        "isometric": "#CEE0F5",
+        "2d": null
+    },
+    "accentColor": {
+        "isometric": "#0078D4",
+        "2d": null
+    },
+    "link": "https://azure.microsoft.com/products/application-gateway",
+    "locked": true
 }
 ```
 

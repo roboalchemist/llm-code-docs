@@ -60,6 +60,5 @@ Block comments should contain asterisks that visually form a vertical line. This
          * As is this comment.
          */
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

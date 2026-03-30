@@ -58,6 +58,5 @@ $str = "The document is ready for  revew...";
 $changed = preg_replace("/\s*revew/", " review", $str);
 $changed = preg_replace("/\.{3}/", "!", $changed);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

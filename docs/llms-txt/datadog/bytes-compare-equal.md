@@ -68,7 +68,7 @@ By using `bytes.Equal(x, y)` instead of `bytes.Compare(x, y) == 0`, you can writ
 ```go
 func main() {
     if bytes.Compare(x, y) == 0 {
-        
+
     }
 }
 ```
@@ -78,10 +78,9 @@ func main() {
 ```go
 func main() {
     if bytes.Equal(x, y) {
-        
+
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

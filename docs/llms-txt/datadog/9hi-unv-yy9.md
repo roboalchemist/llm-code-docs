@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Docker daemon should only be controlled by root and Docker group
-Classification:complianceFramework:cis-dockerControl:1.2.2 
+Classification:complianceFramework:cis-dockerControl:1.2.2
 ## Description{% #description %}
 
 The Docker daemon requires access to the Docker socket which is, by default, owned by the user `root` and the group `docker`.

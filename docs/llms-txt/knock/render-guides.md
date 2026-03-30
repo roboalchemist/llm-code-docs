@@ -1,0 +1,147 @@
+# Source: https://docs.knock.app/in-app-ui/guides/render-guides.md
+
+---
+title: Rendering guides
+description: How to render guides to power your in-product messaging.
+tags: ["guides", "rendering", "lifecycle", "marketing", "tours"]
+section: Building in-app UI > Guides
+---
+
+Once you've [created a guide](/in-app-ui/guides/create-guides), you'll need to render it in your product using the [guides API](/api-reference/users/guides/). This involves fetching the guide data from Knock and displaying it to your users based on their eligibility. You can render guides using Knock's client-side SDKs, which provide built-in state management and helper methods, or by directly calling the [guides API](/api-reference/users/guides) to build a custom implementation. Below we cover both approaches and how to filter guides to show the right content to your users.
+
+## Fetching guides
+
+There are two ways to fetch and render guides: using Knock's client-side SDKs, which provide built-in state management and helper methods, or by directly calling the [guides API](/api-reference/users/guides) to build a custom implementation. Our [step-by-step React example](/in-app-ui/react/headless/guide) demonstrates how to incorporate the SDK's guide provider into your application and render guide components to your users.
+
+### Client-side SDKs
+
+Knock exposes a set of client SDKs that provide helpers and logic to make it easier to work with guides in your product. Simplify your guides implementation by leveraging the SDK's guides provider and associated methods for accessing the fetched guides and their steps.
+
+<FeaturesMatrix
+  columns={[
+    { name: "React", href: "/in-app-ui/react/sdk/overview" },
+    { name: "React Native", href: "/in-app-ui/react-native/sdk/overview" },
+    { name: "JavaScript", href: "/in-app-ui/javascript/sdk/overview" },
+  ]}
+  rowHeaderWidth="46%"
+  rowGroups={[
+    {
+      name: "Features",
+      rows: [
+        {
+          name: "Pre-built UI components",
+          columnsYes: ["React"],
+          columnsNo: ["React Native", "JavaScript"],
+        },
+        {
+          name: "Hooks for building custom UI components",
+          columnsYes: ["React", "React Native"],
+          columnsNo: ["JavaScript"],
+        },
+        {
+          name: "State management for guides",
+          columnsYes: ["React", "React Native"],
+          columnsNo: ["JavaScript"],
+        },
+        {
+          name: "Low-level API bindings and state management for building custom UI components",
+          columnsYes: ["JavaScript"],
+          columnsNo: ["React", "React Native"],
+        },
+      ],
+    },
+  ]}
+/>
+
+#### Key SDK resources
+
+When working with Knock's SDKs to fetch and render guides, you'll use the following components and hooks for React:
+
+- [**KnockGuideProvider**](/in-app-ui/react/sdk/components/knock-guide-provider). Provider component that fetches guides and manages guide state.
+- [**useGuide**](/in-app-ui/react/sdk/hooks/use-guide). Hook to fetch a single guide by type or key.
+- [**useGuides**](/in-app-ui/react/sdk/hooks/use-guides). Hook to fetch multiple guides.
+- [**useGuideContext**](/in-app-ui/react/sdk/hooks/use-guide-context). Hook to access the guide client for advanced use cases.
+
+<Callout
+  type="info"
+  title="Additional SDK support."
+  text={
+    <>
+      We're working on adding guides support to more of our client SDKs. Please
+      reach out to us at{" "}
+      <a href="mailto:support@knock.app?subject=Guides%20request">
+        support@knock.app
+      </a>{" "}
+      if lack of support in a specific SDK is preventing you from adopting
+      guides.
+    </>
+  }
+/>
+
+### Guides API
+
+You can also directly call the [guides API](/api-reference/users/guides) to fetch guides and render them in your product. This approach gives you flexibility and full control over the rendering process, but requires you to build your own state management and UI components. We highly recommend using the SDKs as they provide a robust set of tools and helpers for working with guides.
+
+## Filtering guides
+
+You can fetch guides by either a `type` or a `key` to select a guide from the fetched set of guides. Here's how to think about choosing between these two selectors:
+
+| Selector | Filters by         | When to use                                                               |
+| -------- | ------------------ | ------------------------------------------------------------------------- |
+| `key`    | Guide `key`        | Render a specific instance of a guide.                                    |
+| `type`   | Message type `key` | Render any guide of this [message type](/in-app-ui/guides/message-types). |
+
+<br />
+
+When multiple guides exist for a single `type` (e.g, a generic "Banner" component that could be used multiple times across many guides), Knock will prioritize guides chronologically, starting with the oldest guide. You can control the order of prioritzation by [ordering your guides](/in-app-ui/guides/order-guides) in the Knock dashboard.
+
+## Frequently asked questions
+
+<AccordionGroup>
+  <Accordion title="When should I use useGuide vs useGuides?">
+  The [`useGuide`](/in-app-ui/react/sdk/hooks/use-guide) hook returns a single guide at a time, subject to eligibility criteria, throttling rules, and ordering. This is ideal for components that should only display one guide, like a banner or modal that occupies a specific location in your UI.
+
+The [`useGuides`](/in-app-ui/react/sdk/hooks/use-guides) hook fetches one or more guides, subject to eligibility criteria, in the configured order. This is useful for components that can display multiple guides at once, like a list of changelog cards or announcements in a sidebar. The `useGuides` hook is designed to return multiple guides, so it does not apply throttling rules.
+
+  </Accordion>
+  <Accordion title="How do I render multiple guides in a single component?">
+    To render multiple guides in a single component, use the [`useGuides`](/in-app-ui/react/sdk/hooks/use-guides) hook instead of [`useGuide`](/in-app-ui/react/sdk/hooks/use-guide). The plural `useGuides` hook returns an array of guides that you can iterate over to render multiple instances.
+
+    ```tsx title="Rendering multiple guides"
+    import { useGuides } from "@knocklabs/react";
+
+    const ChangelogList = () => {
+      const { guides } = useGuides({ type: "sidebar-changelog-card" });
+
+      return (
+        <div>
+          {guides.map((guide) => (
+            <div key={guide.key}>
+              <h3>{guide.steps[0].content.title}</h3>
+              <p>{guide.steps[0].content.body}</p>
+            </div>
+          ))}
+        </div>
+      );
+    };
+    ```
+
+    This approach is useful for displaying lists of announcements, changelog entries, or other content where multiple guides should be visible simultaneously. You can filter guides by `type` to get all guides using a specific message type, or omit the filter to get all eligible guides for the user.
+
+    **Note:** `useGuides` returns guides ordered per the priority set in the dashboard, but it bypasses [throttling rules](/in-app-ui/guides/order-guides#guide-throttling) since it's intended to return multiple guides.
+
+  </Accordion>
+  <Accordion title="Why am I seeing guides this user isn't eligible for in the response?">
+    The `display_sequence` array in the API response shows all active guides, not just the guides currently eligible for the user. This includes:
+
+    - Guides the user has already seen or interacted with.
+    - Guides that don't match the current page's [activation rules](/in-app-ui/guides/create-guides#activation).
+    - Guides where [targeting conditions](/in-app-ui/guides/create-guides#targeting) aren't met.
+    - Guides that are active in the group but filtered out by your query parameters.
+
+    The `display_sequence` represents the priority order for all guides in the group. The actual rendered guides depend on eligibility criteria including targeting conditions, activation location rules, [ordering and throttling rules](/in-app-ui/guides/order-guides), engagement status, and any filters you've applied via the `type` query parameter.
+
+    To see which guides are actually eligible to be rendered, check the `entries` array in the API response, which contains only the guides that match all criteria for the current user and context.
+
+  </Accordion>
+</AccordionGroup>

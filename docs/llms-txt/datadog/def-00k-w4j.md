@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # The kubelet server certificate rotation on the controller-manager should be enabled
- 
+
 ## Description{% #description %}
 
 Kubelet server certificate rotation should be enabled on the controller manager. This causes the kubelet to request a serving certificate after bootstrapping its client credentials, as well as rotating the certificate when its existing credentials expire. This automated periodic rotation ensures that the there are no downtimes due to expired certificates, thus addressing availability in the CIA security triad.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # A new Kubernetes admission controller was created
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1578-modify-cloud-compute-infrastructure](https://attack.mitre.org/techniques/T1578) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1578-modify-cloud-compute-infrastructure](https://attack.mitre.org/techniques/T1578)
 ## Goal{% #goal %}
 
 Identify when a new Kubernetes [admission controller](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/) is created in the cluster.

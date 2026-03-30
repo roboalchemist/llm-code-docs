@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify All Account Password Hashes are Shadowed
- 
+
 ## Description{% #description %}
 
 If any password hashes are stored in `/etc/passwd` (in the second field, instead of an `x` or `*`), the cause of this misconfiguration should be investigated. The account should have its password reset and the hash should be properly stored, or the account should be deleted entirely.

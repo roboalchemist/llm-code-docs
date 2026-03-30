@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Compute instances should be launched with Shielded VM enabled
- 
+
 ## Description{% #description %}
 
 To defend against advanced threats and ensure that the boot loader and firmware on your VMs are signed and untampered, Datadog recommends launching compute instances with Shielded VM enabled.

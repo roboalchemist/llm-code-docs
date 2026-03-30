@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # The Kubernetes API server should use secure authentication methods and avoid using token-based authentication
- 
+
 ## Description{% #description %}
 
 Token-based authentication should not be used. Token-based authentication uses static tokens to authenticate requests to the API server. The tokens are stored in clear-text in a file on the API server, and cannot be revoked or rotated without restarting the API server.

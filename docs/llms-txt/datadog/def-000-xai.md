@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # GCP Compute Engine Default Service Account has overly permissive access to resources in the project
- 
+
 ## Description{% #description %}
 
 The Compute Engine default service account is associated with your Google Cloud project and attached by default to Compute Engine virtual machines, unless you explicitly assign another service account on virtual machine creation, to provide credentials to applications running on the instance.

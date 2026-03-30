@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # VPCs should have interface endpoint for SSM
- 
+
 ## Description{% #description %}
 
 Virtual private clouds (VPCs) should have interface VPC endpoints configured for AWS Systems Manager (SSM) to enable private access to SSM services. AWS PrivateLink enables customers to access services hosted on AWS while keeping all network traffic within the AWS network, which prevents traffic from service users from traversing the internet.

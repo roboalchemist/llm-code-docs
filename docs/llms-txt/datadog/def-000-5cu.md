@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure AD new verified domain added to tenant
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detect when an account adds a new domain to the tenant. This may indicate an attacker preparing a domain to later use in a trusted domain (also known as federated) attack.

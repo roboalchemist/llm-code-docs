@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Suricata baseline deviation from expected IP requests
-Classification:anomaly 
+Classification:anomaly
 ## Goal{% #goal %}
 
 Detect an unusually high number of unique IP addresses connecting to a server, which could indicate a Distributed Denial-of-Service (DDoS) attack, a scanning attempt, or other forms of malicious activities.

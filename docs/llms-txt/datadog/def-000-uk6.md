@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure should be configured with a security contact email
- 
+
 ## Description{% #description %}
 
 Microsoft Defender for Cloud notifies subscription owners via email about high-severity alerts. An additional security contact email address should be provided for prompt notification about security alerts. This allows the organization's security team to be aware of potential risks.
@@ -25,4 +25,4 @@ Microsoft Defender for Cloud notifies subscription owners via email about high-s
 1. Click **Email notifications**.
 1. Enter a valid security contact email address (or multiple addresses separated by commas) in the **additional email addresses** field.
 1. Click **Save**
-1. 
+1.

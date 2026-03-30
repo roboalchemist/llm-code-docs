@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Network ACLs should enforce inbound traffic restrictions
- 
+
 ## Description{% #description %}
 
 Investigate AWS Network Access Control Lists (NACLs) for rules that enable multiple open ports and limit ingress traffic access based on port range.
@@ -38,5 +38,5 @@ In the `replace-network-acl-entry.sh` file:
            --protocol tcp
            --port-range From=000,To=000
            --rule-action allow
-       
+
 ```

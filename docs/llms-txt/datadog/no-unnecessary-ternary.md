@@ -54,6 +54,5 @@ const baz = quux !== 3;
 const notFoo = !foo;
 call(foo || 1);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

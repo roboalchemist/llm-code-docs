@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/no-unknown-property.md
 
----
-url: /docs/guide/usage/linter/rules/react/no-unknown-property.md
----
-
-### What it does
+## What it does
 
 Disallow usage of unknown DOM properties.
 
-### Why is this bad?
+## Why is this bad?
 
 You can use unknown property name that has no effect.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -40,7 +36,7 @@ const IconButton = <div aria-label="bar" />;
 
 This rule accepts a configuration object with the following properties:
 
-### ignore
+## ignore
 
 type: `string[]`
 
@@ -48,7 +44,7 @@ default: `[]`
 
 List of properties to ignore.
 
-### requireDataLowercase
+## requireDataLowercase
 
 type: `boolean`
 

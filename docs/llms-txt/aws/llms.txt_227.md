@@ -1,0 +1,171 @@
+# Source: https://docs.aws.amazon.com/codepipeline/latest/APIReference/llms.txt
+
+# CodePipeline API Reference
+
+> Overview
+
+- [Welcome](https://docs.aws.amazon.com/codepipeline/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/codepipeline/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/codepipeline/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_Operations.html)
+
+- [AcknowledgeJob](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_AcknowledgeJob.html): Returns information about a specified job and whether that job has been received by the job worker.
+- [AcknowledgeThirdPartyJob](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_AcknowledgeThirdPartyJob.html): Confirms a job worker has received the specified job.
+- [CreateCustomActionType](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_CreateCustomActionType.html): Creates a new custom action that can be used in all pipelines associated with the AWS account.
+- [CreatePipeline](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_CreatePipeline.html): Creates a pipeline.
+- [DeleteCustomActionType](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_DeleteCustomActionType.html): Marks a custom action as deleted.
+- [DeletePipeline](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_DeletePipeline.html): Deletes the specified pipeline.
+- [DeleteWebhook](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_DeleteWebhook.html): Deletes a previously created webhook by name.
+- [DeregisterWebhookWithThirdParty](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_DeregisterWebhookWithThirdParty.html): Removes the connection between the webhook that was created by CodePipeline and the external tool with events to be detected.
+- [DisableStageTransition](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_DisableStageTransition.html): Prevents artifacts in a pipeline from transitioning to the next stage in the pipeline.
+- [EnableStageTransition](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_EnableStageTransition.html): Enables artifacts in a pipeline to transition to a stage in a pipeline.
+- [GetActionType](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_GetActionType.html): Returns information about an action type created for an external provider, where the action is to be used by customers of the external provider.
+- [GetJobDetails](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_GetJobDetails.html): Returns information about a job.
+- [GetPipeline](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_GetPipeline.html): Returns the metadata, structure, stages, and actions of a pipeline.
+- [GetPipelineExecution](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_GetPipelineExecution.html): Returns information about an execution of a pipeline, including details about artifacts, the pipeline execution ID, and the name, version, and status of the pipeline.
+- [GetPipelineState](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_GetPipelineState.html): Returns information about the state of a pipeline, including the stages and actions.
+- [GetThirdPartyJobDetails](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_GetThirdPartyJobDetails.html): Requests the details of a job for a third party action.
+- [ListActionExecutions](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ListActionExecutions.html): Lists the action executions that have occurred in a pipeline.
+- [ListActionTypes](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ListActionTypes.html): Gets a summary of all CodePipeline action types associated with your account.
+- [ListDeployActionExecutionTargets](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ListDeployActionExecutionTargets.html): Lists the targets for the deploy action.
+- [ListPipelineExecutions](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ListPipelineExecutions.html): Gets a summary of the most recent executions for a pipeline.
+- [ListPipelines](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ListPipelines.html): Gets a summary of all of the pipelines associated with your account.
+- [ListRuleExecutions](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ListRuleExecutions.html): Lists the rule executions that have occurred in a pipeline configured for conditions with rules.
+- [ListRuleTypes](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ListRuleTypes.html): Lists the rules for the condition.
+- [ListTagsForResource](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ListTagsForResource.html): Gets the set of key-value pairs (metadata) that are used to manage the resource.
+- [ListWebhooks](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ListWebhooks.html): Gets a listing of all the webhooks in this AWS Region for this account.
+- [OverrideStageCondition](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_OverrideStageCondition.html): Used to override a stage condition.
+- [PollForJobs](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PollForJobs.html): Returns information about any jobs for CodePipeline to act on.
+- [PollForThirdPartyJobs](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PollForThirdPartyJobs.html): Determines whether there are any third party jobs for a job worker to act on.
+- [PutActionRevision](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PutActionRevision.html): Provides information to CodePipeline about new revisions to a source.
+- [PutApprovalResult](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PutApprovalResult.html): Provides the response to a manual approval request to CodePipeline.
+- [PutJobFailureResult](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PutJobFailureResult.html): Represents the failure of a job as returned to the pipeline by a job worker.
+- [PutJobSuccessResult](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PutJobSuccessResult.html): Represents the success of a job as returned to the pipeline by a job worker.
+- [PutThirdPartyJobFailureResult](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PutThirdPartyJobFailureResult.html): Represents the failure of a third party job as returned to the pipeline by a job worker.
+- [PutThirdPartyJobSuccessResult](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PutThirdPartyJobSuccessResult.html): Represents the success of a third party job as returned to the pipeline by a job worker.
+- [PutWebhook](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PutWebhook.html): Defines a webhook and returns a unique webhook URL generated by CodePipeline.
+- [RegisterWebhookWithThirdParty](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_RegisterWebhookWithThirdParty.html): Configures a connection between the webhook that was created and the external tool with events to be detected.
+- [RetryStageExecution](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_RetryStageExecution.html): You can retry a stage that has failed without having to run a pipeline again from the beginning.
+- [RollbackStage](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_RollbackStage.html): Rolls back a stage execution.
+- [StartPipelineExecution](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_StartPipelineExecution.html): Starts the specified pipeline.
+- [StopPipelineExecution](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_StopPipelineExecution.html): Stops the specified pipeline execution.
+- [TagResource](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_TagResource.html): Adds to or modifies the tags of the given resource.
+- [UntagResource](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_UntagResource.html): Removes tags from an AWS resource.
+- [UpdateActionType](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_UpdateActionType.html): Updates an action type that was created with any supported integration model, where the action type is to be used by customers of the action type provider.
+- [UpdatePipeline](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_UpdatePipeline.html): Updates a specified pipeline with edits or changes to its structure.
+
+
+## [Data Types](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_Types.html)
+
+- [ActionConfiguration](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionConfiguration.html): Represents information about an action configuration.
+- [ActionConfigurationProperty](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionConfigurationProperty.html): Represents information about an action configuration property.
+- [ActionContext](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionContext.html): Represents the context of an action in the stage of a pipeline to a job worker.
+- [ActionDeclaration](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionDeclaration.html): Represents information about an action declaration.
+- [ActionExecution](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionExecution.html): Represents information about the run of an action.
+- [ActionExecutionDetail](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionExecutionDetail.html): Returns information about an execution of an action, including the action execution ID, and the name, version, and timing of the action.
+- [ActionExecutionFilter](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionExecutionFilter.html): Filter values for the action execution.
+- [ActionExecutionInput](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionExecutionInput.html): Input information used for an action execution.
+- [ActionExecutionOutput](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionExecutionOutput.html): Output details listed for an action execution, such as the action execution result.
+- [ActionExecutionResult](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionExecutionResult.html): Execution result information, such as the external execution ID.
+- [ActionRevision](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionRevision.html): Represents information about the version (or revision) of an action.
+- [ActionState](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionState.html): Represents information about the state of an action.
+- [ActionType](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionType.html): Returns information about the details of an action type.
+- [ActionTypeArtifactDetails](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionTypeArtifactDetails.html): Information about parameters for artifacts associated with the action type, such as the minimum and maximum artifacts allowed.
+- [ActionTypeDeclaration](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionTypeDeclaration.html): The parameters for the action type definition that are provided when the action type is created or updated.
+- [ActionTypeExecutor](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionTypeExecutor.html): The action engine, or executor, for an action type created for a provider, where the action is to be used by customers of the provider.
+- [ActionTypeId](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionTypeId.html): Represents information about an action type.
+- [ActionTypeIdentifier](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionTypeIdentifier.html): Specifies the category, owner, provider, and version of the action type.
+- [ActionTypePermissions](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionTypePermissions.html): Details identifying the users with permissions to use the action type.
+- [ActionTypeProperty](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionTypeProperty.html): Represents information about each property specified in the action configuration, such as the description and key name that display for the customer using the action type.
+- [ActionTypeSettings](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionTypeSettings.html): Returns information about the settings for an action type.
+- [ActionTypeUrls](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ActionTypeUrls.html): Returns information about URLs for web pages that display to customers as links on the pipeline view, such as an external configuration page for the action type.
+- [ApprovalResult](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ApprovalResult.html): Represents information about the result of an approval request.
+- [Artifact](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_Artifact.html): Artifacts are the files that are worked on by actions in the pipeline.
+- [ArtifactDetail](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ArtifactDetail.html): Artifact details for the action execution, such as the artifact location.
+- [ArtifactDetails](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ArtifactDetails.html): Returns information about the details of an artifact.
+- [ArtifactLocation](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ArtifactLocation.html): Represents information about the location of an artifact.
+- [ArtifactRevision](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ArtifactRevision.html): Represents revision details of an artifact.
+- [ArtifactStore](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ArtifactStore.html): The S3 bucket where artifacts for the pipeline are stored.
+- [AWSSessionCredentials](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_AWSSessionCredentials.html): Represents an AWS session credentials object.
+- [BeforeEntryConditions](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_BeforeEntryConditions.html): The conditions for making checks for entry to a stage.
+- [BlockerDeclaration](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_BlockerDeclaration.html): Reserved for future use.
+- [Condition](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_Condition.html): The condition for the stage.
+- [ConditionExecution](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ConditionExecution.html): The run of a condition.
+- [ConditionState](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ConditionState.html): Information about the state of the condition.
+- [CurrentRevision](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_CurrentRevision.html): Represents information about a current revision.
+- [DeployActionExecutionTarget](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_DeployActionExecutionTarget.html): The target for the deploy action.
+- [DeployTargetEvent](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_DeployTargetEvent.html): A lifecycle event for the deploy action.
+- [DeployTargetEventContext](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_DeployTargetEventContext.html): The context for the event for the deploy action.
+- [EncryptionKey](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_EncryptionKey.html): Represents information about the key used to encrypt data in the artifact store, such as an AWS Key Management Service (AWS Key Management Service) key.
+- [EnvironmentVariable](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_EnvironmentVariable.html): The environment variables for the action.
+- [ErrorDetails](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ErrorDetails.html): Represents information about an error in CodePipeline.
+- [ExecutionDetails](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ExecutionDetails.html): The details of the actions taken and results produced on an artifact as it passes through stages in the pipeline.
+- [ExecutionTrigger](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ExecutionTrigger.html): The interaction or event that started a pipeline execution.
+- [ExecutorConfiguration](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ExecutorConfiguration.html): The action engine, or executor, related to the supported integration model used to create and update the action type.
+- [FailureConditions](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_FailureConditions.html): The configuration that specifies the result, such as rollback, to occur upon stage failure.
+- [FailureDetails](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_FailureDetails.html): Represents information about failure details.
+- [GitBranchFilterCriteria](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_GitBranchFilterCriteria.html): The Git repository branches specified as filter criteria to start the pipeline.
+- [GitConfiguration](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_GitConfiguration.html): A type of trigger configuration for Git-based source actions.
+- [GitFilePathFilterCriteria](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_GitFilePathFilterCriteria.html): The Git repository file paths specified as filter criteria to start the pipeline.
+- [GitPullRequestFilter](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_GitPullRequestFilter.html): The event criteria for the pull request trigger configuration, such as the lists of branches or file paths to include and exclude.
+- [GitPushFilter](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_GitPushFilter.html): The event criteria that specify when a specified repository event will start the pipeline for the specified trigger configuration, such as the lists of Git tags to include and exclude.
+- [GitTagFilterCriteria](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_GitTagFilterCriteria.html): The Git tags specified as filter criteria for whether a Git tag repository event will start the pipeline.
+- [InputArtifact](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_InputArtifact.html): Represents information about an artifact to be worked on, such as a test or build artifact.
+- [Job](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_Job.html): Represents information about a job.
+- [JobData](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_JobData.html): Represents other information about a job required for a job worker to complete the job.
+- [JobDetails](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_JobDetails.html): Represents information about the details of a job.
+- [JobWorkerExecutorConfiguration](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_JobWorkerExecutorConfiguration.html): Details about the polling configuration for the JobWorker action engine, or executor.
+- [LambdaExecutorConfiguration](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_LambdaExecutorConfiguration.html): Details about the configuration for the Lambda action engine, or executor.
+- [LatestInPipelineExecutionFilter](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_LatestInPipelineExecutionFilter.html): The field that specifies to filter on the latest execution in the pipeline.
+- [ListWebhookItem](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ListWebhookItem.html): The detail returned for each webhook after listing webhooks, such as the webhook URL, the webhook name, and the webhook ARN.
+- [OutputArtifact](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_OutputArtifact.html): Represents information about the output of an action.
+- [PipelineContext](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PipelineContext.html): Represents information about a pipeline to a job worker.
+- [PipelineDeclaration](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PipelineDeclaration.html): Represents the structure of actions and stages to be performed in the pipeline.
+- [PipelineExecution](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PipelineExecution.html): Represents information about an execution of a pipeline.
+- [PipelineExecutionFilter](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PipelineExecutionFilter.html): The pipeline execution to filter on.
+- [PipelineExecutionSummary](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PipelineExecutionSummary.html): Summary information about a pipeline execution.
+- [PipelineMetadata](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PipelineMetadata.html): Information about a pipeline.
+- [PipelineRollbackMetadata](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PipelineRollbackMetadata.html): The metadata for the stage execution to be rolled back.
+- [PipelineSummary](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PipelineSummary.html): Returns a summary of a pipeline.
+- [PipelineTriggerDeclaration](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PipelineTriggerDeclaration.html): Represents information about the specified trigger configuration, such as the filter criteria and the source stage for the action that contains the trigger.
+- [PipelineVariable](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PipelineVariable.html): A pipeline-level variable used for a pipeline execution.
+- [PipelineVariableDeclaration](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PipelineVariableDeclaration.html): A variable declared at the pipeline level.
+- [ResolvedPipelineVariable](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ResolvedPipelineVariable.html): A pipeline-level variable used for a pipeline execution.
+- [RetryConfiguration](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_RetryConfiguration.html): The retry configuration specifies automatic retry for a failed stage, along with the configured retry mode.
+- [RetryStageMetadata](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_RetryStageMetadata.html): The details of a specific automatic retry on stage failure, including the attempt number and trigger.
+- [RuleConfigurationProperty](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_RuleConfigurationProperty.html): Represents information about a rule configuration property.
+- [RuleDeclaration](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_RuleDeclaration.html): Represents information about the rule to be created for an associated condition.
+- [RuleExecution](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_RuleExecution.html): Represents information about each time a rule is run as part of the pipeline execution for a pipeline configured with conditions.
+- [RuleExecutionDetail](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_RuleExecutionDetail.html): The details of the runs for a rule and the results produced on an artifact as it passes through stages in the pipeline.
+- [RuleExecutionFilter](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_RuleExecutionFilter.html): Filter values for the rule execution.
+- [RuleExecutionInput](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_RuleExecutionInput.html): Input information used for a rule execution.
+- [RuleExecutionOutput](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_RuleExecutionOutput.html): Output details listed for a rule execution, such as the rule execution result.
+- [RuleExecutionResult](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_RuleExecutionResult.html): Execution result information, such as the external execution ID.
+- [RuleRevision](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_RuleRevision.html): The change to a rule that creates a revision of the rule.
+- [RuleState](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_RuleState.html): Returns information about the state of a rule.
+- [RuleType](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_RuleType.html): The rule type, which is made up of the combined values for category, owner, provider, and version.
+- [RuleTypeId](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_RuleTypeId.html): The ID for the rule type, which is made up of the combined values for category, owner, provider, and version.
+- [RuleTypeSettings](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_RuleTypeSettings.html): Returns information about the settings for a rule type.
+- [S3ArtifactLocation](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_S3ArtifactLocation.html): The location of the S3 bucket that contains a revision.
+- [S3Location](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_S3Location.html): The Amazon S3 artifact location for an action's artifacts.
+- [SourceRevision](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_SourceRevision.html): Information about the version (or revision) of a source artifact that initiated a pipeline execution.
+- [SourceRevisionOverride](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_SourceRevisionOverride.html): A list that allows you to specify, or override, the source revision for a pipeline execution that's being started.
+- [StageConditionsExecution](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_StageConditionsExecution.html): Represents information about the run of a condition for a stage.
+- [StageConditionState](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_StageConditionState.html): The state of a run of a condition for a stage.
+- [StageContext](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_StageContext.html): Represents information about a stage to a job worker.
+- [StageDeclaration](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_StageDeclaration.html): Represents information about a stage and its definition.
+- [StageExecution](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_StageExecution.html): Represents information about the run of a stage.
+- [StageState](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_StageState.html): Represents information about the state of the stage.
+- [StopExecutionTrigger](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_StopExecutionTrigger.html): The interaction that stopped a pipeline execution.
+- [SucceededInStageFilter](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_SucceededInStageFilter.html): Filter for pipeline executions that have successfully completed the stage in the current pipeline version.
+- [SuccessConditions](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_SuccessConditions.html): The conditions for making checks that, if met, succeed a stage.
+- [Tag](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_Tag.html): A tag is a key-value pair that is used to manage the resource.
+- [TargetFilter](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_TargetFilter.html): Filters the list of targets.
+- [ThirdPartyJob](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ThirdPartyJob.html): A response to a PollForThirdPartyJobs request returned by CodePipeline when there is a job to be worked on by a partner action.
+- [ThirdPartyJobData](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ThirdPartyJobData.html): Represents information about the job data for a partner action.
+- [ThirdPartyJobDetails](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_ThirdPartyJobDetails.html): The details of a job sent in response to a GetThirdPartyJobDetails request.
+- [TransitionState](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_TransitionState.html): Represents information about the state of transitions between one stage and another stage.
+- [WebhookAuthConfiguration](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_WebhookAuthConfiguration.html): The authentication applied to incoming webhook trigger requests.
+- [WebhookDefinition](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_WebhookDefinition.html): Represents information about a webhook and its definition.
+- [WebhookFilterRule](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_WebhookFilterRule.html): The event criteria that specify when a webhook notification is sent to your URL.

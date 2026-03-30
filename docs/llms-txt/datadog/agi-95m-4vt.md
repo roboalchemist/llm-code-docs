@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The docker.service file ownership and group should be set to root
-Classification:complianceFramework:cis-dockerControl:3.1 
+Classification:complianceFramework:cis-dockerControl:3.1
 ## Description{% #description %}
 
 You should verify that the docker.service file ownership and group ownership are correctly set to root.
@@ -22,11 +22,11 @@ The docker.service file contains sensitive parameters that may alter the behavio
 
 1. Locate the `docker.service` file by running:
    ```
-   systemctl show -p FragmentPath docker.service 
+   systemctl show -p FragmentPath docker.service
    ```
 1. If the file does not exist, this recommendation is not applicable. If the file exists, verify that it is owned and group-owned by root, by running the following command with the correct filepath:
    ```
-   stat -c %U:%G /usr/lib/systemd/system/docker.service | grep -v root:root 
+   stat -c %U:%G /usr/lib/systemd/system/docker.service | grep -v root:root
    ```
 The command should not return anything.
 

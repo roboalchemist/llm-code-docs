@@ -64,6 +64,7 @@ Here's how to implement the new `userLocation` parameter:
       "numResults": 10
     }'
   ```
+
 </CodeGroup>
 
 ## Response Structure Changes

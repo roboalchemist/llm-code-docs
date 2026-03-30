@@ -23,13 +23,13 @@ Setting a clear goal is critical for installing Datadog. However, in a practical
 A sample survey form might look like this:
 
 ```
-Application name:  
-  Language:  
-     Frameworks:  
-  Model layer:  
-  View layer: 
-  Controller layer:  
-  Infra type:  
+Application name:
+  Language:
+     Frameworks:
+  Model layer:
+  View layer:
+  Controller layer:
+  Infra type:
   Operating systems:
 ```
 

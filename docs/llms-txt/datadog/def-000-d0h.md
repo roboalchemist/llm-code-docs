@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable snmpd Service
 ---
 
 # Disable snmpd Service
- 
+
 ## Description{% #description %}
 
 The `snmpd` service can be disabled with the following command:

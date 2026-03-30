@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # 'Create Policy Assignment' activity log alert should be configured
- 
+
 ## Description{% #description %}
 
 To improve detection of unsolicited changes and gain insight into modifications made in "Azure policy - assignments," it is recommended to create an activity log alert specifically for the Create Policy Assignment event. This alert will help monitor and track any occurrences of policy assignment creation, reducing the time it takes to identify and respond to any unauthorized changes.

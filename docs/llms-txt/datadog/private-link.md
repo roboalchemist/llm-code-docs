@@ -330,18 +330,18 @@ If logs are being sent over PrivateLink, the `ANSWER Section` section of the out
 
 ```
 ;; ANSWER SECTION:
-http-intake.logs.datadoghq.com.	60 IN	A	172.31.57.3
-http-intake.logs.datadoghq.com.	60 IN	A	172.31.3.10
-http-intake.logs.datadoghq.com.	60 IN	A	172.31.20.174
-http-intake.logs.datadoghq.com.	60 IN	A	172.31.34.135
+http-intake.logs.datadoghq.com. 60 IN   A   172.31.57.3
+http-intake.logs.datadoghq.com. 60 IN   A   172.31.3.10
+http-intake.logs.datadoghq.com. 60 IN   A   172.31.20.174
+http-intake.logs.datadoghq.com. 60 IN   A   172.31.34.135
 ```
 
 If logs are not being sent over PrivateLink, the `ANSWER SECTION` of the output shows the load balancer (`4-logs-http-s1-e721f9c2a0e65948.elb.us-east-1.amazonaws.com`) to which the logs are getting sent.
 
 ```
 ;; ANSWER SECTION:
-http-intake.logs.datadoghq.com.	177 IN	CNAME	http-intake-l4.logs.datadoghq.com.
-http-intake-l4.logs.datadoghq.com. 173 IN CNAME	l4-logs-http-s1-e721f9c2a0e65948.elb.us-east-1.amazonaws.com.
+http-intake.logs.datadoghq.com. 177 IN  CNAME   http-intake-l4.logs.datadoghq.com.
+http-intake-l4.logs.datadoghq.com. 173 IN CNAME l4-logs-http-s1-e721f9c2a0e65948.elb.us-east-1.amazonaws.com.
 l4-logs-http-s1-e721f9c2a0e65948.elb.us-east-1.amazonaws.com. 42 IN A 3.233.158.48
 l4-logs-http-s1-e721f9c2a0e65948.elb.us-east-1.amazonaws.com. 42 IN A 3.233.158.49
 l4-logs-http-s1-e721f9c2a0e65948.elb.us-east-1.amazonaws.com. 42 IN A 3.233.158.50

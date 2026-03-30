@@ -1,0 +1,268 @@
+# Source: https://www.speakeasy.com/md/docs/speakeasy-reference/workflow-file.md
+
+# Speakeasy Workflow File
+
+> **Tip**
+> For most use cases we recommend interacting with the Speakeasy workflow file (`workflow.yaml`) through the `speakeasy configure` command.
+> This command has subcommands to configure sources, targets, github setup and package publishing. All new targets created through `speakeasy quickstart` will automatically have a workflow
+> file created in the `.speakeasy/` folder in the root of their target directory.
+> 
+
+The workflow file is a file that dictates how the Speakeasy CLI will interact with sources and targets. The interaction is modelled as a workflow between sources and targets.
+A Source is one or more OpenAPI documents and Overlays merged together to create a single OpenAPI documents.
+A Target is a SDK, Terraform or other generated artifact from sources.
+
+# File Structure
+
+## Speakeasy Version
+
+The version of the Speakeasy CLI to use to run the workflow. The `speakeasyVersion` field accepts three types of values:
+
+- **`latest`**: The Speakeasy CLI will perform a blue/green attempted upgrade to the latest version of the CLI. If there is a failure in generation, it will always re-run on the last successful version. This is the default and always tries to bring in generator upgrades (for example, to dependencies) where those changes compile, lint successfully, and pass tests successfully.
+
+- **`pinned`**: The Speakeasy CLI will always execute on the installed version and won't attempt to change versions. This can be useful for teams with alternative automation to control the Speakeasy CLI version (for example, using [mise](https://mise.jdx.dev/)).
+
+- **A specific version** (for example, `1.493.1`): The Speakeasy CLI will always run on this exact version. This can be useful for teams with stringent change management procedures. Available versions correspond to [Speakeasy CLI releases](https://github.com/speakeasy-api/speakeasy/releases).
+
+```yaml
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+```
+
+```yaml
+workflowVersion: 1.0.0
+speakeasyVersion: pinned
+```
+
+```yaml
+workflowVersion: 1.0.0
+speakeasyVersion: 1.493.1
+```
+
+## Sources
+
+Sources can be added to a workflow programmatically `speakeasy configure sources` or manually by editing the workflow file.
+
+### Sources
+
+Sources are the inputs to the workflow. A single Source is one or more OpenAPI documents and Overlays that are merged together to create a single OpenAPI document.
+
+```yaml
+sources:
+  my-source:
+    inputs:
+      - location: ./openapi.yaml
+      - location: ./another-openapi.yaml
+      # .... more openapi documents can be added here
+    overlays:
+      - location: ./overlay.yaml
+      - location: ./another-overlay.yaml
+      # .... more openapi overlays can be added here
+    transformations:
+```
+
+### SourceName
+
+Each Source is given a name. In this example the name is `my-source`. This name is used to reference the source in the workflow file.
+
+```yaml
+  my-source:
+```
+
+### Inputs
+
+Each Source has a list of inputs. Each input is an OpenAPI document or Overlay. The OpenAPI documents and Overlays are merged together to create a single OpenAPI document. For a detailed guide on how merging works, including merge order, conflict resolution, and namespaces, see [Merge multiple OpenAPI documents](/docs/sdks/prep-openapi/merge).
+
+Swagger 2.0 documents are also supported as inputs. When a Swagger 2.0 document is detected, Speakeasy automatically converts it to OpenAPI 3.x before processing. See [Transformations](/docs/sdks/prep-openapi/transformations#convert-swagger-to-openapi) for details.
+
+```yaml
+    inputs:
+      - location: ./openapi.yaml
+      - location: ./another-openapi.yaml
+      # .... more openapi documents can be added here
+```
+
+### Location
+
+Each input has a location. The location is the path to the OpenAPI document or Overlay. The path can be a local reference or a remote URL. If a URL is a used
+authentication may need to be provided.
+
+```yaml
+      - location: ./openapi.yaml
+      - location: ./another-openapi.yaml
+      # .... more openapi documents can be added here
+```
+
+### Model namespace
+
+When merging multiple OpenAPI documents, schema components with the same name can cause naming conflicts in generated code. The `modelNamespace` option allows each input document to specify a namespace for its schema components, ensuring unique names in the merged output.
+
+```yaml
+sources:
+  merged-api:
+    inputs:
+      - location: service-a.yaml
+        modelNamespace: serviceA
+      - location: service-b.yaml
+        modelNamespace: serviceB
+```
+
+When `modelNamespace` is specified, the merge process automatically adds `x-speakeasy-name-override` and `x-speakeasy-model-namespace` extensions to each schema component from that input. This preserves the original schema name for serialization while placing the generated model in a separate namespace to avoid conflicts.
+
+For example, if both `service-a.yaml` and `service-b.yaml` define a `Pet` schema:
+
+```yaml
+# service-a.yaml
+components:
+  schemas:
+    Pet:
+      type: object
+      properties:
+        name:
+          type: string
+```
+
+```yaml
+# service-b.yaml
+components:
+  schemas:
+    Pet:
+      type: object
+      properties:
+        species:
+          type: string
+```
+
+The merged output will contain both schemas with unique names and namespace extensions:
+
+```yaml
+# merged.yaml
+components:
+  schemas:
+    serviceA_Pet:
+      x-speakeasy-name-override: Pet
+      x-speakeasy-model-namespace: serviceA
+      type: object
+      properties:
+        name:
+          type: string
+    serviceB_Pet:
+      x-speakeasy-name-override: Pet
+      x-speakeasy-model-namespace: serviceB
+      type: object
+      properties:
+        species:
+          type: string
+```
+
+For more granular control over which schemas belong to which namespace, apply the `x-speakeasy-model-namespace` extension directly to individual schemas in the OpenAPI document instead of using `modelNamespace` in the workflow file.
+
+### Transformations
+
+Sources can include transformations that modify the OpenAPI document before it's used to generate SDKs. Transformations are applied in order after merging inputs and applying overlays.
+
+```yaml
+      # .... more openapi overlays can be added here
+    transformations:
+      # Remove unused components from the OpenAPI document
+      - removeUnused: true
+      # Filter to include only specific operations
+      - filterOperations:
+          operations: getPets, createPet
+          include: true
+      # General cleanup of the OpenAPI document (formatting and style)
+```
+
+### Output
+
+Each source can specify an output location where the merged OpenAPI document will be written.
+
+```yaml
+    output: ./merged-openapi.yaml
+```
+
+### Registry
+
+Sources can be configured to publish to the API Registry found in the Speakeasy workspace.
+
+```yaml
+    registry:
+      location: registry.speakeasy.com/my-org/my-api
+```
+
+## Targets
+
+Targets can be added to a workflow programmatically `speakeasy configure targets` or manually by editing the workflow file.
+
+### Targets
+
+Targets are the outputs of the workflow. A single Target is a SDK, Terraform or other generated artifact from sources.
+
+```yaml
+targets:
+  my-target:
+    target: python
+    source: my-source
+    testing:
+      enabled: true
+      mockServer:
+        enabled: false
+```
+
+### TargetName
+
+Each Target is given a name. In this example the name is `my-target`. This name is used to reference the target in the workflow file.
+
+```yaml
+  my-target:
+```
+
+### TargetType
+
+Each Target has a type. The target is the type of artifact that will be generated from the sources. The target can be one of the supported languages [here](/docs/sdks/create-client-sdks)
+
+```yaml
+    target: python
+```
+
+### TargetSource
+
+Each Target has a source. The source is the name of the source that the target will be generated from.
+
+```yaml
+    source: my-source
+```
+
+### Testing
+
+Each Target supports enabling testing as part of the workflow, if test generation is licensed. This will run target-specific testing, such as `go test` or `pytest`, after code generation. Use this with CLI-only `speakeasy run` development workflows (instead of separately calling `speakeasy test`) or GitHub Actions `mode: direct` or `mode: test` development workflows to ensure tests are successful with any potential code updates.
+
+```yaml
+    testing:
+      enabled: true
+      mockServer:
+        enabled: false
+```
+
+### MockServer
+
+Target testing, when licensed and enabled, starts a mock API server automatically as part of the workflow. This disables the mock API server, if the testing should always pointed at a test environment server URL instead.
+
+```yaml
+      mockServer:
+        enabled: false
+```
+
+### CodeSamples
+
+Each target can be configured to generate code samples and publish them to Speakeasy's registry.
+
+```yaml
+    codeSamples:
+      output: codeSamples.yaml
+      registry:
+        location: registry.speakeasy.com/my-org/my-api/code-samples
+```
+---
+
+Are you an AI agent evaluating Speakeasy? We put together a helpful guide: https://www.speakeasy.com/eval.md

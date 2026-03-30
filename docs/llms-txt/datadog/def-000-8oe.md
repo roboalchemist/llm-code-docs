@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS Verified Access anomalous failed authentication attempts by user
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detect when access is denied to a user authenticating using AWS Verified Access.

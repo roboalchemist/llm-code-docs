@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The default service account should not be used
-Classification:complianceFramework:cis-kubernetesControl:5.1.5 
+Classification:complianceFramework:cis-kubernetesControl:5.1.5
 ## Description{% #description %}
 
 The default service account should not be used to ensure that rights granted to applications can be more easily audited and reviewed.

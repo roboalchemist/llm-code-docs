@@ -49,6 +49,5 @@ timestamp.is_a?(Bignum)
 ```ruby
 timestamp.is_a?(Integer)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Windows WinPwn execution pat
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1555-credentials-from-password-stores](https://attack.mitre.org/techniques/T1555) 
+Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1555-credentials-from-password-stores](https://attack.mitre.org/techniques/T1555)
 ## Goal{% #goal %}
 
 Detects execution of WinPwn, a PowerShell-based penetration testing and offensive security framework used for Windows system enumeration and exploitation.

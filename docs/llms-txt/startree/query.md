@@ -1,0 +1,103 @@
+# Source: https://docs.startree.ai/api-reference/dataplane/query.md
+
+> ## Documentation Index
+>
+> Fetch the complete documentation index at: https://docs.startree.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Query Data
+
+> Run SQL queries on StarTree Cloud's real-time analytics engine.
+
+## OpenAPI
+
+````yaml POST /query/sql
+openapi: 3.0.0
+info:
+  title: StarTree Cloud Query API
+  description: API for executing SQL queries on StarTree Cloud.
+  version: 1.0.0
+servers:
+  - url: https://broker.pinot.celpxu.cp.s7e.startree.cloud
+    description: StarTree Cloud Broker API
+security: []
+paths:
+  /query/sql:
+    post:
+      tags:
+        - Query API
+      summary: Execute a SQL query
+      description: Run SQL queries on StarTree Cloud's real-time analytics engine.
+      operationId: executeQuery
+      parameters:
+        - name: database
+          in: header
+          description: >-
+            Workspace ID for multi-tenant clusters (e.g., Free Tier). Not
+            required for dedicated clusters.
+          required: true
+          schema:
+            type: string
+            example: ws_2kc8e2dnzzb0
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sql:
+                  type: string
+                  example: SELECT * FROM eth_raw_logs_v2 LIMIT 1
+              required:
+                - sql
+      responses:
+        '200':
+          description: Query executed successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  resultTable:
+                    type: object
+                    properties:
+                      dataSchema:
+                        type: object
+                        properties:
+                          columnNames:
+                            type: array
+                            items:
+                              type: string
+                            example:
+                              - id
+                              - log_index
+                              - transaction_hash
+                          columnDataTypes:
+                            type: array
+                            items:
+                              type: string
+                            example:
+                              - LONG
+                              - INT
+                              - STRING
+                      rows:
+                        type: array
+                        items:
+                          type: array
+                          example:
+                            - 123456
+                            - 42
+                            - 0xabc123...
+      security:
+        - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+````
+
+Built with [Mintlify](https://mintlify.com).

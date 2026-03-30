@@ -57,7 +57,7 @@ Create an SLO Correction
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -75,7 +75,7 @@ Create an SLO Correction
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -269,7 +269,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/correction" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -290,8 +290,8 @@ Error response object.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/correction" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -313,8 +313,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create an SLO correction returns "OK" response
@@ -322,50 +322,50 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "slo" in the system
-	SloData0ID := os.Getenv("SLO_DATA_0_ID")
+    // there is a valid "slo" in the system
+    SloData0ID := os.Getenv("SLO_DATA_0_ID")
 
-	body := datadogV1.SLOCorrectionCreateRequest{
-		Data: &datadogV1.SLOCorrectionCreateData{
-			Attributes: &datadogV1.SLOCorrectionCreateRequestAttributes{
-				Category:    datadogV1.SLOCORRECTIONCATEGORY_SCHEDULED_MAINTENANCE,
-				Description: datadog.PtrString("Example-Service-Level-Objective-Correction"),
-				End:         datadog.PtrInt64(time.Now().Add(time.Hour * 1).Unix()),
-				SloId:       SloData0ID,
-				Start:       time.Now().Unix(),
-				Timezone:    datadog.PtrString("UTC"),
-			},
-			Type: datadogV1.SLOCORRECTIONTYPE_CORRECTION,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectiveCorrectionsApi(apiClient)
-	resp, r, err := api.CreateSLOCorrection(ctx, body)
+    body := datadogV1.SLOCorrectionCreateRequest{
+        Data: &datadogV1.SLOCorrectionCreateData{
+            Attributes: &datadogV1.SLOCorrectionCreateRequestAttributes{
+                Category:    datadogV1.SLOCORRECTIONCATEGORY_SCHEDULED_MAINTENANCE,
+                Description: datadog.PtrString("Example-Service-Level-Objective-Correction"),
+                End:         datadog.PtrInt64(time.Now().Add(time.Hour * 1).Unix()),
+                SloId:       SloData0ID,
+                Start:       time.Now().Unix(),
+                Timezone:    datadog.PtrString("UTC"),
+            },
+            Type: datadogV1.SLOCORRECTIONTYPE_CORRECTION,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectiveCorrectionsApi(apiClient)
+    resp, r, err := api.CreateSLOCorrection(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectiveCorrectionsApi.CreateSLOCorrection`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectiveCorrectionsApi.CreateSLOCorrection`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectiveCorrectionsApi.CreateSLOCorrection`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectiveCorrectionsApi.CreateSLOCorrection`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create an SLO correction with rrule returns "OK" response
@@ -373,47 +373,47 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "slo" in the system
-	SloData0ID := os.Getenv("SLO_DATA_0_ID")
+    // there is a valid "slo" in the system
+    SloData0ID := os.Getenv("SLO_DATA_0_ID")
 
-	body := datadogV1.SLOCorrectionCreateRequest{
-		Data: &datadogV1.SLOCorrectionCreateData{
-			Attributes: &datadogV1.SLOCorrectionCreateRequestAttributes{
-				Category:    datadogV1.SLOCORRECTIONCATEGORY_SCHEDULED_MAINTENANCE,
-				Description: datadog.PtrString("Example-Service-Level-Objective-Correction"),
-				SloId:       SloData0ID,
-				Start:       time.Now().Unix(),
-				Duration:    datadog.PtrInt64(3600),
-				Rrule:       datadog.PtrString("FREQ=DAILY;INTERVAL=10;COUNT=5"),
-				Timezone:    datadog.PtrString("UTC"),
-			},
-			Type: datadogV1.SLOCORRECTIONTYPE_CORRECTION,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectiveCorrectionsApi(apiClient)
-	resp, r, err := api.CreateSLOCorrection(ctx, body)
+    body := datadogV1.SLOCorrectionCreateRequest{
+        Data: &datadogV1.SLOCorrectionCreateData{
+            Attributes: &datadogV1.SLOCorrectionCreateRequestAttributes{
+                Category:    datadogV1.SLOCORRECTIONCATEGORY_SCHEDULED_MAINTENANCE,
+                Description: datadog.PtrString("Example-Service-Level-Objective-Correction"),
+                SloId:       SloData0ID,
+                Start:       time.Now().Unix(),
+                Duration:    datadog.PtrInt64(3600),
+                Rrule:       datadog.PtrString("FREQ=DAILY;INTERVAL=10;COUNT=5"),
+                Timezone:    datadog.PtrString("UTC"),
+            },
+            Type: datadogV1.SLOCORRECTIONTYPE_CORRECTION,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectiveCorrectionsApi(apiClient)
+    resp, r, err := api.CreateSLOCorrection(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectiveCorrectionsApi.CreateSLOCorrection`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectiveCorrectionsApi.CreateSLOCorrection`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectiveCorrectionsApi.CreateSLOCorrection`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectiveCorrectionsApi.CreateSLOCorrection`:\n%s\n", responseContent)
 }
 ```
 
@@ -421,7 +421,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create an SLO correction returns "OK" response
@@ -474,7 +474,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create an SLO correction with rrule returns "OK" response
@@ -532,7 +532,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -575,7 +575,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -622,7 +622,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create an SLO correction returns "OK" response
@@ -649,7 +649,7 @@ body = DatadogAPIClient::V1::SLOCorrectionCreateRequest.new({
 p api_instance.create_slo_correction(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create an SLO correction with rrule returns "OK" response
@@ -681,7 +681,7 @@ p api_instance.create_slo_correction(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create an SLO correction returns "OK" response
@@ -720,7 +720,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create an SLO correction with rrule returns "OK" response
@@ -764,7 +764,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -808,7 +808,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -1023,13 +1023,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/correction" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1054,7 +1054,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all SLO corrections returns "OK" response
@@ -1072,7 +1072,7 @@ p api_instance.list_slo_correction(opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all SLO corrections returns "OK" response
@@ -1080,29 +1080,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectiveCorrectionsApi(apiClient)
-	resp, r, err := api.ListSLOCorrection(ctx, *datadogV1.NewListSLOCorrectionOptionalParameters().WithOffset(1).WithLimit(1))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectiveCorrectionsApi(apiClient)
+    resp, r, err := api.ListSLOCorrection(ctx, *datadogV1.NewListSLOCorrectionOptionalParameters().WithOffset(1).WithLimit(1))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectiveCorrectionsApi.ListSLOCorrection`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectiveCorrectionsApi.ListSLOCorrection`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectiveCorrectionsApi.ListSLOCorrection`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectiveCorrectionsApi.ListSLOCorrection`:\n%s\n", responseContent)
 }
 ```
 
@@ -1110,7 +1110,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all SLO corrections returns "OK" response
@@ -1148,7 +1148,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all SLO corrections returns "OK" response
@@ -1179,7 +1179,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1386,13 +1386,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport slo_correction_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/correction/${slo_correction_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1420,7 +1420,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get an SLO correction for an SLO returns "OK" response
@@ -1437,7 +1437,7 @@ p api_instance.get_slo_correction(CORRECTION_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get an SLO correction for an SLO returns "OK" response
@@ -1445,32 +1445,32 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "correction" for "slo"
-	CorrectionDataID := os.Getenv("CORRECTION_DATA_ID")
+    // there is a valid "correction" for "slo"
+    CorrectionDataID := os.Getenv("CORRECTION_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectiveCorrectionsApi(apiClient)
-	resp, r, err := api.GetSLOCorrection(ctx, CorrectionDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectiveCorrectionsApi(apiClient)
+    resp, r, err := api.GetSLOCorrection(ctx, CorrectionDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectiveCorrectionsApi.GetSLOCorrection`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectiveCorrectionsApi.GetSLOCorrection`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectiveCorrectionsApi.GetSLOCorrection`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectiveCorrectionsApi.GetSLOCorrection`:\n%s\n", responseContent)
 }
 ```
 
@@ -1478,7 +1478,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get an SLO correction for an SLO returns "OK" response
@@ -1516,7 +1516,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get an SLO correction for an SLO returns "OK" response
@@ -1542,7 +1542,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1818,7 +1818,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport slo_correction_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/correction/${slo_correction_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1838,8 +1838,8 @@ Error response object.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update an SLO correction returns "OK" response
@@ -1847,45 +1847,45 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	// there is a valid "correction" for "slo"
-	CorrectionDataID := os.Getenv("CORRECTION_DATA_ID")
+    // there is a valid "correction" for "slo"
+    CorrectionDataID := os.Getenv("CORRECTION_DATA_ID")
 
-	body := datadogV1.SLOCorrectionUpdateRequest{
-		Data: &datadogV1.SLOCorrectionUpdateData{
-			Attributes: &datadogV1.SLOCorrectionUpdateRequestAttributes{
-				Category:    datadogV1.SLOCORRECTIONCATEGORY_DEPLOYMENT.Ptr(),
-				Description: datadog.PtrString("Example-Service-Level-Objective-Correction"),
-				End:         datadog.PtrInt64(time.Now().Add(time.Hour * 1).Unix()),
-				Start:       datadog.PtrInt64(time.Now().Unix()),
-				Timezone:    datadog.PtrString("UTC"),
-			},
-			Type: datadogV1.SLOCORRECTIONTYPE_CORRECTION.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectiveCorrectionsApi(apiClient)
-	resp, r, err := api.UpdateSLOCorrection(ctx, CorrectionDataID, body)
+    body := datadogV1.SLOCorrectionUpdateRequest{
+        Data: &datadogV1.SLOCorrectionUpdateData{
+            Attributes: &datadogV1.SLOCorrectionUpdateRequestAttributes{
+                Category:    datadogV1.SLOCORRECTIONCATEGORY_DEPLOYMENT.Ptr(),
+                Description: datadog.PtrString("Example-Service-Level-Objective-Correction"),
+                End:         datadog.PtrInt64(time.Now().Add(time.Hour * 1).Unix()),
+                Start:       datadog.PtrInt64(time.Now().Unix()),
+                Timezone:    datadog.PtrString("UTC"),
+            },
+            Type: datadogV1.SLOCORRECTIONTYPE_CORRECTION.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectiveCorrectionsApi(apiClient)
+    resp, r, err := api.UpdateSLOCorrection(ctx, CorrectionDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectiveCorrectionsApi.UpdateSLOCorrection`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectiveCorrectionsApi.UpdateSLOCorrection`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectiveCorrectionsApi.UpdateSLOCorrection`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceLevelObjectiveCorrectionsApi.UpdateSLOCorrection`:\n%s\n", responseContent)
 }
 ```
 
@@ -1893,7 +1893,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update an SLO correction returns "OK" response
@@ -1949,7 +1949,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1995,7 +1995,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update an SLO correction returns "OK" response
@@ -2025,7 +2025,7 @@ p api_instance.update_slo_correction(CORRECTION_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update an SLO correction returns "OK" response
@@ -2070,7 +2070,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2229,12 +2229,12 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport slo_correction_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/slo/correction/${slo_correction_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2256,7 +2256,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an SLO correction returns "OK" response
@@ -2270,7 +2270,7 @@ api_instance.delete_slo_correction("slo_correction_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an SLO correction returns "OK" response
@@ -2278,25 +2278,25 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewServiceLevelObjectiveCorrectionsApi(apiClient)
-	r, err := api.DeleteSLOCorrection(ctx, "slo_correction_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewServiceLevelObjectiveCorrectionsApi(apiClient)
+    r, err := api.DeleteSLOCorrection(ctx, "slo_correction_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectiveCorrectionsApi.DeleteSLOCorrection`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceLevelObjectiveCorrectionsApi.DeleteSLOCorrection`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -2304,7 +2304,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an SLO correction returns "OK" response
@@ -2337,7 +2337,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete an SLO correction returns "OK" response
@@ -2363,7 +2363,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The misconfigured resource should retain at least 10 log file rotations
-Classification:complianceFramework:cis-kubernetesControl:1.2.24 
+Classification:complianceFramework:cis-kubernetesControl:1.2.24
 ## Description{% #description %}
 
 Retain 10 or an appropriate number of old log files.

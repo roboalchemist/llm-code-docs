@@ -52,10 +52,9 @@ class Compliant {
     int foo = 1;
 
     ThreadLocal<int> foo = new ThreadLocal<int> (() => 1);
-    
+
     ThreadLocal<int> foo;
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

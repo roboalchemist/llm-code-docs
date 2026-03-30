@@ -1,0 +1,28 @@
+# Source: https://docs.salad.com/transcription/how-to-guides/automation-integrations/pabbly-integration.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.salad.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Pabbly Transcription Guide
+
+*Last Updated: October 30, 2024*
+
+Pabbly Connect users can now integrate Salad Transcription services into their Pabbly workflows. Learn more about
+Pabbly’s SaladCloud integration, [here](https://www.pabbly.com/connect/integrations/salad-transcription-api/).
+
+1. How do I integrate SaladCloud's Transcription API with Pabbly Connect?
+
+[Integrate SaladCloud with Pabbly Connect](https://www.youtube.com/watch?v=J_mGtXCJLmc)
+
+2. How can I transcribe Google Drive Files with Salad Transcription API?
+
+[Transcribe Google Drive Files](https://www.youtube.com/watch?v=2UK2ZH8SvRI)
+
+3. How do I generate subtitles with Salad Transcription API and save them in Google Docs?
+
+[Save Transcription Files to Google Docs](https://www.youtube.com/watch?v=KqhY6LZVrB4)
+
+4. How do I generate subtitles with Salad Transcription API for a new file in Dropbox?
+
+[Integrate SaladCloud with Dropbox](https://www.youtube.com/watch?v=6B1AebSTi5o)

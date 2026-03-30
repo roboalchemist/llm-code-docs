@@ -59,6 +59,5 @@ import stat
 path = "/path/to/file"
 os.chmod(path, stat.S_IROTH | stat.S_IXOTH)  # no write by others
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

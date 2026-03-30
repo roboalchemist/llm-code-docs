@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # S3 buckets should have versioning enabled
- 
+
 ## Description{% #description %}
 
 Enable versioning on S3 buckets to keep multiple versions of an object in one bucket.

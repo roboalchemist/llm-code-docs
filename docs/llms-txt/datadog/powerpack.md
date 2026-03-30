@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/dashboards/widgets/powerpack.md
-
 # Source: https://docs.datadoghq.com/api/latest/powerpack.md
 
 ---
@@ -293,7 +291,7 @@ Response object which includes all powerpack configurations.
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -318,7 +316,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -326,13 +324,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/powerpacks" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -350,13 +348,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all powerpacks returns "OK" response
@@ -367,13 +365,13 @@ opts = {
   page_limit: 1000,
 }
 p api_instance.list_powerpacks(opts)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all powerpacks returns "OK" response
@@ -381,37 +379,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewPowerpackApi(apiClient)
-	resp, r, err := api.ListPowerpacks(ctx, *datadogV2.NewListPowerpacksOptionalParameters().WithPageLimit(1000))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewPowerpackApi(apiClient)
+    resp, r, err := api.ListPowerpacks(ctx, *datadogV2.NewListPowerpacksOptionalParameters().WithPageLimit(1000))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PowerpackApi.ListPowerpacks`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PowerpackApi.ListPowerpacks`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `PowerpackApi.ListPowerpacks`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `PowerpackApi.ListPowerpacks`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all powerpacks returns "OK" response
@@ -440,13 +438,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all powerpacks returns "OK" response
@@ -467,13 +465,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -497,7 +495,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -622,7 +620,7 @@ Create a powerpack request body.
     "type": "powerpack"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -830,7 +828,7 @@ Response object which includes a single powerpack configuration.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -855,7 +853,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -880,7 +878,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -888,7 +886,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/powerpacks" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -939,8 +937,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a new powerpack returns "OK" response
@@ -948,80 +946,80 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.Powerpack{
-		Data: &datadogV2.PowerpackData{
-			Attributes: &datadogV2.PowerpackAttributes{
-				Description: datadog.PtrString("Sample powerpack"),
-				GroupWidget: datadogV2.PowerpackGroupWidget{
-					Definition: datadogV2.PowerpackGroupWidgetDefinition{
-						LayoutType: "ordered",
-						ShowTitle:  datadog.PtrBool(true),
-						Title:      datadog.PtrString("Sample Powerpack"),
-						Type:       "group",
-						Widgets: []datadogV2.PowerpackInnerWidgets{
-							{
-								Definition: map[string]interface{}{
-									"content": "test",
-									"type":    "note",
-								},
-							},
-						},
-					},
-					Layout: &datadogV2.PowerpackGroupWidgetLayout{
-						Height: 3,
-						Width:  12,
-						X:      0,
-						Y:      0,
-					},
-					LiveSpan: datadogV2.WIDGETLIVESPAN_PAST_ONE_HOUR.Ptr(),
-				},
-				Name: "Example-Powerpack",
-				Tags: []string{
-					"tag:sample",
-				},
-				TemplateVariables: []datadogV2.PowerpackTemplateVariable{
-					{
-						Defaults: []string{
-							"*",
-						},
-						Name: "sample",
-					},
-				},
-			},
-			Type: datadog.PtrString("powerpack"),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewPowerpackApi(apiClient)
-	resp, r, err := api.CreatePowerpack(ctx, body)
+    body := datadogV2.Powerpack{
+        Data: &datadogV2.PowerpackData{
+            Attributes: &datadogV2.PowerpackAttributes{
+                Description: datadog.PtrString("Sample powerpack"),
+                GroupWidget: datadogV2.PowerpackGroupWidget{
+                    Definition: datadogV2.PowerpackGroupWidgetDefinition{
+                        LayoutType: "ordered",
+                        ShowTitle:  datadog.PtrBool(true),
+                        Title:      datadog.PtrString("Sample Powerpack"),
+                        Type:       "group",
+                        Widgets: []datadogV2.PowerpackInnerWidgets{
+                            {
+                                Definition: map[string]interface{}{
+                                    "content": "test",
+                                    "type":    "note",
+                                },
+                            },
+                        },
+                    },
+                    Layout: &datadogV2.PowerpackGroupWidgetLayout{
+                        Height: 3,
+                        Width:  12,
+                        X:      0,
+                        Y:      0,
+                    },
+                    LiveSpan: datadogV2.WIDGETLIVESPAN_PAST_ONE_HOUR.Ptr(),
+                },
+                Name: "Example-Powerpack",
+                Tags: []string{
+                    "tag:sample",
+                },
+                TemplateVariables: []datadogV2.PowerpackTemplateVariable{
+                    {
+                        Defaults: []string{
+                            "*",
+                        },
+                        Name: "sample",
+                    },
+                },
+            },
+            Type: datadog.PtrString("powerpack"),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewPowerpackApi(apiClient)
+    resp, r, err := api.CreatePowerpack(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PowerpackApi.CreatePowerpack`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PowerpackApi.CreatePowerpack`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `PowerpackApi.CreatePowerpack`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `PowerpackApi.CreatePowerpack`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a new powerpack returns "OK" response
@@ -1097,13 +1095,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1169,13 +1167,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_powerpack(body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a new powerpack returns "OK" response
@@ -1226,13 +1224,13 @@ body = DatadogAPIClient::V2::Powerpack.new({
   }),
 })
 p api_instance.create_powerpack(body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a new powerpack returns "OK" response
@@ -1288,13 +1286,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1356,7 +1354,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -1419,7 +1417,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1444,7 +1442,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1452,12 +1450,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport powerpack_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/powerpacks/${powerpack_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1477,13 +1475,13 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_powerpack(
         powerpack_id=POWERPACK_DATA_ID,
     )
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a powerpack returns "OK" response
@@ -1494,13 +1492,13 @@ api_instance = DatadogAPIClient::V2::PowerpackAPI.new
 # there is a valid "powerpack" in the system
 POWERPACK_DATA_ID = ENV["POWERPACK_DATA_ID"]
 api_instance.delete_powerpack(POWERPACK_DATA_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a powerpack returns "OK" response
@@ -1508,36 +1506,36 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "powerpack" in the system
-	PowerpackDataID := os.Getenv("POWERPACK_DATA_ID")
+    // there is a valid "powerpack" in the system
+    PowerpackDataID := os.Getenv("POWERPACK_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewPowerpackApi(apiClient)
-	r, err := api.DeletePowerpack(ctx, PowerpackDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewPowerpackApi(apiClient)
+    r, err := api.DeletePowerpack(ctx, PowerpackDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PowerpackApi.DeletePowerpack`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PowerpackApi.DeletePowerpack`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a powerpack returns "OK" response
@@ -1565,13 +1563,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a powerpack returns "OK" response
@@ -1591,13 +1589,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1624,7 +1622,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -1866,7 +1864,7 @@ Response object which includes a single powerpack configuration.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1891,7 +1889,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1916,7 +1914,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1924,13 +1922,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport powerpack_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/powerpacks/${powerpack_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1952,13 +1950,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a Powerpack returns "OK" response
@@ -1969,13 +1967,13 @@ api_instance = DatadogAPIClient::V2::PowerpackAPI.new
 # there is a valid "powerpack" in the system
 POWERPACK_DATA_ID = ENV["POWERPACK_DATA_ID"]
 p api_instance.get_powerpack(POWERPACK_DATA_ID)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a Powerpack returns "OK" response
@@ -1983,40 +1981,40 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "powerpack" in the system
-	PowerpackDataID := os.Getenv("POWERPACK_DATA_ID")
+    // there is a valid "powerpack" in the system
+    PowerpackDataID := os.Getenv("POWERPACK_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewPowerpackApi(apiClient)
-	resp, r, err := api.GetPowerpack(ctx, PowerpackDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewPowerpackApi(apiClient)
+    resp, r, err := api.GetPowerpack(ctx, PowerpackDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PowerpackApi.GetPowerpack`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PowerpackApi.GetPowerpack`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `PowerpackApi.GetPowerpack`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `PowerpackApi.GetPowerpack`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a Powerpack returns "OK" response
@@ -2046,13 +2044,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a Powerpack returns "OK" response
@@ -2072,13 +2070,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2105,7 +2103,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -2238,7 +2236,7 @@ Update a powerpack request body.
     "type": "powerpack"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -2446,7 +2444,7 @@ Response object which includes a single powerpack configuration.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2471,7 +2469,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2496,7 +2494,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2521,7 +2519,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2529,7 +2527,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport powerpack_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/powerpacks/${powerpack_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2580,8 +2578,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a powerpack returns "OK" response
@@ -2589,83 +2587,83 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "powerpack" in the system
-	PowerpackDataID := os.Getenv("POWERPACK_DATA_ID")
+    // there is a valid "powerpack" in the system
+    PowerpackDataID := os.Getenv("POWERPACK_DATA_ID")
 
-	body := datadogV2.Powerpack{
-		Data: &datadogV2.PowerpackData{
-			Attributes: &datadogV2.PowerpackAttributes{
-				Description: datadog.PtrString("Sample powerpack"),
-				GroupWidget: datadogV2.PowerpackGroupWidget{
-					Definition: datadogV2.PowerpackGroupWidgetDefinition{
-						LayoutType: "ordered",
-						ShowTitle:  datadog.PtrBool(true),
-						Title:      datadog.PtrString("Sample Powerpack"),
-						Type:       "group",
-						Widgets: []datadogV2.PowerpackInnerWidgets{
-							{
-								Definition: map[string]interface{}{
-									"content": "test",
-									"type":    "note",
-								},
-							},
-						},
-					},
-					Layout: &datadogV2.PowerpackGroupWidgetLayout{
-						Height: 3,
-						Width:  12,
-						X:      0,
-						Y:      0,
-					},
-					LiveSpan: datadogV2.WIDGETLIVESPAN_PAST_ONE_HOUR.Ptr(),
-				},
-				Name: "Example-Powerpack",
-				Tags: []string{
-					"tag:sample",
-				},
-				TemplateVariables: []datadogV2.PowerpackTemplateVariable{
-					{
-						Defaults: []string{
-							"*",
-						},
-						Name: "sample",
-					},
-				},
-			},
-			Type: datadog.PtrString("powerpack"),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewPowerpackApi(apiClient)
-	resp, r, err := api.UpdatePowerpack(ctx, PowerpackDataID, body)
+    body := datadogV2.Powerpack{
+        Data: &datadogV2.PowerpackData{
+            Attributes: &datadogV2.PowerpackAttributes{
+                Description: datadog.PtrString("Sample powerpack"),
+                GroupWidget: datadogV2.PowerpackGroupWidget{
+                    Definition: datadogV2.PowerpackGroupWidgetDefinition{
+                        LayoutType: "ordered",
+                        ShowTitle:  datadog.PtrBool(true),
+                        Title:      datadog.PtrString("Sample Powerpack"),
+                        Type:       "group",
+                        Widgets: []datadogV2.PowerpackInnerWidgets{
+                            {
+                                Definition: map[string]interface{}{
+                                    "content": "test",
+                                    "type":    "note",
+                                },
+                            },
+                        },
+                    },
+                    Layout: &datadogV2.PowerpackGroupWidgetLayout{
+                        Height: 3,
+                        Width:  12,
+                        X:      0,
+                        Y:      0,
+                    },
+                    LiveSpan: datadogV2.WIDGETLIVESPAN_PAST_ONE_HOUR.Ptr(),
+                },
+                Name: "Example-Powerpack",
+                Tags: []string{
+                    "tag:sample",
+                },
+                TemplateVariables: []datadogV2.PowerpackTemplateVariable{
+                    {
+                        Defaults: []string{
+                            "*",
+                        },
+                        Name: "sample",
+                    },
+                },
+            },
+            Type: datadog.PtrString("powerpack"),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewPowerpackApi(apiClient)
+    resp, r, err := api.UpdatePowerpack(ctx, PowerpackDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `PowerpackApi.UpdatePowerpack`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `PowerpackApi.UpdatePowerpack`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `PowerpackApi.UpdatePowerpack`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `PowerpackApi.UpdatePowerpack`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a powerpack returns "OK" response
@@ -2744,13 +2742,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2820,13 +2818,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_powerpack(powerpack_id=POWERPACK_DATA_ID, body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a powerpack returns "OK" response
@@ -2880,13 +2878,13 @@ body = DatadogAPIClient::V2::Powerpack.new({
   }),
 })
 p api_instance.update_powerpack(POWERPACK_DATA_ID, body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a powerpack returns "OK" response
@@ -2944,13 +2942,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3016,7 +3014,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 

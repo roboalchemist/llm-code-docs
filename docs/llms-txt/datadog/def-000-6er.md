@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Suricata high number of requests detected from single IP address
-Technique:[T1110-brute-force](https://attack.mitre.org/techniques/T1110) 
+Technique:[T1110-brute-force](https://attack.mitre.org/techniques/T1110)
 ## Goal{% #goal %}
 
 Detect an unusually high number of requests are made from a single IP address, which could indicate a potential brute force attack, Denial-of-Service (DoS) attempt, or other malicious activities aimed at overwhelming or exploiting the server.

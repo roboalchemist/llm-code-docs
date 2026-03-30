@@ -64,6 +64,5 @@ class Class(Parent):
     def __init__(self):
         super().__init__(self)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

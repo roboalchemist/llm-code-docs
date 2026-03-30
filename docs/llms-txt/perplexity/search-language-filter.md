@@ -1,6 +1,6 @@
-# Source: https://docs.perplexity.ai/guides/search-language-filter.md
-
 # Search Language Filter
+
+Source: https://docs.perplexity.ai/docs/search/filters/language-filter
 
 <Note>
   The `search_language_filter` parameter allows you to filter search results by language using ISO 639-1 language codes. Only results in the specified languages will be returned.
@@ -23,7 +23,7 @@ The `search_language_filter` parameter accepts an array of ISO 639-1 language co
 
 To filter search results by language:
 
-```bash  theme={null}
+```bash theme={null}
 "search_language_filter": ["en", "fr", "de"]
 ```
 
@@ -31,14 +31,15 @@ This filter will be applied in addition to any other search parameters.
 
 ## Examples
 
-**1. Single Language Filter**
+## 1. Single Language Filter
 
 This example limits search results to English language content only.
 
-**Request Example**
+### Request Example
 
 <CodeGroup>
-  ```python Python theme={null}
+
+```python
   from perplexity import Perplexity
 
   client = Perplexity()
@@ -49,206 +50,213 @@ This example limits search results to English language content only.
       search_language_filter=["en"]
   )
 
-  for result in response.results:
-      print(f"{result.title}: {result.url}")
-  ```
+for result in response.results:
+    print(f"{result.title}: {result.url}")
+```
 
-  ```typescript TypeScript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
-  const client = new Perplexity();
+const client = new Perplexity();
 
-  const response = await client.search.create({
-    query: "artificial intelligence",
-    maxResults: 10,
-    searchLanguageFilter: ["en"]
-  });
+const response = await client.search.create({
+  query: "artificial intelligence",
+  maxResults: 10,
+  searchLanguageFilter: ["en"]
+});
 
-  for (const result of response.results) {
-    console.log(`${result.title}: ${result.url}`);
-  }
-  ```
+for (const result of response.results) {
+  console.log(`${result.title}: ${result.url}`);
+}
+```
 
-  ```bash cURL theme={null}
-  curl -X POST 'https://api.perplexity.ai/search' \
-    -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
-    -H 'Content-Type: application/json' \
-    -d '{
-      "query": "artificial intelligence",
-      "max_results": 10,
-      "search_language_filter": ["en"]
-    }' | jq
-  ```
+```bash
+curl -X POST 'https://api.perplexity.ai/search' \
+  -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query": "artificial intelligence",
+    "max_results": 10,
+    "search_language_filter": ["en"]
+  }' | jq
+```
+
 </CodeGroup>
 
-**2. Multiple Language Filter**
+## 2. Multiple Language Filter
 
 Search across multiple languages to gather diverse perspectives or multilingual content:
 
 <CodeGroup>
-  ```python Python theme={null}
-  from perplexity import Perplexity
 
-  client = Perplexity()
+```python
+from perplexity import Perplexity
 
-  # Search for content in English, French, and German
-  response = client.search.create(
-      query="renewable energy innovations",
-      max_results=15,
-      search_language_filter=["en", "fr", "de"]
-  )
+client = Perplexity()
 
-  for result in response.results:
-      print(f"{result.title}: {result.url}")
-  ```
+# Search for content in English, French, and German
+response = client.search.create(
+    query="renewable energy innovations",
+    max_results=15,
+    search_language_filter=["en", "fr", "de"]
+)
 
-  ```typescript TypeScript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+for result in response.results:
+    print(f"{result.title}: {result.url}")
+```
 
-  const client = new Perplexity();
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
-  // Search for content in English, French, and German
-  const response = await client.search.create({
-    query: "renewable energy innovations",
-    maxResults: 15,
-    searchLanguageFilter: ["en", "fr", "de"]
-  });
+const client = new Perplexity();
 
-  for (const result of response.results) {
-    console.log(`${result.title}: ${result.url}`);
-  }
-  ```
+// Search for content in English, French, and German
+const response = await client.search.create({
+  query: "renewable energy innovations",
+  maxResults: 15,
+  searchLanguageFilter: ["en", "fr", "de"]
+});
 
-  ```bash cURL theme={null}
-  curl -X POST 'https://api.perplexity.ai/search' \
-    -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
-    -H 'Content-Type: application/json' \
-    -d '{
-      "query": "renewable energy innovations",
-      "max_results": 15,
-      "search_language_filter": ["en", "fr", "de"]
-    }' | jq
-  ```
+for (const result of response.results) {
+  console.log(`${result.title}: ${result.url}`);
+}
+```
+
+```bash
+curl -X POST 'https://api.perplexity.ai/search' \
+  -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query": "renewable energy innovations",
+    "max_results": 15,
+    "search_language_filter": ["en", "fr", "de"]
+  }' | jq
+```
+
 </CodeGroup>
 
-**3. Regional Language Search**
+## 3. Regional Language Search
 
 Focus on content from specific regions by using their local languages:
 
 <CodeGroup>
-  ```python Python theme={null}
-  from perplexity import Perplexity
 
-  client = Perplexity()
+```python
+from perplexity import Perplexity
 
-  # Search for Asian market news in Chinese, Japanese, and Korean
-  response = client.search.create(
-      query="technology market trends",
-      max_results=10,
-      search_language_filter=["zh", "ja", "ko"]
-  )
+client = Perplexity()
 
-  # Search for European tech news in multiple European languages
-  eu_response = client.search.create(
-      query="tech startups",
-      max_results=10,
-      search_language_filter=["en", "de", "fr", "es", "it"]
-  )
-  ```
+# Search for Asian market news in Chinese, Japanese, and Korean
+response = client.search.create(
+    query="technology market trends",
+    max_results=10,
+    search_language_filter=["zh", "ja", "ko"]
+)
 
-  ```typescript TypeScript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+# Search for European tech news in multiple European languages
+eu_response = client.search.create(
+    query="tech startups",
+    max_results=10,
+    search_language_filter=["en", "de", "fr", "es", "it"]
+)
+```
 
-  const client = new Perplexity();
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
-  // Search for Asian market news in Chinese, Japanese, and Korean
-  const response = await client.search.create({
-    query: "technology market trends",
-    maxResults: 10,
-    searchLanguageFilter: ["zh", "ja", "ko"]
-  });
+const client = new Perplexity();
 
-  // Search for European tech news in multiple European languages
-  const euResponse = await client.search.create({
-    query: "tech startups",
-    maxResults: 10,
-    searchLanguageFilter: ["en", "de", "fr", "es", "it"]
-  });
-  ```
+// Search for Asian market news in Chinese, Japanese, and Korean
+const response = await client.search.create({
+  query: "technology market trends",
+  maxResults: 10,
+  searchLanguageFilter: ["zh", "ja", "ko"]
+});
 
-  ```bash cURL theme={null}
-  # Search for Asian market news
-  curl -X POST 'https://api.perplexity.ai/search' \
-    -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
-    -H 'Content-Type: application/json' \
-    -d '{
-      "query": "technology market trends",
-      "max_results": 10,
-      "search_language_filter": ["zh", "ja", "ko"]
-    }' | jq
-  ```
+// Search for European tech news in multiple European languages
+const euResponse = await client.search.create({
+  query: "tech startups",
+  maxResults: 10,
+  searchLanguageFilter: ["en", "de", "fr", "es", "it"]
+});
+```
+
+```bash
+# Search for Asian market news
+curl -X POST 'https://api.perplexity.ai/search' \
+  -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query": "technology market trends",
+    "max_results": 10,
+    "search_language_filter": ["zh", "ja", "ko"]
+  }' | jq
+```
+
 </CodeGroup>
 
-**4. Combining with Other Filters**
+## 4. Combining with Other Filters
 
 Language filters work seamlessly with other search parameters for precise control:
 
 <CodeGroup>
-  ```python Python theme={null}
-  from perplexity import Perplexity
 
-  client = Perplexity()
+```python
+from perplexity import Perplexity
 
-  # Combine language filter with date and domain filters
-  response = client.search.create(
-      query="climate change research",
-      max_results=20,
-      search_language_filter=["en", "de"],
-      search_domain_filter=["nature.com", "science.org"],
-      search_recency_filter="month"
-  )
+client = Perplexity()
 
-  for result in response.results:
-      print(f"{result.title}")
-      print(f"URL: {result.url}")
-      print(f"Date: {result.date}")
-      print("---")
-  ```
+# Combine language filter with date and domain filters
+response = client.search.create(
+    query="climate change research",
+    max_results=20,
+    search_language_filter=["en", "de"],
+    search_domain_filter=["nature.com", "science.org"],
+    search_recency_filter="month"
+)
 
-  ```typescript TypeScript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+for result in response.results:
+    print(f"{result.title}")
+    print(f"URL: {result.url}")
+    print(f"Date: {result.date}")
+    print("---")
+```
 
-  const client = new Perplexity();
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
-  // Combine language filter with date and domain filters
-  const response = await client.search.create({
-    query: "climate change research",
-    maxResults: 20,
-    searchLanguageFilter: ["en", "de"],
-    searchDomainFilter: ["nature.com", "science.org"],
-    searchRecencyFilter: "month"
-  });
+const client = new Perplexity();
 
-  for (const result of response.results) {
-    console.log(`${result.title}`);
-    console.log(`URL: ${result.url}`);
-    console.log(`Date: ${result.date}`);
-    console.log("---");
-  }
-  ```
+// Combine language filter with date and domain filters
+const response = await client.search.create({
+  query: "climate change research",
+  maxResults: 20,
+  searchLanguageFilter: ["en", "de"],
+  searchDomainFilter: ["nature.com", "science.org"],
+  searchRecencyFilter: "month"
+});
 
-  ```bash cURL theme={null}
-  curl -X POST 'https://api.perplexity.ai/search' \
-    -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
-    -H 'Content-Type: application/json' \
-    -d '{
-      "query": "climate change research",
-      "max_results": 20,
-      "search_language_filter": ["en", "de"],
-      "search_domain_filter": ["nature.com", "science.org"],
-      "search_recency_filter": "month"
-    }' | jq
-  ```
+for (const result of response.results) {
+  console.log(`${result.title}`);
+  console.log(`URL: ${result.url}`);
+  console.log(`Date: ${result.date}`);
+  console.log("---");
+}
+```
+
+```bash
+curl -X POST 'https://api.perplexity.ai/search' \
+  -H 'Authorization: Bearer $PERPLEXITY_API_KEY' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "query": "climate change research",
+    "max_results": 20,
+    "search_language_filter": ["en", "de"],
+    "search_domain_filter": ["nature.com", "science.org"],
+    "search_recency_filter": "month"
+  }' | jq
+```
+
 </CodeGroup>
 
 ## Parameter Reference
@@ -296,57 +304,58 @@ Here's a comprehensive list of frequently used ISO 639-1 language codes:
 * **Client-Side Validation**: Validate language codes on the client side using a regex pattern:
 
 <CodeGroup>
-  ```python Python theme={null}
-  import re
 
-  def validate_language_code(code):
-      pattern = r'^[a-z]{2}$'
-      return bool(re.match(pattern, code))
+```python
+import re
 
-  def validate_language_filters(codes):
-      if len(codes) > 10:
-          raise ValueError("Maximum 10 language codes allowed")
-      
-      for code in codes:
-          if not validate_language_code(code):
-              raise ValueError(f"Invalid language code: {code}")
-      
-      return True
+def validate_language_code(code):
+    pattern = r'^[a-z]{2}$'
+    return bool(re.match(pattern, code))
 
-  # Usage
-  try:
-      codes = ["en", "fr", "de"]
-      validate_language_filters(codes)
-      
-      response = client.search.create(
-          query="technology news",
-          search_language_filter=codes
-      )
-  except ValueError as e:
-      print(f"Validation error: {e}")
-  ```
+def validate_language_filters(codes):
+    if len(codes) > 10:
+        raise ValueError("Maximum 10 language codes allowed")
 
-  ```typescript TypeScript theme={null}
-  function validateLanguageCode(code: string): boolean {
-    const pattern = /^[a-z]{2}$/;
-    return pattern.test(code);
+    for code in codes:
+        if not validate_language_code(code):
+            raise ValueError(f"Invalid language code: {code}")
+
+    return True
+
+# Usage
+try:
+    codes = ["en", "fr", "de"]
+    validate_language_filters(codes)
+
+    response = client.search.create(
+        query="technology news",
+        search_language_filter=codes
+    )
+except ValueError as e:
+    print(f"Validation error: {e}")
+```
+
+```typescript
+function validateLanguageCode(code: string): boolean {
+  const pattern = /^[a-z]{2}$/;
+  return pattern.test(code);
+}
+
+function validateLanguageFilters(codes: string[]): void {
+  if (codes.length > 10) {
+    throw new Error("Maximum 10 language codes allowed");
   }
 
-  function validateLanguageFilters(codes: string[]): void {
-    if (codes.length > 10) {
-      throw new Error("Maximum 10 language codes allowed");
-    }
-    
-    for (const code of codes) {
-      if (!validateLanguageCode(code)) {
-        throw new Error(`Invalid language code: ${code}`);
-      }
+  for (const code of codes) {
+    if (!validateLanguageCode(code)) {
+      throw new Error(`Invalid language code: ${code}`);
     }
   }
+}
 
-  // Usage
-  try {
-    const codes = ["en", "fr", "de"];
+// Usage
+try {
+  const codes = ["en", "fr", "de"];
     validateLanguageFilters(codes);
     
     const response = await client.search.create({
@@ -356,7 +365,8 @@ Here's a comprehensive list of frequently used ISO 639-1 language codes:
   } catch (error) {
     console.error("Validation error:", error.message);
   }
-  ```
+```
+
 </CodeGroup>
 
 ### Strategic Language Selection
@@ -378,202 +388,7 @@ Here's a comprehensive list of frequently used ISO 639-1 language codes:
 
 Conduct comprehensive research by searching across multiple languages:
 
-```python  theme={null}
+```python theme={null}
 from perplexity import Perplexity
 
 client = Perplexity()
-
-# Research a global topic in multiple languages
-languages = [
-    ["en"],           # English-speaking countries
-    ["zh", "ja"],     # East Asia
-    ["es", "pt"],     # Latin America and Iberia
-    ["fr", "de", "it"] # Western Europe
-]
-
-results_by_region = {}
-
-for lang_group in languages:
-    response = client.search.create(
-        query="sustainable development goals progress",
-        max_results=10,
-        search_language_filter=lang_group
-    )
-    results_by_region[", ".join(lang_group)] = response.results
-
-# Analyze results by language/region
-for region, results in results_by_region.items():
-    print(f"Results in {region}: {len(results)} found")
-```
-
-### Content Localization Research
-
-Find examples and references in target languages for localization projects:
-
-```python  theme={null}
-# Find product reviews in target markets
-target_languages = ["ja", "ko", "zh"]  # Asian markets
-
-response = client.search.create(
-    query="smartphone reviews 2024",
-    max_results=15,
-    search_language_filter=target_languages,
-    search_recency_filter="month"
-)
-```
-
-### Academic Research Across Languages
-
-Access scholarly content in different languages:
-
-```python  theme={null}
-# Search for research papers in multiple languages
-response = client.search.create(
-    query="quantum computing algorithms",
-    max_results=20,
-    search_language_filter=["en", "de", "fr", "ru"],
-    search_domain_filter=["arxiv.org", "nature.com", "science.org"]
-)
-```
-
-### News Monitoring by Language
-
-Track news stories across different language regions:
-
-```python  theme={null}
-# Monitor breaking news in different languages
-news_queries = {
-    "English": ["en"],
-    "Chinese": ["zh"],
-    "Spanish": ["es"],
-    "Arabic": ["ar"]
-}
-
-for region, langs in news_queries.items():
-    response = client.search.create(
-        query="breaking news technology",
-        max_results=5,
-        search_language_filter=langs,
-        search_recency_filter="day"
-    )
-    print(f"{region} News: {len(response.results)} articles")
-```
-
-## Error Handling
-
-When using language filters, implement proper error handling for validation issues:
-
-<CodeGroup>
-  ```python Python theme={null}
-  from perplexity import Perplexity, BadRequestError
-
-  client = Perplexity()
-
-  def safe_language_search(query, languages):
-      """
-      Perform a language-filtered search with error handling.
-      """
-      try:
-          # Validate language codes
-          if not isinstance(languages, list):
-              raise ValueError("Languages must be provided as a list")
-          
-          if len(languages) > 10:
-              raise ValueError("Maximum 10 language codes allowed")
-          
-          # Validate each code format
-          for lang in languages:
-              if not isinstance(lang, str) or len(lang) != 2 or not lang.islower():
-                  raise ValueError(f"Invalid language code format: {lang}")
-          
-          # Perform search
-          response = client.search.create(
-              query=query,
-              search_language_filter=languages,
-              max_results=10
-          )
-          
-          return response
-          
-      except ValueError as e:
-          print(f"Validation error: {e}")
-          return None
-      except BadRequestError as e:
-          print(f"API error: {e.message}")
-          return None
-      except Exception as e:
-          print(f"Unexpected error: {e}")
-          return None
-
-  # Usage
-  results = safe_language_search(
-      "artificial intelligence",
-      ["en", "fr", "de"]
-  )
-
-  if results:
-      print(f"Found {len(results.results)} results")
-  ```
-
-  ```typescript TypeScript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
-
-  const client = new Perplexity();
-
-  async function safeLanguageSearch(
-    query: string,
-    languages: string[]
-  ): Promise<any | null> {
-    try {
-      // Validate language codes
-      if (!Array.isArray(languages)) {
-        throw new Error("Languages must be provided as an array");
-      }
-      
-      if (languages.length > 10) {
-        throw new Error("Maximum 10 language codes allowed");
-      }
-      
-      // Validate each code format
-      for (const lang of languages) {
-        if (typeof lang !== 'string' || 
-            lang.length !== 2 || 
-            lang !== lang.toLowerCase()) {
-          throw new Error(`Invalid language code format: ${lang}`);
-        }
-      }
-      
-      // Perform search
-      const response = await client.search.create({
-        query,
-        searchLanguageFilter: languages,
-        maxResults: 10
-      });
-      
-      return response;
-      
-    } catch (error) {
-      if (error instanceof Perplexity.BadRequestError) {
-        console.error("API error:", error.message);
-      } else if (error instanceof Error) {
-        console.error("Error:", error.message);
-      }
-      return null;
-    }
-  }
-
-  // Usage
-  const results = await safeLanguageSearch(
-    "artificial intelligence",
-    ["en", "fr", "de"]
-  );
-
-  if (results) {
-    console.log(`Found ${results.results.length} results`);
-  }
-  ```
-</CodeGroup>
-
-<Tip>
-  For best results, combine language filtering with other filters like `search_domain_filter` or `search_recency_filter` to narrow down your search to highly relevant, timely content in your target languages.
-</Tip>

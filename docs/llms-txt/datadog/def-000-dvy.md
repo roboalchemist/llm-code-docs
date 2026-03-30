@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Permissions on /etc/at.allow file
- 
+
 ## Description{% #description %}
 
 If `/etc/at.allow` exists, it must have permissions `0640` or more restrictive. To properly set the permissions of `/etc/at.allow`, run the command:

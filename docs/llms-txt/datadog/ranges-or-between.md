@@ -49,6 +49,5 @@ acceptable_foo if foo >= 42 && foo <= 99
 acceptable_foo if (42..99).include?(foo)
 acceptable_foo if foo.between?(42, 99)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

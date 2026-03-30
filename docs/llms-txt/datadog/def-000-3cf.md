@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # DynamoDB tables should have deletion protection enabled
- 
+
 ## Description{% #description %}
 
 This check verifies if deletion protection is turned on for an Amazon DynamoDB table. If the table does not have deletion protection enabled, the check will fail.

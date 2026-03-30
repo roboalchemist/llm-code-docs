@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Neptune DB clusters should be encrypted at rest
- 
+
 ## Description{% #description %}
 
 This check verifies if a Neptune DB cluster has encryption enabled for data at rest.

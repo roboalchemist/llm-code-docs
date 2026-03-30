@@ -40,7 +40,7 @@ To configure Dogshell:
    [Connection]
    apikey = MY_API_KEY
    appkey = MY_APP_KEY
-   api_host = 
+   api_host =
    ```
 Important alert (level: info): You can create multiple configuration files if you need to run commands against different environments. Use the `--config` flag to specify the path to an alternative configuration file.
 1. Test the `dogshell` command by posting a test metric:

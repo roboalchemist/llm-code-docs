@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # GitHub personal access token impossible travel detected from suspicious IP
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detects GitHub Personal Access Token (PAT) usage from suspicious IP addresses with impossible travel patterns. Identifies potential credential theft when PATs are used from geographically distant locations within an impossible timeframe.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Streaming connections should have timeouts enabled
- 
+
 ## Description{% #description %}
 
 Timeouts on streaming connections should not be disabled. Setting idle timeouts ensures that you are protected against denial-of-service attacks, inactive connections, and running out of ephemeral ports.

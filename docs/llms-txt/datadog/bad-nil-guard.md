@@ -43,7 +43,7 @@ To avoid these issues, ensure that nil checks are done correctly **before** acce
 func main(req, http) {
     if (req == nil && req.Method == http.MethodGet) {
         // ...
-    } else if (req != nil || req.Method == http.MethodPost){ 
+    } else if (req != nil || req.Method == http.MethodPost){
         // ...
     } else if (req == nil && len(req.URL.Path) > 0){
         // ...
@@ -66,6 +66,5 @@ func main(req, http) {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

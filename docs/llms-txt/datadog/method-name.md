@@ -57,6 +57,5 @@ class A { _setValue() {} }
 class A { __setValue() {} }
 class A { set2() {} }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

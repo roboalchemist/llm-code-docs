@@ -62,6 +62,5 @@ tempfile.mktemp(dir=self._tmp_dir)
 import tempfile
 tempfile.mkstemp(dir=self._tmp_dir)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

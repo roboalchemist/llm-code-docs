@@ -63,6 +63,5 @@ func main () {
     signal.Notify(p, os.SIGUSR1)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

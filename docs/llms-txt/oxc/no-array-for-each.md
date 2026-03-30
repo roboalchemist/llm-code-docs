@@ -1,14 +1,10 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-array-for-each.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-array-for-each.md
----
-
-### What it does
+## What it does
 
 Forbids the use of `Array#forEach` in favor of a for loop.
 
-### Why is this bad?
+## Why is this bad?
 
 Benefits of [`for…of` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of) over the `forEach` method can include:
 
@@ -18,7 +14,7 @@ Benefits of [`for…of` statement](https://developer.mozilla.org/en-US/docs/Web/
 
 Additionally, using `for…of` has great benefits if you are using TypeScript, because it does not cause a function boundary to be crossed. This means that type-narrowing earlier on in the current scope will work properly while inside of the loop (without having to re-type-narrow). Furthermore, any mutated variables inside of the loop will picked up on for the purposes of determining if a variable is being used.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

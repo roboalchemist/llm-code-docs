@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # TLS authentication should be enabled for Docker daemon to restrict remote access
-Classification:complianceFramework:cis-dockerControl:2.6 
+Classification:complianceFramework:cis-dockerControl:2.6
 ## Description{% #description %}
 
 It is possible to make the Docker daemon available remotely over a TCP port. If this is required, you should ensure that TLS authentication is configured in order to restrict access to the Docker daemon via IP address and port.
@@ -25,7 +25,7 @@ By default, the Docker daemon binds to a non-networked Unix socket and runs with
 To confirm that the TLS authentication setting is correct, review the `dockerd` startup options and the settings in `/etc/docker/daemon.json`. To review the `dockerd` startup options, run:
 
 ```
-ps -ef | grep dockerd 
+ps -ef | grep dockerd
 ```
 
 Confirm that the following parameters are present: `--tlsverify --tlscacert --tlscert --tlskey`.

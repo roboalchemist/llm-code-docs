@@ -1,10 +1,12 @@
 # Source: https://exa.ai/docs/reference/migrating-from-bing.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Migrating from Bing
+
+## # Migrating from Bing
 
 > Guide for switching from the deprecated Bing Search API to Exa
 
@@ -21,6 +23,7 @@ Microsoft deprecated the Bing Search API on August 11th, 2025. This guide provid
 ### Install the SDK
 
 <CodeGroup>
+
   ```bash Python theme={null}
   pip install exa-py
   ```
@@ -28,13 +31,15 @@ Microsoft deprecated the Bing Search API on August 11th, 2025. This guide provid
   ```bash JavaScript theme={null}
   npm install exa-js
   ```
+
 </CodeGroup>
 
 ### Replace your API calls
 
-**Bing**
+__Bing__
 
 <CodeGroup>
+
   ```bash cURL theme={null}
   curl -H "Ocp-Apim-Subscription-Key: YOUR_BING_KEY" \
     "https://api.bing.microsoft.com/v7.0/search?q=latest%20AI%20news&count=10"
@@ -60,11 +65,13 @@ Microsoft deprecated the Bing Search API on August 11th, 2025. This guide provid
     }
   );
   ```
+
 </CodeGroup>
 
-**Exa**
+__Exa__
 
 <CodeGroup>
+
   ```bash cURL theme={null}
   curl -X POST https://api.exa.ai/search \
     -H "x-api-key: YOUR_EXA_KEY" \
@@ -86,6 +93,7 @@ Microsoft deprecated the Bing Search API on August 11th, 2025. This guide provid
   const exa = new Exa("YOUR_EXA_KEY");
   const results = await exa.search("latest AI news", { numResults: 10 });
   ```
+
 </CodeGroup>
 
 ## Parameter Mapping
@@ -103,7 +111,7 @@ Microsoft deprecated the Bing Search API on August 11th, 2025. This guide provid
 
 ## Response Format Differences
 
-**Bing Response Structure**
+__Bing Response Structure__
 
 ```json  theme={null}
 {
@@ -118,9 +126,9 @@ Microsoft deprecated the Bing Search API on August 11th, 2025. This guide provid
     ]
   }
 }
-```
+```text
 
-**Exa Response Structure**
+__Exa Response Structure__
 
 ```json  theme={null}
 {
@@ -137,15 +145,16 @@ Microsoft deprecated the Bing Search API on August 11th, 2025. This guide provid
   ],
   "requestId": "unique-id"
 }
-```
+```text
 
 ## Examples
 
 ### Fresh Content Search
 
-**Bing**
+__Bing__
 
 <CodeGroup>
+
   ```bash cURL theme={null}
   curl -H "Ocp-Apim-Subscription-Key: YOUR_KEY" \
     "https://api.bing.microsoft.com/v7.0/search?q=AI+news&freshness=Week"
@@ -168,11 +177,13 @@ Microsoft deprecated the Bing Search API on August 11th, 2025. This guide provid
     },
   });
   ```
+
 </CodeGroup>
 
-**Exa**
+__Exa__
 
 <CodeGroup>
+
   ```bash cURL theme={null}
   curl -X POST https://api.exa.ai/search \
     -H "x-api-key: YOUR_KEY" \
@@ -204,13 +215,15 @@ Microsoft deprecated the Bing Search API on August 11th, 2025. This guide provid
     type: "auto",
   });
   ```
+
 </CodeGroup>
 
 ### Domain-Specific Search
 
-**Bing**
+__Bing__
 
 <CodeGroup>
+
   ```bash cURL theme={null}
   curl -H "Ocp-Apim-Subscription-Key: YOUR_KEY" \
     "https://api.bing.microsoft.com/v7.0/search?q=site:arxiv.org+transformers"
@@ -236,11 +249,13 @@ Microsoft deprecated the Bing Search API on August 11th, 2025. This guide provid
     }
   );
   ```
+
 </CodeGroup>
 
-**Exa**
+__Exa__
 
 <CodeGroup>
+
   ```bash cURL theme={null}
   curl -X POST https://api.exa.ai/search \
     -H "x-api-key: YOUR_KEY" \
@@ -266,6 +281,7 @@ Microsoft deprecated the Bing Search API on August 11th, 2025. This guide provid
     type: "auto",
   });
   ```
+
 </CodeGroup>
 
 ### Search with Content Extraction
@@ -273,6 +289,7 @@ Microsoft deprecated the Bing Search API on August 11th, 2025. This guide provid
 Exa provides integrated content extraction, eliminating the need for separate API calls:
 
 <CodeGroup>
+
   ```bash cURL theme={null}
   curl -X POST https://api.exa.ai/search \
     -H "x-api-key: YOUR_KEY" \
@@ -312,4 +329,5 @@ Exa provides integrated content extraction, eliminating the need for separate AP
     },
   });
   ```
+
 </CodeGroup>

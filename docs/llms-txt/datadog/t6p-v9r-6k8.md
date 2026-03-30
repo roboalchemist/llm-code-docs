@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # TLS connections between etcd peers should not use self-signed certificates
-Classification:complianceFramework:cis-kubernetesControl:2.6 
+Classification:complianceFramework:cis-kubernetesControl:2.6
 ## Description{% #description %}
 
 Do not use automatically generated self-signed certificates for TLS connections between peers.

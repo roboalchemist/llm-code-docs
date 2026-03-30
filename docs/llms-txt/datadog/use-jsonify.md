@@ -56,6 +56,5 @@ def get_article():
     article = get_article_by_id(request.args.get("id"))
     return jsonify(article)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -63,44 +63,44 @@ If there still are variables in the arguments to `exec.Command` after remediatio
 
 ```go
 import (
-	"context"
-	"os"
-	"os/exec"
+    "context"
+    "os"
+    "os/exec"
 )
 
 func main() {
-	cmdName := os.Args[1]
-	ctx := context.Background()
-	cmd := exec.CommandContext(ctx, cmdName, "init")
-	output, err := cmd.CombinedOutput()
+    cmdName := os.Args[1]
+    ctx := context.Background()
+    cmd := exec.CommandContext(ctx, cmdName, "init")
+    output, err := cmd.CombinedOutput()
 
-	userInput := os.Args[2]
-	cmd = exec.CommandContext(ctx, "/bin/sh", "-c", userInput)
-	cmd = exec.CommandContext(ctx, "sh", "-c", userInput)
-	cmd = exec.CommandContext(ctx, "cmd", "/c", userInput)
-	cmd = exec.CommandContext(ctx, "cmd.exe", "/C", userInput)
-	cmd = exec.CommandContext(ctx, "powershell.exe", "-Command", userInput)
+    userInput := os.Args[2]
+    cmd = exec.CommandContext(ctx, "/bin/sh", "-c", userInput)
+    cmd = exec.CommandContext(ctx, "sh", "-c", userInput)
+    cmd = exec.CommandContext(ctx, "cmd", "/c", userInput)
+    cmd = exec.CommandContext(ctx, "cmd.exe", "/C", userInput)
+    cmd = exec.CommandContext(ctx, "powershell.exe", "-Command", userInput)
 }
 ```
 
 ```go
 import (
-	"os"
-	"os/exec"
+    "os"
+    "os/exec"
 )
 
 func main() {
-	cmdName := os.Args[1]
-	ctx := context.Background()
-	cmd := exec.Command(cmdName, "init")
-	output, err := cmd.CombinedOutput()
+    cmdName := os.Args[1]
+    ctx := context.Background()
+    cmd := exec.Command(cmdName, "init")
+    output, err := cmd.CombinedOutput()
 
-		userInput := os.Args[2]
-	cmd = exec.Command("/bin/sh", "-c", userInput)
-	cmd = exec.Command("sh", "-c", userInput)
-	cmd = exec.Command("cmd", "/c", userInput)
-	cmd = exec.Command("cmd.exe", "/C", userInput)
-	cmd = exec.Command("powershell.exe", "-Command", userInput)
+        userInput := os.Args[2]
+    cmd = exec.Command("/bin/sh", "-c", userInput)
+    cmd = exec.Command("sh", "-c", userInput)
+    cmd = exec.Command("cmd", "/c", userInput)
+    cmd = exec.Command("cmd.exe", "/C", userInput)
+    cmd = exec.Command("powershell.exe", "-Command", userInput)
 }
 ```
 
@@ -139,6 +139,5 @@ func main () {
     output, err := cmd.CombinedOutput()
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

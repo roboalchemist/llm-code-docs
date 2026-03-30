@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/switch-exhaustiveness-check.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/switch-exhaustiveness-check.md
----
-
-### What it does
+## What it does
 
 This rule requires switch statements to be exhaustive when switching on union types.
 
-### Why is this bad?
+## Why is this bad?
 
 When switching on a union type, it's important to handle all possible cases to avoid runtime errors. TypeScript can help ensure exhaustiveness, but only if the switch statement is properly structured with a default case that TypeScript can analyze.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -102,7 +98,7 @@ function getColorName(color: Color) {
 
 This rule accepts a configuration object with the following properties:
 
-### allowDefaultCaseForExhaustiveSwitch
+## allowDefaultCaseForExhaustiveSwitch
 
 type: `boolean`
 
@@ -111,7 +107,7 @@ default: `true`
 Whether to allow default cases on switches that are not exhaustive.
 When false, requires exhaustive switch statements without default cases.
 
-### considerDefaultExhaustiveForUnions
+## considerDefaultExhaustiveForUnions
 
 type: `boolean`
 
@@ -121,7 +117,7 @@ Whether to consider `default` cases exhaustive for union types.
 When true, a switch statement with a `default` case is considered exhaustive
 even if not all union members are handled explicitly.
 
-### defaultCaseCommentPattern
+## defaultCaseCommentPattern
 
 type: `string`
 
@@ -129,7 +125,7 @@ Regular expression pattern that when matched in a default case comment,
 will suppress the exhaustiveness check.
 Example: `"@skip-exhaustive-check"` to allow `default: // @skip-exhaustive-check`
 
-### requireDefaultForNonUnion
+## requireDefaultForNonUnion
 
 type: `boolean`
 

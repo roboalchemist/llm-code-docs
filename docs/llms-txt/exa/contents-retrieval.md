@@ -107,44 +107,43 @@ You can configure highlights in two ways:
 1. **Simple boolean** (`highlights=True`): Returns default highlights based on the search query
 
 2. **Detailed configuration** (pass as an object):
-   ```json  theme={null}
-   {
-     "contents": {
-       "highlights": {
-         "query": "Your specific highlight query",
-         "maxCharacters": 2000
-       }
-     }
-   }
-   ```
-   * `query`: The specific query to use for generating highlights (if different from search query)
-   * `maxCharacters`: Maximum number of characters to return for highlights
 
-## Context String
+```json  theme={null}
+{
+  "contents": {
+    "highlights": {
+      "query": "Your specific highlight query",
+      "maxCharacters": 2000
+    }
+  }
+}
+```
 
-Returns page contents as a single combined string ready for LLM RAG applications. When you set `context=True`, all result contents are joined together into one text block.
+* `query`: The specific query to use for generating highlights (if different from search query)
+* `maxCharacters`: Maximum number of characters to return for highlights
 
-**Performance Note**: Context strings often perform better than highlights for RAG applications because they provide more complete information from each page.
+## Context String (Deprecated)
 
-### How it works:
+<Warning>
+  The `context` parameter is deprecated and will be removed in a future version. Use `highlights` or `text` instead.
+</Warning>
 
-* If you have 5 results and set a 1000 character limit, each result gets about 200 characters
-* We recommend using 10000+ characters for best results
-* No character limit works best when possible
+Returns page contents as a single combined string. When you set `context=True`, all result contents are joined together into one text block.
 
 ### Configuration:
 
 1. **Simple boolean** (`context=True`): Returns all content combined with no character limit
 2. **With character limit** (pass as an object):
-   ```json  theme={null}
-   {
-     "contents": {
-       "context": {
-         "maxCharacters": 10000
-       }
-     }
-   }
-   ```
+
+```json  theme={null}
+{
+  "contents": {
+    "context": {
+      "maxCharacters": 10000
+    }
+  }
+}
+```
 
 ## Images and favicons
 

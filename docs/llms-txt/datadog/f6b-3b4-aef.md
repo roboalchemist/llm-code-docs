@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > AWS VPC created or modified
 ---
 
 # AWS VPC created or modified
-Classification:complianceTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1485-data-destruction](https://attack.mitre.org/techniques/T1485)Framework:cis-awsControl:4.14 
+Classification:complianceTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1485-data-destruction](https://attack.mitre.org/techniques/T1485)Framework:cis-awsControl:4.14
 ## Goal{% #goal %}
 
 Detect when an attacker is destroying a VPC.

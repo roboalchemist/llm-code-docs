@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # IAM access keys that are inactive and older than 1 year should be removed
- 
+
 ## Description{% #description %}
 
 This rule identifies IAM access keys that are older than one year and have not been used in the past 30 days.

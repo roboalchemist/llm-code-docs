@@ -60,6 +60,5 @@ fun MutableList<Int>.swap(index1: Int, index2: Int) {
 
 fun <T> foo(arg: T) {}
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Storage for critical data should be encrypted with Customer Managed Key
- 
+
 ## Description{% #description %}
 
 By default all data in Azure storage account, including blobs, disks, files, queues, tables, and object metadata, is encrypted at rest using Microsoft managed keys. You can enhance the security of your sensitive data by opting for customer-managed keys, which allow you to control and manage the encryption key that protects and controls access to your data. You can also choose to automatically update the key version used for Azure Storage encryption whenever a new version is available in the associated key vault.

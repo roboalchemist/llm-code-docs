@@ -23,7 +23,7 @@ Consult on this page:
 - Service health
 - Service monitor states
 - Watchdog Insights
-- Summary cardsImportant note for users on the following Datadog sites: ap1.datadoghq.com, us3.datadoghq.com, us5.datadoghq.com, app.datadoghq.eu, app.datadoghq.com, ap2.datadoghq.com: 
+- Summary cardsImportant note for users on the following Datadog sites: ap1.datadoghq.com, us3.datadoghq.com, us5.datadoghq.com, app.datadoghq.eu, app.datadoghq.com, ap2.datadoghq.com:
 
 
   - Dependencies

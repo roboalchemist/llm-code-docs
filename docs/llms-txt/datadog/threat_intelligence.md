@@ -11,11 +11,11 @@ breadcrumbs: Docs > Datadog Security > Threat Intelligence
 # Threat Intelligence
 Available for:
 {% icon name="icon-siem" /%}
- Cloud SIEM | 
+ Cloud SIEM |
 {% icon name="icon-cloud-security-management" /%}
- Workload Protection | 
+ Workload Protection |
 {% icon name="icon-app-sec" /%}
- App and API Protection 
+ App and API Protection
 ## Overview{% #overview %}
 
 Threat Intelligence is reputation information that helps responders make informed decisions on attacks and compromises.

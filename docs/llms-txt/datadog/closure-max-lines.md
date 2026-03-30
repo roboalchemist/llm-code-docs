@@ -56,7 +56,7 @@ numbers.forEach { number in
         // 3. Now, let's perform a more complex check
         // Imagine some business logic here
         let isSpecialCase = (doubled + number) % 3 == 0
-        
+
         if isSpecialCase {
              print("Found a special case for \(number)!")
         }
@@ -137,6 +137,5 @@ numbers.forEach { number in
     processNumber(number)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

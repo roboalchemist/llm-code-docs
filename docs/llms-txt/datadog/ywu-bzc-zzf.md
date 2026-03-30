@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Kubernetes PKI directory should be owned by root
-Classification:complianceFramework:cis-kubernetesControl:1.1.19 
+Classification:complianceFramework:cis-kubernetesControl:1.1.19
 ## Description{% #description %}
 
 Ensure that the Kubernetes PKI directory and file ownership is set to root:root.

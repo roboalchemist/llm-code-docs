@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Network Security Group Flow Log retention period should be 'greater than 90 days'
- 
+
 ## Description{% #description %}
 
 To ensure sufficient data retention, it is recommended to set the retention period for your Network Security Group Flow Logs to a minimum of 90 days. By default, the flow logs for Network Security Groups are disabled, so it is essential to enable them to capture information about IP traffic. The logs provide valuable insights into any anomalies or potential breaches, helping you in monitoring and securing your network. However, it is important to consider that increasing the data retention period may lead to higher monthly storage costs based on your data usage.

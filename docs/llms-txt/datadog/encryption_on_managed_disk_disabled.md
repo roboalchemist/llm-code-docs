@@ -61,7 +61,7 @@ resource "azurerm_managed_disk" "negative1" {
   storage_account_type = "Standard_LRS"
   create_option        = "Empty"
   disk_size_gb         = "1"
-  
+
   encryption_settings = {
       enabled = true
   }
@@ -98,7 +98,7 @@ resource "azurerm_managed_disk" "positive2" {
   storage_account_type = "Standard_LRS"
   create_option        = "Empty"
   disk_size_gb         = "1"
-  
+
 
   tags = {
     environment = "staging"

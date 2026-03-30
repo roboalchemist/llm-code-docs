@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure Users Re-Authenticate for Privilege Escalation - sudo !authenticate
- 
+
 ## Description{% #description %}
 
 The sudo `!authenticate` option, when specified, allows a user to execute commands using sudo without having to authenticate. This should be disabled by making sure that the `!authenticate` option does not exist in `/etc/sudoers` configuration file or any sudo configuration snippets in `/etc/sudoers.d/`.

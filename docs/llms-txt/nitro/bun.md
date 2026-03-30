@@ -1,0 +1,25 @@
+# Source: https://nitro.build/raw/deploy/runtimes/bun.md
+
+# Bun
+
+> Run Nitro apps with Bun runtime.
+
+**Preset:** `bun`
+
+Nitro output is compatible with Bun runtime. While using default [Node.js](/deploy/runtimes/node) you can also run the output in bun, using `bun` preset has advantage of better optimizations.
+
+After building with bun preset using `bun` as preset, you can run server in production using:
+
+```bash
+bun run ./.output/server/index.mjs
+```
+
+<read-more to="https://bun.sh">
+
+</read-more>
+
+## Environment Variables
+
+You can use the `PORT` or `NITRO_PORT` and `HOST` or `NITRO_HOST` environment variables to set the server port.
+
+Use the `NITRO_BUN_IDLE_TIMEOUT` environment variable to change the default [idleTimeout](https://bun.sh/docs/runtime/http/server#idletimeout).

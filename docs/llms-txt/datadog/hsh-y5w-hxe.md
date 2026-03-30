@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # MFA should be enabled for all users with console access
- 
+
 ## Description{% #description %}
 
 Multi-Factor Authentication (MFA) adds an extra layer of protection on top of a username and password. With MFA enabled, when a user signs in to an AWS website, they will be prompted for their username, password, and an authentication code from their AWS MFA device. Datadog recommends that you enable MFA for all accounts that have a console password to enhance security.

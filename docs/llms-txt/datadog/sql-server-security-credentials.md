@@ -98,6 +98,5 @@ connection = mysql.connector.another_function(
   use_pure=True,
   connection_timeout=5)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

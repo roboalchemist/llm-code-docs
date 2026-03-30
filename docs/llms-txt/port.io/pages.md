@@ -1,0 +1,31 @@
+# Source: https://docs.port.io/api-reference/pages.md
+
+# Pages
+
+Port API's `pages` endpoints will undergo a structural change in the near future. The new structure will be more intuitive and easier to use.
+
+pages api beta status
+
+The Pages API is currently in beta, in its current form it lacks certain validations and protections and it could render your portal unusable if used incorrectly.
+
+If you choose to use the Pages API please understand this risk.
+
+In case you use the Pages API and encounter issues, please reach out at [support.port.io](http://support.port.io/) for assistance.
+
+Port is rolling out improvements to make the Pages API more **reliable, secure, and intuitive**.<br /><!-- -->These updates will impact both **direct use of the Pages API** and **usage through Terraform**, which until now lacked certain restrictions.
+
+The table below outlines the upcoming changes, example implications, and current progress status.<br /><!-- -->The Status will be updated as work moves forward, from `Not Started` â `WIP` â `Released`.
+
+| Change                                                                            | Example Implication                                                                                                                                             | Status        |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| Add validations, restrictions, and clearer error messages for the widgets schema. | If extra or invalid properties are sent, you will receive a descriptive error showing which one. You should delete the properties and match the current schema. | `WIP`         |
+| Add validations, restrictions, and clearer error messages for the pages schema.   | For example, the API will block creating two home pages and require you to keep only one.                                                                       | `Not started` |
+| Enforce a dashboard widget wrapper when creating a new dashboard page.            | If you try to create a dashboard page without wrapping the widget, the API (or Terraform) will return an error requiring you to add the wrapper in the JSON.    | `Not started` |
+
+Until the new structure is released, you can refer to the [Swagger API documentation](https://api.port.io/swagger/#Pages) for the available endpoints and their usage.
+
+Currently, the `pages` endpoints allow you to:
+
+* **Create**, **update**, **delete**, and **get** pages.
+* **Create**, **update**, and **delete** widgets.
+* **Update** and **get** page permissions.

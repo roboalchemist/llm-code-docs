@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS IAM group has administrative privileges
- 
+
 ## Description{% #description %}
 
 Confirm there are no IAM Groups with administrative privileges for your AWS account.

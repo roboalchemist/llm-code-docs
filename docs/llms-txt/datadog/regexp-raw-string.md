@@ -52,6 +52,5 @@ func main () {
    regexp.Compile(`\A(\w+) total: items \d+\n\z`)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

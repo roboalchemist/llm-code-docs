@@ -1,0 +1,503 @@
+# Source: https://docs.aws.amazon.com/datazone/latest/APIReference/llms.txt
+
+# Amazon DataZone API Reference
+
+> Amazon DataZone is a data management service that enables you to catalog, discover, govern, share, and analyze your data. With Amazon DataZone, you can share and access your data across accounts and supported regions. Amazon DataZone simplifies your experience across AWS services, including, but not limited to, Amazon Redshift, Amazon Athena, AWS Glue, and AWS Lake Formation.
+
+- [Welcome](https://docs.aws.amazon.com/datazone/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/datazone/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/datazone/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/datazone/latest/APIReference/API_Operations.html)
+
+- [AcceptPredictions](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AcceptPredictions.html): Accepts automatically generated business-friendly metadata for your Amazon DataZone assets.
+- [AcceptSubscriptionRequest](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AcceptSubscriptionRequest.html): Accepts a subscription request to a specific asset.
+- [AddEntityOwner](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AddEntityOwner.html): Adds the owner of an entity (a domain unit).
+- [AddPolicyGrant](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AddPolicyGrant.html): Adds a policy grant (an authorization policy) to a specified entity, including domain units, environment blueprint configurations, or environment profiles.
+- [AssociateEnvironmentRole](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AssociateEnvironmentRole.html): Associates the environment role in Amazon DataZone.
+- [AssociateGovernedTerms](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AssociateGovernedTerms.html): Associates governed terms with an asset.
+- [BatchGetAttributesMetadata](https://docs.aws.amazon.com/datazone/latest/APIReference/API_BatchGetAttributesMetadata.html): Gets the attribute metadata.
+- [BatchPutAttributesMetadata](https://docs.aws.amazon.com/datazone/latest/APIReference/API_BatchPutAttributesMetadata.html): Writes the attribute metadata.
+- [CancelMetadataGenerationRun](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CancelMetadataGenerationRun.html): Cancels the metadata generation run.
+- [CancelSubscription](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CancelSubscription.html): Cancels the subscription to the specified asset.
+- [CreateAccountPool](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateAccountPool.html): Creates an account pool.
+- [CreateAsset](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateAsset.html): Creates an asset in Amazon DataZone catalog.
+- [CreateAssetFilter](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateAssetFilter.html): Creates a data asset filter.
+- [CreateAssetRevision](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateAssetRevision.html): Creates a revision of the asset.
+- [CreateAssetType](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateAssetType.html): Creates a custom asset type.
+- [CreateConnection](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateConnection.html): Creates a new connection.
+- [CreateDataProduct](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateDataProduct.html): Creates a data product.
+- [CreateDataProductRevision](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateDataProductRevision.html): Creates a data product revision.
+- [CreateDataSource](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateDataSource.html): Creates an Amazon DataZone data source.
+- [CreateDomain](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateDomain.html): Creates an Amazon DataZone domain.
+- [CreateDomainUnit](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateDomainUnit.html): Creates a domain unit in Amazon DataZone.
+- [CreateEnvironment](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateEnvironment.html): Create an Amazon DataZone environment.
+- [CreateEnvironmentAction](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateEnvironmentAction.html): Creates an action for the environment, for example, creates a console link for an analytics tool that is available in this environment.
+- [CreateEnvironmentBlueprint](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateEnvironmentBlueprint.html): Creates a Amazon DataZone blueprint.
+- [CreateEnvironmentProfile](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateEnvironmentProfile.html): Creates an Amazon DataZone environment profile.
+- [CreateFormType](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateFormType.html): Creates a metadata form type.
+- [CreateGlossary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateGlossary.html): Creates an Amazon DataZone business glossary.
+- [CreateGlossaryTerm](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateGlossaryTerm.html): Creates a business glossary term.
+- [CreateGroupProfile](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateGroupProfile.html): Creates a group profile in Amazon DataZone.
+- [CreateListingChangeSet](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateListingChangeSet.html): Publishes a listing (a record of an asset at a given time) or removes a listing from the catalog.
+- [CreateProject](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateProject.html): Creates an Amazon DataZone project.
+- [CreateProjectMembership](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateProjectMembership.html): Creates a project membership in Amazon DataZone.
+- [CreateProjectProfile](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateProjectProfile.html): Creates a project profile.
+- [CreateRule](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateRule.html): Creates a rule in Amazon DataZone.
+- [CreateSubscriptionGrant](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateSubscriptionGrant.html): Creates a subsscription grant in Amazon DataZone.
+- [CreateSubscriptionRequest](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateSubscriptionRequest.html): Creates a subscription request in Amazon DataZone.
+- [CreateSubscriptionTarget](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateSubscriptionTarget.html): Creates a subscription target in Amazon DataZone.
+- [CreateUserProfile](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateUserProfile.html): Creates a user profile in Amazon DataZone.
+- [DeleteAccountPool](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteAccountPool.html): Deletes an account pool.
+- [DeleteAsset](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteAsset.html): Deletes an asset in Amazon DataZone.
+- [DeleteAssetFilter](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteAssetFilter.html): Deletes an asset filter.
+- [DeleteAssetType](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteAssetType.html): Deletes an asset type in Amazon DataZone.
+- [DeleteConnection](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteConnection.html): Deletes and connection.
+- [DeleteDataExportConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteDataExportConfiguration.html): Deletes data export configuration for a domain.
+- [DeleteDataProduct](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteDataProduct.html): Deletes a data product in Amazon DataZone.
+- [DeleteDataSource](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteDataSource.html): Deletes a data source in Amazon DataZone.
+- [DeleteDomain](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteDomain.html): Deletes a Amazon DataZone domain.
+- [DeleteDomainUnit](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteDomainUnit.html): Deletes a domain unit.
+- [DeleteEnvironment](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteEnvironment.html): Deletes an environment in Amazon DataZone.
+- [DeleteEnvironmentAction](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteEnvironmentAction.html): Deletes an action for the environment, for example, deletes a console link for an analytics tool that is available in this environment.
+- [DeleteEnvironmentBlueprint](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteEnvironmentBlueprint.html): Deletes a blueprint in Amazon DataZone.
+- [DeleteEnvironmentBlueprintConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteEnvironmentBlueprintConfiguration.html): Deletes the blueprint configuration in Amazon DataZone.
+- [DeleteEnvironmentProfile](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteEnvironmentProfile.html): Deletes an environment profile in Amazon DataZone.
+- [DeleteFormType](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteFormType.html): Deletes and metadata form type in Amazon DataZone.
+- [DeleteGlossary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteGlossary.html): Deletes a business glossary in Amazon DataZone.
+- [DeleteGlossaryTerm](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteGlossaryTerm.html): Deletes a business glossary term in Amazon DataZone.
+- [DeleteListing](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteListing.html): Deletes a listing (a record of an asset at a given time).
+- [DeleteProject](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteProject.html): Deletes a project in Amazon DataZone.
+- [DeleteProjectMembership](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteProjectMembership.html): Deletes project membership in Amazon DataZone.
+- [DeleteProjectProfile](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteProjectProfile.html): Deletes a project profile.
+- [DeleteRule](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteRule.html): Deletes a rule in Amazon DataZone.
+- [DeleteSubscriptionGrant](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteSubscriptionGrant.html): Deletes and subscription grant in Amazon DataZone.
+- [DeleteSubscriptionRequest](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteSubscriptionRequest.html): Deletes a subscription request in Amazon DataZone.
+- [DeleteSubscriptionTarget](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteSubscriptionTarget.html): Deletes a subscription target in Amazon DataZone.
+- [DeleteTimeSeriesDataPoints](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeleteTimeSeriesDataPoints.html): Deletes the specified time series form for the specified asset.
+- [DisassociateEnvironmentRole](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DisassociateEnvironmentRole.html): Disassociates the environment role in Amazon DataZone.
+- [DisassociateGovernedTerms](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DisassociateGovernedTerms.html): Disassociates restricted terms from an asset.
+- [GetAccountPool](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetAccountPool.html): Gets the details of the account pool.
+- [GetAsset](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetAsset.html): Gets an Amazon DataZone asset.
+- [GetAssetFilter](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetAssetFilter.html): Gets an asset filter.
+- [GetAssetType](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetAssetType.html): Gets an Amazon DataZone asset type.
+- [GetConnection](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetConnection.html): Gets a connection.
+- [GetDataExportConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetDataExportConfiguration.html): Gets data export configuration details.
+- [GetDataProduct](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetDataProduct.html): Gets the data product.
+- [GetDataSource](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetDataSource.html): Gets an Amazon DataZone data source.
+- [GetDataSourceRun](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetDataSourceRun.html): Gets an Amazon DataZone data source run.
+- [GetDomain](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetDomain.html): Gets an Amazon DataZone domain.
+- [GetDomainUnit](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetDomainUnit.html): Gets the details of the specified domain unit.
+- [GetEnvironment](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetEnvironment.html): Gets an Amazon DataZone environment.
+- [GetEnvironmentAction](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetEnvironmentAction.html): Gets the specified environment action.
+- [GetEnvironmentBlueprint](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetEnvironmentBlueprint.html): Gets an Amazon DataZone blueprint.
+- [GetEnvironmentBlueprintConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetEnvironmentBlueprintConfiguration.html): Gets the blueprint configuration in Amazon DataZone.
+- [GetEnvironmentCredentials](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetEnvironmentCredentials.html): Gets the credentials of an environment in Amazon DataZone.
+- [GetEnvironmentProfile](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetEnvironmentProfile.html): Gets an evinronment profile in Amazon DataZone.
+- [GetFormType](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetFormType.html): Gets a metadata form type in Amazon DataZone.
+- [GetGlossary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetGlossary.html): Gets a business glossary in Amazon DataZone.
+- [GetGlossaryTerm](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetGlossaryTerm.html): Gets a business glossary term in Amazon DataZone.
+- [GetGroupProfile](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetGroupProfile.html): Gets a group profile in Amazon DataZone.
+- [GetIamPortalLoginUrl](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetIamPortalLoginUrl.html): Gets the data portal URL for the specified Amazon DataZone domain.
+- [GetJobRun](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetJobRun.html): The details of the job run.
+- [GetLineageEvent](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetLineageEvent.html): Describes the lineage event.
+- [GetLineageNode](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetLineageNode.html): Gets the data lineage node.
+- [GetListing](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetListing.html): Gets a listing (a record of an asset at a given time).
+- [GetMetadataGenerationRun](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetMetadataGenerationRun.html): Gets a metadata generation run in Amazon DataZone.
+- [GetProject](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetProject.html): Gets a project in Amazon DataZone.
+- [GetProjectProfile](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetProjectProfile.html): The details of the project profile.
+- [GetRule](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetRule.html): Gets the details of a rule in Amazon DataZone.
+- [GetSubscription](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetSubscription.html): Gets a subscription in Amazon DataZone.
+- [GetSubscriptionGrant](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetSubscriptionGrant.html): Gets the subscription grant in Amazon DataZone.
+- [GetSubscriptionRequestDetails](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetSubscriptionRequestDetails.html): Gets the details of the specified subscription request.
+- [GetSubscriptionTarget](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetSubscriptionTarget.html): Gets the subscription target in Amazon DataZone.
+- [GetTimeSeriesDataPoint](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetTimeSeriesDataPoint.html): Gets the existing data point for the asset.
+- [GetUserProfile](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GetUserProfile.html): Gets a user profile in Amazon DataZone.
+- [ListAccountPools](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListAccountPools.html): Lists existing account pools.
+- [ListAccountsInAccountPool](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListAccountsInAccountPool.html): Lists the accounts in the specified account pool.
+- [ListAssetFilters](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListAssetFilters.html): Lists asset filters.
+- [ListAssetRevisions](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListAssetRevisions.html): Lists the revisions for the asset.
+- [ListConnections](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListConnections.html): Lists connections.
+- [ListDataProductRevisions](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListDataProductRevisions.html): Lists data product revisions.
+- [ListDataSourceRunActivities](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListDataSourceRunActivities.html): Lists data source run activities.
+- [ListDataSourceRuns](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListDataSourceRuns.html): Lists data source runs in Amazon DataZone.
+- [ListDataSources](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListDataSources.html): Lists data sources in Amazon DataZone.
+- [ListDomains](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListDomains.html): Lists Amazon DataZone domains.
+- [ListDomainUnitsForParent](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListDomainUnitsForParent.html): Lists child domain units for the specified parent domain unit.
+- [ListEntityOwners](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListEntityOwners.html): Lists the entity (domain units) owners.
+- [ListEnvironmentActions](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListEnvironmentActions.html): Lists existing environment actions.
+- [ListEnvironmentBlueprintConfigurations](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListEnvironmentBlueprintConfigurations.html): Lists blueprint configurations for a Amazon DataZone environment.
+- [ListEnvironmentBlueprints](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListEnvironmentBlueprints.html): Lists blueprints in an Amazon DataZone environment.
+- [ListEnvironmentProfiles](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListEnvironmentProfiles.html): Lists Amazon DataZone environment profiles.
+- [ListEnvironments](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListEnvironments.html): Lists Amazon DataZone environments.
+- [ListJobRuns](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListJobRuns.html): Lists job runs.
+- [ListLineageEvents](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListLineageEvents.html): Lists lineage events.
+- [ListLineageNodeHistory](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListLineageNodeHistory.html): Lists the history of the specified data lineage node.
+- [ListMetadataGenerationRuns](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListMetadataGenerationRuns.html): Lists all metadata generation runs.
+- [ListNotifications](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListNotifications.html): Lists all Amazon DataZone notifications.
+- [ListPolicyGrants](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListPolicyGrants.html): Lists policy grants.
+- [ListProjectMemberships](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListProjectMemberships.html): Lists all members of the specified project.
+- [ListProjectProfiles](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListProjectProfiles.html): Lists project profiles.
+- [ListProjects](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListProjects.html): Lists Amazon DataZone projects.
+- [ListRules](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListRules.html): Lists existing rules.
+- [ListSubscriptionGrants](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListSubscriptionGrants.html): Lists subscription grants.
+- [ListSubscriptionRequests](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListSubscriptionRequests.html): Lists Amazon DataZone subscription requests.
+- [ListSubscriptions](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListSubscriptions.html): Lists subscriptions in Amazon DataZone.
+- [ListSubscriptionTargets](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListSubscriptionTargets.html): Lists subscription targets in Amazon DataZone.
+- [ListTagsForResource](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListTagsForResource.html): Lists tags for the specified resource in Amazon DataZone.
+- [ListTimeSeriesDataPoints](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListTimeSeriesDataPoints.html): Lists time series data points.
+- [PostLineageEvent](https://docs.aws.amazon.com/datazone/latest/APIReference/API_PostLineageEvent.html): Posts a data lineage event.
+- [PostTimeSeriesDataPoints](https://docs.aws.amazon.com/datazone/latest/APIReference/API_PostTimeSeriesDataPoints.html): Posts time series data points to Amazon DataZone for the specified asset.
+- [PutDataExportConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_PutDataExportConfiguration.html): Creates data export configuration details.
+- [PutEnvironmentBlueprintConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_PutEnvironmentBlueprintConfiguration.html): Writes the configuration for the specified environment blueprint in Amazon DataZone.
+- [QueryGraph](https://docs.aws.amazon.com/datazone/latest/APIReference/API_QueryGraph.html): Queries entities in the graph store.
+- [RejectPredictions](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RejectPredictions.html): Rejects automatically generated business-friendly metadata for your Amazon DataZone assets.
+- [RejectSubscriptionRequest](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RejectSubscriptionRequest.html): Rejects the specified subscription request.
+- [RemoveEntityOwner](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RemoveEntityOwner.html): Removes an owner from an entity.
+- [RemovePolicyGrant](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RemovePolicyGrant.html): Removes a policy grant.
+- [RevokeSubscription](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RevokeSubscription.html): Revokes a specified subscription in Amazon DataZone.
+- [Search](https://docs.aws.amazon.com/datazone/latest/APIReference/API_Search.html): Searches for assets in Amazon DataZone.
+- [SearchGroupProfiles](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SearchGroupProfiles.html): Searches group profiles in Amazon DataZone.
+- [SearchListings](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SearchListings.html): Searches listings in Amazon DataZone.
+- [SearchTypes](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SearchTypes.html): Searches for types in Amazon DataZone.
+- [SearchUserProfiles](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SearchUserProfiles.html): Searches user profiles in Amazon DataZone.
+- [StartDataSourceRun](https://docs.aws.amazon.com/datazone/latest/APIReference/API_StartDataSourceRun.html): Start the run of the specified data source in Amazon DataZone.
+- [StartMetadataGenerationRun](https://docs.aws.amazon.com/datazone/latest/APIReference/API_StartMetadataGenerationRun.html): Starts the metadata generation run.
+- [TagResource](https://docs.aws.amazon.com/datazone/latest/APIReference/API_TagResource.html): Tags a resource in Amazon DataZone.
+- [UntagResource](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UntagResource.html): Untags a resource in Amazon DataZone.
+- [UpdateAccountPool](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateAccountPool.html): Updates the account pool.
+- [UpdateAssetFilter](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateAssetFilter.html): Updates an asset filter.
+- [UpdateConnection](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateConnection.html): Updates a connection.
+- [UpdateDataSource](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateDataSource.html): Updates the specified data source in Amazon DataZone.
+- [UpdateDomain](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateDomain.html): Updates a Amazon DataZone domain.
+- [UpdateDomainUnit](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateDomainUnit.html): Updates the domain unit.
+- [UpdateEnvironment](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateEnvironment.html): Updates the specified environment in Amazon DataZone.
+- [UpdateEnvironmentAction](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateEnvironmentAction.html): Updates an environment action.
+- [UpdateEnvironmentBlueprint](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateEnvironmentBlueprint.html): Updates an environment blueprint in Amazon DataZone.
+- [UpdateEnvironmentProfile](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateEnvironmentProfile.html): Updates the specified environment profile in Amazon DataZone.
+- [UpdateGlossary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateGlossary.html): Updates the business glossary in Amazon DataZone.
+- [UpdateGlossaryTerm](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateGlossaryTerm.html): Updates a business glossary term in Amazon DataZone.
+- [UpdateGroupProfile](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateGroupProfile.html): Updates the specified group profile in Amazon DataZone.
+- [UpdateProject](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateProject.html): Updates the specified project in Amazon DataZone.
+- [UpdateProjectProfile](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateProjectProfile.html): Updates a project profile.
+- [UpdateRootDomainUnitOwner](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateRootDomainUnitOwner.html): Updates the owner of the root domain unit.
+- [UpdateRule](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateRule.html): Updates a rule.
+- [UpdateSubscriptionGrantStatus](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateSubscriptionGrantStatus.html): Updates the status of the specified subscription grant status in Amazon DataZone.
+- [UpdateSubscriptionRequest](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateSubscriptionRequest.html): Updates a specified subscription request in Amazon DataZone.
+- [UpdateSubscriptionTarget](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateSubscriptionTarget.html): Updates the specified subscription target in Amazon DataZone.
+- [UpdateUserProfile](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UpdateUserProfile.html): Updates the specified user profile in Amazon DataZone.
+
+
+## [Data Types](https://docs.aws.amazon.com/datazone/latest/APIReference/API_Types.html)
+
+- [AcceptChoice](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AcceptChoice.html): Specifies the prediction (aka, the automatically generated piece of metadata) and the target (for example, a column name) that can be accepted.
+- [AcceptedAssetScope](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AcceptedAssetScope.html): The accepted asset scope.
+- [AcceptRule](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AcceptRule.html): Specifies the rule and the threshold under which a prediction can be accepted.
+- [AccountInfo](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AccountInfo.html): The account information within an account pool.
+- [AccountPoolSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AccountPoolSummary.html): The summary of the account pool.
+- [AccountSource](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AccountSource.html): The source of accounts for the account pool.
+- [ActionParameters](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ActionParameters.html): The parameters of the environment action.
+- [AdditionalAttributes](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AdditionalAttributes.html): Additional details on the queried entity that can be requested in the response.
+- [AddToProjectMemberPoolPolicyGrantDetail](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AddToProjectMemberPoolPolicyGrantDetail.html): The details of the policy grant.
+- [AggregationListItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AggregationListItem.html): An aggregation list item.
+- [AggregationOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AggregationOutput.html): The aggregation for an attribute.
+- [AggregationOutputItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AggregationOutputItem.html): An aggregation output item.
+- [AllDomainUnitsGrantFilter](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AllDomainUnitsGrantFilter.html): The grant filter for all domain units.
+- [AllUsersGrantFilter](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AllUsersGrantFilter.html): The all users grant filter.
+- [AmazonQPropertiesInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AmazonQPropertiesInput.html): The Amazon Q properties of the connection.
+- [AmazonQPropertiesOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AmazonQPropertiesOutput.html): The Amazon Q properties of the connection.
+- [AmazonQPropertiesPatch](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AmazonQPropertiesPatch.html): The Amazon Q properties of the connection.
+- [AssetFilterConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AssetFilterConfiguration.html): The configuration details of the asset filter.
+- [AssetFilterSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AssetFilterSummary.html): The summary of the asset filter.
+- [AssetInDataProductListingItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AssetInDataProductListingItem.html): The listing of the asset in a data product.
+- [AssetItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AssetItem.html): A Amazon DataZone inventory asset.
+- [AssetItemAdditionalAttributes](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AssetItemAdditionalAttributes.html): The additional attributes of an inventory asset.
+- [AssetListing](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AssetListing.html): An asset published in an Amazon DataZone catalog.
+- [AssetListingDetails](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AssetListingDetails.html): The details of an asset published in an Amazon DataZone catalog.
+- [AssetListingItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AssetListingItem.html): The details of an asset published in an Amazon DataZone catalog.
+- [AssetListingItemAdditionalAttributes](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AssetListingItemAdditionalAttributes.html): Additional attributes of an inventory asset.
+- [AssetPermission](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AssetPermission.html): The asset permissions.
+- [AssetRevision](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AssetRevision.html): The revision of an inventory asset.
+- [AssetScope](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AssetScope.html): The asset scope.
+- [AssetTargetNameMap](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AssetTargetNameMap.html): The name map for assets.
+- [AssetTypeItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AssetTypeItem.html): The details of the asset type.
+- [AssetTypesForRule](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AssetTypesForRule.html): The asset type for the rule details.
+- [AthenaPropertiesInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AthenaPropertiesInput.html): The Amazon Athena properties of a connection.
+- [AthenaPropertiesOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AthenaPropertiesOutput.html): The Amazon Athena properties of a connection.
+- [AthenaPropertiesPatch](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AthenaPropertiesPatch.html): The Amazon Athena properties patch of a connection.
+- [AttributeError](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AttributeError.html): The attribute error.
+- [AttributeInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AttributeInput.html): The attribute input.
+- [AuthenticationConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AuthenticationConfiguration.html): The authentication configuration of a connection.
+- [AuthenticationConfigurationInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AuthenticationConfigurationInput.html): The authentication configuration of a connection.
+- [AuthenticationConfigurationPatch](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AuthenticationConfigurationPatch.html): The authentication configuration patch of a connection.
+- [AuthorizationCodeProperties](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AuthorizationCodeProperties.html): The authorization code properties of a connection.
+- [AwsAccount](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AwsAccount.html): The account ID of a project.
+- [AwsConsoleLinkParameters](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AwsConsoleLinkParameters.html): The parameters of the console link specified as part of the environment action.
+- [AwsLocation](https://docs.aws.amazon.com/datazone/latest/APIReference/API_AwsLocation.html): The location of a project.
+- [BasicAuthenticationCredentials](https://docs.aws.amazon.com/datazone/latest/APIReference/API_BasicAuthenticationCredentials.html): The basic authentication credentials of a connection.
+- [BatchGetAttributeOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_BatchGetAttributeOutput.html): The results of the BatchGetAttribute action.
+- [BatchPutAttributeOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_BatchPutAttributeOutput.html): The results of the BatchPutAttribute action.
+- [BusinessNameGenerationConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_BusinessNameGenerationConfiguration.html): The configuration of the business name generation.
+- [CloudFormationProperties](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CloudFormationProperties.html): Part of the provisioning properties of the environment blueprint.
+- [ColumnFilterConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ColumnFilterConfiguration.html): The column configuration of the asset filter.
+- [ConfigurableActionParameter](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ConfigurableActionParameter.html): The details of the parameters for the configurable environment action.
+- [ConfigurableEnvironmentAction](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ConfigurableEnvironmentAction.html): The configurable action of a Amazon DataZone environment.
+- [ConnectionCredentials](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ConnectionCredentials.html): The credentials of a connection.
+- [ConnectionPropertiesInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ConnectionPropertiesInput.html): The properties of a connection.
+- [ConnectionPropertiesOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ConnectionPropertiesOutput.html): The properties of a connection.
+- [ConnectionPropertiesPatch](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ConnectionPropertiesPatch.html): The connection properties patch.
+- [ConnectionSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ConnectionSummary.html): The summary of a connection.
+- [CreateAssetTypePolicyGrantDetail](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateAssetTypePolicyGrantDetail.html): The details of the policy grant.
+- [CreateDomainUnitPolicyGrantDetail](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateDomainUnitPolicyGrantDetail.html): The details of the policy grant.
+- [CreateEnvironmentProfilePolicyGrantDetail](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateEnvironmentProfilePolicyGrantDetail.html): The details of the policy grant.
+- [CreateFormTypePolicyGrantDetail](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateFormTypePolicyGrantDetail.html): The details of the policy grant.
+- [CreateGlossaryPolicyGrantDetail](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateGlossaryPolicyGrantDetail.html): The details of the policy grant.
+- [CreateProjectFromProjectProfilePolicyGrantDetail](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateProjectFromProjectProfilePolicyGrantDetail.html): Specifies whether to create a project from project profile policy grant details.
+- [CreateProjectPolicyGrantDetail](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CreateProjectPolicyGrantDetail.html): The details of the policy grant.
+- [CustomAccountPoolHandler](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CustomAccountPoolHandler.html): The custom AWS Lambda handler within an account pool.
+- [CustomParameter](https://docs.aws.amazon.com/datazone/latest/APIReference/API_CustomParameter.html): The details of user parameters of an environment blueprint.
+- [DataProductItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DataProductItem.html): The data product.
+- [DataProductItemAdditionalAttributes](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DataProductItemAdditionalAttributes.html): The additional attributes of an Amazon DataZone data product.
+- [DataProductListing](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DataProductListing.html): The data product listing.
+- [DataProductListingItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DataProductListingItem.html): The asset of the data product listing.
+- [DataProductListingItemAdditionalAttributes](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DataProductListingItemAdditionalAttributes.html): The additional attributes of the asset of the data product.
+- [DataProductResultItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DataProductResultItem.html): The data product.
+- [DataProductRevision](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DataProductRevision.html): The data product revision.
+- [DataSourceConfigurationInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DataSourceConfigurationInput.html): The configuration of the data source.
+- [DataSourceConfigurationOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DataSourceConfigurationOutput.html): The configuration of the data source.
+- [DataSourceErrorMessage](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DataSourceErrorMessage.html): The details of the error message that is returned if the operation cannot be successfully completed.
+- [DataSourceRunActivity](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DataSourceRunActivity.html): The activity details of the data source run.
+- [DataSourceRunLineageSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DataSourceRunLineageSummary.html): The run lineage summary of a data source.
+- [DataSourceRunSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DataSourceRunSummary.html): The details of a data source run.
+- [DataSourceSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DataSourceSummary.html): The details of the data source.
+- [Deployment](https://docs.aws.amazon.com/datazone/latest/APIReference/API_Deployment.html): The details of the last deployment of the environment.
+- [DeploymentProperties](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DeploymentProperties.html): The deployment properties of the Amazon DataZone blueprint.
+- [DetailedGlossaryTerm](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DetailedGlossaryTerm.html): Details of a glossary term attached to the inventory asset.
+- [DomainSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DomainSummary.html): A summary of a Amazon DataZone domain.
+- [DomainUnitFilterForProject](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DomainUnitFilterForProject.html): The domain unit filter of the project grant filter.
+- [DomainUnitGrantFilter](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DomainUnitGrantFilter.html): The grant filter for the domain unit.
+- [DomainUnitGroupProperties](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DomainUnitGroupProperties.html): The properties of a domain unit group.
+- [DomainUnitOwnerProperties](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DomainUnitOwnerProperties.html): The properties of the domain unit owner.
+- [DomainUnitPolicyGrantPrincipal](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DomainUnitPolicyGrantPrincipal.html): The domain unit principal to whom the policy is granted.
+- [DomainUnitSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DomainUnitSummary.html): The summary of the domain unit.
+- [DomainUnitTarget](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DomainUnitTarget.html): The target for the domain unit.
+- [DomainUnitUserProperties](https://docs.aws.amazon.com/datazone/latest/APIReference/API_DomainUnitUserProperties.html): The properties of the domain unit user.
+- [EncryptionConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_EncryptionConfiguration.html): The encryption configuration details.
+- [EntityPattern](https://docs.aws.amazon.com/datazone/latest/APIReference/API_EntityPattern.html): The pattern describing the entities to be matched during the graph query.
+- [EnvironmentActionSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_EnvironmentActionSummary.html): The details about the specified action configured for an environment.
+- [EnvironmentBlueprintConfigurationItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_EnvironmentBlueprintConfigurationItem.html): The configuration details of an environment blueprint.
+- [EnvironmentBlueprintSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_EnvironmentBlueprintSummary.html): The details of an environment blueprint summary.
+- [EnvironmentConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_EnvironmentConfiguration.html): The configuration of an environment.
+- [EnvironmentConfigurationParameter](https://docs.aws.amazon.com/datazone/latest/APIReference/API_EnvironmentConfigurationParameter.html): The environment configuration parameter.
+- [EnvironmentConfigurationParametersDetails](https://docs.aws.amazon.com/datazone/latest/APIReference/API_EnvironmentConfigurationParametersDetails.html): The details of the environment configuration parameter.
+- [EnvironmentConfigurationUserParameter](https://docs.aws.amazon.com/datazone/latest/APIReference/API_EnvironmentConfigurationUserParameter.html): The environment configuration user parameters.
+- [EnvironmentDeploymentDetails](https://docs.aws.amazon.com/datazone/latest/APIReference/API_EnvironmentDeploymentDetails.html): The environment deployment details.
+- [EnvironmentError](https://docs.aws.amazon.com/datazone/latest/APIReference/API_EnvironmentError.html): The failure reasons for the environment deployment.
+- [EnvironmentParameter](https://docs.aws.amazon.com/datazone/latest/APIReference/API_EnvironmentParameter.html): The parameter details of an evironment profile.
+- [EnvironmentProfileSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_EnvironmentProfileSummary.html): The details of an environment profile.
+- [EnvironmentResolvedAccount](https://docs.aws.amazon.com/datazone/latest/APIReference/API_EnvironmentResolvedAccount.html): Specifies the account/Region that is to be used during project creation for a particular blueprint.
+- [EnvironmentSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_EnvironmentSummary.html): The details of an environment.
+- [EqualToExpression](https://docs.aws.amazon.com/datazone/latest/APIReference/API_EqualToExpression.html): Specifies whether the value is equal to an expression.
+- [EventSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_EventSummary.html): The event summary.
+- [FailureCause](https://docs.aws.amazon.com/datazone/latest/APIReference/API_FailureCause.html): Specifies the error message that is returned if the operation cannot be successfully completed.
+- [Filter](https://docs.aws.amazon.com/datazone/latest/APIReference/API_Filter.html): A search filter in Amazon DataZone.
+- [FilterClause](https://docs.aws.amazon.com/datazone/latest/APIReference/API_FilterClause.html): A search filter clause in Amazon DataZone.
+- [FilterExpression](https://docs.aws.amazon.com/datazone/latest/APIReference/API_FilterExpression.html): A filter expression in Amazon DataZone.
+- [FormEntryInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_FormEntryInput.html): The details of the form entry.
+- [FormEntryOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_FormEntryOutput.html): The details of the form entry.
+- [FormInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_FormInput.html): The details of a metadata form.
+- [FormOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_FormOutput.html): The details of a metadata form.
+- [FormTypeData](https://docs.aws.amazon.com/datazone/latest/APIReference/API_FormTypeData.html): The details of the metadata form type.
+- [GlossaryItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GlossaryItem.html): The details of a business glossary.
+- [GlossaryItemAdditionalAttributes](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GlossaryItemAdditionalAttributes.html): The additional attributes of an Amazon DataZone glossary.
+- [GlossaryTermEnforcementDetail](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GlossaryTermEnforcementDetail.html): The enforcement details of a glossary term.
+- [GlossaryTermItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GlossaryTermItem.html): The details of a business glossary term.
+- [GlossaryTermItemAdditionalAttributes](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GlossaryTermItemAdditionalAttributes.html): The additional attributes of an Amazon DataZone glossary term.
+- [GlueConnection](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GlueConnection.html): The AWS Glue connection.
+- [GlueConnectionInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GlueConnectionInput.html): The AWS Glue connecton input.
+- [GlueConnectionPatch](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GlueConnectionPatch.html): The AWS Glue connection patch.
+- [GlueOAuth2Credentials](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GlueOAuth2Credentials.html): The GlueOAuth2 credentials of a connection.
+- [GluePropertiesInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GluePropertiesInput.html): The AWS Glue properties of a connection.
+- [GluePropertiesOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GluePropertiesOutput.html): The properties of the AWS Glue connection.
+- [GluePropertiesPatch](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GluePropertiesPatch.html): The AWS Glue properties patch of a connection.
+- [GlueRunConfigurationInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GlueRunConfigurationInput.html): The configuration details of the AWS Glue data source.
+- [GlueRunConfigurationOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GlueRunConfigurationOutput.html): The configuration details of the AWS Glue data source.
+- [GlueSelfGrantStatusOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GlueSelfGrantStatusOutput.html): The details of the self granting status.
+- [GrantedEntity](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GrantedEntity.html): The details of a listing for which a subscription is granted.
+- [GrantedEntityInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GrantedEntityInput.html): The details of a listing for which a subscription is to be granted.
+- [GreaterThanExpression](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GreaterThanExpression.html): Specifies whether the value is greater than an expression.
+- [GreaterThanOrEqualToExpression](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GreaterThanOrEqualToExpression.html): Specifies whether the value is greater than or equal to an expression.
+- [GroupDetails](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GroupDetails.html): The details of a group in Amazon DataZone.
+- [GroupPolicyGrantPrincipal](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GroupPolicyGrantPrincipal.html): The group principal to whom the policy is granted.
+- [GroupProfileSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_GroupProfileSummary.html): The details of a group profile.
+- [HyperPodPropertiesInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_HyperPodPropertiesInput.html): The hyper pod properties of a AWS Glue properties patch.
+- [HyperPodPropertiesOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_HyperPodPropertiesOutput.html): The hyper pod properties of a AWS Glue properties patch.
+- [IamPropertiesInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_IamPropertiesInput.html): The IAM properties of a connection.
+- [IamPropertiesOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_IamPropertiesOutput.html): The IAM properties of a connection.
+- [IamPropertiesPatch](https://docs.aws.amazon.com/datazone/latest/APIReference/API_IamPropertiesPatch.html): The IAM properties patch of a connection.
+- [IamUserProfileDetails](https://docs.aws.amazon.com/datazone/latest/APIReference/API_IamUserProfileDetails.html): The details of the IAM user profile.
+- [Import](https://docs.aws.amazon.com/datazone/latest/APIReference/API_Import.html): The details of the import of the metadata form type.
+- [InExpression](https://docs.aws.amazon.com/datazone/latest/APIReference/API_InExpression.html): Specifies whether values are in the expression.
+- [IsNotNullExpression](https://docs.aws.amazon.com/datazone/latest/APIReference/API_IsNotNullExpression.html): Specifies that the expression is not null.
+- [IsNullExpression](https://docs.aws.amazon.com/datazone/latest/APIReference/API_IsNullExpression.html): Specifies that the expression is null.
+- [JobRunDetails](https://docs.aws.amazon.com/datazone/latest/APIReference/API_JobRunDetails.html): The details of a job run.
+- [JobRunError](https://docs.aws.amazon.com/datazone/latest/APIReference/API_JobRunError.html): The job run error.
+- [JobRunSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_JobRunSummary.html): The job run summary.
+- [LakeFormationConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_LakeFormationConfiguration.html): The Lake Formation configuration of the Data Lake blueprint.
+- [LessThanExpression](https://docs.aws.amazon.com/datazone/latest/APIReference/API_LessThanExpression.html): Specifies that a value is less than an expression.
+- [LessThanOrEqualToExpression](https://docs.aws.amazon.com/datazone/latest/APIReference/API_LessThanOrEqualToExpression.html): Specifies that a value is less than or equal to an expression.
+- [LikeExpression](https://docs.aws.amazon.com/datazone/latest/APIReference/API_LikeExpression.html): Specifies that a value is like the expression.
+- [LineageEventSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_LineageEventSummary.html): The data lineage event summary.
+- [LineageInfo](https://docs.aws.amazon.com/datazone/latest/APIReference/API_LineageInfo.html): The data lineage information.
+- [LineageNodeItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_LineageNodeItem.html): The summary and output forms of a LineageNode
+- [LineageNodeReference](https://docs.aws.amazon.com/datazone/latest/APIReference/API_LineageNodeReference.html): The reference details for the data lineage node.
+- [LineageNodeSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_LineageNodeSummary.html): The summary of the data lineage node.
+- [LineageNodeTypeItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_LineageNodeTypeItem.html): The details of a data lineage node type.
+- [LineageRunDetails](https://docs.aws.amazon.com/datazone/latest/APIReference/API_LineageRunDetails.html): The data lineage run details.
+- [LineageSqlQueryRunDetails](https://docs.aws.amazon.com/datazone/latest/APIReference/API_LineageSqlQueryRunDetails.html): The SQL query run details of a data lineage run.
+- [LineageSyncSchedule](https://docs.aws.amazon.com/datazone/latest/APIReference/API_LineageSyncSchedule.html): The lineage sync schedule.
+- [ListingItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListingItem.html): The details of a listing (aka asset published in a Amazon DataZone catalog).
+- [ListingRevision](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListingRevision.html): A revision of an asset published in a Amazon DataZone catalog.
+- [ListingRevisionInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListingRevisionInput.html): A revision to be made to an asset published in a Amazon DataZone catalog.
+- [ListingSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListingSummary.html): The summary of the listing of the data product.
+- [ListingSummaryItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ListingSummaryItem.html): The results of the data product summary.
+- [ManagedEndpointCredentials](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ManagedEndpointCredentials.html): The managed endpoint credentials of the EMR on EKS cluster.
+- [MatchClause](https://docs.aws.amazon.com/datazone/latest/APIReference/API_MatchClause.html): A clause to match a query pattern
+- [MatchOffset](https://docs.aws.amazon.com/datazone/latest/APIReference/API_MatchOffset.html): The offset of a matched term.
+- [MatchRationaleItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_MatchRationaleItem.html): A rationale indicating why this item was matched by search.
+- [Member](https://docs.aws.amazon.com/datazone/latest/APIReference/API_Member.html): The details about a project member.
+- [MemberDetails](https://docs.aws.amazon.com/datazone/latest/APIReference/API_MemberDetails.html): The details about a project member.
+- [MetadataFormEnforcementDetail](https://docs.aws.amazon.com/datazone/latest/APIReference/API_MetadataFormEnforcementDetail.html): The enforcement details of a metadata form.
+- [MetadataFormReference](https://docs.aws.amazon.com/datazone/latest/APIReference/API_MetadataFormReference.html): The reference of a metadata form.
+- [MetadataFormSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_MetadataFormSummary.html): The summary of the metadata form.
+- [MetadataGenerationRunItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_MetadataGenerationRunItem.html): The metadata generation run.
+- [MetadataGenerationRunTarget](https://docs.aws.amazon.com/datazone/latest/APIReference/API_MetadataGenerationRunTarget.html): The asset for which metadata was generated.
+- [MetadataGenerationRunTypeStat](https://docs.aws.amazon.com/datazone/latest/APIReference/API_MetadataGenerationRunTypeStat.html): The statistics of the metadata generation run type.
+- [MlflowPropertiesInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_MlflowPropertiesInput.html): The MLflow properties of a connection.
+- [MlflowPropertiesOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_MlflowPropertiesOutput.html): The MLflow properties of a connection.
+- [MlflowPropertiesPatch](https://docs.aws.amazon.com/datazone/latest/APIReference/API_MlflowPropertiesPatch.html): The MLflow properties of a connection.
+- [Model](https://docs.aws.amazon.com/datazone/latest/APIReference/API_Model.html): The model of the API.
+- [NameIdentifier](https://docs.aws.amazon.com/datazone/latest/APIReference/API_NameIdentifier.html): The name identifier.
+- [NotEqualToExpression](https://docs.aws.amazon.com/datazone/latest/APIReference/API_NotEqualToExpression.html): Specifies that a value is not equal to the expression.
+- [NotificationOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_NotificationOutput.html): The details of a notification generated in Amazon DataZone.
+- [NotificationResource](https://docs.aws.amazon.com/datazone/latest/APIReference/API_NotificationResource.html): The details of the resource mentioned in a notification.
+- [NotInExpression](https://docs.aws.amazon.com/datazone/latest/APIReference/API_NotInExpression.html): Specifies that a value is not in the expression.
+- [NotLikeExpression](https://docs.aws.amazon.com/datazone/latest/APIReference/API_NotLikeExpression.html): Specifies that a value might be not like the expression.
+- [OAuth2ClientApplication](https://docs.aws.amazon.com/datazone/latest/APIReference/API_OAuth2ClientApplication.html): The OAuth2Client application.
+- [OAuth2Properties](https://docs.aws.amazon.com/datazone/latest/APIReference/API_OAuth2Properties.html): The OAuth2 properties.
+- [OpenLineageRunEventSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_OpenLineageRunEventSummary.html): The open lineage run event summary.
+- [OverrideDomainUnitOwnersPolicyGrantDetail](https://docs.aws.amazon.com/datazone/latest/APIReference/API_OverrideDomainUnitOwnersPolicyGrantDetail.html): The grant details of the override domain unit owners policy.
+- [OverrideProjectOwnersPolicyGrantDetail](https://docs.aws.amazon.com/datazone/latest/APIReference/API_OverrideProjectOwnersPolicyGrantDetail.html): The details of the override project owners policy grant.
+- [OwnerGroupProperties](https://docs.aws.amazon.com/datazone/latest/APIReference/API_OwnerGroupProperties.html): The properties of the domain unit owners group.
+- [OwnerGroupPropertiesOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_OwnerGroupPropertiesOutput.html): The properties of the domain unit owners group.
+- [OwnerProperties](https://docs.aws.amazon.com/datazone/latest/APIReference/API_OwnerProperties.html): The properties of a domain unit's owner.
+- [OwnerPropertiesOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_OwnerPropertiesOutput.html): The ID of the domain unit owners group.
+- [OwnerUserProperties](https://docs.aws.amazon.com/datazone/latest/APIReference/API_OwnerUserProperties.html): The properties of the owner user.
+- [OwnerUserPropertiesOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_OwnerUserPropertiesOutput.html): The properties of the owner user.
+- [Permissions](https://docs.aws.amazon.com/datazone/latest/APIReference/API_Permissions.html): The asset permissions.
+- [PhysicalConnectionRequirements](https://docs.aws.amazon.com/datazone/latest/APIReference/API_PhysicalConnectionRequirements.html): Physical connection requirements of a connection.
+- [PhysicalEndpoint](https://docs.aws.amazon.com/datazone/latest/APIReference/API_PhysicalEndpoint.html): The physical endpoints of a connection.
+- [PolicyGrantDetail](https://docs.aws.amazon.com/datazone/latest/APIReference/API_PolicyGrantDetail.html): The details of the policy grant.
+- [PolicyGrantMember](https://docs.aws.amazon.com/datazone/latest/APIReference/API_PolicyGrantMember.html): A member of the policy grant list.
+- [PolicyGrantPrincipal](https://docs.aws.amazon.com/datazone/latest/APIReference/API_PolicyGrantPrincipal.html): The policy grant principal.
+- [PredictionConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_PredictionConfiguration.html): The configuration of the prediction.
+- [ProjectDeletionError](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ProjectDeletionError.html): Specifies the error message that is returned if the operation cannot be successfully completed.
+- [ProjectGrantFilter](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ProjectGrantFilter.html): The project grant filter.
+- [ProjectMember](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ProjectMember.html): The details of a project member.
+- [ProjectPolicyGrantPrincipal](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ProjectPolicyGrantPrincipal.html): The project policy grant principal.
+- [ProjectProfileSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ProjectProfileSummary.html): The summary of a project profile.
+- [ProjectsForRule](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ProjectsForRule.html): Specifies projects in which the rule is created.
+- [ProjectSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ProjectSummary.html): The details of a Amazon DataZone project.
+- [ProvisioningConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ProvisioningConfiguration.html): The provisioning configuration of the blueprint.
+- [ProvisioningProperties](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ProvisioningProperties.html): The provisioning properties of an environment blueprint.
+- [RecommendationConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RecommendationConfiguration.html): The recommendation to be updated as part of the UpdateDataSource action.
+- [RedshiftClusterStorage](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RedshiftClusterStorage.html): The details of the Amazon Redshift cluster storage.
+- [RedshiftCredentialConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RedshiftCredentialConfiguration.html): The details of the credentials required to access an Amazon Redshift cluster.
+- [RedshiftCredentials](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RedshiftCredentials.html): Amazon Redshift credentials of a connection.
+- [RedshiftLineageSyncConfigurationInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RedshiftLineageSyncConfigurationInput.html): The Amaon Redshift lineage sync configuration.
+- [RedshiftLineageSyncConfigurationOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RedshiftLineageSyncConfigurationOutput.html): The Amaon Redshift lineage sync configuration.
+- [RedshiftPropertiesInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RedshiftPropertiesInput.html): The Amazon Redshift properties.
+- [RedshiftPropertiesOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RedshiftPropertiesOutput.html): The Amazon Redshift properties.
+- [RedshiftPropertiesPatch](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RedshiftPropertiesPatch.html): Amazon Redshift properties patch.
+- [RedshiftRunConfigurationInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RedshiftRunConfigurationInput.html): The configuration details of the Amazon Redshift data source.
+- [RedshiftRunConfigurationOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RedshiftRunConfigurationOutput.html): The configuration details of the Amazon Redshift data source.
+- [RedshiftSelfGrantStatusOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RedshiftSelfGrantStatusOutput.html): The details for the self granting status for an Amazon Redshift data source.
+- [RedshiftServerlessStorage](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RedshiftServerlessStorage.html): The details of the Amazon Redshift Serverless workgroup storage.
+- [RedshiftStorage](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RedshiftStorage.html): The details of the Amazon Redshift storage as part of the configuration of an Amazon Redshift data source run.
+- [RedshiftStorageProperties](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RedshiftStorageProperties.html): The Amazon Redshift storage properties.
+- [Region](https://docs.aws.amazon.com/datazone/latest/APIReference/API_Region.html): The AWS Region.
+- [RejectChoice](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RejectChoice.html): The details of the automatically generated business metadata that is rejected.
+- [RejectRule](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RejectRule.html): Specifies the rule and the threshold under which a prediction can be rejected.
+- [RelationalFilterConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RelationalFilterConfiguration.html): The relational filter configuration for the data source.
+- [RelationPattern](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RelationPattern.html): The pattern describing the query's relational traversal.
+- [Resource](https://docs.aws.amazon.com/datazone/latest/APIReference/API_Resource.html): The details of a provisioned resource of this Amazon DataZone environment.
+- [ResourceTag](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ResourceTag.html): The resource tag of the project.
+- [ResourceTagParameter](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ResourceTagParameter.html): The resource tag parameter of the project profile.
+- [ResultItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ResultItem.html): Resulting entity from the query.
+- [RowFilter](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RowFilter.html): The row filter.
+- [RowFilterConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RowFilterConfiguration.html): The row filter configuration details.
+- [RowFilterExpression](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RowFilterExpression.html): The row filter expression.
+- [RuleDetail](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RuleDetail.html): The details of a rule.
+- [RuleScope](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RuleScope.html): The scope of a rule.
+- [RuleSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RuleSummary.html): The summary of the rule.
+- [RuleTarget](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RuleTarget.html): The target of the rule.
+- [RunStatisticsForAssets](https://docs.aws.amazon.com/datazone/latest/APIReference/API_RunStatisticsForAssets.html): The asset statistics from the data source run.
+- [S3PropertiesInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_S3PropertiesInput.html): The Amazon S3 properties of a connection.
+- [S3PropertiesOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_S3PropertiesOutput.html): The Amazon S3 properties of a connection.
+- [S3PropertiesPatch](https://docs.aws.amazon.com/datazone/latest/APIReference/API_S3PropertiesPatch.html): The Amazon S3 properties patch of a connection.
+- [SageMakerRunConfigurationInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SageMakerRunConfigurationInput.html): The Amazon SageMaker run configuration.
+- [SageMakerRunConfigurationOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SageMakerRunConfigurationOutput.html): The Amazon SageMaker run configuration.
+- [ScheduleConfiguration](https://docs.aws.amazon.com/datazone/latest/APIReference/API_ScheduleConfiguration.html): The details of the schedule of the data source runs.
+- [SearchInItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SearchInItem.html): The details of the search.
+- [SearchInventoryResultItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SearchInventoryResultItem.html): The details of the search results.
+- [SearchResultItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SearchResultItem.html): The details of the results of the SearchListings action.
+- [SearchSort](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SearchSort.html): The details of the way to sort search results.
+- [SearchTypesResultItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SearchTypesResultItem.html): The details of the results of the SearchTypes action.
+- [SelfGrantStatusDetail](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SelfGrantStatusDetail.html): The details for the self granting status.
+- [SelfGrantStatusOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SelfGrantStatusOutput.html): The details for the self granting status for a data source.
+- [SingleSignOn](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SingleSignOn.html): The single sign-on details in Amazon DataZone.
+- [SparkEmrPropertiesInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SparkEmrPropertiesInput.html): The Spark EMR properties.
+- [SparkEmrPropertiesOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SparkEmrPropertiesOutput.html): The Spark EMR properties.
+- [SparkEmrPropertiesPatch](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SparkEmrPropertiesPatch.html): The Spark EMR properties patch.
+- [SparkGlueArgs](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SparkGlueArgs.html): The Spark AWS Glue args.
+- [SparkGluePropertiesInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SparkGluePropertiesInput.html): The Spark AWS Glue properties.
+- [SparkGluePropertiesOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SparkGluePropertiesOutput.html): The Spark AWS Glue properties.
+- [SsoUserProfileDetails](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SsoUserProfileDetails.html): The SSO user profile detail.
+- [SubscribedAsset](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscribedAsset.html): The details of the asset for which the subscription grant is created.
+- [SubscribedAssetListing](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscribedAssetListing.html): The details of the published asset for which the subscription grant is created.
+- [SubscribedGroup](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscribedGroup.html): The group that subscribes to the asset.
+- [SubscribedGroupInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscribedGroupInput.html): The details of the subscribed group.
+- [SubscribedIamPrincipal](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscribedIamPrincipal.html): The IAM principal that subscribes to the asset.
+- [SubscribedIamPrincipalInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscribedIamPrincipalInput.html): The details of the subscribed IAM principal.
+- [SubscribedListing](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscribedListing.html): The details of the published asset for which the subscription grant is created.
+- [SubscribedListingInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscribedListingInput.html): The published asset for which the subscription grant is to be created.
+- [SubscribedListingItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscribedListingItem.html): The published asset for which the subscription grant is created.
+- [SubscribedPrincipal](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscribedPrincipal.html): The principal that has the subscription grant for the asset.
+- [SubscribedPrincipalInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscribedPrincipalInput.html): The principal that is to be given a subscriptiong grant.
+- [SubscribedProductListing](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscribedProductListing.html): The data product listing.
+- [SubscribedProject](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscribedProject.html): The project that has the subscription grant.
+- [SubscribedProjectInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscribedProjectInput.html): The project that is to be given a subscription grant.
+- [SubscribedUser](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscribedUser.html): The subscribed user.
+- [SubscribedUserInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscribedUserInput.html): The subscribed user.
+- [SubscriptionGrantSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscriptionGrantSummary.html): The details of the subscription grant.
+- [SubscriptionRequestSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscriptionRequestSummary.html): The details of the subscription request.
+- [SubscriptionSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscriptionSummary.html): The details of the subscription.
+- [SubscriptionTargetForm](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscriptionTargetForm.html): The details of the subscription target configuration.
+- [SubscriptionTargetSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_SubscriptionTargetSummary.html): The details of the subscription target.
+- [TermRelations](https://docs.aws.amazon.com/datazone/latest/APIReference/API_TermRelations.html): The details of the term relations.
+- [TextMatchItem](https://docs.aws.amazon.com/datazone/latest/APIReference/API_TextMatchItem.html): A structure indicating matched terms for an attribute.
+- [TimeSeriesDataPointFormInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_TimeSeriesDataPointFormInput.html): The time series data points form.
+- [TimeSeriesDataPointFormOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_TimeSeriesDataPointFormOutput.html): The time series data points form.
+- [TimeSeriesDataPointSummaryFormOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_TimeSeriesDataPointSummaryFormOutput.html): The summary of the time series data points form.
+- [Topic](https://docs.aws.amazon.com/datazone/latest/APIReference/API_Topic.html): The topic of the notification.
+- [Unit](https://docs.aws.amazon.com/datazone/latest/APIReference/API_Unit.html): The details of the policy of creating an environment.
+- [UseAssetTypePolicyGrantDetail](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UseAssetTypePolicyGrantDetail.html): Specifies the domain unit(s) whose projects can use this asset type while creating asset or asset revisions.
+- [UserDetails](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UserDetails.html): The user details of a project member.
+- [UsernamePassword](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UsernamePassword.html): The username and password of a connection.
+- [UserPolicyGrantPrincipal](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UserPolicyGrantPrincipal.html): The user policy grant principal.
+- [UserProfileDetails](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UserProfileDetails.html): The user profile details.
+- [UserProfileSummary](https://docs.aws.amazon.com/datazone/latest/APIReference/API_UserProfileSummary.html): The details of the user profile.
+- [WorkflowsMwaaPropertiesInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_WorkflowsMwaaPropertiesInput.html): The Amazon MWAA properties.
+- [WorkflowsMwaaPropertiesOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_WorkflowsMwaaPropertiesOutput.html): The Amazon MWAA properties.
+- [WorkflowsServerlessPropertiesInput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_WorkflowsServerlessPropertiesInput.html): The MWAA serverless properties.
+- [WorkflowsServerlessPropertiesOutput](https://docs.aws.amazon.com/datazone/latest/APIReference/API_WorkflowsServerlessPropertiesOutput.html): The MWAA serverless properties.

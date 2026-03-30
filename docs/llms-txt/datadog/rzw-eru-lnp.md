@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure Network Security Groups or Rules Created, Modified, or Deleted
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562)
 ## Goal{% #goal %}
 
 Detect when an Azure network security group or an Azure network security rule has been created, modified, or deleted.

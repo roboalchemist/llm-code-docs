@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # SSH watched country login notice from Zeek
-Classification:attack 
+Classification:attack
 ## Goal{% #goal %}
 
 Detect the SSH [watched country login notice](https://docs.zeek.org/en/master/scripts/policy/protocols/ssh/geo-data.zeek.html).

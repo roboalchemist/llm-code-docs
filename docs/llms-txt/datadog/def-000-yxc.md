@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # SQL database instances should have automated backups enabled
- 
+
 ## Description{% #description %}
 
 This check ensures that Cloud SQL database instances are configured with automated backups. It is recommended that all SQL database instances enable automated backups to provide a way to restore an instance and recover lost data. This recommendation applies to SQL Server, PostgreSQL, MySQL Generation 1, and MySQL Generation 2 instances.

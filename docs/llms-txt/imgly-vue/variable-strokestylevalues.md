@@ -1,0 +1,11 @@
+# Variable: StrokeStyleValues
+
+```
+const StrokeStyleValues: readonly ["Dashed", "DashedRound", "Dotted", "LongDashed", "LongDashedRound", "Solid"];
+```
+
+---
+
+
+
+[Source](https:/img.ly/docs/cesdk/vue/api/engine/variables/strokepositionvalues)

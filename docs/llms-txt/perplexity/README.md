@@ -1,23 +1,3 @@
-# Source: https://docs.perplexity.ai/docs/cookbook/examples/research-finder/README.md
-
-# Source: https://docs.perplexity.ai/docs/cookbook/examples/financial-news-tracker/README.md
-
-# Source: https://docs.perplexity.ai/docs/cookbook/examples/fact-checker-cli/README.md
-
-# Source: https://docs.perplexity.ai/docs/cookbook/examples/disease-qa/README.md
-
-# Source: https://docs.perplexity.ai/docs/cookbook/examples/discord-py-bot/README.md
-
-# Source: https://docs.perplexity.ai/docs/cookbook/examples/daily-knowledge-bot/README.md
-
-# Source: https://docs.perplexity.ai/docs/cookbook/examples/README.md
-
-# Source: https://docs.perplexity.ai/docs/cookbook/articles/openai-agents-integration/README.md
-
-# Source: https://docs.perplexity.ai/docs/cookbook/articles/memory-management/chat-with-persistence/README.md
-
-# Source: https://docs.perplexity.ai/docs/cookbook/articles/memory-management/chat-summary-memory-buffer/README.md
-
 # Source: https://docs.perplexity.ai/docs/cookbook/articles/memory-management/README.md
 
 > ## Documentation Index
@@ -90,3 +70,6 @@ articles/memory-management/
 If you have found another way to tackle the same issue using LlamaIndex please feel free to open a PR! Check out our [CONTRIBUTING.md](https://github.com/ppl-ai/api-cookbook/blob/main/CONTRIBUTING.md) file for more guidance.
 
 ***
+
+
+Built with [Mintlify](https://mintlify.com).

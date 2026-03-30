@@ -1,7 +1,9 @@
 # Source: https://exa.ai/docs/reference/rate-limits.md
 
 > ## Documentation Index
+
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+
 > Use this file to discover all available pages before exploring further.
 
 # Rate Limits
@@ -18,9 +20,9 @@ Our API endpoints have default rate limits to ensure reliable performance for al
 
 | Endpoint    | Limit               |
 | ----------- | ------------------- |
-| `/search`   | 5 QPS\*             |
-| `/contents` | 50 QPS              |
-| `/answer`   | 5 QPS               |
+| `/search`   | 10 QPS\*            |
+| `/contents` | 100 QPS             |
+| `/answer`   | 10 QPS              |
 | `/research` | 15 concurrent tasks |
 
 *\*QPS = Queries Per Second*

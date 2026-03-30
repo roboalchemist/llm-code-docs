@@ -1,0 +1,50 @@
+# Source: https://turborepo.dev/messages/package-task-in-single-package-workspace.md
+
+---
+title: Package task in single-package workspace error
+description: Learn more about errors with package tasks in single-package workspaces.
+product: turborepo
+type: troubleshooting
+summary: How to fix errors from using package-scoped task syntax in a single-package workspace.
+related:
+
+- /docs/reference/configuration
+
+---
+
+# Package task in single-package workspace error
+
+Why this error occurred [#why-this-error-occurred]
+
+In single package mode, there cannot be multiple packages in your repository. Therefore, declaring a task in the
+`turbo.json` with a specified package name is not permitted.
+
+```json title="./turbo.json"
+{
+  "tasks": {
+    "app#build": {
+      "cache": true
+    }
+  }
+}
+```
+
+Solution [#solution]
+
+Remove the package name from the task declaration.
+
+```json title="./turbo.json"
+{
+  "tasks": {
+    "build": {
+      "cache": true
+    }
+  }
+}
+```
+
+Alternatively, if you would like to have multiple packages, you can [specify the workspaces in your repository](/docs/getting-started/add-to-existing-repository).
+
+---
+
+[View full sitemap](/sitemap.md)

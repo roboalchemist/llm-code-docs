@@ -1,9 +1,6 @@
 # Source: https://oxc.rs/docs/guide/usage/transformer/typescript.md
 
----
-url: /docs/guide/usage/transformer/typescript.md
----
-# TypeScript
+## TypeScript
 
 Oxc transformer supports transforming TypeScript to JavaScript.
 
@@ -214,16 +211,16 @@ const result = await transform("lib.ts", sourceCode, {
 
 ## Caveats
 
-### Isolated Modules
+## Isolated Modules
 
 Because Oxc transformer transforms each files independently, some TypeScript features are not supported.
 To avoid using unsupported features, you should enable the [`isolatedModules`](https://www.typescriptlang.org/tsconfig/#isolatedModules) option in your `tsconfig.json` file.
 
-### Partial Namespace Support
+## Partial Namespace Support
 
 TypeScript has a legacy feature called [namespaces](https://www.typescriptlang.org/docs/handbook/namespaces.html). While [it is recommended to use ES modules for new projects](https://www.typescriptlang.org/docs/handbook/namespaces-and-modules.html#using-modules), Oxc transformer has a partial support for namespaces.
 
-#### Exporting a variable using `var` or `let` is not supported
+### Exporting a variable using `var` or `let` is not supported
 
 Exporting a variable using `var` or `let` is not supported.
 
@@ -243,7 +240,7 @@ namespace Foo {
 console.log(Foo.bar.value);
 ```
 
-#### Namespaces does not share the scope between namespaces with the same name
+### Namespaces does not share the scope between namespaces with the same name
 
 ::: code-group
 

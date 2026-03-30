@@ -165,7 +165,7 @@ resource "google_container_cluster" "positive2" {
     update = "40m"
   }
 
-  
+
   node_version = "1.24"
 }
 ```

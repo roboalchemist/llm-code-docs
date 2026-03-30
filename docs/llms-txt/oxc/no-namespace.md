@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-namespace.md
 
-# Source: https://oxc.rs/docs/guide/usage/linter/rules/react/no-namespace.md
+## Source: https://oxc.rs/docs/guide/usage/linter/rules/react/no-namespace.md
 
-# Source: https://oxc.rs/docs/guide/usage/linter/rules/import/no-namespace.md
+## Source: https://oxc.rs/docs/guide/usage/linter/rules/import/no-namespace.md
 
----
-url: /docs/guide/usage/linter/rules/import/no-namespace.md
----
-
-### What it does
+## What it does
 
 Enforce a convention of not using namespaced (a.k.a. "wildcard" \*) imports.
 
-### Why is this bad?
+## Why is this bad?
 
 Namespaced imports, while sometimes used, are generally considered less ideal in modern JavaScript development for several reasons:
 
@@ -21,17 +17,17 @@ Namespaced imports, while sometimes used, are generally considered less ideal in
 * **Specificity**: Namespaced imports import the entire module, bringing in everything, even if you only need a few specific functions or classes. This can lead to potential naming conflicts if different modules have the same names for different functions.
 * **Pollution**: Importing an entire namespace pollutes your current scope with potentially unnecessary functions and variables. It increases the chance of accidental use of an unintended function or variable, leading to harder-to-debug errors.
 
-2. **Maintainability**:
+1. **Maintainability**:
 
 * **Clarity**: Namespaced imports can make it harder to understand which specific functions or classes are being used in your code. This is especially true in larger projects with numerous imports.
 * **Refactoring**: If a function or class name changes within the imported module, you might need to update several parts of your code if you are using namespaced imports. This becomes even more challenging when dealing with multiple namespaces.
 
-3. **Modern Practice**:
+1. **Modern Practice**:
 
 * **Explicit Imports**: Modern JavaScript practices encourage explicit imports for specific components. This enhances code readability and maintainability.
 * **Tree-Shaking**: Tools like Webpack and Rollup use tree-shaking to remove unused code from your bundles. Namespaced imports can prevent efficient tree-shaking, leading to larger bundle sizes.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -54,7 +50,7 @@ import defaultExport, { isUser } from "./user";
 
 This rule accepts a configuration object with the following properties:
 
-### ignore
+## ignore
 
 type: `string[]`
 

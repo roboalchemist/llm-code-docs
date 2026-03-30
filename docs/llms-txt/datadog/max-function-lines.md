@@ -47,8 +47,8 @@ In practice, to adhere to this rule, you can often break up long functions into 
 
 ```python
 def myfunction():
-	foo()
-	bar()
+    foo()
+    bar()
 
 
 
@@ -60,7 +60,6 @@ def myfunction():
 
 
 
-	
 
 
 
@@ -71,7 +70,6 @@ def myfunction():
 
 
 
-	
 
 
 
@@ -82,7 +80,6 @@ def myfunction():
 
 
 
-	
 
 
 
@@ -93,7 +90,6 @@ def myfunction():
 
 
 
-	
 
 
 
@@ -104,7 +100,6 @@ def myfunction():
 
 
 
-	
 
 
 
@@ -115,7 +110,6 @@ def myfunction():
 
 
 
-	
 
 
 
@@ -126,7 +120,6 @@ def myfunction():
 
 
 
-	
 
 
 
@@ -137,7 +130,6 @@ def myfunction():
 
 
 
-	
 
 
 
@@ -148,7 +140,6 @@ def myfunction():
 
 
 
-	
 
 
 
@@ -159,7 +150,6 @@ def myfunction():
 
 
 
-	
 
 
 
@@ -170,7 +160,6 @@ def myfunction():
 
 
 
-	
 
 
 
@@ -181,7 +170,6 @@ def myfunction():
 
 
 
-	
 
 
 
@@ -192,7 +180,6 @@ def myfunction():
 
 
 
-	
 
 
 
@@ -203,7 +190,6 @@ def myfunction():
 
 
 
-	
 
 
 
@@ -214,7 +200,6 @@ def myfunction():
 
 
 
-	
 
 
 
@@ -225,7 +210,6 @@ def myfunction():
 
 
 
-	
 
 
 
@@ -236,7 +220,6 @@ def myfunction():
 
 
 
-	
 
 
 
@@ -247,7 +230,6 @@ def myfunction():
 
 
 
-	
 
 
 
@@ -258,7 +240,6 @@ def myfunction():
 
 
 
-	
 
 
 
@@ -269,18 +250,36 @@ def myfunction():
 
 
 
-	
-	pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    pass
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}
 
 ```python
 def myfunction(args):
-	foo()
-	bar()
-	pass
+    foo()
+    bar()
+    pass
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

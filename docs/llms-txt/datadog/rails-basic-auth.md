@@ -54,6 +54,5 @@ class PostsController < ApplicationController
   http_basic_authenticate_with :name => "dhh", :password => secret, :except => :index
 end
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

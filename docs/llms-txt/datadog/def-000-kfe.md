@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS EC2 instance can assume a role with administrative privileges
- 
+
 ## Description{% #description %}
 
 In AWS environments, some IAM permissions can lead to privilege escalation, where an identity can gain access to another more privileged identity. This rule identifies when an EC2 instance has an IAM role that can use `sts:AssumeRole` to assume a role with administrative privileges in the same account inside your AWS Organization. By assuming this more privileged role, an adversary can leverage their permissions for further access.

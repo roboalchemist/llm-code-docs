@@ -1,0 +1,134 @@
+# Source: https://docs.inkeep.com/talk-to-your-agents/triggers/webhooks
+
+# Webhook Triggers (/talk-to-your-agents/triggers/webhooks)
+
+Create webhook endpoints for external services to invoke your Agents
+
+
+
+
+
+Triggers create webhook endpoints that allow external services to invoke your Agents via HTTP. When a service like GitHub, Slack, Zendesk, or Stripe sends a webhook, the payload is validated, transformed, and used to start a new conversation with your Agent.
+
+## How Triggers Work
+
+<Mermaid chart="sequenceDiagram\n    participant Service as External Service\n    participant Webhook as Trigger Endpoint\n    participant Agent as Your Agent\n    participant DB as Invocation Log\n\n    Service->>Webhook: POST webhook payload\n    Webhook->>Webhook: Validate auth & signature\n    Webhook->>Webhook: Validate payload schema\n    Webhook->>Webhook: Transform payload → message\n    Webhook->>DB: Create invocation (pending)\n    Webhook-->>Service: 202 Accepted + invocationId\n    Webhook->>Agent: Start conversation (async)\n    Agent->>Agent: Process message\n    Agent->>DB: Update invocation (success/failed)" />
+
+1. **External service sends a webhook** to your trigger's URL
+2. **Authentication is verified** (custom headers or signature)
+3. **Payload is validated** against the input schema (if configured)
+4. **Payload is transformed** using the message template
+5. **Invocation is logged** and the webhook returns immediately with `202 Accepted`
+6. **Agent processes the message** asynchronously in a new conversation
+
+## When to Use Triggers
+
+Triggers are ideal for:
+
+| Use Case              | Example                                    |
+| --------------------- | ------------------------------------------ |
+| **CI/CD pipelines**   | Trigger code review agents on PR creation  |
+| **Customer events**   | Respond to Stripe payment webhooks         |
+| **DevOps alerts**     | Process PagerDuty or Datadog alerts        |
+| **Chat integrations** | Handle Slack or Discord messages           |
+| **Form submissions**  | Process Typeform or webhook-enabled forms  |
+| **Scheduled tasks**   | Invoke agents from cron jobs or schedulers |
+
+<Warning>
+  \*\*User-scoped MCP servers require a configured `runAsUserId`. Without `runAsUserId` set on the trigger, tools that require user-scoped credentials will fail. See [User vs Project MCPs](/visual-builder/tools/user-vs-project-mcp) for more details.
+</Warning>
+
+## Trigger Configuration
+
+Each trigger is configured with:
+
+### Required
+
+* **Name**: Human-readable identifier for the trigger
+* **Message Template**: Template that converts the webhook payload into a message for the Agent
+
+### Optional
+
+* **Input Schema**: JSON Schema to validate incoming payloads
+* **Authentication**: Custom headers with expected values
+* **Signing Secret**: HMAC-SHA256 signature verification (for GitHub, Slack, etc.)
+* **Output Transform**: Reshape payloads before interpolating the message template. Choose one approach:
+  * **Object Transformation**: Simple field remapping (recommended for basic use cases)
+  * **JMESPath**: Complex transformations like filtering arrays or restructuring nested data
+* **Run As User**: Execute the trigger on behalf of a specific user, enabling access to their connected credentials
+
+## Authentication Options
+
+Triggers support flexible header-based authentication:
+
+| Configuration                            | Use Case                                  |
+| ---------------------------------------- | ----------------------------------------- |
+| Custom header (e.g., `X-API-Key`)        | Simple API key authentication             |
+| `Authorization` header with Bearer token | OAuth-style authentication                |
+| Multiple headers                         | Multi-factor authentication               |
+| Signing secret only                      | Webhooks from services that sign requests |
+| No authentication                        | Public webhooks (use with caution)        |
+
+```typescript
+// Example: Require a custom API key header
+authentication: {
+  headers: [
+    { name: "X-API-Key", value: process.env.MY_API_KEY },
+  ],
+}
+```
+
+<Note>
+  Header values are securely hashed before storage. For services that sign webhooks (GitHub, Stripe, Slack), you can rely on `signingSecret` alone for security.
+</Note>
+
+## Webhook URL Format
+
+After creating a trigger, the webhook URL follows this pattern:
+
+```
+POST https://<your-run-api>/tenants/{tenantId}/projects/{projectId}/agents/{agentId}/triggers/{triggerId}
+```
+
+You can find the complete webhook URL in the API response when creating or listing triggers.
+
+## User-Scoped Execution
+
+By default, webhook triggers execute without a user identity — tools with user-scoped credentials will fail. Setting `runAsUserId` makes the trigger execute as a specific user, enabling access to their connected credentials (e.g., per-user OAuth tokens for GitHub, Slack, or Jira).
+
+Any user with `edit` permission on a project can set `runAsUserId` to themselves. Org admins and owners can set it to any user in their organization.
+
+When `runAsUserId` is set, agents automatically use that user's profile timezone for time-aware responses.
+
+## Invocation Tracking
+
+Every webhook invocation is tracked with:
+
+* **Status**: `pending` → `success` or `failed`
+* **Request Payload**: The original webhook body
+* **Transformed Payload**: The payload after transformation
+* **Conversation ID**: The conversation created for this invocation
+* **Error Message**: Details if the invocation failed
+
+This allows you to monitor webhook activity, debug failures, and audit trigger usage.
+
+## Example: GitHub Issue Handler
+
+Here's a conceptual example of a trigger that responds to GitHub issues:
+
+```typescript
+// When GitHub sends: { action: "opened", issue: { title: "Bug report", body: "..." }, ... }
+// The trigger creates a message like:
+// "New GitHub issue opened: Bug report\n\nDescription: ..."
+// And starts a conversation with your support agent
+```
+
+## Example: Zendesk Ticket
+
+Here's a conceptual example of a trigger that responds to Zendesk tickets:
+
+```typescript
+// Create a webhook from Zendesk when a ticket is created or updated
+// The webhook triggers your Zendesk support ticket agent
+// The agent can draft a reply to the ticket, write summaries as internal notes, add tags & custom fields, etc
+```

@@ -48,7 +48,7 @@ class NonCompliant {
 class Compliant {
     [ThreadStatic]
     private static string _foo;
-    
+
     public static string Foo {
         get {
             if (_foo == null) {
@@ -59,6 +59,5 @@ class Compliant {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -1,0 +1,133 @@
+# Source: https://ngrok.com/docs/integrations/webhooks/mailchimp-webhooks.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Mailchimp Webhooks
+
+> Develop and test Mailchimp webhooks from localhost.
+
+This guide shows you how to use ngrok to receive Mailchimp webhooks on your localhost app.
+
+By integrating ngrok with Mailchimp, you can:
+
+* Develop and test Mailchimp webhooks locally without deploying to a public environment or setting up HTTPS.
+* Inspect and troubleshoot requests from Mailchimp in real time via the inspection UI and API.
+* Modify and replay Mailchimp webhook requests with a single click instead of reproducing events manually in your Mailchimp account.
+* Secure your app with Mailchimp webhook validation provided by ngrok.
+  Invalid requests are blocked by ngrok before reaching your app.
+
+## What you'll need
+
+* An [ngrok account](https://ngrok.com/signup) and your [authtoken](https://dashboard.ngrok.com/get-started/your-authtoken).
+* The [ngrok agent](https://ngrok.com/download) installed.
+* [Node.js](https://nodejs.org/) installed (for the sample app, or use your own app).
+* A Mailchimp account.
+
+## 1. Start your app
+
+For this tutorial, you can use the [sample Node.js app on GitHub](https://github.com/ngrok/ngrok-webhook-nodejs-sample).
+
+To install the sample, run the following in a terminal:
+
+```bash  theme={null}
+git clone https://github.com/ngrok/ngrok-webhook-nodejs-sample.git
+cd ngrok-webhook-nodejs-sample
+npm install
+```
+
+Then start the app:
+
+```bash  theme={null}
+npm start
+```
+
+The app runs on port 3000 by default.
+
+You can confirm it's running by visiting `http://localhost:3000`.
+The app logs request headers and body in the terminal and shows a message in the browser.
+
+## 2. Expose your app with ngrok
+
+Once your app is running locally, you're ready to put it online securely using ngrok.
+
+* Copy [your ngrok authtoken](https://dashboard.ngrok.com/get-started/your-authtoken) from the dashboard.
+
+<Tip>
+  The ngrok agent uses your authtoken to authenticate when you start a tunnel.
+</Tip>
+
+* Start ngrok:
+
+  ```bash  theme={null}
+  ngrok http 3000
+  ```
+
+* Copy the URL ngrok displays.
+  Your app is now exposed at that URL for use with Mailchimp.
+
+## 3. Configure Mailchimp to send webhooks
+
+Mailchimp can send webhook requests to your app when events occur in your audience.
+To register for those events:
+
+* Sign in to [Mailchimp](https://mailchimp.com/).
+* Click **Audience** and then **Audience dashboard**.
+* Click **Manage Audience** and **Settings**.
+* On the **Settings** page, click **Webhooks** and then **Create New Webhook**.
+* On **Create new webhook**, enter your ngrok URL in **Callback URL** (for example, `https://1a2b-3c4d-5e6f-7g8h-9i0j.ngrok.app`) and click **Save**.
+
+Confirm your localhost app receives the GET request and logs both headers and body in the terminal.
+
+### Run webhooks with Mailchimp and ngrok
+
+Mailchimp sends different request body contents depending on the audience and event.
+To trigger new calls from Mailchimp to your app:
+
+* Click **Audience** and **All Contacts**.
+* Click **Add contacts** and **Add a subscriber**.
+* On **Add subscriber**, enter a valid email in **Email Address**, check **This person gave me permission to email them**, and click **Subscribe**.
+
+<Note>
+  If the email is not on your contact list, you may need to import the contact first.
+</Note>
+
+Confirm your localhost app receives the event and logs both headers and body in the terminal.
+
+### Inspecting requests
+
+ngrok's [Traffic Inspector](https://dashboard.ngrok.com/traffic-inspector) captures all requests made through your ngrok endpoint to your localhost app.
+Select any request to view detailed information about both the request and response.
+
+<Info>
+  To avoid exposing secrets, accounts only collect traffic metadata by default.
+  You must enable full capture in the Observability section of [your account settings](https://dashboard.ngrok.com/settings) to capture complete request and response data.
+</Info>
+
+Use the traffic inspector to:
+
+* Validate webhook payloads and response data
+* Debug request headers, methods, and status codes
+* Troubleshoot integration issues without adding logging to your app
+
+### Replaying requests
+
+Test your webhook handling code without triggering new events from your service using the Traffic Inspector's replay feature:
+
+1. Send a test webhook from your service to generate traffic in your Traffic Inspector.
+
+2. Select the request you want to replay in the traffic inspector.
+
+3. Choose your replay option:
+   * Click **Replay** to send the exact same request again
+   * Select **Replay with modifications** to edit the request before sending
+
+4. (Optional) Modify the request: Edit any part of the original request, such as changing field values in the request body.
+
+5. Send the request by clicking **Replay**.
+
+Your local application will receive the replayed request and log the data to the terminal.
+
+
+Built with [Mintlify](https://mintlify.com).

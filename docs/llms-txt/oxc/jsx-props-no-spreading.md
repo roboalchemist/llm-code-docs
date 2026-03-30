@@ -1,19 +1,15 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/jsx-props-no-spreading.md
 
----
-url: /docs/guide/usage/linter/rules/react/jsx-props-no-spreading.md
----
-
-### What it does
+## What it does
 
 Disallow JSX prop spreading
 
-### Why is this bad?
+## Why is this bad?
 
 Enforces that there is no spreading for any JSX attribute. This enhances readability of code by being more explicit about what props are received by the component.
 It is also good for maintainability by avoiding passing unintentional extra props and allowing react to emit warnings when invalid HTML props are passed to HTML elements.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -36,7 +32,7 @@ const {one_prop, two_prop} = otherProps;
 
 This rule accepts a configuration object with the following properties:
 
-### custom
+## custom
 
 type: `"ignore" | "enforce"`
 
@@ -44,7 +40,7 @@ default: `"enforce"`
 
 `custom` set to `ignore` will ignore all custom jsx tags like `App`, `MyCustomComponent` etc. Default is set to `enforce`.
 
-### exceptions
+## exceptions
 
 type: `string[]`
 
@@ -58,7 +54,7 @@ For example:
 
 This allows you to override the general setting for individual components.
 
-### explicitSpread
+## explicitSpread
 
 type: `"ignore" | "enforce"`
 
@@ -66,7 +62,7 @@ default: `"enforce"`
 
 `explicitSpread` set to `ignore` will ignore spread operators that are explicitly listing all object properties within that spread. Default is set to `enforce`.
 
-### html
+## html
 
 type: `"ignore" | "enforce"`
 

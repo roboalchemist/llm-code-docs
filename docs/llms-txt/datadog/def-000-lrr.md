@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Group Who Owns SSH Server config file
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/etc/ssh/sshd_config`, run the command:

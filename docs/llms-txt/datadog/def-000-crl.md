@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AppSync GraphQL APIs should not use API keys for authentication
- 
+
 ## Description{% #description %}
 
 Use approved authorization mechanisms for your AWS AppSync GraphQL APIs

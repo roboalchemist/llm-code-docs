@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Kubelets should be allowed to manage changes to the iptables
- 
+
 ## Description{% #description %}
 
 Kubelet should be allowed to manage iptables. Kubelets can automatically manage the required changes to iptables based on how you choose your networking options for the pods. This ensures that the iptables configuration remains in sync with pods networking configuration. Manually configuring iptables with dynamic pod network configuration changes might block the communication between pods and containers to the outside world.

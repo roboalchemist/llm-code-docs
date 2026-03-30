@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify /boot/grub2/user.cfg 
 ---
 
 # Verify /boot/grub2/user.cfg Permissions
- 
+
 ## Description{% #description %}
 
 File permissions for `/boot/grub2/user.cfg` should be set to 600. To properly set the permissions of `/boot/grub2/user.cfg`, run the command:

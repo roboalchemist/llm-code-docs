@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Kubelet should only allow explicitly authorized requests
- 
+
 ## Description{% #description %}
 
 Explicit authorization should be enabled. Kubelets, by default, allow all authenticated requests (even anonymous ones) without needing explicit authorization checks from the API server.

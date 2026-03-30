@@ -1,6 +1,8 @@
 # Source: https://exa.ai/docs/examples/identifying-hallucinations-with-exa.md
 
+
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -58,6 +60,7 @@ This combines RAG with LangGraph to fact-check AI outputs and reduce hallucinati
     # Set up the LLM (ChatAnthropic)
     llm = ChatAnthropic(model="claude-3-5-sonnet-20240620", temperature=0)
     ```
+
   </Step>
 
   <Step title="Create the claim extractor">
@@ -91,7 +94,7 @@ This combines RAG with LangGraph to fact-check AI outputs and reduce hallucinati
         except (json.JSONDecodeError, ValueError):
             # Fallback to regex extraction if LLM response is not valid JSON
             claims = extract_claims_regex(text)
-        
+
         return claims
     ```
 
@@ -129,7 +132,7 @@ This combines RAG with LangGraph to fact-check AI outputs and reduce hallucinati
         documents = search_chain.invoke(query+".\n Here is a web page to help verify this claim:")
 
         print("Documents: ", documents)
-        
+
         return [str(doc) for doc in documents]
     ```
 
@@ -153,10 +156,10 @@ This combines RAG with LangGraph to fact-check AI outputs and reduce hallucinati
                 "supporting_sources": [],
                 "refuting_sources": []
             }
-        
+
         # Combine the sources into one text
         combined_sources = "\n\n".join(sources)
-        
+
         system_message = SystemMessage(content="""
         You are an expert fact-checker.
         Given a claim and a set of sources, determine whether the claim is supported, refuted, or if there is insufficient information in the sources to make a determination.
@@ -171,18 +174,18 @@ This combines RAG with LangGraph to fact-check AI outputs and reduce hallucinati
         }
         Do not include any additional text.
         """)
-        
+
         human_message = HumanMessage(content=f"""
         Claim: "{claim}"
-        
+
         Sources:
         {combined_sources}
-        
+
         Based on the above sources, assess the claim.
         """)
-        
+
         response = llm.invoke([system_message, human_message])
-        
+
         try:
             result = json.loads(response.content)
             if not isinstance(result, dict):
@@ -196,7 +199,7 @@ This combines RAG with LangGraph to fact-check AI outputs and reduce hallucinati
                 "supporting_sources": [],
                 "refuting_sources": []
             }
-        
+
         return result
     ```
 
@@ -262,6 +265,7 @@ This combines RAG with LangGraph to fact-check AI outputs and reduce hallucinati
 
     graph = workflow.compile()
     ```
+
   </Step>
 
   <Step title="Test the system">

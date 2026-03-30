@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure user has administrative privileges over resources
- 
+
 ## Description{% #description %}
 
 This rule identifies when a user has administrative level permissions at the root (most permissive) scope.

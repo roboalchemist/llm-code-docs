@@ -1,0 +1,223 @@
+# Source: https://hackage.haskell.org/package/hindent-5.3.1
+
+Title: hindent
+
+URL Source: https://hackage.haskell.org/package/hindent-5.3.1
+
+Markdown Content:
+hindent: Extensible Haskell pretty printer
+===============
+
+[Hackage :: [Package]](https://hackage.haskell.org/)
+*   Search
+*   [Browse](https://hackage.haskell.org/packages/browse)
+*   [What's new](https://hackage.haskell.org/packages/recent)
+*   [Upload](https://hackage.haskell.org/upload)
+*   [User accounts](https://hackage.haskell.org/accounts)
+
+[hindent](https://hackage.haskell.org/package/hindent): Extensible Haskell pretty printer
+=========================================================================================
+
+ [ [bsd3](https://hackage.haskell.org/packages/tag/bsd3), [development](https://hackage.haskell.org/packages/tag/development), [library](https://hackage.haskell.org/packages/tag/library), [program](https://hackage.haskell.org/packages/tag/program) ] [ [Propose Tags](https://hackage.haskell.org/package/hindent/tags/edit) ] [ [Report a vulnerability](https://github.com/haskell/security-advisories/blob/main/CONTRIBUTING.md) ] 
+
+Extensible Haskell pretty printer. Both a library and an executable.
+
+See the Github page for usage/explanation: [https://github.com/commercialhaskell/hindent](https://github.com/commercialhaskell/hindent)
+
+* * *
+
+ [[Skip to Readme](https://hackage.haskell.org/package/hindent-5.3.1/#readme)] 
+
+[![Image 2](https://img.shields.io/static/v1?label=Build&message=InstallOk&color=success)](https://hackage.haskell.org/package/hindent-5.3.1/reports/1)![Image 3](https://img.shields.io/static/v1?label=Documentation&message=Available&color=success)
+
+Modules
+-------
+
+[[Index](https://hackage.haskell.org/package/hindent-5.3.1/docs/doc-index.html)] [[Quick Jump](https://hackage.haskell.org/package/hindent-5.3.1/#)]
+
+*   [HIndent](https://hackage.haskell.org/package/hindent-5.3.1/docs/HIndent.html)
+    *   [HIndent.CabalFile](https://hackage.haskell.org/package/hindent-5.3.1/docs/HIndent-CabalFile.html)
+    *   [HIndent.CodeBlock](https://hackage.haskell.org/package/hindent-5.3.1/docs/HIndent-CodeBlock.html)
+    *   [HIndent.Pretty](https://hackage.haskell.org/package/hindent-5.3.1/docs/HIndent-Pretty.html)
+    *   [HIndent.Types](https://hackage.haskell.org/package/hindent-5.3.1/docs/HIndent-Types.html)
+
+Downloads
+---------
+
+*   [hindent-5.3.1.tar.gz](https://hackage.haskell.org/package/hindent-5.3.1/hindent-5.3.1.tar.gz) [[browse](https://hackage.haskell.org/package/hindent-5.3.1/src/)] (Cabal source package)
+*   [Package description](https://hackage.haskell.org/package/hindent-5.3.1/hindent.cabal) ([revised](https://hackage.haskell.org/package/hindent-5.3.1/revisions/) from the package)
+
+Note: This package has [metadata revisions](https://hackage.haskell.org/package/hindent-5.3.1/revisions/) in the cabal description newer than included in the tarball. To unpack the package including the revisions, use 'cabal get'.
+
+#### Maintainer's Corner
+
+[Package maintainers](https://hackage.haskell.org/package/hindent/maintainers)
+
+*   [ChrisDone](https://hackage.haskell.org/user/ChrisDone), [MihaiMaruseac](https://hackage.haskell.org/user/MihaiMaruseac), [gibiansky](https://hackage.haskell.org/user/gibiansky), [sighingnow](https://hackage.haskell.org/user/sighingnow)
+
+For package maintainers and hackage trustees
+
+*   [edit package information](https://hackage.haskell.org/package/hindent/maintain)
+
+Candidates
+
+*    No Candidates 
+
+| Versions [[RSS](https://hackage.haskell.org/package/hindent.rss)] | [0.0](https://hackage.haskell.org/package/hindent-0.0), [1.0](https://hackage.haskell.org/package/hindent-1.0), [2.0](https://hackage.haskell.org/package/hindent-2.0), [2.1](https://hackage.haskell.org/package/hindent-2.1), [2.2](https://hackage.haskell.org/package/hindent-2.2), [2.3](https://hackage.haskell.org/package/hindent-2.3), [2.4](https://hackage.haskell.org/package/hindent-2.4), [3.0](https://hackage.haskell.org/package/hindent-3.0), [3.1](https://hackage.haskell.org/package/hindent-3.1), [3.2](https://hackage.haskell.org/package/hindent-3.2), [3.3](https://hackage.haskell.org/package/hindent-3.3), [3.4](https://hackage.haskell.org/package/hindent-3.4), [3.5](https://hackage.haskell.org/package/hindent-3.5), [3.6](https://hackage.haskell.org/package/hindent-3.6), [3.7](https://hackage.haskell.org/package/hindent-3.7), [3.8](https://hackage.haskell.org/package/hindent-3.8), [3.9](https://hackage.haskell.org/package/hindent-3.9), [3.9.1](https://hackage.haskell.org/package/hindent-3.9.1), [4.0](https://hackage.haskell.org/package/hindent-4.0), [4.1.0](https://hackage.haskell.org/package/hindent-4.1.0), [4.1.1](https://hackage.haskell.org/package/hindent-4.1.1), [4.2.0](https://hackage.haskell.org/package/hindent-4.2.0), [4.2.1](https://hackage.haskell.org/package/hindent-4.2.1), [4.2.2](https://hackage.haskell.org/package/hindent-4.2.2), [4.2.3](https://hackage.haskell.org/package/hindent-4.2.3), [4.2.4](https://hackage.haskell.org/package/hindent-4.2.4), [4.3.0](https://hackage.haskell.org/package/hindent-4.3.0), [4.3.1](https://hackage.haskell.org/package/hindent-4.3.1), [4.3.2](https://hackage.haskell.org/package/hindent-4.3.2), [4.3.3](https://hackage.haskell.org/package/hindent-4.3.3), [4.3.4](https://hackage.haskell.org/package/hindent-4.3.4), [4.3.5](https://hackage.haskell.org/package/hindent-4.3.5), [4.3.6](https://hackage.haskell.org/package/hindent-4.3.6), [4.3.7](https://hackage.haskell.org/package/hindent-4.3.7), [4.3.8](https://hackage.haskell.org/package/hindent-4.3.8), [4.3.9](https://hackage.haskell.org/package/hindent-4.3.9), [4.3.10](https://hackage.haskell.org/package/hindent-4.3.10), [4.3.11](https://hackage.haskell.org/package/hindent-4.3.11), [4.3.12](https://hackage.haskell.org/package/hindent-4.3.12), [4.4.0](https://hackage.haskell.org/package/hindent-4.4.0), [4.4.1](https://hackage.haskell.org/package/hindent-4.4.1), [4.4.2](https://hackage.haskell.org/package/hindent-4.4.2), [4.5.0](https://hackage.haskell.org/package/hindent-4.5.0), [4.5.1](https://hackage.haskell.org/package/hindent-4.5.1), [4.5.2](https://hackage.haskell.org/package/hindent-4.5.2), [4.5.3](https://hackage.haskell.org/package/hindent-4.5.3), [4.5.4](https://hackage.haskell.org/package/hindent-4.5.4), [4.5.5](https://hackage.haskell.org/package/hindent-4.5.5), [4.5.6](https://hackage.haskell.org/package/hindent-4.5.6), [4.5.7](https://hackage.haskell.org/package/hindent-4.5.7), [4.6.0](https://hackage.haskell.org/package/hindent-4.6.0), [4.6.1](https://hackage.haskell.org/package/hindent-4.6.1), [4.6.2](https://hackage.haskell.org/package/hindent-4.6.2), [4.6.3](https://hackage.haskell.org/package/hindent-4.6.3), [4.6.4](https://hackage.haskell.org/package/hindent-4.6.4), [5.0.0](https://hackage.haskell.org/package/hindent-5.0.0), [5.0.1](https://hackage.haskell.org/package/hindent-5.0.1), [5.1.0](https://hackage.haskell.org/package/hindent-5.1.0), [5.1.1](https://hackage.haskell.org/package/hindent-5.1.1), [5.2.0](https://hackage.haskell.org/package/hindent-5.2.0), [5.2.1](https://hackage.haskell.org/package/hindent-5.2.1), [5.2.2](https://hackage.haskell.org/package/hindent-5.2.2), [5.2.3](https://hackage.haskell.org/package/hindent-5.2.3), [5.2.4](https://hackage.haskell.org/package/hindent-5.2.4), [5.2.4.1](https://hackage.haskell.org/package/hindent-5.2.4.1), [5.2.5](https://hackage.haskell.org/package/hindent-5.2.5), [5.2.6](https://hackage.haskell.org/package/hindent-5.2.6), [5.2.7](https://hackage.haskell.org/package/hindent-5.2.7), [5.3.0](https://hackage.haskell.org/package/hindent-5.3.0), **5.3.1**, [5.3.2](https://hackage.haskell.org/package/hindent-5.3.2), [5.3.3](https://hackage.haskell.org/package/hindent-5.3.3), [5.3.4](https://hackage.haskell.org/package/hindent-5.3.4), [6.0.0](https://hackage.haskell.org/package/hindent-6.0.0), [6.1.0](https://hackage.haskell.org/package/hindent-6.1.0), [6.1.1](https://hackage.haskell.org/package/hindent-6.1.1), [6.2.0](https://hackage.haskell.org/package/hindent-6.2.0), [6.2.1](https://hackage.haskell.org/package/hindent-6.2.1), [6.3.0](https://hackage.haskell.org/package/hindent-6.3.0) ([info](https://hackage.haskell.org/package/hindent/preferred)) |
+| --- |
+| Change log | [CHANGELOG.md](https://hackage.haskell.org/package/hindent-5.3.1/changelog) |
+| Dependencies | [base](https://hackage.haskell.org/package/base) (>=4.7 &&<5), [bytestring](https://hackage.haskell.org/package/bytestring), [Cabal](https://hackage.haskell.org/package/Cabal), [containers](https://hackage.haskell.org/package/containers), [deepseq](https://hackage.haskell.org/package/deepseq), [directory](https://hackage.haskell.org/package/directory), [exceptions](https://hackage.haskell.org/package/exceptions), [filepath](https://hackage.haskell.org/package/filepath), [ghc-prim](https://hackage.haskell.org/package/ghc-prim), [haskell-src-exts](https://hackage.haskell.org/package/haskell-src-exts) (>=1.20), [hindent](https://hackage.haskell.org/package/hindent), [monad-loops](https://hackage.haskell.org/package/monad-loops), [mtl](https://hackage.haskell.org/package/mtl) (<2.3), [optparse-applicative](https://hackage.haskell.org/package/optparse-applicative), [path](https://hackage.haskell.org/package/path), [path-io](https://hackage.haskell.org/package/path-io), [text](https://hackage.haskell.org/package/text), [transformers](https://hackage.haskell.org/package/transformers), [unix-compat](https://hackage.haskell.org/package/unix-compat), [utf8-string](https://hackage.haskell.org/package/utf8-string), [yaml](https://hackage.haskell.org/package/yaml) [[details](https://hackage.haskell.org/package/hindent-5.3.1/dependencies)] |
+| License | [BSD-3-Clause](https://hackage.haskell.org/package/hindent-5.3.1/src/LICENSE.md) |
+| Copyright | 2014 Chris Done, 2015 Andrew Gibiansky |
+| Author | Chris Done, Andrew Gibiansky, Tobias Pflug, Pierre Radermecker |
+| Maintainer | chrisdone@gmail.com |
+| Uploaded | by [ChrisDone](https://hackage.haskell.org/user/ChrisDone) at 2019-06-28T08:35:20Z |
+| Revised | [Revision 1](https://hackage.haskell.org/package/hindent-5.3.1/revisions/) made by [AndreasAbel](https://hackage.haskell.org/user/AndreasAbel) at 2023-04-12T12:57:13Z |
+| Category | [Development](https://hackage.haskell.org/packages/#cat:Development) |
+| Home page | [https://github.com/commercialhaskell/hindent](https://github.com/commercialhaskell/hindent) |
+| Bug tracker | [https://github.com/commercialhaskell/hindent/issues](https://github.com/commercialhaskell/hindent/issues) |
+| Source repo | head: git clone [https://github.com/commercialhaskell/hindent](https://github.com/commercialhaskell/hindent) |
+| Distributions | Arch:[6.1.1](https://archlinux.org/packages/extra/x86_64/hindent), Debian:[5.3.1](http://packages.debian.org/source/bullseye/haskell-hindent), NixOS:[6.3.0](http://hydra.nixos.org/job/nixpkgs/trunk/haskellPackages.hindent.x86_64-linux), Stackage:[6.3.0](https://www.stackage.org/package/hindent) |
+| Reverse Dependencies | 4 direct, 0 indirect [[details](https://hackage.haskell.org/package/hindent-5.3.1/)] |
+| Executables | hindent |
+| Downloads | 67688 total (140 in the last 30 days) |
+| Rating | 2.25 (votes: 2) [estimated by [Bayesian average](https://en.wikipedia.org/wiki/Bayesian_average)] |
+| Your Rating | * λ * λ * λ |
+| Status | Docs available [[build log](https://hackage.haskell.org/package/hindent-5.3.1/reports/1)] Last success reported on 2019-06-28 [[all 1 reports](https://hackage.haskell.org/package/hindent-5.3.1/reports/)] |
+
+* * *
+
+Readme for hindent-5.3.1
+------------------------
+
+ [[back to package description](https://hackage.haskell.org/package/hindent-5.3.1/#description)] 
+
+hindent [![Image 4: Hackage](https://img.shields.io/hackage/v/hindent.svg?style=flat)](https://hackage.haskell.org/package/hindent)[![Image 5: Build Status](https://travis-ci.org/commercialhaskell/hindent.svg)](https://travis-ci.org/commercialhaskell/hindent)
+===================================================================================================================================================================================================================================================================
+
+Haskell pretty printer
+
+[Examples](https://github.com/commercialhaskell/hindent/blob/master/TESTS.md)
+
+Install
+-------
+
+```
+$ stack install hindent
+```
+
+Usage
+-----
+
+```
+$ hindent --help
+hindent --version --help --style STYLE --line-length <...> --indent-size <...> --no-force-newline [-X<...>]* [<FILENAME>]
+Version 5.1.1
+Default --indent-size is 2. Specify --indent-size 4 if you prefer that.
+-X to pass extensions e.g. -XMagicHash etc.
+The --style option is now ignored, but preserved for backwards-compatibility.
+Johan Tibell is the default and only style.
+```
+
+hindent is used in a pipeline style
+
+```
+$ cat path/to/sourcefile.hs | hindent
+```
+
+The default indentation size is `2` spaces. Configure indentation size with `--indent-size`:
+
+```
+$ echo 'example = case x of Just p -> foo bar' | hindent --indent-size 2; echo
+example =
+  case x of
+    Just p -> foo bar
+$ echo 'example = case x of Just p -> foo bar' | hindent --indent-size 4; echo
+example =
+    case x of
+        Just p -> foo bar
+```
+
+Customization
+-------------
+
+Create a `.hindent.yaml` file in your project directory or in your `~/` home directory. The following fields are accepted and are the default:
+
+```yaml
+indent-size: 2
+line-length: 80
+force-trailing-newline: true
+```
+
+By default, HIndent preserves the newline or lack of newline in your input. With `force-trailing-newline`, it will make sure there is always a trailing newline.
+
+Emacs
+-----
+
+In [elisp/hindent.el](https://github.com/commercialhaskell/hindent/blob/master/elisp/hindent.el) there is `hindent-mode`, which provides keybindings to reindent parts of the buffer:
+
+*   `M-q` reformats the current declaration. When inside a comment, it fills the current paragraph instead, like the standard `M-q`. 
+*   `C-M-\` reformats the current region. 
+
+To enable it, add the following to your init file:
+
+```lisp
+(add-to-list 'load-path "/path/to/hindent/elisp")
+(require 'hindent)
+(add-hook 'haskell-mode-hook #'hindent-mode)
+```
+
+Vim
+---
+
+The `'formatprg'` option lets you use an external program (like hindent) to format your text. Put the following line into ~/.vim/ftplugin/haskell.vim to set this option for Haskell files:
+
+```
+setlocal formatprg=hindent
+```
+
+Then you can format with hindent using `gq`. Read `:help gq` and `help 'formatprg'` for more details.
+
+Note that unlike in emacs you have to take care of selecting a sensible buffer region as input to hindent yourself. If that is too much trouble you can try [vim-textobj-haskell](https://github.com/gilligan/vim-textobj-haskell) which provides a text object for top level bindings.
+
+In order to format an entire source file execute:
+
+```
+:%!hindent
+```
+
+Alternatively you could use the [vim-hindent](https://github.com/alx741/vim-hindent) plugin which runs hindent automatically when a Haskell file is saved.
+
+Atom
+----
+
+Fortunately, you can use [https://atom.io/packages/ide-haskell](https://atom.io/packages/ide-haskell) with the path to hindent specified instead of that to stylish-haskell. Works like a charm that way!
+
+IntelliJ / other JetBrains IDEs
+-------------------------------
+
+1.   Install the "HaskForce" Haskell plugin (this is so we get the language type recognized in the file watcher) 
+2.   Install the "File Watchers" plugin under "Browse Repositories" 
+3.   Add a File Watcher with 
+    1.   File type: Haskell Language 
+    2.   Program: `/path/to/hindent`
+    3.   Arguments: `$FilePath$`
+    4.   Immediate file synchronization: off 
+    5.   Show console: Error 
+
+![Image 6](https://i.imgur.com/gghTjjn.png)
+Now whenever you save a file, `hindent` should autoformat it.
+
+Produced by [hackage](https://hackage.haskell.org/) and [Cabal](http://haskell.org/cabal/) 3.16.1.0.
+
+You can find any exported type, constructor, class, function or pattern defined in this package by (approximate) name.
+
+| Key | Shortcut |
+| --- | --- |
+| s | Open this search box |
+| esc | Close this search box |
+| ↓,ctrl + j | Move down in search results |
+| ↑,ctrl + k | Move up in search results |
+| ↵ | Go to active search result |
+
+[close](https://hackage.haskell.org/package/hindent-5.3.1/#)

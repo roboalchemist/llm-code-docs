@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Windows MSI installation fro
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1218-system-binary-proxy-execution](https://attack.mitre.org/techniques/T1218) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1218-system-binary-proxy-execution](https://attack.mitre.org/techniques/T1218)
 ## Goal{% #goal %}
 
 Detects Windows Installer package installations initiated directly from web URLs, potentially indicating malicious software distribution.

@@ -47,11 +47,11 @@ class InsecureEncryption {
     fun encryptData(secretKey: String, data: ByteArray): ByteArray {
         // BAD: Hardcoded IV that will be reused for every encryption
         val staticIV = "staticIVvalue123".toByteArray()
-        
+
         val cipher = Cipher.getInstance("AES/CCM/NoPadding")
         val key = SecretKeySpec(secretKey.toByteArray(), "AES")
         val paramSpec = CCMParameterSpec(128, staticIV)
-        
+
         cipher.init(Cipher.ENCRYPT_MODE, key, paramSpec)
         return cipher.doFinal(data)
     }
@@ -69,16 +69,15 @@ class SecureEncryption {
         val randomIV = ByteArray(12).apply {
             secureRandom.nextBytes(this)
         }
-        
+
         val cipher = Cipher.getInstance("AES/CCM/NoPadding")
         val key = SecretKeySpec(secretKey.toByteArray(), "AES")
         val paramSpec = CCMParameterSpec(128, randomIV)
-        
+
         cipher.init(Cipher.ENCRYPT_MODE, key, paramSpec)
         return cipher.doFinal(data)
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

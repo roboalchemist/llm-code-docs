@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/jsx-handler-names.md
 
----
-url: /docs/guide/usage/linter/rules/react/jsx-handler-names.md
----
-
-### What it does
+## What it does
 
 Ensures that any component or prop methods used to handle events are correctly prefixed.
 
-### Why is this bad?
+## Why is this bad?
 
 Inconsistent naming of event handlers and props can reduce code readability and maintainability.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -32,7 +28,7 @@ Examples of **correct** code for this rule:
 
 This rule accepts a configuration object with the following properties:
 
-### checkInlineFunctions
+## checkInlineFunctions
 
 type: `boolean`
 
@@ -40,7 +36,7 @@ default: `false`
 
 Whether to check for inline functions in JSX attributes.
 
-### checkLocalVariables
+## checkLocalVariables
 
 type: `boolean`
 
@@ -48,7 +44,7 @@ default: `false`
 
 Whether to check for local variables in JSX attributes.
 
-### eventHandlerPrefixes
+## eventHandlerPrefixes
 
 type: `string`
 
@@ -56,7 +52,7 @@ default: `"handle"`
 
 Event handler prefixes to check against.
 
-### eventHandlerPropPrefixes
+## eventHandlerPropPrefixes
 
 type: `string`
 
@@ -64,19 +60,19 @@ default: `"on"`
 
 Event handler prop prefixes to check against.
 
-### eventHandlerPropRegex
+## eventHandlerPropRegex
 
 type: `string`
 
 Compiled regex for event handler prop prefixes.
 
-### eventHandlerRegex
+## eventHandlerRegex
 
 type: `string`
 
 Compiled regex for event handler prefixes.
 
-### ignoreComponentNames
+## ignoreComponentNames
 
 type: `string[]`
 

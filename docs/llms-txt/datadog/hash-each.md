@@ -61,6 +61,5 @@ hash.each do |_k, v| p v end
 hash.each_key { |k| p k }
 hash.each_value { |v| p v }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

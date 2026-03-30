@@ -73,7 +73,7 @@ resource "google_storage_bucket" "negative1" {
   force_destroy = true
 
   logging {
-	logBucket = "example-logs-bucket"
+    logBucket = "example-logs-bucket"
   }
 
   lifecycle_rule {

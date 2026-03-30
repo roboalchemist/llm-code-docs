@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Remove unused Secrets Manage
 ---
 
 # Remove unused Secrets Manager secrets
- 
+
 ## Description{% #description %}
 
 This control checks if an AWS Secrets Manager secret has been accessed within the last 90 days. The control will fail if the secret remains unused beyond this defined period.

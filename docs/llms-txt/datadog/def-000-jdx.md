@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Unauthenticated route use expensive APIs
- 
+
 ## Description{% #description %}
 
 An exposed API allows unauthenticated users to make use of paid third-party services, which may not be intended.

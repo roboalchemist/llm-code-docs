@@ -53,13 +53,12 @@ An array of tag filter rules by `namespace` and tag filter string.
 
 ```json
 {
-  "filters": [
-    {
+  "filters": [{
       "namespace": "string",
       "tag_filter_str": "prod*"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -81,10 +80,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -106,10 +104,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -131,10 +128,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -143,13 +139,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Required query argumentsexport account_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/aws/filtering?account_id=${account_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -167,13 +163,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all AWS tag filters returns "OK" response
@@ -181,13 +178,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::AWSIntegrationAPI.new
 p api_instance.list_aws_tag_filters("account_id")
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all AWS tag filters returns "OK" response
@@ -195,37 +193,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.ListAWSTagFilters(ctx, "account_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.ListAWSTagFilters(ctx, "account_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.ListAWSTagFilters`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.ListAWSTagFilters`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.ListAWSTagFilters`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.ListAWSTagFilters`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all AWS tag filters returns "OK" response
@@ -252,13 +251,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all AWS tag filters returns "OK" response
@@ -276,13 +276,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -306,6 +307,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -353,14 +355,13 @@ AWS Namespaces response body.
 {
   "data": {
     "attributes": {
-      "namespaces": [
-        "AWS/ApiGateway"
-      ]
+      "namespaces": ["AWS/ApiGateway"]
     },
     "id": "namespaces",
     "type": "namespaces"
   }
 }
+
 ```
 
 {% /tab %}
@@ -382,10 +383,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -407,10 +407,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -419,13 +418,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/aws/available_namespaces" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -441,13 +440,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_aws_namespaces()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List available namespaces returns "AWS Namespaces List object" response
@@ -455,13 +455,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::AWSIntegrationAPI.new
 p api_instance.list_aws_namespaces()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List available namespaces returns "AWS Namespaces List object" response
@@ -469,37 +470,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.ListAWSNamespaces(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.ListAWSNamespaces(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.ListAWSNamespaces`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.ListAWSNamespaces`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.ListAWSNamespaces`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.ListAWSNamespaces`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List available namespaces returns "AWS Namespaces List object" response
@@ -526,13 +528,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List available namespaces returns "AWS Namespaces List object" response
@@ -550,13 +553,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -576,6 +580,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -624,6 +629,7 @@ Set an AWS tag filter using an `aws_account_identifier`, `namespace`, and filter
   "namespace": "string",
   "tag_filter_str": "prod*"
 }
+
 ```
 
 {% /tab %}
@@ -643,6 +649,7 @@ OK
 
 ```json
 {}
+
 ```
 
 {% /tab %}
@@ -664,10 +671,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -689,10 +695,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -714,10 +719,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -726,7 +730,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/aws/filtering" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -735,8 +739,8 @@ Error response object.
 -d @- << EOF
 {}
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -760,13 +764,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_aws_tag_filter(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Set an AWS tag filter returns "OK" response
@@ -780,13 +785,14 @@ body = DatadogAPIClient::V1::AWSTagFilterCreateRequest.new({
   tag_filter_str: "prod*",
 })
 p api_instance.create_aws_tag_filter(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Set an AWS tag filter returns "OK" response
@@ -794,42 +800,43 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.AWSTagFilterCreateRequest{
-		AccountId:    datadog.PtrString("123456789012"),
-		Namespace:    datadogV1.AWSNAMESPACE_ELB.Ptr(),
-		TagFilterStr: datadog.PtrString("prod*"),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.CreateAWSTagFilter(ctx, body)
+    body := datadogV1.AWSTagFilterCreateRequest{
+        AccountId:    datadog.PtrString("123456789012"),
+        Namespace:    datadogV1.AWSNAMESPACE_ELB.Ptr(),
+        TagFilterStr: datadog.PtrString("prod*"),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.CreateAWSTagFilter(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.CreateAWSTagFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.CreateAWSTagFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.CreateAWSTagFilter`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.CreateAWSTagFilter`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Set an AWS tag filter returns "OK" response
@@ -862,13 +869,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Set an AWS tag filter returns "OK" response
@@ -892,13 +900,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -926,6 +935,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -970,6 +980,7 @@ Delete a tag filtering entry for a given AWS account and `dd-aws` namespace.
   "account_id": "FAKEAC0FAKEAC2FAKEAC",
   "namespace": "string"
 }
+
 ```
 
 {% /tab %}
@@ -989,6 +1000,7 @@ OK
 
 ```json
 {}
+
 ```
 
 {% /tab %}
@@ -1010,10 +1022,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1035,10 +1046,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1060,10 +1070,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1072,7 +1081,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/aws/filtering" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1081,8 +1090,8 @@ Error response object.
 -d @- << EOF
 {}
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1105,13 +1114,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.delete_aws_tag_filter(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a tag filtering entry returns "OK" response
@@ -1124,13 +1134,14 @@ body = DatadogAPIClient::V1::AWSTagFilterDeleteRequest.new({
   namespace: DatadogAPIClient::V1::AWSNamespace::ELB,
 })
 p api_instance.delete_aws_tag_filter(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a tag filtering entry returns "OK" response
@@ -1138,41 +1149,42 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.AWSTagFilterDeleteRequest{
-		AccountId: datadog.PtrString("FAKEAC0FAKEAC2FAKEAC"),
-		Namespace: datadogV1.AWSNAMESPACE_ELB.Ptr(),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.DeleteAWSTagFilter(ctx, body)
+    body := datadogV1.AWSTagFilterDeleteRequest{
+        AccountId: datadog.PtrString("FAKEAC0FAKEAC2FAKEAC"),
+        Namespace: datadogV1.AWSNAMESPACE_ELB.Ptr(),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.DeleteAWSTagFilter(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.DeleteAWSTagFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.DeleteAWSTagFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.DeleteAWSTagFilter`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.DeleteAWSTagFilter`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a tag filtering entry returns "OK" response
@@ -1204,13 +1216,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a tag filtering entry returns "OK" response
@@ -1233,13 +1246,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1266,6 +1280,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -1367,9 +1382,7 @@ AWS Account response body.
 {
   "data": {
     "attributes": {
-      "account_tags": [
-        "env:prod"
-      ],
+      "account_tags": ["env:prod"],
       "auth_config": {
         "access_key_id": "AKIAIOSFODNN7EXAMPLE",
         "secret_access_key": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
@@ -1382,22 +1395,14 @@ AWS Account response body.
       "created_at": "2019-09-19T10:00:00.000Z",
       "logs_config": {
         "lambda_forwarder": {
-          "lambdas": [
-            "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"
-          ],
+          "lambdas": ["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"],
           "log_source_config": {
-            "tag_filters": [
-              {
+            "tag_filters": [{
                 "source": "s3",
-                "tags": [
-                  "env:prod"
-                ]
-              }
-            ]
+                "tags": ["env:prod"]
+              }]
           },
-          "sources": [
-            "s3"
-          ]
+          "sources": ["s3"]
         }
       },
       "metrics_config": {
@@ -1406,20 +1411,14 @@ AWS Account response body.
         "collect_custom_metrics": false,
         "enabled": true,
         "namespace_filters": {
-          "exclude_only": [
-            "AWS/SQS",
+          "exclude_only": ["AWS/SQS",
             "AWS/ElasticMapReduce",
-            "AWS/Usage"
-          ]
+            "AWS/Usage"]
         },
-        "tag_filters": [
-          {
+        "tag_filters": [{
             "namespace": "AWS/EC2",
-            "tags": [
-              "datadog:true"
-            ]
-          }
-        ]
+            "tags": ["datadog:true"]
+          }]
       },
       "modified_at": "2019-09-19T10:00:00.000Z",
       "resources_config": {
@@ -1436,6 +1435,7 @@ AWS Account response body.
     "type": "account"
   }
 }
+
 ```
 
 {% /tab %}
@@ -1457,10 +1457,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1482,10 +1481,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1507,10 +1505,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1532,10 +1529,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1544,13 +1540,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport aws_account_config_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/aws/accounts/${aws_account_config_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1572,13 +1568,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get an AWS integration by config ID returns "AWS Account object" response
@@ -1589,13 +1586,14 @@ api_instance = DatadogAPIClient::V2::AWSIntegrationAPI.new
 # there is a valid "aws_account_v2" in the system
 AWS_ACCOUNT_V2_DATA_ID = ENV["AWS_ACCOUNT_V2_DATA_ID"]
 p api_instance.get_aws_account(AWS_ACCOUNT_V2_DATA_ID)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get an AWS integration by config ID returns "AWS Account object" response
@@ -1603,40 +1601,41 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "aws_account_v2" in the system
-	AwsAccountV2DataID := os.Getenv("AWS_ACCOUNT_V2_DATA_ID")
+    // there is a valid "aws_account_v2" in the system
+    AwsAccountV2DataID := os.Getenv("AWS_ACCOUNT_V2_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.GetAWSAccount(ctx, AwsAccountV2DataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.GetAWSAccount(ctx, AwsAccountV2DataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.GetAWSAccount`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.GetAWSAccount`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.GetAWSAccount`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.GetAWSAccount`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get an AWS integration by config ID returns "AWS Account object" response
@@ -1666,13 +1665,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get an AWS integration by config ID returns "AWS Account object" response
@@ -1692,13 +1692,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1725,6 +1726,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -1787,22 +1789,17 @@ Your Datadog role delegation name. For more information about your AWS account R
     "<any-key>": false
   },
   "cspm_resource_collection_enabled": true,
-  "excluded_regions": [
-    "us-east-1",
-    "us-west-2"
-  ],
+  "excluded_regions": ["us-east-1",
+    "us-west-2"],
   "extended_resource_collection_enabled": true,
-  "filter_tags": [
-    "$KEY:$VALUE"
-  ],
-  "host_tags": [
-    "$KEY:$VALUE"
-  ],
+  "filter_tags": ["$KEY:$VALUE"],
+  "host_tags": ["$KEY:$VALUE"],
   "metrics_collection_enabled": false,
   "resource_collection_enabled": true,
   "role_name": "DatadogAWSIntegrationRole",
   "secret_access_key": "string"
 }
+
 ```
 
 {% /tab %}
@@ -1826,6 +1823,7 @@ The Response returned by the AWS Create Account call.
 {
   "external_id": "string"
 }
+
 ```
 
 {% /tab %}
@@ -1847,10 +1845,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1872,10 +1869,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1897,10 +1893,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -1909,7 +1904,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/aws/generate_new_external_id" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1918,8 +1913,8 @@ Error response object.
 -d @- << EOF
 {}
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1937,17 +1932,11 @@ body = AWSAccount(
         opswork=False,
     ),
     cspm_resource_collection_enabled=True,
-    excluded_regions=[
-        "us-east-1",
-        "us-west-2",
-    ],
+    excluded_regions=["us-east-1",
+        "us-west-2",],
     extended_resource_collection_enabled=True,
-    filter_tags=[
-        "$KEY:$VALUE",
-    ],
-    host_tags=[
-        "$KEY:$VALUE",
-    ],
+    filter_tags=["$KEY:$VALUE",],
+    host_tags=["$KEY:$VALUE",],
     metrics_collection_enabled=False,
     resource_collection_enabled=True,
     role_name="DatadogAWSIntegrationRole",
@@ -1959,13 +1948,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_new_aws_external_id(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Generate a new external ID returns "OK" response
@@ -1979,29 +1969,24 @@ body = DatadogAPIClient::V1::AWSAccount.new({
     auto_scaling: false, opswork: false,
   },
   cspm_resource_collection_enabled: true,
-  excluded_regions: [
-    "us-east-1",
-    "us-west-2",
-  ],
+  excluded_regions: ["us-east-1",
+    "us-west-2",],
   extended_resource_collection_enabled: true,
-  filter_tags: [
-    "$KEY:$VALUE",
-  ],
-  host_tags: [
-    "$KEY:$VALUE",
-  ],
+  filter_tags: ["$KEY:$VALUE",],
+  host_tags: ["$KEY:$VALUE",],
   metrics_collection_enabled: false,
   resource_collection_enabled: true,
   role_name: "DatadogAWSIntegrationRole",
 })
 p api_instance.create_new_aws_external_id(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Generate a new external ID returns "OK" response
@@ -2009,59 +1994,60 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.AWSAccount{
-		AccountId: datadog.PtrString("123456789012"),
-		AccountSpecificNamespaceRules: map[string]bool{
-			"auto_scaling": false,
-			"opswork":      false,
-		},
-		CspmResourceCollectionEnabled: datadog.PtrBool(true),
-		ExcludedRegions: []string{
-			"us-east-1",
-			"us-west-2",
-		},
-		ExtendedResourceCollectionEnabled: datadog.PtrBool(true),
-		FilterTags: []string{
-			"$KEY:$VALUE",
-		},
-		HostTags: []string{
-			"$KEY:$VALUE",
-		},
-		MetricsCollectionEnabled:  datadog.PtrBool(false),
-		ResourceCollectionEnabled: datadog.PtrBool(true),
-		RoleName:                  datadog.PtrString("DatadogAWSIntegrationRole"),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.CreateNewAWSExternalID(ctx, body)
+    body := datadogV1.AWSAccount{
+        AccountId: datadog.PtrString("123456789012"),
+        AccountSpecificNamespaceRules: map[string]bool{
+            "auto_scaling": false,
+            "opswork":      false,
+        },
+        CspmResourceCollectionEnabled: datadog.PtrBool(true),
+        ExcludedRegions: []string{
+            "us-east-1",
+            "us-west-2",
+        },
+        ExtendedResourceCollectionEnabled: datadog.PtrBool(true),
+        FilterTags: []string{
+            "$KEY:$VALUE",
+        },
+        HostTags: []string{
+            "$KEY:$VALUE",
+        },
+        MetricsCollectionEnabled:  datadog.PtrBool(false),
+        ResourceCollectionEnabled: datadog.PtrBool(true),
+        RoleName:                  datadog.PtrString("DatadogAWSIntegrationRole"),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.CreateNewAWSExternalID(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.CreateNewAWSExternalID`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.CreateNewAWSExternalID`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.CreateNewAWSExternalID`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.CreateNewAWSExternalID`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Generate a new external ID returns "OK" response
@@ -2106,13 +2092,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Generate a new external ID returns "OK" response
@@ -2125,10 +2112,8 @@ use std::collections::BTreeMap;
 async fn main() {
     let body = AWSAccount::new()
         .account_id("123456789012".to_string())
-        .account_specific_namespace_rules(BTreeMap::from([
-            ("auto_scaling".to_string(), false),
-            ("opswork".to_string(), false),
-        ]))
+        .account_specific_namespace_rules(BTreeMap::from([("auto_scaling".to_string(), false),
+            ("opswork".to_string(), false),]))
         .cspm_resource_collection_enabled(true)
         .excluded_regions(vec!["us-east-1".to_string(), "us-west-2".to_string()])
         .extended_resource_collection_enabled(true)
@@ -2146,13 +2131,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2190,6 +2176,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -2243,6 +2230,7 @@ AWS External ID response body.
     "type": "external_id"
   }
 }
+
 ```
 
 {% /tab %}
@@ -2264,10 +2252,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2289,10 +2276,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2301,13 +2287,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/aws/generate_new_external_id" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2323,13 +2309,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_new_aws_external_id()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Generate a new external ID returns "AWS External ID object" response
@@ -2337,13 +2324,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::AWSIntegrationAPI.new
 p api_instance.create_new_aws_external_id()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Generate a new external ID returns "AWS External ID object" response
@@ -2351,37 +2339,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.CreateNewAWSExternalID(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.CreateNewAWSExternalID(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.CreateNewAWSExternalID`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.CreateNewAWSExternalID`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.CreateNewAWSExternalID`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.CreateNewAWSExternalID`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Generate a new external ID returns "AWS External ID object" response
@@ -2408,13 +2397,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Generate a new external ID returns "AWS External ID object" response
@@ -2432,13 +2422,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2458,6 +2449,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -2497,11 +2489,10 @@ OK
 {% tab title="Example" %}
 
 ```json
-[
-  "namespace1",
+["namespace1",
   "namespace2",
-  "namespace3"
-]
+  "namespace3"]
+
 ```
 
 {% /tab %}
@@ -2523,10 +2514,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2548,10 +2538,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2560,13 +2549,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/aws/available_namespace_rules" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2582,13 +2571,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_available_aws_namespaces()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List namespace rules returns "OK" response
@@ -2596,13 +2586,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::AWSIntegrationAPI.new
 p api_instance.list_available_aws_namespaces()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'rubygems'
@@ -2614,13 +2605,14 @@ app_key = '<DATADOG_APPLICATION_KEY>'
 dog = Dogapi::Client.new(api_key, app_key)
 
 dog.aws_integration_list_namespaces
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List namespace rules returns "OK" response
@@ -2628,37 +2620,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.ListAvailableAWSNamespaces(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.ListAvailableAWSNamespaces(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.ListAvailableAWSNamespaces`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.ListAvailableAWSNamespaces`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.ListAvailableAWSNamespaces`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.ListAvailableAWSNamespaces`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List namespace rules returns "OK" response
@@ -2685,13 +2678,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -2704,13 +2698,14 @@ options = {
 initialize(**options)
 
 api.AwsIntegration.list_namespace_rules()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // List namespace rules returns "OK" response
@@ -2728,13 +2723,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2754,6 +2750,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -2801,18 +2798,17 @@ AWS Integration IAM Permissions response body.
 {
   "data": {
     "attributes": {
-      "permissions": [
-        "account:GetContactInformation",
+      "permissions": ["account:GetContactInformation",
         "amplify:ListApps",
         "amplify:ListArtifacts",
         "amplify:ListBackendEnvironments",
-        "amplify:ListBranches"
-      ]
+        "amplify:ListBranches"]
     },
     "id": "permissions",
     "type": "permissions"
   }
 }
+
 ```
 
 {% /tab %}
@@ -2834,10 +2830,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -2846,13 +2841,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/aws/iam_permissions" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2868,13 +2863,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.get_aws_integration_iam_permissions()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get AWS integration IAM permissions returns "AWS IAM Permissions object" response
@@ -2882,13 +2878,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::AWSIntegrationAPI.new
 p api_instance.get_aws_integration_iam_permissions()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get AWS integration IAM permissions returns "AWS IAM Permissions object" response
@@ -2896,37 +2893,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.GetAWSIntegrationIAMPermissions(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.GetAWSIntegrationIAMPermissions(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.GetAWSIntegrationIAMPermissions`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.GetAWSIntegrationIAMPermissions`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.GetAWSIntegrationIAMPermissions`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.GetAWSIntegrationIAMPermissions`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get AWS integration IAM permissions returns "AWS IAM Permissions object" response
@@ -2954,13 +2952,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get AWS integration IAM permissions returns "AWS IAM Permissions object"
@@ -2979,13 +2978,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3005,6 +3005,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -3071,32 +3072,25 @@ List of enabled AWS accounts.
 
 ```json
 {
-  "accounts": [
-    {
+  "accounts": [{
       "access_key_id": "string",
       "account_id": "123456789012",
       "account_specific_namespace_rules": {
         "<any-key>": false
       },
       "cspm_resource_collection_enabled": true,
-      "excluded_regions": [
-        "us-east-1",
-        "us-west-2"
-      ],
+      "excluded_regions": ["us-east-1",
+        "us-west-2"],
       "extended_resource_collection_enabled": true,
-      "filter_tags": [
-        "$KEY:$VALUE"
-      ],
-      "host_tags": [
-        "$KEY:$VALUE"
-      ],
+      "filter_tags": ["$KEY:$VALUE"],
+      "host_tags": ["$KEY:$VALUE"],
       "metrics_collection_enabled": false,
       "resource_collection_enabled": true,
       "role_name": "DatadogAWSIntegrationRole",
       "secret_access_key": "string"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -3118,10 +3112,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3143,10 +3136,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3168,10 +3160,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3180,13 +3171,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/aws" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3202,13 +3193,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_aws_accounts()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List all AWS integrations returns "OK" response
@@ -3216,13 +3208,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::AWSIntegrationAPI.new
 p api_instance.list_aws_accounts()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'rubygems'
@@ -3234,13 +3227,14 @@ app_key = '<DATADOG_APPLICATION_KEY>'
 dog = Dogapi::Client.new(api_key, app_key)
 
 dog.aws_integration_list
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List all AWS integrations returns "OK" response
@@ -3248,37 +3242,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.ListAWSAccounts(ctx, *datadogV1.NewListAWSAccountsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.ListAWSAccounts(ctx, *datadogV1.NewListAWSAccountsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.ListAWSAccounts`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.ListAWSAccounts`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.ListAWSAccounts`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.ListAWSAccounts`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List all AWS integrations returns "OK" response
@@ -3305,13 +3300,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -3324,13 +3320,14 @@ options = {
 initialize(**options)
 
 api.AwsIntegration.list()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // List all AWS integrations returns "OK" response
@@ -3351,13 +3348,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3377,6 +3375,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -3476,12 +3475,9 @@ AWS Accounts response body.
 
 ```json
 {
-  "data": [
-    {
+  "data": [{
       "attributes": {
-        "account_tags": [
-          "env:prod"
-        ],
+        "account_tags": ["env:prod"],
         "auth_config": {
           "access_key_id": "AKIAIOSFODNN7EXAMPLE",
           "secret_access_key": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
@@ -3494,22 +3490,14 @@ AWS Accounts response body.
         "created_at": "2019-09-19T10:00:00.000Z",
         "logs_config": {
           "lambda_forwarder": {
-            "lambdas": [
-              "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"
-            ],
+            "lambdas": ["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"],
             "log_source_config": {
-              "tag_filters": [
-                {
+              "tag_filters": [{
                   "source": "s3",
-                  "tags": [
-                    "env:prod"
-                  ]
-                }
-              ]
+                  "tags": ["env:prod"]
+                }]
             },
-            "sources": [
-              "s3"
-            ]
+            "sources": ["s3"]
           }
         },
         "metrics_config": {
@@ -3518,20 +3506,14 @@ AWS Accounts response body.
           "collect_custom_metrics": false,
           "enabled": true,
           "namespace_filters": {
-            "exclude_only": [
-              "AWS/SQS",
+            "exclude_only": ["AWS/SQS",
               "AWS/ElasticMapReduce",
-              "AWS/Usage"
-            ]
+              "AWS/Usage"]
           },
-          "tag_filters": [
-            {
+          "tag_filters": [{
               "namespace": "AWS/EC2",
-              "tags": [
-                "datadog:true"
-              ]
-            }
-          ]
+              "tags": ["datadog:true"]
+            }]
         },
         "modified_at": "2019-09-19T10:00:00.000Z",
         "resources_config": {
@@ -3546,9 +3528,9 @@ AWS Accounts response body.
       },
       "id": "00000000-abcd-0001-0000-000000000000",
       "type": "account"
-    }
-  ]
+    }]
 }
+
 ```
 
 {% /tab %}
@@ -3570,10 +3552,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3595,10 +3576,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3607,13 +3587,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/aws/accounts" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3629,13 +3609,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_aws_accounts()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List all AWS integrations returns "AWS Accounts List object" response
@@ -3643,13 +3624,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::AWSIntegrationAPI.new
 p api_instance.list_aws_accounts()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List all AWS integrations returns "AWS Accounts List object" response
@@ -3657,37 +3639,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.ListAWSAccounts(ctx, *datadogV2.NewListAWSAccountsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.ListAWSAccounts(ctx, *datadogV2.NewListAWSAccountsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.ListAWSAccounts`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.ListAWSAccounts`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.ListAWSAccounts`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.ListAWSAccounts`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List all AWS integrations returns "AWS Accounts List object" response
@@ -3714,13 +3697,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List all AWS integrations returns "AWS Accounts List object" response
@@ -3741,13 +3725,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3767,6 +3752,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -3816,6 +3802,7 @@ AWS request object
   "account_id": "163662907100",
   "role_name": "DatadogAWSIntegrationRole"
 }
+
 ```
 
 {% /tab %}
@@ -3835,6 +3822,7 @@ OK
 
 ```json
 {}
+
 ```
 
 {% /tab %}
@@ -3856,10 +3844,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3881,10 +3868,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3906,10 +3892,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3931,10 +3916,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -3943,7 +3927,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/aws" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3955,8 +3939,8 @@ Error response object.
   "role_name": "DatadogAWSIntegrationRole"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Delete an AWS integration returns "OK" response
@@ -3964,41 +3948,42 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.AWSAccountDeleteRequest{
-		AccountId: datadog.PtrString("163662907100"),
-		RoleName:  datadog.PtrString("DatadogAWSIntegrationRole"),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.DeleteAWSAccount(ctx, body)
+    body := datadogV1.AWSAccountDeleteRequest{
+        AccountId: datadog.PtrString("163662907100"),
+        RoleName:  datadog.PtrString("DatadogAWSIntegrationRole"),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.DeleteAWSAccount(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.DeleteAWSAccount`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.DeleteAWSAccount`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.DeleteAWSAccount`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.DeleteAWSAccount`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an AWS integration returns "OK" response
@@ -4029,13 +4014,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -4051,13 +4037,14 @@ account_id = "<AWS_ACCOUNT_ID>"
 role_name = "<AWS_ROLE_NAME>"
 
 api.AwsIntegration.delete(account_id=account_id, role_name=role_name)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python "example.py"
-##### 
+#####
 
 ```python
 """
@@ -4079,13 +4066,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.delete_aws_account(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 require 'rubygems'
@@ -4102,13 +4090,14 @@ config = {
 dog = Dogapi::Client.new(api_key, app_key)
 
 dog.aws_integration_delete(config)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 # Delete an AWS integration returns "OK" response
@@ -4121,13 +4110,14 @@ body = DatadogAPIClient::V1::AWSAccountDeleteRequest.new({
   role_name: "DatadogAWSIntegrationRole",
 })
 p api_instance.delete_aws_account(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Delete an AWS integration returns "OK" response
@@ -4149,13 +4139,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4182,6 +4173,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -4235,10 +4227,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4260,10 +4251,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4285,10 +4275,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4310,10 +4299,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4322,12 +4310,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport aws_account_config_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/aws/accounts/${aws_account_config_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4347,13 +4335,14 @@ with ApiClient(configuration) as api_client:
     api_instance.delete_aws_account(
         aws_account_config_id=AWS_ACCOUNT_V2_DATA_ID,
     )
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an AWS integration returns "No Content" response
@@ -4364,13 +4353,14 @@ api_instance = DatadogAPIClient::V2::AWSIntegrationAPI.new
 # there is a valid "aws_account_v2" in the system
 AWS_ACCOUNT_V2_DATA_ID = ENV["AWS_ACCOUNT_V2_DATA_ID"]
 api_instance.delete_aws_account(AWS_ACCOUNT_V2_DATA_ID)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an AWS integration returns "No Content" response
@@ -4378,36 +4368,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "aws_account_v2" in the system
-	AwsAccountV2DataID := os.Getenv("AWS_ACCOUNT_V2_DATA_ID")
+    // there is a valid "aws_account_v2" in the system
+    AwsAccountV2DataID := os.Getenv("AWS_ACCOUNT_V2_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAWSIntegrationApi(apiClient)
-	r, err := api.DeleteAWSAccount(ctx, AwsAccountV2DataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAWSIntegrationApi(apiClient)
+    r, err := api.DeleteAWSAccount(ctx, AwsAccountV2DataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.DeleteAWSAccount`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.DeleteAWSAccount`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an AWS integration returns "No Content" response
@@ -4435,13 +4426,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete an AWS integration returns "No Content" response
@@ -4461,13 +4453,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4494,6 +4487,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -4543,18 +4537,17 @@ AWS Integration IAM Permissions response body.
 {
   "data": {
     "attributes": {
-      "permissions": [
-        "account:GetContactInformation",
+      "permissions": ["account:GetContactInformation",
         "amplify:ListApps",
         "amplify:ListArtifacts",
         "amplify:ListBackendEnvironments",
-        "amplify:ListBranches"
-      ]
+        "amplify:ListBranches"]
     },
     "id": "permissions",
     "type": "permissions"
   }
 }
+
 ```
 
 {% /tab %}
@@ -4576,10 +4569,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4588,13 +4580,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/aws/iam_permissions/standard" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4610,13 +4602,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.get_aws_integration_iam_permissions_standard()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get AWS integration standard IAM permissions returns "AWS integration standard IAM permissions." response
@@ -4624,13 +4617,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::AWSIntegrationAPI.new
 p api_instance.get_aws_integration_iam_permissions_standard()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get AWS integration standard IAM permissions returns "AWS integration standard IAM permissions." response
@@ -4638,37 +4632,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.GetAWSIntegrationIAMPermissionsStandard(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.GetAWSIntegrationIAMPermissionsStandard(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.GetAWSIntegrationIAMPermissionsStandard`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.GetAWSIntegrationIAMPermissionsStandard`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.GetAWSIntegrationIAMPermissionsStandard`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.GetAWSIntegrationIAMPermissionsStandard`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get AWS integration standard IAM permissions returns "AWS integration standard IAM permissions."
@@ -4698,13 +4693,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get AWS integration standard IAM permissions returns "AWS integration standard
@@ -4723,13 +4719,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4749,6 +4746,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -4810,20 +4808,15 @@ AWS Request Object
     "auto_scaling": false
   },
   "cspm_resource_collection_enabled": true,
-  "excluded_regions": [
-    "us-east-1",
-    "us-west-2"
-  ],
+  "excluded_regions": ["us-east-1",
+    "us-west-2"],
   "extended_resource_collection_enabled": true,
-  "filter_tags": [
-    "$KEY:$VALUE"
-  ],
-  "host_tags": [
-    "$KEY:$VALUE"
-  ],
+  "filter_tags": ["$KEY:$VALUE"],
+  "host_tags": ["$KEY:$VALUE"],
   "metrics_collection_enabled": false,
   "role_name": "DatadogAWSIntegrationRole"
 }
+
 ```
 
 {% /tab %}
@@ -4847,6 +4840,7 @@ The Response returned by the AWS Create Account call.
 {
   "external_id": "string"
 }
+
 ```
 
 {% /tab %}
@@ -4868,10 +4862,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4893,10 +4886,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4918,10 +4910,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4943,10 +4934,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -4955,7 +4945,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/aws" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4968,23 +4958,17 @@ Error response object.
     "auto_scaling": false
   },
   "cspm_resource_collection_enabled": true,
-  "excluded_regions": [
-    "us-east-1",
-    "us-west-2"
-  ],
+  "excluded_regions": ["us-east-1",
+    "us-west-2"],
   "extended_resource_collection_enabled": true,
-  "filter_tags": [
-    "$KEY:$VALUE"
-  ],
-  "host_tags": [
-    "$KEY:$VALUE"
-  ],
+  "filter_tags": ["$KEY:$VALUE"],
+  "host_tags": ["$KEY:$VALUE"],
   "metrics_collection_enabled": false,
   "role_name": "DatadogAWSIntegrationRole"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create an AWS integration returns "OK" response
@@ -4992,57 +4976,58 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.AWSAccount{
-		AccountId: datadog.PtrString("163662907100"),
-		AccountSpecificNamespaceRules: map[string]bool{
-			"auto_scaling": false,
-		},
-		CspmResourceCollectionEnabled: datadog.PtrBool(true),
-		ExcludedRegions: []string{
-			"us-east-1",
-			"us-west-2",
-		},
-		ExtendedResourceCollectionEnabled: datadog.PtrBool(true),
-		FilterTags: []string{
-			"$KEY:$VALUE",
-		},
-		HostTags: []string{
-			"$KEY:$VALUE",
-		},
-		MetricsCollectionEnabled: datadog.PtrBool(false),
-		RoleName:                 datadog.PtrString("DatadogAWSIntegrationRole"),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.CreateAWSAccount(ctx, body)
+    body := datadogV1.AWSAccount{
+        AccountId: datadog.PtrString("163662907100"),
+        AccountSpecificNamespaceRules: map[string]bool{
+            "auto_scaling": false,
+        },
+        CspmResourceCollectionEnabled: datadog.PtrBool(true),
+        ExcludedRegions: []string{
+            "us-east-1",
+            "us-west-2",
+        },
+        ExtendedResourceCollectionEnabled: datadog.PtrBool(true),
+        FilterTags: []string{
+            "$KEY:$VALUE",
+        },
+        HostTags: []string{
+            "$KEY:$VALUE",
+        },
+        MetricsCollectionEnabled: datadog.PtrBool(false),
+        RoleName:                 datadog.PtrString("DatadogAWSIntegrationRole"),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.CreateAWSAccount(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.CreateAWSAccount`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.CreateAWSAccount`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.CreateAWSAccount`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.CreateAWSAccount`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create an AWS integration returns "OK" response
@@ -5085,13 +5070,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -5111,13 +5097,14 @@ api.AwsIntegration.create(
     account_specific_namespace_rules={'namespace1': True/False, 'namespace2': True/False},
     excluded_regions=["us-east-1", "us-west-1"]
 )
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python "example.py"
-##### 
+#####
 
 ```python
 """
@@ -5134,17 +5121,11 @@ body = AWSAccount(
         auto_scaling=False,
     ),
     cspm_resource_collection_enabled=True,
-    excluded_regions=[
-        "us-east-1",
-        "us-west-2",
-    ],
+    excluded_regions=["us-east-1",
+        "us-west-2",],
     extended_resource_collection_enabled=True,
-    filter_tags=[
-        "$KEY:$VALUE",
-    ],
-    host_tags=[
-        "$KEY:$VALUE",
-    ],
+    filter_tags=["$KEY:$VALUE",],
+    host_tags=["$KEY:$VALUE",],
     metrics_collection_enabled=False,
     role_name="DatadogAWSIntegrationRole",
 )
@@ -5155,13 +5136,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_aws_account(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 require 'rubygems'
@@ -5182,13 +5164,14 @@ config = {
 }
 
 dog.aws_integration_create(config)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 # Create an AWS integration returns "OK" response
@@ -5202,28 +5185,23 @@ body = DatadogAPIClient::V1::AWSAccount.new({
     auto_scaling: false,
   },
   cspm_resource_collection_enabled: true,
-  excluded_regions: [
-    "us-east-1",
-    "us-west-2",
-  ],
+  excluded_regions: ["us-east-1",
+    "us-west-2",],
   extended_resource_collection_enabled: true,
-  filter_tags: [
-    "$KEY:$VALUE",
-  ],
-  host_tags: [
-    "$KEY:$VALUE",
-  ],
+  filter_tags: ["$KEY:$VALUE",],
+  host_tags: ["$KEY:$VALUE",],
   metrics_collection_enabled: false,
   role_name: "DatadogAWSIntegrationRole",
 })
 p api_instance.create_aws_account(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create an AWS integration returns "OK" response
@@ -5253,13 +5231,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5295,6 +5274,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -5322,8 +5302,6 @@ Create a new AWS Account Integration Config. This endpoint requires the `aws_con
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -5381,15 +5359,13 @@ Create a new AWS Account Integration Config. This endpoint requires the `aws_con
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
   "data": {
     "attributes": {
-      "account_tags": [
-        "key:value"
-      ],
+      "account_tags": ["key:value"],
       "auth_config": {
         "role_name": "DatadogIntegrationRole"
       },
@@ -5397,22 +5373,14 @@ Create a new AWS Account Integration Config. This endpoint requires the `aws_con
       "aws_partition": "aws",
       "logs_config": {
         "lambda_forwarder": {
-          "lambdas": [
-            "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"
-          ],
+          "lambdas": ["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"],
           "log_source_config": {
-            "tag_filters": [
-              {
+            "tag_filters": [{
                 "source": "s3",
-                "tags": [
-                  "test:test"
-                ]
-              }
-            ]
+                "tags": ["test:test"]
+              }]
           },
-          "sources": [
-            "s3"
-          ]
+          "sources": ["s3"]
         }
       },
       "metrics_config": {
@@ -5420,14 +5388,10 @@ Create a new AWS Account Integration Config. This endpoint requires the `aws_con
         "collect_cloudwatch_alarms": true,
         "collect_custom_metrics": true,
         "enabled": true,
-        "tag_filters": [
-          {
+        "tag_filters": [{
             "namespace": "AWS/EC2",
-            "tags": [
-              "key:value"
-            ]
-          }
-        ]
+            "tags": ["key:value"]
+          }]
       },
       "resources_config": {
         "cloud_security_posture_management_collection": false,
@@ -5438,17 +5402,16 @@ Create a new AWS Account Integration Config. This endpoint requires the `aws_con
     "type": "account"
   }
 }
+
 ```
 
-##### 
+#####
 
 ```json
 {
   "data": {
     "attributes": {
-      "account_tags": [
-        "key:value"
-      ],
+      "account_tags": ["key:value"],
       "auth_config": {
         "access_key_id": "AKIAIOSFODNN7EXAMPLE",
         "secret_access_key": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
@@ -5457,22 +5420,14 @@ Create a new AWS Account Integration Config. This endpoint requires the `aws_con
       "aws_partition": "aws",
       "logs_config": {
         "lambda_forwarder": {
-          "lambdas": [
-            "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"
-          ],
+          "lambdas": ["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"],
           "log_source_config": {
-            "tag_filters": [
-              {
+            "tag_filters": [{
                 "source": "s3",
-                "tags": [
-                  "test:test"
-                ]
-              }
-            ]
+                "tags": ["test:test"]
+              }]
           },
-          "sources": [
-            "s3"
-          ]
+          "sources": ["s3"]
         }
       },
       "metrics_config": {
@@ -5480,14 +5435,10 @@ Create a new AWS Account Integration Config. This endpoint requires the `aws_con
         "collect_cloudwatch_alarms": true,
         "collect_custom_metrics": true,
         "enabled": true,
-        "tag_filters": [
-          {
+        "tag_filters": [{
             "namespace": "AWS/EC2",
-            "tags": [
-              "key:value"
-            ]
-          }
-        ]
+            "tags": ["key:value"]
+          }]
       },
       "resources_config": {
         "cloud_security_posture_management_collection": false,
@@ -5498,6 +5449,7 @@ Create a new AWS Account Integration Config. This endpoint requires the `aws_con
     "type": "account"
   }
 }
+
 ```
 
 {% /tab %}
@@ -5571,9 +5523,7 @@ AWS Account response body.
 {
   "data": {
     "attributes": {
-      "account_tags": [
-        "env:prod"
-      ],
+      "account_tags": ["env:prod"],
       "auth_config": {
         "access_key_id": "AKIAIOSFODNN7EXAMPLE",
         "secret_access_key": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
@@ -5586,22 +5536,14 @@ AWS Account response body.
       "created_at": "2019-09-19T10:00:00.000Z",
       "logs_config": {
         "lambda_forwarder": {
-          "lambdas": [
-            "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"
-          ],
+          "lambdas": ["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"],
           "log_source_config": {
-            "tag_filters": [
-              {
+            "tag_filters": [{
                 "source": "s3",
-                "tags": [
-                  "env:prod"
-                ]
-              }
-            ]
+                "tags": ["env:prod"]
+              }]
           },
-          "sources": [
-            "s3"
-          ]
+          "sources": ["s3"]
         }
       },
       "metrics_config": {
@@ -5610,20 +5552,14 @@ AWS Account response body.
         "collect_custom_metrics": false,
         "enabled": true,
         "namespace_filters": {
-          "exclude_only": [
-            "AWS/SQS",
+          "exclude_only": ["AWS/SQS",
             "AWS/ElasticMapReduce",
-            "AWS/Usage"
-          ]
+            "AWS/Usage"]
         },
-        "tag_filters": [
-          {
+        "tag_filters": [{
             "namespace": "AWS/EC2",
-            "tags": [
-              "datadog:true"
-            ]
-          }
-        ]
+            "tags": ["datadog:true"]
+          }]
       },
       "modified_at": "2019-09-19T10:00:00.000Z",
       "resources_config": {
@@ -5640,6 +5576,7 @@ AWS Account response body.
     "type": "account"
   }
 }
+
 ```
 
 {% /tab %}
@@ -5661,10 +5598,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5686,10 +5622,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5711,10 +5646,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5736,10 +5670,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -5748,7 +5681,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/aws/accounts" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -5758,9 +5691,7 @@ API error response.
 {
   "data": {
     "attributes": {
-      "account_tags": [
-        "key:value"
-      ],
+      "account_tags": ["key:value"],
       "auth_config": {
         "role_name": "DatadogIntegrationRole"
       },
@@ -5768,22 +5699,14 @@ API error response.
       "aws_partition": "aws",
       "logs_config": {
         "lambda_forwarder": {
-          "lambdas": [
-            "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"
-          ],
+          "lambdas": ["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"],
           "log_source_config": {
-            "tag_filters": [
-              {
+            "tag_filters": [{
                 "source": "s3",
-                "tags": [
-                  "test:test"
-                ]
-              }
-            ]
+                "tags": ["test:test"]
+              }]
           },
-          "sources": [
-            "s3"
-          ]
+          "sources": ["s3"]
         }
       },
       "metrics_config": {
@@ -5791,14 +5714,10 @@ API error response.
         "collect_cloudwatch_alarms": true,
         "collect_custom_metrics": true,
         "enabled": true,
-        "tag_filters": [
-          {
+        "tag_filters": [{
             "namespace": "AWS/EC2",
-            "tags": [
-              "key:value"
-            ]
-          }
-        ]
+            "tags": ["key:value"]
+          }]
       },
       "resources_config": {
         "cloud_security_posture_management_collection": false,
@@ -5810,8 +5729,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/aws/accounts" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -5821,9 +5740,7 @@ EOF
 {
   "data": {
     "attributes": {
-      "account_tags": [
-        "key:value"
-      ],
+      "account_tags": ["key:value"],
       "auth_config": {
         "access_key_id": "AKIAIOSFODNN7EXAMPLE",
         "secret_access_key": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
@@ -5832,22 +5749,14 @@ EOF
       "aws_partition": "aws",
       "logs_config": {
         "lambda_forwarder": {
-          "lambdas": [
-            "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"
-          ],
+          "lambdas": ["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"],
           "log_source_config": {
-            "tag_filters": [
-              {
+            "tag_filters": [{
                 "source": "s3",
-                "tags": [
-                  "test:test"
-                ]
-              }
-            ]
+                "tags": ["test:test"]
+              }]
           },
-          "sources": [
-            "s3"
-          ]
+          "sources": ["s3"]
         }
       },
       "metrics_config": {
@@ -5855,14 +5764,10 @@ EOF
         "collect_cloudwatch_alarms": true,
         "collect_custom_metrics": true,
         "enabled": true,
-        "tag_filters": [
-          {
+        "tag_filters": [{
             "namespace": "AWS/EC2",
-            "tags": [
-              "key:value"
-            ]
-          }
-        ]
+            "tags": ["key:value"]
+          }]
       },
       "resources_config": {
         "cloud_security_posture_management_collection": false,
@@ -5874,8 +5779,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create an AWS account returns "AWS Account object" response
@@ -5883,99 +5788,89 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.AWSAccountCreateRequest{
-		Data: datadogV2.AWSAccountCreateRequestData{
-			Attributes: datadogV2.AWSAccountCreateRequestAttributes{
-				AccountTags: *datadog.NewNullableList(&[]string{
-					"key:value",
-				}),
-				AuthConfig: datadogV2.AWSAuthConfig{
-					AWSAuthConfigRole: &datadogV2.AWSAuthConfigRole{
-						RoleName: "DatadogIntegrationRole",
-					}},
-				AwsAccountId: "123456789012",
-				AwsPartition: datadogV2.AWSACCOUNTPARTITION_AWS,
-				CcmConfig: &datadogV2.AWSCCMConfig{
-					DataExportConfigs: []datadogV2.DataExportConfig{
-						{
-							BucketName:   datadog.PtrString("my-bucket"),
-							BucketRegion: datadog.PtrString("us-east-1"),
-							ReportName:   datadog.PtrString("my-report"),
-							ReportPrefix: datadog.PtrString("reports"),
-							ReportType:   datadog.PtrString("CUR2.0"),
-						},
-					},
-				},
-				LogsConfig: &datadogV2.AWSLogsConfig{
-					LambdaForwarder: &datadogV2.AWSLambdaForwarderConfig{
-						Lambdas: []string{
-							"arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",
-						},
-						LogSourceConfig: &datadogV2.AWSLambdaForwarderConfigLogSourceConfig{
-							TagFilters: []datadogV2.AWSLogSourceTagFilter{
-								{
-									Source: datadog.PtrString("s3"),
-									Tags: *datadog.NewNullableList(&[]string{
-										"test:test",
-									}),
-								},
-							},
-						},
-						Sources: []string{
-							"s3",
-						},
-					},
-				},
-				MetricsConfig: &datadogV2.AWSMetricsConfig{
-					AutomuteEnabled:         datadog.PtrBool(true),
-					CollectCloudwatchAlarms: datadog.PtrBool(true),
-					CollectCustomMetrics:    datadog.PtrBool(true),
-					Enabled:                 datadog.PtrBool(true),
-					TagFilters: []datadogV2.AWSNamespaceTagFilter{
-						{
-							Namespace: datadog.PtrString("AWS/EC2"),
-							Tags: *datadog.NewNullableList(&[]string{
-								"key:value",
-							}),
-						},
-					},
-				},
-				ResourcesConfig: &datadogV2.AWSResourcesConfig{
-					CloudSecurityPostureManagementCollection: datadog.PtrBool(false),
-					ExtendedCollection:                       datadog.PtrBool(false),
-				},
-				TracesConfig: &datadogV2.AWSTracesConfig{},
-			},
-			Type: datadogV2.AWSACCOUNTTYPE_ACCOUNT,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.CreateAWSAccount(ctx, body)
+    body := datadogV2.AWSAccountCreateRequest{
+        Data: datadogV2.AWSAccountCreateRequestData{
+            Attributes: datadogV2.AWSAccountCreateRequestAttributes{
+                AccountTags: *datadog.NewNullableList(&[]string{
+                    "key:value",
+                }),
+                AuthConfig: datadogV2.AWSAuthConfig{
+                    AWSAuthConfigRole: &datadogV2.AWSAuthConfigRole{
+                        RoleName: "DatadogIntegrationRole",
+                    }},
+                AwsAccountId: "123456789012",
+                AwsPartition: datadogV2.AWSACCOUNTPARTITION_AWS,
+                LogsConfig: &datadogV2.AWSLogsConfig{
+                    LambdaForwarder: &datadogV2.AWSLambdaForwarderConfig{
+                        Lambdas: []string{
+                            "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",
+                        },
+                        LogSourceConfig: &datadogV2.AWSLambdaForwarderConfigLogSourceConfig{
+                            TagFilters: []datadogV2.AWSLogSourceTagFilter{
+                                {
+                                    Source: datadog.PtrString("s3"),
+                                    Tags: *datadog.NewNullableList(&[]string{
+                                        "test:test",
+                                    }),
+                                },
+                            },
+                        },
+                        Sources: []string{
+                            "s3",
+                        },
+                    },
+                },
+                MetricsConfig: &datadogV2.AWSMetricsConfig{
+                    AutomuteEnabled:         datadog.PtrBool(true),
+                    CollectCloudwatchAlarms: datadog.PtrBool(true),
+                    CollectCustomMetrics:    datadog.PtrBool(true),
+                    Enabled:                 datadog.PtrBool(true),
+                    TagFilters: []datadogV2.AWSNamespaceTagFilter{
+                        {
+                            Namespace: datadog.PtrString("AWS/EC2"),
+                            Tags: *datadog.NewNullableList(&[]string{
+                                "key:value",
+                            }),
+                        },
+                    },
+                },
+                ResourcesConfig: &datadogV2.AWSResourcesConfig{
+                    CloudSecurityPostureManagementCollection: datadog.PtrBool(false),
+                    ExtendedCollection:                       datadog.PtrBool(false),
+                },
+                TracesConfig: &datadogV2.AWSTracesConfig{},
+            },
+            Type: datadogV2.AWSACCOUNTTYPE_ACCOUNT,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.CreateAWSAccount(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.CreateAWSAccount`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.CreateAWSAccount`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.CreateAWSAccount`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.CreateAWSAccount`:\n%s\n", responseContent)
 }
+
 ```
 
-##### 
+#####
 
 ```go
 // Create an AWS integration returns "AWS Account object" response
@@ -5983,104 +5878,94 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.AWSAccountCreateRequest{
-		Data: datadogV2.AWSAccountCreateRequestData{
-			Attributes: datadogV2.AWSAccountCreateRequestAttributes{
-				AccountTags: *datadog.NewNullableList(&[]string{
-					"key:value",
-				}),
-				AuthConfig: datadogV2.AWSAuthConfig{
-					AWSAuthConfigKeys: &datadogV2.AWSAuthConfigKeys{
-						AccessKeyId:     "AKIAIOSFODNN7EXAMPLE",
-						SecretAccessKey: datadog.PtrString("wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"),
-					}},
-				AwsAccountId: "123456789012",
-				AwsPartition: datadogV2.AWSACCOUNTPARTITION_AWS,
-				CcmConfig: &datadogV2.AWSCCMConfig{
-					DataExportConfigs: []datadogV2.DataExportConfig{
-						{
-							BucketName:   datadog.PtrString("my-bucket"),
-							BucketRegion: datadog.PtrString("us-east-1"),
-							ReportName:   datadog.PtrString("my-report"),
-							ReportPrefix: datadog.PtrString("reports"),
-							ReportType:   datadog.PtrString("CUR2.0"),
-						},
-					},
-				},
-				LogsConfig: &datadogV2.AWSLogsConfig{
-					LambdaForwarder: &datadogV2.AWSLambdaForwarderConfig{
-						Lambdas: []string{
-							"arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",
-						},
-						LogSourceConfig: &datadogV2.AWSLambdaForwarderConfigLogSourceConfig{
-							TagFilters: []datadogV2.AWSLogSourceTagFilter{
-								{
-									Source: datadog.PtrString("s3"),
-									Tags: *datadog.NewNullableList(&[]string{
-										"test:test",
-									}),
-								},
-							},
-						},
-						Sources: []string{
-							"s3",
-						},
-					},
-				},
-				MetricsConfig: &datadogV2.AWSMetricsConfig{
-					AutomuteEnabled:         datadog.PtrBool(true),
-					CollectCloudwatchAlarms: datadog.PtrBool(true),
-					CollectCustomMetrics:    datadog.PtrBool(true),
-					Enabled:                 datadog.PtrBool(true),
-					TagFilters: []datadogV2.AWSNamespaceTagFilter{
-						{
-							Namespace: datadog.PtrString("AWS/EC2"),
-							Tags: *datadog.NewNullableList(&[]string{
-								"key:value",
-							}),
-						},
-					},
-				},
-				ResourcesConfig: &datadogV2.AWSResourcesConfig{
-					CloudSecurityPostureManagementCollection: datadog.PtrBool(false),
-					ExtendedCollection:                       datadog.PtrBool(false),
-				},
-				TracesConfig: &datadogV2.AWSTracesConfig{},
-			},
-			Type: datadogV2.AWSACCOUNTTYPE_ACCOUNT,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.CreateAWSAccount(ctx, body)
+    body := datadogV2.AWSAccountCreateRequest{
+        Data: datadogV2.AWSAccountCreateRequestData{
+            Attributes: datadogV2.AWSAccountCreateRequestAttributes{
+                AccountTags: *datadog.NewNullableList(&[]string{
+                    "key:value",
+                }),
+                AuthConfig: datadogV2.AWSAuthConfig{
+                    AWSAuthConfigKeys: &datadogV2.AWSAuthConfigKeys{
+                        AccessKeyId:     "AKIAIOSFODNN7EXAMPLE",
+                        SecretAccessKey: datadog.PtrString("wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"),
+                    }},
+                AwsAccountId: "123456789012",
+                AwsPartition: datadogV2.AWSACCOUNTPARTITION_AWS,
+                LogsConfig: &datadogV2.AWSLogsConfig{
+                    LambdaForwarder: &datadogV2.AWSLambdaForwarderConfig{
+                        Lambdas: []string{
+                            "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",
+                        },
+                        LogSourceConfig: &datadogV2.AWSLambdaForwarderConfigLogSourceConfig{
+                            TagFilters: []datadogV2.AWSLogSourceTagFilter{
+                                {
+                                    Source: datadog.PtrString("s3"),
+                                    Tags: *datadog.NewNullableList(&[]string{
+                                        "test:test",
+                                    }),
+                                },
+                            },
+                        },
+                        Sources: []string{
+                            "s3",
+                        },
+                    },
+                },
+                MetricsConfig: &datadogV2.AWSMetricsConfig{
+                    AutomuteEnabled:         datadog.PtrBool(true),
+                    CollectCloudwatchAlarms: datadog.PtrBool(true),
+                    CollectCustomMetrics:    datadog.PtrBool(true),
+                    Enabled:                 datadog.PtrBool(true),
+                    TagFilters: []datadogV2.AWSNamespaceTagFilter{
+                        {
+                            Namespace: datadog.PtrString("AWS/EC2"),
+                            Tags: *datadog.NewNullableList(&[]string{
+                                "key:value",
+                            }),
+                        },
+                    },
+                },
+                ResourcesConfig: &datadogV2.AWSResourcesConfig{
+                    CloudSecurityPostureManagementCollection: datadog.PtrBool(false),
+                    ExtendedCollection:                       datadog.PtrBool(false),
+                },
+                TracesConfig: &datadogV2.AWSTracesConfig{},
+            },
+            Type: datadogV2.AWSACCOUNTTYPE_ACCOUNT,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.CreateAWSAccount(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.CreateAWSAccount`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.CreateAWSAccount`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.CreateAWSAccount`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.CreateAWSAccount`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create an AWS account returns "AWS Account object" response
@@ -6096,7 +5981,6 @@ import com.datadog.api.client.v2.model.AWSAccountResponse;
 import com.datadog.api.client.v2.model.AWSAccountType;
 import com.datadog.api.client.v2.model.AWSAuthConfig;
 import com.datadog.api.client.v2.model.AWSAuthConfigRole;
-import com.datadog.api.client.v2.model.AWSCCMConfig;
 import com.datadog.api.client.v2.model.AWSLambdaForwarderConfig;
 import com.datadog.api.client.v2.model.AWSLambdaForwarderConfigLogSourceConfig;
 import com.datadog.api.client.v2.model.AWSLogSourceTagFilter;
@@ -6105,7 +5989,6 @@ import com.datadog.api.client.v2.model.AWSMetricsConfig;
 import com.datadog.api.client.v2.model.AWSNamespaceTagFilter;
 import com.datadog.api.client.v2.model.AWSResourcesConfig;
 import com.datadog.api.client.v2.model.AWSTracesConfig;
-import com.datadog.api.client.v2.model.DataExportConfig;
 import java.util.Collections;
 
 public class Example {
@@ -6125,16 +6008,6 @@ public class Example {
                                     new AWSAuthConfigRole().roleName("DatadogIntegrationRole")))
                             .awsAccountId("123456789012")
                             .awsPartition(AWSAccountPartition.AWS)
-                            .ccmConfig(
-                                new AWSCCMConfig()
-                                    .dataExportConfigs(
-                                        Collections.singletonList(
-                                            new DataExportConfig()
-                                                .bucketName("my-bucket")
-                                                .bucketRegion("us-east-1")
-                                                .reportName("my-report")
-                                                .reportPrefix("reports")
-                                                .reportType("CUR2.0"))))
                             .logsConfig(
                                 new AWSLogsConfig()
                                     .lambdaForwarder(
@@ -6182,9 +6055,10 @@ public class Example {
     }
   }
 }
+
 ```
 
-##### 
+#####
 
 ```java
 // Create an AWS integration returns "AWS Account object" response
@@ -6200,7 +6074,6 @@ import com.datadog.api.client.v2.model.AWSAccountResponse;
 import com.datadog.api.client.v2.model.AWSAccountType;
 import com.datadog.api.client.v2.model.AWSAuthConfig;
 import com.datadog.api.client.v2.model.AWSAuthConfigKeys;
-import com.datadog.api.client.v2.model.AWSCCMConfig;
 import com.datadog.api.client.v2.model.AWSLambdaForwarderConfig;
 import com.datadog.api.client.v2.model.AWSLambdaForwarderConfigLogSourceConfig;
 import com.datadog.api.client.v2.model.AWSLogSourceTagFilter;
@@ -6209,7 +6082,6 @@ import com.datadog.api.client.v2.model.AWSMetricsConfig;
 import com.datadog.api.client.v2.model.AWSNamespaceTagFilter;
 import com.datadog.api.client.v2.model.AWSResourcesConfig;
 import com.datadog.api.client.v2.model.AWSTracesConfig;
-import com.datadog.api.client.v2.model.DataExportConfig;
 import java.util.Collections;
 
 public class Example {
@@ -6232,16 +6104,6 @@ public class Example {
                                             "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY")))
                             .awsAccountId("123456789012")
                             .awsPartition(AWSAccountPartition.AWS)
-                            .ccmConfig(
-                                new AWSCCMConfig()
-                                    .dataExportConfigs(
-                                        Collections.singletonList(
-                                            new DataExportConfig()
-                                                .bucketName("my-bucket")
-                                                .bucketRegion("us-east-1")
-                                                .reportName("my-report")
-                                                .reportPrefix("reports")
-                                                .reportType("CUR2.0"))))
                             .logsConfig(
                                 new AWSLogsConfig()
                                     .lambdaForwarder(
@@ -6289,13 +6151,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -6320,49 +6183,26 @@ from datadog_api_client.v2.model.aws_metrics_config import AWSMetricsConfig
 from datadog_api_client.v2.model.aws_namespace_tag_filter import AWSNamespaceTagFilter
 from datadog_api_client.v2.model.aws_resources_config import AWSResourcesConfig
 from datadog_api_client.v2.model.aws_traces_config import AWSTracesConfig
-from datadog_api_client.v2.model.awsccm_config import AWSCCMConfig
-from datadog_api_client.v2.model.data_export_config import DataExportConfig
 
 body = AWSAccountCreateRequest(
     data=AWSAccountCreateRequestData(
         attributes=AWSAccountCreateRequestAttributes(
-            account_tags=[
-                "key:value",
-            ],
+            account_tags=["key:value",],
             auth_config=AWSAuthConfigRole(
                 role_name="DatadogIntegrationRole",
             ),
             aws_account_id="123456789012",
             aws_partition=AWSAccountPartition.AWS,
-            ccm_config=AWSCCMConfig(
-                data_export_configs=[
-                    DataExportConfig(
-                        bucket_name="my-bucket",
-                        bucket_region="us-east-1",
-                        report_name="my-report",
-                        report_prefix="reports",
-                        report_type="CUR2.0",
-                    ),
-                ],
-            ),
             logs_config=AWSLogsConfig(
                 lambda_forwarder=AWSLambdaForwarderConfig(
-                    lambdas=[
-                        "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",
-                    ],
+                    lambdas=["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",],
                     log_source_config=AWSLambdaForwarderConfigLogSourceConfig(
-                        tag_filters=[
-                            AWSLogSourceTagFilter(
+                        tag_filters=[AWSLogSourceTagFilter(
                                 source="s3",
-                                tags=[
-                                    "test:test",
-                                ],
-                            ),
-                        ],
+                                tags=["test:test",],
+                            ),],
                     ),
-                    sources=[
-                        "s3",
-                    ],
+                    sources=["s3",],
                 ),
             ),
             metrics_config=AWSMetricsConfig(
@@ -6370,14 +6210,10 @@ body = AWSAccountCreateRequest(
                 collect_cloudwatch_alarms=True,
                 collect_custom_metrics=True,
                 enabled=True,
-                tag_filters=[
-                    AWSNamespaceTagFilter(
+                tag_filters=[AWSNamespaceTagFilter(
                         namespace="AWS/EC2",
-                        tags=[
-                            "key:value",
-                        ],
-                    ),
-                ],
+                        tags=["key:value",],
+                    ),],
             ),
             resources_config=AWSResourcesConfig(
                 cloud_security_posture_management_collection=False,
@@ -6395,9 +6231,10 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_aws_account(body=body)
 
     print(response)
+
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -6422,50 +6259,27 @@ from datadog_api_client.v2.model.aws_metrics_config import AWSMetricsConfig
 from datadog_api_client.v2.model.aws_namespace_tag_filter import AWSNamespaceTagFilter
 from datadog_api_client.v2.model.aws_resources_config import AWSResourcesConfig
 from datadog_api_client.v2.model.aws_traces_config import AWSTracesConfig
-from datadog_api_client.v2.model.awsccm_config import AWSCCMConfig
-from datadog_api_client.v2.model.data_export_config import DataExportConfig
 
 body = AWSAccountCreateRequest(
     data=AWSAccountCreateRequestData(
         attributes=AWSAccountCreateRequestAttributes(
-            account_tags=[
-                "key:value",
-            ],
+            account_tags=["key:value",],
             auth_config=AWSAuthConfigKeys(
                 access_key_id="AKIAIOSFODNN7EXAMPLE",
                 secret_access_key="wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
             ),
             aws_account_id="123456789012",
             aws_partition=AWSAccountPartition.AWS,
-            ccm_config=AWSCCMConfig(
-                data_export_configs=[
-                    DataExportConfig(
-                        bucket_name="my-bucket",
-                        bucket_region="us-east-1",
-                        report_name="my-report",
-                        report_prefix="reports",
-                        report_type="CUR2.0",
-                    ),
-                ],
-            ),
             logs_config=AWSLogsConfig(
                 lambda_forwarder=AWSLambdaForwarderConfig(
-                    lambdas=[
-                        "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",
-                    ],
+                    lambdas=["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",],
                     log_source_config=AWSLambdaForwarderConfigLogSourceConfig(
-                        tag_filters=[
-                            AWSLogSourceTagFilter(
+                        tag_filters=[AWSLogSourceTagFilter(
                                 source="s3",
-                                tags=[
-                                    "test:test",
-                                ],
-                            ),
-                        ],
+                                tags=["test:test",],
+                            ),],
                     ),
-                    sources=[
-                        "s3",
-                    ],
+                    sources=["s3",],
                 ),
             ),
             metrics_config=AWSMetricsConfig(
@@ -6473,14 +6287,10 @@ body = AWSAccountCreateRequest(
                 collect_cloudwatch_alarms=True,
                 collect_custom_metrics=True,
                 enabled=True,
-                tag_filters=[
-                    AWSNamespaceTagFilter(
+                tag_filters=[AWSNamespaceTagFilter(
                         namespace="AWS/EC2",
-                        tags=[
-                            "key:value",
-                        ],
-                    ),
-                ],
+                        tags=["key:value",],
+                    ),],
             ),
             resources_config=AWSResourcesConfig(
                 cloud_security_posture_management_collection=False,
@@ -6498,13 +6308,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_aws_account(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create an AWS account returns "AWS Account object" response
@@ -6515,43 +6326,22 @@ api_instance = DatadogAPIClient::V2::AWSIntegrationAPI.new
 body = DatadogAPIClient::V2::AWSAccountCreateRequest.new({
   data: DatadogAPIClient::V2::AWSAccountCreateRequestData.new({
     attributes: DatadogAPIClient::V2::AWSAccountCreateRequestAttributes.new({
-      account_tags: [
-        "key:value",
-      ],
+      account_tags: ["key:value",],
       auth_config: DatadogAPIClient::V2::AWSAuthConfigRole.new({
         role_name: "DatadogIntegrationRole",
       }),
       aws_account_id: "123456789012",
       aws_partition: DatadogAPIClient::V2::AWSAccountPartition::AWS,
-      ccm_config: DatadogAPIClient::V2::AWSCCMConfig.new({
-        data_export_configs: [
-          DatadogAPIClient::V2::DataExportConfig.new({
-            bucket_name: "my-bucket",
-            bucket_region: "us-east-1",
-            report_name: "my-report",
-            report_prefix: "reports",
-            report_type: "CUR2.0",
-          }),
-        ],
-      }),
       logs_config: DatadogAPIClient::V2::AWSLogsConfig.new({
         lambda_forwarder: DatadogAPIClient::V2::AWSLambdaForwarderConfig.new({
-          lambdas: [
-            "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",
-          ],
+          lambdas: ["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",],
           log_source_config: DatadogAPIClient::V2::AWSLambdaForwarderConfigLogSourceConfig.new({
-            tag_filters: [
-              DatadogAPIClient::V2::AWSLogSourceTagFilter.new({
+            tag_filters: [DatadogAPIClient::V2::AWSLogSourceTagFilter.new({
                 source: "s3",
-                tags: [
-                  "test:test",
-                ],
-              }),
-            ],
+                tags: ["test:test",],
+              }),],
           }),
-          sources: [
-            "s3",
-          ],
+          sources: ["s3",],
         }),
       }),
       metrics_config: DatadogAPIClient::V2::AWSMetricsConfig.new({
@@ -6559,14 +6349,10 @@ body = DatadogAPIClient::V2::AWSAccountCreateRequest.new({
         collect_cloudwatch_alarms: true,
         collect_custom_metrics: true,
         enabled: true,
-        tag_filters: [
-          DatadogAPIClient::V2::AWSNamespaceTagFilter.new({
+        tag_filters: [DatadogAPIClient::V2::AWSNamespaceTagFilter.new({
             namespace: "AWS/EC2",
-            tags: [
-              "key:value",
-            ],
-          }),
-        ],
+            tags: ["key:value",],
+          }),],
       }),
       resources_config: DatadogAPIClient::V2::AWSResourcesConfig.new({
         cloud_security_posture_management_collection: false,
@@ -6578,9 +6364,10 @@ body = DatadogAPIClient::V2::AWSAccountCreateRequest.new({
   }),
 })
 p api_instance.create_aws_account(body)
+
 ```
 
-##### 
+#####
 
 ```ruby
 # Create an AWS integration returns "AWS Account object" response
@@ -6591,44 +6378,23 @@ api_instance = DatadogAPIClient::V2::AWSIntegrationAPI.new
 body = DatadogAPIClient::V2::AWSAccountCreateRequest.new({
   data: DatadogAPIClient::V2::AWSAccountCreateRequestData.new({
     attributes: DatadogAPIClient::V2::AWSAccountCreateRequestAttributes.new({
-      account_tags: [
-        "key:value",
-      ],
+      account_tags: ["key:value",],
       auth_config: DatadogAPIClient::V2::AWSAuthConfigKeys.new({
         access_key_id: "AKIAIOSFODNN7EXAMPLE",
         secret_access_key: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
       }),
       aws_account_id: "123456789012",
       aws_partition: DatadogAPIClient::V2::AWSAccountPartition::AWS,
-      ccm_config: DatadogAPIClient::V2::AWSCCMConfig.new({
-        data_export_configs: [
-          DatadogAPIClient::V2::DataExportConfig.new({
-            bucket_name: "my-bucket",
-            bucket_region: "us-east-1",
-            report_name: "my-report",
-            report_prefix: "reports",
-            report_type: "CUR2.0",
-          }),
-        ],
-      }),
       logs_config: DatadogAPIClient::V2::AWSLogsConfig.new({
         lambda_forwarder: DatadogAPIClient::V2::AWSLambdaForwarderConfig.new({
-          lambdas: [
-            "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",
-          ],
+          lambdas: ["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",],
           log_source_config: DatadogAPIClient::V2::AWSLambdaForwarderConfigLogSourceConfig.new({
-            tag_filters: [
-              DatadogAPIClient::V2::AWSLogSourceTagFilter.new({
+            tag_filters: [DatadogAPIClient::V2::AWSLogSourceTagFilter.new({
                 source: "s3",
-                tags: [
-                  "test:test",
-                ],
-              }),
-            ],
+                tags: ["test:test",],
+              }),],
           }),
-          sources: [
-            "s3",
-          ],
+          sources: ["s3",],
         }),
       }),
       metrics_config: DatadogAPIClient::V2::AWSMetricsConfig.new({
@@ -6636,14 +6402,10 @@ body = DatadogAPIClient::V2::AWSAccountCreateRequest.new({
         collect_cloudwatch_alarms: true,
         collect_custom_metrics: true,
         enabled: true,
-        tag_filters: [
-          DatadogAPIClient::V2::AWSNamespaceTagFilter.new({
+        tag_filters: [DatadogAPIClient::V2::AWSNamespaceTagFilter.new({
             namespace: "AWS/EC2",
-            tags: [
-              "key:value",
-            ],
-          }),
-        ],
+            tags: ["key:value",],
+          }),],
       }),
       resources_config: DatadogAPIClient::V2::AWSResourcesConfig.new({
         cloud_security_posture_management_collection: false,
@@ -6655,13 +6417,14 @@ body = DatadogAPIClient::V2::AWSAccountCreateRequest.new({
   }),
 })
 p api_instance.create_aws_account(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create an AWS account returns "AWS Account object" response
@@ -6674,7 +6437,6 @@ use datadog_api_client::datadogV2::model::AWSAccountPartition;
 use datadog_api_client::datadogV2::model::AWSAccountType;
 use datadog_api_client::datadogV2::model::AWSAuthConfig;
 use datadog_api_client::datadogV2::model::AWSAuthConfigRole;
-use datadog_api_client::datadogV2::model::AWSCCMConfig;
 use datadog_api_client::datadogV2::model::AWSLambdaForwarderConfig;
 use datadog_api_client::datadogV2::model::AWSLambdaForwarderConfigLogSourceConfig;
 use datadog_api_client::datadogV2::model::AWSLogSourceTagFilter;
@@ -6683,7 +6445,6 @@ use datadog_api_client::datadogV2::model::AWSMetricsConfig;
 use datadog_api_client::datadogV2::model::AWSNamespaceTagFilter;
 use datadog_api_client::datadogV2::model::AWSResourcesConfig;
 use datadog_api_client::datadogV2::model::AWSTracesConfig;
-use datadog_api_client::datadogV2::model::DataExportConfig;
 
 #[tokio::main]
 async fn main() {
@@ -6696,27 +6457,15 @@ async fn main() {
             AWSAccountPartition::AWS,
         )
         .account_tags(Some(vec!["key:value".to_string()]))
-        .ccm_config(AWSCCMConfig::new().data_export_configs(vec![
-                                DataExportConfig::new()
-                                    .bucket_name("my-bucket".to_string())
-                                    .bucket_region("us-east-1".to_string())
-                                    .report_name("my-report".to_string())
-                                    .report_prefix("reports".to_string())
-                                    .report_type("CUR2.0".to_string())
-                            ]))
         .logs_config(
             AWSLogsConfig::new().lambda_forwarder(
                 AWSLambdaForwarderConfig::new()
-                    .lambdas(vec![
-                        "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"
-                            .to_string(),
-                    ])
+                    .lambdas(vec!["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"
+                            .to_string(),])
                     .log_source_config(AWSLambdaForwarderConfigLogSourceConfig::new().tag_filters(
-                        vec![
-                                            AWSLogSourceTagFilter::new()
+                        vec![AWSLogSourceTagFilter::new()
                                                 .source("s3".to_string())
-                                                .tags(Some(vec!["test:test".to_string()]))
-                                        ],
+                                                .tags(Some(vec!["test:test".to_string()]))],
                     ))
                     .sources(vec!["s3".to_string()]),
             ),
@@ -6748,9 +6497,10 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
-##### 
+#####
 
 ```rust
 // Create an AWS integration returns "AWS Account object" response
@@ -6763,7 +6513,6 @@ use datadog_api_client::datadogV2::model::AWSAccountPartition;
 use datadog_api_client::datadogV2::model::AWSAccountType;
 use datadog_api_client::datadogV2::model::AWSAuthConfig;
 use datadog_api_client::datadogV2::model::AWSAuthConfigKeys;
-use datadog_api_client::datadogV2::model::AWSCCMConfig;
 use datadog_api_client::datadogV2::model::AWSLambdaForwarderConfig;
 use datadog_api_client::datadogV2::model::AWSLambdaForwarderConfigLogSourceConfig;
 use datadog_api_client::datadogV2::model::AWSLogSourceTagFilter;
@@ -6772,7 +6521,6 @@ use datadog_api_client::datadogV2::model::AWSMetricsConfig;
 use datadog_api_client::datadogV2::model::AWSNamespaceTagFilter;
 use datadog_api_client::datadogV2::model::AWSResourcesConfig;
 use datadog_api_client::datadogV2::model::AWSTracesConfig;
-use datadog_api_client::datadogV2::model::DataExportConfig;
 
 #[tokio::main]
 async fn main() {
@@ -6786,27 +6534,15 @@ async fn main() {
             AWSAccountPartition::AWS,
         )
         .account_tags(Some(vec!["key:value".to_string()]))
-        .ccm_config(AWSCCMConfig::new().data_export_configs(vec![
-                                DataExportConfig::new()
-                                    .bucket_name("my-bucket".to_string())
-                                    .bucket_region("us-east-1".to_string())
-                                    .report_name("my-report".to_string())
-                                    .report_prefix("reports".to_string())
-                                    .report_type("CUR2.0".to_string())
-                            ]))
         .logs_config(
             AWSLogsConfig::new().lambda_forwarder(
                 AWSLambdaForwarderConfig::new()
-                    .lambdas(vec![
-                        "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"
-                            .to_string(),
-                    ])
+                    .lambdas(vec!["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"
+                            .to_string(),])
                     .log_source_config(AWSLambdaForwarderConfigLogSourceConfig::new().tag_filters(
-                        vec![
-                                            AWSLogSourceTagFilter::new()
+                        vec![AWSLogSourceTagFilter::new()
                                                 .source("s3".to_string())
-                                                .tags(Some(vec!["test:test".to_string()]))
-                                        ],
+                                                .tags(Some(vec!["test:test".to_string()]))],
                     ))
                     .sources(vec!["s3".to_string()]),
             ),
@@ -6838,13 +6574,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -6866,29 +6603,14 @@ const params: v2.AWSIntegrationApiCreateAWSAccountRequest = {
         },
         awsAccountId: "123456789012",
         awsPartition: "aws",
-        ccmConfig: {
-          dataExportConfigs: [
-            {
-              bucketName: "my-bucket",
-              bucketRegion: "us-east-1",
-              reportName: "my-report",
-              reportPrefix: "reports",
-              reportType: "CUR2.0",
-            },
-          ],
-        },
         logsConfig: {
           lambdaForwarder: {
-            lambdas: [
-              "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",
-            ],
+            lambdas: ["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",],
             logSourceConfig: {
-              tagFilters: [
-                {
+              tagFilters: [{
                   source: "s3",
                   tags: ["test:test"],
-                },
-              ],
+                },],
             },
             sources: ["s3"],
           },
@@ -6898,12 +6620,10 @@ const params: v2.AWSIntegrationApiCreateAWSAccountRequest = {
           collectCloudwatchAlarms: true,
           collectCustomMetrics: true,
           enabled: true,
-          tagFilters: [
-            {
+          tagFilters: [{
               namespace: "AWS/EC2",
               tags: ["key:value"],
-            },
-          ],
+            },],
         },
         resourcesConfig: {
           cloudSecurityPostureManagementCollection: false,
@@ -6924,9 +6644,10 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -6949,29 +6670,14 @@ const params: v2.AWSIntegrationApiCreateAWSAccountRequest = {
         },
         awsAccountId: "123456789012",
         awsPartition: "aws",
-        ccmConfig: {
-          dataExportConfigs: [
-            {
-              bucketName: "my-bucket",
-              bucketRegion: "us-east-1",
-              reportName: "my-report",
-              reportPrefix: "reports",
-              reportType: "CUR2.0",
-            },
-          ],
-        },
         logsConfig: {
           lambdaForwarder: {
-            lambdas: [
-              "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",
-            ],
+            lambdas: ["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",],
             logSourceConfig: {
-              tagFilters: [
-                {
+              tagFilters: [{
                   source: "s3",
                   tags: ["test:test"],
-                },
-              ],
+                },],
             },
             sources: ["s3"],
           },
@@ -6981,12 +6687,10 @@ const params: v2.AWSIntegrationApiCreateAWSAccountRequest = {
           collectCloudwatchAlarms: true,
           collectCustomMetrics: true,
           enabled: true,
-          tagFilters: [
-            {
+          tagFilters: [{
               namespace: "AWS/EC2",
               tags: ["key:value"],
-            },
-          ],
+            },],
         },
         resourcesConfig: {
           cloudSecurityPostureManagementCollection: false,
@@ -7007,6 +6711,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -7056,18 +6761,17 @@ AWS Integration IAM Permissions response body.
 {
   "data": {
     "attributes": {
-      "permissions": [
-        "account:GetContactInformation",
+      "permissions": ["account:GetContactInformation",
         "amplify:ListApps",
         "amplify:ListArtifacts",
         "amplify:ListBackendEnvironments",
-        "amplify:ListBranches"
-      ]
+        "amplify:ListBranches"]
     },
     "id": "permissions",
     "type": "permissions"
   }
 }
+
 ```
 
 {% /tab %}
@@ -7089,10 +6793,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -7101,13 +6804,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/aws/iam_permissions/resource_collection" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -7123,13 +6826,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.get_aws_integration_iam_permissions_resource_collection()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get resource collection IAM permissions returns "AWS integration resource collection IAM permissions." response
@@ -7137,13 +6841,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::AWSIntegrationAPI.new
 p api_instance.get_aws_integration_iam_permissions_resource_collection()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get resource collection IAM permissions returns "AWS integration resource collection IAM permissions." response
@@ -7151,37 +6856,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.GetAWSIntegrationIAMPermissionsResourceCollection(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.GetAWSIntegrationIAMPermissionsResourceCollection(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.GetAWSIntegrationIAMPermissionsResourceCollection`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.GetAWSIntegrationIAMPermissionsResourceCollection`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.GetAWSIntegrationIAMPermissionsResourceCollection`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.GetAWSIntegrationIAMPermissionsResourceCollection`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get resource collection IAM permissions returns "AWS integration resource collection IAM
@@ -7212,13 +6918,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get resource collection IAM permissions returns "AWS integration resource
@@ -7239,13 +6946,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7265,6 +6973,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -7336,20 +7045,15 @@ AWS request object
     "auto_scaling": false
   },
   "cspm_resource_collection_enabled": false,
-  "excluded_regions": [
-    "us-east-1",
-    "us-west-2"
-  ],
+  "excluded_regions": ["us-east-1",
+    "us-west-2"],
   "extended_resource_collection_enabled": true,
-  "filter_tags": [
-    "$KEY:$VALUE"
-  ],
-  "host_tags": [
-    "$KEY:$VALUE"
-  ],
+  "filter_tags": ["$KEY:$VALUE"],
+  "host_tags": ["$KEY:$VALUE"],
   "metrics_collection_enabled": true,
   "role_name": "DatadogAWSIntegrationRole"
 }
+
 ```
 
 {% /tab %}
@@ -7369,6 +7073,7 @@ OK
 
 ```json
 {}
+
 ```
 
 {% /tab %}
@@ -7390,10 +7095,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -7415,10 +7119,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -7440,10 +7143,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -7465,10 +7167,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -7477,7 +7178,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/aws" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -7490,23 +7191,17 @@ Error response object.
     "auto_scaling": false
   },
   "cspm_resource_collection_enabled": false,
-  "excluded_regions": [
-    "us-east-1",
-    "us-west-2"
-  ],
+  "excluded_regions": ["us-east-1",
+    "us-west-2"],
   "extended_resource_collection_enabled": true,
-  "filter_tags": [
-    "$KEY:$VALUE"
-  ],
-  "host_tags": [
-    "$KEY:$VALUE"
-  ],
+  "filter_tags": ["$KEY:$VALUE"],
+  "host_tags": ["$KEY:$VALUE"],
   "metrics_collection_enabled": true,
   "role_name": "DatadogAWSIntegrationRole"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update an AWS integration returns "OK" response
@@ -7514,57 +7209,58 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.AWSAccount{
-		AccountId: datadog.PtrString("163662907100"),
-		AccountSpecificNamespaceRules: map[string]bool{
-			"auto_scaling": false,
-		},
-		CspmResourceCollectionEnabled: datadog.PtrBool(false),
-		ExcludedRegions: []string{
-			"us-east-1",
-			"us-west-2",
-		},
-		ExtendedResourceCollectionEnabled: datadog.PtrBool(true),
-		FilterTags: []string{
-			"$KEY:$VALUE",
-		},
-		HostTags: []string{
-			"$KEY:$VALUE",
-		},
-		MetricsCollectionEnabled: datadog.PtrBool(true),
-		RoleName:                 datadog.PtrString("DatadogAWSIntegrationRole"),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.UpdateAWSAccount(ctx, body, *datadogV1.NewUpdateAWSAccountOptionalParameters().WithAccountId("163662907100").WithRoleName("DatadogAWSIntegrationRole"))
+    body := datadogV1.AWSAccount{
+        AccountId: datadog.PtrString("163662907100"),
+        AccountSpecificNamespaceRules: map[string]bool{
+            "auto_scaling": false,
+        },
+        CspmResourceCollectionEnabled: datadog.PtrBool(false),
+        ExcludedRegions: []string{
+            "us-east-1",
+            "us-west-2",
+        },
+        ExtendedResourceCollectionEnabled: datadog.PtrBool(true),
+        FilterTags: []string{
+            "$KEY:$VALUE",
+        },
+        HostTags: []string{
+            "$KEY:$VALUE",
+        },
+        MetricsCollectionEnabled: datadog.PtrBool(true),
+        RoleName:                 datadog.PtrString("DatadogAWSIntegrationRole"),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.UpdateAWSAccount(ctx, body, *datadogV1.NewUpdateAWSAccountOptionalParameters().WithAccountId("163662907100").WithRoleName("DatadogAWSIntegrationRole"))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.UpdateAWSAccount`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.UpdateAWSAccount`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.UpdateAWSAccount`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.UpdateAWSAccount`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update an AWS integration returns "OK" response
@@ -7610,13 +7306,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -7633,17 +7330,11 @@ body = AWSAccount(
         auto_scaling=False,
     ),
     cspm_resource_collection_enabled=False,
-    excluded_regions=[
-        "us-east-1",
-        "us-west-2",
-    ],
+    excluded_regions=["us-east-1",
+        "us-west-2",],
     extended_resource_collection_enabled=True,
-    filter_tags=[
-        "$KEY:$VALUE",
-    ],
-    host_tags=[
-        "$KEY:$VALUE",
-    ],
+    filter_tags=["$KEY:$VALUE",],
+    host_tags=["$KEY:$VALUE",],
     metrics_collection_enabled=True,
     role_name="DatadogAWSIntegrationRole",
 )
@@ -7656,13 +7347,14 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update an AWS integration returns "OK" response
@@ -7676,17 +7368,11 @@ body = DatadogAPIClient::V1::AWSAccount.new({
     auto_scaling: false,
   },
   cspm_resource_collection_enabled: false,
-  excluded_regions: [
-    "us-east-1",
-    "us-west-2",
-  ],
+  excluded_regions: ["us-east-1",
+    "us-west-2",],
   extended_resource_collection_enabled: true,
-  filter_tags: [
-    "$KEY:$VALUE",
-  ],
-  host_tags: [
-    "$KEY:$VALUE",
-  ],
+  filter_tags: ["$KEY:$VALUE",],
+  host_tags: ["$KEY:$VALUE",],
   metrics_collection_enabled: true,
   role_name: "DatadogAWSIntegrationRole",
 })
@@ -7695,13 +7381,14 @@ opts = {
   role_name: "DatadogAWSIntegrationRole",
 }
 p api_instance.update_aws_account(body, opts)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update an AWS integration returns "OK" response
@@ -7739,13 +7426,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -7783,6 +7471,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -7818,8 +7507,6 @@ Update an AWS Account Integration Config by config ID. This endpoint requires th
 ### Request
 
 #### Body Data (required)
-
-
 
 {% tab title="Model" %}
 
@@ -7883,9 +7570,7 @@ Update an AWS Account Integration Config by config ID. This endpoint requires th
 {
   "data": {
     "attributes": {
-      "account_tags": [
-        "key:value"
-      ],
+      "account_tags": ["key:value"],
       "auth_config": {
         "role_name": "DatadogIntegrationRole"
       },
@@ -7893,22 +7578,14 @@ Update an AWS Account Integration Config by config ID. This endpoint requires th
       "aws_partition": "aws",
       "logs_config": {
         "lambda_forwarder": {
-          "lambdas": [
-            "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"
-          ],
+          "lambdas": ["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"],
           "log_source_config": {
-            "tag_filters": [
-              {
+            "tag_filters": [{
                 "source": "s3",
-                "tags": [
-                  "test:test"
-                ]
-              }
-            ]
+                "tags": ["test:test"]
+              }]
           },
-          "sources": [
-            "s3"
-          ]
+          "sources": ["s3"]
         }
       },
       "metrics_config": {
@@ -7916,14 +7593,10 @@ Update an AWS Account Integration Config by config ID. This endpoint requires th
         "collect_cloudwatch_alarms": true,
         "collect_custom_metrics": true,
         "enabled": true,
-        "tag_filters": [
-          {
+        "tag_filters": [{
             "namespace": "AWS/EC2",
-            "tags": [
-              "key:value"
-            ]
-          }
-        ]
+            "tags": ["key:value"]
+          }]
       },
       "resources_config": {
         "cloud_security_posture_management_collection": false,
@@ -7934,6 +7607,7 @@ Update an AWS Account Integration Config by config ID. This endpoint requires th
     "type": "account"
   }
 }
+
 ```
 
 {% /tab %}
@@ -8007,9 +7681,7 @@ AWS Account response body.
 {
   "data": {
     "attributes": {
-      "account_tags": [
-        "env:prod"
-      ],
+      "account_tags": ["env:prod"],
       "auth_config": {
         "access_key_id": "AKIAIOSFODNN7EXAMPLE",
         "secret_access_key": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
@@ -8022,22 +7694,14 @@ AWS Account response body.
       "created_at": "2019-09-19T10:00:00.000Z",
       "logs_config": {
         "lambda_forwarder": {
-          "lambdas": [
-            "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"
-          ],
+          "lambdas": ["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"],
           "log_source_config": {
-            "tag_filters": [
-              {
+            "tag_filters": [{
                 "source": "s3",
-                "tags": [
-                  "env:prod"
-                ]
-              }
-            ]
+                "tags": ["env:prod"]
+              }]
           },
-          "sources": [
-            "s3"
-          ]
+          "sources": ["s3"]
         }
       },
       "metrics_config": {
@@ -8046,20 +7710,14 @@ AWS Account response body.
         "collect_custom_metrics": false,
         "enabled": true,
         "namespace_filters": {
-          "exclude_only": [
-            "AWS/SQS",
+          "exclude_only": ["AWS/SQS",
             "AWS/ElasticMapReduce",
-            "AWS/Usage"
-          ]
+            "AWS/Usage"]
         },
-        "tag_filters": [
-          {
+        "tag_filters": [{
             "namespace": "AWS/EC2",
-            "tags": [
-              "datadog:true"
-            ]
-          }
-        ]
+            "tags": ["datadog:true"]
+          }]
       },
       "modified_at": "2019-09-19T10:00:00.000Z",
       "resources_config": {
@@ -8076,6 +7734,7 @@ AWS Account response body.
     "type": "account"
   }
 }
+
 ```
 
 {% /tab %}
@@ -8097,10 +7756,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -8122,10 +7780,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -8147,10 +7804,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -8172,10 +7828,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -8184,7 +7839,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport aws_account_config_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/aws/accounts/${aws_account_config_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -8194,9 +7849,7 @@ API error response.
 {
   "data": {
     "attributes": {
-      "account_tags": [
-        "key:value"
-      ],
+      "account_tags": ["key:value"],
       "auth_config": {
         "role_name": "DatadogIntegrationRole"
       },
@@ -8204,22 +7857,14 @@ API error response.
       "aws_partition": "aws",
       "logs_config": {
         "lambda_forwarder": {
-          "lambdas": [
-            "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"
-          ],
+          "lambdas": ["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder"],
           "log_source_config": {
-            "tag_filters": [
-              {
+            "tag_filters": [{
                 "source": "s3",
-                "tags": [
-                  "test:test"
-                ]
-              }
-            ]
+                "tags": ["test:test"]
+              }]
           },
-          "sources": [
-            "s3"
-          ]
+          "sources": ["s3"]
         }
       },
       "metrics_config": {
@@ -8227,14 +7872,10 @@ API error response.
         "collect_cloudwatch_alarms": true,
         "collect_custom_metrics": true,
         "enabled": true,
-        "tag_filters": [
-          {
+        "tag_filters": [{
             "namespace": "AWS/EC2",
-            "tags": [
-              "key:value"
-            ]
-          }
-        ]
+            "tags": ["key:value"]
+          }]
       },
       "resources_config": {
         "cloud_security_posture_management_collection": false,
@@ -8246,8 +7887,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update an AWS integration returns "AWS Account object" response
@@ -8255,106 +7896,96 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "aws_account_v2" in the system
-	AwsAccountV2DataID := os.Getenv("AWS_ACCOUNT_V2_DATA_ID")
+    // there is a valid "aws_account_v2" in the system
+    AwsAccountV2DataID := os.Getenv("AWS_ACCOUNT_V2_DATA_ID")
 
-	body := datadogV2.AWSAccountUpdateRequest{
-		Data: datadogV2.AWSAccountUpdateRequestData{
-			Attributes: datadogV2.AWSAccountUpdateRequestAttributes{
-				AccountTags: *datadog.NewNullableList(&[]string{
-					"key:value",
-				}),
-				AuthConfig: &datadogV2.AWSAuthConfig{
-					AWSAuthConfigRole: &datadogV2.AWSAuthConfigRole{
-						RoleName: "DatadogIntegrationRole",
-					}},
-				AwsAccountId: "123456789012",
-				AwsPartition: datadogV2.AWSACCOUNTPARTITION_AWS.Ptr(),
-				CcmConfig: &datadogV2.AWSCCMConfig{
-					DataExportConfigs: []datadogV2.DataExportConfig{
-						{
-							BucketName:   datadog.PtrString("updated-bucket"),
-							BucketRegion: datadog.PtrString("us-west-2"),
-							ReportName:   datadog.PtrString("updated-report"),
-							ReportPrefix: datadog.PtrString("cost-reports"),
-							ReportType:   datadog.PtrString("CUR2.0"),
-						},
-					},
-				},
-				LogsConfig: &datadogV2.AWSLogsConfig{
-					LambdaForwarder: &datadogV2.AWSLambdaForwarderConfig{
-						Lambdas: []string{
-							"arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",
-						},
-						LogSourceConfig: &datadogV2.AWSLambdaForwarderConfigLogSourceConfig{
-							TagFilters: []datadogV2.AWSLogSourceTagFilter{
-								{
-									Source: datadog.PtrString("s3"),
-									Tags: *datadog.NewNullableList(&[]string{
-										"test:test",
-									}),
-								},
-							},
-						},
-						Sources: []string{
-							"s3",
-						},
-					},
-				},
-				MetricsConfig: &datadogV2.AWSMetricsConfig{
-					AutomuteEnabled:         datadog.PtrBool(true),
-					CollectCloudwatchAlarms: datadog.PtrBool(true),
-					CollectCustomMetrics:    datadog.PtrBool(true),
-					Enabled:                 datadog.PtrBool(true),
-					TagFilters: []datadogV2.AWSNamespaceTagFilter{
-						{
-							Namespace: datadog.PtrString("AWS/EC2"),
-							Tags: *datadog.NewNullableList(&[]string{
-								"key:value",
-							}),
-						},
-					},
-				},
-				ResourcesConfig: &datadogV2.AWSResourcesConfig{
-					CloudSecurityPostureManagementCollection: datadog.PtrBool(false),
-					ExtendedCollection:                       datadog.PtrBool(false),
-				},
-				TracesConfig: &datadogV2.AWSTracesConfig{},
-			},
-			Type: datadogV2.AWSACCOUNTTYPE_ACCOUNT,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.UpdateAWSAccount(ctx, AwsAccountV2DataID, body)
+    body := datadogV2.AWSAccountUpdateRequest{
+        Data: datadogV2.AWSAccountUpdateRequestData{
+            Attributes: datadogV2.AWSAccountUpdateRequestAttributes{
+                AccountTags: *datadog.NewNullableList(&[]string{
+                    "key:value",
+                }),
+                AuthConfig: &datadogV2.AWSAuthConfig{
+                    AWSAuthConfigRole: &datadogV2.AWSAuthConfigRole{
+                        RoleName: "DatadogIntegrationRole",
+                    }},
+                AwsAccountId: "123456789012",
+                AwsPartition: datadogV2.AWSACCOUNTPARTITION_AWS.Ptr(),
+                LogsConfig: &datadogV2.AWSLogsConfig{
+                    LambdaForwarder: &datadogV2.AWSLambdaForwarderConfig{
+                        Lambdas: []string{
+                            "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",
+                        },
+                        LogSourceConfig: &datadogV2.AWSLambdaForwarderConfigLogSourceConfig{
+                            TagFilters: []datadogV2.AWSLogSourceTagFilter{
+                                {
+                                    Source: datadog.PtrString("s3"),
+                                    Tags: *datadog.NewNullableList(&[]string{
+                                        "test:test",
+                                    }),
+                                },
+                            },
+                        },
+                        Sources: []string{
+                            "s3",
+                        },
+                    },
+                },
+                MetricsConfig: &datadogV2.AWSMetricsConfig{
+                    AutomuteEnabled:         datadog.PtrBool(true),
+                    CollectCloudwatchAlarms: datadog.PtrBool(true),
+                    CollectCustomMetrics:    datadog.PtrBool(true),
+                    Enabled:                 datadog.PtrBool(true),
+                    TagFilters: []datadogV2.AWSNamespaceTagFilter{
+                        {
+                            Namespace: datadog.PtrString("AWS/EC2"),
+                            Tags: *datadog.NewNullableList(&[]string{
+                                "key:value",
+                            }),
+                        },
+                    },
+                },
+                ResourcesConfig: &datadogV2.AWSResourcesConfig{
+                    CloudSecurityPostureManagementCollection: datadog.PtrBool(false),
+                    ExtendedCollection:                       datadog.PtrBool(false),
+                },
+                TracesConfig: &datadogV2.AWSTracesConfig{},
+            },
+            Type: datadogV2.AWSACCOUNTTYPE_ACCOUNT,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.UpdateAWSAccount(ctx, AwsAccountV2DataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.UpdateAWSAccount`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.UpdateAWSAccount`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.UpdateAWSAccount`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.UpdateAWSAccount`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update an AWS integration returns "AWS Account object" response
@@ -8370,7 +8001,6 @@ import com.datadog.api.client.v2.model.AWSAccountUpdateRequestAttributes;
 import com.datadog.api.client.v2.model.AWSAccountUpdateRequestData;
 import com.datadog.api.client.v2.model.AWSAuthConfig;
 import com.datadog.api.client.v2.model.AWSAuthConfigRole;
-import com.datadog.api.client.v2.model.AWSCCMConfig;
 import com.datadog.api.client.v2.model.AWSLambdaForwarderConfig;
 import com.datadog.api.client.v2.model.AWSLambdaForwarderConfigLogSourceConfig;
 import com.datadog.api.client.v2.model.AWSLogSourceTagFilter;
@@ -8379,7 +8009,6 @@ import com.datadog.api.client.v2.model.AWSMetricsConfig;
 import com.datadog.api.client.v2.model.AWSNamespaceTagFilter;
 import com.datadog.api.client.v2.model.AWSResourcesConfig;
 import com.datadog.api.client.v2.model.AWSTracesConfig;
-import com.datadog.api.client.v2.model.DataExportConfig;
 import java.util.Collections;
 
 public class Example {
@@ -8402,16 +8031,6 @@ public class Example {
                                     new AWSAuthConfigRole().roleName("DatadogIntegrationRole")))
                             .awsAccountId("123456789012")
                             .awsPartition(AWSAccountPartition.AWS)
-                            .ccmConfig(
-                                new AWSCCMConfig()
-                                    .dataExportConfigs(
-                                        Collections.singletonList(
-                                            new DataExportConfig()
-                                                .bucketName("updated-bucket")
-                                                .bucketRegion("us-west-2")
-                                                .reportName("updated-report")
-                                                .reportPrefix("cost-reports")
-                                                .reportType("CUR2.0"))))
                             .logsConfig(
                                 new AWSLogsConfig()
                                     .lambdaForwarder(
@@ -8459,13 +8078,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -8491,8 +8111,6 @@ from datadog_api_client.v2.model.aws_metrics_config import AWSMetricsConfig
 from datadog_api_client.v2.model.aws_namespace_tag_filter import AWSNamespaceTagFilter
 from datadog_api_client.v2.model.aws_resources_config import AWSResourcesConfig
 from datadog_api_client.v2.model.aws_traces_config import AWSTracesConfig
-from datadog_api_client.v2.model.awsccm_config import AWSCCMConfig
-from datadog_api_client.v2.model.data_export_config import DataExportConfig
 
 # there is a valid "aws_account_v2" in the system
 AWS_ACCOUNT_V2_DATA_ID = environ["AWS_ACCOUNT_V2_DATA_ID"]
@@ -8500,43 +8118,22 @@ AWS_ACCOUNT_V2_DATA_ID = environ["AWS_ACCOUNT_V2_DATA_ID"]
 body = AWSAccountUpdateRequest(
     data=AWSAccountUpdateRequestData(
         attributes=AWSAccountUpdateRequestAttributes(
-            account_tags=[
-                "key:value",
-            ],
+            account_tags=["key:value",],
             auth_config=AWSAuthConfigRole(
                 role_name="DatadogIntegrationRole",
             ),
             aws_account_id="123456789012",
             aws_partition=AWSAccountPartition.AWS,
-            ccm_config=AWSCCMConfig(
-                data_export_configs=[
-                    DataExportConfig(
-                        bucket_name="updated-bucket",
-                        bucket_region="us-west-2",
-                        report_name="updated-report",
-                        report_prefix="cost-reports",
-                        report_type="CUR2.0",
-                    ),
-                ],
-            ),
             logs_config=AWSLogsConfig(
                 lambda_forwarder=AWSLambdaForwarderConfig(
-                    lambdas=[
-                        "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",
-                    ],
+                    lambdas=["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",],
                     log_source_config=AWSLambdaForwarderConfigLogSourceConfig(
-                        tag_filters=[
-                            AWSLogSourceTagFilter(
+                        tag_filters=[AWSLogSourceTagFilter(
                                 source="s3",
-                                tags=[
-                                    "test:test",
-                                ],
-                            ),
-                        ],
+                                tags=["test:test",],
+                            ),],
                     ),
-                    sources=[
-                        "s3",
-                    ],
+                    sources=["s3",],
                 ),
             ),
             metrics_config=AWSMetricsConfig(
@@ -8544,14 +8141,10 @@ body = AWSAccountUpdateRequest(
                 collect_cloudwatch_alarms=True,
                 collect_custom_metrics=True,
                 enabled=True,
-                tag_filters=[
-                    AWSNamespaceTagFilter(
+                tag_filters=[AWSNamespaceTagFilter(
                         namespace="AWS/EC2",
-                        tags=[
-                            "key:value",
-                        ],
-                    ),
-                ],
+                        tags=["key:value",],
+                    ),],
             ),
             resources_config=AWSResourcesConfig(
                 cloud_security_posture_management_collection=False,
@@ -8569,13 +8162,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.update_aws_account(aws_account_config_id=AWS_ACCOUNT_V2_DATA_ID, body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update an AWS integration returns "AWS Account object" response
@@ -8589,43 +8183,22 @@ AWS_ACCOUNT_V2_DATA_ID = ENV["AWS_ACCOUNT_V2_DATA_ID"]
 body = DatadogAPIClient::V2::AWSAccountUpdateRequest.new({
   data: DatadogAPIClient::V2::AWSAccountUpdateRequestData.new({
     attributes: DatadogAPIClient::V2::AWSAccountUpdateRequestAttributes.new({
-      account_tags: [
-        "key:value",
-      ],
+      account_tags: ["key:value",],
       auth_config: DatadogAPIClient::V2::AWSAuthConfigRole.new({
         role_name: "DatadogIntegrationRole",
       }),
       aws_account_id: "123456789012",
       aws_partition: DatadogAPIClient::V2::AWSAccountPartition::AWS,
-      ccm_config: DatadogAPIClient::V2::AWSCCMConfig.new({
-        data_export_configs: [
-          DatadogAPIClient::V2::DataExportConfig.new({
-            bucket_name: "updated-bucket",
-            bucket_region: "us-west-2",
-            report_name: "updated-report",
-            report_prefix: "cost-reports",
-            report_type: "CUR2.0",
-          }),
-        ],
-      }),
       logs_config: DatadogAPIClient::V2::AWSLogsConfig.new({
         lambda_forwarder: DatadogAPIClient::V2::AWSLambdaForwarderConfig.new({
-          lambdas: [
-            "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",
-          ],
+          lambdas: ["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",],
           log_source_config: DatadogAPIClient::V2::AWSLambdaForwarderConfigLogSourceConfig.new({
-            tag_filters: [
-              DatadogAPIClient::V2::AWSLogSourceTagFilter.new({
+            tag_filters: [DatadogAPIClient::V2::AWSLogSourceTagFilter.new({
                 source: "s3",
-                tags: [
-                  "test:test",
-                ],
-              }),
-            ],
+                tags: ["test:test",],
+              }),],
           }),
-          sources: [
-            "s3",
-          ],
+          sources: ["s3",],
         }),
       }),
       metrics_config: DatadogAPIClient::V2::AWSMetricsConfig.new({
@@ -8633,14 +8206,10 @@ body = DatadogAPIClient::V2::AWSAccountUpdateRequest.new({
         collect_cloudwatch_alarms: true,
         collect_custom_metrics: true,
         enabled: true,
-        tag_filters: [
-          DatadogAPIClient::V2::AWSNamespaceTagFilter.new({
+        tag_filters: [DatadogAPIClient::V2::AWSNamespaceTagFilter.new({
             namespace: "AWS/EC2",
-            tags: [
-              "key:value",
-            ],
-          }),
-        ],
+            tags: ["key:value",],
+          }),],
       }),
       resources_config: DatadogAPIClient::V2::AWSResourcesConfig.new({
         cloud_security_posture_management_collection: false,
@@ -8652,13 +8221,14 @@ body = DatadogAPIClient::V2::AWSAccountUpdateRequest.new({
   }),
 })
 p api_instance.update_aws_account(AWS_ACCOUNT_V2_DATA_ID, body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update an AWS integration returns "AWS Account object" response
@@ -8671,7 +8241,6 @@ use datadog_api_client::datadogV2::model::AWSAccountUpdateRequestAttributes;
 use datadog_api_client::datadogV2::model::AWSAccountUpdateRequestData;
 use datadog_api_client::datadogV2::model::AWSAuthConfig;
 use datadog_api_client::datadogV2::model::AWSAuthConfigRole;
-use datadog_api_client::datadogV2::model::AWSCCMConfig;
 use datadog_api_client::datadogV2::model::AWSLambdaForwarderConfig;
 use datadog_api_client::datadogV2::model::AWSLambdaForwarderConfigLogSourceConfig;
 use datadog_api_client::datadogV2::model::AWSLogSourceTagFilter;
@@ -8680,7 +8249,6 @@ use datadog_api_client::datadogV2::model::AWSMetricsConfig;
 use datadog_api_client::datadogV2::model::AWSNamespaceTagFilter;
 use datadog_api_client::datadogV2::model::AWSResourcesConfig;
 use datadog_api_client::datadogV2::model::AWSTracesConfig;
-use datadog_api_client::datadogV2::model::DataExportConfig;
 
 #[tokio::main]
 async fn main() {
@@ -8697,36 +8265,19 @@ async fn main() {
                         ),
                     )
                     .aws_partition(AWSAccountPartition::AWS)
-                    .ccm_config(
-                        AWSCCMConfig
-                        ::new().data_export_configs(
-                            vec![
-                                DataExportConfig::new()
-                                    .bucket_name("updated-bucket".to_string())
-                                    .bucket_region("us-west-2".to_string())
-                                    .report_name("updated-report".to_string())
-                                    .report_prefix("cost-reports".to_string())
-                                    .report_type("CUR2.0".to_string())
-                            ],
-                        ),
-                    )
                     .logs_config(
                         AWSLogsConfig
                         ::new().lambda_forwarder(
                             AWSLambdaForwarderConfig::new()
                                 .lambdas(
-                                    vec![
-                                        "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder".to_string()
-                                    ],
+                                    vec!["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder".to_string()],
                                 )
                                 .log_source_config(
                                     AWSLambdaForwarderConfigLogSourceConfig
                                     ::new().tag_filters(
-                                        vec![
-                                            AWSLogSourceTagFilter::new()
+                                        vec![AWSLogSourceTagFilter::new()
                                                 .source("s3".to_string())
-                                                .tags(Some(vec!["test:test".to_string()]))
-                                        ],
+                                                .tags(Some(vec!["test:test".to_string()]))],
                                     ),
                                 )
                                 .sources(vec!["s3".to_string()]),
@@ -8739,11 +8290,9 @@ async fn main() {
                             .collect_custom_metrics(true)
                             .enabled(true)
                             .tag_filters(
-                                vec![
-                                    AWSNamespaceTagFilter::new()
+                                vec![AWSNamespaceTagFilter::new()
                                         .namespace("AWS/EC2".to_string())
-                                        .tags(Some(vec!["key:value".to_string()]))
-                                ],
+                                        .tags(Some(vec!["key:value".to_string()]))],
                             ),
                     )
                     .resources_config(
@@ -8766,13 +8315,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -8797,29 +8347,14 @@ const params: v2.AWSIntegrationApiUpdateAWSAccountRequest = {
         },
         awsAccountId: "123456789012",
         awsPartition: "aws",
-        ccmConfig: {
-          dataExportConfigs: [
-            {
-              bucketName: "updated-bucket",
-              bucketRegion: "us-west-2",
-              reportName: "updated-report",
-              reportPrefix: "cost-reports",
-              reportType: "CUR2.0",
-            },
-          ],
-        },
         logsConfig: {
           lambdaForwarder: {
-            lambdas: [
-              "arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",
-            ],
+            lambdas: ["arn:aws:lambda:us-east-1:123456789012:function:DatadogLambdaLogForwarder",],
             logSourceConfig: {
-              tagFilters: [
-                {
+              tagFilters: [{
                   source: "s3",
                   tags: ["test:test"],
-                },
-              ],
+                },],
             },
             sources: ["s3"],
           },
@@ -8829,12 +8364,10 @@ const params: v2.AWSIntegrationApiUpdateAWSAccountRequest = {
           collectCloudwatchAlarms: true,
           collectCustomMetrics: true,
           enabled: true,
-          tagFilters: [
-            {
+          tagFilters: [{
               namespace: "AWS/EC2",
               tags: ["key:value"],
-            },
-          ],
+            },],
         },
         resourcesConfig: {
           cloudSecurityPostureManagementCollection: false,
@@ -8856,6 +8389,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -8905,22 +8439,17 @@ An object describing the EventBridge configuration for multiple accounts.
 
 ```json
 {
-  "accounts": [
-    {
+  "accounts": [{
       "accountId": "123456789012",
-      "eventHubs": [
-        {
+      "eventHubs": [{
           "name": "string",
           "region": "string"
-        }
-      ],
-      "tags": [
-        "$KEY:$VALUE"
-      ]
-    }
-  ],
+        }],
+      "tags": ["$KEY:$VALUE"]
+    }],
   "isInstalled": false
 }
+
 ```
 
 {% /tab %}
@@ -8942,10 +8471,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -8967,10 +8495,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -8992,10 +8519,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9004,13 +8530,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/aws/event_bridge" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -9026,13 +8552,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_aws_event_bridge_sources()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all Amazon EventBridge sources returns "OK" response
@@ -9040,13 +8567,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V1::AWSIntegrationAPI.new
 p api_instance.list_aws_event_bridge_sources()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all Amazon EventBridge sources returns "OK" response
@@ -9054,37 +8582,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.ListAWSEventBridgeSources(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.ListAWSEventBridgeSources(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.ListAWSEventBridgeSources`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.ListAWSEventBridgeSources`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.ListAWSEventBridgeSources`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.ListAWSEventBridgeSources`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all Amazon EventBridge sources returns "OK" response
@@ -9111,13 +8640,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all Amazon EventBridge sources returns "OK" response
@@ -9135,13 +8665,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -9161,6 +8692,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -9214,26 +8746,21 @@ Amazon EventBridge list response body.
 {
   "data": {
     "attributes": {
-      "accounts": [
-        {
+      "accounts": [{
           "account_id": "123456789012",
-          "event_hubs": [
-            {
+          "event_hubs": [{
               "name": "app-alerts-zyxw3210",
               "region": "us-east-1"
-            }
-          ],
-          "tags": [
-            "$KEY:$VALUE"
-          ]
-        }
-      ],
+            }],
+          "tags": ["$KEY:$VALUE"]
+        }],
       "is_installed": false
     },
     "id": "get_event_bridge",
     "type": "event_bridge"
   }
 }
+
 ```
 
 {% /tab %}
@@ -9255,10 +8782,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9280,10 +8806,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9305,10 +8830,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9317,13 +8841,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/aws/event_bridge" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -9339,13 +8863,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.list_aws_event_bridge_sources()
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all Amazon EventBridge sources returns "Amazon EventBridge sources list." response
@@ -9353,13 +8878,14 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::AWSIntegrationAPI.new
 p api_instance.list_aws_event_bridge_sources()
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all Amazon EventBridge sources returns "Amazon EventBridge sources list." response
@@ -9367,37 +8893,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.ListAWSEventBridgeSources(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.ListAWSEventBridgeSources(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.ListAWSEventBridgeSources`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.ListAWSEventBridgeSources`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.ListAWSEventBridgeSources`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.ListAWSEventBridgeSources`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all Amazon EventBridge sources returns "Amazon EventBridge sources list." response
@@ -9424,13 +8951,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all Amazon EventBridge sources returns "Amazon EventBridge sources list."
@@ -9449,13 +8977,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -9475,6 +9004,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -9527,6 +9057,7 @@ Create an Amazon EventBridge source for an AWS account with a given name and reg
   "event_generator_name": "app-alerts",
   "region": "us-east-1"
 }
+
 ```
 
 {% /tab %}
@@ -9556,6 +9087,7 @@ A created EventBridge source.
   "region": "us-east-1",
   "status": "created"
 }
+
 ```
 
 {% /tab %}
@@ -9577,10 +9109,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9602,10 +9133,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9627,10 +9157,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9639,7 +9168,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/aws/event_bridge" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -9648,8 +9177,8 @@ Error response object.
 -d @- << EOF
 {}
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -9673,13 +9202,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_aws_event_bridge_source(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create an Amazon EventBridge source returns "OK" response
@@ -9694,13 +9224,14 @@ body = DatadogAPIClient::V1::AWSEventBridgeCreateRequest.new({
   region: "us-east-1",
 })
 p api_instance.create_aws_event_bridge_source(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create an Amazon EventBridge source returns "OK" response
@@ -9708,43 +9239,44 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.AWSEventBridgeCreateRequest{
-		AccountId:          datadog.PtrString("123456789012"),
-		CreateEventBus:     datadog.PtrBool(true),
-		EventGeneratorName: datadog.PtrString("app-alerts"),
-		Region:             datadog.PtrString("us-east-1"),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.CreateAWSEventBridgeSource(ctx, body)
+    body := datadogV1.AWSEventBridgeCreateRequest{
+        AccountId:          datadog.PtrString("123456789012"),
+        CreateEventBus:     datadog.PtrBool(true),
+        EventGeneratorName: datadog.PtrString("app-alerts"),
+        Region:             datadog.PtrString("us-east-1"),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.CreateAWSEventBridgeSource(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.CreateAWSEventBridgeSource`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.CreateAWSEventBridgeSource`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.CreateAWSEventBridgeSource`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.CreateAWSEventBridgeSource`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create an Amazon EventBridge source returns "OK" response
@@ -9779,13 +9311,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create an Amazon EventBridge source returns "OK" response
@@ -9809,13 +9342,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -9844,6 +9378,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -9902,6 +9437,7 @@ Create an Amazon EventBridge source for an AWS account with a given name and reg
     "type": "event_bridge"
   }
 }
+
 ```
 
 {% /tab %}
@@ -9941,6 +9477,7 @@ Amazon EventBridge create response body.
     "type": "event_bridge"
   }
 }
+
 ```
 
 {% /tab %}
@@ -9962,10 +9499,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -9987,10 +9523,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10012,10 +9547,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10037,10 +9571,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10049,7 +9582,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/aws/event_bridge" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -10067,8 +9600,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -10100,13 +9633,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_aws_event_bridge_source(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create an Amazon EventBridge source returns "Amazon EventBridge source created." response
@@ -10126,13 +9660,14 @@ body = DatadogAPIClient::V2::AWSEventBridgeCreateRequest.new({
   }),
 })
 p api_instance.create_aws_event_bridge_source(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create an Amazon EventBridge source returns "Amazon EventBridge source created." response
@@ -10140,48 +9675,49 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.AWSEventBridgeCreateRequest{
-		Data: datadogV2.AWSEventBridgeCreateRequestData{
-			Attributes: datadogV2.AWSEventBridgeCreateRequestAttributes{
-				AccountId:          "123456789012",
-				CreateEventBus:     datadog.PtrBool(true),
-				EventGeneratorName: "app-alerts",
-				Region:             "us-east-1",
-			},
-			Type: datadogV2.AWSEVENTBRIDGETYPE_EVENT_BRIDGE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.CreateAWSEventBridgeSource(ctx, body)
+    body := datadogV2.AWSEventBridgeCreateRequest{
+        Data: datadogV2.AWSEventBridgeCreateRequestData{
+            Attributes: datadogV2.AWSEventBridgeCreateRequestAttributes{
+                AccountId:          "123456789012",
+                CreateEventBus:     datadog.PtrBool(true),
+                EventGeneratorName: "app-alerts",
+                Region:             "us-east-1",
+            },
+            Type: datadogV2.AWSEVENTBRIDGETYPE_EVENT_BRIDGE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.CreateAWSEventBridgeSource(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.CreateAWSEventBridgeSource`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.CreateAWSEventBridgeSource`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.CreateAWSEventBridgeSource`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.CreateAWSEventBridgeSource`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create an Amazon EventBridge source returns "Amazon EventBridge source created." response
@@ -10224,13 +9760,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create an Amazon EventBridge source returns "Amazon EventBridge source
@@ -10262,13 +9799,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -10302,6 +9840,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -10352,6 +9891,7 @@ Delete the Amazon EventBridge source with the given name, region, and associated
   "event_generator_name": "app-alerts-zyxw3210",
   "region": "us-east-1"
 }
+
 ```
 
 {% /tab %}
@@ -10375,6 +9915,7 @@ An indicator of the successful deletion of an EventBridge source.
 {
   "status": "empty"
 }
+
 ```
 
 {% /tab %}
@@ -10396,10 +9937,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10421,10 +9961,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10446,10 +9985,9 @@ Error response object.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10458,7 +9996,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/aws/event_bridge" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -10467,8 +10005,8 @@ Error response object.
 -d @- << EOF
 {}
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -10491,13 +10029,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.delete_aws_event_bridge_source(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an Amazon EventBridge source returns "OK" response
@@ -10511,13 +10050,14 @@ body = DatadogAPIClient::V1::AWSEventBridgeDeleteRequest.new({
   region: "us-east-1",
 })
 p api_instance.delete_aws_event_bridge_source(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an Amazon EventBridge source returns "OK" response
@@ -10525,42 +10065,43 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.AWSEventBridgeDeleteRequest{
-		AccountId:          datadog.PtrString("123456789012"),
-		EventGeneratorName: datadog.PtrString("app-alerts-zyxw3210"),
-		Region:             datadog.PtrString("us-east-1"),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.DeleteAWSEventBridgeSource(ctx, body)
+    body := datadogV1.AWSEventBridgeDeleteRequest{
+        AccountId:          datadog.PtrString("123456789012"),
+        EventGeneratorName: datadog.PtrString("app-alerts-zyxw3210"),
+        Region:             datadog.PtrString("us-east-1"),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.DeleteAWSEventBridgeSource(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.DeleteAWSEventBridgeSource`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.DeleteAWSEventBridgeSource`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.DeleteAWSEventBridgeSource`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.DeleteAWSEventBridgeSource`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an Amazon EventBridge source returns "OK" response
@@ -10594,13 +10135,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete an Amazon EventBridge source returns "OK" response
@@ -10623,13 +10165,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -10657,6 +10200,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions
@@ -10713,6 +10257,7 @@ Delete the Amazon EventBridge source with the given name, region, and associated
     "type": "event_bridge"
   }
 }
+
 ```
 
 {% /tab %}
@@ -10746,6 +10291,7 @@ Amazon EventBridge delete response body.
     "type": "event_bridge"
   }
 }
+
 ```
 
 {% /tab %}
@@ -10767,10 +10313,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10792,10 +10337,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10817,10 +10361,9 @@ API error response.
 
 ```json
 {
-  "errors": [
-    "Bad Request"
-  ]
+  "errors": ["Bad Request"]
 }
+
 ```
 
 {% /tab %}
@@ -10829,7 +10372,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/aws/event_bridge" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -10847,8 +10390,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -10879,13 +10422,14 @@ with ApiClient(configuration) as api_client:
     response = api_instance.delete_aws_event_bridge_source(body=body)
 
     print(response)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an Amazon EventBridge source returns "Amazon EventBridge source deleted." response
@@ -10904,13 +10448,14 @@ body = DatadogAPIClient::V2::AWSEventBridgeDeleteRequest.new({
   }),
 })
 p api_instance.delete_aws_event_bridge_source(body)
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an Amazon EventBridge source returns "Amazon EventBridge source deleted." response
@@ -10918,47 +10463,48 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.AWSEventBridgeDeleteRequest{
-		Data: datadogV2.AWSEventBridgeDeleteRequestData{
-			Attributes: datadogV2.AWSEventBridgeDeleteRequestAttributes{
-				AccountId:          "123456789012",
-				EventGeneratorName: "app-alerts-zyxw3210",
-				Region:             "us-east-1",
-			},
-			Type: datadogV2.AWSEVENTBRIDGETYPE_EVENT_BRIDGE,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAWSIntegrationApi(apiClient)
-	resp, r, err := api.DeleteAWSEventBridgeSource(ctx, body)
+    body := datadogV2.AWSEventBridgeDeleteRequest{
+        Data: datadogV2.AWSEventBridgeDeleteRequestData{
+            Attributes: datadogV2.AWSEventBridgeDeleteRequestAttributes{
+                AccountId:          "123456789012",
+                EventGeneratorName: "app-alerts-zyxw3210",
+                Region:             "us-east-1",
+            },
+            Type: datadogV2.AWSEVENTBRIDGETYPE_EVENT_BRIDGE,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAWSIntegrationApi(apiClient)
+    resp, r, err := api.DeleteAWSEventBridgeSource(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.DeleteAWSEventBridgeSource`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AWSIntegrationApi.DeleteAWSEventBridgeSource`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.DeleteAWSEventBridgeSource`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AWSIntegrationApi.DeleteAWSEventBridgeSource`:\n%s\n", responseContent)
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an Amazon EventBridge source returns "Amazon EventBridge source deleted." response
@@ -11000,13 +10546,14 @@ public class Example {
     }
   }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete an Amazon EventBridge source returns "Amazon EventBridge source
@@ -11037,13 +10584,14 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
+
 ```
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -11076,6 +10624,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
+
 ```
 
 #### Instructions

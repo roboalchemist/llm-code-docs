@@ -1,0 +1,15 @@
+# Source: https://docs.pentaho.com/install/9.3-install/jdbc-drivers-reference/h2-database.md
+
+# Source: https://docs.pentaho.com/install/10.2-install/jdbc-drivers-reference/h2-database.md
+
+# H2 Database
+
+| Vendor Name                                                                                                                                                                                                         | Details                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| Recommended Native Driver                                                                                                                                                                                           |                                                                                                |
+| H2                                                                                                                                                                                                                  | <p>Company URL:</p><p><a href="http://www.h2database.com/"><http://www.h2database.com></a></p> |
+| <p>Driver URL:</p><p><a href="http://www.h2database.com/"><http://www.h2database.com></a></p>                                                                                                                       |                                                                                                |
+| <p>JDBC URL Syntax by Type:</p><ul><li><strong>Server</strong></li></ul><p><code>jdbc:h2:tcp\://server\[:port]/file-path</code></p><ul><li><strong>Embedded</strong></li></ul><p><code>jdbc:h2:file-name</code></p> | <p>Default Port:</p><p>9092</p><p>N/A</p>                                                      |
+| <p>JDBC Class:</p><p><code>jdbc:h2:tcp\://server\[:port]/file-path</code></p><p><code>org.h2.Driver</code></p>                                                                                                      | <p>JDBC JAR File Name:</p><p><code>h2-x.x.xxx.jar</code></p>                                   |
+| <p>Shipped with Pentaho products:</p><ul><li>Pentaho Server</li><li>Pentaho Data Integration</li><li>Pentaho Metadata Editor</li><li>Pentaho Report Designer</li></ul>                                              |                                                                                                |
+| <p>Comments:</p><p>Open source Java SQL database.</p>                                                                                                                                                               |                                                                                                |

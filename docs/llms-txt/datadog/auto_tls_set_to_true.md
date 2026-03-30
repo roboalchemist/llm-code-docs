@@ -65,7 +65,7 @@ spec:
         command: ["etcd"]
         args: []
       nodeSelector:
-        kubernetes.io/hostname: worker02  
+        kubernetes.io/hostname: worker02
     restartPolicy: OnFailure
 ```
 
@@ -93,7 +93,7 @@ spec:
         command: ["etcd", "--auto-tls=false"]
         args: []
       nodeSelector:
-        kubernetes.io/hostname: worker02  
+        kubernetes.io/hostname: worker02
     restartPolicy: OnFailure
 ```
 
@@ -123,6 +123,6 @@ spec:
         command: ["etcd"]
         args: ["--auto-tls=true"]
       nodeSelector:
-        kubernetes.io/hostname: worker02  
+        kubernetes.io/hostname: worker02
     restartPolicy: OnFailure
 ```

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > /var/lib/docker should be au
 ---
 
 # /var/lib/docker should be audited
-Classification:complianceFramework:cis-dockerControl:1.2.4 
+Classification:complianceFramework:cis-dockerControl:1.2.4
 ## Description{% #description %}
 
 Audit `/var/lib/docker`.

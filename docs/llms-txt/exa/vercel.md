@@ -1,7 +1,9 @@
 # Source: https://exa.ai/docs/reference/vercel.md
 
 > ## Documentation Index
+
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+
 > Use this file to discover all available pages before exploring further.
 
 # AI SDK by Vercel
@@ -14,11 +16,8 @@ Exa is a Websearch API. Add Exa websearch tool to your LLMs in just a few lines 
 
 ```bash  theme={null}
 npm install @exalabs/ai-sdk
-```
 
-## Quick Start
-
-```typescript  theme={null}
+```typescript
 import { generateText, stepCountIs } from "ai";
 import { webSearch } from "@exalabs/ai-sdk";
 import { openai } from "@ai-sdk/openai";
@@ -34,11 +33,8 @@ const { text } = await generateText({
 });
 
 console.log(text);
-```
 
-Get your API key from the [Exa Dashboard](https://dashboard.exa.ai/api-keys).
-
-**Defaults when you use `webSearch()`:**
+```text
 
 * Type: `auto` (best search)
 * Results: `10`
@@ -52,11 +48,8 @@ Get your API key from the [Exa Dashboard](https://dashboard.exa.ai/api-keys).
 
 ```bash  theme={null}
 EXA_API_KEY=your-api-key-here
-```
 
-That's it! The package reads it automatically.
-
-## Example
+```text
 
 Here's a full-featured example combining the most useful search settings:
 
@@ -80,35 +73,32 @@ const { text } = await generateText({
 });
 
 console.log(text);
-```
 
-## All Options
-
-```typescript  theme={null}
+```typescript
 webSearch({
   // Search settings
   type: "auto",           // "auto", "neural", "fast", "deep"
-  category: "news",       // "company", "research paper", "news", "pdf", 
+  category: "news",       // "company", "research paper", "news", "pdf",
                           // "github", "personal site", "people", "financial report"
   numResults: 10,
-  
+
   // Filter by domain
   includeDomains: ["linkedin.com", "github.com"],
   excludeDomains: ["wikipedia.com"],
-  
+
   // Filter by date (ISO 8601)
   startPublishedDate: "2025-01-01T00:00:00.000Z",
   endPublishedDate: "2025-12-31T23:59:59.999Z",
   startCrawlDate: "2025-01-01T00:00:00.000Z",
   endCrawlDate: "2025-12-31T23:59:59.999Z",
-  
+
   // Filter by text
   includeText: ["AI"],    // Must contain
   excludeText: ["spam"],  // Must not contain
-  
+
   // Location
   userLocation: "US",     // Two-letter country code
-  
+
   // Content options
   contents: {
     text: {
@@ -128,9 +118,8 @@ webSearch({
     },
   },
 })
-```
 
-## TypeScript Support
+```typescript
 
 Full TypeScript types included:
 
@@ -143,11 +132,8 @@ const config: ExaSearchConfig = {
 };
 
 const search = webSearch(config);
-```
 
-## Links
-
-* [GitHub Repository](https://github.com/exa-labs/ai-sdk) - View source code of this npm package
+```text
 * [Try npm Package](https://www.npmjs.com/package/@exalabs/ai-sdk) - View on npm
 * [Vercel AI SDK Docs](https://ai-sdk.dev/cookbook/node/web-search-agent#exa) - Web Search Agent guide featuring Exa
 * [API Dashboard](https://dashboard.exa.ai) - Try Exa API on the dashboard

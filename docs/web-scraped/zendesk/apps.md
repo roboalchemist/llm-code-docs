@@ -1,244 +1,215 @@
-# Source: https://developer.zendesk.com/documentation/apps/
+# Apps
 
-Apps | Zendesk Developer Docs zendev_horizontal zendev_horizontal Documentation API Reference Search / Apps Home 
-- 
-- 
-## Apps 
+Source: https://developer.zendesk.com/documentation/apps/
 
-- Introduction 
+## Navigation
 
-- 
-- 
-### Getting Started 
+- Introduction
 
-- Overview 
+### Getting Started
 
-- Zendesk app quick start 
+- Overview
 
-- Test drive the Apps framework 
+- Zendesk app quick start
 
-- Using the Zendesk Command Line Interface (ZCLI) 
+- Test drive the Apps framework
 
-- Choose your own app adventure 
+- Using the Zendesk Command Line Interface (ZCLI)
 
-- Setting up new apps 
+- Choose your own app adventure
 
-- Uploading and installing a private app 
+- Setting up new apps
 
-- Glossary 
+- Uploading and installing a private app
 
-- Zendesk apps resources 
+- Glossary
 
-- Building apps with App Builder and generative AI 
+- Zendesk apps resources
 
-- 
-- 
-### App Developer Guide 
+- Building apps with App Builder and generative AI
 
-- Getting started 
+### App Developer Guide
 
-- Using the Apps framework 
+- Getting started
 
-- Making API requests from a Zendesk app 
+- Using the Apps framework
 
-- Specifying app requirements 
+- Making API requests from a Zendesk app
 
-- Working with multi-product apps 
+- Specifying app requirements
 
-- Styles and assets 
+- Working with multi-product apps
 
-- Supporting dark mode 
+- Styles and assets
 
-- Deploying apps 
+- Supporting dark mode
 
-- Manifest reference 
+- Deploying apps
 
-- Best practices for Zendesk apps developers 
+- Manifest reference
 
-- Creating and managing private apps with the Zendesk API 
+- Best practices for Zendesk apps developers
 
-- About the Zendesk React app scaffold 
+- Creating and managing private apps with the Zendesk API
 
-- Known app limitations 
+- About the Zendesk React app scaffold
 
-- Framework versions 
+- Known app limitations
 
-- Managing global OAuth clients and app associations 
+- Framework versions
 
-- 
-- 
-### Build An App 
+- Managing global OAuth clients and app associations
 
-- Building your first Support app 
-- Building your first Support app - Part 1: Laying the groundwork 
+### Build An App
 
-- Building your first Support app - Part 2: Designing the user interface 
+- Building your first Support app
+- Building your first Support app - Part 1: Laying the groundwork
 
-- Building your first Support app - Part 3: Creating and inserting templates 
+- Building your first Support app - Part 2: Designing the user interface
 
-- Building your first Support app - Part 4: Getting data 
+- Building your first Support app - Part 3: Creating and inserting templates
 
-- Building your first Support app - Part 5: Installing the app in Zendesk Support 
+- Building your first Support app - Part 4: Getting data
 
-- Building your first Sell app 
-- Building your first Sell app - Part 1: Laying the groundwork 
+- Building your first Support app - Part 5: Installing the app in Zendesk Support
 
-- Building your first Sell app - Part 2: Designing the user interface 
+- Building your first Sell app
+- Building your first Sell app - Part 1: Laying the groundwork
 
-- Building your first Sell app - Part 3: Creating and inserting templates 
+- Building your first Sell app - Part 2: Designing the user interface
 
-- Building your first Sell app - Part 4: Getting data 
+- Building your first Sell app - Part 3: Creating and inserting templates
 
-- Building your first Sell app - Part 5: Installing the app in Zendesk Sell 
+- Building your first Sell app - Part 4: Getting data
 
-- Building your first Chat app 
-- Building your first Chat app - Part 1: Laying the groundwork 
+- Building your first Sell app - Part 5: Installing the app in Zendesk Sell
 
-- Building your first Chat app - Part 2: Designing the user interface 
+- Building your first Chat app
+- Building your first Chat app - Part 1: Laying the groundwork
 
-- Building your first Chat app - Part 3: Creating and inserting templates 
+- Building your first Chat app - Part 2: Designing the user interface
 
-- Building your first Chat app - Part 4: Getting data 
+- Building your first Chat app - Part 3: Creating and inserting templates
 
-- Building your first Chat app - Part 5: Installing the app in Zendesk Chat 
+- Building your first Chat app - Part 4: Getting data
 
-- Building a Support ticket editor app 
+- Building your first Chat app - Part 5: Installing the app in Zendesk Chat
 
-- Localizing a Support app 
+- Building a Support ticket editor app
 
-- Adding third-party OAuth to a Support app 
+- Localizing a Support app
 
-- Using React in a Support app 
+- Adding third-party OAuth to a Support app
 
-- Dynamically changing app icons 
+- Using React in a Support app
 
-- Using AI to summarize conversations in a Support app 
+- Dynamically changing app icons
 
-- Using the Zendesk developer platform to let support agents process exchanges and refunds 
+- Using AI to summarize conversations in a Support app
 
-- Using the Zendesk developer platform to give support agents a unified view of the customer 
+- Using the Zendesk developer platform to let support agents process exchanges and refunds
 
-- Building a server-side app 
-- Building a server-side app - Part 1: Core concepts 
+- Using the Zendesk developer platform to give support agents a unified view of the customer
 
-- Building a server-side app - Part 2: Displaying server-side content in a Zendesk app 
+- Building a server-side app
+- Building a server-side app - Part 1: Core concepts
 
-- Building a server-side app - Part 3: Accessing external APIs 
+- Building a server-side app - Part 2: Displaying server-side content in a Zendesk app
 
-- Building a server-side app - Part 4: Accessing framework APIs 
+- Building a server-side app - Part 3: Accessing external APIs
 
-- Building a server-side app - Part 5: Securing the app 
+- Building a server-side app - Part 4: Accessing framework APIs
 
-- Building a server-side app - Part 6: Deploying the app 
+- Building a server-side app - Part 5: Securing the app
 
-- How a custom objects app is built for Sell 
+- Building a server-side app - Part 6: Deploying the app
 
-- Building a Sell app using OAuth 2.0 
-- Building a Sell app using OAuth 2.0 - Part 1: Laying the groundwork 
+- How a custom objects app is built for Sell
 
-- Building a Sell app using OAuth 2.0 - Part 2: Installing the app in Zendesk Sell 
+- Building a Sell app using OAuth 2.0
+- Building a Sell app using OAuth 2.0 - Part 1: Laying the groundwork
 
-- Building a Sell app using OAuth 2.0 - Part 3: Setting up OAuth 2.0 
+- Building a Sell app using OAuth 2.0 - Part 2: Installing the app in Zendesk Sell
 
-- Building a Sell app using OAuth 2.0 - Part 4: Creating audiences in Mailchimp 
+- Building a Sell app using OAuth 2.0 - Part 3: Setting up OAuth 2.0
 
-- Building a Sell app using OAuth 2.0 - Part 5: Getting data from the Mailchimp API 
+- Building a Sell app using OAuth 2.0 - Part 4: Creating audiences in Mailchimp
 
-- Create a CI/CD pipeline for a Zendesk app 
+- Building a Sell app using OAuth 2.0 - Part 5: Getting data from the Mailchimp API
 
-- 
-- 
-### Designing Your App 
+- Create a CI/CD pipeline for a Zendesk app
 
-- UI Fundamentals 
+### Designing Your App
 
-- Designing with Zendesk Garden 
+- UI Fundamentals
 
-- Support app locations 
-- Sidebar apps 
+- Designing with Zendesk Garden
 
-- Top bar apps 
+- Support app locations
+- Sidebar apps
 
-- Sell app locations 
-- Sidebar apps 
+- Top bar apps
 
-- Chat app locations 
-- Sidebar apps 
+- Sell app locations
+- Sidebar apps
 
-- 
-- 
-### Zendesk Apps Tools (ZAT) 
+- Chat app locations
+- Sidebar apps
 
-- Installing and using ZAT 
+### Zendesk Apps Tools (ZAT)
 
-- ZAT commands 
+- Installing and using ZAT
 
-- ZAT - Known issues 
+- ZAT commands
 
-## On this page 
+- ZAT - Known issues
 
-- Learn about the different apps you can build 
+## Overview
 
-- Getting started 
+Build and publish apps for Support, Sell and Chat
 
-- Building your first app 
+## Learn about the different apps you can build
 
-- Publish your app to the Zendesk Marketplace 
+You may have already read about the Zendesk Apps framework (ZAF) and how you can use it to modify and extend your agent's interface in a number of ways.
 
-# Apps 
-Build and publish apps for Support, Sell and Chat 
-## On this page 
+But are you aware of all the paths that you can choose when starting your custom code adventure? Know the benefits of each approach, so you can determine what direction is best.
 
-- Learn about the different apps you can build 
+Choose your own app adventure
 
-- Getting started 
+## Getting started
 
-- Building your first app 
+Build an app with App Builder
+Create Zendesk apps with natural language prompts and AI, no code required.
 
-- Publish your app to the Zendesk Marketplace 
+Zendesk app quick start
+In this quick start, you'll build and locally run a Zendesk app. The quick start introduces you to the tools and workflow commonly used for Zendesk app development.
 
-## Learn about the different apps you can build 
+Test drive the Apps framework
+In this 15-minute tutorial, you'll use the Zendesk Apps framework to access ticket data. You'll also use the framework to add a comment to a ticket as well as create a ticket.
 
-You may have already read about the Zendesk Apps framework (ZAF) and how you can use it to modify and extend your agent's interface in a number of ways. 
-
-But are you aware of all the paths that you can choose when starting your custom code adventure? Know the benefits of each approach, so you can determine what direction is best. 
-
-Choose your own app adventure 
-
-## Getting started 
-
-Build an app with App Builder 
-Create Zendesk apps with natural language prompts and AI, no code required. 
-
-Zendesk app quick start 
-In this quick start, you'll build and locally run a Zendesk app. The quick start introduces you to the tools and workflow commonly used for Zendesk app development. 
-
-Test drive the Apps framework 
-In this 15-minute tutorial, you'll use the Zendesk Apps framework to access ticket data. You'll also use the framework to add a comment to a ticket as well as create a ticket. 
-
-Using the Zendesk Command Line Interface (ZCLI) 
+Using the Zendesk Command Line Interface (ZCLI)
 Install ZCLI, a local development tool that lets you test, validate and package
-Zendesk apps. 
+Zendesk apps.
 
-## Building your first app 
+## Building your first app
 
-Weâve created step by step tutorials on creating your first Support, Sell, Chat and server-side apps. 
+Weâve created step by step tutorials on creating your first Support, Sell, Chat and server-side apps.
 
-Building your first Support app 
-The âRequester X-rayâ app will display the requester's name, any user tags applied to the requester, when the requester was added and when they last signed in to Zendesk Support. 
+Building your first Support app
+The âRequester X-rayâ app will display the requester's name, any user tags applied to the requester, when the requester was added and when they last signed in to Zendesk Support.
 
-Building your first Sell app 
-The âRelated Leadsâ app displays new leads for an organization associated with a deal. 
+Building your first Sell app
+The âRelated Leadsâ app displays new leads for an organization associated with a deal.
 
-Building your first Chat app 
-The app âLearn Moreâ is designed to let a chat agent send a visitor links to more information about any subject. It'll have a simple interface consisting of a search box and button. 
+Building your first Chat app
+The app âLearn Moreâ is designed to let a chat agent send a visitor links to more information about any subject. It'll have a simple interface consisting of a search box and button.
 
-Building your first server-side app 
-Because a Zendesk app runs in an iframe in the product, you can use a server-side web application to generate the content for the iframe. You can use any server-side technology you want so long as you have a component that can send HTML pages in response to HTTP requests. 
+Building your first server-side app
+Because a Zendesk app runs in an iframe in the product, you can use a server-side web application to generate the content for the iframe. You can use any server-side technology you want so long as you have a component that can send HTML pages in response to HTTP requests.
 
-## Publish your app to the Zendesk Marketplace 
+## Publish your app to the Zendesk Marketplace
 
-By now, you've either already created an app or are considering building one. The steps in this guide will take you through the process of publishing your app and becoming a Zendesk Marketplace partner. 
+By now, you've either already created an app or are considering building one. The steps in this guide will take you through the process of publishing your app and becoming a Zendesk Marketplace partner.
 
-Get started 
+Get started
 Join our developer community Forum Blog Slack Zendesk 181 Fremont Street, 17th Floor, San Francisco, California 94105 Privacy Notice Zendesk Developer Terms System Status

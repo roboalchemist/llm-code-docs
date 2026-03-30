@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Subnets should be associated with a Network Security Group
- 
+
 ## Description{% #description %}
 
 This rule checks whether subnets in Azure are associated with a Network Security Group. Ensuring that subnets are associated with a Network Security Group helps enhance the security posture of the Azure environment by adding an additional layer of protection to network traffic within the subnet.

@@ -9,14 +9,14 @@ breadcrumbs: >-
 ---
 
 # Enforce Usage of pam_wheel with Group Parameter for su Authentication
- 
+
 ## Description{% #description %}
 
 To ensure that only users who are members of the group set in the `group` option of `pam_wheel.so` module can run commands with altered privileges through the `su` command, make sure that the following line exists in the file `/etc/pam.d/su`:
 
 ```
 auth required pam_wheel.so use_uid group=sugroup
-         
+
 ```
 
 ## Rationale{% #rationale %}

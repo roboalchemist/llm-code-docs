@@ -1,0 +1,126 @@
+# Source: https://firebase.google.com/docs/reference/kotlin/com/google/firebase/messaging/RemoteMessage.Builder.md.txt
+
+# RemoteMessage.Builder
+
+# RemoteMessage.Builder
+
+
+```
+class RemoteMessage.Builder
+```
+
+<br />
+
+*** ** * ** ***
+
+Builder object for constructing `https://firebase.google.com/docs/reference/kotlin/com/google/firebase/messaging/RemoteMessage` instances.
+
+## Summary
+
+| ### Public constructors |
+|---|
+| `https://firebase.google.com/docs/reference/kotlin/com/google/firebase/messaging/RemoteMessage.Builder#Builder(java.lang.String)(to: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)` Sets the destination of the message. |
+
+| ### Public functions |
+|---|---|
+| `https://firebase.google.com/docs/reference/kotlin/com/google/firebase/messaging/RemoteMessage.Builder` | `https://firebase.google.com/docs/reference/kotlin/com/google/firebase/messaging/RemoteMessage.Builder#addData(java.lang.String,java.lang.String)(key: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html, value: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html?)` Adds a data key value pair to the message. |
+| `https://firebase.google.com/docs/reference/kotlin/com/google/firebase/messaging/RemoteMessage` | `https://firebase.google.com/docs/reference/kotlin/com/google/firebase/messaging/RemoteMessage.Builder#build()()` Build a RemoteMessage instance. |
+| `https://firebase.google.com/docs/reference/kotlin/com/google/firebase/messaging/RemoteMessage.Builder` | `https://firebase.google.com/docs/reference/kotlin/com/google/firebase/messaging/RemoteMessage.Builder#clearData()()` Clears the message data. |
+| `https://firebase.google.com/docs/reference/kotlin/com/google/firebase/messaging/RemoteMessage.Builder` | `https://firebase.google.com/docs/reference/kotlin/com/google/firebase/messaging/RemoteMessage.Builder#setCollapseKey(java.lang.String)(collapseKey: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html?)` Sets the collapse key of the message. |
+| `https://firebase.google.com/docs/reference/kotlin/com/google/firebase/messaging/RemoteMessage.Builder` | `https://firebase.google.com/docs/reference/kotlin/com/google/firebase/messaging/RemoteMessage.Builder#setMessageId(java.lang.String)(messageId: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)` Sets the messages ID. |
+| `https://firebase.google.com/docs/reference/kotlin/com/google/firebase/messaging/RemoteMessage.Builder` | `https://firebase.google.com/docs/reference/kotlin/com/google/firebase/messaging/RemoteMessage.Builder#setMessageType(java.lang.String)(messageType: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html?)` Sets the type of message. |
+| `https://firebase.google.com/docs/reference/kotlin/com/google/firebase/messaging/RemoteMessage.Builder` | `https://firebase.google.com/docs/reference/kotlin/com/google/firebase/messaging/RemoteMessage.Builder#setTtl(int)(ttl: @https://developer.android.com/reference/kotlin/androidx/annotation/IntRange.html(from = 0, to = 86400) https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)` Sets the message time to live in seconds. |
+
+| ### Public properties |
+|---|---|
+| `(https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-mutable-map/index.html)https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.collections/-map/index.html<https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html!, https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html!>!` | `https://firebase.google.com/docs/reference/kotlin/com/google/firebase/messaging/RemoteMessage.Builder#data()` |
+
+## Public constructors
+
+### Builder
+
+```
+Builder(to: String)
+```
+
+Sets the destination of the message.
+
+| Parameters |
+|---|---|
+| `to: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html` | The destination of the message in the format of ` SENDER_ID@fcm.googleapis.com`. The `SENDER_ID` should be the FirebaseApp gcm sender id. |
+
+## Public functions
+
+### addData
+
+```
+fun addData(key: String, value: String?): RemoteMessage.Builder
+```
+
+Adds a data key value pair to the message.
+
+An existing value with the same key will be replaced by the new value.
+
+### build
+
+```
+fun build(): RemoteMessage
+```
+
+Build a RemoteMessage instance.
+
+### clearData
+
+```
+fun clearData(): RemoteMessage.Builder
+```
+
+Clears the message data.
+
+### setCollapseKey
+
+```
+fun setCollapseKey(collapseKey: String?): RemoteMessage.Builder
+```
+
+Sets the collapse key of the message.
+
+A pending message will be replaced by a new message with the same collapse key if it is currently unable to be delivered to the recipient.
+
+### setMessageId
+
+```
+fun setMessageId(messageId: String): RemoteMessage.Builder
+```
+
+Sets the messages ID.
+
+| Parameters |
+|---|---|
+| `messageId: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html` | ID of the message. This is generated by the application. It must be unique for each message. This allows error callbacks and debugging. |
+
+### setMessageType
+
+```
+fun setMessageType(messageType: String?): RemoteMessage.Builder
+```
+
+Sets the type of message.
+
+### setTtl
+
+```
+fun setTtl(ttl: @IntRange(from = 0, to = 86400) Int): RemoteMessage.Builder
+```
+
+Sets the message time to live in seconds.
+
+If 0, the message send will be attempted immediately and will be dropped if the device is not connected. Otherwise, the message will be queued.
+
+## Public properties
+
+### data
+
+```
+var data: (Mutable)Map<String!, String!>!
+```

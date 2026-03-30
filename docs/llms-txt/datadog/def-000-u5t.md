@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Publicly accessible EC2 instances should not have highly-privileged IAM roles
- 
+
 ## Description{% #description %}
 
 This rule verifies that publicly accessible EC2 instances are not attached to a highly-privileged, risky [instance role](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html).

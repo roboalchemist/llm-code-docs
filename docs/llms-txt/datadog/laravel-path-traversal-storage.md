@@ -41,7 +41,7 @@ In PHP, you can avoid this issue by using built-in functions to sanitize user in
 
 ```php
 <?php
- 
+
 class Foo extends Controller{
     function foo($path) {
         Storage::download($path);
@@ -96,6 +96,5 @@ class Bar extends FormRequest {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

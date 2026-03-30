@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # SageMaker notebook instances should not have direct internet access
- 
+
 ## Description{% #description %}
 
 This control evaluates if direct internet access is disabled for a SageMaker notebook instance.

@@ -46,13 +46,13 @@ Users can filter threat intelligence on the Signals and Traces explorers using f
 To search for all traces flagged by a specific source, use the following query with the source name:
 
 ```
-@threat_intel.results.source.name:<SOURCE_NAME> 
+@threat_intel.results.source.name:<SOURCE_NAME>
 ```
 
 To query for all traces containing threat intelligence from any source, use the following query:
 
 ```
-@appsec.threat_intel:true 
+@appsec.threat_intel:true
 ```
 
 ## Bring your own threat intelligence{% #bring-your-own-threat-intelligence %}

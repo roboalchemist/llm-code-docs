@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # SQL database instances should only use private IP addresses
- 
+
 ## Description{% #description %}
 
 Datadog recommends configuring the second generation SQL instance to use private IPs instead of public IPs.

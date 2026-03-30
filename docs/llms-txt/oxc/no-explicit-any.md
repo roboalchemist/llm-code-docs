@@ -1,14 +1,10 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-explicit-any.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-explicit-any.md
----
-
-### What it does
+## What it does
 
 Disallows explicit use of the `any` type.
 
-### Why is this bad?
+## Why is this bad?
 
 The `any` type in TypeScript is a dangerous "escape hatch" from the type system. Using
 `any` disables many type checking rules and is generally best used only as a last resort or
@@ -18,7 +14,7 @@ annotation.
 > TypeScript's `--noImplicitAny` compiler option prevents an implied `any`, but doesn't
 > prevent `any` from being explicitly used the way this rule does.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -52,7 +48,7 @@ function greet(param: Array<string>): Array<string> {}
 
 This rule accepts a configuration object with the following properties:
 
-### fixToUnknown
+## fixToUnknown
 
 type: `boolean`
 
@@ -60,7 +56,7 @@ default: `false`
 
 Whether to enable auto-fixing in which the `any` type is converted to the `unknown` type.
 
-### ignoreRestArgs
+## ignoreRestArgs
 
 type: `boolean`
 

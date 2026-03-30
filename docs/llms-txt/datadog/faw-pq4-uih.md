@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Etcd should use TLS encryption for peer connections
-Classification:complianceFramework:cis-kubernetesControl:2.4 
+Classification:complianceFramework:cis-kubernetesControl:2.4
 ## Description{% #description %}
 
 Etcd should be configured to make use of TLS encryption for peer connections.
@@ -35,7 +35,7 @@ Verify that the `--peer-cert-file` and `--peer-key-file` arguments are set as ap
 Follow the etcd service documentation and configure peer TLS encryption as appropriate for your etcd cluster. Then, edit the etcd pod specification file `/etc/kubernetes/manifests/etcd.yaml` on the master node and set the below parameters:
 
 ```
---peer-cert-file=</path/to/peer-cert-file> 
+--peer-cert-file=</path/to/peer-cert-file>
 --peer-key-file=</path/to/peer-key-file>
 ```
 

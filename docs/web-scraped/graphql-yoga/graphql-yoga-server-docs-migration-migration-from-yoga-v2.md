@@ -1,0 +1,280 @@
+# Source: https://the-guild.dev/graphql/yoga-server/docs/migration/migration-from-yoga-v2
+
+Title: Migration from Yoga V2 | Yoga
+
+URL Source: https://the-guild.dev/graphql/yoga-server/docs/migration/migration-from-yoga-v2
+
+Markdown Content:
+[Skip to Content](https://the-guild.dev/graphql/yoga-server/docs/migration/migration-from-yoga-v2#nextra-skip-nav)
+
+On This Page
+
+Migration from Yoga V2
+----------------------
+
+Install the new NPM package[](https://the-guild.dev/graphql/yoga-server/docs/migration/migration-from-yoga-v2#install-the-new-npm-package)
+------------------------------------------------------------------------------------------------------------------------------------------
+
+Now GraphQL Yoga has a single NPM package for all environments `graphql-yoga` instead of `@graphql-yoga/common` and `@graphql-yoga/node`. So you need to uninstall `@graphql-yoga/common` and `@graphql-yoga/node` then install `graphql-yoga` from NPM.
+
+`npm i graphql-yoga`
+
+`pnpm add graphql-yoga`
+
+`yarn add graphql-yoga`
+
+`bun add graphql-yoga`
+
+`createServer` renamed to `createYoga`[](https://the-guild.dev/graphql/yoga-server/docs/migration/migration-from-yoga-v2#createserver-renamed-to-createyoga)
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+In order to prevent the confusion, we decided to rename `createServer` function to `createYoga`.
+
+```
+- import { createServer } from '@graphql-yoga/node'
++ import { createYoga } from 'graphql-yoga'
+import { schema } from './schema';
+ 
+- const yoga = createServer({
++ const yoga = createYoga({
+     schema,
+ })
+```
+
+`createSchema` for executable schemas[](https://the-guild.dev/graphql/yoga-server/docs/migration/migration-from-yoga-v2#createschema-for-executable-schemas)
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+With Yoga v2 you could pass the `typeDefs` and `resolvers` directly to the server options and have [@graphql-tools/schema generate the executable schema](https://the-guild.dev/graphql/tools/docs/generate-schema) during setup.
+
+However, Yoga v3 accepts only a ready GraphQL schema and instead offers a seperate [helper function `createSchema`](https://the-guild.dev/graphql/yoga-server/docs#schema) to supplement this process.
+
+```
+- import { createServer } from '@graphql-yoga/node'
++ import { createYoga, createSchema } from 'graphql-yoga'
+ 
+- createServer({
+-   typeDefs: /* GraphQL */ `
+-     type Query {
+-       hello: String
+-     }
+-   `,
+-   resolvers: {
+-     Query: {
+-       hello: () => 'world'
+-     }
+-   }
+- })
+ 
++ createYoga({
++   schema: createSchema({
++     typeDefs: /* GraphQL */ `
++       type Query {
++         hello: String
++       }
++     `,
++     resolvers: {
++       Query: {
++         hello: () => 'world'
++       }
++     }
++   })
++ })
+```
+
+`handleIncomingMessage` renamed to `handleNodeRequest`[](https://the-guild.dev/graphql/yoga-server/docs/migration/migration-from-yoga-v2#handleincomingmessage-renamed-to-handlenoderequest)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+For some frameworks, we need to use this low-level function such as Fastify and Koa. So you can basically rename the method to `handleNodeRequest`.
+
+No more `.start` and `.stop`[](https://the-guild.dev/graphql/yoga-server/docs/migration/migration-from-yoga-v2#no-more-start-and-stop)
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Previously on Node and CF/Service Workers environments, Yoga handles server processes with `.start` and `.stop` methods together with some environment specific server configurations. Yoga no longer deals with HTTP server configuration so the following changes needed;
+
+### For Node[](https://the-guild.dev/graphql/yoga-server/docs/migration/migration-from-yoga-v2#for-node)
+
+```
+- import { createServer } from '@graphql-yoga/node'
++ import { createYoga } from 'graphql-yoga'
++ import { createServer } from 'http'
+ 
+- const server = createServer({
+-     port: 4000,
+-     hostname: '127.0.0.1'
+- })
++ const yoga = createYoga({})
++ const server = createServer(yoga)
+ 
+- server.start()
++ server.listen(4000, '127.0.0.1')
+```
+
+### For CF/Service Workers[](https://the-guild.dev/graphql/yoga-server/docs/migration/migration-from-yoga-v2#for-cfservice-workers)
+
+```
+- yoga.start()
++ self.addEventListener('fetch', yoga)
+```
+
+No more Node specific multipart configuration[](https://the-guild.dev/graphql/yoga-server/docs/migration/migration-from-yoga-v2#no-more-node-specific-multipart-configuration)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Previously it was possible to configure limitations of multipart request processing in `@graphql-yoga/node` package but now `graphql-yoga` package is completely platform agnostic and we avoid to have any Node specific configuration in GraphQL Yoga. But it is still possible to keep the same behavior by configuring `@whatwg-node/fetch` which is used by GraphQL Yoga internally for Node.js.
+
+```
+- import { createServer } from '@graphql-yoga/node'
++ import { createYoga } from 'graphql-yoga'
++ import { createFetch } from '@whatwg-node/fetch'
+ 
+- const yoga = createServer({
++ const yoga = createYoga({
++  fetchAPI: createFetch({
++     // We prefer `node-fetch` over `undici` and current unstable Node's implementation
++     useNodeFetch: true,
++     formDataLimits: {
+-  multipart: {
+      // Maximum allowed file size (in bytes)
+      fileSize: 1000000,
+      // Maximum allowed number of files
+      files: 10,
+      // Maximum allowed size of content (operations, variables etc...)
+      fieldSize: 1000000,
+      // Maximum allowed header size for form data
+      headerSize: 1000000,
+    },
++  }),
+})
+```
+
+Removed `endpoint` and `graphiql.endpoint` options[](https://the-guild.dev/graphql/yoga-server/docs/migration/migration-from-yoga-v2#removed-endpoint-and-graphiqlendpoint-options)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+In v2, there is `endpoint` option which is used to configure the GraphQL endpoint, and `graphiql.endpoint` to point `GraphiQL` to a different GraphQL API. Now they are removed in favor `graphqlEndpoint` option. If you want to use `YogaGraphiQL` for a different GraphQL endpoint, you can use `@graphql-yoga/render-graphiql` package separately.
+
+```
+- import { createServer } from '@graphql-yoga/node'
++ import { createYoga } from 'graphql-yoga'
+- createServer({
++ createYoga({
+-  endpoint: '/graphql',
+-  graphiql: {
+-    endpoint: '/graphiql',
+-  },
++  graphqlEndpoint: '/graphql',
+})
+```
+
+No more `GraphQLYogaError`, use `GraphQLError` instead[](https://the-guild.dev/graphql/yoga-server/docs/migration/migration-from-yoga-v2#no-more-graphqlyogaerror-use-graphqlerror-instead)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+In v2, we introduced a new error class `GraphQLYogaError` which is a subclass of `GraphQLError` and it is now deprecated in favor of `GraphQLError`. So in resolvers, you can use it in the same way but the second parameter of `GraphQLError` constructor is not `extensions` but an object that contains more options for `GraphQLError`. You can basically do the following change;
+
+```
+- import { GraphQLYogaError } from '@graphql-yoga/node'
++ import { GraphQLError } from 'graphql'
+ 
+- const myError = new GraphQLYogaError('My error message', {
++ const myError = new GraphQLError('My error message', {
++  extensions: {
+    code: 'MY_CODE',
+    myCustomField: 'myCustomValue',
++  },
+})
+```
+
+Also you can change the status code and headers of the error response by using the `extensions` object.
+
+```
+new GraphQLError('My error message', {
+  extensions: {
+    code: 'NOT_LOGGED_IN',
+    message: 'You need to be logged in to do this',
+    http: {
+      status: 401,
+      headers: {
+        'X-Custom-Header': 'my-custom-value'
+      }
+    }
+  }
+})
+```
+
+No more `readinessCheckEndpoint`, consider using the `useReadinessCheck` plugin instead[](https://the-guild.dev/graphql/yoga-server/docs/migration/migration-from-yoga-v2#no-more-readinesscheckendpoint-consider-using-the-usereadinesscheck-plugin-instead)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+A readiness health check is not something Yoga can accurately perform as it requires user-land context. Read more about the [new health check](https://the-guild.dev/graphql/yoga-server/docs/features/health-check).
+
+```
+- import { createServer } from '@graphql-yoga/node'
++ import { createYoga, useReadinessCheck } from 'graphql-yoga'
+import { schema, checkDbAvailable } from './my-service';
+ 
+- const yoga = createServer({
++ const yoga = createYoga({
+     schema,
+-    readinessCheckEndpoint: '/ready',
++    useReadinessCheck({
++      endpoint: '/ready' // default,
++      check: async () => {
++        // if resolves, respond with 200 OK
++        // if throw, respond with 504 Service Unavailable and error message as plaintext in body
++        await checkDbAvailable()
++      },
++    })
+ })
+```
+
+Update options for `useMaskedErrors` plugin[](https://the-guild.dev/graphql/yoga-server/docs/migration/migration-from-yoga-v2#update-options-for-usemaskederrors-plugin)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+*   Removed `handleValidationErrors` and `handleParseErrors` options
+*   Rename `formatError` to `maskError`
+
+```
+- import { createServer } from '@graphql-yoga/node'
++ import { createYoga } from 'graphql-yoga'
+import { schema } from './my-service';
+ 
+const yoga = createYoga({
+  schema,
+  maskedErrors: {
+-    formatError: () => {
++    maskError: () => {
+      return Error('Sorry, not sorry.')
+    }
+  }
+})
+```
+
+Checkout [envelop docs](https://www.the-guild.dev/graphql/envelop/docs/guides/migrating-from-v2-to-v3#8-update-options-for-usemaskederrors-plugin) for more details.
+
+Removed `.inject` method[](https://the-guild.dev/graphql/yoga-server/docs/migration/migration-from-yoga-v2#removed-inject-method)
+---------------------------------------------------------------------------------------------------------------------------------
+
+Previously we provided `.inject` method to mock HTTP requests for testing purposes. Now you can use the fetch method on your yoga instance for calling the yoga instance as if you were doing an HTTP request.
+
+```
+import { createYoga } from 'graphql-yoga'
+import { schema } from './schema'
+ 
+const yoga = createYoga({ schema })
+ 
+ 
+- const { response, executionResult } = await yoga.inject({
+-   document: "query { ping }",
+- })
+ 
++ const response = await yoga.fetch('http://localhost:4000/graphql', {
++   method: 'POST',
++   headers: {
++     'Content-Type': 'application/json',
++   },
++   body: JSON.stringify({
++     query: 'query { ping }',
++   }),
++ })
++ const executionResult = await response.json()
+ 
+console.assert(response.status === 200, 'Response status should be 200')
+console.assert(executionResult.data.ping === 'pong',`Expected 'pong'`)
+```

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure journald is configured to send logs to rsyslog
- 
+
 ## Description{% #description %}
 
 Data from journald may be stored in volatile memory or persisted locally. Utilities exist to accept remote export of journald logs.
@@ -31,7 +31,7 @@ The following script can be run on the host to remediate the issue.
 if dpkg-query --show --showformat='${db:Status-Status}' 'linux-base' 2>/dev/null | grep -q '^installed$'; then
 
 if [ -e "/etc/systemd/journald.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*ForwardToSyslog\s*=\s*/d" "/etc/systemd/journald.conf"
 else
     touch "/etc/systemd/journald.conf"

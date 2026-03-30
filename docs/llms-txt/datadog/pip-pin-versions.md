@@ -55,10 +55,9 @@ FROM busybox
 RUN pip install django==1.9
 
 RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install --no-cache-dir shepherd/src -r requirements.txt 
+RUN pip install --no-cache-dir shepherd/src -r requirements.txt
 RUN pip install --upgrade pip==22.1.2 && pip install --no-cache-dir -r requirements.txt
 RUN python3 -m pip install --upgrade pip==22.1.2 && python3 -m pip install --no-cache-dir -r requirements.txt
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

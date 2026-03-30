@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Auto Scaling groups associated with a Classic Load Balancer should use ELB health checks
- 
+
 ## Description{% #description %}
 
 This check verifies if Auto Scaling groups linked to a Classic Load Balancer are using health checks from Elastic Load Balancing (ELB).

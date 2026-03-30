@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # 'root' account access should be monitored
- 
+
 ## Description{% #description %}
 
 Real-time monitoring of API calls can be achieved by directing CloudTrail logs to CloudWatch logs and establishing corresponding metric filters and alarms. It is recommended to set up a metric filter and alarm for root login attempts to provide visibility into the use of the fully privileged root account and to reduce its usage.

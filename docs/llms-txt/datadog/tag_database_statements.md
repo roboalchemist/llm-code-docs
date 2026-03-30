@@ -62,21 +62,21 @@ Full example:
 
 ```go
 import (
-	"database/sql"		
+    "database/sql"
 )
 
-func main() {	
-	db, err := sql.Open("postgres", "postgres://pqgotest:password@localhost/pqgotest?sslmode=disable")
-	if err != nil {
-		log.Fatal(err)
-	}
+func main() {
+    db, err := sql.Open("postgres", "postgres://pqgotest:password@localhost/pqgotest?sslmode=disable")
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Tag SQL statement with key:val
-	rows, err := db.Query("/*key='val'*/ SELECT * from FOO")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer rows.Close()
+    // Tag SQL statement with key:val
+    rows, err := db.Query("/*key='val'*/ SELECT * from FOO")
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer rows.Close()
 }
 ```
 

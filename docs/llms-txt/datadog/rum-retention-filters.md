@@ -75,7 +75,7 @@ All RUM retention filters for a RUM application.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -100,7 +100,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -125,7 +125,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -133,13 +133,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport app_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/rum/applications/${app_id}/retention_filters" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -157,13 +157,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all RUM retention filters returns "OK" response
@@ -171,13 +171,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::RumRetentionFiltersAPI.new
 p api_instance.list_retention_filters("1d4b9c34-7ac4-423a-91cf-9902d926e9b3")
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all RUM retention filters returns "OK" response
@@ -185,37 +185,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRumRetentionFiltersApi(apiClient)
-	resp, r, err := api.ListRetentionFilters(ctx, "1d4b9c34-7ac4-423a-91cf-9902d926e9b3")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRumRetentionFiltersApi(apiClient)
+    resp, r, err := api.ListRetentionFilters(ctx, "1d4b9c34-7ac4-423a-91cf-9902d926e9b3")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RumRetentionFiltersApi.ListRetentionFilters`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RumRetentionFiltersApi.ListRetentionFilters`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RumRetentionFiltersApi.ListRetentionFilters`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RumRetentionFiltersApi.ListRetentionFilters`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all RUM retention filters returns "OK" response
@@ -243,13 +243,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all RUM retention filters returns "OK" response
@@ -269,13 +269,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -299,7 +299,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -371,7 +371,7 @@ The RUM retention filter object.
     "type": "retention_filters"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -396,7 +396,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -421,7 +421,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -446,7 +446,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -454,13 +454,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport app_id="CHANGE_ME"export rf_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/rum/applications/${app_id}/retention_filters/${rf_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -479,13 +479,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a RUM retention filter returns "OK" response
@@ -493,13 +493,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::RumRetentionFiltersAPI.new
 p api_instance.get_retention_filter("a33671aa-24fd-4dcd-ba4b-5bbdbafe7690", "4b95d361-f65d-4515-9824-c9aaeba5ac2a")
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a RUM retention filter returns "OK" response
@@ -507,37 +507,37 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRumRetentionFiltersApi(apiClient)
-	resp, r, err := api.GetRetentionFilter(ctx, "a33671aa-24fd-4dcd-ba4b-5bbdbafe7690", "4b95d361-f65d-4515-9824-c9aaeba5ac2a")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRumRetentionFiltersApi(apiClient)
+    resp, r, err := api.GetRetentionFilter(ctx, "a33671aa-24fd-4dcd-ba4b-5bbdbafe7690", "4b95d361-f65d-4515-9824-c9aaeba5ac2a")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RumRetentionFiltersApi.GetRetentionFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RumRetentionFiltersApi.GetRetentionFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RumRetentionFiltersApi.GetRetentionFilter`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RumRetentionFiltersApi.GetRetentionFilter`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a RUM retention filter returns "OK" response
@@ -566,13 +566,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a RUM retention filter returns "OK" response
@@ -595,13 +595,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -626,7 +626,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -696,7 +696,7 @@ The definition of the new RUM retention filter.
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -737,7 +737,7 @@ The RUM retention filter object.
     "type": "retention_filters"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -762,7 +762,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -787,7 +787,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -812,7 +812,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -820,7 +820,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport app_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/rum/applications/${app_id}/retention_filters" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -840,8 +840,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a RUM retention filter returns "Created" response
@@ -849,49 +849,49 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.RumRetentionFilterCreateRequest{
-		Data: datadogV2.RumRetentionFilterCreateData{
-			Type: datadogV2.RUMRETENTIONFILTERTYPE_RETENTION_FILTERS,
-			Attributes: datadogV2.RumRetentionFilterCreateAttributes{
-				Name:       "Test creating retention filter",
-				EventType:  datadogV2.RUMRETENTIONFILTEREVENTTYPE_SESSION,
-				Query:      datadog.PtrString("custom_query"),
-				SampleRate: 50,
-				Enabled:    datadog.PtrBool(true),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRumRetentionFiltersApi(apiClient)
-	resp, r, err := api.CreateRetentionFilter(ctx, "a33671aa-24fd-4dcd-ba4b-5bbdbafe7690", body)
+    body := datadogV2.RumRetentionFilterCreateRequest{
+        Data: datadogV2.RumRetentionFilterCreateData{
+            Type: datadogV2.RUMRETENTIONFILTERTYPE_RETENTION_FILTERS,
+            Attributes: datadogV2.RumRetentionFilterCreateAttributes{
+                Name:       "Test creating retention filter",
+                EventType:  datadogV2.RUMRETENTIONFILTEREVENTTYPE_SESSION,
+                Query:      datadog.PtrString("custom_query"),
+                SampleRate: 50,
+                Enabled:    datadog.PtrBool(true),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRumRetentionFiltersApi(apiClient)
+    resp, r, err := api.CreateRetentionFilter(ctx, "a33671aa-24fd-4dcd-ba4b-5bbdbafe7690", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RumRetentionFiltersApi.CreateRetentionFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RumRetentionFiltersApi.CreateRetentionFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RumRetentionFiltersApi.CreateRetentionFilter`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RumRetentionFiltersApi.CreateRetentionFilter`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a RUM retention filter returns "Created" response
@@ -921,7 +921,7 @@ public class Example {
                             .name("Test creating retention filter")
                             .eventType(RumRetentionFilterEventType.SESSION)
                             .query("custom_query")
-                            .sampleRate(50L)
+                            .sampleRate(50.0)
                             .enabled(true)));
 
     try {
@@ -937,13 +937,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -956,6 +956,7 @@ from datadog_api_client.v2.model.rum_retention_filter_create_attributes import R
 from datadog_api_client.v2.model.rum_retention_filter_create_data import RumRetentionFilterCreateData
 from datadog_api_client.v2.model.rum_retention_filter_create_request import RumRetentionFilterCreateRequest
 from datadog_api_client.v2.model.rum_retention_filter_event_type import RumRetentionFilterEventType
+from datadog_api_client.v2.model.rum_retention_filter_sample_rate import RumRetentionFilterSampleRate
 from datadog_api_client.v2.model.rum_retention_filter_type import RumRetentionFilterType
 
 body = RumRetentionFilterCreateRequest(
@@ -965,7 +966,7 @@ body = RumRetentionFilterCreateRequest(
             name="Test creating retention filter",
             event_type=RumRetentionFilterEventType.SESSION,
             query="custom_query",
-            sample_rate=50,
+            sample_rate=RumRetentionFilterSampleRate(50.0),
             enabled=True,
         ),
     ),
@@ -977,13 +978,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.create_retention_filter(app_id="a33671aa-24fd-4dcd-ba4b-5bbdbafe7690", body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a RUM retention filter returns "Created" response
@@ -1004,13 +1005,13 @@ body = DatadogAPIClient::V2::RumRetentionFilterCreateRequest.new({
   }),
 })
 p api_instance.create_retention_filter("a33671aa-24fd-4dcd-ba4b-5bbdbafe7690", body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a RUM retention filter returns "Created" response
@@ -1028,7 +1029,7 @@ async fn main() {
         RumRetentionFilterCreateAttributes::new(
             RumRetentionFilterEventType::SESSION,
             "Test creating retention filter".to_string(),
-            50,
+            50.0,
         )
         .enabled(true)
         .query("custom_query".to_string()),
@@ -1045,13 +1046,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1087,7 +1088,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -1160,7 +1161,7 @@ New definition of the RUM retention filter.
     }
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -1201,7 +1202,7 @@ The RUM retention filter object.
     "type": "retention_filters"
   }
 }
-```
+```text
 
 {% /tab %}
 
@@ -1226,7 +1227,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1251,7 +1252,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1276,7 +1277,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1301,7 +1302,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1309,7 +1310,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport app_id="CHANGE_ME"export rf_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/rum/applications/${app_id}/retention_filters/${rf_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1330,8 +1331,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a RUM retention filter returns "Updated" response
@@ -1339,50 +1340,50 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.RumRetentionFilterUpdateRequest{
-		Data: datadogV2.RumRetentionFilterUpdateData{
-			Id:   "4b95d361-f65d-4515-9824-c9aaeba5ac2a",
-			Type: datadogV2.RUMRETENTIONFILTERTYPE_RETENTION_FILTERS,
-			Attributes: datadogV2.RumRetentionFilterUpdateAttributes{
-				Name:       datadog.PtrString("Test updating retention filter"),
-				EventType:  datadogV2.RUMRETENTIONFILTEREVENTTYPE_VIEW.Ptr(),
-				Query:      datadog.PtrString("view_query"),
-				SampleRate: datadog.PtrInt64(100),
-				Enabled:    datadog.PtrBool(true),
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRumRetentionFiltersApi(apiClient)
-	resp, r, err := api.UpdateRetentionFilter(ctx, "a33671aa-24fd-4dcd-ba4b-5bbdbafe7690", "4b95d361-f65d-4515-9824-c9aaeba5ac2a", body)
+    body := datadogV2.RumRetentionFilterUpdateRequest{
+        Data: datadogV2.RumRetentionFilterUpdateData{
+            Id:   "4b95d361-f65d-4515-9824-c9aaeba5ac2a",
+            Type: datadogV2.RUMRETENTIONFILTERTYPE_RETENTION_FILTERS,
+            Attributes: datadogV2.RumRetentionFilterUpdateAttributes{
+                Name:       datadog.PtrString("Test updating retention filter"),
+                EventType:  datadogV2.RUMRETENTIONFILTEREVENTTYPE_VIEW.Ptr(),
+                Query:      datadog.PtrString("view_query"),
+                SampleRate: datadog.PtrFloat64(100),
+                Enabled:    datadog.PtrBool(true),
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRumRetentionFiltersApi(apiClient)
+    resp, r, err := api.UpdateRetentionFilter(ctx, "a33671aa-24fd-4dcd-ba4b-5bbdbafe7690", "4b95d361-f65d-4515-9824-c9aaeba5ac2a", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RumRetentionFiltersApi.UpdateRetentionFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RumRetentionFiltersApi.UpdateRetentionFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RumRetentionFiltersApi.UpdateRetentionFilter`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RumRetentionFiltersApi.UpdateRetentionFilter`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a RUM retention filter returns "Updated" response
@@ -1413,7 +1414,7 @@ public class Example {
                             .name("Test updating retention filter")
                             .eventType(RumRetentionFilterEventType.VIEW)
                             .query("view_query")
-                            .sampleRate(100L)
+                            .sampleRate(100.0)
                             .enabled(true)));
 
     try {
@@ -1430,13 +1431,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1446,6 +1447,7 @@ Update a RUM retention filter returns "Updated" response
 from datadog_api_client import ApiClient, Configuration
 from datadog_api_client.v2.api.rum_retention_filters_api import RumRetentionFiltersApi
 from datadog_api_client.v2.model.rum_retention_filter_event_type import RumRetentionFilterEventType
+from datadog_api_client.v2.model.rum_retention_filter_sample_rate import RumRetentionFilterSampleRate
 from datadog_api_client.v2.model.rum_retention_filter_type import RumRetentionFilterType
 from datadog_api_client.v2.model.rum_retention_filter_update_attributes import RumRetentionFilterUpdateAttributes
 from datadog_api_client.v2.model.rum_retention_filter_update_data import RumRetentionFilterUpdateData
@@ -1459,7 +1461,7 @@ body = RumRetentionFilterUpdateRequest(
             name="Test updating retention filter",
             event_type=RumRetentionFilterEventType.VIEW,
             query="view_query",
-            sample_rate=100,
+            sample_rate=RumRetentionFilterSampleRate(100.0),
             enabled=True,
         ),
     ),
@@ -1473,13 +1475,13 @@ with ApiClient(configuration) as api_client:
     )
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a RUM retention filter returns "Updated" response
@@ -1501,13 +1503,13 @@ body = DatadogAPIClient::V2::RumRetentionFilterUpdateRequest.new({
   }),
 })
 p api_instance.update_retention_filter("a33671aa-24fd-4dcd-ba4b-5bbdbafe7690", "4b95d361-f65d-4515-9824-c9aaeba5ac2a", body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a RUM retention filter returns "Updated" response
@@ -1527,7 +1529,7 @@ async fn main() {
             .event_type(RumRetentionFilterEventType::VIEW)
             .name("Test updating retention filter".to_string())
             .query("view_query".to_string())
-            .sample_rate(100),
+            .sample_rate(100.0 as f64),
         "4b95d361-f65d-4515-9824-c9aaeba5ac2a".to_string(),
         RumRetentionFilterType::RETENTION_FILTERS,
     ));
@@ -1546,13 +1548,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1590,7 +1592,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -1650,7 +1652,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1675,7 +1677,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1700,7 +1702,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1708,12 +1710,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport app_id="CHANGE_ME"export rf_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/rum/applications/${app_id}/retention_filters/${rf_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1730,13 +1732,13 @@ with ApiClient(configuration) as api_client:
         app_id="a33671aa-24fd-4dcd-ba4b-5bbdbafe7690",
         rf_id="fe34ee09-14cf-4976-9362-08044c0dea80",
     )
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a RUM retention filter returns "No Content" response
@@ -1744,13 +1746,13 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 require "datadog_api_client"
 api_instance = DatadogAPIClient::V2::RumRetentionFiltersAPI.new
 api_instance.delete_retention_filter("a33671aa-24fd-4dcd-ba4b-5bbdbafe7690", "fe34ee09-14cf-4976-9362-08044c0dea80")
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a RUM retention filter returns "No Content" response
@@ -1758,33 +1760,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRumRetentionFiltersApi(apiClient)
-	r, err := api.DeleteRetentionFilter(ctx, "a33671aa-24fd-4dcd-ba4b-5bbdbafe7690", "fe34ee09-14cf-4976-9362-08044c0dea80")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRumRetentionFiltersApi(apiClient)
+    r, err := api.DeleteRetentionFilter(ctx, "a33671aa-24fd-4dcd-ba4b-5bbdbafe7690", "fe34ee09-14cf-4976-9362-08044c0dea80")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RumRetentionFiltersApi.DeleteRetentionFilter`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RumRetentionFiltersApi.DeleteRetentionFilter`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a RUM retention filter returns "No Content" response
@@ -1810,13 +1812,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a RUM retention filter returns "No Content" response
@@ -1839,13 +1841,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1870,7 +1872,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 
@@ -1939,7 +1941,7 @@ New definition of the RUM retention filter.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1969,7 +1971,7 @@ The list of RUM retention filter IDs along with type.
     }
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -1994,7 +1996,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2019,7 +2021,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2044,7 +2046,7 @@ API error response.
     "Bad Request"
   ]
 }
-```
+```text
 
 {% /tab %}
 
@@ -2052,7 +2054,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport app_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/rum/applications/${app_id}/relationships/retention_filters" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2076,8 +2078,8 @@ API error response.
   ]
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Order RUM retention filters returns "Ordered" response
@@ -2085,53 +2087,53 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.RumRetentionFiltersOrderRequest{
-		Data: []datadogV2.RumRetentionFiltersOrderData{
-			{
-				Type: datadogV2.RUMRETENTIONFILTERTYPE_RETENTION_FILTERS,
-				Id:   "325631eb-94c9-49c0-93f9-ab7e4fd24529",
-			},
-			{
-				Type: datadogV2.RUMRETENTIONFILTERTYPE_RETENTION_FILTERS,
-				Id:   "42d89430-5b80-426e-a44b-ba3b417ece25",
-			},
-			{
-				Type: datadogV2.RUMRETENTIONFILTERTYPE_RETENTION_FILTERS,
-				Id:   "bff0bc34-99e9-4c16-adce-f47e71948c23",
-			},
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRumRetentionFiltersApi(apiClient)
-	resp, r, err := api.OrderRetentionFilters(ctx, "1d4b9c34-7ac4-423a-91cf-9902d926e9b3", body)
+    body := datadogV2.RumRetentionFiltersOrderRequest{
+        Data: []datadogV2.RumRetentionFiltersOrderData{
+            {
+                Type: datadogV2.RUMRETENTIONFILTERTYPE_RETENTION_FILTERS,
+                Id:   "325631eb-94c9-49c0-93f9-ab7e4fd24529",
+            },
+            {
+                Type: datadogV2.RUMRETENTIONFILTERTYPE_RETENTION_FILTERS,
+                Id:   "42d89430-5b80-426e-a44b-ba3b417ece25",
+            },
+            {
+                Type: datadogV2.RUMRETENTIONFILTERTYPE_RETENTION_FILTERS,
+                Id:   "bff0bc34-99e9-4c16-adce-f47e71948c23",
+            },
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRumRetentionFiltersApi(apiClient)
+    resp, r, err := api.OrderRetentionFilters(ctx, "1d4b9c34-7ac4-423a-91cf-9902d926e9b3", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RumRetentionFiltersApi.OrderRetentionFilters`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RumRetentionFiltersApi.OrderRetentionFilters`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RumRetentionFiltersApi.OrderRetentionFilters`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RumRetentionFiltersApi.OrderRetentionFilters`:\n%s\n", responseContent)
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Order RUM retention filters returns "Ordered" response
@@ -2177,13 +2179,13 @@ public class Example {
     }
   }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2219,13 +2221,13 @@ with ApiClient(configuration) as api_client:
     response = api_instance.order_retention_filters(app_id="1d4b9c34-7ac4-423a-91cf-9902d926e9b3", body=body)
 
     print(response)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Order RUM retention filters returns "Ordered" response
@@ -2250,13 +2252,13 @@ body = DatadogAPIClient::V2::RumRetentionFiltersOrderRequest.new({
   ],
 })
 p api_instance.order_retention_filters("1d4b9c34-7ac4-423a-91cf-9902d926e9b3", body)
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Order RUM retention filters returns "Ordered" response
@@ -2293,13 +2295,13 @@ async fn main() {
         println!("{:#?}", resp.unwrap_err());
     }
 }
-```
+```text
 
 #### Instructions
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2339,7 +2341,7 @@ apiInstance
     );
   })
   .catch((error: any) => console.error(error));
-```
+```text
 
 #### Instructions
 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Anomalous amount of Salesforce query results
-Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1213-data-from-information-repositories](https://attack.mitre.org/techniques/T1213) 
+Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1213-data-from-information-repositories](https://attack.mitre.org/techniques/T1213)
 ## Goal{% #goal %}
 
 Detect when there is a spike in Salesforce query results for a user. A large query can be an early warning sign of a user attempting to exfiltrate Salesforce data.

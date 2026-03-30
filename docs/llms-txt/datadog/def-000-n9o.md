@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Kinesis streams should be encrypted at rest
- 
+
 ## Description{% #description %}
 
 This control verifies whether Kinesis Data Streams are encrypted at rest using server-side encryption. The control fails if a Kinesis stream is not encrypted at rest with this method.

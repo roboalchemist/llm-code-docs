@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-misused-spread.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-misused-spread.md
----
-
-### What it does
+## What it does
 
 This rule disallows spreading syntax in places where it doesn't make sense or could cause runtime errors.
 
-### Why is this bad?
+## Why is this bad?
 
 The spread operator can be misused in ways that might not be immediately obvious but can cause runtime errors or unexpected behavior. This rule helps catch common misuses.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -54,7 +50,7 @@ const arr4 = Array.from(str); // ['h', 'e', 'l', 'l', 'o']
 
 This rule accepts a configuration object with the following properties:
 
-### allow
+## allow
 
 type: `array`
 
@@ -63,7 +59,7 @@ default: `[]`
 An array of type or value specifiers that are allowed to be spread
 even if they would normally be flagged as misused.
 
-#### allow\[n]
+### allow\[n]
 
 type: `string`
 
@@ -77,7 +73,7 @@ Supports four types of specifiers:
 "Promise"
 ```
 
-2. **File specifier**: Match types/values declared in local files
+1. **File specifier**: Match types/values declared in local files
 
 ```json
 { "from": "file", "name": "MyType" }
@@ -85,14 +81,14 @@ Supports four types of specifiers:
 { "from": "file", "name": "MyType", "path": "./types.ts" }
 ```
 
-3. **Lib specifier**: Match TypeScript built-in lib types
+1. **Lib specifier**: Match TypeScript built-in lib types
 
 ```json
 { "from": "lib", "name": "Promise" }
 { "from": "lib", "name": ["Promise", "PromiseLike"] }
 ```
 
-4. **Package specifier**: Match types/values from npm packages
+1. **Package specifier**: Match types/values from npm packages
 
 ```json
 { "from": "package", "name": "Observable", "package": "rxjs" }

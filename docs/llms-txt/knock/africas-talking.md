@@ -1,0 +1,73 @@
+# Source: https://docs.knock.app/integrations/sms/africas-talking.md
+
+---
+title: How to send SMS messages with Africa's Talking
+description: Get started sending SMS notifications with Africa's Talking and Knock.
+section: Integrations > SMS
+layout: integrations
+---
+
+Knock integrates with <a href="https://africastalking.com/" target="_blank">Africa's Talking</a> to send SMS notifications to your recipients.
+
+## Features
+
+- Knock link tracking
+- Per environment configuration
+- Sandbox mode
+
+## Getting started
+
+You can create a new Africa's Talking channel in the dashboard under the **Channels and sources** page in your account settings. From there, you'll need to configure the channel for each environment you have.
+
+## Channel configuration
+
+The following channel settings should be configured per [environment](/concepts/environments). Navigate to **Channels and sources** in your dashboard account settings, select your Africa's Talking [channel](/concepts/channels), then click "Manage configuration" under the environment that you'd like to configure.
+
+<AccordionGroup>
+  <Accordion title="Settings">
+    Fields marked with an `*` are required.
+    
+    **Knock settings**
+    <Attributes>
+      <Attribute
+        name="Sandbox mode"
+        type="boolean"
+        nameSlug="/integrations/overview#sandbox-mode"
+        description="Whether to enable sandbox mode for your Africa's Talking channel."
+      />
+      <Attribute
+        name="Knock link tracking"
+        type="boolean"
+        nameSlug="/send-notifications/tracking#link-click-tracking"
+        description="Whether to enable Knock link-click tracking."
+      />
+    </Attributes>
+
+    **Provider settings for Africa's Talking**
+    <Attributes>
+      <Attribute
+        name="API key"
+        type="string*"
+        description="The API key from Africa's Talking."
+      />
+      <Attribute
+        name="Username"
+        type="string*"
+        description="The application username from Africa's Talking."
+      />
+      <Attribute
+        name="Short code"
+        type="string"
+        description="The short code to send messages from."
+      />
+    </Attributes>
+
+  </Accordion>
+  <Accordion title="Conditions">
+    Set optional per-environment [conditions](/integrations/overview#channel-conditions) for this channel. These conditions are evaluated each time a workflow run encounters a step that uses this channel in the configured environment. If the conditions are not met, the step will be skipped.
+  </Accordion>
+</AccordionGroup>
+
+## Recipient data requirements
+
+In order to send an SMS notification you'll need a valid `phone_number` property set on your recipient.

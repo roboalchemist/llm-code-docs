@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Etcd key-value store should be encrypted at rest
-Classification:complianceFramework:cis-kubernetesControl:1.2.33 
+Classification:complianceFramework:cis-kubernetesControl:1.2.33
 ## Description{% #description %}
 
 Encrypt etcd key-value store.

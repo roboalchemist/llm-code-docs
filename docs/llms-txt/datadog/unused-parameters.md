@@ -39,7 +39,7 @@ To comply with this rule, ensure that every parameter declared in a method signa
 
 ```
 public with sharing class AccountHelper {
-    public static Integer limitSize = 2;    
+    public static Integer limitSize = 2;
     // A method inside the class
     public static List<Account> getActiveAccounts(Integer limitSize) {
         this.limitSize = 5;
@@ -49,7 +49,7 @@ public with sharing class AccountHelper {
 
 ```
 public with sharing class AccountHelper {
-    
+
     // A method inside the class
     public static List<Account> getActiveAccounts(Integer limitSize) {
         // Query Accounts where Active__c (a custom checkbox field) is true
@@ -59,7 +59,7 @@ public with sharing class AccountHelper {
             WHERE Active__c = true
             ORDER BY Name
         ];
-        
+
         return activeAccounts;
     }
 }
@@ -69,7 +69,7 @@ public with sharing class AccountHelper {
 
 ```
 public with sharing class AccountHelper {
-    
+
     // A method inside the class
     public static List<Account> getActiveAccounts(Integer limitSize) {
         // Query Accounts where Active__c (a custom checkbox field) is true
@@ -80,11 +80,10 @@ public with sharing class AccountHelper {
             ORDER BY Name
             LIMIT :limitSize
         ];
-        
+
         return activeAccounts;
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

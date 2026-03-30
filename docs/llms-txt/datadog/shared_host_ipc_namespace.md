@@ -77,7 +77,7 @@ metadata:
 spec:
   template:
     spec:
-      hostIPC: false      
+      hostIPC: false
       securityContext:
         runAsUser: 1000
         runAsGroup: 3000
@@ -93,7 +93,7 @@ spec:
             - name: sec-ctx-vol
               mountPath: /data/demo
           securityContext:
-            allowPrivilegeEscalation: false    
+            allowPrivilegeEscalation: false
 ```
 
 ## Non-Compliant Code Examples{% #non-compliant-code-examples %}
@@ -123,7 +123,7 @@ spec:
             - name: sec-ctx-vol
               mountPath: /data/demo
           securityContext:
-            allowPrivilegeEscalation: false    
+            allowPrivilegeEscalation: false
 ```
 
 ```yaml

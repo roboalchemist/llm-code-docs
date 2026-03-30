@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Indications of malicious key pair creation by long term access key
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098)
 ## Goal{% #goal %}
 
 Detect when a key pair is created using a long-term access key that has a suspicious naming convention.

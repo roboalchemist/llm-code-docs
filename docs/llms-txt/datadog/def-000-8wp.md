@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Install pam-runtime Package
 ---
 
 # Install pam-runtime Package
- 
+
 ## Description{% #description %}
 
 The `libpam-runtime` package can be installed with the following command:

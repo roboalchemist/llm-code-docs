@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify /boot/grub2/user.cfg Group Ownership
- 
+
 ## Description{% #description %}
 
 The file `/boot/grub2/user.cfg` should be group-owned by the `root` group to prevent reading or modification of the file. To properly set the group owner of `/boot/grub2/user.cfg`, run the command:

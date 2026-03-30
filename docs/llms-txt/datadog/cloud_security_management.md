@@ -88,7 +88,7 @@ To get more detail, use [Findings](https://app.datadoghq.com/security/compliance
      source="https://datadog-docs.imgix.net/images/security/csm/security_graph.33a02b53cfce68b34d33b51c2dcfb8d4.png?auto=format"
      alt="Security Graph displaying an example EC2 instance" /%}
 
-- Use the [Resource Catalog](https://app.datadoghq.com/infrastructure/catalog) to view specific misconfigurations and threats that have been reported on the hosts and resources in your environments. For more information, see the [Resource Catalog](https://docs.datadoghq.com/infrastructure/resource_catalog) documentation.Important note for users on the following Datadog sites: app.ddog-gov.com: 
+- Use the [Resource Catalog](https://app.datadoghq.com/infrastructure/catalog) to view specific misconfigurations and threats that have been reported on the hosts and resources in your environments. For more information, see the [Resource Catalog](https://docs.datadoghq.com/infrastructure/resource_catalog) documentation.Important note for users on the following Datadog sites: app.ddog-gov.com:
 
 Important alert (level: danger): Resource Catalog is not supported for your selected [Datadog site](https://docs.datadoghq.com/getting_started/site) ().
 

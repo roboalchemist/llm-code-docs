@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # The kubelet configuration file should have permissions of 644 or more restrictive
-Classification:complianceFramework:cis-kubernetesControl:4.1.9 
+Classification:complianceFramework:cis-kubernetesControl:4.1.9
 ## Description{% #description %}
 
 Ensure that if the kubelet refers to a configuration file with the `--config` argument, that file has permissions of 644 or more restrictive.

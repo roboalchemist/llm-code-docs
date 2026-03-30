@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Elasticsearch clusters should use the latest engine version
- 
+
 ## Description{% #description %}
 
 Upgrade your Amazon Elasticsearch Service (ES) engine to the latest version. By doing so, you ensure your deployment benefits from the newest bug fixes, security patches, and enhanced features, contributing to a more robust and secure search and analytics solution.

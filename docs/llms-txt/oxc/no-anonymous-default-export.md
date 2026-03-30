@@ -1,25 +1,21 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-anonymous-default-export.md
 
-# Source: https://oxc.rs/docs/guide/usage/linter/rules/import/no-anonymous-default-export.md
+## Source: https://oxc.rs/docs/guide/usage/linter/rules/import/no-anonymous-default-export.md
 
----
-url: /docs/guide/usage/linter/rules/import/no-anonymous-default-export.md
----
-
-### What it does
+## What it does
 
 Reports if a module's default export is unnamed.
 This includes several types of unnamed data types;
 literals, object expressions, arrays, anonymous functions, arrow functions,
 and anonymous class declarations.
 
-### Why is this bad?
+## Why is this bad?
 
 Ensuring that default exports are named helps improve the grepability of
 the codebase by encouraging the re-use of the same identifier for
 the module's default export at its declaration site and at its import sites.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -70,7 +66,7 @@ but any types can be selectively allowed by toggling them on in the options.
 
 This rule accepts a configuration object with the following properties:
 
-### allowAnonymousClass
+## allowAnonymousClass
 
 type: `boolean`
 
@@ -78,7 +74,7 @@ default: `false`
 
 Allow anonymous class as default export.
 
-### allowAnonymousFunction
+## allowAnonymousFunction
 
 type: `boolean`
 
@@ -86,7 +82,7 @@ default: `false`
 
 Allow anonymous function as default export.
 
-### allowArray
+## allowArray
 
 type: `boolean`
 
@@ -94,7 +90,7 @@ default: `false`
 
 Allow anonymous array as default export.
 
-### allowArrowFunction
+## allowArrowFunction
 
 type: `boolean`
 
@@ -102,7 +98,7 @@ default: `false`
 
 Allow anonymous arrow function as default export.
 
-### allowCallExpression
+## allowCallExpression
 
 type: `boolean`
 
@@ -110,7 +106,7 @@ default: `true`
 
 Allow anonymous call expression as default export.
 
-### allowLiteral
+## allowLiteral
 
 type: `boolean`
 
@@ -118,7 +114,7 @@ default: `false`
 
 Allow anonymous literal as default export.
 
-### allowNew
+## allowNew
 
 type: `boolean`
 
@@ -126,7 +122,7 @@ default: `false`
 
 Allow anonymous new expression as default export.
 
-### allowObject
+## allowObject
 
 type: `boolean`
 

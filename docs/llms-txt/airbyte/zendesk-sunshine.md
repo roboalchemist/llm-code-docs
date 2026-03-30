@@ -1,0 +1,249 @@
+# Source: https://docs.airbyte.com/integrations/sources/zendesk-sunshine.md
+
+![](https://connectors.airbyte.com/files/metadata/airbyte/source-zendesk-sunshine/latest/icon.svg)
+
+# Zendesk Sunshine
+
+Copy Page
+
+* Availability
+
+  Core Standard Plus Pro Enterprise Flex Self-Managed Enterprise PyAirbyte
+
+* Support Level
+
+  [Marketplace](/integrations/connector-support-levels.md)
+
+* Connector Version
+
+  [0.4.2](https://github.com/airbytehq/airbyte/blob/master/airbyte-integrations/connectors/source-zendesk-sunshine)
+
+  <!-- -->
+
+  [ ](https://github.com/airbytehq/airbyte/blob/master/airbyte-integrations/connectors/source-zendesk-sunshine)(last updated 16 days ago)
+
+* Sync Success Rate
+
+* Usage Rate
+
+* Definition ID
+
+  `325e0640-e7b3-4e24-b823-3361008f603f`
+
+## Sync overview[​](#sync-overview "Direct link to Sync overview")
+
+The Zendesk Sunshine source supports Full Refresh and Incremental syncs.
+
+This source syncs data from the [Zendesk Sunshine API](https://developer.zendesk.com/documentation/custom-data/custom-objects/custom-objects-handbook/), which provides access to custom objects and relationships in your Zendesk account.
+
+### Output schema[​](#output-schema "Direct link to Output schema")
+
+This Source is capable of syncing the following core Streams:
+
+* [ObjectTypes](https://developer.zendesk.com/api-reference/custom-data/custom-objects-api/resource_types/)
+
+* [ObjectRecords](https://developer.zendesk.com/api-reference/custom-data/custom-objects-api/resources/)
+
+* [RelationshipTypes](https://developer.zendesk.com/api-reference/custom-data/custom-objects-api/relationship_types/)
+
+* [RelationshipRecords](https://developer.zendesk.com/api-reference/custom-data/custom-objects-api/relationships/)
+
+* [ObjectTypePolicies](https://developer.zendesk.com/api-reference/custom-data/custom-objects-api/permissions/)
+
+* [Jobs](https://developer.zendesk.com/api-reference/custom-data/custom-objects-api/jobs/)
+
+  This stream is currently not available because it stores data temporary.
+
+* [Limits](https://developer.zendesk.com/api-reference/custom-data/custom-objects-api/limits/)
+
+### Data type mapping[​](#data-type-mapping "Direct link to Data type mapping")
+
+| Integration Type | Airbyte Type | Notes |
+| ---------------- | ------------ | ----- |
+| `string`         | `string`     |       |
+| `number`         | `number`     |       |
+| `array`          | `array`      |       |
+| `object`         | `object`     |       |
+
+### Features[​](#features "Direct link to Features")
+
+| Feature           | Supported?(Yes/No) | Notes |
+| ----------------- | ------------------ | ----- |
+| Full Refresh Sync | Yes                |       |
+| Incremental Sync  | Yes                |       |
+
+### Performance considerations[​](#performance-considerations "Direct link to Performance considerations")
+
+The connector is restricted by normal Zendesk [requests limitation](https://developer.zendesk.com/api-reference/ticketing/account-configuration/usage_limits/)
+
+The Zendesk connector should not run into Zendesk API limitations under normal usage. Please [create an issue](https://github.com/airbytehq/airbyte/issues) if you see any rate limit issues that are not automatically retried successfully.
+
+## Getting started[​](#getting-started "Direct link to Getting started")
+
+### Requirements[​](#requirements "Direct link to Requirements")
+
+* A Zendesk account with Custom Objects enabled
+
+* Your Zendesk subdomain (the part before `.zendesk.com` in your Zendesk URL)
+
+* One of the following authentication methods:
+
+  <!-- -->
+
+  * **OAuth2.0** (recommended for Airbyte Cloud): Client ID, Client Secret, and authorization through Airbyte's OAuth flow
+  * **API Token** (recommended for Airbyte Open Source): Your Zendesk email address and an API token
+  * **OAuth2.0 (Legacy)**: A manually generated OAuth access token
+
+### Setup guide[​](#setup-guide "Direct link to Setup guide")
+
+#### Step 1: Enable Custom Objects[​](#step-1-enable-custom-objects "Direct link to Step 1: Enable Custom Objects")
+
+Before using this connector, ensure Custom Objects are enabled in your Zendesk account. Follow Zendesk's [guide to enabling Custom Objects](https://developer.zendesk.com/documentation/custom-data/custom-objects/getting-started-with-custom-objects/#enabling-custom-objects).
+
+#### Step 2: Choose an authentication method[​](#step-2-choose-an-authentication-method "Direct link to Step 2: Choose an authentication method")
+
+This connector supports three authentication methods:
+
+##### OAuth2.0 (recommended for Airbyte Cloud)[​](#oauth20-recommended-for-airbyte-cloud "Direct link to OAuth2.0 (recommended for Airbyte Cloud)")
+
+This is the recommended method for Airbyte Cloud users. When you set up the connector in Airbyte Cloud, you'll be redirected to Zendesk to authorize the connection. This method uses refresh tokens to automatically maintain access without requiring you to manually regenerate tokens.
+
+Zendesk uses rotating refresh tokens, meaning each time the connector refreshes its access token, it receives a new refresh token and the previous one is invalidated. The connector handles this automatically.
+
+##### API Token (recommended for Airbyte Open Source)[​](#api-token-recommended-for-airbyte-open-source "Direct link to API Token (recommended for Airbyte Open Source)")
+
+To use API token authentication:
+
+1. In Zendesk, go to **Admin Center** > **Apps and integrations** > **APIs** > **Zendesk API**.
+2. Enable token access if it isn't already enabled.
+3. Click **Add API token**, give it a description, and click **Save**.
+4. Copy the token value (it's only shown once).
+5. In Airbyte, enter your Zendesk email address and the API token.
+
+For more information, see Zendesk's [API token documentation](https://developer.zendesk.com/api-reference/ticketing/introduction/#api-token).
+
+##### OAuth2.0 (Legacy)[​](#oauth20-legacy "Direct link to OAuth2.0 (Legacy)")
+
+This method uses a manually generated OAuth access token. It's provided for backward compatibility with existing connections. For new connections, use the OAuth2.0 method instead, which handles token refresh automatically.
+
+To generate a legacy access token, follow Zendesk's [OAuth documentation](https://developer.zendesk.com/documentation/ticketing/working-with-oauth/creating-and-using-oauth-tokens-with-the-api/).
+
+## Reference[​](#reference "Direct link to Reference")
+
+### Config fields reference
+
+Field
+
+Type
+
+Property name
+
+›
+
+Start date
+
+required
+
+string
+
+start\_date
+
+›
+
+Subdomain
+
+required
+
+string
+
+subdomain
+
+›
+
+Authentication
+
+object
+
+credentials
+
+## Changelog[​](#changelog "Direct link to Changelog")
+
+Expand to review
+
+| Version | Date       | Pull Request                                             | Subject                                                                         |
+| ------- | ---------- | -------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| 0.4.2   | 2026-02-24 | [73539](https://github.com/airbytehq/airbyte/pull/73539) | Update dependencies                                                             |
+| 0.4.1   | 2026-02-10 | [72608](https://github.com/airbytehq/airbyte/pull/72608) | Update dependencies                                                             |
+| 0.4.0   | 2026-02-03 | [71856](https://github.com/airbytehq/airbyte/pull/71856) | Add OAuth2.0 with refresh token support; Upgrade CDK version to 7.8.1           |
+| 0.3.41  | 2026-01-20 | [72044](https://github.com/airbytehq/airbyte/pull/72044) | Update dependencies                                                             |
+| 0.3.40  | 2026-01-14 | [71709](https://github.com/airbytehq/airbyte/pull/71709) | Update dependencies                                                             |
+| 0.3.39  | 2025-12-18 | [70704](https://github.com/airbytehq/airbyte/pull/70704) | Update dependencies                                                             |
+| 0.3.38  | 2025-11-25 | [70071](https://github.com/airbytehq/airbyte/pull/70071) | Update dependencies                                                             |
+| 0.3.37  | 2025-11-18 | [69511](https://github.com/airbytehq/airbyte/pull/69511) | Update dependencies                                                             |
+| 0.3.36  | 2025-10-29 | [68965](https://github.com/airbytehq/airbyte/pull/68965) | Update dependencies                                                             |
+| 0.3.35  | 2025-10-21 | [68429](https://github.com/airbytehq/airbyte/pull/68429) | Update dependencies                                                             |
+| 0.3.34  | 2025-10-14 | [68014](https://github.com/airbytehq/airbyte/pull/68014) | Update dependencies                                                             |
+| 0.3.33  | 2025-10-07 | [67239](https://github.com/airbytehq/airbyte/pull/67239) | Update dependencies                                                             |
+| 0.3.32  | 2025-09-30 | [66852](https://github.com/airbytehq/airbyte/pull/66852) | Update dependencies                                                             |
+| 0.3.31  | 2025-09-24 | [66471](https://github.com/airbytehq/airbyte/pull/66471) | Update dependencies                                                             |
+| 0.3.30  | 2025-09-09 | [65735](https://github.com/airbytehq/airbyte/pull/65735) | Update dependencies                                                             |
+| 0.3.29  | 2025-08-24 | [65484](https://github.com/airbytehq/airbyte/pull/65484) | Update dependencies                                                             |
+| 0.3.28  | 2025-08-10 | [64838](https://github.com/airbytehq/airbyte/pull/64838) | Update dependencies                                                             |
+| 0.3.27  | 2025-08-02 | [64368](https://github.com/airbytehq/airbyte/pull/64368) | Update dependencies                                                             |
+| 0.3.26  | 2025-07-26 | [64065](https://github.com/airbytehq/airbyte/pull/64065) | Update dependencies                                                             |
+| 0.3.25  | 2025-07-19 | [63620](https://github.com/airbytehq/airbyte/pull/63620) | Update dependencies                                                             |
+| 0.3.24  | 2025-07-12 | [63245](https://github.com/airbytehq/airbyte/pull/63245) | Update dependencies                                                             |
+| 0.3.23  | 2025-07-05 | [62671](https://github.com/airbytehq/airbyte/pull/62671) | Update dependencies                                                             |
+| 0.3.22  | 2025-06-28 | [62257](https://github.com/airbytehq/airbyte/pull/62257) | Update dependencies                                                             |
+| 0.3.21  | 2025-06-21 | [61754](https://github.com/airbytehq/airbyte/pull/61754) | Update dependencies                                                             |
+| 0.3.20  | 2025-06-15 | [61210](https://github.com/airbytehq/airbyte/pull/61210) | Update dependencies                                                             |
+| 0.3.19  | 2025-05-24 | [59966](https://github.com/airbytehq/airbyte/pull/59966) | Update dependencies                                                             |
+| 0.3.18  | 2025-05-04 | [59562](https://github.com/airbytehq/airbyte/pull/59562) | Update dependencies                                                             |
+| 0.3.17  | 2025-04-26 | [58944](https://github.com/airbytehq/airbyte/pull/58944) | Update dependencies                                                             |
+| 0.3.16  | 2025-04-19 | [58533](https://github.com/airbytehq/airbyte/pull/58533) | Update dependencies                                                             |
+| 0.3.15  | 2025-04-13 | [58038](https://github.com/airbytehq/airbyte/pull/58038) | Update dependencies                                                             |
+| 0.3.14  | 2025-04-05 | [57377](https://github.com/airbytehq/airbyte/pull/57377) | Update dependencies                                                             |
+| 0.3.13  | 2025-03-29 | [56820](https://github.com/airbytehq/airbyte/pull/56820) | Update dependencies                                                             |
+| 0.3.12  | 2025-03-22 | [56337](https://github.com/airbytehq/airbyte/pull/56337) | Update dependencies                                                             |
+| 0.3.11  | 2025-03-09 | [55668](https://github.com/airbytehq/airbyte/pull/55668) | Update dependencies                                                             |
+| 0.3.10  | 2025-03-01 | [55165](https://github.com/airbytehq/airbyte/pull/55165) | Update dependencies                                                             |
+| 0.3.9   | 2025-02-23 | [54636](https://github.com/airbytehq/airbyte/pull/54636) | Update dependencies                                                             |
+| 0.3.8   | 2025-02-15 | [54112](https://github.com/airbytehq/airbyte/pull/54112) | Update dependencies                                                             |
+| 0.3.7   | 2025-02-08 | [53603](https://github.com/airbytehq/airbyte/pull/53603) | Update dependencies                                                             |
+| 0.3.6   | 2025-02-01 | [52554](https://github.com/airbytehq/airbyte/pull/52554) | Update dependencies                                                             |
+| 0.3.5   | 2025-01-18 | [51990](https://github.com/airbytehq/airbyte/pull/51990) | Update dependencies                                                             |
+| 0.3.4   | 2025-01-11 | [51421](https://github.com/airbytehq/airbyte/pull/51421) | Update dependencies                                                             |
+| 0.3.3   | 2024-12-28 | [50380](https://github.com/airbytehq/airbyte/pull/50380) | Update dependencies                                                             |
+| 0.3.2   | 2024-12-14 | [49753](https://github.com/airbytehq/airbyte/pull/49753) | Update dependencies                                                             |
+| 0.3.1   | 2024-12-12 | [49415](https://github.com/airbytehq/airbyte/pull/49415) | Update dependencies                                                             |
+| 0.3.0   | 2024-10-31 | [47327](https://github.com/airbytehq/airbyte/pull/47327) | Migrate to Manifest-only                                                        |
+| 0.2.26  | 2024-10-29 | [47802](https://github.com/airbytehq/airbyte/pull/47802) | Update dependencies                                                             |
+| 0.2.25  | 2024-10-28 | [47066](https://github.com/airbytehq/airbyte/pull/47066) | Update dependencies                                                             |
+| 0.2.24  | 2024-10-12 | [46784](https://github.com/airbytehq/airbyte/pull/46784) | Update dependencies                                                             |
+| 0.2.23  | 2024-10-05 | [46486](https://github.com/airbytehq/airbyte/pull/46486) | Update dependencies                                                             |
+| 0.2.22  | 2024-09-28 | [46102](https://github.com/airbytehq/airbyte/pull/46102) | Update dependencies                                                             |
+| 0.2.21  | 2024-09-21 | [45769](https://github.com/airbytehq/airbyte/pull/45769) | Update dependencies                                                             |
+| 0.2.20  | 2024-09-14 | [45546](https://github.com/airbytehq/airbyte/pull/45546) | Update dependencies                                                             |
+| 0.2.19  | 2024-09-07 | [45298](https://github.com/airbytehq/airbyte/pull/45298) | Update dependencies                                                             |
+| 0.2.18  | 2024-08-31 | [45008](https://github.com/airbytehq/airbyte/pull/45008) | Update dependencies                                                             |
+| 0.2.17  | 2024-08-24 | [44720](https://github.com/airbytehq/airbyte/pull/44720) | Update dependencies                                                             |
+| 0.2.16  | 2024-08-17 | [44219](https://github.com/airbytehq/airbyte/pull/44219) | Update dependencies                                                             |
+| 0.2.15  | 2024-08-10 | [43502](https://github.com/airbytehq/airbyte/pull/43502) | Update dependencies                                                             |
+| 0.2.14  | 2024-08-03 | [43246](https://github.com/airbytehq/airbyte/pull/43246) | Update dependencies                                                             |
+| 0.2.13  | 2024-07-27 | [42604](https://github.com/airbytehq/airbyte/pull/42604) | Update dependencies                                                             |
+| 0.2.12  | 2024-07-20 | [42371](https://github.com/airbytehq/airbyte/pull/42371) | Update dependencies                                                             |
+| 0.2.11  | 2024-07-13 | [41880](https://github.com/airbytehq/airbyte/pull/41880) | Update dependencies                                                             |
+| 0.2.10  | 2024-07-10 | [41496](https://github.com/airbytehq/airbyte/pull/41496) | Update dependencies                                                             |
+| 0.2.9   | 2024-07-09 | [41205](https://github.com/airbytehq/airbyte/pull/41205) | Update dependencies                                                             |
+| 0.2.8   | 2024-07-06 | [40850](https://github.com/airbytehq/airbyte/pull/40850) | Update dependencies                                                             |
+| 0.2.7   | 2024-06-25 | [40443](https://github.com/airbytehq/airbyte/pull/40443) | Update dependencies                                                             |
+| 0.2.6   | 2024-06-22 | [39956](https://github.com/airbytehq/airbyte/pull/39956) | Update dependencies                                                             |
+| 0.2.5   | 2024-06-04 | [39058](https://github.com/airbytehq/airbyte/pull/39058) | \[autopull] Upgrade base image to v1.2.1                                        |
+| 0.2.4   | 2024-04-19 | [37302](https://github.com/airbytehq/airbyte/pull/37302) | Updating to 0.80.0 CDK                                                          |
+| 0.2.3   | 2024-04-18 | [37302](https://github.com/airbytehq/airbyte/pull/37302) | Manage dependencies with Poetry.                                                |
+| 0.2.2   | 2024-04-15 | [37302](https://github.com/airbytehq/airbyte/pull/37302) | Base image migration: remove Dockerfile and use the python-connector-base image |
+| 0.2.1   | 2024-04-12 | [37302](https://github.com/airbytehq/airbyte/pull/37302) | schema descriptions                                                             |
+| 0.2.0   | 2023-08-22 | [29310](https://github.com/airbytehq/airbyte/pull/29310) | Migrate Python CDK to Low Code                                                  |
+| 0.1.2   | 2023-08-15 | [7976](https://github.com/airbytehq/airbyte/pull/7976)   | Fix schemas and tests                                                           |
+| 0.1.1   | 2021-11-15 | [7976](https://github.com/airbytehq/airbyte/pull/7976)   | Add oauth2.0 support                                                            |
+| 0.1.0   | 2021-07-08 | [4359](https://github.com/airbytehq/airbyte/pull/4359)   | Initial Release                                                                 |

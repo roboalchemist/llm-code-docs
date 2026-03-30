@@ -52,6 +52,5 @@ window.postMessage(message, '*')
 ```javascript
 window.postMessage(message, 'https://app.domain.tld')
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

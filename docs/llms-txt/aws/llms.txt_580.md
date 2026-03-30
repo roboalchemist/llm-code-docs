@@ -1,0 +1,158 @@
+# Source: https://docs.aws.amazon.com/mgn/latest/APIReference/llms.txt
+
+# ApplicationMigrationService Application Migration Service Api Docs
+
+> The Application Migration Service service.
+
+- [Welcome](https://docs.aws.amazon.com/mgn/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/mgn/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/mgn/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/mgn/latest/APIReference/API_Operations.html)
+
+- [ArchiveApplication](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ArchiveApplication.html): Archive application.
+- [ArchiveWave](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ArchiveWave.html): Archive wave.
+- [AssociateApplications](https://docs.aws.amazon.com/mgn/latest/APIReference/API_AssociateApplications.html): Associate applications to wave.
+- [AssociateSourceServers](https://docs.aws.amazon.com/mgn/latest/APIReference/API_AssociateSourceServers.html): Associate source servers to application.
+- [ChangeServerLifeCycleState](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ChangeServerLifeCycleState.html): Allows the user to set the SourceServer.LifeCycle.state property for specific Source Server IDs to one of the following: READY_FOR_TEST or READY_FOR_CUTOVER.
+- [CreateApplication](https://docs.aws.amazon.com/mgn/latest/APIReference/API_CreateApplication.html): Create application.
+- [CreateConnector](https://docs.aws.amazon.com/mgn/latest/APIReference/API_CreateConnector.html): Create Connector.
+- [CreateLaunchConfigurationTemplate](https://docs.aws.amazon.com/mgn/latest/APIReference/API_CreateLaunchConfigurationTemplate.html): Creates a new Launch Configuration Template.
+- [CreateReplicationConfigurationTemplate](https://docs.aws.amazon.com/mgn/latest/APIReference/API_CreateReplicationConfigurationTemplate.html): Creates a new ReplicationConfigurationTemplate.
+- [CreateWave](https://docs.aws.amazon.com/mgn/latest/APIReference/API_CreateWave.html): Create wave.
+- [DeleteApplication](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DeleteApplication.html): Delete application.
+- [DeleteConnector](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DeleteConnector.html): Delete Connector.
+- [DeleteJob](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DeleteJob.html): Deletes a single Job by ID.
+- [DeleteLaunchConfigurationTemplate](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DeleteLaunchConfigurationTemplate.html): Deletes a single Launch Configuration Template by ID.
+- [DeleteReplicationConfigurationTemplate](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DeleteReplicationConfigurationTemplate.html): Deletes a single Replication Configuration Template by ID
+- [DeleteSourceServer](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DeleteSourceServer.html): Deletes a single source server by ID.
+- [DeleteVcenterClient](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DeleteVcenterClient.html): Deletes a given vCenter client by ID.
+- [DeleteWave](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DeleteWave.html): Delete wave.
+- [DescribeJobLogItems](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DescribeJobLogItems.html): Retrieves detailed job log items with paging.
+- [DescribeJobs](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DescribeJobs.html): Returns a list of Jobs.
+- [DescribeLaunchConfigurationTemplates](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DescribeLaunchConfigurationTemplates.html): Lists all Launch Configuration Templates, filtered by Launch Configuration Template IDs
+- [DescribeReplicationConfigurationTemplates](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DescribeReplicationConfigurationTemplates.html): Lists all ReplicationConfigurationTemplates, filtered by Source Server IDs.
+- [DescribeSourceServers](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DescribeSourceServers.html): Retrieves all SourceServers or multiple SourceServers by ID.
+- [DescribeVcenterClients](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DescribeVcenterClients.html): Returns a list of the installed vCenter clients.
+- [DisassociateApplications](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DisassociateApplications.html): Disassociate applications from wave.
+- [DisassociateSourceServers](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DisassociateSourceServers.html): Disassociate source servers from application.
+- [DisconnectFromService](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DisconnectFromService.html): Disconnects specific Source Servers from Application Migration Service.
+- [FinalizeCutover](https://docs.aws.amazon.com/mgn/latest/APIReference/API_FinalizeCutover.html): Finalizes the cutover immediately for specific Source Servers.
+- [GetLaunchConfiguration](https://docs.aws.amazon.com/mgn/latest/APIReference/API_GetLaunchConfiguration.html): Lists all LaunchConfigurations available, filtered by Source Server IDs.
+- [GetReplicationConfiguration](https://docs.aws.amazon.com/mgn/latest/APIReference/API_GetReplicationConfiguration.html): Lists all ReplicationConfigurations, filtered by Source Server ID.
+- [InitializeService](https://docs.aws.amazon.com/mgn/latest/APIReference/API_InitializeService.html): Initialize Application Migration Service.
+- [ListApplications](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ListApplications.html): Retrieves all applications or multiple applications by ID.
+- [ListConnectors](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ListConnectors.html): List Connectors.
+- [ListExportErrors](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ListExportErrors.html): List export errors.
+- [ListExports](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ListExports.html): List exports.
+- [ListImportErrors](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ListImportErrors.html): List import errors.
+- [ListImports](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ListImports.html): List imports.
+- [ListManagedAccounts](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ListManagedAccounts.html): List Managed Accounts.
+- [ListSourceServerActions](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ListSourceServerActions.html): List source server post migration custom actions.
+- [ListTagsForResource](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ListTagsForResource.html): List all tags for your Application Migration Service resources.
+- [ListTemplateActions](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ListTemplateActions.html): List template post migration custom actions.
+- [ListWaves](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ListWaves.html): Retrieves all waves or multiple waves by ID.
+- [MarkAsArchived](https://docs.aws.amazon.com/mgn/latest/APIReference/API_MarkAsArchived.html): Archives specific Source Servers by setting the SourceServer.isArchived property to true for specified SourceServers by ID.
+- [PauseReplication](https://docs.aws.amazon.com/mgn/latest/APIReference/API_PauseReplication.html): Pause Replication.
+- [PutSourceServerAction](https://docs.aws.amazon.com/mgn/latest/APIReference/API_PutSourceServerAction.html): Put source server post migration custom action.
+- [PutTemplateAction](https://docs.aws.amazon.com/mgn/latest/APIReference/API_PutTemplateAction.html): Put template post migration custom action.
+- [RemoveSourceServerAction](https://docs.aws.amazon.com/mgn/latest/APIReference/API_RemoveSourceServerAction.html): Remove source server post migration custom action.
+- [RemoveTemplateAction](https://docs.aws.amazon.com/mgn/latest/APIReference/API_RemoveTemplateAction.html): Remove template post migration custom action.
+- [ResumeReplication](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ResumeReplication.html): Resume Replication.
+- [RetryDataReplication](https://docs.aws.amazon.com/mgn/latest/APIReference/API_RetryDataReplication.html): Causes the data replication initiation sequence to begin immediately upon next Handshake for specified SourceServer IDs, regardless of when the previous initiation started.
+- [StartCutover](https://docs.aws.amazon.com/mgn/latest/APIReference/API_StartCutover.html): Launches a Cutover Instance for specific Source Servers.
+- [StartExport](https://docs.aws.amazon.com/mgn/latest/APIReference/API_StartExport.html): Start export.
+- [StartImport](https://docs.aws.amazon.com/mgn/latest/APIReference/API_StartImport.html): Start import.
+- [StartReplication](https://docs.aws.amazon.com/mgn/latest/APIReference/API_StartReplication.html): Start replication for source server irrespective of its replication type.
+- [StartTest](https://docs.aws.amazon.com/mgn/latest/APIReference/API_StartTest.html): Launches a Test Instance for specific Source Servers.
+- [StopReplication](https://docs.aws.amazon.com/mgn/latest/APIReference/API_StopReplication.html): Stop Replication.
+- [TagResource](https://docs.aws.amazon.com/mgn/latest/APIReference/API_TagResource.html): Adds or overwrites only the specified tags for the specified Application Migration Service resource or resources.
+- [TerminateTargetInstances](https://docs.aws.amazon.com/mgn/latest/APIReference/API_TerminateTargetInstances.html): Starts a job that terminates specific launched EC2 Test and Cutover instances.
+- [UnarchiveApplication](https://docs.aws.amazon.com/mgn/latest/APIReference/API_UnarchiveApplication.html): Unarchive application.
+- [UnarchiveWave](https://docs.aws.amazon.com/mgn/latest/APIReference/API_UnarchiveWave.html): Unarchive wave.
+- [UntagResource](https://docs.aws.amazon.com/mgn/latest/APIReference/API_UntagResource.html): Deletes the specified set of tags from the specified set of Application Migration Service resources.
+- [UpdateApplication](https://docs.aws.amazon.com/mgn/latest/APIReference/API_UpdateApplication.html): Update application.
+- [UpdateConnector](https://docs.aws.amazon.com/mgn/latest/APIReference/API_UpdateConnector.html): Update Connector.
+- [UpdateLaunchConfiguration](https://docs.aws.amazon.com/mgn/latest/APIReference/API_UpdateLaunchConfiguration.html): Updates multiple LaunchConfigurations by Source Server ID.
+- [UpdateLaunchConfigurationTemplate](https://docs.aws.amazon.com/mgn/latest/APIReference/API_UpdateLaunchConfigurationTemplate.html): Updates an existing Launch Configuration Template by ID.
+- [UpdateReplicationConfiguration](https://docs.aws.amazon.com/mgn/latest/APIReference/API_UpdateReplicationConfiguration.html): Allows you to update multiple ReplicationConfigurations by Source Server ID.
+- [UpdateReplicationConfigurationTemplate](https://docs.aws.amazon.com/mgn/latest/APIReference/API_UpdateReplicationConfigurationTemplate.html): Updates multiple ReplicationConfigurationTemplates by ID.
+- [UpdateSourceServer](https://docs.aws.amazon.com/mgn/latest/APIReference/API_UpdateSourceServer.html): Update Source Server.
+- [UpdateSourceServerReplicationType](https://docs.aws.amazon.com/mgn/latest/APIReference/API_UpdateSourceServerReplicationType.html): Allows you to change between the AGENT_BASED replication type and the SNAPSHOT_SHIPPING replication type.
+- [UpdateWave](https://docs.aws.amazon.com/mgn/latest/APIReference/API_UpdateWave.html): Update wave.
+
+
+## [Data Types](https://docs.aws.amazon.com/mgn/latest/APIReference/API_Types.html)
+
+- [Application](https://docs.aws.amazon.com/mgn/latest/APIReference/API_Application.html)
+- [ApplicationAggregatedStatus](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ApplicationAggregatedStatus.html): Application aggregated status.
+- [ChangeServerLifeCycleStateSourceServerLifecycle](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ChangeServerLifeCycleStateSourceServerLifecycle.html): The request to change the source server migration lifecycle state.
+- [Connector](https://docs.aws.amazon.com/mgn/latest/APIReference/API_Connector.html)
+- [ConnectorSsmCommandConfig](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ConnectorSsmCommandConfig.html): Connector SSM command config.
+- [CPU](https://docs.aws.amazon.com/mgn/latest/APIReference/API_CPU.html): Source server CPU information.
+- [DataReplicationError](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DataReplicationError.html): Error in data replication.
+- [DataReplicationInfo](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DataReplicationInfo.html): Request data replication info.
+- [DataReplicationInfoReplicatedDisk](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DataReplicationInfoReplicatedDisk.html): Request to query disks replicated.
+- [DataReplicationInitiation](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DataReplicationInitiation.html): Data replication initiation.
+- [DataReplicationInitiationStep](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DataReplicationInitiationStep.html): Data replication initiation step.
+- [DescribeJobsRequestFilters](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DescribeJobsRequestFilters.html): Request to describe Job log filters.
+- [DescribeSourceServersRequestFilters](https://docs.aws.amazon.com/mgn/latest/APIReference/API_DescribeSourceServersRequestFilters.html): Request to filter Source Servers list.
+- [Disk](https://docs.aws.amazon.com/mgn/latest/APIReference/API_Disk.html): The disk identifier.
+- [ErrorDetails](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ErrorDetails.html): Error details.
+- [ExportErrorData](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ExportErrorData.html): Export errors data.
+- [ExportTask](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ExportTask.html): Export task.
+- [ExportTaskError](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ExportTaskError.html): Export task error.
+- [ExportTaskSummary](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ExportTaskSummary.html): Export task summary.
+- [IdentificationHints](https://docs.aws.amazon.com/mgn/latest/APIReference/API_IdentificationHints.html): Identification hints.
+- [ImportErrorData](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ImportErrorData.html): Import error data.
+- [ImportTask](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ImportTask.html): Import task.
+- [ImportTaskError](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ImportTaskError.html): Import task error.
+- [ImportTaskSummary](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ImportTaskSummary.html): Import task summary.
+- [ImportTaskSummaryApplications](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ImportTaskSummaryApplications.html): Import task summary applications.
+- [ImportTaskSummaryServers](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ImportTaskSummaryServers.html): Import task summary servers.
+- [ImportTaskSummaryWaves](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ImportTaskSummaryWaves.html): Import task summery waves.
+- [Job](https://docs.aws.amazon.com/mgn/latest/APIReference/API_Job.html): Job.
+- [JobLog](https://docs.aws.amazon.com/mgn/latest/APIReference/API_JobLog.html): Job log.
+- [JobLogEventData](https://docs.aws.amazon.com/mgn/latest/APIReference/API_JobLogEventData.html): Job log data
+- [JobPostLaunchActionsLaunchStatus](https://docs.aws.amazon.com/mgn/latest/APIReference/API_JobPostLaunchActionsLaunchStatus.html): Launch Status of the Job Post Launch Actions.
+- [LaunchConfigurationTemplate](https://docs.aws.amazon.com/mgn/latest/APIReference/API_LaunchConfigurationTemplate.html)
+- [LaunchedInstance](https://docs.aws.amazon.com/mgn/latest/APIReference/API_LaunchedInstance.html): Launched instance.
+- [LaunchTemplateDiskConf](https://docs.aws.amazon.com/mgn/latest/APIReference/API_LaunchTemplateDiskConf.html): Launch template disk configuration.
+- [Licensing](https://docs.aws.amazon.com/mgn/latest/APIReference/API_Licensing.html): Configure Licensing.
+- [LifeCycle](https://docs.aws.amazon.com/mgn/latest/APIReference/API_LifeCycle.html): Lifecycle.
+- [LifeCycleLastCutover](https://docs.aws.amazon.com/mgn/latest/APIReference/API_LifeCycleLastCutover.html): Lifecycle last Cutover .
+- [LifeCycleLastCutoverFinalized](https://docs.aws.amazon.com/mgn/latest/APIReference/API_LifeCycleLastCutoverFinalized.html): Lifecycle Cutover finalized
+- [LifeCycleLastCutoverInitiated](https://docs.aws.amazon.com/mgn/latest/APIReference/API_LifeCycleLastCutoverInitiated.html): Lifecycle last Cutover initiated.
+- [LifeCycleLastCutoverReverted](https://docs.aws.amazon.com/mgn/latest/APIReference/API_LifeCycleLastCutoverReverted.html): Lifecycle last Cutover reverted.
+- [LifeCycleLastTest](https://docs.aws.amazon.com/mgn/latest/APIReference/API_LifeCycleLastTest.html): Lifecycle last Test.
+- [LifeCycleLastTestFinalized](https://docs.aws.amazon.com/mgn/latest/APIReference/API_LifeCycleLastTestFinalized.html): Lifecycle last Test finalized.
+- [LifeCycleLastTestInitiated](https://docs.aws.amazon.com/mgn/latest/APIReference/API_LifeCycleLastTestInitiated.html): Lifecycle last Test initiated.
+- [LifeCycleLastTestReverted](https://docs.aws.amazon.com/mgn/latest/APIReference/API_LifeCycleLastTestReverted.html): Lifecycle last Test reverted.
+- [ListApplicationsRequestFilters](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ListApplicationsRequestFilters.html): Applications list filters.
+- [ListConnectorsRequestFilters](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ListConnectorsRequestFilters.html): List Connectors Request Filters.
+- [ListExportsRequestFilters](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ListExportsRequestFilters.html): List exports request filters.
+- [ListImportsRequestFilters](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ListImportsRequestFilters.html): List imports request filters.
+- [ListWavesRequestFilters](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ListWavesRequestFilters.html): Waves list filters.
+- [ManagedAccount](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ManagedAccount.html): Managed account.
+- [NetworkInterface](https://docs.aws.amazon.com/mgn/latest/APIReference/API_NetworkInterface.html): Network interface.
+- [OS](https://docs.aws.amazon.com/mgn/latest/APIReference/API_OS.html): Operating System.
+- [ParticipatingServer](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ParticipatingServer.html): Server participating in Job.
+- [PostLaunchActions](https://docs.aws.amazon.com/mgn/latest/APIReference/API_PostLaunchActions.html): Post Launch Actions to executed on the Test or Cutover instance.
+- [PostLaunchActionsStatus](https://docs.aws.amazon.com/mgn/latest/APIReference/API_PostLaunchActionsStatus.html): Status of the Post Launch Actions running on the Test or Cutover instance.
+- [ReplicationConfigurationReplicatedDisk](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ReplicationConfigurationReplicatedDisk.html): Replication Configuration replicated disk.
+- [ReplicationConfigurationTemplate](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ReplicationConfigurationTemplate.html)
+- [S3BucketSource](https://docs.aws.amazon.com/mgn/latest/APIReference/API_S3BucketSource.html): S3 bucket source.
+- [SourceProperties](https://docs.aws.amazon.com/mgn/latest/APIReference/API_SourceProperties.html): Source server properties.
+- [SourceServer](https://docs.aws.amazon.com/mgn/latest/APIReference/API_SourceServer.html)
+- [SourceServerActionDocument](https://docs.aws.amazon.com/mgn/latest/APIReference/API_SourceServerActionDocument.html)
+- [SourceServerActionsRequestFilters](https://docs.aws.amazon.com/mgn/latest/APIReference/API_SourceServerActionsRequestFilters.html): Source server post migration custom action filters.
+- [SourceServerConnectorAction](https://docs.aws.amazon.com/mgn/latest/APIReference/API_SourceServerConnectorAction.html): Source Server connector action.
+- [SsmDocument](https://docs.aws.amazon.com/mgn/latest/APIReference/API_SsmDocument.html): AWS Systems Manager Document.
+- [SsmExternalParameter](https://docs.aws.amazon.com/mgn/latest/APIReference/API_SsmExternalParameter.html): AWS Systems Manager Document external parameter.
+- [SsmParameterStoreParameter](https://docs.aws.amazon.com/mgn/latest/APIReference/API_SsmParameterStoreParameter.html): AWS Systems Manager Parameter Store parameter.
+- [TemplateActionDocument](https://docs.aws.amazon.com/mgn/latest/APIReference/API_TemplateActionDocument.html)
+- [TemplateActionsRequestFilters](https://docs.aws.amazon.com/mgn/latest/APIReference/API_TemplateActionsRequestFilters.html): Template post migration custom action filters.
+- [ValidationExceptionField](https://docs.aws.amazon.com/mgn/latest/APIReference/API_ValidationExceptionField.html): Validate exception field.
+- [VcenterClient](https://docs.aws.amazon.com/mgn/latest/APIReference/API_VcenterClient.html): vCenter client.
+- [Wave](https://docs.aws.amazon.com/mgn/latest/APIReference/API_Wave.html)
+- [WaveAggregatedStatus](https://docs.aws.amazon.com/mgn/latest/APIReference/API_WaveAggregatedStatus.html): Wave aggregated status.

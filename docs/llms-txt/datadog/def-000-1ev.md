@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > User preferences endpoint wi
 ---
 
 # User preferences endpoint without HTTPS
- 
+
 ## Description{% #description %}
 
 This API endpoint handles user profile settings over an unencrypted channel.

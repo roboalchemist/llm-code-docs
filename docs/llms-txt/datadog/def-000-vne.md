@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Add nodev Option to /home
 ---
 
 # Add nodev Option to /home
- 
+
 ## Description{% #description %}
 
 The `nodev` mount option can be used to prevent device files from being created in `/home`. Legitimate character and block devices should exist only in the `/dev` directory on the root partition or within chroot jails built for system services. Add the `nodev` option to the fourth column of `/etc/fstab` for the line which controls mounting of `/home`.
@@ -29,7 +29,7 @@ The following script can be run on the host to remediate the issue.
 if ! ( [ -f /.dockerenv ] || [ -f /run/.containerenv ] ) && { findmnt --kernel "/home" > /dev/null || findmnt --fstab "/home" > /dev/null; }; then
 
 function perform_remediation {
-    
+
         # the mount point /home has to be defined in /etc/fstab
         # before this remediation can be executed. In case it is not defined, the
         # remediation aborts and no changes regarding the mount point are done.
@@ -38,7 +38,7 @@ function perform_remediation {
     grep "$mount_point_match_regexp" -q /etc/fstab \
         || { echo "The mount point '/home' is not even in /etc/fstab, so we can't set up mount options" >&2;
                 echo "Not remediating, because there is no record of /home in /etc/fstab" >&2; return 1; }
-    
+
 
 
     mount_point_match_regexp="$(printf "^[[:space:]]*[^#].*[[:space:]]%s[[:space:]]" /home)"

@@ -1,0 +1,66 @@
+# Source: https://io.net/docs/guides/payment/io-intelligence-payments.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://io.net/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Overview
+
+> Overview of io.net’s AI access plans and model rates.
+
+At **io.net**, we believe AI access should be **simple, transparent, and scalable**. Whether you are experimenting with ideas, running daily creative workflows, or deploying large-scale automation.
+
+Our platform connects every capability, this includes **text, images, code, data, and voice**, all in one workspace.
+
+You can start free, upgrade as your usage grows, and scale on demand without worrying about token tracking or hidden fees.
+
+Each plan provides access to the same advanced models and tools. Usage is measured in credits, which refresh automatically. **Pay-as-you-go (PAYG)** is available when you exceed your daily credits quota.
+
+* **Standard (default):** Explore and learn with free, light daily access. **Pay-as-you-go (PAYG)** pricing is applied for usage beyond the daily limit.
+* **Professional:** Includes \$15 in monthly usage credits, refreshed daily to provide steady, predictable access for light coding projects and applications.
+* **Developer:** Includes \$150 in monthly usage credits, refreshed every 8 hours to support continuous development and production workloads.
+
+## Plan Overview
+
+Each plan includes a **fixed daily or hourly allowance** that refreshes automatically, so you can focus on your work instead of tracking tokens or costs.
+
+| Plan           | Usage                               | Refresh cycle                            | Ideal for                              |
+| -------------- | ----------------------------------- | ---------------------------------------- | -------------------------------------- |
+| *Standard*     | Continuous access with **PAYG**.    | No refreshes, pay only for what you use. | Teams that need flexible scaling.      |
+| *Professional* | **\$15** in monthly usage credits.  | Once every 24 hours.                     | Coding projects or light applications. |
+| *Developer*    | **\$150** in monthly usage credits. | Every 8 hours (3 x per day).             | Builders, teams, and automations.      |
+
+## How Usage Works
+
+* **Professional** plans refresh once every 24 hours for predictable, worry-free access.
+* **Developer** plans refresh every 8 hours, designed for continuous work or API usage.
+* If you hit your allowance, your access will pause until the next refresh, unless you have **IO Credits**.
+* **IO Credits (Pay-As-You-Go)** allow instant continuation beyond limits, charging per request through your connected payment method.
+
+## More on Pay-As-You-Go
+
+* Billed directly to your **IO Credits** balance.
+* Includes the same tools and models as subscription plans.
+* The **Developer** plan offers roughly a 10% discount compared to **PAYG** for consistent high-volume users.
+* **PAYG** stops when your plan refreshes.
+* Enables precise accounting of model-level usage and costs.
+
+<Note>
+  To verify the latest model pricing, use the **GET /models** API endpoint. The response includes detailed pricing information for each available model. The fields `"input_token_price"` and `"output_token_price"` represent the respective costs per token for input and output usage. For implementation details and the full endpoint specification, refer to: [**GET /models API Documentation**](/reference/ai-models/get-models-list)**.**
+</Note>
+
+## FAQs
+
+<Accordion title="What do I do when I hit my daily limit?" icon="comment-question">
+  You can buy **IO Credits** or wait for your daily limit to refresh.\
+  If you already have credits, they will automatically cover additional usage with no interruptions.
+</Accordion>
+
+<Accordion title="How does the limit work across different models?" icon="comment-question">
+  ***IO Intelligence*** uses a **shared credit pool system**.\
+  Credits can be spent on any model, with each consuming credits at a different rate depending on the complexity.
+</Accordion>
+
+<Accordion title="Does my daily limit include both Chat and API calls?" icon="comment-question">
+  Yes. **Chat**  interactions count toward your API quota and contribute to your daily limit.
+</Accordion>

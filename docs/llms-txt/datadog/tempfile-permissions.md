@@ -48,7 +48,7 @@ public class SecureTempFileWithPermissionsExample {
         File tempFile = File.createTempFile("secure_tempfile_", ".tmp");
         tempFile.setReadable(true, true);
         tempFile.deleteOnExit();
-        System.out.println("Temporary file created with secure permissions at: " 
+        System.out.println("Temporary file created with secure permissions at: "
             + tempFile.getAbsolutePath());
     }
 }
@@ -80,11 +80,10 @@ public class SecureTempFileWithPermissionsExample {
         tempFile.setWritable(true, true);
         tempFile.setExecutable(false);
         tempFile.deleteOnExit();
-        System.out.println("Temporary file created with secure permissions at: " 
+        System.out.println("Temporary file created with secure permissions at: "
             + tempFile.getAbsolutePath());
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

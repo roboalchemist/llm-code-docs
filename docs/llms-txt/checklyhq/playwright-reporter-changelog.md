@@ -1,0 +1,246 @@
+# Source: https://checklyhq.com/docs/detect/testing/playwright-reporter-changelog.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://checklyhq.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Playwright Reporter Changelog
+
+> Release history for the Checkly Playwright Reporter
+
+View your test sessions at [app.checklyhq.com/test-sessions](https://app.checklyhq.com/test-sessions).
+
+Learn more about:
+
+* [Installing the Playwright Reporter](/detect/testing/playwright-reporter#install-the-playwright-reporter)
+* [Configuration options](/detect/testing/playwright-reporter#configuration)
+
+## Full release history
+
+<Update label="v1.8.0" tags={["March 2026"]}>
+  **Breaking Changes**
+
+  * **`verbose` renamed to `debug`** — The previous `verbose` option has been renamed to `debug` (disabled by default) for Checkly reporter diagnostic logging. The `verbose` option now controls worker output forwarding instead. If you were using `verbose: true` for debug logging, update to `debug: true`.
+
+  **Added**
+
+  * **Worker output forwarding** — `stdout` and `stderr` from your test workers now appear directly in your terminal, so you can see `console.log` output and error messages alongside test results as they run. Control this with the `verbose` option (enabled by default).
+
+  **Improved**
+
+  * **Faster, more reliable config annotation** — The Playwright config source view in Checkly now works consistently across all environments, including projects that don't use TypeScript.
+  * **Smaller report sizes** — Network requests and console messages are no longer embedded in the JSON report. They're still captured in the trace and displayed in the Checkly UI exactly as before, but reports are now significantly smaller — especially for tests with heavy network traffic.
+
+  **Fixed**
+
+  * **Compatibility with bundled environments** — Fixed an issue where the reporter could fail to load in certain CI or runner configurations due to module format mismatches.
+  * **JavaScript config annotation** — Fixed config annotation failing for JavaScript Playwright config files.
+  * **Trace extraction for non-browser tests** — Fixed console logs and network requests not being extracted from traces when the test doesn't open a browser context.
+</Update>
+
+<Update label="v1.7.1" tags={["March 2026"]}>
+  **Added**
+
+  * **Reporter version tracking** - The reporter version is now embedded in every report, making it visible in the Checkly UI alongside your check results.
+</Update>
+
+<Update label="v1.7.0" tags={["February 2026"]}>
+  **Added**
+
+  * **Sensitive header scrubbing** - HTTP headers like `Authorization`, `Cookie`, `Set-Cookie`, `Proxy-Authorization`, `X-API-Key`, and `X-Auth-Token` are now automatically redacted from reports and traces when scrubbing is enabled — no configuration needed. This prevents tokens and session cookies from leaking through network request data, even if their values aren't registered as secrets. Disable with `scrubbing: { sensitiveHeaders: false }` or pass a custom list of header names to control which headers are redacted.
+</Update>
+
+<Update label="v1.6.1" tags={["February 2026"]}>
+  **Fixed**
+
+  * **System metrics memory readings** - Fixed inaccurate memory usage and total memory reported in containerized environments.
+</Update>
+
+<Update label="v1.6.0" tags={["February 2026"]}>
+  **Added**
+
+  * **Test source code** - The source code of each executed test and its dependency files (helpers, page objects, utilities) are now included in the report. View the exact test body alongside results in the Checkly UI.
+  * **System metrics** - CPU and memory usage are sampled throughout the test run, helping diagnose resource-constrained failures.
+  * **Active duration** - Reports now distinguish actual test execution time from total wall-clock time, so idle gaps from worker scheduling don't inflate your numbers.
+  * **Prefix-based secret scrubbing** - Environment variables starting with `CHECKLY_SECRET_` are now automatically scrubbed from reports, traces, and logs. Customize the prefix or disable it via the `scrubbing.prefix` option.
+
+  **Changed**
+
+  * **Scrubbing now covers logs** - Secret scrubbing now extends to reporter log entries, not just the JSON report and trace files.
+</Update>
+
+<Update label="v1.5.0" tags={["February 2026"]}>
+  **Added**
+
+  * **Test command** - The test command is now automatically detected and shown in the Checkly UI. Override with the `testCommand` option or `CHECKLY_TEST_COMMAND` env var.
+  * **Job logs** - CI job logs are now included in test session uploads.
+</Update>
+
+<Update label="v1.4.2" tags={["February 2026"]}>
+  **Fixed**
+
+  * Missing credentials now show a clean warning instead of a stack trace. Other reporters continue working normally.
+
+  **Changed**
+
+  * Improved summary table format.
+</Update>
+
+<Update label="v1.4.1" tags={["February 2026"]}>
+  **Critical Bug Fix**
+
+  **1.4.0 is deprecated. Use this version.**
+
+  * Fixed npm install failing with 404 error due to missing dependency.
+</Update>
+
+<Update label="v1.4.0" tags={["February 2026"]}>
+  **Added**
+
+  * **Secret scrubbing** - Automatically scrub sensitive values from reports and trace files. Configure via the new `scrubbing` option:
+    * `envVars`: Array of environment variable names whose values should be scrubbed
+    * `autoDetect`: Auto-detect secrets from env vars matching common patterns (SECRET, KEY, TOKEN, PASSWORD, CREDENTIAL, AUTH, PRIVATE, API)
+    * `replacement`: Custom replacement string (default: `*********`)
+    * Set `scrubbing: false` to disable scrubbing entirely
+
+  ```typescript  theme={null}
+  createChecklyReporter({
+    scrubbing: {
+      envVars: ['API_KEY', 'DB_PASSWORD'],
+      autoDetect: true,
+      replacement: '[REDACTED]'
+    }
+  })
+  ```
+
+  * **Improved network and console data** - Network requests now include detailed fields (domain, resource type, headers, timing, transfer/resource bytes). Console logs include location information. Resource types are automatically derived from Content-Type headers when not available.
+
+  **Changed**
+
+  * **Playwright 1.58 support** - Now tested against Playwright 1.58.0.
+</Update>
+
+<Update label="v1.3.0" tags={["January 2026"]}>
+  **Real-time test progress** - Shows test results as they run with status icons, error details, and summary. Similar to Playwright's `list` reporter. Disable with `showProgress: false` if using another reporter.
+
+  **Summary table** - Displays per-project breakdown of test results with pass/fail/flaky/skip counts and pass rates. Disable with `showSummaryTable: false`.
+
+  **Automatic git detection** - Automatically detects git information (branch, commit, author) in CI environments and locally.
+
+  **Test step code snippets** - Includes source code context in test step reports. View the exact line of code that executed with surrounding context for easier debugging.
+</Update>
+
+<Update label="v1.2.0" tags={["January 2026"]}>
+  **Breaking Changes**
+
+  **Credentials now required** - Reporter requires Checkly credentials (`apiKey` + `accountId`) or explicit `dryRun: true`. Missing credentials now show clear error messages instead of silently skipping upload.
+
+  If you're not using Checkly Test Sessions, add `dryRun: true` to your config:
+
+  ```typescript  theme={null}
+  reporter: [['@checkly/playwright-reporter', { dryRun: true }]]
+  ```
+
+  **Added**
+
+  **Improved error messages** for credential issues:
+
+  * Shows both config option and environment variable (e.g., "apiKey / CHECKLY\_API\_KEY")
+  * Includes direct link to API keys settings page
+  * Invalid API keys display "Authentication failed"
+  * Wrong account IDs display "Access denied" with guidance
+</Update>
+
+<Update label="v1.1.0" tags={["January 2026"]}>
+  > **Note:** This minor version contains breaking changes. Options API configurations in 1.0.x could lead to broken states, so we published this as a minor version and unpublished previous 1.0.x releases.
+
+  **Breaking Changes**
+
+  **Removed deprecated options** - The following options are no longer supported and will throw an error if used:
+
+  * `outputFile` - Use `outputDir` instead
+  * `testResultsDir` - Use `outputDir` instead
+  * `outputPath` - Use `outputDir` instead
+
+  **Changed**
+
+  **Simplified options API** - Introduced cleaner configuration:
+
+  * `outputDir` - Directory for all output (JSON report and ZIP assets)
+  * `verbose` - Enable debug logging
+  * `apiKey` - Checkly API key (or use `CHECKLY_API_KEY` env var)
+  * `accountId` - Checkly account ID (or use `CHECKLY_ACCOUNT_ID` env var)
+  * `sessionName` - Custom session name (string or function)
+  * `dryRun` - Generate report without uploading
+
+  **Migration from 1.0.x**
+
+  If you were using any deprecated options, update your configuration:
+
+  ```diff  theme={null}
+  // playwright.config.ts
+  export default defineConfig({
+    reporter: [
+  -   ['@checkly/playwright-reporter', {
+  -     outputFile: 'results/report.json',
+  -     testResultsDir: 'test-results',
+  -   }],
+  +   ['@checkly/playwright-reporter', {
+  +     outputDir: 'results'
+  +   }],
+    ],
+  })
+  ```
+</Update>
+
+<Update label="v1.0.4" tags={["January 2026"]}>
+  * Fixed module loading issues in certain Playwright configurations
+  * Reduced package size
+</Update>
+
+<Update label="v1.0.3" tags={["January 2026"]}>
+  * Fixed compatibility with Playwright's TypeScript configuration loading mechanism
+  * Reporter version now correctly displays in test session summary
+  * `CHECKLY_ACCOUNT_ID` environment variable is now properly read for all features
+</Update>
+
+<Update label="v1.0.2" tags={["January 2026"]}>
+  * Test session creation is now properly awaited before uploading results, fixing intermittent upload failures in CI environments
+  * Sharded test execution now works correctly when using `playwright merge-reports` command
+  * Default projects now preserve their empty name correctly
+  * Output types now re-export from `@playwright/test/reporter` with Checkly augmentations for `_checkly` property
+</Update>
+
+<Update label="v1.0.0" tags={["January 2025"]}>
+  First stable release of the rewritten Playwright reporter with extension-based architecture.
+
+  **Added**
+
+  * **Extension-based architecture** - Modular design allows for composable functionality
+  * **Broad Playwright support** - Compatible with Playwright versions 1.40 through 1.57+
+  * **Drop-in JSON replacement** - Fully compatible with Playwright's native JSON reporter output format
+  * **Trace extraction** - Automatically extracts console messages and network requests from Playwright trace files
+  * **Checkly integration** - Automatic upload to Checkly Test Sessions when credentials are configured
+  * **New `createChecklyReporter()` function** - Better IntelliSense support in `playwright.config.ts`
+  * **Unified `outputDir` option** - Single option for all output files (JSON report, ZIP assets)
+  * **Verbose logging** - Debug mode for troubleshooting report generation
+
+  **Migration from 0.x**
+
+  ```diff  theme={null}
+  // playwright.config.ts
+  +import { createChecklyReporter } from '@checkly/playwright-reporter'
+
+  export default defineConfig({
+    reporter: [
+  -   ['@checkly/playwright-reporter', { outputFile: 'results/report.json' }],
+  +   createChecklyReporter({ outputDir: 'results' }),
+    ],
+  })
+  ```
+
+  The legacy 0.x reporter remains available via `npm install @checkly/playwright-reporter@legacy`.
+</Update>
+
+
+Built with [Mintlify](https://mintlify.com).

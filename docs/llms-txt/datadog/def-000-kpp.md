@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall rpcbind Package
 ---
 
 # Uninstall rpcbind Package
- 
+
 ## Description{% #description %}
 
 The rpcbind utility maps RPC services to the ports on which they listen. RPC processes notify rpcbind when they start, registering the ports they are listening on and the RPC program numbers they expect to serve. The rpcbind service redirects the client to the proper port number so it can communicate with the requested service. If the system does not require RPC (such as for NFS servers) then this service should be disabled. The `rpcbind` package can be removed with the following command:

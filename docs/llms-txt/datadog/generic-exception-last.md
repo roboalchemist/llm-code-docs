@@ -43,32 +43,31 @@ For this reason, generic `Exception` must be the last to be handled to let speci
 
 ```python
 try:
-	pass
+    pass
 except Exception:
-	pass
+    pass
 except FileNotFound as e:
-	pass
+    pass
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}
 
 ```python
 try:
-	pass
+    pass
 except MyError:
-	pass
+    pass
 except Exception as e:
-	pass
+    pass
 ```
 
 ```python
 try:
-	pass
+    pass
 except MyError:
-	pass
+    pass
 except FileNotFound as e:
-	pass
+    pass
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

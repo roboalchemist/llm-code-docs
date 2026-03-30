@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Elasticsearch domains should encrypt data transmitted between nodes
- 
+
 ## Description{% #description %}
 
 This control verifies if node-to-node encryption is enabled for an Elasticsearch domain. The control will not pass if the Elasticsearch domain lacks node-to-node encryption. Additionally, it will generate failed findings if the Elasticsearch version does not support node-to-node encryption checks.

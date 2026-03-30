@@ -1,6 +1,6 @@
 # Source: https://exa.ai/docs/websets/faq.md
 
-> ## Documentation Index
+> **Documentation Index**
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
@@ -13,11 +13,11 @@
 <Accordion title="Who is Websets for?">
   Websets is a tool meant to solve sourcing for knowledge workers. Here are a few major use cases:
 
-  * **Recruiters**: source potential candidates for any role (we all know Linkedin search is broken after all)
-  * **Sales teams**: source companies and points of contact that match your ICP. Watch hours of outbound research be done in minutes
-  * **Investors**: whether you're looking for your next target or doing diligence, Websets can be a powerful tool. Find companies, financial statements, reports and news.
-  * **Researchers**: find research papers, reports, news and more. No matter what you're researching.
-  * **Founder**: find competitors, tweet ideas, candidates, potential customers, potential investors and more.
+- **Recruiters**: source potential candidates for any role (we all know Linkedin search is broken after all)
+- **Sales teams**: source companies and points of contact that match your ICP. Watch hours of outbound research be done in minutes
+- **Investors**: whether you're looking for your next target or doing diligence, Websets can be a powerful tool. Find companies, financial statements, reports and news.
+- **Researchers**: find research papers, reports, news and more. No matter what you're researching.
+- **Founder**: find competitors, tweet ideas, candidates, potential customers, potential investors and more.
 
   And more! We've seen thousands of different use cases.
 </Accordion>

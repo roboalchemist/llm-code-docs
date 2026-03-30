@@ -44,7 +44,7 @@ Method names should be descriptive of the function behavior and functionalities.
 ```csharp
 class MyClass {
     void ab(){
-        
+
     }
 }
 ```
@@ -66,10 +66,9 @@ interface MyInterface {
 ```csharp
 class MyClass {
     void myMethod(){
-        
+
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

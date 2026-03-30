@@ -1,10 +1,6 @@
 # Source: https://oxc.rs/docs/contribute/security.md
 
----
-url: /docs/contribute/security.md
----
-
-# Security Policy
+## Security Policy
 
 The following security policies are applied to all projects within the [oxc-project](https://github.com/oxc-project) organization.
 

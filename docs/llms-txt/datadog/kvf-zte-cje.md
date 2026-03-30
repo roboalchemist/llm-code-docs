@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Kubelet nodes should only read objects associated with them
-Classification:complianceFramework:cis-kubernetesControl:1.2.8 
+Classification:complianceFramework:cis-kubernetesControl:1.2.8
 ## Description{% #description %}
 
 Restrict kubelet nodes to reading only objects associated with them.

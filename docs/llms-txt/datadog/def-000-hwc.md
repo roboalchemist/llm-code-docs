@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # No more than one active SSH public key should be assigned to a single user
- 
+
 ## Description{% #description %}
 
 This control ensures that no more than one active SSH public key is assigned to a single IAM user.

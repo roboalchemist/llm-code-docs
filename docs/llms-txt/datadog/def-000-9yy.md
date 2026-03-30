@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # VPC Flow Logs should be enabled for all VPC subnets
- 
+
 ## Description{% #description %}
 
 Flow Logs is a feature that enables users to capture information about the IP traffic going to and from network interfaces in an organization's VPC subnets. Once a flow log is created, the user can view and retrieve its data in Stackdriver Logging. It is recommended that Flow Logs is enabled for every business-critical VPC subnet.

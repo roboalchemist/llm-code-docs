@@ -1,14 +1,10 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/strict-boolean-expressions.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/strict-boolean-expressions.md
----
-
-### What it does
+## What it does
 
 Disallow certain types in boolean expressions.
 
-### Why is this bad?
+## Why is this bad?
 
 Forbids usage of non-boolean types in expressions where a boolean is expected.
 `boolean` and `never` types are always allowed. Additional types which are
@@ -20,7 +16,7 @@ The following nodes are checked:
 * The condition in a conditional expression (`cond ? x : y`)
 * Conditions for `if`, `for`, `while`, and `do-while` statements.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -82,7 +78,7 @@ if (bool) {
 
 This rule accepts a configuration object with the following properties:
 
-### allowAny
+## allowAny
 
 type: `boolean`
 
@@ -90,7 +86,7 @@ default: `false`
 
 Whether to allow `any` type in boolean contexts.
 
-### allowNullableBoolean
+## allowNullableBoolean
 
 type: `boolean`
 
@@ -98,7 +94,7 @@ default: `false`
 
 Whether to allow nullable boolean types (e.g., `boolean | null`) in boolean contexts.
 
-### allowNullableEnum
+## allowNullableEnum
 
 type: `boolean`
 
@@ -106,7 +102,7 @@ default: `false`
 
 Whether to allow nullable enum types in boolean contexts.
 
-### allowNullableNumber
+## allowNullableNumber
 
 type: `boolean`
 
@@ -114,7 +110,7 @@ default: `false`
 
 Whether to allow nullable number types (e.g., `number | null`) in boolean contexts.
 
-### allowNullableObject
+## allowNullableObject
 
 type: `boolean`
 
@@ -122,7 +118,7 @@ default: `true`
 
 Whether to allow nullable object types in boolean contexts.
 
-### allowNullableString
+## allowNullableString
 
 type: `boolean`
 
@@ -130,7 +126,7 @@ default: `false`
 
 Whether to allow nullable string types (e.g., `string | null`) in boolean contexts.
 
-### allowNumber
+## allowNumber
 
 type: `boolean`
 
@@ -138,7 +134,7 @@ default: `true`
 
 Whether to allow number types in boolean contexts (checks for non-zero numbers).
 
-### allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing
+## allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing
 
 type: `boolean`
 
@@ -147,7 +143,7 @@ default: `false`
 Whether to allow this rule to run without `strictNullChecks` enabled.
 This is not recommended as the rule may produce incorrect results.
 
-### allowString
+## allowString
 
 type: `boolean`
 

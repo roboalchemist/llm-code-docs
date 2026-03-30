@@ -1,8 +1,8 @@
 # Source: https://docs.sandboxes.cloud/docs/sandbox-definition.md
 
-# Sandbox Definition
+## Sandbox Definition
 
-## Overview
+### Overview
 
 A Sandbox is designed to provide an all-in-one, self-contained development environment (the on cloud potion of it, in contrast to client side, e.g., mobile app, desktop client, etc.). It contains a *definition* which defines what's inside the sandbox and how to create/run a sandbox. It's composed using a structured schema which includes:
 
@@ -14,7 +14,7 @@ A Sandbox is designed to provide an all-in-one, self-contained development envir
 * [volumes](#volumes): additional volumes to be attached to [containers](#containers);
 * [endpoints](#endpoints): a DNS name exposed to the Internet and when accessed, the traffic is routed to a workspace based on the rules (e.g. HTTP routing based on path);
 * [resources](#resources): a list of resources to be managed with sandbox lifecyle;
-* [customizations](#customization): additional customization capabilities for the convenience of using the sandbox.
+* [customizations](#customizations): additional customization capabilities for the convenience of using the sandbox.
 
 A brief example represented in YAML:
 
@@ -160,7 +160,7 @@ customizations:
 
 ## Sections
 
-### Overview
+### Template Overview
 
 This defines an optional markdown template for rendering an informational section in the sandbox details page.
 
@@ -335,7 +335,7 @@ In `checkout`, define the following:
 
 Because `manifest` is specified in `checkout`, the `.sandbox/manifest.yaml` is skipped. And the final result will be that defined in `checkout`.
 
-2. Override environment and the daemon
+1. Override environment and the daemon
 
 In `checkout`, define the following:
 
@@ -370,7 +370,7 @@ daemons:
 
 Note: environment `SERVER_KEY` no longer exists because `daemon.server` is replaced completely.
 
-3. Use alternative manifest file
+1. Use alternative manifest file
 
 In `checkout`, define the following:
 
@@ -884,7 +884,7 @@ Snapshot can be taken from volumes of a running container. This is only supporte
 
 Similar to dependency snapshots, during snapshot creation/restoring, the container is temporarily stopped.
 
-#### Wait For
+#### Container Wait For
 
 Same as workspace, the container doesn't start until the workloads in the `wait_for` list become ready (relying on the readiness probe).
 

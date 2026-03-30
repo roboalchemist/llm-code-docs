@@ -1,20 +1,16 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-misused-promises.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-misused-promises.md
----
-
-### What it does
+## What it does
 
 This rule forbids providing Promises to logical locations such as if statements in places where the TypeScript
 compiler allows them but they are not handled properly. These situations can often arise due to a missing
 `await` keyword or just a misunderstanding of the way async functions are handled/awaited.
 
-### Why is this bad?
+## Why is this bad?
 
 Misused promises can cause crashes or other unexpected behavior, unless there are possibly some global unhandled promise handlers registered.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -58,7 +54,7 @@ console.log({ foo: 42, ...(await getData()) });
 
 This rule accepts a configuration object with the following properties:
 
-### checksConditionals
+## checksConditionals
 
 type: `boolean`
 
@@ -67,7 +63,7 @@ default: `true`
 Whether to check if Promises are used in conditionals.
 When true, disallows using Promises in conditions where a boolean is expected.
 
-### checksSpreads
+## checksSpreads
 
 type: `boolean`
 
@@ -76,11 +72,11 @@ default: `true`
 Whether to check if Promises are used in spread syntax.
 When true, disallows spreading Promise values.
 
-### checksVoidReturn
+## checksVoidReturn
 
 type: `object | boolean`
 
-#### checksVoidReturn.arguments
+### checksVoidReturn.arguments
 
 type: `boolean`
 
@@ -88,7 +84,7 @@ default: `true`
 
 Whether to check Promise-returning functions passed as arguments to void-returning functions.
 
-#### checksVoidReturn.attributes
+### checksVoidReturn.attributes
 
 type: `boolean`
 
@@ -96,7 +92,7 @@ default: `true`
 
 Whether to check Promise-returning functions in JSX attributes expecting void.
 
-#### checksVoidReturn.inheritedMethods
+### checksVoidReturn.inheritedMethods
 
 type: `boolean`
 
@@ -104,7 +100,7 @@ default: `true`
 
 Whether to check Promise-returning methods that override void-returning inherited methods.
 
-#### checksVoidReturn.properties
+### checksVoidReturn.properties
 
 type: `boolean`
 
@@ -112,7 +108,7 @@ default: `true`
 
 Whether to check Promise-returning functions assigned to object properties expecting void.
 
-#### checksVoidReturn.returns
+### checksVoidReturn.returns
 
 type: `boolean`
 
@@ -120,7 +116,7 @@ default: `true`
 
 Whether to check Promise values returned from void-returning functions.
 
-#### checksVoidReturn.variables
+### checksVoidReturn.variables
 
 type: `boolean`
 

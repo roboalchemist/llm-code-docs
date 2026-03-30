@@ -128,5 +128,5 @@ Resources:
         BlockPublicAcls: false
         BlockPublicPolicy     : false
         IgnorePublicAcls      : false
-        RestrictPublicBuckets : true                
+        RestrictPublicBuckets : true
 ```

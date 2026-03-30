@@ -64,6 +64,5 @@ const data = (await foo) ? foo : bar;
 while (await foo) {
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -50,9 +50,9 @@ function display(text) {
     const defaultMessage = document.getElementById("default-message");
     defaultMessage.style.display = 'none';
     something.innerHTML = `
-        
+
         ${something}
-        
+
         <div style="background:white; padding:15px; border-radius:10px;">
         </div>
     `;
@@ -65,9 +65,9 @@ function display(text) {
     `;
 
     somethingElseElse.innerHTML = `
-        
+
         ${something}
-        
+
         <div style="background:white; padding:15px; border-radius:10px;">
             ${DOMPurify.sanitize(marked(text))}
         </div>
@@ -173,6 +173,5 @@ function sanitizeHtml(el, something) {
 
 export default sanitizeHtml;
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

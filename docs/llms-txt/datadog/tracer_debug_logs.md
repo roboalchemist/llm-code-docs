@@ -8,8 +8,6 @@ description: >-
 breadcrumbs: Docs > APM > APM Troubleshooting > Tracer Debug Logs
 ---
 
-# Tracer Debug Logs
-
 ## Automated debug log collection{% #automated-debug-log-collection %}
 
 {% alert level="danger" %}
@@ -19,12 +17,9 @@ Automated debug logs are supported for Java, Python, Node.js, and .NET only. For
 {% callout %}
 # Important note for users on the following Datadog sites: app.ddog-gov.com
 
-
-
 {% alert level="warning" %}
 Automated debug log collection is not supported on US1-FED because [Remote Configuration](https://docs.datadoghq.com/agent/remote_config/) is not available in this region. Use [manual debug log collection](https://docs.datadoghq.com/tracing/troubleshooting/tracer_debug_logs/#enable-debug-mode) instead.
 {% /alert %}
-
 
 {% /callout %}
 
@@ -424,18 +419,18 @@ YYYY/MM/DD 16:06:35 Datadog Tracer <version> DEBUG: Sending payload: size: <size
 
 ```json
 {
-	"name": "dd-trace",
-	"hostname": "<hostname>",
-	"pid": 28817,
-	"level": 50,
-	"err": {
-		"message": "Network error trying to reach the agent: connect ECONNREFUSED 127.0.0.1:8126",
-		"name": "Error",
-		"stack": "Error: Network error trying to reach the agent: connect ECONNREFUSED 127.0.0.1:8126\n    at ClientRequest.req.on.e (/path/to/dd-trace/src/platform/node/request.js:44:33)\n    at scope.activate (/path/to/dd-trace/packages/dd-trace/src/scope/base.js:68:19)\n    at Scope._activate (/path/to/dd-trace/packages/dd-trace/src/scope/base.js:44:14)\n    at Scope.activate (/path/to/dd-trace/packages/dd-trace/src/scope/base.js:13:17)\n    at ClientRequest.<anonymous> (/path/to/dd-trace/packages/dd-trace/src/scope/base.js:67:20)\n    at ClientRequest.emit (events.js:193:13)\n    at ClientRequest.req.emit (/path/to/dd-trace/packages/datadog-plugin-http/src/client.js:93:21)\n    at Socket.socketErrorListener (_http_client.js:397:9)\n    at Socket.emit (events.js:198:15)\n    at emitErrorNT (internal/streams/destroy.js:91:8)"
-	},
-	"msg": "Network error trying to reach the agent: connect ECONNREFUSED 127.0.0.1:8126",
-	"time": "2019-08-06T20:48:27.769Z",
-	"v": 0
+    "name": "dd-trace",
+    "hostname": "<hostname>",
+    "pid": 28817,
+    "level": 50,
+    "err": {
+        "message": "Network error trying to reach the agent: connect ECONNREFUSED 127.0.0.1:8126",
+        "name": "Error",
+        "stack": "Error: Network error trying to reach the agent: connect ECONNREFUSED 127.0.0.1:8126\n    at ClientRequest.req.on.e (/path/to/dd-trace/src/platform/node/request.js:44:33)\n    at scope.activate (/path/to/dd-trace/packages/dd-trace/src/scope/base.js:68:19)\n    at Scope._activate (/path/to/dd-trace/packages/dd-trace/src/scope/base.js:44:14)\n    at Scope.activate (/path/to/dd-trace/packages/dd-trace/src/scope/base.js:13:17)\n    at ClientRequest.<anonymous> (/path/to/dd-trace/packages/dd-trace/src/scope/base.js:67:20)\n    at ClientRequest.emit (events.js:193:13)\n    at ClientRequest.req.emit (/path/to/dd-trace/packages/datadog-plugin-http/src/client.js:93:21)\n    at Socket.socketErrorListener (_http_client.js:397:9)\n    at Socket.emit (events.js:198:15)\n    at emitErrorNT (internal/streams/destroy.js:91:8)"
+    },
+    "msg": "Network error trying to reach the agent: connect ECONNREFUSED 127.0.0.1:8126",
+    "time": "2019-08-06T20:48:27.769Z",
+    "v": 0
 }
 ```
 

@@ -1,0 +1,79 @@
+# Source: https://docs.beefree.io/beefree-sdk/visual-builders/email-builder.md
+
+# Email Builder
+
+Use the following prompts to get started faster with implementing the Email builder faster:
+
+* [React](https://docs.beefree.io/beefree-sdk/quickstart-guides/react-no-code-email-builder#copy-this-pre-built-prompt-to-get-started-faster-with-ai)
+* [Angular](https://docs.beefree.io/beefree-sdk/quickstart-guides/angular-no-code-email-builder#copy-this-pre-built-prompt-to-get-started-faster-with-ai)
+* [Vue](https://docs.beefree.io/beefree-sdk/quickstart-guides/vue.js-no-code-email-builder#copy-this-pre-built-prompt-to-get-started-faster-with-ai)
+* [Django](https://docs.beefree.io/beefree-sdk/quickstart-guides/django-beefree-sdk-demo)
+
+## Introduction
+
+Beefree SDK’s embeddable no-code email builder offers a solution that empowers creators to design visually striking, high-converting emails with ease. By removing technical barriers, it enables teams to build, customize, and launch campaigns faster, maximizing results without the need for hard coding. This allows marketers, designers, and content creators to focus more on designing and refining their email strategies, rather than spending time coding emails from scratch.
+
+Email marketing remains one of the most effective digital channels, delivering an impressive [ROI of 3600%](https://www.litmus.com/blog/infographic-the-roi-of-email-marketing)—for every $1 spent, businesses see an average return of $36. In a landscape where personalization and quick execution are critical, no-code email builders like Beefree SDK make it easier for teams to create and optimize these high-performing, targeted campaigns. Personalized campaigns, which [boost click-through rates by 28.57%](https://www.sender.net/blog/email-marketing-statistics/), are more easily executed with tools that free teams from coding, allowing them to concentrate on strategy and design. By simplifying the email creation process, Beefree SDK enables creators to spend less time on technical tasks and more time driving results through impactful, strategic designs.
+
+### What is the Email builder?
+
+The email builder within Beefree SDK is a no-code drag-and-drop editor that enables end users to design beautiful emails that resonate with their audiences. Within the email builder, end users have access to both simple email creation tools, such as adding content blocks, and advanced email creation tools, such as dynamic content, merge tags, display conditions, html blocks, and so on. Beefree SDK’s email builder was created with email marketers, copywriters, designers, and other content creators in mind. It provides them with an environment to intuitively create emails without having to write a single line of code, while being able to easily export their design’s HTML code if they ever need it. Overall, Beefree SDK’s email builder democratizes the email creation process by providing a no-code route for your application’s end users to create visually stunning and appealing emails for their audiences.
+
+<figure><img src="https://lh7-qw.googleusercontent.com/docsz/AD_4nXf0SM_QeuywJ28U7UHrsyMGA3YBIJtsTxyFftuIgn2BlHfIN1kYd7uxQL5F7X3h8XHOy7FAoZNGbIyyVu8N1e8UZt_yP_b_n_UR3Geg1L2i1nxHWNFo3rs4eOtsDp5QvEBQXvRTdi3UD5HSsPc0048FdoGv?key=qdLL93gfl1SVZrxzjDZmdA" alt=""><figcaption></figcaption></figure>
+
+Embedding Beefree SDK’s email builder is quick and easy. Once you embed the SDK within your application, you’ll already have access to a host of default features that are instantly available to your application’s end users. In addition to these default features, Beefree SDK also offers a variety of optional features you can easily activate by simplifying toggling them on in the Developer Console. If you want to customize the email builder further, you can also integrate with our[ APIs](https://docs.beefree.io/beefree-sdk/apis/content-services-api/content-services-api-reference), [AddOns](https://docs.beefree.io/beefree-sdk/builder-addons/addons/addons-overview), add [custom CSS](https://docs.beefree.io/beefree-sdk/other-customizations/appearance/custom-css), and much more. You can reference [this live demo as an example](https://bee-plugin-demos.getbee.io/#/manage-themes) of the level of customization that is possible with Beefree SDK.
+
+In the following GIF, you can see an example of differently customized experiences.
+
+<figure><img src="https://lh7-qw.googleusercontent.com/docsz/AD_4nXdOHPeITsA_UtKl2HBl5XAWdGMZC39G0f1tZcY1yIBe1o64rdDpSnBlbehR0dHmAyRpmSRtSTo8lmSvcZfkX0d8iw5hYOnl6lfUDtGlRZH_jMAeyY-IPXMcdatmZrL2SXCa_3Wy8CNUFhDhjVCQInuh_onZ?key=qdLL93gfl1SVZrxzjDZmdA" alt=""><figcaption></figcaption></figure>
+
+### Email builder capabilities
+
+On a foundational level, the Email builder includes the capabilities detailed in the following table.
+
+**Note:** Additional capabilities and features can be added on top of these through [AddOns](https://docs.beefree.io/beefree-sdk/builder-addons/getting-started), toggle on options in the [developer console](https://developers.beefree.io/login?from=website_menu), [Advanced Options](https://docs.beefree.io/beefree-sdk/other-customizations/advanced-options), [Template Catalog API](https://docs.beefree.io/beefree-sdk/apis/template-catalog-api), [Content Services API](https://github.com/BeefreeSDK/beefree-sdk-docs/blob/main/visual-builders/broken-reference/README.md), and more.
+
+| Foundational feature                                                                                                  | Description                                                                                                                                                                                                                                                                                                                                                                                      | Image                                                                                                                                                                                                                                                                          |
+| --------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Builder stage](https://docs.beefree.io/end-user-guide/design-builder-overview)                                       | The stage where the end user drags and drops the content tiles and designs their email.                                                                                                                                                                                                                                                                                                          | ![](https://lh7-qw.googleusercontent.com/docsz/AD_4nXfm9c-C9lhH-00UNadSC8WDpzzGkIFT4_TVGDxmtHhhAv3rVmPs-fRNaMUI6SmbGxjtBEmJDmf9CBXpdKm1hYIbUOkAcIV9kKjFjhfepJ23kme3nEa5QJovSbrAbifQSbIm9DQ5c-GSMGrfR7i9AqLEy2UG?key=qdLL93gfl1SVZrxzjDZmdA)                                    |
+| [Content blocks](https://docs.beefree.io/end-user-guide/design-builder-overview)                                      | <p>The content types end users can drag and drop as tiles onto their stage to add to their designs. The Free email builder comes with the following Content tiles (more are available on higher plans):</p><ul><li>Title</li><li>Paragraph</li><li>List</li><li>Image</li><li>Button</li><li>Divider</li><li>Spacer</li><li>Social</li><li>Dynamic content</li><li>Icons</li><li>Table</li></ul> | <img src="https://lh7-qw.googleusercontent.com/docsz/AD_4nXdfwX3HeOx3Hq_iYtsdTJzwYDic3ImPLGG5rYsbMEPzTq8E1MBtcwGYm1XbXgnjUkTGnRzAB4TdjTcnzrAGNXqtnoaIkRw9VHEKmnkBV5BZ3buGhm8I7oYdN1-rLfnSUza7BNs_R3UHuQRVzDE10QxYUI4M?key=qdLL93gfl1SVZrxzjDZmdA" alt="" data-size="original"> |
+| [Content properties](https://docs.beefree.io/end-user-guide/row-vs.-content-block-selection)                          | When an end user clicks on content on the stage, the Content properties will appear in the sidebar. This is where they can customize the content on their stage. Customization options include Text color, Link color, Line height, Letter spacing, Block options, and more.                                                                                                                     | ![](https://lh7-qw.googleusercontent.com/docsz/AD_4nXfjKnuLZpiv86ke0oQT5AmN0GL0xSvJOSP3n_T6O0XBmUdvALLqaT6aYR8xZm0tzguIckUdr8dZtq1mP4auujLAsKUT42CoFN0WZhaDnQpPGg7Ce_oB8YU2_porm0z9VQQq0693qtt4VXiYC-M91huwp04?key=qdLL93gfl1SVZrxzjDZmdA)                                     |
+| [Rows](https://docs.beefree.io/beefree-sdk/rows/reusable-content)                                                     | End users can drag and drop Rows onto the stage, too. Rows store groups of content within the email design. An end user needs to drag and drop a row onto the stage before they can add Content tiles. Once the rows are added, they can drag and drop Content tiles onto them.                                                                                                                  | ![](https://lh7-qw.googleusercontent.com/docsz/AD_4nXceuUk6v8idFfK3l_8AfnwsVcH4FaHqAQN7n6ZBBxCzXz5dqP404UMk4pXOsK7QPeWzGABkSTei2xhQMnmjg_VJomI1D5s-AGePcuEqgzKTNRdIS79R15bZf-wJdlIo0-9c9qE8jLi4QYISbf4WBlOF_oA?key=qdLL93gfl1SVZrxzjDZmdA)                                     |
+| [Row properties](https://docs.beefree.io/end-user-guide/saved-rows)                                                   | Users can customize Rows with Row properties. Customizable options include Backgrounds, Borders, Column Structure, and more.                                                                                                                                                                                                                                                                     | ![](https://lh7-qw.googleusercontent.com/docsz/AD_4nXczIDLQ2P0h2ywmYVs4D8ehU3AG81ILy_VwZS2zwqZgtzu597NZhEsSxBg5Bs2ASX5bDKXfiBjIQGJmVzRV-OzWOtoYHImH08IcsouAT84XdbGeS53IzO9CwqSKVquVtdE1en-MVBIC9rXFlgW4iBqf9CM?key=qdLL93gfl1SVZrxzjDZmdA)                                     |
+| [Settings](https://docs.beefree.io/end-user-guide/configuring-settings)                                               | Settings enable end users to apply general customization options to their email designs.                                                                                                                                                                                                                                                                                                         | ![](https://lh7-qw.googleusercontent.com/docsz/AD_4nXcWwdsOhSISqJ3XNPBwmBzXPF8BNQ26Nrolw5M4MXH6LVGCS5vPBzr4vrQWjFj0mZpFGpkWn2VOI91RfAqr92O6I6qJXm-0r8oRrjboAYuIHOiW1bw1MWqznM7c00yrAE4sGzPHqUKsQi100HWQiUf-tvSb?key=qdLL93gfl1SVZrxzjDZmdA)                                    |
+| [Actions](https://docs.beefree.io/end-user-guide/preview)                                                             | <p>A few of the actions included with the email builder include:</p><ul><li>Preview</li><li>Send test</li><li>Save as Template</li></ul>                                                                                                                                                                                                                                                         | ![](https://lh7-qw.googleusercontent.com/docsz/AD_4nXdVSZjhC8_OEHHMwEQuk5o43-uJLsF7cVIxWK9yvlwl_WWsdZFMFk1uAh_njzEMr_UvIyNh5p17linpBlA29hzLbKYa5c98-qoXEZQQ8cq-K4zM_8riaC_tFg2ajcKWsiwfGoMYnil-_XTMR5xkycZqTKyh?key=qdLL93gfl1SVZrxzjDZmdA)                                    |
+| [Text editor](https://docs.beefree.io/beefree-sdk/other-customizations/advanced-options/special-links-and-merge-tags) | The text editor appears when you click on a text-type content on the stage. The options include adding Merge tags, Special links, and more.                                                                                                                                                                                                                                                      | ![](https://lh7-qw.googleusercontent.com/docsz/AD_4nXfZC7wT28Ao9FvFjryK9fx26yGjLRpwlduGgcPA6pt4CWEJaXsQ7XT9NjsSG5y2mkY0iJA3Rz-B9reXZYcUZ1XhtCrjhKHvSTyD3DSbuSwCQCFjqGnm93yX8CmMvFJbaWMKyBnPJKEYbNfjCKK7DZfI0mSz?key=qdLL93gfl1SVZrxzjDZmdA)                                    |
+
+### Test out the Email builder
+
+There are various tools you can use to experiment with and test out the Email builder to learn more about it.
+
+The following resources are a great start to learn more:
+
+* [Coral Demo](https://bee-plugin-demos.getbee.io/#/)
+
+{% hint style="info" %}
+**Note:** You do not need a Client ID or Client Secret to experiment with the Email builder in this environment.
+{% endhint %}
+
+* Quickstart Guides
+  * [React No-code Email Builder](https://docs.beefree.io/beefree-sdk/quickstart-guides/react-no-code-email-builder)
+  * [Vue.js No-code Email Builder](https://docs.beefree.io/beefree-sdk/quickstart-guides/vue.js-no-code-email-builder)
+  * [Angular No-code Email Builder](https://docs.beefree.io/beefree-sdk/quickstart-guides/angular-no-code-email-builder)
+
+{% hint style="info" %}
+**Note:** You do need a Client ID and Client Secret to use these Quickstart Guides. Reference the [Create an Application](https://docs.beefree.io/beefree-sdk/getting-started/readme/create-an-application) page to learn how to obtain them.
+{% endhint %}
+
+### Integrate the Email builder
+
+To integrate the Email builder, take the following steps:
+
+1. [Create your Beefree SDK account](https://docs.beefree.io/beefree-sdk/getting-started/readme/create-an-application) in the [Developer Console](https://developers.beefree.io/login?from=website_menu).
+   1. [Create an email application](https://docs.beefree.io/beefree-sdk/getting-started/readme/create-an-application) within the Developer Console.
+   2. Obtain your Client ID and Client Secret.
+2. Authenticate using the [Authorization Process](https://docs.beefree.io/beefree-sdk/getting-started/readme/installation/authorization-process-in-detail).
+3. Use the [npm package](https://www.npmjs.com/package/@beefree.io/sdk) to [install](https://docs.beefree.io/beefree-sdk/getting-started/readme/installation) and embed Beefree SDK.
+
+\
+Visit the [React](https://docs.beefree.io/beefree-sdk/quickstart-guides/react-no-code-email-builder), [Vue.js](https://docs.beefree.io/beefree-sdk/quickstart-guides/vue.js-no-code-email-builder), or [Angular](https://docs.beefree.io/beefree-sdk/quickstart-guides/angular-no-code-email-builder) Quickstart Guides to learn more about installing Beefree SDK.

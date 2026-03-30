@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Docker instance should not use AUFS as its storage driver
-Classification:complianceFramework:cis-dockerControl:2.5 
+Classification:complianceFramework:cis-dockerControl:2.5
 ## Description{% #description %}
 
 Do not use `aufs` as the storage driver for your Docker instance.
@@ -23,7 +23,7 @@ The `aufs` storage driver is the oldest storage driver used on Linux systems. It
 Verify that `aufs` is not used as storage driver by running this command and ensuring `aufs` is not listed:
 
 ```
-docker info --format 'Storage Driver: {{ .Driver }}' 
+docker info --format 'Storage Driver: {{ .Driver }}'
 ```
 
 ## Remediation{% #remediation %}

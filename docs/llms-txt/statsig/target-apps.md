@@ -1,0 +1,93 @@
+# Source: https://docs.statsig.com/sdks/target-apps.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.statsig.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Target Apps
+
+<Info>
+  Target Apps are an Enterprise-only feature. Reach out to our support team, your sales contact, or via our [Slack community](https://statsig.com/slack) if you want this enabled.
+</Info>
+
+## Motivation
+
+There are two main attributes you can add to SDK Keys which restrict their access to certain configs or config definitions - Environments and Target Apps. A “Target App” is a user defined abstraction tied to entities in your Statsig Project which can be linked to one or more SDK Keys.
+Target apps should be things like your "Android" or "iOS" apps, or could be more restricted to specific services like "Search" and "Feed" which may span both client and server usage.
+
+Defining and using Target Apps is a best practice when using Statsig at large scale, and has two main benefits:
+
+* Performance: removing unused entities from the payload to your Statsig SDK integration will speed up the initialization time and reduce the amount of data that is stored in any local caches or data stores
+* Security: you may not want to expose certain gates/experiments/configs to the client side, or to the client key which is easily found in your client app. Specifying a target app for your client key and ONLY linking that to client specific gates/configs/experiments hides those from prying eyes
+
+When using target apps, first consider if you should instead use separate projects for your Statsig integrations:
+
+* If you need to share gates/experiments/metrics across apps or services, it is recommended to use a Target App as entities are restricted within a single Statsig project.
+* If your services or apps always have distinct gates/experiments/metrics, using a separate Statsig project might be a better solution.
+
+If you have an existing Statsig project with multiple SDK integrations, Statsig will help you to bootstrap your Target Apps by suggesting existing entities to tag which have historically recorded checks from that specific SDK.
+
+## Configuring Target Apps
+
+### Project Setup
+
+Start by going to **Settings** → [**Target Applications**](https://console.statsig.com/settings/apps).
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/KtVDBhAplpXSyk3S/images/target_apps/settings.png?fit=max&auto=format&n=KtVDBhAplpXSyk3S&q=85&s=f6d2f362faeed6aeeec895fe6770fc80" alt="Project Settings" width="2970" height="1308" data-path="images/target_apps/settings.png" />
+</Frame>
+
+<img width="1485" height="654" alt="Screenshot 2025-09-04 at 11 48 55 PM" src="https://github.com/user-attachments/assets/c359c25c-dead-44c4-8c1f-dd8cefb24929" />
+
+Create a target app, or use one that is suggested based on your current SDK exposure logs.
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/KtVDBhAplpXSyk3S/images/target_apps/add.png?fit=max&auto=format&n=KtVDBhAplpXSyk3S&q=85&s=1de683dfee465f9cdf66a7d524df0ed6" alt="Project Settings" width="1214" height="704" data-path="images/target_apps/add.png" />
+</Frame>
+
+### Associating a Feature Gate with a Target App
+
+If you wish to verify the suggestions you added in the initial setup, or add additional entities to the target app, you can do so from that entity itself.
+
+For example, navigate to the **Feature Gates** tab, and then select a specific gate.
+
+In the right rail for that gate, you can view and edit the target app(s) applied to that gate.
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/KtVDBhAplpXSyk3S/images/target_apps/gate.png?fit=max&auto=format&n=KtVDBhAplpXSyk3S&q=85&s=cf89c7e6be4cdc9b0658ebc591bb3094" alt="Project Settings" width="550" height="784" data-path="images/target_apps/gate.png" />
+</Frame>
+
+Repeat this flow for the Dynamic Configs and Experiments that are used by this Target App.
+
+### Associating an SDK Key with a Target App
+
+Navigate to the **Settings** → [**Keys & Environments**](https://console.statsig.com/api_keys) page. You're ready to restrict a certain key to a certain target app.
+
+Select the SDK Key you wish to restrict to the set of Target App entities.
+
+Under **Actions**, trigger the dropdown menu
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/KtVDBhAplpXSyk3S/images/target_apps/keys.png?fit=max&auto=format&n=KtVDBhAplpXSyk3S&q=85&s=c1a69eb4efb45316f51c47d002ab2a4a" alt="Project Settings" width="2200" height="702" data-path="images/target_apps/keys.png" />
+</Frame>
+
+Then select the target app(s) to apply to that key.
+
+<Frame>
+  <img src="https://mintcdn.com/statsig-4b2ff144/KtVDBhAplpXSyk3S/images/target_apps/apply.png?fit=max&auto=format&n=KtVDBhAplpXSyk3S&q=85&s=7ebbb0b5b5a11e0b0c9c748079631c75" alt="Project Settings" width="1052" height="690" data-path="images/target_apps/apply.png" />
+</Frame>
+
+<Note>
+  When [bootstrapping](/client/concepts/initialize#2-bootstrap-initialization) a Client SDK from a Server SDK, you'll need the server SDK to have access to all of the gates/experiments/configs needed both for server and client. If you have separate target apps for client and server SDKs, you should apply both target apps to the server key you're using.
+
+  Then, to filter the boostrapping response to a specific target app, add a client key with that target app applied to the getClientInitializeResponse call.
+</Note>
+
+### Debugging
+
+To debug SDK evaluations which may be impacted by your Target App configuration, use the **Diagnostics** tab for any entity.
+
+In this Feature Gate example, the Exposure Stream at the bottom will show the Target App associated with any checks if the SDK key used to check it has a Target App applied. If any exposures for that entity do not have a matching Target App, it will be flagged with a warning.
+
+
+Built with [Mintlify](https://mintlify.com).

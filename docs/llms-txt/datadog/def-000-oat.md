@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # S3 bucket policy should deny HTTP requests
- 
+
 ## Description{% #description %}
 
 At the Amazon S3 bucket level, you can configure permissions through a bucket policy to make objects accessible only through HTTPS. By default, Amazon S3 allows both HTTP and HTTPS requests. To enforce HTTPS-only access, you must explicitly deny HTTP requests. Bucket policies allowing HTTPS but not explicitly denying HTTP do not comply with this security recommendation. Implementing such a policy helps safeguard data by ensuring only encrypted data transfers using HTTPS, thereby enhancing security.

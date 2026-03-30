@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Build and Test AIDE Database
 ---
 
 # Build and Test AIDE Database
- 
+
 ## Description{% #description %}
 
 Run the following command to generate a new database:

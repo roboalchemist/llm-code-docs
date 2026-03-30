@@ -3,10 +3,11 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 **See also:** [AGENTS.md](./AGENTS.md) for quick guidance on finding and using documentation in this repository.
+**See also:** [auto-doc GOALS](https://gitea.roboalch.com/roboalchemist/auto-doc/src/branch/master/GOALS.md) for pipeline quality principles.
 
 ## Project Overview
 
-This repository provides centralized, AI-readable documentation extracted from 175+ frameworks, libraries, and developer tools. It includes automated extraction tools that keep documentation current with upstream sources.
+This repository provides centralized, AI-readable documentation extracted from 500+ frameworks, libraries, and developer tools. It includes automated extraction tools and a pipeline (`auto_doc.py`) that keeps documentation current with upstream sources.
 
 **Purpose**: Serve as a comprehensive documentation hub optimized for LLM consumption and AI-assisted development.
 
@@ -15,72 +16,84 @@ This repository provides centralized, AI-readable documentation extracted from 1
 ### Three-Tier Documentation Structure
 
 1. **llms.txt-Compliant Documentation** (`docs/llms-txt/`) - **HIGHEST PRIORITY**
-   - **233 sites** following the llms.txt standard (https://llmstxt.org/)
+   - **343 sites** following the llms.txt standard (https://llmstxt.org/)
+   - **348 sites** registered in `scripts/llms-sites.yaml`
    - Each site in its own subdirectory: `docs/llms-txt/{site-name}/`
    - Parallel downloads with 15 concurrent workers
    - File-level caching with 23-hour freshness window
-   - Recent additions: `gradio/`, `vite/`, `ant-design/`, `ollama/`, `react/`
    - Examples: `docs/llms-txt/anthropic/`, `docs/llms-txt/vercel-ai-sdk/`, `docs/llms-txt/bun/`
 
 2. **Git-Based Documentation Extractions** (`docs/github-scraped/`)
-   - `circuitpython/` - MicroPython for microcontrollers
-   - `click/` - Python CLI framework (Pallets)
-   - `fastapi/` - Modern Python web framework
-   - `flask/` - Lightweight WSGI web framework (Pallets)
-   - `go-docs/` - Go programming language official docs
-   - `goose/` - AI-powered developer agent (Block)
-   - `python-docs/` - Python 3.13 official documentation
-   - `sqlalchemy/` - Python SQL toolkit and ORM
-   - `textual/` - TUI framework documentation
-   - And more (15 total repositories)
+   - **159 repositories** configured in `scripts/repo_config.yaml`
+   - Each repo specifies: `repo_url`, `source_folder`, `target_folder`, `branch`
+   - All target folders under `docs/github-scraped/`
+   - Examples: `fastapi/`, `python-docs/`, `go-docs/`, `sqlalchemy/`, `react-router/`, `pytorch/`
 
 3. **Web-Scraped Documentation** (`docs/web-scraped/`)
-   - `claude-code-sdk/` - Anthropic's Claude Code SDK (HTML scraping)
-   - `notion/` - Notion API documentation
-   - `perplexity/` - Perplexity API documentation
-   - `openrouter/` - OpenRouter models catalog
-   - `readmes/` - Individual README files from GitHub
+   - **138 documentation sets** from custom per-site scrapers
+   - Each scraper is a standalone Python script in `scripts/`
+   - Examples: `datadog-api/`, `electron/`, `express/`, `laravel/`, `storybook/`
 
 ### Configuration Files
 
-- **`scripts/llms-sites.yaml`** - Central registry of 170 llms.txt-compliant sites
+- **`scripts/llms-sites.yaml`** - Central registry of 348 llms.txt-compliant sites
   - Structure: `name`, `base_url`, `description`, optional `rate_limit_seconds`
   - Alphabetically sorted by name
   - Used by `llms-txt-scraper.py` for bulk downloads
 
 - **`scripts/repo_config.yaml`** - Git repository extraction config
-  - 15 repositories: CircuitPython, Click, FastAPI, Flask, SQLAlchemy, Go, Python, Goose, and more
-  - Each repo specifies: `repo_url`, `source_folder`, `target_folder`, `branch`
-  - All target folders now under `docs/github-scraped/`
+  - Top-level keys: `settings`, `repositories`
+  - 159 repositories with: `repo_url`, `source_folder`, `target_folder`, `branch`
+  - All target folders under `docs/github-scraped/`
 
-### Update Scripts Architecture
+### Scripts Architecture
 
-**Primary Scripts:**
-- `llms-txt-scraper.py` - **Main workhorse** - Downloads from 170+ llms.txt sites in parallel
-- `extract_docs.py` - Git repository cloner/extractor (15 repositories)
-- `update.sh` - Master orchestrator that runs all update scripts sequentially
+**Primary Tools:**
+- `auto_doc.py` - **Unified pipeline CLI** (typer) — probe, fetch, validate, add, plow
+- `llms-txt-scraper.py` - Bulk llms.txt downloader (parallel, cached)
+- `validate-markdown.py` - Markdown quality validation
+- `update-index.py` - Documentation index updater
 
-**Discovery Scripts** (research tools, not run automatically):
-- `find-llms-txt.sh` - **Quick probe** - Check if a domain has llms.txt (tries common subdomain/path combinations)
-- `discover-llms-txt-sites.py` - Multi-API discovery (Brave, Exa, Tavily)
-- `discover-llms-txt-serper.py` - Serper API-based discovery
-- Various sidebar extractors for specific sites
+**Per-Site Scrapers** (~170 scripts):
+- Each named `{library}-docs.py` or `{library}-extract.py`
+- Standalone Python scripts for web-scraped sources
+- Generated by `auto_doc.py` pipeline or written manually
+
+## auto_doc.py Pipeline
+
+The main automation tool for adding new documentation sources. Integrates with trckr for ticket tracking.
+
+```bash
+# Probe a library — discover all doc sources, score them
+python3 scripts/auto_doc.py probe <library-name>
+
+# Fetch docs from a chosen source
+python3 scripts/auto_doc.py fetch <library-name> --source-type llms-txt --url <url>
+
+# Add a library end-to-end (probe → decide → fetch → clean → review → commit)
+python3 scripts/auto_doc.py add <library-name>
+
+# Batch-process DOCS tickets from trckr queue
+python3 scripts/auto_doc.py plow [--limit N] [--dry-run]
+
+# Validate markdown quality
+python3 scripts/auto_doc.py validate
+
+# Report current doc status
+python3 scripts/auto_doc.py status
+```
+
+**Pipeline stages** (for `add` and `plow`):
+1. **Probe** — Exa search (25 results), GitHub search (25 results), llms.txt probing
+2. **Decide** — Deterministic rules pick best source (llms-txt > github > web scraper > skip)
+3. **Fetch** — Download from chosen source (llms-txt, github, or web scraper)
+4. **Clean** — Markdownlint cleanup
+5. **Review** — GLM-5 quality review (MANDATORY — never skip)
+6. **Commit** — Git add and commit to master
 
 ## Common Development Workflows
 
-### Update All Documentation
-
-```bash
-# Run master update script
-./scripts/update.sh
-
-# This executes in order:
-# 1. extract_docs.py (15 Git repositories)
-# 2. claude-code-sdk-docs.py
-# 3. llms-txt-scraper.py (170 sites in parallel)
-```
-
-### Update Specific llms.txt Sites
+### Update llms.txt Sites
 
 ```bash
 # Update single site
@@ -101,294 +114,64 @@ python3 scripts/llms-txt-scraper.py --mode individual  # Only individual .md fil
 python3 scripts/llms-txt-scraper.py --mode both        # Default: both files
 ```
 
-### Add New llms.txt Site
-
-1. **Add to YAML configuration:**
-   ```bash
-   # Edit scripts/llms-sites.yaml
-   # Add new entry in alphabetical order:
-   - name: new-site-name
-     base_url: https://example.com/
-     description: Site description
-   ```
-
-2. **Download documentation:**
-   ```bash
-   python3 scripts/llms-txt-scraper.py --site new-site-name
-   ```
-
-3. **Verify extraction:**
-   ```bash
-   ls -lh docs/llms-txt/new-site-name/
-   grep -l '```' docs/llms-txt/new-site-name/*.md | wc -l  # Check for code examples
-   ```
-
-### Remove Sites with No Documentation
-
-When sites don't have working llms.txt files:
+### Add New Documentation (Automated)
 
 ```bash
-# Create cleanup script
-cat > /tmp/remove-empty-sites.py << 'EOF'
-import yaml
-from pathlib import Path
+# Fully automated — probes, decides, fetches, cleans, reviews, commits
+python3 scripts/auto_doc.py add <library-name>
 
-config_file = Path('scripts/llms-sites.yaml')
-docs_dir = Path('docs/llms-txt')
-
-with open(config_file) as f:
-    config = yaml.safe_load(f)
-
-empty_sites = []
-for site in config['sites']:
-    site_dir = docs_dir / site['name']
-    if not site_dir.exists() or len(list(site_dir.glob('*.md'))) == 0:
-        empty_sites.append(site['name'])
-
-print(f"Found {len(empty_sites)} sites with no documentation")
-print('\n'.join(empty_sites))
-
-# Remove from config
-config['sites'] = [s for s in config['sites'] if s['name'] not in empty_sites]
-
-with open(config_file, 'w') as f:
-    yaml.dump(config, f, default_flow_style=False, sort_keys=False)
-EOF
-
-python3 /tmp/remove-empty-sites.py
+# Batch mode — processes tickets from trckr DOCS project queue
+python3 scripts/auto_doc.py plow --limit 10
 ```
 
-### Rename Incorrectly Named Folders
+### Add New llms.txt Site (Manual)
 
-When generic folder names like `docs-*` need proper site names:
-
-```python
-import yaml
-from pathlib import Path
-
-renames = {
-    'docs-5': 'apify',
-    'docs-10': 'litellm',
-    # ... more renames
-}
-
-# Update YAML
-config_file = Path('scripts/llms-sites.yaml')
-with open(config_file) as f:
-    config = yaml.safe_load(f)
-
-for site in config['sites']:
-    if site['name'] in renames:
-        site['name'] = renames[site['name']]
-
-config['sites'] = sorted(config['sites'], key=lambda x: x['name'])
-
-with open(config_file, 'w') as f:
-    yaml.dump(config, f, default_flow_style=False, sort_keys=False)
-
-# Rename directories
-docs_dir = Path('docs/llms-txt')
-for old_name, new_name in renames.items():
-    old_dir = docs_dir / old_name
-    new_dir = docs_dir / new_name
-    if old_dir.exists() and not new_dir.exists():
-        old_dir.rename(new_dir)
-```
+1. Add to `scripts/llms-sites.yaml` in alphabetical order
+2. Download: `python3 scripts/llms-txt-scraper.py --site new-site-name`
+3. Verify: `ls -lh docs/llms-txt/new-site-name/`
 
 ## File-Level Caching System
 
-The scraper implements smart caching to avoid redundant downloads:
+The llms-txt scraper implements smart caching:
 
 - **Cache Duration**: 23 hours (configurable in `is_file_recent()`)
 - **Behavior**: Files downloaded within last 23 hours are skipped unless `--force` is used
-- **Logging**: Shows skip reason with file age: `"⏭ Skipping file.md: Downloaded 5.2h ago"`
 - **Override**: Use `--force` flag to re-download all files regardless of age
-
-This reduces server load and speeds up incremental updates from hours to minutes.
-
-## Parallel Download Strategy
-
-The scraper uses Python's `ThreadPoolExecutor` for concurrent downloads:
-
-- **Default workers**: 15 concurrent threads
-- **Thread-safe printing**: All console output uses `print_lock` to prevent garbled output
-- **Error handling**: Individual site failures don't stop the entire run
-- **Progress tracking**: Real-time status updates for each site as downloads complete
-
-Typical performance: **170 sites downloaded in ~5-10 minutes** (vs. 2+ hours serial).
-
-## Quality Verification
-
-After downloading documentation, verify completeness:
-
-```bash
-# Check file sizes (small files may be incomplete)
-ls -lh docs/llms-txt/*/[a-z]*.md | awk '{print $5, $9}' | sort -h | tail -20
-
-# Count total files per site
-for dir in docs/llms-txt/*; do
-    echo "$(basename $dir): $(find $dir -name '*.md' | wc -l) files"
-done
-
-# Check for code examples (should have ```  markers)
-grep -l '```' docs/llms-txt/anthropic/*.md | wc -l
-
-# Verify source headers are present
-grep -L "^# Source:" docs/llms-txt/vercel-ai-sdk/*.md
-```
-
-**Expected characteristics:**
-- Files should have `# Source: URL` headers at the top
-- Code-heavy docs should contain ``` markers
-- Critical files (API references) typically >15KB
-- No extraction artifacts like `javascript:void(0)` or CSS class names
 
 ## Git Workflow
 
-### Committing Documentation Updates
-
-When adding/updating large documentation sets:
-
-```bash
-# Stage changes
-git add docs/llms-txt/ docs/github-scraped/ docs/web-scraped/ scripts/
-
-# Commit with descriptive message
-git commit -m "Update documentation sources
-
-- Updated llms.txt sites in docs/llms-txt/
-- Updated Git repos in docs/github-scraped/
-- Updated web scrapers in docs/web-scraped/"
-
-# Push (may encounter GitHub secret scanning)
-git push origin master
-```
-
-### Handling GitHub Push Protection
-
-If push fails due to test API keys in documentation:
-
-```bash
-# Identify secrets from error message
-# Example: Discord bot token at line 32 in bun/discordjs.md
-
-# Redact exact secret values
-sed -i 's/NzkyNzE1NDU0MTk2MDg4ODQy\.X-hvzA\.Ovy4MCQywSkoMRRclStW4xAYK7I/DISCORD_TOKEN_REDACTED/g' docs/llms-txt/bun/discordjs.md
-
-# Amend commit with redactions
-git add docs/llms-txt/bun/discordjs.md
-git commit --amend --no-edit
-
-# Push again
-git push origin master
-```
+- Default branch is **`master`** (not `main`)
+- Push to `origin master`
+- GitHub push protection may block pushes containing test API keys in documentation — redact and amend
 
 **Common test credentials to redact:**
 - Stripe test keys: `sk_test_[A-Za-z0-9]{24,}`
 - Discord bot tokens: Long base64-like strings
 - API proxy passwords: `auto_[a-z0-9]{32}`
 
-## Discovery Workflow
-
-When expanding the documentation catalog:
-
-### Check if a Specific Domain Has llms.txt
-
-Use the quick probe script to check common subdomain/path combinations:
-
-```bash
-./scripts/find-llms-txt.sh example.com
-
-# Checks these subdomains: (root), www., docs., developers., developer., api., dev.
-# Checks these paths: /llms.txt, /llms-full.txt, /docs/llms.txt, /docs/llms-full.txt, /.well-known/llms.txt
-# Returns exit code 0 if found, 1 if not found
-```
-
-### Bulk Discovery of New Sites
-
-1. **Discover new sites** using multi-API search:
-   ```bash
-   python3 scripts/discover-llms-txt-sites.py
-   # Uses: Brave Search, Exa AI, Tavily, Serper (fallback)
-   ```
-
-2. **Extract unique URLs** from search results
-
-3. **Add to YAML** with proper metadata:
-   ```python
-   # Generate site names from URLs
-   def generate_site_name(url):
-       domain = urlparse(url).netloc.replace('www.', '')
-       return re.sub(r'[^a-z0-9-]', '', domain.lower())
-   ```
-
-4. **Test download** on new sites:
-   ```bash
-   python3 scripts/llms-txt-scraper.py --site new-site --mode both
-   ```
-
-5. **Clean up failures** - remove sites with 404s or empty content
-
-## Special Cases
-
-### Git-Based Documentation Extraction
-
-Uses `extract_docs.py` with git clone instead of HTTP downloads for 15 repositories:
-
-```bash
-# Run all Git extractions
-python3 scripts/extract_docs.py
-
-# Configuration examples in repo_config.yaml:
-# - CircuitPython: adafruit/circuitpython (docs/)
-# - FastAPI: fastapi/fastapi (docs/en/docs/)
-# - Go: golang/website (_content/)
-# - Python: python/cpython (Doc/, branch: 3.13)
-# - SQLAlchemy: sqlalchemy/sqlalchemy (doc/build/)
-```
-
-**Why Git extraction over llms.txt:**
-- More detailed/comprehensive documentation
-- Access to unreleased docs (specific branches)
-- Better structured source files
-- Full control over extraction process
-
-### Claude Code SDK (Custom HTML Scraper)
-
-Downloads from Anthropic docs with live sidebar extraction:
-
-```bash
-python3 scripts/claude-code-sdk-docs.py
-# Parses sidebar for complete file list
-# Downloads as markdown using pandoc if available
-```
-
 ## Repository Statistics
 
 Current scale:
-- **170 active llms.txt sites** in YAML configuration (`docs/llms-txt/`)
-- **233 documentation directories** in docs/llms-txt/
-- **15 Git-based repository extractions** in `docs/github-scraped/`
-- **5 web-scraped documentation sets** in `docs/web-scraped/`
-- **12,000+ markdown/RST files** across all sources
-- **300MB+ total documentation** optimized for AI consumption
+- **348 llms.txt sites** in YAML configuration
+- **343 documentation directories** in `docs/llms-txt/`
+- **159 Git-based repository extractions** in `docs/github-scraped/`
+- **138 web-scraped documentation sets** in `docs/web-scraped/`
+- **56,000+ markdown/RST files** across all sources
+- **5.4GB+ total documentation** optimized for AI consumption
 
 ### Directory Structure
 ```
 llm-code-docs/
-├── docs/llms-txt/           # llms.txt standard docs (233 sites)
-├── docs/github-scraped/     # Git repository extractions (15 repos)
-├── docs/web-scraped/        # Custom web scrapers (5 sets)
-└── scripts/          # All extraction and update scripts
+├── docs/llms-txt/           # llms.txt standard docs (343 sites)
+├── docs/github-scraped/     # Git repository extractions (159 repos)
+├── docs/web-scraped/        # Custom web scrapers (138 sets)
+└── scripts/                 # Pipeline CLI, scrapers, and config files
+    ├── auto_doc.py          # Unified pipeline CLI
+    ├── llms-txt-scraper.py  # Bulk llms.txt downloader
+    ├── llms-sites.yaml      # llms.txt site registry
+    ├── repo_config.yaml     # Git repo extraction config
+    └── *-docs.py / *-extract.py  # Per-site web scrapers
 ```
-
-### Notable Additions (2025-11-24)
-- **llms.txt sites**: Gradio (272KB), Vite (480KB), Ant Design (1.2MB), Ollama (592KB), React (3.1MB)
-- **Git repos**: Click (280KB), FastAPI (19MB), Flask (992KB), SQLAlchemy (6.2MB), Go (197MB), Python 3.13 (18MB), Goose (37MB)
-- **Total new docs**: 255MB+ across 4,675+ files
-- **Reorganization**: Moved all docs into organized subdirectories
-
-Updated: 2025-11-24
 
 ## Key Design Principles
 
@@ -398,4 +181,7 @@ Updated: 2025-11-24
 4. **Parallel execution** - Maximize throughput with concurrent workers
 5. **Quality verification** - Post-download checks ensure complete content capture
 6. **Git-friendly naming** - Descriptive folder names, not generic "docs-N" patterns
-- llms.txt are considered of better/higher priority than github derived docs
+7. **llms.txt priority** - llms.txt sources are preferred over github-scraped or web-scraped
+8. **Mandatory review** - GLM-5 review gate is never optional; correctness over throughput
+
+Updated: 2026-02-20

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify permissions on System Login Banner for Remote Connections
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/etc/issue.net`, run the command:

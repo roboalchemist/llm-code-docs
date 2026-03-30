@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # An external Microsoft Teams member was added then removed
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1136-create-account](https://attack.mitre.org/techniques/T1136) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1136-create-account](https://attack.mitre.org/techniques/T1136)
 ## Goal{% #goal %}
 
 Detect when a Teams member is added and then removed within a short amount of time. An insider threat might add an external account to exfiltrate data then quickly remove the user to hide their tracks.

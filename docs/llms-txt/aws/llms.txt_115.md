@@ -1,0 +1,131 @@
+# Source: https://docs.aws.amazon.com/audit-manager/latest/APIReference/llms.txt
+
+# AWS Audit Manager API Reference
+
+> Welcome to the AWS Audit Manager API reference. This guide is for developers who need detailed information about the Audit Manager API operations, data types, and errors.
+
+- [Welcome](https://docs.aws.amazon.com/audit-manager/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/audit-manager/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/audit-manager/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Operations.html)
+
+- [AssociateAssessmentReportEvidenceFolder](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_AssociateAssessmentReportEvidenceFolder.html): Associates an evidence folder to an assessment report in an Audit Manager assessment.
+- [BatchAssociateAssessmentReportEvidence](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_BatchAssociateAssessmentReportEvidence.html): Associates a list of evidence to an assessment report in an Audit Manager assessment.
+- [BatchCreateDelegationByAssessment](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_BatchCreateDelegationByAssessment.html): Creates a batch of delegations for an assessment in AWS Audit Manager.
+- [BatchDeleteDelegationByAssessment](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_BatchDeleteDelegationByAssessment.html): Deletes a batch of delegations for an assessment in AWS Audit Manager.
+- [BatchDisassociateAssessmentReportEvidence](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_BatchDisassociateAssessmentReportEvidence.html): Disassociates a list of evidence from an assessment report in AWS Audit Manager.
+- [BatchImportEvidenceToAssessmentControl](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_BatchImportEvidenceToAssessmentControl.html): Adds one or more pieces of evidence to a control in an Audit Manager assessment.
+- [CreateAssessment](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_CreateAssessment.html): Creates an assessment in AWS Audit Manager.
+- [CreateAssessmentFramework](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_CreateAssessmentFramework.html): Creates a custom framework in AWS Audit Manager.
+- [CreateAssessmentReport](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_CreateAssessmentReport.html): Creates an assessment report for the specified assessment.
+- [CreateControl](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_CreateControl.html): Creates a new custom control in AWS Audit Manager.
+- [DeleteAssessment](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeleteAssessment.html): Deletes an assessment in AWS Audit Manager.
+- [DeleteAssessmentFramework](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeleteAssessmentFramework.html): Deletes a custom framework in AWS Audit Manager.
+- [DeleteAssessmentFrameworkShare](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeleteAssessmentFrameworkShare.html): Deletes a share request for a custom framework in AWS Audit Manager.
+- [DeleteAssessmentReport](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeleteAssessmentReport.html): Deletes an assessment report in AWS Audit Manager.
+- [DeleteControl](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeleteControl.html): Deletes a custom control in AWS Audit Manager.
+- [DeregisterAccount](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeregisterAccount.html): Deregisters an account in AWS Audit Manager.
+- [DeregisterOrganizationAdminAccount](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeregisterOrganizationAdminAccount.html): Removes the specified AWS account as a delegated administrator for AWS Audit Manager.
+- [DisassociateAssessmentReportEvidenceFolder](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DisassociateAssessmentReportEvidenceFolder.html): Disassociates an evidence folder from the specified assessment report in AWS Audit Manager.
+- [GetAccountStatus](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_GetAccountStatus.html): Gets the registration status of an account in AWS Audit Manager.
+- [GetAssessment](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_GetAssessment.html): Gets information about a specified assessment.
+- [GetAssessmentFramework](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_GetAssessmentFramework.html): Gets information about a specified framework.
+- [GetAssessmentReportUrl](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_GetAssessmentReportUrl.html): Gets the URL of an assessment report in AWS Audit Manager.
+- [GetChangeLogs](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_GetChangeLogs.html): Gets a list of changelogs from AWS Audit Manager.
+- [GetControl](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_GetControl.html): Gets information about a specified control.
+- [GetDelegations](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_GetDelegations.html): Gets a list of delegations from an audit owner to a delegate.
+- [GetEvidence](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_GetEvidence.html): Gets information about a specified evidence item.
+- [GetEvidenceByEvidenceFolder](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_GetEvidenceByEvidenceFolder.html): Gets all evidence from a specified evidence folder in AWS Audit Manager.
+- [GetEvidenceFileUploadUrl](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_GetEvidenceFileUploadUrl.html): Creates a presigned Amazon S3 URL that can be used to upload a file as manual evidence.
+- [GetEvidenceFolder](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_GetEvidenceFolder.html): Gets an evidence folder from a specified assessment in AWS Audit Manager.
+- [GetEvidenceFoldersByAssessment](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_GetEvidenceFoldersByAssessment.html): Gets the evidence folders from a specified assessment in AWS Audit Manager.
+- [GetEvidenceFoldersByAssessmentControl](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_GetEvidenceFoldersByAssessmentControl.html): Gets a list of evidence folders that are associated with a specified control in an Audit Manager assessment.
+- [GetInsights](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_GetInsights.html): Gets the latest analytics data for all your current active assessments.
+- [GetInsightsByAssessment](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_GetInsightsByAssessment.html): Gets the latest analytics data for a specific active assessment.
+- [GetOrganizationAdminAccount](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_GetOrganizationAdminAccount.html): Gets the name of the delegated AWS administrator account for a specified organization.
+- [GetServicesInScope](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_GetServicesInScope.html): Gets a list of the AWS services from which Audit Manager can collect evidence.
+- [GetSettings](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_GetSettings.html): Gets the settings for a specified AWS account.
+- [ListAssessmentControlInsightsByControlDomain](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ListAssessmentControlInsightsByControlDomain.html): Lists the latest analytics data for controls within a specific control domain and a specific active assessment.
+- [ListAssessmentFrameworks](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ListAssessmentFrameworks.html): Returns a list of the frameworks that are available in the Audit Manager framework library.
+- [ListAssessmentFrameworkShareRequests](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ListAssessmentFrameworkShareRequests.html): Returns a list of sent or received share requests for custom frameworks in AWS Audit Manager.
+- [ListAssessmentReports](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ListAssessmentReports.html): Returns a list of assessment reports created in AWS Audit Manager.
+- [ListAssessments](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ListAssessments.html): Returns a list of current and past assessments from AWS Audit Manager.
+- [ListControlDomainInsights](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ListControlDomainInsights.html): Lists the latest analytics data for control domains across all of your active assessments.
+- [ListControlDomainInsightsByAssessment](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ListControlDomainInsightsByAssessment.html): Lists analytics data for control domains within a specified active assessment.
+- [ListControlInsightsByControlDomain](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ListControlInsightsByControlDomain.html): Lists the latest analytics data for controls within a specific control domain across all active assessments.
+- [ListControls](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ListControls.html): Returns a list of controls from AWS Audit Manager.
+- [ListKeywordsForDataSource](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ListKeywordsForDataSource.html): Returns a list of keywords that are pre-mapped to the specified control data source.
+- [ListNotifications](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ListNotifications.html): Returns a list of all AWS Audit Manager notifications.
+- [ListTagsForResource](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ListTagsForResource.html): Returns a list of tags for the specified resource in AWS Audit Manager.
+- [RegisterAccount](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_RegisterAccount.html): Enables AWS Audit Manager for the specified AWS account.
+- [RegisterOrganizationAdminAccount](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_RegisterOrganizationAdminAccount.html): Enables an AWS account within the organization as the delegated administrator for AWS Audit Manager.
+- [StartAssessmentFrameworkShare](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_StartAssessmentFrameworkShare.html): Creates a share request for a custom framework in AWS Audit Manager.
+- [TagResource](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_TagResource.html): Tags the specified resource in AWS Audit Manager.
+- [UntagResource](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_UntagResource.html): Removes a tag from a resource in AWS Audit Manager.
+- [UpdateAssessment](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_UpdateAssessment.html): Edits an Audit Manager assessment.
+- [UpdateAssessmentControl](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_UpdateAssessmentControl.html): Updates a control within an assessment in AWS Audit Manager.
+- [UpdateAssessmentControlSetStatus](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_UpdateAssessmentControlSetStatus.html): Updates the status of a control set in an Audit Manager assessment.
+- [UpdateAssessmentFramework](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_UpdateAssessmentFramework.html): Updates a custom framework in AWS Audit Manager.
+- [UpdateAssessmentFrameworkShare](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_UpdateAssessmentFrameworkShare.html): Updates a share request for a custom framework in AWS Audit Manager.
+- [UpdateAssessmentStatus](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_UpdateAssessmentStatus.html): Updates the status of an assessment in AWS Audit Manager.
+- [UpdateControl](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_UpdateControl.html): Updates a custom control in AWS Audit Manager.
+- [UpdateSettings](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_UpdateSettings.html): Updates Audit Manager settings for the current account.
+- [ValidateAssessmentReportIntegrity](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ValidateAssessmentReportIntegrity.html): Validates the integrity of an assessment report in AWS Audit Manager.
+
+
+## [Data Types](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Types.html)
+
+- [Assessment](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Assessment.html): An entity that defines the scope of audit evidence collected by AWS Audit Manager.
+- [AssessmentControl](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_AssessmentControl.html): The control entity that represents a standard control or a custom control in an Audit Manager assessment.
+- [AssessmentControlSet](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_AssessmentControlSet.html): Represents a set of controls in an Audit Manager assessment.
+- [AssessmentEvidenceFolder](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_AssessmentEvidenceFolder.html): The folder where AWS Audit Manager stores evidence for an assessment.
+- [AssessmentFramework](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_AssessmentFramework.html): The file used to structure and automate AWS Audit Manager assessments for a given compliance standard.
+- [AssessmentFrameworkMetadata](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_AssessmentFrameworkMetadata.html): The metadata that's associated with a standard framework or a custom framework.
+- [AssessmentFrameworkShareRequest](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_AssessmentFrameworkShareRequest.html): Represents a share request for a custom framework in AWS Audit Manager.
+- [AssessmentMetadata](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_AssessmentMetadata.html): The metadata that's associated with the specified assessment.
+- [AssessmentMetadataItem](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_AssessmentMetadataItem.html): A metadata object that's associated with an assessment in AWS Audit Manager.
+- [AssessmentReport](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_AssessmentReport.html): A finalized document that's generated from an Audit Manager assessment.
+- [AssessmentReportEvidenceError](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_AssessmentReportEvidenceError.html): An error entity for assessment report evidence errors.
+- [AssessmentReportMetadata](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_AssessmentReportMetadata.html): The metadata objects that are associated with the specified assessment report.
+- [AssessmentReportsDestination](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_AssessmentReportsDestination.html): The location where AWS Audit Manager saves assessment reports for the given assessment.
+- [AWSAccount](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_AWSAccount.html): The wrapper of AWS account details, such as account ID or email address.
+- [AWSService](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_AWSService.html): An AWS service such as Amazon S3 or AWS CloudTrail.
+- [BatchCreateDelegationByAssessmentError](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_BatchCreateDelegationByAssessmentError.html): An error entity for the BatchCreateDelegationByAssessment API.
+- [BatchDeleteDelegationByAssessmentError](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_BatchDeleteDelegationByAssessmentError.html): An error entity for the BatchDeleteDelegationByAssessment API.
+- [BatchImportEvidenceToAssessmentControlError](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_BatchImportEvidenceToAssessmentControlError.html): An error entity for the BatchImportEvidenceToAssessmentControl API.
+- [ChangeLog](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ChangeLog.html): The record of a change within AWS Audit Manager.
+- [Control](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Control.html): A control in AWS Audit Manager.
+- [ControlComment](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ControlComment.html): A comment that's posted by a user on a control.
+- [ControlDomainInsights](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ControlDomainInsights.html): A summary of the latest analytics data for a specific control domain.
+- [ControlInsightsMetadataByAssessmentItem](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ControlInsightsMetadataByAssessmentItem.html): A summary of the latest analytics data for a specific control in a specific active assessment.
+- [ControlInsightsMetadataItem](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ControlInsightsMetadataItem.html): A summary of the latest analytics data for a specific control.
+- [ControlMappingSource](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ControlMappingSource.html): The data source that determines where AWS Audit Manager collects evidence from for the control.
+- [ControlMetadata](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ControlMetadata.html): The metadata that's associated with the standard control or custom control.
+- [ControlSet](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ControlSet.html): A set of controls in AWS Audit Manager.
+- [CreateAssessmentFrameworkControl](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_CreateAssessmentFrameworkControl.html): The control entity attributes that uniquely identify an existing control to be added to a framework in AWS Audit Manager.
+- [CreateAssessmentFrameworkControlSet](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_CreateAssessmentFrameworkControlSet.html): A controlSet entity that represents a collection of controls in AWS Audit Manager.
+- [CreateControlMappingSource](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_CreateControlMappingSource.html): The mapping attributes that determine the evidence source for a given control, along with related parameters and metadata.
+- [CreateDelegationRequest](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_CreateDelegationRequest.html): A collection of attributes that's used to create a delegation for an assessment in AWS Audit Manager.
+- [DefaultExportDestination](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DefaultExportDestination.html): The default s3 bucket where Audit Manager saves the files that you export from evidence finder.
+- [Delegation](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Delegation.html): The assignment of a control set to a delegate for review.
+- [DelegationMetadata](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DelegationMetadata.html): The metadata that's associated with the delegation.
+- [DeregistrationPolicy](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_DeregistrationPolicy.html): The deregistration policy for the data that's stored in AWS Audit Manager.
+- [Evidence](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Evidence.html): A record that contains the information needed to demonstrate compliance with the requirements specified by a control.
+- [EvidenceFinderEnablement](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_EvidenceFinderEnablement.html): The settings object that specifies whether evidence finder is enabled.
+- [EvidenceInsights](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_EvidenceInsights.html): A breakdown of the latest compliance check status for the evidence in your Audit Manager assessments.
+- [Framework](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Framework.html): The file that's used to structure and automate AWS Audit Manager assessments for a given compliance standard.
+- [FrameworkMetadata](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_FrameworkMetadata.html): The metadata of a framework, such as the name, ID, or description.
+- [Insights](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Insights.html): A summary of the latest analytics data for all your active assessments.
+- [InsightsByAssessment](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_InsightsByAssessment.html): A summary of the latest analytics data for a specific active assessment.
+- [ManualEvidence](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ManualEvidence.html): Evidence that's manually added to a control in AWS Audit Manager. manualEvidence can be one of the following: evidenceFileName, s3ResourcePath, or textResponse.
+- [Notification](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Notification.html): The notification that informs a user of an update in AWS Audit Manager.
+- [Resource](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Resource.html): A system asset that's evaluated in an Audit Manager assessment.
+- [Role](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Role.html): The wrapper that contains the Audit Manager role information of the current user.
+- [Scope](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Scope.html): The wrapper that contains the AWS accounts that are in scope for the assessment.
+- [ServiceMetadata](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ServiceMetadata.html): The metadata that's associated with the AWS service.
+- [Settings](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Settings.html): The settings object that holds all supported Audit Manager settings.
+- [SourceKeyword](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_SourceKeyword.html): A keyword that relates to the control data source.
+- [UpdateAssessmentFrameworkControlSet](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_UpdateAssessmentFrameworkControlSet.html): A controlSet entity that represents a collection of controls in AWS Audit Manager.
+- [URL](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_URL.html): Short for uniform resource locator.
+- [ValidationExceptionField](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_ValidationExceptionField.html): Indicates that the request has invalid or missing parameters for the field.

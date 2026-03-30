@@ -46,6 +46,5 @@ COPY package.json yarn.lock my_app
 FROM node:carbon
 COPY package.json yarn.lock my_app/
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

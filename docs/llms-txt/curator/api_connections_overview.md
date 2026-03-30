@@ -1,0 +1,44 @@
+# Source: https://docs.curator.interworks.com/server_management/architecture/api_connections_overview.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.curator.interworks.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# API Connections Overview
+
+> Understand how Curator uses Tableau REST API connections for authentication and permission checking between Tableau Server and Curator frontend users.
+
+To use Tableau REST API calls we need access to a Tableau Site or Server Admin account. Curator’s API calls
+need a user that has high-level permissions to check another user’s permissions, access all Dashboard
+projects on Tableau Server, check Tableau Group membership, and more. Tableau documents permissions in greater detail here.
+
+When a user tries to login to the front end of Curator, we must check if that user has access to the Tableau
+Server Site we have set in the Tableau Server Settings area of the backend. Curator uses the stored Site
+Server admin account to ask Tableau Server if the user has access to the Tableau Server site. If the user is
+on the site, then it will allow them to login to the front end of Curator. From there, Curator must check to
+see what dashboards a user has access to see.
+
+Curator requires you to select a default Tableau Server Site to authenticate against. If a user is not a
+member of the chosen Tableau Server Site, and instead a member of a different Tableau Server Site, then the
+user won’t be allowed to login. Therefore, we recommend having a default site that has all users and groups
+on it for authentication. If you are using a Tableau Site Admin for the backend API calls, then the above
+scenario will also apply. If the Site Admin is not a Site Admin of another site, then they won’t be able to
+access content/users from another Tableau Sever Site. They will not have permission to use API calls on a
+different site and will not be able to set up content from those Tableau Sites.
+The graphic below is an example of the frontend user login flow where we have a Tableau Server Admin account for API Calls
+
+<img src="https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex1.png?fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=bb66e58e253df34b840f92b7a278d5d4" alt="API EX 1" data-og-width="689" width="689" data-og-height="203" height="203" data-path="assets/images/server_management/architecture/api-ex1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex1.png?w=280&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=9b05fae788ef4a797342a83ed3ea4634 280w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex1.png?w=560&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=f2ecf7d04b25d9c257dd4e5d5d6f2fd2 560w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex1.png?w=840&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=a7565937c8f44e9e168ea6f7216c4cbd 840w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex1.png?w=1100&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=b2b0908d19ccfbc06b03d0bdbbb0006e 1100w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex1.png?w=1650&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=f41e3e856a4beeb3df0d9302133de7ed 1650w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex1.png?w=2500&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=41edaefa247950171ad37fe1dc082cfa 2500w" />
+
+The next graphic is an example of when a Tableau Site/Server Admin uses an API call for a Tableau Server Site
+they are admin of:
+
+<img src="https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex2.png?fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=0e9adc4cb5bd6dc40fd9f829faaa326c" alt="API EX 2" data-og-width="689" width="689" data-og-height="203" height="203" data-path="assets/images/server_management/architecture/api-ex2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex2.png?w=280&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=166ca3ad814691cf8b90c48620a91dd1 280w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex2.png?w=560&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=87a8501e40080029ce61c40c59b9a0fc 560w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex2.png?w=840&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=f0fd5d4e6d810e7f2ed879a5299ec04e 840w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex2.png?w=1100&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=d148db86b21e9c230f3e0dce8eb467b5 1100w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex2.png?w=1650&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=b1f36a03969adfe4205185430ac842c9 1650w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex2.png?w=2500&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=0a954fa9d0fa1319fe83ed27d241497c 2500w" />
+
+This graphic is an example of an incorrect configuration where a Tableau Site Admin uses an API call for a
+Tableau Server Site they are not an Administrator of:
+
+<img src="https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex3.png?fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=dc922717faab203d90b36372e997fe5b" alt="API EX 3" data-og-width="689" width="689" data-og-height="203" height="203" data-path="assets/images/server_management/architecture/api-ex3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex3.png?w=280&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=ba13931c9a2e6f0e20202f2cbd8363dc 280w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex3.png?w=560&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=6b7551d3b4ff177a5f6fafd2b326ac6f 560w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex3.png?w=840&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=bee1d3ef66e0c91294983b5ad1f969fa 840w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex3.png?w=1100&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=c2d113502f7ce3693aae6192f103c583 1100w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex3.png?w=1650&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=1c6711aa644b61ba1e414af3403271bd 1650w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex3.png?w=2500&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=f5c5b43e7ff191cc14e4973c1bc36d2f 2500w" />
+
+The final graphic is an example of Curator checking if a user has view access to a Dashboard:
+
+<img src="https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex4.png?fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=56309e9063db0b67c36a8611a1c94d74" alt="API EX 4" data-og-width="689" width="689" data-og-height="203" height="203" data-path="assets/images/server_management/architecture/api-ex4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex4.png?w=280&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=c70b594da6f7569c11511c85fd51e5cf 280w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex4.png?w=560&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=066c9e775dbf45cd661a365fa009d2c5 560w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex4.png?w=840&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=221b37660c0ccc995f79d98abd05ab33 840w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex4.png?w=1100&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=ccf4aaca571e639a47b1120294012be1 1100w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex4.png?w=1650&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=fcaac46b1fb1484aca7c52e64c76c2b1 1650w, https://mintcdn.com/interworks/x0r9dMo3GyjABFAR/assets/images/server_management/architecture/api-ex4.png?w=2500&fit=max&auto=format&n=x0r9dMo3GyjABFAR&q=85&s=50f97863c349eac60c7774a079cacb07 2500w" />

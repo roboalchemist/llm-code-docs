@@ -1,4 +1,4 @@
-# Source: https://docs.perplexity.ai/docs/grounded-llm/chat-completions/pro-search/stream-mode.md
+# Source: https://docs.perplexity.ai/docs/sonar/pro-search/stream-mode.md
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
@@ -53,7 +53,7 @@ Set `stream_mode: "concise"` when creating streaming completions:
     ```
   </Tab>
 
-  <Tab title="TypeScript SDK">
+  <Tab title="Typescript SDK">
     ```typescript  theme={null}
     import Perplexity from '@perplexity-ai/perplexity_ai';
 
@@ -69,7 +69,7 @@ Set `stream_mode: "concise"` when creating streaming completions:
     for await (const chunk of stream) {
       console.log(`Chunk type: ${chunk.object}`);
       if (chunk.choices[0]?.delta?.content) {
-        process.stdout.write(chunk.choices[0].delta.content);
+        process.stdout.write((chunk.choices[0]?.delta?.content ?? '') as string);
       }
     }
     ```
@@ -77,8 +77,8 @@ Set `stream_mode: "concise"` when creating streaming completions:
 
   <Tab title="cURL">
     ```bash  theme={null}
-    curl -X POST "https://api.perplexity.ai/chat/completions" \
-      -H "Authorization: Bearer YOUR_API_KEY" \
+    curl -X POST "https://api.perplexity.ai/v1/sonar" \
+      -H "Authorization: Bearer $PERPLEXITY_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
         "model": "sonar-pro",
@@ -148,7 +148,7 @@ Streamed during the reasoning stage, containing real-time reasoning steps and se
     ```
   </Tab>
 
-  <Tab title="TypeScript Handler">
+  <Tab title="Typescript Handler">
     ```typescript  theme={null}
     function handleReasoningChunk(chunk: any) {
       if (chunk.object === "chat.reasoning") {
@@ -230,7 +230,7 @@ Marks the end of the reasoning stage and includes all search results (web, image
     ```
   </Tab>
 
-  <Tab title="TypeScript Handler">
+  <Tab title="Typescript Handler">
     ```typescript  theme={null}
     function handleReasoningDone(chunk: any) {
       if (chunk.object === "chat.reasoning.done") {
@@ -303,7 +303,7 @@ Streamed during the response generation stage, containing the actual content bei
     ```
   </Tab>
 
-  <Tab title="TypeScript Handler">
+  <Tab title="Typescript Handler">
     ```typescript  theme={null}
     function handleCompletionChunk(chunk: any): string {
       if (chunk.object === "chat.completion.chunk") {
@@ -396,7 +396,7 @@ Final chunk indicating the stream is complete, including final search results, u
     ```
   </Tab>
 
-  <Tab title="TypeScript Handler">
+  <Tab title="Typescript Handler">
     ```typescript  theme={null}
     function handleCompletionDone(chunk: any) {
       if (chunk.object === "chat.completion.done") {
@@ -534,7 +534,7 @@ Final chunk indicating the stream is complete, including final search results, u
     ```
   </Tab>
 
-  <Tab title="TypeScript SDK">
+  <Tab title="Typescript SDK">
     ```typescript  theme={null}
     import Perplexity from '@perplexity-ai/perplexity_ai';
 
@@ -656,14 +656,15 @@ Final chunk indicating the stream is complete, including final search results, u
 
   <Tab title="Raw HTTP">
     ```python  theme={null}
+    import os
     import requests
     import json
 
     def stream_concise_mode(query: str):
         """Handle concise streaming with raw HTTP"""
-        url = "https://api.perplexity.ai/chat/completions"
+        url = "https://api.perplexity.ai/v1/sonar"
         headers = {
-            "Authorization": "Bearer YOUR_API_KEY",
+            "Authorization": f"Bearer {os.environ.get('PERPLEXITY_API_KEY')}",
             "Content-Type": "application/json"
         }
         payload = {
@@ -868,7 +869,7 @@ If you're migrating from full mode to concise mode, here are the key changes:
 ## When to Use Each Mode
 
 <CardGroup cols={2}>
-  <Card title="Use Full Mode" icon="list">
+  <Card title="Use Full Mode" icon="clipboard-list">
     * Simple integrations where you want the SDK to handle aggregation
     * Backward compatibility with existing implementations
     * When you don't need reasoning visibility
@@ -884,6 +885,9 @@ If you're migrating from full mode to concise mode, here are the key changes:
 
 ## Resources
 
-* [Streaming Responses Guide](/docs/grounded-llm/output-control/streaming-responses) - General streaming documentation
-* [Chat Completions Guide](/docs/grounded-llm/chat-completions/quickstart) - Complete chat completions guide
-* [API Reference - Chat Completions](/api-reference/chat-completions-post) - API documentation
+* [Streaming Responses Guide](/docs/agent-api/output-control/streaming-responses) - General streaming documentation
+* [Sonar API Guide](/docs/sonar/quickstart) - Complete Sonar API guide
+* [API Reference - Sonar API](/api-reference/sonar-post) - API documentation
+
+
+Built with [Mintlify](https://mintlify.com).

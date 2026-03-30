@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # IAM roles should not have IAM inline policies that allow decryption actions on all KMS keys
- 
+
 ## Description{% #description %}
 
 This control examines whether your IAM Role inline policies allow AWS KMS decryption actions on all KMS resources. The control will fail if the policy allows any of the following actions on all KMS keys:

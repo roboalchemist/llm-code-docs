@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Etcd pod specification file should have permissions of 600 or more restrictive
- 
+
 ## Description{% #description %}
 
 The `/etc/kubernetes/manifests/etcd.yaml` file should have permissions of 600 or more restrictive. The file controls various parameters that set the behavior of the etcd service in the master node. Etcd is a highly-available key-value store which Kubernetes uses for persistent storage of all of its REST API object. You should restrict the file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system.

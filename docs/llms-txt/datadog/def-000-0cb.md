@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # AWS IAM user can create access keys for an IAM user with administrative privileges
- 
+
 ## Description{% #description %}
 
 In AWS environments, some IAM permissions can lead to privilege escalation, where an identity can gain access to another more privileged identity. This rule identifies when a given user can use `iam:CreateAccessKey` to create a new access keys for an IAM user with administrative privileges. By creating a new access key pair for another user, an adversary could use those credentials to operate as that user and leverage their privileges.

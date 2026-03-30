@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Route vulnerable to Server-Side Request Forgery (SSRF)
- 
+
 ## Description{% #description %}
 
 An API endpoint was found [vulnerable to SSRF attacks](https://app.datadoghq.com/security/appsec/vm/code?query=status%3A%28Open%20OR%20%22In%20progress%22%29%20type%3A%22Server-Side%20Request%20Forgery%20%28SSRF%29%22&column=score&detection=runtime&order=desc). Server-Side Request Forgery (SSRF) is a web security vulnerability that allows an attacker to deceive the application and make requests to an unintended location.

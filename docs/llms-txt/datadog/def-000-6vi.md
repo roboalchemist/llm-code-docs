@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Cloud KMS cryptokeys should restrict anonymous and/or public access
- 
+
 ## Description{% #description %}
 
 It is recommended that the IAM policy on Cloud KMS `cryptokeys` should restrict anonymous and/or public access.

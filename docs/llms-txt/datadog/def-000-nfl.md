@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Require use_authtok for pam_
 ---
 
 # Require use_authtok for pam_unix.so
- 
+
 ## Description{% #description %}
 
 When password changing enforce the module to set the new password to the one provided by a previously stacked password module

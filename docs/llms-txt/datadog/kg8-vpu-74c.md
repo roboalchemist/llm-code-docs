@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Container images should include HEALTHCHECK instructions
-Classification:complianceFramework:cis-dockerControl:4.6 
+Classification:complianceFramework:cis-dockerControl:4.6
 ## Description{% #description %}
 
 You should add the `HEALTHCHECK` instruction to your Docker container images in order to ensure that health checks are executed against running containers.

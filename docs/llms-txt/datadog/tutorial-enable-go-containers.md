@@ -66,7 +66,7 @@ This tutorial uses the `all-docker-compose.yaml` file, which builds containers f
       0a4704ebed09   docker-notes                    "./cmd/notes/notes"      About a minute ago   Up About a minute               0.0.0.0:8080->8080/tcp   notes
       9c428d7f7ad1   docker-calendar                 "./cmd/calendar/caleâ¦"   About a minute ago   Up About a minute               0.0.0.0:9090->9090/tcp   calendar
       b2c2bafa6b36   gcr.io/datadoghq/agent:latest   "/bin/entrypoint.sh"     About a minute ago   Up About a minute (unhealthy)   8125/udp, 8126/tcp       datadog-ag
-      
+
 ```
 
 
@@ -74,7 +74,7 @@ This tutorial uses the `all-docker-compose.yaml` file, which builds containers f
 1. The sample `notes` application is a basic REST API that stores data in an in-memory database. Use `curl` to send a few API requests:
 
    {% dl %}
-   
+
    {% dt %}
 `curl localhost:8080/notes`
    {% /dt %}
@@ -135,8 +135,8 @@ In the `cmd/notes/main.go` file:
 ```go
     sqltrace "github.com/DataDog/dd-trace-go/contrib/database/sql/v2"
     chitrace "github.com/DataDog/dd-trace-go/contrib/go-chi/chi/v2"
-    httptrace "github.com/DataDog/dd-trace-go/contrib/net/http/v2" 
-    "github.com/DataDog/dd-trace-go/v2/ddtrace/tracer" 
+    httptrace "github.com/DataDog/dd-trace-go/contrib/net/http/v2"
+    "github.com/DataDog/dd-trace-go/v2/ddtrace/tracer"
 ```
 
 In the `main()` function, uncomment the following lines:
@@ -202,7 +202,7 @@ In the `docker/all-docker-compose.yaml` file:
           - /var/run/docker.sock:/var/run/docker.sock
           - /proc/:/host/proc/:ro
           - /sys/fs/cgroup:/host/sys/fs/cgroup:ro
-      
+
 ```
 
 
@@ -235,7 +235,7 @@ In the `docker/all-docker-compose.yaml` file:
        depends_on:
    #     - calendar
          - datadog-agent
-      
+
 ```
 You'll configure the `calendar` sections and variables later in this tutorial.
 
@@ -346,7 +346,7 @@ In the `cmd/notes/main.go` file:
 ```go
 import (
   ...
-  
+
   sqltrace "github.com/DataDog/dd-trace-go/contrib/database/sql/v2"
   chitrace "github.com/DataDog/dd-trace-go/contrib/go-chi/chi/v2"
   httptrace "github.com/DataDog/dd-trace-go/contrib/net/http/v2"
@@ -413,13 +413,13 @@ In the `notes/notesHelper.go` file:
 
 ```go
 func doLongRunningProcess(ctx context.Context) {
-	childSpan, ctx := tracer.StartSpanFromContext(ctx, "traceMethod1")
-	childSpan.SetTag(ext.ResourceName, "NotesHelper.doLongRunningProcess")
-	defer childSpan.Finish()
+    childSpan, ctx := tracer.StartSpanFromContext(ctx, "traceMethod1")
+    childSpan.SetTag(ext.ResourceName, "NotesHelper.doLongRunningProcess")
+    defer childSpan.Finish()
 
-	time.Sleep(300 * time.Millisecond)
-	log.Println("Hello from the long running process in Notes")
-	privateMethod1(ctx)
+    time.Sleep(300 * time.Millisecond)
+    log.Println("Hello from the long running process in Notes")
+    privateMethod1(ctx)
 }
 ```
 
@@ -429,15 +429,15 @@ In the `notes/notesHelper.go` file:
 
 ```go
 func privateMethod1(ctx context.Context) {
-	childSpan, _ := tracer.StartSpanFromContext(ctx, "manualSpan1",
-		tracer.SpanType("web"),
-		tracer.ServiceName("noteshelper"),
-	)
-	childSpan.SetTag(ext.ResourceName, "privateMethod1")
-	defer childSpan.Finish()
+    childSpan, _ := tracer.StartSpanFromContext(ctx, "manualSpan1",
+        tracer.SpanType("web"),
+        tracer.ServiceName("noteshelper"),
+    )
+    childSpan.SetTag(ext.ResourceName, "privateMethod1")
+    defer childSpan.Finish()
 
-	time.Sleep(30 * time.Millisecond)
-	log.Println("Hello from the custom privateMethod1 in Notes")
+    time.Sleep(30 * time.Millisecond)
+    log.Println("Hello from the custom privateMethod1 in Notes")
 }
 ```
 
@@ -458,7 +458,7 @@ In the `cmd/calendar/main.go` file:
    ```go
       chitrace "github.com/DataDog/dd-trace-go/contrib/go-chi/chi/v2" // 2.x
        "github.com/DataDog/dd-trace-go/v2/ddtrace/tracer" // 2.x
-      
+
 ```
 
 
@@ -468,14 +468,14 @@ In the `cmd/calendar/main.go` file:
    ```go
       tracer.Start()
       defer tracer.Stop()
-      
+
 ```
 
 In the `cmd/calendar/main.go` file:
 
    ```go
       r.Use(chitrace.Middleware(chitrace.WithService("calendar")))
-      
+
 ```
 
 1. Open `docker/all-docker-compose.yaml` and uncomment the `calendar` service to set up the Agent host and Unified Service Tags for the app and for Docker:
@@ -502,7 +502,7 @@ In the `docker/all-docker-compose.yaml` file:
           - 9090:9090
         depends_on:
           - datadog-agent
-      
+
 ```
 
 
@@ -533,7 +533,7 @@ In the `docker/all-docker-compose.yaml` file:
         depends_on:
           - calendar
           - datadog-agent
-      
+
 ```
 
 

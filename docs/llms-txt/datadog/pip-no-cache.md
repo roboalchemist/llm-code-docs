@@ -51,6 +51,5 @@ RUN pip3 install django
 FROM busybox
 RUN pip install --no-cache-dir django
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

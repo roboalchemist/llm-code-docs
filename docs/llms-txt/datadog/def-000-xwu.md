@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Ensure PAM Enforces Password Requirements - Authentication Retry Prompts Permitted Per-Session
- 
+
 ## Description{% #description %}
 
 To configure the number of retry prompts that are permitted per-session: Edit the `pam_pwquality.so` statement in `/etc/pam.d/common-password` to show `retry=3`, or a lower value if site policy is more restrictive. The DoD requirement is a maximum of 3 prompts per session.

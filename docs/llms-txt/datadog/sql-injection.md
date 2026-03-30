@@ -64,7 +64,7 @@ class MyClass {
         using (SqlConnection connection = new SqlConnection(connectionString))
         {
                 var sql = $"SELECT Id, Username, Email, IsAdmin FROM Users WHERE Username LIKE '%{name}%'";
-                
+
         }
     }
 }
@@ -112,6 +112,5 @@ class MyClass {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

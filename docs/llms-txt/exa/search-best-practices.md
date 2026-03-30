@@ -1,7 +1,9 @@
 # Source: https://exa.ai/docs/reference/search-best-practices.md
 
 > ## Documentation Index
+
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+
 > Use this file to discover all available pages before exploring further.
 
 # Search Best Practices
@@ -14,33 +16,30 @@ Exa's Search API returns a list of webpages and their contents based on a natura
 
 * **Token efficient**: Use `highlights` to get key excerpts relevant to your query, reducing token usage by 10x compared to full text, without adding latency.
 * **Specialized index coverage**: State of the art search performance on [people](https://exa.ai/blog/people-search-benchmark), [company](https://exa.ai/blog/company-search-benchmarks), and code using Exa's in-house search indexes.
-* **Incredible speed**: Providing the fastest search available without compromising on quality, allowing for search to be added to real-time workflows.
+* **Incredible speed**: From `auto` for highest quality to `instant` for sub-200ms latency, Exa provides the fastest search available without compromising on quality—enabling real-time workflows like autocomplete and live suggestions.
 
 ## Request Fields
 
 The `query` parameter is required for all search requests. The remaining fields are optional. See the [API Reference](/reference/search) for complete parameter details.
 
-| Field              | Type      | Notes                                                                                                                                   | Example                                        |
-| ------------------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| query              | string    | The search query. Supports long, semantically rich descriptions for finding niche content.                                              | "blog post about embeddings and vector search" |
-| type               | string    | Search method: `auto` (highest quality search), `fast` (high quality and lower latency).                                                | "auto"                                         |
-| numResults         | int       | Number of results to return (1-100). Defaults to 10.                                                                                    | 10                                             |
-| text               | bool/obj  | Return full page text. Can specify `maxCharacters` and `includeHtmlTags`.                                                               | `true` or `{"maxCharacters": 5000}`            |
-| highlights         | bool      | Return token-efficient excerpts most relevant to your query.                                                                            | `true`                                         |
-| maxAgeHours        | int       | Maximum age of indexed content in hours. If older, fetches with livecrawl. `0` = always livecrawl, `-1` = never livecrawl (cache only). | 24                                             |
-| includeDomains     | string\[] | Only return results from these domains.                                                                                                 | \["arxiv.org", "nature.com"]                   |
-| excludeDomains     | string\[] | Exclude results from these domains.                                                                                                     | \["reddit.com", "quora.com"]                   |
-| startPublishedDate | string    | Filter to content published after this date (ISO 8601).                                                                                 | "2024-01-01T00:00:00.000Z"                     |
-| category           | string    | Target specific content types: `company`, `people`, `tweet`, `news`                                                                     | "company"                                      |
-| summary            | bool/obj  | Return LLM-generated summaries. Can specify custom `query` and JSON `schema` for structured extraction.                                 | `{"query": "Key technical contributions"}`     |
+| Field       | Type     | Notes                                                                                                                                             | Example                                        |
+| ----------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| query       | string   | The search query. Supports long, semantically rich descriptions for finding niche content.                                                        | "blog post about embeddings and vector search" |
+| type        | string   | Search method: `auto` (highest quality), `instant` (lowest latency), `deep` (comprehensive).                                                      | "auto"                                         |
+| numResults  | int      | Number of results to return (1-100). Defaults to 10.                                                                                              | 10                                             |
+| highlights  | bool/obj | Return token-efficient excerpts most relevant to your query. You can also request full text if needed—see the [API Reference](/reference/search). | `{ "maxCharacters": 2000 }`                    |
+| maxAgeHours | int      | Maximum age of indexed content in hours. If older, fetches with livecrawl. `0` = always livecrawl, `-1` = never livecrawl (cache only).           | 24                                             |
+| category    | string   | Target specific content types: `company`, `people`, `tweet`, `news`                                                                               | "company"                                      |
 
-## Search Type: Auto vs Fast
+## Search Types
 
 The `type` parameter selects the search method:
 
-* **`auto`** (default): Exa's highest quality search.
+* **`auto`** (default): Exa's highest quality search. Intelligently combines neural and other search methods.
 
-* **`fast`**: Streamlined, low-latency search. Best for real-time applications where speed is critical.
+* **`instant`**: Lowest latency search optimized for real-time applications like autocomplete or live suggestions.
+
+* **`deep`**: Comprehensive search with automatic query expansion and detailed context. Best for research tasks requiring thorough coverage.
 
 ## Token Efficiency
 
@@ -58,14 +57,13 @@ Choosing the right content mode can significantly reduce token usage while maint
 {
   "query": "What is the current Fed interest rate?",
   "contents": {
-    "highlights": true
+    "highlights": { "maxCharacters": 2000 }
   },
   // Real-time info requires livecrawl; this may increase latency
   "maxAgeHours": 0
 }
-```
 
-**Use full text for deep research**: When the task requires comprehensive understanding or when you're unsure which parts of the page matter, request full text. Use `maxCharacters` to cap token usage.
+````maxCharacters` to cap token usage.
 
 ```json  theme={null}
 {
@@ -75,11 +73,8 @@ Choosing the right content mode can significantly reduce token usage while maint
   },
   "numResults": 5
 }
-```
 
-**Combine modes strategically**: You can request both highlights and text together—use highlights for quick answers and fall back to full text only when needed.
-
-### Verbosity Settings
+```text
 
 When using `text`, control how much content is returned with the `verbosity` parameter:
 
@@ -112,11 +107,8 @@ Control whether results come from Exa's index or are freshly crawled using `maxA
     "text": true
   }
 }
-```
 
-## Category Filters
-
-Use `category` to target specific content types where Exa has specialized coverage:
+```text
 
 | Category           | Best For                                       |
 | ------------------ | ---------------------------------------------- |
@@ -138,4 +130,5 @@ Use `category` to target specific content types where Exa has specialized covera
     "text": true
   }
 }
+
 ```

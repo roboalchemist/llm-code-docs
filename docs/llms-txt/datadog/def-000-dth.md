@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > User enumeration through pas
 ---
 
 # User enumeration through password reset
-Tactic:[TA0043-reconnaissance](https://attack.mitre.org/tactics/TA0043)Technique:[T1589-gather-victim-identity-information](https://attack.mitre.org/techniques/T1589) 
+Tactic:[TA0043-reconnaissance](https://attack.mitre.org/tactics/TA0043)Technique:[T1589-gather-victim-identity-information](https://attack.mitre.org/techniques/T1589)
 ### Goal{% #goal %}
 
 Detect excessive password reset requests from an IP.

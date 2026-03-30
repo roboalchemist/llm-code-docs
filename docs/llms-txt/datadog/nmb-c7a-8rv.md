@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # SQS queue should have server-side encryption
- 
+
 ## Description{% #description %}
 
 Secure your Amazon Simple Queue Service (SQS) messages with server-side encryption.

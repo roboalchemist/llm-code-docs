@@ -1,0 +1,128 @@
+# Source: https://docs.expo.dev/eas/workflows/examples/deploy-to-production
+
+---
+modificationDate: March 09, 2026
+title: Deploy to production with EAS Workflows
+description: Learn how to deploy to production with EAS Workflows.
+---
+
+# Deploy to production with EAS Workflows
+
+Learn how to deploy to production with EAS Workflows.
+
+When you're ready to deliver changes to your users, you can build and submit to the app stores or you can send an over-the-air update. The following workflow detects if you need new builds, and if so, it sends them to the app stores. If new builds are not required, it will send an over-the-air update.
+
+[Expo Golden Workflow: Deploy your app to production with an automated workflow](https://www.youtube.com/watch?v=o-peODF6E2o) — Automate your production releases with EAS Workflows to build, submit to app stores, or send an update when new builds aren't needed.
+
+## Get started
+
+Prerequisites
+
+3 requirements
+
+1.
+
+Set up EAS Build
+
+To set up EAS Build, follow this guide:
+
+[EAS Build prerequisites](/build/setup) — Get your project ready for EAS Build.
+
+2.
+
+Set up EAS Submit
+
+To set up EAS Submit, follow the Google Play Store and Apple App Store submissions guides:
+
+[Google Play Store CI/CD submission guide](/submit/android#submitting-your-app-using-cicd-services) — Get your project ready for Google Play Store submissions.
+
+[Apple App Store CI/CD submission guide](/submit/ios#submitting-your-app-using-cicd-services) — Get your project ready for Apple App Store submissions.
+
+3.
+
+Set up EAS Update
+
+And finally, you'll need to set up EAS Update, which you can do with:
+
+```sh
+eas update:configure
+```
+
+The following workflow runs on each push to the `main` branch and performs the following:
+
+-   Takes a hash of the native characteristics of the project using [Expo Fingerprint](/versions/latest/sdk/fingerprint).
+-   Checks if a build already exists for the fingerprint.
+-   If a build does not exist, it will build the project and submit it to the app stores.
+-   If a build exists, it will send an over-the-air update.
+
+```yaml
+name: Deploy to production
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  fingerprint:
+    name: Fingerprint
+    type: fingerprint
+    environment: production
+  get_android_build:
+    name: Check for existing android build
+    needs: [fingerprint]
+    type: get-build
+    params:
+      fingerprint_hash: ${{ needs.fingerprint.outputs.android_fingerprint_hash }}
+      profile: production
+  get_ios_build:
+    name: Check for existing ios build
+    needs: [fingerprint]
+    type: get-build
+    params:
+      fingerprint_hash: ${{ needs.fingerprint.outputs.ios_fingerprint_hash }}
+      profile: production
+  build_android:
+    name: Build Android
+    needs: [get_android_build]
+    if: ${{ !needs.get_android_build.outputs.build_id }}
+    type: build
+    params:
+      platform: android
+      profile: production
+  build_ios:
+    name: Build iOS
+    needs: [get_ios_build]
+    if: ${{ !needs.get_ios_build.outputs.build_id }}
+    type: build
+    params:
+      platform: ios
+      profile: production
+  submit_android_build:
+    name: Submit Android Build
+    needs: [build_android]
+    type: submit
+    params:
+      build_id: ${{ needs.build_android.outputs.build_id }}
+  submit_ios_build:
+    name: Submit iOS Build
+    needs: [build_ios]
+    type: submit
+    params:
+      build_id: ${{ needs.build_ios.outputs.build_id }}
+  publish_android_update:
+    name: Publish Android update
+    needs: [get_android_build]
+    if: ${{ needs.get_android_build.outputs.build_id }}
+    type: update
+    params:
+      branch: production
+      platform: android
+  publish_ios_update:
+    name: Publish iOS update
+    needs: [get_ios_build]
+    if: ${{ needs.get_ios_build.outputs.build_id }}
+    type: update
+    params:
+      branch: production
+      platform: ios
+```

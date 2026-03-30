@@ -103,6 +103,5 @@ func generateSecureToken(length: Int) -> String? {
 // let secureAPIToken = generateSecureToken(length: 32)
 // let initializationVector = generateSecureToken(length: 16)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

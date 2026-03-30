@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # GitHub OAuth application access restrictions disabled
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562)
 ## Goal{% #goal %}
 
 Detect when GitHub OAuth application access restrictions have been disabled.

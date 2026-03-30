@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # DynamoDB tables should scale automatically with demand
- 
+
 ## Description{% #description %}
 
 This control verifies if an Amazon DynamoDB table can automatically adjust its read and write capacity based on demand by using either on-demand capacity mode or provisioned mode with auto-scaling enabled.

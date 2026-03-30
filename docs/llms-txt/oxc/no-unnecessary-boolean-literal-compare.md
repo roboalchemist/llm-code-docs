@@ -1,19 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unnecessary-boolean-literal-compare.md
 
----
-url: >-
-  /docs/guide/usage/linter/rules/typescript/no-unnecessary-boolean-literal-compare.md
----
-
-### What it does
+## What it does
 
 This rule disallows unnecessary equality comparisons with boolean literals.
 
-### Why is this bad?
+## Why is this bad?
 
 Comparing boolean values to boolean literals is unnecessary when the comparison can be eliminated. These comparisons make code more verbose without adding value.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -63,7 +58,7 @@ if (someValue === true) {
 
 This rule accepts a configuration object with the following properties:
 
-### allowComparingNullableBooleansToFalse
+## allowComparingNullableBooleansToFalse
 
 type: `boolean`
 
@@ -72,7 +67,7 @@ default: `true`
 Whether to allow comparing nullable boolean expressions to `false`.
 When false, `x === false` where x is `boolean | null` will be flagged.
 
-### allowComparingNullableBooleansToTrue
+## allowComparingNullableBooleansToTrue
 
 type: `boolean`
 
@@ -81,7 +76,7 @@ default: `true`
 Whether to allow comparing nullable boolean expressions to `true`.
 When false, `x === true` where x is `boolean | null` will be flagged.
 
-### allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing
+## allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing
 
 type: `boolean`
 

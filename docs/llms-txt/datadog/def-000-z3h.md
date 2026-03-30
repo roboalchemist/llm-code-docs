@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Instances should use a non-default service account
- 
+
 ## Description{% #description %}
 
 To follow the principle of least privileges and to prevent potential privilege escalation, assign instances to a service account other than the default Compute Engine service account.

@@ -38,7 +38,7 @@ Consider this code snippet:
 ```go
 func main () {
     q := fmt.Sprintf("SELECT * FROM users where name = '%s'", username)
-	rows, err := db.Query(q)
+    rows, err := db.Query(q)
 }
 ```
 
@@ -123,7 +123,7 @@ func (p *Profile) UnsafeQueryGetData(uid string) error {
 ```go
 func main () {
     q := fmt.Sprintf("SELECT * FROM users where name = '%s'", username)
-	rows, err := db.Query(q)
+    rows, err := db.Query(q)
 }
 ```
 
@@ -138,9 +138,8 @@ func foo () {
 ```go
 func main () {
     q := "SELECT * FROM users where name = 'foobar'"
-	rows, err := db.Query(q)
+    rows, err := db.Query(q)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

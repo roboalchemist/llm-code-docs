@@ -61,6 +61,5 @@ system("ls #{params[:dir]}")
 File.open("/safe/path/#{sanitize(filename)}")
 File.open("/safe/path/params")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

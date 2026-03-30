@@ -44,13 +44,13 @@ In the `service_check_example.py` file:
 
    ```python
    from datadog_checks.base import AgentCheck
-   
+
    __version__ = "1.0.0"
-   
+
    class MyClass(AgentCheck):
        def check(self, instance):
            self.service_check('example_service_check', 0, message='Example application is up and running.')
-       
+
 ```
 
 1. [Restart the Agent](https://docs.datadoghq.com/agent/configuration/agent-commands/#restart-the-agent)
@@ -61,12 +61,12 @@ In the `service_check_example.py` file:
    =========
    Collector
    =========
-   
+
      Running Checks
      ==============
-   
+
        (...)
-   
+
        service_check_example (1.0.0)
        -----------------------------
          Instance ID: service_check_example:d884b5186b651429 [OK]
@@ -75,7 +75,7 @@ In the `service_check_example.py` file:
          Events: Last Run: 0, Total: 0
          Service Checks: Last Run: 1, Total: 1
          Average Execution Time : 2ms
-   
+
        (...)
    ```
 

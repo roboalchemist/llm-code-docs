@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS Lambda function resource-based policy modified by IAM user
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1098-account-manipulation](https://attack.mitre.org/techniques/T1098)
 ## Goal{% #goal %}
 
 Detect when an AWS Lambda function resource-based policy is modified by an IAM user. An attacker might modify an AWS Lambda function's resource-based policy in order to maintain persistence or allow its invocation from an external account.

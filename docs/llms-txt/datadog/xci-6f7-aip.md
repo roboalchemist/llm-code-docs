@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The default Docker configuration file should be audited on RHEL
-Classification:complianceFramework:cis-dockerControl:1.2.9 
+Classification:complianceFramework:cis-dockerControl:1.2.9
 ## Description{% #description %}
 
 Audit `/etc/sysconfig/docker`, if applicable.

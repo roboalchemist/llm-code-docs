@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Secrets should not be passed as container environment variables
- 
+
 ## Description{% #description %}
 
 This assessment verifies whether the environment parameter in container definitions includes key values such as AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, or ECS_ENGINE_AUTH_DATA. This evaluation does not extend to environmental variables sourced from external locations like Amazon S3. It is focused solely on the latest active revision of an Amazon ECS task definition.

@@ -57,6 +57,5 @@ var Hello = <a target="_blank" href="relative/path/in/the/host"></a>
 var Hello = <a target="_blank" href="/absolute/path/in/the/host"></a>
 var Hello = <a></a>
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

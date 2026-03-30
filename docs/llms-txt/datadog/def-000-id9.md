@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Windows security essentials executable modified
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1036-masquerading](https://attack.mitre.org/techniques/T1036) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1036-masquerading](https://attack.mitre.org/techniques/T1036)
 ## What happened{% #what-happened %}
 
 `{{ @process.executable.name }}` modified the Windows Security Essentials executable `{{ @file.path }}`.

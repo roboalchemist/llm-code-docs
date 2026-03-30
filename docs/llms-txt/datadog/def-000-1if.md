@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Falco finding
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
- 
+
 ## Goal{% #goal %}
 
 Respond to potential security threats detected by Falco rules promptly and effectively, minimizing the risk of security breaches and ensuring the integrity of the system.

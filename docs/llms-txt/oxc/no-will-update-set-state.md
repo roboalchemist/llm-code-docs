@@ -1,19 +1,15 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/no-will-update-set-state.md
 
----
-url: /docs/guide/usage/linter/rules/react/no-will-update-set-state.md
----
-
-### What it does
+## What it does
 
 Disallows using `setState` in the `componentWillUpdate` lifecycle method.
 
-### Why is this bad?
+## Why is this bad?
 
 Updating the state during the component update step can lead to indeterminate component state and is not allowed.
 This can cause unexpected behavior and bugs in your React application.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

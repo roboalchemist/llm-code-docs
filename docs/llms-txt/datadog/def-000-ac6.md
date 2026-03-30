@@ -15,7 +15,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1036-masquerading](https://attack.mitre.org/techniques/T1036) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1036-masquerading](https://attack.mitre.org/techniques/T1036)
 ## Goal{% #goal %}
 
 Detects when emails containing malware attachments are received from an external sender, which may indicate a malware distribution campaign or a compromised sender attempting to spread malicious payloads.

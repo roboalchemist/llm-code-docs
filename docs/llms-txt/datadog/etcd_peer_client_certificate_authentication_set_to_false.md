@@ -66,7 +66,7 @@ spec:
         command: ["etcd"]
         args: ["--peer-client-cert-auth=true"]
       nodeSelector:
-        kubernetes.io/hostname: worker02  
+        kubernetes.io/hostname: worker02
     restartPolicy: OnFailure
 ```
 
@@ -96,7 +96,7 @@ spec:
         command: ["etcd"]
         args: []
       nodeSelector:
-        kubernetes.io/hostname: worker02  
+        kubernetes.io/hostname: worker02
     restartPolicy: OnFailure
 ```
 
@@ -124,6 +124,6 @@ spec:
         command: ["etcd"]
         args: ["--peer-client-cert-auth=false"]
       nodeSelector:
-        kubernetes.io/hostname: worker02  
+        kubernetes.io/hostname: worker02
     restartPolicy: OnFailure
 ```

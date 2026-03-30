@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # A potentially malicious file was sent in a Microsoft Teams message
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1199-trusted-relationship](https://attack.mitre.org/techniques/T1199) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1199-trusted-relationship](https://attack.mitre.org/techniques/T1199)
 ## Goal{% #goal %}
 
 Detect when a potentially malicious file is sent in Microsoft Teams. Threat actors sometimes send malicious files to unsuspecting users as a means of initial access.

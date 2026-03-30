@@ -44,7 +44,7 @@ var a = something.open(c);
 
 var one = require('fs').readFile;
 one(filename);
-         
+
 var one = require('node:fs').readFile;
 one(filename);
 
@@ -130,7 +130,7 @@ const key = fs.readFileSync(path.resolve(__dirname, foo));
 ```javascript
 var fs = require('fs');
 var a = fs.open('test')
-         
+
 var something = require('some');
 var a = something.readFile(c);
 
@@ -145,7 +145,7 @@ import path from 'path';
 // const index = await fsp.readFile(path.resolve(__dirname, './index.html'), 'utf-8');
 // const key = fs.readFileSync(path.join(__dirname, './ssl.key'));
 await fsp.writeFile(path.resolve(__dirname, './sitemap.xml'), sitemap);
-  
+
 import fs from 'fs';
 import path from 'path';
 const dirname = path.dirname(__filename)
@@ -163,6 +163,5 @@ import url from 'url';
 import fs from 'fs';
 // const pkg = fs.readFileSync(require.resolve('eslint/package.json'), 'utf-8');
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

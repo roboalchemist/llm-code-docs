@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall vsftpd Package
 ---
 
 # Uninstall vsftpd Package
- 
+
 ## Description{% #description %}
 
 The `vsftpd` package can be removed with the following command:

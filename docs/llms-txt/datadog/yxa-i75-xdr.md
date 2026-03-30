@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The docker.socket file should be audited, if applicable
-Classification:complianceFramework:cis-dockerControl:1.2.7 
+Classification:complianceFramework:cis-dockerControl:1.2.7
 ## Description{% #description %}
 
 Audit `docker.socket`, if applicable.

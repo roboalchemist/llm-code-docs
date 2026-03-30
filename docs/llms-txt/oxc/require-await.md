@@ -1,22 +1,18 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/require-await.md
 
-# Source: https://oxc.rs/docs/guide/usage/linter/rules/eslint/require-await.md
+## Source: https://oxc.rs/docs/guide/usage/linter/rules/eslint/require-await.md
 
----
-url: /docs/guide/usage/linter/rules/eslint/require-await.md
----
-
-### What it does
+## What it does
 
 Disallow async functions which have no `await` expression.
 
-### Why is this bad?
+## Why is this bad?
 
 Asynchronous functions in JavaScript behave differently than other
 functions in two important ways:
 
 1. The return value is always a `Promise`.
-2. You can use the `await` operator inside of them.
+1. You can use the `await` operator inside of them.
 
 The primary reason to use asynchronous functions is typically to use the
 await operator, such as this:
@@ -39,7 +35,7 @@ generators yield rather than return a value and async generators might
 yield all the values of another async generator without ever actually
 needing to use await.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

@@ -62,10 +62,9 @@ func main () {
 ```go
 func main () {
     var fooDuration time.Duration
-    
+
     timeToWait := 5 * time.Second
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

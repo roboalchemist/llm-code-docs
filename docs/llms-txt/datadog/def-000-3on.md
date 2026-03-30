@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # RDS instances should publish logs to CloudWatch Logs
- 
+
 ## Description{% #description %}
 
 This control verifies whether an Amazon RDS DB instance is configured to publish specific logs to Amazon CloudWatch Logs. The control fails if the instance is not configured to publish the following logs to CloudWatch Logs:

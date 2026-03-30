@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Service accounts should keep the 'Service Account Admin' and 'Service Account User' roles separate
- 
+
 ## Description{% #description %}
 
 Security best practices recommend that the principle of 'Separation of Duties' is enforced while assigning service-account related roles to users. This is achieved by ensuring that no user has the Service Account Admin and Service Account User roles assigned at the same time.

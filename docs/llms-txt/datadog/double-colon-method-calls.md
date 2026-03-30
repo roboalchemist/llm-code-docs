@@ -52,6 +52,5 @@ some_object.some_method
 SomeModule::SomeClass::SOMETHING
 SomeModule::SomeClass()
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

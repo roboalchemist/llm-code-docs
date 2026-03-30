@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Resources should be created in a non-default namespace in Kubernetes
-Classification:complianceFramework:cis-kubernetesControl:5.7.4 
+Classification:complianceFramework:cis-kubernetesControl:5.7.4
 ## Description{% #description %}
 
 Kubernetes provides a default namespace, where objects are placed if no namespace is specified for them. Placing objects in this namespace makes application of RBAC and other controls more difficult.

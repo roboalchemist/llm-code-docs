@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS Organizations changes should be monitored
- 
+
 ## Description{% #description %}
 
 Real-time monitoring of API calls can be achieved by directing CloudTrail logs to CloudWatch logs and establishing corresponding metric filters and alarms. It is recommended to set up a metric filter and alarm for AWS organization changes made in the master AWS Account. This helps prevent any unwanted modifications that may lead to unauthorized access or other security breaches, ensuring that unexpected changes can be investigated and rolled back.

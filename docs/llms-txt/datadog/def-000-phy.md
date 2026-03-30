@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Google Compute Engine instances created in multiple zones by user
-Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1496-resource-hijacking](https://attack.mitre.org/techniques/T1496) 
+Classification:attackTactic:[TA0040-impact](https://attack.mitre.org/tactics/TA0040)Technique:[T1496-resource-hijacking](https://attack.mitre.org/techniques/T1496)
 ## Goal{% #goal %}
 
 Detect when multiple Google Compute Engine instances are created in multiple distinct zones by an individual user or service account. This could be an indication of cryptomining activity.

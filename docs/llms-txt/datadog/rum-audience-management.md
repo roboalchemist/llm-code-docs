@@ -178,7 +178,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/product-analytics/accounts/query" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -191,8 +191,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -246,7 +246,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Query accounts returns "Successful response with account data" response
@@ -289,7 +289,7 @@ p api_instance.query_accounts(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Query accounts returns "Successful response with account data" response
@@ -297,55 +297,55 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.QueryAccountRequest{
-		Data: &datadogV2.QueryAccountRequestData{
-			Attributes: &datadogV2.QueryAccountRequestDataAttributes{
-				Limit: datadog.PtrInt64(20),
-				Query: datadog.PtrString("plan_type:enterprise AND user_count:>100 AND subscription_status:active"),
-				SelectColumns: []string{
-					"account_id",
-					"account_name",
-					"user_count",
-					"plan_type",
-					"subscription_status",
-					"created_at",
-					"mrr",
-					"industry",
-				},
-				Sort: &datadogV2.QueryAccountRequestDataAttributesSort{
-					Field: datadog.PtrString("user_count"),
-					Order: datadog.PtrString("DESC"),
-				},
-				WildcardSearchTerm: datadog.PtrString("tech"),
-			},
-			Id:   datadog.PtrString("query_account_request"),
-			Type: datadogV2.QUERYACCOUNTREQUESTDATATYPE_QUERY_ACCOUNT_REQUEST,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.QueryAccounts", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRumAudienceManagementApi(apiClient)
-	resp, r, err := api.QueryAccounts(ctx, body)
+    body := datadogV2.QueryAccountRequest{
+        Data: &datadogV2.QueryAccountRequestData{
+            Attributes: &datadogV2.QueryAccountRequestDataAttributes{
+                Limit: datadog.PtrInt64(20),
+                Query: datadog.PtrString("plan_type:enterprise AND user_count:>100 AND subscription_status:active"),
+                SelectColumns: []string{
+                    "account_id",
+                    "account_name",
+                    "user_count",
+                    "plan_type",
+                    "subscription_status",
+                    "created_at",
+                    "mrr",
+                    "industry",
+                },
+                Sort: &datadogV2.QueryAccountRequestDataAttributesSort{
+                    Field: datadog.PtrString("user_count"),
+                    Order: datadog.PtrString("DESC"),
+                },
+                WildcardSearchTerm: datadog.PtrString("tech"),
+            },
+            Id:   datadog.PtrString("query_account_request"),
+            Type: datadogV2.QUERYACCOUNTREQUESTDATATYPE_QUERY_ACCOUNT_REQUEST,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.QueryAccounts", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRumAudienceManagementApi(apiClient)
+    resp, r, err := api.QueryAccounts(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.QueryAccounts`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.QueryAccounts`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RumAudienceManagementApi.QueryAccounts`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RumAudienceManagementApi.QueryAccounts`:\n%s\n", responseContent)
 }
 ```
 
@@ -353,7 +353,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Query accounts returns "Successful response with account data" response
@@ -421,7 +421,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Query accounts returns "Successful response with account data" response
@@ -479,7 +479,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -656,7 +656,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport entity="users"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/product-analytics/${entity}/mapping/connection" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -681,8 +681,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -738,7 +738,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create connection returns "Connection created successfully" response
@@ -783,7 +783,7 @@ p api_instance.create_connection("users", body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Create connection returns "Connection created successfully" response
@@ -791,53 +791,53 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CreateConnectionRequest{
-		Data: &datadogV2.CreateConnectionRequestData{
-			Attributes: &datadogV2.CreateConnectionRequestDataAttributes{
-				Fields: []datadogV2.CreateConnectionRequestDataAttributesFieldsItems{
-					{
-						Description: datadog.PtrString(`Customer subscription tier from ` + "`" + `CRM` + "`"),
-						DisplayName: datadog.PtrString("Customer Tier"),
-						Id:          "customer_tier",
-						SourceName:  "subscription_tier",
-						Type:        "string",
-					},
-					{
-						Description: datadog.PtrString(`Customer lifetime value in ` + "`" + `USD` + "`"),
-						DisplayName: datadog.PtrString("Lifetime Value"),
-						Id:          "lifetime_value",
-						SourceName:  "ltv",
-						Type:        "number",
-					},
-				},
-				JoinAttribute: "user_email",
-				JoinType:      "email",
-				Type:          "ref_table",
-			},
-			Id:   datadog.PtrString("crm-integration"),
-			Type: datadogV2.UPDATECONNECTIONREQUESTDATATYPE_CONNECTION_ID,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateConnection", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRumAudienceManagementApi(apiClient)
-	r, err := api.CreateConnection(ctx, "users", body)
+    body := datadogV2.CreateConnectionRequest{
+        Data: &datadogV2.CreateConnectionRequestData{
+            Attributes: &datadogV2.CreateConnectionRequestDataAttributes{
+                Fields: []datadogV2.CreateConnectionRequestDataAttributesFieldsItems{
+                    {
+                        Description: datadog.PtrString(`Customer subscription tier from ` + "`" + `CRM` + "`"),
+                        DisplayName: datadog.PtrString("Customer Tier"),
+                        Id:          "customer_tier",
+                        SourceName:  "subscription_tier",
+                        Type:        "string",
+                    },
+                    {
+                        Description: datadog.PtrString(`Customer lifetime value in ` + "`" + `USD` + "`"),
+                        DisplayName: datadog.PtrString("Lifetime Value"),
+                        Id:          "lifetime_value",
+                        SourceName:  "ltv",
+                        Type:        "number",
+                    },
+                },
+                JoinAttribute: "user_email",
+                JoinType:      "email",
+                Type:          "ref_table",
+            },
+            Id:   datadog.PtrString("crm-integration"),
+            Type: datadogV2.UPDATECONNECTIONREQUESTDATATYPE_CONNECTION_ID,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateConnection", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRumAudienceManagementApi(apiClient)
+    r, err := api.CreateConnection(ctx, "users", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.CreateConnection`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.CreateConnection`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -845,7 +845,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create connection returns "Connection created successfully" response
@@ -909,7 +909,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Create connection returns "Connection created successfully" response
@@ -966,7 +966,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1151,7 +1151,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport entity="users"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/product-analytics/${entity}/mapping/connection" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1179,8 +1179,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1246,7 +1246,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update connection returns "Connection updated successfully" response
@@ -1298,7 +1298,7 @@ p api_instance.update_connection("users", body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Update connection returns "Connection updated successfully" response
@@ -1306,60 +1306,60 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.UpdateConnectionRequest{
-		Data: &datadogV2.UpdateConnectionRequestData{
-			Attributes: &datadogV2.UpdateConnectionRequestDataAttributes{
-				FieldsToAdd: []datadogV2.CreateConnectionRequestDataAttributesFieldsItems{
-					{
-						Description: datadog.PtrString("Net Promoter Score from customer surveys"),
-						DisplayName: datadog.PtrString("NPS Score"),
-						Groups: []string{
-							"Satisfaction",
-							"Metrics",
-						},
-						Id:         "nps_score",
-						SourceName: "net_promoter_score",
-						Type:       "number",
-					},
-				},
-				FieldsToDelete: []string{
-					"old_revenue_field",
-				},
-				FieldsToUpdate: []datadogV2.UpdateConnectionRequestDataAttributesFieldsToUpdateItems{
-					{
-						FieldId:            "lifetime_value",
-						UpdatedDisplayName: datadog.PtrString(`Customer Lifetime Value (` + "`" + `USD` + "`" + `)`),
-						UpdatedGroups: []string{
-							"Financial",
-							"Metrics",
-						},
-					},
-				},
-			},
-			Id:   "crm-integration",
-			Type: datadogV2.UPDATECONNECTIONREQUESTDATATYPE_CONNECTION_ID,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateConnection", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRumAudienceManagementApi(apiClient)
-	r, err := api.UpdateConnection(ctx, "users", body)
+    body := datadogV2.UpdateConnectionRequest{
+        Data: &datadogV2.UpdateConnectionRequestData{
+            Attributes: &datadogV2.UpdateConnectionRequestDataAttributes{
+                FieldsToAdd: []datadogV2.CreateConnectionRequestDataAttributesFieldsItems{
+                    {
+                        Description: datadog.PtrString("Net Promoter Score from customer surveys"),
+                        DisplayName: datadog.PtrString("NPS Score"),
+                        Groups: []string{
+                            "Satisfaction",
+                            "Metrics",
+                        },
+                        Id:         "nps_score",
+                        SourceName: "net_promoter_score",
+                        Type:       "number",
+                    },
+                },
+                FieldsToDelete: []string{
+                    "old_revenue_field",
+                },
+                FieldsToUpdate: []datadogV2.UpdateConnectionRequestDataAttributesFieldsToUpdateItems{
+                    {
+                        FieldId:            "lifetime_value",
+                        UpdatedDisplayName: datadog.PtrString(`Customer Lifetime Value (` + "`" + `USD` + "`" + `)`),
+                        UpdatedGroups: []string{
+                            "Financial",
+                            "Metrics",
+                        },
+                    },
+                },
+            },
+            Id:   "crm-integration",
+            Type: datadogV2.UPDATECONNECTIONREQUESTDATATYPE_CONNECTION_ID,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateConnection", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRumAudienceManagementApi(apiClient)
+    r, err := api.UpdateConnection(ctx, "users", body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.UpdateConnection`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.UpdateConnection`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -1367,7 +1367,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update connection returns "Connection updated successfully" response
@@ -1432,7 +1432,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Update connection returns "Connection updated successfully" response
@@ -1488,7 +1488,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1721,7 +1721,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/product-analytics/users/event_filtered_query" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1734,8 +1734,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1801,7 +1801,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Query event filtered users returns "Successful response with filtered user data" response
@@ -1847,7 +1847,7 @@ p api_instance.query_event_filtered_users(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Query event filtered users returns "Successful response with filtered user data" response
@@ -1855,58 +1855,58 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.QueryEventFilteredUsersRequest{
-		Data: &datadogV2.QueryEventFilteredUsersRequestData{
-			Attributes: &datadogV2.QueryEventFilteredUsersRequestDataAttributes{
-				EventQuery: &datadogV2.QueryEventFilteredUsersRequestDataAttributesEventQuery{
-					Query: datadog.PtrString("@type:view AND @view.loading_time:>3000 AND @application.name:ecommerce-platform"),
-					TimeFrame: &datadogV2.QueryEventFilteredUsersRequestDataAttributesEventQueryTimeFrame{
-						End:   datadog.PtrInt64(1761309676),
-						Start: datadog.PtrInt64(1760100076),
-					},
-				},
-				IncludeRowCount: datadog.PtrBool(true),
-				Limit:           datadog.PtrInt64(25),
-				Query:           datadog.PtrString("user_org_id:5001 AND first_country_code:US AND first_browser_name:Chrome"),
-				SelectColumns: []string{
-					"user_id",
-					"user_email",
-					"first_country_code",
-					"first_browser_name",
-					"events_count",
-					"session_count",
-					"error_count",
-					"avg_loading_time",
-				},
-			},
-			Id:   datadog.PtrString("query_event_filtered_users_request"),
-			Type: datadogV2.QUERYEVENTFILTEREDUSERSREQUESTDATATYPE_QUERY_EVENT_FILTERED_USERS_REQUEST,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.QueryEventFilteredUsers", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRumAudienceManagementApi(apiClient)
-	resp, r, err := api.QueryEventFilteredUsers(ctx, body)
+    body := datadogV2.QueryEventFilteredUsersRequest{
+        Data: &datadogV2.QueryEventFilteredUsersRequestData{
+            Attributes: &datadogV2.QueryEventFilteredUsersRequestDataAttributes{
+                EventQuery: &datadogV2.QueryEventFilteredUsersRequestDataAttributesEventQuery{
+                    Query: datadog.PtrString("@type:view AND @view.loading_time:>3000 AND @application.name:ecommerce-platform"),
+                    TimeFrame: &datadogV2.QueryEventFilteredUsersRequestDataAttributesEventQueryTimeFrame{
+                        End:   datadog.PtrInt64(1761309676),
+                        Start: datadog.PtrInt64(1760100076),
+                    },
+                },
+                IncludeRowCount: datadog.PtrBool(true),
+                Limit:           datadog.PtrInt64(25),
+                Query:           datadog.PtrString("user_org_id:5001 AND first_country_code:US AND first_browser_name:Chrome"),
+                SelectColumns: []string{
+                    "user_id",
+                    "user_email",
+                    "first_country_code",
+                    "first_browser_name",
+                    "events_count",
+                    "session_count",
+                    "error_count",
+                    "avg_loading_time",
+                },
+            },
+            Id:   datadog.PtrString("query_event_filtered_users_request"),
+            Type: datadogV2.QUERYEVENTFILTEREDUSERSREQUESTDATATYPE_QUERY_EVENT_FILTERED_USERS_REQUEST,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.QueryEventFilteredUsers", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRumAudienceManagementApi(apiClient)
+    resp, r, err := api.QueryEventFilteredUsers(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.QueryEventFilteredUsers`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.QueryEventFilteredUsers`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RumAudienceManagementApi.QueryEventFilteredUsers`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RumAudienceManagementApi.QueryEventFilteredUsers`:\n%s\n", responseContent)
 }
 ```
 
@@ -1914,7 +1914,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Query event filtered users returns "Successful response with filtered user data" response
@@ -1989,7 +1989,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Query event filtered users returns "Successful response with filtered user
@@ -2058,7 +2058,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2274,7 +2274,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/product-analytics/accounts/facet_info" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2291,8 +2291,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2340,7 +2340,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get account facet info returns "Successful response with facet information" response
@@ -2374,7 +2374,7 @@ p api_instance.get_account_facet_info(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get account facet info returns "Successful response with facet information" response
@@ -2382,46 +2382,46 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.FacetInfoRequest{
-		Data: &datadogV2.FacetInfoRequestData{
-			Attributes: &datadogV2.FacetInfoRequestDataAttributes{
-				FacetId: "first_browser_name",
-				Limit:   10,
-				Search: &datadogV2.FacetInfoRequestDataAttributesSearch{
-					Query: datadog.PtrString("user_org_id:5001 AND first_country_code:US"),
-				},
-				TermSearch: &datadogV2.FacetInfoRequestDataAttributesTermSearch{
-					Value: datadog.PtrString("Chrome"),
-				},
-			},
-			Id:   datadog.PtrString("facet_info_request"),
-			Type: datadogV2.FACETINFOREQUESTDATATYPE_USERS_FACET_INFO_REQUEST,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetAccountFacetInfo", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRumAudienceManagementApi(apiClient)
-	resp, r, err := api.GetAccountFacetInfo(ctx, body)
+    body := datadogV2.FacetInfoRequest{
+        Data: &datadogV2.FacetInfoRequestData{
+            Attributes: &datadogV2.FacetInfoRequestDataAttributes{
+                FacetId: "first_browser_name",
+                Limit:   10,
+                Search: &datadogV2.FacetInfoRequestDataAttributesSearch{
+                    Query: datadog.PtrString("user_org_id:5001 AND first_country_code:US"),
+                },
+                TermSearch: &datadogV2.FacetInfoRequestDataAttributesTermSearch{
+                    Value: datadog.PtrString("Chrome"),
+                },
+            },
+            Id:   datadog.PtrString("facet_info_request"),
+            Type: datadogV2.FACETINFOREQUESTDATATYPE_USERS_FACET_INFO_REQUEST,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetAccountFacetInfo", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRumAudienceManagementApi(apiClient)
+    resp, r, err := api.GetAccountFacetInfo(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.GetAccountFacetInfo`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.GetAccountFacetInfo`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RumAudienceManagementApi.GetAccountFacetInfo`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RumAudienceManagementApi.GetAccountFacetInfo`:\n%s\n", responseContent)
 }
 ```
 
@@ -2429,7 +2429,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get account facet info returns "Successful response with facet information" response
@@ -2485,7 +2485,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get account facet info returns "Successful response with facet information"
@@ -2531,7 +2531,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2639,12 +2639,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport id="connection-id-123"export entity="users"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/product-analytics/${entity}/mapping/connection/${id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2668,7 +2668,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete connection returns "Connection deleted successfully" response
@@ -2685,7 +2685,7 @@ api_instance.delete_connection("connection-id-123", "users")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete connection returns "Connection deleted successfully" response
@@ -2693,26 +2693,26 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteConnection", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRumAudienceManagementApi(apiClient)
-	r, err := api.DeleteConnection(ctx, "connection-id-123", "users")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteConnection", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRumAudienceManagementApi(apiClient)
+    r, err := api.DeleteConnection(ctx, "connection-id-123", "users")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.DeleteConnection`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.DeleteConnection`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -2720,7 +2720,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete connection returns "Connection deleted successfully" response
@@ -2752,7 +2752,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete connection returns "Connection deleted successfully" response
@@ -2779,7 +2779,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2955,13 +2955,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport entity="users"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/product-analytics/${entity}/mapping/connections" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2986,7 +2986,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List connections returns "Successful response with list of connections" response
@@ -3003,7 +3003,7 @@ p api_instance.list_connections("users")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List connections returns "Successful response with list of connections" response
@@ -3011,30 +3011,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListConnections", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRumAudienceManagementApi(apiClient)
-	resp, r, err := api.ListConnections(ctx, "users")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListConnections", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRumAudienceManagementApi(apiClient)
+    resp, r, err := api.ListConnections(ctx, "users")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.ListConnections`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.ListConnections`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RumAudienceManagementApi.ListConnections`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RumAudienceManagementApi.ListConnections`:\n%s\n", responseContent)
 }
 ```
 
@@ -3042,7 +3042,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List connections returns "Successful response with list of connections" response
@@ -3076,7 +3076,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List connections returns "Successful response with list of connections" response
@@ -3101,7 +3101,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3302,7 +3302,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/product-analytics/users/query" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3315,8 +3315,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3370,7 +3370,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Query users returns "Successful response with user data" response
@@ -3413,7 +3413,7 @@ p api_instance.query_users(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Query users returns "Successful response with user data" response
@@ -3421,55 +3421,55 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.QueryUsersRequest{
-		Data: &datadogV2.QueryUsersRequestData{
-			Attributes: &datadogV2.QueryUsersRequestDataAttributes{
-				Limit: datadog.PtrInt64(25),
-				Query: datadog.PtrString("user_email:*@techcorp.com AND first_country_code:US AND first_browser_name:Chrome"),
-				SelectColumns: []string{
-					"user_id",
-					"user_email",
-					"user_name",
-					"user_org_id",
-					"first_country_code",
-					"first_browser_name",
-					"first_device_type",
-					"last_seen",
-				},
-				Sort: &datadogV2.QueryUsersRequestDataAttributesSort{
-					Field: datadog.PtrString("first_seen"),
-					Order: datadog.PtrString("DESC"),
-				},
-				WildcardSearchTerm: datadog.PtrString("john"),
-			},
-			Id:   datadog.PtrString("query_users_request"),
-			Type: datadogV2.QUERYUSERSREQUESTDATATYPE_QUERY_USERS_REQUEST,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.QueryUsers", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRumAudienceManagementApi(apiClient)
-	resp, r, err := api.QueryUsers(ctx, body)
+    body := datadogV2.QueryUsersRequest{
+        Data: &datadogV2.QueryUsersRequestData{
+            Attributes: &datadogV2.QueryUsersRequestDataAttributes{
+                Limit: datadog.PtrInt64(25),
+                Query: datadog.PtrString("user_email:*@techcorp.com AND first_country_code:US AND first_browser_name:Chrome"),
+                SelectColumns: []string{
+                    "user_id",
+                    "user_email",
+                    "user_name",
+                    "user_org_id",
+                    "first_country_code",
+                    "first_browser_name",
+                    "first_device_type",
+                    "last_seen",
+                },
+                Sort: &datadogV2.QueryUsersRequestDataAttributesSort{
+                    Field: datadog.PtrString("first_seen"),
+                    Order: datadog.PtrString("DESC"),
+                },
+                WildcardSearchTerm: datadog.PtrString("john"),
+            },
+            Id:   datadog.PtrString("query_users_request"),
+            Type: datadogV2.QUERYUSERSREQUESTDATATYPE_QUERY_USERS_REQUEST,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.QueryUsers", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRumAudienceManagementApi(apiClient)
+    resp, r, err := api.QueryUsers(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.QueryUsers`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.QueryUsers`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RumAudienceManagementApi.QueryUsers`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RumAudienceManagementApi.QueryUsers`:\n%s\n", responseContent)
 }
 ```
 
@@ -3477,7 +3477,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Query users returns "Successful response with user data" response
@@ -3545,7 +3545,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Query users returns "Successful response with user data" response
@@ -3606,7 +3606,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3818,7 +3818,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/product-analytics/users/facet_info" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3835,8 +3835,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3884,7 +3884,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get user facet info returns "Successful response with facet information" response
@@ -3918,7 +3918,7 @@ p api_instance.get_user_facet_info(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get user facet info returns "Successful response with facet information" response
@@ -3926,46 +3926,46 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.FacetInfoRequest{
-		Data: &datadogV2.FacetInfoRequestData{
-			Attributes: &datadogV2.FacetInfoRequestDataAttributes{
-				FacetId: "first_browser_name",
-				Limit:   10,
-				Search: &datadogV2.FacetInfoRequestDataAttributesSearch{
-					Query: datadog.PtrString("user_org_id:5001 AND first_country_code:US"),
-				},
-				TermSearch: &datadogV2.FacetInfoRequestDataAttributesTermSearch{
-					Value: datadog.PtrString("Chrome"),
-				},
-			},
-			Id:   datadog.PtrString("facet_info_request"),
-			Type: datadogV2.FACETINFOREQUESTDATATYPE_USERS_FACET_INFO_REQUEST,
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetUserFacetInfo", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRumAudienceManagementApi(apiClient)
-	resp, r, err := api.GetUserFacetInfo(ctx, body)
+    body := datadogV2.FacetInfoRequest{
+        Data: &datadogV2.FacetInfoRequestData{
+            Attributes: &datadogV2.FacetInfoRequestDataAttributes{
+                FacetId: "first_browser_name",
+                Limit:   10,
+                Search: &datadogV2.FacetInfoRequestDataAttributesSearch{
+                    Query: datadog.PtrString("user_org_id:5001 AND first_country_code:US"),
+                },
+                TermSearch: &datadogV2.FacetInfoRequestDataAttributesTermSearch{
+                    Value: datadog.PtrString("Chrome"),
+                },
+            },
+            Id:   datadog.PtrString("facet_info_request"),
+            Type: datadogV2.FACETINFOREQUESTDATATYPE_USERS_FACET_INFO_REQUEST,
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetUserFacetInfo", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRumAudienceManagementApi(apiClient)
+    resp, r, err := api.GetUserFacetInfo(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.GetUserFacetInfo`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.GetUserFacetInfo`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RumAudienceManagementApi.GetUserFacetInfo`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RumAudienceManagementApi.GetUserFacetInfo`:\n%s\n", responseContent)
 }
 ```
 
@@ -3973,7 +3973,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get user facet info returns "Successful response with facet information" response
@@ -4029,7 +4029,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get user facet info returns "Successful response with facet information"
@@ -4075,7 +4075,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4258,13 +4258,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport entity="users"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/product-analytics/${entity}/mapping" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4289,7 +4289,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get mapping returns "Successful response with entity mapping configuration" response
@@ -4306,7 +4306,7 @@ p api_instance.get_mapping("users")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get mapping returns "Successful response with entity mapping configuration" response
@@ -4314,30 +4314,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetMapping", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewRumAudienceManagementApi(apiClient)
-	resp, r, err := api.GetMapping(ctx, "users")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetMapping", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewRumAudienceManagementApi(apiClient)
+    resp, r, err := api.GetMapping(ctx, "users")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.GetMapping`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `RumAudienceManagementApi.GetMapping`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `RumAudienceManagementApi.GetMapping`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `RumAudienceManagementApi.GetMapping`:\n%s\n", responseContent)
 }
 ```
 
@@ -4345,7 +4345,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get mapping returns "Successful response with entity mapping configuration" response
@@ -4379,7 +4379,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get mapping returns "Successful response with entity mapping configuration"
@@ -4405,7 +4405,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure the Root Bash Umask is Set Correctly
- 
+
 ## Description{% #description %}
 
 To ensure the root user's umask of the Bash shell is set properly, add or correct the `umask` setting in `/root/.bashrc` or `/root/.bashrc` to read as follows:

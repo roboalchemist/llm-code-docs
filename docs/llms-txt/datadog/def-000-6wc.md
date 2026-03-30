@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Set SSH Client Alive Count M
 ---
 
 # Set SSH Client Alive Count Max
- 
+
 ## Description{% #description %}
 
 The SSH server sends at most `ClientAliveCountMax` messages during a SSH session and waits for a response from the SSH client. The option `ClientAliveInterval` configures timeout after each `ClientAliveCountMax` message. If the SSH server does not receive a response from the client, then the connection is considered unresponsive and terminated. For SSH earlier than v8.2, a `ClientAliveCountMax` value of `0` causes a timeout precisely when the `ClientAliveInterval` is set. Starting with v8.2, a value of `0` disables the timeout functionality completely. If the option is set to a number greater than `0`, then the session will be disconnected after `ClientAliveInterval * ClientAliveCountMax` seconds without receiving a keep alive message.
@@ -38,7 +38,7 @@ chmod 0600 /etc/ssh/sshd_config.d/00-complianceascode-hardening.conf
 LC_ALL=C sed -i "/^\s*ClientAliveCountMax\s\+/Id" "/etc/ssh/sshd_config"
 LC_ALL=C sed -i "/^\s*ClientAliveCountMax\s\+/Id" "/etc/ssh/sshd_config.d"/*.conf
 if [ -e "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*ClientAliveCountMax\s\+/Id" "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf"
 else
     touch "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf"

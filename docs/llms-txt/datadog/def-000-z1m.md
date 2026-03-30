@@ -9,13 +9,13 @@ breadcrumbs: >-
 ---
 
 # Verify User Who Owns /var/log/syslog File
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/var/log/syslog`, run the command:
 
 ```gdscript3
-$ sudo chown syslog /var/log/syslog 
+$ sudo chown syslog /var/log/syslog
 ```
 
 ## Rationale{% #rationale %}

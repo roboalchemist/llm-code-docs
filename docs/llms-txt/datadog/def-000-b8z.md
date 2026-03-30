@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Enable GNOME3 Screensaver Lock After Idle Period
- 
+
 ## Description{% #description %}
 
 To activate locking of the screensaver in the GNOME3 desktop when it is activated, add or set `lock-enabled` to `true` in `/etc/dconf/db/local.d/00-security-settings`. For example:
@@ -93,7 +93,7 @@ if [ "${#SETTINGSFILES[@]}" -ne 0 ]
 then
     if grep -q "^\\s*lock-enabled\\s*=" "${SETTINGSFILES[@]}"
     then
-        
+
         sed -Ei "s/(^\s*)lock-enabled(\s*=)/#\1lock-enabled\2/g" "${SETTINGSFILES[@]}"
     fi
 fi

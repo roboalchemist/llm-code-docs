@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # DocumentDB clusters should publish audit logs to CloudWatch Logs
- 
+
 ## Description{% #description %}
 
 This control verifies if an Amazon DocumentDB cluster is configured to send audit logs to Amazon CloudWatch Logs. The control is marked as failed if the cluster does not transmit audit logs to CloudWatch Logs.

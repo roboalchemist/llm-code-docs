@@ -51,6 +51,5 @@ var decrypted = CryptoJS.DES.decrypt(encrypted, "Secret Passphrase");
 var encrypted = CryptoJS.TripleDES.encrypt("Message", "Secret Passphrase");
 var decrypted = CryptoJS.TripleDES.decrypt(encrypted, "Secret Passphrase");
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

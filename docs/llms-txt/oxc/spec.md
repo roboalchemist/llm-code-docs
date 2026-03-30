@@ -1,10 +1,6 @@
 # Source: https://oxc.rs/docs/learn/ecmascript/spec.md
 
----
-url: /docs/learn/ecmascript/spec.md
----
-
-# Specification
+## Specification
 
 [The ECMAScript® 2023 Language Specification](https://tc39.es/ecma262/) details everything about the JavaScript language, so anyone can implement their own JavaScript engine.
 
@@ -28,11 +24,11 @@ For navigation inside the specification:
 
 The things to note here are:
 
-### Recursion
+## Recursion
 
 This is how lists are presented in the grammar.
 
-```
+```text
 ArgumentList :
   AssignmentExpression
   ArgumentList , AssignmentExpression
@@ -47,11 +43,11 @@ a, b = 1, c = 2
           ^___^ AssignmentExpression
 ```
 
-### Optional
+## Optional
 
 The `_opt_` suffix for optional syntax. For example,
 
-```
+```text
 VariableDeclaration :
   BindingIdentifier Initializer_opt
 ```
@@ -64,20 +60,20 @@ var binding_identifier = Initializer;
                        ______________ Initializer_opt
 ```
 
-### Parameters
+## Parameters
 
 The `[Return]` and `[In]` are parameters of the grammar.
 
 For example
 
-```
+```text
 ScriptBody :
     StatementList[~Yield, ~Await, ~Return]
 ```
 
 means top-level yield, await and return are not allowed in scripts, but
 
-```
+```text
 ModuleItem :
   ImportDeclaration
   ExportDeclaration
@@ -102,7 +98,7 @@ In HTML we write `<script type="module" src="main.mjs"></script>`.
 
 For more in-depth explanation, read the V8 blog on [Understanding the ECMAScript spec](https://v8.dev/blog/understanding-ecmascript-part-3).
 
-### [Automatic Semicolon Insertion](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion)
+## [Automatic Semicolon Insertion](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion)
 
 This section describes all the rules where we can omit a semicolon while writing JavaScript.
 All the explanation boils down to

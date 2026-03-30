@@ -1,0 +1,178 @@
+# Source: https://docs.prefect.io/v3/advanced/generate-custom-sdk.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.prefect.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# How to generate a custom SDK for your deployments
+
+> Generate a custom Python SDK from your deployments for IDE autocomplete and type checking.
+
+The `prefect sdk generate` command creates a typed Python file from your [deployments](/v3/concepts/deployments). This gives you IDE autocomplete and static type checking when triggering deployment runs programmatically.
+
+<Note>
+  This feature is in **beta**. APIs may change in future releases.
+</Note>
+
+## Prerequisites
+
+* An active Prefect API connection (Prefect Cloud or self-hosted server)
+* At least one [deployment](/v3/how-to-guides/deployments/create-deployments) in your workspace
+
+## Generate an SDK from the CLI
+
+Generate a typed SDK for all deployments in your workspace:
+
+```bash  theme={null}
+prefect sdk generate --output ./my_sdk.py
+```
+
+### Filter to specific flows or deployments
+
+Generate an SDK for specific flows:
+
+```bash  theme={null}
+prefect sdk generate --output ./my_sdk.py --flow my-etl-flow
+```
+
+Generate an SDK for specific deployments:
+
+```bash  theme={null}
+prefect sdk generate --output ./my_sdk.py --deployment my-flow/production
+```
+
+Combine multiple filters:
+
+```bash  theme={null}
+prefect sdk generate --output ./my_sdk.py \
+    --flow etl-flow \
+    --flow data-sync \
+    --deployment analytics/daily
+```
+
+## Run deployments with the generated SDK
+
+The generated SDK provides a `deployments.from_name()` method that returns a typed deployment object:
+
+```python  theme={null}
+from my_sdk import deployments
+
+# Get a deployment by name
+deployment = deployments.from_name("my-etl-flow/production")
+
+# Run with parameters
+future = deployment.run(
+    source="s3://my-bucket/data",
+    batch_size=100,
+)
+
+# Get the flow run ID immediately
+print(f"Started flow run: {future.flow_run_id}")
+
+# Wait for completion and get result
+result = future.result()
+```
+
+### Configure run options
+
+Use `with_options()` to set tags, scheduling, and other run configuration:
+
+```python  theme={null}
+from my_sdk import deployments
+from datetime import datetime, timedelta
+
+future = deployments.from_name("my-etl-flow/production").with_options(
+    tags=["manual", "production"],
+    idempotency_key="daily-run-2024-01-15",
+    scheduled_time=datetime.now() + timedelta(hours=1),
+    flow_run_name="custom-run-name",
+).run(
+    source="s3://bucket",
+)
+```
+
+Available options:
+
+* `tags`: Tags to apply to the flow run
+* `idempotency_key`: Unique key to prevent duplicate runs
+* `work_queue_name`: Override the work queue
+* `as_subflow`: Run as a subflow of the current flow
+* `scheduled_time`: Schedule the run for a future time
+* `flow_run_name`: Custom name for the flow run
+
+### Override job variables
+
+Use `with_infra()` to override work pool job variables:
+
+```python  theme={null}
+from my_sdk import deployments
+
+future = deployments.from_name("my-etl-flow/production").with_infra(
+    image="my-registry/my-image:latest",
+    cpu_request="2",
+    memory="8Gi",
+).run(
+    source="s3://bucket",
+)
+```
+
+The available job variables depend on your work pool type. The generated SDK provides type hints for the options available on each deployment's work pool.
+
+### Async usage
+
+In an async context, use `run_async()`:
+
+```python  theme={null}
+import asyncio
+from my_sdk import deployments
+
+async def trigger_deployment():
+    future = await deployments.from_name("my-etl-flow/production").run_async(
+        source="s3://bucket",
+    )
+    result = await future.result()
+    return result
+
+# Run it
+result = asyncio.run(trigger_deployment())
+```
+
+### Chain methods together
+
+```python  theme={null}
+from my_sdk import deployments
+
+future = (
+    deployments.from_name("my-etl-flow/production")
+    .with_options(tags=["production"])
+    .with_infra(memory="8Gi")
+    .run(source="s3://bucket", batch_size=100)
+)
+```
+
+## Regenerate the SDK after changes
+
+The SDK is generated from server-side metadata. Regenerate it when:
+
+* Deployments are added, removed, or renamed
+* Flow parameter schemas change
+* Work pool job variable schemas change
+
+The `generate` command overwrites the existing file:
+
+```bash  theme={null}
+prefect sdk generate --output ./my_sdk.py
+```
+
+<Tip>
+  Add SDK regeneration to your CI/CD pipeline to keep it in sync with your deployments.
+</Tip>
+
+## Further reading
+
+* [Create deployments](/v3/how-to-guides/deployments/create-deployments)
+* [Trigger ad-hoc deployment runs](/v3/how-to-guides/deployments/run-deployments)
+* [Override job configuration](/v3/how-to-guides/deployments/customize-job-variables)
+
+
+Built with [Mintlify](https://mintlify.com).

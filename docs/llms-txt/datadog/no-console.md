@@ -38,7 +38,7 @@ Debugging with `console` (such as `console.log` or `console.info`) is not consid
 ## Non-Compliant Code Examples{% #non-compliant-code-examples %}
 
 ```javascript
-console.log(foo) // General-purpose logging which can expose internal information 
+console.log(foo) // General-purpose logging which can expose internal information
 console.error(foo) // Error logging which can expose sensitive information
 console.info(foo) // Informational logging which can clutter production logs
 console.warn(foo) // Warning logging which can be excessive for production
@@ -49,6 +49,5 @@ console.warn(foo) // Warning logging which can be excessive for production
 ```javascript
 Console.info(foo) // Example placeholder for a custom logging method or library
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

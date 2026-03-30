@@ -50,7 +50,7 @@ helm upgrade my-datadog-operator datadog/datadog-operator -f values.yaml
    ```gdscript3
    export DD_API_KEY=<YOUR_API_KEY>
    export DD_APP_KEY=<YOUR_APP_KEY>
-   
+
    kubectl create secret generic datadog-operator-secret --from-literal api-key=$DD_API_KEY --from-literal app-key=$DD_APP_KEY
    ```
 
@@ -131,7 +131,7 @@ spec:
    ```gdscript3
    export DD_API_KEY=<YOUR_API_KEY>
    export DD_APP_KEY=<YOUR_APP_KEY>
-   
+
    kubectl create secret generic datadog-operator-secret --from-literal api-key=$DD_API_KEY --from-literal app-key=$DD_APP_KEY
    ```
 
@@ -152,12 +152,12 @@ spec:
        env:
          - name: DD_API_KEY
            valueFrom:
-             secretKeyRef: 
+             secretKeyRef:
                 key: api-key
                 name: datadog-operator-secret
          - name: DD_APP_KEY
            valueFrom:
-             secretKeyRef: 
+             secretKeyRef:
                key: app-key
                name: datadog-operator-secret
    ```
@@ -171,7 +171,7 @@ After deploying the Datadog Operator, create the `DatadogAgent` resource that tr
    ```gdscript3
    export DD_API_KEY=<YOUR_API_KEY>
    export DD_APP_KEY=<YOUR_APP_KEY>
-   
+
    kubectl create secret generic datadog-secret --from-literal api-key=<DATADOG_API_KEY> --from-literal app-key=<DATADOG_APP_KEY>
    ```
 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Windows registry hives file paths key modified
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1112-modify-registry](https://attack.mitre.org/techniques/T1112) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1112-modify-registry](https://attack.mitre.org/techniques/T1112)
 ## What happened{% #what-happened %}
 
 `{{ @process.executable.name }}` modified the registry key `{{ @registry.key_name }}`

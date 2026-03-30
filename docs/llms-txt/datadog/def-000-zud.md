@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # API Gateway access logging should be enabled for V2 API stages
- 
+
 ## Description{% #description %}
 
 This control evaluates whether access logging is enabled for a specific stage of an Amazon API Gateway V2 API.

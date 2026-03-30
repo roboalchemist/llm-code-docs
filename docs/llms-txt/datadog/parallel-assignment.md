@@ -76,6 +76,5 @@ first, second = multi
 first, *rest = [1, 2, 3]
 first, *rest = 1, 2, 3
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

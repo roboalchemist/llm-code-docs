@@ -62,7 +62,7 @@ class NonCompliant {
         if (collection.Count > -1) { /* ... */ }
         if (collection.Count < 0) { /* ... */ }
         if (collection.Count < -1) { /* ... */ }
-		
+
         char[] array = ['a', 'b', 'c'];
         if (array.Count() >= 0) { /* ... */ }
         if (array.Count() >= 0b0) { /* ... */ }
@@ -105,7 +105,7 @@ class Compliant {
         if (collection.Count > 0x0) { /* ... */ }
         if (collection.Count > 1) { /* ... */ }
         if (collection.Count == 0) { /* ... */ }
-		
+
         char[] array = ['a', 'b', 'c'];
         if (array.Count() > 0) { /* ... */ }
         if (array.Count() > 0b0) { /* ... */ }
@@ -127,6 +127,5 @@ class Compliant {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

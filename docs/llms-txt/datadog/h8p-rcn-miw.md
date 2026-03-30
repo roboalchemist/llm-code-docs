@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS WAF traffic blocked by specific rule
- 
+
 ## Goal{% #goal %}
 
 Detects when a specific AWS Web Application Firewall (WAF) rule blocks an anomalous amount of traffic.

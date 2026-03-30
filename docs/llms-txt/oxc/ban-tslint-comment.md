@@ -1,19 +1,15 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/ban-tslint-comment.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/ban-tslint-comment.md
----
-
-### What it does
+## What it does
 
 This rule disallows `tslint:<rule-flag>` comments
 
-### Why is this bad?
+## Why is this bad?
 
 Useful when migrating from TSLint to ESLint. Once TSLint has been
 removed, this rule helps locate TSLint annotations
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

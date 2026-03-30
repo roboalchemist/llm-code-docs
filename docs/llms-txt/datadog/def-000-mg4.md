@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify /boot/efi/EFI/redhat/user.cfg Permissions
- 
+
 ## Description{% #description %}
 
 File permissions for `/boot/efi/EFI/redhat/user.cfg` should be set to 600. To properly set the permissions of `/boot/efi/EFI/redhat/user.cfg`, run the command:

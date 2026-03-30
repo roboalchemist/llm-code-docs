@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure should use the latest HTTP version available
- 
+
 ## Description{% #description %}
 
 Ensure use of the latest **HTTP** version. Using the latest version of **HTTP** is recommended to leverage securityenhancements and new capabilities.

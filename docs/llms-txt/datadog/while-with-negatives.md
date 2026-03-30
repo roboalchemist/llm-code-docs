@@ -48,6 +48,5 @@ perform_work while !is_weekend
 ```ruby
 perform_work until is_weekend
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

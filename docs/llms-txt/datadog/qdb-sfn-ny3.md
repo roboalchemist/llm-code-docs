@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The certificate authorities file should be owned by root:root
-Classification:complianceFramework:cis-kubernetesControl:4.1.8 
+Classification:complianceFramework:cis-kubernetesControl:4.1.8
 ## Description{% #description %}
 
 Ensure that the certificate authorities file ownership is set to `root:root`.

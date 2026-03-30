@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Group Who Owns /etc/cron.allow file
- 
+
 ## Description{% #description %}
 
 If `/etc/cron.allow` exists, it must be group-owned by `crontab`. To properly set the group owner of `/etc/cron.allow`, run the command:

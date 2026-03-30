@@ -1,0 +1,191 @@
+# Source: https://docs.aws.amazon.com/appflow/1.0/APIReference/llms.txt
+
+# AmazonAppFlow API Reference
+
+> Welcome to the Amazon AppFlow API reference. This guide is for developers who need detailed information about the Amazon AppFlow API operations, data types, and errors.
+
+- [Welcome](https://docs.aws.amazon.com/appflow/1.0/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/appflow/1.0/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/appflow/1.0/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_Operations.html)
+
+- [CancelFlowExecutions](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_CancelFlowExecutions.html): Cancels active runs for a flow.
+- [CreateConnectorProfile](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_CreateConnectorProfile.html): Creates a new connector profile associated with your AWS account.
+- [CreateFlow](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_CreateFlow.html): Enables your application to create a new flow using Amazon AppFlow.
+- [DeleteConnectorProfile](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DeleteConnectorProfile.html): Enables you to delete an existing connector profile.
+- [DeleteFlow](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DeleteFlow.html): Enables your application to delete an existing flow.
+- [DescribeConnector](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DescribeConnector.html): Describes the given custom connector registered in your AWS account.
+- [DescribeConnectorEntity](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DescribeConnectorEntity.html): Provides details regarding the entity used with the connector, with a description of the data model for each field in that entity.
+- [DescribeConnectorProfiles](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DescribeConnectorProfiles.html): Returns a list of connector-profile details matching the provided connector-profile names and connector-types.
+- [DescribeConnectors](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DescribeConnectors.html): Describes the connectors vended by Amazon AppFlow for specified connector types.
+- [DescribeFlow](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DescribeFlow.html): Provides a description of the specified flow.
+- [DescribeFlowExecutionRecords](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DescribeFlowExecutionRecords.html): Fetches the execution history of the flow.
+- [ListConnectorEntities](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ListConnectorEntities.html): Returns the list of available connector entities supported by Amazon AppFlow.
+- [ListConnectors](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ListConnectors.html): Returns the list of all registered custom connectors in your AWS account.
+- [ListFlows](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ListFlows.html): Lists all of the flows associated with your account.
+- [ListTagsForResource](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ListTagsForResource.html): Retrieves the tags that are associated with a specified flow.
+- [RegisterConnector](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_RegisterConnector.html): Registers a new custom connector with your AWS account.
+- [ResetConnectorMetadataCache](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ResetConnectorMetadataCache.html): Resets metadata about your connector entities that Amazon AppFlow stored in its cache.
+- [StartFlow](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_StartFlow.html): Activates an existing flow.
+- [StopFlow](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_StopFlow.html): Deactivates the existing flow.
+- [TagResource](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_TagResource.html): Applies a tag to the specified flow.
+- [UnregisterConnector](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_UnregisterConnector.html): Unregisters the custom connector registered in your account that matches the connector label provided in the request.
+- [UntagResource](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_UntagResource.html): Removes a tag from the specified flow.
+- [UpdateConnectorProfile](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_UpdateConnectorProfile.html): Updates a given connector profile associated with your account.
+- [UpdateConnectorRegistration](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_UpdateConnectorRegistration.html): Updates a custom connector that you've previously registered.
+- [UpdateFlow](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_UpdateFlow.html): Updates an existing flow.
+
+
+## [Data Types](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_Types.html)
+
+- [AggregationConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_AggregationConfig.html): The aggregation settings that you can use to customize the output format of your flow data.
+- [AmplitudeConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_AmplitudeConnectorProfileCredentials.html): The connector-specific credentials required when using Amplitude.
+- [AmplitudeConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_AmplitudeConnectorProfileProperties.html): The connector-specific profile properties required when using Amplitude.
+- [AmplitudeMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_AmplitudeMetadata.html): The connector metadata specific to Amplitude.
+- [AmplitudeSourceProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_AmplitudeSourceProperties.html): The properties that are applied when Amplitude is being used as a source.
+- [ApiKeyCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ApiKeyCredentials.html): The API key credentials required for API key authentication.
+- [AuthenticationConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_AuthenticationConfig.html): Contains information about the authentication config that the connector supports.
+- [AuthParameter](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_AuthParameter.html): Information about required authentication parameters.
+- [BasicAuthCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_BasicAuthCredentials.html): The basic auth credentials required for basic authentication.
+- [ConnectorConfiguration](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ConnectorConfiguration.html): The configuration settings related to a given connector.
+- [ConnectorDetail](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ConnectorDetail.html): Information about the registered connector.
+- [ConnectorEntity](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ConnectorEntity.html): The high-level entity that can be queried in Amazon AppFlow.
+- [ConnectorEntityField](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ConnectorEntityField.html): Describes the data model of a connector field.
+- [ConnectorMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ConnectorMetadata.html): A structure to specify connector-specific metadata such as oAuthScopes, supportedRegions, privateLinkServiceUrl, and so on.
+- [ConnectorOAuthRequest](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ConnectorOAuthRequest.html): Used by select connectors for which the OAuth workflow is supported, such as Salesforce, Google Analytics, Marketo, Zendesk, and Slack.
+- [ConnectorOperator](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ConnectorOperator.html): The operation to be performed on the provided source fields.
+- [ConnectorProfile](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ConnectorProfile.html): Describes an instance of a connector.
+- [ConnectorProfileConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ConnectorProfileConfig.html): Defines the connector-specific configuration and credentials for the connector profile.
+- [ConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ConnectorProfileCredentials.html): The connector-specific credentials required by a connector.
+- [ConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ConnectorProfileProperties.html): The connector-specific profile properties required by each connector.
+- [ConnectorProvisioningConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ConnectorProvisioningConfig.html): Contains information about the configuration of the connector being registered.
+- [ConnectorRuntimeSetting](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ConnectorRuntimeSetting.html): Contains information about the connector runtime settings that are required for flow execution.
+- [CustomAuthConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_CustomAuthConfig.html): Configuration information required for custom authentication.
+- [CustomAuthCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_CustomAuthCredentials.html): The custom credentials required for custom authentication.
+- [CustomConnectorDestinationProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_CustomConnectorDestinationProperties.html): The properties that are applied when the custom connector is being used as a destination.
+- [CustomConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_CustomConnectorProfileCredentials.html): The connector-specific profile credentials that are required when using the custom connector.
+- [CustomConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_CustomConnectorProfileProperties.html): The profile properties required by the custom connector.
+- [CustomConnectorSourceProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_CustomConnectorSourceProperties.html): The properties that are applied when the custom connector is being used as a source.
+- [CustomerProfilesDestinationProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_CustomerProfilesDestinationProperties.html): The properties that are applied when Amazon Connect Customer Profiles is used as a destination.
+- [CustomerProfilesMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_CustomerProfilesMetadata.html): The connector metadata specific to Amazon Connect Customer Profiles.
+- [DatadogConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DatadogConnectorProfileCredentials.html): The connector-specific credentials required by Datadog.
+- [DatadogConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DatadogConnectorProfileProperties.html): The connector-specific profile properties required by Datadog.
+- [DatadogMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DatadogMetadata.html): The connector metadata specific to Datadog.
+- [DatadogSourceProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DatadogSourceProperties.html): The properties that are applied when Datadog is being used as a source.
+- [DataTransferApi](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DataTransferApi.html): The API of the connector application that Amazon AppFlow uses to transfer your data.
+- [DestinationConnectorProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DestinationConnectorProperties.html): This stores the information that is required to query a particular connector.
+- [DestinationFieldProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DestinationFieldProperties.html): The properties that can be applied to a field when connector is being used as a destination.
+- [DestinationFlowConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DestinationFlowConfig.html): Contains information about the configuration of destination connectors present in the flow.
+- [DynatraceConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DynatraceConnectorProfileCredentials.html): The connector-specific profile credentials required by Dynatrace.
+- [DynatraceConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DynatraceConnectorProfileProperties.html): The connector-specific profile properties required by Dynatrace.
+- [DynatraceMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DynatraceMetadata.html): The connector metadata specific to Dynatrace.
+- [DynatraceSourceProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_DynatraceSourceProperties.html): The properties that are applied when Dynatrace is being used as a source.
+- [ErrorHandlingConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ErrorHandlingConfig.html): The settings that determine how Amazon AppFlow handles an error when placing data in the destination.
+- [ErrorInfo](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ErrorInfo.html): Provides details in the event of a failed flow, including the failure count and the related error messages.
+- [EventBridgeDestinationProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_EventBridgeDestinationProperties.html): The properties that are applied when Amazon EventBridge is being used as a destination.
+- [EventBridgeMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_EventBridgeMetadata.html): The connector metadata specific to Amazon EventBridge.
+- [ExecutionDetails](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ExecutionDetails.html): Describes the details of the flow run, including the timestamp, status, and message.
+- [ExecutionRecord](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ExecutionRecord.html): Specifies information about the past flow run instances for a given flow.
+- [ExecutionResult](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ExecutionResult.html): Specifies the end result of the flow run.
+- [FieldTypeDetails](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_FieldTypeDetails.html): Contains details regarding the supported field type and the operators that can be applied for filtering.
+- [FlowDefinition](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_FlowDefinition.html): The properties of the flow, such as its source, destination, trigger type, and so on.
+- [GlueDataCatalogConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_GlueDataCatalogConfig.html): Specifies the configuration that Amazon AppFlow uses when it catalogs your data with the AWS Glue Data Catalog.
+- [GoogleAnalyticsConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_GoogleAnalyticsConnectorProfileCredentials.html): The connector-specific profile credentials required by Google Analytics.
+- [GoogleAnalyticsConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_GoogleAnalyticsConnectorProfileProperties.html): The connector-specific profile properties required by Google Analytics.
+- [GoogleAnalyticsMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_GoogleAnalyticsMetadata.html): The connector metadata specific to Google Analytics.
+- [GoogleAnalyticsSourceProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_GoogleAnalyticsSourceProperties.html): The properties that are applied when Google Analytics is being used as a source.
+- [HoneycodeConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_HoneycodeConnectorProfileCredentials.html): The connector-specific credentials required when using Amazon Honeycode.
+- [HoneycodeConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_HoneycodeConnectorProfileProperties.html): The connector-specific properties required when using Amazon Honeycode.
+- [HoneycodeDestinationProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_HoneycodeDestinationProperties.html): The properties that are applied when Amazon Honeycode is used as a destination.
+- [HoneycodeMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_HoneycodeMetadata.html): The connector metadata specific to Amazon Honeycode.
+- [IncrementalPullConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_IncrementalPullConfig.html): Specifies the configuration used when importing incremental records from the source.
+- [InforNexusConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_InforNexusConnectorProfileCredentials.html): The connector-specific profile credentials required by Infor Nexus.
+- [InforNexusConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_InforNexusConnectorProfileProperties.html): The connector-specific profile properties required by Infor Nexus.
+- [InforNexusMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_InforNexusMetadata.html): The connector metadata specific to Infor Nexus.
+- [InforNexusSourceProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_InforNexusSourceProperties.html): The properties that are applied when Infor Nexus is being used as a source.
+- [LambdaConnectorProvisioningConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_LambdaConnectorProvisioningConfig.html): Contains information about the configuration of the lambda which is being registered as the connector.
+- [LookoutMetricsDestinationProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_LookoutMetricsDestinationProperties.html): The properties that are applied when Amazon Lookout for Metrics is used as a destination.
+- [MarketoConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_MarketoConnectorProfileCredentials.html): The connector-specific profile credentials required by Marketo.
+- [MarketoConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_MarketoConnectorProfileProperties.html): The connector-specific profile properties required when using Marketo.
+- [MarketoDestinationProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_MarketoDestinationProperties.html): The properties that Amazon AppFlow applies when you use Marketo as a flow destination.
+- [MarketoMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_MarketoMetadata.html): The connector metadata specific to Marketo.
+- [MarketoSourceProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_MarketoSourceProperties.html): The properties that are applied when Marketo is being used as a source.
+- [MetadataCatalogConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_MetadataCatalogConfig.html): Specifies the configuration that Amazon AppFlow uses when it catalogs your data.
+- [MetadataCatalogDetail](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_MetadataCatalogDetail.html): Describes the metadata catalog, metadata table, and data partitions that Amazon AppFlow used for the associated flow run.
+- [OAuth2Credentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_OAuth2Credentials.html): The OAuth 2.0 credentials required for OAuth 2.0 authentication.
+- [OAuth2CustomParameter](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_OAuth2CustomParameter.html): Custom parameter required for OAuth 2.0 authentication.
+- [OAuth2Defaults](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_OAuth2Defaults.html): Contains the default values required for OAuth 2.0 authentication.
+- [OAuth2Properties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_OAuth2Properties.html): The OAuth 2.0 properties required for OAuth 2.0 authentication.
+- [OAuthCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_OAuthCredentials.html): The OAuth credentials required for OAuth type authentication.
+- [OAuthProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_OAuthProperties.html): The OAuth properties required for OAuth type authentication.
+- [PardotConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_PardotConnectorProfileCredentials.html): The connector-specific profile credentials required when using Salesforce Pardot.
+- [PardotConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_PardotConnectorProfileProperties.html): The connector-specific profile properties required when using Salesforce Pardot.
+- [PardotMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_PardotMetadata.html): The connector metadata specific to Salesforce Pardot.
+- [PardotSourceProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_PardotSourceProperties.html): The properties that are applied when Salesforce Pardot is being used as a source.
+- [PrefixConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_PrefixConfig.html): Specifies elements that Amazon AppFlow includes in the file and folder names in the flow destination.
+- [PrivateConnectionProvisioningState](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_PrivateConnectionProvisioningState.html): Specifies the private connection provisioning state.
+- [Range](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_Range.html): The range of values that the property supports.
+- [RedshiftConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_RedshiftConnectorProfileCredentials.html): The connector-specific profile credentials required when using Amazon Redshift.
+- [RedshiftConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_RedshiftConnectorProfileProperties.html): The connector-specific profile properties when using Amazon Redshift.
+- [RedshiftDestinationProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_RedshiftDestinationProperties.html): The properties that are applied when Amazon Redshift is being used as a destination.
+- [RedshiftMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_RedshiftMetadata.html): The connector metadata specific to Amazon Redshift.
+- [RegistrationOutput](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_RegistrationOutput.html): Describes the status of an attempt from Amazon AppFlow to register a resource.
+- [S3DestinationProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_S3DestinationProperties.html): The properties that are applied when Amazon S3 is used as a destination.
+- [S3InputFormatConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_S3InputFormatConfig.html): When you use Amazon S3 as the source, the configuration format that you provide the flow input data.
+- [S3Metadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_S3Metadata.html): The connector metadata specific to Amazon S3.
+- [S3OutputFormatConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_S3OutputFormatConfig.html): The configuration that determines how Amazon AppFlow should format the flow output data when Amazon S3 is used as the destination.
+- [S3SourceProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_S3SourceProperties.html): The properties that are applied when Amazon S3 is being used as the flow source.
+- [SalesforceConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SalesforceConnectorProfileCredentials.html): The connector-specific profile credentials required when using Salesforce.
+- [SalesforceConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SalesforceConnectorProfileProperties.html): The connector-specific profile properties required when using Salesforce.
+- [SalesforceDestinationProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SalesforceDestinationProperties.html): The properties that are applied when Salesforce is being used as a destination.
+- [SalesforceMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SalesforceMetadata.html): The connector metadata specific to Salesforce.
+- [SalesforceSourceProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SalesforceSourceProperties.html): The properties that are applied when Salesforce is being used as a source.
+- [SAPODataConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SAPODataConnectorProfileCredentials.html): The connector-specific profile credentials required when using SAPOData.
+- [SAPODataConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SAPODataConnectorProfileProperties.html): The connector-specific profile properties required when using SAPOData.
+- [SAPODataDestinationProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SAPODataDestinationProperties.html): The properties that are applied when using SAPOData as a flow destination
+- [SAPODataMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SAPODataMetadata.html): The connector metadata specific to SAPOData.
+- [SAPODataPaginationConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SAPODataPaginationConfig.html): Sets the page size for each concurrent process that transfers OData records from your SAP instance.
+- [SAPODataParallelismConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SAPODataParallelismConfig.html): Sets the number of concurrent processes that transfer OData records from your SAP instance.
+- [SAPODataSourceProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SAPODataSourceProperties.html): The properties that are applied when using SAPOData as a flow source.
+- [ScheduledTriggerProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ScheduledTriggerProperties.html): Specifies the configuration details of a schedule-triggered flow as defined by the user.
+- [ServiceNowConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ServiceNowConnectorProfileCredentials.html): The connector-specific profile credentials required when using ServiceNow.
+- [ServiceNowConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ServiceNowConnectorProfileProperties.html): The connector-specific profile properties required when using ServiceNow.
+- [ServiceNowMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ServiceNowMetadata.html): The connector metadata specific to ServiceNow.
+- [ServiceNowSourceProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ServiceNowSourceProperties.html): The properties that are applied when ServiceNow is being used as a source.
+- [SingularConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SingularConnectorProfileCredentials.html): The connector-specific profile credentials required when using Singular.
+- [SingularConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SingularConnectorProfileProperties.html): The connector-specific profile properties required when using Singular.
+- [SingularMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SingularMetadata.html): The connector metadata specific to Singular.
+- [SingularSourceProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SingularSourceProperties.html): The properties that are applied when Singular is being used as a source.
+- [SlackConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SlackConnectorProfileCredentials.html): The connector-specific profile credentials required when using Slack.
+- [SlackConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SlackConnectorProfileProperties.html): The connector-specific profile properties required when using Slack.
+- [SlackMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SlackMetadata.html): The connector metadata specific to Slack.
+- [SlackSourceProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SlackSourceProperties.html): The properties that are applied when Slack is being used as a source.
+- [SnowflakeConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SnowflakeConnectorProfileCredentials.html): The connector-specific profile credentials required when using Snowflake.
+- [SnowflakeConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SnowflakeConnectorProfileProperties.html): The connector-specific profile properties required when using Snowflake.
+- [SnowflakeDestinationProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SnowflakeDestinationProperties.html): The properties that are applied when Snowflake is being used as a destination.
+- [SnowflakeMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SnowflakeMetadata.html): The connector metadata specific to Snowflake.
+- [SourceConnectorProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SourceConnectorProperties.html): Specifies the information that is required to query a particular connector.
+- [SourceFieldProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SourceFieldProperties.html): The properties that can be applied to a field when the connector is being used as a source.
+- [SourceFlowConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SourceFlowConfig.html): Contains information about the configuration of the source connector used in the flow.
+- [SuccessResponseHandlingConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SuccessResponseHandlingConfig.html): Determines how Amazon AppFlow handles the success response that it gets from the connector after placing data.
+- [SupportedFieldTypeDetails](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_SupportedFieldTypeDetails.html): Contains details regarding all the supported FieldTypes and their corresponding filterOperators and supportedValues.
+- [Task](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_Task.html): A class for modeling different type of tasks.
+- [TrendmicroConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_TrendmicroConnectorProfileCredentials.html): The connector-specific profile credentials required when using Trend Micro.
+- [TrendmicroConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_TrendmicroConnectorProfileProperties.html): The connector-specific profile properties required when using Trend Micro.
+- [TrendmicroMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_TrendmicroMetadata.html): The connector metadata specific to Trend Micro.
+- [TrendmicroSourceProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_TrendmicroSourceProperties.html): The properties that are applied when using Trend Micro as a flow source.
+- [TriggerConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_TriggerConfig.html): The trigger settings that determine how and when Amazon AppFlow runs the specified flow.
+- [TriggerProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_TriggerProperties.html): Specifies the configuration details that control the trigger for a flow.
+- [UpsolverDestinationProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_UpsolverDestinationProperties.html): The properties that are applied when Upsolver is used as a destination.
+- [UpsolverMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_UpsolverMetadata.html): The connector metadata specific to Upsolver.
+- [UpsolverS3OutputFormatConfig](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_UpsolverS3OutputFormatConfig.html): The configuration that determines how Amazon AppFlow formats the flow output data when Upsolver is used as the destination.
+- [VeevaConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_VeevaConnectorProfileCredentials.html): The connector-specific profile credentials required when using Veeva.
+- [VeevaConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_VeevaConnectorProfileProperties.html): The connector-specific profile properties required when using Veeva.
+- [VeevaMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_VeevaMetadata.html): The connector metadata specific to Veeva.
+- [VeevaSourceProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_VeevaSourceProperties.html): The properties that are applied when using Veeva as a flow source.
+- [ZendeskConnectorProfileCredentials](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ZendeskConnectorProfileCredentials.html): The connector-specific profile credentials required when using Zendesk.
+- [ZendeskConnectorProfileProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ZendeskConnectorProfileProperties.html): The connector-specific profile properties required when using Zendesk.
+- [ZendeskDestinationProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ZendeskDestinationProperties.html): The properties that are applied when Zendesk is used as a destination.
+- [ZendeskMetadata](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ZendeskMetadata.html): The connector metadata specific to Zendesk.
+- [ZendeskSourceProperties](https://docs.aws.amazon.com/appflow/1.0/APIReference/API_ZendeskSourceProperties.html): The properties that are applied when using Zendesk as a flow source.

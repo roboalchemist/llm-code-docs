@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Default network access rule for storage accounts should be set to deny
- 
+
 ## Description{% #description %}
 
 Ensure default network access rule for storage accounts is set to deny to prevent unauthorized access.

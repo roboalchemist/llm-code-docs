@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Classic Load Balancers should be configured to use Connection Draining
- 
+
 ## Description{% #description %}
 
 This control verifies connection draining is enabled for Classic Load Balancers. Enabling connection draining ensures that the load balancer stops routing new requests to instances that are being de-registered or identified as unhealthy, while still allowing existing connections to complete. This feature is especially beneficial for instances within Auto Scaling groups, as it helps prevent abrupt disconnection of active sessions.

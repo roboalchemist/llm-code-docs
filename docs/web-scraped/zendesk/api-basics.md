@@ -1,136 +1,143 @@
 # Source: https://developer.zendesk.com/documentation/api-basics/
 
-API Basics | Zendesk Developer Docs zendev_horizontal zendev_horizontal Documentation API Reference Search / API Basics Home 
-- 
-- 
-## API Basics 
+API Basics | Zendesk Developer Docs zendev_horizontal zendev_horizontal Documentation API Reference Search / API Basics Home
 
-- Introduction 
+-
+-
 
-- 
-- 
-### Getting Started 
+## API Basics
 
-- About the Zendesk developer platform 
+- Introduction
 
-- Getting a trial or sponsored account for development 
+-
+-
 
-- Zendesk API resources 
+### Getting Started
 
-- Installing and using curl 
+- About the Zendesk developer platform
 
-- Exploring Zendesk APIs with Postman 
+- Getting a trial or sponsored account for development
 
-- Frequently asked questions 
+- Zendesk API resources
 
-- REST API glossary 
+- Installing and using curl
 
-- 
-- 
-### Best practices 
+- Exploring Zendesk APIs with Postman
 
-- Best practices for avoiding rate limiting 
+- Frequently asked questions
 
-- Using audit logs to track activity 
+- REST API glossary
 
-- Using events to automate interactions 
+-
+-
 
-- Working with url properties 
+### Best practices
 
-- Security best practices 
+- Best practices for avoiding rate limiting
 
-- 
-- 
-### Working With Data 
+- Using audit logs to track activity
 
-- Working with JSON 
+- Using events to automate interactions
 
-- Using the Search API 
+- Working with url properties
 
-- Understanding sideloading 
+- Security best practices
 
-- Side-loading related records 
+-
+-
 
-- Getting large data sets with the Zendesk API and Python 
+### Working With Data
 
-- Writing large data sets to Excel with Python and pandas 
+- Working with JSON
 
-- Using the Incremental Exports API 
+- Using the Search API
 
-- Exporting users with the Zendesk API 
+- Understanding sideloading
 
-- Importing users with the Zendesk API 
+- Side-loading related records
 
-- Exporting access logs to a CSV file 
+- Getting large data sets with the Zendesk API and Python
 
-- 
-- 
-### Pagination 
+- Writing large data sets to Excel with Python and pandas
 
-- Comparing cursor pagination and offset pagination 
+- Using the Incremental Exports API
 
-- Paginating through lists using cursor pagination 
+- Exporting users with the Zendesk API
 
-- Paginating through lists using offset pagination 
+- Importing users with the Zendesk API
 
-- Paginating through lists 
+- Exporting access logs to a CSV file
 
-- Understanding the limitations of offset pagination 
+-
+-
 
-- 
-- 
-### Authentication 
+### Pagination
 
-- Understanding the differences between API tokens and OAuth access tokens 
+- Comparing cursor pagination and offset pagination
 
-- Using OAuth to authenticate Zendesk API requests in a web app 
+- Paginating through lists using cursor pagination
 
-- Creating and using OAuth tokens with the API 
+- Paginating through lists using offset pagination
 
-- Getting information about OAuth access tokens 
+- Paginating through lists
 
-- Revoking an OAuth access token 
+- Understanding the limitations of offset pagination
 
-- Using PKCE to make Zendesk OAuth access tokens more secure 
+-
+-
 
-- Using the API when SSO or two-factor authentication is enabled 
+### Authentication
 
-## On this page 
+- Understanding the differences between API tokens and OAuth access tokens
 
-- Getting started 
+- Using OAuth to authenticate Zendesk API requests in a web app
 
-- Working with the Zendesk APIs 
+- Creating and using OAuth tokens with the API
 
-# API Basics 
-Supercharge your workflows using the Zendesk APIs 
-## On this page 
+- Getting information about OAuth access tokens
 
-- Getting started 
+- Revoking an OAuth access token
 
-- Working with the Zendesk APIs 
+- Using PKCE to make Zendesk OAuth access tokens more secure
 
-## Getting started 
+- Using the API when SSO or two-factor authentication is enabled
 
-Getting a trial or sponsored account for development 
-You can try out the Zendesk platform with a free, 14-day trial account. If you're interested in becoming a Zendesk developer partner, you can convert your trial account into a sponsored Zendesk Support account. 
+## On this page
 
-Installing and using curl 
-All the examples in the Zendesk REST API docs use curl, a lightweight, command-line tool for making HTTP requests without a web browser. curl lets you try out various API requests in a command-line interface such as the command prompt in Windows or Terminal in macOS. 
+- Getting started
 
-Working with JSON 
-The Zendesk REST API is a JSON API. If you want to send data to the API to update or create data in your Zendesk product, you need to convert it to JSON first. This guide covers the basics and how to use JSON in curl statements. 
+- Working with the Zendesk APIs
 
-Developer updates 
-Stay up to date with the latest announcements. 
+## Getting started
 
-Changelog 
-View breaking changes and other significant changes and additions to Zendesk APIs and SDKs. 
+Getting a trial or sponsored account for development
 
-## Working with the Zendesk APIs 
+You can try out the Zendesk platform with a free, 14-day trial account. If you're interested in becoming a Zendesk developer partner, you can convert your trial account into a sponsored Zendesk Support account.
 
-Making requests to the Ticketing API 
-Use the Zendesk Ticketing API to read, update, and create data in Zendesk Support. This tutorial shows you how to start working with the API with examples of completing common tasks. 
+Installing and using curl
 
-Exploring Zendesk APIs with Postman 
-Postman is a popular application for testing APIs. This article explains how to set up Postman to make Zendesk API requests. 
+All the examples in the Zendesk REST API docs use curl, a lightweight, command-line tool for making HTTP requests without a web browser. curl lets you try out various API requests in a command-line interface such as the command prompt in Windows or Terminal in macOS.
+
+Working with JSON
+
+The Zendesk REST API is a JSON API. If you want to send data to the API to update or create data in your Zendesk product, you need to convert it to JSON first. This guide covers the basics and how to use JSON in curl statements.
+
+Developer updates
+
+Stay up to date with the latest announcements.
+
+Changelog
+
+View breaking changes and other significant changes and additions to Zendesk APIs and SDKs.
+
+## Working with the Zendesk APIs
+
+Making requests to the Ticketing API
+
+Use the Zendesk Ticketing API to read, update, and create data in Zendesk Support. This tutorial shows you how to start working with the API with examples of completing common tasks.
+
+Exploring Zendesk APIs with Postman
+
+Postman is a popular application for testing APIs. This article explains how to set up Postman to make Zendesk API requests.
+
 Join our developer community Forum Blog Slack Zendesk 181 Fremont Street, 17th Floor, San Francisco, California 94105 Privacy Notice Zendesk Developer Terms System Status

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The TLS CA certificate file should be owned by root account
-Classification:complianceFramework:cis-dockerControl:3.9 
+Classification:complianceFramework:cis-dockerControl:3.9
 ## Description{% #description %}
 
 You should verify that the TLS CA certificate file, the file that is passed along with the `--tlscacert parameter`, is individually owned and group owned by root.

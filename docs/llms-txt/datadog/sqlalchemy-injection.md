@@ -75,6 +75,5 @@ def resource2():
     resource_id = flask.request.args.get("resource_id")
     file1 = query.group_by(sanitize(resource_id))
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

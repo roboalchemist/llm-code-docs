@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # RDS databases should not be publicly accessible
- 
+
 ## Description{% #description %}
 
 It is important to ensure that RDS database instances provisioned in your AWS account restrict unauthorized access to minimize security risks. Publicly accessible RDS instances can expose your database to anyone on the internet, increasing the risk of malicious activities such as brute force attacks, SQL injections, or DoS/DDoS attacks. Disabling the Publicly Accessible flag and updating VPC security group settings prevents public access to these instances and protects sensitive data.

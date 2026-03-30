@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # CloudFront distributions should use custom SSL/TLS certificates
- 
+
 ## Description{% #description %}
 
 This check verifies whether CloudFront distributions are using the SSL/TLS certificate provided by CloudFront as the default option. The check is successful if a custom SSL/TLS certificate is being used by the CloudFront distribution. Conversely, the check fails if the CloudFront distribution is still using the default SSL/TLS certificate.

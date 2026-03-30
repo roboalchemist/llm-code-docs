@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > SQL injections attempts
 ---
 
 # SQL injections attempts
-Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190) 
+Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190)
 ### Goal{% #goal %}
 
 Detect SQL injection attempts on web services executing SQL queries. Such security activity generally indicates that an attacker is trying to exploit potential SQL injection vulnerability or steal sensitive data.

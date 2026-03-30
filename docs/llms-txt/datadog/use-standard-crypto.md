@@ -41,6 +41,5 @@ Implementing your hash/cryptographic algorithm may lead to errors and potential 
 public class CustomHash : HashAlgorithm {
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

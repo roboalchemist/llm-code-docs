@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Cognito user pool password policies should have strong configurations
- 
+
 ## Description{% #description %}
 
 Password policies for Amazon Cognito user pools should enforce strong configurations to protect user credentials against brute force attacks and unauthorized access. Strong password requirements include minimum length, character complexity requirements, and appropriate temporary password validity periods. These settings help ensure that user passwords meet security standards and comply with organizational security requirements.

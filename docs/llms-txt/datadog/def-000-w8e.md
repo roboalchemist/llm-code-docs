@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > PsExec execution detected
 ---
 
 # PsExec execution detected
-Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1569-system-services](https://attack.mitre.org/techniques/T1569) 
+Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1569-system-services](https://attack.mitre.org/techniques/T1569)
 ## Goal{% #goal %}
 
 Detects when the Windows utility PsExec was executed on a system. PsExec is commonly utilized for executing processes remotely on Windows machines, often as part of legitimate system administration activity. This could be evidence of unauthorized remote access by an attcker.

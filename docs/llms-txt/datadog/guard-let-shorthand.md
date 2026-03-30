@@ -50,13 +50,13 @@ guard let name = name else {
 guard let self = self else {
     // ...
 }
-    
+
 guard interactionEnabled,
    let userTapLocation = userTapLocation else {
     // ...
 }
 
-guard let user = user, 
+guard let user = user,
    var device = device else {
     // ...
 }
@@ -72,15 +72,14 @@ guard let name else {
 guard let name = user?.name else {
     // ...
 }
-    
+
 guard let user = user as? User else {
     // ...
 }
- 
+
 guard var user = currentUser() else {
     // ...
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

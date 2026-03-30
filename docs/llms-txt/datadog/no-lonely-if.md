@@ -55,8 +55,8 @@ if (a) {
     bar();
   }
 }
-    
-    
+
+
 if (a) {
   foo();
 } else {
@@ -64,7 +64,7 @@ if (a) {
     bar();
   }
 }
-    
+
 if (a) {
   foo();
 } else {
@@ -94,7 +94,7 @@ if (foo) {
   if (bar) baz()
 }
 [1, 2, 3].forEach(foo);
-    
+
 // Not fixed; removing the braces would change the semantics due to ASI.
 if (foo) {
 } else {
@@ -136,6 +136,5 @@ if (a) {
 if (a) {;} else if (b) {;}
 if (a) {;} else { if (b) {;} ; }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

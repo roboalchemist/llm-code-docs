@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Critical windows file modifi
 ---
 
 # Critical windows file modified
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1036-masquerading](https://attack.mitre.org/techniques/T1036) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1036-masquerading](https://attack.mitre.org/techniques/T1036)
 ## What happened{% #what-happened %}
 
 The critical system file `{{ @file.path }}` was modified by the process `{{ @process.executable.name }}`, potentially indicating unauthorized system changes.

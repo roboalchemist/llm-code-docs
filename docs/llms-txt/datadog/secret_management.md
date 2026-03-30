@@ -46,7 +46,7 @@ The credentials provided here are stored in a Secret created by the Operator. By
      name: datadog-api-secret
    data:
      api_key: <DATADOG_API_KEY>
-   
+
    ---
    apiVersion: v1
    kind: Secret

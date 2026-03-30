@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Set Existing Passwords Warni
 ---
 
 # Set Existing Passwords Warning Age
- 
+
 ## Description{% #description %}
 
 To configure how many days prior to password expiration that a warning will be issued to users, run the command:
@@ -15,7 +15,7 @@ To configure how many days prior to password expiration that a warning will be i
 ```
 $ sudo chage --warndays 7
           USER
-         
+
 ```
 
 The DoD requirement is 7, and CIS recommendation is no less than 7 days. This profile requirement is `7`.

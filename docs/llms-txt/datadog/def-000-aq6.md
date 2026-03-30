@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # IAM roles with policies attached should be used within the last 90 days
- 
+
 ## Description{% #description %}
 
 Ensuring IAM roles are actively used within the last 90 days helps maintain a secure AWS environment. Inactive roles with policies attached can pose security risks, such as outdated permissions lingering in the system, which can be exploited for unauthorized access.

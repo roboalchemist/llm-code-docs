@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # New user seen executing a command in an ECS task
-Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1651-cloud-administration-command](https://attack.mitre.org/techniques/T1651) 
+Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1651-cloud-administration-command](https://attack.mitre.org/techniques/T1651)
 ## Goal{% #goal %}
 
 Detect when a user executes a command on an ECS container for the first time. An attacker may use this as a technique to escalate their privileges because they can run arbitrary commands on behalf of the container with the role and permissions associated with the container.

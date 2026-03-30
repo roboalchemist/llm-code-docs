@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable xinetd Service
 ---
 
 # Disable xinetd Service
- 
+
 ## Description{% #description %}
 
 The `xinetd` service can be disabled with the following command:

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure Blob Storage soft delete should be enabled
- 
+
 ## Description{% #description %}
 
 Enable soft delete for Azure Blob Storage to recover deleted blobs within a retention period (1-365 days).

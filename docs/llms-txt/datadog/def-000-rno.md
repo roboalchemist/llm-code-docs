@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # CloudFront distributions should encrypt traffic to custom origins
- 
+
 ## Description{% #description %}
 
 This check verifies if Amazon CloudFront distributions are securing traffic to custom origins. Failure for this control occurs when a CloudFront distribution permits the 'http-only' origin protocol policy. Additionally, failure is also flagged if the distribution's origin protocol policy is 'match-viewer' while the viewer protocol policy is set to 'allow-all'.

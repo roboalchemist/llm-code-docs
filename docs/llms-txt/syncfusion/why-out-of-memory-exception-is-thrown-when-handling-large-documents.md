@@ -1,0 +1,7 @@
+# Source: https://docs.syncfusion.com/document-processing/excel/excel-library/net/faqs/why-out-of-memory-exception-is-thrown-when-handling-large-documents.md
+
+# Why out of memory exception is thrown when handling large documents which is having size more than 2GB?
+
+Syncfusion.Compression uses MemoryStream object to handle the file data which can support upto 2GB memory. When the file size is exceeded this size limit, exception is thrown.
+
+So This is a limitation of Syncfusion Compression library.

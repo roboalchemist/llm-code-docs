@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Aurora clusters should have backtracking enabled
- 
+
 ## Description{% #description %}
 
 This control verifies backtracking is enabled for an Amazon Aurora cluster. Backups are critical for rapid recovery from security incidents and enhance the resilience of your systems. Aurora backtracking reduces the time needed to revert a database to a previous point in time without necessitating a full database restore.

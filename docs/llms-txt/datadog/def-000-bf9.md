@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Object-level logging should be enabled for S3 bucket write events
- 
+
 ## Description{% #description %}
 
 S3 object-level API write event operations, such as `GetObject`, `DeleteObject`, and `PutObject`, are considered data events and are not logged by default in CloudTrail. Enabling object-level logging for S3 buckets is recommended to capture these events for better compliance, security analysis, and monitoring of user activity patterns within your AWS account.

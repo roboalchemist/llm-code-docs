@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EC2 Client VPN endpoints should have client connection logging enabled
- 
+
 ## Description{% #description %}
 
 This control verifies if client connection logging is enabled for an AWS Client VPN endpoint. AWS Client VPN endpoints facilitate secure connections between remote clients and resources within a Virtual Private Cloud (VPC). Enabling connection logging enhances visibility by allowing you to monitor user activity on the VPN endpoint. When connection logging is activated, you can assign a log stream name within a log group, or if none is specified, the Client VPN service automatically generates one.

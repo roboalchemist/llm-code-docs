@@ -65,9 +65,9 @@ func main() {
 ```go
 func main() {
     options := []grpc.ServerOption{
-		grpc.Creds(credentials.NewClientTLSFromCert(ceertificatePool, address)),
-	}
-	server := grpc.NewServer(options...)
+        grpc.Creds(credentials.NewClientTLSFromCert(ceertificatePool, address)),
+    }
+    server := grpc.NewServer(options...)
 }
 ```
 
@@ -77,6 +77,5 @@ func main() {
     s := grpc.NewServer()
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

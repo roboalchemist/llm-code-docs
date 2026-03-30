@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure managed identity has admin level privileges at the subscription scope
- 
+
 ## Description{% #description %}
 
 This rule identifies when an Azure Managed Identity has administrative-level permissions at the subscription scope.

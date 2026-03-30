@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Permissions on /etc/a
 ---
 
 # Verify Permissions on /etc/at.deny file
- 
+
 ## Description{% #description %}
 
 If `/etc/at.deny` exists, it must have permissions `0640` or more restrictive. To properly set the permissions of `/etc/at.deny`, run the command:

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > New Kubernetes Namespace Cre
 ---
 
 # New Kubernetes Namespace Created
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1578-modify-cloud-compute-infrastructure](https://attack.mitre.org/techniques/T1578) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1578-modify-cloud-compute-infrastructure](https://attack.mitre.org/techniques/T1578)
 ## Goal{% #goal %}
 
 Detect when a user is creating a Kubernetes namespace.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The controller-manager.conf file should be owned by root:root
-Classification:complianceFramework:cis-kubernetesControl:1.1.18 
+Classification:complianceFramework:cis-kubernetesControl:1.1.18
 ## Description{% #description %}
 
 Ensure that the controller-manager.conf file ownership is set to `root:root`.

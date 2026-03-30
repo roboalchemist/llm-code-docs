@@ -58,7 +58,7 @@ MyLambdaRole:
             - Effect: Allow
               Action:
                 - s3:GetObject
-              Resource: arn:aws:s3:::example-bucket/* 
+              Resource: arn:aws:s3:::example-bucket/*
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}

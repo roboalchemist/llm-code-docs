@@ -1,19 +1,15 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-accessor-recursion.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-accessor-recursion.md
----
-
-### What it does
+## What it does
 
 Disallow recursive access to this within getters and setters
 
-### Why is this bad?
+## Why is this bad?
 
 This rule prevents recursive access to this within getter and setter methods in objects and classes,
 avoiding infinite recursion and stack overflow errors.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

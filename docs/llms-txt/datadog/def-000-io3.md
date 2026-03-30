@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Security Group should restrict RDP access from the internet
- 
+
 ## Description{% #description %}
 
 Restricting RDP access from the public internet is crucial for network security. RDP vulnerabilities can be exploited by attackers to gain unauthorized access to Azure Virtual Machines. Attackers can then use the compromised virtual machine to launch further attacks within the Azure Virtual Network or target networked devices outside of Azure. RDP access should be restricted to specific IP addresses, ranges, or encrypted network tunnels.

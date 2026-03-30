@@ -80,7 +80,7 @@ Resources:
         Variables:
           key: value
       KmsKeyArn: arn:aws:kms:us-west-1:123456789123:key/12345678-12cc-45bb-98aa-9876543210cc
-      
+
 ```
 
 ## Non-Compliant Code Examples{% #non-compliant-code-examples %}
@@ -110,5 +110,5 @@ Resources:
       Environment:
         Variables:
           key: value
-      
+
 ```

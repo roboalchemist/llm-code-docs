@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # DynamoDB Accelerator (DAX) clusters should be encrypted at rest
- 
+
 ## Description{% #description %}
 
 This control verifies whether an Amazon DynamoDB Accelerator (DAX) cluster has encryption enabled for data at rest.

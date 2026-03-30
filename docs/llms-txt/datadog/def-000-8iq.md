@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Make sure that the dconf databases are up-to-date with regards to respective keyfiles
- 
+
 ## Description{% #description %}
 
 By default, DConf uses a binary database as a data backend. The system-level database is compiled from keyfiles in the /etc/dconf/db/ directory by the

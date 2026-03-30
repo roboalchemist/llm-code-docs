@@ -145,14 +145,14 @@ The dogapi gem is automatically installed. Set `manage_dogapi_gem` to false if y
    [main]
    # No modification needed to this section
    # ...
-   
+
    [master]
    # Enable reporting to Datadog
    reports=datadog_reports
    # If you use other reports, add datadog_reports to the end,
    # for example: reports=store,log,datadog_reports
    # ...
-   
+
    [agent]
    # ...
    report=true

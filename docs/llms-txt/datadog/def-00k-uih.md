@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Etcd should use TLS encryption for peer connections
- 
+
 ## Description{% #description %}
 
 Etcd should be configured to make use of TLS encryption for peer connections. Etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of all of its REST API objects. These objects are sensitive in nature and should be encrypted in transit and also amongst peers in the etcd clusters.
@@ -20,6 +20,6 @@ Etcd should be configured to make use of TLS encryption for peer connections. Et
 1. Edit the etcd pod specification file `/etc/kubernetes/manifests/etcd.yaml` on the master node and set the following parameters:
 
 ```
---peer-cert-file=</path/to/peer-cert-file> 
+--peer-cert-file=</path/to/peer-cert-file>
 --peer-key-file=</path/to/peer-key-file>
 ```

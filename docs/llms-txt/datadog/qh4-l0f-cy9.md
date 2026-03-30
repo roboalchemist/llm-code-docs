@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Azure Datadog Log Forwarder 
 ---
 
 # Azure Datadog Log Forwarder Deleted
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562)
 ## Goal{% #goal %}
 
 Detect when the Datadog Azure function is deleted which will prevent Azure logs from being sent to Datadog.

@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # PostgreSQL instances should have the 'log_min_messages' database flag set to at least 'WARNING'
- 
+
 ## Description{% #description %}
 
 The `log_min_messages` flag defines the minimum message severity level that is considered as an error statement. Messages for error statements are logged with the SQL statement. Valid values include `debug5`, `debug4`, `debug3`, `debug2`, `debug1`, `info`, `notice`, `warning`, `error`, `log`, `fatal`, and `panic`. Each severity level includes the subsequent levels mentioned above. For best practices, set the value to `error`. Changes should only be made in accordance with the organization's logging policy.

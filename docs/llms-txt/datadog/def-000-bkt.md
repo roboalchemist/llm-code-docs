@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure PAM Enforces Password Requirements - Minimum Digit Characters
- 
+
 ## Description{% #description %}
 
 The pam_pwquality module's `dcredit` parameter controls requirements for usage of digits in a password. When set to a negative number, any password will be required to contain that many digits. When set to a positive number, pam_pwquality will grant +1 additional length credit for each digit. Modify the `dcredit` setting in `/etc/security/pwquality.conf` to require the use of a digit in passwords.

@@ -150,13 +150,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/config/restriction_queries" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -179,7 +179,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List restriction queries returns "OK" response
@@ -196,7 +196,7 @@ p api_instance.list_restriction_queries()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List restriction queries returns "OK" response
@@ -204,30 +204,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListRestrictionQueries", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
-	resp, r, err := api.ListRestrictionQueries(ctx, *datadogV2.NewListRestrictionQueriesOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListRestrictionQueries", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
+    resp, r, err := api.ListRestrictionQueries(ctx, *datadogV2.NewListRestrictionQueriesOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.ListRestrictionQueries`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.ListRestrictionQueries`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsRestrictionQueriesApi.ListRestrictionQueries`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsRestrictionQueriesApi.ListRestrictionQueries`:\n%s\n", responseContent)
 }
 ```
 
@@ -235,7 +235,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List restriction queries returns "OK" response
@@ -269,7 +269,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List restriction queries returns "OK" response
@@ -297,7 +297,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -500,7 +500,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/config/restriction_queries" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -516,8 +516,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a restriction query returns "OK" response
@@ -525,38 +525,38 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.RestrictionQueryCreatePayload{
-		Data: &datadogV2.RestrictionQueryCreateData{
-			Attributes: &datadogV2.RestrictionQueryCreateAttributes{
-				RestrictionQuery: "env:sandbox",
-			},
-			Type: datadogV2.LOGSRESTRICTIONQUERIESTYPE_LOGS_RESTRICTION_QUERIES.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.CreateRestrictionQuery", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
-	resp, r, err := api.CreateRestrictionQuery(ctx, body)
+    body := datadogV2.RestrictionQueryCreatePayload{
+        Data: &datadogV2.RestrictionQueryCreateData{
+            Attributes: &datadogV2.RestrictionQueryCreateAttributes{
+                RestrictionQuery: "env:sandbox",
+            },
+            Type: datadogV2.LOGSRESTRICTIONQUERIESTYPE_LOGS_RESTRICTION_QUERIES.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.CreateRestrictionQuery", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
+    resp, r, err := api.CreateRestrictionQuery(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.CreateRestrictionQuery`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.CreateRestrictionQuery`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsRestrictionQueriesApi.CreateRestrictionQuery`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsRestrictionQueriesApi.CreateRestrictionQuery`:\n%s\n", responseContent)
 }
 ```
 
@@ -564,7 +564,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a restriction query returns "OK" response
@@ -611,7 +611,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -647,7 +647,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a restriction query returns "OK" response
@@ -673,7 +673,7 @@ p api_instance.create_restriction_query(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a restriction query returns "OK" response
@@ -709,7 +709,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -954,13 +954,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport restriction_query_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/config/restriction_queries/${restriction_query_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -989,7 +989,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a restriction query returns "OK" response
@@ -1009,7 +1009,7 @@ p api_instance.get_restriction_query(RESTRICTION_QUERY_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a restriction query returns "OK" response
@@ -1017,33 +1017,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "restriction_query" in the system
-	RestrictionQueryDataID := os.Getenv("RESTRICTION_QUERY_DATA_ID")
+    // there is a valid "restriction_query" in the system
+    RestrictionQueryDataID := os.Getenv("RESTRICTION_QUERY_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetRestrictionQuery", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
-	resp, r, err := api.GetRestrictionQuery(ctx, RestrictionQueryDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetRestrictionQuery", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
+    resp, r, err := api.GetRestrictionQuery(ctx, RestrictionQueryDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.GetRestrictionQuery`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.GetRestrictionQuery`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsRestrictionQueriesApi.GetRestrictionQuery`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsRestrictionQueriesApi.GetRestrictionQuery`:\n%s\n", responseContent)
 }
 ```
 
@@ -1051,7 +1051,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a restriction query returns "OK" response
@@ -1089,7 +1089,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a restriction query returns "OK" response
@@ -1118,7 +1118,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1362,7 +1362,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport restriction_query_id="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/config/restriction_queries/${restriction_query_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1377,8 +1377,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1418,7 +1418,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Replace a restriction query returns "OK" response
@@ -1447,7 +1447,7 @@ p api_instance.replace_restriction_query(RESTRICTION_QUERY_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Replace a restriction query returns "OK" response
@@ -1455,41 +1455,41 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "restriction_query" in the system
-	RestrictionQueryDataID := os.Getenv("RESTRICTION_QUERY_DATA_ID")
+    // there is a valid "restriction_query" in the system
+    RestrictionQueryDataID := os.Getenv("RESTRICTION_QUERY_DATA_ID")
 
-	body := datadogV2.RestrictionQueryUpdatePayload{
-		Data: &datadogV2.RestrictionQueryUpdateData{
-			Attributes: &datadogV2.RestrictionQueryUpdateAttributes{
-				RestrictionQuery: "env:staging",
-			},
-			Type: datadogV2.LOGSRESTRICTIONQUERIESTYPE_LOGS_RESTRICTION_QUERIES.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ReplaceRestrictionQuery", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
-	resp, r, err := api.ReplaceRestrictionQuery(ctx, RestrictionQueryDataID, body)
+    body := datadogV2.RestrictionQueryUpdatePayload{
+        Data: &datadogV2.RestrictionQueryUpdateData{
+            Attributes: &datadogV2.RestrictionQueryUpdateAttributes{
+                RestrictionQuery: "env:staging",
+            },
+            Type: datadogV2.LOGSRESTRICTIONQUERIESTYPE_LOGS_RESTRICTION_QUERIES.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ReplaceRestrictionQuery", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
+    resp, r, err := api.ReplaceRestrictionQuery(ctx, RestrictionQueryDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.ReplaceRestrictionQuery`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.ReplaceRestrictionQuery`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsRestrictionQueriesApi.ReplaceRestrictionQuery`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsRestrictionQueriesApi.ReplaceRestrictionQuery`:\n%s\n", responseContent)
 }
 ```
 
@@ -1497,7 +1497,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Replace a restriction query returns "OK" response
@@ -1548,7 +1548,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Replace a restriction query returns "OK" response
@@ -1588,7 +1588,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1840,7 +1840,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport restriction_query_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/config/restriction_queries/${restriction_query_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1855,8 +1855,8 @@ API error response.
   }
 }
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1896,7 +1896,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a restriction query returns "OK" response
@@ -1925,7 +1925,7 @@ p api_instance.update_restriction_query(RESTRICTION_QUERY_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Update a restriction query returns "OK" response
@@ -1933,41 +1933,41 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "restriction_query" in the system
-	RestrictionQueryDataID := os.Getenv("RESTRICTION_QUERY_DATA_ID")
+    // there is a valid "restriction_query" in the system
+    RestrictionQueryDataID := os.Getenv("RESTRICTION_QUERY_DATA_ID")
 
-	body := datadogV2.RestrictionQueryUpdatePayload{
-		Data: &datadogV2.RestrictionQueryUpdateData{
-			Attributes: &datadogV2.RestrictionQueryUpdateAttributes{
-				RestrictionQuery: "env:production",
-			},
-			Type: datadogV2.LOGSRESTRICTIONQUERIESTYPE_LOGS_RESTRICTION_QUERIES.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.UpdateRestrictionQuery", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
-	resp, r, err := api.UpdateRestrictionQuery(ctx, RestrictionQueryDataID, body)
+    body := datadogV2.RestrictionQueryUpdatePayload{
+        Data: &datadogV2.RestrictionQueryUpdateData{
+            Attributes: &datadogV2.RestrictionQueryUpdateAttributes{
+                RestrictionQuery: "env:production",
+            },
+            Type: datadogV2.LOGSRESTRICTIONQUERIESTYPE_LOGS_RESTRICTION_QUERIES.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.UpdateRestrictionQuery", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
+    resp, r, err := api.UpdateRestrictionQuery(ctx, RestrictionQueryDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.UpdateRestrictionQuery`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.UpdateRestrictionQuery`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsRestrictionQueriesApi.UpdateRestrictionQuery`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsRestrictionQueriesApi.UpdateRestrictionQuery`:\n%s\n", responseContent)
 }
 ```
 
@@ -1975,7 +1975,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a restriction query returns "OK" response
@@ -2025,7 +2025,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Update a restriction query returns "OK" response
@@ -2065,7 +2065,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2244,12 +2244,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport restriction_query_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/config/restriction_queries/${restriction_query_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2276,7 +2276,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a restriction query returns "OK" response
@@ -2296,7 +2296,7 @@ api_instance.delete_restriction_query(RESTRICTION_QUERY_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a restriction query returns "OK" response
@@ -2304,29 +2304,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "restriction_query" in the system
-	RestrictionQueryDataID := os.Getenv("RESTRICTION_QUERY_DATA_ID")
+    // there is a valid "restriction_query" in the system
+    RestrictionQueryDataID := os.Getenv("RESTRICTION_QUERY_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.DeleteRestrictionQuery", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
-	r, err := api.DeleteRestrictionQuery(ctx, RestrictionQueryDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.DeleteRestrictionQuery", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
+    r, err := api.DeleteRestrictionQuery(ctx, RestrictionQueryDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.DeleteRestrictionQuery`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.DeleteRestrictionQuery`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -2334,7 +2334,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a restriction query returns "OK" response
@@ -2369,7 +2369,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a restriction query returns "OK" response
@@ -2398,7 +2398,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2607,13 +2607,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport restriction_query_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/config/restriction_queries/${restriction_query_id}/roles" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2642,7 +2642,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List roles for a restriction query returns "OK" response
@@ -2662,7 +2662,7 @@ p api_instance.list_restriction_query_roles(RESTRICTION_QUERY_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List roles for a restriction query returns "OK" response
@@ -2670,33 +2670,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "restriction_query" in the system
-	RestrictionQueryDataID := os.Getenv("RESTRICTION_QUERY_DATA_ID")
+    // there is a valid "restriction_query" in the system
+    RestrictionQueryDataID := os.Getenv("RESTRICTION_QUERY_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListRestrictionQueryRoles", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
-	resp, r, err := api.ListRestrictionQueryRoles(ctx, RestrictionQueryDataID, *datadogV2.NewListRestrictionQueryRolesOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListRestrictionQueryRoles", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
+    resp, r, err := api.ListRestrictionQueryRoles(ctx, RestrictionQueryDataID, *datadogV2.NewListRestrictionQueryRolesOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.ListRestrictionQueryRoles`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.ListRestrictionQueryRoles`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsRestrictionQueriesApi.ListRestrictionQueryRoles`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsRestrictionQueriesApi.ListRestrictionQueryRoles`:\n%s\n", responseContent)
 }
 ```
 
@@ -2704,7 +2704,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List roles for a restriction query returns "OK" response
@@ -2743,7 +2743,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List roles for a restriction query returns "OK" response
@@ -2776,7 +2776,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2982,7 +2982,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport restriction_query_id="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/config/restriction_queries/${restriction_query_id}/roles" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -2995,8 +2995,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Grant role to a restriction query returns "OK" response
@@ -3004,38 +3004,38 @@ EOF
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "restriction_query" in the system
-	RestrictionQueryDataID := os.Getenv("RESTRICTION_QUERY_DATA_ID")
+    // there is a valid "restriction_query" in the system
+    RestrictionQueryDataID := os.Getenv("RESTRICTION_QUERY_DATA_ID")
 
-	// there is a valid "role" in the system
-	RoleDataID := os.Getenv("ROLE_DATA_ID")
+    // there is a valid "role" in the system
+    RoleDataID := os.Getenv("ROLE_DATA_ID")
 
-	body := datadogV2.RelationshipToRole{
-		Data: &datadogV2.RelationshipToRoleData{
-			Id:   datadog.PtrString(RoleDataID),
-			Type: datadogV2.ROLESTYPE_ROLES.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.AddRoleToRestrictionQuery", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
-	r, err := api.AddRoleToRestrictionQuery(ctx, RestrictionQueryDataID, body)
+    body := datadogV2.RelationshipToRole{
+        Data: &datadogV2.RelationshipToRoleData{
+            Id:   datadog.PtrString(RoleDataID),
+            Type: datadogV2.ROLESTYPE_ROLES.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.AddRoleToRestrictionQuery", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
+    r, err := api.AddRoleToRestrictionQuery(ctx, RestrictionQueryDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.AddRoleToRestrictionQuery`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.AddRoleToRestrictionQuery`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -3043,7 +3043,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Grant role to a restriction query returns "OK" response
@@ -3089,7 +3089,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -3127,7 +3127,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Grant role to a restriction query returns "OK" response
@@ -3157,7 +3157,7 @@ api_instance.add_role_to_restriction_query(RESTRICTION_QUERY_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Grant role to a restriction query returns "OK" response
@@ -3197,7 +3197,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3406,7 +3406,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport restriction_query_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/config/restriction_queries/${restriction_query_id}/roles" \
 -H "Content-Type: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
@@ -3414,8 +3414,8 @@ API error response.
 -d @- << EOF
 {}
 EOF
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3453,7 +3453,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Revoke role from a restriction query returns "OK" response
@@ -3483,7 +3483,7 @@ api_instance.remove_role_from_restriction_query(RESTRICTION_QUERY_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Revoke role from a restriction query returns "OK" response
@@ -3491,38 +3491,38 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "restriction_query" in the system
-	RestrictionQueryDataID := os.Getenv("RESTRICTION_QUERY_DATA_ID")
+    // there is a valid "restriction_query" in the system
+    RestrictionQueryDataID := os.Getenv("RESTRICTION_QUERY_DATA_ID")
 
-	// there is a valid "role" in the system
-	RoleDataID := os.Getenv("ROLE_DATA_ID")
+    // there is a valid "role" in the system
+    RoleDataID := os.Getenv("ROLE_DATA_ID")
 
-	body := datadogV2.RelationshipToRole{
-		Data: &datadogV2.RelationshipToRoleData{
-			Id:   datadog.PtrString(RoleDataID),
-			Type: datadogV2.ROLESTYPE_ROLES.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.RemoveRoleFromRestrictionQuery", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
-	r, err := api.RemoveRoleFromRestrictionQuery(ctx, RestrictionQueryDataID, body)
+    body := datadogV2.RelationshipToRole{
+        Data: &datadogV2.RelationshipToRoleData{
+            Id:   datadog.PtrString(RoleDataID),
+            Type: datadogV2.ROLESTYPE_ROLES.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.RemoveRoleFromRestrictionQuery", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
+    r, err := api.RemoveRoleFromRestrictionQuery(ctx, RestrictionQueryDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.RemoveRoleFromRestrictionQuery`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.RemoveRoleFromRestrictionQuery`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -3530,7 +3530,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Revoke role from a restriction query returns "OK" response
@@ -3576,7 +3576,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Revoke role from a restriction query returns "OK" response
@@ -3616,7 +3616,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3840,13 +3840,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport user_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/config/restriction_queries/user/${user_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3875,7 +3875,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all restriction queries for a given user returns "OK" response
@@ -3895,7 +3895,7 @@ p api_instance.list_user_restriction_queries(USER_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all restriction queries for a given user returns "OK" response
@@ -3903,33 +3903,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "user" in the system
-	UserDataID := os.Getenv("USER_DATA_ID")
+    // there is a valid "user" in the system
+    UserDataID := os.Getenv("USER_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.ListUserRestrictionQueries", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
-	resp, r, err := api.ListUserRestrictionQueries(ctx, UserDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.ListUserRestrictionQueries", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
+    resp, r, err := api.ListUserRestrictionQueries(ctx, UserDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.ListUserRestrictionQueries`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.ListUserRestrictionQueries`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsRestrictionQueriesApi.ListUserRestrictionQueries`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsRestrictionQueriesApi.ListUserRestrictionQueries`:\n%s\n", responseContent)
 }
 ```
 
@@ -3937,7 +3937,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all restriction queries for a given user returns "OK" response
@@ -3975,7 +3975,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all restriction queries for a given user returns "OK" response
@@ -4004,7 +4004,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4217,13 +4217,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport role_id="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/logs/config/restriction_queries/role/${role_id}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -4252,7 +4252,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get restriction query for a given role returns "OK" response
@@ -4272,7 +4272,7 @@ p api_instance.get_role_restriction_query(ROLE_DATA_ID)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get restriction query for a given role returns "OK" response
@@ -4280,33 +4280,33 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "role" in the system
-	RoleDataID := os.Getenv("ROLE_DATA_ID")
+    // there is a valid "role" in the system
+    RoleDataID := os.Getenv("ROLE_DATA_ID")
 
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	configuration.SetUnstableOperationEnabled("v2.GetRoleRestrictionQuery", true)
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
-	resp, r, err := api.GetRoleRestrictionQuery(ctx, RoleDataID)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    configuration.SetUnstableOperationEnabled("v2.GetRoleRestrictionQuery", true)
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewLogsRestrictionQueriesApi(apiClient)
+    resp, r, err := api.GetRoleRestrictionQuery(ctx, RoleDataID)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.GetRoleRestrictionQuery`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `LogsRestrictionQueriesApi.GetRoleRestrictionQuery`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `LogsRestrictionQueriesApi.GetRoleRestrictionQuery`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `LogsRestrictionQueriesApi.GetRoleRestrictionQuery`:\n%s\n", responseContent)
 }
 ```
 
@@ -4314,7 +4314,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get restriction query for a given role returns "OK" response
@@ -4352,7 +4352,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get restriction query for a given role returns "OK" response
@@ -4379,7 +4379,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

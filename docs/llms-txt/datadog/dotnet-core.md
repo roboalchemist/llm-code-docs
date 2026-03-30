@@ -68,7 +68,7 @@ To install the .NET Tracer machine-wide:
 1. Run one of the following commands to install the package and create the .NET tracer log directory `/var/log/datadog/dotnet` with the appropriate permissions:
 
    {% dl %}
-   
+
    {% dt %}
 Debian or Ubuntu
    {% /dt %}
@@ -149,6 +149,7 @@ Important alert (level: danger): **Note:** You must set the **.NET CLR version**
    net start w3svc
    # Also, start any other services that were stopped when WAS was shut down.
    ```
+
 Important alert (level: danger): **Note:** Always use the commands above to completely stop and restart IIS to enable the tracer. Avoid using the IIS Manager GUI application or `iisreset.exe`.
 
 #### Services not in IIS{% #services-not-in-iis %}
@@ -275,11 +276,14 @@ Set-ItemProperty HKLM:SYSTEM\CurrentControlSet\Services\<SERVICE NAME> -Name Env
 After installing the MSI, no additional configuration is needed to automatically instrument your IIS sites. To set additional environment variables that are inherited by all IIS sites, perform the following steps:
 
 1. Open the Registry Editor, find the multi-string value called `Environment` in the `HKLM\System\CurrentControlSet\Services\WAS` key, and add the environment variables, one per line. For example, to add logs injection and runtime metrics, add the following lines to the value data:
+
    ```text
    DD_LOGS_INJECTION=true
    DD_RUNTIME_METRICS_ENABLED=true
    ```
+
 1. Run the following commands to restart IIS:
+
    ```cmd
    net stop /y was
    net start w3svc
@@ -362,7 +366,7 @@ When using `systemctl` to run .NET applications as a service, you can add the re
    CORECLR_PROFILER={846F5F1C-F9AE-4B07-969E-05C26BC060D8}
    CORECLR_PROFILER_PATH=/opt/datadog/Datadog.Trace.ClrProfiler.Native.so
    DD_DOTNET_TRACER_HOME=/opt/datadog
-   
+
    # (Optional) Set additional Datadog environment variables, for example:
    DD_LOGS_INJECTION=true
    DD_RUNTIME_METRICS_ENABLED=true
@@ -394,7 +398,7 @@ When using `systemctl` to run .NET applications as a service, you can also set e
    systemctl set-environment CORECLR_PROFILER={846F5F1C-F9AE-4B07-969E-05C26BC060D8}
    systemctl set-environment CORECLR_PROFILER_PATH=/opt/datadog/Datadog.Trace.ClrProfiler.Native.so
    systemctl set-environment DD_DOTNET_TRACER_HOME=/opt/datadog
-   
+
    # (Optional) Set additional Datadog environment variables, for example:
    systemctl set-environment DD_LOGS_INJECTION=true
    systemctl set-environment DD_RUNTIME_METRICS_ENABLED=true

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure Virtual Machine instance has administrative privileges over resources
- 
+
 ## Description{% #description %}
 
 This rule ensures that none of your Virtual Machines have administrative roles with root management group scope attached to them.

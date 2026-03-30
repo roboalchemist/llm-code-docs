@@ -52,7 +52,7 @@ else
 private fun doSomethingFunc() {
     if (1 != 2) // A Comment
         doSomething()
-    else // Another comment 
+    else // Another comment
         doSomething()
 }
 ```
@@ -87,6 +87,5 @@ if (true) {
     doSomethingElse()
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

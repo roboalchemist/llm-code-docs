@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Redshift clusters should have automatic snapshots enabled
- 
+
 ## Description{% #description %}
 
 This control verifies if automated snapshots are enabled for an Amazon Redshift cluster.

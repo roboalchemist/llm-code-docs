@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/cloudprem/ingest/observability_pipelines.md
-
 # Source: https://docs.datadoghq.com/observability_pipelines.md
 
 ---

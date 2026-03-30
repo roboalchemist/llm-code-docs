@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1053-scheduled-task-or-job](https://attack.mitre.org/techniques/T1053) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1053-scheduled-task-or-job](https://attack.mitre.org/techniques/T1053)
 ## Goal{% #goal %}
 
 Detects when critical Windows system scheduled tasks are deleted or disabled.

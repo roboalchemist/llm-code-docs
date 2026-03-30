@@ -1,10 +1,6 @@
 # Source: https://oxc.rs/docs/learn/terminology.md
 
----
-url: /docs/learn/terminology.md
----
-
-# Terminology
+## Terminology
 
 ## Binding
 

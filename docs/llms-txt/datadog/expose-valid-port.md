@@ -44,6 +44,5 @@ EXPOSE 1001232323
 ```docker
 EXPOSE 8080
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

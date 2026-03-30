@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # A user received an anomalous number of AccessDenied errors
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1069-permission-groups-discovery](https://attack.mitre.org/techniques/T1069) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1069-permission-groups-discovery](https://attack.mitre.org/techniques/T1069)
 ## Goal{% #goal %}
 
 Detect when a user is assessing privileges in AWS through API bruteforcing technique.

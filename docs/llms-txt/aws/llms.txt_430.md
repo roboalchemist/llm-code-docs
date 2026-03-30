@@ -1,0 +1,353 @@
+# Source: https://docs.aws.amazon.com/guardduty/latest/APIReference/llms.txt
+
+# Amazon GuardDuty API Reference
+
+> Amazon GuardDuty is a continuous security monitoring service that analyzes and processes the following foundational data sources - VPC flow logs, AWS CloudTrail management event logs, CloudTrail S3 data event logs, EKS audit logs, DNS logs, Amazon EBS volume data, runtime activity belonging to container workloads, such as Amazon EKS, Amazon ECS (including AWS Fargate), and Amazon EC2 instances. It uses threat intelligence feeds, such as lists of malicious IPs and domains, and machine learning to identify unexpected, potentially unauthorized, and malicious activity within your AWS environment. This can include issues like escalations of privileges, uses of exposed credentials, or communication with malicious IPs, domains, or presence of malware on your Amazon EC2 instances and container workloads. For example, GuardDuty can detect compromised EC2 instances and container workloads serving malware, or mining bitcoin.
+
+- [Welcome](https://docs.aws.amazon.com/guardduty/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/guardduty/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/guardduty/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Operations.html)
+
+- [AcceptAdministratorInvitation](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_AcceptAdministratorInvitation.html): Accepts the invitation to be a member account and get monitored by a GuardDuty administrator account that sent the invitation.
+- [AcceptInvitation](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_AcceptInvitation.html): This action has been deprecated.
+- [ArchiveFindings](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ArchiveFindings.html): Archives GuardDuty findings that are specified by the list of finding IDs.
+- [CreateDetector](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateDetector.html): Creates a single GuardDuty detector.
+- [CreateFilter](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateFilter.html): Creates a filter using the specified finding criteria.
+- [CreateIPSet](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateIPSet.html): Creates a new IPSet, which is called a trusted IP list in the console user interface.
+- [CreateMalwareProtectionPlan](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMalwareProtectionPlan.html): Creates a new Malware Protection plan for the protected resource.
+- [CreateMembers](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateMembers.html): Creates member accounts of the current AWS account by specifying a list of AWS account IDs.
+- [CreatePublishingDestination](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreatePublishingDestination.html): Creates a publishing destination where you can export your GuardDuty findings.
+- [CreateSampleFindings](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateSampleFindings.html): Generates sample findings of types specified by the list of finding types.
+- [CreateThreatEntitySet](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateThreatEntitySet.html): Creates a new threat entity set.
+- [CreateThreatIntelSet](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateThreatIntelSet.html): Creates a new ThreatIntelSet.
+- [CreateTrustedEntitySet](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateTrustedEntitySet.html): Creates a new trusted entity set.
+- [DeclineInvitations](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeclineInvitations.html): Declines invitations sent to the current member account by AWS accounts specified by their account IDs.
+- [DeleteDetector](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteDetector.html): Deletes an Amazon GuardDuty detector that is specified by the detector ID.
+- [DeleteFilter](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteFilter.html): Deletes the filter specified by the filter name.
+- [DeleteInvitations](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteInvitations.html): Deletes invitations sent to the current member account by AWS accounts specified by their account IDs.
+- [DeleteIPSet](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteIPSet.html): Deletes the IPSet specified by the ipSetId.
+- [DeleteMalwareProtectionPlan](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMalwareProtectionPlan.html): Deletes the Malware Protection plan ID associated with the Malware Protection plan resource.
+- [DeleteMembers](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteMembers.html): Deletes GuardDuty member accounts (to the current GuardDuty administrator account) specified by the account IDs.
+- [DeletePublishingDestination](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeletePublishingDestination.html): Deletes the publishing definition with the specified destinationId.
+- [DeleteThreatEntitySet](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteThreatEntitySet.html): Deletes the threat entity set that is associated with the specified threatEntitySetId.
+- [DeleteThreatIntelSet](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteThreatIntelSet.html): Deletes the ThreatIntelSet specified by the ThreatIntelSet ID.
+- [DeleteTrustedEntitySet](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DeleteTrustedEntitySet.html): Deletes the trusted entity set that is associated with the specified trustedEntitySetId.
+- [DescribeMalwareScans](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DescribeMalwareScans.html): Returns a list of malware scans.
+- [DescribeOrganizationConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DescribeOrganizationConfiguration.html): Returns information about the account selected as the delegated administrator for GuardDuty.
+- [DescribePublishingDestination](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DescribePublishingDestination.html): Returns information about the publishing destination specified by the provided destinationId.
+- [DisableOrganizationAdminAccount](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DisableOrganizationAdminAccount.html): Removes the existing GuardDuty delegated administrator of the organization.
+- [DisassociateFromAdministratorAccount](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DisassociateFromAdministratorAccount.html): Disassociates the current GuardDuty member account from its administrator account.
+- [DisassociateFromMasterAccount](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DisassociateFromMasterAccount.html): This action has been deprecated.
+- [DisassociateMembers](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DisassociateMembers.html): Disassociates GuardDuty member accounts (from the current administrator account) specified by the account IDs.
+- [EnableOrganizationAdminAccount](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_EnableOrganizationAdminAccount.html): Designates an AWS account within the organization as your GuardDuty delegated administrator.
+- [GetAdministratorAccount](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetAdministratorAccount.html): Provides the details of the GuardDuty administrator account associated with the current GuardDuty member account.
+- [GetCoverageStatistics](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetCoverageStatistics.html): Retrieves aggregated statistics for your account.
+- [GetDetector](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetDetector.html): Retrieves a GuardDuty detector specified by the detectorId.
+- [GetFilter](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetFilter.html): Returns the details of the filter specified by the filter name.
+- [GetFindings](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetFindings.html): Describes Amazon GuardDuty findings specified by finding IDs.
+- [GetFindingsStatistics](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetFindingsStatistics.html): Lists GuardDuty findings statistics for the specified detector ID.
+- [GetInvitationsCount](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetInvitationsCount.html): Returns the count of all GuardDuty membership invitations that were sent to the current member account except the currently accepted invitation.
+- [GetIPSet](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetIPSet.html): Retrieves the IPSet specified by the ipSetId.
+- [GetMalwareProtectionPlan](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetMalwareProtectionPlan.html): Retrieves the Malware Protection plan details associated with a Malware Protection plan ID.
+- [GetMalwareScan](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetMalwareScan.html): Retrieves the detailed information for a specific malware scan.
+- [GetMalwareScanSettings](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetMalwareScanSettings.html): Returns the details of the malware scan settings.
+- [GetMasterAccount](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetMasterAccount.html): This action has been deprecated.
+- [GetMemberDetectors](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetMemberDetectors.html): Describes which data sources are enabled for the member account's detector.
+- [GetMembers](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetMembers.html): Retrieves GuardDuty member accounts (of the current GuardDuty administrator account) specified by the account IDs.
+- [GetOrganizationStatistics](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetOrganizationStatistics.html): Retrieves how many active member accounts have each feature enabled within GuardDuty.
+- [GetRemainingFreeTrialDays](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetRemainingFreeTrialDays.html): Provides the number of days left for each data source used in the free trial period.
+- [GetThreatEntitySet](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetThreatEntitySet.html): Retrieves the threat entity set associated with the specified threatEntitySetId.
+- [GetThreatIntelSet](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetThreatIntelSet.html): Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID.
+- [GetTrustedEntitySet](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetTrustedEntitySet.html): Retrieves the trusted entity set associated with the specified trustedEntitySetId.
+- [GetUsageStatistics](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetUsageStatistics.html): Lists Amazon GuardDuty usage statistics over the last 30 days for the specified detector ID.
+- [InviteMembers](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html): Invites AWS accounts to become members of an organization administered by the AWS account that invokes this API.
+- [ListCoverage](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListCoverage.html): Lists coverage details for your GuardDuty account.
+- [ListDetectors](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListDetectors.html): Lists detectorIds of all the existing Amazon GuardDuty detector resources.
+- [ListFilters](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListFilters.html): Returns a paginated list of the current filters.
+- [ListFindings](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListFindings.html): Lists GuardDuty findings for the specified detector ID.
+- [ListInvitations](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListInvitations.html): Lists all GuardDuty membership invitations that were sent to the current AWS account.
+- [ListIPSets](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListIPSets.html): Lists the IPSets of the GuardDuty service specified by the detector ID.
+- [ListMalwareProtectionPlans](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListMalwareProtectionPlans.html): Lists the Malware Protection plan IDs associated with the protected resources in your AWS account.
+- [ListMalwareScans](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListMalwareScans.html): Returns a list of malware scans.
+- [ListMembers](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListMembers.html): Lists details about all member accounts for the current GuardDuty administrator account.
+- [ListOrganizationAdminAccounts](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListOrganizationAdminAccounts.html): Lists the accounts designated as GuardDuty delegated administrators.
+- [ListPublishingDestinations](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListPublishingDestinations.html): Returns a list of publishing destinations associated with the specified detectorId.
+- [ListTagsForResource](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListTagsForResource.html): Lists tags for a resource.
+- [ListThreatEntitySets](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListThreatEntitySets.html): Lists the threat entity sets associated with the specified GuardDuty detector ID.
+- [ListThreatIntelSets](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListThreatIntelSets.html): Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID.
+- [ListTrustedEntitySets](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListTrustedEntitySets.html): Lists the trusted entity sets associated with the specified GuardDuty detector ID.
+- [SendObjectMalwareScan](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_SendObjectMalwareScan.html): Initiates a malware scan for a specific S3 object.
+- [StartMalwareScan](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_StartMalwareScan.html): Initiates the malware scan.
+- [StartMonitoringMembers](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_StartMonitoringMembers.html): Turns on GuardDuty monitoring of the specified member accounts.
+- [StopMonitoringMembers](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_StopMonitoringMembers.html): Stops GuardDuty monitoring for the specified member accounts.
+- [TagResource](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_TagResource.html): Adds tags to a resource.
+- [UnarchiveFindings](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UnarchiveFindings.html): Unarchives GuardDuty findings specified by the findingIds.
+- [UntagResource](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UntagResource.html): Removes tags from a resource.
+- [UpdateDetector](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UpdateDetector.html): Updates the GuardDuty detector specified by the detector ID.
+- [UpdateFilter](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UpdateFilter.html): Updates the filter specified by the filter name.
+- [UpdateFindingsFeedback](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UpdateFindingsFeedback.html): Marks the specified GuardDuty findings as useful or not useful.
+- [UpdateIPSet](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UpdateIPSet.html): Updates the IPSet specified by the IPSet ID.
+- [UpdateMalwareProtectionPlan](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UpdateMalwareProtectionPlan.html): Updates an existing Malware Protection plan resource.
+- [UpdateMalwareScanSettings](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UpdateMalwareScanSettings.html): Updates the malware scan settings.
+- [UpdateMemberDetectors](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UpdateMemberDetectors.html): Contains information on member accounts to be updated.
+- [UpdateOrganizationConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UpdateOrganizationConfiguration.html): Configures the delegated administrator account with the provided values.
+- [UpdatePublishingDestination](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UpdatePublishingDestination.html): Updates information about the publishing destination specified by the destinationId.
+- [UpdateThreatEntitySet](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UpdateThreatEntitySet.html): Updates the threat entity set associated with the specified threatEntitySetId.
+- [UpdateThreatIntelSet](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UpdateThreatIntelSet.html): Updates the ThreatIntelSet specified by the ThreatIntelSet ID.
+- [UpdateTrustedEntitySet](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UpdateTrustedEntitySet.html): Updates the trusted entity set associated with the specified trustedEntitySetId.
+
+
+## [Data Types](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Types.html)
+
+- [AccessControlList](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_AccessControlList.html): Contains information on the current access control policies for the bucket.
+- [AccessKey](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_AccessKey.html): Contains information about the access keys.
+- [AccessKeyDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_AccessKeyDetails.html): Contains information about the access keys.
+- [Account](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Account.html): Contains information about the account.
+- [AccountDetail](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_AccountDetail.html): Contains information about the account.
+- [AccountFreeTrialInfo](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_AccountFreeTrialInfo.html): Provides details of the GuardDuty member account that uses a free trial service.
+- [AccountLevelPermissions](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_AccountLevelPermissions.html): Contains information about the account level permissions on the S3 bucket.
+- [AccountStatistics](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_AccountStatistics.html): Represents a list of map of accounts with the number of findings associated with each account.
+- [Action](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Action.html): Contains information about actions.
+- [Actor](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Actor.html): Information about the actors involved in an attack sequence.
+- [ActorProcess](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ActorProcess.html): Contains information about a process involved in a GuardDuty finding, including process identification, execution details, and file information.
+- [AdditionalInfo](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_AdditionalInfo.html): Contains additional information about the detected threat.
+- [AddonDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_AddonDetails.html): Information about the installed EKS add-on (GuardDuty security agent).
+- [AdminAccount](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_AdminAccount.html): The account within the organization specified as the GuardDuty delegated administrator.
+- [Administrator](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Administrator.html): Contains information about the administrator account and invitation.
+- [AgentDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_AgentDetails.html): Information about the installed GuardDuty security agent.
+- [Anomaly](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Anomaly.html): Contains information about the anomalies.
+- [AnomalyObject](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_AnomalyObject.html): Contains information about the unusual anomalies.
+- [AnomalyUnusual](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_AnomalyUnusual.html): Contains information about the behavior of the anomaly that is new to GuardDuty.
+- [AutonomousSystem](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_AutonomousSystem.html): Contains information about the Autonomous System (AS) associated with the network endpoints involved in an attack sequence.
+- [AutoscalingAutoScalingGroup](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_AutoscalingAutoScalingGroup.html): Contains information about the Auto Scaling Group involved in a GuardDuty finding, including unique identifiers of the Amazon EC2 instances.
+- [AwsApiCallAction](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_AwsApiCallAction.html): Contains information about the API action.
+- [BlockPublicAccess](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_BlockPublicAccess.html): Contains information on how the bucker owner's S3 Block Public Access settings are being applied to the S3 bucket.
+- [BucketLevelPermissions](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_BucketLevelPermissions.html): Contains information about the bucket level permissions for the S3 bucket.
+- [BucketPolicy](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_BucketPolicy.html): Contains information on the current bucket policies for the S3 bucket.
+- [City](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_City.html): Contains information about the city associated with the IP address.
+- [CloudformationStack](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CloudformationStack.html): Contains information about the CloudFormation stack involved in a GuardDuty finding, including unique identifiers of the Amazon EC2 instances.
+- [CloudTrailConfigurationResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CloudTrailConfigurationResult.html): Contains information on the status of CloudTrail as a data source for the detector.
+- [Condition](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Condition.html): Contains information about the condition.
+- [Container](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Container.html): Details of a container.
+- [ContainerFindingResource](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ContainerFindingResource.html): Contains information about container resources involved in a GuardDuty finding.
+- [ContainerInstanceDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ContainerInstanceDetails.html): Contains information about the Amazon EC2 instance that is running the Amazon ECS container.
+- [Country](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Country.html): Contains information about the country where the remote IP address is located.
+- [CoverageEc2InstanceDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CoverageEc2InstanceDetails.html): Contains information about the Amazon EC2 instance runtime coverage details.
+- [CoverageEcsClusterDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CoverageEcsClusterDetails.html): Contains information about Amazon ECS cluster runtime coverage details.
+- [CoverageEksClusterDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CoverageEksClusterDetails.html): Information about the EKS cluster that has a coverage status.
+- [CoverageFilterCondition](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CoverageFilterCondition.html): Represents a condition that when matched will be added to the response of the operation.
+- [CoverageFilterCriteria](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CoverageFilterCriteria.html): Represents the criteria used in the filter.
+- [CoverageFilterCriterion](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CoverageFilterCriterion.html): Represents a condition that when matched will be added to the response of the operation.
+- [CoverageResource](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CoverageResource.html): Information about the resource of the GuardDuty account.
+- [CoverageResourceDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CoverageResourceDetails.html): Information about the resource for each individual EKS cluster.
+- [CoverageSortCriteria](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CoverageSortCriteria.html): Information about the sorting criteria used in the coverage statistics.
+- [CoverageStatistics](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CoverageStatistics.html): Information about the coverage statistics for a resource.
+- [CreateProtectedResource](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateProtectedResource.html): Information about the protected resource that is associated with the created Malware Protection plan.
+- [CreateS3BucketResource](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_CreateS3BucketResource.html): Information about the protected S3 bucket resource.
+- [DataSourceConfigurations](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DataSourceConfigurations.html): Contains information about which data sources are enabled.
+- [DataSourceConfigurationsResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DataSourceConfigurationsResult.html): Contains information on the status of data sources for the detector.
+- [DataSourceFreeTrial](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DataSourceFreeTrial.html): Contains information about which data sources are enabled for the GuardDuty member account.
+- [DataSourcesFreeTrial](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DataSourcesFreeTrial.html): Contains information about which data sources are enabled for the GuardDuty member account.
+- [DateStatistics](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DateStatistics.html): Represents list a map of dates with a count of total findings generated on each date.
+- [DefaultServerSideEncryption](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DefaultServerSideEncryption.html): Contains information on the server side encryption method used in the S3 bucket.
+- [Destination](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Destination.html): Contains information about the publishing destination, including the ID, type, and status.
+- [DestinationProperties](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DestinationProperties.html): Contains the Amazon Resource Name (ARN) of the resource to publish to, such as an S3 bucket, and the ARN of the KMS key to use to encrypt published findings.
+- [Detection](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Detection.html): Contains information about the detected behavior.
+- [DetectorAdditionalConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DetectorAdditionalConfiguration.html): Information about the additional configuration for a feature in your GuardDuty account.
+- [DetectorAdditionalConfigurationResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DetectorAdditionalConfigurationResult.html): Information about the additional configuration.
+- [DetectorFeatureConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DetectorFeatureConfiguration.html): Contains information about a GuardDuty feature.
+- [DetectorFeatureConfigurationResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DetectorFeatureConfigurationResult.html): Contains information about a GuardDuty feature.
+- [DNSLogsConfigurationResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DNSLogsConfigurationResult.html): Contains information on the status of DNS logs as a data source.
+- [DnsRequestAction](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DnsRequestAction.html): Contains information about the DNS_REQUEST action described in this finding.
+- [DomainDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_DomainDetails.html): Contains information about the domain.
+- [EbsSnapshot](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_EbsSnapshot.html): Contains information about an EBS snapshot that was scanned for malware.
+- [EbsSnapshotDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_EbsSnapshotDetails.html): Contains details about the EBS snapshot that was scanned for malware.
+- [EbsVolumeDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_EbsVolumeDetails.html): Contains list of scanned and skipped EBS volumes with details.
+- [EbsVolumeScanDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_EbsVolumeScanDetails.html): Contains details from the malware scan that created a finding.
+- [EbsVolumesResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_EbsVolumesResult.html): Describes the configuration of scanning EBS volumes as a data source.
+- [Ec2Image](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Ec2Image.html): Contains information about the Amazon EC2 Image involved in a GuardDuty finding, including unique identifiers of the Amazon EC2 instances.
+- [Ec2ImageDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Ec2ImageDetails.html): Contains details about the EC2 AMI that was scanned.
+- [Ec2Instance](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Ec2Instance.html): Details about the potentially impacted Amazon EC2 instance resource.
+- [Ec2LaunchTemplate](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Ec2LaunchTemplate.html): Contains information about the Amazon EC2 launch template involved in a GuardDuty finding, including unique identifiers of the Amazon EC2 instances.
+- [Ec2NetworkInterface](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Ec2NetworkInterface.html): Contains information about the elastic network interface of the Amazon EC2 instance.
+- [Ec2Vpc](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Ec2Vpc.html): Contains information about the Amazon EC2 VPC involved in a GuardDuty finding, including unique identifiers of the Amazon EC2 instances.
+- [EcsCluster](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_EcsCluster.html): Contains information about the Amazon ECS cluster involved in a GuardDuty finding, including cluster identification and status.
+- [EcsClusterDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_EcsClusterDetails.html): Contains information about the details of the ECS Cluster.
+- [EcsTask](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_EcsTask.html): Contains information about Amazon ECS task involved in a GuardDuty finding, including task definition and container identifiers.
+- [EcsTaskDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_EcsTaskDetails.html): Contains information about the task in an ECS cluster.
+- [EksCluster](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_EksCluster.html): Contains information about the Amazon EKS cluster involved in a GuardDuty finding, including cluster identification, status, and network configuration.
+- [EksClusterDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_EksClusterDetails.html): Details about the EKS cluster involved in a Kubernetes finding.
+- [Evidence](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Evidence.html): Contains information about the reason that the finding was generated.
+- [FargateDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_FargateDetails.html): Contains information about AWS Fargate details associated with an Amazon ECS cluster.
+- [FilterCondition](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_FilterCondition.html): Contains information about the condition.
+- [FilterCriteria](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_FilterCriteria.html): Represents the criteria to be used in the filter for describing scan entries.
+- [FilterCriterion](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_FilterCriterion.html): Represents a condition that when matched will be added to the response of the operation.
+- [Finding](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Finding.html): Contains information about the finding that is generated when abnormal or suspicious activity is detected.
+- [FindingCriteria](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_FindingCriteria.html): Contains information about the criteria used for querying findings.
+- [FindingStatistics](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_FindingStatistics.html): Contains information about finding statistics.
+- [FindingTypeStatistics](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_FindingTypeStatistics.html): Information about each finding type associated with the groupedByFindingType statistics.
+- [FlowLogsConfigurationResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_FlowLogsConfigurationResult.html): Contains information on the status of VPC flow logs as a data source.
+- [FreeTrialFeatureConfigurationResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_FreeTrialFeatureConfigurationResult.html): Contains information about the free trial period for a feature.
+- [GeoLocation](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GeoLocation.html): Contains information about the location of the remote IP address.
+- [GetMalwareScanResultDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_GetMalwareScanResultDetails.html): Contains information about the results of the malware scan.
+- [HighestSeverityThreatDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_HighestSeverityThreatDetails.html): Contains details of the highest severity threat detected during scan and number of infected files.
+- [HostPath](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_HostPath.html): Represents a pre-existing file or directory on the host machine that the volume maps to.
+- [IamInstanceProfile](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_IamInstanceProfile.html): Contains information about the EC2 instance profile.
+- [IamInstanceProfileV2](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_IamInstanceProfileV2.html): Contains information about the IAM instance profile involved in a GuardDuty finding, including unique identifiers of the Amazon EC2 instances.
+- [ImpersonatedUser](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ImpersonatedUser.html): Contains information about the impersonated user.
+- [IncrementalScanDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_IncrementalScanDetails.html): Contains information about the incremental scan configuration.
+- [Indicator](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Indicator.html): Contains information about the indicators that include a set of signals observed in an attack sequence.
+- [InstanceDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InstanceDetails.html): Contains information about the details of an instance.
+- [Invitation](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Invitation.html): Contains information about the invitation to become a member account.
+- [ItemDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ItemDetails.html): Contains detailed information about where a threat was detected.
+- [ItemPath](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ItemPath.html): Information about the nested item path and hash of the protected resource.
+- [KubernetesApiCallAction](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_KubernetesApiCallAction.html): Information about the Kubernetes API call action described in this finding.
+- [KubernetesAuditLogsConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_KubernetesAuditLogsConfiguration.html): Describes whether Kubernetes audit logs are enabled as a data source.
+- [KubernetesAuditLogsConfigurationResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_KubernetesAuditLogsConfigurationResult.html): Describes whether Kubernetes audit logs are enabled as a data source.
+- [KubernetesConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_KubernetesConfiguration.html): Describes whether any Kubernetes data sources are enabled.
+- [KubernetesConfigurationResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_KubernetesConfigurationResult.html): Describes whether any Kubernetes logs will be enabled as a data source.
+- [KubernetesDataSourceFreeTrial](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_KubernetesDataSourceFreeTrial.html): Provides details about the Kubernetes resources when it is enabled as a data source.
+- [KubernetesDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_KubernetesDetails.html): Details about Kubernetes resources such as a Kubernetes user or workload resource involved in a Kubernetes finding.
+- [KubernetesPermissionCheckedDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_KubernetesPermissionCheckedDetails.html): Information about the Kubernetes API for which you check if you have permission to call.
+- [KubernetesRoleBindingDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_KubernetesRoleBindingDetails.html): Contains information about the role binding that grants the permission defined in a Kubernetes role.
+- [KubernetesRoleDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_KubernetesRoleDetails.html): Information about the Kubernetes role name and role type.
+- [KubernetesUserDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_KubernetesUserDetails.html): Details about the Kubernetes user involved in a Kubernetes finding.
+- [KubernetesWorkload](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_KubernetesWorkload.html): Contains information about Kubernetes workloads involved in a GuardDuty finding, including pods, deployments, and other Kubernetes resources.
+- [KubernetesWorkloadDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_KubernetesWorkloadDetails.html): Details about the Kubernetes workload involved in a Kubernetes finding.
+- [LambdaDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_LambdaDetails.html): Information about the Lambda function involved in the finding.
+- [LineageObject](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_LineageObject.html): Information about the runtime process details.
+- [ListMalwareScansFilterCriteria](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListMalwareScansFilterCriteria.html): Represents the criteria used to filter the malware scan entries.
+- [ListMalwareScansFilterCriterion](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ListMalwareScansFilterCriterion.html): Represents a condition that when matched will be added to the response of the operation.
+- [LocalIpDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_LocalIpDetails.html): Contains information about the local IP address of the connection.
+- [LocalPortDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_LocalPortDetails.html): Contains information about the port for the local connection.
+- [LoginAttribute](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_LoginAttribute.html): Information about the login attempts.
+- [MalwareProtectionConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_MalwareProtectionConfiguration.html): Describes whether Malware Protection will be enabled as a data source.
+- [MalwareProtectionConfigurationResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_MalwareProtectionConfigurationResult.html): An object that contains information on the status of all Malware Protection data sources.
+- [MalwareProtectionDataSourceFreeTrial](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_MalwareProtectionDataSourceFreeTrial.html): Provides details about Malware Protection when it is enabled as a data source.
+- [MalwareProtectionFindingsScanConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_MalwareProtectionFindingsScanConfiguration.html): Contains finding configuration details about the malware scan.
+- [MalwareProtectionPlanActions](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_MalwareProtectionPlanActions.html): Information about whether the tags will be added to the S3 object after scanning.
+- [MalwareProtectionPlanStatusReason](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_MalwareProtectionPlanStatusReason.html): Information about the issue code and message associated to the status of your Malware Protection plan.
+- [MalwareProtectionPlanSummary](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_MalwareProtectionPlanSummary.html): Information about the Malware Protection plan resource.
+- [MalwareProtectionPlanTaggingAction](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_MalwareProtectionPlanTaggingAction.html): Information about adding tags to the scanned S3 object after the scan result.
+- [MalwareScan](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_MalwareScan.html): Contains information about a particular malware scan.
+- [MalwareScanDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_MalwareScanDetails.html): Information about the malware scan that generated a GuardDuty finding.
+- [Master](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Master.html): Contains information about the administrator account and invitation.
+- [Member](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Member.html): Contains information about the member account.
+- [MemberAdditionalConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_MemberAdditionalConfiguration.html): Information about the additional configuration for the member account.
+- [MemberAdditionalConfigurationResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_MemberAdditionalConfigurationResult.html): Information about the additional configuration for the member account.
+- [MemberDataSourceConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_MemberDataSourceConfiguration.html): Contains information on which data sources are enabled for a member account.
+- [MemberFeaturesConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_MemberFeaturesConfiguration.html): Contains information about the features for the member account.
+- [MemberFeaturesConfigurationResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_MemberFeaturesConfigurationResult.html): Contains information about the features for the member account.
+- [NetworkConnection](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_NetworkConnection.html): Contains information about the network connection.
+- [NetworkConnectionAction](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_NetworkConnectionAction.html): Contains information about the NETWORK_CONNECTION action described in the finding.
+- [NetworkEndpoint](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_NetworkEndpoint.html): Contains information about network endpoints that were observed in the attack sequence.
+- [NetworkGeoLocation](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_NetworkGeoLocation.html): Contains information about network endpoint location.
+- [NetworkInterface](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_NetworkInterface.html): Contains information about the elastic network interface of the EC2 instance.
+- [Observations](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Observations.html): Contains information about the observed behavior.
+- [Organization](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Organization.html): Contains information about the ISP organization of the remote IP address.
+- [OrganizationAdditionalConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationAdditionalConfiguration.html): A list of additional configurations which will be configured for the organization.
+- [OrganizationAdditionalConfigurationResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationAdditionalConfigurationResult.html): A list of additional configuration which will be configured for the organization.
+- [OrganizationDataSourceConfigurations](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationDataSourceConfigurations.html): An object that contains information on which data sources will be configured to be automatically enabled for new members within the organization.
+- [OrganizationDataSourceConfigurationsResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationDataSourceConfigurationsResult.html): An object that contains information on which data sources are automatically enabled for new members within the organization.
+- [OrganizationDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationDetails.html): Information about GuardDuty coverage statistics for members in your AWS organization.
+- [OrganizationEbsVolumes](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationEbsVolumes.html): Organization-wide EBS volumes scan configuration.
+- [OrganizationEbsVolumesResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationEbsVolumesResult.html): An object that contains information on the status of whether EBS volumes scanning will be enabled as a data source for an organization.
+- [OrganizationFeatureConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationFeatureConfiguration.html): A list of features which will be configured for the organization.
+- [OrganizationFeatureConfigurationResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationFeatureConfigurationResult.html): A list of features which will be configured for the organization.
+- [OrganizationFeatureStatistics](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationFeatureStatistics.html): Information about the number of accounts that have enabled a specific feature.
+- [OrganizationFeatureStatisticsAdditionalConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationFeatureStatisticsAdditionalConfiguration.html): Information about the coverage statistic for the additional configuration of the feature.
+- [OrganizationKubernetesAuditLogsConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationKubernetesAuditLogsConfiguration.html): Organization-wide Kubernetes audit logs configuration.
+- [OrganizationKubernetesAuditLogsConfigurationResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationKubernetesAuditLogsConfigurationResult.html): The current configuration of Kubernetes audit logs as a data source for the organization.
+- [OrganizationKubernetesConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationKubernetesConfiguration.html): Organization-wide Kubernetes data sources configurations.
+- [OrganizationKubernetesConfigurationResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationKubernetesConfigurationResult.html): The current configuration of all Kubernetes data sources for the organization.
+- [OrganizationMalwareProtectionConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationMalwareProtectionConfiguration.html): Organization-wide Malware Protection configurations.
+- [OrganizationMalwareProtectionConfigurationResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationMalwareProtectionConfigurationResult.html): An object that contains information on the status of all Malware Protection data source for an organization.
+- [OrganizationS3LogsConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationS3LogsConfiguration.html): Describes whether S3 data event logs will be automatically enabled for new members of the organization.
+- [OrganizationS3LogsConfigurationResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationS3LogsConfigurationResult.html): The current configuration of S3 data event logs as a data source for the organization.
+- [OrganizationScanEc2InstanceWithFindings](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationScanEc2InstanceWithFindings.html): Organization-wide EC2 instances with findings scan configuration.
+- [OrganizationScanEc2InstanceWithFindingsResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationScanEc2InstanceWithFindingsResult.html): An object that contains information on the status of scanning EC2 instances with findings for an organization.
+- [OrganizationStatistics](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_OrganizationStatistics.html): Information about the coverage statistics of the features for the entire AWS organization.
+- [Owner](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Owner.html): Contains information on the owner of the bucket.
+- [PermissionConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_PermissionConfiguration.html): Contains information about how permissions are configured for the S3 bucket.
+- [PortProbeAction](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_PortProbeAction.html): Contains information about the PORT_PROBE action described in the finding.
+- [PortProbeDetail](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_PortProbeDetail.html): Contains information about the port probe details.
+- [PrivateIpAddressDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_PrivateIpAddressDetails.html): Contains other private IP address information of the EC2 instance.
+- [ProcessDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ProcessDetails.html): Information about the observed process.
+- [ProductCode](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ProductCode.html): Contains information about the product code for the EC2 instance.
+- [PublicAccess](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_PublicAccess.html): Describes the public access policies that apply to the S3 bucket.
+- [PublicAccessConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_PublicAccessConfiguration.html): Describes public access policies that apply to the Amazon S3 bucket.
+- [RdsDbInstanceDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_RdsDbInstanceDetails.html): Contains information about the resource type RDSDBInstance involved in a GuardDuty finding.
+- [RdsDbUserDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_RdsDbUserDetails.html): Contains information about the user and authentication details for a database instance involved in the finding.
+- [RdsLimitlessDbDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_RdsLimitlessDbDetails.html): Contains information about the resource type RDSLimitlessDB that is involved in a GuardDuty finding.
+- [RdsLoginAttemptAction](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_RdsLoginAttemptAction.html): Indicates that a login attempt was made to the potentially compromised database from a remote IP address.
+- [RecoveryPoint](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_RecoveryPoint.html): Contains information about the recovery point configuration for scanning backup data from AWS Backup.
+- [RecoveryPointDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_RecoveryPointDetails.html): Contains details about the backup recovery point.
+- [RemoteAccountDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_RemoteAccountDetails.html): Contains details about the remote AWS account that made the API call.
+- [RemoteIpDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_RemoteIpDetails.html): Contains information about the remote IP address of the connection.
+- [RemotePortDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_RemotePortDetails.html): Contains information about the remote port.
+- [Resource](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Resource.html): Contains information about the AWS resource associated with the activity that prompted GuardDuty to generate a finding.
+- [ResourceData](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ResourceData.html): Contains information about the AWS resource that is associated with the activity that prompted GuardDuty to generate a finding.
+- [ResourceDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ResourceDetails.html): Represents the resources that were scanned in the scan entry.
+- [ResourceStatistics](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ResourceStatistics.html): Information about each resource type associated with the groupedByResource statistics.
+- [ResourceV2](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ResourceV2.html): Contains information about the AWS resource that is associated with the GuardDuty finding.
+- [RuntimeContext](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_RuntimeContext.html): Additional information about the suspicious activity.
+- [RuntimeDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_RuntimeDetails.html): Information about the process and any required context values for a specific finding.
+- [S3Bucket](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_S3Bucket.html): Contains information about the Amazon S3 bucket policies and encryption.
+- [S3BucketDetail](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_S3BucketDetail.html): Contains information on the S3 bucket.
+- [S3LogsConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_S3LogsConfiguration.html): Describes whether S3 data event logs will be enabled as a data source.
+- [S3LogsConfigurationResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_S3LogsConfigurationResult.html): Describes whether S3 data event logs will be enabled as a data source.
+- [S3Object](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_S3Object.html): Contains information about the Amazon S3 object.
+- [S3ObjectDetail](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_S3ObjectDetail.html): Information about the S3 object that was scanned
+- [S3ObjectForSendObjectMalwareScan](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_S3ObjectForSendObjectMalwareScan.html): The S3 object path to initiate a scan, including bucket name, object key, and optional version ID.
+- [Scan](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Scan.html): Contains information about malware scans associated with GuardDuty Malware Protection for EC2.
+- [ScanCondition](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ScanCondition.html): Contains information about the condition.
+- [ScanConditionPair](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ScanConditionPair.html): Represents the key:value pair to be matched against given resource property.
+- [ScanConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ScanConfiguration.html): Contains information about the configuration used for the malware scan.
+- [ScanConfigurationRecoveryPoint](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ScanConfigurationRecoveryPoint.html): Contains information about the recovery point configuration used in the scan.
+- [ScanDetections](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ScanDetections.html): Contains a complete view providing malware scan result details.
+- [ScanEc2InstanceWithFindings](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ScanEc2InstanceWithFindings.html): Describes whether Malware Protection for EC2 instances with findings will be enabled as a data source.
+- [ScanEc2InstanceWithFindingsResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ScanEc2InstanceWithFindingsResult.html): An object that contains information on the status of whether Malware Protection for EC2 instances with findings will be enabled as a data source.
+- [ScanFilePath](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ScanFilePath.html): Contains details of infected file including name, file path and hash.
+- [ScannedItemCount](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ScannedItemCount.html): Total number of scanned files.
+- [ScannedResource](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ScannedResource.html): Contains information about a resource that was scanned as part of the malware scan operation.
+- [ScannedResourceDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ScannedResourceDetails.html): Contains additional information about a resource that was scanned.
+- [ScanResourceCriteria](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ScanResourceCriteria.html): Contains information about criteria used to filter resources before triggering malware scan.
+- [ScanResultDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ScanResultDetails.html): Represents the result of the scan.
+- [ScanResultThreat](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ScanResultThreat.html): Contains information about a specific threat that was detected during the malware scan.
+- [ScanThreatName](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ScanThreatName.html): Contains files infected with the given threat providing details of malware name and severity.
+- [SecurityContext](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_SecurityContext.html): Container security context.
+- [SecurityGroup](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_SecurityGroup.html): Contains information about the security groups associated with the EC2 instance.
+- [Sequence](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Sequence.html): Contains information about the GuardDuty attack sequence finding.
+- [Service](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Service.html): Contains additional information about the generated finding.
+- [ServiceAdditionalInfo](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ServiceAdditionalInfo.html): Additional information about the generated finding.
+- [Session](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Session.html): Contains information about the authenticated session.
+- [SeverityStatistics](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_SeverityStatistics.html): Information about severity level for each finding type.
+- [Signal](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Signal.html): Contains information about the signals involved in the attack sequence.
+- [SortCriteria](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_SortCriteria.html): Contains information about the criteria used for sorting findings.
+- [StartMalwareScanConfiguration](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_StartMalwareScanConfiguration.html): Contains information about the configuration to be used for the malware scan.
+- [Tag](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Tag.html): Contains information about a tag key-value pair.
+- [Threat](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Threat.html): Information about the detected threats associated with the generated finding.
+- [ThreatDetectedByName](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ThreatDetectedByName.html): Contains details about identified threats organized by threat name.
+- [ThreatIntelligenceDetail](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ThreatIntelligenceDetail.html): An instance of a threat intelligence detail that constitutes evidence for the finding.
+- [ThreatsDetectedItemCount](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_ThreatsDetectedItemCount.html): Contains total number of infected files.
+- [Total](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Total.html): Contains the total usage with the corresponding currency unit for that value.
+- [TriggerDetails](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_TriggerDetails.html): Represents the reason the scan was triggered.
+- [UnprocessedAccount](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UnprocessedAccount.html): Contains information about the accounts that weren't processed.
+- [UnprocessedDataSourcesResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UnprocessedDataSourcesResult.html): Specifies the names of the data sources that couldn't be enabled.
+- [UpdateProtectedResource](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UpdateProtectedResource.html): Information about the protected resource that is associated with the created Malware Protection plan.
+- [UpdateS3BucketResource](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UpdateS3BucketResource.html): Information about the protected S3 bucket resource.
+- [UsageAccountResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UsageAccountResult.html): Contains information on the total of usage based on account IDs.
+- [UsageCriteria](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UsageCriteria.html): Contains information about the criteria used to query usage statistics.
+- [UsageDataSourceResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UsageDataSourceResult.html): Contains information on the result of usage based on data source type.
+- [UsageFeatureResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UsageFeatureResult.html): Contains information about the result of the total usage based on the feature.
+- [UsageResourceResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UsageResourceResult.html): Contains information on the sum of usage based on an AWS resource.
+- [UsageStatistics](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UsageStatistics.html): Contains the result of GuardDuty usage.
+- [UsageTopAccountResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UsageTopAccountResult.html): Contains information on the total of usage based on the topmost 50 account IDs.
+- [UsageTopAccountsResult](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_UsageTopAccountsResult.html): Information about the usage statistics, calculated by top accounts by feature.
+- [User](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_User.html): Contains information about the user involved in the attack sequence.
+- [Volume](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_Volume.html): Volume used by the Kubernetes workload.
+- [VolumeDetail](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_VolumeDetail.html): Contains EBS volume details.
+- [VolumeMount](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_VolumeMount.html): Container volume mount.
+- [VpcConfig](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_VpcConfig.html): Amazon Virtual Private Cloud configuration details associated with your Lambda function.

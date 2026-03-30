@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unsafe-member-access.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-unsafe-member-access.md
----
-
-### What it does
+## What it does
 
 This rule disallows member access on a value with type `any`.
 
-### Why is this bad?
+## Why is this bad?
 
 The `any` type in TypeScript disables type checking. When you access a member (property or method) on a value typed as `any`, TypeScript cannot verify that the member exists or what type it has. This can lead to runtime errors.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -53,7 +49,7 @@ if (typeof unknownValue === "object" && unknownValue !== null && "foo" in unknow
 
 This rule accepts a configuration object with the following properties:
 
-### allowOptionalChaining
+## allowOptionalChaining
 
 type: `boolean`
 

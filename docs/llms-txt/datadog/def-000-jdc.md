@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Group Who Owns cron.d
 ---
 
 # Verify Group Who Owns cron.d
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/etc/cron.d`, run the command:

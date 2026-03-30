@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Install iptables-persistent 
 ---
 
 # Install iptables-persistent Package
- 
+
 ## Description{% #description %}
 
 The `iptables-persistent` package can be installed with the following command:

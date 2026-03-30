@@ -52,7 +52,7 @@ func main(){
     myErr2 := fmt.Errorf("myError2")
     myErr3 := fmt.New("myErr3") // Technically a false positive, but this is not a real method.
     myErr4 := errors.Errorf("myErr4") // Ditto
- 
+
     fmt.Println(myErr, myError2, myErr3, myErr4)
 }
 ```
@@ -67,10 +67,9 @@ import ("errors")
 func main(){
     err := errors.New("myErr")
     Err2 := fmt.Errorf("myError2")
- 
+
     fmt.Println(err, Err2)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

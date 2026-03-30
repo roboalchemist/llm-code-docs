@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # PAM authentication library hooked using eBPF
-Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1056-input-capture](https://attack.mitre.org/techniques/T1056) 
+Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1056-input-capture](https://attack.mitre.org/techniques/T1056)
 ## Goal{% #goal %}
 
 Detect processes hooking PAM authentication with the purpose of stealing credentials.

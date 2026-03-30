@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # TLS connections between etcd peers should not use self-signed certificates that are automatically generated
- 
+
 ## Description{% #description %}
 
 Automatically generated self-signed certificates for TLS connections between peers should not be used. Etcd is a highly-available key value store used by Kubernetes deployments for persistent storage of REST API objects. These objects are sensitive in nature and should be accessible only by authenticated etcd peers in the etcd cluster. Hence, do not use self-signed certificates for authentication.

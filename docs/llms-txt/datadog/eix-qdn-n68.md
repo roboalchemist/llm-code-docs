@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > DNS lookup for IP lookup ser
 ---
 
 # DNS lookup for IP lookup service
-Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1016-system-network-configuration-discovery](https://attack.mitre.org/techniques/T1016) 
+Classification:attackTactic:[TA0007-discovery](https://attack.mitre.org/tactics/TA0007)Technique:[T1016-system-network-configuration-discovery](https://attack.mitre.org/techniques/T1016)
 ## What happened{% #what-happened %}
 
 A DNS lookup was made for the domain `{{ @dns.question.name }}`, which is used to discover the public IP of the host.

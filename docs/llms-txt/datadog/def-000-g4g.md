@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Enable authselect
 ---
 
 # Enable authselect
- 
+
 ## Description{% #description %}
 
 Configure user authentication setup to use the `authselect` tool. If authselect profile is selected, the rule will enable the sssd profile.
@@ -41,7 +41,7 @@ if test "$?" -ne 0; then
         if rpm --quiet --verify pam; then
             authselect select --force "$var_authselect_profile"
         else
-	        echo "authselect is not used but files from the 'pam' package have been altered, so the authselect configuration won't be forced." >&2
+            echo "authselect is not used but files from the 'pam' package have been altered, so the authselect configuration won't be forced." >&2
         fi
     fi
 fi

@@ -1,0 +1,60 @@
+# Source: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkdialogmanager/index.md
+
+---
+
+title: RtkDialogManager · Cloudflare Realtime docs
+description: API reference for RtkDialogManager component (React Library)
+lastUpdated: 2026-02-10T17:40:43.000Z
+chatbotDeprioritize: false
+source_url:
+  html: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkdialogmanager/
+  md: https://developers.cloudflare.com/realtime/realtimekit/ui-kit/api-reference/react/rtkdialogmanager/index.md
+---
+
+A component which handles all dialog elements in a component such as:
+
+* rtk-settings
+* rtk-leave-meeting
+* rtk-permissions-message
+* rtk-image-viewer
+* rtk-breakout-rooms-manager This components depends on the values from `states` object.
+
+## Properties
+
+| Property | Type | Required | Default | Description |
+| - | - | - | - | - |
+| `config` | `UIConfig` | ❌ | `createDefaultConfig()` | UI Config |
+| `iconPack` | `IconPack` | ❌ | `defaultIconPack` | Icon pack |
+| `meeting` | `Meeting` | ✅ | - | Meeting object |
+| `size` | `Size` | ✅ | - | Size |
+| `states` | `States` | ✅ | - | States object |
+| `t` | `RtkI18n` | ❌ | `useLanguage()` | Language |
+
+## Usage Examples
+
+### Basic Usage
+
+```tsx
+import { RtkDialogManager } from '@cloudflare/realtimekit-react-ui';
+
+
+function MyComponent() {
+  return <RtkDialogManager />;
+}
+```
+
+### With Properties
+
+```tsx
+import { RtkDialogManager } from '@cloudflare/realtimekit-react-ui';
+
+
+function MyComponent() {
+  return (
+    <RtkDialogManager
+      meeting={meeting}
+      size="md"
+    />
+  );
+}
+```

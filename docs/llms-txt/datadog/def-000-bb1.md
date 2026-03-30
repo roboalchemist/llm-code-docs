@@ -9,14 +9,14 @@ breadcrumbs: >-
 ---
 
 # All Interactive User Home Directories Must Be Group-Owned By The Primary Group
- 
+
 ## Description{% #description %}
 
 Change the group owner of interactive users home directory to the group found in `/etc/passwd`. To change the group owner of interactive users home directory, use the following command:
 
 ```
 $ sudo chgrp USER_GROUP /home/USER
-        
+
 ```
 
 This rule ensures every home directory related to an interactive user is group-owned by an interactive user. It also ensures that interactive users are group-owners of one and only one home directory.

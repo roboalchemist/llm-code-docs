@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # S3 bucket objects should not allow public listing via ACL
- 
+
 ## Description{% #description %}
 
 Modify your bucket ACL to remove public `READ` access.

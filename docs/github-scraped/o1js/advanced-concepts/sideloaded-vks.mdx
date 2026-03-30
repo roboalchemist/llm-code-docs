@@ -1,0 +1,64 @@
+---
+title: Sideloaded Verification Keys
+sidebar_label: Sideloading
+---
+
+In the article on [recursion](/docs/advanced-concepts/recursion.mdx), we showed how o1js can be used to
+write constraint systems that verify other constraint systems.  Those examples always assumed that the
+prover has compiled an instance of the other `ZkProgram`.  We can, in fact, go even more general than that.
+With sideloading, we can verify any proof, given that its shape (public inputs and outputs) are known at
+compile time, and the verification key is available at runtime.
+
+The use cases for sideloading include:
+- Upgradability: Without needing to recompile the entire program (breaking compatibility with existing 
+  proofs), you can write your program with sideloading from the start, to support future use cases.
+- Flexibility: You can write programs that are compatible with several proofs without enumerating them
+  individually.  (Remember that without conditional execution, it's not possible to write a big switch
+  statement to handle different proof types.  So sideloading can be an effective way to streamline an
+  app).
+
+## Multiple Hash Example
+
+Let's say we have an application with multiple hashing algorithms in use.  We want to write a simple Zk
+Program to verify that a user knows the preimage of a hash, but we want to support any of our 
+algorithms.  Let's solve this by writing a specific program for each algorithm, and a wrapper program
+that verifies any of them.
+
+### Setup
+
+First, let's set up a Bytes32 class and some different hash function proofs.  Note that all proofs must
+have the same shape.
+
+```ts file=../snippets/sideloaded-vks/sideloaded-vks.ts start=start_multi_hash_setup end=end_multi_hash_setup
+```
+
+### Defining a Sideloaded Proof
+
+Usually, a `ZkProgram`'s proof type is inferrable, but since we want to sideload one of several proofs, we
+need to define the proof class explicitly.
+
+```ts file=../snippets/sideloaded-vks/sideloaded-vks.ts start=start_multi_hash_proof end=end_multi_hash_proof
+```
+
+For more details on `DynamicProof` and `FeatureFlags`, check out the api reference: [DynamicProof](/api-reference/classes/DynamicProof.mdx), [FeatureFlags](/api-reference/variables/FeatureFlags.mdx).
+
+
+### Using the Sideloaded Proof in a ZkProgram
+
+Now that we've defined the proof class, we can use it in a `ZkProgram`.
+
+:::warning
+Pay attention to the constraints on the verification key.  Without these, _any_ valid proof can be sideloaded.
+We want the flexibility of sideloading, but we need to be mindful of the security implications!
+:::
+
+```ts file=../snippets/sideloaded-vks/sideloaded-vks.ts start=start_multi_hash_program end=end_multi_hash_program
+```
+
+### Instantiation and Verifying the Wrap Proof
+
+Finally, here is how you can instantiate a sideloaded proof and pass it as a parameter to the wrap
+program.
+
+```ts file=../snippets/sideloaded-vks/sideloaded-vks.ts start=start_multi_hash_verify end=end_multi_hash_verify
+```

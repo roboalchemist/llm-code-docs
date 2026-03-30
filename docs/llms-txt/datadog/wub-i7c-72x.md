@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Unfamiliar process created by web application
-Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190) 
+Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190)
 ## What happened{% #what-happened %}
 
 The web server process executed the command `{{ @process.comm }}`, which may indicate the application is vulnerable to remote code execution (RCE).

@@ -1,23 +1,19 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/prefer-includes.md
 
-# Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/prefer-includes.md
+## Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/prefer-includes.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/prefer-includes.md
----
-
-### What it does
+## What it does
 
 Enforce using `.includes()` instead of `.indexOf() !== -1` or `/regex/.test()`.
 
-### Why is this bad?
+## Why is this bad?
 
 `.includes()` is more readable and expressive than checking `.indexOf() !== -1`.
 It clearly communicates the intent to check for the presence of a value.
 Additionally, for simple string searches, `.includes()` is often preferred over
 regex `.test()` for better performance and clarity.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

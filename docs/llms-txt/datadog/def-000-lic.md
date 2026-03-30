@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # IAM role has trust policy containing external principal
- 
+
 ## Description{% #description %}
 
 This control examines whether IAM roles have trust policies that allow access to principals in external AWS accounts. External accounts are defined as accounts that are not onboarded to Datadog, or operated by Datadog for integration purposes. The control will fail if the following conditions are true:

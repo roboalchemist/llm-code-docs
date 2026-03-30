@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Audit Configuration Files Must Be Owned By Group root
- 
+
 ## Description{% #description %}
 
 All audit configuration files must be owned by group root.

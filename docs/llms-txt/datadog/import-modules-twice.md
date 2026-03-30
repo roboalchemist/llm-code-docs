@@ -55,6 +55,5 @@ import logging
 import logging
 from logging import foo # not an issue since we are using a from import
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

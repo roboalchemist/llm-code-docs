@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unsafe-function-type.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-unsafe-function-type.md
----
-
-### What it does
+## What it does
 
 Disallow using the unsafe built-in Function type.
 
-### Why is this bad?
+## Why is this bad?
 
 TypeScript's built-in Function type allows being called with any number of arguments and returns type any. Function also allows classes or plain objects that happen to possess all properties of the Function class. It's generally better to specify function parameters and return types with the function type syntax.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

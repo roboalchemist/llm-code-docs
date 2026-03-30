@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # RDS cluster snapshots should be encrypted at rest
- 
+
 ## Description{% #description %}
 
 This control ensures snapshots are encrypted. It checks RDS, Neptune, DocDB, and Aurora snapshots. Snapshot encryption is crucial for maintaining data confidentiality and complying with security best practices.

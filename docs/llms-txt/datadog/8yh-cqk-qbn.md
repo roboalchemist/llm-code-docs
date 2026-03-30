@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # MFA should be enabled for the 'root' account
- 
+
 ## Description{% #description %}
 
 The root account is the most privileged user in an AWS account. MFA (multi-factor authentication) adds an extra layer of protection on top of a username and password. With MFA enabled, users are prompted for their username, password, and an authentication code from their AWS MFA device when signing in. Datadog recommends using a dedicated non-personal device for setting up virtual MFA for root accounts to minimize risks like device loss or if the device owner leaves the company.

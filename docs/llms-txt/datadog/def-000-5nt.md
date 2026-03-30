@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # An EKS Cluster's kubelet configuration file ownership should be assigned to root
- 
+
 ## Description{% #description %}
 
 Ensure that if the kubelet refers to a configuration file with the `--config` argument. You should set its file ownership to maintain integrity and the file should be owned by `root:root`.

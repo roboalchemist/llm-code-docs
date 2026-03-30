@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-length-as-slice-end.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-length-as-slice-end.md
----
-
-### What it does
+## What it does
 
 Disallow using `length` as the end argument of a `slice` call.
 
-### Why is this bad?
+## Why is this bad?
 
 Passing `length` as the end argument of a `slice` call is unnecessary and can be confusing.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

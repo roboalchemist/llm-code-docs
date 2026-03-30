@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Logging for Redshift clusters should be enabled
- 
+
 ## Description{% #description %}
 
 Enable logging for your Amazon Redshift cluster.
@@ -34,5 +34,5 @@ In the `list-buckets.sh` file:
   aws redshift enable-logging
     --cluster-identifier your-cluster-id
     --bucket-name aws-redshift-logs
-  
+
 ```

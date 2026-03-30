@@ -1,4 +1,4 @@
-# Source: https://docs.perplexity.ai/docs/grounded-llm/chat-completions/pro-search/classifier.md
+# Source: https://docs.perplexity.ai/docs/sonar/pro-search/classifier.md
 
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
@@ -235,13 +235,13 @@ Understanding the cost difference helps you optimize your API usage:
 
 * Input: \$3 per 1M tokens
 * Output: \$15 per 1M tokens
-* Request fees: $14-$22 per 1,000 requests (based on context size)
+* Request fees: \$14-\$22 per 1,000 requests (based on context size)
 
 **Fast Search Rates:**
 
 * Input: \$3 per 1M tokens
 * Output: \$15 per 1M tokens
-* Request fees: $6-$14 per 1,000 requests (based on context size - same as standard Sonar Pro)
+* Request fees: \$6-\$14 per 1,000 requests (based on context size - same as standard Sonar Pro)
 
 <Tip>
   The automatic classifier helps you save money by using Pro Search only when its advanced capabilities are truly needed, while still ensuring complex queries get full multi-step tool usage.
@@ -255,8 +255,7 @@ Understanding the cost difference helps you optimize your API usage:
   ```python Python SDK theme={null}
   from perplexity import Perplexity
 
-  client = Perplexity(api_key="your-api-key")
-
+  client = Perplexity()
   # Let the classifier decide
   response = client.chat.completions.create(
       model="sonar-pro",
@@ -277,12 +276,10 @@ Understanding the cost difference helps you optimize your API usage:
           print(chunk.choices[0].delta.content, end="")
   ```
 
-  ```typescript TypeScript SDK theme={null}
+  ```typescript Typescript SDK theme={null}
   import { Perplexity } from '@perplexity-ai/sdk';
 
-  const client = new Perplexity({
-    apiKey: 'your-api-key'
-  });
+  const client = new Perplexity();
 
   // Let the classifier decide
   const response = await client.chat.completions.create({
@@ -308,8 +305,8 @@ Understanding the cost difference helps you optimize your API usage:
 
   ```bash cURL theme={null}
   curl --request POST \
-    --url https://api.perplexity.ai/chat/completions \
-    --header "Authorization: Bearer your-api-key" \
+    --url https://api.perplexity.ai/v1/sonar \
+    --header "Authorization: Bearer $PERPLEXITY_API_KEY" \
     --header "Content-Type: application/json" \
     --data '{
       "model": "sonar-pro",
@@ -459,7 +456,7 @@ You can verify the classification decision in the response metadata:
 ## When to Use Each Mode
 
 <CardGroup cols={3}>
-  <Card title="Auto (Recommended)" icon="wand-magic-sparkles">
+  <Card title="Auto (Recommended)" icon="wand">
     **Best for:** Most applications
 
     Let the classifier optimize for you. Balances cost and capability automatically based on query complexity.
@@ -523,19 +520,22 @@ You can verify the classification decision in the response metadata:
 ## Related Resources
 
 <CardGroup cols={2}>
-  <Card title="Quickstart" icon="rocket" href="/docs/grounded-llm/chat-completions/pro-search/quickstart">
+  <Card title="Quickstart" icon="rocket" href="/docs/sonar/pro-search/quickstart">
     Get started with Pro Search basics
   </Card>
 
-  <Card title="Built-in Tool Capabilities" icon="tools" href="/docs/grounded-llm/chat-completions/pro-search/tools">
+  <Card title="Built-in Tool Capabilities" icon="tool" href="/docs/sonar/pro-search/tools">
     Learn about Pro Search's built-in tools and capabilities
   </Card>
 
-  <Card title="Pricing Guide" icon="dollar-sign" href="/docs/getting-started/pricing">
+  <Card title="Pricing Guide" icon="currency-dollar" href="/docs/getting-started/pricing">
     Understand pricing for Pro and Fast Search
   </Card>
 
-  <Card title="API Reference" icon="book" href="/api-reference/chat-completions-post">
+  <Card title="API Reference" icon="book" href="/api-reference/sonar-post">
     Complete API documentation
   </Card>
 </CardGroup>
+
+
+Built with [Mintlify](https://mintlify.com).

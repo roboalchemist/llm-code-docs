@@ -1,0 +1,246 @@
+# Source: https://ngrok.com/docs/ai-gateway/guides/configuring-providers.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Configuring Providers
+
+> How to configure AI providers when using your own provider API keys (BYOK).
+
+This guide covers configuring providers when using your own provider API keys (BYOK). If you're using AI Gateway API Keys, providers are pre-configured—see [AI Gateway API Keys](/ai-gateway/concepts/api-keys).
+
+## Basic configuration
+
+Define providers in your Traffic Policy:
+
+```yaml  theme={null}
+on_http_request:
+  - type: ai-gateway
+    config:
+      providers:
+        - id: "openai"
+          api_keys:
+            - value: ${secrets.get('openai', 'key-one')}
+            - value: ${secrets.get('openai', 'key-two')}
+          models:
+            - id: "gpt-4o"
+            - id: "gpt-4o-mini"
+```
+
+## Provider fields
+
+### `id`
+
+* **Type**: `string`
+* **Required**: Yes
+* **Description**: Provider identifier. Use built-in names (`openai`, `anthropic`, `google`, `deepseek`) or custom names for self-hosted providers.
+
+### `id_aliases`
+
+* **Type**: `array of strings`
+* **Optional**: Yes
+* **Description**: Alternative identifiers for this provider. Allows clients to reference the same provider by different names.
+
+```yaml  theme={null}
+- id: "custom-openai"
+  id_aliases: ["openai", "gpt"]
+  base_url: "https://api.openai.internal"
+```
+
+### `base_url`
+
+* **Type**: `string`
+* **Optional**: Yes
+* **Description**: Custom endpoint URL for self-hosted or alternative provider endpoints. Required for custom providers.
+
+```yaml  theme={null}
+- id: "custom-ollama"
+  base_url: "https://ollama.internal.company.com"
+```
+
+### `disabled`
+
+* **Type**: `boolean`
+* **Default**: `false`
+* **Description**: Temporarily disable this provider without removing its configuration.
+
+### `metadata`
+
+* **Type**: `object`
+* **Optional**: Yes
+* **Description**: Custom metadata for tracking and organization. Not sent to providers. Available in [selection strategies](/ai-gateway/guides/model-selection-strategies).
+
+```yaml  theme={null}
+- id: "openai"
+  metadata:
+    team: "ml-platform"
+    environment: "production"
+    cost_center: "engineering"
+```
+
+### `api_keys`
+
+* **Type**: `array`
+* **Optional**: Yes
+* **Description**: List of API keys for this provider. See [Managing Provider Keys](/ai-gateway/guides/managing-provider-keys).
+
+```yaml  theme={null}
+api_keys:
+  - value: ${secrets.get('openai', 'primary')}
+  - value: ${secrets.get('openai', 'backup')}
+```
+
+### `models`
+
+* **Type**: `array`
+* **Optional**: Yes
+* **Description**: List of model configurations for this provider.
+
+### `supported_api_surfaces`
+
+* **Type**: `array`
+* **Optional**: Yes
+* **Description**: List of API formats this provider supports. Possible values are `openai`, `anthropic`.  Default is `openai`.
+
+```yaml  theme={null}
+supported_api_surfaces:
+  - format: openai
+  - format: anthropic
+```
+
+## Model configuration
+
+Configure specific models within a provider:
+
+```yaml  theme={null}
+models:
+  - id: "gpt-4o"
+    disabled: false
+    metadata:
+      cost_per_1k_tokens: 0.03
+      recommended: true
+```
+
+### Model fields
+
+#### `id`
+
+* **Type**: `string`
+* **Required**: Yes
+* **Description**: Model identifier as recognized by the provider.
+
+#### `id_aliases`
+
+* **Type**: `array of strings`
+* **Optional**: Yes
+* **Description**: Alternative identifiers for this model. Allows clients to reference the same model by different names.
+
+```yaml  theme={null}
+models:
+  - id: "gpt-4o-2024-11-20"
+    id_aliases: ["gpt-4o", "gpt-4-latest"]
+```
+
+#### `disabled`
+
+* **Type**: `boolean`
+* **Default**: `false`
+* **Description**: Temporarily disable this model.
+
+#### `metadata`
+
+* **Type**: `object`
+* **Optional**: Yes
+* **Description**: Custom metadata for the model. Available in [selection strategies](/ai-gateway/guides/model-selection-strategies).
+
+## Custom provider example
+
+Connect to self-hosted models or custom endpoints:
+
+```yaml  theme={null}
+providers:
+  - id: "ollama-internal"
+    base_url: "https://ollama.internal"
+    api_keys:
+      - value: ${secrets.get('ollama', 'key')}
+    models:
+      - id: "llama3"
+      - id: "mistral"
+      - id: "codellama"
+```
+
+The provider must expose an OpenAI or Anthropic Claude compatible API. See [Custom Providers](/ai-gateway/concepts/custom-providers) for detailed setup.
+
+## Multi-provider configuration
+
+Configure multiple providers for failover and flexibility:
+
+```yaml  theme={null}
+on_http_request:
+  - type: ai-gateway
+    config:
+      providers:
+        - id: "openai"
+          metadata:
+            tier: "primary"
+          api_keys:
+            - value: ${secrets.get('openai', 'prod-key')}
+          models:
+            - id: "gpt-4o"
+            - id: "gpt-4o-mini"
+        
+        - id: "anthropic"
+          metadata:
+            tier: "secondary"
+          api_keys:
+            - value: ${secrets.get('anthropic', 'key')}
+          models:
+            - id: "claude-3-5-sonnet-20241022"
+        
+        - id: "ollama-internal"
+          base_url: "https://ollama.company.internal"
+          metadata:
+            tier: "fallback"
+          models:
+            - id: "llama3-70b"
+```
+
+## Complete example
+
+```yaml  theme={null}
+on_http_request:
+  - type: ai-gateway
+    config:
+      only_allow_configured_providers: true
+      only_allow_configured_models: true
+      
+      providers:
+        - id: "openai"
+          metadata:
+            team: "ml"
+          api_keys:
+            - value: ${secrets.get('openai', 'prod-key')}
+          models:
+            - id: "gpt-4o"
+              metadata:
+                approved: true
+            - id: "gpt-4o-mini"
+              metadata:
+                approved: true
+        
+        - id: "anthropic"
+          api_keys:
+            - value: ${secrets.get('anthropic', 'key')}
+          models:
+            - id: "claude-3-5-sonnet-20241022"
+```
+
+## Next steps
+
+* [Managing Provider Keys](/ai-gateway/guides/managing-provider-keys) - Secrets and key rotation
+* [Restricting Access](/ai-gateway/guides/restricting-access) - Limit providers and models
+* [Model Selection Strategies](/ai-gateway/guides/model-selection-strategies) - Custom routing logic
+
+
+Built with [Mintlify](https://mintlify.com).

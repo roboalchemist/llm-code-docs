@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure ufw Firewall Rules Exist for All Open Ports
- 
+
 ## Description{% #description %}
 
 Any ports that have been opened on non-loopback addresses need firewall rules to govern traffic.

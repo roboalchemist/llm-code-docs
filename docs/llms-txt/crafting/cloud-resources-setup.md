@@ -1,6 +1,7 @@
-# Source: https://docs.sandboxes.cloud/docs/cloud-resources-setup.md
 
 # Setup for Cloud Resources
+
+Source: https://docs.sandboxes.cloud/docs/cloud-resources-setup.md
 
 Crafting can manage the lifecycle of resources outside the system, like services from the cloud providers (e.g. RDS, SQS on AWS, PubSub on GCP), as all-in-one, self-contained dev environments. The lifecycle management provides hooks to provision/unprovision resources during sandbox creation and deletion, and optionally scale in/up during sandbox suspension and resuming.
 
@@ -23,19 +24,21 @@ This section walks through the one-time setup and a few examples of using the sa
 
 In most cases, access setup is needed to manage resources from the cloud provider. It's recommended using **identity federation** to setup the access without persisting sensitive information. Alternatively, you can also store credentials using `Secrets` (see [Secrets for storing dev credentials](https://docs.sandboxes.cloud/docs/secrets))
 
-### How identity federation works
+## How identity federation works
 
 The Crafting system can be registered as an OIDC (OpenID Connect) provider in the Cloud IAM as an identity provider. After that, bind that with Roles on AWS or Service Accounts on GCP, so the identity from the Crafting system can access the cloud under the service account or role.
 
-### AWS guide
+## AWS guide
 
 1. Add an *Identity Provider* to IAM:
    from IAM, add an *Identity Provider* of type `OpenID Connect`, with the following information:
 
    * Provider URL: `https://sandboxes.cloud` (or the **site URL** for self-hosted Crafting);
    * Audience: Your **org name** in the Crafting system;
+
 2. Assign a role:
    add `AssumeRole` policy (aka *Trust relationships*) like the following on the designated role. The `<PROVIDER-NAME>` is the host name in the provider URL, e.g. `sandboxes.cloud`; the `<YOUR ORG NAME>` must be lower cased.
+
    ```json
    {
     "Version": "2012-10-17",
@@ -50,13 +53,14 @@ The Crafting system can be registered as an OIDC (OpenID Connect) provider in th
                 "StringEquals": {
                     "<PROVIDER-NAME>:aud": [
                         "<YOUR ORG NAME>"
-                    ]
+                   ]
                 }
             }
         }
     ]
    }
    ```
+
 3. In the sandbox, use the following content as `$AWS_CONFIG_FILE`:
 
    ```ini
@@ -68,7 +72,7 @@ The Crafting system can be registered as an OIDC (OpenID Connect) provider in th
    It is recommended to save that as a secret and add environment variable in the Template:
 
    ```shell
-   $ cs secret create --shared aws-config -f config-file
+   cs secret create --shared aws-config -f config-file
    ```
 
    Add the following entry to the sandbox level `ENV` or per-workspace:
@@ -78,25 +82,23 @@ The Crafting system can be registered as an OIDC (OpenID Connect) provider in th
    - AWS_CONFIG_FILE=/run/sandbox/fs/secrets/shared/aws-config
    ```
 
-With above setup, all sandbox users can use AWS CLI from workspaces to directly access AWS account.
-It's also possible to attach the above `AssumeRole` policy to more than one roles,
-and use *profiles* in the `$AWS_CONFIG_FILE` to specify different roles for different processes:
+4. It's also possible to attach the above `AssumeRole` policy to more than one roles, and use *profiles* in the `$AWS_CONFIG_FILE` to specify different roles for different processes:
 
-```ini
-[default]
-region = <YOUR REGION>
-credential_process = idfed aws <ACCOUNT-ID> <DEFAULT-ROLE-NAME>
+   ```ini
+   [default]
+   region = <YOUR REGION>
+   credential_process = idfed aws <ACCOUNT-ID> <DEFAULT-ROLE-NAME>
 
-[profile role1]
-region = <YOUR REGION>
-credential_process = idfed aws <ACCOUNT-ID> <ROLE1-NAME>
+   [profile role1]
+   region = <YOUR REGION>
+   credential_process = idfed aws <ACCOUNT-ID> <ROLE1-NAME>
 
-[profile role2]
-region = <YOUR REGION>
-credential_process = idfed aws <ACCOUNT-ID> <ROLE2-NAME>
-```
+   [profile role2]
+   region = <YOUR REGION>
+   credential_process = idfed aws <ACCOUNT-ID> <ROLE2-NAME>
+   ```
 
-Use `AWS_PROFILE` environment variable before launching a process so the process can run under the corresponding role.
+With above setup, all sandbox users can use AWS CLI from workspaces to directly access AWS account. Use `AWS_PROFILE` environment variable before launching a process so the process can run under the corresponding role.
 
 To quickly validate the setup, run the following command:
 
@@ -104,10 +106,10 @@ To quickly validate the setup, run the following command:
 aws sts get-caller-identity
 ```
 
-### GCP guide
+## GCP guide
 
-1. Add an *Identity Provider* to IAM: this can be done from IAM/Workload Identity Federation menu on the console.
-   With Google Cloud SDK, using the following command:
+1. Add an *Identity Provider* to IAM: this can be done from IAM/Workload Identity Federation menu on the console. With Google Cloud SDK, using the following command:
+
    ```sh
    gcloud iam workload-identity-pools create ${POOL_ID} --location=global
    gcloud iam workload-identity-pools providers create-oidc ${PROVIDER_ID} \
@@ -117,6 +119,7 @@ aws sts get-caller-identity
    ```
 
 2. Bind to a service account (can be multiple service accounts):
+
    ```sh
    gcloud iam service-accounts add-iam-policy-binding --role roles/iam.workloadIdentityUser \
        --member "principalSet://iam.googleapis.com/projects/${PROJECT_NUMBER}/locations/global/workloadIdentityPools/${POOL_ID}/*" \
@@ -178,11 +181,11 @@ It's not necessary to use `gcloud login` as it will save a user login credential
 
 ## Setup Per-Sandbox Cloud Native Resources
 
-### Prepare provision scripts
+## Prepare provision scripts
 
 After [Access Setup](#access-setup), a developer is able to access the API of cloud provider and use CLI tools to manually create resources. A sandbox workspace is a good place to develop the resource provisioning scripts. The sandbox lifecycle hooks use general shell commands to manage resources, so any tools can be used for this purpose. Terraform is a very popular tool for this purpose and it's highly recommended. Crafting providers a simplified configuration for hooking up Terraform into the sandbox lifecycle with additional features like visualizing the state.
 
-### Define resources in sandbox
+## Define resources in sandbox
 
 Once the scripts are ready, define the resources in a sandbox template, like:
 
@@ -241,13 +244,13 @@ The configuration specifies the location of the main Terraform module in the wor
 
 As the lifetime of the resources is aligned with the sandbox, the terraform state should be saved in the same folder in the workspace, and the Crafting system will be able to visualize the state from that file.
 
-### Share the template
+## Share the template
 
 Save the above configuration as a Template and test with a new sandbox. Once everything looks good, the Template can be shared with other developers. With a single click, a sandbox brings up a full, self-contained dev environment.
 
 ## Advanced Topics
 
-### Details about the resources
+## Details about the resources
 
 A resource is displayed as a *Card* similarly to other workloads, like workspaces, dependencies, containers etc. When clicking on the *Card*, it opens up a detailed view. The author of the Template is able to provide customized details in the view to help developers know better about what have been provisioned, even with convenient links to open external URLs to access/manage the resources.
 
@@ -321,7 +324,7 @@ resources:
 
 In addition to the `details`, Crafting will also show the state of each Terraform resource.
 
-![](https://files.readme.io/e61075e-TerraformStateViz.png)
+![image](https://files.readme.io/e61075e-TerraformStateViz.png)
 
 The saved state can also be referenced in the sandbox summary template, prefixed by resource name. For example:
 
@@ -349,7 +352,7 @@ resources:
         instance_type: 't2.micro'
 ```
 
-### Suspend and resume
+## Suspend and resume
 
 The resource handlers can optionally take advantage of sandbox suspend and resume events to further optimize the cost of cloud resources, by defining `on_suspend` and `on_resume`:
 
@@ -417,7 +420,7 @@ resources:
 
 If `on_suspend` is specified, `terraform apply` will be used with additional configuration (for example the `instance_count` variable above) during sandbox suspension. `on_resume` is implicitly enabled by using `terraform apply` during sandbox resuming.
 
-### Restrict Access to Workspaces and Secrets
+## Restrict Access to Workspaces and Secrets
 
 In some cases, cloud resources are provisioned according to the sandbox lifecycle, while for development work, the developers are not granted permissions for creating/updating/removing cloud resources. Basically, the *write* permission is only used during the lifecycle events, and developers should have *read only* permissions when accessing the cloud resources. To achieve this, different configurations can be used. For example, use different secrets for different cloud roles/service accounts so they have different permissions. To prevent unintentional use of the wrong identity, the access to the secret for privileged cloud identity can be restricted as *Admin Only*.
 

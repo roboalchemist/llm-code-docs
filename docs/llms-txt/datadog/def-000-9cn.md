@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS accounts should be configured with security contact information
- 
+
 ## Description{% #description %}
 
 Ensuring that the security contact information is complete and accurate allows AWS to reach out to the right personnel in the event of security alerts or breaches.

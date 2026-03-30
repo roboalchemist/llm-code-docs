@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall net-snmp Package
 ---
 
 # Uninstall net-snmp Package
- 
+
 ## Description{% #description %}
 
 The `snmp` package provides the snmpd service. The `snmp` package can be removed with the following command:

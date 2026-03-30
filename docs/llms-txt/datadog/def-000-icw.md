@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # ElastiCache Redis clusters should have auto minor version upgrades enabled
- 
+
 ## Description{% #description %}
 
 This evaluation validates that ElastiCache for Redis automatically implements minor version upgrades for cache clusters. It will not pass if cache clusters do not have minor version upgrades applied automatically.

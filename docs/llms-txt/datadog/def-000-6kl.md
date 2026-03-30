@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
- 
+
 ## Goal{% #goal %}
 
 Identify cases where a device is assigned a Vulnerability Risk Rating (VRR) of Critical, High, Medium, or Low. This helps detect potential security risks and prioritize remediation efforts.

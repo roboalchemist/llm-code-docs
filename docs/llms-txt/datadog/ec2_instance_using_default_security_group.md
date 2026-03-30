@@ -72,23 +72,23 @@ MyInstance:
 
 ```yaml
  Resources:
-  MyEC2Instancee: 
+  MyEC2Instancee:
       Type: AWS::EC2::Instance
-      Properties: 
+      Properties:
         ImageId: "ami-79fd7eee"
         KeyName: "testkey"
-        SecurityGroups: 
+        SecurityGroups:
           - !Ref my_sg
-        BlockDeviceMappings: 
+        BlockDeviceMappings:
         - DeviceName: "/dev/sdm"
-          Ebs: 
+          Ebs:
             VolumeType: "io1"
             Iops: "200"
             DeleteOnTermination: "false"
             VolumeSize: "20"
         - DeviceName: "/dev/sdk"
           NoDevice: {}
-      
+
 ```
 
 ```json
@@ -159,21 +159,21 @@ MyInstance:
 
 ```yaml
  Resources:
-  MyEC2Instance: 
+  MyEC2Instance:
       Type: AWS::EC2::Instance
-      Properties: 
+      Properties:
         ImageId: "ami-79fd7eee"
         KeyName: "testkey"
-        SecurityGroups: 
+        SecurityGroups:
           - !Ref default
-        BlockDeviceMappings: 
+        BlockDeviceMappings:
         - DeviceName: "/dev/sdm"
-          Ebs: 
+          Ebs:
             VolumeType: "io1"
             Iops: "200"
             DeleteOnTermination: "false"
             VolumeSize: "20"
         - DeviceName: "/dev/sdk"
           NoDevice: {}
-      
+
 ```

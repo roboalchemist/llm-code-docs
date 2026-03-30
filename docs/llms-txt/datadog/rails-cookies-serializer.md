@@ -51,6 +51,5 @@ Rails.application.config.action_dispatch.cookies_serializer = :marshal
 ```ruby
 Rails.application.config.action_dispatch.cookies_serializer = :json
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

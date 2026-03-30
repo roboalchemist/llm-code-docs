@@ -207,7 +207,7 @@ This approach is recommended for clusters in **Standard** access mode.
 
    ```shell
    #!/bin/bash
-   
+
    # Download and run the latest init script
    curl -L https://install.datadoghq.com/scripts/install-databricks.sh > djm-install-script
    bash djm-install-script || true
@@ -277,12 +277,12 @@ This setup does not work on Databricks clusters in **Standard** access mode, bec
 
    ```shell
    #!/bin/bash
-   
+
    # Required parameters
    export DD_API_KEY=<YOUR API KEY>
    export DD_SITE=<YOUR DATADOG SITE>
    export DATABRICKS_WORKSPACE="<YOUR WORKSPACE NAME>"
-   
+
    # Download and run the latest init script
    curl -L https://install.datadoghq.com/scripts/install-databricks.sh > djm-install-script
    bash djm-install-script || true
@@ -329,7 +329,7 @@ Optionally, you can also set other init script parameters and Datadog environmen
 
    ```shell
    #!/bin/bash
-   
+
    # Download and run the latest init script
    curl -L https://install.datadoghq.com/scripts/install-databricks.sh > djm-install-script
    bash djm-install-script || true

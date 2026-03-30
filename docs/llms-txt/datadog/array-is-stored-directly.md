@@ -41,7 +41,7 @@ It is advisable to clone the array before storing it to ensure that you retain a
 public class Foo {
     private String[] x;
     private int y;
-    
+
     public Foo(String[] param1, int param2) {
         this.x = param1; // should make a copy of this array first
     }
@@ -52,7 +52,7 @@ public class Foo {
 public class Foo {
     private int[] x;
     private int y;
-    
+
     public void foo (int[] param1, int param2) {
         this.x = param1; // should make a copy of this array first
     }
@@ -63,7 +63,7 @@ public class Foo {
 public class Foo {
     private String[] x;
     private int y;
-    
+
     public void foo (String[] param1, int param2) {
         this.x = param1; // should make a copy of this array first
     }
@@ -76,7 +76,7 @@ public class Foo {
 public class Foo {
     private String[] x;
     private int y;
-    
+
     public void foo (String[] param1, int param2) {
         this.x = Arrays.copyOf(param1, param1.length);
     }
@@ -87,12 +87,11 @@ public class Foo {
 public class Foo {
     private String[] x;
     private int y;
-    
+
     private void foo (String[] param1, int param2) {
         this.x = param1; // no violation since the method is private
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

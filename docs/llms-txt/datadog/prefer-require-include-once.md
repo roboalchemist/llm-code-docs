@@ -52,6 +52,5 @@ include 'file.php';
 require_once 'file.php';
 include_once 'file.php';
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

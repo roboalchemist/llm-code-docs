@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Exchange Online mail forwarding rule enabled
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1137-office-application-startup](https://attack.mitre.org/techniques/T1137) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1137-office-application-startup](https://attack.mitre.org/techniques/T1137)
 ## Goal{% #goal %}
 
 Detect when a user sets up a mail forwarding rule to another email address. An adversary or insider threat could set a forwarding rule to forward all emails to an external email address.

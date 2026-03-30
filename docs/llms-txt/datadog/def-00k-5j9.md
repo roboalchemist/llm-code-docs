@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > A Kubernetes audit policy sh
 ---
 
 # A Kubernetes audit policy should exist
- 
+
 ## Description{% #description %}
 
 Kubernetes should audit the details of requests made to the API server.

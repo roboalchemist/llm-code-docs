@@ -1,15 +1,11 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-misused-new.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-misused-new.md
----
-
-### What it does
+## What it does
 
 Enforces valid definition of new and constructor. This rule prevents classes from defining
 a method named `new` and interfaces from defining a method named `constructor`.
 
-### Why is this bad?
+## Why is this bad?
 
 JavaScript classes may define a constructor method that runs
 when a class instance is newly created.
@@ -19,7 +15,7 @@ define a `new()` method (though this is rarely used in real world code).
 Developers new to JavaScript classes and/or TypeScript interfaces may
 sometimes confuse when to use constructor or new.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

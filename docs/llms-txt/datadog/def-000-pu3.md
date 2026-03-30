@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attack 
+Classification:attack
 ## Goal{% #goal %}
 
 Detects critical, major and minor severity events on the Ivanti Connect Secure platform, such as system errors, service disruptions, or security alerts, which may indicate system vulnerabilities or active threats.

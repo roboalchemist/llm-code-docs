@@ -1,15 +1,11 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-import-type-side-effects.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-import-type-side-effects.md
----
-
-### What it does
+## What it does
 
 Enforce the use of top-level `import type` qualifier when an import only
 has specifiers with inline type qualifiers.
 
-### Why is this bad?
+## Why is this bad?
 
 The `--verbatimModuleSyntax` compiler option causes TypeScript to do
 simple and predictable transpilation on import declarations. Namely, it
@@ -35,7 +31,7 @@ For the rare case of needing to import for side effects, this may be
 desirable - but for most cases you will not want to leave behind an
 unnecessary side effect import.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Access keys should be rotated every 90 days or less
- 
+
 ## Description{% #description %}
 
 Access keys consist of an access key ID and a secret access key, and they are used to sign programmatic requests made to AWS. AWS users need their own access keys to perform tasks using the AWS CLI, Tools for Windows PowerShell, AWS SDKs, or direct HTTP calls using the APIs for individual AWS services. It is important to regularly rotate all access keys to maintain security.

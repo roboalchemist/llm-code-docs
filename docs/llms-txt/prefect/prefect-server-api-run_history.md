@@ -1,0 +1,24 @@
+# Source: https://docs.prefect.io/v3/api-ref/python/prefect-server-api-run_history.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.prefect.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# run_history
+
+# `prefect.server.api.run_history`
+
+Utilities for querying flow and task run history.
+
+## Functions
+
+### `run_history` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/prefect/server/api/run_history.py#L26" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+run_history(db: PrefectDBInterface, session: sa.orm.Session, run_type: Literal['flow_run', 'task_run'], history_start: DateTime, history_end: DateTime, history_interval: datetime.timedelta, flows: Optional[schemas.filters.FlowFilter] = None, flow_runs: Optional[schemas.filters.FlowRunFilter] = None, task_runs: Optional[schemas.filters.TaskRunFilter] = None, deployments: Optional[schemas.filters.DeploymentFilter] = None, work_pools: Optional[schemas.filters.WorkPoolFilter] = None, work_queues: Optional[schemas.filters.WorkQueueFilter] = None) -> list[schemas.responses.HistoryResponse]
+```
+
+Produce a history of runs aggregated by interval and state
+
+
+Built with [Mintlify](https://mintlify.com).

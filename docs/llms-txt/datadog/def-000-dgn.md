@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # DynamoDB tables should have point-in-time recovery enabled
- 
+
 ## Description{% #description %}
 
 This feature verifies if point-in-time recovery (PITR) has been activated for an Amazon DynamoDB table.

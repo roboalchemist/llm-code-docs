@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Microsoft Defender for Cloud
 ---
 
 # Microsoft Defender for Cloud
-Classification:attack 
+Classification:attack
 ## Goal{% #goal %}
 
 Detect when [Microsoft Defender for Cloud](https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-cloud-introduction) raises an alert.

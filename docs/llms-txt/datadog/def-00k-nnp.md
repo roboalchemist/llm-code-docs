@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # The kubelet configuration file should have permissions of 600 or more restrictive
- 
+
 ## Description{% #description %}
 
 Ensure that if the kubelet refers to a configuration file with the `--config` argument, that file has permissions of 600 or more restrictive. The kubelet reads various parameters, including security settings, from the config file. The file should be writable by only the administrators on the system.

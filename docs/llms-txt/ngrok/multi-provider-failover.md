@@ -1,0 +1,313 @@
+# Source: https://ngrok.com/docs/ai-gateway/examples/multi-provider-failover.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Multi-Provider Failover
+
+> Automatically failover between AI providers for maximum reliability.
+
+Configure multiple providers for automatic failover when your primary provider experiences issues.
+
+<Tip>
+  This example uses [Bring Your Own Keys (BYOK)](/ai-gateway/concepts/bring-your-own-keys) with provider keys stored in secrets. If you're using [AI Gateway API Keys](/ai-gateway/concepts/api-keys), multi-provider failover works automatically for supported providers (OpenAI and Anthropic).
+</Tip>
+
+## Basic example
+
+```yaml  theme={null}
+on_http_request:
+  - type: ai-gateway
+    config:
+      only_allow_configured_providers: true
+
+      providers:
+        - id: openai
+          api_keys:
+            - value: ${secrets.get('openai', 'key-one')}
+        - id: anthropic
+          api_keys:
+            - value: ${secrets.get('anthropic', 'key')}
+```
+
+## How it works
+
+When the primary provider fails, the gateway automatically tries the next provider:
+
+```
+1. Request arrives for compatible models
+2. Try OpenAI → Timeout
+3. Automatically try Anthropic → Success ✓
+```
+
+**Important**: The client must specify compatible models for cross-provider failover to work:
+
+```js  theme={null}
+const res = await openai.chat.completions.create({
+  model: "gpt-4o",
+  models: ["claude-3-5-sonnet-20241022"],  // Fallback models
+  messages: [{ role: "user", content: "Hello!" }]
+});
+```
+
+## Three-provider setup
+
+Add multiple providers for maximum reliability:
+
+```yaml  theme={null}
+on_http_request:
+  - type: ai-gateway
+    config:
+      only_allow_configured_providers: true
+
+      providers:
+        - id: openai
+          api_keys:
+            - value: ${secrets.get('openai', 'key')}
+        
+        - id: anthropic
+          api_keys:
+            - value: ${secrets.get('anthropic', 'key')}
+        
+        - id: google
+          api_keys:
+            - value: ${secrets.get('google', 'key')}
+```
+
+## Provider order
+
+Providers are tried in alphabetical order, not the order they are configured, to control order use the `model_selection.strategy` to specify the order:
+
+```yaml  theme={null}
+on_http_request:
+  - type: ai-gateway
+    config:
+      only_allow_configured_providers: true
+
+      providers:
+        - id: openai
+        - id: anthropic
+        - id: google
+      
+      model_selection:
+        strategy:
+          - "ai.models.filter(m, m.provider_id == 'openai')"
+          - "ai.models.filter(m, m.provider_id == 'anthropic')"
+          - "ai.models.filter(m, m.provider_id == 'google')"
+```
+
+## Combining multi-key and multi-provider
+
+Maximum resilience with multiple keys per provider and explicit ordering:
+
+```yaml  theme={null}
+on_http_request:
+  - type: ai-gateway
+    config:
+      only_allow_configured_providers: true
+
+      providers:
+        - id: openai
+          api_keys:
+            - value: ${secrets.get('openai', 'key-one')}
+            - value: ${secrets.get('openai', 'key-two')}
+        
+        - id: anthropic
+          api_keys:
+            - value: ${secrets.get('anthropic', 'key-one')}
+            - value: ${secrets.get('anthropic', 'key-two')}
+
+      model_selection:
+        strategy:
+          # Try OpenAI models first
+          - "ai.models.filter(m, m.provider_id == 'openai')"
+          # Then fall back to Anthropic models
+          - "ai.models.filter(m, m.provider_id == 'anthropic')"
+```
+
+Failover cascade:
+
+```
+1. openai/key-one → Rate limited
+2. openai/key-two → Success ✓
+
+If both OpenAI keys fail:
+3. anthropic/key-one → Success ✓
+```
+
+**Note**: The `model_selection.strategy` ensures providers are tried in the specified order, not alphabetically. The `only_allow_configured_providers` option restricts requests to only the configured providers.
+
+## Performance-based selection
+
+Use model selection strategies to prefer providers based on metrics:
+
+```yaml  theme={null}
+on_http_request:
+  - type: ai-gateway
+    config:
+      only_allow_configured_providers: true
+
+      providers:
+        - id: openai
+        - id: anthropic
+        - id: google
+      
+      model_selection:
+        strategy:
+          # Prefer low-latency models
+          - "ai.models.filter(m, m.metrics.global.latency.upstream_ms_p95 < 2000)"
+          # Prefer reliable models
+          - "ai.models.filter(m, m.metrics.global.error_rate.total < 0.02)"
+          # Fall back to any model
+          - "ai.models"
+```
+
+## Regional failover
+
+For providers that offer regional availability, you can use the custom providers feature to add specific regions:
+
+```yaml  theme={null}
+on_http_request:
+  - type: ai-gateway
+    config:
+      only_allow_configured_providers: true
+
+      providers:
+        - id: openai
+          api_keys:
+            - value: ${secrets.get('openai', 'us-east')}
+          metadata:
+            region: "us-east"
+        
+        - id: openai-eu
+          base_url: "https://eu.api.openai.com"
+          id_aliases: ["openai"]
+          api_keys:
+            - value: ${secrets.get('openai', 'eu-west')}
+          metadata:
+            region: "eu-west"
+      
+      model_selection:
+        strategy:
+          - "ai.models.filter(m, m.metadata.region == 'us-east')"
+          - "ai.models.filter(m, m.metadata.region == 'eu-west')"
+```
+
+## Cost optimization
+
+Prefer cheaper providers with fallback to premium:
+
+```yaml  theme={null}
+on_http_request:
+  - type: ai-gateway
+    config:
+      only_allow_configured_providers: true
+
+      providers:
+        - id: deepseek      # Cost-effective primary
+        - id: openai        # Premium fallback
+        - id: anthropic     # Alternative premium
+
+      model_selection:
+        strategy:
+          # Prefer mini/turbo models
+          - "ai.models.filter(m, m.id.contains('mini') || m.id.contains('turbo'))"
+          # Fall back to any model
+          - "ai.models"
+```
+
+## Real-world production example
+
+Enterprise setup with multiple providers:
+
+```yaml  theme={null}
+on_http_request:
+  - type: ai-gateway
+    config:
+      only_allow_configured_providers: true
+      per_request_timeout: "45s"
+      total_timeout: "3m"
+      on_error: "halt"
+      
+      providers:
+        # Primary: OpenAI with 3 keys
+        - id: openai
+          api_keys:
+            - value: ${secrets.get('openai', 'prod-1')}
+            - value: ${secrets.get('openai', 'prod-2')}
+            - value: ${secrets.get('openai', 'prod-3')}
+          metadata:
+            tier: "primary"
+        
+        # Secondary: Anthropic with 2 keys
+        - id: anthropic
+          api_keys:
+            - value: ${secrets.get('anthropic', 'prod-1')}
+            - value: ${secrets.get('anthropic', 'prod-2')}
+          metadata:
+            tier: "secondary"
+        
+        # Tertiary: Google with 1 key
+        - id: google
+          api_keys:
+            - value: ${secrets.get('google', 'prod')}
+          metadata:
+            tier: "tertiary"
+      
+      model_selection:
+        strategy:
+          - "ai.models.filter(m, m.metrics.global.error_rate.total < 0.05)"
+          - "ai.models.filter(m, m.metrics.global.latency.upstream_ms_p95 < 3000)"
+          - "ai.models"
+```
+
+The patterns in this example provide:
+
+* 6 total provider API keys across 3 providers
+* Automatic failover at both the key and provider levels
+* Performance-based model selection
+* Up to 3 minutes of retry attempts
+
+## Client configuration
+
+For cross-provider failover, clients must specify multiple models:
+
+```typescript  theme={null}
+// TypeScript
+const res = await openai.chat.completions.create({
+  model: "gpt-4o",
+  models: [
+    "claude-3-5-sonnet-20241022",
+    "gemini-2.5-pro"
+  ],
+  messages: [...]
+});
+```
+
+```python  theme={null}
+# Python
+response = openai.ChatCompletion.create(
+    model="gpt-4o",
+    models=["claude-3-5-sonnet-20241022", "gemini-2.5-pro"],
+    messages=[...]
+)
+```
+
+## Best practices
+
+1. **Configure at least 2 providers** for reliability
+2. **Order providers by preference** (fastest/cheapest first)
+3. **Use multiple keys per provider** for key-level failover
+4. **Monitor provider metrics** to optimize order
+5. **Test failover** regularly to ensure it works
+6. **Set appropriate timeouts** to fail fast
+
+## See also
+
+* [Multi-Key Failover](/ai-gateway/examples/multi-key-failover) - Multiple keys per provider
+* [Error Handling](/ai-gateway/guides/error-handling) - Understanding retry logic
+* [Configuring Providers](/ai-gateway/guides/configuring-providers) - Provider setup
+
+
+Built with [Mintlify](https://mintlify.com).

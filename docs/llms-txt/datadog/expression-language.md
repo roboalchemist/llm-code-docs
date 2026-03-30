@@ -99,22 +99,22 @@ The following examples assume a variable named `mySequence` with value `[1,2,3,4
 | Operation                        | Description                                                                                                                                                                                                                                                                                                                           | Example                                                                                                                       |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
 | `len(value_src)`                 | Gets the collection size.                                                                                                                                                                                                                                                                                                             | {% interactive-demo for="â len(mySequence)" /%}
- 
+
   {% interactive-demo for="â len(myMap)" /%}                                |
 | `isEmpty(value_src)`             | Checks whether the collection is empty. Equivalent to `len(value_src) == 0`.                                                                                                                                                                                                                                                          | {% interactive-demo for="â isEmpty(mySequence)" /%}
- 
+
   {% interactive-demo for="â isEmpty(myMap)" /%}                        |
 | `[ i ]`, `[ key ]`               | For sequential containers returns the `i`-th item in the collection (where `i` must be an integer). For dictionaries, returns the value that corresponds to the `key` (where `key` must match the key type of the dictionary). If the item does not exist, the expression yields an error or returns null, depending on the language. | {% interactive-demo for="â mySequence[3]" /%}
- 
+
   {% interactive-demo for="â myMap[\"b\"]" /%}                                |
 | `any(value_src, {predicate})`    | Checks if there is at least one element in the collection that satisfies the given predicate. The current element is accessed with the `@it` reference for sequential containers, and with `@key`, `@value` for dictionaries.                                                                                                         | {% interactive-demo for="â any(mySequence, {@it > 2})" /%}
- 
+
   {% interactive-demo for="â any(myMap, {@value > 2})" /%}       |
 | `all(value_src, {predicate})`    | Checks whether every element in a collection satisfies the specified predicate. The current element is accessed with the `@it` reference.                                                                                                                                                                                             | {% interactive-demo for="â all(mySequence, {@it > 2})" /%}
- 
+
   {% interactive-demo for="â all(myMap, {@key == \"b\"})" /%}    |
 | `filter(value_src, {predicate})` | Filters the elements of the collection using the predicate. The current element is accessed with the `@it` reference.                                                                                                                                                                                                                 | {% interactive-demo for="â filter(mySequence, {@it > 1})" /%}
- 
+
   {% interactive-demo for="â filter(myMap, {@value > 1})" /%} |
 
 ## Try your own conditions{% #try-your-own-conditions %}

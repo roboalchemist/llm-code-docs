@@ -1,0 +1,66 @@
+# Source: https://ngrok.com/docs/using-ngrok-with/puppet.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Using ngrok with Puppet
+
+> Learn how to use the ngrok Puppet module to install and configure ngrok resources and ensure the agent process is running.
+
+This guide explains how to install and configure ngrok with Puppet using the [`gabe-ngrok` module](https://forge.puppet.com/gabe/ngrok).
+It covers installing the module, configuring your authtoken, and declaring tunnels.
+
+## What you'll need
+
+* Puppet installed.
+* An [ngrok account](https://ngrok.com/signup).
+* Your [ngrok authtoken](https://dashboard.ngrok.com/get-started/your-authtoken).
+
+## 1. Install the Puppet module
+
+Install the module from Puppet Forge:
+
+```bash  theme={null}
+puppet module install gabe-ngrok
+```
+
+## 2. Configure ngrok and declare a tunnel
+
+Include the `ngrok` class and declare at least one `ngrok::tunnel` resource.
+
+For example, declare a single HTTP tunnel to port `80`:
+
+```puppet  theme={null}
+include ngrok
+
+ngrok::tunnel { 'web traffic':
+  proto => 'http',
+  addr  => '80',
+}
+```
+
+If you need TCP tunnels, configure the `ngrok` class with your authtoken:
+
+```puppet  theme={null}
+class { 'ngrok':
+  authtoken => 'YOUR_AUTHTOKEN',
+}
+
+ngrok::tunnel { 'webhook':
+  proto => 'tcp',
+  addr  => '8170',
+}
+```
+
+## 3. Verify ngrok is running
+
+After your Puppet run completes, verify ngrok is running and your tunnels are active.
+If you use `facter`, the module provides an `ngrok` fact you can query:
+
+```bash  theme={null}
+facter -p ngrok
+```
+
+
+Built with [Mintlify](https://mintlify.com).

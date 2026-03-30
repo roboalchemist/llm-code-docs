@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/getting_started/session_replay.md
-
 # Source: https://docs.datadoghq.com/session_replay.md
 
 ---
@@ -9,8 +7,6 @@ description: >-
   mobile app experience with Session Replay.
 breadcrumbs: Docs > Session Replay
 ---
-
-# Session Replay
 
 ## Overview{% #overview %}
 

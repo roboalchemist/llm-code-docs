@@ -41,35 +41,35 @@ When using `return`, `break` or `continue` in a `finally` block, it will stop th
 
 ```python
 try:
-	client_obj.get_url(url)
+    client_obj.get_url(url)
 except (URLError, ValueError):
-	client_obj.remove_url(url)
+    client_obj.remove_url(url)
 except SocketTimeout:
-	client_obj.handle_url_timeout(url)
+    client_obj.handle_url_timeout(url)
 finally:
-	break  # avoid break in the finally block
+    break  # avoid break in the finally block
 ```
 
 ```python
 try:
-	client_obj.get_url(url)
+    client_obj.get_url(url)
 except (URLError, ValueError):
-	client_obj.remove_url(url)
+    client_obj.remove_url(url)
 except SocketTimeout:
-	client_obj.handle_url_timeout(url)
+    client_obj.handle_url_timeout(url)
 finally:
-	return 0  # avoid return in the finally block
+    return 0  # avoid return in the finally block
 ```
 
 ```python
 try:
-	client_obj.get_url(url)
+    client_obj.get_url(url)
 except (URLError, ValueError):
-	client_obj.remove_url(url)
+    client_obj.remove_url(url)
 except SocketTimeout:
-	client_obj.handle_url_timeout(url)
+    client_obj.handle_url_timeout(url)
 finally:
-	continue  # avoid continue in the finally block
+    continue  # avoid continue in the finally block
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}
@@ -84,6 +84,5 @@ except SocketTimeout:
 finally:
   print("cleanup the mess")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

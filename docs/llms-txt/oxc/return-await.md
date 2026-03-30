@@ -1,21 +1,17 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/return-await.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/return-await.md
----
-
-### What it does
+## What it does
 
 This rule enforces consistent returning of awaited values from async functions.
 
-### Why is this bad?
+## Why is this bad?
 
 There are different patterns for returning awaited values from async functions.
 Sometimes you want to await before returning (to handle errors in the current
 function), and sometimes you want to return the Promise directly (for better
 performance). This rule helps enforce consistency.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule (depending on configuration):
 
@@ -75,22 +71,22 @@ async function multipleOperations() {
 
 This rule accepts one of the following string values:
 
-### `"in-try-catch"`
+## `"in-try-catch"`
 
 Require `await` when returning Promises inside try/catch/finally blocks.
 This ensures proper error handling and stack traces.
 
-### `"always"`
+## `"always"`
 
 Require `await` before returning Promises in all cases.
 Example: `return await Promise.resolve()` is required.
 
-### `"error-handling-correctness-only"`
+## `"error-handling-correctness-only"`
 
 Require `await` only when it affects error handling correctness.
 Only flags cases where omitting await would change error handling behavior.
 
-### `"never"`
+## `"never"`
 
 Disallow `await` before returning Promises in all cases.
 Example: `return Promise.resolve()` is required (no await).

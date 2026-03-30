@@ -1,21 +1,17 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/no-set-state.md
 
----
-url: /docs/guide/usage/linter/rules/react/no-set-state.md
----
-
-### What it does
+## What it does
 
 Disallow the usage of `this.setState` in React components.
 
-### Why is this bad?
+## Why is this bad?
 
 When using an architecture that separates your application state from your UI components
 (e.g. Flux), it may be desirable to forbid the use of local component state. This rule is
 especially helpful in read-only applications (that don't use forms), since local component
 state should rarely be necessary in such cases.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

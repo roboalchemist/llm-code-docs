@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # PodSecurityPolicy should be enabled to reject non-compliant pod creations
-Classification:complianceFramework:cis-kubernetesControl:1.2.16 
+Classification:complianceFramework:cis-kubernetesControl:1.2.16
 ## Description{% #description %}
 
 Reject creating pods that do not match Pod Security Policies.

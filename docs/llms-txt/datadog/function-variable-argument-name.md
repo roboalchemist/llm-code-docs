@@ -37,20 +37,19 @@ A function parameter should only be read and not be modified. If your intent is 
 
 ```python
 def func(arg1, arg2):
-	arg1 = foo  # assign to a variable that is an argument
+    arg1 = foo  # assign to a variable that is an argument
 ```
 
 ```python
 def func(arg1, arg2):
-	(arg1, arg3, arg2) = foo  # assign to a variable that is an argument
+    (arg1, arg3, arg2) = foo  # assign to a variable that is an argument
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}
 
 ```python
 def func(arg1, arg2):
-	arg3 = foo
+    arg3 = foo
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

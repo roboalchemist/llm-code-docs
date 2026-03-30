@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable Samba
 ---
 
 # Disable Samba
- 
+
 ## Description{% #description %}
 
 The `smb` service can be disabled with the following command:

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The etcd data directory should be owned by the etcd user and group
- 
+
 ## Description{% #description %}
 
 The etcd data directory ownership should be set to `etcd:etcd`. Etcd is a highly-available key-value store used by Kubernetes deployments for persistent storage of all of its REST API objects. This data directory should be protected from any unauthorized reads or writes.

@@ -62,6 +62,5 @@ var app = express();
 var httpsServer = https.createServer(app)
 httpsServer.listen(8080);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

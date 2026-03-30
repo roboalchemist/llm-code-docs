@@ -52,6 +52,5 @@ RUN cd /tmp && curl -O http://localhost:8080/path
 RUN cd /tmp && curl -O http://127.0.0.1:8080/path
 RUN cd /tmp && curl -O http://[::1]:8080/path
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

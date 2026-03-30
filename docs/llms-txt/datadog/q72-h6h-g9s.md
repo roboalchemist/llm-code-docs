@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Kubernetes PKI certificate files should have permissions of 644 or more restrictive
-Classification:complianceFramework:cis-kubernetesControl:1.1.20 
+Classification:complianceFramework:cis-kubernetesControl:1.1.20
 ## Description{% #description %}
 
 Ensure that Kubernetes PKI certificate files have permissions of 644 or more restrictive.

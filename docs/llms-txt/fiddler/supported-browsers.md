@@ -1,0 +1,10 @@
+# Source: https://docs.fiddler.ai/reference/settings/supported-browsers.md
+
+# Supported Browsers
+
+Fiddler Product can be accessed through the following supported web browsers:
+
+* Google Chrome
+* Firefox
+* Safari
+* Microsoft Edge

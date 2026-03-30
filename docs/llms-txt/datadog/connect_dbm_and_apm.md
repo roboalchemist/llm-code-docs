@@ -172,7 +172,7 @@ Enable the database monitoring propagation feature using one of the following me
 
   ```go
   sqltrace.Register("postgres", &pq.Driver{}, sqltrace.WithService("my-db-service"))
-  
+
   db, err := sqltrace.Open("postgres", "postgres://pqgotest:password@localhost/pqgotest?sslmode=disable", sqltrace.WithDBMPropagation(tracer.DBMPropagationModeFull))
   if err != nil {
       log.Fatal(err)
@@ -183,28 +183,28 @@ Full example:
 
 ```go
 import (
-	"database/sql"
-	"github.com/DataDog/dd-trace-go/v2/ddtrace/tracer"
+    "database/sql"
+    "github.com/DataDog/dd-trace-go/v2/ddtrace/tracer"
    sqltrace "github.com/DataDog/dd-trace-go/contrib/database/sql/v2"
 )
 
 func main() {
-	// The first step is to set the dbm propagation mode when registering the driver. Note that this can also
-	// be done on sqltrace.Open for more granular control over the feature.
-	sqltrace.Register("postgres", &pq.Driver{}, sqltrace.WithDBMPropagation(tracer.DBMPropagationModeFull))
+    // The first step is to set the dbm propagation mode when registering the driver. Note that this can also
+    // be done on sqltrace.Open for more granular control over the feature.
+    sqltrace.Register("postgres", &pq.Driver{}, sqltrace.WithDBMPropagation(tracer.DBMPropagationModeFull))
 
-	// Followed by a call to Open.
-	db, err := sqltrace.Open("postgres", "postgres://pqgotest:password@localhost/pqgotest?sslmode=disable")
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Followed by a call to Open.
+    db, err := sqltrace.Open("postgres", "postgres://pqgotest:password@localhost/pqgotest?sslmode=disable")
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Then, we continue using the database/sql package as we normally would, with tracing.
-	rows, err := db.Query("SELECT name FROM users WHERE age=?", 27)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer rows.Close()
+    // Then, we continue using the database/sql package as we normally would, with tracing.
+    rows, err := db.Query("SELECT name FROM users WHERE age=?", 27)
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer rows.Close()
 }
 ```
 
@@ -281,8 +281,8 @@ Enable the database monitoring propagation feature using one of the following me
 
    ```rb
     Datadog.configure do |c|
-    	c.tracing.instrument :mysql2, comment_propagation: 'full'
-    	c.tracing.instrument :pg, comment_propagation: 'full'
+        c.tracing.instrument :mysql2, comment_propagation: 'full'
+        c.tracing.instrument :pg, comment_propagation: 'full'
     end
    ```
 
@@ -293,11 +293,11 @@ require 'mysql2'
 require 'ddtrace'
 
 Datadog.configure do |c|
-	c.service = 'billing-api'
-	c.env = 'production'
-	c.version = '1.3-alpha'
+    c.service = 'billing-api'
+    c.env = 'production'
+    c.version = '1.3-alpha'
 
-	c.tracing.instrument :mysql2, comment_propagation: ENV['DD_DBM_PROPAGATION_MODE']
+    c.tracing.instrument :mysql2, comment_propagation: ENV['DD_DBM_PROPAGATION_MODE']
 end
 
 client = Mysql2::Client.new(:host => "localhost", :username => "root")
@@ -449,18 +449,18 @@ const pg = require('pg')
 const tracer = require('dd-trace').init({ dbmPropagationMode: 'full' })
 
 const client = new pg.Client({
-	user: 'postgres',
-	password: 'postgres',
-	database: 'postgres'
+    user: 'postgres',
+    password: 'postgres',
+    database: 'postgres'
 })
 
 client.connect(err => {
-	console.error(err);
-	process.exit(1);
+    console.error(err);
+    process.exit(1);
 });
 
 client.query('SELECT $1::text as message', ['Hello world!'], (err, result) => {
-	// handle result
+    // handle result
 })
 ```
 

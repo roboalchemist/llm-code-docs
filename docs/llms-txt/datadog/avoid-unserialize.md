@@ -52,6 +52,5 @@ $object = unserialize($input);
 $object = unserialize($input, ['allowed_classes' => ['stdClass', 'MyDataClass']]);
 ?>
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

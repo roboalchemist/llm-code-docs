@@ -1,21 +1,17 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/no-array-index-key.md
 
----
-url: /docs/guide/usage/linter/rules/react/no-array-index-key.md
----
-
-### What it does
+## What it does
 
 Warn if an element uses an Array index in its key.
 
-### Why is this bad?
+## Why is this bad?
 
 It's a bad idea to use the array index since it doesn't uniquely identify your elements.
 In cases where the array is sorted or an element is added to the beginning of the array,
 the index will be changed even though the element representing that index may be the same.
 This results in unnecessary renders.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

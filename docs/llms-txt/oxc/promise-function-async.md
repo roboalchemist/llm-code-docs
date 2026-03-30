@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/promise-function-async.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/promise-function-async.md
----
-
-### What it does
+## What it does
 
 This rule requires any function or method that returns a Promise to be marked as async.
 
-### Why is this bad?
+## Why is this bad?
 
 Functions that return Promises should typically be marked as `async` to make their asynchronous nature clear and to enable the use of `await` within them. This makes the code more readable and helps prevent common mistakes with Promise handling.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -72,7 +68,7 @@ function createThenable(): { then: Function } {
 
 This rule accepts a configuration object with the following properties:
 
-### allowAny
+## allowAny
 
 type: `boolean`
 
@@ -80,7 +76,7 @@ default: `true`
 
 Whether to allow functions returning `any` type without requiring `async`.
 
-### allowedPromiseNames
+## allowedPromiseNames
 
 type: `string[]`
 
@@ -89,7 +85,7 @@ default: `[]`
 A list of Promise type names that are allowed without requiring `async`.
 Example: `["SpecialPromise"]` to allow functions returning `SpecialPromise` without `async`.
 
-### checkArrowFunctions
+## checkArrowFunctions
 
 type: `boolean`
 
@@ -97,7 +93,7 @@ default: `true`
 
 Whether to check arrow functions for missing `async` keyword.
 
-### checkFunctionDeclarations
+## checkFunctionDeclarations
 
 type: `boolean`
 
@@ -105,7 +101,7 @@ default: `true`
 
 Whether to check function declarations for missing `async` keyword.
 
-### checkFunctionExpressions
+## checkFunctionExpressions
 
 type: `boolean`
 
@@ -113,7 +109,7 @@ default: `true`
 
 Whether to check function expressions for missing `async` keyword.
 
-### checkMethodDeclarations
+## checkMethodDeclarations
 
 type: `boolean`
 

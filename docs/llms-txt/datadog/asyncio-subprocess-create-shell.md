@@ -60,6 +60,5 @@ def handler(event, context):
     # Should sanitize arguments
     async_loop.run_until_complete(async_loop.create_subprocess_shell(shlex.quote("mycommand")))
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

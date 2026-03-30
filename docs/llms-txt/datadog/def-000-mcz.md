@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # CloudFront distribution contains S3 origin with external or nonexistent bucket
- 
+
 ## Description{% #description %}
 
 This control identifies AWS CloudFront distributions with S3 origins pointing to external or nonexistent buckets. A misconfiguration like this could expose the distribution to unauthorized access or hijacking risks. When a CloudFront distribution is configured with a nonexistent S3 bucket as its origin, traffic routed to the origin is at risk. Attackers could exploit this misconfiguration by creating a new S3 bucket with the same name in a different AWS account, potentially serving malicious content through the affected CloudFront distribution. This could lead to data breaches, phishing attacks, or distribution of unauthorized content, any of which would impact both security and compliance.

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Jumpcloud policy modified
 ---
 
 # Jumpcloud policy modified
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1484-domain-or-tenant-policy-modification](https://attack.mitre.org/techniques/T1484) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1484-domain-or-tenant-policy-modification](https://attack.mitre.org/techniques/T1484)
 ## Goal{% #goal %}
 
 Detect when a JumpCloud policy is modified.

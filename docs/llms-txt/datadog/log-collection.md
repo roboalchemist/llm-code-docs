@@ -31,7 +31,7 @@ In containerized environments, Datadog recommends logging to the `stdout` / `std
 With Docker's default `json-file` log driver, the `stdout`/`stderr` logs are stored in `/var/lib/docker/containers`. These logs can be collected by mounting `/var/lib/docker/containers` (`c:/programdata/docker/containers` on Windows) into the Agent container. For example:
 
 ```bash
-/var/lib/docker/containers/68f21cd4e1e703c8b9ecdab67a5a9e359f1fb46ae1ed2e86f9b4f1f243a0a47d/68f21cd4e1e703c8b9ecdab67a5a9e359f1fb46ae1ed2e86f9b4f1f243a0a47d-json.log. 
+/var/lib/docker/containers/68f21cd4e1e703c8b9ecdab67a5a9e359f1fb46ae1ed2e86f9b4f1f243a0a47d/68f21cd4e1e703c8b9ecdab67a5a9e359f1fb46ae1ed2e86f9b4f1f243a0a47d-json.log.
 ```
 
 If this mount point does not exist, the Agent falls back to socket based collection. Accessing the Docker API through the socket at `/var/run/docker.sock`.
@@ -218,11 +218,11 @@ Logs Agent
     EncodedBytesSent: 3.9744538e+07
     LogsProcessed: 604328
     LogsSent: 60431
-  
+
   ============
   Integrations
   ============
-  
+
   default/my-deployment-55d847444b-2fkch/my-container
   ---------------------------------------------------
     - Type: file
@@ -233,8 +233,8 @@ Logs Agent
       Status: OK
         1 files tailed out of 1 files matching
       Inputs:
-        /var/log/pods/default_my-deployment-55d847444b-2fkch_342819ce-4419-435b-9881-4a3deff618cc/my-container/0.log  
-      Bytes Read: 5075   
+        /var/log/pods/default_my-deployment-55d847444b-2fkch_342819ce-4419-435b-9881-4a3deff618cc/my-container/0.log
+      Bytes Read: 5075
       Pipeline Latency:
         Average Latency (ms): 0
         24h Average Latency (ms): 0
@@ -345,7 +345,7 @@ To find the `<NAME>`, use the `agent status` command. For example, `default/my-d
 ==========
 Logs Agent
 ==========
-    ...  
+    ...
   ============
   Integrations
   ============
@@ -384,7 +384,7 @@ Run the `agent status` command and check through the "Logs Agent" section for th
       Status: OK
         1 files tailed out of 1 files matching
       Inputs:
-        /var/log/pods/default_my-deployment-98878c5d8-mc2sk_3d602ae0-a0ef-4fe2-b703-3975d2af6947/my-container/0.log  
+        /var/log/pods/default_my-deployment-98878c5d8-mc2sk_3d602ae0-a0ef-4fe2-b703-3975d2af6947/my-container/0.log
 ```
 
 We can see the `Path` for where the Agent is searching and the `Inputs` showing the discovered log file as `/var/log/pods/default_my-deployment-98878c5d8-mc2sk_3d602ae0-a0ef-4fe2-b703-3975d2af6947/my-container/0.log`.
@@ -614,8 +614,8 @@ When collecting Docker container logs from file, the Agent falls back on collect
     Status: OK
     The log file tailer could not be made, falling back to socket
     Inputs:
-    68f21cd4e1e703c8b9ecdab67a5a9e359f1fb46ae1ed2e86f9b4f1f243a0a47d  
-    Bytes Read: 160973 
+    68f21cd4e1e703c8b9ecdab67a5a9e359f1fb46ae1ed2e86f9b4f1f243a0a47d
+    Bytes Read: 160973
 ```
 
 This status means that the Agent is unable to find a log file for a given container. To resolve this issue, check that the folder containing Docker container logs is correctly exposed to the Datadog Agent container. On Linux, it corresponds to `-v /var/lib/docker/containers:/var/lib/docker/containers:ro` on the command line starting the Agent container, whereas on Windows it corresponds to `-v c:/programdata/docker/containers:c:/programdata/docker/containers:ro`.

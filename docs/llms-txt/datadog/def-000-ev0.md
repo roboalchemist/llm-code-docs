@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure PAM Enforces Password Requirements - Enforce for root User
- 
+
 ## Description{% #description %}
 
 The pam_pwquality module's `enforce_for_root` parameter controls requirements for enforcing password complexity for the root user. Enable the `enforce_for_root` setting in `/etc/security/pwquality.conf` to require the `root` user to use complex passwords.
@@ -31,7 +31,7 @@ The following script can be run on the host to remediate the issue.
 if dpkg-query --show --showformat='${db:Status-Status}' 'libpwquality1' 2>/dev/null | grep -q '^installed$'; then
 
 if [ -e "/etc/security/pwquality.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*enforce_for_root/Id" "/etc/security/pwquality.conf"
 else
     touch "/etc/security/pwquality.conf"

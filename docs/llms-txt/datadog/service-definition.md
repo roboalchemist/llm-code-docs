@@ -310,13 +310,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/services/definitions" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -341,7 +341,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get all service definitions returns "OK" response
@@ -358,7 +358,7 @@ p api_instance.list_service_definitions(opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get all service definitions returns "OK" response
@@ -366,29 +366,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceDefinitionApi(apiClient)
-	resp, r, err := api.ListServiceDefinitions(ctx, *datadogV2.NewListServiceDefinitionsOptionalParameters().WithSchemaVersion(datadogV2.SERVICEDEFINITIONSCHEMAVERSIONS_V2_1))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceDefinitionApi(apiClient)
+    resp, r, err := api.ListServiceDefinitions(ctx, *datadogV2.NewListServiceDefinitionsOptionalParameters().WithSchemaVersion(datadogV2.SERVICEDEFINITIONSCHEMAVERSIONS_V2_1))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceDefinitionApi.ListServiceDefinitions`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDefinitionApi.ListServiceDefinitions`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceDefinitionApi.ListServiceDefinitions`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceDefinitionApi.ListServiceDefinitions`:\n%s\n", responseContent)
 }
 ```
 
@@ -396,7 +396,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get all service definitions returns "OK" response
@@ -434,7 +434,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get all service definitions returns "OK" response
@@ -465,7 +465,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -633,7 +633,7 @@ Service Definition YAML/JSON.
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -686,7 +686,7 @@ Service Definition YAML/JSON.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -738,7 +738,7 @@ Service Definition YAML/JSON.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -1110,7 +1110,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/services/definitions" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1166,8 +1166,8 @@ API error response.
   "team": "my-team"
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/services/definitions" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1222,8 +1222,8 @@ EOF
   "team": "my-team"
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/services/definitions" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1278,8 +1278,8 @@ EOF
   "team": "my-team"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create or update service definition using schema v2 returns "CREATED" response
@@ -1287,83 +1287,83 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.ServiceDefinitionsCreateRequest{
-		ServiceDefinitionV2: &datadogV2.ServiceDefinitionV2{
-			Contacts: []datadogV2.ServiceDefinitionV2Contact{
-				datadogV2.ServiceDefinitionV2Contact{
-					ServiceDefinitionV2Email: &datadogV2.ServiceDefinitionV2Email{
-						Contact: "contact@datadoghq.com",
-						Name:    datadog.PtrString("Team Email"),
-						Type:    datadogV2.SERVICEDEFINITIONV2EMAILTYPE_EMAIL,
-					}},
-			},
-			DdService: "service-exampleservicedefinition",
-			DdTeam:    datadog.PtrString("my-team"),
-			Docs: []datadogV2.ServiceDefinitionV2Doc{
-				{
-					Name:     "Architecture",
-					Provider: datadog.PtrString("google drive"),
-					Url:      "https://gdrive/mydoc",
-				},
-			},
-			Extensions: map[string]interface{}{
-				"myorgextension": "extensionvalue",
-			},
-			Integrations: &datadogV2.ServiceDefinitionV2Integrations{
-				Opsgenie: &datadogV2.ServiceDefinitionV2Opsgenie{
-					Region:     datadogV2.SERVICEDEFINITIONV2OPSGENIEREGION_US.Ptr(),
-					ServiceUrl: "https://my-org.opsgenie.com/service/123e4567-e89b-12d3-a456-426614174000",
-				},
-				Pagerduty: datadog.PtrString("https://my-org.pagerduty.com/service-directory/PMyService"),
-			},
-			Links: []datadogV2.ServiceDefinitionV2Link{
-				{
-					Name: "Runbook",
-					Type: datadogV2.SERVICEDEFINITIONV2LINKTYPE_RUNBOOK,
-					Url:  "https://my-runbook",
-				},
-			},
-			Repos: []datadogV2.ServiceDefinitionV2Repo{
-				{
-					Name:     "Source Code",
-					Provider: datadog.PtrString("GitHub"),
-					Url:      "https://github.com/DataDog/schema",
-				},
-			},
-			SchemaVersion: datadogV2.SERVICEDEFINITIONV2VERSION_V2,
-			Tags: []string{
-				"my:tag",
-				"service:tag",
-			},
-			Team: datadog.PtrString("my-team"),
-		}}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceDefinitionApi(apiClient)
-	resp, r, err := api.CreateOrUpdateServiceDefinitions(ctx, body)
+    body := datadogV2.ServiceDefinitionsCreateRequest{
+        ServiceDefinitionV2: &datadogV2.ServiceDefinitionV2{
+            Contacts: []datadogV2.ServiceDefinitionV2Contact{
+                datadogV2.ServiceDefinitionV2Contact{
+                    ServiceDefinitionV2Email: &datadogV2.ServiceDefinitionV2Email{
+                        Contact: "contact@datadoghq.com",
+                        Name:    datadog.PtrString("Team Email"),
+                        Type:    datadogV2.SERVICEDEFINITIONV2EMAILTYPE_EMAIL,
+                    }},
+            },
+            DdService: "service-exampleservicedefinition",
+            DdTeam:    datadog.PtrString("my-team"),
+            Docs: []datadogV2.ServiceDefinitionV2Doc{
+                {
+                    Name:     "Architecture",
+                    Provider: datadog.PtrString("google drive"),
+                    Url:      "https://gdrive/mydoc",
+                },
+            },
+            Extensions: map[string]interface{}{
+                "myorgextension": "extensionvalue",
+            },
+            Integrations: &datadogV2.ServiceDefinitionV2Integrations{
+                Opsgenie: &datadogV2.ServiceDefinitionV2Opsgenie{
+                    Region:     datadogV2.SERVICEDEFINITIONV2OPSGENIEREGION_US.Ptr(),
+                    ServiceUrl: "https://my-org.opsgenie.com/service/123e4567-e89b-12d3-a456-426614174000",
+                },
+                Pagerduty: datadog.PtrString("https://my-org.pagerduty.com/service-directory/PMyService"),
+            },
+            Links: []datadogV2.ServiceDefinitionV2Link{
+                {
+                    Name: "Runbook",
+                    Type: datadogV2.SERVICEDEFINITIONV2LINKTYPE_RUNBOOK,
+                    Url:  "https://my-runbook",
+                },
+            },
+            Repos: []datadogV2.ServiceDefinitionV2Repo{
+                {
+                    Name:     "Source Code",
+                    Provider: datadog.PtrString("GitHub"),
+                    Url:      "https://github.com/DataDog/schema",
+                },
+            },
+            SchemaVersion: datadogV2.SERVICEDEFINITIONV2VERSION_V2,
+            Tags: []string{
+                "my:tag",
+                "service:tag",
+            },
+            Team: datadog.PtrString("my-team"),
+        }}
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceDefinitionApi(apiClient)
+    resp, r, err := api.CreateOrUpdateServiceDefinitions(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceDefinitionApi.CreateOrUpdateServiceDefinitions`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDefinitionApi.CreateOrUpdateServiceDefinitions`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceDefinitionApi.CreateOrUpdateServiceDefinitions`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceDefinitionApi.CreateOrUpdateServiceDefinitions`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create or update service definition using schema v2-1 returns "CREATED" response
@@ -1371,82 +1371,82 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.ServiceDefinitionsCreateRequest{
-		ServiceDefinitionV2Dot1: &datadogV2.ServiceDefinitionV2Dot1{
-			Contacts: []datadogV2.ServiceDefinitionV2Dot1Contact{
-				datadogV2.ServiceDefinitionV2Dot1Contact{
-					ServiceDefinitionV2Dot1Email: &datadogV2.ServiceDefinitionV2Dot1Email{
-						Contact: "contact@datadoghq.com",
-						Name:    datadog.PtrString("Team Email"),
-						Type:    datadogV2.SERVICEDEFINITIONV2DOT1EMAILTYPE_EMAIL,
-					}},
-			},
-			DdService: "service-exampleservicedefinition",
-			Extensions: map[string]interface{}{
-				"myorgextension": "extensionvalue",
-			},
-			Integrations: &datadogV2.ServiceDefinitionV2Dot1Integrations{
-				Opsgenie: &datadogV2.ServiceDefinitionV2Dot1Opsgenie{
-					Region:     datadogV2.SERVICEDEFINITIONV2DOT1OPSGENIEREGION_US.Ptr(),
-					ServiceUrl: "https://my-org.opsgenie.com/service/123e4567-e89b-12d3-a456-426614174000",
-				},
-				Pagerduty: &datadogV2.ServiceDefinitionV2Dot1Pagerduty{
-					ServiceUrl: datadog.PtrString("https://my-org.pagerduty.com/service-directory/PMyService"),
-				},
-			},
-			Links: []datadogV2.ServiceDefinitionV2Dot1Link{
-				{
-					Name: "Runbook",
-					Type: datadogV2.SERVICEDEFINITIONV2DOT1LINKTYPE_RUNBOOK,
-					Url:  "https://my-runbook",
-				},
-				{
-					Name:     "Source Code",
-					Type:     datadogV2.SERVICEDEFINITIONV2DOT1LINKTYPE_REPO,
-					Provider: datadog.PtrString("GitHub"),
-					Url:      "https://github.com/DataDog/schema",
-				},
-				{
-					Name:     "Architecture",
-					Type:     datadogV2.SERVICEDEFINITIONV2DOT1LINKTYPE_DOC,
-					Provider: datadog.PtrString("Gigoogle drivetHub"),
-					Url:      "https://my-runbook",
-				},
-			},
-			SchemaVersion: datadogV2.SERVICEDEFINITIONV2DOT1VERSION_V2_1,
-			Tags: []string{
-				"my:tag",
-				"service:tag",
-			},
-			Team: datadog.PtrString("my-team"),
-		}}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceDefinitionApi(apiClient)
-	resp, r, err := api.CreateOrUpdateServiceDefinitions(ctx, body)
+    body := datadogV2.ServiceDefinitionsCreateRequest{
+        ServiceDefinitionV2Dot1: &datadogV2.ServiceDefinitionV2Dot1{
+            Contacts: []datadogV2.ServiceDefinitionV2Dot1Contact{
+                datadogV2.ServiceDefinitionV2Dot1Contact{
+                    ServiceDefinitionV2Dot1Email: &datadogV2.ServiceDefinitionV2Dot1Email{
+                        Contact: "contact@datadoghq.com",
+                        Name:    datadog.PtrString("Team Email"),
+                        Type:    datadogV2.SERVICEDEFINITIONV2DOT1EMAILTYPE_EMAIL,
+                    }},
+            },
+            DdService: "service-exampleservicedefinition",
+            Extensions: map[string]interface{}{
+                "myorgextension": "extensionvalue",
+            },
+            Integrations: &datadogV2.ServiceDefinitionV2Dot1Integrations{
+                Opsgenie: &datadogV2.ServiceDefinitionV2Dot1Opsgenie{
+                    Region:     datadogV2.SERVICEDEFINITIONV2DOT1OPSGENIEREGION_US.Ptr(),
+                    ServiceUrl: "https://my-org.opsgenie.com/service/123e4567-e89b-12d3-a456-426614174000",
+                },
+                Pagerduty: &datadogV2.ServiceDefinitionV2Dot1Pagerduty{
+                    ServiceUrl: datadog.PtrString("https://my-org.pagerduty.com/service-directory/PMyService"),
+                },
+            },
+            Links: []datadogV2.ServiceDefinitionV2Dot1Link{
+                {
+                    Name: "Runbook",
+                    Type: datadogV2.SERVICEDEFINITIONV2DOT1LINKTYPE_RUNBOOK,
+                    Url:  "https://my-runbook",
+                },
+                {
+                    Name:     "Source Code",
+                    Type:     datadogV2.SERVICEDEFINITIONV2DOT1LINKTYPE_REPO,
+                    Provider: datadog.PtrString("GitHub"),
+                    Url:      "https://github.com/DataDog/schema",
+                },
+                {
+                    Name:     "Architecture",
+                    Type:     datadogV2.SERVICEDEFINITIONV2DOT1LINKTYPE_DOC,
+                    Provider: datadog.PtrString("Gigoogle drivetHub"),
+                    Url:      "https://my-runbook",
+                },
+            },
+            SchemaVersion: datadogV2.SERVICEDEFINITIONV2DOT1VERSION_V2_1,
+            Tags: []string{
+                "my:tag",
+                "service:tag",
+            },
+            Team: datadog.PtrString("my-team"),
+        }}
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceDefinitionApi(apiClient)
+    resp, r, err := api.CreateOrUpdateServiceDefinitions(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceDefinitionApi.CreateOrUpdateServiceDefinitions`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDefinitionApi.CreateOrUpdateServiceDefinitions`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceDefinitionApi.CreateOrUpdateServiceDefinitions`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceDefinitionApi.CreateOrUpdateServiceDefinitions`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create or update service definition using schema v2-2 returns "CREATED" response
@@ -1454,77 +1454,77 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.ServiceDefinitionsCreateRequest{
-		ServiceDefinitionV2Dot2: &datadogV2.ServiceDefinitionV2Dot2{
-			Contacts: []datadogV2.ServiceDefinitionV2Dot2Contact{
-				{
-					Contact: "contact@datadoghq.com",
-					Name:    datadog.PtrString("Team Email"),
-					Type:    "email",
-				},
-			},
-			DdService: "service-exampleservicedefinition",
-			Extensions: map[string]interface{}{
-				"myorgextension": "extensionvalue",
-			},
-			Integrations: &datadogV2.ServiceDefinitionV2Dot2Integrations{
-				Opsgenie: &datadogV2.ServiceDefinitionV2Dot2Opsgenie{
-					Region:     datadogV2.SERVICEDEFINITIONV2DOT2OPSGENIEREGION_US.Ptr(),
-					ServiceUrl: "https://my-org.opsgenie.com/service/123e4567-e89b-12d3-a456-426614174000",
-				},
-				Pagerduty: &datadogV2.ServiceDefinitionV2Dot2Pagerduty{
-					ServiceUrl: datadog.PtrString("https://my-org.pagerduty.com/service-directory/PMyService"),
-				},
-			},
-			Links: []datadogV2.ServiceDefinitionV2Dot2Link{
-				{
-					Name: "Runbook",
-					Type: "runbook",
-					Url:  "https://my-runbook",
-				},
-				{
-					Name:     "Source Code",
-					Type:     "repo",
-					Provider: datadog.PtrString("GitHub"),
-					Url:      "https://github.com/DataDog/schema",
-				},
-				{
-					Name:     "Architecture",
-					Type:     "doc",
-					Provider: datadog.PtrString("Gigoogle drivetHub"),
-					Url:      "https://my-runbook",
-				},
-			},
-			SchemaVersion: datadogV2.SERVICEDEFINITIONV2DOT2VERSION_V2_2,
-			Tags: []string{
-				"my:tag",
-				"service:tag",
-			},
-			Team: datadog.PtrString("my-team"),
-		}}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceDefinitionApi(apiClient)
-	resp, r, err := api.CreateOrUpdateServiceDefinitions(ctx, body)
+    body := datadogV2.ServiceDefinitionsCreateRequest{
+        ServiceDefinitionV2Dot2: &datadogV2.ServiceDefinitionV2Dot2{
+            Contacts: []datadogV2.ServiceDefinitionV2Dot2Contact{
+                {
+                    Contact: "contact@datadoghq.com",
+                    Name:    datadog.PtrString("Team Email"),
+                    Type:    "email",
+                },
+            },
+            DdService: "service-exampleservicedefinition",
+            Extensions: map[string]interface{}{
+                "myorgextension": "extensionvalue",
+            },
+            Integrations: &datadogV2.ServiceDefinitionV2Dot2Integrations{
+                Opsgenie: &datadogV2.ServiceDefinitionV2Dot2Opsgenie{
+                    Region:     datadogV2.SERVICEDEFINITIONV2DOT2OPSGENIEREGION_US.Ptr(),
+                    ServiceUrl: "https://my-org.opsgenie.com/service/123e4567-e89b-12d3-a456-426614174000",
+                },
+                Pagerduty: &datadogV2.ServiceDefinitionV2Dot2Pagerduty{
+                    ServiceUrl: datadog.PtrString("https://my-org.pagerduty.com/service-directory/PMyService"),
+                },
+            },
+            Links: []datadogV2.ServiceDefinitionV2Dot2Link{
+                {
+                    Name: "Runbook",
+                    Type: "runbook",
+                    Url:  "https://my-runbook",
+                },
+                {
+                    Name:     "Source Code",
+                    Type:     "repo",
+                    Provider: datadog.PtrString("GitHub"),
+                    Url:      "https://github.com/DataDog/schema",
+                },
+                {
+                    Name:     "Architecture",
+                    Type:     "doc",
+                    Provider: datadog.PtrString("Gigoogle drivetHub"),
+                    Url:      "https://my-runbook",
+                },
+            },
+            SchemaVersion: datadogV2.SERVICEDEFINITIONV2DOT2VERSION_V2_2,
+            Tags: []string{
+                "my:tag",
+                "service:tag",
+            },
+            Team: datadog.PtrString("my-team"),
+        }}
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceDefinitionApi(apiClient)
+    resp, r, err := api.CreateOrUpdateServiceDefinitions(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceDefinitionApi.CreateOrUpdateServiceDefinitions`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDefinitionApi.CreateOrUpdateServiceDefinitions`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceDefinitionApi.CreateOrUpdateServiceDefinitions`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceDefinitionApi.CreateOrUpdateServiceDefinitions`:\n%s\n", responseContent)
 }
 ```
 
@@ -1532,7 +1532,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create or update service definition using schema v2 returns "CREATED" response
@@ -1621,7 +1621,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create or update service definition using schema v2-1 returns "CREATED" response
@@ -1709,7 +1709,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create or update service definition using schema v2-2 returns "CREATED" response
@@ -1797,7 +1797,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1873,7 +1873,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -1947,7 +1947,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -2023,7 +2023,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create or update service definition using schema v2 returns "CREATED" response
@@ -2082,7 +2082,7 @@ body = DatadogAPIClient::V2::ServiceDefinitionV2.new({
 p api_instance.create_or_update_service_definitions(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create or update service definition using schema v2-1 returns "CREATED" response
@@ -2140,7 +2140,7 @@ body = DatadogAPIClient::V2::ServiceDefinitionV2Dot1.new({
 p api_instance.create_or_update_service_definitions(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create or update service definition using schema v2-2 returns "CREATED" response
@@ -2202,7 +2202,7 @@ p api_instance.create_or_update_service_definitions(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create or update service definition using schema v2 returns "CREATED" response
@@ -2285,7 +2285,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create or update service definition using schema v2-1 returns "CREATED" response
@@ -2372,7 +2372,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create or update service definition using schema v2-2 returns "CREATED" response
@@ -2456,7 +2456,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2527,7 +2527,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -2597,7 +2597,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -3050,13 +3050,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport service_name="my-service"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/services/definitions/${service_name}" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3082,7 +3082,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a single service definition returns "OK" response
@@ -3099,7 +3099,7 @@ p api_instance.get_service_definition("service-definition-test", opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a single service definition returns "OK" response
@@ -3107,29 +3107,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceDefinitionApi(apiClient)
-	resp, r, err := api.GetServiceDefinition(ctx, "service-definition-test", *datadogV2.NewGetServiceDefinitionOptionalParameters().WithSchemaVersion(datadogV2.SERVICEDEFINITIONSCHEMAVERSIONS_V2_1))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceDefinitionApi(apiClient)
+    resp, r, err := api.GetServiceDefinition(ctx, "service-definition-test", *datadogV2.NewGetServiceDefinitionOptionalParameters().WithSchemaVersion(datadogV2.SERVICEDEFINITIONSCHEMAVERSIONS_V2_1))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceDefinitionApi.GetServiceDefinition`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDefinitionApi.GetServiceDefinition`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `ServiceDefinitionApi.GetServiceDefinition`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `ServiceDefinitionApi.GetServiceDefinition`:\n%s\n", responseContent)
 }
 ```
 
@@ -3137,7 +3137,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a single service definition returns "OK" response
@@ -3176,7 +3176,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a single service definition returns "OK" response
@@ -3208,7 +3208,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3379,12 +3379,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport service_name="my-service"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/services/definitions/${service_name}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -3406,7 +3406,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete a single service definition returns "OK" response
@@ -3420,7 +3420,7 @@ api_instance.delete_service_definition("service-definition-test")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete a single service definition returns "OK" response
@@ -3428,25 +3428,25 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewServiceDefinitionApi(apiClient)
-	r, err := api.DeleteServiceDefinition(ctx, "service-definition-test")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewServiceDefinitionApi(apiClient)
+    r, err := api.DeleteServiceDefinition(ctx, "service-definition-test")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ServiceDefinitionApi.DeleteServiceDefinition`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ServiceDefinitionApi.DeleteServiceDefinition`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -3454,7 +3454,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a single service definition returns "OK" response
@@ -3485,7 +3485,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete a single service definition returns "OK" response
@@ -3511,7 +3511,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

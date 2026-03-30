@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify that audit tools Have Mode 0755 or less
- 
+
 ## Description{% #description %}
 
 The Ubuntu 20.04 operating system audit tools must have the proper permissions configured to protected against unauthorized access. Verify it by running the following command:

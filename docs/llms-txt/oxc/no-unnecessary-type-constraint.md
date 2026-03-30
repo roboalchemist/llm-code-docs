@@ -1,20 +1,16 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unnecessary-type-constraint.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-unnecessary-type-constraint.md
----
-
-### What it does
+## What it does
 
 Disallow unnecessary constraints on generic types.
 
-### Why is this bad?
+## Why is this bad?
 
 Generic type parameters (`<T>`) in TypeScript may be "constrained" with an `extends`
 keyword. When no `extends` is provided, type parameters default a constraint to `unknown`.
 It is therefore redundant to `extend` from `any` or `unknown`.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

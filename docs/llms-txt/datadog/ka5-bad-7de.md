@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Account should have a configured activity log alert for 'Delete Key Vault'
- 
+
 ## Description{% #description %}
 
 Create an activity log alert for the Delete Key Vault event.

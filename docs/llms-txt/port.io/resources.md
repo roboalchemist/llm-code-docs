@@ -1,0 +1,37 @@
+# Source: https://docs.port.io/resources.md
+
+# Resources
+
+Here you will find more Port-related content that can help you get the most out of your developer portal.
+
+## Tools[â](#tools "Direct link to Tools")
+
+#### JQ playground[â](#jq-playground "Direct link to JQ playground")
+
+Test JSON snippets against jq expressions with real-time filters and AI-powered assistance, using Port's [JQ playground](https://jq.getport.io/).
+
+#### Port highlight search - chrome extension[â](#port-highlight-search---chrome-extension "Direct link to Port highlight search - chrome extension")
+
+This handy [chrome extension](https://chromewebstore.google.com/detail/highlight-search-in-port/ekbladoiehfohpcppcclfkcnnlchejnb?hl=en-US\&utm_source=ext_sidebar) allows you to highlight text in any webpage and quickly search for it in your developer portal.
+
+***
+
+## Videos[â](#videos "Direct link to Videos")
+
+Port's [YouTube channel](https://www.youtube.com/@getport) features a variety of useful videos aimed at helping you get the most out of your developer portal.
+
+***
+
+## Links[â](#links "Direct link to Links")
+
+* [Webinars](https://www.getport.io/webinars)
+
+* [Blog posts](https://www.getport.io/blog)
+
+* [Resource center](https://www.getport.io/resource-center)
+
+* [Newsroom](https://www.getport.io/newsroom)
+
+***
+
+Feel free to reach out with any questions or requests ð

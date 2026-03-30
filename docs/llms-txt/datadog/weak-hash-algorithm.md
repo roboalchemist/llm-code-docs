@@ -64,6 +64,5 @@ $hash = hash('sha512', $data); // Secure
 $hash = hash('sha3-256', $data); // Secure
 $hash = hash('sha3-512', $data); // Secure
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

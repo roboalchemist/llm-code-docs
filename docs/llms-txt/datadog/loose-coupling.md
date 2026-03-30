@@ -49,7 +49,7 @@ public class Foo {
 
     public HashMap<SomeType> getMap() {
         return new HashMap<SomeType>();
-    }    
+    }
     public String foo(HashMap<String, String> map) {
         return map.get("foo");
     }
@@ -76,6 +76,5 @@ public class Foo {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

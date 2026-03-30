@@ -1,0 +1,50 @@
+# Source: https://www.speakeasy.com/md/docs/sdks/manage/breaking-changes.md
+
+# Handling breaking changes in SDKs
+
+This guide explains how to handle breaking changes in APIs when using Speakeasy-generated SDKs. Follow these guidelines to maintain backward compatibility and ensure a smooth experience for your SDK users.
+
+## Safe changes
+
+The following API changes are safe and won't break existing SDKs:
+
+### Adding new fields
+
+You can safely add new fields to API responses because older SDK versions ignore these fields. Adding new response fields doesn't break existing integrations.
+
+### Adding new enum values
+
+You can safely add new enum values when enums are marked with `x-speakeasy-unknown-values` (see our [Customize enums](/docs/customize/data-model/enums#open-enums) documentation). Older SDKs handle these new values gracefully according to the behavior specified in the extension configuration.
+
+## Changes requiring caution
+
+Some API changes require careful consideration to avoid breaking existing SDK implementations. Use the [OpenAPI diff tool](/docs/speakeasy-reference/cli/openapi/diff) to identify potential breaking changes in your API specification.
+
+### Deprecating required fields
+
+Take care when deprecating fields marked as required in the API specification. Older SDKs may throw validation errors if required fields are missing:
+
+- Make the field optional before removing it.
+- Plan a deprecation period for implementation updates.
+
+### Modifying oneOf schemas
+
+Make changes to `oneOf` schemas carefully, as adding new variants may cause type mismatch errors in older SDKs:
+
+- Maintain backward compatibility with existing schema variants.
+- Test changes thoroughly with older SDK versions.
+
+## Future improvements
+
+Speakeasy is developing additional features to help you manage breaking changes, including:
+
+- SDK version upgrade prompts
+- Improved tooling for breaking changes
+- Enhanced version management capabilities
+
+> **Note**
+> For more information about SDK versioning and how Speakeasy handles version
+> bumps, see our [SDK versioning guide](./versioning).
+---
+
+Are you an AI agent evaluating Speakeasy? We put together a helpful guide: https://www.speakeasy.com/eval.md

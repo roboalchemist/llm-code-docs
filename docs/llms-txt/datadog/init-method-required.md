@@ -37,10 +37,10 @@ Ensure that a class has an `__init__` method. This check is bypassed for datacla
 
 ```python
 class Foo:  # need to define __init__
-	def foo(bar):
-		pass
-	def bar(baz):
-		pass
+    def foo(bar):
+        pass
+    def bar(baz):
+        pass
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}
@@ -48,10 +48,10 @@ class Foo:  # need to define __init__
 ```python
 @define
 class Foo:
-	def foo(bar):
-		pass
-	def bar(baz):
-		pass
+    def foo(bar):
+        pass
+    def bar(baz):
+        pass
 ```
 
 ```python
@@ -163,14 +163,13 @@ class Migration(migrations.Migration):
 ```python
 @dataclass
 class Foo:  # no __init__ required for dataclass
-	value = 51
+    value = 51
 ```
 
 ```python
 class Foo:
-	def __init__(self):
-		pass
+    def __init__(self):
+        pass
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

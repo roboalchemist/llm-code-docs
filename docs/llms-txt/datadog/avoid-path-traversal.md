@@ -45,7 +45,7 @@ To adhere to this rule, always sanitize and validate user input before using it 
 // Non-compliant: Unsafe file path handling
 class FileService {
     private val baseDir = "/app/files/"
-    
+
     fun readUserFile(request: ApplicationCall) {
         // WARNING: Direct use of user input in file paths
         val userPath = request.parameters["path"]
@@ -60,24 +60,24 @@ class FileService {
 ```kotlin
 class SecureFileService {
     private val baseDir = "/app/files/"
-    
+
     suspend fun getFile(call: ApplicationCall) {
         val fileName = call.parameters["fileName"] ?: throw BadRequestException("Missing fileName")
-        
+
         // Normalize and validate path
         val normalizedPath = File(fileName).normalize().toString()
         if (normalizedPath.contains("..")) {
             throw SecurityException("Path traversal attempted")
         }
-        
+
         val safePath = baseDir + normalizedPath.replace("../", "")
         val absolutePath = File(safePath).canonicalPath
-        
+
         // Verify file is within allowed directory
         if (!absolutePath.startsWith(File(baseDir).canonicalPath)) {
             throw SecurityException("Access denied to path outside base directory")
         }
-        
+
         val file = File(absolutePath)
         if (file.exists()) {
             call.respondFile(file)
@@ -92,6 +92,5 @@ get("/download/{fileName}") {
     secureFileService.getFile(call)
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

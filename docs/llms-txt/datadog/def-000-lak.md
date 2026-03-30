@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Incoming client certificates should be required to be 'On'
- 
+
 ## Description{% #description %}
 
 Client certificates allow for an app to request a certificate for incoming requests. Only clients that have a valid certificate can reach the app. The TLS mutual authentication technique in enterprise environments ensures the authenticity of clients to the server. If incoming client certificates are enabled, only an authenticated client who has valid certificates can access the app.

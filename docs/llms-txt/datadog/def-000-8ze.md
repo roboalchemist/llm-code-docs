@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Azure Key Vault should be re
 ---
 
 # Azure Key Vault should be recoverable
- 
+
 ## Description{% #description %}
 
 The key vault contains object keys, secrets, and certificates. If a key vault is made unavailable accidentally, it can cause immediate data loss or loss of security functions supported by the key vault objects. This includes authentication, validation, verification, and non-repudiation. It is recommended that the key vault be made recoverable by enabling the "Do Not Purge" and "Soft Delete" functions. This prevents loss of encrypted data, including storage accounts, SQL databases, and dependent services provided by key vault objects (keys, secrets, certificates, etc.), which may occur due to accidental deletion by a user or from disruptive activity by a malicious user.

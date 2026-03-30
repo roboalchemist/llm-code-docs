@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Self-signed certificates should not be used for etcd TLS
-Classification:complianceFramework:cis-kubernetesControl:2.3 
+Classification:complianceFramework:cis-kubernetesControl:2.3
 ## Description{% #description %}
 
 Do not use self-signed certificates for TLS.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # 'Create or Update Public Ip Address' activity log alert should be configured
- 
+
 ## Description{% #description %}
 
 To enhance network security monitoring and expedite the detection of suspicious activity, it is recommended to create an activity log alert specifically for the "Create or Update Public IP Addresses Rule" event. By enabling this alert, you gain valuable insights into changes made to public IP addresses rules. It is important to note that enabling this alert may lead to a substantial increase in log size, especially if there are a significant number of administrative actions performed on a server. However, the benefits of improved security monitoring outweigh the potential impact on log size.

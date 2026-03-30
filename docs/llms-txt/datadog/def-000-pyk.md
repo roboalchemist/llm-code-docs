@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure Only One Firewall Service is Active
- 
+
 ## Description{% #description %}
 
 The system must have exactly one active firewall service running to avoid conflicts and ensure consistent packet filtering. Only one of the following services should be enabled and active at any time:

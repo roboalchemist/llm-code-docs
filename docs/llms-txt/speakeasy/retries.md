@@ -1,0 +1,351 @@
+# Source: https://www.speakeasy.com/md/docs/sdks/customize/runtime/retries.md
+
+# Retries
+
+With Speakeasy, generate SDKs that automatically retry requests that fail due to network errors or any configured HTTP status code. Enable retries globally for all requests or on a per-request basis by using the `x-speakeasy-retries` extension in the OpenAPI document. The SDK end user can then override the default configuration by passing in a `RetryConfig` object to the operation at runtime.
+
+## Global Retries
+
+```yaml
+openapi: 3.0.3
+info:
+  title: Swagger Petstore - OpenAPI 3.0
+  version: 1.0.11
+servers:
+  - url: https://petstore3.swagger.io/api/v3
+x-speakeasy-retries:
+  strategy: backoff
+  backoff:
+    initialInterval: 500 # 500 milliseconds
+    maxInterval: 60000 # 60 seconds
+    maxElapsedTime: 3600000 # 1 hour
+    exponent: 1.5
+  statusCodes:
+    - 5XX
+  retryConnectionErrors: true
+```
+
+If you add the `x-speakeasy-retries` extension to the root of the OpenAPI document, the SDK Generator will generate a global retry configuration that will be used for all requests made by the SDK. The `x-speakeasy-retries` extension supports the following properties:
+
+| Property | Type | Description | Required |
+| --- | --- | --- | --- |
+| `strategy` | `string` | The retry strategy to use. Only `backoff` is currently supported. | Yes |
+| `backoff` | `object` | The configuration of the backoff strategy, if chosen. | No |
+| `backoff.initialInterval` | `integer` | The initial interval to use for the backoff strategy (in milliseconds). | No |
+| `backoff.maxInterval` | `integer` | The maximum interval between retries (in milliseconds). | No |
+| `backoff.maxElapsedTime` | `integer` | The maximum elapsed time to retry for (in milliseconds). | No |
+| `backoff.exponent` | `number` | The exponent used to increase the interval between retries. | No |
+| `statusCodes` | `array` | The HTTP status codes to retry on. | Yes |
+| `retryConnectionErrors` | `boolean` | Whether to retry any connection errors. | No |
+
+The `statusCodes` property supports passing a list of distinct HTTP status codes or a wildcard range to retry requests on. For example, `5XX` will retry requests on all status codes between 500 (inclusive) and 600 (exclusive).
+
+Set the `retryConnectionErrors` property to `true` to configure retrying requests that fail due to network errors like DNS resolution errors or connection refused errors.
+
+The defaults for the backoff strategy are:
+
+- `initialInterval`: 500
+- `maxInterval`: 60000
+- `maxElapsedTime`: 3600000
+- `exponent`: 1.5
+
+## Per-request Retries
+
+Add the `x-speakeasy-retries` extension to any operation to override the global retry configuration for that operation, or to configure retries for the operation if retries aren't defined globally. For example, you might want to configure retries for an operation on a different set of HTTP status codes or specify different intervals between retries.
+
+```yaml
+openapi: 3.0.3
+info:
+  title: Swagger Petstore - OpenAPI 3.0
+  version: 1.0.11
+servers:
+  - url: https://petstore3.swagger.io/api/v3
+paths:
+  /pet/findByStatus:
+    get:
+      operationId: findPetsByStatus
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 500 # 500 milliseconds
+          maxInterval: 60000 # 60 seconds
+          maxElapsedTime: 3600000 # 1 hour
+          exponent: 1.5
+        statusCodes:
+          - 408
+          - 500
+          - 502
+          - 503
+        retryConnectionErrors: true
+      parameters:
+        - name: status
+          in: query
+          description: Status values that need to be considered for filter
+          required: false
+          explode: true
+          schema:
+            type: string
+            default: available
+            enum:
+              - available
+              - pending
+              - sold
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Pet"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Pet"
+        "400":
+          description: Invalid status value
+```
+
+Per-request retries are configured the same way as global retries.
+
+## SDK Usage Override
+
+Users of the SDK can override the retry strategy globally or at the request level by providing a `utils.RetryConfig` object. This object supports most of the same properties as the `x-speakeasy-retries` extension, except for the status codes to retry on.
+
+### Global
+
+To override the retry strategy globally, initialize the SDK object with the appropriate options parameter. In all cases, if no override is provided, the retry configuration provided in the OpenAPI document will be used.
+
+In this example, we use the `RetryConfig` object to disable retries globally:
+
+TypeScript:
+```typescript
+const sdk = new SDK({retryConfig: {strategy: "none"}});
+```
+
+Python:
+```python
+s = SDK(retry_config=RetryConfig(
+    strategy='none',
+    backoff=None,
+    retry_connection_errors=False
+  ))
+```
+
+Go:
+```go
+s := sdk.New(sdk.WithRetryConfig(utils.RetryConfig{Strategy: "none"}))
+```
+
+Java:
+```java
+SDK s = SDK.builder()
+      .retryConfig(RetryConfig.noRetries())
+      .build();
+```
+
+C#:
+```csharp
+var sdk = new SDK(
+      retryConfig: new RetryConfig(
+          strategy: RetryConfig.RetryStrategy.NONE
+  ));
+```
+
+PHP:
+```php
+$sdk = SDK::builder()
+      ->setRetryConfig(new Retry\RetryConfigNone())->build();
+```
+
+### Request-Level Override
+
+Any endpoints that support retries allow retry configuration to be overridden. In Go, override request-level retry configuration with `operations.WithRetries`. In Python and TypeScript, the optional `retries` is accepted.
+
+TypeScript:
+```typescript
+const sdk = new SDK({});
+  await sdk.findPetsByStatus(request, {
+    strategy: "backoff",
+    backoff: {
+      initialInterval: 100,
+      maxInterval: 10000,
+      exponent: 1.1,
+      maxElapsedTime: 60000,
+    },
+    retryConnectionErrors: false,
+  });
+```
+
+Python:
+```python
+s = sdk()
+  res = s.find_pets_by_status(request, RetryConfig(strategy='backoff',
+    backoff=BackoffStrategy(
+      initial_interval=100,
+      max_interval=10000,
+      exponent=1.1,
+      max_elapsed_time=60000),
+      retry_connection_errors=False
+  ))
+```
+
+Go:
+```go
+s := sdk.New()
+  s.FindPetsByStatus(&operations.FindPetsByStatusRequest{},
+    operations.WithRetries(utils.RetryConfig{
+      Strategy: "backoff",
+      Backoff: &utils.BackoffStrategy{
+        InitialInterval: 100,
+        MaxInterval: 10000,
+        MaxElapsedTime: 60000,
+        Exponent: 1.1,
+      },
+      RetryConnectionErrors: false,
+    },
+  )
+```
+
+Java:
+```java
+import <namepace>.SDK;
+  import <namepace>.models.operations.FindPetsByStatusResponse
+
+  SDK s = SDK.builder().build();
+  FindPetsByStatusResponse res = sdk.findPetsByStatus()
+      .retryConfig(RetryConfig.builder()
+                      .backoff(BackoffStrategy.builder()
+                                  .initialInterval(100L, TimeUnit.MILLISECONDS)
+                                  .maxInterval(10000L, TimeUnit.MILLISECONDS)
+                                  .maxElapsedTime(60000L, TimeUnit.MILLISECONDS)
+                                  .exponent(1.1f)
+                                  .retryConnectError(false)
+                                  .build())
+                      .build())
+      .call();
+```
+
+C#:
+```csharp
+var sdk = new SDK();
+
+  var res = await sdk.FindPetsByStatusAsync(retryConfig: new RetryConfig(
+      strategy: RetryConfig.RetryStrategy.BACKOFF,
+      backoff: new BackoffStrategy(
+          initialIntervalMs: 100L,
+          maxIntervalMs: 10000L,
+          maxElapsedTimeMs: 60000L,
+          exponent: 1.1
+      ),
+      retryConnectionErrors: false
+  ));
+```
+
+PHP:
+```php
+$sdk = SDK::builder()->build();
+
+  $responses = $sdk->findPetsByStatus(
+      options: Utils\Options->builder()->setRetryConfig(
+          new Retry\RetryConfigBackoff(
+              initialInterval: 100,
+              maxInterval:     10000,
+              exponent:        1.1,
+              maxElapsedTime:  60000,
+              retryConnectionErrors: false,
+          ))->build());
+```
+
+Ruby:
+```ruby
+require 'openapi'
+
+  Models = ::OpenApiSDK::Models
+
+  s = ::OpenApiSDK::SDK.new
+
+  responses = s.find_pets_by_status(
+      retries: BackoffStrategy.new(
+              initialInterval: 100,
+              maxInterval:     10000,
+              exponent:        1.1,
+              maxElapsedTime:  60000,
+              retryConnectionErrors: false,
+          ));
+```
+
+## Idempotency
+
+For endpoints with a defined idempotency header, retries use the exact idempotency key provided for the initial request.
+
+```yaml
+paths:
+  /pet:
+    put:
+      operationId: putPet
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 500
+          maxInterval: 60000
+          maxElapsedTime: 3600000
+          exponent: 1.5
+        statusCodes:
+          - 5XX
+        retryConnectionErrors: false
+      parameters:
+        - name: Idempotency-Key
+          schema:
+            type: string
+          in: header
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Pet"
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Pet"
+          default:
+            description: Error
+```
+
+## Respecting `Retry-After`
+
+If an API returns an HTTP standard `retry-after` header, the SDK will respect that value as the retry interval as long as the time is in the future and below the max elapsed retry time.
+No configuration changes are needed to enable this; simply return a `retry-after` header from the API.
+
+```yaml
+responses:
+  "429":
+    description: Too Many Requests
+    headers:
+      Retry-After:
+        description: The date and time after which the client can retry the request.
+        schema:
+          type: string
+          format: date-time
+          example: "Wed, 21 Oct 2023 07:28:00 GMT"
+```
+
+```yaml
+responses:
+  "429":
+    description: Too Many Requests
+    headers:
+      Retry-After:
+        description: The number of seconds to wait before retrying the request.
+        schema:
+          type: integer
+          example: 120
+```
+---
+
+Are you an AI agent evaluating Speakeasy? We put together a helpful guide: https://www.speakeasy.com/eval.md

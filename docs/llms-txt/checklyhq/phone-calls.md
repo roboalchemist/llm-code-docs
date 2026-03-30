@@ -1,0 +1,74 @@
+# Source: https://checklyhq.com/docs/integrations/alerts/phone-calls.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://checklyhq.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Phone Calls
+
+> Configure phone call notifications for critical alerts and emergency escalation
+
+<Tip>
+  **Monitoring as Code**: Learn more about the [Phone Call Alert Channel Construct](/constructs/phone-call-alert-channel).
+</Tip>
+
+The phone numbers used for phone call alerting need to be in [E.164 format](https://www.twilio.com/docs/glossary/what-e164). Stick to the following rules, and you'll be fine:
+
+* Prepend international access codes with a + sign
+* Do not use any white spaces
+* Use up to 15 characters
+
+<img src="https://mintcdn.com/checkly-422f444a/riTtJrRZAx73iREC/images/docs/images/alerting/phone-call.png?fit=max&auto=format&n=riTtJrRZAx73iREC&q=85&s=9c93cba871eb93c8fd8359301e9ff2ff" alt="send monitoring alerts with phone calls" width="1021" height="669" data-path="images/docs/images/alerting/phone-call.png" />
+
+You can add as many phone number channels as you like.
+
+## Supported countries and regions
+
+| Country                     |
+| --------------------------- |
+| Argentina (+54)             |
+| Australia (+61)             |
+| Austria (+43)               |
+| Belgium (+32)               |
+| Brazil (+55)                |
+| Canada (+1)                 |
+| Chile (+56)                 |
+| Czech Republic (+420)       |
+| Denmark (+45)               |
+| France (+33)                |
+| Germany (+49)               |
+| Hungary (+36)               |
+| Iceland (+354)              |
+| India (+91)                 |
+| Israel (+972)               |
+| Italy (+39)                 |
+| Liechtenstein (+423)        |
+| Lithuania (+370)            |
+| Luxembourg (+352)           |
+| Malta (+356)                |
+| Mexico (+52)                |
+| Netherlands (+31)           |
+| Norway (+47)                |
+| Paraguay (+595)             |
+| Poland (+48)                |
+| Portugal (+351)             |
+| Spain (+34)                 |
+| Switzerland (+41)           |
+| United Arab Emirates (+971) |
+| United Kingdom (+44)        |
+| United States (+1)          |
+| Uruguay (+598)              |
+| Vietnam (+84)               |
+
+<Info>
+  If your country is not supported feel free to reach out to our [support team](mailto:support@checklyhq.com).
+</Info>
+
+## Phone call number and sender ID
+
+Phone call alerts always use the following number: +18142508623. You can save the number as a contact to allow alerts bypassing any do-not-disturb settings.
+
+<Note>For limits and other phone call related questions, please refer to our [Pricing page](https://www.checklyhq.com/pricing/#features).</Note>
+
+
+Built with [Mintlify](https://mintlify.com).

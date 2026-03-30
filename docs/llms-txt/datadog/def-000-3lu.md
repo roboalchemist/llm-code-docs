@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Disable Kernel Parameter for Accepting Source-Routed Packets on IPv6 Interfaces by Default
- 
+
 ## Description{% #description %}
 
 To set the runtime status of the `net.ipv6.conf.default.accept_source_route` kernel parameter, run the following command:
@@ -78,7 +78,7 @@ fi
 
 #
 # If net.ipv6.conf.default.accept_source_route present in /etc/sysctl.conf, change value to appropriate value
-#	else, add "net.ipv6.conf.default.accept_source_route = value" to /etc/sysctl.conf
+#   else, add "net.ipv6.conf.default.accept_source_route = value" to /etc/sysctl.conf
 #
 
 # Strip any search characters in the key arg so that the key can be replaced without

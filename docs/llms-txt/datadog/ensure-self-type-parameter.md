@@ -52,9 +52,8 @@ public readonly struct MyDate : IParsable<DateOnly> {
 ```csharp
 using System;
 
-public readonly class MyDate : IParsable<MyDate> { 
+public readonly class MyDate : IParsable<MyDate> {
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -1,0 +1,72 @@
+# Source: https://raw.githubusercontent.com/Fewsats/sherlock-python/refs/heads/main/llms.txt
+
+# Sherlock Domains Python SDK
+
+A Python SDK for managing domain names and DNS records through the Sherlock API.
+
+## Installation
+
+```sh
+pip install sherlock-domains
+```
+
+## Core Concepts
+
+- The SDK provides a `Sherlock` class that handles authentication and API interactions
+- Uses Ed25519 keypairs for authentication
+- Supports domain search, purchase, and DNS management
+- Handles contact information required by ICANN
+- Supports credit card and Lightning Network payments
+
+## Key Methods
+
+### Authentication & Setup
+- `Sherlock(priv='')` - Initialize client with optional private key
+- `me()` - Get authenticated user information 
+
+### Domain Management
+- `search(q)` - Search for available domains
+- `domains()` - List owned domains
+- `request_payment_details(sid, domain, payment_method='lightning')` - Purchase a domain
+
+### Contact Information
+- `set_contact_information(first_name, last_name, email, address, city, state, postal_code, country)` - Set ICANN contact info
+- `get_contact_information()` - Get current contact information
+
+### DNS Management
+- `dns_records(domain_id)` - Get DNS records for a domain
+- `create_dns(domain_id, type, name, value, ttl)` - Create DNS record
+- `update_dns(domain_id, record_id, type, name, value, ttl)` - Update DNS record
+- `delete_dns(domain_id, record_id)` - Delete DNS record
+
+## Common Patterns
+
+1. Domain Search & Purchase:
+```python
+from sherlock.core import Sherlock
+
+s = Sherlock()
+results = s.search("example.com")
+if results['available']:
+    purchase = s.request_payment_details(
+        results['id'], 
+        "example.com",
+        payment_method='lightning'
+    )
+```
+
+2. DNS Management:
+```python
+s = Sherlock()
+domains = s.domains()
+domain_id = domains[0]['id']
+
+# Create DNS record
+s.create_dns(
+    domain_id,
+    type="A",
+    name="www",
+    value="1.2.3.4",
+    ttl=3600
+)
+```

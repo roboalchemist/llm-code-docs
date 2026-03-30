@@ -7,13 +7,13 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify User Who Owns /etc/at
 ---
 
 # Verify User Who Owns /etc/at.allow file
- 
+
 ## Description{% #description %}
 
 If `/etc/at.allow` exists, it must be owned by `root`. To properly set the owner of `/etc/at.allow`, run the command:
 
 ```
-$ sudo chown root /etc/at.allow 
+$ sudo chown root /etc/at.allow
 ```
 
 ## Rationale{% #rationale %}

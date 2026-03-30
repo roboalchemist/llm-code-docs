@@ -1,0 +1,270 @@
+# Source: https://docs.inkeep.com/typescript-sdk/structured-outputs/artifact-components
+
+# Artifact Components in TypeScript SDK (/typescript-sdk/structured-outputs/artifact-components)
+
+Learn how to use artifact components to store and retrieve data from the agent
+
+
+
+<>
+  Artifacts are structured components that capture and store source information when agents interact with tools or other agents. They act as a record-keeping system, automatically documenting where information comes from during tool and agent interactions.
+
+  ## How Artifacts Work
+
+  When an agent uses a tool (whether that's another agent or a utility tool), the response is automatically parsed to create artifacts. These artifacts store:
+
+  * The source of the information (tool/agent used)
+  * The relevant content from the response
+  * Metadata about the interaction
+
+  ## Oversized Artifacts
+
+  When tool results exceed **30% of the model's context window**, they're marked as **oversized** to prevent context overflow.
+
+  **What happens:**
+
+  * ✅ Full data is persisted to storage
+  * ❌ Retrieval is blocked to preserve context space
+  * ⚠️ Visual warnings appear in the UI traces panel
+
+  **UI Indicators:**
+
+  * Amber warning badge in timeline: `⚠️ Oversized artifact (~247K tokens)`
+  * Detailed warning in expanded view with size and percentage of context
+
+  **Tracing Attributes:**
+
+  * `artifact.is_oversized` - Boolean flag
+  * `artifact.retrieval_blocked` - Whether retrieval is blocked
+  * `artifact.original_token_size` - Estimated token count
+  * `artifact.context_window_size` - Model's context limit
+
+  **Troubleshooting:**
+  If seeing many oversized artifacts, consider:
+
+  * Filter tool outputs to return only necessary fields
+  * Paginate large result sets
+  * Pre-summarize responses in tools
+  * Use models with larger context windows
+</>
+
+<SkillRule id="artifact-components-definition" skills="typescript-sdk" title="Defining Artifact Components" description="How to define artifact components with preview fields for citations and sources">
+  ## Defining Artifact Components
+
+  Artifact components are defined using the `artifactComponent` builder function. **We recommend using Zod schemas** for type safety and better developer experience.
+
+  <Callout>
+    **Quick Start**: Citation artifacts are automatically included when you create
+    a new project with `npx @inkeep/create-agents`, providing a ready-to-use
+    example.
+  </Callout>
+
+  ```typescript
+  import { artifactComponent } from "@inkeep/agents-sdk";
+  import { z } from "zod";
+  import { preview } from "@inkeep/agents-core";
+
+  export const citation = artifactComponent({
+    id: "citation",
+    name: "citation",
+    description: "Structured factual information extracted from search results",
+    props: z.object({
+      title: preview(z.string().describe("Title of the source document")),
+      url: preview(z.string().describe("URL of the source document")),
+      record_type: preview(
+        z.string().describe("Type of record (documentation, blog, guide, etc.)")
+      ),
+      content: z
+        .array(
+          z.object({
+            type: z
+              .string()
+              .describe("Type of content (text, image, video, etc.)"),
+            text: z.string().describe("The actual text content"),
+          })
+        )
+        .describe(
+          "Array of structured content blocks extracted from the document"
+        ),
+    }),
+  });
+  ```
+
+  <Callout>
+    JSON Schema is also supported. Set `inPreview: true` on properties instead of
+    using `preview()`.
+  </Callout>
+
+  ## Schema Requirements
+
+  <Callout type="warning">
+    **Critical**: Artifact schemas must match your tool's output structure. The
+    system uses JMESPath selectors on JSON - it **cannot extract from free text**.
+  </Callout>
+
+  ```typescript
+  // ❌ WRONG: Tool returns text, schema expects structured data
+  // Tool output: { result: { content: [{ text: "Weather: Sunny, 75°F" }] } }
+  props: z.object({
+    temperature: z.number(), // ❌ Cannot extract number from text
+    condition: z.string(), // ❌ Cannot extract condition from text
+  });
+
+  // ✅ CORRECT: Tool returns structured data matching schema
+  // Tool output: { result: { temperature: 75, condition: "Sunny" } }
+  props: z.object({
+    temperature: z.number(),
+    condition: z.string(),
+  });
+  ```
+
+  Use OpenTelemetry traces to debug schema validation issues.
+
+  ## Preview Fields
+
+  Use `preview()` to mark fields for immediate availability. The `preview()` helper automatically sets `inPreview: true` in the generated schema.
+
+  **Preview fields are:**
+
+  * Included in the agent's context when an artifact is referenced, so the agent can reason about them directly
+  * Shown to other agents in the project for cross-agent reasoning
+  * Streamed in real-time to clients (Vercel AI SDK)
+  * Auto-rendered by Inkeep's widget (citations as interactive cards)
+  * Available immediately in UI (full artifact loads on-demand)
+
+  **Non-preview fields** are persisted in storage but kept out of the agent's working context by default, keeping the context window lean. Agents can retrieve the complete artifact — including all non-preview fields — on demand when they need it.
+
+  **No schema?** Omit `props` to save the entire tool result without filtering.
+
+  ## Accessing Artifact Data
+
+  Agents can access artifact data in a few ways:
+
+  * **In context** — after creating or referencing an artifact, the agent can see its preview fields directly in its working context
+  * **Passing to a tool** — the agent can supply an artifact as an argument to a tool; the tool receives the complete artifact data, including all non-preview fields
+  * **On-demand retrieval** — the agent can explicitly fetch the full artifact when it needs to read non-preview fields itself
+
+  Not every intermediate tool result needs to become an artifact. When an agent chains tool calls — passing one tool's output directly into the next — no artifact is created and nothing surfaces to the user. See [Tool Output Pipelines](/typescript-sdk/tools/function-tools#tool-output-pipelines).
+
+  ## Passing Artifacts to Tools
+
+  When an agent passes an artifact to a tool as an argument, the tool receives the **complete artifact data** — all fields, including those not marked `inPreview`. This means you can design tools that work with rich artifact content without needing to fetch or reconstruct data manually.
+
+  For example, a document processing tool can access the full `content` array from a citation artifact even though `content` is a non-preview field:
+
+  ```typescript
+  import { functionTool } from "@inkeep/agents-sdk";
+  import { z } from "zod";
+
+  const summarizeTool = functionTool({
+    id: "summarize-document",
+    description: "Summarize the content of a document artifact",
+    inputSchema: z.object({
+      // The agent passes an artifact here; the tool receives all fields
+      document: z.object({
+        title: z.string(),
+        url: z.string(),
+        content: z.array(z.object({ type: z.string(), text: z.string() })),
+      }),
+    }),
+    execute: async ({ document }) => {
+      // document.content is fully available here, even though it's non-preview
+      const fullText = document.content.map((c) => c.text).join("\n");
+      return { summary: fullText.slice(0, 500) };
+    },
+  });
+  ```
+
+  ## Artifact Creation
+
+  When an agent uses a tool:
+
+  1. The tool processes the request and returns a response
+  2. **The agent decides** whether to create an artifact from the tool response
+  3. If created, the artifact is parsed according to the artifact component schema
+  4. The artifact can be associated with any data components that reference this information
+
+  ## Artifacts vs Data Components
+
+  **Artifacts** and **Data Components** are different:
+
+  * **Artifacts**: Citations/sources from tool results stored in the database
+  * **Data Components**: UI elements agents output in responses (Text, Fact, etc.)
+
+  Artifacts provide the source citations that back up information in data components.
+
+  ## Using in Agents
+
+  After defining your artifact component, use it in an agent:
+
+  ```typescript
+  import { agent } from "@inkeep/agents-sdk";
+  import { citation } from "./artifact-components/citation";
+
+  const searchAgent = agent({
+    id: "search-agent",
+    canUse: () => [searchTool],
+    prompt: "Search for information and cite sources using artifacts.",
+    artifactComponents: () => [citation],
+  });
+  ```
+
+  ## Citation Artifacts
+
+  Citation artifacts that are named `citation` and have `title` and `url` preview fields are automatically rendered as interactive cards by Inkeep's widget library. This provides source attribution and allows users to verify information at the source.
+
+  <Image src="/images/citation-widget-example.png" alt="Citation artifact rendered as an interactive card in the Inkeep widget showing source attribution" style={{ marginTop: "1rem" }} />
+
+  ## Example Flow
+
+  Here's a complete example with inline artifact component definition:
+
+  ```typescript
+  import { agent } from "@inkeep/agents-sdk";
+  import { z } from "zod";
+  import { preview } from "@inkeep/agents-core";
+
+  const searchAgent = subAgent({
+    id: "search",
+    canUse: () => [searchTool],
+    prompt: "Search for information and cite sources using artifacts.",
+    artifactComponents: [
+      {
+        id: "citation",
+        name: "citation",
+        description: "Search result document",
+        props: z.object({
+          title: preview(z.string().describe("Document title")),
+          url: preview(z.string().describe("Document URL")),
+          content: z.string().describe("Document content"),
+        }),
+      },
+    ],
+  });
+  ```
+
+  ## No Schema Example
+
+  ```typescript
+  const rawDataAgent = subAgent({
+    id: "raw-data",
+    canUse: () => [apiTool],
+    prompt: "Fetch data and save complete responses.",
+    artifactComponents: [
+      {
+        id: "api-response",
+        name: "API Response",
+        description: "Complete API response data",
+        // No props - saves entire tool result
+      },
+    ],
+  });
+  ```
+
+  Example flow:
+
+  1. Agent uses search tool and gets results
+  2. **Agent decides** to create an artifact citing the source document
+  3. Artifact is stored with preview fields (title, url) shown to other agents
+  4. Other agents can reference this artifact or get full content when needed
+</SkillRule>

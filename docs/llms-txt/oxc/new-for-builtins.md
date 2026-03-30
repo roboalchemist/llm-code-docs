@@ -1,10 +1,6 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/new-for-builtins.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/new-for-builtins.md
----
-
-### What it does
+## What it does
 
 Enforces the use of `new` for the following builtins: `Object`, `Array`, `ArrayBuffer`, `BigInt64Array`,
 `BigUint64Array`, `DataView`, `Date`, `Error`, `Float32Array`, `Float64Array`, `Function`, `Int8Array`,
@@ -13,13 +9,13 @@ Enforces the use of `new` for the following builtins: `Object`, `Array`, `ArrayB
 
 Disallows the use of `new` for the following builtins: `String`, `Number`, `Boolean`, `Symbol`, `BigInt`.
 
-### Why is this bad?
+## Why is this bad?
 
 Using `new` inconsistently can cause confusion. Constructors like `Array` and `RegExp` should always use `new`
 to ensure the expected instance type. Meanwhile, `String`, `Number`, `Boolean`, `Symbol`, and `BigInt` should not use `new`,
 as they create object wrappers instead of primitive values.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

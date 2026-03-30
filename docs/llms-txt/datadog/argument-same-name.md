@@ -37,15 +37,14 @@ Function parameters cannot have the same name. Each function parameter must have
 
 ```python
 def foo(bar, bar: int, bar = 3):  # use another name for the second argument
-	pass
+    pass
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}
 
 ```python
 def foo(bar, baz):
-	pass
+    pass
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Missing Content Type HTTP he
 ---
 
 # Missing Content Type HTTP header
- 
+
 ## Description{% #description %}
 
 This publicly exposed API endpoint does not implement the `Content-Type` and `X-Content-Type-Options` HTTP headers. These headers declare the resource's media type, preventing browsers from performing MIME type sniffing. Without the headers, browsers may interpret the content in unexpected ways.

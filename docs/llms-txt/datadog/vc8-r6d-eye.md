@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Kubelet client certificate rotation should be enabled
-Classification:complianceFramework:cis-kubernetesControl:4.2.11 
+Classification:complianceFramework:cis-kubernetesControl:4.2.11
 ## Description{% #description %}
 
 Enable kubelet client certificate rotation.

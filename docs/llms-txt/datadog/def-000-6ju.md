@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Limit Users' SSH Access
 ---
 
 # Limit Users' SSH Access
- 
+
 ## Description{% #description %}
 
 By default, the SSH configuration allows any user with an account to access the system. There are several options available to limit which users and group can access the system via SSH. It is recommended that at least one of the following options be leveraged:

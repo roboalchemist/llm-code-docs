@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # CloudTrail trails should be integrated with CloudWatch Logs
- 
+
 ## Description{% #description %}
 
 It is recommended that CloudTrail logs be sent to CloudWatch Logs. AWS CloudTrail records the identity of the API caller, time of the API call, source IP address of the API caller, request parameters, and the response elements returned by the AWS service. CloudTrail uses Amazon S3 for log file storage and delivery. In addition to capturing CloudTrail logs within a specified S3 bucket for long-term analysis, real-time analysis can be performed by configuring CloudTrail to send logs to CloudWatch Logs. For a trail that is enabled in all regions in an account, CloudTrail sends log files from all those regions to a CloudWatch Logs log group.

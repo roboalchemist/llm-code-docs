@@ -1,0 +1,332 @@
+# Source: https://docs.inkeep.com/talk-to-your-agents/chat-api
+
+# How to call your AI Agent using the Chat API (/talk-to-your-agents/chat-api)
+
+Learn about details of the Vercel AI SDK data stream protocol that powers the `/run/api/chat` API endpoint.
+
+
+
+## Overview
+
+This guide shows how to call your agent directly over HTTP and stream responses using the Vercel AI SDK data stream format. It covers the exact endpoint, headers, request body, and the event stream response you should expect.
+
+<Tip>
+  If you are building a React UI, consider our prebuilt components under [React
+  UI Components](/talk-to-your-agents/react/chat-button) or [Vercel AI
+  Elements](/talk-to-your-agents/vercel-ai-sdk/ai-elements) headless primatives.
+  This page is for the low-level streaming API.
+</Tip>
+
+## Endpoint
+
+* **Path (mounted by the Run API):** `/run/api/chat`
+* **Method:** `POST`
+* **Protocol:** Server-Sent Events (SSE) encoded JSON, using Vercel AI SDK data-stream v2
+* **Content-Type (response):** `text/event-stream`
+* **Response Header:** `x-vercel-ai-data-stream: v2`
+
+<>
+  ## Authentication
+
+  Choose the authentication method:
+
+  <Tabs>
+    <Tab title="Using an API Key">
+      **Create an API Key:**
+
+      1. Open the Visual Builder Dashboard
+      2. Go to your Project → **API Keys**
+      3. Click **Create**, select the target agent
+      4. Copy the API key (it will be shown once) and store it securely
+
+      **Request Header:**
+
+      ```http
+      Authorization: Bearer <api_key>
+      ```
+    </Tab>
+
+    <Tab title="Without API key">
+      When running the API server locally with `pnpm dev`, authentication is automatically bypassed. You can use headers in the request instead:
+
+      **Request Headers:**
+
+      ```http
+      x-inkeep-tenant-id: <tenant-id>
+      x-inkeep-project-id: <project-id>
+      x-inkeep-agent-id: <agent-id>
+      ```
+
+      <Warning>
+        This mode is for development only. Never use in production as it bypasses all security checks.
+      </Warning>
+    </Tab>
+  </Tabs>
+
+  See [Authentication → Run API](/api-reference/authentication/run-api) for more details.
+</>
+
+## Request Body Schema
+
+```json
+{
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hello!"
+    }
+  ],
+  "conversationId": "optional-conversation-id"
+}
+```
+
+**Field Notes:**
+
+* **`messages`** — Must include at least one `user` message
+* **`content`** — Can be a string or an object with `parts` for multi-part content
+* **`conversationId`** — Optional; server generates one if omitted
+
+### Optional Headers
+
+* **`x-emit-operations`** — Set to `true` to include detailed data operations in the response stream. Useful for debugging and monitoring agent behavior. See [Data Operations](/typescript-sdk/data-operations) for details.
+
+### Example cURL
+
+When using an API key for auth:
+
+```bash
+curl -N \
+  -X POST "http://localhost:3002/run/api/chat" \
+  -H "Authorization: Bearer $INKEEP_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "x-emit-operations: true" \
+  -d '{
+    "messages": [
+      { "role": "user", "content": "What can you do?" }
+    ],
+    "conversationId": "chat-1234"
+  }'
+```
+
+## Response: Vercel AI SDK Data Stream (v2)
+
+The response is an SSE stream of JSON events compatible with the Vercel AI SDK UI message stream. The server sets `x-vercel-ai-data-stream: v2`.
+
+### Event Types
+
+#### Text Streaming Events
+
+* **`text-start`** — Indicates a new text segment is starting
+* **`text-delta`** — Carries the text content delta for the current segment
+* **`text-end`** — Marks the end of the current text segment
+
+#### Data Events
+
+* **`data-component`** — Structured UI data emitted by the agent (for rich UIs)
+* **`data-artifact`** — Artifact data emitted by tools/agents (documents, files, saved results)
+* **`data-operation`** — Low-level operational events (agent lifecycle, completion, errors)
+* **`data-summary`** — AI-generated status updates with user-friendly labels and contextual details
+
+#### Tool Events
+
+* **`tool-input-start`**, **`tool-input-delta`**, **`tool-input-available`** — Tool input streaming
+* **`tool-approval-request`** — Emitted when a tool requires user approval before execution
+* **`tool-output-available`**, **`tool-output-denied`** — Tool output (including approval denial)
+
+### Tool approval
+
+If a tool is configured with `needsApproval: true`, the run pauses and the stream includes a `tool-approval-request` event:
+
+```json
+{
+  "type": "tool-approval-request",
+  "toolCallId": "call_abc123def456",
+  "approvalId": "aitxt-call_abc123def456"
+}
+```
+
+To continue the run, your client must approve/deny the pending tool call. See [Tool approvals](/typescript-sdk/tools/tool-approvals).
+
+### Tool input & output events
+
+Depending on UI needs, the stream may include tool input and tool output events.
+
+```json
+{
+  "type": "tool-input-start",
+  "toolCallId": "call_abc123def456",
+  "toolName": "get_coordinates"
+}
+```
+
+```json
+{
+  "type": "tool-input-delta",
+  "toolCallId": "call_abc123def456",
+  "inputTextDelta": "{\"address\":\"San"
+}
+```
+
+```json
+{
+  "type": "tool-input-available",
+  "toolCallId": "call_abc123def456",
+  "toolName": "get_coordinates",
+  "input": { "address": "San Francisco" }
+}
+```
+
+```json
+{
+  "type": "tool-output-available",
+  "toolCallId": "call_abc123def456",
+  "output": { "lat": 37.7749, "lng": -122.4194 }
+}
+```
+
+```json
+{ "type": "tool-output-denied", "toolCallId": "call_abc123def456" }
+```
+
+### Example Stream (abbreviated)
+
+```text
+: keep-alive
+
+data: {"type":"text-start","id":"1726247200-abc123"}
+
+data: {"type":"text-delta","id":"1726247200-abc123","delta":"Hello! I can help with..."}
+
+data: {"type":"data-summary","data":{"label":"Searching documentation","details":{"summary":"Looking for relevant information","progress":"25%"}}}
+
+data: {"type":"text-delta","id":"1726247200-abc123","delta":" analyzing your query..."}
+
+data: {"type":"text-end","id":"1726247200-abc123"}
+
+data: {"type":"data-operation","data":{"type":"completion","ctx":{"agent":"search-agent","iteration":1}}}
+
+data: {"type":"data-component","id":"1726247200-abc123-0","data":{"type":"customer-info","name":"Ada","email":"ada@example.com"}}
+
+data: {"type":"data-artifact","data":{"artifact_id":"art_abc","task_id":"task_xyz","summary":{"title":"Search Results"}}}
+```
+
+### Data Event Details
+
+#### `data-operation` Events
+
+Low-level operational events with technical context. Common types include:
+
+* **`agent_initializing`** — The agent runtime is starting
+* **`agent_ready`** — Agent is ready and processing
+* **`completion`** — The agent completed the task (includes agent ID and iteration count)
+* **`error`** — Error information (also emitted as a top-level `error` event)
+
+```json
+{
+  "type": "data-operation",
+  "data": {
+    "type": "completion",
+    "ctx": { "agent": "search-agent", "iteration": 1 }
+  }
+}
+```
+
+#### `data-summary` Events
+
+AI-generated status updates designed for end-user consumption. Structure:
+
+* **`label`** — User-friendly description (required)
+* **`details`** — Optional structured/unstructured context data
+
+```json
+{
+  "type": "data-summary",
+  "data": {
+    "label": "Processing search results",
+    "details": {
+      "summary": "Found 12 relevant documents",
+      "itemsProcessed": 12,
+      "status": "analyzing"
+    }
+  }
+}
+```
+
+#### `data-artifact` Events
+
+Emitted when an agent saves an artifact from a tool result. The event carries the artifact's **preview fields** in `summary` — these are the fields marked `inPreview: true` in the artifact schema and are available immediately in the agent's context.
+
+```json
+{
+  "type": "data-artifact",
+  "data": {
+    "artifact_id": "art_123",
+    "task_id": "task_456",
+    "summary": { "title": "Weather Report", "type": "document" }
+  }
+}
+```
+
+The complete artifact data (including non-preview fields) is persisted and can be fetched on demand. See [Artifact Components](/typescript-sdk/structured-outputs/artifact-components) for details on preview vs. non-preview fields.
+
+#### `data-component` Events
+
+Structured UI data for rich interface components:
+
+```json
+{
+  "type": "data-component",
+  "id": "comp_123",
+  "data": { "type": "chart", "title": "Sales Data", "chartData": [1, 2, 3] }
+}
+```
+
+### Text Streaming Behavior
+
+* For each text segment, the server emits `text-start` → `text-delta` → `text-end`
+* The server avoids splitting content word-by-word; a segment is usually a coherent chunk
+* Operational events are queued during active text emission and flushed shortly after to preserve ordering and readability
+
+## Error Responses
+
+### Streamed Errors
+
+Errors are now delivered as `data-operation` events with unified structure:
+
+```json
+{
+  "type": "data-operation",
+  "data": {
+    "type": "error",
+    "message": "Error description",
+    "agent": "agent-id",
+    "severity": "error",
+    "code": "optional-error-code",
+    "timestamp": 1640995200000
+  }
+}
+```
+
+### Non-Streaming Errors
+
+Validation failures and other errors return JSON with an appropriate HTTP status code.
+
+## HTTP Status Codes
+
+* **`200`** — Stream opened successfully
+* **`401`** — Missing/invalid authentication
+* **`404`** — Agent not found
+* **`400`** — Invalid request body/context
+* **`500`** — Internal server error
+
+## Development Notes
+
+* **Default local base URL:** `http://localhost:3002`
+* **Endpoint mounting in the server:**
+  * `/run/api/chat` → Vercel data stream (this page)
+  * `/run/v1/mcp` → MCP JSON-RPC endpoint
+
+<Note>
+  To test quickly without a UI, use `curl -N` or a tool that supports
+  Server-Sent Events.
+</Note>

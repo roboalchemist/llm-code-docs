@@ -1,0 +1,37 @@
+# Source: https://www.jetify.com/docs/devbox/cli-reference/devbox-services/
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.jetify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# devbox services
+
+> Interact with Devbox services via process-compose
+
+```bash  theme={null}
+devbox services <ls|restart|start|stop> [flags]
+```
+
+## Options[​](#options "Direct link to Options")
+
+| Option                | Description                                            |
+| --------------------- | ------------------------------------------------------ |
+| `-c, --config string` | path to directory containing a devbox.json config file |
+| `-h, --help`          | help for services                                      |
+| `-q, --quiet`         | Quiet mode: Suppresses logs.                           |
+
+## Subcommands[​](#subcommands "Direct link to Subcommands")
+
+* [devbox services ls](/docs/devbox/cli-reference/devbox-services-ls/) - List available services
+* [devbox services restart](/docs/devbox/cli-reference/devbox-services-restart/) - Restarts service.
+  If no service is specified, restarts all services
+* [devbox services start](/docs/devbox/cli-reference/devbox-services-start/) - Starts service. If no
+  service is specified, starts all services
+* [devbox services stop](/docs/devbox/cli-reference/devbox-services-stop/) - Stops service. If no
+  service is specified, stops all services
+
+## SEE ALSO[​](#see-also "Direct link to SEE ALSO")
+
+* [devbox](/docs/devbox/cli-reference/devbox/) - Instant, easy, predictable development environments
+
+[Edit this page](https://github.com/jetify-com/docs/tree/main/docs/devbox/cli-reference/devbox-services/index.mdx)

@@ -44,6 +44,5 @@ employees = pd.read_table(input_file)
 ```python
 employees = pd.read_csv(input_file)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

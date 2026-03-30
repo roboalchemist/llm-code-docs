@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Prevent Login to Accounts With Empty Password
- 
+
 ## Description{% #description %}
 
 If an account is configured for password authentication but does not have an assigned password, it may be possible to log into the account without authentication. Remove any instances of the `nullok` in `/etc/pam.d/common-password` to prevent logins with empty passwords.

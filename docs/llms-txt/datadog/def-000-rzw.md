@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Cluster should have Private Endpoint enabled and public access disabled
- 
+
 ## Description{% #description %}
 
 A cluster should have private endpoint enabled and public access disabled. These settings will ensure the cluster is properly isolated from public access.

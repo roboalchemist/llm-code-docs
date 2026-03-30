@@ -63,6 +63,5 @@ http.verify_mode = OpenSSL::SSL::VERIFY_PEER
 request = Net::HTTP::Get.new(uri.request_uri)
 response = http.request(request)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

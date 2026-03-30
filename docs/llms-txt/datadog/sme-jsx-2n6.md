@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # API server should only authorize explicitly authorized requests
-Classification:complianceFramework:cis-kubernetesControl:1.2.7 
+Classification:complianceFramework:cis-kubernetesControl:1.2.7
 ## Description{% #description %}
 
 Do not always authorize all requests.

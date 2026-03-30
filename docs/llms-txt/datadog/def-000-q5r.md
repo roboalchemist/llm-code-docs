@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # PostgreSQL instances should have the 'log_statement' database flag set appropriately
- 
+
 ## Description{% #description %}
 
 The value of the `log_statement` flag determines the SQL statements that are logged. Valid values are:

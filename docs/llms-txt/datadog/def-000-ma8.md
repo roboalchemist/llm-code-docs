@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Storage containers storing activity logs should only be accessible by authorized personnel
- 
+
 ## Description{% #description %}
 
 Storage account containers containing activity log exports should not be publicly accessible. Allowing public access to activity log content may help an adversary identify weaknesses in the affected account's usage or configuration.

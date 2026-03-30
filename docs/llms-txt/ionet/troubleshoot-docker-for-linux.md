@@ -1,0 +1,16 @@
+# Source: https://io.net/docs/guides/workers/troubleshoot-docker-for-linux.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://io.net/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Overview
+
+> See the following articles to troubleshoot Linus for Docker:
+
+* [Docker Not Installed or Running](/guides/workers/docker-not-installed-or-running)
+* [Worker Disconnects When Containers Are Running](/guides/workers/worker-disconnects-when-containers-are-running)
+* [Connectivity Displays Incorrectly](/guides/workers/connectivity-tier-not-displaying-correctly)
+* [Waiting for IO Containers to Start](/guides/workers/waiting-for-io-containers-to-start)
+* [Stop & Restart the Platform](/guides/workers/stop-restart-the-platform)
+* [Additional Guides](/guides/workers/additional-guides)

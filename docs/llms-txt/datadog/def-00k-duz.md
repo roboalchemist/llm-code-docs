@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The kubelet configuration file should be owned by root
- 
+
 ## Description{% #description %}
 
 Ensure that if the kubelet refers to a configuration file with the `--config` argument, that file is owned by `root:root`. The kubelet reads various parameters, including security settings, from a config file specified by the `--config` argument.

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Azure user has dangerous key
 ---
 
 # Azure user has dangerous key vault role
- 
+
 ## Description{% #description %}
 
 This rule detects Azure AD users with dangerous key vault roles. It specifically detects the assignment of Key Vault Administrator and Key Vault Contributor.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Google Workspace user disabled 2-step verification
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1556-modify-authentication-process](https://attack.mitre.org/techniques/T1556)
 ## Goal{% #goal %}
 
 Detect when a Google Workspace user disables [2-step verification](https://support.google.com/accounts/answer/1064203?hl=en&co=GENIE.Platform%3DDesktop) (2SV).

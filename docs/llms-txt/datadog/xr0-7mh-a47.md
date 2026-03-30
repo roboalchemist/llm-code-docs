@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > User created interactively
 ---
 
 # User created interactively
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1136-create-account](https://attack.mitre.org/techniques/T1136) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1136-create-account](https://attack.mitre.org/techniques/T1136)
 ## What happened{% #what-happened %}
 
 A new user was created in an interactive session using `{{ @process.comm }}`.

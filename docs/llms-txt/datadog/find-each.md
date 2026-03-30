@@ -60,6 +60,5 @@ Foo.where('foo > 42').find_each do |foo_instance|
   foo_instance.party_all_night!
 end
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

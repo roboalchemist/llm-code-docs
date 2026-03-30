@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The controller manager pod specification file should be owned by root
- 
+
 ## Description{% #description %}
 
 The controller manager pod specification file ownership should be set to `root:root`. The controller manager pod specification file controls various parameters that set the behavior of various components of the master node. You should set its file ownership to maintain the integrity of the file.

@@ -47,7 +47,7 @@ func main() {
     } else {
         regexp.MustCompile(c2)
     }
-    
+
 }
 ```
 
@@ -71,9 +71,8 @@ func main() {
     regexp.MatchReader("[a-z]+")
     regexp.MatchString("[a-z]+")
     regexp.MustCompile("^error-tracking-(.+)$")
-    regexp.MustCompile("(?i)windows")    
+    regexp.MustCompile("(?i)windows")
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

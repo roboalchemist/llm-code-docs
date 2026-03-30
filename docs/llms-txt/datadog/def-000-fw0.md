@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Supply-Chain Firewall unverified package manager command
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1195-supply-chain-compromise](https://attack.mitre.org/techniques/T1195) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1195-supply-chain-compromise](https://attack.mitre.org/techniques/T1195)
 ## Goal{% #goal %}
 
 This rule detects instances of [Supply-Chain Firewall](https://github.com/DataDog/supply-chain-firewall) running a package manager command without verification, which occurs when the underlying package manager is on an unsupported version. Supply-Chain Firewall was therefore unable to resolve the command's installation targets, if any.

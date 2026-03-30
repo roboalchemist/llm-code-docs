@@ -1,0 +1,263 @@
+# Source: https://docs.infrahub.app/vscode/guides/manage-branches.md
+
+# How to Manage Branches
+
+If you need to work with Infrahub's branch-based version control system, this guide shows you how to create, delete, and manage branches using the VSCode extension.
+
+## Prerequisites[​](#prerequisites "Direct link to Prerequisites")
+
+* Infrahub VSCode extension installed
+* At least one configured Infrahub server
+* Appropriate permissions to create/delete branches on your server
+
+## Step 1: View existing branches[​](#step-1-view-existing-branches "Direct link to Step 1: View existing branches")
+
+To see all branches on a server:
+
+1. Open the Infrahub icon in the Activity Bar
+
+2. Expand the "Infrahub Servers" tree view
+
+3. Click on your server to expand it
+
+4. You'll see all branches listed with:
+
+   <!-- -->
+
+   * Branch name
+   * "(default)" marker for the main branch
+   * Branch metadata when available
+
+## Step 2: Create a new branch[​](#step-2-create-a-new-branch "Direct link to Step 2: Create a new branch")
+
+### From the tree view[​](#from-the-tree-view "Direct link to From the tree view")
+
+1. Right-click on your server in the Infrahub Servers view
+2. Select **New Branch** from the context menu
+3. Enter the branch name (for example, "feature-network-update")
+4. Optionally add a description
+5. Press Enter to create the branch
+
+### Naming conventions[​](#naming-conventions "Direct link to Naming conventions")
+
+Follow these branch naming patterns for clarity:
+
+* `feature-[description]` - New features
+* `fix-[issue-number]` - Bug fixes
+* `update-[component]` - Updates to existing components
+* `test-[scenario]` - Testing branches
+* `dev-[username]` - Personal development branches
+
+Example: `feature-datacenter-schema`
+
+## Step 3: Delete a branch[​](#step-3-delete-a-branch "Direct link to Step 3: Delete a branch")
+
+To remove a branch you no longer need:
+
+1. Expand your server in the tree view
+2. Right-click on the branch to delete
+3. Select **Delete Branch**
+4. Confirm the deletion when prompted
+
+> **Warning**: Branch deletion is permanent. Ensure you've merged or saved any important changes before deleting.
+
+## Step 4: Work with branch-specific data[​](#step-4-work-with-branch-specific-data "Direct link to Step 4: Work with branch-specific data")
+
+### Execute queries on specific branches[​](#execute-queries-on-specific-branches "Direct link to Execute queries on specific branches")
+
+When running GraphQL queries:
+
+1. Right-click on a query in the Infrahub YAML view
+2. Select **Execute GraphQL Query**
+3. Choose your server
+4. Select the target branch from the list
+5. The query runs against that branch's data
+
+### Compare data across branches[​](#compare-data-across-branches "Direct link to Compare data across branches")
+
+To compare data between branches, execute the same query on different branches:
+
+```
+query BranchComparison {
+  NetworkDevice {
+    count
+    edges {
+      node {
+        hostname {
+          value
+        }
+        _updated_at
+      }
+    }
+  }
+}
+```
+
+Run this query on:
+
+1. Main branch - baseline data
+2. Feature branch - modified data
+3. Compare the results to see differences
+
+## Step 5: Branch workflow examples[​](#step-5-branch-workflow-examples "Direct link to Step 5: Branch workflow examples")
+
+### Feature development workflow[​](#feature-development-workflow "Direct link to Feature development workflow")
+
+1. **Create Feature Branch**
+
+   ```
+   Name: feature-add-firewall-schema
+   Description: Adding firewall device schema and relationships
+   ```
+
+2. **Develop and Test**
+
+   * Modify schemas
+   * Test queries against the branch
+   * Validate changes
+
+3. **Merge Process**
+
+   * Review changes
+   * Merge via Infrahub UI or API
+   * Delete feature branch after merge
+
+### Hotfix workflow[​](#hotfix-workflow "Direct link to Hotfix workflow")
+
+1. **Create Hotfix Branch**
+
+   ```
+   Name: fix-device-status-issue
+   Description: Urgent fix for device status validation
+   ```
+
+2. **Apply Fix**
+
+   * Make necessary corrections
+   * Test on hotfix branch
+
+3. **Deploy**
+
+   * Merge to main
+   * Verify fix
+   * Clean up branch
+
+## Step 6: Advanced branch management[​](#step-6-advanced-branch-management "Direct link to Step 6: Advanced branch management")
+
+### Working with long-lived branches[​](#working-with-long-lived-branches "Direct link to Working with long-lived branches")
+
+For branches that persist over time:
+
+```
+# Document branch purposes in your project
+# branches.yml
+branches:
+  - name: develop
+    purpose: Integration branch for ongoing development
+    merge_target: main
+    
+  - name: staging
+    purpose: Pre-production testing
+    merge_target: main
+    
+  - name: feature-q4-updates
+    purpose: Q4 feature development
+    merge_target: develop
+```
+
+### Branch metadata tracking[​](#branch-metadata-tracking "Direct link to Branch metadata tracking")
+
+Track branch information in your queries:
+
+```
+query BranchInfo {
+  Branch {
+    edges {
+      node {
+        name
+        description
+        created_at
+        branched_from
+        is_default
+        has_schema_changes
+      }
+    }
+  }
+}
+```
+
+## Validation[​](#validation "Direct link to Validation")
+
+To ensure branch operations are working:
+
+1. **Creation Verification**: New branch appears in tree view immediately
+2. **Query Testing**: Execute a query against the new branch
+3. **Deletion Confirmation**: Deleted branch disappears from tree view
+4. **Refresh Check**: Tree view updates every 10 seconds automatically
+
+## Best practices[​](#best-practices "Direct link to Best practices")
+
+### Branch lifecycle[​](#branch-lifecycle "Direct link to Branch lifecycle")
+
+1. **Create** with descriptive names
+2. **Develop** in isolation
+3. **Test** thoroughly on the branch
+4. **Review** changes before merging
+5. **Merge** when ready
+6. **Delete** after successful merge
+
+### Naming strategy[​](#naming-strategy "Direct link to Naming strategy")
+
+Use consistent prefixes:
+
+* `feature-` for new functionality
+* `fix-` for bug fixes
+* `update-` for updates
+* `test-` for experiments
+* `release-` for release preparation
+
+### Documentation[​](#documentation "Direct link to Documentation")
+
+Document active branches:
+
+```
+## Active Branches
+
+### feature-network-redesign
+- **Created**: 2024-01-15
+- **Owner**: Network Team
+- **Purpose**: Redesigning network schema for multi-vendor support
+- **Target Merge**: 2024-02-01
+
+### fix-validation-error
+- **Created**: 2024-01-20
+- **Owner**: DevOps
+- **Purpose**: Fix schema validation for IP addresses
+- **Target Merge**: ASAP
+```
+
+## Troubleshooting[​](#troubleshooting "Direct link to Troubleshooting")
+
+### Branch creation fails[​](#branch-creation-fails "Direct link to Branch creation fails")
+
+* Check server permissions
+* Verify branch name doesn't already exist
+* Ensure valid characters in branch name (alphanumeric, hyphens, underscores)
+
+### Branch not appearing[​](#branch-not-appearing "Direct link to Branch not appearing")
+
+* Wait 10 seconds for automatic refresh
+* Manually reload VSCode window if needed
+* Check server connectivity
+
+### Cannot delete branch[​](#cannot-delete-branch "Direct link to Cannot delete branch")
+
+* Verify you have deletion permissions
+* Ensure branch isn't protected
+* Check if branch is the default branch (cannot be deleted)
+
+## Related resources[​](#related-resources "Direct link to Related resources")
+
+* [How to Execute GraphQL Queries](/vscode/guides/execute-graphql-queries.md)
+* [Understanding the Extension Architecture](/vscode/topics/extension-architecture.md)
+* [Extension Commands Reference](/vscode/reference/commands-settings.md)

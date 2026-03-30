@@ -56,39 +56,39 @@ curl --location 'https://api.cloudcraft.co/blueprint'
 package main
 
 import (
-	"context"
-	"log"
-	"os"
+    "context"
+    "log"
+    "os"
 
-	"github.com/DataDog/cloudcraft-go"
+    "github.com/DataDog/cloudcraft-go"
 )
 
 func main() {
-	// Get the API key from the environment.
-	key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
-	if !ok {
-		log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
-	}
+    // Get the API key from the environment.
+    key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
+    if !ok {
+        log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
+    }
 
-	// Create new Config to initialize a Client.
-	cfg := cloudcraft.NewConfig(key)
+    // Create new Config to initialize a Client.
+    cfg := cloudcraft.NewConfig(key)
 
-	// Create a new Client instance with the given Config.
-	client, err := cloudcraft.NewClient(cfg)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new Client instance with the given Config.
+    client, err := cloudcraft.NewClient(cfg)
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// List all blueprints in the Cloudcraft account.
-	blueprints, _, err := client.Blueprint.List(context.Background())
-	if err != nil {
-		log.Fatal(err)
-	}
+    // List all blueprints in the Cloudcraft account.
+    blueprints, _, err := client.Blueprint.List(context.Background())
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Print the name of each blueprint.
-	for _, blueprint := range blueprints {
-		log.Println(blueprint.Name)
-	}
+    // Print the name of each blueprint.
+    for _, blueprint := range blueprints {
+        log.Println(blueprint.Name)
+    }
 }
 ```
 
@@ -212,49 +212,49 @@ curl --location 'https://api.cloudcraft.co/blueprint' \
 package main
 
 import (
-	"context"
-	"log"
-	"os"
+    "context"
+    "log"
+    "os"
 
-	"github.com/DataDog/cloudcraft-go"
+    "github.com/DataDog/cloudcraft-go"
 )
 
 func main() {
-	// Get the API key from the environment.
-	key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
-	if !ok {
-		log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
-	}
+    // Get the API key from the environment.
+    key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
+    if !ok {
+        log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
+    }
 
-	// Check if the command line arguments are correct.
-	if len(os.Args) != 2 {
-		log.Fatalf("usage: %s <blueprint-name>", os.Args[0])
-	}
+    // Check if the command line arguments are correct.
+    if len(os.Args) != 2 {
+        log.Fatalf("usage: %s <blueprint-name>", os.Args[0])
+    }
 
-	// Create new Config to initialize a Client.
-	cfg := cloudcraft.NewConfig(key)
+    // Create new Config to initialize a Client.
+    cfg := cloudcraft.NewConfig(key)
 
-	// Create a new Client instance with the given Config.
-	client, err := cloudcraft.NewClient(cfg)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new Client instance with the given Config.
+    client, err := cloudcraft.NewClient(cfg)
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Create a simple blueprint with the name coming from a command line argument.
-	blueprint, _, err := client.Blueprint.Create(
-		context.Background(),
-		&cloudcraft.Blueprint{
-			Data: &cloudcraft.BlueprintData{
-				Name: os.Args[1],
-			},
-		},
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a simple blueprint with the name coming from a command line argument.
+    blueprint, _, err := client.Blueprint.Create(
+        context.Background(),
+        &cloudcraft.Blueprint{
+            Data: &cloudcraft.BlueprintData{
+                Name: os.Args[1],
+            },
+        },
+    )
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Print the blueprint ID.
-	log.Println(blueprint.ID)
+    // Print the blueprint ID.
+    log.Println(blueprint.ID)
 }
 ```
 
@@ -355,42 +355,42 @@ curl --location --request DELETE 'https://api.cloudcraft.co/blueprint/{blueprint
 package main
 
 import (
-	"context"
-	"log"
-	"os"
+    "context"
+    "log"
+    "os"
 
-	"github.com/DataDog/cloudcraft-go"
+    "github.com/DataDog/cloudcraft-go"
 )
 
 func main() {
-	// Get the API key from the environment.
-	key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
-	if !ok {
-		log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
-	}
+    // Get the API key from the environment.
+    key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
+    if !ok {
+        log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
+    }
 
-	// Show usage if the number of command line arguments is not correct.
-	if len(os.Args) != 2 {
-		log.Fatalf("usage: %s <blueprint-id>", os.Args[0])
-	}
+    // Show usage if the number of command line arguments is not correct.
+    if len(os.Args) != 2 {
+        log.Fatalf("usage: %s <blueprint-id>", os.Args[0])
+    }
 
-	// Create new Config to initialize a Client.
-	cfg := cloudcraft.NewConfig(key)
+    // Create new Config to initialize a Client.
+    cfg := cloudcraft.NewConfig(key)
 
-	// Create a new Client instance with the given Config.
-	client, err := cloudcraft.NewClient(cfg)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new Client instance with the given Config.
+    client, err := cloudcraft.NewClient(cfg)
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Delete the blueprint with the ID taken from a command line argument.
-	_, err = client.Blueprint.Delete(
-		context.Background(),
-		os.Args[1],
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Delete the blueprint with the ID taken from a command line argument.
+    _, err = client.Blueprint.Delete(
+        context.Background(),
+        os.Args[1],
+    )
+    if err != nil {
+        log.Fatal(err)
+    }
 }
 ```
 
@@ -472,45 +472,45 @@ curl --location 'https://api.cloudcraft.co/blueprint/{blueprint_id}'
 package main
 
 import (
-	"context"
-	"log"
-	"os"
+    "context"
+    "log"
+    "os"
 
-	"github.com/DataDog/cloudcraft-go"
+    "github.com/DataDog/cloudcraft-go"
 )
 
 func main() {
-	// Get the API key from the environment.
-	key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
-	if !ok {
-		log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
-	}
+    // Get the API key from the environment.
+    key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
+    if !ok {
+        log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
+    }
 
-	// Show usage if the number of command line arguments is not correct.
-	if len(os.Args) != 2 {
-		log.Fatalf("usage: %s <blueprint-id>", os.Args[0])
-	}
+    // Show usage if the number of command line arguments is not correct.
+    if len(os.Args) != 2 {
+        log.Fatalf("usage: %s <blueprint-id>", os.Args[0])
+    }
 
-	// Create new Config to initialize a Client.
-	cfg := cloudcraft.NewConfig(key)
+    // Create new Config to initialize a Client.
+    cfg := cloudcraft.NewConfig(key)
 
-	// Create a new Client instance with the given Config.
-	client, err := cloudcraft.NewClient(cfg)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new Client instance with the given Config.
+    client, err := cloudcraft.NewClient(cfg)
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Get the blueprint with the ID taken from a command line argument.
-	blueprint, _, err := client.Blueprint.Get(
-		context.Background(),
-		os.Args[1],
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Get the blueprint with the ID taken from a command line argument.
+    blueprint, _, err := client.Blueprint.Get(
+        context.Background(),
+        os.Args[1],
+    )
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Print the blueprint ID.
-	log.Println(blueprint.ID)
+    // Print the blueprint ID.
+    log.Println(blueprint.ID)
 }
 ```
 
@@ -598,60 +598,60 @@ curl --location --request PUT 'https://api.cloudcraft.co/blueprint/{blueprint_id
 package main
 
 import (
-	"context"
-	"log"
-	"os"
+    "context"
+    "log"
+    "os"
 
-	"github.com/DataDog/cloudcraft-go"
+    "github.com/DataDog/cloudcraft-go"
 )
 
 func main() {
-	// Get the API key from the environment.
-	key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
-	if !ok {
-		log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
-	}
+    // Get the API key from the environment.
+    key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
+    if !ok {
+        log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
+    }
 
-	// Check if the command line arguments are correct.
-	if len(os.Args) != 3 {
-		log.Fatalf("usage: %s <blueprint-id> <blueprint-name>", os.Args[0])
-	}
+    // Check if the command line arguments are correct.
+    if len(os.Args) != 3 {
+        log.Fatalf("usage: %s <blueprint-id> <blueprint-name>", os.Args[0])
+    }
 
-	// Create new Config to initialize a Client.
-	cfg := cloudcraft.NewConfig(key)
+    // Create new Config to initialize a Client.
+    cfg := cloudcraft.NewConfig(key)
 
-	// Create a new Client instance with the given Config.
-	client, err := cloudcraft.NewClient(cfg)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new Client instance with the given Config.
+    client, err := cloudcraft.NewClient(cfg)
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Update the blueprint with the ID and name coming from command line
-	// arguments. Add a new EC2 node to the blueprint.
-	_, err = client.Blueprint.Update(
-		context.Background(),
-		&cloudcraft.Blueprint{
-			ID:   os.Args[1],
-			Name: os.Args[2],
-			Data: &cloudcraft.BlueprintData{
-				Name: os.Args[2],
-				Nodes: []map[string]any{
-					{
-						"id":           "98172baa-a059-4b04-832d-8a7f5d14b595",
-						"type":         "ec2",
-						"region":       "us-east-1",
-						"platform":     "linux",
-						"instanceType": "m5",
-						"instanceSize": "large",
-					},
-				},
-			},
-		},
-		"",
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Update the blueprint with the ID and name coming from command line
+    // arguments. Add a new EC2 node to the blueprint.
+    _, err = client.Blueprint.Update(
+        context.Background(),
+        &cloudcraft.Blueprint{
+            ID:   os.Args[1],
+            Name: os.Args[2],
+            Data: &cloudcraft.BlueprintData{
+                Name: os.Args[2],
+                Nodes: []map[string]any{
+                    {
+                        "id":           "98172baa-a059-4b04-832d-8a7f5d14b595",
+                        "type":         "ec2",
+                        "region":       "us-east-1",
+                        "platform":     "linux",
+                        "instanceType": "m5",
+                        "instanceSize": "large",
+                    },
+                },
+            },
+        },
+        "",
+    )
+    if err != nil {
+        log.Fatal(err)
+    }
 }
 ```
 
@@ -764,53 +764,53 @@ curl --location 'https://api.cloudcraft.co/blueprint/{blueprint_id}/{format}'
 package main
 
 import (
-	"context"
-	"log"
-	"os"
+    "context"
+    "log"
+    "os"
 
-	"github.com/DataDog/cloudcraft-go"
+    "github.com/DataDog/cloudcraft-go"
 )
 
 func main() {
-	// Get the API key from the environment.
-	key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
-	if !ok {
-		log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
-	}
+    // Get the API key from the environment.
+    key, ok := os.LookupEnv("CLOUDCRAFT_API_KEY")
+    if !ok {
+        log.Fatal("missing env var: CLOUDCRAFT_API_KEY")
+    }
 
-	// Check if the command line arguments are correct.
-	if len(os.Args) != 2 {
-		log.Fatalf("usage: %s <blueprint-id>", os.Args[0])
-	}
+    // Check if the command line arguments are correct.
+    if len(os.Args) != 2 {
+        log.Fatalf("usage: %s <blueprint-id>", os.Args[0])
+    }
 
-	// Create new Config to initialize a Client.
-	cfg := cloudcraft.NewConfig(key)
+    // Create new Config to initialize a Client.
+    cfg := cloudcraft.NewConfig(key)
 
-	// Create a new Client instance with the given Config.
-	client, err := cloudcraft.NewClient(cfg)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Create a new Client instance with the given Config.
+    client, err := cloudcraft.NewClient(cfg)
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Export the blueprint as an image with the given blueprint-id coming from
-	// a command line argument.
-	image, _, err := client.Blueprint.ExportImage(
-		context.Background(),
-		os.Args[1],
-		"png",
-		&cloudcraft.ImageExportParams{
-			Width:  1920,
-			Height: 1080,
-		},
-	)
-	if err != nil {
-		log.Fatal(err)
-	}
+    // Export the blueprint as an image with the given blueprint-id coming from
+    // a command line argument.
+    image, _, err := client.Blueprint.ExportImage(
+        context.Background(),
+        os.Args[1],
+        "png",
+        &cloudcraft.ImageExportParams{
+            Width:  1920,
+            Height: 1080,
+        },
+    )
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	// Save the blueprint export to a file.
-	if err := os.WriteFile("blueprint.png", image, 0o600); err != nil {
-		log.Fatal(err)
-	}
+    // Save the blueprint export to a file.
+    if err := os.WriteFile("blueprint.png", image, 0o600); err != nil {
+        log.Fatal(err)
+    }
 }
 ```
 

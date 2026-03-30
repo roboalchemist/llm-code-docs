@@ -1,0 +1,101 @@
+# Source: https://www.lucide.dev/guide/static/font/color.md
+
+# Source: https://www.lucide.dev/guide/angular/basics/color.md
+
+# Source: https://www.lucide.dev/guide/react-native/basics/color.md
+
+# Source: https://www.lucide.dev/guide/preact/basics/color.md
+
+# Source: https://www.lucide.dev/guide/astro/basics/color.md
+
+# Source: https://www.lucide.dev/guide/solid/basics/color.md
+
+# Source: https://www.lucide.dev/guide/svelte/basics/color.md
+
+# Source: https://www.lucide.dev/guide/vue/basics/color.md
+
+# Source: https://www.lucide.dev/guide/react/basics/color.md
+
+# Source: https://www.lucide.dev/guide/lucide/basics/color.md
+
+---
+url: /guide/lucide/basics/color.md
+description: >-
+  Learn how to customize the color of Lucide icons in your Vanilla JavaScript
+  applications using the color attribute and CSS.
+---
+
+# Color
+
+By default, all icons have the color value: `currentColor`. This keyword uses the element's computed text `color` value to represent the icon color.
+
+Read more about [`currentColor` on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#currentcolor_keyword).
+
+## Adjust the color using the `color` attribute
+
+The color can be adjusted by passing the color attribute to the element.
+
+::: sandpack {template=vanilla showTabs=false editorHeight=295 editorWidthPercentage=60 dependencies="lucide"}
+
+```html /index.html [active]
+<!DOCTYPE html>
+<html>
+  <body>
+    <i data-lucide="smile" color="#3e9392"></i>
+
+    <script src="index.js"></script>
+  </body>
+</html>
+```
+
+```js /index.js
+import "./styles.css";
+
+import { createIcons, Smile } from 'lucide/dist/cjs/lucide';
+
+createIcons({
+  icons: {
+    Smile,
+  }
+});
+
+```
+
+:::
+
+## Using parent elements text color value
+
+Because the color of lucide icons uses `currentColor`, the color of the icon depends on the computed `color` of the element, or it inherits it from its parent.
+
+For example, if a parent element's color value is `#fff` and one of the children is a lucide icon, the color of the icon will be rendered  as `#fff`. This is browser native behavior.
+
+::: sandpack {template=vanilla showTabs=false editorHeight=300 editorWidthPercentage=60 dependencies="lucide"}
+
+```html /index.html [active]
+<!DOCTYPE html>
+<html>
+  <body>
+    <button style="color: white">
+      <i data-lucide="thumbs-up"></i>
+      Like
+    </button>
+
+    <script src="index.js"></script>
+  </body>
+</html>
+```
+
+```js /index.js [hidden]
+import "./styles.css";
+
+import { createIcons, ThumbsUp } from 'lucide/dist/cjs/lucide';
+
+createIcons({
+  icons: {
+    ThumbsUp,
+  }
+});
+
+```
+
+:::

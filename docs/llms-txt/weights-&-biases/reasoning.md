@@ -1,0 +1,53 @@
+# Source: https://docs.wandb.ai/inference/response-settings/reasoning.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.wandb.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# View reasoning information
+
+> How to return and view reasoning in your W&B Inference responses
+
+Reasoning models, like [OpenAI's GPT OSS 20B](https://huggingface.co/openai/gpt-oss-20b), include information about their reasoning steps as part of the output returned in addition to the final answer. This is automatic and no additional input parameters are needed.
+
+You can determine whether a model supports reasoning or not by checking the Supported Features sections of its catalog page in the UI.
+
+You can find reasoning information in the `reasoning_content` field of responses. This field is not present in the outputs of other models.
+
+<Tabs>
+  <Tab title="Python">
+    ```python  theme={null}
+    import openai
+
+    client = openai.OpenAI(
+        base_url='https://api.inference.wandb.ai/v1',
+        api_key="<your-api-key>",  # Create an API key at https://wandb.ai/settings
+    )
+
+    response = client.chat.completions.create(
+        model="openai/gpt-oss-20b",
+        messages=[
+            {"role": "user", "content": "3.11 and 3.8, which is greater?"}
+        ],
+    )
+
+    print(response.choices[0].message.reasoning_content)
+    print("--------------------------------")
+    print(response.choices[0].message.content)
+    ```
+  </Tab>
+
+  <Tab title="Bash">
+    ```bash  theme={null}
+    curl https://api.inference.wandb.ai/v1/chat/completions \
+      -H "Content-Type: application/json" \
+      -H "Authorization: Bearer <your-api-key>" \
+      -d '{
+        "model": "openai/gpt-oss-20b",
+        "messages": [
+          { "role": "user", "content": "3.11 and 3.8, which is greater?" }
+        ],
+      }'
+    ```
+  </Tab>
+</Tabs>

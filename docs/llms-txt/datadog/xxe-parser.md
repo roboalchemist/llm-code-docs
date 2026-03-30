@@ -51,7 +51,7 @@ class XXEViewController: ViewController {
         parser.shouldResolveExternalEntities = true
         parser.parse()
     }
-    
+
 }
 ```
 
@@ -90,9 +90,8 @@ class XXEViewController: ViewController {
         parser.shouldResolveExternalEntities = false
         parser.parse()
     }
-    
+
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

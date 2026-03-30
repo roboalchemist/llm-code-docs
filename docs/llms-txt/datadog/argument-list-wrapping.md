@@ -50,7 +50,7 @@ val bar =
         b, c, // hi
     )
 
-    
+
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}
@@ -85,6 +85,5 @@ drawSquare(
     x = 10, y = 10,
 )
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

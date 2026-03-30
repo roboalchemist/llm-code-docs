@@ -1,0 +1,29 @@
+# Source: https://io.net/docs/reference/rag/system.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://io.net/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Overview
+
+> The R2R System API provides health check and monitoring capabilities for verifying platform availability and responsiveness. It enables diagnostics and readiness validation to ensure stable operation across internal and external services.
+
+The **System** endpoints in R2R provide core operational insights and utilities for monitoring and maintaining the platform’s overall health. These endpoints are primarily used to verify uptime, perform diagnostics, and ensure that the infrastructure remains responsive for both API consumers and internal services.
+
+They form the foundation for system reliability, enabling developers and administrators to quickly assess service readiness and detect potential performance issues.
+
+### Key Capabilities
+
+The System endpoints in R2R enable:
+
+* **Health monitoring** for core platform services.
+* **Diagnostics** to verify API and service responsiveness.
+* **Operational readiness checks** for infrastructure stability.
+* **Integration monitoring** to ensure dependent systems remain connected.
+* **Foundational support** for automated uptime verification and alerting.
+
+## API Endpoints
+
+| Method | Endpoint                                      | Description                               |
+| ------ | --------------------------------------------- | ----------------------------------------- |
+| GET    | [/health](/reference/rag/system/health-check) | Check system health and readiness status. |

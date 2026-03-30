@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Unauthenticated route returns PCI regulated data
- 
+
 ## Description{% #description %}
 
 The API allows unauthenticated users to access PCI regulated data, which may not be intended.

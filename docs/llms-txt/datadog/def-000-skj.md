@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure managed identity has dangerous key vault role
- 
+
 ## Description{% #description %}
 
 This rule detects Azure AD managed identities with dangerous key vault roles. It specifically detects the assignment of Key Vault Administrator and Key Vault Contributor.

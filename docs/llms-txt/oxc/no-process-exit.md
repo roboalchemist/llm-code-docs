@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-process-exit.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-process-exit.md
----
-
-### What it does
+## What it does
 
 Disallow `process.exit()`.
 
-### Why is this bad?
+## Why is this bad?
 
 Only use `process.exit()` in CLI apps. Throw an error instead.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -26,7 +22,7 @@ Examples of **correct** code for this rule:
 if (problem) throw new Error("message");
 ```
 
-```
+```bash
 #!/usr/bin/env node
 if (problem) process.exit(1);
 ```

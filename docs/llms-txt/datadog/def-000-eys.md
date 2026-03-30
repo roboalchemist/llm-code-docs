@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # SSL connection on MySQL Database Server should be enabled
- 
+
 ## Description{% #description %}
 
 Enable SSL connectivity on MySQL Servers. SSL connectivity helps to provide a new layer of security by connecting database servers to client applications using Secure Sockets Layer (SSL). Enforcing SSL connections between a database server and its client applications helps protect against "man in the middle" attacks by encrypting the data stream between the server and application.

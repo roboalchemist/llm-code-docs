@@ -1,99 +1,101 @@
 # Source: https://developer.zendesk.com/documentation/help_center/
 
-Help Center | Zendesk Developer Docs zendev_horizontal zendev_horizontal Documentation API Reference Search / Help Center Home 
-- 
-- 
-## Help Center 
+## Help Center | Zendesk Developer Docs zendev_horizontal zendev_horizontal Documentation API Reference Search / Help Center Home
 
-- Introduction 
+-
 
-- 
-- 
-### Help Center API 
+## Help Center Overview
 
-- Listing the followers of a KB section with the Help Center API 
+- Introduction
 
-- Backing up your knowledge base with the Help Center API 
+-
+-
 
-- Using the Help Center API to manage article translations 
+### Help Center API
 
-- Understanding incremental article exports 
+- Listing the followers of a KB section with the Help Center API
 
-- Adding KB search to your website with AJAX 
+- Backing up your knowledge base with the Help Center API
 
-- Making secured API requests from a help center 
+- Using the Help Center API to manage article translations
 
-- Uploading a media file to your help center article 
+- Understanding incremental article exports
 
-- Tutorial: Building a help center integration 
+- Adding KB search to your website with AJAX
 
-- Tutorial: Using webhooks with help center events 
+- Making secured API requests from a help center
 
-- Help Center API limitations with content blocks 
+- Uploading a media file to your help center article
 
-## On this page 
+- Tutorial: Building a help center integration
 
-- Managing your help center content 
+- Tutorial: Using webhooks with help center events
 
-- Customizing help center themes 
+- Help Center API limitations with content blocks
 
-- Embed and extend your help center 
+## On this page
 
-- Add the Web Widget to your help center 
+- Managing your help center content
 
-- Add help center content to your mobile app 
+- Customizing help center themes
 
-# Help Center 
-Customize your help center and knowledge base experience 
-## On this page 
+- Embed and extend your help center
 
-- Managing your help center content 
+- Add the Web Widget to your help center
 
-- Customizing help center themes 
+- Add help center content to your mobile app
 
-- Embed and extend your help center 
+## Customizing and Managing Your Help Center
 
-- Add the Web Widget to your help center 
+Customize your help center and knowledge base experience
 
-- Add help center content to your mobile app 
+- Managing your help center content
 
-## Managing your help center content 
+- Customizing help center themes
 
-Backing up your knowledge base with the Zendesk API 
-Use the Zendesk REST API to make backup copies of all the articles in your knowledge base. The backups can be useful in case you need to check or revert to a previous version of an article. 
+- Embed and extend your help center
 
-Listing the followers of a KB section with the Zendesk API 
-Users can subscribe to (or follow) a section in the knowledge base, but the help center doesn't list the section followers. This tutorial describes how to use the API to list the followers of a specified section in your knowledge base. 
+- Add the Web Widget to your help center
 
-Adding KB search to your website with AJAX 
-The help center provides users with search boxes to find articles in the knowledge base. You might still want users to search the KB from your main website or web application without having to jump out to the help center site. This article describes how to let users search your knowledge base from your website using standard JavaScript and AJAX. 
+- Add help center content to your mobile app
 
-Using the help center API to manage article translations 
-This article describes how to download content in your help center so you can hand it off to a localization vendor for translation. You'll also learn how to automate the reverse process: publishing the translated content on the help center after it comes back from the translators. 
+## Managing your help center content
 
-## Customizing help center themes 
+Backing up your knowledge base with the Zendesk API
+Use the Zendesk REST API to make backup copies of all the articles in your knowledge base. The backups can be useful in case you need to check or revert to a previous version of an article.
 
-A help center theme consists of various components, such as HTML, CSS, and JavaScript files that control the visual presentation, layout, and interactivity of the help center. By customizing a theme, businesses can tailor the look and feel of their help center to match their brand identity, improve navigation, and enhance the user experience. 
+Listing the followers of a KB section with the Zendesk API
+Users can subscribe to (or follow) a section in the knowledge base, but the help center doesn't list the section followers. This tutorial describes how to use the API to list the followers of a specified section in your knowledge base.
 
-You can customize a theme in your favorite code editor locally and preview your changes live in a web browser. 
+Adding KB search to your website with AJAX
+The help center provides users with search boxes to find articles in the knowledge base. You might still want users to search the KB from your main website or web application without having to jump out to the help center site. This article describes how to let users search your knowledge base from your website using standard JavaScript and AJAX.
 
-Learn more about local theme previewing in Zendesk help 
+Using the help center API to manage article translations
+This article describes how to download content in your help center so you can hand it off to a localization vendor for translation. You'll also learn how to automate the reverse process: publishing the translated content on the help center after it comes back from the translators.
 
-Each theme consists of a collection of editable templates that define the layout of different types of pages in the help center. The help center templating language is named Curlybars and implements a large subset of the Handlebars language. 
+## Customizing help center themes
 
-Learn more about Curlybars templating language 
+A help center theme consists of various components, such as HTML, CSS, and JavaScript files that control the visual presentation, layout, and interactivity of the help center. By customizing a theme, businesses can tailor the look and feel of their help center to match their brand identity, improve navigation, and enhance the user experience.
 
-## Embed and extend your help center 
+You can customize a theme in your favorite code editor locally and preview your changes live in a web browser.
 
-### Add the Web Widget to your help center 
+Learn more about local theme previewing in Zendesk help
 
-Add the Web Widget to appear on some or all pages of your help center. 
+Each theme consists of a collection of editable templates that define the layout of different types of pages in the help center. The help center templating language is named Curlybars and implements a large subset of the Handlebars language.
 
-Visit Web Widget 
+Learn more about Curlybars templating language
 
-### Add help center content to your mobile app 
+## Embed and extend your help center
 
-The Support SDKs for iOS and Android lets you give users the ability to browse and search your help center knowledge base in the app without using the mobile web browser. Learn about the SDK and how to enable this feature. 
+### Add the Web Widget to your help center
 
-Visit Mobile SDKs 
+Add the Web Widget to appear on some or all pages of your help center.
+
+Visit Web Widget
+
+### Add help center content to your mobile app
+
+The Support SDKs for iOS and Android lets you give users the ability to browse and search your help center knowledge base in the app without using the mobile web browser. Learn about the SDK and how to enable this feature.
+
+Visit Mobile SDKs
 Join our developer community Forum Blog Slack Zendesk 181 Fremont Street, 17th Floor, San Francisco, California 94105 Privacy Notice Zendesk Developer Terms System Status

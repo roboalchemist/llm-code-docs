@@ -52,6 +52,5 @@ string.chars
 string.split("hello world")
 string.split("hello world", " ")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > CQL injections attempts
 ---
 
 # CQL injections attempts
-Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190) 
+Tactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190)
 ### Goal{% #goal %}
 
 Detect CQL injections attempts on web services accessing to data from Cassandra databases. Such security activity generally indicates that an attacker is trying to exploit a potential CQL injection vulnerability or steal sensitive data.

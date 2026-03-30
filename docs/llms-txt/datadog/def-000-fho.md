@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Legacy authorization (ABAC) should be disabled
- 
+
 ## Description{% #description %}
 
 Legacy Authorization, also known as Attribute-Based Access Control (ABAC) has been superseded by Role-Based Access Control (RBAC) and is not under active development. [RBAC](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control) is the recommended way to manage permissions in Kubernetes.

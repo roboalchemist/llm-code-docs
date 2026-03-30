@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The host's network namespace should be hidden from containers
-Classification:complianceFramework:cis-dockerControl:5.9 
+Classification:complianceFramework:cis-dockerControl:5.9
 ## Description{% #description %}
 
 When the networking mode on a container is set to `--net=host`, the container is not placed inside a separate network stack. Effectively, applying this option instructs Docker to not containerize the container's networking. The consequence of this is that the container lives "outside" in the main Docker host and has full access to its network interfaces.

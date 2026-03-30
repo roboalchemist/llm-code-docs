@@ -11,9 +11,9 @@ breadcrumbs: Docs > Datadog Security > Security Inbox
 # Security Inbox
 Available for:
 {% icon name="icon-cloud-security-management" /%}
- Cloud Security | 
+ Cloud Security |
 {% icon name="icon-app-sec" /%}
- App and API Protection 
+ App and API Protection
 Security Inbox provides a consolidated, actionable list of your most important security findings. It automatically contextualizes and correlates insights from Datadog security products across vulnerabilities, signals, misconfigurations, and identity risks into a unified, prioritized view of actions to take to strengthen your environment.
 
 {% image

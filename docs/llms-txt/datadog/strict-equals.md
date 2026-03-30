@@ -113,6 +113,5 @@ foo === /abc/u
 // bigint
 foo === 1n
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

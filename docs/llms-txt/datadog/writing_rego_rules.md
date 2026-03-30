@@ -37,8 +37,8 @@ eval(resource_type) = "skip" if {
 
 # This part remains unchanged for all rules
 results contains result if {
-	some resource in input.resources[input.main_resource_type]
-	result := dd_output.format(resource, eval(resource))
+    some resource in input.resources[input.main_resource_type]
+    result := dd_output.format(resource, eval(resource))
 }
 ```
 
@@ -95,8 +95,8 @@ The final section of the template module builds your set of results:
 ```python
 # This part remains unchanged for all rules
 results contains result if {
-	some resource in input.resources[input.main_resource_type]
-	result := dd_output.format(resource, eval(resource))
+    some resource in input.resources[input.main_resource_type]
+    result := dd_output.format(resource, eval(resource))
 }
 ```
 
@@ -161,8 +161,8 @@ eval(iam_service_account) = "fail" if {
 
 # This part remains unchanged for all rules
 results contains result if {
-	some resource in input.resources[input.main_resource_type]
-	result := dd_output.format(resource, eval(resource))
+    some resource in input.resources[input.main_resource_type]
+    result := dd_output.format(resource, eval(resource))
 }
 ```
 

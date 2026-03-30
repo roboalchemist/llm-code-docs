@@ -1,13 +1,8 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/ci.md
 
-# Source: https://oxc.rs/docs/guide/usage/formatter/ci.md
+## Source: https://oxc.rs/docs/guide/usage/formatter/ci.md
 
----
-url: /docs/guide/usage/formatter/ci.md
-description: Run Oxfmt in CI or as a git hook.
----
-
-# Setup CI and other integrations
+## Setup CI and other integrations
 
 You can - and should - set up your CI pipeline to run Oxfmt and fail the build on formatting differences.
 
@@ -15,7 +10,7 @@ This page also covers other integrations you may want to include, like git pre-c
 
 ## CI
 
-### GitHub Actions
+## GitHub Actions
 
 First, add a `fmt:check` script to your `package.json` if you don't have one already:
 
@@ -57,7 +52,7 @@ jobs:
       - run: pnpm run fmt:check
 ```
 
-#### Autofix formatting issues
+### Autofix formatting issues
 
 If you find that you often forget to run Oxfmt before opening PRs, and don't or can't use pre-commit hooks, you can add an autofix step to your CI workflow using [autofix.ci](https://autofix.ci).
 
@@ -100,7 +95,7 @@ jobs:
       - uses: autofix-ci/action@1.3.2
 ```
 
-### GitLab CI
+## GitLab CI
 
 If you use GitLab CI, you can set up Oxfmt to enforce code formatting as part of your CI pipeline.
 

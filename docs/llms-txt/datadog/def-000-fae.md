@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Install the cron service
 ---
 
 # Install the cron service
- 
+
 ## Description{% #description %}
 
 The Cron service should be installed.

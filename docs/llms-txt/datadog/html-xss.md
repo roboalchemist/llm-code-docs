@@ -61,6 +61,5 @@ header('Content-Type: text/plain');
 $input = $_GET["input"];
 echo $input;
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

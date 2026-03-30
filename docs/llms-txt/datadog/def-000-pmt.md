@@ -7,14 +7,14 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure SSH MaxStartups is co
 ---
 
 # Ensure SSH MaxStartups is configured
- 
+
 ## Description{% #description %}
 
 The MaxStartups parameter specifies the maximum number of concurrent unauthenticated connections to the SSH daemon. Additional connections will be dropped until authentication succeeds or the LoginGraceTime expires for a connection. To configure MaxStartups, you should add or edit the following line in the `/etc/ssh/sshd_config` file:
 
 ```
 MaxStartups 10:30:60
-        
+
 ```
 
 ## Rationale{% #rationale %}
@@ -43,7 +43,7 @@ chmod 0600 /etc/ssh/sshd_config.d/00-complianceascode-hardening.conf
 LC_ALL=C sed -i "/^\s*MaxStartups\s\+/Id" "/etc/ssh/sshd_config"
 LC_ALL=C sed -i "/^\s*MaxStartups\s\+/Id" "/etc/ssh/sshd_config.d"/*.conf
 if [ -e "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*MaxStartups\s\+/Id" "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf"
 else
     touch "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf"

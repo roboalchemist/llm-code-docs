@@ -53,6 +53,5 @@ enum Baz {}
 namespace Qux {}
 function Qux() {}
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

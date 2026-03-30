@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-for-in-array.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-for-in-array.md
----
-
-### What it does
+## What it does
 
 This rule disallows iterating over an array with a for-in loop.
 
-### Why is this bad?
+## Why is this bad?
 
 A for-in loop iterates over the enumerable properties of an object, which includes the array indices, but also includes any enumerable properties added to the array prototype or the array instance. This is almost never what you want when iterating over an array.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

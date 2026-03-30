@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Okta temporary AWS credentials granted using open source tooling
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detects when the open source CLI tool, [gimme-aws-creds](https://github.com/Nike-Inc/gimme-aws-creds), is used to obtain temporary Okta user credentials to AWS.

@@ -68,7 +68,7 @@ By using `if foo` instead of `if foo == true`, you can write cleaner and more re
 ```go
 func main() {
     if foo == true {
-        
+
     }
 }
 ```
@@ -78,10 +78,9 @@ func main() {
 ```go
 func main() {
     if foo {
-        
+
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

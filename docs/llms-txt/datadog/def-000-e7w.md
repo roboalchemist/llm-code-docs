@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Group Who Owns passwd
 ---
 
 # Verify Group Who Owns passwd File
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/etc/passwd`, run the command:

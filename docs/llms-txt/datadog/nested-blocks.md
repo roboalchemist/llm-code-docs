@@ -63,35 +63,35 @@ def func():
 
 ```python
 def func():
-	if foo:
-		pass
-	else:
-		if bar:
-			if baz:
-				if wiz:  # too many nested elements
-					pass
+    if foo:
+        pass
+    else:
+        if bar:
+            if baz:
+                if wiz:  # too many nested elements
+                    pass
 ```
 
 ```python
 def func():
-	if foo:
-		if bar:
-			if baz:
-				if wiz:  # too many nested elements
-					pass
+    if foo:
+        if bar:
+            if baz:
+                if wiz:  # too many nested elements
+                    pass
 ```
 
 ```python
 def func():
-	if foo:
-		pass
-	elif bar:
-		if bar:
-			if baz:
-				if wiz:  # too many nested elements
-					pass
-	else:
-		pass
+    if foo:
+        pass
+    elif bar:
+        if bar:
+            if baz:
+                if wiz:  # too many nested elements
+                    pass
+    else:
+        pass
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}
@@ -101,6 +101,5 @@ while Foo:
     while Bar:
         print("foobar")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

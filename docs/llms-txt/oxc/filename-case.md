@@ -1,10 +1,6 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/filename-case.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/filename-case.md
----
-
-### What it does
+## What it does
 
 Enforces a consistent case style for filenames to improve project organization and maintainability.
 By default, `kebab-case` is enforced, but other styles can be configured.
@@ -12,35 +8,35 @@ By default, `kebab-case` is enforced, but other styles can be configured.
 Files named `index.js`, `index.ts`, etc. are exempt from this rule as they cannot reliably be
 renamed to other casings (mainly just a problem with PascalCase).
 
-### Why is this bad?
+## Why is this bad?
 
 Inconsistent file naming conventions make it harder to locate files, navigate projects, and enforce
 consistency across a codebase. Standardizing naming conventions improves readability, reduces cognitive
 overhead, and aligns with best practices in large-scale development.
 
-### Examples
+## Examples
 
 Examples of **correct** filenames for each case:
 
-#### `kebabCase`
+### `kebabCase`
 
 * `some-file-name.js`
 * `some-file-name.test.js`
 * `some-file-name.test-utils.js`
 
-#### `camelCase`
+### `camelCase`
 
 * `someFileName.js`
 * `someFileName.test.js`
 * `someFileName.testUtils.js`
 
-#### `snakeCase`
+### `snakeCase`
 
 * `some_file_name.js`
 * `some_file_name.test.js`
 * `some_file_name.test_utils.js`
 
-#### `pascalCase`
+### `pascalCase`
 
 * `SomeFileName.js`
 * `SomeFileName.Test.js`
@@ -50,7 +46,7 @@ Examples of **correct** filenames for each case:
 
 This rule accepts a configuration object with the following properties:
 
-### case
+## case
 
 type: `"kebabCase" | "camelCase" | "snakeCase" | "pascalCase"`
 
@@ -71,7 +67,7 @@ You can set the `case` option like this:
 }
 ```
 
-### cases
+## cases
 
 type: `object`
 
@@ -95,7 +91,7 @@ You can set the `cases` option like this:
 }
 ```
 
-#### cases.camelCase
+### cases.camelCase
 
 type: `boolean`
 
@@ -103,7 +99,7 @@ default: `false`
 
 Whether camel case is allowed, e.g. `someFileName.js`.
 
-#### cases.kebabCase
+### cases.kebabCase
 
 type: `boolean`
 
@@ -111,7 +107,7 @@ default: `true`
 
 Whether kebab case is allowed, e.g. `some-file-name.js`.
 
-#### cases.pascalCase
+### cases.pascalCase
 
 type: `boolean`
 
@@ -119,7 +115,7 @@ default: `false`
 
 Whether pascal case is allowed, e.g. `SomeFileName.js`.
 
-#### cases.snakeCase
+### cases.snakeCase
 
 type: `boolean`
 
@@ -127,7 +123,7 @@ default: `false`
 
 Whether snake case is allowed, e.g. `some_file_name.js`.
 
-### ignore
+## ignore
 
 type: `string`
 
@@ -146,7 +142,7 @@ You can set the `ignore` option like this:
 }
 ```
 
-### multipleFileExtensions
+## multipleFileExtensions
 
 type: `boolean`
 

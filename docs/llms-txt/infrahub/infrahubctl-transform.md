@@ -1,0 +1,27 @@
+# Source: https://docs.infrahub.app/infrahubctl/infrahubctl-transform.md
+
+# `infrahubctl transform`
+
+Render a local transform (TransformPython) for debugging purpose.
+
+**Usage**:
+
+```
+$ infrahubctl transform [OPTIONS] [TRANSFORM_NAME] [VARIABLES]...
+```
+
+**Arguments**:
+
+* `[TRANSFORM_NAME]`: Name of the Python transformation
+* `[VARIABLES]...`: Variables to pass along with the query. Format key=value key=value.
+
+**Options**:
+
+* `--branch TEXT`: Branch on which to run the transformation
+* `--debug / --no-debug`: \[default: no-debug]
+* `--config-file TEXT`: \[env var: INFRAHUBCTL\_CONFIG; default: infrahubctl.toml]
+* `--list`: Show available transforms
+* `--out TEXT`: Path to a file to save the result.
+* `--install-completion`: Install completion for the current shell.
+* `--show-completion`: Show completion for the current shell, to copy it or customize the installation.
+* `--help`: Show this message and exit.

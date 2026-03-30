@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # SNS Topic should have restrictions set for publishing
- 
+
 ## Description{% #description %}
 
 Update your Amazon Simple Notification Service (SNS) topic publishing permissions.

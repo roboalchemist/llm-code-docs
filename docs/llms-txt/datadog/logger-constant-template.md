@@ -55,6 +55,5 @@ if (_logger.IsEnabled(LogLevel.Debug)) {
 ```csharp
 _logger.LogInformation("User {UserId} logged in at {Timestamp}", userId, timestamp);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Endpoint accepts unsigned JW
 ---
 
 # Endpoint accepts unsigned JWT
- 
+
 ## Description{% #description %}
 
 This publicly exposed API endpoint accepts unsigned JWTs. The JWT specification allows for unsecured JWTs where the algorithm is set to "none" and no signature is provided.

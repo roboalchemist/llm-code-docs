@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # RDS event subscriptions should be configured to notify for critical database security group events
- 
+
 ## Description{% #description %}
 
 This control ensures existing Amazon RDS event subscriptions for database parameter groups have notifications enabled for `configuration change` and `failure` events. The control skips if no RDS DB event subscriptions exist in your account. The control fails if an event subscription exists but does not include the required categories.

@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Amazon Machine Image (AMI) should not be shared with external accounts or organizations
- 
+
 ## Description{% #description %}
 
 This rule evaluates whether Amazon Machine Images (AMIs) are shared with external AWS accounts or organizations that are not onboarded to Datadog. AMIs contain complete system images including operating systems, applications, and potentially sensitive data. Sharing AMIs with unauthorized external accounts or organizations can lead to data exposure and security risks.

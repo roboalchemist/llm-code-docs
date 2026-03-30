@@ -1,0 +1,133 @@
+# Replit
+Source: https://docs.dappier.com/integrations/replit-integration
+
+
+
+Idea to app, fast. Create beautiful, modern web applications at the speed of thought. Describe what you need and Replit's AI Agent builds it for you. Create & deploy websites, automations, internal tools, data pipelines and more in any programming language without setup, downloads or extra tools. All in a single cloud workspace with AI built in.
+
+These below apps provide example projects and pre-built templates to help developers quickly integrate Dappier’s RAG models and build applications with ease in Replit's environment.
+
+## Dappier Python Real Time Data
+
+This template demonstrates how to use Dappier's Real Time Data models in a Python project. You can check out the app on Replit here:
+
+[Check out the app on Replit](https://replit.com/@dappier/Dappier-Python-Real-Time-Data?v=1)
+
+## Watch the Video Guide
+
+If you prefer a visual walkthrough, check out the accompanying video guide below:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Gy8z_tlS0Vw?si=m6gggNNtDzQHEVs_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+
+## Getting Started
+
+1. **Sign up for a Dappier account:** [https://platform.dappier.com/sign-in](https://platform.dappier.com/sign-in)
+2. **Create an API key:**
+   * Go to your profile and click "API Keys"
+   * Click "Create API key"
+3. **Add the API key as a secret in Replit:**
+   * Go to the Secrets Tool
+   * Add a new secret called `DAPPIER_API_KEY` and paste your API key
+4. **Run the code:**
+   * Click the "Run" button in the top right corner
+
+## Usage
+
+```python Python theme={null}
+response = app.search_real_time_data(
+   query="What is the stock price of Apple ?",
+   ai_model_id="am_01j06ytn18ejftedz6dyhz2b15"
+)
+```
+
+## Parameters
+
+#### `query` (str):
+
+* The user-provided query. Examples include:
+  * `"How is the weather today in Austin, TX?"`
+  * `"What is the latest news for Meta?"`
+  * `"What is the stock price for AAPL?"`
+
+#### `ai_model_id` (str):
+
+* The AI model ID to use for the query.
+* AI model IDs always start with the prefix `"am_"`.
+* Multiple AI model IDs are available, which can be found at [Dappier marketplace.](https://platform.dappier.com/marketplace)
+
+***
+
+## Dappier Python AI Recommendations
+
+This template demonstrates how to use Dappier's AI Recommendations models in a Python project. Check out the app on Replit here:
+
+[Check out the app on Replit](https://replit.com/@dappier/Dappier-Python-AI-Recommendations?v=1)
+
+## Watch the Video Guide
+
+If you prefer a visual walkthrough, check out the accompanying video guide below:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/M_5qixzR4zI?si=UwXLe3c1TGWNwTTy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+
+## Getting Started
+
+1. **Sign up for a Dappier account:** [https://platform.dappier.com/sign-in](https://platform.dappier.com/sign-in)
+2. **Create an API key:**
+   * Go to your profile and click "API Keys"
+   * Click "Create API key"
+3. **Add the API key as a secret in Replit:**
+   * Go to the Secrets Tool
+   * Add a new secret called `DAPPIER_API_KEY` and paste your API key
+4. **Run the code:**
+   * Click the "Run" button in the top right corner
+
+## Usage
+
+```python Python theme={null}
+response = app.get_ai_recommendations(
+    query="latest sports news",
+    data_model_id="dm_01j0pb465keqmatq9k83dthx34",
+    similarity_top_k=5,
+    ref="sportsnaut.com",
+    num_articles_ref=2,
+    search_algorithm="most_recent"
+)
+```
+
+### Parameters
+
+#### `query` (str):
+
+* The user query for retrieving recommendations.
+
+#### `data_model_id` (str):
+
+* The data model ID to use for recommendations.
+* Data model IDs always start with the prefix `"dm_"`.
+
+#### `similarity_top_k` (int) *Optional*:
+
+* The number of top documents to retrieve based on similarity.
+* Defaults to `9`.
+
+#### `ref` (str) *Optional*:
+
+* The site domain where AI recommendations should be displayed.
+* Defaults to `None`.
+
+#### `num_articles_ref` (int) *Optional*:
+
+* The minimum number of articles to return from the specified reference domain (`ref`).
+* The remaining articles will come from other sites in the RAG model.
+* Defaults to `0`.
+
+#### `search_algorithm` (str) *Optional*:
+
+* The search algorithm to use for retrieving articles.
+* Options:
+  * `"most_recent"` (default),
+  * `"semantic"`,
+  * `"most_recent_semantic"`,
+  * `"trending"`.
+
+***

@@ -46,6 +46,5 @@ self.assertRaises(Exception, foo)  # check a specific Exception, not a generic o
 ```python
 self.assertRaises(ValueError, foo)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -61,12 +61,17 @@ You can use authorization scopes with OAuth2 clients for your [Datadog Apps](htt
 | Scope name | Description | Endpoints that require this scope |
 | ---------- | ----------- | --------------------------------- |
 
-#### Case Management, Error Tracking
+#### Case Management, Change Management, Error Tracking
 
 | Scope name | Description | Endpoints that require this scope |
 | ---------- | ----------- | --------------------------------- |
 
 #### Cloud Cost Management
+
+| Scope name | Description | Endpoints that require this scope |
+| ---------- | ----------- | --------------------------------- |
+
+#### Code Coverage
 
 | Scope name | Description | Endpoints that require this scope |
 | ---------- | ----------- | --------------------------------- |

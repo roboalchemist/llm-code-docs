@@ -1,20 +1,16 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/escape-case.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/escape-case.md
----
-
-### What it does
+## What it does
 
 Enforces defining escape sequence values with uppercase characters rather than lowercase ones.
 This promotes readability by making the escaped value more distinguishable from the identifier.
 
-### Why is this bad?
+## Why is this bad?
 
 Using lowercase characters in escape sequences makes them less readable and harder to distinguish
 from surrounding code. Most style guides recommend uppercase for consistency and clarity.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

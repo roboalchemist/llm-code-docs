@@ -1,10 +1,12 @@
 # Source: https://exa.ai/docs/websets/api/webhooks/list-webhooks.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# List webhooks
+
+## # List webhooks
 
 > Get a list of all webhooks in your account.
 The results come in pages. Use `limit` to set how many webhooks to get per page (up to 200). Use `cursor` to get the next page of results.

@@ -13,11 +13,11 @@ This dataset represents Real User Monitoring (RUM) events collected by Datadog. 
 ```
 dd.rum
 ```
-Real User Monitoring Public Documentation 
+Real User Monitoring Public Documentation
 {% icon name="icon-external-link" /%}
- RUM Browser Data Collected Documentation 
+ RUM Browser Data Collected Documentation
 {% icon name="icon-external-link" /%}
- 
+
 ## Query Parameters
 
 This dataset uses a **polymorphic table function**. You must specify parameters when querying.

@@ -177,13 +177,13 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/gcp" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -205,7 +205,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List all GCP integrations returns "OK" response
@@ -219,7 +219,7 @@ p api_instance.list_gcp_integration()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 require 'rubygems'
@@ -237,7 +237,7 @@ dog.gcp_integration_list
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List all GCP integrations returns "OK" response
@@ -245,29 +245,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewGCPIntegrationApi(apiClient)
-	resp, r, err := api.ListGCPIntegration(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewGCPIntegrationApi(apiClient)
+    resp, r, err := api.ListGCPIntegration(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.ListGCPIntegration`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.ListGCPIntegration`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.ListGCPIntegration`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.ListGCPIntegration`:\n%s\n", responseContent)
 }
 ```
 
@@ -275,7 +275,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List all GCP integrations returns "OK" response
@@ -309,7 +309,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -328,7 +328,7 @@ api.GcpIntegration.list()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python "example.py"
-##### 
+#####
 
 ```rust
 // List all GCP integrations returns "OK" response
@@ -352,7 +352,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -569,13 +569,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/gcp/accounts" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -597,7 +597,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List all GCP STS-enabled service accounts returns "OK" response
@@ -611,7 +611,7 @@ p api_instance.list_gcpsts_accounts()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List all GCP STS-enabled service accounts returns "OK" response
@@ -619,29 +619,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewGCPIntegrationApi(apiClient)
-	resp, r, err := api.ListGCPSTSAccounts(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewGCPIntegrationApi(apiClient)
+    resp, r, err := api.ListGCPSTSAccounts(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.ListGCPSTSAccounts`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.ListGCPSTSAccounts`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.ListGCPSTSAccounts`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.ListGCPSTSAccounts`:\n%s\n", responseContent)
 }
 ```
 
@@ -649,7 +649,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List all GCP STS-enabled service accounts returns "OK" response
@@ -682,7 +682,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List all GCP STS-enabled service accounts returns "OK" response
@@ -706,7 +706,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -909,7 +909,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/gcp" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -937,8 +937,8 @@ Error response object.
   "type": "service_account"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a GCP integration returns "OK" response
@@ -946,49 +946,49 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.GCPAccount{
-		AuthProviderX509CertUrl: datadog.PtrString("https://www.googleapis.com/oauth2/v1/certs"),
-		AuthUri:                 datadog.PtrString("https://accounts.google.com/o/oauth2/auth"),
-		ClientEmail:             datadog.PtrString("252bf553ef04b351@example.com"),
-		ClientId:                datadog.PtrString("163662907116366290710"),
-		ClientX509CertUrl:       datadog.PtrString("https://www.googleapis.com/robot/v1/metadata/x509/$CLIENT_EMAIL"),
-		HostFilters:             datadog.PtrString("key:value,filter:example"),
-		CloudRunRevisionFilters: []string{
-			"dr:dre",
-		},
-		IsCspmEnabled:                     datadog.PtrBool(true),
-		IsSecurityCommandCenterEnabled:    datadog.PtrBool(true),
-		IsResourceChangeCollectionEnabled: datadog.PtrBool(true),
-		PrivateKey:                        datadog.PtrString("private_key"),
-		PrivateKeyId:                      datadog.PtrString("123456789abcdefghi123456789abcdefghijklm"),
-		ProjectId:                         datadog.PtrString("datadog-apitest"),
-		ResourceCollectionEnabled:         datadog.PtrBool(true),
-		TokenUri:                          datadog.PtrString("https://accounts.google.com/o/oauth2/token"),
-		Type:                              datadog.PtrString("service_account"),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewGCPIntegrationApi(apiClient)
-	resp, r, err := api.CreateGCPIntegration(ctx, body)
+    body := datadogV1.GCPAccount{
+        AuthProviderX509CertUrl: datadog.PtrString("https://www.googleapis.com/oauth2/v1/certs"),
+        AuthUri:                 datadog.PtrString("https://accounts.google.com/o/oauth2/auth"),
+        ClientEmail:             datadog.PtrString("252bf553ef04b351@example.com"),
+        ClientId:                datadog.PtrString("163662907116366290710"),
+        ClientX509CertUrl:       datadog.PtrString("https://www.googleapis.com/robot/v1/metadata/x509/$CLIENT_EMAIL"),
+        HostFilters:             datadog.PtrString("key:value,filter:example"),
+        CloudRunRevisionFilters: []string{
+            "dr:dre",
+        },
+        IsCspmEnabled:                     datadog.PtrBool(true),
+        IsSecurityCommandCenterEnabled:    datadog.PtrBool(true),
+        IsResourceChangeCollectionEnabled: datadog.PtrBool(true),
+        PrivateKey:                        datadog.PtrString("private_key"),
+        PrivateKeyId:                      datadog.PtrString("123456789abcdefghi123456789abcdefghijklm"),
+        ProjectId:                         datadog.PtrString("datadog-apitest"),
+        ResourceCollectionEnabled:         datadog.PtrBool(true),
+        TokenUri:                          datadog.PtrString("https://accounts.google.com/o/oauth2/token"),
+        Type:                              datadog.PtrString("service_account"),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewGCPIntegrationApi(apiClient)
+    resp, r, err := api.CreateGCPIntegration(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.CreateGCPIntegration`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.CreateGCPIntegration`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.CreateGCPIntegration`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.CreateGCPIntegration`:\n%s\n", responseContent)
 }
 ```
 
@@ -996,7 +996,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a GCP integration returns "OK" response
@@ -1048,7 +1048,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -1079,7 +1079,7 @@ api.GcpIntegration.create(
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python "example.py"
-##### 
+#####
 
 ```python
 """
@@ -1123,7 +1123,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 require 'rubygems'
@@ -1155,7 +1155,7 @@ dog.gcp_integration_create(config)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 # Create a GCP integration returns "OK" response
@@ -1190,7 +1190,7 @@ p api_instance.create_gcp_integration(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a GCP integration returns "OK" response
@@ -1234,7 +1234,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1336,7 +1336,7 @@ Create a new entry within Datadog for your STS enabled service account. This end
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -1350,7 +1350,7 @@ Create a new entry within Datadog for your STS enabled service account. This end
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -1368,7 +1368,7 @@ Create a new entry within Datadog for your STS enabled service account. This end
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -1608,7 +1608,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/gcp/accounts" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1625,8 +1625,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/gcp/accounts" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1647,8 +1647,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/gcp/accounts" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -1668,8 +1668,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a new entry for your service account returns "OK" response
@@ -1677,42 +1677,42 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.GCPSTSServiceAccountCreateRequest{
-		Data: &datadogV2.GCPSTSServiceAccountData{
-			Attributes: &datadogV2.GCPSTSServiceAccountAttributes{
-				ClientEmail: datadog.PtrString("Test-252bf553ef04b351@test-project.iam.gserviceaccount.com"),
-				HostFilters: []string{},
-			},
-			Type: datadogV2.GCPSERVICEACCOUNTTYPE_GCP_SERVICE_ACCOUNT.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewGCPIntegrationApi(apiClient)
-	resp, r, err := api.CreateGCPSTSAccount(ctx, body)
+    body := datadogV2.GCPSTSServiceAccountCreateRequest{
+        Data: &datadogV2.GCPSTSServiceAccountData{
+            Attributes: &datadogV2.GCPSTSServiceAccountAttributes{
+                ClientEmail: datadog.PtrString("Test-252bf553ef04b351@test-project.iam.gserviceaccount.com"),
+                HostFilters: []string{},
+            },
+            Type: datadogV2.GCPSERVICEACCOUNTTYPE_GCP_SERVICE_ACCOUNT.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewGCPIntegrationApi(apiClient)
+    resp, r, err := api.CreateGCPSTSAccount(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.CreateGCPSTSAccount`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.CreateGCPSTSAccount`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.CreateGCPSTSAccount`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.CreateGCPSTSAccount`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create a new entry for your service account with account_tags returns "OK" response
@@ -1720,46 +1720,46 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.GCPSTSServiceAccountCreateRequest{
-		Data: &datadogV2.GCPSTSServiceAccountData{
-			Attributes: &datadogV2.GCPSTSServiceAccountAttributes{
-				AccountTags: []string{
-					"lorem",
-					"ipsum",
-				},
-				ClientEmail: datadog.PtrString("Test-252bf553ef04b351@test-project.iam.gserviceaccount.com"),
-				HostFilters: []string{},
-			},
-			Type: datadogV2.GCPSERVICEACCOUNTTYPE_GCP_SERVICE_ACCOUNT.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewGCPIntegrationApi(apiClient)
-	resp, r, err := api.CreateGCPSTSAccount(ctx, body)
+    body := datadogV2.GCPSTSServiceAccountCreateRequest{
+        Data: &datadogV2.GCPSTSServiceAccountData{
+            Attributes: &datadogV2.GCPSTSServiceAccountAttributes{
+                AccountTags: []string{
+                    "lorem",
+                    "ipsum",
+                },
+                ClientEmail: datadog.PtrString("Test-252bf553ef04b351@test-project.iam.gserviceaccount.com"),
+                HostFilters: []string{},
+            },
+            Type: datadogV2.GCPSERVICEACCOUNTTYPE_GCP_SERVICE_ACCOUNT.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewGCPIntegrationApi(apiClient)
+    resp, r, err := api.CreateGCPSTSAccount(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.CreateGCPSTSAccount`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.CreateGCPSTSAccount`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.CreateGCPSTSAccount`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.CreateGCPSTSAccount`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Create a new entry for your service account with cloud run revision filters enabled returns "OK" response
@@ -1767,41 +1767,41 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.GCPSTSServiceAccountCreateRequest{
-		Data: &datadogV2.GCPSTSServiceAccountData{
-			Attributes: &datadogV2.GCPSTSServiceAccountAttributes{
-				CloudRunRevisionFilters: []string{
-					"meh:bleh",
-				},
-				ClientEmail: datadog.PtrString("Test-252bf553ef04b351@test-project.iam.gserviceaccount.com"),
-				HostFilters: []string{},
-			},
-			Type: datadogV2.GCPSERVICEACCOUNTTYPE_GCP_SERVICE_ACCOUNT.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewGCPIntegrationApi(apiClient)
-	resp, r, err := api.CreateGCPSTSAccount(ctx, body)
+    body := datadogV2.GCPSTSServiceAccountCreateRequest{
+        Data: &datadogV2.GCPSTSServiceAccountData{
+            Attributes: &datadogV2.GCPSTSServiceAccountAttributes{
+                CloudRunRevisionFilters: []string{
+                    "meh:bleh",
+                },
+                ClientEmail: datadog.PtrString("Test-252bf553ef04b351@test-project.iam.gserviceaccount.com"),
+                HostFilters: []string{},
+            },
+            Type: datadogV2.GCPSERVICEACCOUNTTYPE_GCP_SERVICE_ACCOUNT.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewGCPIntegrationApi(apiClient)
+    resp, r, err := api.CreateGCPSTSAccount(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.CreateGCPSTSAccount`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.CreateGCPSTSAccount`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.CreateGCPSTSAccount`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.CreateGCPSTSAccount`:\n%s\n", responseContent)
 }
 ```
 
@@ -1809,7 +1809,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a new entry for your service account returns "OK" response
@@ -1852,7 +1852,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create a new entry for your service account with account_tags returns "OK" response
@@ -1897,7 +1897,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Create a new entry for your service account with cloud run revision filters enabled returns "OK"
@@ -1947,7 +1947,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1979,7 +1979,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -2015,7 +2015,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -2054,7 +2054,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a new entry for your service account returns "OK" response
@@ -2074,7 +2074,7 @@ body = DatadogAPIClient::V2::GCPSTSServiceAccountCreateRequest.new({
 p api_instance.create_gcpsts_account(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create a new entry for your service account with account_tags returns "OK" response
@@ -2098,7 +2098,7 @@ body = DatadogAPIClient::V2::GCPSTSServiceAccountCreateRequest.new({
 p api_instance.create_gcpsts_account(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Create a new entry for your service account with cloud run revision filters enabled returns "OK" response
@@ -2125,7 +2125,7 @@ p api_instance.create_gcpsts_account(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a new entry for your service account returns "OK" response
@@ -2160,7 +2160,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create a new entry for your service account with account_tags returns "OK"
@@ -2197,7 +2197,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Create a new entry for your service account with cloud run revision filters
@@ -2238,7 +2238,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2273,7 +2273,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -2309,7 +2309,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -2511,7 +2511,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/gcp" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2524,8 +2524,8 @@ Error response object.
   "project_id": "datadog-apitest"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Delete a GCP integration returns "OK" response
@@ -2533,34 +2533,34 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.GCPAccount{
-		ClientEmail: datadog.PtrString("252bf553ef04b351@example.com"),
-		ClientId:    datadog.PtrString("163662907116366290710"),
-		ProjectId:   datadog.PtrString("datadog-apitest"),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewGCPIntegrationApi(apiClient)
-	resp, r, err := api.DeleteGCPIntegration(ctx, body)
+    body := datadogV1.GCPAccount{
+        ClientEmail: datadog.PtrString("252bf553ef04b351@example.com"),
+        ClientId:    datadog.PtrString("163662907116366290710"),
+        ProjectId:   datadog.PtrString("datadog-apitest"),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewGCPIntegrationApi(apiClient)
+    resp, r, err := api.DeleteGCPIntegration(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.DeleteGCPIntegration`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.DeleteGCPIntegration`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.DeleteGCPIntegration`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.DeleteGCPIntegration`:\n%s\n", responseContent)
 }
 ```
 
@@ -2568,7 +2568,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete a GCP integration returns "OK" response
@@ -2606,7 +2606,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 from datadog import initialize, api
@@ -2628,7 +2628,7 @@ api.GcpIntegration.delete(
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python-legacy) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python "example.py"
-##### 
+#####
 
 ```python
 """
@@ -2657,7 +2657,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 require 'rubygems'
@@ -2680,7 +2680,7 @@ dog.gcp_integration_delete(config)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby-legacy) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```ruby
 # Delete a GCP integration returns "OK" response
@@ -2700,7 +2700,7 @@ p api_instance.delete_gcp_integration(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Delete a GCP integration returns "OK" response
@@ -2729,7 +2729,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2872,12 +2872,12 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Path parametersexport account_id="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/gcp/accounts/${account_id}" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2899,7 +2899,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Delete an STS enabled GCP Account returns "No Content" response
@@ -2913,7 +2913,7 @@ api_instance.delete_gcpsts_account("account_id")
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Delete an STS enabled GCP Account returns "No Content" response
@@ -2921,25 +2921,25 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewGCPIntegrationApi(apiClient)
-	r, err := api.DeleteGCPSTSAccount(ctx, "account_id")
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewGCPIntegrationApi(apiClient)
+    r, err := api.DeleteGCPSTSAccount(ctx, "account_id")
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.DeleteGCPSTSAccount`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.DeleteGCPSTSAccount`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -2947,7 +2947,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Delete an STS enabled GCP Account returns "No Content" response
@@ -2978,7 +2978,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Delete an STS enabled GCP Account returns "No Content" response
@@ -3002,7 +3002,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3085,7 +3085,7 @@ Update a Datadog-GCP integration.
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -3110,7 +3110,7 @@ Update a Datadog-GCP integration.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -3232,7 +3232,7 @@ Error response object.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/gcp" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3260,8 +3260,8 @@ Error response object.
   "type": "service_account"
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/integration/gcp" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3286,8 +3286,8 @@ EOF
   "type": "service_account"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update a GCP integration cloud run revision filters returns "OK" response
@@ -3295,53 +3295,53 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.GCPAccount{
-		AuthProviderX509CertUrl: datadog.PtrString("https://www.googleapis.com/oauth2/v1/certs"),
-		AuthUri:                 datadog.PtrString("https://accounts.google.com/o/oauth2/auth"),
-		ClientEmail:             datadog.PtrString("252bf553ef04b351@example.com"),
-		ClientId:                datadog.PtrString("163662907116366290710"),
-		ClientX509CertUrl:       datadog.PtrString("https://www.googleapis.com/robot/v1/metadata/x509/$CLIENT_EMAIL"),
-		HostFilters:             datadog.PtrString("key:value,filter:example"),
-		CloudRunRevisionFilters: []string{
-			"merp:derp",
-		},
-		IsCspmEnabled:                     datadog.PtrBool(true),
-		IsSecurityCommandCenterEnabled:    datadog.PtrBool(true),
-		IsResourceChangeCollectionEnabled: datadog.PtrBool(true),
-		PrivateKey:                        datadog.PtrString("private_key"),
-		PrivateKeyId:                      datadog.PtrString("123456789abcdefghi123456789abcdefghijklm"),
-		ProjectId:                         datadog.PtrString("datadog-apitest"),
-		ResourceCollectionEnabled:         datadog.PtrBool(true),
-		TokenUri:                          datadog.PtrString("https://accounts.google.com/o/oauth2/token"),
-		Type:                              datadog.PtrString("service_account"),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewGCPIntegrationApi(apiClient)
-	resp, r, err := api.UpdateGCPIntegration(ctx, body)
+    body := datadogV1.GCPAccount{
+        AuthProviderX509CertUrl: datadog.PtrString("https://www.googleapis.com/oauth2/v1/certs"),
+        AuthUri:                 datadog.PtrString("https://accounts.google.com/o/oauth2/auth"),
+        ClientEmail:             datadog.PtrString("252bf553ef04b351@example.com"),
+        ClientId:                datadog.PtrString("163662907116366290710"),
+        ClientX509CertUrl:       datadog.PtrString("https://www.googleapis.com/robot/v1/metadata/x509/$CLIENT_EMAIL"),
+        HostFilters:             datadog.PtrString("key:value,filter:example"),
+        CloudRunRevisionFilters: []string{
+            "merp:derp",
+        },
+        IsCspmEnabled:                     datadog.PtrBool(true),
+        IsSecurityCommandCenterEnabled:    datadog.PtrBool(true),
+        IsResourceChangeCollectionEnabled: datadog.PtrBool(true),
+        PrivateKey:                        datadog.PtrString("private_key"),
+        PrivateKeyId:                      datadog.PtrString("123456789abcdefghi123456789abcdefghijklm"),
+        ProjectId:                         datadog.PtrString("datadog-apitest"),
+        ResourceCollectionEnabled:         datadog.PtrBool(true),
+        TokenUri:                          datadog.PtrString("https://accounts.google.com/o/oauth2/token"),
+        Type:                              datadog.PtrString("service_account"),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewGCPIntegrationApi(apiClient)
+    resp, r, err := api.UpdateGCPIntegration(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.UpdateGCPIntegration`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.UpdateGCPIntegration`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.UpdateGCPIntegration`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.UpdateGCPIntegration`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Update a GCP integration returns "OK" response
@@ -3349,46 +3349,46 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
 )
 
 func main() {
-	body := datadogV1.GCPAccount{
-		AuthProviderX509CertUrl:           datadog.PtrString("https://www.googleapis.com/oauth2/v1/certs"),
-		AuthUri:                           datadog.PtrString("https://accounts.google.com/o/oauth2/auth"),
-		ClientEmail:                       datadog.PtrString("252bf553ef04b351@example.com"),
-		ClientId:                          datadog.PtrString("163662907116366290710"),
-		ClientX509CertUrl:                 datadog.PtrString("https://www.googleapis.com/robot/v1/metadata/x509/$CLIENT_EMAIL"),
-		HostFilters:                       datadog.PtrString("key:value,filter:example"),
-		IsCspmEnabled:                     datadog.PtrBool(true),
-		IsSecurityCommandCenterEnabled:    datadog.PtrBool(true),
-		IsResourceChangeCollectionEnabled: datadog.PtrBool(true),
-		PrivateKey:                        datadog.PtrString("private_key"),
-		PrivateKeyId:                      datadog.PtrString("123456789abcdefghi123456789abcdefghijklm"),
-		ProjectId:                         datadog.PtrString("datadog-apitest"),
-		ResourceCollectionEnabled:         datadog.PtrBool(true),
-		TokenUri:                          datadog.PtrString("https://accounts.google.com/o/oauth2/token"),
-		Type:                              datadog.PtrString("service_account"),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV1.NewGCPIntegrationApi(apiClient)
-	resp, r, err := api.UpdateGCPIntegration(ctx, body)
+    body := datadogV1.GCPAccount{
+        AuthProviderX509CertUrl:           datadog.PtrString("https://www.googleapis.com/oauth2/v1/certs"),
+        AuthUri:                           datadog.PtrString("https://accounts.google.com/o/oauth2/auth"),
+        ClientEmail:                       datadog.PtrString("252bf553ef04b351@example.com"),
+        ClientId:                          datadog.PtrString("163662907116366290710"),
+        ClientX509CertUrl:                 datadog.PtrString("https://www.googleapis.com/robot/v1/metadata/x509/$CLIENT_EMAIL"),
+        HostFilters:                       datadog.PtrString("key:value,filter:example"),
+        IsCspmEnabled:                     datadog.PtrBool(true),
+        IsSecurityCommandCenterEnabled:    datadog.PtrBool(true),
+        IsResourceChangeCollectionEnabled: datadog.PtrBool(true),
+        PrivateKey:                        datadog.PtrString("private_key"),
+        PrivateKeyId:                      datadog.PtrString("123456789abcdefghi123456789abcdefghijklm"),
+        ProjectId:                         datadog.PtrString("datadog-apitest"),
+        ResourceCollectionEnabled:         datadog.PtrBool(true),
+        TokenUri:                          datadog.PtrString("https://accounts.google.com/o/oauth2/token"),
+        Type:                              datadog.PtrString("service_account"),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV1.NewGCPIntegrationApi(apiClient)
+    resp, r, err := api.UpdateGCPIntegration(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.UpdateGCPIntegration`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.UpdateGCPIntegration`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.UpdateGCPIntegration`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.UpdateGCPIntegration`:\n%s\n", responseContent)
 }
 ```
 
@@ -3396,7 +3396,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update a GCP integration cloud run revision filters returns "OK" response
@@ -3444,7 +3444,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Update a GCP integration returns "OK" response
@@ -3494,7 +3494,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -3534,7 +3534,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -3575,7 +3575,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update a GCP integration cloud run revision filters returns "OK" response
@@ -3606,7 +3606,7 @@ body = DatadogAPIClient::V1::GCPAccount.new({
 p api_instance.update_gcp_integration(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Update a GCP integration returns "OK" response
@@ -3638,7 +3638,7 @@ p api_instance.update_gcp_integration(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update a GCP integration cloud run revision filters returns "OK" response
@@ -3678,7 +3678,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Update a GCP integration returns "OK" response
@@ -3721,7 +3721,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3765,7 +3765,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -3875,7 +3875,7 @@ Update an STS enabled service account. This endpoint requires the `gcp_configura
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -3892,7 +3892,7 @@ Update an STS enabled service account. This endpoint requires the `gcp_configura
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -3909,7 +3909,7 @@ Update an STS enabled service account. This endpoint requires the `gcp_configura
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -4122,7 +4122,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Path parametersexport account_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/gcp/accounts/${account_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4142,8 +4142,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Path parametersexport account_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/gcp/accounts/${account_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4163,8 +4163,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Path parametersexport account_id="CHANGE_ME"\# Curl commandcurl -X PATCH "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/gcp/accounts/${account_id}" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -4182,8 +4182,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Update STS Service Account returns "OK" response
@@ -4191,48 +4191,48 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "gcp_sts_account" in the system
-	GcpStsAccountDataID := os.Getenv("GCP_STS_ACCOUNT_DATA_ID")
+    // there is a valid "gcp_sts_account" in the system
+    GcpStsAccountDataID := os.Getenv("GCP_STS_ACCOUNT_DATA_ID")
 
-	body := datadogV2.GCPSTSServiceAccountUpdateRequest{
-		Data: &datadogV2.GCPSTSServiceAccountUpdateRequestData{
-			Attributes: &datadogV2.GCPSTSServiceAccountAttributes{
-				ClientEmail: datadog.PtrString("Test-252bf553ef04b351@example.com"),
-				HostFilters: []string{
-					"foo:bar",
-				},
-			},
-			Id:   datadog.PtrString(GcpStsAccountDataID),
-			Type: datadogV2.GCPSERVICEACCOUNTTYPE_GCP_SERVICE_ACCOUNT.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewGCPIntegrationApi(apiClient)
-	resp, r, err := api.UpdateGCPSTSAccount(ctx, GcpStsAccountDataID, body)
+    body := datadogV2.GCPSTSServiceAccountUpdateRequest{
+        Data: &datadogV2.GCPSTSServiceAccountUpdateRequestData{
+            Attributes: &datadogV2.GCPSTSServiceAccountAttributes{
+                ClientEmail: datadog.PtrString("Test-252bf553ef04b351@example.com"),
+                HostFilters: []string{
+                    "foo:bar",
+                },
+            },
+            Id:   datadog.PtrString(GcpStsAccountDataID),
+            Type: datadogV2.GCPSERVICEACCOUNTTYPE_GCP_SERVICE_ACCOUNT.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewGCPIntegrationApi(apiClient)
+    resp, r, err := api.UpdateGCPSTSAccount(ctx, GcpStsAccountDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.UpdateGCPSTSAccount`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.UpdateGCPSTSAccount`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.UpdateGCPSTSAccount`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.UpdateGCPSTSAccount`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Update STS Service Account returns "OK" response with cloud run revision filters
@@ -4240,48 +4240,48 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "gcp_sts_account" in the system
-	GcpStsAccountDataID := os.Getenv("GCP_STS_ACCOUNT_DATA_ID")
+    // there is a valid "gcp_sts_account" in the system
+    GcpStsAccountDataID := os.Getenv("GCP_STS_ACCOUNT_DATA_ID")
 
-	body := datadogV2.GCPSTSServiceAccountUpdateRequest{
-		Data: &datadogV2.GCPSTSServiceAccountUpdateRequestData{
-			Attributes: &datadogV2.GCPSTSServiceAccountAttributes{
-				ClientEmail: datadog.PtrString("Test-252bf553ef04b351@example.com"),
-				CloudRunRevisionFilters: []string{
-					"merp:derp",
-				},
-			},
-			Id:   datadog.PtrString(GcpStsAccountDataID),
-			Type: datadogV2.GCPSERVICEACCOUNTTYPE_GCP_SERVICE_ACCOUNT.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewGCPIntegrationApi(apiClient)
-	resp, r, err := api.UpdateGCPSTSAccount(ctx, GcpStsAccountDataID, body)
+    body := datadogV2.GCPSTSServiceAccountUpdateRequest{
+        Data: &datadogV2.GCPSTSServiceAccountUpdateRequestData{
+            Attributes: &datadogV2.GCPSTSServiceAccountAttributes{
+                ClientEmail: datadog.PtrString("Test-252bf553ef04b351@example.com"),
+                CloudRunRevisionFilters: []string{
+                    "merp:derp",
+                },
+            },
+            Id:   datadog.PtrString(GcpStsAccountDataID),
+            Type: datadogV2.GCPSERVICEACCOUNTTYPE_GCP_SERVICE_ACCOUNT.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewGCPIntegrationApi(apiClient)
+    resp, r, err := api.UpdateGCPSTSAccount(ctx, GcpStsAccountDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.UpdateGCPSTSAccount`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.UpdateGCPSTSAccount`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.UpdateGCPSTSAccount`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.UpdateGCPSTSAccount`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Update STS Service Account returns "OK" response with enable resource collection turned on
@@ -4289,42 +4289,42 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	// there is a valid "gcp_sts_account" in the system
-	GcpStsAccountDataID := os.Getenv("GCP_STS_ACCOUNT_DATA_ID")
+    // there is a valid "gcp_sts_account" in the system
+    GcpStsAccountDataID := os.Getenv("GCP_STS_ACCOUNT_DATA_ID")
 
-	body := datadogV2.GCPSTSServiceAccountUpdateRequest{
-		Data: &datadogV2.GCPSTSServiceAccountUpdateRequestData{
-			Attributes: &datadogV2.GCPSTSServiceAccountAttributes{
-				ClientEmail:               datadog.PtrString("Test-252bf553ef04b351@example.com"),
-				ResourceCollectionEnabled: datadog.PtrBool(true),
-			},
-			Id:   datadog.PtrString(GcpStsAccountDataID),
-			Type: datadogV2.GCPSERVICEACCOUNTTYPE_GCP_SERVICE_ACCOUNT.Ptr(),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewGCPIntegrationApi(apiClient)
-	resp, r, err := api.UpdateGCPSTSAccount(ctx, GcpStsAccountDataID, body)
+    body := datadogV2.GCPSTSServiceAccountUpdateRequest{
+        Data: &datadogV2.GCPSTSServiceAccountUpdateRequestData{
+            Attributes: &datadogV2.GCPSTSServiceAccountAttributes{
+                ClientEmail:               datadog.PtrString("Test-252bf553ef04b351@example.com"),
+                ResourceCollectionEnabled: datadog.PtrBool(true),
+            },
+            Id:   datadog.PtrString(GcpStsAccountDataID),
+            Type: datadogV2.GCPSERVICEACCOUNTTYPE_GCP_SERVICE_ACCOUNT.Ptr(),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewGCPIntegrationApi(apiClient)
+    resp, r, err := api.UpdateGCPSTSAccount(ctx, GcpStsAccountDataID, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.UpdateGCPSTSAccount`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.UpdateGCPSTSAccount`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.UpdateGCPSTSAccount`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.UpdateGCPSTSAccount`:\n%s\n", responseContent)
 }
 ```
 
@@ -4332,7 +4332,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Update STS Service Account returns "OK" response
@@ -4381,7 +4381,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Update STS Service Account returns "OK" response with cloud run revision filters
@@ -4430,7 +4430,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Update STS Service Account returns "OK" response with enable resource collection turned on
@@ -4482,7 +4482,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -4521,7 +4521,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -4560,7 +4560,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -4601,7 +4601,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Update STS Service Account returns "OK" response
@@ -4627,7 +4627,7 @@ body = DatadogAPIClient::V2::GCPSTSServiceAccountUpdateRequest.new({
 p api_instance.update_gcpsts_account(GCP_STS_ACCOUNT_DATA_ID, body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Update STS Service Account returns "OK" response with cloud run revision filters
@@ -4653,7 +4653,7 @@ body = DatadogAPIClient::V2::GCPSTSServiceAccountUpdateRequest.new({
 p api_instance.update_gcpsts_account(GCP_STS_ACCOUNT_DATA_ID, body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Update STS Service Account returns "OK" response with enable resource collection turned on
@@ -4681,7 +4681,7 @@ p api_instance.update_gcpsts_account(GCP_STS_ACCOUNT_DATA_ID, body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Update STS Service Account returns "OK" response
@@ -4719,7 +4719,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Update STS Service Account returns "OK" response with cloud run revision filters
@@ -4757,7 +4757,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Update STS Service Account returns "OK" response with enable resource
@@ -4800,7 +4800,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -4839,7 +4839,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -4878,7 +4878,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -4943,7 +4943,7 @@ Create a Datadog GCP principal. This endpoint requires the `gcp_configuration_ed
 
 ### Request
 
-#### Body Data 
+#### Body Data
 
 Create a delegate service account within Datadog.
 
@@ -5074,7 +5074,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/gcp/sts_delegate" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -5083,8 +5083,8 @@ API error response.
 -d @- << EOF
 {}
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Create a Datadog GCP principal with empty body returns "OK" response
@@ -5092,30 +5092,30 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := new(interface{})
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewGCPIntegrationApi(apiClient)
-	resp, r, err := api.MakeGCPSTSDelegate(ctx, *datadogV2.NewMakeGCPSTSDelegateOptionalParameters().WithBody(body))
+    body := new(interface{})
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewGCPIntegrationApi(apiClient)
+    resp, r, err := api.MakeGCPSTSDelegate(ctx, *datadogV2.NewMakeGCPSTSDelegateOptionalParameters().WithBody(body))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.MakeGCPSTSDelegate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.MakeGCPSTSDelegate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.MakeGCPSTSDelegate`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.MakeGCPSTSDelegate`:\n%s\n", responseContent)
 }
 ```
 
@@ -5123,7 +5123,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Create a Datadog GCP principal with empty body returns "OK" response
@@ -5160,7 +5160,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -5184,7 +5184,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Create a Datadog GCP principal with empty body returns "OK" response
@@ -5203,7 +5203,7 @@ p api_instance.make_gcpsts_delegate(opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Create a Datadog GCP principal with empty body returns "OK" response
@@ -5232,7 +5232,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -5369,13 +5369,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/integration/gcp/sts_delegate" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -5397,7 +5397,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # List delegate account returns "OK" response
@@ -5411,7 +5411,7 @@ p api_instance.get_gcpsts_delegate()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // List delegate account returns "OK" response
@@ -5419,29 +5419,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewGCPIntegrationApi(apiClient)
-	resp, r, err := api.GetGCPSTSDelegate(ctx)
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewGCPIntegrationApi(apiClient)
+    resp, r, err := api.GetGCPSTSDelegate(ctx)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.GetGCPSTSDelegate`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `GCPIntegrationApi.GetGCPSTSDelegate`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.GetGCPSTSDelegate`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `GCPIntegrationApi.GetGCPSTSDelegate`:\n%s\n", responseContent)
 }
 ```
 
@@ -5449,7 +5449,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // List delegate account returns "OK" response
@@ -5482,7 +5482,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // List delegate account returns "OK" response
@@ -5506,7 +5506,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

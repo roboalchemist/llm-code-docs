@@ -86,6 +86,5 @@ def my_function(arg1: str, arg2, arg3 = "blabla", arg4: str = "blibli"):
     render(f"<div>{sanitize_value(arg1)}</div>")
     return html
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

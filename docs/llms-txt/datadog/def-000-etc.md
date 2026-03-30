@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure storage accounts should not allow cross tenant replication
- 
+
 ## Description{% #description %}
 
 Cross-tenant replication in Azure enables replicating storage account data from a source in one Azure AD tenant to a destination in another. This allows replication of data outside of your tenant, significantly increasing the risk of data leakage and unauthorized access.

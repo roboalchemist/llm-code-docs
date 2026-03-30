@@ -46,40 +46,40 @@ Ensure cookies use the `secure` flag or attribute. If not set, it could cause th
 @RequestMapping(value = "/transfer")
 public class TransferController {
 
-	private static final String PENDING_TRANSFER = "PENDING_TRANSFER";
+    private static final String PENDING_TRANSFER = "PENDING_TRANSFER";
 
-	public static Process toTraces(Runtime runtime, String command) throws IOException {
-		return runtime.exec(command);
-	}
+    public static Process toTraces(Runtime runtime, String command) throws IOException {
+        return runtime.exec(command);
+    }
 
-	@Autowired
-	CashAccountDao cashaccountDao;
+    @Autowired
+    CashAccountDao cashaccountDao;
 
-	@Autowired
-	AccountDao accountDao;
+    @Autowired
+    AccountDao accountDao;
 
-	@Autowired
-	TransfersFacade transfersFacade;
+    @Autowired
+    TransfersFacade transfersFacade;
 
-	@RequestMapping
-	public String newTransferForm(final Model model, final Principal principal, final HttpServletResponse response) {
-		List<CashAccount> cashAccounts = cashaccountDao.findCashAccountsByUsername(principal.getName());
+    @RequestMapping
+    public String newTransferForm(final Model model, final Principal principal, final HttpServletResponse response) {
+        List<CashAccount> cashAccounts = cashaccountDao.findCashAccountsByUsername(principal.getName());
 
-		Account account = accountDao.findUsersByUsername(principal.getName()).get(0);
+        Account account = accountDao.findUsersByUsername(principal.getName()).get(0);
 
-		Transfer newTransfer = new Transfer();
-		newTransfer.setFee(5.00);
+        Transfer newTransfer = new Transfer();
+        newTransfer.setFee(5.00);
 
-		if (!model.containsAttribute("transfer")) {
-			model.addAttribute("transfer", newTransfer);
-		}
-		model.addAttribute("cashAccounts", cashAccounts);
-		model.addAttribute("account", account);
+        if (!model.containsAttribute("transfer")) {
+            model.addAttribute("transfer", newTransfer);
+        }
+        model.addAttribute("cashAccounts", cashAccounts);
+        model.addAttribute("account", account);
 
-		response.addCookie(new Cookie("accountType", AccountType.PERSONAL));
+        response.addCookie(new Cookie("accountType", AccountType.PERSONAL));
 
-		return "newTransfer";
-	}
+        return "newTransfer";
+    }
 }
 ```
 
@@ -212,6 +212,5 @@ class Compliant {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

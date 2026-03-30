@@ -7,6 +7,5 @@ breadcrumbs: Docs > Partners
 ---
 
 # Partners
-Datadog Partner Network DocumentationJoin Now 
+Datadog Partner Network DocumentationJoin Now
 {% icon name="icon-right-arrow-slim" /%}
- 

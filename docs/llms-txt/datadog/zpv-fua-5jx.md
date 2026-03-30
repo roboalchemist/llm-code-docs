@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The IPC namespace on the host should remain isolated from containers
-Classification:complianceFramework:cis-dockerControl:5.16 
+Classification:complianceFramework:cis-dockerControl:5.16
 ## Description{% #description %}
 
 IPC (POSIX/SysV IPC) namespace provides separation of named shared memory segments, semaphores and message queues. The IPC namespace on the host should therefore not be shared with containers and should remain isolated.

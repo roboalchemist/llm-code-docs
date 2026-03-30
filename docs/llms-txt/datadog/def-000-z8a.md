@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # IAM password policy should require user passwords to expire within 90 days
- 
+
 ## Description{% #description %}
 
 IAM password policies enforce rules for user passwords in AWS. One of these rules is defining the password expiration timeframe. Requiring user passwords to expire within 90 days is a best practice to enhance security. This policy reduces the risk of compromised accounts due to prolonged use of the same password, ensuring periodic updates that safeguard against potential threats.

@@ -52,6 +52,5 @@ foo(undefined, "b")
 function foo(a, b = false) {}
 foo("a")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

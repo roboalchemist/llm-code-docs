@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # S3 bucket ACLs should block public write actions
- 
+
 ## Description{% #description %}
 
 Modify your access control permissions to remove `WRITE_ACP`, `WRITE`, or `FULL_CONTROL` access for all AWS users or any authenticated AWS user.

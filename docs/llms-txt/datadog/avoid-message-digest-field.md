@@ -40,13 +40,13 @@ Instead of sharing a single `MessageDigest` instance, consider generating new in
 ```java
 public class Foo {
     private final MessageDigest sharedMd; // should avoid this
-    
+
     public Foo() throws Exception {
         sharedMd = MessageDigest.getInstance("SHA-256");
     }
-    
+
     public byte[] bar(byte[] data) {
-        // Incorrect outcomes could arise from sharing a 
+        // Incorrect outcomes could arise from sharing a
         // MessageDigest without synchronized access.
         sharedMd.reset();
         sharedMd.update(data);
@@ -66,6 +66,5 @@ public class Foo {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

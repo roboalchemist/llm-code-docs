@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1546-event-triggered-execution](https://attack.mitre.org/techniques/T1546) 
+Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1546-event-triggered-execution](https://attack.mitre.org/techniques/T1546)
 ## Goal{% #goal %}
 
 Detects attempts to create a sticky key backdoor by replacing the legitimate sethc.exe with cmd.exe, enabling command prompt access from the login screen.

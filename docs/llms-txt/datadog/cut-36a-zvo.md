@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # VPC endpoint should restrict public access
- 
+
 ## Description{% #description %}
 
 Harden your VPC endpoint by restricting AWS actions that can be invoked through it.

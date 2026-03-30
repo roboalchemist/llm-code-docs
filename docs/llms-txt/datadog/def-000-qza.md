@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # FSx Lustre file systems should copy tags to backups
- 
+
 ## Description{% #description %}
 
 This control verifies whether an Amazon FSx for Lustre file system is set up to copy tags to its backups.

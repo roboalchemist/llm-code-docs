@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Password reset token brutefo
 ---
 
 # Password reset token bruteforce
-Tactic:[TA0042-resource_development](https://attack.mitre.org/tactics/TA0042)Technique:[T1586-compromise-accounts](https://attack.mitre.org/techniques/T1586) 
+Tactic:[TA0042-resource_development](https://attack.mitre.org/tactics/TA0042)Technique:[T1586-compromise-accounts](https://attack.mitre.org/techniques/T1586)
 ### Goal{% #goal %}
 
 Detect excessive password reset requests for a user.

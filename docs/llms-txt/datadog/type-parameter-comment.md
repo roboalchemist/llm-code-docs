@@ -47,14 +47,13 @@ class Foo1<in /* some comment */ Bar>
 
 ```kotlin
 class Foo1<
-    /* some comment */ 
+    /* some comment */
     out Bar
     >
 class Foo2<
-    // some comment 
+    // some comment
     out Bar
     >
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

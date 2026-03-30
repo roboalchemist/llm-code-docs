@@ -9,13 +9,13 @@ breadcrumbs: >-
 ---
 
 # Verify /boot/grub/grub.cfg User Ownership
- 
+
 ## Description{% #description %}
 
 The file `/boot/grub/grub.cfg` should be owned by the `root` user to prevent destruction or modification of the file. To properly set the owner of `/boot/grub/grub.cfg`, run the command:
 
 ```
-$ sudo chown root /boot/grub/grub.cfg 
+$ sudo chown root /boot/grub/grub.cfg
 ```
 
 ## Rationale{% #rationale %}

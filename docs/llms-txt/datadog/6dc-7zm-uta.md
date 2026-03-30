@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The ownership of the admin.conf file should be root:root
-Classification:complianceFramework:cis-kubernetesControl:1.1.14 
+Classification:complianceFramework:cis-kubernetesControl:1.1.14
 ## Description{% #description %}
 
 Ensure that the `admin.conf` file ownership is set to root:root.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Google Cloud Kubernetes Engine cluster should not be publicly accessible
- 
+
 ## Description{% #description %}
 
 The control plane of a GKE cluster should not be open to the internet. Limiting internet access significantly reduces the attack surface.

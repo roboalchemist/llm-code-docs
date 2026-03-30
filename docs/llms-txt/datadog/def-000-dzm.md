@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > SentinelOne Alerts
 ---
 
 # SentinelOne Alerts
-Classification:attack 
+Classification:attack
 ## Goal{% #goal %}
 
 Detect when SentinelOne raises a custom alert.

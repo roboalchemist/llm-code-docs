@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Bedrock custom models should not output model data to publicly accessible s3 buckets
- 
+
 ## Description{% #description %}
 
 This control verifies that Amazon Bedrock custom models are **not** outputting model data to publicly accessible Amazon S3 buckets. Storing model outputs in publicly accessible locations poses significant security risks, including unauthorized data access, exposure of sensitive information, and potential data breaches. Ensuring output data is securely stored helps maintain the confidentiality and integrity of your AI/ML workflows.

@@ -68,6 +68,5 @@ let ipv6Example = "2001:db8:85a3::8a2e:370:7334"
 // A version number that looks like an IP but fails the validation
 let appVersion = "Application version 3.1.123.900 is not an IP."
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

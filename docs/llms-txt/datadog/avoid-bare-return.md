@@ -59,7 +59,7 @@ func func3(arg int) (a int, b bool) {
 
 
 func func4(a string, b int) (a int, b string) {
-	return 
+    return
 }
 ```
 
@@ -96,6 +96,5 @@ func func3(arg int) (int, bool) {
     return 3, true
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

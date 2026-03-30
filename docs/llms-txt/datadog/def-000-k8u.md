@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Cognito identity pool should not have the classic authentication flow enabled
- 
+
 ## Description{% #description %}
 
 In Amazon Cognito, there are [two different flows](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html) for authentication; enhanced and basic. This detection will trigger when a [Cognito identity pool](https://docs.aws.amazon.com/cognito/latest/developerguide/identity-pools.html) is configured to use the basic flow.

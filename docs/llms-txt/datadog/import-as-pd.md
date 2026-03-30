@@ -64,6 +64,5 @@ import pandas as something # should use import pandas as pd
 ```python
 import pandas as pd # should use import pandas as pd
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

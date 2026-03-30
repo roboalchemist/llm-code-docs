@@ -1,20 +1,16 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/consistent-type-definitions.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/consistent-type-definitions.md
----
-
-### What it does
+## What it does
 
 Enforce type definitions to consistently use either `interface` or `type`.
 
-### Why is this bad?
+## Why is this bad?
 
 TypeScript provides two common ways to define an object type: `interface` and `type`.
 The two are generally very similar, and can often be used interchangeably.
 Using the same type declaration style consistently helps with code readability.
 
-### Examples
+## Examples
 
 By default this rule enforces the use of `interface` for defining object types.
 
@@ -39,7 +35,7 @@ interface T {
 
 This rule accepts one of the following string values:
 
-### `"interface"`
+## `"interface"`
 
 Prefer `interface` over `type` for object type definitions:
 
@@ -49,7 +45,7 @@ interface T {
 }
 ```
 
-### `"type"`
+## `"type"`
 
 Prefer `type` over `interface` for object type definitions:
 

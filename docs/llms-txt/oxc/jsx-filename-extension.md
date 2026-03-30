@@ -1,19 +1,15 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/jsx-filename-extension.md
 
----
-url: /docs/guide/usage/linter/rules/react/jsx-filename-extension.md
----
-
-### What it does
+## What it does
 
 Enforces consistent use of the `.jsx` file extension.
 
-### Why is this bad?
+## Why is this bad?
 
 Some bundlers or parsers need to know by the file extension that it contains JSX
 in order to properly handle the files.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -37,7 +33,7 @@ function MyComponent() {
 
 This rule accepts a configuration object with the following properties:
 
-### allow
+## allow
 
 type: `"always" | "as-needed"`
 
@@ -46,7 +42,7 @@ default: `"always"`
 When to allow a JSX filename extension. By default all files may have a JSX extension.
 Set this to `as-needed` to only allow JSX file extensions in files that contain JSX syntax.
 
-### extensions
+## extensions
 
 type: `string[]`
 
@@ -55,7 +51,7 @@ default: `["jsx"]`
 The set of allowed file extensions.
 Can include or exclude the leading dot (e.g., "jsx" and ".jsx" are both valid).
 
-### ignoreFilesWithoutCode
+## ignoreFilesWithoutCode
 
 type: `boolean`
 

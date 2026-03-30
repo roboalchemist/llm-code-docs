@@ -1,0 +1,12 @@
+# Source: https://nx.dev/docs/technologies/node/express.md
+
+---
+
+title: Express
+sidebar:
+  hidden: true
+description: Express framework support
+pagefind: false
+---
+
+{% index_page_cards path="technologies/node/express" /%}

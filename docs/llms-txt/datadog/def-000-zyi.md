@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # IAM customer managed policies should not allow decryption actions on all KMS keys
- 
+
 ## Description{% #description %}
 
 This control examines whether the default versions of IAM customer-managed policies permit principals to use AWS KMS decryption actions on all KMS resources. The control will fail if the policy allows any of the following actions on all KMS keys:

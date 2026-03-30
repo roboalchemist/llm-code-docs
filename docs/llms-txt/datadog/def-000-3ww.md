@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable Apport Service
 ---
 
 # Disable Apport Service
- 
+
 ## Description{% #description %}
 
 The Apport modifies certain kernel configuration values at runtime which may decrease the overall security of the system and expose sensitive data. The `apport` service can be disabled with the following command:

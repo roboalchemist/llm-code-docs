@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Containers should not run in privileged mode
-Classification:complianceFramework:cis-dockerControl:5.4 
+Classification:complianceFramework:cis-dockerControl:5.4
 ## Description{% #description %}
 
 Using the `--privileged` flag provides all Linux kernel capabilities to the container to which it is applied and therefore overwrites the `--cap-add` and `--cap-drop` flags. For this reason, ensure that it is not used.

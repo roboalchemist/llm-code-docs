@@ -33,7 +33,7 @@ See [Tracing Java Applications](https://docs.datadoghq.com/tracing/trace_collect
 If you haven't installed a Datadog Agent on your machine, go to [**Integrations > Agent**](https://app.datadoghq.com/account/settings/agent/latest?platform=overview) and select your operating system. For example, on most Linux platforms, you can install the Agent by running the following script, replacing `<YOUR_API_KEY>` with your [Datadog API key](https://docs.datadoghq.com/account_management/api-app-keys/):
 
 ```shell
-DD_AGENT_MAJOR_VERSION=7 DD_API_KEY=<YOUR_API_KEY> DD_SITE="datadoghq.com" bash -c "$(curl -L https://install.datadoghq.com/scripts/install_script_agent7.sh)" 
+DD_AGENT_MAJOR_VERSION=7 DD_API_KEY=<YOUR_API_KEY> DD_SITE="datadoghq.com" bash -c "$(curl -L https://install.datadoghq.com/scripts/install_script_agent7.sh)"
 ```
 
 To send data to a Datadog site other than `datadoghq.com`, replace the `DD_SITE` environment variable with [your Datadog site](https://docs.datadoghq.com/getting_started/site/).
@@ -337,7 +337,7 @@ And also the lines that set tags on errors:
             span.setTag(Tags.ERROR, true);
             span.setTag(DDTags.ERROR_MSG, e.getMessage());
             span.setTag(DDTags.ERROR_TYPE, e.getClass().getName());
-   
+
             final StringWriter errorString = new StringWriter();
             e.printStackTrace(new PrintWriter(errorString));
             span.setTag(DDTags.ERROR_STACK, errorString.toString());
@@ -355,7 +355,7 @@ And also the lines that set tags on errors:
    1. Run:
       ```sh
       ./mvnw clean package
-      
+
       java -javaagent:../dd-java-agent.jar -Ddd.trace.sample.rate=1 -Ddd.service=notes -Ddd.env=dev -jar -Ddd.version=0.0.1 target/notes-0.0.1-SNAPSHOT.jar
       ```
 Or use the script:
@@ -371,7 +371,7 @@ Or use the script:
    1. Run:
       ```sh
       ./gradlew clean bootJar
-      
+
       java -javaagent:../dd-java-agent.jar -Ddd.trace.sample.rate=1 -Ddd.service=notes -Ddd.env=dev -jar -Ddd.version=0.0.1 build/libs/notes-0.0.1-SNAPSHOT.jar
       ```
 Or use the script:
@@ -410,7 +410,7 @@ Run:
 
    ```sh
    ./mvnw clean package
-   
+
    java -javaagent:../dd-java-agent.jar -Ddd.trace.sample.rate=1 -Ddd.service=calendar -Ddd.env=dev -jar -Ddd.version=0.0.1 target/calendar-0.0.1-SNAPSHOT.jar
    ```
 
@@ -427,7 +427,7 @@ Run:
 
    ```sh
    ./gradlew bootJar
-   
+
    java -javaagent:../dd-java-agent.jar -Ddd.trace.sample.rate=1 -Ddd.service=calendar -Ddd.env=dev -jar -Ddd.version=0.0.1 build/libs/calendar-0.0.1-SNAPSHOT.jar
    ```
 

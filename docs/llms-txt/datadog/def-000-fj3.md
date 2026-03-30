@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall dnsmasq Package
 ---
 
 # Uninstall dnsmasq Package
- 
+
 ## Description{% #description %}
 
 dnsmasq is a lightweight tool that provides DNS caching, DNS forwarding and DHCP (Dynamic Host Configuration Protocol) services.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The /etc/default/docker file ownership should be set to root
-Classification:complianceFramework:cis-dockerControl:3.19 
+Classification:complianceFramework:cis-dockerControl:3.19
 ## Description{% #description %}
 
 You should verify that the `/etc/default/docker` file ownership and group-ownership is correctly set to root.
@@ -23,7 +23,7 @@ The `/etc/default/docker` file contains sensitive parameters that may alter the 
 Verify that the `/etc/default/docker` file is individually owned and group-owned by root by running:
 
 ```
-stat -c %U:%G /etc/default/docker | grep -v root:root 
+stat -c %U:%G /etc/default/docker | grep -v root:root
 ```
 
 The command should return no results.

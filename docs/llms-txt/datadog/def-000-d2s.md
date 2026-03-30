@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify Permissions on cron.m
 ---
 
 # Verify Permissions on cron.monthly
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/etc/cron.monthly`, run the command:

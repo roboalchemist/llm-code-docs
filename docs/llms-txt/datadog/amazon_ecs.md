@@ -67,7 +67,7 @@ Important alert (level: info): These files provide minimal configuration for cor
 
    - Set the `DD_API_KEY` environment variable by replacing `<YOUR_DATADOG_API_KEY>` with the [Datadog API key](https://app.datadoghq.com/organization-settings/api-keys) for your account. Alternatively, you can also [supply the ARN of a secret stored in AWS Secrets Manager](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/specifying-sensitive-data-tutorial.html).
 
-   - Set the `DD_SITE` environment variable to your [Datadog site](https://docs.datadoghq.com/getting_started/site/). Your site is: 
+   - Set the `DD_SITE` environment variable to your [Datadog site](https://docs.datadoghq.com/getting_started/site/). Your site is:
 Important alert (level: info): If `DD_SITE` is not set, it defaults to the `US1` site, `datadoghq.com`.
    - Optionally, add a `DD_TAGS` environment variable to specify any additional tags.
 

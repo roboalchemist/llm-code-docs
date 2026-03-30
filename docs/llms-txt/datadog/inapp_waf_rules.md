@@ -141,7 +141,7 @@ Services using a policy are visible directly in the policy management page.
            ],
            "transformers": []
        },
-      
+
 ```
 
 1. Using a utility such as SCP or FTP, copy the `appsec-rules.json` file to your application server, for example, `/home/asm/appsec-rules.json`.

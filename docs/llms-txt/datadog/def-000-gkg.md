@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Server parameter 'log_connections' should be enabled for PostgreSQL Database Server
- 
+
 ## Description{% #description %}
 
 Enabling `log_connections` helps PostgreSQL Database to log attempted connection to the server, as well as successful completion of client authentication. Log data can be used to identify, troubleshoot, and repair configuration errors and suboptimal performance.

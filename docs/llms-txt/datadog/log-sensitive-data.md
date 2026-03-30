@@ -58,6 +58,5 @@ logger.foobar(`email from user ${email}`);
 console.log("email from user" + user.id);
 console.log(`email from user ${user.uuid}`);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

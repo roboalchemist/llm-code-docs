@@ -60,11 +60,10 @@ class MyClass {
         str.IndexOf(str2)>=0;
         str.LastIndexOf(str2)>=0;
         if (serverPackages.Any(x => x.Version.CompareTo(currentVersion) > 0)) {
-            
+
         }
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

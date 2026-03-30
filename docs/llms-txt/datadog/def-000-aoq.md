@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall avahi Server Packa
 ---
 
 # Uninstall avahi Server Package
- 
+
 ## Description{% #description %}
 
 If the system does not need to have an Avahi server which implements the DNS Service Discovery and Multicast DNS protocols, the avahi-autoipd and avahi packages can be uninstalled.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # S3 Block Public Access feature should be enabled at the account level
- 
+
 ## Description{% #description %}
 
 Amazon S3 provides the 'Block public access' (BPA) account feature to help restrict unintended public access to S3 data. By default, S3 buckets and objects are created without public access, but a person or system with sufficient permissions can enable public access at the bucket or object level. When you enable this feature with all four options enabled, it prevent buckets and the objects within from becoming publicly accessible, reducing the risk of accidental or malicious data exposure. Blocking public access should be an organizational decision based on data sensitivity, least privilege, and use case. If data stored in an S3 bucket is required to be available publicly, best practice is to use an intermediary system like Amazon CloudFront with origin access control (OAC) enabled.

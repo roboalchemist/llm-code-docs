@@ -92,7 +92,7 @@ class MyClass {
 ```
 class MyClass {
     public void myFunction(){
-        
+
         if (something)
         {
             foo = bar;
@@ -101,7 +101,7 @@ class MyClass {
 
             }
         }
-        
+
     }
 }
 ```
@@ -117,7 +117,7 @@ class MyClass {
             }
             foo = bar;
         }
-        
+
     }
 }
 ```
@@ -131,7 +131,7 @@ class MyClass {
             {
 
             } else {
-                
+
             }
         }
     }
@@ -148,7 +148,7 @@ class MyClass {
 
             }
         } else {
-            
+
         }
     }
 }
@@ -163,6 +163,5 @@ class MyClass {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

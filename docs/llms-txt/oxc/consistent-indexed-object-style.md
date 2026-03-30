@@ -1,10 +1,6 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/consistent-indexed-object-style.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/consistent-indexed-object-style.md
----
-
-### What it does
+## What it does
 
 Choose between requiring either `Record` type or indexed signature types.
 
@@ -18,11 +14,11 @@ type Foo = {
 };
 ```
 
-### Why is this bad?
+## Why is this bad?
 
 Inconsistent style for indexed object types can harm readability in a project.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule with
 `consistent-indexed-object-style: ["error", "record"]` (default):
@@ -66,11 +62,11 @@ type Foo = {
 
 This rule accepts one of the following string values:
 
-### `"record"`
+## `"record"`
 
 When set to `record`, enforces the use of a `Record` for indexed object types, e.g. `Record<string, unknown>`.
 
-### `"index-signature"`
+## `"index-signature"`
 
 When set to `index-signature`, enforces the use of indexed signature types, e.g. `{ [key: string]: unknown }`.
 

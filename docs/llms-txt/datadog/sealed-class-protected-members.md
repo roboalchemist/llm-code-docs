@@ -40,7 +40,7 @@ public sealed class MyClass {
     protected int foo;
 
     protected void myMethod() {
-        
+
     }
 }
 ```
@@ -64,10 +64,9 @@ public sealed class MyClass {
     private int foo;
 
     private void myMethod() {
-        
+
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

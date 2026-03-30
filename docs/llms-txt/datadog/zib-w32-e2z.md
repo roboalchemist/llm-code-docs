@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Virtual machines in Azure should use SSH authentication keys for security
- 
+
 ## Description{% #description %}
 
 Use SSH authentication keys to secure Linux virtual machines.

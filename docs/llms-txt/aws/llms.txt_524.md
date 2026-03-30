@@ -1,0 +1,135 @@
+# Source: https://docs.aws.amazon.com/license-manager/latest/APIReference/llms.txt
+
+# AWS License Manager API Reference
+
+> AWS License Manager makes it easier to manage licenses from software vendors across multiple AWS accounts and on-premises servers.
+
+- [Welcome](https://docs.aws.amazon.com/license-manager/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/license-manager/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/license-manager/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_Operations.html)
+
+- [AcceptGrant](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_AcceptGrant.html): Accepts the specified grant.
+- [CheckInLicense](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_CheckInLicense.html): Checks in the specified license.
+- [CheckoutBorrowLicense](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_CheckoutBorrowLicense.html): Checks out the specified license for offline use.
+- [CheckoutLicense](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_CheckoutLicense.html): Checks out the specified license.
+- [CreateGrant](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_CreateGrant.html): Creates a grant for the specified license.
+- [CreateGrantVersion](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_CreateGrantVersion.html): Creates a new version of the specified grant.
+- [CreateLicense](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_CreateLicense.html): Creates a license.
+- [CreateLicenseAssetGroup](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_CreateLicenseAssetGroup.html): Creates a license asset group.
+- [CreateLicenseAssetRuleset](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_CreateLicenseAssetRuleset.html): Creates a license asset ruleset.
+- [CreateLicenseConfiguration](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_CreateLicenseConfiguration.html): Creates a license configuration.
+- [CreateLicenseConversionTaskForResource](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_CreateLicenseConversionTaskForResource.html): Creates a new license conversion task.
+- [CreateLicenseManagerReportGenerator](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_CreateLicenseManagerReportGenerator.html): Creates a report generator.
+- [CreateLicenseVersion](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_CreateLicenseVersion.html): Creates a new version of the specified license.
+- [CreateToken](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_CreateToken.html): Creates a long-lived token.
+- [DeleteGrant](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_DeleteGrant.html): Deletes the specified grant.
+- [DeleteLicense](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_DeleteLicense.html): Deletes the specified license.
+- [DeleteLicenseAssetGroup](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_DeleteLicenseAssetGroup.html): Deletes a license asset group.
+- [DeleteLicenseAssetRuleset](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_DeleteLicenseAssetRuleset.html): Deletes a license asset ruleset.
+- [DeleteLicenseConfiguration](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_DeleteLicenseConfiguration.html): Deletes the specified license configuration.
+- [DeleteLicenseManagerReportGenerator](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_DeleteLicenseManagerReportGenerator.html): Deletes the specified report generator.
+- [DeleteToken](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_DeleteToken.html): Deletes the specified token.
+- [ExtendLicenseConsumption](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ExtendLicenseConsumption.html): Extends the expiration date for license consumption.
+- [GetAccessToken](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_GetAccessToken.html): Gets a temporary access token to use with AssumeRoleWithWebIdentity.
+- [GetGrant](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_GetGrant.html): Gets detailed information about the specified grant.
+- [GetLicense](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_GetLicense.html): Gets detailed information about the specified license.
+- [GetLicenseAssetGroup](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_GetLicenseAssetGroup.html): Gets a license asset group.
+- [GetLicenseAssetRuleset](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_GetLicenseAssetRuleset.html): Gets a license asset ruleset.
+- [GetLicenseConfiguration](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_GetLicenseConfiguration.html): Gets detailed information about the specified license configuration.
+- [GetLicenseConversionTask](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_GetLicenseConversionTask.html): Gets information about the specified license type conversion task.
+- [GetLicenseManagerReportGenerator](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_GetLicenseManagerReportGenerator.html): Gets information about the specified report generator.
+- [GetLicenseUsage](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_GetLicenseUsage.html): Gets detailed information about the usage of the specified license.
+- [GetServiceSettings](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_GetServiceSettings.html): Gets the License Manager settings for the current Region.
+- [ListAssetsForLicenseAssetGroup](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListAssetsForLicenseAssetGroup.html): Lists assets for a license asset group.
+- [ListAssociationsForLicenseConfiguration](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListAssociationsForLicenseConfiguration.html): Lists the resource associations for the specified license configuration.
+- [ListDistributedGrants](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListDistributedGrants.html): Lists the grants distributed for the specified license.
+- [ListFailuresForLicenseConfigurationOperations](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListFailuresForLicenseConfigurationOperations.html): Lists the license configuration operations that failed.
+- [ListLicenseAssetGroups](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListLicenseAssetGroups.html): Lists license asset groups.
+- [ListLicenseAssetRulesets](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListLicenseAssetRulesets.html): Lists license asset rulesets.
+- [ListLicenseConfigurations](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListLicenseConfigurations.html): Lists the license configurations for your account.
+- [ListLicenseConfigurationsForOrganization](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListLicenseConfigurationsForOrganization.html): Lists license configurations for an organization.
+- [ListLicenseConversionTasks](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListLicenseConversionTasks.html): Lists the license type conversion tasks for your account.
+- [ListLicenseManagerReportGenerators](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListLicenseManagerReportGenerators.html): Lists the report generators for your account.
+- [ListLicenses](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListLicenses.html): Lists the licenses for your account.
+- [ListLicenseSpecificationsForResource](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListLicenseSpecificationsForResource.html): Describes the license configurations for the specified resource.
+- [ListLicenseVersions](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListLicenseVersions.html): Lists all versions of the specified license.
+- [ListReceivedGrants](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListReceivedGrants.html): Lists grants that are received.
+- [ListReceivedGrantsForOrganization](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListReceivedGrantsForOrganization.html): Lists the grants received for all accounts in the organization.
+- [ListReceivedLicenses](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListReceivedLicenses.html): Lists received licenses.
+- [ListReceivedLicensesForOrganization](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListReceivedLicensesForOrganization.html): Lists the licenses received for all accounts in the organization.
+- [ListResourceInventory](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListResourceInventory.html): Lists resources managed using Systems Manager inventory.
+- [ListTagsForResource](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListTagsForResource.html): Lists the tags for the specified resource.
+- [ListTokens](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListTokens.html): Lists your tokens.
+- [ListUsageForLicenseConfiguration](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ListUsageForLicenseConfiguration.html): Lists all license usage records for a license configuration, displaying license consumption details by resource at a selected point in time.
+- [RejectGrant](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_RejectGrant.html): Rejects the specified grant.
+- [TagResource](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_TagResource.html): Adds the specified tags to the specified resource.
+- [UntagResource](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_UntagResource.html): Removes the specified tags from the specified resource.
+- [UpdateLicenseAssetGroup](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_UpdateLicenseAssetGroup.html): Updates a license asset group.
+- [UpdateLicenseAssetRuleset](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_UpdateLicenseAssetRuleset.html): Updates a license asset ruleset.
+- [UpdateLicenseConfiguration](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_UpdateLicenseConfiguration.html): Modifies the attributes of an existing license configuration.
+- [UpdateLicenseManagerReportGenerator](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_UpdateLicenseManagerReportGenerator.html): Updates a report generator.
+- [UpdateLicenseSpecificationsForResource](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_UpdateLicenseSpecificationsForResource.html): Adds or removes the specified license configurations for the specified AWS resource.
+- [UpdateServiceSettings](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_UpdateServiceSettings.html): Updates License Manager settings for the current Region.
+
+
+## [Data Types](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_Types.html)
+
+- [AndRuleStatement](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_AndRuleStatement.html): AND rule statement.
+- [Asset](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_Asset.html): Asset.
+- [AutomatedDiscoveryInformation](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_AutomatedDiscoveryInformation.html): Describes automated discovery.
+- [BorrowConfiguration](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_BorrowConfiguration.html): Details about a borrow configuration.
+- [ConsumedLicenseSummary](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ConsumedLicenseSummary.html): Details about license consumption.
+- [ConsumptionConfiguration](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ConsumptionConfiguration.html): Details about a consumption configuration.
+- [CrossAccountDiscoveryServiceStatus](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_CrossAccountDiscoveryServiceStatus.html): Status information for cross-account discovery service.
+- [CrossRegionDiscoveryStatus](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_CrossRegionDiscoveryStatus.html): Status information for cross-region discovery.
+- [DatetimeRange](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_DatetimeRange.html): Describes a time range, in ISO8601-UTC format.
+- [Entitlement](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_Entitlement.html): Describes a resource entitled for use with a license.
+- [EntitlementData](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_EntitlementData.html): Data associated with an entitlement resource.
+- [EntitlementUsage](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_EntitlementUsage.html): Usage associated with an entitlement resource.
+- [Filter](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_Filter.html): A filter name and value pair that is used to return more specific results from a describe operation.
+- [Grant](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_Grant.html): Describes a grant.
+- [GrantedLicense](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_GrantedLicense.html): Describes a license that is granted to a grantee.
+- [InstanceRuleStatement](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_InstanceRuleStatement.html): Instance rule statement.
+- [InventoryFilter](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_InventoryFilter.html): An inventory filter.
+- [Issuer](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_Issuer.html): Details about the issuer of a license.
+- [IssuerDetails](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_IssuerDetails.html): Details associated with the issuer of a license.
+- [License](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_License.html): Software license that is managed in AWS License Manager.
+- [LicenseAssetGroup](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_LicenseAssetGroup.html): License asset group.
+- [LicenseAssetGroupConfiguration](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_LicenseAssetGroupConfiguration.html): License asset group configuration.
+- [LicenseAssetGroupProperty](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_LicenseAssetGroupProperty.html): License asset group property.
+- [LicenseAssetRule](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_LicenseAssetRule.html): License asset rule.
+- [LicenseAssetRuleset](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_LicenseAssetRuleset.html): License asset ruleset.
+- [LicenseConfiguration](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_LicenseConfiguration.html): A license configuration is an abstraction of a customer license agreement that can be consumed and enforced by License Manager.
+- [LicenseConfigurationAssociation](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_LicenseConfigurationAssociation.html): Describes an association with a license configuration.
+- [LicenseConfigurationRuleStatement](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_LicenseConfigurationRuleStatement.html): License configuration rule statement.
+- [LicenseConfigurationUsage](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_LicenseConfigurationUsage.html): Details about the usage of a resource associated with a license configuration.
+- [LicenseConversionContext](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_LicenseConversionContext.html): Information about a license type conversion task.
+- [LicenseConversionTask](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_LicenseConversionTask.html): Information about a license type conversion task.
+- [LicenseOperationFailure](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_LicenseOperationFailure.html): Describes the failure of a license operation.
+- [LicenseRuleStatement](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_LicenseRuleStatement.html): License rule statement.
+- [LicenseSpecification](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_LicenseSpecification.html): Details for associating a license configuration with a resource.
+- [LicenseUsage](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_LicenseUsage.html): Describes the entitlement usage associated with a license.
+- [ManagedResourceSummary](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ManagedResourceSummary.html): Summary information about a managed resource.
+- [MatchingRuleStatement](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_MatchingRuleStatement.html): Matching rule statement.
+- [Metadata](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_Metadata.html): Describes key/value pairs.
+- [Options](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_Options.html): The options you can specify when you create a new version of a grant, such as activation override behavior.
+- [OrganizationConfiguration](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_OrganizationConfiguration.html): Configuration information for AWS Organizations.
+- [OrRuleStatement](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_OrRuleStatement.html): OR rule statement.
+- [ProductCodeListItem](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ProductCodeListItem.html): A list item that contains a product code.
+- [ProductInformation](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ProductInformation.html): Describes product information for a license configuration.
+- [ProductInformationFilter](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ProductInformationFilter.html): Describes product information filters.
+- [ProvisionalConfiguration](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ProvisionalConfiguration.html): Details about a provisional configuration.
+- [ReceivedMetadata](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ReceivedMetadata.html): Metadata associated with received licenses and grants.
+- [RegionStatus](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_RegionStatus.html): Status information for a specific region.
+- [ReportContext](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ReportContext.html): Details of the license configuration that this generator reports on.
+- [ReportFrequency](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ReportFrequency.html): Details about how frequently reports are generated.
+- [ReportGenerator](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ReportGenerator.html): Describe the details of a report generator.
+- [ResourceInventory](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ResourceInventory.html): Details about a resource.
+- [RuleStatement](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_RuleStatement.html): Rule statement.
+- [S3Location](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_S3Location.html): Details of the S3 bucket that report generator reports are published to.
+- [ScriptRuleStatement](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ScriptRuleStatement.html): Rule statement that uses a script to evaluate license asset conditions.
+- [ServiceStatus](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_ServiceStatus.html): Overall service status information for License Manager.
+- [Tag](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_Tag.html): Details about the tags for a resource.
+- [TokenData](https://docs.aws.amazon.com/license-manager/latest/APIReference/API_TokenData.html): Describes a token.

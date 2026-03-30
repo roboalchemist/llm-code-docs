@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Google Cloud BigQuery results saved to cloud storage by a previously unseen user
-Classification:attackTactic:[TA0010-exfiltration](https://attack.mitre.org/tactics/TA0010)Technique:[T1537-transfer-data-to-cloud-account](https://attack.mitre.org/techniques/T1537) 
+Classification:attackTactic:[TA0010-exfiltration](https://attack.mitre.org/tactics/TA0010)Technique:[T1537-transfer-data-to-cloud-account](https://attack.mitre.org/techniques/T1537)
 ## Goal{% #goal %}
 
 Detect when a previously unseen user attempts to export Google Cloud BigQuery results to cloud storage.

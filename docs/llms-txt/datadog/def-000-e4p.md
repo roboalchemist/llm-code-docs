@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # RDS instance snapshots should be encrypted at rest
- 
+
 ## Description{% #description %}
 
 Ensure all snapshots in Amazon RDS, Neptune, DocumentDB, and Aurora are **encrypted** to protect data confidentiality and meet compliance requirements.

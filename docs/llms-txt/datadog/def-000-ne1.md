@@ -9,13 +9,13 @@ breadcrumbs: >-
 ---
 
 # Verify Ownership of Files in /var/log/gdm3
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/var/log/gdm3/*`, run the command:
 
 ```gdscript3
-$ sudo chown root /var/log/gdm3/* 
+$ sudo chown root /var/log/gdm3/*
 ```
 
 ## Rationale{% #rationale %}

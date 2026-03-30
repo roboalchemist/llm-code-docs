@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > 1Password vault export attem
 ---
 
 # 1Password vault export attempt by user
-Classification:attackTactic:[TA0010-exfiltration](https://attack.mitre.org/tactics/TA0010)Technique:[T1567-exfiltration-over-web-service](https://attack.mitre.org/techniques/T1567) 
+Classification:attackTactic:[TA0010-exfiltration](https://attack.mitre.org/tactics/TA0010)Technique:[T1567-exfiltration-over-web-service](https://attack.mitre.org/techniques/T1567)
 ## Goal{% #goal %}
 
 Detect possible exfiltration attempts from 1Password through a vault export.

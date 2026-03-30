@@ -1,0 +1,111 @@
+# Source: https://docs.vast.ai/ollama-webui.md
+
+> ## Documentation Index
+>>
+> Fetch the complete documentation index at: https://docs.vast.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Ollama + Webui
+
+<script
+  type="application/ld+json"
+  dangerouslySetInnerHTML={{
+__html: JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Use Ollama with WebUI on Vast.ai",
+  "description": "A step-by-step guide to configuring and running Ollama with Open WebUI for running large language models on Vast.ai's GPU instances, including setup, model download, and API usage.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Setup Account and Find GPU",
+      "text": "Setup your Vast account and add credit by reviewing the quickstart guide. Select the Ollama template by clicking on Templates and selecting the recommended 'Open Webui (Ollama)' template. Click the play icon to select the template. Ensure sufficient disk space (e.g., 50GB for DeepSeek R1 70B) and VRAM (e.g., 43GB+ for R1 70B). We recommend a 2X 4090 instance with 50GB of disk space for R1 70B."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Open WebUI and Create Admin Account",
+      "text": "After the instance loads, click the 'Open' button which will initiate the Instance Portal with links to all services. Click the 'Open WebUI' link. Upon first use, create an Admin username and password to secure your instance. You can add additional users in the Admin Panel."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Download Model",
+      "text": "Click on the admin panel -> settings -> Models tab -> click the download icon to Manage Models. Put in the model name to pull directly from Ollama.com (e.g., deepseek-r1:70b for our example). Wait for the model to fully download. The download time depends on model size and network speed."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Start Chat",
+      "text": "Once the download is complete, return to the WebUI main page and start a new chat session. Select your downloaded model from the model dropdown. You can now test the model by sending prompts and receiving responses."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Use Ollama API (Optional)",
+      "text": "Ollama provides a direct API at https://INSTANCE_IP:PORT_11434. When making requests, include Authorization header with Bearer token (OPEN_BUTTON_TOKEN value). Example: 'curl -k https://INSTANCE_IP:EXTERNAL_PORT/v1/completions -H \"Content-Type: application/json\" -H \"Authorization: Bearer OPEN_BUTTON_TOKEN\" -d '{\"model\": \"deepseek-r1:70b\", \"prompt\": \"San Francisco is a\", \"max_tokens\": 128, \"temperature\": 0.6}''."
+    }
+  ]
+})
+}}
+/>
+
+# Ollama & WebUI Documentation
+
+Below is a step-by-step guide on how to configure and run Ollama. Our template will automatically setup Open WebUI as a web based interface as well as expose a port for the Ollama API.
+
+**R1** (deepseek-r1:70b) is used as the example model in this guide. Ollama has many [R1 models](https://ollama.com/library/deepseek-r1) available to use which the webui can download. The larger the model, the more total GPU RAM and disk space you will need to allocate when renting your GPU. The models page has a drop down menu showing the model name and total GPU RAM needed to run it. You will also need at least that much disk space on the instance.
+
+## Find and rent your GPU
+
+1. **Setup your Vast account and add credit:** Review the [quickstart guide](/documentation/get-started/quickstart) to get familar with the service if you do not have an account with credits loaded.
+2. **Select the Ollama template:** click on [temp](https://cloud.vast.ai/templates/) and select the recommended Ollama template **Open Webui (Ollama).&#x20;**&#x43;lick on the play icon to select the template. You will then go to the search menu to find a GPU.&#x20;
+   * Click on the Readme link at any time for a detailed guide on how to use the template.
+3. **Disk Space**: From the search menu, ensure you have **sufficient disk space** for the model(s) you plan to run. The disk slider is located under the template icon on the left hand column. Large models (e.g., 70B parameters) can require dozens of gigabytes of storage. For Deep Seek R1 70B, make sure to allocate 50GB of disk space using the slider.&#x20;
+4. **VRAM Requirements**: Check that your **GPU VRAM** is sufficient for the model. Larger models require more VRAM. For Deep Seek R1 70B, we will need at least 43GB of VRAM. Find the slider titled GPU Total Ram and slide it ot 44GB.
+5. **Example R1&#x20;**(deepseek-r1:70b): We recomend a 2X 4090 instance with 50GB of disk space.&#x20;
+
+## Steps to Open the WebUI with Ollama
+
+1. **After the instance loads, click the "Open" Button**
+   * This will initiate the Instance Portal with links to all the services running on the instance. Click the "Open WebUI" Link.
+2. **Create an Admin Account**
+   * Upon first use (or if prompted), create an **Admin** username and password to secure your instance.
+   * You can add additional users in the Admin Panel
+3. **Model Download**
+   * Click on the **admin panel -> settings**
+   * Click on the **Models** tab
+   * Click the download icon to **Manage Models**
+   * Put in the model name to pull directly from Ollama.com. For our example that would be: deepseek-r1:70b
+   * Wait for the model to fully download.
+4. **Start a New Chat**
+   * Once the download is complete, return to the WebUI main page and start a new chat session.
+   * You can now test the model by sending prompts. Enjoy!
+
+## Ollama API Usage
+
+Ollama provides a direct API that you can call outside the WebUI. By default, it is available at:
+
+```bash  theme={null}
+https://INSTANCE_IP:PORT_11434
+```
+
+### Authentication Token
+
+* When making requests, you must include an **Authorization** header with the token value of OPEN\_BUTTON\_TOKEN.
+* This token is typically displayed or stored in the WebUI settings or environment variable.
+
+### Sample Curl Command
+
+```bash  theme={null}
+curl -k https://INSTANCE_IP:EXTERNAL_PORT/v1/completions \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer OPEN_BUTTON_TOKEN" \
+    -d '{
+      "model": "deepseek-r1:70b",
+      "prompt": "San Francisco is a",
+      "max_tokens": 128,
+      "temperature": 0.6
+    }'
+```
+
+* -k: Allows curl to perform insecure SSL connections and transfers as Vast.ai uses a self-signed certificate.
+* Replace **INSTANCE\_IP** and **EXTERNAL\_PORT** with the externally mapped port for 11434 from the IP button on the instance.
+* Update the Authorization header value to match your **OPEN\_BUTTON\_TOKEN**. You can get that from any of the links in the Instance Portal or from the Open button on the instance card.
+* Modify the prompt, model, and other fields (max\_tokens, temperature, etc.) as needed.

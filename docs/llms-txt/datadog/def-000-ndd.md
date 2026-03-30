@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Group Ownership on SSH Server Public *.pub Key Files
- 
+
 ## Description{% #description %}
 
 SSH server public keys, files that match the `/etc/ssh/*.pub` glob, must be group-owned by `root` group.

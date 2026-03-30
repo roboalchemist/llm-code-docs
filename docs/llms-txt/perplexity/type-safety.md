@@ -1,12 +1,8 @@
-# Source: https://docs.perplexity.ai/docs/sdk/type-safety.md
-
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
-> Use this file to discover all available pages before exploring further.
-
 # Type Safety
 
-> Learn how to leverage full TypeScript definitions and Python type hints with the Perplexity SDKs for better development experience and code safety.
+Source: https://docs.perplexity.ai/docs/sdk/type-safety
+
+Learn how to leverage full Typescript definitions and Python type hints with the Perplexity SDKs for better development experience and code safety.
 
 ## Overview
 
@@ -19,48 +15,50 @@ Both Perplexity SDKs provide comprehensive type definitions to help you catch er
 Use type imports for better IDE support and type checking:
 
 <CodeGroup>
-  ```python Python theme={null}
-  from perplexity import Perplexity
-  from perplexity.types import (
-      SearchCreateResponse,
-      ChatCompletionCreateResponse,
-      SearchResult,
-      ChatCompletionMessage
-  )
 
-  client = Perplexity()
+```python
+from perplexity import Perplexity
+from perplexity.types import (
+    SearchCreateResponse,
+    ChatCompletionCreateResponse,
+    SearchResult,
+    ChatCompletionMessage
+)
 
-  # Type hints for better IDE support
-  search_response: SearchCreateResponse = client.search.create(
-      query="artificial intelligence"
-  )
+client = Perplexity()
 
-  # Access typed properties
-  result: SearchResult = search_response.results[0]
-  print(f"Title: {result.title}")
-  print(f"URL: {result.url}")
-  print(f"Snippet: {result.snippet}")
-  ```
+# Type hints for better IDE support
+search_response: SearchCreateResponse = client.search.create(
+    query="artificial intelligence"
+)
 
-  ```typescript TypeScript/JavaScript theme={null}
-  import Perplexity from '@perplexity-ai/perplexity_ai';
+# Access typed properties
+result: SearchResult = search_response.results[0]
+print(f"Title: {result.title}")
+print(f"URL: {result.url}")
+print(f"Snippet: {result.snippet}")
+```
 
-  const client = new Perplexity();
+```typescript
+import Perplexity from '@perplexity-ai/perplexity_ai';
 
-  // TypeScript provides full intellisense and type checking
-  const searchResponse: Perplexity.Search.SearchCreateResponse = await client.search.create({
-      query: "artificial intelligence"
-  });
+const client = new Perplexity();
 
-  // Access typed properties with intellisense
-  const result = searchResponse.results[0];
-  console.log(`Title: ${result.title}`);
-  console.log(`URL: ${result.url}`);
-  console.log(`Snippet: ${result.snippet}`);
-  ```
+// Typescript provides full intellisense and type checking
+const searchResponse: Perplexity.Search.SearchCreateResponse = await client.search.create({
+    query: "artificial intelligence"
+});
+
+// Access typed properties with intellisense
+const result = searchResponse.results[0];
+console.log(`Title: ${result.title}`);
+console.log(`URL: ${result.url}`);
+console.log(`Snippet: ${result.snippet}`);
+```
+
 </CodeGroup>
 
-### Runtime Type Validation
+## Runtime Type Validation
 
 Python SDK uses Pydantic for runtime type validation:
 
@@ -90,15 +88,15 @@ Python SDK uses Pydantic for runtime type validation:
       print(f"Type validation error: {e}")
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity();
 
-  // TypeScript compile-time type checking
+  // Typescript compile-time type checking
   const searchResponse: Perplexity.Search.SearchCreateResponse = await client.search.create({
       query: "machine learning",
-      max_results: 10  // TypeScript ensures correct property names
+      max_results: 10  // Typescript ensures correct property names
   });
 
   // Serialization (already plain objects)
@@ -160,7 +158,7 @@ Create reusable typed functions:
   titles: List[str] = client.search_with_transform("AI research", extract_titles)
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   class TypedPerplexityClient {
@@ -228,7 +226,7 @@ Create type guards for safer type checking:
       response: Union[SearchCreateResponse, ChatCompletionCreateResponse]
   ) -> None:
       if is_search_response(response):
-          # TypeScript now knows this is SearchCreateResponse
+          # Typescript now knows this is SearchCreateResponse
           for result in response.results:
               if is_valid_search_result(result):
                   print(f"Valid result: {result.title}")
@@ -236,7 +234,7 @@ Create type guards for safer type checking:
                   print("Invalid result format")
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   function isSearchResponse(
@@ -260,7 +258,7 @@ Create type guards for safer type checking:
       response: Perplexity.Search.SearchCreateResponse | Perplexity.StreamChunk
   ): void {
       if (isSearchResponse(response)) {
-          // TypeScript now knows this is SearchCreateResponse
+          // Typescript now knows this is SearchCreateResponse
           response.results.forEach(result => {
               if (isValidSearchResult(result)) {
                   console.log(`Valid result: ${result.title}`);
@@ -330,7 +328,7 @@ Work with nested response structures safely:
       print(f"First result: {first_result.title}")
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   class ResponseUtils {
@@ -454,7 +452,7 @@ Create typed mappers for domain-specific data structures:
   print(f"Unique domains: {len(summary.domains)}")
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   interface SimplifiedSearchResult {
@@ -580,7 +578,7 @@ Maximize IDE support with proper type usage:
       print(content)  # Type-safe access
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   class EnhancedClient {
@@ -648,7 +646,7 @@ Maximize IDE support with proper type usage:
           return [result.title for result in response.results]
       ```
 
-      ```typescript TypeScript/JavaScript theme={null}
+      ```typescript Typescript theme={null}
       // Good: Use namespace types for type safety
       import Perplexity from '@perplexity-ai/perplexity_ai';
 
@@ -663,7 +661,7 @@ Maximize IDE support with proper type usage:
     Implement proper type checking for dynamic data.
 
     <Warning>
-      TypeScript types are compile-time only. Use type guards for runtime validation.
+      Typescript types are compile-time only. Use type guards for runtime validation.
     </Warning>
   </Step>
 
@@ -697,7 +695,7 @@ Maximize IDE support with proper type usage:
           # Implementation with type safety
       ```
 
-      ```typescript TypeScript/JavaScript theme={null}
+      ```typescript Typescript theme={null}
       /**
        * Analyze search results with scoring
        */
@@ -714,8 +712,8 @@ Maximize IDE support with proper type usage:
 
 ## Related Resources
 
-<CardGroup cols={2}>
-  <Card title="Error Handling" icon="triangle-exclamation" href="/docs/sdk/error-handling">
+<CardGroup>
+  <Card title="Error Handling" icon="alert-triangle" href="/docs/sdk/error-handling">
     Type-safe error handling patterns
   </Card>
 

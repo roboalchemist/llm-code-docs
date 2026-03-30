@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Configure AIDE to Verify the Audit Tools
- 
+
 ## Description{% #description %}
 
 The operating system file integrity tool must be configured to protect the integrity of the audit tools.

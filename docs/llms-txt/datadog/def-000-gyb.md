@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # SQL Server instances should have the 'contained database authentication' database flag set to 'off'
- 
+
 ## Description{% #description %}
 
 It is recommended to set `contained database authentication` database flag for SQL Server instances to `off`.

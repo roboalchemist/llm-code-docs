@@ -9,13 +9,13 @@ breadcrumbs: >-
 ---
 
 # Verify /boot/grub2/user.cfg User Ownership
- 
+
 ## Description{% #description %}
 
 The file `/boot/grub2/user.cfg` should be owned by the `root` user to prevent reading or modification of the file. To properly set the owner of `/boot/grub2/user.cfg`, run the command:
 
 ```
-$ sudo chown root /boot/grub2/user.cfg 
+$ sudo chown root /boot/grub2/user.cfg
 ```
 
 ## Rationale{% #rationale %}

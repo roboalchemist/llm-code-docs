@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS IAM user has access to a large number of resources
- 
+
 ## Description{% #description %}
 
 This rule identifies when an IAM user has a policy attached which permits access to a significant number of resources in the account.

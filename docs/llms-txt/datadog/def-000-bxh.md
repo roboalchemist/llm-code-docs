@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Generic DNS tunnel detected 
 ---
 
 # Generic DNS tunnel detected by Zeek
-Classification:attackTactic:[TA0011-command-and-control](https://attack.mitre.org/tactics/TA0011)Technique:[T1071-application-layer-protocol](https://attack.mitre.org/techniques/T1071) 
+Classification:attackTactic:[TA0011-command-and-control](https://attack.mitre.org/tactics/TA0011)Technique:[T1071-application-layer-protocol](https://attack.mitre.org/techniques/T1071)
 ## Goal{% #goal %}
 
 Zeek [generic DNS tunnel](https://corelight.com/blog/corelight-sensors-detect-the-chachi-rat) detected.

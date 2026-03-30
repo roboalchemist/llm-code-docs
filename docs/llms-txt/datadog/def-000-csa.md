@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EKS Cluster secrets encryption should be enabled and use KMS CMKs
- 
+
 ## Description{% #description %}
 
 EKS clusters should use AWS KMS customer-managed keys (CMKs) for envelope encryption of Kubernetes secrets. This allows you to encrypt your secrets with a unique data key, which can be automatically rotated on a recurring schedule.

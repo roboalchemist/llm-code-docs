@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Distributed Credential Stuffing campaign (user count)
-Tactic:[TA0042-resource_development](https://attack.mitre.org/tactics/TA0042)Technique:[T1586-compromise-accounts](https://attack.mitre.org/techniques/T1586) 
+Tactic:[TA0042-resource_development](https://attack.mitre.org/tactics/TA0042)Technique:[T1586-compromise-accounts](https://attack.mitre.org/techniques/T1586)
 ### Goal{% #goal %}
 
 Detect Account Takeover (ATO) attempts on services. ATO attempts include [brute force](https://owasp.org/www-project-automated-threats-to-web-applications/assets/oats/EN/OAT-007_Credential_Cracking.html), dictionary, and distributed [credential stuffing](https://owasp.org/www-project-automated-threats-to-web-applications/assets/oats/EN/OAT-008_Credential_Stuffing.html) attacks.

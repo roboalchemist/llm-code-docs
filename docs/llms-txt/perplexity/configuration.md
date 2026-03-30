@@ -1,12 +1,9 @@
-# Source: https://docs.perplexity.ai/docs/sdk/configuration.md
-
-> ## Documentation Index
-> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
-> Use this file to discover all available pages before exploring further.
 
 # Configuration
 
-> Learn how to configure the Perplexity SDKs for retries, timeouts, proxies, and advanced HTTP client customization.
+Source: https://docs.perplexity.ai/docs/sdk/configuration
+
+Learn how to configure the Perplexity SDKs for retries, timeouts, proxies, and advanced HTTP client customization.
 
 ## Overview
 
@@ -34,7 +31,7 @@ Configure how the SDK handles failed requests:
   )
   ```
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   const client = new Perplexity({
@@ -46,7 +43,7 @@ Configure how the SDK handles failed requests:
   const search = await client.withOptions({ maxRetries: 5 }).search.create({
       query: "example"
   });
-  ```
+  ```text
 </CodeGroup>
 
 ### Advanced Timeout Configuration
@@ -77,9 +74,9 @@ Set granular timeout controls for different phases of the request:
   )
 
   client_long = Perplexity(timeout=long_timeout)
-  ```
+  ```text
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   // Basic timeout (applies to entire request)
@@ -93,13 +90,13 @@ Set granular timeout controls for different phases of the request:
   });
 
   // Per-request timeout override
-  const result = await client.withOptions({ 
+  const result = await client.withOptions({
       timeout: 60000  // 1 minute for this specific request
   }).chat.completions.create({
       model: "llama-3.1-sonar-large-128k-online",
       messages: [{ role: "user", content: "Complex research query..." }]
   });
-  ```
+  ```text
 </CodeGroup>
 
 ## Custom HTTP Client
@@ -133,9 +130,9 @@ Configure the SDK to work with corporate proxies:
           proxy="socks5://proxy.company.com:1080"
       )
   )
-  ```
+  ```text
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
   import { HttpsProxyAgent } from 'https-proxy-agent';
   import { SocksProxyAgent } from 'socks-proxy-agent';
@@ -154,7 +151,7 @@ Configure the SDK to work with corporate proxies:
   const clientSocks = new Perplexity({
       httpAgent: new SocksProxyAgent('socks5://proxy.company.com:1080')
   });
-  ```
+  ```text
 </CodeGroup>
 
 ### Custom Headers and User Agent
@@ -192,9 +189,9 @@ Add custom headers to all requests:
           headers=headers
       )
   )
-  ```
+  ```text
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   // Custom headers
@@ -218,7 +215,7 @@ Add custom headers to all requests:
           });
       }
   });
-  ```
+  ```text
 </CodeGroup>
 
 ### SSL/TLS Configuration
@@ -255,9 +252,9 @@ Configure SSL verification and certificates:
           cert=("client.crt", "client.key")
       )
   )
-  ```
+  ```text
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
   import https from 'https';
 
@@ -282,7 +279,7 @@ Configure SSL verification and certificates:
   const clientCert = new Perplexity({
       httpAgent: httpsAgentCA
   });
-  ```
+  ```text
 </CodeGroup>
 
 ## Connection Pooling
@@ -319,9 +316,9 @@ Optimize performance with connection pooling:
           limits=high_throughput_limits
       )
   )
-  ```
+  ```text
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
   import https from 'https';
 
@@ -350,7 +347,7 @@ Optimize performance with connection pooling:
   const clientHighThroughput = new Perplexity({
       httpAgent: highThroughputAgent
   });
-  ```
+  ```text
 </CodeGroup>
 
 ## Environment-Specific Configuration
@@ -376,16 +373,16 @@ Settings optimized for development and debugging:
           }
       )
   )
-  ```
+  ```text
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
 
   // Development configuration
   const devClient = new Perplexity({
       maxRetries: 1,     // Fail fast in development
       timeout: 10000,    // 10 second timeout
-      
+
       // Custom fetch with logging
       fetch: (url, options) => {
           console.log(`Request: ${options?.method || 'GET'} ${url}`);
@@ -395,7 +392,7 @@ Settings optimized for development and debugging:
           });
       }
   });
-  ```
+  ```text
 </CodeGroup>
 
 ### Production Configuration
@@ -430,9 +427,9 @@ Settings optimized for production environments:
           http2=True    # Enable HTTP/2 for better performance
       )
   )
-  ```
+  ```text
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
   import https from 'https';
 
@@ -450,7 +447,7 @@ Settings optimized for production environments:
       timeout: 60000,
       httpAgent: prodAgent
   });
-  ```
+  ```text
 </CodeGroup>
 
 ## Configuration Patterns
@@ -472,15 +469,15 @@ Use environment variables to configure the client:
           read=float(os.getenv('PERPLEXITY_READ_TIMEOUT', '30.0')),
           write=float(os.getenv('PERPLEXITY_WRITE_TIMEOUT', '10.0'))
       )
-      
+
       max_retries = int(os.getenv('PERPLEXITY_MAX_RETRIES', '3'))
-      
+
       # Optional proxy configuration
       proxy = os.getenv('PERPLEXITY_PROXY')
       http_client_kwargs = {}
       if proxy:
           http_client_kwargs['proxy'] = proxy
-      
+
       return Perplexity(
           max_retries=max_retries,
           timeout=timeout,
@@ -488,31 +485,31 @@ Use environment variables to configure the client:
       )
 
   client = create_client()
-  ```
+  ```text
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
   import { HttpsProxyAgent } from 'https-proxy-agent';
 
   function createClient(): Perplexity {
       const maxRetries = parseInt(process.env.PERPLEXITY_MAX_RETRIES || '3');
       const timeout = parseInt(process.env.PERPLEXITY_TIMEOUT || '30000');
-      
+
       const config: any = {
           maxRetries,
           timeout
       };
-      
+
       // Optional proxy configuration
       if (process.env.PERPLEXITY_PROXY) {
           config.httpAgent = new HttpsProxyAgent(process.env.PERPLEXITY_PROXY);
       }
-      
+
       return new Perplexity(config);
   }
 
   const client = createClient();
-  ```
+  ```text
 </CodeGroup>
 
 ### Configuration Factory
@@ -531,7 +528,7 @@ Create reusable configuration patterns:
               max_retries=1,
               timeout=httpx.Timeout(10.0)
           )
-      
+
       @staticmethod
       def production():
           return Perplexity(
@@ -544,7 +541,7 @@ Create reusable configuration patterns:
                   )
               )
           )
-      
+
       @staticmethod
       def high_throughput():
           return Perplexity(
@@ -560,9 +557,9 @@ Create reusable configuration patterns:
 
   # Usage
   client = PerplexityClientFactory.production()
-  ```
+  ```text
 
-  ```typescript TypeScript/JavaScript theme={null}
+  ```typescript Typescript theme={null}
   import Perplexity from '@perplexity-ai/perplexity_ai';
   import https from 'https';
 
@@ -573,21 +570,21 @@ Create reusable configuration patterns:
               timeout: 10000
           });
       }
-      
+
       static production(): Perplexity {
           const agent = new https.Agent({
               keepAlive: true,
               maxSockets: 100,
               timeout: 60000
           });
-          
+
           return new Perplexity({
               maxRetries: 3,
               timeout: 60000,
               httpAgent: agent
           });
       }
-      
+
       static highThroughput(): Perplexity {
           const agent = new https.Agent({
               keepAlive: true,
@@ -595,7 +592,7 @@ Create reusable configuration patterns:
               maxFreeSockets: 100,
               timeout: 30000
           });
-          
+
           return new Perplexity({
               maxRetries: 2,
               timeout: 30000,
@@ -606,13 +603,13 @@ Create reusable configuration patterns:
 
   // Usage
   const client = PerplexityClientFactory.production();
-  ```
+  ```text
 </CodeGroup>
 
 ## Related Resources
 
-<CardGroup cols={2}>
-  <Card title="Error Handling" icon="triangle-exclamation" href="/docs/sdk/error-handling">
+<CardGroup>
+  <Card title="Error Handling" icon="alert-triangle" href="/docs/sdk/error-handling">
     Handle timeouts and connection errors
   </Card>
 

@@ -47,14 +47,14 @@ In summary, when it comes to simple string printing without any formatting needs
 package main
 
 import (
-	"errors"
-	"fmt"
+    "errors"
+    "fmt"
 )
 
 func main() {
-	fmt.Println(fmt.Sprintf("this is a string"))
-	fmt.Println(fmt.Sprintf("%s", "this is a string"))
-	fmt.Println(fmt.Sprintf("FOO: %s", "bar"))
+    fmt.Println(fmt.Sprintf("this is a string"))
+    fmt.Println(fmt.Sprintf("%s", "this is a string"))
+    fmt.Println(fmt.Sprintf("FOO: %s", "bar"))
 }
 ```
 
@@ -64,19 +64,18 @@ func main() {
 package main
 
 import (
-	"errors"
-	"fmt"
+    "errors"
+    "fmt"
 )
 
 func main() {
-	fmt.Println("this is a string")
-	
-	// These are considered compliant because the intent may be to highlight the string literal(s)
-	message := "DEBUG"
-	fmt.Println(fmt.Sprintf("%s: %s", message, "this is a string"))
-	fmt.Println(fmt.Sprintf("%s - %s", "this is a string", "this is also a string"))
+    fmt.Println("this is a string")
+
+    // These are considered compliant because the intent may be to highlight the string literal(s)
+    message := "DEBUG"
+    fmt.Println(fmt.Sprintf("%s: %s", message, "this is a string"))
+    fmt.Println(fmt.Sprintf("%s - %s", "this is a string", "this is also a string"))
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

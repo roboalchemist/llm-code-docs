@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Bedrock Knowledge Base write access should be condition-scoped in IAM group inline policies
- 
+
 ## Description{% #description %}
 
 This control checks whether your IAM group inline policies for write access to Bedrock Knowledge Base (KB) sources include appropriate security conditions to restrict access. Without these conditions, principals could inadvertently gain excessive permissions, leading to KB poisoning risks.

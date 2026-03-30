@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Kubelet connections should use HTTPS for enhanced security
-Classification:complianceFramework:cis-kubernetesControl:1.2.4 
+Classification:complianceFramework:cis-kubernetesControl:1.2.4
 ## Description{% #description %}
 
 Use https for kubelet connections.

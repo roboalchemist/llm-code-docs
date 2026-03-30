@@ -32,7 +32,7 @@ If your API Gateway integrates with AWS Lambda, do not follow the instructions o
 
   ```shell
     export DD_TRACE_INFERRED_PROXY_SERVICES_ENABLED=true
-    
+
 ```
 
 
@@ -43,7 +43,7 @@ Alternatively, enable it through the Datadog ECS Fargate CDK construct:
     new DatadogECSFargate(this, 'Datadog', {
       apm: { isEnabled: true, traceInferredProxyServices: true },
     });
-    
+
   ```
 
 
@@ -51,13 +51,13 @@ Alternatively, enable it through the Datadog ECS Fargate CDK construct:
 Or you can enable it through the Datadog ECS Fargate Terraform module:
 
   ```typescript
-    module "ecs_fargate_task" { 
+    module "ecs_fargate_task" {
       dd_apm = {
         enabled = true,
         trace_inferred_proxy_services = true
       }
     }
-    
+
   ```
 
 
@@ -194,7 +194,7 @@ Update the rule in one of the following ways:
    ```shell
       # option 1: sample the gateway root span
       DD_TRACE_SAMPLING_RULES='[{"service":"my-api-gateway","sample_rate":0.5}]'
-      
+
 ```
 
 1. Remove the `service` key to apply the rule to all root spans:
@@ -202,7 +202,7 @@ Update the rule in one of the following ways:
    ```shell
       # option 2: apply to all roots
       DD_TRACE_SAMPLING_RULES='[{"sample_rate":0.5}]'
-      
+
 ```
 
 ## Further Reading{% #further-reading %}

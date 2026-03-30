@@ -49,7 +49,7 @@ using System.Xml;
 class MyClass {
     public static void payloadDecode()
     {
-        
+
         if (foo) {
             var xmlDoc = new XmlDocument();
             xmlDoc.XmlResolver = new XmlUrlResolver();
@@ -100,6 +100,5 @@ class MyClass {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

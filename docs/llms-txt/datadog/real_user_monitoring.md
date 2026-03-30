@@ -221,6 +221,7 @@ You must have edit access to restore general access to a restricted application.
 
 ## Further reading{% #further-reading %}
 
+- [Building reliable dashboard agents with Datadog LLM Observability](https://www.datadoghq.com/blog/llm-observability-at-datadog-dashboards)
 - [From performance to impact: Bridging frontend teams through shared context](https://www.datadoghq.com/blog/rum-product-analytics-bridging-teams)
 - [Check out the latest Datadog RUM releases! (App login required)](https://app.datadoghq.com/release-notes?category=Real%20User%20Monitoring)
 - [Join an interactive session to gain insights through Real User Monitoring](https://dtdg.co/fe)

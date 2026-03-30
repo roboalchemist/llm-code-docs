@@ -63,8 +63,8 @@ try { foo(); } catch (ex) {} finally {}
 (function() { }())
 var foo = () => {}
 function foo() { }
-function foo() { 
-    
+function foo() {
+
 }
 ```
 
@@ -87,20 +87,19 @@ try { foo() } finally {// empty
 try { foo() } finally {// test
 }
 try { foo() } finally {
-    
+
     // hi i am off no use
 }
 try { foo() } catch (ex) {/* test111 */}
-if (foo) { bar() } else { // nothing in me 
+if (foo) { bar() } else { // nothing in me
 }
 if (foo) { bar() } else { /**/
 }
 if (foo) { bar() } else { //
 }
-function foo() { 
-  const test = {};  
+function foo() {
+  const test = {};
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

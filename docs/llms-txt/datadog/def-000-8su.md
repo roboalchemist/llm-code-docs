@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Enable Kernel Parameter to Ignore ICMP Broadcast Echo Requests on IPv4 Interfaces
- 
+
 ## Description{% #description %}
 
 To set the runtime status of the `net.ipv4.icmp_echo_ignore_broadcasts` kernel parameter, run the following command:
@@ -80,7 +80,7 @@ fi
 
 #
 # If net.ipv4.icmp_echo_ignore_broadcasts present in /etc/sysctl.conf, change value to appropriate value
-#	else, add "net.ipv4.icmp_echo_ignore_broadcasts = value" to /etc/sysctl.conf
+#   else, add "net.ipv4.icmp_echo_ignore_broadcasts = value" to /etc/sysctl.conf
 #
 
 # Strip any search characters in the key arg so that the key can be replaced without

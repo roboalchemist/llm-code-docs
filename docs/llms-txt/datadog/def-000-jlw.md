@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Suricata high number of bytes out detected
-Classification:attackTactic:[TA0010-exfiltration](https://attack.mitre.org/tactics/TA0010) 
+Classification:attackTactic:[TA0010-exfiltration](https://attack.mitre.org/tactics/TA0010)
 ## Goal{% #goal %}
 
 Detect scenarios where an unusually high number of bytes are being sent out from a server, which could indicate data exfiltration or other malicious activities.

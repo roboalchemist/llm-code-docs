@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Cisco Umbrella - access to personal network detected
-Classification:attackTactic:[TA0011-command-and-control](https://attack.mitre.org/tactics/TA0011)Technique:[T1071-application-layer-protocol](https://attack.mitre.org/techniques/T1071) 
+Classification:attackTactic:[TA0011-command-and-control](https://attack.mitre.org/tactics/TA0011)Technique:[T1071-application-layer-protocol](https://attack.mitre.org/techniques/T1071)
 ## Goal{% #goal %}
 
 Detect allowed access to personal network through proxy.

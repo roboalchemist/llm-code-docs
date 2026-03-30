@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure gpgcheck Enabled In Main yum Configuration
- 
+
 ## Description{% #description %}
 
 The `gpgcheck` option controls whether RPM packages' signatures are always checked prior to installation. To configure yum to check package signatures before installing them, ensure the following line appears in `/etc/yum.conf` in the `[main]` section:

@@ -37,15 +37,14 @@ Do not use two negation. It makes the code more complex to read and understand. 
 
 ```python
 if not not foo:  # just use if foo
-	pass
+    pass
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}
 
 ```python
 if not foo:
-	pass
+    pass
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

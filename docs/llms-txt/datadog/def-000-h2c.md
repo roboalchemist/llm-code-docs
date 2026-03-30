@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Write operation on route use predictable IDs
- 
+
 ## Description{% #description %}
 
 The API allows users to modify resources with predictable identifiers (IDs). Attackers can leverage this by guessing valid identifiers and exfiltrating sensitive data after they gain access to a valid user account.

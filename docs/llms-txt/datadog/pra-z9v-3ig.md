@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # [Deprecated The /etc/kubernetes/manifests/etcd.yaml file ownership should be root:root
-Classification:complianceFramework:cis-kubernetesControl:1.1.8 
+Classification:complianceFramework:cis-kubernetesControl:1.1.8
 ## Description{% #description %}
 
 Ensure that the `/etc/kubernetes/manifests/etcd.yaml` file ownership is set to `root:root`.

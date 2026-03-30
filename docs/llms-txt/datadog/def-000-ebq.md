@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable vsftpd Service
 ---
 
 # Disable vsftpd Service
- 
+
 ## Description{% #description %}
 
 The `vsftpd` service can be disabled with the following command:

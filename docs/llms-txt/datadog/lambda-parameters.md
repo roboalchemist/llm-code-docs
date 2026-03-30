@@ -48,6 +48,5 @@ l = ->x, y { something(x, y) }
 ```ruby
 l = ->(x, y) { something(x, y) }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

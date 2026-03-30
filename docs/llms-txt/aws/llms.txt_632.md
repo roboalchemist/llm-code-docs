@@ -1,0 +1,453 @@
+# Source: https://docs.aws.amazon.com/online-register/latest/data-formats/llms.txt
+
+# AWS Online Register of Data Formats Online Register of Data Formats
+
+> The Online Register of Data Formats provides an index of all AWS APIs that can retrieve data from AWS services.
+
+## [Online Register of Data Formats](https://docs.aws.amazon.com/online-register/latest/data-formats/introduction.html)
+
+- [AWS Account Management](https://docs.aws.amazon.com/online-register/latest/data-formats/awsaccountmanagement.html): Lists all APIs that can retrieve data from AWS Account Management.
+- [AWS Action Recommendations](https://docs.aws.amazon.com/online-register/latest/data-formats/awsactionrecommendations.html): Lists all APIs that can retrieve data from AWS Action Recommendations.
+- [AWS Activate](https://docs.aws.amazon.com/online-register/latest/data-formats/awsactivate.html): Lists all APIs that can retrieve data from AWS Activate.
+- [Amazon AI Operations](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonaioperations.html): Lists all APIs that can retrieve data from Amazon AI Operations.
+- [Alexa for Business](https://docs.aws.amazon.com/online-register/latest/data-formats/alexaforbusiness.html): Lists all APIs that can retrieve data from Alexa for Business.
+- [AWS Amplify](https://docs.aws.amazon.com/online-register/latest/data-formats/awsamplify.html): Lists all APIs that can retrieve data from AWS Amplify.
+- [AWS Amplify Admin](https://docs.aws.amazon.com/online-register/latest/data-formats/awsamplifyadmin.html): Lists all APIs that can retrieve data from AWS Amplify Admin.
+- [AWS Amplify UI Builder](https://docs.aws.amazon.com/online-register/latest/data-formats/awsamplifyuibuilder.html): Lists all APIs that can retrieve data from AWS Amplify UI Builder.
+- [Apache Kafka APIs for Amazon MSK clusters](https://docs.aws.amazon.com/online-register/latest/data-formats/apachekafkaapisforamazonmskclusters.html): Lists all APIs that can retrieve data from Apache Kafka APIs for Amazon MSK clusters.
+- [Amazon API Gateway Management](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonapigatewaymanagement.html): Lists all APIs that can retrieve data from Amazon API Gateway Management.
+- [Amazon API Gateway Management V2](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonapigatewaymanagementv2.html): Lists all APIs that can retrieve data from Amazon API Gateway Management V2.
+- [AWS App Mesh](https://docs.aws.amazon.com/online-register/latest/data-formats/awsappmesh.html): Lists all APIs that can retrieve data from AWS App Mesh.
+- [AWS App Mesh Preview](https://docs.aws.amazon.com/online-register/latest/data-formats/awsappmeshpreview.html): Lists all APIs that can retrieve data from AWS App Mesh Preview.
+- [AWS App Runner](https://docs.aws.amazon.com/online-register/latest/data-formats/awsapprunner.html): Lists all APIs that can retrieve data from AWS App Runner.
+- [AWS App Studio](https://docs.aws.amazon.com/online-register/latest/data-formats/awsappstudio.html): Lists all APIs that can retrieve data from AWS App Studio.
+- [AWS App2Container](https://docs.aws.amazon.com/online-register/latest/data-formats/awsapp2container.html): Lists all APIs that can retrieve data from AWS App2Container.
+- [AWS AppConfig](https://docs.aws.amazon.com/online-register/latest/data-formats/awsappconfig.html): Lists all APIs that can retrieve data from AWS AppConfig.
+- [AWS AppFabric](https://docs.aws.amazon.com/online-register/latest/data-formats/awsappfabric.html): Lists all APIs that can retrieve data from AWS AppFabric.
+- [Amazon AppFlow](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonappflow.html): Lists all APIs that can retrieve data from Amazon AppFlow.
+- [Amazon AppIntegrations](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonappintegrations.html): Lists all APIs that can retrieve data from Amazon AppIntegrations.
+- [AWS Application Auto Scaling](https://docs.aws.amazon.com/online-register/latest/data-formats/awsapplicationautoscaling.html): Lists all APIs that can retrieve data from AWS Application Auto Scaling.
+- [AWS Application Discovery Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awsapplicationdiscoveryservice.html): Lists all APIs that can retrieve data from AWS Application Discovery Service.
+- [AWS Application Migration Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awsapplicationmigrationservice.html): Lists all APIs that can retrieve data from AWS Application Migration Service.
+- [Amazon Application Recovery Controller - Zonal Shift](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonapplicationrecoverycontroller-zonalshift.html): Lists all APIs that can retrieve data from Amazon Application Recovery Controller - Zonal Shift.
+- [AWS Application Transformation Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awsapplicationtransformationservice.html): Lists all APIs that can retrieve data from AWS Application Transformation Service.
+- [Amazon AppStream 2.0](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonappstream2.0.html): Lists all APIs that can retrieve data from Amazon AppStream 2.0.
+- [AWS AppSync](https://docs.aws.amazon.com/online-register/latest/data-formats/awsappsync.html): Lists all APIs that can retrieve data from AWS AppSync.
+- [Amazon ARC Region switch](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonarcregionswitch.html): Lists all APIs that can retrieve data from Amazon ARC Region switch.
+- [AWS Artifact](https://docs.aws.amazon.com/online-register/latest/data-formats/awsartifact.html): Lists all APIs that can retrieve data from AWS Artifact.
+- [Amazon Athena](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonathena.html): Lists all APIs that can retrieve data from Amazon Athena.
+- [AWS Audit Manager](https://docs.aws.amazon.com/online-register/latest/data-formats/awsauditmanager.html): Lists all APIs that can retrieve data from AWS Audit Manager.
+- [Amazon Aurora DSQL](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonauroradsql.html): Lists all APIs that can retrieve data from Amazon Aurora DSQL.
+- [AWS Auto Scaling](https://docs.aws.amazon.com/online-register/latest/data-formats/awsautoscaling.html): Lists all APIs that can retrieve data from AWS Auto Scaling.
+- [AWS B2B Data Interchange](https://docs.aws.amazon.com/online-register/latest/data-formats/awsb2bdatainterchange.html): Lists all APIs that can retrieve data from AWS B2B Data Interchange.
+- [AWS Backup](https://docs.aws.amazon.com/online-register/latest/data-formats/awsbackup.html): Lists all APIs that can retrieve data from AWS Backup.
+- [AWS Backup Gateway](https://docs.aws.amazon.com/online-register/latest/data-formats/awsbackupgateway.html): Lists all APIs that can retrieve data from AWS Backup Gateway.
+- [AWS Backup Search](https://docs.aws.amazon.com/online-register/latest/data-formats/awsbackupsearch.html): Lists all APIs that can retrieve data from AWS Backup Search.
+- [AWS Batch](https://docs.aws.amazon.com/online-register/latest/data-formats/awsbatch.html): Lists all APIs that can retrieve data from AWS Batch.
+- [Amazon Bedrock](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonbedrock.html): Lists all APIs that can retrieve data from Amazon Bedrock.
+- [Amazon Bedrock Agentcore](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonbedrockagentcore.html): Lists all APIs that can retrieve data from Amazon Bedrock Agentcore.
+- [Amazon Bedrock Powered by AWS Mantle](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonbedrockpoweredbyawsmantle.html): Lists all APIs that can retrieve data from Amazon Bedrock Powered by AWS Mantle.
+- [AWS Billing](https://docs.aws.amazon.com/online-register/latest/data-formats/awsbilling.html): Lists all APIs that can retrieve data from AWS Billing.
+- [AWS Billing and Cost Management Dashboards](https://docs.aws.amazon.com/online-register/latest/data-formats/awsbillingandcostmanagementdashboards.html): Lists all APIs that can retrieve data from AWS Billing and Cost Management Dashboards.
+- [AWS Billing And Cost Management Data Exports](https://docs.aws.amazon.com/online-register/latest/data-formats/awsbillingandcostmanagementdataexports.html): Lists all APIs that can retrieve data from AWS Billing And Cost Management Data Exports.
+- [AWS Billing And Cost Management Pricing Calculator](https://docs.aws.amazon.com/online-register/latest/data-formats/awsbillingandcostmanagementpricingcalculator.html): Lists all APIs that can retrieve data from AWS Billing And Cost Management Pricing Calculator.
+- [AWS Billing And Cost Management Recommended Actions](https://docs.aws.amazon.com/online-register/latest/data-formats/awsbillingandcostmanagementrecommendedactions.html): Lists all APIs that can retrieve data from AWS Billing And Cost Management Recommended Actions.
+- [AWS Billing Conductor](https://docs.aws.amazon.com/online-register/latest/data-formats/awsbillingconductor.html): Lists all APIs that can retrieve data from AWS Billing Conductor.
+- [AWS Billing Console](https://docs.aws.amazon.com/online-register/latest/data-formats/awsbillingconsole.html): Lists all APIs that can retrieve data from AWS Billing Console.
+- [Amazon Braket](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonbraket.html): Lists all APIs that can retrieve data from Amazon Braket.
+- [AWS Budget Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awsbudgetservice.html): Lists all APIs that can retrieve data from AWS Budget Service.
+- [AWS BugBust](https://docs.aws.amazon.com/online-register/latest/data-formats/awsbugbust.html): Lists all APIs that can retrieve data from AWS BugBust.
+- [AWS Certificate Manager](https://docs.aws.amazon.com/online-register/latest/data-formats/awscertificatemanager.html): Lists all APIs that can retrieve data from AWS Certificate Manager.
+- [AWS Chatbot](https://docs.aws.amazon.com/online-register/latest/data-formats/awschatbot.html): Lists all APIs that can retrieve data from AWS Chatbot.
+- [Amazon Chime](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonchime.html): Lists all APIs that can retrieve data from Amazon Chime.
+- [AWS Clean Rooms](https://docs.aws.amazon.com/online-register/latest/data-formats/awscleanrooms.html): Lists all APIs that can retrieve data from AWS Clean Rooms.
+- [AWS Clean Rooms ML](https://docs.aws.amazon.com/online-register/latest/data-formats/awscleanroomsml.html): Lists all APIs that can retrieve data from AWS Clean Rooms ML.
+- [AWS Cloud Control API](https://docs.aws.amazon.com/online-register/latest/data-formats/awscloudcontrolapi.html): Lists all APIs that can retrieve data from AWS Cloud Control API.
+- [Amazon Cloud Directory](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonclouddirectory.html): Lists all APIs that can retrieve data from Amazon Cloud Directory.
+- [AWS Cloud Map](https://docs.aws.amazon.com/online-register/latest/data-formats/awscloudmap.html): Lists all APIs that can retrieve data from AWS Cloud Map.
+- [AWS Cloud9](https://docs.aws.amazon.com/online-register/latest/data-formats/awscloud9.html): Lists all APIs that can retrieve data from AWS Cloud9.
+- [AWS CloudFormation](https://docs.aws.amazon.com/online-register/latest/data-formats/awscloudformation.html): Lists all APIs that can retrieve data from AWS CloudFormation.
+- [Amazon CloudFront](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncloudfront.html): Lists all APIs that can retrieve data from Amazon CloudFront.
+- [Amazon CloudFront KeyValueStore](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncloudfrontkeyvaluestore.html): Lists all APIs that can retrieve data from Amazon CloudFront KeyValueStore.
+- [AWS CloudHSM](https://docs.aws.amazon.com/online-register/latest/data-formats/awscloudhsm.html): Lists all APIs that can retrieve data from AWS CloudHSM.
+- [Amazon CloudSearch](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncloudsearch.html): Lists all APIs that can retrieve data from Amazon CloudSearch.
+- [AWS CloudShell](https://docs.aws.amazon.com/online-register/latest/data-formats/awscloudshell.html): Lists all APIs that can retrieve data from AWS CloudShell.
+- [AWS CloudTrail](https://docs.aws.amazon.com/online-register/latest/data-formats/awscloudtrail.html): Lists all APIs that can retrieve data from AWS CloudTrail.
+- [Amazon CloudWatch](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncloudwatch.html): Lists all APIs that can retrieve data from Amazon CloudWatch.
+- [Amazon CloudWatch Application Insights](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncloudwatchapplicationinsights.html): Lists all APIs that can retrieve data from Amazon CloudWatch Application Insights.
+- [Amazon CloudWatch Application Signals](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncloudwatchapplicationsignals.html): Lists all APIs that can retrieve data from Amazon CloudWatch Application Signals.
+- [Amazon CloudWatch Evidently](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncloudwatchevidently.html): Lists all APIs that can retrieve data from Amazon CloudWatch Evidently.
+- [Amazon CloudWatch Internet Monitor](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncloudwatchinternetmonitor.html): Lists all APIs that can retrieve data from Amazon CloudWatch Internet Monitor.
+- [Amazon CloudWatch Logs](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncloudwatchlogs.html): Lists all APIs that can retrieve data from Amazon CloudWatch Logs.
+- [Amazon CloudWatch Network Synthetic Monitor](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncloudwatchnetworksyntheticmonitor.html): Lists all APIs that can retrieve data from Amazon CloudWatch Network Synthetic Monitor.
+- [Amazon CloudWatch Observability Access Manager](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncloudwatchobservabilityaccessmanager.html): Lists all APIs that can retrieve data from Amazon CloudWatch Observability Access Manager.
+- [Amazon CloudWatch Observability Admin Service](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncloudwatchobservabilityadminservice.html): Lists all APIs that can retrieve data from Amazon CloudWatch Observability Admin Service.
+- [AWS CloudWatch RUM](https://docs.aws.amazon.com/online-register/latest/data-formats/awscloudwatchrum.html): Lists all APIs that can retrieve data from AWS CloudWatch RUM.
+- [Amazon CloudWatch Synthetics](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncloudwatchsynthetics.html): Lists all APIs that can retrieve data from Amazon CloudWatch Synthetics.
+- [AWS CodeArtifact](https://docs.aws.amazon.com/online-register/latest/data-formats/awscodeartifact.html): Lists all APIs that can retrieve data from AWS CodeArtifact.
+- [AWS CodeBuild](https://docs.aws.amazon.com/online-register/latest/data-formats/awscodebuild.html): Lists all APIs that can retrieve data from AWS CodeBuild.
+- [Amazon CodeCatalyst](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncodecatalyst.html): Lists all APIs that can retrieve data from Amazon CodeCatalyst.
+- [AWS CodeCommit](https://docs.aws.amazon.com/online-register/latest/data-formats/awscodecommit.html): Lists all APIs that can retrieve data from AWS CodeCommit.
+- [AWS CodeConnections](https://docs.aws.amazon.com/online-register/latest/data-formats/awscodeconnections.html): Lists all APIs that can retrieve data from AWS CodeConnections.
+- [AWS CodeDeploy](https://docs.aws.amazon.com/online-register/latest/data-formats/awscodedeploy.html): Lists all APIs that can retrieve data from AWS CodeDeploy.
+- [AWS CodeDeploy secure host commands service](https://docs.aws.amazon.com/online-register/latest/data-formats/awscodedeploysecurehostcommandsservice.html): Lists all APIs that can retrieve data from AWS CodeDeploy secure host commands service.
+- [Amazon CodeGuru](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncodeguru.html): Lists all APIs that can retrieve data from Amazon CodeGuru.
+- [Amazon CodeGuru Profiler](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncodeguruprofiler.html): Lists all APIs that can retrieve data from Amazon CodeGuru Profiler.
+- [Amazon CodeGuru Reviewer](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncodegurureviewer.html): Lists all APIs that can retrieve data from Amazon CodeGuru Reviewer.
+- [Amazon CodeGuru Security](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncodegurusecurity.html): Lists all APIs that can retrieve data from Amazon CodeGuru Security.
+- [AWS CodePipeline](https://docs.aws.amazon.com/online-register/latest/data-formats/awscodepipeline.html): Lists all APIs that can retrieve data from AWS CodePipeline.
+- [AWS CodeStar](https://docs.aws.amazon.com/online-register/latest/data-formats/awscodestar.html): Lists all APIs that can retrieve data from AWS CodeStar.
+- [AWS CodeStar Connections](https://docs.aws.amazon.com/online-register/latest/data-formats/awscodestarconnections.html): Lists all APIs that can retrieve data from AWS CodeStar Connections.
+- [AWS CodeStar Notifications](https://docs.aws.amazon.com/online-register/latest/data-formats/awscodestarnotifications.html): Lists all APIs that can retrieve data from AWS CodeStar Notifications.
+- [Amazon CodeWhisperer](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncodewhisperer.html): Lists all APIs that can retrieve data from Amazon CodeWhisperer.
+- [Amazon Cognito Identity](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncognitoidentity.html): Lists all APIs that can retrieve data from Amazon Cognito Identity.
+- [Amazon Cognito Sync](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncognitosync.html): Lists all APIs that can retrieve data from Amazon Cognito Sync.
+- [Amazon Cognito User Pools](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncognitouserpools.html): Lists all APIs that can retrieve data from Amazon Cognito User Pools.
+- [Amazon Comprehend](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncomprehend.html): Lists all APIs that can retrieve data from Amazon Comprehend.
+- [Amazon Comprehend Medical](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoncomprehendmedical.html): Lists all APIs that can retrieve data from Amazon Comprehend Medical.
+- [AWS Compute Optimizer](https://docs.aws.amazon.com/online-register/latest/data-formats/awscomputeoptimizer.html): Lists all APIs that can retrieve data from AWS Compute Optimizer.
+- [AWS Compute Optimizer Automation](https://docs.aws.amazon.com/online-register/latest/data-formats/awscomputeoptimizerautomation.html): Lists all APIs that can retrieve data from AWS Compute Optimizer Automation.
+- [AWS Config](https://docs.aws.amazon.com/online-register/latest/data-formats/awsconfig.html): Lists all APIs that can retrieve data from AWS Config.
+- [Amazon Connect](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonconnect.html): Lists all APIs that can retrieve data from Amazon Connect.
+- [Amazon Connect Cases](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonconnectcases.html): Lists all APIs that can retrieve data from Amazon Connect Cases.
+- [Amazon Connect Customer Profiles](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonconnectcustomerprofiles.html): Lists all APIs that can retrieve data from Amazon Connect Customer Profiles.
+- [Amazon Connect Health](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonconnecthealth.html): Lists all APIs that can retrieve data from Amazon Connect Health.
+- [Amazon Connect Outbound Campaigns](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonconnectoutboundcampaigns.html): Lists all APIs that can retrieve data from Amazon Connect Outbound Campaigns.
+- [Amazon Connect Voice ID](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonconnectvoiceid.html): Lists all APIs that can retrieve data from Amazon Connect Voice ID.
+- [AWS Connector Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awsconnectorservice.html): Lists all APIs that can retrieve data from AWS Connector Service.
+- [AWS Management Console Mobile App](https://docs.aws.amazon.com/online-register/latest/data-formats/awsconsolemobileapp.html): Lists all APIs that can retrieve data from AWS Management Console Mobile App.
+- [AWS Consolidated Billing](https://docs.aws.amazon.com/online-register/latest/data-formats/awsconsolidatedbilling.html): Lists all APIs that can retrieve data from AWS Consolidated Billing.
+- [AWS Control Catalog](https://docs.aws.amazon.com/online-register/latest/data-formats/awscontrolcatalog.html): Lists all APIs that can retrieve data from AWS Control Catalog.
+- [AWS Control Tower](https://docs.aws.amazon.com/online-register/latest/data-formats/awscontroltower.html): Lists all APIs that can retrieve data from AWS Control Tower.
+- [AWS Cost and Usage Report](https://docs.aws.amazon.com/online-register/latest/data-formats/awscostandusagereport.html): Lists all APIs that can retrieve data from AWS Cost and Usage Report.
+- [AWS Cost Explorer Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awscostexplorerservice.html): Lists all APIs that can retrieve data from AWS Cost Explorer Service.
+- [AWS Cost Optimization Hub](https://docs.aws.amazon.com/online-register/latest/data-formats/awscostoptimizationhub.html): Lists all APIs that can retrieve data from AWS Cost Optimization Hub.
+- [AWS Customer Verification Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awscustomerverificationservice.html): Lists all APIs that can retrieve data from AWS Customer Verification Service.
+- [AWS Data Exchange](https://docs.aws.amazon.com/online-register/latest/data-formats/awsdataexchange.html): Lists all APIs that can retrieve data from AWS Data Exchange.
+- [Amazon Data Lifecycle Manager](https://docs.aws.amazon.com/online-register/latest/data-formats/amazondatalifecyclemanager.html): Lists all APIs that can retrieve data from Amazon Data Lifecycle Manager.
+- [AWS Data Pipeline](https://docs.aws.amazon.com/online-register/latest/data-formats/awsdatapipeline.html): Lists all APIs that can retrieve data from AWS Data Pipeline.
+- [AWS Database Migration Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awsdatabasemigrationservice.html): Lists all APIs that can retrieve data from AWS Database Migration Service.
+- [Database Query Metadata Service](https://docs.aws.amazon.com/online-register/latest/data-formats/databasequerymetadataservice.html): Lists all APIs that can retrieve data from Database Query Metadata Service.
+- [AWS DataSync](https://docs.aws.amazon.com/online-register/latest/data-formats/awsdatasync.html): Lists all APIs that can retrieve data from AWS DataSync.
+- [Amazon DataZone](https://docs.aws.amazon.com/online-register/latest/data-formats/amazondatazone.html): Lists all APIs that can retrieve data from Amazon DataZone.
+- [AWS Deadline Cloud](https://docs.aws.amazon.com/online-register/latest/data-formats/awsdeadlinecloud.html): Lists all APIs that can retrieve data from AWS Deadline Cloud.
+- [Amazon Detective](https://docs.aws.amazon.com/online-register/latest/data-formats/amazondetective.html): Lists all APIs that can retrieve data from Amazon Detective.
+- [AWS Device Farm](https://docs.aws.amazon.com/online-register/latest/data-formats/awsdevicefarm.html): Lists all APIs that can retrieve data from AWS Device Farm.
+- [AWS DevOps Agent Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awsdevopsagentservice.html): Lists all APIs that can retrieve data from AWS DevOps Agent Service.
+- [Amazon DevOps Guru](https://docs.aws.amazon.com/online-register/latest/data-formats/amazondevopsguru.html): Lists all APIs that can retrieve data from Amazon DevOps Guru.
+- [AWS Diagnostic tools](https://docs.aws.amazon.com/online-register/latest/data-formats/awsdiagnostictools.html): Lists all APIs that can retrieve data from AWS Diagnostic tools.
+- [AWS Direct Connect](https://docs.aws.amazon.com/online-register/latest/data-formats/awsdirectconnect.html): Lists all APIs that can retrieve data from AWS Direct Connect.
+- [AWS Directory Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awsdirectoryservice.html): Lists all APIs that can retrieve data from AWS Directory Service.
+- [AWS Directory Service Data](https://docs.aws.amazon.com/online-register/latest/data-formats/awsdirectoryservicedata.html): Lists all APIs that can retrieve data from AWS Directory Service Data.
+- [Amazon DocumentDB Elastic Clusters](https://docs.aws.amazon.com/online-register/latest/data-formats/amazondocumentdbelasticclusters.html): Lists all APIs that can retrieve data from Amazon DocumentDB Elastic Clusters.
+- [Amazon DynamoDB](https://docs.aws.amazon.com/online-register/latest/data-formats/amazondynamodb.html): Lists all APIs that can retrieve data from Amazon DynamoDB.
+- [Amazon DynamoDB Accelerator (DAX)](https://docs.aws.amazon.com/online-register/latest/data-formats/amazondynamodbacceleratordax.html): Lists all APIs that can retrieve data from Amazon DynamoDB Accelerator (DAX).
+- [Amazon EC2](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonec2.html): Lists all APIs that can retrieve data from Amazon EC2.
+- [Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonec2autoscaling.html): Lists all APIs that can retrieve data from Amazon EC2 Auto Scaling.
+- [Amazon EC2 Image Builder](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonec2imagebuilder.html): Lists all APIs that can retrieve data from Amazon EC2 Image Builder.
+- [Amazon ECS MCP Service](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonecsmcpservice.html): Lists all APIs that can retrieve data from Amazon ECS MCP Service.
+- [Amazon EKS Auth](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoneksauth.html): Lists all APIs that can retrieve data from Amazon EKS Auth.
+- [Amazon EKS MCP Server](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoneksmcpserver.html): Lists all APIs that can retrieve data from Amazon EKS MCP Server.
+- [AWS Elastic Beanstalk](https://docs.aws.amazon.com/online-register/latest/data-formats/awselasticbeanstalk.html): Lists all APIs that can retrieve data from AWS Elastic Beanstalk.
+- [Amazon Elastic Block Store](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonelasticblockstore.html): Lists all APIs that can retrieve data from Amazon Elastic Block Store.
+- [Amazon Elastic Container Registry](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonelasticcontainerregistry.html): Lists all APIs that can retrieve data from Amazon Elastic Container Registry.
+- [Amazon Elastic Container Registry Public](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonelasticcontainerregistrypublic.html): Lists all APIs that can retrieve data from Amazon Elastic Container Registry Public.
+- [Amazon Elastic Container Service](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonelasticcontainerservice.html): Lists all APIs that can retrieve data from Amazon Elastic Container Service.
+- [AWS Elastic Disaster Recovery](https://docs.aws.amazon.com/online-register/latest/data-formats/awselasticdisasterrecovery.html): Lists all APIs that can retrieve data from AWS Elastic Disaster Recovery.
+- [Amazon Elastic File System](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonelasticfilesystem.html): Lists all APIs that can retrieve data from Amazon Elastic File System.
+- [Amazon Elastic Kubernetes Service](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonelastickubernetesservice.html): Lists all APIs that can retrieve data from Amazon Elastic Kubernetes Service.
+- [AWS Elastic Load Balancing](https://docs.aws.amazon.com/online-register/latest/data-formats/awselasticloadbalancing.html): Lists all APIs that can retrieve data from AWS Elastic Load Balancing.
+- [AWS Elastic Load Balancing V2](https://docs.aws.amazon.com/online-register/latest/data-formats/awselasticloadbalancingv2.html): Lists all APIs that can retrieve data from AWS Elastic Load Balancing V2.
+- [Amazon Elastic MapReduce](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonelasticmapreduce.html): Lists all APIs that can retrieve data from Amazon Elastic MapReduce.
+- [Amazon Elastic Transcoder](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonelastictranscoder.html): Lists all APIs that can retrieve data from Amazon Elastic Transcoder.
+- [Amazon Elastic VMware Service](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonelasticvmwareservice.html): Lists all APIs that can retrieve data from Amazon Elastic VMware Service.
+- [Amazon ElastiCache](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonelasticache.html): Lists all APIs that can retrieve data from Amazon ElastiCache.
+- [AWS Elemental Appliances and Software](https://docs.aws.amazon.com/online-register/latest/data-formats/awselementalappliancesandsoftware.html): Lists all APIs that can retrieve data from AWS Elemental Appliances and Software.
+- [AWS Elemental Appliances and Software Activation Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awselementalappliancesandsoftwareactivationservice.html): Lists all APIs that can retrieve data from AWS Elemental Appliances and Software Activation Service.
+- [AWS Elemental Inference](https://docs.aws.amazon.com/online-register/latest/data-formats/awselementalinference.html): Lists all APIs that can retrieve data from AWS Elemental Inference.
+- [AWS Elemental MediaConnect](https://docs.aws.amazon.com/online-register/latest/data-formats/awselementalmediaconnect.html): Lists all APIs that can retrieve data from AWS Elemental MediaConnect.
+- [AWS Elemental MediaConvert](https://docs.aws.amazon.com/online-register/latest/data-formats/awselementalmediaconvert.html): Lists all APIs that can retrieve data from AWS Elemental MediaConvert.
+- [AWS Elemental MediaLive](https://docs.aws.amazon.com/online-register/latest/data-formats/awselementalmedialive.html): Lists all APIs that can retrieve data from AWS Elemental MediaLive.
+- [AWS Elemental MediaPackage](https://docs.aws.amazon.com/online-register/latest/data-formats/awselementalmediapackage.html): Lists all APIs that can retrieve data from AWS Elemental MediaPackage.
+- [AWS Elemental MediaPackage V2](https://docs.aws.amazon.com/online-register/latest/data-formats/awselementalmediapackagev2.html): Lists all APIs that can retrieve data from AWS Elemental MediaPackage V2.
+- [AWS Elemental MediaPackage VOD](https://docs.aws.amazon.com/online-register/latest/data-formats/awselementalmediapackagevod.html): Lists all APIs that can retrieve data from AWS Elemental MediaPackage VOD.
+- [AWS Elemental MediaStore](https://docs.aws.amazon.com/online-register/latest/data-formats/awselementalmediastore.html): Lists all APIs that can retrieve data from AWS Elemental MediaStore.
+- [AWS Elemental MediaTailor](https://docs.aws.amazon.com/online-register/latest/data-formats/awselementalmediatailor.html): Lists all APIs that can retrieve data from AWS Elemental MediaTailor.
+- [AWS Elemental Support Cases](https://docs.aws.amazon.com/online-register/latest/data-formats/awselementalsupportcases.html): Lists all APIs that can retrieve data from AWS Elemental Support Cases.
+- [AWS Elemental Support Content](https://docs.aws.amazon.com/online-register/latest/data-formats/awselementalsupportcontent.html): Lists all APIs that can retrieve data from AWS Elemental Support Content.
+- [Amazon EMR on EKS (EMR Containers)](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonemroneksemrcontainers.html): Lists all APIs that can retrieve data from Amazon EMR on EKS (EMR Containers).
+- [Amazon EMR Serverless](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonemrserverless.html): Lists all APIs that can retrieve data from Amazon EMR Serverless.
+- [AWS End User Messaging SMS and Voice V2](https://docs.aws.amazon.com/online-register/latest/data-formats/awsendusermessagingsmsandvoicev2.html): Lists all APIs that can retrieve data from AWS End User Messaging SMS and Voice V2.
+- [AWS End User Messaging Social](https://docs.aws.amazon.com/online-register/latest/data-formats/awsendusermessagingsocial.html): Lists all APIs that can retrieve data from AWS End User Messaging Social.
+- [AWS Entity Resolution](https://docs.aws.amazon.com/online-register/latest/data-formats/awsentityresolution.html): Lists all APIs that can retrieve data from AWS Entity Resolution.
+- [Amazon EventBridge](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoneventbridge.html): Lists all APIs that can retrieve data from Amazon EventBridge.
+- [Amazon EventBridge Pipes](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoneventbridgepipes.html): Lists all APIs that can retrieve data from Amazon EventBridge Pipes.
+- [Amazon EventBridge Scheduler](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoneventbridgescheduler.html): Lists all APIs that can retrieve data from Amazon EventBridge Scheduler.
+- [Amazon EventBridge Schemas](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoneventbridgeschemas.html): Lists all APIs that can retrieve data from Amazon EventBridge Schemas.
+- [AWS Fault Injection Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awsfaultinjectionservice.html): Lists all APIs that can retrieve data from AWS Fault Injection Service.
+- [Amazon FinSpace](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonfinspace.html): Lists all APIs that can retrieve data from Amazon FinSpace.
+- [Amazon FinSpace API](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonfinspaceapi.html): Lists all APIs that can retrieve data from Amazon FinSpace API.
+- [AWS Firewall Manager](https://docs.aws.amazon.com/online-register/latest/data-formats/awsfirewallmanager.html): Lists all APIs that can retrieve data from AWS Firewall Manager.
+- [Amazon Forecast](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonforecast.html): Lists all APIs that can retrieve data from Amazon Forecast.
+- [Amazon Fraud Detector](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonfrauddetector.html): Lists all APIs that can retrieve data from Amazon Fraud Detector.
+- [AWS Free Tier](https://docs.aws.amazon.com/online-register/latest/data-formats/awsfreetier.html): Lists all APIs that can retrieve data from AWS Free Tier.
+- [Amazon FreeRTOS](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonfreertos.html): Lists all APIs that can retrieve data from Amazon FreeRTOS.
+- [Amazon FSx](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonfsx.html): Lists all APIs that can retrieve data from Amazon FSx.
+- [Amazon GameLift Servers](https://docs.aws.amazon.com/online-register/latest/data-formats/amazongameliftservers.html): Lists all APIs that can retrieve data from Amazon GameLift Servers.
+- [Amazon GameLift Streams](https://docs.aws.amazon.com/online-register/latest/data-formats/amazongameliftstreams.html): Lists all APIs that can retrieve data from Amazon GameLift Streams.
+- [AWS Global Accelerator](https://docs.aws.amazon.com/online-register/latest/data-formats/awsglobalaccelerator.html): Lists all APIs that can retrieve data from AWS Global Accelerator.
+- [AWS Glue](https://docs.aws.amazon.com/online-register/latest/data-formats/awsglue.html): Lists all APIs that can retrieve data from AWS Glue.
+- [AWS Glue DataBrew](https://docs.aws.amazon.com/online-register/latest/data-formats/awsgluedatabrew.html): Lists all APIs that can retrieve data from AWS Glue DataBrew.
+- [AWS Ground Station](https://docs.aws.amazon.com/online-register/latest/data-formats/awsgroundstation.html): Lists all APIs that can retrieve data from AWS Ground Station.
+- [Amazon GroundTruth Labeling](https://docs.aws.amazon.com/online-register/latest/data-formats/amazongroundtruthlabeling.html): Lists all APIs that can retrieve data from Amazon GroundTruth Labeling.
+- [Amazon GuardDuty](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonguardduty.html): Lists all APIs that can retrieve data from Amazon GuardDuty.
+- [AWS Health APIs and Notifications](https://docs.aws.amazon.com/online-register/latest/data-formats/awshealthapisandnotifications.html): Lists all APIs that can retrieve data from AWS Health APIs and Notifications.
+- [AWS HealthImaging](https://docs.aws.amazon.com/online-register/latest/data-formats/awshealthimaging.html): Lists all APIs that can retrieve data from AWS HealthImaging.
+- [AWS HealthLake](https://docs.aws.amazon.com/online-register/latest/data-formats/awshealthlake.html): Lists all APIs that can retrieve data from AWS HealthLake.
+- [AWS HealthOmics](https://docs.aws.amazon.com/online-register/latest/data-formats/awshealthomics.html): Lists all APIs that can retrieve data from AWS HealthOmics.
+- [Amazon Honeycode](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonhoneycode.html): Lists all APIs that can retrieve data from Amazon Honeycode.
+- [AWS IAM Access Analyzer](https://docs.aws.amazon.com/online-register/latest/data-formats/awsiamaccessanalyzer.html): Lists all APIs that can retrieve data from AWS IAM Access Analyzer.
+- [AWS IAM Identity Center](https://docs.aws.amazon.com/online-register/latest/data-formats/awsiamidentitycenter.html): Lists all APIs that can retrieve data from AWS IAM Identity Center.
+- [AWS IAM Identity Center directory](https://docs.aws.amazon.com/online-register/latest/data-formats/awsiamidentitycenterdirectory.html): Lists all APIs that can retrieve data from AWS IAM Identity Center directory.
+- [AWS Identity and Access Management (IAM)](https://docs.aws.amazon.com/online-register/latest/data-formats/awsidentityandaccessmanagementiam.html): Lists all APIs that can retrieve data from AWS Identity and Access Management (IAM).
+- [AWS Identity and Access Management Roles Anywhere](https://docs.aws.amazon.com/online-register/latest/data-formats/awsidentityandaccessmanagementrolesanywhere.html): Lists all APIs that can retrieve data from AWS Identity and Access Management Roles Anywhere.
+- [AWS Identity Store](https://docs.aws.amazon.com/online-register/latest/data-formats/awsidentitystore.html): Lists all APIs that can retrieve data from AWS Identity Store.
+- [AWS Identity Store Auth](https://docs.aws.amazon.com/online-register/latest/data-formats/awsidentitystoreauth.html): Lists all APIs that can retrieve data from AWS Identity Store Auth.
+- [AWS Identity Sync](https://docs.aws.amazon.com/online-register/latest/data-formats/awsidentitysync.html): Lists all APIs that can retrieve data from AWS Identity Sync.
+- [AWS Import Export Disk Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awsimportexportdiskservice.html): Lists all APIs that can retrieve data from AWS Import Export Disk Service.
+- [Amazon Inspector](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoninspector.html): Lists all APIs that can retrieve data from Amazon Inspector.
+- [Amazon Inspector2](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoninspector2.html): Lists all APIs that can retrieve data from Amazon Inspector2.
+- [Amazon InspectorScan](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoninspectorscan.html): Lists all APIs that can retrieve data from Amazon InspectorScan.
+- [Amazon Interactive Video Service](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoninteractivevideoservice.html): Lists all APIs that can retrieve data from Amazon Interactive Video Service.
+- [Amazon Interactive Video Service Chat](https://docs.aws.amazon.com/online-register/latest/data-formats/amazoninteractivevideoservicechat.html): Lists all APIs that can retrieve data from Amazon Interactive Video Service Chat.
+- [AWS Invoicing Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awsinvoicingservice.html): Lists all APIs that can retrieve data from AWS Invoicing Service.
+- [AWS IoT](https://docs.aws.amazon.com/online-register/latest/data-formats/awsiot.html): Lists all APIs that can retrieve data from AWS IoT.
+- [AWS IoT Analytics](https://docs.aws.amazon.com/online-register/latest/data-formats/awsiotanalytics.html): Lists all APIs that can retrieve data from AWS IoT Analytics.
+- [AWS IoT Core Device Advisor](https://docs.aws.amazon.com/online-register/latest/data-formats/awsiotcoredeviceadvisor.html): Lists all APIs that can retrieve data from AWS IoT Core Device Advisor.
+- [AWS IoT Device Tester](https://docs.aws.amazon.com/online-register/latest/data-formats/awsiotdevicetester.html): Lists all APIs that can retrieve data from AWS IoT Device Tester.
+- [AWS IoT Events](https://docs.aws.amazon.com/online-register/latest/data-formats/awsiotevents.html): Lists all APIs that can retrieve data from AWS IoT Events.
+- [AWS IoT Fleet Hub for Device Management](https://docs.aws.amazon.com/online-register/latest/data-formats/awsiotfleethubfordevicemanagement.html): Lists all APIs that can retrieve data from AWS IoT Fleet Hub for Device Management.
+- [AWS IoT FleetWise](https://docs.aws.amazon.com/online-register/latest/data-formats/awsiotfleetwise.html): Lists all APIs that can retrieve data from AWS IoT FleetWise.
+- [AWS IoT Greengrass](https://docs.aws.amazon.com/online-register/latest/data-formats/awsiotgreengrass.html): Lists all APIs that can retrieve data from AWS IoT Greengrass.
+- [AWS IoT Greengrass V2](https://docs.aws.amazon.com/online-register/latest/data-formats/awsiotgreengrassv2.html): Lists all APIs that can retrieve data from AWS IoT Greengrass V2.
+- [AWS IoT Jobs DataPlane](https://docs.aws.amazon.com/online-register/latest/data-formats/awsiotjobsdataplane.html): Lists all APIs that can retrieve data from AWS IoT Jobs DataPlane.
+- [AWS IoT Managed Integrations](https://docs.aws.amazon.com/online-register/latest/data-formats/awsiotmanagedintegrations.html): Lists all APIs that can retrieve data from AWS IoT Managed Integrations.
+- [AWS IoT SiteWise](https://docs.aws.amazon.com/online-register/latest/data-formats/awsiotsitewise.html): Lists all APIs that can retrieve data from AWS IoT SiteWise.
+- [AWS IoT TwinMaker](https://docs.aws.amazon.com/online-register/latest/data-formats/awsiottwinmaker.html): Lists all APIs that can retrieve data from AWS IoT TwinMaker.
+- [AWS IoT Wireless](https://docs.aws.amazon.com/online-register/latest/data-formats/awsiotwireless.html): Lists all APIs that can retrieve data from AWS IoT Wireless.
+- [AWS IQ](https://docs.aws.amazon.com/online-register/latest/data-formats/awsiq.html): Lists all APIs that can retrieve data from AWS IQ.
+- [AWS IQ Permissions](https://docs.aws.amazon.com/online-register/latest/data-formats/awsiqpermissions.html): Lists all APIs that can retrieve data from AWS IQ Permissions.
+- [Amazon Kendra](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonkendra.html): Lists all APIs that can retrieve data from Amazon Kendra.
+- [Amazon Kendra Intelligent Ranking](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonkendraintelligentranking.html): Lists all APIs that can retrieve data from Amazon Kendra Intelligent Ranking.
+- [AWS Key Management Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awskeymanagementservice.html): Lists all APIs that can retrieve data from AWS Key Management Service.
+- [Amazon Keyspaces (for Apache Cassandra)](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonkeyspacesforapachecassandra.html): Lists all APIs that can retrieve data from Amazon Keyspaces (for Apache Cassandra).
+- [Amazon Kinesis Analytics](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonkinesisanalytics.html): Lists all APIs that can retrieve data from Amazon Kinesis Analytics.
+- [Amazon Kinesis Analytics V2](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonkinesisanalyticsv2.html): Lists all APIs that can retrieve data from Amazon Kinesis Analytics V2.
+- [Amazon Kinesis Data Streams](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonkinesisdatastreams.html): Lists all APIs that can retrieve data from Amazon Kinesis Data Streams.
+- [Amazon Kinesis Firehose](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonkinesisfirehose.html): Lists all APIs that can retrieve data from Amazon Kinesis Firehose.
+- [Amazon Kinesis Video Streams](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonkinesisvideostreams.html): Lists all APIs that can retrieve data from Amazon Kinesis Video Streams.
+- [AWS Lake Formation](https://docs.aws.amazon.com/online-register/latest/data-formats/awslakeformation.html): Lists all APIs that can retrieve data from AWS Lake Formation.
+- [AWS Lambda](https://docs.aws.amazon.com/online-register/latest/data-formats/awslambda.html): Lists all APIs that can retrieve data from AWS Lambda.
+- [AWS Launch Wizard](https://docs.aws.amazon.com/online-register/latest/data-formats/awslaunchwizard.html): Lists all APIs that can retrieve data from AWS Launch Wizard.
+- [Amazon Lex](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonlex.html): Lists all APIs that can retrieve data from Amazon Lex.
+- [Amazon Lex V2](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonlexv2.html): Lists all APIs that can retrieve data from Amazon Lex V2.
+- [AWS License Manager](https://docs.aws.amazon.com/online-register/latest/data-formats/awslicensemanager.html): Lists all APIs that can retrieve data from AWS License Manager.
+- [AWS License Manager Linux Subscriptions Manager](https://docs.aws.amazon.com/online-register/latest/data-formats/awslicensemanagerlinuxsubscriptionsmanager.html): Lists all APIs that can retrieve data from AWS License Manager Linux Subscriptions Manager.
+- [AWS License Manager User Subscriptions](https://docs.aws.amazon.com/online-register/latest/data-formats/awslicensemanagerusersubscriptions.html): Lists all APIs that can retrieve data from AWS License Manager User Subscriptions.
+- [Amazon Lightsail](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonlightsail.html): Lists all APIs that can retrieve data from Amazon Lightsail.
+- [Amazon Location](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonlocation.html): Lists all APIs that can retrieve data from Amazon Location.
+- [Amazon Location Service Maps](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonlocationservicemaps.html): Lists all APIs that can retrieve data from Amazon Location Service Maps.
+- [Amazon Location Service Places](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonlocationserviceplaces.html): Lists all APIs that can retrieve data from Amazon Location Service Places.
+- [Amazon Location Service Routes](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonlocationserviceroutes.html): Lists all APIs that can retrieve data from Amazon Location Service Routes.
+- [Amazon Lookout for Equipment](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonlookoutforequipment.html): Lists all APIs that can retrieve data from Amazon Lookout for Equipment.
+- [Amazon Lookout for Metrics](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonlookoutformetrics.html): Lists all APIs that can retrieve data from Amazon Lookout for Metrics.
+- [Amazon Lookout for Vision](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonlookoutforvision.html): Lists all APIs that can retrieve data from Amazon Lookout for Vision.
+- [Amazon Machine Learning](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonmachinelearning.html): Lists all APIs that can retrieve data from Amazon Machine Learning.
+- [Amazon Macie](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonmacie.html): Lists all APIs that can retrieve data from Amazon Macie.
+- [AWS Mainframe Modernization Application Testing](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmainframemodernizationapplicationtesting.html): Lists all APIs that can retrieve data from AWS Mainframe Modernization Application Testing.
+- [AWS Mainframe Modernization Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmainframemodernizationservice.html): Lists all APIs that can retrieve data from AWS Mainframe Modernization Service.
+- [Amazon Managed Blockchain](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonmanagedblockchain.html): Lists all APIs that can retrieve data from Amazon Managed Blockchain.
+- [Amazon Managed Blockchain Query](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonmanagedblockchainquery.html): Lists all APIs that can retrieve data from Amazon Managed Blockchain Query.
+- [Amazon Managed Grafana](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonmanagedgrafana.html): Lists all APIs that can retrieve data from Amazon Managed Grafana.
+- [Amazon Managed Service for Prometheus](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonmanagedserviceforprometheus.html): Lists all APIs that can retrieve data from Amazon Managed Service for Prometheus.
+- [Amazon Managed Streaming for Apache Kafka](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonmanagedstreamingforapachekafka.html): Lists all APIs that can retrieve data from Amazon Managed Streaming for Apache Kafka.
+- [Amazon Managed Streaming for Kafka Connect](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonmanagedstreamingforkafkaconnect.html): Lists all APIs that can retrieve data from Amazon Managed Streaming for Kafka Connect.
+- [Amazon Managed Workflows for Apache Airflow](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonmanagedworkflowsforapacheairflow.html): Lists all APIs that can retrieve data from Amazon Managed Workflows for Apache Airflow.
+- [AWS Marketplace](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmarketplace.html): Lists all APIs that can retrieve data from AWS Marketplace.
+- [AWS Marketplace Catalog](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmarketplacecatalog.html): Lists all APIs that can retrieve data from AWS Marketplace Catalog.
+- [AWS Marketplace Deployment Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmarketplacedeploymentservice.html): Lists all APIs that can retrieve data from AWS Marketplace Deployment Service.
+- [AWS Marketplace Discovery](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmarketplacediscovery.html): Lists all APIs that can retrieve data from AWS Marketplace Discovery.
+- [AWS Marketplace Entitlement Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmarketplaceentitlementservice.html): Lists all APIs that can retrieve data from AWS Marketplace Entitlement Service.
+- [AWS Marketplace Image Building Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmarketplaceimagebuildingservice.html): Lists all APIs that can retrieve data from AWS Marketplace Image Building Service.
+- [AWS Marketplace Management Portal](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmarketplacemanagementportal.html): Lists all APIs that can retrieve data from AWS Marketplace Management Portal.
+- [AWS Marketplace Private Marketplace](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmarketplaceprivatemarketplace.html): Lists all APIs that can retrieve data from AWS Marketplace Private Marketplace.
+- [AWS Marketplace Procurement Systems Integration](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmarketplaceprocurementsystemsintegration.html): Lists all APIs that can retrieve data from AWS Marketplace Procurement Systems Integration.
+- [AWS Marketplace Reporting](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmarketplacereporting.html): Lists all APIs that can retrieve data from AWS Marketplace Reporting.
+- [AWS Marketplace Seller Reporting](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmarketplacesellerreporting.html): Lists all APIs that can retrieve data from AWS Marketplace Seller Reporting.
+- [AWS Marketplace Vendor Insights](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmarketplacevendorinsights.html): Lists all APIs that can retrieve data from AWS Marketplace Vendor Insights.
+- [AWS MCP Server](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmcpserver.html): Lists all APIs that can retrieve data from AWS MCP Server.
+- [Amazon Mechanical Turk](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonmechanicalturk.html): Lists all APIs that can retrieve data from Amazon Mechanical Turk.
+- [Amazon MemoryDB](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonmemorydb.html): Lists all APIs that can retrieve data from Amazon MemoryDB.
+- [Amazon Message Delivery Service](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonmessagedeliveryservice.html): Lists all APIs that can retrieve data from Amazon Message Delivery Service.
+- [AWS Microservice Extractor for .NET](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmicroserviceextractorfor.net.html): Lists all APIs that can retrieve data from AWS Microservice Extractor for .NET.
+- [AWS Migration Acceleration Program Credits](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmigrationaccelerationprogramcredits.html): Lists all APIs that can retrieve data from AWS Migration Acceleration Program Credits.
+- [AWS Migration Hub](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmigrationhub.html): Lists all APIs that can retrieve data from AWS Migration Hub.
+- [AWS Migration Hub Orchestrator](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmigrationhuborchestrator.html): Lists all APIs that can retrieve data from AWS Migration Hub Orchestrator.
+- [AWS Migration Hub Refactor Spaces](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmigrationhubrefactorspaces.html): Lists all APIs that can retrieve data from AWS Migration Hub Refactor Spaces.
+- [AWS Migration Hub Strategy Recommendations](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmigrationhubstrategyrecommendations.html): Lists all APIs that can retrieve data from AWS Migration Hub Strategy Recommendations.
+- [Amazon Mobile Analytics](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonmobileanalytics.html): Lists all APIs that can retrieve data from Amazon Mobile Analytics.
+- [Amazon Monitron](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonmonitron.html): Lists all APIs that can retrieve data from Amazon Monitron.
+- [Amazon MQ](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonmq.html): Lists all APIs that can retrieve data from Amazon MQ.
+- [Multi-party approval](https://docs.aws.amazon.com/online-register/latest/data-formats/multi-partyapproval.html): Lists all APIs that can retrieve data from Multi-party approval.
+- [AWS MWAA Serverless](https://docs.aws.amazon.com/online-register/latest/data-formats/awsmwaaserverless.html): Lists all APIs that can retrieve data from AWS MWAA Serverless.
+- [Amazon Neptune](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonneptune.html): Lists all APIs that can retrieve data from Amazon Neptune.
+- [Amazon Neptune Analytics](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonneptuneanalytics.html): Lists all APIs that can retrieve data from Amazon Neptune Analytics.
+- [AWS Network Firewall](https://docs.aws.amazon.com/online-register/latest/data-formats/awsnetworkfirewall.html): Lists all APIs that can retrieve data from AWS Network Firewall.
+- [Network Flow Monitor](https://docs.aws.amazon.com/online-register/latest/data-formats/networkflowmonitor.html): Lists all APIs that can retrieve data from Network Flow Monitor.
+- [AWS Network Manager](https://docs.aws.amazon.com/online-register/latest/data-formats/awsnetworkmanager.html): Lists all APIs that can retrieve data from AWS Network Manager.
+- [AWS Network Manager Chat](https://docs.aws.amazon.com/online-register/latest/data-formats/awsnetworkmanagerchat.html): Lists all APIs that can retrieve data from AWS Network Manager Chat.
+- [Amazon Nimble Studio](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonnimblestudio.html): Lists all APIs that can retrieve data from Amazon Nimble Studio.
+- [Amazon Nova Act](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonnovaact.html): Lists all APIs that can retrieve data from Amazon Nova Act.
+- [Amazon One Enterprise](https://docs.aws.amazon.com/online-register/latest/data-formats/amazononeenterprise.html): Lists all APIs that can retrieve data from Amazon One Enterprise.
+- [Amazon OpenSearch](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonopensearch.html): Lists all APIs that can retrieve data from Amazon OpenSearch.
+- [Amazon OpenSearch Ingestion](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonopensearchingestion.html): Lists all APIs that can retrieve data from Amazon OpenSearch Ingestion.
+- [Amazon OpenSearch Serverless](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonopensearchserverless.html): Lists all APIs that can retrieve data from Amazon OpenSearch Serverless.
+- [Amazon OpenSearch Service](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonopensearchservice.html): Lists all APIs that can retrieve data from Amazon OpenSearch Service.
+- [AWS OpsWorks](https://docs.aws.amazon.com/online-register/latest/data-formats/awsopsworks.html): Lists all APIs that can retrieve data from AWS OpsWorks.
+- [AWS OpsWorks Configuration Management](https://docs.aws.amazon.com/online-register/latest/data-formats/awsopsworksconfigurationmanagement.html): Lists all APIs that can retrieve data from AWS OpsWorks Configuration Management.
+- [AWS Organizations](https://docs.aws.amazon.com/online-register/latest/data-formats/awsorganizations.html): Lists all APIs that can retrieve data from AWS Organizations.
+- [AWS Outposts](https://docs.aws.amazon.com/online-register/latest/data-formats/awsoutposts.html): Lists all APIs that can retrieve data from AWS Outposts.
+- [AWS Panorama](https://docs.aws.amazon.com/online-register/latest/data-formats/awspanorama.html): Lists all APIs that can retrieve data from AWS Panorama.
+- [AWS Parallel Computing Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awsparallelcomputingservice.html): Lists all APIs that can retrieve data from AWS Parallel Computing Service.
+- [AWS Partner Central](https://docs.aws.amazon.com/online-register/latest/data-formats/awspartnercentral.html): Lists all APIs that can retrieve data from AWS Partner Central.
+- [AWS Payment Cryptography](https://docs.aws.amazon.com/online-register/latest/data-formats/awspaymentcryptography.html): Lists all APIs that can retrieve data from AWS Payment Cryptography.
+- [AWS Payments](https://docs.aws.amazon.com/online-register/latest/data-formats/awspayments.html): Lists all APIs that can retrieve data from AWS Payments.
+- [AWS Performance Insights](https://docs.aws.amazon.com/online-register/latest/data-formats/awsperformanceinsights.html): Lists all APIs that can retrieve data from AWS Performance Insights.
+- [Amazon Personalize](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonpersonalize.html): Lists all APIs that can retrieve data from Amazon Personalize.
+- [Amazon Pinpoint](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonpinpoint.html): Lists all APIs that can retrieve data from Amazon Pinpoint.
+- [Amazon Pinpoint Email Service](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonpinpointemailservice.html): Lists all APIs that can retrieve data from Amazon Pinpoint Email Service.
+- [Amazon Pinpoint SMS and Voice Service](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonpinpointsmsandvoiceservice.html): Lists all APIs that can retrieve data from Amazon Pinpoint SMS and Voice Service.
+- [Amazon Polly](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonpolly.html): Lists all APIs that can retrieve data from Amazon Polly.
+- [AWS Price List](https://docs.aws.amazon.com/online-register/latest/data-formats/awspricelist.html): Lists all APIs that can retrieve data from AWS Price List.
+- [AWS PricingPlanManager Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awspricingplanmanagerservice.html): Lists all APIs that can retrieve data from AWS PricingPlanManager Service.
+- [AWS Private CA Connector for Active Directory](https://docs.aws.amazon.com/online-register/latest/data-formats/awsprivatecaconnectorforactivedirectory.html): Lists all APIs that can retrieve data from AWS Private CA Connector for Active Directory.
+- [AWS Private CA Connector for SCEP](https://docs.aws.amazon.com/online-register/latest/data-formats/awsprivatecaconnectorforscep.html): Lists all APIs that can retrieve data from AWS Private CA Connector for SCEP.
+- [AWS Private Certificate Authority](https://docs.aws.amazon.com/online-register/latest/data-formats/awsprivatecertificateauthority.html): Lists all APIs that can retrieve data from AWS Private Certificate Authority.
+- [AWS Proton](https://docs.aws.amazon.com/online-register/latest/data-formats/awsproton.html): Lists all APIs that can retrieve data from AWS Proton.
+- [AWS Purchase Orders Console](https://docs.aws.amazon.com/online-register/latest/data-formats/awspurchaseordersconsole.html): Lists all APIs that can retrieve data from AWS Purchase Orders Console.
+- [Amazon Q](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonq.html): Lists all APIs that can retrieve data from Amazon Q.
+- [Amazon Q Business](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonqbusiness.html): Lists all APIs that can retrieve data from Amazon Q Business.
+- [Amazon Q Business Q Apps](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonqbusinessqapps.html): Lists all APIs that can retrieve data from Amazon Q Business Q Apps.
+- [Amazon Q Developer](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonqdeveloper.html): Lists all APIs that can retrieve data from Amazon Q Developer.
+- [Amazon Q in Connect](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonqinconnect.html): Lists all APIs that can retrieve data from Amazon Q in Connect.
+- [Amazon QLDB](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonqldb.html): Lists all APIs that can retrieve data from Amazon QLDB.
+- [Amazon QuickSight](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonquicksight.html): Lists all APIs that can retrieve data from Amazon QuickSight.
+- [Amazon RDS](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonrds.html): Lists all APIs that can retrieve data from Amazon RDS.
+- [AWS Recycle Bin](https://docs.aws.amazon.com/online-register/latest/data-formats/awsrecyclebin.html): Lists all APIs that can retrieve data from AWS Recycle Bin.
+- [Amazon Redshift](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonredshift.html): Lists all APIs that can retrieve data from Amazon Redshift.
+- [Amazon Redshift Data API](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonredshiftdataapi.html): Lists all APIs that can retrieve data from Amazon Redshift Data API.
+- [Amazon Redshift Serverless](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonredshiftserverless.html): Lists all APIs that can retrieve data from Amazon Redshift Serverless.
+- [Amazon Rekognition](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonrekognition.html): Lists all APIs that can retrieve data from Amazon Rekognition.
+- [AWS rePost Private](https://docs.aws.amazon.com/online-register/latest/data-formats/awsrepostprivate.html): Lists all APIs that can retrieve data from AWS rePost Private.
+- [AWS Resilience Hub](https://docs.aws.amazon.com/online-register/latest/data-formats/awsresiliencehub.html): Lists all APIs that can retrieve data from AWS Resilience Hub.
+- [AWS Resource Access Manager (RAM)](https://docs.aws.amazon.com/online-register/latest/data-formats/awsresourceaccessmanagerram.html): Lists all APIs that can retrieve data from AWS Resource Access Manager (RAM).
+- [AWS Resource Explorer](https://docs.aws.amazon.com/online-register/latest/data-formats/awsresourceexplorer.html): Lists all APIs that can retrieve data from AWS Resource Explorer.
+- [Amazon Resource Group Tagging API](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonresourcegrouptaggingapi.html): Lists all APIs that can retrieve data from Amazon Resource Group Tagging API.
+- [AWS Resource Groups](https://docs.aws.amazon.com/online-register/latest/data-formats/awsresourcegroups.html): Lists all APIs that can retrieve data from AWS Resource Groups.
+- [Amazon RHEL Knowledgebase Portal](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonrhelknowledgebaseportal.html): Lists all APIs that can retrieve data from Amazon RHEL Knowledgebase Portal.
+- [AWS RoboMaker](https://docs.aws.amazon.com/online-register/latest/data-formats/awsrobomaker.html): Lists all APIs that can retrieve data from AWS RoboMaker.
+- [Amazon Route 53](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonroute53.html): Lists all APIs that can retrieve data from Amazon Route 53.
+- [Amazon Route 53 Domains](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonroute53domains.html): Lists all APIs that can retrieve data from Amazon Route 53 Domains.
+- [Amazon Route 53 Profiles](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonroute53profiles.html): Lists all APIs that can retrieve data from Amazon Route 53 Profiles.
+- [Amazon Route 53 Recovery Cluster](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonroute53recoverycluster.html): Lists all APIs that can retrieve data from Amazon Route 53 Recovery Cluster.
+- [Amazon Route 53 Recovery Controls](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonroute53recoverycontrols.html): Lists all APIs that can retrieve data from Amazon Route 53 Recovery Controls.
+- [Amazon Route 53 Recovery Readiness](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonroute53recoveryreadiness.html): Lists all APIs that can retrieve data from Amazon Route 53 Recovery Readiness.
+- [Amazon Route 53 Resolver](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonroute53resolver.html): Lists all APIs that can retrieve data from Amazon Route 53 Resolver.
+- [AWS Route53 Global Resolver](https://docs.aws.amazon.com/online-register/latest/data-formats/awsroute53globalresolver.html): Lists all APIs that can retrieve data from AWS Route53 Global Resolver.
+- [AWS RTB Fabric](https://docs.aws.amazon.com/online-register/latest/data-formats/awsrtbfabric.html): Lists all APIs that can retrieve data from AWS RTB Fabric.
+- [Amazon S3](https://docs.aws.amazon.com/online-register/latest/data-formats/amazons3.html): Lists all APIs that can retrieve data from Amazon S3.
+- [Amazon S3 Express](https://docs.aws.amazon.com/online-register/latest/data-formats/amazons3express.html): Lists all APIs that can retrieve data from Amazon S3 Express.
+- [Amazon S3 Glacier](https://docs.aws.amazon.com/online-register/latest/data-formats/amazons3glacier.html): Lists all APIs that can retrieve data from Amazon S3 Glacier.
+- [Amazon S3 Object Lambda](https://docs.aws.amazon.com/online-register/latest/data-formats/amazons3objectlambda.html): Lists all APIs that can retrieve data from Amazon S3 Object Lambda.
+- [Amazon S3 on Outposts](https://docs.aws.amazon.com/online-register/latest/data-formats/amazons3onoutposts.html): Lists all APIs that can retrieve data from Amazon S3 on Outposts.
+- [Amazon S3 Tables](https://docs.aws.amazon.com/online-register/latest/data-formats/amazons3tables.html): Lists all APIs that can retrieve data from Amazon S3 Tables.
+- [Amazon S3 Vectors](https://docs.aws.amazon.com/online-register/latest/data-formats/amazons3vectors.html): Lists all APIs that can retrieve data from Amazon S3 Vectors.
+- [Amazon SageMaker](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonsagemaker.html): Lists all APIs that can retrieve data from Amazon SageMaker.
+- [Amazon SageMaker geospatial capabilities](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonsagemakergeospatialcapabilities.html): Lists all APIs that can retrieve data from Amazon SageMaker geospatial capabilities.
+- [Amazon SageMaker Unified Studio MCP](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonsagemakerunifiedstudiomcp.html): Lists all APIs that can retrieve data from Amazon SageMaker Unified Studio MCP.
+- [Amazon SageMaker with MLflow](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonsagemakerwithmlflow.html): Lists all APIs that can retrieve data from Amazon SageMaker with MLflow.
+- [AWS Savings Plans](https://docs.aws.amazon.com/online-register/latest/data-formats/awssavingsplans.html): Lists all APIs that can retrieve data from AWS Savings Plans.
+- [AWS Secrets Manager](https://docs.aws.amazon.com/online-register/latest/data-formats/awssecretsmanager.html): Lists all APIs that can retrieve data from AWS Secrets Manager.
+- [AWS Security Agent](https://docs.aws.amazon.com/online-register/latest/data-formats/awssecurityagent.html): Lists all APIs that can retrieve data from AWS Security Agent.
+- [AWS Security Hub](https://docs.aws.amazon.com/online-register/latest/data-formats/awssecurityhub.html): Lists all APIs that can retrieve data from AWS Security Hub.
+- [AWS Security Incident Response](https://docs.aws.amazon.com/online-register/latest/data-formats/awssecurityincidentresponse.html): Lists all APIs that can retrieve data from AWS Security Incident Response.
+- [Amazon Security Lake](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonsecuritylake.html): Lists all APIs that can retrieve data from Amazon Security Lake.
+- [AWS Security Token Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awssecuritytokenservice.html): Lists all APIs that can retrieve data from AWS Security Token Service.
+- [AWS Server Migration Service](https://docs.aws.amazon.com/online-register/latest/data-formats/awsservermigrationservice.html): Lists all APIs that can retrieve data from AWS Server Migration Service.
+- [AWS Serverless Application Repository](https://docs.aws.amazon.com/online-register/latest/data-formats/awsserverlessapplicationrepository.html): Lists all APIs that can retrieve data from AWS Serverless Application Repository.
+- [AWS Service - Oracle Database@AWS](https://docs.aws.amazon.com/online-register/latest/data-formats/awsservice-oracledatabase_aws.html): Lists all APIs that can retrieve data from AWS Service - Oracle Database@AWS.
+- [AWS Service Catalog](https://docs.aws.amazon.com/online-register/latest/data-formats/awsservicecatalog.html): Lists all APIs that can retrieve data from AWS Service Catalog.
+- [AWS Service for managing AWS Management Console user experience capabilities.](https://docs.aws.amazon.com/online-register/latest/data-formats/awsserviceformanagingawsconsoleuserexperiencecapabilities..html): Lists all APIs that can retrieve data from AWS Service for managing AWS Management Console user experience capabilities..
+- [AWS service providing managed private networks](https://docs.aws.amazon.com/online-register/latest/data-formats/awsserviceprovidingmanagedprivatenetworks.html): Lists all APIs that can retrieve data from AWS service providing managed private networks.
+- [Service Quotas](https://docs.aws.amazon.com/online-register/latest/data-formats/servicequotas.html): Lists all APIs that can retrieve data from Service Quotas.
+- [Amazon SES](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonses.html): Lists all APIs that can retrieve data from Amazon SES.
+- [AWS Shield](https://docs.aws.amazon.com/online-register/latest/data-formats/awsshield.html): Lists all APIs that can retrieve data from AWS Shield.
+- [AWS Shield network security director](https://docs.aws.amazon.com/online-register/latest/data-formats/awsshieldnetworksecuritydirector.html): Lists all APIs that can retrieve data from AWS Shield network security director.
+- [AWS Signer](https://docs.aws.amazon.com/online-register/latest/data-formats/awssigner.html): Lists all APIs that can retrieve data from AWS Signer.
+- [AWS Signin](https://docs.aws.amazon.com/online-register/latest/data-formats/awssignin.html): Lists all APIs that can retrieve data from AWS Signin.
+- [Amazon Simple Email Service - Mail Manager](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonsimpleemailservice-mailmanager.html): Lists all APIs that can retrieve data from Amazon Simple Email Service - Mail Manager.
+- [Amazon Simple Email Service v2](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonsimpleemailservicev2.html): Lists all APIs that can retrieve data from Amazon Simple Email Service v2.
+- [Amazon Simple Workflow Service](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonsimpleworkflowservice.html): Lists all APIs that can retrieve data from Amazon Simple Workflow Service.
+- [Amazon SimpleDB](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonsimpledb.html): Lists all APIs that can retrieve data from Amazon SimpleDB.
+- [AWS SimSpace Weaver](https://docs.aws.amazon.com/online-register/latest/data-formats/awssimspaceweaver.html): Lists all APIs that can retrieve data from AWS SimSpace Weaver.
+- [AWS Snow Device Management](https://docs.aws.amazon.com/online-register/latest/data-formats/awssnowdevicemanagement.html): Lists all APIs that can retrieve data from AWS Snow Device Management.
+- [AWS Snowball](https://docs.aws.amazon.com/online-register/latest/data-formats/awssnowball.html): Lists all APIs that can retrieve data from AWS Snowball.
+- [Amazon SNS](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonsns.html): Lists all APIs that can retrieve data from Amazon SNS.
+- [AWS SQL Workbench](https://docs.aws.amazon.com/online-register/latest/data-formats/awssqlworkbench.html): Lists all APIs that can retrieve data from AWS SQL Workbench.
+- [Amazon SQS](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonsqs.html): Lists all APIs that can retrieve data from Amazon SQS.
+- [AWS Step Functions](https://docs.aws.amazon.com/online-register/latest/data-formats/awsstepfunctions.html): Lists all APIs that can retrieve data from AWS Step Functions.
+- [AWS Storage Gateway](https://docs.aws.amazon.com/online-register/latest/data-formats/awsstoragegateway.html): Lists all APIs that can retrieve data from AWS Storage Gateway.
+- [AWS Supply Chain](https://docs.aws.amazon.com/online-register/latest/data-formats/awssupplychain.html): Lists all APIs that can retrieve data from AWS Supply Chain.
+- [AWS Support](https://docs.aws.amazon.com/online-register/latest/data-formats/awssupport.html): Lists all APIs that can retrieve data from AWS Support.
+- [AWS Support App in Slack](https://docs.aws.amazon.com/online-register/latest/data-formats/awssupportappinslack.html): Lists all APIs that can retrieve data from AWS Support App in Slack.
+- [AWS Support Console](https://docs.aws.amazon.com/online-register/latest/data-formats/awssupportconsole.html): Lists all APIs that can retrieve data from AWS Support Console.
+- [AWS Support Plans](https://docs.aws.amazon.com/online-register/latest/data-formats/awssupportplans.html): Lists all APIs that can retrieve data from AWS Support Plans.
+- [AWS Sustainability](https://docs.aws.amazon.com/online-register/latest/data-formats/awssustainability.html): Lists all APIs that can retrieve data from AWS Sustainability.
+- [AWS Systems Manager](https://docs.aws.amazon.com/online-register/latest/data-formats/awssystemsmanager.html): Lists all APIs that can retrieve data from AWS Systems Manager.
+- [AWS Systems Manager for SAP](https://docs.aws.amazon.com/online-register/latest/data-formats/awssystemsmanagerforsap.html): Lists all APIs that can retrieve data from AWS Systems Manager for SAP.
+- [AWS Systems Manager GUI Connect](https://docs.aws.amazon.com/online-register/latest/data-formats/awssystemsmanagerguiconnect.html): Lists all APIs that can retrieve data from AWS Systems Manager GUI Connect.
+- [AWS Systems Manager Incident Manager](https://docs.aws.amazon.com/online-register/latest/data-formats/awssystemsmanagerincidentmanager.html): Lists all APIs that can retrieve data from AWS Systems Manager Incident Manager.
+- [AWS Systems Manager Incident Manager Contacts](https://docs.aws.amazon.com/online-register/latest/data-formats/awssystemsmanagerincidentmanagercontacts.html): Lists all APIs that can retrieve data from AWS Systems Manager Incident Manager Contacts.
+- [AWS Systems Manager Quick Setup](https://docs.aws.amazon.com/online-register/latest/data-formats/awssystemsmanagerquicksetup.html): Lists all APIs that can retrieve data from AWS Systems Manager Quick Setup.
+- [Tag Editor](https://docs.aws.amazon.com/online-register/latest/data-formats/tageditor.html): Lists all APIs that can retrieve data from Tag Editor.
+- [AWS Tax Settings](https://docs.aws.amazon.com/online-register/latest/data-formats/awstaxsettings.html): Lists all APIs that can retrieve data from AWS Tax Settings.
+- [AWS Telco Network Builder](https://docs.aws.amazon.com/online-register/latest/data-formats/awstelconetworkbuilder.html): Lists all APIs that can retrieve data from AWS Telco Network Builder.
+- [Amazon Textract](https://docs.aws.amazon.com/online-register/latest/data-formats/amazontextract.html): Lists all APIs that can retrieve data from Amazon Textract.
+- [Amazon Timestream](https://docs.aws.amazon.com/online-register/latest/data-formats/amazontimestream.html): Lists all APIs that can retrieve data from Amazon Timestream.
+- [Amazon Timestream InfluxDB](https://docs.aws.amazon.com/online-register/latest/data-formats/amazontimestreaminfluxdb.html): Lists all APIs that can retrieve data from Amazon Timestream InfluxDB.
+- [AWS Tiros](https://docs.aws.amazon.com/online-register/latest/data-formats/awstiros.html): Lists all APIs that can retrieve data from AWS Tiros.
+- [Amazon Transcribe](https://docs.aws.amazon.com/online-register/latest/data-formats/amazontranscribe.html): Lists all APIs that can retrieve data from Amazon Transcribe.
+- [AWS Transfer Family](https://docs.aws.amazon.com/online-register/latest/data-formats/awstransferfamily.html): Lists all APIs that can retrieve data from AWS Transfer Family.
+- [AWS Transform](https://docs.aws.amazon.com/online-register/latest/data-formats/awstransform.html): Lists all APIs that can retrieve data from AWS Transform.
+- [AWS Transform custom](https://docs.aws.amazon.com/online-register/latest/data-formats/awstransformcustom.html): Lists all APIs that can retrieve data from AWS Transform custom.
+- [Amazon Translate](https://docs.aws.amazon.com/online-register/latest/data-formats/amazontranslate.html): Lists all APIs that can retrieve data from Amazon Translate.
+- [AWS Trusted Advisor](https://docs.aws.amazon.com/online-register/latest/data-formats/awstrustedadvisor.html): Lists all APIs that can retrieve data from AWS Trusted Advisor.
+- [AWS User Notifications](https://docs.aws.amazon.com/online-register/latest/data-formats/awsusernotifications.html): Lists all APIs that can retrieve data from AWS User Notifications.
+- [AWS User Notifications Contacts](https://docs.aws.amazon.com/online-register/latest/data-formats/awsusernotificationscontacts.html): Lists all APIs that can retrieve data from AWS User Notifications Contacts.
+- [AWS User Subscriptions](https://docs.aws.amazon.com/online-register/latest/data-formats/awsusersubscriptions.html): Lists all APIs that can retrieve data from AWS User Subscriptions.
+- [Amazon Verified Permissions](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonverifiedpermissions.html): Lists all APIs that can retrieve data from Amazon Verified Permissions.
+- [Amazon VPC Lattice](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonvpclattice.html): Lists all APIs that can retrieve data from Amazon VPC Lattice.
+- [AWS WAF](https://docs.aws.amazon.com/online-register/latest/data-formats/awswaf.html): Lists all APIs that can retrieve data from AWS WAF.
+- [AWS WAF Regional](https://docs.aws.amazon.com/online-register/latest/data-formats/awswafregional.html): Lists all APIs that can retrieve data from AWS WAF Regional.
+- [AWS WAF V2](https://docs.aws.amazon.com/online-register/latest/data-formats/awswafv2.html): Lists all APIs that can retrieve data from AWS WAF V2.
+- [AWS Well-Architected Tool](https://docs.aws.amazon.com/online-register/latest/data-formats/awswell-architectedtool.html): Lists all APIs that can retrieve data from AWS Well-Architected Tool.
+- [AWS Wickr](https://docs.aws.amazon.com/online-register/latest/data-formats/awswickr.html): Lists all APIs that can retrieve data from AWS Wickr.
+- [Amazon WorkDocs](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonworkdocs.html): Lists all APIs that can retrieve data from Amazon WorkDocs.
+- [Amazon WorkLink](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonworklink.html): Lists all APIs that can retrieve data from Amazon WorkLink.
+- [Amazon WorkMail](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonworkmail.html): Lists all APIs that can retrieve data from Amazon WorkMail.
+- [Amazon WorkMail Message Flow](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonworkmailmessageflow.html): Lists all APIs that can retrieve data from Amazon WorkMail Message Flow.
+- [Amazon WorkSpaces](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonworkspaces.html): Lists all APIs that can retrieve data from Amazon WorkSpaces.
+- [AWS WorkSpaces Managed Instances](https://docs.aws.amazon.com/online-register/latest/data-formats/awsworkspacesmanagedinstances.html): Lists all APIs that can retrieve data from AWS WorkSpaces Managed Instances.
+- [Amazon WorkSpaces Secure Browser](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonworkspacessecurebrowser.html): Lists all APIs that can retrieve data from Amazon WorkSpaces Secure Browser.
+- [Amazon WorkSpaces Thin Client](https://docs.aws.amazon.com/online-register/latest/data-formats/amazonworkspacesthinclient.html): Lists all APIs that can retrieve data from Amazon WorkSpaces Thin Client.
+- [AWS X-Ray](https://docs.aws.amazon.com/online-register/latest/data-formats/awsx-ray.html): Lists all APIs that can retrieve data from AWS X-Ray.

@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Google Cloud Service Account Impersonation activity using access token generation
-Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detect Google Cloud service account impersonation activity through the use of access tokens.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Certificates managed by ACM should be validated
- 
+
 ## Description{% #description %}
 
 All Secure Socket Layer/Transport Layer Security (SSL/TLS) certificates in Amazon Certificate Manager (ACM) should be validated.

@@ -39,12 +39,12 @@ To comply with this rule, use more restrictive access modifiers such as `private
 
 ```
 global without sharing class GlobalClass {
-	global String globalAttribute = 'my-attr';
+    global String globalAttribute = 'my-attr';
 
 
-	global static void globalStaticMethod() { }
+    global static void globalStaticMethod() { }
 
-	global class GlobalInnerClass { }
+    global class GlobalInnerClass { }
 }
 ```
 
@@ -60,13 +60,12 @@ private class PrivateClass {
 
 ```
 class NotGlobalClass {
-	String notGlobalAttribute = 'my-attr';
+    String notGlobalAttribute = 'my-attr';
 
-	static void staticMethod() { }
+    static void staticMethod() { }
 
-	class InnerClass { }
+    class InnerClass { }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

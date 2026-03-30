@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Containers on the default network bridge should restrict network traffic
-Classification:complianceFramework:cis-dockerControl:2.1 
+Classification:complianceFramework:cis-dockerControl:2.1
 ## Description{% #description %}
 
 By default, all network traffic is allowed between containers on the same host on the default network bridge. You can restrict all inter-container communication and link specific containers together that require communication. Or, you can create a custom network and only join containers that need to communicate to that custom network.
@@ -23,7 +23,7 @@ By default, unrestricted network traffic is enabled between all containers on th
 Verify that the default network bridge has been configured to restrict inter-container communication by running:
 
 ```
-docker network ls --quiet | xargs docker network inspect --format '{{ .Name }}: {{ .Options }}' 
+docker network ls --quiet | xargs docker network inspect --format '{{ .Name }}: {{ .Options }}'
 ```
 
 Check that it returns `com.docker.network.bridge.enable_icc:false` for the default network bridge.
@@ -39,7 +39,7 @@ Edit the Docker daemon configuration file to ensure that inter-container communi
 Alternatively, run the Docker daemon directly and pass `--icc=false` as an argument:
 
 ```
-dockerd --icc=false 
+dockerd --icc=false
 ```
 
 Follow the Docker documentation and create a custom network, and only join containers that need to communicate to that custom network. The `--icc` parameter only applies to the default docker bridge. If you use a custom network, adopt the segmenting networks approach instead.

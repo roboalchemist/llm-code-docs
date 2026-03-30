@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Server parameter 'connection_throttling' should be enabled for PostgreSQL Database Server
- 
+
 ## Description{% #description %}
 
 Enabling `connection_throttling` helps the PostgreSQL Database to set the verbosity of logged messages. This in turn generates query and error logs with respect to concurrent connections that could lead to a successful Denial of Service (DoS) attack by exhausting connection resources. A system can also fail or be degraded by an overload of legitimate users. Query and error logs can be used to identify, troubleshoot, and repair configuration errors and sub-optimal performance.

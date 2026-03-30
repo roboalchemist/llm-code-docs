@@ -47,7 +47,7 @@ public class SecureSystem {
         return ud;
     }
     public void somethingElse() {
-        
+
     }
 }
 ```
@@ -57,7 +57,7 @@ public class SecureSystem {
 ```java
 public class SecureSystem {
     String foo;
-    
+
     Object bar;
     public void something() {
 
@@ -67,10 +67,9 @@ public class SecureSystem {
         return ud;
     }
     public void somethingElse() {
-        
+
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

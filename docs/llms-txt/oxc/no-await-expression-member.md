@@ -1,19 +1,15 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-await-expression-member.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-await-expression-member.md
----
-
-### What it does
+## What it does
 
 Disallows member access from `await` expressions.
 
-### Why is this bad?
+## Why is this bad?
 
 When accessing a member from an `await` expression,
 the `await` expression has to be parenthesized, which is not readable.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

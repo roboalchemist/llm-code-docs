@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # API server should verify the kubelet's certificate before establishing connection
- 
+
 ## Description{% #description %}
 
 A kubelet's certificate should be verified before establishing a connection. The connections from the API server to the kubelet are used for fetching logs from pods, attaching the kubelet (through kubectl) to running pods, and using the kubelet's port-forwarding functionality.

@@ -49,6 +49,5 @@ assert foo == bar
 assert booleanValue
 assert portId.isnumeric(), "portId must be numeric"
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

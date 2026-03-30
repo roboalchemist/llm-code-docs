@@ -1,0 +1,72 @@
+# Source: https://docs.luciq.ai/ios/setup-luciq-for-ios.md
+
+# Setup Luciq for iOS
+
+- [Integrate Luciq on iOS](/ios/setup-luciq-for-ios/integrate-luciq-on-ios.md)
+- [Integrate SwiftUI](/ios/setup-luciq-for-ios/integrate-luciq-on-ios/integrate-swiftui.md)
+- [Integrate SwiftUI (Automatic)](/ios/setup-luciq-for-ios/integrate-luciq-on-ios/integrate-swiftui-automatic.md)
+- [Updating the SDK](/ios/setup-luciq-for-ios/integrate-luciq-on-ios/updating-the-sdk.md)
+- [Guide for AI Coding Agents to Integrate Luciq on iOS](/ios/setup-luciq-for-ios/integrate-luciq-on-ios/luciq-ai-ios-guide.md)
+- [One Code Apps For iOS](/ios/setup-luciq-for-ios/integrate-luciq-on-ios/one-code-apps-for-ios.md)
+- [WebView Support](/ios/setup-luciq-for-ios/ios-webview-support.md): Track and capture user interactions, network logs, and screen loading within WebViews.
+- [Setup Bug Reporting](/ios/setup-luciq-for-ios/setup-bug-reporting.md)
+- [Showing Luciq](/ios/setup-luciq-for-ios/setup-bug-reporting/showing-luciq.md): This section covers how to set the user action that shows Luciq, as well as how to customize what appears to your app users after the SDK is shown for iOS apps.
+- [Customize Report Fields](/ios/setup-luciq-for-ios/setup-bug-reporting/customize-report-fields.md): This page covers the customizable content found in the reports sent to the bugs page of your dashboard and relevant APIs for your iOS apps.
+- [Bug Reporting Callbacks](/ios/setup-luciq-for-ios/setup-bug-reporting/bug-reporting-callbacks.md): Covered here are event handlers that you can use to have a block of code executed when a certain action is triggered for your iOS apps.
+- [Setup Extended Bug Report](/ios/setup-luciq-for-ios/setup-bug-reporting/setup-extended-bug-report.md): This section documents the APIs you can use to collect specific details in your bug reports from your QA team, internal testers, or beta testers on your iOS apps.
+- [Setup Proactive Bug Reporting](/ios/setup-luciq-for-ios/setup-bug-reporting/setup-proactive-bug-reporting.md): This page covers how to configure proactive bug reporting using APIs
+- [Disabling/Enabling Bug Reporting](/ios/setup-luciq-for-ios/setup-bug-reporting/disabling-enabling-bug-reporting.md): This section covers how to disable and enable bug reporting on iOS.
+- [Setup Crash Reporting](/ios/setup-luciq-for-ios/setup-crash-reporting.md)
+- [Disabling/Enabling Crash Reporting](/ios/setup-luciq-for-ios/setup-crash-reporting/disabling-enabling-crash-reporting.md): This page details the API for disabling and enabling crash reporting for your iOS apps.
+- [Crash Reporting User Consent](/ios/setup-luciq-for-ios/setup-crash-reporting/crash-reporting-user-consent.md): This page explains the usage of user consent for iOS crash reports and the needed APIs to implement it.
+- [Symbolication](/ios/setup-luciq-for-ios/setup-crash-reporting/symbolication.md): Explained here is how to symbolicate your crashes to get more details from stack traces for your iOS apps.
+- [Crash-Time Handler](/ios/setup-luciq-for-ios/setup-crash-reporting/crash-time-handler.md)
+- [Reporting Crashes](/ios/setup-luciq-for-ios/setup-crash-reporting/reporting-crashes.md)
+- [Capturing Launch Crashes](/ios/setup-luciq-for-ios/setup-crash-reporting/capturing-launch-crashes.md)
+- [Setup Application Performance Monitoring](/ios/setup-luciq-for-ios/setup-application-performance-monitoring.md)
+- [Setup App Launch](/ios/setup-luciq-for-ios/setup-application-performance-monitoring/setup-app-launch.md)
+- [Setup Network](/ios/setup-luciq-for-ios/setup-application-performance-monitoring/setup-network.md): This page helps you get started with Luciq's network performance monitoring on iOS
+- [Setup Screen Rendering](/ios/setup-luciq-for-ios/setup-application-performance-monitoring/setup-screen-rendering.md)
+- [Custom UI Traces](/ios/setup-luciq-for-ios/setup-application-performance-monitoring/setup-screen-rendering/custom-ui-traces.md)
+- [Enabling/Disabling Screen Rendering](/ios/setup-luciq-for-ios/setup-application-performance-monitoring/setup-screen-rendering/enabling-disabling-screen-rendering.md)
+- [Setup Screen Loading](/ios/setup-luciq-for-ios/setup-application-performance-monitoring/setup-screen-loading.md): Capture how long it takes for a particular screen to load automatically in your iOS apps.
+- [UI Kit](/ios/setup-luciq-for-ios/setup-application-performance-monitoring/setup-screen-loading/ui-kit.md)
+- [Swift UI](/ios/setup-luciq-for-ios/setup-application-performance-monitoring/setup-screen-loading/swift-ui.md)
+- [WebViews Screen Loading](/ios/setup-luciq-for-ios/setup-application-performance-monitoring/setup-screen-loading/webviews-screen-loading.md): Measure the loading performance of your WebViews with Web Vitals.
+- [Disabling/Enabling Screen Loading Tracking](/ios/setup-luciq-for-ios/setup-application-performance-monitoring/setup-screen-loading/disabling-enabling-screen-loading-tracking.md)
+- [Setup Flows](/ios/setup-luciq-for-ios/setup-application-performance-monitoring/setup-flows.md)
+- [Disabling/Enabling APM](/ios/setup-luciq-for-ios/setup-application-performance-monitoring/disabling-enabling-apm.md): This page explains the API to disable and enable App Performance Monitoring on iOS.
+- [SDK Debugging](/ios/setup-luciq-for-ios/setup-application-performance-monitoring/sdk-debugging.md): This page explains the different tools to debug your APM iOS integration, bypass the 6-hour batching, and change the SDK log level for your iOS apps.
+- [Setup Session Replay](/ios/setup-luciq-for-ios/setup-session-replay.md)
+- [Support Tools Integration](/ios/setup-luciq-for-ios/setup-session-replay/support-tools-integration.md)
+- [Video-Like Replay](/ios/setup-luciq-for-ios/setup-session-replay/video-like-replay.md): Enhance your Session Replay experience with video-like playback. You can now configure screenshot quality and capture frequency to see exactly what your users experienced during their sessions.
+- [Setup In-App Surveys](/ios/setup-luciq-for-ios/setup-in-app-surveys.md)
+- [Disabling/Enabling In-App Surveys](/ios/setup-luciq-for-ios/setup-in-app-surveys/disabling-enabling-in-app-surveys.md): This page details the API for disabling and enabling in-app surveys for your iOS apps.
+- [Survey Event Handlers](/ios/setup-luciq-for-ios/setup-in-app-surveys/survey-event-handlers.md): Covered here is how to set up the event handler that fires before and after every survey is shown for your iOS apps.
+- [Setup App Ratings & Reviews](/ios/setup-luciq-for-ios/setup-app-ratings-and-reviews.md)
+- [Setup Feature Requests](/ios/setup-luciq-for-ios/setup-feature-requests.md)
+- [Disabling/Enabling Feature Requests](/ios/setup-luciq-for-ios/setup-feature-requests/disabling-enabling-feature-requests.md): Described here is how to disable or enable the feature requests for your iOS apps.
+- [Showing feature requests list](/ios/setup-luciq-for-ios/setup-feature-requests/showing-feature-requests-list.md): Described here is how to invoke the list of feature requests inside your iOS app.
+- [Custom Settings](/ios/setup-luciq-for-ios/custom-settings.md)
+- [User identification](/ios/setup-luciq-for-ios/custom-settings/user-identification.md): This section covers how to bind each report to the identity of the user reporting the problem for your iOS app. You have the flexibility to add some extra attributes about the device as well as the us
+- [User Attributes](/ios/setup-luciq-for-ios/custom-settings/user-identification/user-attributes.md)
+- [User Events](/ios/setup-luciq-for-ios/custom-settings/user-identification/user-events.md)
+- [Tags](/ios/setup-luciq-for-ios/custom-settings/user-identification/tags.md)
+- [Feature Flags](/ios/setup-luciq-for-ios/custom-settings/user-identification/feature-flags.md)
+- [Logs and Profiling](/ios/setup-luciq-for-ios/custom-settings/logs-and-profiling.md): An overview of the different types of logs can be found in this section along with details regarding the session profiler for your iOS apps.
+- [Repro Steps](/ios/setup-luciq-for-ios/custom-settings/logs-and-profiling/repro-steps.md): Learn more about the steps your user has taken until the bug or crash was reported on your iOS apps.
+- [Session Profiler](/ios/setup-luciq-for-ios/custom-settings/logs-and-profiling/session-profiler.md): This section covers the details contained in the Session Profiler that appears with all bug and crash reports in your dashboard for iOS apps.
+- [Report Logs](/ios/setup-luciq-for-ios/custom-settings/logs-and-profiling/report-logs.md): This section covers how Luciq automatically attaches console logs, verbose logs, and all steps made by your users before a bug report is sent for iOS apps.
+- [Custom Spans](/ios/setup-luciq-for-ios/custom-settings/logs-and-profiling/custom-spans.md)
+- [Privacy Settings](/ios/setup-luciq-for-ios/custom-settings/privacy-settings.md)
+- [Repro Steps](/ios/setup-luciq-for-ios/custom-settings/privacy-settings/repro-steps.md): How to automatically mask the screens reported in Repro Steps
+- [User Privacy](/ios/setup-luciq-for-ios/custom-settings/privacy-settings/user-privacy.md)
+- [Private Views](/ios/setup-luciq-for-ios/custom-settings/privacy-settings/private-views.md)
+- [Network Masking](/ios/setup-luciq-for-ios/custom-settings/privacy-settings/network-masking.md)
+- [App Privacy Details](/ios/setup-luciq-for-ios/custom-settings/privacy-settings/app-privacy-details.md)
+- [SDK Customization](/ios/setup-luciq-for-ios/custom-settings/sdk-customization.md): This page covers how to make your users' experience with the Luciq SDK in your app as simple and seamless as possible by customizing the invocation methods, design, popups, locale, and on-boarding
+- [Welcome Message](/ios/setup-luciq-for-ios/custom-settings/sdk-customization/welcome-message.md): This section covers on-boarding your users about how to reach you through Luciq with a mode for either beta testers or live users on iOS apps.
+- [Prompt Options](/ios/setup-luciq-for-ios/custom-settings/sdk-customization/prompt-options.md): This section covers how to control the popup menu that appears when your app users invoke Luciq for iOS apps.
+- [UI Color & Theme](/ios/setup-luciq-for-ios/custom-settings/sdk-customization/ui-color-and-theme.md)
+- [SDK Locale](/ios/setup-luciq-for-ios/custom-settings/sdk-customization/sdk-locale.md): This section covers how to change the language of the SDK in your app as well as the content of all Luciq messages that your users see for iOS apps.
+- [Accessibility](/ios/setup-luciq-for-ios/custom-settings/accessibility.md)

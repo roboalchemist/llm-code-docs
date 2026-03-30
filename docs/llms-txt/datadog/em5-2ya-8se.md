@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Azure disk export URI create
 ---
 
 # Azure disk export URI created
-Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1074-data-staged](https://attack.mitre.org/techniques/T1074) 
+Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1074-data-staged](https://attack.mitre.org/techniques/T1074)
 ## Goal{% #goal %}
 
 Detect when an Azure disk is successfully exported. Export URLs generated in Azure are accessible to anyone with the URI. This could be utilized as an exfiltration method that would allow an attacker to download an Azure Compute VM's disk as a VHD file.

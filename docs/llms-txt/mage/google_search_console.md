@@ -1,0 +1,33 @@
+# Source: https://docs.mage.ai/data-integrations/sources/google_search_console.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.mage.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Google Search Console
+
+## Configuration
+
+To set up the Google Search Console source, provide the following configuration parameters:
+
+| Key                             | Description                                                                                  | Sample Value                                 |
+| ------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| `path_to_credentials_json_file` | Path to your Google service account credentials JSON file.                                   | `/path/to/service_account_credentials.json`  |
+| `email`                         | If using domain-wide delegation, enter the user email to impersonate.                        | `test@xyz.com`                               |
+| `site_urls`                     | Website URLs separated by commas (e.g., `https://www.example.com`, `sc-domain:example.com`). | `https://www.mage.ai, sc-domain:example.com` |
+| `start_date`                    | Start date for the Google Search Console query. Format: `YYYY-MM-DD`.                        | `2022-01-01`                                 |
+
+<br />
+
+## Prerequisites
+
+* [Enable the Google Search Console API](https://console.cloud.google.com/apis/dashboard).
+* Grant the service account access to your Search Console property:
+  * Go to [Google Search Console](https://search.google.com/search-console).
+  * Navigate to **Settings** → **Users and permissions**.
+  * Add your service account email with the appropriate permissions.
+
+<br />
+
+
+Built with [Mintlify](https://mintlify.com).

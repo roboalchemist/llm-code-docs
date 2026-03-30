@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable Mounting of jffs2
 ---
 
 # Disable Mounting of jffs2
- 
+
 ## Description{% #description %}
 
 To configure the system to prevent the `jffs2` kernel module from being loaded, add the following line to the file `/etc/modprobe.d/jffs2.conf`:
@@ -35,15 +35,15 @@ The following script can be run on the host to remediate the issue.
 if dpkg-query --show --showformat='${db:Status-Status}' 'linux-base' 2>/dev/null | grep -q '^installed$'; then
 
 if LC_ALL=C grep -q -m 1 "^install jffs2" /etc/modprobe.d/jffs2.conf ; then
-	
-	sed -i 's#^install jffs2.*#install jffs2 /bin/false#g' /etc/modprobe.d/jffs2.conf
+
+    sed -i 's#^install jffs2.*#install jffs2 /bin/false#g' /etc/modprobe.d/jffs2.conf
 else
-	echo -e "\n# Disable per security requirements" >> /etc/modprobe.d/jffs2.conf
-	echo "install jffs2 /bin/false" >> /etc/modprobe.d/jffs2.conf
+    echo -e "\n# Disable per security requirements" >> /etc/modprobe.d/jffs2.conf
+    echo "install jffs2 /bin/false" >> /etc/modprobe.d/jffs2.conf
 fi
 
 if ! LC_ALL=C grep -q -m 1 "^blacklist jffs2$" /etc/modprobe.d/jffs2.conf ; then
-	echo "blacklist jffs2" >> /etc/modprobe.d/jffs2.conf
+    echo "blacklist jffs2" >> /etc/modprobe.d/jffs2.conf
 fi
 
 else

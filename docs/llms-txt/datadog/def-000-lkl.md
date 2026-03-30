@@ -9,13 +9,13 @@ breadcrumbs: >-
 ---
 
 # Verify Ownership of Files in /var/log/apt
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/var/log/apt/*`, run the command:
 
 ```gdscript3
-$ sudo chown root /var/log/apt/* 
+$ sudo chown root /var/log/apt/*
 ```
 
 ## Rationale{% #rationale %}

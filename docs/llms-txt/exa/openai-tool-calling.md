@@ -1,14 +1,16 @@
 # Source: https://exa.ai/docs/reference/openai-tool-calling.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# OpenAI Tool Calling
+
+## # OpenAI Tool Calling
 
 > Learn to use OpenAI's tool call feature with Exa's Search Integration
 
-***
+*__
 
 <Info>
   OpenAI recommends using the Responses API for all new projects. [See the guide](./openai-responses-api-with-exa).
@@ -20,7 +22,7 @@ OpenAI's [tool calling](https://platform.openai.com/docs/guides/function-calling
 2. Overview of how OpenAI's tool calling feature works
 3. Use Exa within an OpenAI tool call
 
-***
+__*
 
 ## Get Started
 
@@ -144,7 +146,7 @@ OpenAI's [tool calling](https://platform.openai.com/docs/guides/function-calling
             function_name = tool_call.function.name
             function_args = json.loads(tool_call.function.arguments)
             if function_name == "exa_search":
-                search_results = exa_search(**function_args)
+                search_results = exa_search(__function_args)
                 messages.append(
                     {
                         "role": "tool",
@@ -296,13 +298,13 @@ def exa_search(query: str) -> Dict[str, Any]:
 
 # define the function that will process the tool call and perform the exa search
 def process_tool_calls(tool_calls, messages):
-    
+
     for tool_call in tool_calls:
         function_name = tool_call.function.name
         function_args = json.loads(tool_call.function.arguments)
-        
+
         if function_name == "exa_search":
-            search_results = exa_search(**function_args)
+            search_results = exa_search(__function_args)
             messages.append(
                 {
                     "role": "tool",
@@ -315,12 +317,12 @@ def process_tool_calls(tool_calls, messages):
                 f"[bold green]exa_search ({function_args.get('mode')})[/bold green]: ",
                 function_args.get("query"),
             )
-            
+
     return messages
 
 def main():
     messages = [SYSTEM_MESSAGE]
-    
+
     while True:
         try:
             # create the user input prompt using rich
@@ -328,7 +330,7 @@ def main():
                 "[bold yellow]What do you want to search for?[/bold yellow]",
             )
             messages.append({"role": "user", "content": user_query})
-            
+
             # call openai llm by creating a completion which calls the defined exa tool
             completion = openai.chat.completions.create(
                 model="gpt-4o",
@@ -336,11 +338,11 @@ def main():
                 tools=TOOLS,
                 tool_choice="auto",
             )
-            
+
             # completion will contain the object needed to invoke your tool and perform the search
             message = completion.choices[0].message
             tool_calls = message.tool_calls
-            
+
             if tool_calls:
 
                 messages.append(message)
@@ -353,21 +355,21 @@ def main():
                         "content": "Answer my previous query based on the search results.",
                     }
                 )
-                
+
                 # call OpenAI llm again to process the search results and yield the final answer
                 completion = openai.chat.completions.create(
                     model="gpt-4o",
                     messages=messages,
                 )
-                
+
                 # parse the agents final answer and print it
                 console.print(Markdown(completion.choices[0].message.content))
             else:
                 console.print(Markdown(message.content))
         except Exception as e:
             console.print(f"[bold red]An error occurred:[/bold red] {str(e)}")
-            
-            
+
+
 if __name__ == "__main__":
     main()
-```
+```text

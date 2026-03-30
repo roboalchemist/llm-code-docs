@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Group Who Owns Backup gshadow File
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/etc/gshadow-`, run the command:

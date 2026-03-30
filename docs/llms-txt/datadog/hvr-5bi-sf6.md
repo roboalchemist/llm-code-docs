@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Docker daemon activities should be audited
-Classification:complianceFramework:cis-dockerControl:1.2.3 
+Classification:complianceFramework:cis-dockerControl:1.2.3
 ## Description{% #description %}
 
 Audit all Docker daemon activities.

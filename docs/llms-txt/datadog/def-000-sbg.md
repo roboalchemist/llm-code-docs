@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Set UFW Loopback Traffic
 ---
 
 # Set UFW Loopback Traffic
- 
+
 ## Description{% #description %}
 
 Configure the loopback interface to accept traffic. Configure all other interfaces to deny traffic to the loopback network.

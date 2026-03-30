@@ -1,24 +1,20 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/no-direct-mutation-state.md
 
----
-url: /docs/guide/usage/linter/rules/react/no-direct-mutation-state.md
----
-
-### What it does
+## What it does
 
 This rule forbids the direct mutation of `this.state` in React components.
 
 Note that this rule only applies to class components, it does not apply to function
 components. For modern React codebases, this rule may not be necessary or relevant.
 
-### Why is this bad?
+## Why is this bad?
 
 React components should *never* mutate `this.state` directly, as
 calling `setState()` afterwards may replace the mutation you made.
 
 `this.state` should be treated as if it were immutable.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

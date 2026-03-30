@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Remove telnet Clients
 ---
 
 # Remove telnet Clients
- 
+
 ## Description{% #description %}
 
 The telnet client allows users to start connections to other systems via the telnet protocol.

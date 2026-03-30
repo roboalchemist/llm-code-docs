@@ -48,6 +48,5 @@ rand(42) + 1
 ```ruby
 rand(1..42)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -1,0 +1,135 @@
+# Source: https://docs.aws.amazon.com/resilience-hub/latest/APIReference/llms.txt
+
+# AWS Resilience Hub Welcome
+
+> AWS Resilience Hub helps you proactively prepare and protect your AWS applications from disruptions. It offers continual resiliency assessment and validation that integrates into your software development lifecycle. This enables you to uncover resiliency weaknesses, ensure recovery time objective (RTO) and recovery point objective (RPO) targets for your applications are met, and resolve issues before they are released into production.
+
+- [Welcome](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_Operations.html)
+
+- [AcceptResourceGroupingRecommendations](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_AcceptResourceGroupingRecommendations.html): Accepts the resource grouping recommendations suggested by AWS Resilience Hub for your application.
+- [AddDraftAppVersionResourceMappings](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_AddDraftAppVersionResourceMappings.html): Adds the source of resource-maps to the draft version of an application.
+- [BatchUpdateRecommendationStatus](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_BatchUpdateRecommendationStatus.html): Enables you to include or exclude one or more operational recommendations.
+- [CreateApp](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_CreateApp.html): Creates an AWS Resilience Hub application.
+- [CreateAppVersionAppComponent](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_CreateAppVersionAppComponent.html): Creates a new AppComponent in the AWS Resilience Hub application.
+- [CreateAppVersionResource](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_CreateAppVersionResource.html): Adds a resource to the AWS Resilience Hub application and assigns it to the specified AppComponents.
+- [CreateRecommendationTemplate](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_CreateRecommendationTemplate.html): Creates a new recommendation template for the AWS Resilience Hub application.
+- [CreateResiliencyPolicy](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_CreateResiliencyPolicy.html): Creates a resiliency policy for an application.
+- [DeleteApp](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_DeleteApp.html): Deletes an AWS Resilience Hub application.
+- [DeleteAppAssessment](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_DeleteAppAssessment.html): Deletes an AWS Resilience Hub application assessment.
+- [DeleteAppInputSource](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_DeleteAppInputSource.html): Deletes the input source and all of its imported resources from the AWS Resilience Hub application.
+- [DeleteAppVersionAppComponent](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_DeleteAppVersionAppComponent.html): Deletes an AppComponent from the AWS Resilience Hub application.
+- [DeleteAppVersionResource](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_DeleteAppVersionResource.html): Deletes a resource from the AWS Resilience Hub application.
+- [DeleteRecommendationTemplate](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_DeleteRecommendationTemplate.html): Deletes a recommendation template.
+- [DeleteResiliencyPolicy](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_DeleteResiliencyPolicy.html): Deletes a resiliency policy.
+- [DescribeApp](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_DescribeApp.html): Describes an AWS Resilience Hub application.
+- [DescribeAppAssessment](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_DescribeAppAssessment.html): Describes an assessment for an AWS Resilience Hub application.
+- [DescribeAppVersion](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_DescribeAppVersion.html): Describes the AWS Resilience Hub application version.
+- [DescribeAppVersionAppComponent](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_DescribeAppVersionAppComponent.html): Describes an AppComponent in the AWS Resilience Hub application.
+- [DescribeAppVersionResource](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_DescribeAppVersionResource.html): Describes a resource of the AWS Resilience Hub application.
+- [DescribeAppVersionResourcesResolutionStatus](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_DescribeAppVersionResourcesResolutionStatus.html): Returns the resolution status for the specified resolution identifier for an application version.
+- [DescribeAppVersionTemplate](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_DescribeAppVersionTemplate.html): Describes details about an AWS Resilience Hub application.
+- [DescribeDraftAppVersionResourcesImportStatus](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_DescribeDraftAppVersionResourcesImportStatus.html): Describes the status of importing resources to an application version.
+- [DescribeMetricsExport](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_DescribeMetricsExport.html): Describes the metrics of the application configuration being exported.
+- [DescribeResiliencyPolicy](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_DescribeResiliencyPolicy.html): Describes a specified resiliency policy for an AWS Resilience Hub application.
+- [DescribeResourceGroupingRecommendationTask](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_DescribeResourceGroupingRecommendationTask.html): Describes the resource grouping recommendation tasks run by AWS Resilience Hub for your application.
+- [ImportResourcesToDraftAppVersion](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ImportResourcesToDraftAppVersion.html): Imports resources to AWS Resilience Hub application draft version from different input sources.
+- [ListAlarmRecommendations](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListAlarmRecommendations.html): Lists the alarm recommendations for an AWS Resilience Hub application.
+- [ListAppAssessmentComplianceDrifts](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListAppAssessmentComplianceDrifts.html): List of compliance drifts that were detected while running an assessment.
+- [ListAppAssessmentResourceDrifts](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListAppAssessmentResourceDrifts.html): List of resource drifts that were detected while running an assessment.
+- [ListAppAssessments](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListAppAssessments.html): Lists the assessments for an AWS Resilience Hub application.
+- [ListAppComponentCompliances](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListAppComponentCompliances.html): Lists the compliances for an AWS Resilience Hub AppComponent.
+- [ListAppComponentRecommendations](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListAppComponentRecommendations.html): Lists the recommendations for an AWS Resilience Hub AppComponent.
+- [ListAppInputSources](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListAppInputSources.html): Lists all the input sources of the AWS Resilience Hub application.
+- [ListApps](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListApps.html): Lists your AWS Resilience Hub applications.
+- [ListAppVersionAppComponents](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListAppVersionAppComponents.html): Lists all the AppComponents in the AWS Resilience Hub application.
+- [ListAppVersionResourceMappings](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListAppVersionResourceMappings.html): Lists how the resources in an application version are mapped/sourced from.
+- [ListAppVersionResources](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListAppVersionResources.html): Lists all the resources in an AWS Resilience Hub application.
+- [ListAppVersions](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListAppVersions.html): Lists the different versions for the AWS Resilience Hub applications.
+- [ListMetrics](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListMetrics.html): Lists the metrics that can be exported.
+- [ListRecommendationTemplates](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListRecommendationTemplates.html): Lists the recommendation templates for the AWS Resilience Hub applications.
+- [ListResiliencyPolicies](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListResiliencyPolicies.html): Lists the resiliency policies for the AWS Resilience Hub applications.
+- [ListResourceGroupingRecommendations](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListResourceGroupingRecommendations.html): Lists the resource grouping recommendations suggested by AWS Resilience Hub for your application.
+- [ListSopRecommendations](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListSopRecommendations.html): Lists the standard operating procedure (SOP) recommendations for the AWS Resilience Hub applications.
+- [ListSuggestedResiliencyPolicies](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListSuggestedResiliencyPolicies.html): Lists the suggested resiliency policies for the AWS Resilience Hub applications.
+- [ListTagsForResource](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListTagsForResource.html): Lists the tags for your resources in your AWS Resilience Hub applications.
+- [ListTestRecommendations](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListTestRecommendations.html): Lists the test recommendations for the AWS Resilience Hub application.
+- [ListUnsupportedAppVersionResources](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ListUnsupportedAppVersionResources.html): Lists the resources that are not currently supported in AWS Resilience Hub.
+- [PublishAppVersion](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_PublishAppVersion.html): Publishes a new version of a specific AWS Resilience Hub application.
+- [PutDraftAppVersionTemplate](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_PutDraftAppVersionTemplate.html): Adds or updates the app template for an AWS Resilience Hub application draft version.
+- [RejectResourceGroupingRecommendations](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_RejectResourceGroupingRecommendations.html): Rejects resource grouping recommendations.
+- [RemoveDraftAppVersionResourceMappings](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_RemoveDraftAppVersionResourceMappings.html): Removes resource mappings from a draft application version.
+- [ResolveAppVersionResources](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ResolveAppVersionResources.html): Resolves the resources for an application version.
+- [StartAppAssessment](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_StartAppAssessment.html): Creates a new application assessment for an application.
+- [StartMetricsExport](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_StartMetricsExport.html): Initiates the export task of metrics.
+- [StartResourceGroupingRecommendationTask](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_StartResourceGroupingRecommendationTask.html): Starts grouping recommendation task.
+- [TagResource](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_TagResource.html): Applies one or more tags to a resource.
+- [UntagResource](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_UntagResource.html): Removes one or more tags from a resource.
+- [UpdateApp](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_UpdateApp.html): Updates an application.
+- [UpdateAppVersion](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_UpdateAppVersion.html): Updates the AWS Resilience Hub application version.
+- [UpdateAppVersionAppComponent](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_UpdateAppVersionAppComponent.html): Updates an existing AppComponent in the AWS Resilience Hub application.
+- [UpdateAppVersionResource](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_UpdateAppVersionResource.html): Updates the resource details in the AWS Resilience Hub application.
+- [UpdateResiliencyPolicy](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_UpdateResiliencyPolicy.html): Updates a resiliency policy.
+
+
+## [Data Types](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_Types.html)
+
+- [AcceptGroupingRecommendationEntry](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_AcceptGroupingRecommendationEntry.html): Indicates the grouping recommendation you have accepted to include in your application.
+- [Alarm](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_Alarm.html): Indicates the Amazon CloudWatch alarm detected while running an assessment.
+- [AlarmRecommendation](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_AlarmRecommendation.html): Defines a recommendation for a CloudWatch alarm.
+- [App](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_App.html): Defines an AWS Resilience Hub application.
+- [AppAssessment](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_AppAssessment.html): Defines an application assessment.
+- [AppAssessmentSummary](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_AppAssessmentSummary.html): Defines an application assessment summary.
+- [AppComponent](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_AppComponent.html): Defines an AppComponent.
+- [AppComponentCompliance](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_AppComponentCompliance.html): Defines the compliance of an AppComponent against the resiliency policy.
+- [AppInputSource](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_AppInputSource.html): The list of AWS Resilience Hub application input sources.
+- [AppSummary](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_AppSummary.html): Defines an application summary.
+- [AppVersionSummary](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_AppVersionSummary.html): Version of an application.
+- [AssessmentRiskRecommendation](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_AssessmentRiskRecommendation.html): Indicates a specific risk identified in the AWS Resilience Hub assessment and the corresponding recommendation provided to address that risk.
+- [AssessmentSummary](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_AssessmentSummary.html): Indicates the AI-generated summary for the AWS Resilience Hub assessment, providing a concise overview that highlights the top risks and recommendations.
+- [BatchUpdateRecommendationStatusFailedEntry](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_BatchUpdateRecommendationStatusFailedEntry.html): List of operational recommendations that did not get included or excluded.
+- [BatchUpdateRecommendationStatusSuccessfulEntry](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_BatchUpdateRecommendationStatusSuccessfulEntry.html): List of operational recommendations that were successfully included or excluded.
+- [ComplianceDrift](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ComplianceDrift.html): Indicates the compliance drifts (recovery time objective (RTO) and recovery point objective (RPO)) that were detected for an assessed entity.
+- [ComponentRecommendation](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ComponentRecommendation.html): Defines recommendations for an AWS Resilience Hub AppComponent, returned as an object.
+- [Condition](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_Condition.html): Indicates the condition based on which you want to filter the metrics.
+- [ConfigRecommendation](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ConfigRecommendation.html): Defines a recommendation configuration.
+- [Cost](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_Cost.html): Defines a cost object.
+- [DisruptionCompliance](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_DisruptionCompliance.html): Defines the compliance against the resiliency policy for a disruption.
+- [EksSource](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_EksSource.html): The input source of the Amazon Elastic Kubernetes Service cluster.
+- [EksSourceClusterNamespace](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_EksSourceClusterNamespace.html): The input source of the namespace that is located on your Amazon Elastic Kubernetes Service cluster.
+- [ErrorDetail](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ErrorDetail.html): Indicates the error that was encountered while importing a resource.
+- [EventSubscription](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_EventSubscription.html): Indicates an event you would like to subscribe and get notification for.
+- [Experiment](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_Experiment.html): Indicates the AWS FIS experiment detected while running an assessment.
+- [FailedGroupingRecommendationEntry](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_FailedGroupingRecommendationEntry.html): Indicates the accepted grouping recommendation whose implementation failed.
+- [FailurePolicy](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_FailurePolicy.html): Defines a failure policy.
+- [Field](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_Field.html): Indicates the field or attribute of a resource or data structure on which a condition is being applied or evaluated.
+- [GroupingAppComponent](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_GroupingAppComponent.html): Creates a new recommended Application Component (AppComponent).
+- [GroupingRecommendation](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_GroupingRecommendation.html): Creates a new grouping recommendation.
+- [GroupingResource](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_GroupingResource.html): Indicates the resource that will be grouped in the recommended Application Component (AppComponent).
+- [LogicalResourceId](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_LogicalResourceId.html): Defines a logical resource identifier.
+- [PermissionModel](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_PermissionModel.html): Defines the roles and credentials that AWS Resilience Hub would use while creating the application, importing its resources, and running an assessment.
+- [PhysicalResource](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_PhysicalResource.html): Defines a physical resource.
+- [PhysicalResourceId](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_PhysicalResourceId.html): Defines a physical resource identifier.
+- [RecommendationDisruptionCompliance](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_RecommendationDisruptionCompliance.html): Defines a disruption compliance recommendation.
+- [RecommendationItem](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_RecommendationItem.html): Defines a recommendation.
+- [RecommendationTemplate](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_RecommendationTemplate.html): Defines a recommendation template created with the action.
+- [RejectGroupingRecommendationEntry](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_RejectGroupingRecommendationEntry.html): Indicates the rejected grouping recommendation.
+- [ResiliencyPolicy](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ResiliencyPolicy.html): Defines a resiliency policy.
+- [ResiliencyScore](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ResiliencyScore.html): The overall resiliency score, returned as an object that includes the disruption score and outage score.
+- [ResourceDrift](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ResourceDrift.html): Indicates the resources that have drifted in the current application version.
+- [ResourceError](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ResourceError.html): Defines application resource errors.
+- [ResourceErrorsDetails](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ResourceErrorsDetails.html): A list of errors retrieving an application's resources.
+- [ResourceIdentifier](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ResourceIdentifier.html): Defines a resource identifier for the drifted resource.
+- [ResourceMapping](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ResourceMapping.html): Defines a resource mapping.
+- [S3Location](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_S3Location.html): The location of the Amazon S3 bucket.
+- [ScoringComponentResiliencyScore](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_ScoringComponentResiliencyScore.html): Resiliency score of each scoring component.
+- [SopRecommendation](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_SopRecommendation.html): Defines a standard operating procedure (SOP) recommendation.
+- [Sort](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_Sort.html): Indicates the sorting order of the fields in the metrics.
+- [TerraformSource](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_TerraformSource.html): The Terraform s3 state file you need to import.
+- [TestRecommendation](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_TestRecommendation.html): Defines a test recommendation.
+- [UnsupportedResource](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_UnsupportedResource.html): Defines a resource that is not supported by AWS Resilience Hub.
+- [UpdateRecommendationStatusItem](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_UpdateRecommendationStatusItem.html): Defines the operational recommendation item that needs a status update.
+- [UpdateRecommendationStatusRequestEntry](https://docs.aws.amazon.com/resilience-hub/latest/APIReference/API_UpdateRecommendationStatusRequestEntry.html): Defines the operational recommendation item that is to be included or excluded.

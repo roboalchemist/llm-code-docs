@@ -76,6 +76,5 @@ def resource2(resource_id):
     sanitized_resource_id = sanitize(resource_id)
     file1 = urlopen(sanitized_resource_id)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

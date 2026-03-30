@@ -9,19 +9,19 @@ breadcrumbs: >-
 ---
 
 # Verify User Who Owns /var/log/secure File
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/var/log/secure`, run the command:
 
 ```gdscript3
-$ sudo chown syslog /var/log/secure 
+$ sudo chown syslog /var/log/secure
 ```
 
 or
 
 ```gdscript3
-$ sudo chown root /var/log/secure 
+$ sudo chown root /var/log/secure
 ```
 
 ## Rationale{% #rationale %}

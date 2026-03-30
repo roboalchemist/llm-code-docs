@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Authentication route without
 ---
 
 # Authentication route without HTTPS
- 
+
 ## Description{% #description %}
 
 This rule identifies when an exposed authentication route works over a non-encrypted channel.

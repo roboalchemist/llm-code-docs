@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > GitLab brute force attack
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1110-brute-force](https://attack.mitre.org/techniques/T1110) 
+Classification:attackTactic:[TA0006-credential-access](https://attack.mitre.org/tactics/TA0006)Technique:[T1110-brute-force](https://attack.mitre.org/techniques/T1110)
 ## Goal{% #goal %}
 
 Detects GitLab brute force attacks where multiple failed login attempts are followed by successful actions.

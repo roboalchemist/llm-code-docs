@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The /etc/sysconfig/docker file permissions should be set to 644 or stricter
-Classification:complianceFramework:cis-dockerControl:3.21 
+Classification:complianceFramework:cis-dockerControl:3.21
 ## Description{% #description %}
 
 You should verify that the `/etc/sysconfig/docker` file permissions are correctly set to 644 or more restrictively.

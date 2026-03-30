@@ -1,0 +1,218 @@
+# Source: https://docs.infrahub.app/vscode/guides/configure-multiple-servers.md
+
+# How to Configure Multiple Infrahub Servers
+
+If you need to work with multiple Infrahub environments (development, staging, production), this guide shows you how to configure and manage multiple server connections in the VSCode extension.
+
+## Prerequisites[​](#prerequisites "Direct link to Prerequisites")
+
+* Infrahub VSCode extension installed
+* Access to multiple Infrahub servers
+* API tokens for each server (if authentication is required)
+
+## Step 1: Open extension settings[​](#step-1-open-extension-settings "Direct link to Step 1: Open extension settings")
+
+Open your VSCode settings configuration:
+
+1. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on macOS)
+2. Type "Preferences: Open Settings (JSON)"
+3. Press Enter
+
+## Step 2: Add multiple server configurations[​](#step-2-add-multiple-server-configurations "Direct link to Step 2: Add multiple server configurations")
+
+Add your server configurations to the settings file:
+
+```
+{
+  "infrahub-vscode.servers": [
+    {
+      "name": "Development",
+      "address": "http://localhost:8000",
+      "api_token": "${env:INFRAHUB_DEV_TOKEN}"
+    },
+    {
+      "name": "Staging",
+      "address": "https://staging.infrahub.example.com",
+      "api_token": "${env:INFRAHUB_STAGING_TOKEN}"
+    },
+    {
+      "name": "Production",
+      "address": "https://infrahub.example.com",
+      "api_token": "${env:INFRAHUB_PROD_TOKEN}"
+    }
+  ]
+}
+```
+
+tip
+
+If you're using a development server with a self-signed certificate, you can disable certificate verification by adding `"tls_insecure": true` to the server configuration. **This should only be used in development environments.**
+
+## Step 3: Set up environment variables[​](#step-3-set-up-environment-variables "Direct link to Step 3: Set up environment variables")
+
+For security, use environment variables for API tokens:
+
+### On macOS and Linux[​](#on-macos-and-linux "Direct link to On macOS and Linux")
+
+Add to your shell configuration file (`~/.bashrc`, `~/.zshrc`, etc.):
+
+```
+export INFRAHUB_DEV_TOKEN="your-dev-token"
+export INFRAHUB_STAGING_TOKEN="your-staging-token"
+export INFRAHUB_PROD_TOKEN="your-prod-token"
+```
+
+Then reload your shell or restart VSCode.
+
+### On windows[​](#on-windows "Direct link to On windows")
+
+Using PowerShell:
+
+```
+[System.Environment]::SetEnvironmentVariable('INFRAHUB_DEV_TOKEN', 'your-dev-token', 'User')
+[System.Environment]::SetEnvironmentVariable('INFRAHUB_STAGING_TOKEN', 'your-staging-token', 'User')
+[System.Environment]::SetEnvironmentVariable('INFRAHUB_PROD_TOKEN', 'your-prod-token', 'User')
+```
+
+Restart VSCode after setting environment variables.
+
+## Step 4: Verify all connections[​](#step-4-verify-all-connections "Direct link to Step 4: Verify all connections")
+
+1. Open the Infrahub Servers tree view in the Activity Bar
+2. You should see all three servers listed
+3. Expand each server to verify it can retrieve branches
+4. Check the status bar - it shows the first server's connection status
+
+## Step 5: Switch between servers for queries[​](#step-5-switch-between-servers-for-queries "Direct link to Step 5: Switch between servers for queries")
+
+When executing GraphQL queries:
+
+1. Select the play icon next to the query
+2. You'll be prompted to select a server from your configured list
+3. Choose the appropriate environment
+4. Select the branch to query against
+
+## Advanced configuration[​](#advanced-configuration "Direct link to Advanced configuration")
+
+### Using different schemas per environment[​](#using-different-schemas-per-environment "Direct link to Using different schemas per environment")
+
+Configure different schema directories for each environment:
+
+```
+{
+  "infrahub-vscode.servers": [
+    {
+      "name": "Development",
+      "address": "http://localhost:8000",
+      "api_token": "${env:INFRAHUB_DEV_TOKEN}"
+    },
+    {
+      "name": "Production",
+      "address": "https://infrahub.example.com",
+      "api_token": "${env:INFRAHUB_PROD_TOKEN}"
+    }
+  ]
+}
+```
+
+### Server groups with naming conventions[​](#server-groups-with-naming-conventions "Direct link to Server groups with naming conventions")
+
+Use clear naming conventions to organize servers:
+
+```
+{
+  "infrahub-vscode.servers": [
+    {
+      "name": "[LOCAL] Development",
+      "address": "http://localhost:8000"
+    },
+    {
+      "name": "[AWS] US-East-1 Staging",
+      "address": "https://staging-us-east-1.infrahub.example.com",
+      "api_token": "${env:INFRAHUB_AWS_STAGING_TOKEN}"
+    },
+    {
+      "name": "[AWS] US-East-1 Production",
+      "address": "https://us-east-1.infrahub.example.com",
+      "api_token": "${env:INFRAHUB_AWS_PROD_TOKEN}"
+    },
+    {
+      "name": "[Azure] Europe-West Production",
+      "address": "https://eu-west.infrahub.example.com",
+      "api_token": "${env:INFRAHUB_AZURE_PROD_TOKEN}"
+    }
+  ]
+}
+```
+
+### Working with self-signed certificates[​](#working-with-self-signed-certificates "Direct link to Working with self-signed certificates")
+
+For development or testing environments using self-signed SSL certificates, you can disable certificate verification:
+
+```
+{
+  "infrahub-vscode.servers": [
+    {
+      "name": "Development (Self-Signed)",
+      "address": "https://dev.infrahub.local",
+      "api_token": "${env:INFRAHUB_DEV_TOKEN}",
+      "tls_insecure": true
+    }
+  ]
+}
+```
+
+warning
+
+The `tls_insecure` option disables TLS certificate verification, which makes connections vulnerable to man-in-the-middle attacks. **Never use this option for production servers.** Only use it in controlled development environments with self-signed certificates.
+
+## Validation[​](#validation "Direct link to Validation")
+
+To verify your configuration is working correctly:
+
+1. **Check Status Bar**: The first server's status appears in the status bar
+2. **Tree View**: All servers should appear in the Infrahub Servers tree view
+3. **Branch Listing**: Expanding each server should show its branches
+4. **Query Execution**: Test a query against each server
+
+## Troubleshooting[​](#troubleshooting "Direct link to Troubleshooting")
+
+### Server not appearing in tree view[​](#server-not-appearing-in-tree-view "Direct link to Server not appearing in tree view")
+
+* Save your settings.json file
+* Reload VSCode window (`Ctrl+R` or `Cmd+R`)
+* Check for JSON syntax errors in settings
+
+### Authentication failures[​](#authentication-failures "Direct link to Authentication failures")
+
+* Verify environment variables are set correctly:
+
+  ```
+  echo $INFRAHUB_DEV_TOKEN  # macOS/Linux
+  echo %INFRAHUB_DEV_TOKEN%  # Windows CMD
+  ```
+
+* Ensure tokens have necessary permissions
+
+* Check token expiration dates
+
+### Connection timeouts[​](#connection-timeouts "Direct link to Connection timeouts")
+
+* Verify server URLs are accessible from your network
+* Check for proxy/firewall restrictions
+* Ensure VPN connection if required
+
+### Certificate verification errors[​](#certificate-verification-errors "Direct link to Certificate verification errors")
+
+If you encounter certificate errors with development servers:
+
+* For self-signed certificates, add `"tls_insecure": true` to the server configuration
+* For production servers with certificate issues, fix the certificate rather than disabling verification
+* Check that your system's CA certificate store is up to date
+
+## Related resources[​](#related-resources "Direct link to Related resources")
+
+* [How to Execute GraphQL Queries](/vscode/guides/execute-graphql-queries.md)
+* [How to Manage Branches](/vscode/guides/manage-branches.md)
+* [Security Configuration and Best Practices](/vscode/topics/security-configuration.md)
+* [Extension Commands Reference](/vscode/reference/commands-settings.md)

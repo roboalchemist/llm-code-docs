@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # ConsoleLogin event correlates privileged policy applying to a role
-Classification:attack 
+Classification:attack
 ## Goal{% #goal %}
 
 Correlate a brute force login with a privileged policy being applied to a role.

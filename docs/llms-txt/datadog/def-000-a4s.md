@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Unauthenticated route write using predictable IDs
- 
+
 ## Description{% #description %}
 
 The API accepts predictable identifiers (IDs) without any authentication mechanism. Attackers can leverage this by guessing valid identifiers, to steal sensitive information or perform unauthorized actions.

@@ -1,20 +1,16 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-nested-ternary.md
 
-# Source: https://oxc.rs/docs/guide/usage/linter/rules/eslint/no-nested-ternary.md
+## Source: https://oxc.rs/docs/guide/usage/linter/rules/eslint/no-nested-ternary.md
 
----
-url: /docs/guide/usage/linter/rules/eslint/no-nested-ternary.md
----
-
-### What it does
+## What it does
 
 Disallows nested ternary expressions to improve code readability and maintainability.
 
-### Why is this bad?
+## Why is this bad?
 
 Nested ternary expressions make code harder to read and understand. They can lead to complex, difficult-to-debug logic.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

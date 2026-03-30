@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The scheduler.conf file should be owned by root:root
-Classification:complianceFramework:cis-kubernetesControl:1.1.16 
+Classification:complianceFramework:cis-kubernetesControl:1.1.16
 ## Description{% #description %}
 
 Ensure that the `scheduler.conf` file ownership is set to `root:root`.

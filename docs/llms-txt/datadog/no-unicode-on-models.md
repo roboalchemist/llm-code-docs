@@ -37,7 +37,7 @@ Do not use `__unicode__` on Django models. The field `__unicode__` is used for P
 
 ```python
 class Person(models.Model):
-    
+
     def __unicode__(self):  # do not define __unicode__, define __str__
        pass
 ```
@@ -46,10 +46,9 @@ class Person(models.Model):
 
 ```python
 class Person(models.Model):
-    
+
     def __str__(self):
        "person"
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -1,0 +1,73 @@
+# Source: https://valibot.dev/api/toMaxValue.md
+
+# toMaxValue
+
+Creates a to max value transformation action.
+
+```ts
+const Action = v.toMaxValue<TInput, TRequirement>(requirement);
+```
+
+## Generics
+
+- `TInput` <Property {...properties.TInput} />
+- `TRequirement` <Property {...properties.TRequirement} />
+
+## Parameters
+
+- `requirement` <Property {...properties.requirement} />
+
+### Explanation
+
+With `toMaxValue` you can enforce a maximum value for a number, date or string. If the input does not meet the `requirement`, it will be changed to its value.
+
+## Returns
+
+- `Action` <Property {...properties.Action} />
+
+## Examples
+
+The following examples show how `toMaxValue` can be used.
+
+### Number schema
+
+Schema to enforce a maximum value for a number.
+
+```ts
+const NumberSchema = v.pipe(v.number(), v.toMaxValue(100));
+```
+
+### Date schema
+
+Schema to enforce a maximum value for a date.
+
+```ts
+const DateSchema = v.pipe(v.date(), v.toMaxValue(new Date('1999-12-31')));
+```
+
+## Related
+
+The following APIs can be combined with `toMaxValue`.
+
+### Schemas
+
+<ApiList
+  items={[
+    'any',
+    'bigint',
+    'boolean',
+    'custom',
+    'date',
+    'number',
+    'string',
+    'unknown',
+  ]}
+/>
+
+### Methods
+
+<ApiList items={['pipe']} />
+
+### Utils
+
+<ApiList items={['isOfKind', 'isOfType']} />

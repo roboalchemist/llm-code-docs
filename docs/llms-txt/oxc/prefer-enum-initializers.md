@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/prefer-enum-initializers.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/prefer-enum-initializers.md
----
-
-### What it does
+## What it does
 
 Require each enum member value to be explicitly initialized.
 
-### Why is this bad?
+## Why is this bad?
 
 In projects where the value of `enum` members are important, allowing implicit values for enums can cause bugs if enums are modified over time.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

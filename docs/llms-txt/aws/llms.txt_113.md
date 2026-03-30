@@ -1,0 +1,159 @@
+# Source: https://docs.aws.amazon.com/athena/latest/APIReference/llms.txt
+
+# Amazon Athena API Reference
+
+> Amazon Athena is an interactive query service that lets you use standard SQL to analyze data directly in Amazon S3. You can point Athena at your data in Amazon S3 and run ad-hoc queries and get results in seconds. Athena is serverless, so there is no infrastructure to set up or manage. You pay only for the queries you run. Athena scales automaticallyâexecuting queries in parallelâso results are fast, even with large datasets and complex queries. For more information, see What is Amazon Athena in the Amazon Athena User Guide.
+
+- [Welcome](https://docs.aws.amazon.com/athena/latest/APIReference/Welcome.html)
+- [Common Parameters](https://docs.aws.amazon.com/athena/latest/APIReference/CommonParameters.html)
+- [Common Errors](https://docs.aws.amazon.com/athena/latest/APIReference/CommonErrors.html)
+
+## [Actions](https://docs.aws.amazon.com/athena/latest/APIReference/API_Operations.html)
+
+- [BatchGetNamedQuery](https://docs.aws.amazon.com/athena/latest/APIReference/API_BatchGetNamedQuery.html): Returns the details of a single named query or a list of up to 50 queries, which you provide as an array of query ID strings.
+- [BatchGetPreparedStatement](https://docs.aws.amazon.com/athena/latest/APIReference/API_BatchGetPreparedStatement.html): Returns the details of a single prepared statement or a list of up to 256 prepared statements for the array of prepared statement names that you provide.
+- [BatchGetQueryExecution](https://docs.aws.amazon.com/athena/latest/APIReference/API_BatchGetQueryExecution.html): Returns the details of a single query execution or a list of up to 50 query executions, which you provide as an array of query execution ID strings.
+- [CancelCapacityReservation](https://docs.aws.amazon.com/athena/latest/APIReference/API_CancelCapacityReservation.html): Cancels the capacity reservation with the specified name.
+- [CreateCapacityReservation](https://docs.aws.amazon.com/athena/latest/APIReference/API_CreateCapacityReservation.html): Creates a capacity reservation with the specified name and number of requested data processing units.
+- [CreateDataCatalog](https://docs.aws.amazon.com/athena/latest/APIReference/API_CreateDataCatalog.html): Creates (registers) a data catalog with the specified name and properties.
+- [CreateNamedQuery](https://docs.aws.amazon.com/athena/latest/APIReference/API_CreateNamedQuery.html): Creates a named query in the specified workgroup.
+- [CreateNotebook](https://docs.aws.amazon.com/athena/latest/APIReference/API_CreateNotebook.html): Creates an empty ipynb file in the specified Apache Spark enabled workgroup.
+- [CreatePreparedStatement](https://docs.aws.amazon.com/athena/latest/APIReference/API_CreatePreparedStatement.html): Creates a prepared statement for use with SQL queries in Athena.
+- [CreatePresignedNotebookUrl](https://docs.aws.amazon.com/athena/latest/APIReference/API_CreatePresignedNotebookUrl.html): Gets an authentication token and the URL at which the notebook can be accessed.
+- [CreateWorkGroup](https://docs.aws.amazon.com/athena/latest/APIReference/API_CreateWorkGroup.html): Creates a workgroup with the specified name.
+- [DeleteCapacityReservation](https://docs.aws.amazon.com/athena/latest/APIReference/API_DeleteCapacityReservation.html): Deletes a cancelled capacity reservation.
+- [DeleteDataCatalog](https://docs.aws.amazon.com/athena/latest/APIReference/API_DeleteDataCatalog.html): Deletes a data catalog.
+- [DeleteNamedQuery](https://docs.aws.amazon.com/athena/latest/APIReference/API_DeleteNamedQuery.html): Deletes the named query if you have access to the workgroup in which the query was saved.
+- [DeleteNotebook](https://docs.aws.amazon.com/athena/latest/APIReference/API_DeleteNotebook.html): Deletes the specified notebook.
+- [DeletePreparedStatement](https://docs.aws.amazon.com/athena/latest/APIReference/API_DeletePreparedStatement.html): Deletes the prepared statement with the specified name from the specified workgroup.
+- [DeleteWorkGroup](https://docs.aws.amazon.com/athena/latest/APIReference/API_DeleteWorkGroup.html): Deletes the workgroup with the specified name.
+- [ExportNotebook](https://docs.aws.amazon.com/athena/latest/APIReference/API_ExportNotebook.html): Exports the specified notebook and its metadata.
+- [GetCalculationExecution](https://docs.aws.amazon.com/athena/latest/APIReference/API_GetCalculationExecution.html): Describes a previously submitted calculation execution.
+- [GetCalculationExecutionCode](https://docs.aws.amazon.com/athena/latest/APIReference/API_GetCalculationExecutionCode.html): Retrieves the unencrypted code that was executed for the calculation.
+- [GetCalculationExecutionStatus](https://docs.aws.amazon.com/athena/latest/APIReference/API_GetCalculationExecutionStatus.html): Gets the status of a current calculation.
+- [GetCapacityAssignmentConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_GetCapacityAssignmentConfiguration.html): Gets the capacity assignment configuration for a capacity reservation, if one exists.
+- [GetCapacityReservation](https://docs.aws.amazon.com/athena/latest/APIReference/API_GetCapacityReservation.html): Returns information about the capacity reservation with the specified name.
+- [GetDatabase](https://docs.aws.amazon.com/athena/latest/APIReference/API_GetDatabase.html): Returns a database object for the specified database and data catalog.
+- [GetDataCatalog](https://docs.aws.amazon.com/athena/latest/APIReference/API_GetDataCatalog.html): Returns the specified data catalog.
+- [GetNamedQuery](https://docs.aws.amazon.com/athena/latest/APIReference/API_GetNamedQuery.html): Returns information about a single query.
+- [GetNotebookMetadata](https://docs.aws.amazon.com/athena/latest/APIReference/API_GetNotebookMetadata.html): Retrieves notebook metadata for the specified notebook ID.
+- [GetPreparedStatement](https://docs.aws.amazon.com/athena/latest/APIReference/API_GetPreparedStatement.html): Retrieves the prepared statement with the specified name from the specified workgroup.
+- [GetQueryExecution](https://docs.aws.amazon.com/athena/latest/APIReference/API_GetQueryExecution.html): Returns information about a single execution of a query if you have access to the workgroup in which the query ran.
+- [GetQueryResults](https://docs.aws.amazon.com/athena/latest/APIReference/API_GetQueryResults.html): Streams the results of a single query execution specified by QueryExecutionId from the Athena query results location in Amazon S3.
+- [GetQueryRuntimeStatistics](https://docs.aws.amazon.com/athena/latest/APIReference/API_GetQueryRuntimeStatistics.html): Returns query execution runtime statistics related to a single execution of a query if you have access to the workgroup in which the query ran.
+- [GetResourceDashboard](https://docs.aws.amazon.com/athena/latest/APIReference/API_GetResourceDashboard.html): Gets the Live UI/Persistence UI for a session.
+- [GetSession](https://docs.aws.amazon.com/athena/latest/APIReference/API_GetSession.html): Gets the full details of a previously created session, including the session status and configuration.
+- [GetSessionEndpoint](https://docs.aws.amazon.com/athena/latest/APIReference/API_GetSessionEndpoint.html): Gets a connection endpoint and authentication token for a given session Id.
+- [GetSessionStatus](https://docs.aws.amazon.com/athena/latest/APIReference/API_GetSessionStatus.html): Gets the current status of a session.
+- [GetTableMetadata](https://docs.aws.amazon.com/athena/latest/APIReference/API_GetTableMetadata.html): Returns table metadata for the specified catalog, database, and table.
+- [GetWorkGroup](https://docs.aws.amazon.com/athena/latest/APIReference/API_GetWorkGroup.html): Returns information about the workgroup with the specified name.
+- [ImportNotebook](https://docs.aws.amazon.com/athena/latest/APIReference/API_ImportNotebook.html): Imports a single ipynb file to a Spark enabled workgroup.
+- [ListApplicationDPUSizes](https://docs.aws.amazon.com/athena/latest/APIReference/API_ListApplicationDPUSizes.html): Returns the supported DPU sizes for the supported application runtimes (for example, Athena notebook version 1).
+- [ListCalculationExecutions](https://docs.aws.amazon.com/athena/latest/APIReference/API_ListCalculationExecutions.html): Lists the calculations that have been submitted to a session in descending order.
+- [ListCapacityReservations](https://docs.aws.amazon.com/athena/latest/APIReference/API_ListCapacityReservations.html): Lists the capacity reservations for the current account.
+- [ListDatabases](https://docs.aws.amazon.com/athena/latest/APIReference/API_ListDatabases.html): Lists the databases in the specified data catalog.
+- [ListDataCatalogs](https://docs.aws.amazon.com/athena/latest/APIReference/API_ListDataCatalogs.html): Lists the data catalogs in the current AWS account.
+- [ListEngineVersions](https://docs.aws.amazon.com/athena/latest/APIReference/API_ListEngineVersions.html): Returns a list of engine versions that are available to choose from, including the Auto option.
+- [ListExecutors](https://docs.aws.amazon.com/athena/latest/APIReference/API_ListExecutors.html): Lists, in descending order, the executors that joined a session.
+- [ListNamedQueries](https://docs.aws.amazon.com/athena/latest/APIReference/API_ListNamedQueries.html): Provides a list of available query IDs only for queries saved in the specified workgroup.
+- [ListNotebookMetadata](https://docs.aws.amazon.com/athena/latest/APIReference/API_ListNotebookMetadata.html): Displays the notebook files for the specified workgroup in paginated format.
+- [ListNotebookSessions](https://docs.aws.amazon.com/athena/latest/APIReference/API_ListNotebookSessions.html): Lists, in descending order, the sessions that have been created in a notebook that are in an active state like CREATING, CREATED, IDLE or BUSY.
+- [ListPreparedStatements](https://docs.aws.amazon.com/athena/latest/APIReference/API_ListPreparedStatements.html): Lists the prepared statements in the specified workgroup.
+- [ListQueryExecutions](https://docs.aws.amazon.com/athena/latest/APIReference/API_ListQueryExecutions.html): Provides a list of available query execution IDs for the queries in the specified workgroup.
+- [ListSessions](https://docs.aws.amazon.com/athena/latest/APIReference/API_ListSessions.html): Lists the sessions in a workgroup that are in an active state like CREATING, CREATED, IDLE, or BUSY.
+- [ListTableMetadata](https://docs.aws.amazon.com/athena/latest/APIReference/API_ListTableMetadata.html): Lists the metadata for the tables in the specified data catalog database.
+- [ListTagsForResource](https://docs.aws.amazon.com/athena/latest/APIReference/API_ListTagsForResource.html): Lists the tags associated with an Athena resource.
+- [ListWorkGroups](https://docs.aws.amazon.com/athena/latest/APIReference/API_ListWorkGroups.html): Lists available workgroups for the account.
+- [PutCapacityAssignmentConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_PutCapacityAssignmentConfiguration.html): Puts a new capacity assignment configuration for a specified capacity reservation.
+- [StartCalculationExecution](https://docs.aws.amazon.com/athena/latest/APIReference/API_StartCalculationExecution.html): Submits calculations for execution within a session.
+- [StartQueryExecution](https://docs.aws.amazon.com/athena/latest/APIReference/API_StartQueryExecution.html): Runs the SQL query statements contained in the Query.
+- [StartSession](https://docs.aws.amazon.com/athena/latest/APIReference/API_StartSession.html): Creates a session for running calculations within a workgroup.
+- [StopCalculationExecution](https://docs.aws.amazon.com/athena/latest/APIReference/API_StopCalculationExecution.html): Requests the cancellation of a calculation.
+- [StopQueryExecution](https://docs.aws.amazon.com/athena/latest/APIReference/API_StopQueryExecution.html): Stops a query execution.
+- [TagResource](https://docs.aws.amazon.com/athena/latest/APIReference/API_TagResource.html): Adds one or more tags to an Athena resource.
+- [TerminateSession](https://docs.aws.amazon.com/athena/latest/APIReference/API_TerminateSession.html): Terminates an active session.
+- [UntagResource](https://docs.aws.amazon.com/athena/latest/APIReference/API_UntagResource.html): Removes one or more tags from an Athena resource.
+- [UpdateCapacityReservation](https://docs.aws.amazon.com/athena/latest/APIReference/API_UpdateCapacityReservation.html): Updates the number of requested data processing units for the capacity reservation with the specified name.
+- [UpdateDataCatalog](https://docs.aws.amazon.com/athena/latest/APIReference/API_UpdateDataCatalog.html): Updates the data catalog that has the specified name.
+- [UpdateNamedQuery](https://docs.aws.amazon.com/athena/latest/APIReference/API_UpdateNamedQuery.html): Updates a object.
+- [UpdateNotebook](https://docs.aws.amazon.com/athena/latest/APIReference/API_UpdateNotebook.html): Updates the contents of a Spark notebook.
+- [UpdateNotebookMetadata](https://docs.aws.amazon.com/athena/latest/APIReference/API_UpdateNotebookMetadata.html): Updates the metadata for a notebook.
+- [UpdatePreparedStatement](https://docs.aws.amazon.com/athena/latest/APIReference/API_UpdatePreparedStatement.html): Updates a prepared statement.
+- [UpdateWorkGroup](https://docs.aws.amazon.com/athena/latest/APIReference/API_UpdateWorkGroup.html): Updates the workgroup with the specified name.
+
+
+## [Data Types](https://docs.aws.amazon.com/athena/latest/APIReference/API_Types.html)
+
+- [AclConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_AclConfiguration.html): Indicates that an Amazon S3 canned ACL should be set to control ownership of stored query results, including data files inserted by Athena as the result of statements like CTAS or INSERT INTO.
+- [ApplicationDPUSizes](https://docs.aws.amazon.com/athena/latest/APIReference/API_ApplicationDPUSizes.html): Contains the application runtime IDs and their supported DPU sizes.
+- [AthenaError](https://docs.aws.amazon.com/athena/latest/APIReference/API_AthenaError.html): Provides information about an Athena query error.
+- [BatchGetNamedQueryInput](https://docs.aws.amazon.com/athena/latest/APIReference/API_BatchGetNamedQueryInput.html): Contains an array of named query IDs.
+- [BatchGetQueryExecutionInput](https://docs.aws.amazon.com/athena/latest/APIReference/API_BatchGetQueryExecutionInput.html): Contains an array of query execution IDs.
+- [CalculationConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_CalculationConfiguration.html): Contains configuration information for the calculation.
+- [CalculationResult](https://docs.aws.amazon.com/athena/latest/APIReference/API_CalculationResult.html): Contains information about an application-specific calculation result.
+- [CalculationStatistics](https://docs.aws.amazon.com/athena/latest/APIReference/API_CalculationStatistics.html): Contains statistics for a notebook calculation.
+- [CalculationStatus](https://docs.aws.amazon.com/athena/latest/APIReference/API_CalculationStatus.html): Contains information about the status of a notebook calculation.
+- [CalculationSummary](https://docs.aws.amazon.com/athena/latest/APIReference/API_CalculationSummary.html): Summary information for a notebook calculation.
+- [CapacityAllocation](https://docs.aws.amazon.com/athena/latest/APIReference/API_CapacityAllocation.html): Contains the submission time of a single allocation request for a capacity reservation and the most recent status of the attempted allocation.
+- [CapacityAssignment](https://docs.aws.amazon.com/athena/latest/APIReference/API_CapacityAssignment.html): A mapping between one or more workgroups and a capacity reservation.
+- [CapacityAssignmentConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_CapacityAssignmentConfiguration.html): Assigns Athena workgroups (and hence their queries) to capacity reservations.
+- [CapacityReservation](https://docs.aws.amazon.com/athena/latest/APIReference/API_CapacityReservation.html): A reservation for a specified number of data processing units (DPUs).
+- [Classification](https://docs.aws.amazon.com/athena/latest/APIReference/API_Classification.html): A classification refers to a set of specific configurations.
+- [CloudWatchLoggingConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_CloudWatchLoggingConfiguration.html): Configuration settings for delivering logs to Amazon CloudWatch log groups.
+- [Column](https://docs.aws.amazon.com/athena/latest/APIReference/API_Column.html): Contains metadata for a column in a table.
+- [ColumnInfo](https://docs.aws.amazon.com/athena/latest/APIReference/API_ColumnInfo.html): Information about the columns in a query execution result.
+- [CustomerContentEncryptionConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_CustomerContentEncryptionConfiguration.html): Specifies the customer managed KMS key that is used to encrypt the user's data stores in Athena.
+- [Database](https://docs.aws.amazon.com/athena/latest/APIReference/API_Database.html): Contains metadata information for a database in a data catalog.
+- [DataCatalog](https://docs.aws.amazon.com/athena/latest/APIReference/API_DataCatalog.html): Contains information about a data catalog in an AWS account.
+- [DataCatalogSummary](https://docs.aws.amazon.com/athena/latest/APIReference/API_DataCatalogSummary.html): The summary information for the data catalog, which includes its name and type.
+- [Datum](https://docs.aws.amazon.com/athena/latest/APIReference/API_Datum.html): A piece of data (a field in the table).
+- [EncryptionConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_EncryptionConfiguration.html): If query and calculation results are encrypted in Amazon S3, indicates the encryption option used (for example, SSE_KMS or CSE_KMS) and key information.
+- [EngineConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_EngineConfiguration.html): The engine configuration for the workgroup, which includes the minimum/maximum number of Data Processing Units (DPU) that queries should use when running in provisioned capacity.
+- [EngineVersion](https://docs.aws.amazon.com/athena/latest/APIReference/API_EngineVersion.html): The Athena engine version for running queries, or the PySpark engine version for running sessions.
+- [ExecutorsSummary](https://docs.aws.amazon.com/athena/latest/APIReference/API_ExecutorsSummary.html): Contains summary information about an executor.
+- [FilterDefinition](https://docs.aws.amazon.com/athena/latest/APIReference/API_FilterDefinition.html): A string for searching notebook names.
+- [IdentityCenterConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_IdentityCenterConfiguration.html): Specifies whether the workgroup is IAM Identity Center supported.
+- [ListNamedQueriesInput](https://docs.aws.amazon.com/athena/latest/APIReference/API_ListNamedQueriesInput.html)
+- [ListQueryExecutionsInput](https://docs.aws.amazon.com/athena/latest/APIReference/API_ListQueryExecutionsInput.html)
+- [ManagedLoggingConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_ManagedLoggingConfiguration.html): Configuration settings for delivering logs to Amazon S3 buckets.
+- [ManagedQueryResultsConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_ManagedQueryResultsConfiguration.html): The configuration for storing results in Athena owned storage, which includes whether this feature is enabled; whether encryption configuration, if any, is used for encrypting query results.
+- [ManagedQueryResultsConfigurationUpdates](https://docs.aws.amazon.com/athena/latest/APIReference/API_ManagedQueryResultsConfigurationUpdates.html): Updates the configuration for managed query results.
+- [ManagedQueryResultsEncryptionConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_ManagedQueryResultsEncryptionConfiguration.html): If you encrypt query and calculation results in Athena owned storage, this field indicates the encryption option (for example, SSE_KMS or CSE_KMS) and key information.
+- [MonitoringConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_MonitoringConfiguration.html): Contains the configuration settings for managed log persistence, delivering logs to Amazon S3 buckets, Amazon CloudWatch log groups etc.
+- [NamedQuery](https://docs.aws.amazon.com/athena/latest/APIReference/API_NamedQuery.html): A query, where QueryString contains the SQL statements that make up the query.
+- [NotebookMetadata](https://docs.aws.amazon.com/athena/latest/APIReference/API_NotebookMetadata.html): Contains metadata for notebook, including the notebook name, ID, workgroup, and time created.
+- [NotebookSessionSummary](https://docs.aws.amazon.com/athena/latest/APIReference/API_NotebookSessionSummary.html): Contains the notebook session ID and notebook session creation time.
+- [PreparedStatement](https://docs.aws.amazon.com/athena/latest/APIReference/API_PreparedStatement.html): A prepared SQL statement for use with Athena.
+- [PreparedStatementSummary](https://docs.aws.amazon.com/athena/latest/APIReference/API_PreparedStatementSummary.html): The name and last modified time of the prepared statement.
+- [QueryExecution](https://docs.aws.amazon.com/athena/latest/APIReference/API_QueryExecution.html): Information about a single instance of a query execution.
+- [QueryExecutionContext](https://docs.aws.amazon.com/athena/latest/APIReference/API_QueryExecutionContext.html): The database and data catalog context in which the query execution occurs.
+- [QueryExecutionStatistics](https://docs.aws.amazon.com/athena/latest/APIReference/API_QueryExecutionStatistics.html): The amount of data scanned during the query execution and the amount of time that it took to execute, and the type of statement that was run.
+- [QueryExecutionStatus](https://docs.aws.amazon.com/athena/latest/APIReference/API_QueryExecutionStatus.html): The completion date, current state, submission time, and state change reason (if applicable) for the query execution.
+- [QueryResultsS3AccessGrantsConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_QueryResultsS3AccessGrantsConfiguration.html): Specifies whether Amazon S3 access grants are enabled for query results.
+- [QueryRuntimeStatistics](https://docs.aws.amazon.com/athena/latest/APIReference/API_QueryRuntimeStatistics.html): The query execution timeline, statistics on input and output rows and bytes, and the different query stages that form the query execution plan.
+- [QueryRuntimeStatisticsRows](https://docs.aws.amazon.com/athena/latest/APIReference/API_QueryRuntimeStatisticsRows.html): Statistics such as input rows and bytes read by the query, rows and bytes output by the query, and the number of rows written by the query.
+- [QueryRuntimeStatisticsTimeline](https://docs.aws.amazon.com/athena/latest/APIReference/API_QueryRuntimeStatisticsTimeline.html): Timeline statistics such as query queue time, planning time, execution time, service processing time, and total execution time.
+- [QueryStage](https://docs.aws.amazon.com/athena/latest/APIReference/API_QueryStage.html): Stage statistics such as input and output rows and bytes, execution time and stage state.
+- [QueryStagePlanNode](https://docs.aws.amazon.com/athena/latest/APIReference/API_QueryStagePlanNode.html): Stage plan information such as name, identifier, sub plans, and remote sources.
+- [ResultConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_ResultConfiguration.html): The location in Amazon S3 where query and calculation results are stored and the encryption option, if any, used for query and calculation results.
+- [ResultConfigurationUpdates](https://docs.aws.amazon.com/athena/latest/APIReference/API_ResultConfigurationUpdates.html): The information about the updates in the query results, such as output location and encryption configuration for the query results.
+- [ResultReuseByAgeConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_ResultReuseByAgeConfiguration.html): Specifies whether previous query results are reused, and if so, their maximum age.
+- [ResultReuseConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_ResultReuseConfiguration.html): Specifies the query result reuse behavior for the query.
+- [ResultReuseInformation](https://docs.aws.amazon.com/athena/latest/APIReference/API_ResultReuseInformation.html): Contains information about whether the result of a previous query was reused.
+- [ResultSet](https://docs.aws.amazon.com/athena/latest/APIReference/API_ResultSet.html): The metadata and rows that make up a query result set.
+- [ResultSetMetadata](https://docs.aws.amazon.com/athena/latest/APIReference/API_ResultSetMetadata.html): The metadata that describes the column structure and data types of a table of query results.
+- [Row](https://docs.aws.amazon.com/athena/latest/APIReference/API_Row.html): The rows that make up a query result table.
+- [S3LoggingConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_S3LoggingConfiguration.html): Configuration settings for delivering logs to Amazon S3 buckets.
+- [SessionConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_SessionConfiguration.html): Contains session configuration information.
+- [SessionStatistics](https://docs.aws.amazon.com/athena/latest/APIReference/API_SessionStatistics.html): Contains statistics for a session.
+- [SessionStatus](https://docs.aws.amazon.com/athena/latest/APIReference/API_SessionStatus.html): Contains information about the status of a session.
+- [SessionSummary](https://docs.aws.amazon.com/athena/latest/APIReference/API_SessionSummary.html): Contains summary information about a session.
+- [TableMetadata](https://docs.aws.amazon.com/athena/latest/APIReference/API_TableMetadata.html): Contains metadata for a table.
+- [Tag](https://docs.aws.amazon.com/athena/latest/APIReference/API_Tag.html): A label that you assign to a resource.
+- [UnprocessedNamedQueryId](https://docs.aws.amazon.com/athena/latest/APIReference/API_UnprocessedNamedQueryId.html): Information about a named query ID that could not be processed.
+- [UnprocessedPreparedStatementName](https://docs.aws.amazon.com/athena/latest/APIReference/API_UnprocessedPreparedStatementName.html): The name of a prepared statement that could not be returned.
+- [UnprocessedQueryExecutionId](https://docs.aws.amazon.com/athena/latest/APIReference/API_UnprocessedQueryExecutionId.html): Describes a query execution that failed to process.
+- [WorkGroup](https://docs.aws.amazon.com/athena/latest/APIReference/API_WorkGroup.html): A workgroup, which contains a name, description, creation time, state, and other configuration, listed under WorkGroup:Configuration.
+- [WorkGroupConfiguration](https://docs.aws.amazon.com/athena/latest/APIReference/API_WorkGroupConfiguration.html): The configuration of the workgroup, which includes the location in Amazon S3 where query and calculation results are stored, the encryption option, if any, used for query and calculation results, whether the Amazon CloudWatch Metrics are enabled for the workgroup and whether workgroup settings override query settings, and the data usage limits for the amount of data scanned per query or per workgroup.
+- [WorkGroupConfigurationUpdates](https://docs.aws.amazon.com/athena/latest/APIReference/API_WorkGroupConfigurationUpdates.html): The configuration information that will be updated for this workgroup, which includes the location in Amazon S3 where query and calculation results are stored, the encryption option, if any, used for query results, whether the Amazon CloudWatch Metrics are enabled for the workgroup, whether the workgroup settings override the client-side settings, and the data usage limit for the amount of bytes scanned per query, if it is specified.
+- [WorkGroupSummary](https://docs.aws.amazon.com/athena/latest/APIReference/API_WorkGroupSummary.html): The summary information for the workgroup, which includes its name, state, description, and the date and time it was created.

@@ -1,0 +1,56 @@
+```ts
+ProvableType: {
+  get: ToProvable<A>;
+  synthesize: T;
+};
+```
+
+Defined in: [lib/provable/types/provable-intf.ts:132](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/provable/types/provable-intf.ts#L132)
+
+## Type declaration
+
+### get()
+
+```ts
+get<A>(type: A): ToProvable<A>;
+```
+
+#### Type Parameters
+
+##### A
+
+`A` *extends* `unknown`
+
+#### Parameters
+
+##### type
+
+`A`
+
+#### Returns
+
+[`ToProvable`](../type-aliases/ToProvable.mdx)\<`A`\>
+
+### synthesize()
+
+```ts
+synthesize<T>(type: ProvableType<T>): T;
+```
+
+Create some value of type `T` from its provable type description.
+
+#### Type Parameters
+
+##### T
+
+`T`
+
+#### Parameters
+
+##### type
+
+[`ProvableType`](../type-aliases/ProvableType.mdx)\<`T`\>
+
+#### Returns
+
+`T`

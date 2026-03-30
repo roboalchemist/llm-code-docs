@@ -101,6 +101,5 @@ if ($fileSize > 0 && $fileSize <= $maxFileSize && in_array($_FILES['uploadedFile
 }
 ?>
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

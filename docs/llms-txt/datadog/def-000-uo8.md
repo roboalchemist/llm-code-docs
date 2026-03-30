@@ -11,7 +11,7 @@ breadcrumbs: 'Docs > Datadog Security > OOTB Rules > OSSEC Alert: Attack detecte
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attack 
+Classification:attack
 ## Goal{% #goal %}
 
 Detect when an OSSEC alert of level 15 is raised.

@@ -46,21 +46,21 @@ To set a timeout in an HTTP server using the `http.Server` package in Go, you ca
 package main
 
 import (
-	"net/http"
-	"time"
+    "net/http"
+    "time"
 )
 
 func main() {
-	server := &http.Server{
-		Addr:        ":8080",
-		ReadTimeout: 5 * time.Second, // Set read timeout to 5 seconds
+    server := &http.Server{
+        Addr:        ":8080",
+        ReadTimeout: 5 * time.Second, // Set read timeout to 5 seconds
                 WriteTimeout: 10 * time.Second, // Set write timeout to 10 seconds
-	}
+    }
 
-	err := server.ListenAndServe()
-	if err != nil {
-		// handle error
-	}
+    err := server.ListenAndServe()
+    if err != nil {
+        // handle error
+    }
 }
 ```
 
@@ -78,21 +78,21 @@ By defining appropriate timeouts, you can protect your server from DoS attacks, 
 package main
 
 import (
-	"log"
-	"net/http"
+    "log"
+    "net/http"
 )
 
 func main() {
-	s := http.Server{
-			Addr:    fmt.Sprintf(":%s", config.Cfg.Webport),
-			Handler: router,
-	}
+    s := http.Server{
+            Addr:    fmt.Sprintf(":%s", config.Cfg.Webport),
+            Handler: router,
+    }
 
-	otherServer := http.Server{
-		Addr:    fmt.Sprintf(":%s", config.Cfg.Webport),
-		Handler: router,
-		ReadTimeout: 10 * time.Second,
-	}
+    otherServer := http.Server{
+        Addr:    fmt.Sprintf(":%s", config.Cfg.Webport),
+        Handler: router,
+        ReadTimeout: 10 * time.Second,
+    }
 }
 ```
 
@@ -100,19 +100,19 @@ func main() {
 package main
 
 import (
-	"log"
-	"net"
-	"net/http"
+    "log"
+    "net"
+    "net/http"
 )
 
 func main() {
-	l, err := net.Listen("tcp", ":8443")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer l.Close()
-	err = http.ServeTLS(l, nil, "cert.pem", "key.pem")
-	log.Fatal(err)
+    l, err := net.Listen("tcp", ":8443")
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer l.Close()
+    err = http.ServeTLS(l, nil, "cert.pem", "key.pem")
+    log.Fatal(err)
 }
 ```
 
@@ -120,19 +120,19 @@ func main() {
 package main
 
 import (
-	"log"
-	"net"
-	"net/http"
+    "log"
+    "net"
+    "net/http"
 )
 
 func main() {
-	l, err := net.Listen("tcp", ":8080")
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer l.Close()
-	err = http.Serve(l, nil)
-	log.Fatal(err)
+    l, err := net.Listen("tcp", ":8080")
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer l.Close()
+    err = http.Serve(l, nil)
+    log.Fatal(err)
 }
 ```
 
@@ -140,13 +140,13 @@ func main() {
 package main
 
 import (
-	"log"
-	"net/http"
+    "log"
+    "net/http"
 )
 
 func main() {
-	err := http.ListenAndServeTLS(":8443", "cert.pem", "key.pem", nil)
-	log.Fatal(err)
+    err := http.ListenAndServeTLS(":8443", "cert.pem", "key.pem", nil)
+    log.Fatal(err)
 }
 ```
 
@@ -154,13 +154,13 @@ func main() {
 package main
 
 import (
-	"log"
-	"net/http"
+    "log"
+    "net/http"
 )
 
 func main() {
-	err := http.ListenAndServe(":8080", nil)
-	log.Fatal(err)
+    err := http.ListenAndServe(":8080", nil)
+    log.Fatal(err)
 }
 ```
 
@@ -170,9 +170,9 @@ func main() {
 package main
 
 import (
-	"log"
-	"net"
-	"net/http"
+    "log"
+    "net"
+    "net/http"
 )
 
 func main() {
@@ -188,6 +188,5 @@ func main() {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

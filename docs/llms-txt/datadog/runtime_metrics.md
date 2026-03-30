@@ -85,7 +85,7 @@ This can be done either from the "Computer Management" UI, or from an administra
 
 ```shell
 net localgroup "Performance Monitor Users" "IIS APPPOOL\DefaultAppPool" /add
-```
+```text
 
 {% /tab %}
 
@@ -118,7 +118,7 @@ Enable [DogStatsD for the Agent](https://docs.datadoghq.com/developers/dogstatsd
 
 When running the Agent in containerized environments, additional configuration is required:
 
-1. Set `dogstatsd_non_local_traffic: true` in your main [`datadog.yaml` configuration file](https://docs.datadoghq.com/agent/configuration/agent-configuration-files/#main-configuration-file), or set the [environment variable](https://docs.datadoghq.com/agent/docker/#dogstatsd-custom-metrics) `DD_DOGSTATSD_NON_LOCAL_TRAFFIC=true`. **Note**: DogStatsD nonâlocal traffic is enabled by default, so you only need to set this if you've overridden it.
+1. Verify that DogStatsD non-local traffic is enabled. This setting is enabled by default. If you have previously disabled it, set `dogstatsd_non_local_traffic: true` in your main [`datadog.yaml` configuration file](https://docs.datadoghq.com/agent/configuration/agent-configuration-files/#main-configuration-file), or set the [environment variable](https://docs.datadoghq.com/agent/docker/#dogstatsd-custom-metrics) `DD_DOGSTATSD_NON_LOCAL_TRAFFIC=true`.
 1. Follow these container-specific setup instructions:
 
 - [Docker](https://docs.datadoghq.com/containers/docker/?tab=standard#dogstatsd-custom-metrics)
@@ -196,7 +196,7 @@ You can enable runtime metrics with environment variables or in code:
 ```python
 from ddtrace.runtime import RuntimeMetrics
 RuntimeMetrics.enable()
-```
+```text
 
 {% alert level="danger" %}
 This only applies if you are not using `ddtrace-run`
@@ -220,7 +220,7 @@ Datadog.configure do |c|
   # You can configure with host and port of Datadog agent; defaults to 'localhost:8125'.
   c.runtime_metrics.statsd = Datadog::Statsd.new
 end
-```
+```text
 
 {% /tab %}
 
@@ -236,7 +236,7 @@ tracer.Start(
   tracer.WithRuntimeMetrics(),
   tracer.WithDogstatsdAddr("custom-host:8125")
 )
-```
+```text
 
 The `WithDogstatsdAddr` option allows you to specify a custom address for the DogStatsD server. Use the [`WithDogstatsdAddr`](https://pkg.go.dev/github.com/DataDog/dd-trace-go/v2/ddtrace/tracer#WithDogstatsdAddr) (or [`WithDogstatsdAddress` v1](https://pkg.go.dev/gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer#WithDogstatsdAddress)) option if your address differs from the default `localhost:8125`. (Available for 1.18.0+)
 {% /tab %}
@@ -249,7 +249,7 @@ const tracer = require('dd-trace').init({
   // Other tracer options...
   runtimeMetrics: true
 })
-```
+```text
 
 {% /tab %}
 
@@ -306,7 +306,7 @@ jvm.gc.cms.count   => jvm.gc.minor_collection_count
                       jvm.gc.major_collection_count
 jvm.gc.parnew.time => jvm.gc.minor_collection_time
                       jvm.gc.major_collection_time
-```
+```text
 
 {% /tab %}
 
@@ -409,6 +409,8 @@ jvm.gc.parnew.time => jvm.gc.minor_collection_time
 | **runtime.node.mem.rss**(gauge)                            | Resident set size*Shown as byte*                                         |
 | **runtime.node.mem.heap\_total**(gauge)                    | Total heap memory*Shown as byte*                                         |
 | **runtime.node.mem.heap\_used**(gauge)                     | Heap memory usage*Shown as byte*                                         |
+| **runtime.node.mem.total**(gauge)                          | Total system memory size*Shown as byte*                                  |
+| **runtime.node.mem.free**(gauge)                           | Free system memory size*Shown as byte*                                   |
 | **runtime.node.mem.external**(gauge)                       | External memory*Shown as byte*                                           |
 | **runtime.node.heap.total\_heap\_size**(gauge)             | Total heap size*Shown as byte*                                           |
 | **runtime.node.heap.total\_heap\_size\_executable**(gauge) | Total executable heap size*Shown as byte*                                |
@@ -429,6 +431,7 @@ jvm.gc.parnew.time => jvm.gc.minor_collection_time
 | **runtime.node.event\_loop.delay.median**(gauge)           | Median event loop delay*Shown as nanosecond*                             |
 | **runtime.node.event\_loop.delay.95percentile**(gauge)     | 95th percentile event loop delay*Shown as nanosecond*                    |
 | **runtime.node.event\_loop.delay.count**(rate)             | Event loop iteration count where a delay is detected*Shown as execution* |
+| **runtime.node.event\_loop.utilization**(gauge)            | Fraction of time the event loop is active*Shown as unit*                 |
 | **runtime.node.gc.pause.max**(gauge)                       | Maximum garbage collection pause*Shown as nanosecond*                    |
 | **runtime.node.gc.pause.min**(gauge)                       | Minimum garbage collection pause*Shown as nanosecond*                    |
 | **runtime.node.gc.pause.avg**(gauge)                       | Average garbage collection pause*Shown as nanosecond*                    |

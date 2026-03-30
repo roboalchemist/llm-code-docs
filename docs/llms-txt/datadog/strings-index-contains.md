@@ -67,8 +67,8 @@ By using `strings.Contains(x, y)` instead of `strings.Index(x, y) != -1`, you ca
 
 ```go
 import (
-	"fmt"
-	str2 "strings"
+    "fmt"
+    str2 "strings"
 )
 
 func main () {
@@ -80,8 +80,8 @@ func main () {
 
 ```go
 import (
-	"fmt"
-	"strings"
+    "fmt"
+    "strings"
 )
 
 func main () {
@@ -95,8 +95,8 @@ func main () {
 
 ```go
 import (
-	"fmt"
-	"strings"
+    "fmt"
+    "strings"
 )
 
 func main () {
@@ -105,6 +105,5 @@ func main () {
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

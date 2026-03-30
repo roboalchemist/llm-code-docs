@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # GKE Kubelet kubeconfig file ownership should be assigned to root
- 
+
 ## Description{% #description %}
 
 Ensure that the file ownership of the kubelet's kubeconfig file is set to `root:root`. You should set its file ownership to maintain integrity.

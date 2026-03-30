@@ -13,11 +13,11 @@ This dataset represents log events collected by Datadog Log Management. It provi
 ```
 dd.logs
 ```
-Log Management Public Documentation 
+Log Management Public Documentation
 {% icon name="icon-external-link" /%}
- Logs Standard Attributes Documentation 
+ Logs Standard Attributes Documentation
 {% icon name="icon-external-link" /%}
- 
+
 ## Query Parameters
 
 This dataset uses a **polymorphic table function**. You must specify parameters when querying.

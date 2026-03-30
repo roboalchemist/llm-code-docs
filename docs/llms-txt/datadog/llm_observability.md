@@ -118,3 +118,4 @@ See the [Setup documentation](https://docs.datadoghq.com/llm_observability/setup
 - [Monitor agents built on Amazon Bedrock with Datadog LLM Observability](https://www.datadoghq.com/blog/llm-observability-bedrock-agents/)
 - [Identify common security risks in MCP servers](https://www.datadoghq.com/blog/monitor-mcp-servers/)
 - [Abusing AI infrastructure: How mismanaged credentials and resources expose LLM applications](https://www.datadoghq.com/blog/detect-abuse-ai-infrastructure/)
+- [How we cut our NLQ agent debugging time from hours to minutes with LLM Observability](https://www.datadoghq.com/blog/llm-observability-at-datadog-nlq)

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Redshift Serverless snapshots should not be shared with external accounts
- 
+
 ## Description{% #description %}
 
 This rule evaluates whether Amazon Redshift Serverless snapshots are shared with external AWS accounts that are not onboarded to Datadog. Redshift Serverless snapshots contain complete copies of data warehouse clusters, including all data, configurations, and potentially sensitive information. Sharing snapshots with unauthorized external accounts can lead to data exposure and security risks.

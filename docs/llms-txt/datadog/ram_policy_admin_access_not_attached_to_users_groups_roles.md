@@ -54,7 +54,7 @@ resource "alicloud_ram_role" "role3" {
           "Effect": "Allow",
           "Principal": {
             "Service": [
-              "apigateway.aliyuncs.com", 
+              "apigateway.aliyuncs.com",
               "ecs.aliyuncs.com"
             ]
           }
@@ -231,7 +231,7 @@ resource "alicloud_ram_role" "role6" {
           "Effect": "Allow",
           "Principal": {
             "Service": [
-              "apigateway.aliyuncs.com", 
+              "apigateway.aliyuncs.com",
               "ecs.aliyuncs.com"
             ]
           }

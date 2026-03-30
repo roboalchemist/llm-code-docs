@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Azure App Service should be enabled with 'always on'
- 
+
 ## Description{% #description %}
 
 Azure App Services has 'always on' **enabled** for web apps.
@@ -26,26 +26,26 @@ Enabling 'always on' will enhance your Azure Apps web apps' availability.
 
    ```powershell
        az webapp list
-   	--query '[*].id'
-       
+    --query '[*].id'
+
 ```
 
 1. Check the config of your web apps with the command:
 
    ```powershell
        az webapp config show
-   	--ids "<INSERT_ID>"
-   	--query 'alwaysOn'
-       
+    --ids "<INSERT_ID>"
+    --query 'alwaysOn'
+
 ```
 
 1. Enable the web app's 'always on' capability with the command:
 
    ```powershell
        az webapp config set
-   	--ids "<INSERT_ID>"
-   	--always-on true
-       
+    --ids "<INSERT_ID>"
+    --always-on true
+
 ```
 
 1. Repeat steps one through three for each server that is not configured correctly.

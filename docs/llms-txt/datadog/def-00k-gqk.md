@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # RBAC should be enabled for the Kubernetes API server
- 
+
 ## Description{% #description %}
 
 Role Based Access Control (RBAC) should be enabled. RBAC allows fine-grained control over the operations that different entities can perform on different objects in the cluster.

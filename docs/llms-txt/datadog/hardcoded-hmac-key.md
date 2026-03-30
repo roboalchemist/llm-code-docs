@@ -66,6 +66,5 @@ const safe_hmac = crypto.createHmac('sha256', safely_stored_key)
 
 crypto.createHmac('sha256', process.env.KEY);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

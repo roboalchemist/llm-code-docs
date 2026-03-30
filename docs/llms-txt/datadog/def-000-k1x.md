@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # CloudFront distributions using origin access identity should be migrated to origin access control
- 
+
 ## Description{% #description %}
 
 CloudFront distributions using Origin Access Identity (OAI) should be migrated to Origin Access Control (OAC) for enhanced security features, including signed requests, granular permissions, and support for AWS Identity and Access Management (IAM) policies. Additionally, OAC offers broader compatibility with various AWS origins, such as S3 and custom origins, enhancing both flexibility and security.

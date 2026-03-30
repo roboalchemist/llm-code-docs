@@ -45,7 +45,7 @@ To avoid these issues, it is best to choose descriptive and meaningful names for
 ```go
 func true() {
     false := true
-    
+
     false = false
 
     append = 1
@@ -57,12 +57,11 @@ func true() {
 ```go
 func myFunction() {
     myVariable := true
-    
+
     myVariable = false
 
     myList = make(int[])
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

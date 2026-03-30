@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # The --audit-policy-file flag should be set for Kubernetes logging to be enabled
-Classification:complianceFramework:cis-kubernetesControl:3.2.1 
+Classification:complianceFramework:cis-kubernetesControl:3.2.1
 ## Description{% #description %}
 
 Kubernetes can audit the details of requests made to the API server. The `--audit-policy-file` flag must be set for this logging to be enabled.

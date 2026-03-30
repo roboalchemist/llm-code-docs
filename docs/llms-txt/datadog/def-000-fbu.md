@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # ElastiCache Redis clusters before version 6.0 should use Redis AUTH
- 
+
 ## Description{% #description %}
 
 ElastiCache for Redis clusters before version 6.0 should use Redis AUTH

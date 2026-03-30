@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Kubernetes service account token created in container
-Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1609-container-administration-command](https://attack.mitre.org/techniques/T1609) 
+Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1609-container-administration-command](https://attack.mitre.org/techniques/T1609)
 ## What happened{% #what-happened %}
 
 A `kubectl` command was used to create a new service account token, potentially to establish persistence or escalate privileges.

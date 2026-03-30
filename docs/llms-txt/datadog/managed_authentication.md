@@ -47,7 +47,7 @@ AWS supports IAM authentication to RDS and Aurora databases. Starting with Datad
 1. Turn on IAM authentication on your [RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.Enabling.html) or [Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.Enabling.html) instance.
 1. Create an IAM policy for DB authentication. Replace `<YOUR_IAM_AUTH_DB_USER>` with the local database user in the IAM policy document:
    {% tab title="RDS" %}
-   
+
    ```json
    {
       "Version": "2012-10-17",
@@ -87,7 +87,7 @@ For example, if you want to use the `datadog` user, use the following resource A
       {% /tab %}
 
    {% tab title="Aurora" %}
-   
+
    ```json
    {
       "Version": "2012-10-17",

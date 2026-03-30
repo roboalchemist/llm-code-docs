@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # 'Trusted Microsoft Services' should be enabled for Storage Account access
- 
+
 ## Description{% #description %}
 
 Enabling firewall rules for a storage account restricts incoming data requests, including those from other Azure services, such as using the portal or writing logs. However, by enabling Trusted Microsoft Services through exceptions, you can regain access to services like Monitor, Networking, Hubs, and Event Grid. Additionally, this exception allows for backing up and restoring virtual machines using unmanaged disks in storage accounts with network rules applied. To ensure smooth operation of these services, it is recommended to enable the exception for Trusted Microsoft Services.

@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # The Elasticsearch domain should block unsigned requests over the public internet
- 
+
 ## Description{% #description %}
 
 Update publicly accessible Amazon Elasticsearch domains to block unsigned requests.
@@ -54,7 +54,7 @@ In the `ip-based-policy.json` file:
            }
        ]
        }
-       
+
 ```
 
 1. Run `update-elasticsearch-domain-config` using the name of the [Elasticsearch domain](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/es/update-elasticsearch-domain-config.html) created in the previous step.
@@ -65,5 +65,5 @@ In the `ip-based-policy.json` file:
        aws es update-elasticsearch-domain-config
            --domain-name es-cluster
            --access-policies file://ip-based-policy.json
-       
+
 ```

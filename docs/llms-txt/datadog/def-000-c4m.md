@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EFS file systems should be in backup plans
- 
+
 ## Description{% #description %}
 
 This control verifies whether Amazon EFS file systems are incorporated into AWS Backup plans.

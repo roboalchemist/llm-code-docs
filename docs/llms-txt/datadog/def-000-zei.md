@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure journald is configured to write log files to persistent disk
- 
+
 ## Description{% #description %}
 
 The journald system may store log files in volatile memory or locally on disk. If the logs are only stored in volatile memory they will be lost upon reboot.
@@ -31,7 +31,7 @@ The following script can be run on the host to remediate the issue.
 if dpkg-query --show --showformat='${db:Status-Status}' 'linux-base' 2>/dev/null | grep -q '^installed$'; then
 
 if [ -e "/etc/systemd/journald.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*Storage\s*=\s*/d" "/etc/systemd/journald.conf"
 else
     touch "/etc/systemd/journald.conf"

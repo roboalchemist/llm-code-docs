@@ -60,6 +60,5 @@ arr[-1] = "bazzzzz"
 
 value = arr[0, 2]
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

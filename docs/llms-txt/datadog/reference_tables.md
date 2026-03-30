@@ -53,23 +53,23 @@ To update Reference Tables from S3, Datadog uses the IAM role in your AWS accoun
 
 ```json
 {
-	"Statement": [
-		{
-			"Sid": "EnrichmentTablesS3",
-			"Effect": "Allow",
-			"Action": [
-				"s3:GetObject",
-				// Grant KMS decrypt permissions if uploading KMS-encrypted object
-				// "kms:Decrypt",
-				"s3:ListBucket"
-			],
-			"Resource": [
-				"arn:aws:s3:::<MY_BUCKET_NAME_1/*>",
-				"arn:aws:s3:::<MY_BUCKET_NAME_2>"
-			]
-		}
-	],
-	"Version": "2012-10-17"
+    "Statement": [
+        {
+            "Sid": "EnrichmentTablesS3",
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                // Grant KMS decrypt permissions if uploading KMS-encrypted object
+                // "kms:Decrypt",
+                "s3:ListBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::<MY_BUCKET_NAME_1/*>",
+                "arn:aws:s3:::<MY_BUCKET_NAME_2>"
+            ]
+        }
+    ],
+    "Version": "2012-10-17"
 }
 ```
 

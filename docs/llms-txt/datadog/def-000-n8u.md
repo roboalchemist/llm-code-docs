@@ -13,7 +13,7 @@ breadcrumbs: >-
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1574-hijack-execution-flow](https://attack.mitre.org/techniques/T1574) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1574-hijack-execution-flow](https://attack.mitre.org/techniques/T1574)
 ## Goal{% #goal %}
 
 Detects Windows DHCP server errors when loading CallOut DLLs that may indicate DLL hijacking attempts targeting DHCP services.

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > DMS endpoints should require
 ---
 
 # DMS endpoints should require SSL/TLS
- 
+
 ## Description{% #description %}
 
 This control verifies if an AWS DMS endpoint is configured to use an SSL connection. The `ssl_mode` of the endpoint must set to either `require`, `verify-ca` or `verify-full`.

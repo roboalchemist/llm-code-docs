@@ -1,0 +1,140 @@
+# Source: https://www.speakeasy.com/md/openapi/schemas/strings.md
+
+# strings
+
+The **string** type is one of the most used and most flexible primitive types in OpenAPI. It supports a number of formats, patterns and other validations that overlay constraints to the type of data represented. This is not just helpful for documentation and validation, but it can help with mapping to types in various languages when using OpenAPI for code generation.
+
+## Formats
+
+The string type can contain anything, from passwords, IP addresses, email addresses, long form text, binary data, pretty much anything. To help describe the data in the string more specifically, OpenAPI supports a `format` keyword:
+
+```yaml
+schema:
+  type: object
+  properties:
+    createdAt:
+      type: string
+      format: date-time
+```
+
+Here are a few common formats that are likely to pop up.
+
+| Type | Format | Explanation | Example |
+| --- | --- | --- | --- |
+| string | date | An [RFC3339](https://www.rfc-editor.org/rfc/rfc3339#section-5.6) formatted date string | "2022-01-30" |
+| string | date-time | An [RFC3339](https://www.rfc-editor.org/rfc/rfc3339#section-5.6) formatted date-time string | "2019-10-12T07:20:50.52Z" |
+| string | password | Provides a hint that the string may contain sensitive information. | "mySecretWord1234" |
+| string | uuid | A Universally Unique IDentifier as defined in RFC4122. | "cde3dd4f-cb0e-47a1-8e2a-3595c0fa1cd1" |
+| string | byte | Base-64 encoded data. | "U3BlYWtlYXN5IG1ha2VzIHdvcmtpbmcgd2l0aCBBUElzIGZ1biE=" |
+| string | binary | Binary data, used to represent the contents of a file. | "01010101110001" |
+
+The format property has grown substantially over time, and a new [Format Registry](https://spec.openapis.org/registry/format/) has been defined which OpenAPI v3.1 and future versions defer to.
+
+- base64url
+- binary
+- byte
+- char
+- commonmark
+- date-time
+- date
+- decimal
+- decimal128
+- double
+- duration
+- email
+- float
+- hostname
+- html
+- http-date
+- idn-email
+- idn-hostname
+- int16
+- int32
+- int64
+- int8
+- ipv4
+- ipv6
+- iri-reference
+- iri
+- json-pointer
+- media-range
+- password
+- regex
+- relative-json-pointer
+- sf-binary
+- sf-boolean
+- sf-decimal
+- sf-integer
+- sf-string
+- sf-token
+- time
+- uint8
+- uri-reference
+- uri-template
+- uri
+- uuid
+
+This list is huge already and likely to grow over time. Not all tooling will understand every single one, but that's ok because format is an extensible property in OpenAPI: anyone could put any value in there, and if a tool knows what it means, it can do something with it.
+
+### Examples
+
+```yaml
+schema:
+  properties:
+    # A unique id
+    uuid:
+      type: string
+      format: uuid
+
+    # A basic string
+    basicString:
+      type: string
+
+    # A string that represents a RFC3339 formatted date-time string
+    createdAt:
+      type: string
+      format: date-time
+
+    # A string that represents a enum with the specified values
+    status:
+      type: string
+      enum:
+        - "pending"
+        - "approved"
+        - "archived"
+```
+
+## Patterns
+
+The **string** type also has an associated `pattern` keyword which accepts a regular expression, which can help further define a string when no particular format is exactly appropriate.
+
+The regular expression syntax is the one defined in JavaScript ([ECMA 262](https://tc39.es/ecma262/) specifically) with Unicode support. The `pattern` keyword is part of the [JSON Schema](https://json-schema.org/) specification, which OpenAPI v3.1 extends for its `schema` keyword, so you can read more about [Regular Expressions](https://json-schema.org/understanding-json-schema/reference/regular_expressions) on the JSON Schema website.
+
+### Examples
+
+Example of a string defined with a regex pattern:
+
+```yaml
+schema:
+  properties:
+    username:
+      type: string
+      pattern: ^[a-zA-Z0-9_]*$
+      examples:
+        - Fred
+        - some_user
+        - 123abc
+
+    phoneNumber:
+      type: string
+      pattern: ^(\\([0-9]{3}\\))?[0-9]{3}-[0-9]{4}$
+```
+
+## When to use pattern or format
+
+Pattern is used primarily for validation, but format is sometimes only treated as an informative annotation.
+
+In some cases it might be a good idea to provide a pattern as well as a format, just to make sure validation is run as expected.
+---
+
+Are you an AI agent evaluating Speakeasy? We put together a helpful guide: https://www.speakeasy.com/eval.md

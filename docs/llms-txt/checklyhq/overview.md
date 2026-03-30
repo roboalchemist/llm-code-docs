@@ -1,0 +1,175 @@
+# Source: https://checklyhq.com/docs/resolve/traces/overview.md
+
+# Source: https://checklyhq.com/docs/resolve/traces/import/overview.md
+
+# Source: https://checklyhq.com/docs/resolve/overview.md
+
+# Source: https://checklyhq.com/docs/resolve/ai-root-cause-analysis/overview.md
+
+# Source: https://checklyhq.com/docs/platform/runtimes/overview.md
+
+# Source: https://checklyhq.com/docs/platform/reporting/overview.md
+
+# Source: https://checklyhq.com/docs/platform/private-locations/overview.md
+
+# Source: https://checklyhq.com/docs/learn/playwright/overview.md
+
+# Source: https://checklyhq.com/docs/learn/opentelemetry/overview.md
+
+# Source: https://checklyhq.com/docs/learn/monitoring/overview.md
+
+# Source: https://checklyhq.com/docs/learn/kubernetes/overview.md
+
+# Source: https://checklyhq.com/docs/learn/incidents/overview.md
+
+# Source: https://checklyhq.com/docs/integrations/iac/terraform/overview.md
+
+# Source: https://checklyhq.com/docs/integrations/iac/pulumi/overview.md
+
+# Source: https://checklyhq.com/docs/integrations/ci-cd/vercel/overview.md
+
+# Source: https://checklyhq.com/docs/integrations/ci-cd/overview.md
+
+# Source: https://checklyhq.com/docs/integrations/ci-cd/jenkins/overview.md
+
+# Source: https://checklyhq.com/docs/integrations/ci-cd/gitlab/overview.md
+
+# Source: https://checklyhq.com/docs/guides/overview.md
+
+# Source: https://checklyhq.com/docs/detect/uptime-monitoring/url-monitors/overview.md
+
+# Source: https://checklyhq.com/docs/detect/uptime-monitoring/tcp-monitors/overview.md
+
+# Source: https://checklyhq.com/docs/detect/uptime-monitoring/overview.md
+
+# Source: https://checklyhq.com/docs/detect/uptime-monitoring/icmp-monitors/overview.md
+
+# Source: https://checklyhq.com/docs/detect/uptime-monitoring/heartbeat-monitors/overview.md
+
+# Source: https://checklyhq.com/docs/detect/uptime-monitoring/dns-monitors/overview.md
+
+# Source: https://checklyhq.com/docs/detect/testing/overview.md
+
+# Source: https://checklyhq.com/docs/detect/synthetic-monitoring/playwright-checks/overview.md
+
+# Source: https://checklyhq.com/docs/detect/synthetic-monitoring/overview.md
+
+# Source: https://checklyhq.com/docs/detect/synthetic-monitoring/multistep-checks/overview.md
+
+# Source: https://checklyhq.com/docs/detect/synthetic-monitoring/browser-checks/overview.md
+
+# Source: https://checklyhq.com/docs/detect/synthetic-monitoring/api-checks/overview.md
+
+# Source: https://checklyhq.com/docs/detect/overview.md
+
+# Source: https://checklyhq.com/docs/constructs/overview.md
+
+# Source: https://checklyhq.com/docs/communicate/status-pages/overview.md
+
+# Source: https://checklyhq.com/docs/communicate/overview.md
+
+# Source: https://checklyhq.com/docs/communicate/maintenance-windows/overview.md
+
+# Source: https://checklyhq.com/docs/communicate/dashboards/overview.md
+
+# Source: https://checklyhq.com/docs/communicate/alerts/overview.md
+
+# Source: https://checklyhq.com/docs/cli/overview.md
+
+# Source: https://checklyhq.com/docs/api-reference/overview.md
+
+# Source: https://checklyhq.com/docs/ai/overview.md
+
+# Source: https://checklyhq.com/docs/admin/team-management/overview.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://checklyhq.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Admin Overview
+
+> Comprehensive guide to managing your Checkly account, team members, security, and integrations
+
+This section covers all aspects of administering your Checkly account, from managing team members and permissions to setting up advanced security features and API access.
+
+## Team Member Roles
+
+When inviting a team member to join your account you can assign one of five roles: **Owner**, **Admin**, **Read & Write**, **Read & Run**, or **Read Only**. Each role inherits all permissions from the roles below it.
+
+Only the initial account creator has the Owner role. You can change assigned roles at any time after a teammate joins.
+
+| Capability                 | Owner | Admin | Read & Write | Read & Run | Read Only |
+| -------------------------- | :---: | :---: | :----------: | :--------: | :-------: |
+| View all resources         |   ✓   |   ✓   |       ✓      |      ✓     |     ✓     |
+| Trigger checks and tests   |   ✓   |   ✓   |       ✓      |      ✓     |     ✗     |
+| Create/edit/delete checks  |   ✓   |   ✓   |       ✓      |      ✗     |     ✗     |
+| Manage alert settings      |   ✓   |   ✓   |       ✓      |      ✗     |     ✗     |
+| Manage maintenance windows |   ✓   |   ✓   |       ✓      |      ✗     |     ✗     |
+| Access locked variables    |   ✓   |   ✓   |       ✓      |      ✗     |     ✗     |
+| Manage team members        |   ✓   |   ✓   |       ✗      |      ✗     |     ✗     |
+| Manage account settings    |   ✓   |   ✓   |       ✗      |      ✗     |     ✗     |
+| Manage Private Locations   |   ✓   |   ✓   |       ✗      |      ✗     |     ✗     |
+| Create service API keys    |   ✓   |   ✓   |       ✗      |      ✗     |     ✗     |
+| Transfer ownership         |   ✓   |   ✗   |       ✗      |      ✗     |     ✗     |
+
+### Choosing the Right Role
+
+| Role             | Best for                                                                          |
+| ---------------- | --------------------------------------------------------------------------------- |
+| **Owner**        | Account creator with full control over billing and ownership                      |
+| **Admin**        | Team leads who manage members, settings, and infrastructure                       |
+| **Read & Write** | Developers who create and maintain checks                                         |
+| **Read & Run**   | QA engineers or CI/CD pipelines that run tests but shouldn't modify configuration |
+| **Read Only**    | Stakeholders who need visibility into monitoring status                           |
+
+### Adding Team Members
+
+Learn how to invite new users to your account and manage their access levels.
+
+[Learn more about adding team members](/admin/team-management/adding-team-members)
+
+### Transferring Ownership
+
+**Owners** can transfer ownership to another team member from the [General](https://app.checklyhq.com/settings/account/general) section in account settings. Click "Transfer ownership" and follow the instructions. Your role will change to **Admin** after the transfer.
+
+## Account Management
+
+### Email and Password Changes
+
+Manage your login credentials and account information securely.
+
+[Learn about changing your email or password](/admin/changing-your-email-password)
+
+## Security
+
+### Multi-Factor Authentication
+
+Add an extra layer of security to your account with MFA using authenticator apps.
+
+[Set up multi-factor authentication](/admin/team-management/multi-factor-authentication)
+
+### Single Sign-On (SSO)
+
+For enterprise customers, Checkly supports SSO integration with your existing identity provider.
+
+[Learn about SSO options](/admin/team-management/single-sign-on)
+
+## API Access
+
+### Creating API Keys
+
+Generate API keys for programmatic access to your Checkly account through the REST API and CLI.
+
+[Learn about creating and managing API keys](/admin/creating-api-key)
+
+**API Key Types:**
+
+* **User API Keys** - Tied to individual users with inherited permissions
+* **Service API Keys** - Account-level keys for CI/CD and automation (Enterprise only)
+
+## Getting Help
+
+If you need assistance with any administrative tasks or have questions about account management, please contact [Checkly Support](mailto:support@checklyhq.com).
+
+
+Built with [Mintlify](https://mintlify.com).

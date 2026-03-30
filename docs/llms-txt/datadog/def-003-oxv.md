@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Slack malicious content detected in uploaded file
-Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1204-user-execution](https://attack.mitre.org/techniques/T1204) 
+Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1204-user-execution](https://attack.mitre.org/techniques/T1204)
 ## Goal{% #goal %}
 
 Detect when a malicious file is shared or uploaded within Slack.

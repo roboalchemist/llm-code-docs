@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Account should have a configured activity log alert for 'Update Key Vault'
- 
+
 ## Description{% #description %}
 
 Create an activity log alert for the Update Key Vault event.

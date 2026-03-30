@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Permissions on /var/log/localmessages(.*) Files
- 
+
 ## Description{% #description %}
 
 To properly set the permissions of `/var/log/localmessages`, run the command:

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The API server should only bind to secure, known ports
-Classification:complianceFramework:cis-kubernetesControl:1.2.19 
+Classification:complianceFramework:cis-kubernetesControl:1.2.19
 ## Description{% #description %}
 
 Do not bind to insecure port.

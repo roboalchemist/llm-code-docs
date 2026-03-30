@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable GNOME3 Automount Ope
 ---
 
 # Disable GNOME3 Automount Opening
- 
+
 ## Description{% #description %}
 
 The system's default desktop environment, GNOME3, will mount devices and removable media (such as DVDs, CDs and USB flash drives) whenever they are inserted into the system. To disable automount-open within GNOME3, add or set `automount-open` to `false` in `/etc/dconf/db/local.d/00-security-settings`. For example:
@@ -90,7 +90,7 @@ if [ "${#SETTINGSFILES[@]}" -ne 0 ]
 then
     if grep -q "^\\s*automount-open\\s*=" "${SETTINGSFILES[@]}"
     then
-        
+
         sed -Ei "s/(^\s*)automount-open(\s*=)/#\1automount-open\2/g" "${SETTINGSFILES[@]}"
     fi
 fi

@@ -7,14 +7,14 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Set SSH MaxSessions limit
 ---
 
 # Set SSH MaxSessions limit
- 
+
 ## Description{% #description %}
 
 The `MaxSessions` parameter specifies the maximum number of open sessions permitted from a given connection. To set MaxSessions edit `/etc/ssh/sshd_config` as follows:
 
 ```
 MaxSessions 10
-        
+
 ```
 
 ## Rationale{% #rationale %}
@@ -43,7 +43,7 @@ chmod 0600 /etc/ssh/sshd_config.d/00-complianceascode-hardening.conf
 LC_ALL=C sed -i "/^\s*MaxSessions\s\+/Id" "/etc/ssh/sshd_config"
 LC_ALL=C sed -i "/^\s*MaxSessions\s\+/Id" "/etc/ssh/sshd_config.d"/*.conf
 if [ -e "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*MaxSessions\s\+/Id" "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf"
 else
     touch "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf"

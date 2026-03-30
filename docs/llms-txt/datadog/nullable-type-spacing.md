@@ -48,6 +48,5 @@ val foo: String? = null
 val foo: List<String?> = listOf(null)
 val foo: Map<String, String>? = listOf(null);
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

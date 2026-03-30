@@ -9,13 +9,13 @@ breadcrumbs: >-
 ---
 
 # Verify Permissions and Ownership of Old Passwords File
- 
+
 ## Description{% #description %}
 
 To properly set the owner of `/etc/security/opasswd`, run the command:
 
 ```
-$ sudo chown root /etc/security/opasswd 
+$ sudo chown root /etc/security/opasswd
 ```
 
 To properly set the group owner of `/etc/security/opasswd`, run the command:

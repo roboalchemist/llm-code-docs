@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable SSH Support for .rho
 ---
 
 # Disable SSH Support for .rhosts Files
- 
+
 ## Description{% #description %}
 
 SSH can emulate the behavior of the obsolete rsh command in allowing users to enable insecure access to their accounts via `.rhosts` files.
@@ -43,7 +43,7 @@ chmod 0600 /etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf
 LC_ALL=C sed -i "/^\s*IgnoreRhosts\s\+/Id" "/etc/ssh/sshd_config"
 LC_ALL=C sed -i "/^\s*IgnoreRhosts\s\+/Id" "/etc/ssh/sshd_config.d"/*.conf
 if [ -e "/etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*IgnoreRhosts\s\+/Id" "/etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf"
 else
     touch "/etc/ssh/sshd_config.d/01-complianceascode-reinforce-os-defaults.conf"

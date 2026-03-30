@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/datadog_cloudcraft/overlays/infrastructure.md
-
 # Source: https://docs.datadoghq.com/infrastructure.md
 
 ---

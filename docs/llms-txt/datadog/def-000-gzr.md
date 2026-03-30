@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall squid Package
 ---
 
 # Uninstall squid Package
- 
+
 ## Description{% #description %}
 
 The `squid` package can be removed with the following command:

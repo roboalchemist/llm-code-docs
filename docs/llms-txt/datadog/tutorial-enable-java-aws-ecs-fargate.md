@@ -128,7 +128,7 @@ To start, use a terraform script to deploy to Amazon ECS:
 1. Open up another terminal and send API requests to exercise the app. The notes application is a REST API that stores data in an in-memory H2 database running on the same container. Send it a few commands:
 
    {% dl %}
-   
+
    {% dt %}
 `curl -X GET 'BASE_DOMAIN:8080/notes'`
    {% /dt %}
@@ -268,7 +268,7 @@ And also the lines that set tags on errors:
             span.setTag(Tags.ERROR, true);
             span.setTag(DDTags.ERROR_MSG, e.getMessage());
             span.setTag(DDTags.ERROR_TYPE, e.getClass().getName());
-   
+
             final StringWriter errorString = new StringWriter();
             e.printStackTrace(new PrintWriter(errorString));
             span.setTag(DDTags.ERROR_STACK, errorString.toString());
@@ -290,7 +290,7 @@ For this tutorial, the `/terraform/Fargate/Instrumented/main.tf` file already ha
 
    ```yaml
    ...
-   
+
       name : "notes",
       image : "${module.settings.aws_ecr_repository}:notes",
       essential : true,
@@ -401,7 +401,7 @@ Redeploy the application and exercise the API:
 1. Wait a few minutes for the instances to start up. Wait a few minutes to ensure the containers for the applications are ready. Run some curl commands to exercise the instrumented app:
 
    {% dl %}
-   
+
    {% dt %}
 `curl -X GET 'BASE_DOMAIN:8080/notes'`
    {% /dt %}

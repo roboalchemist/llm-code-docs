@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # ECS clusters should have Container Insights enabled
- 
+
 ## Description{% #description %}
 
 This control verifies whether ECS clusters have Container Insights enabled.

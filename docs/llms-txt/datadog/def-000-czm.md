@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Looney Tunables (CVE-2023-4911) exploited for privilege escalation
-Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1068-exploitation-for-privilege-escalation](https://attack.mitre.org/techniques/T1068) 
+Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1068-exploitation-for-privilege-escalation](https://attack.mitre.org/techniques/T1068)
 ## What happened{% #what-happened %}
 
 The process `{{ @process.comm }}` executed in a fashion indicating exploitation of the privilege escalation vulnerability `CVE-2023-4911`.

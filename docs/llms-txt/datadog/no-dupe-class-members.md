@@ -104,6 +104,5 @@ class A { foo; static foo; }
 class A { foo; #foo; }
 class A { '#foo'; #foo; }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

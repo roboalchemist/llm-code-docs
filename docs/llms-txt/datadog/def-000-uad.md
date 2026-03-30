@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # API Gateway execution logging should be enabled for WebSocket APIs
- 
+
 ## Description{% #description %}
 
 This control evaluates whether execution logging is enabled for all stages of an Amazon API Gateway WebSocket API. The control will pass only if the following conditions are true.

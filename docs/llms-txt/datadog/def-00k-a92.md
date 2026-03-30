@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # API server should have the anonymous-auth argument set to false
- 
+
 ## Description{% #description %}
 
 Anonymous requests to the kubelet server should be disabled. When enabled, requests that are not rejected by other configured authentication methods are treated as anonymous requests. These requests are then served by the kubelet server.

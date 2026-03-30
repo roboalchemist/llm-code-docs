@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify /boot/efi/EFI/redhat/user.cfg Group Ownership
- 
+
 ## Description{% #description %}
 
 The file `/boot/efi/EFI/redhat/user.cfg` should be group-owned by the `root` group to prevent reading or modification of the file. To properly set the group owner of `/boot/efi/EFI/redhat/user.cfg`, run the command:

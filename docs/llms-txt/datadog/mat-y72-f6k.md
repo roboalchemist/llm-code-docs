@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Sensitive host system directories should not be mounted on containers
-Classification:complianceFramework:cis-dockerControl:5.5 
+Classification:complianceFramework:cis-dockerControl:5.5
 ## Description{% #description %}
 
 You should not allow sensitive host system directories such as those listed below to be mounted as container volumes, especially in read-write mode. `/` `/boot` `/dev` `/etc` `/lib` `/proc` `/sys` `/usr`

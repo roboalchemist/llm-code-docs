@@ -50,6 +50,5 @@ Array === something
 some_string.match?(/something/)
 something.is_a?(Array)
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

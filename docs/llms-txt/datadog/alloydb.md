@@ -185,7 +185,7 @@ To configure Database Monitoring metrics collection for an Agent running on a ho
        gcp:
         project_id: '<PROJECT_ID>'
         instance_id: '<INSTANCE_ID>'
-   
+
        ## Optional: Connect to a different database if needed for `custom_queries`
        # dbname: '<DB_NAME>'
    ```
@@ -268,17 +268,17 @@ Using the [Operator instructions in Kubernetes and Integrations](https://docs.da
          apiSecret:
            secretName: datadog-agent-secret
            keyName: api-key
-   
+
      features:
        clusterChecks:
          enabled: true
-   
+
      override:
        nodeAgent:
          image:
            name: agent
            tag: <AGENT_VERSION>
-   
+
        clusterAgent:
          extraConfd:
            configDataMap:
@@ -323,7 +323,7 @@ Using the [Helm instructions in Kubernetes and Integrations](https://docs.datado
            gcp:
              project_id: '<PROJECT_ID>'
              instance_id: '<INSTANCE_ID>'
-   
+
    clusterChecksRunner:
      enabled: true
    ```

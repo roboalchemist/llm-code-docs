@@ -1,19 +1,15 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/jsx-no-duplicate-props.md
 
----
-url: /docs/guide/usage/linter/rules/react/jsx-no-duplicate-props.md
----
-
-### What it does
+## What it does
 
 This rule prevents duplicate props in JSX elements.
 
-### Why is this bad?
+## Why is this bad?
 
 Having duplicate props in a JSX element is most likely a mistake.
 Creating JSX elements with duplicate props can cause unexpected behavior in your application.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -29,7 +25,7 @@ Examples of **correct** code for this rule:
 <App bar baz foo={3} />;
 ```
 
-### Differences from eslint-plugin-react
+## Differences from eslint-plugin-react
 
 This rule does not support the `ignoreCase` option. Props with different cases are
 considered distinct and will not be flagged as duplicates (e.g., `<App foo Foo />`

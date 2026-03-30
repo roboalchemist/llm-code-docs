@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Projects should only use non-default VPC networks
- 
+
 ## Description{% #description %}
 
 To prevent use of the `default` network, a project should not have a `default` network.

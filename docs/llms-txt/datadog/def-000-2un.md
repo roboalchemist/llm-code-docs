@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure No Daemons are Unconfined by SELinux
- 
+
 ## Description{% #description %}
 
 Daemons for which the SELinux policy does not contain rules will inherit the context of the parent process. Because daemons are launched during startup and descend from the `init` process, they inherit the `unconfined_service_t` context.

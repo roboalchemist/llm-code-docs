@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Scheduled task created
 ---
 
 # Scheduled task created
-Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1053-scheduled-task-or-job](https://attack.mitre.org/techniques/T1053) 
+Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1053-scheduled-task-or-job](https://attack.mitre.org/techniques/T1053)
 ## What happened{% #what-happened %}
 
 A scheduled task was created, potentially to establish persistence.

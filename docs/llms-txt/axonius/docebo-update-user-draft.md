@@ -1,0 +1,95 @@
+# Source: https://docs.axonius.com/docs/docebo-update-user-draft.md
+
+# Docebo - Update User
+
+**Docebo - Update User** updates an existing user account with the provided information in Docebo for:
+
+* Assets returned by the selected query or assets selected on the relevant asset page.
+
+See [Creating Enforcement Sets](/docs/create-ec-set) to learn more about adding Enforcement Actions to Enforcement Sets.
+
+<Callout icon="📘" theme="info">
+  Note
+
+  * Not all asset types are supported for all Enforcement Actions.
+  * See Actions supported for [Activity Logs, Adapters Fetch History, and Asset Investigation modules](/docs/creating-queries-filters#using-activity-log-adapter-fetch-history-asset-investigation-and-findings-queries-in-enforcement-actions).
+  * See Actions supported for [Aggregated Security Findings](https://docs.axonius.com/docs/vulnerabilities#using-aggregated-security-findings-queries-in-enforcement-actions).
+  * See Actions supported for [Software](software#using-software-queries-in-enforcement-actions).
+</Callout>
+
+<br />
+
+## Required Fields
+
+These fields must be configured to run the Enforcement Action.
+
+* **Action name** - The name of this Enforcement Action. The system sets a default name. You can change the name.
+
+* **Configure Dynamic Values** *(optional)* - Toggle on to enter a Dynamic Value statement. See [Creating Enforcement Action Dynamic Value Statements](https://docs.axonius.com/docs/config-ec-conditions) to learn more about Dynamic Value statement syntax.
+
+* **Use stored credentials from the Docebo adapter** - Select this option to use credentials from the adapter connection. By default, the first connection is selected.
+  * When you select this option, the **Select Adapter Connection** drop-down becomes available. Select the adapter connection to use for this Enforcement Action.
+
+    <Callout icon="📘" theme="info">
+      Note
+
+      To use this option, you must successfully configure a [Docebo](https://docs.axonius.com/update/docs/docebo) adapter connection.
+    </Callout>
+
+* **Username** - Unique identifier for the user to update.
+
+* **Compute Node**  - The Axonius node to use when connecting to the specified host. For more details, see [Working with Axonius Compute Nodes](https://docs.axonius.com/docs/connecting-additional-axonius-nodes).
+
+## Additional Fields
+
+These fields are optional.
+
+* **Mail** - Email address for the user.
+* **Password** - New password for the user account.
+* **Force Password Change** - Select whether to force the user to change their password on next login (default: false).
+* **First Name** - User's first name.
+* **Last Name** - User's last name.
+* **Account Expiration Date** - Account expiration date in YYYY-MM-DD format.
+* **Group ID** - ID of the group to assign the user to.
+* **Branch ID** - ID of the organizational branch to assign the user to.
+* **User Level** - User permission level. Options:
+  * SuperAdmin (3)
+  * PowerUser (4)
+  * User (6)
+* **Role ID** - ID of the role to assign to the user.
+* **Manager Username** - Username of the user's manager (will be converted to manager ID).
+* **Employees** - Usernames of employees reporting to this user. You may enter multiple usernames separated by commas (,).
+
+<Callout icon="⚠️" theme="warn">
+  ## Connection and Credentials
+
+  When **Use stored credentials from the adapter** is toggled off, some of the connection fields below are required to create the connection, while other fields are optional.
+
+  * **Host Name or IP Address** - The base domain for the Docebo API. Should contain a prefix of http\:// or https\://. Do not add any specific endpoints after the domain. Example: [https://yourcompany.docebo.com/](https://yourcompany.docebo.com/)
+  * **OAuth2 Client ID** - OAuth2 Client ID for OAuth2 Client Credentials authentication.
+  * **OAuth2 Client Secret** - OAuth2 Client Secret for OAuth2 Client Credentials authentication.
+  * **Verify SSL** *(optional)* - Select whether to verify the SSL certificate of the server against the CA database inside of Axonius. For more details, see [SSL Trust & CA Settings](https://docs.axonius.com/docs/certificate-settings#ssl-trust-ca-settings).
+  * **HTTPS Proxy** *(optional)* - Connect the adapter to a proxy instead of directly connecting it to the domain.
+  * **HTTPS Proxy User Name** *(optional)* - The user name to use when connecting to the server using the  **HTTPS Proxy**.
+  * **HTTPS Proxy Password** *(optional)* - The password to use when connecting to the server using the **HTTPS Proxy**.
+  * **Gateway Name** -  Select the Gateway through which to connect to perform the action.
+</Callout>
+
+## APIs
+
+Axonius uses the [Docebo Manage API](https://api-docs.docebo.com/) - PUT `/manage/v1/user/{id}`
+
+## Required Ports
+
+Axonius must be able to communicate via the following ports:
+
+* TCP port 80/443
+
+## Required Permissions
+
+The following permissions and requirements are needed:
+
+* A dedicated Docebo API client must be created via the API and SSO app in the Docebo platform
+* OAuth 2.0 authentication using Client Credentials grant
+* A Docebo tenant with the API and SSO app activated
+* For full visibility: Superadmin account OR Power User assigned a profile with read access to users, courses, and enrollments

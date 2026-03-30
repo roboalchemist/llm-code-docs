@@ -1,7 +1,9 @@
 # Source: https://exa.ai/docs/reference/team-management/update-api-key.md
 
 > ## Documentation Index
+
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+
 > Use this file to discover all available pages before exploring further.
 
 # Update API Key

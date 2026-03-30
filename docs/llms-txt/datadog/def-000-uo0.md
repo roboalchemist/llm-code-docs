@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Endpoint accepts JWTs withou
 ---
 
 # Endpoint accepts JWTs without audience
- 
+
 ## Description{% #description %}
 
 This publicly exposed API endpoint accepts JWTs that do not include an audience (`aud`) claim. The audience claim identifies the intended recipients of the JWT and is a crucial security mechanism to prevent token misuse.

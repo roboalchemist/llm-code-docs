@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Account should have a configured activity log alert for PostgreSQL database updates
- 
+
 ## Description{% #description %}
 
 Create an activity log alert for the Create or Update PostgreSQL Database event.

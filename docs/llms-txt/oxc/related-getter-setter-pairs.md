@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/related-getter-setter-pairs.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/related-getter-setter-pairs.md
----
-
-### What it does
+## What it does
 
 This rule enforces that getters and setters for the same property are defined together and have related types.
 
-### Why is this bad?
+## Why is this bad?
 
 When you define a getter and setter for the same property, they should typically be defined together and work with compatible types. Having mismatched types or defining them separately can lead to confusion and potential runtime errors.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

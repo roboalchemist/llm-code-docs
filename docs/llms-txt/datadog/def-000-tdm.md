@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Route returns non-sensitive PII without setting Cache-Control HTTP header
- 
+
 ## Description{% #description %}
 
 This publicly exposed API endpoint returns non-sensitive personally identifiable information (PII) without implementing the Cache-Control header. This header instructs browsers how to cache HTTP responses. Without this header, sensitive API responses might be cached inappropriately, potentially exposing confidential information to unintended users through shared browsers.

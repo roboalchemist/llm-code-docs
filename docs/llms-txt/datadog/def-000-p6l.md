@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure Storage should have soft delete enabled
- 
+
 ## Description{% #description %}
 
 Azure Storage blobs may contain sensitive data such as ePHI, financial information, secrets, or personal data. Accidental modifications or deletions by applications or users can result in data loss or unavailability. To mitigate this risk, it is recommended to enable soft delete configuration in Azure Storage. This allows for the saving and recovery of data when blobs or blob snapshots are deleted. By enabling recoverable blobs configuration, even if data is deleted from the storage account, it remains recoverable within the specified retention policy timeframe, which can range from 7 to 365 days.

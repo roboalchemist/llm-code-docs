@@ -44,7 +44,7 @@ If a method returns a boolean, do not use a name that starts with `get`. Instead
 ```csharp
 class MyClass {
     bool getAttribute(){
-        
+
     }
 }
 ```
@@ -54,10 +54,9 @@ class MyClass {
 ```csharp
 class MyClass {
     bool hasAttribute(){
-        
+
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

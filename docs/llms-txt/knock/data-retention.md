@@ -1,0 +1,57 @@
+# Source: https://docs.knock.app/api-reference/overview/data-retention.md
+
+# Source: https://docs.knock.app/manage-your-account/data-retention.md
+
+---
+title: Data retention
+description: How Knock enforces data retention policies on your account.
+tags: ["data", "retention"]
+section: Manage your account
+---
+
+Knock applies a retention policy to some of the data within your account. Once data exceeds its retention period, it will no longer be accessible in the Knock Dashboard, the Management API, or the public API. Knock will eventually prune data that has aged out of its retention period.
+
+## Data retention policies
+
+<Callout
+  type="warning"
+  title="Custom retention policies are not currently supported."
+  text={
+    <>
+      If custom retention windows are critical to your usage of Knock, please
+      click the "Contact support" button at the top of this page to reach our
+      support team.
+    </>
+  }
+/>
+
+Some Knock data is subject to a retention policy based on your account plan. These policies are:
+
+- **Enterprise plans**: 90 days
+- **All other plans**: 30 days
+
+Knock applies this plan-based retention policy to the following data:
+
+- [Audit logs](/manage-your-account/audit-logs)
+- [Message log data](/concepts/messages)
+- [Outbound webhook delivery logs](/developer-tools/outbound-webhooks/overview#reading-webhook-delivery-logs)
+- [Source event and action logs](/integrations/sources/overview#logging)
+- [Workflow run logs](/send-notifications/debugging-workflows#accessing-the-workflow-debugger)
+
+Additionally, Knock applies a universal, 30-day retention policy to the following data:
+
+- [API logs](/developer-tools/api-logs)
+
+## Message log data retention details
+
+Message log data subject to your account's retention policy includes both the message log itself and associated metadata, including:
+
+- Message contents
+- Message events
+- Delivery logs
+- Activities
+
+However, this does not mean that the associated notification has been completely removed from Knock's systems. Your recipients can still interact with these older notifications, and you can still take some specific actions on them.
+
+1. **In-app feed notifications are available indefinitely.** Even after your message log data has expired, you can still fetch the associated `FeedItem` data from the [Show feed endpoint](/api-reference/users/feeds/list_items) to deliver in-app notifications to your recipients. You can also still use the [message status update endpoints](/api-reference/messages/) to update the status of these feed items. These status updates will still generate new message events and trigger your [outbound webhooks](/developer-tools/outbound-webhooks/overview), even though you will not be able to view the message in the Knock Dashboard any longer.
+2. **Tracking behavior will persist.** Your recipients can still click [tracked-links](/send-notifications/tracking#link-click-tracking).

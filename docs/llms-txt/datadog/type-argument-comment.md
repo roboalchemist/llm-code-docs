@@ -47,14 +47,13 @@ fun Foo<
 
 ```kotlin
 fun Foo<
-    /* some comment */ 
+    /* some comment */
     out Any
     >.foo() {}
 fun Foo<
-    // some comment 
+    // some comment
     out Any
     >.foo() {}
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

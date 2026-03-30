@@ -64,6 +64,5 @@ var test = function test(a, b, c) {};
 // object property options
 var test = function(a, b, c) {};
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

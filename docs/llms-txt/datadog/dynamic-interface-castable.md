@@ -77,7 +77,7 @@ public interface IMyInterface
 
 public class MyClass : IMyInterface
 {
-    
+
     public void DoWork()
     {
         Console.WriteLine("Work done!");
@@ -104,6 +104,5 @@ public class MyClass : IMyInterface
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

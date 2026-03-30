@@ -1,17 +1,3 @@
-# Source: https://docs.datadoghq.com/getting_started/agent.md
-
-# Source: https://docs.datadoghq.com/events/guides/agent.md
-
-# Source: https://docs.datadoghq.com/security/workload_protection/setup/agent.md
-
-# Source: https://docs.datadoghq.com/security/workload_protection/agent.md
-
-# Source: https://docs.datadoghq.com/security/threats/agent.md
-
-# Source: https://docs.datadoghq.com/security/cloud_security_management/setup/agent.md
-
-# Source: https://docs.datadoghq.com/cloudprem/ingest/agent.md
-
 # Source: https://docs.datadoghq.com/agent.md
 
 ---
@@ -30,7 +16,7 @@ Agent v7 is available. [Upgrade to the newest version](https://docs.datadoghq.co
 
 The Datadog Agent is software that runs on your hosts. It collects events and metrics from hosts and sends them to Datadog, where you can analyze your monitoring and performance data. The Datadog Agent is open source and its source code is available on GitHub at [DataDog/datadog-agent](https://github.com/DataDog/datadog-agent).
 Choose A Platform[platform](https://docs.datadoghq.com/agent/basic_agent_usage/amazonlinux/)[platform](https://docs.datadoghq.com/agent/basic_agent_usage/aix/)[platform](https://docs.datadoghq.com/agent/basic_agent_usage/windows/)[platform](https://docs.datadoghq.com/agent/basic_agent_usage/osx/)[platform](https://docs.datadoghq.com/agent/docker/)[platform](https://docs.datadoghq.com/agent/kubernetes/)[platform](https://docs.datadoghq.com/serverless/google_cloud_run/containers/sidecar/)[platform](https://docs.datadoghq.com/containers/amazon_ecs/)[platform](https://docs.datadoghq.com/agent/basic_agent_usage/heroku/)[platform](https://docs.datadoghq.com/serverless/aws_lambda/instrumentation/)[platform](https://docs.datadoghq.com/integrations/guide/cloud-foundry-setup/)[platform](https://docs.datadoghq.com/agent/basic_agent_usage/ansible/)[platform](https://docs.datadoghq.com/agent/basic_agent_usage/chef/)[platform](https://docs.datadoghq.com/agent/basic_agent_usage/puppet/)[platform](https://docs.datadoghq.com/agent/basic_agent_usage/saltstack/)[platform](https://docs.datadoghq.com/agent/basic_agent_usage/sccm/)
-### To get started using the Agent, select your platform.
+### To get started using the Agent, select your platform
 
 {% tab title=" Host-based" %}
 [integration](https://docs.datadoghq.com/agent/basic_agent_usage/amazonlinux/)[integration](https://docs.datadoghq.com/agent/basic_agent_usage/aix/)[integration](https://docs.datadoghq.com/agent/basic_agent_usage/windows/)[integration](https://docs.datadoghq.com/agent/basic_agent_usage/osx/)
@@ -117,7 +103,8 @@ See the [Agent configuration files documentation](https://docs.datadoghq.com/age
 Edit the [Agent's main configuration file](https://docs.datadoghq.com/agent/configuration/agent-configuration-files/#agent-main-configuration-file), `datadog.yaml`, to set the `site` parameter (defaults to `datadoghq.com`).
 
 ```yaml
-site: 
+site:
+
 ```
 
 **Note**: See the [Getting Started with Datadog Sites documentation](https://docs.datadoghq.com/getting_started/site/) for further details on the `site` parameter.

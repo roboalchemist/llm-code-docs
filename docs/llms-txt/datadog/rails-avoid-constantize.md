@@ -51,6 +51,5 @@ In general, it's best to avoid methods that can execute code based on user input
 "Module".constantize
 "Class".safe_constantize
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

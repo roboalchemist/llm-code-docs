@@ -1,0 +1,90 @@
+# Source: https://docs.aurelio.ai/semantic-router/client-reference/llms/openai.md
+
+# Source: https://docs.aurelio.ai/semantic-router/client-reference/encoders/openai.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.aurelio.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# semantic_router.encoders.openai
+
+## OpenAIEncoder Objects
+
+```python  theme={null}
+class OpenAIEncoder(DenseEncoder)
+```
+
+OpenAI encoder class for generating embeddings using OpenAI API.
+
+The OpenAIEncoder class is a subclass of DenseEncoder and utilizes the OpenAI API
+to generate embeddings for given documents. It requires an OpenAI API key and
+supports customization of the score threshold for filtering or processing the embeddings.
+
+#### token\_limit
+
+default value, should be replaced by config
+
+#### \_\_init\_\_
+
+```python  theme={null}
+def __init__(name: Optional[str] = None,
+             openai_base_url: Optional[str] = None,
+             openai_api_key: Optional[str] = None,
+             openai_org_id: Optional[str] = None,
+             score_threshold: Optional[float] = None,
+             dimensions: Union[int, NotGiven] = NotGiven(),
+             max_retries: int = 3)
+```
+
+Initialize the OpenAIEncoder.
+
+**Arguments**:
+
+* `name` (`str`): The name of the embedding model to use.
+* `openai_base_url` (`str`): The base URL for the OpenAI API.
+* `openai_api_key` (`str`): The OpenAI API key.
+* `openai_org_id` (`str`): The OpenAI organization ID.
+* `score_threshold` (`float`): The score threshold for the embeddings.
+* `str`0 (`str`1): The dimensions of the embeddings.
+* `str`2 (`str`1): The maximum number of retries for the OpenAI API call.
+
+#### \_\_call\_\_
+
+```python  theme={null}
+def __call__(docs: List[str], truncate: bool = True) -> List[List[float]]
+```
+
+Encode a list of text documents into embeddings using OpenAI API.
+
+**Arguments**:
+
+* `docs`: List of text documents to encode.
+* `truncate`: Whether to truncate the documents to token limit. If
+  False and a document exceeds the token limit, an error will be
+  raised.
+
+**Returns**:
+
+List of embeddings for each document.
+
+#### acall
+
+```python  theme={null}
+async def acall(docs: List[str], truncate: bool = True) -> List[List[float]]
+```
+
+Encode a list of text documents into embeddings using OpenAI API asynchronously.
+
+**Arguments**:
+
+* `docs`: List of text documents to encode.
+* `truncate`: Whether to truncate the documents to token limit. If
+  False and a document exceeds the token limit, an error will be
+  raised.
+
+**Returns**:
+
+List of embeddings for each document.
+
+
+Built with [Mintlify](https://mintlify.com).

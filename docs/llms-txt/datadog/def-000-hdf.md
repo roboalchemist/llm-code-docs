@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure nftables Rules are Pe
 ---
 
 # Ensure nftables Rules are Permanent
- 
+
 ## Description{% #description %}
 
 nftables is a subsystem of the Linux kernel providing filtering and classification of network packets/datagrams/frames. The nftables service reads the /etc/nftables.conf file for a nftables file or files to include in the nftables ruleset. A nftables ruleset containing the input, forward, and output base chains allow network traffic to be filtered.

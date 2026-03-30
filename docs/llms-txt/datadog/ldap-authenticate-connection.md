@@ -56,6 +56,5 @@ $password = "password";
 $ldap = ldap_connect("ldap.example.com");
 $ldapbind = ldap_bind($ldap, $username, $password); // Secure: authentication provided
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

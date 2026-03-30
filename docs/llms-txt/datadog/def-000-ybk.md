@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure SELinux Not Disabled in /etc/default/grub
- 
+
 ## Description{% #description %}
 
 SELinux can be disabled at boot time by an argument in `/etc/default/grub`. Remove any instances of `selinux=0` from the kernel arguments in that file to prevent SELinux from being disabled at boot.

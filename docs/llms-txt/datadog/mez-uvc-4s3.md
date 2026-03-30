@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The API server should explicitly set a service account public key file
-Classification:complianceFramework:cis-kubernetesControl:1.2.28 
+Classification:complianceFramework:cis-kubernetesControl:1.2.28
 ## Description{% #description %}
 
 Explicitly set a service account public key file for service accounts on the apiserver.

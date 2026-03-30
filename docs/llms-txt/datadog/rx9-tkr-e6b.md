@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Default VPC security group should restrict all traffic
- 
+
 ## Description{% #description %}
 
 A VPC comes with a default security group that by default denies all inbound traffic, allows all outbound traffic, and permits all traffic among instances within the group. By setting up your default security group to restrict all traffic, you encourage the development of least privilege security groups and ensure mindful placement of AWS resources. This practice reduces the exposure of your resources. As each new VPC is created, including the default VPC in every region, updating the default security group is necessary to comply with security best practices.

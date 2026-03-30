@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure User Bash History File Has Correct Permissions
- 
+
 ## Description{% #description %}
 
 Set the mode of the bash history file to `0600` with the following command:
@@ -40,7 +40,7 @@ USERS_IGNORED_REGEX='nobody|nfsnobody'
 for (( i=0; i<"${#interactive_users[@]}"; i++ )); do
     if ! grep -qP "$USERS_IGNORED_REGEX" <<< "${interactive_users[$i]}" && \
         [ "${interactive_users_shell[$i]}" != "/sbin/nologin" ]; then
-        
+
         chmod u-sx,go= "${interactive_users_home[$i]}/.bash_history"
     fi
 done

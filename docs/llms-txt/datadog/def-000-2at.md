@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Authentication using Client Certificates should be disabled
- 
+
 ## Description{% #description %}
 
 Client certificates should be disabled, which require certificate rotation, for authentication. [Kubernetes does not have a way to revoke certificates at present and you should use another authentication method like OAuth](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster#restrict_authn_methods).

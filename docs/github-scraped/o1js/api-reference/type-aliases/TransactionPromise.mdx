@@ -1,0 +1,41 @@
+```ts
+type TransactionPromise<Proven, Signed> = Promise<Transaction<Proven, Signed>> & {
+  send: PendingTransactionPromise;
+} & Proven extends false ? {
+  prove: TransactionPromise<true, Signed>;
+} : {
+  proofs: Promise<Transaction<true, Signed>["proofs"]>;
+} & Signed extends false ? {
+  sign: TransactionPromise<Proven, true>;
+} : {
+};
+```
+
+Defined in: [lib/mina/v1/transaction.ts:348](https://github.com/o1-labs/o1js/blob/49a0181f061effef26c9fbef2b0fa7e34d093e22/src/lib/mina/v1/transaction.ts#L348)
+
+A `Promise<Transaction>` with some additional methods for making chained method calls
+into the pending value upon its resolution.
+
+## Type declaration
+
+### send()
+
+```ts
+send(): PendingTransactionPromise;
+```
+
+Equivalent to calling the resolved `Transaction`'s `send` method.
+
+#### Returns
+
+[`PendingTransactionPromise`](PendingTransactionPromise.mdx)
+
+## Type Parameters
+
+### Proven
+
+`Proven` *extends* `boolean`
+
+### Signed
+
+`Signed` *extends* `boolean`

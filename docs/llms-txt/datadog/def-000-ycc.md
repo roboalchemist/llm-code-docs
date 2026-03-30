@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Unauthenticated route with SQL injection vulnerability
- 
+
 ## Description{% #description %}
 
 Unauthenticated users have access to an API that's performing [SQL queries using user controlled parameters](https://app.datadoghq.com/security/appsec/vm/code?query=status%3A%28Open%20OR%20%22In%20progress%22%29%20type%3A%22SQL%20Injection%22&column=score&detection=runtime&order=desc).

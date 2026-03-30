@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure group has administrative privileges over resources
- 
+
 ## Description{% #description %}
 
 This rule identifies when a group has administrative level permissions at the root (most permissive) scope.

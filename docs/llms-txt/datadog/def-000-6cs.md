@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure App Service should have authentication enabled
- 
+
 ## Description{% #description %}
 
 Azure App Service Authentication is a powerful feature that prevents anonymous HTTP requests from reaching your app and allows authentication before reaching app APIs. It offers customizable options for identity providers or custom authentication mechanisms. Enabling this feature ensures that all incoming HTTP requests go through the authentication process, handling user authentication, token validation, storage, and session management. Note that it should only be enabled for app services that require authentication, as it increases costs and requires additional security components.

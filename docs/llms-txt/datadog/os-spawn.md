@@ -71,6 +71,5 @@ import shlex
 # Use of shlex() to sanitize data
 os.spawnl(os.P_WAIT, shlex.escape("/bin/ls"))
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

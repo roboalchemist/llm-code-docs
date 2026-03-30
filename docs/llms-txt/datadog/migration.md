@@ -121,10 +121,10 @@ import (
 
 func main() {
     tracer.Start()
-	  defer tracer.Stop()
+      defer tracer.Stop()
 
-	  s := tracer.StartSpan("op")
-	  var ctx ddtrace.SpanContext = s.Context()
+      s := tracer.StartSpan("op")
+      var ctx ddtrace.SpanContext = s.Context()
 }
 ```
 
@@ -135,10 +135,10 @@ import "github.com/DataDog/dd-trace-go/v2/ddtrace/tracer"
 
 func main() {
     tracer.Start()
-	  defer tracer.Stop()
+      defer tracer.Stop()
 
-	  s := tracer.StartSpan("op")
-	  var ctx *tracer.SpanContext = s.Context()
+      s := tracer.StartSpan("op")
+      var ctx *tracer.SpanContext = s.Context()
 }
 ```
 
@@ -189,10 +189,10 @@ import "gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
 
 func main() {
   tracer.Start()
-	defer tracer.Stop()
+    defer tracer.Stop()
 
-	parent := tracer.StartSpan("op").Context()
-	child := tracer.StartSpan("op", tracer.ChildOf(parent))
+    parent := tracer.StartSpan("op").Context()
+    child := tracer.StartSpan("op", tracer.ChildOf(parent))
 }
 ```
 
@@ -203,10 +203,10 @@ import "github.com/DataDog/dd-trace-go/v2/ddtrace/tracer"
 
 func main() {
   tracer.Start()
-	defer tracer.Stop()
+    defer tracer.Stop()
 
-	parent := tracer.StartSpan("op")
-	child := parent.StartChild("op")
+    parent := tracer.StartSpan("op")
+    child := parent.StartChild("op")
 }
 ```
 
@@ -282,13 +282,13 @@ v1:
 ```go
 var err error
 span := tracer.StartSpan(
-	"operation",
-	ChildOf(parent.Context()),
-	Measured(),
-	ResourceName("resource"),
-	ServiceName(service),
-	SpanType(ext.SpanTypeWeb),
-	Tag("key", "value"),
+    "operation",
+    ChildOf(parent.Context()),
+    Measured(),
+    ResourceName("resource"),
+    ServiceName(service),
+    SpanType(ext.SpanTypeWeb),
+    Tag("key", "value"),
 )
 defer span.Finish(tracer.NoDebugStack())
 ```
@@ -297,14 +297,14 @@ v2:
 
 ```go
 cfg := tracer.NewStartSpanConfig(
-	tracer.Measured(),
-	tracer.ResourceName("resource"),
-	tracer.ServiceName(service),
-	tracer.SpanType(ext.SpanTypeWeb),
-	tracer.Tag("key", "value"),
+    tracer.Measured(),
+    tracer.ResourceName("resource"),
+    tracer.ServiceName(service),
+    tracer.SpanType(ext.SpanTypeWeb),
+    tracer.Tag("key", "value"),
 )
 finishCfg := tracer.NewFinishConfig(
-	NoDebugStack(),
+    NoDebugStack(),
 )
 // [...]
 // Reuse the configuration in your hot path:

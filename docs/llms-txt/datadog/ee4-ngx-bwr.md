@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Access keys granting 'root' should be removed
- 
+
 ## Description{% #description %}
 
 The root account is the most privileged user in an AWS account, and AWS Access Keys provide programmatic access to this account. Datadog recommends that you remove all access keys associated with the root account to enhance security. Removing these keys limits the vectors by which the account can be compromised and encourages the creation and use of role-based accounts that adhere to the principle of least privilege. Note that the root IAM User account for GovCloud (US) regions is not enabled by default. However, upon request, AWS support has the ability to enable root access solely via access keys (CLI, API methods) for regions within the AWS GovCloud.

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Uninstall dovecot Package
 ---
 
 # Uninstall dovecot Package
- 
+
 ## Description{% #description %}
 
 The `dovecot-core` package can be removed with the following command:

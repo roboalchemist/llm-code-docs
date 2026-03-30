@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # RDS instances should be configured to use a custom administrator name
- 
+
 ## Description{% #description %}
 
 This check determines if the admin username for an Amazon RDS database instance has been altered from its default setting. It's essential to assign a distinct admin username when setting up an Amazon RDS database as default usernames are widely known, this minimizes the risk of unauthorized access.

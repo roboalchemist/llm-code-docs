@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # GCP User managed Service Account has overly permissive access to resources in the project
- 
+
 ## Description{% #description %}
 
 Editor or Owner roles are highly permissive roles that existed prior to the introduction of IAM.

@@ -1,23 +1,19 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/consistent-existence-index-check.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/consistent-existence-index-check.md
----
-
-### What it does
+## What it does
 
 Enforce consistent style for element existence checks with `indexOf()`,
 `lastIndexOf()`, `findIndex()`, and `findLastIndex()`. This ensures
 that comparisons are performed in a standard and clear way.
 
-### Why is this bad?
+## Why is this bad?
 
 This rule is meant to enforce a specific style and improve code clarity.
 Using inconsistent comparison styles (e.g., `index < 0`, `index >= 0`)
 can make the intention behind the code unclear, especially in large
 codebases.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

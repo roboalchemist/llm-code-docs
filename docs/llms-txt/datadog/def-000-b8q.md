@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # AWS Management Console sign-ins without MFA should be monitored
- 
+
 ## Description{% #description %}
 
 Real-time monitoring of API calls can be achieved by directing CloudTrail logs to CloudWatch logs and establishing corresponding metric filters and alarms. It is recommended to set up a metric filter and alarm for console logins not protected by multi-factor authentication (MFA) to increase visibility into potentially at-risk accounts.

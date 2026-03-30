@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Password policy should prevent password reuse
- 
+
 ## Description{% #description %}
 
 IAM password policies can prevent the reuse of a given password by the same user. Datadog recommends that the password policy prevents the reuse of passwords to enhance security.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # EC2 instance created using risky AMI search pattern
-Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1195-supply-chain-compromise](https://attack.mitre.org/techniques/T1195) 
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1195-supply-chain-compromise](https://attack.mitre.org/techniques/T1195)
 ## Goal{% #goal %}
 
 Detect when an EC2 instance is instantiated using a vulnerable AMI search pattern.

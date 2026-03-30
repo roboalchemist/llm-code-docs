@@ -1,0 +1,52 @@
+# Source: https://checklyhq.com/docs/ai/skills.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://checklyhq.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Checkly Skills
+
+> Install Checkly skills to give your AI agent on-demand monitoring context and capabilities.
+
+Skills are reusable and modular capabilities for AI agents. They provide procedural knowledge that helps agents accomplish Checkly tasks more effectively. Think of Checkly Skills as plugins or extensions that enhance what your AI agent can do with your monitoring infrastructure.
+
+[Agent Skills](https://agentskills.io) are an open standard supported by many AI agents and coding assistants including Claude Code, Cursor, OpenAI Codex, Gemini CLI, GitHub Copilot, and others. If your agent supports skills, you can use the Checkly Skills to manage your monitoring setup.
+
+Use [the Checkly CLI `skills` command](/cli/checkly-skills#checkly-skills-install) to install [Checkly skills](https://github.com/checkly/checkly-cli/tree/main/skills/checkly) globally or in your project:
+
+```bash  theme={null}
+npx checkly skills install
+
+# or if you prefer the `skills` CLI
+npx skills add checkly/checkly-cli
+```
+
+This will make the Checkly Skills available to your AI agent. When your agent needs to perform a Checkly-related task, it can automatically pull in the relevant context and use the provided instructions and resources to execute the task effectively.
+
+```txt Claude Code Example highlight={3-4, 8-9} theme={null}
+❯ Can you create a new URLMonitor with Checkly for example.com?
+
+⏺ Skill(checkly)
+  ⎿ Successfully loaded skill · 3 tools allowed
+
+⏺ Let me read more references and check the existing project structure
+
+⏺ Bash(npx checkly skills configure)
+⏺ Bash(npx checkly skills configure url-monitors)
+
+⏺ Searched for 1 pattern, executed 2 commands
+
+⏺ I'll create a new URLMonitor for example.com!
+```
+
+Using [Monitoring as Code](/concepts/monitoring-as-code), you can now control your monitoring setup with AI agents without needing a specific MCP server or API for your monitoring. Tell your agent what you want to do and it will access the necessary context and use the CLI to manage your monitoring setup effectively.
+
+## Additional resources
+
+* [`checkly skills` CLI Reference](/cli/checkly-skills)
+* [Checkly CLI Documentation](/cli/overview/)
+* [Checkly Constructs Reference](/constructs/overview/)
+* [Agent Skills Specification](https://agentskills.io/specification.md)
+
+
+Built with [Mintlify](https://mintlify.com).

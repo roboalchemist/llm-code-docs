@@ -101,10 +101,10 @@ To customize SDK versions:
 1. After you turn on **APM Instrumentation**, set your desired library versions with the `DD_APM_INSTRUMENTATION_LIBRARIES` variable in your Agent installation command:
 
    ```
-   DD_API_KEY=<YOUR_DD_API_KEY> 
-   DD_SITE="US1-FED" 
-   DD_APM_INSTRUMENTATION_ENABLED=host 
-   DD_APM_INSTRUMENTATION_LIBRARIES="java:1,python:2,js:5,dotnet:3,php:1" 
+   DD_API_KEY=<YOUR_DD_API_KEY>
+   DD_SITE="US1-FED"
+   DD_APM_INSTRUMENTATION_ENABLED=host
+   DD_APM_INSTRUMENTATION_LIBRARIES="java:1,python:2,js:5,dotnet:3,php:1"
    bash -c "$(curl -L https://install.datadoghq.com/scripts/install_script_agent7.sh)"
    ```
 

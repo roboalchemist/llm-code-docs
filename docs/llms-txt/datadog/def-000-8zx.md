@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # ECS services should not have public IP addresses assigned
- 
+
 ## Description{% #description %}
 
 A public IP address is an IP address that can be accessed from the internet. When you configure your Amazon ECS instances with a public IP address, they become accessible from the internet. It is not recommended to make Amazon ECS services publicly available to avoid unauthorized access to your container application servers.

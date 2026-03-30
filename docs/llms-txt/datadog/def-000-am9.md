@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # An EKS Cluster's Kubelet should be allowed to manage iptables
- 
+
 ## Description{% #description %}
 
 It is recommended that kubelets be allowed to manage changes to `iptables`. This ensures that the `iptables` configuration remains in sync with your pods networking configuration. Manually configuring `iptables` with dynamic pod network configuration changes might hamper the communication between pods/containers and to the outside world.

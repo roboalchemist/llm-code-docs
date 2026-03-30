@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # SQL Server instances should have the `user options` database flag disabled
- 
+
 ## Description{% #description %}
 
 It is recommended that the `user options` database flag for SQL Server instance not be configured.

@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure SELinux is Not Disabl
 ---
 
 # Ensure SELinux is Not Disabled
- 
+
 ## Description{% #description %}
 
 The SELinux state should be set to `enforcing` or `permissive` at system boot time. In the file `/etc/selinux/config`, add or correct the following line to configure the system to boot into enforcing or permissive mode:
@@ -39,7 +39,7 @@ The following script can be run on the host to remediate the issue.
 if [ ! -f /.dockerenv ] && [ ! -f /run/.containerenv ]; then
 
 if [ -e "/etc/selinux/config" ] ; then
-    
+
     LC_ALL=C sed -i "/^SELINUX=/Id" "/etc/selinux/config"
 else
     touch "/etc/selinux/config"

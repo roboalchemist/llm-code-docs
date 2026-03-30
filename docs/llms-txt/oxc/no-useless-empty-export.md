@@ -1,14 +1,10 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-useless-empty-export.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-useless-empty-export.md
----
-
-### What it does
+## What it does
 
 Disallow empty exports that don't change anything in a module file.
 
-### Why is this bad?
+## Why is this bad?
 
 An empty `export {}` statement is sometimes useful in TypeScript code to
 turn a file that would otherwise be a script file into a module file.
@@ -26,7 +22,7 @@ top-level import or export statements in a file.
 This rule reports an `export {}` that doesn't do anything in a file
 already using ES modules.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

@@ -46,7 +46,7 @@ resource "aws_rds_cluster" "secure_example" {
   engine               = "aurora"
   master_password      = "securepassword"
   master_username      = "admin"
-  
+
   // Security configuration
   storage_encrypted    = true  // Enables encryption at rest
 }
@@ -56,7 +56,7 @@ resource "aws_rds_cluster" "secure_example" {
 
 ```terraform
 resource "aws_db_cluster_snapshot" "negative" {
-  db_cluster_identifier          = aws_rds_cluster.example.id 
+  db_cluster_identifier          = aws_rds_cluster.example.id
   db_cluster_snapshot_identifier = "resourcetestsnapshot1234"
 }
 
@@ -75,7 +75,7 @@ resource "aws_rds_cluster" "example" {
 
 ```terraform
 resource "aws_db_cluster_snapshot" "positive2" {
-  db_cluster_identifier          = aws_rds_cluster.example3.id 
+  db_cluster_identifier          = aws_rds_cluster.example3.id
   db_cluster_snapshot_identifier = "resourcetestsnapshot1234"
 }
 
@@ -92,7 +92,7 @@ resource "aws_rds_cluster" "example3" {
 
 ```terraform
 resource "aws_db_cluster_snapshot" "positive1" {
-  db_cluster_identifier          = aws_rds_cluster.example2.id 
+  db_cluster_identifier          = aws_rds_cluster.example2.id
   db_cluster_snapshot_identifier = "resourcetestsnapshot1234"
 }
 

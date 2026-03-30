@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # API Gateways should be associated with a WAF Web ACL
- 
+
 ## Description{% #description %}
 
 This check verifies if an AWS WAF web ACL is linked to an API Gateway stage. Failure occurs if a web ACL is not attached to a REST API Gateway stage.

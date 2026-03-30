@@ -1,0 +1,23 @@
+# jbake-core 2.7.0 API
+
+Packages
+
+Package
+Description
+org.jbake.app
+ 
+org.jbake.app.configuration
+ 
+org.jbake.launcher
+ 
+org.jbake.model
+ 
+org.jbake.parser
+ 
+org.jbake.render
+ 
+org.jbake.template
+ 
+org.jbake.template.model
+ 
+org.jbake.util

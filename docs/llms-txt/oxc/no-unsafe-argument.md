@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-unsafe-argument.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-unsafe-argument.md
----
-
-### What it does
+## What it does
 
 This rule disallows calling a function with an argument which is typed as `any`.
 
-### Why is this bad?
+## Why is this bad?
 
 The `any` type in TypeScript is a dangerous "escape hatch" from the type system. Using `any` disables most type checking rules and is generally unsafe. When you pass a value typed as `any` to a function, you lose type safety for that function call.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

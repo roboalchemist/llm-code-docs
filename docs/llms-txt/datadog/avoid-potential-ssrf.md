@@ -46,12 +46,12 @@ using Microsoft.AspNetCore.Mvc;
 public class DocumentController : Controller
 {
     private readonly HttpClient _httpClient;
-    
+
     public DocumentController(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> FetchDocument(string documentUrl)
     {
@@ -68,17 +68,17 @@ public class DocumentController : Controller
 public class DocumentController : Controller
 {
     private readonly HttpClient _httpClient;
-    private readonly HashSet<string> _allowedHosts = new() 
-    { 
-        "api.company.com", 
-        "documents.trusted.org" 
+    private readonly HashSet<string> _allowedHosts = new()
+    {
+        "api.company.com",
+        "documents.trusted.org"
     };
-    
+
     public DocumentController(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> FetchDocument(string documentUrl)
     {
@@ -86,18 +86,17 @@ public class DocumentController : Controller
         {
             return BadRequest("Invalid URL format");
         }
-        
+
         if (uri.Scheme != "https" || !_allowedHosts.Contains(uri.Host))
         {
             return BadRequest("URL not allowed");
         }
-        
+
         var response = await _httpClient.GetAsync(documentUrl);
         var content = await response.Content.ReadAsStringAsync();
         return Content(content);
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

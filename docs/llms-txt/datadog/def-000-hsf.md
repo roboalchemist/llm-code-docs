@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # OpenSearch domains should have fine-grained access control enabled
- 
+
 ## Description{% #description %}
 
 This control checks whether Amazon OpenSearch Service domains have fine-grained access control (FGAC) enabled. Fine-grained access control provides granular permissions management, including index-level, document-level, and field-level security. The control fails if FGAC is not enabled, as it is required through the advanced-security-options in the OpenSearch parameter update-domain-config. Enabling FGAC enhances data security by offering additional methods to control access to your data on Amazon OpenSearch Service.

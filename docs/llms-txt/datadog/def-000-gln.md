@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable the Automounter
 ---
 
 # Disable the Automounter
- 
+
 ## Description{% #description %}
 
 The `autofs` daemon mounts and unmounts filesystems, such as user home directories shared via NFS, on demand. In addition, autofs can be used to handle removable media, and the default configuration provides the cdrom device as `/misc/cd`. However, this method of providing access to removable media is not common, so autofs can almost always be disabled if NFS is not in use. Even if NFS is required, it may be possible to configure filesystem mounts statically by editing `/etc/fstab` rather than relying on the automounter.

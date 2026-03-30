@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Redshift clusters should use enhanced VPC routing
- 
+
 ## Description{% #description %}
 
 This control verifies if an Amazon Redshift cluster has Enhanced VPC Routing activated.

@@ -86,6 +86,5 @@ const data = <T, U>() => {};
 const data = <T extends number>() => {};
 const data = <T extends number | string>() => {};
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

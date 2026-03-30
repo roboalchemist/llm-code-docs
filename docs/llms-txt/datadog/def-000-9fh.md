@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # KMS encryption keys should be rotated every 90 days or less
- 
+
 ## Description{% #description %}
 
 Google Cloud Key Management Service stores cryptographic keys in a hierarchical structure designed for useful and elegant access control management. The format for the rotation schedule depends on the client library that is used. For the gcloud CLI, the flag `--next-rotation-time` must be in ISO or RFC3339 format; the flag `--rotation-period` must be in the format `INTEGER[UNIT]`, where units can be one of: seconds (s), minutes (m), hours (h), or days (d). For example, `30d` for a rotation period of 30 days.

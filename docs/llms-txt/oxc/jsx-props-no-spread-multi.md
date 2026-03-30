@@ -1,19 +1,15 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/jsx-props-no-spread-multi.md
 
----
-url: /docs/guide/usage/linter/rules/react/jsx-props-no-spread-multi.md
----
-
-### What it does
+## What it does
 
 Enforces that any unique expression is only spread once.
 
-### Why is this bad?
+## Why is this bad?
 
 Generally spreading the same expression twice is an indicator of a mistake since any attribute between the spreads may be overridden when the intent was not to.
 Even when that is not the case this will lead to unnecessary computations being performed.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

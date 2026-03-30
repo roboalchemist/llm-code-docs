@@ -424,7 +424,7 @@ And also the lines that set tags on errors:
             span.setTag(Tags.ERROR, true);
             span.setTag(DDTags.ERROR_MSG, e.getMessage());
             span.setTag(DDTags.ERROR_TYPE, e.getClass().getName());
-   
+
             final StringWriter errorString = new StringWriter();
             e.printStackTrace(new PrintWriter(errorString));
             span.setTag(DDTags.ERROR_STACK, errorString.toString());

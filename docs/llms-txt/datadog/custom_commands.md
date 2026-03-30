@@ -175,7 +175,7 @@ Additionally, configure the Datadog site to use the selected one ():
 {% /dt %}
 
 {% dd %}
-The Datadog site to upload results to.**Default**: `datadoghq.com`**Selected site**: 
+The Datadog site to upload results to.**Default**: `datadoghq.com`**Selected site**:
 {% /dd %}
 
 {% /dl %}
@@ -316,7 +316,7 @@ Additionally, configure the Datadog site to use the selected one ():
 {% /dt %}
 
 {% dd %}
-The Datadog site to upload results to.**Default**: `datadoghq.com`**Selected site**: 
+The Datadog site to upload results to.**Default**: `datadoghq.com`**Selected site**:
 {% /dd %}
 
 {% /dl %}

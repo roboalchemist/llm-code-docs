@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > EBS snapshot should be encry
 ---
 
 # EBS snapshot should be encrypted
- 
+
 ## Description{% #description %}
 
 Encrypt Amazon Elastic Block Store (EBS) snapshots with volume snapshot encryption keys.

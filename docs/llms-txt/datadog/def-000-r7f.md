@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Disable XDMCP in GDM
 ---
 
 # Disable XDMCP in GDM
- 
+
 ## Description{% #description %}
 
 XDMCP is an unencrypted protocol, and therefore, presents a security risk, see e.g. [XDMCP Gnome docs](https://help.gnome.org/admin/gdm/stable/security.html.en_GB#xdmcpsecurity). To disable XDMCP support in Gnome, set `Enable` to `false` under the `[xdmcp]` configuration section in `/etc/gdm/custom.conf`. For example:
@@ -37,7 +37,7 @@ if dpkg-query --show --showformat='${db:Status-Status}' 'gdm3' 2>/dev/null | gre
 # Try find '[xdmcp]' and 'Enable' in '/etc/gdm3/custom.conf', if it exists, set
 # to 'false', if it isn't here, add it, if '[xdmcp]' doesn't exist, add it there
 if grep -qzosP '[[:space:]]*\[xdmcp]([^\n\[]*\n+)+?[[:space:]]*Enable' '/etc/gdm3/custom.conf'; then
-    
+
     sed -i "s/Enable[^(\n)]*/Enable=false/" '/etc/gdm3/custom.conf'
 elif grep -qs '[[:space:]]*\[xdmcp]' '/etc/gdm3/custom.conf'; then
     sed -i "/[[:space:]]*\[xdmcp]/a Enable=false" '/etc/gdm3/custom.conf'

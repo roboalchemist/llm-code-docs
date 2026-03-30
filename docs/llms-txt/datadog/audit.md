@@ -36,7 +36,7 @@ This endpoint requires the `audit_logs_read` permission.
 
 ### Request
 
-#### Body Data 
+#### Body Data
 
 
 
@@ -59,7 +59,7 @@ This endpoint requires the `audit_logs_read` permission.
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -79,7 +79,7 @@ This endpoint requires the `audit_logs_read` permission.
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -256,7 +256,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/audit/events/search" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -279,8 +279,8 @@ API error response.
   "sort": "timestamp"
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/audit/events/search" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -301,8 +301,8 @@ EOF
   "sort": "timestamp"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Search Audit Logs events returns "OK" response
@@ -310,48 +310,48 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.AuditLogsSearchEventsRequest{
-		Filter: &datadogV2.AuditLogsQueryFilter{
-			From:  datadog.PtrString("now-15m"),
-			Query: datadog.PtrString("@type:session AND @session.type:user"),
-			To:    datadog.PtrString("now"),
-		},
-		Options: &datadogV2.AuditLogsQueryOptions{
-			TimeOffset: datadog.PtrInt64(0),
-			Timezone:   datadog.PtrString("GMT"),
-		},
-		Page: &datadogV2.AuditLogsQueryPageOptions{
-			Limit: datadog.PtrInt32(25),
-		},
-		Sort: datadogV2.AUDITLOGSSORT_TIMESTAMP_ASCENDING.Ptr(),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAuditApi(apiClient)
-	resp, r, err := api.SearchAuditLogs(ctx, *datadogV2.NewSearchAuditLogsOptionalParameters().WithBody(body))
+    body := datadogV2.AuditLogsSearchEventsRequest{
+        Filter: &datadogV2.AuditLogsQueryFilter{
+            From:  datadog.PtrString("now-15m"),
+            Query: datadog.PtrString("@type:session AND @session.type:user"),
+            To:    datadog.PtrString("now"),
+        },
+        Options: &datadogV2.AuditLogsQueryOptions{
+            TimeOffset: datadog.PtrInt64(0),
+            Timezone:   datadog.PtrString("GMT"),
+        },
+        Page: &datadogV2.AuditLogsQueryPageOptions{
+            Limit: datadog.PtrInt32(25),
+        },
+        Sort: datadogV2.AUDITLOGSSORT_TIMESTAMP_ASCENDING.Ptr(),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAuditApi(apiClient)
+    resp, r, err := api.SearchAuditLogs(ctx, *datadogV2.NewSearchAuditLogsOptionalParameters().WithBody(body))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AuditApi.SearchAuditLogs`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuditApi.SearchAuditLogs`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AuditApi.SearchAuditLogs`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AuditApi.SearchAuditLogs`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Search Audit Logs events returns "OK" response with pagination
@@ -359,42 +359,42 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.AuditLogsSearchEventsRequest{
-		Filter: &datadogV2.AuditLogsQueryFilter{
-			From: datadog.PtrString("now-15m"),
-			To:   datadog.PtrString("now"),
-		},
-		Options: &datadogV2.AuditLogsQueryOptions{
-			Timezone: datadog.PtrString("GMT"),
-		},
-		Page: &datadogV2.AuditLogsQueryPageOptions{
-			Limit: datadog.PtrInt32(2),
-		},
-		Sort: datadogV2.AUDITLOGSSORT_TIMESTAMP_ASCENDING.Ptr(),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAuditApi(apiClient)
-	resp, _ := api.SearchAuditLogsWithPagination(ctx, *datadogV2.NewSearchAuditLogsOptionalParameters().WithBody(body))
+    body := datadogV2.AuditLogsSearchEventsRequest{
+        Filter: &datadogV2.AuditLogsQueryFilter{
+            From: datadog.PtrString("now-15m"),
+            To:   datadog.PtrString("now"),
+        },
+        Options: &datadogV2.AuditLogsQueryOptions{
+            Timezone: datadog.PtrString("GMT"),
+        },
+        Page: &datadogV2.AuditLogsQueryPageOptions{
+            Limit: datadog.PtrInt32(2),
+        },
+        Sort: datadogV2.AUDITLOGSSORT_TIMESTAMP_ASCENDING.Ptr(),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAuditApi(apiClient)
+    resp, _ := api.SearchAuditLogsWithPagination(ctx, *datadogV2.NewSearchAuditLogsOptionalParameters().WithBody(body))
 
-	for paginationResult := range resp {
-		if paginationResult.Error != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `AuditApi.SearchAuditLogs`: %v\n", paginationResult.Error)
-		}
-		responseContent, _ := json.MarshalIndent(paginationResult.Item, "", "  ")
-		fmt.Fprintf(os.Stdout, "%s\n", responseContent)
-	}
+    for paginationResult := range resp {
+        if paginationResult.Error != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `AuditApi.SearchAuditLogs`: %v\n", paginationResult.Error)
+        }
+        responseContent, _ := json.MarshalIndent(paginationResult.Item, "", "  ")
+        fmt.Fprintf(os.Stdout, "%s\n", responseContent)
+    }
 }
 ```
 
@@ -402,7 +402,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Search Audit Logs events returns "OK" response
@@ -449,7 +449,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Search Audit Logs events returns "OK" response with pagination
@@ -498,7 +498,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -537,7 +537,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -578,7 +578,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Search Audit Logs events returns "OK" response
@@ -607,7 +607,7 @@ opts = {
 p api_instance.search_audit_logs(opts)
 ```
 
-##### 
+#####
 
 ```ruby
 # Search Audit Logs events returns "OK" response with pagination
@@ -638,7 +638,7 @@ api_instance.search_audit_logs_with_pagination(opts) { |item| puts item }
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Search Audit Logs events returns "OK" response
@@ -680,7 +680,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Search Audit Logs events returns "OK" response with pagination
@@ -725,7 +725,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -765,7 +765,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -1006,13 +1006,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/audit/events" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -1034,7 +1034,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a list of Audit Logs events returns "OK" response
@@ -1048,7 +1048,7 @@ p api_instance.list_audit_logs()
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a list of Audit Logs events returns "OK" response
@@ -1056,29 +1056,29 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewAuditApi(apiClient)
-	resp, r, err := api.ListAuditLogs(ctx, *datadogV2.NewListAuditLogsOptionalParameters())
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewAuditApi(apiClient)
+    resp, r, err := api.ListAuditLogs(ctx, *datadogV2.NewListAuditLogsOptionalParameters())
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `AuditApi.ListAuditLogs`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `AuditApi.ListAuditLogs`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `AuditApi.ListAuditLogs`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `AuditApi.ListAuditLogs`:\n%s\n", responseContent)
 }
 ```
 
@@ -1086,7 +1086,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a list of Audit Logs events returns "OK" response
@@ -1119,7 +1119,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a list of Audit Logs events returns "OK" response
@@ -1146,7 +1146,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The kubelet service file should have permissions of 600 or more restrictive
- 
+
 ## Description{% #description %}
 
 The kubelet service file should have permissions of `600` or more restrictive. The kubelet service file controls various parameters that set the behavior of the kubelet service in the worker node. You should restrict its file permissions to maintain the integrity of the file. The file should be writable only by the administrators of the system.

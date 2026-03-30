@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # 'Delete Policy Assignment' activity log alert should be configured
- 
+
 ## Description{% #description %}
 
 To enhance the detection of unsolicited changes and streamline the monitoring of modifications made in the **Policy - Assignments** page, it is advised to create an activity log alert specifically for the "Delete Policy Assignment" event. This alert will provide valuable insights into any deletions of policy assignments, allowing for quick detection and response to unauthorized changes.

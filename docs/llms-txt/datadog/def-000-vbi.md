@@ -7,14 +7,14 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Use Only Strong MACs
 ---
 
 # Use Only Strong MACs
- 
+
 ## Description{% #description %}
 
 Limit the MACs to strong hash algorithms. The following line in `/etc/ssh/sshd_config` demonstrates use of those MACs:
 
 ```
 MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512,hmac-sha2-256
-        
+
 ```
 
 ## Rationale{% #rationale %}

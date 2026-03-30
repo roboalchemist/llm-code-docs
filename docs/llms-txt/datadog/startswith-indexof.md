@@ -52,6 +52,5 @@ if (text.StartsWith("abc"))
     Console.WriteLine("Starts with abc");
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

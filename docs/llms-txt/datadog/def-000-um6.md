@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Verify firewalld Enabled
 ---
 
 # Verify firewalld Enabled
- 
+
 ## Description{% #description %}
 
 The `firewalld` service can be enabled with the following command:

@@ -1,20 +1,16 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-immediate-mutation.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-immediate-mutation.md
----
-
-### What it does
+## What it does
 
 Disallows mutating a variable immediately after initialization.
 
-### Why is this bad?
+## Why is this bad?
 
 When you initialize a variable and immediately mutate it, it's cleaner to include
 the mutation in the initialization. This makes the code more readable and reduces
 the number of statements.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

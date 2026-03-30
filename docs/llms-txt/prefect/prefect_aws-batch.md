@@ -1,0 +1,62 @@
+# Source: https://docs.prefect.io/integrations/prefect-aws/api-ref/prefect_aws-batch.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.prefect.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# batch
+
+# `prefect_aws.batch`
+
+Tasks for interacting with AWS Batch
+
+## Functions
+
+### `abatch_submit` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/integrations/prefect-aws/prefect_aws/batch.py#L13" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+abatch_submit(job_name: str, job_queue: str, job_definition: str, aws_credentials: AwsCredentials, **batch_kwargs: Optional[Dict[str, Any]]) -> str
+```
+
+Asynchronously submit a job to the AWS Batch job service.
+
+**Args:**
+
+* `job_name`: The AWS batch job name.
+* `job_queue`: Name of the AWS batch job queue.
+* `job_definition`: The AWS batch job definition.
+* `aws_credentials`: Credentials to use for authentication with AWS.
+* `**batch_kwargs`: Additional keyword arguments to pass to the boto3
+  `submit_job` function. See the documentation for
+  [submit\_job](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/batch.html#Batch.Client.submit_job)
+  for more details.
+
+**Returns:**
+
+* The id corresponding to the job.
+
+### `batch_submit` <sup><a href="https://github.com/PrefectHQ/prefect/blob/main/src/integrations/prefect-aws/prefect_aws/batch.py#L80" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={null}
+batch_submit(job_name: str, job_queue: str, job_definition: str, aws_credentials: AwsCredentials, **batch_kwargs: Optional[Dict[str, Any]]) -> str
+```
+
+Submit a job to the AWS Batch job service.
+
+**Args:**
+
+* `job_name`: The AWS batch job name.
+* `job_queue`: Name of the AWS batch job queue.
+* `job_definition`: The AWS batch job definition.
+* `aws_credentials`: Credentials to use for authentication with AWS.
+* `**batch_kwargs`: Additional keyword arguments to pass to the boto3
+  `submit_job` function. See the documentation for
+  [submit\_job](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/batch.html#Batch.Client.submit_job)
+  for more details.
+
+**Returns:**
+
+* The id corresponding to the job.
+
+
+Built with [Mintlify](https://mintlify.com).

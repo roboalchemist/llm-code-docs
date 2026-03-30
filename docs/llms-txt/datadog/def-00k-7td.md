@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The `admin.conf` file should have permissions of 600 or more restrictive
- 
+
 ## Description{% #description %}
 
 The `admin.conf` should have file permissions of `600` or more restrictive. The `admin.conf` file is the kubeconfig file for the administration of the cluster. You should restrict its file permissions to maintain the integrity of the file. The file should be writable by only the administrators on the system.

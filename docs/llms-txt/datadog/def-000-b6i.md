@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # OpenSearch domains should have at least three data nodes
- 
+
 ## Description{% #description %}
 
 This check determines if Amazon OpenSearch Service domains are configured with at least three data nodes. Having a minimum of three data nodes is crucial for ensuring data availability and fault tolerance, especially in case of node failures or maintenance activities. It enhances the resiliency of your OpenSearch cluster by allowing it to continue operating even if one or two nodes become unavailable.

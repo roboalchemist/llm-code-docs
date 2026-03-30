@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure /tmp Located On Separate Partition
- 
+
 ## Description{% #description %}
 
 The `/tmp` directory is a world-writable directory used for temporary file storage. Ensure it has its own partition or logical volume at installation time, or migrate it using LVM.

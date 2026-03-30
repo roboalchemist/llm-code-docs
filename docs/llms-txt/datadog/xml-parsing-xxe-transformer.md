@@ -54,7 +54,7 @@ class MyClass {
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
         transformer.transform(input, result);
     }
-    
+
 }
 ```
 
@@ -68,9 +68,8 @@ class MyClass {
         factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
         Transformer transformer = factory.newTransformer();
     }
-    
+
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

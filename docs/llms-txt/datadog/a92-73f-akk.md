@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The proxy kubeconfig file should have permissions of 644 or stricter
-Classification:complianceFramework:cis-kubernetesControl:4.1.3 
+Classification:complianceFramework:cis-kubernetesControl:4.1.3
 ## Description{% #description %}
 
 If kube-proxy is running, and if it is using a file-based kubeconfig file, ensure that the proxy kubeconfig file has permissions of 644 or more restrictive.

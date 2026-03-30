@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Group Who Owns /var/log/syslog File
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/var/log/syslog`, run the command:

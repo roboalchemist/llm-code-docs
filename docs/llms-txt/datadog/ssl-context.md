@@ -42,25 +42,24 @@ Do not use `"SSL"` as it uses an old protocol. Use `"TLS"` instead.
 
 ```java
 public class Foo {
-    
+
     public static foobar() {
         SSLContext.getInstance("SSL");
     }
 }
-    
+
 ```
 
 ## Compliant Code Examples{% #compliant-code-examples %}
 
 ```java
 public class Foo {
-    
+
     public static foobar() {
         SSLContext.getInstance("TLS");
     }
 }
-    
+
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

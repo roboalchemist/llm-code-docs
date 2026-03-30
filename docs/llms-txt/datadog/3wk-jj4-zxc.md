@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # The Docker local storage partition should be separate from other partitions
-Classification:complianceFramework:cis-dockerControl:1.2.1 
+Classification:complianceFramework:cis-dockerControl:1.2.1
 ## Description{% #description %}
 
 All Docker containers and their data and metadata are stored in the `/var/lib/docker` directory. By default, `/var/lib/docker` should be mounted under either the `/` or `/var` partitions depending on how the Linux operating system in use is configured.

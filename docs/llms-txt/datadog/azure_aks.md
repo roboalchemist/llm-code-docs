@@ -322,7 +322,7 @@ In the `datadog-values.yaml` file:
      # site: datadoghq.com
      # The name of the existing Secret containing the Datadog API key. The secret key name must be `api-key`.
      apiKeyExistingSecret: datadog-secret
-   
+
    azure:
      tenantId: <TENANT_ID> # required
      clientId: <CLIENT_ID> # required when using AD App to authenticate with Blob Storage
@@ -337,20 +337,20 @@ In the `datadog-values.yaml` file:
        # accessKeySecretRef:
          # name: <SECRET_NAME>
          # key: <SECRET_KEY>
-   
+
       # Service account configuration
       # If `serviceAccount.create` is set to `true`, a service account is created with the specified name.
       # Additional annotations can be added using serviceAccount.extraAnnotations.
       serviceAccount:
         create: true
         name: cloudprem
-   
+
    # CloudPrem node configuration
    config:
      # The root URI where index data is stored. This should be an Azure path.
      # All indexes created in CloudPrem are stored under this location.
      default_index_root_uri: azure://<CONTAINER_NAME>/indexes
-   
+
    # Internal ingress configuration
    # The internal ingress NLB is created in private subnets.
    #
@@ -363,7 +363,7 @@ In the `datadog-values.yaml` file:
        ingressClassName: nginx-internal
        host: cloudprem.acme.internal
        extraAnnotations: {}
-   
+
    # Metastore configuration
    # The metastore is responsible for storing and managing index metadata.
    # It requires a PostgreSQL database connection string to be provided by a Kubernetes secret.
@@ -375,7 +375,7 @@ In the `datadog-values.yaml` file:
      extraEnvFrom:
        - secretRef:
            name: cloudprem-metastore-uri
-   
+
    # Indexer configuration
    # The indexer is responsible for processing and indexing incoming data it receives data from various sources (for example, Datadog Agents, log collectors)
    # and transforms it into searchable files called "splits" stored in S3.
@@ -386,7 +386,7 @@ In the `datadog-values.yaml` file:
    # The default values are suitable for moderate indexing loads of up to 20 MB/s per indexer pod.
    indexer:
      replicaCount: 2
-   
+
      resources:
        requests:
          cpu: "4"
@@ -394,7 +394,7 @@ In the `datadog-values.yaml` file:
        limits:
          cpu: "4"
          memory: "8Gi"
-   
+
       # Searcher configuration
       # The searcher is responsible for executing search queries against the indexed data stored in S3.
       # It handles search requests from Datadog's query service and returns matching results.
@@ -410,7 +410,7 @@ In the `datadog-values.yaml` file:
       # Memory is particularly important for searchers as they cache frequently accessed index data in memory.
       searcher:
         replicaCount: 2
-   
+
         resources:
           requests:
             cpu: "4"

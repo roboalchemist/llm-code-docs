@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Enable PAM
 ---
 
 # Enable PAM
- 
+
 ## Description{% #description %}
 
 UsePAM Enables the Pluggable Authentication Module interface. If set to "yes" this will enable PAM authentication using ChallengeResponseAuthentication and PasswordAuthentication in addition to PAM account and session module processing for all authentication types. To enable PAM authentication, add or correct the following line in `/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf`:
@@ -39,7 +39,7 @@ chmod 0600 /etc/ssh/sshd_config.d/00-complianceascode-hardening.conf
 LC_ALL=C sed -i "/^\s*UsePAM\s\+/Id" "/etc/ssh/sshd_config"
 LC_ALL=C sed -i "/^\s*UsePAM\s\+/Id" "/etc/ssh/sshd_config.d"/*.conf
 if [ -e "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf" ] ; then
-    
+
     LC_ALL=C sed -i "/^\s*UsePAM\s\+/Id" "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf"
 else
     touch "/etc/ssh/sshd_config.d/00-complianceascode-hardening.conf"

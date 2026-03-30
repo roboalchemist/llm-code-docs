@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Groupownership of Files in /var/log/gdm
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/var/log/gdm/*`, run the command:

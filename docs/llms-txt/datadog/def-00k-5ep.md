@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # API server audit logs should be retained for at least 30 days
- 
+
 ## Description{% #description %}
 
 The audit log's max age should be at least 30 days. Retaining logs for at least 30 days ensures that you can go back in time and investigate or correlate any events.

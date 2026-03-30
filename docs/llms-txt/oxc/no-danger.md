@@ -1,20 +1,16 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/no-danger.md
 
----
-url: /docs/guide/usage/linter/rules/react/no-danger.md
----
-
-### What it does
+## What it does
 
 This rule prevents the use of `dangerouslySetInnerHTML` prop.
 
-### Why is this bad?
+## Why is this bad?
 
 `dangerouslySetInnerHTML` is a way to inject HTML into your React
 component. This is dangerous because it can easily lead to XSS
 vulnerabilities.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

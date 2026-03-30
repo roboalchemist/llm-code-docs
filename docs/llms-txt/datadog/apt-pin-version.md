@@ -60,6 +60,5 @@ RUN apt-get update && \
 FROM debian:12
 RUN apt-get install python=3.11
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

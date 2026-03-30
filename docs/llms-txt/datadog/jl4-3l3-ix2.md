@@ -11,7 +11,7 @@ breadcrumbs: >-
 ---
 
 # Account should have a activity log alert configured for creating or updating storage accounts
- 
+
 ## Description{% #description %}
 
 Create an activity log alert for the Create or Update Storage Account event.

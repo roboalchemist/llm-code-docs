@@ -46,6 +46,5 @@ let foo = bar.filter { $0.containsString("baz") }.first
 ```swift
 let foo = bar.first(where: { $0.containsString("baz") })
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

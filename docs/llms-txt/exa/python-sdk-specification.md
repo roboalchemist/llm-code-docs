@@ -1,10 +1,12 @@
 # Source: https://exa.ai/docs/sdks/python-sdk-specification.md
 
 > ## Documentation Index
+>
 > Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Python SDK Specification
+
+## # Python SDK Specification
 
 > Enumeration of methods and types in the Exa Python SDK (exa_py).
 
@@ -33,7 +35,7 @@ from exa_py import Exa
 
 exa = Exa()  # Reads EXA_API_KEY from environment
 # or explicitly: exa = Exa(api_key="your-api-key")
-```
+```text
 
 <Card title="Get API Key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Follow this link to get your API key
@@ -61,29 +63,29 @@ deep_result = exa.search(
   additional_queries=["AI blogpost", "machine learning blogs"],
   num_results=5
 )
-```
+```text
 
 ### Input Parameters
 
-| Parameter              | Type                                                                    | Description                                                                                                                                                                                                                                                                                                  | Default  |
-| ---------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
-| query                  | str                                                                     | The query string.                                                                                                                                                                                                                                                                                            | Required |
-| contents               | Optional\[Union\[[ContentsOptions](#contentsoptions), Literal\[False]]] | Options for retrieving page contents. Defaults to `{"text": {"maxCharacters": 10000}`}. Use False to disable contents. See [ContentsOptions](#contentsoptions) for available options (text, highlights, summary, context, etc.). Note: For deep search (type='deep'), context is always returned by the API. | None     |
-| num\_results           | Optional\[int]                                                          | Number of search results to return (default 10).  For deep search, recommend leaving blank - number of results will be determined dynamically for your query.                                                                                                                                                | None     |
-| include\_domains       | Optional\[List\[str]]                                                   | Domains to include in the search.                                                                                                                                                                                                                                                                            | None     |
-| exclude\_domains       | Optional\[List\[str]]                                                   | Domains to exclude from the search.                                                                                                                                                                                                                                                                          | None     |
-| start\_crawl\_date     | Optional\[str]                                                          | Only links crawled after this date.                                                                                                                                                                                                                                                                          | None     |
-| end\_crawl\_date       | Optional\[str]                                                          | Only links crawled before this date.                                                                                                                                                                                                                                                                         | None     |
-| start\_published\_date | Optional\[str]                                                          | Only links published after this date.                                                                                                                                                                                                                                                                        | None     |
-| end\_published\_date   | Optional\[str]                                                          | Only links published before this date.                                                                                                                                                                                                                                                                       | None     |
-| include\_text          | Optional\[List\[str]]                                                   | Strings that must appear in the page text.                                                                                                                                                                                                                                                                   | None     |
-| exclude\_text          | Optional\[List\[str]]                                                   | Strings that must not appear in the page text.                                                                                                                                                                                                                                                               | None     |
-| type                   | Optional\[Union\[[SearchType](#searchtype), str]]                       | Search type - 'auto' (default), 'fast', 'deep', or 'neural'.                                                                                                                                                                                                                                                 | None     |
-| category               | Optional\[[Category](#category)]                                        | Data category to focus on (e.g. 'company', 'news', 'research paper').                                                                                                                                                                                                                                        | None     |
-| flags                  | Optional\[List\[str]]                                                   | Experimental flags for Exa usage.                                                                                                                                                                                                                                                                            | None     |
-| moderation             | Optional\[bool]                                                         | If True, the search results will be moderated for safety.                                                                                                                                                                                                                                                    | None     |
-| user\_location         | Optional\[str]                                                          | Two-letter ISO country code of the user (e.g. US).                                                                                                                                                                                                                                                           | None     |
-| additional\_queries    | Optional\[List\[str]]                                                   | Alternative query formulations for deep search to skip automatic LLM-based query expansion. Max 5 queries. Only applicable when type='deep'. Example: \["machine learning", "ML algorithms", "neural networks"]                                                                                              | None     |
+| Parameter              | Type                                                                    | Description                                                                                                                                                                                                                                                                                           | Default  |
+| ---------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| query                  | str                                                                     | The query string.                                                                                                                                                                                                                                                                                     | Required |
+| contents               | Optional\[Union\[[ContentsOptions](#contentsoptions), Literal\[False]]] | Options for retrieving page contents. Defaults to `{"text": {"maxCharacters": 10000}`}. Use False to disable contents. See [ContentsOptions](#contentsoptions) for available options (text, highlights, summary, etc.). Note: The `context` option is deprecated; use `highlights` or `text` instead. | None     |
+| num\_results           | Optional\[int]                                                          | Number of search results to return (default 10).  For deep search, recommend leaving blank - number of results will be determined dynamically for your query.                                                                                                                                         | None     |
+| include\_domains       | Optional\[List\[str]]                                                   | Domains to include in the search.                                                                                                                                                                                                                                                                     | None     |
+| exclude\_domains       | Optional\[List\[str]]                                                   | Domains to exclude from the search.                                                                                                                                                                                                                                                                   | None     |
+| start\_crawl\_date     | Optional\[str]                                                          | Only links crawled after this date.                                                                                                                                                                                                                                                                   | None     |
+| end\_crawl\_date       | Optional\[str]                                                          | Only links crawled before this date.                                                                                                                                                                                                                                                                  | None     |
+| start\_published\_date | Optional\[str]                                                          | Only links published after this date.                                                                                                                                                                                                                                                                 | None     |
+| end\_published\_date   | Optional\[str]                                                          | Only links published before this date.                                                                                                                                                                                                                                                                | None     |
+| include\_text          | Optional\[List\[str]]                                                   | Strings that must appear in the page text.                                                                                                                                                                                                                                                            | None     |
+| exclude\_text          | Optional\[List\[str]]                                                   | Strings that must not appear in the page text.                                                                                                                                                                                                                                                        | None     |
+| type                   | Optional\[Union\[[SearchType](#searchtype), str]]                       | Search type - 'auto' (default), 'fast', 'deep', or 'instant'.                                                                                                                                                                                                                                         | None     |
+| category               | Optional\[[Category](#category)]                                        | Data category to focus on (e.g. 'company', 'news', 'research paper').                                                                                                                                                                                                                                 | None     |
+| flags                  | Optional\[List\[str]]                                                   | Experimental flags for Exa usage.                                                                                                                                                                                                                                                                     | None     |
+| moderation             | Optional\[bool]                                                         | If True, the search results will be moderated for safety.                                                                                                                                                                                                                                             | None     |
+| user\_location         | Optional\[str]                                                          | Two-letter ISO country code of the user (e.g. US).                                                                                                                                                                                                                                                    | None     |
+| additional\_queries    | Optional\[List\[str]]                                                   | Alternative query formulations for deep search to skip automatic LLM-based query expansion. Max 5 queries. Only applicable when type='deep'. Example: \["machine learning", "ML algorithms", "neural networks"]                                                                                       | None     |
 
 ### Return Example
 
@@ -108,7 +110,7 @@ deep_result = exa.search(
   ],
   "requestId": "a78ebce717f4d712b6f8fe0d5d7753f8"
 }
-```
+```text
 
 ### Result Object
 
@@ -140,26 +142,26 @@ similar_results = exa.find_similar(
     num_results=2,
     exclude_source_domain=True
 )
-```
+```text
 
 ### Input Parameters
 
-| Parameter               | Type                                                                    | Description                                                                                                                                                                                                                      | Default  |
-| ----------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| url                     | str                                                                     | The URL to find similar pages for.                                                                                                                                                                                               | Required |
-| contents                | Optional\[Union\[[ContentsOptions](#contentsoptions), Literal\[False]]] | Options for retrieving page contents. Defaults to `{"text": {"maxCharacters": 10000}`}. Use False to disable contents. See [ContentsOptions](#contentsoptions) for available options (text, highlights, summary, context, etc.). | None     |
-| num\_results            | Optional\[int]                                                          | Number of results to return. Default is None (server default).                                                                                                                                                                   | None     |
-| include\_domains        | Optional\[List\[str]]                                                   | Domains to include in the search.                                                                                                                                                                                                | None     |
-| exclude\_domains        | Optional\[List\[str]]                                                   | Domains to exclude from the search.                                                                                                                                                                                              | None     |
-| start\_crawl\_date      | Optional\[str]                                                          | Only links crawled after this date.                                                                                                                                                                                              | None     |
-| end\_crawl\_date        | Optional\[str]                                                          | Only links crawled before this date.                                                                                                                                                                                             | None     |
-| start\_published\_date  | Optional\[str]                                                          | Only links published after this date.                                                                                                                                                                                            | None     |
-| end\_published\_date    | Optional\[str]                                                          | Only links published before this date.                                                                                                                                                                                           | None     |
-| include\_text           | Optional\[List\[str]]                                                   | Strings that must appear in the page text.                                                                                                                                                                                       | None     |
-| exclude\_text           | Optional\[List\[str]]                                                   | Strings that must not appear in the page text.                                                                                                                                                                                   | None     |
-| exclude\_source\_domain | Optional\[bool]                                                         | Whether to exclude the source domain.                                                                                                                                                                                            | None     |
-| category                | Optional\[[Category](#category)]                                        | Data category to focus on (e.g. 'company', 'news', 'research paper').                                                                                                                                                            | None     |
-| flags                   | Optional\[List\[str]]                                                   | Experimental flags.                                                                                                                                                                                                              | None     |
+| Parameter               | Type                                                                    | Description                                                                                                                                                                                                             | Default  |
+| ----------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| url                     | str                                                                     | The URL to find similar pages for.                                                                                                                                                                                      | Required |
+| contents                | Optional\[Union\[[ContentsOptions](#contentsoptions), Literal\[False]]] | Options for retrieving page contents. Defaults to `{"text": {"maxCharacters": 10000}`}. Use False to disable contents. See [ContentsOptions](#contentsoptions) for available options (text, highlights, summary, etc.). | None     |
+| num\_results            | Optional\[int]                                                          | Number of results to return. Default is None (server default).                                                                                                                                                          | None     |
+| include\_domains        | Optional\[List\[str]]                                                   | Domains to include in the search.                                                                                                                                                                                       | None     |
+| exclude\_domains        | Optional\[List\[str]]                                                   | Domains to exclude from the search.                                                                                                                                                                                     | None     |
+| start\_crawl\_date      | Optional\[str]                                                          | Only links crawled after this date.                                                                                                                                                                                     | None     |
+| end\_crawl\_date        | Optional\[str]                                                          | Only links crawled before this date.                                                                                                                                                                                    | None     |
+| start\_published\_date  | Optional\[str]                                                          | Only links published after this date.                                                                                                                                                                                   | None     |
+| end\_published\_date    | Optional\[str]                                                          | Only links published before this date.                                                                                                                                                                                  | None     |
+| include\_text           | Optional\[List\[str]]                                                   | Strings that must appear in the page text.                                                                                                                                                                              | None     |
+| exclude\_text           | Optional\[List\[str]]                                                   | Strings that must not appear in the page text.                                                                                                                                                                          | None     |
+| exclude\_source\_domain | Optional\[bool]                                                         | Whether to exclude the source domain.                                                                                                                                                                                   | None     |
+| category                | Optional\[[Category](#category)]                                        | Data category to focus on (e.g. 'company', 'news', 'research paper').                                                                                                                                                   | None     |
+| flags                   | Optional\[List\[str]]                                                   | Experimental flags.                                                                                                                                                                                                     | None     |
 
 ### Return Example
 
@@ -183,7 +185,7 @@ similar_results = exa.find_similar(
   ],
   "requestId": "08fdc6f20e9f3ea87f860af3f6ccc30f"
 }
-```
+```text
 
 ### Result Object
 
@@ -216,7 +218,7 @@ contents = exa.get_contents([
     "https://example.com/article1",
     "https://example.com/article2"
 ])
-```
+```text
 
 ### Input Parameters
 
@@ -237,7 +239,7 @@ contents = exa.get_contents([
     }
   ]
 }
-```
+```text
 
 ### Result Object
 
@@ -273,7 +275,7 @@ response_with_text = exa.answer(
     text=True
 )
 print(response_with_text.citations[0].text)  # Full page text
-```
+```text
 
 ### Input Parameters
 
@@ -303,7 +305,7 @@ print(response_with_text.citations[0].text)  # Full page text
     }
   ]
 }
-```
+```text
 
 ### Result Object
 
@@ -331,7 +333,7 @@ for chunk in stream:
     if chunk.citations:
         for citation in chunk.citations:
             print("Citation found:", citation.url)
-```
+```text
 
 ### Input Parameters
 
@@ -360,7 +362,7 @@ for chunk in stream:
     }
   ]
 }
-```
+```text
 
 ### Result Object
 
@@ -398,7 +400,7 @@ task = exa.research.create(
 )
 
 print(f"Task created with ID: {task.research_id}")
-```
+```text
 
 ### Input Parameters
 
@@ -414,7 +416,7 @@ print(f"Task created with ID: {task.research_id}")
 {
   "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
 }
-```
+```text
 
 ### Result Object
 
@@ -445,7 +447,7 @@ task = exa.research.get(task_id)
 print(f"Task status: {task.status}")
 if task.status == "completed":
     print(f"Results: {task.output}")
-```
+```text
 
 ### Input Parameters
 
@@ -483,7 +485,7 @@ if task.status == "completed":
     "source": "Financial Times"
   }
 }
-```
+```text
 
 ### Result Object
 
@@ -523,7 +525,7 @@ task = exa.research.create(
 # Poll until completion
 result = exa.research.poll_until_finished(task.research_id)
 print(f"Research complete: {result.output}")
-```
+```text
 
 ### Input Parameters
 
@@ -565,7 +567,7 @@ print(f"Found {len(response.data)} tasks")
 response = exa.research.list(limit=10)
 if response.has_more:
     next_page = exa.research.list(cursor=response.next_cursor)
-```
+```text
 
 ### Input Parameters
 
@@ -593,7 +595,7 @@ if response.has_more:
   "hasMore": true,
   "nextCursor": "eyJjcmVhdGVkQXQiOiIyMDI0LTAxLTE1VDE4OjMwOjAwWiIsImlkIjoidGFzay0yIn0="
 }
-```
+```text
 
 ### Result Object
 
@@ -603,7 +605,7 @@ if response.has_more:
 | has\_more    | bool                               | Whether there are more results to paginate through     |
 | next\_cursor | Optional\[str]                     | The cursor to paginate through the next set of results |
 
-***
+*__
 
 ## Types Reference
 
@@ -638,14 +640,20 @@ A class representing the options that you can specify when requesting summary
 
 A class representing the options that you can specify when requesting highlights.
 
-| Field           | Type | Description                                                                              |
-| --------------- | ---- | ---------------------------------------------------------------------------------------- |
-| query           | str  | The query string for highlight generation. Highlights will be biased towards this query. |
-| max\_characters | int  | Maximum characters for highlights.                                                       |
+| Field                | Type | Description                                                                                |
+| -------------------- | ---- | ------------------------------------------------------------------------------------------ |
+| query                | str  | The query string for highlight generation. Highlights will be biased towards this query.   |
+| max\_characters      | int  | The maximum number of characters to return for highlights. Default: None (server default). |
+| num\_sentences       | int  | Deprecated. Use max\_characters instead. The number of sentences per highlight.            |
+| highlights\_per\_url | int  | Deprecated. Use max\_characters instead. The number of highlights to return per URL.       |
 
 #### `ContextContentsOptions`
 
 Options for retrieving aggregated context from a set of search results.
+
+.. deprecated::
+Use `highlights` or `text` instead. The `context` option is deprecated
+and will be removed in a future version.
 
 | Field           | Type | Description                                                        |
 | --------------- | ---- | ------------------------------------------------------------------ |
@@ -672,7 +680,7 @@ max\_characters=10000 is returned by default.
 | text            | Union\[[TextContentsOptions](#textcontentsoptions), Literal\[True]]             | Options for text extraction, or True for defaults.                                                                                                                                                                                               |
 | highlights      | Union\[[HighlightsContentsOptions](#highlightscontentsoptions), Literal\[True]] | Options for highlight extraction, or True for defaults.                                                                                                                                                                                          |
 | summary         | Union\[[SummaryContentsOptions](#summarycontentsoptions), Literal\[True]]       | Options for summary generation, or True for defaults.                                                                                                                                                                                            |
-| context         | Union\[[ContextContentsOptions](#contextcontentsoptions), Literal\[True]]       | Options for context aggregation, or True for defaults.                                                                                                                                                                                           |
+| context         | Union\[[ContextContentsOptions](#contextcontentsoptions), Literal\[True]]       | Deprecated. Use `highlights` or `text` instead. Will be removed in a future version.                                                                                                                                                             |
 | max\_age\_hours | int                                                                             | Maximum age of cached content in hours. If content is older, it will be fetched fresh. Special values: 0 = always fetch fresh content, -1 = never fetch fresh (use cached content only). Example: 168 = fetch fresh for pages older than 7 days. |
 | subpages        | int                                                                             | Number of subpages to crawl.                                                                                                                                                                                                                     |
 | subpage\_target | Union\[str, List\[str]]                                                         | Target subpage path(s) to crawl.                                                                                                                                                                                                                 |
@@ -862,10 +870,11 @@ A class representing a single chunk of streaming data.
 
 A class representing the response for an answer operation.
 
-| Field     | Type                                 | Description                                      |
-| --------- | ------------------------------------ | ------------------------------------------------ |
-| answer    | Union\[str, dict\[str, Any]]         | The generated answer.                            |
-| citations | List\[[AnswerResult](#answerresult)] | A list of citations used to generate the answer. |
+| Field         | Type                                   | Description                                      |
+| ------------- | -------------------------------------- | ------------------------------------------------ |
+| answer        | Union\[str, dict\[str, Any]]           | The generated answer.                            |
+| citations     | List\[[AnswerResult](#answerresult)]   | A list of citations used to generate the answer. |
+| cost\_dollars | Optional\[[CostDollars](#costdollars)] | The cost breakdown for this request.             |
 
 #### `StreamAnswerResponse`
 
@@ -889,14 +898,15 @@ A class representing the status of a content retrieval operation.
 
 A class representing the response for a search operation.
 
-| Field                  | Type                                              | Description                                                  |
-| ---------------------- | ------------------------------------------------- | ------------------------------------------------------------ |
-| results                | List\[T]                                          | A list of search results.                                    |
-| resolved\_search\_type | Optional\[str]                                    | 'neural' or 'keyword' if auto.                               |
-| auto\_date             | Optional\[str]                                    | A date for filtering if autoprompt found one.                |
-| context                | Optional\[str]                                    | Combined context string when requested via contents.context. |
-| statuses               | Optional\[List\[[ContentStatus](#contentstatus)]] | Status list from get\_contents.                              |
-| cost\_dollars          | Optional\[[CostDollars](#costdollars)]            | Cost breakdown.                                              |
+| Field                  | Type                                              | Description                                                                                              |
+| ---------------------- | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| results                | List\[T]                                          | A list of search results.                                                                                |
+| resolved\_search\_type | Optional\[str]                                    | 'neural' or 'keyword' if auto.                                                                           |
+| auto\_date             | Optional\[str]                                    | A date for filtering if autoprompt found one.                                                            |
+| context                | Optional\[str]                                    | Deprecated. Combined context string when requested via contents.context. Use highlights or text instead. |
+| statuses               | Optional\[List\[[ContentStatus](#contentstatus)]] | Status list from get\_contents.                                                                          |
+| cost\_dollars          | Optional\[[CostDollars](#costdollars)]            | Cost breakdown.                                                                                          |
+| search\_time           | Optional\[float]                                  | Time taken for the search in milliseconds.                                                               |
 
 #### `CostDollars`
 
@@ -1167,19 +1177,24 @@ These types represent structured entity data returned for company or person sear
 
 Input type for JSON schema parameters. Can be either a Pydantic model class (automatically converted to JSON Schema) or a raw JSON Schema dictionary.
 
-**Type:** Union\[type\[[BaseModel](https://docs.pydantic.dev/latest/api/base_model/#BaseModel)], dict\[str, Any]]
+__Type:__ Union\[type\[[BaseModel](https://docs.pydantic.dev/latest/api/base_model/#BaseModel)], dict\[str, Any]]
 
 #### `Category`
 
 Data category to focus on when searching. Each category returns results specialized for that content type.
 
-**Type:** Literal\['company', 'research paper', 'news', 'pdf', 'tweet', 'personal site', 'financial report', 'people']
+__Type:** Literal\['company', 'research paper', 'news', 'pdf', 'tweet', 'personal site', 'financial report', 'people']
 
 #### `SearchType`
 
-Search type that determines the search algorithm. 'auto' (default) automatically selects the best approach, 'fast' prioritizes speed, 'deep' performs comprehensive multi-query search, 'neural' uses embedding-based semantic search.
+Search type that determines the search algorithm:
 
-**Type:** Literal\['auto', 'fast', 'deep', 'neural']
+* __auto__ (default): Automatically selects the best approach for highest quality results
+* __fast__: Prioritizes speed with streamlined search models
+* __deep__: Comprehensive multi-query search with automatic query expansion
+* __instant__: Lowest latency search optimized for real-time applications
+
+__Type:__ Literal\['auto', 'fast', 'deep', 'instant']
 
 #### `VERBOSITY_OPTIONS`
 
@@ -1189,45 +1204,45 @@ Verbosity levels for content filtering.
 * standard: Balanced content with more detail
 * full: Complete content including all sections
 
-**Type:** Literal\['compact', 'standard', 'full']
+__Type:__ Literal\['compact', 'standard', 'full']
 
 #### `SECTION_TAG`
 
 Section tags for semantic content filtering.
 
-**Type:** Literal\['unspecified', 'header', 'navigation', 'banner', 'body', 'sidebar', 'footer', 'metadata']
+__Type:__ Literal\['unspecified', 'header', 'navigation', 'banner', 'body', 'sidebar', 'footer', 'metadata']
 
 #### `Entity`
 
-**Type:** Union\[[CompanyEntity](#companyentity), [PersonEntity](#personentity)]
+__Type:__ Union\[[CompanyEntity](#companyentity), [PersonEntity](#personentity)]
 
 #### `ResearchModel`
 
-**Type:** Literal\['exa-research-fast', 'exa-research', 'exa-research-pro']
+__Type:__ Literal\['exa-research-fast', 'exa-research', 'exa-research-pro']
 
 #### `ResearchOperation`
 
-**Type:** Annotated\[Union\[[ResearchThinkOperation](#researchthinkoperation), [ResearchSearchOperation](#researchsearchoperation), [ResearchCrawlOperation](#researchcrawloperation)], Field(discriminator='type')]
+__Type:__ Annotated\[Union\[[ResearchThinkOperation](#researchthinkoperation), [ResearchSearchOperation](#researchsearchoperation), [ResearchCrawlOperation](#researchcrawloperation)], Field(discriminator='type')]
 
 #### `ResearchMetaEvent`
 
-**Type:** Union\[[ResearchDefinitionEvent](#researchdefinitionevent), [ResearchOutputEvent](#researchoutputevent)]
+__Type:__ Union\[[ResearchDefinitionEvent](#researchdefinitionevent), [ResearchOutputEvent](#researchoutputevent)]
 
 #### `ResearchPlanEvent`
 
-**Type:** Union\[[ResearchPlanDefinitionEvent](#researchplandefinitionevent), [ResearchPlanOperationEvent](#researchplanoperationevent), [ResearchPlanOutputEvent](#researchplanoutputevent)]
+__Type:__ Union\[[ResearchPlanDefinitionEvent](#researchplandefinitionevent), [ResearchPlanOperationEvent](#researchplanoperationevent), [ResearchPlanOutputEvent](#researchplanoutputevent)]
 
 #### `ResearchTaskEvent`
 
-**Type:** Union\[[ResearchTaskDefinitionEvent](#researchtaskdefinitionevent), [ResearchTaskOperationEvent](#researchtaskoperationevent), [ResearchTaskOutputEvent](#researchtaskoutputevent)]
+__Type:__ Union\[[ResearchTaskDefinitionEvent](#researchtaskdefinitionevent), [ResearchTaskOperationEvent](#researchtaskoperationevent), [ResearchTaskOutputEvent](#researchtaskoutputevent)]
 
 #### `ResearchEvent`
 
-**Type:** Union\[[ResearchMetaEvent](#researchmetaevent), [ResearchPlanEvent](#researchplanevent), [ResearchTaskEvent](#researchtaskevent)]
+__Type:__ Union\[[ResearchMetaEvent](#researchmetaevent), [ResearchPlanEvent](#researchplanevent), [ResearchTaskEvent](#researchtaskevent)]
 
 #### `ResearchDto`
 
-**Type:** Annotated\[Union\[[ResearchPendingDto](#researchpendingdto), [ResearchRunningDto](#researchrunningdto), [ResearchCompletedDto](#researchcompleteddto), [ResearchCanceledDto](#researchcanceleddto), [ResearchFailedDto](#researchfaileddto)], Field(discriminator='status')]
+__Type:__ Annotated\[Union\[[ResearchPendingDto](#researchpendingdto), [ResearchRunningDto](#researchrunningdto), [ResearchCompletedDto](#researchcompleteddto), [ResearchCanceledDto](#researchcanceleddto), [ResearchFailedDto](#researchfaileddto)], Field(discriminator='status')]
 
 #### `EntityCompanyPropertiesWorkforce`
 

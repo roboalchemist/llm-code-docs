@@ -1,0 +1,342 @@
+# Source: https://developers.cloudflare.com/agents/api-reference/websockets/index.md
+
+---
+
+title: WebSockets · Cloudflare Agents docs
+description: Agents support WebSocket connections for real-time, bi-directional
+  communication. This page covers server-side WebSocket handling. For
+  client-side connection, refer to the Client SDK.
+lastUpdated: 2026-02-05T16:44:57.000Z
+chatbotDeprioritize: false
+source_url:
+  html: https://developers.cloudflare.com/agents/api-reference/websockets/
+  md: https://developers.cloudflare.com/agents/api-reference/websockets/index.md
+---
+
+Agents support WebSocket connections for real-time, bi-directional communication. This page covers server-side WebSocket handling. For client-side connection, refer to the [Client SDK](https://developers.cloudflare.com/agents/api-reference/client-sdk/).
+
+## Handling connections
+
+Define `onConnect` and `onMessage` methods on your Agent to accept WebSocket connections:
+
+* JavaScript
+
+  ```js
+  import { Agent, Connection, ConnectionContext, WSMessage } from "agents";
+
+
+  export class ChatAgent extends Agent {
+    async onConnect(connection, ctx) {
+      // Connections are automatically accepted
+      // Access the original request for auth, headers, cookies
+      const url = new URL(ctx.request.url);
+      const token = url.searchParams.get("token");
+
+
+      if (!token) {
+        connection.close(4001, "Unauthorized");
+        return;
+      }
+
+
+      // Store user info on this connection
+      connection.setState({ authenticated: true });
+    }
+
+
+    async onMessage(connection, message) {
+      if (typeof message === "string") {
+        // Handle text message
+        const data = JSON.parse(message);
+        connection.send(JSON.stringify({ received: data }));
+      }
+    }
+  }
+  ```
+
+* TypeScript
+
+  ```ts
+  import { Agent, Connection, ConnectionContext, WSMessage } from "agents";
+
+
+  export class ChatAgent extends Agent {
+    async onConnect(connection: Connection, ctx: ConnectionContext) {
+      // Connections are automatically accepted
+      // Access the original request for auth, headers, cookies
+      const url = new URL(ctx.request.url);
+      const token = url.searchParams.get("token");
+
+
+      if (!token) {
+        connection.close(4001, "Unauthorized");
+        return;
+      }
+
+
+      // Store user info on this connection
+      connection.setState({ authenticated: true });
+    }
+
+
+    async onMessage(connection: Connection, message: WSMessage) {
+      if (typeof message === "string") {
+        // Handle text message
+        const data = JSON.parse(message);
+        connection.send(JSON.stringify({ received: data }));
+      }
+    }
+  }
+  ```
+
+## Connection object
+
+Each connected client has a unique `Connection` object:
+
+| Property/Method | Type | Description |
+| - | - | - |
+| `id` | `string` | Unique identifier for this connection |
+| `state` | `State` | Per-connection state object |
+| `setState(state)` | `void` | Update connection state |
+| `send(message)` | `void` | Send message to this client |
+| `close(code?, reason?)` | `void` | Close the connection |
+
+### Per-connection state
+
+Store data specific to each connection (user info, preferences, etc.):
+
+* JavaScript
+
+  ```js
+  export class ChatAgent extends Agent {
+    async onConnect(connection, ctx) {
+      const userId = new URL(ctx.request.url).searchParams.get("userId");
+
+
+      connection.setState({
+        userId: userId || "anonymous",
+        role: "user",
+        joinedAt: Date.now(),
+      });
+    }
+
+
+    async onMessage(connection, message) {
+      // Access connection-specific state
+      console.log(`Message from ${connection.state.userId}`);
+    }
+  }
+  ```
+
+* TypeScript
+
+  ```ts
+  interface ConnectionState {
+    userId: string;
+    role: "admin" | "user";
+    joinedAt: number;
+  }
+
+
+  export class ChatAgent extends Agent {
+    async onConnect(
+      connection: Connection<ConnectionState>,
+      ctx: ConnectionContext,
+    ) {
+      const userId = new URL(ctx.request.url).searchParams.get("userId");
+
+
+      connection.setState({
+        userId: userId || "anonymous",
+        role: "user",
+        joinedAt: Date.now(),
+      });
+    }
+
+
+    async onMessage(connection: Connection<ConnectionState>, message: WSMessage) {
+      // Access connection-specific state
+      console.log(`Message from ${connection.state.userId}`);
+    }
+  }
+  ```
+
+## Broadcasting to all clients
+
+Use `this.broadcast()` to send a message to all connected clients:
+
+* JavaScript
+
+  ```js
+  export class ChatAgent extends Agent {
+    async onMessage(connection, message) {
+      // Broadcast to all connected clients
+      this.broadcast(
+        JSON.stringify({
+          from: connection.id,
+          message: message,
+          timestamp: Date.now(),
+        }),
+      );
+    }
+
+
+    // Broadcast from any method
+    async notifyAll(event, data) {
+      this.broadcast(JSON.stringify({ event, data }));
+    }
+  }
+  ```
+
+* TypeScript
+
+  ```ts
+  export class ChatAgent extends Agent {
+    async onMessage(connection: Connection, message: WSMessage) {
+      // Broadcast to all connected clients
+      this.broadcast(
+        JSON.stringify({
+          from: connection.id,
+          message: message,
+          timestamp: Date.now(),
+        }),
+      );
+    }
+
+
+    // Broadcast from any method
+    async notifyAll(event: string, data: unknown) {
+      this.broadcast(JSON.stringify({ event, data }));
+    }
+  }
+  ```
+
+## Handling binary data
+
+Messages can be strings or binary (`ArrayBuffer` / `ArrayBufferView`):
+
+* JavaScript
+
+  ```js
+  export class FileAgent extends Agent {
+    async onMessage(connection, message) {
+      if (message instanceof ArrayBuffer) {
+        // Handle binary upload
+        const bytes = new Uint8Array(message);
+        await this.processFile(bytes);
+        connection.send(
+          JSON.stringify({ status: "received", size: bytes.length }),
+        );
+      } else if (typeof message === "string") {
+        // Handle text command
+        const command = JSON.parse(message);
+        // ...
+      }
+    }
+  }
+  ```
+
+* TypeScript
+
+  ```ts
+  export class FileAgent extends Agent {
+    async onMessage(connection: Connection, message: WSMessage) {
+      if (message instanceof ArrayBuffer) {
+        // Handle binary upload
+        const bytes = new Uint8Array(message);
+        await this.processFile(bytes);
+        connection.send(
+          JSON.stringify({ status: "received", size: bytes.length }),
+        );
+      } else if (typeof message === "string") {
+        // Handle text command
+        const command = JSON.parse(message);
+        // ...
+      }
+    }
+  }
+  ```
+
+## Error and close handling
+
+Handle connection errors and disconnections:
+
+* JavaScript
+
+  ```js
+  export class ChatAgent extends Agent {
+    async onError(connection, error) {
+      console.error(`Connection ${connection.id} error:`, error);
+      // Clean up any resources for this connection
+    }
+
+
+    async onClose(connection, code, reason, wasClean) {
+      console.log(`Connection ${connection.id} closed: ${code} ${reason}`);
+
+
+      // Notify other clients
+      this.broadcast(
+        JSON.stringify({
+          event: "user-left",
+          userId: connection.state?.userId,
+        }),
+      );
+    }
+  }
+  ```
+
+* TypeScript
+
+  ```ts
+  export class ChatAgent extends Agent {
+    async onError(connection: Connection, error: unknown) {
+      console.error(`Connection ${connection.id} error:`, error);
+      // Clean up any resources for this connection
+    }
+
+
+    async onClose(
+      connection: Connection,
+      code: number,
+      reason: string,
+      wasClean: boolean,
+    ) {
+      console.log(`Connection ${connection.id} closed: ${code} ${reason}`);
+
+
+      // Notify other clients
+      this.broadcast(
+        JSON.stringify({
+          event: "user-left",
+          userId: connection.state?.userId,
+        }),
+      );
+    }
+  }
+  ```
+
+## Message types
+
+| Type | Description |
+| - | - |
+| `string` | Text message (typically JSON) |
+| `ArrayBuffer` | Binary data |
+| `ArrayBufferView` | Typed array view of binary data |
+
+## Connecting from clients
+
+For browser connections, use the Agents client SDK:
+
+* **Vanilla JS**: `AgentClient` from `agents/client`
+* **React**: `useAgent` hook from `agents/react`
+
+Refer to [Client SDK](https://developers.cloudflare.com/agents/api-reference/client-sdk/) for full documentation.
+
+## Next steps
+
+[State synchronization](https://developers.cloudflare.com/agents/api-reference/store-and-sync-state/)Sync state between agents and clients.
+
+[Callable methods](https://developers.cloudflare.com/agents/api-reference/callable-methods/)RPC over WebSockets for method calls.
+
+[Cross-domain authentication](https://developers.cloudflare.com/agents/guides/cross-domain-authentication/)Secure WebSocket connections across domains.

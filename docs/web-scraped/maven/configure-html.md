@@ -1,0 +1,111 @@
+# Source: https://maven.apache.org/configure.html
+
+Title: Configuring Apache Maven – Maven
+
+URL Source: https://maven.apache.org/configure.html
+
+Markdown Content:
+[](https://maven.apache.org/configure.html)
+The configuration for Apache Maven itself and projects built with it resides in a number of places:
+
+[](https://maven.apache.org/configure.html)
+`MAVEN_OPTS` environment variable:[](https://maven.apache.org/configure.html#maven_opts-environment-variable)
+-------------------------------------------------------------------------------------------------------------
+
+This variable contains parameters used to start up the JVM running Maven and can be used to supply additional options to it. E.g. JVM memory settings can be defined with the value `-Xms256m -Xmx512m`.
+
+[](https://maven.apache.org/configure.html)
+`MAVEN_ARGS` environment variable:[](https://maven.apache.org/configure.html#maven_args-environment-variable)
+-------------------------------------------------------------------------------------------------------------
+
+Starting with Maven 3.9.0, this variable contains arguments passed to Maven before CLI arguments. E.g., options and goals could be defined with the value `-B -V checkstyle:checkstyle`.
+
+[](https://maven.apache.org/configure.html)
+`settings.xml` file:[](https://maven.apache.org/configure.html#settings-xml-file)
+---------------------------------------------------------------------------------
+
+Located in USER_HOME/.m2, the settings files is designed to contain any configuration for Maven usage across projects.
+
+[](https://maven.apache.org/configure.html)
+`.mvn` directory:[](https://maven.apache.org/configure.html#mvn-directory)
+--------------------------------------------------------------------------
+
+Located within the project's **top level directory**, the files
+
+* `maven.config`
+* `jvm.config`
+* `extensions.xml`
+
+contain project specific configuration for running Maven.
+
+This directory is part of the project and may be checked into version control.
+
+[](https://maven.apache.org/configure.html)
+
+### `.mvn/extensions.xml` file:[](https://maven.apache.org/configure.html#mvn-extensions-xml-file)
+
+The old way (up to Maven 3.2.5) was to create a jar (must be shaded if you have other dependencies) which contains the extension and put it manually into the `${MAVEN_HOME}/lib/ext` directory. This means you had to change the Maven installation. The consequence was that everyone who likes to use this needed to change its installation and on-boarding a developer was more inconvenient. The other option was to give the path to the jar on command line via `mvn -Dmaven.ext.class.path=extension.jar`. This has the drawback giving those options to your Maven build every time you call Maven. Not very convenient as well.
+
+From now on this can be done much more simpler and more Maven like way. Define an `.mvn/extensions.xml` file which looks like the following:
+
+1. `<extensions xmlns="http://maven.apache.org/EXTENSIONS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"`
+2. `xsi:schemaLocation="http://maven.apache.org/EXTENSIONS/1.1.0 https://maven.apache.org/xsd/core-extensions-1.1.0.xsd">`
+3. `<extension>`
+4. `<groupId/>`
+5. `<artifactId/>`
+6. `<version/>`
+7. `</extension>`
+8. `</extensions>`
+
+Now you can simply use an extension by defining the usual maven coordinates groupId, artifactId, version as any other artifact. Furthermore, all transitive dependencies of those extensions will automatically being downloaded from your repository. So no need to create a shaded artifact anymore.
+
+[](https://maven.apache.org/configure.html)
+
+### `.mvn/maven.config` file:[](https://maven.apache.org/configure.html#mvn-maven-config-file)
+
+It’s really hard to define a general set of options for calling the maven command line. Starting with Maven 3.3.1+, this could be solved by putting these options into a script, but this can now simply be done by defining `.mvn/maven.config` file which contains the configuration options for the `mvn` command line.
+
+For example things like `-T3 -U --fail-at-end`. So you only have to call Maven by using `mvn clean package` instead of `mvn -T3 -U --fail-at-end clean package` and not to miss the `-T3 -U --fail-at-end` options on every call. The `.mvn/maven.config` is located in the project's top level `.mvn` directory and also works in the root of a multi module build.
+
+**NOTICE** Starting with Maven **3.9.0**, each single argument must be put on a new line, and lines beginning with `#` are treated as comments. Maven 3.8.x and older do not support comments in this file. So, for the example mentioned above, your file could look like:
+
+```
+-T3
+# this is a comment
+-U 
+--fail-at-end
+```
+
+[](https://maven.apache.org/configure.html)
+
+### `.mvn/jvm.config` file:[](https://maven.apache.org/configure.html#mvn-jvm-config-file)
+
+Starting with Maven 3.3.1+ you can define JVM configuration via `.mvn/jvm.config` file which means you can define the options for your build on a per project base. This file will become part of your project and will be checked in along with your project. So no need anymore for `MAVEN_OPTS`, `.mavenrc` files.
+
+So for example if you put the following JVM options into the `.mvn/jvm.config` file
+
+```
+-Xmx2048m -Xms1024m -XX:MaxPermSize=512m -Djava.awt.headless=true
+```
+
+You don't need to use these options in `MAVEN_OPTS` or switch between different configurations.
+
+[](https://maven.apache.org/configure.html)
+
+### `.mavenrc` file:[](https://maven.apache.org/configure.html#mavenrc-file)
+
+Located in `$HOME/.mavenrc` (or `%USERPROFILE%\mavenrc.cmd` on Windows using Maven 4. Using Maven 3 the file needs to be `%USERPROFILE%\mavenrc_pre.cmd`) this file defines environment variables used when Maven builds the project. With this users can define environment variables in either the `settings.xml` or `pom.xml` and have them read the property that was set by the `.mavenrc` file.
+
+[](https://maven.apache.org/configure.html)
+Other guides[](https://maven.apache.org/configure.html#other-guides)
+--------------------------------------------------------------------
+
+The following guides contain further information to specific configuration aspects:
+
+* [Recommended Best Practice - Using a Repository Manager](https://maven.apache.org/repository-management.html)
+* [Documentation for settings.xml](https://maven.apache.org/settings.html)
+* [Configuring the logging](https://maven.apache.org/maven-logging.html)
+* [Configuring a HTTP Proxy](https://maven.apache.org/guides/mini/guide-proxies.html)
+* [Configuring a repository mirror](https://maven.apache.org/guides/mini/guide-mirror-settings.html)
+* [Various Tips for Configuring Maven](https://maven.apache.org/guides/mini/guide-configuring-maven.html)
+* [Password Encryption](https://maven.apache.org/guides/mini/guide-encryption.html)

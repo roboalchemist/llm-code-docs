@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-inferrable-types.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/no-inferrable-types.md
----
-
-### What it does
+## What it does
 
 Disallow explicit type declarations for variables or parameters initialized to a number, string, or boolean
 
-### Why is this bad?
+## Why is this bad?
 
 Explicitly typing variables or parameters that are initialized to a literal value is unnecessary because TypeScript can infer the type from the value.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -36,7 +32,7 @@ const fn = (a = 5, b = true, c = "foo") => {};
 
 This rule accepts a configuration object with the following properties:
 
-### ignoreParameters
+## ignoreParameters
 
 type: `boolean`
 
@@ -44,7 +40,7 @@ default: `false`
 
 When set to `true`, ignores type annotations on function parameters.
 
-### ignoreProperties
+## ignoreProperties
 
 type: `boolean`
 

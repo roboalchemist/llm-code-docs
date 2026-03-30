@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Evidence hidden by deleting system log file
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1070-indicator-removal](https://attack.mitre.org/techniques/T1070) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1070-indicator-removal](https://attack.mitre.org/techniques/T1070)
 ## What happened{% #what-happened %}
 
 The file `{{ @file.path }}` was deleted by the process `{{ @process.comm }}`. This may have been done to hide evidence.

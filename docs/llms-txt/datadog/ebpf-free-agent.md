@@ -269,7 +269,7 @@ start() {
 # Stop the service
 stop() {
        echo "Stopping my app"
-	pkill -f /usr/bin/myapp
+    pkill -f /usr/bin/myapp
 }
 
 ### main logic ###
@@ -383,7 +383,7 @@ start() {
 # Stop the service
 stop() {
        echo "Stopping my app"
-	pkill -f /opt/datadog-agent/embedded/bin/cws-instrumentation
+    pkill -f /opt/datadog-agent/embedded/bin/cws-instrumentation
 }
 
 ### main logic ###

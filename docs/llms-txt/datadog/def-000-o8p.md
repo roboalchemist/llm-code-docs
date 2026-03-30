@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Ensure All Files Are Owned b
 ---
 
 # Ensure All Files Are Owned by a Group
- 
+
 ## Description{% #description %}
 
 If any file is not group-owned by a valid defined group, the cause of the lack of group-ownership must be investigated. Following this, those files should be deleted or assigned to an appropriate group. The groups need to be defined in `/etc/group` or in `/usr/lib/group` if `nss-altfiles` are configured to be used in `/etc/nsswitch.conf`. Locate the mount points related to local devices by the following command:

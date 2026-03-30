@@ -11,7 +11,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Windows PowerShell Rubeus ex
 {% alert level="danger" %}
 This rule is part of a beta feature. To learn more, [contact Support](https://docs.datadoghq.com/help/).
 {% /alert %}
-Classification:attackTactic:[TA0008-lateral-movement](https://attack.mitre.org/tactics/TA0008)Technique:[T1550-use-alternate-authentication-material](https://attack.mitre.org/techniques/T1550) 
+Classification:attackTactic:[TA0008-lateral-movement](https://attack.mitre.org/tactics/TA0008)Technique:[T1550-use-alternate-authentication-material](https://attack.mitre.org/techniques/T1550)
 ## Goal{% #goal %}
 
 Detects execution of Rubeus, a Kerberos attack tool used for ticket extraction, modification, forgery, and replay attacks.

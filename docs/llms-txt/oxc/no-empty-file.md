@@ -1,10 +1,6 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/unicorn/no-empty-file.md
 
----
-url: /docs/guide/usage/linter/rules/unicorn/no-empty-file.md
----
-
-### What it does
+## What it does
 
 Disallows files that do not contain any meaningful code.
 
@@ -17,13 +13,13 @@ This includes files that consist only of:
 * Empty blocks (`{}`)
 * Hashbangs (`#!/usr/bin/env node`)
 
-### Why is this bad?
+## Why is this bad?
 
 Files with no executable or exportable content are typically unintentional
 or left over from refactoring. They clutter the codebase and may confuse
 tooling or developers by appearing to serve a purpose when they do not.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

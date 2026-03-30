@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Unauthenticated route without rate limit
- 
+
 ## Description{% #description %}
 
 Unauthenticated users are allowed to consume this exposed endpoint, which does not implement any rate-limiting protection.

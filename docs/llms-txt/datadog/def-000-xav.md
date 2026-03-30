@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Group Ownership of System Login Banner
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/etc/issue`, run the command:

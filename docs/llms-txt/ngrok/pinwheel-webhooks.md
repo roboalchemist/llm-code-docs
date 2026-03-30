@@ -1,0 +1,174 @@
+# Source: https://ngrok.com/docs/integrations/webhooks/pinwheel-webhooks.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://ngrok.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Pinwheel Webhooks
+
+> Develop and test Pinwheel webhooks from localhost.
+
+This guide explains how to use ngrok to receive Pinwheel webhooks on your localhost app.
+
+By integrating ngrok with Pinwheel, you can:
+
+* Develop and test Pinwheel webhooks locally without deploying to a public environment or setting up HTTPS.
+* Inspect and troubleshoot requests from Pinwheel in real time via the inspection UI and API.
+* Modify and replay Pinwheel webhook requests with a single click instead of reproducing events manually in your Pinwheel account.
+* Secure your app with Pinwheel webhook validation provided by ngrok.
+  Invalid requests are blocked by ngrok before reaching your app.
+
+## What you'll need
+
+* An [ngrok account](https://ngrok.com/signup) and your [authtoken](https://dashboard.ngrok.com/get-started/your-authtoken).
+* The [ngrok agent](https://ngrok.com/download) installed.
+* [Node.js](https://nodejs.org/) installed (for the sample app, or use your own app).
+* A Pinwheel account.
+
+## 1. Start your app
+
+For this tutorial, you can use the [sample Node.js app on GitHub](https://github.com/ngrok/ngrok-webhook-nodejs-sample).
+
+To install the sample, run the following in a terminal:
+
+```bash  theme={null}
+git clone https://github.com/ngrok/ngrok-webhook-nodejs-sample.git
+cd ngrok-webhook-nodejs-sample
+npm install
+```
+
+Then start the app:
+
+```bash  theme={null}
+npm start
+```
+
+The app runs on port 3000 by default.
+
+You can confirm it's running by visiting `http://localhost:3000`.
+The app logs request headers and body in the terminal and shows a message in the browser.
+
+## 2. Expose your app with ngrok
+
+Once your app is running locally, you're ready to put it online securely using ngrok.
+
+* Copy [your ngrok authtoken](https://dashboard.ngrok.com/get-started/your-authtoken) from the dashboard.
+
+<Tip>
+  The ngrok agent uses your authtoken to authenticate when you start a tunnel.
+</Tip>
+
+* Start ngrok:
+
+  ```bash  theme={null}
+  ngrok http 3000
+  ```
+
+* Copy the URL ngrok displays.
+  Your app is now exposed at that URL for use with Pinwheel.
+
+## 3. Configure Pinwheel to send webhooks
+
+Pinwheel can send webhook requests to your app when events occur in your account.
+To register for those events:
+
+* Sign in to the [Pinwheel Developer Portal](https://developer.getpinwheel.com/).
+
+* On the **Dashboard**, open the **API Keys** tab, click **Reveal Secret**, and note the **API Secret** and **Server** values.
+
+* Create the webhook with curl (replace `SERVER_URL`, `NGROK_URL`, and `API_SECRET` with your values):
+
+  ```bash  theme={null}
+  curl --request POST --url SERVER_URL/v1/webhooks \
+  --header 'x-api-secret: API_SECRET' \
+  --header 'Content-Type: application/json' --data '{
+      "url": "NGROK_URL",
+      "status": "active",
+      "enabled_events": [
+          "account.added",
+          "employment.added",
+          "identity.added",
+          "income.added"
+      ]
+  }'
+  ```
+
+* Confirm the response JSON has a **status** attribute with value `active`.
+
+### Run webhooks with Pinwheel and ngrok
+
+Pinwheel sends different request body contents depending on the events you enabled.
+With **account.added** subscribed, you can trigger calls by having users log into their payroll accounts via the Pinwheel API.
+
+Confirm your localhost app receives the event and logs both headers and body in the terminal.
+
+### Inspecting requests
+
+ngrok's [Traffic Inspector](https://dashboard.ngrok.com/traffic-inspector) captures all requests made through your ngrok endpoint to your localhost app.
+Select any request to view detailed information about both the request and response.
+
+<Info>
+  To avoid exposing secrets, accounts only collect traffic metadata by default.
+  You must enable full capture in the Observability section of [your account settings](https://dashboard.ngrok.com/settings) to capture complete request and response data.
+</Info>
+
+Use the traffic inspector to:
+
+* Validate webhook payloads and response data
+* Debug request headers, methods, and status codes
+* Troubleshoot integration issues without adding logging to your app
+
+### Replaying requests
+
+Test your webhook handling code without triggering new events from your service using the Traffic Inspector's replay feature:
+
+1. Send a test webhook from your service to generate traffic in your Traffic Inspector.
+
+2. Select the request you want to replay in the traffic inspector.
+
+3. Choose your replay option:
+   * Click **Replay** to send the exact same request again
+   * Select **Replay with modifications** to edit the request before sending
+
+4. (Optional) Modify the request: Edit any part of the original request, such as changing field values in the request body.
+
+5. Send the request by clicking **Replay**.
+
+Your local application will receive the replayed request and log the data to the terminal.
+
+## Secure webhook requests
+
+ngrok can verify that incoming requests are from your Pinwheel webhook so only that traffic reaches your app.
+
+<Note>
+  Webhook verification is limited to 500 validations per month on free accounts.
+  If you need more, you can upgrade to Hobbyist or Pay-as-you-go.
+  See [TPU Pricing](/pricing-limits/traffic-policy-unit-pricing/) for details.
+</Note>
+
+To add verification:
+
+* Create a Traffic Policy file named `pinwheel_policy.yml`.
+  Replace `{your api secret}` with the API Secret you noted when creating the webhook:
+
+  ```yaml  theme={null}
+  on_http_request:
+    - actions:
+        - type: verify-webhook
+          config:
+            provider: pinwheel
+            secret: "{your api secret}"
+  ```
+
+* Restart ngrok with the policy file:
+
+  ```bash  theme={null}
+  ngrok http 3000 --traffic-policy-file pinwheel_policy.yml
+  ```
+
+* Trigger an event (for example, via the Pinwheel API) to send a request.
+
+Your app should receive the request and log it in the terminal.
+
+
+Built with [Mintlify](https://mintlify.com).

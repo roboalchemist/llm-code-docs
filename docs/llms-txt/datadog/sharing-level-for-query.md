@@ -60,8 +60,8 @@ public without sharing class MyClass {
   public void test() {
     // SOSL query
     List<List<SObject>> searchList = [
-        FIND 'Acme*' 
-        IN ALL FIELDS 
+        FIND 'Acme*'
+        IN ALL FIELDS
         RETURNING Account(Id, Name), Contact(Id, FirstName, LastName), Opportunity(Id, Name)
     ];
 
@@ -116,6 +116,5 @@ public with sharing class MyClass {
   }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

@@ -489,7 +489,7 @@ Pipeline events can be submitted with a timestamp that is up to 18 hours in the 
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -516,7 +516,7 @@ Pipeline events can be submitted with a timestamp that is up to 18 hours in the 
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -544,7 +544,7 @@ Pipeline events can be submitted with a timestamp that is up to 18 hours in the 
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -851,7 +851,7 @@ Errors occurred.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/ci/pipeline" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -880,8 +880,8 @@ Errors occurred.
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/ci/pipeline" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -911,8 +911,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/ci/pipeline" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -940,8 +940,8 @@ EOF
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Send pipeline event returns "Request accepted for processing" response
@@ -949,59 +949,59 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CIAppCreatePipelineEventRequest{
-		Data: &datadogV2.CIAppCreatePipelineEventRequestDataSingleOrArray{
-			CIAppCreatePipelineEventRequestData: &datadogV2.CIAppCreatePipelineEventRequestData{
-				Attributes: &datadogV2.CIAppCreatePipelineEventRequestAttributes{
-					Resource: datadogV2.CIAppCreatePipelineEventRequestAttributesResource{
-						CIAppPipelineEventPipeline: &datadogV2.CIAppPipelineEventPipeline{
-							CIAppPipelineEventFinishedPipeline: &datadogV2.CIAppPipelineEventFinishedPipeline{
-								Level:        datadogV2.CIAPPPIPELINEEVENTPIPELINELEVEL_PIPELINE,
-								UniqueId:     "3eacb6f3-ff04-4e10-8a9c-46e6d054024a",
-								Name:         "Deploy to AWS",
-								Url:          "https://my-ci-provider.example/pipelines/my-pipeline/run/1",
-								Start:        time.Now().Add(time.Second * -120),
-								End:          time.Now().Add(time.Second * -30),
-								Status:       datadogV2.CIAPPPIPELINEEVENTPIPELINESTATUS_SUCCESS,
-								PartialRetry: false,
-								Git: *datadogV2.NewNullableCIAppGitInfo(&datadogV2.CIAppGitInfo{
-									RepositoryUrl: "https://github.com/DataDog/datadog-agent",
-									Sha:           "7f263865994b76066c4612fd1965215e7dcb4cd2",
-									AuthorEmail:   "john.doe@email.com",
-								}),
-							}}},
-				},
-				Type: datadogV2.CIAPPCREATEPIPELINEEVENTREQUESTDATATYPE_CIPIPELINE_RESOURCE_REQUEST.Ptr(),
-			}},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCIVisibilityPipelinesApi(apiClient)
-	resp, r, err := api.CreateCIAppPipelineEvent(ctx, body)
+    body := datadogV2.CIAppCreatePipelineEventRequest{
+        Data: &datadogV2.CIAppCreatePipelineEventRequestDataSingleOrArray{
+            CIAppCreatePipelineEventRequestData: &datadogV2.CIAppCreatePipelineEventRequestData{
+                Attributes: &datadogV2.CIAppCreatePipelineEventRequestAttributes{
+                    Resource: datadogV2.CIAppCreatePipelineEventRequestAttributesResource{
+                        CIAppPipelineEventPipeline: &datadogV2.CIAppPipelineEventPipeline{
+                            CIAppPipelineEventFinishedPipeline: &datadogV2.CIAppPipelineEventFinishedPipeline{
+                                Level:        datadogV2.CIAPPPIPELINEEVENTPIPELINELEVEL_PIPELINE,
+                                UniqueId:     "3eacb6f3-ff04-4e10-8a9c-46e6d054024a",
+                                Name:         "Deploy to AWS",
+                                Url:          "https://my-ci-provider.example/pipelines/my-pipeline/run/1",
+                                Start:        time.Now().Add(time.Second * -120),
+                                End:          time.Now().Add(time.Second * -30),
+                                Status:       datadogV2.CIAPPPIPELINEEVENTPIPELINESTATUS_SUCCESS,
+                                PartialRetry: false,
+                                Git: *datadogV2.NewNullableCIAppGitInfo(&datadogV2.CIAppGitInfo{
+                                    RepositoryUrl: "https://github.com/DataDog/datadog-agent",
+                                    Sha:           "7f263865994b76066c4612fd1965215e7dcb4cd2",
+                                    AuthorEmail:   "john.doe@email.com",
+                                }),
+                            }}},
+                },
+                Type: datadogV2.CIAPPCREATEPIPELINEEVENTREQUESTDATATYPE_CIPIPELINE_RESOURCE_REQUEST.Ptr(),
+            }},
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCIVisibilityPipelinesApi(apiClient)
+    resp, r, err := api.CreateCIAppPipelineEvent(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityPipelinesApi.CreateCIAppPipelineEvent`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityPipelinesApi.CreateCIAppPipelineEvent`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CIVisibilityPipelinesApi.CreateCIAppPipelineEvent`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CIVisibilityPipelinesApi.CreateCIAppPipelineEvent`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Send pipeline event with custom provider returns "Request accepted for processing" response
@@ -1009,60 +1009,60 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CIAppCreatePipelineEventRequest{
-		Data: &datadogV2.CIAppCreatePipelineEventRequestDataSingleOrArray{
-			CIAppCreatePipelineEventRequestData: &datadogV2.CIAppCreatePipelineEventRequestData{
-				Attributes: &datadogV2.CIAppCreatePipelineEventRequestAttributes{
-					ProviderName: datadog.PtrString("example-provider"),
-					Resource: datadogV2.CIAppCreatePipelineEventRequestAttributesResource{
-						CIAppPipelineEventPipeline: &datadogV2.CIAppPipelineEventPipeline{
-							CIAppPipelineEventFinishedPipeline: &datadogV2.CIAppPipelineEventFinishedPipeline{
-								Level:        datadogV2.CIAPPPIPELINEEVENTPIPELINELEVEL_PIPELINE,
-								UniqueId:     "3eacb6f3-ff04-4e10-8a9c-46e6d054024a",
-								Name:         "Deploy to AWS",
-								Url:          "https://my-ci-provider.example/pipelines/my-pipeline/run/1",
-								Start:        time.Now().Add(time.Second * -120),
-								End:          time.Now().Add(time.Second * -30),
-								Status:       datadogV2.CIAPPPIPELINEEVENTPIPELINESTATUS_SUCCESS,
-								PartialRetry: false,
-								Git: *datadogV2.NewNullableCIAppGitInfo(&datadogV2.CIAppGitInfo{
-									RepositoryUrl: "https://github.com/DataDog/datadog-agent",
-									Sha:           "7f263865994b76066c4612fd1965215e7dcb4cd2",
-									AuthorEmail:   "john.doe@email.com",
-								}),
-							}}},
-				},
-				Type: datadogV2.CIAPPCREATEPIPELINEEVENTREQUESTDATATYPE_CIPIPELINE_RESOURCE_REQUEST.Ptr(),
-			}},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCIVisibilityPipelinesApi(apiClient)
-	resp, r, err := api.CreateCIAppPipelineEvent(ctx, body)
+    body := datadogV2.CIAppCreatePipelineEventRequest{
+        Data: &datadogV2.CIAppCreatePipelineEventRequestDataSingleOrArray{
+            CIAppCreatePipelineEventRequestData: &datadogV2.CIAppCreatePipelineEventRequestData{
+                Attributes: &datadogV2.CIAppCreatePipelineEventRequestAttributes{
+                    ProviderName: datadog.PtrString("example-provider"),
+                    Resource: datadogV2.CIAppCreatePipelineEventRequestAttributesResource{
+                        CIAppPipelineEventPipeline: &datadogV2.CIAppPipelineEventPipeline{
+                            CIAppPipelineEventFinishedPipeline: &datadogV2.CIAppPipelineEventFinishedPipeline{
+                                Level:        datadogV2.CIAPPPIPELINEEVENTPIPELINELEVEL_PIPELINE,
+                                UniqueId:     "3eacb6f3-ff04-4e10-8a9c-46e6d054024a",
+                                Name:         "Deploy to AWS",
+                                Url:          "https://my-ci-provider.example/pipelines/my-pipeline/run/1",
+                                Start:        time.Now().Add(time.Second * -120),
+                                End:          time.Now().Add(time.Second * -30),
+                                Status:       datadogV2.CIAPPPIPELINEEVENTPIPELINESTATUS_SUCCESS,
+                                PartialRetry: false,
+                                Git: *datadogV2.NewNullableCIAppGitInfo(&datadogV2.CIAppGitInfo{
+                                    RepositoryUrl: "https://github.com/DataDog/datadog-agent",
+                                    Sha:           "7f263865994b76066c4612fd1965215e7dcb4cd2",
+                                    AuthorEmail:   "john.doe@email.com",
+                                }),
+                            }}},
+                },
+                Type: datadogV2.CIAPPCREATEPIPELINEEVENTREQUESTDATATYPE_CIPIPELINE_RESOURCE_REQUEST.Ptr(),
+            }},
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCIVisibilityPipelinesApi(apiClient)
+    resp, r, err := api.CreateCIAppPipelineEvent(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityPipelinesApi.CreateCIAppPipelineEvent`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityPipelinesApi.CreateCIAppPipelineEvent`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CIVisibilityPipelinesApi.CreateCIAppPipelineEvent`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CIVisibilityPipelinesApi.CreateCIAppPipelineEvent`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Send running pipeline event returns "Request accepted for processing" response
@@ -1070,54 +1070,54 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CIAppCreatePipelineEventRequest{
-		Data: &datadogV2.CIAppCreatePipelineEventRequestDataSingleOrArray{
-			CIAppCreatePipelineEventRequestData: &datadogV2.CIAppCreatePipelineEventRequestData{
-				Attributes: &datadogV2.CIAppCreatePipelineEventRequestAttributes{
-					Resource: datadogV2.CIAppCreatePipelineEventRequestAttributesResource{
-						CIAppPipelineEventPipeline: &datadogV2.CIAppPipelineEventPipeline{
-							CIAppPipelineEventInProgressPipeline: &datadogV2.CIAppPipelineEventInProgressPipeline{
-								Level:        datadogV2.CIAPPPIPELINEEVENTPIPELINELEVEL_PIPELINE,
-								UniqueId:     "3eacb6f3-ff04-4e10-8a9c-46e6d054024a",
-								Name:         "Deploy to AWS",
-								Url:          "https://my-ci-provider.example/pipelines/my-pipeline/run/1",
-								Start:        time.Now().Add(time.Second * -120),
-								Status:       datadogV2.CIAPPPIPELINEEVENTPIPELINEINPROGRESSSTATUS_RUNNING,
-								PartialRetry: false,
-								Git: *datadogV2.NewNullableCIAppGitInfo(&datadogV2.CIAppGitInfo{
-									RepositoryUrl: "https://github.com/DataDog/datadog-agent",
-									Sha:           "7f263865994b76066c4612fd1965215e7dcb4cd2",
-									AuthorEmail:   "john.doe@email.com",
-								}),
-							}}},
-				},
-				Type: datadogV2.CIAPPCREATEPIPELINEEVENTREQUESTDATATYPE_CIPIPELINE_RESOURCE_REQUEST.Ptr(),
-			}},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCIVisibilityPipelinesApi(apiClient)
-	resp, r, err := api.CreateCIAppPipelineEvent(ctx, body)
+    body := datadogV2.CIAppCreatePipelineEventRequest{
+        Data: &datadogV2.CIAppCreatePipelineEventRequestDataSingleOrArray{
+            CIAppCreatePipelineEventRequestData: &datadogV2.CIAppCreatePipelineEventRequestData{
+                Attributes: &datadogV2.CIAppCreatePipelineEventRequestAttributes{
+                    Resource: datadogV2.CIAppCreatePipelineEventRequestAttributesResource{
+                        CIAppPipelineEventPipeline: &datadogV2.CIAppPipelineEventPipeline{
+                            CIAppPipelineEventInProgressPipeline: &datadogV2.CIAppPipelineEventInProgressPipeline{
+                                Level:        datadogV2.CIAPPPIPELINEEVENTPIPELINELEVEL_PIPELINE,
+                                UniqueId:     "3eacb6f3-ff04-4e10-8a9c-46e6d054024a",
+                                Name:         "Deploy to AWS",
+                                Url:          "https://my-ci-provider.example/pipelines/my-pipeline/run/1",
+                                Start:        time.Now().Add(time.Second * -120),
+                                Status:       datadogV2.CIAPPPIPELINEEVENTPIPELINEINPROGRESSSTATUS_RUNNING,
+                                PartialRetry: false,
+                                Git: *datadogV2.NewNullableCIAppGitInfo(&datadogV2.CIAppGitInfo{
+                                    RepositoryUrl: "https://github.com/DataDog/datadog-agent",
+                                    Sha:           "7f263865994b76066c4612fd1965215e7dcb4cd2",
+                                    AuthorEmail:   "john.doe@email.com",
+                                }),
+                            }}},
+                },
+                Type: datadogV2.CIAPPCREATEPIPELINEEVENTREQUESTDATATYPE_CIPIPELINE_RESOURCE_REQUEST.Ptr(),
+            }},
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCIVisibilityPipelinesApi(apiClient)
+    resp, r, err := api.CreateCIAppPipelineEvent(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityPipelinesApi.CreateCIAppPipelineEvent`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityPipelinesApi.CreateCIAppPipelineEvent`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CIVisibilityPipelinesApi.CreateCIAppPipelineEvent`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CIVisibilityPipelinesApi.CreateCIAppPipelineEvent`:\n%s\n", responseContent)
 }
 ```
 
@@ -1125,7 +1125,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Send pipeline event returns "Request accepted for processing" response
@@ -1194,7 +1194,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Send pipeline event with custom provider returns "Request accepted for processing" response
@@ -1264,7 +1264,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Send running pipeline event returns "Request accepted for processing" response
@@ -1338,7 +1338,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -1393,7 +1393,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -1449,7 +1449,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -1509,7 +1509,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Send pipeline event returns "Request accepted for processing" response
@@ -1542,7 +1542,7 @@ body = DatadogAPIClient::V2::CIAppCreatePipelineEventRequest.new({
 p api_instance.create_ci_app_pipeline_event(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Send pipeline event with custom provider returns "Request accepted for processing" response
@@ -1576,7 +1576,7 @@ body = DatadogAPIClient::V2::CIAppCreatePipelineEventRequest.new({
 p api_instance.create_ci_app_pipeline_event(body)
 ```
 
-##### 
+#####
 
 ```ruby
 # Send running pipeline event returns "Request accepted for processing" response
@@ -1612,7 +1612,7 @@ p api_instance.create_ci_app_pipeline_event(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Send pipeline event returns "Request accepted for processing" response
@@ -1688,7 +1688,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Send pipeline event with custom provider returns "Request accepted for
@@ -1765,7 +1765,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Send running pipeline event returns "Request accepted for processing" response
@@ -1842,7 +1842,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -1889,7 +1889,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -1937,7 +1937,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -2181,13 +2181,13 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                   \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/ci/pipelines/events" \
 -H "Accept: application/json" \
 -H "DD-API-KEY: ${DD_API_KEY}" \
 -H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
-                
-##### 
+
+#####
 
 ```python
 """
@@ -2216,7 +2216,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Get a list of pipelines events returns "OK" response
@@ -2236,7 +2236,7 @@ p api_instance.list_ci_app_pipeline_events(opts)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```go
 // Get a list of pipelines events returns "OK" response
@@ -2244,30 +2244,30 @@ First [install the library and its dependencies](https://docs.datadoghq.com/api/
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
-	"time"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
+    "time"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCIVisibilityPipelinesApi(apiClient)
-	resp, r, err := api.ListCIAppPipelineEvents(ctx, *datadogV2.NewListCIAppPipelineEventsOptionalParameters().WithFilterQuery("@ci.provider.name:circleci").WithFilterFrom(time.Now().Add(time.Minute * -30)).WithFilterTo(time.Now()).WithPageLimit(5))
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCIVisibilityPipelinesApi(apiClient)
+    resp, r, err := api.ListCIAppPipelineEvents(ctx, *datadogV2.NewListCIAppPipelineEventsOptionalParameters().WithFilterQuery("@ci.provider.name:circleci").WithFilterFrom(time.Now().Add(time.Minute * -30)).WithFilterTo(time.Now()).WithPageLimit(5))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityPipelinesApi.ListCIAppPipelineEvents`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityPipelinesApi.ListCIAppPipelineEvents`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CIVisibilityPipelinesApi.ListCIAppPipelineEvents`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CIVisibilityPipelinesApi.ListCIAppPipelineEvents`:\n%s\n", responseContent)
 }
 ```
 
@@ -2275,7 +2275,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Get a list of pipelines events returns "OK" response
@@ -2315,7 +2315,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```rust
 // Get a list of pipelines events returns "OK" response
@@ -2357,7 +2357,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -2420,7 +2420,7 @@ OAuth apps require the `ci_visibility_read` authorization [scope](https://docs.d
 
 ### Request
 
-#### Body Data 
+#### Body Data
 
 
 
@@ -2443,7 +2443,7 @@ OAuth apps require the `ci_visibility_read` authorization [scope](https://docs.d
 {% /tab %}
 
 {% tab title="Example" %}
-##### 
+#####
 
 ```json
 {
@@ -2462,7 +2462,7 @@ OAuth apps require the `ci_visibility_read` authorization [scope](https://docs.d
 }
 ```
 
-##### 
+#####
 
 ```json
 {
@@ -2635,7 +2635,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/ci/pipelines/events/search" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2657,8 +2657,8 @@ API error response.
   "sort": "timestamp"
 }
 EOF
-                        
-##### 
+
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/ci/pipelines/events/search" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -2679,8 +2679,8 @@ EOF
   "sort": "timestamp"
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Search pipelines events returns "OK" response
@@ -2688,47 +2688,47 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CIAppPipelineEventsRequest{
-		Filter: &datadogV2.CIAppPipelinesQueryFilter{
-			From:  datadog.PtrString("now-15m"),
-			Query: datadog.PtrString("@ci.provider.name:github AND @ci.status:error"),
-			To:    datadog.PtrString("now"),
-		},
-		Options: &datadogV2.CIAppQueryOptions{
-			Timezone: datadog.PtrString("GMT"),
-		},
-		Page: &datadogV2.CIAppQueryPageOptions{
-			Limit: datadog.PtrInt32(5),
-		},
-		Sort: datadogV2.CIAPPSORT_TIMESTAMP_ASCENDING.Ptr(),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCIVisibilityPipelinesApi(apiClient)
-	resp, r, err := api.SearchCIAppPipelineEvents(ctx, *datadogV2.NewSearchCIAppPipelineEventsOptionalParameters().WithBody(body))
+    body := datadogV2.CIAppPipelineEventsRequest{
+        Filter: &datadogV2.CIAppPipelinesQueryFilter{
+            From:  datadog.PtrString("now-15m"),
+            Query: datadog.PtrString("@ci.provider.name:github AND @ci.status:error"),
+            To:    datadog.PtrString("now"),
+        },
+        Options: &datadogV2.CIAppQueryOptions{
+            Timezone: datadog.PtrString("GMT"),
+        },
+        Page: &datadogV2.CIAppQueryPageOptions{
+            Limit: datadog.PtrInt32(5),
+        },
+        Sort: datadogV2.CIAPPSORT_TIMESTAMP_ASCENDING.Ptr(),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCIVisibilityPipelinesApi(apiClient)
+    resp, r, err := api.SearchCIAppPipelineEvents(ctx, *datadogV2.NewSearchCIAppPipelineEventsOptionalParameters().WithBody(body))
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityPipelinesApi.SearchCIAppPipelineEvents`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityPipelinesApi.SearchCIAppPipelineEvents`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CIVisibilityPipelinesApi.SearchCIAppPipelineEvents`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CIVisibilityPipelinesApi.SearchCIAppPipelineEvents`:\n%s\n", responseContent)
 }
 ```
 
-##### 
+#####
 
 ```go
 // Search pipelines events returns "OK" response with pagination
@@ -2736,42 +2736,42 @@ func main() {
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CIAppPipelineEventsRequest{
-		Filter: &datadogV2.CIAppPipelinesQueryFilter{
-			From: datadog.PtrString("now-30s"),
-			To:   datadog.PtrString("now"),
-		},
-		Options: &datadogV2.CIAppQueryOptions{
-			Timezone: datadog.PtrString("GMT"),
-		},
-		Page: &datadogV2.CIAppQueryPageOptions{
-			Limit: datadog.PtrInt32(2),
-		},
-		Sort: datadogV2.CIAPPSORT_TIMESTAMP_ASCENDING.Ptr(),
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCIVisibilityPipelinesApi(apiClient)
-	resp, _ := api.SearchCIAppPipelineEventsWithPagination(ctx, *datadogV2.NewSearchCIAppPipelineEventsOptionalParameters().WithBody(body))
+    body := datadogV2.CIAppPipelineEventsRequest{
+        Filter: &datadogV2.CIAppPipelinesQueryFilter{
+            From: datadog.PtrString("now-30s"),
+            To:   datadog.PtrString("now"),
+        },
+        Options: &datadogV2.CIAppQueryOptions{
+            Timezone: datadog.PtrString("GMT"),
+        },
+        Page: &datadogV2.CIAppQueryPageOptions{
+            Limit: datadog.PtrInt32(2),
+        },
+        Sort: datadogV2.CIAPPSORT_TIMESTAMP_ASCENDING.Ptr(),
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCIVisibilityPipelinesApi(apiClient)
+    resp, _ := api.SearchCIAppPipelineEventsWithPagination(ctx, *datadogV2.NewSearchCIAppPipelineEventsOptionalParameters().WithBody(body))
 
-	for paginationResult := range resp {
-		if paginationResult.Error != nil {
-			fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityPipelinesApi.SearchCIAppPipelineEvents`: %v\n", paginationResult.Error)
-		}
-		responseContent, _ := json.MarshalIndent(paginationResult.Item, "", "  ")
-		fmt.Fprintf(os.Stdout, "%s\n", responseContent)
-	}
+    for paginationResult := range resp {
+        if paginationResult.Error != nil {
+            fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityPipelinesApi.SearchCIAppPipelineEvents`: %v\n", paginationResult.Error)
+        }
+        responseContent, _ := json.MarshalIndent(paginationResult.Item, "", "  ")
+        fmt.Fprintf(os.Stdout, "%s\n", responseContent)
+    }
 }
 ```
 
@@ -2779,7 +2779,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Search pipelines events returns "OK" response
@@ -2828,7 +2828,7 @@ public class Example {
 }
 ```
 
-##### 
+#####
 
 ```java
 // Search pipelines events returns "OK" response with pagination
@@ -2879,7 +2879,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -2917,7 +2917,7 @@ with ApiClient(configuration) as api_client:
     print(response)
 ```
 
-##### 
+#####
 
 ```python
 """
@@ -2958,7 +2958,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Search pipelines events returns "OK" response
@@ -2986,7 +2986,7 @@ opts = {
 p api_instance.search_ci_app_pipeline_events(opts)
 ```
 
-##### 
+#####
 
 ```ruby
 # Search pipelines events returns "OK" response with pagination
@@ -3017,7 +3017,7 @@ api_instance.search_ci_app_pipeline_events_with_pagination(opts) { |item| puts i
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Search pipelines events returns "OK" response
@@ -3057,7 +3057,7 @@ async fn main() {
 }
 ```
 
-##### 
+#####
 
 ```rust
 // Search pipelines events returns "OK" response with pagination
@@ -3103,7 +3103,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**
@@ -3142,7 +3142,7 @@ apiInstance
   .catch((error: any) => console.error(error));
 ```
 
-##### 
+#####
 
 ```typescript
 /**
@@ -3437,7 +3437,7 @@ API error response.
 
 ### Code Example
 
-##### 
+#####
                           \# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v2/ci/pipelines/analytics/aggregate" \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
@@ -3469,8 +3469,8 @@ API error response.
   }
 }
 EOF
-                        
-##### 
+
+#####
 
 ```go
 // Aggregate pipelines events returns "OK" response
@@ -3478,54 +3478,54 @@ EOF
 package main
 
 import (
-	"context"
-	"encoding/json"
-	"fmt"
-	"os"
+    "context"
+    "encoding/json"
+    "fmt"
+    "os"
 
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
-	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+    "github.com/DataDog/datadog-api-client-go/v2/api/datadogV2"
 )
 
 func main() {
-	body := datadogV2.CIAppPipelinesAggregateRequest{
-		Compute: []datadogV2.CIAppCompute{
-			{
-				Aggregation: datadogV2.CIAPPAGGREGATIONFUNCTION_PERCENTILE_90,
-				Metric:      datadog.PtrString("@duration"),
-				Type:        datadogV2.CIAPPCOMPUTETYPE_TOTAL.Ptr(),
-			},
-		},
-		Filter: &datadogV2.CIAppPipelinesQueryFilter{
-			From:  datadog.PtrString("now-15m"),
-			Query: datadog.PtrString("@ci.provider.name:(gitlab OR github)"),
-			To:    datadog.PtrString("now"),
-		},
-		GroupBy: []datadogV2.CIAppPipelinesGroupBy{
-			{
-				Facet: "@ci.status",
-				Limit: datadog.PtrInt64(10),
-				Total: &datadogV2.CIAppGroupByTotal{
-					CIAppGroupByTotalBoolean: datadog.PtrBool(false)},
-			},
-		},
-		Options: &datadogV2.CIAppQueryOptions{
-			Timezone: datadog.PtrString("GMT"),
-		},
-	}
-	ctx := datadog.NewDefaultContext(context.Background())
-	configuration := datadog.NewConfiguration()
-	apiClient := datadog.NewAPIClient(configuration)
-	api := datadogV2.NewCIVisibilityPipelinesApi(apiClient)
-	resp, r, err := api.AggregateCIAppPipelineEvents(ctx, body)
+    body := datadogV2.CIAppPipelinesAggregateRequest{
+        Compute: []datadogV2.CIAppCompute{
+            {
+                Aggregation: datadogV2.CIAPPAGGREGATIONFUNCTION_PERCENTILE_90,
+                Metric:      datadog.PtrString("@duration"),
+                Type:        datadogV2.CIAPPCOMPUTETYPE_TOTAL.Ptr(),
+            },
+        },
+        Filter: &datadogV2.CIAppPipelinesQueryFilter{
+            From:  datadog.PtrString("now-15m"),
+            Query: datadog.PtrString("@ci.provider.name:(gitlab OR github)"),
+            To:    datadog.PtrString("now"),
+        },
+        GroupBy: []datadogV2.CIAppPipelinesGroupBy{
+            {
+                Facet: "@ci.status",
+                Limit: datadog.PtrInt64(10),
+                Total: &datadogV2.CIAppGroupByTotal{
+                    CIAppGroupByTotalBoolean: datadog.PtrBool(false)},
+            },
+        },
+        Options: &datadogV2.CIAppQueryOptions{
+            Timezone: datadog.PtrString("GMT"),
+        },
+    }
+    ctx := datadog.NewDefaultContext(context.Background())
+    configuration := datadog.NewConfiguration()
+    apiClient := datadog.NewAPIClient(configuration)
+    api := datadogV2.NewCIVisibilityPipelinesApi(apiClient)
+    resp, r, err := api.AggregateCIAppPipelineEvents(ctx, body)
 
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityPipelinesApi.AggregateCIAppPipelineEvents`: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CIVisibilityPipelinesApi.AggregateCIAppPipelineEvents`: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 
-	responseContent, _ := json.MarshalIndent(resp, "", "  ")
-	fmt.Fprintf(os.Stdout, "Response from `CIVisibilityPipelinesApi.AggregateCIAppPipelineEvents`:\n%s\n", responseContent)
+    responseContent, _ := json.MarshalIndent(resp, "", "  ")
+    fmt.Fprintf(os.Stdout, "Response from `CIVisibilityPipelinesApi.AggregateCIAppPipelineEvents`:\n%s\n", responseContent)
 }
 ```
 
@@ -3533,7 +3533,7 @@ func main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
-##### 
+#####
 
 ```java
 // Aggregate pipelines events returns "OK" response
@@ -3598,7 +3598,7 @@ public class Example {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
-##### 
+#####
 
 ```python
 """
@@ -3652,7 +3652,7 @@ with ApiClient(configuration) as api_client:
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
-##### 
+#####
 
 ```ruby
 # Aggregate pipelines events returns "OK" response
@@ -3691,7 +3691,7 @@ p api_instance.aggregate_ci_app_pipeline_events(body)
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
-##### 
+#####
 
 ```rust
 // Aggregate pipelines events returns "OK" response
@@ -3739,7 +3739,7 @@ async fn main() {
 
 First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
     DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
-##### 
+#####
 
 ```typescript
 /**

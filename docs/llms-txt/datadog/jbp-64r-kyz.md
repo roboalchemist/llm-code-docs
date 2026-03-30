@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Each controller should use individual service account credentials
-Classification:complianceFramework:cis-kubernetesControl:1.3.3 
+Classification:complianceFramework:cis-kubernetesControl:1.3.3
 ## Description{% #description %}
 
 Use individual service account credentials for each controller.

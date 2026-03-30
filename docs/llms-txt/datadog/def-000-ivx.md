@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Security Group should restrict UDP access from the internet
- 
+
 ## Description{% #description %}
 
 Regular evaluation of network security groups is essential to identify and address any misconfigurations related to ports. It is important to assess the necessity of certain ports and protocols that may be exposed to the internet and restrict them if they are not explicitly required. This is crucial as broad exposure of UDP services can lead to potential security issues, such as attackers utilizing DDoS amplification techniques to cause disruptions within the Azure Virtual Network and even target external networked devices. Commonly exploited UDP-based services, including DNS, NTP, SSDP, SNMP, and CLDAP, can be used as amplification sources by attackers.

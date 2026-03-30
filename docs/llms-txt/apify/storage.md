@@ -1,21 +1,59 @@
-# Source: https://docs.apify.com/platform/storage.md
+# Source: https://docs.apify.com/sdk/python/reference/class/Storage.md
 
-# Storage
+# Storage<!-- -->
 
-**Store anything from images and key-value pairs to structured output data. Learn how to access and manage your stored data on the Apify Console or via the API.**
+Base class for storages.
 
-***
+### Hierarchy
 
-The Apify platform provides three types of storage accessible both within our [Apify Console](https://console.apify.com/storage) and externally through our [REST API](https://docs.apify.com/api/v2.md) [Apify API Clients](https://docs.apify.com/api.md) or [SDKs](https://docs.apify.com/sdk.md).
+* *Storage*
 
-#### [Dataset](https://docs.apify.com/platform/storage/dataset.md)
+  * [KeyValueStore](https://crawlee.dev/python/api/class/KeyValueStore)
+  * [Dataset](https://crawlee.dev/python/api/class/Dataset)
+  * [RequestQueue](https://crawlee.dev/python/api/class/RequestQueue)
 
-[Stores results from web scraping and data processing, with each Actor run getting a unique dataset. Features include table-like data visualization and multiple export formats like JSON and Excel.](https://docs.apify.com/platform/storage/dataset.md)
+## Index[**](#Index)
 
-#### [Key-value store](https://docs.apify.com/platform/storage/key-value-store.md)
+### Methods
 
-[Stores various data types like JSON, HTML, images, and strings. Accessible via Apify Console or API, it's ideal for diverse data storage needs.​](https://docs.apify.com/platform/storage/key-value-store.md)
+* [](https://crawlee.dev/python/api/class/Storage#drop)
+* [](https://crawlee.dev/python/api/class/Storage#get_metadata)
+* [](https://crawlee.dev/python/api/class/Storage#open)
+* [](https://crawlee.dev/python/api/class/Storage#purge)
 
-#### [Request queue](https://docs.apify.com/platform/storage/request-queue.md)
+### Properties
 
-[Manages URL processing for web crawling and other tasks. Supports different crawling orders and allows for querying and updating URLs, accessible via Apify Console or API​.](https://docs.apify.com/platform/storage/request-queue.md)
+* [**id](https://docs.apify.com/sdk/python/sdk/python/reference/class/Storage.md#id)
+* [**name](https://docs.apify.com/sdk/python/sdk/python/reference/class/Storage.md#name)
+
+## Methods<!-- -->[**](#Methods)
+
+### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/crawlee/storages/_base.py#L57)
+
+:
+
+### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/crawlee/storages/_base.py#L29)
+
+:
+
+### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/crawlee/storages/_base.py#L34)
+
+:
+
+### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/crawlee/storages/_base.py#L61)
+
+:
+
+## Properties<!-- -->[**](#Properties)
+
+### [**](#id)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storages/_base.py#L20)id
+
+**id: str
+
+Get the storage ID.
+
+### [**](#name)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storages/_base.py#L25)name
+
+**name: str | None
+
+Get the storage name.

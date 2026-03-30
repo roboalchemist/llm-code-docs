@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > Unfamiliar kernel module loa
 ---
 
 # Unfamiliar kernel module loaded
-Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1547-boot-or-logon-autostart-execution](https://attack.mitre.org/techniques/T1547) 
+Classification:attackTactic:[TA0003-persistence](https://attack.mitre.org/tactics/TA0003)Technique:[T1547-boot-or-logon-autostart-execution](https://attack.mitre.org/techniques/T1547)
 ## What happened{% #what-happened %}
 
 A previously unseen kernel module, `{{ @module.name }}`, was loaded.

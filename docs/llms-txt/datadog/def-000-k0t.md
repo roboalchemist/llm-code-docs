@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Service exposes publicly debugging endpoints
- 
+
 ## Description{% #description %}
 
 This API exposes a debug endpoint in a production environment. Frameworks sometimes expose debugging features that are helpful during development. However, those features could be abused by attackers and should be disabled before being deployed to production.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # All AppArmor Profiles are in enforce or complain mode
- 
+
 ## Description{% #description %}
 
 AppArmor profiles define what resources applications are able to access. To set all profiles to either `enforce` or `complain` mode run the following command to set all profiles to `enforce` mode:
@@ -62,19 +62,19 @@ APPARMOR_MODE="$var_apparmor_mode"
 
 if [ "$APPARMOR_MODE" = "enforce" ]
 then
-  
+
   # Set all profiles to enforce mode except disabled profiles
   find /etc/apparmor.d -maxdepth 1 ! -type d -exec bash -c '[[ -e "/etc/apparmor.d/disable/$(basename "$1")" ]] || aa-enforce "$1"' _ {} \;
-  
+
 fi
 
 if [ "$APPARMOR_MODE" = "complain" ]
 then
-  
+
   # Load all not-loaded profiles into complain mode
   apparmor_parser -a --Complain /etc/apparmor.d/
   echo "***WARNING***: This remediation will not downgrade any existing AppArmor profiles."
-  
+
 fi
 
 if [ "$APPARMOR_MODE" = "keep_existing_mode" ]

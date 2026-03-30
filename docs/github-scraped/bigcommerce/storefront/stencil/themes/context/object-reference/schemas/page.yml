@@ -1,0 +1,28 @@
+description: |-
+  `{{page}}` object present on content pages, and forms.
+
+  **Handlebars Expression**: `{{page}}`
+type: object
+properties:
+  breadcrumbs:
+    description: Present if page has ancestors.
+    type: array
+    items: {}
+  content:
+    type: string
+    description: HTML content of the page
+  id:
+    type: integer
+  sub_pages:
+    type: array
+    description: Array of child pages
+    items:
+      type: object
+      properties:
+        title:
+          type: string
+        url:
+          type: string
+  title:
+    type: string
+    description: Title of this child page

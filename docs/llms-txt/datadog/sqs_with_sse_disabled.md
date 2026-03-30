@@ -73,7 +73,7 @@ Resources:
     Properties:
       QueueName: "SampleQueue"
       SqsManagedSseEnabled: true
-      
+
 ```
 
 ```json

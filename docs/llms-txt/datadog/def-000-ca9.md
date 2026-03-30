@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Endpoint accepts JWT with known security limitations
- 
+
 ## Description{% #description %}
 
 This publicly exposed API endpoint accepts JWT signed using HMAC and a symmetric key (such as `HS256`).Although not vulnerable in themselves and very easy to setup, this model comes with limitations that have to be considered in the design.

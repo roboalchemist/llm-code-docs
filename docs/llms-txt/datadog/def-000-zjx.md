@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Okta policy rule modified to downgrade MFA
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562)
 ## Goal{% #goal %}
 
 Detects modification of an Okta policy rule that downgrades multiâfactor authentication to `1FA`. Alerts when a policy rule is updated to require singleâfactor authentication.

@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Classic Load Balancer listener should use a secure configuration
- 
+
 ## Description{% #description %}
 
 Use a secure protocol and cipher to protect communication between the client and your Classic Elastic Load Balancers (ELBs). TLS 1.0 and 1.1 are vulnerable to attacks due to multiple insecurities, for this reason we recommend the use of `ELBSecurityPolicy-TLS-1-2-2017-01` which authorizes TLS 1.2.

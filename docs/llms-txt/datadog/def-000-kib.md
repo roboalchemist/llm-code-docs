@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Azure custom administrator roles should be disabled
- 
+
 ## Description{% #description %}
 
 Avoid the use of custom administrator roles, as they are error prone. Instead, use Azure's built-in least privilege 'job' roles. Audit and remove custom roles if at all possible.

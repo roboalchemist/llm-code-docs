@@ -32,23 +32,23 @@ Use [the Cloudcraft API](https://developers.cloudcraft.co/) to programmatically 
 
 ```json
 {
-	"type": "azuredisk",
-	"id": "17e69a0d-4632-42bd-a6c1-f3b9213604ea",
-	"resourceId": "/subscriptions/b59a176b-3a5d-4cc6-ab8c-585984717c32/resourceGroups/CLOUDCRAFT/providers/Microsoft.Compute/disks/documentation-volume",
-	"region": "eastus",
-	"mapPos": [-2,12],
-	"tier": "P4",
-	"diskSizeGb": 32,
-	"color": {
-		"isometric": "#CEE0F5",
-		"2d": "null"
-	},
-	"accentColor": {
-		"isometric": "#0078D4",
-		"2d": "null"
-	},
-	"link": "https://azure.microsoft.com/products/storage/disks",
-	"locked": true
+    "type": "azuredisk",
+    "id": "17e69a0d-4632-42bd-a6c1-f3b9213604ea",
+    "resourceId": "/subscriptions/b59a176b-3a5d-4cc6-ab8c-585984717c32/resourceGroups/CLOUDCRAFT/providers/Microsoft.Compute/disks/documentation-volume",
+    "region": "eastus",
+    "mapPos": [-2,12],
+    "tier": "P4",
+    "diskSizeGb": 32,
+    "color": {
+        "isometric": "#CEE0F5",
+        "2d": "null"
+    },
+    "accentColor": {
+        "isometric": "#0078D4",
+        "2d": "null"
+    },
+    "link": "https://azure.microsoft.com/products/storage/disks",
+    "locked": true
 }
 ```
 

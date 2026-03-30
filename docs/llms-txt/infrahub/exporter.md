@@ -1,0 +1,27 @@
+# Source: https://docs.infrahub.app/exporter.md
+
+# Infrahub Exporter
+
+Infrahub Exporter is a service that exports metrics and service discovery information from Infrahub to monitoring systems like Prometheus and OpenTelemetry.
+
+## Overview[​](#overview "Direct link to Overview")
+
+Infrahub Exporter acts as a bridge between your Infrahub instance and monitoring tools, providing:
+
+1. **Metrics Export**: Collects and exposes metrics from Infrahub nodes for monitoring
+2. **Service Discovery**: Provides dynamic service discovery for Prometheus based on Infrahub data
+3. **OpenTelemetry Integration**: Supports sending metrics to OpenTelemetry collectors
+
+## Features[​](#features "Direct link to Features")
+
+* **Prometheus Integration**: Exposes metrics in Prometheus format
+* **OpenTelemetry Support**: Sends metrics to OTLP-compatible collectors
+* **Dynamic Service Discovery**: Generates Prometheus service discovery files based on GraphQL queries
+* **Flexible Configuration**: Configurable via YAML with environment variable overrides
+* **Caching**: Efficient data retrieval with caching to reduce load on Infrahub
+* **Resilience**: Automatic retries and error handling for API calls
+
+## Guides[​](#guides "Direct link to Guides")
+
+* [Install and run Infrahub Exporter](/exporter/guides/installation.md)
+* [Configure Infrahub Exporter](/exporter/guides/configuration.md)

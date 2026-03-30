@@ -1,14 +1,10 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/react/iframe-missing-sandbox.md
 
----
-url: /docs/guide/usage/linter/rules/react/iframe-missing-sandbox.md
----
-
-### What it does
+## What it does
 
 Enforce sandbox attribute on iframe elements
 
-### Why is this bad?
+## Why is this bad?
 
 The sandbox attribute enables an extra set of restrictions for the
 content in the iframe. Using sandbox attribute is considered a good
@@ -23,7 +19,7 @@ it also reports cases where attribute contains `allow-scripts` and
 embedded document to remove the sandbox attribute and bypass the
 restrictions.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 

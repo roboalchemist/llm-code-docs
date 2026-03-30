@@ -49,7 +49,6 @@ Similarly, the trace client attempts to send stats to the `/var/run/datadog/dsd.
 {% callout %}
 # Important note for users on the following Datadog sites: us3.datadoghq.com, us5.datadoghq.com, app.datadoghq.eu, app.ddog-gov.com, ap1.datadoghq.com, ap2.datadoghq.com
 
-
 Set `DD_SITE` in the Datadog Agent to  to ensure the Agent sends data to the right Datadog location.
 
 {% /callout %}

@@ -1,0 +1,21 @@
+---
+title: Arrays
+---
+
+Arrays in provable code must be of a fixed size.  Normal JavaScript arrays are a suitable value to pass into a provable function, but
+`Array<T>` is not a suitable type.  o1js exports the `Provable.Array` helper to generate provable array classes.
+
+```ts file=../snippets/arrays/arrays.ts start=start_provable_array end=end_provable_array
+```
+
+JavaScript arrays will satisfy the provable array type as long as they are of the correct size, so you don't need to worry too much about
+casting them back and forth.
+
+```ts file=../snippets/arrays/arrays.ts start=start_in_witness end=end_in_witness
+```
+
+Here are some invalid examples:
+```ts file=../snippets/arrays/arrays.ts start=start_invalid_examples end=end_invalid_examples
+```
+
+Read more at the language reference: [Provable.Array](/api-reference/variables/Provable.mdx#array).

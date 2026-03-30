@@ -75,7 +75,7 @@ using NLog;
 public class UserController : Controller
 {
     private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
-    
+
     [HttpPost]
     public ActionResult Register(string username)
     {
@@ -96,7 +96,7 @@ void main() {}
 public class UserController : Controller
 {
     private static readonly Logger _logger = LogManager.GetCurrentClassLogger();
-    
+
     [HttpPost]
     public ActionResult Register(string username)
     {
@@ -109,6 +109,5 @@ public class UserController : Controller
     }
 }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

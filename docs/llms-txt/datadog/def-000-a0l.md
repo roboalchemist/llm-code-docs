@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # GitHub review settings altered to skip review after PR push
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1562-impair-defenses](https://attack.mitre.org/techniques/T1562)
 ## Goal{% #goal %}
 
 This detection alerts when one of the following GitHub branch protection settings were disabled on a repository:

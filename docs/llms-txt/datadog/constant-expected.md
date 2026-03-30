@@ -63,6 +63,5 @@ static void M2(decimal val) { }
 static void M3([ConstantExpected(Min = 0, Max = 1)] int val) { }
 static void M4([ConstantExpected(Min = int.MinValue)] int val) { }
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

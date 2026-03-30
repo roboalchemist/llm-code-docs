@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > User signup endpoint without
 ---
 
 # User signup endpoint without HTTPS
- 
+
 ## Description{% #description %}
 
 This API endpoint allows the registration of new users into an application over a non-encrypted channel.

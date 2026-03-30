@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Verify Group Who Owns /var/log/auth.log File
- 
+
 ## Description{% #description %}
 
 To properly set the group owner of `/var/log/auth.log`, run the command:

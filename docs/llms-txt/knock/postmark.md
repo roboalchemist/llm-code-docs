@@ -1,0 +1,224 @@
+# Source: https://docs.knock.app/integrations/email/postmark.md
+
+---
+title: How to send email with Postmark
+description: How to send transactional email notifications to Postmark with Knock.
+section: Integrations > Email
+layout: integrations
+---
+
+Knock integrates with <a href="https://postmarkapp.com/" target="_blank">Postmark</a> to send email notifications to your users. This page describes how to get started with Postmark in Knock, including necessary provider configurations and additional data you can pass through to Postmark.
+
+## Features
+
+- Attachments support
+- Delivery tracking
+- Bounce Support
+- Knock link and open tracking
+- Postmark link and open tracking
+- Per environment configuration
+- Sandbox mode
+
+## Getting started
+
+You can create a new Postmark channel in the dashboard under the **Channels and sources** page in your account settings. From there, you'll need to configure the channel for each environment you have.
+
+## Channel configuration
+
+The following channel settings should be configured per [environment](/concepts/environments). Navigate to **Channels and sources** in your dashboard account settings, select your Postmark [channel](/concepts/channels), then click "Manage configuration" under the environment that you'd like to configure.
+
+<AccordionGroup>
+  <Accordion title="Settings">
+    Fields marked with an `*` are required.
+    
+    **Knock settings**
+    <Attributes>
+      <Attribute
+        name="Sandbox mode"
+        type="boolean"
+        nameSlug="/integrations/overview#sandbox-mode"
+        description="Whether to enable sandbox mode for your Postmark channel."
+      />
+      <Attribute
+        name="Knock open tracking"
+        nameSlug="/send-notifications/tracking#email-open-tracking"
+        type="boolean"
+        description="Whether to enable Knock email-open tracking."
+      />
+      <Attribute
+        name="Knock link tracking"
+        nameSlug="/send-notifications/tracking#link-click-tracking"
+        type="boolean"
+        description="Whether to enable Knock link-click tracking."
+      />
+    </Attributes>
+
+    **Provider settings for Postmark**
+    <Attributes>
+      <Attribute
+        name="API key"
+        type="string*"
+        description="The API key for your Postmark server."
+      />
+      <Attribute
+        name="Open tracking"
+        type="boolean"
+        description="Whether to enable Postmark email-open tracking."
+      />
+      <Attribute
+        name="Link tracking"
+        type="boolean"
+        description="Whether to enable Postmark link-click tracking."
+      />
+      <Attribute
+        name="From email address"
+        type="string | liquid*"
+        description="The default sender email address (can use Liquid tags)."
+      />
+      <Attribute
+        name="From name"
+        type="string | liquid"
+        description="The default sender name (can use Liquid tags)."
+      />
+    </Attributes>
+
+  </Accordion>
+  <Accordion title="Overrides">
+    When configured, these optional overrides will apply to all emails sent from this channel in the configured environment. Learn more about email channel overrides [here](/integrations/email/settings).
+    
+    <Attributes>
+      <Attribute
+        name="To"
+        type="string | liquid"
+        description="The To email address that email notifications will be sent to (can use Liquid tags). This value will override the designated recipient's email address."
+      />
+      <Attribute
+        name="Cc"
+        type="string | liquid"
+        description="The CC email address that email notifications will be sent to (can use Liquid tags)."
+      />
+      <Attribute
+        name="Bcc"
+        type="string | liquid"
+        description="The BCC email address that email notifications will be sent to (can use Liquid tags)."
+      />
+      <Attribute
+        name="Reply-to"
+        type="string | liquid"
+        description="The reply-to email address that will be included on email notifications (can use Liquid tags)."
+      />
+      <Attribute
+        name="Payload overrides"
+        nameSlug="/integrations/email/settings#provider-json-overrides"
+        type="JSON (string) | liquid"
+        description="Provide a JSON object to merge into the API payload that is sent to the downstream provider."
+      />
+    </Attributes>
+  </Accordion>
+  <Accordion title="Conditions">
+    Set optional per-environment [conditions](/integrations/overview#channel-conditions) for this channel. These conditions are evaluated each time a workflow run encounters a step that uses this channel in the configured environment. If the conditions are not met, the step will be skipped.
+  </Accordion>
+</AccordionGroup>
+
+## Additional data sent
+
+Knock sends the following attributes along with your emails:
+
+- `Metadata.sender`: always set to `knock.app`
+- `Metadata.knock_message_id`: the ID of the message this email is associated with
+- `Metadata.knock_recipient_id`: the Knock ID of the recipient this email is being sent to
+- `Tag`: the key of the workflow this message was generated from
+
+You can learn about the role of these Postmark attributes in the <a href="https://postmarkapp.com/developer" target="_blank">Postmark API documentation</a>.
+
+## Recipient data requirements
+
+In order to send an email notification you'll need a valid `email` property set on your recipient.
+
+## Delivery status webhooks
+
+When enabled, Postmark will send delivery status updates directly to Knock via webhooks, allowing you to track the full lifecycle of your email messages in real-time.
+
+### Prerequisites
+
+Before enabling delivery status webhooks, you need:
+
+1. A verified sender signature or domain in Postmark
+2. A Postmark channel configured in Knock (see the [getting started](#getting-started) section above)
+3. Access to your Postmark server webhook settings
+
+### Setting up delivery status webhooks
+
+<Steps titleSize="h3">
+  <Step title="Enable delivery status webhooks in Knock">
+    1. Navigate to **Channels and sources** in your Knock dashboard
+    2. Select your Postmark channel
+    3. Click "Manage configuration" for the environment you want to configure
+    4. Scroll to the "Incoming message status updates" section and enable incoming webhooks
+    5. Copy the generated webhook URL - you'll need this in the next step
+  </Step>
+
+  <Step title="Configure webhooks in Postmark">
+    In the Postmark dashboard, configure webhooks to send delivery events to Knock:
+
+    1. Go to your <a href="https://account.postmarkapp.com/servers" target="_blank">Postmark server</a> and select the server you're using with Knock
+    2. Navigate to the **Webhooks** tab
+    3. Add the webhook URL from Knock to both webhook configurations:
+       - **Delivery webhook** - Add the Knock webhook URL and click "Save delivery webhook"
+       - **Bounce webhook** - Add the Knock webhook URL and click "Save bounce webhook"
+    4. Postmark will automatically begin sending events to Knock
+
+  </Step>
+</Steps>
+
+### Supported delivery statuses
+
+When delivery status webhooks are enabled for Postmark, Knock will update message statuses based on these Postmark webhook events:
+
+| Postmark Event Type | Knock Status | Description                                                         |
+| ------------------- | ------------ | ------------------------------------------------------------------- |
+| Delivery            | `delivered`  | The email was successfully delivered to the recipient's mail server |
+| Bounce              | `bounced`    | The email bounced due to invalid recipient or domain                |
+
+### Troubleshooting
+
+If delivery status updates aren't appearing in Knock:
+
+1. **Check webhook configuration.** Verify both the Delivery and Bounce webhooks are configured with the correct Knock webhook URL in your Postmark server settings.
+2. **Verify sender signature.** Ensure you're sending from a verified sender signature or domain in Postmark.
+3. **Check Postmark activity.** Review the Activity page in Postmark to ensure emails are being sent successfully.
+
+<Callout
+  type="info"
+  title="Need help?"
+  text={
+    <>
+      If you're having trouble setting up delivery status webhooks, contact our
+      support team at <a href="mailto:support@knock.app">support@knock.app</a>.
+    </>
+  }
+/>
+
+## Using overrides to customize notifications
+
+We provide full support for [overriding the payload](/email/settings#provider-json-overrides) of your email notifications. This enables you to customize the <a href="https://postmarkapp.com/developer/api/email-api" target="_blank">API request</a> that Knock sends to Postmark on your behalf.
+
+### Targeting a specific `MessageStream`
+
+Knock does not target a specific `MessageStream` when sending your transactional email notifications to Postmark. This means that Postmark defaults your notifications to the `"outbound"` transactional stream.
+
+For marketing use cases such as newsletters or product updates sent to large recipient lists, and particularly when leveraging Knock's [broadcasts](/concepts/broadcasts) feature, we recommend following <a href="https://postmarkapp.com/message-streams#deliverability" target="_blank">Postmark's best practices</a> for sending promotional messaging via a separate `MessageStream`.
+
+<Steps>
+  <Step title="Configure a broadcast MessageStream in Postmark">
+    Configure a `Broadcast`-type message stream in your Postmark account. Read more about the `MessageStream` API <a href="https://postmarkapp.com/developer/api/message-streams-api" target="_blank">here</a>.
+  </Step>
+  <Step title="Set a payload override in Knock">
+    Set a payload override in Knock with the ID of the `MessageStream` that you'd like to target. This can be done at either the channel configuration level or directly in the settings of your workflow's email channel step:
+    ```json title="Payload override to target a broadcast MessageStream"
+    {
+      "MessageStream": "broadcasts"
+    }
+    ```
+  </Step>
+</Steps>

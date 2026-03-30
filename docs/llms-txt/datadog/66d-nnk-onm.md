@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Anomalous S3 bucket activity from user ARN
-Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1530-data-from-cloud-storage](https://attack.mitre.org/techniques/T1530) 
+Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1530-data-from-cloud-storage](https://attack.mitre.org/techniques/T1530)
 ## Goal{% #goal %}
 
 Detect when an AWS user performs S3 bucket write activities they do not usually perform.

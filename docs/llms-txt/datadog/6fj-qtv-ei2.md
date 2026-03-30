@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Unusual Authentication by Microsoft 365 Azure AD Service Principal
-Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078) 
+Classification:attackTactic:[TA0004-privilege-escalation](https://attack.mitre.org/tactics/TA0004)Technique:[T1078-valid-accounts](https://attack.mitre.org/techniques/T1078)
 ## Goal{% #goal %}
 
 Detect when a Microsoft 365 Azure AD service principal uses an unusual authentication method.

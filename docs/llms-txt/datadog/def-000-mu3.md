@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Authenticated route returns sensitive data
- 
+
 ## Description{% #description %}
 
 The API allows authenticated users to access sensitive data, which may not be intended.

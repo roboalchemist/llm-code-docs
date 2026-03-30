@@ -48,6 +48,5 @@ let digest = message.sha1();
 ```swift
 let digest = message.sha256();
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 

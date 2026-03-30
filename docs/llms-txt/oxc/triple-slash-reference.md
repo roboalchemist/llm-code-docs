@@ -1,18 +1,14 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/typescript/triple-slash-reference.md
 
----
-url: /docs/guide/usage/linter/rules/typescript/triple-slash-reference.md
----
-
-### What it does
+## What it does
 
 Disallow certain triple slash directives in favor of ES module import declarations.
 
-### Why is this bad?
+## Why is this bad?
 
 Use of triple-slash reference type directives is generally discouraged in favor of ECMAScript Module imports.
 
-### Examples
+## Examples
 
 Examples of **incorrect** code for this rule:
 
@@ -25,7 +21,7 @@ globalThis.value;
 
 This rule accepts a configuration object with the following properties:
 
-### lib
+## lib
 
 type: `"always" | "never"`
 
@@ -33,15 +29,15 @@ default: `"always"`
 
 What to enforce for `/// <reference lib="..." />` references.
 
-#### `"always"`
+### `"always"`
 
 Allow triple-slash `lib` references.
 
-#### `"never"`
+### `"never"`
 
 Disallow triple-slash `lib` references.
 
-### path
+## path
 
 type: `"always" | "never"`
 
@@ -49,15 +45,15 @@ default: `"never"`
 
 What to enforce for `/// <reference path="..." />` references.
 
-#### `"always"`
+### `"always"`
 
 Allow triple-slash `path` references.
 
-#### `"never"`
+### `"never"`
 
 Disallow triple-slash `path` references.
 
-### types
+## types
 
 type: `"always" | "never" | "prefer-import"`
 
@@ -65,15 +61,15 @@ default: `"prefer-import"`
 
 What to enforce for `/// <reference types="..." />` references.
 
-#### `"always"`
+### `"always"`
 
 Allow triple-slash `types` references.
 
-#### `"never"`
+### `"never"`
 
 Disallow triple-slash `types` references.
 
-#### `"prefer-import"`
+### `"prefer-import"`
 
 Prefer ES module import declarations over triple-slash `types` references.
 This option only reports when there is an existing `import` declaration for the same module.

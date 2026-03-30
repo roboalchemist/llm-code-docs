@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Containers should not be run with the hostPID flag set to true
-Classification:complianceFramework:cis-kubernetesControl:5.2.2 
+Classification:complianceFramework:cis-kubernetesControl:5.2.2
 ## Description{% #description %}
 
 Do not generally permit containers to be run with the hostPID flag set to true.

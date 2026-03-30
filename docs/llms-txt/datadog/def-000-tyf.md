@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Windows COM RPC debugging registry key modified
-Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1112-modify-registry](https://attack.mitre.org/techniques/T1112) 
+Classification:attackTactic:[TA0005-defense-evasion](https://attack.mitre.org/tactics/TA0005)Technique:[T1112-modify-registry](https://attack.mitre.org/techniques/T1112)
 ## What happened{% #what-happened %}
 
 The Windows registry key `{{ @registry.key_name }}` was modified by `{{ @process.executable.name }}`.

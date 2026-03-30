@@ -7,7 +7,7 @@ breadcrumbs: Docs > Datadog Security > OOTB Rules > WMI used to remotely execute
 ---
 
 # WMI used to remotely execute content
-Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1047-windows-management-instrumentation](https://attack.mitre.org/techniques/T1047) 
+Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1047-windows-management-instrumentation](https://attack.mitre.org/techniques/T1047)
 ## What happened{% #what-happened %}
 
 `{{ @process.executable.name }}` spawned from Windows Management Instrumentation (WMI), which could indicate lateral movement from another compromised host.

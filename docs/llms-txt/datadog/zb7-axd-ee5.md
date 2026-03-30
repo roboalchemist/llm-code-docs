@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Google Workspace user forwarding email out of non Google Workspace domain
-Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1114-email-collection](https://attack.mitre.org/techniques/T1114) 
+Classification:attackTactic:[TA0009-collection](https://attack.mitre.org/tactics/TA0009)Technique:[T1114-email-collection](https://attack.mitre.org/techniques/T1114)
 ## Goal{% #goal %}
 
 Create a signal when Google Workspace detects a user setting up mail forwarding to a non-Google Workspace domain.

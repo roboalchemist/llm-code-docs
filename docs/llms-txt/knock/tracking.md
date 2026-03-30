@@ -1,0 +1,231 @@
+# Source: https://docs.knock.app/send-notifications/tracking.md
+
+---
+title: Link and open tracking
+description: How to use Knock tracking to extend your ability to observe user engagement from right within your Knock account.
+tags: ["link tracking", "open tracking", "open rates", "link clicks"]
+section: Send notifications
+---
+
+## Overview
+
+Knock provides opt-in, provider-agnostic tracking capabilities for your notifications. With Knock tracking, you get the same features with cross-channel tracking
+events surfaced as first-class entities in a single place: your Knock account. Knock offers two types of tracking:
+
+- **Link tracking.** Knock will wrap URLs in your notification and capture link-click events before directing your recipient to the destination.
+- **Open tracking.** Currently for email channels only. Knock uses a 1x1 transparent "tracking pixel" to determine when a recipient opens and reads your email notifications.
+
+Support for link and open tracking varies by channel type.
+
+<FeaturesMatrix
+  columns={["Link tracking", "Open tracking"]}
+  rowGroups={[
+    {
+      name: "Channel",
+      rows: [
+        {
+          name: "Email",
+          columnsYes: ["Link tracking", "Open tracking"],
+        },
+        {
+          name: "In-app feed",
+          columnsYes: ["Link tracking", "Open tracking"],
+        },
+        {
+          name: "Push",
+          columnsNo: ["Link tracking", "Open tracking"],
+        },
+        {
+          name: "SMS",
+          columnsYes: ["Link tracking"],
+          columnsNo: ["Open tracking"],
+        },
+        {
+          name: "Chat",
+          columnsYes: ["Link tracking"],
+          columnsNo: ["Open tracking"],
+        },
+        {
+          name: "Webhook",
+          columnsNo: ["Link tracking", "Open tracking"],
+        },
+      ],
+    },
+  ]}
+/>
+
+## Configuring Knock tracking
+
+You can configure Knock tracking on a per-environment basis, using your channel's [per-environment configurations](/integrations/overview#per-environment-configurations). Open and link tracking will always default to `OFF` when you first create a channel.
+
+<figure>
+  <Image
+    src="/images/notifications/knock-tracking-channel-configuration.png"
+    alt="Configuring Knock tracking for an email channel"
+    className="rounded-md mx-auto border border-gray-200"
+    width={500}
+    height={536}
+  />
+  <figcaption>Configuring Knock tracking for an email channel.</figcaption>
+</figure>
+
+<Callout
+  type="info"
+  title="In-app open tracking configuration."
+  text={
+    <>
+      You won't find a configuration option for open tracking in the in-app feed
+      channel settings because open tracking is enabled implicitly whenever you
+      use the{" "}
+      <a href="/in-app-ui/react/feed">
+        <code>KnockFeedProvider</code>
+      </a>{" "}
+      component. If you're building your own in-app feed view with a Knock SDK,
+      you'll need to manage open tracking yourself by manually marking messages
+      as read.
+    </>
+  }
+/>
+
+### Custom tracking domains
+
+You can also configure custom domains for your account to use for link tracking, short links in SMS and WhatsApp, and email open tracking. See the [custom domains documentation](/manage-your-account/custom-domains) for more details.
+
+### Step-level overrides
+
+You can also configure Knock tracking on a per-workflow level. If a channel step in your workflow supports Knock tracking, you'll see tracking option toggles just below the channel selector form in the workflow editor. These toggles will reflect the environment-level channel configurations you have set until you modify them otherwise.
+
+Step-level overrides allow you to opt-out of tracking for a specific workflow step, or vice versa.
+
+<figure>
+  <Image
+    src="/images/notifications/knock-tracking-step-level-overrides.png"
+    alt="Configuring Knock tracking for a workflow step"
+    className="rounded-md mx-auto border border-gray-200"
+    width={1218}
+    height={635}
+  />
+  <figcaption>Configuring Knock tracking for a workflow step.</figcaption>
+</figure>
+
+## Working with Knock tracking
+
+### Message events
+
+Knock tracking events will be available in the message detail view in the Knock Dashboard.
+
+When open tracking is enabled for an email channel, Knock will capture email-open actions as `message.read` events. You'll see a "Read at" timestamp reflecting the time of latest open event and a "Message read" item in the timeline view for each open action.
+
+When link tracking is enabled, Knock will capture link-click actions as `message.link_clicked` events. You'll see a "Clicked at" timestamp reflecting the time of the latest link-click event and a "Message link clicked" item in the timeline view for each link-click action.
+
+### Link-click trigger conditions
+
+When link tracking is enabled for your channel, you can stitch link-click events into your workflows as a step condition. For example, you can require that at least one link in a previous channel step has been clicked for the current step to execute.
+
+See the [step conditions documentation](/designing-workflows/step-conditions) for more details.
+
+### Knock Webhooks
+
+If you use Knock's outbound webhooks, you can hook into the `message.read` and `message.link_clicked` events captured via Knock tracking. See the [outbound webhooks documentation](/developer-tools/outbound-webhooks/overview) for more details.
+
+## How it works
+
+### Link-click tracking
+
+When Knock renders a workflow step template into a notification message, it will additionally wrap URLs as trackable links. When a recipient opens one of these trackable links, Knock will record a link-click event before redirecting the user to the target destination. Knock defers the link-click event capture process, so redirects should be fast.
+
+Knock is able to identify many types of URLs for tracking:
+
+- **Hyperlinks** — Knock will replace HTML anchor tag and Markdown link target URLs with trackable links.
+- **Chat app JSON** — Knock will traverse chat app JSON blobs (e.g. Slack Block Kit) and replace URL cards or anchor tags found within.
+- **Bare URLs** — In Markdown templates, Knock will replace full-form URLs with trackable links wrapping the origin URL. For example, `https://foobar.com/` would become `[https://foobar.com/](<knock-trackable-link>)`.
+
+<Callout
+  type="info"
+  title="Note:"
+  style={{ alignItems: "center" }}
+  text={
+    <>
+      In order for your URLs to be qualified as eligible for click tracking,
+      they must include the <code>https://</code> protocol.
+    </>
+  }
+/>
+
+There are two types of trackable links Knock may generate: standard and short. Standard links encode the target URL (and other event metadata) into a variable-length token added to the link path. Short links instead use a lookup key added to the link that maps to a record of the target URL. The short link lookup key will always be 10-characters in length, with short links always 31-characters long in total.
+
+Given their brevity and consistent length, Knock will use short links for channels that often have character constraints. Specifically these are:
+
+- All SMS channels
+- WhatsApp chat channel
+
+### Link-click tracking domains
+
+In all cases, Knock trackable links will use one of the following domains:
+
+| Subdomain | Series range | Example full domain      |
+| --------- | ------------ | ------------------------ |
+| c         | 1–3          | `https://c1.knock.app/`  |
+| e         | 1–12         | `https://e2.knock.app/`  |
+| eg        | 1–10         | `https://eg4.knock.app/` |
+| ef        | 1–10         | `https://ef3.knock.app/` |
+
+**Other domains in use:**
+
+- `https://c.knock.app/`
+- `https://c1.knoclick.com/`
+
+### Email-open tracking
+
+Knock uses a 1x1 transparent PNG image to power email open tracking, often called a "tracking pixel." When you enable open tracking for an email channel, we embed a link to this image in the footer of the email message. The URL to load the image contains an identifier we can use to associate the image with the notification. When your recipient opens the email and loads the image for view, we register an open event with the associated message.
+
+#### Email-open tracking limitations
+
+Using tracking pixels to record email-open events has limitations. For one, it requires your recipients to use an HTML-enabled email client. In addition, many contemporary email providers and applications provide robust user privacy protections that purposefully limit open tracking capabilities. Some providers automatically block remote content (including images); others will cache images after an initial request, limiting our ability to track repeat opens.
+
+Knock tracking tries to capture email-open events in as many possible cases, while still respecting end-user privacy restrictions.
+
+Here are the email open tracking limitations we are currently aware of:
+
+| Email provider / app      | Limitation                       | Effect                                                                                            |
+| ------------------------- | -------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Mail.app (iOS & macOS)    | Optional remote content blocking | When enabled by the recipient, open tracking will not work.                                       |
+| iCloud Mail               | Remote content blocking          | This is enabled by default, and when enabled open tracking will not work.                         |
+| Gmail (Android, iOS, Web) | Remote image caching             | Gmail may preload the image, registering a false open event. Repeat email opens may not register. |
+| Protonmail                | Remote image caching             | Images are always preloaded a single time following email delivery. Open tracking will not work.  |
+
+## Video walkthrough
+
+<div style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}>
+  <iframe
+    src="https://www.loom.com/embed/dec0e1f7371b456fbb0ebcd0036382b5"
+    frameBorder="0"
+    allowFullScreen
+    style={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+    }}
+  ></iframe>
+</div>
+<br />
+
+## Frequently asked questions
+
+<AccordionGroup>
+  <Accordion title="My channel provider supports link or engagement tracking natively. What are the advantages of using Knock tracking?">
+    Many of our [supported integrations](/integrations/overview) offer native link or engagement tracking that can be enabled in your Knock dashboard under that integration's [channel settings](/concepts/channels#channel-settings). Knock supports enabling these native tracking solutions alongside or instead of Knock tracking. 
+    
+    There are several Knock-tracking-specific features to keep in mind when configuring your channel's tracking settings:
+
+    - **Cross-channel reporting.** Knock link and open tracking allows you to analyze user engagement across all of your delivery channels in a single tool.
+    - **Step conditions.** With Knock tracking, you can use message engagement events to [power conditional logic in your workflows](/designing-workflows/step-conditions).
+    - **Capture events via webhooks.** When Knock tracking is enabled, you can power other event-based flows in your product with Knock's [outbound webhooks](/developer-tools/outbound-webhooks/overview).
+
+  </Accordion>
+  <Accordion title="Can my provider report engagement metrics back to Knock?">
+    No. While some providers offer native open and link tracking that can be enabled in your Knock dashboard under that integration's [channel settings](/concepts/channels#channel-settings), these native tracking solutions will not report back to Knock and do not enable the same functionality.
+  </Accordion>
+</AccordionGroup>

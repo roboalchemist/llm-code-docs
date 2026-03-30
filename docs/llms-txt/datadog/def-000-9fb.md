@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Ensure that chronyd is running under chrony user account
- 
+
 ## Description{% #description %}
 
 chrony is a daemon which implements the Network Time Protocol (NTP). It is designed to synchronize system clocks across a variety of systems and use a source that is highly accurate. More information on chrony can be found at [https://chrony-project.org/](https://chrony-project.org/). Chrony can be configured to be a client and/or a server. To ensure that chronyd is running under chrony user account, `user` variable in `/etc/chrony/chrony.conf` is set to `_chrony` or is absent:

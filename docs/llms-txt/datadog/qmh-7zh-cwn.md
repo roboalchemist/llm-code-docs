@@ -9,7 +9,7 @@ breadcrumbs: >-
 ---
 
 # Python executed with suspicious arguments
-Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1059-command-and-scripting-interpreter](https://attack.mitre.org/techniques/T1059) 
+Classification:attackTactic:[TA0002-execution](https://attack.mitre.org/tactics/TA0002)Technique:[T1059-command-and-scripting-interpreter](https://attack.mitre.org/techniques/T1059)
 ## What happened{% #what-happened %}
 
 Python was executed on the command line, using the `-c` flag with suspicious keywords that could be used to establish a reverse shell.

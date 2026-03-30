@@ -49,6 +49,5 @@ current_time = Time.new
 current_time = Time.now
 rule_creation_time = Time.new(2024, 2, 29, 12, 0, 0, "+00:00")
 ```
-  Seamless integrations. Try Datadog Code SecurityDatadog Code Security 
+  Seamless integrations. Try Datadog Code SecurityDatadog Code Security
 {% icon name="icon-external-link" /%}
- 
