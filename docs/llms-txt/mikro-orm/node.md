@@ -1,26 +1,25 @@
-# Source: https://mikro-orm.io/blog/tags/node.md
+# Source: https://mikro-orm.io/api/core/interface/Node.md
 
-## [MikroORM 6.6](https://mikro-orm.io/blog/mikro-orm-6-6-released.md)
+# Node<!-- -->
 
-·
+## Index[**](#Index)
 
-<!-- -->
+### Properties
 
-6 min read
+* [**dependencies](#dependencies)
+* [**hash](#hash)
+* [**state](#state)
 
-[![Martin Adámek](https://avatars1.githubusercontent.com/u/615580?s=460\&v=4)](https://github.com/B4nan)
+## Properties<!-- -->[**](#Properties)
 
-[Martin Adámek](https://github.com/B4nan)
+### [**](#dependencies)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/unit-of-work/CommitOrderCalculator.ts#L13)dependencies
 
-Author of MikroORM
+**dependencies: [Dictionary](https://mikro-orm.io/api/core.md#Dictionary)<[Edge](https://mikro-orm.io/api/core/interface/Edge.md)>
 
-[MikroORM v6.6](https://github.com/mikro-orm/mikro-orm/releases/tag/v6.6.0) is out. This release builds on top of the [previous version](https://mikro-orm.io/blog/mikro-orm-6-5-released), improving the configurability of the filters on relations and adding more features to the entity generator.
+### [**](#hash)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/unit-of-work/CommitOrderCalculator.ts#L11)hash
 
-**Tags:**
+**hash: string
 
-* [typescript](https://mikro-orm.io/blog/tags/typescript.md)
-* [javascript](https://mikro-orm.io/blog/tags/javascript.md)
-* [node](https://mikro-orm.io/blog/tags/node.md)
-* [sql](https://mikro-orm.io/blog/tags/sql.md)
+### [**](#state)[**](https://github.com/mikro-orm/mikro-orm/blob/master/packages/core/src/unit-of-work/CommitOrderCalculator.ts#L12)state
 
-[**Read More**](https://mikro-orm.io/blog/mikro-orm-6-6-released.md)
+**state: [NodeState](https://mikro-orm.io/api/core/enum/NodeState.md)

@@ -3745,8 +3745,8 @@ web_scraped:
   size: 69.0KB
   last_updated: 2026-02-07 16:14
 - name: applescript
-  description: applescript documentation
-  path: docs/web-scraped/applescript/
+  description: Apple Mac Automation Scripting Guide (AppleScript)
+  path: docs/web-scraped/apple-developer-docs/applescript/
   status: fetched
   file_count: 91
   size: 1.1MB
@@ -4333,8 +4333,8 @@ web_scraped:
   size: 442.3KB
   last_updated: 2026-02-07 16:14
 - name: osascript
-  description: osascript documentation
-  path: docs/web-scraped/osascript/
+  description: macOS osascript CLI for AppleScript and JXA execution
+  path: docs/web-scraped/apple-developer-docs/osascript/
   status: fetched
   file_count: 3
   size: 42.6KB
