@@ -45,3 +45,4 @@ tmp/
 # Doc index database (built locally)
 scripts/doc_index.db
 
+node_modules/
