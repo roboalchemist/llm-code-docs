@@ -7313,12 +7313,12 @@ github_scraped:
   size: 3.0MB
   last_updated: 2026-03-30 14:08
 - name: gazelle
-  description: gazelle from GitHub
-  path: docs/github-scraped/gazelle/
+  description: OPSnet Gazelle - modern fork of What.CD BitTorrent tracker framework (PHP/Twig/JS)
+  path: docs/github-scraped/opsnet-gazelle/
   status: fetched
-  file_count: 1
-  size: 16.2KB
-  last_updated: 2026-03-30 14:08
+  file_count: 14
+  size: 51KB
+  last_updated: 2026-03-30
 - name: geoserver
   description: geoserver from GitHub
   path: docs/github-scraped/geoserver/

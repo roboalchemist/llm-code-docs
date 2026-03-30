@@ -1,0 +1,87 @@
+# MySQL Roles
+
+**Orpheus Development Papers #1 - MySQL Roles**
+Version 3 | From: Spine | Date: 2024-12-07
+
+## Overview
+
+The default Gazelle installation defines a single MySQL role (with full
+privileges) used for everything: the website, Ocelot and Sphinx. If any
+of these systems are compromised through an SQL injection, it is possible to
+wreak any amount of havoc: dropping tables, and even the entire database.
+
+Orpheus uses a set of roles, each dedicated to a single purpose. Each role
+has the strict minimum privileges granted to only the necessary tables.
+
+The remaining DROP privileges are for performing TRUNCATE operations.
+
+## Role Naming
+
+You should define names (be creative!) for the following roles:
+
+| Role    | Example Name | Purpose                           |
+|---------|-------------|-----------------------------------|
+| admin   | adm         | Non-privileged user to run phinx  |
+| sphinx  | spx         | Sphinx search indexing             |
+| tracker | trk         | BitTorrent tracker operations      |
+| website | www         | Web frontend                      |
+
+These MySQL roles should be configured with different passwords and used in
+the following places:
+
+* `/etc/sphinxsearch/sphinx.conf`
+* `/var/www/gazelle/lib/override.config.php`
+* `/var/www/ocelot/ocelot.conf`
+
+In practice, the roles will probably have specific IP addresses. `localhost`
+is used as an example. Adapt according to your architecture.
+
+## Grants for Admin
+
+```sql
+GRANT ALTER, CREATE, DELETE, DROP, INSERT, SELECT, UPDATE ON `gazelle`.* TO 'adm'@'localhost';
+```
+
+## Grants for Sphinx
+
+```sql
+GRANT DELETE, INSERT, SELECT ON `gazelle`.`sphinx_index_last_pos` TO 'spx'@'localhost';
+GRANT DELETE, SELECT ON `gazelle`.`sphinx_delta` TO 'spx'@'localhost';
+GRANT DROP, INSERT, SELECT ON `gazelle`.`sphinx_a` TO 'spx'@'localhost';
+GRANT DROP, INSERT, SELECT ON `gazelle`.`sphinx_t` TO 'spx'@'localhost';
+GRANT DROP, INSERT, SELECT ON `gazelle`.`sphinx_tg` TO 'spx'@'localhost';
+GRANT SELECT ON `gazelle`.`artists_alias` TO 'spx'@'localhost';
+GRANT SELECT ON `gazelle`.`log` TO 'spx'@'localhost';
+GRANT SELECT ON `gazelle`.`tags` TO 'spx'@'localhost';
+GRANT SELECT ON `gazelle`.`torrents_artists` TO 'spx'@'localhost';
+GRANT SELECT ON `gazelle`.`torrents_group` TO 'spx'@'localhost';
+GRANT SELECT ON `gazelle`.`torrents_leech_stats` TO 'spx'@'localhost';
+GRANT SELECT ON `gazelle`.`torrents` TO 'spx'@'localhost';
+```
+
+## Grants for Tracker
+
+```sql
+GRANT DELETE, INSERT, SELECT, UPDATE ON `gazelle`.`torrents_leech_stats` TO 'trk'@'localhost';
+GRANT DELETE, INSERT, SELECT, UPDATE ON `gazelle`.`users_leech_stats` TO 'trk'@'localhost';
+GRANT INSERT, SELECT, UPDATE ON `gazelle`.`xbt_files_users` TO 'trk'@'localhost';
+GRANT INSERT ON `gazelle`.`xbt_snatched` TO 'trk'@'localhost';
+GRANT INSERT, SELECT, UPDATE ON `gazelle`.`users_freeleeches` TO 'trk'@'localhost';
+GRANT INSERT, SELECT, UPDATE ON `gazelle`.`users_main` TO 'trk'@'localhost';
+```
+
+## Grants for Website
+
+```sql
+GRANT CREATE TEMPORARY TABLES, DELETE, INSERT, SELECT, UPDATE ON `gazelle`.* TO 'www'@'localhost';
+GRANT DROP ON `gazelle`.`drives` TO 'www'@'localhost';
+GRANT EXECUTE ON FUNCTION `gazelle`.`binomial_ci` TO 'www'@'localhost';
+GRANT EXECUTE ON FUNCTION `gazelle`.`bonus_accrual` TO 'www'@'localhost';
+GRANT EXECUTE ON FUNCTION `gazelle`.`category_bonus_accrual` TO 'www'@'localhost';
+GRANT EXECUTE ON FUNCTION `gazelle`.`future_bonus_accrual` TO 'www'@'localhost';
+GRANT SELECT ON `sys`.`schema_unused_indexes` TO 'www'@'localhost';
+GRANT SELECT ON `performance_schema`.`table_io_waits_summary_by_index_usage` TO 'www'@'localhost';
+GRANT SELECT ON `performance_schema`.`table_io_waits_summary_by_table` TO 'www'@'localhost';
+GRANT SELECT ON `sys`.`schema_redundant_indexes` TO 'www'@'localhost';
+GRANT SELECT ON `sys`.`x$schema_flattened_keys` TO 'www'@'localhost';
+```

@@ -1,0 +1,46 @@
+# Docker Notes
+
+Notes on upgrading Docker containers.
+
+## sphinxsearch
+
+No particular notes, the plan is to remove this entirely at some point.
+
+## mysql
+
+This is a little tricky because you want to dump the database from the current
+container, upgrade the container, and then restore the database. Something
+like the following will work:
+
+```bash
+# dump the db
+MYSQL_CONTAINER=gaz_mysql_1
+PASSWORD=$(grep MYSQL_ROOT_PASSWORD docker-compose.yml|cut -d= -f2)
+docker exec $MYSQL_CONTAINER sh -c "exec mysqldump --all-databases -uroot -p'$PASSWORD'" > all-databases.sql
+
+# do the upgrade
+docker compose up -d
+
+# restore the dump
+docker exec -i $MYSQL_CONTAINER sh -c "exec mysql -uroot -p'$PASSWORD'" < all-databases.sql
+
+# run the mysql upgrade when moving across major versions
+docker exec -it $MYSQL_CONTAINER mysql_upgrade -u root -p$PASSWORD
+```
+
+Some custom functions may need to be recreated (the site will error on load):
+
+```bash
+git grep -l 'CREATE FUNCTION' misc/my-migrations
+```
+
+Files to check:
+
+* `misc/my-migrations/20180104060449_tables.php`
+* `misc/my-migrations/20200320183228_bonus_accrual_function.php`
+
+Execute the function definition statements in the mysql client.
+
+## memcache
+
+Just upgrade to the latest image (see Dockerhub).
