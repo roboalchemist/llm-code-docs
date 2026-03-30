@@ -16,7 +16,7 @@ Current master branch and future 0.10+ releases has removed the deprecated alias
 Example
 -------
 
-```
+```bash
 for i in `find . -name \*.php -or -name \*.js`; do
   sed -f ~/rtorrent/doc/scripts/update_commands_0.9.sed $i > $i.tmp;
   mv $i.tmp $i;

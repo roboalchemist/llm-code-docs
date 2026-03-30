@@ -1,4 +1,4 @@
-## Development Guide
+# Development Guide
 
 This chapter contains some explanations of the project structure and
 activities related to development of the project.

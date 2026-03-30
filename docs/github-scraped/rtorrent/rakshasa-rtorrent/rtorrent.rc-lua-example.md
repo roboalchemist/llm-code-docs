@@ -1,9 +1,12 @@
+# rtorrent.rc.lua Example Configuration
+
+```lua
 --[[
   A minimal rTorrent configuration that provides the basic features
-   you want to have in addition to the built-in defaults.
+  you want to have in addition to the built-in defaults.
 
   See https://github.com/rakshasa/rtorrent/wiki/CONFIG-Template
-   for an up-to-date version.
+  for an up-to-date version.
 
   How to use this file:
 
@@ -75,7 +78,7 @@ rc.trackers.numwant = 80
 rc.protocol.encryption.set('allow_incoming', 'try_outgoing', 'enable_retry')
 
 -- Limits for file handle resources, this is optimized for
--- an `ulimit` of 1024 (a common default). You MUST leave
+-- an ulimit of 1024 (a common default). You MUST leave
 -- a ceiling of handles reserved for rTorrent's internal needs!
 rc.network.http.max_open = 50
 rc.network.max_open_files = 600
@@ -94,7 +97,7 @@ rc.log.execute(cfg.logs.."execute.log")
 rc.execute.nothrow(
    "sh", "-c", table.concat(
       {"echo >", rc.session.path(), "rtorrent.pid", " ", rc.system.pid()
-}))
+}}))
 
 -- Other operational settings (check & adapt)
 rc.encoding.add('utf8')
@@ -115,9 +118,9 @@ rc.schedule2('monitor_diskspace', '15', '60', 'close_low_diskspace=1000M')
 -- NOTE: just common names, not commands
 rc.method.insert('system.startup_time', 'value|const', rc.system.time())
 rc.method.insert('d.data_path', 'simple',
-	[[if=(d.is_multi_file),
-	 (cat, (d.directory), /),
-	 (cat, (d.directory), /, (d.name))]])
+    [[if=(d.is_multi_file),
+     (cat, (d.directory), /),
+     (cat, (d.directory), /, (d.name))]])
 rc.method.insert('d.session_file', 'simple', 'cat=(session.path), (d.hash), .torrent')
 
 -- Watch directories (add more as you like, but use unique schedule names)
@@ -130,7 +133,7 @@ rc.schedule2('watch_load', '11', '10', 'load.verbose=(cat, (cfg.watch), "load/*.
 --rc.network.scgi.open_local(cfg.session..'rtorrent.sock')
 --rc.execute.nothrow('chmod', '770', cfg.session..'rtorrent.sock')
 
--- Logging:
+-- Logging
 --   Levels = critical error warn notice info debug
 --   Groups = connection_* dht_* peer_* rpc_* storage_* thread_* tracker_* torrent_*
 rc.print('Logging to '..rc.cfg.logfile())
@@ -140,3 +143,4 @@ rc.log.add_output('info', 'log')
 --rc.log.add_output('tracker_requests', 'log')
 
 --[[ END of rtorrent.rc.lua ]]--
+```

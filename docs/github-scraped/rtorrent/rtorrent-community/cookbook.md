@@ -1,7 +1,9 @@
+# rTorrent Configuration Cookbook
+
 ## Configuration Quick Start
 
 To help you with fundamental configuration tasks, this chapter contains a quick start
-into the ‘scripting language’ rTorrent uses for its configuration files.
+into the 'scripting language' rTorrent uses for its configuration files.
 **ref:** `config-deconstructed` uses a basic configuration file to explain what
 the contained commands are doing, also showing common syntax constructs by example.
 
@@ -11,24 +13,18 @@ adding more features to that basic configuration.
 The `ArchLinux wiki page`_ is also a good source on *rTorrent* in general
 and its configuration in particular.
 
-
-
 > *rTorrent* started to rename a lot of configuration commands
 > with the release of version `0.8.9`.
 > This handbook uses the new commands throughout,
 > and does not mention the old ones.
-
-> See the `RPC Migration 0.9`_ wiki page for more details.
-> That pages also links to a `sed script`_ that can transform old snippets
+>
+> See the [RPC Migration 0.9 wiki page](RPC Migration 0.9) for more details.
+> That pages also links to a [sed script](sed script) that can transform old snippets
 > you found on the web and might want to use to using the new command names.
-
+>
 > **ref:** `rtorrent-cli` section shows you how you can prevent *rTorrent* from adding
 > most of the old names as aliases for the new ones, by using the `-D -I`
 > command line options.
-
-
-
-
 
 ## rTorrent Basics
 
@@ -45,8 +41,6 @@ Or check if you see something you want to add to your existing setup.
 After some time, when you're familiar with the basic operation of *rTorrent*,
 try to work through the **doc:** `scripting` if you want to dive deeper into
 customizing *rTorrent*.
-
-
 
 ## Modernized Configuration Template
 
@@ -72,10 +66,6 @@ Here is a copy of the template in full, see **ref:** `config-deconstructed`
 below for a detailed explanation of its parts.
 
 > **language:** ini
-
-
-
-
 
 ## The rTorrent Command Line
 
@@ -134,11 +124,9 @@ You can of course add more elaborate start scripts,
 like a cron watchdog, init.d scripts or systemd units,
 see the *rTorrent* wiki for examples.
 
-
-
 ## Basic Syntax Elements
 
-The configuration ‘scripts’ have some usual syntax elements, and some not so usual ones.
+The configuration 'scripts' have some usual syntax elements, and some not so usual ones.
 If you're versed in *any* computer language, you surely spotted some of them in the
 **ref:** `config-template`.
 Comments start with a `#`,
@@ -147,7 +135,7 @@ and you can break long lines apart by escaping the line ends with `\`.
 The basic structure of lines is `‹command› = ‹arg1›[, ‹arg2›, …]`.
 In configuration files, the `command` either sets some value, or has some side effect:
 defining a method or schedule, executing a OS command, and so on.
-This is the ‘old’ syntax, and still relevant on the top level of configuration files.
+This is the 'old' syntax, and still relevant on the top level of configuration files.
 
 Other elements are escaped text in quotes (these are *not* strings in the classical sense),
 lists in braces `{…}`, and commands in single or double parentheses `(…)`.
@@ -164,14 +152,12 @@ and on the third level the backslashes have to be escaped too, leading to abomin
 Just avoid that, keep it to two levels at most,
 e.g. quoted text within a quoted sequence of commands.
 If you need more complex structures, work with helper methods
-where you can ‘start fresh’ when it comes to escaping levels.
+where you can 'start fresh' when it comes to escaping levels.
 
-Be pragmatic, and have no fear of mixing ‘old’ and ‘new’ syntax to your advantage.
+Be pragmatic, and have no fear of mixing 'old' and 'new' syntax to your advantage.
 Prefer the new one with parentheses,
 but that your syntax works and does the thing you want is most important,
 readability is next, and any theoretical purity of syntax ideas come in last.
-
-
 
 ## Config Template Deconstructed
 

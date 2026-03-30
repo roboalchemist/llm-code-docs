@@ -9,7 +9,7 @@ What you need:
 
 Configure rtorrent with the --with-xmlrpc-c flag and add the following to:
 
-```
+```bash
 httpd.conf:  SCGIMount /RPC2 127.0.0.1:5000
 rtorrent.rc: scgi_port = localhost:5000
 ```
@@ -17,7 +17,7 @@ rtorrent.rc: scgi_port = localhost:5000
 For lighttpd:
 -------------
 
-```
+```bash
 rtorrent.rc: scgi_local = /home/user/rtorrent/rpc.socket
 
 lighttpd.conf:
@@ -28,7 +28,7 @@ scgi.server = (
                     (
                       "socket" => "/home/user/rtorrent/rpc.socket",
                       "check-local" => "disable",
-                      "disable-time" => 0,  # don't disable scgi if connection fails
+                      "disable-time" => 0,  # don't disable scgi if connection fails,
                     )
                   )
               )
@@ -37,7 +37,7 @@ scgi.server = (
 For nginx:
 ----------
 
-```
+```bash
 location /RPC2 {
   scgi_pass   127.0.0.1:5000;
   include     scgi_vars;
@@ -47,7 +47,7 @@ location /RPC2 {
 
 If any of your downloads have non-ascii characters in the filenames, you must also set the following in rtorrent.rc to force rtorrent to use the UTF-8 encoding. The XMLRPC standard requires UTF-8 replies, and rtorrent presently has no facilities to convert between encodings so it might generate invalid replies otherwise.
 
-```
+```bash
 encoding_list = UTF-8
 ```
 
@@ -62,7 +62,7 @@ Usage
 
 Access the XMLRPC interface using any XMLRPC-capable client. For example, using the xmlrpc utility that comes with xmlrpc-c:
 
-```
+```bash
  > # To list all the xmlrpc methods rtorrent supports.
  > xmlrpc localhost system.listMethods
 
@@ -100,7 +100,7 @@ Targets
 
 Note that all commands now require a target, even if it is an empty string.
 
-```
+```bash
  > xmlrpc localhost f.get_size_bytes 91A2DF0C9288BC4C5D03EC8D8C26B4CF95A4DBEF i/3
  > xmlrpc localhost f.get_size_bytes 91A2DF0C9288BC4C5D03EC8D8C26B4CF95A4DBEF "3"
  > xmlrpc localhost f.get_size_bytes 91A2DF0C9288BC4C5D03EC8D8C26B4CF95A4DBEF:f3

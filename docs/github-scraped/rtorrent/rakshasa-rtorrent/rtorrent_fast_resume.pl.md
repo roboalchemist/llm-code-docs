@@ -1,3 +1,8 @@
+# rtorrent_fast_resume.pl
+
+Perl script to add rTorrent fast resume data to torrent files.
+
+```perl
 #!/usr/bin/perl
 
 # Perl script to add rTorrent fast resume data to torrent files.
@@ -83,7 +88,7 @@ $t->{libtorrent_resume}{bitfield} = $chunks;
 foreach my $f (0..$#files) {
    die "$d$files[$f] not found.\n" unless -e "$d$files[$f]";
    my $mtime = (stat "$d$files[$f]")[9];
-   
+
    # Compute number of chunks per file
    my $fsize   = (exists $t->{info}{files}) ? $t->{info}{files}[$f]{length} : 1;
    my $fchunks = ($pmod ? 1 : 0);
@@ -91,7 +96,7 @@ foreach my $f (0..$#files) {
    else                 { ($pmod,  $fsize) = (0, $fsize-$pmod); }
    $fchunks +=      ceil($fsize / $psize);
    $pmod   ||= $psize - ($fsize % $psize);
-   
+
    $t->{libtorrent_resume}{files}[$f] = {
       priority  => 0,  # Don't download; we already have the file, so don't clobber it!
       mtime     => $mtime,
@@ -129,3 +134,4 @@ close($in);
 close($out);
 print {$msg} "done\n";
 exit;
+```

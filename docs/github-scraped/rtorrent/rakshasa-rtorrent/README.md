@@ -4,7 +4,7 @@ RTorrent BitTorrent Client
 Introduction
 ------------
 
-A ncurses-based command line torrent client for high performance. 
+A ncurses-based command line torrent client for high performance.
 
 To learn how to use rTorrent visit the [Wiki](https://github.com/rakshasa/rtorrent/wiki).
 
@@ -26,32 +26,31 @@ Donate to rTorrent development
 * Litecoin: LdyaVR67LBnTf6mAT4QJnjSG2Zk67qxmfQ
 * Cardano: addr1qytaslmqmk6dspltw06sp0zf83dh09u79j49ceh5y26zdcccgq4ph7nmx6kgmzeldauj43254ey97f3x4xw49d86aguqwfhlte
 
-
 Help keep rTorrent development going by donating to its creator.
-
 
 BUILDING
 --------
 
 Jump into the github cloned directory
 
-```
+```bash
 cd rtorrent
 ```
 
-## Install build dependencies
+Install build dependencies
+------------------
 
 Install [libtorrent](https://github.com/rakshasa/libtorrent) with the same version rTorrent.
 
 Generate configure scripts:
 
-```
+```bash
 autoreconf -ivf
 ```
 
 Optionally, generate man pages:
 
-```
+```bash
 docbook2man rtorrent.1.xml
 ```
 
@@ -59,11 +58,13 @@ Man pages output to "doc/rtorrent.1".
 
 RTorrent follows the development of [libtorrent](https://github.com/rakshasa/libtorrent) closely, and thus the versions must be in sync.
 
-## USAGE
+USAGE
+-----
 
 Refer to User Guide: https://github.com/rakshasa/rtorrent/wiki/User-Guide
 
-## LICENSE
+LICENSE
+-------
 
 GNU GPL, see COPYING. "libtorrent/src/utils/sha_fast.{cc,h}" is
 originally from the Mozilla NSS and is under a triple license; MPL,
@@ -73,13 +74,15 @@ Use whatever fits your purpose, the code required to compile with
 Mozilla's NSS implementation of SHA1 has been retained and can be
 compiled if the user wishes to avoid using OpenSSL.
 
-## DEPENDENCIES
+DEPENDENCIES
+-----------
 
 * libcurl >= 7.12.0
 * libtorrent = (same version)
 * ncurses
 
-## BUILD DEPENDENCIES
+BUILD DEPENDENCIES
+-----------------
 
 * libtoolize
 * aclocal

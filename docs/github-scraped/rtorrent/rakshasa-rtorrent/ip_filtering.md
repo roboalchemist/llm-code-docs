@@ -18,7 +18,7 @@ There is currently no use of the generic ip tables commands.
 Set <value\> for all addresses in the address block, overwriting prior
 values.
 
-## Add a new address block
+## Load address blocks from a file
 
     ip_tables.load = <table_name>, ~/foo.txt, <value>
 

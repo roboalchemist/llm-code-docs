@@ -1,7 +1,6 @@
+# rTorrent FAQ
 
 ## Frequently Asked Questions
-
-
 
 ## How Can I Stop All Torrents From a Shell?
 
@@ -33,10 +32,8 @@ When the bad item is started, the crash might be triggered immediately, or with 
 Increase the sleep time if removing the last item shown (and possibly the one following it)
 does not solve the problem.
 
-
-
 ## What is the Difference Between 'paused' and 'stopped'?
 
-**TODO**
+### TODO
 
 See also **term:** `d.state`.

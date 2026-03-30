@@ -1,9 +1,8 @@
+# BitTorrent Protocol Commands
 
-`dht.*` commands
-^^^^^^^^^^^^^^^^
+## `dht.*` commands
 
 See the Github wiki for an example of `enabling DHT in rTorrent`_.
-
 
 > dht.add_node
 
@@ -21,20 +20,16 @@ See the Github wiki for an example of `enabling DHT in rTorrent`_.
         Returns ``{'active': 0, 'dht': 'disable', 'throttle': ''}`` when DHT is off,
         and …
 
-        **TODO**
+        ### TODO
 
     dht.throttle.name
     dht.throttle.name.set
 
-        **TODO**
-
-
+        ### TODO
 
 ```
 
-`pieces.*` commands
-^^^^^^^^^^^^^^^^^^^
-
+## `pieces.*` commands
 
 > pieces.hash.on_completion
 > pieces.hash.on_completion.set
@@ -44,15 +39,13 @@ See the Github wiki for an example of `enabling DHT in rTorrent`_.
             pieces.sync.timeout_safe ≫ value ‹seconds›
             pieces.sync.timeout_safe.set = value ‹seconds› ≫ 0
 
-        **TODO** This does not appear to be in use.
+        ### TODO
 
-
+        This does not appear to be in use.
 
 ```
 
-`protocol.*` commands
-^^^^^^^^^^^^^^^^^^^^^
-
+## `protocol.*` commands
 
 > protocol.choke_heuristics.down.leech
 > protocol.choke_heuristics.down.leech.set
@@ -63,14 +56,14 @@ See the Github wiki for an example of `enabling DHT in rTorrent`_.
 > protocol.choke_heuristics.up.seed
 > protocol.choke_heuristics.up.seed.set
 
-> **TODO**
+### TODO
 
 > protocol.connection.leech
 > protocol.connection.leech.set
 > protocol.connection.seed
 > protocol.connection.seed.set
 
-> **TODO**
+### TODO (connection)
 
 > protocol.encryption.set
 
@@ -81,14 +74,9 @@ See the Github wiki for an example of `enabling DHT in rTorrent`_.
 
         Controls whether `peer exchange`_ is enabled.
 
-
-
-
-
 ```
 
-`throttle.*` commands
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+## `throttle.*` commands
 
 Throttles are names for bandwidth limitation rules (for upload, download, or both).
 The throttle assigned to the item in focus can be changed using `Ctrl-T`
@@ -99,22 +87,21 @@ There are two system throttles, `NULL` and the one with an empty name.
 which is the default for new items and what's shown in the status bar on the left
 as `[Throttle ‹UP›/‹DOWN› KB]`.
 
-**TODO** Explain how throttles work, borrowing from the global throttle.
+### TODO (throttles)
+
+Explain how throttles work, borrowing from the global throttle.
 
 Other commands in this group determine the limits for upload / download slots,
 and the amount of peers requested in tracker announces.
 
-
 > Note that since named throttles *borrow* from the global throttle,
 > the global one has to be set to a non-zero value for the named ones to work
 > (because borrowing from ∞ means there is no limit).
-
-
-
+>
 > throttle.down
 > throttle.up
 
-```
+```shell
 
             $ rtxmlrpc --repr throttle.names
             ['', 'NULL', 'kb500', 'lo_up', 'onemb']

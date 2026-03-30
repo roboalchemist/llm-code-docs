@@ -1,5 +1,6 @@
+# Contact Information
 
-> **align:** left
+**align:** left
 
 To get in contact and share your experiences with other users of `rTorrent`,
 join the `rtorrent-community`_ on Gitter.

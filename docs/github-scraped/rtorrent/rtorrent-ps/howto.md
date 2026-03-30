@@ -1,6 +1,4 @@
-Tips & How-Tos
-==============
-
+# Tips & How-Tos
 
 ## Checking Details of the Standard Configuration
 
@@ -19,22 +17,17 @@ Remember that `.rcignore` files in those directories allow to
 selectively disable parts of the standard configuration, like so:
 
 ```shell
-
-    echo >>~/rtorrent/rtorrent.d/.rcignore "disable-control-q.rc"
-
+echo >>~/rtorrent/rtorrent.d/.rcignore "disable-control-q.rc"
 ```
 
 For finding specifics on added commands or paths and such, `grep` is your friend,
 as in this example:
 
 ```console
-
-    $ grep -C1 import.rc ~/.pyroscope/rtorrent.d/*.rc.default ~/rtorrent/rtorrent.d/*.rc ~/rtorrent/*rt*rc
-    rtorrent/rtorrent.rc-execute2 = (cat,(pyro.bin_dir),pyroadmin),-q,--create-import,(cat,(cfg.basedir),"rtorrent.d/*.rc")
-    rtorrent/rtorrent.rc:import = (cat,(cfg.basedir),"rtorrent.d/.import.rc")
-    rtorrent/rtorrent.rc-
-
-
+$ grep -C1 import.rc ~/.pyroscope/rtorrent.d/*.rc.default ~/rtorrent/rtorrent.d/*.rc ~/rtorrent/*rt*rc
+rtorrent/rtorrent.rc-execute2 = (cat,(pyro.bin_dir),pyroadmin),-q,--create-import,(cat,(cfg.basedir),"rtorrent.d/*.rc")
+rtorrent/rtorrent.rc:import = (cat,(cfg.basedir),"rtorrent.d/.import.rc")
+rtorrent/rtorrent.rc-
 ```
 
 ## Validate Self-Signed Certs
@@ -46,21 +39,20 @@ you must add such certificates to your the system to make them valid.
 
 This script does that via an easy command call, just pass it the tracker domain or URL:
 
-```
-
-    cat >/usr/local/sbin/load-domain-certificate <<'EOF'
-    #! /bin/bash
-    if test -z "$1"; then
-        echo "usage: $0 <domainname_or_url>"
-        exit 1
-    fi
-    DOMAINNAME=$(sed -re 's%^(https://)?([^/]+)(.*)$%\2%' <<<$1)
-    set -x
-    openssl s_client -servername ${DOMAINNAME} -connect ${DOMAINNAME}:443 </dev/null | tee /tmp/${DOMAINNAME}.crt
-    openssl x509 -inform PEM -in /tmp/${DOMAINNAME}.crt -text -out /usr/share/ca-certificates/${DOMAINNAME}.crt
-    grep ${DOMAINNAME}.crt /etc/ca-certificates.conf >/dev/null || echo ${DOMAINNAME}.crt >>/etc/ca-certificates.conf
-    update-ca-certificates
-    ls -l /etc/ssl/certs | grep ${DOMAINNAME}
-    EOF
-    chmod a+x /usr/local/sbin/load-domain-certificate
+```bash
+cat >/usr/local/sbin/load-domain-certificate <<'EOF'
+#! /bin/bash
+if test -z "$1"; then
+    echo "usage: $0 <domainname_or_url>"
+    exit 1
+fi
+DOMAINNAME=$(sed -re 's%^(https://)?([^/]+)(.*)$%\2%' <<<$1)
+set -x
+openssl s_client -servername ${DOMAINNAME} -connect ${DOMAINNAME}:443 </dev/null | tee /tmp/${DOMAINNAME}.crt
+openssl x509 -inform PEM -in /tmp/${DOMAINNAME}.crt -text -out /usr/share/ca-certificates/${DOMAINNAME}.crt
+grep ${DOMAINNAME}.crt /etc/ca-certificates.conf >/dev/null || echo ${DOMAINNAME}.crt >>/etc/ca-certificates.conf
+update-ca-certificates
+ls -l /etc/ssl/certs | grep ${DOMAINNAME}
+EOF
+chmod a+x /usr/local/sbin/load-domain-certificate
 ```

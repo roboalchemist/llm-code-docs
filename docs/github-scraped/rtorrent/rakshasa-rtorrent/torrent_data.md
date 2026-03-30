@@ -1,3 +1,8 @@
+# torrent_data.pl
+
+Perl script to read torrent data.
+
+```perl
 #!/usr/bin/perl
 
 # Perl script to read torrent data
@@ -21,3 +26,4 @@ my $t = bdecode(scalar <$in>);
 print "done\n\n";
 
 print Data::Dumper->new([$t], ['*Torrent'])->Indent(1)->Useqq(1)->Quotekeys(0)->Sortkeys(1)->Dump;
+```

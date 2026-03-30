@@ -1,6 +1,8 @@
+# rTorrent Command Reference
+
 ## Commands Reference
 
-The reference chapter lists all relevant XMLRPC and ‘private’ commands
+The reference chapter lists all relevant XMLRPC and 'private' commands
 provided by *rTorrent* with a short explanation.
 See the **doc:** `scripting` on how to combine them into meaningful command sequences,
 and **ref:** `xmlrpc-api` for some general hints on using the XMLRPC API
@@ -9,9 +11,8 @@ and **ref:** `xmlrpc-api` for some general hints on using the XMLRPC API
 or the **ref:** `search`.
 The **ref:** `generated index <genindex>` also lists all the command names.
 
-
 > All `d.*` commands take an info hash as the first argument when called over the XML-RPC API,
-> to uniquely identify the *target* object. ‘Target’ is the term used for that 1st parameter in
+> to uniquely identify the *target* object. 'Target' is the term used for that 1st parameter in
 > error messages and so on.
 
 ```ini
@@ -35,52 +36,32 @@ The **ref:** `generated index <genindex>` also lists all the command names.
 
 The following are similar, but incomplete resources:
 
--  `PyroScope's reference`_
--  `wikia.com Reference`_
-
-
+- `PyroScope's reference`_
+- `wikia.com Reference`_
 
 ## Download Items and Attributes
 
-
-
 ## Scripting
-
-
 
 ## Logging, Files, and OS
 
-
-
-Network (Sockets, HTTP, XMLRPC)
----
-
-
+## Network (Sockets, HTTP, XMLRPC)
 
 ## Bittorrent Protocol
 
-
-
 ## User Interface
-
-
 
 ## Miscellaneous
 
+## TODO (Groups)
 
-
-TODO (Groups)
-^^^^^^^^^^^^^
-
- - choke_group
- - file
- - group
- - group2
- - keys
- - ratio
- - scheduler
-
-
+- choke_group
+- file
+- group
+- group2
+- keys
+- ratio
+- scheduler
 
 > directory.default
 > directory.default.set
@@ -88,10 +69,7 @@ TODO (Groups)
 > encoding.add
 > encoding_list
 
-> **TODO**
-
-
-
+### TODO (directory/encoding)
 
 > trackers.disable
 > trackers.enable
@@ -100,20 +78,20 @@ TODO (Groups)
 > trackers.use_udp
 > trackers.use_udp.set
 
-> **TODO**
+### TODO (trackers)
 
 > trackers.alias.items
 
-> Returns all the mappings in the form `«domain»=«alias»` as a list.
+Returns all the mappings in the form `«domain»=«alias»` as a list.
 
-> Note that domains that were not explicitly defined so far, but shown
-> previously, are also contained in the list, with an empty alias. So to
-> create a list for you to fill in the aliases, scroll through all your
-> items on `main` or `trackers`, so you can dump the domains of all
-> loaded items.
+Note that domains that were not explicitly defined so far, but shown
+previously, are also contained in the list, with an empty alias. So to
+create a list for you to fill in the aliases, scroll through all your
+items on `main` or `trackers`, so you can dump the domains of all
+loaded items.
 
-> Example that prints all the domains and their aliases as commands that
-> define them:
+Example that prints all the domains and their aliases as commands that
+define them:
 
 ```ini
 
@@ -122,9 +100,7 @@ TODO (Groups)
 
 ```
 
-TODO (singles)
-^^^^^^^^^^^^^^
-
+## TODO (singles)
 
 > print
 > add_peer
@@ -165,18 +141,14 @@ TODO (singles)
 > keys.layout
 > keys.layout.set
 
-> **TODO**
+### TODO (singles list)
 
+## Intermediate Commands
 
-
-‘Intermediate’ Commands
-^^^^^^^^^^^^^^^^^^^^^^^
-
-The *intermediate* commands are kept around as aliases for ‘new’ ones
-– at least for the time being. Probably best avoided.
+The *intermediate* commands are kept around as aliases for 'new' ones.
+At least for the time being. Probably best avoided.
 
 Avoiding the *deprecated* commands is a must, these will disappear at some time.
-
 
 > method.use_deprecated
 > method.use_deprecated.set
@@ -216,8 +188,4 @@ These are called *intermediate:*
 
 `rTorrent` 0.9.7 adds some missing `group.seeding.*` command aliases.
 
-
 ## Standard Configuration Sets
-
-
-

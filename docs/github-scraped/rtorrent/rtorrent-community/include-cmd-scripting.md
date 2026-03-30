@@ -1,7 +1,6 @@
+# Scripting Commands
 
-`method.*` commands
-^^^^^^^^^^^^^^^^^^^
-
+## `method.*` commands
 
 > method.insert
 
@@ -12,12 +11,9 @@
         Defines an alias for an existing command, the arguments are command names.
         Aliases cannot be changed, using the same alias name twice causes an error.
 
-
-
 ```
 
-`event.*` commands
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+## `event.*` commands
 
 rTorrent events are merely **ref:** `multi commands <multi-type>`
 that are called automatically when certain things happen,
@@ -38,50 +34,47 @@ The handlers for an event can be listed like so:
 Note that practically all the events have pre-registered system handlers,
 often starting with a digit, `!`, or `~`, for ordering reasons.
 
-
-
 > event.download.closed
 > event.download.opened
 
-> Download item was closed / opened.
+Download item was closed / opened.
 
 > event.download.paused
 > event.download.resumed
 
-> Download item was paused / resumed.
+Download item was paused / resumed.
 
 > event.download.hash_done
 > event.download.hash_failed
 > event.download.hash_final_failed
 
-> **TODO**
+### TODO (hash events)
 
 > event.download.hash_queued
 > event.download.hash_removed
 
-> **TODO**
+### TODO (hash queued/removed)
 
 > event.download.inserted
 > event.download.inserted_new
 > event.download.inserted_session
 
-> `inserted` is *always* called when an item is added to the main downloads list.
-> After that, `inserted_session` is called when the source of that item is the session state (on startup),
-> or else `inserted_new` is called for items newly added via a `load` command.
+`inserted` is *always* called when an item is added to the main downloads list.
+After that, `inserted_session` is called when the source of that item is the session state (on startup),
+or else `inserted_new` is called for items newly added via a `load` command.
 
 > event.download.finished
 
-> Download item is complete.
+Download item is complete.
 
 > event.download.erased
 
-> Download item was removed.
+Download item was removed.
 
-> See also **term:** `d.erase`.
+See also **term:** `d.erase`.
 
 > event.view.hide
 > event.view.show
-
 
 ```ini
 
@@ -90,16 +83,12 @@ often starting with a digit, `!`, or `~`, for ordering reasons.
             method.set_key = event.view.show, ~log,\
                 ((print, "⊞ ", ((argument.0)), " → ", ((ui.current_view))))'
 
-
-
 ```
 
-Scheduling Commands
-^^^^^^^^^^^^^^^^^^^
+## Scheduling Commands
 
 The scheduling commands define tasks that call another command or list of commands repeatedly,
 just like a cron job, but with a resolution of seconds.
-
 
 > schedule2
 
@@ -111,13 +100,9 @@ just like a cron job, but with a resolution of seconds.
 
         See also :term:`d.free_diskspace`.
 
-
-
 ```
 
-Importing Script Files
-^^^^^^^^^^^^^^^^^^^^^^
-
+## Importing Script Files
 
 > import
 > try_import
@@ -129,13 +114,9 @@ Importing Script Files
         You can do this incrementally ordered from older to younger capabilities,
         using exactly those features a build has to offer.
 
-
-
 ```
 
-Conditions (if/branch/do)
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
+## Conditions (if/branch/do)
 
 > branch
 > if
@@ -154,23 +135,19 @@ Conditions (if/branch/do)
             :start-after: # do
             :end-before: # END
 
-
-
 ```
 
-Conditional Operators
-^^^^^^^^^^^^^^^^^^^^^
-
+## Conditional Operators
 
 > false
 
-> Ignores any amount of arguments, and always returns `0`.
+Ignores any amount of arguments, and always returns `0`.
 
 > and
 > or
 > not
 
-> **TODO**
+### TODO (conditional operators)
 
 > less
 > equal
@@ -182,12 +159,9 @@ Conditional Operators
             view.filter = messages, ((d.message))
             view.sort_new = messages, "compare=,d.message=,d.name="
 
-
 ```
 
-String Functions
-^^^^^^^^^^^^^^^^
-
+## String Functions
 
 > cat
 
@@ -202,32 +176,25 @@ String Functions
             $ rtxmlrpc -i 'print = (string.map, (cat, (value,1)), {0,off}, {1,low}, {2,""}, {3,high})'
             # prints 'low' as a console message, this is how you map integers
 
-
 ```
 
-Array Functions
-^^^^^^^^^^^^^^^
-
+## Array Functions
 
 > array.at
-
 
 ```ini
 
             array.at = «array», «pos» ≫ object (element)
 
-        **TODO**
-
+        ### TODO
 
             :language: console
             :start-at: # array.at
             :end-before: # END
 
-
 ```
 
-Math Functions
-^^^^^^^^^^^^^^
+## Math Functions
 
 Most of these commands are available in `rTorrent-PS` 1.1+, in `rTorrent-PS-CH`,
 and `rTorrent` 0.9.7+. Deviations are explicitly noted.
@@ -249,77 +216,68 @@ When using multiple list arguments, or mixing them with plain numbers,
 this can lead to unexpected results with non-commutative operators,
 see the `math.sub` examples below.
 
-
-
 > math.add
 > math.sub
 > math.mul
 > math.div
 > math.mod
 
-> Basic arithmetic operators (+, -, *, /, %).
+Basic arithmetic operators (+, -, *, /, %).
 
-> These share the same code, so the errors shown in the following examples
-> usually apply to all commands, and are not repeated for each operator.
-
+These share the same code, so the errors shown in the following examples
+usually apply to all commands, and are not repeated for each operator.
 
 > **language:** console
 > **start-at:** # math.add
 > **end-before:** # END
-
+>
 > **language:** console
 > **start-at:** # math.sub
 > **end-before:** # END
-
+>
 > **language:** console
 > **start-at:** # math.mul
 > **end-before:** # END
-
+>
 > **language:** console
 > **start-at:** # math.div
 > **end-before:** # END
-
+>
 > **language:** console
 > **start-at:** # math.mod
 > **end-before:** # END
-
-
+>
 > math.min
 > math.max
 > math.cnt
 > math.avg
 > math.med
 
-> Functions to calculate the minimum, maximum, element count, average, or median over the input values.
-
+Functions to calculate the minimum, maximum, element count, average, or median over the input values.
 
 > **language:** console
 > **start-at:** # math.min
 > **end-before:** # END
-
+>
 > **language:** console
 > **start-at:** # math.max
 > **end-before:** # END
-
+>
 > **language:** console
 > **start-at:** # math.cnt
 > **end-before:** # END
-
+>
 > **language:** console
 > **start-at:** # math.avg
 > **end-before:** # END
-
+>
 > **language:** console
 > **start-at:** # math.med
 > **end-before:** # END
 
-
-
-Value Conversion & Formatting
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+## Value Conversion & Formatting
 
 The `to_*` forms are **deprecated**.
-
 
 > convert.kb
 > convert.mb
@@ -328,7 +286,7 @@ The `to_*` forms are **deprecated**.
 > to_mb
 > to_xb
 
-> **TODO**
+### TODO (value conversion)
 
 > convert.date
 > convert.elapsed_time
@@ -341,17 +299,16 @@ The `to_*` forms are **deprecated**.
 > to_gm_time
 > to_time
 
-> **TODO**
+### TODO (date conversion)
 
 > convert.throttle
 > to_throttle
 
-> **TODO**
+### TODO (throttle conversion)
 
 > convert.time_delta
 
-
-```
+```shell
 
             $ rtxmlrpc -qi 'view.filter = rtcontrol, "equal = d.priority=, value=3"'
             # the 'rtcontrol' view will now show all items with priority 'high'
@@ -359,6 +316,5 @@ The `to_*` forms are **deprecated**.
             27
             $ rtxmlrpc --repr value '' 1b
             ERROR    While calling value('', '1b'): <Fault -503: 'Junk at end of number: 1b'>
-
 
 ```

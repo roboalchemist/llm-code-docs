@@ -1,3 +1,4 @@
+# rTorrent Use Cases
 
 ## Common Configuration Use-Cases
 
@@ -8,11 +9,7 @@ but which weren't necessary to start using it.
 
 The `Common Tasks in rTorrent`_ wiki page contains more of these typical configuration use-cases.
 
-
-
-
-Load ‘Drop-In’ Config Fragments
----
+## Load Drop-In Config Fragments
 
 The examples here and in the wiki are mostly short snippets written to serve a specific purpose.
 To easily add those by just dropping them into a new file, add this to your *main*
@@ -40,26 +37,21 @@ To test the change, execute these commands:
 Then restart *rTorrent*, and you should see `Hello from config.d!`
 amongst the initial console messages.
 
-
 > Config drop-ins are very useful when you manage your systems in a state-of-the-art way,
 > i.e. using a configuration management tool like `Ansible`.
 > Then you can simply *add* files with customizations to a system,
 > without having to fiddle with *changing* existing files.
-
-
+>
 > If a drop-in file just contains commands that can be repeated several
 > times, they can be re-imported making them way easier to test after changes.
 > For example, schedules can be redefined, but method definitions can not
 > (under the same name).
-
-
 
 ## Log Rotation, Archival, and Pruning
 
 The following longer snippet adds logs that don't endlessly grow,
 get archived after some days, and are finally deleted after a while.
 See `rtorrent.d/15-logging.rc`_ for the full snippet.
-
 
 > If you include this, take care to comment out any conflicting logging commands
 > that you already have in your main configuration.
@@ -98,10 +90,6 @@ The `pyro.log_rotate` method is used near the end to open log files at startup.
 > **start-after:** pyro_daily_log_rotate
 > **end-before:** END logging
 
-
-
-
-
 ## Rename Item Using its Tied-to File
 
 The `rename2tied.sh`_ script overwrites an item's name using the file name
@@ -112,10 +100,9 @@ contain more useful information than the `info.name` of the metafile content.
 Also, those metafile names typically have a common format,
 which can help with properly organizing your downloads.
 
-
 > Right now, this only works for items that are not started yet,
 > i.e. were added using `load.normal` and have no data files yet.
-
+>
 > Also, the item needs to be loaded from a file, so there actually *is*
 > a tied-to name – items loaded via ruTorrent do *not* have one!
 
@@ -158,9 +145,6 @@ an `inserted_new` event handler, or as a post-load command in a watch schedule.
 If you do that, you should probably add some checks
 that only apply changes for certain trackers,
 or when the tied-to file name has a certain format.
-
-
-
 
 ## Versatile Move on Completion
 
@@ -232,10 +216,6 @@ Then add a rule like this to the body of `set_target_path`:
         linuxtracker.org) target="Software" ;;
     esac
 
-
-
-
-
 ```
 
 ## Delayed Completion Handling
@@ -254,9 +234,7 @@ or else to your normal `rtorrent.rc` file:
 
 The last command adding a `!debug` handler can be left out, if you want less verbosity.
 
-
-Set a Download to “Seed Only”
----
+## Set a Download to Seed Only
 
 The `d.seed_only` command helps you to stop all download activity on an item.
 Select any unfinished item, press `Ctrl-X`, and enter `d.seed_only=` followed by `⏎`.
@@ -275,7 +253,6 @@ The data you have is still seeded, as long as the item is not stopped.
 **term:** `f.multicall` calls :term:`f.priority.set` on every file,
 **term:** `d.update_priorities` makes these changes known,
 and finally **term:** `d.disconnect.seeders` kicks any active seeders.
-
 
 ## Scheduled Bandwidth Shaping
 
@@ -302,5 +279,3 @@ External scripts should also be used when saving money is the goal,
 in cases where you have to live with disadvantageous ISP plans with bandwidth caps.
 Run such a script very regularly (via `cron`),
 to enforce the bandwidth rules continuously.
-
-

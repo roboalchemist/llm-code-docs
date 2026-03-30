@@ -1,11 +1,9 @@
-## Advanced Customization
+# Advanced Customization
 
 This chapter helps you to personalize your `rTorrent` experience,
 specifically regarding the `ncurses` terminal user interface.
 It provides some background on the standard configuration,
 and how you can tweak it further according to your preferences.
-
-
 
 ## Color Scheme Configuration
 
@@ -24,16 +22,12 @@ And here are some visuals of the default schemes…
 |color-scheme-default|   |color-scheme-happy-pastel|
 
 |color-scheme-solarized-blue|   |color-scheme-solarized-yellow|
-
-
 > **width:** 320px
 > **width:** 320px
 > **width:** 320px
 > **width:** 320px
 
-
-Working With Color Schemes
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+### Working With Color Schemes
 
 If your terminal works as intended,
 you now might want to find you own color theme.
@@ -42,25 +36,19 @@ out some colors, and add the combinations you like to your
 `~/.rtorrent.rc`.
 
 ```shell
-
-    # For people liking candy stores...
-    rtxmlrpc ui.color.title.set "bold magenta on bright cyan"
-
+# For people liking candy stores...
+rtxmlrpc ui.color.title.set "bold magenta on bright cyan"
 ```
 
 You can use the following code in a terminal to dump a full color scheme from the running client:
 
 ```shell
-
-    for i in $(rtxmlrpc system.listMethods | egrep '^ui.color.[^.]+$'); do
-        echo $i = $(rtxmlrpc -r $i | tr "'" '"') ;
-    done
-
-
+for i in $(rtxmlrpc system.listMethods | egrep '^ui.color.[^.]+$'); do
+echo $i = $(rtxmlrpc -r $i | tr "'" '"') ;
+done
 ```
 
-Adding Your Own Color Schemes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+### Adding Your Own Color Schemes
 
 Color schemes are lists of `ui.color.‹color name›.set` commands in your configuration,
 or in a  `*.rc[.default]` file in the `~/.pyroscope/color-schemes/` directory.
@@ -73,35 +61,31 @@ i.e. where it is used on the canvas. `footer` and `alarm` are obvious examples.
 Here's a configuration example showing all the commands and their defaults:
 
 ```ini
-
-    # UI/VIEW: Colors
-    ui.color.alarm.set="bold white on red"
-    ui.color.complete.set="bright green"
-    ui.color.even.set=""
-    ui.color.focus.set="reverse"
-    ui.color.footer.set="bold bright cyan on blue"
-    ui.color.incomplete.set="yellow"
-    ui.color.info.set="white"
-    ui.color.label.set="gray"
-    ui.color.leeching.set="bold bright yellow"
-    ui.color.odd.set=""
-    ui.color.progress0.set="red"
-    ui.color.progress20.set="bold bright red"
-    ui.color.progress40.set="bold bright magenta"
-    ui.color.progress60.set="yellow"
-    ui.color.progress80.set="bold bright yellow"
-    ui.color.progress100.set="green"
-    ui.color.progress120.set="bold bright green"
-    ui.color.queued.set="magenta"
-    ui.color.seeding.set="bold bright green"
-    ui.color.stopped.set="blue"
-    ui.color.title.set="bold bright white on blue"
-
+# UI/VIEW: Colors
+ui.color.alarm.set="bold white on red"
+ui.color.complete.set="bright green"
+ui.color.even.set=""
+ui.color.focus.set="reverse"
+ui.color.footer.set="bold bright cyan on blue"
+ui.color.incomplete.set="yellow"
+ui.color.info.set="white"
+ui.color.label.set="gray"
+ui.color.leeching.set="bold bright yellow"
+ui.color.odd.set=""
+ui.color.progress0.set="red"
+ui.color.progress20.set="bold bright red"
+ui.color.progress40.set="bold bright magenta"
+ui.color.progress60.set="yellow"
+ui.color.progress80.set="bold bright yellow"
+ui.color.progress100.set="green"
+ui.color.progress120.set="bold bright green"
+ui.color.queued.set="magenta"
+ui.color.seeding.set="bold bright green"
+ui.color.stopped.set="blue"
+ui.color.title.set="bold bright white on blue"
 ```
 
 See the `ui.color.* command reference`_ for details on these and related commands.
-
-
 The following color settings work better than the default ones in a 256
 color terminal (gnome-terminal), for me at least. Your mileage (color
 table) may vary. Having 256 colors means you have very dark shades of
@@ -109,26 +93,24 @@ grey, and that is used here to set the even / odd backgrounds.
 
 ```ini
 
-    ui.color.complete.set=41
-    ui.color.stopped.set=33
+ui.color.complete.set=41
+ui.color.stopped.set=33
 
-    ui.color.footer.set="bright cyan on 20"
-    ui.color.even.set="on 234"
-    ui.color.odd.set="on 232"
+ui.color.footer.set="bright cyan on 20"
+ui.color.even.set="on 234"
+ui.color.odd.set="on 232"
 
-    ui.color.progress0.set=196
-    ui.color.progress20.set=202
-    ui.color.progress40.set=213
-    ui.color.progress60.set=214
-    ui.color.progress80.set=226
-    ui.color.progress100.set=41
-    ui.color.progress120.set="bold bright green"
+ui.color.progress0.set=196
+ui.color.progress20.set=202
+ui.color.progress40.set=213
+ui.color.progress60.set=214
+ui.color.progress80.set=226
+ui.color.progress100.set=41
+ui.color.progress120.set="bold bright green"
 
 ```
 
 |rt-ps-glyphs|
-
-
 
 Note that you might need to enable support for 256 colors in your
 terminal, see **ref:** `canvas-256-colors` for a description. In a nutshell, you need to
@@ -137,13 +119,9 @@ also add these commands to your `rTorrent` start script:
 
 ```shell
 
-    if [ "$TERM" = "${TERM%-256color}" ]; then
-        export TERM="$TERM-256color"
-    fi
-
-
-
-
+if [ "$TERM" = "${TERM%-256color}" ]; then
+export TERM="$TERM-256color"
+fi
 
 ```
 
@@ -151,9 +129,7 @@ also add these commands to your `rTorrent` start script:
 
 > :local:
 
-
-Canvas v2 Overview
-^^^^^^^^^^^^^^^^^^
+### Canvas v2 Overview
 
 The main display with the downloads list is flexible and
 can be configured to your will, in `rTorrent-PS 1.1` and up.
@@ -162,48 +138,41 @@ This is also known as *canvas v2*.
 Use the following **ref:** `rtxmlrpc` command to check if you have a version
 that can do this:
 
-```shell
-
-    $ rtxmlrpc "system.has=,canvas_v2"
-    1
-    # The '1' means you have canvas v2 on board;
-    # a '0' or "Method 'system.has' not defined" means you don't.
-
-
+```console
+$ rtxmlrpc "system.has=,canvas_v2"
+1
+# The '1' means you have canvas v2 on board;
+# a '0' or "Method 'system.has' not defined" means you don't.
 ```
 
 The only fixed parts are the position indicator at the very left of the display,
 and the combined name / tracker column on the right.
 The latter takes all the space left by other columns.
 
-
-Inspecting Your Display
-^^^^^^^^^^^^^^^^^^^^^^^
+### Inspecting Your Display
 
 To list the columns you have in your setup, call **ref:** `rtxmlrpc` like so:
 
 ```console
-
-    $ rtxmlrpc method.get=,ui.column.render | sed -re 's/ /␣/g' | sort
-    100:3C95/2:❢␣␣
-    110:2C92/2:☢␣
-    120:?2:☍␣
-    130:?2:⌘␣
-    400:?3C23/3:␣↺␣
-    410:?3C24/3:␣⤴␣
-    420:?3C14/3:␣⤵␣
-    500:?2:⚡␣
-    510:3C28/3:℞␣␣
-    520:6C96/6:∆⋮␣⌛␣␣
-    530:6C90/6:∇⋮␣⌚␣␣
-    800:3:⋉␣
-    900:?5C24/3C21/2:␣Σ⇈␣␣
-    910:2C94/2:⣿␣
-    920:3C93/3:☯␣␣
-    930:5C15/3C21/2:␣✇␣␣␣
-    970:2C91/2:✰␣
-    980:2C16/2:⚑␣
-
+$ rtxmlrpc method.get=,ui.column.render | sed -re 's/ /␣/g' | sort
+100:3C95/2:❢␣␣
+110:2C92/2:☢␣
+120:?2:☍␣
+130:?2:⌘␣
+400:?3C23/3:␣↺␣
+410:?3C24/3:␣⤴␣
+420:?3C14/3:␣⤵␣
+500:?2:⚡␣
+510:3C28/3:℞␣␣
+520:6C96/6:∆⋮␣⌛␣␣
+530:6C90/6:∇⋮␣⌚␣␣
+800:3:⋉␣
+900:?5C24/3C21/2:␣Σ⇈␣␣
+910:2C94/2:⣿␣
+920:3C93/3:☯␣␣
+930:5C15/3C21/2:␣✇␣␣␣
+970:2C91/2:✰␣
+980:2C16/2:⚑␣
 ```
 
 The important thing here are the numbers in front,
@@ -213,8 +182,6 @@ which becomes important in a moment.
 
 All these are built-in defaults, except the throttle indicator `⋉` with index 800,
 which is defined in `~/rtorrent/rtorrent.d/05-rt-ps-columns-v2.rc.include`_ of `pimp-my-box`_.
-
-
 > You **MUST** update your `pimp-my-box`_ configuration
 > if you used that to set up your system.
 > Otherwise you'll get duplicate columns.
@@ -223,18 +190,14 @@ To show the full column definitions with their code, call **ref:** `cli-usage-py
 
 ```console
 
-    $ pyroadmin --dump-rc | grep -A1 ui.column.render | egrep '^(method.set_key|    )'
-    method.set_key = ui.column.render, "100:3C95/2:❢  ", \
-        ((array.at, {"  ", "♺ ", "⚠ ", "◔ ", "⚡ ", "↯ ", "¿?", "⨂ "}, ((d.message.alert)) ))
-    method.set_key = ui.column.render, "110:2C92/2:☢ ", \
-        ((string.map, ((cat, ((d.is_open)), ((d.is_active)) )), {00, "▪ "}, …, {11, "▹ "}))
-    …
-    method.set_key = ui.column.render, "980:2C16/2:⚑ ", \
-        ((array.at, {"  ", "⚑ "}, ((d.views.has, tagged)) ))
-
-
-
-
+ pyroadmin --dump-rc | grep -A1 ui.column.render | egrep '^(method.set_key|    )'
+method.set_key = ui.column.render, "100:3C95/2:❢  ", \
+((array.at, {"  ", "♺ ", "⚠ ", "◔ ", "⚡ ", "↯ ", "¿?", "⨂ "}, ((d.message.alert)) ))
+method.set_key = ui.column.render, "110:2C92/2:☢ ", \
+((string.map, ((cat, ((d.is_open)), ((d.is_active)) )), {00, "▪ "}, …, {11, "▹ "}))
+…
+method.set_key = ui.column.render, "980:2C16/2:⚑ ", \
+((array.at, {"  ", "⚑ "}, ((d.views.has, tagged)) ))
 ```
 
 Column Layout Definitions
@@ -256,15 +219,13 @@ and is a sequence of `C‹color index›/‹length›` elements.
 Finally, `‹title›` is used for the column's heading.
 Make sure to end it with a space to leave room for wide Unicode glyphs,
 and always make it as long as the column width.
-
-
 To get a color index table, try this command:
 
 ```shell
 
-    rtxmlrpc system.has.private_methods \
-        | egrep '^ui.color.*index$' \
-        | xargs -I+ rtxmlrpc -i 'print="+ = ",(+)'
+rtxmlrpc system.has.private_methods \
+| egrep '^ui.color.*index$' \
+| xargs -I+ rtxmlrpc -i 'print="+ = ",(+)'
 
 ```
 
@@ -273,36 +234,36 @@ This is what you'll see (timestamps removed):
 
 ```ini
 
-    ui.color.alarm.index = 22
-    ui.color.complete.index = 23
-    ui.color.custom1.index = 1
-    ui.color.custom2.index = 2
-    ui.color.custom3.index = 3
-    ui.color.custom4.index = 4
-    ui.color.custom5.index = 5
-    ui.color.custom6.index = 6
-    ui.color.custom7.index = 7
-    ui.color.custom8.index = 8
-    ui.color.custom9.index = 9
-    ui.color.even.index = 30
-    ui.color.focus.index = 19
-    ui.color.footer.index = 18
-    ui.color.incomplete.index = 27
-    ui.color.info.index = 21
-    ui.color.label.index = 20
-    ui.color.leeching.index = 28
-    ui.color.odd.index = 29
-    ui.color.progress0.index = 10
-    ui.color.progress20.index = 11
-    ui.color.progress40.index = 12
-    ui.color.progress60.index = 13
-    ui.color.progress80.index = 14
-    ui.color.progress100.index = 15
-    ui.color.progress120.index = 16
-    ui.color.queued.index = 26
-    ui.color.seeding.index = 24
-    ui.color.stopped.index = 25
-    ui.color.title.index = 17
+ui.color.alarm.index = 22
+ui.color.complete.index = 23
+ui.color.custom1.index = 1
+ui.color.custom2.index = 2
+ui.color.custom3.index = 3
+ui.color.custom4.index = 4
+ui.color.custom5.index = 5
+ui.color.custom6.index = 6
+ui.color.custom7.index = 7
+ui.color.custom8.index = 8
+ui.color.custom9.index = 9
+ui.color.even.index = 30
+ui.color.focus.index = 19
+ui.color.footer.index = 18
+ui.color.incomplete.index = 27
+ui.color.info.index = 21
+ui.color.label.index = 20
+ui.color.leeching.index = 28
+ui.color.odd.index = 29
+ui.color.progress0.index = 10
+ui.color.progress20.index = 11
+ui.color.progress40.index = 12
+ui.color.progress60.index = 13
+ui.color.progress80.index = 14
+ui.color.progress100.index = 15
+ui.color.progress120.index = 16
+ui.color.queued.index = 26
+ui.color.seeding.index = 24
+ui.color.stopped.index = 25
+ui.color.title.index = 17
 
 ```
 
@@ -324,8 +285,6 @@ This is a list of the dynamic color schemes:
 The mixed `DOWN_TIME` and `UP_TIME` schemes must span the full width of the column,
 and can only be used with *one* color definition in the column key (anything after them is ignored).
 
-
-
 Defining Your Own Columns
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -340,14 +299,14 @@ e.g. in the `_rtlocal.rc` file (when using `pimp-my-box`_).
 
 ```ini
 
-    # Remove the default column
-    method.set_key = ui.column.render, (ui.column.spec, 920)
+# Remove the default column
+method.set_key = ui.column.render, (ui.column.spec, 920)
 
-    # Add ASCII ratio in percent
-    # (1..99 for incomplete; 1c = 1.0; 1m = 10.0; …)
-    method.set_key = ui.column.render, "922:3C93/3:R% ", \
-        ((string.replace, ((convert.magnitude, ((math.div, ((d.ratio)), 10)) )), \
-                          {"⋅", "."} ))
+# Add ASCII ratio in percent
+# (1..99 for incomplete; 1c = 1.0; 1m = 10.0; …)
+method.set_key = ui.column.render, "922:3C93/3:R% ", \
+((string.replace, ((convert.magnitude, ((math.div, ((d.ratio)), 10)) )), \
+                      {"⋅", "."} ))
 
 ```
 
@@ -359,10 +318,10 @@ Looking at the original column definition often helps, e.g. to grab a few snippe
 
 ```ini
 
-    $ pyroadmin --dump-rc | egrep -A1 '"920:.+"'
-    method.set_key = ui.column.render, "920:3C93/3:☯  ", \
-        ((string.substr, "☹ ➀ ➁ ➂ ➃ ➄ ➅ ➆ ➇ ➈ ➉ ", \
-                         ((math.mul, 2, ((math.div, ((d.ratio)), 1000)) )), 2, "⊛ "))
+ pyroadmin --dump-rc | egrep -A1 '"920:.+"'
+method.set_key = ui.column.render, "920:3C93/3:☯  ", \
+((string.substr, "☹ ➀ ➁ ➂ ➃ ➄ ➅ ➆ ➇ ➈ ➉ ", \
+                     ((math.mul, 2, ((math.div, ((d.ratio)), 1000)) )), 2, "⊛ "))
 
 ```
 
@@ -380,15 +339,13 @@ and give it a new index and heading.
 
 ```ini
 
-    ui.color.custom9.set = "bright blue"
-    method.set_key = ui.column.render, "935:5C9/3C21/2: ≣   ", \
-        ((convert.human_size, ((d.chunk_size)) ))
+ui.color.custom9.set = "bright blue"
+method.set_key = ui.column.render, "935:5C9/3C21/2: ≣   ", \
+((convert.human_size, ((d.chunk_size)) ))
 
 ```
 
 That example also shows how to use a custom color.
-
-
 Disabling Columns
 ^^^^^^^^^^^^^^^^^
 
@@ -400,10 +357,10 @@ The following example shows column ♯42 only on the *active* and *leeching* vie
 
 ```ini
 
-    method.set_key = event.view.show, ~column_42_toggle, \
-        "branch = \"string.contains=$ui.current_view=, active, leeching\", \
-            ui.column.show=42, ui.column.hide=42"
-    ui.column.hide = 42
+method.set_key = event.view.show, ~column_42_toggle, \
+"branch = \"string.contains=$ui.current_view=, active, leeching\", \
+        ui.column.show=42, ui.column.hide=42"
+ui.column.hide = 42
 
 ```
 
@@ -412,10 +369,10 @@ the first one takes a single column key as its argument.
 
 ```console
 
-    $ rtxmlrpc --repr ui.column.is_hidden '' 42
-    1
-    $ rtxmlrpc --repr ui.column.hidden.list
-    [42]
+ rtxmlrpc --repr ui.column.is_hidden '' 42
+1
+ rtxmlrpc --repr ui.column.hidden.list
+[42]
 
 ```
 
@@ -424,17 +381,15 @@ This code does so for ♯935, and binds the toggle to the `_` key.
 
 ```ini
 
-    method.insert = pmb._toggle_chunk_size, simple|private, \
-        "branch = ui.column.is_hidden=935, ui.column.show=935, ui.column.hide=935 ; \
-         ui.current_view.set = (ui.current_view)"
-    pyro.bind_key = toggle_chunk_size, _, "pmb._toggle_chunk_size="
+method.insert = pmb._toggle_chunk_size, simple|private, \
+"branch = ui.column.is_hidden=935, ui.column.show=935, ui.column.hide=935 ; \
+     ui.current_view.set = (ui.current_view)"
+pyro.bind_key = toggle_chunk_size, _, "pmb._toggle_chunk_size="
 
 ```
 
 The `ui.current_view.set = (ui.current_view)` part forces a redraw of the canvas,
 giving you instant feedback.
-
-
 Adding Traffic Graphs
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -442,17 +397,17 @@ Add these lines to your configuration:
 
 ```ini
 
-    # Show traffic of the last hour
-    network.history.depth.set = 112
-    schedule = network_history_sampling,1,32, network.history.sample=
-    method.insert = network.history.auto_scale.toggle, simple|private, \
-        "branch=network.history.auto_scale=, \
-            \"network.history.auto_scale.set=0\", \
-            \"network.history.auto_scale.set=1\""
-    method.insert = network.history.auto_scale.ui_toggle, simple|private, \
-        "network.history.auto_scale.toggle= ;network.history.refresh="
-    branch=pyro.extended=,"schedule = bind_auto_scale,0,0, \
-        \"ui.bind_key=download_list,=,network.history.auto_scale.ui_toggle=\""
+# Show traffic of the last hour
+network.history.depth.set = 112
+schedule = network_history_sampling,1,32, network.history.sample=
+method.insert = network.history.auto_scale.toggle, simple|private, \
+"branch=network.history.auto_scale=, \
+        \"network.history.auto_scale.set=0\", \
+        \"network.history.auto_scale.set=1\""
+method.insert = network.history.auto_scale.ui_toggle, simple|private, \
+"network.history.auto_scale.toggle= ;network.history.refresh="
+branch=pyro.extended=,"schedule = bind_auto_scale,0,0, \
+\"ui.bind_key=download_list,=,network.history.auto_scale.ui_toggle=\""
 
 ```
 
@@ -468,4 +423,3 @@ your configured time window, and each bar of the graph represents an
 interval determined by the sampling schedule. Pressing `=` toggles
 between a graph display with a baseline of 0, and a zoomed view that scales
 it to the current bounds.
-

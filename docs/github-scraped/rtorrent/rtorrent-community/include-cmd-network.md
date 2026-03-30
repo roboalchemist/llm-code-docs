@@ -1,12 +1,11 @@
+# Network Commands
 
-`network.*` commands
-^^^^^^^^^^^^^^^^^^^^
-
+## `network.*` commands
 
 > network.bind_address
 > network.bind_address.set
 
-> **TODO**
+### TODO (bind_address)
 
 > network.http.dns_cache_timeout
 > network.http.dns_cache_timeout.set
@@ -37,24 +36,18 @@
         Pressing ``=`` toggles between a graph display with base line 0,
         and a zoomed view that scales it to the current bounds.
 
-
 ```
 
-`ip_tables.*` commands
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+## `ip_tables.*` commands
 
 > ip_tables.add_address
 > ip_tables.get
 > ip_tables.insert_table
 > ip_tables.size_data
 
-> **TODO**
+### TODO (ip_tables)
 
-
-`ipv4_filter.*` commands
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
+## `ipv4_filter.*` commands
 
 > ipv4_filter.add_address
 > ipv4_filter.dump
@@ -62,4 +55,4 @@
 > ipv4_filter.load
 > ipv4_filter.size_data
 
-> **TODO**
+### TODO (ipv4_filter)

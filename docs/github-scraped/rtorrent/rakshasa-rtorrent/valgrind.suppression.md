@@ -1,3 +1,6 @@
+# Valgrind Suppression File
+
+```text
 {
    <insert_a_suppression_name_here>
    Memcheck:Cond
@@ -298,8 +301,6 @@
    ...
    fun:$ss*
 }
-
-
 {
    <insert_a_suppression_name_here>
    Memcheck:Leak
@@ -341,3 +342,4 @@
    ...
    fun:_ZN7display6Canvas10initializeEv
 }
+```

@@ -1,3 +1,6 @@
+# rTorrent Statistics Plot Script
+
+```gnuplot
 #/bin/bash
 gnuplot << EOF
 # 1)  system.time_seconds=
@@ -147,3 +150,4 @@ plot "choke_group_stats.$1" \
      "" using 1:3+7*3 smooth sbezier with lines lw 2 axis x1y2
 
 EOF
+```

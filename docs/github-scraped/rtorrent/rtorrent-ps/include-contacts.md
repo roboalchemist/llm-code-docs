@@ -1,4 +1,3 @@
-
 > **align:** left
 
 To get in contact and share your experiences with other users of `PyroScope`_,

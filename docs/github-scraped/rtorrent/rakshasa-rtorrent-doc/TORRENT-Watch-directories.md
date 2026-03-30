@@ -1,5 +1,5 @@
 Watch Directories
-=================
+================
 
 Introduction
 ------------
@@ -9,7 +9,7 @@ Using various ways rTorrent can start, stop and delete downloads as torrent file
 Scheduled Task
 --------------
 
-```
+```bash
 schedule = watch_directory_foo, 10, 10, "load.start=~/watch_foo/*.torrent"
 schedule = watch_directory_bar, 10, 10, "load.normal=~/watch_bar/*.torrent"
 schedule = watch_directory_baz, 10, 10, "load.normal=~/watch_baz/*.torrent,d.directory.set=~/baz/"
@@ -20,7 +20,7 @@ The simplest and most portable way to start downloads is through scheduling a ta
 Tied Files
 ----------
 
-```
+```bash
 schedule = tied_directory, 10, 10, start_tied=
 schedule = untied_directory, 10, 10, stop_untied=
 schedule = untied_directory, 10, 10, close_untied=
@@ -34,7 +34,7 @@ The reverse happens if 'start_tied' is called.
 Inotify
 -------
 
-```
+```bash
 directory.watch.added = "~/Download/watch/", load.start
 ```
 

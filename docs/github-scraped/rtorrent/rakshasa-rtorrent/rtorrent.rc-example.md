@@ -1,3 +1,6 @@
+# rtorrent.rc Example Configuration
+
+```bash
 #############################################################################
 # A minimal rTorrent configuration that provides the basic features
 # you want to have in addition to the built-in defaults.
@@ -45,7 +48,7 @@ trackers.numwant.set = 80
 protocol.encryption.set = allow_incoming,try_outgoing,enable_retry
 
 # Limits for file handle resources, this is optimized for
-# an `ulimit` of 1024 (a common default). You MUST leave
+# an ulimit of 1024 (a common default). You MUST leave
 # a ceiling of handles reserved for rTorrent's internal needs!
 network.http.max_open.set = 50
 network.max_open_files.set = 600
@@ -97,7 +100,7 @@ schedule2 = watch_load, 11, 10, ((load.verbose, (cat, (cfg.watch), "load/*.torre
 #network.scgi.open_local = (cat,(session.path),rtorrent.sock)
 #execute.nothrow = chmod,770,(cat,(session.path),rtorrent.sock)
 
-# Logging:
+# Logging
 #   Levels = critical error warn notice info debug
 #   Groups = connection_* dht_* peer_* rpc_* storage_* thread_* tracker_* torrent_*
 print = (cat, "Logging to ", (cfg.logfile))
@@ -109,3 +112,4 @@ log.add_output = "info", "log"
 #log.add_output = "tracker_requests", "log"
 
 ### END of rtorrent.rc ###
+```

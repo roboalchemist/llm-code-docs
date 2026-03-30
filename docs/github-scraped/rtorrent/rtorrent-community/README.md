@@ -12,14 +12,12 @@ and the [community wiki](https://github.com/rtorrent-community/rtorrent-communit
 :copyright: | The content in this repository is licensed [CC-BY-SA-4.0](https://creativecommons.org/licenses/by-sa/4.0/). By contributing, you grant this project and its members the right to publish your contribution under the terms of that license.
 ---: | :---
 
-
 ## Authors
 
 These people added sizable contributions:
 
- * [pyroscope](https://github.com/pyroscope)
- * [kannibalox](https://github.com/kannibalox)
-
+- [pyroscope](https://github.com/pyroscope)
+- [kannibalox](https://github.com/kannibalox)
 
 ## How to contribute to the handbook
 
@@ -33,7 +31,6 @@ to find sections with unfinished work where you can contribute.
 
 [CONTRIBUTING](https://github.com/rtorrent-community/rtorrent-docs/blob/master/CONTRIBUTING.rst#contributing-guidelines)
 tells you more about how to add your changes to the project.
-
 
 ## How to build the handbook locally
 
