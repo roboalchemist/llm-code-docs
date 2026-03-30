@@ -1,5 +1,3 @@
-# Source: https://valibot.dev/api/FallbackAsync.md
-
 # Source: https://valibot.dev/api/fallbackAsync.md
 
 # fallbackAsync

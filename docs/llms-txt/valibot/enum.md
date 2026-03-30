@@ -1,5 +1,3 @@
-# Source: https://valibot.dev/api/Enum.md
-
 # Source: https://valibot.dev/api/enum.md
 
 # enum

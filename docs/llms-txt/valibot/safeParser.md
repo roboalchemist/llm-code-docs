@@ -1,5 +1,3 @@
-# Source: https://valibot.dev/api/SafeParser.md
-
 # Source: https://valibot.dev/api/safeParser.md
 
 # safeParser

@@ -1,5 +1,3 @@
-# Source: https://valibot.dev/api/Literal.md
-
 # Source: https://valibot.dev/api/literal.md
 
 # literal

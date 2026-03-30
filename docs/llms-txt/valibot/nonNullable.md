@@ -1,5 +1,3 @@
-# Source: https://valibot.dev/api/NonNullable.md
-
 # Source: https://valibot.dev/api/nonNullable.md
 
 # nonNullable

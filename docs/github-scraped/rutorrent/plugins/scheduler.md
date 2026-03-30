@@ -16,6 +16,7 @@ The Scheduler plugin enables you to define six different rtorrent behavior types
 ## How It Works
 
 When ruTorrent starts with the Scheduler plugin installed:
+
 1. It sends a command to rtorrent's scheduler
 2. The scheduler periodically calls a dedicated script
 3. Behavior changes based on the current time slot
@@ -44,6 +45,7 @@ $updateInterval = 60;
 ### Web Interface
 
 Access via Settings > Scheduler in ruTorrent:
+
 1. Click hour blocks to cycle through modes
 2. Drag to select multiple hours
 3. Configure speed limits for Limited modes
@@ -52,12 +54,13 @@ Access via Settings > Scheduler in ruTorrent:
 
 Edit time slots in the scheduler settings:
 
-```
+```text
 Hour: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
 Mode: U U U U U U U U L1 L1 L1 L1 U U U L2 L2 L2 L3 L3 U U U U
 ```
 
 Where:
+
 - `U` = Unlimited
 - `T` = Turn off
 - `S` = Seeding only
@@ -98,7 +101,8 @@ Check both CLI and FPM php.ini files (typically in `/etc/php/`).
 ### Night Time Throttling
 
 Reduce bandwidth usage during night hours:
-```
+
+```text
 22:00 - 06:00: Limited (100 KB/s down, 20 KB/s up)
 06:00 - 22:00: Unlimited
 ```
@@ -106,14 +110,15 @@ Reduce bandwidth usage during night hours:
 ### Seeding During Off-Peak
 
 Seed only during specific hours:
-```
+
+```text
 00:00 - 08:00: Seeding only
 08:00 - 00:00: Turn off
 ```
 
 ### Day/Night Schedule
 
-```
+```text
 Weekdays:
 00:00 - 08:00: Limited1
 08:00 - 18:00: Turn off

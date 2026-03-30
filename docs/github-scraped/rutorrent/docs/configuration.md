@@ -40,6 +40,7 @@ The main configuration file controlling ruTorrent's core functionality.
 | `$XMLRPCMountPoint` | string | Mount point path for XMLRPC communication |
 
 **Example:**
+
 ```php
 $scgi_host = "127.0.0.1";
 $scgi_port = 5000;
@@ -88,6 +89,7 @@ $XMLRPCMountPoint = "/RPC2";
 | `$localhosts` | array | Recognized localhost addresses |
 
 **Example:**
+
 ```php
 $pathToExternals = [
     "php"  => '/usr/bin/php',

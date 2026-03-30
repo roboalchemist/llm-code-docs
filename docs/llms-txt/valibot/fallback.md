@@ -1,5 +1,3 @@
-# Source: https://valibot.dev/api/Fallback.md
-
 # Source: https://valibot.dev/api/fallback.md
 
 # fallback

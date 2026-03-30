@@ -1,5 +1,3 @@
-# Source: https://valibot.dev/api/NonNullish.md
-
 # Source: https://valibot.dev/api/nonNullish.md
 
 # nonNullish

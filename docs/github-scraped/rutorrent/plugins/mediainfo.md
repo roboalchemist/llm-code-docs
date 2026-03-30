@@ -58,7 +58,7 @@ $pathToCreatetorrent = '/usr/bin/mediainfo';
 
 ## Output Example
 
-```
+```text
 General
 Format: Matroska
 Duration: 00:45:32

@@ -1,5 +1,3 @@
-# Source: https://valibot.dev/api/Config.md
-
 # Source: https://valibot.dev/api/config.md
 
 # config

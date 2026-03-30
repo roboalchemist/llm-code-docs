@@ -46,12 +46,14 @@ Access via right-click on RSS icon > **"RSS Manager"**
 ### Filter Examples
 
 **Basic filter for TV episodes:**
-```
+
+```text
 /Lost.S06E.*/i
 ```
 
 **Exclude certain releases:**
-```
+
+```text
 /(DVDR|Complete|DVDRip|BDrip|Bluray)/i
 ```
 
@@ -60,12 +62,14 @@ Access via right-click on RSS icon > **"RSS Manager"**
 ## Authentication Methods
 
 ### HTTP Basic Auth
-```
+
+```text
 http://username:password@site.com/rss.php
 ```
 
 ### Cookie Authentication
-```
+
+```text
 http://site.com/rss.php:COOKIE:name1=value1;name2=value2;
 ```
 

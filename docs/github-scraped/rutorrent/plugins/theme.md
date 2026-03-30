@@ -28,11 +28,13 @@ The Theme plugin enables custom theming and visual customization of ruTorrent.
 ### Creating a Custom Theme
 
 1. Create theme directory:
+
    ```bash
    mkdir -p plugins/theme/themes/mytheme
    ```
 
 2. Create CSS file:
+
    ```css
    /* plugins/theme/themes/mytheme/style.css */
    body {
@@ -46,6 +48,7 @@ The Theme plugin enables custom theming and visual customization of ruTorrent.
    ```
 
 3. Register theme in init.php:
+
    ```php
    $themeList['mytheme'] = 'My Custom Theme';
    ```
@@ -83,7 +86,7 @@ $allowUserTheme = true;
 
 Custom icons can be placed in:
 
-```
+```text
 plugins/theme/themes/mytheme/images/
 ```
 

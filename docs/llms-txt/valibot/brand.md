@@ -1,5 +1,3 @@
-# Source: https://valibot.dev/api/Brand.md
-
 # Source: https://valibot.dev/api/brand.md
 
 # brand

@@ -92,7 +92,7 @@ mkdir -p ~/rtorrent/
 
 Add these lines to `.rtorrent.rc` to enable the RPC socket:
 
-```
+```ini
 system.daemon.set = false
 network.scgi.open_local = (cat,(session.path),rpc.socket)
 execute.nothrow = chmod,770,(cat,(session.path),rpc.socket)
@@ -104,7 +104,7 @@ The RPC socket will be at `~/rtorrent/.session/rpc.socket`
 
 For older configurations using a port instead of socket:
 
-```
+```ini
 network.scgi.open_port = 127.0.0.1:5000
 ```
 
@@ -137,6 +137,7 @@ chmod -R 755 /var/www/rutorrent
 ### Configure ruTorrent
 
 1. Copy the configuration template:
+
    ```bash
    cd /var/www/rutorrent
    cp conf/access.ini -p conf/access.ini.bak

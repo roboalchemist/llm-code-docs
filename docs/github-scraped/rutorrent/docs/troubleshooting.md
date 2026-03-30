@@ -7,6 +7,7 @@
 **Cause:** The torrent tracker requires authorization, or the torrent file was corrupted during download.
 
 **Solution:**
+
 - Verify tracker authentication credentials
 - Re-download the torrent file
 - Check if tracker is operational
@@ -18,6 +19,7 @@
 **Cause:** Missing PCRE module on BSD-based systems.
 
 **Solution:**
+
 ```bash
 # Debian/Ubuntu
 apt-get install php-pcre
@@ -33,12 +35,16 @@ pkg install php*pcRE
 **Cause:** Insufficient rights or restricted PHP instructions (`open_basedir`).
 
 **Solution:**
+
 - Move the session directory to the rtorrent installation directory
 - Adjust `open_basedir` in php.ini:
+
   ```ini
   open_basedir = /var/www/rutorrent:/home/user/rtorrent:/tmp
   ```
+
 - Set proper permissions:
+
   ```bash
   chmod -R 0777 ~/rtorrent/.session
   ```

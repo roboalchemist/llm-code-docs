@@ -102,6 +102,7 @@ sudo make install
 ## Private Torrents
 
 Enable the "Private Torrent" checkbox for:
+
 - Private trackers requiring passkey
 - Private trackers that don't allow DHT
 - Trackers that verify peer sources

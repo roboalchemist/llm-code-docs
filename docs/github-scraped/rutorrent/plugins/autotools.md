@@ -9,6 +9,7 @@ The AutoTools plugin provides automation capabilities for ruTorrent with three m
 Automatically creates labels when adding new torrents through the web interface.
 
 **Template Variables:**
+
 | Variable | Description |
 |----------|-------------|
 | `{DIR}` | Directory path relative to rtorrent.rc |
@@ -17,6 +18,7 @@ Automatically creates labels when adding new torrents through the web interface.
 | `{NOW:format}` | Date with strftime format (e.g., `{NOW:%Y-%m-%d}`) |
 
 **Configuration:**
+
 - Labels are generated from templates set in plugin options
 - Created automatically if label field is empty
 
@@ -25,11 +27,13 @@ Automatically creates labels when adding new torrents through the web interface.
 Transfers completed torrent data files to a configured directory.
 
 **Behavior:**
+
 - Preserves original directory structure
 - After transfer, searches for `.mailto` file
 - Sends optional email notifications about completed downloads
 
 **Requirements:**
+
 - `_getdir` plugin for convenient directory selection
 - External move program (mv command)
 
@@ -38,6 +42,7 @@ Transfers completed torrent data files to a configured directory.
 Monitors nested subdirectories for new .torrent files.
 
 **Behavior:**
+
 - Automatically adds torrents to rtorrent
 - Downloads to corresponding directories based on rtorrent.rc configuration
 - Supports nested subdirectory monitoring
@@ -76,7 +81,8 @@ $autowatch.start = true;
 Auto Move can send email notifications after file transfer:
 
 1. Create `.mailto` file in destination directory:
-```
+
+```text
 user@example.com
 ```
 

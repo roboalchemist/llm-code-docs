@@ -5,6 +5,7 @@ Complete documentation for ruTorrent's official and third-party plugins.
 ## Plugin Categories
 
 ### Core Framework Plugins
+
 Plugins that provide infrastructure for other plugins.
 
 | Plugin | Description |
@@ -114,7 +115,7 @@ $maxConnections = 10;
 
 ### Basic Plugin Structure
 
-```
+```text
 plugins/
   myplugin/
     conf.php        # Configuration
@@ -137,7 +138,7 @@ Plugins can hook into various events:
 
 ---
 
-## Third-Party Plugins
+## Third-Party Plugins Overview
 
 ### Popular Third-Party Plugins
 

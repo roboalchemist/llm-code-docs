@@ -1,5 +1,3 @@
-# Source: https://valibot.dev/api/ParserAsync.md
-
 # Source: https://valibot.dev/api/parserAsync.md
 
 # parserAsync
