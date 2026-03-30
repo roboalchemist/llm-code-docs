@@ -3,16 +3,20 @@
 ## Description
 
 The plugin changes the format of values in columns 'Seeds' and 'Peers' in the torrents list.
-By default these columns are shown as
-```
+By default these columns are shown as:
+
+```text
 get_peers_complete (get_peers_not_connected+get_peers_connected)
 get_peers_accounted (get_peers_not_connected+get_peers_connected)
 ```
-For trackers which support [scrape](http://en.wikipedia.org/wiki/Tracker_scrape), is makes sense to show more details
-```
+
+For trackers which support [scrape](http://en.wikipedia.org/wiki/Tracker_scrape), is makes sense to show more details:
+
+```text
 get_peers_complete (t_get_scrape_complete)
 get_peers_accounted (t_get_scrape_incomplete)
 ```
+
 I.e. the sum of seeds/peers by scrape of all torrent's trackers is shown in brackets.
 As shown below:
 

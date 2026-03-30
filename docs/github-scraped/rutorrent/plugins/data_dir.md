@@ -1,13 +1,14 @@
 # Plugin DataDir
 
 ## Description
+
 The plugin is intended for replacement of the current torrent data directory on another. Such operation is required, for example, if the torrent data directory has been moved manually. It is also possible to move downloaded torrent's data.
 
 After plugin installation there will be a new item `Save to...` in the context menu of the downloading area which shows a dialogue `Torrent data directory`. In this dialogue you can specify a new path to the torrent data.
 
-![](images/PluginDataDir/datadir1.png)
+![Data directory dialog 1](images/PluginDataDir/datadir1.png)
 
-![](images/PluginDataDir/datadir2.png)
+![Data directory dialog 2](images/PluginDataDir/datadir2.png)
 
 ## How it works
 
@@ -17,6 +18,7 @@ It is required to specify the **base** directory of the data (without subdirecto
 
 Any additional manipulations with re-hashing are not made. rtorrent re-hash torrent data by itself if detects changes of size or modification time of torrent data files.
 From this the following follows:
+
 - if the data directory has been simply moved, change of the torrent data directory would not lead to re-hashing.
 - if the data directory has been copied, re-hashing would be done (modification time has varied).
 

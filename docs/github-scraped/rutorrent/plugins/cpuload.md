@@ -4,14 +4,14 @@
 
 This plugin adds a CPU Load usage bar to the bottom toolbar.
 
-![](images/PluginCpuload/cpuload.png)
+![CPU Load plugin screenshot](images/PluginCpuload/cpuload.png)
 
 ## How it Works
 
 The plugin is purely for cosmetic use. It's pretty generalized in it's current state, and should not be taken as 100% accurate.
 The formula for cpuload, currently is
 
-```
+```text
 min(load_average[0]*100/processors_count,100)
 ```
 

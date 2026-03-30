@@ -1,11 +1,13 @@
 # Plugin Trafic
 
 ## Description
+
 The Trafic plugin is a subsystem for monitoring rtorrent traffic totals. It tracks both system wide and per-tracker totals. The plugin can display totals in three formats, hourly, daily, and monthly. Statistics can be cleaned out at any time by clicking the "Clear" button on the interface (see screenshot).
 
 ![](images/PluginTrafic/trafic.png)
 
 ## Requirements
+
 - Web-server with php 5.1.
 
 ## How does it work
@@ -16,6 +18,7 @@ If rtorrent is running, but ruTorrent hasn't been loaded, the Trafic Plugin is n
 To avoid this issue, we can use the initplugins.php method to load all plugins at rtorrent start *(see [How to start plugins with rtorrent])*.
 
 ## Some non-obvious points
+
 - The time ticks shown on the chart correspond to the server's time settings. If time settings on the client differ from those of the server, this plugin may not function as intended. If this happens, the recommended solution is to sync both client and server with the correct time zone information and clear the traffic statistics.
 - Clicking "Clear" while "All Trackers" is selected will erase all Traffic stats. Clicking "Clear" when a specific tracker is selected will only erase Traffic data for that tracker.
 - Traffic is counted for all trackers in the zeroth group of every torrent. All other groups will be ignored.

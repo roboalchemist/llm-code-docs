@@ -5,7 +5,7 @@
 Some trackers use cookies for the client authentication. It is transparent to user who uses a browser to work with such servers - browser store these cookies and returns them to the server automatically. The user just needs to enter login/password from time to time. But when rtorrent is used to work with such trackers (e.g. adding a torrent via URL) it might be a problem because rtorrent does not understand cookies.
 So the the information from cookies should be provided for rtorrent separately.
 
-![](images/PluginCookies/cookies.png)
+![Cookies plugin screenshot](images/PluginCookies/cookies.png)
 
 ### Where to get contents of cookies?
 
@@ -15,7 +15,8 @@ So the the information from cookies should be provided for rtorrent separately.
 - Users who use other browsers should refer to User's Manuals of their programs.
 
 Once all necessary information is found, required URL can be represented in the following format:
-```
+
+```text
 http://some-torrent-site.com/file.torrent:COOKIE:name1=value;name2=value;
 ```
 
@@ -27,7 +28,7 @@ in the Add Torrent dialog for example. It should be done for each adding URL. It
 
 After the plugin is installed an additional section "Cookies" will appear in the Settings dialog. In the input form user can define parities host=>cookies. Each definition should be on a separate line. The name of a host should be separated by a vertical line. Different cookies should be separated by a semicolon. Example:
 
-```
+```text
 lostfilm.tv|pass=0123456789abcdef0123456789abcdef;uid=123456;
 novafilm.tv|pass=0123456789abcdef0123456789abcdef;uid=345673;
 ```

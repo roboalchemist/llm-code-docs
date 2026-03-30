@@ -8,10 +8,11 @@ This plugin shows the contents of the .nfo file for a given torrent.
 
 Download from [here](https://github.com/AceP1983/ruTorrent-plugins) using Subversion (svn), add the `nfo` directory to `ruTorrent/plugins` directory. Assuming you have ruTorrent installed at `/var/www/ruTorrent` issue the following commands:
 
-```
+```bash
 cd /var/www/ruTorrent/plugins/
 svn checkout https://github.com/AceP1983/ruTorrent-plugins/trunk/nfo
 ```
+
 Plugin for ruTorrent 4.0
 
 https://github.com/DarioRugani/ruTorrent-nfo
