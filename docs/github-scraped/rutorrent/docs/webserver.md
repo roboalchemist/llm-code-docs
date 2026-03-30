@@ -70,7 +70,7 @@ cd /usr/ports/www/mod_scgi && make install clean
 
 Add to your Apache config:
 
-```
+```apache
 SCGIMount /RPC2 127.0.0.1:5000
 ```
 
@@ -195,7 +195,7 @@ server {
 
 ### Manual Configuration
 
-```
+```nginx
 vserver!20!rule!500!handler = scgi
 vserver!20!rule!500!handler!balancer = round_robin
 vserver!20!rule!500!handler!balancer!source!1 = 11

@@ -254,17 +254,23 @@ $pluginMinification = true;
 ### Cannot Connect from External Network
 
 **Check:**
+
 1. Firewall rules:
+
    ```bash
    iptables -L -n | grep 5000
    ufw status
    ```
+
 2. Web server binding:
+
    ```nginx
    # Nginx - bind to all interfaces
    listen 80;  # instead of localhost
    ```
+
 3. SCGI host in config.php:
+
    ```php
    $scgi_host = "0.0.0.0";  # or specific IP
    ```
@@ -272,6 +278,7 @@ $pluginMinification = true;
 ### SSL Certificate Errors
 
 **For self-signed certificates:**
+
 ```php
 // In config.php
 $httpIP = "your.ip.here";

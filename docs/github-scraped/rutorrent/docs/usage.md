@@ -5,6 +5,7 @@
 ### Top Menu Bar
 
 Quick action buttons for:
+
 - Adding torrents
 - Removing torrents
 - Starting/stopping/pausing
@@ -158,11 +159,13 @@ See [RSS Plugin Documentation](../plugins/rss.md) for detailed RSS usage.
 ### Setting Download Directories
 
 Configure in Settings -> Directories:
+
 - **Download to**: Default download location
 - **Move completed to**: Archive completed downloads
 
 ### Cleanup Options
 
 Right-click -> Erase Data to:
+
 - Remove data files
 - Keep torrent entry for re-download
