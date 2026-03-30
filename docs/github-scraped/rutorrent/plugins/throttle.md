@@ -103,9 +103,11 @@ $ul = 20;   // Slow upload for ratio
 ### Speed Limits Not Working
 
 - Ensure global limits are set in rtorrent config:
-  ```
+
+  ```text
   throttle.global_down.max_rate.set_kb = 0
   throttle.global_up.max_rate.set_kb = 0
   ```
+
 - Check torrent is assigned to a channel
 - Verify torrent is not in "unlimited" state

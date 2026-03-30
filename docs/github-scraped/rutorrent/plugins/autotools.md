@@ -86,4 +86,4 @@ Auto Move can send email notifications after file transfer:
 user@example.com
 ```
 
-2. Configure SMTP settings in conf.php (if available)
+1. Configure SMTP settings in conf.php (if available)

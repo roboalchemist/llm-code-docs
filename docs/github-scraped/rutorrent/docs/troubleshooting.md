@@ -56,6 +56,7 @@ pkg install php*pcRE
 **Cause:** Incorrect ruTorrent installation; archive was not unpacked under the web-server user account.
 
 **Solution:**
+
 ```bash
 # Fix ownership (adjust user/group for your setup)
 chown -R www-data:www-data /var/www/rutorrent
@@ -77,6 +78,7 @@ chmod 777 /var/www/rutorrent/share/torrents
 **Cause:** rtorrent is not running or misconfigured SCGI settings.
 
 **Diagnosis:**
+
 ```bash
 # Check if rtorrent is running
 ps aux | grep rtorrent
@@ -86,14 +88,18 @@ curl -s http://localhost/RPC2
 ```
 
 **Solution:**
+
 1. Verify rtorrent is running
 2. Check `config.php` settings:
+
    ```php
    $scgi_host = "127.0.0.1";
    $scgi_port = 5000;
    ```
+
 3. Match with rtorrent configuration
 4. Restart services:
+
    ```bash
    systemctl restart rtorrent
    systemctl restart apache2  # or nginx
@@ -106,11 +112,15 @@ curl -s http://localhost/RPC2
 **Cause:** rtorrent compiled with xmlrpc-c < 1.11, lacking i8 support.
 
 **Solution:**
+
 1. Check xmlrpc-c version:
+
    ```bash
    xmlrpc-c-config --version
    ```
+
 2. If version < 1.11, recompile rtorrent with newer xmlrpc-c:
+
    ```bash
    svn co http://svn.code.sf.net/p/xmlrpc-c/code/stable xmlrpc-c
    cd xmlrpc-c
@@ -126,13 +136,17 @@ curl -s http://localhost/RPC2
 **Cause:** Required program is unavailable to the web-server user, not in PATH, or running in chroot.
 
 **Solution:**
+
 - Install the required program
 - Configure plugin to use full path:
+
   ```php
   // In plugin conf.php
   $pathToCreatetorrent = '/usr/local/bin/mktorrent';
   ```
+
 - Check PATH for web server user:
+
   ```bash
   sudo -u www-data env | grep PATH
   ```
@@ -144,6 +158,7 @@ curl -s http://localhost/RPC2
 **Cause:** PHP interpreter unavailable to rtorrent user (system uses php-fcgi without cli).
 
 **Solution:**
+
 ```bash
 # Install PHP CLI
 apt-get install php-cli
@@ -158,6 +173,7 @@ yum install php-cli
 **Cause:** PHP files in plugins directory may lack execute permissions, or DOS line endings present.
 
 **Solution:**
+
 ```bash
 # Check permissions
 sudo -u <rtorrent_user> sh <ruTorrent_install_dir>/php/test.sh
@@ -177,6 +193,7 @@ chmod +x php/test.sh
 ### Built-in Diagnostic
 
 Enable in `config.php`:
+
 ```php
 $do_diagnostic = true;
 $al_diagnostic = true;
@@ -191,6 +208,7 @@ php test.sh
 ```
 
 This checks:
+
 - PHP extensions (curl, zip, etc.)
 - File permissions
 - External program availability
@@ -201,11 +219,13 @@ This checks:
 ### Slow Page Loads
 
 **Causes:**
+
 - Large number of torrents
 - Insufficient PHP memory
 - Slow external program calls
 
 **Solutions:**
+
 ```php
 // Increase PHP memory limit in php.ini
 memory_limit = 256M
@@ -218,11 +238,13 @@ $pluginMinification = true;
 ### High CPU Usage
 
 **Causes:**
+
 - Many peers connected
 - Disk I/O bottlenecks
 - Too many concurrent operations
 
 **Solutions:**
+
 - Limit max connections in rtorrent config
 - Use bandwidth throttling
 - Consider SSD for session directory
