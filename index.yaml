@@ -1529,8 +1529,8 @@ llms_txt:
   url: https://desearch.ai/
   path: docs/llms-txt/desearch/
   status: fetched
-  file_count: 1
-  size: 2.4KB
+  file_count: 3
+  size: 101.8KB
   last_updated: 2026-03-31 00:00
 - name: deno
   description: Release Schedule
