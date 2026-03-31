@@ -258,6 +258,9 @@ sites:
 - name: deepconverse
   base_url: https://docs.deepconverse.com/
   description: DeepConverse AI-powered customer support automation
+- name: desearch
+  base_url: https://desearch.ai/
+  description: Decentralized AI-powered search API on Bittensor (web, X/Twitter, deep research)
 - name: deno
   base_url: https://docs.deno.com/
   description: Deno secure JavaScript/TypeScript runtime with comprehensive documentation

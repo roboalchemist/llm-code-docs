@@ -1524,6 +1524,14 @@ llms_txt:
   file_count: 86
   size: 352.6KB
   last_updated: 2026-03-30 14:08
+- name: desearch
+  description: Decentralized AI-powered search API on Bittensor (web, X/Twitter, deep research)
+  url: https://desearch.ai/
+  path: docs/llms-txt/desearch/
+  status: fetched
+  file_count: 1
+  size: 2.4KB
+  last_updated: 2026-03-31 00:00
 - name: deno
   description: Release Schedule
   url: https://deno.com/
