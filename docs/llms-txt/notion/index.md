@@ -1,3 +1,9 @@
+# Source: https://developers.notion.com/index.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://developers.notion.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Notion Docs
 
 <div className="w-full">
@@ -92,7 +98,7 @@
           Spend more time on X than your inbox? Us, too.
         </Card>
 
-        <Card title="Slack community" icon="slack" href="https://join.slack.com/t/notiondevs/shared_invite/zt-20b5996xv-DzJdLiympy6jP0GGzu3AMg" cta="Join here" color="#0076d7">
+        <Card title="Slack community" icon="slack" href="https://join.slack.com/t/notiondevs/shared_invite/zt-3u9oid9q8-HLUBmMVWYK~g9HFo4U4raA" cta="Join here" color="#0076d7">
           Meet other developers and connect with our team.
         </Card>
 
@@ -129,7 +135,7 @@
 
             <div className="flex flex-col gap-0.5">
               <a href="https://stackoverflow.com/questions/tagged/notion-api" className="text-[#0076d7] hover:underline text-sm">#notion-api on Stack Overflow ↗</a>
-              <a href="https://join.slack.com/t/notiondevs/shared_invite/zt-20b5996xv-DzJdLiympy6jP0GGzu3AMg" className="text-[#0076d7] hover:underline text-sm">Notion Devs Slack ↗</a>
+              <a href="https://join.slack.com/t/notiondevs/shared_invite/zt-3u9oid9q8-HLUBmMVWYK~g9HFo4U4raA" className="text-[#0076d7] hover:underline text-sm">Notion Devs Slack ↗</a>
             </div>
           </div>
 
@@ -208,4 +214,5 @@
   </div>
 </div>
 
-Built with [Mintlify](https://mintlify.com)
+
+Built with [Mintlify](https://mintlify.com).

@@ -3696,13 +3696,13 @@ llms_txt:
   size: 10.1MB
   last_updated: 2026-03-30 14:08
 - name: notion
-  description: Notion Docs
-  url: https://notion.com/
+  description: Notion API developer documentation
+  url: https://developers.notion.com/
   path: docs/llms-txt/notion/
   status: fetched
-  file_count: 156
-  size: 4.0MB
-  last_updated: 2026-03-30 14:08
+  file_count: 324
+  size: 12.0MB
+  last_updated: 2026-03-31 00:00
 - name: novel
   description: Editor Root
   url: https://novel.com/

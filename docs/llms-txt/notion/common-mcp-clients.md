@@ -1,0 +1,38 @@
+# Source: https://developers.notion.com/guides/mcp/common-mcp-clients.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://developers.notion.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Common MCP clients
+
+These AI tools support MCP and can connect to Notion.
+
+<CardGroup>
+  <Card title="Claude Code" href="https://docs.anthropic.com/en/docs/claude-code/mcp" icon="angles-right" horizontal color="#0076d7" />
+
+  <Card title="Cursor" href="https://docs.cursor.com/context/mcp" icon="angles-right" horizontal color="#0076d7" />
+
+  <Card title="VS Code" href="https://code.visualstudio.com/docs/copilot/customization/mcp-servers" icon="angles-right" horizontal color="#0076d7" />
+
+  <Card title="Claude Desktop" href="https://support.claude.com/en/articles/11503834-building-custom-connectors-via-remote-mcp-servers" icon="angles-right" horizontal color="#0076d7" />
+
+  <Card title="Windsurf" href="https://docs.windsurf.com/windsurf/cascade/mcp" icon="angles-right" horizontal color="#0076d7" />
+
+  <Card title="ChatGPT" href="https://help.openai.com/en/articles/11487775-connectors-in-chatgpt" icon="angles-right" horizontal color="#0076d7" />
+
+  <Card title="Codex" href="https://developers.openai.com/codex/mcp" icon="angles-right" horizontal color="#0076d7" />
+
+  <Card title="Antigravity" href="https://antigravity.google/docs/mcp" icon="angles-right" horizontal color="#0076d7" />
+</CardGroup>
+
+To connect to the [remote Notion MCP](/guides/mcp/mcp), many of these tools offer built-in directories or marketplaces where you can add **Notion**. For more setup instructions, see [Connecting to Notion MCP](/guides/mcp/get-started-with-mcp).
+
+For the [local MCP server](/guides/mcp/hosting-open-source-mcp), see the [README for connection instructions](https://github.com/makenotion/notion-mcp-server?tab=readme-ov-file#3-adding-mcp-config-to-your-client).
+
+<Note>
+  Building your own MCP client? See the [MCP client integration guide](https://github.com/makenotion/notion-cookbook/blob/main/docs/mcp-client-integration.md) for step-by-step instructions on implementing OAuth and connecting to Notion MCP.
+</Note>
+
+
+Built with [Mintlify](https://mintlify.com).
