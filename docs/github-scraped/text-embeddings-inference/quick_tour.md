@@ -77,6 +77,7 @@ print(len(embedding[0]))
 ```
 
 #### OpenAI
+
 To send requests to the [OpenAI Embeddings API](https://platform.openai.com/docs/api-reference/embeddings/create) exposed on Text Embeddings Inference (TEI) with the OpenAI Python SDK, you can install it as `pip install --upgrade openai`, and then run the following snippet:
 
 ```python
@@ -94,6 +95,7 @@ print(response.data[0].embedding)
 ```
 
 Alternatively, you can also send the request with cURL as follows:
+
 ```bash
 curl http://localhost:8080/v1/embeddings \
   -H "Content-Type: application/json" \

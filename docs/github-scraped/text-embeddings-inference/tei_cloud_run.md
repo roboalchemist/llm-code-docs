@@ -244,13 +244,13 @@ Then you can send requests to the deployed service on Cloud Run, using the `SERV
 
 Using the default identity token from the Google Cloud SDK:
 
-* Via gcloud as:
+- Via gcloud as:
 
 ```bash
 gcloud auth print-identity-token
 ```
 
-* Via Python as:
+- Via Python as:
 
 ```bash
 import google.auth
@@ -263,26 +263,26 @@ creds.refresh(auth_req)
 id_token = creds.id_token
 ```
 
-* Using a Service Account with Cloud Run Invoke access, which can either be done with any of the following approaches:
+- Using a Service Account with Cloud Run Invoke access, which can either be done with any of the following approaches:
 
 ** Create a Service Account before the Cloud Run Service was created, and then set the service-account flag to the Service Account email when creating the Cloud Run Service. And use an Access Token for that Service Account only using `gcloud auth print-access-token --impersonate-service-account=SERVICE_ACCOUNT_EMAIL`.
 ** Create a Service Account after the Cloud Run Service was created, and then update the Cloud Run Service to use the Service Account. And use an Access Token for that Service Account only using `gcloud auth print-access-token --impersonate-service-account=SERVICE_ACCOUNT_EMAIL`.
 
 The recommended approach is to use a Service Account (SA), as the access can be controlled better and the permissions are more granular; as the Cloud Run Service was not created using a SA, which is another nice option, you need to now create the SA, gran it the necessary permissions, update the Cloud Run Service to use the SA, and then generate an access token to set as the authentication token within the requests, that can be revoked later once you are done using it.
 
-* Set the SERVICE_ACCOUNT_NAME environment variable for convenience:
+- Set the SERVICE_ACCOUNT_NAME environment variable for convenience:
 
 ```bash
 export SERVICE_ACCOUNT_NAME=tei-invoker
 ```
 
-* Create the Service Account:
+- Create the Service Account:
 
 ```bash
 gcloud iam service-accounts create $SERVICE_ACCOUNT_NAME
 ```
 
-* Grant the Service Account the Cloud Run Invoker role:
+- Grant the Service Account the Cloud Run Invoker role:
 
 ```bash
 gcloud run services add-iam-policy-binding $SERVICE_NAME \
@@ -371,13 +371,13 @@ gcloud run services delete $SERVICE_NAME --region $LOCATION
 
 Additionally, if you followed the steps in via Cloud Run Service URL and generated a Service Account and an access token, you can either remove the Service Account, or just revoke the access token if it is still valid.
 
-* (recommended) Revoke the Access Token as:
+- (recommended) Revoke the Access Token as:
 
 ```bash
 gcloud auth revoke --impersonate-service-account=$SERVICE_ACCOUNT_NAME@$PROJECT_ID.iam.gserviceaccount.com
 ```
 
-* (optional) Delete the Service Account as:
+- (optional) Delete the Service Account as:
 
 ```bash
 gcloud iam service-accounts delete $SERVICE_ACCOUNT_NAME@$PROJECT_ID.iam.gserviceaccount.com
@@ -392,7 +392,7 @@ gcloud compute routers delete nat-router --region=$LOCATION
 
 ## References
 
-* [Cloud Run documentation - Overview](https://cloud.google.com/run/docs)
-* [Cloud Run documentation - GPU services](https://cloud.google.com/run/docs/configuring/services/gpu
+- [Cloud Run documentation - Overview](https://cloud.google.com/run/docs)
+- [Cloud Run documentation - GPU services](https://cloud.google.com/run/docs/configuring/services/gpu
 )
-* [Google Cloud blog - Run your AI inference applications on Cloud Run with NVIDIA GPUs](https://cloud.google.com/blog/products/application-development/run-your-ai-inference-applications-on-cloud-run-with-nvidia-gpus)
+- [Google Cloud blog - Run your AI inference applications on Cloud Run with NVIDIA GPUs](https://cloud.google.com/blog/products/application-development/run-your-ai-inference-applications-on-cloud-run-with-nvidia-gpus)
