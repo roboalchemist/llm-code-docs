@@ -52,14 +52,14 @@ After running the Slack CLI installation script, the `slack` command might not b
 
 Determine which shell you're using then update your shell profile with the following commands:
 
-- **bash**: 
+- **bash**:
 
   ```sh
   echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
   source ~/.bashrc
   ```
 
-- **fish**: 
+- **fish**:
 
   ```sh
   mkdir -p $HOME/.config/fish
@@ -67,7 +67,7 @@ Determine which shell you're using then update your shell profile with the follo
   source $HOME/.config/fish/config.fish
   ```
 
-- **zsh**: 
+- **zsh**:
 
   ```sh
   echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc

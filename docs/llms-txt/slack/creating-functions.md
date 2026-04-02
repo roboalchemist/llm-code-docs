@@ -23,7 +23,9 @@ Custom functions also allow your app to create and process workflow steps that u
 ---
 
 ### Previous
+
 [Using the app manifest](/tools/deno-slack-sdk/guides/using-the-app-manifest)
 
 ### Next
+
 [Creating Slack functions](/tools/deno-slack-sdk/guides/creating-slack-functions)

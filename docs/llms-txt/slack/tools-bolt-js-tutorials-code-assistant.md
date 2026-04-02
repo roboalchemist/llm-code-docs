@@ -97,7 +97,7 @@ Before getting started, you will need the following:
 }
 ```
 
-4. Review the configuration and click **Create**. Clicking around in these settings, you can see what the manifest has created for us. Some highlights:
+1. Review the configuration and click **Create**. Clicking around in these settings, you can see what the manifest has created for us. Some highlights:
 
 - Within **App Home**, we've enabled the **Chat Tab**. This will allow users to access your app both in the split-view container as well as within a chat tab of the app.
 - **Agents & AI Apps** is enabled. With this toggled on, the split-view container is available for your app.
@@ -106,7 +106,7 @@ Before getting started, you will need the following:
 - Within **OAuth & Permissions**, you will find several bot scopes have been added.
 - Within **Event Subscriptions**, you will find several events this app subscribes to, which allow it to respond to user requests appropriately.
 
-5. Navigate to the **Install App** page in the left nav and click **Install to Workspace**, then **Allow** on the screen that follows.
+1. Navigate to the **Install App** page in the left nav and click **Install to Workspace**, then **Allow** on the screen that follows.
 
 ### Obtaining your environment variables
 

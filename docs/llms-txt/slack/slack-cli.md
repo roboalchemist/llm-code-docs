@@ -12,8 +12,8 @@ This site has lots of guides on the Slack CLI. There's also an in-depth referenc
 
 If you otherwise get stuck, we're here to help. The following are the best ways to get assistance working through your issue:
 
--   [Issue Tracker](http://github.com/slackapi/slack-cli/issues) for questions, bug reports, feature requests, and general discussion related to the Slack CLI. Try searching for an existing issue before creating a new one.
--   [Email](mailto:support@slack.com) our developer support team: `support@slack.com`.
+- [Issue Tracker](http://github.com/slackapi/slack-cli/issues) for questions, bug reports, feature requests, and general discussion related to the Slack CLI. Try searching for an existing issue before creating a new one.
+- [Email](mailto:support@slack.com) our developer support team: `support@slack.com`.
 
 ## Contributing
 

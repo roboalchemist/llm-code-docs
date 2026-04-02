@@ -16,7 +16,7 @@ Before getting started, you will need the following:
 - a development environment with [Python 3.7](https://www.python.org/downloads/) or later.
 - an Anthropic or OpenAI account with sufficient credits, and in which you have generated a secret key.
 
-**Skip to the code**
+## Skip to the code
 If you'd rather skip the tutorial and just head straight to the code, you can use our [Bolt for Python AI Chatbot sample](https://github.com/slack-samples/bolt-python-ai-chatbot) as a template.
 
 ## Creating your app
@@ -40,14 +40,14 @@ From your app's page on [app settings](https://api.slack.com/apps) collect an ap
 
 To store your tokens and environment variables, run the following commands in the terminal. Replace the placeholder values with your bot and app tokens collected above:
 
-**For macOS**
+## For macOS
 
 ```bash
 export SLACK_BOT_TOKEN=<your-bot-token>
 export SLACK_APP_TOKEN=<your-app-token>
 ```
 
-**For Windows**
+## For Windows
 
 ```powershell
 set SLACK_BOT_TOKEN=<your-bot-token>
@@ -103,14 +103,14 @@ cd bolt-python-ai-chatbot
 
 Start your Python virtual environment:
 
-**For macOS**
+## For macOS
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-**For Windows**
+## For Windows
 
 ```bash
 py -m venv .venv

@@ -226,18 +226,18 @@ Once you're ready to apply these changes to the published app, you'll need to [r
 
 If you've submitted your app to the Slack Marketplace but need to make changes to how your app or bot is described, to the integration types packed into your app, or to request additional permissions, you'll need your app to be reviewed again.
 
-## App approvals
+## App approvals (2)
 
-### How does my app get approved for the Slack Marketplace?
+### How does my app get approved for the Slack Marketplace? (2)
 
 Refer to the following guide: [Slack Marketplace review guide](/slack-marketplace/slack-marketplace-review-guide).
 
-### What happens if I make changes to an application that has been approved for the Slack Marketplace?
+### What happens if I make changes to an application that has been approved for the Slack Marketplace? (2)
 
 If you need to update your approved app to request new [OAuth scopes](/authentication/installing-with-oauth#asking) or to include new features, find your application's settings page at [https://api.slack.com/apps](https://api.slack.com/apps). Any changes you make here will not affect the published app.
 
 Once you're ready to apply these changes to the published app, you'll need to [resubmit it for review](/slack-marketplace/slack-marketplace-review-guide).
 
-### What kind of changes to my app will require being reviewed again?
+### What kind of changes to my app will require being reviewed again? (2)
 
 If you've submitted your app to the Slack Marketplace but need to make changes to how your app or bot is described, to the integration types packed into your app, or to request additional permissions, you'll need your app to be reviewed again.

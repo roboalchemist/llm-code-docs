@@ -15,9 +15,9 @@ The [`Assistant`](/tools/bolt-python/reference#the-assistantconfig-configuration
 
 A typical flow would look like:
 
-1.  [The user starts a thread](#handling-new-thread). The `Assistant` class handles the incoming [`assistant_thread_started`](/reference/events/assistant_thread_started) event.
-2.  [The thread context may change at any point](#handling-thread-context-changes). The `Assistant` class can handle any incoming [`assistant_thread_context_changed`](/reference/events/assistant_thread_context_changed) events. The class also provides a default `context` store to keep track of thread context changes as the user moves through Slack.
-3.  [The user responds](#handling-user-response). The `Assistant` class handles the incoming [`message.im`](/reference/events/message.im) event.
+1. [The user starts a thread](#handling-new-thread). The `Assistant` class handles the incoming [`assistant_thread_started`](/reference/events/assistant_thread_started) event.
+2. [The thread context may change at any point](#handling-thread-context-changes). The `Assistant` class can handle any incoming [`assistant_thread_context_changed`](/reference/events/assistant_thread_context_changed) events. The class also provides a default `context` store to keep track of thread context changes as the user moves through Slack.
+3. [The user responds](#handling-user-response). The `Assistant` class handles the incoming [`message.im`](/reference/events/message.im) event.
 
 ```python
 assistant = Assistant()
@@ -65,20 +65,19 @@ If you do provide your own `threadContextStore` property, it must feature `get` 
 
 ### Configuring your app to support the `Assistant` class
 
-1.  Within [App Settings](https://api.slack.com/apps), enable the **Agents & AI Apps** feature.
-    
-2.  Within the App Settings **OAuth & Permissions** page, add the following scopes:
-    
+1. Within [App Settings](https://api.slack.com/apps), enable the **Agents & AI Apps** feature.
 
--   [`assistant:write`](/reference/scopes/assistant.write)
--   [`chat:write`](/reference/scopes/chat.write)
--   [`im:history`](/reference/scopes/im.history)
+2. Within the App Settings **OAuth & Permissions** page, add the following scopes:
 
-3.  Within the App Settings **Event Subscriptions** page, subscribe to the following events:
+- [`assistant:write`](/reference/scopes/assistant.write)
+- [`chat:write`](/reference/scopes/chat.write)
+- [`im:history`](/reference/scopes/im.history)
 
--   [`assistant_thread_started`](/reference/events/assistant_thread_started)
--   [`assistant_thread_context_changed`](/reference/events/assistant_thread_context_changed)
--   [`message.im`](/reference/events/message.im)
+1. Within the App Settings **Event Subscriptions** page, subscribe to the following events:
+
+- [`assistant_thread_started`](/reference/events/assistant_thread_started)
+- [`assistant_thread_context_changed`](/reference/events/assistant_thread_context_changed)
+- [`message.im`](/reference/events/message.im)
 
 ### Handling a new thread
 

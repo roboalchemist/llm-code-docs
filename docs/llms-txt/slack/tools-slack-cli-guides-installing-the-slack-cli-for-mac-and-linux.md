@@ -54,7 +54,7 @@ Determine which shell you're using then update your shell profile with the follo
 basename "$SHELL"
 ```
 
-- **bash**: 
+- **bash**:
 
   ```sh
   echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc

@@ -18,7 +18,7 @@ Before getting started, you will need the following:
 - a development environment with [Python 3.7](https://www.python.org/downloads/) or later.
 - an Anthropic or OpenAI account with sufficient credits, and in which you have generated a secret key.
 
-**Skip to the code**
+## Skip to the code
 If you'd rather skip the tutorial and just head straight to the code, you can use our [Bolt for Python AI Chatbot sample](https://github.com/slack-samples/bolt-python-ai-chatbot) as a template.
 
 ## Creating your app
@@ -42,19 +42,19 @@ From your app's page on [app settings](https://api.slack.com/apps) collect an ap
 
 To store your tokens and environment variables, run the following commands in the terminal. Replace the placeholder values with your bot and app tokens collected above:
 
-**For macOS**
+## For macOS
 
 ```bash
 export SLACK_BOT_TOKEN=<your-bot-token>
 export SLACK_APP_TOKEN=<your-app-token>
-```
+```text
 
-**For Windows**
+## For Windows
 
 ```powershell
 set SLACK_BOT_TOKEN=<your-bot-token>
 set SLACK_APP_TOKEN=<your-app-token>
-```
+```text
 
 #### Provider tokens
 
@@ -66,7 +66,7 @@ To interact with Anthropic models, navigate to your Anthropic account dashboard 
 
 ```bash
 export ANTHROPIC_API_KEY=<your-api-key>
-```
+```text
 
 ##### Google Cloud Vertex AI
 
@@ -77,7 +77,7 @@ Once your project and credentials are configured, export environment variables t
 ```bash
 export VERTEX_AI_PROJECT_ID=<your-project-id>
 export VERTEX_AI_LOCATION=<location-to-deploy-model>
-```
+```text
 
 The project location can be located under the **Region** on the [Vertex AI](https://console.cloud.google.com/vertex-ai) dashboard, as well as more details about available Gemini models.
 
@@ -87,7 +87,7 @@ Unlock the OpenAI models from your OpenAI account dashboard by clicking [create 
 
 ```bash
 export OPENAI_API_KEY=<your-api-key>
-```
+```text
 
 ## Setting up and running your local project
 
@@ -95,41 +95,41 @@ Clone the starter template onto your machine by running the following command:
 
 ```bash
 git clone https://github.com/slack-samples/bolt-python-ai-chatbot.git
-```
+```text
 
 Change into the new project directory:
 
 ```bash
 cd bolt-python-ai-chatbot
-```
+```text
 
 Start your Python virtual environment:
 
-**For macOS**
+## For macOS (2)
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
-```
+```text
 
-**For Windows**
+## For Windows (2)
 
 ```bash
 py -m venv .venv
 .venv\Scripts\activate
-```
+```text
 
 Install the required dependencies:
 
 ```bash
 pip install -r requirements.txt
-```
+```text
 
 Start your local server:
 
 ```bash
 python app.py
-```
+```text
 
 If your app is up and running, you'll see a message that says "⚡️ Bolt app is running!"
 
@@ -220,7 +220,7 @@ def handle_summary_function_callback(
     except Exception as e:
         logger.exception(e)
         fail(e)
-```
+```text
 
 ### Asking Bolty a question
 

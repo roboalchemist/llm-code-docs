@@ -43,14 +43,14 @@ You can create rules based on a chain of comparisons for each app request to be 
 
 ## Manage rules
 
-### Free, Pro, and Business+ plans
+### Free, Pro, and Business+ plans (2)
 
 1. From your desktop, click **Admin** in the sidebar.
 2. Select **Apps and workflows** from the menu to open the Slack Marketplace.
 3. Click **Requests** in the left sidebar.
 4. Click **Automation rules** to view a list of your existing rules, then click the **three dots icon** next to the rule you’d like to **Activate**, **Pause**, **Edit**, or **Remove**.
 
-### Enterprise plans
+### Enterprise plans (2)
 
 1. From your desktop, click your **organization name** in the sidebar.
 2. Hover over **Tools & settings**, then click **Organization settings**.
@@ -63,7 +63,7 @@ You can create rules based on a chain of comparisons for each app request to be 
 
 The order of the rules in the list is relevant to your automation, since a requested app will be resolved at the first matching rule. If you have multiple rules, you can reorder the list if you determine a rule should take priority over another.
 
-### Free, Pro, and Business+ plans
+### Free, Pro, and Business+ plans (3)
 
 1. From your desktop, click **Admin** in the sidebar.
 2. Select **Apps and workflows** from the menu to open the Slack Marketplace.
@@ -71,7 +71,7 @@ The order of the rules in the list is relevant to your automation, since a reque
 4. Click **Automation rules** to view a list of your existing rules, then click **Reorder list**.
 5. Using the available actions, choose if you’d like to move the rule up, down, to the top, or bottom of the automation rules list, then click **Save**.
 
-### Enterprise plans
+### Enterprise plans (3)
 
 1. From your desktop, click your **organization name** in the sidebar.
 2. Hover over **Tools & settings**, then click **Organization settings**.
@@ -81,27 +81,28 @@ The order of the rules in the list is relevant to your automation, since a reque
 
 **Note**: To apply the same rating to multiple scopes, select all the desired scopes then click the **Rate as high risk**, **Rate as medium risk**, or **Rate as low risk** action at the top of the scope list.
 
-**Who can use this feature?**
+## Who can use this feature?
 
 - **Workspace Owners/Admins, Org Owners**/**Admins**, and **members** with [permission to manage apps](https://slack.com/help/articles/222386767-Manage-app-approval-for-your-workspace#choose-how-app-requests-work)
 - Available on [**all plans**](https://slack.com/pricing)
 
-**Awesome!**
+## Awesome!
 
 Thanks so much for your feedback!
 
 If you’d like a member of our support team to respond to you, please send a note to [feedback@slack.com](mailto:feedback@slack.com).
 
-**Got it!**
+## Got it!
 
 If you’d like a member of our support team to respond to you, please send a note to [feedback@slack.com](mailto:feedback@slack.com).
 
-**Was this article helpful?**
+## Was this article helpful?
 
 - Yes, thanks!
 - Not really
 
-**Sorry about that! What did you find most unhelpful?**
+## Sorry about that! What did you find most unhelpful?
+
 - This article didn’t answer my questions or solve my problem
 - I found this article confusing or difficult to read
 - I don’t like how the feature works
@@ -109,6 +110,6 @@ If you’d like a member of our support team to respond to you, please send a no
 
 **Tip**: To apply the same rating to multiple scopes, select all the desired scopes then click the **Rate as high risk**, **Rate as medium risk**, or **Rate as low risk** action at the top of the scope list.
 
-**Submit article feedback**
+## Submit article feedback
 
 If you’d like a member of our support team to respond to you, please send a note to [feedback@slack.com](mailto:feedback@slack.com).

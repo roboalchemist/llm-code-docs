@@ -94,7 +94,7 @@ The available components, conditions and comparisons are constructed into a cond
 | Is | A specific app ID |
 | "If app ID is [any app ID], cancel" |
 
-## Resolutions
+## Resolutions (2)
 
 When a requested app meets all the conditions of a rule, it will be resolved based on the set resolution and the requestor will be notified.
 
@@ -103,31 +103,33 @@ When a requested app meets all the conditions of a rule, it will be resolved bas
 - **Cancel**: Dismiss the request without making a decision. A new request can be made anytime.
 - **Review**: App will be sent to a human for review and approval.
 
-**Who can use this feature?**
+## Who can use this feature?
 
 - **Workspace/Org Owners**, **Workspace/Org Admins** and **members** with [permission to manage apps](https://slack.com/help/articles/222386767-Manage-app-approval-for-your-workspace#choose-how-app-requests-work)
 - Available on [**all plans**](https://slack.com/pricing)
 
-**Awesome!**
+## Awesome!
 
 Thanks so much for your feedback!
 
 If you’d like a member of our support team to respond to you, please send a note to [feedback@slack.com](mailto:feedback@slack.com).
 
-**Got it!**
+## Got it!
 
 If you’d like a member of our support team to respond to you, please send a note to [feedback@slack.com](mailto:feedback@slack.com).
 
-**Was this article helpful?**
+## Was this article helpful?
+
 - Yes, thanks!
 - Not really
 
-**Sorry about that! What did you find most unhelpful?**
+## Sorry about that! What did you find most unhelpful?
+
 - This article didn’t answer my questions or solve my problem
 - I found this article confusing or difficult to read
 - I don’t like how the feature works
 - Other
 
-**Submit article feedback**
+## Submit article feedback
 
 If you’d like a member of our support team to respond to you, please send a note to [feedback@slack.com](mailto:feedback@slack.com).

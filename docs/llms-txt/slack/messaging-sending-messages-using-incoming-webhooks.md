@@ -70,7 +70,7 @@ That's it! Go and check the channel your app was installed into, and you'll see 
 
 You can use this in a real Slack app without much change, just substitute your favorite HTTP Request library for cURL and structure all the requests in the exact same way. You'll also need to pay attention to some details [we've outlined below](#incoming_webhooks_programmatic) when you're distributing your app.
 
-#### Incoming webhooks do not allow you to delete a message after it's been posted.
+#### Incoming webhooks do not allow you to delete a message after it's been posted
 
 If you need a more complex chat flow including message deletion, call [`chat.postMessage`](/reference/methods/chat.postMessage).
 

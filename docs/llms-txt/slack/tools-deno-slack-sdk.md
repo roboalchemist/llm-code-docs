@@ -25,7 +25,7 @@ Workflows make use of specifically designed features of the Slack platform such 
 
 While in development, you can keep your project mostly to yourself, or share it with a close collaborator. If your Slack admin requires approval of app installations, they’ll need to approve what you’re creating first.
 
-### The app management UI on `api.slack.com/apps` doesn't support configuring workflow apps.
+### The app management UI on `api.slack.com/apps` doesn't support configuring workflow apps
 
 Workflow apps are also currently not eligible for listing in the Slack Marketplace.
 

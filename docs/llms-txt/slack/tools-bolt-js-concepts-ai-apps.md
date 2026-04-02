@@ -6,7 +6,7 @@ If you're unfamiliar with using these features within Slack, you may want to rea
 
 ## The `Assistant` class instance
 
-**Some features within this guide require a paid plan**
+## Some features within this guide require a paid plan
 
 If you don't have a paid workspace for development, you can join the [Developer Program](https://api.slack.com/developer-program) and provision a sandbox with access to all Slack features for free.
 
@@ -14,9 +14,9 @@ The [`Assistant`](/tools/bolt-js/reference#the-assistantconfig-configuration-obj
 
 A typical flow would look like:
 
-1.  [The user starts a thread](#handling-new-thread). The `Assistant` class handles the incoming [`assistant_thread_started`](/reference/events/assistant_thread_started) event.
-2.  [The thread context may change at any point](#handling-thread-context-changes). The `Assistant` class can handle any incoming [`assistant_thread_context_changed`](/reference/events/assistant_thread_context_changed) events. The class also provides a default `context` store to keep track of thread context changes as the user moves through Slack.
-3.  [The user responds](#handling-user-response). The `Assistant` class handles the incoming [`message.im`](/reference/events/message.im) event.
+1. [The user starts a thread](#handling-new-thread). The `Assistant` class handles the incoming [`assistant_thread_started`](/reference/events/assistant_thread_started) event.
+2. [The thread context may change at any point](#handling-thread-context-changes). The `Assistant` class can handle any incoming [`assistant_thread_context_changed`](/reference/events/assistant_thread_context_changed) events. The class also provides a default `context` store to keep track of thread context changes as the user moves through Slack.
+3. [The user responds](#handling-user-response). The `Assistant` class handles the incoming [`message.im`](/reference/events/message.im) event.
 
 ```js
 const assistant = new Assistant({
@@ -49,9 +49,9 @@ const assistant = new Assistant({
    */
   userMessage: async ({ client, context, logger, message, getThreadContext, say, setTitle, setStatus }) => {}
 });
-```
+```text
 
-**Consider the following**
+## Consider the following
 
 You _could_ go it alone and [listen](/tools/bolt-js/concepts/event-listening) for the `assistant_thread_started`, `assistant_thread_context_changed`, and `message.im` events in order to implement the AI features in your app. That being said, using the `Assistant` class will streamline the process. And we already wrote this nice guide for you!
 
@@ -59,24 +59,23 @@ While the `assistant_thread_started` and `assistant_thread_context_changed` even
 
 If you do provide your own `threadContextStore` property, it must feature `get` and `save` methods.
 
-**Be sure to give the [reference docs](/tools/bolt-js/reference#agents--assistants) a look!**
+## Be sure to give the [reference docs](/tools/bolt-js/reference#agents--assistants) a look!
 
 ### Configuring your app to support the `Assistant` class
 
-1.  Within [App Settings](https://api.slack.com/apps), enable the **Agents & AI Apps** feature.
-    
-2.  Within the App Settings **OAuth & Permissions** page, add the following scopes:
-    
+1. Within [App Settings](https://api.slack.com/apps), enable the **Agents & AI Apps** feature.
 
--   [`assistant:write`](/reference/scopes/assistant.write)
--   [`chat:write`](/reference/scopes/chat.write)
--   [`im:history`](/reference/scopes/im.history)
+2. Within the App Settings **OAuth & Permissions** page, add the following scopes:
 
-3.  Within the App Settings **Event Subscriptions** page, subscribe to the following events:
+- [`assistant:write`](/reference/scopes/assistant.write)
+- [`chat:write`](/reference/scopes/chat.write)
+- [`im:history`](/reference/scopes/im.history)
 
--   [`assistant_thread_started`](/reference/events/assistant_thread_started)
--   [`assistant_thread_context_changed`](/reference/events/assistant_thread_context_changed)
--   [`message.im`](/reference/events/message.im)
+1. Within the App Settings **Event Subscriptions** page, subscribe to the following events:
+
+- [`assistant_thread_started`](/reference/events/assistant_thread_started)
+- [`assistant_thread_context_changed`](/reference/events/assistant_thread_context_changed)
+- [`message.im`](/reference/events/message.im)
 
 ### Handling a new thread
 
@@ -125,4 +124,4 @@ threadStarted: async ({ event, logger, say, setSuggestedPrompts, saveThreadConte
       console.error(error);
     }
 };
-```
+```text

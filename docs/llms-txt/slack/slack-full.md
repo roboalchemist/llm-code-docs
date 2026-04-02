@@ -10,7 +10,7 @@ This section covers fundamental documentation about the Slack Platform and its A
 
 - [Slack Platform overview](https://docs.slack.dev): the primary hub for all Slack development resources, API references, and guides.
 - [Slack Platform quickstart](https://docs.slack.dev/quickstart): a beginner-friendly introduction to building your first Slack app.
-- [Slack Platform FAQ](https://docs.slack.dev/faq): answers to the most common questions about Slack Platform. 
+- [Slack Platform FAQ](https://docs.slack.dev/faq): answers to the most common questions about Slack Platform.
 - [Slack Web API overview](https://docs.slack.dev/apis/web-api): the HTTP-based API that allows you to build apps that interact with Slack workspaces, read data, and perform actions programmatically.
 - [Slack Events API overview](https://docs.slack.dev/apis/events-api): documentation for receiving and processing real-time events from Slack, such as messages, channel changes, and user activities.
 
@@ -59,7 +59,7 @@ This section provides a guide for sending messages to Slack using incoming webho
 
 Incoming webhooks provide a straightforward method to send messages to Slack from any application that can make HTTP requests, without requiring full Slack API authentication.
 
-### Step-by-step guide:
+### Step-by-step guide
 
 1. Create a webhook URL:
    - Go to your [Slack App configuration page](https://api.slack.com/apps)
@@ -69,11 +69,13 @@ Incoming webhooks provide a straightforward method to send messages to Slack fro
    - Copy the generated webhook URL
 
 2. Send a basic message:
+
    ```bash
    curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, Slack!"}' YOUR_WEBHOOK_URL
    ```
 
 3. Send a message with advanced formatting:
+
    ```json
    {
      "text": "New support ticket received",
@@ -112,7 +114,7 @@ This section explains how administrators can control which apps can be installed
 
 The app approval system allows organizations to review and govern which third-party applications can access Slack workspace data and interact with users, providing necessary oversight for enterprise environments.
 
-### App approval workflow guide:
+### App approval workflow guide
 
 1. Configure approval settings:
    - Access the Slack Admin Console (admin.slack.com)

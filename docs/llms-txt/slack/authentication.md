@@ -8,10 +8,10 @@ Before your app can access Slack data or interact with Slack workspaces, it must
 
 ## Key concepts
 
--   [**OAuth 2.0**](/authentication/installing-with-oauth): Learn how to use OAuth 2.0 to securely authenticate users and request access tokens.
--   [**Tokens**](/authentication/tokens): Understand the different types of tokens your app can use (user tokens, bot tokens, and app tokens) and how to manage them, as well as employ token rotation and expiry to keep things fresh.
--   [**Security best practices**](/security): Learn about security practices for managing authentication, such as validating tokens, handling sensitive data, and protecting your app from unauthorized access.
+- [**OAuth 2.0**](/authentication/installing-with-oauth): Learn how to use OAuth 2.0 to securely authenticate users and request access tokens.
+- [**Tokens**](/authentication/tokens): Understand the different types of tokens your app can use (user tokens, bot tokens, and app tokens) and how to manage them, as well as employ token rotation and expiry to keep things fresh.
+- [**Security best practices**](/security): Learn about security practices for managing authentication, such as validating tokens, handling sensitive data, and protecting your app from unauthorized access.
 
 ## Reference
 
--   [**Scopes and Permissions**](/reference/scopes): Find the right permissions for your app to ensure access is limited to only the necessary data.
+- [**Scopes and Permissions**](/reference/scopes): Find the right permissions for your app to ensure access is limited to only the necessary data.

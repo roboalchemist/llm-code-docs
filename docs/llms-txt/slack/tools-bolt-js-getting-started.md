@@ -18,14 +18,14 @@ Install the latest version of the Slack CLI to get started:
 Then confirm a successful installation with the following command:
 
 ```sh
-$ slack version
-```
+slack version
+```text
 
 An authenticated login is also required if this hasn't been done before:
 
 ```sh
-$ slack login
-```
+slack login
+```text
 
 ### Tooling for the Terminal
 
@@ -37,9 +37,9 @@ Tooling for the terminal can also be used to follow along:
 Once installed, make sure recent versions are being used:
 
 ```sh
-$ git --version
-$ node --version
-```
+git --version
+node --version
+```text
 
 ### A Place to Belong
 
@@ -56,9 +56,9 @@ If you don’t already have a project, let’s create a new one!
 A starter template can be used to start with project scaffolding:
 
 ```sh
-$ slack create first-bolt-app --template slack-samples/bolt-js-getting-started-app
-$ cd first-bolt-app
-```
+slack create first-bolt-app --template slack-samples/bolt-js-getting-started-app
+cd first-bolt-app
+```text
 
 After a project is created you'll have a `package.json` file for app dependencies and a `.slack` directory for Slack CLI configuration. A few other files exist too, but we'll visit these later.
 
@@ -67,10 +67,10 @@ After a project is created you'll have a `package.json` file for app dependencie
 A starter template can be cloned to start with project scaffolding:
 
 ```sh
-$ git clone https://github.com/slack-samples/bolt-js-getting-started-app first-bolt-app
-$ cd first-bolt-app
-$ npm install
-```
+git clone https://github.com/slack-samples/bolt-js-getting-started-app first-bolt-app
+cd first-bolt-app
+npm install
+```text
 
 Outlines of a project are taking shape, so we can move on to running the app!
 
@@ -86,7 +86,7 @@ The getting started app template contains a `manifest.json` file with details ab
 $ slack run
 ...
 [INFO]  bolt-app ⚡️ Bolt app is running!
-```
+```text
 
 With the app running, you can test it out with the following steps in Slack:
 
@@ -115,12 +115,12 @@ To listen for events happening in Slack (such as a new posted message) without o
 3. Save the generated `xapp` token as an environment variable within your project:
 
 ```sh
-$ export SLACK_APP_TOKEN=xapp-1-A0123456789-example
-```
+export SLACK_APP_TOKEN=xapp-1-A0123456789-example
+```text
 
 The above command works on Linux and macOS but [similar commands are available on Windows](https://superuser.com/questions/212150/how-to-set-env-variable-in-windows-cmd-line/212153#212153).
 
-**Keep it secret. Keep it safe**
+## Keep it secret. Keep it safe
 
 Treat your tokens like a password and [keep it safe](https://docs.slack.dev/security). Your app uses these to retrieve and send information to Slack.
 
@@ -131,11 +131,11 @@ A bot token is also needed to interact with the Web API methods as your app's bo
 
 ![OAuth Tokens](https://docs.slack.dev/assets/images/bot-token-3d6c761238c7a66557fd08d00a2a1b0c.png)
 
-3. Copy the bot token beginning with `xoxb` from the **OAuth & Permissions page** and then store it in a new environment variable:
+1. Copy the bot token beginning with `xoxb` from the **OAuth & Permissions page** and then store it in a new environment variable:
 
 ```sh
-$ export SLACK_BOT_TOKEN=xoxb-example
-```
+export SLACK_BOT_TOKEN=xoxb-example
+```text
 
 After saving tokens for the app you created, it is time to run it:
 
@@ -143,7 +143,7 @@ After saving tokens for the app you created, it is time to run it:
 $ npm run start
 ...
 [INFO]  bolt-app ⚡️ Bolt app is running!
-```
+```text
 
 With the app running, you can test it out with the following steps in Slack:
 
@@ -171,7 +171,7 @@ app.message('goodbye', async ({ say }) => {
   const parting = responses[Math.floor(Math.random() * responses.length)];
   await say(`/${parting}!`);
 });
-```
+```text
 
 Once the file is updated, save the changes and then we'll make sure those changes are being used.
 
@@ -183,7 +183,7 @@ Run the following command and select the app created earlier to start, or restar
 $ slack run
 ...
 [INFO]  bolt-app ⚡️ Bolt app is running!
-```
+```text
 
 After finding the above output appears, open Slack to perform these steps:
 
@@ -201,7 +201,7 @@ Run the following command to start, or restart, your app with the latest changes
 $ npm run start
 ...
 [INFO]  bolt-app ⚡️ Bolt app is running!
-```
+```text
 
 After finding the above output appears, open Slack to perform these steps:
 
@@ -220,8 +220,8 @@ The created app will have some placeholder values and a small set of [scopes](ht
 Open app settings for your app with the following command:
 
 ```sh
-$ slack app settings
-```
+slack app settings
+```text
 
 This will open the following page in a web browser:
 
@@ -244,19 +244,19 @@ Now that you're familiar with a basic app setup, try it out again, this time usi
 Get started with the agent template:
 
 ```sh
-$ slack create ai-app --template slack-samples/bolt-js-assistant-template
-$ cd ai-app
-```
+slack create ai-app --template slack-samples/bolt-js-assistant-template
+cd ai-app
+```text
 
 ### Terminal
 
 Get started with the agent template:
 
 ```sh
-$ git clone https://github.com/slack-samples/bolt-js-assistant-template ai-app
-$ cd ai-app
-$ npm install
-```
+git clone https://github.com/slack-samples/bolt-js-assistant-template ai-app
+cd ai-app
+npm install
+```text
 
 Using this method, be sure to set the app and bot tokens as we did in the [Running the app](#running-the-app) section above.
 

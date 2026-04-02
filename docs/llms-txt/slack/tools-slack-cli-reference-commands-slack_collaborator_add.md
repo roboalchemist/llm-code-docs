@@ -1,0 +1,35 @@
+Source: https://docs.slack.dev/tools/slack-cli/reference/commands/slack_collaborator_add
+
+# slack collaborator add
+
+Add a new collaborator to the app
+
+## Description {#description}
+
+Add a collaborator to your app by Slack email address or user ID
+
+```text
+slack collaborator add [email|user_id] [flags]
+```
+
+## Flags {#flags}
+
+```typescript
+  -h, --help                     help for add  -P, --permission-type string   collaborator permission type                                 ("owner" or "reader") (default "owner")
+```
+
+## Global flags {#global-flags}
+
+```text
+  -a, --app string           use a specific app ID or environment      --config-dir string    use a custom path for system config directory  -e, --experiment strings   use the experiment(s) in the command  -f, --force                ignore warnings and continue executing command      --no-color             remove styles and formatting from outputs  -s, --skip-update          skip checking for latest version of CLI  -w, --team string          select workspace or organization by team name or ID      --token string         set the access token associated with a team  -v, --verbose              print debug logging and additional info
+```
+
+## Examples {#examples}
+
+```python
+slack collaborator add                # Add a collaborator via prompt$ slack collaborator add bot@slack.com  # Add a collaborator from email$ slack collaborator add USLACKBOT      # Add a collaborator by user ID
+```
+
+## See also {#see-also}
+
+* [slack collaborator](/tools/slack-cli/reference/commands/slack_collaborator) - Manage app collaborators

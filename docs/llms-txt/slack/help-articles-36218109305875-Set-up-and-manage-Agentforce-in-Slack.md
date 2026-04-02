@@ -92,14 +92,14 @@ First, establish a connection to Slack for your agent in Salesforce:
 
 Once you’ve established a connection for your agent, add it to Slack.
 
-#### Pro and Business+ plans
+#### Pro and Business+ plans (2)
 
 1. From your desktop, click **Admin** in the sidebar.
 2. Select **Manage Agentforce** from the menu.
 3. Next to the agent you'd like to add, click **Review agent**.
 4. Review the permissions the agent will have in Slack, then click **Install Agent**.
 
-#### Enterprise plans
+#### Enterprise plans (2)
 
 First, install and grant the agent access at the org level. Then, you can add the agent to specific workspaces in your org.
 
@@ -130,7 +130,7 @@ Owners, admins, Agent Builders, and assigned Agent Managers can edit an agent’
 
 By default, no one can use [Agentforce Service Agents](https://help.salesforce.com/s/articleView?id=service.service_agent_overview.htm&type=5) in Slack until they’re assigned access by an owner or admin.
 
-#### Pro and Business+ plans
+#### Pro and Business+ plans (3)
 
 1. From your desktop, click **Admin** in the sidebar.
 2. Select **Manage Agentforce** from the menu.
@@ -139,7 +139,7 @@ By default, no one can use [Agentforce Service Agents](https://help.salesforce.c
 5. Next to **Who can use this agent?**, click **Edit**.
 6. Choose who can access the agent, then click **Save**.
 
-#### Enterprise plans
+#### Enterprise plans (3)
 
 1. From **Home**, click your **organization name** in the sidebar.  
    ![Image 3](https://a.slack-edge.com/8e8e4/helpcenter/img/workspace-picker@2x.jpg)
@@ -154,7 +154,7 @@ By default, no one can use [Agentforce Service Agents](https://help.salesforce.c
 
 On the Pro and Business+ plans, you can uninstall an agent. On Enterprise plans, you can remove an agent from specific workspaces, or uninstall it from your organization.
 
-#### Pro and Business+ plans
+#### Pro and Business+ plans (4)
 
 1. From your desktop, click **Admin** in the sidebar.
 2. Select **Manage Agentforce** from the menu.
@@ -183,7 +183,7 @@ On the Pro and Business+ plans, you can uninstall an agent. On Enterprise plans,
 5. Select **Manage** in the top right, then click **Uninstall from your organization**.
 6. Check the box next to **I’m ready to remove this agent**, then click **Remove agent**.
 
-**Who can use this feature?**
+## Who can use this feature?
 
 - **Workspace Owners** / **Admins** (Free, Pro, and Business+ plans)  
   **Org Owners** / **Admins** (Enterprise plans)

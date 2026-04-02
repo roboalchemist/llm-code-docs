@@ -58,7 +58,7 @@ Authorization: Bearer xoxp-xxxxxxxxx-xxxx
 {"name":"something-urgent"}
 ```
 
-Note how we present the token with the string `Bearer ` pre-pended to it, indicating the [OAuth 2.0](/authentication) authentication scheme. Consult your favorite HTTP tool or library's manual for further detail on setting HTTP headers.
+Note how we present the token with the string `Bearer` pre-pended to it, indicating the [OAuth 2.0](/authentication) authentication scheme. Consult your favorite HTTP tool or library's manual for further detail on setting HTTP headers.
 
 Here's a more complicated example — posting a message with [menus](/legacy/legacy-messaging/legacy-adding-menus-to-messages) using [`chat.postMessage`](/reference/methods/chat.postMessage):
 

@@ -4,7 +4,7 @@
 
 The Slack CLI allows you to interact with your apps via the command line. Using the main command `slack`, you can create, run, and deploy apps, as well as create triggers and query datastores.
 
-## Running `slack help` will display available commands in your terminal window.
+## Running `slack help` will display available commands in your terminal window
 
 Use commands as follows (unless otherwise noted):
 

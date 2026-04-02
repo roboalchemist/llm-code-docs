@@ -18,14 +18,14 @@ Install the latest version of the Slack CLI to get started:
 Then confirm a successful installation with the following command:
 
 ```sh
-$ slack version
-```
+slack version
+```text
 
 An authenticated login is also required if this hasn't been done before:
 
 ```sh
-$ slack login
-```
+slack login
+```text
 
 ### A place to belong
 
@@ -45,7 +45,7 @@ The getting started app template contains a `manifest.json` file with details ab
 $ slack run
 ...
 ⚡️ Bolt app is running!
-```
+```text
 
 With the app running, you can test it out with the following steps in Slack:
 
@@ -74,12 +74,12 @@ To listen for events happening in Slack (such as a new posted message) without o
 3. Save the generated `xapp` token as an environment variable within your project:
 
 ```sh
-$ export SLACK_APP_TOKEN=<your-app-level-token>
-```
+export SLACK_APP_TOKEN=<your-app-level-token>
+```text
 
 The above command works on Linux and macOS but [similar commands are available on Windows](https://superuser.com/questions/212150/how-to-set-env-variable-in-windows-cmd-line/212153#212153).
 
-### Keep it secret. Keep it safe.
+### Keep it secret. Keep it safe
 
 Treat your tokens like a password and [keep it safe](/security). Your app uses these to retrieve and send information to Slack.
 
@@ -93,8 +93,8 @@ A bot token is also needed to interact with the Web API methods as your app's bo
 1. Copy the bot token beginning with `xoxb` from the **OAuth & Permissions page** and then store it in a new environment variable:
 
 ```sh
-$ export SLACK_BOT_TOKEN=xoxb-<your-bot-token>
-```
+export SLACK_BOT_TOKEN=xoxb-<your-bot-token>
+```text
 
 After saving tokens for the app you created, it is time to run it:
 
@@ -102,7 +102,7 @@ After saving tokens for the app you created, it is time to run it:
 $ python3 app.py
 ...
 ⚡️ Bolt app is running!
-```
+```text
 
 With the app running, you can test it out with the following steps in Slack:
 
@@ -132,11 +132,11 @@ def message_goodbye(say):
     responses = ["Adios", "Au revoir", "Farewell"]
     parting = random.choice(responses)
     say(f"{parting}!")
-```
+```text
 
 Once the file is updated, save the changes and then we'll make sure those changes are being used.
 
-### Slack CLI
+### Slack CLI (2)
 
 Run the following command and select the app created earlier to start, or restart, your app with the latest changes:
 
@@ -144,7 +144,7 @@ Run the following command and select the app created earlier to start, or restar
 $ slack run
 ...
 ⚡️ Bolt app is running!
-```
+```text
 
 After finding the above output appears, open Slack to perform these steps:
 
@@ -162,7 +162,7 @@ Run the following command to start, or restart, your app with the latest changes
 $ python3 app.py
 ...
 ⚡️ Bolt app is running!
-```
+```text
 
 After finding the above output appears, open Slack to perform these steps:
 
@@ -179,8 +179,8 @@ The created app will have some placeholder values and a small set of [scopes](/r
 Open app settings for your app with the following command:
 
 ```sh
-$ slack app settings
-```
+slack app settings
+```text
 
 This will open the following page in a web browser:
 
@@ -201,13 +201,13 @@ Now that you're familiar with a basic app setup, try it out again, this time usi
 Get started with the agent template:
 
 ```sh
-$ slack create ai-app --template slack-samples/bolt-python-assistant-template
-$ cd ai-app
-```
+slack create ai-app --template slack-samples/bolt-python-assistant-template
+cd ai-app
+```text
 
-### Slack CLI
+### Slack CLI (3)
 
-### Browser
+### Browser (2)
 
 Once the project is created, update the `.env.sample` file by setting the `OPENAI_API_KEY` with the value of your key and removing the `.sample` from the file name.
 

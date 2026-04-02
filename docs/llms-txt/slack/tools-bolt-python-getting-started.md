@@ -18,13 +18,13 @@ Install the latest version of the Slack CLI to get started:
 Then confirm a successful installation with the following command:
 
 ```sh
-$ slack version
+slack version
 ```
 
 An authenticated login is also required if this hasn't been done before:
 
 ```sh
-$ slack login
+slack login
 ```
 
 ### A place to belong
@@ -40,8 +40,8 @@ If you don’t already have a project, let’s create a new one!
 A starter template can be used to start with project scaffolding:
 
 ```sh
-$ slack create first-bolt-app --template slack-samples/bolt-python-getting-started-app
-$ cd first-bolt-app
+slack create first-bolt-app --template slack-samples/bolt-python-getting-started-app
+cd first-bolt-app
 ```
 
 After a project is created you'll have a `requirements.txt` file for app dependencies and a `.slack` directory for Slack CLI configuration. A few other files exist too, but we'll visit these later.
@@ -49,9 +49,9 @@ After a project is created you'll have a `requirements.txt` file for app depende
 We recommend using a [Python virtual environment](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment) to manage your project's dependencies. This is a great way to prevent conflicts with your system's Python packages. Let's create and activate a new virtual environment with [Python 3.7 or later](https://www.python.org/downloads/):
 
 ```sh
-$ python3 -m venv .venv
-$ source .venv/bin/activate
-$ pip install -r requirements.txt
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 ```
 
 Confirm the virtual environment is active by checking that the path to `python3` is _inside_ your project ([a similar command is available on Windows](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#activating-a-virtual-environment)):
@@ -102,7 +102,7 @@ To listen for events happening in Slack (such as a new posted message) without o
 3. Save the generated `xapp` token as an environment variable within your project:
 
 ```sh
-$ export SLACK_APP_TOKEN=<your-app-level-token>
+export SLACK_APP_TOKEN=<your-app-level-token>
 ```
 
 The above command works on Linux and macOS but [similar commands are available on Windows](https://superuser.com/questions/212150/how-to-set-env-variable-in-windows-cmd-line/212153#212153).
@@ -116,10 +116,10 @@ A bot token is also needed to interact with the Web API methods as your app's bo
 
 ![OAuth Tokens](https://docs.slack.dev/assets/images/bot-token-3d6c761238c7a66557fd08d00a2a1b0c.png)
 
-3. Copy the bot token beginning with `xoxb` from the **OAuth & Permissions page** and then store it in a new environment variable:
+1. Copy the bot token beginning with `xoxb` from the **OAuth & Permissions page** and then store it in a new environment variable:
 
 ```sh
-$ export SLACK_BOT_TOKEN=xoxb-<your-bot-token>
+export SLACK_BOT_TOKEN=xoxb-<your-bot-token>
 ```
 
 After saving tokens for the app you created, it is time to run it:
@@ -205,7 +205,7 @@ The created app will have some placeholder values and a small set of [scopes](ht
 Open app settings for your app with the following command:
 
 ```sh
-$ slack app settings
+slack app settings
 ```
 
 This will open the following page in a web browser:
@@ -225,8 +225,8 @@ Now that you're familiar with a basic app setup, try it out again, this time usi
 Get started with the agent template:
 
 ```sh
-$ slack create ai-app --template slack-samples/bolt-python-assistant-template
-$ cd ai-app
+slack create ai-app --template slack-samples/bolt-python-assistant-template
+cd ai-app
 ```
 
 Using this method, be sure to set the app and bot tokens as we did in the [Running the app](#running-the-app) section above.
