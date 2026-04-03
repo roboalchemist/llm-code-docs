@@ -1,0 +1,9 @@
+name: desearch
+primary_source: llms
+sources:
+- type: llms
+  url: https://desearch.ai/
+  last_fetched: '2026-04-03T19:42:55Z'
+description: Decentralized AI-powered search API on Bittensor (web, X/Twitter, deep
+  research)
+quality_score: 0
