@@ -11200,7 +11200,7 @@ web_scraped:
   size: 150.5KB
   last_updated: 2026-04-02 13:21
 - name: electron
-  description: electron documentation
+  description: Electron framework for building cross-platform desktop applications with web technologies
   path: docs/web-scraped/electron/
   status: fetched
   file_count: 181
