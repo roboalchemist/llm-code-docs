@@ -5864,14 +5864,6 @@ llms_txt:
   file_count: 112
   size: 2.0MB
   last_updated: 2026-04-03 01:34
-- name: yarp
-  description: Yarp Documentation
-  url: https://yarp.com/
-  path: docs/llms-txt/yarp/
-  status: fetched
-  file_count: 1
-  size: 9.2KB
-  last_updated: 2026-04-03 01:34
 - name: youtube-data-api
   description: 'Comments: list'
   url: https://youtube-data-api.com/
